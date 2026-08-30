@@ -168,7 +168,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         for row in showcase["frontier_by_problem"]
         for name in row["comparator_declarations"]
     ]
-    assert len(names) == 32
+    assert len(names) == 40
     assert len(names) == len(set(names))
     assert [row["problem"] for row in showcase["frontier_by_problem"]] == [68, 243, 249, 251, 257, 269, 1041, 1049]
     assert showcase["candidate_selection"]["declaration"] in names
@@ -185,9 +185,9 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert universe["authority"] == (
         "HEAD:docs/claims.json::external_verification_packet.review_matrix"
     )
-    assert universe["source_review_family_count"] == 62
+    assert universe["source_review_family_count"] == 63
     assert universe["source_review_family_count_at_dispatch"] == 60
-    assert len(universe["source_review_family_ids"]) == 62
+    assert len(universe["source_review_family_ids"]) == 63
     assert set(universe["source_family_dispositions"]) == set(
         universe["source_review_family_ids"]
     )
@@ -252,8 +252,6 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "actualLcmTailOrbit" in hypotheses
     assert "Irrational" in landscape_by_id["actual_lcm_orbit_separation"]["conclusion"]
     for candidate_id in (
-        "first_harmonic_pivot",
-        "actual_lcm_positive_corridor_top_edge",
         "certificate_completeness",
         "erdos1049_four_jet_pade_obstruction",
         "erdos251_integral_tail_classification",
@@ -266,6 +264,36 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         )
         assert row["queue_role"] == "source_landscape_review_not_comparator_evidence"
         assert "comparator_declaration" not in row
+    committed = {
+        row["candidate_id"]: row
+        for row in landscape
+        if row["comparator_eligibility"]
+        == "committed_source_faithful_transport"
+    }
+    assert set(committed) == {
+        "actual_lcm_orbit_separation",
+        "first_harmonic_pivot",
+        "actual_lcm_positive_corridor_top_edge",
+    }
+    assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
+    assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
+    assert committed["first_harmonic_pivot"]["comparator_declaration"] in comparator["theorem_names"]
+    assert committed["actual_lcm_positive_corridor_top_edge"]["comparator_declaration"] in comparator["theorem_names"]
+    assert set(committed["first_harmonic_pivot"]["supporting_comparator_declarations"]) <= set(comparator["theorem_names"])
+    assert set(committed["actual_lcm_positive_corridor_top_edge"]["supporting_comparator_declarations"]) <= set(comparator["theorem_names"])
+    for row in (
+        committed["first_harmonic_pivot"],
+        committed["actual_lcm_positive_corridor_top_edge"],
+    ):
+        assert row["source_transport_commit"] == "bc0fee48e14719391a77e90ea98205400b98993b"
+        assert row["source_transport_files"] == [
+            "ExternalVerification/Challenge.lean",
+            "ExternalVerification/Solution.lean",
+            "ExternalVerification/Statements.lean",
+        ]
+        assert row["transport_declarations"]
+        assert "verification/comparator.json" in row["transport_admission_boundary"]
+        assert "review matrix" in row["transport_admission_boundary"]
     weighted = landscape_by_id["weighted_phase_carry_observer"]
     assert "carry_eq_residueDigit_add_coboundary" in weighted["source_declaration"]
     assert "carryResidue_mem_interval" in weighted["source_declaration"]
@@ -273,6 +301,22 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "finite_realisedSpan_of_factorisation" in weighted["source_declaration"]
     assert "uncontrolled integral coboundary" in weighted["conclusion"]
     assert any("scalar-evaluation" in item for item in weighted["limitations"])
+
+
+def test_adversarial_source_transport_family_merge_is_not_silently_accepted() -> None:
+    showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
+    comparator = json.loads(
+        subprocess.check_output(["git", "show", "HEAD:verification/comparator.json"], cwd=ROOT)
+    )
+    damaged = copy.deepcopy(showcase)
+    damaged_row = next(
+        row
+        for row in damaged["candidate_value_dispositions"]["source_landscape_candidates"]
+        if row["candidate_id"] == "actual_lcm_positive_corridor_top_edge"
+    )
+    damaged_row["family_id"] = "actual_lcm_positive_corridor_top_edge"
+    errors = checker.candidate_selection_errors(comparator, damaged, ROOT)
+    assert any("merges or misnames" in error for error in errors)
 
 
 def test_adversarial_candidate_universe_drop_is_not_silently_accepted() -> None:
@@ -333,12 +377,12 @@ def test_adversarial_value_disposition_drift_is_not_silently_accepted() -> None:
     assert any("non-Comparator declaration" in error for error in errors)
 
     damaged = copy.deepcopy(showcase)
-    deferred = next(
+    source_only = next(
         row
         for row in damaged["candidate_value_dispositions"]["source_landscape_candidates"]
-        if row["candidate_id"] == "first_harmonic_pivot"
+        if row["candidate_id"] == "certificate_completeness"
     )
-    deferred["comparator_declaration"] = comparator["theorem_names"][0]
+    source_only["comparator_declaration"] = comparator["theorem_names"][0]
     errors = checker.candidate_selection_errors(comparator, damaged)
     assert any("must not name Comparator evidence" in error for error in errors)
 

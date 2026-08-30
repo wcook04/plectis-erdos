@@ -171,6 +171,18 @@ def committed_head(root: Path) -> str:
     return result.stdout.strip()
 
 
+def committed_commit_is_ancestor(root: Path, commit: str) -> bool:
+    """Require a recorded transport commit to be in the committed HEAD ancestry."""
+    if not HEX40.fullmatch(commit):
+        return False
+    result = subprocess.run(
+        ["git", "-C", str(root), "merge-base", "--is-ancestor", commit, "HEAD"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    return result.returncode == 0
+
+
 def flatten_showcase(showcase: dict[str, Any]) -> list[str]:
     names: list[str] = []
     for row in showcase.get("frontier_by_problem", []):
@@ -453,6 +465,14 @@ def candidate_selection_errors(
                     errors.append(f"source-landscape candidate {index} lacks fields: {missing}")
                 if row.get("disposition") not in VALUE_DISPOSITIONS:
                     errors.append(f"source-landscape candidate {index} has an invalid disposition")
+                expected_family = {
+                    "first_harmonic_pivot": "first_harmonic_pivot_decomposition",
+                    "actual_lcm_positive_corridor_top_edge": "actual_lcm_orbit_separation",
+                }.get(row.get("candidate_id"))
+                if expected_family and row.get("family_id") != expected_family:
+                    errors.append(
+                        f"source-landscape candidate {index} merges or misnames its canonical family"
+                    )
                 eligibility = row.get("comparator_eligibility")
                 if eligibility == "committed_source_faithful_transport":
                     if row.get("queue_role") != "source_landscape_review_with_committed_comparator_evidence":
@@ -462,6 +482,53 @@ def candidate_selection_errors(
                     if row.get("comparator_declaration") not in names:
                         errors.append(
                             f"source-landscape candidate {index} names a non-Comparator declaration"
+                        )
+                    supporting = row.get("supporting_comparator_declarations", [])
+                    if not isinstance(supporting, list) or not all(
+                        isinstance(declaration, str) and declaration in names
+                        for declaration in supporting
+                    ):
+                        errors.append(
+                            f"source-landscape candidate {index} names a non-Comparator supporting declaration"
+                        )
+                elif eligibility == "committed_source_transport_pending_comparator_registration":
+                    if row.get("queue_role") != "source_landscape_review_not_comparator_evidence":
+                        errors.append(
+                            f"source-landscape candidate {index} mislabels pending Comparator admission"
+                        )
+                    if row.get("comparator_declaration"):
+                        errors.append(
+                            f"source-landscape candidate {index} pending transport must not name Comparator evidence"
+                        )
+                    transport_commit = row.get("source_transport_commit")
+                    if not isinstance(transport_commit, str) or not committed_commit_is_ancestor(
+                        root, transport_commit
+                    ):
+                        errors.append(
+                            f"source-landscape candidate {index} lacks an ancestor source transport commit"
+                        )
+                    transport_files = row.get("source_transport_files")
+                    if not isinstance(transport_files, list) or not transport_files or not all(
+                        isinstance(path, str) and path.startswith("ExternalVerification/")
+                        for path in transport_files
+                    ):
+                        errors.append(
+                            f"source-landscape candidate {index} lacks transported ExternalVerification files"
+                        )
+                    transport_declarations = row.get("transport_declarations")
+                    if not isinstance(transport_declarations, list) or not transport_declarations or not all(
+                        isinstance(declaration, str) and declaration.startswith("Erdos249257.ExternalVerification.")
+                        for declaration in transport_declarations
+                    ):
+                        errors.append(
+                            f"source-landscape candidate {index} lacks exact transported declarations"
+                        )
+                    if not isinstance(row.get("transport_admission_boundary"), str) or not all(
+                        token in row["transport_admission_boundary"]
+                        for token in ("verification/comparator.json", "review matrix")
+                    ):
+                        errors.append(
+                            f"source-landscape candidate {index} lacks the pending-admission boundary"
                         )
                 elif eligibility == "source_landed_but_not_comparator_configured":
                     if row.get("queue_role") != "source_landscape_review_not_comparator_evidence":

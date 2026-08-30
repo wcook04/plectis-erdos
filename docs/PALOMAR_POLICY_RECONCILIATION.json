@@ -131,9 +131,9 @@
     "canonical_registry_role": "PalomarDatabase is private and is not available as a local submission authority",
     "registration_action": "operator_only_not_performed"
   },
-  "current_repository": {
-    "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-    "observed_head_before_product": "7bc548af0eee0a82de69ea8703482f43c1115bf5",
+    "current_repository": {
+      "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
+      "observed_head_before_product": "e10b161abd964381e0e8e6830e6f48e7629ca8ad",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -147,8 +147,8 @@
     },
     "comparator": {
       "path": "verification/comparator.json",
-      "committed_sha256": "f9b4b036bbb00da53dc6e955cbf5f6cf1dad8f0f48f7d8a0c74da9c0e95c8316",
-      "theorem_name_count": 32,
+      "committed_sha256": "ef970718e15171d8d3d21b8ea6620bd2ccd179509bc19ec9aaf998a72b87e12c",
+      "theorem_name_count": 40,
       "challenge_module": "ExternalVerification.Challenge",
       "solution_module": "ExternalVerification.Solution",
       "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
@@ -174,15 +174,15 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-    "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 62 families (the 60-family dispatch baseline plus canonical actual-LCM and weighted-phase-carry registrations) and six targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 32-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
+    "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 63 families (the 60-family dispatch baseline plus canonical actual-LCM, first-harmonic, and weighted-phase-carry registrations) and six targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 40-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "ef919962e59349e5e3e3c540628243b22d33d6aaa7b817bf353bd4129421e0c6",
-      "review_family_count": 62,
+      "review_matrix_sha256": "bd4ec9ba45cefbc8b4d5ddf8a81c0582e598e93f586f0874b7419114a858d254",
+      "review_family_count": 63,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
         "first_harmonic_pivot",
@@ -211,36 +211,50 @@
     "source_landscape_queue": [
       {
         "candidate_id": "first_harmonic_pivot",
-        "family_id": "first_harmonic_pivot",
+        "family_id": "first_harmonic_pivot_decomposition",
         "disposition": "deferred",
-        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_declaration": "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation",
         "source_file": "Erdos249257/FirstHarmonicPivot.lean",
-        "source_anchor": "543-595",
-        "reason": "Deep conditional first-harmonic budget route; no committed Comparator transport or cofinal decorrelation producer.",
-        "reversal_evidence": "A source-faithful Comparator wrapper with the same budgets and conclusion, or a proved cofinal decorrelation supply."
+        "source_anchor": "394; 514-552; 569-588",
+        "source_transport_commit": "bc0fee48e14719391a77e90ea98205400b98993b",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.image_pivotSupplierPrimes_eq_pivotFiber", "Erdos249257.ExternalVerification.supplierPrime_not_globally_isolated_counterexample", "Erdos249257.ExternalVerification.windowFirstExp_sum_eq_pivot_decomposition", "Erdos249257.ExternalVerification.first_harmonic_gap_of_pivotBudgetAt", "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"],
+        "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
+        "supporting_comparator_declarations": ["Erdos249257.ExternalVerification.image_pivotSupplierPrimes_eq_pivotFiber", "Erdos249257.ExternalVerification.supplierPrime_not_globally_isolated_counterexample", "Erdos249257.ExternalVerification.windowFirstExp_sum_eq_pivot_decomposition", "Erdos249257.ExternalVerification.first_harmonic_gap_of_pivotBudgetAt"],
+        "transport_admission_boundary": "The exact source-faithful transport is registered in the committed verification/comparator.json at df637b0e; the canonical claims review matrix remains a separate source-landscape projection, and the cofinal decorrelation producer is still unproved.",
+        "reason": "Deep conditional first-harmonic budget route with exact committed three-file transport at bc0fee48; Comparator registration is current, while canonical review-matrix projection and the cofinal decorrelation producer remain open.",
+        "reversal_evidence": "Project the family into the canonical review matrix or prove the cofinal decorrelation supply; a routine restatement or finite pivot check is insufficient."
       },
       {
         "candidate_id": "actual_lcm_positive_corridor_top_edge",
         "family_id": "actual_lcm_orbit_separation",
         "disposition": "subordinate",
-        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue",
         "source_file": "Erdos249257/TotientActualLcmOrbitSign.lean",
         "source_anchor": "31-278",
-        "reason": "Unconditional sign/top-edge boundary retained as a subordinate component of the existing actual-LCM frontier; it is not a duplicate family or Comparator evidence.",
-        "reversal_evidence": "An independent top-edge exclusion or a source-faithful committed transport preserving the exact sign and residue boundary."
+        "source_transport_commit": "bc0fee48e14719391a77e90ea98205400b98993b",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos", "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg", "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue"],
+        "comparator_declaration": "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
+        "supporting_comparator_declarations": ["Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos", "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg"],
+        "transport_admission_boundary": "These declarations are one coherent actual_lcm_orbit_separation family; the exact source-faithful support transport is registered in the committed verification/comparator.json at df637b0e, while canonical review matrix/evidence projection and cofinal supply remain open.",
+        "reason": "Unconditional sign/top-edge boundary retained as subordinate support inside the single actual_lcm_orbit_separation family, with exact three-file transport at bc0fee48 and current Comparator registration; canonical evidence projection, cofinal supply, and top-edge exclusion remain open, with no duplicate family.",
+        "reversal_evidence": "Project the exact source-faithful declarations as part of actual_lcm_orbit_separation or prove an independent top-edge exclusion; a duplicate family would not be a valid promotion."
       },
       {
         "candidate_id": "certificate_completeness",
         "family_id": "certificate_completeness",
-        "disposition": "deferred",
+        "disposition": "subordinate",
         "comparator_eligibility": "source_landed_but_not_comparator_configured",
         "source_declaration": "Erdos249257.irrational_totient_series_iff_lcm_diagonal_certificate_supply",
         "source_file": "Erdos249257/LcmConeFlatness.lean",
         "source_anchor": "316-435",
-        "reason": "Exact endpoint equivalence and excellent digestion infrastructure, but no new certificate producer or committed Comparator transport.",
-        "reversal_evidence": "A source-faithful transport plus a genuinely new unbounded certificate producer."
+        "reason": "Exact endpoint equivalence already represented by the certificate interface; it is consolidated as subordinate because it adds no distinct executable producer.",
+        "reversal_evidence": "Only a genuinely new unbounded certificate producer or materially new executable consequence would elevate this route; another equivalent reformulation would remain subordinate."
       },
       {
         "candidate_id": "erdos1049_four_jet_pade_obstruction",
