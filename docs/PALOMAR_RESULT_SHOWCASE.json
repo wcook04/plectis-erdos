@@ -8,7 +8,7 @@
     "comparator_sha256": "afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
     "comparator_theorem_count": 48,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "f8ca6d02f16afbe9b21b759df1ae14a119fb17f57a0ec034f652e80e251f5da9",
+    "source_review_matrix_sha256": "c5c75c8cd0e611e437fbdf9fb2c249f1c08acbcdc121f2294f1e9dadadabeb3d",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -476,7 +476,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "f8ca6d02f16afbe9b21b759df1ae14a119fb17f57a0ec034f652e80e251f5da9",
+    "source_review_matrix_sha256": "c5c75c8cd0e611e437fbdf9fb2c249f1c08acbcdc121f2294f1e9dadadabeb3d",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -1837,8 +1837,8 @@
       "genuinely_distinct_content_and_independence": "This is producer-side phase-density and natural-prime transport, distinct from actual-LCM quantitative separation, the four-term pivot budget, and finite certificate equivalences.",
       "external_review_value": "High as a source-isolated map of exactly what orbit-density or prime-index input would suffice, provided the missing producers remain adjacent.",
       "proof_digestion_value": "It exposes the 11/100 to 89/100 to 9/10 chain and the adaptive prime escape rather than flattening both branches into a generic conditional endpoint.",
-      "evidence_certainty": "The exact source declarations, canonical strict_prime_tail_orbit_gap family, and Comparator representative are committed at Claims bf4b77d6 and transport e7a58bb3.",
-      "overclaim_risk": "High unless the unproved density, cofinal natural-prime strict-gap, and uniform-margin producers stay explicit; no unconditional #249, novelty, priority, significance, or external-review claim follows.",
+      "evidence_certainty": "The exact source declarations, canonical strict_prime_tail_orbit_gap family, and Comparator representative are committed at Claims ddbe2870 and transport e7a58bb3.",
+      "overclaim_risk": "High unless the unproved density, cofinal natural-prime strict-gap, uniform-margin, and cofinal nonpositive-prime-shift producers stay explicit; no unconditional #249, novelty, priority, significance, or external-review claim follows.",
       "why_not_ranked_first": "It ranks below actual_lcm_orbit_separation and first_harmonic_pivot_decomposition because their source-specific quantitative sockets are stronger, but above finite certificate equivalences because it contributes a distinct producer mechanism rather than only an endpoint normal form."
     },
     {

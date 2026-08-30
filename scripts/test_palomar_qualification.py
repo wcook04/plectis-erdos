@@ -341,6 +341,12 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
     ):
         assert declaration in strict_prime["source_declaration"]
+    strict_rank = next(
+        row for row in showcase["candidate_ranking"]
+        if row["family_id"] == "strict_prime_tail_orbit_gap"
+    )
+    assert "Claims ddbe2870" in strict_rank["evidence_certainty"]
+    assert "cofinal nonpositive-prime-shift" in strict_rank["overclaim_risk"]
     small_mismatch = landscape_by_id["erdos251_small_mismatch_criterion"]
     assert "conditional-endpoint leverage" in small_mismatch["source_landscape_rank_relative_to"].lower()
     assert "prime_gap_reformulation" in small_mismatch["ranked_below"]
