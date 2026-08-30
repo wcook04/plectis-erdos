@@ -19,6 +19,12 @@ IMPORT_RE = re.compile(
 )
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep root-closure failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def registry_errors(
     nodes: list[dict[str, object]], public_paths: set[str]
 ) -> list[str]:
@@ -111,8 +117,14 @@ def check_fixtures() -> None:
         },
     ]
     connected_paths = {"Erdos249257/A.lean", "Erdos249257/B.lean"}
-    assert registry_errors(connected, connected_paths) == []
-    assert closure_errors(connected, ["Erdos249257.A"]) == []
+    require(
+        registry_errors(connected, connected_paths) == [],
+        "connected module registry fixture was rejected",
+    )
+    require(
+        closure_errors(connected, ["Erdos249257.A"]) == [],
+        "connected root closure fixture was rejected",
+    )
 
     orphaned = [
         *connected,
@@ -122,30 +134,42 @@ def check_fixtures() -> None:
             "imports": [],
         },
     ]
-    assert closure_errors(orphaned, ["Erdos249257.A"]) == [
-        "public module is outside supported root-import closure: Erdos249257.Orphan"
-    ]
+    require(
+        closure_errors(orphaned, ["Erdos249257.A"]) == [
+            "public module is outside supported root-import closure: "
+            "Erdos249257.Orphan"
+        ],
+        "orphan module fixture was not rejected",
+    )
     auxiliary = {
         "id": "ErdosProblems.FreePosition.Aux",
         "path": "ErdosProblems/FreePosition/Aux.lean",
         "imports": [],
     }
-    assert closure_errors(
-        [*connected, auxiliary],
-        ["Erdos249257.A"],
-        ["ErdosProblems.FreePosition.Aux"],
-        ("ErdosProblems.FreePosition.",),
-    ) == []
-    assert closure_errors(
-        [*connected, auxiliary],
-        ["Erdos249257.A"],
-        ["Erdos249257.A"],
-        ("ErdosProblems.FreePosition.",),
-    ) == [
-        "auxiliary root is outside allowed namespaces: Erdos249257.A",
-        "public module is outside supported root-import closure: "
-        "ErdosProblems.FreePosition.Aux",
-    ]
+    require(
+        closure_errors(
+            [*connected, auxiliary],
+            ["Erdos249257.A"],
+            ["ErdosProblems.FreePosition.Aux"],
+            ("ErdosProblems.FreePosition.",),
+        )
+        == [],
+        "allowed auxiliary root fixture was rejected",
+    )
+    require(
+        closure_errors(
+            [*connected, auxiliary],
+            ["Erdos249257.A"],
+            ["Erdos249257.A"],
+            ("ErdosProblems.FreePosition.",),
+        )
+        == [
+            "auxiliary root is outside allowed namespaces: Erdos249257.A",
+            "public module is outside supported root-import closure: "
+            "ErdosProblems.FreePosition.Aux",
+        ],
+        "out-of-namespace auxiliary root fixture was not rejected",
+    )
 
     missing = [
         {
@@ -154,17 +178,23 @@ def check_fixtures() -> None:
             "imports": ["Erdos249257.Missing"],
         }
     ]
-    assert closure_errors(missing, ["Erdos249257.A"]) == [
-        "Erdos249257.A imports unknown public module Erdos249257.Missing"
-    ]
+    require(
+        closure_errors(missing, ["Erdos249257.A"]) == [
+            "Erdos249257.A imports unknown public module Erdos249257.Missing"
+        ],
+        "missing import fixture was not rejected",
+    )
 
     duplicate = [
         {"id": "Erdos249257.A", "path": "Erdos249257/A.lean", "imports": []},
         {"id": "Erdos249257.A", "path": "Erdos249257/A2.lean", "imports": []},
     ]
-    assert closure_errors(duplicate, ["Erdos249257.A"]) == [
-        "machine-readable module graph contains duplicate id: Erdos249257.A"
-    ]
+    require(
+        closure_errors(duplicate, ["Erdos249257.A"]) == [
+            "machine-readable module graph contains duplicate id: Erdos249257.A"
+        ],
+        "duplicate module id fixture was not rejected",
+    )
 
     duplicate_path = [
         {"id": "Erdos249257.A", "path": "Erdos249257/A.lean", "imports": []},
@@ -173,34 +203,53 @@ def check_fixtures() -> None:
     duplicate_path_errors = registry_errors(
         duplicate_path, {"Erdos249257/A.lean"}
     )
-    assert (
-        "machine-readable module graph contains duplicate path: "
-        "Erdos249257/A.lean"
-    ) in duplicate_path_errors
+    require(
+        (
+            "machine-readable module graph contains duplicate path: "
+            "Erdos249257/A.lean"
+        )
+        in duplicate_path_errors,
+        "duplicate module path fixture was not rejected",
+    )
 
     mismatched_path = [
         {"id": "Erdos249257.A", "path": "Erdos249257/B.lean", "imports": []}
     ]
-    assert any(
-        error.startswith("module id/path mismatch:")
-        for error in registry_errors(mismatched_path, {"Erdos249257/B.lean"})
+    require(
+        any(
+            error.startswith("module id/path mismatch:")
+            for error in registry_errors(mismatched_path, {"Erdos249257/B.lean"})
+        ),
+        "module id/path mismatch fixture was not rejected",
     )
 
-    assert registry_errors(connected, connected_paths | {"Erdos249257/New.lean"}) == [
-        "public Lean file is missing from module graph: Erdos249257/New.lean"
-    ]
-    assert registry_errors(connected, {"Erdos249257/A.lean"}) == [
-        "module graph path is missing from disk: Erdos249257/B.lean"
-    ]
+    require(
+        registry_errors(connected, connected_paths | {"Erdos249257/New.lean"}) == [
+            "public Lean file is missing from module graph: Erdos249257/New.lean"
+        ],
+        "unregistered public file fixture was not rejected",
+    )
+    require(
+        registry_errors(connected, {"Erdos249257/A.lean"}) == [
+            "module graph path is missing from disk: Erdos249257/B.lean"
+        ],
+        "missing public file fixture was not rejected",
+    )
 
 
 def main() -> int:
     check_fixtures()
     claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
     graph = claims["machine_readable_paper"]["module_graph"]
-    assert graph["root"] == "Erdos249257.lean"
+    require(
+        graph["root"] == "Erdos249257.lean",
+        "machine-readable graph has the wrong primary root",
+    )
     roots = [graph["root"], *graph.get("additional_roots", [])]
-    assert roots == list(ROOT_FILES)
+    require(
+        roots == list(ROOT_FILES),
+        "machine-readable graph does not expose both supported roots",
+    )
     root_imports = [
         imported
         for root in roots
@@ -217,9 +266,10 @@ def main() -> int:
             continue
         supported_root_reachable.add(module)
         pending.extend(imports_by_id[module])
-    assert "ErdosProblems.Skip.LadderT67" in supported_root_reachable, (
+    require(
+        "ErdosProblems.Skip.LadderT67" in supported_root_reachable,
         "the reviewed t ≤ 82 finite-certificate theorem must be elaborated by "
-        "a supported-root build, not only covered by the auxiliary forest"
+        "a supported-root build, not only covered by the auxiliary forest",
     )
     public_paths = {
         path.relative_to(ROOT).as_posix()
@@ -236,7 +286,7 @@ def main() -> int:
             tuple(auxiliary_contract["allowed_prefixes"]),
         ),
     ]
-    assert not errors, "\n".join(errors)
+    require(not errors, "\n".join(errors))
     print(
         "test_root_import_closure: registry exactly matches disk and compact "
         "roots plus the validated auxiliary forest reach all "
