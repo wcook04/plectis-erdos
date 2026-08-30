@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "research-return.yml"
 ISSUE_FORM = ROOT / ".github" / "ISSUE_TEMPLATE" / "research_return.yml"
 CHECKOUT_SHA = "3d3c42e5aac5ba805825da76410c181273ba90b1"
+SETUP_PYTHON_SHA = "5fda3b95a4ea91299a34e894583c3862153e4b97"
 
 REPRODUCIBILITY_ENV = (
     'GIT_NAMESPACE: ""',
@@ -137,6 +138,8 @@ def workflow_errors(text: str) -> list[str]:
             errors.append(f"action {action} is not pinned to a full commit")
     if f"actions/checkout@{CHECKOUT_SHA}" not in text:
         errors.append("workflow lost the repository-pinned checkout action")
+    if text.count(f"actions/setup-python@{SETUP_PYTHON_SHA}") != 1:
+        errors.append("workflow must use the canonical pinned setup-python action exactly once")
 
     timeout = re.search(r"(?m)^\s*timeout-minutes:\s*(\d+)\s*$", text)
     if timeout is None or int(timeout.group(1)) > 15:
