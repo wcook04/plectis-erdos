@@ -246,21 +246,6 @@
             "mechanism": "The displayed 2,3,5 kernel rectangle has exact determinant -1/15, certifying rank two over ℚ rather than rank one.",
             "boundary": "This is a local no-go certificate for the displayed kernel rectangle. Failure of rank one does not itself imply #269 irrationality, identify the actual-series/rationality bridge, produce cofinal local-window escape, or make endpoint, novelty, priority, significance, or external-review claims.",
             "next_research_route": "Use the exact rank-two minor to constrain any actual three-prime kernel reduction, then separately derive the actual-series/rationality bridge and determine whether a global consequence follows; do not promote the local minor to irrationality."
-          },
-          "dyadic_block_alphabet": {
-            "route_id": "erdos_269_dyadic_block_alphabet",
-            "status": "locally_proved_bridge_open",
-            "source_declaration": "ErdosProblems.Erdos269.dyadicBlockBase235_cases",
-            "source_module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-            "source_anchor": 699,
-            "supporting_declarations": [
-              "ErdosProblems.Erdos269.dyadicBlockBase235",
-              "ErdosProblems.Erdos269.dyadicBlockBase235_mem_interval"
-            ],
-            "evidence_mode": "Lean kernel source only; no Comparator wrapper is claimed",
-            "mechanism": "Compressing internal 3- and 5-power jumps with the terminal dyadic jump yields the exact four-symbol radix alphabet 2, 6, 10, and 30.",
-            "boundary": "The finite alphabet is a local radix classification only. It does not supply the needed cofinal carry escape, establish the actual-series/rationality bridge, prove #269 irrationality, or make endpoint, novelty, priority, significance, or external-review claims.",
-            "next_research_route": "Identify the exact dyadic block digit stream for the actual three-prime running-LCM series and derive its rational-carry hypotheses; only then test whether the conditional escape consumer applies."
           }
         }
       },

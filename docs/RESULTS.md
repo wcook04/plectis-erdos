@@ -52,9 +52,7 @@ pass, the high-signal spine is:
   square-root-bounded integer carry orbit whose quotient reconstructs the
   support. This is a change of coordinates for hypothetical rational support,
   not a contradiction or a universal #257 proof; arbitrary infinite support
-  and the `1/2` membership boundary remain open. A separate Comparator seam
-  classification makes that endpoint equivalent to unbounded false terminal
-  seams (or skipped ranks), but supplies no witness.
+  and the `1/2` membership boundary remain open.
 - **#249, an endpoint-facing conditional route plus a finite-level rank
   spine.** The actual-LCM orbit route gives a genuinely endpoint-facing
   reduction: an explicit approximation of the orbit by an odd-rank raw block,
@@ -64,9 +62,7 @@ pass, the high-signal spine is:
   irrationality from it, but this is a sufficient route, not an equivalence to
   the separate non-integrality criterion. The supply itself is not proved;
   neither divisibility nor irrationality alone supplies the required
-  anti-concentration. A fixed-precision Comparator no-go shows that synthetic
-  high quotients can complete every finite valuation/unit word; it supplies no
-  actual-totient bridge or endpoint. Separately, the dyadic totient-kernel rank `2^e + 1`,
+  anti-concentration. Separately, the dyadic totient-kernel rank `2^e + 1`,
   its odd-core basis, and the resulting infinite-dimensional span expose a
   real finite-level mechanism; the all-base rank is conditional on the
   displayed affine-independence input. Neither spine solves the binary
@@ -131,7 +127,7 @@ dispositions are stated in the relevant per-problem sections.
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
 | **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; the pairwise CRT and periodic denominator-clearing rows are distinct direct mechanisms; the bouquet and actual-LCM rows add unusually deep endpoint-facing conditional structure, with their unproved supplies kept adjacent rather than hidden. |
-| **retain** | #257's achievement-set measure geometry, exact half-membership seam classification, and sublogarithmic zero-window constraint, #68's exact carry equivalence, #249's diagonal full-target reduction, finite kernel rank/basis, orbit-level carry anti-compression, and fixed-precision valuation/unit no-go, #243's bounded-rise, negative-orbit, signed centered-recovery, and distinct summable-negative-mass boundaries, #251's equivalence, countermodel, and small-mismatch criterion, #269's height/rank obstruction, conditional carry-escape, and weighted-phase observer, #1041's ray/root route, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the seam equivalence gives an explicit unbounded-witness classification for the open `1/2` endpoint but no witness; the sublog row gives a rationality-conditional coverage bound with a support/numerator-dependent constant, not a contradiction; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers, while the #249 diagonal row makes integrality a full-target foreign-defect hit and the orbit conjunction exposes modular periodicity alongside rank growth and its forcing-erasure friction; the signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses, while the distinct summability criterion removes that lower-bound assumption but still assumes exact dynamics and leaves the unbounded mixed-sign branch open; the #251 small-mismatch row is closer to the actual prime-gap endpoint and isolates the cofinal small-pair/mismatch producer, but supplies none of it; the #269 conditional escape gives a window-expansion contradiction under an unproved cofinal predicate, while the observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the #1049 rectangular threshold is sharp only for its explicit two-function model and supplies no approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
+| **retain** | #257's achievement-set measure geometry and sublogarithmic zero-window constraint, #68's exact carry equivalence, #249's diagonal full-target reduction, finite kernel rank/basis, and orbit-level carry anti-compression, #243's bounded-rise, negative-orbit, signed centered-recovery, and distinct summable-negative-mass boundaries, #251's equivalence, countermodel, and small-mismatch criterion, #269's height/rank obstruction, conditional carry-escape, and weighted-phase observer, #1041's ray/root route, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the sublog row gives a rationality-conditional coverage bound with a support/numerator-dependent constant, not a contradiction; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers, while the #249 diagonal row makes integrality a full-target foreign-defect hit and the orbit conjunction exposes modular periodicity alongside rank growth and its forcing-erasure friction; the signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses, while the distinct summability criterion removes that lower-bound assumption but still assumes exact dynamics and leaves the unbounded mixed-sign branch open; the #251 small-mismatch row is closer to the actual prime-gap endpoint and isolates the cofinal small-pair/mismatch producer, but supplies none of it; the #269 conditional escape gives a window-expansion contradiction under an unproved cofinal predicate, while the observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the #1049 rectangular threshold is sharp only for its explicit two-function model and supplies no approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, scalar-height, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; the scalar-height lemma transfers denominator information but is not an irrationality criterion. Grouping these mechanisms preserves their reuse value without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
@@ -457,14 +453,6 @@ replacement for claim authority.
   bridge identifying the actual complement with this bound, and any unbounded
   separated-projection supply, remain unproved: this sharpens the reduction,
   not #249 irrationality.
-- A Comparator-transported fixed-precision no-go,
-  `fixedPrecisionTropicalNoGo`, gives every finite compatible valuation/unit
-  word at fixed `u > 0` a bounded prefix-locked centred completion by varying an
-  unrestricted high quotient (`ExternalVerification/Challenge.lean:166-175`;
-  `Erdos249257/TropicalCurvatureCarry.lean:69-142`). It is synthetic finite-word
-  evidence: bounded local signatures cannot close the route, and it supplies
-  neither actual totient arithmetic, growing precision/global correlation, nor a
-  #249 endpoint.
 
 **#251 — is `∑ pₙ/2ⁿ` irrational?**
 
@@ -637,14 +625,6 @@ core)**
   `Erdos249257/CertificateKernel.lean:9476`). The squarefree value
   itself is settled at power-of-two bases in the literature (Duverney–Tachiya
   2019; cited, not formalised). Registry: none.
-- The Comparator representative
-  `half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` gives an exact
-  endpoint classification: `1/2` belongs iff false terminal seam bits occur
-  beyond every bound, equivalently iff upper-or-middle successors or skipped
-  ranks are unbounded (`ExternalVerification/Challenge.lean:443-446`;
-  `Erdos249257/HalfCylinderHalfMembershipClassification.lean:126-235`). The
-  equivalence does not produce such witnesses, so it proves neither `1/2`
-  membership nor a refutation of universal #257.
 - Open: universal #257, and the `1/2` and `1/21` memberships.
 
 **#269 — are reciprocal sums of running lcms irrational?**

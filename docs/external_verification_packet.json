@@ -1591,7 +1591,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:9239ae4ad85fd129192737455fc32159679bcf0b1f8b8cb715fbc58125ccb6e1",
+    "projection_digest": "sha256:e0b8dcd55eb2b4bdc9b3178c7cc45eba69108cfb8ea53f11241f6447e9a90eb6",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2371,9 +2371,8 @@
           "family_count": 8,
           "by_class": {
             "not_applicable": 2,
-            "not_selected": 1,
             "represented_by": 2,
-            "targeted": 3
+            "targeted": 4
           },
           "dispositions": {
             "three_prime_lcm_cells": "targeted_running_lcm_identity",
@@ -2381,7 +2380,7 @@
             "height_fibre_and_shell": "represented_by_three_prime_structure_target",
             "rank_two_kernel_no_go": "targeted",
             "dyadic_block_alphabet": "represented_by_three_prime_structure_target",
-            "conditional_carry_escape": "not_selected_unproved_bridge_and_deep_predicates",
+            "conditional_carry_escape": "targeted",
             "weighted_phase_carry_observer": "targeted",
             "three_prime_finite_search": "not_applicable_not_a_lean_theorem"
           }
