@@ -6218,8 +6218,8 @@ def agent_tour_packet() -> dict[str, Any]:
                 "module_count": len(row.get("modules", [])),
                 "note": row.get("note"),
                 "follow": (
-                    "python3 scripts/query_corpus.py --search "
-                    f"'Erdős problem {row['erdos_number']}'"
+                    "python3 scripts/query_corpus.py --route "
+                    f"{row['problem_id']}"
                 ),
             }
             for row in problems

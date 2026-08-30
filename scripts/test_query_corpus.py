@@ -192,7 +192,7 @@ def validate_indexed_problem_routes() -> None:
             assert research["files"]["frontier"]["path"] == (
                 "research_corpus/Erdos1041/FRONTIER.md"
             )
-            assert "not reviewed claim-registry" in research["authority_posture"]
+            assert "not_reviewed_claim_registry" in research["authority_posture"]
         card = run("--route", route_id, "--format", "card")
         assert card.returncode == 0
         assert card.stdout.startswith(f"problem {route_id} |")
@@ -252,6 +252,13 @@ def validate_agent_tour() -> None:
     assert packet["formal_dependency_graph"]["source_resolved_direct_edge_count"] > 0
     assert {row["id"] for row in packet["mathematical_map"]} == set(
         PROGRAMME_EXPECTATIONS
+    )
+    assert all(
+        row["follow"] == (
+            "python3 scripts/query_corpus.py --route "
+            f"{row['problem_id']}"
+        )
+        for row in packet["problem_map"]
     )
     assert {
         row["intent"] for row in packet["intent_lenses"]
