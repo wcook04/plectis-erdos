@@ -53,37 +53,29 @@ All eight remain open. Pass is mechanism-first:
   not the mixed-sign or arbitrary-support theorem.
 - Base-2 Mersenne achievement sets have measure one; supported sets have a
   finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). Rationality forces sublogarithmic divisor-count zero windows with a support/numerator-dependent constant ([source](Erdos249257/SublogDivisorCoverage.lean#L392)). Neither proves universal #257.
-- **Second-layer #257 normal form.** For `p/q` (`q>0`), a nonempty support
-  omitting `0` exists iff a positive square-root-bounded integer orbit has
-  q-divisible carries and Boolean–Möbius reconstruction of that support
-  ([consumer](ExternalVerification/Challenge.lean#L363); [source](Erdos249257/BooleanMobiusCarry.lean#L949)). It is not a contradiction or universal proof; arbitrary infinite support and `1/2` remain open.
-- **#249's endpoint-facing frontier is conditional.** An actual-LCM orbit is
-  approximated by an odd-rank raw block with an explicit error radius: the
-  separate sufficient (not equivalent) condition
-  `PowerTwoActualLcmOrbitSeparationSupply` would force the existing signed-margin
-  producer and hence irrationality
-  ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
-  quantitative separation supply is unproved, and sign/top-edge information
-  does not supply it. Separately, the finite dyadic kernel has rank `2^e+1`
-  for `e≥1` with an odd-core basis ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); all-base extension needs
-  affine independence, but this is no rationality-to-finite-rank bridge or endpoint solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137):
-  hypothetical rationality gives a positive multiplier and tempered carry with common eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1`
-  for every `e`; modulo a divisor, forcing vanishes and the carry is geometric: no
-  finite-rank contradiction or irrationality proof
+- **Second-layer #257 normal form.** For `p/q` (`q>0`), a nonempty support omitting
+  `0` exists iff a positive square-root-bounded integer orbit has q-divisible
+  carries and Boolean–Möbius support reconstruction ([consumer](ExternalVerification/Challenge.lean#L363); [source](Erdos249257/BooleanMobiusCarry.lean#L949)). This is a characterization, not a contradiction or universal proof; arbitrary infinite support and `1/2` remain open.
+- **Exact #257 half-membership classification.** For the base-2 Mersenne
+  achievement set, `1/2` belongs iff false terminal seam bits occur beyond
+  every bound, equivalently iff explicit upper-or-middle successors or skipped
+  ranks are unbounded ([source](Erdos249257/HalfCylinderHalfMembershipClassification.lean#L126), [upper/middle](Erdos249257/HalfCylinderHalfMembershipClassification.lean#L156), [skips](Erdos249257/HalfCylinderHalfMembershipClassification.lean#L213)). This is only a classification: witness occurrence remains open; it proves neither `1/2` membership nor refutes universal #257.
+- **#249's endpoint-facing frontier is conditional.** The actual-LCM route gives
+  an odd-rank/error-radius reduction; the sufficient (not equivalent)
+  `PowerTwoActualLcmOrbitSeparationSupply` would force irrationality
+  ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its supply
+  is unproved, and sign/top-edge data do not provide it. The finite dyadic
+  kernel has rank `2^e+1` for `e≥1` with an odd-core basis
+  ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); affine independence and
+  a rationality-to-finite-rank bridge remain open. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137) gives, under hypothetical rationality, a positive multiplier, common eventual modular periods, and carry-kernel rank `≥2^e−1`; modulo a divisor the forcing vanishes, so there is no finite-rank contradiction
   ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
-  The diagonal form equates integrality with a full-target foreign-defect hit;
+  diagonal form equates integrality with a full-target foreign-defect hit;
   cofinal misses would prove irrationality, but the supply is open
   ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). A separate
-  public
-  [first-harmonic pivot route](ExternalVerification/Challenge.lean) is now
-  represented in Comparator: `windowFirstExp_sum_eq_pivot_decomposition` and
-  `first_harmonic_gap_of_pivotBudgetAt` expose its four-term decomposition and
-  sufficient `9X/10` certificate budget alongside a conditional cofinal
-  residual-decorrelation endpoint. The supporting
-  `image_pivotSupplierPrimes_eq_pivotFiber` identity and
-  `supplierPrime_not_globally_isolated_counterexample` make the natural
-  friction explicit: a concrete overlap at `X=16` blocks global supplier-prime
-  isolation. The cofinal producer remains open
+  [first-harmonic pivot route](ExternalVerification/Challenge.lean) exposes a
+  four-term decomposition, a sufficient `9X/10` budget, and a conditional
+  cofinal residual-decorrelation endpoint; supplier isolation fails at `X=16`,
+  so its cofinal producer remains open
   ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
@@ -147,7 +139,7 @@ Links name checked routes and limits; reductions are not solutions.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — [bounded-rise obstruction](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean): bounded rises cannot avoid fresh pairwise-coprime moduli as `u`→∞; normalized-vanishing no-go; mixed-sign bridge open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): cofinal non-integrality; [separation](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254): sufficient, supply open; [consumer](ExternalVerification/Challenge.lean#L198): positive corridor, negative survivor, top-edge residue, no separation.
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — [tail equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean): irrationality iff cofinally nonintegral shifts; [classifier](ExternalVerification/Challenge.lean#L245) ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1279)): rationality iff one positive shift is eventually integral; [abstract Comparator normal form](ExternalVerification/Challenge.lean#L258): irrationality iff every positive shift is nonintegral. No prime-tail bridge; #251 open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. A separate [weighted-phase observer](ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109) splits a carry into finite residue and uncontrolled integral coboundary; finite realised span needs an explicit finite-dimensional factorisation. This Comparator-transported family proves no finite-state quotient or irrationality. Irrationality open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — [ray separation/root retention](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean): finite shifts avoid shared rays; strict margins keep roots in the open disc; decay is a checked hypothesis. Invalid saddle block leaves topology/gluing and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — [q-Apéry no-go](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean): n=0 residual < 0 for p>1; [four-jet/Padé obstruction](ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L129): rank-bounded binary selectors collide and row-content barriers remain; [rectangular threshold](ExternalVerification/Challenge.lean#L399): in the explicit two-function model, `0 ≤ ρ` and `1+ρ ≤ σ` imply `hpThreshold ≤ 1/2 − 1/π²`, with equality only at `(0,1)`; 3/2 corridor; 7/2 height bound; no universal Padé theorem, remainder control, or irrationality.
@@ -259,7 +251,7 @@ is the minimal consumer: its conditional shell-pressure example
 leaves the analytic
 hypothesis explicit and does not prove universal #257. Public work
 is clone → orient → choose → work/resume → return an attributable result; see
-[`CONTRIBUTING.md`](CONTRIBUTING.md) and the [`ExternalVerificationPortfolio`](examples/ExternalVerificationPortfolio).
+[`CONTRIBUTING.md`](CONTRIBUTING.md) and the [`ExternalVerification` consumers](ExternalVerification/Challenge.lean).
 
 ## Release identity, licence, and privacy
 
