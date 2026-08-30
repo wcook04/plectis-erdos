@@ -108,10 +108,10 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:5a58bb85bf049c231880802971498f657262d151586ce5afb4ce40c2d6f21d65",
-    "docs/claims.json": "sha256:07e98d8e892a9b65e634bc989d6b8410860d897b464a5468d9bd4ecc8ab5cf89",
+    "docs/claims.json": "sha256:c892fb15045265f45533ccbd692cd7c0234a8afaeb889cb552f2c0f5c7faa3d8",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:e036d61b7a1e8cb292cde09d6043181c129b9914b0153ae44e2912dbd36357a1",
-    "docs/publication_contract.json": "sha256:9c1ca8ff49b0d5d9868eb65fd7ac16346ad53250985a68caefcb9cc99b736ec0",
+    "docs/publication_contract.json": "sha256:0d2243836d266ddb6cda92db0ecd9ffb453bf98a6fc3abb8194bf35d6133231f",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:fdf5c944f1487fd9693482df19dc1a7a2dd98fa74570b8bc2ceeb69178ee22e1",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 21,
-      "curated_claim_count": 103,
+      "curated_claim_count": 104,
       "remaining_open_proposition_count": 5,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
