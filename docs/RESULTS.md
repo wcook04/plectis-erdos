@@ -136,6 +136,13 @@ replacement for claim authority.
   `Erdos249257/TotientMahlerDefect.lean:1380`,
   `Erdos249257/TotientMahlerDefect.lean:1392` — registry:
   dyadic_totient_certificate_interface).
+- For every base `k ≥ 2` and level `e ≥ 1`, an all-base extension has an
+  explicit canonical spanning family; under its stated linear-independence
+  hypothesis, the level-`e` span has dimension `kᵉ + 1`
+  (`finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent`,
+  `Erdos249257/TotientKernelConditional.lean`). The independence is an
+  external affine-ordering input not proved here, and this conditional rank
+  statement does not prove irrationality of `S`.
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
