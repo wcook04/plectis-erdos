@@ -1,0 +1,62 @@
+{
+  "schema": "plectis.third_party_source_redistribution_dispositions.v1",
+  "purpose": "Artifact-level public-release disposition for third-party PDFs, scans, and source archives under docs/primary-sources.",
+  "policy": {
+    "allowed_dispositions": [
+      "public_redistribution_verified",
+      "link_and_digest_only",
+      "operator_permission_required",
+      "unresolved_release_blocker"
+    ],
+    "public_candidate_rule": "Only public_redistribution_verified artifacts may be tracked in the public candidate.",
+    "permission_boundary": "Citation, attribution, retrieval, DOI, arXiv availability, author hosting, and a source archive are not redistribution permission.",
+    "link_and_digest_rule": "When permission is not verified but a stable official route and exact digest exist, preserve the source record and consumer mapping and exclude the binary from the public candidate.",
+    "unresolved_rule": "An artifact without a reproducible official retrieval route or exact digest remains an unresolved_release_blocker until an operator resolves the evidence.",
+    "verified_permission_rule": "A public_redistribution_verified record must include permission_evidence_scope equal to its exact artifact path and a non-empty permission_evidence_locator."
+  },
+  "inventory": {
+    "root": "docs/primary-sources/",
+    "tracked_release_snapshot_count": 0,
+    "working_tree_only_count": 2,
+    "artifact_count": 2,
+    "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
+    "public_candidate_verified_count": 0,
+    "link_and_digest_only_count": 2,
+    "operator_permission_required_count": 0,
+    "unresolved_release_blocker_count": 0
+  },
+  "artifacts": [
+    {
+      "path": "docs/primary-sources/dyadic-carry/wang-2026-v4-source.tar.gz",
+      "sha256": "2d507f030082dc5ca3f661d49fa96925cffe7fbe11287a897ed9b7b2efdfe6c2",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/2606.24972v4"
+      ],
+      "source_record": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
+      "consumer_refs": [
+        "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/dyadic-carry/wang-2026-v4-sparse-polynomial-weighted-expansions.pdf",
+      "sha256": "3a57af1af21e5e9d25793333383d30f89ceadb08c4e2009a1ac497dc118f8b5b",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/pdf/2606.24972v4"
+      ],
+      "source_record": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
+      "consumer_refs": [
+        "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md"
+      ]
+    }
+  ]
+}
