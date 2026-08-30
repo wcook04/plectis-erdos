@@ -1502,8 +1502,8 @@
           "consumer_or_open_obligation": "Future arguments must use growing precision, global correlation, nonlinear arithmetic, or actual fresh-channel structure.",
           "view_decision": "registry_only_after_one_sided_companion_retirement"
         },
-      {
-        "id": "actual_lcm_orbit_and_sign_frontier",
+        {
+          "id": "actual_lcm_orbit_and_sign_frontier",
           "claim_ids": [
             "actual_lcm_orbit_nonintegrality_frontier",
             "actual_lcm_positive_corridor_top_edge"
@@ -11942,8 +11942,8 @@
         "original_declaration": "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
         "original_source": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
         "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
-        "statement": "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality.",
-        "boundary": "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
+        "statement": "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality. The exact initial phase is the scaled-angle character of (2^h - 1) times the series, and the strict-gap route is an orbit of repeated squaring from that phase.",
+        "boundary": "The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
       },
       {
         "id": "totient_carry_anti_compression",
@@ -12411,50 +12411,50 @@
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "boundary": "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows."
-        },
-        {
-          "id": "stern_brocot_cylinder_law",
-          "contribution_class": "formalised exact Stern-Brocot cylinder telescoping identity",
-          "summary": "At every positive Stern-Brocot node, the closed cylinder mass splits into stop mass and the two child cylinders, giving an exact Markov recursion.",
-          "evidence_mode": "Lean kernel plus Comparator",
-          "comparator_disposition": "targeted",
-          "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
-        },
-        {
-          "id": "lcm_factor_ideal_shift_algebra_no_go",
-          "contribution_class": "unconditional progress",
-          "summary": "For every t at least 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds.",
-          "evidence_mode": "Lean kernel plus Comparator",
-          "comparator_disposition": "targeted",
-          "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
-        },
-        {
-          "id": "fixed_precision_transport_no_go",
-          "contribution_class": "unconditional synthetic no-go; novelty unassessed",
-          "summary": "At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints.",
-          "evidence_mode": "Lean kernel plus Comparator",
-          "comparator_disposition": "targeted",
-          "declarations": [
-            "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
-            "Erdos249257.TotientTailPeriodKiller.vu_step_has_centred_completion",
-            "Erdos249257.TotientTailPeriodKiller.vu_word_has_prefix_locked_completion"
-          ],
-          "boundary": "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
-        },
+          },
+          {
+            "id": "stern_brocot_cylinder_law",
+            "contribution_class": "formalised exact Stern-Brocot cylinder telescoping identity",
+            "summary": "At every positive Stern-Brocot node, the closed cylinder mass splits into stop mass and the two child cylinders, giving an exact Markov recursion.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
+          },
+          {
+            "id": "lcm_factor_ideal_shift_algebra_no_go",
+            "contribution_class": "unconditional progress",
+            "summary": "For every t at least 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
+          },
+          {
+            "id": "fixed_precision_transport_no_go",
+            "contribution_class": "unconditional synthetic no-go; novelty unassessed",
+            "summary": "At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
+              "Erdos249257.TotientTailPeriodKiller.vu_step_has_centred_completion",
+              "Erdos249257.TotientTailPeriodKiller.vu_word_has_prefix_locked_completion"
+            ],
+            "boundary": "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
+          },
           {
             "id": "actual_lcm_orbit_separation",
             "contribution_class": "conditional reduction",
             "summary": "A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer. The landed actual-LCM sign/top-edge analysis is supporting and contrary-boundary evidence: positivity leaves the true survivor negative, and integrality forces the exact top-edge residue.",
-          "evidence_mode": "Lean kernel plus Comparator",
-          "comparator_disposition": "targeted",
-          "declarations": [
-            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
-            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
-            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
-            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg",
-            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue",
-            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos"
-          ],
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+              "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
+              "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+              "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg",
+              "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue",
+              "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos"
+            ],
             "boundary": "The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and #249 endpoint remain open."
           },
           {
@@ -12474,20 +12474,20 @@
             "id": "first_harmonic_pivot_decomposition",
             "contribution_class": "conditional reduction",
             "summary": "The supplier fibre is an exact prime-image/fibre bijection, while a checked finite counterexample shows that supplier-prime global isolation fails. The load-bearing result is an exact four-term first-harmonic decomposition; under the explicit PivotBudgetAt budgets, the centred real-part bound and three contribution bounds give the 9X/10 gap and a finite certificate, and the conditional pivot-residual-decorrelation theorem transfers a cofinal supply to irrationality.",
-          "evidence_mode": "Lean kernel plus Comparator",
-          "comparator_disposition": "targeted",
-          "declarations": [
-            "Erdos249257.TotientTailPeriodKiller.mem_pivotFiber_iff_exists_supplierPrime",
-            "Erdos249257.TotientTailPeriodKiller.pivotBaseOfPrime_injective_on_supplierPrimes",
-            "Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber",
-            "Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample",
-            "Erdos249257.TotientTailPeriodKiller.windowFirstExp_sum_eq_pivot_decomposition",
-            "Erdos249257.TotientTailPeriodKiller.PivotBudgetAt",
-            "Erdos249257.TotientTailPeriodKiller.first_harmonic_gap_of_pivotBudgetAt",
-            "Erdos249257.TotientTailPeriodKiller.DTWPivotResidualDecorrelation",
-            "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation"
-          ],
-          "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.TotientTailPeriodKiller.mem_pivotFiber_iff_exists_supplierPrime",
+              "Erdos249257.TotientTailPeriodKiller.pivotBaseOfPrime_injective_on_supplierPrimes",
+              "Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber",
+              "Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample",
+              "Erdos249257.TotientTailPeriodKiller.windowFirstExp_sum_eq_pivot_decomposition",
+              "Erdos249257.TotientTailPeriodKiller.PivotBudgetAt",
+              "Erdos249257.TotientTailPeriodKiller.first_harmonic_gap_of_pivotBudgetAt",
+              "Erdos249257.TotientTailPeriodKiller.DTWPivotResidualDecorrelation",
+              "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation"
+            ],
+            "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
           },
           {
             "id": "strict_prime_tail_orbit_gap",
@@ -12509,9 +12509,15 @@
               "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_iff_initial_phase",
               "ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_of_le",
               "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_phase_one",
-              "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root"
+              "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_zero_eq_scaled_angle",
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+              "ErdosProblems.Erdos249.exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+              "ErdosProblems.Erdos249.cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+              "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift"
             ],
-            "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. The exact squaring and absorbing-dyadic-root lemmas provide phase classification and contrary evidence only; the source does not prove that an actual phase enters a dyadic root. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
+            "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. The scaled-angle and phase/integrality equivalences, finite 1 ≤ h ≤ 16 and k ≤ 14 root exclusion, and non-dyadicity-to-cofinal-nonpositive-phase theorem provide classification or finite evidence only; they do not prove a density/equidistribution theorem, prime alignment, or actual dyadic-root entry. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
           },
           {
             "id": "totient_carry_anti_compression",
@@ -13031,7 +13037,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "Erdős #68",
-        "line": 86
+        "line": 117
       }
     },
     {
@@ -13043,7 +13049,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4265
+        "line": 4428
       }
     },
     {
@@ -13055,7 +13061,7 @@
         "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 87
+        "line": 120
       }
     },
     {
@@ -13067,7 +13073,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4276
+        "line": 4439
       }
     },
     {
@@ -13079,7 +13085,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4300
+        "line": 4463
       }
     },
     {
@@ -13091,7 +13097,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1173
+        "line": 1483
       }
     },
     {
@@ -13103,7 +13109,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4291
+        "line": 4454
       }
     },
     {
@@ -13115,7 +13121,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 125
+        "line": 175
       }
     },
     {
@@ -13127,7 +13133,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 91
+        "line": 132
       }
     },
     {
@@ -13139,7 +13145,7 @@
         "source": "paper/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 84
+        "line": 127
       }
     },
     {
@@ -13151,7 +13157,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 116
+        "line": 161
       }
     }
   ],
@@ -16345,7 +16351,7 @@
       "id": "strict_prime_tail_orbit_gap",
       "label": "Tail-orbit phase-density and natural-prime strict-gap reductions",
       "status": "conditional reduction",
-      "statement": "A uniform 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and hence a finite certificate; alternatively, cofinally many natural prime indices with tail-orbit real part below 9/10 yield adaptive pivot escape. The exact tail phase follows a power-of-two squaring orbit from one initial phase, and an entered dyadic root obstructs that strict-gap producer. The required density, cofinal prime strict-gap, uniform-margin, and actual-root-entry producers are unproved for the actual totient orbit, so no unconditional Erdős #249 result is claimed.",
+      "statement": "A uniform 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and hence a finite certificate; alternatively, cofinally many natural prime indices with tail-orbit real part below 9/10 yield adaptive pivot escape. The exact initial phase is the scaled-angle character of (2^h - 1) times the series, and the tail phase follows a power-of-two squaring orbit from it; phase 1 is equivalent to an integral actual tail difference, while an entered dyadic root obstructs the strict-gap producer.",
       "remaining_open_proposition_ids": [
         "remaining_open.unbounded_certificate_supply"
       ],
@@ -16380,12 +16386,12 @@
         {
           "name": "naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 166
+          "line": 432
         },
         {
           "name": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 205
+          "line": 471
         },
         {
           "name": "tailOrbitFirstExp_succ",
@@ -16405,22 +16411,52 @@
         {
           "name": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 208
+          "line": 278
         },
         {
           "name": "tailOrbitFirstExp_eq_one_of_le",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 224
+          "line": 294
         },
         {
           "name": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 238
+          "line": 308
         },
         {
           "name": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 252
+          "line": 322
+        },
+        {
+          "name": "tailOrbitFirstExp_zero_eq_scaled_angle",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 209
+        },
+        {
+          "name": "tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 221
+        },
+        {
+          "name": "exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 249
+        },
+        {
+          "name": "tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 333
+        },
+        {
+          "name": "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 360
+        },
+        {
+          "name": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 412
         }
       ]
     },
