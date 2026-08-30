@@ -66,10 +66,12 @@ and therefore the unconditional identity and irrationality equivalence
 Problem~\#251 remains open.  Under non-irrationality, the denominator
 decomposition selects a positive fixed shift that is eventually integral but
 not eventually confined to $(-1,1)$.  This is compatible with rationality,
-not a contradiction.  A contradiction would require eventual smallness for
-that shift, or cofinally many adjacent small shifts at indices where the prime
-gaps differ; neither is proved.  Unboundedness and nonperiodicity of the prime
-gaps, although both Lean-checked, do not supply either property.  Indeed, an
+not a contradiction.  The finite obstruction is exact: if two adjacent
+$h$-shifts both lie in $(-1,1)$ and the corresponding prime gaps differ, they
+cannot both be integral.  Thus a contradiction would follow from cofinally
+many such pairs; neither their two smallness inequalities nor that cofinal
+occurrence is proved.  Unboundedness and nonperiodicity of the prime gaps,
+although both Lean-checked, do not supply either property.  Indeed, an
 explicit unbounded, non-eventually-periodic integer sequence has a rational
 dyadic sum, so the missing argument must control the full prime-gap tails
 rather than the coefficients alone.
