@@ -11875,6 +11875,18 @@
         "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
       },
       {
+        "id": "fixed_precision_transport_no_go",
+        "problem": 249,
+        "review_family": "fixed_precision_transport_no_go",
+        "claim_id": "fixed_precision_transport_no_go",
+        "contribution_class": "unconditional synthetic no-go; novelty unassessed",
+        "original_declaration": "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
+        "original_source": "Erdos249257/TropicalCurvatureCarry.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
+        "statement": "For every positive fixed precision, every finite word of odd valuation-unit symbols and every incoming integer carry state admit a compatible orbit whose successive states stay within the corresponding valuation-unit radii; fixed-precision local signatures therefore do not by themselves exclude finite centred completions.",
+        "boundary": "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
+      },
+      {
         "id": "actual_lcm_orbit_separation",
         "problem": 249,
         "review_family": "actual_lcm_orbit_separation",
@@ -12354,6 +12366,19 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
+        },
+        {
+          "id": "fixed_precision_transport_no_go",
+          "contribution_class": "unconditional synthetic no-go; novelty unassessed",
+          "summary": "At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
+            "Erdos249257.TotientTailPeriodKiller.vu_step_has_centred_completion",
+            "Erdos249257.TotientTailPeriodKiller.vu_word_has_prefix_locked_completion"
+          ],
+          "boundary": "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
         },
           {
             "id": "actual_lcm_orbit_separation",
@@ -16107,7 +16132,7 @@
       "id": "fixed_precision_transport_no_go",
       "label": "Fixed-precision valuation-unit no-go theorem",
       "status": "unconditional progress",
-      "statement": "At every fixed positive precision, each finite compatible valuation-unit word has a prefix-locked centred completion. Bounded local signatures alone therefore cannot exclude all finite centred endpoints; growing precision or global information remains possible.",
+      "statement": "At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible carry orbit from an arbitrary incoming integer state, with each successive state within the corresponding valuation-unit radius. Thus bounded local signatures alone cannot exclude all finite centred endpoints; growing precision or global information remains necessary for an endpoint argument.",
       "paper_label": null,
       "readme_headline": false,
       "declarations": [
@@ -16115,6 +16140,16 @@
           "name": "fixedPrecisionTropicalNoGo",
           "module": "Erdos249257/TropicalCurvatureCarry.lean",
           "line": 137
+        },
+        {
+          "name": "vu_step_has_centred_completion",
+          "module": "Erdos249257/TropicalCurvatureCarry.lean",
+          "line": 69
+        },
+        {
+          "name": "vu_word_has_prefix_locked_completion",
+          "module": "Erdos249257/TropicalCurvatureCarry.lean",
+          "line": 115
         }
       ]
     },
