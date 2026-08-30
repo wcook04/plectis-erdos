@@ -21,9 +21,9 @@ The active mathematical notes form a growing problem-by-problem portfolio: Erdő
 
 **Factorial Carries and Finite Channel Obstructions**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 18 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-068.md) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 18 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
-This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [Finite channel congruences and the LCM obstruction](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Weighted projection rigidity](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [The missing cofinal inputs](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
+This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-068.md#sec:problem), [Finite channel congruences and the LCM obstruction](full-text/erdos-068.md#sec:channels), [Weighted projection rigidity](full-text/erdos-068.md#sec:projection), [The missing cofinal inputs](full-text/erdos-068.md#sec:open).
 
 ### Which bounded negative-error behaviours can be excluded for Erdős #243, and which analytic hypotheses still keep it open?
 
@@ -49,7 +49,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction an
 
 This paper states no reading route. Its evidence boundary is in [The wall](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [What the wall does not block](full-text/erdos249-totient-reasoning-surface.md#sec:survivors).
 
-### What tail-shift condition would prove irrationality in Erdős #251, and what prime-gap input is still missing?
+### What tail-shift condition would prove irrationality in Erdős #251, which natural affine schedules provably cannot supply it, and what prime-gap input still survives?
 
 **An Integral-Shift Criterion for Dyadic Tail Recurrences**
 
@@ -85,9 +85,9 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Newton Flow and Critical-Value Ray Separation**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 15 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041.md) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 20 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
-This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-1041-lemniscate-newton-flow.md#sec:problem), [The Newton value equation](full-text/erdos-1041-lemniscate-newton-flow.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [Complements and further questions](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
+This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-1041.md#sec:problem), [The Newton value equation](full-text/erdos-1041.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos-1041.md#sec:gap), [Complements and further questions](full-text/erdos-1041.md#sec:open).
 
 ### Which linear-form constructions fail at the rational base 3/2 for Erdős #1049, and what primitive kernel is still needed?
 
