@@ -302,6 +302,57 @@ class Session:
                         f"invalid workbench ledger row on line {line_number}: "
                         "session_closed must be the final move"
                     )
+                if row["kind"] == "claim":
+                    cited_probe_id = row.get("cited_probe")
+                    if not isinstance(cited_probe_id, str) or not cited_probe_id:
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            "invalid cited_probe"
+                        )
+                    cited_input_sha256 = row.get("cited_input_sha256")
+                    if not isinstance(cited_input_sha256, str) or not SHA256_RE.fullmatch(
+                        cited_input_sha256
+                    ):
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            "invalid cited input hash"
+                        )
+                    if row.get("authority") != "kernel_accepted_probe_receipt":
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            "invalid authority"
+                        )
+                    cited_probe = next(
+                        (
+                            prior
+                            for prior in rows
+                            if prior.get("kind") == "probe"
+                            and prior.get("move_id") == cited_probe_id
+                        ),
+                        None,
+                    )
+                    if cited_probe is None:
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            f"cited probe {cited_probe_id!r} is missing"
+                        )
+                    try:
+                        cited_verdict = _probe_verdict(cited_probe, "ledger claim")
+                    except SystemExit as exc:
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            f"cited probe {cited_probe_id!r} receipt is invalid"
+                        ) from exc
+                    if cited_verdict != "kernel_accepted":
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            f"cited probe {cited_probe_id!r} is not kernel_accepted"
+                        )
+                    if cited_input_sha256 != cited_probe.get("input_sha256"):
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            "cited input hash does not match probe"
+                        )
                 rows.append(row)
         return rows
 

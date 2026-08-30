@@ -689,6 +689,56 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("claim accepted a probe with a noncanonical artifact path")
 
+    forged_claim_session = workbench.Session(sessions_root, "forged-claim")
+    forged_claim_session.probes_dir.mkdir(parents=True)
+    forged_source = "exact artifact\n"
+    (forged_claim_session.probes_dir / "m002.lean").write_text(
+        forged_source, encoding="utf-8"
+    )
+    forged_claim_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    forged_claim_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "input_sha256": workbench._sha256_text(forged_source),
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
+        }
+    )
+    forged_claim_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m003",
+            "kind": "claim",
+            "text": "forged claim",
+            "cited_probe": "m002",
+            "cited_input_sha256": "0" * 64,
+            "authority": "manual_assertion",
+        }
+    )
+    try:
+        workbench.cmd_show(
+            type("Args", (), {"sessions_root": sessions_root, "session": "forged-claim"})(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "invalid authority" not in str(error):
+            raise AssertionError(f"forged claim lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("show accepted a forged claim record")
+
     incomplete_rows = (
         (
             "missing-note-text",
