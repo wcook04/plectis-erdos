@@ -9,6 +9,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPACT = ROOT / "AGENTS.override.md"
+DEEP = ROOT / "AGENTS.md"
+WORKBENCH = ROOT / "docs" / "AGENT_WORKBENCH.md"
 PUBLICATION_ENTRY = ROOT / "docs" / "publication_entry_packet.json"
 
 # Every provider entry file a coding agent may auto-load. Copilot loads
@@ -105,13 +107,42 @@ def main() -> int:
         "Claude Code loads whatever the @ import names"
     )
 
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "[`AGENTS.override.md`](AGENTS.override.md)" in readme
+    deep = DEEP.read_text(encoding="utf-8")
+    assert "[docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md)" in deep
+    assert "[CONTRIBUTING.md](CONTRIBUTING.md)" in deep
+
+    workbench = WORKBENCH.read_text(encoding="utf-8")
+    for paper in (
+        "erdos-68-factorial-denominator-irrationality.pdf",
+        "erdos-243-reciprocal-tail-rigidity.pdf",
+        "erdos-249-binary-totient-series.pdf",
+        "erdos-251-prime-gap-dyadic-series.pdf",
+        "erdos-257-mersenne-support-subseries.pdf",
+        "erdos-269-three-prime-running-lcm.pdf",
+        "erdos-1041-lemniscate-newton-flow.pdf",
+        "erdos-1049-rational-base-lambert.pdf",
+    ):
+        assert paper in workbench, paper
+
+    retired_paragraph = " ".join(
+        next(
+            paragraph
+            for paragraph in workbench.split("\n\n")
+            if "erdos249-257-main-paper.pdf" in paragraph
+        ).split()
+    ).lower()
+    assert "retired" in retired_paragraph
+    assert "archive" in retired_paragraph
+    assert "provenance" in retired_paragraph
+    assert "do not use" in retired_paragraph
+    assert "current gateway" in retired_paragraph
+    assert "default" not in retired_paragraph
+    assert "canonical" not in retired_paragraph
 
     print(
         "compact agent entry: pass "
         f"({len(encoded)} bytes; {len(PROVIDER_ADAPTERS)} provider adapters "
-        "and README converge)"
+        "and deep-agent routes converge)"
     )
     return 0
 
