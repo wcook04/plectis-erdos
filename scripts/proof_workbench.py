@@ -59,11 +59,16 @@ def repo_root() -> Path:
 
 
 def _is_allowed_platform_alias(path: Path) -> bool:
-    """Allow only macOS's system-owned ``/var`` compatibility alias."""
-    if path != Path("/var"):
+    """Allow only macOS's system-owned temporary-directory aliases."""
+    aliases = {
+        Path("/tmp"): Path("/private/tmp"),
+        Path("/var"): Path("/private/var"),
+    }
+    target = aliases.get(path)
+    if target is None:
         return False
     try:
-        return path.resolve(strict=True) == Path("/private/var")
+        return path.resolve(strict=True) == target
     except OSError:
         return False
 

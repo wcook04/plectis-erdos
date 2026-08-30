@@ -68,6 +68,23 @@ def check_session_path_boundaries(tmp: Path) -> None:
         raise AssertionError("traversing session slug received an escaped ledger")
 
 
+def check_platform_temp_alias_boundary() -> None:
+    """Permit only macOS's exact /tmp alias while retaining link rejection."""
+    temporary = Path("/tmp")
+    if temporary.is_symlink():
+        if temporary.resolve(strict=True) != Path("/private/tmp"):
+            raise AssertionError("unexpected /tmp platform alias target")
+        if workbench.path_has_symlink_component(
+            temporary / "proof-workbench-platform-alias" / "session"
+        ):
+            raise AssertionError("the exact macOS /tmp alias was rejected")
+    else:
+        if workbench.path_has_symlink_component(
+            temporary / "proof-workbench-platform-alias" / "session"
+        ):
+            raise AssertionError("a real /tmp directory was rejected")
+
+
 def check_replay_path_boundary(tmp: Path) -> None:
     sessions_root = tmp / "replay-sessions"
     parser = workbench.build_parser(workbench.repo_root())
@@ -1899,6 +1916,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
         check_session_path_boundaries(tmp)
+        check_platform_temp_alias_boundary()
         check_replay_path_boundary(tmp)
         check_replay_receipt_boundary(tmp)
         check_replay_runner_failure(tmp)

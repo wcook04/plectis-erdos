@@ -278,7 +278,8 @@ def output_path_has_symlink_component(path: Path) -> bool:
     the session tree used by :func:`has_symlink_component`.  Walk the absolute
     path from its filesystem root so a dangling output link or a linked parent
     cannot redirect package writes outside the requested destination.  macOS's
-    canonical ``/var`` alias is the one harmless platform link we preserve.
+    canonical ``/tmp`` and ``/var`` aliases are harmless platform links we
+    preserve after verifying their exact private targets.
     """
     candidate = Path(os.path.abspath(path))
     current = Path(candidate.anchor)
@@ -287,13 +288,18 @@ def output_path_has_symlink_component(path: Path) -> bool:
         if not current.is_symlink():
             continue
         try:
-            is_var_alias = (
-                current == Path("/var")
-                and current.resolve(strict=True) == Path("/private/var")
+            platform_aliases = {
+                Path("/tmp"): Path("/private/tmp"),
+                Path("/var"): Path("/private/var"),
+            }
+            alias_target = platform_aliases.get(current)
+            is_platform_alias = (
+                alias_target is not None
+                and current.resolve(strict=True) == alias_target
             )
         except OSError:
-            is_var_alias = False
-        if not is_var_alias:
+            is_platform_alias = False
+        if not is_platform_alias:
             return True
         current = current.resolve(strict=True)
     return False
