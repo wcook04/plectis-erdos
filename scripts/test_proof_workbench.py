@@ -148,6 +148,24 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
         assert rejected["kernel_receipt"]["verdict"] == (
             "kernel_rejected"
         )
+        linked = tmp / "linked.lean"
+        linked.symlink_to(good)
+        refused_symlink = False
+        try:
+            _run(
+                sessions_root,
+                [
+                    "probe",
+                    "--session",
+                    "t_claims",
+                    "--file",
+                    str(linked),
+                ],
+            )
+        except SystemExit as error:
+            refused_symlink = "symbolic links" in str(error)
+        assert refused_symlink, "probe followed a symlinked source path"
+        assert not (sessions_root / "t_claims" / "probes" / "m004.lean").exists()
         claim = _run(
             sessions_root,
             [

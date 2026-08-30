@@ -25,6 +25,7 @@ import argparse
 import datetime as _dt
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -46,6 +47,30 @@ PROBE_TIMEOUT_SECONDS = 600
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
+
+
+def _is_allowed_platform_alias(path: Path) -> bool:
+    """Allow only macOS's system-owned ``/var`` compatibility alias."""
+    if path != Path("/var"):
+        return False
+    try:
+        return path.resolve(strict=True) == Path("/private/var")
+    except OSError:
+        return False
+
+
+def path_has_symlink_component(path: Path) -> bool:
+    """Reject probe sources that could redirect durable evidence elsewhere."""
+    current = Path(os.path.abspath(path))
+    while True:
+        if current.is_symlink():
+            if _is_allowed_platform_alias(current):
+                current = current.resolve(strict=True)
+            else:
+                return True
+        if current.parent == current:
+            return False
+        current = current.parent
 
 
 def _utc_now() -> str:
@@ -238,6 +263,10 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     if not session.exists():
         raise SystemExit(f"unknown session: {args.session}")
     source_path = Path(args.file)
+    if path_has_symlink_component(source_path):
+        raise SystemExit(
+            f"probe input path must not traverse symbolic links: {source_path}"
+        )
     if not source_path.is_file():
         raise SystemExit(f"probe input not found: {source_path}")
     source = source_path.read_text(encoding="utf-8")
