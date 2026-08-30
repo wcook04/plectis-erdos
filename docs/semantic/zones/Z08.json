@@ -636,6 +636,11 @@
           "declaration": "tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
           "line": 66
+        },
+        {
+          "declaration": "tailOrbitFirstExp_succ",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 167
         }
       ],
       "concepts": [
@@ -2007,6 +2012,13 @@
       "module": "Erdos249257/PivotAntiReconstruction.lean",
       "line": 66,
       "role": "statement",
+      "statement_node": "tail_orbit_equals_scaled_series_orbit"
+    },
+    {
+      "declaration": "tailOrbitFirstExp_succ",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "line": 167,
+      "role": "engine",
       "statement_node": "tail_orbit_equals_scaled_series_orbit"
     },
     {
