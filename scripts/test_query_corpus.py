@@ -703,6 +703,25 @@ def validate_route_memory_cards() -> None:
         "erdos249_certificate_story"
     ) in source_card
 
+    architecture_card = query_corpus.render_card(
+        query_corpus.publication_architecture_packet()
+    )
+    assert architecture_card.startswith(
+        "publication architecture | gateway=paper/erdos249-257-main-paper.tex "
+        "| retained_companions=2 | families=21"
+    )
+    assert (
+        "family_route | classical_full_support_and_named_257_families "
+        "| resume=python3 scripts/query_route_memory.py --problem 257 --route "
+        "structured_support_families"
+    ) in architecture_card
+    assert (
+        "family_route | erdos249_quantitative_headline "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in architecture_card
+    assert "family_route | largest_skip_and_reset_deficit_frontier" not in architecture_card
+
 
 def validate_connection_query_ranking() -> None:
     packet = query_corpus.connection_card(

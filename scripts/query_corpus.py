@@ -7233,12 +7233,22 @@ def render_card(packet: dict[str, Any]) -> str:
         return _append_route_memory_resumes(card, packet.get("route_memory"))
     if kind == "publication_architecture":
         architecture = packet["architecture"]
-        return (
+        card = (
             f"publication architecture | gateway="
             f"{architecture['canonical_gateway']['source']} "
             f"| retained_companions={len(architecture['retained_companions'])} "
             f"| families={len(packet['family_index'])}"
         )
+        rows = [card]
+        for family in packet.get("family_index", []):
+            commands = _route_memory_resume_commands(family.get("route_memory"))
+            if not commands:
+                continue
+            row = f"family_route | {family['id']}"
+            for command in commands:
+                row += f" | resume={command}"
+            rows.append(row)
+        return "\n".join(rows)
     if kind == "repository_overview":
         coverage = packet["coverage_receipt"]
         return "\n".join(
