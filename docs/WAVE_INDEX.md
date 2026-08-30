@@ -80,11 +80,17 @@ since gcd-divisibility factorises across independent coordinates. Yields
 `L₂(μ) = S − 1/2`, the gcd-moment ladder, and Pillai's gcd-sum function.
 The exact family return is the [probabilistic gcd-geometry route](SOURCE_MAP.md#complete-eight-problem-return-matrix):
 the [totient gcd-moment declaration](../Erdos249257/GcdMomentCalculus.lean#L235)
-and [Stern–Brocot run-stability declaration](../Erdos249257/SternBrocotRunGeometry.lean#L343)
+and
+the [Stern–Brocot cylinder recursion](../Erdos249257/GcdMomentCalculus.lean#L474),
+[cylinder remainder bound](../Erdos249257/GcdMomentCalculus.lean#L525), and
+[run-stability declaration](../Erdos249257/SternBrocotRunGeometry.lean#L343)
 return to the paper's [probability-coordinate appendix](papers/full-text/erdos249-257-main-paper.md#app:lambert-probability),
 with the stable records `res:directionnormalization`, `res:sternbrocotcylinders`,
-and `res:sternbrocotruns`. These exact identities and combinatorial bounds do
-not close the open #249 irrationality or unbounded-certificate obligations.
+and `res:sternbrocotruns`. The cylinder-law family is also directly recoverable
+through `python3 scripts/query_corpus.py --claim stern_brocot_cylinder_law`,
+which returns the `probabilistic_gcd_geometry` route and its source-fingerprinted
+resume handoff. These exact identities and combinatorial bounds do not close
+the open #249 irrationality or unbounded-certificate obligations.
 
 ### Wave 21 — `TotientTailPeriodKiller.lean`
 
