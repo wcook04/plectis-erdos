@@ -503,9 +503,8 @@ def test_strict_prime_cross_problem_source_route_is_rejected() -> None:
         try:
             handoffs.source_current_supports(question)
         except ValueError as error:
-            require(
-                "routes source declaration outside" in str(error),
-                f"unexpected cross-problem rejection: {error}",
+            assert "routes source declaration outside" in str(error), (
+                f"unexpected cross-problem rejection: {error}"
             )
         else:
             raise AssertionError("cross-problem source route was accepted")

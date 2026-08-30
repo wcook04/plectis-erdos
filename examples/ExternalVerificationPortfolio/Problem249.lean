@@ -53,6 +53,48 @@ example
   Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply
     hsupply
 
+/-! ## Rational carry: quotient periodicity versus rational-rank growth -/
+
+#check Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+#check Erdos249257.totient_forcing_vanishes_mod_of_dvd_multiplier
+#check Erdos249257.totient_carry_modEq_geometric_of_dvd_multiplier
+#check Erdos249257.carrySectionsEventuallyPeriodicMod_of_shift_dvd
+#check Erdos249257.finrank_canonicalCarryKernel_ge
+
+/-
+Under hypothetical rationality, the exact carry construction produces one
+positive multiplier `v` and one tempered integral carry `u`.  Every dyadic
+section of `u` is eventually periodic modulo `v` with one common period and
+threshold, while its canonical section span has rational rank at least
+`2^e - 1` at every level `e`.
+
+The two conclusions deliberately live in different categories.  Reduction
+modulo any divisor of `v` erases the totient forcing and leaves a geometric
+orbit, so quotient periodicity cannot be promoted to a finite rational-rank
+bound.  The theorem is therefore a carry anti-compression boundary, not a
+contradiction: no finite-rank upper bound for the rationality-supplied carry is
+known, and no unconditional irrationality or Erdős #249 endpoint follows.
+-/
+example
+    (hirr :
+      ¬ Irrational
+        (Erdos249257.ExternalVerification.binaryCoeffSeries Nat.totient)) :
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      Erdos249257.ExternalVerification.IsTemperedBinaryOrbit
+          Nat.totient v u ∧
+        (∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range
+                  (Erdos249257.ExternalVerification.canonicalCarryKernelFamily
+                    u e)))) ∧
+        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+          Erdos249257.ExternalVerification.CarrySectionsEventuallyPeriodicMod
+            v h N₀ u :=
+  Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+    hirr
+
 /-! ## Natural-prime phase dynamics and strict-gap endpoint route -/
 
 #check ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap
@@ -107,8 +149,9 @@ conditional endpoint beside actual-LCM separation.
 The global non-dyadicity, `11/100` nonpositive-block density, and cofinal
 prime-alignment supplies remain open.  In particular, cofinal nonpositive
 occurrence at unrestricted indices does not imply either of the latter two
-producers.  This consumer therefore makes no unconditional #249, novelty, or
-priority claim.
+producers.  Both the nonpositive-block density and the cofinal prime strict-gap supply remain open.
+This consumer therefore makes no unconditional #249,
+novelty, or priority claim.
 -/
 example
     (hgap : Erdos249257.ExternalVerification.DTWNaturalPrimeTailOrbitStrictGap) :
