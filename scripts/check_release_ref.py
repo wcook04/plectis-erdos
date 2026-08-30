@@ -129,7 +129,7 @@ def run(
         if sys.version_info[:2] < MINIMUM_PYTHON:
             raise SnapshotError(
                 "clean release validation requires Python 3.11 or newer; "
-                f"active interpreter is {sys.version_info.major}.{sys.version_info.minor}"
+                f"active interpreter is {sys.version_info[0]}.{sys.version_info[1]}"
             )
         # PATH is intentionally reduced to /bin:/usr/bin for Git isolation.
         # Reusing the validated driver prevents that safety boundary from

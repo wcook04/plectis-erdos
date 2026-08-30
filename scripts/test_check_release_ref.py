@@ -214,6 +214,19 @@ def test_release_python_commands_reuse_driver_interpreter() -> None:
     )
 
 
+def test_release_python_commands_reject_unsupported_driver() -> None:
+    """An old outer Python must fail before a misleading clean-clone run."""
+    with patch.object(check_release_ref.sys, "version_info", (3, 10)):
+        try:
+            check_release_ref.run(
+                ["python3", "scripts/check_release.py"], cwd=Path("/fixture")
+            )
+        except check_release_ref.SnapshotError as error:
+            require("Python 3.11 or newer" in str(error), str(error))
+        else:
+            raise AssertionError("unsupported release interpreter was accepted")
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -253,6 +266,7 @@ def main() -> int:
     test_singleflight_worker_flag_is_accepted()
     test_commit_ref_resolution_ends_git_options()
     test_release_python_commands_reuse_driver_interpreter()
+    test_release_python_commands_reject_unsupported_driver()
     original_root = check_release_ref.ROOT
     try:
         with tempfile.TemporaryDirectory() as tmp:
