@@ -96,6 +96,12 @@ explicit nonnegative weighted deficit.  This identifies the hard mechanism
 behind the finite curvature probes, but proves no cofinal deficit bound and
 therefore no irrationality theorem.
 
+On a finite family of distinct primes, a square-CRT base can also suppress
+the prime-dilation correction throughout a prescribed finite horizon.  The
+result is exact but local: clean blocks can have either vanishing or nonzero
+coefficients, so correction suppression alone does not produce an unbounded
+certificate family.
+
 Let $\Stot=\sum_{n\ge1}\ph(n)/2^n$.  A rational value would induce a tempered
 integral tail orbit whose dyadic sections through level $e$ have rank at least
 $2^e-1$; no conflicting upper bound is proved.  Independently, every rational
@@ -396,6 +402,31 @@ finite curvature-loss budget, not an irrationality proof.
 \mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{91}{endpointFreshDeficit_nonneg}{endpoint nonnegativity},
 \mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{184}{finiteForeignChannelIncrement_eq_endpointFreshDeficit_sub}{foreign-channel identity},
 \mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{269}{oldFivePoint_sub_secondBranchAdverseDeficit_le_actual}{five-point loss bound}.}
+
+\item\label{res:squarecrt} \stag{proved here}
+\textbf{Finite square-CRT correction suppression.}  Let \(E\) be a finite
+family of distinct primes \(p_i\), with anchors \(A_i\), and let \(J<p_i\) for
+every \(i\in E\).  A common square-CRT base \(n\) can be chosen with
+\[
+ n<\left(\prod_{i\in E}p_i^2\right)(\sup_{i\in E}A_i+2),
+ \qquad n=A_i+p_i^2t_i
+\]
+for suitable \(t_i\).  Therefore every \(1\le h\le J\) obeys
+\[
+ \ph(n+p_i h-A_i)=(p_i-1)\ph(p_i t_i+h).
+\]
+The congruence removes the \(p_i\)-divisibility correction on the whole
+finite horizon, simultaneously across the family.  Checked regression
+witnesses show why this is not already a separation theorem: one clean block
+has both displayed coefficients zero (at base \(52\)), while another clean
+block has a displayed coefficient \(-4\) (at base \(27\)).  Thus the CRT
+mechanism controls a finite local error term but supplies neither a cofinal
+gap nor an irrationality criterion.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/SquareCRTCube.lean}{297}{exists_squareCRT_clean_totient_family}{simultaneous finite family},
+\mword{Erdos249257/SquareCRTCube.lean}{327}{exists_squareCRT_clean_horizon}{finite horizon},
+\mword{Erdos249257/SquareCRTCube.lean}{459}{squareCRT_clean_block_can_vanish}{vanishing block},
+\mword{Erdos249257/SquareCRTCube.lean}{477}{squareCRT_clean_block_can_be_nonzero}{nonzero block}.}
 
 \item\label{res:periodic} \stag{unconditional progress}
 \textbf{Eventually periodic weights are settled.}  For every integer base
@@ -852,6 +883,31 @@ irrationality proof.
 \mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{171}{diagonalHeightIncrement_eq_old_add_endpointFreshDeficits}{diagonal split},
 \mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{184}{finiteForeignChannelIncrement_eq_endpointFreshDeficit_sub}{foreign-channel identity},
 \mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{269}{oldFivePoint_sub_secondBranchAdverseDeficit_le_actual}{five-point loss bound}.}
+
+\paragraph{Finite square-CRT correction suppression.}
+Let \(E\) be a finite family of distinct primes \(p_i\), with anchors \(A_i\),
+and let \(J<p_i\) for every \(i\in E\).  The checked square-CRT construction
+produces a common base \(n\), with
+\[
+ n<\left(\prod_{i\in E}p_i^2\right)(\sup_{i\in E}A_i+2),
+ \qquad n=A_i+p_i^2t_i
+\]
+for suitable \(t_i\) at each index.  Therefore every \(1\le h\le J\) obeys
+\[
+ \ph(n+p_i h-A_i)=(p_i-1)\ph(p_i t_i+h).
+\]
+The congruence has removed the \(p_i\)-divisibility correction on the whole
+finite horizon, simultaneously across the family.  The formal regression
+witnesses show why this is not already a separation theorem: one clean block
+has both displayed coefficients zero (at base \(52\)), while another clean
+block has a displayed coefficient \(-4\) (at base \(27\)).  Thus the CRT
+mechanism controls a finite local error term but supplies neither a cofinal
+gap nor an irrationality criterion.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/SquareCRTCube.lean}{297}{exists_squareCRT_clean_totient_family}{simultaneous finite family},
+\mword{Erdos249257/SquareCRTCube.lean}{327}{exists_squareCRT_clean_horizon}{finite horizon},
+\mword{Erdos249257/SquareCRTCube.lean}{459}{squareCRT_clean_block_can_vanish}{vanishing block},
+\mword{Erdos249257/SquareCRTCube.lean}{477}{squareCRT_clean_block_can_be_nonzero}{nonzero block}.}
 
 \section{Obstructions for fixed-coordinate methods}\label{sec:nogo}
 
