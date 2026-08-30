@@ -7,6 +7,7 @@ import copy
 import json
 import os
 import re
+import stat
 from pathlib import Path
 from typing import Any
 
@@ -36,6 +37,31 @@ def path_has_symlink_component(path: Path) -> bool:
         if current.parent == current:
             return False
         current = current.parent
+
+
+def read_regular_bytes(path: Path) -> bytes:
+    """Read the identity authority through a no-follow regular-file descriptor."""
+    flags = os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(path, flags)
+    except OSError as exc:
+        raise IdentityError(f"could not open repository identity safely: {exc}") from exc
+    try:
+        metadata = os.fstat(descriptor)
+        if not stat.S_ISREG(metadata.st_mode):
+            raise IdentityError(
+                "could not load repository identity: path must be a regular file"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                return b"".join(chunks)
+            chunks.append(chunk)
+    finally:
+        os.close(descriptor)
 
 
 def _string(value: Any, field: str) -> str:
@@ -155,8 +181,8 @@ def load_identity(path: Path = DEFAULT_IDENTITY_PATH) -> dict[str, Any]:
             "could not load repository identity: path must not traverse symbolic links"
         )
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        value = json.loads(read_regular_bytes(path).decode("utf-8"))
+    except (IdentityError, OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise IdentityError(f"could not load repository identity: {exc}") from exc
     return validate_identity(value)
 
