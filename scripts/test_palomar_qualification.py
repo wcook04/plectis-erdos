@@ -168,7 +168,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         for row in showcase["frontier_by_problem"]
         for name in row["comparator_declarations"]
     ]
-    assert len(names) == 42
+    assert len(names) == 44
     assert len(names) == len(set(names))
     assert [row["problem"] for row in showcase["frontier_by_problem"]] == [68, 243, 249, 251, 257, 269, 1041, 1049]
     assert showcase["candidate_selection"]["declaration"] in names
@@ -321,6 +321,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "actual_lcm_positive_corridor_top_edge",
         "erdos251_integral_tail_classification",
         "erdos1049_four_jet_pade_obstruction",
+        "erdos257_boolean_mobius_carry",
+        "erdos249_carry_anti_compression",
     }
     assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
     assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
@@ -347,7 +349,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         if row["comparator_eligibility"]
         == "committed_source_transport_pending_comparator_registration"
     }
-    assert set(pending) == {"erdos257_boolean_mobius_carry", "erdos249_carry_anti_compression"}
+    assert set(pending) == set()
     row = landscape_by_id["erdos251_integral_tail_classification"]
     assert row["family_id"] == "dyadic_tail_integrality_classification"
     assert row["disposition"] == "represented"
@@ -386,10 +388,13 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert boolean["family_id"] == "boolean_mobius_carry"
     assert boolean["disposition"] == "represented"
     assert boolean["prior_disposition"] == "deferred"
-    assert boolean["comparator_eligibility"] == (
-        "committed_source_transport_pending_comparator_registration"
+    assert boolean["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert boolean["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert boolean["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
     )
-    assert boolean["queue_role"] == "source_landscape_review_not_comparator_evidence"
+    assert boolean["comparator_declaration"] in comparator["theorem_names"]
+    assert boolean["supporting_comparator_declarations"] == []
     assert "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry" in boolean["source_declaration"]
     assert boolean["source_transport_commit"] == "712bc4c3928fef394a6fe96142e593ddc95c1ded"
     assert boolean["transport_declarations"] == [
@@ -404,9 +409,13 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     anti = landscape_by_id["erdos249_carry_anti_compression"]
     assert anti["family_id"] == "totient_carry_anti_compression"
     assert anti["disposition"] == "represented"
-    assert anti["comparator_eligibility"] == (
-        "committed_source_transport_pending_comparator_registration"
+    assert anti["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert anti["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert anti["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
     )
+    assert anti["comparator_declaration"] in comparator["theorem_names"]
+    assert anti["supporting_comparator_declarations"] == []
     assert anti["source_transport_commit"] == "4932144ada05d6c617f43a372ede18a56900df7b"
     assert anti["transport_declarations"] == [
         "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
