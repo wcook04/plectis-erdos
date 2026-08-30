@@ -360,6 +360,13 @@ theorem exists_shifted_odd_tail_nat_states_of_support_fraction
       (∀ n : ℕ, u n ≡ p.toNat * 2 ^ n [MOD v]) :=
   (portfolioClaims Unit).problem257ShiftedOddTailNatStates A hA p c v hv hvalue
 
+theorem exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
+    (p : ℤ) (q : ℕ) (hq : 0 < q) :
+    (∃ A : Set ℕ, 0 ∉ A ∧ (∃ a : ℕ, 0 < a ∧ a ∈ A) ∧
+        erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) ↔
+      ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U :=
+  (portfolioClaims Unit).problem257BooleanMobiusCarry p q hq
+
 theorem supportCoeff_mul_eq_add_defect
     (A : Set ℕ) {a x : ℕ} (ha : a ∈ A) (ha0 : 0 < a) (hx0 : 0 < x) :
     supportCoeff A (a * x) =

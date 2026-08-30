@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import ExternalVerification.Statements
+import Erdos249257.BooleanMobiusCarry
 import Erdos249257.GreedyAchievementSet
 import Erdos249257.GcdMomentCalculus
 import Erdos249257.LcmFactorIdealPulseObstruction
@@ -560,6 +561,46 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.binaryCoeffTail] using
       Erdos249257.exists_shifted_odd_tail_nat_states_of_support_fraction
         A hA p c v hv hvalue
+  · intro p q hq
+    constructor
+    · intro h
+      have hsource :
+          (∃ A : Set ℕ, 0 ∉ A ∧ (∃ a : ℕ, 0 < a ∧ a ∈ A) ∧
+            Erdos249257.erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) := by
+        simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using h
+      rcases
+          (Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
+            p q hq).mp hsource with ⟨U, hU⟩
+      refine ⟨U, ?_⟩
+      refine
+        { initial := hU.initial
+          positive := hU.positive
+          sqrtBound := hU.sqrtBound
+          divisible := hU.divisible
+          mobiusBoolean := ?_ }
+      intro n hn
+      simpa [carryQuotientAF, carryQuotient,
+        Erdos249257.carryQuotientAF, Erdos249257.carryQuotient] using
+        hU.mobiusBoolean n hn
+    · rintro ⟨U, hU⟩
+      have hsource :
+          ∃ U : ℕ → ℤ,
+            Erdos249257.BooleanMobiusCarryCertificate p q U := by
+        refine ⟨U, ?_⟩
+        refine
+          { initial := hU.initial
+            positive := hU.positive
+            sqrtBound := hU.sqrtBound
+            divisible := hU.divisible
+            mobiusBoolean := ?_ }
+        intro n hn
+        simpa [carryQuotientAF, carryQuotient,
+          Erdos249257.carryQuotientAF, Erdos249257.carryQuotient] using
+          hU.mobiusBoolean n hn
+      have hresult :=
+        (Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
+          p q hq).mpr hsource
+      simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using hresult
   · intro A a x ha ha0 hx0
     simpa [supportCoeff, compositeDilationDefect,
       Erdos249257.supportCoeff,

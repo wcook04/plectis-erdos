@@ -13,6 +13,7 @@ import Mathlib.Data.ZMod.Basic
 import Mathlib.GroupTheory.OrderOfElement
 import Mathlib.LinearAlgebra.Dimension.Constructions
 import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+import Mathlib.NumberTheory.ArithmeticFunction.Moebius
 import Mathlib.NumberTheory.Real.Irrational
 
 /-!
@@ -264,6 +265,30 @@ noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
 
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
+
+/-! ## Boolean–Möbius carry certificate -/
+
+/-- The integer carry quotient extracted from a scaled binary orbit. -/
+def carryQuotient (q : ℕ) (U : ℕ → ℤ) (n : ℕ) : ℤ :=
+  if n = 0 then 0 else (2 * U (n - 1) - U n) / (q : ℤ)
+
+/-- The carry quotient packaged as an integer-valued arithmetic function. -/
+def carryQuotientAF (q : ℕ) (U : ℕ → ℤ) : ArithmeticFunction ℤ :=
+  ⟨carryQuotient q U, by simp [carryQuotient]⟩
+
+/-- A quotient-only rational-support certificate: positive and
+square-root-bounded, with divisible carry differences and Boolean Möbius
+transform.  The support is reconstructed from that transform in the source
+theorem; it is not supplied as an extra hypothesis here. -/
+structure BooleanMobiusCarryCertificate (p : ℤ) (q : ℕ) (U : ℕ → ℤ) : Prop where
+  initial : U 0 = p
+  positive : ∀ N : ℕ, 0 < U N
+  sqrtBound : ∀ N : ℕ, (U N : ℝ) ≤
+    (q : ℝ) * (2 * Real.sqrt (N : ℝ) + 4)
+  divisible : ∀ N : ℕ, (q : ℤ) ∣ 2 * U N - U (N + 1)
+  mobiusBoolean : ∀ n : ℕ, 0 < n →
+    (ArithmeticFunction.moebius * carryQuotientAF q U) n = 0 ∨
+      (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1
 
 /-! ## Orthogonal-petal sunflower conditional interface -/
 
@@ -865,6 +890,12 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
           (∀ n : ℕ, u (n + 1) +
             v * supportCoeff A (c + n + 1) = 2 * u n) ∧
           (∀ n : ℕ, u n ≡ p.toNat * 2 ^ n [MOD v])
+  problem257BooleanMobiusCarry :
+    ∀ (p : ℤ) (q : ℕ),
+      0 < q →
+      ((∃ A : Set ℕ, 0 ∉ A ∧ (∃ a : ℕ, 0 < a ∧ a ∈ A) ∧
+          erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) ↔
+        ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U)
   problem257CompositeDilationDefect :
     ∀ (A : Set ℕ) {a x : ℕ},
       a ∈ A →
