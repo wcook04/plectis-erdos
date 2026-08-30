@@ -158,6 +158,74 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("workbench accepted malformed ledger JSON")
 
+    receipt_session = workbench.Session(sessions_root, "malformed-receipt")
+    receipt_session.directory.mkdir(parents=True)
+    rows = [
+        {"schema": workbench.SESSION_SCHEMA, "move_id": "m001", "kind": "session_opened"},
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "input_sha256": "x",
+            "kernel_receipt": "corrupt",
+        },
+    ]
+    separator = chr(10)
+    receipt_session.ledger_path.write_text(
+        separator.join(json.dumps(row) for row in rows) + separator,
+        encoding="utf-8",
+    )
+    commands = (
+        (
+            "show",
+            lambda: workbench.cmd_show(
+                type("Args", (), {"sessions_root": sessions_root, "session": "malformed-receipt"})(),
+                workbench.repo_root(),
+            ),
+        ),
+        (
+            "close",
+            lambda: workbench.cmd_close(
+                type(
+                    "Args",
+                    (),
+                    {
+                        "sessions_root": sessions_root,
+                        "session": "malformed-receipt",
+                        "outcome": "open",
+                        "summary": "malformed receipt",
+                    },
+                )(),
+                workbench.repo_root(),
+            ),
+        ),
+        (
+            "claim",
+            lambda: workbench.cmd_claim(
+                type(
+                    "Args",
+                    (),
+                    {
+                        "sessions_root": sessions_root,
+                        "session": "malformed-receipt",
+                        "probe": "m002",
+                        "text": "must refuse",
+                    },
+                )(),
+                workbench.repo_root(),
+            ),
+        ),
+    )
+    for action, command in commands:
+        try:
+            command()
+        except SystemExit as error:
+            if "invalid kernel receipt" not in str(error):
+                raise AssertionError(f"{action} lacked a bounded receipt diagnostic: {error}")
+        else:
+            raise AssertionError(f"{action} accepted a malformed kernel receipt")
+
 
 def check_session_lifecycle(sessions_root: Path) -> None:
     opened = _run(

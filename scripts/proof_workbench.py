@@ -222,6 +222,12 @@ class Session:
                     raise SystemExit(
                         f"invalid workbench ledger row on line {line_number}: expected an object"
                     )
+                if not isinstance(row.get("move_id"), str) or not isinstance(
+                    row.get("kind"), str
+                ):
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: move_id and kind are required"
+                    )
                 rows.append(row)
         return rows
 
@@ -244,6 +250,17 @@ def _base_record(session: Session, kind: str) -> dict[str, Any]:
         "at": _utc_now(),
         "kind": kind,
     }
+
+
+def _probe_verdict(row: dict[str, Any], action: str) -> str:
+    """Read a probe verdict only when the durable receipt has a safe shape."""
+    receipt = row.get("kernel_receipt")
+    verdict = receipt.get("verdict") if isinstance(receipt, dict) else None
+    if not isinstance(verdict, str):
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} has an invalid kernel receipt"
+        )
+    return verdict
 
 
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
@@ -329,7 +346,7 @@ def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         raise SystemExit(
             f"claim refused: no probe move {args.probe} in session"
         )
-    verdict = cited["kernel_receipt"]["verdict"]
+    verdict = _probe_verdict(cited, "claim")
     if verdict != "kernel_accepted":
         raise SystemExit(
             "claim refused: cited probe verdict is"
@@ -355,21 +372,17 @@ def cmd_close(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     counts: dict[str, int] = {}
     for row in moves:
         counts[row["kind"]] = counts.get(row["kind"], 0) + 1
+    accepted_probes = 0
+    for row in moves:
+        if row["kind"] == "probe" and _probe_verdict(row, "close") == "kernel_accepted":
+            accepted_probes += 1
     record = _base_record(session, "session_closed")
     record.update(
         {
             "outcome": args.outcome,
             "summary": args.summary,
             "move_counts": counts,
-            "kernel_accepted_probes": len(
-                [
-                    row
-                    for row in moves
-                    if row.get("kind") == "probe"
-                    and row["kernel_receipt"]["verdict"]
-                    == "kernel_accepted"
-                ]
-            ),
+            "kernel_accepted_probes": accepted_probes,
         }
     )
     return session.append(record)
@@ -493,7 +506,7 @@ def cmd_show(args: argparse.Namespace, root: Path) -> dict[str, Any]:
             entry["text"] = row["text"]
         elif row["kind"] == "probe":
             entry["label"] = row.get("label")
-            entry["verdict"] = row["kernel_receipt"]["verdict"]
+            entry["verdict"] = _probe_verdict(row, "show")
         elif row["kind"] == "claim":
             entry["text"] = row["text"]
             entry["cited_probe"] = row["cited_probe"]
