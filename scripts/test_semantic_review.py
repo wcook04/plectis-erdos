@@ -6,12 +6,15 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from copy import deepcopy
 from pathlib import Path
+from unittest.mock import patch
 
 from semantic_review import apply_review_registry, relation_subject_id, subject_digest
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -21,6 +24,13 @@ CEILING = (
     "Checked canonical wording against cited public Lean signatures and status "
     "boundaries; not Lean proof authority, novelty review, or human review."
 )
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep the environment contract active when Python is run with -O."""
+    if not condition:
+        raise AssertionError(message)
 
 
 def fixtures() -> tuple[dict, dict, dict]:
@@ -77,6 +87,69 @@ def fixtures() -> tuple[dict, dict, dict]:
     return node, relation, registry
 
 
+def run_query(*args: str) -> subprocess.CompletedProcess[str]:
+    """Run the semantic query without ambient checkout state or hangs."""
+    return subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "query_semantic.py"),
+            *args,
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
+
+
+def check_query_environment() -> None:
+    """Prove semantic review queries ignore hostile inherited selectors."""
+    hostile_environment = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "refs/namespaces/wrong-review",
+        "GIT_REPLACE_REF_BASE": "refs/replace/",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = subprocess.CompletedProcess(
+        [sys.executable, "scripts/query_semantic.py"],
+        0,
+        stdout='{"coverage": {"reviewed_statement_nodes": 0, "reviewed_relations": 0}, "results": []}',
+        stderr="",
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(subprocess, "run", return_value=completed) as run:
+            observed = run_query("semantic-reviews", "Z00::sample")
+
+    require(observed is completed, "semantic query result was not returned")
+    require(len(run.call_args_list) == 1, "semantic query was not exercised")
+    kwargs = run.call_args.kwargs
+    sanitized = kwargs["env"]
+    for key in (
+        "GIT_DIR",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+        "PYTHONPATH",
+    ):
+        require(key not in sanitized, f"ambient {key} leaked into semantic query")
+    require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale missing")
+    require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
+    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into semantic query")
+    require(
+        kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "semantic query timeout drifted",
+    )
+    require(
+        ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "semantic review environment contract drifted",
+    )
+
+
 def main() -> int:
     node, relation, registry = fixtures()
     nodes = {node["id"]: deepcopy(node)}
@@ -120,19 +193,12 @@ def main() -> int:
         )
         assert errors, f"{mutation} escaped semantic review validation"
 
-    query = subprocess.run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "query_semantic.py"),
-            "semantic-reviews",
-            "Z12::mersenne_achievement_set_measure_one",
-            "--limit",
-            "2",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
+    check_query_environment()
+    query = run_query(
+        "semantic-reviews",
+        "Z12::mersenne_achievement_set_measure_one",
+        "--limit",
+        "2",
     )
     assert query.returncode == 0, query.stderr
     packet = json.loads(query.stdout)
