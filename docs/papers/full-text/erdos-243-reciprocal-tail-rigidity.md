@@ -5,6 +5,9 @@
 The published Koizumi source and its final-article/arXiv-v1 locator crosswalk
 are recorded in the [Koizumi source closure](../../primary-sources/reciprocal-tail/koizumi-2026-source-closure.md).
 
+The original Erdős–Straus source and the printed-page/indexing boundary for
+Theorem 3 are recorded in the [Erdős–Straus source closure](../../primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md).
+
 <div class="center">
 
 <span class="smallcaps">Abstract</span>

@@ -170,6 +170,12 @@ grouped by the problem whose note they serve.
 
 ### #243
 
+- P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](https://users.renyi.hu/~p_erdos/1964-19.pdf) ([read source closure](primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md))
+
+  Original source for the conditional Ahmes-series rationality criterion cited at Theorem 3, p. 132. Its printed theorem uses the prefix quotient `N_k/n_(k+1)` and the next-index factor `n_(k+1)^2/n_(k+2)-1`; this is the source boundary for the note's correction of the shifted catalogue/survey display.
+
+  **Boundary.** The criterion is conditional and only gives eventual Sylvester recurrence. It does not settle unrestricted #243, the release's Lean results, or any novelty/priority claim.
+
 - K. Koizumi, [*Irrationality of the reciprocal sum of doubly exponential sequences* (Integers 26 (2026), A28)](https://math.colgate.edu/~integers/aa28/aa28.pdf); [arXiv:2504.05933](https://arxiv.org/abs/2504.05933) ([read source closure](primary-sources/reciprocal-tail/koizumi-2026-source-closure.md))
 
   Supplies normalised vanishing for the canonical orbit, the sole hypothesis of the note's headline conditional theorems not proved in Lean; the published Lemma 3 and Proposition 1(2) (the preprint-v1 Lemma 13 and Proposition 19(2)) are conceded in-note as prior art for the note's absorption and descent lemmas.

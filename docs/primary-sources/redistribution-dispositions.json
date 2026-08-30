@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 7,
-    "artifact_count": 7,
+    "working_tree_only_count": 8,
+    "artifact_count": 8,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 7,
+    "link_and_digest_only_count": 8,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -148,6 +148,24 @@
         "docs/PRIOR_ART.md",
         "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
         "docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/erdos-straus-1964-ahmes-series.pdf",
+      "sha256": "349d491423317417b6a2ecaa6799aba5923b514d52f5f6bd4e343249f90836d9",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://users.renyi.hu/~p_erdos/1964-19.pdf"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
+        "docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md"
       ]
     }
   ]
