@@ -6705,6 +6705,10 @@ def agent_tour_packet() -> dict[str, Any]:
                     "python3 scripts/query_corpus.py --route "
                     f"{row['problem_id']}"
                 ),
+                "route_memory": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{row['erdos_number']}"
+                ),
             }
             for row in problems
         ],
@@ -7299,23 +7303,32 @@ def render_card(packet: dict[str, Any]) -> str:
         problem_ids = ",".join(
             f"#{row['erdos_number']}" for row in packet["problem_map"]
         )
-        return "\n".join(
+        rows = [
             (
-                (
-                    f"corpus tour | modules={scale['module_count']} "
-                    f"| theorem_like={scale['theorem_like_count']} "
-                    f"| curated_claims={scale['curated_claim_count']} "
-                    f"| programmes={scale['mathematical_programme_count']} "
-                    f"| contribution_families={scale['contribution_family_count']} "
-                    f"| reviewed_open_propositions="
-                    f"{scale['reviewed_remaining_open_proposition_count']}"
-                ),
-                (
-                    f"problem map | indexed={scale['indexed_problem_count']} "
-                    f"| open={scale['indexed_open_problem_count']} "
-                    f"| ids={problem_ids} "
-                    "| route=python3 scripts/query_semantic.py problem-registry"
-                ),
+                f"corpus tour | modules={scale['module_count']} "
+                f"| theorem_like={scale['theorem_like_count']} "
+                f"| curated_claims={scale['curated_claim_count']} "
+                f"| programmes={scale['mathematical_programme_count']} "
+                f"| contribution_families={scale['contribution_family_count']} "
+                f"| reviewed_open_propositions="
+                f"{scale['reviewed_remaining_open_proposition_count']}"
+            ),
+            (
+                f"problem map | indexed={scale['indexed_problem_count']} "
+                f"| open={scale['indexed_open_problem_count']} "
+                f"| ids={problem_ids} "
+                "| route=python3 scripts/query_semantic.py problem-registry"
+            ),
+        ]
+        for problem in packet.get("problem_map", []):
+            route_memory = problem.get("route_memory")
+            if not isinstance(route_memory, str) or not route_memory:
+                continue
+            rows.append(
+                f"problem_route | #{problem['erdos_number']} | resume={route_memory}"
+            )
+        rows.extend(
+            (
                 (
                     f"formal graph | roots={','.join(graph['loaded_library_roots'])} "
                     f"| nodes={graph['source_resolved_node_count']} "
@@ -7338,6 +7351,7 @@ def render_card(packet: dict[str, Any]) -> str:
                 ),
             )
         )
+        return "\n".join(rows)
     scale = packet["scale"]
     return (
         f"corpus {packet['release']['tag']} | modules={scale['module_count']} "

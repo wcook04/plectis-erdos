@@ -305,6 +305,13 @@ def validate_agent_tour() -> None:
         )
         for row in packet["problem_map"]
     )
+    assert all(
+        row["route_memory"] == (
+            "python3 scripts/query_route_memory.py --problem "
+            f"{row['erdos_number']}"
+        )
+        for row in packet["problem_map"]
+    )
     assert {
         row["intent"] for row in packet["intent_lenses"]
     } >= {
@@ -332,14 +339,25 @@ def validate_agent_tour() -> None:
     card = run("--tour", "--format", "card")
     assert card.returncode == 0
     lines = card.stdout.strip().splitlines()
-    assert len(lines) == 6
+    assert len(lines) == 14
     assert lines[0].startswith("corpus tour | modules=")
     assert "reviewed_open_propositions=" in lines[0]
     assert lines[1].startswith("problem map | indexed=8 | open=8")
-    assert lines[2].startswith("formal graph | roots=")
-    assert lines[3].startswith("authority | navigation=")
-    assert lines[4].startswith("reviewed frontier | scope=#249/#257")
-    assert lines[5] == (
+    assert [line.split(" | ")[1] for line in lines[2:10]] == [
+        "#68",
+        "#243",
+        "#249",
+        "#251",
+        "#257",
+        "#269",
+        "#1041",
+        "#1049",
+    ]
+    assert all("| resume=python3 scripts/query_route_memory.py --problem " in line for line in lines[2:10])
+    assert lines[10].startswith("formal graph | roots=")
+    assert lines[11].startswith("authority | navigation=")
+    assert lines[12].startswith("reviewed frontier | scope=#249/#257")
+    assert lines[13] == (
         "next | command=python3 scripts/query_corpus.py --route "
         "agent_native_corpus_navigation | requires_lean_build=false"
     )
