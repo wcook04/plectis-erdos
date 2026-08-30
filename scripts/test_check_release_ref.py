@@ -80,6 +80,16 @@ def test_receipt_destination_boundary() -> None:
             raise AssertionError("receipt writer followed a symlinked parent")
 
 
+def test_singleflight_worker_flag_is_accepted() -> None:
+    args = check_release_ref.build_parser().parse_args(
+        ["--singleflight-worker", "--probe-only", "--ref", "HEAD"]
+    )
+    require(
+        args.singleflight_worker,
+        "release-ref parser did not accept the internal single-flight worker flag",
+    )
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -115,6 +125,7 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 def main() -> int:
     test_snapshot_command_path_boundary()
     test_receipt_destination_boundary()
+    test_singleflight_worker_flag_is_accepted()
     original_root = check_release_ref.ROOT
     try:
         with tempfile.TemporaryDirectory() as tmp:

@@ -458,13 +458,24 @@ def render_text(receipt: dict[str, Any]) -> str:
     return "\n".join(part for part in (header, body, error) if part)
 
 
-def main() -> int:
+def build_parser() -> argparse.ArgumentParser:
+    """Build the CLI parser, including the internal single-flight contract."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ref", default="HEAD")
     parser.add_argument("--timeout-seconds", type=int, default=900)
     parser.add_argument("--probe-only", action="store_true")
     parser.add_argument("--receipt", type=Path)
     parser.add_argument("--format", choices=("text", "json"), default="text")
+    parser.add_argument(
+        "--singleflight-worker",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
     args = parser.parse_args()
     if args.timeout_seconds <= 0:
         parser.error("--timeout-seconds must be positive")
