@@ -45,6 +45,16 @@ def check_rendered_file_boundary() -> None:
                 boundary.safe_rendered_file(regular) == regular,
                 "rendered checker rejected a regular in-root file",
             )
+
+            if hasattr(os, "mkfifo"):
+                fifo = root / "fifo.tex"
+                os.mkfifo(fifo)
+                try:
+                    boundary.safe_rendered_text(fifo)
+                except boundary.UnsafeRenderedInput as error:
+                    require("regular file" in str(error), str(error))
+                else:
+                    raise AssertionError("rendered checker opened a FIFO input")
         finally:
             boundary.ROOT = original_root
 

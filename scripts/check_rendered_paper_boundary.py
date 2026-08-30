@@ -28,6 +28,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import unicodedata
@@ -157,6 +158,39 @@ def safe_rendered_file(path: Path) -> Path:
     return candidate
 
 
+def safe_rendered_text(path: Path) -> str:
+    """Read a rendered-boundary text input through a no-follow descriptor."""
+    candidate = safe_rendered_file(path)
+    flags = os.O_RDONLY | os.O_NONBLOCK | os.O_NOFOLLOW
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeRenderedInput(
+            f"rendered-boundary input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeRenderedInput(
+                f"rendered-boundary input is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        try:
+            return b"".join(chunks).decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise UnsafeRenderedInput(
+                f"rendered-boundary input is not UTF-8: {candidate}"
+            ) from exc
+    finally:
+        os.close(descriptor)
+
+
 def visible_tex(text: str) -> str:
     """Approximate the material that can contribute visible prose."""
     text = "\n".join(COMMENT_RE.sub("", line) for line in text.splitlines())
@@ -171,9 +205,9 @@ def visible_tex(text: str) -> str:
 def source_errors(path: Path) -> list[str]:
     try:
         path = safe_rendered_file(path)
+        text = safe_rendered_text(path)
     except UnsafeRenderedInput as error:
         return [str(error)]
-    text = path.read_text(encoding="utf-8")
     visible = visible_tex(text)
     for public_path in PUBLIC_REPRODUCIBILITY_PATHS:
         visible = visible.replace(public_path, "")
@@ -274,9 +308,9 @@ def rendered_source_link_errors(
     try:
         tex = safe_rendered_file(tex)
         pdf = safe_rendered_file(pdf)
+        source = safe_rendered_text(tex)
     except UnsafeRenderedInput as error:
         return [str(error)]
-    source = tex.read_text(encoding="utf-8")
     commit_match = re.search(
         r"\\(?:re)?newcommand\{\\commit\}\{([0-9a-f]{40})\}", source
     )
@@ -475,7 +509,7 @@ def main() -> int:
             errors.append("pdftohtml is required for the rendered-link check")
         if pdftotext is not None and pdftohtml is not None:
             try:
-                aliases = json.loads(safe_rendered_file(ALIASES).read_text(encoding="utf-8"))
+                aliases = json.loads(safe_rendered_text(ALIASES))
             except UnsafeRenderedInput as error:
                 errors.append(str(error))
                 aliases = {}
