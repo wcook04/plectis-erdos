@@ -32,6 +32,7 @@ official route, review its current terms, and verify the manifest digest.
 | `docs/primary-sources/reciprocal-tail/koizumi-2026-integers-a28.pdf` | `9ad8561399e36bb4f17368064dc4765a90f164d85b65330c466e79fc716624df` | <https://math.colgate.edu/~integers/aa28/aa28.pdf>; <https://arxiv.org/abs/2504.05933>; <https://arxiv.org/pdf/2504.05933>; <https://doi.org/10.5281/zenodo.18714404> | `docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md` |
 | `docs/primary-sources/totient-kernel/martin-2006-simultaneous-phi-inequalities.pdf` | `8d967dc3018c325cf3b4a099fa916e369f4b9a915bf2ccad398d359e3b4f0705` | <https://arxiv.org/abs/math/0603053>; <https://arxiv.org/pdf/math/0603053>; <https://doi.org/10.48550/arXiv.math/0603053> | `docs/primary-sources/totient-kernel/martin-2006-source-closure.md` |
 | `docs/primary-sources/reciprocal-tail/erdos-straus-1964-ahmes-series.pdf` | `349d491423317417b6a2ecaa6799aba5923b514d52f5f6bd4e343249f90836d9` | <https://users.renyi.hu/~p_erdos/1964-19.pdf> | `docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md` |
+| `docs/primary-sources/reciprocal-tail/duverney-2001-fast-converging-series.pdf` | `f8ab2039c94959b21ede4616e399a4159dbc7ca7d2865c7567a2f82a148115f6` | <https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf> | `docs/primary-sources/reciprocal-tail/duverney-2001-source-closure.md` |
 
 The evidence-boundary files state what each source supports and what it does
 not support. They are citation/provenance records, not permission grants or

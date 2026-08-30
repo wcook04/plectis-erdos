@@ -8,6 +8,9 @@ are recorded in the [Koizumi source closure](../../primary-sources/reciprocal-ta
 The original Erdős–Straus source and the printed-page/indexing boundary for
 Theorem 3 are recorded in the [Erdős–Straus source closure](../../primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md).
 
+Duverney's signed criterion and its exact one-sided summability hypothesis are
+recorded in the [Duverney source closure](../../primary-sources/reciprocal-tail/duverney-2001-source-closure.md).
+
 <div class="center">
 
 <span class="smallcaps">Abstract</span>
@@ -57,7 +60,7 @@ Two published results reach the original problem under analytic hypotheses that 
 \limsup_{n\to\infty}\ \frac{[a_1,\ldots,a_n]}{a_{n+1}}
  \left(\frac{a_{n+1}^{2}}{a_{n+2}}-1\right)>0,
 ```
-where $`[a_1,\ldots,a_n]`$ is the least common multiple \[erdosstraus1964, Theorem 3, p. 132\]. This is the indexing in the original theorem. Erdős’s 1988 survey, followed by the current catalogue summary, instead prints $`a_n^2/a_{n+1}-1`$ in the second factor while retaining the same prefix-LCM quotient; that displayed summary is off by one and is not followed here \[erdos1988, p. 105\]\[erdosproblems\]. Koizumi records the convenient sufficient rate $`a_n^2/a_{n+1}=1+o(1/n)`$ under which the Erdős–Straus criterion settles the problem \[koizumi2025, Remark 21, p. 13\]. Duverney proved a conditional signed form of the problem itself: if $`\sum_{n\ge0}\left|a_{n+1}/a_n^{2}-1\right|`$ converges, then the reciprocal sum, even with numerators in $`\{-1,1\}`$, is rational if and only if the corresponding signed recurrence holds for all large $`n`$ \[duverney2001, Corollary 3.2, p. 287\]. The all-positive specialisation is the form relevant here. Neither result is formalised here, and the results below do not recover either of them.
+where $`[a_1,\ldots,a_n]`$ is the least common multiple \[erdosstraus1964, Theorem 3, p. 132\]. This is the indexing in the original theorem. Erdős’s 1988 survey, followed by the current catalogue summary, instead prints $`a_n^2/a_{n+1}-1`$ in the second factor while retaining the same prefix-LCM quotient; that displayed summary is off by one and is not followed here \[erdos1988, p. 105\]\[erdosproblems\]. Koizumi records the convenient sufficient rate $`a_n^2/a_{n+1}=1+o(1/n)`$ under which the Erdős–Straus criterion settles the problem \[koizumi2025, Remark 21, p. 13\]. Duverney’s Corollary 3.2 assumes the one-sided condition $`\sum_{n\ge0}(a_{n+1}/a_n^{2}-1)<\infty`$ and, for arbitrary numerator signs $`\varepsilon_n\in\{-1,1\}`$, says that $`\sum_{n\ge0}\varepsilon_n/a_n`$ is rational if and only if $`a_{n+1}=a_n^2-(\varepsilon_{n+1}/\varepsilon_n)a_n+\varepsilon_{n+2}/\varepsilon_{n+1}`$ for all large $`n`$ \[duverney2001, Corollary 3.2, p. 287\]. An absolute-convergence hypothesis is stronger than the condition printed by Duverney and is not his exact statement. The all-positive specialisation is the form relevant here. Neither result is formalised here, and the results below do not recover either of them.
 
 Koizumi’s work on doubly exponential sequences \[koizumi2025\] bears directly on the state system used below, and supplies the coordinates in which several of the statements of this note are most naturally read. For a rational $`r=p/q`$ with pseudo-greedy expansion $`(a_n)`$, remainders $`(x_n)`$ and gap sequence $`\varepsilon_n=x_n^{-1}+1-a_n`$, his Lemma 15  \[koizumi2025, p. 9\] produces integers $`c_n>0`$, $`d_n`$ and $`e_n`$ with $`x_n=c_n/d_n`$ and $`\varepsilon_n=e_n/c_n`$, satisfying
 ``` math

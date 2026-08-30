@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 8,
-    "artifact_count": 8,
+    "working_tree_only_count": 9,
+    "artifact_count": 9,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 8,
+    "link_and_digest_only_count": 9,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -166,6 +166,24 @@
         "docs/PRIOR_ART.md",
         "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
         "docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/duverney-2001-fast-converging-series.pdf",
+      "sha256": "f8ab2039c94959b21ede4616e399a4159dbc7ca7d2865c7567a2f82a148115f6",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/duverney-2001-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/duverney-2001-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
+        "docs/primary-sources/reciprocal-tail/duverney-2001-source-closure.md"
       ]
     }
   ]

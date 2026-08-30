@@ -176,6 +176,12 @@ grouped by the problem whose note they serve.
 
   **Boundary.** The criterion is conditional and only gives eventual Sylvester recurrence. It does not settle unrestricted #243, the release's Lean results, or any novelty/priority claim.
 
+- D. Duverney, [*Irrationality of Fast Converging Series of Rational Numbers*](https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf) ([read source closure](primary-sources/reciprocal-tail/duverney-2001-source-closure.md))
+
+  Corollary 3.2, p. 287, gives a conditional signed form of the #243 criterion: with `a_n` in `{-1,1}`, rationality of `sum a_n/u_n` is equivalent to the eventual signed recurrence under Duverney's one-sided condition `sum (u_(n+1)/u_n^2-1) < infinity`.
+
+  **Boundary.** The source condition is not written with absolute values; absolute convergence is only a stronger sufficient specialization. The result remains conditional and does not settle unrestricted #243, the release's Lean results, or any novelty/priority claim.
+
 - K. Koizumi, [*Irrationality of the reciprocal sum of doubly exponential sequences* (Integers 26 (2026), A28)](https://math.colgate.edu/~integers/aa28/aa28.pdf); [arXiv:2504.05933](https://arxiv.org/abs/2504.05933) ([read source closure](primary-sources/reciprocal-tail/koizumi-2026-source-closure.md))
 
   Supplies normalised vanishing for the canonical orbit, the sole hypothesis of the note's headline conditional theorems not proved in Lean; the published Lemma 3 and Proposition 1(2) (the preprint-v1 Lemma 13 and Proposition 19(2)) are conceded in-note as prior art for the note's absorption and descent lemmas.
