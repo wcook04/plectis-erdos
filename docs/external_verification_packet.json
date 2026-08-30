@@ -391,6 +391,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "shifted_odd_tail_nat_state",
+      "problem": 257,
+      "review_family": "shifted_odd_tail_state",
+      "contribution_class": "conditional reduction",
+      "original_declaration": "Erdos249257.exists_shifted_odd_tail_nat_states_of_support_fraction",
+      "original_source": "Erdos249257/RationalSupportCarrySkeleton.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction",
+      "statement": "A rational support value with a positive support seed and denominator 2^c*v produces a positive natural shifted tail state with an exact binary recurrence and a modular doubling orbit modulo v.",
+      "boundary": "This state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "three_prime_kernel_minor",
       "problem": 269,
       "review_family": "rank_two_kernel_no_go",
@@ -749,6 +763,14 @@
           "boundary": "The constraints do not exclude every infinite support."
         },
         {
+          "id": "shifted_odd_tail_state",
+          "contribution_class": "conditional reduction",
+          "summary": "A rational support fraction produces a positive natural shifted tail state satisfying the exact binary recurrence and modular doubling orbit modulo v.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "boundary": "The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit."
+        },
+        {
           "id": "known_irrational_supports",
           "contribution_class": "Lean formalisation of existing results",
           "summary": "Full, factorial, power-of-two, multiple, pairwise-coprime, eventually periodic, residue-class, and odd supports are formalised.",
@@ -999,7 +1021,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:4ff586aab1cd5b27436990d79848add116991847eb0f63e377fdb1101a601b19",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:1be28dd9f5e1bdf3dbac9fc27870b849a5ac645db8ffe4e54ef11350a410c4dd",
+    "projection_digest": "sha256:7c8f3255d45bf9f3115705971109e2cb86bccd001c3bb144bd5ec5b0cfa374f3",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1614,15 +1636,16 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 7,
+          "family_count": 8,
           "by_class": {
             "not_applicable": 1,
             "not_selected": 2,
-            "targeted": 4
+            "targeted": 5
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
             "rational_support_constraints": "not_selected_deep_support_vocabulary",
+            "shifted_odd_tail_state": "targeted",
             "known_irrational_supports": "targeted_full_support_representative",
             "squarefree_support": "not_applicable_to_external_irrationality_input",
             "achievement_set_geometry": "targeted_measure_theorem",
@@ -2049,7 +2072,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:bedc9227a749e50c6c6d216ba936092897475dcdae574f5c73ffade43fc8c1f4",
+    "digest": "sha256:5c4483d87fce7fbcdaa0485c762dcc38d02ab5a8956765a9f7e07362e07ddfeb",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2057,6 +2080,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:7209a8a5dc1b65ac2b05315ded520ab708327a3f875417c6c14b2fa315308551",
-  "solution_source_digest": "sha256:6126956a5a58735d6a531454110523bf87a4da6c9140f686dfc8a1356a842b13"
+  "config_digest": "sha256:78572fd9a768946be64259764885d97ee51e77fe8fe6530f9b130baf82c15fca",
+  "solution_source_digest": "sha256:f5c9932c5095a00157019182e760a985fc0407616061e786ce68666f29023bbf"
 }

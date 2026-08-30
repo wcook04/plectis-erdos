@@ -7,7 +7,7 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** The 25 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 26 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
@@ -384,7 +384,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Contribution families (7)</summary>
+<summary>Contribution families (8)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -397,6 +397,11 @@ Exact registry keys and Comparator routing are listed separately.
   Rational infinite supports force unbounded scaled tails, sublogarithmic zero windows, and reciprocal-mass constraints.<br>
   **Boundary.** The constraints do not exclude every infinite support.<br>
   *Evidence.* conditional reduction · Lean kernel
+
+- **Shifted odd tail state**<br>
+  A rational support fraction produces a positive natural shifted tail state satisfying the exact binary recurrence and modular doubling orbit modulo v.<br>
+  **Boundary.** The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit.<br>
+  *Evidence.* conditional reduction · Lean kernel plus Comparator
 
 - **Known irrational supports**<br>
   Full, factorial, power-of-two, multiple, pairwise-coprime, eventually periodic, residue-class, and odd supports are formalised.<br>
@@ -426,13 +431,16 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (7)</summary>
+<summary>Technical registry and Comparator routing (8)</summary>
 
 - <code>finite_period_noncollapse</code><br>
   Comparator: <code>targeted</code>
 
 - <code>rational_support_constraints</code><br>
   Comparator: <code>not_selected_deep_support_vocabulary</code>
+
+- <code>shifted_odd_tail_state</code><br>
+  Comparator: <code>targeted</code>
 
 - <code>known_irrational_supports</code><br>
   Comparator: <code>targeted_full_support_representative</code>
@@ -730,7 +738,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 25 statement-isolated interfaces</summary>
+<summary>Show all 26 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -875,6 +883,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The measure dichotomy does not classify rational points.
 
+- <code>Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction</code>
+  - **Class.** conditional reduction
+  - **Statement.** A rational support value with a positive support seed and denominator 2^c*v produces a positive natural shifted tail state with an exact binary recurrence and a modular doubling orbit modulo v.
+  - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit.
+
 **#269: Three-prime running least common multiples**
 
 - <code>Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen</code>
@@ -930,7 +945,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 25 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 26 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.

@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-five-interface
+This module contains only the definitions needed to state the twenty-six-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -208,6 +208,18 @@ noncomputable def supportedMersenneDigitValue
 def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
   Set.range (supportedMersenneDigitValue J)
 
+/-! ## Rational-support shifted odd-tail state -/
+
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+
+noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
+
 def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
   ∑ n ∈ F, 1 / ((b : ℚ) ^ n - 1)
 
@@ -380,6 +392,20 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
           volume (supportedMersenneAchievementSet J) =
             ((2 : ℝ≥0∞) ^ F.card)⁻¹) ∨
       (Jᶜ.Infinite ∧ volume (supportedMersenneAchievementSet J) = 0)
+  problem257ShiftedOddTailNatStates :
+    ∀ (A : Set ℕ),
+      (∃ a : ℕ, 0 < a ∧ a ∈ A) →
+      ∀ (p : ℤ) (c v : ℕ),
+        0 < v →
+        erdosSupportSeries 2 A =
+          (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ) →
+        ∃ u : ℕ → ℕ,
+          (∀ n : ℕ, (u n : ℝ) =
+            (v : ℝ) * binaryCoeffTail (supportCoeff A) (c + n)) ∧
+          (∀ n : ℕ, 0 < u n) ∧
+          (∀ n : ℕ, u (n + 1) +
+            v * supportCoeff A (c + n + 1) = 2 * u n) ∧
+          (∀ n : ℕ, u n ≡ p.toNat * 2 ^ n [MOD v])
   problem269 :
     threePrimeKernelQ 2 3 5 0 0 0 *
           threePrimeKernelQ 2 3 5 1 1 0 -

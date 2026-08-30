@@ -7,6 +7,7 @@ import ExternalVerification.Statements
 import Erdos249257.GreedyAchievementSet
 import Erdos249257.GcdMomentCalculus
 import Erdos249257.LcmFactorIdealPulseObstruction
+import Erdos249257.RationalSupportCarrySkeleton
 import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
@@ -21,7 +22,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-five existing results through the Mathlib-only
+These thin wrappers expose twenty-six existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -222,6 +223,12 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.mersenneDigitTerm,
       Erdos249257.mersenneWeight] using
       ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_dichotomy J
+  · intro A hA p c v hv hvalue
+    simpa [supportCoeff, erdosSupportSeries, binaryCoeffTail,
+      Erdos249257.supportCoeff, Erdos249257.erdosSupportSeries,
+      Erdos249257.binaryCoeffTail] using
+      Erdos249257.exists_shifted_odd_tail_nat_states_of_support_fraction
+        A hA p c v hv hvalue
   · simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
       ErdosProblems.Erdos269.threePrimeKernelQ,
       ErdosProblems.Erdos269.threePrimeHeight,
@@ -394,6 +401,24 @@ theorem volume_supportedMersenneAchievementSet_dichotomy (J : Set ℕ) :
             ((2 : ℝ≥0∞) ^ F.card)⁻¹) ∨
       (Jᶜ.Infinite ∧ volume (supportedMersenneAchievementSet J) = 0) :=
   (portfolioClaims Unit).problem257Dichotomy J
+
+theorem exists_shifted_odd_tail_nat_states_of_support_fraction
+    (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
+    (p : ℤ) (c v : ℕ) (hv : 0 < v)
+    (hvalue : erdosSupportSeries 2 A =
+      (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ)) :
+    ∃ u : ℕ → ℕ,
+      (∀ n : ℕ, (u n : ℝ) =
+        (v : ℝ) * binaryCoeffTail (supportCoeff A) (c + n)) ∧
+      (∀ n : ℕ, 0 < u n) ∧
+      (∀ n : ℕ, u (n + 1) +
+        v * supportCoeff A (c + n + 1) = 2 * u n) ∧
+      (∀ n : ℕ, u n ≡ p.toNat * 2 ^ n [MOD v]) := by
+  simpa [supportCoeff, erdosSupportSeries, binaryCoeffTail,
+    Erdos249257.supportCoeff, Erdos249257.erdosSupportSeries,
+    Erdos249257.binaryCoeffTail] using
+    Erdos249257.exists_shifted_odd_tail_nat_states_of_support_fraction
+      A hA p c v hv hvalue
 
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M

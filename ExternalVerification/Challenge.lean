@@ -163,6 +163,20 @@ theorem volume_supportedMersenneAchievementSet_dichotomy (J : Set ℕ) :
       (Jᶜ.Infinite ∧ volume (supportedMersenneAchievementSet J) = 0) :=
   (portfolioClaims Unit).problem257Dichotomy J
 
+theorem exists_shifted_odd_tail_nat_states_of_support_fraction
+    (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
+    (p : ℤ) (c v : ℕ) (hv : 0 < v)
+    (hvalue : erdosSupportSeries 2 A =
+      (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ)) :
+    ∃ u : ℕ → ℕ,
+      (∀ n : ℕ, (u n : ℝ) =
+        (v : ℝ) * binaryCoeffTail (supportCoeff A) (c + n)) ∧
+      (∀ n : ℕ, 0 < u n) ∧
+      (∀ n : ℕ, u (n + 1) +
+        v * supportCoeff A (c + n + 1) = 2 * u n) ∧
+      (∀ n : ℕ, u n ≡ p.toNat * 2 ^ n [MOD v]) :=
+  (portfolioClaims Unit).problem257ShiftedOddTailNatStates A hA p c v hv hvalue
+
 theorem kernel_235_minor_eq_neg_one_fifteen :
     threePrimeKernelQ 2 3 5 0 0 0 *
           threePrimeKernelQ 2 3 5 1 1 0 -
