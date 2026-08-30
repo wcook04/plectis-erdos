@@ -3,6 +3,18 @@ build/
 __pycache__/
 state/
 
+# Acquired third-party PDFs, scans, and source archives are retained as
+# working-tree evidence only.  Their artifact-level disposition ledger and
+# source-closure records are public; the binaries require verified permission
+# before they can enter the public candidate.
+docs/primary-sources/**/*.pdf
+docs/primary-sources/**/*.scan
+docs/primary-sources/**/*.tar
+docs/primary-sources/**/*.tar.gz
+docs/primary-sources/**/*.tgz
+docs/primary-sources/**/*.zip
+docs/primary-sources/**/*.7z
+
 # Transient probe file written by scripts/residual_evaluator.py, one probe at a
 # time. It is the question put to the kernel on the last iteration, not a
 # source file, and the run overwrites it.
