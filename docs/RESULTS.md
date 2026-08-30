@@ -121,7 +121,7 @@ digestion value, evidence certainty, natural friction, and overclaim risk—not
 by row count, inherited order, or citation presence. The family-level table
 below is the compact reading map; every declaration remains source-current and
 individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 44-row universe; their
+without a Comparator transport are not counted in the 45-row universe; their
 dispositions are stated in the relevant per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
@@ -628,7 +628,7 @@ core)**
   extinction are indexed as `three_prime_finite_residue_contradiction` and
   `three_prime_cofinal_window_carry_extinction` in `docs/claims.json`, with
   paper routes `res:consumer` and `res:windowconsumer`.
-- A separate source-only family in `ErdosProblems/Erdos269/WeightedPhaseCarry.lean`
+- A separate Comparator-transported family in `ErdosProblems/Erdos269/WeightedPhaseCarry.lean`
   keeps one coherent observer mechanism visible. For `B : ℤ` with `0 < B` and
   the displayed carry recurrence, `carry_eq_residueDigit_add_coboundary`
   gives the exact residue-digit plus integral-quotient-coboundary identity
@@ -641,7 +641,7 @@ core)**
   `realise = readout.comp C` (`:334`). The quotient coboundary remains
   uncontrolled: no finite-state quotient, literal infinite realised span,
   scalar-evaluation implication, or #269 rationality/irrationality conclusion
-  follows. This is not Comparator evidence at this source-only stage and is
+  follows. This is now Comparator-transported evidence, with the same boundary, and is
   distinct from the
   three-prime cell, rank-two no-go, and conditional carry-escape families.
 **#1041 — short connections inside polynomial lemniscates?**
