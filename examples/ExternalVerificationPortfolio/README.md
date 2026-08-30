@@ -231,6 +231,24 @@ including the punctured/top-edge details, remains open. Without that supply
 there is no #249 irrationality conclusion, and this consumer makes no
 novelty or priority claim.
 
+### Natural-prime strict-gap route
+
+The second endpoint-facing wrapper is
+`Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`.
+Its premise asks, for every positive shift and cutoff, for a later natural
+prime whose exact actual-tail phase has real part strictly below `9/10`.
+One source route would obtain the required finite gap from an `11/100`
+nonpositive-phase density on a late dyadic block; another asks directly for
+cofinally many nonpositive phases aligned with the shifted prime indices.
+
+Repeated squaring of the exact initial phase explains the orbit mechanics.
+Dyadic roots of unity obstruct the strict-gap premise because they eventually
+reach the absorbing phase `1`; the source does not assert that any actual
+totient phase is such a root. The nonpositive-block density and the cofinal prime strict-gap supply remain open. Cofinal nonpositive occurrence at
+unrestricted indices supplies neither density nor prime alignment. This route
+is therefore conditional and proves no unconditional #249 endpoint, novelty,
+or priority claim.
+
 ## Erdős #251: dyadic-tail integrality classification
 
 Start with [`Problem251.lean`](Problem251.lean). Its load-bearing source
