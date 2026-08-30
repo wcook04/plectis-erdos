@@ -768,6 +768,24 @@ def validate_route_memory_cards() -> None:
         line.startswith("problem_route | #") for line in overview_card.splitlines()
     ) == 8
 
+    search_card = query_corpus.render_card(
+        query_corpus.search_packet("denominator_exclusion", 5)
+    )
+    assert (
+        "claim | denominator_exclusion | resume=python3 scripts/query_route_memory.py "
+        "--problem 249 --route erdos249_certificate_story"
+    ) in search_card
+    assert (
+        "publication_family | erdos249_quantitative_headline | "
+        "resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in search_card
+    assert (
+        "reading_route | erdos249_certificate_story | "
+        "resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in search_card
+
 
 def validate_connection_query_ranking() -> None:
     packet = query_corpus.connection_card(

@@ -7125,9 +7125,8 @@ def render_card(packet: dict[str, Any]) -> str:
         for result in packet["results"]:
             handle = result.get("id") or result.get("name")
             line = f"{result['kind']} | {handle}"
-            route_memory = result.get("route_memory")
-            if isinstance(route_memory, dict) and route_memory.get("command"):
-                line += f" | resume={route_memory['command']}"
+            for command in _route_memory_resume_commands(result.get("route_memory")):
+                line += f" | resume={command}"
             rows.append(line)
         return "\n".join(rows)
     if kind == "semantic_dictionary":
