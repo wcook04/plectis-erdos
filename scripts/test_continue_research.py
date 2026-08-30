@@ -30,6 +30,7 @@ def run(command: list[str], *, expected: int = 0) -> subprocess.CompletedProcess
         text=True,
         check=False,
         env=continue_research.child_environment(),
+        timeout=continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
     )
     assert completed.returncode == expected, (command, completed.stdout, completed.stderr)
     return completed
@@ -153,12 +154,14 @@ def check_subprocess_timeouts() -> None:
         assert continue_research.git_output("rev-parse", "HEAD") == "{}"
         assert continue_research.git_is_ancestor("a" * 40, "b" * 40)
         assert continue_research.run_json_command([sys.executable, "fixture.py"]) == {}
+        assert run([sys.executable, "fixture.py"]).returncode == 0
 
     assert [
         call.kwargs["timeout"] for call in run_mock.call_args_list
     ] == [
         continue_research.GIT_LOOKUP_TIMEOUT_SECONDS,
         continue_research.GIT_LOOKUP_TIMEOUT_SECONDS,
+        continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
         continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
     ]
 
