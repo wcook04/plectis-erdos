@@ -12502,7 +12502,8 @@
               "ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap",
               "ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap",
               "ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
-              "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+              "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_succ"
             ],
             "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
           },
@@ -16373,6 +16374,11 @@
           "name": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
           "line": 205
+        },
+        {
+          "name": "tailOrbitFirstExp_succ",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 167
         }
       ]
     },
