@@ -819,6 +819,83 @@ import Pkg.TooLate
                     call.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
                 )
 
+    def test_clean_cache_direct_source_rebuilds_registered_import_at_final_boundary(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            dependency = root / "Pkg" / "Dependency.lean"
+            consumer = root / "examples" / "Consumer.lean"
+            dependency.parent.mkdir(parents=True)
+            consumer.parent.mkdir(parents=True)
+            dependency.write_text("-- dependency\n", encoding="utf-8")
+            consumer.write_text("import Pkg.Dependency\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\n', encoding="utf-8"
+            )
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(
+                    fast.main(["examples/Consumer.lean", "--jobs", "2"]),
+                    0,
+                )
+
+            commands = [call.args[0] for call in run.call_args_list]
+            self.assertEqual(
+                commands,
+                [
+                    fast.lake_command(
+                        "--quiet",
+                        "--no-ansi",
+                        "--log-level=error",
+                        "build",
+                        "+Pkg.Dependency",
+                    ),
+                    fast.lake_command(
+                        "--quiet",
+                        "--no-ansi",
+                        "--log-level=error",
+                        "build",
+                        "+Pkg.Dependency",
+                    ),
+                    fast.lake_command("env", "lean", "examples/Consumer.lean"),
+                ],
+            )
+            for call in run.call_args_list:
+                self.assertEqual(
+                    call.kwargs["env"], singleflight.command_environment()
+                )
+                self.assertEqual(
+                    call.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
+                )
+
+    def test_portfolio_direct_sources_finalize_source_current_shared_imports(
+        self,
+    ) -> None:
+        modules = fast.discover()
+        targets = fast.resolve_targets(
+            [
+                "examples/ExternalVerificationPortfolio/Problem249.lean",
+                "examples/ExternalVerificationPortfolio/Problem251.lean",
+                "examples/ExternalVerificationPortfolio/Problem269.lean",
+            ],
+            modules,
+        )
+        graph = fast.reachable_graph(targets, modules)
+        direct = fast.direct_source_targets(targets, modules)
+
+        self.assertEqual(set(direct), set(targets))
+        self.assertEqual(
+            fast.direct_source_lake_imports(direct, graph),
+            ["Erdos249257", "ExternalVerification.Solution"],
+        )
+        self.assertIn(
+            "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+            fast.reachable(["ExternalVerification.Solution"], graph),
+        )
+
     def test_final_authority_checks_focused_modules_serially(self) -> None:
         completed = fast.subprocess.CompletedProcess([], 0, "", "")
         with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:

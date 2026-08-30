@@ -224,6 +224,29 @@ def direct_source_targets(
     }
 
 
+def direct_source_lake_imports(
+    direct_names: Iterable[str],
+    graph: dict[str, set[str]],
+    root: Path = ROOT,
+) -> list[str]:
+    """Return registered import roots that must exist before direct checks.
+
+    An unregistered source is elaborated with ``lake env lean`` rather than a
+    Lake module target.  Its registered imports still need a final Lake build:
+    the initial staleness snapshot can race a later cache invalidation and
+    leave a transitive object missing immediately before direct elaboration.
+    """
+
+    return sorted(
+        {
+            imported
+            for name in direct_names
+            for imported in graph[name]
+            if is_registered_lake_module(imported, root)
+        }
+    )
+
+
 def default_root_targets(modules: dict[str, Path], root: Path = ROOT) -> list[str]:
     """Return the package roots without relying on Lake's unbounded default."""
 
@@ -733,9 +756,12 @@ def main(argv: list[str] | None = None) -> int:
         if failed:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
-    lake_target_names = [
-        name for name in target_modules if name not in direct_target_names
-    ]
+    lake_target_names = list(
+        dict.fromkeys(
+            [name for name in target_modules if name not in direct_target_names]
+            + direct_source_lake_imports(direct_target_names, graph, root)
+        )
+    )
     if lake_target_names:
         print("lean-fast-build: final serialized Lake authority check", flush=True)
         lake_result = run_final_authority_check(lake_target_names, root)
