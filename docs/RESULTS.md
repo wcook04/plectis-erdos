@@ -47,11 +47,19 @@ pass, the high-signal spine is:
   `ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:397`). This is
   consequential global geometry, not a classification of rational points or
   a universal irrationality theorem.
-- **#249, a constructive kernel-rank spine.** The exact dyadic totient-kernel
-  rank `2^e + 1`, its odd-core basis, and the resulting infinite-dimensional
-  span expose a real finite-level mechanism; the all-base rank is conditional
-  on the displayed affine independence input. None of these gives a
-  rationality-to-finite-rank bridge or solves the binary totient endpoint.
+- **#249, two complementary structural spines.** The exact dyadic
+  totient-kernel rank `2^e + 1`, its odd-core basis, and the resulting
+  infinite-dimensional span expose a real finite-level mechanism; the all-base
+  rank is conditional on the displayed affine-independence input. Separately,
+  the actual-LCM orbit route gives a genuinely endpoint-facing conditional
+  reduction: an explicit approximation of the orbit by an odd-rank raw block,
+  with an error radius, turns cofinal distance at least `1/32` plus that radius
+  from every integer into the existing signed-margin producer. The exact
+  source calls this `PowerTwoActualLcmOrbitSeparationSupply` and then derives
+  irrationality from it, but the supply itself is not proved; neither
+  divisibility nor irrationality alone supplies the required anti-concentration.
+  Neither spine by itself supplies a rationality-to-finite-rank bridge or
+  solves the binary totient endpoint.
 - **#68, an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently to
   cofinally many non-unit carries. The equivalence transfers the hard
@@ -78,7 +86,7 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 31 declarations in the committed Comparator roster
+The audit universe is the 32 declarations in the committed Comparator roster
 (`verification/comparator.json`). I ranked them by consequence, endpoint
 proximity, mechanism depth, genuine distinctness, external usefulness,
 digestion value, evidence certainty, natural friction, and overclaim risk—not
@@ -88,7 +96,7 @@ individually inspectable in the per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
-| **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, and nonnegative rational eventually-periodic coefficient theorem, plus #249 finite kernel rank/basis and #68's exact carry/divisibility equivalence, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; pairwise CRT and periodic denominator-clearing are distinct direct mechanisms; rank and equivalence expose exact finite-level and endpoint interfaces with hypotheses visible. |
+| **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, and nonnegative rational eventually-periodic coefficient theorem, plus #249's finite kernel rank/basis and actual-LCM separation reduction, and #68's exact carry/divisibility equivalence, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; pairwise CRT and periodic denominator-clearing are distinct direct mechanisms; #249's rank and actual-LCM rows expose different finite-level and endpoint-facing mechanisms, with the latter's unproved quantitative supply kept explicit; the #68 equivalence exposes its exact producer boundary. |
 | **retain** | #257's orthogonal-petal bouquet reduction and achievement-set measure geometry, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The bouquet route has genuine structural depth but requires an unconstructed selector and bouquet; the measure rows give consequential global geometry without classifying rational points; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
@@ -278,6 +286,20 @@ replacement for claim authority.
   `all_base_totient_kernel_conditional_rank`). The independence is an
   external affine-ordering input not proved here, and this conditional rank
   statement does not prove irrationality of `S`.
+- A distinct actual-LCM orbit reduction makes the next analytic obligation
+  explicit. With `H_a = lcm(1, …, 2^a)` and
+  `R_a = totientTail(2H_a) − totientTail(H_a)`, the source defines
+  `PowerTwoActualLcmOrbitSeparationSupply` as a cofinal supply of canonical
+  odd ranks whose `R_a` stays at least `1/32 + actualLcmRawErrorRadius a q`
+  from every integer. The checked raw-block approximation and its explicit
+  error bound then force the existing half-word/signed-margin producer, and
+  `irrational_totientSeries_of_actualLcmOrbitSeparationSupply` derives
+  irrationality from that hypothesis. This is a new quantitative bridge, not
+  a proof of the bridge's supply: the module explicitly leaves that
+  anti-concentration question open, and the earlier sign/top-edge result does
+  not establish it. See
+  `Erdos249257/TotientActualLcmOrbitSeparation.lean:254-310` and the transported
+  consumer `ExternalVerification/Challenge.lean:159`.
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,

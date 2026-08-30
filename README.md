@@ -55,10 +55,15 @@ not a novelty or priority ranking:
 - A separate geometric boundary is substantial but different: the full
   base-2 Mersenne achievement set has Lebesgue measure one, while supported
   achievement sets have a finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). This classifies neither rational points nor universal irrationality.
-- **#249 has an exact finite-level kernel spine.** The dyadic totient kernel
+- **#249 has two distinct structural frontiers.** The dyadic totient kernel
   has rank `2^e + 1` with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
-  the all-base extension is conditional on affine independence and no
-  rationality-to-finite-rank bridge is proved.
+  the all-base extension is conditional on affine independence. Separately,
+  an actual-LCM orbit is approximated by an odd-rank raw block with an explicit
+  error radius: the cofinal `PowerTwoActualLcmOrbitSeparationSupply` would force
+  the existing signed-margin producer and hence irrationality
+  ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
+  quantitative separation supply is unproved, and sign/top-edge information
+  does not supply it.
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
@@ -75,7 +80,7 @@ finite ray separation/root retention while a topology/gluing step is missing
 rules out a literal `3/2` corridor while leaving irrationality open
 ([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean)).
 
-This order is a value audit of the 31 declarations in the committed Comparator
+This order is a value audit of the 32 declarations in the committed Comparator
 roster, not a claim that the remaining rows are unimportant. [RESULTS](docs/RESULTS.md#signal-audit-dispositions)
 records the promote/retain/consolidate/demote/replace/long-tail-only decisions
 and their mathematical reasons; the per-problem sections and [source map](docs/SOURCE_MAP.md)
@@ -108,7 +113,7 @@ Links name checked routes and limits; reductions are not solutions.
 
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [cofinal equivalence](ErdosProblems/Erdos68/FactorialZeroPlateau.lean): irrationality iff cofinally strict factorial-top misses divisibility; [band](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): nonzero-moment cancellation forces index ≥2d. q≥67; 300000 external; cofinal producer open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — [bounded-rise obstruction](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean): bounded rises cannot avoid fresh pairwise-coprime moduli as `u`→∞; normalized-vanishing no-go; mixed-sign bridge open.
-- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit top edge. Supply open
+- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM frontier](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [quantitative separation bridge](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254): an explicit cofinal orbit-to-signed-margin reduction, with its supply open; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit the top edge.
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — [tail equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean): irrationality iff cofinally nonintegral tail shifts under its checked recurrence; prime-tail bridge open.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. Irrationality open.
