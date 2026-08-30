@@ -12175,6 +12175,17 @@
         "boundary": "The identity does not supply the missing irrationality bridge."
       },
       {
+        "id": "conditional_carry_escape",
+        "problem": 269,
+        "review_family": "conditional_carry_escape",
+        "contribution_class": "conditional no-go consumer; novelty and significance unassessed",
+        "original_declaration": "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "original_source": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "statement": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound.",
+        "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
+      },
+      {
         "id": "newton_small_translation",
         "problem": 1041,
         "review_family": "translation_avoidance",
@@ -12788,11 +12799,18 @@
           },
           {
             "id": "conditional_carry_escape",
-            "contribution_class": "conditional reduction",
-            "summary": "Cofinal local-window residue escape would rule out bounded positive carries after an unproved rationality-to-carry bridge.",
-            "evidence_mode": "Lean kernel",
-            "comparator_disposition": "not_selected_unproved_bridge_and_deep_predicates",
-            "boundary": "The producer and actual-series identification are missing."
+            "contribution_class": "conditional no-go consumer; novelty and significance unassessed",
+            "summary": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; CofinalLocalWindowEscape, windowBase, windowForcing, and leastPositiveResidue are subordinate finite-window mechanism evidence.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "ErdosProblems.Erdos269.CofinalLocalWindowEscape",
+              "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+              "ErdosProblems.Erdos269.windowBase",
+              "ErdosProblems.Erdos269.windowForcing",
+              "ErdosProblems.Erdos269.leastPositiveResidue"
+            ],
+            "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
           },
           {
             "id": "weighted_phase_carry_observer",
