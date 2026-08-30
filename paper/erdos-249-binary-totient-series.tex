@@ -1257,16 +1257,22 @@ $D\cdot\Aw(p)/p\notin\Z$.
 
 Two further checked results delimit narrower abstract hypothesis classes.
 
-A fixed-precision transport result
+A fixed-precision transport theorem
 (\mword{Erdos249257/TropicalCurvatureCarry.lean}{137}{fixedPrecisionTropicalNoGo}{checked})
-says that at every fixed positive precision, each finite compatible
-valuation-unit word admits a prefix-locked centred completion.  Its statement
-quantifies over abstract pairs of a two-adic valuation and an odd unit; it
-mentions neither $\ph$ nor $\Stot$, its content is that a congruence class
-meets any interval of the corresponding length, and it is a restatement of a
-lemma printed immediately above it.  The class of arguments it closes ---
-deriving a contradiction from a local signature read at a precision fixed in
-advance, along a finite word --- is not one anybody has proposed for \#249.
+gives an unconditional reusable negative for a whole local escape strategy:
+at every fixed positive precision, every finite odd-unit valuation word admits
+a prefix-locked centred completion.  The hard step is one-step modular
+recentering: the compatible carry is chosen by reducing the shifted state into
+an interval-sized power-of-two window, with an unrestricted quotient.  Induction
+then centres every letter of the finite word, whatever the incoming carry.
+Consequently, no contradiction can be extracted from a finite local
+valuation-unit signature read at a precision fixed in advance; this retires
+that fixed-positive-precision local strategy for good.  The theorem is
+synthetic and finite-word only: its valuation/unit symbols and unrestricted
+high quotients do not encode the actual totient differences, so it mentions
+neither $\ph$ nor $\Stot$.  It does not provide a growing-precision or global
+correlation bridge, nonlinear arithmetic, or a genuinely fresh divisor channel,
+and it does not settle the \#249 endpoint or irrationality.
 
 The factor-ideal no-go of \ref{res:factorideal}
 (\mword{Erdos249257/LcmFactorIdealPulseObstruction.lean}{798}{lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient}{checked},
