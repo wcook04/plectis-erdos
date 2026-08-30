@@ -12072,6 +12072,18 @@
         "boundary": "This route is conditional on the unproved CofinalPositiveHalfGreedySkips premise: for every N there is c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. A finite exact row or any finite collection of exact rows does not establish that cofinal supply. The result is a conditional 1/2-membership/counterexample route only, not an unconditional solution of Erdős #257; the exact-row, upper-half Boolean-word, rank-two, and endpoint-defect declarations are subordinate mechanism evidence, and no novelty, priority, significance, or external-review claim is made."
       },
       {
+        "id": "half_membership_seam_classification",
+        "problem": 257,
+        "review_family": "half_membership_seam_classification",
+        "claim_id": "half_membership_seam_classification",
+        "contribution_class": "locally proved exact endpoint classification; novelty unassessed",
+        "original_declaration": "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+        "original_source": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+        "statement": "Membership of 1/2 in the Mersenne achievement set is equivalent to unbounded false successor terminal bits, equivalently to an unbounded upper-or-middle successor branch, cofinal terminal-false positions, unbounded skipped ranks along the integer seam, infinite greedy skipped support, and no last half-greedy skip.",
+        "boundary": "This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made."
+      },
+      {
         "id": "composite_dilation_defect_split",
         "problem": 257,
         "review_family": "composite_dilation_defect_identity",
@@ -12552,6 +12564,26 @@
               "Erdos249257.exists_upperHalfBooleanWord_of_skippedCore"
             ],
             "boundary": "CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N there must be c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows, including one produced by a skipped core, do not establish cofinality. This is a conditional 1/2-membership/counterexample route, not an unconditional Erdős #257 solution; the rank-two, endpoint-defect, and upper-half Boolean-word declarations remain subordinate evidence, and no novelty, priority, significance, or external-review claim is made."
+          },
+          {
+            "id": "half_membership_seam_classification",
+            "contribution_class": "locally proved exact endpoint classification; novelty unassessed",
+            "summary": "Membership of 1/2 in the Mersenne achievement set is exactly equivalent to unbounded false successor terminal bits, the unbounded upper-or-middle seam branch, cofinal terminal-false positions, unbounded skipped ranks along the integer seam, infinite greedy skipped support, and the absence of a last half-greedy skip. The load-bearing representative is half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse; the remaining equivalences are subordinate endpoint-socket evidence.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+              "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle",
+              "Erdos249257.unboundedTerminalFalse_iff_not_seamGreedyEventuallyRight",
+              "Erdos249257.cofinalTerminalFalse_of_unboundedTerminalFalse",
+              "Erdos249257.unboundedTerminalFalse_of_cofinalTerminalFalse",
+              "Erdos249257.unboundedTerminalFalse_iff_cofinalTerminalFalse",
+              "Erdos249257.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse",
+              "Erdos249257.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong",
+              "Erdos249257.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite",
+              "Erdos249257.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip"
+            ],
+            "boundary": "This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made."
           },
           {
             "id": "shifted_odd_tail_state",
@@ -14034,6 +14066,31 @@
           "line": 126
         },
         {
+          "name": "half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle",
+          "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+          "line": 156
+        },
+        {
+          "name": "unboundedTerminalFalse_iff_not_seamGreedyEventuallyRight",
+          "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+          "line": 164
+        },
+        {
+          "name": "cofinalTerminalFalse_of_unboundedTerminalFalse",
+          "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+          "line": 172
+        },
+        {
+          "name": "unboundedTerminalFalse_of_cofinalTerminalFalse",
+          "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+          "line": 186
+        },
+        {
+          "name": "unboundedTerminalFalse_iff_cofinalTerminalFalse",
+          "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+          "line": 196
+        },
+        {
           "name": "half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse",
           "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
           "line": 203
@@ -14042,6 +14099,16 @@
           "name": "half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong",
           "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
           "line": 213
+        },
+        {
+          "name": "unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite",
+          "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+          "line": 228
+        },
+        {
+          "name": "half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip",
+          "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+          "line": 235
         }
       ]
     },
