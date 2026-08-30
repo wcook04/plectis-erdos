@@ -3051,7 +3051,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:61c24febe6d00529cbcc6952b58dd9ac0e4e0a59444c8156449a80eeddd8d7cf",
+      "source_sha256": "sha256:d3535e0f6102b3cf1fd17be382a7de2473380517ed62286ed8ab737ef309f2ac",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
@@ -3068,145 +3068,145 @@
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction and main results",
-          "line": 59
+          "line": 61
         },
         {
           "level": 4,
           "id": "the-finite-support-theorem.",
           "title": "The finite-support theorem.",
-          "line": 84
+          "line": 86
         },
         {
           "level": 4,
           "id": "structure.",
           "title": "Structure.",
-          "line": 109
+          "line": 111
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 115
+          "line": 117
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 142
+          "line": 144
         },
         {
           "level": 4,
           "id": "integral-scaled-tails-and-unboundedness.",
           "title": "Integral scaled tails, and unboundedness.",
-          "line": 148
+          "line": 150
         },
         {
           "level": 4,
           "id": "divisor-coverage-cannot-have-long-gaps.",
           "title": "Divisor coverage cannot have long gaps.",
-          "line": 176
+          "line": 178
         },
         {
           "level": 4,
           "id": "a-reciprocal-sum-lower-bound.",
           "title": "A reciprocal-sum lower bound.",
-          "line": 194
+          "line": 196
         },
         {
           "level": 4,
           "id": "a-booleanm\u00f6bius-characterisation.",
           "title": "A Boolean\u2013M\u00f6bius characterisation.",
-          "line": 224
+          "line": 226
         },
         {
           "level": 4,
           "id": "combined-constraints-on-a-rational-counterexample.",
           "title": "Combined constraints on a rational counterexample.",
-          "line": 266
+          "line": 268
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Representative known irrational supports",
-          "line": 272
+          "line": 274
         },
         {
           "level": 1,
           "id": "sec:squarefree",
           "title": "Squarefree support and a coordinate-dependent obstruction",
-          "line": 327
+          "line": 329
         },
         {
           "level": 2,
           "id": "the-values-are-known-at-every-power-of-two-base",
           "title": "The values are known at every power-of-two base",
-          "line": 345
+          "line": 347
         },
         {
           "level": 2,
           "id": "two-block-certificate-hypotheses-have-no-instance",
           "title": "Two block-certificate hypotheses have no instance",
-          "line": 373
+          "line": 375
         },
         {
           "level": 2,
           "id": "the-obstruction-is-a-normalisation-not-the-value",
           "title": "The obstruction is a normalisation, not the value",
-          "line": 419
+          "line": 421
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Achievement-set geometry and the value 1/2",
-          "line": 437
+          "line": 439
         },
         {
           "level": 2,
           "id": "geometry-after-restricting-the-allowed-exponents",
           "title": "Geometry after restricting the allowed exponents",
-          "line": 459
+          "line": 461
         },
         {
           "level": 2,
           "id": "the-value-12",
           "title": "The value 1/2",
-          "line": 489
+          "line": 491
         },
         {
           "level": 2,
           "id": "a-second-rational-target",
           "title": "A second rational target",
-          "line": 608
+          "line": 610
         },
         {
           "level": 2,
           "id": "the-canonical-121-frontier",
           "title": "The canonical 1/21 frontier",
-          "line": 632
+          "line": 634
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Open problems",
-          "line": 676
+          "line": 678
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 777
+          "line": 779
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 783
+          "line": 785
         }
       ],
       "citations_rendered": 23,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:67c0d4b184790197bf60e8d375d29285e164aaddc365f88950adba8852abe4d2",
-      "pdf_byte_count": 176570,
+      "pdf_sha256": "sha256:4f837429c093387365bd5e548cd9053c28e89f4a83ac5b8a4525061db87a8256",
+      "pdf_byte_count": 176842,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3214,12 +3214,12 @@
           {
             "id": "sec:period",
             "title": "Finite-support denominator periods",
-            "line": 115
+            "line": 117
           },
           {
             "id": "sec:map",
             "title": "Representative known irrational supports",
-            "line": 272
+            "line": 274
           },
           {
             "id": "sec:ask",
@@ -3229,7 +3229,7 @@
           {
             "id": "sec:open",
             "title": "Open problems",
-            "line": 676
+            "line": 678
           }
         ],
         "unresolved_count": 1
