@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 4,
-    "artifact_count": 4,
+    "working_tree_only_count": 5,
+    "artifact_count": 5,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 4,
+    "link_and_digest_only_count": 5,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -73,6 +73,24 @@
       "support_boundary_ref": "docs/primary-sources/bergman-geodesic/pritsker-2011-source-closure.md",
       "consumer_refs": [
         "docs/primary-sources/bergman-geodesic/pritsker-2011-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/bergman-geodesic/erdos-herzog-piranian-1958-source.pdf",
+      "sha256": "bff39876de5e152b5a0d2b622eb6f9ca0c747d401ceea68146cfa2b2b5f28ce9",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://link.springer.com/article/10.1007/BF02790232",
+        "https://doi.org/10.1007/BF02790232"
+      ],
+      "source_record": "docs/primary-sources/bergman-geodesic/erdos-herzog-piranian-1958-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/bergman-geodesic/erdos-herzog-piranian-1958-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/bergman-geodesic/erdos-herzog-piranian-1958-source-closure.md"
       ]
     },
     {

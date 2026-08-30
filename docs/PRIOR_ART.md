@@ -212,7 +212,7 @@ grouped by the problem whose note they serve.
 
 ### #1041
 
-- P. Erdős, F. Herzog, and G. Piranian, *Metric properties of polynomials* (J. Analyse Math. 6 (1958), Problem 5, p. 139), doi:10.1007/BF02790232
+- P. Erdős, F. Herzog, and G. Piranian, *Metric properties of polynomials* (J. Analyse Math. 6 (1958), Problem 5, p. 139), doi:10.1007/BF02790232; see the [read source closure](primary-sources/bergman-geodesic/erdos-herzog-piranian-1958-source-closure.md)
 
   Original problem source, including the known input that one lemniscate component contains at least two zeros.
 
