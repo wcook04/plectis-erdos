@@ -43,6 +43,7 @@ METHODOLOGY_PATH = ROOT / "docs" / "methodology.json"
 MAIN_PAPER_TEX = ROOT / "paper" / "erdos249-257-main-paper.tex"
 MAIN_PAPER_PDF = ROOT / "erdos249-257-main-paper.pdf"
 PAPER_ALIASES_PATH = ROOT / "paper" / "module-aliases.json"
+PALOMAR_SHOWCASE_PATH = ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json"
 README_SCALE_BEGIN = "<!-- BEGIN generated_corpus_at_a_glance -->"
 README_SCALE_END = "<!-- END generated_corpus_at_a_glance -->"
 README_PRINCIPAL_BEGIN = "<!-- BEGIN generated_principal_declaration_anchors -->"
@@ -171,25 +172,70 @@ def build_selection_navigation(claims: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def build_mathematical_signal_first(claims: dict[str, Any]) -> list[dict[str, Any]]:
+    """Join Palomar's authored rank to source-current public interfaces."""
+    showcase = json.loads(PALOMAR_SHOWCASE_PATH.read_text(encoding="utf-8"))
+    ranking = showcase.get("candidate_ranking")
+    if not isinstance(ranking, list) or not ranking:
+        raise ValueError("Palomar showcase lacks candidate_ranking")
+    ranks = [row.get("rank") for row in ranking]
+    if sorted(ranks) != list(range(1, len(ranking) + 1)):
+        raise ValueError("Palomar candidate_ranking must use contiguous ranks")
+    family_ids = [row.get("family_id") for row in ranking]
+    if len(set(family_ids)) != len(family_ids):
+        raise ValueError("Palomar candidate_ranking must use unique family ids")
+
+    packet = claims.get("external_verification_packet")
+    main_results = packet.get("main_results") if isinstance(packet, dict) else None
+    if not isinstance(main_results, list) or not main_results:
+        raise ValueError("claims external_verification_packet lacks main_results")
+    by_wrapper: dict[str, dict[str, Any]] = {}
+    for result in main_results:
+        wrapper = result.get("wrapper_declaration")
+        if not isinstance(wrapper, str) or wrapper in by_wrapper:
+            raise ValueError("main_results wrapper declarations must be unique")
+        by_wrapper[wrapper] = result
+
+    signal: list[dict[str, Any]] = []
+    for candidate in sorted(ranking, key=lambda row: row["rank"]):
+        wrapper = candidate.get("declaration")
+        result = by_wrapper.get(wrapper)
+        if result is None:
+            raise ValueError(
+                "Palomar candidate_ranking declaration lacks a main_results row: "
+                f"{wrapper}"
+            )
+        if result.get("review_family") != candidate.get("family_id"):
+            raise ValueError(
+                "Palomar candidate family does not match its main_results family: "
+                f"{candidate.get('family_id')}"
+            )
+        signal.append(
+            {
+                "rank": candidate["rank"],
+                "family_id": candidate["family_id"],
+                "selection_status": candidate["selection_status"],
+                "interface": wrapper,
+                "source_declaration": result["original_declaration"],
+                "boundary": result["boundary"],
+            }
+        )
+    return signal
+
+
 def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str, Any]:
     """Project a bounded first-read capsule from the exhaustive owners."""
     principal_claims = []
     for claim in claims["claims"]:
         if not claim.get("readme_headline"):
             continue
+        # Keep only a first-read claim handle in the bounded orientation packet.
+        # Exact statements and declarations remain in the digest-bound claims
+        # document and are reachable from this claim id.
         row = {
             "id": claim["id"],
             "status": claim["status"],
-            "statement": claim["statement"],
             "paper_label": claim.get("paper_label"),
-            "declarations": [
-                {
-                    "name": declaration["name"],
-                    "module": declaration["module"],
-                    "line": declaration["line"],
-                }
-                for declaration in claim["declarations"]
-            ],
         }
         if claim.get("remaining_open_proposition_ids"):
             row["remaining_open_proposition_ids"] = claim["remaining_open_proposition_ids"]
@@ -204,7 +250,6 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
     for route in machine_paper["entrypoints"]:
         row: dict[str, Any] = {
             "id": route["id"],
-            "intent": route["intent"],
             "read": route["read"],
         }
         if route.get("title"):
@@ -252,6 +297,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         "authority_posture": "navigation_projection_not_proof_authority",
         "proof_authority": "Lean source checked by the pinned Lean kernel",
         "release_provenance": claims["release"]["public_projection"],
+        "mathematical_signal_first": build_mathematical_signal_first(claims),
         "release": {
             "version": claims["release"]["version"],
             "tag": claims["release"]["tag"],
@@ -359,7 +405,23 @@ def render_orientation_markdown(
         + ".",
         "",
         orientation["release_provenance"]["boundary"],
+        "",
+        "## Mathematical signal first",
+        "",
+        "This is Palomar's canonical `candidate_ranking` order, joined to the",
+        "source declaration and exact boundary in the external-verification",
+        "packet. It is a reader-priority signal, not a proof, novelty, or",
+        "problem-closure claim; every ranked family remains reachable below.",
+        "",
+        "| Rank | Family / status | Interface → source declaration | Exact boundary |",
+        "|---:|---|---|---|",
     ]
+    for row in orientation["mathematical_signal_first"]:
+        lines.append(
+            f"| {row['rank']} | `{row['family_id']}` / `{row['selection_status']}` | "
+            f"`{row['interface']}` → `{row['source_declaration']}` | "
+            f"{row['boundary']} |"
+        )
     # REUSE-IgnoreEnd
     lines.extend(
         [
@@ -367,7 +429,7 @@ def render_orientation_markdown(
             "## What a claim status asserts",
             "",
             "A status states the exact public evidence claim, not a priority or novelty claim.",
-            "The authored prior-art record, not this table, is the source for antecedents.",
+            "The prior-art record, not this table, supplies antecedents.",
             "",
             "| Status | Exact public meaning |",
             "|---|---|",
@@ -394,17 +456,11 @@ def render_orientation_markdown(
             "## Scale",
             "",
             "Navigation inventory, not results. Generated certificate shards are",
-            "counted as formal source, never as separate mathematical claims.",
-            "",
-            "| Surface | Count |",
-            "|---|---:|",
-            "| Supported Lean roots | `Erdos249257.lean`, `ErdosProblems.lean` |",
-            "| Problems in the public corpus | #68, #243, #249, #251, #257, #269, #1041, #1049 |",
-            f"| Lean modules | {scale['module_count']:,} |",
-            f"| Lean declarations | {scale['declaration_count']:,} |",
-            f"| Theorem-like declarations | {scale['theorem_like_count']:,} |",
-            f"| Manifest-marked generated declarations (a floor, not the share) | {scale['generated_certificate_declaration_count']:,} |",
-            f"| Principal claim links | {scale['principal_claim_link_count']:,} |",
+            "counted as formal source, never as separate mathematical claims. The",
+            f"two roots currently expose {scale['module_count']:,} modules and",
+            f"{scale['declaration_count']:,} declarations across #68, #243, #249,",
+            "#251, #257, #269, #1041, and #1049; exact counts and atlas handles",
+            "remain in `docs/orientation.json`.",
             "",
             "The exhaustive declaration and import index is",
             "[`docs/declaration_atlas.json`](declaration_atlas.json).",
@@ -415,7 +471,7 @@ def render_orientation_markdown(
             "",
             "## Mathematical programme routes",
             "",
-            "Programme routes are bounded reading handles, not extra claims; their",
+            "Programme routes are bounded handles, not extra claims; their",
             "exact focus and claim ceiling are returned by the canonical route packet.",
         ]
     )
@@ -470,55 +526,27 @@ def render_orientation_markdown(
             "disposition, declarations, and boundary.",
         ]
     )
-    lines.extend(["", "## Principal claim routes", ""])
-    lines.extend(
-        [
-            "| Claim | Status | Paper |",
-            "|---|---|---|",
-        ]
-    )
-    for claim in orientation["principal_claims"]:
-        lines.append(
-            f"| `{claim['id']}` | {claim['status']} | `{claim['paper_label']}` |"
-        )
     lines.extend(
         [
             "",
-            "Each row is only an entry handle. Read the claim statement and every attached",
-            "declaration in [`docs/claims.json`](claims.json), then follow the paper label into",
-            "the authored exposition. A conditional reduction or finite instance does not",
-            "settle the open proposition attached to it.",
+            "## Principal claim routes",
             "",
-            "The first Lean anchor of each claim, in table order, as claim id,",
-            "declaration name, then source coordinate:",
-            "",
-            "```text",
-        ]
-    )
-    # A declaration name is an unbreakable token, so it sets a table column floor
-    # wide enough to squash every other column. A fenced block scrolls inside
-    # itself and keeps the name copy-paste clean.
-    # Same order as the table above; the claim id is the shared key.
-    for index, claim in enumerate(orientation["principal_claims"]):
-        if index:
-            lines.append("")
-        first = claim["declarations"][0]
-        lines.append(claim["id"])
-        lines.append(f"    {first['name']}")
-        lines.append(f"    {first['module']}:{first['line']}")
-    lines.extend(
-        [
-            "```",
+            "Principal claim handles are preserved",
+            "in [`docs/orientation.json`](orientation.json); exact statements and",
+            "all declarations remain in [`docs/claims.json`](claims.json). Query a",
+            "claim with `python3 scripts/query_corpus.py --claim <claim_id>`.",
+            "A conditional reduction or finite instance does not settle its open",
+            "proposition; the ranked families above are the first signal, not a",
+            "replacement for the exact claim registry.",
             "",
             "## Read by intent",
             "",
         ]
     )
     for route in orientation["reading_routes"]:
-        paths = " → ".join(f"`{path}`" for path in route["read"])
-        title = route.get("title") or route["intent"]
+        title = route.get("title") or route["id"]
         lines.append(
-            f"- **{title}** (`{route['id']}`): {paths}; "
+            f"- **{title}** (`{route['id']}`): "
             f"`python3 scripts/query_corpus.py --route {route['id']}`"
         )
     lines.extend(
@@ -554,16 +582,8 @@ def render_orientation_markdown(
             "```sh",
             "python3 scripts/query_corpus.py --format card",
             "python3 scripts/query_corpus.py --claim denominator_exclusion",
-            "python3 scripts/query_corpus.py --paper-label res:farey",
-            "python3 scripts/query_corpus.py --open remaining_open.unbounded_certificate_supply",
-            "python3 scripts/query_corpus.py --declaration irrational_erdosSum_full_support",
-            "python3 scripts/query_corpus.py --module Erdos249257/CertificateKernel.lean",
-            "python3 scripts/query_corpus.py --module CerKer",
             "python3 scripts/query_corpus.py --route instant_orientation",
             "python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic",
-            "python3 scripts/query_corpus.py --overview",
-            "python3 scripts/query_corpus.py --publication-family <family_id>",
-            'python3 scripts/query_corpus.py --search "what remains open for 257" --limit 5',
             "```",
             "",
         ]
@@ -787,7 +807,8 @@ def build() -> dict[str, Any]:
     }
     principal_declaration_handles = [
         {"claim_id": claim["id"], **declaration}
-        for claim in orientation["principal_claims"]
+        for claim in claims["claims"]
+        if claim.get("readme_headline")
         for declaration in claim["declarations"]
     ]
     # The descriptor is a registration envelope, so its principal-claim rows
@@ -983,7 +1004,16 @@ def build() -> dict[str, Any]:
                 ).get("posture"),
                 "full_graph": "docs/claims.json::machine_readable_paper.module_graph",
             },
-            "argument_graph": machine_paper["argument_graph"],
+            # Keep the relation vocabulary and a cheap size signal in the
+            # registration envelope.  The complete edge list is already
+            # authoritative in the digest-bound claims document; embedding it
+            # here made the envelope grow past its public 64 KB limit as the
+            # publication assembly gained current families.
+            "argument_graph": {
+                "edge_semantics": machine_paper["argument_graph"]["edge_semantics"],
+                "edge_count": len(machine_paper["argument_graph"]["edges"]),
+                "full_graph": "docs/claims.json::machine_readable_paper.argument_graph",
+            },
             "methodology_capsule": {
                 "path": "docs/methodology.json",
                 "human_projection": "METHODOLOGY.md",
@@ -1075,6 +1105,7 @@ def build() -> dict[str, Any]:
                 "compact_graph.claims": "compact_graph.principal_claims; expand through docs/claims.json or query_corpus.py",
                 "compact_graph.module_graph": "compact_graph.module_topology; expand through docs/claims.json::machine_readable_paper.module_graph",
                 "compact_graph.high_salience_declarations": "compact_graph.principal_declaration_handles; expand through docs/declaration_atlas.json or query_corpus.py",
+                "compact_graph.argument_graph.edges": "compact_graph.argument_graph edge_semantics and edge_count; expand through docs/claims.json::machine_readable_paper.argument_graph",
                 "compact_graph.methodology_capsule extended fields": "docs/methodology.json",
             },
         },

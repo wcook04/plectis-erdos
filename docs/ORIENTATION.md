@@ -19,10 +19,29 @@ Public evidence of that release workflow: pinned formal-source identity; claim a
 
 The workflow provenance explains the release discipline; it does not imply hidden proof authority or equivalence with private work.
 
+## Mathematical signal first
+
+This is Palomar's canonical `candidate_ranking` order, joined to the
+source declaration and exact boundary in the external-verification
+packet. It is a reader-priority signal, not a proof, novelty, or
+problem-closure claim; every ranked family remains reachable below.
+
+| Rank | Family / status | Interface → source declaration | Exact boundary |
+|---:|---|---|---|
+| 1 | `known_irrational_supports` / `selected` | `Erdos249257.ExternalVerification.irrational_erdosSum_full_support` → `Erdos249257.irrational_erdosSum_full_support` | This is the classical full-support theorem, not universal Erdos #257. |
+| 2 | `pairwise_coprime_support` / `represented` | `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime` → `Erdos249257.irrational_erdosSupportSeries_pairwise_coprime` | This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit. |
+| 3 | `orthogonal_petal_sunflower_reduction` / `represented` | `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` → `Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` | This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem. |
+| 4 | `periodic_nonnegative_weight_irrationality` / `represented` | `Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic` → `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic` | This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed. |
+| 5 | `actual_lcm_orbit_separation` / `represented` | `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` → `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` | The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open. |
+| 6 | `first_harmonic_pivot_decomposition` / `represented` | `Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation` → `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation` | The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed. |
+| 7 | `factorial_carry_characterisation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` → `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` | The equivalence does not supply a cofinal carry producer. |
+| 8 | `prime_gap_reformulation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap` → `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap` | The equivalence does not prove irrationality of either series. |
+| 9 | `totient_kernel_rank` / `subordinate` | `Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel` → `Erdos249257.not_finiteDimensional_span_fullTotientKernel` | The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved. |
+
 ## What a claim status asserts
 
 A status states the exact public evidence claim, not a priority or novelty claim.
-The authored prior-art record, not this table, is the source for antecedents.
+The prior-art record, not this table, supplies antecedents.
 
 | Status | Exact public meaning |
 |---|---|
@@ -36,11 +55,17 @@ The authored prior-art record, not this table, is the source for antecedents.
 
 ## Exact open boundary
 
+- `remaining_open.erdos_68_irrationality` — Prove that S = ∑_{n≥2} 1/(n! − 1) is irrational.
 - `remaining_open.erdos_249_irrationality` — Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.
+- `remaining_open.erdos_251_irrationality` — Prove that Π = ∑_{n≥1} p_n/2ⁿ is irrational; the exact tail-shift equivalence and prime-gap constraints do not supply the required cofinal escape.
 - `remaining_open.unbounded_certificate_supply` — Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.
 - `remaining_open.half_value_membership` — Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.
 - `remaining_open.twenty_one_permanent_affine_supercapacity` — Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.
 - `remaining_open.universal_257_all_infinite_supports` — Prove irrationality for every infinite support A, not only the named support families formalised here.
+- `remaining_open.erdos_269_three_prime_irrationality` — Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three; the rationality-to-carry bridge and cofinal window escape remain open.
+- `remaining_open.erdos_1041_lemniscate_connection` — Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.
+- `remaining_open.erdos_1049_irrationality` — Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.
+- `remaining_open.erdos_243_eventual_recurrence` — Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.
 
 ## Where the substance is
 
@@ -55,24 +80,18 @@ The authored prior-art record, not this table, is the source for antecedents.
 ## Scale
 
 Navigation inventory, not results. Generated certificate shards are
-counted as formal source, never as separate mathematical claims.
-
-| Surface | Count |
-|---|---:|
-| Supported Lean roots | `Erdos249257.lean`, `ErdosProblems.lean` |
-| Problems in the public corpus | #68, #243, #249, #251, #257, #269, #1041, #1049 |
-| Lean modules | 1,023 |
-| Lean declarations | 153,320 |
-| Theorem-like declarations | 151,085 |
-| Manifest-marked generated declarations (a floor, not the share) | 8,171 |
-| Principal claim links | 333 |
+counted as formal source, never as separate mathematical claims. The
+two roots currently expose 1,023 modules and
+153,320 declarations across #68, #243, #249,
+#251, #257, #269, #1041, and #1049; exact counts and atlas handles
+remain in `docs/orientation.json`.
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json).
 
 ## Mathematical programme routes
 
-Programme routes are bounded reading handles, not extra claims; their
+Programme routes are bounded handles, not extra claims; their
 exact focus and claim ceiling are returned by the canonical route packet.
 
 Open one programme with
@@ -103,7 +122,7 @@ and its natural next friction remain visible. The remaining families are not
 discarded: their exact authored dispositions stay in the descriptor for
 complete drilldown.
 
-Flagship families: 7; gateway cohort: 15; lower-signal families: 6;
+Flagship families: 7; gateway cohort: 15; lower-signal families: 15;
 the flagship is a visibility tier, and no order in any bucket is a significance ranking.
 Use `python3 scripts/query_corpus.py --publication-architecture` for the
 selection decisions and `python3 scripts/query_corpus.py --publication-family
@@ -113,99 +132,34 @@ disposition, declarations, and boundary.
 
 ## Principal claim routes
 
-| Claim | Status | Paper |
-|---|---|---|
-| `eb_full_support` | formalised here | `res:full` |
-| `eb_constant` | formalised here | `res:full` |
-| `support_families` | formalised here | `res:support` |
-| `denominator_exclusion` | formalised here | `res:farey` |
-| `certificate_reduction` | conditional reduction | `res:diag` |
-| `certificate_completeness` | proved here | `res:pointwisecomplete` |
-| `certified_kill_instances` | verified finite instance | `res:deposits` |
-| `diagonal_pincer_reduction` | conditional reduction | `res:fulltargetavoidance` |
-| `adelic_height_obstruction` | proved here | `res:adelic` |
-| `all_base_totient_kernel_index_reduction` | proved here | `None` |
-| `sublog_zero_windows` | proved here | `res:sublog` |
-| `greedy_achievement_geometry` | formalised here | `res:greedy` |
-
-Each row is only an entry handle. Read the claim statement and every attached
-declaration in [`docs/claims.json`](claims.json), then follow the paper label into
-the authored exposition. A conditional reduction or finite instance does not
-settle the open proposition attached to it.
-
-The first Lean anchor of each claim, in table order, as claim id,
-declaration name, then source coordinate:
-
-```text
-eb_full_support
-    irrational_erdosSum_full_support
-    Erdos249257/CertificateKernel.lean:8328
-
-eb_constant
-    irrational_erdosBorwein_series
-    Erdos249257/CertificateKernel.lean:8335
-
-support_families
-    erdos257_family_factorial_instance
-    Erdos249257/CertificateKernel.lean:6082
-
-denominator_exclusion
-    tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
-    Erdos249257/CertificateKernel.lean:18384
-
-certificate_reduction
-    irrational_totient_series_of_certificate_supply
-    Erdos249257/TotientTailPeriodKiller.lean:394
-
-certificate_completeness
-    exists_certifiedKill_iff_tail_diff_notMem_int
-    Erdos249257/LcmConeFlatness.lean:316
-
-certified_kill_instances
-    certifiedKill_all_small
-    Erdos249257/TotientTailPeriodKiller.lean:404
-
-diagonal_pincer_reduction
-    diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget
-    Erdos249257/DiagonalPincerDecomposition.lean:215
-
-adelic_height_obstruction
-    scalarLocalization_complement_dvd
-    Erdos249257/AdelicHeightObstruction.lean:23
-
-all_base_totient_kernel_index_reduction
-    totient_pow_mul_eq
-    Erdos249257/TotientKernelReduction.lean:60
-
-sublog_zero_windows
-    supportCoeffZeroWindow_length_le_eps_logb_add
-    Erdos249257/SublogDivisorCoverage.lean:392
-
-greedy_achievement_geometry
-    volume_mersenneAchievementSet
-    Erdos249257/GreedyAchievementSet.lean:996
-```
+Principal claim handles are preserved
+in [`docs/orientation.json`](orientation.json); exact statements and
+all declarations remain in [`docs/claims.json`](claims.json). Query a
+claim with `python3 scripts/query_corpus.py --claim <claim_id>`.
+A conditional reduction or finite instance does not settle its open
+proposition; the ranked families above are the first signal, not a
+replacement for the exact claim registry.
 
 ## Read by intent
 
-- **Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.** (`instant_orientation`): `docs/orientation.json` → `SCOPE.md`; `python3 scripts/query_corpus.py --route instant_orientation`
-- **Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.** (`agent_native_corpus_navigation`): `docs/AGENT_WORKBENCH.md` → `docs/SEMANTIC_COMPILER.md` → `docs/semantic/lab/README.md`; `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
-- **Browse bounded claim handles by exact registry status.** (`browse_claim_status`): `docs/orientation.json` → `SCOPE.md`; `python3 scripts/query_corpus.py --route browse_claim_status`
-- **Trace one mathematical claim from exposition to checked source.** (`follow_one_claim`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route follow_one_claim`
-- **See how the #249 reduction, #257 families, carry trunk, and open targets relate.** (`understand_argument_topology`): `docs/orientation.json` → `docs/SOURCE_MAP.md`; `python3 scripts/query_corpus.py --route understand_argument_topology`
-- **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route erdos257_half_story`
-- **#249 certificate and harmonic interface** (`erdos249_certificate_story`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route erdos249_certificate_story`
-- **Classical and structured support irrationality** (`structured_support_families`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route structured_support_families`
-- **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic`
-- **Boolean Möbius carry and global rationality constraints** (`boolean_mobius_constraints`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route boolean_mobius_constraints`
-- **Transport, curvature, phase separation, and no-go results** (`transport_curvature_programme`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route transport_curvature_programme`
-- **Mersenne–Lambert identities and obstruction interfaces** (`lambert_obstruction_interfaces`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route lambert_obstruction_interfaces`
-- **Coprimality probability, gcd moments, and Stern–Brocot geometry** (`probabilistic_gcd_geometry`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route probabilistic_gcd_geometry`
-- **Half-carry compactness, windows, seams, and finite propagation** (`half_carry_compactness_programme`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route half_carry_compactness_programme`
-- **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`): `docs/orientation.json`; `python3 scripts/query_corpus.py --route arithmetic_obstruction_interfaces`
-- **Understand the cited mathematical sources, their precise relationship to the release, and the priority boundary.** (`trace_prior_art`): `docs/PRIOR_ART.md`; `python3 scripts/query_corpus.py --route trace_prior_art`
-- **Understand the mathematical method, the evidence required for claim transitions, and the exact remaining open propositions.** (`understand_methodology_and_open_boundary`): `METHODOLOGY.md` → `SCOPE.md`; `python3 scripts/query_corpus.py --route understand_methodology_and_open_boundary`
-- **Modify a formal or editorial surface without allowing status or source coordinates to drift.** (`change_or_verify_release`): `AGENTS.md` → `CONTRIBUTING.md`; `python3 scripts/query_corpus.py --route change_or_verify_release`
+- **instant_orientation** (`instant_orientation`): `python3 scripts/query_corpus.py --route instant_orientation`
+- **agent_native_corpus_navigation** (`agent_native_corpus_navigation`): `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
+- **browse_claim_status** (`browse_claim_status`): `python3 scripts/query_corpus.py --route browse_claim_status`
+- **follow_one_claim** (`follow_one_claim`): `python3 scripts/query_corpus.py --route follow_one_claim`
+- **understand_argument_topology** (`understand_argument_topology`): `python3 scripts/query_corpus.py --route understand_argument_topology`
+- **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`): `python3 scripts/query_corpus.py --route erdos257_half_story`
+- **#249 certificate and harmonic interface** (`erdos249_certificate_story`): `python3 scripts/query_corpus.py --route erdos249_certificate_story`
+- **Classical and structured support irrationality** (`structured_support_families`): `python3 scripts/query_corpus.py --route structured_support_families`
+- **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`): `python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic`
+- **Boolean Möbius carry and global rationality constraints** (`boolean_mobius_constraints`): `python3 scripts/query_corpus.py --route boolean_mobius_constraints`
+- **Transport, curvature, phase separation, and no-go results** (`transport_curvature_programme`): `python3 scripts/query_corpus.py --route transport_curvature_programme`
+- **Mersenne–Lambert identities and obstruction interfaces** (`lambert_obstruction_interfaces`): `python3 scripts/query_corpus.py --route lambert_obstruction_interfaces`
+- **Coprimality probability, gcd moments, and Stern–Brocot geometry** (`probabilistic_gcd_geometry`): `python3 scripts/query_corpus.py --route probabilistic_gcd_geometry`
+- **Half-carry compactness, windows, seams, and finite propagation** (`half_carry_compactness_programme`): `python3 scripts/query_corpus.py --route half_carry_compactness_programme`
+- **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`): `python3 scripts/query_corpus.py --route arithmetic_obstruction_interfaces`
+- **trace_prior_art** (`trace_prior_art`): `python3 scripts/query_corpus.py --route trace_prior_art`
+- **understand_methodology_and_open_boundary** (`understand_methodology_and_open_boundary`): `python3 scripts/query_corpus.py --route understand_methodology_and_open_boundary`
+- **change_or_verify_release** (`change_or_verify_release`): `python3 scripts/query_corpus.py --route change_or_verify_release`
 
 ## Drill down
 
@@ -237,14 +191,6 @@ URLs, module context, and attached claims.
 ```sh
 python3 scripts/query_corpus.py --format card
 python3 scripts/query_corpus.py --claim denominator_exclusion
-python3 scripts/query_corpus.py --paper-label res:farey
-python3 scripts/query_corpus.py --open remaining_open.unbounded_certificate_supply
-python3 scripts/query_corpus.py --declaration irrational_erdosSum_full_support
-python3 scripts/query_corpus.py --module Erdos249257/CertificateKernel.lean
-python3 scripts/query_corpus.py --module CerKer
 python3 scripts/query_corpus.py --route instant_orientation
 python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic
-python3 scripts/query_corpus.py --overview
-python3 scripts/query_corpus.py --publication-family <family_id>
-python3 scripts/query_corpus.py --search "what remains open for 257" --limit 5
 ```
