@@ -241,6 +241,7 @@
       "2 <= b"
     ],
     "conclusion": "Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))",
+    "open_boundary": "This proves the full-support series only; irrationality for every infinite support in Erdős #257 remains open.",
     "hard_mechanism": "The source proof closes a weighted divisor-block certificate pipeline: a bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail control, and explicit parameter closure. The local theorem is the final consumer of that completed machine.",
     "why_this_is_the_showcase": "It is the strongest direct and unconditional endpoint result in the committed Comparator spine: a canonical full-support member of Erdős #257 with a visible completed mechanism and a clean statement-isolated Challenge type. Its classical attribution is disclosed, not hidden, and does not diminish its review value.",
     "attribution": "The source docstring records Erdős (1948) for the full-support theorem; the local Lean proof is the proof authority, while the cited source and repository prior-art ledger supply attribution and statement-fidelity context.",

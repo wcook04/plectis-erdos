@@ -144,6 +144,9 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
     )
     assert showcase["candidate_selection"]["family_id"] == "known_irrational_supports"
+    assert showcase["candidate_selection"]["exact_hypotheses"] == ["2 <= b"]
+    assert showcase["candidate_selection"]["open_boundary"]
+    assert showcase["candidate_selection"]["limitations"]
     assert showcase["candidate_universe"]["declarations"] == comparator["theorem_names"]
     assert set(showcase["candidate_universe"]["declarations"]) == set(names)
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
@@ -167,6 +170,24 @@ def test_adversarial_candidate_universe_drop_is_not_silently_accepted() -> None:
     assert any("candidate universe" in error for error in errors)
 
 
+def test_adversarial_selection_semantics_drop_is_not_silently_accepted() -> None:
+    showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
+    comparator = json.loads(
+        subprocess.check_output(["git", "show", "HEAD:verification/comparator.json"], cwd=ROOT)
+    )
+    damaged = copy.deepcopy(showcase)
+    damaged["candidate_selection"].pop("open_boundary")
+    errors = checker.candidate_selection_errors(comparator, damaged)
+    assert errors
+    assert any("open_boundary" in error for error in errors)
+
+    damaged = copy.deepcopy(showcase)
+    damaged["selection_comparison"][0].pop("reason")
+    errors = checker.candidate_selection_errors(comparator, damaged)
+    assert errors
+    assert any("selection comparison" in error for error in errors)
+
+
 def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
     showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
     comparator = json.loads(
@@ -188,5 +209,6 @@ if __name__ == "__main__":
     test_normal_and_optimised_checker_agree()
     test_full_current_roster_and_eight_problem_crosswalk()
     test_adversarial_candidate_universe_drop_is_not_silently_accepted()
+    test_adversarial_selection_semantics_drop_is_not_silently_accepted()
     test_adversarial_roster_drop_is_not_silently_accepted()
     print("palomar qualification tests: ok")

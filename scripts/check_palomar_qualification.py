@@ -286,6 +286,49 @@ def candidate_selection_errors(
             if not isinstance(contract.get(field), str) or not contract[field].strip():
                 errors.append(f"selection contract lacks {field}")
 
+    selected_record = showcase.get("candidate_selection")
+    if not isinstance(selected_record, dict):
+        errors.append("showcase lacks the selected candidate record")
+    else:
+        for field in (
+            "declaration",
+            "source_declaration",
+            "source_file",
+            "source_anchor",
+            "statement",
+            "conclusion",
+            "open_boundary",
+            "hard_mechanism",
+            "why_this_is_the_showcase",
+            "attribution",
+        ):
+            if not isinstance(selected_record.get(field), str) or not selected_record[field].strip():
+                errors.append(f"selected candidate lacks exact {field}")
+        for field in ("exact_hypotheses", "limitations"):
+            values = selected_record.get(field)
+            if (
+                not isinstance(values, list)
+                or not values
+                or not all(isinstance(value, str) and value.strip() for value in values)
+            ):
+                errors.append(f"selected candidate lacks exact {field}")
+
+    comparison = showcase.get("selection_comparison")
+    if not isinstance(comparison, list) or not comparison:
+        errors.append("showcase lacks nearest-alternative selection dispositions")
+    else:
+        for index, row in enumerate(comparison, 1):
+            if not isinstance(row, dict):
+                errors.append(f"selection comparison row {index} is not an object")
+                continue
+            for field in ("declaration", "family_id", "disposition", "reason"):
+                if not isinstance(row.get(field), str) or not row[field].strip():
+                    errors.append(f"selection comparison row {index} lacks {field}")
+            if row.get("declaration") not in names:
+                errors.append(
+                    f"selection comparison row {index} names a declaration absent from Comparator"
+                )
+
     ranking = showcase.get("candidate_ranking")
     if not isinstance(ranking, list) or not ranking:
         errors.append("showcase lacks a ranked candidate spine")
