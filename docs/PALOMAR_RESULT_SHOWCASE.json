@@ -5,10 +5,10 @@
     "claim_registry": "docs/claims.json",
     "proof_authority": "Lean source checked by the pinned kernel",
     "comparator_authority": "HEAD:verification/comparator.json",
-    "comparator_sha256": "bba1ab6dbdbe7d4005750569ac472adebe42a505b8c34a1f1f4286a337c0b139",
-    "comparator_theorem_count": 51,
+    "comparator_sha256": "e9b0bd1d2f0f986c337bf541b1fd72a972a25a4e6e7c31f5213c3b206b336ce7",
+    "comparator_theorem_count": 52,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "31503c7323788cdfbde466ffd4aba8cbf026e7572e806bdf62d8173257d214a1",
+    "source_review_matrix_sha256": "3899ee6ef99eeef098d0976c0d2a4b1600154f47c7171f48c2fe16d1a4a17292",
     "source_review_family_count": 69,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -17,6 +17,7 @@
       "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
       "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
       "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+      "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
       "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
       "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
       "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
@@ -109,7 +110,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "31503c7323788cdfbde466ffd4aba8cbf026e7572e806bdf62d8173257d214a1",
+    "source_review_matrix_sha256": "3899ee6ef99eeef098d0976c0d2a4b1600154f47c7171f48c2fe16d1a4a17292",
     "source_review_family_count": 69,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -133,11 +134,11 @@
     ],
     "comparator_screen": {
       "authority": "HEAD:verification/comparator.json",
-    "comparator_sha256": "bba1ab6dbdbe7d4005750569ac472adebe42a505b8c34a1f1f4286a337c0b139",
-    "theorem_count": 51,
+    "comparator_sha256": "e9b0bd1d2f0f986c337bf541b1fd72a972a25a4e6e7c31f5213c3b206b336ce7",
+    "theorem_count": 52,
       "roster_field": "candidate_universe.declarations",
       "partition": "candidate_value_dispositions.eligible_groups",
-    "semantic_role": "Exact 51-row evidence/eligibility/admission screen nested inside the wider source universe; it does not define candidate-universe membership."
+    "semantic_role": "Exact 52-row evidence/eligibility/admission screen nested inside the wider source universe; it does not define candidate-universe membership."
     },
     "declarations": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
@@ -145,6 +146,7 @@
       "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
       "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
       "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+      "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
       "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
       "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
       "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
@@ -258,11 +260,12 @@
           "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
           "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
           "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+          "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
           "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
           "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
           "Erdos249257.ExternalVerification.coefficientOnlyNoGo"
         ],
-        "reason": "These newly registered representatives preserve ten distinct source-current families: the retained synthetic #249 fixed-precision no-go, the #251 coefficient-only negative method, signed #243 centered-state recovery, abstract #251 dyadic-tail classification, sharp model-specific #1049 rectangular Hermite–Padé threshold equality, #249 orbit-level carry anti-compression, the #257 Boolean–Möbius support reconstruction and exact-row dynamics routes, the #257 half-membership seam classification, and the #269 weighted-phase residue observer. Each is represented with exact hypotheses and open producer/no-go boundaries, not promoted to a universal endpoint proof."
+        "reason": "These newly registered representatives preserve eleven distinct source-current families: the retained synthetic #249 fixed-precision no-go, the #251 coefficient-only negative method, the two distinct signed #243 recovery criteria, abstract #251 dyadic-tail classification, sharp model-specific #1049 rectangular Hermite–Padé threshold equality, #249 orbit-level carry anti-compression, the #257 Boolean–Möbius support reconstruction and exact-row dynamics routes, the #257 half-membership seam classification, and the #269 weighted-phase residue observer. Each is represented with exact hypotheses and open producer/no-go boundaries, not promoted to a universal endpoint proof."
       },
       {
         "disposition": "subordinate",
@@ -421,7 +424,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"],
         "comparator_declaration": "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful representative is committed in ExternalVerification at 4932144a, registered in the committed 51-row verification/comparator.json screen, and bound to the canonical review matrix family totient_carry_anti_compression. Supporting carry-kernel, modular-periodicity, forcing-vanishing, and geometric-orbit rows are mechanisms and contrary evidence, not separate families.",
+        "transport_admission_boundary": "The source-faithful representative is committed in ExternalVerification at 4932144a, registered in the committed 52-row verification/comparator.json screen, and bound to the canonical review matrix family totient_carry_anti_compression. Supporting carry-kernel, modular-periodicity, forcing-vanishing, and geometric-orbit rows are mechanisms and contrary evidence, not separate families.",
         "statement": "Under the non-irrationality branch for the binary totient series, a positive multiplier v and tempered integral carry u exist with common eventual modular periodicity for every dyadic section, while the canonical carry-kernel rank is at least 2^e - 1 at every level.",
         "exact_hypotheses": [
           "The representative assumes ¬ Irrational (binaryCoeffSeries Nat.totient), with the exact positive multiplier, tempered integer carry, and dyadic-section definitions from TotientTailCarryPeriod.lean.",
@@ -460,7 +463,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo", "Erdos249257.ExternalVerification.vu_step_has_centred_completion", "Erdos249257.ExternalVerification.vu_word_has_prefix_locked_completion"],
         "comparator_declaration": "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful fixed-precision representative is committed in ExternalVerification at 0c982671, registered in the committed 51-row HEAD:verification/comparator.json screen, and bound to the canonical fixed_precision_transport_no_go review family at 9d43aa4e; the one-step and finite-word completion declarations are subordinate mechanism evidence, not extra families.",
+        "transport_admission_boundary": "The source-faithful fixed-precision representative is committed in ExternalVerification at 0c982671, registered in the committed 52-row HEAD:verification/comparator.json screen, and bound to the canonical fixed_precision_transport_no_go review family at 9d43aa4e; the one-step and finite-word completion declarations are subordinate mechanism evidence, not extra families.",
         "statement": "At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state, so bounded local signatures cannot exclude all finite centred endpoints.",
         "exact_hypotheses": [
           "The construction ranges over every finite word of odd valuation-unit symbols at a fixed positive precision and permits arbitrary incoming integer/high quotient states.",
@@ -499,7 +502,7 @@
         "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
         "transport_declarations": ["Erdos249257.ExternalVerification.coefficientOnlyNoGo"],
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful #251 representative is committed in ExternalVerification at c9d36603 and registered in the committed 51-row verification/comparator.json screen; the canonical coefficient_only_no_go review family is bound at 4c4ac3f9. The transport records the finite carry identity and two non-eventual-periodicity facts, not a Lean infinite-limit theorem or an endpoint proof.",
+        "transport_admission_boundary": "The source-faithful #251 representative is committed in ExternalVerification at c9d36603 and registered in the committed 52-row verification/comparator.json screen; the canonical coefficient_only_no_go review family is bound at 4c4ac3f9. The transport records the finite carry identity and two non-eventual-periodicity facts, not a Lean infinite-limit theorem or an endpoint proof.",
         "statement": "The finite rational carry partial-sum identity and non-eventual-periodicity of the synthetic carry coefficients, contrasted with non-eventual periodicity of actual consecutive-prime gaps, show why coefficient irregularity alone cannot force irrationality.",
         "exact_hypotheses": [
           "For every n, the rational carry emitted by K(j) = j has partial sum -n / 2^n.",
@@ -573,7 +576,7 @@
         "limitations": [
           "This sharp no-go is restricted to the explicit rectangular two-function exponent model and does not construct approximating polynomials or remainders.",
           "It is not a universal Padé or Hermite-Padé no-go and proves no irrationality at 3/2 or any general rational-base endpoint.",
-          "The exact f52f903a ExternalVerification transport is registered by the committed 51-row Comparator representative; the canonical review matrix represents it under height_and_pade_arithmetic."
+          "The exact f52f903a ExternalVerification transport is registered by the committed 52-row Comparator representative; the canonical review matrix represents it under height_and_pade_arithmetic."
         ],
         "reason": "Represented after source-current value review: this is a sharp, high-signal model-specific #1049 no-go with an isolated equality endpoint and clear natural friction. It is consolidated under the canonical height_and_pade_arithmetic family, with its representative now admitted to the committed Comparator screen; the analytic remainder/nonvanishing problem remains open, so it stays below direct endpoint families.",
         "reversal_evidence": "A source-faithful Comparator registration preserves representation; only a genuinely broader no-go, analytic nonvanishing result, or direct rational-base endpoint with equal evidence certainty could elevate or reorder it."
@@ -593,7 +596,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.tailShift_integral_iff_den_dvd_mersenne", "Erdos249257.ExternalVerification.tailShift_integral_iff_two_pow_modEq_one", "Erdos249257.ExternalVerification.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift", "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral"],
         "comparator_declaration": "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The exact abstract classification transport is registered by its source-faithful representative in the committed verification/comparator.json 51-row screen; the canonical review matrix carries dyadic_tail_integrality_classification, while integral_shift_classification and the existing prime-gap equivalence remain distinct.",
+        "transport_admission_boundary": "The exact abstract classification transport is registered by its source-faithful representative in the committed verification/comparator.json 52-row screen; the canonical review matrix carries dyadic_tail_integrality_classification, while integral_shift_classification and the existing prime-gap equivalence remain distinct.",
         "statement": "For integer-digit dyadic tail recurrences, denominator/Mersenne divisibility classifies integral positive shifts, while eventual integrality gives the exact rationality obstruction and the complementary nonintegrality normal form.",
         "exact_hypotheses": [
           "DyadicTailRecurrence supplies the recurrence needed for tailShift_integral_iff_den_dvd_mersenne.",
@@ -627,7 +630,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry", "Erdos249257.ExternalVerification.BooleanMobiusCarryCertificate", "Erdos249257.ExternalVerification.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit", "Erdos249257.ExternalVerification.one_div_oddOrder_le_reciprocalMass_of_support_fraction", "Erdos249257.ExternalVerification.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction", "Erdos249257.ExternalVerification.supportCoeffZeroWindow_length_le_eps_logb_add"],
         "comparator_declaration": "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The exact Boolean–Möbius transport is committed in ExternalVerification at 712bc4c3 and registered as a source-faithful representative in the committed 51-row verification/comparator.json screen; the canonical review matrix carries boolean_mobius_carry as a distinct family from shifted_odd_tail_state.",
+        "transport_admission_boundary": "The exact Boolean–Möbius transport is committed in ExternalVerification at 712bc4c3 and registered as a source-faithful representative in the committed 52-row verification/comparator.json screen; the canonical review matrix carries boolean_mobius_carry as a distinct family from shifted_odd_tail_state.",
         "statement": "For p : ℤ and q > 0, a nonempty normalized positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate exists.",
         "exact_hypotheses": [
           "p : ℤ, q > 0, 0 ∉ A, and A has the explicit nonempty positive-index support witness required by the equivalence.",
@@ -666,7 +669,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips"],
         "comparator_declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful #257 Boolean–Möbius exact-row representative is committed in ExternalVerification at 0502b7eb (building on ec787e64), registered in the committed 51-row HEAD:verification/comparator.json screen at admission commit 8a08768f, and bound to the canonical review matrix; the cofinal positive-skip premise remains unproved and is not supplied by registration.",
+        "transport_admission_boundary": "The source-faithful #257 Boolean–Möbius exact-row representative is committed in ExternalVerification at 0502b7eb (building on ec787e64), registered in the committed 52-row HEAD:verification/comparator.json screen at admission commit 8a08768f, and bound to the canonical review matrix; the cofinal positive-skip premise remains unproved and is not supplied by registration.",
         "statement": "If positive rational-greedy skips occur cofinally in the declared sense, the skipped-core construction supplies cofinally many exact local Mersenne half rows and hence (1 / 2 : ℝ) belongs to the Mersenne achievement set.",
         "exact_hypotheses": [
           "CofinalPositiveHalfGreedySkips means that for every N there is c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c.",
@@ -703,7 +706,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse"],
         "comparator_declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful #257 seam classification is committed in ExternalVerification at 7511c208, registered in the committed 51-row HEAD:verification/comparator.json screen, and bound to the canonical half_membership_seam_classification review matrix family at 0c2f4473; the remaining nine source equivalences are subordinate classification evidence, not extra Comparator families.",
+        "transport_admission_boundary": "The source-faithful #257 seam classification is committed in ExternalVerification at 7511c208, registered in the committed 52-row HEAD:verification/comparator.json screen, and bound to the canonical half_membership_seam_classification review matrix family at 0c2f4473; the remaining nine source equivalences are subordinate classification evidence, not extra Comparator families.",
         "statement": "Membership of 1/2 in the Mersenne achievement set is exactly equivalent to unbounded false successor terminal bits, the unbounded upper-or-middle seam branch, cofinal terminal-false positions, unbounded skipped ranks along the integer seam, infinite greedy skipped support, and the absence of a last half-greedy skip.",
         "exact_hypotheses": [
           "The concrete Mersenne achievement-set, seam-greedy, terminal-bit, upper-or-middle, skipped-rank, and greedy-skipped-support definitions are those of HalfCylinderHalfMembershipClassification.lean.",
@@ -723,6 +726,42 @@
         "ranked_above": ["erdos257_boolean_mobius_exact_row_dynamics", "shifted_odd_tail_state"],
         "reason": "Represented after the canonical claims event and committed Comparator fan-in: this is a high-signal endpoint-facing iff classification that identifies the exact seam boundary and is stronger than the one-way positive-skip producer, but it remains below unconditional endpoints because no global terminal-false or half-membership witness is supplied.",
         "reversal_evidence": "A direct unconditional proof of half-membership or refutation, or a source-current exact producer supplying the classified unbounded seam condition with equal evidence certainty, would trigger a fresh ranking; a weaker one-way positive-skip row or additional finite exact rows would not."
+      },
+      {
+        "candidate_id": "erdos243_negative_mass_recovery",
+        "family_id": "negative_mass_recovery",
+        "disposition": "represented",
+        "prior_disposition": "deferred",
+        "canonical_family_binding": "negative_mass_recovery",
+        "canonical_claim_commit": "6bedcde3554f5d00ce58bd9921d54be4f19ff34c",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
+        "source_transport_commit": "39d0c4bd6cb7e7c5322d4e21e65e7cba982700f5",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"],
+        "comparator_declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+        "supporting_comparator_declarations": [],
+        "transport_admission_boundary": "The source-faithful #243 representative is committed in ExternalVerification at 39d0c4bd and registered in the committed 52-row verification/comparator.json screen; the canonical negative_mass_recovery review family is bound at 6bedcde3. The transport records the exact summability criterion and its recovery conclusion, not the original-orbit hypotheses or a #243 endpoint.",
+        "source_declaration": "ErdosProblems.Erdos243.tail_growth_le_one_add_negativeRelativeMass; ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass; ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+        "source_file": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+        "source_anchor": "45; 155; 175",
+        "statement": "Under the exact reciprocal-tail C/D dynamics, positive tail, strict centered-step equation, division-free normalized vanishing, and summable normalized negative centered mass, the centered state vanishes eventually and the orbit follows the Sylvester recurrence eventually.",
+        "exact_hypotheses": [
+          "a,D : ℕ → ℤ and C : ℕ → ℕ retain the declared next-denominator and next-tail dynamics, with C n > 0.",
+          "The strict centered-step equation and division-free normalized vanishing hypotheses are retained exactly.",
+          "Summable (negativeRelativeMass C (fun n ↦ centeredState (a n) (D n) (C n))) is assumed."
+        ],
+        "conclusion": "Finite normalized negative mass forces eventual centered-state zero and then eventual Sylvester recurrence; it does not prove those hypotheses for the original #243 orbit.",
+        "hard_mechanism": "The tail-growth bound by 1 + negativeRelativeMass feeds the finite-negative-mass stabilization theorem, which kills the centered defect and recovers Sylvester dynamics.",
+        "attribution": "This is the source-current #243 negative_mass_recovery family canonically exposed at 6bedcde3 from SparseResetRecovery.lean and transported by the committed ExternalVerification batch at 39d0c4bd; novelty, priority, significance, and external review remain unassessed.",
+        "limitations": [
+          "The criterion assumes the exact dynamics, positivity, strict centered step, division-free normalized vanishing, and summable negativeRelativeMass; it does not establish them for the original Erdős #243 orbit.",
+          "It supplies no prime-specific producer, no unconditional #243 endpoint, and no reciprocal-tail irrationality result; any surviving canonical orbit must have divergent normalized negative mass.",
+          "It is distinct from centered_state_dynamics because summability replaces the uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
+        ],
+        "source_landscape_rank_relative_to": "Below direct endpoint families and the represented uniform-lower-bound centered-state recovery, but above routine finite searches: it replaces a pointwise lower bound by a summability mechanism while preserving the conditional producer gap.",
+        "reason": "Represented as one subordinate, source-current analytic recovery family after the exact Comparator transport: it has a stronger mechanism than a routine finite check, but supplies neither the original-orbit hypotheses nor a #243 endpoint.",
+        "reversal_evidence": "A proof of the original-orbit summability or a direct reciprocal-tail endpoint could promote its ranking, while another finite negative-mass calculation would not; a duplicate transport row would not change the disposition."
       },
       {
         "candidate_id": "erdos243_centered_state_recovery",
@@ -1165,6 +1204,12 @@
       "reason": "The committed source-faithful representative exposes the signed centered-state recovery theorem with exact natural C/D dynamics, strict centered margin, lower bound, and normalized vanishing; the centered-zero and Sylvester recovery lemmas remain subordinate, and no reciprocal-tail irrationality follows."
     },
     {
+      "declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+      "family_id": "negative_mass_recovery",
+      "disposition": "supporting_conditional_recovery",
+      "reason": "The exact transport packages the summability-based tail-growth and centered-state stabilization criterion; it is one coherent #243 analytic recovery family, not an unconditional endpoint or a duplicate of the uniform-lower-bound recovery family."
+    },
+    {
       "declaration": "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
       "family_id": "weighted_phase_carry_observer",
       "disposition": "supporting_mechanism",
@@ -1253,11 +1298,12 @@
       "status": "open",
       "frontier_summary": "Exact product-cleared tail dynamics and no-go results for bounded or periodic negative-error regimes are checked.",
       "open_boundary": "The unrestricted reciprocal-tail problem and arbitrary unbounded negative behaviour.",
-      "comparator_declarations": [
-        "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
-        "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
-        "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero"
-      ]
+        "comparator_declarations": [
+          "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
+          "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
+          "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+          "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+        ]
     },
     {
       "problem": 249,

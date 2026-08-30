@@ -340,6 +340,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos249_carry_anti_compression",
         "erdos249_fixed_precision_transport_no_go",
         "erdos243_centered_state_recovery",
+        "erdos243_negative_mass_recovery",
         "weighted_phase_carry_observer",
         "erdos257_boolean_mobius_exact_row_dynamics",
         "erdos257_half_membership_seam_classification",
@@ -574,7 +575,32 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "#251 endpoint" in " ".join(coefficient["limitations"])
     assert "routine finite searches" in coefficient["reason"]
     assert "verification/comparator.json" in coefficient["transport_admission_boundary"]
-    assert "51-row" in coefficient["transport_admission_boundary"]
+    assert "52-row" in coefficient["transport_admission_boundary"]
+    negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]
+    assert negative_mass["family_id"] == "negative_mass_recovery"
+    assert negative_mass["disposition"] == "represented"
+    assert negative_mass["prior_disposition"] == "deferred"
+    assert negative_mass["canonical_family_binding"] == "negative_mass_recovery"
+    assert negative_mass["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert negative_mass["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert negative_mass["canonical_claim_commit"] == (
+        "6bedcde3554f5d00ce58bd9921d54be4f19ff34c"
+    )
+    assert negative_mass["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+    )
+    assert negative_mass["comparator_declaration"] in comparator["theorem_names"]
+    assert negative_mass["source_transport_commit"] == (
+        "39d0c4bd6cb7e7c5322d4e21e65e7cba982700f5"
+    )
+    assert negative_mass["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+    ]
+    assert "Summable" in " ".join(negative_mass["exact_hypotheses"])
+    assert "negativeRelativeMass" in negative_mass["hard_mechanism"]
+    assert "prime-specific producer" in " ".join(negative_mass["limitations"])
+    assert "unconditional #243 endpoint" in " ".join(negative_mass["limitations"])
+    assert "52-row" in negative_mass["transport_admission_boundary"]
 
 
 def test_adversarial_source_transport_family_merge_is_not_silently_accepted() -> None:
