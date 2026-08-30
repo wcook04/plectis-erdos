@@ -28,6 +28,20 @@ authored navigation: it does not strengthen a claim, replace
 `docs/claims.json`, or close an exact remaining-open proposition. Erdős #249
 and the universal form of #257 remain open.
 
+## Signal-first reviewed spine
+
+Use the current [Palomar result showcase](PALOMAR_RESULT_SHOWCASE.json) for the
+source-reviewed family universe and its selected, represented, subordinate,
+deferred, rejected, and long-tail dispositions. It is a selection projection,
+not a claim count or proof authority. The generated [verification dossier](EXTERNAL_VERIFICATION.md#mathematical-signal-spine)
+expands the same spine with exact declarations, hard mechanisms, evidence
+classes, and surviving boundaries. Its ranked path starts with the completed
+full-support #257 result, then the conditional actual-LCM and first-harmonic
+#249 routes, followed by the actual-prime-gap #251 and local-window #269
+reductions; use the matrix below to return to #68, #243, #1041, or #1049.
+Support lemmas remain subordinate to their family, and every conditional
+producer or bridge remains explicit.
+
 ## #1041 / source-current frontier
 
 Problem #1041 has a second, source-only navigation route in addition to the
@@ -68,14 +82,17 @@ Nothing in this route settles #1041; the exact continuation boundary is in
 ## Complete eight-problem return matrix
 
 The per-problem [machine index](problems.json) is the source for the complete
-module, paper, and open-obligation inventories. This single matrix makes the
-same route bidirectional: start at a public problem id, reach the strongest
-checked source and paper record, then use the exact index handles to resume the
-open boundary; a paper or source reader can return with the `--route` command
-in the second column. The checked sources under `ErdosProblems.lean` are exact
-Lean propositions, not reviewed claim-registry entries. For #249 and #257, the
-reviewed route is an additional registered claim spine, not a replacement for
-the problem-owned index route.
+module, paper, and open-obligation inventories. Expand each row's
+`what_is_checked` and `what_is_not_checked` fields before treating its strongest
+checked source as the whole result inventory: they are the evidence ceiling,
+not additional claims. This single matrix makes the same route bidirectional:
+start at a public problem id, reach the strongest checked source and paper
+record, then use the exact index handles to resume the open boundary; a paper
+or source reader can return with the `--route` command in the second column.
+The checked sources under `ErdosProblems.lean` are exact Lean propositions,
+not reviewed claim-registry entries. For #249 and #257, the reviewed route is
+an additional registered claim spine, not a replacement for the problem-owned
+index route.
 
 | Problem | Problem return / source back-route | Strongest checked source | Paper and source record | Exact open boundary |
 |---|---|---|---|---|
@@ -148,6 +165,28 @@ Lean propositions rather than reviewed public mathematical claims.
   `python3 scripts/query_corpus.py --claim stern_brocot_cylinder_law`; both
   expose the explanation and reverse source links. The exact boundary is
   unchanged: this identity does not settle #249.
+
+- **All-base totient-kernel reduction, spanning, and conditional rank**
+  (`all_base_totient_kernel_index_reduction`) —
+  [`TotientKernelConditional.lean`](../Erdos249257/TotientKernelConditional.lean#L102)
+  gives the unconditional canonical spanning theorem, while
+  [`finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent`](../Erdos249257/TotientKernelConditional.lean#L215)
+  gives rank `k^e + 1` only under the explicit linear-independence hypothesis.
+  That independence, and Martin's external positive-density theorem, are not
+  formalised here; this algebraic boundary does not prove irrationality of
+  #249. Retrieve the full claim/source record with
+  `python3 scripts/query_corpus.py --claim all_base_totient_kernel_index_reduction`,
+  then return to the open problem with
+  `python3 scripts/query_corpus.py --route erdos_249`.
+
+- **Prime-ray cyclotomic support escape** (`prime_ray_resultant_supply`) —
+  [`PrimeRayCyclotomicCurvature.lean`](../ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L95)
+  turns bounded-degree order divisibility and eventual nontrivial clean layers
+  into finite-support escape and cofinal unbounded prime divisors. Its bounded
+  order is an existence of an exponent witness, not exact order. The actual
+  totient layer/resultant bridge and the route from unbounded prime support to
+  certificate or carry escape remain open; the Mersenne-only instantiation in
+  `CyclotomicAnchoredKill.lean:33-105` does not close #249 or justify novelty.
 
 ## #249 / certificate reductions
 
