@@ -12344,6 +12344,20 @@
             "boundary": "The concrete prime-gap producer remains missing."
           },
           {
+            "id": "dyadic_tail_integrality_classification",
+            "contribution_class": "abstract Lean-checked classification and normal form; novelty unassessed",
+            "summary": "For any integer-digit dyadic tail recurrence T(N+1) = 2*T(N) - g(N+1), the rational h-shift is integral exactly when the reduced denominator of T(N) divides 2^h - 1, equivalently when 2^h is congruent to 1 modulo that denominator. For the real recurrence, the load-bearing normal form says that irrationality of T(0) is equivalent to every positive tail shift being nonintegral; the eventual-integrality equivalence and denominator/order laws are supporting mechanism evidence.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne",
+              "ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one",
+              "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+              "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral"
+            ],
+            "boundary": "These exact statements cover arbitrary integer-digit dyadic tail recurrences with the declared rational and real state types; they classify integrality and give an irrationality normal form but do not supply a cofinal nonintegral shift for the consecutive-prime-gap recurrence. The generic hypotheses therefore do not close the prime-specific producer gap: no prime-gap irrationality, novelty, significance, or external review is claimed, and Erdős #251 remains open. This is one abstract classification family, distinct from prime_gap_reformulation, not a duplicate frontier claim."
+          },
+          {
             "id": "totient_shift_propagation",
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.",
