@@ -138,6 +138,30 @@ def check_replay_path_boundary(tmp: Path) -> None:
 def check_replay_receipt_boundary(tmp: Path) -> None:
     """Replay must not compare a fresh run against forged receipt provenance."""
     sessions_root = tmp / "replay-receipt-sessions"
+    workbench.cmd_open(
+        type(
+            "Args",
+            (),
+            {
+                "sessions_root": sessions_root,
+                "session": "empty-replay",
+                "actor": "outsider",
+                "intent": "empty evidence",
+            },
+        )(),
+        workbench.repo_root(),
+    )
+    empty_result = workbench.cmd_replay(
+        type(
+            "Args",
+            (),
+            {"sessions_root": sessions_root, "session": "empty-replay"},
+        )(),
+        workbench.repo_root(),
+    )
+    assert empty_result["probes_replayed"] == 0
+    assert not empty_result["all_match"]
+
     cases = (
         (
             "unknown-verdict",

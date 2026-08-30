@@ -757,7 +757,7 @@ def cmd_replay(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         "at": _utc_now(),
         "environment_fingerprint": environment_fingerprint(root),
         "probes_replayed": len(results),
-        "all_match": all(
+        "all_match": bool(results) and all(
             row.get("replay") == "match" for row in results
         ),
         "results": results,
