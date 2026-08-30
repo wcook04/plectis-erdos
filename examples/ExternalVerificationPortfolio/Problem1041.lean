@@ -15,6 +15,7 @@ namespace ExternalVerificationPortfolio.Problem1041
 
 #check Erdos249257.ExternalVerification.exists_small_translation_separating_arguments
 #check Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk
+#check Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean
 
 /-- An injective finite family can be translated by an arbitrarily small
 amount so that no value is zero and no two values share a positive ray. -/
@@ -41,5 +42,18 @@ theorem constant_perturbation_preserves_open_unit_disk
     ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1 :=
   Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk
     f hf hdeg hsplit hρ hroots hε hmargin hshift
+
+/-- Logarithmic critical balance selects two distinct roots whose distances
+from the critical point total at most twice the geometric mean scale.  This
+is a Euclidean metric budget; it supplies no lemniscate-contained path. -/
+theorem critical_balance_selects_two_roots_at_geomMean_scale
+    {n : ℕ} (hn : 2 ≤ n) (z : Fin n → ℂ) (c : ℂ)
+    (hne : ∀ k, c - z k ≠ 0)
+    (hcrit : ∑ k, (c - z k)⁻¹ = 0)
+    {r : ℝ} (hr : 0 < r) (hrn : r ^ n = ∏ k, ‖c - z k‖) :
+    ∃ i j : Fin n,
+      i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r :=
+  Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean
+    hn z c hne hcrit hr hrn
 
 end ExternalVerificationPortfolio.Problem1041
