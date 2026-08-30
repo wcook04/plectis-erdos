@@ -168,6 +168,11 @@ replacement for claim authority.
   `F_{r+3} + F_{r+1} · ∑ eᵢ`. These finite identities/inequalities do not
   establish analytic denominator survival or the unbounded family, so #249
   remains open.
+- The same gcd-moment source gives the exact visible-coprime lattice
+  normalization `∑ 1/(2ⁿ−1) = 1` over positive coprime pairs
+  (`tsum_pos_coprime_inv_mersenne_eq_one`). It supplies the reduced-direction
+  mass behind the fair-coin form of the totient constant, but is a rational
+  normalization identity, not an irrationality result.
 
 **#251 — is `∑ pₙ/2ⁿ` irrational?**
 
