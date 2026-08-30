@@ -5,11 +5,14 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 import tempfile
+from unittest import mock
 from pathlib import Path
 
 import check_release
+import validation_singleflight as singleflight
 
 
 def git(root: Path, *args: str) -> str:
@@ -19,6 +22,8 @@ def git(root: Path, *args: str) -> str:
         check=True,
         capture_output=True,
         text=True,
+        env=check_release.clean_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     ).stdout.strip()
 
 
@@ -34,8 +39,34 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_git_fixture_environment() -> None:
+    """Temporary Git fixtures must ignore caller selectors and remain bounded."""
+    completed = subprocess.CompletedProcess(
+        ["git"], returncode=0, stdout="fixture\n", stderr=""
+    )
+    hostile = {
+        key: f"/foreign/{key.lower()}"
+        for key in check_release.SANITIZED_GIT_ENVIRONMENT_KEYS
+    }
+    with mock.patch.dict(os.environ, hostile, clear=False):
+        with mock.patch.object(subprocess, "run", return_value=completed) as run_mock:
+            require(git(Path("/fixture"), "rev-parse", "HEAD") == "fixture", "fixture Git read failed")
+    call = run_mock.call_args
+    require(call is not None, "fixture Git helper did not invoke subprocess")
+    environment = call.kwargs["env"]
+    require(
+        all(key not in environment for key in check_release.SANITIZED_GIT_ENVIRONMENT_KEYS),
+        "fixture Git helper retained inherited Git selectors",
+    )
+    require(
+        call.kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "fixture Git helper omitted the shared timeout",
+    )
+
+
 def main() -> int:
     """A later worktree file must not satisfy a historical source reference."""
+    check_git_fixture_environment()
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
         git(root, "init", "-q")
