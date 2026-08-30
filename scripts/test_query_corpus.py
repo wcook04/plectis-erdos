@@ -731,6 +731,25 @@ def validate_route_memory_cards() -> None:
     ) in architecture_card
     assert "family_route | largest_skip_and_reset_deficit_frontier" not in architecture_card
 
+    overview_card = query_corpus.render_card(
+        query_corpus.repository_overview_packet()
+    )
+    assert (
+        "repository overview | problems=8 | programmes=10 | claims=103 "
+        "| exact_open=5"
+    ) in overview_card
+    assert (
+        "problem_route | #249 | resume=python3 scripts/query_route_memory.py "
+        "--problem 249"
+    ) in overview_card
+    assert (
+        "problem_route | #1041 | resume=python3 scripts/query_route_memory.py "
+        "--problem 1041"
+    ) in overview_card
+    assert sum(
+        line.startswith("problem_route | #") for line in overview_card.splitlines()
+    ) == 8
+
 
 def validate_connection_query_ranking() -> None:
     packet = query_corpus.connection_card(

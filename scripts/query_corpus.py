@@ -7255,22 +7255,28 @@ def render_card(packet: dict[str, Any]) -> str:
         return "\n".join(rows)
     if kind == "repository_overview":
         coverage = packet["coverage_receipt"]
-        return "\n".join(
+        rows = [
             (
-                (
-                    "repository overview | "
-                    f"problems={coverage['indexed_problem_count']} "
-                    f"| programmes={coverage['mathematical_programme_count']} "
-                    f"| claims={coverage['curated_claim_count']} "
-                    f"| exact_open={coverage['remaining_open_proposition_count']}"
-                ),
-                (
-                    "reading rule | weight reductions, reusable interfaces, "
-                    "and honest obstructions above raw theorem or file volume"
-                ),
-                "papers | command=python3 scripts/query_corpus.py --papers",
+                "repository overview | "
+                f"problems={coverage['indexed_problem_count']} "
+                f"| programmes={coverage['mathematical_programme_count']} "
+                f"| claims={coverage['curated_claim_count']} "
+                f"| exact_open={coverage['remaining_open_proposition_count']}"
+            ),
+            (
+                "reading rule | weight reductions, reusable interfaces, "
+                "and honest obstructions above raw theorem or file volume"
+            ),
+            "papers | command=python3 scripts/query_corpus.py --papers",
+        ]
+        for problem in packet.get("problem_fleet", []):
+            command = problem.get("route_memory")
+            if not isinstance(command, str) or not command:
+                continue
+            rows.append(
+                f"problem_route | #{problem['erdos_number']} | resume={command}"
             )
-        )
+        return "\n".join(rows)
     if kind == "paper_reading_guide":
         rows = [
             f"paper reading guide | papers={packet['paper_count']} "
