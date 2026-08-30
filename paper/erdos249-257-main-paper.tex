@@ -158,6 +158,19 @@ represents $1/21$; the quotient-greedy classification leaves one eventual
 affine-supercapacity regime unexcluded. Both memberships remain open. A
 shared Lambert-series change of variables transfers no irrationality theorem
 between the problems.
+
+The sharper \#249 frontier couples rank and period: on the non-irrational
+branch, one positive-multiplier carry has dyadic sections eventually periodic
+modulo $v$ while its canonical carry-kernel $\mathbb Q$-span has dimension at
+least $2^e-1$ at every level.  This necessary conjunction is checked at
+\lword{TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{the modular-period/rank frontier},
+not a contradiction.  Modulo any divisor of $v$ the forcing vanishes and
+$u_N\equiv2^Nu_0$
+(\lword{TotientTailCarryPeriod.lean}{126}{totient_forcing_vanishes_mod_of_dvd_multiplier}{forcing vanishing};
+\lword{TotientTailCarryPeriod.lean}{140}{totient_carry_modEq_geometric_of_dvd_multiplier}{geometric reduction}),
+so quotient periodicity gives no finite-$\mathbb Q$-rank upper bound; \#249
+remains open.
+
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -901,6 +914,20 @@ Appendix~\ref{app:carry-normal-form}
 separates that antecedent from the generic converse and rigidity statements
 formalised here.  Wang's density theorem and its Erd\H{o}s~\#260 corollary
 are not used.
+
+For the fixed totient input of \#249, the source-current refinement is a
+different, complementary frontier: the same rationality-supplied carry is
+simultaneously periodic in every dyadic section modulo one multiplier and
+unbounded in canonical carry-kernel rank.  The exact conjunction is
+\lword{TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{the modular-period/rank theorem}.
+It remains only a necessary consequence.  The reason it does not yield the
+missing contradiction is visible in the source: if $p\mid v$, the totient
+forcing vanishes modulo $p$ and $u_N\equiv2^N u_0$ there
+(\lword{TotientTailCarryPeriod.lean}{126}{totient_forcing_vanishes_mod_of_dvd_multiplier}{forcing vanishing};
+\lword{TotientTailCarryPeriod.lean}{140}{totient_carry_modEq_geometric_of_dvd_multiplier}{geometric reduction}),
+so modular periodicity does not control the finite $\mathbb Q$-rank that would
+be needed to contradict the lower bound.  No irrationality result for \#249 is
+claimed.
 
 \begin{corollary}[unbounded-state consequence]
 \label{res:rigidity-unbounded-main}

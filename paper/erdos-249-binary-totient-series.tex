@@ -181,6 +181,20 @@ current repository also verifies a diagonal tail certificate at every natural
 scale $t\le82$.  This aggregate is finite: it supplies neither an instance at
 $t=83$ nor an unbounded family.
 
+The sharper rationality frontier couples these two observations.  On the
+hypothetical non-irrational branch, one positive-multiplier tempered carry has
+all of its dyadic sections eventually periodic modulo one common multiplier
+$v$, while the $\mathbb Q$-span of its canonical carry kernels still has
+dimension at least $2^e-1$ at every level $e$.  This is the checked
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{modular-period/rank frontier},
+a necessary conjunction rather than a contradiction.  The natural friction is
+also exact: modulo any divisor of $v$, the totient forcing vanishes and the
+carry reduces to the geometric orbit $2^N u_0$
+(\mword{Erdos249257/TotientTailCarryPeriod.lean}{126}{totient_forcing_vanishes_mod_of_dvd_multiplier}{forcing vanishing};
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{140}{totient_carry_modEq_geometric_of_dvd_multiplier}{geometric reduction}).
+Thus quotient periodicity supplies no finite-$\mathbb Q$-rank upper bound;
+Problem~\#249 remains open.
+
 We also record exact equivalences between irrationality of $\Stot$ and
 cofinal tail-nonintegrality or certificate supplies.  These are lossless
 reformulations of the open problem, not evidence for the missing cofinal
@@ -394,6 +408,18 @@ proved for the scaled-tail sequences supplied by rationality.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/TotientCarryKernelRigidity.lean}{300}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
 \mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{rank transport from \ref{res:rank}}.}
+
+The orbit-level form sharpens this rank barrier without closing it: under the
+same non-irrationality hypothesis, the same carry also has uniformly eventual
+dyadic-section periodicity modulo $v$, as recorded by
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{the modular-period/rank frontier}.
+This does not turn quotient periodicity into a finite-$\mathbb Q$-rank bound.
+Indeed, if $p\mid v$, the totient forcing disappears modulo $p$ and the carry
+is the homogeneous geometric orbit $u_N\equiv2^N u_0$ modulo $p$
+(\mword{Erdos249257/TotientTailCarryPeriod.lean}{126}{totient_forcing_vanishes_mod_of_dvd_multiplier}{forcing vanishing};
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{140}{totient_carry_modEq_geometric_of_dvd_multiplier}{geometric reduction}).
+This is the natural obstruction to extracting the missing finite-rank upper
+bound, so the irrationality of $\Stot$ remains open.
 
 \item\label{res:weight} \stag{checked; no registry row}
 \textbf{The \#249 weight.}  $\Stot=\sum_{d\ge1}\Aw(d)/(2^d-1)$ with
