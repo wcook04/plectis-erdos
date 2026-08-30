@@ -259,6 +259,65 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("workbench accepted duplicate move ids")
 
+    move_id_sessions = (
+        (
+            "noncanonical-move-id",
+            [
+                {
+                    "schema": workbench.SESSION_SCHEMA,
+                    "move_id": "m001",
+                    "kind": "session_opened",
+                },
+                {
+                    "schema": workbench.MOVE_SCHEMA,
+                    "move_id": "move-two",
+                    "kind": "note",
+                    "note_kind": "observation",
+                    "text": "bad id",
+                },
+            ],
+        ),
+        (
+            "gapped-move-id",
+            [
+                {
+                    "schema": workbench.SESSION_SCHEMA,
+                    "move_id": "m001",
+                    "kind": "session_opened",
+                },
+                {
+                    "schema": workbench.MOVE_SCHEMA,
+                    "move_id": "m003",
+                    "kind": "note",
+                    "note_kind": "observation",
+                    "text": "skipped m002",
+                },
+            ],
+        ),
+        (
+            "zero-move-id",
+            [
+                {
+                    "schema": workbench.SESSION_SCHEMA,
+                    "move_id": "m000",
+                    "kind": "session_opened",
+                }
+            ],
+        ),
+    )
+    for session_name, move_id_rows in move_id_sessions:
+        move_id_session = workbench.Session(sessions_root, session_name)
+        move_id_session.directory.mkdir(parents=True)
+        for row in move_id_rows:
+            move_id_session.append(row)
+        try:
+            move_id_session.moves()
+        except SystemExit as error:
+            if "expected move id" not in str(error):
+                raise AssertionError(f"move-id confusion lacked a bounded diagnostic: {error}")
+        else:
+            raise AssertionError(f"workbench accepted malformed move ids in {session_name}")
+
     receipt_session = workbench.Session(sessions_root, "malformed-receipt")
     receipt_session.directory.mkdir(parents=True)
     rows = [

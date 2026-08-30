@@ -255,6 +255,12 @@ class Session:
                         f"duplicate move id {row['move_id']!r}"
                     )
                 seen_move_ids.add(row["move_id"])
+                expected_move_id = f"m{len(rows) + 1:03d}"
+                if row["move_id"] != expected_move_id:
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: "
+                        f"expected move id {expected_move_id!r}, got {row['move_id']!r}"
+                    )
                 if row["kind"] not in MOVE_KINDS:
                     raise SystemExit(
                         f"invalid workbench ledger row on line {line_number}: "
