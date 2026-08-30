@@ -71,6 +71,16 @@ vanish; in particular, a nonzero moment with all indices at least $d$ must
 cross the first breakpoint and include some index at least $2d$.  This is a
 finite support obstruction, not a cofinal construction.
 
+The evidence route is explicit rather than heuristic: the cofinal carry
+equivalence is kernel-checked at
+\lword{Erdos68/FactorialZeroPlateau.lean}{971}{irrational_factorialGapSeries_iff_cofinal_nonunit_carries}{the carry equivalence};
+the quotient-band obstruction at
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{91}{factorialMoment_eq_zero_of_channelNumerator_eq_zero_band}{the band-cancellation theorem};
+and the remote finite reduction at
+\lword{Erdos68/PrimeUnitTranslator.lean}{1657}{exists_remote_factorialGrid_primeTranslator_reduction}{the remote construction}.
+The first identifies the exact missing cofinal input, while the latter two
+remain finite mechanisms and do not supply it.
+
 No theorem constructs cofinally many non-unit carries, a cofinal family of
 strictly nonzero translated residuals, or the quantitative residue and scale
 bounds required by the endpoint arguments.  The note therefore proves a carry
