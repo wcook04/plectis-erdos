@@ -85,15 +85,48 @@ def sha256_bytes(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
 
 
+def _canonical_input_path(path: Path) -> Path:
+    """Resolve only the explicitly permitted macOS temporary aliases."""
+    candidate = Path(os.path.abspath(path))
+    if len(candidate.parts) >= 2:
+        alias = Path(os.sep, candidate.parts[1])
+        if _is_allowed_platform_alias(alias):
+            return alias.resolve(strict=True).joinpath(*candidate.parts[2:])
+    return candidate
+
+
+def _open_input_descriptor(path: Path) -> int:
+    """Open a release input relative to no-follow directory descriptors."""
+    directory_flags = os.O_RDONLY
+    directory_flags |= getattr(os, "O_CLOEXEC", 0)
+    directory_flags |= getattr(os, "O_DIRECTORY", 0)
+    directory_flags |= getattr(os, "O_NOFOLLOW", 0)
+    directory = os.open(os.sep, directory_flags)
+    try:
+        for component in path.parts[1:-1]:
+            child = os.open(component, directory_flags, dir_fd=directory)
+            try:
+                if not stat.S_ISDIR(os.fstat(child).st_mode):
+                    raise OSError(f"release input parent is not a directory: {path.parent}")
+            except BaseException:
+                os.close(child)
+                raise
+            os.close(directory)
+            directory = child
+        flags = os.O_RDONLY
+        flags |= getattr(os, "O_CLOEXEC", 0)
+        flags |= getattr(os, "O_NONBLOCK", 0)
+        flags |= getattr(os, "O_NOFOLLOW", 0)
+        return os.open(path.name, flags, dir_fd=directory)
+    finally:
+        os.close(directory)
+
+
 def _read_safe_bytes(path: Path, *, root: Path | None = None) -> bytes:
     """Read a release input through a no-follow, regular-file descriptor."""
-    candidate = safe_release_file(path, root=root)
-    flags = os.O_RDONLY
-    flags |= getattr(os, "O_CLOEXEC", 0)
-    flags |= getattr(os, "O_NONBLOCK", 0)
-    flags |= getattr(os, "O_NOFOLLOW", 0)
+    candidate = _canonical_input_path(safe_release_file(path, root=root))
     try:
-        descriptor = os.open(candidate, flags)
+        descriptor = _open_input_descriptor(candidate)
     except OSError as exc:
         raise ReleaseIdentityError(f"could not open release input safely: {candidate}") from exc
     try:

@@ -106,6 +106,47 @@ def test_release_file_boundary() -> None:
     private_tmp = Path("/private/tmp")
     temporary_root = str(private_tmp) if private_tmp.is_dir() else None
     with tempfile.TemporaryDirectory(
+        prefix="release-input-parent-race-", dir=temporary_root
+    ) as raw:
+        root = Path(raw)
+        raced_parent = root / "input-parent"
+        raced_parent.mkdir()
+        original_parent = root / "input-parent-original"
+        outside = root / "outside"
+        outside.mkdir()
+        raced_input = raced_parent / "manifest.json"
+        raced_input.write_text("inside\n", encoding="utf-8")
+        (outside / raced_input.name).write_text("outside\n", encoding="utf-8")
+        original_open = release.os.open
+
+        def swap_parent(
+            path: Path,
+            flags: int,
+            mode: int = 0o777,
+            *,
+            dir_fd: int | None = None,
+        ) -> int:
+            if dir_fd is not None and Path(path).name == raced_input.name:
+                raced_parent.rename(original_parent)
+                raced_parent.symlink_to(outside, target_is_directory=True)
+            if dir_fd is not None:
+                return original_open(path, flags, mode, dir_fd=dir_fd)
+            return original_open(path, flags, mode)
+
+        with patch.object(release.os, "open", side_effect=swap_parent):
+            observed = release._read_safe_bytes(raced_input)
+        require(
+            observed == b"inside\n",
+            "release input reader followed a swapped parent directory",
+        )
+        require(
+            (original_parent / raced_input.name).is_file(),
+            "release input reader did not use the held parent descriptor",
+        )
+
+    private_tmp = Path("/private/tmp")
+    temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+    with tempfile.TemporaryDirectory(
         prefix="external-release-parent-race-", dir=temporary_root
     ) as raw:
         root = Path(raw)
