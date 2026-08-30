@@ -373,7 +373,11 @@ def validate_return_receipt(
             continue
         for changed_index, item in enumerate(changed):
             _relative_path(item, f"{base}.changed_evidence[{changed_index}]", errors)
-        if len(changed) != len(set(changed)):
+        # Keep malformed JSON values on the validation-error path.  Calling
+        # ``set`` on a dict/list here would raise TypeError and crash the
+        # acceptance consumer instead of rejecting the sidecar safely.
+        hashable_paths = [item for item in changed if isinstance(item, str)]
+        if len(hashable_paths) != len(set(hashable_paths)):
             _error(errors, f"{base}.changed_evidence", "must not contain duplicates")
         if relation == "supersedes":
             if not changed:
@@ -392,7 +396,7 @@ def validate_return_receipt(
                     f"{base}.changed_evidence",
                     "return.repository.changed_paths must be a nonempty string list before supersession binding",
                 )
-            elif not set(changed).issubset(set(changed_paths)):
+            elif not set(hashable_paths).issubset(set(changed_paths)):
                 _error(errors, f"{base}.changed_evidence", "must be included in return.repository.changed_paths")
         elif changed:
             _error(errors, f"{base}.changed_evidence", "is only valid when the relationship is supersedes")

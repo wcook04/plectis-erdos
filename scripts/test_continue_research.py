@@ -305,6 +305,30 @@ def check_nested_return_shape_boundary() -> None:
     require(route_errors, "route-memory validator crashed or accepted a malformed frontier")
 
 
+def check_changed_evidence_shape_boundary() -> None:
+    """Malformed changed-evidence JSON must reject without crashing the rail."""
+    consultation = route_memory_receipt.consultation_for_problem(249, ROOT)
+    template = route_memory_receipt.return_receipt_template(consultation)
+    returned = {
+        "return_id": "rr-malformed-changed-evidence",
+        "frontier": {"problem": 249},
+        "repository": {"changed_paths": ["docs/example.txt"]},
+    }
+    for malformed in ({}, [], ["docs/example.txt", {}]):
+        value = json.loads(json.dumps(template))
+        value["return_id"] = returned["return_id"]
+        value["relationships"][0]["relationship"] = "supersedes"
+        value["relationships"][0]["changed_evidence"] = malformed
+        errors = route_memory_receipt.validate_return_receipt(
+            value, returned, consultation, ROOT
+        )
+        require(errors, "malformed changed_evidence escaped route-memory validation")
+        require(
+            any("changed_evidence" in error for error in errors),
+            "changed_evidence rejection omitted its field diagnostic",
+        )
+
+
 def check_start_session_path_boundary() -> None:
     """A start must reject a redirected sessions root before opening the workbench."""
     with tempfile.TemporaryDirectory(prefix="continue-start-path-") as temporary:
@@ -438,6 +462,7 @@ def main() -> int:
     check_malformed_utf8_inputs_rejected()
     check_route_memory_corpus_contract()
     check_nested_return_shape_boundary()
+    check_changed_evidence_shape_boundary()
     check_start_session_path_boundary()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"
