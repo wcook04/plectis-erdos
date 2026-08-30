@@ -165,6 +165,21 @@ corresponding `query_corpus.py` handle. These family rows are navigation
 context from `docs/claims.json`; they do not promote expansion material into
 reviewed claims or close an Erdős problem.
 
+To enumerate the exact anchors in a dedicated problem note, take its
+`paper.source` from the packet and run
+
+```sh
+python3 scripts/query_corpus.py --paper-source paper/erdos-<number>-<slug>.tex
+```
+
+This bounded discovery packet lists every section, theorem, proposition, and
+allowlisted result anchor found in that paper, with an exact
+`--paper-anchor <canonical_handle>` follow command for each one. It is an
+exposition-navigation projection: Lean source remains proof authority, and the
+claim registry remains the authority for claim status and result-family
+boundaries. Searching an exact review-matrix family id likewise returns its
+ranked family row with the problem route and dedicated-paper source route.
+
 `population-backlog` is the semantic authoring queue.  It scans every authored
 paper, resolves both public `\lword` links and reasoning-surface `\lean` links
 to exact live declaration roles, deduplicates qualified and short spellings,
