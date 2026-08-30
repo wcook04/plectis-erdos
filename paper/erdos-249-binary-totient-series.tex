@@ -85,6 +85,17 @@ odd-core span.  The companion row
 full rational span is not finite-dimensional.  These are structural
 coefficient-space results, not a rationality-to-finite-rank bridge.
 
+The release Comparator also selects the exact combinatorial stability row
+\texttt{runHeight\_defect\_fib\_sum\_lower}.  For every finite defect list
+$e$, it states
+\[
+  F_{|e|+3}+F_{|e|+1}\sum_{i\in e}i
+  \le \operatorname{runHeight}(\operatorname{defectRunLengths}(e)),
+\]
+where $F_j=\operatorname{fib}(j)$.  This is a finite Stern--Brocot run-height
+floor; it does not establish denominator survival, irrationality of $\Stot$,
+or a cofinal certificate supply.
+
 The same checked Lambert calculus also identifies the squared-Mersenne layer:
 the constant weight gives the dyadic divisor-count series
 \(\sum_{n\ge1}(\sigma(n)-\tau(n))2^{-n}\), while the totient weight gives
