@@ -12423,12 +12423,20 @@
             "boundary": "A finite-support denominator theorem does not settle an infinite-support sum."
           },
           {
-            "id": "rational_support_constraints",
-            "contribution_class": "conditional reduction",
-            "summary": "Rational infinite supports force unbounded scaled tails, sublogarithmic zero windows, and reciprocal-mass constraints.",
-            "evidence_mode": "Lean kernel",
-            "comparator_disposition": "not_selected_deep_support_vocabulary",
-            "boundary": "The constraints do not exclude every infinite support."
+            "id": "boolean_mobius_carry",
+            "contribution_class": "locally proved exact equivalence plus conditional consequences; novelty unassessed",
+            "summary": "For p : ℤ and q > 0, a nonempty normalized positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate U exists. The certificate has U 0 = p, positive U, the square-root bound U(N) ≤ q(2√N + 4), q-divisible carry differences, and a Boolean Möbius transform; the converse reconstructs the support from that transform. This quotient-level equivalence is distinct from the shifted natural-tail state family.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+              "Erdos249257.BooleanMobiusCarryCertificate",
+              "Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+              "Erdos249257.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+              "Erdos249257.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+              "Erdos249257.supportCoeffZeroWindow_length_le_eps_logb_add"
+            ],
+            "boundary": "The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made."
           },
           {
             "id": "shifted_odd_tail_state",
