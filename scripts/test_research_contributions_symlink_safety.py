@@ -102,6 +102,11 @@ def main() -> int:
             require("cannot be read safely" in str(exc), exc)
         else:
             raise AssertionError("receipt descriptor reader followed a symlink")
+        with patch.object(contributions, "has_symlink_component", return_value=False):
+            require(
+                not contributions.output_is_current(linked, b"{}"),
+                "output freshness check followed a substituted output file",
+            )
         fifo = root / "receipt.fifo"
         os.mkfifo(fifo)
         try:
@@ -110,6 +115,10 @@ def main() -> int:
             require("regular file" in str(exc), exc)
         else:
             raise AssertionError("receipt descriptor reader accepted a special file")
+        require(
+            not contributions.output_is_current(fifo, b"{}"),
+            "output freshness check accepted a special output file",
+        )
 
     original_root = recognition.ROOT
     with tempfile.TemporaryDirectory(prefix="recognition-schema-descriptor-safety-") as temporary:
