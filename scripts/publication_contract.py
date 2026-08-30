@@ -14,6 +14,8 @@ import tomllib
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 
 CONTRACT_PATH = "docs/publication_contract.json"
 EVIDENCE_PATH = "docs/publication_evidence.json"
@@ -30,6 +32,7 @@ MANUSCRIPT_LICENSE = "CC-BY-4.0"
 NOTE_ARTIFACT_CLASS = "problem_note"
 SPDX_LICENSE_HEADER = "SPDX-License-" "Identifier: "
 SCHEMA = "erdos249257-publication-contract/1"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 EVIDENCE_SCHEMA = "erdos249257-publication-evidence/1"
 ENTRY_SOURCE_SCHEMA = "erdos249257-publication-entry-source/1"
 ENTRY_PACKET_SCHEMA = "erdos249257-publication-entry-packet/1"
@@ -107,17 +110,24 @@ class RepositoryReader:
     def _git_spec(self, relative: str) -> str:
         return f":{relative}" if self.git_ref == ":" else f"{self.git_ref}:{relative}"
 
+    def _git_run(self, *args: str, text: bool = False) -> subprocess.CompletedProcess[Any]:
+        """Read a committed snapshot without inheriting ambient Git state."""
+        return subprocess.run(
+            ["git", *args],
+            cwd=self.root,
+            capture_output=True,
+            check=False,
+            text=text,
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+            env=singleflight.command_environment(),
+        )
+
     def read_bytes(self, relative: str) -> bytes:
         if relative in self.byte_overrides:
             return self.byte_overrides[relative]
         if self.git_ref is None:
             return (self.root / relative).read_bytes()
-        completed = subprocess.run(
-            ["git", "show", self._git_spec(relative)],
-            cwd=self.root,
-            capture_output=True,
-            check=False,
-        )
+        completed = self._git_run("show", self._git_spec(relative))
         if completed.returncode != 0:
             detail = completed.stderr.decode("utf-8", errors="replace").strip()
             raise FileNotFoundError(detail or relative)
@@ -135,22 +145,19 @@ class RepositoryReader:
 
     def git_object_exists(self, object_name: str) -> bool:
         return (
-            subprocess.run(
-                ["git", "cat-file", "-e", f"{object_name}^{{commit}}"],
-                cwd=self.root,
-                capture_output=True,
-                check=False,
+            self._git_run(
+                "cat-file",
+                "-e",
+                f"{object_name}^{{commit}}",
             ).returncode
             == 0
         )
 
     def is_shallow_repository(self) -> bool:
-        completed = subprocess.run(
-            ["git", "rev-parse", "--is-shallow-repository"],
-            cwd=self.root,
-            capture_output=True,
+        completed = self._git_run(
+            "rev-parse",
+            "--is-shallow-repository",
             text=True,
-            check=False,
         )
         return completed.returncode == 0 and completed.stdout.strip() == "true"
 
