@@ -116,6 +116,12 @@ analytic comparison controls the limiting foreign defect by that budget and
 the projected state stays farther from every integer, the full target is
 missed.  The comparison and any unbounded separated supply are not proved.
 
+At the actual power-of-two LCM heights, irrationality has an exact frontier:
+it is equivalent to cofinal non-integrality of the corresponding tail orbit.
+An independent unconditional sign corridor makes the obstruction sharper: an
+integral orbit forces its true survivor onto the top edge of the dyadic
+modulus, so sign alone cannot supply the central modular kill.
+
 One further obstruction is structural rather than analytic: for every LCM
 height, a nonzero synthetic dyadic coboundary survives every finite integer
 shift polynomial while retaining the relevant totient factor ideals and
@@ -518,6 +524,34 @@ an irrationality theorem.
 \mword{Erdos249257/ActualForeignResidueProjection.lean}{276}{abs_foreignTailWindow_le_foreignComplementBound}{finite complement bound},
 \mword{Erdos249257/ActualForeignResidueProjection.lean}{308}{finiteResidueDiagonal_eq_projectedForeign_add_divisor}{exact channel split},
 \mword{Erdos249257/ActualForeignResidueProjection.lean}{414}{scaleFullTarget_miss_of_projected_separation}{conditional target-miss consumer}.}
+
+\item\label{res:actualorbit} \stag{exact reformulation}
+\textbf{Actual LCM orbit frontier.}  Let
+$H_a=\lcm(1,\ldots,2^a)$ and
+$R_a=\operatorname{totientTail}(2H_a)-\operatorname{totientTail}(H_a)$.
+Then $\Stot$ is irrational if and only if, beyond every threshold $a_0$,
+some $a\ge a_0$ has $R_a\notin\Z$.  This is an exact cofinal
+non-integrality criterion for the actual LCM diagonal, not a quantitative
+separation estimate and not a proved supply of such indices.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/TotientActualLcmOrbitNonintegrality.lean}{37}{irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply}{exact frontier},
+\mword{Erdos249257/TotientActualLcmOrbitNonintegrality.lean}{53}{irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply}{consumer}.}
+
+\item\label{res:actualsign} \stag{unconditional progress}
+\textbf{Positive LCM corridor and top-edge boundary.}  For $a\ge8$ and
+$J+(a+6)<2\cdot2^a$, the true translated orbit difference
+$\operatorname{totientTail}(2H_a+J)-\operatorname{totientTail}(H_a+J)$ is
+strictly positive.  If it is represented by an integer and the dyadic
+modulus has room for the directed endpoint strip, the carry survivor is
+strictly negative and the discrepancy residue is exactly the top-edge
+representative $2^K-\text{carry}_K$, lying strictly between the strip's lower
+edge and $2^K$.  Thus the positive corridor eliminates the nonnegative true
+survivor but does not itself produce a central-band contradiction; an
+independent arithmetic exclusion of the top boundary is still required.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/TotientActualLcmOrbitSign.lean}{39}{actualLcmTailDiff_shift_pos}{positive corridor},
+\mword{Erdos249257/TotientActualLcmOrbitSign.lean}{172}{actualLcm_trueEndpointSurvivor_neg}{negative survivor},
+\mword{Erdos249257/TotientActualLcmOrbitSign.lean}{211}{actualLcm_integral_forces_topEdgeResidue}{top-edge residue}.}
 
 \item\label{res:factorideal} \stag{unconditional progress}
 \textbf{LCM factor-ideal shift-algebra no-go.}  For every $t\ge3$, with
@@ -1065,6 +1099,30 @@ analytic/arithmetic obligations.  No unbounded producer is claimed here.
 \mword{Erdos249257/ActualForeignResidueProjection.lean}{276}{abs_foreignTailWindow_le_foreignComplementBound}{finite complement bound},
 \mword{Erdos249257/ActualForeignResidueProjection.lean}{308}{finiteResidueDiagonal_eq_projectedForeign_add_divisor}{exact channel split},
 \mword{Erdos249257/ActualForeignResidueProjection.lean}{414}{scaleFullTarget_miss_of_projected_separation}{conditional target-miss consumer}.}
+
+\paragraph{The actual LCM orbit: exact frontier and sign trap.}
+For the actual diagonal, set $H_a=\lcm(1,\ldots,2^a)$ and
+$R_a=\operatorname{totientTail}(2H_a)-\operatorname{totientTail}(H_a)$.
+The formal criterion
+\mword{Erdos249257/TotientActualLcmOrbitNonintegrality.lean}{37}{irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply}{is exact}
+says that irrationality is equivalent to finding $R_a\notin\Z$ cofinally in
+$a$.  This is the sharp endpoint reformulation: it does not ask the orbit to
+stay a fixed distance from the integers, but it also supplies no such $a$.
+
+There is nonetheless an unconditional geometric constraint on any attempted
+certificate.  For $a\ge8$ and
+$J+(a+6)<2\cdot2^a$, the first lookahead letter in the short LCM window is
+positive and large enough to dominate the directed infinite remainder; the
+whole translated difference is therefore positive.  The checked argument
+uses the arithmetic positivity of the LCM-ray letters and the directed tail
+bound, not an assumption about the sign of a finite residue.  In an integral
+orbit this positivity is transported by the carry recurrence: the true
+survivor is negative, and, once the dyadic modulus exceeds the endpoint strip,
+the window residue is forced to the top edge rather than the central arc
+\mword{Erdos249257/TotientActualLcmOrbitSign.lean}{211}{actualLcm_integral_forces_topEdgeResidue}{by the exact top-edge theorem}.
+The sign corridor therefore removes one branch but exposes the remaining
+arithmetic task.  A proof must exclude this persistent top boundary (or find
+cofinal non-integrality); a sign-only modular kill is not available.
 
 \section{Obstructions for fixed-coordinate methods}\label{sec:nogo}
 
