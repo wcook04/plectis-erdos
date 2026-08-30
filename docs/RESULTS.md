@@ -114,7 +114,7 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 48 declarations in the committed Comparator roster
+The audit universe is the 49 declarations in the committed Comparator roster
 (`verification/comparator.json`). I ranked them by consequence, endpoint
 proximity, mechanism depth, genuine distinctness, external usefulness,
 digestion value, evidence certainty, natural friction, and overclaim risk—not
