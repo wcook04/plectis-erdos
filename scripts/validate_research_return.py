@@ -111,13 +111,15 @@ def path_has_symlink_component(path: Path) -> bool:
     root = Path(current.anchor)
     while True:
         if current.is_symlink():
-            # macOS exposes its temporary area through /var -> /private/var.
-            # Keep that platform-owned alias usable while rejecting every
-            # other symlink, including arbitrary filesystem-root parents.
             try:
+                platform_aliases = {
+                    Path("/tmp"): Path("/private/tmp"),
+                    Path("/var"): Path("/private/var"),
+                }
+                alias_target = platform_aliases.get(current)
                 platform_alias = (
-                    current == Path("/var")
-                    and current.resolve(strict=True) == Path("/private/var")
+                    alias_target is not None
+                    and current.resolve(strict=True) == alias_target
                 )
             except OSError:
                 platform_alias = False

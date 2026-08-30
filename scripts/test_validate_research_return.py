@@ -149,6 +149,13 @@ def main() -> int:
             "symlink rejection omitted its path-policy reason",
         )
 
+    with tempfile.TemporaryDirectory(dir="/tmp") as directory:
+        alias_path = Path(directory) / "return.json"
+        require(
+            not validator.path_has_symlink_component(alias_path),
+            "macOS /tmp alias was rejected for a valid return input",
+        )
+
     print("validate_research_return: submitted gate, accepted exclusion, path and CLI safety PASS")
     return 0
 
