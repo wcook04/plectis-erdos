@@ -382,7 +382,7 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "",
             "- Exact statuses, statements, paper anchors, declarations, and argument edges:",
             "  [`docs/claims.json`](claims.json)",
-            "- Source routes by mathematical question: [`docs/SOURCE_MAP.md`](SOURCE_MAP.md)",
+            "- Complete eight-problem proof/paper/source/frontier matrix: [`docs/SOURCE_MAP.md#complete-eight-problem-return-matrix`](SOURCE_MAP.md#complete-eight-problem-return-matrix)",
             "- Development chronology: [`docs/WAVE_INDEX.md`](WAVE_INDEX.md)",
             "- Human mathematical account: [`erdos249-257-main-paper.pdf`](../erdos249-257-main-paper.pdf)",
             "- Machine form of this page: [`docs/orientation.json`](orientation.json)",
