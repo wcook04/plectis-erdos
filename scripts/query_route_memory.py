@@ -46,6 +46,8 @@ class RouteMemoryError(ValueError):
 
 
 def _json(path: Path) -> dict[str, Any]:
+    if _path_has_symlink_component(path):
+        raise RouteMemoryError("unsafe_source_path", str(path))
     if not path.is_file() or path.is_symlink():
         raise RouteMemoryError("source_missing", str(path))
     try:
@@ -61,6 +63,8 @@ def _source_digests(root: Path) -> dict[str, str]:
     digests: dict[str, str] = {}
     for relative in SOURCE_FILES:
         path = root / relative
+        if _path_has_symlink_component(path):
+            raise RouteMemoryError("unsafe_source_path", relative)
         if not path.is_file() or path.is_symlink():
             raise RouteMemoryError("source_missing", relative)
         digests[relative] = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()

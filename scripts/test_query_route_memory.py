@@ -307,6 +307,28 @@ def main() -> int:
             )
         else:
             raise AssertionError("nested research symlink was accepted")
+    with tempfile.TemporaryDirectory(prefix="route-memory-docs-link-") as temp_dir:
+        source_root = Path(temp_dir)
+        outside = source_root / "outside"
+        outside.mkdir()
+        for relative in route_memory.SOURCE_FILES:
+            source = outside / Path(relative).relative_to("docs")
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_text("{}", encoding="utf-8")
+        (source_root / "docs").symlink_to(outside, target_is_directory=True)
+        for operation in (
+            lambda: route_memory._json(source_root / "docs" / "problems.json"),
+            lambda: route_memory._source_digests(source_root),
+        ):
+            try:
+                operation()
+            except route_memory.RouteMemoryError as exc:
+                require(
+                    exc.code == "unsafe_source_path",
+                    f"nested docs symlink returned {exc.code}",
+                )
+            else:
+                raise AssertionError("nested docs symlink was accepted")
     optimized = run_cli(
         "--problem", "257", "--format", "card", optimized=True, check=True
     )
