@@ -1305,6 +1305,84 @@ def check_probe_artifact_cleanup(tmp: Path) -> None:
     assert stored.read_text(encoding="utf-8") == source_path.read_text(encoding="utf-8")
 
 
+def check_probe_append_failure_cleanup(tmp: Path) -> None:
+    sessions_root = tmp / "append-cleanup-sessions"
+    _run(
+        sessions_root,
+        [
+            "open",
+            "--session",
+            "append-cleanup",
+            "--actor",
+            "outsider",
+            "--intent",
+            "append cleanup boundary",
+        ],
+    )
+    source_path = tmp / "append-cleanup.lean"
+    source_path.write_text("example : True := by trivial\n", encoding="utf-8")
+    real_runner = workbench.run_lean_probe
+    real_append = workbench.Session.append
+    receipt = {
+        "verdict": "kernel_accepted",
+        "detail": None,
+        "exit_code": 0,
+        "error_count": 0,
+        "sorry_count": 0,
+        "duration_seconds": 0.01,
+        "output_tail": "",
+    }
+    workbench.run_lean_probe = lambda root, source: receipt
+
+    def fail_probe_append(session, record):
+        if record.get("kind") == "probe":
+            raise SystemExit("cannot append workbench ledger: disk full")
+        return real_append(session, record)
+
+    workbench.Session.append = fail_probe_append
+    try:
+        try:
+            _run(
+                sessions_root,
+                [
+                    "probe",
+                    "--session",
+                    "append-cleanup",
+                    "--file",
+                    str(source_path),
+                ],
+            )
+        except SystemExit as error:
+            assert "cannot append workbench ledger" in str(error)
+        else:
+            raise AssertionError("append failure was not surfaced")
+    finally:
+        workbench.Session.append = real_append
+        workbench.run_lean_probe = real_runner
+
+    session = workbench.Session(sessions_root, "append-cleanup")
+    stored = sessions_root / "append-cleanup" / "probes" / "m002.lean"
+    assert [row["kind"] for row in session.moves()] == ["session_opened"]
+    assert not stored.exists(), "append failure left an unledgered probe artifact"
+
+    workbench.run_lean_probe = lambda root, source: receipt
+    try:
+        recovered = _run(
+            sessions_root,
+            [
+                "probe",
+                "--session",
+                "append-cleanup",
+                "--file",
+                str(source_path),
+            ],
+        )
+    finally:
+        workbench.run_lean_probe = real_runner
+    assert recovered["move_id"] == "m002"
+    assert stored.read_text(encoding="utf-8") == source_path.read_text(encoding="utf-8")
+
+
 def check_probe_source_snapshot(tmp: Path) -> None:
     sessions_root = tmp / "snapshot-sessions"
     _run(
@@ -1725,6 +1803,7 @@ def main() -> int:
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
         check_probe_artifact_cleanup(tmp)
+        check_probe_append_failure_cleanup(tmp)
         check_probe_source_snapshot(tmp)
         check_environment_fingerprint_failures(tmp)
         check_session_storage_failures(tmp)

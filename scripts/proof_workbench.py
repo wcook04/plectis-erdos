@@ -524,6 +524,18 @@ def _cleanup_unledgered_probe_artifact(stored: Path) -> str | None:
     return None
 
 
+def _probe_record_was_appended(session: Session, move_id: str) -> bool:
+    """Keep an artifact when an append error occurred after the record landed."""
+    try:
+        moves = session.moves()
+    except SystemExit:
+        return False
+    return any(
+        row.get("kind") == "probe" and row.get("move_id") == move_id
+        for row in moves
+    )
+
+
 def _validate_claim_evidence(
     session: Session, moves: list[dict[str, Any]], action: str
 ) -> None:
@@ -646,7 +658,16 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
             "kernel_receipt": receipt,
         }
     )
-    return session.append(record)
+    try:
+        return session.append(record)
+    except SystemExit as exc:
+        if _probe_record_was_appended(session, move_id):
+            raise
+        cleanup_error = _cleanup_unledgered_probe_artifact(stored)
+        detail = str(exc)
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
+        raise SystemExit(detail) from exc
 
 
 def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
