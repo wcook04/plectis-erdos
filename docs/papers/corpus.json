@@ -1166,7 +1166,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:d5c5c9b50f79540345a0ad8beab4882a14e871817c9b3e40d2d4c6a44b981621",
+      "source_sha256": "sha256:c4b792b62330fdfbb4bbf00c9ba202c47fe4a3c2a41369272c854c01bcb6f624",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex",
@@ -1288,8 +1288,8 @@
         "manuscript_title": "Factorial Carries and Finite Channel Obstructions"
       },
       "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:66280ce1c6650268485422460fbd2db199510fb3bcf21cb5e0c485fba98f9abc",
-      "pdf_byte_count": 144213,
+      "pdf_sha256": "sha256:cea32906bd8fdb063a7abcbf63cbdc7c347e5a8db4556c20bd433b652fe5d014",
+      "pdf_byte_count": 144210,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
