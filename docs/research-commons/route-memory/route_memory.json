@@ -85,6 +85,27 @@
             "mechanism": "The exact supplier-prime fibre/image bijection feeds a four-term first-harmonic decomposition into centred, good-fibre, bad, and non-supplier contributions; under PivotBudgetAt and the dyadic-room inequality, the bounds give the 9X/10 gap and the conditional pivot-residual-decorrelation consumer.",
             "boundary": "The checked X=16 supplier-isolation counterexample rules out treating supplier primes as globally isolated, and no prime-distribution estimate is supplied. PivotBudgetAt, the 16*(2X+h+L+2) ≤ 2^L room, and DTWPivotResidualDecorrelation remain hypotheses with no cofinal producer; the #249 endpoint remains open and no novelty, priority, significance, or external-review claim is made.",
             "next_research_route": "Build a cofinal producer for the stated pivot budgets or pivot-residual decorrelation while retaining the X=16 isolation counterexample as a guardrail, then consume the exact four-term decomposition through the public wrapper."
+          },
+          "strict_prime_tail_orbit_gap": {
+            "route_id": "erdos_249_strict_prime_tail_orbit_gap",
+            "status": "conditional_two_branch_producer_open",
+            "source_declaration": "ErdosProblems.Erdos249.TotientStrictPrimeEscape.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+            "source_module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+            "source_anchor": 205,
+            "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+            "comparator_anchor": 579,
+            "solution_export": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+            "solution_export_anchor": 1515,
+            "supporting_declarations": [
+              "ErdosProblems.Erdos249.TotientStrictPrimeEscape.TotientTailOrbitNonpositiveBlockDensity",
+              "ErdosProblems.Erdos249.TotientStrictPrimeEscape.tailOrbitBlockGap_of_nonpositiveBlockDensity",
+              "ErdosProblems.Erdos249.TotientStrictPrimeEscape.irrational_totient_series_of_tailOrbitBlockGap",
+              "ErdosProblems.Erdos249.TotientStrictPrimeEscape.DTWNaturalPrimeTailOrbitStrictGap",
+              "ErdosProblems.Erdos249.TotientStrictPrimeEscape.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap"
+            ],
+            "mechanism": "One producer family has two exact branches: 11/100 nonpositive infinite-orbit phases on each sufficiently late dyadic block yield an 89/100 block mean, and one uniform truncation at endpoint 2X with 1/100 error yields a 9/10 finite first-harmonic gap and certifiedKill; alternatively, cofinally many prime indices with real part below 9/10 yield a positive adaptive truncation margin and exact natural-fibre pivot escape. Both feed the same singleton certificate consumer.",
+            "boundary": "The block-density antecedent, cofinal prime strict-gap antecedent, and their uniform margin are unproved; no large-prime instance is established. Irrationality or nonintegrality alone does not give a fixed distance from ℤ, and no prime-distribution, equidistribution, or actual-orbit density theorem supplies these hypotheses. This remains a conditional reduction only: no unconditional #249 endpoint, novelty, priority, significance, or external-review claim is made.",
+            "next_research_route": "Prove or refute either the 11/100 block-density producer or the cofinal natural-prime strict-gap producer for the exact totient orbit, retaining the two-branch relation to the shared certificate socket and the explicit open boundary."
           }
         }
       },
