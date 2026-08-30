@@ -4,7 +4,7 @@
 # Independent replay and immutable release identity
 
 GitHub Actions and independent replay answer different questions. The Actions
-job checks all nineteen selected interfaces on the proposed source commit. The
+job checks the full selected interface set on the proposed source commit. The
 replay command below lets a reviewer execute one bounded interface on a separate
 Linux machine. Neither is mathematical peer review, a novelty assessment, or a
 claim that an open Erdős problem has been solved.
@@ -15,7 +15,7 @@ against the separately declared statement in `ExternalVerification.Challenge`.
 It also runs the one-theorem mismatch fixture and requires Comparator's exact
 statement-mismatch diagnostic. The configuration is
 `verification/comparator-replay.json`; it is intentionally smaller than the
-nineteen-interface CI configuration.
+CI configuration.
 
 ## Reviewer replay
 
@@ -63,7 +63,7 @@ An Actions artifact is temporary evidence, not a durable release identity. A
 release carrying the external-verification claim must attach both:
 
 - `external-verification-receipt-<source-commit>.json`, the final successful
-  nineteen-interface runtime receipt; and
+  full selected-interface runtime receipt; and
 - `external-verification-release-manifest-<source-commit>.json`, the digest
   crosswalk for the receipt, manifest, Comparator inputs, public packet, and all
   eight problem papers. The same manifest binds the machine-readable paper
