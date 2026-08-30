@@ -365,9 +365,21 @@ def _probe_input_hash(row: dict[str, Any], action: str) -> str:
     return input_sha256
 
 
+def _canonical_probe_path(row: dict[str, Any], action: str) -> str:
+    """Require a probe receipt to name its move-owned artifact."""
+    input_path = _required_string(row, "input_path", action, "input path")
+    expected_path = f"probes/{row['move_id']}.lean"
+    if input_path != expected_path:
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} must use "
+            f"canonical input path {expected_path!r}"
+        )
+    return input_path
+
+
 def _stored_probe_source(session: Session, row: dict[str, Any], action: str) -> str:
     """Require the cited receipt's durable artifact to remain exact."""
-    stored = replay_probe_path(session, row.get("input_path"))
+    stored = replay_probe_path(session, _canonical_probe_path(row, action))
     if stored is None:
         raise SystemExit(
             f"{action} refused: probe move {row.get('move_id')} has an invalid or missing stored artifact"

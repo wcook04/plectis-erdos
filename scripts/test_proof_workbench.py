@@ -575,6 +575,48 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("claim accepted a stored artifact with a mismatched hash")
 
+    noncanonical_path_session = workbench.Session(sessions_root, "noncanonical-path")
+    noncanonical_path_session.probes_dir.mkdir(parents=True)
+    (noncanonical_path_session.probes_dir / "other.lean").write_text(
+        "exact artifact\n", encoding="utf-8"
+    )
+    noncanonical_path_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    noncanonical_path_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/other.lean",
+            "input_sha256": workbench._sha256_text("exact artifact\n"),
+            "kernel_receipt": {"verdict": "kernel_accepted"},
+        }
+    )
+    try:
+        workbench.cmd_claim(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": sessions_root,
+                    "session": "noncanonical-path",
+                    "probe": "m002",
+                    "text": "must use the move-owned path",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "canonical input path" not in str(error):
+            raise AssertionError(f"noncanonical input path lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("claim accepted a probe with a noncanonical artifact path")
+
     incomplete_rows = (
         (
             "missing-note-text",
