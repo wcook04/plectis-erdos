@@ -380,6 +380,19 @@ recovery mechanism from the uniform-lower-bound `centered_state_dynamics`
 route. Every original-orbit dynamics, positivity, strict-centering,
 normalized-vanishing, and summability premise remains unproved, so this is not
 a #243 endpoint or reciprocal-tail irrationality result.
+
+It places `small_mismatch_criterion` first in the conditional-endpoint-leverage
+tier rather than treating its actual-prime conditional transport as routine
+inventory. For one fixed
+shift, the exact open-unit-interval integrality squeeze makes two adjacent
+tail shifts zero, and the recurrence then contradicts the supplied unequal
+prime gaps. This is stronger than the abstract tail-integrality classifier and
+the synthetic coefficient-only no-go because it names an actual-stream
+endpoint socket. It remains below the ranked prime-gap reformulation and
+negative-mass recovery: the criterion assumes, rather than proves,
+cofinally many strictly small unequal adjacent pairs, and it establishes
+neither all-positive-shift nonintegrality nor #251 irrationality.
+
 `half_membership_seam_classification` remains above the one-way
 `boolean_mobius_exact_row_dynamics` route but below unconditional endpoints
 because neither occurrence nor cofinal skip supply is proved;

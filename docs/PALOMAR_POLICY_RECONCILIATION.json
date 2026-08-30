@@ -220,7 +220,7 @@
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "727f490c29a06264af1bac88dac9f0f101c35ae1386d93a858ea3f384e21fd37",
+      "review_matrix_sha256": "f8ca6d02f16afbe9b21b759df1ae14a119fb17f57a0ec034f652e80e251f5da9",
       "review_family_count": 70,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
@@ -476,18 +476,18 @@
         "comparator_eligibility": "committed_source_faithful_transport",
         "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_transport_commit": "e7a58bb335dcb8b56c871a44fbae4d796196f26c",
-        "canonical_claim_commit": "2423353857d0537087131a847c7fa468c3537594",
+        "canonical_claim_commit": "ddbe2870877d0b3abcb7d7e3e9b00d00eb91f021",
         "source_declaration": "ErdosProblems.Erdos249.TotientTailOrbitBlockGap; ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity; ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity; ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap; ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.tailOrbitFirstExp_succ; ErdosProblems.Erdos249.tailOrbitFirstExp_add; ErdosProblems.Erdos249.tailOrbitFirstExp_eq_initial_pow_two; ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_iff_initial_phase; ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_of_le; ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_phase_one; ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
         "source_file": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-        "source_anchor": "25; 35; 45; 96; 157; 166-167; 191; 201; 208; 224; 238; 252",
+        "source_anchor": "25; 35; 45; 96; 157; 166-167; 191; 201; 208; 224; 238; 252; 349; 367; 389; 414; 445; 471",
         "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
         "statement": "One coherent two-branch conditional producer turns an 11/100 nonpositive-phase density into an 89/100 block saving and a 9/10 finite certificate, or turns a cofinal natural-prime strict gap below 9/10 into adaptive pivot escape.",
         "hard_mechanism": "Unit norm and the complement estimate yield the exact phase-density saving; one 1/100 truncation budget gives the finite gap, while the prime branch uses a positive adaptive margin and exact natural-fibre membership.",
         "prerequisite_evidence": ["TotientTailOrbitNonpositiveBlockDensity", "DTWNaturalPrimeTailOrbitStrictGap"],
-        "support_evidence": ["tailOrbitFirstExp_succ gives exact repeated squaring of the tail phase but no density or occurrence producer", "f25aa067 proves the all-times power-of-two orbit and initial-phase normal form without producing a strict gap", "11/100 phase density to 89/100 block mean", "1/100 truncation to 9/10 finite gap", "adaptive natural-prime pivot escape"],
+        "support_evidence": ["tailOrbitFirstExp_succ gives exact repeated squaring of the tail phase but no density or occurrence producer", "Claims ddbe2870 binds scaled-angle and phase/integrality equivalences, finite dyadic-root exclusion, and non-dyadicity-to-cofinal-nonpositive-phase transport as classification support, not a density or prime-alignment producer", "11/100 phase density to 89/100 block mean", "1/100 truncation to 9/10 finite gap", "adaptive natural-prime pivot escape"],
         "conditional_peer_evidence": ["actual_lcm_orbit_separation", "first_harmonic_pivot_decomposition"],
-        "contrary_evidence": ["Nonintegrality alone supplies no fixed distance from the integers.", "A dyadic-root phase reaches absorbing phase 1 and obstructs the strict-gap producer, but actual phases are not classified.", "No large-prime instance, orbit-density theorem, or equidistribution input is proved."],
-        "limitations": ["The phase-density, cofinal natural-prime strict-gap, and uniform-margin producers are unproved.", "No unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim follows."],
+        "contrary_evidence": ["Nonintegrality alone supplies no fixed distance from the integers.", "A dyadic root phase reaches absorbing phase 1 and obstructs the strict-gap producer; finite root exclusion and non-dyadicity transport do not classify actual phases or align them with primes.", "No large-prime instance, orbit-density theorem, or equidistribution input is proved."],
+        "limitations": ["The phase-density, cofinal natural-prime strict-gap, uniform-margin, and cofinal nonpositive-prime-shift producers are unproved.", "No unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim follows."],
         "reason": "Represented below actual_lcm_orbit_separation and first_harmonic_pivot_decomposition because their source-specific quantitative sockets are stronger, but above totient_certificate_equivalences because this family supplies a distinct producer-side phase-density and prime-index mechanism rather than only an endpoint normal form.",
         "reversal_evidence": "A proved actual-orbit density or cofinal-prime strict-gap producer would promote the route; another finite phase sample or certificate-equivalence restatement would not."
       },
@@ -702,7 +702,14 @@
           "The rational-state positive-shift obstruction is contrary boundary evidence, not the missing cofinal producer.",
           "No #251 irrationality, infinite rational-sum limit, or universal producer is claimed."
         ],
-        "reason": "Represented, endpoint-adjacent, and above synthetic coefficient-only no-go because it targets the actual prime-gap tail and exposes the precise missing cofinal analytic producer; it remains below unconditional endpoints.",
+        "source_landscape_rank_relative_to": "Conditional-endpoint leverage tier: below prime_gap_reformulation and negative_mass_recovery because it controls one fixed shift only under its unproved cofinal supply, but above abstract classification and synthetic coefficient-only no-go as an actual-prime conditional obstruction.",
+        "ranked_below": ["prime_gap_reformulation", "negative_mass_recovery"],
+        "ranked_above": ["dyadic_tail_integrality_classification", "coefficient_only_no_go"],
+        "prerequisite_evidence": ["The exact DyadicTailRecurrence for the actual prime-gap digit stream and the fixed h-shift are part of the source statement."],
+        "support_evidence": ["prime_gap_reformulation supplies the exact #251 target normalization, while dyadic_tail_integrality_classification explains why eventual tail-shift integrality is the relevant obstruction."],
+        "conditional_peer_evidence": ["negative_mass_recovery is a distinct rank-12 analytic recovery theorem with all original-orbit summability premises still open; neither family supplies the other's producer."],
+        "contrary_evidence": ["coefficient_only_no_go shows that finite rational carry identities and coefficient irregularity alone cannot provide the actual-prime small-mismatch supply.", "rationalPrimeGapTail_has_positive_shift_not_eventually_small is a rational-state boundary, not the cofinal producer."],
+        "reason": "Placed first in the conditional-endpoint-leverage tier as an actual-prime, endpoint-adjacent obstruction. The exact adjacent-pair zero mechanism is stronger than abstract or synthetic screening, but the cofinal small-mismatch/smallness producer remains absent, so this is not a #251 endpoint result.",
         "reversal_evidence": "A proof of the exact cofinal small-mismatch/smallness producer or a direct #251 irrationality theorem would justify promotion; another finite gap computation or coefficient-only row would not."
       },
       {

@@ -329,6 +329,13 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "rank 12" in negative_mass["source_landscape_rank_relative_to"].lower()
     assert "centered_state_dynamics" in negative_mass["ranked_below"]
     assert "weighted_phase_carry_observer" in negative_mass["ranked_above"]
+    strict_prime = landscape_by_id["strict_prime_tail_orbit_gap"]
+    assert strict_prime["canonical_claim_commit"] == "ddbe2870877d0b3abcb7d7e3e9b00d00eb91f021"
+    assert strict_prime["source_anchor"].endswith("349; 367; 389; 414; 445; 471")
+    small_mismatch = landscape_by_id["erdos251_small_mismatch_criterion"]
+    assert "conditional-endpoint leverage" in small_mismatch["source_landscape_rank_relative_to"].lower()
+    assert "prime_gap_reformulation" in small_mismatch["ranked_below"]
+    assert "dyadic_tail_integrality_classification" in small_mismatch["ranked_above"]
     assert landscape_by_id["actual_lcm_orbit_separation"]["comparator_eligibility"] == (
         "committed_source_faithful_transport"
     )
@@ -563,7 +570,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "not_naturalPrimeTailOrbitStrictGap_of_phase_one" in strict_prime["source_declaration"]
     assert "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root" in strict_prime["source_declaration"]
     assert strict_prime["canonical_claim_commit"] == (
-        "2423353857d0537087131a847c7fa468c3537594"
+        "ddbe2870877d0b3abcb7d7e3e9b00d00eb91f021"
     )
     assert "repeated-squaring" in " ".join(strict_prime["support_evidence"])
     assert "dyadic root" in " ".join(strict_prime["contrary_evidence"])
@@ -780,6 +787,21 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "routine finite searches" in coefficient["reason"]
     assert "verification/comparator.json" in coefficient["transport_admission_boundary"]
     assert "source-current committed" in coefficient["transport_admission_boundary"]
+    small_mismatch = landscape_by_id["erdos251_small_mismatch_criterion"]
+    assert small_mismatch["family_id"] == "small_mismatch_criterion"
+    assert "conditional-endpoint leverage" in small_mismatch["source_landscape_rank_relative_to"].lower()
+    assert small_mismatch["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch"
+    )
+    assert small_mismatch["comparator_declaration"] in comparator["theorem_names"]
+    assert "cofinally many adjacent small mismatches" in " ".join(small_mismatch["limitations"])
+    assert "actual-prime" in small_mismatch["reason"]
+    small_mismatch_screen = next(
+        row
+        for row in showcase["candidate_screening"]
+        if row["declaration"] == small_mismatch["comparator_declaration"]
+    )
+    assert small_mismatch_screen["disposition"] == "supporting_conditional_endpoint"
     negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]
     assert negative_mass["family_id"] == "negative_mass_recovery"
     assert negative_mass["disposition"] == "represented"
