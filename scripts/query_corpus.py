@@ -3646,6 +3646,10 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
                 "python3 scripts/query_semantic.py structural-backlog "
                 f"--problem {problem}"
             ),
+            "route_memory": (
+                "python3 scripts/query_route_memory.py --problem "
+                f"{problem}"
+            ),
         },
         "authority_posture": (
             "generated_problem_index_route_not_claim_status_or_Lean_proof_authority"

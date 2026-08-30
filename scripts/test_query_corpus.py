@@ -371,6 +371,9 @@ def validate_natural_language_search() -> None:
         problem = query("--search", exact_problem_phrase, "--limit", "1")
         assert problem["results"][0]["kind"] == "problem"
         assert problem["results"][0]["id"] == "erdos_243"
+        assert problem["results"][0]["follow"]["route_memory"] == (
+            "python3 scripts/query_route_memory.py --problem 243"
+        )
         assert problem["routing_receipt"] == {
             "selection": "exact_problem_registry_term",
             "declaration_scan_required": False,
