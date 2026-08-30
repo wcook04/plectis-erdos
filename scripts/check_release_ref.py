@@ -32,7 +32,7 @@ SCHEMA = "erdos249257-clean-ref-release-receipt/1"
 TAIL_BYTES = 16_000
 DIRTY_PATH_LIMIT = 120
 MINIMUM_PYTHON = (3, 11)
-ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v2"
 SOURCE_REPOSITORY_LABEL = "local_checkout"
 SANITIZED_GIT_ENVIRONMENT_KEYS = (
     "GIT_DIR",
@@ -61,6 +61,7 @@ SANITIZED_RUNTIME_ENVIRONMENT_KEYS = (
     "LANG",
     "LANGUAGE",
 )
+SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES = ("PYTHON",)
 RELEASE_COMMANDS = (
     ("python3", "scripts/check_release.py"),
     ("python3", "scripts/test_root_import_closure.py"),
@@ -93,7 +94,9 @@ def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
     """Run snapshot subprocesses without inherited Git, Python, or locale state."""
     environment = dict(os.environ if base is None else base)
     for key in list(environment):
-        if key.startswith("GIT_CONFIG_"):
+        if key.startswith("GIT_CONFIG_") or any(
+            key.startswith(prefix) for prefix in SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES
+        ):
             environment.pop(key, None)
     for key in SANITIZED_GIT_ENVIRONMENT_KEYS + SANITIZED_RUNTIME_ENVIRONMENT_KEYS:
         environment.pop(key, None)
@@ -260,6 +263,7 @@ def receipt_base(ref: str, commit: str, caller_dirty_paths: list[str]) -> dict[s
             "contract": ENVIRONMENT_CONTRACT,
             "sanitized_git_selectors": list(SANITIZED_GIT_ENVIRONMENT_KEYS),
             "sanitized_runtime_variables": list(SANITIZED_RUNTIME_ENVIRONMENT_KEYS),
+            "sanitized_runtime_prefixes": list(SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES),
             "canonical_values": {
                 "GIT_CONFIG_GLOBAL": os.devnull,
                 "GIT_CONFIG_NOSYSTEM": "1",

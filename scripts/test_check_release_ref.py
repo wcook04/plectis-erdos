@@ -288,6 +288,9 @@ def main() -> int:
                 "PYTHONOPTIMIZE": "2",
                 "PYTHONWARNINGS": "error",
                 "PYTHONINSPECT": "1",
+                "PYTHONINTMAXSTRDIGITS": "100",
+                "PYTHONMALLOC": "malloc",
+                "PYTHONPROFILEIMPORTTIME": "1",
                 "PYTHONHASHSEED": "random",
                 "LC_ALL": "C",
                 "LANG": "C",
@@ -313,6 +316,9 @@ def main() -> int:
                             "PYTHONOPTIMIZE",
                             "PYTHONWARNINGS",
                             "PYTHONINSPECT",
+                            "PYTHONINTMAXSTRDIGITS",
+                            "PYTHONMALLOC",
+                            "PYTHONPROFILEIMPORTTIME",
                         )
                     ),
                     "release-ref environment retained inherited selector or Python state",
@@ -353,7 +359,8 @@ def main() -> int:
                         "-c",
                         "import json, os; print(json.dumps({k: os.environ[k] for k in "
                         "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE', "
-                        "'PYTHONPATH', 'PYTHONHOME', 'LC_ALL', 'LANG') "
+                        "'PYTHONPATH', 'PYTHONHOME', 'PYTHONINTMAXSTRDIGITS', "
+                        "'PYTHONMALLOC', 'PYTHONPROFILEIMPORTTIME', 'LC_ALL', 'LANG') "
                         "if k in os.environ}))",
                     ],
                     cwd=root,
@@ -435,6 +442,9 @@ def main() -> int:
                     ),
                     "sanitized_runtime_variables": list(
                         check_release_ref.SANITIZED_RUNTIME_ENVIRONMENT_KEYS
+                    ),
+                    "sanitized_runtime_prefixes": list(
+                        check_release_ref.SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES
                     ),
                     "canonical_values": {
                         "GIT_CONFIG_GLOBAL": os.devnull,
