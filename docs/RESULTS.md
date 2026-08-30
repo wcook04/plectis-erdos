@@ -47,6 +47,12 @@ pass, the high-signal spine is:
   `ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:397`). This is
   consequential global geometry, not a classification of rational points or
   a universal irrationality theorem.
+- A second-layer Boolean–Möbius normal form is now an executable rationality
+  equivalence: any `p/q` support value (`q>0`) is represented by a positive,
+  square-root-bounded integer carry orbit whose quotient reconstructs the
+  support. This is a change of coordinates for hypothetical rational support,
+  not a contradiction or a universal #257 proof; arbitrary infinite support
+  and the `1/2` membership boundary remain open.
 - **#249, an endpoint-facing conditional route plus a finite-level rank
   spine.** The actual-LCM orbit route gives a genuinely endpoint-facing
   reduction: an explicit approximation of the orbit by an odd-rank raw block,
@@ -735,6 +741,20 @@ coprime supports with summable reciprocals. The relevant declarations include:
 These declarations are in `Erdos249257/CertificateKernel.lean`. The prime and
 prime-power supports are literature results cited by the repository, not
 formalised here.
+
+A distinct second-layer rationality normal form is now a typed public
+consumer: `exists_normalized_support_fraction_iff_exists_booleanMobiusCarry`
+(`ExternalVerification/Challenge.lean:363`, source
+`Erdos249257/BooleanMobiusCarry.lean:949`). For `p : ℤ` and `q > 0`, it is an
+existence-level equivalence between a support omitting `0`, containing a
+positive index, and having value `p/q`, and a map `U : ℕ → ℤ` with
+`U 0 = p`, positivity, the square-root bound `U N ≤ q(2√N+4)`, divisible carry
+differences, and a Boolean–Möbius quotient; the quotient reconstructs the
+support. This is genuinely distinct from the shifted-natural-tail state: it
+is quotient-level and reconstructs literal support. It is only a
+characterisation, not a contradiction or a universal irrationality theorem;
+it does not produce cofinally nonintegral shifts for the actual recurrence,
+settle arbitrary infinite support, or settle the `1/2` membership boundary.
 
 The squarefree support remains open. Its divisor incidence is proved to be
 `2^ω(n)-1`, hence odd at every `n≥2`. The certificate engines in this

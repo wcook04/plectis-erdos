@@ -29,8 +29,7 @@ is formal proof authority, not for meaning or novelty.
 
 ## Read the signal first
 
-All eight problems remain open. The most useful first pass is mechanism-first,
-not a novelty or priority ranking:
+All eight remain open. Pass is mechanism-first:
 
 - **#257 leads with a completed unconditional endpoint theorem for full
   support.** Its checked divisor-block proof combines a bounded Bertrand/CRT
@@ -52,9 +51,12 @@ not a novelty or priority ranking:
   positive index in its periodic tail; denominator clearing feeds a periodic
   divisor-orbit sieve ([source](Erdos249257/CertificateKernel.lean)). This is
   not the mixed-sign or arbitrary-support theorem.
-- A separate geometric boundary is substantial but different: the full
-  base-2 Mersenne achievement set has Lebesgue measure one, while supported
-  achievement sets have a finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). This classifies neither rational points nor universal irrationality.
+- Base-2 Mersenne achievement sets have measure one; supported sets have a
+  finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). Geometry, not rational-point or universal proof.
+- **Second-layer #257 normal form.** For `p/q` (`q>0`), a nonempty support
+  omitting `0` exists iff a positive square-root-bounded integer orbit has
+  q-divisible carries and Boolean–Möbius reconstruction of that support
+  ([consumer](ExternalVerification/Challenge.lean#L363); [source](Erdos249257/BooleanMobiusCarry.lean#L949)). It is not a contradiction or universal proof; arbitrary infinite support and `1/2` remain open.
 - **#249's endpoint-facing frontier is conditional.** An actual-LCM orbit is
   approximated by an odd-rank raw block with an explicit error radius: the
   separate sufficient (not equivalent) condition
@@ -97,10 +99,10 @@ with an eventually nonzero next tail recovers Sylvester recurrence
 ([consumer](ExternalVerification/Challenge.lean#L96); [source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265)).
 It leaves reciprocal-tail irrationality, the unbounded mixed-sign branch, and
 the prime-specific producer open. #251 gives unbounded prime gaps and an exact
-prime-gap equivalence; public non-Comparator classifiers reduce a dyadic tail's
-rationality to eventual integrality of one positive shift and irrationality to
-nonintegrality of every positive shift ([consumer](ExternalVerification/Challenge.lean#L245)).
-Neither supplies the prime-specific producer ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean));
+prime-gap equivalence; its public `RealDyadicTailRecurrence` classifiers say
+rationality iff one positive shift is eventually integral and irrationality iff
+every positive shift is nonintegral ([consumer](ExternalVerification/Challenge.lean#L245)).
+The prime-specific producer remains open ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean));
 #269 checks a
 running-LCM height identity and rank-two obstruction, and a separate
 weighted-phase carry observer splits each digit into a finite residue digit
@@ -117,12 +119,10 @@ irrationality open
 ([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean);
 [transport](ExternalVerification/Challenge.lean#L399)).
 
-This audits the 40 committed Comparator declarations; other rows remain
-important. [RESULTS](docs/RESULTS.md#signal-audit-dispositions)
-records the mathematical dispositions; its per-problem sections and [source map](docs/SOURCE_MAP.md)
-keep routes reachable. Finite searches, routine shards, cited inputs, and
-conditional predicates remain supporting evidence, not cofinal results or
-solutions; [RESULTS](docs/RESULTS.md) gives exact hypotheses, evidence, and boundaries.
+See [RESULTS](docs/RESULTS.md#signal-audit-dispositions) for dispositions,
+evidence, and boundaries; its [source map](docs/SOURCE_MAP.md) keeps routes
+reachable. Finite searches and conditional predicates are follow-up evidence,
+not cofinal results.
 
 ## Problem papers
 
