@@ -2383,6 +2383,7 @@ def run_quick_check() -> int:
     summary = quick_summary()
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
+    validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(
         semantic_census(),
         {path: read(path) for path in CENSUS_SURFACES},
@@ -2436,6 +2437,7 @@ def main(argv: list[str] | None = None) -> int:
     summary = packets["summary"]
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
+    validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(
         semantic_census(),
         {path: read(path) for path in CENSUS_SURFACES},
