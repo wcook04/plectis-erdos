@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 5,
-    "artifact_count": 5,
+    "working_tree_only_count": 6,
+    "artifact_count": 6,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 5,
+    "link_and_digest_only_count": 6,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -108,6 +108,25 @@
       "support_boundary_ref": "docs/primary-sources/dyadic-carry/wang-2026-v2-source-closure.md",
       "consumer_refs": [
         "docs/primary-sources/dyadic-carry/wang-2026-v2-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/totient-kernel/martin-2006-simultaneous-phi-inequalities.pdf",
+      "sha256": "8d967dc3018c325cf3b4a099fa916e369f4b9a915bf2ccad398d359e3b4f0705",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/math/0603053",
+        "https://arxiv.org/pdf/math/0603053",
+        "https://doi.org/10.48550/arXiv.math/0603053"
+      ],
+      "source_record": "docs/primary-sources/totient-kernel/martin-2006-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/totient-kernel/martin-2006-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/totient-kernel/martin-2006-source-closure.md"
       ]
     }
   ]
