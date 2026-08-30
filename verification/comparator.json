@@ -19,6 +19,7 @@
     "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
     "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
     "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+    "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
     "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
     "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
     "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",

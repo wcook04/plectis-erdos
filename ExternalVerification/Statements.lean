@@ -645,6 +645,43 @@ noncomputable def windowFirstAngle (h N L : ℕ) : ℝ :=
 noncomputable def windowFirstExp (h N L : ℕ) : ℂ :=
   Complex.exp ((windowFirstAngle h N L : ℂ) * Complex.I)
 
+/-! ## Infinite tail-orbit phase-density and prime-index escape -/
+
+/-- First additive character of the infinite totient tail difference. -/
+noncomputable def tailOrbitFirstExp (h N : ℕ) : ℂ :=
+  Complex.exp
+    (((2 * Real.pi * (totientTail (N + h) - totientTail N) : ℝ) : ℂ) *
+      Complex.I)
+
+/-- On arbitrarily late dyadic blocks, the mean real part of the infinite
+tail-orbit phase is at most `89/100`.  This is an explicit producer premise.
+-/
+noncomputable def TotientTailOrbitBlockGap : Prop :=
+  ∀ h : ℕ, 0 < h →
+    ∀ X₀ : ℕ, ∃ X : ℕ,
+      max X₀ 1 ≤ X ∧
+      (∑ N ∈ Finset.Ico X (2 * X), (tailOrbitFirstExp h N).re)
+        ≤ (89 / 100 : ℝ) * X
+
+/-- On arbitrarily late dyadic blocks, at least an `11/100` proportion of
+tail-orbit phases have nonpositive real part. -/
+noncomputable def TotientTailOrbitNonpositiveBlockDensity : Prop :=
+  ∀ h : ℕ, 0 < h →
+    ∀ X₀ : ℕ, ∃ X : ℕ,
+      max X₀ 1 ≤ X ∧
+      (11 / 100 : ℝ) * X ≤
+        ((Finset.Ico X (2 * X)).filter
+          fun N => (tailOrbitFirstExp h N).re ≤ 0).card
+
+/-- Cofinal prime indices at which the infinite-orbit real part is strictly
+below `9/10`; this is the selected endpoint-facing producer interface. -/
+def DTWNaturalPrimeTailOrbitStrictGap : Prop :=
+  ∀ h : ℕ, 0 < h →
+    ∀ N₀ : ℕ, ∃ p : ℕ,
+      max (N₀ + h + 1) (h + 5) ≤ p ∧
+      p.Prime ∧
+      (tailOrbitFirstExp h (p - h - 1)).re < (9 / 10 : ℝ)
+
 def endpointSurvivor (h N L : ℕ) (z : ℤ) : Prop :=
   |z| ≤ (N + h + L + 2 : ℤ) ∧
     z % 2 ^ L = windowDiscrepancy h N L % 2 ^ L
@@ -1353,5 +1390,14 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
       (hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
         rho = 0 ∧ sigma = 1)
+  problem249TailOrbitBlockGapOfNonpositiveDensity :
+    TotientTailOrbitNonpositiveBlockDensity →
+      TotientTailOrbitBlockGap
+  problem249IrrationalOfTailOrbitBlockGap :
+    TotientTailOrbitBlockGap →
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
+  problem249IrrationalOfNaturalPrimeTailOrbitStrictGap :
+    DTWNaturalPrimeTailOrbitStrictGap →
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 
 end Erdos249257.ExternalVerification

@@ -27,6 +27,7 @@ import Erdos249257.TropicalCurvatureCarry
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery
+import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
@@ -91,6 +92,32 @@ private theorem conditionalLeastPositiveResidue_eq_source
 private theorem totientTail_eq_source (N : ℕ) :
     totientTail N = Erdos249257.TotientTailPeriodKiller.totientTail N := by
   rfl
+
+private theorem tailOrbitFirstExp_eq_source (h N : ℕ) :
+    tailOrbitFirstExp h N =
+      Erdos249257.TotientTailPeriodKiller.tailOrbitFirstExp h N := by
+  rfl
+
+private theorem TotientTailOrbitBlockGap_eq_source :
+    TotientTailOrbitBlockGap ↔
+      ErdosProblems.Erdos249.TotientTailOrbitBlockGap := by
+  simp only [TotientTailOrbitBlockGap,
+    ErdosProblems.Erdos249.TotientTailOrbitBlockGap,
+    tailOrbitFirstExp_eq_source]
+
+private theorem TotientTailOrbitNonpositiveBlockDensity_eq_source :
+    TotientTailOrbitNonpositiveBlockDensity ↔
+      ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity := by
+  simp only [TotientTailOrbitNonpositiveBlockDensity,
+    ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity,
+    tailOrbitFirstExp_eq_source]
+
+private theorem DTWNaturalPrimeTailOrbitStrictGap_eq_source :
+    DTWNaturalPrimeTailOrbitStrictGap ↔
+      ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap := by
+  simp only [DTWNaturalPrimeTailOrbitStrictGap,
+    ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap,
+    tailOrbitFirstExp_eq_source]
 
 private theorem actualLcmHeight_eq_source (a : ℕ) :
     actualLcmHeight a =
@@ -441,6 +468,15 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     simpa [centeredState, ErdosProblems.Erdos243.centeredState] using
       ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
         a C D E B ha hCpos hC hD hE hcentered hbound hvanish
+  · intro a D C hD hC hCpos hstep hvanish hsum
+    simpa [negativeRelativeMass, sylvesterNext, nextDenState, nextTailState,
+      centeredState, ErdosProblems.Erdos243.negativeRelativeMass,
+      ErdosProblems.Erdos243.sylvesterNext,
+      ErdosProblems.Erdos243.nextDenState,
+      ErdosProblems.Erdos243.nextTailState,
+      ErdosProblems.Erdos243.centeredState] using
+      ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass
+        a D C hD hC hCpos hstep hvanish hsum
   · intro e he
     simpa [totientKernelThroughLevelFamily, totientKernelSeq,
       Erdos249257.totientKernelThroughLevelFamily,
@@ -946,6 +982,16 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos1049.hpCyclotomicSaving] using
       ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff rho sigma
         hrho hsigma
+  · intro hdensity
+    exact TotientTailOrbitBlockGap_eq_source.mpr
+      (ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity
+        (TotientTailOrbitNonpositiveBlockDensity_eq_source.mp hdensity))
+  · intro hgap
+    exact ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap
+      (TotientTailOrbitBlockGap_eq_source.mp hgap)
+  · intro hgap
+    exact ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
+      (DTWNaturalPrimeTailOrbitStrictGap_eq_source.mp hgap)
 
 /-! These declarations are the proof-bearing Solution-side names consumed by
 the Comparator roster.  Each is a projection of the corresponding field of
@@ -1456,5 +1502,24 @@ theorem rationalBaseClearedTailQ_succ
       r * rationalBaseClearedTailQ r s B F coeff N -
         B * coeff (N + 1) * s ^ (N + 1) :=
   (portfolioClaims Unit).problem1049Recurrence hr N
+
+theorem tailOrbitBlockGap_of_nonpositiveBlockDensity
+    (hdensity : TotientTailOrbitNonpositiveBlockDensity) :
+    TotientTailOrbitBlockGap := by
+  exact TotientTailOrbitBlockGap_eq_source.mpr
+    (ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity
+      (TotientTailOrbitNonpositiveBlockDensity_eq_source.mp hdensity))
+
+theorem irrational_totient_series_of_tailOrbitBlockGap
+    (hgap : TotientTailOrbitBlockGap) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  exact ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap
+    (TotientTailOrbitBlockGap_eq_source.mp hgap)
+
+theorem irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
+    (hgap : DTWNaturalPrimeTailOrbitStrictGap) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  exact ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
+    (DTWNaturalPrimeTailOrbitStrictGap_eq_source.mp hgap)
 
 end Erdos249257.ExternalVerification

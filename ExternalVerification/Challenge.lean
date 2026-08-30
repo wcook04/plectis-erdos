@@ -562,4 +562,23 @@ theorem rectangular_hp_threshold_eq_classical_iff
   (portfolioClaims Unit).problem1049RectangularHpThresholdEqClassicalIff rho sigma
     hrho hsigma
 
+/-! The phase-density and prime-index branches are one producer family.  The
+block-density declarations are subordinate to the selected strict-gap endpoint
+representative; neither producer premise is asserted here. -/
+
+theorem tailOrbitBlockGap_of_nonpositiveBlockDensity
+    (hdensity : TotientTailOrbitNonpositiveBlockDensity) :
+    TotientTailOrbitBlockGap :=
+  (portfolioClaims Unit).problem249TailOrbitBlockGapOfNonpositiveDensity hdensity
+
+theorem irrational_totient_series_of_tailOrbitBlockGap
+    (hgap : TotientTailOrbitBlockGap) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  (portfolioClaims Unit).problem249IrrationalOfTailOrbitBlockGap hgap
+
+theorem irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
+    (hgap : DTWNaturalPrimeTailOrbitStrictGap) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  (portfolioClaims Unit).problem249IrrationalOfNaturalPrimeTailOrbitStrictGap hgap
+
 end Erdos249257.ExternalVerification
