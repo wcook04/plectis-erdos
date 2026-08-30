@@ -11,6 +11,7 @@ import subprocess
 import unittest
 from copy import deepcopy
 from pathlib import Path
+from unittest.mock import patch
 
 from build_external_verification import imports_in_text, load_owner, validate
 from run_external_verification import (
@@ -18,17 +19,25 @@ from run_external_verification import (
     EXPECTED_MISMATCH,
     is_expected_negative_rejection,
 )
+import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def run_builder_check() -> subprocess.CompletedProcess[str]:
+    """Run the generated packet check in a clean, bounded child process."""
+    return subprocess.run(
+        ["python3", "scripts/build_external_verification.py", "--check"],
+        cwd=ROOT,
+        check=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+    )
+
+
 class ExternalVerificationContractTest(unittest.TestCase):
     def test_projection_and_statement_isolation_are_current(self) -> None:
-        subprocess.run(
-            ["python3", "scripts/build_external_verification.py", "--check"],
-            cwd=ROOT,
-            check=True,
-        )
+        run_builder_check()
         packet = json.loads(
             (ROOT / "docs/external_verification_packet.json").read_text(encoding="utf-8")
         )
@@ -158,6 +167,18 @@ class ExternalVerificationContractTest(unittest.TestCase):
         solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
         self.assertNotIn("sorry", solution)
+
+    def test_builder_check_environment(self) -> None:
+        completed = subprocess.CompletedProcess(["fixture"], 0, "", "")
+        with patch.object(subprocess, "run", return_value=completed) as runner:
+            observed = run_builder_check()
+
+        self.assertIs(observed, completed)
+        kwargs = runner.call_args.kwargs
+        self.assertEqual(kwargs["env"], singleflight.command_environment())
+        self.assertEqual(
+            kwargs["timeout"], singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+        )
 
     def test_multi_module_import_lines_cannot_evade_isolation_parser(self) -> None:
         self.assertEqual(
