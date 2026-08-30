@@ -138,11 +138,11 @@ boundary of that relationship.
 
   **Boundary.** Their theorem is broader, and its Chowla--Erdős/large-modulus-prime proof is separate. This release uses a periodic-divisor certificate route. For signed integer weights it proves only an irrational-or-base-terminating dichotomy; it does not exclude the terminating alternative in general or claim the full mixed-sign theorem.
 
-- T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers* (arXiv v2, 2026)](https://arxiv.org/abs/2512.01739v2)
+- T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers* (arXiv v2, 2026)](https://arxiv.org/abs/2512.01739v2) ([read source closure](primary-sources/reciprocal-tail/tao-teravainen-2026-source-closure.md))
 
-  Direct source for the cited-only irrationality of the prime-support series, through its \(\sum_n\omega(n)/2^n\) formulation and this release's separately formalised identity bridge.
+  Direct source for the cited-only irrationality of the prime-support series: Theorem 1.3, equation (1.7), on PDF p. 4, with proof on pp. 44--56. It gives the \(\sum_n\omega(n)/2^n = \sum_p(2^p-1)^{-1}\) formulation and this release's separately formalised identity bridge.
 
-  **Boundary.** It settles that one support family, not universal #257; its quantitative correlation proof is not formalised here.
+  **Boundary.** It settles the prime-support family at base 2, not universal #257. The source only says that other integer bases and the prime-power variant can be treated by modifications and leaves those details to the reader; its quantitative correlation proof is not formalised here.
 
 - H. Wang and J. M. Grau Ribas, [*Positive dyadic density for rational weighted binary expansions* (arXiv, 2026)](https://arxiv.org/abs/2606.24972)
 
