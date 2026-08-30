@@ -19,8 +19,8 @@ interface, paper, release receipts, and claim boundary. `--verify-all` checks th
 complete set. [Read or run it](#read-or-run-it) gives routes that need Lean.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
-→ [prior art](docs/PRIOR_ART.md) → [architecture and repository guide](ARCHITECTURE.md)
-· [printable PDF](claim-faithful-publication-systems-paper.pdf)
+→ [verification](docs/EXTERNAL_VERIFICATION.md) → [prior art](docs/PRIOR_ART.md)
+→ [architecture and repository guide](ARCHITECTURE.md) · [printable PDF](claim-faithful-publication-systems-paper.pdf)
 
 The [agent-navigation paper](cold-clone-to-proof-receipt.pdf) explains the
 cold-clone route. It assumes no Lean or project history. This public checkout is
@@ -128,7 +128,7 @@ order without asking you to decode Lean declaration names first.
 - **No-build:** `python3 scripts/verify_claims.py --verify-all` or
   `--claim <id>` follows a claim to source, receipts, and stopping point on a
   `git clone --depth 1`; missing history is reported with `git fetch --unshallow`.
-- **Mathematician:** [RESULTS](docs/RESULTS.md) → per-problem papers → [SOURCE MAP](docs/SOURCE_MAP.md) → Lean. The joint PDF is exposition; per-problem papers are routes.
+- **Mathematician:** [RESULTS](docs/RESULTS.md) → papers → [SOURCE MAP](docs/SOURCE_MAP.md) → Lean; joint PDF is exposition.
 - **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), [`AGENTS.md`](AGENTS.md), and [`docs/orientation.json`](docs/orientation.json); choose one problem or claim before the registry.
 - **Whole-corpus agent navigation without a Lean build:** run
   `python3 scripts/query_corpus.py --tour --format card`; add
@@ -137,8 +137,13 @@ order without asking you to decode Lean declaration names first.
   eight-problem map, and the reviewed #249/#257 frontier. `query_semantic.py
   problem-registry` drills down; indexes expose declarations and dependencies for
   both roots. These are navigation projections, not proof authority.
-- **Continue or compare:** [`docs/AGENT_WORKBENCH.md`](docs/AGENT_WORKBENCH.md)
-  defines the ladder; `proof_workbench.py show --session <slug>` and `replay --session <slug>` recheck append-only work. `hypOf%` and [residual progress](docs/RESIDUAL_PROGRESS.md) separate a reduction from a renamed target. Run `query_corpus.py --publication-architecture` or `--publication-family <id>`; the [Formal Conjectures crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md) binds all eight statements to pinned sources and marks every row `not_ready_to_submit`.
+- **Continue/compare:** [`docs/AGENT_WORKBENCH.md`](docs/AGENT_WORKBENCH.md) defines
+  the ladder; `proof_workbench.py show --session <slug>` or `replay --session <slug>`
+  rechecks append-only work. `hypOf%` and [residual progress](docs/RESIDUAL_PROGRESS.md)
+  separate reductions from renamed targets. [Verification dossier](docs/EXTERNAL_VERIFICATION.md)
+  groups eight interfaces and boundaries; [replay contract](docs/EXTERNAL_VERIFICATION_REPLAY.md)
+  pins `source.commit`/`source.tree`. [crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md)
+  binds eight statements; each is `not_ready_to_submit`.
 
 ## Build and verify
 
@@ -165,8 +170,9 @@ Pinned public Lean corpus: no `sorry`, `admit`, project-defined `axiom`, or
 ## Use, contribute, and cite
 
 Use `import Erdos249257` or `import ErdosProblems`. [`examples/Examples.lean`](examples/Examples.lean)
-is the minimal downstream consumer: its conditional shell-pressure example keeps
-the analytic hypothesis explicit and does not prove universal #257. Public work
+is the minimal downstream consumer: its conditional shell-pressure example
+leaves the analytic
+hypothesis explicit and does not prove universal #257. Public work
 is clone → orient → choose → work or resume → return an attributable result; see
 [`CONTRIBUTING.md`](CONTRIBUTING.md) and the [`ExternalVerificationPortfolio`](examples/ExternalVerificationPortfolio).
 
