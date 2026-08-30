@@ -7,7 +7,7 @@
   "formal_statement": "Real.log 2 / Real.log 7 < 1 / 2 - 1 / Real.pi ^ 2",
   "source_declaration": "ErdosProblems.Erdos1049.sevenHalves_bundschuhVaananen_margin",
   "comparator_declaration": "Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight",
-  "checked_claim": "Lean checks the displayed numerical inequality and Comparator checks its transport to a Mathlib-only statement.",
+  "checked_claim": "Lean checks the displayed numerical inequality. Comparator is configured to check its transport to a Mathlib-only statement; this metadata is not itself a terminal Comparator receipt.",
   "external_boundary": "The Bundschuh-Väänänen irrationality theorem, its complete hypotheses, and its application at 7/2 remain externally sourced and are not Lean-badged.",
   "open_boundary": "The requested base 3/2 problem remains open.",
   "novelty": "Routine exact formalisation of one numerical hypothesis; no novelty or priority claim.",
