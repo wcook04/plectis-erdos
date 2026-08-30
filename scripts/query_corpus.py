@@ -6960,6 +6960,13 @@ def _route_memory_resume_commands(route_memory: Any) -> list[str]:
     return commands
 
 
+def _append_route_memory_resumes(card: str, route_memory: Any) -> str:
+    """Append every bound continuation command to a human-readable card."""
+    for command in _route_memory_resume_commands(route_memory):
+        card += f" | resume={command}"
+    return card
+
+
 def render_card(packet: dict[str, Any]) -> str:
     kind = packet["kind"]
     if kind == "claim":
@@ -6977,21 +6984,27 @@ def render_card(packet: dict[str, Any]) -> str:
         source = paper.get("source_ref") or paper.get(
             "availability", "unavailable"
         )
-        return (
+        card = (
             f"paper {paper['label']} | {source} | rendered={paper.get('rendered')} "
             f"| claims={claim_ids}"
         )
+        return _append_route_memory_resumes(card, packet.get("route_memory"))
     if kind == "paper_anchor":
         paper = packet["paper"]
-        return (
+        card = (
             f"paper anchor {packet['canonical_handle']} | {packet['anchor_class']} "
             f"| {paper['source_ref']} | title={packet.get('title') or 'none'}"
         )
+        return _append_route_memory_resumes(card, packet.get("route_memory"))
     if kind == "declaration":
-        return "\n".join(
-            f"declaration {row['name']} | {row['kind']} | {row['module']}:{row['line']} | claims={','.join(row['claim_ids']) or 'none'}"
-            for row in packet["matches"]
-        )
+        rows = []
+        for row in packet["matches"]:
+            card = (
+                f"declaration {row['name']} | {row['kind']} | {row['module']}:{row['line']} "
+                f"| claims={','.join(row['claim_ids']) or 'none'}"
+            )
+            rows.append(_append_route_memory_resumes(card, row.get("route_memory")))
+        return "\n".join(rows)
     if kind == "formal_dependency_proof_cone":
         return (
             f"proof cone {packet.get('resolved_handle', packet['requested'])} "
@@ -7066,20 +7079,22 @@ def render_card(packet: dict[str, Any]) -> str:
         )
     if kind == "open_proposition":
         proposition = packet["open_proposition"]
-        return (
+        card = (
             f"open {proposition['id']} | target={packet['open_target']['id']} "
             f"| linked_claims={len(packet['linked_claims'])} "
             f"| advancing_claims={len(packet['advancing_claims'])}"
         )
+        return _append_route_memory_resumes(card, packet.get("route_memory"))
     if kind == "module":
         module = packet["module"]
         dependency = packet["dependency_neighbourhood"]["receipt"]
-        return (
+        card = (
             f"module {module['id']} | {module['path']} | declarations={module['declaration_count']} "
             f"| imports={dependency['imports_total']} | importers={dependency['importers_total']} "
             f"| claims={len(packet['attached_claims'])} | paper_sigil={packet.get('paper_sigil') or 'none'} "
             f"| role={module['role']}"
         )
+        return _append_route_memory_resumes(card, packet.get("route_memory"))
     if kind == "connection_card":
         anchor = packet["anchor"]
         return (
@@ -7169,10 +7184,7 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"programme {route['id']} | {programme['title']} "
                 f"| claims={claims} | open={open_ids}"
             )
-            route_memory = packet.get("route_memory")
-            if route_memory:
-                card += f" | resume={route_memory['command']}"
-            return card
+            return _append_route_memory_resumes(card, packet.get("route_memory"))
         return (
             f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
             f"| next={route['query_steps'][0]}"
@@ -7194,12 +7206,13 @@ def render_card(packet: dict[str, Any]) -> str:
         )
     if kind == "publication_family":
         family = packet["family"]
-        return (
+        card = (
             f"publication family {family['id']} | claims={len(packet['claims'])} "
             f"| owner={family['primary_narrative_owner']} "
             f"| view={family['view_decision']} "
             f"| obligation={family['consumer_or_open_obligation']}"
         )
+        return _append_route_memory_resumes(card, packet.get("route_memory"))
     if kind == "publication_architecture":
         architecture = packet["architecture"]
         return (

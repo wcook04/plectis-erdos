@@ -617,6 +617,72 @@ def validate_indexed_declaration_lookup() -> None:
     assert qualified_cache.currsize == 0
 
 
+def validate_route_memory_cards() -> None:
+    """Cards must preserve every canonical resume command present in JSON."""
+    declaration_card = query_corpus.render_card(
+        declaration_packet(
+            "tsum_totient_div_pow_two_ne_ratCast_of_den_le_"
+            "79639646646701375323355774875831053",
+            20,
+        )
+    )
+    assert (
+        "declaration tsum_totient_div_pow_two_ne_ratCast_of_den_le_"
+        "79639646646701375323355774875831053 | theorem | "
+        "Erdos249257/CertificateKernel.lean:18384 | claims=denominator_exclusion "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in declaration_card
+
+    anchor_card = query_corpus.render_card(paper_anchor_packet("res:farey"))
+    assert (
+        "paper anchor res:farey | registered_claim_anchor | "
+        "paper/erdos249-257-main-paper.tex:2199 | title=denominator exclusion "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in anchor_card
+
+    open_card = query_corpus.render_card(
+        open_proposition_packet("remaining_open.unbounded_certificate_supply")
+    )
+    assert (
+        "open remaining_open.unbounded_certificate_supply | "
+        "target=erdos_249 | linked_claims=16 | advancing_claims=10 "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in open_card
+    assert (
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "arithmetic_obstruction_interfaces"
+    ) in open_card
+
+    module_card = query_corpus.render_card(
+        query_corpus.module_packet("Erdos249257/CertificateKernel.lean", 20)
+    )
+    assert (
+        "module Erdos249257.CertificateKernel | Erdos249257/CertificateKernel.lean "
+        "| declarations=845 | imports=10 | importers=11 | claims=9 "
+        "| paper_sigil=CerKer | role=Assembled theorem kernel and headline interfaces "
+        "| resume=python3 scripts/query_route_memory.py --problem 257 --route "
+        "structured_support_families"
+    ) in module_card
+    assert (
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "probabilistic_gcd_geometry"
+    ) in module_card
+
+    family_card = query_corpus.render_card(
+        query_corpus.publication_family_packet("erdos249_quantitative_headline")
+    )
+    assert (
+        "publication family erdos249_quantitative_headline | claims=2 "
+        "| owner=paper/erdos249-257-main-paper.tex | view=gateway_headline "
+        "| obligation=Leaves remaining_open.erdos_249_irrationality. "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in family_card
+
+
 def validate_connection_query_ranking() -> None:
     packet = query_corpus.connection_card(
         "mersenneTail_lt_weight",
@@ -794,6 +860,7 @@ def main() -> int:
     validate_paper_guide()
     validate_natural_language_search()
     validate_indexed_declaration_lookup()
+    validate_route_memory_cards()
     validate_connection_query_ranking()
     validate_paper_semantic_citation_aliases()
     bare_ask = subprocess.run(
