@@ -2,6 +2,7 @@
 -- SPDX-License-Identifier: Apache-2.0
 import Erdos249257
 import ErdosProblems
+import ExternalVerification.Solution
 
 /-!
 # Minimal downstream consumer
@@ -119,6 +120,25 @@ theorem downstream_boolean_mobius_skip_row_consumer
     (hskips : CofinalPositiveHalfGreedySkips) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet :=
   half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips hskips
+
+/-! The half-membership endpoint is also available through the
+Comparator-facing proof-bearing namespace.  This consumer records the exact
+equivalence without pretending that an endpoint equivalence is itself an
+arithmetic producer. -/
+
+/-- Downstream reuse of the exact half-membership endpoint equivalence.
+
+The imported Comparator-facing solution transports the endpoint
+`(1 / 2 : ℝ) ∈ mersenneAchievementSet` to and from
+`SeamGreedyUnboundedTerminalFalse`.  This example supplies no unbounded
+terminal-false arithmetic producer: it establishes neither side
+unconditionally and leaves the cofinal arithmetic input to a separate
+producer.  It therefore does not solve the open #257 problem. -/
+theorem downstream_half_membership_endpoint_equivalence :
+    ((1 / 2 : ℝ) ∈ Erdos249257.ExternalVerification.mersenneAchievementSet) ↔
+      Erdos249257.ExternalVerification.SeamGreedyUnboundedTerminalFalse := by
+  exact
+    Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse
 
 /-! The #249 carry anti-compression family is a distinct rationality
 consequence: quotient periodicity and torsion-free section rank coexist.  The
