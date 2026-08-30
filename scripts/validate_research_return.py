@@ -97,6 +97,7 @@ def route_memory_binding_summary(value: dict[str, Any]) -> dict[str, Any]:
                 )
     return {
         "problem": value.get("problem"),
+        "disposition": value.get("disposition"),
         "route_ids": route_ids,
         "route_memory": copy.deepcopy(binding),
         "evidence_paths": sorted(evidence_paths),

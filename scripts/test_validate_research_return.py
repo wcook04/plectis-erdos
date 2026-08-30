@@ -15,6 +15,7 @@ from pathlib import Path
 from unittest import mock
 
 import validate_research_return as validator
+import route_memory_receipt
 import validation_singleflight as singleflight
 
 
@@ -47,6 +48,17 @@ def main() -> int:
     require(
         validator.PROBLEMS is validator.route_memory_receipt.ROSTER,
         "return selector roster must reuse route-memory authority",
+    )
+    consultation = route_memory_receipt.consultation_for_problem(257, ROOT)
+    no_route = dict(consultation)
+    no_route["disposition"] = "no_applicable_route"
+    no_route["routes"] = []
+    summary = validator.route_memory_binding_summary(
+        route_memory_receipt.return_receipt_template(no_route)
+    )
+    require(
+        summary["disposition"] == "no_applicable_route",
+        "route-memory summary dropped the no-applicable-route disposition",
     )
     require(
         validator.GIT_COMMAND_TIMEOUT_SECONDS
