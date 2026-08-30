@@ -8,10 +8,12 @@ infrastructure, start with the plain-language
 [`ARCHITECTURE.md`](../ARCHITECTURE.md) at the repository root. The files in
 this directory are authored papers with narrower jobs.
 
-Each covered Erdős problem has its own short problem note. Problems #249 and
-#257 also have full working-record papers. `erdos249-257-main-paper.tex` is the
-retained joint exposition of those two reviewed lanes; it is not the index for
-the other six problems.
+Each covered Erdős problem has its own canonical short problem note. Problems
+#249 and #257 also have longer working-record papers, and
+`erdos249-257-main-paper.tex` is retained as an archived joint record of those
+two lanes. The joint record is legacy provenance, not an active gateway or the
+canonical exposition route; readers should begin with the individual note for
+the problem they are asking about.
 
 Every formal statement links to the exact source
 line on GitHub, pinned to the formal-source checkpoint named in
@@ -26,12 +28,13 @@ beyond what the Lean sources contain; the proofs are the sources it links to.
 The manuscript layer (this `.tex` and the rendered PDF) is licensed CC-BY-4.0;
 see `REUSE.toml` at the repository root.
 
-The joint exposition has no length ceiling and remains the cumulative
-integration monograph for #249 and #257. New problem-owned notes do not remove,
-shorten, or transfer material out of it. The #249 and #257 notes repeat the
-context, exact status boundary, negative results, and surviving producers
-needed by a reader who arrives through one problem rather than through the
-joint paper.
+The joint exposition is preserved for provenance and historical context, but
+it is not a current integration gateway, canonical exposition authority, or
+default mathematical recommendation. The eight individual problem notes are
+the canonical paper layer. The #249 and #257 notes repeat the context, exact
+status boundary, negative results, and surviving producers needed by a reader
+who arrives through one problem; the other six notes are likewise standalone
+routes and should not be assembled through the archived joint record.
 
 ## Erdős Problem Notes
 
@@ -86,13 +89,13 @@ They are separate rendered papers, not hidden source appendices and not
 substitutes for the shorter problem notes. Each records checked premises,
 finite evidence, failed and equivalent routes, and the obligations that remain.
 
-The series is not a replacement for the gateway. Declarations not selected as
-reviewed public claims live in a different library; selected interfaces are
-registered in `docs/claims.json`, while the Lean files remain their source
-authority. Kernel checking `ErdosProblems.lean` does not promote an unregistered
-declaration into a reviewed claim. The #249/#257 notes may also restate reviewed
-gateway claims, but their exact authority stays in the registry. Every note
-states this, and the registry records it as
+These working records are not the canonical paper layer or an active gateway.
+Declarations not selected as reviewed public claims live in a different
+library; selected interfaces are registered in `docs/claims.json`, while the
+Lean files remain their source authority. Kernel checking `ErdosProblems.lean`
+does not promote an unregistered declaration into a reviewed claim. The
+individual notes may restate reviewed claims, but their exact authority stays
+in the registry. Every note states this, and the registry records it as
 `publication_architecture.problem_series_boundary`.
 
 The notes share `problem-note-preamble.tex`, which fixes the house macros and
@@ -167,8 +170,9 @@ synchronises every tracked reader-facing PDF to the repository root.
 
 ## Contents
 
-The bullets below index the mathematical gateway paper; the systems paper is
-outlined by its description above.
+The bullets below index the archived joint record for historical navigation;
+the canonical reader route is the individual problem note for the question at
+hand. The systems paper is outlined by its description above.
 
 - The Mersenne–Lambert ladder that places both constants on one line.
 - The [composite-dilation defect](../Erdos249257/CompositeDilationDefect.lean):
