@@ -151,6 +151,7 @@ import Erdos249257.Totient827ParitySocketCeiling
 import Erdos249257.TotientActualLcmShortKill
 import Erdos249257.TotientActualLcmTopEdgeStaircase
 import Erdos249257.TotientCarryKernelRigidity
+import Erdos249257.TotientTailCarryPeriod
 import Erdos249257.TotientFixedRankLcmAsymptotic
 import Erdos249257.TotientMahlerDefect
 import Erdos249257.TotientKernelConditional

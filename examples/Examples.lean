@@ -102,3 +102,38 @@ theorem downstream_boolean_mobius_carry_normal_form
         erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) ↔
       ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U :=
   exists_normalized_support_fraction_iff_exists_booleanMobiusCarry p q hq
+
+/-! The #249 carry anti-compression family is a distinct rationality
+consequence: quotient periodicity and torsion-free section rank coexist.  The
+rank bound is not a finite-rank conclusion, and neither clause supplies an
+irrationality proof.  In particular, the source's divisor-of-the-multiplier
+geometric degeneration is the natural friction that prevents promoting
+quotient periodicity to finite `ℚ`-rank.  The actual totient-specific producer
+and the irrationality endpoint remain open.  The hard step is the source
+transport from rationality to one common eventual carry period while preserving
+the independent finite-level rank lower bound.
+
+The consumer therefore keeps the rationality hypothesis, positive multiplier,
+tempered integral orbit, all-level rank lower bound, and common eventual
+periodicity visible in one theorem. -/
+
+/-- Downstream reuse of the exact #249 carry anti-compression mechanism.
+
+This is a necessary consequence of rationality for the binary totient series,
+not a contradiction, finite-rank theorem, or solution of Erdős #249. -/
+theorem downstream_totient_carry_anti_compression
+    (hrational :
+      ¬ Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / (2 : ℝ) ^ n)) :
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        (∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e)))) ∧
+        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+          CarrySectionsEventuallyPeriodicMod v h N₀ u := by
+  have hseries : ¬ Irrational (binaryCoeffSeries Nat.totient) := by
+    rw [binaryCoeffSeries_totient_eq]
+    exact hrational
+  exact not_irrational_totientSeries_implies_mod_period_and_unbounded_rank hseries
