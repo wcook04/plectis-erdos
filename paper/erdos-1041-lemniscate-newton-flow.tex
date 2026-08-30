@@ -77,6 +77,19 @@ perturbation is also made explicit: for each pair of critical values the set of
 common translations causing a ray collision is a one-real-parameter locus, given
 in closed form.
 
+The formal route is explicit: Newton-value decay is checked at
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{the value equation}
+and
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{the scaled first integral};
+the connection boundary is
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}{the ray-separation theorem},
+while the finite perturbation and root-retention interfaces are
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{197}{exists_small_translation_separating_arguments}{the translation theorem}
+and
+\lword{Erdos1041/NewtonFlowRaySeparation.lean}{287}{constant_perturbation_roots_in_unitDisk}{the unit-disc margin}.
+These are finite dynamical and stability interfaces, not the missing global
+topology or length-$2$ gluing argument.
+
 What remains is the planar topology and the length bookkeeping.  Neither is
 proved here, and Erd\H{o}s \#1041 is not settled.
 \end{abstract}
