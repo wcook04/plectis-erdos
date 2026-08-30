@@ -7,7 +7,7 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** The 38 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 40 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
@@ -176,7 +176,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Contribution families (16)</summary>
+<summary>Contribution families (17)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -225,6 +225,11 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and #249 endpoint remain open.<br>
   *Evidence.* conditional reduction · Lean kernel plus Comparator
 
+- **Actual foreign residue projection**<br>
+  The finite Möbius residue diagonal splits exactly into projected foreign and divisor channels, the omitted finite foreign tail has a closed geometric majorant, and the generic complement-noncancellation consumer turns a controlled projection separated from every integer into a full-target miss.<br>
+  **Boundary.** This is only a finite partition/geometric-majorant reduction feeding a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded supply of separated projections remain unproved; no Erdős #249 endpoint, novelty, significance, priority, or external-review claim follows.<br>
+  *Evidence.* conditional reduction · Lean kernel plus Comparator
+
 - **First harmonic pivot decomposition**<br>
   The supplier fibre is an exact prime-image/fibre bijection, while a checked finite counterexample shows that supplier-prime global isolation fails. The load-bearing result is an exact four-term first-harmonic decomposition; under the explicit PivotBudgetAt budgets, the centred real-part bound and three contribution bounds give the 9X/10 gap and a finite certificate, and the conditional pivot-residual-decorrelation theorem transfers a cofinal supply to irrationality.<br>
   **Boundary.** The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open.<br>
@@ -263,7 +268,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (16)</summary>
+<summary>Technical registry and Comparator routing (17)</summary>
 
 - <code>totient_kernel_basis</code><br>
   Comparator: <code>targeted</code>
@@ -290,6 +295,9 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>targeted</code>
 
 - <code>actual_lcm_orbit_separation</code><br>
+  Comparator: <code>targeted</code>
+
+- <code>actual_foreign_residue_projection</code><br>
   Comparator: <code>targeted</code>
 
 - <code>first_harmonic_pivot_decomposition</code><br>
@@ -416,7 +424,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Contribution families (12)</summary>
+<summary>Contribution families (13)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -429,6 +437,11 @@ Exact registry keys and Comparator routing are listed separately.
   For p : ℤ and q > 0, a nonempty normalized positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate U exists. The certificate has U 0 = p, positive U, the square-root bound U(N) ≤ q(2√N + 4), q-divisible carry differences, and a Boolean Möbius transform; the converse reconstructs the support from that transform. This quotient-level equivalence is distinct from the shifted natural-tail state family.<br>
   **Boundary.** The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made.<br>
   *Evidence.* locally proved exact equivalence plus conditional consequences; novelty unassessed · Lean kernel plus Comparator
+
+- **Boolean mobius exact row dynamics**<br>
+  If CofinalPositiveHalfGreedySkips holds:cofinally many positive rational-greedy remainders below the next Mersenne weight:the skipped-core and upper-half Boolean-word construction supplies cofinally many exact local half rows, yielding (1 / 2 : ℝ) ∈ mersenneAchievementSet. The load-bearing representative is half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips; exact-row construction, endpoint-defect transition, forced rank-two membership, and Boolean-word filling are subordinate mechanisms.<br>
+  **Boundary.** CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N there must be c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows, including one produced by a skipped core, do not establish cofinality. This is a conditional 1/2-membership/counterexample route, not an unconditional Erdős #257 solution; the rank-two, endpoint-defect, and upper-half Boolean-word declarations remain subordinate evidence, and no novelty, priority, significance, or external-review claim is made.<br>
+  *Evidence.* conditional reduction; novelty unassessed · Lean kernel
 
 - **Shifted odd tail state**<br>
   A rational support fraction produces a positive natural shifted tail state satisfying the exact binary recurrence and modular doubling orbit modulo v.<br>
@@ -483,12 +496,15 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (12)</summary>
+<summary>Technical registry and Comparator routing (13)</summary>
 
 - <code>finite_period_noncollapse</code><br>
   Comparator: <code>targeted</code>
 
 - <code>boolean_mobius_carry</code><br>
+  Comparator: <code>targeted</code>
+
+- <code>boolean_mobius_exact_row_dynamics</code><br>
   Comparator: <code>targeted</code>
 
 - <code>shifted_odd_tail_state</code><br>
@@ -810,7 +826,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 38 statement-isolated interfaces</summary>
+<summary>Show all 40 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -923,6 +939,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open.
 
+- <code>Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation</code>
+  - **Class.** conditional reduction
+  - **Statement.** The finite Möbius residue diagonal splits into projected foreign and divisor channels, every finite stable foreign-tail window obeys a closed geometric bound, and a controlled projection separated from every integer forces the full target to be missed.
+  - **Canonical claim status.** `supports_registered_claim_family:actual_foreign_residue_projection`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This is a conditional finite partition/geometric-majorant reduction with a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded separated-projection supply remain unproved; no Erdős #249 endpoint, novelty, significance, priority, or external-review claim is made.
+
 - <code>Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation</code>
   - **Class.** conditional reduction
   - **Statement.** The exact first-harmonic pivot decomposition and its 9X/10 gap yield a finite certificate whenever the stated PivotBudgetAt bounds hold, and the cofinal pivot-residual-decorrelation socket implies irrationality of the binary totient series.
@@ -1025,6 +1048,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made.
 
+- <code>Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips</code>
+  - **Class.** conditional reduction; novelty unassessed
+  - **Statement.** If positive rational-greedy skips occur cofinally in the declared sense, the skipped-core construction supplies cofinally many exact local Mersenne half rows and hence (1 / 2 : ℝ) belongs to the Mersenne achievement set.
+  - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This route is conditional on the unproved CofinalPositiveHalfGreedySkips premise: for every N there is c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. A finite exact row or any finite collection of exact rows does not establish that cofinal supply. The result is a conditional 1/2-membership/counterexample route only, not an unconditional solution of Erdős #257; the exact-row, upper-half Boolean-word, rank-two, and endpoint-defect declarations are subordinate mechanism evidence, and no novelty, priority, significance, or external-review claim is made.
+
 - <code>Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect</code>
   - **Class.** unconditional progress
   - **Statement.** For a positive support element a and positive x, the divisor-count coefficient at a*x splits into the coefficient at x, the distinguished new divisor when a does not divide x, and an exact finite composite-dilation defect.
@@ -1101,7 +1131,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 38 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 40 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.
