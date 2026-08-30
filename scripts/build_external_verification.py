@@ -14,7 +14,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
 import sys
 from pathlib import Path
 
@@ -58,19 +60,116 @@ def sha256_bytes(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
 
 
+class UnsafeVerificationPath(ValueError):
+    """A verification input or output escaped the asserted checkout boundary."""
+
+
+def _safe_component(path: Path) -> Path:
+    """Reject checkout escapes and symbolic-link components before I/O."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    if candidate != root and root not in candidate.parents:
+        raise UnsafeVerificationPath(f"path escaped verification checkout: {candidate}")
+    current = candidate
+    while current != root:
+        if current.is_symlink():
+            raise UnsafeVerificationPath(
+                f"symbolic-link verification path: {candidate}"
+            )
+        if current.parent == current:
+            raise UnsafeVerificationPath(
+                f"path escaped verification checkout: {candidate}"
+            )
+        current = current.parent
+    return candidate
+
+
+def safe_bytes(path: Path) -> bytes:
+    """Read a verification file through a no-follow regular-file descriptor."""
+    candidate = _safe_component(path)
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeVerificationPath(
+            f"verification file could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeVerificationPath(
+                f"verification file is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        return b"".join(chunks)
+    except OSError as exc:
+        raise UnsafeVerificationPath(
+            f"verification file could not be read safely: {candidate}"
+        ) from exc
+    finally:
+        os.close(descriptor)
+
+
+def safe_text(path: Path) -> str:
+    """Decode one descriptor-safe verification input as UTF-8."""
+    return safe_bytes(path).decode("utf-8")
+
+
+def safe_write_bytes(path: Path, content: bytes) -> None:
+    """Write a generated verification artifact without following a symlink."""
+    candidate = _safe_component(path)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags, 0o644)
+    except OSError as exc:
+        raise UnsafeVerificationPath(
+            f"verification output could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeVerificationPath(
+                f"verification output is not a regular file: {candidate}"
+            )
+        offset = 0
+        while offset < len(content):
+            written = os.write(descriptor, content[offset:])
+            if written <= 0:
+                raise UnsafeVerificationPath(
+                    f"verification output write made no progress: {candidate}"
+                )
+            offset += written
+        os.fsync(descriptor)
+    except OSError as exc:
+        raise UnsafeVerificationPath(
+            f"verification output could not be written safely: {candidate}"
+        ) from exc
+    finally:
+        os.close(descriptor)
+
+
 def sha256_path(path: Path) -> str:
-    return sha256_bytes(path.read_bytes())
+    return sha256_bytes(safe_bytes(path))
 
 
 def load_owner() -> tuple[dict, dict, dict, dict]:
-    claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
+    claims = json.loads(safe_text(CLAIMS_PATH))
     packet = claims.get("external_verification_packet")
     if not isinstance(packet, dict):
         raise ValueError("docs/claims.json lacks external_verification_packet")
     if packet.get("scope") != "all_eight_public_problem_programmes":
         raise ValueError("external verification scope must cover all eight programmes")
-    source = json.loads(PROBLEM_SOURCE_PATH.read_text(encoding="utf-8"))
-    projection = json.loads(PROBLEM_PROJECTION_PATH.read_text(encoding="utf-8"))
+    source = json.loads(safe_text(PROBLEM_SOURCE_PATH))
+    projection = json.loads(safe_text(PROBLEM_PROJECTION_PATH))
     expected_ids = packet.get("problem_ids")
     source_ids = [row.get("problem_id") for row in source.get("problems", [])]
     projection_ids = [row.get("problem_id") for row in projection.get("problems", [])]
@@ -86,9 +185,10 @@ def load_owner() -> tuple[dict, dict, dict, dict]:
 def declaration_exists(source: str, full_name: str) -> bool:
     path = ROOT / source
     short = full_name.rsplit(".", 1)[-1]
-    if not path.is_file():
+    try:
+        text = safe_text(path)
+    except (OSError, UnicodeError, UnsafeVerificationPath):
         return False
-    text = path.read_text(encoding="utf-8")
     return re.search(
         rf"^\s*(?:@\[[^\n]*\]\s*)?(?:noncomputable\s+)?"
         rf"(?:theorem|def|abbrev|structure|class)\s+{re.escape(short)}\b",
@@ -115,7 +215,7 @@ def internal_import_closure(start_module: str) -> list[Path]:
         if path is None:
             continue
         paths.append(path)
-        for imported in imports_in_text(path.read_text(encoding="utf-8")):
+        for imported in imports_in_text(safe_text(path)):
             if module_path(imported) is not None:
                 queue.append(imported)
     return sorted(paths)
@@ -123,7 +223,7 @@ def internal_import_closure(start_module: str) -> list[Path]:
 
 def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]:
     errors: list[str] = []
-    claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))["claims"]
+    claims = json.loads(safe_text(CLAIMS_PATH))["claims"]
     claim_by_id = {row["id"]: row for row in claims}
     expected_problems = {68, 243, 249, 251, 257, 269, 1041, 1049}
     results = packet.get("main_results", [])
@@ -208,11 +308,11 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
     if closure_rel != expected:
         errors.append(f"challenge internal import closure drifted: {closure_rel!r}")
     for path in closure:
-        text = path.read_text(encoding="utf-8")
+        text = safe_text(path)
         for imported in imports_in_text(text):
             if imported.startswith("Erdos249257.") or imported.startswith("ErdosProblems."):
                 errors.append(f"proof-bearing import leaked into challenge closure: {path}: {imported}")
-    workflow = (ROOT / ".github/workflows/lean.yml").read_text(encoding="utf-8")
+    workflow = safe_text(ROOT / ".github/workflows/lean.yml")
     for tool, revision in packet["comparator"]["pins"].items():
         if revision not in workflow:
             errors.append(f"workflow does not bind the claim-owned {tool} revision {revision}")
@@ -758,7 +858,10 @@ def render_packet(
         "internal_paths": [path.relative_to(ROOT).as_posix() for path in closure],
         "digest": sha256_bytes(
             b"".join(
-                path.relative_to(ROOT).as_posix().encode() + b"\0" + path.read_bytes() + b"\0"
+                path.relative_to(ROOT).as_posix().encode()
+                + b"\0"
+                + safe_bytes(path)
+                + b"\0"
                 for path in closure
             )
         ),
@@ -813,11 +916,16 @@ def main() -> int:
     stale: list[str] = []
     for path, content in outputs.items():
         if args.check:
-            if not path.is_file() or path.read_bytes() != content:
+            try:
+                current = safe_bytes(path)
+            except UnsafeVerificationPath:
                 stale.append(path.relative_to(ROOT).as_posix())
+            else:
+                if current != content:
+                    stale.append(path.relative_to(ROOT).as_posix())
         else:
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_bytes(content)
+            safe_write_bytes(path, content)
             print(path.relative_to(ROOT).as_posix())
     if stale:
         print("stale external-verification projections: " + ", ".join(stale), file=sys.stderr)

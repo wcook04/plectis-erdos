@@ -6,13 +6,16 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
+import tempfile
 import unittest
 from copy import deepcopy
 from pathlib import Path
 from unittest.mock import patch
 
+import build_external_verification as builder
 from build_external_verification import imports_in_text, load_owner, validate
 from run_external_verification import (
     EXPECTED_1049_MISMATCH,
@@ -179,6 +182,32 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertEqual(
             kwargs["timeout"], singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
         )
+
+    def test_builder_file_boundary_rejects_substitution_and_special_files(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="external-verification-file-boundary-") as temporary:
+            root = Path(temporary)
+            with patch.object(builder, "ROOT", root):
+                regular = root / "regular.json"
+                regular.write_bytes(b"{}")
+                self.assertEqual(builder.safe_bytes(regular), b"{}")
+
+                linked = root / "linked.json"
+                linked.symlink_to(regular)
+                with self.assertRaises(builder.UnsafeVerificationPath):
+                    builder.safe_bytes(linked)
+
+                fifo = root / "input.fifo"
+                os.mkfifo(fifo)
+                with self.assertRaises(builder.UnsafeVerificationPath):
+                    builder.safe_bytes(fifo)
+
+                target = root / "private.txt"
+                target.write_bytes(b"private")
+                output_link = root / "output.json"
+                output_link.symlink_to(target)
+                with self.assertRaises(builder.UnsafeVerificationPath):
+                    builder.safe_write_bytes(output_link, b"public")
+                self.assertEqual(target.read_bytes(), b"private")
 
     def test_multi_module_import_lines_cannot_evade_isolation_parser(self) -> None:
         self.assertEqual(
