@@ -249,7 +249,7 @@
     },
     {
       "id": "binary_cyclotomic_layers_supply_clean_cofinal_anchors",
-      "canonical_statement": "PROVED UNCONDITIONAL CLEAN ANCHORS: |Phi_n(2)| divides 2^n-1, and a prime divisor p of a positive binary cyclotomic layer has n=p^a ord_p(2). For every h>0 and threshold N0 one can choose a prime q and clean prime divisor p of |Phi_(hq)(2)| with p coprime to hq, exact order hq, hq dividing p-1, and p-1>=N0; hence the concrete binary layers satisfy CleanCyclotomicAnchorSupply.",
+      "canonical_statement": "PROVED UNCONDITIONAL CLEAN ANCHORS: |Phi_n(2)| divides 2^n-1, and a prime divisor p of a positive binary cyclotomic layer has n=p^a ord_p(2). The refactored clean-order theorem excludes the characteristic-prime cases past q>max(h,2^h); the resulting layer-supply and eventual degree-one order consumers give, for every h>0 and threshold N0, a prime q and clean prime divisor p of |Phi_(hq)(2)| with p coprime to hq, exact order hq, hq dividing p-1, and p-1>=N0. The concrete binary layers therefore satisfy CleanCyclotomicAnchorSupply and UnboundedPrimeDivisorSupply.",
       "logical_class": "unconditional_object_theorem",
       "problem": "249",
       "concepts": ["z35_binary_cyclotomic_anchor"],
@@ -258,14 +258,18 @@
       "engine": "cyclotomic divisibility, finite-field order decomposition, prime selection beyond max(h,N0,2^h), and elimination of the characteristic-prime case",
       "prior_art_state": "not_assessed",
       "prior_art_note": "Built from standard cyclotomic and Dirichlet ingredients; the exact clean-anchor packaging has not been priority-assessed.",
-      "scope_caveat": "This completely supplies anchor provenance but not the cofinal terminal carry kill attached to those anchors.",
+      "scope_caveat": "This completely supplies anchor provenance and unbounded prime support, but not the cofinal terminal carry kill attached to those anchors. It is the concrete X-2 specialization of the conditional prime-ray interfaces in Z73; neither route proves a tail discrepancy, cofinal certificate supply, or irrationality of the binary totient series.",
       "confidence": "high",
       "evidence": [
         {"declaration":"binaryCyclotomicLayer_dvd_mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1375},
         {"declaration":"binaryCyclotomicLayer_prime_order_decomposition","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1390},
         {"declaration":"two_ne_zero_of_prime_dvd_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1419},
-        {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1464},
-        {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1636}
+        {"declaration":"prime_dvd_binaryCyclotomicLayer_clean_order","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1460},
+        {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1566},
+        {"declaration":"binaryCyclotomicLayer_layerSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1609},
+        {"declaration":"binaryCyclotomicLayer_eventualOrderConsumer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1635},
+        {"declaration":"binaryCyclotomicLayer_unboundedPrimeDivisorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1652},
+        {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1713}
       ]
     },
     {

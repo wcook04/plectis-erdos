@@ -681,8 +681,8 @@
    "blocked_nodes": [
     "prime_ray_cyclotomic_open_sockets"
    ],
-   "closest_producer": null,
-   "gap": "all three are defined (PrimeRayCyclotomicCurvature.lean:88, 95, 102), proved nowhere and CONSUMED nowhere. The Z04 cyclotomic theory concerns Mobius numerators at squarefree exponents, not layers along a prime ray, so it is not a producer. This is a dangling interface, not a lane."
+   "closest_producer": "binaryCyclotomicLayer_unboundedPrimeDivisorSupply",
+   "gap": "The generic interfaces remain conditional for an arbitrary layer C: PrimeRayLayerSupply and BoundedDegreeOrderConsumer must still be instantiated by a concrete producer, and the bridge supplies no carry kill. The concrete X-2 family is no longer a dangling interface: Z35 now records source-current clean-order, eventual degree-one order, layer-supply, and unbounded-prime-divisor declarations in CyclotomicAnchoredKill.lean. Those declarations provide arithmetic anchors only; they do not prove a tail discrepancy, cofinal certificate supply, or irrationality of the binary totient series."
   },
   {
    "id": "OA249-hankel-terminal-parity-instantiation",
