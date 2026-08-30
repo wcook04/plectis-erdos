@@ -65,6 +65,28 @@ source-level premises, computations, no-go results, and open boundaries.
 Nothing in this route settles #1041; the exact continuation boundary is in
 `FRONTIER.md` and must be read before any new proof search.
 
+## Expansion-problem source routes
+
+The per-problem [machine index](problems.json) is the source for the complete
+module and note inventories below. Use the paper note for the mathematical
+exposition, the principal Lean file for checked propositions, and the stated
+open boundary for resumable work. These expansion roots are exact Lean source
+under `ErdosProblems.lean`, not reviewed claim-registry entries.
+
+| Problem | Paper-facing exposition | Principal checked source | Exact open boundary |
+|---|---|---|---|
+| #68 | [`erdos-68-factorial-denominator-irrationality.md`](papers/full-text/erdos-68-factorial-denominator-irrationality.md) | [`FactorialZeroPlateau.lean`](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090) | Produce cofinally many non-unit carries; the finite denominator exclusion is not cofinal. |
+| #243 | [`erdos-243-reciprocal-tail-rigidity.md`](papers/full-text/erdos-243-reciprocal-tail-rigidity.md) | [`ReciprocalTailRigidity.lean`](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L897) | Exclude the unbounded mixed-sign/negative-excursion regime after the conditional bounded case. |
+| #251 | [`erdos-251-prime-gap-dyadic-series.md`](papers/full-text/erdos-251-prime-gap-dyadic-series.md) | [`PrimeGapDyadicTail.lean`](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L360) | Obtain cofinally many adjacent small tail shifts at indices where the prime gaps differ. |
+| #269 | [`erdos-269-three-prime-running-lcm.md`](papers/full-text/erdos-269-three-prime-running-lcm.md) | [`ThreePrimeRunningLcm.lean`](../ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L123) | Supply the rationality-to-carry bridge and cofinal window escape for three-prime instances. |
+| #1049 | [`erdos-1049-rational-base-lambert.md`](papers/full-text/erdos-1049-rational-base-lambert.md) | [`RationalBaseLambert.lean`](../ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155) | Prove or refute irrationality at `3/2`; current obstructions do not supply a method-wide construction or analytic remainder bound. |
+
+For #249 and #257, use the reviewed routes above and the registered paper
+labels returned by `query_corpus.py`; this table deliberately covers only the
+five expansion roots that are not represented in the reviewed module map.
+Every row remains open at the problem level, and a checked local proposition
+does not upgrade that status.
+
 ## Build entrypoint
 
 - `Erdos249257.lean`
