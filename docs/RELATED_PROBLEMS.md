@@ -12,8 +12,8 @@ Where this work sits among the numbered problems it is near. Statuses are as lis
 The external catalogue status and the local release status are separate facts.
 Use the exact local packets before interpreting an analogy:
 
-- #249 target: `python3 scripts/query_corpus.py --open remaining_open.erdos_249_irrationality`
-- #257 target: `python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports`
+- #249 target: `python3 scripts/query_corpus.py --open remaining_open.erdos_249_irrationality`; return to its problem-owned evidence with `python3 scripts/query_corpus.py --route erdos_249`.
+- #257 target: `python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports`; return to its problem-owned evidence with `python3 scripts/query_corpus.py --route erdos_257`.
 - #69 neighbour: `python3 scripts/query_corpus.py --claim prime_support_irrationality`
 - #250 neighbour: `python3 scripts/query_corpus.py --claim sigma_transcendence`
 
@@ -42,10 +42,12 @@ records an `advances_open_target` edge.
   factorial-successor and carry frontiers, structural consumers, and a finite
   denominator exclusion; open boundary: produce cofinally many non-unit
   carries, not merely one finite miss.
-- **#249** — an unconditional denominator exclusion and conditional reductions,
-  no solution.
-- **#257** — named infinite-support cases and full support (`A = ℕ`), not the
-  universal statement.
+- **#249** — the [problem-owned paper note](papers/full-text/erdos-249-binary-totient-series.md)
+  and [canonical source map](SOURCE_MAP.md) return the unconditional denominator
+  exclusion and conditional reductions; no solution.
+- **#257** — the [problem-owned paper note](papers/full-text/erdos-257-mersenne-support-subseries.md)
+  and [canonical source map](SOURCE_MAP.md) return the named infinite-support
+  cases and full support (`A = ℕ`), not the universal statement.
 - **#243** — the [reciprocal-tail note](papers/full-text/erdos-243-reciprocal-tail-rigidity.md)
   and [ReciprocalTailRigidity source](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L897)
   exclude bounded negative-error regimes; open boundary: the unbounded

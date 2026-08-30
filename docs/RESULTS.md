@@ -88,8 +88,10 @@ it is a verification projection, not a replacement for claim authority.
   `ErdosProblems/Erdos68/FactorialZeroPlateau.lean:1090`. Checked theorem;
   exact equivalence, transporting the difficulty without reducing it;
   registry: none.
-- The kernel-internal denominator bound is `q ≥ 67` (`:940`); the `300000`
-  exclusion is a checked implication (`:876`) whose evaluation is an external
+- The kernel-internal denominator bound is `q ≥ 67`
+  (`ErdosProblems/Erdos68/FactorialZeroPlateau.lean:940`); the `300000`
+  exclusion is a checked implication
+  (`ErdosProblems/Erdos68/FactorialZeroPlateau.lean:876`) whose evaluation is an external
   computation, not a kernel result.
 - Open: produce infinitely many non-unit carries.
 
@@ -103,7 +105,9 @@ it is a verification projection, not a replacement for claim authority.
 - Given normalised vanishing — supplied for the canonical orbit by Koizumi
   (Integers 26 (2026), A28; cited, prose bridge) — a bounded negative part or
   finite normalised negative mass forces the error to vanish and the
-  Sylvester recurrence to begin (`:2177`, `:2264`;
+  Sylvester recurrence to begin
+  (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2177`,
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2264`;
   `ErdosProblems/Erdos243/SparseResetRecovery.lean:155`,
   `ErdosProblems/Erdos243/SparseResetRecovery.lean:175`). Checked conditional theorems; the
   note concedes its absorption and descent lemmas as Koizumi prior art.
@@ -114,13 +118,17 @@ it is a verification projection, not a replacement for claim authority.
 - Unconditional: the dyadic sections `n ↦ φ(2ʲn+r)` of Euler's totient have
   an explicit rational basis, and the level-`e` span has dimension exactly
   `2ᵉ + 1` — `finrank_canonicalTotientKernel_eq`,
-  `Erdos249257/TotientMahlerDefect.lean:989`; basis object at `:1392`. A
+  `Erdos249257/TotientMahlerDefect.lean:989`; basis object at
+  `Erdos249257/TotientMahlerDefect.lean:1392`. A
   theorem about the coefficient sequence, not about irrationality of `S`;
   it quantifies the known qualitative fact that `φ` is not 2-regular
   (Coons 2008, arXiv:0810.3709, via ζ zero-density — no exact rank appears
   there).
   Claim `dyadic_totient_certificate_interface` (the basis declarations at
-  `:1265`, `:1380`, `:1392` — registry: dyadic_totient_certificate_interface).
+  `Erdos249257/TotientMahlerDefect.lean:1265`,
+  `Erdos249257/TotientMahlerDefect.lean:1380`,
+  `Erdos249257/TotientMahlerDefect.lean:1392` — registry:
+  dyadic_totient_certificate_interface).
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
@@ -130,8 +138,11 @@ it is a verification projection, not a replacement for claim authority.
   denominators through `7.96 × 10³⁴` — improvement over the classical bound:
   zero (claim `denominator_exclusion`) — and diagonal certificates exist at
   every `t ≤ 82`, with the plateau broken at `t = 83` and a proved depth
-  floor of `125` there (`ErdosProblems/Skip/LadderT67.lean:71264`, `:71285`,
-  `:71294`; claim `certified_kill_instances`; no certificate at `t = 83` is
+  floor of `125` there
+  (`ErdosProblems/Skip/LadderT67.lean:71264`,
+  `ErdosProblems/Skip/LadderT67.lean:71285`,
+  `ErdosProblems/Skip/LadderT67.lean:71294`; claim `certified_kill_instances`;
+  no certificate at `t = 83` is
   claimed).
 - Open: the unbounded certificate supply, which is equivalent to #249 itself;
   a checked splice construction shows no finite inspection can settle it.
@@ -140,16 +151,19 @@ it is a verification projection, not a replacement for claim authority.
 
 - Unconditional: `pₙ ≤ 1250(n+1)⁴` by an elementary argument, so the series
   is summable and equals `2 +` the prime-gap dyadic series with no external
-  input (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:360`, `:379`,
-  `:427`); and for any sequence obeying the checked integer-digit dyadic
+  input (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:360`,
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:379`,
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:427`); and for any sequence obeying the checked integer-digit dyadic
   tail recurrence, irrationality is exactly equivalent to cofinal
   non-integral tail shifts
-  (`irrational_initial_iff_cofinalNonintegralTailShifts`, `:1572`) — the
+  (`irrational_initial_iff_cofinalNonintegralTailShifts`,
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1572`) — the
   identification of the concrete prime tail with that recurrence is
   paper-level. Checked theorems; registry: none.
 - A checked countermodel closes the periodicity route: an explicit unbounded,
   non-eventually-periodic digit sequence with rational dyadic sum
-  (`carryCoeff_natCast_not_eventually_periodic`, `:1163`).
+  (`carryCoeff_natCast_not_eventually_periodic`,
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1163`).
 - Open: cofinally many adjacent index pairs with small tail shifts and
   differing gaps; each smallness condition constrains a complete infinite
   tail.
@@ -173,8 +187,10 @@ core)**
   Kovač on the erdosproblems.com #257 discussion page in August 2025, and no
   published source computes the exact value) —
   `Erdos249257/GreedyAchievementSet.lean:996`,
-  `:1633–1658`; claim `greedy_achievement_geometry`. Membership of `1/2` is
-  equivalent to infinitely many greedy skips (`:2527`) and to the absence of
+  `Erdos249257/GreedyAchievementSet.lean:1633–1658`; claim
+  `greedy_achievement_geometry`. Membership of `1/2` is equivalent to
+  infinitely many greedy skips
+  (`Erdos249257/GreedyAchievementSet.lean:2527`) and to the absence of
   a fatal half-gap (`Erdos249257/HalfCutLocator.lean:654`); the dyadic
   membership question was posed publicly by Kovač in the same discussion,
   and a positive answer would refute universal #257.
@@ -182,8 +198,11 @@ core)**
   be an artefact of normalisation — adjoining `1` to the support shifts the
   value by a rational and flips the divisor-incidence parity, and the
   finite-change principle is itself checked
-  (`ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:94`, `:111`,
-  `:140`; `Erdos249257/CertificateKernel.lean:9467`, `:9476`). The squarefree value
+  (`ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:94`,
+  `ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:111`,
+  `ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:140`;
+  `Erdos249257/CertificateKernel.lean:9467`,
+  `Erdos249257/CertificateKernel.lean:9476`). The squarefree value
   itself is settled at power-of-two bases in the literature (Duverney–Tachiya
   2019; cited, not formalised). Registry: none.
 - Open: universal #257, and the `1/2` and `1/21` memberships.
@@ -203,7 +222,10 @@ core)**
   `L(x) = p^⌊log_p x⌋ q^⌊log_q x⌋ r^⌊log_r x⌋`
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:123`; formalisation of a
   classical identity), the four-letter block alphabet `{2, 6, 10, 30}`
-  (`:699`), and a rank-two kernel obstruction (`:479`, `:721`).
+  (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:699`), and a rank-two
+  kernel obstruction
+  (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:479`,
+  `ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:721`).
 - Open: any three-prime case; the rationality-to-carry bridge and the
   cofinal window escape.
 
@@ -212,10 +234,11 @@ core)**
 - Checked: quantitative root retention under constant perturbation
   (`constant_perturbation_roots_in_unitDisk`,
   `ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:287`) and arbitrarily
-  small translations separating all pairwise ray arguments (`:197`). The
+  small translations separating all pairwise ray arguments
+  (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:197`). The
   ray-separation exclusion is checked in consumer form only: the
   exponential-decay connection equation is its hypothesis, not a theorem
-  (`:315`). Registry: none.
+  (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:315`). Registry: none.
 - The note's main independent contribution is prose, not Lean: a specific
   invalid three-ended local block at an interior Morse saddle in a recent
   manuscript's load-bearing Proposition 12 — identified as a proof gap, not
