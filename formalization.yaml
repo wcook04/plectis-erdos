@@ -101,6 +101,22 @@ status:
       boundary: "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows."
       comparator_declaration: "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero"
       literature_dependencies: []
+    - declaration: "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+      file: "ErdosProblems/Erdos243/SparseResetRecovery.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "conditional analytic recovery criterion; novelty unassessed"
+      statement: "Under exact next-denominator and next-tail C/D dynamics with a, D : ℕ → ℤ, C : ℕ → ℕ, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable normalized negative centered mass, the centered state vanishes eventually and a follows the Sylvester recurrence eventually."
+      boundary: "This is a conditional recovery criterion: the source theorem assumes every displayed dynamics, positivity, strict centered-step, normalized-vanishing, and summability hypothesis, and does not prove them for the original Erdős #243 orbit. Any surviving canonical orbit must have divergent normalized negative mass. It supplies no prime-specific producer, unconditional #243 endpoint, or reciprocal-tail irrationality, and makes no novelty, priority, significance, or external-review claim. It is distinct from centered_state_dynamics, which uses a uniform lower-bound hypothesis rather than summability of normalized negative mass."
+      comparator_declaration: "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit"
       file: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
       sorry_count: 0
@@ -379,6 +395,22 @@ status:
       source_mapping: "The local theorem uses the zero-based consecutive-prime gap sequence and proves that for every bound B some indexed gap exceeds B. This is the same unboundedness statement after the repository's indexing convention is unfolded."
       historical_attribution: "Classical elementary factorial prime-free interval argument; modern large-gap theorems in the paper are contextual and strictly stronger."
       logical_dependency: "The Lean proof reconstructs an elementary argument locally; no external prime-gap theorem is imported as a proof dependency."
+    - declaration: "ErdosProblems.Erdos251.carryPartialSum_natCast_eq"
+      file: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "formalisation of exact finite identity and nonperiodicity contrast; novelty and significance unassessed"
+      statement: "The coefficient-only wrapper records the exact finite carry partial-sum identity together with non-eventual-periodicity of the synthetic coefficient stream and the actual prime-gap stream, exposing the limits of coefficient-only reasoning."
+      boundary: "The wrapper proves the finite identity and the two non-eventual-periodicity statements only. It does not assert the infinite rational-sum limit of the synthetic countermodel, identify the synthetic coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
+      comparator_declaration: "Erdos249257.ExternalVerification.coefficientOnlyNoGo"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap"
       file: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       sorry_count: 0
@@ -790,6 +822,11 @@ alignment:
       module: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
       status: "proved"
       note: "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows."
+    - source: "Under exact next-denominator and next-tail C/D dynamics with a, D : ℕ → ℤ, C : ℕ → ℕ, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable normalized negative centered mass, the centered state vanishes eventually and a follows the Sylvester recurrence eventually."
+      lean: "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+      module: "ErdosProblems/Erdos243/SparseResetRecovery.lean"
+      status: "proved"
+      note: "This is a conditional recovery criterion: the source theorem assumes every displayed dynamics, positivity, strict centered-step, normalized-vanishing, and summability hypothesis, and does not prove them for the original Erdős #243 orbit. Any surviving canonical orbit must have divergent normalized negative mass. It supplies no prime-specific producer, unconditional #243 endpoint, or reciprocal-tail irrationality, and makes no novelty, priority, significance, or external-review claim. It is distinct from centered_state_dynamics, which uses a uniform lower-bound hypothesis rather than summability of normalized negative mass."
     - source: "An eventually periodic negative-error orbit with positive phase growth is impossible."
       lean: "ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit"
       module: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
@@ -870,6 +907,11 @@ alignment:
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       status: "proved"
       note: "Unbounded coefficients alone do not force irrationality."
+    - source: "The coefficient-only wrapper records the exact finite carry partial-sum identity together with non-eventual-periodicity of the synthetic coefficient stream and the actual prime-gap stream, exposing the limits of coefficient-only reasoning."
+      lean: "ErdosProblems.Erdos251.carryPartialSum_natCast_eq"
+      module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      status: "proved"
+      note: "The wrapper proves the finite identity and the two non-eventual-periodicity statements only. It does not assert the infinite rational-sum limit of the synthetic countermodel, identify the synthetic coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
     - source: "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational."
       lean: "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap"
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
@@ -1042,11 +1084,11 @@ claim_review_matrix:
         summary: "Normalised vanishing excludes a cofinally bounded negative part and forces eventual Sylvester behaviour."
         boundary: "Every positivity, dynamics, bounded-rise, and vanishing hypothesis remains explicit."
       - id: "negative_mass_recovery"
-        contribution_class: "conditional reduction"
+        contribution_class: "conditional analytic recovery criterion; novelty unassessed"
         evidence_mode: "Lean kernel"
-        comparator_disposition: "not_selected_deep_state_vocabulary"
-        summary: "Finite normalised negative mass forces eventual zero and hence the Sylvester recurrence."
-        boundary: "Summability of the negative mass is unproved for the original problem."
+        comparator_disposition: "targeted"
+        summary: "Under exact reciprocal-tail C/D dynamics, positive tail, the strict centered-step equation, and division-free normalized vanishing, summability of the normalized negative centered mass forces centeredState to vanish eventually and recovers the Sylvester recurrence. The load-bearing theorem is supported by the exact tail-growth bound and the finite-negative-mass stabilization theorem."
+        boundary: "The exact criterion assumes a, D : ℕ → ℤ and C : ℕ → ℕ with the declared next-denominator and next-tail dynamics, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable (negativeRelativeMass C (fun n ↦ centeredState (a n) (D n) (C n))). It does not prove these hypotheses for the original Erdős #243 orbit, supply a prime-specific producer, or establish an unconditional #243 endpoint or reciprocal-tail irrationality. Any surviving canonical orbit must have divergent normalized negative mass. This is distinct from centered_state_dynamics, whose recovery criterion uses a uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
   - problem: 249
     paper: "paper/erdos-249-binary-totient-series.tex"
     families:
@@ -1200,11 +1242,11 @@ claim_review_matrix:
         summary: "Cofinal adjacent small mismatches would rule out eventual integral shifts for the prime-gap tail."
         boundary: "The cofinal mismatch producer is unproved."
       - id: "coefficient_only_no_go"
-        contribution_class: "no-go result"
+        contribution_class: "coefficient-only barrier; novelty and significance unassessed"
         evidence_mode: "Lean kernel plus authored synthesis"
-        comparator_disposition: "targeted_unboundedness_theorem_only"
-        summary: "Prime gaps are unbounded and non-eventually-periodic, while an explicit nonperiodic unbounded countermodel still has rational sum."
-        boundary: "Comparator checks the exact theorem, not the broader methodological interpretation."
+        comparator_disposition: "targeted"
+        summary: "The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream."
+        boundary: "CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
   - problem: 257
     paper: "paper/erdos-257-mersenne-support-subseries.tex"
     families:
@@ -1443,7 +1485,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:a09b21d8266dbe8b596323cd07f6180e801ec1d90ebacc21e1aea422a869f3e2"
+  problem_index_digest: "sha256:818295fe29f5551a2f78cea562fe6943fc5e2d2ea12b8cdd84222d3a4164c2f5"
   problem_count: 8
   problems:
     - id: "erdos_68"

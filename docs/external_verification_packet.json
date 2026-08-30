@@ -186,6 +186,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "negative_mass_recovery",
+      "problem": 243,
+      "review_family": "negative_mass_recovery",
+      "contribution_class": "conditional analytic recovery criterion; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+      "original_source": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+      "statement": "Under exact next-denominator and next-tail C/D dynamics with a, D : ℕ → ℤ, C : ℕ → ℕ, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable normalized negative centered mass, the centered state vanishes eventually and a follows the Sylvester recurrence eventually.",
+      "boundary": "This is a conditional recovery criterion: the source theorem assumes every displayed dynamics, positivity, strict centered-step, normalized-vanishing, and summability hypothesis, and does not prove them for the original Erdős #243 orbit. Any surviving canonical orbit must have divergent normalized negative mass. It supplies no prime-specific producer, unconditional #243 endpoint, or reciprocal-tail irrationality, and makes no novelty, priority, significance, or external-review claim. It is distinct from centered_state_dynamics, which uses a uniform lower-bound hypothesis rather than summability of normalized negative mass.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "eventually_periodic_negative_no_go",
       "problem": 243,
       "review_family": "negative_orbit_no_go",
@@ -414,6 +428,20 @@
       "wrapper_declaration": "Erdos249257.ExternalVerification.exists_primeGap0_gt",
       "statement": "The consecutive prime gaps are unbounded.",
       "boundary": "Unbounded coefficients alone do not force irrationality.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "coefficient_only_no_go",
+      "problem": 251,
+      "review_family": "coefficient_only_no_go",
+      "contribution_class": "formalisation of exact finite identity and nonperiodicity contrast; novelty and significance unassessed",
+      "original_declaration": "ErdosProblems.Erdos251.carryPartialSum_natCast_eq",
+      "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.coefficientOnlyNoGo",
+      "statement": "The coefficient-only wrapper records the exact finite carry partial-sum identity together with non-eventual-periodicity of the synthetic coefficient stream and the actual prime-gap stream, exposing the limits of coefficient-only reasoning.",
+      "boundary": "The wrapper proves the finite identity and the two non-eventual-periodicity statements only. It does not assert the infinite rational-sum limit of the synthetic countermodel, identify the synthetic coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims.",
       "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
@@ -830,11 +858,16 @@
         },
         {
           "id": "negative_mass_recovery",
-          "contribution_class": "conditional reduction",
-          "summary": "Finite normalised negative mass forces eventual zero and hence the Sylvester recurrence.",
+          "contribution_class": "conditional analytic recovery criterion; novelty unassessed",
+          "summary": "Under exact reciprocal-tail C/D dynamics, positive tail, the strict centered-step equation, and division-free normalized vanishing, summability of the normalized negative centered mass forces centeredState to vanish eventually and recovers the Sylvester recurrence. The load-bearing theorem is supported by the exact tail-growth bound and the finite-negative-mass stabilization theorem.",
           "evidence_mode": "Lean kernel",
-          "comparator_disposition": "not_selected_deep_state_vocabulary",
-          "boundary": "Summability of the negative mass is unproved for the original problem."
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "ErdosProblems.Erdos243.tail_growth_le_one_add_negativeRelativeMass",
+            "ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass",
+            "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+          ],
+          "boundary": "The exact criterion assumes a, D : ℕ → ℤ and C : ℕ → ℕ with the declared next-denominator and next-tail dynamics, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable (negativeRelativeMass C (fun n ↦ centeredState (a n) (D n) (C n))). It does not prove these hypotheses for the original Erdős #243 orbit, supply a prime-specific producer, or establish an unconditional #243 endpoint or reciprocal-tail irrationality. Any surviving canonical orbit must have divergent normalized negative mass. This is distinct from centered_state_dynamics, whose recovery criterion uses a uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
         }
       ]
     },
@@ -1076,11 +1109,16 @@
         },
         {
           "id": "coefficient_only_no_go",
-          "contribution_class": "no-go result",
-          "summary": "Prime gaps are unbounded and non-eventually-periodic, while an explicit nonperiodic unbounded countermodel still has rational sum.",
+          "contribution_class": "coefficient-only barrier; novelty and significance unassessed",
+          "summary": "The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream.",
           "evidence_mode": "Lean kernel plus authored synthesis",
-          "comparator_disposition": "targeted_unboundedness_theorem_only",
-          "boundary": "Comparator checks the exact theorem, not the broader methodological interpretation."
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "ErdosProblems.Erdos251.carryPartialSum_natCast_eq",
+            "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
+            "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic"
+          ],
+          "boundary": "CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
         }
       ]
     },
@@ -1460,7 +1498,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:a09b21d8266dbe8b596323cd07f6180e801ec1d90ebacc21e1aea422a869f3e2",
+    "projection_digest": "sha256:818295fe29f5551a2f78cea562fe6943fc5e2d2ea12b8cdd84222d3a4164c2f5",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1801,16 +1839,15 @@
           "state": "reviewed",
           "family_count": 5,
           "by_class": {
-            "not_selected": 1,
             "represented_by": 1,
-            "targeted": 3
+            "targeted": 4
           },
           "dispositions": {
             "centered_state_dynamics": "targeted",
             "negative_orbit_no_go": "targeted_representative_periodic_theorem",
             "bounded_rise_coprimality": "represented_by_stronger_selected_boundary_theorem",
             "bounded_negative_exclusion": "targeted",
-            "negative_mass_recovery": "not_selected_deep_state_vocabulary"
+            "negative_mass_recovery": "targeted"
           }
         }
       },
@@ -2019,7 +2056,7 @@
             "dyadic_tail_integrality_classification": "targeted",
             "totient_shift_propagation": "represented_by_integral_shift_family",
             "small_mismatch_criterion": "not_selected_open_producer_hypothesis",
-            "coefficient_only_no_go": "targeted_unboundedness_theorem_only"
+            "coefficient_only_no_go": "targeted"
           }
         }
       },
@@ -2523,7 +2560,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:a65708180bf8cb454697ff2fac6af966b03d3bc1becb6cdbea882bf95ac1ce89",
+    "digest": "sha256:0c7680df20a77531fec66ef0e8a169dce56ec75137704e31f70413b5a8c7b8d5",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2531,6 +2568,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:b9506c33fddd027778359a32991dc6d270b891d47b9627ddabe50358c693c71d",
-  "solution_source_digest": "sha256:fe970e29af11bd33c698e7d673aa9b23003462d066eb19b325c7caf715c79c48"
+  "config_digest": "sha256:8ab02c8c7b2e953a7e8dc8fa4305ef52cba80f7e3e570473e3932eb265e5a900",
+  "solution_source_digest": "sha256:e8fb0ad4b506aa36a18973ee606f7cf90fa0dd99771395ec027ab2112de42fed"
 }
