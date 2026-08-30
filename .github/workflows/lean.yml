@@ -592,7 +592,12 @@ jobs:
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_scope_source_identity.py
       - name: Test public-artifact boundary
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        # This is a repository-wide public membrane, so it must still run when
+        # the changed files are confined to the public #1041 corpus. The
+        # corpus integrity check above remains the corpus-specific gate; this
+        # step prevents a corpus-only PR from bypassing the release's
+        # provenance, open-problem, and portfolio-visibility contract.
+        if: ${{ !cancelled() }}
         run: python3 scripts/test_public_artifact_boundary.py
       - name: Test supported root-import closure
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}

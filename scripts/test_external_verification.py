@@ -268,6 +268,12 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("inputs.scope == 'release-surfaces-only'", workflow)
         self.assertIn("ExternalVerification1049", workflow)
         self.assertIn("comparator-1049-numerical-height.json", workflow)
+        release_surfaces = workflow.split("  release-surfaces:", 1)[1]
+        public_boundary_step = release_surfaces.split(
+            "- name: Test public-artifact boundary", 1
+        )[1].split("- name:", 1)[0]
+        self.assertNotIn("erdos1041_corpus_only", public_boundary_step)
+        self.assertIn("if: ${{ !cancelled() }}", public_boundary_step)
 
         prepare = workflow.index("- name: Prepare trusted challenge inputs")
         compare = workflow.index("- name: Run positive and adversarial Comparator checks")
