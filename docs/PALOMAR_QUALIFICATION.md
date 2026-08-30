@@ -32,13 +32,13 @@ the preceding source lines.
 
 The value-selection record starts from the committed claims review matrix,
 which currently contains 64 source families (the 60-family dispatch baseline
-plus the newly canonical actual-LCM, weighted-phase-carry, and dyadic-tail
-classification families), and seven targeted theorem-forest
+plus the newly canonical actual-LCM, weighted-phase-carry, dyadic-tail
+classification, and Boolean–Möbius carry families), and eight targeted theorem-forest
 discoveries. Each source family has an explicit selected, represented,
 deferred, subordinate, rejected, or long-tail disposition, with support and
 contrary evidence, cheapest probe, stop evidence, hard mechanism,
 attribution, limitations, and open boundary bound to its review-matrix row.
-The exact 40-row Comparator roster is a nested evidence/admission screen,
+The exact 42-row Comparator roster is a nested evidence/admission screen,
 not the boundary of the Palomar candidate universe. Its complete high-signal
 spine over that nested screen is:
 
@@ -68,13 +68,13 @@ distinct high-signal routes; the factorial-carry, prime-gap, and totient-rank
 results are **subordinate** supporting routes; the coordinatewise-corridor
 no-go is **rejected** as a headline candidate; and the remaining exact
 identities, finite instances, auxiliary facts, and boundaries are retained in
-the **long tail**. Every one of the 40 committed Comparator rows has exactly
+the **long tail**. Every one of the 42 committed Comparator rows has exactly
 one of those dispositions, with a reason. The source-landscape record also
 preserves the actual-LCM route's transition from deferred to represented.
 
 The actual-LCM separation route is now an eligible represented candidate:
 `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
-is in the committed 40-row Comparator roster and is source-faithful to
+is in the committed 42-row Comparator roster and is source-faithful to
 `Erdos249257/TotientActualLcmOrbitSeparation.lean:305`, under the canonical
 claim `actual_lcm_orbit_nonintegrality_frontier`. Its exact premise
 is a cofinal supply of odd canonical suffix depths together with the bound
@@ -91,7 +91,7 @@ represented and eligible. The canonical evidence ceiling is sufficient-not-
 equivalent: this implication does not duplicate the actual-LCM frontier or
 prove its cofinal supply.
 
-The source-landscape queue deliberately keeps seven source-current candidates
+The source-landscape queue deliberately keeps eight source-current candidates
 visible while distinguishing source review from committed Comparator
 evidence. The first-harmonic pivot decomposition
 (`FirstHarmonicPivot.lean:394; 514-552; 569-588`) is deferred but now has
@@ -99,15 +99,15 @@ committed source-faithful Comparator evidence:
 its exact `windowFirstExp_sum_eq_pivot_decomposition` identity and
 `PivotBudgetAt` bounds (`14/25`, `1/100`, `1/100`, and `8/25`) yield a `9/10`
 first-harmonic gap under the cofinal residual-decorrelation premise. The
-The source-faithful three-file ExternalVerification transport landed at
+source-faithful three-file ExternalVerification transport landed at
 `bc0fee48` and its exact declarations are registered in the committed
-40-row configuration at `df637b0e`; the canonical review-matrix projection
+42-row configuration; the canonical review-matrix projection
 remains separate and no cofinal decorrelation producer is supplied. The
 actual-LCM positive-corridor/top-edge route
 (`TotientActualLcmOrbitSign.lean:31-278`) is a subordinate supporting
 candidate within the single `actual_lcm_orbit_separation` family, not a
 distinct family. Its committed transport at `bc0fee48` is registered in the
-40-row configuration and includes positivity, the true-survivor obstruction,
+42-row configuration and includes positivity, the true-survivor obstruction,
 and the top-edge residue theorem; canonical evidence projection remains
 separate. It proves a positive corridor and forces the exact top-edge residue
 under integral representation, but does not exclude that edge.
@@ -119,20 +119,34 @@ family (`HermitePadeNoGo.lean:58, 75, 103, 126`) is represented under the
 existing `height_and_pade_arithmetic` family: its exact cleared-gap sign and
 unique-zero analysis gives a sharp no-go for the explicit two-function
 exponent model, with equality only at `rho = 0`, `sigma = 1`. The committed
-source-faithful transport is `f52f903a`, but its four declarations remain
-outside the 40-row Comparator roster until configuration registration. This
+source-faithful transport is `f52f903a`, and its equality representative is
+registered in the committed 42-row Comparator roster. This
 is not a universal Padé/Hermite–Padé no-go, constructs no approximants or
 remainders, and proves no irrationality at 3/2 or any general rational-base
 endpoint. The #251 dyadic-tail integrality classification
-(`PrimeGapDyadicTail.lean:1276-1535`) is deferred for Comparator admission but
-has a committed four-declaration ExternalVerification transport at `e10b161a`:
+(`PrimeGapDyadicTail.lean:1276-1535`) is represented in the committed
+42-row Comparator roster and has a committed four-declaration
+ExternalVerification transport at `e10b161a`:
 denominator/Mersenne divisibility classifies integral positive shifts, and the
 eventual-integrality obstruction is equivalent to the abstract irrationality
 normal form. It is now represented as a source-current high-signal
-classification family in the widened review matrix, while remaining outside
-the Comparator roster pending registration. The prime-specific cofinal
+classification family in the widened review matrix, with its
+all-positive-tail-shifts representative now registered in Comparator. The prime-specific cofinal
 mismatch producer remains open; the abstract normal form is not a prime-gap
 endpoint proof.
+The #257 Boolean–Möbius carry family (`BooleanMobiusCarry.lean:949`) is now
+canonical in the claims review matrix and represented in the Palomar source
+landscape. Its source transport is `712bc4c3`, with the exact existence-level
+equivalence between a positive normalized rational support and a quotient-only
+certificate carrying positivity, the square-root bound, divisible carry
+differences, Boolean Möbius inversion, and literal support reconstruction.
+It is ranked below the unconditional full-support, pairwise-coprime,
+eventually-periodic, and orthogonal-petal endpoint families but above the
+weaker shifted-tail extraction because its certificate reconstructs support.
+The transport is not yet a committed Comparator row; it gives no contradiction,
+no universal #257 irrationality, and no cofinally nonintegral producer for the
+actual recurrence. Its zero-window constant is support- and numerator-dependent,
+and the equivalence does not settle every infinite support.
 The #243 centered-state recovery/rigidity transport
 (`ReciprocalTailRigidity.lean:1799, 1837, 2265`) is represented as a distinct
 source-landscape discovery mapped to the existing `centered_state_dynamics`
@@ -161,6 +175,20 @@ the strongest combined evidence and lowest conditionality; a source-faithful
 transport plus a materially stronger producer or endpoint would be the exact
 reversal evidence.
 
+The newly landed #249 carry anti-compression transport at
+`TotientTailCarryPeriod.lean:224` is also registered for source-landscape
+review. Its representative
+`not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` says that
+hypothetical non-irrationality forces a positive multiplier and tempered
+integral carry with common eventual modular periodicity across dyadic sections,
+alongside canonical-carry-kernel rank at least `2^e - 1` at every level. This
+is one orbit-level conjunction, not a second coefficient-side rank family. The
+modulo-`v` forcing-vanishing and geometric-orbit mechanisms preserve the natural
+friction: periodicity alone yields no finite-`Q`-rank upper bound or
+contradiction. The transport is committed at `4932144a`, but its canonical
+claims-family identity and Comparator registration remain pending, so the
+candidate is deferred and is not an endpoint proof.
+
 This selection explicitly resists underclaim: a classical theorem is not
 demoted merely because it is already known or because another row has a more
 general-looking hypothesis. It also resists hype: the selected theorem proves
@@ -173,13 +201,13 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`ab33abeec1736dbc62359fb754509becdccb33ae` at the start of this semantic
+`4932144ada05d6c617f43a372ede18a56900df7b` at the start of this semantic
 population pass. This observation records source currency; it is not a
 release lock or terminal validation claim:
 
-- Comparator configuration: `verification/comparator.json`, 40 unique
+- Comparator configuration: `verification/comparator.json`, 42 unique
   theorem names, SHA-256
-  `ef970718e15171d8d3d21b8ea6620bd2ccd179509bc19ec9aaf998a72b87e12c`.
+  `175c8a2b4254494791dfe8dde9b3caf2725debf32c1ce9ef3370bd8be2309030`.
 - Challenge: `ExternalVerification.Challenge`.
 - Solution: `ExternalVerification.Solution`.
 - Permitted Comparator axioms: `propext`, `Quot.sound`, and
@@ -203,7 +231,7 @@ evidence before their source and generated output land together.
 
 The showcase records the current claims review matrix and its source-family
 dispositions across all eight open programmes, then adds the targeted
-theorem-forest queue. It separately nests all 40 committed Comparator
+theorem-forest queue. It separately nests all 42 committed Comparator
 declarations in an exact value-disposition screen and records the actual-LCM
 and first-harmonic conditional candidates with their committed transport and
 exact open producers. Neither the roster count nor a conditional implication

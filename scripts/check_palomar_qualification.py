@@ -388,6 +388,7 @@ def candidate_selection_errors(
         "erdos251_integral_tail_classification",
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
+        "erdos249_carry_anti_compression",
     }
     if not isinstance(discoveries, list) or {
         row.get("candidate_id") for row in discoveries if isinstance(row, dict)
@@ -559,6 +560,8 @@ def candidate_selection_errors(
                 "erdos251_integral_tail_classification",
                 "erdos243_centered_state_recovery",
                 "weighted_phase_carry_observer",
+                "erdos257_boolean_mobius_carry",
+                "erdos249_carry_anti_compression",
             }
             if set(candidate_ids) != expected_landscape_ids:
                 errors.append("source-landscape queue does not cover the admitted and targeted candidates")

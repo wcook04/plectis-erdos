@@ -168,7 +168,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         for row in showcase["frontier_by_problem"]
         for name in row["comparator_declarations"]
     ]
-    assert len(names) == 40
+    assert len(names) == 42
     assert len(names) == len(set(names))
     assert [row["problem"] for row in showcase["frontier_by_problem"]] == [68, 243, 249, 251, 257, 269, 1041, 1049]
     assert showcase["candidate_selection"]["declaration"] in names
@@ -214,6 +214,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos251_integral_tail_classification",
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
+        "erdos249_carry_anti_compression",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
         range(1, len(showcase["candidate_ranking"]) + 1)
@@ -239,7 +240,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "long_tail",
     }
     landscape = disposition["source_landscape_candidates"]
-    assert len(landscape) == 8
+    assert len(landscape) == 10
     landscape_by_id = {row["candidate_id"]: row for row in landscape}
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
@@ -268,7 +269,12 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert pade["disposition"] == "represented"
     assert pade["prior_disposition"] == "deferred"
     assert pade["canonical_family_binding"] == "height_and_pade_arithmetic"
-    assert pade["comparator_eligibility"] == "source_landed_but_not_comparator_configured"
+    assert pade["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert pade["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert pade["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
+    )
+    assert pade["comparator_declaration"] in comparator["theorem_names"]
     assert pade["source_transport_commit"] == "f52f903a6f5b564644b19b89b66d65f97990c5b6"
     assert pade["source_transport_files"] == [
         "ExternalVerification/Challenge.lean",
@@ -313,6 +319,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "actual_lcm_orbit_separation",
         "first_harmonic_pivot",
         "actual_lcm_positive_corridor_top_edge",
+        "erdos251_integral_tail_classification",
+        "erdos1049_four_jet_pade_obstruction",
     }
     assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
     assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
@@ -339,11 +347,17 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         if row["comparator_eligibility"]
         == "committed_source_transport_pending_comparator_registration"
     }
-    assert set(pending) == {"erdos251_integral_tail_classification"}
-    row = pending["erdos251_integral_tail_classification"]
+    assert set(pending) == {"erdos257_boolean_mobius_carry", "erdos249_carry_anti_compression"}
+    row = landscape_by_id["erdos251_integral_tail_classification"]
     assert row["family_id"] == "dyadic_tail_integrality_classification"
     assert row["disposition"] == "represented"
     assert row["prior_disposition"] == "deferred"
+    assert row["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert row["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert row["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral"
+    )
+    assert row["comparator_declaration"] in comparator["theorem_names"]
     assert row["source_transport_commit"] == "e10b161abd964381e0e8e6830e6f48e7629ca8ad"
     assert row["source_transport_files"] == [
         "ExternalVerification/Challenge.lean",
@@ -359,6 +373,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "verification/comparator.json" in row["transport_admission_boundary"]
     assert "review matrix" in row["transport_admission_boundary"]
     assert "prime-tail cofinal mismatch" in row["limitations"][0]
+    assert "verification/comparator.json" in row["transport_admission_boundary"]
+    assert "review matrix" in row["transport_admission_boundary"]
     weighted = landscape_by_id["weighted_phase_carry_observer"]
     assert "carry_eq_residueDigit_add_coboundary" in weighted["source_declaration"]
     assert "carryResidue_mem_interval" in weighted["source_declaration"]
@@ -366,6 +382,37 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "finite_realisedSpan_of_factorisation" in weighted["source_declaration"]
     assert "uncontrolled integral coboundary" in weighted["conclusion"]
     assert any("scalar-evaluation" in item for item in weighted["limitations"])
+    boolean = landscape_by_id["erdos257_boolean_mobius_carry"]
+    assert boolean["family_id"] == "boolean_mobius_carry"
+    assert boolean["disposition"] == "represented"
+    assert boolean["prior_disposition"] == "deferred"
+    assert boolean["comparator_eligibility"] == (
+        "committed_source_transport_pending_comparator_registration"
+    )
+    assert boolean["queue_role"] == "source_landscape_review_not_comparator_evidence"
+    assert "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry" in boolean["source_declaration"]
+    assert boolean["source_transport_commit"] == "712bc4c3928fef394a6fe96142e593ddc95c1ded"
+    assert boolean["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+        "Erdos249257.ExternalVerification.BooleanMobiusCarryCertificate",
+        "Erdos249257.ExternalVerification.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+        "Erdos249257.ExternalVerification.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+        "Erdos249257.ExternalVerification.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+        "Erdos249257.ExternalVerification.supportCoeffZeroWindow_length_le_eps_logb_add",
+    ]
+    assert "no universal Erdős #257 irrationality" in " ".join(boolean["limitations"])
+    anti = landscape_by_id["erdos249_carry_anti_compression"]
+    assert anti["family_id"] == "totient_carry_anti_compression_pending_canonical"
+    assert anti["disposition"] == "deferred"
+    assert anti["comparator_eligibility"] == (
+        "committed_source_transport_pending_comparator_registration"
+    )
+    assert anti["source_transport_commit"] == "4932144ada05d6c617f43a372ede18a56900df7b"
+    assert anti["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
+    ]
+    assert "finite-Q-rank upper bound" in " ".join(anti["limitations"])
+    assert "canonical claims-family identity" in anti["ranking_status"]
 
 
 def test_adversarial_source_transport_family_merge_is_not_silently_accepted() -> None:
