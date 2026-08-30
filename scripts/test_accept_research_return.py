@@ -161,6 +161,7 @@ def main() -> int:
             capture_output=True,
             text=True,
             env=acceptor.return_validator.git_environment(),
+            timeout=acceptor.return_validator.GIT_COMMAND_TIMEOUT_SECONDS,
         )
         require(malformed_cli.returncode == 2, "acceptance did not classify malformed UTF-8 as CLI input failure")
         malformed_receipt = json.loads(malformed_cli.stdout)
