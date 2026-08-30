@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = ROOT / "paper"
-# Keep the gateway paper and the source-current #249/#251/#269 problem notes in
+# Keep the gateway paper and the source-current #243/#249/#251/#269 problem notes in
 # the same source census.  The notes carry exact problem-specific routes while
 # the gateway carries the shared public spine.
 PAPERS = (
