@@ -32,11 +32,15 @@ render current content.
 
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
+
+import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -71,9 +75,28 @@ PROJECTIONS = (
     "paper/module-aliases.tex",
 )
 
+# Exercise the same hostile ambient state that a checkout launched from another
+# Git worktree or developer Python environment can inherit.  The child builder
+# processes must receive the canonical clean-snapshot environment instead.
+HOSTILE_ENVIRONMENT = {
+    "GIT_DIR": "/tmp/not-this-checkout/.git",
+    "GIT_NAMESPACE": "refs/namespaces/not-this-release",
+    "GIT_REPLACE_REF_BASE": "refs/replace/",
+    "PYTHONPATH": "/tmp/not-this-python-path",
+    "LC_ALL": "C",
+    "LANG": "C",
+}
+
 
 def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(args, cwd=cwd, capture_output=True, text=True, check=False)
+    return subprocess.run(
+        args,
+        cwd=cwd,
+        env=singleflight.command_environment(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
 
 
 def materialise(destination: Path, shape: str) -> None:
@@ -122,8 +145,9 @@ def main() -> int:
         materialise(as_main, shape="main")
         materialise(as_topic, shape="topic")
 
-        rendered_main = regenerate(as_main)
-        rendered_topic = regenerate(as_topic)
+        with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
+            rendered_main = regenerate(as_main)
+            rendered_topic = regenerate(as_topic)
 
         divergent = sorted(
             relative
