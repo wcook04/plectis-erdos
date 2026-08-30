@@ -8,7 +8,7 @@
     "comparator_sha256": "afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
     "comparator_theorem_count": 48,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "c5c75c8cd0e611e437fbdf9fb2c249f1c08acbcdc121f2294f1e9dadadabeb3d",
+    "source_review_matrix_sha256": "ac7211acdb73c8d6573bc4693010930cb6d5410092f5a78145408b37a3097fbe",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -261,7 +261,14 @@
       {
         "family_id": "ray_separation",
         "tier_id": "natural_friction_and_no_go",
-        "relative_judgement": "Distinct value rays exactly obstruct finite Newton connections, a consequential route boundary but not the global lemniscate theorem."
+        "relative_judgement": "Distinct value rays exactly obstruct finite Newton connections, a consequential route boundary but not the global lemniscate theorem.",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "source_declarations": [
+          "ErdosProblems.Erdos1041.samePositiveRay_of_real_exp_decay",
+          "ErdosProblems.Erdos1041.no_newtonConnection_of_not_samePositiveRay"
+        ],
+        "hard_mechanism": "The Newton-value endpoint relation is multiplication by the strictly positive scalar exp(-time), so every finite connection remains on one positive value ray; distinct rays therefore give an exact obstruction.",
+        "open_boundary": "The theorem does not choose globally compatible critical-value rays, construct or glue the required flow geometry, or prove the Erdős #1041 lemniscate endpoint."
       }
     ],
     "programme_family_order": [
@@ -486,7 +493,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "c5c75c8cd0e611e437fbdf9fb2c249f1c08acbcdc121f2294f1e9dadadabeb3d",
+    "source_review_matrix_sha256": "ac7211acdb73c8d6573bc4693010930cb6d5410092f5a78145408b37a3097fbe",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -709,6 +716,11 @@
         "candidate_id": "erdos68_channel_projection_rigidity",
         "disposition": "represented",
         "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos68_channel_projection_rigidity]"
+      },
+      {
+        "candidate_id": "erdos1041_ray_separation",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos1041_ray_separation]"
       }
     ],
     "comparator_screen": {
@@ -898,6 +910,40 @@
       }
     ],
     "source_landscape_candidates": [
+      {
+        "candidate_id": "erdos1041_ray_separation",
+        "family_id": "ray_separation",
+        "disposition": "represented",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos1041.samePositiveRay_of_real_exp_decay; ErdosProblems.Erdos1041.no_newtonConnection_of_not_samePositiveRay",
+        "source_file": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+        "source_anchor": "306; 315",
+        "statement": "An exponentially decaying Newton-value endpoint lies on the same positive ray as its start value, so critical values on distinct positive rays cannot be joined by a finite Newton-flow connection.",
+        "exact_hypotheses": [
+          "The endpoint relation is exactly endValue = exp(-time) * startValue for a real time parameter.",
+          "Real.exp(-time) is strictly positive, which is the scalar witness for SamePositiveRay.",
+          "The no-connection theorem assumes the two values are not on the same positive ray and the exact exponential endpoint relation."
+        ],
+        "conclusion": "Distinct positive critical-value rays exclude the stated finite Newton connection; this is a local route obstruction, not the global Erdős #1041 theorem.",
+        "hard_mechanism": "The Newton-value first integral preserves argument because its endpoint multiplier is positive real. Turning that invariant around makes ray separation an exact obstruction rather than a metric estimate.",
+        "attribution": "These source-current Lean declarations are in NewtonFlowRaySeparation.lean:306,315 and are canonically bound to ray_separation by Claims commit 06198c0a. No novelty, priority, significance, or external-review claim is made.",
+        "limitations": [
+          "The result does not construct a global assignment of pairwise distinct critical-value rays or show that a chosen perturbation preserves all required geometry.",
+          "The Comparator rows for translation avoidance and root retention are supporting local inputs, not transports of this exact source-only ray theorem.",
+          "No compact ray-cut gluing, global Newton-flow connection theorem, lemniscate-length bound, or Erdős #1041 endpoint follows."
+        ],
+        "source_landscape_rank_relative_to": "Below the deeper newton_value_decay mechanism and endpoint-facing families because the positive-ray implication is elementary and local, but above routine finite-search evidence because it gives the exact geometric obstruction consumed by translation avoidance.",
+        "ranked_below": [
+          "newton_value_decay"
+        ],
+        "ranked_above": [
+          "lemniscate_finite_search"
+        ],
+        "reason": "Represented as the strongest under-served #1041 cross-surface join: it explains why argument separation, not modulus decay, is the relevant local obstruction and how the existing translation-avoidance target is used, while preserving the missing global gluing boundary.",
+        "reversal_evidence": "A source-faithful Comparator transport would strengthen executable review evidence; a global critical-value ray assignment plus metric/topological gluing would justify promotion, while another finite root search or local perturbation instance would not."
+      },
       {
         "candidate_id": "erdos68_channel_projection_rigidity",
         "family_id": "factorial_channel_and_projection_rigidity",

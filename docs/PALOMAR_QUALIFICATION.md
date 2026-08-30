@@ -98,6 +98,20 @@ source-landscape evidence rather than Comparator evidence, and it supplies no
 cofinal non-unit carry, strict-successor divisibility miss, nonzero translated
 residual, or moving projection-disagreement family; Erdős #68 remains open.
 
+For #1041, the same all-corpus audit makes the source-only `ray_separation`
+family explicit rather than leaving its role implicit behind Comparator's
+translation-avoidance and root-retention rows. In
+`NewtonFlowRaySeparation.lean:306,315`, the exact endpoint relation multiplies
+the starting Newton value by the strictly positive real scalar
+`exp(-time)`, so a finite connection preserves its positive value ray;
+values on distinct rays therefore cannot be connected in that form. This is
+the precise geometric obstruction that explains why argument separation, not
+radial decay alone, matters. It remains below the deeper
+`newton_value_decay` mechanism and is not separately Comparator-configured.
+No global compatible ray assignment, perturbation-and-gluing construction,
+compact ray-cut connection theorem, lemniscate-length bound, or Erdős #1041
+endpoint is supplied.
+
 The actual-LCM separation route is now an eligible represented candidate:
 `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
 is in the source-current committed Comparator roster and is source-faithful to

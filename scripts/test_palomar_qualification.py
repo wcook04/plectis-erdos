@@ -276,6 +276,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "strict_prime_tail_orbit_gap",
         "erdos249_carry_anti_compression",
         "erdos68_channel_projection_rigidity",
+        "erdos1041_ray_separation",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
         range(1, len(showcase["candidate_ranking"]) + 1)
@@ -345,6 +346,23 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "factorial_carry_characterisation" in factorial_channel["ranked_below"]
     assert "factorial_finite_certificates" in factorial_channel["ranked_above"]
     assert "cofinal" in " ".join(factorial_channel["limitations"]).lower()
+    ray_separation = landscape_by_id["erdos1041_ray_separation"]
+    assert ray_separation["family_id"] == "ray_separation"
+    assert ray_separation["disposition"] == "represented"
+    assert ray_separation["comparator_eligibility"] == (
+        "source_landed_but_not_comparator_configured"
+    )
+    assert ray_separation["queue_role"] == "source_landscape_review_not_comparator_evidence"
+    assert ray_separation["canonical_claim_commit"] == (
+        "06198c0ab3969c625e1022eaebfb46208ff0b5e4"
+    )
+    assert "samePositiveRay_of_real_exp_decay" in ray_separation["source_declaration"]
+    assert "no_newtonConnection_of_not_samePositiveRay" in ray_separation[
+        "source_declaration"
+    ]
+    assert "newton_value_decay" in ray_separation["ranked_below"]
+    assert "lemniscate_finite_search" in ray_separation["ranked_above"]
+    assert "global" in " ".join(ray_separation["limitations"]).lower()
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
     negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]
