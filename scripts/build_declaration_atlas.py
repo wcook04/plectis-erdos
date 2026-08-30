@@ -306,6 +306,29 @@ def preceding_docstring(lines: list[str], start: int) -> str | None:
     return text[:1000] or None
 
 
+def _update_source_digest(
+    digest,
+    relative_path: str,
+    text: str,
+) -> None:
+    """Apply the declaration-atlas source-fingerprint framing exactly once."""
+    digest.update(
+        relative_path.encode("utf-8")
+        + b"\0"
+        + text.encode("utf-8")
+        + b"\0"
+    )
+
+
+def source_fingerprint(paths: list[Path] | None = None) -> str:
+    """Hash current Lean inputs without paying the full declaration parse cost."""
+    digest = hashlib.sha256()
+    for path in source_paths() if paths is None else paths:
+        relative_path = path.relative_to(ROOT).as_posix()
+        _update_source_digest(digest, relative_path, safe_atlas_text(path))
+    return f"sha256:{digest.hexdigest()}"
+
+
 def build() -> dict[str, object]:
     claims = json.loads(safe_atlas_text(ROOT / "docs" / "claims.json"))
     claim_refs: dict[tuple[str, str], list[str]] = {}
@@ -324,7 +347,7 @@ def build() -> dict[str, object]:
     for path in paths:
         rel = path.relative_to(ROOT).as_posix()
         text = safe_atlas_text(path)
-        digest.update(rel.encode("utf-8") + b"\0" + text.encode("utf-8") + b"\0")
+        _update_source_digest(digest, rel, text)
         lines = text.splitlines()
         module_decls: list[dict[str, object]] = []
         is_code = code_lines(lines)

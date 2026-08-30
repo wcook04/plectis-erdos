@@ -56,11 +56,20 @@ evaluations that test whether the explanations transfer.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from collections import Counter, defaultdict
-from pathlib import Path
+from functools import lru_cache
+from pathlib import Path, PurePosixPath
 
+from build_declaration_atlas import (
+    compact_signature,
+    declaration_head,
+    safe_atlas_input_path,
+    safe_atlas_text,
+    source_fingerprint as compute_declaration_atlas_source_fingerprint,
+)
 from build_semantic_corpus import semantic_input_fingerprint
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -70,8 +79,41 @@ LAB = ROOT / "docs" / "theory_lab.json"
 PROBLEM_INDEX = ROOT / "docs" / "problems.json"
 PALOMAR = ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json"
 CLAIMS = ROOT / "docs" / "claims.json"
+DECLARATION_ATLAS = ROOT / "docs" / "declaration_atlas.json"
 
 BUDGET = 64 * 1024
+
+
+class StaleDeclarationAtlasError(ValueError):
+    """An atlas-backed family source cannot be verified against Lean source."""
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        tracked_fingerprint: str | None = None,
+        current_fingerprint: str | None = None,
+    ) -> None:
+        super().__init__(message)
+        self.tracked_fingerprint = tracked_fingerprint
+        self.current_fingerprint = current_fingerprint
+
+    def packet(self, family_id: str) -> dict:
+        """Return a bounded public failure without leaking unverified evidence."""
+        return {
+            "error": "declaration_atlas_evidence_unavailable",
+            "family_id": family_id,
+            "reason": str(self),
+            "tracked_source_fingerprint": self.tracked_fingerprint,
+            "current_source_fingerprint": self.current_fingerprint,
+            "source_evidence_emitted": False,
+            "refresh": "python3 scripts/build_declaration_atlas.py",
+            "check": "python3 scripts/build_declaration_atlas.py --check",
+            "boundary": (
+                "No atlas-backed file, line, signature, or declaration is "
+                "reported until the generated atlas and current Lean source agree."
+            ),
+        }
 
 
 def encoded_json_bytes(payload: object) -> int:
@@ -139,6 +181,17 @@ def load_palomar() -> dict:
 
 def load_claims() -> dict:
     return load_json(CLAIMS, "family-relations")
+
+
+@lru_cache(maxsize=1)
+def load_declaration_atlas() -> dict:
+    return load_json(DECLARATION_ATLAS, "family-relations")
+
+
+@lru_cache(maxsize=1)
+def current_declaration_atlas_source_fingerprint() -> str:
+    """Hash one CLI process's Lean snapshot without rebuilding the atlas."""
+    return compute_declaration_atlas_source_fingerprint()
 
 
 def _palomar_family_ranks(palomar: dict) -> dict[str, dict]:
@@ -229,10 +282,188 @@ def _palomar_ranked_row(palomar: dict, family_id: str) -> dict | None:
     return matches[0] if matches else None
 
 
+def _atlas_source_evidence_rows(
+    atlas: dict,
+    claim_row: dict,
+    rows_by_name: dict[str, list[dict]] | None = None,
+) -> list[dict]:
+    """Resolve explicit Claims declarations through a source-current atlas.
+
+    Claims owns the family-to-declaration binding. The atlas contributes only
+    the exact file/line/signature coordinate, and direct Lean source must still
+    contain the same declaration head at that line. No family-name or neighbour
+    inference is permitted.
+    """
+    atlas_fingerprint = atlas.get("source_fingerprint")
+    if not isinstance(atlas_fingerprint, str) or re.fullmatch(
+        r"sha256:[0-9a-f]{64}", atlas_fingerprint
+    ) is None:
+        raise StaleDeclarationAtlasError(
+            "declaration atlas has no valid source_fingerprint"
+        )
+    declarations = _detail_declarations([claim_row], "declarations")
+    if not declarations:
+        return []
+    if rows_by_name is None:
+        rows_by_name = defaultdict(list)
+        for row in atlas.get("declarations", []):
+            if isinstance(row, dict) and isinstance(row.get("name"), str):
+                rows_by_name[row["name"]].append(row)
+    # Import only on this rare fallback so unrelated semantic queries do not
+    # pay query_corpus's larger navigation startup cost.
+    from query_corpus import qualified_declaration_name
+
+    source_text_by_module: dict[str, str] = {}
+    evidence = []
+    for declaration in declarations:
+        bare_name = declaration.rsplit(".", 1)[-1]
+        qualified_matches = []
+        for row in rows_by_name.get(bare_name, []):
+            module = row.get("module")
+            if not isinstance(module, str):
+                raise StaleDeclarationAtlasError(
+                    f"declaration atlas has no module for {declaration!r}"
+                )
+            module_path = PurePosixPath(module)
+            library_module = module in {
+                "Erdos249257.lean",
+                "ErdosProblems.lean",
+            } or (
+                len(module_path.parts) > 1
+                and module_path.parts[0] in {"Erdos249257", "ErdosProblems"}
+            )
+            if (
+                module_path.is_absolute()
+                or ".." in module_path.parts
+                or "." in module_path.parts
+                or not module_path.parts
+                or not library_module
+                or module_path.suffix != ".lean"
+            ):
+                raise StaleDeclarationAtlasError(
+                    f"declaration atlas has an unsafe module for {declaration!r}"
+                )
+            try:
+                safe_atlas_input_path(ROOT / module)
+            except (OSError, ValueError) as error:
+                raise StaleDeclarationAtlasError(
+                    f"Lean source for atlas declaration is unavailable: {module}"
+                ) from error
+            if qualified_declaration_name(row) == declaration:
+                qualified_matches.append(row)
+        if len(qualified_matches) != 1:
+            raise StaleDeclarationAtlasError(
+                "Claims family declaration does not resolve uniquely in the "
+                f"source-current atlas: {declaration!r}"
+            )
+        row = qualified_matches[0]
+        row_id = row.get("id")
+        module = str(row.get("module") or "")
+        line = row.get("line")
+        signature = row.get("signature")
+        kind = row.get("kind")
+        if (
+            not isinstance(row_id, str)
+            or not row_id
+            or not module
+            or not isinstance(line, int)
+            or line < 1
+            or not isinstance(signature, str)
+            or not signature
+            or not isinstance(kind, str)
+            or not kind
+        ):
+            raise StaleDeclarationAtlasError(
+                f"declaration atlas has an invalid coordinate for {declaration!r}"
+            )
+        expected_row_id = f"{module}:{line}:{row['name']}"
+        if row_id != expected_row_id:
+            raise StaleDeclarationAtlasError(
+                "declaration atlas row id disagrees with its coordinate: "
+                f"expected={expected_row_id!r}, actual={row_id!r}"
+            )
+        source_text = source_text_by_module.get(module)
+        if source_text is None:
+            try:
+                source_text = safe_atlas_text(ROOT / module)
+            except (OSError, ValueError) as error:
+                raise StaleDeclarationAtlasError(
+                    f"Lean source for atlas coordinate is unavailable: {module}"
+                ) from error
+            source_text_by_module[module] = source_text
+        source_lines = source_text.splitlines()
+        if line > len(source_lines):
+            raise StaleDeclarationAtlasError(
+                f"atlas coordinate exceeds direct Lean source: {module}:{line}"
+            )
+        head = declaration_head(source_lines, line - 1)
+        if head != (kind, row["name"]):
+            raise StaleDeclarationAtlasError(
+                "atlas declaration head disagrees with direct Lean source: "
+                f"{module}:{line}:{row['name']}"
+            )
+        direct_signature = compact_signature(source_lines, line - 1)
+        if direct_signature != signature:
+            raise StaleDeclarationAtlasError(
+                "atlas signature disagrees with direct Lean source: "
+                f"{module}:{line}:{row['name']}"
+            )
+        boundary = claim_row.get("boundary")
+        evidence.append(
+            {
+                "authority": (
+                    "docs/claims.json::external_verification_packet.review_matrix."
+                    "families[].declarations + docs/declaration_atlas.json"
+                ),
+                "source_kind": "claims_declaration_atlas_coordinate",
+                "candidate_id": f"atlas:{row_id}",
+                "disposition": None,
+                "source_file": module,
+                "source_anchor": str(line),
+                "source_line": line,
+                "source_declaration": declaration,
+                "comparator_declaration": None,
+                "transport_declarations": [],
+                "statement": signature,
+                "exact_hypotheses": [],
+                "hypothesis_projection_status": (
+                    "atlas_compact_signature_only_full_hypotheses_at_direct_source"
+                ),
+                "conclusion": None,
+                "mechanism": None,
+                "attribution": None,
+                "limitations": [boundary] if boundary else [],
+                "evidence_ceiling": claim_row.get("contribution_class"),
+                "transport_admission_boundary": (
+                    "Claims supplies the family binding; the atlas supplies a "
+                    "navigation coordinate verified against direct Lean source. "
+                    "This is not a Comparator transport, novelty judgement, or "
+                    "independent mathematical verification."
+                ),
+                "atlas_provenance": {
+                    "atlas_row_id": row_id,
+                    "atlas_source_fingerprint": atlas_fingerprint,
+                    "direct_source_sha256": (
+                        "sha256:"
+                        + hashlib.sha256(source_text.encode("utf-8")).hexdigest()
+                    ),
+                    "direct_source_head_verified": True,
+                    "direct_source_signature_verified": True,
+                    "atlas_row_id_verified": True,
+                    "kind": kind,
+                    "signature": signature,
+                },
+            }
+        )
+    return evidence
+
+
 def _source_evidence_rows(
     palomar: dict,
     claims: dict,
     family_id: str,
+    claim_row: dict,
+    atlas_context: dict | None = None,
 ) -> list[dict]:
     """Return exact source rows without recombining their fields.
 
@@ -335,6 +566,27 @@ def _source_evidence_rows(
                     ),
                 }
             )
+    if not evidence and claim_row.get("declarations"):
+        if atlas_context is None:
+            atlas_context = {}
+        resolved_atlas = atlas_context.get("atlas")
+        if resolved_atlas is None:
+            resolved_atlas = load_declaration_atlas()
+            atlas_context["atlas"] = resolved_atlas
+        rows_by_name = atlas_context.get("rows_by_name")
+        if rows_by_name is None:
+            rows_by_name = defaultdict(list)
+            for row in resolved_atlas.get("declarations", []):
+                if isinstance(row, dict) and isinstance(row.get("name"), str):
+                    rows_by_name[row["name"]].append(row)
+            atlas_context["rows_by_name"] = rows_by_name
+        evidence.extend(
+            _atlas_source_evidence_rows(
+                resolved_atlas,
+                claim_row,
+                rows_by_name,
+            )
+        )
     evidence.sort(
         key=lambda row: (
             str(row.get("source_file") or ""),
@@ -387,13 +639,20 @@ def _family_details(
     palomar: dict,
     claims: dict,
     claim_rows_by_family: dict[str, dict] | None = None,
+    atlas_context: dict | None = None,
 ) -> dict:
     claim_rows_by_family = claim_rows_by_family or _claims_family_rows(claims)
     claim_row = claim_rows_by_family.get(family_id)
     if claim_row is None:
         raise ValueError(f"Claims review matrix lacks family {family_id!r}")
     ranked_row = _palomar_ranked_row(palomar, family_id)
-    source_evidence = _source_evidence_rows(palomar, claims, family_id)
+    source_evidence = _source_evidence_rows(
+        palomar,
+        claims,
+        family_id,
+        claim_row,
+        atlas_context,
+    )
     primary_source = _primary_source_evidence(
         family_id, ranked_row, source_evidence
     )
@@ -536,15 +795,32 @@ def _family_card(
         [row.get("source_kind") for row in source_evidence]
     )
     if source_evidence:
-        source_status = (
-            "exact_palomar_source_rows"
-            if source_kinds == ["palomar_source_landscape_candidate"]
-            else "exact_claims_main_result_rows"
-        )
-        source_boundary = (
-            "Each evidence row keeps its source file, declaration, wrapper, "
-            "boundary, and authority atomic; no field is borrowed from a sibling row."
-        )
+        if source_kinds == ["palomar_source_landscape_candidate"]:
+            source_status = "exact_palomar_source_rows"
+            source_boundary = (
+                "Each evidence row keeps its source file, declaration, wrapper, "
+                "boundary, and authority atomic; no field is borrowed from a "
+                "sibling row."
+            )
+        elif source_kinds == ["claims_main_result"]:
+            source_status = "exact_claims_main_result_rows"
+            source_boundary = (
+                "Each Claims main-result row keeps its source file, declaration, "
+                "wrapper, boundary, and authority atomic."
+            )
+        elif source_kinds == ["claims_declaration_atlas_coordinate"]:
+            source_status = "exact_atlas_declaration_rows_direct_source_verified"
+            source_boundary = (
+                "Claims supplies each family-to-declaration binding; a current "
+                "declaration atlas supplies its exact file and line, and the Lean "
+                "declaration head is verified directly. This is navigation evidence, "
+                "not independent proof or novelty evidence."
+            )
+        else:
+            raise ValueError(
+                f"unsupported mixed source evidence kinds for {family_id!r}: "
+                f"{source_kinds!r}"
+            )
     elif details["formal_declarations"]:
         source_status = "formal_declarations_only_no_exact_source_coordinate"
         source_boundary = (
@@ -629,6 +905,8 @@ def build_family_relations_packet(
     palomar: dict,
     claims: dict,
     family_id: str,
+    *,
+    atlas: dict | None = None,
 ) -> dict:
     """Project bidirectional Palomar relations and within-programme position."""
     ranks = _palomar_family_ranks(palomar)
@@ -659,10 +937,33 @@ def build_family_relations_packet(
         required_family_ids.add(str(relation["from_family_id"]))
         required_family_ids.add(str(relation["to_family_id"]))
     claim_rows_by_family = _claims_family_rows(claims)
+    atlas_context: dict = {"atlas": atlas}
     detail_cache = {
-        key: _family_details(key, palomar, claims, claim_rows_by_family)
+        key: _family_details(
+            key,
+            palomar,
+            claims,
+            claim_rows_by_family,
+            atlas_context,
+        )
         for key in required_family_ids
     }
+    atlas_evidence_used = any(
+        row.get("source_kind") == "claims_declaration_atlas_coordinate"
+        for details in detail_cache.values()
+        for row in details["source_evidence"]
+    )
+    if atlas_evidence_used:
+        resolved_atlas = atlas_context["atlas"]
+        tracked_fingerprint = resolved_atlas.get("source_fingerprint")
+        current_fingerprint = current_declaration_atlas_source_fingerprint()
+        if current_fingerprint != tracked_fingerprint:
+            raise StaleDeclarationAtlasError(
+                "declaration atlas is stale relative to current Lean source: "
+                f"tracked={tracked_fingerprint}, current={current_fingerprint}",
+                tracked_fingerprint=tracked_fingerprint,
+                current_fingerprint=current_fingerprint,
+            )
     current_rank = ranks.get(family_id)
     current = _family_card(family_id, current_rank, detail_cache[family_id])
     related = []
@@ -801,13 +1102,13 @@ def cmd_family_relations(corpus: dict, args) -> int:
                 "hint": "run `python3 scripts/query_corpus.py --route erdos_<number>` or inspect Palomar programme_family_order",
             }
         )
-    return emit(
-        build_family_relations_packet(
-            load_palomar(),
-            load_claims(),
-            args.node_id,
+    try:
+        packet = build_family_relations_packet(
+            load_palomar(), load_claims(), args.node_id
         )
-    )
+    except StaleDeclarationAtlasError as error:
+        packet = error.packet(str(args.node_id))
+    return emit(packet)
 
 
 def nodes_by_id(corpus: dict) -> dict[str, dict]:
