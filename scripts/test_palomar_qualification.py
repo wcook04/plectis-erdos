@@ -90,6 +90,9 @@ def test_v04_profile_rejects_missing_source_relationship() -> None:
     valid_shape = """version: \"v0.4\"
 project:
   description: \"A checked mathematical project.\"
+  authors:
+    - \"Will Cook\"
+  license: \"Apache-2.0\"
   responsible_maintainers:
     - \"Will Cook\"
 sources:
@@ -168,7 +171,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         for row in showcase["frontier_by_problem"]
         for name in row["comparator_declarations"]
     ]
-    assert len(names) == 46
+    assert set(names) == set(comparator["theorem_names"])
     assert len(names) == len(set(names))
     assert [row["problem"] for row in showcase["frontier_by_problem"]] == [68, 243, 249, 251, 257, 269, 1041, 1049]
     assert showcase["candidate_selection"]["declaration"] in names
