@@ -342,7 +342,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
             [
                 "actual_lcm_orbit_separation",
                 "first_harmonic_pivot_decomposition",
-                "totient_kernel_rank",
+                "strict_prime_tail_orbit_gap",
             ],
         )
         self.assertEqual(
