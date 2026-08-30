@@ -574,8 +574,8 @@
     "strict_prime_escape_socket_implies_249"
    ],
    "closest_producer": null,
-   "gap": "no single base and no prime is exhibited anywhere at which any real-part gap is proved. These are the weakest sockets in the spectral lane -- one point, not a cofinal family -- and they are still unproduced.",
-   "mechanism": "The checked phase engine has the exact recurrence tailOrbitFirstExp h (M + 1) = (tailOrbitFirstExp h M)^2 and its power-of-two iterate normal form: the integer deltaTotient carry contributes a full 2π rotation and disappears under complex exponentiation. Thus the prime-gap socket is a question about one initial unit-modulus squaring orbit, not a new finite-window estimate; entering a dyadic root is an explicit barrier, not an established event.",
+   "gap": "no single base and no prime is exhibited anywhere at which any real-part gap is proved. These are the weakest sockets in the spectral lane -- one point, not a cofinal family -- and they are still unproduced. The new scaled-angle, integrality, finite-root, and non-dyadicity results classify the orbit and provide conditional implications only; they do not establish prime alignment or an actual useful gap.",
+   "mechanism": "The checked phase engine has the exact recurrence tailOrbitFirstExp h (M + 1) = (tailOrbitFirstExp h M)^2 and its power-of-two iterate normal form: the integer deltaTotient carry contributes a full 2π rotation and disappears under complex exponentiation. The initial phase is identified with the scaled angle, phase 1 with an integral tail difference, and non-dyadicity forces cofinally nonpositive phases; a separate finite check excludes dyadic roots for the named small range. Thus the prime-gap socket is a question about one initial unit-modulus squaring orbit plus prime sampling, not a new finite-window estimate; entering a dyadic root is an explicit barrier, not an established event.",
    "mechanism_evidence": [
     {
      "declaration": "tailOrbitFirstExp_succ",
@@ -595,22 +595,52 @@
     {
      "declaration": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-     "line": 208
+     "line": 278
     },
     {
      "declaration": "tailOrbitFirstExp_eq_one_of_le",
      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-     "line": 224
+     "line": 294
     },
     {
      "declaration": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-     "line": 238
+     "line": 308
     },
     {
      "declaration": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-     "line": 252
+     "line": 322
+    },
+    {
+     "declaration": "tailOrbitFirstExp_zero_eq_scaled_angle",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 209
+    },
+    {
+     "declaration": "tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 221
+    },
+    {
+     "declaration": "exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 249
+    },
+    {
+     "declaration": "tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 333
+    },
+    {
+     "declaration": "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 360
+    },
+    {
+     "declaration": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 412
     }
    ],
    "next_obligation": "Produce, or refute, a prime-indexed tail-orbit real-part gap beyond every cutoff. The squaring recurrence supplies the reusable dynamics but does not produce any gap and does not close Erdős #249."

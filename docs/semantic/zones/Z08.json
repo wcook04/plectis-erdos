@@ -1323,6 +1323,11 @@
           "declaration": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
           "line": 66
+        },
+        {
+          "declaration": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 412
         }
       ],
       "concepts": [
@@ -1342,7 +1347,7 @@
     },
     {
       "id": "tail_orbit_initial_phase_normal_form",
-      "canonical_statement": "The exact phase recurrence iterates: for every shift h and offsets M,k, tailOrbitFirstExp h (M+k) = (tailOrbitFirstExp h M)^(2^k). Consequently the cofinal strict-prime gap producer is equivalent to a power-of-two orbit condition on the single initial phase at each shift.",
+      "canonical_statement": "The exact phase recurrence iterates: for every shift h and offsets M,k, tailOrbitFirstExp h (M+k) = (tailOrbitFirstExp h M)^(2^k). The initial phase is the scaled angle of (2^h−1) times the totient series, and phase 1 is equivalent to an integral tail difference. Consequently the cofinal strict-prime gap producer is equivalent to a power-of-two orbit condition on the single initial phase at each shift; non-dyadic initial phase yields only a conditional cofinal nonpositive-phase route.",
       "logical_class": "equivalence_or_classification",
       "problem": "249",
       "evidence": [
@@ -1359,7 +1364,22 @@
         {
           "declaration": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 208
+          "line": 278
+        },
+        {
+          "declaration": "tailOrbitFirstExp_zero_eq_scaled_angle",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 209
+        },
+        {
+          "declaration": "tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 221
+        },
+        {
+          "declaration": "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 360
         }
       ],
       "concepts": [
@@ -1383,17 +1403,27 @@
         {
           "declaration": "tailOrbitFirstExp_eq_one_of_le",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 224
+          "line": 294
         },
         {
           "declaration": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 238
+          "line": 308
         },
         {
           "declaration": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 252
+          "line": 322
+        },
+        {
+          "declaration": "exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 249
+        },
+        {
+          "declaration": "tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 333
         }
       ],
       "concepts": [
