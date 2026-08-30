@@ -305,8 +305,9 @@ replacement for claim authority.
   does not establish it. See
   `Erdos249257/TotientActualLcmOrbitSeparation.lean:254-310` and the transported
   consumer `ExternalVerification/Challenge.lean:159`.
-- A separate source-only first-harmonic pivot route keeps the analytic
-  mechanism explicit without promoting it to Comparator evidence. The exact
+- A separate public, non-Comparator first-harmonic pivot route, transported in
+  `ExternalVerification/Challenge.lean`, keeps the analytic mechanism explicit
+  without promoting it to Comparator evidence. The exact
   four-term decomposition of one block is
   `windowFirstExp_sum_eq_pivot_decomposition`; under the explicit room
   inequality, `PivotBudgetAt` bounds the centred real part by `14X/25` and the
@@ -316,8 +317,8 @@ replacement for claim authority.
   `DTWPivotResidualDecorrelation` would imply irrationality, but its supplier
   decorrelation budgets are unproved; the exact `X=16, L=20, s=1, m=2, N=18`
   overlap shows that a supplier prime is not globally isolated (`:394`,
-  `:569-588`). This is a deferred source-only route, not a Comparator row,
-  and it leaves the unbounded certificate supply open.
+  `:569-588`). This is a deferred public route outside the Comparator evidence
+  screen, and it leaves the unbounded certificate supply open.
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
