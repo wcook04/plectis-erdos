@@ -570,6 +570,10 @@ def _card(packet: Mapping[str, Any]) -> str:
         if not isinstance(available, list):
             available = []
         rows.append(f"available_routes={','.join(str(value) for value in available) or 'none'}")
+    else:
+        related = packet.get("related_route_ids", [])
+        if isinstance(related, list) and related:
+            rows.append(f"related_routes={','.join(str(value) for value in related)}")
     rows.append(
         f"resume={packet['resume_state']['state_id']} commit={packet['source_snapshot']['commit']}"
     )

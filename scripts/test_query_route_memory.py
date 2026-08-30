@@ -368,6 +368,21 @@ def main() -> int:
         in optimized.stdout,
         "unrouted CLI card omitted canonical route choices",
     )
+    routed_card = run_cli(
+        "--problem",
+        "257",
+        "--route",
+        "erdos257_half_story",
+        "--format",
+        "card",
+        optimized=True,
+        check=True,
+    )
+    require(
+        "related_routes=boolean_mobius_constraints,structured_support_families,half_carry_compactness_programme"
+        in routed_card.stdout,
+        "routed CLI card omitted canonical route relationships",
+    )
     print("query_route_memory: 8 selectors, stale/cross-problem/invented guards, CLI normal/-O PASS")
     return 0
 
