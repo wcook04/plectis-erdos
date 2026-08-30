@@ -16,19 +16,54 @@ the displayed implication; it does not prove that its hypotheses occur.
 ## Ten-minute verdict
 
 All eight Erdős problems remain open. The development is neither a partial
-solution nor an empty collection of restatements. For the two reviewed
-programmes, its checked non-restatement centre includes:
+solution nor an empty collection of restatements. For a first mathematical
+pass, the high-signal spine is:
 
-- for #257, exact finite-period noncollapse, eventually-periodic support
-  irrationality, a signed periodic-weight dichotomy, feedback and rank-gap
-  theorems, and a precisely delimited squarefree-support barrier;
-- for #249, exact finite-level ranks and infinite-dimensionality for dyadic
-  sections of Euler's totient, denominator growth for a Möbius-shadow object,
-  and a checked finite-shift-algebra no-go with a synthetic survivor (not an
-  actual-totient construction); and
-- finite evidence: a diagonal certificate band through `t=82` and a historical
-  roster of 123 distinct off-diagonal certificates (125 verified log rows),
-  neither of which supplies the required unbounded family.
+- **#257, an actual irrationality theorem under explicit hypotheses.** The
+  adaptive-CRT certificate proves irrationality for every infinite
+  pairwise-coprime support with summable reciprocal mass, in every integer
+  base `b ≥ 2` (`irrational_erdosSupportSeries_pairwise_coprime`). This is the
+  strongest direct consequence in the public Comparator spine, but it is a
+  structured-support theorem, not universal #257.
+- **#249, a constructive kernel-rank spine.** The exact dyadic totient-kernel
+  rank `2^e + 1`, its odd-core basis, and the resulting infinite-dimensional
+  span expose a real finite-level mechanism; the all-base rank is conditional
+  on the displayed affine independence input. None of these gives a
+  rationality-to-finite-rank bridge or solves the binary totient endpoint.
+- **#68, an exact endpoint reduction.** Irrationality is equivalent to
+  cofinally many strict factorial-top divisibility misses, equivalently to
+  cofinally many non-unit carries. The equivalence transfers the hard
+  producer question exactly; it does not supply that producer.
+- **#243 and #251, boundary results that diagnose the missing input.** Fresh
+  pairwise-coprime moduli obstruct bounded rises, while periodic/vanishing
+  negative-error regimes are excluded; for #251, unbounded prime gaps and an
+  exact prime-gap irrationality equivalence still leave the concrete tail
+  bridge open.
+- **#269, #1041, and #1049, structurally useful route checks.** Running-LCM
+  height and rank-two obstructions, finite translation/root-retention inputs
+  plus a diagnosed saddle gap, and the rational-base recurrence/no-go at
+  `3/2` each isolate a mechanism without claiming the endpoint.
+
+The finite #249 certificate band, Stern–Brocot and gcd-moment identities,
+#257 measure/noncollapse geometry, and the cited-only ladders remain useful
+supporting routes. They are deliberately secondary to the mechanisms above:
+finite ranges do not become cofinal theorems, and cited analytic inputs do
+not become Lean results by appearing in the same paper.
+
+### Signal-audit dispositions
+
+These are editorial dispositions for first-contact signal, not novelty,
+priority, or proof-status claims. The detailed sections below retain the
+full evidence and exact boundaries.
+
+| Disposition | Reader-facing treatment |
+|---|---|
+| **promote** | #257 pairwise-coprime irrationality, #249 finite kernel rank/basis, and #68's exact carry/divisibility equivalence lead the first pass. |
+| **retain** | #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. |
+| **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite denominator, and synthetic LCM-shift results are one supporting arithmetic route; #257's geometry, finite-period, state, and defect results are one supporting universal-boundary route. |
+| **demote** | Citation-only #249 context and classical formalised results follow the local checked mechanisms; they establish provenance or context, not a new #249 conclusion. |
+| **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. |
+| **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks stay available through the linked source maps, but do not lead the reader. |
 
 The project also audits its own conditional routes. Of 23 substantial Lean
 propositions extracted from hypotheses of conditional theorems, 17 are

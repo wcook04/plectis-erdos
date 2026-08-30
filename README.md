@@ -27,6 +27,40 @@ private-system entrypoint.
 Will Cook reviewed claims. **Lean source checked by the pinned Lean kernel**
 is formal proof authority, not for meaning or novelty.
 
+## Read the signal first
+
+All eight problems remain open. The most useful first pass is mechanism-first,
+not a novelty or priority ranking:
+
+- **#257 has a genuine conditional irrationality theorem.** An adaptive-CRT
+  argument handles every infinite pairwise-coprime support with summable
+  reciprocal mass in each integer base `b ≥ 2` ([source](Erdos249257/CertificateKernel.lean));
+  the universal-support endpoint remains open.
+- **#249 has an exact finite-level kernel spine.** The dyadic totient kernel
+  has rank `2^e + 1` with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
+  the all-base extension is conditional on affine independence and no
+  rationality-to-finite-rank bridge is proved.
+- **#68 has an exact endpoint reduction.** Irrationality is equivalent to
+  cofinally many strict factorial-top divisibility misses, equivalently
+  non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
+  the cofinal producer is still open.
+
+The next boundary results are also worth reading: #243 excludes bounded-rise
+and periodic negative-orbit regimes ([source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean));
+#251 gives unbounded prime gaps and an exact prime-gap equivalence
+([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)); #269 checks a
+running-LCM height identity and rank-two obstruction
+([source](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)); #1041 isolates
+finite ray separation/root retention while a topology/gluing step is missing
+([source](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)); and #1049
+rules out a literal `3/2` corridor while leaving irrationality open
+([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean)).
+
+Finite searches, routine certificate shards, cited inputs, and conditional
+predicate stacks remain valuable evidence, but they are supporting routes—not
+cofinal results or solutions. [RESULTS](docs/RESULTS.md) gives the complete
+signal audit, exact hypotheses, evidence, and surviving boundary.
+
 ## Problem papers
 
 [`docs/papers/corpus.json`](docs/papers/corpus.json) indexes the papers; map is
@@ -43,7 +77,7 @@ readable without a query or network.
 | **#1041** | Do two unit-disc roots have a curve `<2` in their open lemniscate? |
 | **#1049** | Which rational bases give an irrational Lambert series, starting at `3/2`? |
 
-### Public checked frontier; what remains
+### Eight open endpoints
 
 Links name checked routes and limits; reductions are not solutions.
 
