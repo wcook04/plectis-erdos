@@ -13,7 +13,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -33,9 +35,68 @@ SOURCE_TYPES = {
 }
 
 
-def load_json(path: Path) -> dict[str, Any]:
-    with path.open(encoding="utf-8") as handle:
-        value = json.load(handle)
+class UnsafeQualificationInput(ValueError):
+    """A qualification input escaped its root or is not a regular file."""
+
+
+def safe_text(path: Path, *, root: Path) -> str:
+    """Read a qualification input through a no-follow regular-file descriptor."""
+    root = Path(os.path.abspath(root))
+    candidate = Path(os.path.abspath(path))
+    if candidate != root and root not in candidate.parents:
+        raise UnsafeQualificationInput(
+            f"qualification input escaped checkout: {candidate}"
+        )
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeQualificationInput(
+                f"symlinked qualification input: {candidate}"
+            )
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeQualificationInput(
+                f"qualification input escaped checkout: {candidate}"
+            )
+        current = current.parent
+    if not candidate.is_file():
+        raise UnsafeQualificationInput(
+            f"qualification input is not a regular file: {candidate}"
+        )
+
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeQualificationInput(
+            f"qualification input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeQualificationInput(
+                f"qualification input is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        try:
+            return b"".join(chunks).decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise UnsafeQualificationInput(
+                f"qualification input is not UTF-8: {candidate}"
+            ) from exc
+    finally:
+        os.close(descriptor)
+
+
+def load_json(path: Path, *, root: Path) -> dict[str, Any]:
+    value = json.loads(safe_text(path, root=root))
     if not isinstance(value, dict):
         raise ValueError(f"{path} must contain a JSON object")
     return value
@@ -148,8 +209,8 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
 def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showcase: dict[str, Any]) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     deficits: list[str] = []
-    formalization = (root / "formalization.yaml").read_text(encoding="utf-8")
-    toolchain = (root / "lean-toolchain").read_text(encoding="utf-8").strip()
+    formalization = safe_text(root / "formalization.yaml", root=root)
+    toolchain = safe_text(root / "lean-toolchain", root=root).strip()
     project_license = re.search(r'^  license:\s*["\']?([^"\'\s]+)', formalization, re.MULTILINE)
     version = re.search(r'^version:\s*["\']?([^"\'\s]+)', formalization, re.MULTILINE)
     tool_version = re.search(r"lean4:v([0-9]+)\.([0-9]+)\.([0-9]+)", toolchain)
@@ -184,7 +245,10 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
         errors.append("selected showcase candidate is absent from the committed Comparator roster")
     source_file = root / selected.get("source_file", "")
     short_name = selected_name.rsplit(".", 1)[-1]
-    if not source_file.is_file() or not re.search(rf"\btheorem\s+{re.escape(short_name)}\b", source_file.read_text(encoding="utf-8")):
+    if not source_file.is_file() or not re.search(
+        rf"\btheorem\s+{re.escape(short_name)}\b",
+        safe_text(source_file, root=root) if source_file.is_file() else "",
+    ):
         errors.append("selected candidate does not resolve to its declared current Lean source")
     for problem in PROBLEMS:
         row = next((r for r in showcase.get("frontier_by_problem", []) if r.get("problem") == problem), None)
@@ -194,8 +258,8 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
 
 
 def evaluate(root: Path) -> dict[str, Any]:
-    recon = load_json(root / "docs/PALOMAR_POLICY_RECONCILIATION.json")
-    showcase = load_json(root / "docs/PALOMAR_RESULT_SHOWCASE.json")
+    recon = load_json(root / "docs/PALOMAR_POLICY_RECONCILIATION.json", root=root)
+    showcase = load_json(root / "docs/PALOMAR_RESULT_SHOWCASE.json", root=root)
     comparator = json.loads(committed_bytes(root, "verification/comparator.json"))
     errors = authority_errors(recon)
     errors.extend(roster_errors(root, comparator, showcase, recon))

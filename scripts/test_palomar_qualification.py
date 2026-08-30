@@ -5,13 +5,47 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
+
+import check_palomar_qualification as checker
 
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKER = ROOT / "scripts" / "check_palomar_qualification.py"
+
+
+def expect_unsafe(path: Path, root: Path, label: str) -> None:
+    try:
+        checker.safe_text(path, root=root)
+    except checker.UnsafeQualificationInput:
+        return
+    raise AssertionError(f"qualification input escaped safe boundary: {label}")
+
+
+def test_safe_input_boundary() -> None:
+    with tempfile.TemporaryDirectory(prefix="palomar-input-") as raw_workspace:
+        workspace = Path(raw_workspace)
+        regular = workspace / "regular.txt"
+        regular.write_text("qualification input\n", encoding="utf-8")
+        if checker.safe_text(regular, root=workspace) != "qualification input\n":
+            raise AssertionError("qualification regular-file input was not read")
+
+        directory = workspace / "directory"
+        directory.mkdir()
+        expect_unsafe(directory, workspace, "directory")
+
+        symlink = workspace / "symlink.txt"
+        symlink.symlink_to(regular)
+        expect_unsafe(symlink, workspace, "symlink")
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "fifo"
+            os.mkfifo(fifo)
+            expect_unsafe(fifo, workspace, "FIFO")
 
 
 def run_checker(*extra: str) -> dict:
@@ -74,6 +108,7 @@ def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
 
 
 if __name__ == "__main__":
+    test_safe_input_boundary()
     test_normal_and_optimised_checker_agree()
     test_full_current_roster_and_eight_problem_crosswalk()
     test_adversarial_roster_drop_is_not_silently_accepted()
