@@ -171,11 +171,16 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     }
     assert set(supporting) == {
         "rank_two_kernel_no_go",
+        "height_fibre_and_shell",
         "three_prime_lcm_cells",
     }
     assert [
         row["family"]["family_id"] for row in packet["supporting_families"]
-    ] == ["rank_two_kernel_no_go", "three_prime_lcm_cells"]
+    ] == [
+        "rank_two_kernel_no_go",
+        "height_fibre_and_shell",
+        "three_prime_lcm_cells",
+    ]
     handoff = supporting["three_prime_lcm_cells"]
     family = handoff["family"]
     assert family["family_id"] == "three_prime_lcm_cells"
@@ -280,6 +285,26 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     assert rank_two["canonical_relations"][0]["relation"] == (
         "contrary_evidence_for"
     )
+
+    height = supporting["height_fibre_and_shell"]
+    assert height["family"]["authority_rank"]["programme_position"] == 4
+    assert height["family"]["palomar_tier"] == (
+        "deep_mechanism_and_classification"
+    )
+    assert height["family"]["proof_status"] == (
+        "locally proved result; novelty unassessed"
+    )
+    assert {
+        row["name"] for row in height["source_declarations"]
+    } == {
+        "smoothHeightFiber_kernel_sum",
+        "finiteSmoothKernelSum_groupedByHeight",
+        "smoothExponentShell_card_quadratic",
+    }
+    assert "quadratic function" in height["hard_mechanism"]
+    assert "divisibility bridge" in height["open_producer_boundaries"][
+        "divisibility_bridge"
+    ]
 
 
 def test_strict_prime_successor_is_support_only() -> None:

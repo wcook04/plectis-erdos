@@ -53,6 +53,7 @@ SEMANTIC_HANDOFF_ROOT_FAMILIES = (
 )
 THREE_PRIME_LCM_FAMILY = "three_prime_lcm_cells"
 RANK_TWO_KERNEL_FAMILY = "rank_two_kernel_no_go"
+HEIGHT_FIBRE_FAMILY = "height_fibre_and_shell"
 
 
 @lru_cache(maxsize=16)
@@ -712,6 +713,105 @@ def rank_two_kernel_no_go_handoff(
     }
 
 
+def height_fibre_and_shell_handoff(
+    palomar: Mapping[str, Any] | None = None,
+    claims: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Expose the exact finite height-fibre and shell-bound consumer."""
+    palomar = palomar or load_json(PALOMAR)
+    claims_document = claims or load_json(CLAIMS)
+    review_rows = _claim_family_rows(claims_document)
+    review = review_rows.get(HEIGHT_FIBRE_FAMILY)
+    if not isinstance(review, dict):
+        raise ValueError("Claims review matrix lacks height_fibre_and_shell")
+    ranks = _canonical_family_ranks(palomar)
+    rank = ranks.get(HEIGHT_FIBRE_FAMILY)
+    if rank is None:
+        raise ValueError("Palomar programme order lacks height_fibre_and_shell")
+    placements = [
+        row
+        for row in palomar.get("selection_contract", {}).get(
+            "represented_family_placements", []
+        )
+        if row.get("family_id") == HEIGHT_FIBRE_FAMILY
+    ]
+    if len(placements) != 1:
+        raise ValueError("Palomar must expose one height-fibre placement")
+    declarations_claimed = review.get("declarations")
+    if not isinstance(declarations_claimed, list) or len(declarations_claimed) != 2:
+        raise ValueError("Claims height-fibre row must name its two declarations")
+    source_module = "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+    source_names = (
+        "smoothHeightFiber_kernel_sum",
+        "finiteSmoothKernelSum_groupedByHeight",
+        "smoothExponentShell_card_quadratic",
+    )
+    atlas = load_json(ATLAS)
+    declarations = [
+        _live_source_declaration(source_module, name, atlas)
+        for name in source_names
+    ]
+    claimed_names = {
+        str(declaration).rsplit(".", 1)[-1] for declaration in declarations_claimed
+    }
+    if not claimed_names.issubset(set(source_names)):
+        raise ValueError("Claims height-fibre declarations drifted from source")
+    return {
+        "family": {
+            "family_id": HEIGHT_FIBRE_FAMILY,
+            "problem": rank["problem"],
+            "authority_rank": {
+                "programme_position": rank["programme_position"],
+                "basis": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                    "programme_family_order"
+                ),
+                "boundary": (
+                    "Within-problem order only; no cross-problem rank is inferred."
+                ),
+            },
+            "palomar_tier": placements[0].get("tier_id"),
+            "palomar_judgement": placements[0].get("relative_judgement"),
+            "proof_status": review.get("contribution_class"),
+            "proof_status_authority": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+                ".families[height_fibre_and_shell].contribution_class"
+            ),
+            "summary": review.get("summary"),
+            "boundary": review.get("boundary"),
+        },
+        "hard_mechanism": (
+            "The fiber-sum theorem rewrites a finite smooth lattice sum as exact "
+            "height multiplicities times reciprocal heights. The grouped-by-height "
+            "normal form makes cell constancy usable at finite level, while the "
+            "sorted half-open shell theorem bounds each shell multiplicity by a "
+            "quadratic function of the exponent budget."
+        ),
+        "source_declarations": declarations,
+        "natural_friction_evidence": [
+            review.get("boundary"),
+            "The finite normal form controls multiplicity only; it does not create "
+            "the missing divisibility bridge to an infinite carry contradiction.",
+        ],
+        "open_producer_boundaries": {
+            "divisibility_bridge": (
+                "The fibre and shell bounds do not provide the missing divisibility "
+                "bridge from the actual three-prime series to a carry consumer."
+            ),
+            "endpoint": review.get("boundary"),
+        },
+        "authority": {
+            "claims": "docs/claims.json::external_verification_packet.review_matrix.families[height_fibre_and_shell]",
+            "palomar": "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract.represented_family_placements and programme_family_order",
+            "source": source_module,
+        },
+        "follow": {
+            "family": "python3 scripts/query_semantic.py family-relations height_fibre_and_shell",
+            "problem": "python3 scripts/query_corpus.py --route erdos_269",
+        },
+    }
+
+
 def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     """Join the expert index to canonical endpoint-facing family packets.
 
@@ -730,6 +830,7 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     supporting_families = [
         three_prime_lcm_cells_handoff(palomar, claims_document),
         rank_two_kernel_no_go_handoff(palomar, claims_document),
+        height_fibre_and_shell_handoff(palomar, claims_document),
     ]
     supporting_families.sort(
         key=lambda row: (
