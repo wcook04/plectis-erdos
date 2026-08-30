@@ -22,6 +22,12 @@ from publication_contract import (
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep publication-contract checks active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def assert_committed_snapshot_environment() -> None:
     """Prove Git snapshot reads ignore hostile inherited selectors."""
     hostile = {
@@ -31,8 +37,14 @@ def assert_committed_snapshot_environment() -> None:
     }
     with patch.dict(os.environ, hostile, clear=False):
         committed = RepositoryReader(ROOT, "HEAD").read_bytes(CONTRACT_PATH)
-    assert committed.startswith(b"{")
-    assert ENVIRONMENT_CONTRACT == "clean_committed_snapshot_subprocess_environment_v1"
+    require(
+        committed.startswith(b"{"),
+        "committed publication contract was not read as JSON",
+    )
+    require(
+        ENVIRONMENT_CONTRACT == "clean_committed_snapshot_subprocess_environment_v1",
+        "publication contract lost its clean-snapshot environment contract",
+    )
 
 
 def main() -> int:
