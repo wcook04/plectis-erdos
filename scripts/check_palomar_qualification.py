@@ -63,6 +63,33 @@ PINNED_TAXONOMY_AUTHORITIES = {
         "sha256": "b4de69f1f562da01e0f4580cecc0ab36098f5297bb7cdd669c8ec3b0d3606060",
     },
 }
+REPOSITORY_SIZE_LIMIT_BYTES = 500 * 1024 * 1024
+CHALLENGE_SIZE_LIMIT_BYTES = 100 * 1024
+CHALLENGE_LINE_LIMIT = 1000
+CHALLENGE_WARNING_BYTES = 32 * 1024
+CHALLENGE_WARNING_LINES = 300
+FORMALIZATION_SIZE_LIMIT_BYTES = 256 * 1024
+LICENSE_SIZE_LIMIT_BYTES = 1024 * 1024
+COMPILED_ARTIFACT_SUFFIXES = (
+    ".olean",
+    ".ilean",
+    ".a",
+    ".bc",
+    ".dll",
+    ".dylib",
+    ".o",
+    ".obj",
+    ".so",
+    ".trace",
+)
+REQUIRED_REQUIREMENT_IDS = {
+    "repository_source_envelope",
+    "challenge_source_envelope",
+    "lake_manifest_and_dependency_pins",
+    "root_license",
+    "formalization_file_envelope",
+    "formalization_v04_metadata",
+}
 
 
 class UnsafeQualificationInput(ValueError):
@@ -183,6 +210,199 @@ def committed_commit_is_ancestor(root: Path, commit: str) -> bool:
     return result.returncode == 0
 
 
+def committed_tree_entries(root: Path) -> list[dict[str, Any]]:
+    """Return the immutable HEAD tree with checkout-relevant blob sizes."""
+    result = subprocess.run(
+        ["git", "-C", str(root), "ls-tree", "-r", "-l", "-z", "HEAD"],
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    entries: list[dict[str, Any]] = []
+    for record in result.stdout.split(b"\0"):
+        if not record:
+            continue
+        metadata, raw_path = record.split(b"\t", 1)
+        mode, object_type, object_id, raw_size = metadata.split()
+        entries.append(
+            {
+                "mode": mode.decode("ascii"),
+                "object_type": object_type.decode("ascii"),
+                "object_id": object_id.decode("ascii"),
+                "size": None if raw_size == b"-" else int(raw_size),
+                "path": raw_path.decode("utf-8"),
+            }
+        )
+    return entries
+
+
+def committed_lfs_pointer_paths(
+    root: Path, entries: list[dict[str, Any]]
+) -> list[str]:
+    """Find Git LFS pointers without scanning every byte in the checkout."""
+    paths_by_object: dict[str, list[str]] = {}
+    for entry in entries:
+        if entry["object_type"] != "blob" or int(entry["size"] or 0) > 4096:
+            continue
+        paths_by_object.setdefault(entry["object_id"], []).append(entry["path"])
+
+    process = subprocess.Popen(
+        ["git", "-C", str(root), "cat-file", "--batch"],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    assert process.stdin is not None
+    assert process.stdout is not None
+    pointers: list[str] = []
+    try:
+        for object_id, paths in paths_by_object.items():
+            process.stdin.write(f"{object_id}\n".encode("ascii"))
+            process.stdin.flush()
+            header = process.stdout.readline().decode("ascii").strip().split()
+            if len(header) != 3 or header[1] != "blob":
+                raise ValueError(f"unexpected git cat-file response for {object_id}")
+            blob = process.stdout.read(int(header[2]))
+            if process.stdout.read(1) != b"\n":
+                raise ValueError(f"unterminated git cat-file response for {object_id}")
+            if blob.startswith(b"version https://git-lfs.github.com/spec/v1\n"):
+                pointers.extend(paths)
+    finally:
+        process.stdin.close()
+        stderr = process.stderr.read() if process.stderr is not None else b""
+        returncode = process.wait()
+        if returncode != 0:
+            raise subprocess.CalledProcessError(
+                returncode, process.args, stderr=stderr
+            )
+    return sorted(pointers)
+
+
+def _license_name(path: str) -> bool:
+    if "/" in path:
+        return False
+    lowered = path.casefold()
+    for base in ("license", "licence", "copying", "unlicense", "ofl"):
+        if lowered == base or lowered in {
+            f"{base}.md",
+            f"{base}.markdown",
+            f"{base}.txt",
+        }:
+            return True
+    return False
+
+
+def repository_intake_evidence(root: Path) -> dict[str, Any]:
+    """Measure Palomar's official committed-source intake envelope."""
+    entries = committed_tree_entries(root)
+    by_path = {entry["path"]: entry for entry in entries}
+    comparator = json.loads(committed_bytes(root, "verification/comparator.json"))
+    challenge_path = comparator["challenge_module"].replace(".", "/") + ".lean"
+    solution_path = comparator["solution_module"].replace(".", "/") + ".lean"
+    challenge = committed_bytes(root, challenge_path)
+    formalization = committed_bytes(root, "formalization.yaml")
+    license_paths = sorted(entry["path"] for entry in entries if _license_name(entry["path"]))
+    license_bytes = committed_bytes(root, license_paths[0]) if len(license_paths) == 1 else b""
+    manifest = json.loads(committed_bytes(root, "lake-manifest.json"))
+    git_packages = [row for row in manifest.get("packages", []) if row.get("type") == "git"]
+    github_url = re.compile(r"^https://github\.com/[^/?#]+/[^/?#]+$")
+    invalid_git_dependencies = sorted(
+        str(row.get("name", "<unnamed>"))
+        for row in git_packages
+        if not github_url.fullmatch(str(row.get("url", "")))
+        or not HEX40.fullmatch(str(row.get("rev", "")))
+    )
+    compiled_artifacts = sorted(
+        entry["path"]
+        for entry in entries
+        if not entry["path"].startswith(".lake/")
+        and entry["path"].casefold().endswith(COMPILED_ARTIFACT_SUFFIXES)
+    )
+    facts: dict[str, Any] = {
+        "repository_size_bytes": sum(
+            int(entry["size"] or 0)
+            for entry in entries
+            if entry["mode"] != "120000"
+        ),
+        "repository_size_limit_bytes": REPOSITORY_SIZE_LIMIT_BYTES,
+        "git_submodules": sorted(
+            entry["path"] for entry in entries if entry["mode"] == "160000"
+        ),
+        "git_lfs_pointers": committed_lfs_pointer_paths(root, entries),
+        "compiled_artifacts": compiled_artifacts,
+        "challenge_path": challenge_path,
+        "challenge_regular": by_path.get(challenge_path, {}).get("mode") in {"100644", "100755"},
+        "challenge_bytes": len(challenge),
+        "challenge_lines": len(challenge.splitlines()),
+        "challenge_size_limit_bytes": CHALLENGE_SIZE_LIMIT_BYTES,
+        "challenge_line_limit": CHALLENGE_LINE_LIMIT,
+        "solution_path": solution_path,
+        "solution_regular": by_path.get(solution_path, {}).get("mode") in {"100644", "100755"},
+        "formalization_bytes": len(formalization),
+        "formalization_size_limit_bytes": FORMALIZATION_SIZE_LIMIT_BYTES,
+        "formalization_utf8": True,
+        "license_paths": license_paths,
+        "license_regular": len(license_paths) == 1
+        and by_path.get(license_paths[0], {}).get("mode") in {"100644", "100755"},
+        "license_bytes": len(license_bytes),
+        "license_size_limit_bytes": LICENSE_SIZE_LIMIT_BYTES,
+        "license_utf8": True,
+        "git_dependency_count": len(git_packages),
+        "invalid_git_dependencies": invalid_git_dependencies,
+    }
+    try:
+        formalization.decode("utf-8")
+    except UnicodeDecodeError:
+        facts["formalization_utf8"] = False
+    try:
+        license_bytes.decode("utf-8")
+    except UnicodeDecodeError:
+        facts["license_utf8"] = False
+    facts["warnings"] = []
+    if (
+        facts["challenge_bytes"] > CHALLENGE_WARNING_BYTES
+        or facts["challenge_lines"] > CHALLENGE_WARNING_LINES
+    ):
+        facts["warnings"].append(
+            "Challenge exceeds Palomar's 32 KiB or 300-line auditability warning threshold"
+        )
+    return facts
+
+
+def repository_intake_errors(facts: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if facts["repository_size_bytes"] > facts["repository_size_limit_bytes"]:
+        errors.append("committed repository exceeds Palomar's 500 MiB source cap")
+    if facts["git_submodules"]:
+        errors.append("submitted repository contains Git submodules")
+    if facts["git_lfs_pointers"]:
+        errors.append("submitted repository contains Git LFS pointers")
+    if facts["compiled_artifacts"]:
+        errors.append("submitted repository contains forbidden compiled artifacts")
+    if not facts["challenge_regular"] or not facts["solution_regular"]:
+        errors.append("Challenge and Solution must resolve to regular committed Lean files")
+    if facts["challenge_bytes"] > facts["challenge_size_limit_bytes"]:
+        errors.append("Challenge exceeds Palomar's 100 KiB hard limit")
+    if facts["challenge_lines"] > facts["challenge_line_limit"]:
+        errors.append("Challenge exceeds Palomar's 1,000-line hard limit")
+    if not facts["formalization_utf8"] or facts["formalization_bytes"] > facts[
+        "formalization_size_limit_bytes"
+    ]:
+        errors.append("formalization.yaml violates Palomar's UTF-8/256 KiB envelope")
+    if len(facts["license_paths"]) != 1:
+        errors.append("repository must contain exactly one conventional root licence file")
+    elif (
+        not facts["license_regular"]
+        or not facts["license_utf8"]
+        or facts["license_bytes"] <= 0
+        or facts["license_bytes"] > facts["license_size_limit_bytes"]
+    ):
+        errors.append("root licence violates Palomar's regular UTF-8/1 MiB envelope")
+    if facts["invalid_git_dependencies"]:
+        errors.append("lake-manifest.json contains Git dependencies without accepted URLs or full pins")
+    return errors
+
+
 def flatten_showcase(showcase: dict[str, Any]) -> list[str]:
     names: list[str] = []
     for row in showcase.get("frontier_by_problem", []):
@@ -274,6 +494,16 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
     head = reconciliation.get("current_repository", {}).get("observed_head_before_product", "")
     if not HEX40.fullmatch(head):
         errors.append("current repository observation lacks a full commit")
+    requirement_ids = {
+        row.get("id")
+        for row in reconciliation.get("requirements", [])
+        if isinstance(row, dict)
+    }
+    missing_requirements = sorted(REQUIRED_REQUIREMENT_IDS - requirement_ids)
+    if missing_requirements:
+        errors.append(
+            f"Palomar requirement matrix omits official intake requirements: {missing_requirements}"
+        )
     return errors
 
 
@@ -884,6 +1114,9 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
     if not tool_version or tuple(map(int, tool_version.groups())) < (4, 28, 0):
         errors.append("lean-toolchain is below Palomar's v4.28.0 minimum")
 
+    intake = repository_intake_evidence(root)
+    errors.extend(repository_intake_errors(intake))
+
     deficits.extend(formalization_metadata_deficits(formalization))
 
     selected = showcase.get("candidate_selection", {})
@@ -937,6 +1170,7 @@ def evaluate(root: Path) -> dict[str, Any]:
                 errors.append(f"reconciliation candidate selection disagrees on {field}")
     static_errors, deficits = static_requirement_errors(root, recon, showcase)
     errors.extend(static_errors)
+    repository_intake = repository_intake_evidence(root)
     decision = recon.get("qualification_decision", {}).get("decision")
     if deficits and decision != "NOT_READY":
         errors.append("qualification must remain NOT_READY while recorded structural deficits exist")
@@ -949,6 +1183,8 @@ def evaluate(root: Path) -> dict[str, Any]:
         "comparator_theorem_count": len(comparator.get("theorem_names", [])),
         "selected_candidate": showcase.get("candidate_selection", {}).get("declaration"),
         "structural_deficits": sorted(set(deficits)),
+        "structural_warnings": repository_intake["warnings"],
+        "repository_intake": repository_intake,
         "withheld_terminal_gates": ["mechanical_report", "independent_nanoda_replay", "editorial_review"],
         "operator_only_gates": ["submission_consent", "registration", "publication"],
         "errors": errors,

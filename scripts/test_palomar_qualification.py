@@ -161,6 +161,57 @@ def test_pinned_classification_authorities_are_required() -> None:
     assert any("arxiv-categories.json" in error for error in errors)
 
 
+def test_repository_intake_contract() -> None:
+    facts = checker.repository_intake_evidence(ROOT)
+    assert checker.repository_intake_errors(facts) == []
+    assert facts["repository_size_bytes"] < facts["repository_size_limit_bytes"]
+    assert facts["git_submodules"] == []
+    assert facts["git_lfs_pointers"] == []
+    assert facts["compiled_artifacts"] == []
+    assert facts["challenge_path"] == "ExternalVerification/Challenge.lean"
+    assert facts["challenge_bytes"] == 24666
+    assert facts["challenge_lines"] == 565
+    assert facts["challenge_bytes"] < facts["challenge_size_limit_bytes"]
+    assert facts["challenge_lines"] < facts["challenge_line_limit"]
+    assert facts["warnings"] == [
+        "Challenge exceeds Palomar's 32 KiB or 300-line auditability warning threshold"
+    ]
+    assert facts["formalization_bytes"] < facts["formalization_size_limit_bytes"]
+    assert facts["formalization_utf8"] is True
+    assert facts["license_paths"] == ["LICENSE"]
+    assert facts["license_regular"] is True
+    assert facts["license_utf8"] is True
+    assert 0 < facts["license_bytes"] < facts["license_size_limit_bytes"]
+    assert facts["git_dependency_count"] == 9
+    assert facts["invalid_git_dependencies"] == []
+
+    damaged = copy.deepcopy(facts)
+    damaged["repository_size_bytes"] = damaged["repository_size_limit_bytes"] + 1
+    assert any("500 MiB" in error for error in checker.repository_intake_errors(damaged))
+
+    damaged = copy.deepcopy(facts)
+    damaged["git_submodules"] = ["vendor/example"]
+    assert any("submodules" in error for error in checker.repository_intake_errors(damaged))
+
+    damaged = copy.deepcopy(facts)
+    damaged["challenge_lines"] = damaged["challenge_line_limit"] + 1
+    assert any("1,000-line" in error for error in checker.repository_intake_errors(damaged))
+
+    reconciliation = json.loads(
+        (ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json").read_text()
+    )
+    damaged_reconciliation = copy.deepcopy(reconciliation)
+    damaged_reconciliation["requirements"] = [
+        row
+        for row in damaged_reconciliation["requirements"]
+        if row["id"] != "repository_source_envelope"
+    ]
+    assert any(
+        "repository_source_envelope" in error
+        for error in checker.authority_errors(damaged_reconciliation)
+    )
+
+
 def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
     comparator = json.loads(
@@ -818,8 +869,11 @@ def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
 if __name__ == "__main__":
     test_safe_input_boundary()
     test_normal_and_optimised_checker_agree()
+    test_v04_profile_rejects_missing_source_relationship()
     test_generated_formalization_reads_committed_head_only()
     test_structural_qualification_ignores_mutable_source_reads()
+    test_pinned_classification_authorities_are_required()
+    test_repository_intake_contract()
     test_full_current_roster_and_eight_problem_crosswalk()
     test_adversarial_candidate_universe_drop_is_not_silently_accepted()
     test_adversarial_selection_semantics_drop_is_not_silently_accepted()

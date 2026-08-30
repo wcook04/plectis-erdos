@@ -133,7 +133,7 @@
   },
     "current_repository": {
       "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-      "observed_head_before_product": "4ab2697dfd7f1cced0f9dff116df529f05c93814",
+      "observed_head_before_product": "3702e8249724bf46bf78c0332d1ad92cc0f41cf0",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -165,6 +165,29 @@
       "spdx": "Apache-2.0",
       "project_license": "Apache-2.0",
       "structural_status": "pass"
+    },
+    "repository_intake": {
+      "authority": "committed HEAD tree only",
+      "checker": "python3 scripts/check_palomar_qualification.py --json",
+      "repository_size_limit_bytes": 524288000,
+      "challenge_size_limit_bytes": 102400,
+      "challenge_line_limit": 1000,
+      "challenge_warning_bytes": 32768,
+      "challenge_warning_lines": 300,
+      "formalization_size_limit_bytes": 262144,
+      "license_size_limit_bytes": 1048576,
+      "compiled_artifact_suffixes": [
+        ".olean",
+        ".ilean",
+        ".a",
+        ".bc",
+        ".dll",
+        ".dylib",
+        ".o",
+        ".obj",
+        ".so",
+        ".trace"
+      ]
     }
   },
   "candidate_value_selection": {
@@ -711,15 +734,36 @@
       "id": "lake_manifest_and_dependency_pins",
       "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
       "status": "pass",
-      "evidence": "The current tree contains lakefile.toml and lake-manifest.json; full Palomar dependency closure verification remains terminal evidence.",
-      "disposition": "structural_presence_pass_terminal_closure_withheld"
+      "evidence": "The committed manifest contains nine Git dependencies; every URL is a credential-free public github.com repository path and every resolved rev is a full lowercase 40-character SHA. Full materialization and Challenge closure remain terminal evidence.",
+      "disposition": "static_git_provenance_pass_terminal_closure_withheld"
+    },
+    {
+      "id": "repository_source_envelope",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "The committed-tree intake checker measures ordinary blob checkout size below the 500 MiB cap and finds no submitted gitlinks, Git LFS pointers, or forbidden compiled-artifact suffixes outside .lake.",
+      "disposition": "committed_source_envelope_satisfied"
+    },
+    {
+      "id": "challenge_source_envelope",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "ExternalVerification/Challenge.lean is a regular committed file below the 100 KiB and 1,000-line hard limits. Its 565 lines exceed the 300-line auditability warning threshold, which remains visible as a warning rather than a false failure.",
+      "disposition": "hard_limits_satisfied_with_auditability_warning"
     },
     {
       "id": "root_license",
       "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
       "status": "pass",
-      "evidence": "The root LICENSE declares Apache-2.0 and formalization.yaml declares the same identifier.",
-      "disposition": "structurally_satisfied"
+      "evidence": "The committed root contains exactly one conventional licence file, LICENSE; it is regular, nonempty UTF-8 text below 1 MiB, declares Apache-2.0, and matches formalization.yaml.",
+      "disposition": "file_envelope_and_identifier_satisfied"
+    },
+    {
+      "id": "formalization_file_envelope",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "The committed formalization.yaml is regular UTF-8 and below the 256 KiB intake cap. Its file envelope passes independently of the red v0.4 content requirements.",
+      "disposition": "file_envelope_satisfied_metadata_still_not_ready"
     },
     {
       "id": "formalization_v04_metadata",

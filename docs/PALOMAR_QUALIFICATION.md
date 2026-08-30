@@ -397,14 +397,24 @@ Comparator evidence even when a source-faithful transport is committed.
 | --- | --- | --- |
 | Exact Challenge/Solution pair | pass | Distinct committed modules; configuration names both explicitly. |
 | Comparator path and axiom ceiling | pass structurally | `verification/comparator.json`; the final mechanical axiom report is still withheld. |
-| Toolchain, Lakefile, manifest | pass structurally | Current versions and committed dependency manifest are present. |
-| Root licence | pass structurally | Apache-2.0 is declared and detected consistently. |
+| Repository source envelope | pass | The committed ordinary-blob checkout is about 388 MiB, below the 500 MiB cap; no submitted gitlinks, Git LFS pointers, or forbidden compiled artifacts are present. The checker reports the exact current byte count. |
+| Challenge source envelope | pass with warning | `ExternalVerification/Challenge.lean` is a regular 24,666-byte, 565-line file, below the 100 KiB/1,000-line hard limits but above Palomar's 300-line auditability warning threshold. |
+| Toolchain and Lakefile | pass structurally | Lean v4.29.1 and the committed Lake project files satisfy the current structural profile. |
+| Git dependency provenance | pass structurally | All nine manifest Git packages use credential-free public GitHub URLs and full lowercase 40-character resolved revisions; materialization and transitive Challenge closure remain terminal checks. |
+| Root licence | pass structurally | Exactly one conventional root licence file is present; `LICENSE` is regular nonempty UTF-8 below 1 MiB and its Apache-2.0 identifier matches the project metadata. |
+| Formalization file envelope | pass | The committed `formalization.yaml` is regular UTF-8 and 151,819 bytes, below the 256 KiB intake cap. |
 | Formalization metadata | **red** | Current `formalization.yaml` is v0.3, lacks `project.description`, `responsible_maintainers`, and classification metadata, and its sources lack v0.4 relationships/origin evidence while using pre-v0.4 type labels. |
 | Informal account and boundaries | pass | The showcase gives the exact selected type, mechanism, attribution, limitations, and open frontier. |
 | Challenge import closure and solution axiom audit | withheld | Requires one immutable terminal Palomar-compatible mechanical validation. |
 | Independent NanoDa replay | withheld | Must be bound to the same immutable source commit. |
 | Editorial review | withheld | External private Palomar pipeline; no human review is claimed. |
 | Registration/publication | operator-only | Not performed and not authorized in this lane. |
+
+The Challenge warning is not a mechanical rejection, but it is real review
+friction: this single Comparator configuration selects the whole committed
+spine, so Palomar's reviewer would audit every selected declaration. The
+qualification product keeps the warning visible instead of treating a hard-cap
+pass as proof that the statement surface is optimally small.
 
 The exact decision is therefore **NOT READY**. The local repair remaining is
 to refresh the generated `formalization.yaml` from its owning claim source to
