@@ -1,0 +1,1275 @@
+#!/usr/bin/env python3
+"""Deduplicate bounded repository validation without replacing its authorities.
+
+``submit`` starts at most one detached process group for one exact validation
+input.  Equivalent callers receive its shared future or terminal receipt;
+``collect --wait`` is the only command that waits deliberately.  The command
+does not interpret a validator's result: its terminal exit code is the exit
+code from the existing validator, including 75 for unavailable environments.
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import fcntl
+import hashlib
+import json
+import os
+import secrets
+import signal
+import shutil
+import stat
+import subprocess
+import sys
+import tempfile
+import time
+from pathlib import Path
+from typing import Any, BinaryIO, Iterable
+
+
+ROOT = Path(__file__).resolve().parents[1]
+SCHEMA = "repository-validation-singleflight/1"
+DEFAULT_STATE_ROOT = ROOT / ".validation-singleflight"
+SINGLEFLIGHT_STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
+ROSTER_VALIDATORS = {
+    "toolchain-cache": "lean-toolchain",
+    "lean": "scripts/lean_fast_build.py",
+    "paper": "docs/papers/check_paper_corpus.py",
+    "release": "scripts/check_release_ref.py",
+    "reachable-history": "scripts/test_reachable_release_history.py",
+    "comparator": "scripts/verify-comparator.sh",
+    "historical": "scripts/historical_bridge_experiment.py",
+    "dogfood": "scripts/dogfood_semantic_proof.py",
+    "dependency-index": "scripts/build_lean_dependency_index.py",
+    "publication-mutations": "scripts/run_publication_mutations.py",
+    "palomar": "scripts/check_palomar_qualification.py",
+    "paper-render": "scripts/render_paper.py",
+}
+TAIL_BYTES = 16_000
+LAUNCH_GRACE_SECONDS = 15.0
+DEFAULT_TTL_SECONDS = 7 * 24 * 60 * 60
+DEFAULT_RECENT_SECONDS = 10 * 60
+DEFAULT_COLLECT_TIMEOUT_SECONDS = 30 * 60
+DEFAULT_WORKER_TIMEOUT_SECONDS = DEFAULT_COLLECT_TIMEOUT_SECONDS
+WORKER_TIMEOUT_EXIT_CODE = 124
+DEFAULT_MAX_BYTES = 1 << 30
+DEFAULT_MAX_INODES = 10_000
+GIT_COMMAND_TIMEOUT_SECONDS = 30
+STATE_DIRECTORIES = ("jobs", "locks", "artifacts")
+COPY_TREE_MARKERS = ("lean-toolchain", "lakefile.toml")
+COPY_TREE_DIRECTORIES = ("ErdosProblems", "docs", "scripts")
+GIT_CONTEXT_KEYS = frozenset(
+    {
+        "GIT_DIR",
+        "GIT_WORK_TREE",
+        "GIT_INDEX_FILE",
+        "GIT_COMMON_DIR",
+        "GIT_OBJECT_DIRECTORY",
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+        "GIT_CEILING_DIRECTORIES",
+        "GIT_DISCOVERY_ACROSS_FILESYSTEM",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+    }
+)
+GIT_PROCESS_CONTROL_KEYS = frozenset(
+    {
+        "GIT_TRACE",
+        "GIT_TRACE2",
+        "GIT_TRACE_PACKET",
+        "GIT_TRACE_PERFORMANCE",
+        "GIT_TRACE_SETUP",
+        "GIT_TRACE_CURL",
+        "GIT_TRACE2_EVENT",
+        "GIT_TRACE2_PERF",
+        "GIT_SSH",
+        "GIT_SSH_COMMAND",
+        "GIT_SSH_VARIANT",
+        "GIT_EXTERNAL_DIFF",
+        "GIT_DIFF_OPTS",
+        "GIT_EDITOR",
+        "GIT_SEQUENCE_EDITOR",
+        "GIT_MERGE_AUTOEDIT",
+    }
+)
+PYTHON_CONTEXT_KEYS = frozenset(
+    {
+        "PYTHONHOME",
+        "PYTHONPATH",
+        "PYTHONSTARTUP",
+        "PYTHONUSERBASE",
+        "PYTHONBREAKPOINT",
+        "PYTHONWARNINGS",
+        "PYTHONHASHSEED",
+        "PYTHONOPTIMIZE",
+        "PYTHONUTF8",
+        "PYTHONNOUSERSITE",
+        "PYTHONDONTWRITEBYTECODE",
+    }
+)
+LOCALE_KEYS = frozenset({"LC_ALL", "LANG", "LANGUAGE"})
+PAPER_RENDER_TRACKED_OUTPUTS = frozenset(
+    {
+        "claim-faithful-publication-systems-paper.pdf",
+        "erdos-1049-rational-base-lambert.pdf",
+        "erdos-243-reciprocal-tail-rigidity.pdf",
+        "erdos-249-binary-totient-series.pdf",
+        "erdos-251-prime-gap-dyadic-series.pdf",
+        "erdos-257-mersenne-support-subseries.pdf",
+        "erdos-269-three-prime-running-lcm.pdf",
+        "erdos249-257-main-paper.pdf",
+    }
+)
+PAPER_SOURCE_SUFFIXES = frozenset({".bib", ".cls", ".json", ".sty", ".tex"})
+COMPARATOR_REPLAY_AUTHORITY_PATHS = (
+    ROOT / "scripts/validation_singleflight.py",
+    ROOT / "scripts/verify-comparator.sh",
+    ROOT / "scripts/landrun-wrapper.sh",
+    ROOT / "scripts/check_palomar_qualification.py",
+    ROOT / "comparator.json",
+    ROOT / "ErdosProblems/ExternalVerificationPortfolio/comparator-negative-mismatch.json",
+    ROOT / "ErdosProblems/ExternalVerificationPortfolio/Challenge.lean",
+    ROOT / "ErdosProblems/ExternalVerificationPortfolio/Solution.lean",
+    ROOT / "ErdosProblems/ExternalVerificationPortfolio/NegativeSolution.lean",
+    ROOT / "lean-toolchain",
+    ROOT / "lake-manifest.json",
+    ROOT / "lakefile.toml",
+)
+
+
+class ValidationError(RuntimeError):
+    """A malformed or unsafe single-flight request."""
+
+
+def utc_now() -> str:
+    return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+
+def canonical_json(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+
+
+def digest_bytes(value: bytes) -> str:
+    return "sha256:" + hashlib.sha256(value).hexdigest()
+
+
+def digest_file(path: Path) -> str:
+    return digest_bytes(path.read_bytes())
+
+
+def command_environment() -> dict[str, str]:
+    """Run workers without ambient Git, Python, or locale configuration."""
+    environment = os.environ.copy()
+    for key in list(environment):
+        if (
+            key.startswith("GIT_CONFIG_")
+            or key in GIT_CONTEXT_KEYS
+            or key in GIT_PROCESS_CONTROL_KEYS
+            or key in PYTHON_CONTEXT_KEYS
+            or key == SINGLEFLIGHT_STATE_ROOT_ENV
+            or key in LOCALE_KEYS
+        ):
+            environment.pop(key, None)
+    environment.update(
+        {
+            "GIT_CONFIG_NOSYSTEM": "1",
+            "GIT_CONFIG_GLOBAL": os.devnull,
+            "GIT_OPTIONAL_LOCKS": "0",
+            "GIT_NO_REPLACE_OBJECTS": "1",
+            "GIT_PAGER": "cat",
+            "GIT_TERMINAL_PROMPT": "0",
+            "GIT_ASKPASS": "/bin/false",
+            "PATH": os.defpath,
+            "LC_ALL": "C.UTF-8",
+            "LANG": "C.UTF-8",
+            "LANGUAGE": "C.UTF-8",
+            "PYTHONHASHSEED": "0",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONUTF8": "1",
+        }
+    )
+    return environment
+
+
+def bounded_tail(path: Path) -> str:
+    with path.open("rb") as handle:
+        handle.seek(0, os.SEEK_END)
+        size = handle.tell()
+        handle.seek(max(0, size - TAIL_BYTES))
+        return handle.read().decode("utf-8", errors="replace")
+
+
+def regular_file(path: Path, label: str) -> None:
+    try:
+        mode = path.lstat().st_mode
+    except OSError as exc:
+        raise ValidationError(f"{label} is missing: {path}") from exc
+    if stat.S_ISLNK(mode) or not stat.S_ISREG(mode):
+        raise ValidationError(f"{label} must be a regular non-symlink file")
+
+
+def secure_directory(path: Path) -> Path:
+    """Create a directory without traversing a symlinked component."""
+    candidate = path.expanduser()
+    if not candidate.is_absolute():
+        candidate = (Path.cwd() / candidate)
+    candidate = Path(os.path.abspath(candidate))
+    current = Path(candidate.anchor)
+    for part in candidate.parts[1:]:
+        current /= part
+        try:
+            mode = current.lstat().st_mode
+        except FileNotFoundError:
+            try:
+                current.mkdir(mode=0o700)
+            except FileExistsError:
+                # Another equivalent caller may have created this component
+                # between lstat and mkdir; inspect it again before proceeding.
+                pass
+            mode = current.lstat().st_mode
+        if stat.S_ISLNK(mode):
+            # macOS exposes its temporary area through /var -> /private/var.
+            # That platform-owned alias is the only symlink permitted while
+            # walking an explicitly supplied state root.
+            if current == Path("/var") and current.resolve(strict=True) == Path("/private/var"):
+                current = current.resolve(strict=True)
+                continue
+            raise ValidationError(f"state root contains an unsafe symbolic-link component: {current}")
+        if not stat.S_ISDIR(mode):
+            raise ValidationError(f"state root contains an unsafe directory component: {current}")
+    return candidate.resolve(strict=False)
+
+
+def _regular_file_at(path: Path) -> bool:
+    try:
+        mode = path.lstat().st_mode
+    except FileNotFoundError:
+        return False
+    return stat.S_ISREG(mode)
+
+
+def reject_unsafe_state_root(path: Path) -> Path:
+    """Reject repository roots, copied trees, and nested duplicate caches."""
+    candidate = Path(os.path.abspath(path.expanduser()))
+    resolved = candidate.resolve(strict=False)
+    repository_root = ROOT.resolve()
+    if resolved == repository_root:
+        raise ValidationError("state root must not be a checkout, clone, or worktree")
+
+    default_root = DEFAULT_STATE_ROOT.resolve(strict=False)
+    if resolved != default_root:
+        try:
+            resolved.relative_to(default_root)
+        except ValueError:
+            pass
+        else:
+            raise ValidationError("state root must not be a nested duplicate cache")
+
+    git_marker = candidate / ".git"
+    if os.path.lexists(git_marker):
+        raise ValidationError("state root must not be a checkout, clone, or worktree")
+
+    if all(_regular_file_at(candidate / marker) for marker in COPY_TREE_MARKERS) and any(
+        (candidate / directory).is_dir() for directory in COPY_TREE_DIRECTORIES
+    ):
+        raise ValidationError("state root must not be a broad copied repository tree")
+    return candidate
+
+
+def safe_child(root: Path, *parts: str) -> Path:
+    if not all(part and "/" not in part and "\\" not in part and part not in {".", ".."} for part in parts):
+        raise ValidationError("unsafe state-relative path component")
+    child = root.joinpath(*parts)
+    try:
+        child.relative_to(root)
+    except ValueError as exc:  # defensive: parts above already disallow traversal
+        raise ValidationError("state-relative path escaped its root") from exc
+    return child
+
+
+def ensure_state_root(path: Path) -> dict[str, Path]:
+    root = secure_directory(reject_unsafe_state_root(path))
+    directories = {name: secure_directory(safe_child(root, name)) for name in STATE_DIRECTORIES}
+    directories["root"] = root
+    return directories
+
+
+def open_lock(path: Path) -> int:
+    if os.path.lexists(path):
+        regular_file(path, "lock")
+    descriptor = os.open(path, os.O_CREAT | os.O_RDWR, 0o600)
+    fcntl.flock(descriptor, fcntl.LOCK_EX)
+    return descriptor
+
+
+def atomic_write(path: Path, data: bytes) -> None:
+    secure_directory(path.parent)
+    temporary = path.with_name(f".{path.name}.{secrets.token_hex(8)}.tmp")
+    descriptor = os.open(temporary, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+        directory = os.open(path.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+    finally:
+        try:
+            temporary.unlink()
+        except FileNotFoundError:
+            pass
+
+
+def open_output_log(path: Path) -> BinaryIO:
+    """Open a worker log without following a substituted final symlink."""
+    secure_directory(path.parent)
+    try:
+        mode = path.lstat().st_mode
+    except FileNotFoundError:
+        mode = None
+    if mode is not None and not stat.S_ISREG(mode):
+        raise ValidationError("worker output log must be a regular non-symlink file")
+    flags = (
+        os.O_WRONLY
+        | os.O_CREAT
+        | os.O_TRUNC
+        | os.O_NONBLOCK
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
+    descriptor = os.open(path, flags, 0o600)
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ValidationError("worker output log must be a regular file")
+        return os.fdopen(descriptor, "wb")
+    except BaseException:
+        os.close(descriptor)
+        raise
+
+
+def receipt_path(state: dict[str, Path], key: str) -> Path:
+    return safe_child(state["jobs"], f"{key}.json")
+
+
+def artifact_directory(state: dict[str, Path], key: str) -> Path:
+    return safe_child(state["artifacts"], key)
+
+
+def load_receipt(state: dict[str, Path], key: str) -> dict[str, Any] | None:
+    path = receipt_path(state, key)
+    if not os.path.lexists(path):
+        return None
+    regular_file(path, "receipt")
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValidationError(f"cannot read validation receipt {key}") from exc
+    if not isinstance(value, dict) or value.get("schema") != SCHEMA or value.get("key") != key:
+        raise ValidationError(f"invalid validation receipt {key}")
+    return value
+
+
+def write_receipt(state: dict[str, Path], key: str, receipt: dict[str, Any]) -> None:
+    if receipt.get("schema") != SCHEMA or receipt.get("key") != key:
+        raise ValidationError("refusing to publish a malformed receipt")
+    atomic_write(receipt_path(state, key), canonical_json(receipt) + b"\n")
+
+
+def git_output(*args: str) -> bytes:
+    try:
+        completed = subprocess.run(
+            ["git", *args],
+            cwd=ROOT,
+            capture_output=True,
+            check=False,
+            env=command_environment(),
+            timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+        )
+    except OSError as error:
+        raise ValidationError(
+            f"git {' '.join(args)} could not be launched: {error}"
+        ) from error
+    if completed.returncode:
+        raise ValidationError(completed.stderr.decode("utf-8", errors="replace").strip() or f"git {' '.join(args)} failed")
+    return completed.stdout
+
+
+def relative_to_root(path: Path) -> str:
+    try:
+        return path.resolve(strict=True).relative_to(ROOT.resolve()).as_posix()
+    except (OSError, ValueError) as exc:
+        raise ValidationError(f"validation input is outside this repository: {path}") from exc
+
+
+def worktree_fingerprint(
+    state_root: Path,
+    *,
+    excluded_paths: Iterable[str] = (),
+) -> dict[str, Any]:
+    head = git_output("rev-parse", "HEAD").decode().strip()
+    tree = git_output("rev-parse", "HEAD^{tree}").decode().strip()
+    excluded = frozenset(excluded_paths)
+    diff_args = ["diff", "--binary", "HEAD", "--", "."]
+    diff_args.extend(f":(exclude){path}" for path in sorted(excluded))
+    diff = git_output(*diff_args)
+    untracked = []
+    root_resolved = ROOT.resolve()
+    state_resolved = state_root.resolve()
+    for raw in git_output("ls-files", "--others", "--exclude-standard", "-z").split(b"\0"):
+        if not raw:
+            continue
+        relative = raw.decode("utf-8", errors="surrogateescape")
+        if relative in excluded:
+            continue
+        path = ROOT / relative
+        try:
+            path.resolve(strict=True).relative_to(state_resolved)
+            continue
+        except ValueError:
+            pass
+        except OSError as exc:
+            raise ValidationError(f"cannot inspect untracked input {relative}") from exc
+        if path.is_symlink() or not path.is_file():
+            raise ValidationError(f"untracked input must be a regular file: {relative}")
+        untracked.append((relative, digest_file(path)))
+    dirty_material = canonical_json({"diff": digest_bytes(diff), "untracked": sorted(untracked)})
+    identity_path = ROOT / "docs/repository_identity.json"
+    identity = digest_file(identity_path) if identity_path.is_file() else None
+    return {
+        "commit": head,
+        "tree": tree,
+        "dirty": bool(diff or untracked),
+        "dirty_fingerprint": digest_bytes(dirty_material),
+        "untracked_file_count": len(untracked),
+        "repository_root": root_resolved.name,
+        "repository_identity": identity,
+    }
+
+
+def regular_digest_rows(paths: Iterable[Path]) -> list[dict[str, str]]:
+    rows = []
+    for path in sorted(set(paths)):
+        relative = relative_to_root(path)
+        regular_file(path, relative)
+        rows.append({"path": relative, "sha256": digest_file(path)})
+    return rows
+
+
+def paper_render_source_paths() -> list[Path]:
+    """Return the tracked source inputs that can affect the paper package."""
+    paths = []
+    for raw in git_output("ls-files", "--", "paper").decode("utf-8").splitlines():
+        path = ROOT / raw
+        if path.name == "Makefile" or path.suffix in PAPER_SOURCE_SUFFIXES:
+            paths.append(path)
+    paths.extend(
+        (
+            ROOT / "scripts" / "render_paper.py",
+            # render_paper.py imports this module for the child environment
+            # and the single-flight command boundary.
+            ROOT / "scripts" / "validation_singleflight.py",
+        )
+    )
+    return paths
+
+
+def resolve_lean_target(target: str) -> Path:
+    if not target or target.startswith("-"):
+        raise ValidationError("Lean target must be a named local module or .lean path")
+    candidates = [
+        ROOT / target if target.endswith(".lean") else ROOT / (target.replace(".", "/") + ".lean")
+    ]
+    # Lake libraries declared with `srcDir = "examples"` are addressed by
+    # their library name even though their root source lives below examples/.
+    if not target.endswith(".lean") and "/" not in target and "." not in target:
+        candidates.append(ROOT / "examples" / f"{target}.lean")
+    candidate = next((path for path in candidates if path.is_file()), candidates[0])
+    regular_file(candidate, "Lean target")
+    relative_to_root(candidate)
+    return candidate
+
+
+def publication_mutation_spec(
+    targets: list[str],
+    ref: str | None,
+) -> tuple[list[str], Path]:
+    """Build one exact worker command for the publication study."""
+    actions: list[str] = []
+    default_manifest = ROOT / "experiments" / "publication_mutations.json"
+    manifest = default_manifest
+    timeout_seconds = 600
+    for target in targets:
+        if target in {"verify-operators", "all"}:
+            actions.append(target)
+            continue
+        prefix, separator, value = target.partition(":")
+        if not separator or not value:
+            raise ValidationError(
+                "publication-mutations targets must be verify-operators, all, "
+                "mutation:<id>, manifest:<repo-relative-path>, or timeout:<seconds>"
+            )
+        if prefix == "mutation":
+            if any(character.isspace() for character in value):
+                raise ValidationError("publication mutation id must not contain whitespace")
+            actions.append(f"mutation:{value}")
+        elif prefix == "manifest":
+            if manifest != default_manifest:
+                raise ValidationError("publication mutation manifest was specified twice")
+            candidate = ROOT / value
+            regular_file(candidate, "publication mutation manifest")
+            relative_to_root(candidate)
+            manifest = candidate.resolve(strict=True)
+        elif prefix == "timeout":
+            try:
+                timeout_seconds = int(value)
+            except ValueError as error:
+                raise ValidationError("publication mutation timeout must be an integer") from error
+            if timeout_seconds <= 0:
+                raise ValidationError("publication mutation timeout must be positive")
+        else:
+            raise ValidationError(
+                "publication-mutations targets must be verify-operators, all, "
+                "mutation:<id>, manifest:<repo-relative-path>, or timeout:<seconds>"
+            )
+    aggregate = [action for action in actions if action in {"verify-operators", "all"}]
+    mutations = [
+        action.removeprefix("mutation:")
+        for action in actions
+        if action.startswith("mutation:")
+    ]
+    if len(aggregate) > 1:
+        raise ValidationError("publication-mutations accepts only one aggregate action")
+    if aggregate and mutations:
+        raise ValidationError(
+            "publication-mutations cannot combine an aggregate and individual actions"
+        )
+    if not aggregate and not mutations:
+        raise ValidationError("publication-mutations requires an action target")
+    if len(set(mutations)) != len(mutations):
+        raise ValidationError("publication-mutations cannot repeat a mutation id")
+    command = [sys.executable, "scripts/run_publication_mutations.py"]
+    if manifest != default_manifest:
+        command.extend(["--manifest", relative_to_root(manifest)])
+    if ref:
+        command.extend(["--base-ref", ref])
+    if timeout_seconds != 600:
+        command.extend(["--timeout-seconds", str(timeout_seconds)])
+    if aggregate:
+        command.append(f"--{aggregate[0]}")
+    else:
+        for mutation in mutations:
+            command.extend(["--mutation", mutation])
+    command.append("--singleflight-worker")
+    return command, manifest
+
+
+def validator_spec(
+    kind: str,
+    targets: list[str],
+    ref: str | None,
+    state_root: Path,
+    output_format: str | None = None,
+    check: bool = False,
+) -> dict[str, Any]:
+    if kind not in ROSTER_VALIDATORS:
+        raise ValidationError(f"unknown validation class: {kind}")
+    if check and kind != "dependency-index":
+        raise ValidationError("--check is only valid for dependency-index validation")
+    if kind == "toolchain-cache":
+        if targets or ref:
+            raise ValidationError("toolchain-cache validation accepts no targets or ref arguments")
+        toolchain_path = ROOT / "lean-toolchain"
+        regular_file(toolchain_path, "Lean toolchain declaration")
+        toolchain = toolchain_path.read_text(encoding="utf-8").strip()
+        if not toolchain or any(character.isspace() for character in toolchain):
+            raise ValidationError("Lean toolchain declaration must contain one non-empty token")
+        command = ["elan", "run", toolchain, "lake", "exe", "cache", "get"]
+        authority_paths = [
+            toolchain_path,
+            ROOT / "lake-manifest.json",
+            ROOT / "lakefile.toml",
+        ]
+    elif kind == "lean":
+        if not targets:
+            raise ValidationError("lean validation requires at least one --target")
+        target_paths = [resolve_lean_target(target) for target in sorted(set(targets))]
+        command = [
+            sys.executable,
+            "scripts/lean_fast_build.py",
+            "--singleflight-worker",
+            "--jobs",
+            "2",
+            *sorted(set(targets)),
+        ]
+        authority_paths = [ROOT / "scripts/lean_fast_build.py", ROOT / "lean-toolchain", ROOT / "lake-manifest.json", ROOT / "lakefile.toml", *target_paths]
+    elif kind == "paper":
+        if targets or ref:
+            raise ValidationError("paper validation accepts no target or ref arguments")
+        corpus = ROOT / "docs/papers/corpus.json"
+        regular_file(corpus, "paper corpus")
+        try:
+            entries = json.loads(corpus.read_text(encoding="utf-8")).get("papers", [])
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValidationError("cannot parse paper corpus") from exc
+        sources = [ROOT / row["local_source"] for row in entries if isinstance(row, dict) and isinstance(row.get("local_source"), str)]
+        command = [
+            sys.executable,
+            "docs/papers/check_paper_corpus.py",
+            "--singleflight-worker",
+        ]
+        authority_paths = [ROOT / "docs/papers/check_paper_corpus.py", corpus, *sources]
+    elif kind == "release":
+        if targets:
+            raise ValidationError("release validation accepts no targets")
+        immutable_ref = ref or git_output("rev-parse", "HEAD").decode().strip()
+        commit = git_output("rev-parse", "--verify", f"{immutable_ref}^{{commit}}").decode().strip()
+        command = [
+            sys.executable,
+            "scripts/check_release_ref.py",
+            "--ref",
+            commit,
+            "--format",
+            "json",
+            "--singleflight-worker",
+        ]
+        authority_paths = [ROOT / "scripts/check_release_ref.py", ROOT / "scripts/check_release.py"]
+    elif kind == "reachable-history":
+        if ref or len(targets) != 1 or targets[0] not in {"check", "release-gate"}:
+            raise ValidationError(
+                "reachable-history validation requires exactly one --target: check or release-gate"
+            )
+        command = [
+            sys.executable,
+            "scripts/test_reachable_release_history.py",
+            f"--{targets[0]}",
+        ]
+        authority_paths = [
+            ROOT / "scripts/test_reachable_release_history.py",
+            ROOT / "scripts/audit_reachable_release_history.py",
+            ROOT / "docs/release/reachable-history-audit.json",
+        ]
+    elif kind == "historical":
+        if targets or ref:
+            raise ValidationError("historical validation accepts no target or ref arguments")
+        output_format = output_format or "card"
+        if output_format not in {"card", "json"}:
+            raise ValidationError("historical validation format must be card or json")
+        command = [sys.executable, "scripts/historical_bridge_experiment.py"]
+        if output_format == "json":
+            command.append("--compact")
+        command.append("--singleflight-worker")
+        authority_paths = [
+            ROOT / "scripts/historical_bridge_experiment.py",
+            ROOT / "scripts/proof_state_compiler.py",
+            ROOT / "lean-toolchain",
+            ROOT / "lake-manifest.json",
+            ROOT / "lakefile.toml",
+        ]
+    elif kind == "dogfood":
+        if len(targets) != 1 or ref:
+            raise ValidationError("dogfood validation requires exactly one query target and no ref")
+        query = targets[0]
+        if not query.strip():
+            raise ValidationError("dogfood validation requires a non-empty query")
+        output_format = output_format or "card"
+        if output_format not in {"card", "json"}:
+            raise ValidationError("dogfood validation format must be card or json")
+        command = [
+            sys.executable,
+            "scripts/dogfood_semantic_proof.py",
+            "--query",
+            query,
+            "--format",
+            output_format,
+            "--singleflight-worker",
+        ]
+        authority_paths = [
+            ROOT / "scripts/dogfood_semantic_proof.py",
+            ROOT / "scripts/query_corpus.py",
+            ROOT / "docs/claims.json",
+            ROOT / "docs/declaration_atlas.json",
+            ROOT / "docs/module_synopsis_index.json",
+            ROOT / "lean-toolchain",
+            ROOT / "lake-manifest.json",
+            ROOT / "lakefile.toml",
+        ]
+    elif kind == "dependency-index":
+        if targets or ref:
+            raise ValidationError("dependency-index validation accepts no targets or ref arguments")
+        command = [sys.executable, "scripts/build_lean_dependency_index.py"]
+        if check:
+            command.append("--check")
+        command.append("--singleflight-worker")
+        authority_paths = [
+            ROOT / "scripts/build_lean_dependency_index.py",
+            ROOT / "scripts/export_lean_dependency_edges.lean",
+            ROOT / "scripts/query_corpus.py",
+            ROOT / "docs/declaration_atlas.json",
+            ROOT / "docs/claims.json",
+            ROOT / "lean-toolchain",
+            ROOT / "lake-manifest.json",
+            ROOT / "lakefile.toml",
+        ]
+    elif kind == "publication-mutations":
+        command, manifest = publication_mutation_spec(targets, ref)
+        authority_paths = [
+            ROOT / "scripts/run_publication_mutations.py",
+            ROOT / "scripts/check_release.py",
+            manifest,
+        ]
+    elif kind == "palomar":
+        if ref or any(target not in {"run-assurance", "run-replay"} for target in targets):
+            raise ValidationError(
+                "palomar validation accepts only run-assurance and run-replay targets"
+            )
+        if len(set(targets)) != len(targets):
+            raise ValidationError("palomar validation cannot repeat a target")
+        command = [sys.executable, "scripts/check_palomar_qualification.py"]
+        for target in targets:
+            command.append(f"--{target}")
+        command.append("--singleflight-worker")
+        authority_paths = [
+            ROOT / "scripts/check_palomar_qualification.py",
+            ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json",
+            ROOT / "formalization.yaml",
+            ROOT / "comparator.json",
+            ROOT / "lean-toolchain",
+            ROOT / "lake-manifest.json",
+            ROOT / "scripts/verify-comparator.sh",
+            ROOT / "ErdosProblems/ExternalVerificationPortfolio/Challenge.lean",
+            ROOT / "ErdosProblems/ExternalVerificationPortfolio/Solution.lean",
+        ]
+    elif kind == "paper-render":
+        if targets or ref:
+            raise ValidationError("paper-render validation accepts no targets or ref")
+        command = [sys.executable, "scripts/render_paper.py", "--singleflight-worker"]
+        authority_paths = paper_render_source_paths()
+    else:  # comparator
+        if targets or ref:
+            raise ValidationError("comparator validation accepts no target or ref arguments")
+        command = ["bash", "scripts/verify-comparator.sh"]
+        authority_paths = list(COMPARATOR_REPLAY_AUTHORITY_PATHS)
+
+    if kind == "paper-render":
+        repository = worktree_fingerprint(
+            state_root,
+            excluded_paths=PAPER_RENDER_TRACKED_OUTPUTS,
+        )
+    else:
+        # Preserve the one-argument seam used by callers and focused tests that
+        # replace the generic repository fingerprint function.
+        repository = worktree_fingerprint(state_root)
+    inputs = {
+        "repository": repository,
+        "validation_class": kind,
+        "normalized_command": command,
+        "toolchain": {
+            "python": sys.version.split()[0],
+            "lean_toolchain": digest_file(ROOT / "lean-toolchain") if (ROOT / "lean-toolchain").is_file() else None,
+            "lake_manifest": digest_file(ROOT / "lake-manifest.json") if (ROOT / "lake-manifest.json").is_file() else None,
+        },
+        "relevant_sources": regular_digest_rows(authority_paths),
+    }
+    key = hashlib.sha256(canonical_json(inputs)).hexdigest()
+    return {"schema": SCHEMA, "key": key, "inputs": inputs, "command": command}
+
+
+def validate_specification(specification: dict[str, Any]) -> None:
+    """Reject forged or internally inconsistent requests before launch."""
+    if specification.get("schema") != SCHEMA:
+        raise ValidationError("validation specification has an invalid schema")
+    inputs = specification.get("inputs")
+    if not isinstance(inputs, dict):
+        raise ValidationError("validation specification has no input fingerprint")
+    kind = inputs.get("validation_class")
+    if kind not in ROSTER_VALIDATORS:
+        raise ValidationError("validation specification has an unknown validation class")
+    command = inputs.get("normalized_command")
+    if not isinstance(command, list) or specification.get("command") != command:
+        raise ValidationError("validation command does not match its input fingerprint")
+    key = specification.get("key")
+    expected = hashlib.sha256(canonical_json(inputs)).hexdigest()
+    if key != expected:
+        raise ValidationError("validation key does not match its input fingerprint")
+
+
+def process_identity(pid: int) -> dict[str, Any] | None:
+    try:
+        os.kill(pid, 0)
+    except OSError:
+        return None
+    token: str | None = None
+    stat_path = Path(f"/proc/{pid}/stat")
+    try:
+        fields = stat_path.read_text(encoding="utf-8").rsplit(")", 1)[1].split()
+        token = fields[19]  # Linux proc stat field 22, after the comm field.
+    except (OSError, IndexError):
+        try:
+            observed = subprocess.run(
+                ["ps", "-o", "lstart=", "-p", str(pid)],
+                capture_output=True,
+                text=True,
+                check=False,
+                env=command_environment(),
+                timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+        except (OSError, subprocess.TimeoutExpired):
+            # A missing or hung process-inspection helper must not escape the
+            # identity probe.  The absent token remains fail-closed for PID
+            # reuse checks and lets the caller apply its existing policy.
+            observed = None
+        if observed is not None and observed.returncode == 0 and observed.stdout.strip():
+            token = "ps-lstart:" + observed.stdout.strip()
+    try:
+        pgid = os.getpgid(pid)
+    except OSError:
+        return None
+    return {"pid": pid, "pgid": pgid, "start_token": token}
+
+
+def owner_is_live(owner: Any) -> bool:
+    if not isinstance(owner, dict) or not isinstance(owner.get("pid"), int):
+        return False
+    observed = process_identity(owner["pid"])
+    if observed is None:
+        return False
+    expected_token = owner.get("start_token")
+    # Missing identity is never reclaimed: it could be a reused PID on a host
+    # that cannot provide a stable start token.  A known token that differs is
+    # safe to reclaim because it proves PID reuse rather than liveness.
+    if not isinstance(expected_token, str) or not expected_token:
+        return True
+    observed_token = observed.get("start_token")
+    if not isinstance(observed_token, str) or not observed_token:
+        return True
+    return observed_token == expected_token
+
+
+def receipt_is_live(receipt: dict[str, Any]) -> bool:
+    if receipt.get("state") not in {"launching", "future", "running"}:
+        return False
+    if owner_is_live(receipt.get("owner")):
+        return True
+    # A crashed supervisor can leave its validator child alive.  Preserve the
+    # one-flight invariant conservatively instead of reclaiming the job while
+    # that PID/start identity still exists.
+    if owner_is_live(receipt.get("child")):
+        return True
+    if receipt.get("state") == "launching":
+        try:
+            age = time.time() - dt.datetime.fromisoformat(receipt["created_at"]).timestamp()
+        except (KeyError, TypeError, ValueError):
+            return False
+        return age < LAUNCH_GRACE_SECONDS
+    return False
+
+
+def terminate_process_group(process: subprocess.Popen[Any]) -> None:
+    """Stop a detached worker whose receipt could not be made trustworthy."""
+    try:
+        os.killpg(process.pid, signal.SIGTERM)
+    except (OSError, ProcessLookupError):
+        pass
+    try:
+        process.wait(timeout=1)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except (OSError, ProcessLookupError):
+            pass
+        try:
+            process.wait(timeout=1)
+        except subprocess.TimeoutExpired:
+            # SIGKILL has been delivered; let the worker publish its terminal
+            # timeout receipt even if reaping is delayed by the host.
+            pass
+
+
+def wait_for_worker(process: subprocess.Popen[Any]) -> tuple[int, bool]:
+    """Wait within the public worker bound and terminate a timed-out child."""
+    try:
+        return process.wait(timeout=DEFAULT_WORKER_TIMEOUT_SECONDS), False
+    except subprocess.TimeoutExpired:
+        terminate_process_group(process)
+        return WORKER_TIMEOUT_EXIT_CODE, True
+
+
+def publish_launch_failure(
+    state: dict[str, Path],
+    initial: dict[str, Any],
+    artifact: Path,
+    detail: str,
+) -> dict[str, Any]:
+    """Leave a terminal, environment-unavailable receipt after launch failure."""
+    stdout_path = safe_child(artifact, "stdout.log")
+    stderr_path = safe_child(artifact, "stderr.log")
+    atomic_write(stdout_path, b"")
+    atomic_write(stderr_path, f"validation environment unavailable: {detail}\n".encode("utf-8", errors="replace"))
+    terminal = {
+        **initial,
+        "state": "terminal",
+        "updated_at": utc_now(),
+        "completed_at": utc_now(),
+        "exit_code": 75,
+        "exit_state": "environment_unavailable",
+        "launch_error": detail,
+        "stdout": {"path": f"artifacts/{initial['key']}/stdout.log", "sha256": digest_file(stdout_path), "tail": bounded_tail(stdout_path)},
+        "stderr": {"path": f"artifacts/{initial['key']}/stderr.log", "sha256": digest_file(stderr_path), "tail": bounded_tail(stderr_path)},
+        "artifacts": [f"artifacts/{initial['key']}/stdout.log", f"artifacts/{initial['key']}/stderr.log"],
+        "validation_authority": ROSTER_VALIDATORS[initial["inputs"]["validation_class"]],
+    }
+    write_receipt(state, initial["key"], terminal)
+    return terminal
+
+
+def launch_worker(state: dict[str, Path], specification: dict[str, Any], previous: dict[str, Any] | None) -> dict[str, Any]:
+    validate_specification(specification)
+    key = specification["key"]
+    token = secrets.token_hex(16)
+    attempt = int(previous.get("attempt", 0)) + 1 if previous else 1
+    artifact = artifact_directory(state, key)
+    if artifact.exists() and artifact.is_symlink():
+        raise ValidationError("artifact root is a symbolic link")
+    secure_directory(artifact)
+    initial = {
+        **specification,
+        "state": "launching",
+        "attempt": attempt,
+        "created_at": utc_now(),
+        "updated_at": utc_now(),
+        "owner": None,
+        "child": None,
+        "launch_token": token,
+        "recovered_from": previous.get("owner") if previous else None,
+        "artifacts": [],
+    }
+    write_receipt(state, key, initial)
+    ready = safe_child(artifact, f"ready-{token}")
+    process: subprocess.Popen[Any] | None = None
+    try:
+        process = subprocess.Popen(
+            [sys.executable, str(Path(__file__).resolve()), "--state-root", str(state["root"]), "_worker", "--key", key, "--launch-token", token],
+            cwd=ROOT,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            start_new_session=True,
+            env=command_environment(),
+        )
+        owner = process_identity(process.pid)
+        if owner is None or owner.get("start_token") is None or owner.get("pgid") != owner.get("pid"):
+            terminate_process_group(process)
+            return publish_launch_failure(state, initial, artifact, "cannot establish a PID-reuse-resistant worker process group")
+        initial.update({"state": "future", "owner": owner, "updated_at": utc_now()})
+        write_receipt(state, key, initial)
+        atomic_write(ready, b"ready\n")
+        return initial
+    except (OSError, ValidationError) as exc:
+        if process is not None:
+            terminate_process_group(process)
+        return publish_launch_failure(state, initial, artifact, str(exc))
+
+
+def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
+    validate_specification(specification)
+    state = ensure_state_root(state_root)
+    key = specification["key"]
+    lock = open_lock(safe_child(state["locks"], f"{key}.lock"))
+    try:
+        existing = load_receipt(state, key)
+        if existing is not None and existing.get("state") == "terminal":
+            existing["reuse"] = "terminal"
+            return existing
+        if existing is not None and receipt_is_live(existing):
+            existing["reuse"] = "future"
+            return existing
+        return launch_worker(state, specification, existing)
+    finally:
+        fcntl.flock(lock, fcntl.LOCK_UN)
+        os.close(lock)
+
+
+def worker(state_root: Path, key: str, token: str) -> int:
+    state = ensure_state_root(state_root)
+    artifact = artifact_directory(state, key)
+    ready = safe_child(artifact, f"ready-{token}")
+    deadline = time.monotonic() + LAUNCH_GRACE_SECONDS
+    while not ready.exists() and time.monotonic() < deadline:
+        time.sleep(0.02)
+    if not ready.exists():
+        return 75
+    receipt = load_receipt(state, key)
+    owner = process_identity(os.getpid())
+    if (
+        receipt is None
+        or receipt.get("launch_token") != token
+        or receipt.get("owner") != owner
+        or owner is None
+        or owner.get("pgid") != owner.get("pid")
+    ):
+        return 75
+    stdout_path = safe_child(artifact, "stdout.log")
+    stderr_path = safe_child(artifact, "stderr.log")
+    receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
+    write_receipt(state, key, receipt)
+    started = utc_now()
+    timed_out = False
+    try:
+        with open_output_log(stdout_path) as stdout, open_output_log(stderr_path) as stderr:
+            child = subprocess.Popen(
+                receipt["command"],
+                cwd=ROOT,
+                stdout=stdout,
+                stderr=stderr,
+                # Keep timeout cleanup scoped to the validator child rather
+                # than the detached worker that owns the receipt.
+                start_new_session=True,
+                env=command_environment(),
+            )
+            receipt["child"] = process_identity(child.pid)
+            receipt["updated_at"] = utc_now()
+            write_receipt(state, key, receipt)
+            code, timed_out = wait_for_worker(child)
+            if timed_out:
+                stderr.write(
+                    f"validation worker timed out after {DEFAULT_WORKER_TIMEOUT_SECONDS} seconds\n".encode()
+                )
+    except OSError as exc:
+        code = 75
+        stderr_path.write_text(f"validation environment unavailable: {exc}\n", encoding="utf-8")
+        stdout_path.touch(exist_ok=True)
+    terminal = {
+        **receipt,
+        "state": "terminal",
+        "updated_at": utc_now(),
+        "completed_at": utc_now(),
+        "started_at": started,
+        "exit_code": code,
+        "exit_state": (
+            "timeout"
+            if timed_out
+            else ("passed" if code == 0 else ("environment_unavailable" if code == 75 else "failed"))
+        ),
+        "stdout": {"path": f"artifacts/{key}/stdout.log", "sha256": digest_file(stdout_path), "tail": bounded_tail(stdout_path)},
+        "stderr": {"path": f"artifacts/{key}/stderr.log", "sha256": digest_file(stderr_path), "tail": bounded_tail(stderr_path)},
+        "artifacts": [f"artifacts/{key}/stdout.log", f"artifacts/{key}/stderr.log"],
+        "validation_authority": ROSTER_VALIDATORS[receipt["inputs"]["validation_class"]],
+    }
+    write_receipt(state, key, terminal)
+    return code
+
+
+def status(state_root: Path, key: str) -> dict[str, Any]:
+    state = ensure_state_root(state_root)
+    receipt = load_receipt(state, key)
+    if receipt is None:
+        raise ValidationError(f"unknown validation key: {key}")
+    receipt["live"] = receipt_is_live(receipt)
+    return receipt
+
+
+def collect(state_root: Path, key: str, wait: bool, timeout_seconds: float) -> tuple[dict[str, Any], int]:
+    deadline = time.monotonic() + timeout_seconds
+    while True:
+        receipt = status(state_root, key)
+        if receipt.get("state") == "terminal":
+            return receipt, int(receipt["exit_code"])
+        if not wait:
+            return receipt, 75
+        if time.monotonic() >= deadline:
+            receipt["collect_timeout"] = True
+            return receipt, 75
+        time.sleep(0.05)
+
+
+def tree_usage(path: Path) -> tuple[int, int]:
+    bytes_used = 0
+    inodes = 0
+    for current, directories, files in os.walk(path, followlinks=False):
+        current_path = Path(current)
+        if current_path.is_symlink():
+            raise ValidationError("state tree contains a symbolic-link directory")
+        for name in [*directories, *files]:
+            node = current_path / name
+            mode = node.lstat().st_mode
+            if stat.S_ISLNK(mode):
+                raise ValidationError("state tree contains a symbolic link")
+            inodes += 1
+            if stat.S_ISREG(mode):
+                bytes_used += node.stat().st_size
+    return bytes_used, inodes
+
+
+def remove_tree(path: Path) -> None:
+    if not os.path.lexists(path):
+        return
+    tree_usage(path)  # rejects links before deletion
+    shutil.rmtree(path)
+
+
+def cleanup(state_root: Path, ttl_seconds: float, max_bytes: int, max_inodes: int, recent_seconds: float) -> dict[str, Any]:
+    state = ensure_state_root(state_root)
+    lock = open_lock(safe_child(state["locks"], "cleanup.lock"))
+    try:
+        terminal: list[tuple[float, str, dict[str, Any]]] = []
+        skipped_live: list[str] = []
+        recovered_dead: list[str] = []
+        for path in sorted(state["jobs"].glob("*.json")):
+            regular_file(path, "receipt")
+            key = path.stem
+            receipt = load_receipt(state, key)
+            if receipt is None:
+                continue
+            if receipt.get("state") != "terminal":
+                if receipt_is_live(receipt):
+                    skipped_live.append(key)
+                    continue
+                # A killed supervisor used to leave a permanent `running`
+                # receipt. Recheck under the per-job lock before converting
+                # it to a terminal environment failure, so cleanup cannot
+                # race a submitter or a worker publishing completion.
+                job_lock = open_lock(safe_child(state["locks"], f"{key}.lock"))
+                try:
+                    current = load_receipt(state, key)
+                    if current is None:
+                        continue
+                    if current.get("state") != "terminal" and receipt_is_live(current):
+                        skipped_live.append(key)
+                        continue
+                    if current.get("state") != "terminal":
+                        previous_state = current.get("state")
+                        current.update(
+                            {
+                                "state": "terminal",
+                                "updated_at": utc_now(),
+                                "completed_at": utc_now(),
+                                "exit_code": 75,
+                                "exit_state": "environment_unavailable",
+                                "recovered_from": previous_state,
+                                "recovery_reason": "owner_and_child_not_live_during_cleanup",
+                            }
+                        )
+                        write_receipt(state, key, current)
+                        recovered_dead.append(key)
+                    receipt = current
+                finally:
+                    fcntl.flock(job_lock, fcntl.LOCK_UN)
+                    os.close(job_lock)
+            completed = receipt.get("completed_at") or receipt.get("updated_at") or receipt.get("created_at")
+            try:
+                stamp = dt.datetime.fromisoformat(completed).timestamp()
+            except (TypeError, ValueError):
+                stamp = path.stat().st_mtime
+            terminal.append((stamp, key, receipt))
+        bytes_used, inodes = tree_usage(state["root"])
+        now = time.time()
+        removed: list[str] = []
+        for stamp, key, _receipt in sorted(terminal):
+            old_enough = now - stamp >= ttl_seconds
+            pressured = bytes_used > max_bytes or inodes > max_inodes
+            if not old_enough and not pressured:
+                continue
+            if now - stamp < recent_seconds:
+                continue
+            job = receipt_path(state, key)
+            artifact = artifact_directory(state, key)
+            job.unlink(missing_ok=True)
+            remove_tree(artifact)
+            removed.append(key)
+            bytes_used, inodes = tree_usage(state["root"])
+        return {
+            "schema": SCHEMA,
+            "removed": removed,
+            "recovered_dead": recovered_dead,
+            "skipped_live": skipped_live,
+            "bytes": bytes_used,
+            "inodes": inodes,
+        }
+    finally:
+        fcntl.flock(lock, fcntl.LOCK_UN)
+        os.close(lock)
+
+
+def parse_key(value: str) -> str:
+    if len(value) != 64 or any(character not in "0123456789abcdef" for character in value):
+        raise argparse.ArgumentTypeError("key must be a lowercase SHA-256 hex digest")
+    return value
+
+
+def emit(value: dict[str, Any]) -> None:
+    print(json.dumps(value, indent=2, sort_keys=True))
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--state-root", type=Path, default=DEFAULT_STATE_ROOT, help="local cache/receipt root; untracked and safe to delete through cleanup")
+    commands = parser.add_subparsers(dest="action", required=True)
+    submit_parser = commands.add_parser("submit", help="start or share a detached validation future")
+    submit_parser.add_argument("--class", dest="kind", choices=tuple(ROSTER_VALIDATORS), required=True)
+    submit_parser.add_argument("--target", action="append", default=[])
+    submit_parser.add_argument("--ref")
+    submit_parser.add_argument("--format", dest="output_format", choices=("card", "json"))
+    submit_parser.add_argument("--check", action="store_true", help="check generated output instead of replacing it")
+    for name in ("status", "collect"):
+        child = commands.add_parser(name, help=f"read a validation receipt{' or explicitly wait' if name == 'collect' else ''}")
+        child.add_argument("--key", type=parse_key, required=True)
+        if name == "collect":
+            child.add_argument("--wait", action="store_true")
+            child.add_argument(
+                "--timeout-seconds",
+                type=float,
+                default=DEFAULT_COLLECT_TIMEOUT_SECONDS,
+            )
+    clean = commands.add_parser("cleanup", help="remove only terminal stale cache trees under explicit budgets")
+    clean.add_argument("--ttl-seconds", type=float, default=DEFAULT_TTL_SECONDS)
+    clean.add_argument("--max-bytes", type=int, default=DEFAULT_MAX_BYTES)
+    clean.add_argument("--max-inodes", type=int, default=DEFAULT_MAX_INODES)
+    clean.add_argument("--recent-seconds", type=float, default=DEFAULT_RECENT_SECONDS)
+    worker_parser = commands.add_parser("_worker", help=argparse.SUPPRESS)
+    worker_parser.add_argument("--key", type=parse_key, required=True)
+    worker_parser.add_argument("--launch-token", required=True)
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    try:
+        if args.action == "submit":
+            receipt = submit(
+                validator_spec(
+                    args.kind,
+                    args.target,
+                    args.ref,
+                    args.state_root,
+                    args.output_format,
+                    args.check,
+                ),
+                args.state_root,
+            )
+            emit(receipt)
+            return 0
+        if args.action == "status":
+            emit(status(args.state_root, args.key))
+            return 0
+        if args.action == "collect":
+            receipt, code = collect(args.state_root, args.key, args.wait, args.timeout_seconds)
+            emit(receipt)
+            return code
+        if args.action == "cleanup":
+            emit(cleanup(args.state_root, args.ttl_seconds, args.max_bytes, args.max_inodes, args.recent_seconds))
+            return 0
+        if args.action == "_worker":
+            return worker(args.state_root, args.key, args.launch_token)
+    except ValidationError as exc:
+        print(f"validation-singleflight: {exc}", file=sys.stderr)
+        return 2
+    raise AssertionError(f"unknown action {args.action}")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

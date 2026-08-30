@@ -1,0 +1,71 @@
+{
+  "schema": "public-repository-identity/1",
+  "current": {
+    "owner": "wcook04",
+    "slug": "plectis-lean-erdos249-257",
+    "origin": "https://github.com/wcook04/plectis-lean-erdos249-257",
+    "activation_state": "current_until_operator_approved_external_rename"
+  },
+  "contracts": {
+    "current_submission_schema": "research-return-receipt/1",
+    "current_schema_path": "docs/research-commons/schema/research-return-receipt.schema.json",
+    "post_rename_submission_schema": "research-return-receipt/2",
+    "post_rename_schema_path": "docs/research-commons/schema/research-return-receipt-v2.schema.json"
+  },
+  "historical_receipt_contracts": [
+    {
+      "schema_value": "research-return-receipt/1",
+      "origin": "https://github.com/wcook04/plectis-lean-erdos249-257",
+      "schema_id": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research-commons/schema/research-return-receipt.schema.json",
+      "schema_path": "docs/research-commons/schema/research-return-receipt.schema.json"
+    }
+  ],
+  "protected_identity_globs": [
+    "docs/research-commons/returns/*.json",
+    "docs/research-commons/schema/research-return-receipt.schema.json",
+    "Erdos249257.lean",
+    "ErdosProblems.lean",
+    "lakefile.lean",
+    "lake-manifest.json",
+    "lean-toolchain",
+    "paper/*.tex",
+    "paper/*.sty",
+    "*.pdf",
+    "docs/papers/**",
+    "CITATION.cff"
+  ],
+  "generated_owner_fan_in": [
+    {
+      "owner": "scripts/build_research_contributions.py",
+      "inputs": ["docs/research-commons/returns/*.json", "docs/repository_identity.json"],
+      "outputs": ["docs/research-commons/contributions.json", "docs/research-commons/CONTRIBUTIONS.md"]
+    },
+    {
+      "owner": "scripts/build_corpus_descriptor.py",
+      "inputs": ["docs/claims.json", "docs/papers/corpus.json"],
+      "outputs": ["docs/corpus_descriptor.json"]
+    },
+    {
+      "owner": "scripts/build_problem_index.py",
+      "inputs": ["docs/problem_index_source.json"],
+      "outputs": ["docs/problems.json"]
+    },
+    {
+      "owner": "scripts/publication_contract.py",
+      "inputs": ["docs/publication_entry_source.json", "docs/papers/corpus.json"],
+      "outputs": ["docs/publication_contract.json", "docs/publication_entry_packet.json"]
+    }
+  ],
+  "external_activation_classes": [
+    "github_repository_owner_and_slug",
+    "git_remote_origin",
+    "release_and_tag_urls",
+    "citation_and_registration_records",
+    "archival_or_package_registrations"
+  ],
+  "approval": {
+    "operator_required": true,
+    "availability_check_authorized": false,
+    "external_mutation_authorized": false
+  }
+}

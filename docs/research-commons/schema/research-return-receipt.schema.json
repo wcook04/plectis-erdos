@@ -1,0 +1,414 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research-commons/schema/research-return-receipt.schema.json",
+  "title": "Plectis research return and accepted artifact receipt",
+  "description": "Provider-neutral contract for submitted research returns and accepted artifact attribution. It records review and delivery state but never replaces proof, claim, or release authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "record_kind",
+    "return_id",
+    "submitted_at",
+    "identity",
+    "repository",
+    "frontier",
+    "result",
+    "evidence",
+    "review",
+    "attribution",
+    "safety"
+  ],
+  "properties": {
+    "schema": {"const": "research-return-receipt/1"},
+    "record_kind": {
+      "enum": ["submitted_return", "accepted_receipt", "validation_fixture"]
+    },
+    "return_id": {
+      "type": "string",
+      "pattern": "^rr-[a-z0-9][a-z0-9-]{2,80}$"
+    },
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "identity": {"$ref": "#/$defs/identity"},
+    "repository": {"$ref": "#/$defs/repository"},
+    "frontier": {"$ref": "#/$defs/frontier"},
+    "result": {"$ref": "#/$defs/result"},
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/evidence"}
+    },
+    "review": {"$ref": "#/$defs/review"},
+    "attribution": {"$ref": "#/$defs/attribution"},
+    "safety": {"$ref": "#/$defs/safety"},
+    "correction_lineage": {"$ref": "#/$defs/correctionLineage"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["result"],
+        "properties": {
+          "result": {
+            "required": ["class"],
+            "properties": {"class": {"const": "corrective"}}
+          }
+        }
+      },
+      "then": {"required": ["correction_lineage"]},
+      "else": {"not": {"required": ["correction_lineage"]}}
+    }
+  ],
+  "$defs": {
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "nullableCommit": {
+      "oneOf": [{"$ref": "#/$defs/commit"}, {"type": "null"}]
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "person": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "handle": {"type": ["string", "null"]},
+        "identifiers": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "operator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relationship", "name"],
+      "properties": {
+        "relationship": {
+          "enum": ["same_as_contributor", "named", "undisclosed"]
+        },
+        "name": {"type": ["string", "null"]}
+      }
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["not_used", "undisclosed", "disclosed"]},
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "resources": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "collaborator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "role": {"type": "string", "minLength": 1}
+      }
+    },
+    "identity": {
+      "type": "object",
+      "description": "Identity records the submitting contributor, the release operator relationship, model or provider disclosure, and any material collaborators. It does not transfer authorship of pre-existing corpus material.",
+      "additionalProperties": false,
+      "required": ["contributor", "operator", "material_collaborators"],
+      "properties": {
+        "contributor": {"$ref": "#/$defs/person"},
+        "operator": {"$ref": "#/$defs/operator"},
+        "model_system": {"$ref": "#/$defs/disclosure"},
+        "provider": {"$ref": "#/$defs/disclosure"},
+        "material_collaborators": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/collaborator"}
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "starting_commit",
+        "proposed_commit",
+        "accepted_commit",
+        "changed_paths"
+      ],
+      "properties": {
+        "origin": {"const": "https://github.com/wcook04/plectis-lean-erdos249-257"},
+        "starting_commit": {"$ref": "#/$defs/commit"},
+        "proposed_commit": {"$ref": "#/$defs/nullableCommit"},
+        "accepted_commit": {"$ref": "#/$defs/nullableCommit"},
+        "changed_paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/relativePath"}
+        }
+      }
+    },
+    "frontier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "problem",
+        "handle",
+        "bounded_question",
+        "stop_condition",
+        "starting_paths"
+      ],
+      "properties": {
+        "problem": {"enum": [68, 243, 249, 251, 257, 269, 1041, 1049]},
+        "handle": {"type": "string", "minLength": 1},
+        "bounded_question": {"type": "string", "minLength": 1},
+        "stop_condition": {"type": "string", "minLength": 1},
+        "starting_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/relativePath"}
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "class",
+        "summary",
+        "claim_ceiling",
+        "surviving_boundary",
+        "limitations",
+        "requested_disposition"
+      ],
+      "properties": {
+        "class": {
+          "enum": ["checked_positive", "negative", "inconclusive", "corrective"]
+        },
+        "summary": {"type": "string", "minLength": 1},
+        "claim_ceiling": {
+          "enum": [
+            "formalized_proposition",
+            "verified_finite_instance",
+            "conditional_reduction",
+            "documentation_correction",
+            "negative_for_bounded_route",
+            "inconclusive_attempt",
+            "cited_only",
+            "open"
+          ]
+        },
+        "surviving_boundary": {"type": "string", "minLength": 1},
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "requested_disposition": {
+          "enum": [
+            "accept_handoff",
+            "review_correction",
+            "consider_problem_proposition",
+            "consider_core_promotion",
+            "no_promotion"
+          ]
+        }
+      }
+    },
+    "correctionLineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prior_return_reference",
+        "affected_paths",
+        "starting_commit",
+        "changed_evidence_or_wording",
+        "reason",
+        "disposition"
+      ],
+      "properties": {
+        "prior_return_reference": {"type": "string", "minLength": 1},
+        "affected_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/relativePath"}
+        },
+        "starting_commit": {"$ref": "#/$defs/commit"},
+        "changed_evidence_or_wording": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1},
+        "disposition": {
+          "enum": ["retain", "supersede", "withdraw", "request_review"]
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "exit_state",
+        "exit_code",
+        "observed",
+        "environment",
+        "artifacts",
+        "replay_state"
+      ],
+      "properties": {
+        "command": {"type": "string", "minLength": 1},
+        "exit_state": {"enum": ["passed", "failed", "not_run"]},
+        "exit_code": {"type": ["integer", "null"]},
+        "observed": {"type": "string", "minLength": 1},
+        "environment": {"type": "string", "minLength": 1},
+        "artifacts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/relativePath"}
+        },
+        "replay_state": {
+          "enum": ["reproduced", "not_reproduced", "not_applicable", "pending"]
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "reviewer", "decided_at", "authority_ref", "notes"],
+      "properties": {
+        "state": {"type": "string", "minLength": 1},
+        "reviewer": {"type": ["string", "null"]},
+        "decided_at": {"type": ["string", "null"], "format": "date-time"},
+        "authority_ref": {"type": ["string", "null"]},
+        "notes": {"type": "string"}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "structural_validation",
+        "reproduction",
+        "mathematical_review",
+        "claim_boundary_review",
+        "accepted_handoff",
+        "problem_owned_proposition",
+        "core_promotion",
+        "tagged_release_inclusion"
+      ],
+      "properties": {
+        "structural_validation": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["pending", "valid", "invalid"]}}}
+          ]
+        },
+        "reproduction": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["pending", "reproduced", "not_reproduced", "not_required"]}}}
+          ]
+        },
+        "mathematical_review": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["pending", "approved", "rejected", "not_required"]}}}
+          ]
+        },
+        "claim_boundary_review": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["pending", "approved", "rejected", "not_required"]}}}
+          ]
+        },
+        "accepted_handoff": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["pending", "accepted", "rejected"]}}}
+          ]
+        },
+        "problem_owned_proposition": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["not_requested", "pending", "accepted", "rejected"]}}}
+          ]
+        },
+        "core_promotion": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["not_requested", "pending", "accepted", "rejected"]}}}
+          ]
+        },
+        "tagged_release_inclusion": {
+          "allOf": [
+            {"$ref": "#/$defs/decision"},
+            {"properties": {"state": {"enum": ["not_requested", "pending", "included", "rejected"]}}}
+          ]
+        }
+      }
+    },
+    "credit": {
+      "type": "object",
+      "description": "Credit names a person and the repository-relative artifact paths they actually returned or materially supplied.",
+      "additionalProperties": false,
+      "required": ["name", "artifact_paths"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "artifact_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/relativePath"}
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "description": "Attribution distinguishes contributor-supplied artifacts from the pre-existing corpus and records the requested public display without changing claim or release authority.",
+      "additionalProperties": false,
+      "required": [
+        "artifact_credit",
+        "requested_display",
+        "existing_corpus_authorship_preserved"
+      ],
+      "properties": {
+        "artifact_credit": {
+          "description": "Use one entry per credited person or materially distinct contribution, with only the repository-relative paths that person actually returned or supplied.",
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/credit"}
+        },
+        "requested_display": {
+          "description": "Requested public wording for artifact credit; keep it narrower than any claim of discovery, proof, review, or ownership.",
+          "type": "string",
+          "minLength": 1
+        },
+        "existing_corpus_authorship_preserved": {
+          "description": "This invariant keeps pre-existing corpus authorship, provenance, and file notices distinct from the returned artifact.",
+          "const": true
+        }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "private_material_removed",
+        "credentials_removed",
+        "evidence_truthfully_reported",
+        "no_claim_overreach"
+      ],
+      "properties": {
+        "private_material_removed": {"const": true},
+        "credentials_removed": {"const": true},
+        "evidence_truthfully_reported": {"const": true},
+        "no_claim_overreach": {"const": true}
+      }
+    }
+  }
+}
