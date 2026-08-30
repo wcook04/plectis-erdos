@@ -915,7 +915,7 @@ def build_parser(root: Path) -> argparse.ArgumentParser:
     p_open = sub.add_parser("open")
     p_open.add_argument("--session", required=True)
     p_open.add_argument("--intent", required=True)
-    p_open.add_argument("--actor", default="unnamed_agent")
+    p_open.add_argument("--actor", default=None)
     p_open.set_defaults(func=cmd_open)
 
     p_note = sub.add_parser("note")

@@ -73,7 +73,15 @@ def check_replay_path_boundary(tmp: Path) -> None:
     parser = workbench.build_parser(workbench.repo_root())
     _run(
         sessions_root,
-        ["open", "--session", "replay", "--intent", "replay path boundary"],
+        [
+            "open",
+            "--session",
+            "replay",
+            "--actor",
+            "outsider:replay",
+            "--intent",
+            "replay path boundary",
+        ],
     )
     source = "-- redirected replay bytes\n"
     outside = tmp / "replay-outside.lean"
@@ -1071,6 +1079,22 @@ def check_session_lifecycle(sessions_root: Path) -> None:
             [
                 "open",
                 "--session",
+                "omitted-actor",
+                "--intent",
+                "identity boundary",
+            ],
+        )
+    except SystemExit as error:
+        if "actor" not in str(error):
+            raise AssertionError(f"omitted actor lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted a session without explicit actor identity")
+    try:
+        _run(
+            sessions_root,
+            [
+                "open",
+                "--session",
                 "blank-actor",
                 "--actor",
                 " ",
@@ -1085,7 +1109,15 @@ def check_session_lifecycle(sessions_root: Path) -> None:
         raise AssertionError("workbench accepted whitespace-only actor identity")
     _run(
         sessions_root,
-        ["open", "--session", "blank-note", "--intent", "advisory note"],
+        [
+            "open",
+            "--session",
+            "blank-note",
+            "--actor",
+            "human:test",
+            "--intent",
+            "advisory note",
+        ],
     )
     try:
         _run(
@@ -1112,6 +1144,8 @@ def check_session_lifecycle(sessions_root: Path) -> None:
                 "open",
                 "--session",
                 "blank-intent",
+                "--actor",
+                "human:test",
                 "--intent",
                 " ",
             ],
@@ -1123,7 +1157,15 @@ def check_session_lifecycle(sessions_root: Path) -> None:
         raise AssertionError("workbench accepted whitespace-only session intent")
     _run(
         sessions_root,
-        ["open", "--session", "blank-summary", "--intent", "closure summary"],
+        [
+            "open",
+            "--session",
+            "blank-summary",
+            "--actor",
+            "human:test",
+            "--intent",
+            "closure summary",
+        ],
     )
     try:
         _run(
@@ -1149,6 +1191,8 @@ def check_session_lifecycle(sessions_root: Path) -> None:
             "open",
             "--session",
             "unverified-established",
+            "--actor",
+            "human:test",
             "--intent",
             "establishment evidence",
         ],
