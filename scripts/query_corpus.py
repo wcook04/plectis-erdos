@@ -6952,6 +6952,12 @@ def _route_memory_resume_commands(route_memory: Any) -> list[str]:
     is a reader-facing continuation surface, so preserve both shapes without
     inventing commands for unbound route memory.
     """
+    if isinstance(route_memory, str):
+        return (
+            [route_memory]
+            if route_memory.startswith("python3 scripts/query_route_memory.py")
+            else []
+        )
     if not isinstance(route_memory, dict):
         return []
     commands: list[str] = []
@@ -7224,10 +7230,13 @@ def render_card(packet: dict[str, Any]) -> str:
                 f" | research_results={strongest.get('result_count', 0)}"
                 f" | research_frontier={research['files']['frontier']['path']}"
             )
-        return (
+        card = (
             f"problem {route['id']} | #{route['erdos_number']} | {route['status']}"
             f" | modules={route['module_count']} | note={route['note']['artifact_id']}"
             f"{research_summary}"
+        )
+        return _append_route_memory_resumes(
+            card, route.get("follow", {}).get("route_memory")
         )
     if kind == "publication_family":
         family = packet["family"]

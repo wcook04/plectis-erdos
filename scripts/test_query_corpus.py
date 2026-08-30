@@ -222,6 +222,10 @@ def validate_indexed_problem_routes() -> None:
         card = run("--route", route_id, "--format", "card")
         assert card.returncode == 0
         assert card.stdout.startswith(f"problem {route_id} |")
+        assert (
+            f"| resume=python3 scripts/query_route_memory.py --problem "
+            f"{problem['erdos_number']}"
+        ) in card.stdout
 
 
 def validate_research_corpus_fingerprint() -> None:
