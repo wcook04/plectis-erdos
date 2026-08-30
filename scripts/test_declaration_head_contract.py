@@ -23,11 +23,19 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
+import tempfile
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep atlas trust-boundary assertions active under ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
 
 
 def load_builder():
@@ -60,7 +68,7 @@ def wrapped_source_heads(builder) -> list[tuple[str, int, str]]:
     wrapped = []
     for path in builder.source_paths():
         rel = path.relative_to(ROOT).as_posix()
-        lines = path.read_text(encoding="utf-8").splitlines()
+        lines = builder.safe_atlas_text(path).splitlines()
         is_code = builder.code_lines(lines)
         for index in range(len(lines)):
             if not is_code[index] or builder.DECL_RE.match(lines[index]):
@@ -179,11 +187,81 @@ def check_fixtures(builder) -> int:
     return len(accepted) + len(rejected) + 2
 
 
+def check_file_boundary(builder) -> int:
+    """Reject substituted, special, and symlinked atlas files before mutation."""
+    with tempfile.TemporaryDirectory(prefix="declaration-atlas-safety-") as directory:
+        workspace = Path(directory)
+        regular = workspace / "regular.lean"
+        regular.write_text("theorem safe : True := trivial\n", encoding="utf-8")
+        require(
+            builder.safe_atlas_text(regular, root=workspace).startswith("theorem safe"),
+            "regular atlas input was not read through the safe descriptor",
+        )
+
+        linked = workspace / "linked.lean"
+        linked.symlink_to(regular)
+        try:
+            builder.safe_atlas_text(linked, root=workspace)
+        except builder.UnsafeAtlasPath:
+            pass
+        else:
+            raise AssertionError("atlas input followed a symbolic link")
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "input.fifo"
+            os.mkfifo(fifo)
+            try:
+                builder.safe_atlas_text(fifo, root=workspace)
+            except builder.UnsafeAtlasPath:
+                pass
+            else:
+                raise AssertionError("atlas input accepted a special file")
+
+        output = workspace / "atlas.json"
+        builder.safe_atlas_output_text(output, '{"safe":true}\n', root=workspace)
+        require(
+            output.read_text(encoding="utf-8") == '{"safe":true}\n',
+            "regular atlas output was not written through the safe descriptor",
+        )
+
+        private = workspace / "private.json"
+        private.write_text('{"private":true}\n', encoding="utf-8")
+        output_link = workspace / "linked-output.json"
+        output_link.symlink_to(private)
+        try:
+            builder.safe_atlas_output_text(
+                output_link, '{"public":true}\n', root=workspace
+            )
+        except builder.UnsafeAtlasPath:
+            pass
+        else:
+            raise AssertionError("atlas output followed a final-component symlink")
+        require(
+            private.read_text(encoding="utf-8") == '{"private":true}\n',
+            "atlas output symlink target was modified",
+        )
+
+        if hasattr(os, "mkfifo"):
+            output_fifo = workspace / "output.fifo"
+            os.mkfifo(output_fifo)
+            try:
+                builder.safe_atlas_output_text(
+                    output_fifo, '{"blocked":true}\n', root=workspace
+                )
+            except builder.UnsafeAtlasPath:
+                pass
+            else:
+                raise AssertionError("atlas output accepted a special file")
+
+    return 6
+
+
 def main() -> int:
     builder = load_builder()
     fixture_count = check_fixtures(builder)
+    boundary_count = check_file_boundary(builder)
 
-    atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
+    atlas = json.loads(builder.safe_atlas_text(ATLAS))
     indexed = {
         (str(row["module"]), int(row["line"]), str(row["name"]))
         for row in atlas["declarations"]
@@ -199,7 +277,7 @@ def main() -> int:
     # The line-at-a-time matcher that dropped them must still fail on them, or
     # this contract is no longer testing anything.
     for module, line, name in wrapped:
-        source_line = (ROOT / module).read_text(encoding="utf-8").splitlines()[line - 1]
+        source_line = builder.safe_atlas_text(ROOT / module).splitlines()[line - 1]
         assert not builder.DECL_RE.match(source_line), (
             f"{module}:{line}:{name} is no longer a wrapped head; "
             "repoint this contract at a declaration whose name still wraps"
@@ -222,7 +300,7 @@ def main() -> int:
 
     print(
         "test_declaration_head_contract: "
-        f"{fixture_count} head fixtures pinned; "
+        f"{fixture_count} head fixtures and {boundary_count} file-boundary checks pinned; "
         f"{len(wrapped)} wrapped declaration(s) resolve in the atlas "
         f"({', '.join(f'{module}:{line}' for module, line, _ in wrapped)}); "
         "prime and `?` identifier tails intact"

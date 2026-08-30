@@ -13,7 +13,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
 import sys
 from collections import Counter
 from pathlib import Path
@@ -49,6 +51,111 @@ IMPORT_RE = re.compile(
     rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
     re.M,
 )
+
+
+class UnsafeAtlasPath(ValueError):
+    """A declaration-atlas input or output is outside the safe file boundary."""
+
+
+def safe_atlas_input_path(path: Path, root: Path = ROOT) -> Path:
+    """Resolve an atlas input without following checkout links or special files."""
+    candidate = Path(os.path.abspath(path))
+    root = Path(os.path.abspath(root))
+    if candidate != root and root not in candidate.parents:
+        raise UnsafeAtlasPath(f"atlas input escaped checkout: {candidate}")
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeAtlasPath(f"symlinked atlas input: {candidate}")
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeAtlasPath(f"atlas input escaped checkout: {candidate}")
+        current = current.parent
+    if not candidate.is_file():
+        raise UnsafeAtlasPath(f"atlas input is not a regular file: {candidate}")
+    return candidate
+
+
+def safe_atlas_text(path: Path, root: Path = ROOT) -> str:
+    """Read an atlas input through a no-follow regular-file descriptor."""
+    candidate = safe_atlas_input_path(path, root=root)
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeAtlasPath(f"atlas input could not be opened safely: {candidate}") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeAtlasPath(f"atlas input is not a regular file: {candidate}")
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+    except OSError as exc:
+        raise UnsafeAtlasPath(f"atlas input could not be read safely: {candidate}") from exc
+    finally:
+        os.close(descriptor)
+    try:
+        return b"".join(chunks).decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise UnsafeAtlasPath(f"atlas input is not UTF-8: {candidate}") from exc
+
+
+def safe_atlas_output_path(path: Path, root: Path = ROOT) -> Path:
+    """Resolve a generated atlas output without following parent symlinks."""
+    candidate = Path(os.path.abspath(path))
+    root = Path(os.path.abspath(root))
+    if candidate != root and root not in candidate.parents:
+        raise UnsafeAtlasPath(f"atlas output escaped checkout: {candidate}")
+    current = candidate.parent
+    while True:
+        if current.is_symlink():
+            raise UnsafeAtlasPath(f"symlinked atlas output parent: {candidate}")
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeAtlasPath(f"atlas output escaped checkout: {candidate}")
+        current = current.parent
+    return candidate
+
+
+def safe_atlas_output_text(path: Path, content: str, root: Path = ROOT) -> None:
+    """Write generated atlas content through a no-follow regular-file descriptor."""
+    candidate = safe_atlas_output_path(path, root=root)
+    flags = (
+        os.O_WRONLY
+        | os.O_CREAT
+        | os.O_TRUNC
+        | getattr(os, "O_CLOEXEC", 0)
+        | getattr(os, "O_NONBLOCK", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
+    try:
+        descriptor = os.open(candidate, flags, 0o644)
+    except OSError as exc:
+        raise UnsafeAtlasPath(
+            f"atlas output could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeAtlasPath(f"atlas output is not a regular file: {candidate}")
+        payload = content.encode("utf-8")
+        offset = 0
+        while offset < len(payload):
+            written = os.write(descriptor, payload[offset:])
+            if written <= 0:
+                raise UnsafeAtlasPath(f"atlas output write made no progress: {candidate}")
+            offset += written
+        os.fsync(descriptor)
+    except OSError as exc:
+        raise UnsafeAtlasPath(f"atlas output could not be written safely: {candidate}") from exc
+    finally:
+        os.close(descriptor)
 
 
 def source_paths() -> list[Path]:
@@ -130,7 +237,7 @@ def generated_modules() -> dict[str, str]:
     and therefore reported the eighteen emitted ``DiagonalPincerCertificates``
     window modules -- 5,246 declarations -- as authored mathematics.
     """
-    manifest = json.loads(GENERATED_MANIFEST.read_text(encoding="utf-8"))
+    manifest = json.loads(safe_atlas_text(GENERATED_MANIFEST))
     return {
         path: family["id"]
         for family in manifest["families"]
@@ -200,7 +307,7 @@ def preceding_docstring(lines: list[str], start: int) -> str | None:
 
 
 def build() -> dict[str, object]:
-    claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
+    claims = json.loads(safe_atlas_text(ROOT / "docs" / "claims.json"))
     claim_refs: dict[tuple[str, str], list[str]] = {}
     for claim in claims["claims"]:
         for decl in claim["declarations"]:
@@ -216,7 +323,7 @@ def build() -> dict[str, object]:
 
     for path in paths:
         rel = path.relative_to(ROOT).as_posix()
-        text = path.read_text(encoding="utf-8")
+        text = safe_atlas_text(path)
         digest.update(rel.encode("utf-8") + b"\0" + text.encode("utf-8") + b"\0")
         lines = text.splitlines()
         module_decls: list[dict[str, object]] = []
@@ -298,7 +405,7 @@ def main() -> int:
     args = parser.parse_args()
     expected = render()
     if args.check:
-        actual = OUTPUT.read_text(encoding="utf-8") if OUTPUT.is_file() else ""
+        actual = safe_atlas_text(OUTPUT) if OUTPUT.is_file() else ""
         if actual != expected:
             print("declaration atlas is stale; run python3 scripts/build_declaration_atlas.py")
             return 1
@@ -309,7 +416,7 @@ def main() -> int:
             f"{atlas['summary']['module_count']} modules"
         )
         return 0
-    OUTPUT.write_text(expected, encoding="utf-8")
+    safe_atlas_output_text(OUTPUT, expected)
     atlas = json.loads(expected)
     print(
         f"wrote {OUTPUT.relative_to(ROOT)}: "
