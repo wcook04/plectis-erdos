@@ -111,6 +111,12 @@ For a module-level handoff, use `python3 scripts/query_corpus.py --module
 synopsis, declaration preview, exact source identity, attached claims, and
 route-memory context before you return to the problem matrix and its boundary.
 
+For external statement identity, follow the generated [Formal Conjectures
+crosswalk](../../FORMAL_CONJECTURES_CROSSWALK.md). Its eight problem rows bind
+the pinned upstream declaration and source hash to the matching local route;
+the lab remains an explanation layer and does not become proof or claim
+authority by following that link.
+
 ## What this layer does not decide
 
 Not novelty, not significance, not correctness. A mechanism is an explanation;
