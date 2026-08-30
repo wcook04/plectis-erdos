@@ -288,6 +288,29 @@ def main() -> int:
             require(exc.code == "cross_problem_route", "cross-problem relationship escaped")
         else:
             raise AssertionError("cross-problem relationship escaped")
+    with patch.object(
+        route_memory,
+        "_entrypoints",
+        return_value=[
+            {
+                **route_shape,
+                "related_route_ids": ["not-indexed"],
+            }
+        ],
+    ):
+        try:
+            route_memory._route_for(
+                ROOT,
+                {"problem_id": "erdos_257", "erdos_number": 257},
+                None,
+            )
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "invented_related_route",
+                "unrouted available-route relationship escaped",
+            )
+        else:
+            raise AssertionError("unrouted available-route relationship escaped")
 
     # Exercise the real CLI, including the optimized interpreter path.
     check_cli_environment()

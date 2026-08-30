@@ -194,31 +194,13 @@ def _problem_target_claim_ids(problem: Mapping[str, Any]) -> set[str]:
     return set()
 
 
-def _route_for(
-    root: Path, problem: Mapping[str, Any], route_id: str | None
-) -> tuple[dict[str, Any] | None, list[str]]:
-    rows = _entrypoints(root)
-    expected_targets = _problem_target_claim_ids(problem)
-    if route_id is None:
-        available = sorted(
-            str(row["id"])
-            for row in rows
-            if expected_targets.intersection(set(row.get("problem_target_claim_ids", [])))
-        )
-        return None, available
-    route = next((row for row in rows if row.get("id") == route_id), None)
-    if route is None:
-        raise RouteMemoryError("invented_route", route_id)
-    if route.get("route_kind") != "mathematical_programme":
-        raise RouteMemoryError("route_not_problem_bound", route_id)
-    route_targets = set(route.get("problem_target_claim_ids", []))
-    if not expected_targets or not route_targets.intersection(expected_targets):
-        raise RouteMemoryError(
-            "cross_problem_route",
-            f"{route_id} is not bound to {problem.get('problem_id')}",
-        )
-    if route_targets - expected_targets:
-        raise RouteMemoryError("cross_problem_route", route_id)
+def _validate_route_relationships(
+    route: Mapping[str, Any],
+    rows: list[dict[str, Any]],
+    expected_targets: set[str],
+) -> None:
+    """Ensure related route edges are indexed and problem-local."""
+    route_id = str(route.get("id", ""))
     related_values = route.get("related_route_ids", [])
     if not isinstance(related_values, list) or any(
         not isinstance(value, str) or not value.strip() for value in related_values
@@ -244,6 +226,40 @@ def _route_for(
             or related_targets - expected_targets
         ):
             raise RouteMemoryError("cross_problem_route", related_id)
+
+
+def _route_for(
+    root: Path, problem: Mapping[str, Any], route_id: str | None
+) -> tuple[dict[str, Any] | None, list[str]]:
+    rows = _entrypoints(root)
+    expected_targets = _problem_target_claim_ids(problem)
+    if route_id is None:
+        available_rows: list[dict[str, Any]] = []
+        for row in rows:
+            if not isinstance(row, Mapping) or not expected_targets.intersection(
+                set(row.get("problem_target_claim_ids", []))
+            ):
+                continue
+            if row.get("route_kind") != "mathematical_programme":
+                raise RouteMemoryError("route_not_problem_bound", str(row.get("id")))
+            _validate_route_relationships(dict(row), rows, expected_targets)
+            available_rows.append(dict(row))
+        available = sorted(str(row["id"]) for row in available_rows)
+        return None, available
+    route = next((row for row in rows if row.get("id") == route_id), None)
+    if route is None:
+        raise RouteMemoryError("invented_route", route_id)
+    if route.get("route_kind") != "mathematical_programme":
+        raise RouteMemoryError("route_not_problem_bound", route_id)
+    route_targets = set(route.get("problem_target_claim_ids", []))
+    if not expected_targets or not route_targets.intersection(expected_targets):
+        raise RouteMemoryError(
+            "cross_problem_route",
+            f"{route_id} is not bound to {problem.get('problem_id')}",
+        )
+    if route_targets - expected_targets:
+        raise RouteMemoryError("cross_problem_route", route_id)
+    _validate_route_relationships(route, rows, expected_targets)
     return route, sorted(
         str(row["id"])
         for row in rows
