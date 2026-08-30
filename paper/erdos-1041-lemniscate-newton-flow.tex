@@ -173,6 +173,7 @@ Exponential first integral & Checked & $\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0$
 Ray separation of critical values & Checked (consumer form) & Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. \\
 Ray-collision locus & Checked & $\beta=(ra-b)/(1-r)$, $r>0$, $r\ne1$: one real parameter per pair. \\
 Quartic case & Cited & Proved in \cite[Thm.~1, p.~1]{june2026}; does not extend to general degree. \\
+Concyclic zeros with $2\rho^n\le1$ & Ordinary proof; finite exact and numerical checks & Distinct-root theorem; not Lean checked; the unrestricted concyclic case remains open. \\
 Unrestricted proof of \cite[Theorem~1, p.~1]{march2026} & Proof gap & Proposition~12 uses a false three-ended local saddle block; located publicly by Tao (25 March 2026), conceded by the author at statement level (26 March 2026).  No counterexample is exhibited. \\
 Constant-translation ray separation and root retention & Checked & After critical-value injectivity, arbitrary small ray avoidance and an explicit unit-disc margin. \\
 Coefficient perturbation and slack stability & Open & Must first create injective critical values and preserve the component, collars and length budget. \\
@@ -228,6 +229,27 @@ $n\le6$: arbitrary radii in the stated band give
 so every two-radii path is contained.  The good spoke in the general
 on-circle averaging identity may move with $s$, however; that is why an
 existence statement at one level does not supply a fixed pair of roots.
+
+\subsection*{A bounded-radius concyclic class}
+
+There is nevertheless a clean theorem for a different on-circle mechanism.
+Let $f$ be monic of degree $n\ge3$ with distinct zeros on a circle of radius
+$\rho$.  If $2\rho^n\le1$, two adjacent zeros are joined by their straight
+chord, whose length is at most $2\rho\sin(\pi/n)<2$, and the chord lies in
+$\{|f|<1\}$.  (If a zero is repeated, the short-connection conclusion is
+immediate; the distinct case is the substantive one.)  After normalisation to
+the unit circle, self-inversive realification and alternation against $z^n-c$
+select a zero-free gap on which the polynomial modulus is at most $2$; a
+harmonic normal-derivative argument transfers this arc bound strictly to the
+chord.  The complete ordinary proof is
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md}{\texttt{ConcyclicAlternation.md}}.
+This is not a Lean theorem: the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py}{exact-rational checker}
+tests finitely many load-bearing identities and configurations, while the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation.py}{numerical checker}
+is regression and stress-test evidence.  The arc constant $2$ is sharp on the
+regular $n$-gon, so this chord argument does not reach radii tending to $1$;
+the unrestricted concyclic case and Erd\H{o}s~\#1041 remain open.
 
 \subsection*{The degree-five target is now explicit}
 
