@@ -70,6 +70,8 @@ RELATED_FAMILY_OPTIONAL_FIELDS = frozenset(
         "solution_export_anchor",
         "supporting_declarations",
         "evidence_mode",
+        "paper_consumers",
+        "public_consumers",
     }
 )
 
@@ -313,6 +315,39 @@ def _validate_related_families(record: dict[str, Any]) -> None:
             raise ValueError(
                 f"canonical route memory related family {family_id} has invalid evidence mode"
             )
+        for field, expected_fields in (
+            ("paper_consumers", CONSUMER_FIELDS),
+            ("public_consumers", PUBLIC_CONSUMER_FIELDS),
+        ):
+            consumers = family.get(field)
+            if consumers is None:
+                continue
+            if not isinstance(consumers, list) or not consumers:
+                raise ValueError(
+                    f"canonical route memory related family {family_id} {field} must be a nonempty array"
+                )
+            for consumer in consumers:
+                if not isinstance(consumer, dict) or set(consumer) != expected_fields:
+                    raise ValueError(
+                        f"canonical route memory related family {family_id} {field} entry has an ambiguous shape"
+                    )
+                if not isinstance(consumer.get("path"), str) or not consumer["path"].strip():
+                    raise ValueError(
+                        f"canonical route memory related family {family_id} {field} path must be nonempty"
+                    )
+                locator_key = "locators" if field == "paper_consumers" else "locator"
+                locator = consumer.get(locator_key)
+                if field == "paper_consumers":
+                    if not isinstance(locator, list) or not locator or not all(
+                        isinstance(item, str) and item.strip() for item in locator
+                    ):
+                        raise ValueError(
+                            f"canonical route memory related family {family_id} paper consumer locators must be a nonempty string array"
+                        )
+                elif not isinstance(locator, str) or not locator.strip():
+                    raise ValueError(
+                        f"canonical route memory related family {family_id} public consumer locator must be nonempty"
+                    )
         comparator = family.get("comparator_declaration")
         comparator_anchor = family.get("comparator_anchor")
         if comparator is None and comparator_anchor is not None:

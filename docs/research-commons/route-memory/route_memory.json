@@ -33,7 +33,58 @@
         "anchors": [
           "cleanRecoveryWitness_normalizedNegativeMass_return",
           "cleanRecoveryWitness_payment_lt_length_and_exponential"
-        ]
+        ],
+        "related_families": {
+          "negative_mass_recovery": {
+            "route_id": "erdos_243_negative_mass_recovery",
+            "status": "conditional_recovery_criterion",
+            "source_declaration": "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+            "source_module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+            "source_anchor": 175,
+            "comparator_declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+            "comparator_anchor": 111,
+            "comparator_transport_commit": "39d0c4bd6cb7e7c5322d4e21e65e7cba982700f5",
+            "comparator_registration_commit": "6bedcde3554f5d00ce58bd9921d54be4f19ff34c",
+            "solution_export": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+            "solution_export_anchor": 1183,
+            "supporting_declarations": [
+              "ErdosProblems.Erdos243.tail_growth_le_one_add_negativeRelativeMass",
+              "ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass"
+            ],
+            "paper_consumers": [
+              {
+                "path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+                "locators": ["res:mass", "res:masshyp", "sec:bounded"]
+              },
+              {
+                "path": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
+                "locators": ["res:mass", "line:625"]
+              }
+            ],
+            "public_consumers": [
+              {
+                "path": "docs/claims.json",
+                "locator": "claims[id=negative_mass_recovery]"
+              },
+              {
+                "path": "docs/external_verification_packet.json",
+                "locator": "review_matrix[problem=243].families[id=negative_mass_recovery]"
+              },
+              {
+                "path": "verification/comparator.json",
+                "locator": "theorem_names[Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass]"
+              },
+              {
+                "path": "docs/PALOMAR_RESULT_SHOWCASE.json",
+                "locator": "candidates[candidate_id=erdos243_negative_mass_recovery]"
+              }
+            ],
+            "evidence_mode": "Lean kernel source plus source-faithful ExternalVerification wrapper",
+            "mechanism": "negativeRelativeMass C E n is |min (E n) 0| / C n. The tail-growth theorem bounds C (n+1) by C n * (1 + negativeRelativeMass C E n); summability of this nonnegative relative-growth factor bounds the finite products. Division-free normalized vanishing then forces the integer defect E n to be zero eventually, and the load-bearing theorem transfers centeredState = 0 to the Sylvester recurrence eventually.",
+            "boundary": "Conditional state-system recovery only. It assumes the displayed nextDenState and nextTailState dynamics, C > 0, the strict centered-step equation, division-free normalized vanishing, and summability of normalized negative mass for centeredState. These hypotheses are not proved for the canonical Erdős #243 orbit, so no prime-specific producer, unconditional endpoint, or reciprocal-tail irrationality follows. It is distinct from centered_state_dynamics: that family uses a uniform lower-bound hypothesis, while this one uses summability of normalized negative mass; neither supplies the other.",
+            "next_research_route": "Paper route: paper/erdos-243-reciprocal-tail-rigidity.tex (res:mass, res:masshyp, sec:bounded) and docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md (res:mass, line:625). Read SparseResetRecovery.lean declarations 45, 155, and 175, then the ExternalVerification wrapper at Challenge.lean:111 and Solution.lean:1183. The missing obligation is a producer or refutation for summability on the canonical orbit; preserve mixed-sign and unbounded-negative regimes as open."
+          }
+        }
       },
       "actual_established": "A checked nine-step primitive clean recovery returns normalized negative mass from 1/11 to 1/11 while its initial payment is four, below both its length and 2^9.",
       "failure_boundary": "This rules out a strict descent or payment lower bound determined only by the displayed normalized coordinate and clean-recovery length; it does not classify all primitive-tail invariants.",

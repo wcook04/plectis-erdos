@@ -271,6 +271,65 @@ def check_route_memory_corpus_contract() -> None:
         and source_current["paper_consumers"],
         "#251 canonical route-memory consumer handoff is incomplete",
     )
+    route_243 = next(
+        row for row in source_document["records"] if row.get("problem") == 243
+    )
+    negative_mass = route_243["evidence"]["related_families"]["negative_mass_recovery"]
+    require(
+        negative_mass["route_id"] == "erdos_243_negative_mass_recovery"
+        and negative_mass["status"] == "conditional_recovery_criterion",
+        "#243 negative-mass route identity or status drifted",
+    )
+    require(
+        negative_mass["source_module"]
+        == "ErdosProblems/Erdos243/SparseResetRecovery.lean"
+        and negative_mass["source_anchor"] == 175,
+        "#243 negative-mass source anchor drifted",
+    )
+    require(
+        negative_mass["source_declaration"]
+        == "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+        and negative_mass["comparator_declaration"]
+        == "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+        "#243 negative-mass source/wrapper declaration drifted",
+    )
+    require(
+        negative_mass["supporting_declarations"]
+        == [
+            "ErdosProblems.Erdos243.tail_growth_le_one_add_negativeRelativeMass",
+            "ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass",
+        ],
+        "#243 negative-mass supporting declaration handoff drifted",
+    )
+    require(
+        {consumer["path"] for consumer in negative_mass["paper_consumers"]}
+        == {
+            "paper/erdos-243-reciprocal-tail-rigidity.tex",
+            "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
+        },
+        "#243 negative-mass paper route drifted",
+    )
+    require(
+        {consumer["path"] for consumer in negative_mass["public_consumers"]}
+        >= {
+            "docs/claims.json",
+            "docs/external_verification_packet.json",
+            "verification/comparator.json",
+        },
+        "#243 negative-mass public consumers drifted",
+    )
+    require(
+        "summability" in negative_mass["mechanism"].lower()
+        and "centered_state_dynamics" in negative_mass["boundary"]
+        and "canonical" in negative_mass["boundary"]
+        and "orbit" in negative_mass["boundary"],
+        "#243 negative-mass summability boundary drifted",
+    )
+    require(
+        "erdos-243-reciprocal-tail-rigidity.tex" in negative_mass["next_research_route"]
+        and "Challenge.lean:111" in negative_mass["next_research_route"],
+        "#243 negative-mass paper and wrapper route drifted",
+    )
     route_269 = next(
         row for row in source_document["records"] if row.get("problem") == 269
     )
