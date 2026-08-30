@@ -94,6 +94,18 @@ python3 scripts/query_semantic.py benchmark
 `unexplained` is the honest one. A large residual is a finding about the
 mechanism basis, not a bookkeeping gap, and it is reported rather than hidden.
 
+## Return to public evidence
+
+A theory-lab record explains a mechanism; it is not proof authority or a public
+claim. After following a mechanism, intervention, discrepancy, or holdout,
+return through the canonical [complete eight-problem return matrix](../../SOURCE_MAP.md#complete-eight-problem-return-matrix)
+to rejoin the problem-owned source, paper, and exact frontier. From an exact
+source or paper handle, use `python3 scripts/query_corpus.py --source
+<module.lean:line>` or `--paper-anchor <TeX_label_or_source_ref>` to recover the
+corresponding reverse route. This keeps a useful explanation connected to the
+checked declaration and its unresolved boundary without promoting the lab's
+mechanism vocabulary into a mathematical result.
+
 ## What this layer does not decide
 
 Not novelty, not significance, not correctness. A mechanism is an explanation;
