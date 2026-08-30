@@ -27,7 +27,6 @@ import hashlib
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -617,7 +616,7 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     if stored.exists() or stored.is_symlink():
         raise SystemExit(f"probe artifact already exists: {stored}")
     try:
-        shutil.copyfile(source_path, stored)
+        stored.write_text(source, encoding="utf-8")
     except OSError as exc:
         cleanup_error = _cleanup_unledgered_probe_artifact(stored)
         detail = f"probe artifact could not be stored: {stored}: {exc}"

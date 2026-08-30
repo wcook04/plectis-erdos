@@ -1244,6 +1244,83 @@ def check_probe_artifact_cleanup(tmp: Path) -> None:
     assert stored.read_text(encoding="utf-8") == source_path.read_text(encoding="utf-8")
 
 
+def check_probe_source_snapshot(tmp: Path) -> None:
+    sessions_root = tmp / "snapshot-sessions"
+    _run(
+        sessions_root,
+        [
+            "open",
+            "--session",
+            "snapshot",
+            "--actor",
+            "outsider",
+            "--intent",
+            "source snapshot boundary",
+        ],
+    )
+    source_path = tmp / "snapshot.lean"
+    original_source = "example : True := by trivial\n"
+    source_path.write_text(original_source, encoding="utf-8")
+    destination = sessions_root / "snapshot" / "probes" / "m002.lean"
+    real_write_text = workbench.Path.write_text
+    real_runner = workbench.run_lean_probe
+    calls: list[str] = []
+
+    def accepted_runner(root: Path, source: str) -> dict:
+        calls.append(source)
+        return {
+            "verdict": "kernel_accepted",
+            "detail": None,
+            "exit_code": 0,
+            "error_count": 0,
+            "sorry_count": 0,
+            "duration_seconds": 0.01,
+            "output_tail": "",
+        }
+
+    def racing_store(path, data, *args, **kwargs):
+        if path == destination:
+            real_write_text(
+                source_path,
+                "example : False := by trivial\n",
+                encoding="utf-8",
+            )
+        return real_write_text(path, data, *args, **kwargs)
+
+    workbench.Path.write_text = racing_store
+    workbench.run_lean_probe = accepted_runner
+    try:
+        probe = _run(
+            sessions_root,
+            [
+                "probe",
+                "--session",
+                "snapshot",
+                "--file",
+                str(source_path),
+            ],
+        )
+    finally:
+        workbench.Path.write_text = real_write_text
+        workbench.run_lean_probe = real_runner
+    assert calls == [original_source]
+    assert destination.read_text(encoding="utf-8") == original_source
+    assert probe["input_sha256"] == workbench._sha256_text(original_source)
+    claim = _run(
+        sessions_root,
+        [
+            "claim",
+            "--session",
+            "snapshot",
+            "--text",
+            "the captured source was accepted",
+            "--probe",
+            "m002",
+        ],
+    )
+    assert claim["cited_input_sha256"] == probe["input_sha256"]
+
+
 def check_environment_fingerprint_failures(tmp: Path) -> None:
     real_run = workbench.subprocess.run
 
@@ -1484,10 +1561,15 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
         assert destination.read_text(encoding="utf-8") == "existing sentinel\n"
 
         destination.unlink()
-        real_copy = workbench.shutil.copyfile
-        workbench.shutil.copyfile = lambda *args, **kwargs: (_ for _ in ()).throw(
-            PermissionError(13, "session storage denied")
-        )
+        real_write_text = workbench.Path.write_text
+
+        def fail_store(path, data, *args, **kwargs):
+            if path == destination:
+                real_write_text(path, "partial", encoding="utf-8")
+                raise PermissionError(13, "session storage denied")
+            return real_write_text(path, data, *args, **kwargs)
+
+        workbench.Path.write_text = fail_store
         refused_copy_failure = False
         try:
             _run(
@@ -1503,7 +1585,7 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
         except SystemExit as error:
             refused_copy_failure = "could not be stored" in str(error)
         finally:
-            workbench.shutil.copyfile = real_copy
+            workbench.Path.write_text = real_write_text
         assert refused_copy_failure, "probe leaked a storage copy failure"
         assert len(calls) == calls_before_destination
         assert not destination.exists()
@@ -1581,6 +1663,7 @@ def main() -> int:
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
         check_probe_artifact_cleanup(tmp)
+        check_probe_source_snapshot(tmp)
         check_environment_fingerprint_failures(tmp)
         check_session_storage_failures(tmp)
         sessions_root = tmp / "sessions"
