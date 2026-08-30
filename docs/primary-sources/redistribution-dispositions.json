@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 2,
-    "artifact_count": 2,
+    "working_tree_only_count": 3,
+    "artifact_count": 3,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 2,
+    "link_and_digest_only_count": 3,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -56,6 +56,23 @@
       "support_boundary_ref": "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md",
       "consumer_refs": [
         "docs/primary-sources/dyadic-carry/wang-2026-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/bergman-geodesic/pritsker-2011-inequalities-green-potentials.pdf",
+      "sha256": "d256af21c33f92e155e9a7926c18f9c7219cc8839036a8cc4c5708d70f17094f",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/1307.6196",
+        "https://doi.org/10.1112/blms/bdq122"
+      ],
+      "source_record": "docs/primary-sources/bergman-geodesic/pritsker-2011-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/bergman-geodesic/pritsker-2011-source-closure.md",
+      "consumer_refs": [
+        "docs/primary-sources/bergman-geodesic/pritsker-2011-source-closure.md"
       ]
     }
   ]
