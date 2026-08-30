@@ -398,7 +398,13 @@ replacement for claim authority.
   two-branch interface. The subordinate `tailOrbitFirstExp_succ` identity records
   the exact squaring evolution of each tail-orbit phase; it clarifies the phase
   mechanism but supplies neither the `(11/100)` density nor the cofinal-prime
-  producer. In the block branch, for every `h > 0` and cutoff
+  producer. The later `tailOrbitFirstExp_add` and
+  `tailOrbitFirstExp_eq_initial_pow_two` identities reduce every future phase to
+  a power-of-two iterate of its initial phase;
+  `not_naturalPrimeTailOrbitStrictGap_of_dyadic_root` shows that entering a
+  dyadic root blocks the strict-gap producer. These are contrary-mechanism
+  constraints, not density or cofinal-prime supply. In the block branch, for
+  every `h > 0` and cutoff
   `X₀`, `TotientTailOrbitNonpositiveBlockDensity` assumes a late block with at
   least `(11/100) * X` nonpositive values of
   `Re(tailOrbitFirstExp h N)`; unit norm gives an `89/100` block saving, and a
