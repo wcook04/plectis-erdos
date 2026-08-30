@@ -163,16 +163,32 @@ def _claims_for(root: Path, route: Mapping[str, Any] | None) -> list[dict[str, A
         if claim_id not in ids:
             ids.append(str(claim_id))
     result: list[dict[str, Any]] = []
+    module_digests: dict[str, str] = {}
     for claim_id in ids:
         row = index.get(claim_id)
         if row is None:
             raise RouteMemoryError("invented_claim_reference", claim_id)
+        declarations: list[dict[str, Any]] = []
+        for declaration in row.get("declarations", []):
+            if not isinstance(declaration, Mapping):
+                raise RouteMemoryError("invented_declaration_reference", claim_id)
+            module = str(declaration.get("module", ""))
+            if not module:
+                raise RouteMemoryError("invented_declaration_reference", claim_id)
+            if module not in module_digests:
+                module_digests[module] = _safe_module_digest(root, module)
+            declarations.append(
+                {
+                    **dict(declaration),
+                    "source_digest": module_digests[module],
+                }
+            )
         result.append(
             {
                 "id": claim_id,
                 "status": row.get("status"),
                 "paper_label": row.get("paper_label"),
-                "declarations": [dict(dec) for dec in row.get("declarations", [])],
+                "declarations": declarations,
                 "remaining_open_proposition_ids": list(
                     row.get("remaining_open_proposition_ids", [])
                 ),
@@ -217,6 +233,29 @@ def _module_refs(problem: Mapping[str, Any]) -> list[dict[str, Any]]:
             }
         )
     return refs
+
+
+def _safe_module_digest(root: Path, module: str) -> str:
+    relative = Path(module)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise RouteMemoryError("invented_source_path", module)
+    path = root / relative
+    if not path.is_file() or path.is_symlink():
+        raise RouteMemoryError("declaration_source_missing", module)
+    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _problem_module_owners(root: Path) -> dict[str, set[str]]:
+    problems = _json(root / "docs" / "problems.json")
+    owners: dict[str, set[str]] = {}
+    for problem in problems.get("problems", []):
+        if not isinstance(problem, Mapping):
+            continue
+        problem_id = str(problem.get("problem_id"))
+        for module in problem.get("modules", []):
+            if isinstance(module, Mapping) and module.get("path"):
+                owners.setdefault(str(module["path"]), set()).add(problem_id)
+    return owners
 
 
 def _compact_open_rows(
@@ -362,6 +401,32 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
         raise RouteMemoryError("stale_source_snapshot", "source commit differs from HEAD")
     if snapshot.get("digests") != expected["source_snapshot"]["digests"]:
         raise RouteMemoryError("stale_source_snapshot", "source digest differs from checkout")
+    expected_claims = {row["id"]: row for row in expected["claims"]}
+    module_owners = _problem_module_owners(root)
+    for claim in packet.get("claims", []):
+        if not isinstance(claim, Mapping) or claim.get("id") not in expected_claims:
+            raise RouteMemoryError("invented_reference", "claim")
+        expected_declarations = {
+            (row.get("name"), row.get("module"), row.get("line"), row.get("source_digest"))
+            for row in expected_claims[claim["id"]].get("declarations", [])
+        }
+        for declaration in claim.get("declarations", []):
+            if not isinstance(declaration, Mapping):
+                raise RouteMemoryError("invented_declaration_reference", str(claim["id"]))
+            key = (
+                declaration.get("name"),
+                declaration.get("module"),
+                declaration.get("line"),
+                declaration.get("source_digest"),
+            )
+            if key in expected_declarations:
+                continue
+            owners = module_owners.get(str(declaration.get("module")), set())
+            if owners and expected["problem"]["problem_id"] not in owners:
+                raise RouteMemoryError(
+                    "cross_problem_declaration", str(declaration.get("module"))
+                )
+            raise RouteMemoryError("invented_declaration_reference", str(claim["id"]))
     critical = (
         "route_memory_id",
         "selector",

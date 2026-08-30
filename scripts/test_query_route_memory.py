@@ -40,6 +40,13 @@ def main() -> int:
         assert packet["resume_state"]["state_id"].startswith("sha256:")
         assert packet["source_snapshot"]["tracked_sources"] == list(route_memory.SOURCE_FILES)
         assert route_memory.validate_packet(packet)["packet_digest"] == packet["packet_digest"]
+    routed_declarations = [
+        declaration
+        for claim in route_memory.build_packet("249", "erdos249_certificate_story")["claims"]
+        for declaration in claim["declarations"]
+    ]
+    assert routed_declarations
+    assert all(row["source_digest"].startswith("sha256:") for row in routed_declarations)
 
     # A route for #257 must never be accepted under #249, even though both
     # routes are valid navigation entries in the same claims projection.
@@ -62,6 +69,11 @@ def main() -> int:
     invented_claim = copy.deepcopy(routed)
     invented_claim["claims"][0]["id"] = "claim_made_up"
     assert_rejected(invented_claim, "invented_reference")
+    cross_declaration = copy.deepcopy(routed)
+    cross_declaration["claims"][1]["declarations"][0]["module"] = (
+        "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+    )
+    assert_rejected(cross_declaration, "cross_problem_declaration")
     cross_route = copy.deepcopy(routed)
     cross_route["consulted_route_ids"] = ["erdos257_half_story"]
     assert_rejected(cross_route, "packet_mismatch")
