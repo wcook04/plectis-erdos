@@ -536,9 +536,10 @@ independent theorem content.
 remained read-only in this lane. The publication owner has since updated the
 worked example to the current bounded theorem—one checked certificate at every
 lcm-diagonal scale `t ≤ 82`, with nothing asserted at `t = 83`—while retaining
-the older 28-point aggregator only as historical provenance. The source is
-currently 901 lines, so the requested aggressive compression remains open even
-though the mathematical snapshot is current.
+the older 28-point aggregator only as historical provenance. The requested
+aggressive compression remains open in the protected publication lane; this
+audit deliberately makes no volatile current line-count claim. The mathematical
+snapshot remains bounded at `t ≤ 82`, with the unbounded supply open.
 
 A claim-preserving revision can fit within 462 lines by keeping each argument
 once:
