@@ -765,6 +765,14 @@ characterisation, not a contradiction or a universal irrationality theorem;
 it does not produce cofinally nonintegral shifts for the actual recurrence,
 settle arbitrary infinite support, or settle the `1/2` membership boundary.
 
+A separate necessary-condition family controls coverage under a hypothetical
+rational support value. `supportCoeffZeroWindow_length_le_eps_logb_add` forces
+every zero window in the divisor-count coefficient to have length at most
+`ε·log₂(N+1) + B`; the additive constant is built after the support and
+numerator, so it is not uniform across supports (`SublogDivisorCoverage.lean:392`;
+claims registry: `sublog_zero_windows`). This is a genuine restriction on a
+possible rational support, not a contradiction or a proof of universal #257.
+
 The squarefree support remains open. Its divisor incidence is proved to be
 `2^ω(n)-1`, hence odd at every `n≥2`. The certificate engines in this
 development begin by selecting an even-incidence block, so they cannot act on

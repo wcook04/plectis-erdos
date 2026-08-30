@@ -52,7 +52,7 @@ All eight remain open. Pass is mechanism-first:
   divisor-orbit sieve ([source](Erdos249257/CertificateKernel.lean)). This is
   not the mixed-sign or arbitrary-support theorem.
 - Base-2 Mersenne achievement sets have measure one; supported sets have a
-  finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). Geometry, not rational-point or universal proof.
+  finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). Rationality forces sublogarithmic divisor-count zero windows with a support/numerator-dependent constant ([source](Erdos249257/SublogDivisorCoverage.lean#L392)). Neither proves universal #257.
 - **Second-layer #257 normal form.** For `p/q` (`q>0`), a nonempty support
   omitting `0` exists iff a positive square-root-bounded integer orbit has
   q-divisible carries and Boolean–Möbius reconstruction of that support
@@ -66,11 +66,9 @@ All eight remain open. Pass is mechanism-first:
   quantitative separation supply is unproved, and sign/top-edge information
   does not supply it. Separately, the dyadic totient kernel has rank `2^e + 1`
   with an odd-core basis ([source](Erdos249257/TotientKernelConditional.lean)); all-base extension needs affine independence, but this finite-level spine is no rationality-to-finite-rank bridge or endpoint solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137): hypothetical rationality gives a positive multiplier and tempered carry with common eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1` for every `e`; modulo a divisor, forcing vanishes and the carry is geometric: no finite-rank contradiction or irrationality proof ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
-  consumer exposes: `actualLcmTailDiff_shift_pos` gives a positive shift,
-  `actualLcm_trueEndpointSurvivor_neg` records a negative survivor, and
-  `actualLcm_integral_forces_topEdgeResidue` identifies the top-edge residue
-  ([consumer](ExternalVerification/Challenge.lean#L198)). Positivity does not
-  exclude that survivor, so no cofinal separation supply is claimed. A separate
+  consumer records a positive shift, a negative survivor, and a top-edge
+  residue ([consumer](ExternalVerification/Challenge.lean#L198)). Positivity
+  does not exclude that survivor, so no cofinal separation supply is claimed. A separate
   public
   [first-harmonic pivot route](ExternalVerification/Challenge.lean) is now
   represented in Comparator: `windowFirstExp_sum_eq_pivot_decomposition` and
