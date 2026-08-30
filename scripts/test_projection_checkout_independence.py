@@ -96,7 +96,23 @@ def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
         capture_output=True,
         text=True,
         check=False,
+        timeout=singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
     )
+
+
+def check_run_contract() -> None:
+    """Keep the version-control-free builder probe bounded and isolated."""
+    completed = subprocess.CompletedProcess(["fixture"], 0, "", "")
+    with patch.object(subprocess, "run", return_value=completed) as runner:
+        observed = run(["fixture"], ROOT)
+
+    if observed is not completed:
+        raise SystemExit("projection run helper did not return the child result")
+    kwargs = runner.call_args.kwargs
+    if kwargs.get("timeout") != singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS:
+        raise SystemExit("projection run helper must use the shared worker timeout")
+    if kwargs.get("env") != singleflight.command_environment():
+        raise SystemExit("projection run helper must use the canonical clean environment")
 
 
 def materialise(destination: Path, shape: str) -> None:
@@ -138,6 +154,7 @@ def regenerate(checkout: Path) -> dict[str, bytes]:
 
 
 def main() -> int:
+    check_run_contract()
     workspace = Path(tempfile.mkdtemp(prefix="projection-shape-"))
     try:
         as_main = workspace / "as-main"
