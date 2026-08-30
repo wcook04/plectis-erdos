@@ -5,8 +5,12 @@ from __future__ import annotations
 
 import copy
 import json
+import os
+from pathlib import Path
+from unittest import mock
 
 import proof_state_compiler as compiler
+import validation_singleflight as singleflight
 
 
 def check_goal_parser() -> None:
@@ -38,6 +42,31 @@ def check_minimal_cuts() -> None:
         [{"a", "b"}, {"a", "b", "c"}]
     )
     assert absorbed == [["a", "b"]]
+
+
+def check_subprocess_environment() -> None:
+    completed = compiler.subprocess.CompletedProcess([], 0, "fixture\n", "")
+    hostile = {
+        "GIT_DIR": "/foreign/repository",
+        "GIT_NAMESPACE": "foreign-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replace/foreign/",
+        "PYTHONPATH": "/foreign/modules",
+        "LANG": "fr_FR",
+    }
+    with mock.patch.dict(os.environ, hostile, clear=False), mock.patch.object(
+        compiler.subprocess, "run", return_value=completed
+    ) as run:
+        observed = compiler._command_output(
+            ["git", "rev-parse", "HEAD"], cwd=Path("/tmp"), timeout_seconds=7
+        )
+
+    if observed != "fixture":
+        raise AssertionError(f"unexpected mocked command output: {observed!r}")
+    call = run.call_args
+    if call.kwargs["env"] != singleflight.command_environment():
+        raise AssertionError("proof-state subprocess retained ambient environment")
+    if call.kwargs["timeout"] != 7:
+        raise AssertionError("proof-state subprocess lost its explicit timeout")
 
 
 def check_live_pilot() -> dict:
@@ -112,6 +141,7 @@ def check_typed_rejection() -> None:
 def main() -> int:
     check_goal_parser()
     check_minimal_cuts()
+    check_subprocess_environment()
     packet = check_live_pilot()
     check_typed_rejection()
     print(
@@ -119,7 +149,7 @@ def main() -> int:
             {
                 "schema": "proof-state-compiler-test-receipt/1",
                 "passed": True,
-                "checks": 4,
+                "checks": 5,
                 "pilot_packet_bytes": packet["packet_bytes"],
                 "environment_fingerprint": packet[
                     "environment_fingerprint"

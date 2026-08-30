@@ -22,6 +22,8 @@ import subprocess
 from pathlib import Path
 from typing import Any, Iterable
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUEST_SCHEMA = "erdos249257-proof-state-request/1"
@@ -30,6 +32,7 @@ PILOT_SCHEMA = "erdos249257-proof-state-pilot/1"
 MAX_CANDIDATES = 8
 MAX_DISCHARGE_TACTICS = 8
 MAX_PACKET_BYTES = 64_000
+ENVIRONMENT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 
 
 class RequestError(ValueError):
@@ -59,6 +62,7 @@ def _command_output(
     completed = subprocess.run(
         command,
         cwd=cwd,
+        env=singleflight.command_environment(),
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -77,7 +81,7 @@ def _command_output(
 def environment_fingerprint(
     repo_root: Path = ROOT,
     *,
-    timeout_seconds: float = 30.0,
+    timeout_seconds: float = ENVIRONMENT_COMMAND_TIMEOUT_SECONDS,
 ) -> dict[str, Any]:
     """Return the exact local environment identity used by transition runs."""
     git_head = _command_output(
@@ -480,6 +484,7 @@ def _run_candidate(
         completed = subprocess.run(
             ["lake", "env", "lean", "--stdin", "--json"],
             cwd=repo_root,
+            env=singleflight.command_environment(),
             input=source,
             text=True,
             stdout=subprocess.PIPE,
