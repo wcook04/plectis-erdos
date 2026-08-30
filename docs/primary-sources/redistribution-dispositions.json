@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 25,
-    "artifact_count": 25,
+    "working_tree_only_count": 26,
+    "artifact_count": 26,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 25,
+    "link_and_digest_only_count": 26,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -494,6 +494,26 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/borwein-1991-qn-r.pdf",
+      "sha256": "d75c70c327de69c7f3c5436968898ef155d8995fea6bad748c3194229892bdf0",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://www.sciencedirect.com/science/article/pii/S0022314X05800411",
+        "https://www.cecm.sfu.ca/~pborwein/PAPERS/P51.pdf",
+        "https://doi.org/10.1016/S0022-314X(05)80041-1"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }

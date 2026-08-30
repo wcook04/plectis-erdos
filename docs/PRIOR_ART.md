@@ -72,6 +72,12 @@ boundary of that relationship.
 
   **Boundary.** The condition `|q|^L <= s` is essential to this specialisation, so the result does not give squarefree irrationality at every integer base and does not settle universal #257. It also does not prove the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims; no novelty or priority claim is made.
 
+- P. B. Borwein, [*On the irrationality of ∑ 1/(q^n+r)* (1991)](https://doi.org/10.1016/S0022-314X(05)80041-1) ([publisher record](https://www.sciencedirect.com/science/article/pii/S0022314X05800411); [read source closure](primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md))
+
+  **Fixed-base rational-offset antecedent.** Theorem 4 (printed pp. 257--258) proves that ∑ 1/(q^n+r) is irrational and not a Liouville number when q is an integer greater than one and r is a nonzero rational avoiding the denominator zeros r = -q^n for n ≥ 1. The paper’s Padé/Stieltjes construction is the direct source for this full-support family.
+
+  **Boundary.** The result is for every positive index with an integer base; it does not settle arbitrary infinite supports, the release's rational noninteger-base claim at `3/2`, universal #257, or the release's Lean results. Its recurrence and Padé estimates are not the Amdeberhan--Zeilberger q-WZ operator, and no novelty or priority claim is made.
+
 - P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X) ([author PDF](https://www.cecm.sfu.ca/~pborwein/PAPERS/P59.pdf); [read source closure](primary-sources/reciprocal-tail/borwein-1992-source-closure.md))
 
   **Full-support antecedent.** Theorems 1 and 2 (printed pp. 142 and 145; proof pp. 142--146) prove irrationality, and non-Liouville behavior, for the full-support series \(\sum_{n\ge1}(q^n+c)^{-1}\) and its alternating variant under their stated integer/rational hypotheses. Theorem 1 with \(q=2\), \(c=-1\) contains the full-support Mersenne--Lambert specialization.
