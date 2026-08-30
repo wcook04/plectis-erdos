@@ -16,15 +16,13 @@ body:
         private paths, credentials, caches, correspondence, or unpublished
         proof material; use the security route for sensitive reports.
         Canonical routes: [contributor guide](../../CONTRIBUTING.md),
-        [commons contract](../../docs/research-commons/README.md),
-        [return template](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md),
-        [resume state](../../docs/research-commons/RESUME_STATE_TEMPLATE.yaml),
-        [frontier handoff](../../docs/research-commons/FRONTIER_HANDOFF_EXAMPLE.md),
-        [credit policy](../../docs/research-commons/CREDIT_POLICY.md), and
+        [return contract](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md),
+        [resume and replay state](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay),
+        [bounded frontier route](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#2-bounded-route), and
         [accepted contributions](../../docs/research-commons/CONTRIBUTIONS.md).
         Before selecting a problem frontier, inspect every material result family
-        and its exact open boundary in the generated [problem index](../../docs/PROBLEMS.md),
-        then use the [eight-problem result-family front door](../../docs/research-commons/README.md#eight-problem-result-family-front-door)
+        and its exact open boundary in the tracked [problem index](../../docs/problems.json),
+        then use the [eight-problem result-family front door](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#formal-handoff-from-exposition)
         and the matching return package's current fan-in. Run
         `python3 scripts/query_corpus.py --search "all result families"` to enumerate
         the complete ranked census, then
