@@ -132,6 +132,25 @@ the #249 `probabilistic_gcd_geometry` family returns through that matrix to
 the exact gcd-moment and Stern–Brocot declarations, paper anchors, and the
 still-open irrationality boundary.
 
+### Problem-to-family return packets
+
+The public problem route is the bounded return surface for every indexed
+problem, not just the reviewed #249/#257 graph. Run
+
+```sh
+python3 scripts/query_corpus.py --route erdos_<problem_number>
+```
+
+for one of #68, #243, #249, #251, #257, #269, #1041, or #1049. The packet
+returns the authored paper record, every review-matrix result family in its
+recorded order, each family's evidence mode and claim ceiling, declaration
+expansion commands where the authority record supplies them, and the full
+open-obligation statements. Use `--format card` for the compact family/paper/
+frontier summary, then expand a declaration or source coordinate with the
+corresponding `query_corpus.py` handle. These family rows are navigation
+context from `docs/claims.json`; they do not promote expansion material into
+reviewed claims or close an Erdős problem.
+
 `population-backlog` is the semantic authoring queue.  It scans every authored
 paper, resolves both public `\lword` links and reasoning-surface `\lean` links
 to exact live declaration roles, deduplicates qualified and short spellings,

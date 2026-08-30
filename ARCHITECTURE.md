@@ -131,6 +131,20 @@ The hundreds of Lean files are implementation detail at first contact. Start
 from a mathematical question or a claim, then follow the source map or the
 read-only query tool to the few relevant modules.
 
+For a complete problem-to-evidence return route, use the generated problem
+route rather than guessing a headline declaration:
+
+```sh
+python3 scripts/query_corpus.py --route erdos_<problem_number>
+```
+
+The route covers all eight indexed problems and returns the paper record, the
+complete review-matrix family list in its authored order, declaration handles
+where supplied, and the exact open-obligation statements. From there,
+`--declaration`, `--source`, and `--paper-anchor` provide the corresponding
+proof, source, and exposition drilldowns. These are navigation projections;
+Lean source remains proof authority and the family boundaries remain open.
+
 ### Two libraries, two levels of claim
 
 The repository holds two Lean roots and they are not interchangeable.
@@ -292,6 +306,9 @@ the limit of explicitly recorded checks.
 - **You want to find the Lean behind one claim:** use
   [`docs/SOURCE_MAP.md`](docs/SOURCE_MAP.md), or run
   `python3 scripts/query_corpus.py --claim <claim_id>`.
+- **You want every distinct result family for one problem:** run
+  `python3 scripts/query_corpus.py --route erdos_<problem_number>` and follow
+  its paper, declaration, and open-obligation handles.
 - **You want to change the repository:** read [`AGENTS.md`](AGENTS.md) and
   [`CONTRIBUTING.md`](CONTRIBUTING.md), then run the checks for the files you
   touched.
