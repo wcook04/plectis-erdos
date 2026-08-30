@@ -47,6 +47,12 @@ MANUSCRIPT_SOURCES = {
 }
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep licensing contract failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def encode_reuse(config: dict[str, Any]) -> str:
     lines = [f"version = {config['version']}", ""]
     for annotation in config["annotations"]:
@@ -128,8 +134,8 @@ def license_map_errors(
             errors.append(f"licence text is missing for {license_id}")
 
     readme_boundary = (
-        "Code, scripts, and documentation are Apache-2.0. The manuscript layer, "
-        "including\nthe paper source and rendered PDFs, is CC-BY-4.0."
+        "Code, scripts, and documentation use Apache-2.0; manuscripts use "
+        "CC-BY-4.0;"
     )
     if readme_boundary not in readme:
         errors.append("README lost the exact software/manuscript licence boundary")
@@ -147,36 +153,48 @@ def main() -> int:
         path.relative_to(ROOT).as_posix()
         for path in (ROOT / "LICENSES").glob("*.txt")
     }
-    assert not license_map_errors(reuse, readme, sources, license_files)
+    require(
+        not license_map_errors(reuse, readme, sources, license_files),
+        "live license map contract is invalid",
+    )
 
     config = tomllib.loads(reuse)
     missing_override = copy.deepcopy(config)
     missing_override["annotations"] = missing_override["annotations"][:1]
-    assert any(
-        "CC-BY-4.0 override" in error
-        for error in license_map_errors(
-            encode_reuse(missing_override), readme, sources, license_files
-        )
+    require(
+        any(
+            "CC-BY-4.0 override" in error
+            for error in license_map_errors(
+                encode_reuse(missing_override), readme, sources, license_files
+            )
+        ),
+        "missing manuscript license override was accepted",
     )
 
     incomplete_override = copy.deepcopy(config)
     incomplete_override["annotations"][1]["path"] = sorted(
         MANUSCRIPT_BINARIES - {"erdos249-257-main-paper.pdf"}
     )
-    assert any(
-        "exact rendered-artifact set" in error
-        for error in license_map_errors(
-            encode_reuse(incomplete_override), readme, sources, license_files
-        )
+    require(
+        any(
+            "exact rendered-artifact set" in error
+            for error in license_map_errors(
+                encode_reuse(incomplete_override), readme, sources, license_files
+            )
+        ),
+        "incomplete manuscript artifact override was accepted",
     )
 
     wrong_blanket = copy.deepcopy(config)
     wrong_blanket["annotations"][0]["SPDX-License-Identifier"] = MANUSCRIPT_LICENSE
-    assert any(
-        "Apache-2.0 blanket" in error
-        for error in license_map_errors(
-            encode_reuse(wrong_blanket), readme, sources, license_files
-        )
+    require(
+        any(
+            "Apache-2.0 blanket" in error
+            for error in license_map_errors(
+                encode_reuse(wrong_blanket), readme, sources, license_files
+            )
+        ),
+        "wrong blanket license was accepted",
     )
 
     lost_source_header = dict(sources)
@@ -186,32 +204,41 @@ def main() -> int:
         f"{SPDX_LICENSE_HEADER}{APACHE}",
         1,
     )
-    assert any(
-        path in error
-        for error in license_map_errors(
-            reuse, readme, lost_source_header, license_files
-        )
+    require(
+        any(
+            path in error
+            for error in license_map_errors(
+                reuse, readme, lost_source_header, license_files
+            )
+        ),
+        "wrong manuscript source header was accepted",
     )
 
     missing_license_text = license_files - {f"LICENSES/{MANUSCRIPT_LICENSE}.txt"}
-    assert any(
-        f"missing for {MANUSCRIPT_LICENSE}" in error
-        for error in license_map_errors(
-            reuse, readme, sources, missing_license_text
-        )
+    require(
+        any(
+            f"missing for {MANUSCRIPT_LICENSE}" in error
+            for error in license_map_errors(
+                reuse, readme, sources, missing_license_text
+            )
+        ),
+        "missing manuscript license text was accepted",
     )
 
     weakened_readme = readme.replace(
-        "The manuscript layer, including\nthe paper source and rendered PDFs, "
-        "is CC-BY-4.0.",
-        "The manuscript layer follows the repository default.",
+        "Code, scripts, and documentation use Apache-2.0; manuscripts use "
+        "CC-BY-4.0;",
+        "Code and manuscripts follow the repository default;",
         1,
     )
-    assert any(
-        "licence boundary" in error
-        for error in license_map_errors(
-            reuse, weakened_readme, sources, license_files
-        )
+    require(
+        any(
+            "licence boundary" in error
+            for error in license_map_errors(
+                reuse, weakened_readme, sources, license_files
+            )
+        ),
+        "weakened README license boundary was accepted",
     )
 
     print(
