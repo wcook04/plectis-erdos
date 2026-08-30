@@ -512,15 +512,15 @@ replacement for claim authority.
   the adjacent-pair zero obstruction followed by prime-gap non-eventual
   periodicity. No theorem supplies this cofinal small-mismatch family, so the
   reduction does not prove #251 irrationality.
-- The exact finite carry identity and non-eventual-periodicity theorem close the
-  coefficient-only periodicity implication at the Lean level
-  (`carryPartialSum_natCast_eq`, `carryCoeff_natCast_not_eventually_periodic`,
-  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1154-1173`). The accompanying
-  rational-sum countermodel is an authored paper-level inference from the
-  endpoint decay using the standard exponential-dominance limit; the
-  Comparator interface does not assert that infinite limit. Its coefficients
-  are synthetic, not actual prime gaps, so this is a methodological no-go and
-  not an unconditional #251 refutation.
+- The Comparator `coefficientOnlyNoGo` consumer records the exact finite carry
+  identity `carryPartialSum_natCast_eq` together with non-eventual-periodicity
+  of both the synthetic coefficient stream and the actual prime-gap stream
+  (`ExternalVerification/Challenge.lean:325-326`;
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1154-1173`). Its
+  natural-friction lesson is exact: coefficient nonperiodicity alone does not
+  prove irrationality. The authored rational-sum countermodel is paper-level;
+  Comparator does not assert its infinite limit or identify the streams, and no
+  prime-gap tail bridge or #251 irrationality follows.
 - Open: cofinally many adjacent index pairs with small tail shifts and
   differing gaps; each smallness condition constrains a complete infinite
   tail.
