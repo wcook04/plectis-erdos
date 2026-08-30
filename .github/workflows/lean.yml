@@ -580,6 +580,12 @@ jobs:
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_dependency_lock_contract.py
 
+      - name: Test Lean workflow command environment
+        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: |
+          python3 scripts/test_lean_workflow_environment.py
+          python3 -O scripts/test_lean_workflow_environment.py
+
       - name: Check newcomer architecture guide
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: |
