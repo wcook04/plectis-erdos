@@ -17,7 +17,7 @@ import re
 from collections import Counter
 from datetime import date
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 ROOT = Path(__file__).resolve().parent.parent
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
@@ -119,6 +119,51 @@ def route_memory_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def paper_source_handoff(problem_number: str) -> dict[str, Any]:
+    """Expose the exact dedicated-paper source selector for a problem handoff."""
+    problem = next(
+        (
+            row
+            for row in load_json(ROOT / "docs" / "problems.json").get(
+                "problems", []
+            )
+            if str(row.get("erdos_number")) == problem_number
+        ),
+        None,
+    )
+    paper = problem.get("paper", {}) if isinstance(problem, dict) else {}
+    source = paper.get("source") if isinstance(paper, dict) else None
+    if not isinstance(source, str) or not source:
+        return {
+            "status": "unavailable",
+            "source": None,
+            "command": None,
+            "authority_posture": (
+                "derived_paper_navigation_not_claim_or_proof_authority"
+            ),
+            "boundary": (
+                "The public problem roster supplies no dedicated paper source; "
+                "no paper route was invented."
+            ),
+        }
+    return {
+        "status": "bound",
+        "source": source,
+        "command": f"python3 scripts/query_corpus.py --paper-source {source}",
+        "authority_posture": (
+            "derived_paper_navigation_not_claim_or_proof_authority"
+        ),
+        "identity_contract": (
+            "The selector resolves the complete exact anchor census for the "
+            "dedicated paper in the current tracked checkout."
+        ),
+        "boundary": (
+            "This selector is an exposition-navigation handoff only; it does "
+            "not promote a paper anchor into a claim or proof."
+        ),
+    }
+
+
 def problem_route_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
     """Expose the canonical problem packet without inventing a programme route."""
     raw_problem = row.get("problem")
@@ -141,6 +186,7 @@ def problem_route_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
         "status": "bound",
         "problem_number": int(token),
         "command": f"python3 scripts/query_corpus.py --route erdos_{token}",
+        "paper_source": paper_source_handoff(token),
         "authority_posture": (
             "derived_problem_navigation_not_claim_or_proof_authority"
         ),
