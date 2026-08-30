@@ -463,6 +463,35 @@ def build_packet(
     return packet
 
 
+def build_all_packets(*, root: Path = ROOT) -> list[dict[str, Any]]:
+    """Build one packet for every problem in the indexed public portfolio.
+
+    The problem index remains the selector authority; this convenience mode
+    merely applies the existing bounded packet builder to each indexed row.
+    Guard the batch against a moving checkout so callers never receive a
+    mixed resume snapshot that cannot be validated as one portfolio view.
+    """
+    rows = _json(root / "docs" / "problems.json").get("problems", [])
+    selectors = sorted(
+        {
+            int(row["erdos_number"])
+            for row in rows
+            if isinstance(row, Mapping)
+            and isinstance(row.get("erdos_number"), int)
+        }
+    )
+    if not selectors:
+        raise RouteMemoryError("problem_index_empty", "docs/problems.json::problems")
+    packets = [build_packet(number, root=root) for number in selectors]
+    commits = {packet["source_snapshot"]["commit"] for packet in packets}
+    if len(commits) != 1:
+        raise RouteMemoryError(
+            "moving_source_snapshot",
+            "--all observed more than one source commit while building packets",
+        )
+    return packets
+
+
 def _reject_if(condition: bool, code: str, detail: str) -> None:
     if condition:
         raise RouteMemoryError(code, detail)
@@ -598,10 +627,20 @@ def main(argv: list[str] | None = None) -> int:
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--problem", metavar="ID_OR_NUMBER")
     group.add_argument("--validate", metavar="PACKET_JSON")
+    group.add_argument(
+        "--all",
+        action="store_true",
+        help="build one packet for every indexed public problem",
+    )
     parser.add_argument("--route", metavar="ROUTE_ID")
     parser.add_argument("--format", choices=("json", "card"), default="json")
     args = parser.parse_args(argv)
     try:
+        if args.all and args.route:
+            raise RouteMemoryError(
+                "all_route_override",
+                "--route cannot be combined with --all; select one problem",
+            )
         if args.validate and args.route:
             raise RouteMemoryError(
                 "validate_route_override",
@@ -610,13 +649,16 @@ def main(argv: list[str] | None = None) -> int:
         packet = (
             validate_packet(_load_packet(args.validate))
             if args.validate
-            else build_packet(args.problem, args.route)
+            else build_all_packets() if args.all else build_packet(args.problem, args.route)
         )
     except (OSError, json.JSONDecodeError, RouteMemoryError) as exc:
         print(f"route-memory error: {exc}", file=sys.stderr)
         return 2
     if args.format == "card":
-        print(_card(packet))
+        if isinstance(packet, list):
+            print("\n\n".join(_card(item) for item in packet))
+        else:
+            print(_card(packet))
     else:
         print(json.dumps(packet, ensure_ascii=False, indent=2, sort_keys=True))
     return 0

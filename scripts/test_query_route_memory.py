@@ -368,6 +368,39 @@ def main() -> int:
         in optimized.stdout,
         "unrouted CLI card omitted canonical route choices",
     )
+    all_packets_result = run_cli("--all", optimized=True, check=True)
+    all_packets = json.loads(all_packets_result.stdout)
+    require(isinstance(all_packets, list), "--all CLI did not return a packet list")
+    require(
+        {packet["problem"]["erdos_number"] for packet in all_packets}
+        == set(PROBLEMS),
+        "--all CLI did not cover exactly the indexed public portfolio",
+    )
+    require(
+        len({packet["source_snapshot"]["commit"] for packet in all_packets}) == 1,
+        "--all CLI mixed source commits",
+    )
+    for packet in all_packets:
+        require(
+            route_memory.validate_packet(packet)["packet_digest"]
+            == packet["packet_digest"],
+            "--all CLI emitted an invalid packet",
+        )
+    all_cards = run_cli("--all", "--format", "card", check=True)
+    require(
+        sum(line.startswith("route-memory ") for line in all_cards.stdout.splitlines())
+        == len(PROBLEMS),
+        "--all card output did not expose every problem",
+    )
+    all_override = run_cli(
+        "--all", "--route", "erdos257_half_story"
+    )
+    require(all_override.returncode == 2, "--all route override was accepted")
+    require(all_override.stdout == "", "--all route override emitted a payload")
+    require(
+        "all_route_override" in all_override.stderr,
+        "--all route override omitted its rejection code",
+    )
     routed_card = run_cli(
         "--problem",
         "257",
