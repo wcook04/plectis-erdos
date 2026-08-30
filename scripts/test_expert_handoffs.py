@@ -99,9 +99,55 @@ def test_mathematical_handoff_exposes_selector_without_route_invention() -> None
     assert "command" not in invalid_problem_route
 
 
+def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
+    route = handoffs.semantic_endpoint_handoff_route()
+    assert route["command"] == (
+        "python3 scripts/query_expert_handoffs.py --semantic-handoff"
+    )
+    assert route["root_family_ids"] == [
+        "small_mismatch_criterion",
+        "conditional_carry_escape",
+    ]
+
+    packet = handoffs.semantic_endpoint_handoff_packet()
+    assert packet["root_family_ids"] == route["root_family_ids"]
+    assert "no second rank store" in route["authority_posture"]
+    assert "all-eight-problem semantic registry" in packet["coverage_boundary"]
+
+    small_mismatch, carry_escape = packet["roots"]
+    assert small_mismatch["family"]["family_id"] == "small_mismatch_criterion"
+    assert small_mismatch["family"]["proof_status"] == (
+        "conditional actual-prime-gap endpoint reduction; novelty and significance "
+        "unassessed"
+    )
+    assert small_mismatch["family"]["source_declaration"].endswith(
+        "rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+    )
+    assert any(
+        row["peer"]["family_id"] == "coefficient_only_no_go"
+        and row["relation_class"] == "natural_friction"
+        for row in small_mismatch["relations"]
+    )
+
+    assert carry_escape["family"]["family_id"] == "conditional_carry_escape"
+    assert carry_escape["family"]["proof_status"] == (
+        "conditional no-go consumer; novelty and significance unassessed"
+    )
+    weighted = next(
+        row for row in carry_escape["relations"]
+        if row["peer"]["family_id"] == "weighted_phase_carry_observer"
+    )
+    assert weighted["relation"] == "mechanism_support_for"
+    assert weighted["peer"]["source_declaration"].endswith(
+        "finite_realisedSpan_of_factorisation"
+    )
+    assert "actual three-prime running-LCM" in carry_escape["family"]["open_boundary"]
+
+
 def main() -> int:
     assert handoffs.protocol_errors() == []
     test_mathematical_handoff_exposes_selector_without_route_invention()
+    test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar()
     packet = handoffs.question_packet(None)
     assert packet["packet_kind"] == "compact_index"
     assert packet["count"] == 6

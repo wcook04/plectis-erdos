@@ -23,6 +23,8 @@ ROOT = Path(__file__).resolve().parent.parent
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 PROTOCOL = ROOT / "docs" / "expert_review_protocol.json"
+PALOMAR = ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json"
+CLAIMS = ROOT / "docs" / "claims.json"
 SCHEMA = "plectis_expert_review_protocol_v1"
 MATH_DOMAIN = "mathematics"
 SYSTEMS_DOMAIN = "systems"
@@ -40,6 +42,13 @@ REQUIRED_QUESTION_FIELDS = (
     "boundary",
     "known_obstruction",
     "current_hypothesis",
+)
+# These are handoff roots, not a ranking.  Their hierarchy, source details,
+# contribution class, and sibling order are read at query time from the same
+# Claims/Palomar authority used by query_semantic.py.
+SEMANTIC_HANDOFF_ROOT_FAMILIES = (
+    "small_mismatch_criterion",
+    "conditional_carry_escape",
 )
 
 
@@ -72,6 +81,216 @@ def systems_questions() -> list[dict[str, Any]]:
 
 def all_questions() -> list[dict[str, Any]]:
     return [*mathematical_questions(), *systems_questions()]
+
+
+def _canonical_family_ranks(palomar: Mapping[str, Any]) -> dict[str, dict[str, int]]:
+    """Read only Palomar's within-problem positions; never infer a global rank."""
+    programme = palomar.get("selection_contract", {}).get("programme_family_order")
+    if not isinstance(programme, list):
+        raise ValueError("Palomar selection contract lacks programme_family_order")
+    ranks: dict[str, dict[str, int]] = {}
+    for programme_row in programme:
+        problem = int(programme_row["problem"])
+        family_ids = programme_row.get("family_ids")
+        if not isinstance(family_ids, list):
+            raise ValueError(f"Palomar programme order lacks family_ids for #{problem}")
+        for programme_position, raw_family_id in enumerate(family_ids, start=1):
+            family_id = str(raw_family_id)
+            if family_id in ranks:
+                raise ValueError(f"Palomar programme order repeats family {family_id!r}")
+            ranks[family_id] = {
+                "problem": problem,
+                "programme_position": programme_position,
+            }
+    return ranks
+
+
+def _claim_family_rows(claims: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+    for block in claims.get("external_verification_packet", {}).get("review_matrix", []):
+        for family in block.get("families", []):
+            family_id = family.get("id")
+            if not family_id:
+                continue
+            family_id = str(family_id)
+            if family_id in rows:
+                raise ValueError(f"Claims review matrix repeats family {family_id!r}")
+            rows[family_id] = family
+    return rows
+
+
+def _palomar_family_row(palomar: Mapping[str, Any], family_id: str) -> dict[str, Any]:
+    candidates = list(palomar.get("candidate_ranking", []))
+    candidates.extend(
+        palomar.get("candidate_value_dispositions", {}).get(
+            "source_landscape_candidates", []
+        )
+    )
+    matches = [row for row in candidates if row.get("family_id") == family_id]
+    source_matches = [
+        row for row in matches if row.get("source_declaration") or row.get("source_file")
+    ]
+    if len(source_matches) > 1:
+        raise ValueError(
+            f"Palomar must expose one exact source row for {family_id!r}; found {len(source_matches)}"
+        )
+    # A relation may deliberately retain a source-less no-go card. Keep that
+    # evidence visible without fabricating a source declaration for it.
+    return source_matches[0] if source_matches else {}
+
+
+def _family_card(
+    family_id: str,
+    ranks: Mapping[str, Mapping[str, int]],
+    palomar: Mapping[str, Any],
+    claims: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    rank = ranks[family_id]
+    claim = claims.get(family_id)
+    if claim is None:
+        raise ValueError(f"Claims review matrix lacks family {family_id!r}")
+    source = _palomar_family_row(palomar, family_id)
+    return {
+        "family_id": family_id,
+        "problem": rank["problem"],
+        "authority_rank": {
+            "programme_position": rank["programme_position"],
+            "basis": (
+                "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                "programme_family_order"
+            ),
+            "boundary": "Within-problem order only; no cross-problem rank is inferred.",
+        },
+        "proof_status": claim.get("contribution_class"),
+        "proof_status_authority": (
+            "docs/claims.json::external_verification_packet.review_matrix"
+            ".families[].contribution_class"
+        ),
+        "source_declaration": source.get("source_declaration"),
+        "wrapper_declaration": source.get("comparator_declaration"),
+        "source_route": source.get("source_file"),
+        "source_anchor": source.get("source_anchor"),
+        "mechanism": source.get("hard_mechanism"),
+        "summary": claim.get("summary") or source.get("statement"),
+        "open_boundary": claim.get("boundary"),
+        "evidence_mode": claim.get("evidence_mode"),
+        "limitations": source.get("limitations", []),
+    }
+
+
+def _relation_class(relation: str) -> str:
+    if "contrary" in relation:
+        return "natural_friction"
+    if "support" in relation or relation == "mechanism_for":
+        return "mechanism_support"
+    if "peer" in relation:
+        return "conditional_peer"
+    return "other"
+
+
+def _family_hierarchy(
+    family_id: str,
+    ranks: Mapping[str, Mapping[str, int]],
+    palomar: Mapping[str, Any],
+    claims: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    rows = []
+    for relation in palomar.get("selection_contract", {}).get("family_relations", []):
+        source = str(relation.get("from_family_id"))
+        target = str(relation.get("to_family_id"))
+        if family_id not in {source, target}:
+            continue
+        peer_id = target if family_id == source else source
+        if peer_id not in ranks:
+            raise ValueError(f"Palomar relation names unranked family {peer_id!r}")
+        rows.append(
+            {
+                "direction": "outgoing" if family_id == source else "incoming",
+                "relation": relation["relation"],
+                "relation_class": _relation_class(str(relation["relation"])),
+                "reason": relation["reason"],
+                "peer": _family_card(peer_id, ranks, palomar, claims),
+            }
+        )
+    rows.sort(
+        key=lambda row: (
+            row["peer"]["problem"],
+            row["peer"]["authority_rank"]["programme_position"],
+            row["relation"],
+        )
+    )
+    return {
+        "family": _family_card(family_id, ranks, palomar, claims),
+        "relations": rows,
+        "natural_friction_evidence": [
+            row for row in rows if row["relation_class"] == "natural_friction"
+        ],
+        "follow": {
+            "family": f"python3 scripts/query_semantic.py family-relations {family_id}",
+            "problem": f"python3 scripts/query_corpus.py --route erdos_{ranks[family_id]['problem']}",
+        },
+    }
+
+
+def semantic_endpoint_handoff_packet() -> dict[str, Any]:
+    """Join the expert index to canonical endpoint-facing family packets.
+
+    This reads the same Claims and Palomar source authorities as the semantic
+    route. The compact expert route owns no parallel family store, and
+    relation-array order never becomes a ranking rule.
+    """
+    palomar = load_json(PALOMAR)
+    claims = _claim_family_rows(load_json(CLAIMS))
+    ranks = _canonical_family_ranks(palomar)
+    roots = [
+        _family_hierarchy(family_id, ranks, palomar, claims)
+        for family_id in SEMANTIC_HANDOFF_ROOT_FAMILIES
+    ]
+    return {
+        "question": (
+            "Which endpoint-facing checked interfaces, supporting mechanisms, "
+            "natural-friction evidence, and unsupplied producers should an "
+            "expert inspect next?"
+        ),
+        "authority_posture": (
+            "Derived expert-to-semantic handoff. Family status comes from "
+            "Claims and hierarchy comes from Palomar; neither this packet nor "
+            "Comparator transport is Lean proof authority."
+        ),
+        "authority": {
+            "claims": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+            ),
+            "palomar": (
+                "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                "programme_family_order and family_relations"
+            ),
+            "rank_rule": (
+                "Canonical within-problem programme position determines "
+                "hierarchy; insertion order in a relation array never does."
+            ),
+        },
+        "root_family_ids": list(SEMANTIC_HANDOFF_ROOT_FAMILIES),
+        "roots": roots,
+        "coverage_boundary": (
+            "This route highlights two endpoint-facing roots without replacing "
+            "the all-eight-problem semantic registry or subordinate/long-tail "
+            "family discovery. Use each root's follow commands and "
+            "`python3 scripts/query_semantic.py problem-registry` for that "
+            "complete inventory."
+        ),
+    }
+
+
+def semantic_endpoint_handoff_route() -> dict[str, Any]:
+    """Provide the discoverable narrow command without eagerly loading authority."""
+    return {
+        "command": "python3 scripts/query_expert_handoffs.py --semantic-handoff",
+        "root_family_ids": list(SEMANTIC_HANDOFF_ROOT_FAMILIES),
+        "authority_posture": (
+            "Query-time Claims/Palomar projection; no second rank store."
+        ),
+    }
 
 
 def route_memory_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
@@ -591,6 +810,7 @@ def question_packet(
         "packet_kind": "full_question" if full_packet else "compact_index",
         "count": len(rows),
         "domain_counts": dict(sorted(domain_counts.items())),
+        "semantic_endpoint_handoff": semantic_endpoint_handoff_route(),
         "results": [
             respondent_view(row) if full_packet else compact_respondent_view(row)
             for row in rows
@@ -612,6 +832,7 @@ def main() -> int:
         metavar=("RESPONSE.json", "REVIEW.json"),
     )
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--semantic-handoff", action="store_true")
     args = parser.parse_args()
 
     exclusive = (
@@ -621,11 +842,12 @@ def main() -> int:
         args.review_template,
         args.review,
         args.check,
+        args.semantic_handoff,
     )
     if sum(bool(value) for value in exclusive) > 1:
         parser.error(
-            "--question, --template, --response, --review-template, --review "
-            "and --check are mutually exclusive"
+            "--question, --template, --response, --review-template, --review, "
+            "--check and --semantic-handoff are mutually exclusive"
         )
 
     if args.check:
@@ -638,6 +860,10 @@ def main() -> int:
             "expert handoff protocol: 5 mathematical questions and "
             f"{len(systems_questions())} systems question(s) verified"
         )
+        return 0
+
+    if args.semantic_handoff:
+        print(json.dumps(semantic_endpoint_handoff_packet(), indent=1, ensure_ascii=False))
         return 0
 
     if args.template:
