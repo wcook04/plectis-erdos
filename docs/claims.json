@@ -12275,6 +12275,13 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Finite quotient-band channel factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band",
+              "Erdos68.exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero",
+              "Erdos68.channelNumerator_mod_factorialMoment",
+              "Erdos68.primeTranslator_channelResidual_eq_one",
+              "ErdosProblems.Erdos68.projection_disagreement_excludes_bounded_endpoint"
+            ],
             "comparator_disposition": "represented_by_isolated_headline",
             "boundary": "These finite and structural results do not produce a cofinal obstruction."
           },
@@ -12334,6 +12341,10 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "A bounded-rise sequence cannot remain coprime to fresh pairwise-coprime moduli; reduced tails inherit this obstruction.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail",
+              "ErdosProblems.Erdos243.reducedTail_pairwiseCoprime"
+            ],
             "comparator_disposition": "represented_by_stronger_selected_boundary_theorem",
             "boundary": "The required bounded-rise input is not automatic for the original sequence."
           },
@@ -12555,6 +12566,10 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "The totient series is rewritten as a Lambert series with explicit nonnegative, unbounded prime-power coefficients.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "MersenneLambertLadder.tsum_primWeight_div_two_pow_sub_one",
+              "Erdos249257.tsum_primWeight_div_two_pow_sub_one_eq_totient_series"
+            ],
             "comparator_disposition": "represented_by_basis_and_rank_targets",
             "boundary": "The coefficient identities do not prove irrationality."
           },
@@ -12563,6 +12578,9 @@
             "contribution_class": "Lean formalisation of existing result",
             "summary": "Eventually periodic nonnegative rational weights give an irrational Lambert series.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic"
+            ],
             "comparator_disposition": "not_selected_prior_result",
             "boundary": "The totient-derived weights are not eventually periodic."
           },
@@ -12571,6 +12589,11 @@
             "contribution_class": "exact equivalence and conditional reduction",
             "summary": "Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are exact or sufficient reformulations.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply",
+              "ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational",
+              "Erdos249257.TotientTailPeriodKiller.dtwWindowSeparatedPairs_iff_irrational_totient_series"
+            ],
             "comparator_disposition": "not_selected_deep_certificate_vocabulary",
             "boundary": "Equivalent producer statements are as hard as the unresolved target."
           }
@@ -12593,6 +12616,12 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Block identities and exact denominator criteria classify rationality through integral positive tail shifts.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+              "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+              "ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne",
+              "ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one"
+            ],
             "comparator_disposition": "not_selected_abstract_family_represented_in_manifest",
             "boundary": "The concrete prime-gap producer remains missing."
           },
@@ -12615,6 +12644,11 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den",
+              "ErdosProblems.Erdos251.tailShift_integral_succ",
+              "ErdosProblems.Erdos251.tailShift_integral_add"
+            ],
             "comparator_disposition": "represented_by_integral_shift_family",
             "boundary": "This describes rational states and supplies no contradiction for actual prime gaps."
           },
@@ -12820,6 +12854,10 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
+              "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic"
+            ],
             "comparator_disposition": "represented_by_three_prime_structure_target",
             "boundary": "The fibre bounds do not provide the missing divisibility bridge."
           },
@@ -12836,6 +12874,9 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "The exact dyadic block alphabet is 2, 6, 10, and 30.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos269.dyadicBlockBase235_cases"
+            ],
             "comparator_disposition": "represented_by_three_prime_structure_target",
             "boundary": "The finite alphabet does not supply the needed carry escape."
           },
@@ -12888,6 +12929,10 @@
             "contribution_class": "locally proved result and formalised calculus; novelty unassessed",
             "summary": "The Newton value equation and its exponential first integral are checked exactly.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt",
+              "ErdosProblems.Erdos1041.newtonFlow_scaledValue_hasDerivAt_zero"
+            ],
             "comparator_disposition": "not_selected_compact_calculus_family",
             "boundary": "Value decay alone does not give a short connecting curve."
           },
@@ -12896,6 +12941,10 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Distinct positive rays exclude a finite Newton connection.",
             "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos1041.samePositiveRay_of_real_exp_decay",
+              "ErdosProblems.Erdos1041.no_newtonConnection_of_not_samePositiveRay"
+            ],
             "comparator_disposition": "represented_by_translation_avoidance_targets",
             "boundary": "The result is a route obstruction, not the global theorem."
           },
