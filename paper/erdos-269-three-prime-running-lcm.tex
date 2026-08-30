@@ -10,8 +10,8 @@
 \usepackage{colortbl}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0}
-\renewcommand{\commitshort}{76b5b0a7ed5d}
+\renewcommand{\commit}{60d53202f730a177cfb8390c69903cce3d642c3d}
+\renewcommand{\commitshort}{60d53202f730}
 \hypersetup{
   pdftitle={A two-prime transcendence theorem and exact three-prime structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -94,13 +94,13 @@ surjectivity and explicit $2\to3$ and $2\to5$ anchor equalities, block-nullity
 forces the perturbation to vanish; a nonzero integral lift error then grows
 like the product of the successive bases, so even one bound below $2^N$ is
 impossible (the checked declarations
-\lword{Erdos269/CarryLiftExtinction.lean}{176}{no_carryLift_of_errorBound_below_twoPow}{one-index
+\lword{Erdos269/CarryLiftExtinction.lean}{178}{no_carryLift_of_errorBound_below_twoPow}{one-index
 extinction} and
-\lword{Erdos269/CarryLiftExtinction.lean}{236}{no_bounded_carryLift_of_blockNull_twoAnchors}{uniform
+\lword{Erdos269/CarryLiftExtinction.lean}{238}{no_bounded_carryLift_of_blockNull_twoAnchors}{uniform
 extinction}).  In a four-state unit-accuracy model, the same two anchors
 force the first complete $2$-block defect to equal $1$, ruling out
 block-nullity immediately
-(\lword{Erdos269/CarryLiftExtinction.lean}{306}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}{four-state
+(\lword{Erdos269/CarryLiftExtinction.lean}{308}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}{four-state
 obstruction}).  These are conditional no-go statements, not assertions that
 the actual three-prime orbit supplies the anchors or a carry lift.
 
@@ -1125,11 +1125,11 @@ window identity}.
 For $C>0$, let $\operatorname{lpr}_C(x)\in\{1,\ldots,C\}$ be the least
 positive representative of $x\bmod C$, with a zero residue represented by
 $C$.  This is the
-\lword{Erdos269/ResidueEscape.lean}{19}{leastPositiveResidue}{canonical
+\lword{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue}{canonical
 representative}.  Lean checks both its
-\lword{Erdos269/ResidueEscape.lean}{24}{leastPositiveResidue_pos_le}{positive
+\lword{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le}{positive
 range} and its
-\lword{Erdos269/ResidueEscape.lean}{46}{leastPositiveResidue_modEq}{congruence
+\lword{Erdos269/ResidueEscape.lean}{52}{leastPositiveResidue_modEq}{congruence
 to the source integer}.  This convention matters: replacing
 $\operatorname{lpr}_C(x)$ by $|x|$ would not be a modular statement.
 
@@ -1177,9 +1177,9 @@ equal, contradicting $|c|\le K<\operatorname{lpr}_C(x)$.
 \end{proof}
 
 \noindent The natural-state version is the
-\lword{Erdos269/ResidueEscape.lean}{72}{no_bounded_positive_state_of_residue_escape}{finite
+\lword{Erdos269/ResidueEscape.lean}{76}{no_bounded_positive_state_of_residue_escape}{finite
 contradiction}; the integer carry version is the
-\lword{Erdos269/ResidueEscape.lean}{107}{no_bounded_positive_int_state_of_leastPositiveResidue}{integer
+\lword{Erdos269/ResidueEscape.lean}{110}{no_bounded_positive_int_state_of_leastPositiveResidue}{integer
 form of the contradiction}.
 
 The same finite arithmetic gives an exact classifier, not merely a
@@ -1191,7 +1191,7 @@ $c\equiv x\pmod C$, then
 This includes the endpoint correctly: the zero congruence class is represented
 by $C$, so $c=C$ gives $\operatorname{lpr}_C(x)=C$, not zero.  Lean checks this
 as
-\lword{Erdos269/ResidueEscape.lean}{137}{leastPositiveResidue_eq_natAbs_of_pos_le_modEq}{exact
+\lword{Erdos269/ResidueEscape.lean}{138}{leastPositiveResidue_eq_natAbs_of_pos_le_modEq}{exact
 least-positive-residue classifier}.  This is only a finite theorem.  Applying
 it to the series still requires two independent results: rationality
 must produce a positive bounded integral carry with the required
@@ -1366,7 +1366,7 @@ all residue-window machinery.
 The bounded-radix theorem gives a useful exact reduction.  Since
 $2\le\beta_a\le30$, any real affine tail orbit either hits an integer or is,
 cofinally often, at distance at least $1/31$ from every integer
-(\lword{Erdos269/BoundedRadixTailEscape.lean}{80}{boundedRadix_zero_or_cofinal_far}{checked}).
+(\lword{Erdos269/BoundedRadixTailEscape.lean}{89}{boundedRadix_zero_or_cofinal_far}{checked}).
 It does not exclude the integral branch; Problem~\ref{prob:tails269} is exactly
 what must do so for the actual orbit.
 
@@ -1481,26 +1481,26 @@ The three-channel rigidity and carry-lift extinction theorems already exclude
 one false route in four exact steps.  Under channel surjectivity, ordinary
 block-nullity is equivalent to the perturbation being a coboundary of a
 channel potential
-(\lword{Erdos269/ThreeChannelBlockRigidity.lean}{61}{channelBlockNull_iff_channelPotential}{potential
+(\lword{Erdos269/ThreeChannelBlockRigidity.lean}{59}{channelBlockNull_iff_channelPotential}{potential
 classifier}).  Zero perturbations on genuine $2\to3$ and $2\to5$ transitions
 then identify all three potential values and force the perturbation to vanish
 at every index.  For an integral lift, that vanishing makes a nonzero initial
 lift error grow by the exact product of the successive bases; bases at least
 two make its absolute value at least $2^N$, contradicting even a single
 index-$N$ bound strictly below $2^N$
-(\lword{Erdos269/CarryLiftExtinction.lean}{176}{no_carryLift_of_errorBound_below_twoPow}{one-index
+(\lword{Erdos269/CarryLiftExtinction.lean}{178}{no_carryLift_of_errorBound_below_twoPow}{one-index
 extinction}).  A single index therefore already suffices, and consequently no
 uniform bound on the lift error can hold either: under the same hypotheses a
 nonzero initial error is incompatible with any bound valid at every index
-(\lword{Erdos269/CarryLiftExtinction.lean}{236}{no_bounded_carryLift_of_blockNull_twoAnchors}{uniform
+(\lword{Erdos269/CarryLiftExtinction.lean}{238}{no_bounded_carryLift_of_blockNull_twoAnchors}{uniform
 extinction}).
 A separate four-state calculation reaches the obstruction earlier: four real
 states in $(0,1)$ with unit-accuracy integral lifts and the two anchor
 equalities force the first complete $2$-block sum to be $1$, hence that block
 cannot be null
-(\lword{Erdos269/CarryLiftExtinction.lean}{287}{binaryLift_twoAnchors_force_firstBlock_sum_one}{first-block
+(\lword{Erdos269/CarryLiftExtinction.lean}{289}{binaryLift_twoAnchors_force_firstBlock_sum_one}{first-block
 sum},
-\lword{Erdos269/CarryLiftExtinction.lean}{306}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}{four-state
+\lword{Erdos269/CarryLiftExtinction.lean}{308}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}{four-state
 obstruction}).
 
 These conclusions remain conditional.  No theorem constructs the
@@ -1619,13 +1619,13 @@ internal-power uniqueness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyad
 dyadic block base & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{688}{dyadicBlockBase235}\\
 exact dyadic radix alphabet & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}\\
 bounded-radix consequence & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}\\
-least positive residue & \lrefx{Erdos269/ResidueEscape.lean}{19}{leastPositiveResidue}\\
-positive representative range & \lrefx{Erdos269/ResidueEscape.lean}{24}{leastPositiveResidue_pos_le}\\
-representative congruence & \lrefx{Erdos269/ResidueEscape.lean}{46}{leastPositiveResidue_modEq}\\
-escape condition & \lrefx{Erdos269/ResidueEscape.lean}{66}{ResidueEscapesWindow}\\
-finite natural-state contradiction & \lrefx{Erdos269/ResidueEscape.lean}{72}{no_bounded_positive_state_of_residue_escape}\\
-contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{93}{residue_le_bound_of_bounded_positive_state}\\
-integer least-positive-residue obstruction & \lrefx{Erdos269/ResidueEscape.lean}{107}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
+least positive residue & \lrefx{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue}\\
+positive representative range & \lrefx{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le}\\
+representative congruence & \lrefx{Erdos269/ResidueEscape.lean}{52}{leastPositiveResidue_modEq}\\
+escape condition & \lrefx{Erdos269/ResidueEscape.lean}{71}{ResidueEscapesWindow}\\
+finite natural-state contradiction & \lrefx{Erdos269/ResidueEscape.lean}{76}{no_bounded_positive_state_of_residue_escape}\\
+contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{96}{residue_le_bound_of_bounded_positive_state}\\
+integer least-positive-residue obstruction & \lrefx{Erdos269/ResidueEscape.lean}{110}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
 window base & \lrefx{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}\\
 window forcing & \lrefx{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}\\
 affine window identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{455}{affineRecurrence_window}\\
