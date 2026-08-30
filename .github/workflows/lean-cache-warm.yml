@@ -92,6 +92,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Test cache-warm command environment
+        run: |
+          python3 scripts/test_lean_cache_warm_environment.py
+          python3 -O scripts/test_lean_cache_warm_environment.py
+
       # Same key shape as `lean.yml`, so its prefix `restore-keys` fallback
       # finds what this run saves. Diverging here would silently reintroduce
       # the stale-cache rebuild.
