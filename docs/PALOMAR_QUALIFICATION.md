@@ -98,7 +98,21 @@ source-landscape evidence rather than Comparator evidence, and it supplies no
 cofinal non-unit carry, strict-successor divisibility miss, nonzero translated
 residual, or moving projection-disagreement family; Erdős #68 remains open.
 
-For #1041, the same all-corpus audit makes the source-only `ray_separation`
+For #1041, the exact source-only `newton_value_decay` family is now the
+explicit load-bearing local mechanism rather than a terse calculus row. In
+`NewtonFlowRaySeparation.lean:50,64`, complex chain-rule cancellation away
+from a critical point gives `d(f ∘ z)/dt = -f(z(t))`, and the exponential
+product rule makes `exp(t) * f(z(t))` have derivative zero. This is the local
+first integral behind radial exponential decay and fixed argument. It ranks
+above `ray_separation`, translation avoidance, root retention, and finite
+search because all of them consume or support this invariant, but below
+completed endpoint families. The checked statements are pointwise complex
+`HasDerivAt` facts: they do not prove real-time trajectory existence,
+integrate a global connection, stabilize components under perturbation, or
+supply the Morse/Reeb topology, collar-slack transfer, and strict
+length-below-two fan-in required by Erdős #1041.
+
+The same audit keeps the source-only `ray_separation`
 family explicit rather than leaving its role implicit behind Comparator's
 translation-avoidance and root-retention rows. In
 `NewtonFlowRaySeparation.lean:306,315`, the exact endpoint relation multiplies

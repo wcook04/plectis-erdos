@@ -278,6 +278,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos68_channel_projection_rigidity",
         "erdos1041_ray_separation",
         "erdos243_bounded_rise_coprimality",
+        "erdos1041_newton_value_decay",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
         range(1, len(showcase["candidate_ranking"]) + 1)
@@ -380,6 +381,23 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "centered_state_dynamics" in bounded_rise["ranked_below"]
     assert "negative_mass_recovery" in bounded_rise["ranked_below"]
     assert "rise bound" in " ".join(bounded_rise["limitations"]).lower()
+    value_decay = landscape_by_id["erdos1041_newton_value_decay"]
+    assert value_decay["family_id"] == "newton_value_decay"
+    assert value_decay["disposition"] == "represented"
+    assert value_decay["comparator_eligibility"] == (
+        "source_landed_but_not_comparator_configured"
+    )
+    assert value_decay["canonical_claim_commit"] == (
+        "06198c0ab3969c625e1022eaebfb46208ff0b5e4"
+    )
+    assert "newtonFlow_value_hasDerivAt" in value_decay["source_declaration"]
+    assert "newtonFlow_scaledValue_hasDerivAt_zero" in value_decay[
+        "source_declaration"
+    ]
+    assert "ray_separation" in value_decay["ranked_above"]
+    assert "translation_avoidance" in value_decay["ranked_above"]
+    assert "root_retention" in value_decay["ranked_above"]
+    assert "topology" in " ".join(value_decay["limitations"]).lower()
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
     negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]

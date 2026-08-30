@@ -213,14 +213,14 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and twelve targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection, #243 bounded-rise, and #1041 ray-separation discoveries are represented below their stronger endpoint/mechanism families, without turning missing cofinal, bounded-rise, or global-gluing producers into Comparator evidence.",
+      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and thirteen targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection, #243 bounded-rise, and #1041 Newton-value/ray discoveries are represented below completed endpoints, without turning missing cofinal, bounded-rise, global-flow, topology, or metric-gluing producers into Comparator evidence.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "ac7211acdb73c8d6573bc4693010930cb6d5410092f5a78145408b37a3097fbe",
+      "review_matrix_sha256": "c619cdab56f6ff5388b753d425b615af2ecc173e40b7c32670928eb8456a8296",
       "review_family_count": 70,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
@@ -235,7 +235,8 @@
         "erdos249_carry_anti_compression",
         "erdos68_channel_projection_rigidity",
         "erdos1041_ray_separation",
-        "erdos243_bounded_rise_coprimality"
+        "erdos243_bounded_rise_coprimality",
+        "erdos1041_newton_value_decay"
       ],
       "comparator_role": "Comparator membership is evidence/eligibility/admission nested below source-landscape population and never defines its candidate universe."
     },
@@ -254,6 +255,31 @@
       "remaining_boundary": "The cofinal separation supply remains unproved; a proved supply, or a later source-current result with equal evidence certainty and a stronger completed endpoint, would justify a fresh ranking against full support."
     },
     "source_landscape_queue": [
+      {
+        "candidate_id": "erdos1041_newton_value_decay",
+        "family_id": "newton_value_decay",
+        "disposition": "represented",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt; ErdosProblems.Erdos1041.newtonFlow_scaledValue_hasDerivAt_zero",
+        "source_file": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+        "source_anchor": "50; 64",
+        "statement": "The noncritical Newton chain rule gives value derivative -value, and exponential rescaling gives a zero-derivative first integral.",
+        "exact_hypotheses": [
+          "f is complex differentiable with derivative f'(z(t)) at z(t), and z is tangent to -f/f' at t.",
+          "The derivative f'(z(t)) is nonzero."
+        ],
+        "conclusion": "The exact pointwise Newton-value and scaled-value derivative identities hold, without asserting a global flow or short connecting curve.",
+        "hard_mechanism": "Noncritical chain-rule cancellation gives w'=-w; the exponential product rule yields the zero derivative of exp(t)w(t), which is the local invariant behind radial value decay and fixed argument.",
+        "attribution": "Source-current Lean in NewtonFlowRaySeparation.lean:50,64, canonically bound by Claims commit 06198c0a; no novelty, priority, significance, or external-review claim is made.",
+        "limitations": [
+          "No global real-time trajectory or integrated endpoint identity is proved by these local HasDerivAt statements alone.",
+          "No component stability, global topology, collar-slack transfer, strict length-below-two fan-in, or Erdős #1041 endpoint follows."
+        ],
+        "reason": "Represented above the ray-separation and perturbation supports as their load-bearing local invariant, but below completed endpoint families because every global flow, topology, and metric obligation remains open.",
+        "reversal_evidence": "Comparator transport would strengthen executable review evidence; a global flow plus stable topological and metric fan-in would justify promotion, while another local calculus identity would not."
+      },
       {
         "candidate_id": "erdos243_bounded_rise_coprimality",
         "family_id": "bounded_rise_coprimality",

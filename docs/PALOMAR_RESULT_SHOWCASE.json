@@ -271,7 +271,14 @@
       {
         "family_id": "newton_value_decay",
         "tier_id": "deep_mechanism_and_classification",
-        "relative_judgement": "The Newton value equation and exponential first integral are the load-bearing local mechanism, while metric gluing to a short curve remains open."
+        "relative_judgement": "The Newton value equation and exponential first integral are the load-bearing local mechanism, while metric gluing to a short curve remains open.",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "source_declarations": [
+          "ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt",
+          "ErdosProblems.Erdos1041.newtonFlow_scaledValue_hasDerivAt_zero"
+        ],
+        "hard_mechanism": "Away from a critical point, the complex Newton vector -f/f' cancels the derivative in the chain rule and gives w' = -w along a tangent curve. The product rule with the complex exponential then makes exp(t) * f(z(t)) a zero-derivative first integral, exposing radial exponential value decay and fixed argument.",
+        "open_boundary": "These are pointwise complex-derivative statements. They do not prove real-time trajectory existence, integrate the local derivative identity globally, construct a connecting curve, preserve a component under perturbation, or perform the Reeb/topological and strict length-below-two fan-in required by Erdős #1041."
       },
       {
         "family_id": "ray_separation",
@@ -742,6 +749,11 @@
         "candidate_id": "erdos1041_ray_separation",
         "disposition": "represented",
         "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos1041_ray_separation]"
+      },
+      {
+        "candidate_id": "erdos1041_newton_value_decay",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos1041_newton_value_decay]"
       }
     ],
     "comparator_screen": {
@@ -931,6 +943,57 @@
       }
     ],
     "source_landscape_candidates": [
+      {
+        "candidate_id": "erdos1041_newton_value_decay",
+        "family_id": "newton_value_decay",
+        "disposition": "represented",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt; ErdosProblems.Erdos1041.newtonFlow_scaledValue_hasDerivAt_zero",
+        "source_file": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+        "source_anchor": "50; 64",
+        "statement": "Along a curve tangent to the noncritical complex Newton field -f/f', the polynomial value has derivative equal to its own negative, and exp(t) times that value has derivative zero.",
+        "exact_hypotheses": [
+          "At one complex time t, f has complex derivative f'(z(t)) at z(t).",
+          "The curve z has complex derivative newtonFlowVector (f(z(t))) (f'(z(t))) at t.",
+          "The derivative value f'(z(t)) is nonzero, so the Newton-vector cancellation is valid."
+        ],
+        "conclusion": "The source proves the pointwise value equation d(f∘z)/dt = -f(z(t)) and the zero derivative of exp(t) * f(z(t)); these are the local differential form of exponential radial decay, not a global flow or short-curve theorem.",
+        "hard_mechanism": "The chain rule multiplies f'(z(t)) by -f(z(t))/f'(z(t)); noncriticality cancels the denominator exactly. The exponential derivative and product rule then cancel the remaining value term, yielding the first integral that underlies fixed-argument ray geometry.",
+        "attribution": "These source-current Lean declarations are in NewtonFlowRaySeparation.lean:50,64 and are canonically bound to newton_value_decay by Claims commit 06198c0a. No novelty, priority, significance, or external-review claim is made.",
+        "limitations": [
+          "The statements are local HasDerivAt facts over a complex parameter and do not establish a real-time solution on a prescribed interval or integrate the first integral globally.",
+          "Ray separation is a geometric consumer of this invariant; translation avoidance and root retention are separate perturbative supports rather than proofs of trajectory existence or component stability.",
+          "No Morse/Reeb topology or decomposition, saddle and annular-cut gluing, collar-slack transfer, curve of length less than two, or Erdős #1041 endpoint follows."
+        ],
+        "source_landscape_rank_relative_to": "Above ray_separation, translation_avoidance, root_retention, and finite search as the common load-bearing local invariant, but below direct completed endpoint families because global flow existence, topology, perturbation stability, and strict metric fan-in remain open.",
+        "ranked_below": [
+          "known_irrational_supports",
+          "pairwise_coprime_support"
+        ],
+        "ranked_above": [
+          "ray_separation",
+          "translation_avoidance",
+          "root_retention",
+          "lemniscate_finite_search"
+        ],
+        "prerequisite_relations": [
+          "noncriticality f'(z(t)) != 0",
+          "curve tangent to newtonFlowVector"
+        ],
+        "support_relations": [
+          "derivative_mul_newtonFlowVector"
+        ],
+        "conditional_peer_relations": [
+          "ray_separation",
+          "translation_avoidance",
+          "root_retention"
+        ],
+        "contrary_evidence": "The invalid local saddle-block route and the unresolved global-flow/component-stability/length obligations show that exact value decay alone cannot be promoted to a connecting-curve theorem.",
+        "reason": "Represented as the strongest underweighted #1041 mechanism: it is the exact local invariant consumed by every ray-based route, while the separate finite perturbation theorems and open global topology remain visible rather than being flattened into a false endpoint.",
+        "reversal_evidence": "A source-faithful Comparator transport would strengthen executable review evidence; a proved relative global Newton-flow theorem plus component-stable topological and strict length fan-in would justify endpoint-facing promotion, while another local derivative identity or finite search would not."
+      },
       {
         "candidate_id": "erdos243_bounded_rise_coprimality",
         "family_id": "bounded_rise_coprimality",
