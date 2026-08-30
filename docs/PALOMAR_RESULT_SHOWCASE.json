@@ -1,0 +1,199 @@
+{
+  "schema": "plectis-palomar-result-showcase/1",
+  "captured_at": "2026-08-30",
+  "source_authority": {
+    "claim_registry": "docs/claims.json",
+    "proof_authority": "Lean source checked by the pinned kernel",
+    "comparator_authority": "HEAD:verification/comparator.json",
+    "comparator_sha256": "7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
+    "comparator_theorem_count": 31,
+    "comparator_roster": [
+      "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+      "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+      "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
+      "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
+      "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+      "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+      "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
+      "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+      "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+      "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+      "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower",
+      "Erdos249257.ExternalVerification.cylinderMass_split",
+      "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
+      "Erdos249257.ExternalVerification.exists_primeGap0_gt",
+      "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
+      "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+      "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+      "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
+      "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
+      "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction",
+      "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect",
+      "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
+      "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+      "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
+      "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+      "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
+      "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
+      "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
+      "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
+      "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+    ],
+    "all_eight_programmes_remain_open": true
+  },
+  "candidate_selection": {
+    "selected": true,
+    "problem": 257,
+    "family_id": "pairwise_coprime_support",
+    "claim_id": "support_families",
+    "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+    "source_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
+    "source_file": "Erdos249257/CertificateKernel.lean",
+    "source_anchor": "10768-10782",
+    "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series erdosSupportSeries b A is irrational.",
+    "exact_hypotheses": [
+      "2 <= b",
+      "A is infinite",
+      "A is pairwise Nat.Coprime",
+      "the indicator of A weighted by reciprocal index is summable"
+    ],
+    "conclusion": "Irrational (erdosSupportSeries b A)",
+    "hard_mechanism": "The proof consumes weighted coefficient certificates produced by an adaptive CRT. Small support elements are paid in the first block, unselected support petals are controlled as residue strays, and summable reciprocals close the weighted tail bound.",
+    "why_this_is_the_showcase": "It is an unconditional theorem for a broad non-dilation infinite support class, exposes a real certificate mechanism rather than only a recurrence or finite computation, and has a clean statement-isolated Challenge type.",
+    "attribution": "The source docstring records Erdős (1968) for this support theorem; the local Lean proof is the proof authority, while the cited source supplies attribution and statement-fidelity context.",
+    "limitations": [
+      "It does not prove irrationality for every infinite support.",
+      "It does not solve universal Erdős #257.",
+      "The infinitude, pairwise-coprimality, and summable-reciprocal hypotheses are not optional.",
+      "Comparator establishes statement identity and configured axiom use, not novelty or editorial significance."
+    ]
+  },
+  "selection_comparison": [
+    {
+      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "family_id": "known_irrational_supports",
+      "disposition": "not_selected_alternative",
+      "reason": "It has the strongest direct consequence for the full-support subcase, but it formalises the classical already-known full-support theorem and exposes less of the non-dilation support mechanism that the showcase is meant to make reviewable."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+      "family_id": "orthogonal_petal_sunflower_reduction",
+      "disposition": "not_selected_alternative",
+      "reason": "Its bouquet and uniform tail-selection hypotheses expose a deeper conditional route, but those structural hypotheses are not constructed for arbitrary supports; its evidence boundary is therefore weaker for an unconditional showcase."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
+      "family_id": "coordinatewise_corridor_no_go",
+      "disposition": "not_selected_alternative",
+      "reason": "It is a sharp, useful no-go result, but it excludes one proof architecture and concludes no irrationality statement; it is lower consequence for the selected Palomar candidate."
+    }
+  ],
+  "frontier_by_problem": [
+    {
+      "problem": 68,
+      "status": "open",
+      "frontier_summary": "Factorial-denominator irrationality is reduced to cofinally many strict-successor divisibility failures or non-unit carries; no cofinal producer is proved.",
+      "open_boundary": "Irrationality of the factorial-denominator series.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+        "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries"
+      ]
+    },
+    {
+      "problem": 243,
+      "status": "open",
+      "frontier_summary": "Exact product-cleared tail dynamics and no-go results for bounded or periodic negative-error regimes are checked.",
+      "open_boundary": "The unrestricted reciprocal-tail problem and arbitrary unbounded negative behaviour.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
+        "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit"
+      ]
+    },
+    {
+      "problem": 249,
+      "status": "open",
+      "frontier_summary": "Finite dyadic and conditional all-base kernel rank, exact visible-lattice and gcd-moment identities, Stern-Brocot stability, and a synthetic LCM factor-ideal no-go are exposed.",
+      "open_boundary": "The binary totient series irrationality endpoint and the unbounded certificate supply.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+        "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+        "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
+        "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+        "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+        "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+        "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower",
+        "Erdos249257.ExternalVerification.cylinderMass_split",
+        "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient"
+      ]
+    },
+    {
+      "problem": 251,
+      "status": "open",
+      "frontier_summary": "Prime gaps are unbounded and the prime-value and prime-gap dyadic series are related by an exact irrationality equivalence.",
+      "open_boundary": "Irrationality of the target prime-gap series.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.exists_primeGap0_gt",
+        "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap"
+      ]
+    },
+    {
+      "problem": 257,
+      "status": "open",
+      "frontier_summary": "The checked frontier combines achievement-set geometry, full and structured support irrationality, finite-period noncollapse, state extraction, composite-dilation defects, and the sharp two-adic band bound.",
+      "open_boundary": "Universal irrationality for every infinite support, including the unresolved half and 1/21 membership routes.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+        "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+        "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+        "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
+        "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
+        "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction",
+        "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect",
+        "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
+        "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+        "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic"
+      ]
+    },
+    {
+      "problem": 269,
+      "status": "open",
+      "frontier_summary": "A three-prime kernel minor and the exact running-LCM/height identity are checked.",
+      "open_boundary": "Irrationality or transcendence in any three-prime case.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+        "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight"
+      ]
+    },
+    {
+      "problem": 1041,
+      "status": "open",
+      "frontier_summary": "Finite translation avoidance and quantified root retention are checked as isolated inputs to the incomplete Newton-flow route.",
+      "open_boundary": "The unrestricted polynomial lemniscate connection problem.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
+        "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk"
+      ]
+    },
+    {
+      "problem": 1049,
+      "status": "open",
+      "frontier_summary": "The coordinatewise corridor is impossible at base 3/2 and the exact rational-base cleared-tail recurrence is checked.",
+      "open_boundary": "Irrationality at base 3/2 and for rational bases generally.",
+      "comparator_declarations": [
+        "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
+        "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+      ]
+    }
+  ],
+  "release_boundary": {
+    "qualification": "NOT_READY",
+    "why": "Current main has a coherent, exact statement/showcase candidate, but formalization.yaml is stale against the current official v0.4 requirement and no immutable terminal Palomar mechanical or independent replay report is bound.",
+    "not_claimed": [
+      "universal Erdős #257 solved",
+      "any of the eight open problems solved",
+      "novelty or human peer review",
+      "registration or publication"
+    ]
+  }
+}

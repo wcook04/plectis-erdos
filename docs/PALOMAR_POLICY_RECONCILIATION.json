@@ -1,0 +1,259 @@
+{
+  "schema": "plectis-palomar-policy-reconciliation/1",
+  "captured_at": "2026-08-30",
+  "purpose": "Bind the current official Palomar contract to this repository's exact submission candidate without treating a local research ref, Comparator row count, or a local proof as registration authority.",
+  "authority_posture": "official_sources_pinned_by_commit_and_sha256",
+  "official_authorities": [
+    {
+      "authority": "PalomarPolicy",
+      "path": "docs/specification.md",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarPolicy/d5a647db3757303b1d928cfae4d3d232eed3e79e/docs/specification.md",
+      "commit": "d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "sha256": "70a4140cb697d90d43e68b5e7baac0667a955d90345d9edb78655b9d34bb13bc",
+      "role": "current repository, review, registration, publication, and source-preservation contract"
+    },
+    {
+      "authority": "PalomarPolicy",
+      "path": "CONTRIBUTING.md",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarPolicy/d5a647db3757303b1d928cfae4d3d232eed3e79e/CONTRIBUTING.md",
+      "commit": "d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "sha256": "98e5440b35a1c0821bb7d04690fe23c0d1c246fd8453e80f389cae128d4431c9",
+      "role": "submitter-facing suitability, repository, Challenge/Solution, Comparator, dependency, licence, and formalization requirements"
+    },
+    {
+      "authority": "PalomarPolicy",
+      "path": "rubric.json",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarPolicy/d5a647db3757303b1d928cfae4d3d232eed3e79e/rubric.json",
+      "commit": "d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "sha256": "fb8b5eb01bc41dc2c0a5a138b78b82004708681c97b311c225bdf6217f5f7d7d",
+      "role": "ordered editorial-review checks"
+    },
+    {
+      "authority": "PalomarPolicy",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarPolicy/d5a647db3757303b1d928cfae4d3d232eed3e79e/LICENSE",
+      "commit": "d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "sha256": "6865dc4b2cc5cf4a2fb4992677628bafb068ddd109c5d0c583f48849bc65714f",
+      "role": "policy licence"
+    },
+    {
+      "authority": "PalomarSubmission",
+      "path": "toolchains.json",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/toolchains.json",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "b9b749bd4c0c3fb485cbf53870d8fb791ae0e3e071db611b9ea6228d1c051bad",
+      "role": "closed minimum-toolchain contract; current minimum is v4.28.0"
+    },
+    {
+      "authority": "PalomarSubmission",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/README.md",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "deea32a0d1c0b27a5153ddec12df0ea88816f157aff748c2c1f983672946eb9b",
+      "role": "mechanical submission and trusted-tooling implementation boundary"
+    },
+    {
+      "authority": "PalomarSubmission",
+      "path": "formalization-profile.json",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/formalization-profile.json",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "892732c06af1b8b9ad8400d12351383dca754eea27537229b1ffac8704e529f4",
+      "role": "formalization.yaml v0.4 metadata field profile"
+    },
+    {
+      "authority": "PalomarSubmission",
+      "path": "SECURITY.md",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/SECURITY.md",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "b127d46e0d4890298fb888fe9683d5fdfbff0a13b729ac237228b74f50a2f4ed",
+      "role": "submission and verifier security boundary"
+    },
+    {
+      "authority": "PalomarSubmission",
+      "path": "docs/comparator-declaration-closure.md",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/docs/comparator-declaration-closure.md",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "fe634eb0812724ee5591940485f819a0aa73a455ab537c422f7d068f8373d97c",
+      "role": "named-declaration and transitive closure interpretation"
+    },
+    {
+      "authority": "PalomarSubmission",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/LICENSE",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "10321b0cca2b8025d4b5065dd20e22c1f74da2e872c12363e3601974e093bc21",
+      "role": "submission-tool licence"
+    },
+    {
+      "authority": "PalomarWeb",
+      "path": "about.html",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarWeb/2114a47adcbdb3d737133cd8898474d418b4bee2/about.html",
+      "commit": "2114a47adcbdb3d737133cd8898474d418b4bee2",
+      "sha256": "67b79ced51eb4241d3355328f1ee860f30f8d216237df585fb18a4f9e3bac2b8",
+      "role": "public registry view, immutability, licence, and review-boundary explanation"
+    },
+    {
+      "authority": "PalomarWeb",
+      "path": "how-to-submit.html",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarWeb/2114a47adcbdb3d737133cd8898474d418b4bee2/how-to-submit.html",
+      "commit": "2114a47adcbdb3d737133cd8898474d418b4bee2",
+      "sha256": "e4c6dbbd34c70ed1fa276aee0eb672c431b6c5cfcf14c4632d2fa6aba9a9f9aa",
+      "role": "public submission and registry-reader route"
+    },
+    {
+      "authority": "PalomarWeb",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarWeb/2114a47adcbdb3d737133cd8898474d418b4bee2/LICENSE",
+      "commit": "2114a47adcbdb3d737133cd8898474d418b4bee2",
+      "sha256": "10321b0cca2b8025d4b5065dd20e22c1f74da2e872c12363e3601974e093bc21",
+      "role": "registry-view licence"
+    }
+  ],
+  "registry_boundary": {
+    "public_view": "https://data.palomar-registry.org/recent.json",
+    "public_view_role": "read-only projection, not registry authority",
+    "canonical_registry_role": "PalomarDatabase is private and is not available as a local submission authority",
+    "registration_action": "operator_only_not_performed"
+  },
+  "current_repository": {
+    "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
+    "observed_head_before_product": "53c2e1f18641d6577c3e1e640eaeaf137a9046a7",
+    "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
+    "alternate_ref": {
+      "ref": "local-research-20260829",
+      "commit": "db54fb05b81f3a51f4421d6afc6b97064d0d337f",
+      "status": "incompatible_not_authority",
+      "evidence": [
+        "uses root comparator.json instead of the current verification/comparator.json",
+        "contains Palomar surfaces and source modules absent from current main",
+        "must not be copied into the main-compatible product"
+      ]
+    },
+    "comparator": {
+      "path": "verification/comparator.json",
+      "committed_sha256": "7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
+      "theorem_name_count": 31,
+      "challenge_module": "ExternalVerification.Challenge",
+      "solution_module": "ExternalVerification.Solution",
+      "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+      "worktree_rows_not_consumed": true
+    },
+    "toolchain": {
+      "path": "lean-toolchain",
+      "version": "leanprover/lean4:v4.29.1",
+      "official_minimum": "v4.28.0",
+      "structural_status": "pass"
+    },
+    "license": {
+      "path": "LICENSE",
+      "spdx": "Apache-2.0",
+      "project_license": "Apache-2.0",
+      "structural_status": "pass"
+    }
+  },
+  "requirements": [
+    {
+      "id": "public_exact_commit",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "withheld",
+      "evidence": "The product is being built against a moving shared checkout; the final submission commit must be captured after this product lands.",
+      "disposition": "terminal_sha_required_before_submission"
+    },
+    {
+      "id": "challenge_solution",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "ExternalVerification.Challenge and ExternalVerification.Solution are distinct committed modules in the current project.",
+      "disposition": "structurally_satisfied"
+    },
+    {
+      "id": "explicit_comparator_path",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "The current main-compatible configuration is verification/comparator.json and is explicitly named by this product.",
+      "disposition": "structurally_satisfied"
+    },
+    {
+      "id": "permitted_axiom_ceiling",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "The committed Comparator configuration contains exactly propext, Quot.sound, and Classical.choice.",
+      "disposition": "configuration_satisfied_solution_audit_withheld"
+    },
+    {
+      "id": "lean_toolchain_floor",
+      "source": "PalomarSubmission/toolchains.json@e215b184d1b659e8e3e641162a7d63708678016f",
+      "status": "pass",
+      "evidence": "lean-toolchain is v4.29.1, above the official v4.28.0 minimum.",
+      "disposition": "structurally_satisfied"
+    },
+    {
+      "id": "lake_manifest_and_dependency_pins",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "The current tree contains lakefile.toml and lake-manifest.json; full Palomar dependency closure verification remains terminal evidence.",
+      "disposition": "structural_presence_pass_terminal_closure_withheld"
+    },
+    {
+      "id": "root_license",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "The root LICENSE declares Apache-2.0 and formalization.yaml declares the same identifier.",
+      "disposition": "structurally_satisfied"
+    },
+    {
+      "id": "formalization_v04_metadata",
+      "source": "PalomarPolicy/docs/specification.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "not_ready",
+      "evidence": "Current formalization.yaml still declares v0.3, has no current responsible_maintainers field or classification block, and uses source-type labels outside the adopted v0.4 closed vocabulary.",
+      "disposition": "local_generated_metadata_deficit; do_not_claim_ready"
+    },
+    {
+      "id": "informal_account_and_boundaries",
+      "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "pass",
+      "evidence": "PALOMAR_RESULT_SHOWCASE.json and PALOMAR_QUALIFICATION.md expose exact hypotheses, mechanism, attribution, limitations, and the universal #257 open boundary.",
+      "disposition": "product_surface_satisfied"
+    },
+    {
+      "id": "challenge_closure_and_axiom_audit",
+      "source": "PalomarSubmission/docs/comparator-declaration-closure.md@e215b184d1b659e8e3e641162a7d63708678016f",
+      "status": "withheld",
+      "evidence": "No new terminal Palomar mechanical report is bound to this product commit.",
+      "disposition": "requires_one_immutable_terminal_validation"
+    },
+    {
+      "id": "independent_nanoda_replay",
+      "source": "PalomarPolicy/docs/specification.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "withheld",
+      "evidence": "No independent NanoDa report is bound to this product commit.",
+      "disposition": "requires_one_immutable_terminal_validation"
+    },
+    {
+      "id": "editorial_review",
+      "source": "PalomarPolicy/rubric.json@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "withheld",
+      "evidence": "Palomar editorial review is an external private pipeline and has not been run or represented as human peer review.",
+      "disposition": "external_pipeline_not_claimed"
+    },
+    {
+      "id": "registration_and_publication",
+      "source": "PalomarPolicy/docs/specification.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
+      "status": "operator_only",
+      "evidence": "No submission, consent, registration, publication, push, or outreach action was performed.",
+      "disposition": "operator_action_required"
+    }
+  ],
+  "qualification_decision": {
+    "decision": "NOT_READY",
+    "reason": "The main-compatible Palomar product is now explicit, but formalization.yaml is not yet current v0.4 and terminal immutable mechanical/replay evidence is withheld.",
+    "readiness_rule": "All applicable structural and terminal gates must be green at one exact source commit; Comparator theorem-name count never substitutes for qualification.",
+    "safe_local_repairs_remaining": [
+      "Refresh the generated formalization.yaml from its owning current claim source to v0.4 with truthful maintainers, classifications, and accepted source relationships.",
+      "Bind one immutable source commit and consume one non-duplicated Palomar mechanical/replay evidence bundle after integration names that commit."
+    ],
+    "operator_only_residuals": [
+      "Palomar submission consent/registration/publication"
+    ]
+  }
+}
