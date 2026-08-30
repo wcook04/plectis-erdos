@@ -331,17 +331,21 @@ core)**
   erdosproblems.com #269 discussion page on 26 June 2026, before the note was
   finalised, with follow-ups there extending it to arbitrary coprime pairs;
   the note acknowledges this.
-- Lean-checked: the exact running-lcm product
-  `L(x) = p^⌊log_p x⌋ q^⌊log_q x⌋ r^⌊log_r x⌋`
+- Lean-checked: the exact Comparator interface
+  `smoothPrefixLcm_eq_threePrimeHeight` states that, for primes `p`, `q`, and
+  `r` with `p ≠ q`, `p ≠ r`, `q ≠ r`, and `x ≠ 0`, the running lcm of the
+  three-prime smooth prefix is exactly `threePrimeHeight p q r x`
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:123`; formalisation of a
-  classical identity), the four-letter block alphabet `{2, 6, 10, 30}`
+  classical identity). The same source also gives the four-letter block
+  alphabet `{2, 6, 10, 30}`
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:699`), and a rank-two
   kernel obstruction
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:479`,
   `ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:721`): the Comparator
   theorem `kernel_235_minor_eq_neg_one_fifteen` identifies the smallest
   displayed `2,3,5` kernel minor as exactly `-1/15`. This rules out the
-  displayed rank-one route only; it does not imply irrationality.
+  displayed rank-one route only; it does not imply irrationality and does not
+  supply the missing rationality-to-irrationality bridge.
 - Open: any three-prime case; the rationality-to-carry bridge and the
   cofinal window escape.
 
