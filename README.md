@@ -35,13 +35,13 @@ readable without a query or network.
 | Problem | Question |
 |---|---|
 | **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? |
-| **#243** | Does rationality of a rapidly growing sequence's reciprocal sum force Sylvester recurrence? |
+| **#243** | Does rationality of a fast sequence's reciprocal sum force Sylvester recurrence? |
 | **#249** | Is `∑ φ(n)/2ⁿ` irrational? |
-| **#251** | Is `∑ p_n/2ⁿ` irrational (the consecutive-prime-gap dyadic series)? |
+| **#251** | Is the prime-gap dyadic series irrational? |
 | **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? |
-| **#269** | Is the reciprocal sum of running lcms of smooth numbers irrational for at least two primes? |
-| **#1041** | Must two unit-disc roots admit a curve `<2` in its open lemniscate? |
-| **#1049** | Which rational bases yield an irrational Lambert-type series, starting with `3/2`? |
+| **#269** | Is the running-LCM reciprocal sum irrational for at least two primes? |
+| **#1041** | Do two unit-disc roots have a curve `<2` in their open lemniscate? |
+| **#1049** | Which rational bases give an irrational Lambert series, starting at `3/2`? |
 
 ### Public checked frontier; what remains
 
@@ -51,9 +51,9 @@ Links name checked routes and limits; reductions are not solutions.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — [bounded-rise obstruction](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean): bounded rises cannot avoid fresh pairwise-coprime moduli as `u`→∞; normalized-vanishing no-go; mixed-sign bridge open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit top edge. Supply open
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap irrationality; unbounded gaps prove neither. Bridge open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack bound or tail selector; [pairwise-coprime support](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. Irrationality open.
-- [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton decay/ray separation/collisions/root retention; invalid saddle block leaves topology/gluing and operator-owned proof open.
+- [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — [ray separation/root retention](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean): finite shifts avoid shared rays; strict margins keep roots in the open disc; decay is a checked hypothesis. The invalid saddle block leaves topology/gluing and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor; `31/4` powers lie in `81/200` height region; Hermite–Padé/determinant/prime-support no-go at `3/2`/`7/2`; no irrationality, noncollapse, or remainder control.
 
 ## What the formal source establishes
@@ -80,13 +80,9 @@ criteria, and two scoped #249 no-go models—not orbit avoidance or solution.
 
 ## What remains open
 
-- Prove `S = ∑ φ(n)/2ⁿ` irrationality; supply #249's unbounded certificate.
-- Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite `A ⊆ ℕ`, beyond named formalised families.
+- #249 needs irrationality of `S = ∑ φ(n)/2ⁿ` and an unbounded certificate; #257 needs irrationality for every infinite `A ⊆ ℕ` beyond named formalised families.
 
-“The wall” records failures. Expert handoffs name input, guess, alternatives,
-discriminating evidence, consumer, and endpoint/counterexample boundary:
-[handoff questions](docs/RESULTS.md#exact-questions-for-a-human-expert)
-or `python3 scripts/query_expert_handoffs.py`.
+“The wall” records failures; [expert handoff questions](docs/RESULTS.md#exact-questions-for-a-human-expert) name input, guess, alternatives, evidence, consumer, and endpoint boundary; or run `python3 scripts/query_expert_handoffs.py`.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
