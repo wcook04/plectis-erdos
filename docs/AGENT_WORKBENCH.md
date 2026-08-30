@@ -35,6 +35,25 @@ Three consequences fall out of this inversion:
    a kernel verdict. Claims must cite kernel-accepted probe receipts,
    and the notary refuses the record otherwise.
 
+## Eight-problem cold-start route
+
+When a session begins from a problem number, read the matching row in the
+generated [problem index](problems.json), then follow the detailed
+[source map](SOURCE_MAP.md). The row supplies the question, status, paper
+note, module inventory, and open obligations; the source map supplies the
+bounded proof/paper/source traversal. The compact problem roster is:
+
+`#68 · #243 · #249 · #251 · #257 · #269 · #1041 · #1049`
+
+For the reviewed #249/#257 core, begin with `docs/orientation.json` and one
+typed `query_corpus.py` route. For #68, #243, #251, #269, and #1049, use the
+expansion-problem table in `SOURCE_MAP.md` to reach the principal checked
+module and the exact unresolved producer. For #1041, read the dated
+[`FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md) before its machine
+result map: it contains current refutations and surviving premise families
+that the older paper note does not enumerate. None of these dispatches
+changes problem status or turns source-level records into reviewed claims.
+
 ## The instrument panel
 
 Six instruments. Each states the question it answers exactly, then its entry
