@@ -362,18 +362,27 @@ def check_session_lifecycle(sessions_root: Path) -> None:
 
 def check_probe_runner_failures() -> None:
     real_run = workbench.subprocess.run
-    workbench.subprocess.run = lambda *args, **kwargs: (_ for _ in ()).throw(
-        FileNotFoundError(2, "lake")
+    failures = (
+        (FileNotFoundError(2, "lake"), "lean_probe_unavailable"),
+        (
+            UnicodeDecodeError("utf-8", b"\xff", 0, 1, "invalid output"),
+            "lean_probe_output_unreadable",
+        ),
     )
-    try:
-        receipt = workbench.run_lean_probe(
-            workbench.repo_root(), "example : True := by trivial\n"
-        )
-    finally:
-        workbench.subprocess.run = real_run
-    assert receipt["verdict"] == "probe_error"
-    assert receipt["detail"] == "lean_probe_unavailable"
-    assert receipt["exit_code"] is None
+    for failure, detail in failures:
+        def raise_failure(*args, **kwargs):
+            raise failure
+
+        workbench.subprocess.run = raise_failure
+        try:
+            receipt = workbench.run_lean_probe(
+                workbench.repo_root(), "example : True := by trivial\n"
+            )
+        finally:
+            workbench.subprocess.run = real_run
+        assert receipt["verdict"] == "probe_error"
+        assert receipt["detail"] == detail
+        assert receipt["exit_code"] is None
 
 
 def check_claim_gate(sessions_root: Path, tmp: Path) -> None:

@@ -148,10 +148,15 @@ def run_lean_probe(root: Path, source: str) -> dict[str, Any]:
             "duration_seconds": PROBE_TIMEOUT_SECONDS,
             "output_tail": "",
         }
-    except OSError as exc:
+    except (OSError, UnicodeError) as exc:
+        detail = (
+            "lean_probe_unavailable"
+            if isinstance(exc, OSError)
+            else "lean_probe_output_unreadable"
+        )
         return {
             "verdict": "probe_error",
-            "detail": "lean_probe_unavailable",
+            "detail": detail,
             "exit_code": None,
             "error_count": None,
             "sorry_count": None,
