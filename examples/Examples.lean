@@ -85,3 +85,20 @@ theorem downstream_bounded_negative_part_recovery
     ∃ N, ∀ n, N ≤ n → E n = 0 :=
   ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
     a C D E B ha hCpos hC hD hE hcentered hbound hvanish
+
+/-! The Boolean–Möbius transport is a second, genuinely reusable view of
+#257 rationality: it removes the support from the downstream certificate while
+retaining the exact rational numerator, denominator, and positivity boundary.
+It is a normal-form constraint, not a contradiction or a solution of #257. -/
+
+/-- Downstream reuse of the exact Boolean–Möbius rational-support equivalence.
+
+The quotient-only certificate is useful to consumers that need to reason about
+the carry orbit rather than reconstructing a support set.  The support-side
+existence remains in the iff, and `q > 0` stays explicit. -/
+theorem downstream_boolean_mobius_carry_normal_form
+    (p : ℤ) (q : ℕ) (hq : 0 < q) :
+    (∃ A : Set ℕ, 0 ∉ A ∧ (∃ a : ℕ, 0 < a ∧ a ∈ A) ∧
+        erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) ↔
+      ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U :=
+  exists_normalized_support_fraction_iff_exists_booleanMobiusCarry p q hq
