@@ -4,6 +4,10 @@
   "source_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
   "module_count": 1023,
   "synopsis_count": 828,
+  "query_contract": {
+    "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
+    "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
+  },
   "modules": [
     {
       "id": "Erdos249257",

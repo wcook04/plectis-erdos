@@ -17,6 +17,13 @@ ROOT = Path(__file__).resolve().parent.parent
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 OUTPUT = ROOT / "docs" / "module_synopsis_index.json"
 SCHEMA = "erdos249257-module-synopsis-index/1"
+QUERY_CONTRACT = {
+    "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
+    "returns": (
+        "Resolves a module synopsis to its declarations, paper sigil, source "
+        "identity, attached claims, and route-memory context."
+    ),
+}
 
 
 def extract_synopsis(path: Path) -> str | None:
@@ -55,6 +62,7 @@ def build() -> dict[str, Any]:
         "source_fingerprint": atlas["source_fingerprint"],
         "module_count": len(modules),
         "synopsis_count": sum(bool(row["synopsis"]) for row in modules),
+        "query_contract": QUERY_CONTRACT,
         "modules": modules,
         "freshness_contract": {
             "source_owner": "Lean /-! ... -/ module headers",
@@ -89,6 +97,8 @@ def main() -> int:
             failures.append("schema")
         if packet.get("source_fingerprint") != atlas.get("source_fingerprint"):
             failures.append("source_fingerprint")
+        if packet.get("query_contract") != QUERY_CONTRACT:
+            failures.append("query_contract")
         if expected_paths != actual_paths:
             failures.append("module_inventory")
         if failures:
