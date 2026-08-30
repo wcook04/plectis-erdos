@@ -71,7 +71,9 @@ pass, the high-signal spine is:
   exact prime-gap irrationality equivalence still leave the concrete tail
   bridge open. A separate public, non-Comparator denominator classifier
   reduces a dyadic tail's rationality to eventual integrality of one positive
-  shift, but does not supply the prime-specific producer.
+  shift. Its companion normal form says, for a `RealDyadicTailRecurrence`,
+  irrationality is equivalent to every positive tail shift being nonintegral;
+  neither classification supplies the prime-specific producer.
 - **#269, #1041, and #1049, structurally useful route checks.** Running-LCM
   height and rank-two obstructions, plus a distinct weighted-phase observer
   that separates a finite residue digit from an uncontrolled integral
@@ -414,11 +416,14 @@ replacement for claim authority.
   `(2^h - 1) * T_N`. The transported
   `not_irrational_initial_iff_exists_eventually_integral_positive_tailShift`
   says that an integer-digit dyadic tail is rational exactly when one positive
-  shift is eventually integral
-  (`ExternalVerification/Challenge.lean:245-264`; source
-  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:802-807,1279-1295,1525-1535`).
-  These declarations remain outside the Comparator screen and supply no
-  prime-specific eventual-small or cofinal-mismatch producer.
+  shift is eventually integral, while
+  `irrational_initial_iff_all_positive_tailShifts_nonintegral` gives the exact
+  companion normal form: under the same real recurrence, every positive
+  shift at every index is nonintegral
+  (`ExternalVerification/Challenge.lean:245-269`; source
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:802-807,1279-1295,1525-1556`).
+  These abstract classifications remain outside the Comparator screen and
+  supply no prime-specific eventual-small or cofinal-mismatch producer.
 - A checked countermodel closes the periodicity route: an explicit unbounded,
   non-eventually-periodic digit sequence with rational dyadic sum
   (`carryCoeff_natCast_not_eventually_periodic`,
