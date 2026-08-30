@@ -1,0 +1,89 @@
+# External verification portfolio
+
+This directory contains small Lean consumers for two different parts of the
+Erdős 249/269 corpus. The files are useful when a reader wants to reuse an
+exact Comparator-facing interface without treating a conditional reduction as
+a solution of the underlying Erdős problem.
+
+The canonical focused check for both consumers is:
+
+```bash
+python3 scripts/lean_fast_build.py \
+  examples/ExternalVerificationPortfolio/Problem249.lean \
+  examples/ExternalVerificationPortfolio/Problem269.lean
+```
+
+That command imports the shared `ExternalVerification.Solution` surface. The
+existing `ExternalVerification/Solution.lean` mismatch means that a build of
+the #269 consumer must not be described as Lean-green until that mismatch is
+repaired and the command passes on the repaired source.
+
+## Erdős #249: actual-LCM orbit separation
+
+Start with [`Problem249.lean`](Problem249.lean). Its load-bearing Comparator
+wrapper is
+`Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`.
+The wrapper says that the totient series is irrational under the explicit
+`PowerTwoActualLcmOrbitSeparationSupply` premise; it does not prove that
+premise.
+
+The source route is split across:
+
+- [`Erdos249257/DiagonalFreshLossBridge.lean`](../../Erdos249257/DiagonalFreshLossBridge.lean), which defines the actual power-two LCM orbit, the normalized odd-rank raw block, and the bridge identities;
+- [`Erdos249257/TotientActualLcmOrbitSeparation.lean`](../../Erdos249257/TotientActualLcmOrbitSeparation.lean), which gives the exact tail-difference, remainder, half-word-band, signed-margin, and conditional irrationality route;
+- [`ExternalVerification/Solution.lean`](../../ExternalVerification/Solution.lean), which exposes the Comparator wrapper used by the portfolio consumer.
+
+The hard step is the reduction from the orbit
+`R_(2H) - R_H` to the normalized odd-rank raw block, followed by the
+cofinal quantitative separation from every integer that forces the
+half-word band and feeds the penultimate signed-margin producer. The natural
+friction is at the last step: quantitative cofinal separation is stronger
+than saying that an orbit is sometimes nonintegral, and the required supply,
+including the punctured/top-edge details, remains open. Without that supply
+there is no #249 irrationality conclusion, and this consumer makes no
+novelty or priority claim.
+
+## Erdős #269: two distinct reusable routes
+
+[`Problem269.lean`](Problem269.lean) keeps the weighted observer and the
+conditional carry escape separate.
+
+### Weighted phase observer
+
+The exact Comparator interface is
+`Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary`.
+Its source is [`ErdosProblems/Erdos269/WeightedPhaseCarry.lean`](../../ErdosProblems/Erdos269/WeightedPhaseCarry.lean), with the finite residue and digit interval checks and the
+`finite_realisedSpan_of_factorisation` observer consequence. The recurrence
+is decomposed into a finite residue digit and an integral quotient coboundary,
+which is the useful reusable mechanism.
+
+The finite residue is not a finite-state quotient recurrence: the quotient
+coboundary remains uncontrolled, and finite realised span requires an explicit
+finite-dimensional, function-faithful factorisation. A scalar evaluation does
+not prove that factorisation. The actual three-prime running-LCM bridge and a
+cofinal escape producer are still open, so this route proves no #269
+rationality or irrationality statement.
+
+### Conditional carry escape
+
+The exact Comparator interface is
+`Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape`.
+Its source is [`ErdosProblems/Erdos269/RestrictedFloorSum.lean`](../../ErdosProblems/Erdos269/RestrictedFloorSum.lean), which consumes
+`CofinalLocalWindowEscape` together with positive, coprime multiplier data,
+the exact integer carry recurrence, and the denominator-dependent short bound
+to derive `False`.
+
+The difficult input is precisely the one the consumer assumes: a cofinal
+local-window residue escape, together with a bridge from the actual
+three-prime running-LCM series or its rationality to this reduced carry. Those
+inputs are not proved here. This is therefore a conditional obstruction, not
+an unconditional #269 endpoint, irrationality proof, novelty claim, or
+priority claim. The finite block alphabet and rank-two kernel routes remain
+supporting or contrary evidence rather than extra portfolio families.
+
+For the configured interfaces and their recorded evidence boundaries, see
+[`verification/comparator.json`](../../verification/comparator.json) and the
+two exact source consumers above. The #249 and #269 examples are deliberately
+separate: the former consumes an actual-LCM separation supply, while the
+latter exposes a residue/coboundary mechanism and a local-window carry
+consumer with different hypotheses and different open bridges.
