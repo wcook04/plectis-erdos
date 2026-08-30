@@ -4606,7 +4606,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:6ab4606fb608b5d717fed47f0bfafeaa79c6f62d18952dd1c9e799dc22ea3d86",
+      "source_sha256": "sha256:0af02d3a0ecf3892ec8eceaddf1241da6d48ae4aa763831b9a84c9ae3940151d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
@@ -4623,169 +4623,169 @@
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction",
-          "line": 35
+          "line": 33
         },
         {
           "level": 4,
           "id": "relation-to-prior-work.",
           "title": "Relation to prior work.",
-          "line": 47
+          "line": 45
         },
         {
           "level": 4,
           "id": "erd\u0151ss-integer-base-argument-in-outline.",
           "title": "Erd\u0151s\u2019s integer-base argument, in outline.",
-          "line": 67
+          "line": 65
         },
         {
           "level": 4,
           "id": "the-direct-cut-and-clear-attempt-studied-here.",
           "title": "The direct cut-and-clear attempt studied here.",
-          "line": 73
+          "line": 71
         },
         {
           "level": 4,
           "id": "terminology.",
           "title": "Terminology.",
-          "line": 81
+          "line": 79
         },
         {
           "level": 4,
           "id": "the-shortfall-at-32.",
           "title": "The shortfall at 3/2.",
-          "line": 87
+          "line": 85
         },
         {
           "level": 4,
           "id": "sharpness.",
           "title": "Sharpness.",
-          "line": 93
+          "line": 91
         },
         {
           "level": 4,
           "id": "structure.",
           "title": "Structure.",
-          "line": 126
+          "line": 124
         },
         {
           "level": 1,
           "id": "sec:primitive",
           "title": "Integer scalar content is neutral",
-          "line": 134
+          "line": 132
         },
         {
           "level": 1,
           "id": "sec:endpoints",
           "title": "Endpoint residues at (3,2) and the four-jet kernel",
-          "line": 195
+          "line": 193
         },
         {
           "level": 1,
           "id": "sec:corridor",
           "title": "Failure of coordinatewise clearing at 3/2",
-          "line": 368
+          "line": 366
         },
         {
           "level": 1,
           "id": "sec:tail",
           "title": "The cleared-tail recurrence and the size of the forcing term",
-          "line": 445
+          "line": 443
         },
         {
           "level": 1,
           "id": "sec:sevenhalves",
           "title": "The height criterion at 7/2",
-          "line": 507
+          "line": 505
         },
         {
           "level": 2,
           "id": "the-81200-logarithmic-region",
           "title": "The 81/200 logarithmic region",
-          "line": 538
+          "line": 536
         },
         {
           "level": 1,
           "id": "sec:pade",
           "title": "Denominator exponents for a homogenised Pad\u00e9 construction",
-          "line": 564
+          "line": 562
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 604
+          "line": 602
         },
         {
           "level": 2,
           "id": "exact-kernel-escape",
           "title": "Exact kernel escape",
-          "line": 652
+          "line": 650
         },
         {
           "level": 2,
           "id": "the-first-falsifiable-families",
           "title": "The first falsifiable families",
-          "line": 717
+          "line": 715
         },
         {
           "level": 2,
           "id": "asymptotic-adequacy-after-kernel-escape",
           "title": "Asymptotic adequacy after kernel escape",
-          "line": 743
+          "line": 741
         },
         {
           "level": 2,
           "id": "one-exact-alternative-criterion-test",
           "title": "One exact alternative-criterion test",
-          "line": 763
+          "line": 761
         },
         {
           "level": 2,
           "id": "the-quantitative-height-frontier",
           "title": "The quantitative height frontier",
-          "line": 788
+          "line": 786
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 816
+          "line": 814
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 820
+          "line": 818
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 826
+          "line": 824
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 832
+          "line": 830
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 838
+          "line": 836
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 844
+          "line": 842
         }
       ],
       "citations_rendered": 34,
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:b606184147ce04b3556be52cf3783fd03257ea0d09ace4d6c8f23567130fd74c",
-      "pdf_byte_count": 173097,
+      "pdf_sha256": "sha256:171742b7605d5cf8e798b89af735ae4d47c6fc412ef03675c3bb33a5429ad8a5",
+      "pdf_byte_count": 172968,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4793,22 +4793,22 @@
           {
             "id": "sec:problem",
             "title": "Introduction",
-            "line": 35
+            "line": 33
           },
           {
             "id": "sec:primitive",
             "title": "Integer scalar content is neutral",
-            "line": 134
+            "line": 132
           },
           {
             "id": "sec:endpoints",
             "title": "Endpoint residues at (3,2) and the four-jet kernel",
-            "line": 195
+            "line": 193
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 604
+            "line": 602
           }
         ],
         "unresolved_count": 0
