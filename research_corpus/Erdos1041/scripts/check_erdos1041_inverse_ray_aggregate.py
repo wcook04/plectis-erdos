@@ -40,31 +40,31 @@ from system.lib.formal_math_experiment_contract import (  # noqa: E402
 
 
 SOURCE_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_inverse_ray_aggregate.py"
 )
 ENGINE_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "search_counterexample.py"
 )
 ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "InverseRayAggregateComputationalLab.md"
 )
 PACKET_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "research_packet.json"
 )
 EXACT_COUNTEREXAMPLE_ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "NewtonBranchHubCounterexampleComputationalLab.md"
 )
 EXACT_COUNTEREXAMPLE_RECEIPT_REF = (
-    "state/formal_math/erdos257_period_noncollapse/"
+    "source-provenance://private-authoring-project/receipts/"
     "erdos1041_newton_branch_hub_counterexample_receipt.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "state/formal_math/erdos257_period_noncollapse/"
+    "source-provenance://private-authoring-project/receipts/"
     "erdos1041_inverse_ray_aggregate_receipt.json"
 )
 

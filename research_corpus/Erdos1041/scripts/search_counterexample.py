@@ -42,19 +42,19 @@ from system.lib.formal_math_experiment_contract import build_experiment_contract
 REPO_ROOT = Path(__file__).resolve().parents[5]
 SOURCE_REF = str(Path(__file__).resolve().relative_to(REPO_ROOT))
 NEWTON_BRANCH_ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "NewtonBranchHubCounterexampleComputationalLab.md"
 )
 INVERSE_RAY_AGGREGATE_ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "InverseRayAggregateComputationalLab.md"
 )
 STRAIGHT_HUB_ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "CriticalTwoRootProximity.lean"
 )
 RESEARCH_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "research_packet.json"
 )
 

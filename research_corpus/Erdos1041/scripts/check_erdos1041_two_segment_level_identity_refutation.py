@@ -30,7 +30,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[5]
 RECEIPT = (
     REPO
-    / "state/formal_math/erdos257_period_noncollapse/"
+    / "source-provenance://private-authoring-project/receipts/"
       "erdos1041_two_segment_level_identity_refutation_receipt.json"
 )
 

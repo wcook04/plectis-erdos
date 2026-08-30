@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "returned_augmented_target_disc_and_large_adjacent_chain_no_go",
   "output_stage": "exact_target_disc_plus_small_symmetric_nonadjacent_free_pair_chart",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.md",
   "human_understanding_delta": "The augmented inverse-square disc gives exact target-slack reach but only action control. Adjacency is not topological: a much smaller symmetric quintic forces the unique two-ended component to join nonadjacent ends, yet supplies a strict rational connector with repeated conjugate Bernstein certificates and metric margin 2/117.",
   "verification_state": "both exact symbolic checkers PASS; focused Lean replays pass for target-disc scalar kernels and the complete rational arm/tail/metric chart",
   "publication_or_review_state": "private authoring checkpoint; harmonic component count and weighted AM-GM remain ordinary mathematics",

@@ -330,7 +330,7 @@ retained.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_capacity_saturation_bridge.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_capacity_saturation_bridge.py
 ```
 
 The checker labels exact arithmetic separately from floating evidence.

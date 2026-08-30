@@ -232,5 +232,5 @@ extremal family is unchanged; no negative result is retracted.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_crossing_chord.py --max-degree 16 --lemma-max-n 400
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_crossing_chord.py --max-degree 16 --lemma-max-n 400
 ```

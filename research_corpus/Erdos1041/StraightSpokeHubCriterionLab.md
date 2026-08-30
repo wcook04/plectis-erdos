@@ -6,7 +6,7 @@ unit disk, two roots can be joined by a curve of length below 2 inside
 
 Verifier: `scripts/check_erdos1041_straight_spoke_hub_criterion.py`
 Engine: `system/lib/formal_math_lemniscate.py`
-Receipt: `state/formal_math/erdos257_period_noncollapse/erdos1041_straight_spoke_hub_criterion_receipt.json`
+Receipt: `source-provenance://private-authoring-project/receipts/erdos1041_straight_spoke_hub_criterion_receipt.json`
 
 ## 0. Prior work in this corpus, and what is actually new here
 

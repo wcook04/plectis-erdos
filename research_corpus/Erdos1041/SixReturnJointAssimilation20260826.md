@@ -31,9 +31,7 @@ and the conditional critical-pole consumer
 Replay the companion module from the repository root with:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
-  --jobs 2 --project-root formal_math/erdos257_period_noncollapse \
-  ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826
+lake env lean research_corpus/Erdos1041/SixReturnJointAssimilation20260826.lean
 ```
 
 These declarations check only the scalar fan-in and conditional charge

@@ -288,5 +288,5 @@ selector**, not another unquantified remainder expansion.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_form_a_cut_quantitative_expansion.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_form_a_cut_quantitative_expansion.py
 ```

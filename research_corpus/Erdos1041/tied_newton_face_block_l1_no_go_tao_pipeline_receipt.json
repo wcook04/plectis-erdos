@@ -2,11 +2,11 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "generation",
   "output_stage": "verification_and_exposition",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1NoGo.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceBlockL1NoGo.md",
   "human_understanding_delta": "The first coevolution regression revealed that changing x from 1001/1000 to 999/1000 moves all critical values into the relevant negative half-plane without losing the exact speed excess. All five ramification units then force one six-ended negative component, so pointwise component-block L1 contraction is itself false. The live fibre route must start at weighted, weak-majorization, or integrated control.",
   "verification_state": {
     "ordinary_proof": "complete critical-value classification, component-passport count, exact fibre factorization, inverse-speed formula, and rational radical certificate",
-    "exact_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_no_go.py",
+    "exact_checker": "research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_no_go.py",
     "lean": {
       "module": "ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1NoGo",
       "status": "focused_build_and_final_serialized_lake_check_passed",

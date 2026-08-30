@@ -1,0 +1,99 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "research_corpus/Erdos1041/QuinticMinusTenCentralExcessCertificate.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.quintic_minusTen_cubic_degeneracy",
+      "ErdosProblems.Erdos1041.quintic_minusTen_level_curve_factor",
+      "ErdosProblems.Erdos1041.quintic_minusTen_level_curve_radial",
+      "ErdosProblems.Erdos1041.quintic_minusTen_terminal_one_factor",
+      "ErdosProblems.Erdos1041.quintic_minusTen_central_excess_rational_fanin"
+    ],
+    "evidence_path": "research_corpus/Erdos1041/QuinticMinusTenCentralExcessCertificate.md",
+    "verifier": "research_corpus/Erdos1041/scripts/check_erdos1041_quintic_minus_ten_central_excess.py",
+    "delta_class": "new_exact_minus_ten_central_curved_inverse_ray_excess_theorem",
+    "authority_at_review": "ordinary analytic proof with exact resultant/Sturm/Bernstein/rational-interval replay and green focused Lean algebra kernel; the rest of the allowed mu=-10 phase arc remains open",
+    "claim_ceiling": "The actual limiting curved conjugate pair is proved strictly negative at (mu,phi)=(-10,0). The rest of the mu=-10 phase arc, the other singular strata, the regular compact chamber, real-scale transfer, degree five, and unrestricted Erdős 1041 remain open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "review_scope": "The explicit-anchor extractor displayed eight candidates from 674 discovered rows. Generic namespace-to-state/capability/history bridges and cross-problem pilot matches were navigation noise. Semantic review covered the owning FRONTIER, research packet, universal-chamber note, trace-max radial law, public boundary, and generated-control-plane boundary.",
+    "precision_note": "The new source closes one central point of one singular phase arc. Broad Erdős namespace bridges do not license propagation into unrelated problem pilots or generated authority surfaces."
+  },
+  "decisions": [
+    {
+      "file": "research_corpus/Erdos1041/FRONTIER.md",
+      "decision": "update_now",
+      "mathematical_reason": "The canonical quintic (EX) row must record the exact negative curved-pair excess at the centre of the mu=-10 singular stratum and preserve the residual phase arc.",
+      "validation_or_reentry": "source-current exact checker, focused Lean build, packet integrity check, and cold-reader query"
+    },
+    {
+      "file": "research_corpus/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The owner packet needs a new exact-result row, theorem crosswalk, corrected universal-chamber boundary, and narrowed singular residual.",
+      "validation_or_reentry": "JSON parse, packet integrity check, exact checker, focused Lean build, and cold-reader query"
+    },
+    {
+      "file": "research_corpus/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+      "decision": "update_now",
+      "mathematical_reason": "Its singular-boundary account must distinguish the now-proved central mu=-10 point from the still-open rest of that phase arc.",
+      "validation_or_reentry": "universal-chamber and central exact checkers plus the focused Lean build"
+    },
+    {
+      "file": "research_corpus/Erdos1041/TraceMaxRadialExcessLaw.md",
+      "decision": "update_now",
+      "mathematical_reason": "The global computational law remains unchanged, but its analytic obligation no longer includes the central mu=-10 point.",
+      "validation_or_reentry": "source-current central checker; re-enter if another phase point or the full compact chamber is proved or refuted"
+    },
+    {
+      "file": "plectis_lean_erdos249_257_public",
+      "decision": "verified_no_change",
+      "mathematical_reason": "No public promotion was requested; this private single-point theorem does not prove the parent statement or alter public source parity.",
+      "validation_or_reentry": "explicit owner-approved public promotion"
+    },
+    {
+      "file": "state/formal_math_research_operations/capability_map.json and historical namespace bridges",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Generated/control-plane projections do not confer theorem authority, and the source was worktree-only during semantic review.",
+      "validation_or_reentry": "re-enter through the owner projection after the scoped source commit if its builder selects this result"
+    },
+    {
+      "file": "unrelated Erdős pilot and historical rows surfaced by the candidate extractor",
+      "decision": "outside_scope",
+      "mathematical_reason": "Their matches arise from broad namespace and state edges rather than mathematical dependence on the mu=-10 curve.",
+      "validation_or_reentry": "none"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "At the central point of the mu=-10 singular stratum, the actual limiting conjugate inverse-ray pair has exact excess less than -2853/100000.",
+    "newly_discharged": "The point (mu,phi)=(-10,0) is removed from the compact universal-chamber proof burden.",
+    "new_representation": "The complete upper arm is the selected positive solution of a quadratic Q(t,b)=0 for -1/sqrt(3)<t<tan(pi/10); its terminal transverse coordinate w=b(tan(pi/10)-t) makes the support-oscillation budget exactly certifiable.",
+    "surviving_boundary": "Prove the curved-pair excess on the rest of the allowed mu=-10 phase arc, then the other repeated-critical-value strata and regular compact chamber, before the actual-polynomial real-scale transfer.",
+    "nonimplications_preserved": "No full mu=-10 arc theorem, global compact-chamber inequality, degree-five theorem, or unrestricted parent theorem follows from this one central-point certificate."
+  },
+  "reobservation": {
+    "status": "source_current_consequence_map_rerun",
+    "displayed_candidate_count": 8,
+    "discovered_candidate_count": 677,
+    "result": "The rerun exposed the new receipt through the declared control-plane reference edge and otherwise reproduced the same generic namespace and cross-problem symbol noise. No additional mathematical consumer warranted mutation."
+  },
+  "source_files": [
+    "research_corpus/Erdos1041/QuinticMinusTenCentralExcessCertificate.lean",
+    "research_corpus/Erdos1041/QuinticMinusTenCentralExcessCertificate.md",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_quintic_minus_ten_central_excess.py"
+  ],
+  "propagated_surface_files": [
+    "research_corpus/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+    "research_corpus/Erdos1041/TraceMaxRadialExcessLaw.md",
+    "research_corpus/Erdos1041/FRONTIER.md",
+    "research_corpus/Erdos1041/research_packet.json",
+    "research_corpus/Erdos1041/quintic_minus_ten_central_excess_20260830_consequence_receipt.json"
+  ],
+  "checkpoint_class": "bounded_private_frontier_advance",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The pass exercised the existing falsifier-first, exact-anchor, support-oscillation, claim-ceiling, and semantic-second-pass rules without exposing a reusable workflow defect. The new mathematics belongs in the owner theorem and frontier, not in general doctrine.",
+    "reentry_condition": "Re-enter when another point or interval of the mu=-10 arc is proved or refuted, a rigorous chamber cover lands, or the real-scale transfer changes."
+  }
+}

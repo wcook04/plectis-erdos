@@ -235,5 +235,5 @@ curves throughout.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_three_exterior_angular_envelope.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_three_exterior_angular_envelope.py
 ```

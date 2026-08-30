@@ -152,5 +152,5 @@ The combined-charge, COVER, and FP--GM routes remain structurally independent.
 Replay the exact scalar and deterministic continuation checks with
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_grouped_critical_cluster_monodromy.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_grouped_critical_cluster_monodromy.py
 ```

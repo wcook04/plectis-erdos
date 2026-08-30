@@ -47,7 +47,7 @@ whether the value is pinned below the threshold or crosses it.
 
 Replay::
 
-    ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quartic_case.py
+    python3 research_corpus/Erdos1041/scripts/check_erdos1041_quartic_case.py
     ./repo-python .../check_erdos1041_quartic_case.py --modes identity
     ./repo-python .../check_erdos1041_quartic_case.py --modes pendyala --trials 4000
 """

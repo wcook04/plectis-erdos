@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[5]
-PROBLEM = ROOT / "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041"
+PROBLEM = ROOT / "research_corpus/Erdos1041"
 INTAKE = ROOT / "state/formal_math/type_b_return_batches/erdos1041_20260827_return_stream_04/intake.json"
 
 

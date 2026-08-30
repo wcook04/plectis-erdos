@@ -423,7 +423,7 @@ def main(trials=42, seed=20260824):
                            exclusions=win["excluded"][:20]),
                degen=deg, thresh=thr, pullback=pull, coth1=COTH1)
     print(json.dumps(out, indent=1, default=float))
-    receipt = Path("state/formal_math/erdos257_period_noncollapse/"
+    receipt = Path("source-provenance://private-authoring-project/receipts/"
                    "erdos1041_minimal_hub_window_receipt.json")
     try:
         receipt.parent.mkdir(parents=True, exist_ok=True)

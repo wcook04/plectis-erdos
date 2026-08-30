@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComponentSelector.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceComponentSelector.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceComponentSelector.endCount_eq_one_add_ramification",
       "ErdosProblems.Erdos1041.TiedNewtonFaceComponentSelector.renormalizedDefect_antitone",
@@ -13,14 +13,14 @@
   "decisions": [
     {
       "candidate_id": "minimum_real_selector_interpretation",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.md",
+      "file": "research_corpus/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.md",
       "decision": "correct_now",
       "mathematical_reason": "The no-go is angular component mismatch, not unusability of the critical hub.",
       "validation_or_reentry": "cross-link exact critical rescue"
     },
     {
       "candidate_id": "free_pair_geometric_mean_two_arm_selector",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "sharpen_now",
       "mathematical_reason": "The component passport solves end selection; the live sign obligation is strict horizontal-fibre defect or finite CDF.",
       "validation_or_reentry": "JSON parse, exact checker, focused Lean replay after capacity clears"

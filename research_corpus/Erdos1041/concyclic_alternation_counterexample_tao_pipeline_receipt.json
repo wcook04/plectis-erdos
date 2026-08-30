@@ -15,17 +15,17 @@
   "next_stage_owner": "Research frontier: select and test a joint spoke-radius mechanism or configuration-dependent comparator for Form-A; Refinery/publication may independently review the exact no-go without promoting the still-open parent problem.",
   "consequence_decisions": [
     {
-      "candidate": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "candidate": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "Conjecture U was a named live route and is now exactly refuted; the packet must retire it while preserving Form-A and Erdos 1041 as open."
     },
     {
-      "candidate": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicFormACutCertificate.md",
+      "candidate": "research_corpus/Erdos1041/ConcyclicFormACutCertificate.md",
       "decision": "update_now",
       "mathematical_reason": "The note stated Conjecture U as calibrated but open; its status and interpretation of the finite battery became false."
     },
     {
-      "candidate": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py",
+      "candidate": "research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py",
       "decision": "update_now",
       "mathematical_reason": "The fixed finite sample remains a regression, but it can no longer be presented as evidence for the universal law."
     },

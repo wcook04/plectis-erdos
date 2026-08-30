@@ -124,14 +124,14 @@ from formal_math.erdos257_period_noncollapse.ErdosProblems.Erdos1041.scripts.sea
 )
 
 SOURCE_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_near_fekete_search.py"
 )
 ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalBudgetLab.md"
+    "research_corpus/Erdos1041/CriticalBudgetLab.md"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "state/formal_math/erdos257_period_noncollapse/"
+    "source-provenance://private-authoring-project/receipts/"
     "erdos1041_near_fekete_search_receipt.json"
 )
 

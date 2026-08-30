@@ -4,8 +4,8 @@
   "artifact_id": "separate_critical_contour_no_go",
   "date": "2026-08-27",
   "status": "ordinary_exact_negative_result_for_one_integrated_monodromy_construction",
-  "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparateCriticalContourNoGo.md",
-  "checker_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_separate_critical_contour_no_go.py",
+  "source_path": "research_corpus/Erdos1041/SeparateCriticalContourNoGo.md",
+  "checker_path": "research_corpus/Erdos1041/scripts/check_erdos1041_separate_critical_contour_no_go.py",
   "result": {
     "proved": "A thin contour around the fully resolved radial critical-value star has full-cycle monodromy but average complete-lift length at least 2 sum_c L(c)/k. If every pairwise root chord exceeds k/(k-1), that lower bound exceeds two. Generic normalized cubic and quartic examples satisfying the criterion exist near the regular triangle and square.",
     "human_understanding_delta": "Fixed-point-free monodromy is topologically easy for the resolved critical tree, but that construction double-charges every critical edge. The hard near-regular regime therefore requires cluster-aware monodromy geometry, not merely a derangement permutation.",
@@ -15,6 +15,6 @@
     "surviving_frontier": "Construct a cluster-aware loop that charges a near-coincident critical-value group once while retaining a moved-sheet average complete-lift bound at most two."
   },
   "validation_commands": [
-    "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_separate_critical_contour_no_go.py"
+    "python3 research_corpus/Erdos1041/scripts/check_erdos1041_separate_critical_contour_no_go.py"
   ]
 }

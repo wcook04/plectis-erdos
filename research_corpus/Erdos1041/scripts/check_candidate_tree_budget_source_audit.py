@@ -32,31 +32,31 @@ SOURCE_REF = str(Path(__file__).resolve().relative_to(REPO_ROOT))
 MAIN_REF = "annexes/erdos1041-general-candidate-draft-main/extracted.md"
 REVISED_REF = "annexes/erdos1041-general-candidate-draft-revised/extracted.md"
 LEAN_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "CassiniTreeBudget.lean"
 )
 LAB_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "CassiniAttachmentDeficitLab.md"
 )
 PACKET_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "research_packet.json"
 )
 PAPER_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/"
+    "source-provenance://private-authoring-project/ErdosProblems/papers/"
     "erdos-1041-lemniscate-newton-flow.tex"
 )
 DIGEST_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/"
+    "source-provenance://private-authoring-project/ErdosProblems/papers/"
     "contributions-digest.tex"
 )
 PRIOR_ART_REF = (
-    "formal_math/erdos257_period_noncollapse/prior_art_routes/"
+    "source-provenance://private-authoring-project/prior_art_routes/"
     "erdos1041_lemniscate_short_path_v0.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "state/formal_math/erdos257_period_noncollapse/"
+    "source-provenance://private-authoring-project/receipts/"
     "erdos1041_candidate_tree_budget_source_audit_receipt.json"
 )
 
@@ -159,9 +159,9 @@ def build_result() -> dict[str, Any]:
                     PAPER_REF,
                     DIGEST_REF,
                     PRIOR_ART_REF,
-                    "formal_math/erdos257_period_noncollapse/ErdosProblems/"
+                    "source-provenance://private-authoring-project/ErdosProblems/"
                     "papers/README.md",
-                    "formal_math/erdos257_period_noncollapse/ErdosProblems/"
+                    "source-provenance://private-authoring-project/ErdosProblems/"
                     "assimilation_manifest.json",
                 ],
                 "reason": (
@@ -175,16 +175,16 @@ def build_result() -> dict[str, Any]:
                 "files": [
                     "docs/formal_math/type_b_packets/"
                     "comparator_residual_2026_08_19/manifest_p07.json",
-                    "formal_math/erdos257_period_noncollapse/ErdosProblems/"
+                    "source-provenance://private-authoring-project/ErdosProblems/"
                     "Erdos1041/AllStraightSegmentsCounterexampleComputationalLab.md",
-                    "formal_math/erdos257_period_noncollapse/ErdosProblems/"
+                    "source-provenance://private-authoring-project/ErdosProblems/"
                     "Erdos1041/NewtonBranchHubCounterexampleComputationalLab.md",
-                    "formal_math/erdos257_period_noncollapse/README.md",
-                    "formal_math/erdos257_period_noncollapse/scripts/"
+                    "source-provenance://private-authoring-project/README.md",
+                    "source-provenance://private-authoring-project/scripts/"
                     "check_erdos1041_all_straight_segments.py",
-                    "formal_math/erdos257_period_noncollapse/scripts/"
+                    "source-provenance://private-authoring-project/scripts/"
                     "check_erdos1041_newton_branch_hub.py",
-                    "formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py",
+                    "source-provenance://private-authoring-project/scripts/lean_fast_build.py",
                 ],
                 "reason": (
                     "The comparator already bans the Cassini-false budget; the "
@@ -195,11 +195,11 @@ def build_result() -> dict[str, Any]:
             {
                 "decision": "outside_scope",
                 "files": [
-                    "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/"
+                    "source-provenance://private-authoring-project/ErdosProblems/papers/"
                     "erdos-68-factorial-denominator-irrationality.tex",
-                    "formal_math/erdos257_period_noncollapse/scripts/"
+                    "source-provenance://private-authoring-project/scripts/"
                     "check_actual_foreign_residue_projection.py",
-                    "formal_math/erdos257_period_noncollapse/scripts/"
+                    "source-provenance://private-authoring-project/scripts/"
                     "check_adelic_height_obstruction.py",
                 ],
                 "reason": "Namespace or manifest bridges only; no #1041 mathematics.",
@@ -207,7 +207,7 @@ def build_result() -> dict[str, Any]:
             {
                 "decision": "defer_with_reason",
                 "files": [
-                    "tools/meta/factory/"
+                    "source-provenance://private-authoring-repository/tools/"
                     "build_lean_mathematics_microcosm_projection.py"
                 ],
                 "reason": (

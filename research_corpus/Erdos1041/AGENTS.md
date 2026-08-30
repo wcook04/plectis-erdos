@@ -15,7 +15,7 @@ inside this owner directory exact and bounded.
    validation plans:
 
    ```sh
-   ./repo-python formal_math/erdos257_period_noncollapse/scripts/corpus_navigation.py \\
+   ./repo-python source-provenance://private-authoring-project/scripts/corpus_navigation.py \\
      --problem erdos_1041 --json
    ```
 
@@ -55,7 +55,7 @@ inside this owner directory exact and bounded.
    Plan the supported entry before building:
 
    ```sh
-   ./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \\
+   ./repo-python source-provenance://private-authoring-project/scripts/lean_fast_build.py \\
      --plan ErdosProblems.Erdos1041.CubicCriticalHub
    ```
 

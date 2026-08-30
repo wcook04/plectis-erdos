@@ -2,7 +2,7 @@
   "schema": "erdos1041_strongest_result_activation_map_v1",
   "problem_id": "erdos_1041",
   "status": "open",
-  "source_checkpoint": "9b33a98d985823d9c79877cd62f9315e641730d2",
+  "source_checkpoint": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the unrestricted parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -10,9 +10,6 @@
       "status": "strongest_premise",
       "exact_statement": "A closed length-at-most-two connector theorem on the dense generic normalized locus extends to every normalized polynomial; radial shrinking then gives strict length and strict containment for the open theorem.",
       "hypotheses": "Monic normalized polynomial; the generic closed theorem is proved on the dense simple/generic locus; lower semicontinuity of the connector functional.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md"
-      ],
       "named_consumers": [
         "erdos_1041_parent"
       ],
@@ -29,9 +26,6 @@
       "status": "strongest_premise",
       "exact_statement": "If a connected carrier in {|P| <= 1} contains at least two roots and is intrinsically covered within distance 1 by one root, compactness/visibility overlap yields two roots joined inside {|P| <= 1} with length <= 2.",
       "hypotheses": "A connected compact carrier, at least two roots on it, and root-to-every-point intrinsic distance at most one from a single covering root.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/VisibilityOverlapReduction.md"
-      ],
       "named_consumers": [
         "generic_closed_extension",
         "erdos_1041_parent"
@@ -49,10 +43,6 @@
       "status": "strongest_premise",
       "exact_statement": "The full-energy-charged lifetime aggregate and the strict critical budget are available in stronger joint form; the remaining defect is selection/attachment compatibility, not scalar budget.",
       "hypotheses": "Regularized critical-value/merge-tree setting and the source theorem's active-component bookkeeping.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SixReturnJointAssimilation20260826.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.md"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "erdos_1041_parent"
@@ -71,9 +61,6 @@
       "status": "strongest_premise",
       "exact_statement": "On a tied Newton-face fibre, the complete signed moment hierarchy and exact product identity hold for the full inverse-sheet block; inverse-sheet product bounds alone are dominated by this theorem.",
       "hypotheses": "A regular tied Newton-face fibre with the full algebraic inverse-sheet block and multiplicities counted as in the source theorem.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceFibreProduct.md"
-      ],
       "named_consumers": [
         "fixed_block_monodromy_gap",
         "cover_visibility_consumer"
@@ -91,11 +78,6 @@
       "status": "strongest_premise",
       "exact_statement": "The weighted attachment-tree selector is sharp and the transport loss is exactly the common-ancestry factor; the unresolved theorem is polynomial-specific compensation of that factor on the same selected object.",
       "hypotheses": "Root-indexed attachment tree with the landed entrance-energy identities and nonnegative node weights.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/EntranceEnergyRatioBridge.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RootIndexedEntranceAncestry.md"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "combined_charge_attachment_gap"
@@ -115,9 +97,6 @@
       "status": "strongest_premise",
       "exact_statement": "For a proper root cluster S of size k, the conditional induction certificate rho_S^k max_{z in conv(S)} |r_S(z)| <= 1 suffices; it is strictly sharper than multiplying separately attained per-factor maxima.",
       "hypotheses": "The closed degree-k theorem, a proper cluster S, rho_S its minimum-enclosing-disc radius, and the displayed common-path envelope inequality.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FourReturnPacketFailureAssimilation20260827.md"
-      ],
       "named_consumers": [
         "generic_closed_extension",
         "erdos_1041_parent"
@@ -135,10 +114,6 @@
       "status": "strongest_premise",
       "exact_statement": "A Jordan contour enclosing exactly one connected critical-edge subtree has one full cycle on the incident sheet block and fixes the complement; an average complete-lift length at most two on that moved block is target-sufficient.",
       "hypotheses": "Generic ray-separated component, connected critical-edge subtree, and an isolating Jordan value domain inside the unit value disk.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialCriticalClusterMonodromyLab.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md"
-      ],
       "named_consumers": [
         "integrated_monodromy_perimeter_gap",
         "erdos_1041_parent"
@@ -157,10 +132,6 @@
       "status": "strongest_premise",
       "exact_statement": "For a degree-d branched preimage component W and access arc alpha, the sum of all moved lollipop lift lengths is exactly 2 Lambda(alpha,W)+length(boundary W).",
       "hypotheses": "A regular Jordan value boundary, one Jordan preimage component W, and a critical-value-free access arc from the zero fibre.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialClusterPreimagePerimeterIdentity.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_partial_cluster_preimage_perimeter.py"
-      ],
       "named_consumers": [
         "integrated_monodromy_perimeter_gap",
         "monodromy_bergman_dichotomy_gap",
@@ -180,10 +151,6 @@
       "status": "strongest_premise",
       "exact_statement": "For an isolated simple critical point c, the mean length of the two complete lifts of a shrinking singleton critical-value lollipop converges to the total canonical inverse-ray arm length L(c).",
       "hypotheses": "A simple critical point c with nonzero critical value distinct from all other critical values and lying in the open unit value disk.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdaptiveClusterSelectionLab.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_adaptive_cluster_selection.py"
-      ],
       "named_consumers": [
         "combined_charge_component_gap",
         "partial_cluster_preimage_perimeter_gap",
@@ -203,10 +170,6 @@
       "status": "strongest_premise",
       "exact_statement": "For barycentric paths gamma_j(t)=(1-t)a_j+t c, the exact identity P(gamma_j(t))=(1-t) product_m(a_j-a_m+t(a_m-c)) yields a common envelope on the barycentric disc; the associated descent-disc consumer is already proved.",
       "hypotheses": "The root barycenter c and the barycentric root paths of the source theorem.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.lean"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "erdos_1041_parent"
@@ -216,10 +179,10 @@
       ],
       "why_it_matters": "Return 010 rediscovered this occupied envelope; packets must spend it through a genuinely new selector or combine it with another parent consumer.",
       "local_frontier_only": true,
-      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
+      "local_authority_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
       "local_authority_sha256": {
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.md": "e794148607891dff94897b928f771fdd8128061d9c82a4ba5698c2fecf8243fd",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.lean": "f8db735538852d8db8a45234613b1b02b869ee08834f616148a38cf45fec90ea"
+        "research_corpus/Erdos1041/BarycentricEnvelope.md": "e794148607891dff94897b928f771fdd8128061d9c82a4ba5698c2fecf8243fd",
+        "research_corpus/Erdos1041/BarycentricEnvelope.lean": "f8db735538852d8db8a45234613b1b02b869ee08834f616148a38cf45fec90ea"
       },
       "digest_policy": "recomputed_at_build_time_from_the_committed_private_tree",
       "public_authority_paths": [
@@ -232,9 +195,6 @@
       "status": "strongest_premise",
       "exact_statement": "The source-current root-ray product contraction holds for arbitrary modulus and strictly contracts every noninitial point on the ray segment; it is stronger than the unit-modulus special case.",
       "hypotheses": "A root ray segment in the normalized polynomial geometry, with multiplicities as in the source theorem.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "erdos_1041_parent"
@@ -245,9 +205,9 @@
       ],
       "why_it_matters": "It removes another dominated radial derivation and forces work onto the missing pair/scale selector or a different endpoint bridge.",
       "local_frontier_only": true,
-      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
+      "local_authority_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
       "local_authority_sha256": {
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md": "afcab2005bbcbe800888d9e9c6ffd9a3a83498875b7dd10b00ef0fc14192867e"
+        "research_corpus/Erdos1041/TypeBReturnAssimilation20260826.md": "afcab2005bbcbe800888d9e9c6ffd9a3a83498875b7dd10b00ef0fc14192867e"
       },
       "digest_policy": "recomputed_at_build_time_from_the_committed_private_tree",
       "public_authority_paths": [
@@ -259,10 +219,6 @@
       "status": "strongest_premise",
       "exact_statement": "The reciprocal Newton expansion supplies the exact R4 staple identity and its connector bookkeeping; a receiver may use the staple as premise but cannot headline its rederivation as progress.",
       "hypotheses": "The reciprocal Newton coordinate and staple configuration defined in the source theorem.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.lean"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "erdos_1041_parent"
@@ -272,10 +228,10 @@
       ],
       "why_it_matters": "Return 009 stopped at the occupied staple theorem; the only creditable next step is a new selector or full composition.",
       "local_frontier_only": true,
-      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
+      "local_authority_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
       "local_authority_sha256": {
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md": "a4a76758e216490f4cc567068726af8183b4b7a2cb1ab5cbc922af25a47de8e1",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.lean": "fc69e0d0c86c2159c5513f2bfe4142ced0d1e7de5c81180980af355a1ef21b7a"
+        "research_corpus/Erdos1041/ReciprocalNewtonExpansion.md": "a4a76758e216490f4cc567068726af8183b4b7a2cb1ab5cbc922af25a47de8e1",
+        "research_corpus/Erdos1041/ReciprocalNewtonExpansion.lean": "fc69e0d0c86c2159c5513f2bfe4142ced0d1e7de5c81180980af355a1ef21b7a"
       },
       "digest_policy": "recomputed_at_build_time_from_the_committed_private_tree",
       "public_authority_paths": [
@@ -288,10 +244,6 @@
       "status": "strongest_premise",
       "exact_statement": "The tied Newton-face zero-critical-value trace, its two-end merge, and the adjacent-root ellipse metric chain are occupied source-current mechanisms; topology and local metric chaining are not the remaining unsupported implication.",
       "hypotheses": "A tied Newton face and the adjacent-root configuration of the source theorems.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceCriticalTrace.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceAdjacentEllipse.md"
-      ],
       "named_consumers": [
         "fixed_block_monodromy_gap",
         "cover_visibility_consumer",
@@ -302,10 +254,10 @@
       ],
       "why_it_matters": "Return 010 repeated occupied tied-face machinery; activate the whole chain and force the proof across the missing global splice.",
       "local_frontier_only": true,
-      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
+      "local_authority_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
       "local_authority_sha256": {
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceCriticalTrace.md": "8a64f560149290e7cda8cf06303e7ae02c791590b51634deb342e744c9f843b0",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceAdjacentEllipse.md": "c201b91d78008706532f2f3f408af3fb2f67c6432d817d892e963a58df479741"
+        "research_corpus/Erdos1041/TiedNewtonFaceCriticalTrace.md": "8a64f560149290e7cda8cf06303e7ae02c791590b51634deb342e744c9f843b0",
+        "research_corpus/Erdos1041/TiedNewtonFaceAdjacentEllipse.md": "c201b91d78008706532f2f3f408af3fb2f67c6432d817d892e963a58df479741"
       },
       "digest_policy": "recomputed_at_build_time_from_the_committed_private_tree",
       "public_authority_paths": [
@@ -318,11 +270,6 @@
       "status": "strongest_premise",
       "exact_statement": "The target-sufficient admissible product is exactly product_v h_v, where h_v=(L(v)/2)/r_v^((k_v-1)/n). The Bergman-Polya certificate proves h_v<=1 on an explicit bulk cherry region. Universal per-cherry and per-rooted-subtree inequalities are stronger than the parent requires: an uncertified cherry with an admissible parent can remain open as multiplicative debt in its ancestor block. All 126 corpus misses and 178/180 stress misses are internal in this sense; only a miss whose parent is the virtual level-one cut is a genuine standalone base. The corpus has zero such terminal misses and stress has two, with largest sampled factor 0.853771268558. A deterministic cubic also falsifies naive independent substitution of each certified cherry's standalone sqrt(B_v) majorant: the actual subtree product is 0.839217266469 but the hybrid bound is 1.075474341153. The exact open throat is therefore parent-coupled area/capacity or another adaptive open-block closure that retains certified-child slack, with only virtual-cut misses treated separately.",
       "hypotheses": "Simple generic critical points, canonical descending inverse-ray edge lengths, and the admissible set A={c:|f(c)|<1}.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/admissible_critical_arc_product_probe_tao_pipeline_receipt.json"
-      ],
       "named_consumers": [
         "admissible_parent_coupled_open_block_product_gap",
         "erdos_1041_parent"
@@ -343,10 +290,6 @@
       "status": "strongest_premise",
       "exact_statement": "For every maximal nontrivial level-one component C, put q(c)=L(c)/(2|f(c)|^(1/n)) on its critical-edge set A_C. The componentwise condition average_(A_C) q(c)<=1 for every C implies the global target-deciding admissible product by componentwise AM-GM and multiplication, and is exactly equivalent on each C to sum_(A_C) (D_c+K_c)/(2|f(c)|^(1/n)) >= sum_(A_C) (R/|f(c)|^(1/n)-1). CAQ/CWSC is unproved; deterministic floating probes found 0/273 base-component and 0/801 stress-component violations, with worst component mean 0.999478637196. Immediate next-scale repayment is numerically false on 89 base and 62 stress overspends.",
       "hypotheses": "Simple generic admissible critical points with canonical inverse-ray lengths, partitioned by maximal nontrivial level-one component; the componentwise AM-GM implication and charge equivalence are exact, while CAQ/CWSC remains an open producer.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py"
-      ],
       "named_consumers": [
         "admissible_product_quantifier_firewall",
         "generic_closed_extension",
@@ -359,10 +302,10 @@
       ],
       "why_it_matters": "It localizes the scale-sensitive additive target to one proper-map component, where component topology and boundary trace can act without cross-component compensation. It must be proved or exactly falsified; numerical survival is not theorem authority.",
       "local_frontier_only": true,
-      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
+      "local_authority_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
       "local_authority_sha256": {
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md": "e3cdec3df99f4cfbd54f5687e6d8ccb54d69534d36a2ef004204b3137bd3b350",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py": "eda40f3ab91f6567a61893e1c264b2519f81e0afafd131385fba87ac4a796546"
+        "research_corpus/Erdos1041/AdmissibleCriticalArcProductLab.md": "e3cdec3df99f4cfbd54f5687e6d8ccb54d69534d36a2ef004204b3137bd3b350",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py": "eda40f3ab91f6567a61893e1c264b2519f81e0afafd131385fba87ac4a796546"
       },
       "digest_policy": "recomputed_at_build_time_from_the_committed_private_tree",
       "public_authority_paths": [
@@ -375,10 +318,6 @@
       "status": "strongest_premise",
       "exact_statement": "For every admissible merge node v, with next admissible ancestor or level-one cut b_v, complete admissible rooted subtree T_v, N_v=|T_v|, and q(u)=L(u)/(2 beta_u^(1/n)), CSTA specializes to CAQ at a maximal component and to h_v<=1 at a cherry. For delta_v=N_v(1-Phi_v), x_v=(beta_v/b_v)^(1/n), and G_v=L(v)/2+N_v-1-N_v x_v, exact algebra gives delta_v=x_v^(-1)(sum_i delta_(v_i)-G_v). Moreover C_v=x_v^N_v-N_v x_v+N_v-1=(1-x_v)^2 sum_(j=0)^(N_v-2)(N_v-1-j)x_v^j>=0 and O_v=max(0,L(v)/2-x_v^N_v)=x_v^N_v max(0,h_v-1), so G_v<=C_v+O_v. Thus PGLS, sum_i delta_(v_i)>=C_v+O_v, is a stronger sufficient recursive step. CSTA and PGLS are unproved. PGLS has zero base/stress violations with largest measured liability/slack ratios 0.857114446951 and 0.960626426260; a fixed half-slack allocation is numerically false.",
       "hypotheses": "Simple generic admissible critical points, canonical inverse-ray lengths, and the admissible merge tree. Only the endpoint identifications, slack recurrence, positive-liability factorization, and PGLS sufficiency are proved algebraically; CSTA and PGLS remain open strengthenings of CAQ.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py"
-      ],
       "named_consumers": [
         "scale_weighted_arithmetic_charge_bridge",
         "admissible_product_quantifier_firewall",
@@ -392,10 +331,10 @@
       ],
       "why_it_matters": "It splits the topology-first graft obligation into two explicit nonnegative liabilities: quadratic cut-scale convexity C_v and positive node-factor overspend O_v. Prove PGLS with a scale- or topology-dependent allocation, prove the weaker graft inequality directly, or falsify and pivot. Neither CSTA nor PGLS is a theorem, and CAQ/CWSC remains the weakest target-deciding producer.",
       "local_frontier_only": true,
-      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
+      "local_authority_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
       "local_authority_sha256": {
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md": "e3cdec3df99f4cfbd54f5687e6d8ccb54d69534d36a2ef004204b3137bd3b350",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py": "eda40f3ab91f6567a61893e1c264b2519f81e0afafd131385fba87ac4a796546"
+        "research_corpus/Erdos1041/AdmissibleCriticalArcProductLab.md": "e3cdec3df99f4cfbd54f5687e6d8ccb54d69534d36a2ef004204b3137bd3b350",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py": "eda40f3ab91f6567a61893e1c264b2519f81e0afafd131385fba87ac4a796546"
       },
       "digest_policy": "recomputed_at_build_time_from_the_committed_private_tree",
       "public_authority_paths": [
@@ -408,10 +347,6 @@
       "status": "strongest_premise",
       "exact_statement": "Let mu be the least critical-value modulus, k0 the arity of a minimizing first-merge component, and kappa its normalized component capacity. Exact LC2 boundary-hop certificates prove the parent theorem on four nested lattices: for mu<=1/2, every k0>=17 closes and for k0=2,...,16 the certified kappa cutoffs are 1/3,2/5,12/25,1/2,7/12,16/25,2/3,7/10,3/4,4/5,5/6,7/8,9/10,33/35,39/40; for mu<=1/4, every k0>=12 closes and the k0=2,...,11 cutoffs are 19/50,12/25,4/7,16/25,7/10,3/4,4/5,7/8,14/15,49/50; for mu<=1/8, every k0>=10 closes and the k0=2,...,9 cutoffs are 2/5,1/2,3/5,2/3,3/4,4/5,8/9,18/19; for mu<=1/64, every k0>=10 closes and the k0=2,...,9 cutoffs are 4/9,5/9,16/25,8/11,4/5,13/15,13/14,99/100. Every row is an exact rational inequality. Thus any remaining low-critical counterexample lies in the complementary low-arity/high-capacity cells; the deepest row forces kappa>13/14 at k0=8 and kappa>99/100 at k0=9.",
       "hypotheses": "Monic polynomial with all roots in the open unit disk; mu is the least critical-value modulus; k0 and kappa are taken from a minimizing first-merge component. The lattice rows are proved by exact rational certificates, while the complementary cells and high-critical branch remain open.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py"
-      ],
       "named_consumers": [
         "low_critical_low_arity_high_capacity_residual",
         "generic_closed_extension",
@@ -424,10 +359,10 @@
       ],
       "why_it_matters": "It converts the low-critical branch into a finite arity-by-capacity residual and makes any proof attempt that ignores the exact lattice dominated. The live task is to exploit high normalized capacity plus low first-merge arity, splice the complementary cells to another parent consumer, or solve the high-critical branch—not to rediscover a weaker constant-factor estimate.",
       "local_frontier_only": true,
-      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
+      "local_authority_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
       "local_authority_sha256": {
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md": "4e0015e457c2671eb32f9776204f7ca9434c0de526b225dc5bb18596ccb8b427",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py": "ccc47cea94bda5d5401e49f2924c4a0407a33e044f0ffa6c76a96584bd944da9"
+        "research_corpus/Erdos1041/UnconditionalConstantFactorBound.md": "4e0015e457c2671eb32f9776204f7ca9434c0de526b225dc5bb18596ccb8b427",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py": "ccc47cea94bda5d5401e49f2924c4a0407a33e044f0ffa6c76a96584bd944da9"
       },
       "digest_policy": "recomputed_at_build_time_from_the_committed_private_tree",
       "public_authority_paths": [
@@ -440,11 +375,6 @@
       "status": "strongest_premise",
       "exact_statement": "A single grouped critical-value lollipop proves Erdős 1041 on an open coefficient neighbourhood of every strict regular polygon in every degree, with exact model length 2(r-s)+(2 pi/n)s.",
       "hypotheses": "A sufficiently small coefficient neighbourhood of z^n-r^n with 0<r<1 and the grouped critical-value contour retained inside the unit value disk.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GroupedCriticalClusterMonodromy.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MergeTreeDiscriminantDichotomy.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HardRegimeIsNearFekete.md"
-      ],
       "named_consumers": [
         "quantitative_near_fekete_cluster_transfer_gap",
         "erdos_1041_parent"
@@ -464,10 +394,6 @@
       "status": "strongest_premise",
       "exact_statement": "For monic f of degree n>=2 with listed zeros in the closed unit disc and c_1..c_{n-1} the zeros of f', the incidence product R = prod_{i,j} |z_i - c_j| = prod_j |f(c_j)| <= 1 with equality exactly for rotations of the regular n-gon. For EVERY tree T on n slots and EVERY bijection lambda: E(T) -> {1..n-1} some placement pi has prod_{uv} |z_{pi(u)} - c_{lambda(uv)}| |z_{pi(v)} - c_{lambda(uv)}| <= R^(2/n) <= 1 (forest refinement: bound (prod_{j in J} |f(c_j)|)^(2/n)). The weighted products B(pi) = A(pi)/prod_e |f(c_{lambda(e)})|^(2/n) satisfy prod_pi B(pi) = 1 identically for every monic f. Also prod_i dist(z_i, Z(f')) <= 1.",
       "hypotheses": "Monic polynomial, listed roots with multiplicity in the closed unit disc; critical points counted with multiplicity. The weighted identity needs no root-location hypothesis.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalTreeAdmissibleProduct.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_global_tree_admissible_product.py"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "erdos_1041_parent"
@@ -487,9 +413,6 @@
       "status": "strongest_premise",
       "exact_statement": "For a degree-d component W of the lemniscate forest with mean access L_W(t) and perimeter p_W(t): L_W(t) = (1/2pi) int_beta^t p_W(s) ds/s, so L_W'(t) = p_W(t)/(2 pi t); and d/dt (t^(1/pi) L_W(t)) = (1/(2 pi)) t^(1/pi - 1) (2 L_W(t) + p_W(t)). The excess charge t^(1/pi)(L_W - d_W) is exactly additive across mergers and the forest telescopes to int_0^1 (2L + p - 2n) dnu = 2(L(1) - n) <= 0. The weight alpha = 1/pi is forced by the coarea constant; the law is an identity, so no reweighting avoids the obstruction.",
       "hypotheses": "Generic simple critical values; W a component with lifetime (beta, delta) of regular levels.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ComponentLifetimeTransportIdentity.md"
-      ],
       "named_consumers": [
         "integrated_monodromy_perimeter_gap",
         "erdos_1041_parent"
@@ -508,9 +431,6 @@
       "status": "strongest_premise",
       "exact_statement": "The parent theorem is reduced to one row: at the first merge, containment of the two descending inverse-ray branches is proved, the Euclidean budget d1+d2 <= 2 mu^(1/n) for the nearest pair is proved (Lean), and L(c*) = (d_a + d_b) + D(c*) with D >= 0 is proved; the single open row is L(c*) < 2. Two witnessed gaps: (1) branch endpoints need not be the nearest roots (Claim L refuted away from ties); (2) the arcs curve, D > 0, and a weighted L2 turning bound suffices where the L-infinity version is refuted.",
       "hypotheses": "Generic first-merge configuration; mu the least critical-value modulus; L(c*) the two-arm descending branch length.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstMergeReductionState.md"
-      ],
       "named_consumers": [
         "erdos_1041_parent"
       ],
@@ -527,9 +447,6 @@
       "status": "strongest_premise",
       "exact_statement": "Composing the arity-capacity lattice with the exterior-fibre inequality p < k/(2n-k) gives exact integer bands with no proper minimizing k0=9 component at mu <= 1/64 for 10 <= n <= 459, no k0=11 at mu <= 1/4 for 13 <= n <= 167, no k0=16 at mu <= 1/2 for 22 <= n <= 93, no k0=9 at mu <= 1/8 for 15 <= n <= 35. Complete-fibre saturation: Delta = sum h_j/[n(n-h_j)], sum h_j <= n^2 Delta. Radial spectator-drop merge ceiling with exponent (n-1)/m. Conjecture (18): b_next/t <= b_sym(n, m, p)/t with the symmetric 3/2 cusp law - the named most-valuable next attack, computation only.",
       "hypotheses": "Monic roots in the open unit disc; mu, k0, kappa from a minimizing first-merge component; 'proper' excludes the whole-component cell.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacitySaturationBridge.md"
-      ],
       "named_consumers": [
         "low_critical_low_arity_high_capacity_residual",
         "erdos_1041_parent"
@@ -548,9 +465,6 @@
       "status": "strongest_premise",
       "exact_statement": "In the generic last-merge-hangs-a-single-lobe configuration, |Phi(z_n)| = C(n+m)/(n-m), g_Omega(z_n, infinity) = log((n+m)/(n-m)), and cap(U)^n = b ((n-m)/(n+m))^m - independent of the root configuration (rigidity). At every generic two-component merge the exterior uniformization W' has a forced boundary double zero, giving an exact polynomial identity coupling the exterior coordinates of all outside roots. The parent-aware capacity budget cannot repay the cubic graft: kappa is pinned to (1/2)^(1/3) at the parent cut.",
       "hypotheses": "Generic merge with a single hanging root of multiplicity m; C = cap(U).",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/LastLobeCapacityLaw.md"
-      ],
       "named_consumers": [
         "low_critical_low_arity_high_capacity_residual",
         "two_lobe_boundary_access_gap",
@@ -570,9 +484,6 @@
       "status": "strongest_premise",
       "exact_statement": "(C): if a connected component of K_t = {|f| <= t} contains two roots, two of them are joined inside that component by a path of length at most 2 t^(1/n) = 2 cap(K_t). (C) is affine-invariant, implies Erdos 1041 using only mu <= R^n, and is an exact equality on (z - tau)^n - lambda for every n >= 2. At t = mu every admissible path passes through c*; per-lobe halving under the min-critical hub selector is eliminated exactly (witness max d/rho = 1.0003912). First-order metric slack: 2 rho - (d_a + d_b) = rho_crit (cos theta_a + cos theta_b) + O(rho_crit^2) >= 2 cos^2(pi/n) rho_crit (1 + o(1)).",
       "hypotheses": "Monic f; t a level whose component contains two roots.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacityGeodesicConjecture.md"
-      ],
       "named_consumers": [
         "erdos_1041_parent"
       ],
@@ -590,10 +501,6 @@
       "status": "strongest_premise",
       "exact_statement": "At EVERY critical point c of a monic polynomial with listed roots in the closed unit disc, the two nearest listed root occurrences satisfy |z_i - c| + |z_j - c| <= 2; when c is not a root, d1 + d2 <= 2 |P(c)|^(1/n). Lean-checked: two_add_le_two_of_disk_inverse_balance, exists_two_roots_dist_sum_le_two_mul_geomMean (CriticalTwoRootProximity.lean).",
       "hypotheses": "Roots counted with multiplicity in the closed unit disc; c any zero of P'.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalCriticalTwoNearestBudget.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
-      ],
       "named_consumers": [
         "free_pair_geometric_mean_two_arm_selector",
         "first_merge_reduction_state",
@@ -610,13 +517,160 @@
       ]
     },
     {
+      "result_id": "all_degree_phase_sturm_reduction",
+      "status": "strongest_premise",
+      "exact_statement": "For every low-mode all-degree model arm sum, n^2 E_{phi phi}=E+K with K>=0. Hence E_{phi phi}+E/n^2>=0, and on every allowed phase arc shorter than pi n endpoint bounds dominate the whole arc.",
+      "hypotheses": "A regular labelled inverse-ray model sheet in the all-degree low-mode normal form, with the phase arc and endpoint continuation specified in the source theorem.",
+      "named_consumers": [
+        "all_degree_wall_sheet_subharmonic_reduction",
+        "quintic_double_tight_only_model_residual",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "interior phase sampling or separate pointwise phase certificates on arcs covered by the Sturm comparison length"
+      ],
+      "why_it_matters": "Phase interiors are not a remaining producer; any full proof must spend effort on terminal strata, containment/selection, or the real parent bridge.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/AllDegreePhaseSturmReduction.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_all_degree_phase_sturm.py"
+      ]
+    },
+    {
+      "result_id": "all_degree_wall_sheet_subharmonic_reduction",
+      "status": "strongest_premise",
+      "exact_statement": "After nth-root normalization by the active gap, the pair excess is plurisubharmonic on every regular labelled complex wall sheet in every degree. Regular sheet interiors are controlled by their boundary and puncture limsups.",
+      "hypotheses": "Centered monic holomorphic low-mode family with correction degree at most n-2; nonzero active gap; regular labelled wall sheet with continuous boundary extension where the maximum principle is invoked.",
+      "named_consumers": [
+        "quintic_double_tight_only_model_residual",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "regular complex wall-interior atlases in any degree"
+      ],
+      "why_it_matters": "The universal model problem lives on lower-dimensional terminal strata; the source audit confirms the holomorphic normalization, hub integrability, and terminal locally-uniform limit.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/AllDegreeWallSheetSubharmonicReduction.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_all_degree_wall_sheet_subharmonic.py"
+      ]
+    },
+    {
+      "result_id": "all_degree_critical_value_moment_rigidity",
+      "status": "strongest_premise",
+      "exact_statement": "For H(z)=z^n+sum_{1<=k<=K} b_k z^k and critical values v_j counted with multiplicity, sum_j v_j^r=0 whenever (r+1)K<=n-1. If 3K<=n-1 and all critical values are collinear, then H=z^n after centering and zero-constant normalization.",
+      "hypotheses": "The displayed centered monic low-mode polynomial; multiplicity-counted critical points; collinearity only for the rigidity corollary.",
+      "named_consumers": [
+        "all_degree_wall_sheet_subharmonic_reduction",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "nondegenerate fully-tight sparse low-mode skeletons in the range 3K<=n-1"
+      ],
+      "why_it_matters": "It removes the final fully-tight sparse skeleton exactly, while explicitly leaving the maximal quintic two-mode carrier and general containment/selection problem open.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/AllDegreeCriticalValueMomentRigidity.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_all_degree_critical_value_moment_rigidity.py"
+      ]
+    },
+    {
+      "result_id": "proper_component_uniform_area_gap",
+      "status": "strongest_premise",
+      "exact_statement": "Every proper multi-root component of a polynomial lemniscate has the source theorem's uniform strict area/capacity gap, with the exact degree and component hypotheses stated there.",
+      "hypotheses": "A proper component of the normalized polynomial sublevel with the root count and normalization of ProperComponentUniformAreaGap.md.",
+      "named_consumers": [
+        "partial_cluster_preimage_perimeter_identity",
+        "cover_visibility_consumer",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "nonuniform or purely asymptotic proper-component area slack"
+      ],
+      "why_it_matters": "A uniform geometric deficit is available; the missing step is still to bind that deficit to one attachment-compatible length/connection object.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/ProperComponentUniformAreaGap.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_proper_component_area_gap.py"
+      ]
+    },
+    {
+      "result_id": "first_merge_critical_value_separation_certificate",
+      "status": "strongest_premise",
+      "exact_statement": "If a simple critical hub c has normalized other-critical-value separation S>1, the square-root-resolved inverse branch continues injectively to |xi|<sqrt(S) and its canonical two-root connector has length at most 2*(1+S)^(1/n)*sqrt(log(S/(S-1)))*|f(c)|^(1/n). The connector is strictly shorter than 2|f(c)|^(1/n) whenever (1+S)^(2/n)log(S/(S-1))<1. Exact convenient thresholds are S=4 for n>=3, S=3 for n>=4, and S=2 for n>=7; with open-unit-disk roots each proves Erdos 1041 in its regime.",
+      "hypotheses": "Monic degree n>=3 polynomial; nonzero simple critical hub c; normalized separation |1-f(d)/f(c)|>=S>1 for every other critical point; terminal inequality (1+S)^(2/n)log(S/(S-1))<1. The parent corollary additionally assumes all roots lie in the open unit disk.",
+      "named_consumers": [
+        "partial_cluster_preimage_perimeter_identity",
+        "grouped_critical_value_contour",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "the unrestricted first-merge endpoint trace obligation above the exact separation curve, in particular gaps four in degree three, three in degrees four through six, and two from degree seven onward"
+      ],
+      "why_it_matters": "It proves the full parent in genuine all-degree regimes and sharply shrinks the first-merge obstruction to increasingly tight critical-value clusters or multiple saddles, where grouping rather than isolated-sheet estimates is required.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/FirstMergeCriticalValueSeparationCertificate.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_first_merge_critical_value_separation.py"
+      ]
+    },
+    {
+      "result_id": "quintic_double_tight_only_model_residual",
+      "status": "strongest_premise",
+      "exact_statement": "For the quintic universal model, coefficient interiors and phase interiors are removed; the entire mu=-10 arc, every triple-hub side limit, both mu-star gap-zero fibres, and neighborhoods of all three interior carrier events are exactly negative. The sole model-metric residual is a finite collection of compact regular double-tight branch truncations on the unordered degree-ten carrier.",
+      "hypotheses": "The trace-maximal quintic two-mode universal chamber and its source-labelled compactification.",
+      "named_consumers": [
+        "quintic_trace_min_qualitative_transfer",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "two-dimensional quintic wall certification",
+        "the mu=-10 and mu-star exceptional-fibre obligations",
+        "uncertified treatment of carrier event fibres"
+      ],
+      "why_it_matters": "The quintic model endpoint is now a bounded finite exact sign problem rather than an open-ended chamber search.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/QuinticDoubleTightCriticalValueCarrier.md",
+        "research_corpus/Erdos1041/QuinticDoubleTightCompactAtlas.md",
+        "research_corpus/Erdos1041/QuinticMinusTenFullArcExcessCertificate.md",
+        "research_corpus/Erdos1041/QuinticMinusTenWallLimitSideArmCertificate.md",
+        "research_corpus/Erdos1041/QuinticMuStarAngularFiberReduction.md",
+        "research_corpus/Erdos1041/QuinticMuStarEndpointExcessCertificate.md"
+      ]
+    },
+    {
+      "result_id": "quintic_trace_min_qualitative_transfer",
+      "status": "strongest_premise",
+      "exact_statement": "A strict all-sheet quintic universal model excess theorem, together with the source lower-semicontinuity bridge, transfers to a genuine near-pentagon degree-five real connector theorem; no separate selector theorem is needed inside that compact window.",
+      "hypotheses": "Strict all-sheet EX-U+ on the compactified quintic model plus the exact real-family setup of the source theorem.",
+      "named_consumers": [
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "a separate local hub-selector theorem after strict all-sheet model closure"
+      ],
+      "why_it_matters": "Closing the finite double-tight sign atlas has an already-proved route into actual degree-five polynomials; the remaining global parent still needs its all-degree splice.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/QuinticTraceMinQualitativeTransfer.md"
+      ]
+    },
+    {
+      "result_id": "quintic_positive_common_five_sheet_continuation",
+      "status": "strongest_premise",
+      "exact_statement": "The source certificate carries all five upper-half-plane sheets of the ordered positive double-tight carrier from the cusp collar through the exact common endpoint stated in QuinticDoubleTightPositiveDecadeContinuation.md, with pairwise-disjoint exhaustive Krawczyk tubes and strict negative excess on every sheet.",
+      "hypotheses": "The positive regular branch of the exact quintic unordered double-tight carrier over the certified rational parameter interval.",
+      "named_consumers": [
+        "quintic_double_tight_only_model_residual"
+      ],
+      "supersedes": [
+        "pointwise positive-carrier samples and single-sheet continuation on the certified interval"
+      ],
+      "why_it_matters": "It removes a common five-sheet interval from the finite compact atlas and exposes the first exact remaining sign-width gate.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/QuinticDoubleTightPositiveDecadeContinuation.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_quintic_double_tight_positive_decade_continuation.py"
+      ]
+    },
+    {
       "result_id": "first_critical_pair_energy_no_go",
       "status": "exact_no_go",
       "exact_statement": "A monic cubic with exact Gaussian-rational data refutes the proposed pointwise first-critical pair-energy cone for all sufficiently small positive perturbations.",
       "hypotheses": "The explicit cubic family and the precise pair-energy inequality (PEC) in the source.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstCriticalPairEnergyNoGo20260827.md"
-      ],
       "named_consumers": [
         "six_return_full_energy_budget"
       ],
@@ -633,9 +687,6 @@
       "status": "exact_no_go",
       "exact_statement": "An exact quartic refutes the fixed-nearest-pair critical-energy geometric-mean selector within the admissible polynomial class.",
       "hypotheses": "The explicit quartic, its exact critical ordering, and the fixed-pair CE-GM claim stated in the source.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CEGMQuarticFixedPairNoGo.md"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "erdos_1041_parent"
@@ -653,9 +704,6 @@
       "status": "exact_no_go",
       "exact_statement": "The tied-face full-block pointwise L1 bound is false even though the exact moment and product identities remain true.",
       "hypotheses": "The tied Newton-face block and the pointwise L1 inequality isolated in the source countermodel.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1NoGo.md"
-      ],
       "named_consumers": [
         "fixed_block_monodromy_gap"
       ],
@@ -672,9 +720,6 @@
       "status": "exact_no_go",
       "exact_statement": "The abstract charged-lifetime scalar allocation does not force the required compatible pair; polynomial-specific structure is indispensable.",
       "hypotheses": "The finite weighted-tree abstraction and scalar allocation assumptions in the source theorem.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ChargedLifetimeAllocationNoGo.md"
-      ],
       "named_consumers": [
         "attachment_common_ancestry_selector",
         "combined_charge_attachment_gap"
@@ -692,10 +737,6 @@
       "status": "exact_no_go",
       "exact_statement": "The exact tied-face two-spoke and sextic origin-spoke witnesses rule out a universal fixed straight-spoke pair construction.",
       "hypotheses": "The explicit tied-face/sextic polynomial witnesses and straight-spoke containment claims in the sources.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticMixedOriginSpokeNoGo.md"
-      ],
       "named_consumers": [
         "cover_visibility_consumer",
         "erdos_1041_parent"
@@ -714,9 +755,6 @@
       "status": "exact_no_go",
       "exact_statement": "Separately resolving and circling every radial critical slit has full-cycle monodromy but double-charges the critical tree and exceeds the average length-two budget on open cubic and quartic charts.",
       "hypotheses": "The canonical thin separate-slit lollipop on a generic ray-separated degree-k component.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparateCriticalContourNoGo.md"
-      ],
       "named_consumers": [
         "integrated_monodromy_perimeter_gap",
         "monodromy_bergman_dichotomy_gap"
@@ -734,9 +772,6 @@
       "status": "exact_no_go",
       "exact_statement": "Claim L - at the minimum-critical hub c* the two merging roots are the two roots nearest c* - is refuted away from ties: stored float witnesses at degree 6 (tie separation 1.001, gap -0.181), degree 10 (1.001, -0.067), degree 8 (1.05, -0.036). Violations found only at tie separations <= 1.05; open whether they occur at large separation. The (C) metric floor for the merging pair still holds at every witness (worst (d_a+d_b)/2rho = 0.594; dedicated climb 0.7512).",
       "hypotheses": "Exact float witnesses with margins 100-1000x classifier resolution; no exact rational certificate claimed.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClaimLRefutation.md"
-      ],
       "named_consumers": [
         "lean_critical_pair_metric_scale",
         "first_merge_reduction_state"
@@ -755,9 +790,6 @@
       "status": "exact_no_go",
       "exact_statement": "The universal sharp componentwise radial-contour criterion RC4 (p_C(t) + (1/pi) int_0^t p_C(s) ds/s <= 2k) is false for P(z) = z^2 - r^2 with r > r_0 = 1/(1 + J/pi) = 0.746705..., J = 2 sqrt(2) - 2 log(1 + sqrt(2)); at r = 5/6 the expression exceeds 4 = 2k by an elementary rational argument.",
       "hypotheses": "Every admissible multi-root level of the open-unit-disc quadratic.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260828.md"
-      ],
       "named_consumers": [
         "integrated_monodromy_perimeter_gap"
       ],
@@ -775,9 +807,6 @@
       "status": "exact_no_go",
       "exact_statement": "The Euclidean tree admissible product carries no sublevel containment and cannot be consumed as an (AP) surrogate: matched pairs need not have any contained arm (the exact balanced quintic, the five-root rational configuration, the degree-twelve 2.283 ratio witness, the near-Fekete quintic two-spoke witness), the required admissible product multiplies entrance arcs L(c)/(2|f(c)|^(1/n)) rather than Euclidean distances, and the hybrid cubic (actual 0.839217266469 vs independently majorized 1.075474341153) forbids independent child majorization in the entrance-arc lane.",
       "hypotheses": "Any proposed conversion of the global tree product of root-critical distances into a lemniscate path.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalTreeAdmissibleProduct.md"
-      ],
       "named_consumers": [
         "global_tree_admissible_product_family"
       ],
@@ -795,10 +824,6 @@
       "status": "exact_no_go",
       "exact_statement": "The lifetime transport law cannot close the parent by itself: under the failure hypothesis every degree >= 2 component can satisfy 2 L_W + p_W > 2 d while degree-one singleton loops absorb the entire global negative defect. The law is an identity at forced weight alpha = 1/pi, so no reweighting avoids the obstruction; separately-resolved contours pay (2/k) sum_c L(c) asymptotically, and the universal pointwise criterion is refuted on z^2 - (5/6)^2.",
       "hypotheses": "The singleton-slack concentration model of the failure hypothesis.",
-      "authority_paths": [
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ComponentLifetimeTransportIdentity.md",
-        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparateCriticalContourNoGo.md"
-      ],
       "named_consumers": [
         "component_lifetime_transport_identity"
       ],
@@ -809,6 +834,41 @@
       "public_authority_paths": [
         "research_corpus/Erdos1041/ComponentLifetimeTransportIdentity.md",
         "research_corpus/Erdos1041/SeparateCriticalContourNoGo.md"
+      ]
+    },
+    {
+      "result_id": "quintic_tangent_quadratic_bridge_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "On the exact quintic tangent orbit the canonical-pair quadratic energy is strictly positive (indeed >29/1000 in the original gauge), while the exact canonical-pair L1 excess is strictly negative.",
+      "hypotheses": "The normalized tangent polynomial G(V)=V^5+40V^2-60V and the canonical pair selected in the source certificates.",
+      "named_consumers": [
+        "quintic_trace_min_qualitative_transfer",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "nonpositive quadratic branch energy as a necessary route to canonical-pair L1 negativity"
+      ],
+      "why_it_matters": "Quadratic energy has the wrong sign on a source-exact solved specimen; direct L1, moved-block, entropy, or integrated mechanisms must be used instead.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/QuinticTangentQuadraticBridgeObstruction.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_quintic_tangent_quadratic_bridge_obstruction.py"
+      ]
+    },
+    {
+      "result_id": "quintic_fixed_strip_cusp_support_method_obstruction",
+      "status": "exact_no_go",
+      "exact_statement": "The current square-root-free fixed-strip support schedule cannot extend the common five-sheet cusp collar past u=10^-3: on the first exact microcell the two strong sheets remain negative, but the weak-sheet one-sided certificate is already positive at the endpoint and remains positive after parameter refinement.",
+      "hypotheses": "The fixed-strip cone schedule and weak positive cusp sheet used in QuinticWeightedCuspSupportBridge.md; this is a certificate-method statement, not a sign statement about the true excess.",
+      "named_consumers": [
+        "quintic_double_tight_only_model_residual"
+      ],
+      "supersedes": [
+        "parameter refinement of the same fixed-strip schedule as a route beyond the u=10^-3 collar"
+      ],
+      "why_it_matters": "The true weak-sheet excess may still be negative, but this support majorant overpays by about 0.55 already at the boundary; a sharper adaptive cone, direct L1, or different transport invariant is required.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/QuinticWeightedCuspSupportBridge.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_quintic_weighted_cusp_support_bridge.py"
       ]
     }
   ]

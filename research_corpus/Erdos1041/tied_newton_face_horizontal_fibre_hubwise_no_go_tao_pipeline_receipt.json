@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "sampled_horizontal_fibre_defect_signs_at_individual_negative_critical_points",
   "output_stage": "exact_analytic_hubwise_horizontal_fibre_no_go",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceHorizontalFibreHubwiseNoGo.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceHorizontalFibreHubwiseNoGo.md",
   "human_understanding_delta": "For Q=15z+5z^2-z^5 the unique leftmost saddle c=-1 emits a conjugate leftward horizontal fibre whose exact imaginary-axis crossing forces the two branches into the exp(+/-2pi i/5) sectors. Chord displacement then gives delta_Q(c)>=(sqrt(5)-1)/2>0. This refutes both hubwise negativity and the returned Leftmost-Fibre Inequality LF. The producer must therefore minimize over all negative hubs, use component aggregate charge, or construct a different finite connector.",
   "verification_state": "exact symbolic checker PASS; focused serialized Lean build PASS",
   "publication_or_review_state": "private authoring checkpoint; global lift continuation, sector tracking, inverse asymptotics, and defect-limit identification remain ordinary mathematics",

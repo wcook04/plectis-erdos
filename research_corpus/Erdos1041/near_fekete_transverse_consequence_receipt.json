@@ -2,8 +2,8 @@
   "schema": "mathematical_consequence_decision_set_v1",
   "source_commit": "0f248d8826eca5f946052c1d4fd2f983bc3d7a04",
   "source_files": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.md"
+    "research_corpus/Erdos1041/NearFeketeTransverseClosure.lean",
+    "research_corpus/Erdos1041/NearFeketeTransverseClosure.md"
   ],
   "delta_class": "new_statement_and_status_authority_changed",
   "claim_ceiling": "The scale-normalized bound L<2R_MEC is proved for sufficiently small finite perturbations in every fixed transverse cone, uniformly for base radii in compact ranges up to one. Directions approaching h'(0)=0, the bulk regime, and unrestricted Erdos #1041 remain open.",
@@ -18,19 +18,19 @@
   },
   "decisions": [
     {
-      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeCuspLaw.md",
+      "surface": "research_corpus/Erdos1041/NearFeketeCuspLaw.md",
       "decision": "update_now",
       "mathematical_reason": "Its stated finite O(rho^2) residual is discharged on every fixed transverse cone; only loss of transversality survives on that side.",
       "validation_or_reentry": "source addendum names the exact new theorem and preserves the unrestricted boundary"
     },
     {
-      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstMergeReductionState.md",
+      "surface": "research_corpus/Erdos1041/FirstMergeReductionState.md",
       "decision": "update_now",
       "mathematical_reason": "Its near-Fekete status paragraph still said that all finite perturbations were open; the exact residual is now the higher tangent family.",
       "validation_or_reentry": "source addendum reconciled without changing the bulk or capacity-geodesic claims"
     },
     {
-      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "surface": "research_corpus/Erdos1041/research_packet.json",
       "decision": "defer_with_reason",
       "mathematical_reason": "A new exact-result row and a narrowed near-Fekete producer are warranted, but the packet contains independently owned uncommitted edits and cannot be safely mutated in this slice.",
       "validation_or_reentry": "re-enter after the current packet owner lands or releases its changes; add the three exact Lean declarations and preserve unrestricted-open wording"
@@ -42,7 +42,7 @@
       "validation_or_reentry": "re-enter only if the complex matched-asymptotic theorem itself is formalized or externally reviewed"
     },
     {
-      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
+      "surface": "source-provenance://private-authoring-project/ErdosProblems/papers/erdos-1041-lemniscate-newton-flow.tex",
       "decision": "defer_with_reason",
       "mathematical_reason": "The result changes a private near-Fekete boundary but its complex matched-asymptotic proof has ordinary-proof status and no independent review; the existing paper must not imply unrestricted closure.",
       "validation_or_reentry": "Refinery audit of the cutoff proof, then an exact paper insertion with the transverse hypothesis and tangent residual"
@@ -62,9 +62,9 @@
   ],
   "decision_set_status": "checkpoint_rotate_with_packet_and_publication_deferrals",
   "propagated_surface_files": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeCuspLaw.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstMergeReductionState.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/near_fekete_transverse_consequence_receipt.json"
+    "research_corpus/Erdos1041/NearFeketeCuspLaw.md",
+    "research_corpus/Erdos1041/FirstMergeReductionState.md",
+    "research_corpus/Erdos1041/near_fekete_transverse_consequence_receipt.json"
   ],
   "next_mathematical_residual": "Classify and prove the finite family of higher tangent models zeta^n+(n/j)zeta^j, including saddle-connection limits, then return to the D-away-from-1 bulk."
 }

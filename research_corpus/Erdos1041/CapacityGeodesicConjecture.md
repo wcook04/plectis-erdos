@@ -550,7 +550,7 @@ is true.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_capacity_geodesic.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_capacity_geodesic.py
 ```
 
 **Receipt, 2026-08-24: `verdict pass`, exit `0`**, with all ten gates green —

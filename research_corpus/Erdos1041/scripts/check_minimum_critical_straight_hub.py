@@ -36,20 +36,20 @@ REPO_ROOT = Path(__file__).resolve().parents[5]
 SCRIPT_PATH = Path(__file__).resolve()
 SOURCE_REF = str(SCRIPT_PATH.relative_to(REPO_ROOT))
 ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "MinimumCriticalNewtonHubLab.md"
 )
 SEARCH_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "scripts/search_counterexample.py"
 )
 RESEARCH_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "research_packet.json"
 )
 DEFAULT_OUTPUT = (
     REPO_ROOT
-    / "state/formal_math/erdos257_period_noncollapse/"
+    / "source-provenance://private-authoring-project/receipts/"
     "erdos1041_minimum_critical_straight_hub_counterexample_receipt.json"
 )
 

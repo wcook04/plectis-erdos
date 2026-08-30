@@ -21,35 +21,35 @@ PREDECESSOR_PORTFOLIO_SHA256 = "33ca17e65944b7d6ac25bd69a4b72a13d14e2e4b32393a0f
 PREDECESSOR_VALIDATION_SHA256 = "119cedac41544a2ecff90992f1fe24b888d5ef1d1bf0955f80bd75f2d7ad8f2f"
 RETURN_INTAKE_SHA256 = "7c10bb581cdc820121501273cb2e212b90f264daac494efef396602f78c792f0"
 MERGE_DISCRIMINANT_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_merge_tree_discriminant_dichotomy.py"
 )
 FIRST_TWO_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_first_two_critical_optimized_bergman.py"
 )
 JOINT_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_six_return_joint_assimilation.py"
 )
 CHARGED_ALLOCATION_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_charged_lifetime_allocation_no_go.py"
 )
 LEAF_ENTRANCE_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_leaf_entrance_product_identity.py"
 )
 ROOT_ANCESTRY_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_root_indexed_entrance_ancestry.py"
 )
 ENTRANCE_ENERGY_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_entrance_energy_ratio_bridge.py"
 )
 SEVENTH_SEXTIC_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_seventh_return_sextic_assimilation.py"
 )
 

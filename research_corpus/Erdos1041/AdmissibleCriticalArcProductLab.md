@@ -683,8 +683,8 @@ instruments, and must be present in every future packet's hard-gate corpus.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py --stress-subtrees-only
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py --stress-subtrees-only
 ```
 
 The checker uses IEEE-754 polynomial roots, Hungarian branch matching, and

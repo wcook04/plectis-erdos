@@ -73,12 +73,12 @@ straight-spoke selection alone.
 ## Durable replay
 
 ```bash
-./repo-python formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_nearest_spoke.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_nearest_spoke.py --check
+./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_nearest_spoke.py
+./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_nearest_spoke.py --check
 ```
 
 The receipt
-`state/formal_math/erdos257_period_noncollapse/erdos1041_nearest_spoke_counterexample_receipt.json`
+`source-provenance://private-authoring-project/receipts/erdos1041_nearest_spoke_counterexample_receipt.json`
 records every rational root coordinate, squared norm, reciprocal sum, spoke
 point, polynomial value, analytic falsifier, Lean consumer, and source digest.
 Lean separately checks the reciprocal balance, unique-nearest squared-norm

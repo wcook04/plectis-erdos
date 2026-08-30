@@ -183,5 +183,5 @@ Unrestricted Erdős #1041 remains open.
 Replay the finite exact checks with
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_separate_critical_contour_no_go.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_separate_critical_contour_no_go.py
 ```

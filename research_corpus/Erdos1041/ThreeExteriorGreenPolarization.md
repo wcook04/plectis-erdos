@@ -385,9 +385,9 @@ shortcuts from being retried.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_three_exterior_green_polarization.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_gp3_simplex_curvature.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_gp3_isosceles_slice.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_three_exterior_green_polarization.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_gp3_simplex_curvature.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_gp3_isosceles_slice.py
 ```
 
 The second checker proves the tangent (simplex) curvature certificate (14)-(15);

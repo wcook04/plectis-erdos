@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "batch03_return006_global_tree_admissible_product_claim",
   "output_stage": "exact_tree_matching_theorem_family_with_conservation_law_and_claim_boundary",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalTreeAdmissibleProduct.md",
+  "artifact": "research_corpus/Erdos1041/GlobalTreeAdmissibleProduct.md",
   "human_understanding_delta": "The root-critical incidence product R = prod_{i,j} |z_i - c_j| is not merely bounded by 1: over every placement of the roots into the slots of an arbitrary critical-point-labelled tree, the two-arm edge products have an exact geometric mean R^(2/n), and after dividing by the critical-value weights prod_e |f(c_e)|^(2/n) their product over all placements is identically 1 for every monic polynomial. Euclidean root-critical matching is therefore a conservation law, and simultaneously it is exactly the class of quantity that every recorded spoke-visibility no-go forbids from carrying sublevel containment. The theorem pins what any future consumer must add: a containment-and-length bridge from Euclidean two-arm products to lemniscate arcs.",
   "verification_state": "ordinary proof (Hadamard on the Vandermonde matrix, resultant identity, exact permutation counting over n! bijections); 30-digit verification of the counting identity at n = 3, 4; randomized sweeps degrees 2-8 for R <= 1 and the selector form; equality family (rotations of regular n-gons) verified exactly; no Lean module yet",
   "publication_or_review_state": "private authoring checkpoint; not independently reviewed and not a solution of unrestricted Erdos #1041",

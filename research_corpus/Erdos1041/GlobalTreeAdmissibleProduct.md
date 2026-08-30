@@ -154,7 +154,7 @@ Multiply over `i` and apply Theorem 1.  `[]`
 
 ## Verification
 
-`./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_global_tree_admissible_product.py`
+`python3 research_corpus/Erdos1041/scripts/check_erdos1041_global_tree_admissible_product.py`
 
 covers: random `R <= 1` and selector sweeps (degrees 2-8); the exact counting
 identity `prod_pi A(pi) = R^{2(n-1)!}` at `n = 3, 4` (30-digit arithmetic);

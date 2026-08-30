@@ -3,8 +3,8 @@
   "input_stage": "computation_guided_proof_generation",
   "output_stage": "verified_analytic_proof_and_formal_kernel",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidHubBudget.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidHubBudget.lean"
+    "research_corpus/Erdos1041/CentroidHubBudget.md",
+    "research_corpus/Erdos1041/CentroidHubBudget.lean"
   ],
   "human_understanding_delta": "The root centroid is not merely a candidate hub. In every degree it lies strictly inside the unit lemniscate by the exact variance identity plus AM-GM, and it lies inside the major-axis-two ellipse of some root pair by a pair-sum identity plus Cauchy-Schwarz. Hence two of the free-hub mechanism's three obligations are automatic at one explicit polynomial-adapted hub; only spoke containment remains.",
   "verification_state": {

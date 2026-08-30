@@ -119,9 +119,7 @@ consumer is the adjacent declaration
 The focused replay is
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
-  --jobs 2 --project-root formal_math/erdos257_period_noncollapse \
-  ErdosProblems.Erdos1041.CriticalTwoRootProximity
+lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
 ```
 
 This formal source checks the metric-budget declarations only; it does not
@@ -134,7 +132,7 @@ minimum-critical pair lands at roots 0 and 1, with normalized curved length
 approximately \(0.7385324012\).  The reproducible regression checker is
 `scripts/check_legacy_minimum_critical_descent_regression.py` and its generated
 receipt is
-`state/formal_math/erdos257_period_noncollapse/erdos1041_legacy_minimum_critical_descent_regression_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_legacy_minimum_critical_descent_regression_receipt.json`.
 
 The regression is evidence about the historical computation only; it is not
 used in the proof above.

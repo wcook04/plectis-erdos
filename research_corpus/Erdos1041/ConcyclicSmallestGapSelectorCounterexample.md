@@ -129,7 +129,6 @@ Lean checks the same rational core and proves the uniform real statement for
 all `0<s<=1`.
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 \
-  ErdosProblems.Erdos1041.ConcyclicSmallestGapSelectorCounterexample
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py
+lake env lean research_corpus/Erdos1041/ConcyclicSmallestGapSelectorCounterexample.lean
 ```

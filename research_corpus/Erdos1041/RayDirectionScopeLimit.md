@@ -357,7 +357,7 @@ proved*, "the confinement statement at ray directions other than `delta = 0`
 confinement as measured. Its own shipped script does not support that.
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/\
+python3 research_corpus/Erdos1041/\
 scripts/check_erdos1041_cone_bound_all_degrees.py
 ```
 
@@ -489,6 +489,6 @@ product-to-sum identities; the wall crossings are one linear equation each.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/\
+python3 research_corpus/Erdos1041/\
 scripts/check_erdos1041_ray_direction_scope.py
 ```

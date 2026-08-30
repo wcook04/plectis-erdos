@@ -136,7 +136,7 @@ the two selected rays near the origin, the fixed negative baseline
 ## 6. Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_form_a_cut_first_nonzero_mode.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_form_a_cut_first_nonzero_mode.py
 ```
 
 The checker enumerates all mode quotients through degree 80, audits every

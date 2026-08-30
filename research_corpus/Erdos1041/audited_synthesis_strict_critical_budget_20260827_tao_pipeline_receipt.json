@@ -5,7 +5,7 @@
   "proof_campaign_completion_class": "residual_only_invalid_completion",
   "input_stage": "generation",
   "output_stage": "verification_and_canonicalization",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.lean",
+  "artifact": "research_corpus/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.lean",
   "human_understanding_delta": "The attached synthesis contributes no new frontier object: every positive claim is dominated by source-current corpus authority and its perturbative spoke obstruction is weaker than an exact distinct-root unique-nearest Lean certificate. A new Lean consumer now extracts the strict <2 conclusion with explicit slack 2(1-r) from the stronger geometric-mean theorem.",
   "verification_state": "Lean theorem checked by focused and serialized Lake validation; attachment claims cross-checked against stronger source-current corpus authority; unrestricted target remains open",
   "publication_or_review_state": "private authoring assimilation; not externally reviewed",

@@ -5,9 +5,9 @@
   "input_stage": "strict complex rotated-diameter model tube plus reciprocal Newton expansion and metric-free staple identity",
   "output_stage": "actual-polynomial sequential near-Fekete transfer on every strict complex norm-budget cell",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTransfer.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTransfer.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_complex_diameter_transfer.py"
+    "research_corpus/Erdos1041/TiedNewtonFaceComplexDiameterTransfer.md",
+    "research_corpus/Erdos1041/TiedNewtonFaceComplexDiameterTransfer.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_complex_diameter_transfer.py"
   ],
   "human_understanding_delta": "The strict complex tube now transfers to actual near-Fekete polynomials by a three-range proof: compact chord margin, half-leading mesoscopic domination with reciprocal-tail absorption, and a fixed regular-polygon root collar. R4 makes the resulting staple strictly shorter than two. The remaining tied-face task is coverage outside the union of strict complex tubes, not containment inside them.",
   "verification_state": "passed exact rational checker and focused plus serialized Lean authority build",

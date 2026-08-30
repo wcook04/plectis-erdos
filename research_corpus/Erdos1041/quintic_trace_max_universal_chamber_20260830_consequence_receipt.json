@@ -1,0 +1,91 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "research_corpus/Erdos1041/QuinticTraceMaxUniversalChamber.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.quintic_center_at_critical",
+      "ErdosProblems.Erdos1041.quintic_universal_shape_identity",
+      "ErdosProblems.Erdos1041.quintic_universal_derivative_identity",
+      "ErdosProblems.Erdos1041.quintic_universal_critical_gap",
+      "ErdosProblems.Erdos1041.quintic_universal_chamber_rational_budget"
+    ],
+    "evidence_path": "research_corpus/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+    "verifier": "research_corpus/Erdos1041/scripts/check_erdos1041_quintic_trace_max_universal_chamber.py",
+    "delta_class": "new_exact_compact_reduction_real_axis_classification_and_authority_boundary_correction",
+    "authority_at_review": "ordinary exact algebra and complex-analysis compactness proof, exact SymPy/Fraction/Sturm replay, and green focused Lean algebra kernel; no universal excess proof or parent proof claimed",
+    "claim_ceiling": "The quintic model excess is reduced to E_universal<=0 on an explicit compact three-real-variable chamber, with the real-mu chamber classified exactly. The universal excess, real-scale transfer, degree five, and unrestricted Erdos 1041 remain open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "review_scope": "The machine queue was dominated by the generic alpha_1 token and broad Erdős namespace bridges into unrelated problem-249 state. Semantic review covered the owning FRONTIER, research packet, the tangent exact certificate, the trace-max computational law, and the generated/control-plane candidates.",
+    "precision_note": "alpha_1 matches in Erdős 249 are unrelated arithmetic constants; namespace-to-capability and historical-campaign bridges are navigation candidates only."
+  },
+  "decisions": [
+    {
+      "file": "research_corpus/Erdos1041/FRONTIER.md",
+      "decision": "update_now",
+      "mathematical_reason": "The canonical quintic (EX) row must expose the universal chamber compactification, real-axis classification, and corrected tangent evidence boundary.",
+      "validation_or_reentry": "source-current checker, focused Lean build, and cold-reader query"
+    },
+    {
+      "file": "research_corpus/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The owner packet needs the exact-result row, theorem crosswalk, verifier, compact residual, and corrected claim ceiling.",
+      "validation_or_reentry": "JSON parse, exact checker, focused Lean build, and cold-reader query"
+    },
+    {
+      "file": "research_corpus/Erdos1041/TraceMaxRadialExcessLaw.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "It already labels the global rightward law and tangent curved excess computational; the new reduction changes coordinates and proof burden but not those measurements.",
+      "validation_or_reentry": "re-enter when EX-U is proved or refuted"
+    },
+    {
+      "file": "research_corpus/Erdos1041/QuinticTangentOrbitExactCertificate.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Its theorem correctly proves straight-ray containment and metric budget. The overstatement lived in the FRONTIER summary, not in the exact certificate.",
+      "validation_or_reentry": "none unless a curved-arm analytic theorem lands"
+    },
+    {
+      "file": "state/formal_math_research_operations/type_b_handoffs/erdos249_digit_reduction_six_wave13_2026_07_24/01_digital_weyl_transport_brief.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "Its alpha_1 is an unrelated Erdős 249 arithmetic constant.",
+      "validation_or_reentry": "none"
+    },
+    {
+      "file": "state/formal_math_research_operations/capability_map.json and unrelated historical/pilot namespace bridges",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Generated/control-plane projections do not confer authority, and the new source is worktree-only until the scoped commit lands; unrelated Erdős 249 pilots have no mathematical dependence.",
+      "validation_or_reentry": "re-enter through the owner projection after the source commit if a projection refresh selects this result"
+    },
+    {
+      "file": "plectis_lean_erdos249_257_public",
+      "decision": "verified_no_change",
+      "mathematical_reason": "No public promotion was requested; the private reduction neither changes public source parity nor proves the parent theorem.",
+      "validation_or_reentry": "explicit owner-approved public promotion"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "The quintic (EX) search is now a scale-free compact chamber problem rather than a redundant coefficient-core search; the real-mu chamber is completely classified.",
+    "newly_discharged": "Hub modulus, coefficient magnitude normalization, the mu-to-infinity end, and discovery of the real-axis trace-max domain are removed from the proof burden.",
+    "authority_correction": "The exact tangent straight connector is separated from the still-computational curved rightward inverse-ray excess.",
+    "surviving_boundary": "Prove E_universal(mu,phi)<=0 on the compact chamber, stratifying mu=-10, repeated critical values, and the tangent boundary; then prove the actual-polynomial real-scale transfer.",
+    "nonimplications_preserved": "No universal excess inequality, degree-five theorem, or unrestricted parent theorem follows from compactness or the real-axis chamber classification alone."
+  },
+  "source_files": [
+    "research_corpus/Erdos1041/QuinticTraceMaxUniversalChamber.lean",
+    "research_corpus/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_quintic_trace_max_universal_chamber.py"
+  ],
+  "propagated_surface_files": [
+    "research_corpus/Erdos1041/FRONTIER.md",
+    "research_corpus/Erdos1041/research_packet.json",
+    "research_corpus/Erdos1041/quintic_trace_max_universal_chamber_20260830_consequence_receipt.json"
+  ],
+  "checkpoint_class": "bounded_private_frontier_advance",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The generic-symbol and namespace-bridge noise is already governed by the consequence skill's precision rules. The mathematical lesson belongs in the new owner note and frontier rather than a general workflow change.",
+    "reentry_condition": "Re-enter when EX-U is proved or refuted, the compact chamber receives a rigorous interval cover, or the real-scale transfer changes."
+  }
+}

@@ -120,7 +120,7 @@ and [`not_all_nonpos_of_halfStep_mem`](./SexticCubicFaceConnectorNoGo.lean#L59-L
 The exact symbolic replay is
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_cubic_face_connector_no_go.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_sextic_cubic_face_connector_no_go.py
 ```
 
 The checker and Lean declarations establish this source-specific obstruction

@@ -3,9 +3,9 @@
   "input_stage": "computation_guided_conjecture_falsification",
   "output_stage": "verification",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidHubCounterexample.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidHubCounterexample.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centroid_hub_counterexample.py"
+    "research_corpus/Erdos1041/CentroidHubCounterexample.md",
+    "research_corpus/Erdos1041/CentroidHubCounterexample.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_centroid_hub_counterexample.py"
   ],
   "human_understanding_delta": "Scaling covariance turns the adaptive-MEC geometry into an exact falsifier for centroid visibility, and a bounded rational simplification reduces its direction parameters to 0, 5/8, 7/2, -11/3, -5/7. At radius 99999/100000 the roots remain pairwise separated beyond 5/9, but four named rational waypoints have squared polynomial modulus greater than 1+1/5000. Thus the centroid is an automatic interior metric hub but not an automatic visibility hub.",
   "verification_state": {

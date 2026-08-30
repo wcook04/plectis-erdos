@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceMinimumRealSelectorNoGo.conjugate_pair_criticalValueRealPart_gt_quarter",
       "ErdosProblems.Erdos1041.TiedNewtonFaceMinimumRealSelectorNoGo.no_safe_positive_real_cutoff"
@@ -13,7 +13,7 @@
   "decisions": [
     {
       "candidate_id": "canonical_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The no-go changes the exact tied-face selector boundary and must be visible in exact results, negative results, landed sources, and the claim ceiling.",
       "authority_surface_checked": "exact_results, negative_results, landed_formal_source, claim ceiling",
@@ -21,7 +21,7 @@
     },
     {
       "candidate_id": "paired_trace_and_adjacent_ellipse",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceAdjacentEllipse.md",
+      "file": "research_corpus/Erdos1041/TiedNewtonFaceAdjacentEllipse.md",
       "decision": "verified_no_change",
       "mathematical_reason": "The counterexample leaves both the negative-saddle theorem and the adjacent metric theorem intact; only the greedy hub selector fails.",
       "authority_surface_checked": "theorem statements and containment residual",

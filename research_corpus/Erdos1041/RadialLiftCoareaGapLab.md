@@ -77,6 +77,6 @@ complete radial-lift `L1` function is eliminated.
 Replay:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_radial_lift_coarea_gap.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_radial_lift_coarea_gap.py --check
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_radial_lift_coarea_gap.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_radial_lift_coarea_gap.py --check
 ```

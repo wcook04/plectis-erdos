@@ -3,9 +3,9 @@
   "input_stage": "computation_guided_phase_sensitive_proof_generation",
   "output_stage": "lean_verified_boundary_theorem_assimilated_into_stronger_interior_successor",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_primitive_quintic_boundary_tail.py"
+    "research_corpus/Erdos1041/PrimitiveQuinticBoundaryTail.md",
+    "research_corpus/Erdos1041/PrimitiveQuinticBoundaryTail.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_primitive_quintic_boundary_tail.py"
   ],
   "human_understanding_delta": "The primitive sparse quintic has a rigid paraorthogonal boundary. Missing z^3 and z^2 coefficients fix the first three real angular moments. The cubic separator Q_r(x)=(-r/2-x)(1-x)^2 has total mass 5-2r, but a single safe root contributes at most 4-2r and every unsafe root contributes nonpositively. The exact one-unit gap forces two distinct strict safe tails when a is nonzero; a=0 is the sharp all-equality case.",
   "verification_state": {

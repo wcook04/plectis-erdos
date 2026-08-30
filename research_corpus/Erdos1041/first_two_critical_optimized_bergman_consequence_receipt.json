@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstTwoCriticalOptimizedBergman.lean",
+    "lean_path": "research_corpus/Erdos1041/FirstTwoCriticalOptimizedBergman.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.FirstTwoCriticalOptimizedBergman.derivativeBracket_neg",
       "ErdosProblems.Erdos1041.FirstTwoCriticalOptimizedBergman.lengthSq_lt_four_of_cost_lt_two",
@@ -38,7 +38,7 @@
     },
     {
       "candidate_id": "math_consequence_ba0a6a660a877017",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The exact result list, source manifest, and claim ceiling must record that the returned theorem was strictly strengthened and that the residual is now a direct tied-level ratio at min(beta_2,1).",
       "authority_surface_checked": "landed_formal_source, exact_results, frontier_integrity, and claim-ceiling addenda",
@@ -46,7 +46,7 @@
     },
     {
       "candidate_id": "math_consequence_c1c3967a8ed4852d",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The route concerns persistence of roots under perturbation and neither states nor consumes a first-merge Bergman threshold.",
       "authority_surface_checked": "route theorem manifest",
@@ -54,7 +54,7 @@
     },
     {
       "candidate_id": "math_consequence_ec783c7a35609a37",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The historical source identities, general-candidate refutations, and degree-four attribution remain correct. This private sufficient theorem neither validates nor refutes those manuscripts.",
       "authority_surface_checked": "prior-art route source identities and refutation fields",
@@ -62,7 +62,7 @@
     },
     {
       "candidate_id": "semantic_connected_cluster_bergman",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConnectedClusterBergman.md",
+      "file": "research_corpus/Erdos1041/ConnectedClusterBergman.md",
       "decision": "verified_no_change",
       "mathematical_reason": "Its k=2 length theorem is consumed verbatim. The new work changes level selection, not the Bergman statement.",
       "authority_surface_checked": "equation (1), q_C definition, and capacity form",
@@ -70,7 +70,7 @@
     },
     {
       "candidate_id": "semantic_exterior_fibre_capacity_gap",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExteriorBlaschkeFibreCapacityGap.md",
+      "file": "research_corpus/Erdos1041/ExteriorBlaschkeFibreCapacityGap.md",
       "decision": "verified_no_change",
       "mathematical_reason": "The exact k=2 constant 1/(n-1) is consumed unchanged. The new result optimizes t after applying this source theorem.",
       "authority_surface_checked": "Corollary 3 and the k/(2n-k) constant",
@@ -78,7 +78,7 @@
     },
     {
       "candidate_id": "semantic_fp_gm_and_fm2",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CEGMQuarticFixedPairNoGo.md",
+      "file": "research_corpus/Erdos1041/CEGMQuarticFixedPairNoGo.md",
       "decision": "verified_no_change",
       "mathematical_reason": "The optimized separated-level theorem proves a larger sufficient regime but neither proves nor refutes free-pair FP-GM or the proposed stronger FM-2 route.",
       "authority_surface_checked": "surviving free-pair producer and fixed-pair no-go boundary",

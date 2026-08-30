@@ -69,12 +69,12 @@ The source anchors, source digests, exact rational replay, Lean consumers, and
 claim ceiling are bound by:
 
 ```text
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_candidate_tree_budget_source_audit.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_candidate_tree_budget_source_audit.py --check
+python3 research_corpus/Erdos1041/scripts/check_candidate_tree_budget_source_audit.py
+python3 research_corpus/Erdos1041/scripts/check_candidate_tree_budget_source_audit.py --check
 ```
 
 Canonical receipt:
-`state/formal_math/erdos257_period_noncollapse/erdos1041_candidate_tree_budget_source_audit_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_candidate_tree_budget_source_audit_receipt.json`.
 
 ## One-way consequence
 

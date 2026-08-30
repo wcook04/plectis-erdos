@@ -114,9 +114,9 @@ center.
 Replay:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_pendyala_radial_extension.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_pendyala_radial_extension.py --check
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_pendyala_radial_extension.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_pendyala_radial_extension.py --check
 ```
 
 Canonical receipt:
-`state/formal_math/erdos257_period_noncollapse/erdos1041_adaptive_mec_dichotomy_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_adaptive_mec_dichotomy_receipt.json`.

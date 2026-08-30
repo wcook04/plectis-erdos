@@ -1,7 +1,7 @@
 # Erdős 1041 research corpus
 
 This directory is the complete public-safe committed research corpus for
-Erdős Problem 1041 at source checkpoint `9b33a98d985823d9c79877cd62f9315e641730d2`. The unrestricted
+Erdős Problem 1041 at source checkpoint `867638684907b4ebd4ab2ef7b5de22dafda71e36`. The unrestricted
 problem remains open; these files contain proved conditional reductions,
 Lean-checked statements, exact computations, counterexamples, no-go results,
 assimilation records, and live proof-frontier notes. No navigation label or
@@ -21,7 +21,8 @@ its digest. Route choice is deliberately unrestricted: the map is a premise
 floor, not a prescribed proof strategy.
 
 Publication relation: committed source files are copied exactly unless they
-contain a local absolute path. Such paths are replaced by a stable
-`public-source-redacted://` locator; both source and public digests and the
-replacement count are recorded in the corpus manifest. Cache bytecode and
-binary files are excluded.
+contain private authoring coordinates. Paths for files published here become
+public `research_corpus/Erdos1041/...` paths. Unpublished source evidence uses
+an explicit `source-provenance://` locator and is not an executable public
+interface. Both source and public digests and the replacement count are
+recorded in the corpus manifest. Cache bytecode and binary files are excluded.

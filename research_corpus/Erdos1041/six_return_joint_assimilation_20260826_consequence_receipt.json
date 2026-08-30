@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SixReturnJointAssimilation20260826.lean",
+    "lean_path": "research_corpus/Erdos1041/SixReturnJointAssimilation20260826.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826.fullEnergyChargedLifetimeBudget",
       "ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826.leafChargedLifetimeBudget",
@@ -79,7 +79,7 @@
     },
     {
       "candidate_id": "semantic_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The canonical packet must record the leaf-charged lifetime theorem, sharper Gram constant, six-return source bundle, and unchanged unrestricted claim boundary.",
       "authority_surface_checked": "landed_formal_source, exact_results, claim-ceiling addenda, and current correction boundary",
@@ -87,7 +87,7 @@
     },
     {
       "candidate_id": "semantic_returned_lifetime_and_antichain",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/EightPacketFrontierCoevolution20260826.md",
+      "file": "research_corpus/Erdos1041/EightPacketFrontierCoevolution20260826.md",
       "decision": "verified_no_change",
       "mathematical_reason": "Its FE source law remains correct. The new theorem is a downstream additive consumer and belongs in its own joint-assimilation source rather than rewriting the dated packet-design artifact.",
       "authority_surface_checked": "forest leaf-energy theorem, desk boundaries, and dated role",
@@ -95,7 +95,7 @@
     },
     {
       "candidate_id": "semantic_connected_cluster_and_pole_charge",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTreeLengthCharge.md",
+      "file": "research_corpus/Erdos1041/CriticalTreeLengthCharge.md",
       "decision": "verified_no_change",
       "mathematical_reason": "The critical-pole dispersion theorem is conditional on a trace inequality and therefore does not alter the existing open combined-charge status.",
       "authority_surface_checked": "component charge, trace form, and claim boundary",

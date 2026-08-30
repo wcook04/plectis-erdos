@@ -1,0 +1,170 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "research_corpus/Erdos1041/FreePointFP4Complete.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.FreePointFP4Complete.three_mul_pairProduct_le_sum_sq",
+      "ErdosProblems.Erdos1041.FreePointFP4Complete.outer_radius_derivative_numerator_pos",
+      "ErdosProblems.Erdos1041.FreePointFP4Complete.outer_stationary_equation",
+      "ErdosProblems.Erdos1041.FreePointFP4Complete.outer_stationary_mem_interval",
+      "ErdosProblems.Erdos1041.FreePointFP4Complete.outer_stationary_radical_numerator_pos",
+      "ErdosProblems.Erdos1041.FreePointFP4Complete.outer_stationary_squared_slack_pos"
+    ],
+    "evidence_path": "research_corpus/Erdos1041/FreePointZeroInsertionFP4Matching.md",
+    "verifier": "research_corpus/Erdos1041/scripts/check_erdos1041_free_point_zero_insertion_fp4.py",
+    "delta_class": "new_statement_and_status_authority_changed",
+    "authority_at_review": "ordinary exact analytic proof with green exact checker; Lean scalar kernel authored but focused elaboration capacity-deferred",
+    "claim_ceiling": "FP4 is complete, with equality only at the all-zero tuple. FP_m for m>=5, the general torus/psh implication to Conjecture (S), Conjecture (S), and unrestricted Erdos 1041 remain open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "displayed_candidate_count": 13,
+    "discovered_candidate_count": 773,
+    "omitted_candidate_count": 760,
+    "review_scope": "All thirteen displayed machine candidates plus a semantic source-current pass over the owning FP4 note, FRONTIER.md, research_packet.json, Conjecture (S), and the parent claim boundary."
+  },
+  "decisions": [
+    {
+      "candidate_id": "semantic_fp4_owner_note",
+      "file": "research_corpus/Erdos1041/FreePointZeroInsertionFP4Matching.md",
+      "decision": "update_now",
+      "mathematical_reason": "The central/outer proof discharges every former FP4 residual and changes the note's main theorem and equality boundary.",
+      "authority_surface_checked": "complete proof, former subcases, no-go rows, and claim boundary",
+      "validation_or_reentry": "exact checker green; Lean scalar-kernel build re-enters after capacity ticket rct_7d12319183ffd5cbe167 clears"
+    },
+    {
+      "candidate_id": "semantic_fp4_frontier",
+      "file": "research_corpus/Erdos1041/FRONTIER.md",
+      "decision": "update_now",
+      "mathematical_reason": "FP4 can no longer appear as an open outer-shell or graph problem; the live free-point residual begins at m=5.",
+      "authority_surface_checked": "proof-wave summary and Conjecture (S) open-gap row",
+      "validation_or_reentry": "cold-reader query exposes fp4_complete_2026_08_30 while retaining the open parent target"
+    },
+    {
+      "candidate_id": "semantic_fp4_research_packet",
+      "file": "research_corpus/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The owner packet needs an exact result row, declaration crosswalk, supersession of former FP4 residual wording, and the unchanged higher-level claim ceiling.",
+      "authority_surface_checked": "exact_results and claim-ceiling addenda",
+      "validation_or_reentry": "jq parse green and source-current cold-reader retrieval green"
+    },
+    {
+      "candidate_id": "math_consequence_5c9c36f3de4fcdb9",
+      "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/certificate_search_receipts/ramanujan_2_7_hadjicostas_squeeze_certificate_v1.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The theta identifiers are unrelated Ramanujan certificate coordinates.",
+      "authority_surface_checked": "machine match excerpts",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_2498accbeba0c1df",
+      "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/proof_packets/ramanujan_2_4_certificate_candidate_v1.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "Its S_m is an unrelated normalized sequence, not the FP_m sum.",
+      "authority_surface_checked": "machine match excerpts",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_761694fd31458252",
+      "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/proof_packets/ramanujan_2_7_hadjicostas_squeeze_certificate_v1.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "The theta identifiers are lexical collisions with unrelated interpolation variables.",
+      "authority_surface_checked": "machine match excerpts",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_660bc86747cfaef5",
+      "file": "state/formal_math_research_operations/capability_map.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This generated/control-plane projection is not claim authority and the new worktree source is not yet landed.",
+      "authority_surface_checked": "namespace-to-projection bridge",
+      "validation_or_reentry": "re-enter through the owner projection after the scoped theorem commit"
+    },
+    {
+      "candidate_id": "math_consequence_ea04fec2d33bece8",
+      "file": "state/formal_math_research_operations/fable_proof_campaign_2026_07_13.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "The match is only a broad namespace bridge into an unrelated historical campaign.",
+      "authority_surface_checked": "machine source-reference bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_bf1f9bf58ff2349f",
+      "file": "state/formal_math_research_operations/pilots/erdos249/adjacent_carry_probe.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "Erdos 249 arithmetic state has no mathematical dependence on FP4.",
+      "authority_surface_checked": "machine namespace bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_ca1be2b3cdf1cfd7",
+      "file": "state/formal_math_research_operations/pilots/erdos249/canonical_phase_receipt.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "Erdos 249 phase state has no mathematical dependence on FP4.",
+      "authority_surface_checked": "machine namespace bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_44fd7ce9abf87d8d",
+      "file": "state/formal_math_research_operations/pilots/erdos249/curvature_seam_2026_07_12/curvature_seam_brief.md",
+      "decision": "outside_scope",
+      "mathematical_reason": "The candidate is an unrelated Erdos 249 source-reference bridge.",
+      "authority_surface_checked": "machine namespace bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_44e5a2f1d05f53b8",
+      "file": "state/formal_math_research_operations/pilots/erdos249/exact_lcm_phase_receipt.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The candidate is an unrelated Erdos 249 arithmetic receipt.",
+      "authority_surface_checked": "machine namespace bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_7c4ad7f24773e977",
+      "file": "state/formal_math_research_operations/pilots/erdos249/lcm_factor_ideal_pulse_probe.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The candidate is an unrelated Erdos 249 arithmetic probe.",
+      "authority_surface_checked": "machine namespace bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_bce4b563b334996f",
+      "file": "state/formal_math_research_operations/pilots/erdos257_issue217/latimer_pva_mobius_admissibility.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The broad project namespace bridge does not connect the Problem 217 admissibility computation to FP4.",
+      "authority_surface_checked": "machine namespace bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_6b32f854b2f6995d",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/01_RESULT_AUTHORITY_AND_100_PERCENT_ASSIMILATION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a dated dissemination snapshot rather than the source-current owner packet; updating it in place would falsify its snapshot identity.",
+      "authority_surface_checked": "dated packet role and current owner research packet",
+      "validation_or_reentry": "regenerate through the dissemination owner only if a new snapshot is requested"
+    },
+    {
+      "candidate_id": "math_consequence_d656861b74032b8a",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/02_TAO_PROOF_DIGESTION_AND_SIGNAL_SELECTION/27_ERDOS_257_RESEARCH_PACKET.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "Its S_m and rho_k coordinates belong to Erdős 257 and are lexical collisions.",
+      "authority_surface_checked": "machine match excerpts",
+      "validation_or_reentry": "none"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_discharged": "Every FP4 outer-shell, superunit-graph, RM, PM4, and Lorentzian residual is discharged as an FP4 obligation.",
+    "subordinate_results_preserved": "Small-angle insertion, the adaptive all-degree central theorem, matching-stratum FP4, and the Holder no-go results remain valid and useful for higher-degree research.",
+    "nonimplications_preserved": "FP4 does not become degree-five Conjecture (S) until the general torus/psh implication is proved; Conjecture (S) does not imply unrestricted Erdos 1041.",
+    "surviving_boundary": "FP_m for m>=5, the torus/psh implication, FP--GM, combined charge, COVER, and the parent problem remain open.",
+    "neighboring_route_effect": "RM and Lorentzian-Gram move from urgent FP4 obligations to possible all-degree mechanisms; PM4 is no longer needed for FP4."
+  },
+  "checkpoint_class": "frontier_advanced_with_validation_reentry",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The pass exposed no reusable system-level propagation rule beyond the existing exact-anchor, claim-ceiling, and generated-projection boundaries.",
+    "reentry_condition": "Re-enter when the Lean capacity lease clears, a proof of FP5 or the torus/psh implication lands, or another source-current surface still describes FP4 as open."
+  }
+}

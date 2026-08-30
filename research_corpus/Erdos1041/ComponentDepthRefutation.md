@@ -228,5 +228,5 @@ witnesses; any supremum for `Delta_j/R`; anything at degrees above four.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_component_depth_refutation.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_component_depth_refutation.py
 ```

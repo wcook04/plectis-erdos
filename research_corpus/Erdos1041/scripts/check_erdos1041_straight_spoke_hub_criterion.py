@@ -71,22 +71,22 @@ from system.lib.formal_math_lemniscate import (  # noqa: E402
 )
 
 SOURCE_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_straight_spoke_hub_criterion.py"
 )
 ENGINE_REF = "system/lib/formal_math_lemniscate.py"
 ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "StraightSpokeHubCriterionLab.md"
 )
 PACKET_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json"
+    "research_corpus/Erdos1041/research_packet.json"
 )
 CUBIC_ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.md"
+    "research_corpus/Erdos1041/CubicCriticalHub.md"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "state/formal_math/erdos257_period_noncollapse/"
+    "source-provenance://private-authoring-project/receipts/"
     "erdos1041_straight_spoke_hub_criterion_receipt.json"
 )
 

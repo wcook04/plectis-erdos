@@ -452,7 +452,7 @@ precede any such claim. **Erdős #1041 remains open.**
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_radial_resultant_sweep.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_radial_resultant_sweep.py
 ```
 
 The 2026-08-27 replay reports A1--A3, B1--B2, C, D1--D2, E, F, and G as
