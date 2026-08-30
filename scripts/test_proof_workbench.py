@@ -486,6 +486,72 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
             refused_invalid_utf8 = "not readable UTF-8" in str(error)
         assert refused_invalid_utf8, "probe accepted invalid UTF-8 source"
         assert not (sessions_root / "t_claims" / "probes" / "m004.lean").exists()
+        destination = sessions_root / "t_claims" / "probes" / "m004.lean"
+        outside = tmp / "probe-destination-outside.lean"
+        outside.write_text("outside sentinel\n", encoding="utf-8")
+        destination.symlink_to(outside)
+        calls_before_destination = len(calls)
+        refused_destination_link = False
+        try:
+            _run(
+                sessions_root,
+                [
+                    "probe",
+                    "--session",
+                    "t_claims",
+                    "--file",
+                    str(good),
+                ],
+            )
+        except SystemExit as error:
+            refused_destination_link = "symbolic links" in str(error)
+        assert refused_destination_link, "probe followed a symlinked destination"
+        assert len(calls) == calls_before_destination
+        assert outside.read_text(encoding="utf-8") == "outside sentinel\n"
+
+        destination.unlink()
+        destination.write_text("existing sentinel\n", encoding="utf-8")
+        refused_existing_destination = False
+        try:
+            _run(
+                sessions_root,
+                [
+                    "probe",
+                    "--session",
+                    "t_claims",
+                    "--file",
+                    str(good),
+                ],
+            )
+        except SystemExit as error:
+            refused_existing_destination = "already exists" in str(error)
+        assert refused_existing_destination, "probe overwrote an existing destination"
+        assert destination.read_text(encoding="utf-8") == "existing sentinel\n"
+
+        destination.unlink()
+        real_copy = workbench.shutil.copyfile
+        workbench.shutil.copyfile = lambda *args, **kwargs: (_ for _ in ()).throw(
+            PermissionError(13, "session storage denied")
+        )
+        refused_copy_failure = False
+        try:
+            _run(
+                sessions_root,
+                [
+                    "probe",
+                    "--session",
+                    "t_claims",
+                    "--file",
+                    str(good),
+                ],
+            )
+        except SystemExit as error:
+            refused_copy_failure = "could not be stored" in str(error)
+        finally:
+            workbench.shutil.copyfile = real_copy
+        assert refused_copy_failure, "probe leaked a storage copy failure"
+        assert len(calls) == calls_before_destination
+        assert not destination.exists()
         claim = _run(
             sessions_root,
             [

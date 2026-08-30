@@ -358,7 +358,18 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         ) from exc
     move_id = session.next_move_id()
     stored = session.probes_dir / f"{move_id}.lean"
-    shutil.copyfile(source_path, stored)
+    if path_has_symlink_component(stored):
+        raise SystemExit(
+            f"probe artifact path must not traverse symbolic links: {stored}"
+        )
+    if stored.exists() or stored.is_symlink():
+        raise SystemExit(f"probe artifact already exists: {stored}")
+    try:
+        shutil.copyfile(source_path, stored)
+    except OSError as exc:
+        raise SystemExit(
+            f"probe artifact could not be stored: {stored}: {exc}"
+        ) from exc
     receipt = run_lean_probe(root, source)
     record = _base_record(session, "probe")
     record["move_id"] = move_id
