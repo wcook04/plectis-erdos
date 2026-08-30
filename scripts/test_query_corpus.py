@@ -682,6 +682,17 @@ def validate_route_memory_cards() -> None:
         "erdos249_certificate_story"
     ) in family_card
 
+    status_card = query_corpus.render_card(query_corpus.claim_status_packet("open", 20))
+    assert (
+        "status open | claims=2 | emitted=2 | remaining_open_propositions=5\n"
+        "claim_route | erdos_249 | resume=python3 scripts/query_route_memory.py "
+        "--problem 249 --route erdos249_certificate_story"
+    ) in status_card
+    assert (
+        "claim_route | universal_257 | resume=python3 scripts/query_route_memory.py "
+        "--problem 257 --route erdos257_half_story"
+    ) in status_card
+
 
 def validate_connection_query_ranking() -> None:
     packet = query_corpus.connection_card(

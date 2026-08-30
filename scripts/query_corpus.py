@@ -7164,11 +7164,24 @@ def render_card(packet: dict[str, Any]) -> str:
             "| claim_effect=none"
         )
     if kind == "claim_status":
-        return (
+        card = (
             f"status {packet['status']} | claims={packet['claim_count']} "
             f"| emitted={len(packet['claims'])} "
             f"| remaining_open_propositions={len(packet['remaining_open_propositions'])}"
         )
+        route_memory_by_claim = packet.get("route_memory", {}).get("by_claim", {})
+        rows = [card]
+        for claim in packet["claims"]:
+            commands = _route_memory_resume_commands(
+                route_memory_by_claim.get(claim.get("id"))
+            )
+            if not commands:
+                continue
+            row = f"claim_route | {claim['id']}"
+            for command in commands:
+                row += f" | resume={command}"
+            rows.append(row)
+        return "\n".join(rows)
     if kind == "reading_route":
         route = packet["route"]
         if route.get("route_kind") == "mathematical_programme":
