@@ -588,6 +588,10 @@ def build_all_packets(*, root: Path = ROOT) -> list[dict[str, Any]]:
         (
             packet["source_snapshot"]["commit"],
             tuple(sorted(packet["source_snapshot"]["digests"].items())),
+            tuple(sorted(packet["source_snapshot"]["module_digests"].items())),
+            tuple(
+                sorted(packet["source_snapshot"]["research_corpus_digests"].items())
+            ),
         )
         for packet in packets
     }

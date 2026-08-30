@@ -623,6 +623,58 @@ def main() -> int:
             )
         else:
             raise AssertionError("mixed --all source snapshots were accepted")
+
+    research_divergent_calls = 0
+
+    def research_divergent_builder(selector: int, *, root: Path) -> dict:
+        nonlocal research_divergent_calls
+        packet = copy.deepcopy(divergent_base)
+        packet["problem"]["erdos_number"] = selector
+        if research_divergent_calls == 1:
+            packet["source_snapshot"]["research_corpus_digests"] = {
+                "frontier": "sha256:" + "f" * 64
+            }
+        research_divergent_calls += 1
+        return packet
+
+    with patch.object(
+        route_memory, "build_packet", side_effect=research_divergent_builder
+    ):
+        try:
+            route_memory.build_all_packets()
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "moving_source_snapshot",
+                f"mixed research corpus snapshots returned {exc.code}",
+            )
+        else:
+            raise AssertionError("mixed research corpus snapshots were accepted")
+
+    module_divergent_calls = 0
+
+    def module_divergent_builder(selector: int, *, root: Path) -> dict:
+        nonlocal module_divergent_calls
+        packet = copy.deepcopy(divergent_base)
+        packet["problem"]["erdos_number"] = selector
+        if module_divergent_calls == 1:
+            packet["source_snapshot"]["module_digests"] = {
+                "Formalization/Placeholder.lean": "sha256:" + "e" * 64
+            }
+        module_divergent_calls += 1
+        return packet
+
+    with patch.object(
+        route_memory, "build_packet", side_effect=module_divergent_builder
+    ):
+        try:
+            route_memory.build_all_packets()
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "moving_source_snapshot",
+                f"mixed module snapshots returned {exc.code}",
+            )
+        else:
+            raise AssertionError("mixed module snapshots were accepted")
     for malformed_index, expected_code in (
         ([{"erdos_number": 68}, {"erdos_number": 68}], "problem_index_duplicate"),
         ([{"erdos_number": "68"}], "problem_index_shape"),
