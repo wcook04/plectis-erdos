@@ -221,7 +221,14 @@
       {
         "family_id": "bounded_rise_coprimality",
         "tier_id": "natural_friction_and_no_go",
-        "relative_judgement": "The fresh-modulus obstruction explains why bounded rise would be decisive, but bounded rise is not automatic for the original reciprocal-tail orbit."
+        "relative_judgement": "The fresh-modulus obstruction explains why bounded rise would be decisive, but bounded rise is not automatic for the original reciprocal-tail orbit.",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "source_declarations": [
+          "ErdosProblems.Erdos243.reducedTail_pairwiseCoprime",
+          "ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail"
+        ],
+        "hard_mechanism": "Exact reduced C/D dynamics make every earlier multiplier divide each later denominator while remaining coprime to the later reduced numerator. Distinct multipliers are therefore pairwise coprime fresh moduli; a numerator tending to infinity cannot keep crossing all of their forbidden residue windows with one uniform positive rise bound.",
+        "open_boundary": "The theorem assumes eventual multiplier positivity above one, reduced coprimality, both exact recurrence equations, one fixed positive rise bound, and numerator escape to infinity. No theorem supplies that bounded-rise hypothesis for the original reciprocal-tail orbit, so no reciprocal-tail irrationality or Erdős #243 endpoint follows."
       },
       {
         "family_id": "eventually_periodic_lambert",
@@ -698,6 +705,11 @@
         "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos243_centered_state_recovery]"
       },
       {
+        "candidate_id": "erdos243_bounded_rise_coprimality",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos243_bounded_rise_coprimality]"
+      },
+      {
         "candidate_id": "weighted_phase_carry_observer",
         "disposition": "represented",
         "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[weighted_phase_carry_observer]"
@@ -910,6 +922,41 @@
       }
     ],
     "source_landscape_candidates": [
+      {
+        "candidate_id": "erdos243_bounded_rise_coprimality",
+        "family_id": "bounded_rise_coprimality",
+        "disposition": "represented",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos243.reducedTail_pairwiseCoprime; ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail",
+        "source_file": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+        "source_anchor": "1010; 1060",
+        "statement": "For an eventually reduced exact reciprocal-tail recurrence, distinct multipliers are pairwise coprime, and a numerator escaping to infinity cannot have one uniform positive upper bound on all eventual rises.",
+        "exact_hypotheses": [
+          "The reduced-tail theorem assumes natural-valued multiplier, numerator, and denominator sequences with eventual multiplier greater than one and pointwise coprimality of each reduced numerator-denominator pair.",
+          "The exact recurrences are u(n+1) + v(n) = a(n) * u(n) and v(n+1) = a(n) * v(n) from one eventual index onward.",
+          "The no-go additionally assumes a fixed B > 0 with u(n+1) <= u(n) + B eventually and Tendsto u atTop atTop."
+        ],
+        "conclusion": "Those hypotheses are inconsistent: reduced exact tails with fresh pairwise-coprime multipliers cannot both escape to infinity and retain a uniform eventual rise bound.",
+        "hard_mechanism": "Every earlier multiplier divides each later denominator, while reduced coprimality keeps it coprime to the later numerator. This creates pairwise-coprime fresh moduli and whole-modulus avoidance; bounded rises cannot indefinitely cross the resulting forbidden windows as the numerator tends to infinity.",
+        "attribution": "These source-current Lean declarations are in ReciprocalTailRigidity.lean:1010,1060 and are canonically bound to bounded_rise_coprimality by Claims commit 06198c0a. No novelty, priority, significance, or external-review claim is made.",
+        "limitations": [
+          "The theorem does not establish a uniform eventual rise bound for the original reciprocal-tail numerator sequence.",
+          "It assumes exact reduced C/D dynamics, eventual multipliers greater than one, pointwise reduced coprimality, and numerator escape to infinity rather than deriving them for the original problem.",
+          "It is a natural-friction no-go, not a centered-state recovery theorem, reciprocal-tail irrationality result, or Erdős #243 endpoint."
+        ],
+        "source_landscape_rank_relative_to": "Below centered_state_dynamics and negative_mass_recovery because those families recover eventual Sylvester structure from explicit signed or analytic hypotheses, but above finite searches and routine recurrence identities because it isolates a reusable arithmetic obstruction to bounded-rise strategies.",
+        "ranked_below": [
+          "centered_state_dynamics",
+          "negative_mass_recovery"
+        ],
+        "ranked_above": [
+          "reciprocal_tail_finite_search"
+        ],
+        "reason": "Represented as a distinct #243 natural-friction family: it explains exactly why a bounded-rise proof would be decisive and why pairwise-coprime fresh moduli matter, without conflating that conditional no-go with the stronger signed and summable-negative-mass recovery theorems.",
+        "reversal_evidence": "A source-faithful Comparator transport would strengthen executable review evidence; proving the bounded-rise hypothesis for the original reciprocal-tail orbit would promote the family sharply, while another finite recurrence instance would not."
+      },
       {
         "candidate_id": "erdos1041_ray_separation",
         "family_id": "ray_separation",
