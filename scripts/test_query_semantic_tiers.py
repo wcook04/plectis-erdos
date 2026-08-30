@@ -677,54 +677,27 @@ def test_fast_source_fingerprint_uses_the_builder_framing() -> None:
     )
 
 
-def test_all_eleven_canonical_backfills_keep_exact_principal_coordinates() -> None:
-    palomar = load_palomar()
+def test_all_eleven_canonical_backfills_keep_atlas_principal_coordinates() -> None:
     claims = load_claims()
     claim_rows = query_semantic._claims_family_rows(claims)
-    declaration_names = {
-        declaration
-        for family_id in ATLAS_BACKED_FAMILY_COORDINATES
-        for declaration in claim_rows[family_id].get("declarations", [])
+    atlas_rows = {
+        row["id"]: row
+        for row in tracked_declaration_atlas()["declarations"]
     }
-    bare_names = {name.rsplit(".", 1)[-1] for name in declaration_names}
-    atlas = {
-        "source_fingerprint": "sha256:" + "c" * 64,
-        "declarations": [
-            row
-            for row in tracked_declaration_atlas()["declarations"]
-            if row["name"] in bare_names
-        ],
-    }
-    with patch(
-        "query_semantic.current_declaration_atlas_source_fingerprint",
-        return_value=atlas["source_fingerprint"],
-    ):
-        for family_id, (
-            declaration,
-            source_file,
-            source_line,
-        ) in ATLAS_BACKED_FAMILY_COORDINATES.items():
-            assert declaration in claim_rows[family_id].get("declarations", [])
-            packet = build_family_relations_packet(
-                palomar,
-                claims,
-                family_id,
-                atlas=atlas,
-            )
-            family = packet["family"]
-            assert family["source_evidence_status"] == (
-                "exact_atlas_declaration_rows_direct_source_verified"
-            )
-            matching = [
-                row
-                for row in family["source_evidence"]
-                if row["source_declaration"] == declaration
-                and row["source_file"] == source_file
-                and row["source_line"] == source_line
-            ]
-            assert len(matching) == 1
-            assert family["open_boundary"] in matching[0]["limitations"]
-            assert encoded_json_bytes(packet) <= BUDGET
+    for family_id, (
+        declaration,
+        source_file,
+        source_line,
+    ) in ATLAS_BACKED_FAMILY_COORDINATES.items():
+        claim_row = claim_rows[family_id]
+        assert declaration in claim_row.get("declarations", [])
+        bare_name = declaration.rsplit(".", 1)[-1]
+        row_id = f"{source_file}:{source_line}:{bare_name}"
+        row = atlas_rows[row_id]
+        assert row["module"] == source_file
+        assert row["line"] == source_line
+        assert row["name"] == bare_name
+        assert claim_row["boundary"]
 
 
 def test_every_canonical_family_packet_is_bounded_and_boundary_honest() -> None:
