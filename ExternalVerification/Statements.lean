@@ -295,6 +295,17 @@ def CarrySectionsEventuallyPeriodicMod
   ∀ j r n : ℕ, N₀ ≤ n →
     u (2 ^ j * n + r) ≡ u (2 ^ j * (n + h) + r) [ZMOD (v : ℤ)]
 
+/-! ## Weighted-phase carry observer -/
+
+/- These statement-side names avoid the #257 carry-quotient vocabulary while
+   preserving the exact integer residue/coboundary interface from #269. -/
+def weightedCarryResidue (B c : ℤ) : ℤ := c % B
+
+def weightedCarryQuotient (B c : ℤ) : ℤ := c / B
+
+def weightedResidueDigit (B base residue nextResidue : ℤ) : ℤ :=
+  (base * residue - nextResidue) / B
+
 /-! ## Boolean–Möbius carry certificate -/
 
 /-- The integer carry quotient extracted from a scaled binary orbit. -/
@@ -755,6 +766,17 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
                   (Set.range (canonicalCarryKernelFamily u e)))) ∧
           ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
             CarrySectionsEventuallyPeriodicMod v h N₀ u
+  problem269WeightedCarry :
+    ∀ (B : ℤ) (hB : 0 < B)
+      (base carry digit : ℕ → ℤ),
+      (∀ n, carry (n + 1) = base n * carry n - B * digit n) →
+      let residue := fun n => weightedCarryResidue B (carry n)
+      let quotient := fun n => weightedCarryQuotient B (carry n)
+      ∀ n,
+        digit n =
+          weightedResidueDigit B (base n)
+              (residue n) (residue (n + 1)) +
+            base n * quotient n - quotient (n + 1)
   problem249VisibleCoprimeMass :
     (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1

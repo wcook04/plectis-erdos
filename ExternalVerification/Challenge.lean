@@ -416,6 +416,20 @@ theorem finiteSmoothKernelSum_groupedByHeight
         (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹) :=
   (portfolioClaims Unit).problem269HeightGrouping p q r hp hq hr
 
+theorem carry_eq_residueDigit_add_coboundary
+    (B : ℤ) (hB : 0 < B)
+    (base carry digit : ℕ → ℤ)
+    (hrec : ∀ n,
+      carry (n + 1) = base n * carry n - B * digit n) :
+    let residue := fun n => weightedCarryResidue B (carry n)
+    let quotient := fun n => weightedCarryQuotient B (carry n)
+    ∀ n,
+      digit n =
+        weightedResidueDigit B (base n)
+          (residue n) (residue (n + 1)) +
+        base n * quotient n - quotient (n + 1) :=
+  (portfolioClaims Unit).problem269WeightedCarry B hB base carry digit hrec
+
 theorem exists_small_translation_separating_arguments
     {ι : Type*} [Fintype ι] (c : ι → ℂ)
     (hc : Function.Injective c) {ε : ℝ} (hε : 0 < ε) :

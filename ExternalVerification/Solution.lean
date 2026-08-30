@@ -25,6 +25,7 @@ import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+import ErdosProblems.Erdos269.WeightedPhaseCarry
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 import ErdosProblems.Erdos1049.RationalBaseLambert
 import ErdosProblems.Erdos1049.HermitePadeNoGo
@@ -393,6 +394,13 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.canonicalCarryKernelFamily] using
       Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
         hirr
+  · intro B hB base carry digit hrec
+    simpa [weightedCarryResidue, weightedCarryQuotient,
+      weightedResidueDigit, ErdosProblems.Erdos269.carryResidue,
+      ErdosProblems.Erdos269.carryQuotient,
+      ErdosProblems.Erdos269.residueDigit] using
+      ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary
+        B hB base carry digit hrec
   · exact GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one
   · exact GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series
   · intro e
@@ -1042,6 +1050,25 @@ theorem smoothPrefixLcm_eq_threePrimeHeight
     (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) (hx : x ≠ 0) :
     smoothPrefixLcm p q r x = threePrimeHeight p q r x :=
   (portfolioClaims Unit).problem269Lcm hp hq hr hpq hpr hqr hx
+
+theorem carry_eq_residueDigit_add_coboundary
+    (B : ℤ) (hB : 0 < B)
+    (base carry digit : ℕ → ℤ)
+    (hrec : ∀ n,
+      carry (n + 1) = base n * carry n - B * digit n) :
+    let residue := fun n => weightedCarryResidue B (carry n)
+    let quotient := fun n => weightedCarryQuotient B (carry n)
+    ∀ n,
+      digit n =
+        weightedResidueDigit B (base n)
+          (residue n) (residue (n + 1)) +
+        base n * quotient n - quotient (n + 1) := by
+  simpa [weightedCarryResidue, weightedCarryQuotient,
+    weightedResidueDigit, ErdosProblems.Erdos269.carryResidue,
+    ErdosProblems.Erdos269.carryQuotient,
+    ErdosProblems.Erdos269.residueDigit] using
+    ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary
+      B hB base carry digit hrec
 
 theorem exists_small_translation_separating_arguments
     {ι : Type*} [Fintype ι] (c : ι → ℂ)
