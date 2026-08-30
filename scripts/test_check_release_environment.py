@@ -5,9 +5,9 @@
 
 from __future__ import annotations
 
+import inspect
 import json
 import os
-import inspect
 import subprocess
 import sys
 import tempfile
@@ -42,20 +42,45 @@ def main() -> int:
         "GIT_OBJECT_DIRECTORY": "/private/wrong-objects",
         "GIT_ALTERNATE_OBJECT_DIRECTORIES": "/private/wrong-alternates",
         "GIT_COMMON_DIR": "/private/wrong-common",
+        "PYTHONHOME": "/private/wrong-python-home",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "PYTHONOPTIMIZE": "2",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "LANGUAGE": "C",
+        "PATH": "/private/wrong-bin",
     }
     with tempfile.TemporaryDirectory() as raw:
         with patch.dict(os.environ, hostile_environment, clear=False):
             sanitized = check_release.clean_environment()
-            require(
-                all(key not in sanitized for key in hostile_environment),
-                "release environment retained a hostile Git selector",
-            )
+            for key in (
+                "GIT_DIR",
+                "GIT_WORK_TREE",
+                "GIT_INDEX_FILE",
+                "GIT_NAMESPACE",
+                "GIT_REPLACE_REF_BASE",
+                "GIT_OBJECT_DIRECTORY",
+                "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+                "GIT_COMMON_DIR",
+                "PYTHONHOME",
+                "PYTHONPATH",
+                "PYTHONOPTIMIZE",
+            ):
+                require(key not in sanitized, f"release environment retained {key}")
+            require(sanitized["PATH"] == os.defpath, "release environment did not pin PATH")
+            require(sanitized["LC_ALL"] == "C.UTF-8", "release environment did not pin LC_ALL")
+            require(sanitized["LANG"] == "C.UTF-8", "release environment did not pin LANG")
+            require(sanitized["LANGUAGE"] == "C.UTF-8", "release environment did not pin LANGUAGE")
+            require(sanitized["GIT_CONFIG_NOSYSTEM"] == "1", "system Git configuration was not disabled")
+            require(sanitized["GIT_ASKPASS"] == "/bin/false", "Git credential prompting was not disabled")
             child = check_release.run(
                 [
                     sys.executable,
                     "-c",
                     "import json, os; print(json.dumps({k: os.environ[k] for k in "
-                    "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE') "
+                    "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE', "
+                    "'PYTHONPATH', 'PYTHONHOME', 'PYTHONOPTIMIZE', 'LC_ALL', "
+                    "'LANG', 'LANGUAGE', 'PATH') "
                     "if k in os.environ}))",
                 ],
                 cwd=Path(raw),
@@ -65,8 +90,14 @@ def main() -> int:
             )
             require(child.returncode == 0, "sanitized release child process failed")
             require(
-                json.loads(child.stdout) == {},
-                "sanitized release child inherited a Git selector",
+                json.loads(child.stdout)
+                == {
+                    "LC_ALL": "C.UTF-8",
+                    "LANG": "C.UTF-8",
+                    "LANGUAGE": "C.UTF-8",
+                    "PATH": os.defpath,
+                },
+                "sanitized release child inherited ambient execution state",
             )
             with patch.object(
                 check_release,
@@ -108,7 +139,7 @@ def main() -> int:
     )
     print(
         "test_check_release_environment: release-gate child processes cannot "
-        "inherit caller Git selectors"
+        "inherit caller Git, Python, locale, or PATH state"
     )
     return 0
 

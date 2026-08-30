@@ -46,7 +46,6 @@ import os
 import re
 import subprocess
 import sys
-from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
@@ -68,25 +67,13 @@ ERRORS: list[str] = []
 CHECKS = 0
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
-SANITIZED_GIT_ENVIRONMENT_KEYS = (
-    "GIT_DIR",
-    "GIT_WORK_TREE",
-    "GIT_INDEX_FILE",
-    "GIT_NAMESPACE",
-    "GIT_REPLACE_REF_BASE",
-    "GIT_OBJECT_DIRECTORY",
-    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
-    "GIT_COMMON_DIR",
-)
+SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(sorted(singleflight.GIT_CONTEXT_KEYS))
 _SUBPROCESS_RUN = subprocess.run
 
 
-def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
-    """Remove inherited Git selectors before any release-gate subprocess."""
-    environment = dict(os.environ if base is None else base)
-    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
-        environment.pop(key, None)
-    return environment
+def clean_environment() -> dict[str, str]:
+    """Use the canonical isolated environment for every release-gate child."""
+    return singleflight.command_environment()
 
 
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
