@@ -651,8 +651,8 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
             # met it as undefined jargon for the whole document. Define it once,
             # here, ahead of first use. (2026-08-15)
             (
-                "**How verification works.** Nineteen selected propositions are declared "
-                "again without proofs. Comparator checks that the proof-bearing modules "
+                f"**How verification works.** The {len(packet['main_results'])} selected "
+                "propositions are declared again without proofs. Comparator checks that the proof-bearing modules "
                 "match those independent statements and a fixed axiom budget. A named "
                 "altered statement must fail. This checks formal propositions only. It "
                 "does not assess exposition, citations, intended meaning, novelty, or "
@@ -793,6 +793,13 @@ def build_outputs(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--only",
+        choices=tuple(OUTPUTS),
+        action="append",
+        metavar="OUTPUT",
+        help="check or write only the named projection(s); repeat for a disjoint refresh",
+    )
     args = parser.parse_args()
     _, packet, problem_source, problem_projection = load_owner()
     closure, errors = validate(packet, problem_source)
@@ -801,6 +808,8 @@ def main() -> int:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
     outputs = build_outputs(packet, problem_source, problem_projection, closure)
+    selected = args.only or list(OUTPUTS)
+    outputs = {OUTPUTS[name]: outputs[OUTPUTS[name]] for name in selected}
     stale: list[str] = []
     for path, content in outputs.items():
         if args.check:
