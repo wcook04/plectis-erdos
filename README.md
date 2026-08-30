@@ -3,8 +3,8 @@
 
 # Plectis: a public frontier across eight open Erdős problems
 
-Plectis is an AI-assisted mathematical research system with a self-contained
-public proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
+Plectis is an AI-assisted mathematical research system with a public
+proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
 1049: exact reductions, theorems, countermodels, boundaries, and certificates.
 **All eight problems remain open; this repository does not solve them.**
 
@@ -30,8 +30,7 @@ is formal proof authority, not for meaning or novelty.
 ## Problem papers
 
 [`docs/papers/corpus.json`](docs/papers/corpus.json) indexes the papers. This
-blank-slate map is readable without a query and does not require `ai_workflow`,
-private cache, or network access.
+This map is readable without a query, private cache, or network.
 
 | Problem | Question |
 |---|---|
@@ -46,13 +45,13 @@ private cache, or network access.
 
 ### Public checked frontier; what remains
 
-Links name a strongest checked route and its limit; reductions are not solutions.
+Links name a checked route and its limit; reductions are not solutions.
 
-- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — divisibility-failure equivalence; `67` checked, `300000` external, cofinal source open.
-- [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalised vanishing and Lean no-go results exclude bounded/finite negative mass; unbounded mixed signs open.
-- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) · [reasoning](erdos249-totient-reasoning-surface.pdf) — ranks, moments, completeness, anti-compression, [mass](Erdos249257/GcdMomentCalculus.lean); Farey `K=240`; diagonal `t≤82`; finite synthetic LCM shift-algebra [no-go](Erdos249257/LcmFactorIdealPulseObstruction.lean); unbounded supply open.
-- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts, tail recurrence, rational shifts, cofinal non-integral-shift equivalences; prime-tail bridge open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [reasoning surface](erdos257-mersenne-reasoning-surface.pdf) — full support, finite-period noncollapse, topology, carry criteria; universal #257 and `1/2`/`1/21` open.
+- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — divisibility equivalence; `67` checked, `300000` external, cofinal source open.
+- [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalised vanishing and Lean no-goes exclude bounded/finite negative mass; unbounded mixed signs open.
+- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) · [reasoning](erdos249-totient-reasoning-surface.pdf) — ranks, moments, anti-compression, [visible mass=1](Erdos249257/GcdMomentCalculus.lean); Farey `K=240`; diagonal `t≤82`; strict-jump/foreign-residue reductions; finite LCM [no-go](Erdos249257/LcmFactorIdealPulseObstruction.lean); supply open.
+- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts, tail recurrence, rational shifts, cofinal non-integral shifts; prime-tail bridge open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [reasoning surface](erdos257-mersenne-reasoning-surface.pdf) — full support, finite-period noncollapse, topology, carry criteria; [rational shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity, recurrence, and modular doubling; universal #257 and `1/2`/`1/21` open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — maximal powers, logarithmic cells, grouped sums, shell bounds, rank-two obstruction; three-prime problem open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton-flow decay, ray separation, collisions, root retention; an invalid saddle block leaves topology, gluing, and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor, height, Hermite–Padé, determinant, prime-support no-go mechanisms at `3/2` and `7/2`; no irrationality, noncollapse, or remainder control is proved.
@@ -87,9 +86,9 @@ avoids an unsafe band or settle its open problem.
 - Prove that `S = ∑ φ(n)/2ⁿ` is irrational; produce the unbounded certificate supply required by #249.
 - Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite `A ⊆ ℕ`, beyond named formalised families.
 
-Working records state failed routes in “The wall”. Exact expert handoffs name
-what input is requested, current guess, alternatives, discriminating evidence,
-checked consumer, and endpoint-or-counterexample boundary: [handoff questions](docs/RESULTS.md#exact-questions-for-a-human-expert)
+“The wall” records failed routes. Expert handoffs name requested input, current
+guess, alternatives, discriminating evidence, checked consumer, and
+endpoint-or-counterexample boundary: [handoff questions](docs/RESULTS.md#exact-questions-for-a-human-expert)
 or `python3 scripts/query_expert_handoffs.py`.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
@@ -157,11 +156,11 @@ lake build
 A cold clone navigates first. A focused build is
 `python3 scripts/lean_fast_build.py --jobs 2 [target]`; `--lake-staleness` trusts
 traces and `--changed-from <git-ref>` selects modules. It rebuilds only the
-selected or stale dependency cone; dependency-index `--check` is constant-time
+selected or stale cone; dependency-index `--check` is constant-time
 when inputs are unchanged.
 
-The compact release checks are `python3 scripts/check_cold_clone_comprehension.py
---quick` and `python3 scripts/check_release.py`.
+Release checks are `python3 scripts/check_cold_clone_comprehension.py --quick`
+and `python3 scripts/check_release.py`.
 
 Pinned public Lean corpus: no `sorry`, `admit`, project-defined `axiom`, or
 `native_decide`; finite computations use kernel-checked `decide`.
