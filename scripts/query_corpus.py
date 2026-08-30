@@ -6210,6 +6210,28 @@ def agent_tour_packet() -> dict[str, Any]:
             }
             for row in problems
         ],
+        "route_memory_contract": {
+            "start": (
+                "python3 scripts/query_route_memory.py --problem "
+                "<problem_map.erdos_number> [--route <mathematical_map.id>]"
+            ),
+            "validate": (
+                "python3 scripts/query_route_memory.py --validate <packet.json>"
+            ),
+            "selector_source": "problem_map[].erdos_number from docs/problems.json",
+            "coverage": {
+                "indexed_problem_count": len(problems),
+                "indexed_problem_numbers": [row["erdos_number"] for row in problems],
+            },
+            "authority_posture": (
+                "derived_resume_handoff_not_claim_or_proof_authority"
+            ),
+            "rejections": [
+                "stale_source_snapshot",
+                "invented_route_or_reference",
+                "cross_problem_route_or_declaration",
+            ],
+        },
         "open_frontier_contract": {
             "indexed_open_problem_count": indexed_open_problem_count,
             "reviewed_remaining_open_proposition_count": len(open_rows),

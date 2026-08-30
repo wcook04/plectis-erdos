@@ -207,6 +207,21 @@ def validate_agent_tour() -> None:
         1041,
         1049,
     }
+    route_memory_contract = packet["route_memory_contract"]
+    assert route_memory_contract["selector_source"] == (
+        "problem_map[].erdos_number from docs/problems.json"
+    )
+    assert route_memory_contract["coverage"] == {
+        "indexed_problem_count": 8,
+        "indexed_problem_numbers": [68, 243, 249, 251, 257, 269, 1041, 1049],
+    }
+    assert route_memory_contract["start"].startswith(
+        "python3 scripts/query_route_memory.py --problem"
+    )
+    assert route_memory_contract["validate"] == (
+        "python3 scripts/query_route_memory.py --validate <packet.json>"
+    )
+    assert "cross_problem_route_or_declaration" in route_memory_contract["rejections"]
     assert packet["formal_dependency_graph"]["source_resolved_node_count"] > 0
     assert packet["formal_dependency_graph"]["source_resolved_direct_edge_count"] > 0
     assert {row["id"] for row in packet["mathematical_map"]} == set(
