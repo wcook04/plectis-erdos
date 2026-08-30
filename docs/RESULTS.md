@@ -115,14 +115,14 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 47 declarations in the committed Comparator roster
+The audit universe is the 48 declarations in the committed Comparator roster
 (`verification/comparator.json`). I ranked them by consequence, endpoint
 proximity, mechanism depth, genuine distinctness, external usefulness,
 digestion value, evidence certainty, natural friction, and overclaim risk—not
 by row count, inherited order, or citation presence. The family-level table
 below is the compact reading map; every declaration remains source-current and
 individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 47-row universe; their
+without a Comparator transport are not counted in the 48-row universe; their
 dispositions are stated in the relevant per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
@@ -463,6 +463,19 @@ replacement for claim authority.
   bridge identifying the actual complement with this bound, and any unbounded
   separated-projection supply, remain unproved: this sharpens the reduction,
   not #249 irrationality.
+
+- The pointwise prime-index branch is also retained as one subordinate
+  Comparator-visible producer route. `DTWNaturalPrimeTailOrbitStrictGap` asks
+  that for every positive shift `h` and lower bound `N₀` there is a prime `p`
+  beyond both bounds with
+  `Re(tailOrbitFirstExp h (p - h - 1)) < 9/10`; the positive margin is then
+  converted by `naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap` into
+  the existing finite first-harmonic certificate consumer
+  (`ExternalVerification/Challenge.lean:579`,
+  `ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157-209`). The route is
+  conditional source evidence, not another irrationality theorem: no result
+  supplies the cofinal prime strict-gap condition for the actual totient orbit,
+  so #249 remains open.
 
 **#251 — is `∑ pₙ/2ⁿ` irrational?**
 
