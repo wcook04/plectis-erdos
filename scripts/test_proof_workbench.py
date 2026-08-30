@@ -264,6 +264,45 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("claim accepted a probe without an input hash")
 
+    invalid_hash_session = workbench.Session(sessions_root, "invalid-hash")
+    invalid_hash_session.directory.mkdir(parents=True)
+    invalid_hash_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    invalid_hash_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "input_sha256": "not-a-sha256",
+            "kernel_receipt": {"verdict": "kernel_accepted"},
+        }
+    )
+    try:
+        workbench.cmd_claim(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": sessions_root,
+                    "session": "invalid-hash",
+                    "probe": "m002",
+                    "text": "must retain a canonical hash",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "invalid input hash" not in str(error):
+            raise AssertionError(f"invalid input hash lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("claim accepted a non-canonical input hash")
+
     incomplete_rows = (
         (
             "missing-note-text",

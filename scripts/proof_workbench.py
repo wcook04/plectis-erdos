@@ -45,6 +45,7 @@ NOTE_KINDS = (
 CLOSE_OUTCOMES = ("established", "open", "abandoned")
 PROBE_TIMEOUT_SECONDS = 600
 SESSION_SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,80}$")
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 def repo_root() -> Path:
@@ -301,7 +302,12 @@ def _required_string(
 
 def _probe_input_hash(row: dict[str, Any], action: str) -> str:
     """Require a claim to retain the hash of its cited stored artifact."""
-    return _required_string(row, "input_sha256", action, "input hash")
+    input_sha256 = _required_string(row, "input_sha256", action, "input hash")
+    if not SHA256_RE.fullmatch(input_sha256):
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} has an invalid input hash"
+        )
+    return input_sha256
 
 
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
