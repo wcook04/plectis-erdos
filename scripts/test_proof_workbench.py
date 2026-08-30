@@ -264,6 +264,42 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("claim accepted a probe without an input hash")
 
+    incomplete_rows = (
+        (
+            "missing-note-text",
+            {"schema": workbench.MOVE_SCHEMA, "move_id": "m002", "kind": "note", "note_kind": "observation"},
+            "text",
+        ),
+        (
+            "missing-claim-probe",
+            {"schema": workbench.MOVE_SCHEMA, "move_id": "m002", "kind": "claim", "text": "claim"},
+            "cited_probe",
+        ),
+    )
+    for session_name, row, field in incomplete_rows:
+        reader_session = workbench.Session(sessions_root, session_name)
+        reader_session.directory.mkdir(parents=True)
+        reader_session.append(
+            {
+                "schema": workbench.SESSION_SCHEMA,
+                "move_id": "m001",
+                "kind": "session_opened",
+            }
+        )
+        reader_session.append(row)
+        try:
+            workbench.cmd_show(
+                type("Args", (), {"sessions_root": sessions_root, "session": session_name})(),
+                workbench.repo_root(),
+            )
+        except SystemExit as error:
+            if f"invalid {field}" not in str(error):
+                raise AssertionError(
+                    f"incomplete {session_name} lacked a bounded {field} diagnostic: {error}"
+                )
+        else:
+            raise AssertionError(f"show accepted incomplete {session_name} row")
+
 
 def check_session_lifecycle(sessions_root: Path) -> None:
     opened = _run(

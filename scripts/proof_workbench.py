@@ -263,14 +263,22 @@ def _probe_verdict(row: dict[str, Any], action: str) -> str:
     return verdict
 
 
+def _required_string(
+    row: dict[str, Any], field: str, action: str, label: str | None = None
+) -> str:
+    """Read a required ledger string without exposing an internal exception."""
+    value = row.get(field)
+    if not isinstance(value, str) or not value:
+        raise SystemExit(
+            f"{action} refused: {row.get('kind')} move {row.get('move_id')}"
+            f" has an invalid {label or field}"
+        )
+    return value
+
+
 def _probe_input_hash(row: dict[str, Any], action: str) -> str:
     """Require a claim to retain the hash of its cited stored artifact."""
-    input_sha256 = row.get("input_sha256")
-    if not isinstance(input_sha256, str) or not input_sha256:
-        raise SystemExit(
-            f"{action} refused: probe move {row.get('move_id')} has an invalid input hash"
-        )
-    return input_sha256
+    return _required_string(row, "input_sha256", action, "input hash")
 
 
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
@@ -517,14 +525,14 @@ def cmd_show(args: argparse.Namespace, root: Path) -> dict[str, Any]:
             "kind": row["kind"],
         }
         if row["kind"] == "note":
-            entry["note_kind"] = row["note_kind"]
-            entry["text"] = row["text"]
+            entry["note_kind"] = _required_string(row, "note_kind", "show")
+            entry["text"] = _required_string(row, "text", "show")
         elif row["kind"] == "probe":
             entry["label"] = row.get("label")
             entry["verdict"] = _probe_verdict(row, "show")
         elif row["kind"] == "claim":
-            entry["text"] = row["text"]
-            entry["cited_probe"] = row["cited_probe"]
+            entry["text"] = _required_string(row, "text", "show")
+            entry["cited_probe"] = _required_string(row, "cited_probe", "show")
         elif row["kind"] in ("session_opened", "session_closed"):
             entry["detail"] = row.get("intent") or row.get("summary")
         compact.append(entry)
