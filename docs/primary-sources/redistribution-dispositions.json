@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 27,
-    "artifact_count": 27,
+    "working_tree_only_count": 28,
+    "artifact_count": 28,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 27,
+    "link_and_digest_only_count": 28,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -534,6 +534,25 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/totient-kernel/merca-schmidt-2017-lambert-factorizations-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/erdos-graham-1980-old-new-problems.pdf",
+      "sha256": "0cbf0c32f0ab1e1c71db5121a88bac905bf976c4a6ab6bb6d7d9cf9ddd184ed3",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf",
+        "https://mathweb.ucsd.edu/~ronspubs/"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/erdos-graham-1980-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/erdos-graham-1980-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/erdos-graham-1980-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }
