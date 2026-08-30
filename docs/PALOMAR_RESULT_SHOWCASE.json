@@ -236,6 +236,14 @@
         "relative_judgement": "This is a direct irrationality theorem for an exact structured coefficient class, but the totient-derived coefficients are not eventually periodic, so it is reusable background rather than a #249 frontier."
       },
       {
+        "family_id": "totient_certificate_equivalences",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "Below the actual-LCM, first-harmonic, and strict-prime producer routes but above medium totient kernel machinery: three exact equivalences expose the endpoint and certificate sockets, while the equivalent lcm-diagonal, period-multiple-kill, and separated-window producers all remain unresolved.",
+        "evidence_status": "claims_review_metadata_only_not_comparator_evidence",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=249].families[totient_certificate_equivalences]",
+        "open_boundary": "No lcm-diagonal certificate supply, period-multiple kill supply, or separated-window pair supply is proved for the actual totient series; no unconditional Erdős #249 result, novelty, priority, significance, or external-review claim follows."
+      },
+      {
         "family_id": "totient_lambert_coefficients",
         "tier_id": "supporting_and_long_tail",
         "relative_judgement": "The Lambert rewrite and prime-power coefficient structure orient the programme but provide no irrationality producer."
@@ -302,6 +310,7 @@
           "actual_lcm_orbit_separation",
           "first_harmonic_pivot_decomposition",
           "strict_prime_tail_orbit_gap",
+          "totient_certificate_equivalences",
           "totient_kernel_rank",
           "totient_carry_anti_compression",
           "totient_kernel_all_base_index",
@@ -630,7 +639,7 @@
       "totient_carry_rank": "subordinate",
       "totient_lambert_coefficients": "represented",
       "eventually_periodic_lambert": "represented",
-      "totient_certificate_equivalences": "subordinate",
+      "totient_certificate_equivalences": "represented",
       "prime_gap_reformulation": "represented",
       "integral_shift_classification": "represented",
       "dyadic_tail_integrality_classification": "represented",

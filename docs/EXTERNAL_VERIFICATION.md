@@ -182,9 +182,9 @@ Every contribution family and every statement-isolated interface remains queryab
 
 All 70 source-current review families are accounted for here. The categories preserve honest selection reasons while the programme dossiers below retain each family's exact mechanism and boundary. This inventory is complete but deliberately does not compete with the ranked frontier for attention.
 
-- **represented (48).** [#257](#programme-257) `achievement_set_geometry`, [#249](#programme-249) `actual_foreign_residue_projection`, [#249](#programme-249) `actual_lcm_orbit_separation`, [#257](#programme-257) `boolean_mobius_carry`, [#257](#programme-257) `boolean_mobius_exact_row_dynamics`, [#243](#programme-243) `bounded_negative_exclusion`, [#243](#programme-243) `bounded_rise_coprimality`, [#243](#programme-243) `centered_state_dynamics`, [#251](#programme-251) `coefficient_only_no_go`, [#257](#programme-257) `composite_dilation_defect_identity`, [#269](#programme-269) `dyadic_block_alphabet`, [#251](#programme-251) `dyadic_tail_integrality_classification`, [#249](#programme-249) `eventually_periodic_lambert`, [#68](#programme-68) `factorial_carry_characterisation`, [#68](#programme-68) `factorial_channel_and_projection_rigidity`, [#257](#programme-257) `finite_period_noncollapse`, [#249](#programme-249) `first_harmonic_pivot_decomposition`, [#249](#programme-249) `fixed_precision_transport_no_go`, [#257](#programme-257) `half_membership_seam_classification`, [#1049](#programme-1049) `height_and_pade_arithmetic`, [#269](#programme-269) `height_fibre_and_shell`, [#251](#programme-251) `integral_shift_classification`, [#257](#programme-257) `known_irrational_supports`, [#1041](#programme-1041) `newton_value_decay`, [#257](#programme-257) `orthogonal_petal_sunflower_reduction`, [#257](#programme-257) `pairwise_coprime_support`, [#257](#programme-257) `periodic_nonnegative_weight_irrationality`, [#251](#programme-251) `prime_gap_reformulation`, [#1049](#programme-1049) `rational_base_tail_recurrence`, [#1041](#programme-1041) `ray_separation`, [#257](#programme-257) `restricted_achievement_sets`, [#1041](#programme-1041) `root_retention`, [#257](#programme-257) `shifted_odd_tail_state`, [#251](#programme-251) `small_mismatch_criterion`, [#249](#programme-249) `squared_lambert_gcd_moments`, [#249](#programme-249) `stern_brocot_cylinder_law`, [#249](#programme-249) `stern_brocot_run_fibonacci_stability`, [#249](#programme-249) `strict_prime_tail_orbit_gap`, [#269](#programme-269) `three_prime_lcm_cells`, [#249](#programme-249) `totient_carry_anti_compression`, [#249](#programme-249) `totient_kernel_all_base_index`, [#249](#programme-249) `totient_kernel_basis`, [#249](#programme-249) `totient_kernel_rank`, [#249](#programme-249) `totient_lambert_coefficients`, [#251](#programme-251) `totient_shift_propagation`, [#249](#programme-249) `totient_visible_coprime_lattice_mass`, [#1041](#programme-1041) `translation_avoidance`, [#269](#programme-269) `weighted_phase_carry_observer`
+- **represented (49).** [#257](#programme-257) `achievement_set_geometry`, [#249](#programme-249) `actual_foreign_residue_projection`, [#249](#programme-249) `actual_lcm_orbit_separation`, [#257](#programme-257) `boolean_mobius_carry`, [#257](#programme-257) `boolean_mobius_exact_row_dynamics`, [#243](#programme-243) `bounded_negative_exclusion`, [#243](#programme-243) `bounded_rise_coprimality`, [#243](#programme-243) `centered_state_dynamics`, [#251](#programme-251) `coefficient_only_no_go`, [#257](#programme-257) `composite_dilation_defect_identity`, [#269](#programme-269) `dyadic_block_alphabet`, [#251](#programme-251) `dyadic_tail_integrality_classification`, [#249](#programme-249) `eventually_periodic_lambert`, [#68](#programme-68) `factorial_carry_characterisation`, [#68](#programme-68) `factorial_channel_and_projection_rigidity`, [#257](#programme-257) `finite_period_noncollapse`, [#249](#programme-249) `first_harmonic_pivot_decomposition`, [#249](#programme-249) `fixed_precision_transport_no_go`, [#257](#programme-257) `half_membership_seam_classification`, [#1049](#programme-1049) `height_and_pade_arithmetic`, [#269](#programme-269) `height_fibre_and_shell`, [#251](#programme-251) `integral_shift_classification`, [#257](#programme-257) `known_irrational_supports`, [#1041](#programme-1041) `newton_value_decay`, [#257](#programme-257) `orthogonal_petal_sunflower_reduction`, [#257](#programme-257) `pairwise_coprime_support`, [#257](#programme-257) `periodic_nonnegative_weight_irrationality`, [#251](#programme-251) `prime_gap_reformulation`, [#1049](#programme-1049) `rational_base_tail_recurrence`, [#1041](#programme-1041) `ray_separation`, [#257](#programme-257) `restricted_achievement_sets`, [#1041](#programme-1041) `root_retention`, [#257](#programme-257) `shifted_odd_tail_state`, [#251](#programme-251) `small_mismatch_criterion`, [#249](#programme-249) `squared_lambert_gcd_moments`, [#249](#programme-249) `stern_brocot_cylinder_law`, [#249](#programme-249) `stern_brocot_run_fibonacci_stability`, [#249](#programme-249) `strict_prime_tail_orbit_gap`, [#269](#programme-269) `three_prime_lcm_cells`, [#249](#programme-249) `totient_carry_anti_compression`, [#249](#programme-249) `totient_certificate_equivalences`, [#249](#programme-249) `totient_kernel_all_base_index`, [#249](#programme-249) `totient_kernel_basis`, [#249](#programme-249) `totient_kernel_rank`, [#249](#programme-249) `totient_lambert_coefficients`, [#251](#programme-251) `totient_shift_propagation`, [#249](#programme-249) `totient_visible_coprime_lattice_mass`, [#1041](#programme-1041) `translation_avoidance`, [#269](#programme-269) `weighted_phase_carry_observer`
 
-- **subordinate (7).** [#269](#programme-269) `conditional_carry_escape`, [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#249](#programme-249) `totient_carry_rank`, [#249](#programme-249) `totient_certificate_equivalences`
+- **subordinate (6).** [#269](#programme-269) `conditional_carry_escape`, [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#249](#programme-249) `totient_carry_rank`
 
 - **rejected (6).** [#1049](#programme-1049) `coordinatewise_corridor_no_go`, [#1049](#programme-1049) `endpoint_residues`, [#249](#programme-249) `lcm_factor_ideal_shift_algebra_no_go`, [#243](#programme-243) `negative_orbit_no_go`, [#269](#programme-269) `rank_two_kernel_no_go`, [#1049](#programme-1049) `scalar_content_no_go`
 
@@ -431,69 +431,75 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Relation.** `conditional_producer_peer` `first_harmonic_pivot_decomposition`: Both feed the finite first-harmonic certificate socket, but strict-prime uses phase density or adaptive natural-prime escape while the pivot family uses a four-term supplier-fibre budget and residual decorrelation.
    - **Relation.** `endpoint_normal_form_support_for` `totient_certificate_equivalences`: Certificate completeness identifies the exact finite endpoint socket but cannot manufacture the strict-prime route's missing phase-density, cofinal-prime, or uniform-margin producer.
 
-4. **Totient kernel rank** (`totient_kernel_rank`; deep mechanism and classification; source disposition `represented`)
+4. **Totient certificate equivalences** (`totient_certificate_equivalences`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** Below the actual-LCM, first-harmonic, and strict-prime producer routes but above medium totient kernel machinery: three exact equivalences expose the endpoint and certificate sockets, while the equivalent lcm-diagonal, period-multiple-kill, and separated-window producers all remain unresolved.
+   - **Source authority.** Canonical review family `totient_certificate_equivalences` in [claims](../docs/claims.json)
+   - **Boundary.** Equivalent producer statements are as hard as the unresolved target.
+   - **Relation.** `endpoint_normal_form_support_for` `strict_prime_tail_orbit_gap`: Certificate completeness identifies the exact finite endpoint socket but cannot manufacture the strict-prime route's missing phase-density, cofinal-prime, or uniform-margin producer.
+
+5. **Totient kernel rank** (`totient_kernel_rank`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** Exact finite-level dyadic rank growth is strong #249 structure and supports totient_carry_anti_compression, but it is weaker than that orbit-level rationality consequence and provides neither a contradiction nor unbounded certificate supply.
    - **Source.** <code>Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq</code> in [Lean](../Erdos249257/TotientMahlerDefect.lean)
    - **Boundary.** Only the finite-level rank is presented as an additional result; full-kernel infinite-dimensionality is prior-art context, and no rationality-to-finite-rank bridge is proved.
 
-5. **Totient carry anti compression** (`totient_carry_anti_compression`; source-ranked frontier; global rank 10; source disposition `represented`)
+6. **Totient carry anti compression** (`totient_carry_anti_compression`; source-ranked frontier; global rank 10; source disposition `represented`)
    - **Why here.** This is an orbit-level necessary consequence of the #249 rational branch, closer to the endpoint than coefficient-side kernel rank alone, but it derives no contradiction.
    - **Source.** <code>Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank</code> in [Lean](../Erdos249257/TotientTailCarryPeriod.lean)
    - **Boundary.** This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open.
 
-6. **Totient kernel all base index** (`totient_kernel_all_base_index`; deep mechanism and classification; source disposition `represented`)
+7. **Totient kernel all base index** (`totient_kernel_all_base_index`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The rank theorem retains an external linear-independence hypothesis, so it is valuable structural support rather than an unconditional endpoint result.
    - **Source.** <code>Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent</code> in [Lean](../Erdos249257/TotientKernelConditional.lean)
    - **Boundary.** Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input.
 
-7. **Totient kernel basis** (`totient_kernel_basis`; deep mechanism and classification; source disposition `represented`)
+8. **Totient kernel basis** (`totient_kernel_basis`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** An explicit basis is useful kernel infrastructure, yet it does not connect finite span structure to the binary totient irrationality endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis</code> in [Lean](../Erdos249257/TotientMahlerDefect.lean)
    - **Boundary.** The basis theorem does not connect rationality of the series to finite kernel rank.
 
-8. **Stern brocot run fibonacci stability** (`stern_brocot_run_fibonacci_stability`; deep mechanism and classification; source disposition `represented`)
+9. **Stern brocot run fibonacci stability** (`stern_brocot_run_fibonacci_stability`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** A genuine Fibonacci/continuant stability floor, but analytic denominator survival and the #249 endpoint remain unproved.
    - **Source.** <code>Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower</code> in [Lean](../Erdos249257/SternBrocotRunGeometry.lean)
    - **Boundary.** This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows.
 
-9. **Eventually periodic lambert** (`eventually_periodic_lambert`; deep mechanism and classification; source disposition `represented`)
+10. **Eventually periodic lambert** (`eventually_periodic_lambert`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** This is a direct irrationality theorem for an exact structured coefficient class, but the totient-derived coefficients are not eventually periodic, so it is reusable background rather than a #249 frontier.
    - **Source authority.** Canonical review family `eventually_periodic_lambert` in [claims](../docs/claims.json)
    - **Boundary.** The totient-derived weights are not eventually periodic.
 
-10. **Fixed precision transport no go** (`fixed_precision_transport_no_go`; natural friction and no-go; source disposition `represented`)
+11. **Fixed precision transport no go** (`fixed_precision_transport_no_go`; natural friction and no-go; source disposition `represented`)
    - **Why here.** The committed representative unconditionally retires fixed-positive-precision local valuation/unit-word escape for every finite odd-unit word through centred completions, while its synthetic unrestricted high-quotient and finite-word scope supplies no actual totient endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo</code> in [Lean](../Erdos249257/TropicalCurvatureCarry.lean)
    - **Boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.
    - **Relation.** `contrary_evidence_for` `actual_foreign_residue_projection`: Fixed local precision admits synthetic completions, so any successful projection must use growing precision or global correlation.
 
-11. **Lcm factor ideal shift algebra no go** (`lcm_factor_ideal_shift_algebra_no_go`; natural friction and no-go; source disposition `rejected`)
+12. **Lcm factor ideal shift algebra no go** (`lcm_factor_ideal_shift_algebra_no_go`; natural friction and no-go; source disposition `rejected`)
    - **Why here.** A synthetic finite-shift obstruction retires one algebraic route while explicitly leaving actual totient forcing and the unbounded supply open.
    - **Source.** <code>Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient</code> in [Lean](../Erdos249257/LcmFactorIdealPulseObstruction.lean)
    - **Boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open.
 
-12. **Actual foreign residue projection** (`actual_foreign_residue_projection`; conditional endpoint leverage; source disposition `represented`)
+13. **Actual foreign residue projection** (`actual_foreign_residue_projection`; conditional endpoint leverage; source disposition `represented`)
    - **Why here.** The committed representative exposes the exact finite foreign/divisor partition, geometric tail control, and generic separated-projection consumer for the canonical actual_foreign_residue_projection family; its controlled-projection bridge and unbounded supply remain open, so it is represented conditional evidence rather than a #249 endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation</code> in [Lean](../Erdos249257/ActualForeignResidueProjection.lean)
    - **Boundary.** This is only a finite partition/geometric-majorant reduction feeding a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded supply of separated projections remain unproved; no Erdős #249 endpoint, novelty, significance, priority, or external-review claim follows.
    - **Relation.** `contrary_evidence_for` `fixed_precision_transport_no_go`: Fixed local precision admits synthetic completions, so any successful projection must use growing precision or global correlation.
 
-13. **Totient lambert coefficients** (`totient_lambert_coefficients`; supporting and long tail; source disposition `represented`)
+14. **Totient lambert coefficients** (`totient_lambert_coefficients`; supporting and long tail; source disposition `represented`)
    - **Why here.** The Lambert rewrite and prime-power coefficient structure orient the programme but provide no irrationality producer.
    - **Source authority.** Canonical review family `totient_lambert_coefficients` in [claims](../docs/claims.json)
    - **Boundary.** The coefficient identities do not prove irrationality.
 
-14. **Squared lambert gcd moments** (`squared_lambert_gcd_moments`; supporting and long tail; source disposition `represented`)
+15. **Squared lambert gcd moments** (`squared_lambert_gcd_moments`; supporting and long tail; source disposition `represented`)
    - **Why here.** A precise gcd-moment transfer identity, but it supplies no irrationality conclusion for the binary totient series.
    - **Source.** <code>Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series</code> in [Lean](../Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows.
 
-15. **Stern brocot cylinder law** (`stern_brocot_cylinder_law`; supporting and long tail; source disposition `represented`)
+16. **Stern brocot cylinder law** (`stern_brocot_cylinder_law`; supporting and long tail; source disposition `represented`)
    - **Why here.** Exact Stern–Brocot telescoping is reusable geometry, not an irrationality theorem or novelty claim.
    - **Source.** <code>Erdos249257.ExternalVerification.cylinderMass_split</code> in [Lean](../Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open.
 
-16. **Totient visible coprime lattice mass** (`totient_visible_coprime_lattice_mass`; supporting and long tail; source disposition `represented`)
+17. **Totient visible coprime lattice mass** (`totient_visible_coprime_lattice_mass`; supporting and long tail; source disposition `represented`)
    - **Why here.** Exact visible-lattice normalization explains a mass term but is rational and does not settle Erdős #249.
    - **Source.** <code>Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one</code> in [Lean](../Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This rational normalization identity does not prove irrationality of the binary totient series or settle #249.

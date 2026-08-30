@@ -646,13 +646,18 @@ def _family_details(
     if claim_row is None:
         raise ValueError(f"Claims review matrix lacks family {family_id!r}")
     ranked_row = _palomar_ranked_row(palomar, family_id)
-    source_evidence = _source_evidence_rows(
-        palomar,
-        claims,
-        family_id,
-        claim_row,
-        atlas_context,
-    )
+    source_evidence_unavailable = None
+    try:
+        source_evidence = _source_evidence_rows(
+            palomar,
+            claims,
+            family_id,
+            claim_row,
+            atlas_context,
+        )
+    except StaleDeclarationAtlasError as error:
+        source_evidence = []
+        source_evidence_unavailable = error.packet(family_id)
     primary_source = _primary_source_evidence(
         family_id, ranked_row, source_evidence
     )
@@ -760,6 +765,7 @@ def _family_details(
         "formal_declarations": formal_declarations,
         "wrapper_declarations": wrapper_declarations,
         "source_evidence": source_evidence,
+        "source_evidence_unavailable": source_evidence_unavailable,
         "primary_source_evidence_index": (
             source_evidence.index(primary_source)
             if primary_source is not None
@@ -777,6 +783,52 @@ def _family_details(
     }
 
 
+def _suppress_stale_atlas_evidence(
+    family_id: str,
+    palomar: dict,
+    details: dict,
+    error: StaleDeclarationAtlasError,
+) -> None:
+    """Keep canonical mathematics while removing every stale atlas coordinate."""
+    atlas_rows = [
+        row
+        for row in details["source_evidence"]
+        if row.get("source_kind") == "claims_declaration_atlas_coordinate"
+    ]
+    if not atlas_rows:
+        return
+    if len(atlas_rows) != len(details["source_evidence"]):
+        raise ValueError(
+            f"atlas fallback unexpectedly mixed source authorities for {family_id!r}"
+        )
+    ranked_row = _palomar_ranked_row(palomar, family_id)
+    details["source_evidence"] = []
+    details["source_evidence_unavailable"] = error.packet(family_id)
+    details["primary_source_evidence_index"] = None
+    details["wrapper_declarations"] = _detail_declarations(
+        [ranked_row] if ranked_row else [],
+        "comparator_declaration",
+        "declaration",
+        "transport_declarations",
+    )
+    ranked_mechanism = (
+        ranked_row.get("mechanism_depth_and_natural_friction")
+        if ranked_row
+        else None
+    )
+    details["mechanism"] = ranked_mechanism
+    details["mechanism_status"] = (
+        "ranked_mechanism_judgement"
+        if ranked_mechanism
+        else "not_separately_authored_in_current_authority"
+    )
+    details["mechanism_authority"] = (
+        "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking"
+        if ranked_mechanism
+        else None
+    )
+
+
 def _family_card(
     family_id: str,
     rank: dict | None,
@@ -791,6 +843,7 @@ def _family_card(
     wrapper_declarations = details["wrapper_declarations"]
     problem = int((rank or {}).get("problem") or details["problem"])
     source_evidence = details["source_evidence"]
+    source_evidence_unavailable = details.get("source_evidence_unavailable")
     source_kinds = _sorted_texts(
         [row.get("source_kind") for row in source_evidence]
     )
@@ -821,6 +874,9 @@ def _family_card(
                 f"unsupported mixed source evidence kinds for {family_id!r}: "
                 f"{source_kinds!r}"
             )
+    elif source_evidence_unavailable:
+        source_status = "atlas_unavailable_no_coordinate_emitted"
+        source_boundary = source_evidence_unavailable["boundary"]
     elif details["formal_declarations"]:
         source_status = "formal_declarations_only_no_exact_source_coordinate"
         source_boundary = (
@@ -873,6 +929,7 @@ def _family_card(
         "source_authority_boundary": source_boundary,
         "primary_source_evidence_index": primary_index,
         "source_evidence": source_evidence,
+        "source_evidence_unavailable": source_evidence_unavailable,
         "frontier_judgement": details["frontier_judgement"],
         "presentation_disposition": details["presentation_disposition"],
         "contribution_class": details["proof_status"],
@@ -958,12 +1015,19 @@ def build_family_relations_packet(
         tracked_fingerprint = resolved_atlas.get("source_fingerprint")
         current_fingerprint = current_declaration_atlas_source_fingerprint()
         if current_fingerprint != tracked_fingerprint:
-            raise StaleDeclarationAtlasError(
+            error = StaleDeclarationAtlasError(
                 "declaration atlas is stale relative to current Lean source: "
                 f"tracked={tracked_fingerprint}, current={current_fingerprint}",
                 tracked_fingerprint=tracked_fingerprint,
                 current_fingerprint=current_fingerprint,
             )
+            for detail_family_id, details in detail_cache.items():
+                _suppress_stale_atlas_evidence(
+                    detail_family_id,
+                    palomar,
+                    details,
+                    error,
+                )
     current_rank = ranks.get(family_id)
     current = _family_card(family_id, current_rank, detail_cache[family_id])
     related = []

@@ -13,7 +13,6 @@ import query_semantic
 from query_semantic import (
     BUDGET,
     PROBLEMS,
-    StaleDeclarationAtlasError,
     build_family_relations_packet,
     cmd_family_relations,
     cmd_problem_registry,
@@ -382,7 +381,7 @@ def test_support_relation_is_not_misclassified_as_prerequisite() -> None:
     assert packet["prerequisite_edges"] == []
 
 
-def test_relation_only_metadata_fixture_remains_queryable_without_invented_rank() -> None:
+def test_ranked_metadata_fixture_remains_queryable_without_invented_source() -> None:
     claims = deepcopy(load_claims())
     for block in claims["external_verification_packet"]["review_matrix"]:
         for family in block["families"]:
@@ -392,8 +391,8 @@ def test_relation_only_metadata_fixture_remains_queryable_without_invented_rank(
         "totient_certificate_equivalences", claims=claims
     )
     assert packet["family"]["authority_rank"] == {
-        "status": "relation_family_not_in_programme_family_order",
-        "programme_position": None,
+        "status": "ranked_within_programme",
+        "programme_position": 4,
         "basis": (
             "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
             "programme_family_order"
@@ -404,7 +403,7 @@ def test_relation_only_metadata_fixture_remains_queryable_without_invented_rank(
         "strict_prime_tail_orbit_gap"
     )
     assert packet["relations"][0]["authority_rank_relation"] == (
-        "not_comparable_unranked_family"
+        "stronger_peer"
     )
     assert packet["family"]["source_evidence_status"] == (
         "review_metadata_only_no_exact_source_coordinate"
@@ -522,18 +521,25 @@ def test_stale_atlas_fingerprint_fails_before_emitting_source_evidence() -> None
         "query_semantic.current_declaration_atlas_source_fingerprint",
         return_value=current,
     ):
-        try:
-            build_family_relations_packet(
-                palomar,
-                claims,
-                ATLAS_FIXTURE_FAMILY,
-                atlas=atlas,
-            )
-        except StaleDeclarationAtlasError as error:
-            assert error.tracked_fingerprint == atlas["source_fingerprint"]
-            assert error.current_fingerprint == current
-        else:
-            raise AssertionError("stale declaration atlas was accepted")
+        packet = build_family_relations_packet(
+            palomar,
+            claims,
+            ATLAS_FIXTURE_FAMILY,
+            atlas=atlas,
+        )
+    family = packet["family"]
+    diagnostic = family["source_evidence_unavailable"]
+    assert family["source_evidence_status"] == (
+        "atlas_unavailable_no_coordinate_emitted"
+    )
+    assert family["source_evidence"] == []
+    assert family["source_route"] is None
+    assert family["source_anchor"] is None
+    assert diagnostic["tracked_source_fingerprint"] == atlas["source_fingerprint"]
+    assert diagnostic["current_source_fingerprint"] == current
+    assert diagnostic["source_evidence_emitted"] is False
+    assert family["summary"] == "bounded-rise obstruction"
+    assert family["open_boundary"]
 
 
 def test_stale_atlas_coordinate_fails_direct_source_head_verification() -> None:
@@ -551,17 +557,18 @@ def test_stale_atlas_coordinate_fails_direct_source_head_verification() -> None:
         "query_semantic.current_declaration_atlas_source_fingerprint",
         return_value=fingerprint,
     ):
-        try:
-            build_family_relations_packet(
-                palomar,
-                claims,
-                ATLAS_FIXTURE_FAMILY,
-                atlas=shifted,
-            )
-        except StaleDeclarationAtlasError as error:
-            assert "direct Lean source" in str(error)
-        else:
-            raise AssertionError("stale declaration coordinate was accepted")
+        packet = build_family_relations_packet(
+            palomar,
+            claims,
+            ATLAS_FIXTURE_FAMILY,
+            atlas=shifted,
+        )
+    family = packet["family"]
+    assert family["source_evidence"] == []
+    assert family["source_evidence_status"] == (
+        "atlas_unavailable_no_coordinate_emitted"
+    )
+    assert "direct Lean source" in family["source_evidence_unavailable"]["reason"]
 
 
 def test_tampered_atlas_row_fields_fail_direct_source_verification() -> None:
@@ -583,20 +590,21 @@ def test_tampered_atlas_row_fields_fail_direct_source_verification() -> None:
             "query_semantic.current_declaration_atlas_source_fingerprint",
             return_value=fingerprint,
         ):
-            try:
-                build_family_relations_packet(
-                    palomar,
-                    claims,
-                    ATLAS_FIXTURE_FAMILY,
-                    atlas=tampered,
-                )
-            except StaleDeclarationAtlasError:
-                pass
-            else:
-                raise AssertionError(f"tampered atlas {field} was accepted")
+            packet = build_family_relations_packet(
+                palomar,
+                claims,
+                ATLAS_FIXTURE_FAMILY,
+                atlas=tampered,
+            )
+        family = packet["family"]
+        assert family["source_evidence"] == [], field
+        assert family["source_evidence_status"] == (
+            "atlas_unavailable_no_coordinate_emitted"
+        ), field
+        assert family["source_evidence_unavailable"]["source_evidence_emitted"] is False
 
 
-def test_family_relations_cli_reports_stale_atlas_without_partial_evidence() -> None:
+def test_family_relations_cli_preserves_metadata_while_atlas_fails_closed() -> None:
     palomar, claims, atlas, _ = atlas_family_fixture()
     captured: dict = {}
 
@@ -618,19 +626,78 @@ def test_family_relations_cli_reports_stale_atlas_without_partial_evidence() -> 
         patch("query_semantic.emit", side_effect=capture),
     ):
         assert cmd_family_relations({}, Args()) == 0
-    assert captured["payload"]["error"] == (
-        "declaration_atlas_evidence_unavailable"
-    )
-    assert captured["payload"]["source_evidence_emitted"] is False
-    assert "source_evidence" not in captured["payload"]
-    assert captured["payload"]["tracked_source_fingerprint"] == (
+    family = captured["payload"]["family"]
+    diagnostic = family["source_evidence_unavailable"]
+    assert family["source_evidence"] == []
+    assert family["summary"] == "bounded-rise obstruction"
+    assert family["open_boundary"]
+    assert diagnostic["source_evidence_emitted"] is False
+    assert diagnostic["tracked_source_fingerprint"] == (
         atlas["source_fingerprint"]
     )
     assert encoded_json_bytes(captured["payload"]) <= BUDGET
-    assert all(
-        key not in captured["payload"]
-        for key in ("source_file", "source_line", "signature", "source_declaration")
+    assert family["source_route"] is None
+    assert family["source_anchor"] is None
+    assert family["source_declaration"] is None
+
+
+def test_totient_certificate_relations_survive_unavailable_atlas() -> None:
+    palomar = load_palomar()
+    claims = load_claims()
+    atlas = tracked_declaration_atlas()
+    family_id = "totient_certificate_equivalences"
+    with patch(
+        "query_semantic.current_declaration_atlas_source_fingerprint",
+        return_value="sha256:" + "b" * 64,
+    ):
+        packet = build_family_relations_packet(
+            palomar,
+            claims,
+            family_id,
+            atlas=atlas,
+        )
+    family = packet["family"]
+    assert "error" not in packet
+    assert family["authority_rank"] == {
+        "status": "ranked_within_programme",
+        "programme_position": 4,
+        "basis": (
+            "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+            "programme_family_order"
+        ),
+    }
+    assert family["presentation_disposition"]["source_family_disposition"] == (
+        "represented"
     )
+    assert family["presentation_disposition"]["represented_placement"][
+        "tier_id"
+    ] == "deep_mechanism_and_classification"
+    assert family["source_evidence_status"] == (
+        "atlas_unavailable_no_coordinate_emitted"
+    )
+    assert family["source_evidence"] == []
+    assert family["source_route"] is None
+    assert family["source_anchor"] is None
+    assert family["open_boundary"] == (
+        "Equivalent producer statements are as hard as the unresolved target."
+    )
+    assert packet["support_edges"] == [
+        {
+            "relation": "endpoint_normal_form_support_for",
+            "relation_class": "support",
+            "direction": "outgoing",
+            "peer_family_id": "strict_prime_tail_orbit_gap",
+            "authority_rank_relation": "stronger_peer",
+        }
+    ]
+    assert packet["relations"][0]["peer"]["family_id"] == (
+        "strict_prime_tail_orbit_gap"
+    )
+    assert packet["relations"][0]["reason"].startswith(
+        "Certificate completeness identifies the exact finite endpoint socket"
+    )
+    assert family["source_evidence_unavailable"]["source_evidence_emitted"] is False
+    assert encoded_json_bytes(packet) <= BUDGET
 
 
 def test_existing_exact_family_does_not_duplicate_atlas_source_evidence() -> None:
@@ -714,13 +781,7 @@ def test_every_canonical_family_packet_is_bounded_and_boundary_honest() -> None:
         for family_id in (row["from_family_id"], row["to_family_id"])
     }
     for family_id in sorted(programme_ids | relation_ids):
-        try:
-            packet = build_family_relations_packet(palomar, claims, family_id)
-        except StaleDeclarationAtlasError as error:
-            failure = error.packet(family_id)
-            assert failure["source_evidence_emitted"] is False
-            assert encoded_json_bytes(failure) <= BUDGET
-            continue
+        packet = build_family_relations_packet(palomar, claims, family_id)
         family = packet["family"]
         assert family["open_boundary"]
         assert family["mechanism_status"] in {
@@ -732,6 +793,7 @@ def test_every_canonical_family_packet_is_bounded_and_boundary_honest() -> None:
             "exact_palomar_source_rows",
             "exact_claims_main_result_rows",
             "exact_atlas_declaration_rows_direct_source_verified",
+            "atlas_unavailable_no_coordinate_emitted",
             "formal_declarations_only_no_exact_source_coordinate",
             "review_metadata_only_no_exact_source_coordinate",
         }
@@ -742,6 +804,13 @@ def test_every_canonical_family_packet_is_bounded_and_boundary_honest() -> None:
             )
         else:
             assert family["source_authority_boundary"]
+        if family["source_evidence_status"] == (
+            "atlas_unavailable_no_coordinate_emitted"
+        ):
+            diagnostic = family["source_evidence_unavailable"]
+            assert diagnostic["source_evidence_emitted"] is False
+            assert family["source_route"] is None
+            assert family["source_anchor"] is None
         assert encoded_json_bytes(packet) <= BUDGET
 
 
