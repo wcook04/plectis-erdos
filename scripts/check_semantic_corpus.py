@@ -51,6 +51,8 @@ CORPUS = ROOT / "docs" / "semantic_corpus.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 MANIFEST = ROOT / "docs" / "generated_certificate_manifest.json"
 CLAIMS = ROOT / "docs" / "claims.json"
+SEMANTIC_DIR = ROOT / "docs" / "semantic"
+ZONES_DIR = SEMANTIC_DIR / "zones"
 
 FAILURES: list[str] = []
 
@@ -118,6 +120,158 @@ def load(path: Path) -> dict:
     return json.loads(safe_read_text(path))
 
 
+def authored_relation_sources() -> tuple[list[tuple[str, dict]], list[tuple[str, dict]]]:
+    """Read the authored relation inputs without assigning significance to order."""
+    zones = [
+        (path.relative_to(ROOT).as_posix(), load(path))
+        for path in sorted(ZONES_DIR.glob("*.json"))
+    ]
+    relation_lenses = [
+        (path.relative_to(ROOT).as_posix(), load(path))
+        for path in sorted(SEMANTIC_DIR.glob("relations_*.json"))
+    ]
+    return zones, relation_lenses
+
+
+def relation_identity(edge: dict) -> str:
+    """Use complete relation content as an order-independent parity identity."""
+    return json.dumps(edge, sort_keys=True, separators=(",", ":"))
+
+
+def relation_parity_errors(
+    corpus: dict,
+    *,
+    zones: list[tuple[str, dict]] | None = None,
+    relation_lenses: list[tuple[str, dict]] | None = None,
+) -> list[str]:
+    """Require every surviving authored relation to reach the projection unchanged.
+
+    The generated corpus deliberately drops only relations incident to a node
+    explicitly absorbed into a generated family.  Comparing complete relation
+    identities, as multisets, preserves basis and any future boundary fields
+    while allowing source files and arrays to be reordered.
+    """
+    if zones is None or relation_lenses is None:
+        zones, relation_lenses = authored_relation_sources()
+
+    errors: list[str] = []
+    source_nodes: dict[tuple[str, str], str] = {}
+    source_locals: dict[str, list[str]] = {}
+    for _, zone in zones:
+        zone_id = zone.get("zone_id")
+        if not isinstance(zone_id, str) or not zone_id:
+            errors.append("authored relation source has an invalid zone ID")
+            continue
+        for node in zone.get("statement_nodes", []):
+            local_id = node.get("id") if isinstance(node, dict) else None
+            if not isinstance(local_id, str) or not local_id:
+                errors.append(f"authored relation source {zone_id} has an invalid node ID")
+                continue
+            qualified = f"{zone_id}::{local_id}"
+            source_nodes[(zone_id, local_id)] = qualified
+            source_locals.setdefault(local_id, []).append(qualified)
+
+    generated_nodes = {
+        node.get("id")
+        for node in corpus.get("statement_nodes", [])
+        if isinstance(node, dict) and isinstance(node.get("id"), str)
+    }
+    absorbed_nodes = {
+        row.get("node")
+        for row in corpus.get("integrity", {}).get(
+            "nodes_absorbed_into_generated_families", []
+        )
+        if isinstance(row, dict) and isinstance(row.get("node"), str)
+    }
+    unresolved = corpus.get("integrity", {}).get("unresolved_relation_endpoints", [])
+    unresolved = unresolved if isinstance(unresolved, list) else []
+
+    expected: Counter[str] = Counter()
+
+    def append_if_surviving(edge: dict, source_label: str) -> None:
+        endpoints = (edge["from"], edge["to"])
+        missing = [endpoint for endpoint in endpoints if endpoint not in generated_nodes]
+        if not missing:
+            expected[relation_identity(edge)] += 1
+            return
+        unexpected = [endpoint for endpoint in missing if endpoint not in absorbed_nodes]
+        if unexpected:
+            errors.append(
+                f"authored relation {source_label} lost endpoint(s) without generated-family absorption: "
+                + ", ".join(sorted(unexpected))
+            )
+
+    for source_path, zone in zones:
+        zone_id = zone.get("zone_id")
+        if not isinstance(zone_id, str):
+            continue
+        for index, raw_edge in enumerate(zone.get("intra_zone_relations", []), 1):
+            if not isinstance(raw_edge, dict):
+                errors.append(f"authored relation {source_path}:{index} is not an object")
+                continue
+            source = source_nodes.get((zone_id, raw_edge.get("from")))
+            target = source_nodes.get((zone_id, raw_edge.get("to")))
+            if source is None or target is None:
+                errors.append(
+                    f"authored relation {source_path}:{index} has an endpoint absent from its zone"
+                )
+                continue
+            append_if_surviving(
+                {**raw_edge, "from": source, "to": target, "scope": "intra_zone", "zone": zone_id},
+                f"{source_path}:{index}",
+            )
+
+    def resolve(local_id: object, zone_id: object) -> str | None:
+        if not isinstance(local_id, str):
+            return None
+        if isinstance(zone_id, str):
+            return source_nodes.get((zone_id, local_id))
+        candidates = source_locals.get(local_id, [])
+        return candidates[0] if len(candidates) == 1 else None
+
+    for source_path, lens_payload in relation_lenses:
+        lens = lens_payload.get("lens", Path(source_path).stem)
+        for index, raw_edge in enumerate(lens_payload.get("edges", []), 1):
+            if not isinstance(raw_edge, dict):
+                errors.append(f"authored relation {source_path}:{index} is not an object")
+                continue
+            source = resolve(raw_edge.get("from"), raw_edge.get("from_zone"))
+            target = resolve(raw_edge.get("to"), raw_edge.get("to_zone"))
+            if source is None or target is None:
+                if not any(
+                    isinstance(row, dict)
+                    and row.get("from") == raw_edge.get("from")
+                    and row.get("to") == raw_edge.get("to")
+                    and row.get("lens") == lens
+                    for row in unresolved
+                ):
+                    errors.append(
+                        f"authored relation {source_path}:{index} is unresolved without a projection receipt"
+                    )
+                continue
+            append_if_surviving(
+                {**raw_edge, "from": source, "to": target, "scope": "cross_zone", "lens": lens},
+                f"{source_path}:{index}",
+            )
+
+    actual = Counter(
+        relation_identity(edge)
+        for edge in corpus.get("relations", [])
+        if isinstance(edge, dict) and edge.get("scope") in {"intra_zone", "cross_zone"}
+    )
+    missing = expected - actual
+    extra = actual - expected
+    if missing:
+        errors.append(
+            f"generated semantic corpus omits {sum(missing.values())} authored relation(s)"
+        )
+    if extra:
+        errors.append(
+            f"generated semantic corpus invents {sum(extra.values())} authored relation(s)"
+        )
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--counts", action="store_true", help="print the per-problem census")
@@ -140,6 +294,11 @@ def main() -> int:
     check(
         corpus.get("semantic_input_fingerprint") == semantic_input_fingerprint(),
         "semantic corpus is stale relative to the atlas or authored semantic inputs",
+    )
+    relation_errors = relation_parity_errors(corpus)
+    check(
+        not relation_errors,
+        "semantic corpus relation parity failed: " + "; ".join(relation_errors[:3]),
     )
     expected_formal_source = {
         key: claims["release"]["formal_source"][key]
