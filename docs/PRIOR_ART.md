@@ -90,9 +90,9 @@ boundary of that relationship.
 
   **Boundary.** Here \(\varphi(n)\) occurs in the exponent. It does not treat the coefficient-weighted constant \(\sum\varphi(n)/2^n\), its denominator bound, or its tail-certificate equivalence.
 
-- T. M. Apostol, [*Introduction to Analytic Number Theory* (1976)](https://doi.org/10.1007/978-1-4757-5579-4); M. Merca, [*The Lambert series factorization theorem* (2017)](https://doi.org/10.1007/s11139-016-9856-3); M. Merca and M. D. Schmidt, [*Generating Special Arithmetic Functions by Lambert Series Factorizations* (2019)](https://doi.org/10.55016/ojs/cdm.v14i1.62425)
+- T. M. Apostol, [*Introduction to Analytic Number Theory* (1976)](https://doi.org/10.1007/978-1-4757-5579-4); M. Merca, [*The Lambert series factorization theorem* (2017)](https://doi.org/10.1007/s11139-016-9856-3); M. Merca and M. D. Schmidt, [*Generating Special Arithmetic Functions by Lambert Series Factorizations* (2019)](https://doi.org/10.55016/ojs/cdm.v14i1.62425) ([official journal PDF](https://cdm.ucalgary.ca/article/download/62425/53773); [read source closure](primary-sources/totient-kernel/merca-schmidt-2017-lambert-factorizations-source-closure.md))
 
-  Apostol supplies the classical Dirichlet/Möbius background; Merca gives the modern factorisation theorem and Merca--Schmidt its synthesis/unification treatment.
+  Apostol supplies the classical Dirichlet/Möbius background; Merca gives the modern factorisation theorem and Merca--Schmidt its synthesis/unification treatment. Merca--Schmidt's equation (2) records the totient Lambert identity used as transform background, while Theorem 3.2 and Corollary 3.3 give their partition/inverse-matrix mechanism. Apostol/Merca 2017 remain cited background without a source closure in this pass.
 
   **Boundary.** The release uses classical transforms and claims a Lean-checked composition, not new Möbius inversion, Lambert identities, or the cited factorisation theorems.
 
