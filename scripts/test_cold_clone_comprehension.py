@@ -154,6 +154,34 @@ def check_route_memory_cold_clone() -> int:
             raise AssertionError(f"route-memory resume identity drifted for #{problem_number}")
         checked += 1
 
+    batch = run(
+        [
+            sys.executable,
+            str(ROUTE_MEMORY_SCRIPT),
+            "--all",
+        ]
+    )
+    if batch.returncode != 0:
+        raise AssertionError(f"route-memory --all failed: {batch.stderr}")
+    batch_packets = json.loads(batch.stdout)
+    require(isinstance(batch_packets, list), "route-memory --all did not return a list")
+    require(
+        {packet["problem"]["erdos_number"] for packet in batch_packets}
+        == set(FROZEN_PROBLEMS),
+        "route-memory --all crossed or omitted a frozen selector",
+    )
+    require(
+        len({packet["source_snapshot"]["commit"] for packet in batch_packets}) == 1,
+        "route-memory --all mixed source commits",
+    )
+    for packet in batch_packets:
+        require(
+            route_memory.validate_packet(packet)["resume_state"]
+            == packet["resume_state"],
+            "route-memory --all resume identity drifted",
+        )
+    checked += 1
+
     cross_problem = run(
         [
             sys.executable,
