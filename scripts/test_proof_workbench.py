@@ -310,6 +310,64 @@ def check_replay_runner_failure(tmp: Path) -> None:
     assert "replayed_verdict" not in replay
 
 
+def check_show_probe_artifact_boundary(tmp: Path) -> None:
+    sessions_root = tmp / "show-artifact-sessions"
+    source_path = tmp / "show-artifact.lean"
+    source = "example : True := by trivial\n"
+    source_path.write_text(source, encoding="utf-8")
+    receipt = {
+        "verdict": "kernel_accepted",
+        "detail": None,
+        "exit_code": 0,
+        "error_count": 0,
+        "sorry_count": 0,
+        "duration_seconds": 0.01,
+        "output_tail": "",
+    }
+    real_runner = workbench.run_lean_probe
+    workbench.run_lean_probe = lambda root, text: receipt
+    try:
+        _run(
+            sessions_root,
+            [
+                "open",
+                "--session",
+                "show-artifact",
+                "--actor",
+                "outsider",
+                "--intent",
+                "show artifact boundary",
+            ],
+        )
+        _run(
+            sessions_root,
+            [
+                "probe",
+                "--session",
+                "show-artifact",
+                "--file",
+                str(source_path),
+            ],
+        )
+    finally:
+        workbench.run_lean_probe = real_runner
+    stored = sessions_root / "show-artifact" / "probes" / "m002.lean"
+    stored.write_text("example : False := by trivial\n", encoding="utf-8")
+    try:
+        _run(sessions_root, ["show", "--session", "show-artifact"])
+    except SystemExit as error:
+        assert "hash does not match input hash" in str(error)
+    else:
+        raise AssertionError("show projected a probe with drifted artifact bytes")
+    stored.unlink()
+    try:
+        _run(sessions_root, ["show", "--session", "show-artifact"])
+    except SystemExit as error:
+        assert "invalid or missing stored artifact" in str(error)
+    else:
+        raise AssertionError("show projected a probe with a missing artifact")
+
+
 def check_malformed_ledger_boundary(tmp: Path) -> None:
     """Every workbench command must receive a bounded ledger-read failure."""
     sessions_root = tmp / "malformed-ledger-sessions"
@@ -1800,6 +1858,7 @@ def main() -> int:
         check_replay_path_boundary(tmp)
         check_replay_receipt_boundary(tmp)
         check_replay_runner_failure(tmp)
+        check_show_probe_artifact_boundary(tmp)
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
         check_probe_artifact_cleanup(tmp)

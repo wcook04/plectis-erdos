@@ -879,6 +879,7 @@ def cmd_show(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         elif row["kind"] == "probe":
             entry["label"] = row.get("label")
             entry["verdict"] = _probe_verdict(row, "show")
+            _stored_probe_source(session, row, "show")
             entry["input_path"] = _canonical_probe_path(row, "show")
             entry["input_sha256"] = _probe_input_hash(row, "show")
             entry["kernel_receipt"] = row["kernel_receipt"]
