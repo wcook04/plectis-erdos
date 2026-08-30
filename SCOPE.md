@@ -26,6 +26,11 @@ against the same problem-index and corpus snapshot, use
 and evidence routes only: they do not promote research rows into the reviewed
 claim registry or Comparator, and they do not close #1041.
 
+For the exact cross-problem traversal, start with the canonical [complete
+eight-problem return matrix](docs/SOURCE_MAP.md#complete-eight-problem-return-matrix).
+It binds every public problem to its strongest source route, paper/source
+record, and exact frontier, including source-only rows.
+
 For the full reader-facing frontier across all eight programmes, use the
 generated [external-verification dossier](docs/EXTERNAL_VERIFICATION.md). It
 keeps the distinct result families, evidence classes, exact Comparator
