@@ -230,6 +230,7 @@
       {"candidate_id":"erdos251_integral_tail_classification","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos251_integral_tail_classification]"},
       {"candidate_id":"erdos243_centered_state_recovery","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos243_centered_state_recovery]"},
       {"candidate_id":"weighted_phase_carry_observer","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[weighted_phase_carry_observer]"},
+      {"candidate_id":"strict_prime_tail_orbit_gap","disposition":"subordinate","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[strict_prime_tail_orbit_gap]"},
       {"candidate_id":"erdos249_carry_anti_compression","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos249_carry_anti_compression]"}
     ],
     "comparator_screen": {
@@ -726,6 +727,34 @@
         "source_landscape_rank_relative_to": "Below direct endpoint families and the stronger actual-LCM/first-harmonic conditional routes; retained as subordinate conditional no-go evidence because the producer and actual-series bridge are both open.",
         "reason": "Subordinate source-landscape evidence after source transport and Comparator admission: the residue-escape consumer is a precise reusable contradiction, but its cofinal producer and actual-series/rationality identification are missing, so it cannot compete with completed endpoints or be promoted as an Erdős #269 result.",
         "reversal_evidence": "A proof of the cofinal local-window escape predicate together with an actual running-LCM carry bridge would justify fresh ranking; another finite window search or residue identity would not."
+      },
+      {
+        "candidate_id": "strict_prime_tail_orbit_gap",
+        "family_id": "strict_prime_tail_orbit_gap",
+        "disposition": "subordinate",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos249.TotientTailOrbitBlockGap; ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity; ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity; ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap; ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "source_file": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+        "source_anchor": "25; 35; 45; 96; 157; 166; 205",
+        "statement": "This one coherent conditional producer has two branches: a late-dyadic-block density of nonpositive tail-orbit phases yields a 9/10 finite first-harmonic gap and certified-kill supply, while cofinally many prime indices with Re(tailOrbitFirstExp h (p - h - 1)) < 9/10 yield natural pivot-fibre escape and the same irrationality endpoint.",
+        "exact_hypotheses": [
+          "TotientTailOrbitNonpositiveBlockDensity: for every h > 0 and X₀, some X ≥ max X₀ 1 has at least (11/100) * X nonpositive phases on Finset.Ico X (2 * X).",
+          "The block-density branch uses the unit norm of every tail-orbit phase and the complement bound to obtain TotientTailOrbitBlockGap, with block mean at most (89/100) * X.",
+          "The certified-kill branch chooses one truncation depth at endpoint 2X with error at most 1/100, converting the 89/100 infinite-orbit mean into a 9/10 finite first-harmonic gap.",
+          "DTWNaturalPrimeTailOrbitStrictGap: for every h > 0 and N₀, a prime p ≥ max (N₀ + h + 1) (h + 5) satisfies Re(tailOrbitFirstExp h (p - h - 1)) < 9/10; the adaptive truncation margin is then positive and exact natural-fibre membership is proved."
+        ],
+        "conclusion": "The block-density antecedent implies irrationality through a uniform finite certificate supply; the cofinal-prime strict-gap antecedent implies irrationality through natural pivot-point escape. Both are conditional reductions only: neither source branch supplies its density, cofinal prime, or uniform margin antecedent for the actual totient orbit.",
+        "hard_mechanism": "Unit norm bounds the uncontrolled complement of the nonpositive phase set, so 11/100 density gives the 89/100 block mean; a single worst-case truncation budget at 2X gives the 9/10 finite gap and certified kill. In the prime branch, the exact positive margin 9/10 - Re(tailOrbitFirstExp h (p - h - 1)) feeds the natural-window depth theorem and the pivot-fibre membership calculation.",
+        "attribution": "These are source-current Erdős #249 declarations in TotientStrictPrimeEscape.lean, and the acquired paper/external packet names strict_prime_tail_orbit_gap as an open producer socket. No canonical claims family, Comparator transport, novelty, priority, significance, or external-review claim is asserted here.",
+        "limitations": [
+          "The late-block density antecedent, cofinal prime strict-gap antecedent, and required uniform separation supply are unproved for the actual totient orbit.",
+          "Irrationality or nonintegrality alone gives no fixed distance from the integers, so certificate completeness cannot manufacture either producer predicate.",
+          "This is distinct producer-side phase-density and prime-index transport mechanism, but it shares the existing singleton-certificate consumer and must not be fragmented into helper families.",
+          "It proves no unconditional Erdős #249 irrationality, prime-distribution/equidistribution theorem, endpoint closure, novelty, priority, significance, or external-review result."
+        ],
+        "reason": "Subordinate after source-current theorem-forest adjudication: this is a genuinely distinct, endpoint-facing producer mechanism with a hard phase-density-to-certificate step and an exact prime-index transport branch, but both branches retain their global supply predicates as open natural friction. It therefore remains source-map/open-obligation evidence below represented direct endpoint families and the finite certificate consumer.",
+        "reversal_evidence": "A canonical review-family claim with source-faithful Comparator transport could make this a represented conditional family; a proved block-density or cofinal-prime producer for the actual orbit could promote it toward an endpoint route. A restatement of the existing certificate equivalence or another finite phase sample would not change its disposition."
       },
       {
         "candidate_id": "certificate_completeness",

@@ -388,6 +388,7 @@ def candidate_selection_errors(
         "erdos251_integral_tail_classification",
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
+        "strict_prime_tail_orbit_gap",
         "erdos249_carry_anti_compression",
     }
     if not isinstance(discoveries, list) or {
@@ -566,6 +567,7 @@ def candidate_selection_errors(
                 "erdos251_integral_tail_classification",
                 "erdos243_centered_state_recovery",
                 "weighted_phase_carry_observer",
+                "strict_prime_tail_orbit_gap",
                 "erdos257_boolean_mobius_carry",
                 "erdos257_boolean_mobius_exact_row_dynamics",
                 "erdos257_half_membership_seam_classification",

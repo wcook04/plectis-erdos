@@ -220,6 +220,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos251_integral_tail_classification",
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
+        "strict_prime_tail_orbit_gap",
         "erdos249_carry_anti_compression",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
@@ -471,6 +472,20 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "prime-tail cofinal mismatch" in row["limitations"][0]
     assert "verification/comparator.json" in row["transport_admission_boundary"]
     assert "review matrix" in row["transport_admission_boundary"]
+    strict_prime = landscape_by_id["strict_prime_tail_orbit_gap"]
+    assert strict_prime["family_id"] == "strict_prime_tail_orbit_gap"
+    assert strict_prime["disposition"] == "subordinate"
+    assert strict_prime["comparator_eligibility"] == (
+        "source_landed_but_not_comparator_configured"
+    )
+    assert strict_prime["queue_role"] == "source_landscape_review_not_comparator_evidence"
+    assert "TotientTailOrbitNonpositiveBlockDensity" in strict_prime["source_declaration"]
+    assert "DTWNaturalPrimeTailOrbitStrictGap" in strict_prime["source_declaration"]
+    assert "11/100" in " ".join(strict_prime["exact_hypotheses"])
+    assert "9/10" in strict_prime["statement"]
+    assert "cofinal prime" in " ".join(strict_prime["limitations"])
+    assert "no unconditional" in " ".join(strict_prime["limitations"])
+    assert "Comparator transport" in strict_prime["reversal_evidence"]
     weighted = landscape_by_id["weighted_phase_carry_observer"]
     assert "carry_eq_residueDigit_add_coboundary" in weighted["source_declaration"]
     assert "carryResidue_mem_interval" in weighted["source_declaration"]
