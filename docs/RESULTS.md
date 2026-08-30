@@ -152,6 +152,15 @@ replacement for claim authority.
   claimed).
 - Open: the unbounded certificate supply, which is equivalent to #249 itself;
   a checked splice construction shows no finite inspection can settle it.
+- A checked synthetic no-go shows that, for every `t ≥ 3`, a nonzero dyadic
+  coboundary can survive every finite integer shift polynomial while retaining
+  the period-LCM totient factor ideals, exact cleared-prefix cancellation, and
+  uniform state and letter bounds
+  (`Erdos249257.TotientTailPeriodKiller.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient`,
+  `Erdos249257/LcmFactorIdealPulseObstruction.lean`). This obstructs that
+  finite shift-algebra route only: the forcing letters are synthetic rather
+  than actual totient differences, nonlinear combinations are not covered,
+  and no unbounded certificate supply follows.
 - Two additional checked #249 families are directly inspectable: an exact
   [squared-Lambert gcd-moment transfer](../Erdos249257/GcdMomentCalculus.lean)
   at base `1/2`, and a [Stern–Brocot run-stability floor](../Erdos249257/SternBrocotRunGeometry.lean)
