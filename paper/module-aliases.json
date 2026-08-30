@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 113,
+  "alias_count": 120,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -564,6 +564,41 @@
       "sigil": "PriGapDyaTai",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+    },
+    {
+      "sigil": "BouRadTaiEsc",
+      "module": "ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
+      "path": "ErdosProblems/Erdos269/BoundedRadixTailEscape.lean"
+    },
+    {
+      "sigil": "CarLifExt",
+      "module": "ErdosProblems/Erdos269/CarryLiftExtinction.lean",
+      "path": "ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+    },
+    {
+      "sigil": "ResEsc",
+      "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+      "path": "ErdosProblems/Erdos269/ResidueEscape.lean"
+    },
+    {
+      "sigil": "ResFloSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean"
+    },
+    {
+      "sigil": "ThrChaBloRig",
+      "module": "ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
+      "path": "ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean"
+    },
+    {
+      "sigil": "ThrPriRunLcm",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+    },
+    {
+      "sigil": "WeiPhaCar",
+      "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+      "path": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean"
     },
     {
       "sigil": "LadT67",

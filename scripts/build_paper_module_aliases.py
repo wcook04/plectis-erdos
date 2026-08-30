@@ -14,13 +14,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = ROOT / "paper"
-# Keep the gateway paper and the source-current #249/#251 problem notes in the
-# same source census.  The notes carry exact problem-specific routes while the
-# gateway carries the shared public spine.
+# Keep the gateway paper and the source-current #249/#251/#269 problem notes in
+# the same source census.  The notes carry exact problem-specific routes while
+# the gateway carries the shared public spine.
 PAPERS = (
     PAPER_DIR / "erdos249-257-main-paper.tex",
     PAPER_DIR / "erdos-249-binary-totient-series.tex",
     PAPER_DIR / "erdos-251-prime-gap-dyadic-series.tex",
+    PAPER_DIR / "erdos-269-three-prime-running-lcm.tex",
 )
 OUTPUT = PAPER_DIR / "module-aliases.tex"
 JSON_OUTPUT = PAPER_DIR / "module-aliases.json"
