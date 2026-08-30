@@ -45,6 +45,16 @@ difference cancelling four prescribed endpoint residues, that is, both endpoint
 jets in both sequences.  This constructs only the signed relation; it does not
 ensure that the resulting polynomial pair or analytic remainder is nonzero.
 
+The finite collision count has a sharper threshold than this convenient bound.
+For four-jet depths $R,S$, $M$ coefficient pairs suffice exactly when
+$M>2Rlog_2 3+2S$; if $N=2^M$ and
+$Q=3^{2R}2^{2S}$, convexity gives at least
+$\tfrac12(N^2/Q-N)$ equal-signature selector pairs.  The surviving finite
+problem is therefore to find one collision outside both the polynomial-pair
+nullspace and the $3/2$-remainder nullspace.  This separates finite normality
+from nonvanishing and from the later analytic height margin; none of those
+remaining gates is proved here.
+
 The two nearby little-$q$-Legendre Pad\'e diagonals used in the integer-base
 literature are not interchangeable: substituting the Van Assche diagonal into
 the Amdeberhan--Zeilberger recurrence leaves a nonzero residual already at
