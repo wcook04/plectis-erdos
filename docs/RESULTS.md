@@ -104,7 +104,8 @@ it is a verification projection, not a replacement for claim authority.
   (Integers 26 (2026), A28; cited, prose bridge) — a bounded negative part or
   finite normalised negative mass forces the error to vanish and the
   Sylvester recurrence to begin (`:2177`, `:2264`;
-  `SparseResetRecovery.lean:155`, `:175`). Checked conditional theorems; the
+  `ErdosProblems/Erdos243/SparseResetRecovery.lean:155`,
+  `ErdosProblems/Erdos243/SparseResetRecovery.lean:175`). Checked conditional theorems; the
   note concedes its absorption and descent lemmas as Koizumi prior art.
 - Open: the unbounded mixed-sign regime.
 
@@ -240,13 +241,15 @@ core)**
   both `2` and `3` from a common divisor
   (`ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean:293`). Registry: none.
 - The elementary height inequality used by Bundschuh–Väänänen's external
-  irrationality criterion at `7/2` is checked (`RationalBaseLambert.lean:83`);
+  irrationality criterion at `7/2` is checked
+  (`ErdosProblems/Erdos1049/RationalBaseLambert.lean:83`);
   the analytic theorem itself remains external. Formalisation of known
   inputs.
 - The Van Assche moving diagonal fails the Amdeberhan–Zeilberger scalar
   recurrence already at `n=0`: its exact residual is
   `-p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2)`, strictly negative for every real
-  `p>1` (`QAperyDiagonalNonEquivalence.lean:67,94`). This finite obstruction
+  `p>1`
+  (`ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean:67,94`). This finite obstruction
   proves only non-transfer of that recurrence; it supplies no general
   recurrence, endpoint, lattice, valuation, denominator, or irrationality
   theorem. Registry: none.
