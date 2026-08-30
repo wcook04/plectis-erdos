@@ -258,6 +258,23 @@ def main() -> int:
             "unsafe_input_path" in linked.stderr,
             "symlinked packet path omitted its rejection code",
         )
+    with tempfile.TemporaryDirectory(prefix="route-memory-module-link-") as temp_dir:
+        module_root = Path(temp_dir)
+        outside = module_root / "outside"
+        outside.mkdir()
+        (outside / "Module.lean").write_text("external", encoding="utf-8")
+        (module_root / "Erdos249257").symlink_to(outside, target_is_directory=True)
+        try:
+            route_memory._safe_module_digest(
+                module_root, "Erdos249257/Module.lean"
+            )
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "unsafe_source_path",
+                f"nested module symlink returned {exc.code}",
+            )
+        else:
+            raise AssertionError("nested module symlink was accepted")
     optimized = run_cli(
         "--problem", "257", "--format", "card", optimized=True, check=True
     )

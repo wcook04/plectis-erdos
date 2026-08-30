@@ -307,6 +307,8 @@ def _safe_module_digest(root: Path, module: str) -> str:
     if relative.is_absolute() or ".." in relative.parts:
         raise RouteMemoryError("invented_source_path", module)
     path = root / relative
+    if _path_has_symlink_component(path):
+        raise RouteMemoryError("unsafe_source_path", module)
     if not path.is_file() or path.is_symlink():
         raise RouteMemoryError("declaration_source_missing", module)
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
