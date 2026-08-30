@@ -89,6 +89,20 @@ Thus nonperiodicity alone cannot prove irrationality.  The ordinary limit
 $-n/2^n\to0$ is a standard analytic consequence, but it is not part of the
 transported Lean theorem; the prime-specific cofinal nonintegrality step
 remains open.
+
+The source-current Comparator transport packages the endpoint-adjacent
+mechanism as follows: for a rational tail $T$ obeying the actual
+prime-gap recurrence, if every threshold admits adjacent $h$-shifts in
+$(-1,1)$ with unequal corresponding prime gaps, then that $h$-shift is not
+eventually integral
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1112}
+      {primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}
+      {the conditional prime-gap small-mismatch theorem}.
+This is a conditional reduction, not a source of the two smallness
+inequalities or their cofinal supply; hence it proves neither irrationality
+of the prime-gap series nor Problem~\#251.  The natural friction is exact:
+the missing producer must control complete adjacent infinite tails, while
+prime-gap nonperiodicity alone supplies only the unequal-gap clause.
 \end{abstract}
 
 \externalreviewobject{The paper proves the exact prime/prime-gap summation
@@ -97,10 +111,11 @@ actual prime gaps are unbounded, and gives, at paper level, a nonperiodic
 rational countermodel to a tempting coefficient-only route.}{These results expose the missing
 cofinal nonintegrality statement for the actual prime gaps without proving it.
 Problem~\#251 remains open.}{Comparator selects the prime-gap unboundedness
-theorem and the exact irrationality equivalence between the two infinite
-series, with the summability hypothesis retained; its coefficient-only no-go
-transport checks only finite identities and nonperiodicity, leaving the
-infinite-limit step as authored synthesis.}
+theorem, the exact irrationality equivalence between the two infinite series,
+and the conditional actual-prime-gap small-mismatch specialization, with the
+summability and recurrence hypotheses retained; its coefficient-only no-go
+transport checks only finite identities and nonperiodicity, leaving every
+cofinal producer and the infinite-limit step open.}
 
 \section{Introduction}\label{sec:problem}
 
@@ -278,6 +293,15 @@ classifier}, they explain why a rational initial state supplies an eventual
 integral shift.  These are recurrence-level results, not a prime-specific
 producer: the cofinal non-integrality property for the actual prime gaps
 remains unproved, so no irrationality claim for Problem~\#251 follows.
+The current Comparator surface also carries the endpoint-adjacent
+specialization
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1112}
+      {primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}
+      {the conditional prime-gap small-mismatch transport}: it preserves the
+actual recurrence, the cofinal adjacent $(-1,1)$ hypotheses, and the unequal
+gap condition, and concludes failure of eventual integrality.  The source
+does not supply those pairs, so this is a reduction exposing the missing
+prime-specific producer, not a proof of Problem~\#251 irrationality.
 
 \statusboundary
 

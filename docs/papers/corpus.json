@@ -2842,7 +2842,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
       "local_source": "paper/erdos-251-prime-gap-dyadic-series.tex",
-      "source_sha256": "sha256:d612eec243d77c30ce83fadfe9f166033dc80161a5fa2e41c9f238cec90bc477",
+      "source_sha256": "sha256:37cb6859970b26732139a1b712fe629bd0e342bb48934038fabb348f4e28c753",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex",
@@ -2859,139 +2859,139 @@
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction",
-          "line": 39
+          "line": 41
         },
         {
           "level": 4,
           "id": "notation.",
           "title": "Notation.",
-          "line": 68
+          "line": 70
         },
         {
           "level": 4,
           "id": "relation-to-prior-work.",
           "title": "Relation to prior work.",
-          "line": 74
+          "line": 76
         },
         {
           "level": 4,
           "id": "the-strategy.",
           "title": "The strategy.",
-          "line": 88
+          "line": 90
         },
         {
           "level": 4,
           "id": "outline.",
           "title": "Outline.",
-          "line": 96
+          "line": 98
         },
         {
           "level": 1,
           "id": "sec:parts",
           "title": "Summation by parts, with the endpoint retained",
-          "line": 133
+          "line": 135
         },
         {
           "level": 2,
           "id": "sec:infinite",
           "title": "The infinite identity and the irrationality equivalence",
-          "line": 176
+          "line": 178
         },
         {
           "level": 4,
           "id": "the-summability-hypothesis.",
           "title": "The summability hypothesis.",
-          "line": 224
+          "line": 226
         },
         {
           "level": 1,
           "id": "sec:tail",
           "title": "The tail recurrence and integral shifts",
-          "line": 230
+          "line": 232
         },
         {
           "level": 4,
           "id": "the-actual-prime-gap-orbit.",
           "title": "The actual prime-gap orbit.",
-          "line": 390
+          "line": 392
         },
         {
           "level": 2,
           "id": "sec:local-certificate",
           "title": "Two adjacent small shifts cannot both be integral",
-          "line": 404
+          "line": 406
         },
         {
           "level": 1,
           "id": "sec:carry",
           "title": "Nonperiodic coefficients with a rational sum",
-          "line": 470
+          "line": 472
         },
         {
           "level": 4,
           "id": "consequence-for-the-coefficients.",
           "title": "Consequence for the coefficients.",
-          "line": 500
+          "line": 502
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 516
+          "line": 518
         },
         {
           "level": 4,
           "id": "a-finite-truncation-criterion.",
           "title": "A finite truncation criterion.",
-          "line": 566
+          "line": 568
         },
         {
           "level": 4,
           "id": "what-remains-to-be-formalised.",
           "title": "What remains to be formalised.",
-          "line": 618
+          "line": 620
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 624
+          "line": 626
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 628
+          "line": 630
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 634
+          "line": 636
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 640
+          "line": 642
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 646
+          "line": 648
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 652
+          "line": 654
         }
       ],
       "citations_rendered": 22,
       "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:bc11db28eb635bc2a5ca1970f268dc247b1723312280af8360bd6ad537d3de45",
-      "pdf_byte_count": 138619,
+      "pdf_sha256": "sha256:42fc8180bcd94086c8c8d21d8749ebda727e29d2230d695dc55051ee53614042",
+      "pdf_byte_count": 140205,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2999,12 +2999,12 @@
           {
             "id": "sec:problem",
             "title": "Introduction",
-            "line": 39
+            "line": 41
           },
           {
             "id": "sec:tail",
             "title": "The tail recurrence and integral shifts",
-            "line": 230
+            "line": 232
           },
           {
             "id": "sec:no-go",
@@ -3014,7 +3014,7 @@
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 516
+            "line": 518
           }
         ],
         "unresolved_count": 1
