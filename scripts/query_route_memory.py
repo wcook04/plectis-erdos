@@ -543,8 +543,18 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
         str(selector["route_id"]) if selector.get("route_id") else None,
         root=root,
     )
+    if set(packet) != set(expected):
+        raise RouteMemoryError(
+            "packet_shape",
+            "top-level fields differ from the canonical route-memory packet",
+        )
     snapshot = packet.get("source_snapshot")
     _reject_if(not isinstance(snapshot, Mapping), "source_snapshot_missing", "source_snapshot")
+    if set(snapshot) != set(expected["source_snapshot"]):
+        raise RouteMemoryError(
+            "source_snapshot_shape",
+            "source snapshot fields differ from the canonical packet",
+        )
     if snapshot.get("commit") != expected["source_snapshot"]["commit"]:
         raise RouteMemoryError("stale_source_snapshot", "source commit differs from HEAD")
     if snapshot.get("digests") != expected["source_snapshot"]["digests"]:
@@ -588,6 +598,8 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
                 )
             raise RouteMemoryError("invented_declaration_reference", str(claim["id"]))
     critical = (
+        "kind",
+        "authority_posture",
         "route_memory_id",
         "selector",
         "problem",

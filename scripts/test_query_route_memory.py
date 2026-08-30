@@ -207,6 +207,24 @@ def main() -> int:
     cross_route = copy.deepcopy(routed)
     cross_route["consulted_route_ids"] = ["erdos257_half_story"]
     assert_rejected(cross_route, "packet_mismatch")
+    strict_kind = copy.deepcopy(routed)
+    strict_kind["kind"] = "not_route_memory"
+    strict_kind["packet_digest"] = route_memory._canonical_digest(
+        {key: value for key, value in strict_kind.items() if key != "packet_digest"}
+    )
+    assert_rejected(strict_kind, "packet_mismatch")
+    strict_extra = copy.deepcopy(routed)
+    strict_extra["untrusted_metadata"] = {"provider": "invented"}
+    strict_extra["packet_digest"] = route_memory._canonical_digest(
+        {key: value for key, value in strict_extra.items() if key != "packet_digest"}
+    )
+    assert_rejected(strict_extra, "packet_shape")
+    strict_snapshot = copy.deepcopy(routed)
+    strict_snapshot["source_snapshot"]["untrusted_metadata"] = "invented"
+    strict_snapshot["packet_digest"] = route_memory._canonical_digest(
+        {key: value for key, value in strict_snapshot.items() if key != "packet_digest"}
+    )
+    assert_rejected(strict_snapshot, "source_snapshot_shape")
 
     route_shape = {
         "id": "main",
