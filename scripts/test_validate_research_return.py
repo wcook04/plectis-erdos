@@ -7,12 +7,15 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest import mock
 
 import validate_research_return as validator
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +26,19 @@ FIXTURE = ROOT / ".github" / "fixtures" / "unaccepted-research-return.json"
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
+
+
+def run_cli(input_path: Path, *arguments: str) -> subprocess.CompletedProcess[str]:
+    """Run the public validator CLI without ambient checkout state."""
+    return subprocess.run(
+        [sys.executable, str(SCRIPT), str(input_path), *arguments],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
 
 
 def main() -> int:
@@ -68,26 +84,26 @@ def main() -> int:
         directory_path = Path(directory)
         input_path = directory_path / "return.json"
         input_path.write_bytes(FIXTURE.read_bytes())
-        valid_cli = subprocess.run(
-            [sys.executable, str(SCRIPT), str(input_path), "--require-submitted", "--format", "json"],
-            cwd=ROOT,
-            check=False,
-            capture_output=True,
-            text=True,
-        )
+        hostile_environment = {
+            "GIT_DIR": "/private/wrong-git-dir",
+            "GIT_NAMESPACE": "refs/namespaces/wrong-release",
+            "GIT_REPLACE_REF_BASE": "refs/replace/",
+            "PYTHONPATH": "/private/wrong-python-path",
+            "LC_ALL": "C",
+            "LANG": "C",
+        }
+        with mock.patch.dict(os.environ, hostile_environment, clear=False):
+            valid_cli = run_cli(
+                input_path, "--require-submitted", "--format", "json"
+            )
         require(valid_cli.returncode == 0, valid_cli.stderr)
         receipt = json.loads(valid_cli.stdout)
         require(receipt["valid"] is True and receipt["submitted"] is True, "CLI receipt lost submitted state")
 
         symlink = directory_path / "symlink-return.json"
         symlink.symlink_to(input_path)
-        unsafe_cli = subprocess.run(
-            [sys.executable, str(SCRIPT), str(symlink), "--require-submitted"],
-            cwd=ROOT,
-            check=False,
-            capture_output=True,
-            text=True,
-        )
+        with mock.patch.dict(os.environ, hostile_environment, clear=False):
+            unsafe_cli = run_cli(symlink, "--require-submitted")
         require(unsafe_cli.returncode == 2, "symlinked return input crossed the path boundary")
         unsafe_receipt = json.loads(unsafe_cli.stdout)
         require(
