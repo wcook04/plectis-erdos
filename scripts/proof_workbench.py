@@ -401,14 +401,49 @@ def _probe_verdict(row: dict[str, Any], action: str) -> str:
         raise SystemExit(
             f"{action} refused: probe move {row.get('move_id')} has an invalid kernel receipt"
         )
-    if verdict == "kernel_accepted":
-        if any(
-            type(receipt.get(field)) is not int or receipt.get(field) != 0
-            for field in ("exit_code", "error_count", "sorry_count")
+    if verdict == "probe_error":
+        if (
+            not isinstance(receipt.get("detail"), str)
+            or not receipt["detail"].strip()
+            or any(receipt.get(field) is not None for field in (
+                "exit_code",
+                "error_count",
+                "sorry_count",
+            ))
         ):
             raise SystemExit(
                 f"{action} refused: probe move {row.get('move_id')} has an invalid kernel receipt"
             )
+        return verdict
+    if any(
+        type(receipt.get(field)) is not int or receipt.get(field) < 0
+        for field in ("error_count", "sorry_count")
+    ):
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} has an invalid kernel receipt"
+        )
+    exit_code = receipt.get("exit_code")
+    error_count = receipt["error_count"]
+    sorry_count = receipt["sorry_count"]
+    consistent = (
+        type(exit_code) is int
+        and (
+            (verdict == "kernel_accepted"
+             and exit_code == 0
+             and error_count == 0
+             and sorry_count == 0)
+            or (verdict == "kernel_accepted_with_sorry"
+                and exit_code == 0
+                and error_count == 0
+                and sorry_count > 0)
+            or (verdict == "kernel_rejected"
+                and (exit_code != 0 or error_count > 0))
+        )
+    )
+    if not consistent:
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} has an invalid kernel receipt"
+        )
     return verdict
 
 
@@ -692,13 +727,9 @@ def cmd_replay(args: argparse.Namespace, root: Path) -> dict[str, Any]:
                 }
             )
             continue
-        kernel_receipt = row.get("kernel_receipt")
-        recorded_verdict = (
-            kernel_receipt.get("verdict")
-            if isinstance(kernel_receipt, dict)
-            else None
-        )
-        if not isinstance(recorded_verdict, str):
+        try:
+            recorded_verdict = _probe_verdict(row, "replay")
+        except SystemExit:
             results.append(
                 {
                     "move_id": row.get("move_id"),

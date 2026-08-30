@@ -135,6 +135,80 @@ def check_replay_path_boundary(tmp: Path) -> None:
         raise AssertionError("replay executed a path rejected by the session boundary")
 
 
+def check_replay_receipt_boundary(tmp: Path) -> None:
+    """Replay must not compare a fresh run against forged receipt provenance."""
+    sessions_root = tmp / "replay-receipt-sessions"
+    cases = (
+        (
+            "unknown-verdict",
+            {
+                "verdict": "made_up_verdict",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
+        ),
+        (
+            "contradictory-verdict",
+            {
+                "verdict": "kernel_accepted",
+                "exit_code": 1,
+                "error_count": 1,
+                "sorry_count": 0,
+            },
+        ),
+    )
+    for session_name, receipt in cases:
+        session = workbench.Session(sessions_root, session_name)
+        session.probes_dir.mkdir(parents=True)
+        source = f"exact {session_name}\n"
+        (session.probes_dir / "m002.lean").write_text(source, encoding="utf-8")
+        session.append(
+            {
+                "schema": workbench.SESSION_SCHEMA,
+                "move_id": "m001",
+                "kind": "session_opened",
+            }
+        )
+        session.append(
+            {
+                "schema": workbench.MOVE_SCHEMA,
+                "move_id": "m002",
+                "kind": "probe",
+                "input_path": "probes/m002.lean",
+                "input_sha256": workbench._sha256_text(source),
+                "kernel_receipt": receipt,
+            }
+        )
+        calls: list[str] = []
+        real_runner = workbench.run_lean_probe
+        workbench.run_lean_probe = (
+            lambda _root, text: calls.append(text)
+            or {
+                "verdict": "kernel_accepted",
+                "detail": None,
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            }
+        )
+        try:
+            result = workbench.cmd_replay(
+                type(
+                    "Args",
+                    (),
+                    {"sessions_root": sessions_root, "session": session_name},
+                )(),
+                workbench.repo_root(),
+            )
+        finally:
+            workbench.run_lean_probe = real_runner
+        assert result["probes_replayed"] == 1
+        assert not result["all_match"]
+        assert result["results"][0]["replay"] == "kernel_receipt_invalid"
+        assert not calls, "replay ran Lean against an invalid receipt"
+
+
 def check_malformed_ledger_boundary(tmp: Path) -> None:
     """Every workbench command must receive a bounded ledger-read failure."""
     sessions_root = tmp / "malformed-ledger-sessions"
@@ -1231,6 +1305,7 @@ def main() -> int:
         tmp = Path(tmpdir)
         check_session_path_boundaries(tmp)
         check_replay_path_boundary(tmp)
+        check_replay_receipt_boundary(tmp)
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
         check_environment_fingerprint_failures(tmp)
