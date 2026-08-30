@@ -54,4 +54,40 @@ example
   Erdos249257.ExternalVerification
     .irrational_totientSeries_of_actualLcmOrbitSeparationSupply hsupply
 
+/-! ## Natural-prime strict-gap endpoint route -/
+
+#check ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap
+#check ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap
+#check Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
+
+/-
+The source exposes two related ways to manufacture the finite certificate.
+First, `TotientTailOrbitNonpositiveBlockDensity` supplies an `11/100`
+fraction of nonpositive phases on a late dyadic block.  Unit norm bounds the
+remaining phases by `1`, so the block mean is at most `89/100`; one truncation
+depth with a uniform `1/100` tail error then reaches the finite `9/10`
+first-harmonic gap and an existing certified kill.
+
+The distinct prime-index route skips the block average.  Its exact source
+predicate `DTWNaturalPrimeTailOrbitStrictGap` asks, for each positive shift and
+lower bound, for a prime `p` with
+`Re(tailOrbitFirstExp h (p - h - 1)) < 9/10`.  The source theorem
+`naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap` sets
+`N = p - h - 1`, uses the prime-index equality to enter the pivot fibre, and
+chooses `L` from the positive margin
+`9/10 - Re(tailOrbitFirstExp h N)` to transfer the infinite-orbit gap to one
+finite truncation.  The Comparator wrapper below exposes that exact
+conditional endpoint beside actual-LCM separation.
+
+Neither producer is proved for the actual totient orbit: the `11/100`
+nonpositive-block density and the cofinal prime strict-gap supply remain open.
+This consumer therefore makes no unconditional #249, novelty, or priority
+claim.
+-/
+example
+    (hgap : Erdos249257.ExternalVerification.DTWNaturalPrimeTailOrbitStrictGap) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  Erdos249257.ExternalVerification
+    .irrational_totient_series_of_naturalPrimeTailOrbitStrictGap hgap
+
 end ExternalVerificationPortfolio.Problem249
