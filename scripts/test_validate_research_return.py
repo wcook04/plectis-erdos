@@ -138,6 +138,23 @@ def main() -> int:
             any("canonical repository-relative path" in error for error in errors),
             f"noncanonical path {noncanonical_path!r} was accepted",
         )
+    enum_mutations = (
+        ("record_kind", lambda value: value.update(record_kind={})),
+        ("frontier.problem", lambda value: value["frontier"].update(problem={})),
+        ("result.class", lambda value: value["result"].update(**{"class": {}})),
+        ("result.claim_ceiling", lambda value: value["result"].update(claim_ceiling=[])),
+        (
+            "result.requested_disposition",
+            lambda value: value["result"].update(requested_disposition={}),
+        ),
+    )
+    for label, mutate in enum_mutations:
+        malformed_enum = copy.deepcopy(fixture)
+        mutate(malformed_enum)
+        require(
+            validator.validate_document(malformed_enum),
+            f"unhashable {label} value escaped machine-readable validation",
+        )
 
     with tempfile.TemporaryDirectory() as directory:
         directory_path = Path(directory)

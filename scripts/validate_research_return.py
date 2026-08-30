@@ -522,7 +522,11 @@ def validate_document(
     if root is None:
         return check.errors
     record_kind = root.get("record_kind")
-    if record_kind not in {"submitted_return", "accepted_receipt", "validation_fixture"}:
+    if not isinstance(record_kind, str) or record_kind not in {
+        "submitted_return",
+        "accepted_receipt",
+        "validation_fixture",
+    }:
         check.error("record_kind", "has an unknown value")
     schema_value = check.string(root.get("schema"), "schema")
     if schema_value is not None:
@@ -576,7 +580,7 @@ def validate_document(
     frontier_fields = {"problem", "handle", "bounded_question", "stop_condition", "starting_paths"}
     frontier = check.object(root.get("frontier"), "frontier", frontier_fields, frontier_fields)
     if frontier:
-        if frontier.get("problem") not in PROBLEMS:
+        if not isinstance(frontier.get("problem"), int) or frontier.get("problem") not in PROBLEMS:
             check.error("frontier.problem", f"must be one of {sorted(PROBLEMS)}")
         for field in ("handle", "bounded_question", "stop_condition"):
             check.string(frontier.get(field), f"frontier.{field}")
@@ -589,16 +593,17 @@ def validate_document(
     if result:
         result_class = result.get("class")
         ceiling = result.get("claim_ceiling")
-        if result_class not in RESULT_CLASSES:
+        if not isinstance(result_class, str) or result_class not in RESULT_CLASSES:
             check.error("result.class", "has an unknown value")
-        if ceiling not in CLAIM_CEILINGS:
+        if not isinstance(ceiling, str) or ceiling not in CLAIM_CEILINGS:
             check.error("result.claim_ceiling", "has an unknown value")
         summary = check.string(result.get("summary"), "result.summary")
         if summary and OVERCLAIM_RE.search(summary):
             check.error("result.summary", "claims resolution of an open problem")
         check.string(result.get("surviving_boundary"), "result.surviving_boundary")
         check.string_list(result.get("limitations"), "result.limitations", nonempty=True)
-        if result.get("requested_disposition") not in DISPOSITIONS:
+        requested_disposition = result.get("requested_disposition")
+        if not isinstance(requested_disposition, str) or requested_disposition not in DISPOSITIONS:
             check.error("result.requested_disposition", "has an unknown value")
         if record_kind != "validation_fixture" and ceiling == "validation_fixture_only":
             check.error(
@@ -618,7 +623,12 @@ def validate_document(
             "inconclusive": {"inconclusive_attempt", "open"},
             "corrective": {"documentation_correction"},
         }
-        if result_class in expected and ceiling not in expected[result_class]:
+        if (
+            isinstance(result_class, str)
+            and result_class in expected
+            and isinstance(ceiling, str)
+            and ceiling not in expected[result_class]
+        ):
             check.error("result.claim_ceiling", f"is inconsistent with result class {result_class}")
 
     correction_lineage: dict[str, Any] | None = None
@@ -708,7 +718,12 @@ def validate_document(
                 _relative_path(artifact, f"{base}.artifacts[{path_index}]", check)
             if len(paths) != len(set(paths)):
                 check.error(f"{base}.artifacts", "must not contain duplicates")
-    if result and result.get("class") in {"checked_positive", "negative", "corrective"} and not passed_evidence:
+    if (
+        result
+        and isinstance(result.get("class"), str)
+        and result.get("class") in {"checked_positive", "negative", "corrective"}
+        and not passed_evidence
+    ):
         check.error("evidence", "this result class requires at least one truthfully passed evidence command")
     foreign_evidence = sorted(set(evidence_artifacts) - set(changed_paths))
     missing_evidence = sorted(set(changed_paths) - set(evidence_artifacts))
