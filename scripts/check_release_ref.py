@@ -44,6 +44,7 @@ RELEASE_COMMANDS = (
     ("python3", "scripts/check_release.py"),
     ("python3", "scripts/test_root_import_closure.py"),
     ("python3", "scripts/test_release_source_identity.py"),
+    ("python3", "scripts/test_query_route_memory.py"),
 )
 
 

@@ -108,6 +108,13 @@ def main() -> int:
                 ),
                 encoding="utf-8",
             )
+            (root / "scripts" / "test_query_route_memory.py").write_text(
+                auxiliary_gate_source(
+                    label="test_query_route_memory: synthetic route-memory adversary",
+                    exit_code=0,
+                ),
+                encoding="utf-8",
+            )
             git(root, "add", ".")
             git(root, "commit", "-qm", "passing release snapshot")
             passing_commit = git(root, "rev-parse", "HEAD")
@@ -140,7 +147,7 @@ def main() -> int:
             }
             assert not probe["caller_worktree_dirty_paths_truncated"]
             assert probe["gate_coverage"] == {
-                "configured_gate_count": 3,
+                "configured_gate_count": 4,
                 "started_gate_count": 0,
                 "completed_gate_count": 0,
                 "failed_gate_count": 0,
@@ -180,13 +187,19 @@ def main() -> int:
                 ["python3", "scripts/check_release.py"],
                 ["python3", "scripts/test_root_import_closure.py"],
                 ["python3", "scripts/test_release_source_identity.py"],
+                ["python3", "scripts/test_query_route_memory.py"],
             ]
-            assert [row["exit_code"] for row in passed["gate_results"]] == [0, 0, 0]
+            assert [row["exit_code"] for row in passed["gate_results"]] == [
+                0,
+                0,
+                0,
+                0,
+            ]
             assert passed["failed_gate_count"] == 0
             assert passed["gate_coverage"] == {
-                "configured_gate_count": 3,
-                "started_gate_count": 3,
-                "completed_gate_count": 3,
+                "configured_gate_count": 4,
+                "started_gate_count": 4,
+                "completed_gate_count": 4,
                 "failed_gate_count": 0,
                 "timed_out_gate_count": 0,
                 "all_configured_gates_completed": True,
@@ -216,9 +229,10 @@ def main() -> int:
                 0,
                 9,
                 0,
+                0,
             ]
             assert root_failed["failed_gate_count"] == 1
-            assert root_failed["gate_coverage"]["completed_gate_count"] == 3
+            assert root_failed["gate_coverage"]["completed_gate_count"] == 4
             assert root_failed["gate_coverage"]["failed_gate_count"] == 1
             assert root_failed["gate_coverage"]["all_configured_gates_completed"]
             assert "synthetic root census" in root_failed["stdout_tail"]
@@ -260,6 +274,7 @@ def main() -> int:
                 0,
                 0,
                 11,
+                0,
             ]
             assert source_failed["failed_gate_count"] == 1
             assert "synthetic source adversary" in source_failed["stdout_tail"]
@@ -275,6 +290,47 @@ def main() -> int:
                 root,
                 "scripts/test_release_source_identity.py",
                 "restore passing source identity",
+            )
+
+            (root / "scripts" / "test_query_route_memory.py").write_text(
+                auxiliary_gate_source(
+                    label="test_query_route_memory: synthetic route-memory adversary",
+                    exit_code=13,
+                ),
+                encoding="utf-8",
+            )
+            route_failed_commit = commit_path(
+                root,
+                "scripts/test_query_route_memory.py",
+                "failing route-memory snapshot",
+            )
+            route_failed, route_failed_exit = check_release_ref.validate_ref(
+                route_failed_commit,
+                timeout_seconds=30,
+                probe_only=False,
+            )
+            assert route_failed_exit == 13
+            assert route_failed["status"] == "failed"
+            assert [row["exit_code"] for row in route_failed["gate_results"]] == [
+                0,
+                0,
+                0,
+                13,
+            ]
+            assert route_failed["failed_gate_count"] == 1
+            assert "synthetic route-memory adversary" in route_failed["stdout_tail"]
+
+            (root / "scripts" / "test_query_route_memory.py").write_text(
+                auxiliary_gate_source(
+                    label="test_query_route_memory: synthetic route-memory adversary",
+                    exit_code=0,
+                ),
+                encoding="utf-8",
+            )
+            commit_path(
+                root,
+                "scripts/test_query_route_memory.py",
+                "restore passing route memory",
             )
 
             (root / "scripts" / "check_release.py").write_text(
@@ -313,6 +369,7 @@ def main() -> int:
                 7,
                 0,
                 0,
+                0,
             ]
             assert failed["failed_gate_count"] == 1
             assert "synthetic root census" in failed["stdout_tail"]
@@ -344,7 +401,7 @@ def main() -> int:
             ]
             assert timed_out["failed_gate_count"] == 0
             assert timed_out["gate_coverage"] == {
-                "configured_gate_count": 3,
+                "configured_gate_count": 4,
                 "started_gate_count": 1,
                 "completed_gate_count": 0,
                 "failed_gate_count": 0,
@@ -353,6 +410,7 @@ def main() -> int:
                 "not_run_commands": [
                     ["python3", "scripts/test_root_import_closure.py"],
                     ["python3", "scripts/test_release_source_identity.py"],
+                    ["python3", "scripts/test_query_route_memory.py"],
                 ],
             }
             assert "release gate started" in timed_out["stdout_tail"]
