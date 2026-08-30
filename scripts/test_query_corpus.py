@@ -818,9 +818,14 @@ def validate_route_memory_cards() -> None:
     architecture_card = query_corpus.render_card(
         query_corpus.publication_architecture_packet()
     )
+    expected_publication_family_count = len(
+        query_corpus.load("docs/claims.json")["machine_readable_paper"][
+            "publication_assembly"
+        ]["contribution_families"]
+    )
     assert architecture_card.startswith(
         "publication architecture | gateway=paper/erdos249-257-main-paper.tex "
-        "| retained_companions=2 | families=21"
+        f"| retained_companions=2 | families={expected_publication_family_count}"
     )
     assert (
         "family_route | classical_full_support_and_named_257_families "
@@ -837,9 +842,10 @@ def validate_route_memory_cards() -> None:
     overview_card = query_corpus.render_card(
         query_corpus.repository_overview_packet()
     )
+    expected_claim_count = len(query_corpus.load("docs/claims.json")["claims"])
     assert (
-        "repository overview | problems=8 | programmes=10 | claims=103 "
-        "| exact_open=5"
+        "repository overview | problems=8 | programmes=10 | "
+        f"claims={expected_claim_count} | exact_open=5"
     ) in overview_card
     assert (
         "problem_route | #249 | resume=python3 scripts/query_route_memory.py "
