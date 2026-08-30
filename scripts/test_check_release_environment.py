@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -57,6 +58,25 @@ def main() -> int:
                 json.loads(child.stdout) == {},
                 "sanitized release child inherited a Git selector",
             )
+            with patch.object(
+                check_release,
+                "_SUBPROCESS_RUN",
+                return_value=subprocess.CompletedProcess(
+                    ["fixture"], returncode=0, stdout="", stderr=""
+                ),
+            ) as runner:
+                check_release.run(
+                    ["fixture"],
+                    cwd=Path(raw),
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+            require(runner.call_args is not None, "release wrapper did not invoke its subprocess")
+            require(
+                runner.call_args.kwargs["timeout"] == check_release.SUBPROCESS_TIMEOUT_SECONDS,
+                "release wrapper omitted its default subprocess timeout",
+            )
 
     require(
         check_release.ENVIRONMENT_CONTRACT
@@ -70,6 +90,11 @@ def main() -> int:
     require(
         "GIT_REPLACE_REF_BASE" in check_release.SANITIZED_GIT_ENVIRONMENT_KEYS,
         "release environment omitted GIT_REPLACE_REF_BASE sanitization",
+    )
+    require(
+        check_release.SUBPROCESS_TIMEOUT_SECONDS
+        == check_release.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        "release subprocess timeout drifted from the shared worker boundary",
     )
     print(
         "test_check_release_environment: release-gate child processes cannot "

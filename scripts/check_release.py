@@ -61,11 +61,13 @@ from systems_paper_evidence import (
     mutation_fixture_failures as systems_paper_mutation_fixture_failures,
     validate_systems_paper_evidence,
 )
+import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
 CHECKS = 0
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 SANITIZED_GIT_ENVIRONMENT_KEYS = (
     "GIT_DIR",
     "GIT_WORK_TREE",
@@ -90,6 +92,7 @@ def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run a release-gate subprocess with checkout-independent Git state."""
     kwargs["env"] = clean_environment()
+    kwargs.setdefault("timeout", SUBPROCESS_TIMEOUT_SECONDS)
     return _SUBPROCESS_RUN(*args, **kwargs)
 
 LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
