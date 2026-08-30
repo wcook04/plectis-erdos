@@ -10,8 +10,8 @@
 \usepackage{colortbl}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{60d53202f730a177cfb8390c69903cce3d642c3d}
-\renewcommand{\commitshort}{60d53202f730}
+\renewcommand{\commit}{c5e7698474b32428e6a46ed4e7770d393b6f9dc8}
+\renewcommand{\commitshort}{c5e7698474b3}
 \hypersetup{
   pdftitle={A two-prime transcendence theorem and exact three-prime structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -1249,6 +1249,17 @@ select a window; once a window has been chosen, the finite contradiction does
 not use it.  The formalisation carries the edge cases: $|W_{\ell,h}|=0$ is
 excluded, a zero residue is represented by the full modulus, and positivity
 prevents the endpoint carry from being zero.
+
+The later
+\lword{Erdos269/RestrictedFloorSum.lean}{689}{no_positive_absorbedCarry_of_cofinalLocalWindowEscape}{absorbed-carry extinction theorem}
+packages the preceding cancellation and reduced-carry consumer into one
+statement.  Under the cofinal escape hypothesis, it takes a nonzero smooth
+factor, an exact factorisation $c_n=D_{\mathrm{sm}}d_n$, the absorbed
+recurrence for $c_n$, and the positive short bound for $d_n$, and derives a
+contradiction.  This removes a manual composition step; it does not prove that
+the actual series supplies the factorisation, the carry recurrence, or the
+cofinal escape hypothesis.  In particular it is not an irrationality theorem
+for the three-prime running-LCM series, whose endpoint remains open.
 
 \subsection{A finite check of the escape condition}
 
