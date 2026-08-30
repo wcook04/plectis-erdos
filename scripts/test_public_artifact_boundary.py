@@ -25,6 +25,7 @@ UNSUPPORTED_RESULT_CLAIM_PHRASES = (
     "establishes irrationality",
     "proving the #",
     "proves the #",
+    "proves #",
     "solves erdos",
     "settles erdos",
     "proves the problem",
@@ -558,6 +559,22 @@ def main() -> int:
             f"endpoint mutation for {result_id} was accepted",
         )
 
+    newly_landed_endpoint_mutations = {
+        "small_mismatch_criterion": "This proves #251 irrationality.",
+        "conditional_carry_escape": "This proves #269 irrationality.",
+    }
+    for result_id, statement in newly_landed_endpoint_mutations.items():
+        mutated = deepcopy(verification_packet)
+        target = next(row for row in mutated["main_results"] if row["id"] == result_id)
+        target["statement"] = statement
+        require(
+            any(
+                f"result {result_id} overclaims endpoint or novelty" in error
+                for error in portfolio_visibility_errors(mutated)
+            ),
+            f"newly landed endpoint mutation for {result_id} was accepted",
+        )
+
     novel_mutation = deepcopy(verification_packet)
     novel_target = next(
         row
@@ -577,7 +594,7 @@ def main() -> int:
         "test_public_artifact_boundary: first-contact surfaces reject "
         "private or unpublished proof authority and novelty inference; "
         "portfolio visibility preserves all eight problems and multiple "
-        "source-bound strong results; 17 negative fixtures and 2 non-timid acceptance fixtures exercised"
+        "source-bound strong results; 19 negative fixtures and 2 non-timid acceptance fixtures exercised"
     )
     return 0
 
