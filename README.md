@@ -14,7 +14,7 @@ proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-This prints the statement, declaration, Comparator, paper, receipts, and boundary.
+This prints the statement, Comparator, paper, receipts, and boundary.
 `--verify-all` checks the set. [Read or run it](#read-or-run-it) gives Lean routes.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
@@ -29,8 +29,8 @@ is formal proof authority, not for meaning or novelty.
 
 ## Problem papers
 
-[`docs/papers/corpus.json`](docs/papers/corpus.json) indexes the papers. This
-This map is readable without a query, private cache, or network.
+[`docs/papers/corpus.json`](docs/papers/corpus.json) indexes the papers; this map
+is readable without a query or network.
 
 | Problem | Question |
 |---|---|
@@ -45,22 +45,22 @@ This map is readable without a query, private cache, or network.
 
 ### Public checked frontier; what remains
 
-Links name a checked route and its limit; reductions are not solutions.
+Links name checked routes and limits; reductions are not solutions.
 
-- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — divisibility equivalence; `67` checked, `300000` external, cofinal source open.
+- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [quotient-band breakpoint](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): band factors exactly; cancellation with nonzero moment forces an index ≥ `2d`. Finite; cofinal source open. Divisibility: `67` checked, `300000` external.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalized-vanishing [bounded-negative no-go](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); unbounded mixed signs are open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit top edge. Supply open
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap-series irrationality; unbounded gaps prove neither. Bridge open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity/recurrence; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1, 3, 5 (sharp at 7); [composite-dilation identity](Erdos249257/CompositeDilationDefect.lean) budgets foreign divisors (zero for prime support), but arbitrary-support defects have no bound or tail selector; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Reach/avoid; half-membership stays open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity/recurrence; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1, 3, 5 (sharp at 7); [composite-dilation identity](Erdos249257/CompositeDilationDefect.lean) budgets foreign divisors (zero for prime support), but arbitrary defects lack a bound or tail selector; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership stays open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — max powers/log cells/grouped sums/shell bounds/rank-two obstruction; three-prime open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton decay/ray separation/collisions/root retention; an invalid saddle block leaves topology, gluing, and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor; `31/4` powers lie in `81/200` height region; Hermite–Padé/determinant/prime-support no-go at `3/2`/`7/2`; no irrationality, noncollapse, or remainder control.
 
 ## What the formal source establishes
 
-**Formalised here** means rendered and kernel-checked in Lean, not a priority
-claim; **proved here** is this project's argument; **conditional reduction** names
-an open hypothesis; **verified finite instance** checks listed inputs. For every
+**Formalised here** means kernel-checked Lean, not priority; **proved here** is our
+argument; **conditional reduction** names an open hypothesis;
+**verified finite instance** checks listed inputs. For every
 integer `b ≥ 2`, `∑ 1/(bⁿ - 1)` is irrational (a checked rendering of Erdős
 (1948)). #257's `1/2` criterion gives an infinite-support consequence; last-skip
 rules out its upper branch and `-3`, while `-2`/`-1` remain conditional. #249 has
@@ -84,9 +84,9 @@ solution.
 - Prove that `S = ∑ φ(n)/2ⁿ` is irrational; produce the unbounded certificate supply required by #249.
 - Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite `A ⊆ ℕ`, beyond named formalised families.
 
-“The wall” records failed routes. Expert handoffs name requested input, current
-guess, alternatives, discriminating evidence, checked consumer, and
-endpoint-or-counterexample boundary: [handoff questions](docs/RESULTS.md#exact-questions-for-a-human-expert)
+“The wall” records failures. Expert handoffs name input, guess, alternatives,
+discriminating evidence, consumer, and endpoint/counterexample boundary:
+[handoff questions](docs/RESULTS.md#exact-questions-for-a-human-expert)
 or `python3 scripts/query_expert_handoffs.py`.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
@@ -177,4 +177,4 @@ is clone → orient → choose → work or resume → return an attributable res
 
 `v0.9.0` is the latest tagged release and citation anchor; [`docs/claims.json`](docs/claims.json) pins the formal-source checkpoint this release ships; [`CITATION.cff`](CITATION.cff) is the citation record. Code, scripts, and documentation use Apache-2.0; manuscripts use CC-BY-4.0; [`REUSE.toml`](REUSE.toml) inventories licences. [`SECURITY.md`](SECURITY.md) and [`PRIVACY.md`](PRIVACY.md) state the public/private boundary.
 
-do not infer results from private or unreleased work. The private `ai_workflow` factory is not proof authority for this checkout. Publication, Palomar submission, and public posting remain operator-owned activation; this repository prepares evidence only.
+do not infer results from private or unreleased work. Private `ai_workflow` is not proof authority here. Publication, Palomar submission, and posting remain operator-owned activation; this repository only prepares evidence.
