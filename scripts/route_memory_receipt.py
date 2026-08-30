@@ -8,11 +8,11 @@ contributor's relationship to those already-recorded routes.
 from __future__ import annotations
 
 import hashlib
+import json
 import subprocess
 from pathlib import Path
 from typing import Any
 
-import query_route_memory
 import validation_singleflight as singleflight
 
 
@@ -21,6 +21,7 @@ CONSULTATION_SCHEMA = "research-route-memory-consultation/1"
 RETURN_RECEIPT_SCHEMA = "research-route-memory-return/1"
 RELATIONSHIPS = frozenset({"confirms", "narrows", "supersedes", "unrelated"})
 DISPOSITIONS = frozenset({"consulted", "no_applicable_route"})
+ROSTER = frozenset({68, 243, 249, 251, 257, 269, 1041, 1049})
 
 
 def _error(errors: list[str], path: str, message: str) -> None:
@@ -87,15 +88,43 @@ def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
         ) from exc
     if committed.returncode != 0 or committed.stdout != payload:
         raise ValueError("canonical route memory source must match tracked HEAD")
-    document = query_route_memory.read_document(source)
-    errors = query_route_memory.validate_document(document, root)
-    if errors:
-        raise ValueError("canonical route memory is invalid: " + "; ".join(errors))
-    records = document["records"]
+    try:
+        document = json.loads(payload.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError("canonical route memory is not valid UTF-8 JSON") from exc
+    if not isinstance(document, dict) or document.get("schema") != "research_route_memory_v1":
+        raise ValueError("canonical route memory has an invalid schema")
+    records = document.get("records")
+    if not isinstance(records, list):
+        raise ValueError("canonical route memory records must be an array")
+    if len(records) != len(ROSTER):
+        raise ValueError("canonical route memory must cover the complete public roster")
+    required = {
+        "problem",
+        "route_id",
+        "status",
+        "actual_established",
+        "failure_boundary",
+        "next_obligation",
+        "evidence",
+        "prerequisites_and_assumptions",
+        "route",
+    }
+    indexed: dict[int, dict[str, Any]] = {}
+    for record in records:
+        if not isinstance(record, dict) or set(record) != required:
+            raise ValueError("canonical route memory contains an ambiguous record")
+        problem = record.get("problem")
+        route_id = record.get("route_id")
+        if not isinstance(problem, int) or problem not in ROSTER:
+            raise ValueError("canonical route memory contains an unknown problem")
+        if problem in indexed or not isinstance(route_id, str) or not route_id.strip():
+            raise ValueError("canonical route memory contains duplicate or invalid route identity")
+        indexed[problem] = record
+    if set(indexed) != ROSTER:
+        raise ValueError("canonical route memory does not cover the public roster")
     return {
-        record["problem"]: record
-        for record in records
-        if isinstance(record, dict) and isinstance(record.get("problem"), int)
+        problem: record for problem, record in indexed.items()
     }, "sha256:" + hashlib.sha256(payload).hexdigest()
 
 
@@ -175,7 +204,7 @@ def validate_consultation(value: Any, root: Path) -> list[str]:
     if value.get("schema") != CONSULTATION_SCHEMA:
         _error(errors, "route_memory_consultation.schema", f"must be {CONSULTATION_SCHEMA}")
     problem = value.get("problem")
-    if not isinstance(problem, int) or problem not in query_route_memory.ROSTER:
+    if not isinstance(problem, int) or problem not in ROSTER:
         _error(errors, "route_memory_consultation.problem", "must name a roster problem")
     binding = _validate_route_memory_binding(value.get("route_memory"), "route_memory_consultation.route_memory", root, errors)
     disposition = value.get("disposition")

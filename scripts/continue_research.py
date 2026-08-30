@@ -403,13 +403,19 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
         )
     except ValueError as exc:
         raise SystemExit(f"cannot bind route memory: {exc}") from exc
-    route_record = route_memory_packet.get("record")
-    if not isinstance(route_record, dict) or route_record.get("problem") != args.problem:
+    queried_problem = route_memory_packet.get("problem")
+    if (
+        not isinstance(queried_problem, dict)
+        or queried_problem.get("erdos_number") != args.problem
+    ):
         raise SystemExit("route-memory query did not return the selected problem")
-    if not args.no_applicable_route:
-        consulted = route_memory["routes"]
-        if len(consulted) != 1 or consulted[0]["route_id"] != route_record.get("route_id"):
-            raise SystemExit("route-memory consultation disagrees with the public query")
+    # query_route_memory.py is the current navigation packet adapter and
+    # intentionally reports an unrouted packet when no mathematical programme
+    # is registered for a problem. The continuation receipt has a separate
+    # canonical eight-problem route corpus, so use that source for the route
+    # boundary and keep the two source identities independent.
+    route_records, _ = route_memory_receipt.canonical_corpus(ROOT)
+    route_record = route_records[args.problem]
     operator = args.operator or args.contributor
     opened = run_json_command(
         workbench_command(
