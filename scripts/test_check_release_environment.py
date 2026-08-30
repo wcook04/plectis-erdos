@@ -146,6 +146,41 @@ def main() -> int:
                     )
                 else:
                     require(False, "special release reader was accepted")
+
+            raced_parent = Path(raw) / "input-parent"
+            raced_parent.mkdir()
+            original_parent = Path(raw) / "input-parent-original"
+            outside = Path(raw) / "outside"
+            outside.mkdir()
+            raced_input = raced_parent / "descriptor.json"
+            raced_input.write_text("inside\n", encoding="utf-8")
+            (outside / raced_input.name).write_text("outside\n", encoding="utf-8")
+            original_open = check_release.os.open
+
+            def swap_parent(
+                path: Path,
+                flags: int,
+                mode: int = 0o777,
+                *,
+                dir_fd: int | None = None,
+            ) -> int:
+                if dir_fd is not None and Path(path).name == raced_input.name:
+                    raced_parent.rename(original_parent)
+                    raced_parent.symlink_to(outside, target_is_directory=True)
+                if dir_fd is not None:
+                    return original_open(path, flags, mode, dir_fd=dir_fd)
+                return original_open(path, flags, mode)
+
+            with patch.object(check_release.os, "open", side_effect=swap_parent):
+                observed = check_release.read_bytes(raced_input)
+            require(
+                observed == b"inside\n",
+                "release reader followed a swapped parent directory",
+            )
+            require(
+                (original_parent / raced_input.name).is_file(),
+                "release reader did not use the held parent descriptor",
+            )
         finally:
             check_release.ROOT = original_root
 
