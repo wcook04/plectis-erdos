@@ -18,7 +18,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -143,6 +145,67 @@ EXPECTED_CROSS_INDEX: dict[str, dict[str, Any]] = {
 }
 
 
+class UnsafeCrosswalkInput(ValueError):
+    """A crosswalk input escaped its checkout or is not a regular file."""
+
+
+def safe_crosswalk_bytes(path: Path, root: Path = ROOT) -> bytes:
+    """Read one crosswalk input through a no-follow descriptor."""
+    root = Path(os.path.abspath(root))
+    candidate = Path(os.path.abspath(path))
+    if candidate != root and root not in candidate.parents:
+        raise UnsafeCrosswalkInput(f"crosswalk input escaped checkout: {candidate}")
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeCrosswalkInput(
+                f"crosswalk input traverses a symbolic link: {candidate}"
+            )
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeCrosswalkInput(f"crosswalk input escaped checkout: {candidate}")
+        current = current.parent
+    if not candidate.is_file():
+        raise UnsafeCrosswalkInput(
+            f"crosswalk input is not a regular file: {candidate}"
+        )
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeCrosswalkInput(
+            f"crosswalk input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeCrosswalkInput(
+                f"crosswalk input is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        return b"".join(chunks)
+    finally:
+        os.close(descriptor)
+
+
+def safe_crosswalk_text(path: Path, root: Path = ROOT) -> str:
+    """Decode one descriptor-bound crosswalk input as UTF-8."""
+    candidate = Path(os.path.abspath(path))
+    try:
+        return safe_crosswalk_bytes(path, root).decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise UnsafeCrosswalkInput(
+            f"crosswalk input is not UTF-8: {candidate}"
+        ) from exc
+
+
 def checked_equivalence_errors(
     label: str, value: Any, root: Path
 ) -> list[str]:
@@ -178,7 +241,11 @@ def checked_equivalence_errors(
     # carries the final component only.  Requiring the enclosing namespace as
     # well keeps the match from succeeding against a same-named theorem
     # declared somewhere else.
-    text = module_path.read_text(encoding="utf-8")
+    try:
+        text = safe_crosswalk_text(module_path, root)
+    except UnsafeCrosswalkInput as error:
+        errors.append(f"{label}: {error}")
+        return errors
     namespace, _, token = declaration.rpartition(".")
     if not namespace:
         errors.append(f"{label}: adapter declaration must be namespace-qualified")
@@ -232,7 +299,10 @@ def local_evidence_errors(evidence: dict[str, Any]) -> list[str]:
     label = str(evidence.get("path", "<missing path>"))
     if not path.is_file():
         return [f"adapter evidence path is missing: {label}"]
-    lines = path.read_text(encoding="utf-8").splitlines()
+    try:
+        lines = safe_crosswalk_text(path).splitlines()
+    except UnsafeCrosswalkInput as error:
+        return [f"{label}: {error}"]
     name = str(evidence.get("declaration", ""))
     line_number = evidence.get("line")
     if not isinstance(line_number, int):
@@ -530,7 +600,11 @@ def upstream_checkout_errors(
         if not path.is_file():
             errors.append(f"{label} is missing: {relative}")
             continue
-        data = path.read_bytes()
+        try:
+            data = safe_crosswalk_bytes(path, checkout)
+        except UnsafeCrosswalkInput as error:
+            errors.append(f"{label}: {error}")
+            continue
         observed_hash = sha256_bytes(data)
         if observed_hash != source.get("sha256"):
             errors.append(
@@ -727,7 +801,7 @@ def render_markdown(
 
 
 def load_json(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(safe_crosswalk_text(path))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -756,7 +830,7 @@ def main(argv: list[str] | None = None) -> int:
         if not PROJECTION_PATH.is_file():
             print(f"missing generated projection: {PROJECTION_PATH}", file=sys.stderr)
             return 1
-        projection_text = PROJECTION_PATH.read_text(encoding="utf-8")
+        projection_text = safe_crosswalk_text(PROJECTION_PATH)
 
     errors = crosswalk_errors(manifest, problem_index, projection_text)
     if args.upstream_checkout is not None:

@@ -323,6 +323,31 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
             "clean_committed_snapshot_subprocess_environment_v1",
         )
 
+    def test_worktree_input_reader_rejects_special_and_linked_files(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="crosswalk-input-safety-") as raw:
+            root = Path(raw) / "checkout"
+            outside = Path(raw) / "outside"
+            root.mkdir()
+            outside.mkdir()
+            regular = root / "crosswalk.json"
+            regular.write_text("{}\n", encoding="utf-8")
+            self.assertEqual(
+                crosswalk.safe_crosswalk_text(regular, root), "{}\n"
+            )
+            linked = root / "linked.json"
+            linked.symlink_to(outside / "authority.json")
+            with self.assertRaisesRegex(
+                crosswalk.UnsafeCrosswalkInput, "symbolic link"
+            ):
+                crosswalk.safe_crosswalk_text(linked, root)
+            if hasattr(os, "mkfifo"):
+                fifo = root / "crosswalk.fifo"
+                os.mkfifo(fifo)
+                with self.assertRaisesRegex(
+                    crosswalk.UnsafeCrosswalkInput, "regular file"
+                ):
+                    crosswalk.safe_crosswalk_text(fifo, root)
+
 
 if __name__ == "__main__":
     unittest.main()
