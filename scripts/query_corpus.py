@@ -4537,6 +4537,7 @@ def semantic_cell(
                 ),
             },
             "claim_status_links": declaration.get("attached_claims", []),
+            "route_memory": declaration.get("route_memory"),
             "module_role": declaration.get("module_role"),
         }
         if operator_id in ("support", "trace"):

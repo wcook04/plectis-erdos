@@ -1373,6 +1373,17 @@ def main() -> int:
         (row["route_id"], row["problem_number"])
         for row in source_route_memory["bindings"]
     } == {("erdos249_certificate_story", 249)}
+    semantic = query_corpus.semantic_slice_packet("certificate kernel theorem", 4)
+    semantic_declarations = [
+        cell
+        for cell in semantic["semantic_cells"]
+        if cell["kind"] == "declaration"
+    ]
+    assert semantic_declarations
+    assert all(
+        cell["content"]["route_memory"] is not None
+        for cell in semantic_declarations
+    )
     assert source_declaration["attached_claims"][0]["id"] == "denominator_exclusion"
     assert "res:farey" in {
         row["canonical_handle"] for row in source_declaration["paper_anchors"]
