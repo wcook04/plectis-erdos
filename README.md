@@ -22,8 +22,8 @@ This prints the statement, declaration, Comparator, paper, receipts, and boundar
 → [architecture and repository guide](ARCHITECTURE.md) · [printable PDF](claim-faithful-publication-systems-paper.pdf)
 
 The [agent-navigation paper](cold-clone-to-proof-receipt.pdf) explains the
-cold-clone route. It assumes no Lean or project history. This checkout is
-not an entrypoint into any private development system.
+cold-clone route. It assumes no Lean or project history. This checkout is not a
+private-system entrypoint.
 Will Cook reviewed claims. **Lean source checked by the pinned Lean kernel**
 is formal proof authority, not for meaning or novelty.
 
@@ -50,7 +50,7 @@ Links name a strongest checked route and its limit; reductions are not solutions
 
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — divisibility-failure equivalence; `67` checked, `300000` external, cofinal source open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalised vanishing and Lean no-go results exclude bounded/finite negative mass; unbounded mixed signs open.
-- [**#249: dyadic Euler totients**](erdos-249-binary-totient-series.pdf) · [reasoning surface](erdos249-totient-reasoning-surface.pdf) — ranks, moments, completeness, anti-compression, [visible mass](Erdos249257/GcdMomentCalculus.lean); Farey `K=240`; diagonal certificates through `t=82`; unbounded supply open.
++- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) · [reasoning](erdos249-totient-reasoning-surface.pdf) — ranks, moments, completeness, anti-compression, [mass](Erdos249257/GcdMomentCalculus.lean); Farey `K=240`; diagonal `t≤82`; finite synthetic LCM shift-algebra [no-go](Erdos249257/LcmFactorIdealPulseObstruction.lean); unbounded supply open.
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts, tail recurrence, rational shifts, cofinal non-integral-shift equivalences; prime-tail bridge open.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [reasoning surface](erdos257-mersenne-reasoning-surface.pdf) — full support, finite-period noncollapse, topology, carry criteria; universal #257 and `1/2`/`1/21` open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — maximal powers, logarithmic cells, grouped sums, shell bounds, rank-two obstruction; three-prime problem open.
@@ -154,7 +154,7 @@ lake exe cache get
 lake build
 ```
 
-A cold clone can navigate before this step. A focused build is
+A cold clone navigates first. A focused build is
 `python3 scripts/lean_fast_build.py --jobs 2 [target]`; `--lake-staleness` trusts
 traces and `--changed-from <git-ref>` selects modules. It rebuilds only the
 selected or stale dependency cone; dependency-index `--check` is constant-time
