@@ -19,7 +19,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-one existing results through the Mathlib-only
+These thin wrappers expose twenty-two existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -126,6 +126,7 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
         k e hk he hcanon'
   · exact GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one
+  · exact GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
@@ -261,6 +262,13 @@ theorem tsum_pos_coprime_inv_mersenne_eq_one :
     (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1 :=
   (portfolioClaims Unit).problem249VisibleCoprimeMass
+
+theorem tsum_totient_div_mersenne_sq_eq_gcd_moment_series :
+    (∑' d : ℕ+, (Nat.totient (d : ℕ) : ℝ) / ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2
+      = ∑' n : ℕ+,
+          ((∑ e ∈ (n : ℕ).divisors, (Nat.totient e : ℝ) * (((n : ℕ) / e : ℕ) : ℝ))
+            - ((n : ℕ) : ℝ)) * ((1 : ℝ) / 2) ^ (n : ℕ)) :=
+  (portfolioClaims Unit).problem249SquaredGcdMoment
 
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
   simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,

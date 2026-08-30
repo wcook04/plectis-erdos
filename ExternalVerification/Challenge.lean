@@ -94,6 +94,13 @@ theorem tsum_pos_coprime_inv_mersenne_eq_one :
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1 :=
   (portfolioClaims Unit).problem249VisibleCoprimeMass
 
+theorem tsum_totient_div_mersenne_sq_eq_gcd_moment_series :
+    (∑' d : ℕ+, (Nat.totient (d : ℕ) : ℝ) / ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2
+      = ∑' n : ℕ+,
+          ((∑ e ∈ (n : ℕ).divisors, (Nat.totient e : ℝ) * (((n : ℕ) / e : ℕ) : ℝ))
+            - ((n : ℕ) : ℝ)) * ((1 : ℝ) / 2) ^ (n : ℕ)) :=
+  (portfolioClaims Unit).problem249SquaredGcdMoment
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

@@ -11,6 +11,7 @@
     "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
     "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
     "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+    "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
     "Erdos249257.ExternalVerification.exists_primeGap0_gt",
     "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",

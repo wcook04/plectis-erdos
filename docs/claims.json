@@ -11421,6 +11421,17 @@
         "boundary": "This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249."
       },
       {
+        "id": "totient_squared_lambert_gcd_moment",
+        "problem": 249,
+        "review_family": "squared_lambert_gcd_moments",
+        "contribution_class": "formalised exact first-gcd-moment squared-Lambert transfer identity",
+        "original_declaration": "GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+        "original_source": "Erdos249257/GcdMomentCalculus.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+        "statement": "At base one half, the squared-Mersenne Lambert series weighted by Euler's totient equals the dyadic series of Pillai's gcd-sum function minus n, the exact first gcd-moment transfer.",
+        "boundary": "This exact identity does not prove irrationality of the binary totient series; the constant-weight squared-Lambert irrationality is cited external mathematics, and no Erdős #249 endpoint follows."
+      },
+      {
         "id": "prime_gap_unboundedness",
         "problem": 251,
         "review_family": "coefficient_only_no_go",
@@ -11687,6 +11698,14 @@
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "boundary": "This rational normalization identity does not prove irrationality of the binary totient series or settle #249."
+          },
+          {
+            "id": "squared_lambert_gcd_moments",
+            "contribution_class": "formalised exact squared-Lambert first-moment transfer",
+            "summary": "At base one half, the totient-weighted squared-Mersenne Lambert series is the dyadic Pillai gcd-sum-minus-n series, exposing the first fair-coin gcd moment.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "boundary": "This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows."
           },
           {
             "id": "totient_finite_denominator_exclusion",

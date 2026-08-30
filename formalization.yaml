@@ -197,6 +197,22 @@ status:
       boundary: "This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249."
       comparator_declaration: "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one"
       literature_dependencies: []
+    - declaration: "GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
+      file: "Erdos249257/GcdMomentCalculus.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "formalised exact first-gcd-moment squared-Lambert transfer identity"
+      statement: "At base one half, the squared-Mersenne Lambert series weighted by Euler's totient equals the dyadic series of Pillai's gcd-sum function minus n, the exact first gcd-moment transfer."
+      boundary: "This exact identity does not prove irrationality of the binary totient series; the constant-weight squared-Lambert irrationality is cited external mathematics, and no Erdős #249 endpoint follows."
+      comparator_declaration: "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       file: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       sorry_count: 0
@@ -472,6 +488,11 @@ alignment:
       module: "Erdos249257/GcdMomentCalculus.lean"
       status: "proved"
       note: "This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249."
+    - source: "At base one half, the squared-Mersenne Lambert series weighted by Euler's totient equals the dyadic series of Pillai's gcd-sum function minus n, the exact first gcd-moment transfer."
+      lean: "GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
+      module: "Erdos249257/GcdMomentCalculus.lean"
+      status: "proved"
+      note: "This exact identity does not prove irrationality of the binary totient series; the constant-weight squared-Lambert irrationality is cited external mathematics, and no Erdős #249 endpoint follows."
     - source: "The consecutive prime gaps are unbounded."
       lean: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
@@ -630,6 +651,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "The positive coprime Mersenne weights on the visible lattice sum to one, exposing the reduced-direction mass behind the fair-coin coprimality form of #249."
         boundary: "This rational normalization identity does not prove irrationality of the binary totient series or settle #249."
+      - id: "squared_lambert_gcd_moments"
+        contribution_class: "formalised exact squared-Lambert first-moment transfer"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted"
+        summary: "At base one half, the totient-weighted squared-Mersenne Lambert series is the dyadic Pillai gcd-sum-minus-n series, exposing the first fair-coin gcd moment."
+        boundary: "This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows."
       - id: "totient_finite_denominator_exclusion"
         contribution_class: "finite computation"
         evidence_mode: "Lean kernel and generated finite certificates"
@@ -883,7 +910,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:d7ccbd3714c477f07fdf18c12f21ffa116dd7ad56c66961514fab77941b71c1f"
+  problem_index_digest: "sha256:88b6c49648c41ca7d84496dd9065810eac5e8fdb293d4a334697641055727615"
   problem_count: 8
   problems:
     - id: "erdos_68"
