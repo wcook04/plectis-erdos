@@ -88,6 +88,20 @@ cofinal failure of the strict factorial-successor divisibility test and
 cofinally many non-unit carries.  The mixed Lean-plus-certificate denominator
 computation is reported separately.}
 
+For release review, the selected Comparator rows are exact.  The declaration
+\texttt{irrational\_factorialGapSeries\_iff\_cofinal\_strictFacTopRat\_misses}
+states
+\[
+  \operatorname{Irr}(\Ser)\iff(\forall B)(\exists m>B)\;
+  m\nmid Z_m,
+\]
+with $Z_m=\operatorname{strictFacTopRat}(\operatorname{factorialGapPrefix}(m),m)$;
+the declaration
+\texttt{irrational\_factorialGapSeries\_iff\_cofinal\_nonunit\_carries}
+states the equivalent condition $(\forall B)(\exists m>B)\;b_m\ne1$.
+Both rows expose the missing cofinal input and neither supplies it, so the
+irrationality boundary for Problem~\#68 is unchanged.
+
 \section{The problem}\label{sec:problem}
 
 \begin{problem}[Erd\H{o}s \#68]\label{res:problem}
