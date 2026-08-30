@@ -1577,6 +1577,19 @@ def main() -> int:
     assert declaration_search["results"][0]["declaration_kind"] in {
         "abbrev", "class", "def", "example", "instance", "lemma", "structure", "theorem"
     }
+    searched_declaration = declaration_search["results"][0]
+    declaration_packet_view = query(
+        "--declaration", searched_declaration["name"], "--limit", "20"
+    )
+    declaration_match = next(
+        row
+        for row in declaration_packet_view["matches"]
+        if row["module"] == searched_declaration["module"]
+        and row["line"] == searched_declaration["line"]
+    )
+    assert searched_declaration["route_memory"] == declaration_match[
+        "route_memory"
+    ]
 
     connections = query(
         "--connections",

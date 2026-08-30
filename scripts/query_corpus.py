@@ -4225,6 +4225,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             result = {"kind": "declaration", **compact_declaration(row)}
             if row.get("signature"):
                 result["signature_excerpt"] = str(row["signature"])[:240]
+            result["route_memory"] = declaration_route_memory_rows(
+                [row], claims
+            )[0]["route_memory"]
             ranked.append((rank, f"declaration:{row['module']}:{row['line']}:{row['name']}", result))
 
     for row in atlas["modules"]:
