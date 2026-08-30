@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 3,
-    "artifact_count": 3,
+    "working_tree_only_count": 4,
+    "artifact_count": 4,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 3,
+    "link_and_digest_only_count": 4,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -73,6 +73,23 @@
       "support_boundary_ref": "docs/primary-sources/bergman-geodesic/pritsker-2011-source-closure.md",
       "consumer_refs": [
         "docs/primary-sources/bergman-geodesic/pritsker-2011-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/dyadic-carry/wang-2026-v2-positive-dyadic-density.pdf",
+      "sha256": "c0b75ab662c82026b67ac0ce781c25f7d2f80e12c4b5cb6d63557add35a3ff25",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/2606.24972v2",
+        "https://arxiv.org/pdf/2606.24972v2"
+      ],
+      "source_record": "docs/primary-sources/dyadic-carry/wang-2026-v2-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/dyadic-carry/wang-2026-v2-source-closure.md",
+      "consumer_refs": [
+        "docs/primary-sources/dyadic-carry/wang-2026-v2-source-closure.md"
       ]
     }
   ]
