@@ -316,7 +316,7 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`fe15b0a1736e4b139566d549db23aff4cd406ed5` at the start of this semantic
+`4fa687ada28f3713b66c4f0465c8a94de2fadda3` at the start of this semantic
 population pass. This observation records source currency; it is not a
 release lock or terminal validation claim:
 
@@ -346,7 +346,7 @@ evidence before their source and generated output land together.
 
 The showcase records the current claims review matrix and its source-family
 dispositions across all eight open programmes, then adds the targeted
-theorem-forest queue. It separately nests all 45 committed Comparator
+theorem-forest queue. It separately nests all 47 committed Comparator
 declarations in an exact value-disposition screen and records the actual-LCM
 and first-harmonic conditional candidates with their committed transport and
 exact open producers. Neither the roster count nor a conditional implication
