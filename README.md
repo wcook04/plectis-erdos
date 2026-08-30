@@ -130,13 +130,13 @@ order without asking you to decode Lean declaration names first.
   `git clone --depth 1`; missing history is reported with `git fetch --unshallow`.
 - **Mathematician:** [RESULTS](docs/RESULTS.md) → papers → [SOURCE MAP](docs/SOURCE_MAP.md) → Lean; joint PDF is exposition.
 - **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), [`AGENTS.md`](AGENTS.md), and [`docs/orientation.json`](docs/orientation.json); choose one problem or claim before the registry.
-- **Whole-corpus agent navigation without a Lean build:** run
+- **Corpus navigation (no Lean):** run
   `python3 scripts/query_corpus.py --tour --format card`; add
   `--route erdos_<n>` for a problem's paper, source, and open handles.
   `--route agent_native_corpus_navigation` exposes corpus scale, the canonical
-  eight-problem map, and the reviewed #249/#257 frontier. `query_semantic.py
-  problem-registry` drills down; indexes expose declarations and dependencies for
-  both roots. These are navigation projections, not proof authority.
+  eight-problem map, and the reviewed #249/#257 frontier. [Wave routes](docs/WAVE_INDEX.md);
+  `query_semantic.py problem-registry` drills down; indexes expose declarations/dependencies for both.
+  These are navigation only, not proof authority.
 - **Continue/compare:** [`docs/AGENT_WORKBENCH.md`](docs/AGENT_WORKBENCH.md) defines
   the ladder; `proof_workbench.py show --session <slug>` or `replay --session <slug>`
   rechecks append-only work. `hypOf%` and [residual progress](docs/RESIDUAL_PROGRESS.md)
