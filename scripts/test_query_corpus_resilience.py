@@ -12,6 +12,12 @@ from pathlib import Path
 import query_corpus
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep resilience checks active when invoked with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def check_dictionary_budget_and_shape() -> None:
     packet = query_corpus.semantic_dictionary_packet()
     encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")).encode(
@@ -22,8 +28,8 @@ def check_dictionary_budget_and_shape() -> None:
     # #1041 add their own routes and the packet is now 12.7 KiB. Raised rather
     # than trimmed: dropping routes to fit would make the dictionary silently
     # incomplete, which is the failure the budget exists to prevent.
-    assert len(encoded) <= 14_000
-    assert {row["id"] for row in packet["operators"]} == {
+    require(len(encoded) <= 14_000, "query corpus resilience invariant")
+    require({row["id"] for row in packet["operators"]} == {
         "analogy",
         "digest",
         "falsify",
@@ -31,25 +37,25 @@ def check_dictionary_budget_and_shape() -> None:
         "locate",
         "support",
         "trace",
-    }
-    assert packet["authority_posture"].endswith(
+    }, "query corpus resilience invariant")
+    require(packet["authority_posture"].endswith(
         "not_proof_or_claim_status_authority"
-    )
-    assert packet["schema_version"] == "erdos249257-semantic-dictionary/2"
+    ), "query corpus resilience invariant")
+    require(packet["schema_version"] == "erdos249257-semantic-dictionary/2", "query corpus resilience invariant")
     discovery = packet["route_discovery_contract"]
-    assert discovery["source"].startswith("docs/claims.json::")
+    require(discovery["source"].startswith("docs/claims.json::"), "query corpus resilience invariant")
     by_route = {row["route_id"]: row for row in discovery["routes"]}
-    assert "which paper proofs lack semantic interpretation" in by_route[
+    require("which paper proofs lack semantic interpretation" in by_route[
         "agent_native_corpus_navigation"
-    ]["discovery_terms"]
-    assert any(
+    ]["discovery_terms"], "query corpus resilience invariant")
+    require(any(
         row["id"] == "semantic_population_backlog"
         for row in packet["vocabulary"]
-    )
+    ), "query corpus resilience invariant")
 
 
 def check_vocabulary_mismatch_queries() -> None:
-    assert not query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS
+    require(not query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS, "query corpus resilience invariant")
     for comment_word in ("makes", "invariant"):
         try:
             query_corpus.declaration_packet(comment_word, 1)
@@ -59,17 +65,17 @@ def check_vocabulary_mismatch_queries() -> None:
             raise AssertionError(
                 "comment prose must not be queryable as a declaration"
             )
-    assert not any(
+    require(not any(
         row.get("kind") == "declaration" and row.get("name") == "makes"
         for row in query_corpus.search_packet("makes", 20)["results"]
-    )
+    ), "query corpus resilience invariant")
     for wrapped_name in (
         "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_iff_halfWordBand",
         "HalfTerminalOnlyScaledVanishingSequence.ofCofinalTerminalOnlyStrip",
     ):
         wrapped = query_corpus.declaration_packet(wrapped_name, 1)
-        assert wrapped["matches"][0]["name"] == wrapped_name
-    assert query_corpus.search_terms(
+        require(wrapped["matches"][0]["name"] == wrapped_name, "query corpus resilience invariant")
+    require(query_corpus.search_terms(
         "half_mem_mersenneAchievementSet_of_middleProducerTailEscape"
     ) >= {
         "half",
@@ -81,70 +87,68 @@ def check_vocabulary_mismatch_queries() -> None:
         "producer",
         "tail",
         "escape",
-    }
+    }, "query corpus resilience invariant")
     qualified = query_corpus.declaration_packet(
         "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
         1,
     )
-    assert qualified["matches"][0]["name"] == "fixedPrecisionTropicalNoGo"
-    assert qualified["matches"][0]["qualified_name"] == (
+    require(qualified["matches"][0]["name"] == "fixedPrecisionTropicalNoGo", "query corpus resilience invariant")
+    require(qualified["matches"][0]["qualified_name"] == (
         "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo"
-    )
+    ), "query corpus resilience invariant")
     dotted = query_corpus.declaration_packet(
         "BooleanMobiusCarryCertificate.reconstructsSupport",
         1,
     )
-    assert dotted["matches"][0]["qualified_name"] == (
+    require(dotted["matches"][0]["qualified_name"] == (
         "Erdos249257.BooleanMobiusCarryCertificate.reconstructsSupport"
-    )
+    ), "query corpus resilience invariant")
     private = query_corpus.declaration_packet("mod_six_cases", 1)
-    assert not private["matches"][0]["externally_addressable"]
+    require(not private["matches"][0]["externally_addressable"], "query corpus resilience invariant")
     private_support = query_corpus.semantic_slice_packet(
         "I need the mod_six_cases theorem",
         4,
     )
-    assert not any(
+    require(not any(
         row["qualified_declaration"].endswith(".mod_six_cases")
         for row in private_support["operator_synthesis"].get(
             "lean_application_candidates", []
         )
-    )
+    ), "query corpus resilience invariant")
     rank_two = query_corpus.search_packet("is rank two worth pursuing", 5)
-    assert rank_two["query_interpretation"]["operator"]["id"] == "falsify"
-    assert rank_two["results"][0]["kind"] == "declaration"
-    assert (
-        rank_two["results"][0]["name"]
-        == "rank2_kill_sound_but_not_shallower_at_cell"
-    )
+    require(rank_two["query_interpretation"]["operator"]["id"] == "falsify", "query corpus resilience invariant")
+    require(rank_two["results"][0]["kind"] == "declaration", "query corpus resilience invariant")
+    require(rank_two["results"][0]["name"]
+        == "rank2_kill_sound_but_not_shallower_at_cell", "query corpus resilience invariant")
 
     half_value = query_corpus.search_packet(
         "what should I try next for the half value problem", 5
     )
-    assert half_value["query_interpretation"]["operator"]["id"] == "frontier"
-    assert [
+    require(half_value["query_interpretation"]["operator"]["id"] == "frontier", "query corpus resilience invariant")
+    require([
         (row["kind"], row.get("id"))
         for row in half_value["results"][:2]
     ] == [
         ("reading_route", "erdos257_half_story"),
         ("open_proposition", "remaining_open.half_value_membership"),
-    ]
+    ], "query corpus resilience invariant")
 
     one_over_twenty_one = query_corpus.search_packet(
         "what is the exact public status of one over twenty one "
         "and what remains to prove",
         5,
     )
-    assert one_over_twenty_one["query_interpretation"]["operator"]["id"] == (
+    require(one_over_twenty_one["query_interpretation"]["operator"]["id"] == (
         "frontier"
-    )
-    assert [
+    ), "query corpus resilience invariant")
+    require([
         (row["kind"], row.get("name"))
         for row in one_over_twenty_one["results"][:2]
     ] == [
         ("declaration", "finiteErdosSum_ne_one_div_twenty_one"),
         ("declaration", "exists_two_primitive23_solutions_mul_ten"),
-    ]
-    assert [
+    ], "query corpus resilience invariant")
+    require([
         row["node_id"]
         for row in one_over_twenty_one["query_interpretation"][
             "authored_semantic_followups"
@@ -152,18 +156,18 @@ def check_vocabulary_mismatch_queries() -> None:
     ] == [
         "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
         "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
-    ]
+    ], "query corpus resilience invariant")
     fractional_spelling = query_corpus.search_packet(
         "what is the exact public status of 1/21 and what remains to prove",
         5,
     )
-    assert [
+    require([
         (row["kind"], row.get("name"))
         for row in fractional_spelling["results"][:2]
     ] == [
         ("declaration", "finiteErdosSum_ne_one_div_twenty_one"),
         ("declaration", "exists_two_primitive23_solutions_mul_ten"),
-    ]
+    ], "query corpus resilience invariant")
 
     fixed_cut_boundary = query_corpus.semantic_slice_packet(
         "Does the public Erdős 257 release claim that a denominator-21 "
@@ -171,10 +175,10 @@ def check_vocabulary_mismatch_queries() -> None:
         "local pulse at most one, or prove 1/21 membership?",
         4,
     )
-    assert fixed_cut_boundary["query_interpretation"]["operator"]["id"] == (
+    require(fixed_cut_boundary["query_interpretation"]["operator"]["id"] == (
         "frontier"
-    )
-    assert [
+    ), "query corpus resilience invariant")
+    require([
         (cell["kind"], cell["handle"])
         for cell in fixed_cut_boundary["semantic_cells"]
     ] == [
@@ -185,90 +189,88 @@ def check_vocabulary_mismatch_queries() -> None:
             "open_proposition",
             "remaining_open.universal_257_all_infinite_supports",
         ),
-    ]
-    assert {
+    ], "query corpus resilience invariant")
+    require({
         row["id"]
         for row in fixed_cut_boundary["operator_synthesis"][
             "exact_open_records"
         ]
-    } == {"remaining_open.universal_257_all_infinite_supports"}
+    } == {"remaining_open.universal_257_all_infinite_supports"}, "query corpus resilience invariant")
 
 
 def check_witness_carrying_semantic_slices() -> None:
     rank_two = query_corpus.semantic_slice_packet(
         "is rank two worth pursuing", 5
     )
-    assert rank_two["query_interpretation"]["operator"]["id"] == "falsify"
-    assert [cell["handle"] for cell in rank_two["semantic_cells"]] == [
+    require(rank_two["query_interpretation"]["operator"]["id"] == "falsify", "query corpus resilience invariant")
+    require([cell["handle"] for cell in rank_two["semantic_cells"]] == [
         "rank2_kill_sound_but_not_shallower_at_cell"
-    ]
+    ], "query corpus resilience invariant")
     rank_cell = rank_two["semantic_cells"][0]
-    assert "NOT shallower" in rank_cell["content"]["authored_digest"]["text"]
-    assert rank_cell["content"]["formal_witness"]["source_ref"].endswith(
+    require("NOT shallower" in rank_cell["content"]["authored_digest"]["text"], "query corpus resilience invariant")
+    require(rank_cell["content"]["formal_witness"]["source_ref"].endswith(
         "LcmConeFlatness.lean:626"
-    )
-    assert {
+    ), "query corpus resilience invariant")
+    require({
         row["plane"] for row in rank_cell["typed_provenance"]
-    } == {"kernel", "status", "digestion", "navigation"}
-    assert rank_two["operator_synthesis"]["kind"] == (
+    } == {"kernel", "status", "digestion", "navigation"}, "query corpus resilience invariant")
+    require(rank_two["operator_synthesis"]["kind"] == (
         "falsification_synthesis"
-    )
+    ), "query corpus resilience invariant")
 
     half_value = query_corpus.semantic_slice_packet(
         "what should I try next for the half value problem", 5
     )
-    assert [cell["handle"] for cell in half_value["semantic_cells"]] == [
+    require([cell["handle"] for cell in half_value["semantic_cells"]] == [
         "erdos257_half_story",
         "remaining_open.half_value_membership",
-    ]
+    ], "query corpus resilience invariant")
     open_cell = half_value["semantic_cells"][1]
-    assert (
-        open_cell["content"]["open_record"]["statement"]
+    require(open_cell["content"]["open_record"]["statement"]
         == "Decide whether 1/2 lies in the Mersenne achievement set. "
-        "Yes refutes universal #257; no closes only this route."
-    )
+        "Yes refutes universal #257; no closes only this route.", "query corpus resilience invariant")
     route_cell = half_value["semantic_cells"][0]
-    assert "neither target membership" in (
+    require("neither target membership" in (
         route_cell["content"]["programme"]["claim_ceiling"]
-    )
-    assert {
+    ), "query corpus resilience invariant")
+    require({
         row["id"]
         for row in half_value["operator_synthesis"]["exact_open_records"]
-    } >= {"remaining_open.half_value_membership"}
+    } >= {"remaining_open.half_value_membership"}, "query corpus resilience invariant")
 
     one_over_twenty_one = query_corpus.semantic_slice_packet(
         "what is the exact public status of one over twenty one "
         "and what remains to prove",
         5,
     )
-    assert [
+    require([
         cell["handle"]
         for cell in one_over_twenty_one["semantic_cells"][:2]
     ] == [
         "finiteErdosSum_ne_one_div_twenty_one",
         "exists_two_primitive23_solutions_mul_ten",
-    ]
+    ], "query corpus resilience invariant")
     finite_obstruction = one_over_twenty_one["semantic_cells"][0]
     # Same consequence, restated by the source-fidelity pass: the theorem rules
     # finite support out rather than asserting infinite support outright.
-    assert "rules out finite support" in (
+    require("rules out finite support" in (
         finite_obstruction["content"]["authored_digest"]["text"]
-    )
+    ), "query corpus resilience invariant")
     multiplicity_obstruction = one_over_twenty_one["semantic_cells"][1]
-    assert multiplicity_obstruction["content"]["formal_witness"]["name"] == (
+    require(multiplicity_obstruction["content"]["formal_witness"]["name"] == (
         "exists_two_primitive23_solutions_mul_ten"
-    )
+    ), "query corpus resilience invariant")
 
     analogy = query_corpus.semantic_slice_packet(
         "compare half carry compactness with the half achievement set route",
         4,
     )
-    assert analogy["operator_synthesis"]["formal_bridge_status"] == (
+    require(analogy["operator_synthesis"]["formal_bridge_status"] == (
         "not_inferred"
-    )
-    assert "remaining_open.half_value_membership" in (
+    ), "query corpus resilience invariant")
+    require("remaining_open.half_value_membership" in (
         analogy["operator_synthesis"]["shared_open_proposition_ids"]
-    )
+    ), "query corpus resilience invariant")
 
     support = query_corpus.semantic_slice_packet(
         "which premises let either sharp curvature or exponent only three "
@@ -281,11 +283,11 @@ def check_witness_carrying_semantic_slices() -> None:
             "checked_consumer_signatures"
         ]
     }
-    assert {
+    require({
         "irrational_totientSeries_of_sharpCurvatureSupply",
         "irrational_totient_series_of_exponentOnlyThreeTransportSupply",
-    } <= consumer_names
-    assert {
+    } <= consumer_names, "query corpus resilience invariant")
+    require({
         row["tactic"]
         for row in support["operator_synthesis"][
             "lean_application_candidates"
@@ -293,31 +295,31 @@ def check_witness_carrying_semantic_slices() -> None:
     } >= {
         "apply Erdos249257.TotientTailPeriodKiller.irrational_totientSeries_of_sharpCurvatureSupply",
         "apply Erdos249257.ExponentOnlyTransport.irrational_totient_series_of_exponentOnlyThreeTransportSupply",
-    }
-    assert {
+    }, "query corpus resilience invariant")
+    require({
         row["id"]
         for row in support["operator_synthesis"]["unproved_requirements"]
-    } == {"remaining_open.unbounded_certificate_supply"}
+    } == {"remaining_open.unbounded_certificate_supply"}, "query corpus resilience invariant")
 
     trace = query_corpus.semantic_slice_packet(
         "why does fixed precision transport fail", 4
     )
-    assert [
+    require([
         row["name"]
         for row in trace["operator_synthesis"][
             "source_dependency_candidates"
         ]
-    ] == ["vu_word_has_prefix_locked_completion"]
+    ] == ["vu_word_has_prefix_locked_completion"], "query corpus resilience invariant")
 
     module = query_corpus.semantic_slice_packet(
         "where is the module for a direct dyadic curvature certificate", 4
     )
-    assert [
+    require([
         (cell["kind"], cell["handle"]) for cell in module["semantic_cells"]
-    ] == [("module", "Erdos249257.CurvatureCarry")]
-    assert "Curvature carry for the totient tail" in (
+    ] == [("module", "Erdos249257.CurvatureCarry")], "query corpus resilience invariant")
+    require("Curvature carry for the totient tail" in (
         module["semantic_cells"][0]["content"]["module"]["authored_synopsis"]
-    )
+    ), "query corpus resilience invariant")
 
 
 def check_elaborated_dependency_witnesses() -> None:
@@ -333,8 +335,8 @@ def check_elaborated_dependency_witnesses() -> None:
         "Erdos249257.TotientTailPeriodKiller."
         "irrational_totientSeries_of_sharpCurvatureSupply"
     )
-    assert neighbourhood["availability"] == "available"
-    assert {
+    require(neighbourhood["availability"] == "available", "query corpus resilience invariant")
+    require({
         row["handle"] for row in neighbourhood["direct_dependencies"]
     } >= {
         "Erdos249257.TotientTailPeriodKiller.SharpCurvatureSupply",
@@ -342,32 +344,32 @@ def check_elaborated_dependency_witnesses() -> None:
         "curvature_notMem_int_of_sharpCurvatureCert",
         "Erdos249257.TotientTailPeriodKiller."
         "rational_totient_series_forces_lcm_cone_flatness",
-    }
-    assert any(
+    }, "query corpus resilience invariant")
+    require(any(
         path["via"].endswith(
             ".curvature_notMem_int_of_sharpCurvatureCert"
         )
         for path in neighbourhood["two_hop_theorem_paths"]
-    )
-    assert neighbourhood["authority_posture"].startswith(
+    ), "query corpus resilience invariant")
+    require(neighbourhood["authority_posture"].startswith(
         "direct_constant_references_from_elaborated_Lean"
-    )
+    ), "query corpus resilience invariant")
     problem_neighbourhood = query_corpus.formal_dependency_neighbourhood(
         "ErdosProblems.Erdos243.rawNext_gcd_exact_overlap"
     )
-    assert problem_neighbourhood["availability"] == "available"
-    assert problem_neighbourhood["source_ref"].startswith(
+    require(problem_neighbourhood["availability"] == "available", "query corpus resilience invariant")
+    require(problem_neighbourhood["source_ref"].startswith(
         "ErdosProblems/Erdos243/DynamicCancellation.lean:"
-    )
+    ), "query corpus resilience invariant")
     declaration = query_corpus.declaration_packet(
         "Erdos249257.integerGreedyRemainder_lt_of_get?_eq_false", 1
     )["matches"][0]
-    assert declaration["name"] == (
+    require(declaration["name"] == (
         "integerGreedyRemainder_lt_of_get?_eq_false"
-    )
-    assert declaration["qualified_name"] == (
+    ), "query corpus resilience invariant")
+    require(declaration["qualified_name"] == (
         "Erdos249257.integerGreedyRemainder_lt_of_get?_eq_false"
-    )
+    ), "query corpus resilience invariant")
 
 
 def check_multihop_formal_dependency_reasoning() -> None:
@@ -380,49 +382,49 @@ def check_multihop_formal_dependency_reasoning() -> None:
         "tail_diff_int_of_den_dvd"
     )
     path = query_corpus.formal_dependency_path(source, target, 8)
-    assert path["availability"] == "available"
-    assert path["hop_count"] == 3
-    assert [node["name"] for node in path["nodes"]] == [
+    require(path["availability"] == "available", "query corpus resilience invariant")
+    require(path["hop_count"] == 3, "query corpus resilience invariant")
+    require([node["name"] for node in path["nodes"]] == [
         "irrational_totientSeries_of_sharpCurvatureSupply",
         "rational_totient_series_forces_lcm_cone_flatness",
         "eventual_period_of_not_irrational",
         "tail_diff_int_of_den_dvd",
-    ]
-    assert all(
+    ], "query corpus resilience invariant")
+    require(all(
         edge["authority"] == "kernel_elaborated_environment"
         and edge["relation"] == "uses_in_elaborated_value"
         for edge in path["edges"]
-    )
+    ), "query corpus resilience invariant")
     cone = query_corpus.formal_dependency_proof_cone(source, 4, 20)
-    assert cone["availability"] == "available"
+    require(cone["availability"] == "available", "query corpus resilience invariant")
     cone_depths = {
         node["name"]: node["depth"] for node in cone["nodes"]
     }
-    assert cone_depths[
+    require(cone_depths[
         "rational_totient_series_forces_lcm_cone_flatness"
-    ] == 1
-    assert cone_depths["eventual_period_of_not_irrational"] == 2
-    assert cone_depths["tail_diff_int_of_den_dvd"] == 3
-    assert cone["omission_receipt"]["reachable_node_count_within_depth"] > (
+    ] == 1, "query corpus resilience invariant")
+    require(cone_depths["eventual_period_of_not_irrational"] == 2, "query corpus resilience invariant")
+    require(cone_depths["tail_diff_int_of_den_dvd"] == 3, "query corpus resilience invariant")
+    require(cone["omission_receipt"]["reachable_node_count_within_depth"] > (
         cone["omission_receipt"]["emitted_node_count"]
-    )
+    ), "query corpus resilience invariant")
     natural_query = (
         "trace the formal chain from sharp curvature irrationality "
         "to denominator divisibility"
     )
-    assert query_corpus.trace_endpoint_queries(natural_query) == [
+    require(query_corpus.trace_endpoint_queries(natural_query) == [
         "sharp curvature irrationality",
         "denominator divisibility",
-    ]
-    assert query_corpus.trace_endpoint_queries(
+    ], "query corpus resilience invariant")
+    require(query_corpus.trace_endpoint_queries(
         "why does sharp curvature irrationality ultimately use "
         "denominator divisibility?"
     ) == [
         "sharp curvature irrationality",
         "denominator divisibility",
-    ]
+    ], "query corpus resilience invariant")
     semantic_slice = query_corpus.semantic_slice_packet(natural_query, 20)
-    assert {
+    require({
         (cell["kind"], cell["handle"])
         for cell in semantic_slice["semantic_cells"]
     } == {
@@ -431,8 +433,8 @@ def check_multihop_formal_dependency_reasoning() -> None:
             "irrational_totientSeries_of_sharpCurvatureSupply",
         ),
         ("declaration", "tail_diff_int_of_den_dvd"),
-    }
-    assert [
+    }, "query corpus resilience invariant")
+    require([
         node["name"]
         for node in semantic_slice["operator_synthesis"][
             "formal_dependency_path"
@@ -442,7 +444,7 @@ def check_multihop_formal_dependency_reasoning() -> None:
         "rational_totient_series_forces_lcm_cone_flatness",
         "eventual_period_of_not_irrational",
         "tail_diff_int_of_den_dvd",
-    ]
+    ], "query corpus resilience invariant")
 
 
 def check_formal_goal_affordance_support() -> None:
@@ -451,35 +453,35 @@ def check_formal_goal_affordance_support() -> None:
         "integer from a rational totient series; which theorem applies?"
     )
     request = query_corpus.support_goal_request(query)
-    assert request == {
+    require(request == {
         "goal": (
             "totientTail (N + h) - totientTail N is an integer"
         ),
         "context": "a rational totient series",
         "extraction": "ordinary_language_goal_pattern",
-    }
+    }, "query corpus resilience invariant")
     packet = query_corpus.formal_goal_support_packet(query, 3)
-    assert packet["availability"] == "available"
+    require(packet["availability"] == "available", "query corpus resilience invariant")
     candidate = packet["candidates"][0]
-    assert candidate["qualified_name"] == (
+    require(candidate["qualified_name"] == (
         "Erdos249257.TotientTailPeriodKiller."
         "tail_diff_int_of_den_dvd"
-    )
-    assert candidate["formal_affordance"]["conclusion_head"] == (
+    ), "query corpus resilience invariant")
+    require(candidate["formal_affordance"]["conclusion_head"] == (
         "Membership.mem"
-    )
-    assert {"Set.range", "Int.cast"} <= set(
+    ), "query corpus resilience invariant")
+    require({"Set.range", "Int.cast"} <= set(
         candidate["formal_affordance"]["conclusion_symbols"]
-    )
-    assert candidate["match_receipt"]["shape_matches"] == [
+    ), "query corpus resilience invariant")
+    require(candidate["match_receipt"]["shape_matches"] == [
         "direct_integer_membership"
-    ]
-    assert {
+    ], "query corpus resilience invariant")
+    require({
         "rational",
         "totient",
     } <= set(
         candidate["match_receipt"]["formal_context_symbol_matches"]
-    )
+    ), "query corpus resilience invariant")
     carry_query = (
         "I need to prove totientTail (N + h) - totientTail N is an "
         "integer from a bounded tail carry; which theorem applies?"
@@ -487,14 +489,14 @@ def check_formal_goal_affordance_support() -> None:
     carry_candidate = query_corpus.formal_goal_support_packet(
         carry_query, 3
     )["candidates"][0]
-    assert carry_candidate["qualified_name"] == (
+    require(carry_candidate["qualified_name"] == (
         "Erdos249257.tail_diff_mem_int_of_boundedTailCarry"
-    )
-    assert {"bounded", "carry", "tail"} <= set(
+    ), "query corpus resilience invariant")
+    require({"bounded", "carry", "tail"} <= set(
         carry_candidate["match_receipt"][
             "formal_context_symbol_matches"
         ]
-    )
+    ), "query corpus resilience invariant")
     context_free_query = (
         "I need to prove totientTail (N + h) - totientTail N is an "
         "integer; which theorem applies?"
@@ -502,17 +504,17 @@ def check_formal_goal_affordance_support() -> None:
     context_free_candidate = query_corpus.formal_goal_support_packet(
         context_free_query, 3
     )["candidates"][0]
-    assert context_free_candidate["qualified_name"] == (
+    require(context_free_candidate["qualified_name"] == (
         "Erdos249257.tail_diff_mem_int_of_boundedTailCarry"
-    )
-    assert context_free_candidate["match_receipt"][
+    ), "query corpus resilience invariant")
+    require(context_free_candidate["match_receipt"][
         "formal_context_symbol_matches"
-    ] == []
-    assert candidate["lean_application_candidate"] == (
+    ] == [], "query corpus resilience invariant")
+    require(candidate["lean_application_candidate"] == (
         f"apply {candidate['qualified_name']}"
-    )
+    ), "query corpus resilience invariant")
     semantic_slice = query_corpus.semantic_slice_packet(query, 20)
-    assert [
+    require([
         (cell["handle"], cell["selection_reason"])
         for cell in semantic_slice["semantic_cells"]
     ] == [
@@ -520,36 +522,36 @@ def check_formal_goal_affordance_support() -> None:
             candidate["name"],
             "formal_goal_shape_candidate",
         )
-    ]
-    assert semantic_slice["operator_synthesis"][
+    ], "query corpus resilience invariant")
+    require(semantic_slice["operator_synthesis"][
         "formal_goal_support"
-    ]["candidates"][0]["qualified_name"] == candidate["qualified_name"]
+    ]["candidates"][0]["qualified_name"] == candidate["qualified_name"], "query corpus resilience invariant")
     application = semantic_slice["operator_synthesis"][
         "formal_goal_support"
     ]["application"]
-    assert application["application_status"] == (
+    require(application["application_status"] == (
         "blocked_by_unmatched_proposition_obligations"
-    )
-    assert [
+    ), "query corpus resilience invariant")
+    require([
         row["name"]
         for row in application["obligations"]
         if row["status"] == "unmatched_proposition_obligation"
-    ] == ["hdvd"]
+    ] == ["hdvd"], "query corpus resilience invariant")
     plan = query_corpus.formal_proof_plan_packet(query, 20, 4)
-    assert plan["terminal_candidate"]["name"] == (
+    require(plan["terminal_candidate"]["name"] == (
         "tail_diff_int_of_den_dvd"
-    )
-    assert plan["plan_status"] == (
+    ), "query corpus resilience invariant")
+    require(plan["plan_status"] == (
         "blocked_by_unmatched_proposition_obligations"
-    )
-    assert {
+    ), "query corpus resilience invariant")
+    require({
         row["name"]
         for row in plan["exact_dependency_spine"]["steps"]
     } >= {
         "two_pow_mul_totient_series_eq",
         "summable_totient_div_two_pow",
-    }
-    assert plan["dynamic_transition_expansion"] == {
+    }, "query corpus resilience invariant")
+    require(plan["dynamic_transition_expansion"] == {
         "runtime_owner": "scripts/proof_state_compiler.py",
         "pilot_command": (
             "python3 scripts/proof_state_compiler.py --pilot-controls"
@@ -561,45 +563,45 @@ def check_formal_goal_affordance_support() -> None:
             "owner's pinned Lean application receipt can assert that a "
             "candidate produced particular subgoals or closed"
         ),
-    }
+    }, "query corpus resilience invariant")
     curvature_plan = query_corpus.formal_proof_plan_packet(
         "I need to prove Irrational (∑' n : ℕ, "
         "(Nat.totient n : ℝ) / 2 ^ n) from a SharpCurvatureSupply",
         30,
         4,
     )
-    assert curvature_plan["terminal_candidate"]["name"] == (
+    require(curvature_plan["terminal_candidate"]["name"] == (
         "irrational_totientSeries_of_sharpCurvatureSupply"
-    )
-    assert curvature_plan["plan_status"] == (
+    ), "query corpus resilience invariant")
+    require(curvature_plan["plan_status"] == (
         "all_proposition_obligations_have_context_matches"
-    )
-    assert curvature_plan["application"][
+    ), "query corpus resilience invariant")
+    require(curvature_plan["application"][
         "unmatched_proposition_count"
-    ] == 0
-    assert {
+    ] == 0, "query corpus resilience invariant")
+    require({
         row["name"]
         for row in curvature_plan["exact_dependency_spine"]["steps"]
     } >= {
         "curvature_notMem_int_of_sharpCurvatureCert",
         "periodLcm_pos",
         "rational_totient_series_forces_lcm_cone_flatness",
-    }
+    }, "query corpus resilience invariant")
     negation_affordance = query_corpus.lean_dependency_adjacency()[
         "formal_type_affordances"
     ][
         "Erdos249257.ActualForeignResidueProjection."
         "scaleFullTarget_miss_of_abs_sub_le_of_forall_int"
     ]
-    assert negation_affordance["conclusion_head"] == "Not"
-    assert negation_affordance["forall_binder_count"] == 4
-    assert len(negation_affordance["binders"]) == 4
-    assert [row["name"] for row in negation_affordance["binders"]] == [
+    require(negation_affordance["conclusion_head"] == "Not", "query corpus resilience invariant")
+    require(negation_affordance["forall_binder_count"] == 4, "query corpus resilience invariant")
+    require(len(negation_affordance["binders"]) == 4, "query corpus resilience invariant")
+    require([row["name"] for row in negation_affordance["binders"]] == [
         "H",
         "D",
         "hcontrol",
         "hseparation",
-    ]
+    ], "query corpus resilience invariant")
 
 
 def check_missing_registered_artifact_is_typed_not_fatal() -> None:
@@ -631,7 +633,7 @@ def check_missing_registered_artifact_is_typed_not_fatal() -> None:
             query_corpus.load.cache_clear()
             query_corpus.artifact_inventory.cache_clear()
 
-    assert inventory == [
+    require(inventory == [
         {
             "artifact_id": "technical_companion",
             "artifact_role": "authored_companion",
@@ -648,22 +650,22 @@ def check_missing_registered_artifact_is_typed_not_fatal() -> None:
             "availability": "missing",
             "size_bytes": None,
         }
-    ]
+    ], "query corpus resilience invariant")
 
 
 def check_unavailable_paper_coordinate_is_typed_not_fatal() -> None:
     coordinate = query_corpus.paper_coordinate("sec:missing", {})
-    assert coordinate is not None
-    assert coordinate["label"] == "sec:missing"
-    assert coordinate["availability"] == "authored_source_unavailable_in_worktree"
-    assert coordinate["source_ref"] is None
+    require(coordinate is not None, "query corpus resilience invariant")
+    require(coordinate["label"] == "sec:missing", "query corpus resilience invariant")
+    require(coordinate["availability"] == "authored_source_unavailable_in_worktree", "query corpus resilience invariant")
+    require(coordinate["source_ref"] is None, "query corpus resilience invariant")
     packet = query_corpus.paper_label_packet("res:carrycert")
-    assert packet["kind"] == "paper_label"
-    assert packet["paper"]["label"] == "res:carrycert"
-    assert any(
+    require(packet["kind"] == "paper_label", "query corpus resilience invariant")
+    require(packet["paper"]["label"] == "res:carrycert", "query corpus resilience invariant")
+    require(any(
         claim["id"] == "boolean_mobius_carry"
         for claim in packet["attached_claims"]
-    )
+    ), "query corpus resilience invariant")
 
 
 def main() -> int:
