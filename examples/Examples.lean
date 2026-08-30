@@ -208,6 +208,32 @@ theorem downstream_prime_gap_cofinal_small_mismatch_obstruction
           ErdosProblems.Erdos251.RatIntegral,
           ErdosProblems.Erdos251.tailShift] using hpair_source)
 
+/-! The #269 conditional-carry escape is another direct reuse consumer.  It
+starts at the exact cofinal local-window producer and carries the positive,
+short-bounded reduced state to contradiction; no theorem here supplies that
+cofinal escape or identifies an actual running-LCM series with the carry. -/
+
+/-- Downstream reuse of the Comparator-facing #269 conditional carry escape.
+
+The recurrence, positivity, coprimality, and short-bound hypotheses are all
+kept in the consumer interface.  The assumed local-window escape is the open
+producer boundary, so this contradiction is not an unconditional irrationality
+result for Erdős #269. -/
+theorem downstream_conditional_carry_escape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ)
+    (hescape :
+      Erdos249257.ExternalVerification.CofinalLocalWindowEscape
+        b m shortBound)
+    (B : ℕ) (hBpos : 0 < B) (hBcoprime : Nat.Coprime B 30)
+    (d : ℕ → ℤ)
+    (hrec : ∀ n,
+      d (n + 1) = (b n : ℤ) * d n - (B : ℤ) * (m n : ℤ))
+    (hpos : ∀ n, 0 < d n)
+    (hbound : ∀ n, Int.natAbs (d n) ≤ shortBound B n) :
+    False :=
+  Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape
+    b m shortBound hescape B hBpos hBcoprime d hrec hpos hbound
+
 /-! The Boolean–Möbius transport is a second, genuinely reusable view of
 #257 rationality: it removes the support from the downstream certificate while
 retaining the exact rational numerator, denominator, and positivity boundary.
