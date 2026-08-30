@@ -1616,12 +1616,101 @@ def publication_evidence() -> dict[str, Any]:
     return load("docs/publication_evidence.json")
 
 
+def reviewed_result_family_rows(
+    claims: dict[str, Any], problem_number: str | int
+) -> list[dict[str, Any]]:
+    """Read the per-problem result-family census from claim-registry authority."""
+    token = str(problem_number)
+    review_matrix = claims.get("external_verification_packet", {}).get(
+        "review_matrix", []
+    )
+    for review_row in review_matrix:
+        if str(review_row.get("problem")) != token:
+            continue
+        return [
+            family
+            for family in review_row.get("families", [])
+            if isinstance(family, dict) and isinstance(family.get("id"), str)
+        ]
+    return []
+
+
+def reviewed_result_family_census(
+    claims: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Return every reviewed result family, grouped by public problem number.
+
+    ``docs/problems.json`` is a generated reader projection and may lag the
+    claim registry while a family review is being assimilated.  Discovery
+    counts therefore come from ``docs/claims.json`` and retain review-matrix
+    order as the significance ordering supplied by that authority.
+    """
+    review_matrix = claims.get("external_verification_packet", {}).get(
+        "review_matrix", []
+    )
+    census = []
+    for review_row in review_matrix:
+        try:
+            problem_number = int(review_row["problem"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        families = reviewed_result_family_rows(claims, problem_number)
+        dispositions = Counter(
+            str(family.get("comparator_disposition") or "unspecified")
+            for family in families
+        )
+        census.append(
+            {
+                "erdos_number": problem_number,
+                "family_count": len(families),
+                "family_ids": [family["id"] for family in families],
+                "disposition_counts": dict(sorted(dispositions.items())),
+                "source": (
+                    "docs/claims.json::external_verification_packet."
+                    "review_matrix"
+                ),
+                "ordering": "claim-registry review-matrix order",
+            }
+        )
+    return census
+
+
+def reviewed_result_family_index(
+    claims: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Flatten the complete reviewed-family census for bounded discovery."""
+    index = []
+    for census_row in reviewed_result_family_census(claims):
+        for rank, family_id in enumerate(census_row["family_ids"], 1):
+            family = reviewed_result_family_rows(
+                claims, census_row["erdos_number"]
+            )[rank - 1]
+            index.append(
+                {
+                    "erdos_number": census_row["erdos_number"],
+                    "rank": rank,
+                    "id": family_id,
+                    "contribution_class": family.get("contribution_class"),
+                    "evidence_mode": family.get("evidence_mode"),
+                    "comparator_disposition": family.get(
+                        "comparator_disposition"
+                    ),
+                    "problem_route": (
+                        "python3 scripts/query_corpus.py --route erdos_"
+                        f"{census_row['erdos_number']}"
+                    ),
+                }
+            )
+    return index
+
+
 def current_corpus_census() -> dict[str, Any]:
     claims = load("docs/claims.json")
     atlas = load("docs/declaration_atlas.json")
     atlas_summary = atlas["summary"]
     effective_declaration_count = len(atlas_declarations(atlas))
     assembly = claims["machine_readable_paper"]["publication_assembly"]
+    reviewed_families = reviewed_result_family_census(claims)
     return {
         "snapshot_kind": "current_worktree_navigation_state",
         "claims_source": "docs/claims.json",
@@ -1638,6 +1727,20 @@ def current_corpus_census() -> dict[str, Any]:
         ],
         "curated_claim_count": len(claims["claims"]),
         "contribution_family_count": len(assembly["contribution_families"]),
+        "reviewed_result_family_count": sum(
+            row["family_count"] for row in reviewed_families
+        ),
+        "reviewed_result_family_count_by_problem": {
+            str(row["erdos_number"]): row["family_count"]
+            for row in reviewed_families
+        },
+        "reviewed_result_family_ids_by_problem": {
+            str(row["erdos_number"]): row["family_ids"]
+            for row in reviewed_families
+        },
+        "reviewed_result_family_source": (
+            "docs/claims.json::external_verification_packet.review_matrix"
+        ),
         "status_count": len(claims["status_taxonomy"]),
         "remaining_open_proposition_count": len(
             claims["remaining_open_propositions"]
@@ -1891,8 +1994,7 @@ def compact_status_claim(claim: dict[str, Any]) -> dict[str, Any]:
 def paper_anchor_inventory() -> list[dict[str, Any]]:
     """Derive typed human-paper anchors without promoting them to claim authority."""
     claims = load("docs/claims.json")
-    paper = claims["machine_readable_paper"]["paper"]
-    paper_rows = [paper, *paper.get("companion_sources", [])]
+    paper_rows = public_paper_rows(claims)
     claims_by_label: dict[str, list[dict[str, Any]]] = {}
     for claim in claims["claims"]:
         label = claim.get("paper_label")
@@ -2095,6 +2197,150 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             "complete": True,
         }
     return inventory
+
+
+def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
+    """Merge claim-registry papers with every dedicated problem-note source.
+
+    The claim registry owns publication identity, while ``docs/problems.json``
+    is the generated public roster of dedicated notes.  A note can be present
+    in the roster before it is listed as a companion, so anchor discovery must
+    consume both surfaces and de-duplicate by exact TeX source path.
+    """
+    rows_by_source: dict[str, dict[str, Any]] = {}
+
+    def add(row: dict[str, Any]) -> None:
+        source = row.get("source")
+        if not isinstance(source, str) or not source:
+            return
+        candidate = dict(row)
+        existing = rows_by_source.get(source)
+        if existing is None:
+            rows_by_source[source] = candidate
+            return
+        for key, value in candidate.items():
+            if existing.get(key) is None and value is not None:
+                existing[key] = value
+
+    machine_paper = claims["machine_readable_paper"]["paper"]
+    add(machine_paper)
+    for row in machine_paper.get("companion_sources", []):
+        if isinstance(row, dict):
+            add(row)
+
+    for problem in load("docs/problems.json").get("problems", []):
+        paper = problem.get("paper")
+        note = problem.get("note")
+        if not isinstance(paper, dict) or not isinstance(note, dict):
+            continue
+        source = paper.get("source") or note.get("source_path")
+        rendered = note.get("rendered_path") or paper.get("pdf")
+        if (
+            isinstance(rendered, str)
+            and not (ROOT / rendered).is_file()
+            and (ROOT / "paper" / rendered).is_file()
+        ):
+            rendered = f"paper/{rendered}"
+        add(
+            {
+                "title": paper.get("title") or note.get("title"),
+                "source": source,
+                "rendered": rendered,
+                "role": note.get("authority_posture") or "dedicated_problem_note",
+            }
+        )
+    return list(rows_by_source.values())
+
+
+def paper_anchor_routes_for_declarations(
+    source: str | None, declarations: list[str]
+) -> list[dict[str, Any]]:
+    """Find exact paper anchors whose authored source links name a family declaration."""
+    if not source or not declarations:
+        return []
+    declaration_names = {
+        declaration.rsplit(".", 1)[-1] for declaration in declarations
+    }
+    routes = []
+    for anchor in paper_anchor_inventory():
+        if anchor["paper"]["source"] != source:
+            continue
+        matched = sorted(
+            {
+                link["declaration"]
+                for link in anchor["source_links"]
+                if link.get("declaration") in declaration_names
+            }
+        )
+        if not matched:
+            continue
+        routes.append(
+            {
+                "canonical_handle": anchor["canonical_handle"],
+                "source_ref": anchor["paper"]["source_ref"],
+                "command": (
+                    "python3 scripts/query_corpus.py --paper-anchor "
+                    f"{anchor['canonical_handle']}"
+                ),
+                "matched_declarations": matched,
+            }
+        )
+    return routes
+
+
+def paper_source_packet(source: str) -> dict[str, Any]:
+    """List every discovered anchor for one dedicated paper source."""
+    rows = [row for row in public_paper_rows(load("docs/claims.json")) if row["source"] == source]
+    if not rows:
+        raise KeyError(f"unknown public paper source: {source}")
+    anchors = [
+        {
+            "canonical_handle": anchor["canonical_handle"],
+            "label": anchor["label"],
+            "source_ref": anchor["paper"]["source_ref"],
+            "anchor_kind": anchor["anchor_kind"],
+            "anchor_class": anchor["anchor_class"],
+            "title": anchor["title"],
+            "attached_claim_count": len(anchor["attached_claims"]),
+            "attached_open_proposition_count": len(
+                anchor["attached_open_propositions"]
+            ),
+            "source_link_count": len(anchor["source_links"]),
+            "follow": (
+                "python3 scripts/query_corpus.py --paper-anchor "
+                f"{anchor['canonical_handle']}"
+            ),
+        }
+        for anchor in paper_anchor_inventory()
+        if anchor["paper"]["source"] == source
+    ]
+    paper = rows[0]
+    return {
+        "kind": "paper_source",
+        "authority_posture": "paper_source_anchor_discovery_not_proof_authority",
+        "paper": {
+            "source": source,
+            "title": paper.get("title"),
+            "rendered": paper.get("rendered"),
+            "role": paper.get("role"),
+        },
+        "anchors": anchors,
+        "coverage_receipt": {
+            "anchor_count": len(anchors),
+            "complete": True,
+            "source": "query_corpus.paper_anchor_inventory",
+        },
+        "follow": {
+            "anchor": (
+                "python3 scripts/query_corpus.py --paper-anchor "
+                "<anchor canonical_handle>"
+            ),
+            "problem_route": (
+                "python3 scripts/query_corpus.py --route erdos_<problem_number>"
+            ),
+        },
+        "validation": "python3 scripts/check_release.py",
+    }
 
 
 @lru_cache(maxsize=1)
@@ -3790,6 +4036,7 @@ def search_result_sort_key(
     semantic_kind_priority = {
         "reading_route": 0,
         "publication_family": 1,
+        "reviewed_result_family": 1,
         "open_proposition": 2,
         "claim": 3,
         "paper_anchor": 4,
@@ -3925,43 +4172,50 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
     row = matches[0]
     problem = str(row["erdos_number"])
     claims = load("docs/claims.json")
-    review_matrix = claims.get("external_verification_packet", {}).get(
-        "review_matrix", []
-    )
-    review_row = next(
-        (
-            candidate
-            for candidate in review_matrix
-            if candidate.get("problem") == row["erdos_number"]
-        ),
-        None,
-    )
+    paper = row.get("paper") or {}
+    paper_source = paper.get("source")
     result_families = []
-    if review_row is not None:
-        for rank, family in enumerate(review_row.get("families", []), 1):
-            declarations = [
-                str(declaration)
-                for declaration in family.get("declarations", [])
-            ]
-            result_families.append(
-                {
-                    "rank": rank,
-                    "id": family["id"],
-                    "contribution_class": family.get("contribution_class"),
-                    "summary": family.get("summary"),
-                    "evidence_mode": family.get("evidence_mode"),
-                    "comparator_disposition": family.get(
-                        "comparator_disposition"
+    for rank, family in enumerate(
+        reviewed_result_family_rows(claims, row["erdos_number"]), 1
+    ):
+        declarations = [
+            str(declaration) for declaration in family.get("declarations", [])
+        ]
+        matching_paper_anchors = paper_anchor_routes_for_declarations(
+            paper_source, declarations
+        )
+        result_families.append(
+            {
+                "rank": rank,
+                "id": family["id"],
+                "contribution_class": family.get("contribution_class"),
+                "summary": family.get("summary"),
+                "evidence_mode": family.get("evidence_mode"),
+                "comparator_disposition": family.get(
+                    "comparator_disposition"
+                ),
+                "declarations": declarations,
+                "declaration_routes": [
+                    "python3 scripts/query_corpus.py --declaration "
+                    f"{declaration}"
+                    for declaration in declarations
+                ],
+                "paper_route": {
+                    "source": paper_source,
+                    "command": (
+                        "python3 scripts/query_corpus.py --paper-source "
+                        f"{paper_source}"
+                    )
+                    if paper_source
+                    else None,
+                    "matching_anchors": matching_paper_anchors,
+                    "authority_posture": (
+                        "authored_paper_navigation_not_proof_authority"
                     ),
-                    "declarations": declarations,
-                    "declaration_routes": [
-                        "python3 scripts/query_corpus.py --declaration "
-                        f"{declaration}"
-                        for declaration in declarations
-                    ],
-                    "boundary": family.get("boundary"),
-                }
-            )
+                },
+                "boundary": family.get("boundary"),
+            }
+        )
     route = {
         "kind": "problem",
         "id": row["problem_id"],
@@ -3980,7 +4234,7 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
         ],
         "open_obligations": row.get("open_obligations", []),
         "note": row.get("note"),
-        "paper": row.get("paper"),
+        "paper": paper,
         "result_family_contract": {
             "source": "docs/claims.json::external_verification_packet.review_matrix",
             "meaning": (
@@ -4469,6 +4723,64 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
+    problem_papers = {
+        str(row["erdos_number"]): (row.get("paper") or {})
+        for row in load("docs/problems.json").get("problems", [])
+    }
+    for census_row in reviewed_result_family_census(claims):
+        paper = problem_papers.get(str(census_row["erdos_number"]), {})
+        for rank, family in enumerate(
+            reviewed_result_family_rows(claims, census_row["erdos_number"]), 1
+        ):
+            rank_value = search_rank(
+                query,
+                family["id"],
+                " ".join(
+                    str(value)
+                    for value in (
+                        family.get("summary"),
+                        family.get("contribution_class"),
+                        family.get("evidence_mode"),
+                        family.get("comparator_disposition"),
+                        census_row["erdos_number"],
+                    )
+                    if value
+                ),
+            )
+            if rank_value is not None:
+                ranked.append(
+                    (
+                        rank_value,
+                        f"reviewed_result_family:{census_row['erdos_number']}:{family['id']}",
+                        {
+                            "kind": "reviewed_result_family",
+                            "id": family["id"],
+                            "erdos_number": census_row["erdos_number"],
+                            "rank": rank,
+                            "contribution_class": family.get(
+                                "contribution_class"
+                            ),
+                            "summary": family.get("summary"),
+                            "evidence_mode": family.get("evidence_mode"),
+                            "comparator_disposition": family.get(
+                                "comparator_disposition"
+                            ),
+                            "boundary": family.get("boundary"),
+                            "problem_route": (
+                                "python3 scripts/query_corpus.py --route erdos_"
+                                f"{census_row['erdos_number']}"
+                            ),
+                            "paper_source": paper.get("source"),
+                            "paper_source_route": (
+                                "python3 scripts/query_corpus.py --paper-source "
+                                f"{paper['source']}"
+                                if paper.get("source")
+                                else None
+                            ),
+                        },
+                    )
+                )
+
     for artifact in publication_contract()["artifacts"]:
         rank = search_rank(
             query,
@@ -4642,7 +4954,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 "modules, and present papers remain searchable"
             ),
         },
-        "next": "Inspect --vocabulary when phrasing is uncertain, then use the typed handle with --claim, --status, --paper-anchor, --open, --declaration, --source, --module, --connections, --artifact, --publication-artifact, --publication-evidence, --route, or --publication-family.",
+        "next": "Inspect --vocabulary when phrasing is uncertain, then use the typed handle with --claim, --status, --paper-source, --paper-anchor, --open, --declaration, --source, --module, --connections, --artifact, --publication-artifact, --publication-evidence, --route, or --publication-family.",
     }
 
 
@@ -6626,6 +6938,10 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
     families = assembly["contribution_families"]
     statuses = orientation["status_taxonomy"]
     principal_claims = orientation["principal_claims"]
+    reviewed_family_census = reviewed_result_family_census(claims)
+    reviewed_family_by_problem = {
+        str(row["erdos_number"]): row for row in reviewed_family_census
+    }
     packet = {
         "kind": "repository_overview",
         "schema_version": "erdos249257-repository-overview/1",
@@ -6639,6 +6955,16 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
             "remaining_open_proposition_ids": [row["id"] for row in open_rows],
             "publication_family_count": len(families),
             "publication_family_ids": [row["id"] for row in families],
+            "reviewed_result_family_count": sum(
+                row["family_count"] for row in reviewed_family_census
+            ),
+            "reviewed_result_family_count_by_problem": {
+                str(row["erdos_number"]): row["family_count"]
+                for row in reviewed_family_census
+            },
+            "reviewed_result_family_source": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+            ),
             "curated_claim_count": len(claims["claims"]),
             "principal_claim_count": len(principal_claims),
             "indexed_problem_count": len(problems),
@@ -6652,11 +6978,14 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "open_obligation_ids": [
                     item["id"] for item in row.get("open_obligations", [])
                 ],
-                "result_family_count": len(
-                    row.get("external_check", {}).get("dispositions", {})
-                ),
-                "result_family_ids": list(
-                    row.get("external_check", {}).get("dispositions", {})
+                "result_family_count": reviewed_family_by_problem.get(
+                    str(row["erdos_number"]), {}
+                ).get("family_count", 0),
+                "result_family_ids": reviewed_family_by_problem.get(
+                    str(row["erdos_number"]), {}
+                ).get("family_ids", []),
+                "result_family_source": (
+                    "docs/claims.json::external_verification_packet.review_matrix"
                 ),
                 "result_route": (
                     "python3 scripts/query_corpus.py --route "
@@ -6769,6 +7098,29 @@ def agent_tour_packet() -> dict[str, Any]:
     indexed_open_problem_count = sum(
         row.get("status") == "open" for row in problems
     )
+    reviewed_family_census = reviewed_result_family_census(claims)
+    reviewed_family_by_problem = {
+        str(row["erdos_number"]): row for row in reviewed_family_census
+    }
+    paper_by_problem = {
+        str(row["erdos_number"]): (row.get("paper") or {})
+        for row in problems
+    }
+    reviewed_family_index = []
+    for family in reviewed_result_family_index(claims):
+        paper = paper_by_problem.get(str(family["erdos_number"]), {})
+        reviewed_family_index.append(
+            {
+                **family,
+                "paper_source": paper.get("source"),
+                "paper_source_route": (
+                    "python3 scripts/query_corpus.py --paper-source "
+                    f"{paper['source']}"
+                    if paper.get("source")
+                    else None
+                ),
+            }
+        )
     return {
         "kind": "agent_corpus_tour",
         "schema_version": "agent-corpus-tour/1",
@@ -6794,6 +7146,9 @@ def agent_tour_packet() -> dict[str, Any]:
             ),
             "remaining_open_proposition_count": len(open_rows),
             "reviewed_remaining_open_proposition_count": len(open_rows),
+            "reviewed_result_family_count": sum(
+                row["family_count"] for row in reviewed_family_census
+            ),
             "indexed_problem_count": len(problems),
             "indexed_open_problem_count": indexed_open_problem_count,
         },
@@ -6825,11 +7180,14 @@ def agent_tour_packet() -> dict[str, Any]:
                 "status": row["status"],
                 "module_count": len(row.get("modules", [])),
                 "note": row.get("note"),
-                "result_family_count": len(
-                    row.get("external_check", {}).get("dispositions", {})
-                ),
-                "result_family_ids": list(
-                    row.get("external_check", {}).get("dispositions", {})
+                "result_family_count": reviewed_family_by_problem.get(
+                    str(row["erdos_number"]), {}
+                ).get("family_count", 0),
+                "result_family_ids": reviewed_family_by_problem.get(
+                    str(row["erdos_number"]), {}
+                ).get("family_ids", []),
+                "result_family_source": (
+                    "docs/claims.json::external_verification_packet.review_matrix"
                 ),
                 "follow": (
                     "python3 scripts/query_corpus.py --route "
@@ -6873,6 +7231,7 @@ def agent_tour_packet() -> dict[str, Any]:
                 "declarations, paper, and exact open obligations."
             ),
         },
+        "reviewed_result_family_index": reviewed_family_index,
         "open_frontier_contract": {
             "indexed_open_problem_count": indexed_open_problem_count,
             "reviewed_remaining_open_proposition_count": len(open_rows),
@@ -7149,6 +7508,26 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| {paper['source_ref']} | title={packet.get('title') or 'none'}"
         )
         return _append_route_memory_resumes(card, packet.get("route_memory"))
+    if kind == "paper_source":
+        paper = packet["paper"]
+        rows = [
+            (
+                f"paper source {paper['source']} | anchors="
+                f"{packet['coverage_receipt']['anchor_count']}"
+            )
+        ]
+        rows.extend(
+            f"paper anchor | {anchor['canonical_handle']} | {anchor['source_ref']}"
+            for anchor in packet["anchors"]
+        )
+        return "\n".join(rows)
+    if kind == "reviewed_result_family":
+        return (
+            f"result family #{packet['erdos_number']} rank={packet['rank']} "
+            f"| {packet['id']} | {packet.get('comparator_disposition')} "
+            f"| {packet.get('summary')} | problem={packet['problem_route']} "
+            f"| paper={packet.get('paper_source_route') or 'none'}"
+        )
     if kind == "declaration":
         rows = []
         for row in packet["matches"]:
@@ -7521,6 +7900,7 @@ def main() -> int:
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--claim", metavar="ID")
     group.add_argument("--paper-label", metavar="LABEL")
+    group.add_argument("--paper-source", metavar="SOURCE_PATH")
     group.add_argument("--paper-anchor", metavar="LABEL_OR_SOURCE_REF")
     group.add_argument("--open", metavar="ID")
     group.add_argument("--declaration", metavar="NAME")
@@ -7593,6 +7973,8 @@ def main() -> int:
             packet = claim_packet(args.claim)
         elif args.paper_label:
             packet = paper_label_packet(args.paper_label)
+        elif args.paper_source:
+            packet = paper_source_packet(args.paper_source)
         elif args.paper_anchor:
             packet = paper_anchor_packet(args.paper_anchor)
         elif args.open:
