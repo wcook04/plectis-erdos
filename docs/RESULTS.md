@@ -120,7 +120,7 @@ it is a verification projection, not a replacement for claim authority.
   (Coons 2008, arXiv:0810.3709, via ζ zero-density — no exact rank appears
   there).
   Claim `dyadic_totient_certificate_interface` (the basis declarations at
-  `:1265`, `:1380`, `:1392` — registry: none).
+  `:1265`, `:1380`, `:1392` — registry: dyadic_totient_certificate_interface).
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
