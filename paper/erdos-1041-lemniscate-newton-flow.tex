@@ -95,6 +95,25 @@ root-retention theorem.  The frontier section is selected as mathematical
 orientation; its ordinary proofs, exact certificates, and computations remain
 separate evidence classes.}
 
+The two selected perturbation interfaces have the following exact boundaries.
+For a finite type $\iota$, an injective family of critical values
+$c\colon\iota\to\mathbb C$, and every $\varepsilon>0$, the row
+\texttt{exists\_small\_translation\_separating\_arguments} supplies a shift
+of norm less than $\varepsilon$ such that every translated value is nonzero
+and every two distinct translated values lie on different positive rays.
+Separately, for a monic split polynomial of positive degree whose roots have
+norm at most $\rho$, the row
+\texttt{constant\_perturbation\_roots\_in\_unitDisk} requires $\rho\ge0$,
+$\varepsilon>0$, the margin
+\[
+ ((\operatorname{natDegree}f+1)\varepsilon)^{1/\operatorname{natDegree}f}
+   +\rho<1,
+\]
+and a shift of norm less than $\varepsilon$; it then places every root of
+$f+\operatorname{C}(\text{shift})$ in the open unit disc.  These are finite
+perturbation and stability interfaces only: neither row supplies the missing
+global topology or the length-$2$ gluing argument.
+
 \section{The problem}\label{sec:problem}
 
 \begin{problem}[Erd\H{o}s \#1041]\label{res:problem}
