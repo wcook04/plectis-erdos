@@ -108,6 +108,12 @@ boundary of that relationship.
 
   **Boundary.** At \(t=2\) this supplies the known Mersenne geometry. The release now formalises compactness, perfection, total disconnectedness, nowhere density, and measure one as well as the two-scale gap, greedy interface, and finite death certificates. It makes no novelty claim for those refinements; only the stated strict-tail antecedent has been compared here, and none settles #257.
 
+- M. Coons, [*(Non)Automaticity of number theoretic functions* (Journal de Théorie des Nombres de Bordeaux 22 (2010), no. 2, 339--352)](https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.718/) ([official PDF](https://jtnb.centre-mersenne.org/item/10.5802/jtnb.718.pdf); [read source closure](primary-sources/totient-kernel/coons-2010-source-closure.md))
+
+  **Global totient-kernel boundary.** Coons's Theorem 3.2, printed p. 349, proves that Euler's totient function is not \(k\)-regular for any \(k\ge2\), using the Dirichlet-series identity \(\sum_{n\ge1}\varphi(n)n^{-s}=\zeta(s-1)/\zeta(s)\). This is the prior-art source for the release's global non-finite-generation context; it does not state the finite-level rank, explicit basis, or relation normal form proved or discussed locally.
+
+  **Boundary.** The release's implication from global non-\(k\)-regularity to infinite-dimensionality of its integer-valued totient-kernel span is a separately authored/formalised bridge. Coons does not prove the release's Lean declarations, dyadic rank \(2^e+1\), CRT--Dirichlet--determinant construction, or Erdős Problem #249. No novelty or priority claim is made for either the cited theorem or the local finite-level results.
+
 - J. Farey, [*On a Curious Property of Vulgar Fractions* (1816)](https://doi.org/10.1080/14786441608628487)
 
   Historical source for the Farey language. The standard neighbouring-fraction/mediant lemma is the method that directly produces the finite #249 denominator bound: for the committed interval it gives `b+d-1`, exactly the formal bound.
