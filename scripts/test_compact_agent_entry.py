@@ -3,6 +3,9 @@
 
 from __future__ import annotations
 
+import json
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -31,6 +34,27 @@ PROVIDER_ADAPTERS = (
 ADAPTER_BYTE_CEILING = 1_500
 
 
+def query_route(route_id: str) -> dict[str, object]:
+    """Execute one route advertised by the compact cold-clone entry."""
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "query_corpus.py"),
+            "--route",
+            route_id,
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, (
+        f"documented compact-entry route failed: {route_id}: "
+        f"{completed.stderr.strip()}"
+    )
+    return json.loads(completed.stdout)
+
+
 def main() -> int:
     text = COMPACT.read_text(encoding="utf-8")
     encoded = text.encode("utf-8")
@@ -55,6 +79,28 @@ def main() -> int:
         "Do not absorb the complete deep contract",
     ):
         assert required in text, required
+
+    # Projection-only checks can pass while an advertised route returns
+    # "unknown route id". Exercise the public commands themselves.
+    for route_id, authority_prefix in (
+        (
+            "comparator_assurance",
+            "configured_statement_axiom_and_kernel_assurance",
+        ),
+        (
+            "palomar_qualification",
+            "repository_local_qualification_",
+        ),
+    ):
+        packet = query_route(route_id)
+        assert packet["kind"] == "reading_route", route_id
+        route = packet["route"]
+        assert isinstance(route, dict), route_id
+        assert route["id"] == route_id
+        assert route["route_kind"] == "external_assurance"
+        assert route["authority_owners"]
+        assert route["adjacent_handle_classes"]
+        assert str(packet["authority_posture"]).startswith(authority_prefix)
 
     # Every adapter must name the compact owner, and Claude Code must actually
     # *import* it: `@AGENTS.override.md`, not a mention of it beside an
