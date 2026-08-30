@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -145,6 +146,11 @@ def check_attached_git_context_scrubs_ref_state() -> None:
 
 
 def check_subprocess_timeouts() -> None:
+    require(
+        continue_research.GIT_LOOKUP_TIMEOUT_SECONDS
+        == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "continuation Git timeout drifted from the canonical boundary",
+    )
     completed = subprocess.CompletedProcess(
         ["fixture"], returncode=0, stdout="{}", stderr=""
     )
@@ -434,6 +440,7 @@ def main() -> int:
 
         sessions = temp / "sessions"
         session = "t_public_continue"
+        unsafe_session = "t_private_note"
         common = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
         started = run(
             [
@@ -484,6 +491,13 @@ def main() -> int:
             {"name": "Fixture Collaborator", "role": "verification"}
         ]
         assert (sessions / session / "route.json").is_file()
+        shutil.copytree(sessions / session, sessions / unsafe_session)
+        unsafe_manifest_path = sessions / unsafe_session / "continuation.json"
+        unsafe_manifest = load(unsafe_manifest_path)
+        unsafe_manifest["session"] = unsafe_session
+        unsafe_manifest_path.write_text(
+            json.dumps(unsafe_manifest, indent=2) + "\n", encoding="utf-8"
+        )
 
         run(
             [
@@ -809,6 +823,54 @@ def main() -> int:
         assert "must not traverse symbolic links" in linked_package.stderr
         assert not (outside_package_target / "not-created").exists()
 
+        run(
+            [
+                sys.executable,
+                str(WORKBENCH),
+                "--sessions-root",
+                str(sessions),
+                "note",
+                "--session",
+                unsafe_session,
+                "--kind",
+                "observation",
+                "--text",
+                "/Users/example/private-note",
+            ]
+        )
+        run(
+            [
+                sys.executable,
+                str(WORKBENCH),
+                "--sessions-root",
+                str(sessions),
+                "close",
+                "--session",
+                unsafe_session,
+                "--outcome",
+                "open",
+                "--summary",
+                "fixture stopped at its declared boundary",
+            ]
+        )
+        unsafe = run(
+            [
+                *common,
+                "package",
+                "--session",
+                unsafe_session,
+                "--return-json",
+                str(return_path),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+                "--output",
+                str(temp / "unsafe-package"),
+            ],
+            expected=1,
+        )
+        assert "private path" in unsafe.stderr
+        assert not (temp / "unsafe-package").exists()
+
         missing_check_receipt = run(
             [*common, "check", "--session", session, "--return-json", str(return_path)],
             expected=1,
@@ -945,39 +1007,6 @@ def main() -> int:
             expected=1,
         )
         assert "opened-session collaborator" in collaborator_mismatch.stdout
-
-        run(
-            [
-                sys.executable,
-                str(WORKBENCH),
-                "--sessions-root",
-                str(sessions),
-                "note",
-                "--session",
-                session,
-                "--kind",
-                "observation",
-                "--text",
-                "/Users/example/private-note",
-            ]
-        )
-        unsafe = run(
-            [
-                *common,
-                "package",
-                "--session",
-                session,
-                "--return-json",
-                str(return_path),
-                "--route-memory-receipt",
-                str(route_memory_receipt_path),
-                "--output",
-                str(temp / "unsafe-package"),
-            ],
-            expected=1,
-        )
-        assert "private path" in unsafe.stderr
-        assert not (temp / "unsafe-package").exists()
 
     print(
         json.dumps(
