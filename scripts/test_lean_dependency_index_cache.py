@@ -154,6 +154,46 @@ def check_cached_output_rejection() -> None:
         )
 
 
+def check_safe_dependency_input_boundary() -> None:
+    with tempfile.TemporaryDirectory(prefix="dependency-input-") as directory:
+        workspace = Path(directory)
+        regular = workspace / "regular.txt"
+        regular.write_text("dependency input\n", encoding="utf-8")
+        require(
+            builder.safe_dependency_text(regular, root=workspace)
+            == "dependency input\n",
+            "safe dependency input reader rejected a regular file",
+        )
+
+        directory_input = workspace / "directory"
+        directory_input.mkdir()
+        try:
+            builder.safe_dependency_text(directory_input, root=workspace)
+        except builder.UnsafeDependencyInput:
+            pass
+        else:
+            raise AssertionError("dependency directory input escaped the regular-file boundary")
+
+        symlink = workspace / "symlink.txt"
+        symlink.symlink_to(regular)
+        try:
+            builder.safe_dependency_text(symlink, root=workspace)
+        except builder.UnsafeDependencyInput:
+            pass
+        else:
+            raise AssertionError("dependency symlink input escaped the no-follow boundary")
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "fifo"
+            os.mkfifo(fifo)
+            try:
+                builder.safe_dependency_text(fifo, root=workspace)
+            except builder.UnsafeDependencyInput:
+                pass
+            else:
+                raise AssertionError("dependency FIFO input escaped the non-blocking boundary")
+
+
 def check_receipt_uses_verified_snapshot() -> None:
     with tempfile.TemporaryDirectory() as directory:
         receipt_path = Path(directory) / "receipt.json"
@@ -230,6 +270,7 @@ def check_environment_build_is_bounded() -> None:
 
 
 def main() -> int:
+    check_safe_dependency_input_boundary()
     check_exact_receipt_contract()
     check_live_input_surface()
     check_cached_output_rejection()

@@ -11,6 +11,7 @@ import inspect
 import json
 import os
 import subprocess
+import stat
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -53,6 +54,71 @@ QUERY_CORPUS_DEPENDENCY_HELPERS = (
 )
 
 
+class UnsafeDependencyInput(ValueError):
+    """A dependency-index input is outside its root or is not a regular file."""
+
+
+def safe_dependency_path(path: Path, root: Path | None = ROOT) -> Path:
+    """Resolve a dependency input without following checkout symlinks."""
+    candidate = Path(os.path.abspath(path))
+    if root is not None:
+        root = Path(os.path.abspath(root))
+        if candidate != root and root not in candidate.parents:
+            raise UnsafeDependencyInput(f"dependency input escaped checkout: {candidate}")
+        current = candidate
+        while True:
+            if current.is_symlink():
+                raise UnsafeDependencyInput(f"symlinked dependency input: {candidate}")
+            if current == root:
+                break
+            if current.parent == current:
+                raise UnsafeDependencyInput(f"dependency input escaped checkout: {candidate}")
+            current = current.parent
+    if not candidate.is_file():
+        raise UnsafeDependencyInput(
+            f"dependency input is not a regular file: {candidate}"
+        )
+    return candidate
+
+
+def safe_dependency_bytes(path: Path, root: Path | None = ROOT) -> bytes:
+    """Read a dependency input through a no-follow regular-file descriptor."""
+    candidate = safe_dependency_path(path, root=root)
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeDependencyInput(
+                f"dependency input is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                return b"".join(chunks)
+            chunks.append(chunk)
+    finally:
+        os.close(descriptor)
+
+
+def safe_dependency_text(path: Path, root: Path | None = ROOT) -> str:
+    """Decode one dependency input read through its safe descriptor."""
+    candidate = Path(os.path.abspath(path))
+    try:
+        return safe_dependency_bytes(path, root=root).decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency input is not UTF-8: {candidate}"
+        ) from exc
+
+
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run dependency-bootstrap commands without ambient state or hangs."""
     environment = singleflight.command_environment()
@@ -78,7 +144,7 @@ def check_input_paths(root: Path = ROOT) -> list[Path]:
 def semantic_check_inputs(root: Path = ROOT) -> list[tuple[str, bytes]]:
     """Project large shared owners to the exact values this builder consumes."""
     claims = json.loads(
-        (root / "docs" / "claims.json").read_text(encoding="utf-8")
+        safe_dependency_text(root / "docs" / "claims.json", root=root)
     )
     formal_source = json.dumps(
         claims["release"]["formal_source"],
@@ -115,7 +181,7 @@ def check_input_fingerprint(root: Path = ROOT) -> str:
         relative = path.relative_to(root).as_posix()
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
-        digest.update(path.read_bytes())
+        digest.update(safe_dependency_bytes(path, root=root))
         digest.update(b"\0")
     for identity, payload in semantic_check_inputs(root):
         digest.update(identity.encode("utf-8"))
@@ -149,10 +215,10 @@ def load_cached_check(
     if not output.is_file() or not receipt_path.is_file():
         return None
     try:
-        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        receipt = json.loads(safe_dependency_text(receipt_path, root=None))
     except (json.JSONDecodeError, OSError):
         return None
-    content = output.read_text(encoding="utf-8")
+    content = safe_dependency_text(output, root=None)
     if not receipt_matches(
         receipt,
         input_fingerprint=check_input_fingerprint(root),
