@@ -260,6 +260,16 @@ class Session:
                         f"invalid workbench ledger row on line {line_number}: "
                         f"unsupported move kind {row['kind']!r}"
                     )
+                expected_schema = (
+                    SESSION_SCHEMA
+                    if row["kind"] == "session_opened"
+                    else MOVE_SCHEMA
+                )
+                if row.get("schema") != expected_schema:
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: "
+                        f"{row['kind']!r} requires schema {expected_schema!r}"
+                    )
                 rows.append(row)
         return rows
 

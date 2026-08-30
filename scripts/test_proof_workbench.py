@@ -182,6 +182,48 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("workbench accepted an unknown move kind")
 
+    schema_sessions = (
+        (
+            "wrong-open-schema",
+            [
+                {
+                    "schema": workbench.MOVE_SCHEMA,
+                    "move_id": "m001",
+                    "kind": "session_opened",
+                }
+            ],
+        ),
+        (
+            "wrong-move-schema",
+            [
+                {
+                    "schema": workbench.SESSION_SCHEMA,
+                    "move_id": "m001",
+                    "kind": "session_opened",
+                },
+                {
+                    "schema": workbench.SESSION_SCHEMA,
+                    "move_id": "m002",
+                    "kind": "note",
+                    "note_kind": "observation",
+                    "text": "forged schema",
+                },
+            ],
+        ),
+    )
+    for session_name, schema_rows in schema_sessions:
+        schema_session = workbench.Session(sessions_root, session_name)
+        schema_session.directory.mkdir(parents=True)
+        for row in schema_rows:
+            schema_session.append(row)
+        try:
+            schema_session.moves()
+        except SystemExit as error:
+            if "requires schema" not in str(error):
+                raise AssertionError(f"schema confusion lacked a bounded diagnostic: {error}")
+        else:
+            raise AssertionError(f"workbench accepted schema confusion in {session_name}")
+
     duplicate_id_session = workbench.Session(sessions_root, "duplicate-ids")
     duplicate_id_session.directory.mkdir(parents=True)
     duplicate_id_session.append(
