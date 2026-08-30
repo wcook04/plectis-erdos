@@ -45,6 +45,22 @@ bounded proof/paper/source traversal. The compact problem roster is:
 
 `#68 · #243 · #249 · #251 · #257 · #269 · #1041 · #1049`
 
+For a machine-readable return from any roster row, run the bounded registry
+route before opening a large source file:
+
+```sh
+python3 scripts/query_corpus.py --route erdos_<n>
+# <n> is one of 68, 243, 249, 251, 257, 269, 1041, or 1049
+```
+
+The packet returns the problem question, public status, note, formal module
+coverage, and exact open-obligation handles. For #249 and #257, continue from
+the [source map](SOURCE_MAP.md#reviewed-problem-return-routes) to the reviewed
+result route and its registered claim/paper/source reverse links. For the
+source-only roots, the expansion table supplies the principal checked module
+and unresolved producer. The route is navigation evidence only; it does not
+promote problem-owned notes into reviewed claims or close an open problem.
+
 For the reviewed #249/#257 core, begin with `docs/orientation.json` and one
 typed `query_corpus.py` route. For #68, #243, #251, #269, and #1049, use the
 expansion-problem table in `SOURCE_MAP.md` to reach the principal checked
