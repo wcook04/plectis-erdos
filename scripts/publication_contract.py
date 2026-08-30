@@ -8,6 +8,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 import re
 import subprocess
 import tomllib
@@ -123,11 +124,27 @@ class RepositoryReader:
             env=singleflight.command_environment(),
         )
 
+    @staticmethod
+    def _has_symlink_component(path: Path) -> bool:
+        """Reject worktree reads that traverse a substituted path component."""
+        current = Path(os.path.abspath(path))
+        while True:
+            if current.is_symlink():
+                return True
+            if current.parent == current:
+                return False
+            current = current.parent
+
     def read_bytes(self, relative: str) -> bytes:
         if relative in self.byte_overrides:
             return self.byte_overrides[relative]
         if self.git_ref is None:
-            return (self.root / relative).read_bytes()
+            path = self.root / relative
+            if self._has_symlink_component(path):
+                raise ValueError(
+                    f"worktree source path must not traverse symbolic links: {relative}"
+                )
+            return path.read_bytes()
         completed = self._git_run("show", self._git_spec(relative))
         if completed.returncode != 0:
             detail = completed.stderr.decode("utf-8", errors="replace").strip()

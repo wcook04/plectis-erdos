@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -47,6 +48,23 @@ def assert_committed_snapshot_environment() -> None:
     )
 
 
+def assert_worktree_symlink_boundary() -> None:
+    """Prove worktree-mode contract reads cannot follow a substituted directory."""
+    with tempfile.TemporaryDirectory(prefix="publication-contract-symlink-") as temporary:
+        root = Path(temporary) / "checkout"
+        outside = Path(temporary) / "outside"
+        root.mkdir()
+        outside.mkdir()
+        (outside / "publication_contract.json").write_text("{}\n", encoding="utf-8")
+        (root / "docs").symlink_to(outside, target_is_directory=True)
+        try:
+            RepositoryReader(root).read_bytes("docs/publication_contract.json")
+        except ValueError as exc:
+            require("symbolic links" in str(exc), str(exc))
+        else:
+            raise AssertionError("worktree publication reader followed a symlink")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -55,6 +73,7 @@ def main() -> int:
     )
     args = parser.parse_args()
     assert_committed_snapshot_environment()
+    assert_worktree_symlink_boundary()
     reader = RepositoryReader(ROOT, args.git_ref)
     baseline_errors = validate_publication_contract(reader)
     fixture_failures = mutation_fixture_failures(reader) if not baseline_errors else []
