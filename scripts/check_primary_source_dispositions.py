@@ -15,10 +15,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import stat
 import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 from typing import Any
+
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -66,6 +70,39 @@ def artifact_path(value: Any, errors: list[str]) -> Path | None:
     return ROOT.joinpath(*pure.parts)
 
 
+def read_regular_bytes(path: Path, *, root: Path | None = ROOT) -> bytes:
+    """Read a disposition input through a no-follow regular-file descriptor."""
+    candidate = Path(os.path.abspath(path))
+    root_path = Path(os.path.abspath(root)) if root is not None else None
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise OSError(f"symlinked disposition input: {candidate}")
+        if root_path is not None and current == root_path:
+            break
+        if current.parent == current:
+            if root_path is not None:
+                raise OSError(f"disposition input escaped checkout: {candidate}")
+            break
+        current = current.parent
+    if not candidate.is_file():
+        raise OSError(f"disposition input is not a regular file: {candidate}")
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(candidate, flags)
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise OSError(f"disposition input is not a regular file: {candidate}")
+        with os.fdopen(descriptor, "rb") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 def tracked_paths() -> set[str]:
     result = subprocess.run(
         ["git", "ls-files", "--", "docs/primary-sources"],
@@ -73,6 +110,8 @@ def tracked_paths() -> set[str]:
         capture_output=True,
         text=True,
         check=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
     return {line for line in result.stdout.splitlines() if line}
 
@@ -110,7 +149,10 @@ def primary_source_metadata_errors() -> list[str]:
         elif not path.is_file():
             errors.append(f"primary-source metadata is missing: {name}")
         else:
-            metadata[name] = path.read_bytes()
+            try:
+                metadata[name] = read_regular_bytes(path)
+            except OSError as exc:
+                errors.append(f"primary-source metadata could not be read safely: {name}: {exc}")
     errors.extend(metadata_private_path_errors(metadata))
     return errors
 
@@ -383,9 +425,13 @@ def disposition_errors(
             if local.is_symlink():
                 errors.append(f"{raw_path} must not be a symlink")
             elif local.is_file():
-                observed = hashlib.sha256(local.read_bytes()).hexdigest()
-                if isinstance(digest, str) and observed != digest:
-                    errors.append(f"{raw_path} digest does not match the disposition ledger")
+                try:
+                    observed = hashlib.sha256(read_regular_bytes(local)).hexdigest()
+                except OSError as exc:
+                    errors.append(f"{raw_path} could not be read safely: {exc}")
+                else:
+                    if isinstance(digest, str) and observed != digest:
+                        errors.append(f"{raw_path} digest does not match the disposition ledger")
             elif inventory_state == "tracked_release_snapshot":
                 errors.append(f"tracked artifact is missing: {raw_path}")
 
@@ -416,15 +462,15 @@ def disposition_errors(
 
 def main() -> int:
     try:
-        data = json.loads(LEDGER.read_text(encoding="utf-8"))
+        data = json.loads(read_regular_bytes(LEDGER).decode("utf-8"))
         errors = disposition_errors(data, tracked=tracked_paths(), present=present_artifact_paths())
-        notice_text = NOTICE.read_text(encoding="utf-8")
-        requirements_text = (ROOT / "requirements-release.txt").read_text(encoding="utf-8")
-        lake_manifest_text = (ROOT / "lake-manifest.json").read_text(encoding="utf-8")
+        notice_text = read_regular_bytes(NOTICE).decode("utf-8")
+        requirements_text = read_regular_bytes(ROOT / "requirements-release.txt").decode("utf-8")
+        lake_manifest_text = read_regular_bytes(ROOT / "lake-manifest.json").decode("utf-8")
         errors.extend(
             notice_errors(data, notice_text, requirements_text, lake_manifest_text)
         )
-    except (OSError, json.JSONDecodeError, subprocess.CalledProcessError) as exc:
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, subprocess.CalledProcessError) as exc:
         print(f"check_primary_source_dispositions: FAIL: {exc}", file=sys.stderr)
         return 1
     if errors:

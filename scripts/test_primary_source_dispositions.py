@@ -7,6 +7,9 @@ from __future__ import annotations
 
 import copy
 import json
+import os
+import tempfile
+from pathlib import Path
 
 from check_primary_source_dispositions import (
     LEDGER,
@@ -16,6 +19,7 @@ from check_primary_source_dispositions import (
     metadata_private_path_errors,
     notice_errors,
     present_artifact_paths,
+    read_regular_bytes,
     tracked_paths,
 )
 
@@ -31,6 +35,19 @@ def reject(data: dict[str, object], marker: str, tracked: set[str], present: set
 
 
 def main() -> int:
+    with tempfile.TemporaryDirectory(prefix="primary-source-boundary-") as raw:
+        root = Path(raw)
+        fifo = root / "disposition.fifo"
+        os.mkfifo(fifo)
+        try:
+            read_regular_bytes(fifo, root=root)
+        except OSError as error:
+            require(
+                "not a regular file" in str(error),
+                f"special disposition input returned an unexpected error: {error}",
+            )
+        else:
+            raise AssertionError("special disposition input was accepted")
     release_checker = (ROOT / "scripts" / "check_release.py").read_text(encoding="utf-8")
     require(
         "check_primary_source_dispositions.py" in release_checker,
