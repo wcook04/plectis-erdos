@@ -31,7 +31,10 @@ ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
 ORIENTATION_MAX_BYTES = 32_000
-ORIENTATION_MARKDOWN_MAX_BYTES = 16_000
+# The source-current Palomar spine now carries ten ranked rows (rather than
+# the original nine). Keep a bounded first-contact ceiling while funding the
+# additional exact boundary and tier labels instead of dropping them.
+ORIENTATION_MARKDOWN_MAX_BYTES = 18_000
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
@@ -223,6 +226,47 @@ def build_mathematical_signal_first(claims: dict[str, Any]) -> list[dict[str, An
     return signal
 
 
+def build_mathematical_signal_presentation() -> dict[str, Any]:
+    """Expose Palomar's authored reader tiers without creating a rank store."""
+    showcase = json.loads(PALOMAR_SHOWCASE_PATH.read_text(encoding="utf-8"))
+    contract = showcase.get("selection_contract")
+    if not isinstance(contract, dict):
+        raise ValueError("Palomar showcase lacks selection_contract")
+    tiers = contract.get("presentation_tiers")
+    placements = contract.get("relational_placements")
+    if not isinstance(tiers, list) or not tiers:
+        raise ValueError("Palomar selection contract lacks presentation_tiers")
+    if not isinstance(placements, list):
+        raise ValueError("Palomar selection contract lacks relational_placements")
+    orders = [tier.get("order") for tier in tiers]
+    if sorted(orders) != list(range(1, len(tiers) + 1)):
+        raise ValueError("Palomar presentation tiers must be unique and contiguous")
+    tier_ids = [tier.get("tier_id") for tier in tiers]
+    if len(set(tier_ids)) != len(tier_ids):
+        raise ValueError("Palomar presentation tier ids must be unique")
+    return {
+        "authority": "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract",
+        "tiers": [
+            {
+                "order": tier["order"],
+                "tier_id": tier["tier_id"],
+                "label": tier["label"],
+                "reader_role": tier["reader_role"],
+            }
+            for tier in sorted(tiers, key=lambda row: row["order"])
+        ],
+        "relational_placements": [
+            {
+                "family_id": placement["family_id"],
+                "tier_id": placement["tier_id"],
+                "within_tier_order": placement.get("within_tier_order"),
+                "relative_judgement": placement["relative_judgement"],
+            }
+            for placement in placements
+        ],
+    }
+
+
 def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str, Any]:
     """Project a bounded first-read capsule from the exhaustive owners."""
     principal_claims = []
@@ -298,6 +342,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         "proof_authority": "Lean source checked by the pinned Lean kernel",
         "release_provenance": claims["release"]["public_projection"],
         "mathematical_signal_first": build_mathematical_signal_first(claims),
+        "mathematical_signal_presentation": build_mathematical_signal_presentation(),
         "release": {
             "version": claims["release"]["version"],
             "tag": claims["release"]["tag"],
@@ -422,6 +467,26 @@ def render_orientation_markdown(
             f"`{row['interface']}` → `{row['source_declaration']}` | "
             f"{row['boundary']} |"
         )
+    presentation = orientation["mathematical_signal_presentation"]
+    lines.extend(
+        [
+            "",
+            "### Reader tiers and relational boundaries",
+            "",
+            "Palomar's presentation tiers are the reader routing contract (not a "
+            "second rank or proof-status authority):",
+        ]
+    )
+    lines.append(
+        " → ".join(f"`{tier['label']}`" for tier in presentation["tiers"])
+    )
+    lines.extend(
+        [
+            "",
+            "Exact family-to-tier placements, open producers, and contrary evidence "
+            "remain in `docs/orientation.json` under the same Palomar authority.",
+        ]
+    )
     # REUSE-IgnoreEnd
     lines.extend(
         [

@@ -30,8 +30,8 @@ def test_palomar_signal_join_and_first_read_order() -> None:
         for row in claims["external_verification_packet"]["main_results"]
     }
 
-    assert len(signal) == len(ranking) == 9
-    assert [row["rank"] for row in signal] == list(range(1, 10))
+    assert len(signal) == len(ranking)
+    assert [row["rank"] for row in signal] == list(range(1, len(ranking) + 1))
     for candidate, row in zip(ranking, signal):
         result = main_results[candidate["declaration"]]
         assert row["family_id"] == candidate["family_id"]
@@ -50,11 +50,27 @@ def test_palomar_signal_join_and_first_read_order() -> None:
         encoding="utf-8"
     )
     assert generated_orientation["mathematical_signal_first"] == signal
+    presentation = orientation["mathematical_signal_presentation"]
+    showcase = json.loads(
+        (ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json").read_text(encoding="utf-8")
+    )
+    source_tiers = showcase["selection_contract"]["presentation_tiers"]
+    assert presentation["authority"] == (
+        "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract"
+    )
+    assert [row["tier_id"] for row in presentation["tiers"]] == [
+        row["tier_id"] for row in sorted(source_tiers, key=lambda row: row["order"])
+    ]
+    assert presentation["relational_placements"]
     assert generated_markdown == markdown
     assert markdown.index("## Release provenance") < markdown.index(
         "## Mathematical signal first"
     ) < markdown.index("## What a claim status asserts")
-    assert markdown.count("| ") >= 9
+    assert "### Reader tiers and relational boundaries" in markdown
+    assert "conditional endpoint leverage" in markdown
+    assert "deep mechanism and classification" in markdown
+    assert "supporting and long tail" in markdown
+    assert markdown.count("| ") >= len(ranking)
     assert len(markdown.encode("utf-8")) <= builder.ORIENTATION_MARKDOWN_MAX_BYTES
 
 
