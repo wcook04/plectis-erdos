@@ -658,13 +658,23 @@ def cmd_close(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         raise SystemExit("close refused: outcome summary must be non-empty")
     moves = session.moves()
     _validate_claim_evidence(session, moves, "close")
+    accepted_probes = sum(
+        row["kind"] == "probe"
+        and _probe_verdict(row, "close") == "kernel_accepted"
+        for row in moves
+    )
+    if args.outcome == "established":
+        if accepted_probes == 0:
+            raise SystemExit(
+                "close refused: established outcome requires a kernel_accepted probe"
+            )
+        if not any(row["kind"] == "claim" for row in moves):
+            raise SystemExit(
+                "close refused: established outcome requires an attributable claim"
+            )
     counts: dict[str, int] = {}
     for row in moves:
         counts[row["kind"]] = counts.get(row["kind"], 0) + 1
-    accepted_probes = 0
-    for row in moves:
-        if row["kind"] == "probe" and _probe_verdict(row, "close") == "kernel_accepted":
-            accepted_probes += 1
     record = _base_record(session, "session_closed")
     record.update(
         {

@@ -984,6 +984,34 @@ def check_session_lifecycle(sessions_root: Path) -> None:
             raise AssertionError(f"blank closure summary lacked a bounded diagnostic: {error}")
     else:
         raise AssertionError("workbench accepted whitespace-only closure summary")
+    _run(
+        sessions_root,
+        [
+            "open",
+            "--session",
+            "unverified-established",
+            "--intent",
+            "establishment evidence",
+        ],
+    )
+    try:
+        _run(
+            sessions_root,
+            [
+                "close",
+                "--session",
+                "unverified-established",
+                "--outcome",
+                "established",
+                "--summary",
+                "no evidence",
+            ],
+        )
+    except SystemExit as error:
+        if "kernel_accepted probe" not in str(error):
+            raise AssertionError(f"unverified establishment lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench established a session without accepted evidence")
 
     opened = _run(
         sessions_root,
@@ -1398,6 +1426,19 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
         )
         assert replay["probes_replayed"] == 2
         assert replay["all_match"]
+        established = _run(
+            sessions_root,
+            [
+                "close",
+                "--session",
+                "t_claims",
+                "--outcome",
+                "established",
+                "--summary",
+                "accepted claim",
+            ],
+        )
+        assert established["kernel_accepted_probes"] == 1
     finally:
         workbench.run_lean_probe = real_runner
 
