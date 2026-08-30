@@ -14,7 +14,7 @@
 \renewcommand{\commit}{76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0}
 \renewcommand{\commitshort}{76b5b0a7ed5d}
 \hypersetup{
-  pdftitle={Newton flow and critical-value ray separation for Erdős Problem 1041},
+  pdftitle={Admissible hubs and Newton-flow ray separation for Erdős Problem 1041},
   pdfsubject={Erdős Problem Notes: Problem 1041},
   pdfkeywords={lemniscate, Newton flow, saddle connection, Morse theory, Reeb decomposition, Lean 4},
 }
@@ -24,9 +24,9 @@
 \newcommand{\pdecl}[1]{\emph{\leanlabel{#1}}}
 \newcommand{\dbar}{\mathbb{D}}
 
-\runninghead{Erd\H{o}s \#1041: Newton flow and ray separation}
-\title{Newton Flow and Critical-Value Ray Separation}
-\subtitle{A checked dynamical input for Erd\H{o}s Problem~\#1041}
+\runninghead{Erd\H{o}s \#1041: admissible hubs and ray separation}
+\title{Admissible Hubs and Newton-Flow Ray Separation}
+\subtitle{Checked dynamical inputs and the metric throat for Erd\H{o}s Problem~\#1041}
 \author{Will Cook}
 \date{August 2026}
 
@@ -36,62 +36,57 @@
 
 \begin{abstract}
 \noindent
-Let $f(z)=\prod_{i}(z-z_i)$ be monic with every root in the open unit disc.
-Erd\H{o}s, Herzog, and Piranian asked whether two roots can always be joined by
-a curve of length less than $2$ contained in the open lemniscate
-$\{|f|<1\}$.  The problem is open.  A manuscript posted in March 2026 claims
-the result for all such $f$; its Proposition~12 is a load-bearing spanning-tree
-decomposition whose printed proof contains an invalid local saddle block.  At
-an interior Morse saddle a sufficiently small chart lies wholly in the open
-component and contains all four sectors, so the asserted one-lower/two-upper
-three-ended neighbourhood does not follow.  The proposition itself is not
-refuted and may admit a cut-annulus or four-pronged repair.  An independent
-June 2026 preprint proves the degree-four case.  The current public frontier
-is more specific than this dynamical diagnosis alone: near a Fekete
-configuration, radial deficits can be removed from the containment problem,
-while a degree-five analysis isolates rapid nearly-simultaneous merging near
-the regular pentagon.  Its exact envelope is already explicit: a critical
-value at most $1/M_5$, where
+Let $f(z)=\prod_i(z-z_i)$ be monic with roots in the closed unit disc.  Erd\H{o}s,
+Herzog, and Piranian ask whether two roots can always be joined by a curve of
+length less than $2$ inside $\{|f|<1\}$.  The global assertion remains open.
+The current metric throat is an admissible-hub selection problem: on the
+ray-separated dense class, find a critical hub $c$ whose two inverse-ray arms
+lie in the relevant component and prove
+\[
+  \min_{c\ \mathrm{admissible}} L(c)\le2.
+\]
+At degree five this becomes the explicit selection statement (SPOKE-5): every
+monic quintic with roots in the closed unit disc has a critical point and two
+roots whose contained nearest-root spokes have total length at most $2$.
+Neither selection assertion is proved here.  The near-Fekete reduction removes
+radial deficits from the containment question, and the degree-five envelope is
+already explicit: a critical value at most $1/M_5$, where
 \[
  M_5=(1-t_*)(1+t_*)^3\sqrt{16t_*^2-4t_*+1},
  \qquad t_*={5\over16}+{3\sqrt{105}\over80},
  \qquad 1/M_5=0.2760461\ldots,
 \]
 gives two contained nearest-root spokes of total length at most $2$.  The
-remaining degree-five statement is therefore a universal selection assertion
-at this threshold, not a further constant chase; it is recorded below but not
-proved.  This note therefore separates a genuine degree-five target,
-surviving carriers, and certified failures of tempting selection rules rather
-than presenting a uniform list of partial estimates.
-
-Along a trajectory of the complex Newton field $-f/f'$ the polynomial value
-satisfies $w'=-w$, so $f(z(t))=e^{-t}f(z(0))$ and $e^{t}f(z(t))$ is a first
-integral.  Both are checked by the Lean kernel.  The consequence is a
-separation criterion: the endpoints of any finite Newton-flow connection lie on
-one oriented ray from the origin, so critical values on distinct rays admit no
-saddle-to-saddle connection.  The criterion is sharper than the one the
-manuscript uses.  Distinct critical values, and even distinct critical-value
-moduli, do not exclude saddle connections; distinct critical-value
-\emph{arguments} do.  The obstruction to arranging distinct arguments by
-perturbation is also made explicit: for each pair of critical values the set of
-common translations causing a ray collision is a one-real-parameter locus, given
-in closed form.
-
-The formal route is explicit: Newton-value decay is checked at
+degree-five residual is a universal selection assertion at this threshold, not a
+constant chase.  The global Euclidean budget underneath this question is a
+separate solved subproblem: at every critical point, two nearest-root
+occurrences have total distance at most $2$.  The mechanism is the reciprocal
+critical balance together with the disk inverse-square estimate; Lean checks
+those two ingredients, while the polynomial-level assembly is an ordinary
+proof in the source map
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/6bebc6e396a4982d842ba214315dc4a8f043ea60/research_corpus/Erdos1041/CriticalTwoRootProximity.lean}{\texttt{CriticalTwoRootProximity.lean}}.
+This is a distance theorem, not a containment theorem: an exact quintic has a
+nearest straight spoke that exits $\{|f|<1\}$, and an exact cubic has an
+escaping midpoint on every straight root-pair segment.  Curved branch
+selection, rather than raw Euclidean budget, is therefore the surviving
+obligation.  The checked dynamical input is also exact.  Along a trajectory
+of the complex Newton field $-f/f'$, the polynomial value obeys $w'=-w$ and
+therefore $f(z(t))=e^{-t}f(z(0))$:
 \lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{the value equation}
 and
 \lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{the scaled first integral};
-the connection boundary is
+the endpoints of a finite connection consequently lie on one oriented ray, so
+distinct positive rays exclude a saddle connection
 \lword{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}{the ray-separation theorem},
-while the finite perturbation and root-retention interfaces are
+while the Claims/Comparator-selected finite perturbation interfaces are
 \lword{Erdos1041/NewtonFlowRaySeparation.lean}{197}{exists_small_translation_separating_arguments}{the translation theorem}
 and
 \lword{Erdos1041/NewtonFlowRaySeparation.lean}{287}{constant_perturbation_roots_in_unitDisk}{the unit-disc margin}.
-These are finite dynamical and stability interfaces, not the missing global
-topology or length-$2$ gluing argument.
-
-What remains is the planar topology and the length bookkeeping.  Neither is
-proved here, and Erd\H{o}s \#1041 is not settled.
+The degree-five threshold, the no-go witnesses, and the selector formulation
+are ordinary proof, exact-certificate, and computational evidence rather than
+additional kernel-checked theorems.  The remaining work is coefficient
+genericity, component stability, planar topology, and metric gluing; these
+obligations are not discharged here, and Erd\H{o}s \#1041 is not settled.
 \end{abstract}
 
 \externalreviewobject{The paper checks exponential Newton-value decay,
