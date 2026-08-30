@@ -407,6 +407,22 @@ def main() -> int:
         else:
             raise AssertionError("duplicate indexed route identity was accepted")
 
+    malformed_entrypoints = {
+        "machine_readable_paper": {
+            "entrypoints": [{"route_kind": "missing-id"}]
+        }
+    }
+    with patch.object(route_memory, "_json", return_value=malformed_entrypoints):
+        try:
+            route_memory._entrypoints(ROOT)
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "route_identity_shape",
+                f"malformed entrypoint returned {exc.code}",
+            )
+        else:
+            raise AssertionError("malformed entrypoint identity was accepted")
+
     # Exercise the real CLI, including the optimized interpreter path.
     check_cli_environment()
     completed = run_cli(

@@ -170,9 +170,9 @@ def _problem_row(root: Path, selector: str | int) -> dict[str, Any]:
     token = str(selector).strip()
     match_number = re.fullmatch(r"(?:#|erdos\s*)?(\d+)", token, re.IGNORECASE)
     matches: list[dict[str, Any]] = []
-    for row in problems:
+    for index, row in enumerate(problems):
         if not isinstance(row, Mapping):
-            continue
+            raise RouteMemoryError("problem_index_shape", f"problems[{index}]")
         if match_number:
             row_number = row.get("erdos_number")
             if type(row_number) is int and row_number == int(match_number.group(1)):
@@ -191,12 +191,12 @@ def _entrypoints(root: Path) -> list[dict[str, Any]]:
     rows = claims.get("machine_readable_paper", {}).get("entrypoints", [])
     result: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
-    for row in rows:
-        if not isinstance(row, Mapping) or not row.get("id"):
-            continue
+    for index, row in enumerate(rows):
+        if not isinstance(row, Mapping):
+            raise RouteMemoryError("route_identity_shape", f"entrypoints[{index}]")
         route_id = row.get("id")
         if not isinstance(route_id, str) or not route_id.strip():
-            raise RouteMemoryError("route_identity_shape", str(route_id))
+            raise RouteMemoryError("route_identity_shape", f"entrypoints[{index}]")
         if route_id in seen_ids:
             raise RouteMemoryError("duplicate_route_identity", route_id)
         seen_ids.add(route_id)
