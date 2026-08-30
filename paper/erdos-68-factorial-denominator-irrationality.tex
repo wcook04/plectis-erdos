@@ -488,6 +488,19 @@ checked bound
 \[
   \Ser=\frac aq,\ q>0 \quad\Longrightarrow\quad q\ge67.
 \]
+The two formal declarations behind this finite bound make its hypotheses
+explicit.  The generic theorem
+\lword{Erdos68/FactorialZeroPlateau.lean}{876}
+{rational_denominator_ge_of_nonunit_carry}{single non-unit carry bound}
+assumes $m\ge3$, an exact carry miss at that index, a positive denominator,
+and the displayed rational representation, then concludes $m\le q$.  The
+source-level specialization
+\lword{Erdos68/FactorialZeroPlateau.lean}{940}
+{sixty_seven_le_rational_denominator}{index-$67$ denominator bound}
+supplies the prime-index miss used above.  These are finite implications:
+they do not manufacture misses at arbitrarily large indices, and they do not
+turn the separately checked $300000$-cell GMP computation into a Lean
+evaluation or a cofinal theorem.
 
 There is a second, more arithmetic mechanism at doubled prime indices.  For
 every odd prime $p$, the kernel now specializes the strict-successor
@@ -1277,6 +1290,8 @@ pinned to the shared formal-source commit used throughout this problem-note
 series.
 
 \begin{itemize}[leftmargin=*]
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{876}{rational_denominator_ge_of_nonunit_carry}
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{940}{sixty_seven_le_rational_denominator}
 \item \lref{Erdos68/FactorialZeroPlateau.lean}{1090}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
 \item \lref{Erdos68/FactorialZeroPlateau.lean}{953}{irrational_factorialGapSeries_of_cofinal_nonunit_carries}
 \item \lref{Erdos68/PrimeZeroBranch.lean}{6099}{factorialGap_zero_branch_iff_lower_endpoint_cylinder}
