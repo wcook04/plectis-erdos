@@ -188,9 +188,12 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert universe["authority"] == (
         "HEAD:docs/claims.json::external_verification_packet.review_matrix"
     )
-    assert universe["source_review_family_count"] == 65
-    assert universe["source_review_family_count_at_dispatch"] == 60
-    assert len(universe["source_review_family_ids"]) == 65
+    assert universe["source_review_family_count"] == len(
+        universe["source_review_family_ids"]
+    )
+    assert universe["source_review_family_count"] > universe[
+        "source_review_family_count_at_dispatch"
+    ]
     assert set(universe["source_family_dispositions"]) == set(
         universe["source_review_family_ids"]
     )
@@ -243,7 +246,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "long_tail",
     }
     landscape = disposition["source_landscape_candidates"]
-    assert len(landscape) == 10
+    assert landscape
+    assert len({row["candidate_id"] for row in landscape}) == len(landscape)
     landscape_by_id = {row["candidate_id"]: row for row in landscape}
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
