@@ -51,8 +51,10 @@ python3 scripts/query_corpus.py --route erdos_<n>
 
 The packet identifies the problem-owned note, formal directory, module
 inventory, and open-obligation handles. Expand the matching row in
-[`docs/problems.json`](problems.json), then follow the exact paper/source and
-frontier joins described in [`docs/SEMANTIC_COMPILER.md`](SEMANTIC_COMPILER.md).
+[`docs/problems.json`](problems.json) to read its complete `what_is_checked`
+result inventory and `what_is_not_checked` evidence ceiling, then follow the
+exact paper/source and frontier joins described in
+[`docs/SEMANTIC_COMPILER.md`](SEMANTIC_COMPILER.md).
 This route is navigation evidence only: the Lean kernel remains proof
 authority and every problem-level open boundary remains open.
 
