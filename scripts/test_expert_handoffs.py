@@ -144,10 +144,39 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
     assert "actual three-prime running-LCM" in carry_escape["family"]["open_boundary"]
 
 
+def test_strict_prime_successor_is_support_only() -> None:
+    question = next(
+        row
+        for row in handoffs.mathematical_questions()
+        if row["id"] == "XQ249-adjacent-phase-separation"
+    )
+    supports = handoffs.source_current_supports(question)
+    assert len(supports) == 1
+    support = supports[0]
+    assert support["relation"] == "support"
+    assert support["relation_class"] == "existing_family_support_only"
+    assert support["family_id"] == "strict_prime_tail_orbit_gap"
+    assert support["source_declaration"] == (
+        "ErdosProblems.Erdos249.tailOrbitFirstExp_succ"
+    )
+    assert support["source"] == {
+        "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+        "line": 167,
+    }
+    assert "neither adds a route family" in support["support_boundary"]
+    assert "cofinal natural-prime strict-gap" in support["open_boundary"]
+
+    non_249 = next(
+        row for row in handoffs.mathematical_questions() if row["problem"] == "257"
+    )
+    assert handoffs.source_current_supports(non_249) == []
+
+
 def main() -> int:
     assert handoffs.protocol_errors() == []
     test_mathematical_handoff_exposes_selector_without_route_invention()
     test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar()
+    test_strict_prime_successor_is_support_only()
     packet = handoffs.question_packet(None)
     assert packet["packet_kind"] == "compact_index"
     assert packet["count"] == 6

@@ -293,6 +293,71 @@ def semantic_endpoint_handoff_route() -> dict[str, Any]:
     }
 
 
+def source_current_supports(row: Mapping[str, Any]) -> list[dict[str, Any]]:
+    """Expose source-current supporting declarations without minting a family.
+
+    ``tailOrbitFirstExp_succ`` belongs inside the already-ranked strict-prime
+    family. It is a recurrence support for that conditional route, never a
+    new endpoint route or a reason to relax the unsupplied density/cofinal-prime
+    producers.
+    """
+    if str(row.get("problem") or "") != "249":
+        return []
+    claims = load_json(CLAIMS)
+    family = next(
+        (
+            candidate
+            for candidate in claims.get("claims", [])
+            if candidate.get("id") == "strict_prime_tail_orbit_gap"
+        ),
+        None,
+    )
+    if not isinstance(family, dict):
+        return []
+    declaration = next(
+        (
+            candidate
+            for candidate in family.get("declarations", [])
+            if candidate.get("name") == "tailOrbitFirstExp_succ"
+        ),
+        None,
+    )
+    if not isinstance(declaration, dict):
+        return []
+    review = _claim_family_rows(claims).get("strict_prime_tail_orbit_gap", {})
+    return [
+        {
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "family_id": "strict_prime_tail_orbit_gap",
+            "source_declaration": (
+                "ErdosProblems.Erdos249.tailOrbitFirstExp_succ"
+            ),
+            "source": {
+                "module": declaration.get("module"),
+                "line": declaration.get("line"),
+            },
+            "support_boundary": (
+                "This successor recurrence supports the existing strict-prime "
+                "tail-orbit mechanism only; it neither adds a route family nor "
+                "supplies a density, cofinal-prime, or uniform-margin producer."
+            ),
+            "open_boundary": review.get("boundary"),
+            "authority": {
+                "declaration": "docs/claims.json::claims[strict_prime_tail_orbit_gap]",
+                "family_boundary": (
+                    "docs/claims.json::external_verification_packet.review_matrix"
+                    ".families[strict_prime_tail_orbit_gap]"
+                ),
+            },
+            "follow": (
+                "python3 scripts/query_semantic.py family-relations "
+                "strict_prime_tail_orbit_gap"
+            ),
+        }
+    ]
+
+
 def route_memory_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
     """Expose a problem-bound resume command without inventing a route.
 
@@ -427,6 +492,7 @@ def respondent_view(row: dict[str, Any]) -> dict[str, Any]:
         view = dict(row)
         view["route_memory"] = route_memory_handoff(row)
         view["problem_route"] = problem_route_handoff(row)
+        view["source_current_supports"] = source_current_supports(row)
         return view
     return {
         key: value
@@ -474,6 +540,7 @@ def compact_respondent_view(row: dict[str, Any]) -> dict[str, Any]:
     if row.get("domain") == MATH_DOMAIN:
         result["route_memory"] = route_memory_handoff(row)
         result["problem_route"] = problem_route_handoff(row)
+        result["source_current_supports"] = source_current_supports(row)
     return result
 
 
