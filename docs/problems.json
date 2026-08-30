@@ -490,16 +490,17 @@
       },
       "external_check": {
         "state": "reviewed",
-        "family_count": 8,
+        "family_count": 9,
         "by_class": {
           "not_selected": 4,
           "represented_by": 1,
-          "targeted": 3
+          "targeted": 4
         },
         "dispositions": {
           "totient_kernel_basis": "targeted",
           "totient_kernel_rank": "targeted",
           "totient_kernel_all_base_index": "targeted",
+          "totient_visible_coprime_lattice_mass": "targeted",
           "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
           "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
           "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",

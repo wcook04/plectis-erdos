@@ -7,7 +7,7 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** Nineteen selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 21 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
