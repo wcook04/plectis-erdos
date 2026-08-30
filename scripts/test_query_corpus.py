@@ -1977,6 +1977,73 @@ def main() -> int:
         assert resolved["module"]["path"] == row["path"]
         assert resolved["paper_sigil"] == row["sigil"]
 
+    exact_row_module = query(
+        "--module", "BooleanMobiusSkipRowCofinal", "--limit", "12"
+    )
+    assert exact_row_module["module_handle_resolution"] == {
+        "requested": "BooleanMobiusSkipRowCofinal",
+        "resolved": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+        "method": "unique_module_stem",
+        "authority": "docs/declaration_atlas.json::modules",
+    }
+    assert exact_row_module["paper_sigil"] == "BooMobSkiRowCof"
+    assert exact_row_module["attached_claims"] == []
+    exact_row_family = next(
+        row
+        for row in exact_row_module["reviewed_result_families"]
+        if row["id"] == "boolean_mobius_exact_row_dynamics"
+    )
+    assert exact_row_family["source_route"] == (
+        "Erdos249257/BooleanMobiusSkipRowCofinal.lean"
+    )
+    assert exact_row_family["representative"] == (
+        "Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips"
+    )
+    assert exact_row_family["paper_route"] == {
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "command": (
+            "python3 scripts/query_corpus.py --paper-source "
+            "paper/erdos-257-mersenne-support-subseries.tex"
+        ),
+        "matching_anchors": [],
+        "authority_posture": "authored_paper_navigation_not_proof_authority",
+    }
+    assert "CofinalPositiveHalfGreedySkips is an unproved global supply premise" in (
+        exact_row_family["open_boundary"]["boundary"]
+    )
+    assert exact_row_family["open_boundary"]["problem_route"] == (
+        "python3 scripts/query_corpus.py --route erdos_257"
+    )
+    exact_row_problem = next(
+        row
+        for row in exact_row_module["problem_routes"]
+        if row["problem_id"] == "erdos_257"
+    )
+    assert exact_row_problem["reviewed_result_family_ids"] == [
+        "boolean_mobius_exact_row_dynamics"
+    ]
+    assert exact_row_problem["paper_route"]["command"] == (
+        "python3 scripts/query_corpus.py --paper-source "
+        "paper/erdos-257-mersenne-support-subseries.tex"
+    )
+    assert exact_row_module["route_memory"]["status"] == "bound"
+    assert exact_row_module["route_memory"]["bindings"] == [
+        {
+            "route_id": "erdos_257",
+            "problem_number": 257,
+            "command": "python3 scripts/query_route_memory.py --problem 257",
+            "route_kind": "problem_route",
+            "authority_posture": (
+                "derived_resume_handoff_not_claim_or_proof_authority"
+            ),
+            "identity_contract": (
+                "The route-memory command binds this source-bound module to "
+                "the selected problem and current tracked source digests "
+                "before resume."
+            ),
+        }
+    ]
+
     sigil_search = query("--search", "CerKer", "--limit", "1")
     assert sigil_search["results"][0]["kind"] == "module"
     assert sigil_search["results"][0]["path"] == "Erdos249257/CertificateKernel.lean"

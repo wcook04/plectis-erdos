@@ -19,7 +19,7 @@ PAPERS = (
 )
 OUTPUT = PAPER_DIR / "module-aliases.tex"
 JSON_OUTPUT = PAPER_DIR / "module-aliases.json"
-LINK_RE = re.compile(r"\\(?:lrefx?|lloc)\{([^}]+\.lean)\}")
+LINK_RE = re.compile(r"\\(?:lrefx?|lloc|lword)\{([^}]+\.lean)\}")
 
 
 def camel_components(stem: str) -> list[str]:

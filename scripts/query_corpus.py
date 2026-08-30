@@ -2951,9 +2951,11 @@ def declaration_route_memory_rows(
 
 
 def module_route_memory_projection(
-    declarations: list[dict[str, Any]], claims: dict[str, Any]
+    declarations: list[dict[str, Any]],
+    claims: dict[str, Any],
+    source_problem_routes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Aggregate exact declaration bindings into a module resume handoff."""
+    """Aggregate exact declaration and source-bound problem handoffs."""
     routed_declarations = declaration_route_memory_rows(declarations, claims)
     bindings = []
     seen_routes: set[str] = set()
@@ -2963,6 +2965,33 @@ def module_route_memory_projection(
                 continue
             seen_routes.add(binding["route_id"])
             bindings.append(binding)
+    for route in source_problem_routes or []:
+        route_id = route.get("problem_id")
+        problem_number = route.get("erdos_number")
+        if not isinstance(route_id, str) or problem_number is None:
+            continue
+        if route_id in seen_routes:
+            continue
+        seen_routes.add(route_id)
+        bindings.append(
+            {
+                "route_id": route_id,
+                "problem_number": problem_number,
+                "command": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{problem_number}"
+                ),
+                "route_kind": "problem_route",
+                "authority_posture": (
+                    "derived_resume_handoff_not_claim_or_proof_authority"
+                ),
+                "identity_contract": (
+                    "The route-memory command binds this source-bound module "
+                    "to the selected problem and current tracked source "
+                    "digests before resume."
+                ),
+            }
+        )
     projection = {
         "status": "bound" if bindings else "unbound",
         "bindings": bindings,
@@ -2974,8 +3003,9 @@ def module_route_memory_projection(
         ),
         "authority_posture": "derived_resume_handoff_not_claim_or_proof_authority",
         "boundary": (
-            "Module bindings aggregate exact declaration route handoffs; they do "
-            "not promote claims or replace Lean module authority."
+            "Module bindings aggregate exact declaration or source-bound problem "
+            "route handoffs; they do not promote claims or replace Lean module "
+            "authority."
         ),
     }
     if not bindings:
@@ -2987,9 +3017,11 @@ def module_route_memory_projection(
 
 
 def module_problem_routes(
-    module_path: str, problems: list[dict[str, Any]]
+    module_path: str,
+    problems: list[dict[str, Any]],
+    claims: dict[str, Any],
 ) -> list[dict[str, Any]]:
-    """Bind an exact indexed module path back to its problem-owned route."""
+    """Bind an indexed or reviewed-family source module to its problem route."""
     routes = []
     for problem in problems:
         modules = problem.get("modules", [])
@@ -2999,6 +3031,8 @@ def module_problem_routes(
         ):
             continue
         obligations = problem.get("open_obligations", [])
+        paper = problem.get("paper") or {}
+        paper_source = paper.get("source")
         routes.append(
             {
                 "problem_id": problem["problem_id"],
@@ -3007,7 +3041,19 @@ def module_problem_routes(
                     "python3 scripts/query_corpus.py --route "
                     f"{problem['problem_id']}"
                 ),
-                "paper_source": problem.get("paper", {}).get("source"),
+                "paper_source": paper_source,
+                "paper_route": {
+                    "source": paper_source,
+                    "command": (
+                        "python3 scripts/query_corpus.py --paper-source "
+                        f"{paper_source}"
+                    )
+                    if paper_source
+                    else None,
+                    "authority_posture": (
+                        "authored_paper_navigation_not_proof_authority"
+                    ),
+                },
                 "open_obligation_ids": [
                     item["id"]
                     for item in obligations
@@ -3015,6 +3061,144 @@ def module_problem_routes(
                 ],
             }
         )
+    family_routes = reviewed_result_family_module_routes(module_path, claims, problems)
+    for family_route in family_routes:
+        problem_id = family_route["problem_id"]
+        route = next(
+            (row for row in routes if row["problem_id"] == problem_id), None
+        )
+        if route is None:
+            problem = next(
+                row
+                for row in problems
+                if row.get("problem_id") == problem_id
+            )
+            obligations = problem.get("open_obligations", [])
+            paper = problem.get("paper") or {}
+            paper_source = paper.get("source")
+            route = {
+                "problem_id": problem_id,
+                "erdos_number": problem["erdos_number"],
+                "command": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"{problem_id}"
+                ),
+                "paper_source": paper_source,
+                "paper_route": {
+                    "source": paper_source,
+                    "command": (
+                        "python3 scripts/query_corpus.py --paper-source "
+                        f"{paper_source}"
+                    )
+                    if paper_source
+                    else None,
+                    "authority_posture": (
+                        "authored_paper_navigation_not_proof_authority"
+                    ),
+                },
+                "open_obligation_ids": [
+                    item["id"]
+                    for item in obligations
+                    if isinstance(item, Mapping)
+                    and isinstance(item.get("id"), str)
+                ],
+                "match_kind": "reviewed_result_family_source",
+            }
+            routes.append(route)
+        route.setdefault("reviewed_result_family_ids", []).append(
+            family_route["id"]
+        )
+        route.setdefault("reviewed_result_family_routes", []).append(family_route)
+    return routes
+
+
+def reviewed_result_family_module_routes(
+    module_path: str,
+    claims: dict[str, Any],
+    problems: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Expose reviewed families whose governed source record names this module."""
+    routes = []
+    for problem in problems:
+        paper = problem.get("paper") or {}
+        paper_source = paper.get("source")
+        for family in reviewed_result_family_rows(claims, problem["erdos_number"]):
+            source_rows = reviewed_result_family_source_rows(
+                claims, problem["erdos_number"], family["id"]
+            )
+            matching_source_rows = [
+                row
+                for row in source_rows
+                if str(row.get("original_source", "")).removeprefix("./")
+                == module_path
+            ]
+            if not matching_source_rows:
+                continue
+            declarations = [
+                str(declaration)
+                for declaration in family.get("declarations", [])
+            ]
+            if not declarations:
+                declarations = reviewed_result_family_source_declarations(
+                    claims, problem["erdos_number"], family["id"]
+                )
+            routes.append(
+                {
+                    "id": family["id"],
+                    "problem_id": problem["problem_id"],
+                    "erdos_number": problem["erdos_number"],
+                    "source_route": module_path,
+                    "representative": matching_source_rows[0].get(
+                        "original_declaration"
+                    ),
+                    "wrapper_declaration": matching_source_rows[0].get(
+                        "wrapper_declaration"
+                    ),
+                    "contribution_class": family.get("contribution_class"),
+                    "summary": family.get("summary"),
+                    "evidence_mode": family.get("evidence_mode"),
+                    "comparator_disposition": family.get(
+                        "comparator_disposition"
+                    ),
+                    "declarations": declarations,
+                    "declaration_routes": [
+                        "python3 scripts/query_corpus.py --declaration "
+                        f"{declaration}"
+                        for declaration in declarations
+                    ],
+                    "paper_route": {
+                        "source": paper_source,
+                        "command": (
+                            "python3 scripts/query_corpus.py --paper-source "
+                            f"{paper_source}"
+                        )
+                        if paper_source
+                        else None,
+                        "matching_anchors": paper_anchor_routes_for_declarations(
+                            paper_source, declarations
+                        ),
+                        "authority_posture": (
+                            "authored_paper_navigation_not_proof_authority"
+                        ),
+                    },
+                    "open_boundary": {
+                        "boundary": family.get("boundary"),
+                        "problem_route": (
+                            "python3 scripts/query_corpus.py --route "
+                            f"{problem['problem_id']}"
+                        ),
+                        "problem_open_obligation_ids": [
+                            item["id"]
+                            for item in problem.get("open_obligations", [])
+                            if isinstance(item, Mapping)
+                            and isinstance(item.get("id"), str)
+                        ],
+                        "authority_posture": (
+                            "claim_registry_boundary_navigation_not_proof_authority"
+                        ),
+                    },
+                }
+            )
     return routes
 
 
@@ -3536,12 +3720,15 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
 
 def module_packet(handle: str, limit: int) -> dict[str, Any]:
     packet_limit = min(limit, MODULE_PACKET_LIMIT)
+    requested_handle = handle
     atlas = load("docs/declaration_atlas.json")
     claims = load("docs/claims.json")
     aliases = load("paper/module-aliases.json")["aliases"]
     alias = next((row for row in aliases if row["sigil"].casefold() == handle.casefold()), None)
+    resolution = "exact_module_handle"
     if alias is not None:
         handle = alias["path"]
+        resolution = "paper_sigil"
     normalized = handle.replace(".", "/") + ".lean" if "/" not in handle else handle
     normalized = normalized.removeprefix("./")
     module = next(
@@ -3552,6 +3739,23 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         ),
         None,
     )
+    if module is None and alias is None:
+        requested_stem = Path(handle).name.removesuffix(".lean").casefold()
+        stem_matches = [
+            row
+            for row in atlas["modules"]
+            if Path(row["path"]).stem.casefold() == requested_stem
+        ]
+        if len(stem_matches) > 1:
+            candidates = ", ".join(row["path"] for row in stem_matches[:8])
+            raise KeyError(
+                f"ambiguous module shorthand: {requested_handle}; candidates: "
+                f"{candidates}"
+            )
+        if len(stem_matches) == 1:
+            module = stem_matches[0]
+            handle = module["path"]
+            resolution = "unique_module_stem"
     if module is None:
         raise KeyError(f"unknown module handle: {handle}")
     roles = module_roles(claims)
@@ -3582,28 +3786,51 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         [compact_declaration(row) for row in declarations[:packet_limit]],
         claims,
     )
-    module_route_memory = module_route_memory_projection(declarations, claims)
+    problems = load("docs/problems.json").get("problems", [])
     problem_routes = module_problem_routes(
-        module["path"], load("docs/problems.json").get("problems", [])
+        module["path"], problems, claims
+    )
+    reviewed_family_routes = reviewed_result_family_module_routes(
+        module["path"], claims, problems
+    )
+    module_route_memory = module_route_memory_projection(
+        declarations,
+        claims,
+        [
+            route
+            for route in problem_routes
+            if route.get("reviewed_result_family_ids")
+        ],
     )
     return {
         "kind": "module",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
         "lean_source_identity": formal_source_identity(claims),
+        "module_handle_resolution": {
+            "requested": requested_handle,
+            "resolved": module["path"],
+            "method": resolution,
+            "authority": "docs/declaration_atlas.json::modules",
+        },
         "module": module_view,
         "paper_sigil": next(
             (row["sigil"] for row in aliases if row["path"] == module["path"]), None
         ),
         "attached_claims": claim_rows,
+        "reviewed_result_families": reviewed_family_routes,
         "declaration_preview": declaration_preview,
         "problem_routes": problem_routes,
         "problem_route_contract": {
             "source": "docs/problems.json::problems[].modules",
-            "matching": "exact indexed module path",
+            "matching": (
+                "exact indexed module path or docs/claims.json::external_"
+                "verification_packet.main_results.original_source"
+            ),
             "boundary": (
                 "Problem routes are navigation context; they expand the paper, "
-                "families, declarations, sources, and exact open obligations "
-                "without promoting a claim or replacing Lean authority."
+                "reviewed families, declarations, sources, and exact open "
+                "obligations without promoting a claim or replacing Lean "
+                "authority."
             ),
         },
         "route_memory": module_route_memory,
