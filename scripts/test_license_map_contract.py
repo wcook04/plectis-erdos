@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import copy
+import tempfile
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -51,6 +52,32 @@ def require(condition: bool, message: str) -> None:
     """Keep licensing contract failures active when run with ``python -O``."""
     if not condition:
         raise AssertionError(message)
+
+
+class UnsafeLicenseInput(ValueError):
+    """A release-licensing input escaped the checkout or is not a file."""
+
+
+def safe_license_file(root: Path, relative: str) -> Path:
+    """Read only regular, non-symlink files beneath the asserted checkout."""
+    path = Path(relative)
+    if path.is_absolute() or ".." in path.parts:
+        raise UnsafeLicenseInput(f"non-relative licensing input: {relative}")
+
+    candidate = root / path
+    root_resolved = root.resolve()
+    current = root
+    for component in path.parts:
+        current /= component
+        if current.is_symlink():
+            raise UnsafeLicenseInput(f"symlinked licensing input: {relative}")
+
+    resolved = candidate.resolve()
+    if resolved != root_resolved and root_resolved not in resolved.parents:
+        raise UnsafeLicenseInput(f"licensing input escaped checkout: {relative}")
+    if not candidate.is_file():
+        raise UnsafeLicenseInput(f"licensing input is not a regular file: {relative}")
+    return candidate
 
 
 def encode_reuse(config: dict[str, Any]) -> str:
@@ -143,15 +170,20 @@ def license_map_errors(
 
 
 def main() -> int:
-    reuse = (ROOT / "REUSE.toml").read_text(encoding="utf-8")
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    reuse = safe_license_file(ROOT, "REUSE.toml").read_text(encoding="utf-8")
+    readme = safe_license_file(ROOT, "README.md").read_text(encoding="utf-8")
     sources = {
-        path: (ROOT / path).read_text(encoding="utf-8")
+        path: safe_license_file(ROOT, path).read_text(encoding="utf-8")
         for path in MANUSCRIPT_SOURCES
     }
+    safe_license_dir = ROOT / "LICENSES"
+    if safe_license_dir.is_symlink() or not safe_license_dir.is_dir():
+        raise UnsafeLicenseInput("LICENSES is not a regular checkout directory")
     license_files = {
-        path.relative_to(ROOT).as_posix()
-        for path in (ROOT / "LICENSES").glob("*.txt")
+        safe_license_file(ROOT, path.relative_to(ROOT).as_posix())
+        .relative_to(ROOT)
+        .as_posix()
+        for path in safe_license_dir.glob("*.txt")
     }
     require(
         not license_map_errors(reuse, readme, sources, license_files),
@@ -241,10 +273,23 @@ def main() -> int:
         "weakened README license boundary was accepted",
     )
 
+    with tempfile.TemporaryDirectory(prefix="license-map-boundary-") as raw:
+        fixture_root = Path(raw) / "checkout"
+        fixture_root.mkdir()
+        outside = Path(raw) / "private.txt"
+        outside.write_text("private licensing evidence", encoding="utf-8")
+        (fixture_root / "REUSE.toml").symlink_to(outside)
+        try:
+            safe_license_file(fixture_root, "REUSE.toml")
+        except UnsafeLicenseInput:
+            pass
+        else:
+            raise AssertionError("symlinked licensing input was accepted")
+
     print(
         "test_license_map_contract: Apache software and CC-BY manuscript "
         "sources/rendered artifacts remain separated; "
-        "6 negative fixtures rejected"
+        "7 negative fixtures rejected"
     )
     return 0
 

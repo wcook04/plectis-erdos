@@ -8,6 +8,7 @@ from __future__ import annotations
 import copy
 import json
 import re
+import tempfile
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -184,12 +185,50 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+class UnsafeDependencyInput(ValueError):
+    """A release-lock input escaped the checkout or is not a file."""
+
+
+def safe_dependency_file(root: Path, relative: str) -> Path:
+    """Read only regular, non-symlink files beneath the asserted checkout."""
+    path = Path(relative)
+    if path.is_absolute() or ".." in path.parts:
+        raise UnsafeDependencyInput(f"non-relative dependency input: {relative}")
+
+    candidate = root / path
+    root_resolved = root.resolve()
+    current = root
+    for component in path.parts:
+        current /= component
+        if current.is_symlink():
+            raise UnsafeDependencyInput(f"symlinked dependency input: {relative}")
+
+    resolved = candidate.resolve()
+    if resolved != root_resolved and root_resolved not in resolved.parents:
+        raise UnsafeDependencyInput(f"dependency input escaped checkout: {relative}")
+    if not candidate.is_file():
+        raise UnsafeDependencyInput(
+            f"dependency input is not a regular file: {relative}"
+        )
+    return candidate
+
+
 def main() -> int:
-    toolchain = (ROOT / "lean-toolchain").read_text(encoding="utf-8")
-    lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
-    manifest = (ROOT / "lake-manifest.json").read_text(encoding="utf-8")
-    requirements = (ROOT / "requirements-release.txt").read_text(encoding="utf-8")
-    workflow = (ROOT / ".github/workflows/lean.yml").read_text(encoding="utf-8")
+    toolchain = safe_dependency_file(ROOT, "lean-toolchain").read_text(
+        encoding="utf-8"
+    )
+    lakefile = safe_dependency_file(ROOT, "lakefile.toml").read_text(
+        encoding="utf-8"
+    )
+    manifest = safe_dependency_file(ROOT, "lake-manifest.json").read_text(
+        encoding="utf-8"
+    )
+    requirements = safe_dependency_file(
+        ROOT, "requirements-release.txt"
+    ).read_text(encoding="utf-8")
+    workflow = safe_dependency_file(
+        ROOT, ".github/workflows/lean.yml"
+    ).read_text(encoding="utf-8")
     require(
         not dependency_lock_errors(toolchain, lakefile, manifest),
         "the live Lean dependency lock must satisfy its contract",
@@ -316,11 +355,24 @@ def main() -> int:
         "a bare metadata-validator install must be rejected",
     )
 
+    with tempfile.TemporaryDirectory(prefix="dependency-lock-boundary-") as raw:
+        fixture_root = Path(raw) / "checkout"
+        fixture_root.mkdir()
+        outside = Path(raw) / "private.toml"
+        outside.write_text("name = 'private'", encoding="utf-8")
+        (fixture_root / "lakefile.toml").symlink_to(outside)
+        try:
+            safe_dependency_file(fixture_root, "lakefile.toml")
+        except UnsafeDependencyInput:
+            pass
+        else:
+            raise AssertionError("symlinked dependency input was accepted")
+
     print(
         "test_dependency_lock_contract: Lean, direct Mathlib input, and "
         f"{len(manifest_data['packages'])} exact package revisions plus "
         f"{len(RELEASE_VALIDATOR_REQUIREMENTS)} release-validator pins agree; "
-        "10 negative fixtures rejected"
+        "11 negative fixtures rejected"
     )
     return 0
 
