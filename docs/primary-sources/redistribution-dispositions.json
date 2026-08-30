@@ -25,6 +25,12 @@
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
+  "source_record_coverage": {
+    "citation_only_source_records": [
+      "docs/primary-sources/reciprocal-tail/chowla-1947-source-closure.md",
+      "docs/primary-sources/totient-kernel/nesterenko-1996-source-closure.md"
+    ]
+  },
   "artifacts": [
     {
       "path": "docs/primary-sources/dyadic-carry/wang-2026-v4-source.tar.gz",

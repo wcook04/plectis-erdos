@@ -159,6 +159,34 @@ def main() -> int:
     weakened_policy["policy"]["allowed_dispositions"] = ["link_and_digest_only"]  # type: ignore[index]
     reject(weakened_policy, "canonical disposition set", tracked, present)
 
+    unclassified_closure = copy.deepcopy(data)
+    unclassified_closure["source_record_coverage"]["citation_only_source_records"].pop()  # type: ignore[index]
+    reject(
+        unclassified_closure,
+        "source closure lacks an artifact-backed or citation-only disposition",
+        tracked,
+        present,
+    )
+
+    artifact_backed_as_citation_only = copy.deepcopy(data)
+    artifact_backed_as_citation_only["source_record_coverage"]["citation_only_source_records"].append(  # type: ignore[index]
+        artifact_backed_as_citation_only["artifacts"][0]["source_record"]  # type: ignore[index]
+    )
+    reject(
+        artifact_backed_as_citation_only,
+        "citation-only source record is artifact-backed",
+        tracked,
+        present,
+    )
+
+    future_closure = "docs/primary-sources/future-source-closure.md"
+    reject(
+        data,
+        "source closure lacks an artifact-backed or citation-only disposition",
+        tracked | {future_closure},
+        present,
+    )
+
     wrong_root = copy.deepcopy(data)
     wrong_root["inventory"]["root"] = "docs/"  # type: ignore[index]
     reject(wrong_root, "inventory root", tracked, present)
@@ -206,7 +234,7 @@ def main() -> int:
 
     print(
         "test_primary_source_dispositions: baseline clean; "
-        "5 unauthorized or inconsistent mutations, 2 private metadata fixtures, "
+        "8 unauthorized or inconsistent mutations, 2 private metadata fixtures, "
         f"3 notice mutations, and {reference_checks} path-boundary checks rejected"
     )
     return 0

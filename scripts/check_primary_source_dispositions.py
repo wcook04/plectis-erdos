@@ -37,6 +37,7 @@ DISPOSITIONS = {
     "unresolved_release_blocker",
 }
 ARTIFACT_SUFFIXES = (".pdf", ".scan", ".tar", ".tar.gz", ".tgz", ".zip", ".7z")
+SOURCE_CLOSURE_SUFFIX = "-source-closure.md"
 PRIVATE_PATH_MARKERS = (
     ("Unix home path", b"/Users/"),
     ("Linux home path", b"/home/"),
@@ -192,6 +193,11 @@ def present_artifact_paths() -> set[str]:
         for path in SOURCE_ROOT.rglob("*")
         if path.is_file() and path.name != LEDGER.name and path.name.lower().endswith(ARTIFACT_SUFFIXES)
     }
+
+
+def source_closure_paths(tracked: set[str]) -> set[str]:
+    """Return the tracked source-evidence closures that need a disposition."""
+    return {path for path in tracked if path.endswith(SOURCE_CLOSURE_SUFFIX)}
 
 
 def metadata_private_path_errors(metadata: dict[str, bytes]) -> list[str]:
@@ -390,10 +396,16 @@ def disposition_errors(
         )
     inventory = data.get("inventory")
     artifacts = data.get("artifacts")
+    source_record_coverage = data.get("source_record_coverage")
     require(isinstance(inventory, dict), "ledger inventory must be an object", errors)
     require(isinstance(artifacts, list), "ledger artifacts must be a list", errors)
     if not isinstance(inventory, dict) or not isinstance(artifacts, list):
         return errors
+    require(
+        isinstance(source_record_coverage, dict),
+        "ledger source_record_coverage must be an object",
+        errors,
+    )
     require(
         inventory.get("root") == "docs/primary-sources/",
         "ledger inventory root must remain docs/primary-sources/",
@@ -411,6 +423,7 @@ def disposition_errors(
     }
     seen: set[str] = set()
     listed_artifacts: set[str] = set()
+    artifact_backed_source_records: set[str] = set()
     for index, record in enumerate(artifacts):
         if not isinstance(record, dict):
             errors.append(f"artifact record {index} must be an object")
@@ -457,6 +470,14 @@ def disposition_errors(
                     f"{raw_path} has unusable {field}",
                     errors,
                 )
+        source_record = record.get("source_record")
+        require(
+            isinstance(source_record, str) and source_record.endswith(SOURCE_CLOSURE_SUFFIX),
+            f"{raw_path} source_record must name a source-closure record",
+            errors,
+        )
+        if isinstance(source_record, str) and source_record.endswith(SOURCE_CLOSURE_SUFFIX):
+            artifact_backed_source_records.add(source_record)
         consumers = record.get("consumer_refs")
         require(isinstance(consumers, list) and consumers, f"{raw_path} lacks consumer_refs", errors)
         if isinstance(consumers, list):
@@ -521,6 +542,47 @@ def disposition_errors(
         errors.extend(f"tracked source artifact is absent from the disposition ledger: {path}" for path in unlisted_tracked)
     if present is not None:
         errors.extend(f"present source artifact is absent from the disposition ledger: {path}" for path in sorted(present - listed_artifacts))
+
+    if isinstance(source_record_coverage, dict):
+        citation_only = source_record_coverage.get("citation_only_source_records")
+        require(
+            isinstance(citation_only, list),
+            "ledger citation_only_source_records must be a list",
+            errors,
+        )
+        citation_only_paths: set[str] = set()
+        if isinstance(citation_only, list):
+            for reference in citation_only:
+                require(
+                    isinstance(reference, str) and reference.endswith(SOURCE_CLOSURE_SUFFIX),
+                    "citation-only source record must name a source-closure record",
+                    errors,
+                )
+                if isinstance(reference, str):
+                    citation_only_paths.add(reference)
+                    require(
+                        safe_reference_file(reference),
+                        f"citation-only source record is unusable: {reference}",
+                        errors,
+                    )
+            require(
+                len(citation_only_paths) == len(citation_only),
+                "citation-only source record is duplicated",
+                errors,
+            )
+        closure_paths = source_closure_paths(tracked if tracked is not None else tracked_paths())
+        errors.extend(
+            f"source closure lacks an artifact-backed or citation-only disposition: {path}"
+            for path in sorted(closure_paths - artifact_backed_source_records - citation_only_paths)
+        )
+        errors.extend(
+            f"citation-only source record is artifact-backed: {path}"
+            for path in sorted(citation_only_paths & artifact_backed_source_records)
+        )
+        errors.extend(
+            f"citation-only source record is not tracked: {path}"
+            for path in sorted(citation_only_paths - closure_paths)
+        )
 
     errors.extend(primary_source_metadata_errors())
 
