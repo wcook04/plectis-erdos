@@ -145,6 +145,19 @@ where supplied, and the exact open-obligation statements. From there,
 proof, source, and exposition drilldowns. These are navigation projections;
 Lean source remains proof authority and the family boundaries remain open.
 
+For module-level source traversal, use the same read-only query surface:
+
+```sh
+python3 scripts/query_corpus.py --module <module_path_or_sigil>
+```
+
+The module path comes from the source inventory, while a paper sigil is the
+short label emitted for paper links. Either selector returns the module
+synopsis, declaration preview, exact source identity, attached claims, paper
+sigil, and any bound route-memory context. The generated
+`docs/module_synopsis_index.json` supplies the header synopsis used by this
+route; it is an index, not proof or claim authority.
+
 ### Two libraries, two levels of claim
 
 The repository holds two Lean roots and they are not interchangeable.
