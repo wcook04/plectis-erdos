@@ -234,6 +234,33 @@ theorem downstream_conditional_carry_escape
   Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape
     b m shortBound hescape B hBpos hBcoprime d hrec hpos hbound
 
+/-! The weighted-phase observer is the algebraic companion to the conditional
+#269 escape route.  It exposes the exact finite residue digit together with
+the integral quotient coboundary, while leaving the quotient dynamics and the
+actual running-LCM/rationality bridge open. -/
+
+/-- Downstream reuse of the exact weighted-carry residue/coboundary identity.
+
+The positive modulus and full integer recurrence remain explicit.  This is a
+finite-coordinate decomposition only: it proves neither a finite-state
+quotient recurrence nor an irrationality result for Erdős #269. -/
+theorem downstream_weighted_phase_carry_observer
+    (B : ℤ) (hB : 0 < B)
+    (base carry digit : ℕ → ℤ)
+    (hrec : ∀ n,
+      carry (n + 1) = base n * carry n - B * digit n) :
+    let residue := fun n =>
+      Erdos249257.ExternalVerification.weightedCarryResidue B (carry n)
+    let quotient := fun n =>
+      Erdos249257.ExternalVerification.weightedCarryQuotient B (carry n)
+    ∀ n,
+      digit n =
+        Erdos249257.ExternalVerification.weightedResidueDigit B (base n)
+          (residue n) (residue (n + 1)) +
+          base n * quotient n - quotient (n + 1) :=
+  Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary
+    B hB base carry digit hrec
+
 /-! The Boolean–Möbius transport is a second, genuinely reusable view of
 #257 rationality: it removes the support from the downstream certificate while
 retaining the exact rational numerator, denominator, and positivity boundary.
