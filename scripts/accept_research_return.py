@@ -37,7 +37,9 @@ REVIEW_NAMES = set(return_validator.REVIEW_STATES)
 
 def load_json(path: Path) -> Any:
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(
+            return_validator.read_regular_text(path, label="JSON input")
+        )
     except UnicodeError as exc:
         raise ValueError(f"cannot decode JSON as UTF-8: {path}: {exc}") from exc
 

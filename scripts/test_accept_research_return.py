@@ -7,10 +7,12 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest import mock
 
 import accept_research_return as acceptor
 
@@ -136,6 +138,38 @@ def main() -> int:
 
     with tempfile.TemporaryDirectory() as directory:
         output = Path(directory) / "accepted.json"
+        submitted_input = Path(directory) / "submitted.json"
+        submitted_input.write_bytes(FIXTURE.read_bytes())
+        require(
+            acceptor.load_json(submitted_input)["record_kind"] == "submitted_return",
+            "regular acceptance input was not readable through the safe descriptor",
+        )
+        linked_input = Path(directory) / "linked-submitted.json"
+        linked_input.symlink_to(submitted_input)
+        with mock.patch.object(
+            acceptor.return_validator,
+            "path_has_symlink_component",
+            return_value=False,
+        ):
+            try:
+                acceptor.load_json(linked_input)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("acceptance loader followed a final-component symlink")
+        fifo_input = Path(directory) / "submitted.fifo"
+        os.mkfifo(fifo_input)
+        with mock.patch.object(
+            acceptor.return_validator,
+            "path_has_symlink_component",
+            return_value=False,
+        ):
+            try:
+                acceptor.load_json(fifo_input)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("acceptance loader accepted a special file")
         output_error = acceptor.write_new_file(output, acceptor.canonical(candidate))
         require(output_error is None and output.is_file(), "atomic acceptance output was not published")
         duplicate_error = acceptor.write_new_file(output, b"second")
