@@ -693,6 +693,122 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff rho sigma
         hrho hsigma
 
+/-! These declarations are the proof-bearing Solution-side names consumed by
+the Comparator roster.  Each is a projection of the corresponding field of
+the exact `PortfolioClaims` proof above. -/
+
+theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+    (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        (∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e)))) ∧
+        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+          CarrySectionsEventuallyPeriodicMod v h N₀ u :=
+  (portfolioClaims Unit).problem249CarryAntiCompression hirr
+
+theorem irrational_totientSeries_of_actualLcmOrbitSeparationSupply
+    (hsupply : PowerTwoActualLcmOrbitSeparationSupply) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  (portfolioClaims Unit).problem249ActualLcmOrbitSeparation hsupply
+
+theorem irrational_initial_iff_all_positive_tailShifts_nonintegral
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    Irrational (T 0) ↔
+      ∀ h : ℕ, 0 < h → ∀ N : ℕ,
+        ¬ RealIntegral (realTailShift T h N) :=
+  (portfolioClaims Unit).problem251TailShiftIrrationalityNormalForm hrec
+
+theorem exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
+    (p : ℤ) (q : ℕ) (hq : 0 < q) :
+    (∃ A : Set ℕ, 0 ∉ A ∧ (∃ a : ℕ, 0 < a ∧ a ∈ A) ∧
+        erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) ↔
+      ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U :=
+  (portfolioClaims Unit).problem257BooleanMobiusCarry p q hq
+
+theorem rectangular_hp_threshold_eq_classical_iff
+    (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
+      rho = 0 ∧ sigma = 1 :=
+  (portfolioClaims Unit).problem1049RectangularHpThresholdEqClassicalIff rho sigma
+    hrho hsigma
+
+theorem image_pivotSupplierPrimes_eq_pivotFiber
+    {X L s m : ℕ} (hm : 0 < m) (hmsmall : m ≤ Nat.sqrt X / 2) :
+    (pivotSupplierPrimes X L s m).image (pivotBaseOfPrime L s m) =
+      pivotFiber X L s m :=
+  (portfolioClaims Unit).problem249FirstHarmonicPivotFiber hm hmsmall
+
+theorem supplierPrime_not_globally_isolated_counterexample :
+    pivotOffset 20 1 = 20 ∧
+      18 ∈ pivotFiber 16 20 1 2 ∧
+      pivotPrime 18 20 1 = 19 ∧
+      19 ∣ pivotArgument 18 20 1 ∧
+      19 ∣ 18 + 1 :=
+  (portfolioClaims Unit).problem249FirstHarmonicPivotIsolationCounterexample
+
+theorem windowFirstExp_sum_eq_pivot_decomposition
+    (h X L s : ℕ) (η : ℝ) :
+    (∑ N ∈ Finset.Ico X (2 * X), windowFirstExp h N L) =
+      pivotCenteredCorrelation h X L s η +
+      pivotFiberMeanContribution h X L s η +
+      pivotBadContribution h X L s η +
+      pivotNonSupplierContribution h X L s :=
+  (portfolioClaims Unit).problem249FirstHarmonicPivotDecomposition h X L s η
+
+theorem first_harmonic_gap_of_pivotBudgetAt
+    {h X L s : ℕ} {η : ℝ} (hbudget : PivotBudgetAt h X L s η) :
+    (∑ N ∈ Finset.Ico X (2 * X), windowFirstCos h N L) ≤
+      (9 / 10 : ℝ) * X :=
+  (portfolioClaims Unit).problem249FirstHarmonicPivotBudget hbudget
+
+theorem irrational_totient_series_of_pivotResidualDecorrelation
+    (hmix : DTWPivotResidualDecorrelation) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  (portfolioClaims Unit).problem249FirstHarmonicPivotResidualDecorrelation hmix
+
+theorem actualLcmTailDiff_shift_pos
+    {a J : ℕ} (ha : 8 ≤ a)
+    (hshort : J + (a + 6) < 2 * 2 ^ a) :
+    0 <
+      totientTail (2 * periodLcm (2 ^ a) + J) -
+        totientTail (periodLcm (2 ^ a) + J) :=
+  (portfolioClaims Unit).problem249ActualLcmPositiveCorridor ha hshort
+
+theorem actualLcm_trueEndpointSurvivor_neg
+    {a J K : ℕ} (ha : 8 ≤ a)
+    (hshort : J + K + (a + 6) < 2 * 2 ^ a) {d : ℤ}
+    (hd : (d : ℝ) =
+      totientTail (2 * periodLcm (2 ^ a) + J) -
+        totientTail (periodLcm (2 ^ a) + J)) :
+    -carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) d K < 0 ∧
+      endpointSurvivor (periodLcm (2 ^ a))
+        (periodLcm (2 ^ a) + J) K
+        (-carryOrbit (periodLcm (2 ^ a))
+          (periodLcm (2 ^ a) + J) d K) :=
+  (portfolioClaims Unit).problem249ActualLcmTrueEndpointSurvivor ha hshort hd
+
+theorem actualLcm_integral_forces_topEdgeResidue
+    {a J K : ℕ} (ha : 8 ≤ a)
+    (hshort : J + K + (a + 6) < 2 * 2 ^ a) {d : ℤ}
+    (hd : (d : ℝ) =
+      totientTail (2 * periodLcm (2 ^ a) + J) -
+        totientTail (periodLcm (2 ^ a) + J))
+    (hroom : ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) <
+      (2 : ℤ) ^ K) :
+    let H := periodLcm (2 ^ a)
+    let e := carryOrbit H (H + J) d K
+    let P := (2 : ℤ) ^ K
+    let B := ((2 * H + J + K + 2 : ℕ) : ℤ)
+    windowDiscrepancy H (H + J) K % P = P - e ∧
+      P - B < windowDiscrepancy H (H + J) K % P ∧
+      windowDiscrepancy H (H + J) K % P < P :=
+  (portfolioClaims Unit).problem249ActualLcmTopEdgeResidue ha hshort hd hroom
+
 theorem irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses :
     Irrational factorialGapSeries ↔
       ∀ B : ℕ, ∃ m : ℕ,
