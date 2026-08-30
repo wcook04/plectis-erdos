@@ -578,6 +578,21 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "half_membership_seam_classification",
+      "problem": 257,
+      "review_family": "half_membership_seam_classification",
+      "claim_id": "half_membership_seam_classification",
+      "contribution_class": "locally proved exact endpoint classification; novelty unassessed",
+      "original_declaration": "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+      "original_source": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+      "statement": "Membership of 1/2 in the Mersenne achievement set is equivalent to unbounded false successor terminal bits, equivalently to an unbounded upper-or-middle successor branch, cofinal terminal-false positions, unbounded skipped ranks along the integer seam, infinite greedy skipped support, and no last half-greedy skip.",
+      "boundary": "This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made.",
+      "canonical_claim_status": "supports_registered_claim_family:half_membership_seam_classification",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "composite_dilation_defect_split",
       "problem": 257,
       "review_family": "composite_dilation_defect_identity",
@@ -1087,6 +1102,26 @@
           "boundary": "CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N there must be c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows, including one produced by a skipped core, do not establish cofinality. This is a conditional 1/2-membership/counterexample route, not an unconditional Erdős #257 solution; the rank-two, endpoint-defect, and upper-half Boolean-word declarations remain subordinate evidence, and no novelty, priority, significance, or external-review claim is made."
         },
         {
+          "id": "half_membership_seam_classification",
+          "contribution_class": "locally proved exact endpoint classification; novelty unassessed",
+          "summary": "Membership of 1/2 in the Mersenne achievement set is exactly equivalent to unbounded false successor terminal bits, the unbounded upper-or-middle seam branch, cofinal terminal-false positions, unbounded skipped ranks along the integer seam, infinite greedy skipped support, and the absence of a last half-greedy skip. The load-bearing representative is half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse; the remaining equivalences are subordinate endpoint-socket evidence.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+            "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle",
+            "Erdos249257.unboundedTerminalFalse_iff_not_seamGreedyEventuallyRight",
+            "Erdos249257.cofinalTerminalFalse_of_unboundedTerminalFalse",
+            "Erdos249257.unboundedTerminalFalse_of_cofinalTerminalFalse",
+            "Erdos249257.unboundedTerminalFalse_iff_cofinalTerminalFalse",
+            "Erdos249257.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse",
+            "Erdos249257.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong",
+            "Erdos249257.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite",
+            "Erdos249257.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip"
+          ],
+          "boundary": "This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made."
+        },
+        {
           "id": "shifted_odd_tail_state",
           "contribution_class": "conditional reduction",
           "summary": "A rational support fraction produces a positive natural shifted tail state satisfying the exact binary recurrence and modular doubling orbit modulo v.",
@@ -1397,7 +1432,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:81175cd367bd168b56c6094660261bca41f3c201ffd992eb2fc7792a87a681de",
+    "projection_digest": "sha256:f2db5f66fd8bae9f759c2d23656c7fd012f6c0902d6fcd16f10411119276163c",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2017,15 +2052,16 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 13,
+          "family_count": 14,
           "by_class": {
             "not_applicable": 1,
-            "targeted": 12
+            "targeted": 13
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
             "boolean_mobius_carry": "targeted",
             "boolean_mobius_exact_row_dynamics": "targeted",
+            "half_membership_seam_classification": "targeted",
             "shifted_odd_tail_state": "targeted",
             "composite_dilation_defect_identity": "targeted",
             "known_irrational_supports": "targeted_full_support_representative",
@@ -2458,7 +2494,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:89e83e323a3d7a2964b01f9984f0cb88213f6c71e3c2c0d30d4bbab63466964a",
+    "digest": "sha256:a65708180bf8cb454697ff2fac6af966b03d3bc1becb6cdbea882bf95ac1ce89",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2466,6 +2502,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:d8e5e9bad2497af8bbf1038f016a247bf953e5956d027441998358320bfed2ca",
-  "solution_source_digest": "sha256:c81db4f62a7d9c051183e8c25b4b16a97233c7906c948f05c1c76f355148bff1"
+  "config_digest": "sha256:2a165a42558ba94c33c53e06de2bc38f8c2a3d44fb3ef6a3edff5d5882827ee1",
+  "solution_source_digest": "sha256:fe970e29af11bd33c698e7d673aa9b23003462d066eb19b325c7caf715c79c48"
 }
