@@ -86,6 +86,11 @@ raw URLs are recorded in the policy reconciliation. The qualification checker
 requires those authority bindings before classification metadata can be treated
 as current.
 
+The generated `formalization.yaml` is also an immutable qualification input:
+the checker reads it from committed `HEAD`, not from mutable worktree bytes.
+Sibling-owned projection edits therefore cannot silently become Palomar
+evidence before their source and generated output land together.
+
 The showcase records all 31 committed declarations across all eight open
 programmes and includes a prose-ranked value-selection spine over that exact
 universe. It does not turn the roster count into a readiness claim.
