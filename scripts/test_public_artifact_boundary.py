@@ -9,6 +9,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from copy import deepcopy
 from pathlib import Path
 from unittest.mock import patch
@@ -21,8 +22,27 @@ QUERY = ROOT / "scripts" / "query_corpus.py"
 PUBLIC_PROBLEM_IDS = (68, 243, 249, 251, 257, 269, 1041, 1049)
 
 
+def safe_read_path(root: Path, relative: str) -> Path:
+    """Resolve a public-boundary input only through regular in-tree files."""
+    root = Path(os.path.abspath(root))
+    path = root / relative
+    current = Path(os.path.abspath(path))
+    while True:
+        if current.is_symlink():
+            raise AssertionError(
+                f"public-boundary path must not traverse symbolic links: {relative}"
+            )
+        if current == root:
+            break
+        if current.parent == current:
+            raise AssertionError(f"public-boundary path escaped checkout: {relative}")
+        current = current.parent
+    require(path.is_file(), f"public-boundary path must be a regular file: {relative}")
+    return path
+
+
 def read(rel: str) -> str:
-    return (ROOT / rel).read_text(encoding="utf-8")
+    return safe_read_path(ROOT, rel).read_text(encoding="utf-8")
 
 
 def require(condition: bool, message: str) -> None:
@@ -89,6 +109,33 @@ def check_summary_packet_environment() -> None:
         kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
         "public query subprocess timeout drifted",
     )
+
+
+def check_read_path_boundary() -> None:
+    """Prove public-boundary inputs cannot redirect outside the checkout."""
+    with tempfile.TemporaryDirectory(
+        prefix="public-artifact-boundary-", dir=ROOT
+    ) as temporary:
+        root = Path(temporary) / "checkout"
+        outside = Path(temporary) / "outside"
+        root.mkdir()
+        outside.mkdir()
+        (outside / "README.md").write_text("private fixture\n", encoding="utf-8")
+        (root / "docs").symlink_to(outside, target_is_directory=True)
+        try:
+            safe_read_path(root, "docs/README.md")
+        except AssertionError as exc:
+            require("symbolic links" in str(exc), str(exc))
+        else:
+            raise AssertionError("public-boundary reader followed a symlink")
+
+        (root / "directory").mkdir()
+        try:
+            safe_read_path(root, "directory")
+        except AssertionError as exc:
+            require("regular file" in str(exc), str(exc))
+        else:
+            raise AssertionError("public-boundary reader accepted a directory")
 
 
 def boundary_errors(
@@ -263,6 +310,7 @@ def portfolio_visibility_errors(packet: dict[str, object]) -> list[str]:
 
 def main() -> int:
     """Assert that every first-contact surface preserves the public membrane."""
+    check_read_path_boundary()
     agents = read("AGENTS.md")
     scope = read("SCOPE.md")
     readme = read("README.md")
