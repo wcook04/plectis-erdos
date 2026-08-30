@@ -308,8 +308,11 @@ core)**
 - Checked: quantitative root retention under constant perturbation
   (`constant_perturbation_roots_in_unitDisk`,
   `ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:287`) and arbitrarily
-  small translations separating all pairwise ray arguments
-  (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:197`). The
+  small translations separating all pairwise ray arguments. More precisely,
+  `exists_small_translation_separating_arguments` says that every finite
+  injective complex family admits, for each `ε > 0`, a common shift of norm
+  `< ε` making every value nonzero and every pair of positive-ray arguments
+  distinct (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:197`). The
   ray-separation exclusion is checked in consumer form only: the
   exponential-decay connection equation is its hypothesis, not a theorem
   (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:315`). Registry: none.
