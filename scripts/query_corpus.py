@@ -4649,6 +4649,46 @@ def is_repository_overview_query(query: str) -> bool:
     return any(cue in text for cue in exact_cues)
 
 
+def is_agent_capability_discovery_query(query: str) -> bool:
+    """Recognise a cold agent asking what the corpus can search or traverse.
+
+    This question is about the query surface itself, not a request to score
+    declarations.  Route it before ``search_packet`` so a stale optional
+    synopsis can never turn first-contact discovery into a whole-source scan.
+    """
+    text = normalized_search_text(query)
+    corpus_scope = any(
+        cue in text
+        for cue in (
+            "corpus",
+            "repository",
+            "repo",
+            "mathematical graph",
+            "lean graph",
+            "declarations",
+            "claims",
+        )
+    )
+    discovery_cue = any(
+        cue in text
+        for cue in (
+            "what can i search",
+            "what can we search",
+            "what is searchable",
+            "how do i search",
+            "how can i search",
+            "how do i traverse",
+            "how can i traverse",
+            "how do i navigate",
+            "how can i navigate",
+            "search capabilities",
+            "search affordances",
+            "query capabilities",
+        )
+    )
+    return corpus_scope and discovery_cue
+
+
 def is_paper_reading_query(query: str) -> bool:
     """Recognise requests for the complete question-first paper guide."""
     text = normalized_search_text(query)
@@ -6994,6 +7034,22 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     scope_boundary = corpus_scope_boundary_packet(query)
     if scope_boundary is not None:
         return scope_boundary
+    if is_agent_capability_discovery_query(query):
+        packet = route_packet("agent_native_corpus_navigation")
+        return {
+            **packet,
+            "query": query,
+            "routing_receipt": {
+                "selection": "agent_capability_discovery",
+                "declaration_scan_required": False,
+                "synopsis_projection_required": False,
+                "reason": (
+                    "The question asks for the corpus query grammar and graph "
+                    "handles, so the authored agent-native navigation route is "
+                    "the direct bounded answer."
+                ),
+            },
+        }
     if is_repository_overview_query(query):
         return repository_overview_packet(query)
     if is_paper_reading_query(query):
@@ -9446,6 +9502,20 @@ def render_card(packet: dict[str, Any]) -> str:
             f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
             f"| next={route['query_steps'][0]}"
         )
+        if route.get("id") == "agent_native_corpus_navigation":
+            rows = [card]
+            rows.extend(
+                f"search_surface | {command}"
+                for command in route.get("query_steps", [])
+            )
+            rows.append(
+                "handle_classes | "
+                + ",".join(route.get("adjacent_handle_classes", []))
+            )
+            rows.append(
+                "authority | navigation=committed_JSON | proof=Lean_kernel"
+            )
+            return "\n".join(rows)
         signal = packet.get("mathematical_signal_spine")
         if not isinstance(signal, Mapping):
             return card

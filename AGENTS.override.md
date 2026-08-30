@@ -28,7 +28,7 @@ has been formalized?”, or a request for full coverage, the ordinary-language
 query must resolve to the same complete bounded overview as:
 
 ```sh
-python3 scripts/query_corpus.py --overview
+python3 scripts/query_corpus.py --overview --format card
 ```
 
 That overview covers every mathematical programme, all claim-status classes,

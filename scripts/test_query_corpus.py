@@ -760,6 +760,32 @@ def validate_natural_language_search() -> None:
         natural_search = query("--search", search_text, "--limit", "10")
         assert natural_search["results"][0]["kind"] == "reading_route"
         assert natural_search["results"][0]["id"] == route_id
+
+    capability_question = (
+        "What can I search in this mathematical corpus and how do I traverse "
+        "the Lean graph?"
+    )
+    capability = query("--ask", capability_question, "--format", "json")
+    assert capability["kind"] == "reading_route"
+    assert capability["route"]["id"] == "agent_native_corpus_navigation"
+    assert capability["routing_receipt"] == {
+        "selection": "agent_capability_discovery",
+        "declaration_scan_required": False,
+        "synopsis_projection_required": False,
+        "reason": (
+            "The question asks for the corpus query grammar and graph handles, "
+            "so the authored agent-native navigation route is the direct "
+            "bounded answer."
+        ),
+    }
+    capability_card = run(
+        "--ask", capability_question, "--format", "card"
+    )
+    assert capability_card.returncode == 0, capability_card.stderr
+    assert "search_surface |" in capability_card.stdout
+    assert "--declaration <Lean_name>" in capability_card.stdout
+    assert "--connections <module-or-declaration>" in capability_card.stdout
+    assert "handle_classes |" in capability_card.stdout
     backlog_route = query(
         "--search",
         "which paper proofs lack semantic interpretation",

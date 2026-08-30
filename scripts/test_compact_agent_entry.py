@@ -40,7 +40,7 @@ def main() -> int:
     assert len(encoded) < 8_000, len(encoded)
     for required in (
         'query_corpus.py --ask "<question>"',
-        "query_corpus.py --overview",
+        "query_corpus.py --overview --format card",
         "--route instant_orientation",
         "--route erdos249_certificate_story",
         "--route erdos257_half_story",
