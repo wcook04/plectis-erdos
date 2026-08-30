@@ -65,10 +65,11 @@ python3 scripts/query_semantic.py open-antecedents
 
 ## Strongest checked results by problem
 
-One entry per problem: the strongest checked statements, their exact status,
-and where to verify them. Each item carries the independent labels used across
-this repository: what Lean checked, what the statement changes, and its
-literature relationship. `formalised here` renders known mathematics;
+This is a high-signal orientation by problem, not a one-result roster: it gives
+the strongest checked statements, their exact status, and where to verify them.
+Each item carries the independent labels used across this repository: what Lean
+checked, what the statement changes, and its literature relationship.
+`formalised here` renders known mathematics;
 `proved here` makes no novelty claim — that judgement is a human number
 theorist's, and no query here supplies it. Reduction targets are named with
 their own status in the same sentence. The reviewed claim registry
@@ -76,9 +77,11 @@ their own status in the same sentence. The reviewed claim registry
 *registry: none* are kernel-checked source whose reviewed claim rows do not
 yet exist, and [`docs/problems.json`](problems.json) is the per-problem
 authority for the six expansion problems.
-For the complete grouped family inventory with evidence classes and boundaries,
-use the generated [`docs/EXTERNAL_VERIFICATION.md`](EXTERNAL_VERIFICATION.md);
-it is a verification projection, not a replacement for claim authority.
+For the complete grouped family inventory with evidence classes, exact
+Comparator dispositions, and surviving boundaries, use the generated
+[`docs/EXTERNAL_VERIFICATION.md`](EXTERNAL_VERIFICATION.md) before treating a
+family as checked. It is a verification projection, not a replacement for
+claim authority.
 
 **#68 — is `∑_{n≥2} 1/(n!−1)` irrational?**
 
