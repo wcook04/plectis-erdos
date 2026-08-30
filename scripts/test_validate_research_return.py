@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+"""Adversarial executable checks for the public return validator."""
+
+from __future__ import annotations
+
+import copy
+import json
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+import validate_research_return as validator
+
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPT = ROOT / "scripts" / "validate_research_return.py"
+FIXTURE = ROOT / ".github" / "fixtures" / "unaccepted-research-return.json"
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise AssertionError(message)
+
+
+def main() -> int:
+    fixture = json.loads(FIXTURE.read_text(encoding="utf-8"))
+    identity = validator.repository_identity_contract.load_identity()
+
+    errors = validator.validate_document(
+        fixture,
+        require_submitted=True,
+        repository_identity=identity,
+    )
+    require(not errors, f"committed submitted fixture should validate: {errors}")
+    require(
+        validator.validate_document(
+            fixture,
+            require_accepted=True,
+            repository_identity=identity,
+        ),
+        "an unaccepted fixture crossed the accepted gate",
+    )
+
+    mutated_kind = copy.deepcopy(fixture)
+    mutated_kind["record_kind"] = "accepted_receipt"
+    require(
+        any(
+            "accepted commit" in error or "proposed commit" in error
+            for error in validator.validate_document(
+                mutated_kind,
+                require_accepted=True,
+                repository_identity=identity,
+            )
+        ),
+        "accepted mutation without accepted/proposed commits was not rejected",
+    )
+    mutated_paths = copy.deepcopy(fixture)
+    mutated_paths["repository"]["changed_paths"] = ["../outside.json"]
+    require(
+        any("repository.changed_paths" in error for error in validator.validate_document(mutated_paths)),
+        "repository escape path was not rejected",
+    )
+
+    with tempfile.TemporaryDirectory() as directory:
+        directory_path = Path(directory)
+        input_path = directory_path / "return.json"
+        input_path.write_bytes(FIXTURE.read_bytes())
+        valid_cli = subprocess.run(
+            [sys.executable, str(SCRIPT), str(input_path), "--require-submitted", "--format", "json"],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        require(valid_cli.returncode == 0, valid_cli.stderr)
+        receipt = json.loads(valid_cli.stdout)
+        require(receipt["valid"] is True and receipt["submitted"] is True, "CLI receipt lost submitted state")
+
+        symlink = directory_path / "symlink-return.json"
+        symlink.symlink_to(input_path)
+        unsafe_cli = subprocess.run(
+            [sys.executable, str(SCRIPT), str(symlink), "--require-submitted"],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        require(unsafe_cli.returncode == 2, "symlinked return input crossed the path boundary")
+        unsafe_receipt = json.loads(unsafe_cli.stdout)
+        require(
+            any("symbolic links" in error for error in unsafe_receipt["errors"]),
+            "symlink rejection omitted its path-policy reason",
+        )
+
+    print("validate_research_return: submitted gate, accepted exclusion, path and CLI safety PASS")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
