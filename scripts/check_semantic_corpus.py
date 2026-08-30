@@ -37,7 +37,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from collections import Counter
+import stat
 from pathlib import Path
 
 from build_semantic_corpus import semantic_input_fingerprint
@@ -58,8 +60,62 @@ def check(condition: bool, message: str) -> None:
         FAILURES.append(message)
 
 
+class UnsafeSemanticCorpusInput(ValueError):
+    """A semantic-corpus input is outside the regular checkout boundary."""
+
+
+def _safe_semantic_path(path: Path) -> Path:
+    """Reject checkout escapes and symbolic-link path components."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeSemanticCorpusInput(
+                f"symlinked semantic-corpus input: {candidate}"
+            )
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeSemanticCorpusInput(
+                f"semantic-corpus input escaped checkout: {candidate}"
+            )
+        current = current.parent
+    return candidate
+
+
+def safe_read_text(path: Path) -> str:
+    """Read a semantic-corpus input through a no-follow regular descriptor."""
+    candidate = _safe_semantic_path(path)
+    if not candidate.is_file():
+        raise UnsafeSemanticCorpusInput(
+            f"semantic-corpus input is not a regular file: {candidate}"
+        )
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeSemanticCorpusInput(
+            f"semantic-corpus input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeSemanticCorpusInput(
+                f"semantic-corpus input is not a regular file: {candidate}"
+            )
+        with os.fdopen(descriptor, "r", encoding="utf-8") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 def load(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(safe_read_text(path))
 
 
 def main() -> int:
@@ -71,10 +127,14 @@ def main() -> int:
         print("docs/semantic_corpus.json missing; run python3 scripts/build_semantic_corpus.py")
         return 1
 
-    corpus = load(CORPUS)
-    atlas = load(ATLAS)
-    manifest = load(MANIFEST)
-    claims = load(CLAIMS)
+    try:
+        corpus = load(CORPUS)
+        atlas = load(ATLAS)
+        manifest = load(MANIFEST)
+        claims = load(CLAIMS)
+    except UnsafeSemanticCorpusInput as exc:
+        print(f"unsafe semantic-corpus input: {exc}")
+        return 1
     vocab = corpus["vocabularies"]
 
     check(
