@@ -14,10 +14,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import tempfile
 import time
+from collections.abc import Mapping
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -27,6 +29,17 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = "erdos249257-clean-ref-release-receipt/1"
 TAIL_BYTES = 16_000
 DIRTY_PATH_LIMIT = 120
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SANITIZED_GIT_ENVIRONMENT_KEYS = (
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_INDEX_FILE",
+    "GIT_NAMESPACE",
+    "GIT_REPLACE_REF_BASE",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+    "GIT_COMMON_DIR",
+)
 RELEASE_COMMANDS = (
     ("python3", "scripts/check_release.py"),
     ("python3", "scripts/test_root_import_closure.py"),
@@ -36,6 +49,14 @@ RELEASE_COMMANDS = (
 
 class SnapshotError(RuntimeError):
     """Raised when the requested clean snapshot cannot be prepared."""
+
+
+def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
+    """Remove inherited Git selectors before any snapshot subprocess runs."""
+    environment = dict(os.environ if base is None else base)
+    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
+        environment.pop(key, None)
+    return environment
 
 
 def run(
@@ -51,6 +72,7 @@ def run(
         text=True,
         check=False,
         timeout=timeout,
+        env=clean_environment(),
     )
 
 
@@ -154,6 +176,10 @@ def receipt_base(ref: str, commit: str, caller_dirty_paths: list[str]) -> dict[s
         "caller_worktree_dirty_paths": caller_dirty_paths[:DIRTY_PATH_LIMIT],
         "caller_worktree_dirty_path_limit": DIRTY_PATH_LIMIT,
         "caller_worktree_dirty_paths_truncated": dirty_path_count > DIRTY_PATH_LIMIT,
+        "subprocess_environment": {
+            "contract": ENVIRONMENT_CONTRACT,
+            "sanitized_git_selectors": list(SANITIZED_GIT_ENVIRONMENT_KEYS),
+        },
         "release_command": list(RELEASE_COMMANDS[0]),
         "release_commands": [list(command) for command in RELEASE_COMMANDS],
     }

@@ -5,9 +5,13 @@
 
 from __future__ import annotations
 
+import json
+import os
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import check_release_ref
 
@@ -52,6 +56,32 @@ def main() -> int:
     try:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
+            hostile_environment = {
+                "GIT_DIR": "/private/wrong-git-dir",
+                "GIT_WORK_TREE": "/private/wrong-work-tree",
+                "GIT_INDEX_FILE": "/private/wrong-index",
+                "GIT_NAMESPACE": "wrong-namespace",
+                "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
+                "GIT_OBJECT_DIRECTORY": "/private/wrong-objects",
+                "GIT_ALTERNATE_OBJECT_DIRECTORIES": "/private/wrong-alternates",
+                "GIT_COMMON_DIR": "/private/wrong-common",
+            }
+            with patch.dict(os.environ, hostile_environment, clear=False):
+                sanitized = check_release_ref.clean_environment()
+                assert all(key not in sanitized for key in hostile_environment)
+                assert sanitized["PATH"] == os.environ["PATH"]
+                child = check_release_ref.run(
+                    [
+                        sys.executable,
+                        "-c",
+                        "import json, os; print(json.dumps({k: os.environ[k] for k in "
+                        "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE') "
+                        "if k in os.environ}))",
+                    ],
+                    cwd=root,
+                )
+                assert child.returncode == 0
+                assert json.loads(child.stdout) == {}
             git(root, "init", "-q")
             git(root, "config", "user.email", "release-ref-test@example.invalid")
             git(root, "config", "user.name", "Clean ref release test")
@@ -98,6 +128,12 @@ def main() -> int:
             assert probe_exit == 0
             assert probe["status"] == "clean_snapshot_prepared"
             assert probe["resolved_commit"] == passing_commit
+            assert probe["subprocess_environment"] == {
+                "contract": check_release_ref.ENVIRONMENT_CONTRACT,
+                "sanitized_git_selectors": list(
+                    check_release_ref.SANITIZED_GIT_ENVIRONMENT_KEYS
+                ),
+            }
             assert set(probe["caller_worktree_dirty_paths"]) == {
                 "caller.txt",
                 "untracked.txt",
