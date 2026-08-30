@@ -83,6 +83,25 @@ def test_release_file_boundary() -> None:
             lambda: release.load_json(link),
             "symlinked release input",
         )
+        fifo = root / "release.fifo"
+        os.mkfifo(fifo)
+        with patch.object(release, "safe_release_file", return_value=fifo):
+            expect_error(
+                lambda: release.sha256_file(fifo),
+                "regular file",
+            )
+        sentinel = root / "manifest-sentinel.json"
+        sentinel.write_text("sentinel\n", encoding="utf-8")
+        output_link = root / "manifest-link.json"
+        output_link.symlink_to(sentinel)
+        expect_error(
+            lambda: release.write_json(output_link, {"ok": True}, overwrite=True),
+            "output path contains a symlink",
+        )
+        require(
+            sentinel.read_text(encoding="utf-8") == "sentinel\n",
+            "symlinked output path modified its target",
+        )
 
 
 def test_replay_file_boundary() -> None:
