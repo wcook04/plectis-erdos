@@ -357,6 +357,76 @@ def _semantic_family_handoffs(record: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def _semantic_programme_family_queries(
+    root: Path, problem: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Expose every Palomar family as an executable semantic-query handle.
+
+    The programme-family order is the canonical selection projection.  This
+    adapter deliberately carries only family ids and positions: source
+    declarations, mechanisms, boundaries, and relation semantics remain in
+    their owning claims/Palomar/semantic surfaces rather than being copied
+    into route memory as a second authority store.
+    """
+    number = problem.get("erdos_number")
+    if type(number) is not int or number not in PUBLIC_ROSTER:
+        raise RouteMemoryError("programme_family_problem", str(number))
+    palomar = _json(root / "docs" / "PALOMAR_RESULT_SHOWCASE.json")
+    selection = palomar.get("selection_contract")
+    if not isinstance(selection, Mapping):
+        raise RouteMemoryError("programme_family_shape", "selection_contract")
+    order = selection.get("programme_family_order")
+    if not isinstance(order, list):
+        raise RouteMemoryError(
+            "programme_family_shape", "selection_contract.programme_family_order"
+        )
+    matching = [
+        row
+        for row in order
+        if isinstance(row, Mapping) and row.get("problem") == number
+    ]
+    if len(matching) != 1:
+        raise RouteMemoryError("programme_family_problem", str(number))
+    family_ids = matching[0].get("family_ids")
+    if not isinstance(family_ids, list) or not family_ids:
+        raise RouteMemoryError(
+            "programme_family_shape", f"problem={number}.family_ids"
+        )
+    seen: set[str] = set()
+    rows: list[dict[str, Any]] = []
+    for position, family_id in enumerate(family_ids, start=1):
+        if not isinstance(family_id, str) or not family_id.strip():
+            raise RouteMemoryError(
+                "programme_family_shape", f"problem={number}.family_ids[{position - 1}]"
+            )
+        if family_id in seen:
+            raise RouteMemoryError("programme_family_duplicate", family_id)
+        seen.add(family_id)
+        rows.append(
+            {
+                "family_id": family_id,
+                "programme_position": position,
+                "query": (
+                    "python3 scripts/query_semantic.py family-relations "
+                    f"{family_id}"
+                ),
+            }
+        )
+    return {
+        "authority": (
+            "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+            "programme_family_order"
+        ),
+        "ordering_rule": (
+            "Palomar family order is the canonical programme selection "
+            "authority; route-memory does not infer value from local or "
+            "insertion order."
+        ),
+        "problem": number,
+        "families": rows,
+    }
+
+
 def _entrypoints(root: Path) -> list[dict[str, Any]]:
     claims = _json(root / "docs" / "claims.json")
     rows = claims.get("machine_readable_paper", {}).get("entrypoints", [])
@@ -647,6 +717,9 @@ def build_packet(
     semantic_family_handoffs = _semantic_family_handoffs(
         canonical_route_memory["record"]
     )
+    semantic_programme_family_queries = _semantic_programme_family_queries(
+        root, problem
+    )
     selector = {
         "problem_id": problem["problem_id"],
         "route_id": route["id"] if route else None,
@@ -666,6 +739,7 @@ def build_packet(
         "research_source_digests": research_source_digests,
         "canonical_route_memory": canonical_route_memory,
         "semantic_family_handoffs": semantic_family_handoffs,
+        "semantic_programme_family_queries": semantic_programme_family_queries,
     }
     state_id = _canonical_digest(identity_material)
     packet = {
@@ -690,6 +764,7 @@ def build_packet(
             "available_route_ids": available_routes,
             "canonical_route_memory": canonical_route_memory,
             "semantic_family_handoffs": semantic_family_handoffs,
+            "semantic_programme_family_queries": semantic_programme_family_queries,
         },
         "consulted_route_ids": consulted,
         "related_route_ids": related,

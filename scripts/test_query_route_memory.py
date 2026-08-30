@@ -132,6 +132,88 @@ def test_semantic_family_handoff_binds_251_source_current_route() -> None:
     )
 
 
+def test_semantic_programme_family_queries_project_complete_palomar_rosters() -> None:
+    problems = route_memory._json(ROOT / "docs" / "problems.json")["problems"]
+    by_number = {
+        row["erdos_number"]: row
+        for row in problems
+        if isinstance(row, dict) and isinstance(row.get("erdos_number"), int)
+    }
+    for number in PROBLEMS:
+        projection = route_memory._semantic_programme_family_queries(
+            ROOT, by_number[number]
+        )
+        rows = projection["families"]
+        require(rows, f"Palomar programme family roster is empty for #{number}")
+        require(
+            projection["problem"] == number,
+            f"programme family problem crossed to #{number}",
+        )
+        require(
+            all(
+                row["query"]
+                == f"python3 scripts/query_semantic.py family-relations {row['family_id']}"
+                for row in rows
+            ),
+            f"programme family query handle drifted for #{number}",
+        )
+        require(
+            [row["programme_position"] for row in rows]
+            == list(range(1, len(rows) + 1)),
+            f"programme family positions drifted for #{number}",
+        )
+    strict_prime = route_memory._semantic_programme_family_queries(
+        ROOT, by_number[249]
+    )["families"]
+    strict_prime_row = next(
+        row for row in strict_prime if row["family_id"] == "strict_prime_tail_orbit_gap"
+    )
+    require(
+        strict_prime_row["programme_position"] == 3,
+        "strict-prime #249 family lost its Palomar position",
+    )
+    six_269 = route_memory._semantic_programme_family_queries(
+        ROOT, by_number[269]
+    )["families"]
+    require(
+        [row["family_id"] for row in six_269]
+        == [
+            "conditional_carry_escape",
+            "weighted_phase_carry_observer",
+            "rank_two_kernel_no_go",
+            "height_fibre_and_shell",
+            "dyadic_block_alphabet",
+            "three_prime_lcm_cells",
+        ],
+        "#269 Palomar family roster lost its canonical hierarchy",
+    )
+    require(
+        route_memory._semantic_programme_family_queries(
+            ROOT, by_number[269]
+        )["ordering_rule"].startswith("Palomar family order is"),
+        "programme family projection omitted its authority rule",
+    )
+
+
+def test_semantic_programme_family_queries_ignore_relation_array_order() -> None:
+    document = route_memory._json(ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json")
+    reversed_document = copy.deepcopy(document)
+    relations = reversed_document["selection_contract"]["family_relations"]
+    reversed_document["selection_contract"]["family_relations"] = list(
+        reversed(relations)
+    )
+    problem = route_memory._json(ROOT / "docs" / "problems.json")["problems"][2]
+    with patch.object(route_memory, "_json", return_value=reversed_document):
+        reversed_projection = route_memory._semantic_programme_family_queries(
+            ROOT, problem
+        )
+    original_projection = route_memory._semantic_programme_family_queries(ROOT, problem)
+    require(
+        reversed_projection == original_projection,
+        "programme family handles were coupled to family-relation array order",
+    )
+
+
 def run_cli(
     *args: str,
     input_text: str | None = None,
@@ -194,6 +276,8 @@ def main() -> int:
     test_semantic_family_handoffs_preserve_exact_269_spine()
     test_semantic_family_handoffs_retain_all_eight_problem_roots()
     test_semantic_family_handoff_binds_251_source_current_route()
+    test_semantic_programme_family_queries_project_complete_palomar_rosters()
+    test_semantic_programme_family_queries_ignore_relation_array_order()
     hostile = {
         "GIT_DIR": str(ROOT / "not-a-git-directory"),
         "GIT_NAMESPACE": "hostile-namespace",
