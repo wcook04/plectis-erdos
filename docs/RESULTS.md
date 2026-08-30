@@ -4,16 +4,99 @@
 # Results and limits
 
 This repository formalises finite results, reductions, equivalences, and
-obstructions related to eight Erdős problems — #68, #243, #249, #251, #257,
-#269, #1041, and #1049 — with #249 and #257 as the two reviewed core
-programmes. It does not solve any of them.
+obstructions related to eight open Erdős problems — #68, #243, #249, #251,
+#257, #269, #1041, and #1049. Each problem has an individual canonical paper;
+the retired combined #249/#257 manuscript is archive/provenance only, not a
+current gateway. Nothing here solves any of the eight.
 
 Lean source checked by the pinned Lean kernel is proof authority. The audit log
 reports the headline declarations below with kernel assumptions
 `[propext, Classical.choice, Quot.sound]`. A theorem with hypotheses proves only
 the displayed implication; it does not prove that its hypotheses occur.
 
-## Ten-minute verdict
+## The short version
+
+The repository's clearest completed mathematics is concentrated in restricted
+forms of Problem 257. It checks the classical full-support theorem for every
+integer base `b ≥ 2`, a pairwise-coprime support theorem under explicit
+summability hypotheses, and an irrationality theorem for nonnegative rational
+eventually-periodic coefficients with a positive periodic tail. It also proves
+global topological and measure statements for Mersenne achievement sets.
+Universal Problem 257, which quantifies over every infinite support, remains
+open.
+
+Problem 249 contains the deepest collection of endpoint-facing mechanisms but
+no endpoint proof. The library determines the exact finite-level rank of the
+dyadic totient kernel, formalises finite denominator exclusions, and proves
+several conditional routes from cofinal separation or decorrelation hypotheses
+to irrationality. The missing cofinal producers are stated explicitly. The
+library also proves no-go results showing why fixed precision, quotient
+periodicity, or coefficient structure alone cannot supply the conclusion.
+
+The remaining programmes have narrower but exact outcomes: Problem 68 is
+reduced to a cofinal carry condition; Problem 243 has conditional recovery
+criteria for its centred error dynamics; Problem 251 has exact prime-gap and
+tail-shift reformulations; Problem 269 has three-prime running-LCM cell,
+height, and carry structure; Problem 1041 has local Newton-flow, ray-separation,
+and root-retention results; and Problem 1049 has an exact rational-base tail
+recurrence together with finite Padé-model obstructions. None closes its Erdős
+problem.
+
+### Problem-by-problem guide
+
+**Problem 68.** The library proves an exact equivalence between irrationality
+and cofinally many non-unit factorial carries, together with finite channel
+obstructions. It does not produce the required cofinal carries.
+
+**Problem 243.** Descent and recovery theorems control bounded or summably
+small negative centred error under the displayed dynamics. The unbounded
+mixed-sign regime and the original endpoint remain open.
+
+**Problem 249.** The checked results include exact dyadic-kernel rank, finite
+denominator exclusions, conditional actual-LCM and harmonic-pivot routes, and
+scoped no-go theorems. No cofinal producer reaching irrationality is proved.
+
+**Problem 251.** The library gives a prime/prime-gap equivalence, tail-shift
+classifications, and a coefficient-only countermodel boundary. A
+prime-specific cofinal tail witness is still missing.
+
+**Problem 257.** The corpus contains full-support and structured-support
+irrationality theorems, eventually-periodic coefficient results,
+achievement-set geometry, and exact half-value classifications. Irrationality
+for every infinite support and the `1/2` and `1/21` branches remain open.
+
+**Problem 269.** Exact three-prime LCM cell geometry, height identities, a
+rank obstruction, and conditional carry observers are checked. The
+actual-series carry bridge and a cofinal residue-window producer are open.
+
+**Problem 1041.** The formal development covers Newton-flow value decay under
+stated hypotheses, finite ray separation, translation avoidance, and
+perturbative root retention. The global topology and metric gluing needed for
+a short curve remain open.
+
+**Problem 1049.** The library proves the rational-base tail recurrence and
+sharp obstructions for specific finite Padé and Hermite–Padé models. It does
+not construct approximants with analytic remainder control, including for the
+base `3/2` case.
+
+This guide is not a new result ranking. The canonical order of mathematical
+attention is maintained in
+[`PALOMAR_RESULT_SHOWCASE.json`](PALOMAR_RESULT_SHOWCASE.json), and exact public
+statuses and open propositions live in [`claims.json`](claims.json).
+
+For a narrative account, open the relevant item in the
+[eight-paper portfolio](../README.md#the-eight-problem-papers). For exact
+declarations and assumptions, use the [source map](SOURCE_MAP.md). The sections
+below retain the complete technical inventory, including result-family
+dispositions, semantic census data, finite measurements, and retractions;
+operational procedures live in the [agent workbench](AGENT_WORKBENCH.md).
+
+<a id="ten-minute-verdict"></a>
+
+<details>
+<summary><strong>Open the complete technical results inventory</strong></summary>
+
+## Technical verdict
 
 All eight Erdős problems remain open. The development is neither a partial
 solution nor an empty collection of restatements. For a first mathematical
@@ -31,7 +114,6 @@ pass, the high-signal spine is:
   series under a finite-core orthogonal-petal bouquet plus the uniform
   `SunflowerForcedSlotTailSelection` predicate
   (`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`,
-  `ExternalVerification/Challenge.lean:396`,
   `Erdos249257/SupportSunflowerDichotomy.lean:540`); the selector and bouquet
   are not constructed for arbitrary supports. A separate direct result covers
   nonnegative rational eventually periodic coefficient sequences with a
@@ -54,6 +136,14 @@ pass, the high-signal spine is:
   support. This is a change of coordinates for hypothetical rational support,
   not a contradiction or a universal #257 proof; arbitrary infinite support
   and the `1/2` membership boundary remain open.
+- **#1041's highest-value open socket is hub selection, not the old argmin
+  shortcut.** The source frontier identifies `min_c L(c) ≤ 2` over admissible
+  hubs on the ray-separated locus as the surviving parent carrier; lower
+  semicontinuity would turn it into the theorem. Its degree-five `SPOKE-5`
+  instance would settle that degree. This is source-only research evidence,
+  not a Lean theorem: hub choice, path containment, and the `SPOKE-5` supply
+  remain open, while the earlier minimum-critical and aggregate shortcuts are
+  explicitly refuted (`research_corpus/Erdos1041/FRONTIER.md`).
 - **#249, an endpoint-facing conditional route plus a finite-level rank
   spine.** The actual-LCM orbit route gives a genuinely endpoint-facing
   reduction: an explicit approximation of the orbit by an odd-rank raw block,
@@ -63,10 +153,11 @@ pass, the high-signal spine is:
   irrationality from it, but this is a sufficient route, not an equivalence to
   the separate non-integrality criterion. The supply itself is not proved;
   neither divisibility nor irrationality alone supplies the required
-  anti-concentration. Separately, the dyadic totient-kernel rank `2^e + 1`,
-  its odd-core basis, and the resulting infinite-dimensional span expose a
-  real finite-level mechanism; the all-base rank is conditional on the
-  displayed affine-independence input. Neither spine solves the binary
+  anti-concentration. Separately, the dyadic totient-kernel rank `2^e + 1`
+  and its odd-core basis are an unconditional finite-level structural result;
+  the all-base spanning/rank upgrade is conditional on the displayed
+  affine-independence input. The actual-LCM, diagonal, and phase/prime
+  producers remain open, so neither structural spine solves the binary
   totient endpoint.
 - A distinct orbit-level carry anti-compression result is now checked: under
   hypothetical rationality, one positive multiplier supplies a tempered
@@ -89,18 +180,15 @@ pass, the high-signal spine is:
   shift. Its companion normal form says, for a `RealDyadicTailRecurrence`,
   irrationality is equivalent to every positive tail shift being nonintegral;
   neither classification supplies the prime-specific producer.
-- **#269, #1041, and #1049, structurally useful route checks.** Running-LCM
-  height and rank-two obstructions, plus a distinct weighted-phase observer
-  that separates a finite residue digit from an uncontrolled integral
-  coboundary; finite translation/root-retention inputs plus a diagnosed saddle
-  gap; and the rational-base recurrence/no-go at `3/2` plus a finite
-  four-jet/Padé obstruction each isolate a mechanism without claiming the
-  endpoint. A separate explicit rectangular two-function Hermite–Padé model
-  has a sharp threshold no-go: under `0 ≤ ρ` and `1 + ρ ≤ σ`, the cleared gap
-  is nonpositive and vanishes only at `(ρ,σ) = (0,1)`, equivalently the model
-  threshold is at most `1/2 − 1/π²` with equality only there. This remains a
-  model-specific comparison: it constructs no approximating polynomials or
-  remainders, proves no universal Padé theorem, and says nothing about
+- **#269 and #1049, structurally useful route checks.** Running-LCM height and
+  rank-two obstructions, plus a distinct weighted-phase observer that separates
+  a finite residue digit from an uncontrolled integral coboundary, isolate the
+  #269 mechanism without claiming its endpoint. For #1049, the growing-rank
+  four-jet/Padé kernel says that when `0 < R` and `4R + 2S ≤ n`, fewer finite
+  endpoint signatures than binary selectors force a collision; row-content
+  divisors remain as a second barrier. A separate explicit rectangular
+  two-function Hermite–Padé model has a sharp no-go under `0 ≤ ρ` and
+  `1 + ρ ≤ σ`, but neither route constructs approximants/remainders or proves
   irrationality at `3/2`.
 
 The finite #249 certificate band, Stern–Brocot and gcd-moment identities,
@@ -115,30 +203,26 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 48 declarations in the committed Comparator roster
-(`verification/comparator.json`). I ranked them by consequence, endpoint
-proximity, mechanism depth, genuine distinctness, external usefulness,
-digestion value, evidence certainty, natural friction, and overclaim risk—not
-by row count, inherited order, or citation presence. The family-level table
-below is the compact reading map; every declaration remains source-current and
-individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 48-row universe; their
-dispositions are stated in the relevant per-problem sections.
+I ranked the families by consequence, endpoint proximity, mechanism depth,
+genuine distinctness, external usefulness, digestion value, evidence certainty,
+natural friction, and overclaim risk—not by row count, inherited order, or
+citation presence. The family-level table below is the compact reading map;
+the detailed sections retain source-only families and the exact evidence
+boundary alongside Comparator-transported rows.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
 | **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; the pairwise CRT and periodic denominator-clearing rows are distinct direct mechanisms; the bouquet and actual-LCM rows add unusually deep endpoint-facing conditional structure, with their unproved supplies kept adjacent rather than hidden. |
-| **retain** | #257's achievement-set measure geometry, Boolean–Möbius support normal form, exact terminal-false seam classification, and sublogarithmic zero-window constraint; #68's exact carry equivalence; #249's diagonal full-target and foreign-residue reductions, finite kernel rank/basis, orbit-level carry anti-compression, fixed-precision no-go, and subordinate pointwise prime-tail route; #243's bounded-rise, negative-orbit, signed centered-recovery, and distinct summable-negative-mass boundaries; #251's equivalence, coefficient-only barrier, countermodel, and small-mismatch criterion; #269's height/rank obstruction, conditional carry-escape, and weighted-phase observer; #1041's ray/root route; and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain retained beneath the promoted endpoint spine. | The #257 seam iff is an exact endpoint-socket classification but supplies no terminal-false or upper/middle occurrence producer; Boolean–Möbius is a quotient-level support certificate, not a contradiction. The measure and sublog rows restrict possible rational support without settling universal #257. The #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers: the #249 diagonal row makes integrality a full-target foreign-defect hit, the foreign-residue row adds a finite foreign/divisor split but still needs ControlledForeignProjection and separated supply, the orbit conjunction exposes modular-period/rank friction, and the fixed-precision row shows that synthetic finite-word local signatures can always be completed without actual totient arithmetic or a growing-precision/global bridge. The signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses, while summable negative mass removes that lower-bound assumption but still assumes exact dynamics and leaves the unbounded mixed-sign branch open. The #251 coefficient-only barrier pairs a finite carry identity with nonperiodicity of synthetic and actual prime-gap streams, so coefficient nonperiodicity alone is not an irrationality proof; its small-mismatch criterion is closer to the endpoint but supplies no cofinal producer. The #269 conditional escape gives a window-expansion contradiction under an unproved predicate, while the observer exposes an uncontrolled coboundary and a conditional finite-span criterion, not a finite-state quotient or endpoint. The #1049 rectangular threshold is sharp only for its explicit model and supplies no approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
+| **retain** | #257's achievement-set measure geometry, Boolean–Möbius exact-row conditional route, and sublogarithmic zero-window constraint, #68's exact carry equivalence, #249's diagonal full-target and foreign-residue reductions, finite kernel rank/basis, orbit-level carry anti-compression, and fixed-precision valuation/unit no-go, #243's bounded-rise, negative-orbit, and signed centered-recovery boundaries, #251's equivalence and countermodel, #269's height/rank obstruction and weighted-phase observer, #1041's admissible-hub/SPOKE-5 source frontier and Lean ray/root inputs, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the Boolean–Möbius exact-row route gives a concrete local-to-cofinal half-membership mechanism under an unproved positive-skip supply, so it is useful endpoint-facing structure but not a contradiction; the sublog row gives a rationality-conditional coverage bound with a support/numerator-dependent constant, not a contradiction; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers, while the #249 diagonal row makes integrality a full-target foreign-defect hit, the foreign-residue row adds an exact finite foreign/divisor split and closed geometric tail bound, and the orbit conjunction exposes modular periodicity alongside rank growth and its forcing-erasure friction; the fixed-precision row gives a prefix-locked centred completion for every finite compatible odd-unit word at fixed positive precision, so bounded local signatures cannot exclude every finite endpoint; its unrestricted high quotient is synthetic rather than actual totient arithmetic, and no #249 endpoint follows; the foreign row still needs the unproved `ControlledForeignProjection` bridge and unbounded separated-projection supply; the signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses but leaves the unbounded mixed-sign branch open; the #269 observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the source-only #1041 selector remains the direct degree-five/unrestricted socket while its local Lean inputs do not supply the global topology or metric selection; the #1049 rectangular threshold is sharp only for its explicit two-function model and the four-jet collision remains finite, so neither supplies an approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, scalar-height, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; the scalar-height lemma transfers denominator information but is not an irrationality criterion. Grouping these mechanisms preserves their reuse value without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
 | **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks remain discoverable through the source maps, but do not lead the reader. | A finite range, routine shard, or unconstructed antecedent cannot establish a cofinal family or universal endpoint, so it is evidence for follow-up rather than first-contact signal. |
 
-The project also audits its own conditional routes. Of 23 substantial Lean
-propositions extracted from hypotheses of conditional theorems, 17 are
-provably equivalent to an endpoint—14 to #249 and 3 to the `1/2` membership
-test for #257. This is a self-diagnosis of reformulation failure, not progress
-on either endpoint.
+The project also audits its conditional routes for endpoint equivalence. Some
+named hypotheses are exact restatements of an open endpoint rather than smaller
+subproblems; that diagnosis prevents a reformulation from being mistaken for
+progress.
 
 <!-- BEGIN semantic_public_census -->
 Only after those theorem-level facts comes the corpus census. The current semantic graph provides three diagnostic views across every indexed Erdős problem:
@@ -159,15 +243,6 @@ of the classical neighbouring-fraction/mediant method. That method supplies the
 displayed bound exactly (numerical delta `0`). The local addition is the checked
 arithmetic instance, its transfers, and its sharp first failure.
 
-The census is reproducible with:
-
-```sh
-python3 scripts/query_semantic.py nonrecurring
-python3 scripts/query_semantic.py bare-equivalences
-python3 scripts/query_semantic.py classical
-python3 scripts/query_semantic.py open-antecedents
-```
-
 ## Strongest checked results by problem
 
 This is a high-signal orientation by problem, not a one-result roster: it gives
@@ -177,19 +252,11 @@ checked, what the statement changes, and its literature relationship.
 `formalised here` renders known mathematics;
 `proved here` makes no novelty claim — that judgement is a human number
 theorist's, and no query here supplies it. Reduction targets are named with
-their own status in the same sentence. The reviewed claim registry
-([`docs/claims.json`](claims.json)) covers the #249/#257 core; entries marked
-*registry: none* are kernel-checked source whose reviewed claim rows do not
-yet exist, and [`docs/problems.json`](problems.json) is the per-problem
-authority for the six expansion problems.
-For the complete per-problem family inventory with evidence classes, exact
-Comparator dispositions, and surviving boundaries, use the machine-readable
-[`docs/problems.json`](problems.json) authority. The generated
-[`docs/EXTERNAL_VERIFICATION.md`](EXTERNAL_VERIFICATION.md) is the
-reader-facing projection of the selected executable proposition set and its
-Comparator routing; it is not the full family census. Treat an entry as
-checked only at its stated scope, and do not use either projection as a
-replacement for claim authority.
+their own status in the same sentence. The claim registry and generated
+verification projection are supporting navigation; they do not replace the
+source declaration or enlarge its claim ceiling. The per-problem sections
+below are the human reading map, with evidence, attribution, and surviving
+boundaries kept together.
 
 **#68 — is `∑_{n≥2} 1/(n!−1)` irrational?**
 
@@ -206,8 +273,8 @@ replacement for claim authority.
   indices are at least `d`, channel cancellation with `M ≠ 0` forces some
   index to be at least `2d` (`ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean`;
   paper discussion in `erdos-68-factorial-denominator-irrationality.pdf`).
-  Registry: `channel_quotient_band_breakpoint` (`res:bandbreakpoint`), queryable
-  with `python3 scripts/query_corpus.py --claim channel_quotient_band_breakpoint`.
+  Registry: `channel_quotient_band_breakpoint` (`res:bandbreakpoint`); its
+  source and evidence boundary are the authority.
   This is a finite-family breakpoint only: it supplies no cancelling family,
   simultaneous-channel control, residual estimate, or cofinal non-unit carry.
 - The kernel-internal denominator bound is `q ≥ 67`
@@ -230,18 +297,15 @@ replacement for claim authority.
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:897`. Checked theorem;
   reusable obstruction; claims registry: `bounded_rise_fresh_modulus_barrier`
   (`res:barrier`).
-- A distinct analytic recovery criterion replaces the uniform lower-bound
-  assumption with summability: under exact next-denominator and next-tail `C/D`
-  dynamics, `C>0`, the strict centered-step equation, division-free normalized
-  vanishing, and `Summable` normalized negative centered mass,
-  `sylvesterNext_eventually_of_summable_negativeRelativeMass` forces
-  `centeredState=0` eventually and hence `a(n+1)=sylvesterNext(a n)` eventually
-  (`ExternalVerification/Challenge.lean:111-125`;
-  `ErdosProblems/Erdos243/SparseResetRecovery.lean:155-193`; Claims:
-  `negative_mass_recovery`). It does not prove these hypotheses for the
-  original orbit; any surviving canonical orbit has divergent normalized
-  negative mass. The reciprocal-tail endpoint and prime-specific producer
-  remain open, and this is distinct from the uniform-bound recovery below.
+- Given normalised vanishing — supplied for the canonical orbit by Koizumi
+  (Integers 26 (2026), A28; cited, prose bridge) — a bounded negative part or
+  finite normalised negative mass forces the error to vanish and the
+  Sylvester recurrence to begin
+  (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2177`,
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2264`;
+  `ErdosProblems/Erdos243/SparseResetRecovery.lean:155`,
+  `ErdosProblems/Erdos243/SparseResetRecovery.lean:175`). Checked conditional theorems; the
+  note concedes its absorption and descent lemmas as Koizumi prior art.
 - A separate no-go rules out an eventually periodic negative-error orbit when
   the phase growth is positive
   (`no_eventuallyPeriodicNegative_orbit`,
@@ -420,13 +484,6 @@ replacement for claim authority.
   first-harmonic routes and not an #249 proof, novelty, or priority claim
   (`ExternalVerification/Challenge.lean`;
   `ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:25-233`).
-- A source-only cyclotomic companion makes one arithmetic input explicit: for a
-  prime `q`, every prime divisor `p` of the exact `X−2` layer `2^q−1` satisfies
-  `q ∣ p−1`, so `mersenneLayer_unboundedPrimeDivisorSupply` gives unbounded
-  prime divisors along prime indices (`ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:33-108`).
-  This is not the Euler-totient orbit: the layer/order hypotheses do not supply
-  totient-carry escape or irrationality. A separate checked certificate only
-  excludes denominators dividing `2^300(2^30−1)` (`ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3265-3271`).
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
@@ -444,14 +501,13 @@ replacement for claim authority.
   claimed).
 - Open: the unbounded certificate supply, which is equivalent to #249 itself;
   a checked splice construction shows no finite inspection can settle it.
-- A Comparator-transported fixed-precision no-go,
-  `fixedPrecisionTropicalNoGo` (`ExternalVerification/Challenge.lean:166-173`;
-  `Erdos249257/TropicalCurvatureCarry.lean:137-142`), says that for every
-  `u > 0`, every finite word of odd valuation-unit symbols, and every incoming
-  integer state, a compatible orbit keeps each successive state within its valuation-unit
-  radius. Its one-step and prefix-locked completion lemmas are subordinate mechanisms,
-  not extra families. This unconditional synthetic finite-word no-go does not impose
-  actual totient-difference arithmetic or provide growing-precision/global correlation,
+- A separate Comparator-transported fixed-precision no-go,
+  `fixedPrecisionTropicalNoGo`, gives every finite compatible valuation/unit
+  word at fixed `u > 0` a bounded prefix-locked centred completion by varying
+  an unrestricted high quotient (`ExternalVerification/Challenge.lean:150-158`;
+  `Erdos249257/TropicalCurvatureCarry.lean:69-142`). This is synthetic finite-
+  word evidence: it blocks bounded local signatures alone, but does not encode
+  actual totient differences or supply growing precision, global correlation,
   a #249 endpoint, or irrationality.
 - A checked synthetic no-go shows that, for every `t ≥ 3`, a nonzero dyadic
   coboundary can survive every finite integer shift polynomial while retaining
@@ -499,19 +555,6 @@ replacement for claim authority.
   separated-projection supply, remain unproved: this sharpens the reduction,
   not #249 irrationality.
 
-- The pointwise prime-index branch is also retained as one subordinate
-  Comparator-visible producer route. `DTWNaturalPrimeTailOrbitStrictGap` asks
-  that for every positive shift `h` and lower bound `N₀` there is a prime `p`
-  beyond both bounds with
-  `Re(tailOrbitFirstExp h (p - h - 1)) < 9/10`; the positive margin is then
-  converted by `naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap` into
-  the existing finite first-harmonic certificate consumer
-  (`ExternalVerification/Challenge.lean:579`,
-  `ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157-209`). The route is
-  conditional source evidence, not another irrationality theorem: no result
-  supplies the cofinal prime strict-gap condition for the actual totient orbit,
-  so #249 remains open.
-
 **#251 — is `∑ pₙ/2ⁿ` irrational?**
 
 - Unconditional: `pₙ ≤ 1250(n+1)⁴` by an elementary argument, so the series
@@ -552,24 +595,15 @@ replacement for claim authority.
   The classifications are abstract even though their normal form is now in the
   Comparator screen; they supply no prime-specific eventual-small or
   cofinal-mismatch producer.
-- The actual-prime-gap specialization
-  `primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch` makes
-  the missing producer concrete: for a `DyadicTailRecurrence`, cofinally many
-  adjacent pairs of shifts both strictly in `(-1,1)` with unequal corresponding
-  gaps rule out an eventually integral shift (`ExternalVerification/Challenge.lean:328-336`;
-  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1112-1124`). Its hard step is
-  the adjacent-pair zero obstruction followed by prime-gap non-eventual
-  periodicity. No theorem supplies this cofinal small-mismatch family, so the
-  reduction does not prove #251 irrationality.
-- The Comparator `coefficientOnlyNoGo` consumer records the exact finite carry
-  identity `carryPartialSum_natCast_eq` together with non-eventual-periodicity
-  of both the synthetic coefficient stream and the actual prime-gap stream
-  (`ExternalVerification/Challenge.lean:325-326`;
-  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1154-1173`). Its
-  natural-friction lesson is exact: coefficient nonperiodicity alone does not
-  prove irrationality. The authored rational-sum countermodel is paper-level;
-  Comparator does not assert its infinite limit or identify the streams, and no
-  prime-gap tail bridge or #251 irrationality follows.
+- The exact finite carry identity and non-eventual-periodicity theorem close the
+  coefficient-only periodicity implication at the Lean level
+  (`carryPartialSum_natCast_eq`, `carryCoeff_natCast_not_eventually_periodic`,
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1154-1173`). The accompanying
+  rational-sum countermodel is an authored paper-level inference from the
+  endpoint decay using the standard exponential-dominance limit; the
+  Comparator interface does not assert that infinite limit. Its coefficients
+  are synthetic, not actual prime gaps, so this is a methodological no-go and
+  not an unconditional #251 refutation.
 - Open: cofinally many adjacent index pairs with small tail shifts and
   differing gaps; each smallness condition constrains a complete infinite
   tail.
@@ -733,7 +767,7 @@ core)**
   follows. This is now Comparator-transported evidence, with the same boundary, and is
   distinct from the
   three-prime cell, rank-two no-go, and conditional carry-escape families.
-- A Comparator-transported conditional family makes the carry-escape boundary concrete:
+- A separate typed consumer makes the conditional carry-escape boundary concrete:
   `no_positive_reducedCarry_of_cofinalLocalWindowEscape` derives `False` from
   `CofinalLocalWindowEscape`, `B > 0`, `Nat.Coprime B 30`, positivity of an
   integer-valued carry, the exact multiplier recurrence, and its
@@ -742,27 +776,25 @@ core)**
   the cofinal window expansion against that bound. The escape producer and the
   bridge from the actual three-prime running-LCM series (or its rationality) to
   this carry remain unproved, so this is no #269 endpoint or irrationality
-  proof; it is distinct from the finite residue and weighted-phase observers.  Its subordinate `no_positive_absorbedCarry_of_cofinalLocalWindowEscape` bridge
-  handles an absorbed carry exactly: with `smoothFactor ≠ 0`, `c n =
-  smoothFactor * d n`, and the matching absorbed recurrence, cancellation
-  reduces to this consumer; it adds no actual-series bridge or cofinal escape
-  (`ErdosProblems/Erdos269/RestrictedFloorSum.lean:689).
-
+  proof; it is distinct from the finite residue and weighted-phase observers.
 **#1041 — short connections inside polynomial lemniscates?**
 
-- Checked: quantitative root retention under constant perturbation
-  (`constant_perturbation_roots_in_unitDisk`,
+- The source-only frontier now has the sharper endpoint socket: on the
+  ray-separated locus, prove `min_c L(c) ≤ 2` over admissible hubs. Its
+  attachment and lower-semicontinuity reductions would then give the parent
+  theorem; the degree-five `SPOKE-5` instance would settle that degree. This is
+  not a Lean or Comparator theorem: hub selection, path containment, and the
+  degree-five supply remain open, while the earlier minimum-critical and
+  aggregate shortcuts are refuted (`research_corpus/Erdos1041/FRONTIER.md`).
+- Lean checks the supporting inputs: quantitative root retention under constant
+  perturbation (`constant_perturbation_roots_in_unitDisk`,
   `ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:287`) and arbitrarily
   small translations separating all pairwise ray arguments. More precisely,
-  `exists_small_translation_separating_arguments` says that every finite
-  injective complex family admits, for each `ε > 0`, a common shift of norm
-  `< ε` making every value nonzero and every pair of positive-ray arguments
-  distinct (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:197`). The
-  ray-separation exclusion is checked in consumer form only: the
-  exponential-decay connection equation is its hypothesis, not a theorem
-  (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:315`). Claims registry:
-  `newton_ray_separation_consumer`; the global short-connection topology and
-  length argument remain open.
+  `exists_small_translation_separating_arguments` gives every finite injective
+  complex family, for each `ε > 0`, a common shift of norm `< ε` making every
+  value nonzero and every positive-ray argument distinct (`:197`). The
+  exponential-decay connection equation is a hypothesis of the local
+  ray-separation consumer, not a theorem (`:315`).
 - The note's main independent contribution is prose, not Lean: a specific
   invalid three-ended local block at an interior Morse saddle in a recent
   manuscript's load-bearing Proposition 12 — identified as a proof gap, not
@@ -1013,11 +1045,8 @@ covers all 33 distinct `periodLcm` scales whose plateaux fill the positive band
 admissibility floor (median `1`, mean `40/33`). Only the five boundary scales
 `t=67,71,73,79,81` have separate theorems proving their recorded depths least;
 for the other 28 scales, the excess is only an upper bound on the least-depth
-excess. Reproduce the roster with:
-
-```sh
-python3 scripts/build_checked_diagonal_depth_roster.py --check
-```
+excess. Its reproducibility route is maintained with the other operational
+checks, not part of the mathematical claim.
 
 This is a bounded result. The reduction for Problem 249 requires certificates
 at arbitrarily large scales. The theorem says nothing at `t = 83`.
@@ -1041,11 +1070,8 @@ The generated
 [`off_diagonal_certificate_roster.json`](measurements/off_diagonal_certificate_roster.json)
 retains all selected source rows and their hashes, identifies both duplicate
 groups, and binds each distinct triple to its exact theorem, line, and source
-hash. Reproduce it with:
-
-```sh
-python3 scripts/build_off_diagonal_certificate_roster.py --check
-```
+hash. It is a navigation and evidence projection, not a replacement for the
+theorem statements.
 
 The source log also contains 54 later verified certificate triples above the
 historical position cutoff. The roster exposes that excluded census without
@@ -1168,8 +1194,8 @@ separate limitation, and none settles an Erdős problem.
   modulo a divisor of `v`, totient forcing disappears and `u` is geometric, so
   quotient periodicity cannot yield a finite-`ℚ`-rank upper bound. Boundary:
   necessary consequence of rationality only; no contradiction or #249
-  irrationality proof follows. Claims registry: `totient_carry_kernel_anti_compression`;
-  query it with `python3 scripts/query_corpus.py --claim totient_carry_kernel_anti_compression`.
+  irrationality proof follows. Claims registry:
+  `totient_carry_kernel_anti_compression`.
 - `primitive_coordinate_index_obstruction` — clearing `(φ*μ)(n)/n` through
   level `N` forces a two-tier primorial divisor; no fixed positive index clears
   every level.
@@ -1188,8 +1214,9 @@ separate limitation, and none settles an Erdős problem.
   has an unbounded positive carry state.
   Boundary: rules out finite-state interpretations, not rationality itself.
 
-Retrieve their declarations and current source coordinates with
-`python3 scripts/query_corpus.py --claim <registry-id>`.
+Their registry identifiers lead to the declarations and current source
+coordinates; operational lookup details live in the
+[agent workbench](AGENT_WORKBENCH.md).
 
 ### Demand ledger
 
@@ -1265,11 +1292,8 @@ diagonal scales have mean `14/11`.
 Status: MEASURED by exact integer arithmetic. Raw depth must grow with scale
 because the certificate interval is empty below `L₀`; the finite excess
 distributions prove no asymptotic law, equidistribution, bounded-excess
-theorem, or cofinal supply. Reproduce with:
-
-```sh
-python3 scripts/probe_certificate_supply.py --check
-```
+theorem, or cofinal supply. The exact probe remains available as operational
+evidence through the agent workbench.
 
 ### Source-backed checked diagonal depths
 
@@ -1281,11 +1305,8 @@ excess `0…3`; the other 28 values are upper bounds on least-depth excess.
 
 Status: FINITE SOURCE EXTRACTION from explicit Lean theorem signatures. It
 establishes no bounded-excess law at untested scales and no cofinal supply.
-Reproduce with:
-
-```sh
-python3 scripts/build_checked_diagonal_depth_roster.py --check
-```
+The checked roster remains available as operational evidence through the agent
+workbench.
 
 ## What was retracted
 
@@ -1321,24 +1342,12 @@ narrowed to the theorem types and the recorded counterexamples.
 
 ### Exact questions for a human expert
 
-The command
-
-```sh
-python3 scripts/query_semantic.py expert-questions
-```
-
-returns a bounded index of the validated handoffs. Open one complete packet
-with, for example,
-
-```sh
-python3 scripts/query_semantic.py expert-questions XQ249-pivot-decorrelation
-```
-
-Each requested input is `OPEN`; the consumer named under each question is a
-checked theorem. The classification matters: the first question is the endpoint
-in exact normal form, the next two are sufficient analytic producers for #249,
-and the last two would produce a counterexample to universal #257 rather than
-prove its positive statement.
+The validated handoffs form a bounded set of exact questions. Each requested
+input is `OPEN`; the consumer named under each question is a checked theorem.
+The classification matters: the first question is the endpoint in exact normal
+form, the next two are sufficient analytic producers for #249, and the last two
+would produce a counterexample to universal #257 rather than prove its positive
+statement. Their complete packets are indexed from the agent workbench.
 
 No checked strictly weaker handoff currently implies the universal positive
 statement of #257 for every infinite support. Named support families,
@@ -1452,13 +1461,8 @@ positiveMersenneSupportValue_coe_finset_ne_half
 positiveMersenneSupportValue_eq_erdosSupportSeries
 ```
 
-The second-channel measurement is source-bound and reproducible:
-
-```sh
-python3 scripts/probe_second_channel_separation.py --check
-```
-
-It re-evaluates the rational greedy recurrence and the complete failure set
+The source-bound second-channel measurement re-evaluates the rational greedy
+recurrence and the complete failure set
 for `1≤n≤1000` from the definitions in
 `Erdos249257/GreedyAchievementSet.lean`. The generated artifact is
 [`docs/measurements/second_channel_separation_probe.json`](measurements/second_channel_separation_probe.json).
@@ -1492,7 +1496,7 @@ positiveMersenneSupportValue_coe_finset_ne_half
 positiveMersenneSupportValue_eq_erdosSupportSeries
 ```
 
-### Exact systems-review handoff
+### Cold-reader review boundary
 
 The repository cannot certify its own human legibility. It therefore exposes a
 second `OPEN` question: can an independent reader, starting from a fresh clone,
@@ -1503,15 +1507,6 @@ The low-confidence working guess is that a reader will recover both open
 boundaries and the zero Farey delta, but may still underweight the concrete
 non-restatement results. The protocol distinguishes that failure from the
 opposite error—mistaking finite or conditional results for a near-solution.
-
-```sh
-python3 scripts/query_expert_handoffs.py --domain systems
-python3 scripts/query_expert_handoffs.py --question XQ249-pivot-decorrelation
-python3 scripts/query_expert_handoffs.py --template XQSYS-ten-minute-hostile-reader
-python3 scripts/query_expert_handoffs.py --response RESPONSE.json
-python3 scripts/query_expert_handoffs.py --review-template XQSYS-ten-minute-hostile-reader
-python3 scripts/query_expert_handoffs.py --review RESPONSE.json REVIEW.json
-```
 
 A structurally accepted response from an identified independent reader returns
 an explicit rubric for its result summaries, evidence paths and verdict. A
@@ -1557,109 +1552,14 @@ a fixed-number theorem applies directly.
 Irrationality alone is insufficient because the open branch asks for the sign
 of a nonzero tail difference, not merely for non-equality.
 
-## How to verify
+## Verification and continuation
 
-Install the pinned Lean toolchain and Mathlib cache, then run:
+The exact build, query, replay, contribution, and source-bound reproduction
+routes are maintained in the [agent workbench](AGENT_WORKBENCH.md), where they
+can stay current without interrupting the mathematical account here. The
+historical isolated-tree timings were a dated manual record, not a
+machine-revalidated receipt for the present source tree. Lean checks certify
+the displayed formal statements; they do not certify novelty, priority,
+significance, or the still-open Erdős endpoints.
 
-```sh
-lake exe cache get
-lake build
-python3 scripts/build_declaration_atlas.py --check
-python3 scripts/build_semantic_corpus.py --check
-python3 scripts/check_semantic_corpus.py
-python3 scripts/build_corpus_descriptor.py --check
-python3 scripts/test_declaration_head_contract.py
-python3 scripts/test_projection_checkout_independence.py
-python3 scripts/check_cold_clone_comprehension.py
-python3 scripts/check_release.py
-```
-
-Focused checks for the headline Lean files are:
-
-```sh
-# These dependency chains are not imported by the root build. Install their
-# `.olean` files before running the direct checks downstream.
-lake build ErdosProblems.Lift.Recon67 ErdosProblems.Lift.CertT67
-lake build ErdosProblems.Three.T1 ErdosProblems.Decl.D4
-lake env lean ErdosProblems/Skip/LadderT67.lean
-lake env lean ErdosProblems/FreePosition/FreeKill64OneHundredFifteenDI.lean
-lake env lean ErdosProblems/Three/T1.lean
-lake env lean ErdosProblems/Decl/D4.lean
-lake env lean ErdosProblems/Hlow/H2.lean
-```
-
-The `lake build` step emits build progress and kernel-dependency reports. An exit status of
-zero and empty output is expected from each subsequent `lake env lean` check.
-
-### Isolated-tree reproduction record
-
-Measured on 2026-07-26 on an Apple M4 host (`arm64`, 10 logical CPUs, 24 GiB
-memory). The source was copied without version-control metadata or a prior
-`.lake` directory:
-
-```sh
-# Run from anywhere inside a clone of this repository.
-repo_root=$(git rev-parse --show-toplevel)
-repro_dir=$(mktemp -d)
-rsync -a --exclude '.git/' --exclude '.lake/' "$repo_root"/ "$repro_dir"/
-cd "$repro_dir"
-lake exe cache get
-lake build
-```
-
-The cache fetch exited zero in `109.73` seconds. The root build completed all
-`8,914` jobs and exited zero:
-
-```text
-real 4194.17
-user 15939.05
-sys  4778.79
-```
-
-The build printed ordinary dependency reports and linter warnings. It did not
-install every object needed by the focused expansion files. The following
-dependency builds supplied the two missing chains:
-
-| Command | Exit | Wall time |
-|---|---:|---:|
-| `lake build ErdosProblems.Lift.Recon67 ErdosProblems.Lift.CertT67` | 0 | `195.37 s` |
-| `lake build ErdosProblems.Three.T1 ErdosProblems.Decl.D4` | 0 | `126.47 s` |
-
-With those objects installed, every direct focused check exited zero with empty
-Lean output. The directories and files below are relative to `ErdosProblems/`.
-
-| Directory | File | Wall time |
-|---|---|---:|
-| `Lift` | `Recon67.lean` | `69.24 s` |
-| `Lift` | `CertT67.lean` | `98.81 s` |
-| `Skip` | `LadderT67.lean` | `682.69 s` |
-| `FreePosition` | `FreeKill64OneHundredFifteenDI.lean` | `53.05 s` |
-| `Three` | `T1.lean` | `8.83 s` |
-| `Decl` | `D4.lean` | `6.76 s` |
-| `Hlow` | `H2.lean` | `5.27 s` |
-
-Two commands did not reproduce in the original advertised order. Immediately
-after the root build, checking `LadderT67.lean` failed in `1.74` seconds because
-the `Recon67` object was absent. Directly checking `Recon67.lean` and
-`CertT67.lean` did not install their objects, so a second `LadderT67.lean`
-attempt failed in `2.02` seconds for the same reason. The first direct
-`T1.lean` attempt likewise failed in `1.93` seconds because the `Rem.C6` object
-was absent. The focused recipe above now uses `lake build` for both dependency
-chains before the direct checks.
-
-The repository also contains a source-bound receipt runner:
-
-```sh
-python3 scripts/run_source_bound_reproduction.py plan
-python3 scripts/test_source_bound_reproduction.py
-```
-
-It hashes the declared source tree, executes the complete command plan in an
-isolated copy, records command vectors, UTC bounds, exit codes, wall/user/system
-times, output digests and bounded tails, and validates the resulting receipt
-against the source identity. The release-check row is explicitly marked as
-requiring version-control metadata; a default run refuses that capability
-unless it is separately authorised. No complete receipt is shipped at
-`docs/measurements/source_bound_reproduction_receipt.json` yet. Accordingly,
-the timings above remain a dated manual record rather than a
-machine-revalidated receipt for the present source tree.
+</details>
