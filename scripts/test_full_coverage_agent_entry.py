@@ -56,6 +56,15 @@ def assert_complete(packet: dict) -> None:
     assert "companion, not dependency" in (
         packet["companion_repository"]["relationship"]
     )
+    for problem in packet["problem_fleet"]:
+        expected = (
+            "python3 scripts/query_route_memory.py --problem "
+            f"{problem['erdos_number']}"
+        )
+        assert problem["route_memory"] == expected
+    assert packet["next"]["route_memory"] == (
+        "python3 scripts/query_route_memory.py --problem <problem_number>"
+    )
 
 
 def main() -> int:

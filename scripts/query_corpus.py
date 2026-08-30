@@ -6084,6 +6084,10 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "open_obligation_ids": [
                     item["id"] for item in row.get("open_obligations", [])
                 ],
+                "route_memory": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{row['erdos_number']}"
+                ),
             }
             for row in problems
         ],
@@ -6137,6 +6141,9 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
             "papers": "python3 scripts/query_corpus.py --papers",
             "problem": "python3 scripts/query_corpus.py --search 'Erdős problem <n>'",
             "claim": "python3 scripts/verify_claims.py --claim <claim_id>",
+            "route_memory": (
+                "python3 scripts/query_route_memory.py --problem <problem_number>"
+            ),
         },
     }
     if query is not None:
