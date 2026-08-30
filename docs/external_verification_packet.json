@@ -234,6 +234,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "totient_visible_coprime_lattice_mass",
+      "problem": 249,
+      "review_family": "totient_visible_coprime_lattice_mass",
+      "contribution_class": "formalised exact visible-lattice normalization identity",
+      "original_declaration": "GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one",
+      "original_source": "Erdos249257/GcdMomentCalculus.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+      "statement": "The positive coprime Mersenne weights over the visible lattice sum exactly to one, giving the reduced-direction mass behind the fair-coin coprimality form of the totient constant.",
+      "boundary": "This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "prime_gap_unboundedness",
       "problem": 251,
       "review_family": "coefficient_only_no_go",
@@ -528,6 +542,14 @@
           "evidence_mode": "Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence",
           "comparator_disposition": "targeted",
           "boundary": "Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input."
+        },
+        {
+          "id": "totient_visible_coprime_lattice_mass",
+          "contribution_class": "formalised exact visible-lattice normalization identity",
+          "summary": "The positive coprime Mersenne weights on the visible lattice sum to one, exposing the reduced-direction mass behind the fair-coin coprimality form of #249.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "boundary": "This rational normalization identity does not prove irrationality of the binary totient series or settle #249."
         },
         {
           "id": "totient_finite_denominator_exclusion",
@@ -888,7 +910,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:4ff586aab1cd5b27436990d79848add116991847eb0f63e377fdb1101a601b19",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:eaa49420f0fe4573682824c1194b1dccd96c4071069b1f4ed6894a941a160716",
+    "projection_digest": "sha256:d7ccbd3714c477f07fdf18c12f21ffa116dd7ad56c66961514fab77941b71c1f",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1336,16 +1358,17 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 8,
+          "family_count": 9,
           "by_class": {
-            "not_selected": 5,
+            "not_selected": 4,
             "represented_by": 1,
-            "targeted": 2
+            "targeted": 4
           },
           "dispositions": {
             "totient_kernel_basis": "targeted",
             "totient_kernel_rank": "targeted",
-            "totient_kernel_all_base_index": "not_selected_external_independence_boundary",
+            "totient_kernel_all_base_index": "targeted",
+            "totient_visible_coprime_lattice_mass": "targeted",
             "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
@@ -1933,7 +1956,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:259965e3d1f474061b88ac8190d665425f7da7e2aac58b5e7e18d0070b56b888",
+    "digest": "sha256:a1690d385a5b249a1d8320b4bebaa18f1c17d3d731857bcdae26d1000c4d034a",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -1941,6 +1964,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:203c90120b05e2bbacaf94abc84d2d3a049bbf40e34f8d1ed53664ef4994def3",
-  "solution_source_digest": "sha256:d9b37cdfd64e85f760903c5fa0e08e6aae2bb6603ffeed3be8971440b0de44c2"
+  "config_digest": "sha256:e2e29b1cb95af8171d8e1b5f04c26ecb8dbac95e25166817ae269c9ae7587aee",
+  "solution_source_digest": "sha256:4bded6bb00c67a462734389b7bf166514ad61e2ce9b1bfeb4a68e22fc8cab2ec"
 }

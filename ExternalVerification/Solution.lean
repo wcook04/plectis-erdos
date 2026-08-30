@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import ExternalVerification.Statements
 import Erdos249257.GreedyAchievementSet
+import Erdos249257.GcdMomentCalculus
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
 import ErdosProblems.Erdos68.FactorialZeroPlateau
@@ -18,7 +19,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty existing results through the Mathlib-only
+These thin wrappers expose twenty-one existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -124,6 +125,7 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.AllBaseTotientKernelThroughLevelIndex] using
       Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
         k e hk he hcanon'
+  · exact GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
@@ -254,6 +256,11 @@ theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
         (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
       k ^ e + 1 := by
   simpa using (portfolioClaims Unit).problem249AllBaseRank k e hk he hcanon
+
+theorem tsum_pos_coprime_inv_mersenne_eq_one :
+    (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
+        then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1 :=
+  (portfolioClaims Unit).problem249VisibleCoprimeMass
 
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
   simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,

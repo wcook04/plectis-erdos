@@ -89,6 +89,11 @@ theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
       k ^ e + 1 :=
   (portfolioClaims Unit).problem249AllBaseRank k e hk he hcanon
 
+theorem tsum_pos_coprime_inv_mersenne_eq_one :
+    (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
+        then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1 :=
+  (portfolioClaims Unit).problem249VisibleCoprimeMass
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

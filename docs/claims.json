@@ -11410,6 +11410,17 @@
         "boundary": "The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series."
       },
       {
+        "id": "totient_visible_coprime_lattice_mass",
+        "problem": 249,
+        "review_family": "totient_visible_coprime_lattice_mass",
+        "contribution_class": "formalised exact visible-lattice normalization identity",
+        "original_declaration": "GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one",
+        "original_source": "Erdos249257/GcdMomentCalculus.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+        "statement": "The positive coprime Mersenne weights over the visible lattice sum exactly to one, giving the reduced-direction mass behind the fair-coin coprimality form of the totient constant.",
+        "boundary": "This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249."
+      },
+      {
         "id": "prime_gap_unboundedness",
         "problem": 251,
         "review_family": "coefficient_only_no_go",
@@ -11668,6 +11679,14 @@
             "evidence_mode": "Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence",
             "comparator_disposition": "targeted",
             "boundary": "Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input."
+          },
+          {
+            "id": "totient_visible_coprime_lattice_mass",
+            "contribution_class": "formalised exact visible-lattice normalization identity",
+            "summary": "The positive coprime Mersenne weights on the visible lattice sum to one, exposing the reduced-direction mass behind the fair-coin coprimality form of #249.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "boundary": "This rational normalization identity does not prove irrationality of the binary totient series or settle #249."
           },
           {
             "id": "totient_finite_denominator_exclusion",

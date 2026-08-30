@@ -17,7 +17,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-interface
+This module contains only the definitions needed to state the twenty-one-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -276,6 +276,9 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
         (Submodule.span ℚ
           (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
         k ^ e + 1
+  problem249VisibleCoprimeMass :
+    (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
+        then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →

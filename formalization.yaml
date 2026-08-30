@@ -181,6 +181,22 @@ status:
       boundary: "The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series."
       comparator_declaration: "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent"
       literature_dependencies: []
+    - declaration: "GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one"
+      file: "Erdos249257/GcdMomentCalculus.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "formalised exact visible-lattice normalization identity"
+      statement: "The positive coprime Mersenne weights over the visible lattice sum exactly to one, giving the reduced-direction mass behind the fair-coin coprimality form of the totient constant."
+      boundary: "This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249."
+      comparator_declaration: "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       file: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       sorry_count: 0
@@ -451,6 +467,11 @@ alignment:
       module: "Erdos249257/TotientKernelConditional.lean"
       status: "proved"
       note: "The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series."
+    - source: "The positive coprime Mersenne weights over the visible lattice sum exactly to one, giving the reduced-direction mass behind the fair-coin coprimality form of the totient constant."
+      lean: "GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one"
+      module: "Erdos249257/GcdMomentCalculus.lean"
+      status: "proved"
+      note: "This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249."
     - source: "The consecutive prime gaps are unbounded."
       lean: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
@@ -603,6 +624,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence."
         boundary: "Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input."
+      - id: "totient_visible_coprime_lattice_mass"
+        contribution_class: "formalised exact visible-lattice normalization identity"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted"
+        summary: "The positive coprime Mersenne weights on the visible lattice sum to one, exposing the reduced-direction mass behind the fair-coin coprimality form of #249."
+        boundary: "This rational normalization identity does not prove irrationality of the binary totient series or settle #249."
       - id: "totient_finite_denominator_exclusion"
         contribution_class: "finite computation"
         evidence_mode: "Lean kernel and generated finite certificates"
@@ -856,7 +883,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:eaa49420f0fe4573682824c1194b1dccd96c4071069b1f4ed6894a941a160716"
+  problem_index_digest: "sha256:d7ccbd3714c477f07fdf18c12f21ffa116dd7ad56c66961514fab77941b71c1f"
   problem_count: 8
   problems:
     - id: "erdos_68"

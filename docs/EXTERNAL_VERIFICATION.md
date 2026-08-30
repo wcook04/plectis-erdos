@@ -176,7 +176,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Contribution families (8)</summary>
+<summary>Contribution families (9)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -194,6 +194,11 @@ Exact registry keys and Comparator routing are listed separately.
   For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence.<br>
   **Boundary.** Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input.<br>
   *Evidence.* formalised unconditional spanning and conditional rank with external independence input · Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence
+
+- **Totient visible coprime lattice mass**<br>
+  The positive coprime Mersenne weights on the visible lattice sum to one, exposing the reduced-direction mass behind the fair-coin coprimality form of #249.<br>
+  **Boundary.** This rational normalization identity does not prove irrationality of the binary totient series or settle #249.<br>
+  *Evidence.* formalised exact visible-lattice normalization identity · Lean kernel plus Comparator
 
 - **Totient finite denominator exclusion**<br>
   A Farey denominator exclusion through 7.96e34, sharp for its selected window, and diagonal certificates through t=82.<br>
@@ -223,7 +228,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (8)</summary>
+<summary>Technical registry and Comparator routing (9)</summary>
 
 - <code>totient_kernel_basis</code><br>
   Comparator: <code>targeted</code>
@@ -232,6 +237,9 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>targeted</code>
 
 - <code>totient_kernel_all_base_index</code><br>
+  Comparator: <code>targeted</code>
+
+- <code>totient_visible_coprime_lattice_mass</code><br>
   Comparator: <code>targeted</code>
 
 - <code>totient_finite_denominator_exclusion</code><br>
@@ -690,7 +698,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 20 statement-isolated interfaces</summary>
+<summary>Show all 21 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -753,6 +761,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series.
+
+- <code>Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one</code>
+  - **Class.** formalised exact visible-lattice normalization identity
+  - **Statement.** The positive coprime Mersenne weights over the visible lattice sum exactly to one, giving the reduced-direction mass behind the fair-coin coprimality form of the totient constant.
+  - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This is a rational normalization identity and does not prove irrationality of the binary totient series or settle Erdős #249.
 
 **#251: Prime-gap dyadic series**
 
@@ -855,7 +870,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 20 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 21 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.
