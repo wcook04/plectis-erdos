@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import re
 import subprocess
@@ -232,6 +233,34 @@ class ExternalVerificationContractTest(unittest.TestCase):
         solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
         self.assertNotIn("sorry", solution)
+
+    def test_public_projections_consume_current_comparator_roster(self) -> None:
+        packet = json.loads(
+            (ROOT / "docs/external_verification_packet.json").read_text(encoding="utf-8")
+        )
+        comparator_path = ROOT / "verification/comparator.json"
+        comparator_bytes = comparator_path.read_bytes()
+        comparator = json.loads(comparator_bytes)
+        names = comparator["theorem_names"]
+
+        self.assertEqual(packet["comparator"]["roster_source"], "verification/comparator.json")
+        self.assertEqual(packet["comparator"]["theorem_name_count"], len(names))
+        self.assertEqual(packet["comparator"]["theorem_names"], names)
+        self.assertEqual(
+            packet["config_digest"],
+            "sha256:" + hashlib.sha256(comparator_bytes).hexdigest(),
+        )
+        selected = [row["wrapper_declaration"] for row in packet["main_results"]]
+        self.assertTrue(set(selected) <= set(names))
+
+        formalization = (ROOT / "formalization.yaml").read_text(encoding="utf-8")
+        self.assertIn("comparator:\n", formalization)
+        self.assertIn('roster_source: "verification/comparator.json"', formalization)
+        self.assertIn(f"theorem_name_count: {len(names)}", formalization)
+        self.assertLess(
+            formalization.index("carry_eq_residueDigit_add_coboundary"),
+            formalization.index("review:\n"),
+        )
 
     def test_signal_spine_uses_explicit_rank_not_array_or_roster_order(self) -> None:
         _, packet, source, projection = load_owner()

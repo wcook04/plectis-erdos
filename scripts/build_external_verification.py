@@ -348,15 +348,46 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
     return closure, errors
 
 
-def comparator_config(packet: dict) -> dict:
-    cmp = packet["comparator"]
-    return {
-        "challenge_module": cmp["challenge_module"],
-        "solution_module": cmp["solution_module"],
-        "theorem_names": [row["wrapper_declaration"] for row in packet["main_results"]],
-        "permitted_axioms": cmp["permitted_axioms"],
-        "enable_nanoda": cmp["enable_nanoda"],
+def load_comparator_source(packet: dict) -> tuple[dict, bytes]:
+    """Consume the Comparator-owned roster without promoting it to claim source."""
+    config_path = OUTPUTS["config"]
+    config_bytes = safe_bytes(config_path)
+    try:
+        config = json.loads(config_bytes)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError("Comparator config is not valid UTF-8 JSON") from exc
+    if not isinstance(config, dict):
+        raise ValueError("Comparator config must be a JSON object")
+    required = {
+        "challenge_module",
+        "solution_module",
+        "theorem_names",
+        "permitted_axioms",
+        "enable_nanoda",
     }
+    if set(config) != required:
+        raise ValueError(
+            "Comparator config keys drifted: "
+            f"expected={sorted(required)!r} actual={sorted(config)!r}"
+        )
+    names = config["theorem_names"]
+    if not isinstance(names, list) or not names or not all(
+        isinstance(name, str) and name for name in names
+    ):
+        raise ValueError("Comparator theorem_names must be a nonempty string array")
+    if len(names) != len(set(names)):
+        raise ValueError("Comparator theorem_names must be unique")
+    packet_comparator = packet["comparator"]
+    for field in ("challenge_module", "solution_module", "permitted_axioms", "enable_nanoda"):
+        if config[field] != packet_comparator[field]:
+            raise ValueError(f"Comparator {field} disagrees with packet authority")
+    selected = [row["wrapper_declaration"] for row in packet["main_results"]]
+    missing = [name for name in selected if name not in names]
+    if missing:
+        raise ValueError(
+            "Comparator roster omits selected packet interfaces: " f"{missing!r}"
+        )
+    return config, config_bytes
 
 
 def negative_config(packet: dict) -> dict:
@@ -377,7 +408,9 @@ def quote(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
-def render_formalization(packet: dict, problem_projection: dict) -> str:
+def render_formalization(
+    packet: dict, problem_projection: dict, comparator_source: dict
+) -> str:
     lines = [
         "# Generated from docs/claims.json::external_verification_packet.",
         "# Refresh: python3 scripts/build_external_verification.py",
@@ -461,6 +494,12 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
         "      tool_setup: \"Repository-specific generators, release guards, and focused Lean builds\"",
         "    - method: \"other\"",
         "      framework: \"Pinned Lean kernel and statement-isolated Comparator CI\"",
+        "comparator:",
+        f"  config: {quote(packet['comparator']['config'])}",
+        "  roster_source: \"verification/comparator.json\"",
+        f"  theorem_name_count: {len(comparator_source['theorem_names'])}",
+        "  theorem_names:",
+        *[f"    - {quote(name)}" for name in comparator_source["theorem_names"]],
         "review:",
         "  status: \"self-assessed\"",
         "  reviewers: []",
@@ -1034,6 +1073,7 @@ def render_packet(
     problem_projection: dict,
     closure: list[Path],
     config_bytes: bytes,
+    comparator_source: dict,
 ) -> str:
     result = json.loads(json.dumps(packet))
     for row in result["main_results"]:
@@ -1042,6 +1082,11 @@ def render_packet(
         row["novelty_status"] = "unassessed_no_priority_claim"
     result["authority_posture"] = "generated_projection_not_proof_or_claim_authority"
     result["source_owner"] = "docs/claims.json::external_verification_packet"
+    result["comparator"]["roster_source"] = "verification/comparator.json"
+    result["comparator"]["theorem_name_count"] = len(
+        comparator_source["theorem_names"]
+    )
+    result["comparator"]["theorem_names"] = comparator_source["theorem_names"]
     result["problem_index"] = {
         "owner": packet["problem_index_owner"],
         "owner_digest": sha256_path(PROBLEM_SOURCE_PATH),
@@ -1081,14 +1126,21 @@ def build_outputs(
     signal_authority: dict,
     closure: list[Path],
 ) -> dict[Path, bytes]:
-    config_bytes = (json.dumps(comparator_config(packet), indent=2) + "\n").encode()
+    comparator_source, config_bytes = load_comparator_source(packet)
     negative_bytes = (json.dumps(negative_config(packet), indent=2) + "\n").encode()
     return {
         OUTPUTS["config"]: config_bytes,
         OUTPUTS["negative_config"]: negative_bytes,
-        OUTPUTS["formalization"]: render_formalization(packet, problem_projection).encode(),
+        OUTPUTS["formalization"]: render_formalization(
+            packet, problem_projection, comparator_source
+        ).encode(),
         OUTPUTS["packet"]: render_packet(
-            packet, problem_source, problem_projection, closure, config_bytes
+            packet,
+            problem_source,
+            problem_projection,
+            closure,
+            config_bytes,
+            comparator_source,
         ).encode(),
         OUTPUTS["human"]: render_human(
             packet, problem_source, problem_projection, signal_authority
