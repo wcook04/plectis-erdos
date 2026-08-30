@@ -87,6 +87,15 @@ integer than this radius, the diagonal misses the full integral target.  This
 is a producer-independent separation criterion, not an unbounded certificate
 family and not a proof that \(\Stot\) is irrational.
 
+The diagonal arithmetic also admits an exact fresh-prime loss accounting.
+At positive height \(H\), the old-prime endpoint mass retaining only the
+prime support of \(H\) dominates the actual totient.  Thus the diagonal
+increment is the old Möbius increment plus a lower-endpoint deficit minus an
+upper-endpoint deficit, and the five-point curvature branch loses at most an
+explicit nonnegative weighted deficit.  This identifies the hard mechanism
+behind the finite curvature probes, but proves no cofinal deficit bound and
+therefore no irrationality theorem.
+
 Let $\Stot=\sum_{n\ge1}\ph(n)/2^n$.  A rational value would induce a tempered
 integral tail orbit whose dyadic sections through level $e$ have rank at least
 $2^e-1$; no conflicting upper bound is proved.  Independently, every rational
@@ -360,6 +369,33 @@ separation family nor irrationality of \(\Stot\).
 \mword{Erdos249257/SquaredMersenneDiagonalEnclosure.lean}{408}{abs_scaleDiagonalTailDifference_sub_lambertProjectedDiagonal_le}{sharp enclosure},
 \mword{Erdos249257/SquaredMersenneDiagonalEnclosure.lean}{426}{scaleFullTarget_miss_of_lambert_projected_separation}{separation consumer};
 \mword{Erdos249257/FullTargetPrimeAdjunctionNoGo.lean}{139}{scaleFullTargetHit_iff_integral}{target equivalence}.}
+
+\item\label{res:freshprimedeficit} \stag{proved here}
+\textbf{Fresh-prime support is an explicit endpoint deficit.}  For \(H>0\),
+put \(g_H(s)=\gcd(\operatorname{rad}(H),s)\) and
+\[
+ M_H(k,s)=\frac{kH+s}{g_H(s)}\ph(g_H(s)),
+ \qquad F_H(k,s)=M_H(k,s)-\ph(kH+s).
+\]
+The old-prime mass \(M_H(k,s)\) dominates the actual totient, so
+\(F_H(k,s)\ge0\).  If \(\Delta_H(s)=\ph(2H+s)-\ph(H+s)\), then
+\[
+ \Delta_H(s)=\Delta_H^{\rm old}(s)+F_H(1,s)-F_H(2,s),
+\]
+and the literal foreign channel is exactly the same lower-minus-upper
+deficit.  The second-difference and five-point curvature operators preserve
+this decomposition; the latter is bounded below by the old-prime branch
+minus
+\[
+ 8F_H(1,s)+4F_H(2,s+1)+2F_H(2,s+2)+F_H(2,s+3)+F_H(2,s+4).
+\]
+This isolates the hard issue: new prime support has a known sign, but no
+cofinal bound on its adverse placement is proved.  In particular, this is a
+finite curvature-loss budget, not an irrationality proof.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{91}{endpointFreshDeficit_nonneg}{endpoint nonnegativity},
+\mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{184}{finiteForeignChannelIncrement_eq_endpointFreshDeficit_sub}{foreign-channel identity},
+\mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{269}{oldFivePoint_sub_secondBranchAdverseDeficit_le_actual}{five-point loss bound}.}
 
 \item\label{res:periodic} \stag{unconditional progress}
 \textbf{Eventually periodic weights are settled.}  For every integer base
@@ -753,6 +789,69 @@ $a/d$ with $d\le39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526$
 (\mword{Erdos249257/CertificateKernel.lean}{18572}{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{checked}),
 that number being $(q_0-1)/2$ for the constant $q_0$ of
 \ref{res:denominator}.
+
+\section{Fresh-prime losses in the diagonal probes}\label{sec:fresh-prime}
+
+The finite diagonal and curvature probes have a useful decomposition that
+keeps the effect of new prime support visible.  Fix \(H>0\) and an offset
+\(s\in\N\), and write
+\[
+ g_H(s)=\gcd(\operatorname{rad}(H),s),
+ \qquad
+ M_H(k,s)=\frac{kH+s}{g_H(s)}\ph(g_H(s)).
+\]
+Here \(\operatorname{rad}(H)\) is the squarefree kernel of \(H\).  Since
+\(g_H(s)\) divides both \(H\) and \(s\), it divides \(kH+s\).  The quantity
+\(M_H(k,s)\) is the endpoint mass predicted by retaining only the prime
+support already present in \(H\).  Adding the remaining prime support can only
+lower the totient density, so the integer deficit
+\[
+ F_H(k,s)=M_H(k,s)-\ph(kH+s)
+\]
+is nonnegative.  This sign is the key input: the new primes are not an
+uncontrolled error, even though their placement between endpoints is not
+favourable by default.
+
+Let
+\[
+ \Delta_H(s)=\ph(2H+s)-\ph(H+s),
+ \qquad
+ \Delta_H^{\rm old}(s)=M_H(2,s)-M_H(1,s).
+\]
+The checked endpoint calculation gives the exact identity
+\[
+ \Delta_H(s)=\Delta_H^{\rm old}(s)+F_H(1,s)-F_H(2,s),
+\]
+and the literal foreign channel is precisely the lower-endpoint deficit minus
+the upper-endpoint deficit.  Thus the old-prime model is affine in the
+multiplier \(k\), while the actual diagonal departs from it only through a
+signed difference of two nonnegative quantities.
+
+For the offset second difference
+\(
+ \delta f(s)=f(s+1)-2f(s)+f(s+2)
+\)
+and the five-point branch
+\(Wf(s)=4\delta f(s)+\delta f(s+2)\), the same split remains exact.  Dropping
+the favourable terms using \(F_H(k,s)\ge0\) gives the concrete lower bound
+\[
+ W\Delta_H(s)\ge W\Delta_H^{\rm old}(s)-\mathcal A_H(s),
+\]
+where
+\[
+ \mathcal A_H(s)=8F_H(1,s)+4F_H(2,s+1)+2F_H(2,s+2)
+                  +F_H(2,s+3)+F_H(2,s+4).
+\]
+This is the hard mechanism behind the finite curvature margins: a future
+cofinal argument must control the adverse budget \(\mathcal A_H(s)\), not merely
+the old-prime margin.  The current formal result supplies no such cofinal
+bound, so this decomposition is a reusable finite consumer and not an
+irrationality proof.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{91}{endpointFreshDeficit_nonneg}{endpoint nonnegativity},
+\mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{171}{diagonalHeightIncrement_eq_old_add_endpointFreshDeficits}{diagonal split},
+\mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{184}{finiteForeignChannelIncrement_eq_endpointFreshDeficit_sub}{foreign-channel identity},
+\mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{269}{oldFivePoint_sub_secondBranchAdverseDeficit_le_actual}{five-point loss bound}.}
 
 \section{Obstructions for fixed-coordinate methods}\label{sec:nogo}
 
