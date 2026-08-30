@@ -13317,6 +13317,11 @@
           "line": 197
         },
         {
+          "name": "samePositiveRay_of_real_exp_decay",
+          "module": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+          "line": 306
+        },
+        {
           "name": "no_newtonConnection_of_not_samePositiveRay",
           "module": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
           "line": 315
