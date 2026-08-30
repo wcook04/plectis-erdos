@@ -175,6 +175,41 @@ def main() -> int:
         all(row["source_digest"].startswith("sha256:") for row in routed_declarations),
         "routed #249 declaration digest is malformed",
     )
+    for malformed_declaration in (
+        {"name": "", "module": "Module.lean", "line": 1},
+        {"name": "Named", "module": "Module.lean", "line": 0},
+    ):
+        with patch.object(
+            route_memory,
+            "_json",
+            return_value={
+                "claims": [
+                    {
+                        "id": "claim",
+                        "declarations": [malformed_declaration],
+                    }
+                ]
+            },
+        ), patch.object(
+            route_memory,
+            "_safe_module_digest",
+            return_value="sha256:" + "1" * 64,
+        ):
+            try:
+                route_memory._claims_for(
+                    ROOT,
+                    {
+                        "problem_target_claim_ids": [],
+                        "core_claim_ids": ["claim"],
+                    },
+                )
+            except route_memory.RouteMemoryError as exc:
+                require(
+                    exc.code == "declaration_reference_shape",
+                    f"malformed declaration returned {exc.code}",
+                )
+            else:
+                raise AssertionError("malformed declaration was accepted")
     with tempfile.TemporaryDirectory(prefix="route-memory-module-stale-") as temp_dir:
         stale_root = Path(temp_dir)
         (stale_root / "Module.lean").write_text("actual", encoding="utf-8")

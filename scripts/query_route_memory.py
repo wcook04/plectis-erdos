@@ -290,6 +290,15 @@ def _claims_for(root: Path, route: Mapping[str, Any] | None) -> list[dict[str, A
         for declaration in row.get("declarations", []):
             if not isinstance(declaration, Mapping):
                 raise RouteMemoryError("invented_declaration_reference", claim_id)
+            name = declaration.get("name")
+            line = declaration.get("line")
+            if (
+                not isinstance(name, str)
+                or not name.strip()
+                or not isinstance(line, int)
+                or line < 1
+            ):
+                raise RouteMemoryError("declaration_reference_shape", claim_id)
             module = str(declaration.get("module", ""))
             if not module:
                 raise RouteMemoryError("invented_declaration_reference", claim_id)
