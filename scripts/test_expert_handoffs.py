@@ -163,6 +163,86 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
     )
 
 
+def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries() -> None:
+    packet = handoffs.semantic_endpoint_handoff_packet()
+    assert len(packet["supporting_families"]) == 1
+    handoff = packet["supporting_families"][0]
+    family = handoff["family"]
+    assert family["family_id"] == "three_prime_lcm_cells"
+    assert family["problem"] == 269
+    assert family["authority_rank"]["programme_position"] == 6
+    assert family["palomar_disposition"] == "supporting_exact_identity"
+    assert family["proof_status"] == "locally proved result; novelty unassessed"
+    assert family["claim_id"] == "three_prime_running_lcm"
+    assert "smoothPrefixLcm_eq_threePrimeHeight" in handoff["hard_mechanism"]
+    assert "SameThreePrimeLogCell" in handoff["hard_mechanism"]
+    assert "3*count+1" in handoff["hard_mechanism"]
+
+    source = {row["name"]: row for row in handoff["source_declarations"]}
+    expected_names = {
+        "smoothPrefixLcm_eq_threePrimeHeight",
+        "SameThreePrimeLogCell",
+        "threePrimeHeight_eq_of_sameLogCell",
+        "smoothPrefixLcm_eq_of_sameLogCell",
+        "threePrimeKernelQ_eq_of_sameLogCell",
+        "threePrimeHeight_firstLogStep",
+        "threePrimeHeight_secondLogStep",
+        "threePrimeHeight_thirdLogStep",
+        "smoothPrefixLcm_firstLogStep",
+        "smoothPrefixLcm_secondLogStep",
+        "smoothPrefixLcm_thirdLogStep",
+        "threePrimePositiveJumpSet_card",
+        "threePrimeJumpSetWithOrigin_card",
+    }
+    assert set(source) == expected_names
+    assert all(
+        row["module"] == "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+        and isinstance(row["line"], int)
+        and row["signature"]
+        for row in source.values()
+    )
+    assert handoff["wrapper"]["declaration"] == (
+        "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight"
+    )
+    assert handoff["wrapper"]["module"] == "ExternalVerification/Solution.lean"
+    assert isinstance(handoff["wrapper"]["line"], int)
+
+    cards = {row["id"]: row for row in handoff["mechanism_cards"]}
+    assert cards["running_lcm_identity"]["wrapper_declaration"] == handoff[
+        "wrapper"
+    ]["declaration"]
+    assert "smoothPrefixLcm_eq_of_sameLogCell" in cards[
+        "log_cell_constancy"
+    ]["declaration_names"]
+    assert "smoothPrefixLcm_firstLogStep" in cards[
+        "coordinate_jumps_and_counts"
+    ]["declaration_names"]
+
+    boundaries = handoff["open_producer_boundaries"]
+    assert "actual three-prime running-LCM series" in boundaries[
+        "actual_series_bridge"
+    ]
+    assert "CofinalLocalWindowEscape" in boundaries["cofinal_escape_producer"]
+    assert boundaries["endpoint"] == "Cell structure alone does not prove irrationality."
+    related = {
+        row["family"]["family_id"]: row for row in handoff["related_families"]
+    }
+    assert related["conditional_carry_escape"]["relation_class"] == (
+        "boundary_context_not_palomar_edge"
+    )
+    assert related["weighted_phase_carry_observer"]["relation_class"] == (
+        "boundary_context_not_palomar_edge"
+    )
+    assert "actual-series bridge" in related["conditional_carry_escape"]["reason"]
+    assert "quotient coboundary" in related["weighted_phase_carry_observer"]["reason"]
+    assert "not an insertion-ordered relation store" in handoff[
+        "relation_authority"
+    ]
+    assert handoff["follow"]["family"] == (
+        "python3 scripts/query_semantic.py family-relations three_prime_lcm_cells"
+    )
+
+
 def test_strict_prime_successor_is_support_only() -> None:
     question = next(
         row
@@ -242,6 +322,7 @@ def main() -> int:
     }
     test_mathematical_handoff_exposes_selector_without_route_invention()
     test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar()
+    test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     test_strict_prime_successor_is_support_only()
     packet = handoffs.question_packet(None)
     assert packet["packet_kind"] == "compact_index"

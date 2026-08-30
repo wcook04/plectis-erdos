@@ -16,6 +16,7 @@ import json
 import re
 from collections import Counter
 from datetime import date
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -50,9 +51,17 @@ SEMANTIC_HANDOFF_ROOT_FAMILIES = (
     "small_mismatch_criterion",
     "conditional_carry_escape",
 )
+THREE_PRIME_LCM_FAMILY = "three_prime_lcm_cells"
 
 
+@lru_cache(maxsize=16)
 def load_json(path: Path) -> dict[str, Any]:
+    """Load one authority document once per query process.
+
+    Expert packets revisit the same large declaration atlas while validating
+    every question.  Caching avoids reparsing it dozens of times, while the
+    fresh process boundary preserves query-time source/Claims/Palomar reads.
+    """
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -232,6 +241,312 @@ def _family_hierarchy(
     }
 
 
+def _live_source_declaration(
+    module: str, name: str, atlas: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Join an atlas signature to the declaration's current source coordinate.
+
+    The atlas supplies the exact checked signature and docstring, while the
+    source file remains the coordinate authority.  This keeps a reader packet
+    useful when a nearby proof grows without copying a second declaration
+    inventory into the handoff script.
+    """
+    atlas_rows = [
+        row
+        for row in atlas.get("declarations", [])
+        if row.get("module") == module and row.get("name") == name
+    ]
+    if len(atlas_rows) != 1:
+        raise ValueError(
+            f"declaration atlas must expose one {module}:{name}; "
+            f"found {len(atlas_rows)}"
+        )
+    source_path = ROOT / module
+    if not source_path.is_file():
+        raise ValueError(f"source declaration module is missing: {module}")
+    declaration_pattern = re.compile(
+        r"^\s*(?:theorem|lemma|def|abbrev)\s+" + re.escape(name) + r"\b"
+    )
+    live_line = next(
+        (
+            line_number
+            for line_number, line in enumerate(
+                source_path.read_text(encoding="utf-8").splitlines(), start=1
+            )
+            if declaration_pattern.search(line)
+        ),
+        None,
+    )
+    if live_line is None:
+        raise ValueError(f"source file lacks declaration {module}:{name}")
+    row = atlas_rows[0]
+    return {
+        "name": name,
+        "kind": row.get("kind"),
+        "module": module,
+        "line": live_line,
+        "signature": row.get("signature"),
+        "docstring": row.get("docstring"),
+        "coordinate_authority": "direct Lean source declaration",
+        "signature_authority": "docs/declaration_atlas.json",
+    }
+
+
+def three_prime_lcm_cells_handoff(
+    palomar: Mapping[str, Any] | None = None,
+    claims: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Expose the exact #269 LCM-cell mechanism as a supporting handoff.
+
+    ``three_prime_lcm_cells`` is a Palomar-screened structure family rather
+    than one of the two endpoint roots.  Keep it in the same semantic packet
+    as a supporting family, with source declarations resolved from the live
+    Lean file and status/boundaries read from Claims.  The cross-family rows
+    below are boundary context, not a new Palomar relation or rank store.
+    """
+    palomar = palomar or load_json(PALOMAR)
+    claims_document = claims or load_json(CLAIMS)
+    review_rows = _claim_family_rows(claims_document)
+    review = review_rows.get(THREE_PRIME_LCM_FAMILY)
+    if not isinstance(review, dict):
+        raise ValueError("Claims review matrix lacks three_prime_lcm_cells")
+    ranks = _canonical_family_ranks(palomar)
+    rank = ranks.get(THREE_PRIME_LCM_FAMILY)
+    if rank is None:
+        raise ValueError("Palomar programme order lacks three_prime_lcm_cells")
+
+    claim_rows = [
+        *claims_document.get("claims", []),
+        *claims_document.get("external_verification_packet", {}).get(
+            "main_results", []
+        ),
+    ]
+    claim = next(
+        (
+            row
+            for row in claim_rows
+            if row.get("review_family") == THREE_PRIME_LCM_FAMILY
+            or row.get("id") == "three_prime_running_lcm"
+        ),
+        None,
+    )
+    if not isinstance(claim, dict):
+        raise ValueError("Claims lacks the three_prime_running_lcm source claim")
+    source_module = str(claim.get("original_source"))
+    source_names = (
+        "smoothPrefixLcm_eq_threePrimeHeight",
+        "SameThreePrimeLogCell",
+        "threePrimeHeight_eq_of_sameLogCell",
+        "smoothPrefixLcm_eq_of_sameLogCell",
+        "threePrimeKernelQ_eq_of_sameLogCell",
+        "threePrimeHeight_firstLogStep",
+        "threePrimeHeight_secondLogStep",
+        "threePrimeHeight_thirdLogStep",
+        "smoothPrefixLcm_firstLogStep",
+        "smoothPrefixLcm_secondLogStep",
+        "smoothPrefixLcm_thirdLogStep",
+        "threePrimePositiveJumpSet_card",
+        "threePrimeJumpSetWithOrigin_card",
+    )
+    atlas = load_json(ATLAS)
+    declarations = [
+        _live_source_declaration(source_module, name, atlas)
+        for name in source_names
+    ]
+    wrapper_name = str(claim.get("wrapper_declaration"))
+    wrapper_module = "ExternalVerification/Solution.lean"
+    wrapper_pattern = re.compile(
+        r"^\s*theorem\s+" + re.escape(wrapper_name.rsplit(".", 1)[-1]) + r"\b"
+    )
+    wrapper_path = ROOT / wrapper_module
+    wrapper_line = next(
+        (
+            line_number
+            for line_number, line in enumerate(
+                wrapper_path.read_text(encoding="utf-8").splitlines(), start=1
+            )
+            if wrapper_pattern.search(line)
+        ),
+        None,
+    )
+    if wrapper_line is None:
+        raise ValueError(f"source file lacks wrapper declaration {wrapper_name}")
+
+    for neighbour_family in (
+        "conditional_carry_escape",
+        "weighted_phase_carry_observer",
+    ):
+        if not isinstance(review_rows.get(neighbour_family), dict):
+            raise ValueError(
+                "Claims review matrix lacks #269 carry neighbour family "
+                f"{neighbour_family}"
+            )
+    screening = [
+        row
+        for row in palomar.get("candidate_screening", [])
+        if row.get("family_id") == THREE_PRIME_LCM_FAMILY
+    ]
+    if len(screening) != 1:
+        raise ValueError("Palomar must expose one #269 three-prime screening row")
+
+    related_specs = [
+        {
+            "family_id": "conditional_carry_escape",
+            "relation": "open_actual_series_bridge_and_cofinal_escape",
+            "relation_class": "boundary_context_not_palomar_edge",
+            "reason": (
+                "The cell/jump structure is the exact source-side material "
+                "an actual-series bridge to the reduced carry would need to "
+                "consume; Claims leaves both that bridge and cofinal escape open."
+            ),
+        },
+        {
+            "family_id": "weighted_phase_carry_observer",
+            "relation": "source_structure_to_weighted_observer_context",
+            "relation_class": "boundary_context_not_palomar_edge",
+            "reason": (
+                "The jump ratios expose the channel bases that a weighted-phase "
+                "observer would need, but the weighted route still leaves its "
+                "integral quotient coboundary and actual-series bridge open."
+            ),
+        },
+    ]
+    related_specs.sort(
+        key=lambda row: (
+            ranks[row["family_id"]]["problem"],
+            ranks[row["family_id"]]["programme_position"],
+        )
+    )
+    related_families = [
+        {
+            **{key: value for key, value in spec.items() if key != "family_id"},
+            "family": _family_card(
+                spec["family_id"], ranks, palomar, review_rows
+            ),
+        }
+        for spec in related_specs
+    ]
+
+    return {
+        "family": {
+            "family_id": THREE_PRIME_LCM_FAMILY,
+            "problem": rank["problem"],
+            "authority_rank": {
+                "programme_position": rank["programme_position"],
+                "basis": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                    "programme_family_order"
+                ),
+                "boundary": (
+                    "Within-problem order only; no cross-problem rank is inferred."
+                ),
+            },
+            "palomar_disposition": screening[0].get("disposition"),
+            "proof_status": review.get("contribution_class"),
+            "proof_status_authority": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+                ".families[three_prime_lcm_cells].contribution_class"
+            ),
+            "summary": review.get("summary"),
+            "boundary": review.get("boundary"),
+            "claim_id": claim.get("id"),
+        },
+        "hard_mechanism": (
+            "For pairwise-distinct primes, smoothPrefixLcm_eq_threePrimeHeight "
+            "identifies the literal running LCM with the product of the three "
+            "maximal pure-power coordinates. SameThreePrimeLogCell fixes all "
+            "three logarithmic coordinates, so the height, literal LCM, and "
+            "kernel are constant on a cell. A one-coordinate log step multiplies "
+            "the height/LCM by its prime, while disjoint positive jump channels "
+            "have exactly 3*count values (or 3*count+1 with the common origin)."
+        ),
+        "source_declarations": declarations,
+        "wrapper": {
+            "declaration": wrapper_name,
+            "module": wrapper_module,
+            "line": wrapper_line,
+            "source_authority": "direct Lean source declaration",
+            "claim_authority": "docs/claims.json::claims[three_prime_running_lcm]",
+        },
+        "mechanism_cards": [
+            {
+                "id": "running_lcm_identity",
+                "declaration_names": ["smoothPrefixLcm_eq_threePrimeHeight"],
+                "wrapper_declaration": wrapper_name,
+                "hard_mechanism": (
+                    "The three pairwise-distinct prime powers are pairwise coprime; "
+                    "their product is both the exact height and the running prefix LCM."
+                ),
+            },
+            {
+                "id": "log_cell_constancy",
+                "declaration_names": [
+                    "SameThreePrimeLogCell",
+                    "threePrimeHeight_eq_of_sameLogCell",
+                    "smoothPrefixLcm_eq_of_sameLogCell",
+                    "threePrimeKernelQ_eq_of_sameLogCell",
+                ],
+                "hard_mechanism": (
+                    "No logarithmic coordinate changes inside a cell, so neither "
+                    "the height nor the reciprocal kernel can change there."
+                ),
+            },
+            {
+                "id": "coordinate_jumps_and_counts",
+                "declaration_names": [
+                    "threePrimeHeight_firstLogStep",
+                    "threePrimeHeight_secondLogStep",
+                    "threePrimeHeight_thirdLogStep",
+                    "smoothPrefixLcm_firstLogStep",
+                    "smoothPrefixLcm_secondLogStep",
+                    "smoothPrefixLcm_thirdLogStep",
+                    "threePrimePositiveJumpSet_card",
+                    "threePrimeJumpSetWithOrigin_card",
+                ],
+                "hard_mechanism": (
+                    "A single coordinate advance multiplies by its channel prime; "
+                    "pairwise-distinct channels remain disjoint, giving the exact "
+                    "finite jump cardinalities."
+                ),
+            },
+        ],
+        "natural_friction_evidence": [
+            review.get("boundary"),
+            "The finite cell/jump normal form leaves the infinite producer and "
+            "actual-series identification untouched.",
+        ],
+        "open_producer_boundaries": {
+            "actual_series_bridge": (
+                "The bridge from the actual three-prime running-LCM series (or "
+                "its rationality) to the carry systems consumed by the #269 "
+                "conditional routes remains open."
+            ),
+            "cofinal_escape_producer": (
+                "CofinalLocalWindowEscape, the denominator-dependent cofinal "
+                "residue-window escape producer, is unproved; finite searches "
+                "do not supply it."
+            ),
+            "endpoint": "Cell structure alone does not prove irrationality.",
+        },
+        "related_families": related_families,
+        "relation_authority": (
+            "Family positions and neighbour family cards come from Palomar and "
+            "Claims; the two boundary-context labels above are a derived reader "
+            "crosswalk, not an insertion-ordered relation store or a new Palomar edge."
+        ),
+        "authority": {
+            "claims": "docs/claims.json::claims[three_prime_running_lcm] and external_verification_packet.review_matrix.families[three_prime_lcm_cells]",
+            "palomar": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_screening and selection_contract.programme_family_order",
+            "source": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+            "wrapper_source": "ExternalVerification/Solution.lean",
+        },
+        "follow": {
+            "family": "python3 scripts/query_semantic.py family-relations three_prime_lcm_cells",
+            "problem": "python3 scripts/query_corpus.py --route erdos_269",
+        },
+    }
+
+
 def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     """Join the expert index to canonical endpoint-facing family packets.
 
@@ -245,6 +560,9 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     roots = [
         _family_hierarchy(family_id, ranks, palomar, claims)
         for family_id in SEMANTIC_HANDOFF_ROOT_FAMILIES
+    ]
+    supporting_families = [
+        three_prime_lcm_cells_handoff(palomar, load_json(CLAIMS))
     ]
     return {
         "question": (
@@ -272,10 +590,13 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
         },
         "root_family_ids": list(SEMANTIC_HANDOFF_ROOT_FAMILIES),
         "roots": roots,
+        "supporting_families": supporting_families,
         "coverage_boundary": (
             "This route highlights two endpoint-facing roots without replacing "
             "the all-eight-problem semantic registry or subordinate/long-tail "
-            "family discovery. Use each root's follow commands and "
+            "family discovery. It also exposes the source-backed #269 "
+            "three-prime structure as supporting context without promoting it "
+            "to an endpoint. Use each family follow command and "
             "`python3 scripts/query_semantic.py problem-registry` for that "
             "complete inventory."
         ),
