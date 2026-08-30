@@ -75,6 +75,14 @@ def check_session_path_boundaries(tmp: Path) -> None:
     if (tmp / "escaped" / "ledger.jsonl").exists():
         raise AssertionError("traversing session slug received an escaped ledger")
 
+    outside = tmp / "outside-probes"
+    outside.mkdir()
+    linked_probe_root = real / "linked-probe-root"
+    linked_probe_root.symlink_to(outside, target_is_directory=True)
+    hidden_link = linked_probe_root / ".." / "hidden.lean"
+    if not workbench.path_has_symlink_component(hidden_link):
+        raise AssertionError("workbench normalized away a symlink before resolving ..")
+
 
 def check_platform_temp_alias_boundary() -> None:
     """Permit only macOS's exact /tmp alias while retaining link rejection."""

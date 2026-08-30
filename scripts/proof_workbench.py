@@ -76,18 +76,31 @@ def _is_allowed_platform_alias(path: Path) -> bool:
         return False
 
 
+def _absolute_preserving_dotdot(path: Path) -> Path:
+    """Make a path absolute without normalizing ``..`` before inspection."""
+    return path if path.is_absolute() else Path.cwd() / path
+
+
 def path_has_symlink_component(path: Path) -> bool:
     """Reject probe sources that could redirect durable evidence elsewhere."""
-    current = Path(os.path.abspath(path))
-    while True:
-        if current.is_symlink():
-            if _is_allowed_platform_alias(current):
-                current = current.resolve(strict=True)
-            else:
-                return True
-        if current.parent == current:
-            return False
-        current = current.parent
+    candidate = _absolute_preserving_dotdot(path)
+    current = Path(candidate.anchor)
+    for component in candidate.parts[1:]:
+        if component in {"", "."}:
+            continue
+        if component == "..":
+            current = current.parent
+            continue
+        current /= component
+        if not current.is_symlink():
+            continue
+        if not _is_allowed_platform_alias(current):
+            return True
+        try:
+            current = current.resolve(strict=True)
+        except OSError:
+            return True
+    return False
 
 
 def validate_session_slug(slug: str) -> None:
