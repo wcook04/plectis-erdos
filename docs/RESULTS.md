@@ -128,6 +128,16 @@ replacement for claim authority.
   (`no_eventuallyPeriodicNegative_orbit`,
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean`). It does not cover
   arbitrary unbounded negative behaviour, so the mixed-sign boundary remains.
+- The Comparator interface
+  `no_cofinallyBoundedNegative_of_normalizedVanishes` makes another conditional
+  no-go exact: with `a(n) > 1`, positive `C` and `magnitude`, the coupled
+  recurrences `C(n+1) + D(n) = a(n)·C(n)` and
+  `D(n+1) = a(n)·D(n)`, a bounded rise `C(n+1) ≤ C(n) + B`, normalized
+  vanishing `K·magnitude(n) < C(n)` eventually for every `K`, and a cofinally
+  bounded negative part, the hypotheses are inconsistent
+  (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean`). Every dynamical,
+  positivity, bounded-rise, and vanishing assumption remains explicit; this
+  does not close the original mixed-sign regime.
 - Open: the unbounded mixed-sign regime.
 
 **#249 — is `∑ φ(n)/2ⁿ` irrational? (reviewed core)**
