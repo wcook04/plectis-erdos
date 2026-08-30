@@ -8,66 +8,60 @@
 
 </div>
 
-For $`j\ge0`$ and $`0\le r<2^j`$, write $`\varphi_{j,r}(n)=\varphi(2^jn+r)`$. We prove that
+Let
+``` math
+S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}.
+```
+Erdős Problem #249 asks whether $`S`$ is irrational and remains open. The two checked routes closest to that endpoint are conditional consumers with different missing cofinal producers.
+
+For $`H_a=\operatorname{lcm}(1,\ldots,2^a)`$, put $`R_a=\operatorname{totientTail}(2H_a)-\operatorname{totientTail}(H_a)`$. The exact actual-LCM frontier is
+``` math
+S\text{ is irrational}
+  \quad\Longleftrightarrow\quad
+  \forall a_0\ \exists a\ge a_0,\ R_a\notin\mathbb{Z}
+```
+([exact frontier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientActualLcmOrbitNonintegrality.lean#L37)). A stronger quantitative consumer assumes that, for every $`a_0`$, there are $`a,q\in\mathbb{N}`$ such that
+``` math
+\begin{gathered}
+  \max(2,a_0)\le a,\qquad
+  \operatorname{oddGuardedCanonicalAdjacentSuffixDepth}(2^a)=2q+1,\\
+  \frac1{32}+\operatorname{actualLcmRawErrorRadius}(a,q)
+    \le |R_a-z|\qquad\text{for every }z\in\mathbb{Z}.
+\end{gathered}
+```
+That supply implies irrationality by [the quantitative endpoint consumer](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientActualLcmOrbitSeparation.lean#L305). The supply remains unproved and is sufficient, not equivalent. The unconditional sign corridor does not supply it: under integrality the true survivor is forced onto the top dyadic edge, which sign alone does not exclude.
+
+Independently, the first harmonic of the totient window splits exactly as $`\mathcal C+\mathcal M+\mathcal B+\mathcal U`$, where the four terms are the centred supplier-fibre correlation, its fibre-mean contribution, bad suppliers, and non-suppliers ([four-term decomposition](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L514)). For every $`h>0`$, suppose there are $`s>0`$ and $`0<\eta<1`$ such that, for every $`X_0`$, some $`X,L\in\mathbb{N}`$ satisfy
+``` math
+\max(X_0,1)\le X,\qquad h\le L-s,\qquad
+  16(2X+h+L+2)\le2^L
+```
+and
+``` math
+\operatorname{Re}\mathcal C\le\frac{14}{25}X,\qquad
+  \lVert\mathcal M\rVert\le\frac1{100}X,\qquad
+  \lVert\mathcal B\rVert\le\frac1{100}X,\qquad
+  \lVert\mathcal U\rVert\le\frac8{25}X .
+```
+For one window these budgets give the bound $`9X/10`$; their quantified cofinal supply implies irrationality ([budget predicate](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L543); [the $`9X/10`$ consequence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L549); [conditional endpoint consumer](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L577)). That decorrelation supply is unproved. The exact supplier-fibre bijection does not provide global prime isolation: at $`(X,L,s,m,N)=(16,20,1,2,18)`$ the pivot is $`38=2\cdot19`$, while $`19`$ also divides the distinct window argument $`N+1=19`$.
+
+The principal unconditional theorem of this note is instead structural. For $`j\ge0`$ and $`0\le r<2^j`$, write $`\varphi_{j,r}(n)=\varphi(2^jn+r)`$. We prove that
 ``` math
 \{\varphi_{0,0},\varphi_{1,0}\}
   \cup
   \{\varphi_{j,r}:j\ge1,\ 0<r<2^j,\ r\ {\rm odd}\}
 ```
-is a $`\mathbb{Q}`$-basis for the span of the $`2`$-kernel of Euler’s totient. Consequently, the span of the dyadic sections through level $`e`$ has dimension exactly $`2^e+1`$ for every $`e\ge1`$, and the two elementary reduction identities generate every $`\mathbb{Q}`$-linear relation among the sections. This determines the entire dyadic-section span; it does not decide the irrationality question below.
+is a $`\mathbb{Q}`$-basis for the span of the $`2`$-kernel of Euler’s totient. Consequently, the span of the dyadic sections through level $`e`$ has dimension exactly $`2^e+1`$ for every $`e\ge1`$, and the two elementary reduction identities generate every $`\mathbb{Q}`$-linear relation among the sections. This determines the entire dyadic-section span, but supplies no rationality-to-finite-rank bridge. The basis and finite-rank statements are locally proved with novelty unassessed; full-kernel infinite-dimensionality is a kernel-checked consequence already implied by Coons’s non-$`2`$-regularity result.
 
 The same reduction has an all-base conditional form. For every integer base $`k\ge2`$ and level $`e\ge1`$, the explicit canonical family spans the corresponding truncation; if that family is linearly independent, the truncation has dimension $`k^e+1`$. The independence input is external, so this conditional rank statement is structural and does not prove irrationality of $`S`$.
 
-For release review, the selected dyadic core rows are exact: [the complete finite-level rank theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientMahlerDefect.lean#L1084) gives dimension $`2^e+1`$ for every $`e\ge1`$, while `exists_totientDyadicSectionBasis` supplies a basis for the full odd-core span. The companion row `not_finiteDimensional_span_fullTotientKernel` records that the full rational span is not finite-dimensional. These are structural coefficient-space results, not a rationality-to-finite-rank bridge.
+The complete inventory below keeps the remaining exact families discoverable but subordinate: the finite Stern–Brocot floor, Lambert and gcd-moment identities, finite diagonal and Farey certificates, fresh-prime loss accounting, strict-jump slack, foreign-residue projection, synthetic factor-ideal and fixed-precision no-go results, and the modular-period/rank necessary conjunction. Each retains its hypotheses and contrary boundary; none supplies either missing cofinal producer. No novelty or priority claim is made for the conditional endpoint routes, and formalisation alone is not presented as evidence that Problem #249 is solved.
 
-The selected all-base Comparator row is exact: `finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent` takes integers $`k,e`$ with $`2\le k`$ and $`1\le e`$, together with $`\mathbb{Q}`$-linear independence of the explicit canonical family, and concludes
-``` math
-\operatorname{finrank}_{\mathbb{Q}}\!\left(\operatorname{span}_{\mathbb{Q}}
-   \operatorname{range}(\operatorname{allBaseTotientKernelThroughLevelFamily}(k,e))\right)
-   = k^e+1.
-```
-The checked declaration is the conditional rank interface at [conditional all-base rank](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientKernelConditional.lean#L215). Its independence hypothesis remains an external boundary; this row does not prove irrationality of $`S`$.
-
-The release Comparator also selects the exact combinatorial stability row `runHeight_defect_fib_sum_lower`. For every finite defect list $`e`$, it states
-``` math
-F_{|e|+3}+F_{|e|+1}\sum_{i\in e}i
-  \le \operatorname{runHeight}(\operatorname{defectRunLengths}(e)),
-```
-where $`F_j=\operatorname{fib}(j)`$. This is a finite Stern–Brocot run-height floor; it does not establish denominator survival, irrationality of $`S`$, or a cofinal certificate supply.
-
-The same checked Lambert calculus also identifies the squared-Mersenne layer: the constant weight gives the dyadic divisor-count series $`\sum_{n\ge1}(\sigma(n)-\tau(n))2^{-n}`$, while the totient weight gives the first gcd-moment series $`\sum_{n\ge1}(\mathsf P(n)-n)2^{-n}`$, where $`\mathsf P(n)=\sum_{d\mid n}\varphi(d)(n/d)`$. These are exact structural identities, not an irrationality proof for $`S`$.
-
-At every diagonal scale $`H`$ and squared-layer cutoff $`D`$, the same calculus gives a sharper certificate interface. The scaled diagonal tail difference is an explicit rational centre plus a signed squared-Mersenne tail, whose absolute value is at most $`4\,2^H(2^H-1)/(3(2^{D+1}-1)^2)`$. If that centre is farther from every integer than this radius, the diagonal misses the full integral target. This is a producer-independent separation criterion, not an unbounded certificate family and not a proof that $`S`$ is irrational.
-
-The diagonal arithmetic also admits an exact fresh-prime loss accounting. At positive height $`H`$, the old-prime endpoint mass retaining only the prime support of $`H`$ dominates the actual totient. Thus the diagonal increment is the old Möbius increment plus a lower-endpoint deficit minus an upper-endpoint deficit, and the five-point curvature branch loses at most an explicit nonnegative weighted deficit. This identifies the hard mechanism behind the finite curvature probes, but proves no cofinal deficit bound and therefore no irrationality theorem.
-
-On a finite family of distinct primes, a square-CRT base can also suppress the prime-dilation correction throughout a prescribed finite horizon. The result is exact but local: clean blocks can have either vanishing or nonzero coefficients, so correction suppression alone does not produce an unbounded certificate family.
-
-There is also a lossless scalar form of the canonical strict-jump test. At each strict LCM jump, the two central-band inequalities are equivalent to nonnegativity of one explicit integer slack. If that slack is nonnegative at cofinally many strict jumps, the totient constant is irrational. The cofinal sign condition is not proved; this is a reduction of the remaining producer problem, not an irrationality theorem.
-
-The finite Möbius-residue state has a complementary projection form as well: it splits exactly into foreign and divisor channels, and finite windows of the omitted foreign channels obey a closed geometric budget. If a future analytic comparison controls the limiting foreign defect by that budget and the projected state stays farther from every integer, the full target is missed. The comparison and any unbounded separated supply are not proved.
-
-At the actual power-of-two LCM heights, irrationality has an exact frontier: it is equivalent to cofinal non-integrality of the corresponding tail orbit. An independent unconditional sign corridor makes the obstruction sharper: an integral orbit forces its true survivor onto the top edge of the dyadic modulus, so sign alone cannot supply the central modular kill.
-
-One further obstruction is structural rather than analytic: for every LCM height, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the relevant totient factor ideals and whole-ray anchors. This closes that factor-only hypothesis class, but the witness letters are not asserted to be actual totient differences and the result says nothing about nonlinear combinations or the open cofinal supply.
-
-Let $`S=\sum_{n\ge1}\varphi(n)/2^n`$. A rational value would induce a tempered integral tail orbit whose dyadic sections through level $`e`$ have rank at least $`2^e-1`$; no conflicting upper bound is proved. Independently, every rational representation $`S=a/q`$ must satisfy
-``` math
-q>79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053,
-```
-the sharp exclusion for the chosen $`240`$-binary-digit Farey window. The current repository also verifies a diagonal tail certificate at every natural scale $`t\le82`$. This aggregate is finite: it supplies neither an instance at $`t=83`$ nor an unbounded family.
-
-There is a distinct conditional route at the first harmonic of the totient window. Exact largest-prime supplier fibres split the complex window sum into the good-fibre centred correlation, its fibre mean, bad suppliers, and non-suppliers ([four-term decomposition](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L514)). The one-sided budget $`14/25+1/100+1/100+8/25=9/10`$ is the checked [budget predicate](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L543); it yields a real first-harmonic gap by [the $`9/10`$ consequence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L549). The remaining consumer [residual-decorrelation implication](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L577) still needs a cofinal estimate. The supplier-fibre bijection is exact but global prime isolation is false, as the explicit pivot $`38=2\cdot19`$ witness shows; no irrationality conclusion is claimed.
-
-The sharper rationality frontier couples these two observations. On the hypothetical non-irrational branch, one positive-multiplier tempered carry has all of its dyadic sections eventually periodic modulo one common multiplier $`v`$, while the $`\mathbb Q`$-span of its canonical carry kernels still has dimension at least $`2^e-1`$ at every level $`e`$. This is the checked [modular-period/rank frontier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientTailCarryPeriod.lean#L224), a necessary conjunction rather than a contradiction. The natural friction is also exact: modulo any divisor of $`v`$, the totient forcing vanishes and the carry reduces to the geometric orbit $`2^N u_0`$ ([forcing vanishing](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientTailCarryPeriod.lean#L126); [geometric reduction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientTailCarryPeriod.lean#L140)). Thus quotient periodicity supplies no finite-$`\mathbb Q`$-rank upper bound; Problem #249 remains open.
-
-We also record exact equivalences between irrationality of $`S`$ and cofinal tail-nonintegrality or certificate supplies. These are lossless reformulations of the open problem, not evidence for the missing cofinal producer. Erdős Problem #249 remains open; formalisation alone is not presented as a novelty claim.
-
-> **Contribution.** The paper gives an explicit basis and relation normal form for the dyadic totient kernel, exposes the squared-Lambert first-gcd-moment identity and a sharp producer-independent squared-Mersenne enclosure, proves level rank $`2^e+1`$, derives the all-base rank $`k^e+1`$ from Martin plus explicit reductions, checks a finite denominator exclusion together with its first failing certificate scale, and records the orbit-level modular-period/rank frontier.
+> **Contribution.** The paper first exposes two distinct conditional endpoint consumers for Problem #249: quantitative separation of the actual power-two LCM orbit, and a four-term first-harmonic budget with a cofinal residual-decorrelation producer. It then gives the explicit odd-core basis, relation normal form, and exact finite-level rank $`2^e+1`$, followed by a status-tagged inventory of mechanisms, no-go results, and finite evidence.
 >
-> **Relation to the open problem.** The rank theorems and the orbit-level frontier do not supply a rationality-to-finite-rank bridge, while the finite certificate does not supply an unbounded producer. Problem #249 remains open.
+> **Relation to the open problem.** The actual-LCM separation supply is stronger than the exact non-integrality frontier and remains unproved. The first-harmonic budgets give one $`9X/10`$ window bound, while irrationality needs the fully quantified cofinal socket, also unproved; global supplier-prime isolation is false. The rank theorem supplies no rationality-to-finite-rank bridge, and finite certificates supply no unbounded producer. Problem #249 remains open.
 >
-> **Executable review object.** Comparator carries the explicit odd-core basis, the exact dyadic finite-level rank theorem, and the necessary modular-period/rank conjunction [the modular-period/rank frontier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientTailCarryPeriod.lean#L224). The latter is not a contradiction: modulo a divisor of the multiplier the totient forcing can vanish and the carry becomes geometric, so no finite-rank upper bound is claimed. Full-kernel infinite-dimensionality is prior-art context from Coons, while the all-base linear-independence input uses Martin externally; Lean checks the rank conclusion conditional on that explicit input. The finite arithmetic certificate retains its separate evidence route. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+> **Executable review object.** Comparator carries the exact endpoint consumers [the actual-LCM separation route](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/TotientActualLcmOrbitSeparation.lean#L305) and [the first-harmonic route](https://github.com/wcook04/plectis-lean-erdos249-257/blob/81bf8aee384a5df45dd9a27d268a24044fae761b/Erdos249257/FirstHarmonicPivot.lean#L577), as well as the odd-core basis and finite-rank rows. The exact actual-LCM equivalence, the top-edge obstruction, and the $`38=2\cdot 19`$ counterexample remain adjacent source evidence. Full-kernel infinite-dimensionality is prior-art context from Coons; the all-base independence input uses Martin externally; no novelty or priority claim is made for the conditional routes. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
 
 <a id="sec:results"></a>
 
@@ -79,9 +73,9 @@ S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}
 ```
 is irrational; see Erdős and Graham \[erdosgraham1980, p. 61\] and Erdős \[erdos1988, p. 102\]. Bloom’s current catalogue record reproduces this question and labels it open, while explicitly warning that the status is the website owner’s present assessment and may omit relevant literature \[erdosproblems\]. We therefore use the catalogue for numbering and current reported status only; the two original sources carry the problem statement.
 
-The principal result determines the dyadic sections of Euler’s totient at every finite level: the two zero-residue sections $`\varphi_{0,0}`$ and $`\varphi_{1,0}`$, together with the odd-residue sections, form a rational basis, and the two reduction identities below generate every rational relation among the sections. Its connection with Erdős Problem #249 is through the integral scaled-tail recurrence displayed below. The basis theorem gives a lower bound for the dyadic-section rank of every such recurrence supplied by a hypothetical rational value of $`S`$, but no corresponding upper bound is known.
+The closest checked routes to the endpoint come first. The actual power-two LCM orbit gives an exact cofinal non-integrality equivalence and a stronger quantitative separation consumer; the latter still lacks its cofinal supply. The independent first-harmonic route turns four explicit supplier-fibre budgets into a $`9X/10`$ window bound and reaches irrationality only under its fully quantified residual-decorrelation socket. That socket is unproved, and the $`38=2\cdot19`$ example rules out the tempting global-isolation shortcut.
 
-The other unconditional statements are a finite Farey denominator exclusion, finite diagonal certificates at every $`t\le82`$, identities for the Lambert coefficient sequence $`A=\varphi*\mu`$, and a theorem that no fixed common denominator clears every $`A(n)/n`$. The certificate equivalences have a different logical status: <a href="#res:equivalences" data-reference-type="ref" data-reference="res:equivalences">[res:equivalences]</a> gives exact characterisations of irrationality, while <a href="#res:supply" data-reference-type="ref" data-reference="res:supply">[res:supply]</a> gives a sufficient criterion. Their unbounded hypotheses are not proved, so the finite certificate band is not progress on the cofinal obligation.
+The principal unconditional result is structural: the two zero-residue sections $`\varphi_{0,0}`$ and $`\varphi_{1,0}`$, together with the odd-residue sections, form a rational basis, and the two reduction identities below generate every rational relation among the sections. It gives exact finite-level rank but no rationality-to-finite-rank bridge. The remaining inventory includes the finite Farey denominator exclusion, finite diagonal certificates at every $`t\le82`$, Lambert and gcd-moment identities, conditional producer interfaces, and explicit no-go boundaries. Exact equivalences remain reformulations of the open endpoint; finite evidence is not an unbounded producer.
 
 *Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
 
