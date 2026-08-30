@@ -247,6 +247,27 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
             any("must remain open" in error for error in self.errors(problem_index=mutated))
         )
 
+    def test_local_navigation_route_is_exact_and_bidirectional(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        mutated["problems"][0]["local_navigation"]["route"] = (
+            "python3 scripts/query_corpus.py --route erdos_999"
+        )
+        errors = self.errors(mutated)
+        self.assertTrue(
+            any("local navigation route drifted" in error for error in errors)
+        )
+
+    def test_local_navigation_contract_is_projected(self) -> None:
+        self.assertIn(
+            "Canonical local return route: "
+            "`python3 scripts/query_corpus.py --route erdos_68`",
+            self.projection,
+        )
+        self.assertIn(
+            "result families, declarations, papers and sources",
+            self.projection,
+        )
+
     def test_projection_drift_is_rejected(self) -> None:
         drifted = self.projection.replace("8/8", "7/8") + "\nmanual edit\n"
         self.assertTrue(

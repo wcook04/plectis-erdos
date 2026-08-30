@@ -32,6 +32,11 @@
     {
       "problem": 68,
       "local_problem_id": "erdos_68",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_68",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/68.lean",
         "sha256": "ae87fc60cac529122b9a08cbae11df1c98889461372368a3a1b508b84bff11aa",
@@ -68,6 +73,11 @@
     {
       "problem": 243,
       "local_problem_id": "erdos_243",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_243",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/243.lean",
         "sha256": "c9689f42fe49827990e61113996e89a14ebbca502095b6334cb4be8e9d9f8117",
@@ -99,6 +109,11 @@
     {
       "problem": 249,
       "local_problem_id": "erdos_249",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_249",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/249.lean",
         "sha256": "f7f24be33d689fff45c8ecbb6d3ed026eea9e770db87f3c108f5b5ff0c2c5943",
@@ -129,6 +144,11 @@
     {
       "problem": 251,
       "local_problem_id": "erdos_251",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_251",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/251.lean",
         "sha256": "d2ab131b7662a7ea25717dc65ca227be0927c63d954c74c5d43680194d633184",
@@ -160,6 +180,11 @@
     {
       "problem": 257,
       "local_problem_id": "erdos_257",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_257",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/257.lean",
         "sha256": "bde5d5e3940b45ad4ca53b706f9fb6cf1a5636650c8fbc218904e43c3c35c66c",
@@ -241,6 +266,11 @@
     {
       "problem": 269,
       "local_problem_id": "erdos_269",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_269",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/269.lean",
         "sha256": "7816216886e47aca258974227a526165a2d99e4e6491cdf700b692292ebe45af",
@@ -284,6 +314,11 @@
     {
       "problem": 1041,
       "local_problem_id": "erdos_1041",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_1041",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/1041.lean",
         "sha256": "368e0cf749e5b0e50ea300f215199375c4f79b8bf325d3fb7877e48f2d9628ca",
@@ -321,6 +356,11 @@
     {
       "problem": 1049,
       "local_problem_id": "erdos_1049",
+      "local_navigation": {
+        "route": "python3 scripts/query_corpus.py --route erdos_1049",
+        "surface": "canonical problem packet",
+        "return_contract": "Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary."
+      },
       "upstream_source": {
         "path": "FormalConjectures/ErdosProblems/1049.lean",
         "sha256": "f2eb2ab5016f7c37ef9d9000c066362296dfafe11786b6bec9b2d1b96bf5222c",

@@ -402,6 +402,23 @@ def crosswalk_errors(
             if not str(local.get("question", "")).strip():
                 errors.append(f"{label}: local question is empty")
 
+        local_navigation = row.get("local_navigation", {})
+        expected_route = (
+            f"python3 scripts/query_corpus.py --route {row.get('local_problem_id', '')}"
+        )
+        if not isinstance(local_navigation, dict):
+            errors.append(f"{label}: local navigation must be an object")
+        else:
+            if local_navigation.get("route") != expected_route:
+                errors.append(f"{label}: local navigation route drifted")
+            if local_navigation.get("surface") != "canonical problem packet":
+                errors.append(f"{label}: local navigation surface drifted")
+            if local_navigation.get("return_contract") != (
+                "Returns the local problem packet with result families, declarations, "
+                "papers and sources, and the exact open boundary."
+            ):
+                errors.append(f"{label}: local navigation return contract drifted")
+
         source = row.get("upstream_source", {})
         expected = EXPECTED_UPSTREAM[problem]
         for key, value in expected.items():
@@ -611,6 +628,10 @@ def render_markdown(
                 f"### Erdős #{problem}",
                 "",
                 f"Local question: {indexed[problem]['question']}",
+                "",
+                f"- Canonical local return route: `{row['local_navigation']['route']}` "
+                f"({row['local_navigation']['surface']}); "
+                f"{row['local_navigation']['return_contract']}",
                 "",
                 f"- Upstream declaration: [`{source['primary_declaration']}`]({source_url}) at `{source['path']}:{source['declaration_line']}`; proof status `{source['proof_status']}`.",
                 f"- Statement scope: {comparison['statement_scope']}",

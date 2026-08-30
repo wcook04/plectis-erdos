@@ -47,6 +47,8 @@ Each file is read at the commit above. Each hash is SHA-256 over exact file byte
 
 Local question: Is the series sum_{n >= 2} 1/(n! - 1) irrational?
 
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_68` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
+
 - Upstream declaration: [`Erdos68.erdos_68`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/68.lean#L33) at `FormalConjectures/ErdosProblems/68.lean:33`; proof status `sorry`.
 - Statement scope: The same displayed factorial-denominator irrationality question.
 - Indexing: Formal Conjectures sums over n : Nat after the explicit shift n + 2; the displayed local question sums over integers n >= 2.
@@ -59,6 +61,8 @@ Local question: Is the series sum_{n >= 2} 1/(n! - 1) irrational?
 ### Erdős #243
 
 Local question: Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?
+
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_243` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 
 - Upstream declaration: [`Erdos243.erdos_243`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/243.lean#L38) at `FormalConjectures/ErdosProblems/243.lean:38`; proof status `sorry`.
 - Statement scope: The rapid-growth, rational reciprocal-sum, eventual-Sylvester question is represented, but the local work proves only conditional state-system consequences.
@@ -73,6 +77,8 @@ Local question: Under a rapid-growth hypothesis on an integer sequence, does rat
 
 Local question: Is the binary Lambert series sum phi(n)/2^n irrational?
 
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_249` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
+
 - Upstream declaration: [`Erdos249.erdos_249`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/249.lean#L35) at `FormalConjectures/ErdosProblems/249.lean:35`; proof status `sorry`.
 - Statement scope: The binary totient-series irrationality question is represented; neither corpus solves it.
 - Indexing: Formal Conjectures sums from n = 0. The n = 0 totient term is zero, so the displayed positive-index series is expected to agree, but this crosswalk contains no Lean reindexing proof.
@@ -85,6 +91,8 @@ Local question: Is the binary Lambert series sum phi(n)/2^n irrational?
 ### Erdős #251
 
 Local question: Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
+
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_251` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 
 - Upstream declaration: [`Erdos251.erdos_251`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/251.lean#L31) at `FormalConjectures/ErdosProblems/251.lean:31`; proof status `sorry`.
 - Statement scope: The same dyadic prime-series irrationality question is represented.
@@ -99,6 +107,8 @@ Local question: Is the dyadic series sum p_n/2^n over consecutive primes irratio
 
 Local question: Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?
 
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_257` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
+
 - Upstream declaration: [`Erdos257.erdos_257`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/257.lean#L35) at `FormalConjectures/ErdosProblems/257.lean:35`; proof status `sorry`.
 - Statement scope: The upstream open theorem quantifies over every infinite Nat support. The local expansion studies the same positive-exponent Mersenne support problem without proving the universal endpoint.
 - Indexing: The upstream support may contain exponent zero. Its n = 0 summand is 1 / 0 = 0 under Lean's division convention, so zero is analytically invisible; a formal adapter must still normalize Set Nat and subtype indexing explicitly.
@@ -111,6 +121,8 @@ Local question: Is the sum of 1/(2^n-1) over every infinite set of positive expo
 ### Erdős #269
 
 Local question: For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.
+
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_269` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 
 - Upstream declaration: [`Erdos269.erdos_269.variants.irrational`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/269.lean#L73) at `FormalConjectures/ErdosProblems/269.lean:73`; proof status `sorry`.
 - Statement scope: Formal Conjectures states finite-prime rational and irrational variants and an infinite-prime theorem. The local programme proves only subsidiary structure for the three-prime case.
@@ -125,6 +137,8 @@ Local question: For a finite set of at least two primes, is the sum of reciproca
 
 Local question: For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?
 
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_1041` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
+
 - Upstream declaration: [`Erdos1041.erdos_1041`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/1041.lean#L67) at `FormalConjectures/ErdosProblems/1041.lean:67`; proof status `sorry`.
 - Statement scope: Both surfaces ask for two roots connected inside the open unit lemniscate by a curve with a bound below two, but the exact formal notion of length needs review.
 - Indexing: There is no series indexing issue. The upstream theorem quantifies polynomial degree n >= 2 and selects roots through multiset containment, including multiplicity.
@@ -137,6 +151,8 @@ Local question: For a monic polynomial whose roots lie in the open unit disc, mu
 ### Erdős #1049
 
 Local question: For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.
+
+- Canonical local return route: `python3 scripts/query_corpus.py --route erdos_1049` (canonical problem packet); Returns the local problem packet with result families, declarations, papers and sources, and the exact open boundary.
 
 - Upstream declaration: [`Erdos1049.erdos_1049`](https://github.com/google-deepmind/formal-conjectures/blob/f2de2ed5841e2105009be778ada0c40c08980125/FormalConjectures/ErdosProblems/1049.lean#L40) at `FormalConjectures/ErdosProblems/1049.lean:40`; proof status `sorry`.
 - Statement scope: The upstream open theorem asks for every rational t > 1. The local programme does not prove that endpoint, but its full-support theorem covers positive integer bases and may discharge the upstream solved integer-base variant after adapters.
