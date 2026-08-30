@@ -293,6 +293,15 @@ core)**
   base `b ≥ 2` (Erdős 1948; claim `eb_full_support`), as are pairwise-coprime
   supports with summable reciprocals (Erdős 1968) and eventually periodic
   supports.
+- The committed Comparator interface
+  `irrational_erdosSupportSeries_pairwise_coprime` makes the pairwise-coprime
+  row exact: for every base `b ≥ 2`, infinite support `A`, pairwise
+  `Nat.Coprime` elements of `A`, and summable reciprocal indicator
+  `Set.indicator A (fun a : ℕ => 1 / a)`, the support series
+  `erdosSupportSeries b A` is irrational
+  (`Erdos249257/CertificateKernel.lean`; independent statement wrapper in
+  `ExternalVerification/Challenge.lean`). At base `2` this is a dedicated
+  non-dilation family inside #257, not the universal infinite-support claim.
 - Historical source boundary: Chowla's 1947 paper defines the ordinary
   Lambert series `f(x) = ∑ xⁿ/(1−xⁿ)` and a sine-twisted companion, conjectures
   irrationality for both at nonzero rational arguments, but expressly says he
