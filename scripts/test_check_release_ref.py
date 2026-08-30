@@ -287,6 +287,7 @@ def main() -> int:
                 "PYTHONPATH": "/private/wrong-python-path",
                 "PYTHONOPTIMIZE": "2",
                 "PYTHONWARNINGS": "error",
+                "PYTHONINSPECT": "1",
                 "PYTHONHASHSEED": "random",
                 "LC_ALL": "C",
                 "LANG": "C",
@@ -311,6 +312,7 @@ def main() -> int:
                             "PYTHONPATH",
                             "PYTHONOPTIMIZE",
                             "PYTHONWARNINGS",
+                            "PYTHONINSPECT",
                         )
                     ),
                     "release-ref environment retained inherited selector or Python state",
