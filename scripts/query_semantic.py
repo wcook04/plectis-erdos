@@ -142,30 +142,37 @@ def load_claims() -> dict:
 
 
 def _palomar_family_ranks(palomar: dict) -> dict[str, dict]:
-    """Resolve stable family ranks from Palomar's canonical programme order."""
+    """Resolve within-programme positions from Palomar's canonical order.
+
+    The outer programme array is an inventory of independent programmes, not a
+    cross-programme value order. Only ``family_ids`` inside one problem block
+    carries a comparative position.
+    """
     contract = palomar.get("selection_contract", {})
     programme = contract.get("programme_family_order")
     if not isinstance(programme, list):
         raise ValueError("Palomar selection contract lacks programme_family_order")
     ranks: dict[str, dict] = {}
-    global_position = 0
+    seen_problems: set[int] = set()
     for problem_row in programme:
         problem = int(problem_row["problem"])
+        if problem in seen_problems:
+            raise ValueError(f"Palomar programme order repeats problem #{problem}")
+        seen_problems.add(problem)
         family_ids = problem_row.get("family_ids")
         if not isinstance(family_ids, list):
             raise ValueError(
                 f"Palomar programme order lacks family_ids for #{problem}"
             )
-        for programme_position, family_id in enumerate(family_ids, start=1):
+        for programme_position, raw_family_id in enumerate(family_ids, start=1):
+            family_id = str(raw_family_id)
             if family_id in ranks:
                 raise ValueError(
                     f"Palomar programme order repeats family {family_id!r}"
                 )
-            global_position += 1
-            ranks[str(family_id)] = {
+            ranks[family_id] = {
                 "problem": problem,
                 "programme_position": programme_position,
-                "global_position": global_position,
             }
     return ranks
 
@@ -177,40 +184,26 @@ def _palomar_relation_rows(palomar: dict) -> list[dict]:
     return relations
 
 
-def _claims_family_rows(claims: dict) -> dict[str, list[dict]]:
-    rows: dict[str, list[dict]] = defaultdict(list)
+def _claims_family_rows(claims: dict) -> dict[str, dict]:
+    """Index the unique Claims review-family row and its programme number."""
+    rows: dict[str, dict] = {}
     packet = claims.get("external_verification_packet", {})
     for block in packet.get("review_matrix", []):
+        problem = int(block["problem"])
         for family in block.get("families", []):
             family_id = family.get("id")
             if family_id:
-                rows[str(family_id)].append(family)
-    return rows
-
-
-def _palomar_family_detail_rows(palomar: dict) -> dict[str, list[dict]]:
-    rows: dict[str, list[dict]] = defaultdict(list)
-    for row in palomar.get("candidate_ranking", []):
-        if row.get("family_id"):
-            rows[str(row["family_id"])].append(row)
-    for row in (
-        palomar.get("candidate_value_dispositions", {})
-        .get("source_landscape_candidates", [])
-    ):
-        if row.get("family_id"):
-            rows[str(row["family_id"])].append(row)
+                family_id = str(family_id)
+                if family_id in rows:
+                    raise ValueError(
+                        f"Claims review matrix repeats family {family_id!r}"
+                    )
+                rows[family_id] = {**family, "problem": problem}
     return rows
 
 
 def _sorted_texts(values: list[object]) -> list[str]:
     return sorted({str(value) for value in values if value})
-
-
-def _detail_value(rows: list[dict], field: str) -> str | None:
-    values = _sorted_texts([row.get(field) for row in rows])
-    if not values:
-        return None
-    return max(values, key=lambda value: (len(value), value))
 
 
 def _detail_declarations(rows: list[dict], *fields: str) -> list[str]:
@@ -223,6 +216,158 @@ def _detail_declarations(rows: list[dict], *fields: str) -> list[str]:
             elif value:
                 values.append(value)
     return _sorted_texts(values)
+
+
+def _palomar_ranked_row(palomar: dict, family_id: str) -> dict | None:
+    matches = [
+        row
+        for row in palomar.get("candidate_ranking", [])
+        if str(row.get("family_id") or "") == family_id
+    ]
+    if len(matches) > 1:
+        raise ValueError(f"Palomar candidate ranking repeats family {family_id!r}")
+    return matches[0] if matches else None
+
+
+def _source_evidence_rows(
+    palomar: dict,
+    claims: dict,
+    family_id: str,
+) -> list[dict]:
+    """Return exact source rows without recombining their fields.
+
+    A family may have a load-bearing source row and subordinate contrary or
+    mechanism evidence in another file. File, anchor, declaration, mechanism,
+    attribution, and limitations therefore travel together as one row. Claims
+    main-result rows are a fallback only when Palomar has no richer atomic
+    source-landscape row for the family.
+    """
+    source_rows = [
+        row
+        for row in (
+            palomar.get("candidate_value_dispositions", {})
+            .get("source_landscape_candidates", [])
+        )
+        if str(row.get("family_id") or "") == family_id
+        and (row.get("source_declaration") or row.get("source_file"))
+    ]
+    evidence: list[dict] = []
+    for row in source_rows:
+        limitations = row.get("limitations")
+        evidence.append(
+            {
+                "authority": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::"
+                    "candidate_value_dispositions.source_landscape_candidates"
+                ),
+                "source_kind": "palomar_source_landscape_candidate",
+                "candidate_id": row.get("candidate_id"),
+                "disposition": row.get("disposition"),
+                "source_file": row.get("source_file"),
+                "source_anchor": row.get("source_anchor"),
+                "source_declaration": row.get("source_declaration"),
+                "comparator_declaration": row.get("comparator_declaration"),
+                "transport_declarations": list(
+                    row.get("transport_declarations", [])
+                    if isinstance(row.get("transport_declarations"), list)
+                    else []
+                ),
+                "statement": row.get("statement"),
+                "exact_hypotheses": list(
+                    row.get("exact_hypotheses", [])
+                    if isinstance(row.get("exact_hypotheses"), list)
+                    else []
+                ),
+                "hypothesis_projection_status": (
+                    "authored_exact_hypothesis_list"
+                    if row.get("exact_hypotheses")
+                    else "no_separate_hypothesis_list_in_source_row"
+                ),
+                "conclusion": row.get("conclusion"),
+                "mechanism": row.get("hard_mechanism"),
+                "attribution": row.get("attribution"),
+                "limitations": list(
+                    limitations
+                    if isinstance(limitations, list)
+                    else ([limitations] if limitations else [])
+                ),
+                "evidence_ceiling": row.get("evidence_ceiling"),
+                "transport_admission_boundary": row.get(
+                    "transport_admission_boundary"
+                ),
+            }
+        )
+    if not evidence:
+        main_results = (
+            claims.get("external_verification_packet", {}).get("main_results", [])
+        )
+        for row in main_results:
+            if str(row.get("review_family") or "") != family_id:
+                continue
+            boundary = row.get("boundary")
+            evidence.append(
+                {
+                    "authority": (
+                        "docs/claims.json::external_verification_packet."
+                        "main_results"
+                    ),
+                    "source_kind": "claims_main_result",
+                    "candidate_id": row.get("id"),
+                    "disposition": None,
+                    "source_file": row.get("original_source"),
+                    "source_anchor": None,
+                    "source_declaration": row.get("original_declaration"),
+                    "comparator_declaration": row.get("wrapper_declaration"),
+                    "transport_declarations": [],
+                    "statement": row.get("statement"),
+                    "exact_hypotheses": [],
+                    "hypothesis_projection_status": (
+                        "statement_and_declaration_only_no_separate_hypothesis_list"
+                    ),
+                    "conclusion": row.get("statement"),
+                    "mechanism": None,
+                    "attribution": None,
+                    "limitations": [boundary] if boundary else [],
+                    "evidence_ceiling": row.get("contribution_class"),
+                    "transport_admission_boundary": (
+                        "The Comparator wrapper preserves the stated result and "
+                        "axiom budget; it is not independent mathematical verification."
+                    ),
+                }
+            )
+    evidence.sort(
+        key=lambda row: (
+            str(row.get("source_file") or ""),
+            str(row.get("source_anchor") or ""),
+            str(row.get("source_declaration") or ""),
+            str(row.get("candidate_id") or ""),
+        )
+    )
+    return evidence
+
+
+def _primary_source_evidence(
+    family_id: str,
+    ranked_row: dict | None,
+    source_evidence: list[dict],
+) -> dict | None:
+    """Choose a primary row only when existing authority makes it unique."""
+    ranked_declaration = str((ranked_row or {}).get("declaration") or "")
+    if ranked_declaration:
+        matches = [
+            row
+            for row in source_evidence
+            if row.get("comparator_declaration") == ranked_declaration
+            or ranked_declaration in row.get("transport_declarations", [])
+        ]
+        if len(matches) == 1:
+            return matches[0]
+    identity_matches = [
+        row for row in source_evidence if row.get("candidate_id") == family_id
+    ]
+    if len(identity_matches) == 1:
+        return identity_matches[0]
+    return source_evidence[0] if len(source_evidence) == 1 else None
 
 
 def _relation_class(relation: str) -> str:
@@ -241,93 +386,242 @@ def _family_details(
     family_id: str,
     palomar: dict,
     claims: dict,
+    claim_rows_by_family: dict[str, dict] | None = None,
 ) -> dict:
-    palomar_rows = _palomar_family_detail_rows(palomar).get(family_id, [])
-    claim_rows = _claims_family_rows(claims).get(family_id, [])
-    source_rows = [
-        row
-        for row in palomar_rows
-        if row.get("source_declaration") or row.get("source_file")
-    ]
-    source_declarations = _detail_declarations(
-        source_rows, "source_declaration"
+    claim_rows_by_family = claim_rows_by_family or _claims_family_rows(claims)
+    claim_row = claim_rows_by_family.get(family_id)
+    if claim_row is None:
+        raise ValueError(f"Claims review matrix lacks family {family_id!r}")
+    ranked_row = _palomar_ranked_row(palomar, family_id)
+    source_evidence = _source_evidence_rows(palomar, claims, family_id)
+    primary_source = _primary_source_evidence(
+        family_id, ranked_row, source_evidence
     )
-    if not source_declarations:
-        source_declarations = _detail_declarations(claim_rows, "declarations")
     wrapper_declarations = _detail_declarations(
-        palomar_rows, "comparator_declaration", "declaration"
+        ([ranked_row] if ranked_row else []) + source_evidence,
+        "comparator_declaration",
+        "declaration",
+        "transport_declarations",
     )
-    summary = _detail_value(claim_rows, "summary") or _detail_value(
-        palomar_rows, "statement"
+    formal_declarations = _detail_declarations([claim_row], "declarations")
+    ranked_mechanism = (
+        ranked_row.get("mechanism_depth_and_natural_friction")
+        if ranked_row
+        else None
     )
-    mechanism = _detail_value(palomar_rows, "hard_mechanism") or _detail_value(
-        palomar_rows, "mechanism_depth_and_natural_friction"
-    )
-    boundary = _detail_value(claim_rows, "boundary") or _detail_value(
-        palomar_rows, "transport_admission_boundary"
-    )
-    if boundary is None:
-        boundary = _detail_value(palomar_rows, "evidence_ceiling")
-    limitations = _sorted_texts(
+    frontier_judgement = None
+    if ranked_row:
+        frontier_judgement = {
+            "rank": ranked_row.get("rank"),
+            "selection_status": ranked_row.get("selection_status"),
+            "consequence_and_endpoint_proximity": ranked_row.get(
+                "consequence_and_endpoint_proximity"
+            ),
+            "evidence_certainty": ranked_row.get("evidence_certainty"),
+            "overclaim_risk": ranked_row.get("overclaim_risk"),
+            "authority": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking",
+        }
+    screening_rows = [
+        row
+        for row in palomar.get("candidate_screening", [])
+        if str(row.get("family_id") or "") == family_id
+    ]
+    screening_judgements = sorted(
         [
-            limitation
-            for row in palomar_rows
-            for limitation in (
-                row.get("limitations", [])
-                if isinstance(row.get("limitations"), list)
-                else [row.get("limitations")]
-            )
-        ]
+            {
+                "declaration": row.get("declaration"),
+                "disposition": row.get("disposition"),
+                "reason": row.get("reason"),
+                "authority": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_screening"
+                ),
+            }
+            for row in screening_rows
+        ],
+        key=lambda row: (
+            str(row.get("disposition") or ""),
+            str(row.get("declaration") or ""),
+            str(row.get("reason") or ""),
+        ),
     )
+    represented_rows = [
+        row
+        for row in (
+            palomar.get("selection_contract", {}).get(
+                "represented_family_placements", []
+            )
+        )
+        if str(row.get("family_id") or "") == family_id
+    ]
+    if len(represented_rows) > 1:
+        raise ValueError(
+            f"Palomar represented-family placement repeats family {family_id!r}"
+        )
+    source_disposition = (
+        palomar.get("candidate_universe", {})
+        .get("source_family_dispositions", {})
+        .get(family_id)
+    )
+    presentation_disposition = {
+        "source_family_disposition": source_disposition,
+        "screening": screening_judgements,
+        "represented_placement": (
+            {
+                "tier_id": represented_rows[0].get("tier_id"),
+                "relative_judgement": represented_rows[0].get(
+                    "relative_judgement"
+                ),
+                "authority": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                    "represented_family_placements"
+                ),
+            }
+            if represented_rows
+            else None
+        ),
+        "authority": (
+            "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_universe."
+            "source_family_dispositions"
+        ),
+    }
+    primary_mechanism = (primary_source or {}).get("mechanism")
+    if primary_mechanism:
+        mechanism_status = "authored_source_mechanism"
+        mechanism_authority = primary_source.get("authority")
+    elif ranked_mechanism:
+        mechanism_status = "ranked_mechanism_judgement"
+        mechanism_authority = (
+            "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking"
+        )
+    else:
+        mechanism_status = "not_separately_authored_in_current_authority"
+        mechanism_authority = None
     return {
-        "source_declarations": source_declarations,
+        "problem": int(claim_row["problem"]),
+        "formal_declarations": formal_declarations,
         "wrapper_declarations": wrapper_declarations,
-        "source_route": _detail_value(palomar_rows, "source_file"),
-        "source_anchor": _detail_value(palomar_rows, "source_anchor"),
-        "mechanism": mechanism,
-        "summary": summary,
-        "open_boundary": boundary,
-        "limitations": limitations,
-        "evidence_mode": _detail_value(claim_rows, "evidence_mode"),
-        "attribution": _detail_value(palomar_rows, "attribution")
-        or _detail_value(claim_rows, "contribution_class"),
+        "source_evidence": source_evidence,
+        "primary_source_evidence_index": (
+            source_evidence.index(primary_source)
+            if primary_source is not None
+            else None
+        ),
+        "frontier_judgement": frontier_judgement,
+        "presentation_disposition": presentation_disposition,
+        "mechanism": primary_mechanism or ranked_mechanism,
+        "mechanism_status": mechanism_status,
+        "mechanism_authority": mechanism_authority,
+        "summary": claim_row.get("summary"),
+        "open_boundary": claim_row.get("boundary"),
+        "evidence_mode": claim_row.get("evidence_mode"),
+        "proof_status": claim_row.get("contribution_class"),
     }
 
 
 def _family_card(
     family_id: str,
-    rank: dict,
+    rank: dict | None,
     details: dict,
 ) -> dict:
-    source_declarations = details["source_declarations"]
+    primary_index = details["primary_source_evidence_index"]
+    primary_source = (
+        details["source_evidence"][primary_index]
+        if primary_index is not None
+        else None
+    )
     wrapper_declarations = details["wrapper_declarations"]
+    problem = int((rank or {}).get("problem") or details["problem"])
+    source_evidence = details["source_evidence"]
+    source_kinds = _sorted_texts(
+        [row.get("source_kind") for row in source_evidence]
+    )
+    if source_evidence:
+        source_status = (
+            "exact_palomar_source_rows"
+            if source_kinds == ["palomar_source_landscape_candidate"]
+            else "exact_claims_main_result_rows"
+        )
+        source_boundary = (
+            "Each evidence row keeps its source file, declaration, wrapper, "
+            "boundary, and authority atomic; no field is borrowed from a sibling row."
+        )
+    elif details["formal_declarations"]:
+        source_status = "formal_declarations_only_no_exact_source_coordinate"
+        source_boundary = (
+            "Claims names formal declarations for this family but the current "
+            "Palomar/Claims authorities do not bind them to an exact source file."
+        )
+    else:
+        source_status = "review_metadata_only_no_exact_source_coordinate"
+        source_boundary = (
+            "No Palomar source-landscape row or Claims main result supplies an "
+            "exact Lean source coordinate. The family remains traceable to its "
+            "Claims review-matrix row; this query does not infer a source from "
+            "names, order, or neighbouring relations."
+        )
     return {
         "family_id": family_id,
-        "problem": rank["problem"],
+        "problem": problem,
         "authority_rank": {
-            "programme_position": rank["programme_position"],
-            "global_position": rank["global_position"],
+            "status": (
+                "ranked_within_programme"
+                if rank is not None
+                else "relation_family_not_in_programme_family_order"
+            ),
+            "programme_position": (
+                rank["programme_position"] if rank is not None else None
+            ),
             "basis": (
                 "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
                 "programme_family_order"
             ),
         },
         "source_declaration": (
-            source_declarations[0] if len(source_declarations) == 1 else None
+            primary_source.get("source_declaration") if primary_source else None
         ),
-        "source_declarations": source_declarations,
+        "formal_declarations": details["formal_declarations"],
         "wrapper_declaration": (
             wrapper_declarations[0] if len(wrapper_declarations) == 1 else None
         ),
         "wrapper_declarations": wrapper_declarations,
-        "source_route": details["source_route"],
-        "source_anchor": details["source_anchor"],
+        "source_route": (
+            primary_source.get("source_file") if primary_source else None
+        ),
+        "source_anchor": (
+            primary_source.get("source_anchor") if primary_source else None
+        ),
+        "source_evidence_status": source_status,
+        "source_evidence_authorities": _sorted_texts(
+            [row.get("authority") for row in source_evidence]
+        ),
+        "source_authority_boundary": source_boundary,
+        "primary_source_evidence_index": primary_index,
+        "source_evidence": source_evidence,
+        "frontier_judgement": details["frontier_judgement"],
+        "presentation_disposition": details["presentation_disposition"],
+        "contribution_class": details["proof_status"],
+        "proof_status": details["proof_status"],
+        "proof_status_authority": (
+            "docs/claims.json::external_verification_packet.review_matrix"
+            ".families[].contribution_class"
+        ),
         "mechanism": details["mechanism"],
+        "mechanism_status": details["mechanism_status"],
+        "mechanism_authority": details["mechanism_authority"],
         "summary": details["summary"],
         "open_boundary": details["open_boundary"],
-        "limitations": details["limitations"],
         "evidence_mode": details["evidence_mode"],
-        "attribution": details["attribution"],
+    }
+
+
+def _relation_ref(row: dict) -> dict:
+    """Compact pointer into ``relations`` without duplicating the peer card."""
+    return {
+        "relation": row["relation"],
+        "relation_class": row["relation_class"],
+        "direction": row["direction"],
+        "peer_family_id": row["peer"]["family_id"],
+        "authority_rank_relation": row["authority_rank_relation"],
     }
 
 
@@ -336,34 +630,56 @@ def build_family_relations_packet(
     claims: dict,
     family_id: str,
 ) -> dict:
-    """Project bidirectional Palomar family relations with stable rank."""
+    """Project bidirectional Palomar relations and within-programme position."""
     ranks = _palomar_family_ranks(palomar)
+    relation_rows = _palomar_relation_rows(palomar)
+    relation_family_ids = {
+        str(family)
+        for relation in relation_rows
+        for family in (relation["from_family_id"], relation["to_family_id"])
+    }
+    family_universe = set(ranks) | relation_family_ids
     family_id = str(family_id)
-    if family_id not in ranks:
+    if family_id not in family_universe:
         return {
             "error": f"unknown Palomar family {family_id!r}",
-            "hint": "use `python3 scripts/query_semantic.py family-relations <family_id>` with a family from programme_family_order",
+            "hint": "use a family from Palomar programme_family_order or family_relations",
         }
+    relevant_relations = [
+        relation
+        for relation in relation_rows
+        if family_id
+        in (
+            str(relation["from_family_id"]),
+            str(relation["to_family_id"]),
+        )
+    ]
+    required_family_ids = {family_id}
+    for relation in relevant_relations:
+        required_family_ids.add(str(relation["from_family_id"]))
+        required_family_ids.add(str(relation["to_family_id"]))
+    claim_rows_by_family = _claims_family_rows(claims)
     detail_cache = {
-        key: _family_details(key, palomar, claims) for key in ranks
+        key: _family_details(key, palomar, claims, claim_rows_by_family)
+        for key in required_family_ids
     }
-    current_rank = ranks[family_id]
+    current_rank = ranks.get(family_id)
     current = _family_card(family_id, current_rank, detail_cache[family_id])
     related = []
-    for relation in _palomar_relation_rows(palomar):
+    for relation in relevant_relations:
         source = str(relation["from_family_id"])
         target = str(relation["to_family_id"])
         if family_id not in (source, target):
             continue
         peer_id = target if family_id == source else source
-        if peer_id not in ranks:
-            raise ValueError(
-                f"Palomar family relation names unranked family {peer_id!r}"
-            )
-        peer_rank = ranks[peer_id]
-        if peer_rank["global_position"] < current_rank["global_position"]:
+        peer_rank = ranks.get(peer_id)
+        if current_rank is None or peer_rank is None:
+            rank_relation = "not_comparable_unranked_family"
+        elif peer_rank["problem"] != current_rank["problem"]:
+            rank_relation = "not_comparable_cross_programme"
+        elif peer_rank["programme_position"] < current_rank["programme_position"]:
             rank_relation = "stronger_peer"
-        elif peer_rank["global_position"] > current_rank["global_position"]:
+        elif peer_rank["programme_position"] > current_rank["programme_position"]:
             rank_relation = "weaker_peer"
         else:
             rank_relation = "same_authority_rank"
@@ -379,13 +695,26 @@ def build_family_relations_packet(
         )
     related.sort(
         key=lambda row: (
-            row["peer"]["authority_rank"]["global_position"],
+            row["relation_class"],
             row["relation"],
+            row["peer"]["problem"],
+            row["peer"]["family_id"],
             row["direction"],
         )
     )
+    source_declarations = [
+        declaration.strip()
+        for row in current["source_evidence"]
+        for declaration in str(row.get("source_declaration") or "").split(";")
+        if declaration.strip()
+    ]
+    follow_declarations = _sorted_texts(
+        current["formal_declarations"]
+        + current["wrapper_declarations"]
+        + source_declarations
+    )
     return {
-        "question": "Which canonical family mechanisms support, oppose, or condition this ranked family?",
+        "question": "Which canonical family mechanisms support, oppose, or condition this family?",
         "authority_posture": (
             "Palomar relation and programme-order projection; not a new ranking "
             "authority, claim status, or Lean proof authority"
@@ -400,28 +729,65 @@ def build_family_relations_packet(
                 "family_relations"
             ),
             "rank_rule": (
-                "Lower canonical programme position is reported as stronger; "
-                "relation-array order never determines rank."
+                "Lower canonical programme position is reported as stronger "
+                "only within the same problem block. Programme-block order, "
+                "cross-programme relations, and relation-array order never "
+                "create a comparative rank."
             ),
         },
         "family": current,
         "relations": related,
+        "prerequisite_edges": [
+            _relation_ref(row)
+            for row in related
+            if row["relation_class"] == "prerequisite"
+        ],
+        "support_edges": [
+            _relation_ref(row)
+            for row in related
+            if row["relation_class"] == "support"
+        ],
+        "conditional_peer_edges": [
+            _relation_ref(row)
+            for row in related
+            if row["relation_class"] == "conditional_peer"
+        ],
+        "contrary_evidence_edges": [
+            _relation_ref(row)
+            for row in related
+            if row["relation_class"] == "contrary_evidence"
+        ],
         "stronger_peers": [
-            row for row in related if row["authority_rank_relation"] == "stronger_peer"
+            _relation_ref(row)
+            for row in related
+            if row["authority_rank_relation"] == "stronger_peer"
         ],
         "weaker_peers": [
-            row for row in related if row["authority_rank_relation"] == "weaker_peer"
+            _relation_ref(row)
+            for row in related
+            if row["authority_rank_relation"] == "weaker_peer"
         ],
         "same_authority_rank_peers": [
-            row
+            _relation_ref(row)
             for row in related
             if row["authority_rank_relation"] == "same_authority_rank"
+        ],
+        "not_comparable_peers": [
+            _relation_ref(row)
+            for row in related
+            if row["authority_rank_relation"].startswith("not_comparable_")
         ],
         "relation_count": len(related),
         "follow": {
             "family": f"python3 scripts/query_semantic.py family-relations {family_id}",
-            "source": "python3 scripts/query_corpus.py --source <module.lean:line>",
-            "problem_route": "python3 scripts/query_corpus.py --route erdos_<number>",
+            "declarations": [
+                "python3 scripts/query_corpus.py --declaration " + declaration
+                for declaration in follow_declarations
+            ],
+            "problem_route": (
+                "python3 scripts/query_corpus.py --route "
+                f"erdos_{current['problem']}"
+            ),
         },
     }
 
@@ -2100,12 +2466,18 @@ COMMANDS = {
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     parser.add_argument("command", choices=sorted(COMMANDS))
     parser.add_argument(
         "node_id",
         nargs="?",
-        help="detail id for node, mechanism, explains, or expert-questions",
+        help=(
+            "detail id for node, mechanism, explains, expert-questions, or "
+            "family-relations (family id)"
+        ),
     )
     parser.add_argument("--problem", choices=(*PROBLEMS, "shared_substrate"))
     parser.add_argument(
