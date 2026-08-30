@@ -176,22 +176,32 @@
       "next_obligation": "Resolve the terminal scaled-vanishing condition or supply a separately checked bridge from the finite boundary to an infinite-support question."
     },
     {
-      "route_id": "erdos_269_least_positive_residue",
+      "route_id": "erdos_269_weighted_phase_carry_observer",
       "problem": 269,
-      "route": "Finite least-positive-residue escape obstruction",
-      "status": "inconclusive",
+      "route": "Weighted-phase carry decomposition and finite-observer obstruction",
+      "status": "locally_proved_bridge_open",
       "evidence": {
-        "kind": "checked_lean",
-        "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
+        "kind": "checked_lean_plus_comparator",
+        "path": "ExternalVerification/Challenge.lean",
         "anchors": [
-          "no_bounded_positive_state_of_residue_escape",
-          "no_bounded_positive_int_state_of_leastPositiveResidue"
-        ]
+          "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
+          "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary",
+          "ErdosProblems.Erdos269.carryResidue_mem_interval",
+          "ErdosProblems.Erdos269.residueDigit_mem_interval",
+          "ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation"
+        ],
+        "source_declaration": "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary",
+        "source_module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+        "source_anchor": 109,
+        "comparator_declaration": "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
+        "comparator_anchor": 484,
+        "comparator_transport_commit": "cec8ee43219b3f2059902be78ee0fc54df3dd6e9",
+        "comparator_registration_commit": "c63bb355833f59ca4eb40e717dd4aed4c57a1661"
       },
-      "actual_established": "A positive bounded integral state cannot represent a congruence class whose least positive residue is above that bound.",
-      "failure_boundary": "This is a final finite contradiction only: the cited module does not derive its bounded integral state from rationality or construct arbitrarily late escaping windows.",
-      "prerequisites_and_assumptions": "The finite contradiction assumes a positive modulus, a positive bounded state, the stated congruence, and a residue above the bound.",
-      "next_obligation": "Supply both upstream inputs named by the module: the rationality-to-state reduction and late windows with the required residue escape."
+      "actual_established": "For any positive integer modulus B and a carry recurrence, the checked source declaration at WeightedPhaseCarry.lean:109 decomposes each digit into a bounded residue digit plus an integral quotient coboundary. The residue coordinate lies in a finite interval, and an explicit factorisation through a finite-dimensional function-faithful observer forces finite realised span. The Comparator wrapper at Challenge.lean:484 and its Solution export provide source-faithful public transport of this exact result.",
+      "failure_boundary": "This is a locally proved decomposition and observer obstruction only. It proves no recurrence or finite-state property for the integral quotient, no scalar-to-function implication, and no literal infinite realised-span theorem. It supplies no rationality or irrationality conclusion, makes no novelty, priority, significance, or external-review claim, and does not establish the actual Erdős #269 running-LCM bridge or cofinal local-window escape.",
+      "prerequisites_and_assumptions": "The carry identity assumes a positive modulus and the displayed recurrence hrec. The finite-span conclusion additionally assumes an explicit factorisation through a finite-dimensional function-faithful observer; a scalar readout alone is insufficient. The Comparator transport and registration commits identify checked interfaces, not an application to the actual three-prime running-LCM sequence.",
+      "next_obligation": "Direct next research route: specialize the carry coordinates to the actual three-prime running-LCM digit stream, prove the required recurrence and digit identification, and separately produce the cofinal local-window escape needed by the #269 reduction. Track the uncontrolled integral quotient rather than treating the finite residue coordinate as a finite-state quotient; only after those bridges are checked can this family feed an actual #269 conclusion."
     },
     {
       "route_id": "erdos_1041_smallest_gap_selector",
