@@ -1609,6 +1609,25 @@ def main() -> int:
         "route_memory"
     ]
 
+    module_search = query(
+        "--search", "SignedQMomentObstruction", "--limit", "5"
+    )
+    searched_module = next(
+        row
+        for row in module_search["results"]
+        if row["kind"] == "module"
+        and row["id"] == "Erdos249257.SignedQMomentObstruction"
+    )
+    module_packet_view = query(
+        "--module", "Erdos249257.SignedQMomentObstruction", "--limit", "12"
+    )
+    assert searched_module["route_memory"] == module_packet_view["route_memory"]
+    assert any(
+        binding["route_id"] == "arithmetic_obstruction_interfaces"
+        and binding["problem_number"] == 249
+        for binding in searched_module["route_memory"]["bindings"]
+    )
+
     connections = query(
         "--connections",
         "Erdos249257.GreedyAchievementSet",

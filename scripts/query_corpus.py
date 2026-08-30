@@ -2596,6 +2596,42 @@ def declaration_route_memory_rows(
     return routed_matches
 
 
+def module_route_memory_projection(
+    declarations: list[dict[str, Any]], claims: dict[str, Any]
+) -> dict[str, Any]:
+    """Aggregate exact declaration bindings into a module resume handoff."""
+    routed_declarations = declaration_route_memory_rows(declarations, claims)
+    bindings = []
+    seen_routes: set[str] = set()
+    for declaration in routed_declarations:
+        for binding in declaration["route_memory"]["bindings"]:
+            if binding["route_id"] in seen_routes:
+                continue
+            seen_routes.add(binding["route_id"])
+            bindings.append(binding)
+    projection = {
+        "status": "bound" if bindings else "unbound",
+        "bindings": bindings,
+        "declaration_count": len(declarations),
+        "bound_declaration_count": sum(
+            1
+            for declaration in routed_declarations
+            if declaration["route_memory"]["bindings"]
+        ),
+        "authority_posture": "derived_resume_handoff_not_claim_or_proof_authority",
+        "boundary": (
+            "Module bindings aggregate exact declaration route handoffs; they do "
+            "not promote claims or replace Lean module authority."
+        ),
+    }
+    if not bindings:
+        projection["unbound_reason"] = (
+            "module declarations do not resolve to a canonical mathematical "
+            "programme; no resume route was invented"
+        )
+    return projection
+
+
 def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     matches = declaration_rows_for_handle(name)
     if not matches:
@@ -3160,6 +3196,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         [compact_declaration(row) for row in declarations[:packet_limit]],
         claims,
     )
+    module_route_memory = module_route_memory_projection(declarations, claims)
     return {
         "kind": "module",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
@@ -3170,6 +3207,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         ),
         "attached_claims": claim_rows,
         "declaration_preview": declaration_preview,
+        "route_memory": module_route_memory,
         "declaration_preview_receipt": {
             "total": len(declarations),
             "emitted": min(len(declarations), packet_limit),
@@ -4268,6 +4306,14 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                         "role": roles.get(row["id"], "Unclassified module"),
                         "declaration_count": row["declaration_count"],
                         "import_count": len(row["imports"]),
+                        "route_memory": module_route_memory_projection(
+                            [
+                                declaration
+                                for declaration in atlas_declarations(atlas)
+                                if declaration["module"] == row["path"]
+                            ],
+                            claims,
+                        ),
                     },
                 )
             )
