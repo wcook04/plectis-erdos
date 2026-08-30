@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 import query_corpus
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -26,6 +27,7 @@ LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
 CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 CHECK_INPUT_FILES = (
     "docs/declaration_atlas.json",
     "docs/generated_certificate_manifest.json",
@@ -44,6 +46,12 @@ QUERY_CORPUS_DEPENDENCY_HELPERS = (
     "module_namespace_events",
     "qualified_declaration_name",
 )
+
+
+def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
+    """Run dependency-bootstrap commands without ambient checkout state."""
+    kwargs["env"] = singleflight.command_environment()
+    return subprocess.run(*args, **kwargs)
 
 
 def sha256_text(content: str) -> str:
@@ -182,7 +190,7 @@ def write_check_receipt(
 
 
 def ensure_elaborated_environment() -> None:
-    completed = subprocess.run(
+    completed = run(
         [
             sys.executable,
             str(LEAN_FAST_BUILD),
@@ -212,7 +220,7 @@ def export_environment() -> tuple[
     dict[str, int],
     dict[str, dict[str, Any]],
 ]:
-    completed = subprocess.run(
+    completed = run(
         ["lake", "env", "lean", str(EXPORTER)],
         cwd=ROOT,
         text=True,
