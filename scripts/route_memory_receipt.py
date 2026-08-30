@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import stat
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -97,13 +98,40 @@ def path_has_symlink_component(path: Path, root: Path) -> bool:
     return False
 
 
+def read_regular_bytes(path: Path, root: Path) -> bytes:
+    """Read canonical route memory through a no-follow regular-file descriptor."""
+    if path_has_symlink_component(path, root):
+        raise ValueError("canonical route memory source must not traverse symbolic links")
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(path, flags)
+    except OSError as exc:
+        raise ValueError("canonical route memory source could not be opened safely") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ValueError("canonical route memory source must be a regular file")
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                return b"".join(chunks)
+            chunks.append(chunk)
+    except OSError as exc:
+        raise ValueError("canonical route memory source could not be read safely") from exc
+    finally:
+        os.close(descriptor)
+
+
 def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
     """Return canonical route records and the digest of their tracked source."""
     source = root / ROUTE_MEMORY_PATH
     if path_has_symlink_component(source, root):
         raise ValueError("canonical route memory source must not traverse symbolic links")
     try:
-        payload = source.read_bytes()
+        payload = read_regular_bytes(source, root)
         relative = source.relative_to(root).as_posix()
         committed = subprocess.run(
             ["git", "-C", str(root), "show", f"HEAD:{relative}"],

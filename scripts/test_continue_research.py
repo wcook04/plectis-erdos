@@ -278,6 +278,45 @@ def check_route_memory_corpus_contract() -> None:
                     )
 
 
+def check_route_memory_file_boundary() -> None:
+    """Canonical route memory must reject final links and special files before Git comparison."""
+    with tempfile.TemporaryDirectory(dir="/tmp", prefix="continue-route-memory-files-") as temporary:
+        root = Path(temporary)
+        source = root / route_memory_receipt.ROUTE_MEMORY_PATH
+        source.parent.mkdir(parents=True)
+        source.write_bytes(b"{}\n")
+        require(
+            route_memory_receipt.read_regular_bytes(source, root) == b"{}\n",
+            "regular route-memory source was not readable through the safe descriptor",
+        )
+
+        linked = root / "linked-route-memory.json"
+        linked.symlink_to(source)
+        with mock.patch.object(route_memory_receipt, "path_has_symlink_component", return_value=False):
+            try:
+                route_memory_receipt.read_regular_bytes(linked, root)
+            except ValueError as error:
+                require(
+                    "safely" in str(error) or "symbolic" in str(error),
+                    f"final route-memory symlink rejection lacked a bounded diagnostic: {error}",
+                )
+            else:
+                raise AssertionError("route-memory source followed a final-component symlink")
+
+        fifo = root / "route-memory.fifo"
+        os.mkfifo(fifo)
+        with mock.patch.object(route_memory_receipt, "path_has_symlink_component", return_value=False):
+            try:
+                route_memory_receipt.read_regular_bytes(fifo, root)
+            except ValueError as error:
+                require(
+                    "regular file" in str(error),
+                    f"special route-memory file rejection lacked a bounded diagnostic: {error}",
+                )
+            else:
+                raise AssertionError("route-memory source accepted a special file")
+
+
 def check_nested_return_shape_boundary() -> None:
     """Malformed nested return objects must remain validation errors, not crashes."""
     manifest = {
@@ -492,6 +531,7 @@ def main() -> int:
     check_package_session_path_boundary()
     check_malformed_utf8_inputs_rejected()
     check_route_memory_corpus_contract()
+    check_route_memory_file_boundary()
     check_nested_return_shape_boundary()
     check_changed_evidence_shape_boundary()
     check_start_session_path_boundary()
@@ -1198,6 +1238,7 @@ def main() -> int:
                     "missing_initial_collaborator",
                     "private_session_material",
                     "directory_route_memory_receipt",
+                    "route_memory_source_final_symlink_and_special_file",
                     "symlink_return_input",
                     "directory_return_input",
                 ],
