@@ -155,6 +155,7 @@ class Resolver:
             stderr=subprocess.PIPE,
             text=True,
             env=singleflight.command_environment(),
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
         )
         if result.returncode:
             detail = result.stderr.strip() or "git show failed"

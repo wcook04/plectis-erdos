@@ -17,6 +17,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import refresh_reasoning_source_coordinates as coordinates  # noqa: E402
+import validation_singleflight as singleflight  # noqa: E402
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep source-coordinate portability checks active under ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
 
 
 def run_git(root: Path, *args: str) -> str:
@@ -26,6 +33,8 @@ def run_git(root: Path, *args: str) -> str:
         check=True,
         capture_output=True,
         text=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
     return result.stdout.strip()
 
@@ -86,15 +95,24 @@ def main() -> int:
                 rendered, declarations, authored_locations, resolved_pin = (
                     coordinates.render_all()
                 )
-            assert resolved_pin == pin
-            assert declarations == 1
-            assert authored_locations == 2
-            assert r"{Sample.lean:4}" in rendered[named]
-            assert rendered[locations] == locations.read_text(encoding="utf-8")
+            require(resolved_pin == pin, "pinned source commit drifted")
+            require(declarations == 1, "unexpected declaration count")
+            require(authored_locations == 2, "unexpected authored location count")
+            require(
+                r"{Sample.lean:4}" in rendered[named],
+                "named declaration coordinate was not refreshed",
+            )
+            require(
+                rendered[locations] == locations.read_text(encoding="utf-8"),
+                "authored location citation was rewritten",
+            )
 
             named.write_text(rendered[named], encoding="utf-8")
             rendered_again, _, _, _ = coordinates.render_all()
-            assert rendered_again[named] == named.read_text(encoding="utf-8")
+            require(
+                rendered_again[named] == named.read_text(encoding="utf-8"),
+                "coordinate rendering was not idempotent",
+            )
 
             named.write_text(
                 r"\lean{missingDeclaration}{Sample.lean:4}" + "\n",
@@ -103,7 +121,10 @@ def main() -> int:
             try:
                 coordinates.render_all()
             except coordinates.CoordinateError as exc:
-                assert "missingDeclaration" in str(exc)
+                require(
+                    "missingDeclaration" in str(exc),
+                    "missing declaration failure did not identify the declaration",
+                )
             else:
                 raise AssertionError("missing declaration citation was accepted")
         finally:
