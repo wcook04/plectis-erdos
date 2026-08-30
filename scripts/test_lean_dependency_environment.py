@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -79,6 +80,29 @@ def main() -> int:
                     ),
                 },
                 "dependency child process inherited a hostile selector or lost elan",
+            )
+            with patch.object(
+                build_lean_dependency_index.subprocess,
+                "run",
+                return_value=subprocess.CompletedProcess(["fixture"], 0),
+            ) as runner:
+                observed = build_lean_dependency_index.run(
+                    ["fixture"], cwd=Path(raw), check=False
+                )
+            require(observed.returncode == 0, "dependency run helper failed")
+            kwargs = runner.call_args.kwargs
+            expected_environment = validation_singleflight.command_environment()
+            expected_environment["PATH"] = os.pathsep.join(
+                (str(build_lean_dependency_index.TOOLCHAIN_BIN), os.defpath)
+            )
+            require(
+                kwargs["env"] == expected_environment,
+                "dependency run helper drifted from the canonical environment",
+            )
+            require(
+                kwargs["timeout"]
+                == validation_singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+                "dependency run helper lost its bounded timeout",
             )
 
     require(
