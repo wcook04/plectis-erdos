@@ -1356,6 +1356,16 @@ theorem coefficientOnlyNoGo : CoefficientOnlyNoGo := by
       ErdosProblems.Erdos251.prime0] using
       ErdosProblems.Erdos251.primeGap0_not_eventually_periodic hpos
 
+theorem primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
+    {T : ℕ → ℚ} (h : ℕ)
+    (hrec : DyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) T)
+    (hsupply : ∀ N₀, ∃ N, N₀ ≤ N ∧
+      ((-1 < tailShift T h N ∧ tailShift T h N < 1) ∧
+       (-1 < tailShift T h (N + 1) ∧ tailShift T h (N + 1) < 1)) ∧
+      primeGap0 (N + h + 1) ≠ primeGap0 (N + 1)) :
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) :=
+  (portfolioClaims Unit).problem251CofinalSmallMismatch h hrec hsupply
+
 theorem irrational_tsum_primeDyadicTerm_iff_primeGap
     (hprime : Summable primeDyadicTerm) :
     Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
@@ -1394,6 +1404,27 @@ theorem carry_eq_residueDigit_add_coboundary
     ErdosProblems.Erdos269.residueDigit] using
     ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary
       B hB base carry digit hrec
+
+theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ)
+    (hescape : CofinalLocalWindowEscape b m shortBound)
+    (B : ℕ) (hBpos : 0 < B) (hBcoprime : Nat.Coprime B 30)
+    (d : ℕ → ℤ)
+    (hrec : ∀ n,
+      d (n + 1) = (b n : ℤ) * d n - (B : ℤ) * (m n : ℤ))
+    (hpos : ∀ n, 0 < d n)
+    (hbound : ∀ n, Int.natAbs (d n) ≤ shortBound B n) :
+    False := by
+  have hescape' :
+      ErdosProblems.Erdos269.CofinalLocalWindowEscape b m shortBound := by
+    simpa only [CofinalLocalWindowEscape,
+      ErdosProblems.Erdos269.CofinalLocalWindowEscape,
+      conditionalWindowBase_eq_source,
+      conditionalWindowForcing_eq_source,
+      conditionalLeastPositiveResidue_eq_source] using hescape
+  simpa using
+    ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape
+      b m shortBound hescape' B hBpos hBcoprime d hrec hpos hbound
 
 theorem exists_small_translation_separating_arguments
     {ι : Type*} [Fintype ι] (c : ι → ℂ)
