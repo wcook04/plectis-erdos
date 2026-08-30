@@ -102,11 +102,11 @@ boundary of that relationship.
 
   **Boundary.** The release uses this as historical geometry, not as a claim that Kakeya supplied the local executable machinery.
 
-- V. Kovač and T. Tao, [*On several irrationality problems for Ahmes series* (2025)](https://doi.org/10.1007/s10474-025-01528-0)
+- V. Kovač and T. Tao, [*On several irrationality problems for Ahmes series* (2025)](https://doi.org/10.1007/s10474-025-01528-0) ([read source closure](primary-sources/reciprocal-tail/kovac-tao-2025-source-closure.md))
 
-  Direct fixed-base antecedent: their Remark 4.1 verifies \(\sum_{\ell>n}(t^\ell-1)^{-1}<(t^n-1)^{-1}\) for every integer \(t\ge2\), and deduces distinct Lambert subsums and a Cantor set.
+  **Fixed-base strict-tail antecedent.** Their Remark 4.1 (PDF p. 13) verifies \(\sum_{\ell>n}(t^\ell-1)^{-1}<(t^n-1)^{-1}\) for every integer \(t\ge2\), and deduces distinct Lambert subsums and a Cantor set. Their Theorem 2.3 (PDF p. 5; proof pp. 13–14) separately constructs rational *merged* sums from several bases under a mass hypothesis.
 
-  **Boundary.** At \(t=2\) this supplies the known Mersenne geometry. The release now formalises compactness, perfection, total disconnectedness, nowhere density, and measure one as well as the two-scale gap, greedy interface, and finite death certificates. It makes no novelty claim for those refinements; only the stated strict-tail antecedent has been compared here, and none settles #257.
+  **Boundary.** At \(t=2\) the strict-tail remark supplies the known Mersenne geometry, but it does not assert a measure formula. The multi-base theorem allows repeated terms and is not a fixed-base counterexample. The release now formalises compactness, perfection, total disconnectedness, nowhere density, and measure one as well as the two-scale gap, greedy interface, and finite death certificates. It makes no novelty claim for those refinements, and Kovač–Tao explicitly leave the universal fixed-base subseries question open; none of these results settles #257.
 
 - M. Coons, [*(Non)Automaticity of number theoretic functions* (Journal de Théorie des Nombres de Bordeaux 22 (2010), no. 2, 339--352)](https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.718/) ([official PDF](https://jtnb.centre-mersenne.org/item/10.5802/jtnb.718.pdf); [read source closure](primary-sources/totient-kernel/coons-2010-source-closure.md))
 

@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 12,
-    "artifact_count": 12,
+    "working_tree_only_count": 13,
+    "artifact_count": 13,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 12,
+    "link_and_digest_only_count": 13,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -205,6 +205,26 @@
         "docs/PRIOR_ART.md",
         "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
         "docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/kovac-tao-2025-ahmes-series.pdf",
+      "sha256": "5ef233db5bf94a072de7e094e6d42864ba2d1f639e7cb951c02b4cf1d3d52b57",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/2406.17593",
+        "https://arxiv.org/pdf/2406.17593v4",
+        "https://doi.org/10.1007/s10474-025-01528-0"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/kovac-tao-2025-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/kovac-tao-2025-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/kovac-tao-2025-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
       ]
     },
     {
