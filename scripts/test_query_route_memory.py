@@ -7,9 +7,11 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 import query_route_memory as route_memory
 
@@ -29,9 +31,15 @@ def assert_rejected(packet: dict, code: str) -> None:
 
 
 def main() -> int:
-    packets = {
-        number: route_memory.build_packet(str(number)) for number in PROBLEMS
+    hostile = {
+        "GIT_DIR": str(ROOT / "not-a-git-directory"),
+        "GIT_NAMESPACE": "hostile-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replace/hostile/",
     }
+    with patch.dict(os.environ, hostile, clear=False):
+        packets = {
+            number: route_memory.build_packet(str(number)) for number in PROBLEMS
+        }
     assert set(packets) == set(PROBLEMS)
     for number, packet in packets.items():
         assert packet["problem"]["erdos_number"] == number

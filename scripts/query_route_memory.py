@@ -22,10 +22,13 @@ import sys
 from pathlib import Path
 from typing import Any, Mapping
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = "erdos249257-route-memory/1"
 RESUME_SCHEMA = "erdos249257-resume-state/1"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SOURCE_FILES = (
     "docs/problems.json",
     "docs/claims.json",
@@ -108,7 +111,8 @@ def _head(root: Path) -> str:
             check=True,
             capture_output=True,
             text=True,
-            timeout=10,
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+            env=singleflight.command_environment(),
         )
     except (OSError, subprocess.SubprocessError) as exc:
         raise RouteMemoryError("git_identity_unavailable", str(exc)) from exc
