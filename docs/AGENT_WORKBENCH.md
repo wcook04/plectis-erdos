@@ -159,6 +159,38 @@ measured from ledgers rather than asserted:
 - replay integrity — whether closed sessions still verify from their
   stored bytes alone.
 
+## Source-current continuation route: Erdős #1041
+
+The public #1041 corpus is a useful continuation surface for an agent, but it
+has a stricter reading order than an ordinary claim route. Read
+[`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
+before [`STRONGEST_RESULTS.json`](../research_corpus/Erdos1041/STRONGEST_RESULTS.json):
+the dated frontier note records which activation rows were refuted on
+2026-08-29 and therefore prevents an agent from spending a new session on a
+known dead strategy. Use [`CORPUS_MANIFEST.json`](../research_corpus/Erdos1041/CORPUS_MANIFEST.json)
+to resolve the complete published file set and its source/public digests.
+
+For a bounded agent session, follow:
+
+1. `AttachmentAwareReeb.md` → `GenericSufficiencyClosure.md` for the
+   surviving hub-selection carrier and the generic-to-closed extension.
+2. `NearFeketeRadialAngularSplit.md` → `Degree5AssemblyAndSharpenedCuts.md`
+   for the current near-Fekete and degree-five residuals.
+3. `PartialClusterPreimagePerimeterIdentity.md` →
+   `TiedNewtonFaceFibreProduct.md` → `ExteriorRootProductCovering.md` for
+   exact perimeter, moment, and covering premises.
+4. `MinimalHubArmBudgetRefutation.md` and `SeparatrixAggregateReduction.md`
+   for refutation evidence and the surviving machinery whose original target
+   has been falsified.
+
+Every step must carry its own hypotheses and evidence class. These files are
+source-level research records, not entries in the reviewed `docs/claims.json`
+authority. The parent problem remains open; the exact remaining producers are
+listed in `FRONTIER.md`. The paper-facing checked route is
+[`erdos-1041-lemniscate-newton-flow.md`](papers/full-text/erdos-1041-lemniscate-newton-flow.md),
+which leads back to the Lean declaration coordinates without upgrading the
+source-only frontier.
+
 ## Boundaries
 
 - Ledger notes, rankings, and static nominations are advisory. Only

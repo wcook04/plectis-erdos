@@ -43,8 +43,16 @@ records an `advances_open_target` edge.
   no solution.
 - **#257** — named infinite-support cases and full support (`A = ℕ`), not the
   universal statement.
-- **#1041** — Newton-flow ray separation and perturbation lemmas are checked;
-  the global topology and metric gluing are open.
+- **#1041** — the paper-facing route checks Newton-flow ray separation and
+  perturbation lemmas. The source-current [frontier delta](../research_corpus/Erdos1041/FRONTIER.md)
+  additionally routes the surviving hub-selection, near-Fekete, perimeter,
+  inverse-sheet, and degree-five premise families through their exact public
+  source notes; it also records the 2026-08-29 refutations that must not be
+  rebuilt. The unrestricted topology, attachment-compatible selection, and
+  metric gluing remain open. Use the [machine result map](../research_corpus/Erdos1041/STRONGEST_RESULTS.json)
+  and [paper note](papers/full-text/erdos-1041-lemniscate-newton-flow.md)
+  together, keeping the source-only frontier separate from reviewed claim
+  authority.
 - **#1049** — the integer-base case `b ≥ 2` is
   `irrational_erdosSum_full_support`; at rational noninteger bases the public
   modules check clearing, height-region, and Padé obstructions but no

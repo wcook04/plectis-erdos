@@ -28,6 +28,43 @@ authored navigation: it does not strengthen a claim, replace
 `docs/claims.json`, or close an exact remaining-open proposition. Erdős #249
 and the universal form of #257 remain open.
 
+## #1041 / source-current frontier
+
+Problem #1041 has a second, source-only navigation route in addition to the
+Lean-backed Newton-flow note. Start with the dated [frontier delta](../research_corpus/Erdos1041/FRONTIER.md),
+then use the [strongest-result map](../research_corpus/Erdos1041/STRONGEST_RESULTS.json)
+and the [corpus manifest](../research_corpus/Erdos1041/CORPUS_MANIFEST.json).
+The frontier delta is the authority for rows refuted after the activation map
+was generated; do not rebuild those rows merely because they remain in the
+machine map.
+
+The high-signal reading routes are:
+
+- [hub selection and generic closure](../research_corpus/Erdos1041/AttachmentAwareReeb.md)
+  → [GenericSufficiencyClosure](../research_corpus/Erdos1041/GenericSufficiencyClosure.md):
+  the surviving parent carrier is `min_c L(c) <= 2` on the ray-separated locus,
+  followed by lower-semicontinuity closure.
+- [quantitative Fekete stability and radial/angular reduction](../research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md)
+  → [degree-five sharpened cuts](../research_corpus/Erdos1041/Degree5AssemblyAndSharpenedCuts.md):
+  the new tools localise the residual, but do not prove the degree-five or
+  unrestricted theorem.
+- [partial-cluster perimeter identity](../research_corpus/Erdos1041/PartialClusterPreimagePerimeterIdentity.md)
+  → [tied-fibre moment hierarchy](../research_corpus/Erdos1041/TiedNewtonFaceFibreProduct.md):
+  these are exact geometric/algebraic premises for future selection work, not
+  a completed compatible-root selector.
+- [new exterior-root product covering](../research_corpus/Erdos1041/ExteriorRootProductCovering.md)
+  and [separatrix aggregate reduction](../research_corpus/Erdos1041/SeparatrixAggregateReduction.md):
+  read their explicit hypotheses and refutations before treating either as a
+  parent route.
+
+The [earlier paper note](papers/full-text/erdos-1041-lemniscate-newton-flow.md)
+remains the paper-facing route to the checked declarations in
+`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean`. The research corpus is
+not part of `docs/claims.json`'s reviewed claim authority: its files preserve
+source-level premises, computations, no-go results, and open boundaries.
+Nothing in this route settles #1041; the exact continuation boundary is in
+`FRONTIER.md` and must be read before any new proof search.
+
 ## Build entrypoint
 
 - `Erdos249257.lean`
