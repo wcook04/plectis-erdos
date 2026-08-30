@@ -11946,6 +11946,17 @@
         "boundary": "Unbounded coefficients alone do not force irrationality."
       },
       {
+        "id": "coefficient_only_no_go",
+        "problem": 251,
+        "review_family": "coefficient_only_no_go",
+        "contribution_class": "formalisation of exact finite identity and nonperiodicity contrast; novelty and significance unassessed",
+        "original_declaration": "ErdosProblems.Erdos251.carryPartialSum_natCast_eq",
+        "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.coefficientOnlyNoGo",
+        "statement": "The coefficient-only wrapper records the exact finite carry partial-sum identity together with non-eventual-periodicity of the synthetic coefficient stream and the actual prime-gap stream, exposing the limits of coefficient-only reasoning.",
+        "boundary": "The wrapper proves the finite identity and the two non-eventual-periodicity statements only. It does not assert the infinite rational-sum limit of the synthetic countermodel, identify the synthetic coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
+      },
+      {
         "id": "prime_gap_irrationality_equivalence",
         "problem": 251,
         "review_family": "prime_gap_reformulation",
@@ -12537,11 +12548,16 @@
           },
           {
             "id": "coefficient_only_no_go",
-            "contribution_class": "no-go result",
-            "summary": "An exact finite carry identity and non-eventual-periodicity theorem show that coefficient growth and irregularity alone do not force irrationality: the authored paper-level synthesis uses the endpoint decay to exhibit a synthetic nonperiodic rational dyadic-sum countermodel, contrasted with the actual prime-gap nonperiodicity theorem.",
-            "evidence_mode": "Lean kernel for finite identity/nonperiodicity plus authored synthesis and standard exponential-dominance limit for the infinite sum",
-            "comparator_disposition": "targeted_coefficient_only_no_go",
-            "boundary": "CoefficientOnlyNoGo checks only the finite identity and two non-eventual-periodicity statements; it does not prove the infinite rational-sum limit, identify the synthetic coefficients with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
+            "contribution_class": "coefficient-only barrier; novelty and significance unassessed",
+            "summary": "The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream.",
+            "evidence_mode": "Lean kernel plus authored synthesis",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "ErdosProblems.Erdos251.carryPartialSum_natCast_eq",
+              "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
+              "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic"
+            ],
+            "boundary": "CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
           }
         ]
       },
