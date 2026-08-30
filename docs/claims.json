@@ -12492,7 +12492,7 @@
           {
             "id": "strict_prime_tail_orbit_gap",
             "contribution_class": "conditional reduction",
-            "summary": "A single two-branch source mechanism gives an 89/100 first-harmonic block saving from an 11/100 nonpositive-phase density, or an adaptive pivot escape from a cofinal natural-prime tail-orbit strict gap below 9/10. The load-bearing representative is the natural-prime irrationality reduction; block-gap and density declarations remain subordinate.",
+            "summary": "A single two-branch source mechanism gives an 89/100 first-harmonic block saving from an 11/100 nonpositive-phase density, or an adaptive pivot escape from a cofinal natural-prime tail-orbit strict gap below 9/10. The exact squaring law reduces the latter to a power-of-two orbit of one initial phase and shows that an entered dyadic root obstructs that producer, without proving such an entry. The load-bearing representative is the natural-prime irrationality reduction; block-gap, density, and phase-classification declarations remain subordinate.",
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "declarations": [
@@ -12503,9 +12503,15 @@
               "ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap",
               "ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
               "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
-              "ErdosProblems.Erdos249.tailOrbitFirstExp_succ"
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_succ",
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_add",
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_eq_initial_pow_two",
+              "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+              "ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_of_le",
+              "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_phase_one",
+              "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root"
             ],
-            "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
+            "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. The exact squaring and absorbing-dyadic-root lemmas provide phase classification and contrary evidence only; the source does not prove that an actual phase enters a dyadic root. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
           },
           {
             "id": "totient_carry_anti_compression",
@@ -16333,7 +16339,7 @@
       "id": "strict_prime_tail_orbit_gap",
       "label": "Tail-orbit phase-density and natural-prime strict-gap reductions",
       "status": "conditional reduction",
-      "statement": "A uniform 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and hence a finite certificate; alternatively, cofinally many natural prime indices with tail-orbit real part below 9/10 yield adaptive pivot escape. The required density, cofinal prime strict-gap, and associated uniform-margin producers are unproved for the actual totient orbit, so no unconditional Erdős #249 result is claimed.",
+      "statement": "A uniform 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and hence a finite certificate; alternatively, cofinally many natural prime indices with tail-orbit real part below 9/10 yield adaptive pivot escape. The exact tail phase follows a power-of-two squaring orbit from one initial phase, and an entered dyadic root obstructs that strict-gap producer. The required density, cofinal prime strict-gap, uniform-margin, and actual-root-entry producers are unproved for the actual totient orbit, so no unconditional Erdős #249 result is claimed.",
       "remaining_open_proposition_ids": [
         "remaining_open.unbounded_certificate_supply"
       ],
@@ -16379,6 +16385,36 @@
           "name": "tailOrbitFirstExp_succ",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
           "line": 167
+        },
+        {
+          "name": "tailOrbitFirstExp_add",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 191
+        },
+        {
+          "name": "tailOrbitFirstExp_eq_initial_pow_two",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 201
+        },
+        {
+          "name": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 208
+        },
+        {
+          "name": "tailOrbitFirstExp_eq_one_of_le",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 224
+        },
+        {
+          "name": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 238
+        },
+        {
+          "name": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 252
         }
       ]
     },
