@@ -1445,6 +1445,46 @@ def main() -> int:
         cell["content"]["route_memory"]["problem_number"]
         for cell in semantic_routes
     } == {249}
+    semantic_open = query_corpus.semantic_slice_packet(
+        "remaining_open.unbounded_certificate_supply", 4
+    )
+    open_cells = [
+        cell
+        for cell in semantic_open["semantic_cells"]
+        if cell["kind"] == "open_proposition"
+    ]
+    assert open_cells
+    assert all(cell["content"]["route_memory"] for cell in open_cells)
+    assert any(
+        binding["route_id"] == "erdos249_certificate_story"
+        and binding["problem_number"] == 249
+        for binding in open_cells[0]["content"]["route_memory"]["bindings"]
+    )
+    semantic_module = query_corpus.semantic_slice_packet(
+        "SignedQMomentObstruction", 4
+    )
+    module_cells = [
+        cell
+        for cell in semantic_module["semantic_cells"]
+        if cell["kind"] == "module"
+    ]
+    assert module_cells
+    assert all(cell["content"]["route_memory"] for cell in module_cells)
+    assert any(
+        binding["route_id"] == "arithmetic_obstruction_interfaces"
+        and binding["problem_number"] == 249
+        for binding in module_cells[0]["content"]["route_memory"]["bindings"]
+    )
+    semantic_anchor = query_corpus.semantic_slice_packet(
+        "Lambert representation", 4
+    )
+    anchor_cells = [
+        cell
+        for cell in semantic_anchor["semantic_cells"]
+        if cell["kind"] == "paper_anchor"
+    ]
+    assert anchor_cells
+    assert all(cell["content"]["route_memory"] is not None for cell in anchor_cells)
     assert source_declaration["attached_claims"][0]["id"] == "denominator_exclusion"
     assert "res:farey" in {
         row["canonical_handle"] for row in source_declaration["paper_anchors"]

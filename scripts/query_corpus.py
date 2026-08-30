@@ -4817,6 +4817,7 @@ def semantic_cell(
             "nearest_advances": packet["advancing_claims"],
             "linked_claims": packet["linked_claims"],
             "paper_anchor": packet["paper_anchor"],
+            "route_memory": packet["route_memory"],
         }
         expansion_command = f"python3 scripts/query_corpus.py --open {handle}"
         witness_edges.append(
@@ -4880,6 +4881,7 @@ def semantic_cell(
             "attached_claims": packet["attached_claims"],
             "declaration_preview": packet["declaration_preview"],
             "dependency_neighbourhood": packet["dependency_neighbourhood"],
+            "route_memory": packet["route_memory"],
         }
         expansion_command = f"python3 scripts/query_corpus.py --module {handle}"
         witness_edges.append(
@@ -4898,6 +4900,8 @@ def semantic_cell(
                 "query command for the full owner packet."
             ),
         }
+        if kind in {"paper_anchor", "publication_family"}:
+            content["route_memory"] = result.get("route_memory")
         flag_by_kind = {
             "paper_anchor": "--paper-anchor",
             "module": "--module",
