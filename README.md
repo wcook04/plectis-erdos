@@ -141,7 +141,7 @@ order without asking you to decode Lean declaration names first.
   the ladder; `proof_workbench.py show --session <slug>` or `replay --session <slug>`
   rechecks append-only work. `hypOf%` and [residual progress](docs/RESIDUAL_PROGRESS.md)
   separate reductions from renamed targets. [Verification dossier](docs/EXTERNAL_VERIFICATION.md)
-  groups eight interfaces and boundaries; [replay contract](docs/EXTERNAL_VERIFICATION_REPLAY.md)
+  groups selected interfaces and limits; [replay contract](docs/EXTERNAL_VERIFICATION_REPLAY.md)
   pins `source.commit`/`source.tree`. [crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md)
   binds eight statements; each is `not_ready_to_submit`.
 
