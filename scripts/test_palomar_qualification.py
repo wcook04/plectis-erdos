@@ -170,8 +170,9 @@ def test_repository_intake_contract() -> None:
     assert facts["git_lfs_pointers"] == []
     assert facts["compiled_artifacts"] == []
     assert facts["challenge_path"] == "ExternalVerification/Challenge.lean"
-    assert facts["challenge_bytes"] == 24666
-    assert facts["challenge_lines"] == 565
+    committed_challenge = checker.committed_bytes(ROOT, facts["challenge_path"])
+    assert facts["challenge_bytes"] == len(committed_challenge)
+    assert facts["challenge_lines"] == len(committed_challenge.splitlines())
     assert facts["challenge_bytes"] < facts["challenge_size_limit_bytes"]
     assert facts["challenge_lines"] < facts["challenge_line_limit"]
     assert facts["warnings"] == [
@@ -459,6 +460,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "actual_lcm_orbit_separation",
         "actual_foreign_residue_projection",
         "first_harmonic_pivot",
+        "strict_prime_tail_orbit_gap",
         "erdos269_conditional_carry_escape",
         "erdos251_integral_tail_classification",
         "erdos1049_four_jet_pade_obstruction",
