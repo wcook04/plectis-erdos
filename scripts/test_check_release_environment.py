@@ -34,8 +34,9 @@ def main() -> int:
         "primary-source disposition gate still invokes raw subprocess.run",
     )
     require(
-        "safe_release_path" in inspect.getsource(check_release.read)
-        and "safe_release_path" in inspect.getsource(check_release.file_digest),
+        "_read_safe_bytes" in inspect.getsource(check_release.read)
+        and "_read_safe_bytes" in inspect.getsource(check_release.file_digest)
+        and "safe_release_path" in inspect.getsource(check_release._read_safe_bytes),
         "release artifact readers bypass the in-checkout path guard",
     )
     hostile_environment = {
@@ -111,6 +112,8 @@ def main() -> int:
         docs = Path(raw) / "docs"
         docs.mkdir()
         (docs / "linked").symlink_to(private, target_is_directory=True)
+        fifo = Path(raw) / "release.fifo"
+        os.mkfifo(fifo)
         original_root = check_release.ROOT
         check_release.ROOT = Path(raw)
         try:
@@ -133,6 +136,16 @@ def main() -> int:
                 check_release.release_file_exists(private / "secret.txt"),
                 "metadata-only release file check rejected a regular file",
             )
+            with patch.object(check_release, "safe_release_path", return_value=fifo):
+                try:
+                    check_release.read_bytes(fifo)
+                except check_release.UnsafeReleasePath as error:
+                    require(
+                        "regular file" in str(error),
+                        f"special release reader returned an unexpected error: {error}",
+                    )
+                else:
+                    require(False, "special release reader was accepted")
         finally:
             check_release.ROOT = original_root
 

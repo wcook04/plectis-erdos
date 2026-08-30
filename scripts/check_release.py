@@ -44,6 +44,7 @@ import hashlib
 import json
 import os
 import re
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -162,17 +163,39 @@ def release_file_exists(path: Path) -> bool:
     return True
 
 
+def _read_safe_bytes(path: Path) -> bytes:
+    """Read a release file through a no-follow descriptor after admission."""
+    candidate = safe_release_path(path)
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeReleasePath(f"release path could not be opened safely: {candidate}") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeReleasePath(f"release path is not a regular file: {candidate}")
+        with os.fdopen(descriptor, "rb") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 def file_digest(path: Path) -> str:
-    return "sha256:" + hashlib.sha256(safe_release_path(path).read_bytes()).hexdigest()
+    return "sha256:" + hashlib.sha256(_read_safe_bytes(path)).hexdigest()
 
 
-def read(path: Path) -> str:
-    return safe_release_path(path).read_text(encoding="utf-8")
+def read(path: Path, *, errors: str = "strict") -> str:
+    return _read_safe_bytes(path).decode("utf-8", errors=errors)
 
 
 def read_bytes(path: Path) -> bytes:
     """Read a release artifact only after applying the path boundary."""
-    return safe_release_path(path).read_bytes()
+    return _read_safe_bytes(path)
 
 
 def flattened(text: str) -> str:
@@ -1457,7 +1480,7 @@ def main() -> int:
             _safe_release_component(Path(dirpath) / dirname)
         for fname in filenames:
             path = Path(dirpath) / fname
-            head = safe_release_path(path).read_text(encoding="utf-8", errors="ignore")[:2000]
+            head = read(path, errors="ignore")[:2000]
             spdx_ids.update(re.findall(r"SPDX-License-Identifier: ([A-Za-z0-9.\-]+)", head))
     # REUSE-IgnoreEnd
     for lic in sorted(spdx_ids):
