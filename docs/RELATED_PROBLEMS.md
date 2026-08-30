@@ -84,8 +84,9 @@ records an `advances_open_target` edge.
   for the `81/200` region, [RationalPadeArithmetic](../ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30)
   and [HermitePadeNoGo](../ErdosProblems/Erdos1049/HermitePadeNoGo.lean#L103)
   for finite Padé arithmetic and comparison, and [QAperyDiagonalNonEquivalence](../ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L67)
-  for the moving-diagonal no-go — route distinct mechanisms without claiming
-  irrationality. The integer-base case `b ≥ 2` is
+  for the moving-diagonal no-go, with [ZudilinConeArithmetic](../ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L286)
+  covering the endpoint-unit common-divisor obstruction — route distinct
+  mechanisms without claiming irrationality. The integer-base case `b ≥ 2` is
   `irrational_erdosSum_full_support`; open boundary: irrationality at `3/2`,
   the primitive noncollapsed construction, and analytic remainder control.
 - **#69** — the prime-support case of #257; only the identity bridge to

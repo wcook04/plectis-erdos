@@ -346,7 +346,7 @@ the shortest first read:
 | #243 | [`reciprocal-tail rigidity`](papers/full-text/erdos-243-reciprocal-tail-rigidity.md) | `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean` |
 | #251 | [`prime-gap dyadic tails`](papers/full-text/erdos-251-prime-gap-dyadic-series.md) | `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean` |
 | #269 | [`three-prime running lcm`](papers/full-text/erdos-269-three-prime-running-lcm.md) | `ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean` |
-| #1049 | [`rational-base Lambert`](papers/full-text/erdos-1049-rational-base-lambert.md) | `ErdosProblems/Erdos1049/RationalBaseLambert.lean` |
+| #1049 | [`rational-base Lambert`](papers/full-text/erdos-1049-rational-base-lambert.md) | [`RationalBaseLambert`](../ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155) · [`ZudilinHeightRegion`](../ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L91) · [`RationalPadeArithmetic`](../ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30) · [`HermitePadeNoGo`](../ErdosProblems/Erdos1049/HermitePadeNoGo.lean#L103) · [`QAperyDiagonalNonEquivalence`](../ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L67) · [`ZudilinConeArithmetic`](../ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L286) |
 
 These notes preserve their own evidence classes and limitations; the source
 map is the route to the exact continuation obligation, not a chronology or a
