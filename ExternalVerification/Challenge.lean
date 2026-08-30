@@ -242,6 +242,35 @@ theorem irrational_tsum_primeDyadicTerm_iff_primeGap
       Irrational (∑' n : ℕ, primeGapDyadicTerm n) :=
   (portfolioClaims Unit).problem251Equivalence hprime
 
+theorem tailShift_integral_iff_den_dvd_mersenne
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    RatIntegral (tailShift T h N) ↔ (T N).den ∣ 2 ^ h - 1 :=
+  (portfolioClaims Unit).problem251TailShiftDenominator hrec N h
+
+theorem tailShift_integral_iff_two_pow_modEq_one
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    RatIntegral (tailShift T h N) ↔
+      2 ^ h ≡ 1 [MOD (T N).den] :=
+  (portfolioClaims Unit).problem251TailShiftCongruence hrec N h
+
+theorem not_irrational_initial_iff_exists_eventually_integral_positive_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    ¬ Irrational (T 0) ↔
+      ∃ h N : ℕ, 0 < h ∧
+        ∀ k, RealIntegral (realTailShift T h (N + k)) :=
+  (portfolioClaims Unit).problem251TailShiftEventualIntegrality hrec
+
+theorem irrational_initial_iff_all_positive_tailShifts_nonintegral
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    Irrational (T 0) ↔
+      ∀ h : ℕ, 0 < h → ∀ N : ℕ,
+        ¬ RealIntegral (realTailShift T h N) :=
+  (portfolioClaims Unit).problem251TailShiftIrrationalityNormalForm hrec
+
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 :=
   (portfolioClaims Unit).problem257Measure
 

@@ -76,6 +76,26 @@ noncomputable def primeDyadicTerm (n : ℕ) : ℝ :=
 noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ :=
   (primeGap0 n : ℝ) / 2 ^ (n + 1)
 
+/-! ## Abstract dyadic-tail classification vocabulary -/
+
+def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
+
+def tailShift (T : ℕ → ℚ) (h N : ℕ) : ℚ :=
+  T (N + h) - T N
+
+def RatIntegral (x : ℚ) : Prop :=
+  ∃ z : ℤ, x = z
+
+def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
+
+def realTailShift (T : ℕ → ℝ) (h N : ℕ) : ℝ :=
+  T (N + h) - T N
+
+def RealIntegral (x : ℝ) : Prop :=
+  ∃ z : ℤ, x = z
+
 def smooth3Val (p q r i j k : ℕ) : ℕ :=
   p ^ i * q ^ j * r ^ k
 
@@ -706,6 +726,27 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     Summable primeDyadicTerm →
       (Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
         Irrational (∑' n : ℕ, primeGapDyadicTerm n))
+  problem251TailShiftDenominator :
+    ∀ {g : ℕ → ℤ} {T : ℕ → ℚ},
+      DyadicTailRecurrence g T → ∀ N h,
+        RatIntegral (tailShift T h N) ↔ (T N).den ∣ 2 ^ h - 1
+  problem251TailShiftCongruence :
+    ∀ {g : ℕ → ℤ} {T : ℕ → ℚ},
+      DyadicTailRecurrence g T → ∀ N h,
+        RatIntegral (tailShift T h N) ↔
+          2 ^ h ≡ 1 [MOD (T N).den]
+  problem251TailShiftEventualIntegrality :
+    ∀ {g : ℕ → ℤ} {T : ℕ → ℝ},
+      RealDyadicTailRecurrence g T →
+        (¬ Irrational (T 0) ↔
+          ∃ h N : ℕ, 0 < h ∧
+            ∀ k, RealIntegral (realTailShift T h (N + k)))
+  problem251TailShiftIrrationalityNormalForm :
+    ∀ {g : ℕ → ℤ} {T : ℕ → ℝ},
+      RealDyadicTailRecurrence g T →
+        (Irrational (T 0) ↔
+          ∀ h : ℕ, 0 < h → ∀ N : ℕ,
+            ¬ RealIntegral (realTailShift T h N))
   problem257Measure : volume mersenneAchievementSet = 1
   problem257FullSupport :
     ∀ b : ℕ, 2 ≤ b →

@@ -476,6 +476,34 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
       ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap hprime
+  · intro g T hrec N h
+    simpa [DyadicTailRecurrence, tailShift, RatIntegral,
+      ErdosProblems.Erdos251.DyadicTailRecurrence,
+      ErdosProblems.Erdos251.tailShift,
+      ErdosProblems.Erdos251.RatIntegral] using
+      ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne
+        hrec N h
+  · intro g T hrec N h
+    simpa [DyadicTailRecurrence, tailShift, RatIntegral,
+      ErdosProblems.Erdos251.DyadicTailRecurrence,
+      ErdosProblems.Erdos251.tailShift,
+      ErdosProblems.Erdos251.RatIntegral] using
+      ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one
+        hrec N h
+  · intro g T hrec
+    simpa [RealDyadicTailRecurrence, realTailShift, RealIntegral,
+      ErdosProblems.Erdos251.RealDyadicTailRecurrence,
+      ErdosProblems.Erdos251.realTailShift,
+      ErdosProblems.Erdos251.RealIntegral] using
+      ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift
+        hrec
+  · intro g T hrec
+    simpa [RealDyadicTailRecurrence, realTailShift, RealIntegral,
+      ErdosProblems.Erdos251.RealDyadicTailRecurrence,
+      ErdosProblems.Erdos251.realTailShift,
+      ErdosProblems.Erdos251.RealIntegral] using
+      ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral
+        hrec
   · simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
       Erdos249257.mersenneAchievementSet,
       Erdos249257.positiveMersenneSupportValue,
