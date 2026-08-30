@@ -52,6 +52,9 @@ not a novelty or priority ranking:
   hypotheses are the unresolved selector: neither is constructed for arbitrary
   supports, so this remains a conditional reduction rather than another
   settled support family.
+- A separate geometric boundary is substantial but different: the full
+  base-2 Mersenne achievement set has Lebesgue measure one, while supported
+  achievement sets have a finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). This classifies neither rational points nor universal irrationality.
 - **#249 has an exact finite-level kernel spine.** The dyadic totient kernel
   has rank `2^e + 1` with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
   the all-base extension is conditional on affine independence and no

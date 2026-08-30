@@ -38,7 +38,15 @@ pass, the high-signal spine is:
   `SunflowerForcedSlotTailSelection` predicate
   (`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`,
   `Erdos249257/SupportSunflowerDichotomy.lean:540`); the selector and bouquet
-  are not constructed for arbitrary supports.
+  are not constructed for arbitrary supports. Separately, the full base-2
+  Mersenne achievement set has Lebesgue measure exactly one, while the
+  supported-set theorem gives exact finite-complement measure or zero for an
+  infinite complement (`volume_mersenneAchievementSet`,
+  `Erdos249257/GreedyAchievementSet.lean:996`;
+  `volume_supportedMersenneAchievementSet_dichotomy`,
+  `ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:397`). This is
+  consequential global geometry, not a classification of rational points or
+  a universal irrationality theorem.
 - **#249, a constructive kernel-rank spine.** The exact dyadic totient-kernel
   rank `2^e + 1`, its odd-core basis, and the resulting infinite-dimensional
   span expose a real finite-level mechanism; the all-base rank is conditional
@@ -73,8 +81,8 @@ full evidence and exact boundaries.
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
 | **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, and nonnegative rational eventually-periodic coefficient theorem, plus #249 finite kernel rank/basis and #68's exact carry/divisibility equivalence, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; pairwise CRT and periodic denominator-clearing are distinct direct mechanisms; rank and equivalence expose exact finite-level and endpoint interfaces with hypotheses visible. |
-| **retain** | #257's orthogonal-petal bouquet reduction, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The bouquet route has genuine structural depth but requires an unconstructed selector and bouquet; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
-| **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's geometry, finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
+| **retain** | #257's orthogonal-petal bouquet reduction and achievement-set measure geometry, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The bouquet route has genuine structural depth but requires an unconstructed selector and bouquet; the measure rows give consequential global geometry without classifying rational points; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
+| **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
 | **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks remain discoverable through the source maps, but do not lead the reader. | A finite range, routine shard, or unconstructed antecedent cannot establish a cofinal family or universal endpoint, so it is evidence for follow-up rather than first-contact signal. |
