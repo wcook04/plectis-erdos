@@ -145,6 +145,24 @@ def main() -> int:
         link_error = acceptor.write_new_file(link, b"linked")
         require(link_error == "output path must not be a symbolic link", "symlink output was followed")
 
+    with tempfile.TemporaryDirectory(dir="/tmp") as directory:
+        temporary_root = Path(directory)
+        alias_input = temporary_root / "submitted.json"
+        alias_output = temporary_root / "accepted.json"
+        require(
+            not acceptor.path_has_symlink_component(alias_input),
+            "macOS /tmp alias was rejected for a valid acceptance input",
+        )
+        require(
+            not acceptor.parent_has_symlink(alias_output),
+            "macOS /tmp alias was rejected for a valid acceptance output",
+        )
+        require(
+            acceptor.write_new_file(alias_output, b"{}") is None,
+            "acceptance output could not be written through the macOS /tmp alias",
+        )
+
+    with tempfile.TemporaryDirectory() as directory:
         malformed = Path(directory) / "malformed-utf8.json"
         malformed.write_bytes(b"{\xff\n")
         decision_template = Path(directory) / "decision-template.json"

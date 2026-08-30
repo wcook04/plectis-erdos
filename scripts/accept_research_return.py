@@ -181,9 +181,14 @@ def accepted_commit_checkout_errors(accepted_commit: Any) -> list[str]:
 
 
 def _is_allowed_platform_alias(path: Path) -> bool:
-    """Keep only the documented macOS temporary-directory alias usable."""
+    """Keep only documented macOS system-directory aliases usable."""
     try:
-        return path == Path("/var") and path.resolve(strict=True) == Path("/private/var")
+        aliases = {
+            Path("/tmp"): Path("/private/tmp"),
+            Path("/var"): Path("/private/var"),
+        }
+        target = aliases.get(path)
+        return target is not None and path.resolve(strict=True) == target
     except OSError:
         return False
 
