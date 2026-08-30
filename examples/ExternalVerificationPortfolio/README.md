@@ -1,22 +1,23 @@
 # External verification portfolio
 
-This directory contains small Lean consumers for two different parts of the
-Erdős 249/269 corpus. The files are useful when a reader wants to reuse an
+This directory contains small Lean consumers for three different parts of the
+Erdős 249/251/269 corpus. The files are useful when a reader wants to reuse an
 exact Comparator-facing interface without treating a conditional reduction as
 a solution of the underlying Erdős problem.
 
-The canonical focused check for both consumers is:
+The canonical focused check for the portfolio consumers is:
 
 ```bash
 python3 scripts/lean_fast_build.py \
   examples/ExternalVerificationPortfolio/Problem249.lean \
+  examples/ExternalVerificationPortfolio/Problem251.lean \
   examples/ExternalVerificationPortfolio/Problem269.lean
 ```
 
 That command imports the shared `ExternalVerification.Solution` surface. The
 existing `ExternalVerification/Solution.lean` mismatch means that a build of
-the #269 consumer must not be described as Lean-green until that mismatch is
-repaired and the command passes on the repaired source.
+the #251 or #269 consumer must not be described as Lean-green until that
+mismatch is repaired and the command passes on the repaired source.
 
 ## Erdős #249: actual-LCM orbit separation
 
@@ -42,6 +43,33 @@ than saying that an orbit is sometimes nonintegral, and the required supply,
 including the punctured/top-edge details, remains open. Without that supply
 there is no #249 irrationality conclusion, and this consumer makes no
 novelty or priority claim.
+
+## Erdős #251: dyadic-tail integrality classification
+
+Start with [`Problem251.lean`](Problem251.lean). Its load-bearing source
+interfaces are
+`ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne`,
+`ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one`, and
+`ErdosProblems.Erdos251.rationalPrimeGapTailShift_eventuallyIntegral`; the
+actual-prime Comparator specialization is
+`Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch`.
+
+The exact mechanism is elementary and conditional. For an integer-digit
+dyadic recurrence, the `h`-step shift is an integer exactly when the reduced
+denominator of the current tail state divides the Mersenne number `2^h - 1`,
+equivalently when `2^h ≡ 1` modulo that denominator. A rational candidate
+prime-gap sum has denominator `2^a q` with `q` odd; after the power-of-two
+part is shifted out, Euler's totient of `q` supplies a fixed shift that is
+eventually integral along the candidate tail.
+
+The actual-prime consumer says what would finish this route: if, for one fixed
+shift `h`, every cutoff admits an adjacent pair of tail shifts both strictly
+inside `(-1,1)` with unequal corresponding consecutive prime gaps, then that
+shift cannot be eventually integral. The missing input is precisely that
+cofinal small-mismatch producer for the actual primes (or a different
+actual-tail obstruction). Finite event-density measurements do not supply the
+cofinal quantifier. This consumer therefore proves no #251 irrationality and
+makes no novelty or priority claim.
 
 ## Erdős #269: two distinct reusable routes
 
@@ -83,7 +111,8 @@ supporting or contrary evidence rather than extra portfolio families.
 
 For the configured interfaces and their recorded evidence boundaries, see
 [`verification/comparator.json`](../../verification/comparator.json) and the
-two exact source consumers above. The #249 and #269 examples are deliberately
-separate: the former consumes an actual-LCM separation supply, while the
-latter exposes a residue/coboundary mechanism and a local-window carry
-consumer with different hypotheses and different open bridges.
+the exact source consumers above. The #249, #251, and #269 examples are
+deliberately separate: #249 consumes an actual-LCM separation supply, #251
+consumes the dyadic-tail denominator classifier and an actual-prime mismatch
+obstruction, and #269 exposes a residue/coboundary mechanism plus a
+local-window carry consumer. Their hypotheses and open bridges differ.
