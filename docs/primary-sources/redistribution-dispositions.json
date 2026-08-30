@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 24,
-    "artifact_count": 24,
+    "working_tree_only_count": 25,
+    "artifact_count": 25,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 24,
+    "link_and_digest_only_count": 25,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -473,6 +473,27 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre.pdf",
+      "sha256": "ce878d4a92a709e77723bb398c131e5391cb8bea8c82eeeccd92e6f26fece34d",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/math/0101187",
+        "https://arxiv.org/pdf/math/0101187",
+        "https://link.springer.com/article/10.1023/A:1012930828917",
+        "https://doi.org/10.1023/A:1012930828917"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }
