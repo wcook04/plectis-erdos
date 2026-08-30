@@ -65,6 +65,25 @@ def assert_worktree_symlink_boundary() -> None:
             raise AssertionError("worktree publication reader followed a symlink")
 
 
+def assert_worktree_special_file_boundary() -> None:
+    """Prove worktree reads reject a FIFO before attempting to consume it."""
+    if not hasattr(os, "mkfifo"):
+        return
+    with tempfile.TemporaryDirectory(
+        prefix="publication-contract-fifo-", dir=ROOT
+    ) as temporary:
+        root = Path(temporary) / "checkout"
+        root.mkdir()
+        fifo = root / "publication_contract.json"
+        os.mkfifo(fifo)
+        try:
+            RepositoryReader(root).read_bytes("publication_contract.json")
+        except ValueError as exc:
+            require("regular file" in str(exc), str(exc))
+        else:
+            raise AssertionError("worktree publication reader opened a special file")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -74,6 +93,7 @@ def main() -> int:
     args = parser.parse_args()
     assert_committed_snapshot_environment()
     assert_worktree_symlink_boundary()
+    assert_worktree_special_file_boundary()
     reader = RepositoryReader(ROOT, args.git_ref)
     baseline_errors = validate_publication_contract(reader)
     fixture_failures = mutation_fixture_failures(reader) if not baseline_errors else []
