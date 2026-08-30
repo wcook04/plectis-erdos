@@ -192,11 +192,17 @@ def load_signal_authority() -> dict:
     if showcase.get("schema") != "plectis-palomar-result-showcase/1":
         raise ValueError("Palomar result showcase has an unsupported schema")
     ranking = showcase.get("candidate_ranking")
+    screening = showcase.get("candidate_screening")
+    universe = showcase.get("candidate_universe")
     contract = showcase.get("selection_contract")
     if not isinstance(ranking, list) or not ranking:
         raise ValueError("Palomar result showcase lacks candidate_ranking")
     if not isinstance(contract, dict) or not contract.get("ranking_axes"):
         raise ValueError("Palomar result showcase lacks its selection contract")
+    if not isinstance(screening, list) or not screening:
+        raise ValueError("Palomar result showcase lacks candidate_screening")
+    if not isinstance(universe, dict) or not universe.get("source_family_dispositions"):
+        raise ValueError("Palomar result showcase lacks its candidate universe")
     ranks = [row.get("rank") for row in ranking]
     declarations = [row.get("declaration") for row in ranking]
     if sorted(ranks) != list(range(1, len(ranking) + 1)):
@@ -208,6 +214,8 @@ def load_signal_authority() -> dict:
     return {
         "selection_contract": contract,
         "candidate_ranking": ranking,
+        "candidate_screening": screening,
+        "candidate_universe": universe,
     }
 
 
@@ -710,6 +718,377 @@ def _render_ranked_candidate(candidate: dict, result: dict) -> list[str]:
     ]
 
 
+def _presentation_contract(signal_authority: dict) -> tuple[dict[str, dict], dict[str, dict]]:
+    """Validate the authored reader tiers and explicit relational placements."""
+    contract = signal_authority.get("selection_contract", {})
+    tiers = contract.get("presentation_tiers")
+    screening = signal_authority.get("candidate_screening")
+    if not isinstance(tiers, list) or not tiers:
+        raise ValueError("Palomar selection contract lacks presentation_tiers")
+    if not isinstance(screening, list):
+        raise ValueError("Palomar showcase lacks candidate_screening")
+
+    orders = [tier.get("order") for tier in tiers]
+    if sorted(orders) != list(range(1, len(tiers) + 1)):
+        raise ValueError("Palomar presentation tiers must be unique and contiguous")
+    tier_by_id = {tier["tier_id"]: tier for tier in tiers}
+    if len(tier_by_id) != len(tiers):
+        raise ValueError("Palomar presentation tier ids must be unique")
+
+    tier_by_disposition: dict[str, dict] = {}
+    for tier in tiers:
+        for disposition in tier.get("candidate_screening_dispositions", []):
+            if disposition in tier_by_disposition:
+                raise ValueError(
+                    f"Palomar screening disposition occurs in two tiers: {disposition}"
+                )
+            tier_by_disposition[disposition] = tier
+    actual_dispositions = {row.get("disposition") for row in screening}
+    missing = sorted(actual_dispositions - set(tier_by_disposition))
+    if missing:
+        raise ValueError(
+            "Palomar presentation tiers must cover candidate_screening dispositions: "
+            f"missing={missing!r}"
+        )
+
+    placements = contract.get("relational_placements")
+    if not isinstance(placements, list):
+        raise ValueError("Palomar selection contract lacks relational_placements")
+    placement_by_family: dict[str, dict] = {}
+    for placement in placements:
+        family_id = placement["family_id"]
+        if family_id in placement_by_family:
+            raise ValueError(f"duplicate Palomar relational placement: {family_id}")
+        if placement["tier_id"] not in tier_by_id:
+            raise ValueError(
+                f"Palomar relational placement has unknown tier: {family_id}"
+            )
+        placement_by_family[family_id] = placement
+    return tier_by_disposition, placement_by_family
+
+
+def _programme_signal_rows(packet: dict, signal_authority: dict) -> dict[int, list[dict]]:
+    """Project one authored, order-independent signal spine for every programme."""
+    tier_by_disposition, placement_by_family = _presentation_contract(signal_authority)
+    result_by_declaration = {
+        row["wrapper_declaration"]: row for row in packet["main_results"]
+    }
+    family_by_key = {
+        (int(problem["problem"]), family["id"]): family
+        for problem in packet["review_matrix"]
+        for family in problem["families"]
+    }
+    family_by_id = {
+        family_id: (problem, family)
+        for (problem, family_id), family in family_by_key.items()
+    }
+    dispositions = signal_authority["candidate_universe"][
+        "source_family_dispositions"
+    ]
+    expected_family_ids = {family_id for _, family_id in family_by_key}
+    if set(dispositions) != expected_family_ids:
+        raise ValueError(
+            "Palomar source-family dispositions must cover the complete review matrix"
+        )
+
+    rows_by_key: dict[tuple[int, str], dict] = {}
+    ranked_keys: set[tuple[int, str]] = set()
+    matched_placements: set[str] = set()
+    ranked_tier = next(
+        tier
+        for tier in signal_authority["selection_contract"]["presentation_tiers"]
+        if tier["tier_id"] == "source_ranked_frontier"
+    )
+    for candidate in sorted(
+        signal_authority["candidate_ranking"], key=lambda row: row["rank"]
+    ):
+        result = result_by_declaration[candidate["declaration"]]
+        key = (int(result["problem"]), result["review_family"])
+        family = family_by_key[key]
+        rows_by_key[key] = {
+            "tier_order": ranked_tier["order"],
+            "tier_id": ranked_tier["tier_id"],
+            "tier_label": ranked_tier["label"],
+            "within_tier_order": candidate["rank"],
+            "global_rank": candidate["rank"],
+            "family_id": family["id"],
+            "signal_family_id": candidate["family_id"],
+            "source_disposition": dispositions[family["id"]],
+            "declaration": candidate["declaration"],
+            "source_file": result["original_source"],
+            "why_here": candidate["consequence_and_endpoint_proximity"],
+            "boundary": result["boundary"],
+        }
+        ranked_keys.add(key)
+
+    for screening_row in signal_authority["candidate_screening"]:
+        declaration = screening_row["declaration"]
+        result = result_by_declaration.get(declaration)
+        family_owner = family_by_id.get(screening_row["family_id"])
+        if result is None and family_owner is None:
+            raise ValueError(
+                "Palomar candidate_screening row lacks a Comparator result and review "
+                f"family owner: {declaration}"
+            )
+        if result is not None:
+            key = (int(result["problem"]), result["review_family"])
+        else:
+            problem, family = family_owner
+            key = (problem, family["id"])
+        if key in ranked_keys:
+            continue
+        family = family_by_key[key]
+        tier = tier_by_disposition[screening_row["disposition"]]
+        placement = placement_by_family.get(family["id"])
+        if placement is not None and placement["tier_id"] != tier["tier_id"]:
+            placement = None
+        if placement is not None:
+            matched_placements.add(family["id"])
+        within_tier_order = (
+            placement["within_tier_order"] if placement is not None else 1_000_000
+        )
+        candidate_row = {
+            "tier_order": tier["order"],
+            "tier_id": tier["tier_id"],
+            "tier_label": tier["label"],
+            "within_tier_order": within_tier_order,
+            "global_rank": None,
+            "family_id": family["id"],
+            "signal_family_id": screening_row["family_id"],
+            "source_disposition": dispositions[family["id"]],
+            "screening_disposition": screening_row["disposition"],
+            "declaration": declaration,
+            "source_file": (
+                result["original_source"]
+                if result is not None
+                else "ExternalVerification/Statements.lean"
+            ),
+            "why_here": (
+                placement["relative_judgement"]
+                if placement is not None
+                else screening_row["reason"]
+            ),
+            "boundary": family["boundary"],
+        }
+        previous = rows_by_key.get(key)
+        candidate_key = (
+            candidate_row["tier_order"],
+            candidate_row["within_tier_order"],
+            candidate_row["declaration"],
+        )
+        previous_key = (
+            previous["tier_order"],
+            previous["within_tier_order"],
+            previous["declaration"],
+        ) if previous is not None else None
+        if previous is None or candidate_key < previous_key:
+            rows_by_key[key] = candidate_row
+
+    tiers_by_id = {
+        tier["tier_id"]: tier
+        for tier in signal_authority["selection_contract"]["presentation_tiers"]
+    }
+    represented_placements = signal_authority["selection_contract"].get(
+        "represented_family_placements"
+    )
+    if not isinstance(represented_placements, list):
+        raise ValueError("Palomar selection contract lacks represented-family placements")
+    for placement in represented_placements:
+        family_id = placement["family_id"]
+        owner = family_by_id.get(family_id)
+        if owner is None:
+            raise ValueError(
+                f"Palomar represented-family placement lacks review owner: {family_id}"
+            )
+        problem, family = owner
+        key = (problem, family_id)
+        if key in rows_by_key:
+            raise ValueError(
+                f"Palomar represented-family placement duplicates a ranked/screened row: {family_id}"
+            )
+        if dispositions[family_id] != "represented":
+            raise ValueError(
+                f"Palomar represented-family placement is not represented: {family_id}"
+            )
+        tier = tiers_by_id.get(placement["tier_id"])
+        if tier is None:
+            raise ValueError(
+                f"Palomar represented-family placement has unknown tier: {family_id}"
+            )
+        rows_by_key[key] = {
+            "tier_order": tier["order"],
+            "tier_id": tier["tier_id"],
+            "tier_label": tier["label"],
+            "within_tier_order": 1_000_000,
+            "global_rank": None,
+            "family_id": family_id,
+            "signal_family_id": family_id,
+            "source_disposition": dispositions[family_id],
+            "declaration": f"review_family:{family_id}",
+            "source_kind": "canonical_review_family",
+            "source_file": "docs/claims.json",
+            "why_here": placement["relative_judgement"],
+            "boundary": family["boundary"],
+        }
+
+    missing_placements = sorted(set(placement_by_family) - matched_placements)
+    if missing_placements:
+        raise ValueError(
+            "Palomar relational placements lack a matching screening tier: "
+            f"{missing_placements!r}"
+        )
+
+    relations = signal_authority["selection_contract"].get("family_relations")
+    if not isinstance(relations, list):
+        raise ValueError("Palomar selection contract lacks family relations")
+    relation_rows_by_family: dict[str, list[dict]] = {}
+    for relation in relations:
+        source_family = relation["from_family_id"]
+        target_family = relation["to_family_id"]
+        if source_family not in family_by_id or target_family not in family_by_id:
+            raise ValueError("Palomar family relation names an unknown review family")
+        relation_rows_by_family.setdefault(source_family, []).append(
+            {**relation, "direction": "outgoing"}
+        )
+        relation_rows_by_family.setdefault(target_family, []).append(
+            {**relation, "direction": "incoming"}
+        )
+    for row in rows_by_key.values():
+        row["relations"] = relation_rows_by_family.get(row["family_id"], [])
+
+    rows_by_problem: dict[int, list[dict]] = {}
+    for (problem, _), row in rows_by_key.items():
+        rows_by_problem.setdefault(problem, []).append(row)
+    programme_order = signal_authority["selection_contract"].get(
+        "programme_family_order"
+    )
+    if not isinstance(programme_order, list):
+        raise ValueError("Palomar selection contract lacks programme-family order")
+    order_by_problem = {
+        int(row["problem"]): row["family_ids"] for row in programme_order
+    }
+    if len(order_by_problem) != len(programme_order):
+        raise ValueError("Palomar programme-family order repeats a problem")
+    if set(order_by_problem) != set(rows_by_problem):
+        raise ValueError("Palomar programme-family order does not cover every dossier")
+    for problem, rows in rows_by_problem.items():
+        authored_order = order_by_problem[problem]
+        if len(authored_order) != len(set(authored_order)):
+            raise ValueError(
+                f"Palomar programme-family order repeats a family for #{problem}"
+            )
+        emitted_ids = {row["family_id"] for row in rows}
+        if set(authored_order) != emitted_ids:
+            raise ValueError(
+                f"Palomar programme-family order is not signal-complete for #{problem}"
+            )
+        order_index = {family_id: index for index, family_id in enumerate(authored_order)}
+        rows.sort(key=lambda row: order_index[row["family_id"]])
+        for local_rank, row in enumerate(rows, start=1):
+            row["programme_order"] = local_rank
+    return rows_by_problem
+
+
+def _render_programme_signal(rows: list[dict]) -> list[str]:
+    lines = [
+        "### First-contact mathematical order",
+        "",
+        (
+            "This is Palomar's source-current reader order, not review-matrix or "
+            "Comparator roster order. Ranked results lead; conditional endpoint leverage, "
+            "deep mechanisms, natural friction, and supporting rows follow unequally."
+        ),
+        "",
+    ]
+    for row in rows:
+        rank_note = (
+            f"; global rank {row['global_rank']}"
+            if row["global_rank"] is not None
+            else ""
+        )
+        source_line = (
+            f"   - **Source authority.** Canonical review family "
+            f"`{row['family_id']}` in [claims](../{row['source_file']})"
+            if row.get("source_kind") == "canonical_review_family"
+            else (
+                f"   - **Source.** {_md_code(row['declaration'])} in "
+                f"[Lean](../{row['source_file']})"
+            )
+        )
+        lines.extend(
+            [
+                (
+                    f"{row['programme_order']}. **{_family_display_label(row['family_id'])}** "
+                    f"(`{row['family_id']}`; {row['tier_label']}{rank_note}; "
+                    f"source disposition `{row['source_disposition']}`)"
+                ),
+                f"   - **Why here.** {row['why_here']}",
+                source_line,
+                f"   - **Boundary.** {row['boundary']}",
+            ]
+        )
+        for relation in row.get("relations", []):
+            other = (
+                relation["to_family_id"]
+                if relation["direction"] == "outgoing"
+                else relation["from_family_id"]
+            )
+            lines.append(
+                f"   - **Relation.** `{relation['relation']}` `{other}`: "
+                f"{relation['reason']}"
+            )
+        lines.append("")
+    return lines
+
+
+def _render_complete_candidate_universe(packet: dict, signal_authority: dict) -> list[str]:
+    universe = signal_authority["candidate_universe"]
+    dispositions = universe["source_family_dispositions"]
+    family_owner = {
+        family["id"]: int(problem["problem"])
+        for problem in packet["review_matrix"]
+        for family in problem["families"]
+    }
+    if set(dispositions) != set(family_owner):
+        raise ValueError("Palomar candidate universe is not review-matrix complete")
+    disposition_order = signal_authority["selection_contract"].get(
+        "source_family_disposition_order"
+    )
+    if not isinstance(disposition_order, list):
+        raise ValueError("Palomar selection contract lacks source disposition order")
+    lines = [
+        "### Complete serious-result universe",
+        "",
+        (
+            f"All {len(dispositions)} source-current review families are accounted for here. "
+            "The categories preserve honest selection reasons while the programme dossiers "
+            "below retain each family's exact mechanism and boundary. This inventory is "
+            "complete but deliberately does not compete with the ranked frontier for attention."
+        ),
+        "",
+    ]
+    for disposition in disposition_order:
+        family_ids = sorted(
+            family_id
+            for family_id, value in dispositions.items()
+            if value == disposition
+        )
+        if not family_ids:
+            continue
+        linked = ", ".join(
+            f"[#{family_owner[family_id]}](#{_programme_anchor(family_owner[family_id])}) "
+            f"`{family_id}`"
+            for family_id in family_ids
+        )
+        lines.extend(
+            [
+                f"- **{disposition.replace('_', ' ')} ({len(family_ids)}).** {linked}",
+                "",
+            ]
+        )
+    return lines
+
+
 def _render_signal_spine(packet: dict, signal_authority: dict) -> list[str]:
     result_by_declaration = {
         row["wrapper_declaration"]: row for row in packet["main_results"]
@@ -819,6 +1198,7 @@ def _render_signal_spine(packet: dict, signal_authority: dict) -> list[str]:
             "",
         ]
     )
+    lines.extend(_render_complete_candidate_universe(packet, signal_authority))
     return lines
 
 
@@ -835,6 +1215,7 @@ def render_human(
     interfaces_by_problem: dict[int, list[dict]] = {}
     for row in packet["main_results"]:
         interfaces_by_problem.setdefault(int(row["problem"]), []).append(row)
+    programme_signal = _programme_signal_rows(packet, signal_authority)
 
     index_links: list[str] = []
     dossier_blocks: list[str] = []
@@ -924,6 +1305,7 @@ def render_human(
                 [_md_code(full_name)],
             )
         )
+        dossier_blocks.extend(_render_programme_signal(programme_signal.get(number, [])))
         dossier_blocks.extend(
             _details_block(
                 f"Contribution families ({len(families)})",

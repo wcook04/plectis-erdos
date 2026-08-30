@@ -26,7 +26,7 @@ DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
 MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
-OUTPUT_BUDGET_BYTES = 64_000
+OUTPUT_BUDGET_BYTES = 73_000
 AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
 # The tour carries the complete reviewed result-family index as well as the
 # problem map.  The allowance scales with the canonical eight-problem and
@@ -7411,10 +7411,23 @@ def route_packet(route_id: str) -> dict[str, Any]:
         problem_route = problem_registry_route(route_id)
         if problem_route is None:
             raise KeyError(f"unknown route id: {route_id}")
+        problem_number = int(problem_route["erdos_number"])
+        signal = mathematical_signal_spine(claims, include_programme_detail=True)
+        programme_signal = next(
+            (
+                row
+                for row in signal["programme_spines"]
+                if row["problem"] == problem_number
+            ),
+            None,
+        )
+        if programme_signal is None:
+            raise ValueError(f"Palomar signal authority lacks programme #{problem_number}")
         return {
             "kind": "problem_route",
             "authority_posture": problem_route["authority_posture"],
             "route": problem_route,
+            "mathematical_signal_spine": programme_signal,
             "proof_authority": "Lean source checked by the pinned Lean kernel",
             "release_provenance": claims["release"]["public_projection"],
             "validation": "python3 scripts/check_release.py",
@@ -7470,6 +7483,20 @@ def route_packet(route_id: str) -> dict[str, Any]:
         }
         problem_number = route_memory_problem_number(route)
         if problem_number is not None:
+            signal = mathematical_signal_spine(claims, include_programme_detail=True)
+            programme_signal = next(
+                (
+                    row
+                    for row in signal["programme_spines"]
+                    if row["problem"] == problem_number
+                ),
+                None,
+            )
+            if programme_signal is None:
+                raise ValueError(
+                    f"Palomar signal authority lacks programme #{problem_number}"
+                )
+            packet["programme"]["mathematical_signal_spine"] = programme_signal
             packet["route_memory"] = {
                 "problem_number": problem_number,
                 "command": (
@@ -7634,9 +7661,290 @@ def _signal_reader_tier(candidate: Mapping[str, Any]) -> str:
     return "completed_direct_result"
 
 
+def _signal_presentation_contract(
+    showcase: Mapping[str, Any],
+) -> tuple[dict[str, Mapping[str, Any]], dict[str, Mapping[str, Any]]]:
+    """Validate the one Palomar tier contract consumed by query projections."""
+    contract = showcase.get("selection_contract")
+    screening = showcase.get("candidate_screening")
+    if not isinstance(contract, Mapping):
+        raise ValueError("Palomar showcase lacks selection_contract")
+    tiers = contract.get("presentation_tiers")
+    if not isinstance(tiers, list) or not tiers:
+        raise ValueError("Palomar selection contract lacks presentation_tiers")
+    if not isinstance(screening, list):
+        raise ValueError("Palomar showcase lacks candidate_screening")
+    orders = [tier.get("order") for tier in tiers]
+    if sorted(orders) != list(range(1, len(tiers) + 1)):
+        raise ValueError("Palomar presentation tiers must be unique and contiguous")
+
+    tier_by_id = {tier["tier_id"]: tier for tier in tiers}
+    if len(tier_by_id) != len(tiers):
+        raise ValueError("Palomar presentation tier ids must be unique")
+    tier_by_disposition: dict[str, Mapping[str, Any]] = {}
+    for tier in tiers:
+        for disposition in tier.get("candidate_screening_dispositions", []):
+            if disposition in tier_by_disposition:
+                raise ValueError(
+                    f"Palomar screening disposition occurs in two tiers: {disposition}"
+                )
+            tier_by_disposition[disposition] = tier
+    actual_dispositions = {row.get("disposition") for row in screening}
+    missing = sorted(actual_dispositions - set(tier_by_disposition))
+    if missing:
+        raise ValueError(
+            "Palomar presentation tiers must cover candidate_screening dispositions: "
+            f"missing={missing!r}"
+        )
+
+    placements = contract.get("relational_placements")
+    if not isinstance(placements, list):
+        raise ValueError("Palomar selection contract lacks relational_placements")
+    placement_by_family: dict[str, Mapping[str, Any]] = {}
+    for placement in placements:
+        family_id = placement["family_id"]
+        if family_id in placement_by_family:
+            raise ValueError(f"duplicate Palomar relational placement: {family_id}")
+        if placement["tier_id"] not in tier_by_id:
+            raise ValueError(
+                f"Palomar relational placement has unknown tier: {family_id}"
+            )
+        placement_by_family[family_id] = placement
+    return tier_by_disposition, placement_by_family
+
+
+def _signal_programme_spines(
+    packet: Mapping[str, Any],
+    showcase: Mapping[str, Any],
+    result_by_declaration: Mapping[str, Mapping[str, Any]],
+    family_by_id: Mapping[str, tuple[int, Mapping[str, Any]]],
+) -> list[dict[str, Any]]:
+    """Return programme-local reader order without using any source array order."""
+    tier_by_disposition, placement_by_family = _signal_presentation_contract(showcase)
+    universe = showcase["candidate_universe"]
+    source_dispositions = universe["source_family_dispositions"]
+    if set(source_dispositions) != set(family_by_id):
+        raise ValueError(
+            "Palomar source-family dispositions must cover the complete review matrix"
+        )
+    ranked_tier = next(
+        tier
+        for tier in showcase["selection_contract"]["presentation_tiers"]
+        if tier["tier_id"] == "source_ranked_frontier"
+    )
+
+    rows_by_key: dict[tuple[int, str], dict[str, Any]] = {}
+    ranked_keys: set[tuple[int, str]] = set()
+    matched_placements: set[str] = set()
+    for candidate in sorted(showcase["candidate_ranking"], key=lambda row: row["rank"]):
+        result = result_by_declaration[candidate["declaration"]]
+        family_id = result["review_family"]
+        problem, family = family_by_id[family_id]
+        key = (problem, family_id)
+        rows_by_key[key] = {
+            "tier_order": ranked_tier["order"],
+            "tier_id": ranked_tier["tier_id"],
+            "tier_label": ranked_tier["label"],
+            "within_tier_order": candidate["rank"],
+            "global_rank": candidate["rank"],
+            "family_id": family_id,
+            "signal_family_id": candidate["family_id"],
+            "source_disposition": source_dispositions[family_id],
+            "declaration": candidate["declaration"],
+            "source_declaration": result["original_declaration"],
+            "source_file": result["original_source"],
+            "why_here": candidate["consequence_and_endpoint_proximity"],
+            "boundary": result["boundary"],
+        }
+        ranked_keys.add(key)
+
+    for screening_row in showcase["candidate_screening"]:
+        declaration = screening_row["declaration"]
+        result = result_by_declaration.get(declaration)
+        family_owner = family_by_id.get(screening_row["family_id"])
+        if result is None and family_owner is None:
+            raise ValueError(
+                "Palomar candidate_screening row lacks a Comparator result and review "
+                f"family owner: {declaration}"
+            )
+        if result is not None:
+            family_id = result["review_family"]
+            problem, family = family_by_id[family_id]
+        else:
+            problem, family = family_owner
+            family_id = family["id"]
+        key = (problem, family_id)
+        if key in ranked_keys:
+            continue
+        tier = tier_by_disposition[screening_row["disposition"]]
+        placement = placement_by_family.get(family_id)
+        if placement is not None and placement["tier_id"] != tier["tier_id"]:
+            placement = None
+        if placement is not None:
+            matched_placements.add(family_id)
+        within_tier_order = (
+            placement["within_tier_order"] if placement is not None else 1_000_000
+        )
+        candidate_row = {
+            "tier_order": tier["order"],
+            "tier_id": tier["tier_id"],
+            "tier_label": tier["label"],
+            "within_tier_order": within_tier_order,
+            "global_rank": None,
+            "family_id": family_id,
+            "signal_family_id": screening_row["family_id"],
+            "source_disposition": source_dispositions[family_id],
+            "screening_disposition": screening_row["disposition"],
+            "declaration": declaration,
+            "source_declaration": (
+                result["original_declaration"] if result is not None else declaration
+            ),
+            "source_file": (
+                result["original_source"]
+                if result is not None
+                else "ExternalVerification/Statements.lean"
+            ),
+            "why_here": (
+                placement["relative_judgement"]
+                if placement is not None
+                else screening_row["reason"]
+            ),
+            "boundary": family["boundary"],
+        }
+        previous = rows_by_key.get(key)
+        candidate_key = (
+            candidate_row["tier_order"],
+            candidate_row["within_tier_order"],
+            candidate_row["declaration"],
+        )
+        previous_key = (
+            previous["tier_order"],
+            previous["within_tier_order"],
+            previous["declaration"],
+        ) if previous is not None else None
+        if previous is None or candidate_key < previous_key:
+            rows_by_key[key] = candidate_row
+
+    tiers_by_id = {
+        tier["tier_id"]: tier
+        for tier in showcase["selection_contract"]["presentation_tiers"]
+    }
+    represented_placements = showcase["selection_contract"].get(
+        "represented_family_placements"
+    )
+    if not isinstance(represented_placements, list):
+        raise ValueError("Palomar selection contract lacks represented-family placements")
+    for placement in represented_placements:
+        family_id = placement["family_id"]
+        owner = family_by_id.get(family_id)
+        if owner is None:
+            raise ValueError(
+                f"Palomar represented-family placement lacks review owner: {family_id}"
+            )
+        problem, family = owner
+        key = (problem, family_id)
+        if key in rows_by_key:
+            raise ValueError(
+                f"Palomar represented-family placement duplicates a ranked/screened row: {family_id}"
+            )
+        if source_dispositions[family_id] != "represented":
+            raise ValueError(
+                f"Palomar represented-family placement is not represented: {family_id}"
+            )
+        tier = tiers_by_id.get(placement["tier_id"])
+        if tier is None:
+            raise ValueError(
+                f"Palomar represented-family placement has unknown tier: {family_id}"
+            )
+        rows_by_key[key] = {
+            "tier_order": tier["order"],
+            "tier_id": tier["tier_id"],
+            "tier_label": tier["label"],
+            "within_tier_order": 1_000_000,
+            "global_rank": None,
+            "family_id": family_id,
+            "signal_family_id": family_id,
+            "source_disposition": source_dispositions[family_id],
+            "declaration": f"review_family:{family_id}",
+            "source_declaration": f"review_family:{family_id}",
+            "source_kind": "canonical_review_family",
+            "source_file": "docs/claims.json",
+            "why_here": placement["relative_judgement"],
+            "boundary": family["boundary"],
+        }
+
+    missing_placements = sorted(set(placement_by_family) - matched_placements)
+    if missing_placements:
+        raise ValueError(
+            "Palomar relational placements lack a matching screening tier: "
+            f"{missing_placements!r}"
+        )
+
+    relations = showcase["selection_contract"].get("family_relations")
+    if not isinstance(relations, list):
+        raise ValueError("Palomar selection contract lacks family relations")
+    relation_rows_by_family: dict[str, list[dict[str, Any]]] = {}
+    for relation in relations:
+        source_family = relation["from_family_id"]
+        target_family = relation["to_family_id"]
+        if source_family not in family_by_id or target_family not in family_by_id:
+            raise ValueError("Palomar family relation names an unknown review family")
+        relation_rows_by_family.setdefault(source_family, []).append(
+            {**relation, "direction": "outgoing"}
+        )
+        relation_rows_by_family.setdefault(target_family, []).append(
+            {**relation, "direction": "incoming"}
+        )
+    for row in rows_by_key.values():
+        row["relations"] = relation_rows_by_family.get(row["family_id"], [])
+
+    rows_by_problem: dict[int, list[dict[str, Any]]] = {}
+    for (problem, _), row in rows_by_key.items():
+        rows_by_problem.setdefault(problem, []).append(row)
+    programme_order = showcase["selection_contract"].get("programme_family_order")
+    if not isinstance(programme_order, list):
+        raise ValueError("Palomar selection contract lacks programme-family order")
+    order_by_problem = {
+        int(row["problem"]): row["family_ids"] for row in programme_order
+    }
+    if len(order_by_problem) != len(programme_order):
+        raise ValueError("Palomar programme-family order repeats a problem")
+    if set(order_by_problem) != set(rows_by_problem):
+        raise ValueError("Palomar programme-family order does not cover every dossier")
+    programme_spines = []
+    for problem, rows in sorted(rows_by_problem.items()):
+        authored_order = order_by_problem[problem]
+        if len(authored_order) != len(set(authored_order)):
+            raise ValueError(
+                f"Palomar programme-family order repeats a family for #{problem}"
+            )
+        emitted_ids = {row["family_id"] for row in rows}
+        if set(authored_order) != emitted_ids:
+            raise ValueError(
+                f"Palomar programme-family order is not signal-complete for #{problem}"
+            )
+        order_index = {family_id: index for index, family_id in enumerate(authored_order)}
+        rows.sort(key=lambda row: order_index[row["family_id"]])
+        for programme_order, row in enumerate(rows, start=1):
+            row["programme_order"] = programme_order
+        programme_spines.append(
+            {
+                "problem": problem,
+                "ordering_contract": (
+                    "Palomar ranked frontier, then authored presentation tiers and "
+                    "relational placements; never roster or review-matrix order."
+                ),
+                "results": rows,
+            }
+        )
+    return programme_spines
+
+
 def mathematical_signal_spine(
     claims: Mapping[str, Any],
     showcase: Mapping[str, Any] | None = None,
+    *,
+    include_programme_detail: bool = False,
 ) -> dict[str, Any]:
     """Project Palomar's judgement before exhaustive query inventory."""
     if showcase is None:
@@ -7759,6 +8067,77 @@ def mathematical_signal_spine(
     )
     if long_tail_group is None:
         raise ValueError("Palomar showcase lacks a long-tail disposition")
+
+    programme_spines = _signal_programme_spines(
+        packet, showcase, result_by_declaration, family_by_id
+    )
+    universe = showcase["candidate_universe"]
+    source_dispositions = universe["source_family_dispositions"]
+    disposition_order = contract.get("source_family_disposition_order")
+    if not isinstance(disposition_order, list):
+        raise ValueError("Palomar selection contract lacks source disposition order")
+    unknown_dispositions = sorted(set(source_dispositions.values()) - set(disposition_order))
+    if unknown_dispositions:
+        raise ValueError(
+            "Palomar source family has an unordered disposition: "
+            f"{unknown_dispositions!r}"
+        )
+    disposition_groups = []
+    for disposition in disposition_order:
+        families = []
+        for family_id in sorted(
+            family_id
+            for family_id, value in source_dispositions.items()
+            if value == disposition
+        ):
+            problem, family = family_by_id[family_id]
+            families.append(
+                {
+                    "family_id": family_id,
+                    "problem": problem,
+                    "trace_route": (
+                        "python3 scripts/query_corpus.py --route "
+                        f"erdos_{problem}"
+                    ),
+                }
+            )
+        if families:
+            disposition_groups.append(
+                {
+                    "disposition": disposition,
+                    "family_count": len(families),
+                    "families": families,
+                }
+            )
+    if include_programme_detail:
+        programme_projection: dict[str, Any] = {
+            "programme_spines": programme_spines,
+        }
+        universe_groups = disposition_groups
+    else:
+        programme_projection = {
+            "programme_spine_index": [
+                {
+                    "problem": row["problem"],
+                    "ordered_family_ids": [
+                        result["family_id"] for result in row["results"]
+                    ],
+                    "tier_ids": [result["tier_id"] for result in row["results"]],
+                    "trace_route": (
+                        "python3 scripts/query_corpus.py --route "
+                        f"erdos_{row['problem']}"
+                    ),
+                }
+                for row in programme_spines
+            ]
+        }
+        universe_groups = [
+            {
+                "disposition": group["disposition"],
+                "family_count": group["family_count"],
+            }
+            for group in disposition_groups
+        ]
     return {
         "authority": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking",
         "ordering_contract": (
@@ -7779,6 +8158,22 @@ def mathematical_signal_spine(
             ),
         },
         "ranked_frontier": ranked_frontier,
+        **programme_projection,
+        "candidate_universe": {
+            "authority": universe["authority"],
+            "selection_scope": universe["selection_scope"],
+            "source_family_count": len(source_dispositions),
+            "disposition_order": disposition_order,
+            "disposition_groups": universe_groups,
+            "complete_inventory_routes": [
+                "docs/EXTERNAL_VERIFICATION.md#complete-serious-result-universe",
+                "python3 scripts/query_corpus.py --route erdos_<problem_number>",
+            ],
+            "boundary": (
+                "Complete source-family accounting remains subordinate to the ranked "
+                "frontier; every family retains its source summary and open boundary."
+            ),
+        },
         "natural_friction": {
             "ordering": "alphabetical_unranked",
             "source_route": "Open each result's source_file at source_anchor.",
@@ -8730,7 +9125,20 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"programme {route['id']} | {programme['title']} "
                 f"| claims={claims} | open={open_ids}"
             )
-            return _append_route_memory_resumes(card, packet.get("route_memory"))
+            rows = [
+                _append_route_memory_resumes(card, packet.get("route_memory"))
+            ]
+            signal = programme["mathematical_signal_spine"]
+            rows.extend(
+                (
+                    f"programme_signal #{row['programme_order']} "
+                    f"| tier={row['tier_id']} | family={row['family_id']} "
+                    f"| source_disposition={row['source_disposition']} "
+                    f"| declaration={row['declaration']}"
+                )
+                for row in signal["results"]
+            )
+            return "\n".join(rows)
         return (
             f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
             f"| next={route['query_steps'][0]}"
@@ -8755,9 +9163,21 @@ def render_card(packet: dict[str, Any]) -> str:
             f" | open={len(route.get('open_obligations', []))}"
             f"{research_summary}"
         )
-        return _append_route_memory_resumes(
-            card, route.get("follow", {}).get("route_memory")
+        rows = [
+            _append_route_memory_resumes(
+                card, route.get("follow", {}).get("route_memory")
+            )
+        ]
+        rows.extend(
+            (
+                f"programme_signal #{row['programme_order']} "
+                f"| tier={row['tier_id']} | family={row['family_id']} "
+                f"| source_disposition={row['source_disposition']} "
+                f"| declaration={row['declaration']}"
+            )
+            for row in packet["mathematical_signal_spine"]["results"]
         )
+        return "\n".join(rows)
     if kind == "publication_family":
         family = packet["family"]
         card = (

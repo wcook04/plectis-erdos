@@ -266,8 +266,12 @@ class ExternalVerificationContractTest(unittest.TestCase):
         _, packet, source, projection = load_owner()
         signal_authority = deepcopy(builder.load_signal_authority())
         signal_authority["candidate_ranking"].reverse()
+        signal_authority["candidate_screening"].reverse()
         packet = deepcopy(packet)
         packet["main_results"].reverse()
+        packet["review_matrix"].reverse()
+        for problem in packet["review_matrix"]:
+            problem["families"].reverse()
 
         human = builder.render_human(packet, source, projection, signal_authority)
         spine = human[: human.index("**Programmes.**")]
@@ -282,6 +286,94 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("**Reader tier.** completed direct result", spine)
         self.assertIn("**Reader tier.** conditional endpoint route", spine)
         self.assertIn("**Reader tier.** exact reduction or structural result", spine)
+
+        self.assertEqual(human.count("### First-contact mathematical order"), 8)
+
+        def first_contact(problem: int, next_problem: int | None) -> str:
+            start = human.index(f'<a id="programme-{problem}"></a>')
+            end = (
+                human.index(f'<a id="programme-{next_problem}"></a>', start)
+                if next_problem is not None
+                else human.index("## Comparator interface appendix", start)
+            )
+            dossier = human[start:end]
+            order_start = dossier.index("### First-contact mathematical order")
+            order_end = dossier.index("<details>", order_start)
+            return dossier[order_start:order_end]
+
+        order_251 = first_contact(251, 257)
+        expected_251 = [
+            "`prime_gap_reformulation`",
+            "`small_mismatch_criterion`",
+            "`dyadic_tail_integrality_classification`",
+            "`coefficient_only_no_go`",
+        ]
+        positions_251 = [order_251.index(marker) for marker in expected_251]
+        self.assertEqual(positions_251, sorted(positions_251))
+
+        order_269 = first_contact(269, 1041)
+        expected_269 = [
+            "`conditional_carry_escape`",
+            "`weighted_phase_carry_observer`",
+            "`rank_two_kernel_no_go`",
+            "`three_prime_lcm_cells`",
+        ]
+        positions_269 = [order_269.index(marker) for marker in expected_269]
+        self.assertEqual(positions_269, sorted(positions_269))
+        self.assertIn("CofinalLocalWindowEscape", order_269)
+        self.assertIn("rationality-to-actual-series carry bridge", order_269)
+
+        rows_by_problem = builder._programme_signal_rows(packet, signal_authority)
+        represented = {
+            family_id
+            for family_id, disposition in signal_authority["candidate_universe"][
+                "source_family_dispositions"
+            ].items()
+            if disposition == "represented"
+        }
+        emitted = {
+            row["family_id"]
+            for rows in rows_by_problem.values()
+            for row in rows
+        }
+        self.assertLessEqual(represented, emitted)
+        self.assertEqual(
+            [row["family_id"] for row in rows_by_problem[249]][:3],
+            [
+                "actual_lcm_orbit_separation",
+                "first_harmonic_pivot_decomposition",
+                "totient_kernel_rank",
+            ],
+        )
+        self.assertEqual(
+            [row["family_id"] for row in rows_by_problem[1049]],
+            [
+                "rational_base_tail_recurrence",
+                "height_and_pade_arithmetic",
+                "coordinatewise_corridor_no_go",
+            ],
+        )
+        self.assertTrue(rows_by_problem[249][1]["relations"])
+
+        damaged = deepcopy(signal_authority)
+        order_249 = next(
+            row
+            for row in damaged["selection_contract"]["programme_family_order"]
+            if row["problem"] == 249
+        )
+        order_249["family_ids"].remove("first_harmonic_pivot_decomposition")
+        with self.assertRaisesRegex(ValueError, "not signal-complete"):
+            builder._programme_signal_rows(packet, damaged)
+
+        universe = signal_authority["candidate_universe"][
+            "source_family_dispositions"
+        ]
+        complete_start = human.index("### Complete serious-result universe")
+        complete_end = human.index("**Programmes.**", complete_start)
+        complete = human[complete_start:complete_end]
+        self.assertIn(f"All {len(universe)} source-current review families", complete)
+        for family_id in universe:
+            self.assertEqual(complete.count(f"`{family_id}`"), 1, family_id)
 
     def test_builder_check_environment(self) -> None:
         completed = subprocess.CompletedProcess(["fixture"], 0, "", "")

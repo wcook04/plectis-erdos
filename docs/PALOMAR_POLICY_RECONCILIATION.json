@@ -214,7 +214,7 @@
       {
         "candidate_id": "first_harmonic_pivot",
         "family_id": "first_harmonic_pivot_decomposition",
-        "disposition": "deferred",
+        "disposition": "represented",
         "comparator_eligibility": "committed_source_faithful_transport",
         "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_declaration": "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation",
@@ -225,9 +225,9 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.image_pivotSupplierPrimes_eq_pivotFiber", "Erdos249257.ExternalVerification.supplierPrime_not_globally_isolated_counterexample", "Erdos249257.ExternalVerification.windowFirstExp_sum_eq_pivot_decomposition", "Erdos249257.ExternalVerification.first_harmonic_gap_of_pivotBudgetAt", "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"],
         "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful endpoint representative is admitted in the committed HEAD:verification/comparator.json 47-row screen; the fibre, counterexample, four-term decomposition, and 9/10 budget remain source-level mechanism evidence, while the canonical claims review matrix and cofinal decorrelation producer remain separate/open.",
-        "reason": "Deep conditional first-harmonic budget route with exact committed three-file transport at bc0fee48; Comparator registration is current, while canonical review-matrix projection and the cofinal decorrelation producer remain open.",
-        "reversal_evidence": "Project the family into the canonical review matrix or prove the cofinal decorrelation supply; a routine restatement or finite pivot check is insufficient."
+        "transport_admission_boundary": "The source-faithful endpoint representative is admitted in the source-current committed HEAD:verification/comparator.json screen and bound to the canonical review matrix family first_harmonic_pivot_decomposition; the fibre, counterexample, four-term decomposition, and 9/10 budget remain source-level mechanism evidence, while the cofinal decorrelation producer remains open.",
+        "reason": "Represented and promoted into the ranked frontier after canonical review-family and Comparator fan-in: this deep conditional #249 endpoint route exposes a four-term first-harmonic budget and strict 9/10 gap. It remains below the actual-LCM conditional route because the cofinal residual-decorrelation producer is unproved.",
+        "reversal_evidence": "Prove the cofinal decorrelation supply to justify endpoint promotion; a routine restatement, finite pivot check, or roster change is insufficient."
       },
       {
         "candidate_id": "actual_lcm_positive_corridor_top_edge",

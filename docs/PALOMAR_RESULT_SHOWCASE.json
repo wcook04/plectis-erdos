@@ -166,6 +166,42 @@
         "relative_judgement": "Below the #251 small-mismatch route and abstract integrality classification: it is valuable natural friction against coefficient-only reasoning, but its synthetic carry stream has no infinite-limit or actual-prime-gap identification bridge."
       }
     ],
+    "represented_family_placements": [
+      {"family_id":"factorial_channel_and_projection_rigidity","tier_id":"deep_mechanism_and_classification","relative_judgement":"The finite channel and projection machinery is the deepest represented #68 mechanism below the endpoint equivalence, but it supplies no cofinal obstruction."},
+      {"family_id":"bounded_rise_coprimality","tier_id":"natural_friction_and_no_go","relative_judgement":"The fresh-modulus obstruction explains why bounded rise would be decisive, but bounded rise is not automatic for the original reciprocal-tail orbit."},
+      {"family_id":"eventually_periodic_lambert","tier_id":"deep_mechanism_and_classification","relative_judgement":"This is a direct irrationality theorem for an exact structured coefficient class, but the totient-derived coefficients are not eventually periodic, so it is reusable background rather than a #249 frontier."},
+      {"family_id":"totient_lambert_coefficients","tier_id":"supporting_and_long_tail","relative_judgement":"The Lambert rewrite and prime-power coefficient structure orient the programme but provide no irrationality producer."},
+      {"family_id":"integral_shift_classification","tier_id":"deep_mechanism_and_classification","relative_judgement":"The block and denominator criteria are reusable rational-state structure below the sharper all-positive-shift normal form and above propagation identities."},
+      {"family_id":"totient_shift_propagation","tier_id":"deep_mechanism_and_classification","relative_judgement":"Propagation through totient-length shifts explains rational-state persistence but supplies no contradiction for the actual prime-gap recurrence."},
+      {"family_id":"height_fibre_and_shell","tier_id":"deep_mechanism_and_classification","relative_judgement":"The finite height-fibre normal form and smooth-shell bound are substantive three-prime structure, but they do not produce the divisibility bridge consumed by the carry frontier."},
+      {"family_id":"dyadic_block_alphabet","tier_id":"supporting_and_long_tail","relative_judgement":"The exact four-symbol block alphabet is a useful finite interface, subordinate to the carry consumer, weighted observer, and rank obstruction."},
+      {"family_id":"newton_value_decay","tier_id":"deep_mechanism_and_classification","relative_judgement":"The Newton value equation and exponential first integral are the load-bearing local mechanism, while metric gluing to a short curve remains open."},
+      {"family_id":"ray_separation","tier_id":"natural_friction_and_no_go","relative_judgement":"Distinct value rays exactly obstruct finite Newton connections, a consequential route boundary but not the global lemniscate theorem."}
+    ],
+    "programme_family_order": [
+      {"problem":68,"family_ids":["factorial_carry_characterisation","factorial_channel_and_projection_rigidity"]},
+      {"problem":243,"family_ids":["bounded_negative_exclusion","negative_mass_recovery","centered_state_dynamics","bounded_rise_coprimality","negative_orbit_no_go"]},
+      {"problem":249,"family_ids":["actual_lcm_orbit_separation","first_harmonic_pivot_decomposition","totient_kernel_rank","totient_carry_anti_compression","totient_kernel_all_base_index","totient_kernel_basis","stern_brocot_run_fibonacci_stability","eventually_periodic_lambert","fixed_precision_transport_no_go","lcm_factor_ideal_shift_algebra_no_go","actual_foreign_residue_projection","totient_lambert_coefficients","squared_lambert_gcd_moments","stern_brocot_cylinder_law","totient_visible_coprime_lattice_mass"]},
+      {"problem":251,"family_ids":["prime_gap_reformulation","small_mismatch_criterion","dyadic_tail_integrality_classification","integral_shift_classification","totient_shift_propagation","coefficient_only_no_go"]},
+      {"problem":257,"family_ids":["known_irrational_supports","pairwise_coprime_support","orthogonal_petal_sunflower_reduction","periodic_nonnegative_weight_irrationality","boolean_mobius_exact_row_dynamics","half_membership_seam_classification","shifted_odd_tail_state","boolean_mobius_carry","achievement_set_geometry","restricted_achievement_sets","half_and_twenty_one_frontiers","composite_dilation_defect_identity","finite_period_noncollapse"]},
+      {"problem":269,"family_ids":["conditional_carry_escape","weighted_phase_carry_observer","rank_two_kernel_no_go","height_fibre_and_shell","dyadic_block_alphabet","three_prime_lcm_cells"]},
+      {"problem":1041,"family_ids":["newton_value_decay","ray_separation","translation_avoidance","root_retention"]},
+      {"problem":1049,"family_ids":["rational_base_tail_recurrence","height_and_pade_arithmetic","coordinatewise_corridor_no_go"]}
+    ],
+    "family_relations": [
+      {"from_family_id":"factorial_channel_and_projection_rigidity","relation":"supports_without_producing","to_family_id":"factorial_carry_characterisation","reason":"Finite channel rigidity feeds the carry endpoint route but supplies no cofinal non-unit carry."},
+      {"from_family_id":"centered_state_dynamics","relation":"mechanism_for","to_family_id":"bounded_negative_exclusion","reason":"Centered-state descent is the exact dynamics consumed by the bounded-negative exclusion."},
+      {"from_family_id":"first_harmonic_pivot_decomposition","relation":"independent_conditional_endpoint_peer","to_family_id":"actual_lcm_orbit_separation","reason":"Both imply #249 irrationality from different cofinal producers; neither producer is supplied."},
+      {"from_family_id":"fixed_precision_transport_no_go","relation":"contrary_evidence_for","to_family_id":"actual_foreign_residue_projection","reason":"Fixed local precision admits synthetic completions, so any successful projection must use growing precision or global correlation."},
+      {"from_family_id":"dyadic_tail_integrality_classification","relation":"normal_form_support_for","to_family_id":"small_mismatch_criterion","reason":"The abstract shift-integrality normal form explains what the actual-prime cofinal mismatch must destroy."},
+      {"from_family_id":"coefficient_only_no_go","relation":"contrary_evidence_for","to_family_id":"small_mismatch_criterion","reason":"Coefficient irregularity alone is insufficient; the actual-prime adjacent-smallness producer is genuinely additional."},
+      {"from_family_id":"boolean_mobius_carry","relation":"reconstruction_support_for","to_family_id":"boolean_mobius_exact_row_dynamics","reason":"The Boolean–Möbius certificate reconstructs support, while exact rows still require a cofinal skip producer."},
+      {"from_family_id":"weighted_phase_carry_observer","relation":"mechanism_support_for","to_family_id":"conditional_carry_escape","reason":"The residue/coboundary split exposes finite carry data but does not supply the cofinal escape or actual-series bridge."},
+      {"from_family_id":"rank_two_kernel_no_go","relation":"contrary_evidence_for","to_family_id":"conditional_carry_escape","reason":"The finite kernel is not rank one, ruling out a tempting separable shortcut without producing carry escape."},
+      {"from_family_id":"newton_value_decay","relation":"mechanism_support_for","to_family_id":"ray_separation","reason":"The exponential first integral confines a Newton trajectory to one value ray, yielding the separation obstruction."},
+      {"from_family_id":"ray_separation","relation":"supports_without_closing","to_family_id":"translation_avoidance","reason":"Ray separation motivates avoiding collision lines, but global topology and metric gluing remain open."},
+      {"from_family_id":"height_and_pade_arithmetic","relation":"stronger_natural_friction_than","to_family_id":"coordinatewise_corridor_no_go","reason":"The sharp rectangular threshold analysis carries deeper model-specific information than the coordinatewise transfer obstruction, while neither proves the endpoint."}
+    ],
     "source_family_disposition_order": ["selected", "represented", "deferred", "subordinate", "rejected", "long_tail"],
     "anti_underclaim_boundary": "Do not select a timid proxy merely because it is easy to qualify: an unconditional direct theorem with a visible hard mechanism must remain eligible even when it is classical or leaves the universal problem open.",
     "anti_hype_boundary": "No selected result closes universal Erdős #257 or any other open programme; exact hypotheses, prior-art attribution, proof authority, limitations, and the surviving open boundary remain part of the result.",
@@ -187,7 +223,7 @@
     },
     "source_family_dispositions": {"factorial_carry_characterisation":"represented","factorial_channel_and_projection_rigidity":"represented","factorial_conditional_producers":"subordinate","factorial_finite_certificates":"long_tail","factorial_lcm_growth":"long_tail","centered_state_dynamics":"represented","negative_orbit_no_go":"rejected","bounded_rise_coprimality":"represented","bounded_negative_exclusion":"represented","negative_mass_recovery":"subordinate","totient_kernel_basis":"represented","totient_kernel_rank":"represented","totient_kernel_all_base_index":"represented","totient_visible_coprime_lattice_mass":"represented","squared_lambert_gcd_moments":"represented","stern_brocot_run_fibonacci_stability":"represented","stern_brocot_cylinder_law":"represented","lcm_factor_ideal_shift_algebra_no_go":"rejected","fixed_precision_transport_no_go":"represented","actual_lcm_orbit_separation":"represented","actual_foreign_residue_projection":"deferred","first_harmonic_pivot_decomposition":"represented","totient_carry_anti_compression":"represented","totient_finite_denominator_exclusion":"long_tail","totient_carry_rank":"subordinate","totient_lambert_coefficients":"represented","eventually_periodic_lambert":"represented","totient_certificate_equivalences":"subordinate","prime_gap_reformulation":"represented","integral_shift_classification":"represented","dyadic_tail_integrality_classification":"represented","totient_shift_propagation":"represented","small_mismatch_criterion":"represented","coefficient_only_no_go":"represented","finite_period_noncollapse":"represented","boolean_mobius_carry":"represented","boolean_mobius_exact_row_dynamics":"represented","half_membership_seam_classification":"represented","shifted_odd_tail_state":"represented","composite_dilation_defect_identity":"represented","known_irrational_supports":"represented","pairwise_coprime_support":"represented","periodic_nonnegative_weight_irrationality":"represented","orthogonal_petal_sunflower_reduction":"represented","squarefree_support":"long_tail","achievement_set_geometry":"represented","restricted_achievement_sets":"represented","half_and_twenty_one_frontiers":"subordinate","three_prime_lcm_cells":"represented","two_prime_transcendence":"long_tail","height_fibre_and_shell":"represented","rank_two_kernel_no_go":"rejected","dyadic_block_alphabet":"represented","conditional_carry_escape":"subordinate","weighted_phase_carry_observer":"represented","three_prime_finite_search":"long_tail","newton_value_decay":"represented","ray_separation":"represented","translation_avoidance":"represented","root_retention":"represented","published_proof_gap":"long_tail","lemniscate_finite_search":"long_tail","scalar_content_no_go":"rejected","endpoint_residues":"rejected","four_jet_collision":"subordinate","coordinatewise_corridor_no_go":"rejected","rational_base_tail_recurrence":"represented","seven_halves_irrationality":"long_tail","height_and_pade_arithmetic":"represented"},
     "targeted_theorem_forest_discoveries": [
-      {"candidate_id":"first_harmonic_pivot","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[first_harmonic_pivot]"},
+      {"candidate_id":"first_harmonic_pivot","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[first_harmonic_pivot]"},
       {"candidate_id":"actual_lcm_positive_corridor_top_edge","disposition":"subordinate","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[actual_lcm_positive_corridor_top_edge]"},
       {"candidate_id":"certificate_completeness","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[certificate_completeness]"},
       {"candidate_id":"erdos1049_four_jet_pade_obstruction","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos1049_four_jet_pade_obstruction]"},
@@ -402,7 +438,7 @@
       {
         "candidate_id": "first_harmonic_pivot",
         "family_id": "first_harmonic_pivot_decomposition",
-        "disposition": "deferred",
+        "disposition": "represented",
         "comparator_eligibility": "committed_source_faithful_transport",
         "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_declaration": "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation",
@@ -413,7 +449,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.image_pivotSupplierPrimes_eq_pivotFiber", "Erdos249257.ExternalVerification.supplierPrime_not_globally_isolated_counterexample", "Erdos249257.ExternalVerification.windowFirstExp_sum_eq_pivot_decomposition", "Erdos249257.ExternalVerification.first_harmonic_gap_of_pivotBudgetAt", "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"],
         "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful endpoint representative is admitted in the committed HEAD:verification/comparator.json 47-row screen; the fibre, counterexample, four-term decomposition, and 9/10 budget remain source-level mechanism evidence, while the canonical claims review matrix and cofinal decorrelation producer remain separate/open.",
+        "transport_admission_boundary": "The source-faithful endpoint representative is admitted in the source-current committed HEAD:verification/comparator.json screen and bound to the canonical review matrix family first_harmonic_pivot_decomposition; the fibre, counterexample, four-term decomposition, and 9/10 budget remain source-level mechanism evidence, while the cofinal decorrelation producer remains open.",
         "statement": "A cofinal first-harmonic pivot residual-decorrelation supply implies irrationality of the binary totient series.",
         "exact_hypotheses": [
           "For every h > 0 there exist s > 0 and η with 0 < η < 1 such that for every X₀ there exist X,L with max X₀ 1 ≤ X, h ≤ L-s, 16*(2*X+h+L+2) ≤ 2^L, and PivotBudgetAt X L s.",
@@ -427,8 +463,8 @@
           "The committed ExternalVerification transport preserves the decomposition, budget, and conditional endpoint and is registered in the committed Comparator roster, but it remains conditional evidence rather than an irrationality proof for the open endpoint.",
           "The finite counterexample to global isolation remains a natural friction point and prevents silently treating the pivot as a universal local argument."
         ],
-        "reason": "Deferred after value review: this is a genuinely deep conditional #249 route with a visible harmonic budget mechanism and high digestion value. Its exact source-faithful transport is now registered in the committed Comparator roster, while canonical review-matrix projection and the cofinal decorrelation supply remain open.",
-        "reversal_evidence": "Project the family into the canonical review matrix or prove the cofinal decorrelation supply; a routine restatement or finite pivot check would not reopen ranking against full support."
+        "reason": "Represented and promoted into the ranked frontier after canonical review-family and Comparator fan-in: this is a genuinely deep conditional #249 endpoint route with a visible four-term harmonic budget and high proof-digestion value. It remains below the unconditional endpoint results and the actual-LCM route because the cofinal residual-decorrelation producer is unproved.",
+        "reversal_evidence": "Prove the cofinal decorrelation supply to justify endpoint promotion; a routine restatement, finite pivot check, or roster change would not alter its mathematical position."
       },
       {
         "candidate_id": "actual_lcm_positive_corridor_top_edge",
@@ -1033,6 +1069,21 @@
     },
     {
       "rank": 6,
+      "declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
+      "family_id": "first_harmonic_pivot_decomposition",
+      "selection_status": "represented",
+      "mathematical_nontriviality": "A four-term first-harmonic decomposition with explicit 14/25, 1/100, 1/100, and 8/25 budgets yields a strict 9/10 gap and the #249 irrationality endpoint under a cofinal residual-decorrelation supply.",
+      "consequence_and_endpoint_proximity": "It points directly at Erdős #249 irrationality from an explicit cofinal analytic producer, independently of the actual-LCM orbit route; that producer remains unproved.",
+      "mechanism_depth_and_natural_friction": "Supplier fibres, pivot correlation, bad and non-supplier contributions, and the controlled remainder are kept separate. The finite counterexample to global isolation and the missing DTWPivotResidualDecorrelation supply are the natural friction.",
+      "genuinely_distinct_content_and_independence": "This is an analytic first-harmonic budget route, distinct from actual-LCM orbit separation, kernel-rank growth, and finite transport no-go results.",
+      "external_review_value": "High: a reviewer can inspect the four exact budgets, the 9/10 gap, the conditional endpoint consumer, and the finite counterexample without treating the premise as constructed.",
+      "proof_digestion_value": "It explains exactly how a cofinal decorrelation theorem would close the endpoint and why global pivot isolation is too strong.",
+      "evidence_certainty": "The source theorem, canonical review family, and exact Comparator endpoint wrapper are committed; the cofinal decorrelation producer is explicitly absent.",
+      "overclaim_risk": "High unless DTWPivotResidualDecorrelation remains attached as an unproved cofinal premise; this is not an unconditional #249 result.",
+      "why_not_ranked_first": "Its endpoint consequence and mechanism are exceptional, but the selected #257 theorem is unconditional and the rank-5 actual-LCM route is the closer source-specific #249 producer interface."
+    },
+    {
+      "rank": 7,
       "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
       "family_id": "factorial_carry_irrationality_equivalence",
       "selection_status": "subordinate",
@@ -1047,7 +1098,7 @@
       "why_not_ranked_first": "It reaches an open endpoint more directly but does not itself establish the endpoint, unlike the selected full-support theorem."
     },
     {
-      "rank": 7,
+      "rank": 8,
       "declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "family_id": "prime_gap_dyadic_equivalence",
       "selection_status": "subordinate",
@@ -1062,7 +1113,7 @@
       "why_not_ranked_first": "It is a reduction rather than a proved irrationality consequence."
     },
     {
-      "rank": 8,
+      "rank": 9,
       "declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
       "family_id": "totient_kernel_rank",
       "selection_status": "subordinate",
@@ -1141,12 +1192,6 @@
     }
   ],
   "candidate_screening": [
-    {
-      "declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
-      "family_id": "first_harmonic_pivot_decomposition",
-      "disposition": "supporting_conditional_endpoint",
-      "reason": "This exact conditional endpoint completes the first-harmonic family account, while the cofinal residual-decorrelation producer remains unproved."
-    },
     {
       "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "family_id": "factorial_carry_characterisation",

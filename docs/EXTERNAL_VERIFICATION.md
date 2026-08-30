@@ -205,7 +205,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 2. **Factorial channel and projection rigidity** (`factorial_channel_and_projection_rigidity`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The finite channel and projection machinery is the deepest represented #68 mechanism below the endpoint equivalence, but it supplies no cofinal obstruction.
-   - **Source authority.** Canonical review family <code>factorial_channel_and_projection_rigidity</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `factorial_channel_and_projection_rigidity` in [claims](../docs/claims.json)
    - **Boundary.** These finite and structural results do not produce a cofinal obstruction.
    - **Relation.** `supports_without_producing` `factorial_carry_characterisation`: Finite channel rigidity feeds the carry endpoint route but supplies no cofinal non-unit carry.
 
@@ -304,7 +304,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 4. **Bounded rise coprimality** (`bounded_rise_coprimality`; natural friction and no-go; source disposition `represented`)
    - **Why here.** The fresh-modulus obstruction explains why bounded rise would be decisive, but bounded rise is not automatic for the original reciprocal-tail orbit.
-   - **Source authority.** Canonical review family <code>bounded_rise_coprimality</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `bounded_rise_coprimality` in [claims](../docs/claims.json)
    - **Boundary.** The required bounded-rise input is not automatic for the original sequence.
 
 5. **Negative orbit no go** (`negative_orbit_no_go`; natural friction and no-go; source disposition `rejected`)
@@ -427,7 +427,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 8. **Eventually periodic lambert** (`eventually_periodic_lambert`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** This is a direct irrationality theorem for an exact structured coefficient class, but the totient-derived coefficients are not eventually periodic, so it is reusable background rather than a #249 frontier.
-   - **Source authority.** Canonical review family <code>eventually_periodic_lambert</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `eventually_periodic_lambert` in [claims](../docs/claims.json)
    - **Boundary.** The totient-derived weights are not eventually periodic.
 
 9. **Fixed precision transport no go** (`fixed_precision_transport_no_go`; natural friction and no-go; source disposition `represented`)
@@ -449,7 +449,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 12. **Totient lambert coefficients** (`totient_lambert_coefficients`; supporting and long tail; source disposition `represented`)
    - **Why here.** The Lambert rewrite and prime-power coefficient structure orient the programme but provide no irrationality producer.
-   - **Source authority.** Canonical review family <code>totient_lambert_coefficients</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `totient_lambert_coefficients` in [claims](../docs/claims.json)
    - **Boundary.** The coefficient identities do not prove irrationality.
 
 13. **Squared lambert gcd moments** (`squared_lambert_gcd_moments`; supporting and long tail; source disposition `represented`)
@@ -667,12 +667,12 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 4. **Integral shift classification** (`integral_shift_classification`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The block and denominator criteria are reusable rational-state structure below the sharper all-positive-shift normal form and above propagation identities.
-   - **Source authority.** Canonical review family <code>integral_shift_classification</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `integral_shift_classification` in [claims](../docs/claims.json)
    - **Boundary.** The concrete prime-gap producer remains missing.
 
 5. **Totient shift propagation** (`totient_shift_propagation`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** Propagation through totient-length shifts explains rational-state persistence but supplies no contradiction for the actual prime-gap recurrence.
-   - **Source authority.** Canonical review family <code>totient_shift_propagation</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `totient_shift_propagation` in [claims](../docs/claims.json)
    - **Boundary.** This describes rational states and supplies no contradiction for actual prime gaps.
 
 6. **Coefficient only no go** (`coefficient_only_no_go`; natural friction and no-go; source disposition `represented`)
@@ -1008,12 +1008,12 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 4. **Height fibre and shell** (`height_fibre_and_shell`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The finite height-fibre normal form and smooth-shell bound are substantive three-prime structure, but they do not produce the divisibility bridge consumed by the carry frontier.
-   - **Source authority.** Canonical review family <code>height_fibre_and_shell</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `height_fibre_and_shell` in [claims](../docs/claims.json)
    - **Boundary.** The fibre bounds do not provide the missing divisibility bridge.
 
 5. **Dyadic block alphabet** (`dyadic_block_alphabet`; supporting and long tail; source disposition `represented`)
    - **Why here.** The exact four-symbol block alphabet is a useful finite interface, subordinate to the carry consumer, weighted observer, and rank obstruction.
-   - **Source authority.** Canonical review family <code>dyadic_block_alphabet</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `dyadic_block_alphabet` in [claims](../docs/claims.json)
    - **Boundary.** The finite alphabet does not supply the needed carry escape.
 
 6. **Three prime lcm cells** (`three_prime_lcm_cells`; supporting and long tail; source disposition `represented`)
@@ -1134,13 +1134,13 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 1. **Newton value decay** (`newton_value_decay`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The Newton value equation and exponential first integral are the load-bearing local mechanism, while metric gluing to a short curve remains open.
-   - **Source authority.** Canonical review family <code>newton_value_decay</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `newton_value_decay` in [claims](../docs/claims.json)
    - **Boundary.** Value decay alone does not give a short connecting curve.
    - **Relation.** `mechanism_support_for` `ray_separation`: The exponential first integral confines a Newton trajectory to one value ray, yielding the separation obstruction.
 
 2. **Ray separation** (`ray_separation`; natural friction and no-go; source disposition `represented`)
    - **Why here.** Distinct value rays exactly obstruct finite Newton connections, a consequential route boundary but not the global lemniscate theorem.
-   - **Source authority.** Canonical review family <code>ray_separation</code> in [claims](../docs/claims.json)
+   - **Source authority.** Canonical review family `ray_separation` in [claims](../docs/claims.json)
    - **Boundary.** The result is a route obstruction, not the global theorem.
    - **Relation.** `mechanism_support_for` `newton_value_decay`: The exponential first integral confines a Newton trajectory to one value ray, yielding the separation obstruction.
    - **Relation.** `supports_without_closing` `translation_avoidance`: Ray separation motivates avoiding collision lines, but global topology and metric gluing remain open.

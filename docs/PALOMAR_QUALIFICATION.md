@@ -56,12 +56,20 @@ spine over that nested screen is:
 4. `irrational_ratWeightSeries_eventuallyPeriodic` — direct structured
    irrationality, but for a coefficient class rather than the universal
    support endpoint and not the mixed-sign theorem.
-5. `irrational_factorialGapSeries_iff_cofinal_nonunit_carries` and
+5. `irrational_totientSeries_of_actualLcmOrbitSeparationSupply` — the
+   strongest #249 conditional endpoint route, with exact orbit-error margins
+   and a missing cofinal separation producer.
+6. `irrational_totient_series_of_pivotResidualDecorrelation` — an independent
+   #249 conditional endpoint route whose four explicit first-harmonic budgets
+   yield a strict `9/10` gap; the cofinal residual-decorrelation producer is
+   unproved.
+7. `irrational_factorialGapSeries_iff_cofinal_nonunit_carries` and
    `irrational_tsum_primeDyadicTerm_iff_primeGap` — exact endpoint reductions
    with high routing value, but neither supplies the missing irrationality
    producer.
-6. `not_finiteDimensional_span_fullTotientKernel` — deep independent #249
-   structure, but farther from the irrationality endpoint.
+8. `not_finiteDimensional_span_fullTotientKernel` — deep independent #249
+   structure, but farther from the irrationality endpoint than both
+   conditional #249 endpoint consumers.
 
 The machine-readable disposition index makes the ranking semantics explicit:
 the full-support theorem is **selected**; pairwise-coprime,
@@ -96,16 +104,19 @@ prove its cofinal supply.
 The source-landscape queue keeps source-current candidates visible while
 distinguishing source review from committed Comparator evidence. The
 first-harmonic pivot decomposition
-(`FirstHarmonicPivot.lean:394; 514-552; 569-588`) is deferred but now has
-committed source-faithful Comparator evidence:
+(`FirstHarmonicPivot.lean:394; 514-552; 569-588`) is represented in the
+canonical review matrix and promoted into the ranked frontier with committed
+source-faithful Comparator evidence:
 its exact `windowFirstExp_sum_eq_pivot_decomposition` identity and
 `PivotBudgetAt` bounds (`14/25`, `1/100`, `1/100`, and `8/25`) yield a `9/10`
 first-harmonic gap under the cofinal residual-decorrelation premise. The
 source-faithful three-file ExternalVerification transport landed at
 `bc0fee48` and its endpoint representative is registered in the source-current
-47-row committed configuration; the fibre, counterexample, four-term
-decomposition, and 9/10 budget remain source-level mechanism evidence; the canonical review-matrix projection
-remains separate and no cofinal decorrelation producer is supplied. The
+committed configuration; the fibre, counterexample, four-term decomposition,
+and `9/10` budget remain source-level mechanism evidence. It sits immediately
+below the actual-LCM conditional route and above kernel-rank structure because
+it is an independent conditional endpoint consumer with a deeper visible
+analytic budget; no cofinal decorrelation producer is supplied. The
 actual-LCM positive-corridor/top-edge route
 (`TotientActualLcmOrbitSign.lean:31-278`) is a subordinate supporting
   candidate within the single `actual_lcm_orbit_separation` family, not a

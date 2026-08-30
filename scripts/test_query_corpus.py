@@ -1132,14 +1132,138 @@ def validate_mathematical_signal_spine() -> None:
 
     adversarial_claims = copy.deepcopy(load("docs/claims.json"))
     adversarial_claims["external_verification_packet"]["main_results"].reverse()
+    adversarial_claims["external_verification_packet"]["review_matrix"].reverse()
+    for problem in adversarial_claims["external_verification_packet"][
+        "review_matrix"
+    ]:
+        problem["families"].reverse()
     adversarial_showcase = copy.deepcopy(showcase)
     adversarial_showcase["candidate_ranking"].reverse()
+    adversarial_showcase["candidate_screening"].reverse()
     reordered = query_corpus.mathematical_signal_spine(
-        adversarial_claims, adversarial_showcase
+        adversarial_claims,
+        adversarial_showcase,
+        include_programme_detail=True,
     )
     assert [row["declaration"] for row in reordered["ranked_frontier"]] == [
         row["declaration"] for row in expected
     ]
+
+    programme_spines = {
+        row["problem"]: row["results"] for row in reordered["programme_spines"]
+    }
+    assert [row["family_id"] for row in programme_spines[251]] == [
+        "prime_gap_reformulation",
+        "small_mismatch_criterion",
+        "dyadic_tail_integrality_classification",
+        "integral_shift_classification",
+        "totient_shift_propagation",
+        "coefficient_only_no_go",
+    ]
+    assert [row["tier_id"] for row in programme_spines[251]] == [
+        "source_ranked_frontier",
+        "conditional_endpoint_leverage",
+        "deep_mechanism_and_classification",
+        "deep_mechanism_and_classification",
+        "deep_mechanism_and_classification",
+        "natural_friction_and_no_go",
+    ]
+    assert [row["family_id"] for row in programme_spines[269]] == [
+        "conditional_carry_escape",
+        "weighted_phase_carry_observer",
+        "rank_two_kernel_no_go",
+        "height_fibre_and_shell",
+        "dyadic_block_alphabet",
+        "three_prime_lcm_cells",
+    ]
+    assert [row["tier_id"] for row in programme_spines[269]] == [
+        "conditional_endpoint_leverage",
+        "deep_mechanism_and_classification",
+        "natural_friction_and_no_go",
+        "deep_mechanism_and_classification",
+        "supporting_and_long_tail",
+        "supporting_and_long_tail",
+    ]
+    carry_escape = programme_spines[269][0]
+    assert "CofinalLocalWindowEscape" in carry_escape["boundary"]
+    assert "rationality-to-actual-series carry bridge" in carry_escape["why_here"]
+    assert [row["family_id"] for row in programme_spines[249]][:3] == [
+        "actual_lcm_orbit_separation",
+        "first_harmonic_pivot_decomposition",
+        "totient_kernel_rank",
+    ]
+    assert [row["family_id"] for row in programme_spines[1049]] == [
+        "rational_base_tail_recurrence",
+        "height_and_pade_arithmetic",
+        "coordinatewise_corridor_no_go",
+    ]
+    assert programme_spines[249][1]["relations"]
+    represented_family_ids = {
+        family_id
+        for family_id, disposition in showcase["candidate_universe"][
+            "source_family_dispositions"
+        ].items()
+        if disposition == "represented"
+    }
+    emitted_signal_ids = {
+        row["family_id"]
+        for rows in programme_spines.values()
+        for row in rows
+    }
+    assert represented_family_ids <= emitted_signal_ids
+
+    candidate_universe = reordered["candidate_universe"]
+    expected_family_ids = set(
+        showcase["candidate_universe"]["source_family_dispositions"]
+    )
+    emitted_family_ids = {
+        family["family_id"]
+        for group in candidate_universe["disposition_groups"]
+        for family in group["families"]
+    }
+    assert candidate_universe["source_family_count"] == len(expected_family_ids)
+    assert emitted_family_ids == expected_family_ids
+    assert [group["disposition"] for group in candidate_universe["disposition_groups"]] == [
+        disposition
+        for disposition in candidate_universe["disposition_order"]
+        if disposition
+        in showcase["candidate_universe"]["source_family_dispositions"].values()
+    ]
+
+    for route_id, expected_families in (
+        (
+            "erdos_251",
+            [
+                "prime_gap_reformulation",
+                "small_mismatch_criterion",
+                "dyadic_tail_integrality_classification",
+                "integral_shift_classification",
+                "totient_shift_propagation",
+                "coefficient_only_no_go",
+            ],
+        ),
+        (
+            "erdos_269",
+            [
+                "conditional_carry_escape",
+                "weighted_phase_carry_observer",
+                "rank_two_kernel_no_go",
+                "height_fibre_and_shell",
+                "dyadic_block_alphabet",
+                "three_prime_lcm_cells",
+            ],
+        ),
+    ):
+        route_card = query_corpus.render_card(route_packet(route_id))
+        signal_lines = [
+            line
+            for line in route_card.splitlines()
+            if line.startswith("programme_signal #")
+        ]
+        assert [
+            line.split("| family=", 1)[1].split(" |", 1)[0]
+            for line in signal_lines
+        ] == expected_families
 
     friction_ids = {
         row["family_id"] for row in signal["natural_friction"]["results"]
