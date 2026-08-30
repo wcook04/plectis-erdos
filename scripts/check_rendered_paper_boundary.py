@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -32,7 +33,11 @@ import sys
 import unicodedata
 from pathlib import Path
 
+import validation_singleflight as singleflight
+
 ROOT = Path(__file__).resolve().parent.parent
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+EXTERNAL_TOOL_TIMEOUT_SECONDS = 120
 PAPERS = (
     (
         ROOT / "paper" / "erdos249-257-main-paper.tex",
@@ -189,14 +194,28 @@ def source_errors(path: Path) -> list[str]:
     return [f"{path.relative_to(ROOT)}: {error}" for error in errors]
 
 
-def rendered_text(pdf: Path, pdftotext: str) -> str:
-    completed = subprocess.run(
-        [pdftotext, str(pdf), "-"],
+def run_render_tool(
+    executable: str, arguments: list[str]
+) -> subprocess.CompletedProcess[str]:
+    """Run Poppler without ambient checkout state or an unbounded hang."""
+    environment = singleflight.command_environment()
+    executable_directory = str(Path(executable).resolve().parent)
+    environment["PATH"] = os.pathsep.join(
+        (executable_directory, environment["PATH"])
+    )
+    return subprocess.run(
+        [executable, *arguments],
         cwd=ROOT,
+        env=environment,
         capture_output=True,
         text=True,
         check=False,
+        timeout=EXTERNAL_TOOL_TIMEOUT_SECONDS,
     )
+
+
+def rendered_text(pdf: Path, pdftotext: str) -> str:
+    completed = run_render_tool(pdftotext, [str(pdf), "-"])
     if completed.returncode != 0:
         detail = completed.stderr.strip() or "pdftotext failed"
         raise RuntimeError(f"{pdf.relative_to(ROOT)}: {detail}")
@@ -205,12 +224,8 @@ def rendered_text(pdf: Path, pdftotext: str) -> str:
 
 def rendered_hrefs(pdf: Path, pdftohtml: str) -> set[str]:
     """Extract the actual URI annotations emitted into the rendered PDF."""
-    completed = subprocess.run(
-        [pdftohtml, "-q", "-xml", "-hidden", "-stdout", str(pdf)],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
+    completed = run_render_tool(
+        pdftohtml, ["-q", "-xml", "-hidden", "-stdout", str(pdf)]
     )
     if completed.returncode != 0:
         detail = completed.stderr.strip() or "pdftohtml failed"
@@ -282,12 +297,8 @@ def rendered_source_link_errors(
 
 
 def rendered_pages(pdf: Path, pdftotext: str, first: int, last: int) -> str:
-    completed = subprocess.run(
-        [pdftotext, "-f", str(first), "-l", str(last), str(pdf), "-"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
+    completed = run_render_tool(
+        pdftotext, ["-f", str(first), "-l", str(last), str(pdf), "-"]
     )
     if completed.returncode != 0:
         detail = completed.stderr.strip() or "pdftotext failed"
