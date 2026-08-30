@@ -77,6 +77,37 @@ theorem no_boundedRise_of_tailAvoidance
   (portfolioClaims Unit).problem243BoundedRiseTailAvoidance
     u m N B hB hm hpair havoid hrise huTop
 
+theorem sylvesterNext_eventually_of_centered_zero
+    (a D C : ℕ → ℤ)
+    (hD : ∀ n, D (n + 1) = nextDenState (a n) (D n))
+    (hC : ∀ n, C (n + 1) = nextTailState (a n) (D n) (C n))
+    (hE : ∃ N, ∀ n, N ≤ n → centeredState (a n) (D n) (C n) = 0)
+    (hCne : ∃ N, ∀ n, N ≤ n → C (n + 1) ≠ 0) :
+    ∃ N, ∀ n, N ≤ n → a (n + 1) = sylvesterNext (a n) :=
+  (portfolioClaims Unit).problem243SylvesterNextEventualOfCenteredZero
+    a D C hD hC hE hCne
+
+theorem centeredState_eventually_zero
+    (C E : ℕ → ℕ)
+    (hrec : ∀ n, C (n + 1) + E n = C n) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 :=
+  (portfolioClaims Unit).problem243CenteredStateEventuallyZero C E hrec
+
+theorem boundedNegativePart_eventually_zero
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ) (B : ℕ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hcentered : ∀ n, Int.natAbs (E n) < C n)
+    (hbound : ∀ n, -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 :=
+  (portfolioClaims Unit).problem243BoundedNegativePartEventuallyZero
+    a C D E B ha hCpos hC hD hE hcentered hbound hvanish
+
 theorem finrank_totientKernelThroughLevelFamily_eq (e : ℕ) (he : 1 ≤ e) :
     finrank ℚ
       (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =

@@ -64,6 +64,20 @@ noncomputable def factorialGapStepCarry (m : ℕ) : ℤ :=
 def centeredState (a D C : ℤ) : ℤ :=
   D - (a - 1) * C
 
+/-! ## Centered-state recovery and Sylvester rigidity -/
+
+/-- The Sylvester successor used by the centered-state defect equation. -/
+def sylvesterNext (a : ℤ) : ℤ :=
+  a ^ 2 - a + 1
+
+/-- Product-cleared denominator update for the reciprocal-tail state. -/
+def nextDenState (a D : ℤ) : ℤ :=
+  a * D
+
+/-- Product-cleared reciprocal-tail update for the reciprocal-tail state. -/
+def nextTailState (a D C : ℤ) : ℤ :=
+  a * C - D
+
 noncomputable def prime0 (n : ℕ) : ℕ :=
   Nat.nth Nat.Prime n
 
@@ -634,6 +648,29 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       (∀ n, N ≤ n → u (n + 1) ≤ u n + B) →
       Filter.Tendsto u Filter.atTop Filter.atTop →
       False
+  problem243SylvesterNextEventualOfCenteredZero :
+    ∀ (a D C : ℕ → ℤ),
+      (∀ n, D (n + 1) = nextDenState (a n) (D n)) →
+      (∀ n, C (n + 1) = nextTailState (a n) (D n) (C n)) →
+      (∃ N, ∀ n, N ≤ n → centeredState (a n) (D n) (C n) = 0) →
+      (∃ N, ∀ n, N ≤ n → C (n + 1) ≠ 0) →
+      ∃ N, ∀ n, N ≤ n → a (n + 1) = sylvesterNext (a n)
+  problem243CenteredStateEventuallyZero :
+    ∀ (C E : ℕ → ℕ),
+      (∀ n, C (n + 1) + E n = C n) →
+      ∃ N, ∀ n, N ≤ n → E n = 0
+  problem243BoundedNegativePartEventuallyZero :
+    ∀ (a C D : ℕ → ℕ) (E : ℕ → ℤ) (B : ℕ),
+      (∀ n, 1 < a n) →
+      (∀ n, 0 < C n) →
+      (∀ n, C (n + 1) + D n = a n * C n) →
+      (∀ n, D (n + 1) = a n * D n) →
+      (∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ)) →
+      (∀ n, Int.natAbs (E n) < C n) →
+      (∀ n, -(B : ℤ) ≤ E n) →
+      (∀ K, ∃ N, ∀ n, N ≤ n →
+        K * Int.natAbs (E n) < C n) →
+      ∃ N, ∀ n, N ≤ n → E n = 0
   problem249Finite :
     ∀ e : ℕ, 1 ≤ e →
       finrank ℚ

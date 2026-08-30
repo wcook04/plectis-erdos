@@ -317,6 +317,20 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
   · intro u m N B hB hm hpair havoid hrise huTop
     exact ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance
       u m N B hB hm hpair havoid hrise huTop
+  · intro a D C hD hC hE hCne
+    simpa [sylvesterNext, nextDenState, nextTailState, centeredState,
+      ErdosProblems.Erdos243.sylvesterNext,
+      ErdosProblems.Erdos243.nextDenState,
+      ErdosProblems.Erdos243.nextTailState,
+      ErdosProblems.Erdos243.centeredState] using
+      ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero
+        a D C hD hC hE hCne
+  · intro C E hrec
+    exact ErdosProblems.Erdos243.centeredState_eventually_zero C E hrec
+  · intro a C D E B ha hCpos hC hD hE hcentered hbound hvanish
+    simpa [centeredState, ErdosProblems.Erdos243.centeredState] using
+      ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
+        a C D E B ha hCpos hC hD hE hcentered hbound hvanish
   · intro e he
     simpa [totientKernelThroughLevelFamily, totientKernelSeq,
       Erdos249257.totientKernelThroughLevelFamily,
