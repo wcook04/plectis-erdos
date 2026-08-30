@@ -7566,6 +7566,198 @@ def publication_architecture_packet() -> dict[str, Any]:
     }
 
 
+def _signal_reader_tier(candidate: Mapping[str, Any]) -> str:
+    """Project an authored rank into a reader role without changing the rank."""
+    if candidate.get("selection_status") == "subordinate":
+        return "exact_reduction_or_structural_result"
+    conditional_text = " ".join(
+        str(candidate.get(key, ""))
+        for key in (
+            "consequence_and_endpoint_proximity",
+            "mechanism_depth_and_natural_friction",
+            "overclaim_risk",
+            "why_not_ranked_first",
+        )
+    ).casefold()
+    if any(
+        marker in conditional_text
+        for marker in (
+            "conditional",
+            "unresolved",
+            "missing producer",
+            "not constructed",
+        )
+    ):
+        return "conditional_endpoint_route"
+    return "completed_direct_result"
+
+
+def mathematical_signal_spine(
+    claims: Mapping[str, Any],
+    showcase: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Project Palomar's judgement before exhaustive query inventory."""
+    if showcase is None:
+        showcase = load("docs/PALOMAR_RESULT_SHOWCASE.json")
+    ranking = showcase.get("candidate_ranking")
+    contract = showcase.get("selection_contract")
+    dispositions = showcase.get("candidate_value_dispositions")
+    if not isinstance(ranking, list) or not ranking:
+        raise ValueError("Palomar showcase lacks candidate_ranking")
+    if not isinstance(contract, Mapping) or not contract.get("ranking_axes"):
+        raise ValueError("Palomar showcase lacks selection_contract.ranking_axes")
+    if not isinstance(dispositions, Mapping):
+        raise ValueError("Palomar showcase lacks candidate_value_dispositions")
+    ranks = [row.get("rank") for row in ranking]
+    if sorted(ranks) != list(range(1, len(ranking) + 1)):
+        raise ValueError("Palomar candidate ranks must be unique and contiguous")
+
+    packet = claims["external_verification_packet"]
+    result_by_declaration = {
+        row["wrapper_declaration"]: row for row in packet["main_results"]
+    }
+    ranked_frontier = []
+    for candidate in sorted(ranking, key=lambda row: row["rank"]):
+        declaration = candidate["declaration"]
+        result = result_by_declaration.get(declaration)
+        if result is None:
+            raise ValueError(
+                "Palomar ranked declaration lacks an exact Comparator result: "
+                f"{declaration}"
+            )
+        tier = _signal_reader_tier(candidate)
+        row = {
+            "rank": candidate["rank"],
+            "reader_tier": tier,
+            "problem": result["problem"],
+            "family_id": candidate["family_id"],
+            "declaration": declaration,
+            "source_declaration": result["original_declaration"],
+            "selection_status": candidate["selection_status"],
+            "consequence": candidate["consequence_and_endpoint_proximity"],
+            "evidence_class": result["contribution_class"],
+            "source_file": result["original_source"],
+            "exact_boundary": result["boundary"],
+        }
+        if tier != "exact_reduction_or_structural_result":
+            row.update(
+                {
+                    "load_bearing_mechanism": candidate[
+                        "mechanism_depth_and_natural_friction"
+                    ],
+                    "evidence_certainty": candidate["evidence_certainty"],
+                    "overclaim_risk": candidate["overclaim_risk"],
+                }
+            )
+        ranked_frontier.append(row)
+
+    family_by_id = {
+        family["id"]: (problem["problem"], family)
+        for problem in packet["review_matrix"]
+        for family in problem["families"]
+    }
+    friction_rows = []
+    for candidate in dispositions.get("source_landscape_candidates", []):
+        search_text = " ".join(
+            str(candidate.get(key, ""))
+            for key in (
+                "candidate_id",
+                "family_id",
+                "ranking_status",
+                "reason",
+            )
+        ).casefold()
+        identifiers = " ".join(
+            str(candidate.get(key, ""))
+            for key in ("candidate_id", "family_id")
+        ).casefold()
+        is_natural_friction = (
+            "no_go" in identifiers
+            or "negative method" in search_text
+            or "negative-method" in search_text
+            or (
+                "high-signal model-specific" in search_text
+                and "no-go" in search_text
+            )
+        )
+        if candidate.get("disposition") != "represented" or not is_natural_friction:
+            continue
+        family_id = candidate["family_id"]
+        family_owner = family_by_id.get(family_id)
+        if family_owner is None:
+            raise ValueError(
+                f"Palomar natural-friction family lacks review-matrix owner: {family_id}"
+            )
+        problem, family = family_owner
+        declaration = candidate.get("comparator_declaration")
+        friction_rows.append(
+            {
+                "family_id": family_id,
+                "problem": problem,
+                "disposition": candidate["disposition"],
+                "load_bearing_mechanism": candidate["hard_mechanism"],
+                "evidence_mode": family["evidence_mode"],
+                "source_file": candidate["source_file"],
+                "source_anchor": candidate["source_anchor"],
+                "boundary": family["boundary"],
+                "declaration": declaration,
+            }
+        )
+    friction_rows.sort(key=lambda row: row["family_id"])
+    if not friction_rows:
+        raise ValueError("Palomar showcase lacks represented natural-friction rows")
+
+    long_tail_group = next(
+        (
+            row
+            for row in dispositions.get("eligible_groups", [])
+            if row.get("disposition") == "long_tail"
+        ),
+        None,
+    )
+    if long_tail_group is None:
+        raise ValueError("Palomar showcase lacks a long-tail disposition")
+    return {
+        "authority": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking",
+        "ordering_contract": (
+            "Explicit mathematical rank, never Comparator roster order, problem "
+            "number, insertion order, theorem count, or qualification ease."
+        ),
+        "ranking_axes": [row["axis"] for row in contract["ranking_axes"]],
+        "anti_hype_boundary": contract["anti_hype_boundary"],
+        "trace_contract": {
+            "proof_authority": "Lean source checked by the pinned kernel",
+            "exact_hypotheses_route": (
+                "python3 scripts/query_corpus.py --declaration <source_declaration>"
+            ),
+            "attribution_and_novelty_ceiling": "unassessed_no_priority_claim",
+            "rule": (
+                "Every ranked declaration keeps its exact source and boundary; "
+                "the declaration route returns its formal hypothesis surface."
+            ),
+        },
+        "ranked_frontier": ranked_frontier,
+        "natural_friction": {
+            "ordering": "alphabetical_unranked",
+            "source_route": "Open each result's source_file at source_anchor.",
+            "results": friction_rows,
+        },
+        "long_tail": {
+            "disposition": "long_tail",
+            "declaration_count": len(long_tail_group["declarations"]),
+            "complete_inventory_routes": [
+                "python3 scripts/query_corpus.py --route erdos_<problem_number>",
+                "python3 scripts/query_corpus.py --publication-architecture",
+                "docs/EXTERNAL_VERIFICATION.md#comparator-interface-appendix",
+            ],
+            "boundary": (
+                "Subordination preserves exact declarations, evidence, and boundaries; "
+                "it is not deletion or an adverse mathematical judgement."
+            ),
+        },
+    }
+
+
 def companion_repository_packet() -> dict[str, Any]:
     return {
         "name": "plectis",
@@ -7697,8 +7889,9 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
     }
     packet = {
         "kind": "repository_overview",
-        "schema_version": "erdos249257-repository-overview/1",
+        "schema_version": "erdos249257-repository-overview/2",
         "authority_posture": "bounded_public_orientation_not_proof_authority",
+        "mathematical_signal_spine": mathematical_signal_spine(claims),
         "coverage_receipt": {
             "mathematical_programme_count": len(programmes),
             "mathematical_programme_ids": [row["id"] for row in programmes],
@@ -7769,7 +7962,6 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
         "publication_family_index": [
             {
                 "id": row["id"],
-                "status_summary": row["status_summary"],
                 "primary_narrative_owner": row["primary_narrative_owner"],
                 "view_decision": row["view_decision"],
                 "claim_count": len(row["claim_ids"]),
@@ -7777,6 +7969,16 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
             }
             for row in families
         ],
+        "publication_family_index_contract": {
+            "coverage": "complete_family_id_owner_disposition_count_and_route",
+            "detail": (
+                "python3 scripts/query_corpus.py --publication-family <family_id>"
+            ),
+            "boundary": (
+                "Detailed status prose is routed, not duplicated ahead of the "
+                "mathematical signal spine."
+            ),
+        },
         "problem_result_family_contract": {
             "source": "docs/claims.json::external_verification_packet.review_matrix",
             "route": "python3 scripts/query_corpus.py --route <problem_id>",
@@ -8543,6 +8745,7 @@ def render_card(packet: dict[str, Any]) -> str:
         return "\n".join(rows)
     if kind == "repository_overview":
         coverage = packet["coverage_receipt"]
+        signal = packet["mathematical_signal_spine"]
         rows = [
             (
                 "repository overview | "
@@ -8552,11 +8755,35 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"| exact_open={coverage['remaining_open_proposition_count']}"
             ),
             (
-                "reading rule | weight reductions, reusable interfaces, "
-                "and honest obstructions above raw theorem or file volume"
+                "signal rule | explicit Palomar mathematical rank before exhaustive "
+                "inventory; Comparator roster order is not significance"
             ),
-            "papers | command=python3 scripts/query_corpus.py --papers",
         ]
+        rows.extend(
+            (
+                f"signal #{candidate['rank']} | {candidate['reader_tier']} "
+                f"| problem=#{candidate['problem']} | family={candidate['family_id']} "
+                f"| declaration={candidate['declaration']}"
+            )
+            for candidate in signal["ranked_frontier"]
+        )
+        rows.extend(
+            (
+                f"natural_friction | problem=#{candidate['problem']} "
+                f"| family={candidate['family_id']} | disposition="
+                f"{candidate['disposition']}"
+            )
+            for candidate in signal["natural_friction"]["results"]
+        )
+        rows.extend(
+            [
+                (
+                    "long_tail | subordinate_not_deleted "
+                    f"| declarations={signal['long_tail']['declaration_count']}"
+                ),
+                "papers | command=python3 scripts/query_corpus.py --papers",
+            ]
+        )
         for problem in packet.get("problem_fleet", []):
             command = problem.get("route_memory")
             if not isinstance(command, str) or not command:

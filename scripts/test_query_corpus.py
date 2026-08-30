@@ -385,6 +385,7 @@ def validate_agent_tour() -> None:
             indexed["external_check"]["dispositions"]
         )
     overview = query("--overview")
+    assert overview["schema_version"] == "erdos249257-repository-overview/2"
     assert overview["problem_result_family_contract"]["source"] == (
         "docs/claims.json::external_verification_packet.review_matrix"
     )
@@ -1105,6 +1106,89 @@ def validate_claim_status_packets() -> None:
     assert "unknown claim status" in unknown_status.stderr
 
 
+def validate_mathematical_signal_spine() -> None:
+    overview = query("--overview")
+    keys = list(overview)
+    assert keys.index("mathematical_signal_spine") < keys.index("coverage_receipt")
+    assert keys.index("mathematical_signal_spine") < keys.index("problem_fleet")
+    signal = overview["mathematical_signal_spine"]
+    showcase = load("docs/PALOMAR_RESULT_SHOWCASE.json")
+    expected = sorted(showcase["candidate_ranking"], key=lambda row: row["rank"])
+    frontier = signal["ranked_frontier"]
+    assert [row["rank"] for row in frontier] == list(range(1, len(expected) + 1))
+    assert [row["declaration"] for row in frontier] == [
+        row["declaration"] for row in expected
+    ]
+    assert {row["reader_tier"] for row in frontier} == {
+        "completed_direct_result",
+        "conditional_endpoint_route",
+        "exact_reduction_or_structural_result",
+    }
+    assert all(row["source_file"] and row["exact_boundary"] for row in frontier)
+    for row in frontier:
+        declaration = query("--declaration", row["source_declaration"])
+        assert declaration["matches"], row["source_declaration"]
+        assert (ROOT / row["source_file"]).is_file(), row["source_file"]
+
+    adversarial_claims = copy.deepcopy(load("docs/claims.json"))
+    adversarial_claims["external_verification_packet"]["main_results"].reverse()
+    adversarial_showcase = copy.deepcopy(showcase)
+    adversarial_showcase["candidate_ranking"].reverse()
+    reordered = query_corpus.mathematical_signal_spine(
+        adversarial_claims, adversarial_showcase
+    )
+    assert [row["declaration"] for row in reordered["ranked_frontier"]] == [
+        row["declaration"] for row in expected
+    ]
+
+    friction_ids = {
+        row["family_id"] for row in signal["natural_friction"]["results"]
+    }
+    assert {
+        "coefficient_only_no_go",
+        "fixed_precision_transport_no_go",
+        "height_and_pade_arithmetic",
+    } <= friction_ids
+    assert signal["natural_friction"]["ordering"] == "alphabetical_unranked"
+    long_tail = next(
+        row
+        for row in showcase["candidate_value_dispositions"]["eligible_groups"]
+        if row["disposition"] == "long_tail"
+    )
+    assert signal["long_tail"]["declaration_count"] == len(
+        long_tail["declarations"]
+    )
+    assert "not deletion" in signal["long_tail"]["boundary"]
+    family_index_contract = overview["publication_family_index_contract"]
+    assert family_index_contract["coverage"] == (
+        "complete_family_id_owner_disposition_count_and_route"
+    )
+    assert all(
+        set(row) == {
+            "id",
+            "primary_narrative_owner",
+            "view_decision",
+            "claim_count",
+            "source_route",
+        }
+        for row in overview["publication_family_index"]
+    )
+
+    encoded = json.dumps(overview, ensure_ascii=False, indent=2).encode("utf-8")
+    assert len(encoded) <= query_corpus.OUTPUT_BUDGET_BYTES
+    card = run("--overview", "--format", "card")
+    assert card.returncode == 0, card.stderr
+    lines = card.stdout.splitlines()
+    signal_lines = [line for line in lines if line.startswith("signal #")]
+    assert [
+        int(line.split("#", 1)[1].split(" ", 1)[0])
+        for line in signal_lines
+    ] == list(range(1, len(expected) + 1))
+    assert lines.index(signal_lines[0]) < next(
+        index for index, line in enumerate(lines) if line.startswith("problem_route |")
+    )
+
+
 def main() -> int:
     validate_programme_routes()
     validate_indexed_problem_routes()
@@ -1116,6 +1200,7 @@ def main() -> int:
     validate_route_memory_cards()
     validate_connection_query_ranking()
     validate_paper_semantic_citation_aliases()
+    validate_mathematical_signal_spine()
     bare_ask = subprocess.run(
         [
             sys.executable,
