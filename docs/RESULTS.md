@@ -276,6 +276,13 @@ core)**
   a fatal half-gap (`Erdos249257/HalfCutLocator.lean:654`); the dyadic
   membership question was posed publicly by Kovač in the same discussion,
   and a positive answer would refute universal #257.
+- The Comparator theorem `seven_le_of_intBand_odd` adds a local two-adic
+  band exclusion: for positive odd integers `p`, `D`, and `q` satisfying the
+  stated `IntBand` inequalities, `7 ≤ p`
+  (`Erdos249257/HalfGreedyTwoThirdsBand.lean`). Thus numerator classes `1`,
+  `3`, and `5` are excluded in that band, while `p = 7` is sharp. The theorem
+  does not show that an actual half-greedy orbit reaches or avoids the band,
+  and does not decide half-membership.
 - A newly transported conditional reduction makes the rational-support boundary
   concrete: if the support has a positive seed and its base-2 value is
   `p/(2^c·v)` with `v > 0`, then a positive natural shifted-tail state exists
