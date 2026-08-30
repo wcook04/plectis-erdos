@@ -8,24 +8,42 @@ Plectis is an AI-assisted public Lean corpus for Erdős Problems 68, 243, 249,
 boundaries, and certificates.
 **All eight problems remain open. This repository does not solve them.**
 
-**Start with one checked claim.** No Lean build is needed:
+**Choose a first route.**
+
+| Goal | Start here |
+|---|---|
+| Understand the strongest results and their limits | [Results and limits](docs/RESULTS.md#ten-minute-verdict) |
+| Verify one public claim without building Lean | Run the command below |
+| Follow a result into Lean source | [Source map](docs/SOURCE_MAP.md) |
+| Understand the repository or contribute | [Architecture and repository guide](ARCHITECTURE.md) |
+| Work as a coding agent | [Compact agent entry](AGENTS.override.md) |
+
+To verify one claim without building Lean:
 
 ```bash
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-Prints statement, Comparator, paper, receipts, and boundary.
-`--verify-all` checks all. [Read or run](#read-or-run-it) gives Lean routes.
+The command re-reads the recorded Lean declaration, shows the separately
+declared Comparator statement and axiom budget, points to the paper and release
+receipt, and ends at the claim ceiling. This example is a Lean formalisation of
+Erdős's 1948 full-support theorem. It is not a proof of universal Problem 257
+or a novelty claim. Use `--verify-all` for every registered claim.
 
-[RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
-→ [verification](docs/EXTERNAL_VERIFICATION.md) → [prior art](docs/PRIOR_ART.md)
-→ [architecture and repository guide](ARCHITECTURE.md) · [printable PDF](claim-faithful-publication-systems-paper.pdf)
+Comparator checks an exact statement against configured axioms; Palomar orders
+candidates for possible review. Neither confers novelty, significance,
+acceptance, or solution status. The full [verification
+dossier](docs/EXTERNAL_VERIFICATION.md), [scope](SCOPE.md), [prior-art
+record](docs/PRIOR_ART.md), and [printable systems
+paper](claim-faithful-publication-systems-paper.pdf) provide the separate
+evidence routes.
 
 The [agent-navigation paper](cold-clone-to-proof-receipt.pdf) explains the
 cold-clone route. It assumes no Lean or project history. This is not a
 private-system entrypoint.
-Will Cook reviewed claims. **Lean source checked by the pinned Lean kernel**
-is formal proof authority, not for meaning or novelty.
+Will Cook reviewed the public claim wording. **Lean source checked by the
+pinned Lean kernel** is formal proof authority; it does not establish meaning,
+novelty, or significance.
 
 ## Read the signal first
 
