@@ -395,7 +395,10 @@ replacement for claim authority.
 - A separate source-current `strict_prime_tail_orbit_gap` family is retained
   below the actual-LCM and first-harmonic frontiers. Its Comparator wrapper
   `irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` has one coherent
-  two-branch interface. In the block branch, for every `h > 0` and cutoff
+  two-branch interface. The subordinate `tailOrbitFirstExp_succ` identity records
+  the exact squaring evolution of each tail-orbit phase; it clarifies the phase
+  mechanism but supplies neither the `(11/100)` density nor the cofinal-prime
+  producer. In the block branch, for every `h > 0` and cutoff
   `X₀`, `TotientTailOrbitNonpositiveBlockDensity` assumes a late block with at
   least `(11/100) * X` nonpositive values of
   `Re(tailOrbitFirstExp h N)`; unit norm gives an `89/100` block saving, and a
