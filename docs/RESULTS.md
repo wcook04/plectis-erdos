@@ -249,6 +249,15 @@ core)**
   `Erdos249257/RationalSupportCarrySkeleton.lean`). This exposes structure
   under a rationality hypothesis; it does not exclude rational infinite
   supports or settle universal #257.
+- A separate unconditional composite-dilation identity now exposes the
+  lower-rank defect rather than hiding it in a prime-only adapter:
+  `supportCoeff_mul_eq_add_defect`
+  (`Erdos249257/CompositeDilationDefect.lean`). For `a ∈ A`, `0 < a`, and
+  `0 < x`, it states
+  `supportCoeff A (a·x) = supportCoeff A x + (if a ∣ x then 0 else 1) + compositeDilationDefect A a x`.
+  The exact defect is not bounded for arbitrary supports and supplies no tail
+  selector or irrationality theorem; the separate bouquet budget remains
+  conditional on its structural hypotheses.
 - Methodological: a formalised squarefree-support no-go theorem is shown to
   be an artefact of normalisation — adjoining `1` to the support shifts the
   value by a rational and flips the divisor-incidence parity, and the
