@@ -1,7 +1,7 @@
 # External verification portfolio
 
-This directory contains small Lean consumers for six different parts of the
-Erdős 68/243/249/251/257/269 corpus. The files are useful when a reader wants to reuse
+This directory contains small Lean consumers for seven different parts of the
+Erdős 68/243/249/251/257/269/1041 corpus. The files are useful when a reader wants to reuse
 an exact Comparator-facing interface without treating a conditional reduction
 as a solution of the underlying Erdős problem.
 
@@ -10,6 +10,7 @@ The canonical focused check for the portfolio consumers is:
 ```bash
 python3 scripts/lean_fast_build.py \
   examples/ExternalVerificationPortfolio/Problem68.lean \
+  examples/ExternalVerificationPortfolio/Problem1041.lean \
   examples/ExternalVerificationPortfolio/Problem243.lean \
   examples/ExternalVerificationPortfolio/Problem249.lean \
   examples/ExternalVerificationPortfolio/Problem251.lean \
@@ -46,6 +47,31 @@ side.  Exact misses or nonunit carries at finitely many computed indices can
 raise lower bounds on a displayed rational denominator, but cannot discharge
 the quantifier `∀ B, ∃ m > B`.  This consumer therefore proves no #68
 irrationality and makes no novelty or priority claim.
+
+## Erdős #1041: local perturbation mechanisms
+
+[`Problem1041.lean`](Problem1041.lean) keeps two unconditional local tools
+distinct without promoting either to a solution of the lemniscate problem.
+The wrapper
+`Erdos249257.ExternalVerification.exists_small_translation_separating_arguments`
+uses finite affine-line avoidance: an injective finite complex family admits
+an arbitrarily small common translation after which every value is nonzero
+and no two values lie on the same positive ray.
+
+The separate wrapper
+`Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk`
+is quantitative root retention.  For a positive-degree monic split polynomial
+whose roots have norm at most `ρ`, it preserves all roots of `f + C shift`
+inside the open unit disk under the exact positive-`ε` and strict margin
+`((natDegree + 1) * ε)^(natDegree)⁻¹ + ρ < 1`, together with
+`‖shift‖ < ε`.  Both sources are in
+[`NewtonFlowRaySeparation.lean`](../../ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197).
+
+These results provide finite critical-value ray separation and root control,
+not the missing global topology.  No theorem here glues the relevant Newton
+flow pieces into a curve inside the open lemniscate or proves the required
+length bound `< 2`.  This consumer therefore makes no #1041 solution,
+novelty, or priority claim.
 
 ## Erdős #243: two conditional recovery criteria
 
