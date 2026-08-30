@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -113,7 +114,44 @@ def statuses(report: dict) -> set[str]:
     return {problem.get("status") for problem in report["problems"]}
 
 
+def check_gate_timeout_contract() -> None:
+    """Keep Git probes and every gate child inside explicit time ceilings."""
+    observed: list[int | None] = []
+
+    def fake_run(argv: list[str], *, cwd: Path, timeout: int | None = None) -> subprocess.CompletedProcess[str]:
+        observed.append(timeout)
+        if len(observed) == 1:
+            raise subprocess.TimeoutExpired(argv, timeout)
+        return subprocess.CompletedProcess(argv, 0, stdout="", stderr="")
+
+    with patch.object(verify_claims, "run", side_effect=fake_run):
+        gates = verify_claims.run_gates({"shallow_clone": False})
+
+    require(observed, "the gate runner did not launch any child")
+    require(
+        observed[0] == verify_claims.GATE_TIMEOUT_SECONDS,
+        "gate runner lost the canonical worker timeout",
+    )
+    require(
+        gates["failed"] >= 1
+        and any(
+            row.get("returncode") == verify_claims.singleflight.WORKER_TIMEOUT_EXIT_CODE
+            for row in gates["results"]
+        ),
+        "gate runner did not report a timed-out child as a bounded failure",
+    )
+
+    with patch.object(verify_claims, "run", return_value=subprocess.CompletedProcess([], 0, "", "")) as runner:
+        verify_claims.git_output("rev-parse", "HEAD")
+    require(
+        runner.call_args.kwargs["timeout"]
+        == verify_claims.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "Git probe lost the canonical command timeout",
+    )
+
+
 def main() -> int:
+    check_gate_timeout_contract()
     failures: list[str] = []
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)

@@ -132,6 +132,7 @@ OPTIONAL_TOOL_GATES = {"check_metadata.py": "cffconvert"}
 PAPER_SUBDIR = "paper"
 LABEL_PATTERN = re.compile(r"\\label\{([^}]+)\}")
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+GATE_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(
     sorted(singleflight.GIT_CONTEXT_KEYS | singleflight.GIT_PROCESS_CONTROL_KEYS)
 )
@@ -200,7 +201,11 @@ def safe_read_path(path: Path) -> Path | None:
 def git_output(*args: str) -> str | None:
     """Run a read-only git query, returning None when git cannot answer."""
     try:
-        completed = run(["git", "-C", str(REPO_ROOT), *args], cwd=REPO_ROOT)
+        completed = run(
+            ["git", "-C", str(REPO_ROOT), *args],
+            cwd=REPO_ROOT,
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        )
     except OSError:
         return None
     if completed.returncode != 0:
@@ -672,7 +677,22 @@ def run_gates(environment: dict[str, Any]) -> dict[str, Any]:
         if environment["shallow_clone"] and name in HISTORY_DEPENDENT_GATES:
             results.append({"gate": name, "outcome": "blocked", "reason": "shallow clone"})
             continue
-        completed = run([sys.executable, str(path)], cwd=REPO_ROOT)
+        try:
+            completed = run(
+                [sys.executable, str(path)],
+                cwd=REPO_ROOT,
+                timeout=GATE_TIMEOUT_SECONDS,
+            )
+        except subprocess.TimeoutExpired:
+            results.append(
+                {
+                    "gate": name,
+                    "outcome": "fail",
+                    "returncode": singleflight.WORKER_TIMEOUT_EXIT_CODE,
+                    "last_line": f"timed out after {GATE_TIMEOUT_SECONDS} seconds",
+                }
+            )
+            continue
         tail = (completed.stdout or completed.stderr).strip().splitlines()
         results.append(
             {
