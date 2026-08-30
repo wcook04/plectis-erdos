@@ -2044,6 +2044,174 @@ def main() -> int:
         }
     ]
 
+    half_module_handles = (
+        "HalfCylinderHalfMembershipClassification",
+        "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+    )
+    for half_handle in half_module_handles:
+        half_module = query("--module", half_handle, "--limit", "20")
+        assert half_module["module_handle_resolution"]["resolved"] == (
+            "Erdos249257/HalfCylinderHalfMembershipClassification.lean"
+        )
+        assert half_module["paper_sigil"] == "HalCylHalMemCla"
+        assert [row["id"] for row in half_module["attached_claims"]] == [
+            "half_membership_seam_classification"
+        ]
+        assert half_module["claim_family_routes"] == []
+        assert [row["id"] for row in half_module["reviewed_result_families"]] == [
+            "half_membership_seam_classification"
+        ]
+        half_family = half_module["reviewed_result_families"][0]
+        assert half_family["source_route"] == (
+            "Erdos249257/HalfCylinderHalfMembershipClassification.lean"
+        )
+        assert half_family["representative"] == (
+            "Erdos249257.half_mem_mersenneAchievementSet_iff_"
+            "unboundedTerminalFalse"
+        )
+        assert half_family["claim_paper_routes"] == [
+            {
+                "label": "res:halfmembership",
+                "source": "paper/erdos249-257-main-paper.tex",
+                "source_ref": "paper/erdos249-257-main-paper.tex:1117",
+                "command": (
+                    "python3 scripts/query_corpus.py --paper-anchor "
+                    "res:halfmembership"
+                ),
+                "authority_posture": (
+                    "authored_paper_navigation_not_proof_authority"
+                ),
+            }
+        ]
+        assert half_family["claim_paper_routes"][0]["command"] == (
+            "python3 scripts/query_corpus.py --paper-anchor res:halfmembership"
+        )
+        assert half_family["problem_route"] == (
+            "python3 scripts/query_corpus.py --route erdos_257"
+        )
+        assert "does not supply any unbounded terminal-false" in (
+            half_family["open_boundary"]["boundary"]
+        )
+        assert "no half-membership witness" in half_family["open_boundary"]["boundary"]
+        assert half_family["open_boundary"]["problem_open_obligation_ids"] == [
+            "arithmetic_rigidity_for_thin_supports",
+            "formalise_measure_and_stride_geometry",
+        ]
+        half_problem = next(
+            row
+            for row in half_module["problem_routes"]
+            if row["problem_id"] == "erdos_257"
+        )
+        assert half_problem["reviewed_result_family_ids"] == [
+            "half_membership_seam_classification"
+        ]
+        assert "claim_family_ids" not in half_problem
+        assert {
+            row["route_id"] for row in half_module["route_memory"]["bindings"]
+        } == {"erdos257_half_story", "erdos_257"}
+
+    fixed_precision_handles = (
+        "TropicalCurvatureCarry",
+        "Erdos249257/TropicalCurvatureCarry.lean",
+    )
+    for fixed_handle in fixed_precision_handles:
+        fixed_module = query("--module", fixed_handle, "--limit", "20")
+        assert fixed_module["module_handle_resolution"]["resolved"] == (
+            "Erdos249257/TropicalCurvatureCarry.lean"
+        )
+        assert fixed_module["paper_sigil"] is None
+        assert [row["id"] for row in fixed_module["attached_claims"]] == [
+            "fixed_precision_transport_no_go"
+        ]
+        reviewed_fixed = [
+            row
+            for row in fixed_module["reviewed_result_families"]
+            if row["id"] == "fixed_precision_transport_no_go"
+        ]
+        claim_fixed = [
+            row
+            for row in fixed_module["claim_family_routes"]
+            if row["family_id"] == "fixed_precision_transport_no_go"
+        ]
+        assert len(reviewed_fixed) + len(claim_fixed) == 1
+        assert not (reviewed_fixed and claim_fixed)
+        fixed_family = (reviewed_fixed or claim_fixed)[0]
+        assert fixed_family["source_route"] == (
+            "Erdos249257/TropicalCurvatureCarry.lean"
+        )
+        if reviewed_fixed:
+            assert fixed_family["representative"] == (
+                "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo"
+            )
+            assert fixed_family["wrapper_declaration"] == (
+                "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo"
+            )
+            assert fixed_family["declarations"] == [
+                "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
+                "Erdos249257.TotientTailPeriodKiller.vu_step_has_centred_completion",
+                "Erdos249257.TotientTailPeriodKiller.vu_word_has_prefix_locked_completion",
+            ]
+            assert "bounded local signatures" in fixed_family["summary"]
+            fixed_boundary = fixed_family["open_boundary"]["boundary"]
+            assert "finite" in fixed_boundary.lower()
+            assert "totient" in fixed_boundary.lower()
+            assert fixed_family["open_boundary"]["problem_route"] == (
+                "python3 scripts/query_corpus.py --route erdos_249"
+            )
+            fixed_problem_family_key = "reviewed_result_family_ids"
+        else:
+            assert [
+                row["name"]
+                for row in fixed_family["representative_declarations"]
+            ] == ["fixedPrecisionTropicalNoGo"]
+            assert fixed_family["declaration_routes"] == [
+                "python3 scripts/query_corpus.py --declaration fixedPrecisionTropicalNoGo"
+            ]
+            assert fixed_family["paper_route"] == {
+                "label": None,
+                "source": None,
+                "source_ref": None,
+                "command": None,
+                "authority_posture": "authored_paper_navigation_not_proof_authority",
+                "unbound_reason": (
+                    "claim has no registered paper label; no paper anchor was invented"
+                ),
+            }
+            fixed_statement = fixed_family["claim_statement"]
+            assert "bounded local signatures alone" in fixed_statement
+            assert "finite centred endpoints" in fixed_statement
+            assert fixed_family["open_boundary"]["claim_statement"] == fixed_statement
+            assert [
+                row["id"]
+                for row in fixed_family["open_boundary"][
+                    "remaining_open_propositions"
+                ]
+            ] == ["remaining_open.unbounded_certificate_supply"]
+            assert fixed_family["problem_route"] == (
+                "python3 scripts/query_corpus.py --route erdos_249"
+            )
+            fixed_problem_family_key = "claim_family_ids"
+        assert fixed_family["programme_route"]["id"] == (
+            "transport_curvature_programme"
+        )
+        fixed_problem = next(
+            row
+            for row in fixed_module["problem_routes"]
+            if row["problem_id"] == "erdos_249"
+        )
+        assert fixed_problem[fixed_problem_family_key] == [
+            "fixed_precision_transport_no_go"
+        ]
+        if reviewed_fixed:
+            assert "claim_family_routes" not in fixed_problem
+        else:
+            assert fixed_problem["claim_family_routes"][0]["family_id"] == (
+                "fixed_precision_transport_no_go"
+            )
+        assert {
+            row["route_id"] for row in fixed_module["route_memory"]["bindings"]
+        } == {"transport_curvature_programme", "erdos_249"}
+
     sigil_search = query("--search", "CerKer", "--limit", "1")
     assert sigil_search["results"][0]["kind"] == "module"
     assert sigil_search["results"][0]["path"] == "Erdos249257/CertificateKernel.lean"

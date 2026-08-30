@@ -1638,6 +1638,62 @@ def reviewed_result_family_rows(
     return []
 
 
+def claim_registry_context_for_claim(
+    claims: dict[str, Any], claim_id: str
+) -> list[dict[str, Any]]:
+    """Return canonical selection context that explicitly names a claim.
+
+    Some source-current claims are intentionally not individual Comparator
+    families.  The claims registry can still record their shared mathematical
+    significance and next-method boundary in either the external review
+    matrix or the publication-assembly contribution families.  Expose that
+    existing authority on the claim-family route without promoting the
+    grouping into a duplicate family or inferring significance from roster
+    order.
+    """
+    contexts = []
+    context_sources = (
+        (
+            "docs/claims.json::external_verification_packet.review_matrix",
+            claims.get("external_verification_packet", {}).get(
+                "review_matrix", []
+            ),
+        ),
+        (
+            "docs/claims.json::machine_readable_paper.publication_assembly.contribution_families",
+            claims.get("machine_readable_paper", {})
+            .get("publication_assembly", {})
+            .get("contribution_families", []),
+        ),
+    )
+    for source, rows in context_sources:
+        for review_row in rows:
+            if claim_id not in review_row.get("claim_ids", []):
+                continue
+            contexts.append(
+                {
+                    "id": review_row.get("id"),
+                    "claim_ids": review_row.get("claim_ids", []),
+                    "status_summary": review_row.get("status_summary"),
+                    "prior_art_posture": review_row.get("prior_art_posture"),
+                    "primary_narrative_owner": review_row.get(
+                        "primary_narrative_owner"
+                    ),
+                    "source_route": review_row.get("source_route"),
+                    "consumer_or_open_obligation": review_row.get(
+                        "consumer_or_open_obligation"
+                    ),
+                    "view_decision": review_row.get("view_decision"),
+                    "source": source,
+                    "authority_posture": (
+                        "claim_registry_selection_context_not_independent_"
+                        "family_or_proof_authority"
+                    ),
+                }
+            )
+    return contexts
+
+
 def reviewed_result_family_census(
     claims: dict[str, Any],
 ) -> list[dict[str, Any]]:
@@ -3109,6 +3165,242 @@ def module_problem_routes(
             family_route["id"]
         )
         route.setdefault("reviewed_result_family_routes", []).append(family_route)
+
+    claim_family_routes = claim_registry_module_family_routes(
+        module_path, claims, problems
+    )
+    reviewed_family_ids = {
+        family_route["id"]
+        for family_route in reviewed_result_family_module_routes(
+            module_path, claims, problems
+        )
+    }
+    for claim_family_route in claim_family_routes:
+        if claim_family_route["family_id"] in reviewed_family_ids:
+            # The reviewed-family join is the richer canonical route when a
+            # claim has already been promoted by Comparator.  Do not emit a
+            # second claim-registry route for the same family.
+            continue
+        problem_id = claim_family_route["problem_id"]
+        route = next(
+            (row for row in routes if row["problem_id"] == problem_id), None
+        )
+        if route is None:
+            problem = next(
+                row
+                for row in problems
+                if row.get("problem_id") == problem_id
+            )
+            obligations = problem.get("open_obligations", [])
+            paper = problem.get("paper") or {}
+            paper_source = paper.get("source")
+            route = {
+                "problem_id": problem_id,
+                "erdos_number": problem["erdos_number"],
+                "command": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"{problem_id}"
+                ),
+                "paper_source": paper_source,
+                "paper_route": {
+                    "source": paper_source,
+                    "command": (
+                        "python3 scripts/query_corpus.py --paper-source "
+                        f"{paper_source}"
+                    )
+                    if paper_source
+                    else None,
+                    "authority_posture": (
+                        "authored_paper_navigation_not_proof_authority"
+                    ),
+                },
+                "open_obligation_ids": [
+                    item["id"]
+                    for item in obligations
+                    if isinstance(item, Mapping)
+                    and isinstance(item.get("id"), str)
+                ],
+                "match_kind": "claim_registry_declaration_programme",
+            }
+            routes.append(route)
+        route.setdefault("claim_family_ids", [])
+        if claim_family_route["family_id"] not in route["claim_family_ids"]:
+            route["claim_family_ids"].append(claim_family_route["family_id"])
+        route.setdefault("claim_family_routes", [])
+        if not any(
+            row.get("family_id") == claim_family_route["family_id"]
+            for row in route["claim_family_routes"]
+        ):
+            route["claim_family_routes"].append(claim_family_route)
+    return routes
+
+
+def claim_registry_module_family_routes(
+    module_path: str,
+    claims: dict[str, Any],
+    problems: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Expose claim-family routes when generated problem modules lag the claim registry.
+
+    A source module can be a current proof-bearing claim source before the
+    generated eight-problem module roster is refreshed.  In that interval,
+    the claim declaration and its canonical programme route are the only
+    source-faithful join available.  This fallback preserves the claim's
+    representative declarations and exact open boundary without promoting
+    subordinate module helpers or inventing a second family registry.
+    """
+    problem_by_number = {
+        int(problem["erdos_number"]): problem
+        for problem in problems
+        if isinstance(problem, Mapping)
+    }
+    open_index = {
+        row["id"]: row
+        for row in claims.get("remaining_open_propositions", [])
+        if isinstance(row, Mapping) and isinstance(row.get("id"), str)
+    }
+    paper_index = paper_label_index()
+    routes: list[dict[str, Any]] = []
+    seen: set[tuple[str, int]] = set()
+    for claim in claims.get("claims", []):
+        if not isinstance(claim, Mapping) or not isinstance(claim.get("id"), str):
+            continue
+        claim_declarations = [
+            declaration
+            for declaration in claim.get("declarations", [])
+            if isinstance(declaration, Mapping)
+            and declaration.get("module") == module_path
+        ]
+        if not claim_declarations:
+            continue
+        for programme in all_entrypoints(claims):
+            if programme.get("route_kind") != "mathematical_programme":
+                continue
+            if claim["id"] not in programme.get("core_claim_ids", []):
+                continue
+            problem_number = route_memory_problem_number(programme)
+            problem = problem_by_number.get(problem_number) if problem_number else None
+            if problem is None or problem_number is None:
+                continue
+            identity = (claim["id"], problem_number)
+            if identity in seen:
+                continue
+            seen.add(identity)
+            paper = paper_coordinate(claim.get("paper_label"), paper_index)
+            review_context = claim_registry_context_for_claim(
+                claims, claim["id"]
+            )
+            claim_open_ids = [
+                open_id
+                for open_id in claim.get(
+                    "remaining_open_proposition_ids", []
+                )
+                if isinstance(open_id, str)
+            ]
+            open_ids = claim_open_ids or [
+                open_id
+                for open_id in programme.get(
+                    "remaining_open_proposition_ids", []
+                )
+                if isinstance(open_id, str)
+            ]
+            representative_declarations = [
+                {
+                    "name": declaration["name"],
+                    "module": declaration["module"],
+                    "line": declaration["line"],
+                    "source_ref": (
+                        f"{declaration['module']}:{declaration['line']}"
+                    ),
+                    "command": (
+                        "python3 scripts/query_corpus.py --declaration "
+                        f"{declaration['name']}"
+                    ),
+                }
+                for declaration in claim_declarations
+                if isinstance(declaration.get("name"), str)
+                and isinstance(declaration.get("line"), int)
+            ]
+            routes.append(
+                {
+                    "id": claim["id"],
+                    "family_id": claim["id"],
+                    "family_kind": "canonical_claim_family",
+                    "claim_id": claim["id"],
+                    "label": claim.get("label"),
+                    "status": claim.get("status"),
+                    "claim_statement": claim.get("statement"),
+                    "problem_id": problem["problem_id"],
+                    "erdos_number": problem_number,
+                    "source_route": module_path,
+                    "representative_declarations": representative_declarations,
+                    "declaration_routes": [
+                        row["command"] for row in representative_declarations
+                    ],
+                    "paper_route": {
+                        "label": claim.get("paper_label"),
+                        "source": paper.get("source") if paper else None,
+                        "source_ref": paper.get("source_ref") if paper else None,
+                        "command": (
+                            "python3 scripts/query_corpus.py --paper-anchor "
+                            f"{claim['paper_label']}"
+                        )
+                        if claim.get("paper_label")
+                        else None,
+                        "authority_posture": (
+                            "authored_paper_navigation_not_proof_authority"
+                        ),
+                        "unbound_reason": (
+                            "claim has no registered paper label; no paper "
+                            "anchor was invented"
+                        )
+                        if not claim.get("paper_label")
+                        else None,
+                    },
+                    "problem_route": (
+                        "python3 scripts/query_corpus.py --route "
+                        f"{problem['problem_id']}"
+                    ),
+                    "open_boundary": {
+                        "claim_statement": claim.get("statement"),
+                        "remaining_open_propositions": [
+                            {
+                                "id": open_id,
+                                "command": (
+                                    "python3 scripts/query_corpus.py --open "
+                                    f"{open_id}"
+                                ),
+                                "statement": open_index[open_id].get("statement"),
+                            }
+                            for open_id in open_ids
+                            if open_id in open_index
+                        ],
+                        "authority_posture": (
+                            "claim_registry_boundary_navigation_not_proof_authority"
+                        ),
+                    },
+                    "programme_route": {
+                        "id": programme["id"],
+                        "command": (
+                            "python3 scripts/query_corpus.py --route "
+                            f"{programme['id']}"
+                        ),
+                        "claim_ceiling": programme.get("claim_ceiling"),
+                    },
+                    "claim_registry_context": review_context,
+                    "subordinate_declaration_contract": {
+                        "source": "docs/declaration_atlas.json::modules",
+                        "representative_declarations": [
+                            row["name"] for row in representative_declarations
+                        ],
+                        "boundary": (
+                            "Other declarations in this module remain subordinate "
+                            "module/declaration drilldowns; they are not promoted "
+                            "into additional canonical families."
+                        ),
+                    },
+                }
+            )
     return routes
 
 
@@ -3119,6 +3411,12 @@ def reviewed_result_family_module_routes(
 ) -> list[dict[str, Any]]:
     """Expose reviewed families whose governed source record names this module."""
     routes = []
+    claim_index = {
+        claim["id"]: claim
+        for claim in claims.get("claims", [])
+        if isinstance(claim, Mapping) and isinstance(claim.get("id"), str)
+    }
+    paper_index = paper_label_index()
     for problem in problems:
         paper = problem.get("paper") or {}
         paper_source = paper.get("source")
@@ -3141,6 +3439,30 @@ def reviewed_result_family_module_routes(
             if not declarations:
                 declarations = reviewed_result_family_source_declarations(
                     claims, problem["erdos_number"], family["id"]
+                )
+            claim_paper_routes = []
+            for source_row in matching_source_rows:
+                claim = claim_index.get(source_row.get("claim_id"))
+                if claim is None or not claim.get("paper_label"):
+                    continue
+                coordinate = paper_coordinate(
+                    claim["paper_label"], paper_index
+                )
+                claim_paper_routes.append(
+                    {
+                        "label": claim["paper_label"],
+                        "source": coordinate.get("source") if coordinate else None,
+                        "source_ref": (
+                            coordinate.get("source_ref") if coordinate else None
+                        ),
+                        "command": (
+                            "python3 scripts/query_corpus.py --paper-anchor "
+                            f"{claim['paper_label']}"
+                        ),
+                        "authority_posture": (
+                            "authored_paper_navigation_not_proof_authority"
+                        ),
+                    }
                 )
             routes.append(
                 {
@@ -3181,6 +3503,7 @@ def reviewed_result_family_module_routes(
                             "authored_paper_navigation_not_proof_authority"
                         ),
                     },
+                    "claim_paper_routes": claim_paper_routes,
                     "open_boundary": {
                         "boundary": family.get("boundary"),
                         "problem_route": (
@@ -3793,6 +4116,11 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     reviewed_family_routes = reviewed_result_family_module_routes(
         module["path"], claims, problems
     )
+    claim_family_routes = [
+        family_route
+        for route in problem_routes
+        for family_route in route.get("claim_family_routes", [])
+    ]
     module_route_memory = module_route_memory_projection(
         declarations,
         claims,
@@ -3800,6 +4128,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
             route
             for route in problem_routes
             if route.get("reviewed_result_family_ids")
+            or route.get("claim_family_ids")
         ],
     )
     return {
@@ -3818,19 +4147,44 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         ),
         "attached_claims": claim_rows,
         "reviewed_result_families": reviewed_family_routes,
+        "claim_family_routes": claim_family_routes,
         "declaration_preview": declaration_preview,
         "problem_routes": problem_routes,
         "problem_route_contract": {
             "source": "docs/problems.json::problems[].modules",
             "matching": (
                 "exact indexed module path or docs/claims.json::external_"
-                "verification_packet.main_results.original_source"
+                "verification_packet.main_results.original_source, or "
+                "docs/claims.json::claims[].declarations plus a canonical "
+                "mathematical programme route"
             ),
             "boundary": (
                 "Problem routes are navigation context; they expand the paper, "
                 "reviewed families, declarations, sources, and exact open "
                 "obligations without promoting a claim or replacing Lean "
                 "authority."
+            ),
+        },
+        "claim_family_route_contract": {
+            "source": (
+                "docs/claims.json::claims[].declarations and "
+                "machine_readable_paper.entrypoints"
+            ),
+            "matching": (
+                "exact source module declaration claim plus its canonical "
+                "mathematical programme route"
+            ),
+            "claim_registry_context": (
+                "When the canonical claims review matrix or publication-assembly "
+                "contribution-family record explicitly names the claim, its grouped "
+                "significance and method boundary are returned as context, not as a "
+                "new family."
+            ),
+            "boundary": (
+                "Claim-family routes expose the registered claim, representative "
+                "declarations, paper anchor, problem route, and exact open "
+                "propositions. They do not promote subordinate declarations or "
+                "replace claim or Lean authority."
             ),
         },
         "route_memory": module_route_memory,
