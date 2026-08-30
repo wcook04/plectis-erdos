@@ -54,6 +54,7 @@ SEMANTIC_HANDOFF_ROOT_FAMILIES = (
 THREE_PRIME_LCM_FAMILY = "three_prime_lcm_cells"
 RANK_TWO_KERNEL_FAMILY = "rank_two_kernel_no_go"
 HEIGHT_FIBRE_FAMILY = "height_fibre_and_shell"
+DYADIC_ALPHABET_FAMILY = "dyadic_block_alphabet"
 
 
 @lru_cache(maxsize=16)
@@ -268,6 +269,7 @@ def _live_source_declaration(
         raise ValueError(f"source declaration module is missing: {module}")
     declaration_pattern = re.compile(
         r"^\s*(?:@\[[^\]]*\]\s*)*"
+        r"(?:(?:noncomputable|protected|private)\s+)*"
         r"(?:theorem|lemma|def|abbrev)\s+" + re.escape(name) + r"\b"
     )
     live_line = next(
@@ -812,6 +814,102 @@ def height_fibre_and_shell_handoff(
     }
 
 
+def dyadic_block_alphabet_handoff(
+    palomar: Mapping[str, Any] | None = None,
+    claims: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Expose the exact finite `{2,3,5}` dyadic-block alphabet consumer."""
+    palomar = palomar or load_json(PALOMAR)
+    claims_document = claims or load_json(CLAIMS)
+    review_rows = _claim_family_rows(claims_document)
+    review = review_rows.get(DYADIC_ALPHABET_FAMILY)
+    if not isinstance(review, dict):
+        raise ValueError("Claims review matrix lacks dyadic_block_alphabet")
+    ranks = _canonical_family_ranks(palomar)
+    rank = ranks.get(DYADIC_ALPHABET_FAMILY)
+    if rank is None:
+        raise ValueError("Palomar programme order lacks dyadic_block_alphabet")
+    placements = [
+        row
+        for row in palomar.get("selection_contract", {}).get(
+            "represented_family_placements", []
+        )
+        if row.get("family_id") == DYADIC_ALPHABET_FAMILY
+    ]
+    if len(placements) != 1:
+        raise ValueError("Palomar must expose one dyadic-alphabet placement")
+    source_module = "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+    source_names = (
+        "dyadicBlockBase235",
+        "dyadicBlockBase235_cases",
+        "dyadicBlockBase235_mem_interval",
+    )
+    atlas = load_json(ATLAS)
+    declarations = [
+        _live_source_declaration(source_module, name, atlas)
+        for name in source_names
+    ]
+    claimed = review.get("declarations")
+    if not isinstance(claimed, list) or {
+        str(row).rsplit(".", 1)[-1] for row in claimed
+    } != {"dyadicBlockBase235_cases"}:
+        raise ValueError("Claims dyadic-alphabet declaration drifted from source")
+    return {
+        "family": {
+            "family_id": DYADIC_ALPHABET_FAMILY,
+            "problem": rank["problem"],
+            "authority_rank": {
+                "programme_position": rank["programme_position"],
+                "basis": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                    "programme_family_order"
+                ),
+                "boundary": (
+                    "Within-problem order only; no cross-problem rank is inferred."
+                ),
+            },
+            "palomar_tier": placements[0].get("tier_id"),
+            "palomar_judgement": placements[0].get("relative_judgement"),
+            "proof_status": review.get("contribution_class"),
+            "proof_status_authority": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+                ".families[dyadic_block_alphabet].contribution_class"
+            ),
+            "summary": review.get("summary"),
+            "boundary": review.get("boundary"),
+        },
+        "hard_mechanism": (
+            "The dyadic block definition compresses the internal 3- and 5-power "
+            "jumps together with the terminal factor 2. The exact case theorem "
+            "reduces every actual radix to the four-symbol alphabet {2, 6, 10, 30}; "
+            "the interval theorem supplies the bounded-radix interface consumed "
+            "by finite carry checks."
+        ),
+        "source_declarations": declarations,
+        "natural_friction_evidence": [
+            review.get("boundary"),
+            "A finite radix alphabet constrains local transitions but does not "
+            "produce cofinal escape in the actual series.",
+        ],
+        "open_producer_boundaries": {
+            "cofinal_escape": (
+                "The finite alphabet does not supply the needed cofinal residue-"
+                "window carry escape or an actual-series bridge."
+            ),
+            "endpoint": review.get("boundary"),
+        },
+        "authority": {
+            "claims": "docs/claims.json::external_verification_packet.review_matrix.families[dyadic_block_alphabet]",
+            "palomar": "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract.represented_family_placements and programme_family_order",
+            "source": source_module,
+        },
+        "follow": {
+            "family": "python3 scripts/query_semantic.py family-relations dyadic_block_alphabet",
+            "problem": "python3 scripts/query_corpus.py --route erdos_269",
+        },
+    }
+
+
 def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     """Join the expert index to canonical endpoint-facing family packets.
 
@@ -831,6 +929,7 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
         three_prime_lcm_cells_handoff(palomar, claims_document),
         rank_two_kernel_no_go_handoff(palomar, claims_document),
         height_fibre_and_shell_handoff(palomar, claims_document),
+        dyadic_block_alphabet_handoff(palomar, claims_document),
     ]
     supporting_families.sort(
         key=lambda row: (

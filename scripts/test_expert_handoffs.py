@@ -172,6 +172,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     assert set(supporting) == {
         "rank_two_kernel_no_go",
         "height_fibre_and_shell",
+        "dyadic_block_alphabet",
         "three_prime_lcm_cells",
     }
     assert [
@@ -179,6 +180,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     ] == [
         "rank_two_kernel_no_go",
         "height_fibre_and_shell",
+        "dyadic_block_alphabet",
         "three_prime_lcm_cells",
     ]
     handoff = supporting["three_prime_lcm_cells"]
@@ -304,6 +306,24 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     assert "quadratic function" in height["hard_mechanism"]
     assert "divisibility bridge" in height["open_producer_boundaries"][
         "divisibility_bridge"
+    ]
+
+    dyadic = supporting["dyadic_block_alphabet"]
+    assert dyadic["family"]["authority_rank"]["programme_position"] == 5
+    assert dyadic["family"]["palomar_tier"] == "supporting_and_long_tail"
+    assert dyadic["family"]["proof_status"] == (
+        "locally proved result; novelty unassessed"
+    )
+    assert {
+        row["name"] for row in dyadic["source_declarations"]
+    } == {
+        "dyadicBlockBase235",
+        "dyadicBlockBase235_cases",
+        "dyadicBlockBase235_mem_interval",
+    }
+    assert "four-symbol alphabet" in dyadic["hard_mechanism"]
+    assert "cofinal residue" in dyadic["open_producer_boundaries"][
+        "cofinal_escape"
     ]
 
 
