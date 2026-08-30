@@ -36,6 +36,9 @@ $\sigma=1$ under $0\le\rho$ and $1+\rho\le\sigma$
       {rectangular_hp_threshold_le_classical}{threshold bound};
 \lword{Erdos1049/HermitePadeNoGo.lean}{126}
       {rectangular_hp_threshold_eq_classical_iff}{equality case}).
+The hard step is the gap-sign calculation: after writing
+$\sigma=1+\rho+u$ with $u\ge0$, every term in the cleared gap is
+nonpositive, and its unique zero forces $\rho=u=0$.
 This retires only that model-specific source of an improved height margin: it
 constructs no approximating polynomials or remainders, is not a universal
 Pad\'e or Hermite--Pad\'e no-go, and proves no irrationality at $3/2$.
@@ -56,10 +59,10 @@ difference cancelling four prescribed endpoint residues, that is, both endpoint
 jets in both sequences.  This constructs only the signed relation; it does not
 ensure that the resulting polynomial pair or analytic remainder is nonzero.
 
-The finite collision count has a sharper threshold than this convenient bound.
-For four-jet depths $R,S$, $M$ coefficient pairs suffice exactly when
-$M>2Rlog_2 3+2S$; if $N=2^M$ and
-$Q=3^{2R}2^{2S}$, convexity gives at least
+The pigeonhole count has a sharper trigger than this convenient bound.
+For four-jet depths $R,S$, it guarantees a collision whenever
+$M>2R\log_2 3+2S$; if $N=2^M$ and
+$Q=3^{2R}2^{2S}$, convexity then gives at least
 $\tfrac12(N^2/Q-N)$ equal-signature selector pairs.  The surviving finite
 problem is therefore to find one collision outside both the polynomial-pair
 nullspace and the $3/2$-remainder nullspace.  This separates finite normality
@@ -253,7 +256,8 @@ subseries $\sum_{n\in A}(t^{n}-1)^{-1}$ over a restricted index set $A$ is
 treated by Kova\v{c} and Tao~\cite{kovactao2024}.  The rational non-integer
 progress relevant here is instead the height criterion of Bundschuh and
 V\"a\"an\"anen~\cite{bv1994}, which remains the strongest explicit numerical
-threshold we know of for this value.  It is not the only later source admitting
+threshold among the sources compared here for this value.  It is not the only
+later source admitting
 non-integral rational bases: Zudilin's Pad\'e-and-Hankel treatment of the
 generalized $q$-logarithm remarks that its results also hold for non-integer
 $p=r/s$ with $|p|>1$, under an assumption $\log|r|>c\log|s|$ for some computable
