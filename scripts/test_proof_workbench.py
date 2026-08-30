@@ -318,6 +318,37 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
         else:
             raise AssertionError(f"workbench accepted malformed move ids in {session_name}")
 
+    invalid_lifecycle_session = workbench.Session(sessions_root, "invalid-lifecycle")
+    invalid_lifecycle_session.directory.mkdir(parents=True)
+    lifecycle_rows = [
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        },
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "session_closed",
+        },
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m003",
+            "kind": "note",
+            "note_kind": "observation",
+            "text": "after close",
+        },
+    ]
+    for row in lifecycle_rows:
+        invalid_lifecycle_session.append(row)
+    try:
+        invalid_lifecycle_session.moves()
+    except SystemExit as error:
+        if "final move" not in str(error):
+            raise AssertionError(f"terminal lifecycle lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted a move after session_closed")
+
     receipt_session = workbench.Session(sessions_root, "malformed-receipt")
     receipt_session.directory.mkdir(parents=True)
     rows = [
@@ -638,6 +669,39 @@ def check_session_lifecycle(sessions_root: Path) -> None:
     )
     assert closed["move_counts"]["note"] == 2
     assert closed["kernel_accepted_probes"] == 0
+    for command in (
+        [
+            "note",
+            "--session",
+            "t_lifecycle",
+            "--kind",
+            "observation",
+            "--text",
+            "after close",
+        ],
+        [
+            "close",
+            "--session",
+            "t_lifecycle",
+            "--outcome",
+            "open",
+            "--summary",
+            "closed twice",
+        ],
+    ):
+        try:
+            _run(sessions_root, command)
+        except SystemExit as error:
+            if "already closed" not in str(error):
+                raise AssertionError(f"closed-session mutation lacked a bounded diagnostic: {error}")
+        else:
+            raise AssertionError(f"workbench accepted {command[0]} after session closure")
+    assert [row["kind"] for row in workbench.Session(sessions_root, "t_lifecycle").moves()] == [
+        "session_opened",
+        "note",
+        "note",
+        "session_closed",
+    ]
 
 
 def check_probe_runner_failures() -> None:

@@ -276,6 +276,21 @@ class Session:
                         f"invalid workbench ledger row on line {line_number}: "
                         f"{row['kind']!r} requires schema {expected_schema!r}"
                     )
+                if not rows and row["kind"] != "session_opened":
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: "
+                        "session must begin with session_opened"
+                    )
+                if rows and row["kind"] == "session_opened":
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: "
+                        "session_opened is only valid as the first move"
+                    )
+                if rows and rows[-1]["kind"] == "session_closed":
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: "
+                        "session_closed must be the final move"
+                    )
                 rows.append(row)
         return rows
 
@@ -303,6 +318,17 @@ def _base_record(session: Session, kind: str) -> dict[str, Any]:
         "at": _utc_now(),
         "kind": kind,
     }
+
+
+def _require_writable_session(session: Session, action: str) -> None:
+    """Reject mutations that would append to a missing or terminal session."""
+    if not session.exists():
+        raise SystemExit(f"unknown session: {session.slug}")
+    moves = session.moves()
+    if not moves or moves[-1]["kind"] == "session_closed":
+        raise SystemExit(
+            f"{action} refused: session {session.slug} is already closed or not open"
+        )
 
 
 def _probe_verdict(row: dict[str, Any], action: str) -> str:
@@ -390,8 +416,7 @@ def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
 
 def cmd_note(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
-    if not session.exists():
-        raise SystemExit(f"unknown session: {args.session}")
+    _require_writable_session(session, "note")
     record = _base_record(session, "note")
     record.update(
         {
@@ -407,8 +432,7 @@ def cmd_note(args: argparse.Namespace, root: Path) -> dict[str, Any]:
 
 def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
-    if not session.exists():
-        raise SystemExit(f"unknown session: {args.session}")
+    _require_writable_session(session, "probe")
     source_path = Path(args.file)
     if path_has_symlink_component(source_path):
         raise SystemExit(
@@ -452,8 +476,7 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
 
 def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
-    if not session.exists():
-        raise SystemExit(f"unknown session: {args.session}")
+    _require_writable_session(session, "claim")
     probes = {
         row["move_id"]: row
         for row in session.moves()
@@ -486,8 +509,7 @@ def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
 
 def cmd_close(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
-    if not session.exists():
-        raise SystemExit(f"unknown session: {args.session}")
+    _require_writable_session(session, "close")
     moves = session.moves()
     counts: dict[str, int] = {}
     for row in moves:
