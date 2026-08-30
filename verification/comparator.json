@@ -17,6 +17,7 @@
     "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
     "Erdos249257.ExternalVerification.exists_primeGap0_gt",
     "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
+    "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
     "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "Erdos249257.ExternalVerification.image_pivotSupplierPrimes_eq_pivotFiber",
@@ -41,7 +42,8 @@
     "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
     "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
     "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
-    "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+    "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
+    "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
   ],
   "permitted_axioms": [
     "propext",
