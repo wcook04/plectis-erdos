@@ -126,6 +126,17 @@ def main() -> int:
     wrong_root["inventory"]["root"] = "docs/"  # type: ignore[index]
     reject(wrong_root, "inventory root", tracked, present)
 
+    noncanonical_path = copy.deepcopy(data)
+    noncanonical_path["artifacts"][0]["path"] = noncanonical_path["artifacts"][0]["path"].replace(  # type: ignore[index]
+        "docs/primary-sources/", "docs/primary-sources//", 1
+    )
+    reject(
+        noncanonical_path,
+        "artifact path must be a normalized relative path",
+        tracked,
+        present,
+    )
+
     for payload in (b"/Users/private/source.pdf", b"C:\\Users\\private\\source.pdf"):
         metadata_errors = metadata_private_path_errors({"synthetic.md": payload})
         require(metadata_errors, "synthetic private metadata marker was accepted")

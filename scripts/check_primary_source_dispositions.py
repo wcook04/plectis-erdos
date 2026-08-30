@@ -61,7 +61,7 @@ def artifact_path(value: Any, errors: list[str]) -> Path | None:
         errors.append(f"artifact path must stay under docs/primary-sources: {value!r}")
         return None
     pure = PurePosixPath(value)
-    if pure.is_absolute() or ".." in pure.parts:
+    if pure.is_absolute() or pure.as_posix() != value or ".." in pure.parts:
         errors.append(f"artifact path must be a normalized relative path: {value!r}")
         return None
     if not value.lower().endswith(ARTIFACT_SUFFIXES):
