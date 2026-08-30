@@ -34,6 +34,7 @@ ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
 WAVE_INDEX_PATH = ROOT / "docs" / "WAVE_INDEX.md"
 CLAIMS_PATH = ROOT / "docs" / "claims.json"
+PROBLEMS_PATH = ROOT / "docs" / "problems.json"
 ATLAS_PATH = ROOT / "docs" / "declaration_atlas.json"
 METHODOLOGY_PATH = ROOT / "docs" / "methodology.json"
 MAIN_PAPER_TEX = ROOT / "paper" / "erdos249-257-main-paper.tex"
@@ -603,6 +604,7 @@ def replace_generated_region(text: str, begin: str, end: str, replacement: str) 
 
 def build() -> dict[str, Any]:
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
+    problems = json.loads(PROBLEMS_PATH.read_text(encoding="utf-8"))
     atlas = json.loads(ATLAS_PATH.read_text(encoding="utf-8"))
     methodology = json.loads(METHODOLOGY_PATH.read_text(encoding="utf-8"))
     paper_aliases = json.loads(PAPER_ALIASES_PATH.read_text(encoding="utf-8"))
@@ -703,6 +705,10 @@ def build() -> dict[str, Any]:
                     "path": "docs/claims.json",
                     "content_digest": file_digest(CLAIMS_PATH),
                 },
+                "problem_index": {
+                    "path": "docs/problems.json",
+                    "content_digest": file_digest(PROBLEMS_PATH),
+                },
                 "declaration_atlas": {
                     "path": "docs/declaration_atlas.json",
                     "content_digest": file_digest(ATLAS_PATH),
@@ -735,6 +741,7 @@ def build() -> dict[str, Any]:
         },
         "schemas": {
             "claims": claims["schema"],
+            "problems": problems["schema"],
             "machine_readable_paper": machine_paper["schema"],
             "declaration_atlas": atlas["schema"],
             "methodology": methodology["schema"],
@@ -763,6 +770,7 @@ def build() -> dict[str, Any]:
             "declaration_level_proof_dependencies": False,
             "typed_remaining_open_propositions": True,
             "claim_transition_requirements": True,
+            "claim_first_route_memory_resume": True,
             "human_mathematical_review_is_machine_decidable": False,
         },
         "retrieval_modes": {
@@ -840,6 +848,26 @@ def build() -> dict[str, Any]:
             "claim_status_query": (
                 "python3 scripts/query_corpus.py --status <claim_status>"
             ),
+            "route_memory_query": (
+                "python3 scripts/query_route_memory.py --problem <problem_number> "
+                "[--route <mathematical_programme_id>]"
+            ),
+            "route_memory_contract": {
+                "selector_source": "docs/problems.json::problems.erdos_number",
+                "problem_selectors": [
+                    row["erdos_number"] for row in problems["problems"]
+                ],
+                "validate": "python3 scripts/query_route_memory.py --validate <packet.json>",
+                "authority_posture": (
+                    "derived_navigation_resume_state_not_claim_or_proof_authority"
+                ),
+                "rejections": [
+                    "stale_source_snapshot",
+                    "cross_problem_route_or_declaration",
+                    "invented_reference",
+                    "resume_state_mismatch",
+                ],
+            },
         },
         "expansion": {
             "machine_readable_paper": {
@@ -852,6 +880,14 @@ def build() -> dict[str, Any]:
                     "complete_module_import_graph",
                 ],
                 "query": "python3 scripts/query_corpus.py --claim <claim_id>",
+            },
+            "problem_index": {
+                "path": "docs/problems.json",
+                "expected_content_digest": file_digest(PROBLEMS_PATH),
+                "query": "python3 scripts/query_route_memory.py --problem <problem_number>",
+                "authority_posture": (
+                    "canonical_problem_selector_source_not_claim_or_proof_authority"
+                ),
             },
             "exhaustive_declaration_atlas": {
                 "path": "docs/declaration_atlas.json",

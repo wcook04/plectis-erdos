@@ -91,6 +91,29 @@ def remove_semantic_anchor(text: str, token: str) -> str:
 
 def check_route_memory_cold_clone() -> int:
     """Exercise the tracked-only route-memory entry for every selector."""
+    descriptor = json.loads(
+        (ROOT / "docs" / "corpus_descriptor.json").read_text(encoding="utf-8")
+    )
+    contract = descriptor["compact_graph"]["route_memory_contract"]
+    if contract["selector_source"] != "docs/problems.json::problems.erdos_number":
+        raise AssertionError("descriptor route-memory selector source drifted")
+    if contract["problem_selectors"] != list(FROZEN_PROBLEMS):
+        raise AssertionError("descriptor route-memory selector coverage drifted")
+    if contract["validate"] != (
+        "python3 scripts/query_route_memory.py --validate <packet.json>"
+    ):
+        raise AssertionError("descriptor route-memory validation command drifted")
+    if contract["authority_posture"] != (
+        "derived_navigation_resume_state_not_claim_or_proof_authority"
+    ):
+        raise AssertionError("descriptor route-memory authority boundary drifted")
+    if set(contract["rejections"]) != {
+        "stale_source_snapshot",
+        "cross_problem_route_or_declaration",
+        "invented_reference",
+        "resume_state_mismatch",
+    }:
+        raise AssertionError("descriptor route-memory rejection contract drifted")
     checked = 0
     for problem_number in FROZEN_PROBLEMS:
         result = subprocess.run(
