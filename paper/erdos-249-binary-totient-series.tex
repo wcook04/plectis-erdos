@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
-\renewcommand{\commitshort}{9e231ce4371f}
+\renewcommand{\commit}{81bf8aee384a5df45dd9a27d268a24044fae761b}
+\renewcommand{\commitshort}{81bf8aee384a}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -77,8 +77,8 @@ $k^e+1$.  The independence input is external, so this conditional rank statement
 is structural and does not prove irrationality of $\Stot$.
 
 For release review, the selected dyadic core rows are exact:
-\texttt{finrank\_totientKernelThroughLevelFamily\_eq} gives dimension
-$2^e+1$ for every $e\ge1$, while
+\mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{the complete finite-level rank theorem}
+gives dimension $2^e+1$ for every $e\ge1$, while
 \texttt{exists\_totientDyadicSectionBasis} supplies a basis for the full
 odd-core span.  The companion row
 \texttt{not\_finiteDimensional\_span\_fullTotientKernel} records that the
@@ -374,6 +374,10 @@ reductions as well.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/TotientMahlerDefect.lean}{935}{linearIndependent_canonicalTotientKernelFamily}{independence},
 \mword{Erdos249257/TotientMahlerDefect.lean}{989}{finrank_canonicalTotientKernel_eq}{dimension},
+\mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{the exact finite-truncation rank};
+the latter is the complete truncation wrapper, with its explicit hypothesis $e\ge1$,
+while the canonical-family rank is the intermediary because even residues reduce to
+the odd-core family.
 \mword{Erdos249257/TotientMahlerDefect.lean}{1145}{not_finiteDimensional_span_fullTotientKernel}{infinite-dimensionality directly}.}
 
 \item\label{res:index} \stag{formalised here}

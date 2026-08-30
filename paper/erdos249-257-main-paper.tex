@@ -35,8 +35,8 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public formal-source checkpoint used by this paper.
-\newcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
-\newcommand{\commitshort}{9e231ce4371f}
+\newcommand{\commit}{81bf8aee384a5df45dd9a27d268a24044fae761b}
+\newcommand{\commitshort}{81bf8aee384a}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main}
@@ -3129,9 +3129,13 @@ the independence theorem
 \lword{TotientMahlerDefect.lean}{935}{linearIndependent_canonicalTotientKernelFamily}{canonical kernel independence},
 the exact rank formula
 \lword{TotientMahlerDefect.lean}{989}{finrank_canonicalTotientKernel_eq}{exact canonical rank},
+and the complete truncation wrapper
+\lword{TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{actual finite-truncation rank},
 and
 \lword{TotientMahlerDefect.lean}{1145}{not_finiteDimensional_span_fullTotientKernel}{infinite full-kernel dimension}.
-The theorem concerns the coefficient kernel.  It does not imply that $S$ is
+The linked truncation theorem carries the explicit hypothesis $e\ge1$;
+CRT--Dirichlet separation, canonical independence, and residue reduction explain
+its mechanism.  The theorem concerns the coefficient kernel.  It does not imply that $S$ is
 irrational.
 
 \paragraph{Relation to prior work.}
