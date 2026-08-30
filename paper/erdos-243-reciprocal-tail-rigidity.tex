@@ -152,14 +152,27 @@ and is not followed here~\cite[p.~105]{erdos1988}\cite{erdosproblems}.
 Koizumi records the convenient sufficient rate
 $a_n^2/a_{n+1}=1+o(1/n)$ under which the Erd\H{o}s--Straus criterion settles
 the problem~\cite[Remark~21, p.~13]{koizumi2025}.  Duverney proved a
-conditional signed form of the
-problem itself: if
-$\sum_{n\ge0}\left|a_{n+1}/a_n^{2}-1\right|$ converges, then
-the reciprocal sum, even with numerators in $\{-1,1\}$, is rational if and
-only if the corresponding signed recurrence holds for all large
-$n$~\cite[Corollary~3.2, p.~287]{duverney2001}.  The all-positive
-specialisation is the form relevant here.  Neither result is formalised here,
-and the results below do not recover either of them.
+conditional signed form of the problem itself: for signs
+$\epsilon_n\in\{-1,1\}$, if
+$\sum_{n\ge0}(a_{n+1}/a_n^{2}-1)$ converges, then the reciprocal sum with
+numerators $\epsilon_n$ is rational if and only if
+\[
+ a_{n+1}=a_n^2-(\epsilon_{n+1}/\epsilon_n)a_n
+             +\epsilon_{n+2}/\epsilon_{n+1}
+\]
+for all large $n$~\cite[Corollary~3.2, p.~287]{duverney2001}.  Absolute
+convergence is a stronger sufficient specialisation, not the hypothesis
+printed in that corollary.  The all-positive specialisation is the form
+relevant here.  Badea's positive-term criterion is adjacent but different:
+for positive rational terms $b_n/a_n$, eventual strict inequality
+\[
+ a_{n+1}>\frac{b_{n+1}}{b_n}a_n^2-\frac{b_{n+1}}{b_n}a_n+1
+\]
+forces irrationality, while rationality under the corresponding non-strict
+inequality forces eventual equality~\cite[Theorem~A, p.~313; Cor.~2.2,
+p.~316]{badea1993}.  These positive-term hypotheses do not cover the
+mixed-sign state orbits studied here.  Neither result is formalised here, and
+the results below do not recover either of them.
 
 Koizumi's work on doubly exponential sequences~\cite{koizumi2025} bears
 directly on the state system used below, and supplies the coordinates in which
@@ -1349,7 +1362,7 @@ and correctly indexed growth factor, under the published analytic hypotheses.
 
 \paragraph{Duverney.}
 Formalise Corollary~3.2 of~\cite{duverney2001}, including its signed
-numerators and absolute convergence hypothesis, and then recover the
+numerators and its one-sided summability hypothesis, and then recover the
 all-positive specialisation used here.  These are useful verification
 projects, but neither is an additional open mathematical problem.
 
@@ -1538,6 +1551,10 @@ technique transfers to any forced orbit whose step is a polynomial division.
   \href{https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf}
   {\emph{Irrationality of fast converging series of rational numbers}},
   J. Math. Sci. Univ. Tokyo \textbf{8} (2001), 275--316. MR~1837165.
+\bibitem{badea1993} C.~Badea,
+  \href{https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf}{\emph{A theorem
+  on irrationality of infinite series and applications}}, Acta Arith.
+  \textbf{63} (1993), no.~4, 313--323.
 \bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L. Graham,
   \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\emph{Old
   and New Problems and Results in Combinatorial Number Theory}},
