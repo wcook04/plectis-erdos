@@ -47,6 +47,10 @@ def main() -> int:
         "check_cold_clone_comprehension.py --quick",
         "docs/orientation.json::agent_entry",
         "docs/publication_entry_packet.json",
+        "--route comparator_assurance",
+        "--route palomar_qualification",
+        "does not establish novelty, significance, priority, or",
+        "does not confer acceptance,",
         "Lean source checked by the pinned Lean kernel",
         "Do not absorb the complete deep contract",
     ):
