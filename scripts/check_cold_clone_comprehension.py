@@ -38,6 +38,12 @@ INDEXED_PROBLEM_NUMBERS = frozenset(
         (ROOT / "docs" / "problems.json").read_text(encoding="utf-8")
     )["problems"]
 )
+INDEXED_PROBLEM_ORDER = tuple(
+    row["erdos_number"]
+    for row in json.loads(
+        (ROOT / "docs" / "problems.json").read_text(encoding="utf-8")
+    )["problems"]
+)
 INDEXED_PROBLEM_COUNT = len(INDEXED_PROBLEM_NUMBERS)
 QUERY = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
@@ -280,6 +286,50 @@ def quick_summary() -> dict[str, Any]:
         "status_taxonomy": orientation["status_taxonomy"],
         "mathematical_programmes": orientation["mathematical_programmes"],
     }
+
+
+def validate_route_memory_descriptor(descriptor: dict[str, Any]) -> None:
+    """Keep the CI first-contact descriptor bound to the route-memory rail."""
+    compact_graph = descriptor.get("compact_graph")
+    if not isinstance(compact_graph, dict):
+        raise AssertionError("corpus descriptor compact graph is missing")
+    contract = compact_graph.get("route_memory_contract")
+    if not isinstance(contract, dict):
+        raise AssertionError("corpus descriptor route-memory contract is missing")
+    expected_query = (
+        "python3 scripts/query_route_memory.py --problem <problem_number> "
+        "[--route <mathematical_programme_id>]"
+    )
+    if compact_graph.get("route_memory_query") != expected_query:
+        raise AssertionError("corpus descriptor route-memory query drifted")
+    if contract.get("selector_source") != "docs/problems.json::problems.erdos_number":
+        raise AssertionError("corpus descriptor route-memory selector source drifted")
+    if contract.get("problem_selectors") != list(INDEXED_PROBLEM_ORDER):
+        raise AssertionError("corpus descriptor route-memory selector coverage drifted")
+    if contract.get("validate") != (
+        "python3 scripts/query_route_memory.py --validate <packet.json>"
+    ):
+        raise AssertionError("corpus descriptor route-memory validation command drifted")
+    if contract.get("authority_posture") != (
+        "derived_navigation_resume_state_not_claim_or_proof_authority"
+    ):
+        raise AssertionError("corpus descriptor route-memory authority boundary drifted")
+    if set(contract.get("rejections", [])) != {
+        "stale_source_snapshot",
+        "cross_problem_route_or_declaration",
+        "invented_reference",
+        "resume_state_mismatch",
+    }:
+        raise AssertionError("corpus descriptor route-memory rejection contract drifted")
+    if descriptor.get("capabilities", {}).get("claim_first_route_memory_resume") is not True:
+        raise AssertionError("corpus descriptor route-memory capability is not advertised")
+    problem_index = descriptor.get("expansion", {}).get("problem_index")
+    if not isinstance(problem_index, dict) or problem_index.get("path") != "docs/problems.json":
+        raise AssertionError("corpus descriptor problem-index expansion drifted")
+
+
+def check_route_memory_descriptor() -> None:
+    validate_route_memory_descriptor(json.loads(read("docs/corpus_descriptor.json")))
 
 
 def check_semantic_corpus_freshness() -> None:
@@ -2184,6 +2234,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
 def run_quick_check() -> int:
     """Verify the zero-build first-contact path from committed projections."""
     check_semantic_corpus_freshness()
+    check_route_memory_descriptor()
     summary = quick_summary()
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
@@ -2235,6 +2286,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     validate_query_cli_process_smoke()
+    check_route_memory_descriptor()
     packets = collect_agent_packets()
     summary = packets["summary"]
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
