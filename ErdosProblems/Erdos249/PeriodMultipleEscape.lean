@@ -172,6 +172,80 @@ theorem exists_late_pureDyadicEndpointError_excursion
     exact prime_forces_pureDyadicEndpointError_excursion
       (p - (c + 1)) c k hpShift
 
+/- **Cofinal one-third-linear excursion.**  Around a sufficiently late
+prime, at least one of two adjacent fixed-quotient errors carries one third
+of the prime-position forcing.  This rules out every eventually
+`o(H)` fixed-quotient shadow, while stopping at the exact factor-`3` gap
+between prime forcing and the full moving endpoint boundary. -/
+theorem exists_late_pureDyadicEndpointError_oneThird_excursion
+    (c B : ℕ) (k : ℤ) :
+    ∃ H, B ≤ H ∧
+      ((c + H : ℤ) - k ≤ 3 * |pureDyadicEndpointError H c k| ∨
+        (c + H : ℤ) - k ≤
+          3 * |pureDyadicEndpointError (H + 1) c k|) := by
+  obtain ⟨H, hH, hexc⟩ :=
+    exists_late_pureDyadicEndpointError_excursion c B k
+  refine ⟨H, hH, ?_⟩
+  by_cases hcur :
+      (c + H : ℤ) - k ≤ 3 * |pureDyadicEndpointError H c k|
+  · exact Or.inl hcur
+  · right
+    have hcur' :
+        3 * |pureDyadicEndpointError H c k| < (c + H : ℤ) - k :=
+      lt_of_not_ge hcur
+    by_contra hnext
+    have hnext' :
+        3 * |pureDyadicEndpointError (H + 1) c k| <
+          (c + H : ℤ) - k :=
+      lt_of_not_ge hnext
+    linarith
+
+/- Single-coordinate form of the one-third excursion: the harmless loss of
+one unit absorbs which side of the prime carries the forcing. -/
+theorem exists_late_pureDyadicEndpointError_oneThird
+    (c B : ℕ) (k : ℤ) :
+    ∃ H, B ≤ H ∧
+      (c + H : ℤ) - k - 1 ≤
+        3 * |pureDyadicEndpointError H c k| := by
+  obtain ⟨H, hH, hcur | hnext⟩ :=
+    exists_late_pureDyadicEndpointError_oneThird_excursion c B k
+  · exact ⟨H, hH, by linarith⟩
+  · refine ⟨H + 1, by omega, ?_⟩
+    push_cast
+    linarith
+
+/- **Bounded fixed-quotient shadowing is impossible for the actual totient
+word.**  For every prescribed error bound, one of the two coordinates around
+a sufficiently late prime exceeds it.  This is a genuine unboundedness
+theorem, but deliberately not a moving-linear escape theorem: the canonical
+residue-gap boundary still grows like `c + H`. -/
+theorem exists_late_pureDyadicEndpointError_abs_gt
+    (c B : ℕ) (k : ℤ) :
+    ∃ H, B ≤ H ∧
+      (B : ℤ) < |pureDyadicEndpointError H c k| := by
+  obtain ⟨H, hH, hexc⟩ :=
+    exists_late_pureDyadicEndpointError_excursion
+      c (4 * B + k.natAbs + 1) k
+  have hB : B ≤ H := by omega
+  have hk : k ≤ (k.natAbs : ℤ) := by
+    simpa using le_abs_self k
+  have hHZ : ((4 * B + k.natAbs + 1 : ℕ) : ℤ) ≤ (H : ℤ) := by
+    exact_mod_cast hH
+  have hlarge : 3 * (B : ℤ) < (c + H : ℤ) - k := by
+    push_cast at hHZ
+    have hc : (0 : ℤ) ≤ c := by positivity
+    omega
+  by_cases hcur : (B : ℤ) < |pureDyadicEndpointError H c k|
+  · exact ⟨H, hB, hcur⟩
+  · have hcurLe : |pureDyadicEndpointError H c k| ≤ (B : ℤ) :=
+      le_of_not_gt hcur
+    have hnext : (B : ℤ) < |pureDyadicEndpointError (H + 1) c k| := by
+      by_contra hnext
+      have hnextLe : |pureDyadicEndpointError (H + 1) c k| ≤ (B : ℤ) :=
+        le_of_not_gt hnext
+      linarith
+    exact ⟨H + 1, by omega, hnext⟩
+
 /- **Prime-successor bottom lock.**  Suppose `p = c+H+1` is prime and the
 error remains below the upper endpoint boundary for one further step.  The
 two consecutive actual totient letters then force the error immediately
@@ -473,6 +547,9 @@ theorem totient_series_ne_rat_of_den_dvd_128_300 (r : ℚ)
 #print axioms pureDyadicEndpointError_add
 #print axioms prime_forces_pureDyadicEndpointError_excursion
 #print axioms exists_late_pureDyadicEndpointError_excursion
+#print axioms exists_late_pureDyadicEndpointError_oneThird_excursion
+#print axioms exists_late_pureDyadicEndpointError_oneThird
+#print axioms exists_late_pureDyadicEndpointError_abs_gt
 #print axioms prime_successor_upper_trap_forces_bottom_lock
 #print axioms exists_late_prime_predecessor_bottom_lock_of_upper_trap
 #print axioms endpointWordBlock_const
