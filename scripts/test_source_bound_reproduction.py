@@ -17,11 +17,20 @@ from unittest.mock import patch
 import run_source_bound_reproduction as subject
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep reproduction assurance failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def expect_failure(action, fragment: str) -> None:
     try:
         action()
     except subject.ReproductionError as error:
-        assert fragment in str(error), (fragment, str(error))
+        require(
+            fragment in str(error),
+            f"expected error containing {fragment!r}, got {error!s}",
+        )
     else:
         raise AssertionError(f"expected ReproductionError containing {fragment!r}")
 
@@ -67,16 +76,28 @@ def test_hashing_and_exclusions(source: Path) -> None:
     first = subject.source_identity(source)
     (source / ".git" / "state").write_text("changed but excluded\n")
     (source / ".lake" / "cache").write_text("changed but excluded\n")
-    assert subject.source_identity(source) == first
+    require(
+        subject.source_identity(source) == first,
+        "excluded checkout state changed the source identity",
+    )
     (source / "included" / "a.txt").write_text("beta\n")
-    assert subject.source_identity(source)["source_digest"] != first["source_digest"]
+    require(
+        subject.source_identity(source)["source_digest"] != first["source_digest"],
+        "included source mutation did not change the source digest",
+    )
     (source / "included" / "a.txt").write_text("alpha\n")
-    assert subject.source_identity(source) == first
+    require(
+        subject.source_identity(source) == first,
+        "restored source did not recover its original identity",
+    )
 
 
 def test_isolation_success_and_validation(source: Path, plan: list[dict]) -> dict:
     receipt = subject.execute(source, plan)
-    assert not (source / ".lake" / "only-in-copy").exists()
+    require(
+        not (source / ".lake" / "only-in-copy").exists(),
+        "isolated execution leaked a write into the source checkout",
+    )
     subject.validate_receipt(receipt, source, plan)
     return receipt
 
@@ -113,7 +134,10 @@ def test_environment_isolation(source: Path) -> None:
     with patch.dict(os.environ, hostile, clear=False):
         receipt = subject.execute(source, plan)
     subject.validate_receipt(receipt, source, plan)
-    assert receipt["environment_contract"] == subject.ENVIRONMENT_CONTRACT
+    require(
+        receipt["environment_contract"] == subject.ENVIRONMENT_CONTRACT,
+        "reproduction receipt lost its environment contract",
+    )
 
 
 def test_rejections(source: Path, plan: list[dict], receipt: dict) -> None:
@@ -216,7 +240,10 @@ def test_canonical_receipt_round_trip(
     identity_before = subject.source_identity(source)
     receipt_path = source / subject.CANONICAL_RECEIPT_PATH
     subject.write_receipt(receipt_path, receipt, overwrite=False)
-    assert subject.source_identity(source) == identity_before
+    require(
+        subject.source_identity(source) == identity_before,
+        "writing the canonical receipt changed source identity",
+    )
     loaded = json.loads(receipt_path.read_text())
     subject.validate_receipt(loaded, source, plan)
 
@@ -229,7 +256,10 @@ def test_overwrite_guard(root: Path) -> None:
         "already exists",
     )
     subject.write_receipt(receipt_path, {"ok": True}, overwrite=True)
-    assert json.loads(receipt_path.read_text()) == {"ok": True}
+    require(
+        json.loads(receipt_path.read_text()) == {"ok": True},
+        "overwrite guard did not write the requested receipt",
+    )
 
 
 def main() -> None:
