@@ -63,6 +63,44 @@ def _source_digests(root: Path) -> dict[str, str]:
     return digests
 
 
+def _research_source_digests(
+    root: Path, problem: Mapping[str, Any]
+) -> dict[str, str]:
+    """Fingerprint an attached public research corpus, when one exists.
+
+    ``docs/problems.json`` is the indexed route authority, but its embedded
+    digests are not enough to make a resume packet source-current on their
+    own.  Include the referenced corpus files in the packet identity and
+    reject an index whose published digest no longer matches its file.
+    """
+    research = problem.get("research_corpus")
+    if research is None:
+        return {}
+    if not isinstance(research, Mapping):
+        raise RouteMemoryError("research_source_shape", str(problem.get("problem_id")))
+    files = research.get("files")
+    if not isinstance(files, Mapping):
+        raise RouteMemoryError("research_source_shape", "research_corpus.files")
+    digests: dict[str, str] = {}
+    for key, row in files.items():
+        if not isinstance(row, Mapping):
+            raise RouteMemoryError("research_source_shape", str(key))
+        raw_path = row.get("path")
+        if not isinstance(raw_path, str) or not raw_path:
+            raise RouteMemoryError("research_source_missing", str(key))
+        relative = Path(raw_path)
+        if relative.is_absolute() or ".." in relative.parts:
+            raise RouteMemoryError("invented_source_path", raw_path)
+        path = root / relative
+        if not path.is_file() or path.is_symlink():
+            raise RouteMemoryError("research_source_missing", raw_path)
+        digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+        if row.get("content_digest") != digest:
+            raise RouteMemoryError("research_source_stale", raw_path)
+        digests[str(key)] = digest
+    return digests
+
+
 def _head(root: Path) -> str:
     try:
         completed = subprocess.run(
@@ -302,6 +340,7 @@ def build_packet(
     claim_ids = {row["id"] for row in claim_refs}
     family_refs = _families_for(root, claim_ids)
     module_refs = _module_refs(problem)
+    research_source_digests = _research_source_digests(root, problem)
     consulted = [str(route["id"])] if route is not None else []
     related = [str(value) for value in route.get("related_route_ids", [])] if route else []
     route_relationships = [
@@ -323,6 +362,7 @@ def build_packet(
         "claim_ids": [row["id"] for row in claim_refs],
         "family_ids": [row["id"] for row in family_refs],
         "module_paths": [row["path"] for row in module_refs],
+        "research_source_digests": research_source_digests,
     }
     state_id = _canonical_digest(identity_material)
     packet = {
@@ -352,6 +392,7 @@ def build_packet(
         "claims": claim_refs,
         "families": family_refs,
         "modules": module_refs,
+        "research_corpus": problem.get("research_corpus"),
         "note": problem.get("note"),
         "paper": problem.get("paper"),
         "open_obligations": _compact_open_rows(problem, route, root=root),
@@ -359,6 +400,7 @@ def build_packet(
             "commit": source_commit,
             "digests": source_digests,
             "tracked_sources": list(SOURCE_FILES),
+            "research_corpus_digests": research_source_digests,
         },
         "resume_state": {
             "schema": RESUME_SCHEMA,
@@ -366,6 +408,7 @@ def build_packet(
             "selector": selector,
             "source_commit": source_commit,
             "source_digests": source_digests,
+            "research_corpus_digests": research_source_digests,
         },
         "boundaries": {
             "claim_authority": "docs/claims.json",
@@ -401,6 +444,12 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
         raise RouteMemoryError("stale_source_snapshot", "source commit differs from HEAD")
     if snapshot.get("digests") != expected["source_snapshot"]["digests"]:
         raise RouteMemoryError("stale_source_snapshot", "source digest differs from checkout")
+    if snapshot.get("research_corpus_digests") != expected["source_snapshot"][
+        "research_corpus_digests"
+    ]:
+        raise RouteMemoryError(
+            "stale_source_snapshot", "research corpus digest differs from checkout"
+        )
     expected_claims = {row["id"]: row for row in expected["claims"]}
     module_owners = _problem_module_owners(root)
     for claim in packet.get("claims", []):
@@ -438,6 +487,7 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
         "claims",
         "families",
         "modules",
+        "research_corpus",
         "note",
         "paper",
         "open_obligations",

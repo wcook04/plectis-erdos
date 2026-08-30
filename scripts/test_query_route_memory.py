@@ -40,6 +40,20 @@ def main() -> int:
         assert packet["resume_state"]["state_id"].startswith("sha256:")
         assert packet["source_snapshot"]["tracked_sources"] == list(route_memory.SOURCE_FILES)
         assert route_memory.validate_packet(packet)["packet_digest"] == packet["packet_digest"]
+    research_packet = packets[1041]
+    research = research_packet["research_corpus"]
+    assert research["directory"] == "research_corpus/Erdos1041"
+    assert research["strongest_result_summary"]["result_count"] == 35
+    assert research["authority_posture"].startswith("public_safe_research_evidence")
+    assert set(research_packet["source_snapshot"]["research_corpus_digests"]) == {
+        "frontier",
+        "strongest_results",
+        "manifest",
+        "checkpoint",
+    }
+    assert research_packet["resume_state"]["research_corpus_digests"] == research_packet[
+        "source_snapshot"
+    ]["research_corpus_digests"]
     routed_declarations = [
         declaration
         for claim in route_memory.build_packet("249", "erdos249_certificate_story")["claims"]
@@ -63,6 +77,11 @@ def main() -> int:
     stale = copy.deepcopy(packets[249])
     stale["source_snapshot"]["digests"]["docs/claims.json"] = "sha256:" + "0" * 64
     assert_rejected(stale, "stale_source_snapshot")
+    stale_research = copy.deepcopy(research_packet)
+    stale_research["source_snapshot"]["research_corpus_digests"]["frontier"] = (
+        "sha256:" + "0" * 64
+    )
+    assert_rejected(stale_research, "stale_source_snapshot")
     # A fabricated claim/declaration reference cannot be smuggled into a
     # packet by merely updating its digest fields.
     routed = route_memory.build_packet("249", "erdos249_certificate_story")
