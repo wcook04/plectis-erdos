@@ -181,13 +181,16 @@ transported at `069245df` and registered in the source-current committed
 Comparator screen. Its exact integral-window identity and
 least-positive-residue bound exclude a positive bounded reduced carry only
 under `CofinalLocalWindowEscape` and the stated recurrence/short-bound
-hypotheses. Both that cofinal escape producer and the rationality-to-carry,
-actual three-prime-series bridge remain open; no #269 endpoint, irrationality,
-novelty, priority, or external-review claim is made. It follows the #251
-small-mismatch route because it retains both an open producer and an open
-actual-series/rationality bridge, but it leads medium finite cell, minor, and
-residue machinery because it is the exact contradiction those mechanisms must
-feed.
+hypotheses. Claims `68b4b2b` adds the subordinate
+`no_positive_absorbedCarry_of_cofinalLocalWindowEscape` bridge: a nonzero
+`smoothFactor` is cancelled from its exact absorbed recurrence to reach that
+same reduced-carry contradiction. Both that cofinal escape producer and the
+rationality-to-carry, actual three-prime-series bridge remain open; no #269
+endpoint, irrationality, novelty, priority, or external-review claim is made.
+It follows the #251 small-mismatch route because it retains both an open
+producer and an open actual-series/rationality bridge, but it leads medium
+finite cell, minor, and residue machinery because it is the exact contradiction
+those mechanisms must feed.
 
 The #251 coefficient-only no-go is represented last among these three as one
 supporting negative/natural-friction family through

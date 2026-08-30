@@ -1442,7 +1442,7 @@
         {
           "id": "conditional_carry_escape",
           "contribution_class": "conditional no-go consumer; novelty and significance unassessed",
-          "summary": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; CofinalLocalWindowEscape, windowBase, windowForcing, and leastPositiveResidue are subordinate finite-window mechanism evidence.",
+          "summary": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "declarations": [
@@ -1450,9 +1450,10 @@
             "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
             "ErdosProblems.Erdos269.windowBase",
             "ErdosProblems.Erdos269.windowForcing",
-            "ErdosProblems.Erdos269.leastPositiveResidue"
+            "ErdosProblems.Erdos269.leastPositiveResidue",
+            "ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape"
           ],
-          "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
+          "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
         },
         {
           "id": "weighted_phase_carry_observer",
@@ -1631,7 +1632,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:7d58bf7df39100ef099851b477cc18bcfd55a7819a056556870abdb7add6fec5",
+    "projection_digest": "sha256:4c1035d3c912ae6313a67aa66d623dceb2e7b6d2d4ede94573dc94fa919d4659",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1998,10 +1999,10 @@
             "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
             "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
             "present": true,
-            "line_count": 235,
-            "declaration_count": 9,
-            "theorem_count": 6,
-            "content_digest": "sha256:cbf1d44df4f873342121a39718d3ea1b44c62e83e88f2e33ca21f959a412e51b"
+            "line_count": 478,
+            "declaration_count": 22,
+            "theorem_count": 19,
+            "content_digest": "sha256:a463d5054586b27e5d152c228f7798356b964c143d07c3ddb2f302f2af1dd6b3"
           },
           {
             "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -2307,10 +2308,10 @@
             "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
             "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
             "present": true,
-            "line_count": 683,
-            "declaration_count": 42,
-            "theorem_count": 29,
-            "content_digest": "sha256:14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e"
+            "line_count": 709,
+            "declaration_count": 43,
+            "theorem_count": 30,
+            "content_digest": "sha256:7369d105e5cb014188e31fa44fdccb03b2c40bdfe4719f6e227555c1c30b0bd3"
           },
           {
             "module": "ErdosProblems.Erdos269.BoundedRadixTailEscape",

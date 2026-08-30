@@ -443,6 +443,15 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert carry_escape["comparator_declaration"] == (
         "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
     )
+    assert carry_escape["canonical_claim_commit"] == (
+        "68b4b2bfa2ebdfff7dd31a355b04e5e41df99a69"
+    )
+    assert "no_positive_absorbedCarry_of_cofinalLocalWindowEscape" in carry_escape[
+        "source_declaration"
+    ]
+    assert carry_escape["source_anchor"] == "629-650; 689"
+    assert "smoothFactor" in " ".join(carry_escape["exact_hypotheses"])
+    assert "cancellation" in carry_escape["hard_mechanism"]
     assert carry_escape["comparator_declaration"] in comparator["theorem_names"]
     assert carry_escape["source_transport_commit"] == (
         "069245dfa77c55565611f04f9269707e0c31ce24"

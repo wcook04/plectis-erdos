@@ -8,7 +8,7 @@
     "comparator_sha256": "afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
     "comparator_theorem_count": 48,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "3387ebcece9934e34ed4c8df1a2dc161d088ecdb282e4e3874a44940570cba11",
+    "source_review_matrix_sha256": "c12e5dbefd378e8ad0ae89071fb45676fbebd9e84ee20f0d461f7cfa4d7f7c20",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -464,7 +464,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "3387ebcece9934e34ed4c8df1a2dc161d088ecdb282e4e3874a44940570cba11",
+    "source_review_matrix_sha256": "c12e5dbefd378e8ad0ae89071fb45676fbebd9e84ee20f0d461f7cfa4d7f7c20",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -1222,6 +1222,7 @@
         "comparator_eligibility": "committed_source_faithful_transport",
         "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_transport_commit": "069245dfa77c55565611f04f9269707e0c31ce24",
+        "canonical_claim_commit": "68b4b2bfa2ebdfff7dd31a355b04e5e41df99a69",
         "source_transport_files": [
           "ExternalVerification/Challenge.lean",
           "ExternalVerification/Solution.lean",
@@ -1232,19 +1233,20 @@
         ],
         "comparator_declaration": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful #269 consumer is committed in ExternalVerification at 069245df, registered in the source-current committed verification/comparator.json screen, and bound to the canonical conditional_carry_escape review family. Comparator admission strengthens traceability only: the theorem still excludes a positive reduced carry solely under CofinalLocalWindowEscape and supplies neither that producer nor the rationality-to-carry identification for the actual three-prime running-LCM series.",
-        "source_declaration": "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "transport_admission_boundary": "The source-faithful reduced-carry consumer is committed in ExternalVerification at 069245df, registered in the source-current committed verification/comparator.json screen, and bound to the canonical conditional_carry_escape review family. Claims commit 68b4b2b adds the subordinate absorbed-factor bridge: after exact nonzero-factor cancellation it reaches that same committed reduced-carry consumer. Comparator admission strengthens traceability only: neither theorem supplies CofinalLocalWindowEscape or the rationality-to-carry identification for the actual three-prime running-LCM series.",
+        "source_declaration": "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape; ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape",
         "source_file": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-        "source_anchor": "629-650",
-        "statement": "Cofinal local-window residue escape forces a contradiction with any positive reduced carry obeying the matching recurrence and short bound.",
+        "source_anchor": "629-650; 689",
+        "statement": "Cofinal local-window residue escape forces a contradiction with any positive reduced carry obeying the matching recurrence and short bound; the same consumer applies to an absorbed carry after exact cancellation of a nonzero common factor.",
         "exact_hypotheses": [
           "CofinalLocalWindowEscape b m shortBound supplies, for every positive B coprime to 30 and every starting point, a positive window base whose least-positive-residue escape exceeds shortBound.",
           "B is positive and coprime to 30; d : ℕ → ℤ obeys d (n + 1) = b n * d n - B * m n, with d n > 0 and Int.natAbs (d n) ≤ shortBound B n.",
+          "For the subordinate absorbed-carry bridge, smoothFactor ≠ 0, c n = smoothFactor * d n, and c obeys the corresponding exact absorbed recurrence; cancellation reduces it to the same positive reduced-carry contradiction.",
           "The displayed conclusion is a contradiction under these exact synthetic carry hypotheses; no rationality-to-carry or actual-series identification is assumed by the transport."
         ],
-        "conclusion": "The stated cofinal local-window escape is incompatible with a positive bounded reduced carry; this is conditional reduction evidence, not an Erdős #269 endpoint.",
-        "hard_mechanism": "The exact integral window identity converts a positive reduced carry into a residue congruence, and the least-positive-residue lower bound contradicts the assumed short bound.",
-        "attribution": "This is the source-current #269 conditional_carry_escape family from RestrictedFloorSum.lean:629-650, transported by the committed ExternalVerification batch at 069245df; novelty, priority, significance, and external review remain unassessed.",
+        "conclusion": "The stated cofinal local-window escape is incompatible with a positive bounded reduced carry, and with its explicitly absorbed nonzero-factor form after cancellation; this is conditional reduction evidence, not an Erdős #269 endpoint.",
+        "hard_mechanism": "The exact integral window identity converts a positive reduced carry into a residue congruence, and the least-positive-residue lower bound contradicts the assumed short bound; the absorbed bridge makes the cancellation step explicit rather than treating common-factor normalization as automatic.",
+        "attribution": "This is the source-current #269 conditional_carry_escape family from RestrictedFloorSum.lean:629-650, 689, transported by the committed ExternalVerification batch at 069245df and canonically extended with the absorbed-factor bridge by Claims commit 68b4b2b; novelty, priority, significance, and external review remain unassessed.",
         "limitations": [
           "CofinalLocalWindowEscape is an unproved producer predicate; the source supplies no cofinal escaping windows.",
           "The rationality-to-carry bridge and identification with the actual three-prime running-LCM recurrence remain open.",
