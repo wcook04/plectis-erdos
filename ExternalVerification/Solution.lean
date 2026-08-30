@@ -8,6 +8,7 @@ import Erdos249257.BooleanMobiusCarry
 import Erdos249257.BooleanMobiusSkipRowCofinal
 import Erdos249257.TotientTailCarryPeriod
 import Erdos249257.GreedyAchievementSet
+import Erdos249257.HalfCylinderHalfMembershipClassification
 import Erdos249257.GcdMomentCalculus
 import Erdos249257.LcmFactorIdealPulseObstruction
 import Erdos249257.RationalSupportCarrySkeleton
@@ -272,6 +273,83 @@ private theorem sunflowerForcedSlotTailSelection_to_source {A : Set ℕ}
     Erdos249257.SupportSunflowerDichotomy.SunflowerForcedSlotTailSelection,
     supportCoeff, Erdos249257.supportCoeff,
     binaryCoeffTail, Erdos249257.binaryCoeffTail] using hselection
+
+private theorem seamWeightsFrom_eq_source (s d : ℕ) :
+    seamWeightsFrom s d =
+      Erdos249257.HalfCylinderIntegerGreedy.seamWeightsFrom s d := by
+  by_cases hds : d < s
+  · rw [seamWeightsFrom, dif_pos hds,
+      Erdos249257.HalfCylinderIntegerGreedy.seamWeightsFrom, dif_pos hds]
+    congr 1
+    exact seamWeightsFrom_eq_source s (d + 1)
+  · rw [seamWeightsFrom, dif_neg hds,
+      Erdos249257.HalfCylinderIntegerGreedy.seamWeightsFrom, dif_neg hds]
+
+private theorem seamWeights_eq_source (s : ℕ) :
+    seamWeights s = Erdos249257.HalfCylinderIntegerGreedy.seamWeights s := by
+  unfold seamWeights Erdos249257.HalfCylinderIntegerGreedy.seamWeights
+  exact seamWeightsFrom_eq_source s 2
+
+private theorem seamIntegerGreedyBits_eq_source
+    (weights : List ℕ) (C : ℕ) :
+    seamIntegerGreedyBits weights C =
+      Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits weights C := by
+  induction weights generalizing C with
+  | nil => rfl
+  | cons w ws ih =>
+      rw [seamIntegerGreedyBits,
+        Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits]
+      by_cases hw : w ≤ C
+      · rw [if_pos hw, if_pos hw]
+        congr 1
+        exact ih (C - w)
+      · rw [if_neg hw, if_neg hw]
+        congr 1
+        exact ih C
+
+private theorem seamOfList_eq_source {s : ℕ} {a b : List Bool}
+    (hab : a = b) (ha : a.length = s - 2) (hb : b.length = s - 2) :
+    SeamRowWord.ofList a ha =
+      Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord.ofList b hb := by
+  subst b
+  funext i
+  rfl
+
+private theorem seamGreedyWord_eq_source (s : ℕ) :
+    seamGreedyWord s =
+      Erdos249257.HalfCylinderIntegerGreedy.seamGreedyWord s := by
+  have hbits :
+      seamIntegerGreedyBits (seamWeights s) (seamSubsetTarget s) =
+        Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits
+          (Erdos249257.HalfCylinderIntegerGreedy.seamWeights s)
+          (Erdos249257.HalfCylinderIntegerGreedy.seamSubsetTarget s) := by
+    rw [seamWeights_eq_source]
+    exact seamIntegerGreedyBits_eq_source _ _
+  unfold seamGreedyWord
+    Erdos249257.HalfCylinderIntegerGreedy.seamGreedyWord
+  exact seamOfList_eq_source hbits _ _
+
+private theorem seamTerminal_eq_source (s : ℕ) (hs : 3 ≤ s) :
+    SeamRowWord.terminal hs (seamGreedyWord (s + 1)) =
+      Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord.terminal hs
+        (Erdos249257.HalfCylinderIntegerGreedy.seamGreedyWord (s + 1)) := by
+  rw [seamGreedyWord_eq_source]
+  rfl
+
+private theorem seamUnboundedTerminalFalse_eq_source :
+    SeamGreedyUnboundedTerminalFalse ↔
+      Erdos249257.SeamGreedyUnboundedTerminalFalse := by
+  constructor
+  · intro h N
+    obtain ⟨p, hp5, hNp, hfalse⟩ := h N
+    refine ⟨p, hp5, hNp, ?_⟩
+    rw [← seamTerminal_eq_source]
+    exact hfalse
+  · intro h N
+    obtain ⟨p, hp5, hNp, hfalse⟩ := h N
+    refine ⟨p, hp5, hNp, ?_⟩
+    rw [seamTerminal_eq_source]
+    exact hfalse
 
 /-! The statement-only packet owns isomorphic copies of the finite index
 types, because `Statements.lean` must not import proof-bearing source modules.
@@ -664,6 +742,25 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.mersenneAchievementSet,
       Erdos249257.positiveMersenneSupportValue,
       Erdos249257.mersenneWeight] using hhalf
+  · constructor
+    · intro hhalf
+      have hhalf' : (1 / 2 : ℝ) ∈ Erdos249257.mersenneAchievementSet := by
+        simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+          Erdos249257.mersenneAchievementSet,
+          Erdos249257.positiveMersenneSupportValue,
+          Erdos249257.mersenneWeight] using hhalf
+      exact seamUnboundedTerminalFalse_eq_source.mpr
+        (Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse.mp
+          hhalf')
+    · intro hterminal
+      have hterminal' := seamUnboundedTerminalFalse_eq_source.mp hterminal
+      have hhalf' :=
+        Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse.mpr
+          hterminal'
+      simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+        Erdos249257.mersenneAchievementSet,
+        Erdos249257.positiveMersenneSupportValue,
+        Erdos249257.mersenneWeight] using hhalf'
   · intro A a x ha ha0 hx0
     simpa [supportCoeff, compositeDilationDefect,
       Erdos249257.supportCoeff,
@@ -785,6 +882,11 @@ theorem half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
     (hskips : CofinalPositiveHalfGreedySkips) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet :=
   (portfolioClaims Unit).problem257BooleanMobiusExactRowDynamics hskips
+
+theorem half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
+      SeamGreedyUnboundedTerminalFalse :=
+  (portfolioClaims Unit).problem257HalfMembershipSeamClassification
 
 theorem rectangular_hp_threshold_eq_classical_iff
     (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :

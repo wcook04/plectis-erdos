@@ -402,6 +402,11 @@ theorem half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
     (1 / 2 : ℝ) ∈ mersenneAchievementSet :=
   (portfolioClaims Unit).problem257BooleanMobiusExactRowDynamics hskips
 
+theorem half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
+      SeamGreedyUnboundedTerminalFalse :=
+  (portfolioClaims Unit).problem257HalfMembershipSeamClassification
+
 theorem supportCoeff_mul_eq_add_defect
     (A : Set ℕ) {a x : ℕ} (ha : a ∈ A) (ha0 : 0 < a) (hx0 : 0 < x) :
     supportCoeff A (a * x) =

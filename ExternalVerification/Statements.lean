@@ -262,6 +262,88 @@ def CofinalPositiveHalfGreedySkips : Prop :=
       greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
         mersenneWeightRat c
 
+/-! The exact Boolean seam used by the half-membership classification.  These
+statement-side definitions intentionally mirror the finite integer-greedy
+construction without importing its proof-bearing source module. -/
+
+def seamTruncatedMersenneWeight (s d : ℕ) : ℕ :=
+  4 ^ s / (2 ^ d - 1)
+
+def seamSubsetTarget (s : ℕ) : ℕ :=
+  2 ^ (2 * s - 1) - 2 ^ s
+
+def seamWeightsFrom (s d : ℕ) : List ℕ :=
+  if h : d < s then
+    seamTruncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
+  else
+    []
+termination_by s - d
+decreasing_by omega
+
+def seamWeights (s : ℕ) : List ℕ :=
+  seamWeightsFrom s 2
+
+theorem seamWeightsFrom_length_eq (s d : ℕ) :
+    (seamWeightsFrom s d).length = s - d := by
+  by_cases hds : d < s
+  · rw [seamWeightsFrom, dif_pos hds, List.length_cons,
+      seamWeightsFrom_length_eq s (d + 1)]
+    omega
+  · rw [seamWeightsFrom, dif_neg hds]
+    simp
+    omega
+termination_by s - d
+decreasing_by omega
+
+@[simp] theorem seamWeights_length_eq (s : ℕ) :
+    (seamWeights s).length = s - 2 := by
+  exact seamWeightsFrom_length_eq s 2
+
+def seamWeightedBoolSum : List ℕ → List Bool → ℕ
+  | w :: ws, true :: bs => w + seamWeightedBoolSum ws bs
+  | _ :: ws, false :: bs => seamWeightedBoolSum ws bs
+  | _, _ => 0
+
+def seamIntegerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: seamIntegerGreedyBits ws (C - w)
+      else
+        false :: seamIntegerGreedyBits ws C
+
+theorem seamIntegerGreedyBits_length (weights : List ℕ) (C : ℕ) :
+    (seamIntegerGreedyBits weights C).length = weights.length := by
+  induction weights generalizing C with
+  | nil => simp [seamIntegerGreedyBits]
+  | cons w ws ih =>
+      simp only [seamIntegerGreedyBits]
+      split <;> simp [ih]
+
+abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
+
+namespace SeamRowWord
+
+def ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
+    SeamRowWord s :=
+  fun i => bits.get (Fin.cast hlen.symm i)
+
+def terminal {s : ℕ} (hs : 3 ≤ s) (b : SeamRowWord (s + 1)) : Bool :=
+  b ⟨s - 2, by omega⟩
+
+end SeamRowWord
+
+def seamGreedyWord (s : ℕ) : SeamRowWord s :=
+  SeamRowWord.ofList
+    (seamIntegerGreedyBits (seamWeights s) (seamSubsetTarget s))
+    (by rw [seamIntegerGreedyBits_length, seamWeights_length_eq])
+
+def SeamGreedyUnboundedTerminalFalse : Prop :=
+  ∀ N : ℕ, ∃ p : ℕ, ∃ hp5 : 5 ≤ p,
+    N ≤ p ∧
+      SeamRowWord.terminal (by omega)
+        (seamGreedyWord (p + 1)) = false
+
 noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
   ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
 
@@ -1069,6 +1151,9 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem257BooleanMobiusExactRowDynamics :
     CofinalPositiveHalfGreedySkips →
       (1 / 2 : ℝ) ∈ mersenneAchievementSet
+  problem257HalfMembershipSeamClassification :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
+      SeamGreedyUnboundedTerminalFalse
   problem257CompositeDilationDefect :
     ∀ (A : Set ℕ) {a x : ℕ},
       a ∈ A →
