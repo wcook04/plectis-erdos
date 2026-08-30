@@ -510,6 +510,31 @@ def main() -> int:
             "stored_probe_count": 0,
             "activated": False,
         }
+
+        validation_fixture = json.loads(json.dumps(returned))
+        validation_fixture["record_kind"] = "validation_fixture"
+        validation_fixture_path = temp / "validation-fixture.json"
+        validation_fixture_path.write_text(
+            json.dumps(validation_fixture, indent=2) + "\n", encoding="utf-8"
+        )
+        fixture_check = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(validation_fixture_path),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+            ],
+            expected=1,
+        )
+        fixture_check_receipt = json.loads(fixture_check.stdout)
+        assert not fixture_check_receipt["valid"]
+        assert "record_kind: --require-submitted requires submitted_return" in (
+            fixture_check_receipt["errors"]
+        )
         check_replay_command_boundary(sessions, session)
 
         package = temp / "package"

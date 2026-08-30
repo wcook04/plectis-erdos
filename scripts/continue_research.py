@@ -642,7 +642,13 @@ def check_session(
             except (OSError, json.JSONDecodeError, SystemExit) as exc:
                 errors.append(f"return: cannot read JSON: {exc}")
     if returned is not None:
-        errors.extend(return_validator.validate_document(returned, check_git=True))
+        errors.extend(
+            return_validator.validate_document(
+                returned,
+                require_submitted=True,
+                check_git=True,
+            )
+        )
         errors.extend(cross_check_return(manifest, returned))
         if route_memory_receipt_path is None:
             errors.append(
