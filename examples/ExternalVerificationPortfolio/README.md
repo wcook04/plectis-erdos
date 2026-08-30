@@ -1,7 +1,7 @@
 # External verification portfolio
 
-This directory contains small Lean consumers for five different parts of the
-Erdős 243/249/251/257/269 corpus. The files are useful when a reader wants to reuse
+This directory contains small Lean consumers for six different parts of the
+Erdős 68/243/249/251/257/269 corpus. The files are useful when a reader wants to reuse
 an exact Comparator-facing interface without treating a conditional reduction
 as a solution of the underlying Erdős problem.
 
@@ -9,6 +9,7 @@ The canonical focused check for the portfolio consumers is:
 
 ```bash
 python3 scripts/lean_fast_build.py \
+  examples/ExternalVerificationPortfolio/Problem68.lean \
   examples/ExternalVerificationPortfolio/Problem243.lean \
   examples/ExternalVerificationPortfolio/Problem249.lean \
   examples/ExternalVerificationPortfolio/Problem251.lean \
@@ -21,6 +22,30 @@ consumer is Lean-green only when its exact focused source check reaches a
 successful terminal result on the current checkout; a dependency-bootstrap
 or capacity deferral is not theorem evidence and must not be reported as a
 theorem failure or a passing check.
+
+## Erdős #68: two equivalent endpoint coordinates
+
+[`Problem68.lean`](Problem68.lean) exposes two exact Comparator-facing
+characterizations of the factorial-gap series.  The first says that its
+irrationality is equivalent to cofinally many indices `m` at which
+`m` does not divide
+`strictFacTopRat (factorialGapPrefix m) m`.  The second says equivalently that
+the exact strict-successor carry `factorialGapStepCarry m` is different from
+one cofinally often.
+
+These are two coordinates on the same endpoint, not two independent routes.
+For every `m ≥ 3`, the source theorem
+`factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat` identifies a unit carry
+with the corresponding divisibility event.  Rationality forces eventual unit
+carries, while eventual unit carries conversely make the normalized
+strict-factorial successors stationary.  The exact endpoint sources are in
+[`FactorialZeroPlateau.lean`](../../ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L856).
+
+The missing input is a cofinal producer for either equivalent right-hand
+side.  Exact misses or nonunit carries at finitely many computed indices can
+raise lower bounds on a displayed rational denominator, but cannot discharge
+the quantifier `∀ B, ∃ m > B`.  This consumer therefore proves no #68
+irrationality and makes no novelty or priority claim.
 
 ## Erdős #243: two conditional recovery criteria
 
