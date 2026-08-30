@@ -72,11 +72,11 @@ boundary of that relationship.
 
   **Boundary.** The condition `|q|^L <= s` is essential to this specialisation, so the result does not give squarefree irrationality at every integer base and does not settle universal #257. It also does not prove the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims; no novelty or priority claim is made.
 
-- P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X)
+- P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X) ([author PDF](https://www.cecm.sfu.ca/~pborwein/PAPERS/P59.pdf); [read source closure](primary-sources/reciprocal-tail/borwein-1992-source-closure.md))
 
-  Broader irrationality theorem containing the relevant Mersenne--Lambert specialisation.
+  **Full-support antecedent.** Theorems 1 and 2 (printed pp. 142 and 145; proof pp. 142--146) prove irrationality, and non-Liouville behavior, for the full-support series \(\sum_{n\ge1}(q^n+c)^{-1}\) and its alternating variant under their stated integer/rational hypotheses. Theorem 1 with \(q=2\), \(c=-1\) contains the full-support Mersenne--Lambert specialization.
 
-  **Boundary.** Context for the full-support family, not a proof route for the new #249 reductions.
+  **Boundary.** The paper sums over every positive index, not an arbitrary infinite support, so it does not settle universal #257, prime-support or squarefree subseries, or the release's #249 reductions. Its contour-integral proof is not formalised here; no novelty or priority claim is made.
 
 - H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős's irrationality criterion for certain sparse infinite series* (2026)](https://arxiv.org/abs/2601.20743)
 

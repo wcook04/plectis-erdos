@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 16,
-    "artifact_count": 16,
+    "working_tree_only_count": 17,
+    "artifact_count": 17,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 16,
+    "link_and_digest_only_count": 17,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -317,6 +317,26 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/tao-teravainen-2026-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/borwein-1992-irrationality.pdf",
+      "sha256": "a16577df6a135f2e4d8471dac2916860c4c646bfb130683ddd97ba73a2e1cca2",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/on-the-irrationality-of-certain-series/2C16AFBB2ECE3A21B3F32EA727FB7F11",
+        "https://www.cecm.sfu.ca/~pborwein/PAPERS/P59.pdf",
+        "https://doi.org/10.1017/S030500410007081X"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/borwein-1992-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/borwein-1992-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/borwein-1992-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }
