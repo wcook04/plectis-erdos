@@ -177,6 +177,9 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
     for claim in claims["claims"]:
         if not claim.get("readme_headline"):
             continue
+        # Keep one canonical source handle per headline claim in the bounded
+        # orientation packet. The complete declaration list remains in the
+        # digest-bound claims document and is reachable from this claim id.
         row = {
             "id": claim["id"],
             "status": claim["status"],
@@ -188,7 +191,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
                     "module": declaration["module"],
                     "line": declaration["line"],
                 }
-                for declaration in claim["declarations"]
+                for declaration in claim["declarations"][:1]
             ],
         }
         if claim.get("remaining_open_proposition_ids"):
@@ -367,7 +370,7 @@ def render_orientation_markdown(
             "## What a claim status asserts",
             "",
             "A status states the exact public evidence claim, not a priority or novelty claim.",
-            "The authored prior-art record, not this table, is the source for antecedents.",
+            "The prior-art record, not this table, supplies antecedents.",
             "",
             "| Status | Exact public meaning |",
             "|---|---|",
@@ -415,7 +418,7 @@ def render_orientation_markdown(
             "",
             "## Mathematical programme routes",
             "",
-            "Programme routes are bounded reading handles, not extra claims; their",
+            "Programme routes are bounded handles, not extra claims; their",
             "exact focus and claim ceiling are returned by the canonical route packet.",
         ]
     )
@@ -787,7 +790,8 @@ def build() -> dict[str, Any]:
     }
     principal_declaration_handles = [
         {"claim_id": claim["id"], **declaration}
-        for claim in orientation["principal_claims"]
+        for claim in claims["claims"]
+        if claim.get("readme_headline")
         for declaration in claim["declarations"]
     ]
     # The descriptor is a registration envelope, so its principal-claim rows
@@ -983,7 +987,16 @@ def build() -> dict[str, Any]:
                 ).get("posture"),
                 "full_graph": "docs/claims.json::machine_readable_paper.module_graph",
             },
-            "argument_graph": machine_paper["argument_graph"],
+            # Keep the relation vocabulary and a cheap size signal in the
+            # registration envelope.  The complete edge list is already
+            # authoritative in the digest-bound claims document; embedding it
+            # here made the envelope grow past its public 64 KB limit as the
+            # publication assembly gained current families.
+            "argument_graph": {
+                "edge_semantics": machine_paper["argument_graph"]["edge_semantics"],
+                "edge_count": len(machine_paper["argument_graph"]["edges"]),
+                "full_graph": "docs/claims.json::machine_readable_paper.argument_graph",
+            },
             "methodology_capsule": {
                 "path": "docs/methodology.json",
                 "human_projection": "METHODOLOGY.md",
@@ -1075,6 +1088,7 @@ def build() -> dict[str, Any]:
                 "compact_graph.claims": "compact_graph.principal_claims; expand through docs/claims.json or query_corpus.py",
                 "compact_graph.module_graph": "compact_graph.module_topology; expand through docs/claims.json::machine_readable_paper.module_graph",
                 "compact_graph.high_salience_declarations": "compact_graph.principal_declaration_handles; expand through docs/declaration_atlas.json or query_corpus.py",
+                "compact_graph.argument_graph.edges": "compact_graph.argument_graph edge_semantics and edge_count; expand through docs/claims.json::machine_readable_paper.argument_graph",
                 "compact_graph.methodology_capsule extended fields": "docs/methodology.json",
             },
         },
