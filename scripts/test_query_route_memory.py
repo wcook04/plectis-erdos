@@ -344,6 +344,18 @@ def main() -> int:
             "validate_route_override" in overridden.stderr,
             "validate route override omitted its rejection code",
         )
+    with tempfile.TemporaryDirectory(
+        prefix="route-memory-tmp-alias-", dir="/tmp"
+    ) as temp_dir:
+        packet_path = Path(temp_dir) / "packet.json"
+        packet_path.write_text("{}", encoding="utf-8")
+        tmp_alias = run_cli("--validate", str(packet_path))
+        require(tmp_alias.returncode == 2, "/tmp packet unexpectedly validated")
+        require(tmp_alias.stdout == "", "/tmp packet emitted a payload")
+        require(
+            "schema_mismatch" in tmp_alias.stderr,
+            "ordinary /tmp packet was rejected by the symlink guard",
+        )
     optimized = run_cli(
         "--problem", "257", "--format", "card", optimized=True, check=True
     )

@@ -137,9 +137,13 @@ def _canonical_digest(value: Any) -> str:
 
 
 def _is_allowed_platform_alias(path: Path) -> bool:
-    """Keep the documented macOS ``/var`` alias usable for temp packets."""
+    """Keep documented macOS temp-directory aliases usable for packets."""
     try:
-        return path == Path("/var") and path.resolve(strict=True) == Path("/private/var")
+        aliases = {
+            Path("/var"): Path("/private/var"),
+            Path("/tmp"): Path("/private/tmp"),
+        }
+        return path in aliases and path.resolve(strict=True) == aliases[path]
     except OSError:
         return False
 
