@@ -123,6 +123,16 @@ def main() -> int:
                     False,
                     "release gate followed a symlinked parent directory",
                 )
+            require(
+                not check_release.release_file_exists(
+                    docs / "linked" / "secret.txt"
+                ),
+                "metadata-only release file checks followed a symlink",
+            )
+            require(
+                check_release.release_file_exists(private / "secret.txt"),
+                "metadata-only release file check rejected a regular file",
+            )
         finally:
             check_release.ROOT = original_root
 

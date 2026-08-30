@@ -153,6 +153,15 @@ def safe_release_path(path: Path) -> Path:
     return candidate
 
 
+def release_file_exists(path: Path) -> bool:
+    """Return whether a path is a safe regular release file."""
+    try:
+        safe_release_path(path)
+    except UnsafeReleasePath:
+        return False
+    return True
+
+
 def file_digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(safe_release_path(path).read_bytes()).hexdigest()
 
@@ -359,7 +368,7 @@ def module_lines(
     if key not in cache:
         if source_ref is None:
             path = ROOT / rel
-            cache[key] = read(path).splitlines() if path.is_file() else None
+            cache[key] = read(path).splitlines() if release_file_exists(path) else None
         else:
             completed = run(
                 ["git", "show", f"{source_ref}:{rel}"],
@@ -840,7 +849,7 @@ def main() -> int:
                   f"{sorted(set(family_claim_ids) - claim_id_set)}")
             assembled_claim_ids.extend(family_claim_ids)
             owner_path = str(family.get("primary_narrative_owner", "")).split("::", 1)[0]
-            check((ROOT / owner_path).is_file(),
+            check(release_file_exists(ROOT / owner_path),
                   f"publication family {family.get('id')!r} owner does not exist: "
                   f"{owner_path}")
             check(str(family.get("source_route", "")).startswith(
@@ -896,7 +905,7 @@ def main() -> int:
                       and bool(row.get("surface")),
                       f"publication editorial_state {field} lacks an id or surface")
                 owner_path = str(row.get("surface", "")).split("::", 1)[0]
-                check((ROOT / owner_path).is_file(),
+                check(release_file_exists(ROOT / owner_path),
                       f"publication editorial_state {field} owner does not exist: "
                       f"{owner_path}")
             inconsistencies = editorial_state.get("active_inconsistencies", [])
@@ -916,7 +925,7 @@ def main() -> int:
                       and bool(row.get("next_action")),
                       "publication active inconsistency lacks a typed complete record")
                 owner_path = str(row.get("surface", "")).split("::", 1)[0]
-                check((ROOT / owner_path).is_file(),
+                check(release_file_exists(ROOT / owner_path),
                       f"publication active inconsistency owner does not exist: "
                       f"{owner_path}")
             check(isinstance(editorial_state.get("blocked_decisions"), list),
@@ -938,15 +947,15 @@ def main() -> int:
         first_contact_bytes = 0
         for rel in route.get("read", []):
             path = ROOT / rel
-            check(path.is_file(), f"machine-readable-paper entrypoint path does not exist: {rel}")
-            if path.is_file():
+            check(release_file_exists(path), f"machine-readable-paper entrypoint path does not exist: {rel}")
+            if release_file_exists(path):
                 first_contact_bytes += path.stat().st_size
         check(first_contact_bytes <= MAX_ROUTE_FIRST_CONTACT_BYTES,
               f"route {route.get('id')!r} first-contact bundle is {first_contact_bytes} bytes "
               f"(budget {MAX_ROUTE_FIRST_CONTACT_BYTES})")
         for owner in route.get("authority_owners", []):
             rel = str(owner).split("::", 1)[0]
-            check((ROOT / rel).is_file(),
+            check(release_file_exists(ROOT / rel),
                   f"route {route.get('id')!r} authority owner does not exist: {rel}")
         for step in route.get("query_steps", []):
             check(step.startswith("python3 scripts/query_corpus.py --"),
@@ -957,7 +966,7 @@ def main() -> int:
             check(
                 bool(match)
                 and action_path != "scripts/query_corpus.py"
-                and (ROOT / action_path).is_file(),
+                and release_file_exists(ROOT / action_path),
                 f"route {route.get('id')!r} has an invalid executable action handoff: {step}",
             )
         discovery_terms = route.get("discovery_terms", [])
@@ -1051,11 +1060,11 @@ def main() -> int:
     module_paths = {node["path"] for node in module_nodes}
     for node in module_nodes:
         path = ROOT / node["path"]
-        check(path.is_file(), f"machine-readable module path does not exist: {node['path']}")
+        check(release_file_exists(path), f"machine-readable module path does not exist: {node['path']}")
         unknown_imports = set(node["imports"]) - module_id_set
         check(not unknown_imports,
               f"module {node['id']} has unknown internal imports: {sorted(unknown_imports)}")
-        if path.is_file():
+        if release_file_exists(path):
             observed = internal_imports(path)
             check(observed == node["imports"],
                   f"module {node['id']} imports drifted: registry={node['imports']} source={observed}")
@@ -1066,8 +1075,8 @@ def main() -> int:
     root_imports: list[str] = []
     for root in roots:
         root_path = ROOT / root
-        check(root_path.is_file(), f"machine-readable module graph root does not exist: {root}")
-        if root_path.is_file():
+        check(release_file_exists(root_path), f"machine-readable module graph root does not exist: {root}")
+        if release_file_exists(root_path):
             observed = internal_imports(root_path)
             root_imports.extend(observed)
             unknown_root_imports = set(observed) - module_id_set
@@ -1141,7 +1150,7 @@ def main() -> int:
             check(decl["module"] in module_paths,
                   f"claim {claim['id']}: declaration module missing from machine-readable module graph: {decl['module']}")
     for projection in machine_paper.get("projections", []):
-        check((ROOT / projection["path"]).is_file(),
+        check(release_file_exists(ROOT / projection["path"]),
               f"machine-readable paper projection does not exist: {projection['path']}")
 
     # --- methodology source and typed claim transitions -------------------
@@ -1153,8 +1162,8 @@ def main() -> int:
 
     methodology_projection = ROOT / "METHODOLOGY.md"
     expected_methodology_projection = render_markdown(methodology, data)
-    check(methodology_projection.is_file(), "METHODOLOGY.md is missing")
-    if methodology_projection.is_file():
+    check(release_file_exists(methodology_projection), "METHODOLOGY.md is missing")
+    if release_file_exists(methodology_projection):
         check(read(methodology_projection) == expected_methodology_projection,
               "METHODOLOGY.md does not exactly match docs/methodology.json")
 
@@ -1393,7 +1402,8 @@ def main() -> int:
         ]
         own_prose.extend(sorted((ROOT / "docs").glob("*.md")))
         for path in own_prose:
-            if not path.is_file():
+            if not release_file_exists(path):
+                check(False, f"release prose path is not a safe regular file: {path.relative_to(ROOT)}")
                 continue
             flat = flattened(read(path))
             asserted = [
@@ -1451,7 +1461,7 @@ def main() -> int:
             spdx_ids.update(re.findall(r"SPDX-License-Identifier: ([A-Za-z0-9.\-]+)", head))
     # REUSE-IgnoreEnd
     for lic in sorted(spdx_ids):
-        check((ROOT / "LICENSES" / f"{lic}.txt").is_file(),
+        check(release_file_exists(ROOT / "LICENSES" / f"{lic}.txt"),
               f"licence {lic} is used but LICENSES/{lic}.txt is missing")
 
     # --- 8. agent entry ------------------------------------------------------------
@@ -1961,7 +1971,7 @@ def main() -> int:
         for item in targets:
             rel = str(item).split("::", 1)[0]
             check(
-                (ROOT / rel).is_file(),
+                release_file_exists(ROOT / rel),
                 f"orientation drilldown path does not exist: {rel}",
             )
     query_check = run(
