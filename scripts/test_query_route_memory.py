@@ -245,6 +245,11 @@ def main() -> int:
         optimized.stdout.startswith("route-memory erdos_257:unrouted | problem #257"),
         "optimized CLI card output drifted",
     )
+    require(
+        "available_routes=boolean_mobius_constraints,erdos257_half_story,half_carry_compactness_programme,structured_support_families"
+        in optimized.stdout,
+        "unrouted CLI card omitted canonical route choices",
+    )
     print("query_route_memory: 8 selectors, stale/cross-problem/invented guards, CLI normal/-O PASS")
     return 0
 

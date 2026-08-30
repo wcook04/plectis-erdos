@@ -524,13 +524,19 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
 def _card(packet: Mapping[str, Any]) -> str:
     problem = packet["problem"]
     route = packet["route"]
-    return "\n".join(
-        (
-            f"route-memory {packet['route_memory_id']} | problem #{problem['erdos_number']}",
-            f"route={route['id'] or 'unrouted'} claims={len(packet['claims'])} families={len(packet['families'])}",
-            f"resume={packet['resume_state']['state_id']} commit={packet['source_snapshot']['commit']}",
-        )
+    rows = [
+        f"route-memory {packet['route_memory_id']} | problem #{problem['erdos_number']}",
+        f"route={route['id'] or 'unrouted'} claims={len(packet['claims'])} families={len(packet['families'])}",
+    ]
+    if route["id"] is None:
+        available = route.get("available_route_ids", [])
+        if not isinstance(available, list):
+            available = []
+        rows.append(f"available_routes={','.join(str(value) for value in available) or 'none'}")
+    rows.append(
+        f"resume={packet['resume_state']['state_id']} commit={packet['source_snapshot']['commit']}"
     )
+    return "\n".join(rows)
 
 
 def _load_packet(argument: str) -> dict[str, Any]:
