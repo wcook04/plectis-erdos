@@ -102,6 +102,27 @@ def main() -> int:
         source_path.write_bytes(FIXTURE.read_bytes())
         require(contributions.load_receipts(Path(directory)) == [], "unaccepted fixture entered attribution sources")
 
+    malformed_repository = copy.deepcopy(unaccepted)
+    malformed_repository["record_kind"] = "accepted_receipt"
+    malformed_repository["repository"] = []
+    with tempfile.TemporaryDirectory() as directory:
+        Path(directory, "malformed-repository.json").write_text(
+            json.dumps(malformed_repository), encoding="utf-8"
+        )
+        try:
+            contributions.load_receipts(Path(directory))
+        except ValueError as exc:
+            require(
+                "repository: must be an object" in str(exc),
+                "malformed repository rejection omitted its shape diagnostic",
+            )
+        except Exception as exc:
+            raise AssertionError(
+                f"malformed accepted repository crashed contribution loading: {exc}"
+            ) from exc
+        else:
+            raise AssertionError("malformed accepted repository escaped validation")
+
     with tempfile.TemporaryDirectory() as directory:
         name, _receipt, payload = accepted_source()
         Path(directory, name).write_bytes(payload)

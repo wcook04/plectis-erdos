@@ -272,7 +272,13 @@ def load_receipts(
             else:
                 seen_ids[return_id] = path.name
         if receipt.get("record_kind") == "accepted_receipt":
-            accepted_commit = receipt.get("repository", {}).get("accepted_commit")
+            repository = receipt.get("repository")
+            if not isinstance(repository, dict):
+                # ``validate_document`` already contributed the precise shape
+                # error; do not dereference an untrusted value while collecting
+                # the accepted-commit ancestry check below.
+                continue
+            accepted_commit = repository.get("accepted_commit")
             if isinstance(accepted_commit, str) and not commit_is_ancestor(accepted_commit):
                 errors.append(f"{path.name}: accepted commit is not contained in HEAD")
             sources.append((path.name, receipt, payload))
