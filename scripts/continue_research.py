@@ -286,6 +286,39 @@ def cleanup_partial_start(directory: Path) -> str | None:
     return None
 
 
+def cleanup_partial_package(output: Path, expected_files: set[str]) -> str | None:
+    """Remove only files emitted by a failed package transaction."""
+    if not output.exists():
+        return None
+    if output.is_symlink():
+        return f"partial package cleanup refused for symlinked output: {output}"
+    allowed_directories = {""}
+    for relative in expected_files:
+        parts = Path(relative).parts[:-1]
+        for index in range(1, len(parts) + 1):
+            allowed_directories.add(Path(*parts[:index]).as_posix())
+    try:
+        unexpected: list[str] = []
+        for child in output.rglob("*"):
+            relative = child.relative_to(output).as_posix()
+            if child.is_symlink():
+                unexpected.append(relative)
+            elif child.is_dir():
+                if relative not in allowed_directories:
+                    unexpected.append(relative)
+            elif relative not in expected_files:
+                unexpected.append(relative)
+        if unexpected:
+            return (
+                "partial package cleanup refused for unexpected output artifacts: "
+                + ", ".join(sorted(unexpected))
+            )
+        shutil.rmtree(output)
+    except OSError as exc:
+        return f"partial package cleanup failed: {output}: {exc}"
+    return None
+
+
 def has_symlink_component(path: Path, root: Path) -> bool:
     """Return whether a session artifact crosses a symbolic-link component."""
     try:
@@ -957,15 +990,34 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
         ),
     }
     files["package.json"] = dump_json(package_manifest).encode("utf-8")
-    output.mkdir(parents=True)
-    if output.is_symlink() or output_path_has_symlink_component(output):
-        raise SystemExit(
-            f"package output must not traverse symbolic links: {output}"
-        )
-    for relative, data in files.items():
-        destination = output / relative
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(data)
+    created_output = False
+    try:
+        output.mkdir(parents=True)
+        created_output = True
+        if output.is_symlink() or output_path_has_symlink_component(output):
+            raise SystemExit(
+                f"package output must not traverse symbolic links: {output}"
+            )
+        for relative, data in files.items():
+            destination = output / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_bytes(data)
+    except SystemExit as exc:
+        if not created_output:
+            raise
+        cleanup_error = cleanup_partial_package(output, set(files))
+        detail = f"package failed: {exc}"
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
+        raise SystemExit(detail) from exc
+    except Exception as exc:
+        if not created_output:
+            raise
+        cleanup_error = cleanup_partial_package(output, set(files))
+        detail = f"package failed: {type(exc).__name__}: {exc}"
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
+        raise SystemExit(detail) from exc
     return {
         "schema": "research-return-package-result/1",
         "return_id": returned["return_id"],
