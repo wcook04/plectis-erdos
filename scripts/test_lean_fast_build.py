@@ -176,6 +176,19 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn('os: ["macos-latest", "ubuntu-latest"]', workflow)
         self.assertNotIn("runs-on: ubuntu-latest", workflow)
 
+    def test_every_lean_checkout_disables_credential_persistence(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        checkouts = re.findall(
+            r"(?ms)^      - uses: actions/checkout@.*?(?=^      - |\Z)",
+            workflow,
+        )
+
+        self.assertEqual(len(checkouts), 6)
+        for checkout in checkouts:
+            self.assertIn("persist-credentials: false", checkout)
+
     def test_ci_does_not_repeat_required_pr_checks_after_merge(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"
