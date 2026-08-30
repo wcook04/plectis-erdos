@@ -15,6 +15,12 @@ from unittest.mock import patch
 import check_release
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep environment-isolation failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def main() -> int:
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
@@ -29,7 +35,10 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as raw:
         with patch.dict(os.environ, hostile_environment, clear=False):
             sanitized = check_release.clean_environment()
-            assert all(key not in sanitized for key in hostile_environment)
+            require(
+                all(key not in sanitized for key in hostile_environment),
+                "release environment retained a hostile Git selector",
+            )
             child = check_release.run(
                 [
                     sys.executable,
@@ -43,14 +52,25 @@ def main() -> int:
                 text=True,
                 check=False,
             )
-            assert child.returncode == 0
-            assert json.loads(child.stdout) == {}
+            require(child.returncode == 0, "sanitized release child process failed")
+            require(
+                json.loads(child.stdout) == {},
+                "sanitized release child inherited a Git selector",
+            )
 
-    assert check_release.ENVIRONMENT_CONTRACT == (
-        "clean_committed_snapshot_subprocess_environment_v1"
+    require(
+        check_release.ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "release environment contract identifier drifted",
     )
-    assert "GIT_NAMESPACE" in check_release.SANITIZED_GIT_ENVIRONMENT_KEYS
-    assert "GIT_REPLACE_REF_BASE" in check_release.SANITIZED_GIT_ENVIRONMENT_KEYS
+    require(
+        "GIT_NAMESPACE" in check_release.SANITIZED_GIT_ENVIRONMENT_KEYS,
+        "release environment omitted GIT_NAMESPACE sanitization",
+    )
+    require(
+        "GIT_REPLACE_REF_BASE" in check_release.SANITIZED_GIT_ENVIRONMENT_KEYS,
+        "release environment omitted GIT_REPLACE_REF_BASE sanitization",
+    )
     print(
         "test_check_release_environment: release-gate child processes cannot "
         "inherit caller Git selectors"
