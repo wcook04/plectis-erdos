@@ -2848,6 +2848,42 @@ theorem fullMersenneInitialResidueGapSupply_iff_centered :
       ⟨H, N, M, hH, hperiod, hN, hfactor,
         (fullMersenneInitialResidueGap_iff_centered hM).mpr hgap⟩
 
+/-- **One canonical residue gap excludes its exact denominator class.**
+If `r.den = 2^c * v` and one full-Mersenne factorization at the canonical
+basepoint `c` has a centered residue gap, then the totient series is not
+`r`.  This is the pointwise converse needed to turn computed instances of
+`FullMersenneCanonicalBasepointResidueGapSupply` into genuine denominator
+exclusions; it makes no cofinal or irrationality claim. -/
+theorem totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap
+    {c v H M : ℕ} (hv : 0 < v) (hH : 0 < H)
+    (hfactor : v * M = 2 ^ H - 1)
+    (hgap : FullMersenneCenteredResidueGap H c M)
+    (r : ℚ) (hden : 2 ^ c * v = r.den) :
+    (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ≠ (r : ℝ) := by
+  intro hS
+  have hM : 0 < M := mersenne_factor_modulus_pos hH hfactor
+  have hinitial : FullMersenneInitialResidueGap H c M :=
+    (fullMersenneInitialResidueGap_iff_centered hM).mpr hgap
+  have hrdenDvd : r.den ∣ 2 ^ c * (2 ^ H - 1) := by
+    rw [← hden, ← hfactor]
+    exact ⟨M, by ring⟩
+  obtain ⟨d, hd⟩ :=
+    tail_diff_int_of_den_dvd r hS H c hrdenDvd
+  obtain ⟨u, hu⟩ :=
+    exists_int_scaled_tail_of_rat_den_eq r hS hden (le_refl c)
+  have hfilter : ∀ z : ℤ,
+      (z : ℝ) = totientTail (c + H) - totientTail c →
+      Int.ModEq (M : ℤ) z (-totientBlock H c) := by
+    intro z hz
+    exact tail_diff_modEq_neg_totientBlock_of_scaled_tail_factor
+      hv hfactor hz hu
+  have hkill : PrimeBasepointFilteredCarryKill H c M 0 := by
+    intro j hj hmod
+    exact (hinitial j hj hmod).elim
+  exact
+    (tail_diff_notMem_int_of_primeBasepointFilteredCarryKill
+      hkill hfilter) ⟨d, hd⟩
+
 /-- At every *prescribed* basepoint, irrationality supplies a sufficiently
 large Euler-multiple height whose full Mersenne quotient misses the complete
 analytic launch interval.  This is stronger than merely finding a remote
@@ -3294,6 +3330,7 @@ theorem totient_series_ne_rat_of_den_dvd_30_300
 #print axioms mersenneLayer_unboundedPrimeDivisorSupply
 #print axioms exists_clean_binaryCyclotomicAnchor
 #print axioms cleanCyclotomicAnchorSupply_binaryCyclotomicLayer
+#print axioms exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational
 #print axioms tail_diff_int_of_period_mul
 #print axioms fullMersenneBlockResidue_succ
 #print axioms fullMersenneBlockCenteredLift_succ_modEq
@@ -3304,6 +3341,7 @@ theorem totient_series_ne_rat_of_den_dvd_30_300
 #print axioms exists_fullMersenneCenteredResidueGap_of_survivorKill
 #print axioms survivorKill_of_certifiedKill
 #print axioms exists_fullMersenneCenteredResidueGap_of_certifiedKill
+#print axioms totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap
 #print axioms exists_fullMersenneInitialResidueGap_at_of_irrational
 #print axioms fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational
 #print axioms cyclotomicGuardCylinderSupply_iff_anchoredKillSupply
