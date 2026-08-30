@@ -232,6 +232,20 @@
             "mechanism": "The exact coordinatewise three-prime height equals the literal smooth-prefix running LCM; fixing all three logarithmic coordinates makes the height constant on a cell, while a single coordinate advance multiplies the LCM by the corresponding prime.",
             "boundary": "This is a locally proved structural product only. Cell constancy and prime-power jump ratios do not prove #269 irrationality, supply the actual-series/rationality bridge, produce cofinal local-window escape, or make endpoint, novelty, priority, significance, or external-review claims.",
             "next_research_route": "Use the exact height identity, cell decomposition, and coordinate jump ratios to identify the actual three-prime series and derive its rational-carry hypotheses; then separately prove the series/rationality bridge and the cofinal escape needed by the conditional carry consumer."
+          },
+          "rank_two_kernel_no_go": {
+            "route_id": "erdos_269_rank_two_kernel_no_go",
+            "status": "negative_local_structure_bridge_open",
+            "source_declaration": "ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen",
+            "source_module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+            "source_anchor": 721,
+            "comparator_declaration": "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+            "comparator_anchor": 462,
+            "solution_export": "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+            "solution_export_anchor": 1375,
+            "mechanism": "The displayed 2,3,5 kernel rectangle has exact determinant -1/15, certifying rank two over ℚ rather than rank one.",
+            "boundary": "This is a local no-go certificate for the displayed kernel rectangle. Failure of rank one does not itself imply #269 irrationality, identify the actual-series/rationality bridge, produce cofinal local-window escape, or make endpoint, novelty, priority, significance, or external-review claims.",
+            "next_research_route": "Use the exact rank-two minor to constrain any actual three-prime kernel reduction, then separately derive the actual-series/rationality bridge and determine whether a global consequence follows; do not promote the local minor to irrationality."
           }
         }
       },
