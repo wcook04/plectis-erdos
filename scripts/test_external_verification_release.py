@@ -103,6 +103,49 @@ def test_release_file_boundary() -> None:
             "symlinked output path modified its target",
         )
 
+    private_tmp = Path("/private/tmp")
+    temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+    with tempfile.TemporaryDirectory(
+        prefix="external-release-parent-race-", dir=temporary_root
+    ) as raw:
+        root = Path(raw)
+        raced_parent = root / "manifest-parent"
+        raced_parent.mkdir()
+        original_parent = root / "manifest-parent-original"
+        outside = root / "outside"
+        outside.mkdir()
+        sentinel = outside / "sentinel.txt"
+        sentinel.write_text("keep me\n", encoding="utf-8")
+        raced_output = raced_parent / "manifest.json"
+        original_open = release.os.open
+
+        def swap_parent(
+            path: Path,
+            flags: int,
+            mode: int = 0o777,
+            *,
+            dir_fd: int | None = None,
+        ) -> int:
+            if dir_fd is not None and Path(path).name == raced_output.name:
+                raced_parent.rename(original_parent)
+                raced_parent.symlink_to(outside, target_is_directory=True)
+            return original_open(path, flags, mode, dir_fd=dir_fd) if dir_fd is not None else original_open(path, flags, mode)
+
+        with patch.object(release.os, "open", side_effect=swap_parent):
+            release.write_json(raced_output, {"status": "blocked"}, overwrite=True)
+        require(
+            not (outside / raced_output.name).exists(),
+            "manifest writer followed a swapped parent directory",
+        )
+        require(
+            sentinel.read_text(encoding="utf-8") == "keep me\n",
+            "manifest parent-swap race modified the outside sentinel",
+        )
+        require(
+            (original_parent / raced_output.name).is_file(),
+            "manifest writer did not create through the held parent descriptor",
+        )
+
 
 def test_replay_file_boundary() -> None:
     with tempfile.TemporaryDirectory() as raw:

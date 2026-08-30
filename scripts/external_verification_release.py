@@ -438,12 +438,18 @@ def write_json(path: Path, value: dict[str, Any], *, overwrite: bool) -> None:
     if existing_mode is not None and not overwrite:
         raise ReleaseIdentityError(f"output exists; pass --overwrite: {path}")
     candidate.parent.mkdir(parents=True, exist_ok=True)
+    candidate = _canonical_output_path(candidate)
     flags = os.O_WRONLY | os.O_CREAT
     flags |= getattr(os, "O_CLOEXEC", 0)
     flags |= getattr(os, "O_NONBLOCK", 0)
     flags |= getattr(os, "O_NOFOLLOW", 0)
     flags |= os.O_TRUNC if overwrite else os.O_EXCL
-    descriptor = os.open(candidate, flags, 0o644)
+    try:
+        descriptor = _open_output_descriptor(candidate, flags)
+    except OSError as exc:
+        raise ReleaseIdentityError(
+            f"output path could not be opened safely: {path}"
+        ) from exc
     try:
         if not stat.S_ISREG(os.fstat(descriptor).st_mode):
             raise ReleaseIdentityError(
@@ -455,6 +461,40 @@ def write_json(path: Path, value: dict[str, Any], *, overwrite: bool) -> None:
     finally:
         if descriptor >= 0:
             os.close(descriptor)
+
+
+def _canonical_output_path(path: Path) -> Path:
+    """Resolve only the explicitly permitted macOS temporary aliases."""
+    parts = path.parts
+    if len(parts) >= 2:
+        alias = Path(os.sep, parts[1])
+        if _is_allowed_platform_alias(alias):
+            target = alias.resolve(strict=True)
+            return target.joinpath(*parts[2:])
+    return path
+
+
+def _open_output_descriptor(path: Path, flags: int) -> int:
+    """Open an output relative to no-follow directory descriptors."""
+    directory_flags = os.O_RDONLY
+    directory_flags |= getattr(os, "O_CLOEXEC", 0)
+    directory_flags |= getattr(os, "O_DIRECTORY", 0)
+    directory_flags |= getattr(os, "O_NOFOLLOW", 0)
+    directory = os.open(os.sep, directory_flags)
+    try:
+        for component in path.parts[1:-1]:
+            child = os.open(component, directory_flags, dir_fd=directory)
+            try:
+                if not stat.S_ISDIR(os.fstat(child).st_mode):
+                    raise OSError(f"output parent is not a directory: {path.parent}")
+            except BaseException:
+                os.close(child)
+                raise
+            os.close(directory)
+            directory = child
+        return os.open(path.name, flags, 0o644, dir_fd=directory)
+    finally:
+        os.close(directory)
 
 
 def parser() -> argparse.ArgumentParser:
