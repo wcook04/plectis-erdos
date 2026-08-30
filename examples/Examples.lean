@@ -127,6 +127,87 @@ theorem downstream_summable_negative_mass_sylvester_recovery
   Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass
     a D C hD hC hCpos hstep hvanish hsum
 
+/-! The #251 cofinal-small-mismatch criterion is a conditional arithmetic
+consumer.  Its local engine is already visible here: two adjacent shifts in
+the open unit interval would each be integral only if both vanished, and the
+recurrence would then force the corresponding prime gaps to agree.  The
+actual consecutive-prime-gap nonperiodicity supplies the contradiction only
+after the explicit cofinal small-mismatch hypothesis is supplied. -/
+
+/-- Downstream reuse of the Comparator-facing #251 small-mismatch criterion.
+
+The conclusion includes the adjacent-pair obstruction used at each supplied
+level, while the first conjunct consumes the source-current Comparator
+transport to the eventual-integrality negation.  No cofinal small-mismatch
+producer is supplied here, so this is not an unconditional irrationality
+theorem for Erdős #251. -/
+theorem downstream_prime_gap_cofinal_small_mismatch_obstruction
+    {T : ℕ → ℚ} (h : ℕ)
+    (hrec : Erdos249257.ExternalVerification.DyadicTailRecurrence
+      (fun n =>
+        (Erdos249257.ExternalVerification.primeGap0 n : ℤ)) T)
+    (hsupply : ∀ N₀, ∃ N, N₀ ≤ N ∧
+      ((-1 < Erdos249257.ExternalVerification.tailShift T h N ∧
+          Erdos249257.ExternalVerification.tailShift T h N < 1) ∧
+       (-1 < Erdos249257.ExternalVerification.tailShift T h (N + 1) ∧
+          Erdos249257.ExternalVerification.tailShift T h (N + 1) < 1)) ∧
+      Erdos249257.ExternalVerification.primeGap0 (N + h + 1) ≠
+        Erdos249257.ExternalVerification.primeGap0 (N + 1)) :
+    (¬ ∃ N₀, ∀ N, N₀ ≤ N →
+      Erdos249257.ExternalVerification.RatIntegral
+        (Erdos249257.ExternalVerification.tailShift T h N)) ∧
+    (∀ N₀, ∃ N, N₀ ≤ N ∧
+      ((-1 < Erdos249257.ExternalVerification.tailShift T h N ∧
+          Erdos249257.ExternalVerification.tailShift T h N < 1) ∧
+       (-1 < Erdos249257.ExternalVerification.tailShift T h (N + 1) ∧
+          Erdos249257.ExternalVerification.tailShift T h (N + 1) < 1)) ∧
+      ¬ (Erdos249257.ExternalVerification.RatIntegral
+          (Erdos249257.ExternalVerification.tailShift T h N) ∧
+        Erdos249257.ExternalVerification.RatIntegral
+          (Erdos249257.ExternalVerification.tailShift T h (N + 1)))) := by
+  constructor
+  · exact
+      Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
+        h hrec hsupply
+  · intro N₀
+    obtain ⟨N, hN, hsmall, hdigit⟩ := hsupply N₀
+    refine ⟨N, hN, hsmall, ?_⟩
+    have hrec_source :
+        ErdosProblems.Erdos251.DyadicTailRecurrence
+          (fun n =>
+            (ErdosProblems.Erdos251.primeGap0 n : ℤ)) T := by
+      simpa only [
+        Erdos249257.ExternalVerification.DyadicTailRecurrence,
+        Erdos249257.ExternalVerification.primeGap0,
+        Erdos249257.ExternalVerification.prime0,
+        ErdosProblems.Erdos251.DyadicTailRecurrence,
+        ErdosProblems.Erdos251.primeGap0,
+        ErdosProblems.Erdos251.prime0] using hrec
+    have hsmall_source :
+        ((-1 < ErdosProblems.Erdos251.tailShift T h N ∧
+            ErdosProblems.Erdos251.tailShift T h N < 1) ∧
+         (-1 < ErdosProblems.Erdos251.tailShift T h (N + 1) ∧
+            ErdosProblems.Erdos251.tailShift T h (N + 1) < 1)) := by
+      simpa only [
+        Erdos249257.ExternalVerification.tailShift,
+        ErdosProblems.Erdos251.tailShift] using hsmall
+    have hdigit_source :
+        (ErdosProblems.Erdos251.primeGap0 (N + h + 1) : ℤ) ≠
+          (ErdosProblems.Erdos251.primeGap0 (N + 1) : ℤ) := by
+      intro hEq
+      apply hdigit
+      exact_mod_cast hEq
+    have hpair_source :=
+      ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne
+        hrec_source h N hsmall_source hdigit_source
+    exact
+      (by
+        simpa only [
+          Erdos249257.ExternalVerification.RatIntegral,
+          Erdos249257.ExternalVerification.tailShift,
+          ErdosProblems.Erdos251.RatIntegral,
+          ErdosProblems.Erdos251.tailShift] using hpair_source)
+
 /-! The Boolean–Möbius transport is a second, genuinely reusable view of
 #257 rationality: it removes the support from the downstream certificate while
 retaining the exact rational numerator, denominator, and positivity boundary.
