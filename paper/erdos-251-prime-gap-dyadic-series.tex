@@ -237,6 +237,15 @@ the library's historical Lean~3-era architecture
 pinned revision.  Linked phrases open the corresponding declaration at the
 pinned source revision~\commitshort.
 
+For release review, the selected Comparator surface is exact: the declaration
+\texttt{exists\_primeGap0\_gt} states $\forall M:\mathbb N,\ \exists n,\ M<
+\mathit{primeGap0}(n)$, and
+\texttt{irrational\_tsum\_primeDyadicTerm\_iff\_primeGap} states, under
+$\operatorname{Summable}(\mathit{primeDyadicTerm})$, the equivalence between
+irrationality of the prime-term and prime-gap-term sums.  The summability
+hypothesis is retained; these structural rows do not prove the open
+irrationality claim for Problem~\#251.
+
 \statusboundary
 
 \begin{table}[!t]
