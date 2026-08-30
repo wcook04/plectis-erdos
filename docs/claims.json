@@ -11750,6 +11750,17 @@
         "boundary": "All dynamics, bounded-rise, positivity, and vanishing hypotheses remain explicit."
       },
       {
+        "id": "centered_state_dynamics",
+        "problem": 243,
+        "review_family": "centered_state_dynamics",
+        "contribution_class": "locally proved signed recovery/rigidity theorem; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos243.boundedNegativePart_eventually_zero",
+        "original_source": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+        "statement": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and division-free normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually; centered-zero plus an eventually nonzero next tail recovers eventual Sylvester recurrence.",
+        "boundary": "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows."
+      },
+      {
         "id": "eventually_periodic_negative_no_go",
         "problem": 243,
         "review_family": "negative_orbit_no_go",
