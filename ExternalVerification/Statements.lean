@@ -1384,6 +1384,17 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       ((f.natDegree + 1) * ε) ^ (f.natDegree : ℝ)⁻¹ + ρ < 1 →
       ∀ { shift : ℂ }, ‖shift‖ < ε →
       ∀ a : ℂ, (f + Polynomial.C shift).eval a = 0 → ‖a‖ < 1
+  /-- Lean-checked critical-balance kernel for the sharp Euclidean scale.
+  The closed-unit-disc nearest-pair assembly and path containment are not part
+  of this statement-isolated theorem. -/
+  problem1041CriticalPairMetricScale :
+    ∀ {n : ℕ}, 2 ≤ n →
+      ∀ (z : Fin n → ℂ) (c : ℂ),
+        (∀ k, c - z k ≠ 0) →
+        (∑ k, (c - z k)⁻¹ = 0) →
+        ∀ {r : ℝ}, 0 < r → r ^ n = ∏ k, ‖c - z k‖ →
+          ∃ i j : Fin n,
+            i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r
   problem1049 :
     ∀ {N K Q digit : ℕ}, 1 ≤ N → 1 ≤ K →
       ¬ CoordinatewiseCorridor 3 2 N K Q digit

@@ -48,6 +48,7 @@
     "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
     "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
     "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
+    "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean",
     "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
     "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
     "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"

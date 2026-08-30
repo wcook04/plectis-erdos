@@ -538,6 +538,16 @@ theorem constant_perturbation_roots_in_unitDisk
   (portfolioClaims Unit).problem1041Roots f hf hdeg hsplit hρ hroots hε
     hmargin hshift
 
+theorem exists_two_roots_dist_sum_le_two_mul_geomMean
+    {n : ℕ} (hn : 2 ≤ n) (z : Fin n → ℂ) (c : ℂ)
+    (hne : ∀ k, c - z k ≠ 0)
+    (hcrit : ∑ k, (c - z k)⁻¹ = 0)
+    {r : ℝ} (hr : 0 < r) (hrn : r ^ n = ∏ k, ‖c - z k‖) :
+    ∃ i j : Fin n,
+      i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r :=
+  (portfolioClaims Unit).problem1041CriticalPairMetricScale
+    hn z c hne hcrit hr hrn
+
 theorem threeHalves_no_coordinatewiseCorridor
     {N K Q digit : ℕ} (hN : 1 ≤ N) (hK : 1 ≤ K) :
     ¬ CoordinatewiseCorridor 3 2 N K Q digit :=
