@@ -22,12 +22,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MANIFEST = ROOT / "experiments" / "publication_mutations.json"
 MANIFEST_SCHEMA = "erdos249257-publication-mutation-operators/1"
 RUN_SCHEMA = "erdos249257-publication-mutation-run/1"
 VERIFY_SCHEMA = "erdos249257-publication-mutation-operator-verification/1"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 
 
 class MutationError(RuntimeError):
@@ -290,6 +294,8 @@ def run_checked(argv: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
         capture_output=True,
         text=True,
         check=False,
+        env=singleflight.command_environment(),
+        timeout=SUBPROCESS_TIMEOUT_SECONDS,
     )
     if completed.returncode != 0:
         detail = completed.stderr.strip() or completed.stdout.strip()
@@ -430,6 +436,7 @@ def run_gate_command(
             capture_output=True,
             text=True,
             check=False,
+            env=singleflight.command_environment(),
             timeout=timeout_seconds,
         )
         elapsed = round(time.monotonic() - started, 3)
