@@ -26,6 +26,7 @@ import datetime as _dt
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -43,6 +44,7 @@ NOTE_KINDS = (
 )
 CLOSE_OUTCOMES = ("established", "open", "abandoned")
 PROBE_TIMEOUT_SECONDS = 600
+SESSION_SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,80}$")
 
 
 def repo_root() -> Path:
@@ -71,6 +73,12 @@ def path_has_symlink_component(path: Path) -> bool:
         if current.parent == current:
             return False
         current = current.parent
+
+
+def validate_session_slug(slug: str) -> None:
+    """Keep every workbench session directory beneath its selected root."""
+    if not SESSION_SLUG_RE.fullmatch(slug):
+        raise SystemExit("session must match [a-z0-9][a-z0-9_-]{2,80}")
 
 
 def _utc_now() -> str:
@@ -178,6 +186,12 @@ def run_lean_probe(root: Path, source: str) -> dict[str, Any]:
 
 class Session:
     def __init__(self, sessions_root: Path, slug: str) -> None:
+        validate_session_slug(slug)
+        if path_has_symlink_component(sessions_root):
+            raise SystemExit(
+                "sessions root must not traverse symbolic links: "
+                f"{sessions_root}"
+            )
         self.slug = slug
         self.directory = sessions_root / slug
         self.ledger_path = self.directory / "ledger.jsonl"

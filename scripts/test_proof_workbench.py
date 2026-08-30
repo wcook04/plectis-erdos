@@ -24,6 +24,50 @@ def _run(sessions_root: Path, argv: list[str]) -> dict:
     return args.func(args, workbench.repo_root())
 
 
+def check_session_path_boundaries(tmp: Path) -> None:
+    real = tmp / "real-sessions"
+    real.mkdir()
+    linked = tmp / "linked-sessions"
+    linked.symlink_to(real, target_is_directory=True)
+    try:
+        _run(
+            linked,
+            [
+                "open",
+                "--session",
+                "redirected",
+                "--intent",
+                "symlink root",
+            ],
+        )
+    except SystemExit as error:
+        if "symbolic links" not in str(error):
+            raise AssertionError(f"symlink root rejection had no bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench followed a symlinked sessions root")
+    if (real / "redirected" / "ledger.jsonl").exists():
+        raise AssertionError("symlinked sessions root received a redirected ledger")
+
+    try:
+        _run(
+            real,
+            [
+                "open",
+                "--session",
+                "../escaped",
+                "--intent",
+                "session traversal",
+            ],
+        )
+    except SystemExit as error:
+        if "session must match" not in str(error):
+            raise AssertionError(f"session traversal rejection had no bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted a path-traversing session slug")
+    if (tmp / "escaped" / "ledger.jsonl").exists():
+        raise AssertionError("traversing session slug received an escaped ledger")
+
+
 def check_session_lifecycle(sessions_root: Path) -> None:
     opened = _run(
         sessions_root,
@@ -209,6 +253,7 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
 def main() -> int:
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
+        check_session_path_boundaries(tmp)
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
         check_claim_gate(sessions_root, tmp)
