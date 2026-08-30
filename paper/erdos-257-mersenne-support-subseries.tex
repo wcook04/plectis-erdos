@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
-\renewcommand{\commitshort}{9e231ce4371f}
+\renewcommand{\commit}{ec787e648a672e2a501b7e5453230a5e6d16d766}
+\renewcommand{\commitshort}{ec787e648a67}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -109,6 +109,17 @@ therefore turns rational-support search into a precise orbit problem.  It is
 an equivalence over infinite objects, not a contradiction: finite supports
 already supply certificates, and no universal irrationality conclusion
 follows.
+
+At the half endpoint, a new exact-row transport makes the conditional route
+more concrete.  If the rational greedy remainder after rank $c-1$ is positive
+but smaller than $\wgt c$, the checked skipped-core construction fills the
+upper half by a Boolean word and produces an exact finite quotient row at
+endpoint $2c-2$.  Rows at arbitrarily large endpoints have values converging
+to $1/2$; the closed-set consumer therefore gives $1/2\in\Ach$ even when the
+finite row witnesses are mutually incompatible.  The needed supply is the
+unproved hypothesis that such positive skips occur cofinally.  Thus this is a
+conditional membership/refutation route, and finite rows do not provide the
+missing cofinal supply.
 
 For finite nonempty $F\subseteq\Npos$ at base $b\ge2$, let $D_F$ be the
 reduced denominator of $\sum_{n\in F}(b^n-1)^{-1}$.  The finite theorem is
@@ -1103,6 +1114,35 @@ Moreover no finite support has value $1/2$.
 \mword{Erdos249257/HalfCylinderFatalGapRightTail.lean}{787}{seamGreedyEventuallyRight_iff_half_not_mem}{its transfer to non-membership},
 and
 \mword{Erdos249257/HalfCarryReachability.lean}{589}{finite_boolSupport_ne_half}{the finite-support exclusion}.
+
+\paragraph{Exact-row transport at the endpoint.}
+The new source-current route exposes the mechanism behind one conditional
+half-membership implication.  Write $r_{c-1}$ for the rational greedy
+remainder after ranks through $c-1$.  Whenever $c\ge4$ and
+
+\[
+  0<r_{c-1}<\wgt c,
+\]
+
+the skipped-core constructor first turns the finite greedy core into an exact
+local quotient row at endpoint $2c-2$,
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{31}{exactLocalMersenneHalfRow_of_positiveHalfGreedySkip}{the local row constructor}.
+The hard finite step is explicit: the deficit below $1/2$ is below the next
+Mersenne weight, so a Boolean word fills the entire upper-half capacity,
+\mword{Erdos249257/BooleanMobiusSkippedCoreExactRow.lean}{228}{exists_upperHalfBooleanWord_of_skippedCore}{the upper-half Boolean fill}.
+If positive skips occur cofinally in the exact sense
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{22}{CofinalPositiveHalfGreedySkips}{the cofinal-skip hypothesis},
+their endpoints are cofinal by
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{60}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{the row fan-in}.
+The row-value estimate makes the discrepancy at endpoint $n$ at most
+$(n+1)/2^n$, and the closed-set consumer then places $1/2$ in $\Ach$,
+\mword{Erdos249257/BooleanMobiusCofinalExactRows.lean}{71}{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{the closed-set consumer}.
+No compatibility between the finite witnesses is assumed.  The global
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{73}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{conditional endpoint theorem}
+therefore remains conditional: \texttt{CofinalPositiveHalfGreedySkips} is not
+proved, and neither one finite row nor finitely many exact rows imply it.
+This route gives a conditional $1/2$-membership (and hence conditional
+counterexample) criterion, not an unconditional solution of Problem~\#257.
 
 \begin{theorem}[terminal scaled-vanishing countermodel frontier]
 \label{res:terminalhalf}

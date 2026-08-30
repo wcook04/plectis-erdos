@@ -35,8 +35,8 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public formal-source checkpoint used by this paper.
-\newcommand{\commit}{81bf8aee384a5df45dd9a27d268a24044fae761b}
-\newcommand{\commitshort}{81bf8aee384a}
+\newcommand{\commit}{ec787e648a672e2a501b7e5453230a5e6d16d766}
+\newcommand{\commitshort}{ec787e648a67}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main}
@@ -158,6 +158,14 @@ represents $1/21$; the quotient-greedy classification leaves one eventual
 affine-supercapacity regime unexcluded. Both memberships remain open. A
 shared Lambert-series change of variables transfers no irrationality theorem
 between the problems.
+
+The exact-row transport sharpens the positive half-membership boundary.  A
+positive rational greedy remainder below the next Mersenne weight produces
+an exact finite quotient row at endpoint $2c-2$; cofinally many such skips
+produce cofinally many rows whose values converge to $1/2$, so closedness
+yields membership.  This is conditional on the unproved
+\texttt{CofinalPositiveHalfGreedySkips} supply, and finite rows do not imply
+cofinal supply.
 
 The sharper \#249 frontier couples rank and period: on the non-irrational
 branch, one positive-multiplier carry has dyadic sections eventually periodic
@@ -1125,6 +1133,34 @@ the terminal forms are the
 \lword{HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{unbounded-terminal theorem}
 and
 \lword{HalfCylinderHalfMembershipClassification.lean}{235}{half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip}{no-final-skip theorem}.
+
+\paragraph{Exact-row transport at the endpoint.}
+The source-current Boolean--M\"obius route makes one conditional implication
+behind this equivalence explicit.  Let $r_{c-1}$ be the rational greedy
+remainder after ranks through $c-1$.  For $c\ge4$, the inequalities
+
+\[
+  0<r_{c-1}<\frac{1}{2^c-1}
+\]
+
+are enough for the skipped-core constructor to produce an exact local
+Mersenne half row at endpoint $2c-2$,
+\lword{BooleanMobiusSkipRowCofinal.lean}{31}{exactLocalMersenneHalfRow_of_positiveHalfGreedySkip}{the local row constructor}.
+Its nontrivial finite step is an upper-half Boolean fill of the deficit,
+\lword{BooleanMobiusSkippedCoreExactRow.lean}{228}{exists_upperHalfBooleanWord_of_skippedCore}{the Boolean-word constructor}.
+The precise supply premise is
+\lword{BooleanMobiusSkipRowCofinal.lean}{22}{CofinalPositiveHalfGreedySkips}{the cofinal positive-skip hypothesis};
+it yields rows at cofinal endpoints via
+\lword{BooleanMobiusSkipRowCofinal.lean}{60}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{the cofinal-row transport}.
+The separate row-value estimate converges to $1/2$, and the closed-set
+consumer
+\lword{BooleanMobiusCofinalExactRows.lean}{71}{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{the closed-set endpoint consumer}
+accepts mutually incompatible finite witnesses because only their endpoint
+lengths must tend to infinity.  The resulting
+\lword{BooleanMobiusSkipRowCofinal.lean}{73}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{conditional half-membership theorem}
+is not an unconditional result: \texttt{CofinalPositiveHalfGreedySkips} is
+unproved, and a finite exact row or finite family of rows does not establish
+the cofinal hypothesis.
 
 \begin{proposition}[finite half-value exclusion]\label{res:nofinitehalf}
 No finite support \(A\subseteq\Npos\) has value \(1/2\).
