@@ -185,6 +185,78 @@ lemma tailOrbitFirstExp_succ (h M : ℕ) :
   rw [hperiod, mul_one]
   exact Complex.exp_nat_mul _ 2
 
+/-- Every later first phase is obtained from an earlier one by an exact
+power-of-two iterate.  Thus no carry information survives in the phase orbit
+beyond the single starting value. -/
+lemma tailOrbitFirstExp_add (h M k : ℕ) :
+    tailOrbitFirstExp h (M + k) =
+      (tailOrbitFirstExp h M) ^ (2 ^ k) := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+      rw [Nat.add_succ, tailOrbitFirstExp_succ, ih]
+      simp only [pow_succ, pow_mul]
+
+/-- Initial-phase normal form for the whole tail orbit. -/
+lemma tailOrbitFirstExp_eq_initial_pow_two (h N : ℕ) :
+    tailOrbitFirstExp h N =
+      (tailOrbitFirstExp h 0) ^ (2 ^ N) := by
+  simpa using tailOrbitFirstExp_add h 0 N
+
+/-- The prime-index strict-gap hypothesis is exactly a statement about the
+power-of-two orbit of one initial phase for each shift. -/
+theorem naturalPrimeTailOrbitStrictGap_iff_initial_phase :
+    DTWNaturalPrimeTailOrbitStrictGap ↔
+      ∀ h : ℕ, 0 < h →
+        ∀ N₀ : ℕ, ∃ p : ℕ,
+          max (N₀ + h + 1) (h + 5) ≤ p ∧
+          p.Prime ∧
+          ((tailOrbitFirstExp h 0) ^ (2 ^ (p - h - 1))).re < (9 / 10 : ℝ) := by
+  constructor <;> intro hgap h hh N₀
+  · obtain ⟨p, hpN, hp, hphase⟩ := hgap h hh N₀
+    refine ⟨p, hpN, hp, ?_⟩
+    rwa [tailOrbitFirstExp_eq_initial_pow_two] at hphase
+  · obtain ⟨p, hpN, hp, hphase⟩ := hgap h hh N₀
+    refine ⟨p, hpN, hp, ?_⟩
+    rwa [tailOrbitFirstExp_eq_initial_pow_two]
+
+/-- The phase `1` is absorbing for the exact squaring dynamics. -/
+lemma tailOrbitFirstExp_eq_one_of_le
+    {h M N : ℕ} (hMN : M ≤ N) (hM : tailOrbitFirstExp h M = 1) :
+    tailOrbitFirstExp h N = 1 := by
+  calc
+    tailOrbitFirstExp h N = tailOrbitFirstExp h (M + (N - M)) := by
+      congr 1
+      omega
+    _ = (tailOrbitFirstExp h M) ^ (2 ^ (N - M)) :=
+      tailOrbitFirstExp_add h M (N - M)
+    _ = 1 := by simp [hM]
+
+/-- An absorbing phase at any time rigorously obstructs the cofinal strict-gap
+producer for that shift.  This does not show that the actual totient orbit ever
+enters the absorbing phase. -/
+theorem not_naturalPrimeTailOrbitStrictGap_of_phase_one
+    {h M : ℕ} (hh : 0 < h) (hM : tailOrbitFirstExp h M = 1) :
+    ¬ DTWNaturalPrimeTailOrbitStrictGap := by
+  intro hgap
+  obtain ⟨p, hpN, _hp, hphase⟩ := hgap h hh M
+  have hMN : M ≤ p - h - 1 := by omega
+  have hone : tailOrbitFirstExp h (p - h - 1) = 1 :=
+    tailOrbitFirstExp_eq_one_of_le hMN hM
+  rw [hone] at hphase
+  norm_num at hphase
+
+/-- More generally, entering any dyadic root of unity obstructs the strict-gap
+producer: finitely many squarings reach the absorbing phase `1`.  The source
+does not prove that an actual totient phase is such a root. -/
+theorem not_naturalPrimeTailOrbitStrictGap_of_dyadic_root
+    {h M k : ℕ} (hh : 0 < h)
+    (hroot : (tailOrbitFirstExp h M) ^ (2 ^ k) = 1) :
+    ¬ DTWNaturalPrimeTailOrbitStrictGap := by
+  apply not_naturalPrimeTailOrbitStrictGap_of_phase_one hh
+  rw [tailOrbitFirstExp_add]
+  exact hroot
+
 /-- A strict `9/10` gap in the infinite phase leaves a positive truncation
 budget and gives a finite `9/10` pointwise gap. -/
 theorem naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap
