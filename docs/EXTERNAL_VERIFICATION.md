@@ -384,7 +384,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Contribution families (9)</summary>
+<summary>Contribution families (10)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -441,7 +441,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (9)</summary>
+<summary>Technical registry and Comparator routing (10)</summary>
 
 - <code>finite_period_noncollapse</code><br>
   Comparator: <code>targeted</code>
