@@ -12,6 +12,7 @@ from check_primary_source_dispositions import (
     LEDGER,
     ROOT,
     disposition_errors,
+    metadata_private_path_errors,
     present_artifact_paths,
     tracked_paths,
 )
@@ -66,9 +67,13 @@ def main() -> int:
     wrong_root["inventory"]["root"] = "docs/"  # type: ignore[index]
     reject(wrong_root, "inventory root", tracked, present)
 
+    for payload in (b"/Users/private/source.pdf", b"C:\\Users\\private\\source.pdf"):
+        metadata_errors = metadata_private_path_errors({"synthetic.md": payload})
+        require(metadata_errors, "synthetic private metadata marker was accepted")
+
     print(
         "test_primary_source_dispositions: baseline clean; "
-        "5 unauthorized or inconsistent mutations rejected"
+        "5 unauthorized or inconsistent mutations plus 2 private metadata fixtures rejected"
     )
     return 0
 

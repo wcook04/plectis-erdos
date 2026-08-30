@@ -32,6 +32,18 @@ DISPOSITIONS = {
     "unresolved_release_blocker",
 }
 ARTIFACT_SUFFIXES = (".pdf", ".scan", ".tar", ".tar.gz", ".tgz", ".zip", ".7z")
+PRIVATE_PATH_MARKERS = (
+    ("Unix home path", b"/Users/"),
+    ("Linux home path", b"/home/"),
+    ("root home path", b"/root/"),
+    ("private temporary path", b"/private/var/"),
+    ("file URI", b"file://"),
+    ("Codex home path", b"~/.codex/"),
+    ("agents home path", b"~/.agents/"),
+    ("Windows user profile", b"%USERPROFILE%\\"),
+    ("Windows user path", b"C:\\Users\\"),
+    ("UNC user path", b"\\\\Users\\"),
+)
 
 
 def require(condition: bool, message: str, errors: list[str]) -> None:
@@ -72,6 +84,34 @@ def present_artifact_paths() -> set[str]:
         for path in SOURCE_ROOT.rglob("*")
         if path.is_file() and path.name != LEDGER.name and path.name.lower().endswith(ARTIFACT_SUFFIXES)
     }
+
+
+def metadata_private_path_errors(metadata: dict[str, bytes]) -> list[str]:
+    errors: list[str] = []
+    for name, payload in metadata.items():
+        for label, marker in PRIVATE_PATH_MARKERS:
+            if marker in payload:
+                errors.append(f"primary-source metadata contains a {label} marker: {name}")
+    return errors
+
+
+def primary_source_metadata_errors() -> list[str]:
+    errors: list[str] = []
+    metadata_paths = {LEDGER}
+    if SOURCE_ROOT.is_dir():
+        metadata_paths.update(SOURCE_ROOT.rglob("*.md"))
+        metadata_paths.update(SOURCE_ROOT.rglob("*.json"))
+    metadata: dict[str, bytes] = {}
+    for path in sorted(metadata_paths):
+        name = path.relative_to(ROOT).as_posix()
+        if path.is_symlink():
+            errors.append(f"primary-source metadata must not be a symlink: {name}")
+        elif not path.is_file():
+            errors.append(f"primary-source metadata is missing: {name}")
+        else:
+            metadata[name] = path.read_bytes()
+    errors.extend(metadata_private_path_errors(metadata))
+    return errors
 
 
 def disposition_errors(
@@ -239,6 +279,8 @@ def disposition_errors(
         errors.extend(f"tracked source artifact is absent from the disposition ledger: {path}" for path in unlisted_tracked)
     if present is not None:
         errors.extend(f"present source artifact is absent from the disposition ledger: {path}" for path in sorted(present - listed_artifacts))
+
+    errors.extend(primary_source_metadata_errors())
 
     for key, expected in expected_counts.items():
         if inventory.get(key) != expected:
