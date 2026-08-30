@@ -12049,6 +12049,17 @@
         "boundary": "The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made."
       },
       {
+        "id": "boolean_mobius_exact_row_dynamics",
+        "problem": 257,
+        "review_family": "boolean_mobius_exact_row_dynamics",
+        "contribution_class": "conditional reduction; novelty unassessed",
+        "original_declaration": "Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+        "original_source": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+        "statement": "If positive rational-greedy skips occur cofinally in the declared sense, the skipped-core construction supplies cofinally many exact local Mersenne half rows and hence (1 / 2 : ℝ) belongs to the Mersenne achievement set.",
+        "boundary": "This route is conditional on the unproved CofinalPositiveHalfGreedySkips premise: for every N there is c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. A finite exact row or any finite collection of exact rows does not establish that cofinal supply. The result is a conditional 1/2-membership/counterexample route only, not an unconditional solution of Erdős #257; the exact-row, upper-half Boolean-word, rank-two, and endpoint-defect declarations are subordinate mechanism evidence, and no novelty, priority, significance, or external-review claim is made."
+      },
+      {
         "id": "composite_dilation_defect_split",
         "problem": 257,
         "review_family": "composite_dilation_defect_identity",
@@ -12499,6 +12510,23 @@
               "Erdos249257.supportCoeffZeroWindow_length_le_eps_logb_add"
             ],
             "boundary": "The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made."
+          },
+          {
+            "id": "boolean_mobius_exact_row_dynamics",
+            "contribution_class": "conditional reduction; novelty unassessed",
+            "summary": "If CofinalPositiveHalfGreedySkips holds—cofinally many positive rational-greedy remainders below the next Mersenne weight—the skipped-core and upper-half Boolean-word construction supplies cofinally many exact local half rows, yielding (1 / 2 : ℝ) ∈ mersenneAchievementSet. The load-bearing representative is half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips; exact-row construction, endpoint-defect transition, forced rank-two membership, and Boolean-word filling are subordinate mechanisms.",
+            "evidence_mode": "Lean kernel",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.CofinalPositiveHalfGreedySkips",
+              "Erdos249257.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
+              "Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
+              "Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+              "Erdos249257.two_mem_of_exact_localMersenneQuotient",
+              "Erdos249257.localEndpointDefect_succ",
+              "Erdos249257.exists_upperHalfBooleanWord_of_skippedCore"
+            ],
+            "boundary": "CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N there must be c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows, including one produced by a skipped core, do not establish cofinality. This is a conditional 1/2-membership/counterexample route, not an unconditional Erdős #257 solution; the rank-two, endpoint-defect, and upper-half Boolean-word declarations remain subordinate evidence, and no novelty, priority, significance, or external-review claim is made."
           },
           {
             "id": "shifted_odd_tail_state",
