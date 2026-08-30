@@ -35,7 +35,7 @@ which currently contains 69 source families (the 60-family dispatch baseline
 plus the newly canonical actual-LCM, weighted-phase-carry, dyadic-tail
 classification, Boolean–Möbius carry, Boolean–Möbius exact-row dynamics,
 half-membership seam classification, fixed-precision transport no-go, and
-totient carry anti-compression families), and eight targeted theorem-forest
+totient carry anti-compression families), and nine targeted theorem-forest
 discoveries. Each source family has an explicit selected, represented,
 deferred, subordinate, rejected, or long-tail disposition, with support and
 contrary evidence, cheapest probe, stop evidence, hard mechanism,
@@ -286,6 +286,22 @@ uncontrolled integral coboundary split is transported exactly, but the
 separate function-faithful finite-span factorization is not a Comparator row,
 and there is no quotient recurrence, scalar-evaluation implication, literal
 infinite-span theorem, or #269 endpoint.
+
+The source-landscape queue also retains `strict_prime_tail_orbit_gap` as a
+subordinate, source-only #249 producer mechanism. The
+`TotientTailOrbitNonpositiveBlockDensity` branch assumes at least `11/100`
+nonpositive phases on each sufficiently late dyadic block; unit norm and the
+complement estimate then give an `89/100` block-mean bound, and one truncation
+at endpoint `2X` with `1/100` error supplies a `9/10` finite first-harmonic
+gap and certified-kill socket. Its separate
+`DTWNaturalPrimeTailOrbitStrictGap` branch assumes cofinally many primes with
+`Re(tailOrbitFirstExp h (p - h - 1)) < 9/10`, which yields a positive adaptive
+margin and exact natural-fibre membership. The block-density, cofinal-prime,
+and uniform-margin supplies are unproved for the actual orbit; this source
+review therefore remains outside the 69-family canonical claims and the
+47-row Comparator admission screen. It proves no #249 irrationality or
+endpoint and makes no novelty, priority, significance, or external-review
+claim.
 
 These dispositions compare consequence, endpoint proximity, hard mechanism,
 distinctness, evidence certainty, natural friction, digestion value, and

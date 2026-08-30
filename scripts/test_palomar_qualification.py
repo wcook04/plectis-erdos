@@ -486,6 +486,14 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "cofinal prime" in " ".join(strict_prime["limitations"])
     assert "no unconditional" in " ".join(strict_prime["limitations"])
     assert "Comparator transport" in strict_prime["reversal_evidence"]
+    qualification_text = (ROOT / "docs" / "PALOMAR_QUALIFICATION.md").read_text(
+        encoding="utf-8"
+    )
+    qualification_text_compact = " ".join(qualification_text.split())
+    assert "nine targeted theorem-forest discoveries" in qualification_text_compact
+    assert "strict_prime_tail_orbit_gap" in qualification_text_compact
+    assert "11/100" in qualification_text_compact
+    assert "no #249 irrationality or endpoint" in qualification_text_compact
     weighted = landscape_by_id["weighted_phase_carry_observer"]
     assert "carry_eq_residueDigit_add_coboundary" in weighted["source_declaration"]
     assert "carryResidue_mem_interval" in weighted["source_declaration"]
