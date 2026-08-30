@@ -45,17 +45,50 @@ class ReplayError(RuntimeError):
     """Raised when exact replay cannot proceed or does not verify."""
 
 
+def _is_allowed_platform_alias(path: Path) -> bool:
+    """Permit the host's canonical temporary-directory aliases only."""
+    try:
+        aliases = {
+            Path("/var"): Path("/private/var"),
+            Path("/tmp"): Path("/private/tmp"),
+        }
+        return path in aliases and path.resolve(strict=True) == aliases[path]
+    except OSError:
+        return False
+
+
+def safe_replay_file(path: Path, *, root: Path | None = None) -> Path:
+    """Return a regular replay input without following path symlinks."""
+    root_path = Path(os.path.abspath(root)) if root is not None else None
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            if not _is_allowed_platform_alias(current):
+                raise ReplayError(f"symlinked replay input: {path}")
+            current = current.resolve(strict=True)
+        if root_path is not None and current == root_path:
+            break
+        if current.parent == current:
+            if root_path is None:
+                break
+            raise ReplayError(f"replay input escaped checkout: {path}")
+        current = current.parent
+    if not candidate.is_file():
+        raise ReplayError(f"replay input is not a regular file: {path}")
+    return candidate
+
+
 def sha256_bytes(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
 
 
-def sha256_file(path: Path) -> str:
-    if not path.is_file():
-        raise ReplayError(f"required replay input is absent: {path}")
-    return sha256_bytes(path.read_bytes())
+def sha256_file(path: Path, *, root: Path | None = None) -> str:
+    return sha256_bytes(safe_replay_file(path, root=root).read_bytes())
 
 
-def load_json(path: Path) -> dict[str, Any]:
+def load_json(path: Path, *, root: Path | None = None) -> dict[str, Any]:
+    path = safe_replay_file(path, root=root)
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -119,7 +152,7 @@ def bounded_tail(text: str) -> str:
 
 
 def load_contract(root: Path) -> dict[str, Any]:
-    value = load_json(root / CONTRACT_RELATIVE)
+    value = load_json(root / CONTRACT_RELATIVE, root=root)
     if value.get("schema") != "erdos-external-verification-release-contract/1":
         raise ReplayError("unsupported external-verification release contract")
     pins = value.get("toolchain")
@@ -134,6 +167,14 @@ def load_contract(root: Path) -> dict[str, Any]:
     replay = value.get("replay")
     if not isinstance(replay, dict):
         raise ReplayError("release contract lacks the replay unit")
+    for field in ("positive_config", "negative_config"):
+        path = replay.get(field)
+        if (
+            not isinstance(path, str)
+            or Path(path).is_absolute()
+            or ".." in Path(path).parts
+        ):
+            raise ReplayError(f"replay.{field} is not a safe repository-relative path")
     return value
 
 
@@ -333,8 +374,8 @@ def execute(
             raise ReplayError("bootstrap contract differs from the commit-pinned source contract")
         positive_config = source_contract["replay"]["positive_config"]
         negative_config = source_contract["replay"]["negative_config"]
-        positive = load_json(source / positive_config)
-        negative = load_json(source / negative_config)
+        positive = load_json(source / positive_config, root=source)
+        negative = load_json(source / negative_config, root=source)
         expected_theorem = source_contract["replay"]["theorem"]
         if positive.get("theorem_names") != [expected_theorem]:
             raise ReplayError("positive replay config is not the contracted one-theorem unit")
@@ -384,7 +425,9 @@ def execute(
                     "expected_tree": source_tree,
                     "observed_tree": git(source, "rev-parse", "HEAD^{tree}"),
                     "identity_verified": True,
-                    "contract_sha256": sha256_file(source / CONTRACT_RELATIVE),
+                    "contract_sha256": sha256_file(
+                        source / CONTRACT_RELATIVE, root=source
+                    ),
                 },
                 "toolchain": {
                     "expected_revisions": source_contract["toolchain"],
@@ -399,9 +442,13 @@ def execute(
                     "theorem": expected_theorem,
                     "permitted_axioms": positive["permitted_axioms"],
                     "positive_config": positive_config,
-                    "positive_config_sha256": sha256_file(source / positive_config),
+                    "positive_config_sha256": sha256_file(
+                        source / positive_config, root=source
+                    ),
                     "negative_config": negative_config,
-                    "negative_config_sha256": sha256_file(source / negative_config),
+                    "negative_config_sha256": sha256_file(
+                        source / negative_config, root=source
+                    ),
                 },
                 "sandbox_mode": mode,
                 "checks": {

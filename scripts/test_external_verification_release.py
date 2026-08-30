@@ -85,6 +85,33 @@ def test_release_file_boundary() -> None:
         )
 
 
+def test_replay_file_boundary() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        private = root / "private"
+        private.mkdir()
+        (private / "config.json").write_text("{}\n", encoding="utf-8")
+        repository = root / "verification"
+        repository.mkdir()
+        (repository / "linked").symlink_to(private, target_is_directory=True)
+        try:
+            replay.load_json(
+                repository / "linked" / "config.json", root=root
+            )
+        except replay.ReplayError as exc:
+            require("symlinked replay input" in str(exc), str(exc))
+        else:
+            raise AssertionError("replay followed a symlinked parent")
+        link = root / "tool-link"
+        link.symlink_to(private / "config.json")
+        try:
+            replay.sha256_file(link)
+        except replay.ReplayError as exc:
+            require("symlinked replay input" in str(exc), str(exc))
+        else:
+            raise AssertionError("replay hashed a symlinked tool")
+
+
 def test_runtime_input_boundary() -> None:
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)
@@ -488,6 +515,7 @@ def test_release_manifest() -> None:
 
 
 def main() -> int:
+    test_replay_file_boundary()
     test_runtime_input_boundary()
     test_release_file_boundary()
     test_fixture_git_environment()
