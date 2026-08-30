@@ -45,10 +45,12 @@ RELEASE_VALIDATOR_REQUIREMENTS = (
 )
 RELEASE_INSTALL_COMMAND = (
     "python3 -m pip install --disable-pip-version-check --no-cache-dir "
+    "--require-hashes "
     "--requirement requirements-release.txt"
 )
 REQUIREMENT_PIN_RE = re.compile(
-    r"^([A-Za-z0-9][A-Za-z0-9_.-]*)==([^\s#]+)$"
+    r"^([A-Za-z0-9][A-Za-z0-9_.-]*)==([^\s#]+)"
+    r"(?:\s+--hash=sha256:[0-9a-f]{64})+$"
 )
 
 
@@ -176,91 +178,149 @@ def release_validator_lock_errors(
     return errors
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep contract checks active when CI invokes Python with ``-O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def main() -> int:
     toolchain = (ROOT / "lean-toolchain").read_text(encoding="utf-8")
     lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
     manifest = (ROOT / "lake-manifest.json").read_text(encoding="utf-8")
     requirements = (ROOT / "requirements-release.txt").read_text(encoding="utf-8")
     workflow = (ROOT / ".github/workflows/lean.yml").read_text(encoding="utf-8")
-    assert not dependency_lock_errors(toolchain, lakefile, manifest)
-    assert not release_validator_lock_errors(requirements, workflow)
+    require(
+        not dependency_lock_errors(toolchain, lakefile, manifest),
+        "the live Lean dependency lock must satisfy its contract",
+    )
+    require(
+        not release_validator_lock_errors(requirements, workflow),
+        "the live release-validator lock must satisfy its contract",
+    )
 
     lake_rev_drift = lakefile.replace('rev = "v4.29.1"', 'rev = "v4.29.0"', 1)
-    assert any(
-        "drifted from the Lean toolchain" in error
-        for error in dependency_lock_errors(toolchain, lake_rev_drift, manifest)
+    require(
+        any(
+            "drifted from the Lean toolchain" in error
+            for error in dependency_lock_errors(toolchain, lake_rev_drift, manifest)
+        ),
+        "a Lakefile revision drift must be rejected",
     )
 
     manifest_data = json.loads(manifest)
     input_drift = copy.deepcopy(manifest_data)
     input_drift["packages"][0]["inputRev"] = "v4.29.0"
-    assert any(
-        "input revision drifted from lakefile" in error
-        for error in dependency_lock_errors(
-            toolchain, lakefile, encode_manifest(input_drift)
-        )
+    require(
+        any(
+            "input revision drifted from lakefile" in error
+            for error in dependency_lock_errors(
+                toolchain, lakefile, encode_manifest(input_drift)
+            )
+        ),
+        "a manifest input revision drift must be rejected",
     )
 
     inherited_mathlib = copy.deepcopy(manifest_data)
     inherited_mathlib["packages"][0]["inherited"] = True
-    assert any(
-        "direct dependency" in error
-        for error in dependency_lock_errors(
-            toolchain, lakefile, encode_manifest(inherited_mathlib)
-        )
+    require(
+        any(
+            "direct dependency" in error
+            for error in dependency_lock_errors(
+                toolchain, lakefile, encode_manifest(inherited_mathlib)
+            )
+        ),
+        "an inherited Mathlib dependency must be rejected",
     )
 
     shortened_revision = copy.deepcopy(manifest_data)
     shortened_revision["packages"][-1]["rev"] = "7802da01"
-    assert any(
-        "full commit revision" in error
-        for error in dependency_lock_errors(
-            toolchain, lakefile, encode_manifest(shortened_revision)
-        )
+    require(
+        any(
+            "full commit revision" in error
+            for error in dependency_lock_errors(
+                toolchain, lakefile, encode_manifest(shortened_revision)
+            )
+        ),
+        "a shortened package revision must be rejected",
     )
 
     duplicate_package = copy.deepcopy(manifest_data)
     duplicate_package["packages"].append(copy.deepcopy(manifest_data["packages"][0]))
-    assert any(
-        "names are not unique" in error
-        for error in dependency_lock_errors(
-            toolchain, lakefile, encode_manifest(duplicate_package)
-        )
+    require(
+        any(
+            "names are not unique" in error
+            for error in dependency_lock_errors(
+                toolchain, lakefile, encode_manifest(duplicate_package)
+            )
+        ),
+        "duplicate package names must be rejected",
     )
 
     project_name_drift = copy.deepcopy(manifest_data)
     project_name_drift["name"] = "different-project"
-    assert any(
-        "project name drifted" in error
-        for error in dependency_lock_errors(
-            toolchain, lakefile, encode_manifest(project_name_drift)
-        )
+    require(
+        any(
+            "project name drifted" in error
+            for error in dependency_lock_errors(
+                toolchain, lakefile, encode_manifest(project_name_drift)
+            )
+        ),
+        "a project-name drift must be rejected",
     )
 
     moving_requirement = requirements.replace("cffconvert==2.0.0", "cffconvert", 1)
-    assert any(
-        "exact name==version pin" in error
-        for error in release_validator_lock_errors(moving_requirement, workflow)
+    require(
+        any(
+            "exact name==version pin" in error
+            for error in release_validator_lock_errors(moving_requirement, workflow)
+        ),
+        "an unpinned release requirement must be rejected",
+    )
+
+    unhashed_requirement = re.sub(
+        r"(?m)^cffconvert==2\.0\.0(?:\s+--hash=sha256:[0-9a-f]{64})+$",
+        "cffconvert==2.0.0",
+        requirements,
+        count=1,
+    )
+    require(
+        any(
+            "exact name==version pin" in error
+            for error in release_validator_lock_errors(unhashed_requirement, workflow)
+        ),
+        "an unhashed release requirement must be rejected",
     )
 
     extra_requirement = requirements + "\npytest==9.0.0\n"
-    assert any(
-        "exactly the pinned" in error
-        for error in release_validator_lock_errors(extra_requirement, workflow)
+    extra_errors = release_validator_lock_errors(extra_requirement, workflow)
+    require(
+        any(
+            "exactly the pinned" in error
+            or "exact name==version pin" in error
+            for error in extra_errors
+        ),
+        "an undeclared release requirement must be rejected",
     )
 
     moving_install = workflow.replace(
         RELEASE_INSTALL_COMMAND, "pip install cffconvert reuse", 1
     )
     moving_errors = release_validator_lock_errors(requirements, moving_install)
-    assert any("pinned command" in error for error in moving_errors)
-    assert any("moving package names" in error for error in moving_errors)
+    require(
+        any("pinned command" in error for error in moving_errors),
+        "a moving release install command must be rejected",
+    )
+    require(
+        any("moving package names" in error for error in moving_errors),
+        "a bare metadata-validator install must be rejected",
+    )
 
     print(
         "test_dependency_lock_contract: Lean, direct Mathlib input, and "
         f"{len(manifest_data['packages'])} exact package revisions plus "
         f"{len(RELEASE_VALIDATOR_REQUIREMENTS)} release-validator pins agree; "
-        "9 negative fixtures rejected"
+        "10 negative fixtures rejected"
     )
     return 0
 

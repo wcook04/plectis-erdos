@@ -55,7 +55,7 @@ python3 scripts/build_module_graph.py --check  # exact public Lean import graph
 python3 scripts/refresh_source_coordinates.py --check  # claim/paper line pins
 python3 scripts/test_methodology_contract.py  # adversarial claim-transition fixtures
 python3 scripts/test_declaration_head_contract.py  # wrapped and odd-tailed declaration names stay in the atlas
-python3 -m pip install --disable-pip-version-check --no-cache-dir \
+python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes \
   --requirement requirements-release.txt  # metadata and licence checks
 python3 scripts/check_metadata.py  # CITATION.cff schema validation (same command as CI)
 python3 scripts/test_citation_identity_contract.py  # citation/release identity and open boundary

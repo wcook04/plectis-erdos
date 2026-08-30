@@ -67,7 +67,7 @@ pins the Mathlib revision and its transitive dependencies.
 ```sh
 lake --version
 python3 scripts/test_dependency_lock_contract.py
-python3 -m pip install --disable-pip-version-check --no-cache-dir \
+python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes \
   --requirement requirements-release.txt
 lake exe cache get
 ```
