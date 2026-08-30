@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-eight-interface
+This module contains only the definitions needed to state the twenty-nine-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -390,6 +390,13 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem257FullSupport :
     ∀ b : ℕ, 2 ≤ b →
       Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))
+  problem257PairwiseCoprime :
+    ∀ (b : ℕ) (A : Set ℕ),
+      2 ≤ b →
+      A.Infinite →
+      A.Pairwise Nat.Coprime →
+      Summable (Set.indicator A fun a : ℕ => (1 : ℝ) / a) →
+      Irrational (erdosSupportSeries b A)
   problem257FinitePeriod :
     ∀ (F : Finset ℕ) (b : ℕ)
       (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)

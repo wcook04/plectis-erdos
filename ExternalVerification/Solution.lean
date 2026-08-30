@@ -24,7 +24,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-eight existing results through the Mathlib-only
+These thin wrappers expose twenty-nine existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -211,6 +211,10 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.volume_mersenneAchievementSet
   · intro b hb
     simpa using Erdos249257.irrational_erdosSum_full_support b hb
+  · intro b A hb hA hpair hsum
+    simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
+      Erdos249257.irrational_erdosSupportSeries_pairwise_coprime
+        b A hb hA hpair hsum
   · intro F b hF h0 hb hcop
     simpa [finiteErdosSum, Erdos249257.finiteErdosSum] using
       Erdos249257.finite_period_noncollapse_rat_den F b hF h0 hb
@@ -398,6 +402,15 @@ theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) := by
   simpa using Erdos249257.irrational_erdosSum_full_support b hb
+
+theorem irrational_erdosSupportSeries_pairwise_coprime
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hpair : A.Pairwise Nat.Coprime)
+    (hsum : Summable (Set.indicator A fun a : ℕ => (1 : ℝ) / a)) :
+    Irrational (erdosSupportSeries b A) := by
+  simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
+    Erdos249257.irrational_erdosSupportSeries_pairwise_coprime
+      b A hb hA hpair hsum
 
 theorem finite_period_noncollapse_rat_den_interface
     (F : Finset ℕ) (b : ℕ)

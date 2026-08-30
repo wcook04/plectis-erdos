@@ -19,6 +19,7 @@
     "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
     "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+    "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
     "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
     "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
     "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction",

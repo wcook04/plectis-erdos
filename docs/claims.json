@@ -11271,7 +11271,7 @@
       },
       "known_irrational_supports": {
         "source_statement": "Several structured support families for the Mersenne reciprocal subseries are known to give irrational sums, including full support and other classical or later special families.",
-        "mapping": "The review family is an aggregate disclosure. Each local theorem retains its own support predicate; the Comparator row selects only full support, reindexed as exponents k+1 for k in Nat and generalised to every integer base b at least 2.",
+        "mapping": "The review family is an aggregate disclosure. Each local theorem retains its own support predicate; the Comparator selects full support as the classical representative and pairwise-coprime support as a dedicated exact non-dilation representative.",
         "references": [
           "https://users.renyi.hu/~p_erdos/1948-04.pdf",
           "https://users.renyi.hu/~p_erdos/1969-09.pdf",
@@ -11280,7 +11280,18 @@
           "docs/PRIOR_ART.md"
         ],
         "historical_attribution": "Erdos (1948) for full support; Erdos (1968), Luca--Tachiya, and Tao--Teravainen for the specific additional families identified in the paper and prior-art ledger.",
-        "logical_dependency": "The full-support Comparator theorem is proved locally in Lean. Other family rows have their stated local or cited proof boundaries; historical attribution is not an imported Lean dependency."
+        "logical_dependency": "The full-support and pairwise-coprime Comparator theorems are proved locally in Lean. Other family rows have their stated local or cited proof boundaries; historical attribution is not an imported Lean dependency."
+      },
+      "pairwise_coprime_support": {
+        "source_statement": "For every integer base b at least 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne reciprocal series is irrational.",
+        "mapping": "The local theorem keeps the base, infinitude, pairwise-coprimality, and summable-reciprocal hypotheses explicit and concludes irrationality of erdosSupportSeries b A. At base 2 this is exactly the pairwise-coprime support subfamily of Erdős #257; it is a separate non-dilation representative from the full-support row.",
+        "references": [
+          "https://users.renyi.hu/~p_erdos/1969-09.pdf",
+          "docs/PRIOR_ART.md",
+          "paper/erdos-257-mersenne-support-subseries.tex"
+        ],
+        "historical_attribution": "Erdos (1968), as recorded in the repository's prior-art ledger and the #257 problem note.",
+        "logical_dependency": "The proof-bearing source supplies the adaptive CRT and weighted coefficient certificate argument locally; the cited source establishes historical attribution and statement fidelity, not an imported Lean dependency."
       },
       "achievement_set_geometry": {
         "source_statement": "Kakeya's strict-tail criterion places rapidly decreasing subsum sets in the Cantor-set regime; for the fixed-base Mersenne sequence, Kovač--Tao verify the strict-tail inequality and distinct subsums.",
@@ -11589,6 +11600,18 @@
         "wrapper_declaration": "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
         "statement": "The running lcm of the three-prime smooth prefix equals the exact coordinatewise height.",
         "boundary": "The identity does not supply the missing irrationality bridge."
+      },
+      {
+        "id": "erdos_support_pairwise_coprime",
+        "problem": 257,
+        "review_family": "pairwise_coprime_support",
+        "claim_id": "support_families",
+        "contribution_class": "formalisation of an existing theorem",
+        "original_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
+        "original_source": "Erdos249257/CertificateKernel.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+        "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series is irrational.",
+        "boundary": "This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
       },
       {
         "id": "newton_small_translation",
@@ -11927,8 +11950,8 @@
           {
             "id": "known_irrational_supports",
             "contribution_class": "Lean formalisation of existing results",
-            "summary": "Full, factorial, power-of-two, multiple, pairwise-coprime, eventually periodic, residue-class, and odd supports are formalised.",
-            "evidence_mode": "Lean kernel plus Comparator for full support",
+            "summary": "Full, factorial, power-of-two, multiple, eventually periodic, residue-class, and odd supports are formalised; pairwise-coprime support is split out as a dedicated non-dilation representative.",
+            "evidence_mode": "Lean kernel plus Comparator for full and pairwise-coprime support",
             "comparator_disposition": "targeted_full_support_representative",
             "boundary": "Structured known families do not cover arbitrary infinite supports."
           },
@@ -12009,6 +12032,14 @@
             "evidence_mode": "Lean kernel",
             "comparator_disposition": "represented_by_three_prime_structure_target",
             "boundary": "The finite alphabet does not supply the needed carry escape."
+          },
+          {
+            "id": "pairwise_coprime_support",
+            "contribution_class": "formalisation of an existing theorem",
+            "summary": "Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted_pairwise_coprime_support",
+            "boundary": "This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
           },
           {
             "id": "conditional_carry_escape",

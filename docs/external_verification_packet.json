@@ -71,7 +71,7 @@
     },
     "known_irrational_supports": {
       "source_statement": "Several structured support families for the Mersenne reciprocal subseries are known to give irrational sums, including full support and other classical or later special families.",
-      "mapping": "The review family is an aggregate disclosure. Each local theorem retains its own support predicate; the Comparator row selects only full support, reindexed as exponents k+1 for k in Nat and generalised to every integer base b at least 2.",
+      "mapping": "The review family is an aggregate disclosure. Each local theorem retains its own support predicate; the Comparator selects full support as the classical representative and pairwise-coprime support as a dedicated exact non-dilation representative.",
       "references": [
         "https://users.renyi.hu/~p_erdos/1948-04.pdf",
         "https://users.renyi.hu/~p_erdos/1969-09.pdf",
@@ -80,7 +80,18 @@
         "docs/PRIOR_ART.md"
       ],
       "historical_attribution": "Erdos (1948) for full support; Erdos (1968), Luca--Tachiya, and Tao--Teravainen for the specific additional families identified in the paper and prior-art ledger.",
-      "logical_dependency": "The full-support Comparator theorem is proved locally in Lean. Other family rows have their stated local or cited proof boundaries; historical attribution is not an imported Lean dependency."
+      "logical_dependency": "The full-support and pairwise-coprime Comparator theorems are proved locally in Lean. Other family rows have their stated local or cited proof boundaries; historical attribution is not an imported Lean dependency."
+    },
+    "pairwise_coprime_support": {
+      "source_statement": "For every integer base b at least 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne reciprocal series is irrational.",
+      "mapping": "The local theorem keeps the base, infinitude, pairwise-coprimality, and summable-reciprocal hypotheses explicit and concludes irrationality of erdosSupportSeries b A. At base 2 this is exactly the pairwise-coprime support subfamily of Erdős #257; it is a separate non-dilation representative from the full-support row.",
+      "references": [
+        "https://users.renyi.hu/~p_erdos/1969-09.pdf",
+        "docs/PRIOR_ART.md",
+        "paper/erdos-257-mersenne-support-subseries.tex"
+      ],
+      "historical_attribution": "Erdos (1968), as recorded in the repository's prior-art ledger and the #257 problem note.",
+      "logical_dependency": "The proof-bearing source supplies the adaptive CRT and weighted coefficient certificate argument locally; the cited source establishes historical attribution and statement fidelity, not an imported Lean dependency."
     },
     "achievement_set_geometry": {
       "source_statement": "Kakeya's strict-tail criterion places rapidly decreasing subsum sets in the Cantor-set regime; for the fixed-base Mersenne sequence, Kovač--Tao verify the strict-tail inequality and distinct subsums.",
@@ -359,6 +370,21 @@
       "statement": "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.",
       "boundary": "This is the classical full-support theorem, not universal Erdos #257.",
       "canonical_claim_status": "supports_registered_claim_family:eb_full_support",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "erdos_support_pairwise_coprime",
+      "problem": 257,
+      "review_family": "pairwise_coprime_support",
+      "claim_id": "support_families",
+      "contribution_class": "formalisation of an existing theorem",
+      "original_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
+      "original_source": "Erdos249257/CertificateKernel.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+      "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series is irrational.",
+      "boundary": "This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.",
+      "canonical_claim_status": "supports_registered_claim_family:support_families",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
     },
@@ -811,10 +837,18 @@
         {
           "id": "known_irrational_supports",
           "contribution_class": "Lean formalisation of existing results",
-          "summary": "Full, factorial, power-of-two, multiple, pairwise-coprime, eventually periodic, residue-class, and odd supports are formalised.",
-          "evidence_mode": "Lean kernel plus Comparator for full support",
+          "summary": "Full, factorial, power-of-two, multiple, eventually periodic, residue-class, and odd supports are formalised; pairwise-coprime support is split out as a dedicated non-dilation representative.",
+          "evidence_mode": "Lean kernel plus Comparator for full and pairwise-coprime support",
           "comparator_disposition": "targeted_full_support_representative",
           "boundary": "Structured known families do not cover arbitrary infinite supports."
+        },
+        {
+          "id": "pairwise_coprime_support",
+          "contribution_class": "formalisation of an existing theorem",
+          "summary": "Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted_pairwise_coprime_support",
+          "boundary": "This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
         },
         {
           "id": "squarefree_support",
@@ -2111,7 +2145,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:71c7dd6928f1a6c39c7c687df926b6fa258204eab2173f3f6abc1dd122afa63c",
+    "digest": "sha256:ac983643a9bd895022d5f68e767e2d046ddf27daa01dbaf3bfb6b78ebbf44646",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2119,6 +2153,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:05727c48349ddfaf8f0a968c4ce8189f49a30d5f217650696d1838910616a6be",
-  "solution_source_digest": "sha256:e358c1ef4afd8d7bb1488b1c3d64728b6b603a45ece8e1d78006d0da26840a11"
+  "config_digest": "sha256:39a2d6422945d2713276c83204bd6877f54ff81fb6c62d25aa585c2780f37ad3",
+  "solution_source_digest": "sha256:49fb7f96f16389fd23c36687955b9f81f9fa4812b388a76d8b13721c4fb9a8fc"
 }

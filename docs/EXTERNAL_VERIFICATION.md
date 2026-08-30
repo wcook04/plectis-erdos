@@ -7,7 +7,7 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** The 28 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 29 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
@@ -409,9 +409,14 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* unconditional progress · Lean kernel plus Comparator
 
 - **Known irrational supports**<br>
-  Full, factorial, power-of-two, multiple, pairwise-coprime, eventually periodic, residue-class, and odd supports are formalised.<br>
+  Full, factorial, power-of-two, multiple, eventually periodic, residue-class, and odd supports are formalised; pairwise-coprime support is split out as a dedicated non-dilation representative.<br>
   **Boundary.** Structured known families do not cover arbitrary infinite supports.<br>
-  *Evidence.* Lean formalisation of existing results · Lean kernel plus Comparator for full support
+  *Evidence.* Lean formalisation of existing results · Lean kernel plus Comparator for full and pairwise-coprime support
+
+- **Pairwise coprime support**<br>
+  Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.<br>
+  **Boundary.** This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.<br>
+  *Evidence.* formalisation of an existing theorem · Lean kernel plus Comparator
 
 - **Squarefree support**<br>
   Lean checks squarefree incidence and no-go statements; the irrationality conclusion uses an external analytic theorem in the paper.<br>
@@ -452,6 +457,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>known_irrational_supports</code><br>
   Comparator: <code>targeted_full_support_representative</code>
+
+- <code>pairwise_coprime_support</code><br>
+  Comparator: <code>targeted_pairwise_coprime_support</code>
 
 - <code>squarefree_support</code><br>
   Comparator: <code>not_applicable_to_external_irrationality_input</code>
@@ -746,7 +754,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 28 statement-isolated interfaces</summary>
+<summary>Show all 29 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -877,6 +885,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** This is the classical full-support theorem, not universal Erdos #257.
 
+- <code>Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime</code>
+  - **Class.** formalisation of an existing theorem
+  - **Statement.** For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series is irrational.
+  - **Canonical claim status.** `supports_registered_claim_family:support_families`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.
+
 - <code>Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** For a reduced finite Mersenne sum, the base order modulo the denominator equals the support lcm.
@@ -967,7 +982,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 28 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 29 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.
