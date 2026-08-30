@@ -16,6 +16,7 @@ import Mathlib.LinearAlgebra.Dimension.Constructions
 import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 import Mathlib.NumberTheory.ArithmeticFunction.Moebius
 import Mathlib.NumberTheory.Real.Irrational
+import Mathlib.RingTheory.Polynomial.Cyclotomic.Basic
 
 /-!
 # External-verification statement vocabulary
@@ -613,6 +614,11 @@ def periodLcm : ℕ → ℕ
   | 0 => 1
   | t + 1 => Nat.lcm (periodLcm t) (t + 1)
 
+/-- The binary cyclotomic layer whose clean prime factors provide exact
+period-ray anchors. -/
+noncomputable def binaryCyclotomicLayer (n : ℕ) : ℕ :=
+  ((Polynomial.cyclotomic n ℤ).eval (2 : ℤ)).natAbs
+
 /-- The totient tail whose actual-LCM differences form the diagonal orbit. -/
 noncomputable def totientTail (N : ℕ) : ℝ :=
   ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
@@ -1095,6 +1101,15 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       ∃ states : List ℤ,
         VUOrbit u e symbols states ∧
         List.Forall₂ (fun σ e' => |e'| ≤ vuRadius u σ) symbols states
+  problem249CleanBinaryCyclotomicAnchor :
+    ∀ (h N₀ : ℕ), 0 < h →
+      ∃ q p : ℕ,
+        q.Prime ∧
+        p.Prime ∧
+        Nat.Coprime p (h * q) ∧
+        p ∣ binaryCyclotomicLayer (h * q) ∧
+        h * q ∣ p - 1 ∧
+        N₀ ≤ p - 1
   problem269WeightedCarry :
     ∀ (B : ℤ) (hB : 0 < B)
       (base carry digit : ℕ → ℤ),

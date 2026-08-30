@@ -27,6 +27,7 @@ import Erdos249257.TropicalCurvatureCarry
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery
+import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
@@ -583,6 +584,11 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
         u hu (symbols.map toSource) hodd' e
     refine ⟨states, orbit_of_source horbit, ?_⟩
     simpa [hradius] using hbounds
+  · intro h N₀ hh
+    simpa [binaryCyclotomicLayer,
+      ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer] using
+      ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor
+        h N₀ hh
   · intro B hB base carry digit hrec
     simpa [weightedCarryResidue, weightedCarryQuotient,
       weightedResidueDigit, ErdosProblems.Erdos269.carryResidue,
@@ -1018,6 +1024,17 @@ theorem fixedPrecisionTropicalNoGo
       List.Forall₂ (fun σ e' => |e'| ≤ vuRadius u σ) symbols states :=
   (portfolioClaims Unit).problem249FixedPrecisionTropicalNoGo
     u hu symbols hodd e
+
+theorem exists_clean_binaryCyclotomicAnchor
+    (h N₀ : ℕ) (hh : 0 < h) :
+    ∃ q p : ℕ,
+      q.Prime ∧
+      p.Prime ∧
+      Nat.Coprime p (h * q) ∧
+      p ∣ binaryCyclotomicLayer (h * q) ∧
+      h * q ∣ p - 1 ∧
+      N₀ ≤ p - 1 :=
+  (portfolioClaims Unit).problem249CleanBinaryCyclotomicAnchor h N₀ hh
 
 theorem irrational_totientSeries_of_actualLcmOrbitSeparationSupply
     (hsupply : PowerTwoActualLcmOrbitSeparationSupply) :

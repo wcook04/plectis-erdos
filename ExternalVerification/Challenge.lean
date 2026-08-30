@@ -172,6 +172,17 @@ theorem fixedPrecisionTropicalNoGo
   (portfolioClaims Unit).problem249FixedPrecisionTropicalNoGo
     u hu symbols hodd e
 
+theorem exists_clean_binaryCyclotomicAnchor
+    (h N₀ : ℕ) (hh : 0 < h) :
+    ∃ q p : ℕ,
+      q.Prime ∧
+      p.Prime ∧
+      Nat.Coprime p (h * q) ∧
+      p ∣ binaryCyclotomicLayer (h * q) ∧
+      h * q ∣ p - 1 ∧
+      N₀ ≤ p - 1 :=
+  (portfolioClaims Unit).problem249CleanBinaryCyclotomicAnchor h N₀ hh
+
 theorem tsum_pos_coprime_inv_mersenne_eq_one :
     (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1 :=
