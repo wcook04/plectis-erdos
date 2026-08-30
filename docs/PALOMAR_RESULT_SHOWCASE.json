@@ -8,7 +8,7 @@
     "comparator_sha256": "afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
     "comparator_theorem_count": 48,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "c12e5dbefd378e8ad0ae89071fb45676fbebd9e84ee20f0d461f7cfa4d7f7c20",
+    "source_review_matrix_sha256": "727f490c29a06264af1bac88dac9f0f101c35ae1386d93a858ea3f384e21fd37",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -365,6 +365,12 @@
         "reason": "Centered-state descent is the exact dynamics consumed by the bounded-negative exclusion."
       },
       {
+        "from_family_id": "negative_mass_recovery",
+        "relation": "independent_analytic_recovery_peer",
+        "to_family_id": "centered_state_dynamics",
+        "reason": "Both recover eventual centered-state zero and Sylvester dynamics only under explicit hypotheses, but negative_mass_recovery uses summability of normalized negative mass whereas centered_state_dynamics uses a uniform lower-bound route; neither supplies the original-orbit premises."
+      },
+      {
         "from_family_id": "first_harmonic_pivot_decomposition",
         "relation": "independent_conditional_endpoint_peer",
         "to_family_id": "actual_lcm_orbit_separation",
@@ -464,7 +470,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "c12e5dbefd378e8ad0ae89071fb45676fbebd9e84ee20f0d461f7cfa4d7f7c20",
+    "source_review_matrix_sha256": "727f490c29a06264af1bac88dac9f0f101c35ae1386d93a858ea3f384e21fd37",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -1629,8 +1635,10 @@
           "It supplies no prime-specific producer, no unconditional #243 endpoint, and no reciprocal-tail irrationality result; any surviving canonical orbit must have divergent normalized negative mass.",
           "It is distinct from centered_state_dynamics because summability replaces the uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
         ],
-        "source_landscape_rank_relative_to": "Below direct endpoint families and the represented uniform-lower-bound centered-state recovery, but above routine finite searches: it replaces a pointwise lower bound by a summability mechanism while preserving the conditional producer gap.",
-        "reason": "Represented as one subordinate, source-current analytic recovery family after the exact Comparator transport: it has a stronger mechanism than a routine finite check, but supplies neither the original-orbit hypotheses nor a #243 endpoint.",
+        "source_landscape_rank_relative_to": "Rank 12: below the #257 seam classification and direct/producer-side endpoint routes because every original-orbit premise remains open, but above routine finite searches and generic screening because it replaces the uniform lower-bound route with a distinct summability mechanism.",
+        "ranked_below": ["half_membership_seam_classification", "centered_state_dynamics"],
+        "ranked_above": ["coefficient_only_no_go", "weighted_phase_carry_observer"],
+        "reason": "Promoted into the unequal Palomar ranking as one source-current analytic recovery family: the summability mechanism materially changes how #243's surviving orbit must be understood, while preserving that the original-orbit hypotheses and endpoint remain unproved.",
         "reversal_evidence": "A proof of the original-orbit summability or a direct reciprocal-tail endpoint could promote its ranking, while another finite negative-mass calculation would not; a duplicate transport row would not change the disposition."
       },
       {
@@ -1884,6 +1892,21 @@
       "evidence_certainty": "The exact source iff, canonical claims family, and committed Comparator representative are available; the absent occurrence producer is explicit.",
       "overclaim_risk": "High if an iff is described as a half-membership witness or if finite exact rows are treated as cofinal supply; it proves no universal #257 result.",
       "why_not_ranked_first": "It is promoted as the strongest underweighted survivor, but stays beneath all unconditional #257 endpoints and the producer-side #249 routes because it classifies rather than supplies its global endpoint condition."
+    },
+    {
+      "rank": 12,
+      "declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+      "family_id": "negative_mass_recovery",
+      "selection_status": "represented",
+      "mathematical_nontriviality": "A distinct analytic recovery theorem: summability of normalized negative centered mass, together with the exact reciprocal-tail dynamics, forces eventual centering and Sylvester recurrence.",
+      "consequence_and_endpoint_proximity": "It gives a sharp conditional structural conclusion for Erdős #243 and proves that any surviving canonical orbit must evade finite negative mass, but it does not establish the original-orbit hypotheses or reciprocal-tail irrationality.",
+      "mechanism_depth_and_natural_friction": "The tail-growth estimate by 1 + negativeRelativeMass feeds finite-negative-mass stabilization, killing the centered defect. The hard friction is that summability, positivity, strict centering, normalized vanishing, and the exact C/D dynamics are all premises rather than proved properties of the original orbit.",
+      "genuinely_distinct_content_and_independence": "This is an independent analytic recovery criterion, not a duplicate of the uniform-lower-bound centered-state route, the #257 seam classification, or #249 certificate normal forms.",
+      "external_review_value": "High because the exact analytic hypothesis, recovery conclusion, and divergent-negative-mass boundary are statement-isolated in a committed Comparator interface.",
+      "proof_digestion_value": "It identifies finite normalized negative mass as a precise analytic condition future #243 work would need to verify or refute, rather than obscuring the missing producer behind a generic recurrence claim.",
+      "evidence_certainty": "The exact source theorem, canonical review family, and committed Comparator representative are available at Claims 6bedcde3 and transport 39d0c4bd.",
+      "overclaim_risk": "High if the conditional summability criterion is reported as applying to the original reciprocal-tail orbit; it proves no unconditional #243 endpoint, prime-specific producer, or reciprocal-tail irrationality.",
+      "why_not_ranked_first": "It deserves ranked visibility over routine screening rows because its analytic mechanism is distinct and reusable, but remains below the #257 seam classification's exact endpoint socket and all direct/producer-side routes because every original-orbit hypothesis remains open."
     }
   ],
   "candidate_selection": {
@@ -2111,12 +2134,6 @@
       "family_id": "centered_state_dynamics",
       "disposition": "supporting_mechanism",
       "reason": "The committed source-faithful representative exposes the signed centered-state recovery theorem with exact natural C/D dynamics, strict centered margin, lower bound, and normalized vanishing; the centered-zero and Sylvester recovery lemmas remain subordinate, and no reciprocal-tail irrationality follows."
-    },
-    {
-      "declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
-      "family_id": "negative_mass_recovery",
-      "disposition": "supporting_conditional_recovery",
-      "reason": "The exact transport packages the summability-based tail-growth and centered-state stabilization criterion; it is one coherent #243 analytic recovery family, not an unconditional endpoint or a duplicate of the uniform-lower-bound recovery family."
     },
     {
       "declaration": "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",

@@ -220,7 +220,7 @@
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "c12e5dbefd378e8ad0ae89071fb45676fbebd9e84ee20f0d461f7cfa4d7f7c20",
+      "review_matrix_sha256": "727f490c29a06264af1bac88dac9f0f101c35ae1386d93a858ea3f384e21fd37",
       "review_family_count": 70,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
@@ -628,7 +628,7 @@
           "It supplies no prime-specific producer, no unconditional #243 endpoint, and no reciprocal-tail irrationality result; any surviving canonical orbit must have divergent normalized negative mass.",
           "It is distinct from centered_state_dynamics because summability replaces the uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
         ],
-        "reason": "Represented as one subordinate, source-current analytic recovery family after the exact Comparator transport: it has a stronger mechanism than a routine finite check, but supplies neither the original-orbit hypotheses nor a #243 endpoint.",
+        "reason": "Promoted into the unequal Palomar ranking as one source-current analytic recovery family: the summability mechanism materially changes how #243's surviving orbit must be understood, while preserving that the original-orbit hypotheses and endpoint remain unproved.",
         "reversal_evidence": "A proof of the original-orbit summability or a direct reciprocal-tail endpoint could promote its ranking, while another finite negative-mass calculation would not; a duplicate transport row would not change the disposition."
       },
       {

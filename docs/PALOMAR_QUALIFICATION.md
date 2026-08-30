@@ -373,18 +373,23 @@ certificate producer. `totient_certificate_equivalences` is an endpoint
 normal form, not a substitute producer. The candidate is represented for
 ranked review and is not an endpoint proof.
 
-The same audit retained the other named survivors without uniform promotion.
-`negative_mass_recovery` is a high-signal analytic #243 recovery criterion but
-assumes summability and the full dynamics; `half_membership_seam_classification`
-remains above the one-way `boolean_mobius_exact_row_dynamics` route but below
-unconditional endpoints because neither occurrence nor cofinal skip supply is
-proved; `small_mismatch_criterion` is actual-prime-gap specialized but assumes
-the cofinal small-mismatch producer. For #269, `conditional_carry_escape` is a
+The same audit promotes `negative_mass_recovery` to rank 12, below the #257
+seam classification and direct/producer-side endpoint routes but above routine
+screening: summability of normalized negative mass is a distinct analytic
+recovery mechanism from the uniform-lower-bound `centered_state_dynamics`
+route. Every original-orbit dynamics, positivity, strict-centering,
+normalized-vanishing, and summability premise remains unproved, so this is not
+a #243 endpoint or reciprocal-tail irrationality result.
+`half_membership_seam_classification` remains above the one-way
+`boolean_mobius_exact_row_dynamics` route but below unconditional endpoints
+because neither occurrence nor cofinal skip supply is proved;
+`small_mismatch_criterion` is actual-prime-gap specialized but assumes the
+cofinal small-mismatch producer. For #269, `conditional_carry_escape` is a
 more endpoint-facing conditional consumer, but lacks both cofinal escape and
 the actual-series bridge, while `weighted_phase_carry_observer` retains the
-reusable residue/coboundary mechanism with an uncontrolled quotient
-coboundary and no endpoint. These relations keep the long tail queryable
-without promoting helpers or conditional consumers into solved problems.
+reusable residue/coboundary mechanism with an uncontrolled quotient coboundary
+and no endpoint. These relations keep the long tail queryable without
+promoting helpers or conditional consumers into solved problems.
 
 The retained #249 fixed-precision transport no-go is now represented in the
 same committed screen. Its representative

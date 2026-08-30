@@ -292,6 +292,13 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert ranked_by_declaration[
         "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap"
     ]["family_id"] == "prime_gap_reformulation"
+    assert ranked_by_declaration[
+        "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+    ]["rank"] == 12
+    assert (
+        "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+        not in screened
+    )
     assert all(
         row["family_id"] in universe["source_review_family_ids"]
         for row in showcase["candidate_ranking"]
@@ -318,6 +325,10 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     landscape_by_id = {row["candidate_id"]: row for row in landscape}
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
+    negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]
+    assert "rank 12" in negative_mass["source_landscape_rank_relative_to"].lower()
+    assert "centered_state_dynamics" in negative_mass["ranked_below"]
+    assert "weighted_phase_carry_observer" in negative_mass["ranked_above"]
     assert landscape_by_id["actual_lcm_orbit_separation"]["comparator_eligibility"] == (
         "committed_source_faithful_transport"
     )
