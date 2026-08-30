@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{81bf8aee384a5df45dd9a27d268a24044fae761b}
-\renewcommand{\commitshort}{81bf8aee384a}
+\renewcommand{\commit}{f25aa067c8457f28c0311e7972b524054a2de6b1}
+\renewcommand{\commitshort}{f25aa067c845}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -1245,11 +1245,47 @@ The hypothesis
 \lword{Erdos249/TotientStrictPrimeEscape.lean}{157}{DTWNaturalPrimeTailOrbitStrictGap}{asks}
 for cofinally many primes $p$ at which the first tail-orbit exponential has
 real part strictly below $9/10$.  Granting it,
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{166}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{a positive adaptive truncation budget}
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{262}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{a positive adaptive truncation budget}
 follows, and then
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{205}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{$\Stot$ is irrational}.
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{301}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{$\Stot$ is irrational}.
 The $9/10$ hypothesis is weaker than the earlier $4/5$ hypothesis, but no
 instance of this cofinal hypothesis is proved.
+The companion block branch is recorded in the same family: a nonpositive
+phase-density predicate
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{35}{TotientTailOrbitNonpositiveBlockDensity}{density hypothesis}
+implies the uniform block-gap predicate
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{25}{TotientTailOrbitBlockGap}{block-gap hypothesis}
+by the checked bridge
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{45}{tailOrbitBlockGap_of_nonpositiveBlockDensity}{density-to-gap implication}.
+The two producer questions are driven by one exact subordinate phase
+dynamics: if
+\(\zeta_{h,M}=\operatorname{tailOrbitFirstExp}(h,M)\), then
+\[
+  \zeta_{h,M+1}=\zeta_{h,M}^{\,2}
+\]
+because the integer increment in the tail-difference recurrence disappears
+after exponentiation
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{167}{tailOrbitFirstExp_succ}{exact squaring recurrence}.
+Iteration gives the closed form
+\[
+  \zeta_{h,M+k}=\zeta_{h,M}^{\,2^k},
+  \qquad \zeta_{h,N}=\zeta_{h,0}^{\,2^N},
+\]
+and the formal prime-gap predicate is exactly the same $9/10$ test on these
+initial-phase iterates along the shifted primes
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{191}{tailOrbitFirstExp_add}{iterate formula},
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{201}{tailOrbitFirstExp_eq_initial_pow_two}{initial-phase normal form},
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{208}{naturalPrimeTailOrbitStrictGap_iff_initial_phase}{initial-phase equivalence}.
+The same dynamics gives a sharp obstruction: if an iterate is a dyadic root of
+unity, repeated squaring reaches the absorbing phase $1$, so the cofinal strict
+gap is impossible
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{252}{not_naturalPrimeTailOrbitStrictGap_of_dyadic_root}{dyadic-root obstruction}.
+These are classification and obstruction statements for one conditional
+family, not a classification of the actual initial phase.
+This identifies the missing input as phase-density or prime-index supply for
+that squaring orbit, not another finite certificate theorem.  The identity
+and its root obstruction supply neither anti-concentration, density, nor a
+cofinal prime gap, so no producer or irrationality conclusion is added here.
 Section~\ref{sec:frontier} states the sharper form
 in which this hypothesis is now available.
 
@@ -1427,11 +1463,11 @@ $(td,N,td)$ is a finite tail-difference certificate?
 \end{problem}
 
 \noindent This is the depth-locked predicate
-\lword{Erdos249/PeriodMultipleEscape.lean}{162}{ApFullDepthEscape}{ApFullDepthEscape}.
+\lword{Erdos249/PeriodMultipleEscape.lean}{354}{ApFullDepthEscape}{ApFullDepthEscape}.
 It is stronger than the exact period-multiple characterisation because the
 certificate depth is forced to equal the period.  A positive answer proves
 irrationality through
-\lword{Erdos249/PeriodMultipleEscape.lean}{171}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
+\lword{Erdos249/PeriodMultipleEscape.lean}{363}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
 a negative answer eliminates this route only.
 
 \begin{problem}[first-harmonic anti-concentration on supplier fibres]
