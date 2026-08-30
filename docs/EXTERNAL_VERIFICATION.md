@@ -382,9 +382,9 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* conditional reduction · Lean kernel
 
 - **Coefficient only no go**<br>
-  Prime gaps are unbounded and non-eventually-periodic, while an explicit nonperiodic unbounded countermodel still has rational sum.<br>
-  **Boundary.** Comparator checks the exact theorem, not the broader methodological interpretation.<br>
-  *Evidence.* no-go result · Lean kernel plus authored synthesis
+  An exact finite carry identity and non-eventual-periodicity theorem show that coefficient growth and irregularity alone do not force irrationality: the authored paper-level synthesis uses the endpoint decay to exhibit a synthetic nonperiodic rational dyadic-sum countermodel, contrasted with the actual prime-gap nonperiodicity theorem.<br>
+  **Boundary.** CoefficientOnlyNoGo checks only the finite identity and two non-eventual-periodicity statements; it does not prove the infinite rational-sum limit, identify the synthetic coefficients with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims.<br>
+  *Evidence.* no-go result · Lean kernel for finite identity/nonperiodicity plus authored synthesis and standard exponential-dominance limit for the infinite sum
 
 </details>
 
@@ -407,7 +407,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>not_selected_open_producer_hypothesis</code>
 
 - <code>coefficient_only_no_go</code><br>
-  Comparator: <code>targeted_unboundedness_theorem_only</code>
+  Comparator: <code>targeted_coefficient_only_no_go</code>
 
 </details>
 

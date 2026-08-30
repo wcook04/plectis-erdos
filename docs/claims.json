@@ -12538,10 +12538,10 @@
           {
             "id": "coefficient_only_no_go",
             "contribution_class": "no-go result",
-            "summary": "Prime gaps are unbounded and non-eventually-periodic, while an explicit nonperiodic unbounded countermodel still has rational sum.",
-            "evidence_mode": "Lean kernel plus authored synthesis",
-            "comparator_disposition": "targeted_unboundedness_theorem_only",
-            "boundary": "Comparator checks the exact theorem, not the broader methodological interpretation."
+            "summary": "An exact finite carry identity and non-eventual-periodicity theorem show that coefficient growth and irregularity alone do not force irrationality: the authored paper-level synthesis uses the endpoint decay to exhibit a synthetic nonperiodic rational dyadic-sum countermodel, contrasted with the actual prime-gap nonperiodicity theorem.",
+            "evidence_mode": "Lean kernel for finite identity/nonperiodicity plus authored synthesis and standard exponential-dominance limit for the infinite sum",
+            "comparator_disposition": "targeted_coefficient_only_no_go",
+            "boundary": "CoefficientOnlyNoGo checks only the finite identity and two non-eventual-periodicity statements; it does not prove the infinite rational-sum limit, identify the synthetic coefficients with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
           }
         ]
       },
