@@ -18,6 +18,7 @@ from unittest.mock import patch
 import external_verification_release as release
 import replay_external_verification as replay
 import run_external_verification as receipt
+import validation_singleflight as singleflight
 
 
 def git(root: Path, *args: str) -> str:
@@ -27,6 +28,8 @@ def git(root: Path, *args: str) -> str:
         check=True,
         capture_output=True,
         text=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     ).stdout.strip()
 
 
@@ -55,6 +58,43 @@ def expect_error(action, fragment: str) -> None:
         )
     else:
         raise AssertionError(f"expected ReleaseIdentityError containing {fragment!r}")
+
+
+def test_fixture_git_environment() -> None:
+    """Synthetic release repositories must ignore ambient Git/runtime state."""
+    hostile_environment = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "refs/namespaces/wrong-release",
+        "GIT_REPLACE_REF_BASE": "refs/replace/",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = subprocess.CompletedProcess(
+        ["git"], returncode=0, stdout="fixture\n", stderr=""
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(subprocess, "run", return_value=completed) as runner:
+            require(git(Path("/fixture"), "rev-parse", "HEAD") == "fixture", "fixture Git read failed")
+
+    kwargs = runner.call_args.kwargs
+    environment = kwargs["env"]
+    for key in (
+        "GIT_DIR",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+        "PYTHONPATH",
+    ):
+        require(key not in environment, f"ambient {key} leaked into fixture Git")
+    require(environment["GIT_CONFIG_NOSYSTEM"] == "1", "fixture Git system config was not disabled")
+    require(environment["GIT_ASKPASS"] == "/bin/false", "fixture Git prompting was not disabled")
+    require(environment["PATH"] == os.defpath, "fixture Git PATH was not pinned")
+    require(environment["LC_ALL"] == "C.UTF-8", "fixture Git locale was not pinned")
+    require(
+        kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "fixture Git timeout drifted",
+    )
 
 
 def test_receipt_subprocess_environment() -> None:
@@ -401,6 +441,7 @@ def test_release_manifest() -> None:
 
 
 def main() -> int:
+    test_fixture_git_environment()
     test_receipt_subprocess_environment()
     test_replay_subprocess_environment()
     test_replay_plan()
