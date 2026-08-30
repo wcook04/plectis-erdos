@@ -119,9 +119,13 @@ and `QAperyDiagonalNonEquivalence.lean:61-100`) is deferred: finite selector
 collision, determinant-content bookkeeping, and the negative QApery residual
 are strong review evidence, but they do not provide analytic nonvanishing or
 irrationality. The #251 integral-tail classification
-(`PrimeGapDyadicTail.lean:1276-1535`) is deferred: denominator/Mersenne
-divisibility and eventual-integrality are exact, while the prime-specific
-cofinal mismatch producer remains open. Finally, #269's weighted-phase-carry
+(`PrimeGapDyadicTail.lean:1276-1535`) is deferred but now has a committed
+four-declaration ExternalVerification transport at `e10b161a`: denominator/
+Mersenne divisibility classifies integral positive shifts, and the eventual-
+integrality obstruction is equivalent to the abstract irrationality normal
+form. It remains outside the Comparator roster pending registration, and the
+prime-specific cofinal mismatch producer remains open; the abstract normal
+form is not a prime-gap endpoint proof. Finally, #269's weighted-phase-carry
 observer (`WeightedPhaseCarry.lean:109, 150, 157, 334`) is deferred: the
 finite residue plus uncontrolled integral coboundary split and the precise
 function-faithful finite-span factorization are useful mechanisms, but there
@@ -149,7 +153,7 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`e10b161abd964381e0e8e6830e6f48e7629ca8ad` at the start of this semantic
+`ab33abeec1736dbc62359fb754509becdccb33ae` at the start of this semantic
 population pass. This observation records source currency; it is not a
 release lock or terminal validation claim:
 

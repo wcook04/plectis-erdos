@@ -254,7 +254,6 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     for candidate_id in (
         "certificate_completeness",
         "erdos1049_four_jet_pade_obstruction",
-        "erdos251_integral_tail_classification",
         "weighted_phase_carry_observer",
     ):
         row = landscape_by_id[candidate_id]
@@ -294,6 +293,30 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         assert row["transport_declarations"]
         assert "verification/comparator.json" in row["transport_admission_boundary"]
         assert "review matrix" in row["transport_admission_boundary"]
+    pending = {
+        row["candidate_id"]: row
+        for row in landscape
+        if row["comparator_eligibility"]
+        == "committed_source_transport_pending_comparator_registration"
+    }
+    assert set(pending) == {"erdos251_integral_tail_classification"}
+    row = pending["erdos251_integral_tail_classification"]
+    assert row["family_id"] == "integral_shift_classification"
+    assert row["source_transport_commit"] == "e10b161abd964381e0e8e6830e6f48e7629ca8ad"
+    assert row["source_transport_files"] == [
+        "ExternalVerification/Challenge.lean",
+        "ExternalVerification/Solution.lean",
+        "ExternalVerification/Statements.lean",
+    ]
+    assert row["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.tailShift_integral_iff_den_dvd_mersenne",
+        "Erdos249257.ExternalVerification.tailShift_integral_iff_two_pow_modEq_one",
+        "Erdos249257.ExternalVerification.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+        "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+    ]
+    assert "verification/comparator.json" in row["transport_admission_boundary"]
+    assert "review matrix" in row["transport_admission_boundary"]
+    assert "prime-tail cofinal mismatch" in row["limitations"][0]
     weighted = landscape_by_id["weighted_phase_carry_observer"]
     assert "carry_eq_residueDigit_add_coboundary" in weighted["source_declaration"]
     assert "carryResidue_mem_interval" in weighted["source_declaration"]

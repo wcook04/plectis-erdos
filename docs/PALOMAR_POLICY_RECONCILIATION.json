@@ -133,7 +133,7 @@
   },
     "current_repository": {
       "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-      "observed_head_before_product": "e10b161abd964381e0e8e6830e6f48e7629ca8ad",
+      "observed_head_before_product": "ab33abeec1736dbc62359fb754509becdccb33ae",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -271,12 +271,17 @@
         "candidate_id": "erdos251_integral_tail_classification",
         "family_id": "integral_shift_classification",
         "disposition": "deferred",
-        "comparator_eligibility": "source_landed_but_not_comparator_configured",
-        "source_declaration": "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+        "comparator_eligibility": "committed_source_transport_pending_comparator_registration",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne; ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one; ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift; ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
         "source_file": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
         "source_anchor": "1276-1535",
-        "reason": "Endpoint-proximate exact denominator/eventual-integrality classifier, but the prime-specific producer and Comparator transport are absent.",
-        "reversal_evidence": "A source-faithful wrapper plus a genuinely new prime-specific mismatch or eventual-small producer."
+        "source_transport_commit": "e10b161abd964381e0e8e6830e6f48e7629ca8ad",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.tailShift_integral_iff_den_dvd_mersenne", "Erdos249257.ExternalVerification.tailShift_integral_iff_two_pow_modEq_one", "Erdos249257.ExternalVerification.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift", "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral"],
+        "transport_admission_boundary": "The four exact abstract classification declarations are committed in ExternalVerification at e10b161a, but they are not Comparator evidence until verification/comparator.json registers them; the canonical review matrix already carries integral_shift_classification, and the existing prime-gap equivalence remains distinct.",
+        "reason": "Deferred after value review: this is endpoint-proximate and mathematically useful denominator classification with strong digestion value. Its exact four-declaration ExternalVerification transport is now committed, but Comparator admission and the prime-specific cofinal mismatch producer remain open.",
+        "reversal_evidence": "Register the source-faithful abstract classification in Comparator and prove a genuinely new prime-specific mismatch or eventual-small producer; another equivalent classifier would remain subordinate."
       },
       {
         "candidate_id": "weighted_phase_carry_observer",

@@ -420,27 +420,31 @@
         "candidate_id": "erdos251_integral_tail_classification",
         "family_id": "integral_shift_classification",
         "disposition": "deferred",
-        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "comparator_eligibility": "committed_source_transport_pending_comparator_registration",
         "queue_role": "source_landscape_review_not_comparator_evidence",
-        "source_declaration": "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+        "source_declaration": "ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne; ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one; ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift; ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
         "source_file": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
         "source_anchor": "1276-1535",
-        "statement": "For a dyadic tail recurrence, positive tail shifts are integral exactly when the tail denominator divides a Mersenne number; the initial tail is rational exactly when some positive shift is eventually integral.",
+        "source_transport_commit": "e10b161abd964381e0e8e6830e6f48e7629ca8ad",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.tailShift_integral_iff_den_dvd_mersenne", "Erdos249257.ExternalVerification.tailShift_integral_iff_two_pow_modEq_one", "Erdos249257.ExternalVerification.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift", "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral"],
+        "transport_admission_boundary": "The four exact abstract classification declarations are committed in ExternalVerification at e10b161a, but they are not Comparator evidence until verification/comparator.json registers them; the canonical review matrix already carries integral_shift_classification, and the existing prime-gap equivalence remains distinct.",
+        "statement": "For integer-digit dyadic tail recurrences, denominator/Mersenne divisibility classifies integral positive shifts, while eventual integrality gives the exact rationality obstruction and the complementary nonintegrality normal form.",
         "exact_hypotheses": [
           "DyadicTailRecurrence supplies the recurrence needed for tailShift_integral_iff_den_dvd_mersenne.",
           "For positive h,N, tailShift integrality is equivalent to (T N).den dividing 2^h - 1, equivalently 2^h ≡ 1 modulo (T N).den.",
           "The rationality classification quantifies a fixed positive shift that is eventually integral; the prime-gap nonintegrality route additionally requires its explicit eventual-small or cofinal-mismatch hypotheses."
         ],
-        "conclusion": "¬Irrational(initial tail) is equivalent to existence of an eventually integral positive tail shift, while prime-specific eventual nonintegrality remains a separate producer obligation.",
+        "conclusion": "For the abstract recurrence, ¬Irrational(initial tail) is equivalent to existence of an eventually integral positive tail shift, and Irrational(initial tail) is equivalent to every positive tail shift being nonintegral; prime-specific eventual nonintegrality remains a separate producer obligation.",
         "hard_mechanism": "Block identities reduce real tail rationality to exact denominator/Mersenne divisibility and eventual integrality, exposing the arithmetic boundary a prime-gap producer must cross.",
-        "attribution": "This is source-current Erdős #251 classification material in PrimeGapDyadicTail.lean; no novelty, priority, or Comparator transport is claimed.",
+        "attribution": "This is source-current Erdős #251 classification material in PrimeGapDyadicTail.lean, transported by the committed three-file ExternalVerification batch at e10b161a; no novelty, priority, or Comparator admission is claimed.",
         "limitations": [
           "The classifier does not prove the prime-tail cofinal mismatch or eventual-small hypothesis needed for irrationality.",
-          "It is distinct source evidence, not a committed Comparator declaration and not an unconditional endpoint result.",
+          "The committed transport is abstract classification evidence pending Comparator registration and is not an unconditional prime-gap endpoint result.",
           "The existing Comparator prime-gap equivalence remains a separate transport surface; this queue item does not silently merge the two."
         ],
-        "reason": "Deferred after value review: this is endpoint-proximate and mathematically useful denominator classification with strong digestion value, but it lacks the prime-specific producer and a source-faithful Comparator row.",
-        "reversal_evidence": "A committed wrapper preserving the denominator and eventual-integrality hypotheses plus a genuinely new prime-specific mismatch result would elevate the route; another equivalent classifier would remain subordinate."
+        "reason": "Deferred after value review: this is endpoint-proximate and mathematically useful denominator classification with strong digestion value. Its exact four-declaration ExternalVerification transport is now committed, but Comparator admission and the prime-specific cofinal mismatch producer remain open.",
+        "reversal_evidence": "Register the source-faithful abstract classification in Comparator and prove a genuinely new prime-specific mismatch or eventual-small producer; another equivalent classifier would remain subordinate."
       },
       {
         "candidate_id": "weighted_phase_carry_observer",
