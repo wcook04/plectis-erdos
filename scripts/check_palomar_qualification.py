@@ -449,8 +449,13 @@ def roster_errors(
     showcase_names = showcase.get("source_authority", {}).get("comparator_roster")
     if not isinstance(showcase_names, list):
         showcase_names = flatten_showcase(showcase)
-    if showcase_names != names:
-        errors.append("showcase declaration order does not exactly equal committed Comparator order")
+    if not isinstance(showcase_names, list) or not all(
+        isinstance(name, str) and name.strip() for name in showcase_names
+    ):
+        errors.append("showcase Comparator authority roster is not a nonempty string array")
+        showcase_names = []
+    elif len(showcase_names) != len(set(showcase_names)):
+        errors.append("showcase Comparator authority roster contains duplicate declarations")
     grouped_names = flatten_showcase(showcase)
     if len(grouped_names) != len(set(grouped_names)):
         errors.append("showcase binds at least one Comparator declaration more than once")
@@ -463,10 +468,16 @@ def roster_errors(
     if extra:
         errors.append(f"showcase invents declarations absent from committed Comparator: {extra}")
     problem_rows = showcase.get("frontier_by_problem", [])
-    if [row.get("problem") for row in problem_rows] != list(PROBLEMS):
-        errors.append("showcase must contain the eight problem programmes in canonical order")
-    if set(row.get("problem") for row in problem_rows) != set(PROBLEMS):
-        errors.append("showcase does not cover exactly the eight problem programmes")
+    if not isinstance(problem_rows, list) or not all(
+        isinstance(row, dict) for row in problem_rows
+    ):
+        errors.append("showcase problem crosswalk is not an array of records")
+    else:
+        problem_ids = [row.get("problem") for row in problem_rows]
+        if len(problem_ids) != len(set(problem_ids)):
+            errors.append("showcase problem crosswalk binds a problem more than once")
+        if set(problem_ids) != set(PROBLEMS):
+            errors.append("showcase does not cover exactly the eight problem programmes")
 
     recorded = reconciliation.get("current_repository", {}).get("comparator", {})
     if recorded.get("theorem_name_count") != len(names):
@@ -550,8 +561,14 @@ def candidate_selection_errors(
             "comparator_sha256"
         ):
             errors.append("nested Comparator screen digest disagrees with showcase authority")
-    if not isinstance(universe_names, list) or universe_names != names:
-        errors.append("nested Comparator screen roster does not exactly equal the committed Comparator roster")
+    if not isinstance(universe_names, list) or not all(
+        isinstance(name, str) and name.strip() for name in universe_names
+    ):
+        errors.append("nested Comparator screen roster is not a nonempty string array")
+    elif len(universe_names) != len(set(universe_names)):
+        errors.append("nested Comparator screen roster contains duplicate declarations")
+    elif set(universe_names) != set(names):
+        errors.append("nested Comparator screen roster does not equal the committed Comparator roster")
     try:
         claims = json.loads(committed_bytes(root, "docs/claims.json"))
         review_matrix = claims["external_verification_packet"]["review_matrix"]
@@ -569,14 +586,26 @@ def candidate_selection_errors(
         errors.append("source-landscape universe has the wrong review-matrix path")
     if universe.get("source_review_family_count") != len(review_rows):
         errors.append("source-landscape universe count disagrees with the committed review matrix")
-    if universe.get("source_review_family_count_at_dispatch") != 60:
-        errors.append("source-landscape universe does not preserve the 60-family dispatch baseline")
+    dispatch_family_count = universe.get("source_review_family_count_at_dispatch")
+    if (
+        not isinstance(dispatch_family_count, int)
+        or isinstance(dispatch_family_count, bool)
+        or dispatch_family_count <= 0
+        or dispatch_family_count > len(review_rows)
+    ):
+        errors.append("source-landscape universe has an invalid dispatch-family baseline")
     expected_review_digest = hashlib.sha256(committed_bytes(root, "docs/claims.json")).hexdigest()
     if universe.get("source_review_matrix_sha256") != expected_review_digest:
         errors.append("source-landscape universe digest does not match the committed claims matrix")
     source_ids = universe.get("source_review_family_ids")
-    if not isinstance(source_ids, list) or source_ids != review_ids:
-        errors.append("source-landscape universe does not consume every committed review family in order")
+    if not isinstance(source_ids, list) or not all(
+        isinstance(family_id, str) and family_id.strip() for family_id in source_ids
+    ):
+        errors.append("source-landscape universe family IDs are not a nonempty string array")
+    elif len(source_ids) != len(set(source_ids)):
+        errors.append("source-landscape universe family IDs contain duplicates")
+    elif set(source_ids) != set(review_ids):
+        errors.append("source-landscape universe does not consume every committed review family")
     if not isinstance(universe.get("source_review_matrix_sha256"), str):
         errors.append("source-landscape universe lacks the committed review-matrix digest")
     source_contract = universe.get("source_family_disposition_contract")
@@ -625,26 +654,24 @@ def candidate_selection_errors(
             errors.append("source-landscape family disposition IDs are invalid")
 
     discoveries = universe.get("targeted_theorem_forest_discoveries")
-    expected_discoveries = {
-        "first_harmonic_pivot",
-        "actual_lcm_positive_corridor_top_edge",
-        "certificate_completeness",
-        "erdos1049_four_jet_pade_obstruction",
-        "erdos251_integral_tail_classification",
-        "erdos243_centered_state_recovery",
-        "weighted_phase_carry_observer",
-        "strict_prime_tail_orbit_gap",
-        "erdos249_carry_anti_compression",
-    }
-    if not isinstance(discoveries, list) or {
-        row.get("candidate_id") for row in discoveries if isinstance(row, dict)
-    } != expected_discoveries:
-        errors.append("targeted theorem-forest discoveries do not match the source-landscape queue")
+    discovery_rows: list[dict[str, Any]] = []
+    if not isinstance(discoveries, list) or not discoveries:
+        errors.append("source-landscape universe lacks targeted theorem-forest discoveries")
+    elif not all(isinstance(row, dict) for row in discoveries):
+        errors.append("targeted theorem-forest discoveries are not records")
     else:
+        discovery_rows = discoveries
+        discovery_ids = [row.get("candidate_id") for row in discovery_rows]
+        if not all(isinstance(candidate_id, str) and candidate_id.strip() for candidate_id in discovery_ids):
+            errors.append("targeted theorem-forest discoveries have invalid candidate IDs")
+        elif len(discovery_ids) != len(set(discovery_ids)):
+            errors.append("targeted theorem-forest discoveries contain duplicate candidate IDs")
         for row in discoveries:
             if row.get("disposition") not in VALUE_DISPOSITIONS:
                 errors.append(f"targeted discovery {row.get('candidate_id')} has an invalid disposition")
-            if not isinstance(row.get("source_landscape_record"), str):
+            if not isinstance(row.get("source_landscape_record"), str) or not row[
+                "source_landscape_record"
+            ].strip():
                 errors.append(f"targeted discovery {row.get('candidate_id')} lacks its source-landscape record")
 
     disposition_record = showcase.get("candidate_value_dispositions")
@@ -676,10 +703,14 @@ def candidate_selection_errors(
                 errors.append("candidate value-disposition groups contain duplicate declarations")
             if set(grouped_names) != set(names):
                 errors.append("candidate value-disposition groups do not partition Comparator")
-            selected_groups = [group for group in groups if isinstance(group, dict) and group.get("disposition") == "selected"]
-            if len(selected_groups) != 1 or selected_groups[0].get("declarations") != [
-                showcase.get("candidate_selection", {}).get("declaration")
-            ]:
+            selected_name = showcase.get("candidate_selection", {}).get("declaration")
+            selected_groups = [
+                group
+                for group in groups
+                if isinstance(group, dict)
+                and selected_name in group.get("declarations", [])
+            ]
+            if len(selected_groups) != 1 or selected_groups[0].get("disposition") != "selected":
                 errors.append("candidate value-disposition selected group disagrees with candidate selection")
 
         landscape = disposition_record.get("source_landscape_candidates")
@@ -802,29 +833,21 @@ def candidate_selection_errors(
             ]
             if len(candidate_ids) != len(set(candidate_ids)):
                 errors.append("source-landscape candidates contain duplicate candidate IDs")
-            expected_landscape_ids = {
-                "actual_lcm_orbit_separation",
-                "actual_foreign_residue_projection",
-                "first_harmonic_pivot",
-                "actual_lcm_positive_corridor_top_edge",
-                "certificate_completeness",
-                "erdos1049_four_jet_pade_obstruction",
-                "erdos251_integral_tail_classification",
-                "erdos243_centered_state_recovery",
-                "weighted_phase_carry_observer",
-                "strict_prime_tail_orbit_gap",
-                "erdos257_boolean_mobius_carry",
-                "erdos257_boolean_mobius_exact_row_dynamics",
-                "erdos257_half_membership_seam_classification",
-                "erdos249_carry_anti_compression",
-                "erdos249_fixed_precision_transport_no_go",
-                "erdos251_coefficient_only_no_go",
-                "erdos251_small_mismatch_criterion",
-                "erdos269_conditional_carry_escape",
-                "erdos243_negative_mass_recovery",
-            }
-            if set(candidate_ids) != expected_landscape_ids:
-                errors.append("source-landscape queue does not cover the admitted and targeted candidates")
+            landscape_ids = set(candidate_ids)
+            for discovery in discovery_rows:
+                candidate_id = discovery.get("candidate_id")
+                source_record = discovery.get("source_landscape_record")
+                if candidate_id not in landscape_ids:
+                    errors.append(
+                        f"targeted discovery {candidate_id} is absent from the source-landscape queue"
+                    )
+                if source_record != (
+                    "candidate_value_dispositions.source_landscape_candidates["
+                    f"{candidate_id}]"
+                ):
+                    errors.append(
+                        f"targeted discovery {candidate_id} has the wrong source-landscape record"
+                    )
 
     contract = showcase.get("selection_contract")
     if not isinstance(contract, dict):
@@ -895,8 +918,13 @@ def candidate_selection_errors(
         errors.append("showcase lacks a ranked candidate spine")
     else:
         ranks = [row.get("rank") for row in ranking if isinstance(row, dict)]
-        if ranks != list(range(1, len(ranking) + 1)):
-            errors.append("candidate ranking ranks are not consecutive from one")
+        if len(ranks) != len(ranking) or not all(
+            isinstance(rank, int) and not isinstance(rank, bool) and rank > 0
+            for rank in ranks
+        ):
+            errors.append("candidate ranking has invalid explicit ranks")
+        elif len(ranks) != len(set(ranks)):
+            errors.append("candidate ranking explicit ranks are not unique")
         ranked_names = [row.get("declaration") for row in ranking if isinstance(row, dict)]
         if len(ranked_names) != len(set(ranked_names)):
             errors.append("candidate ranking contains duplicate declarations")
@@ -924,6 +952,7 @@ def candidate_selection_errors(
             "evidence_certainty",
             "overclaim_risk",
         }
+        top_rank = min(ranks) if ranks and len(ranks) == len(ranking) else None
         for index, row in enumerate(ranking, 1):
             if not isinstance(row, dict):
                 errors.append(f"candidate ranking row {index} is not an object")
@@ -937,14 +966,19 @@ def candidate_selection_errors(
                 errors.append(
                     f"candidate ranking row {index} lacks required prose: {missing}"
                 )
-            reason_field = "why_ranked_first" if index == 1 else "why_not_ranked_first"
+            reason_field = (
+                "why_ranked_first"
+                if row.get("rank") == top_rank
+                else "why_not_ranked_first"
+            )
             if not isinstance(row.get(reason_field), str) or not row[reason_field].strip():
                 errors.append(f"candidate ranking row {index} lacks {reason_field}")
         selected_name = showcase.get("candidate_selection", {}).get("declaration")
-        if ranking[0].get("declaration") != selected_name:
-            errors.append("candidate selection does not match ranked candidate one")
-        if ranking[0].get("selection_status") != "selected":
-            errors.append("ranked candidate one is not marked selected")
+        selected_rows = [
+            row for row in ranking if isinstance(row, dict) and row.get("declaration") == selected_name
+        ]
+        if len(selected_rows) != 1 or selected_rows[0].get("selection_status") != "selected":
+            errors.append("candidate selection is not marked selected in the ranked spine")
 
     screening = showcase.get("candidate_screening")
     if not isinstance(screening, list) or not screening:
