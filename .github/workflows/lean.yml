@@ -271,7 +271,7 @@ jobs:
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         if: steps.external-inputs.outputs.changed == 'true'
         with:
-          go-version: "1.24.x"
+          go-version: "1.24.12"
           cache: false
       - name: Install pinned Lean toolchain
         if: steps.external-inputs.outputs.changed == 'true'

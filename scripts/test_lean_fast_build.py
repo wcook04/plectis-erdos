@@ -151,6 +151,15 @@ class LeanFastBuildTests(unittest.TestCase):
                 f"external action is not pinned to a full commit SHA: {line}",
             )
 
+    def test_external_verification_pins_the_go_patch_release(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertEqual(workflow.count("go-version:"), 1)
+        self.assertIn('go-version: "1.24.12"', workflow)
+        self.assertNotIn('go-version: "1.24.x"', workflow)
+
     def test_cache_warm_checkout_does_not_persist_credentials(self) -> None:
         workflow = (
             fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
