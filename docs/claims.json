@@ -12160,11 +12160,16 @@
         "families": [
           {
             "id": "centered_state_dynamics",
-            "contribution_class": "locally proved result; novelty unassessed",
-            "summary": "Exact update and defect identities, scale equivariance, zero absorption, and eventual recovery of the Sylvester recurrence.",
-            "evidence_mode": "Lean kernel",
-            "comparator_disposition": "represented_by_selected_boundary_theorems",
-            "boundary": "The recovery theorem requires eventual centred-state vanishing."
+            "contribution_class": "locally proved signed recovery/rigidity theorem; novelty unassessed",
+            "summary": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "ErdosProblems.Erdos243.boundedNegativePart_eventually_zero",
+              "ErdosProblems.Erdos243.centeredState_eventually_zero",
+              "ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero"
+            ],
+            "boundary": "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows."
           },
           {
             "id": "negative_orbit_no_go",
