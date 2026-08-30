@@ -89,6 +89,120 @@ theorem totientBlock_add (a b N : ℕ) :
     have hexp : a + b - 1 - (a + i) = b - 1 - i := by omega
     rw [harg, hexp]
 
+/-! ## Pure-dyadic endpoint-error cocycle -/
+
+/- The signed error after subtracting one fixed integer multiple of the
+Mersenne modulus.  On an endpoint-trapped pure-dyadic trajectory, the nearest
+integer multiplier is fixed and this is the small coordinate seen by the
+canonical residue-gap consumer. -/
+def pureDyadicEndpointError (H c : ℕ) (k : ℤ) : ℤ :=
+  totientBlock H c - k * ((2 : ℤ) ^ H - 1)
+
+/- Extending a totient block by one letter doubles the old block and appends
+the new totient letter. -/
+theorem totientBlock_height_succ (H c : ℕ) :
+    totientBlock (H + 1) c =
+      2 * totientBlock H c + (Nat.totient (c + H + 1) : ℤ) := by
+  rw [totientBlock_add H 1 c]
+  simp [totientBlock]
+
+/- The recurrence used by the excursion theorem. -/
+theorem pureDyadicEndpointError_succ (H c : ℕ) (k : ℤ) :
+    pureDyadicEndpointError (H + 1) c k =
+      2 * pureDyadicEndpointError H c k +
+        (Nat.totient (c + H + 1) : ℤ) - k := by
+  rw [pureDyadicEndpointError, pureDyadicEndpointError,
+    totientBlock_height_succ, pow_succ]
+  ring
+
+/- **Prime-position excursion inequality.**  If the next actual totient
+letter is evaluated at a prime, then a fixed-quotient endpoint error must pay
+for that prime through one of two adjacent error coordinates.
+
+This deletes every bounded or sublinear version of the inhomogeneous boundary
+mode: along arbitrarily large shifted primes, the right side must have linear
+size.  Any permanent endpoint trap that remains possible must therefore use
+the full linear moving envelope, rather than shadowing a bounded perturbation
+of the homogeneous constant-two mode. -/
+theorem prime_forces_pureDyadicEndpointError_excursion
+    (H c : ℕ) (k : ℤ) (hp : Nat.Prime (c + H + 1)) :
+    (c + H : ℤ) - k ≤
+      |pureDyadicEndpointError (H + 1) c k| +
+        2 * |pureDyadicEndpointError H c k| := by
+  have hrec := pureDyadicEndpointError_succ H c k
+  have hphi : (Nat.totient (c + H + 1) : ℤ) = (c + H : ℤ) := by
+    rw [Nat.totient_prime hp]
+    omega
+  rw [hphi] at hrec
+  have hnext := le_abs_self (pureDyadicEndpointError (H + 1) c k)
+  have hcurrent := neg_le_abs (pureDyadicEndpointError H c k)
+  linarith
+
+/- Prime-position excursions occur beyond every requested height.  This is
+the cofinal, actual-word form of
+`prime_forces_pureDyadicEndpointError_excursion`; it consumes Euclid's
+unbounded-prime supply rather than any pointwise description of totient
+values. -/
+theorem exists_late_pureDyadicEndpointError_excursion
+    (c B : ℕ) (k : ℤ) :
+    ∃ H, B ≤ H ∧
+      (c + H : ℤ) - k ≤
+        |pureDyadicEndpointError (H + 1) c k| +
+          2 * |pureDyadicEndpointError H c k| := by
+  obtain ⟨p, hpLower, hpPrime⟩ :=
+    Nat.exists_infinite_primes (c + B + 1)
+  refine ⟨p - (c + 1), ?_, ?_⟩
+  · omega
+  · have hindex : c + (p - (c + 1)) + 1 = p := by omega
+    have hpShift : Nat.Prime (c + (p - (c + 1)) + 1) := by
+      simpa only [hindex] using hpPrime
+    exact prime_forces_pureDyadicEndpointError_excursion
+      (p - (c + 1)) c k hpShift
+
+/- **Prime-successor bottom lock.**  Suppose `p = c+H+1` is prime and the
+error remains below the upper endpoint boundary for one further step.  The
+two consecutive actual totient letters then force the error immediately
+before `p` into an explicit lower linear half-space.
+
+Unlike the adjacent absolute-value excursion bound, this is directional: a
+permanent endpoint trap cannot answer large prime letters by alternating
+arbitrarily.  Immediately before each prime whose successor is still trapped,
+it must satisfy this bottom-lock inequality. -/
+theorem prime_successor_upper_trap_forces_bottom_lock
+    (H c : ℕ) (k : ℤ) (hp : Nat.Prime (c + H + 1))
+    (hupper :
+      pureDyadicEndpointError (H + 2) c k ≤ (c + H + 3 : ℤ)) :
+    4 * pureDyadicEndpointError H c k + (c + H + 1 : ℤ) +
+        (Nat.totient (c + H + 2) : ℤ) ≤ 4 + 3 * k := by
+  have hprime := pureDyadicEndpointError_succ H c k
+  have hsuccessor := pureDyadicEndpointError_succ (H + 1) c k
+  have hphi : (Nat.totient (c + H + 1) : ℤ) = (c + H : ℤ) := by
+    rw [Nat.totient_prime hp]
+    omega
+  rw [hphi] at hprime
+  have hsuccessorIndex : c + (H + 1) + 1 = c + H + 2 := by omega
+  rw [hsuccessorIndex] at hsuccessor
+  linarith
+
+/- Cofinal form of the directional prime-successor constraint.  If the
+upper endpoint boundary traps every height, then beyond every cutoff there is
+a prime precursor satisfying the exact bottom-lock inequality. -/
+theorem exists_late_prime_predecessor_bottom_lock_of_upper_trap
+    (c B : ℕ) (k : ℤ)
+    (hupper : ∀ J, pureDyadicEndpointError J c k ≤ (c + J + 1 : ℤ)) :
+    ∃ H, B ≤ H ∧ Nat.Prime (c + H + 1) ∧
+      4 * pureDyadicEndpointError H c k + (c + H + 1 : ℤ) +
+          (Nat.totient (c + H + 2) : ℤ) ≤ 4 + 3 * k := by
+  obtain ⟨p, hpLower, hpPrime⟩ :=
+    Nat.exists_infinite_primes (c + B + 1)
+  refine ⟨p - (c + 1), ?_, ?_, ?_⟩
+  · omega
+  · simpa only [show c + (p - (c + 1)) + 1 = p by omega] using hpPrime
+  · apply prime_successor_upper_trap_forces_bottom_lock
+      (p - (c + 1)) c k
+    · simpa only [show c + (p - (c + 1)) + 1 = p by omega] using hpPrime
+    · exact hupper (p - (c + 1) + 2)
+
 /-- Doubling instance of concatenation: the two `2h`-blocks entering the
 order-2 test at height `2h` are built from the four `h`-blocks of the fan. -/
 theorem totientBlock_two_mul (h N : ℕ) :
@@ -264,6 +378,11 @@ theorem totient_series_ne_rat_of_den_dvd_128_300 (r : ℚ)
 
 #print axioms windowDiscrepancy_self_eq_totientBlock_sub
 #print axioms totientBlock_add
+#print axioms pureDyadicEndpointError_succ
+#print axioms prime_forces_pureDyadicEndpointError_excursion
+#print axioms exists_late_pureDyadicEndpointError_excursion
+#print axioms prime_successor_upper_trap_forces_bottom_lock
+#print axioms exists_late_prime_predecessor_bottom_lock_of_upper_trap
 #print axioms irrational_totient_series_of_periodMultipleKillSupply
 #print axioms periodMultipleKillSupply_iff_irrational
 #print axioms irrational_totient_series_of_apFullDepthEscape
