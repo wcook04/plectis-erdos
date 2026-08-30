@@ -259,6 +259,18 @@ the stronger exact classification socket above the one-way
 families: no occurrence producer, half-membership witness, or universal #257
 result is supplied, and finite exact rows do not establish cofinal supply. No
 novelty, priority, significance, or external-review claim is made.
+
+The survivor audit promotes this exact seam classification to rank 11: it is
+the strongest remaining underweighted endpoint socket because the single iff
+keeps terminal-false, upper-or-middle, cofinal-terminal-false, skipped-rank,
+infinite-support, and no-last-skip formulations together without treating them
+as extra results. It remains below all unconditional #257 endpoints. The
+one-way positive-skip route is support, not a substitute producer: finite rows
+do not prove cofinal skips. It also remains above `negative_mass_recovery`,
+whose analytic recovery mechanism is substantive but assumes the full #243
+dynamics, normalized vanishing, positivity, and summable negative mass. The
+source-only #249 certificate equivalences remain a normal-form prerequisite,
+not an executable producer.
 The #243 centered-state recovery/rigidity transport
 (`ReciprocalTailRigidity.lean:1799, 1837, 2265`) is represented as a distinct
 source-landscape discovery mapped to the existing `centered_state_dynamics`
@@ -320,6 +332,12 @@ family. Its exact recurrence
 orbit as repeated squaring and sharpens the producer question; it is not a new
 review family, density estimate, strict-gap occurrence, or certificate
 producer.
+
+Source commit `f25aa067` further proves the exact all-times power-of-two orbit
+and initial-phase form, and shows that a dyadic-root phase would eventually
+reach the absorbing phase `1`, obstructing the strict-gap producer. These are
+support and contrary evidence only: the actual phases are not classified, and
+anti-concentration, block density, and cofinal strict gaps remain open.
 
 These dispositions compare consequence, endpoint proximity, hard mechanism,
 distinctness, evidence certainty, natural friction, digestion value, and

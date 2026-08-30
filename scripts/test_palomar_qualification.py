@@ -538,10 +538,15 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "TotientTailOrbitNonpositiveBlockDensity" in strict_prime["source_declaration"]
     assert "DTWNaturalPrimeTailOrbitStrictGap" in strict_prime["source_declaration"]
     assert "tailOrbitFirstExp_succ" in strict_prime["source_declaration"]
+    assert "tailOrbitFirstExp_eq_initial_pow_two" in strict_prime["source_declaration"]
+    assert "tailOrbitFirstExp_eq_one_of_le" in strict_prime["source_declaration"]
+    assert "not_naturalPrimeTailOrbitStrictGap_of_phase_one" in strict_prime["source_declaration"]
+    assert "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root" in strict_prime["source_declaration"]
     assert strict_prime["canonical_claim_commit"] == (
-        "d24fc09d1df0f3f3cce6ac3c14b0e3c90bc17232"
+        "2423353857d0537087131a847c7fa468c3537594"
     )
     assert "repeated-squaring" in " ".join(strict_prime["support_evidence"])
+    assert "dyadic root" in " ".join(strict_prime["contrary_evidence"])
     assert "11/100" in " ".join(strict_prime["exact_hypotheses"])
     assert "9/10" in strict_prime["statement"]
     assert "cofinal prime" in " ".join(strict_prime["limitations"])
@@ -666,6 +671,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "not an unconditional" in seam["conclusion"]
     assert "verification/comparator.json" in seam["transport_admission_boundary"]
     assert "review matrix" in seam["transport_admission_boundary"]
+    assert "boolean_mobius_exact_row_dynamics" in " ".join(seam["support_evidence"])
+    assert "negative_mass_recovery" in " ".join(seam["conditional_peer_evidence"])
     anti = landscape_by_id["erdos249_carry_anti_compression"]
     assert anti["family_id"] == "totient_carry_anti_compression"
     assert anti["disposition"] == "represented"
@@ -686,6 +693,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         row["family_id"]: row for row in showcase["candidate_ranking"]
     }
     assert ranked_by_family["totient_carry_anti_compression"]["rank"] == 10
+    assert ranked_by_family["half_membership_seam_classification"]["rank"] == 11
     assert "totient_kernel_rank" not in ranked_by_family
     anti_screen = [
         row for row in showcase["candidate_screening"]
