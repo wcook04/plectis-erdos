@@ -204,11 +204,25 @@ class Session:
         if not self.exists():
             return []
         rows = []
-        for line in self.ledger_path.read_text(
-            encoding="utf-8"
-        ).splitlines():
+        try:
+            lines = self.ledger_path.read_text(encoding="utf-8").splitlines()
+        except (OSError, UnicodeError) as exc:
+            raise SystemExit(
+                f"cannot read workbench ledger {self.ledger_path}: {exc}"
+            ) from exc
+        for line_number, line in enumerate(lines, 1):
             if line.strip():
-                rows.append(json.loads(line))
+                try:
+                    row = json.loads(line)
+                except (UnicodeError, json.JSONDecodeError) as exc:
+                    raise SystemExit(
+                        f"invalid workbench ledger JSON on line {line_number}: {exc}"
+                    ) from exc
+                if not isinstance(row, dict):
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: expected an object"
+                    )
+                rows.append(row)
         return rows
 
     def next_move_id(self) -> str:

@@ -135,6 +135,30 @@ def check_replay_path_boundary(tmp: Path) -> None:
         raise AssertionError("replay executed a path rejected by the session boundary")
 
 
+def check_malformed_ledger_boundary(tmp: Path) -> None:
+    """Every workbench command must receive a bounded ledger-read failure."""
+    sessions_root = tmp / "malformed-ledger-sessions"
+    session = workbench.Session(sessions_root, "malformed")
+    session.directory.mkdir(parents=True)
+    session.ledger_path.write_bytes(b"{\xff\n")
+    try:
+        session.moves()
+    except SystemExit as error:
+        if "utf-8" not in str(error).lower():
+            raise AssertionError(f"malformed ledger lacked a decode diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted a malformed UTF-8 ledger")
+
+    session.ledger_path.write_text("not-json\n", encoding="utf-8")
+    try:
+        session.moves()
+    except SystemExit as error:
+        if "line 1" not in str(error):
+            raise AssertionError(f"malformed ledger lacked a line diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted malformed ledger JSON")
+
+
 def check_session_lifecycle(sessions_root: Path) -> None:
     opened = _run(
         sessions_root,
@@ -322,6 +346,7 @@ def main() -> int:
         tmp = Path(tmpdir)
         check_session_path_boundaries(tmp)
         check_replay_path_boundary(tmp)
+        check_malformed_ledger_boundary(tmp)
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
         check_claim_gate(sessions_root, tmp)
