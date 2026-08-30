@@ -92,14 +92,14 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 32 declarations in the committed Comparator roster
+The audit universe is the 40 declarations in the committed Comparator roster
 (`verification/comparator.json`). I ranked them by consequence, endpoint
 proximity, mechanism depth, genuine distinctness, external usefulness,
 digestion value, evidence certainty, natural friction, and overclaim risk—not
 by row count, inherited order, or citation presence. The family-level table
 below is the compact reading map; every declaration remains source-current and
 individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 32-row universe; their
+without a Comparator transport are not counted in the 40-row universe; their
 dispositions are stated in the relevant per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
@@ -308,6 +308,17 @@ replacement for claim authority.
   does not establish it. See
   `Erdos249257/TotientActualLcmOrbitSeparation.lean:254-310` and the transported
   consumer `ExternalVerification/Challenge.lean:159`.
+- The public support transport keeps the boundary from collapsing into a sign
+  argument. `actualLcmTailDiff_shift_pos` gives the positive corridor under
+  `8 ≤ a` and its shortness inequality;
+  `actualLcm_trueEndpointSurvivor_neg` shows that the true translated survivor
+  can still be negative under the corresponding integer-difference hypothesis;
+  and `actualLcm_integral_forces_topEdgeResidue` puts an integral orbit in the
+  exact top-edge residue strip under its additional room inequality
+  (`ExternalVerification/Challenge.lean:198-239`). These three declarations
+  are support for the single `actual_lcm_orbit_separation` family, not three
+  independent routes: positivity does not exclude the survivor, and neither
+  row supplies cofinal separation or top-edge exclusion.
 - A separate public first-harmonic pivot route is represented in the Comparator
   roster through its transported decomposition, budget, and conditional
   endpoint in `ExternalVerification/Challenge.lean`. The exact four-term
