@@ -15,6 +15,12 @@ from unittest.mock import patch
 import refresh_projections
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep projection-environment failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def main() -> int:
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
@@ -29,7 +35,10 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as raw:
         with patch.dict(os.environ, hostile_environment, clear=False):
             sanitized = refresh_projections.clean_environment()
-            assert all(key not in sanitized for key in hostile_environment)
+            require(
+                all(key not in sanitized for key in hostile_environment),
+                "projection environment retained a hostile Git selector",
+            )
             child = refresh_projections.run(
                 [
                     sys.executable,
@@ -40,14 +49,26 @@ def main() -> int:
                 ],
                 cwd=Path(raw),
             )
-            assert child.returncode == 0
-            assert json.loads(child.stdout) == {}
+            require(child.returncode == 0, "projection child process failed")
+            require(
+                json.loads(child.stdout) == {},
+                "projection child process inherited a hostile Git selector",
+            )
 
-    assert refresh_projections.ENVIRONMENT_CONTRACT == (
-        "clean_committed_snapshot_subprocess_environment_v1"
+    require(
+        refresh_projections.ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "projection environment contract drifted",
     )
-    assert "GIT_NAMESPACE" in refresh_projections.SANITIZED_GIT_ENVIRONMENT_KEYS
-    assert "GIT_REPLACE_REF_BASE" in refresh_projections.SANITIZED_GIT_ENVIRONMENT_KEYS
+    require(
+        "GIT_NAMESPACE" in refresh_projections.SANITIZED_GIT_ENVIRONMENT_KEYS,
+        "projection environment no longer sanitizes GIT_NAMESPACE",
+    )
+    require(
+        "GIT_REPLACE_REF_BASE"
+        in refresh_projections.SANITIZED_GIT_ENVIRONMENT_KEYS,
+        "projection environment no longer sanitizes GIT_REPLACE_REF_BASE",
+    )
     print(
         "test_refresh_projections_environment: projection subprocesses cannot "
         "inherit caller Git selectors"
