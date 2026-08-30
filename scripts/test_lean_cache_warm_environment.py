@@ -19,6 +19,22 @@ EXPECTED_ENVIRONMENT = {
     "GIT_PAGER": "cat",
     "GIT_TERMINAL_PROMPT": '"0"',
     "GIT_ASKPASS": "/bin/false",
+    "GIT_TRACE": '""',
+    "GIT_TRACE2": '""',
+    "GIT_TRACE_PACKET": '""',
+    "GIT_TRACE_PERFORMANCE": '""',
+    "GIT_TRACE_SETUP": '""',
+    "GIT_TRACE_CURL": '""',
+    "GIT_TRACE2_EVENT": '""',
+    "GIT_TRACE2_PERF": '""',
+    "GIT_SSH": '""',
+    "GIT_SSH_COMMAND": '""',
+    "GIT_SSH_VARIANT": '""',
+    "GIT_EXTERNAL_DIFF": '""',
+    "GIT_DIFF_OPTS": '""',
+    "GIT_EDITOR": '""',
+    "GIT_SEQUENCE_EDITOR": '""',
+    "GIT_MERGE_AUTOEDIT": '""',
     "GIT_DIR": '""',
     "GIT_WORK_TREE": '""',
     "GIT_INDEX_FILE": '""',
@@ -27,6 +43,16 @@ EXPECTED_ENVIRONMENT = {
     "GIT_OBJECT_DIRECTORY": '""',
     "GIT_ALTERNATE_OBJECT_DIRECTORIES": '""',
     "GIT_COMMON_DIR": '""',
+    "GIT_CEILING_DIRECTORIES": '""',
+    "GIT_DISCOVERY_ACROSS_FILESYSTEM": '""',
+    "PYTHONHOME": '""',
+    "PYTHONPATH": '""',
+    "PYTHONSTARTUP": '""',
+    "PYTHONUSERBASE": '""',
+    "PYTHONBREAKPOINT": '""',
+    "PYTHONWARNINGS": '""',
+    "PYTHONOPTIMIZE": '""',
+    "PATH": "/usr/local/bin:/usr/bin:/bin",
     "LC_ALL": "C.UTF-8",
     "LANG": "C.UTF-8",
     "LANGUAGE": "C.UTF-8",
@@ -51,6 +77,13 @@ def main() -> int:
     require(warm_job is not None, "cache-warm workflow lost its warm job")
     body = warm_job.group("body")
     require("    env:\n" in body, "cache-warm job lost its environment contract")
+    environment = dict(
+        re.findall(r"(?m)^      ([A-Z][A-Z0-9_]+): (.+)$", body)
+    )
+    require(
+        environment == EXPECTED_ENVIRONMENT,
+        "cache-warm job environment drifted from the canonical exact key set",
+    )
     for key, value in EXPECTED_ENVIRONMENT.items():
         require(
             re.search(rf"(?m)^      {re.escape(key)}: {re.escape(value)}$", body)
