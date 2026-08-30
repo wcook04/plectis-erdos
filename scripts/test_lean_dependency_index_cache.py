@@ -212,7 +212,11 @@ def check_environment_build_is_bounded() -> None:
         require(key not in sanitized, f"ambient {key} leaked into bootstrap")
     require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale missing")
     require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
-    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into bootstrap")
+    require(
+        sanitized["PATH"]
+        == os.pathsep.join((str(builder.TOOLCHAIN_BIN), os.defpath)),
+        "bootstrap lost the documented elan toolchain or admitted ambient PATH",
+    )
     require(
         run.call_args.kwargs["timeout"]
         == builder.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,

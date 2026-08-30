@@ -9,6 +9,7 @@ import argparse
 import hashlib
 import inspect
 import json
+import os
 import subprocess
 import sys
 from collections import defaultdict
@@ -28,6 +29,10 @@ LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
 CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+# The global single-flight environment deliberately strips ambient PATH.  The
+# documented elan install is the one deterministic toolchain location that
+# this builder must add back before launching Lake or Lean.
+TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
 CHECK_INPUT_FILES = (
     "docs/declaration_atlas.json",
     "docs/generated_certificate_manifest.json",
@@ -50,7 +55,9 @@ QUERY_CORPUS_DEPENDENCY_HELPERS = (
 
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run dependency-bootstrap commands without ambient state or hangs."""
-    kwargs["env"] = singleflight.command_environment()
+    environment = singleflight.command_environment()
+    environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
+    kwargs["env"] = environment
     kwargs.setdefault("timeout", singleflight.GIT_COMMAND_TIMEOUT_SECONDS)
     return subprocess.run(*args, **kwargs)
 

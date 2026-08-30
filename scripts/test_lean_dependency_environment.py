@@ -58,7 +58,7 @@ def main() -> int:
                     "-c",
                     "import json, os; print(json.dumps({k: os.environ[k] for k in "
                     "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE', 'PYTHONPATH', "
-                    "'LC_ALL', 'LANG') "
+                    "'LC_ALL', 'LANG', 'PATH') "
                     "if k in os.environ}))",
                 ],
                 cwd=Path(raw),
@@ -67,12 +67,16 @@ def main() -> int:
                 check=False,
             )
             require(child.returncode == 0, "dependency child process failed")
+            child_environment = json.loads(child.stdout)
             require(
-                json.loads(child.stdout) == {
+                child_environment == {
                     "LC_ALL": "C.UTF-8",
                     "LANG": "C.UTF-8",
+                    "PATH": os.pathsep.join(
+                        (str(build_lean_dependency_index.TOOLCHAIN_BIN), os.defpath)
+                    ),
                 },
-                "dependency child process inherited a hostile selector",
+                "dependency child process inherited a hostile selector or lost elan",
             )
 
     require(
