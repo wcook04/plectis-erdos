@@ -313,6 +313,20 @@ def validate_paper_guide() -> None:
         row["full_text_available_in_checkout"] for row in packet["papers"]
     )
     assert all(row["not_authority_for"] for row in packet["papers"])
+    corpus_by_id = {row["paper_id"]: row for row in corpus["papers"]}
+    packet_by_id = {row["paper_id"]: row for row in packet["papers"]}
+    omitted_pdf_ids = {
+        row["paper_id"] for row in corpus["papers"] if "local_pdf" not in row
+    }
+    assert omitted_pdf_ids == {
+        "erdos-68-factorial-denominator-irrationality",
+        "erdos-1041-lemniscate-newton-flow",
+    }
+    for paper_id in omitted_pdf_ids:
+        assert packet_by_id[paper_id]["pdf_available_in_checkout"] is False
+        assert packet_by_id[paper_id]["preferred_read_path"] == corpus_by_id[
+            paper_id
+        ]["local_full_text"]
 
     card = run("--papers", "--format", "card")
     assert card.returncode == 0

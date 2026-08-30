@@ -5962,9 +5962,12 @@ def paper_reading_guide_packet() -> dict[str, Any]:
     papers = []
     for row in corpus["papers"]:
         full_text_available = (ROOT / row["local_full_text"]).is_file()
-        pdf_available = (ROOT / row["local_pdf"]).is_file()
+        local_pdf = row.get("local_pdf")
+        pdf_available = bool(local_pdf) and (ROOT / local_pdf).is_file()
         preferred_read_path = (
-            row["local_full_text"] if full_text_available else row["local_pdf"]
+            row["local_full_text"]
+            if full_text_available
+            else local_pdf or row.get("local_source")
         )
         papers.append(
             {
