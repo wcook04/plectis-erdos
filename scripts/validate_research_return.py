@@ -30,7 +30,7 @@ DEFAULT_REPOSITORY_IDENTITY = repository_identity_contract.load_identity(IDENTIT
 SCHEMA_PATH = ROOT / DEFAULT_REPOSITORY_IDENTITY["contracts"]["current_schema_path"]
 CANONICAL_REPOSITORY_ORIGIN = DEFAULT_REPOSITORY_IDENTITY["current"]["origin"]
 PATH_POLICY = "repository_relative_or_basename_for_portable_cli_output"
-GIT_COMMAND_TIMEOUT_SECONDS = 30
+GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 GIT_CONTEXT_KEYS = frozenset(
     {
         "GIT_DIR",

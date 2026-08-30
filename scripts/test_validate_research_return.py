@@ -44,6 +44,11 @@ def run_cli(input_path: Path, *arguments: str) -> subprocess.CompletedProcess[st
 def main() -> int:
     fixture = json.loads(FIXTURE.read_text(encoding="utf-8"))
     identity = validator.repository_identity_contract.load_identity()
+    require(
+        validator.GIT_COMMAND_TIMEOUT_SECONDS
+        == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "return validator Git timeout drifted from the canonical boundary",
+    )
 
     errors = validator.validate_document(
         fixture,
