@@ -78,6 +78,15 @@ the first gcd-moment series
 \(\mathsf P(n)=\sum_{d\mid n}\ph(d)(n/d)\).  These are exact structural
 identities, not an irrationality proof for \(\Stot\).
 
+At every diagonal scale \(H\) and squared-layer cutoff \(D\), the same
+calculus gives a sharper certificate interface.  The scaled diagonal tail
+difference is an explicit rational centre plus a signed squared-Mersenne tail,
+whose absolute value is at most
+\(4\,2^H(2^H-1)/(3(2^{D+1}-1)^2)\).  If that centre is farther from every
+integer than this radius, the diagonal misses the full integral target.  This
+is a producer-independent separation criterion, not an unbounded certificate
+family and not a proof that \(\Stot\) is irrational.
+
 Let $\Stot=\sum_{n\ge1}\ph(n)/2^n$.  A rational value would induce a tempered
 integral tail orbit whose dyadic sections through level $e$ have rank at least
 $2^e-1$; no conflicting upper bound is proved.  Independently, every rational
@@ -99,7 +108,7 @@ presented as a novelty claim.
 
 \externalreviewobject{The paper gives an explicit basis and relation normal
 form for the dyadic totient kernel, exposes the squared-Lambert first-gcd-moment
-identity, proves level rank $2^e+1$, derives the
+identity and a sharp producer-independent squared-Mersenne enclosure, proves level rank $2^e+1$, derives the
 all-base rank $k^e+1$ from Martin plus explicit reductions, and checks a finite
 denominator exclusion together with its first failing
 certificate scale.}{The rank theorems do not supply a
@@ -321,6 +330,36 @@ divisor algebra.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/GcdMomentCalculus.lean}{216}{tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series}{divisor-count layer},
 \mword{Erdos249257/GcdMomentCalculus.lean}{235}{tsum_totient_div_mersenne_sq_eq_gcd_moment_series}{first gcd moment}.}
+
+\item\label{res:squareenclosure} \stag{proved here}
+\textbf{A sharp squared-Mersenne diagonal enclosure.}  For the diagonal
+tail difference \(R_{2H}-R_H\), let
+\[
+ C_{H,D}=Z_H+2^H(2^H-1)\left(\frac12+
+   \sum_{1\le d\le D}\frac{\mu(d)}{(2^d-1)^2}\right),
+ \qquad Z_H=\Phi_H-\Phi_{2H}.
+\]
+The exact decomposition is
+\[
+ R_{2H}-R_H-C_{H,D}
+ =2^H(2^H-1)\sum_{d>D}\frac{\mu(d)}{(2^d-1)^2},
+\]
+and the signed remainder has the sharp elementary bound
+\[
+ \left|R_{2H}-R_H-C_{H,D}\right|
+ \le \frac{4\,2^H(2^H-1)}{3(2^{D+1}-1)^2}.
+\]
+Consequently, if this radius is smaller than the distance from \(C_{H,D}\)
+to every integer, the diagonal cannot be integral.  The centre is rational
+and its denominator is explicitly reduced by the gcd with \(2^H(2^H-1)\);
+the separation hypothesis is the remaining arithmetic input.  This is a
+finite, producer-independent consumer and supplies neither an unbounded
+separation family nor irrationality of \(\Stot\).
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/SquaredMersenneDiagonalEnclosure.lean}{138}{scaleDiagonalTailDifference_sub_lambertProjectedDiagonal}{exact centre decomposition},
+\mword{Erdos249257/SquaredMersenneDiagonalEnclosure.lean}{408}{abs_scaleDiagonalTailDifference_sub_lambertProjectedDiagonal_le}{sharp enclosure},
+\mword{Erdos249257/SquaredMersenneDiagonalEnclosure.lean}{426}{scaleFullTarget_miss_of_lambert_projected_separation}{separation consumer};
+\mword{Erdos249257/FullTargetPrimeAdjunctionNoGo.lean}{139}{scaleFullTargetHit_iff_integral}{target equivalence}.}
 
 \item\label{res:periodic} \stag{unconditional progress}
 \textbf{Eventually periodic weights are settled.}  For every integer base
