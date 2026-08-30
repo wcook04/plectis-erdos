@@ -408,6 +408,15 @@ replacement for claim authority.
   claimed).
 - Open: the unbounded certificate supply, which is equivalent to #249 itself;
   a checked splice construction shows no finite inspection can settle it.
+- A Comparator-transported fixed-precision no-go,
+  `fixedPrecisionTropicalNoGo` (`ExternalVerification/Challenge.lean:166-173`;
+  `Erdos249257/TropicalCurvatureCarry.lean:137-142`), says that for every
+  `u > 0`, every finite word of odd valuation-unit symbols, and every incoming
+  integer state, a compatible orbit keeps each successive state within its valuation-unit
+  radius. Its one-step and prefix-locked completion lemmas are subordinate mechanisms,
+  not extra families. This unconditional synthetic finite-word no-go does not impose
+  actual totient-difference arithmetic or provide growing-precision/global correlation,
+  a #249 endpoint, or irrationality.
 - A checked synthetic no-go shows that, for every `t ≥ 3`, a nonzero dyadic
   coboundary can survive every finite integer shift polynomial while retaining
   the period-LCM totient factor ideals, exact cleared-prefix cancellation, and
