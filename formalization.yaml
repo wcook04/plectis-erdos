@@ -880,6 +880,23 @@ external_verification:
       checked_frontier: "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w."
       open_frontier: "Erdos Problem 1041 in unrestricted degree."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      research_frontier:
+        directory: "research_corpus/Erdos1041"
+        authority_posture: "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority"
+        reading_rule: "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims."
+        frontier: "research_corpus/Erdos1041/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:01a817d5abd09e1a5ef8e625031f04b73196f569c78c5a6d30ee03791fba0c54"
+          strongest_results: "sha256:f32f5d4009993e6b07e29fee9eb4fa3fa077d5e170961f094b477659a36f255a"
+          manifest: "sha256:d105ac9bc14da87637ee3bb0c232a3d6c6a240b389017b76fd38d1af38ac41e0"
+          checkpoint: "sha256:b9337d8519569d5d091c988658d572e7ed2b72243dc2fe7bb47c030d1f785f09"
+        activated_result_count: 35
+        source_checkpoint: "6658deca35adde05f60bd2a19c76da996698bc9a"
+        source_subtree_tree: "27dbfd3a20cde53c29e1a37c3339dec3a57a6f32"
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_1049"
       erdos_number: 1049
       status: "open"

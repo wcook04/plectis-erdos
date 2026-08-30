@@ -391,6 +391,30 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
             f"      open_frontier: {quote(problem['what_is_not_checked'][0])}",
             f"      claim_registry_status: {quote(problem['claim_registry_status'])}",
         ])
+        research = problem.get("research_corpus")
+        if isinstance(research, dict):
+            files = research.get("files", {})
+            strongest = research.get("strongest_result_summary", {})
+            checkpoint = research.get("checkpoint_summary", {})
+            lines.extend([
+                "      research_frontier:",
+                f"        directory: {quote(research['directory'])}",
+                f"        authority_posture: {quote(research['authority_posture'])}",
+                f"        reading_rule: {quote(research['reading_rule'])}",
+                f"        frontier: {quote(files['frontier']['path'])}",
+                f"        strongest_results: {quote(files['strongest_results']['path'])}",
+                f"        manifest: {quote(files['manifest']['path'])}",
+                f"        checkpoint: {quote(files['checkpoint']['path'])}",
+                "        content_digests:",
+                f"          frontier: {quote(files['frontier']['content_digest'])}",
+                f"          strongest_results: {quote(files['strongest_results']['content_digest'])}",
+                f"          manifest: {quote(files['manifest']['content_digest'])}",
+                f"          checkpoint: {quote(files['checkpoint']['content_digest'])}",
+                f"        activated_result_count: {strongest['result_count']}",
+                f"        source_checkpoint: {quote(strongest['source_checkpoint'])}",
+                f"        source_subtree_tree: {quote(checkpoint['source_subtree_tree'])}",
+                "        promotion_boundary: \"This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface.\"",
+            ])
     lines.extend([
         "  trusted_challenge_holes: 1",
         "  packet: \"docs/EXTERNAL_VERIFICATION.md\"",
@@ -526,6 +550,36 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
                 _details_block(
                     "Source and priority note",
                     [priority_note.strip()],
+                )
+            )
+        research = row.get("research_corpus")
+        if isinstance(research, dict):
+            files = research.get("files", {})
+            strongest = research.get("strongest_result_summary", {})
+            dossier_blocks.extend(
+                _details_block(
+                    "Source-current research frontier",
+                    [
+                        (
+                            f"[Dated frontier](../{files['frontier']['path']}) · "
+                            f"[strongest-result map](../{files['strongest_results']['path']}) · "
+                            f"[corpus manifest](../{files['manifest']['path']}) · "
+                            f"[checkpoint](../{files['checkpoint']['path']})"
+                        ),
+                        "",
+                        (
+                            f"This source-fingerprinted route contains {strongest['result_count']} "
+                            f"activated research results at source checkpoint "
+                            f"`{strongest['source_checkpoint']}`. Read the dated frontier first: "
+                            "the map preserves hypotheses, falsifiers, and open gaps."
+                        ),
+                        "",
+                        (
+                            "Authority boundary: these are public research evidence, not reviewed "
+                            "claim-registry entries or Comparator interfaces. They do not close "
+                            "Erdős #1041 or promote research-corpus rows into the checked result set."
+                        ),
+                    ],
                 )
             )
         dossier_blocks.extend(

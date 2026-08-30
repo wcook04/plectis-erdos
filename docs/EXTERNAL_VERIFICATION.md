@@ -520,6 +520,17 @@ Exact registry keys and Comparator routing are listed separately.
 **Read.** [Programme paper](../erdos-1041-lemniscate-newton-flow.pdf) · [Lean source](../ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
 
 <details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos1041/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos1041/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos1041/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 35 activated research results at source checkpoint `6658deca35adde05f60bd2a19c76da996698bc9a`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
+
+<details>
 <summary>Representative checked declaration</summary>
 
 <code>ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt</code>
