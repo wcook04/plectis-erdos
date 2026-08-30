@@ -564,11 +564,16 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
         errors.append("selected showcase candidate is absent from the committed Comparator roster")
     source_file = root / selected.get("source_file", "")
     short_name = selected_name.rsplit(".", 1)[-1]
+    source_text = safe_text(source_file, root=root) if source_file.is_file() else ""
+    source_short_name = selected.get("source_declaration", "").rsplit(".", 1)[-1]
     if not source_file.is_file() or not re.search(
-        rf"\btheorem\s+{re.escape(short_name)}\b",
-        safe_text(source_file, root=root) if source_file.is_file() else "",
+        rf"\btheorem\s+{re.escape(short_name)}\b", source_text
     ):
         errors.append("selected candidate does not resolve to its declared current Lean source")
+    if not source_short_name or not re.search(
+        rf"\btheorem\s+{re.escape(source_short_name)}\b", source_text
+    ):
+        errors.append("selected candidate source_declaration does not resolve to its source theorem")
     for problem in PROBLEMS:
         row = next((r for r in showcase.get("frontier_by_problem", []) if r.get("problem") == problem), None)
         if not row or not row.get("frontier_summary") or not row.get("open_boundary"):

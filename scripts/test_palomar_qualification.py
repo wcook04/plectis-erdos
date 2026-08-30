@@ -209,6 +209,19 @@ def test_adversarial_selection_semantics_drop_is_not_silently_accepted() -> None
     assert any("partition Comparator" in error for error in errors)
 
 
+def test_adversarial_source_declaration_drift_is_not_silently_accepted() -> None:
+    showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
+    damaged = copy.deepcopy(showcase)
+    damaged["candidate_selection"]["source_declaration"] = (
+        "Erdos249257.not_the_selected_source_theorem"
+    )
+    reconciliation = json.loads(
+        (ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json").read_text()
+    )
+    errors, _ = checker.static_requirement_errors(ROOT, reconciliation, damaged)
+    assert any("source_declaration" in error for error in errors)
+
+
 def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
     showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
     comparator = json.loads(
