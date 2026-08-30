@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import os
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -27,6 +28,44 @@ def require(condition: bool, message: str) -> None:
     """Keep the environment contract active when Python is run with -O."""
     if not condition:
         raise AssertionError(message)
+
+
+def test_worktree_source_reader_boundary() -> None:
+    """Worktree note inputs must be regular, in-checkout UTF-8 files."""
+    with tempfile.TemporaryDirectory(prefix="problem-note-source-safety-") as raw:
+        root = Path(raw) / "checkout"
+        outside = Path(raw) / "outside"
+        root.mkdir()
+        outside.mkdir()
+        regular = root / "note.tex"
+        regular.write_text("note\n", encoding="utf-8")
+        original_root = scanner.ROOT
+        scanner.ROOT = root
+        try:
+            require(
+                scanner.safe_worktree_text(regular) == "note\n",
+                "regular note source did not load",
+            )
+            linked = root / "linked.tex"
+            linked.symlink_to(outside / "note.tex")
+            try:
+                scanner.safe_worktree_text(linked)
+            except scanner.UnsafeSourceInput as error:
+                require("symbolic link" in str(error), str(error))
+            else:
+                raise AssertionError("note source reader followed a symlink")
+
+            if hasattr(os, "mkfifo"):
+                fifo = root / "note.fifo"
+                os.mkfifo(fifo)
+                try:
+                    scanner.safe_worktree_text(fifo)
+                except scanner.UnsafeSourceInput as error:
+                    require("regular file" in str(error), str(error))
+                else:
+                    raise AssertionError("note source reader opened a FIFO")
+        finally:
+            scanner.ROOT = original_root
 
 
 def test_comment_injection_is_not_a_declaration() -> None:
@@ -190,6 +229,7 @@ def test_git_snapshot_reads_use_clean_bounded_environment() -> None:
 
 
 def main() -> int:
+    test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()
     test_split_declaration_head_resolves_at_keyword_line()
     test_wrong_module_name_collision_is_not_coverage()

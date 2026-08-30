@@ -29,7 +29,9 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import re
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -63,6 +65,67 @@ COMMIT_SHORT_RE = re.compile(
 NOTE_COMMIT_SHORT_RE = re.compile(
     r"\\renewcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
 )
+
+
+class UnsafeSourceInput(ValueError):
+    """A note-source input escaped the checkout or is not a regular file."""
+
+
+def safe_worktree_path(path: Path) -> Path:
+    """Resolve only regular files without symlinked checkout components."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    if candidate != root and root not in candidate.parents:
+        raise UnsafeSourceInput(f"source input escaped checkout: {candidate}")
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeSourceInput(
+                f"source input traverses a symbolic link: {candidate}"
+            )
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeSourceInput(f"source input escaped checkout: {candidate}")
+        current = current.parent
+    if not candidate.is_file():
+        raise UnsafeSourceInput(
+            f"source input is not a regular file: {candidate}"
+        )
+    return candidate
+
+
+def safe_worktree_text(path: Path) -> str:
+    """Read one worktree source through a no-follow descriptor."""
+    candidate = safe_worktree_path(path)
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeSourceInput(
+            f"source input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeSourceInput(
+                f"source input is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        try:
+            return b"".join(chunks).decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise UnsafeSourceInput(
+                f"source input is not UTF-8: {candidate}"
+            ) from exc
+    finally:
+        os.close(descriptor)
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 LINK_RE = re.compile(
     r"""\\[lm]word\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
@@ -141,7 +204,7 @@ def strip_lean_comments(text: str) -> str:
 
 def note_sources() -> list[str]:
     """Return the registered problem-note manuscript paths, in contract order."""
-    contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
+    contract = json.loads(safe_worktree_text(CONTRACT))
     return [
         row["source_path"]
         for row in contract.get("artifacts", [])
@@ -150,7 +213,7 @@ def note_sources() -> list[str]:
 
 
 def pinned_commit() -> str:
-    match = COMMIT_RE.search(PREAMBLE.read_text(encoding="utf-8"))
+    match = COMMIT_RE.search(safe_worktree_text(PREAMBLE))
     if match is None:
         raise SystemExit(
             f"{PREAMBLE.relative_to(ROOT)}: no pinned \\commit is declared"
@@ -159,7 +222,7 @@ def pinned_commit() -> str:
 
 
 def pinned_commitshort() -> str:
-    match = COMMIT_SHORT_RE.search(PREAMBLE.read_text(encoding="utf-8"))
+    match = COMMIT_SHORT_RE.search(safe_worktree_text(PREAMBLE))
     if match is None:
         raise SystemExit(
             f"{PREAMBLE.relative_to(ROOT)}: no pinned \\commitshort is declared"
@@ -287,8 +350,8 @@ def links(text: str) -> list[tuple[str, int, str | None]]:
 
 def note_for_problem() -> list[tuple[dict, str]]:
     """Pair each indexed problem with its registered note source path."""
-    index = json.loads(INDEX_SOURCE.read_text(encoding="utf-8"))
-    contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
+    index = json.loads(safe_worktree_text(INDEX_SOURCE))
+    contract = json.loads(safe_worktree_text(CONTRACT))
     by_id = {row["id"]: row for row in contract.get("artifacts", [])}
     pairs = []
     for row in index["problems"]:
@@ -427,11 +490,11 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
     """
     lines: list[str] = []
     failures: list[str] = []
-    index = json.loads(INDEX_SOURCE.read_text(encoding="utf-8"))
+    index = json.loads(safe_worktree_text(INDEX_SOURCE))
     floor, floor_failures = validated_coverage_floor(index)
     failures.extend(floor_failures)
     for row, source in note_for_problem():
-        note_text = (ROOT / source).read_text(encoding="utf-8")
+        note_text = safe_worktree_text(ROOT / source)
         commit = note_pinned_commit(note_text, default_commit)
         linked = linked_declaration_keys(note_text)
         modules = [row["principal_module"], *row.get("companion_modules", [])]
@@ -440,10 +503,11 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
         for module in modules:
             relative = module_relative(module)
             path = ROOT / relative
-            if not path.is_file():
-                failures.append(f"{row['problem_id']}: {relative} is missing")
+            try:
+                live = safe_worktree_text(path)
+            except UnsafeSourceInput as error:
+                failures.append(f"{row['problem_id']}: {error}")
                 continue
-            live = path.read_text(encoding="utf-8")
             current.extend(declarations_for_module(relative, live))
             pinned = git_run("show", f"{commit}:{relative}")
             if pinned.returncode != 0 or pinned.stdout != live:
@@ -531,11 +595,11 @@ def main() -> int:
     resolved_commits: set[str] = set()
 
     for source in sources:
-        path = ROOT / source
-        if not path.is_file():
-            errors.append(f"{source}: registered problem note is missing")
+        try:
+            note_text = safe_worktree_text(ROOT / source)
+        except UnsafeSourceInput as error:
+            errors.append(f"{source}: {error}")
             continue
-        note_text = path.read_text(encoding="utf-8")
         pin_failure = source_pin_failure(
             source, note_text, default_commit, default_commitshort
         )
