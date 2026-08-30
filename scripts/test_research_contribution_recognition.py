@@ -13,6 +13,7 @@ from pathlib import Path
 
 import build_research_contribution_recognition as recognition
 import build_research_contributions as contributions
+import check_research_contribution_recognition as checker
 import validation_singleflight as singleflight
 
 
@@ -89,6 +90,38 @@ def main() -> int:
         require(empty["accepted_receipt_count"] == 0, "unaccepted fixture affected receipt denominator")
         require(empty["chronological"] == [], "unaccepted fixture entered recognition chronology")
         require(all(values == [] for values in empty["aggregates"].values()), "unaccepted fixture entered an aggregate facet")
+
+    committed_identity = checker.repository_identity_contract.load_identity()
+    committed_projection = recognition.build_recognition(
+        contributions.load_receipts(
+            require_committed=True,
+            repository_identity=committed_identity,
+        )
+    )
+    with tempfile.TemporaryDirectory(dir="/tmp") as directory:
+        output_root = Path(directory)
+        json_output = output_root / "contributions.json"
+        markdown_output = output_root / "CONTRIBUTION_RECOGNITION.md"
+        json_output.write_bytes(checker._canonical_json(committed_projection))
+        markdown_output.write_bytes(recognition.human_projection(committed_projection))
+        require(
+            checker.validate_outputs(
+                json_output=json_output,
+                markdown_output=markdown_output,
+            ) == [],
+            "recognition checker rejected a valid custom output path under /tmp",
+        )
+
+    with tempfile.TemporaryDirectory() as directory:
+        output_root = Path(directory)
+        target = output_root / "target"
+        target.mkdir()
+        linked = output_root / "linked"
+        linked.symlink_to(target, target_is_directory=True)
+        require(
+            checker._has_symlink_component(linked / "contributions.json"),
+            "recognition checker accepted an arbitrary symlinked output directory",
+        )
 
     name, receipt, payload, head = accepted_source()
     original_route = contributions.public_result_family_route

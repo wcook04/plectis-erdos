@@ -75,7 +75,17 @@ def _has_symlink_component(path: Path) -> bool:
     current = Path(os.path.abspath(path))
     while True:
         if current.is_symlink():
-            return True
+            try:
+                platform_aliases = {
+                    Path("/tmp"): Path("/private/tmp"),
+                    Path("/var"): Path("/private/var"),
+                }
+                alias_target = platform_aliases.get(current)
+                if alias_target is None or current.resolve(strict=True) != alias_target:
+                    return True
+            except OSError:
+                return True
+            current = current.resolve(strict=True)
         if current.parent == current:
             return False
         current = current.parent
