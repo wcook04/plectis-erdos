@@ -108,10 +108,10 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:5a58bb85bf049c231880802971498f657262d151586ce5afb4ce40c2d6f21d65",
-    "docs/claims.json": "sha256:ef919962e59349e5e3e3c540628243b22d33d6aaa7b817bf353bd4129421e0c6",
+    "docs/claims.json": "sha256:28b4836a8a51a1acd79ba5b1b6e2b227e417f4bd5c9e4beb7c850316bd05ea55",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:438af060d017ff9f3eba7e3cb48ab960c8b4abc9938e398e6518caaed77153b2",
-    "docs/publication_contract.json": "sha256:0c050d8b0b3b98098310a1d5859d1087be3402853b785607aa2be8ed5409ed64",
+    "docs/problems.json": "sha256:8fccaffda288e496dac50fb904275aa278be8eab3e4a303a7d8095ecbc2b4994",
+    "docs/publication_contract.json": "sha256:3790a460ae841e897c6e16954c13f49fc297e41fecc9cd7789e25abc799d75dc",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:fdf5c944f1487fd9693482df19dc1a7a2dd98fa74570b8bc2ceeb69178ee22e1",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -435,7 +435,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:438af060d017ff9f3eba7e3cb48ab960c8b4abc9938e398e6518caaed77153b2",
+      "content_digest": "sha256:8fccaffda288e496dac50fb904275aa278be8eab3e4a303a7d8095ecbc2b4994",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -469,12 +469,12 @@
     "python3 scripts/test_publication_artifact_contract.py",
     "python3 scripts/run_publication_mutations.py --verify-operators",
     "python3 scripts/check_release.py",
-    "python3 scripts/check_problem_note_sources.py --coverage",
-    "python3 scripts/build_problem_index.py --check",
+    "python3 scripts/check_release_ref.py --ref HEAD --receipt <output.json>",
     "python3 scripts/query_corpus.py --publication-evidence summary",
     "python3 scripts/run_publication_mutations.py --all --receipt <output.json>",
-    "python3 scripts/check_release_ref.py --ref HEAD --receipt <output.json>",
-    "python3 scripts/check_publication_contract.py --git-ref :",
-    "make -C paper"
+    "make -C paper",
+    "python3 scripts/build_problem_index.py --check",
+    "python3 scripts/check_problem_note_sources.py --coverage",
+    "python3 scripts/check_publication_contract.py --git-ref :"
   ]
 }
