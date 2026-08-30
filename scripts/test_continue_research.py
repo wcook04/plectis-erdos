@@ -240,6 +240,37 @@ def check_route_memory_corpus_contract() -> None:
     source_document = json.loads(
         (ROOT / route_memory_receipt.ROUTE_MEMORY_PATH).read_text(encoding="utf-8")
     )
+    route_251 = next(
+        row for row in source_document["records"] if row.get("problem") == 251
+    )
+    source_current = route_251["evidence"]["source_current"]
+    require(
+        route_251["route_id"] == "erdos_251_small_mismatch_criterion",
+        "#251 canonical route-memory identity drifted",
+    )
+    require(
+        route_251["evidence"]["comparator_commit"]
+        == "750e4d3218248bea5785b16e6f271bb3ab76ff7e",
+        "#251 canonical route-memory Comparator commit drifted",
+    )
+    require(
+        source_current["declarations"][2]
+        == {
+            "name": "primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+            "line": 1112,
+            "role": "actual_prime_gap_specialization",
+        },
+        "#251 canonical route-memory declaration socket drifted",
+    )
+    require(
+        source_current["producer_socket"]["status"] == "unproved",
+        "#251 producer socket was allowed to inflate its review status",
+    )
+    require(
+        source_current["public_consumers"]
+        and source_current["paper_consumers"],
+        "#251 canonical route-memory consumer handoff is incomplete",
+    )
     mutations = (
         ("authority posture", {"authority_posture": "claim registry"}),
         ("top-level shape", {"claim_authority": "docs/claims.json"}),

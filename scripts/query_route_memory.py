@@ -227,6 +227,32 @@ def _problem_row(root: Path, selector: str | int) -> dict[str, Any]:
     raise RouteMemoryError("unknown_problem", token)
 
 
+def _canonical_route_memory(root: Path, problem: Mapping[str, Any]) -> dict[str, Any]:
+    """Attach the canonical route record to every query packet.
+
+    The claims/programme index remains the selector authority for registered
+    routes.  This separate, digest-bound projection exposes the one canonical
+    route-memory record (including source-current declarations and its open
+    producer socket) so an unregistered problem such as #251 is not reduced to
+    programme-number browsing before a continuation session can begin.
+    """
+    number = problem.get("erdos_number")
+    if type(number) is not int or number not in PUBLIC_ROSTER:
+        raise RouteMemoryError("route_memory_problem", str(number))
+    try:
+        records, digest = route_memory_receipt.canonical_corpus(root)
+    except ValueError as exc:
+        raise RouteMemoryError("route_memory_unavailable", str(exc)) from exc
+    record = records.get(number)
+    if not isinstance(record, Mapping):
+        raise RouteMemoryError("route_memory_problem", str(number))
+    return {
+        "path": route_memory_receipt.ROUTE_MEMORY_PATH,
+        "sha256": digest,
+        "record": dict(record),
+    }
+
+
 def _entrypoints(root: Path) -> list[dict[str, Any]]:
     claims = _json(root / "docs" / "claims.json")
     rows = claims.get("machine_readable_paper", {}).get("entrypoints", [])
@@ -513,6 +539,7 @@ def build_packet(
     ]
     source_digests = _source_digests(root)
     source_commit = _head(root)
+    canonical_route_memory = _canonical_route_memory(root, problem)
     selector = {
         "problem_id": problem["problem_id"],
         "route_id": route["id"] if route else None,
@@ -530,6 +557,7 @@ def build_packet(
             row["path"]: row["content_digest"] for row in module_refs
         },
         "research_source_digests": research_source_digests,
+        "canonical_route_memory": canonical_route_memory,
     }
     state_id = _canonical_digest(identity_material)
     packet = {
@@ -552,6 +580,7 @@ def build_packet(
             "title": route.get("title") if route else None,
             "claim_ceiling": route.get("claim_ceiling") if route else None,
             "available_route_ids": available_routes,
+            "canonical_route_memory": canonical_route_memory,
         },
         "consulted_route_ids": consulted,
         "related_route_ids": related,
@@ -582,6 +611,7 @@ def build_packet(
                 row["path"]: row["content_digest"] for row in module_refs
             },
             "research_corpus_digests": research_source_digests,
+            "route_memory": canonical_route_memory,
         },
         "boundaries": {
             "claim_authority": "docs/claims.json",

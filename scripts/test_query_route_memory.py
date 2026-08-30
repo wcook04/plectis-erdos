@@ -15,6 +15,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import query_route_memory as route_memory
+import route_memory_receipt
 import validation_singleflight as singleflight
 
 
@@ -137,6 +138,71 @@ def main() -> int:
             == packet["source_snapshot"]["module_digests"],
             f"module digests are not carried into resume state for #{number}",
         )
+        canonical = packet["route"]["canonical_route_memory"]
+        require(
+            canonical["path"] == route_memory_receipt.ROUTE_MEMORY_PATH,
+            f"canonical route-memory path drifted for #{number}",
+        )
+        require(
+            canonical["sha256"].startswith("sha256:"),
+            f"canonical route-memory digest is malformed for #{number}",
+        )
+        require(
+            canonical["record"]["problem"] == number,
+            f"canonical route-memory record crossed problem #{number}",
+        )
+    route_251 = packets[251]["route"]["canonical_route_memory"]["record"]
+    source_current = route_251["evidence"]["source_current"]
+    require(
+        route_251["route_id"] == "erdos_251_small_mismatch_criterion",
+        "#251 route-memory identity did not select small_mismatch_criterion",
+    )
+    require(
+        route_251["evidence"]["comparator_commit"]
+        == "750e4d3218248bea5785b16e6f271bb3ab76ff7e",
+        "#251 route-memory source-current Comparator commit drifted",
+    )
+    require(
+        source_current["module"]
+        == "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "#251 route-memory source module drifted",
+    )
+    declarations = {
+        row["name"]: row["line"] for row in source_current["declarations"]
+    }
+    require(
+        declarations["primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch"]
+        == 1112,
+        "#251 route-memory exact producer declaration drifted",
+    )
+    require(
+        source_current["producer_socket"]["id"]
+        == "cofinal_adjacent_small_mismatch"
+        and source_current["producer_socket"]["status"] == "unproved",
+        "#251 route-memory producer socket was promoted or renamed",
+    )
+    require(
+        {consumer["path"] for consumer in source_current["paper_consumers"]}
+        >= {
+            "paper/erdos-251-prime-gap-dyadic-series.tex",
+            "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
+        },
+        "#251 route-memory paper consumers are incomplete",
+    )
+    require(
+        {consumer["path"] for consumer in source_current["public_consumers"]}
+        >= {
+            "docs/claims.json",
+            "docs/external_verification_packet.json",
+            "verification/comparator.json",
+        },
+        "#251 route-memory public consumers are incomplete",
+    )
+    require(
+        "cofinal" in source_current["next_analytic_obligation"].lower()
+        and "small-mismatch" in source_current["next_analytic_obligation"].lower(),
+        "#251 route-memory next analytic obligation drifted",
+    )
     research_packet = packets[1041]
     research = research_packet["research_corpus"]
     require(

@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import stat
 import subprocess
 from pathlib import Path
@@ -31,6 +32,22 @@ CANONICAL_AUTHORITY_POSTURE = (
     "navigation record of checked, tracked corpus boundaries; not a claim registry, "
     "proof authority, or a statement of problem status"
 )
+SOURCE_CURRENT_FIELDS = frozenset(
+    {
+        "module",
+        "declarations",
+        "producer_socket",
+        "paper_consumers",
+        "public_consumers",
+        "next_analytic_obligation",
+    }
+)
+SOURCE_DECLARATION_FIELDS = frozenset({"name", "line", "role"})
+PRODUCER_SOCKET_FIELDS = frozenset(
+    {"id", "status", "statement", "required_hypotheses", "not_supplied_by"}
+)
+CONSUMER_FIELDS = frozenset({"path", "locators"})
+PUBLIC_CONSUMER_FIELDS = frozenset({"path", "locator"})
 
 
 def _error(errors: list[str], path: str, message: str) -> None:
@@ -125,6 +142,82 @@ def read_regular_bytes(path: Path, root: Path) -> bytes:
         os.close(descriptor)
 
 
+def _validate_source_current(record: dict[str, Any]) -> None:
+    """Keep source-current handoff metadata strict without widening route authority."""
+    if record.get("problem") != 251:
+        return
+    evidence = record.get("evidence")
+    if not isinstance(evidence, dict):
+        raise ValueError("#251 route evidence must be an object")
+    for field in ("source_declaration", "comparator_declaration", "comparator_commit"):
+        value = evidence.get(field)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"#251 route evidence {field} must be nonempty")
+    if not re.fullmatch(r"[0-9a-f]{40}", evidence["comparator_commit"]):
+        raise ValueError("#251 route evidence comparator_commit must be a 40-hex commit")
+    source_current = evidence.get("source_current")
+    if not isinstance(source_current, dict) or set(source_current) != SOURCE_CURRENT_FIELDS:
+        raise ValueError("#251 route evidence source_current has an ambiguous shape")
+    if source_current.get("module") != "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean":
+        raise ValueError("#251 source-current handoff must name PrimeGapDyadicTail.lean")
+    if not isinstance(source_current.get("next_analytic_obligation"), str) or not source_current["next_analytic_obligation"].strip():
+        raise ValueError("#251 source-current handoff must name its next analytic obligation")
+    declarations = source_current.get("declarations")
+    if not isinstance(declarations, list) or not declarations:
+        raise ValueError("#251 source-current declarations must be a nonempty array")
+    seen_names: set[str] = set()
+    for declaration in declarations:
+        if not isinstance(declaration, dict) or set(declaration) != SOURCE_DECLARATION_FIELDS:
+            raise ValueError("#251 source-current declaration has an ambiguous shape")
+        name = declaration.get("name")
+        line = declaration.get("line")
+        role = declaration.get("role")
+        if not isinstance(name, str) or not name.strip() or name in seen_names:
+            raise ValueError("#251 source-current declaration has an invalid or duplicate name")
+        if not isinstance(line, int) or line < 1:
+            raise ValueError("#251 source-current declaration line must be positive")
+        if not isinstance(role, str) or not role.strip():
+            raise ValueError("#251 source-current declaration role must be nonempty")
+        seen_names.add(name)
+    producer = source_current.get("producer_socket")
+    if not isinstance(producer, dict) or set(producer) != PRODUCER_SOCKET_FIELDS:
+        raise ValueError("#251 source-current producer socket has an ambiguous shape")
+    if producer.get("id") != "cofinal_adjacent_small_mismatch":
+        raise ValueError("#251 source-current producer socket id is not canonical")
+    if producer.get("status") != "unproved":
+        raise ValueError("#251 source-current producer socket must remain unproved")
+    for field in ("statement",):
+        if not isinstance(producer.get(field), str) or not producer[field].strip():
+            raise ValueError(f"#251 producer socket {field} must be nonempty")
+    for field in ("required_hypotheses", "not_supplied_by"):
+        value = producer.get(field)
+        if not isinstance(value, list) or not value or not all(
+            isinstance(item, str) and item.strip() for item in value
+        ):
+            raise ValueError(f"#251 producer socket {field} must be a nonempty string array")
+    for field, expected_fields in (
+        ("paper_consumers", CONSUMER_FIELDS),
+        ("public_consumers", PUBLIC_CONSUMER_FIELDS),
+    ):
+        consumers = source_current.get(field)
+        if not isinstance(consumers, list) or not consumers:
+            raise ValueError(f"#251 source-current {field} must be a nonempty array")
+        for consumer in consumers:
+            if not isinstance(consumer, dict) or set(consumer) != expected_fields:
+                raise ValueError(f"#251 source-current {field} entry has an ambiguous shape")
+            if not isinstance(consumer.get("path"), str) or not consumer["path"].strip():
+                raise ValueError(f"#251 source-current {field} path must be nonempty")
+            locator_key = "locators" if field == "paper_consumers" else "locator"
+            locator = consumer.get(locator_key)
+            if field == "paper_consumers":
+                if not isinstance(locator, list) or not locator or not all(
+                    isinstance(item, str) and item.strip() for item in locator
+                ):
+                    raise ValueError("#251 paper consumer locators must be a nonempty string array")
+            elif not isinstance(locator, str) or not locator.strip():
+                raise ValueError("#251 public consumer locator must be nonempty")
+
+
 def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
     """Return canonical route records and the digest of their tracked source."""
     source = root / ROUTE_MEMORY_PATH
@@ -214,6 +307,7 @@ def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
                 raise ValueError(
                     f"canonical route memory record {route_id} has invalid {field}"
                 )
+        _validate_source_current(record)
         indexed[problem] = record
     if set(indexed) != ROSTER:
         raise ValueError("canonical route memory does not cover the public roster")

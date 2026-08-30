@@ -75,7 +75,81 @@
         ],
         "source_declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
         "comparator_declaration": "Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
-        "comparator_commit": "750e4d3218248bea5785b16e6f271bb3ab76ff7e"
+        "comparator_commit": "750e4d3218248bea5785b16e6f271bb3ab76ff7e",
+        "source_current": {
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "declarations": [
+            {
+              "name": "tailShift_not_both_integral_of_small_pair_of_digit_ne",
+              "line": 979,
+              "role": "adjacent_pair_zero_obstruction"
+            },
+            {
+              "name": "not_eventuallyIntegralTailShift_of_cofinal_small_mismatch",
+              "line": 1006,
+              "role": "abstract_cofinal_reduction"
+            },
+            {
+              "name": "primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+              "line": 1112,
+              "role": "actual_prime_gap_specialization"
+            },
+            {
+              "name": "primeGap0_not_eventually_periodic",
+              "line": 1023,
+              "role": "actual_gap_contrast"
+            },
+            {
+              "name": "rationalPrimeGapTail_has_positive_shift_not_eventually_small",
+              "line": 1097,
+              "role": "rational_state_boundary"
+            }
+          ],
+          "producer_socket": {
+            "id": "cofinal_adjacent_small_mismatch",
+            "status": "unproved",
+            "statement": "For every fixed h and every N₀, produce N ≥ N₀ with both adjacent h-shifts strictly in (-1, 1) and unequal corresponding prime gaps.",
+            "required_hypotheses": [
+              "DyadicTailRecurrence for the actual prime-gap digits",
+              "-1 < tailShift T h N < 1 and -1 < tailShift T h (N + 1) < 1",
+              "primeGap0 (N + h + 1) ≠ primeGap0 (N + 1)"
+            ],
+            "not_supplied_by": [
+              "prime-gap unboundedness",
+              "prime-gap non-eventual-periodicity",
+              "rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+            ]
+          },
+          "paper_consumers": [
+            {
+              "path": "paper/erdos-251-prime-gap-dyadic-series.tex",
+              "locators": ["res:smallpair", "prob:smallpair", "sec:open"]
+            },
+            {
+              "path": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
+              "locators": ["res:smallpair", "prob:smallpair", "line:550"]
+            }
+          ],
+          "public_consumers": [
+            {
+              "path": "docs/claims.json",
+              "locator": "claims[id=small_mismatch_criterion]"
+            },
+            {
+              "path": "docs/external_verification_packet.json",
+              "locator": "review_matrix[problem=251].families[id=small_mismatch_criterion]"
+            },
+            {
+              "path": "verification/comparator.json",
+              "locator": "theorem_names[Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch]"
+            },
+            {
+              "path": "docs/PALOMAR_RESULT_SHOWCASE.json",
+              "locator": "candidates[family_id=small_mismatch_criterion]"
+            }
+          ],
+          "next_analytic_obligation": "Prove the cofinal adjacent small-mismatch producer for the actual prime gaps, including both strict (-1, 1) tail-shift inequalities; otherwise preserve this as a conditional reduction only."
+        }
       },
       "actual_established": "For the actual prime-gap dyadic tail, cofinally many adjacent pairs of strictly small h-shifts with unequal corresponding prime gaps rule out eventual RatIntegral h-shifts. The hard step is local: two adjacent shifts in (-1, 1) that are both integral must both be zero, and the recurrence then forces the corresponding prime gaps to agree; the actual prime-gap non-eventual-periodicity result supplies the contrast once the pair is found.",
       "failure_boundary": "This is a conditional reduction only. It assumes T : ℕ → ℚ follows the actual prime-gap DyadicTailRecurrence and assumes, for every N₀, an N ≥ N₀ with both adjacent h-shifts strictly in (-1, 1) and primeGap0 (N + h + 1) ≠ primeGap0 (N + 1). It does not supply cofinally many small mismatches, prove actual smallness, prove Erdős #251 irrationality, or make novelty, priority, significance, or external-review claims; #251 remains open.",
