@@ -30,7 +30,18 @@ GENERATED_ENVELOPE = {
 }
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
-PRIVATE_PATH_MARKERS = (b"/Users/", b"file://", b"~/.codex/", b"~/.agents/")
+PRIVATE_PATH_MARKERS = (
+    ("/Users/", b"/Users/"),
+    ("/home/", b"/home/"),
+    ("/root/", b"/root/"),
+    ("/private/var/", b"/private/var/"),
+    ("file://", b"file://"),
+    ("~/.codex/", b"~/.codex/"),
+    ("~/.agents/", b"~/.agents/"),
+    ("%USERPROFILE%\\", b"%USERPROFILE%\\"),
+    ("C:\\Users\\", b"C:\\Users\\"),
+    ("\\\\Users\\", b"\\\\Users\\"),
+)
 
 
 class CorpusError(ValueError):
@@ -117,7 +128,7 @@ def check() -> tuple[int, int, int]:
                 row.get("source_sha256") != row.get("published_sha256"),
                 f"sanitized row retained the source digest: {public_path}",
             )
-        leaked = [marker.decode("ascii") for marker in PRIVATE_PATH_MARKERS if marker in data]
+        leaked = [label for label, marker in PRIVATE_PATH_MARKERS if marker in data]
         require(not leaked, f"private local-path marker in {public_path}: {leaked}")
         total_bytes += len(data)
         replacement_count += replacements
