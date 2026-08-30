@@ -39,7 +39,7 @@ import hashlib
 import json
 import re
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs" / "problem_index_source.json"
@@ -203,6 +203,71 @@ def paper_facts(
     }
 
 
+RESEARCH_CORPUS_FILES = ("frontier", "strongest_results", "manifest", "checkpoint")
+
+
+def research_corpus_facts(config: dict | None) -> dict[str, object] | None:
+    """Expose a problem's public research frontier without promoting it.
+
+    The corpus is a reader route and evidence bundle, not part of the reviewed
+    claim registry. Keep the route source-fingerprinted so a problem card
+    cannot silently point at a changed frontier or activation map.
+    """
+    if config is None:
+        return None
+    if not isinstance(config, dict):
+        raise ValueError("research_corpus must be an object")
+    directory = config.get("directory")
+    if not isinstance(directory, str) or not directory:
+        raise ValueError("research_corpus.directory must be a nonempty path")
+    authority_posture = config.get("authority_posture")
+    reading_rule = config.get("reading_rule")
+    if not isinstance(authority_posture, str) or not isinstance(reading_rule, str):
+        raise ValueError("research_corpus authority posture and reading rule are required")
+
+    files: dict[str, dict[str, str]] = {}
+    for key in RESEARCH_CORPUS_FILES:
+        raw = config.get(key)
+        if not isinstance(raw, str) or not raw:
+            raise ValueError(f"research_corpus.{key} must be a nonempty path")
+        pure = PurePosixPath(raw)
+        if pure.is_absolute() or ".." in pure.parts:
+            raise ValueError(f"unsafe research corpus path: {raw}")
+        path = ROOT.joinpath(*pure.parts)
+        if not path.is_file() or path.is_symlink():
+            raise ValueError(f"missing or symlinked research corpus file: {raw}")
+        files[key] = {"path": raw, "content_digest": sha256(path.read_bytes())}
+
+    strongest = json.loads(
+        (ROOT / files["strongest_results"]["path"]).read_text(encoding="utf-8")
+    )
+    checkpoint = json.loads(
+        (ROOT / files["checkpoint"]["path"]).read_text(encoding="utf-8")
+    )
+    results = strongest.get("results")
+    if not isinstance(results, list) or not results:
+        raise ValueError("research corpus strongest-result map is empty")
+    source_checkpoint = strongest.get("source_checkpoint")
+    if source_checkpoint != checkpoint.get("source_commit"):
+        raise ValueError("research corpus strongest-result and checkpoint commits differ")
+    return {
+        "directory": directory,
+        "authority_posture": authority_posture,
+        "reading_rule": reading_rule,
+        "files": files,
+        "strongest_result_summary": {
+            "source_checkpoint": source_checkpoint,
+            "status": strongest.get("status"),
+            "result_count": len(results),
+        },
+        "checkpoint_summary": {
+            "source_subtree_tree": checkpoint.get("source_subtree_tree"),
+            "exported_source_file_count": checkpoint.get("exported_source_file_count"),
+            "status": checkpoint.get("status"),
+        },
+    }
+
+
 def build(
     source: dict,
     artifacts: dict[str, dict],
@@ -215,32 +280,34 @@ def build(
     for row in source["problems"]:
         modules = [module_facts(row["principal_module"])]
         modules.extend(module_facts(name) for name in row.get("companion_modules", []))
-        problems.append(
-            {
-                "problem_id": row["problem_id"],
-                "erdos_number": row["erdos_number"],
-                "short_title": row["short_title"],
-                "status": row["status"],
-                "question": row["question"],
-                "library_root": "ErdosProblems.lean",
-                "claim_registry_status": (
-                    "not_registered; the claim registry does not carry these "
-                    "declarations and kernel checking them does not promote "
-                    "them into reviewed public claims"
-                ),
-                "directory": row["directory"],
-                "modules": modules,
-                "note": note_facts(row["note_artifact_id"], artifacts),
-                "what_is_checked": row["what_is_checked"],
-                "what_is_not_checked": row["what_is_not_checked"],
-                "open_obligations": row["open_obligations"],
-                "finite_search": row.get("finite_search"),
-                "paper": paper_facts(
-                    row["erdos_number"], matrix, papers, corpus is not None
-                ),
-                "external_check": external_check_facts(row["erdos_number"], matrix),
-            }
-        )
+        problem = {
+            "problem_id": row["problem_id"],
+            "erdos_number": row["erdos_number"],
+            "short_title": row["short_title"],
+            "status": row["status"],
+            "question": row["question"],
+            "library_root": "ErdosProblems.lean",
+            "claim_registry_status": (
+                "not_registered; the claim registry does not carry these "
+                "declarations and kernel checking them does not promote "
+                "them into reviewed public claims"
+            ),
+            "directory": row["directory"],
+            "modules": modules,
+            "note": note_facts(row["note_artifact_id"], artifacts),
+            "what_is_checked": row["what_is_checked"],
+            "what_is_not_checked": row["what_is_not_checked"],
+            "open_obligations": row["open_obligations"],
+            "finite_search": row.get("finite_search"),
+            "paper": paper_facts(
+                row["erdos_number"], matrix, papers, corpus is not None
+            ),
+            "external_check": external_check_facts(row["erdos_number"], matrix),
+        }
+        research_route = research_corpus_facts(row.get("research_corpus"))
+        if research_route is not None:
+            problem["research_corpus"] = research_route
+        problems.append(problem)
     packet = (claims or {}).get("external_verification_packet", {})
     receipt = packet.get("receipt_contract", {})
     return {

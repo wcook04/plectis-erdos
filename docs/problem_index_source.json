@@ -700,7 +700,16 @@
           "statement": "Prove the global relative Newton-flow theorem that turns the checked ray separation into the required root-to-root curve inside the original open lemniscate."
         }
       ],
-      "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate."
+      "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
+      "research_corpus": {
+        "directory": "research_corpus/Erdos1041",
+        "frontier": "research_corpus/Erdos1041/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
+        "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims."
+      }
     },
     {
       "problem_id": "erdos_1049",
