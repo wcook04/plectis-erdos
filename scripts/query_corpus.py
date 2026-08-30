@@ -6248,20 +6248,24 @@ def publication_family_packet(family_id: str) -> dict[str, Any]:
 def publication_architecture_packet() -> dict[str, Any]:
     claims = load("docs/claims.json")
     assembly = claims["machine_readable_paper"]["publication_assembly"]
-    return {
-        "kind": "publication_architecture",
-        "authority_posture": "authored_editorial_topology_not_proof_authority",
-        "architecture": assembly["publication_architecture"],
-        "family_index": [
+    family_index = []
+    for row in assembly["contribution_families"]:
+        family_route_memory = publication_family_packet(row["id"])["route_memory"]
+        family_index.append(
             {
                 "id": row["id"],
                 "status_summary": row["status_summary"],
                 "primary_narrative_owner": row["primary_narrative_owner"],
                 "view_decision": row["view_decision"],
                 "claim_count": len(row["claim_ids"]),
+                "route_memory": family_route_memory,
             }
-            for row in assembly["contribution_families"]
-        ],
+        )
+    return {
+        "kind": "publication_architecture",
+        "authority_posture": "authored_editorial_topology_not_proof_authority",
+        "architecture": assembly["publication_architecture"],
+        "family_index": family_index,
         "coverage_rule": assembly["coverage_rule"],
         "validation": "python3 scripts/check_release.py",
     }

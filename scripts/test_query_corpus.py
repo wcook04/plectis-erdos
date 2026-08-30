@@ -830,6 +830,14 @@ def main() -> int:
     assert len(architecture["family_index"]) == len(
         publication_assembly["contribution_families"]
     )
+    assert architecture["family_index"][0]["route_memory"]["status"] in {
+        "bound",
+        "unbound",
+    }
+    assert all(
+        set(row["route_memory"]) >= {"status", "bindings", "boundary"}
+        for row in architecture["family_index"]
+    )
     assembled_claim_ids = [
         claim_id
         for family in publication_assembly["contribution_families"]
