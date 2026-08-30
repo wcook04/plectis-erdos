@@ -54,7 +54,7 @@ Links name a checked route and its limit; reductions are not solutions.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [reasoning surface](erdos257-mersenne-reasoning-surface.pdf) — full support, finite-period noncollapse, topology, carry criteria; [rational shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity, recurrence, and modular doubling; universal #257 and `1/2`/`1/21` open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — maximal powers, logarithmic cells, grouped sums, shell bounds, rank-two obstruction; three-prime problem open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton-flow decay, ray separation, collisions, root retention; an invalid saddle block leaves topology, gluing, and operator-owned proof open.
-- [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor, height, Hermite–Padé, determinant, prime-support no-go mechanisms at `3/2` and `7/2`; no irrationality, noncollapse, or remainder control is proved.
+- [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor, height regions (including `31/4` powers), Hermite–Padé, determinant, prime-support no-go mechanisms at `3/2` and `7/2`; no irrationality, noncollapse, or remainder control is proved.
 
 ## What the formal source establishes
 
