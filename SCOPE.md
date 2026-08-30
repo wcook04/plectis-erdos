@@ -18,6 +18,14 @@ the formal checkpoint nor `docs/claims.json`, and makes no peer-review, priority
 novelty, or significance claim. Work later than the checkpoint is out of scope
 even if locally checked; a later tag is a separate citation/release action, not a substitute for an exact proof-source identity.
 
+The executable public handoff for that frontier is
+`python3 scripts/query_corpus.py --route erdos_1041`; it verifies the four
+indexed corpus-file digests and reports the 35-result/open envelope. To resume
+against the same problem-index and corpus snapshot, use
+`python3 scripts/query_route_memory.py --problem 1041`. These are navigation
+and evidence routes only: they do not promote research rows into the reviewed
+claim registry or Comparator, and they do not close #1041.
+
 ## What the corpus is, by shape
 
 Size is not evidence; re-derive shapes with
