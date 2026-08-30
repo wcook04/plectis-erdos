@@ -146,6 +146,14 @@ replacement for claim authority.
   `Erdos249257/TotientMahlerDefect.lean:1380`,
   `Erdos249257/TotientMahlerDefect.lean:1392` — registry:
   dyadic_totient_certificate_interface).
+- The Comparator interfaces make the rank frontier precise: for every
+  `e ≥ 1`, `finrank_totientKernelThroughLevelFamily_eq` gives dimension
+  `2ᵉ + 1` for the actual finite truncation, while
+  `exists_totientDyadicSectionBasis` supplies the explicit odd-core-indexed
+  basis. The full-kernel interface
+  `not_finiteDimensional_span_fullTotientKernel` proves that the rational span
+  is not finite-dimensional. These are coefficient-space facts, not a
+  rationality-to-finite-rank bridge or an irrationality proof.
 - For every base `k ≥ 2` and level `e ≥ 1`, an all-base extension has an
   explicit canonical spanning family; under its stated linear-independence
   hypothesis, the level-`e` span has dimension `kᵉ + 1`
@@ -181,13 +189,21 @@ replacement for claim authority.
   and no unbounded certificate supply follows.
 - Two additional checked #249 families are directly inspectable: an exact
   [squared-Lambert gcd-moment transfer](../Erdos249257/GcdMomentCalculus.lean)
-  at base `1/2`, and the Comparator-transported
+  at base `1/2` — `tsum_totient_div_mersenne_sq_eq_gcd_moment_series` identifies
+  the totient-weighted squared-Mersenne Lambert series with the dyadic series
+  of Pillai's gcd-sum function minus `n` — and the Comparator-transported
   `runHeight_defect_fib_sum_lower`
   (`Erdos249257/SternBrocotRunGeometry.lean`). For every finite defect list
   `e`, this theorem bounds the height of its positive Stern–Brocot run word
   from below by `(F_{r+3} + F_{r+1}) · ∑ eᵢ`, where `r` is the number of runs.
   These finite identities/inequalities do not establish analytic denominator
   survival or the unbounded family, so #249 remains open.
+- At every positive Stern–Brocot node `(a,b)`,
+  `cylinderMass_split` exactly decomposes the closed cylinder mass into the
+  node's stop mass and the two child-cylinder masses
+  (`Erdos249257/GcdMomentCalculus.lean`). This telescoping recursion and its
+  geometric interpretation do not establish denominator survival,
+  irrationality, or novelty; the #249 endpoint remains open.
 - The same gcd-moment source gives the exact visible-coprime lattice
   normalization `∑ 1/(2ⁿ−1) = 1` over positive coprime pairs
   (`tsum_pos_coprime_inv_mersenne_eq_one`). It supplies the reduced-direction
