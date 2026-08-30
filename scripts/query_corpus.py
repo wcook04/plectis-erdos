@@ -2441,19 +2441,17 @@ def decorate_declaration_rows(
     return decorated
 
 
-def declaration_packet(name: str, limit: int) -> dict[str, Any]:
-    matches = declaration_rows_for_handle(name)
-    if not matches:
-        raise KeyError(f"unknown declaration name: {name}")
-    decorated = decorate_declaration_rows(matches, limit)
-    claims = load("docs/claims.json")
+def declaration_route_memory_rows(
+    declarations: list[dict[str, Any]], claims: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Attach canonical programme resume bindings to declaration projections."""
     programme_routes = [
         route
         for route in all_entrypoints(claims)
         if route.get("route_kind") == "mathematical_programme"
     ]
     routed_matches = []
-    for declaration in decorated:
+    for declaration in declarations:
         bindings = []
         for claim_id in declaration.get("claim_ids", []):
             for route in programme_routes:
@@ -2498,6 +2496,15 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
                 "programme; no resume route was invented"
             )
         routed_matches.append({**declaration, "route_memory": route_memory})
+    return routed_matches
+
+
+def declaration_packet(name: str, limit: int) -> dict[str, Any]:
+    matches = declaration_rows_for_handle(name)
+    if not matches:
+        raise KeyError(f"unknown declaration name: {name}")
+    decorated = decorate_declaration_rows(matches, limit)
+    routed_matches = declaration_route_memory_rows(decorated, load("docs/claims.json"))
     return {
         "kind": "declaration",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
@@ -2553,6 +2560,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
         candidates.append(containing)
     candidates.sort(key=lambda row: (abs(row["line"] - line), row["line"], row["name"]))
     decorated = decorate_declaration_rows(candidates, limit)
+    decorated = declaration_route_memory_rows(decorated, claims)
 
     before = [row for row in module_declarations if row["line"] < line]
     after = [row for row in module_declarations if row["line"] > line]

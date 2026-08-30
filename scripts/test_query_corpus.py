@@ -1354,6 +1354,12 @@ def main() -> int:
     assert source_declaration["name"] == (
         "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
     )
+    source_route_memory = source_declaration["route_memory"]
+    assert source_route_memory["status"] == "bound"
+    assert {
+        (row["route_id"], row["problem_number"])
+        for row in source_route_memory["bindings"]
+    } == {("erdos249_certificate_story", 249)}
     assert source_declaration["attached_claims"][0]["id"] == "denominator_exclusion"
     assert "res:farey" in {
         row["canonical_handle"] for row in source_declaration["paper_anchors"]
