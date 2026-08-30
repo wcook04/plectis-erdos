@@ -1519,7 +1519,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:818295fe29f5551a2f78cea562fe6943fc5e2d2ea12b8cdd84222d3a4164c2f5",
+    "projection_digest": "sha256:9239ae4ad85fd129192737455fc32159679bcf0b1f8b8cb715fbc58125ccb6e1",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2067,16 +2067,16 @@
           "state": "reviewed",
           "family_count": 6,
           "by_class": {
-            "not_selected": 2,
+            "not_selected": 1,
             "represented_by": 1,
-            "targeted": 3
+            "targeted": 4
           },
           "dispositions": {
             "prime_gap_reformulation": "targeted",
             "integral_shift_classification": "not_selected_abstract_family_represented_in_manifest",
             "dyadic_tail_integrality_classification": "targeted",
             "totient_shift_propagation": "represented_by_integral_shift_family",
-            "small_mismatch_criterion": "not_selected_open_producer_hypothesis",
+            "small_mismatch_criterion": "targeted",
             "coefficient_only_no_go": "targeted"
           }
         }

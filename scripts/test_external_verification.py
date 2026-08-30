@@ -152,8 +152,17 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("**Open boundary.**", human)
         self.assertIn("<details>", human)
         self.assertIn("<summary>Representative checked declaration</summary>", human)
-        self.assertIn("<summary>Contribution families (12)</summary>", human)
-        self.assertIn("<summary>Technical registry and Comparator routing (12)</summary>", human)
+        problem_249 = next(
+            problem for problem in packet["review_matrix"] if problem["problem"] == 249
+        )
+        family_count_249 = len(problem_249["families"])
+        self.assertIn(
+            f"<summary>Contribution families ({family_count_249})</summary>", human
+        )
+        self.assertIn(
+            f"<summary>Technical registry and Comparator routing ({family_count_249})</summary>",
+            human,
+        )
         self.assertIn("## Comparator interface appendix", human)
         self.assertIn(
             f"<summary>Show all {len(packet['main_results'])} statement-isolated interfaces</summary>",
@@ -214,7 +223,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
             self.assertEqual(code_spans.count(family["id"]), 1, family["id"])
             self.assertIn(family["comparator_disposition"], code_spans)
             self.assertIn(family["boundary"], human)
-            self.assertIn(family["summary"], human)
+            self.assertIn(family["summary"].replace("—", ":"), human)
         # Each identifier is a whole code span, so copying it yields a name that
         # still compiles and greps.
         for row in owner["main_results"]:
