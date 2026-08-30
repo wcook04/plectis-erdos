@@ -735,7 +735,12 @@ core)**
   the cofinal window expansion against that bound. The escape producer and the
   bridge from the actual three-prime running-LCM series (or its rationality) to
   this carry remain unproved, so this is no #269 endpoint or irrationality
-  proof; it is distinct from the finite residue and weighted-phase observers.
+  proof; it is distinct from the finite residue and weighted-phase observers.  Its subordinate `no_positive_absorbedCarry_of_cofinalLocalWindowEscape` bridge
+  handles an absorbed carry exactly: with `smoothFactor ≠ 0`, `c n =
+  smoothFactor * d n`, and the matching absorbed recurrence, cancellation
+  reduces to this consumer; it adds no actual-series bridge or cofinal escape
+  (`ErdosProblems/Erdos269/RestrictedFloorSum.lean:689).
+
 **#1041 — short connections inside polynomial lemniscates?**
 
 - Checked: quantitative root retention under constant perturbation
