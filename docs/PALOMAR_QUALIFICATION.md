@@ -82,6 +82,22 @@ the **long tail**. Every committed Comparator row has exactly
 one of those dispositions, with a reason. The source-landscape record also
 preserves the actual-LCM route's transition from deferred to represented.
 
+The all-eight-paper survivor audit also promotes the under-served #68
+`factorial_channel_and_projection_rigidity` family into the detailed source
+landscape without inventing a Comparator row. Claims commit `06198c0a` binds
+the exact quotient-band factorisation and first-band breakpoint, the
+`d! - 1` channel congruence, the prime translator whose full residual is
+exactly one, and the two-projection bounded-endpoint contradiction. Together
+they explain the hard finite mechanism below
+`factorial_carry_characterisation`: channel cancellation rigidifies the
+factorial moment, the translator supplies a precise correction direction, and
+unequal sufficiently large divisor projections cannot both identify one
+bounded endpoint. The family ranks above isolated finite certificates and
+routine channel identities, but below the exact carry equivalence. It remains
+source-landscape evidence rather than Comparator evidence, and it supplies no
+cofinal non-unit carry, strict-successor divisibility miss, nonzero translated
+residual, or moving projection-disagreement family; Erdős #68 remains open.
+
 The actual-LCM separation route is now an eligible represented candidate:
 `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
 is in the source-current committed Comparator roster and is source-faithful to

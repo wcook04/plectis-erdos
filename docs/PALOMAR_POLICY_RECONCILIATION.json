@@ -213,14 +213,14 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and nine targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the strict-prime route is represented below the actual-LCM and first-harmonic routes but above finite certificate normal forms because its distinct producer predicates remain open.",
+      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and ten targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection discovery is represented below its exact carry endpoint and above isolated finite certificates, without turning its missing cofinal producer into Comparator evidence.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "f8ca6d02f16afbe9b21b759df1ae14a119fb17f57a0ec034f652e80e251f5da9",
+      "review_matrix_sha256": "c5c75c8cd0e611e437fbdf9fb2c249f1c08acbcdc121f2294f1e9dadadabeb3d",
       "review_family_count": 70,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
@@ -232,7 +232,8 @@
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
         "strict_prime_tail_orbit_gap",
-        "erdos249_carry_anti_compression"
+        "erdos249_carry_anti_compression",
+        "erdos68_channel_projection_rigidity"
       ],
       "comparator_role": "Comparator membership is evidence/eligibility/admission nested below source-landscape population and never defines its candidate universe."
     },
@@ -251,6 +252,33 @@
       "remaining_boundary": "The cofinal separation supply remains unproved; a proved supply, or a later source-current result with equal evidence certainty and a stronger completed endpoint, would justify a fresh ranking against full support."
     },
     "source_landscape_queue": [
+      {
+        "candidate_id": "erdos68_channel_projection_rigidity",
+        "family_id": "factorial_channel_and_projection_rigidity",
+        "disposition": "represented",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band; Erdos68.exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero; Erdos68.channelNumerator_mod_factorialMoment; Erdos68.primeTranslator_channelResidual_eq_one; ErdosProblems.Erdos68.projection_disagreement_excludes_bounded_endpoint",
+        "source_file": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean; ErdosProblems/Erdos68/ChannelIntegralCongruence.lean; ErdosProblems/Erdos68/PrimeUnitTranslator.lean; ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+        "source_anchor": "ChannelBreakpointRigidity.lean:71,130; ChannelIntegralCongruence.lean:76; PrimeUnitTranslator.lean:827; EndpointWeightedPrivateSupport.lean:2401",
+        "statement": "Finite quotient-band channel factorisation, channel congruence, an exact prime-channel unit translator, and two-projection endpoint disagreement form one coherent #68 rigidity mechanism below the exact carry endpoint.",
+        "exact_hypotheses": [
+          "The quotient-band factorisation assumes every finite support index lies between k*d and (k+1)*d; first-band channel cancellation with a nonzero moment forces an index at least 2d.",
+          "The channel congruence assumes d >= 2, and the exact unit translator assumes D >= 2 with a prime p > D.",
+          "The projection contradiction assumes one bounded endpoint numerator congruent modulo R, two divisor moduli larger than the endpoint budget, and unequal projected residues."
+        ],
+        "conclusion": "These exact source theorems isolate finite channel and endpoint-projection obstructions without producing the cofinal carry or divisibility failure required for Erdős #68 irrationality.",
+        "hard_mechanism": "Band factorisation turns channel cancellation into factorial-moment rigidity; congruence modulo d! - 1 and an exact prime unit translator expose a correction direction, while two unequal large divisor projections cannot both identify one bounded endpoint.",
+        "attribution": "Source-current Lean in the four dedicated Erdős #68 channel/projection modules, canonically bound by Claims commit 06198c0a; no novelty, priority, significance, or external-review claim is made.",
+        "limitations": [
+          "No cofinal non-unit carry or strict-successor divisibility miss is proved.",
+          "No cofinal nonzero translated residual or moving sufficiently large projection disagreement is supplied.",
+          "The family is not separately registered in Comparator and does not prove Erdős #68 irrationality."
+        ],
+        "reason": "Represented as the strongest under-served #68 mechanism after the all-eight-paper audit, below the exact carry endpoint but above isolated finite certificates and routine channel identities.",
+        "reversal_evidence": "A source-faithful Comparator representative would strengthen executable review evidence; a cofinal residual, projection-disagreement, or non-unit-carry producer would justify promotion, while another finite channel instance would not."
+      },
       {
         "candidate_id": "actual_foreign_residue_projection",
         "family_id": "actual_foreign_residue_projection",

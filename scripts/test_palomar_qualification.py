@@ -275,6 +275,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "weighted_phase_carry_observer",
         "strict_prime_tail_orbit_gap",
         "erdos249_carry_anti_compression",
+        "erdos68_channel_projection_rigidity",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
         range(1, len(showcase["candidate_ranking"]) + 1)
@@ -323,6 +324,27 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert landscape
     assert len({row["candidate_id"] for row in landscape}) == len(landscape)
     landscape_by_id = {row["candidate_id"]: row for row in landscape}
+    factorial_channel = landscape_by_id["erdos68_channel_projection_rigidity"]
+    assert factorial_channel["family_id"] == "factorial_channel_and_projection_rigidity"
+    assert factorial_channel["disposition"] == "represented"
+    assert factorial_channel["comparator_eligibility"] == (
+        "source_landed_but_not_comparator_configured"
+    )
+    assert factorial_channel["queue_role"] == "source_landscape_review_not_comparator_evidence"
+    assert factorial_channel["canonical_claim_commit"] == (
+        "06198c0ab3969c625e1022eaebfb46208ff0b5e4"
+    )
+    for declaration in (
+        "factorialMoment_eq_factorial_pow_mul_channelNumerator_band",
+        "exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero",
+        "channelNumerator_mod_factorialMoment",
+        "primeTranslator_channelResidual_eq_one",
+        "projection_disagreement_excludes_bounded_endpoint",
+    ):
+        assert declaration in factorial_channel["source_declaration"]
+    assert "factorial_carry_characterisation" in factorial_channel["ranked_below"]
+    assert "factorial_finite_certificates" in factorial_channel["ranked_above"]
+    assert "cofinal" in " ".join(factorial_channel["limitations"]).lower()
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
     negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]
@@ -911,9 +933,14 @@ def test_adversarial_value_disposition_drift_is_not_silently_accepted() -> None:
     assert any("candidate value-disposition" in error for error in errors)
 
     damaged = copy.deepcopy(showcase)
-    damaged["candidate_value_dispositions"]["source_landscape_candidates"][0][
-        "comparator_declaration"
-    ] = "Erdos249257.ExternalVerification.not_a_committed_row"
+    comparator_backed = next(
+        row
+        for row in damaged["candidate_value_dispositions"]["source_landscape_candidates"]
+        if row["comparator_eligibility"] == "committed_source_faithful_transport"
+    )
+    comparator_backed["comparator_declaration"] = (
+        "Erdos249257.ExternalVerification.not_a_committed_row"
+    )
     errors = checker.candidate_selection_errors(comparator, damaged)
     assert any("non-Comparator declaration" in error for error in errors)
 

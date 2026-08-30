@@ -206,7 +206,17 @@
       {
         "family_id": "factorial_channel_and_projection_rigidity",
         "tier_id": "deep_mechanism_and_classification",
-        "relative_judgement": "The finite channel and projection machinery is the deepest represented #68 mechanism below the endpoint equivalence, but it supplies no cofinal obstruction."
+        "relative_judgement": "The finite channel and projection machinery is the deepest represented #68 mechanism below the endpoint equivalence, but it supplies no cofinal obstruction.",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "source_declarations": [
+          "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band",
+          "Erdos68.exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero",
+          "Erdos68.channelNumerator_mod_factorialMoment",
+          "Erdos68.primeTranslator_channelResidual_eq_one",
+          "ErdosProblems.Erdos68.projection_disagreement_excludes_bounded_endpoint"
+        ],
+        "hard_mechanism": "One quotient band factors the factorial moment through a channel numerator; channel congruence preserves the moment modulo d! - 1, a prime translator gives an exact unit residual, and unequal sufficiently large divisor projections exclude a bounded endpoint.",
+        "open_boundary": "No theorem supplies cofinally many non-unit carries, moving nontrivial private projections, or cofinally nonzero translated residuals, so the family does not prove Erdős #68 irrationality."
       },
       {
         "family_id": "bounded_rise_coprimality",
@@ -694,6 +704,11 @@
         "candidate_id": "erdos249_carry_anti_compression",
         "disposition": "represented",
         "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos249_carry_anti_compression]"
+      },
+      {
+        "candidate_id": "erdos68_channel_projection_rigidity",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos68_channel_projection_rigidity]"
       }
     ],
     "comparator_screen": {
@@ -883,6 +898,41 @@
       }
     ],
     "source_landscape_candidates": [
+      {
+        "candidate_id": "erdos68_channel_projection_rigidity",
+        "family_id": "factorial_channel_and_projection_rigidity",
+        "disposition": "represented",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band; Erdos68.exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero; Erdos68.channelNumerator_mod_factorialMoment; Erdos68.primeTranslator_channelResidual_eq_one; ErdosProblems.Erdos68.projection_disagreement_excludes_bounded_endpoint",
+        "source_file": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean; ErdosProblems/Erdos68/ChannelIntegralCongruence.lean; ErdosProblems/Erdos68/PrimeUnitTranslator.lean; ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+        "source_anchor": "ChannelBreakpointRigidity.lean:71,130; ChannelIntegralCongruence.lean:76; PrimeUnitTranslator.lean:827; EndpointWeightedPrivateSupport.lean:2401",
+        "statement": "Finite quotient-band channel factorisation, channel congruence, an exact prime-channel unit translator, and two-projection endpoint disagreement form one coherent #68 rigidity mechanism below the exact carry endpoint.",
+        "exact_hypotheses": [
+          "For a finite coefficient family whose indices all lie in the quotient band k*d <= index < (k+1)*d, the factorial moment factors as (d!)^k times the d-channel numerator; in the first band, a zero channel with nonzero moment forces some index at least 2d.",
+          "For d >= 2, d! - 1 divides the difference between the factorial moment and the d-channel numerator.",
+          "For D >= 2 and prime p > D, the two-term prime translator has full infinite channel residual exactly one.",
+          "The projection contradiction assumes Z congruent to T modulo R, Q1 and Q2 dividing R, Z <= B < Q1,Q2, and unequal projected residues modulo Q1 and Q2."
+        ],
+        "conclusion": "The source theorems isolate exact finite channel and projection obstructions, but they neither produce a cofinal non-unit carry nor prove irrationality of the factorial-gap series.",
+        "hard_mechanism": "Band factorisation converts channel cancellation into factorial-moment rigidity; the d! - 1 congruence and exact prime unit translator identify a movable correction direction, while two unequal large divisor projections cannot both equal one bounded endpoint numerator.",
+        "attribution": "These are source-current Lean declarations in the dedicated Erdős #68 channel and endpoint-projection modules, canonically bound to factorial_channel_and_projection_rigidity by Claims commit 06198c0a. No novelty, priority, significance, or external-review claim is made.",
+        "limitations": [
+          "The mechanism is finite and structural: it supplies no cofinal non-unit carry or cofinal strict-successor divisibility miss.",
+          "The prime translator is an exact correction direction, not a proof that the required translated residual is nonzero cofinally.",
+          "Projection disagreement requires moving sufficiently large divisor projections; no theorem supplies them on a cofinal family, and Erdős #68 remains open."
+        ],
+        "source_landscape_rank_relative_to": "Below factorial_carry_characterisation because the latter is an exact endpoint equivalence, but above isolated finite certificates and routine channel identities because it unifies quotient-band rigidity, modular transport, an exact prime correction, and endpoint projection exclusion.",
+        "ranked_below": [
+          "factorial_carry_characterisation"
+        ],
+        "ranked_above": [
+          "factorial_finite_certificates"
+        ],
+        "reason": "Represented as the strongest under-served #68 mechanism after the all-eight-paper audit: its four linked source modules explain how finite channel cancellation and endpoint projections could feed the exact carry frontier without pretending that the missing cofinal producer has been supplied.",
+        "reversal_evidence": "A source-faithful Comparator representative would strengthen executable review evidence; a proof of cofinally nonzero translated residuals, moving projection disagreement, or cofinal non-unit carries would justify promotion, while another isolated finite channel computation would not."
+      },
       {
         "candidate_id": "actual_lcm_orbit_separation",
         "family_id": "actual_lcm_orbit_separation",
