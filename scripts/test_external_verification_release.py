@@ -196,6 +196,47 @@ def test_replay_file_boundary() -> None:
             "symlinked replay output modified its target",
         )
 
+    private_tmp = Path("/private/tmp")
+    temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+    with tempfile.TemporaryDirectory(
+        prefix="replay-input-parent-race-", dir=temporary_root
+    ) as raw:
+        root = Path(raw)
+        raced_parent = root / "input-parent"
+        raced_parent.mkdir()
+        original_parent = root / "input-parent-original"
+        outside = root / "outside"
+        outside.mkdir()
+        raced_input = raced_parent / "config.json"
+        raced_input.write_text("inside\n", encoding="utf-8")
+        (outside / raced_input.name).write_text("outside\n", encoding="utf-8")
+        original_open = replay.os.open
+
+        def swap_parent(
+            path: Path,
+            flags: int,
+            mode: int = 0o777,
+            *,
+            dir_fd: int | None = None,
+        ) -> int:
+            if dir_fd is not None and Path(path).name == raced_input.name:
+                raced_parent.rename(original_parent)
+                raced_parent.symlink_to(outside, target_is_directory=True)
+            if dir_fd is not None:
+                return original_open(path, flags, mode, dir_fd=dir_fd)
+            return original_open(path, flags, mode)
+
+        with patch.object(replay.os, "open", side_effect=swap_parent):
+            observed = replay._read_safe_bytes(raced_input)
+        require(
+            observed == b"inside\n",
+            "replay input reader followed a swapped parent directory",
+        )
+        require(
+            (original_parent / raced_input.name).is_file(),
+            "replay input reader did not use the held parent descriptor",
+        )
+
 
 def test_replay_output_boundary() -> None:
     private_tmp = Path("/private/tmp")
@@ -262,6 +303,47 @@ def test_runtime_input_boundary() -> None:
         link = root / "binary-link"
         link.symlink_to(private / "secret.bin")
         require(receipt.digest(link) is None, "runtime receipt hashed a symlinked tool")
+
+    private_tmp = Path("/private/tmp")
+    temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+    with tempfile.TemporaryDirectory(
+        prefix="runtime-input-parent-race-", dir=temporary_root
+    ) as raw:
+        root = Path(raw)
+        raced_parent = root / "input-parent"
+        raced_parent.mkdir()
+        original_parent = root / "input-parent-original"
+        outside = root / "outside"
+        outside.mkdir()
+        raced_input = raced_parent / "negative.log"
+        raced_input.write_text("inside\n", encoding="utf-8")
+        (outside / raced_input.name).write_text("outside\n", encoding="utf-8")
+        original_open = receipt.os.open
+
+        def swap_parent(
+            path: Path,
+            flags: int,
+            mode: int = 0o777,
+            *,
+            dir_fd: int | None = None,
+        ) -> int:
+            if dir_fd is not None and Path(path).name == raced_input.name:
+                raced_parent.rename(original_parent)
+                raced_parent.symlink_to(outside, target_is_directory=True)
+            if dir_fd is not None:
+                return original_open(path, flags, mode, dir_fd=dir_fd)
+            return original_open(path, flags, mode)
+
+        with patch.object(receipt.os, "open", side_effect=swap_parent):
+            observed = receipt._read_input_text(raced_input)
+        require(
+            observed == "inside\n",
+            "runtime input reader followed a swapped parent directory",
+        )
+        require(
+            (original_parent / raced_input.name).is_file(),
+            "runtime input reader did not use the held parent descriptor",
+        )
 
 
 def test_runtime_output_boundary() -> None:

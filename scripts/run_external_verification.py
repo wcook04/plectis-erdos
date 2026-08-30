@@ -10,6 +10,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -72,13 +73,78 @@ def safe_runtime_file(path: Path, *, root: Path | None = None) -> Path:
     return candidate
 
 
+def _canonical_input_path(path: Path) -> Path:
+    """Resolve only the explicitly permitted macOS temporary aliases."""
+    candidate = Path(os.path.abspath(path))
+    if len(candidate.parts) >= 2:
+        alias = Path(os.sep, candidate.parts[1])
+        if _is_allowed_platform_alias(alias):
+            return alias.resolve(strict=True).joinpath(*candidate.parts[2:])
+    return candidate
+
+
+def _open_input_descriptor(path: Path) -> int:
+    """Open a runtime input relative to no-follow directory descriptors."""
+    directory_flags = os.O_RDONLY
+    directory_flags |= getattr(os, "O_CLOEXEC", 0)
+    directory_flags |= getattr(os, "O_DIRECTORY", 0)
+    directory_flags |= getattr(os, "O_NOFOLLOW", 0)
+    directory = os.open(os.sep, directory_flags)
+    try:
+        for component in path.parts[1:-1]:
+            child = os.open(component, directory_flags, dir_fd=directory)
+            try:
+                if not stat.S_ISDIR(os.fstat(child).st_mode):
+                    raise OSError(f"runtime input parent is not a directory: {path.parent}")
+            except BaseException:
+                os.close(child)
+                raise
+            os.close(directory)
+            directory = child
+        flags = os.O_RDONLY
+        flags |= getattr(os, "O_CLOEXEC", 0)
+        flags |= getattr(os, "O_NONBLOCK", 0)
+        flags |= getattr(os, "O_NOFOLLOW", 0)
+        return os.open(path.name, flags, dir_fd=directory)
+    finally:
+        os.close(directory)
+
+
+def _read_input_bytes(path: Path, *, root: Path | None = None) -> bytes:
+    """Read a runtime input through a no-follow, regular-file descriptor."""
+    candidate = _canonical_input_path(safe_runtime_file(path, root=root))
+    try:
+        descriptor = _open_input_descriptor(candidate)
+    except OSError as exc:
+        raise VerificationInputError(
+            f"verification input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise VerificationInputError(
+                f"verification input is not a regular file: {candidate}"
+            )
+        with os.fdopen(descriptor, "rb") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
+def _read_input_text(
+    path: Path, *, root: Path | None = None, errors: str = "strict"
+) -> str:
+    return _read_input_bytes(path, root=root).decode("utf-8", errors=errors)
+
+
 def optional_runtime_text(path: Path | None) -> str:
     """Read an optional external log only when it is a safe regular file."""
     if path is None:
         return ""
     try:
-        return safe_runtime_file(path).read_text(encoding="utf-8", errors="replace")
-    except (OSError, VerificationInputError):
+        return _read_input_text(path, errors="replace")
+    except (OSError, UnicodeError, VerificationInputError):
         return ""
 
 
@@ -86,10 +152,10 @@ def digest(path: Path | None) -> str | None:
     if path is None:
         return None
     try:
-        path = safe_runtime_file(path)
+        data = _read_input_bytes(path)
     except (OSError, VerificationInputError):
         return None
-    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+    return "sha256:" + hashlib.sha256(data).hexdigest()
 
 
 def git(*args: str) -> str:
@@ -220,22 +286,12 @@ def main() -> int:
         ["python3", "scripts/build_external_verification.py", "--check"],
         cwd=ROOT,
     ).returncode
-    claims = json.loads(
-        safe_runtime_file(ROOT / "docs/claims.json", root=ROOT).read_text(
-            encoding="utf-8"
-        )
-    )
+    claims = json.loads(_read_input_text(ROOT / "docs/claims.json", root=ROOT))
     owner = claims["external_verification_packet"]
     packet = json.loads(
-        safe_runtime_file(
-            ROOT / "docs/external_verification_packet.json", root=ROOT
-        ).read_text(encoding="utf-8")
+        _read_input_text(ROOT / "docs/external_verification_packet.json", root=ROOT)
     )
-    manifest = json.loads(
-        safe_runtime_file(ROOT / "lake-manifest.json", root=ROOT).read_text(
-            encoding="utf-8"
-        )
-    )
+    manifest = json.loads(_read_input_text(ROOT / "lake-manifest.json", root=ROOT))
     mathlib = next(package for package in manifest["packages"] if package["name"] == "mathlib")
     observed_revisions = {
         "comparator": args.comparator_rev,
@@ -295,9 +351,7 @@ def main() -> int:
             "sandbox_mode": args.sandbox_mode,
         },
         "proof_environment": {
-            "lean_toolchain": safe_runtime_file(
-                ROOT / "lean-toolchain", root=ROOT
-            ).read_text().strip(),
+            "lean_toolchain": _read_input_text(ROOT / "lean-toolchain", root=ROOT).strip(),
             "mathlib_revision": mathlib["rev"],
         },
         "comparator_toolchain": {
