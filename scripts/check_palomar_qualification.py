@@ -372,6 +372,31 @@ def candidate_selection_errors(
             errors.append("candidate selection does not match ranked candidate one")
         if ranking[0].get("selection_status") != "selected":
             errors.append("ranked candidate one is not marked selected")
+
+    screening = showcase.get("candidate_screening")
+    if not isinstance(screening, list) or not screening:
+        errors.append("showcase lacks dispositions for non-headline Comparator rows")
+    else:
+        screening_names = []
+        for index, row in enumerate(screening, 1):
+            if not isinstance(row, dict):
+                errors.append(f"candidate screening row {index} is not an object")
+                continue
+            screening_names.append(row.get("declaration"))
+            for field in ("declaration", "family_id", "disposition", "reason"):
+                if not isinstance(row.get(field), str) or not row[field].strip():
+                    errors.append(f"candidate screening row {index} lacks {field}")
+            if row.get("declaration") not in names:
+                errors.append(
+                    f"candidate screening row {index} names a declaration absent from Comparator"
+                )
+        ranked_names = [row.get("declaration") for row in ranking or [] if isinstance(row, dict)]
+        if len(screening_names) != len(set(screening_names)):
+            errors.append("candidate screening contains duplicate declarations")
+        if set(ranked_names) & set(screening_names):
+            errors.append("candidate ranking and screening overlap")
+        if set(ranked_names) | set(screening_names) != set(names):
+            errors.append("candidate ranking and screening do not partition Comparator")
     return errors
 
 

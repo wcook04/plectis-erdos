@@ -152,6 +152,10 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
         range(1, len(showcase["candidate_ranking"]) + 1)
     )
+    ranked = {row["declaration"] for row in showcase["candidate_ranking"]}
+    screened = {row["declaration"] for row in showcase["candidate_screening"]}
+    assert ranked.isdisjoint(screened)
+    assert ranked | screened == set(comparator["theorem_names"])
     assert showcase["candidate_ranking"][0]["declaration"] == showcase["candidate_selection"]["declaration"]
     assert {
         row["axis"] for row in showcase["selection_contract"]["ranking_axes"]
@@ -186,6 +190,12 @@ def test_adversarial_selection_semantics_drop_is_not_silently_accepted() -> None
     errors = checker.candidate_selection_errors(comparator, damaged)
     assert errors
     assert any("selection comparison" in error for error in errors)
+
+    damaged = copy.deepcopy(showcase)
+    damaged["candidate_screening"].pop()
+    errors = checker.candidate_selection_errors(comparator, damaged)
+    assert errors
+    assert any("partition Comparator" in error for error in errors)
 
 
 def test_adversarial_roster_drop_is_not_silently_accepted() -> None:

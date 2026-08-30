@@ -284,6 +284,152 @@
       "reason": "It is a deep independent #249 structural theorem, but infinite-dimensional kernel rank is farther from the irrationality endpoint than the selected direct result and does not supply the missing unbounded certificate family."
     }
   ],
+  "candidate_screening": [
+    {
+      "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+      "family_id": "factorial_carry_characterisation",
+      "disposition": "supporting_endpoint_reduction",
+      "reason": "Exact #68 equivalence, but the carry formulation is the more informative route and neither form supplies the required cofinal witness."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
+      "family_id": "bounded_negative_exclusion",
+      "disposition": "supporting_conditional_no_go",
+      "reason": "Excludes a bounded-negative regime only under explicit dynamical hypotheses; it does not decide the unrestricted reciprocal-tail endpoint."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
+      "family_id": "negative_orbit_no_go",
+      "disposition": "supporting_no_go",
+      "reason": "Retires an eventually-periodic negative orbit architecture, but leaves arbitrary unbounded negative behaviour and the #243 target open."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+      "family_id": "totient_kernel_rank",
+      "disposition": "supporting_structural",
+      "reason": "Exact finite-level dyadic rank growth is strong #249 structure, but it does not provide the irrationality bridge or unbounded certificate supply."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
+      "family_id": "totient_kernel_basis",
+      "disposition": "supporting_structural",
+      "reason": "An explicit basis is useful kernel infrastructure, yet it does not connect finite span structure to the binary totient irrationality endpoint."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+      "family_id": "totient_kernel_all_base_index",
+      "disposition": "supporting_conditional_structural",
+      "reason": "The rank theorem retains an external linear-independence hypothesis, so it is valuable structural support rather than an unconditional endpoint result."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+      "family_id": "totient_visible_coprime_lattice_mass",
+      "disposition": "supporting_normalization_identity",
+      "reason": "Exact visible-lattice normalization explains a mass term but is rational and does not settle Erdős #249."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+      "family_id": "squared_lambert_gcd_moments",
+      "disposition": "supporting_transfer_identity",
+      "reason": "A precise gcd-moment transfer identity, but it supplies no irrationality conclusion for the binary totient series."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower",
+      "family_id": "stern_brocot_run_fibonacci_stability",
+      "disposition": "supporting_combinatorial",
+      "reason": "A genuine Fibonacci/continuant stability floor, but analytic denominator survival and the #249 endpoint remain unproved."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.cylinderMass_split",
+      "family_id": "stern_brocot_cylinder_law",
+      "disposition": "supporting_exact_identity",
+      "reason": "Exact Stern–Brocot telescoping is reusable geometry, not an irrationality theorem or novelty claim."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
+      "family_id": "lcm_factor_ideal_shift_algebra_no_go",
+      "disposition": "supporting_no_go",
+      "reason": "A synthetic finite-shift obstruction retires one algebraic route while explicitly leaving actual totient forcing and the unbounded supply open."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.exists_primeGap0_gt",
+      "family_id": "coefficient_only_no_go",
+      "disposition": "supporting_auxiliary",
+      "reason": "Prime-gap unboundedness is exact background for #251, but unbounded coefficients alone do not force irrationality."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+      "family_id": "achievement_set_geometry",
+      "disposition": "supporting_metric_geometry",
+      "reason": "The full-measure achievement-set theorem is consequential geometry, but it does not classify rational points or settle infinite-support irrationality."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
+      "family_id": "finite_period_noncollapse",
+      "disposition": "supporting_finite_interface",
+      "reason": "The finite-period order interface is exact denominator infrastructure, but finite support cannot decide an infinite-support sum."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
+      "family_id": "restricted_achievement_sets",
+      "disposition": "supporting_metric_geometry",
+      "reason": "The restricted-set measure dichotomy is structurally useful but does not classify rational values or prove universal irrationality."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction",
+      "family_id": "shifted_odd_tail_state",
+      "disposition": "supporting_conditional_reduction",
+      "reason": "It extracts a modular tail state only from explicit rational-support hypotheses and therefore does not exclude rational infinite supports."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect",
+      "family_id": "composite_dilation_defect_identity",
+      "disposition": "supporting_structural_identity",
+      "reason": "The exact composite-dilation defect exposes a real obstruction, but it supplies neither a tail selector nor an unconditional irrationality result."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
+      "family_id": "half_and_twenty_one_frontiers",
+      "disposition": "supporting_local_no_go",
+      "reason": "Sharp local 2-adic band arithmetic excludes small odd numerators under stated hypotheses, but does not decide reachability or half-membership."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+      "family_id": "rank_two_kernel_no_go",
+      "disposition": "supporting_finite_no_go",
+      "reason": "A checked minor obstruction rules out rank one in a displayed finite kernel, but failure of rank one does not imply irrationality."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
+      "family_id": "three_prime_lcm_cells",
+      "disposition": "supporting_exact_identity",
+      "reason": "The smooth-prefix LCM identity is exact three-prime structure, but it does not supply the missing irrationality bridge."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
+      "family_id": "translation_avoidance",
+      "disposition": "supporting_technical",
+      "reason": "Finite translation avoidance is a useful #1041 input, yet it does not provide the global gluing needed by the target route."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
+      "family_id": "root_retention",
+      "disposition": "supporting_technical",
+      "reason": "Root retention under small perturbation is an exact local input, not a complete stationarity or minimax conclusion."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
+      "family_id": "coordinatewise_corridor_no_go",
+      "disposition": "supporting_no_go",
+      "reason": "It excludes one coordinatewise corridor architecture at base 3/2 and proves no irrationality statement."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
+      "family_id": "rational_base_tail_recurrence",
+      "disposition": "supporting_exact_recurrence",
+      "reason": "The cleared-tail recurrence is exact rational-base infrastructure, but no contradiction or irrationality consequence is derived."
+    }
+  ],
   "frontier_by_problem": [
     {
       "problem": 68,
