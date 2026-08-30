@@ -58,6 +58,14 @@ def main() -> int:
     wrong_inventory["inventory"]["working_tree_only_count"] = 0  # type: ignore[index]
     reject(wrong_inventory, "inventory working_tree_only_count", tracked, present)
 
+    weakened_policy = copy.deepcopy(data)
+    weakened_policy["policy"]["allowed_dispositions"] = ["link_and_digest_only"]  # type: ignore[index]
+    reject(weakened_policy, "canonical disposition set", tracked, present)
+
+    wrong_root = copy.deepcopy(data)
+    wrong_root["inventory"]["root"] = "docs/"  # type: ignore[index]
+    reject(wrong_root, "inventory root", tracked, present)
+
     print(
         "test_primary_source_dispositions: baseline clean; "
         "5 unauthorized or inconsistent mutations rejected"

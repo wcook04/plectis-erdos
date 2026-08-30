@@ -87,6 +87,11 @@ def disposition_errors(
     require(isinstance(policy, dict), "ledger policy must be an object", errors)
     if isinstance(policy, dict):
         require(
+            set(policy.get("allowed_dispositions", [])) == DISPOSITIONS,
+            "ledger allowed_dispositions must match the canonical disposition set",
+            errors,
+        )
+        require(
             policy.get("public_candidate_rule") == "Only public_redistribution_verified artifacts may be tracked in the public candidate.",
             "ledger must state the verified-permission candidate rule",
             errors,
@@ -96,12 +101,32 @@ def disposition_errors(
             "ledger must distinguish retrieval/citation from redistribution permission",
             errors,
         )
+        require(
+            "exclude the binary from the public candidate" in str(policy.get("link_and_digest_rule", "")),
+            "ledger link-and-digest rule must exclude unverified binaries",
+            errors,
+        )
+        require(
+            "unresolved_release_blocker" in str(policy.get("unresolved_rule", "")),
+            "ledger unresolved rule must retain a release blocker",
+            errors,
+        )
+        require(
+            "permission_evidence_scope equal to its exact artifact path" in str(policy.get("verified_permission_rule", "")),
+            "ledger verified-permission rule must require artifact-exact evidence",
+            errors,
+        )
     inventory = data.get("inventory")
     artifacts = data.get("artifacts")
     require(isinstance(inventory, dict), "ledger inventory must be an object", errors)
     require(isinstance(artifacts, list), "ledger artifacts must be a list", errors)
     if not isinstance(inventory, dict) or not isinstance(artifacts, list):
         return errors
+    require(
+        inventory.get("root") == "docs/primary-sources/",
+        "ledger inventory root must remain docs/primary-sources/",
+        errors,
+    )
 
     expected_counts = {
         "artifact_count": len(artifacts),
