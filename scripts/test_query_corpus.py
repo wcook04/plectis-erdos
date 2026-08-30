@@ -170,6 +170,7 @@ def validate_programme_routes() -> None:
         card = run("--route", route_id, "--format", "card")
         assert card.returncode == 0
         assert card.stdout.startswith(f"programme {route_id} |")
+        assert "| resume=python3 scripts/query_route_memory.py --problem " in card.stdout
 
 
 def validate_agent_tour() -> None:

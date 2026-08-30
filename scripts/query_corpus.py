@@ -6640,10 +6640,14 @@ def render_card(packet: dict[str, Any]) -> str:
                 row["id"]
                 for row in programme["remaining_open_propositions"]
             )
-            return (
+            card = (
                 f"programme {route['id']} | {programme['title']} "
                 f"| claims={claims} | open={open_ids}"
             )
+            route_memory = packet.get("route_memory")
+            if route_memory:
+                card += f" | resume={route_memory['command']}"
+            return card
         return (
             f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
             f"| next={route['query_steps'][0]}"
