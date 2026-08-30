@@ -1067,6 +1067,109 @@ def manuscript_title_errors(
     return errors
 
 
+def publication_route_parameter_errors(
+    route: dict[str, Any], artifacts: list[dict[str, Any]]
+) -> list[str]:
+    """Keep a shared note route bound to the selected artifact, not a sample.
+
+    ``read_one_problem_note`` is intentionally one route for all eight notes.
+    Its commands therefore form a template: a caller supplies the publication
+    artifact id and rendered path from the selected registry row.  A literal
+    ``#269`` command would silently send every other note to the wrong paper,
+    so the binding is checked as a join between the route and artifact rows.
+    """
+    if route.get("id") != "read_one_problem_note":
+        return []
+    errors: list[str] = []
+    bindings = route.get("parameter_bindings")
+    if not isinstance(bindings, list) or not bindings:
+        return [
+            "publication entry route 'read_one_problem_note' lacks parameter_bindings"
+        ]
+    expected = {
+        "publication_artifact_id": (
+            "artifacts[].id",
+            "<publication_artifact_id>",
+            "problem_note",
+        ),
+        "rendered_path": (
+            "artifacts[].rendered_path",
+            "<rendered_path>",
+            "problem_note",
+        ),
+    }
+    seen: set[str] = set()
+    placeholders: set[str] = set()
+    for binding in bindings:
+        if not isinstance(binding, dict):
+            errors.append(
+                "publication note route parameter_bindings must contain objects"
+            )
+            continue
+        name = binding.get("name")
+        source = binding.get("source")
+        placeholder = binding.get("placeholder")
+        artifact_class = binding.get("required_for_artifact_class")
+        if not all(
+            isinstance(value, str) and value
+            for value in (name, source, placeholder, artifact_class)
+        ):
+            errors.append(
+                "publication note route parameter binding lacks name, source, "
+                "placeholder, or artifact class"
+            )
+            continue
+        if name in seen:
+            errors.append(
+                f"publication note route repeats parameter binding {name!r}"
+            )
+        seen.add(name)
+        placeholders.add(placeholder)
+        if name not in expected or (source, placeholder, artifact_class) != expected[name]:
+            errors.append(
+                f"publication note route has an unsupported binding for {name!r}"
+            )
+
+    query_steps = route.get("query_steps", [])
+    query_text = "\n".join(
+        step for step in query_steps if isinstance(step, str)
+    )
+    route_placeholders = set(re.findall(r"<[A-Za-z0-9_]+>", query_text))
+    if route_placeholders != placeholders:
+        errors.append(
+            "publication note route query placeholders do not match "
+            "parameter_bindings"
+        )
+    if "<publication_artifact_id>" not in query_text:
+        errors.append(
+            "publication note route must query the selected publication artifact id"
+        )
+    if "<rendered_path>" not in query_text:
+        errors.append(
+            "publication note route must query the selected rendered path"
+        )
+
+    problem_notes = [
+        artifact
+        for artifact in artifacts
+        if artifact.get("artifact_class") == NOTE_ARTIFACT_CLASS
+    ]
+    for artifact in problem_notes:
+        artifact_id = artifact.get("id")
+        rendered_path = artifact.get("rendered_path")
+        if isinstance(artifact_id, str) and artifact_id in query_text:
+            errors.append(
+                "publication note route hard-codes a problem-note artifact id: "
+                f"{artifact_id}"
+            )
+        if isinstance(rendered_path, str) and rendered_path in query_text:
+            errors.append(
+                "publication note route hard-codes a problem-note rendered path: "
+                f"{rendered_path}"
+            )
+    return errors
+
+
 def validate_publication_contract(
     reader: RepositoryReader,
     *,
@@ -1226,6 +1329,7 @@ def validate_publication_contract(
                     f"publication entry route {route_id!r} has an untyped query step: "
                     f"{command}"
                 )
+        errors.extend(publication_route_parameter_errors(route, artifacts))
 
     architecture = claims["machine_readable_paper"]["publication_assembly"][
         "publication_architecture"
@@ -1530,6 +1634,46 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
             contract_override=source_inflation,
         ):
             failures.append("source_and_digest_ten_of_ten_inflation")
+
+    note_route_literal = copy.deepcopy(contract)
+    note_route = next(
+        (
+            row
+            for row in note_route_literal.get("entrypoints", [])
+            if row.get("id") == "read_one_problem_note"
+        ),
+        None,
+    )
+    if note_route is None:
+        failures.append("problem_note_route_fixture_anchor_missing")
+    else:
+        note_route["query_steps"][0] = (
+            "python3 scripts/query_corpus.py --publication-artifact erdos_269_note"
+        )
+        if not validate_publication_contract(
+            reader,
+            contract_override=note_route_literal,
+        ):
+            failures.append("problem_note_route_hardcoded_artifact")
+
+    note_route_binding_loss = copy.deepcopy(contract)
+    note_route = next(
+        (
+            row
+            for row in note_route_binding_loss.get("entrypoints", [])
+            if row.get("id") == "read_one_problem_note"
+        ),
+        None,
+    )
+    if note_route is None:
+        failures.append("problem_note_route_binding_fixture_anchor_missing")
+    else:
+        note_route.pop("parameter_bindings", None)
+        if not validate_publication_contract(
+            reader,
+            contract_override=note_route_binding_loss,
+        ):
+            failures.append("problem_note_route_binding_loss")
 
     evidence = load_json(reader, EVIDENCE_PATH)
 

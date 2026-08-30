@@ -285,8 +285,22 @@
         "SCOPE.md"
       ],
       "query_steps": [
-        "python3 scripts/query_corpus.py --publication-artifact erdos_269_note",
-        "python3 scripts/query_corpus.py --artifact erdos-269-three-prime-running-lcm.pdf"
+        "python3 scripts/query_corpus.py --publication-artifact <publication_artifact_id>",
+        "python3 scripts/query_corpus.py --artifact <rendered_path>"
+      ],
+      "parameter_bindings": [
+        {
+          "name": "publication_artifact_id",
+          "source": "artifacts[].id",
+          "placeholder": "<publication_artifact_id>",
+          "required_for_artifact_class": "problem_note"
+        },
+        {
+          "name": "rendered_path",
+          "source": "artifacts[].rendered_path",
+          "placeholder": "<rendered_path>",
+          "required_for_artifact_class": "problem_note"
+        }
       ],
       "authority_owners": [
         "docs/publication_contract.json",

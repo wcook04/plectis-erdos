@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import os
 import tempfile
 from pathlib import Path
@@ -15,6 +16,7 @@ from publication_contract import (
     CONTRACT_PATH,
     ENVIRONMENT_CONTRACT,
     RepositoryReader,
+    load_json,
     mutation_fixture_failures,
     validate_publication_contract,
 )
@@ -84,6 +86,52 @@ def assert_worktree_special_file_boundary() -> None:
             raise AssertionError("worktree publication reader opened a special file")
 
 
+def assert_problem_note_route_template(reader: RepositoryReader) -> None:
+    """Ensure the shared problem-note route joins the selected artifact row."""
+    contract = load_json(reader, CONTRACT_PATH)
+    route = next(
+        row
+        for row in contract["entrypoints"]
+        if row.get("id") == "read_one_problem_note"
+    )
+    steps = route["query_steps"]
+    require(
+        "--publication-artifact <publication_artifact_id>" in steps[0],
+        "problem-note route does not bind its publication artifact id",
+    )
+    require(
+        "--artifact <rendered_path>" in steps[1],
+        "problem-note route does not bind its rendered path",
+    )
+    bindings = {
+        row["name"]: row
+        for row in route["parameter_bindings"]
+    }
+    require(
+        bindings["publication_artifact_id"]["source"] == "artifacts[].id",
+        "problem-note artifact-id binding lost its registry source",
+    )
+    require(
+        bindings["rendered_path"]["source"] == "artifacts[].rendered_path",
+        "problem-note rendered-path binding lost its registry source",
+    )
+
+    mutated = copy.deepcopy(contract)
+    mutated_route = next(
+        row
+        for row in mutated["entrypoints"]
+        if row.get("id") == "read_one_problem_note"
+    )
+    mutated_route["query_steps"][0] = (
+        "python3 scripts/query_corpus.py --publication-artifact erdos_269_note"
+    )
+    errors = validate_publication_contract(reader, contract_override=mutated)
+    require(
+        any("hard-codes a problem-note artifact id" in error for error in errors),
+        "hard-coded problem-note route mutation was not rejected",
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -95,6 +143,7 @@ def main() -> int:
     assert_worktree_symlink_boundary()
     assert_worktree_special_file_boundary()
     reader = RepositoryReader(ROOT, args.git_ref)
+    assert_problem_note_route_template(reader)
     baseline_errors = validate_publication_contract(reader)
     fixture_failures = mutation_fixture_failures(reader) if not baseline_errors else []
     if baseline_errors or fixture_failures:
