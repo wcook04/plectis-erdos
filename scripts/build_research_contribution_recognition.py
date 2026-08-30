@@ -148,8 +148,8 @@ def checkout_path(relative: str, label: str) -> Path:
 def load_schema_contract() -> dict[str, Any]:
     path = checkout_path(SCHEMA_PATH, "recognition schema contract")
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        value = json.loads(contributions.safe_receipt_bytes(path))
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
         raise ValueError(f"recognition schema contract cannot be loaded: {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise ValueError("recognition schema contract must be a JSON object")

@@ -9,6 +9,7 @@ import json
 import os
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import build_research_contribution_recognition as recognition
 import build_research_contributions as contributions
@@ -109,6 +110,35 @@ def main() -> int:
             require("regular file" in str(exc), exc)
         else:
             raise AssertionError("receipt descriptor reader accepted a special file")
+
+    original_root = recognition.ROOT
+    with tempfile.TemporaryDirectory(prefix="recognition-schema-descriptor-safety-") as temporary:
+        root = Path(temporary)
+        linked = root / "linked-schema.json"
+        target = root / "private-schema.json"
+        target.write_bytes(b"{}")
+        linked.symlink_to(target)
+        try:
+            with patch.object(
+                recognition, "checkout_path", return_value=linked
+            ):
+                recognition.load_schema_contract()
+        except ValueError as exc:
+            require("cannot be read safely" in str(exc), exc)
+        else:
+            raise AssertionError("recognition schema loader followed a file symlink")
+        fifo = root / "schema.fifo"
+        os.mkfifo(fifo)
+        try:
+            with patch.object(
+                recognition, "checkout_path", return_value=fifo
+            ):
+                recognition.load_schema_contract()
+        except ValueError as exc:
+            require("regular file" in str(exc), exc)
+        else:
+            raise AssertionError("recognition schema loader accepted a FIFO")
+    recognition.ROOT = original_root
 
     print(
         json.dumps(
