@@ -18,6 +18,7 @@ import os
 import re
 import stat
 import subprocess
+import sys
 import tempfile
 import time
 from collections.abc import Mapping
@@ -30,6 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = "erdos249257-clean-ref-release-receipt/1"
 TAIL_BYTES = 16_000
 DIRTY_PATH_LIMIT = 120
+MINIMUM_PYTHON = (3, 11)
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SOURCE_REPOSITORY_LABEL = "local_checkout"
 SANITIZED_GIT_ENVIRONMENT_KEYS = (
@@ -122,8 +124,19 @@ def run(
     cwd: Path,
     timeout: int | None = None,
 ) -> subprocess.CompletedProcess[str]:
+    execution_argv = list(argv)
+    if execution_argv and execution_argv[0] == "python3":
+        if sys.version_info[:2] < MINIMUM_PYTHON:
+            raise SnapshotError(
+                "clean release validation requires Python 3.11 or newer; "
+                f"active interpreter is {sys.version_info.major}.{sys.version_info.minor}"
+            )
+        # PATH is intentionally reduced to /bin:/usr/bin for Git isolation.
+        # Reusing the validated driver prevents that safety boundary from
+        # silently selecting an older system Python inside the clone.
+        execution_argv[0] = sys.executable
     return subprocess.run(
-        argv,
+        execution_argv,
         cwd=cwd,
         capture_output=True,
         text=True,

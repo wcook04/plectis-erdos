@@ -197,6 +197,23 @@ def test_commit_ref_resolution_ends_git_options() -> None:
     )
 
 
+def test_release_python_commands_reuse_driver_interpreter() -> None:
+    """Clean PATH sanitization must not downgrade the release interpreter."""
+    completed = subprocess.CompletedProcess(
+        [sys.executable], returncode=0, stdout="", stderr=""
+    )
+    with patch.object(check_release_ref.subprocess, "run", return_value=completed) as runner:
+        check_release_ref.run(
+            ["python3", "scripts/check_release.py"], cwd=Path("/fixture")
+        )
+    call = runner.call_args
+    require(call is not None, "release Python command did not invoke subprocess")
+    require(
+        call.args[0] == [sys.executable, "scripts/check_release.py"],
+        "release wrapper fell back to PATH-selected python3",
+    )
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -235,6 +252,7 @@ def main() -> int:
     test_receipt_destination_boundary()
     test_singleflight_worker_flag_is_accepted()
     test_commit_ref_resolution_ends_git_options()
+    test_release_python_commands_reuse_driver_interpreter()
     original_root = check_release_ref.ROOT
     try:
         with tempfile.TemporaryDirectory() as tmp:
