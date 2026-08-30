@@ -58,6 +58,29 @@ DYADIC_ALPHABET_FAMILY = "dyadic_block_alphabet"
 ACTUAL_LCM_SEPARATION_FAMILY = "actual_lcm_orbit_separation"
 FIRST_HARMONIC_FAMILY = "first_harmonic_pivot_decomposition"
 
+# Source-current #1041 adjudication.  This family is intentionally kept out of
+# the canonical Claims/Palomar rank stores until those authorities register it;
+# the expert route may expose a provisional source candidate without inventing
+# a position or a second hierarchy.
+CRITICAL_PAIR_METRIC_FAMILY = "critical_pair_metric_scale"
+CRITICAL_PAIR_SOURCE_MODULE = (
+    "research_corpus/Erdos1041/CriticalTwoRootProximity.lean"
+)
+CRITICAL_PAIR_SOURCE_REVISION = "6bebc6e396a4982d842ba214315dc4a8f043ea60"
+CRITICAL_PAIR_SOURCE_DECLARATIONS = (
+    "two_add_le_two_of_bernoulli",
+    "two_add_le_two_of_disk_inverse_balance",
+    "two_add_lt_two_of_disk_inverse_balance_of_strict_diameter",
+    "exists_two_roots_dist_sum_le_two_mul_geomMean",
+    "spoke_escapes_lemniscate_exact",
+    "nearestSpoke_reciprocal_balance",
+    "nearestSpoke_unique_nearest_normSq",
+    "nearestSpoke_unique_nearest_spoke_escapes",
+    "allStraightCubic_roots_in_unitDisk",
+    "allStraightCubic_roots",
+    "allStraightCubic_every_pair_midpoint_escapes",
+)
+
 # Canonical source binding consumed by the three-prime handoff.  These are
 # declaration identities, not a positional sample; coordinates and signatures
 # are resolved from the declaration atlas and live Lean source at query time.
@@ -315,6 +338,225 @@ def _live_source_declaration(
         "docstring": row.get("docstring"),
         "coordinate_authority": "direct Lean source declaration",
         "signature_authority": "docs/declaration_atlas.json",
+    }
+
+
+def _live_research_declaration(module: str, name: str) -> dict[str, Any]:
+    """Resolve an unindexed research declaration from the Lean source itself.
+
+    The #1041 research forest is not part of ``declaration_atlas.json``.  Keep
+    this bounded parser deliberately source-first: it records the exact
+    declaration line and kind, while the adjudication receipt supplies the
+    checked/proof-status boundary.  It never creates a rank or claim row.
+    """
+    source_path = ROOT / module
+    if not source_path.is_file():
+        raise ValueError(f"source declaration module is missing: {module}")
+    declaration_pattern = re.compile(
+        r"^\s*(?:@\[[^\]]*\]\s*)*"
+        r"(?:(?:noncomputable|protected|private)\s+)*"
+        r"(?P<kind>theorem|lemma|def|abbrev)\s+"
+        + re.escape(name)
+        + r"\b"
+    )
+    for line_number, line in enumerate(
+        source_path.read_text(encoding="utf-8").splitlines(), start=1
+    ):
+        match = declaration_pattern.search(line)
+        if match is not None:
+            return {
+                "name": name,
+                "kind": match.group("kind"),
+                "module": module,
+                "line": line_number,
+                "source_line": line.strip(),
+                "coordinate_authority": "direct Lean source declaration",
+                "signature_authority": "direct Lean source declaration",
+            }
+    raise ValueError(f"source file lacks declaration {module}:{name}")
+
+
+def critical_pair_metric_scale_candidate_handoff(
+    palomar: Mapping[str, Any] | None = None,
+    claims_document: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Expose the source-current #1041 metric family without rank invention.
+
+    The candidate is intentionally separate from ``supporting_families``:
+    Claims and Palomar currently have no ``critical_pair_metric_scale`` row,
+    so the packet must preserve that registration boundary rather than infer a
+    position from file or relation order.
+    """
+    palomar = palomar or load_json(PALOMAR)
+    claims_document = claims_document or load_json(CLAIMS)
+    claims = _claim_family_rows(claims_document)
+    ranks = _canonical_family_ranks(palomar)
+    declarations = [
+        _live_research_declaration(CRITICAL_PAIR_SOURCE_MODULE, name)
+        for name in CRITICAL_PAIR_SOURCE_DECLARATIONS
+    ]
+
+    programme_row = next(
+        (
+            row
+            for row in palomar.get("selection_contract", {}).get(
+                "programme_family_order", []
+            )
+            if int(row.get("problem")) == 1041
+        ),
+        None,
+    )
+    if not isinstance(programme_row, dict):
+        raise ValueError("Palomar programme order lacks #1041")
+    context_ids = [str(family_id) for family_id in programme_row.get("family_ids", [])]
+    context_rows = []
+    omitted_context_ids = []
+    for family_id in context_ids:
+        if family_id not in ranks or family_id not in claims:
+            omitted_context_ids.append(family_id)
+            continue
+        context_rows.append(
+            {
+                "family": _family_card(family_id, ranks, palomar, claims),
+                "relation": "canonical_context_not_edge",
+                "relation_class": "canonical_context_not_palomar_edge",
+                "reason": (
+                    "Existing #1041 programme families provide canonical context; "
+                    "this source candidate does not mint a Palomar relation."
+                ),
+            }
+        )
+    context_rows.sort(
+        key=lambda row: (
+            row["family"]["problem"],
+            row["family"]["authority_rank"]["programme_position"],
+        )
+    )
+
+    registered = CRITICAL_PAIR_METRIC_FAMILY in ranks or CRITICAL_PAIR_METRIC_FAMILY in claims
+    canonicalization_status = (
+        "registered_in_claims_and_palomar"
+        if registered
+        else "pending_claims_palomar_registration"
+    )
+    return {
+        "family": {
+            "family_id": CRITICAL_PAIR_METRIC_FAMILY,
+            "problem": 1041,
+            "canonicalization_status": canonicalization_status,
+            "authority_rank": (
+                ranks.get(CRITICAL_PAIR_METRIC_FAMILY)
+                if CRITICAL_PAIR_METRIC_FAMILY in ranks
+                else None
+            ),
+            "rank_authority": (
+                "No Palomar programme position is assigned in the current "
+                "authority; this packet never infers one from insertion order."
+                if CRITICAL_PAIR_METRIC_FAMILY not in ranks
+                else "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract.programme_family_order"
+            ),
+            "proposed_reader_tier": (
+                "deep_mechanism_and_classification_plus_natural_friction"
+            ),
+            "proof_status": (
+                "Lean-checked algebraic metric core plus ordinary proof-level "
+                "global Euclidean budget; novelty unassessed"
+            ),
+            "proof_status_authority": (
+                "Direct Lean source plus GlobalCriticalTwoNearestBudget.md; "
+                "adjudication receipt cap_quick_erdos_1041_critical_pair_metric_scale_so_4510a65321c7"
+            ),
+            "summary": (
+                "The sharp constant-2 Euclidean metric budget for two nearest "
+                "roots is solved, but no contained connecting curve or global "
+                "selector follows."
+            ),
+            "open_boundary": (
+                "Erdős #1041 remains open: containment/selection requires a "
+                "curved branch, admissible hub, visibility overlap, or grouped "
+                "monodromy producer."
+            ),
+        },
+        "hard_mechanism": (
+            "The reciprocal critical balance e ≤ (N−1)δ combines with the "
+            "disk inverse-square estimate. A hypothetical δ+e>2 forces the "
+            "ratio x=e/δ into 1≤x≤N−1, while Bernoulli yields "
+            "N < x+(N−1)/x, contradicting the elementary quadratic bound. "
+            "This is the sharp constant-2 Euclidean budget; the "
+            "geometric-mean theorem packages the same mechanism for arbitrary "
+            "non-root critical points."
+        ),
+        "source_declarations": declarations,
+        "ordinary_assembly": {
+            "module": "research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md",
+            "source_authority": "ordinary authored proof-level assembly",
+            "boundary": (
+                "Lean checks the algebraic kernels and geometric-mean root "
+                "selection; the complete polynomial-level assembly is not one "
+                "Lean theorem."
+            ),
+        },
+        "natural_friction_evidence": [
+            {
+                "declaration": "nearestSpoke_unique_nearest_spoke_escapes",
+                "kind": "unique-nearest straight-spoke obstruction",
+                "meaning": "The exact quintic defeats the unique-nearest straight spoke.",
+            },
+            {
+                "declaration": "allStraightCubic_every_pair_midpoint_escapes",
+                "kind": "all-straight-segments no-go",
+                "meaning": "An exact cubic has an escaping midpoint for every straight root pair.",
+            },
+        ],
+        "open_producer_boundaries": {
+            "curved_branch_selection": (
+                "Construct a contained curved descending inverse branch with a "
+                "selection/turning estimate."
+            ),
+            "admissible_hub": "Establish the canonical min_c L(c) ≤ 2 hub bound.",
+            "visibility_or_monodromy": (
+                "Supply COVER/visibility overlap or grouped/fixed-block monodromy "
+                "with the integrated 2 Lambda+perimeter<2d producer."
+            ),
+            "not_claimed": (
+                "No contained path, global selector, degree-5 closure, or "
+                "unrestricted #1041 theorem follows."
+            ),
+        },
+        "canonical_context": context_rows,
+        "omitted_context_family_ids": omitted_context_ids,
+        "relation_authority": (
+            "Context positions come from Palomar programme_family_order and "
+            "status cards from Claims. The candidate has no canonical rank or "
+            "Palomar edge until those authorities register it."
+        ),
+        "authority": {
+            "claims": (
+                "docs/claims.json::external_verification_packet.review_matrix "
+                "(no current critical_pair_metric_scale row)"
+            ),
+            "palomar": (
+                "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                "programme_family_order (#1041 context only)"
+            ),
+            "source": CRITICAL_PAIR_SOURCE_MODULE,
+            "source_revision": CRITICAL_PAIR_SOURCE_REVISION,
+            "adjudication_receipt": (
+                "cap_quick_erdos_1041_critical_pair_metric_scale_so_4510a65321c7"
+            ),
+        },
+        "follow": {
+            "source": (
+                "rg -n 'two_add_le_two_of_disk_inverse_balance|"
+                "allStraightCubic_every_pair_midpoint_escapes' "
+                "research_corpus/Erdos1041/CriticalTwoRootProximity.lean"
+            ),
+            "problem": "python3 scripts/query_corpus.py --route erdos_1041",
+            "canonicalization": (
+                "After Claims/Palomar registration: python3 scripts/query_semantic.py "
+                "family-relations critical_pair_metric_scale"
+            ),
+        },
     }
 
 
@@ -1310,6 +1552,9 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
             row["family"]["authority_rank"]["programme_position"],
         )
     )
+    source_current_candidates = [
+        critical_pair_metric_scale_candidate_handoff(palomar, claims_document)
+    ]
     return {
         "question": (
             "Which endpoint-facing checked interfaces, supporting mechanisms, "
@@ -1337,12 +1582,15 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
         "root_family_ids": list(SEMANTIC_HANDOFF_ROOT_FAMILIES),
         "roots": roots,
         "supporting_families": supporting_families,
+        "source_current_candidates": source_current_candidates,
         "coverage_boundary": (
             "This route highlights two endpoint-facing roots without replacing "
             "the all-eight-problem semantic registry or subordinate/long-tail "
             "family discovery. It also exposes the source-backed #269 "
             "three-prime structure as supporting context without promoting it "
-            "to an endpoint. Use each family follow command and "
+            "to an endpoint, and surfaces the source-current #1041 metric "
+            "candidate without fabricating a Claims/Palomar rank. Use each "
+            "family follow command and "
             "`python3 scripts/query_semantic.py problem-registry` for that "
             "complete inventory."
         ),
@@ -1354,6 +1602,7 @@ def semantic_endpoint_handoff_route() -> dict[str, Any]:
     return {
         "command": "python3 scripts/query_expert_handoffs.py --semantic-handoff",
         "root_family_ids": list(SEMANTIC_HANDOFF_ROOT_FAMILIES),
+        "source_current_candidate_ids": [CRITICAL_PAIR_METRIC_FAMILY],
         "authority_posture": (
             "Query-time Claims/Palomar projection; no second rank store."
         ),

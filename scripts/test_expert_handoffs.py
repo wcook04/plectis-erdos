@@ -115,6 +115,60 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
     assert packet["root_family_ids"] == route["root_family_ids"]
     assert "no second rank store" in route["authority_posture"]
     assert "all-eight-problem semantic registry" in packet["coverage_boundary"]
+    assert route["source_current_candidate_ids"] == [
+        "critical_pair_metric_scale"
+    ]
+
+    candidate = packet["source_current_candidates"][0]
+    candidate_family = candidate["family"]
+    assert candidate_family["family_id"] == "critical_pair_metric_scale"
+    assert candidate_family["problem"] == 1041
+    assert candidate_family["canonicalization_status"] == (
+        "pending_claims_palomar_registration"
+    )
+    assert candidate_family["authority_rank"] is None
+    assert "deep_mechanism" in candidate_family["proposed_reader_tier"]
+    assert "ordinary proof-level global Euclidean budget" in candidate_family[
+        "proof_status"
+    ]
+    assert "containment" in candidate_family["open_boundary"]
+    assert "reciprocal critical balance" in candidate["hard_mechanism"]
+    assert "sharp constant-2" in candidate["hard_mechanism"]
+    declarations = {
+        row["name"]: row for row in candidate["source_declarations"]
+    }
+    assert set(declarations) == {
+        "two_add_le_two_of_bernoulli",
+        "two_add_le_two_of_disk_inverse_balance",
+        "two_add_lt_two_of_disk_inverse_balance_of_strict_diameter",
+        "exists_two_roots_dist_sum_le_two_mul_geomMean",
+        "spoke_escapes_lemniscate_exact",
+        "nearestSpoke_reciprocal_balance",
+        "nearestSpoke_unique_nearest_normSq",
+        "nearestSpoke_unique_nearest_spoke_escapes",
+        "allStraightCubic_roots_in_unitDisk",
+        "allStraightCubic_roots",
+        "allStraightCubic_every_pair_midpoint_escapes",
+    }
+    assert all(
+        row["module"] == "research_corpus/Erdos1041/CriticalTwoRootProximity.lean"
+        and isinstance(row["line"], int)
+        and row["coordinate_authority"] == "direct Lean source declaration"
+        for row in declarations.values()
+    )
+    assert any(
+        row["declaration"] == "nearestSpoke_unique_nearest_spoke_escapes"
+        for row in candidate["natural_friction_evidence"]
+    )
+    assert any(
+        row["declaration"] == "allStraightCubic_every_pair_midpoint_escapes"
+        for row in candidate["natural_friction_evidence"]
+    )
+    assert len(candidate["canonical_context"]) == 4
+    assert [
+        row["family"]["family_id"] for row in candidate["canonical_context"]
+    ] == ["newton_value_decay", "ray_separation", "translation_avoidance", "root_retention"]
+    assert "No Palomar programme position" in candidate_family["rank_authority"]
 
     small_mismatch, carry_escape = packet["roots"]
     assert small_mismatch["family"]["family_id"] == "small_mismatch_criterion"
@@ -163,6 +217,9 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
     ) == handoffs._family_hierarchy(
         "conditional_carry_escape", ranks, reversed_palomar, claims
     )
+    assert handoffs.critical_pair_metric_scale_candidate_handoff(
+        reversed_palomar, handoffs.load_json(handoffs.CLAIMS)
+    ) == candidate
 
 
 def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries() -> None:
