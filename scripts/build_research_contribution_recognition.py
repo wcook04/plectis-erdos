@@ -24,6 +24,7 @@ from urllib.parse import quote
 
 import build_research_contributions as contributions
 import repository_identity as repository_identity_contract
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,7 +33,7 @@ MARKDOWN_OUTPUT = ROOT / "docs/research-commons/CONTRIBUTION_RECOGNITION.md"
 SCHEMA = "accepted-research-contribution-recognition/1"
 SCHEMA_PATH = "docs/research-commons/schema/research-contribution-recognition.schema.json"
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
-GIT_LOOKUP_TIMEOUT_SECONDS = 30
+GIT_LOOKUP_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 FORBIDDEN_KEYS = frozenset(
     {
         "rank",

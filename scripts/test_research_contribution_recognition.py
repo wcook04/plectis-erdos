@@ -13,6 +13,7 @@ from pathlib import Path
 
 import build_research_contribution_recognition as recognition
 import build_research_contributions as contributions
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,6 +76,11 @@ def accepted_source() -> tuple[str, dict, bytes, str]:
 
 
 def main() -> int:
+    require(
+        recognition.GIT_LOOKUP_TIMEOUT_SECONDS
+        == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "recognition builder Git timeout drifted from the canonical boundary",
+    )
     with tempfile.TemporaryDirectory() as directory:
         source_path = Path(directory) / FIXTURE.name
         source_path.write_bytes(FIXTURE.read_bytes())
