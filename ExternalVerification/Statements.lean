@@ -397,6 +397,14 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       A.Pairwise Nat.Coprime →
       Summable (Set.indicator A fun a : ℕ => (1 : ℝ) / a) →
       Irrational (erdosSupportSeries b A)
+  problem257RatWeightEventuallyPeriodic :
+    ∀ (b m N₀ : ℕ) (γ : ℕ → ℚ),
+      2 ≤ b →
+      0 < m →
+      (∀ n : ℕ, 0 ≤ γ n) →
+      (∀ n : ℕ, N₀ ≤ n → γ (n + m) = γ n) →
+      (∃ a : ℕ, N₀ ≤ a ∧ 0 < a ∧ 0 < γ a) →
+      Irrational (∑' a : ℕ, ((γ a : ℝ)) / ((b : ℝ) ^ a - 1))
   problem257FinitePeriod :
     ∀ (F : Finset ℕ) (b : ℕ)
       (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)

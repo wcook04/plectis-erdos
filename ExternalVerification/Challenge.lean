@@ -155,6 +155,15 @@ theorem irrational_erdosSupportSeries_pairwise_coprime
     Irrational (erdosSupportSeries b A) :=
   (portfolioClaims Unit).problem257PairwiseCoprime b A hb hA hpair hsum
 
+theorem irrational_ratWeightSeries_eventuallyPeriodic
+    (b m N₀ : ℕ) (γ : ℕ → ℚ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hγ0 : ∀ n : ℕ, 0 ≤ γ n)
+    (hper : ∀ n : ℕ, N₀ ≤ n → γ (n + m) = γ n)
+    (hpos : ∃ a : ℕ, N₀ ≤ a ∧ 0 < a ∧ 0 < γ a) :
+    Irrational (∑' a : ℕ, ((γ a : ℝ)) / ((b : ℝ) ^ a - 1)) :=
+  (portfolioClaims Unit).problem257RatWeightEventuallyPeriodic
+    b m N₀ γ hb hm hγ0 hper hpos
+
 theorem finite_period_noncollapse_rat_den_interface
     (F : Finset ℕ) (b : ℕ)
     (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)

@@ -215,6 +215,10 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
       Erdos249257.irrational_erdosSupportSeries_pairwise_coprime
         b A hb hA hpair hsum
+  · intro b m N₀ γ hb hm hγ0 hper hpos
+    simpa using
+      Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic
+        b m N₀ γ hb hm hγ0 hper hpos
   · intro F b hF h0 hb hcop
     simpa [finiteErdosSum, Erdos249257.finiteErdosSum] using
       Erdos249257.finite_period_noncollapse_rat_den F b hF h0 hb
@@ -411,6 +415,16 @@ theorem irrational_erdosSupportSeries_pairwise_coprime
   simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
     Erdos249257.irrational_erdosSupportSeries_pairwise_coprime
       b A hb hA hpair hsum
+
+theorem irrational_ratWeightSeries_eventuallyPeriodic
+    (b m N₀ : ℕ) (γ : ℕ → ℚ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hγ0 : ∀ n : ℕ, 0 ≤ γ n)
+    (hper : ∀ n : ℕ, N₀ ≤ n → γ (n + m) = γ n)
+    (hpos : ∃ a : ℕ, N₀ ≤ a ∧ 0 < a ∧ 0 < γ a) :
+    Irrational (∑' a : ℕ, ((γ a : ℝ)) / ((b : ℝ) ^ a - 1)) := by
+  simpa using
+    Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic
+      b m N₀ γ hb hm hγ0 hper hpos
 
 theorem finite_period_noncollapse_rat_den_interface
     (F : Finset ℕ) (b : ℕ)

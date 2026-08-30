@@ -11614,6 +11614,18 @@
         "boundary": "This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
       },
       {
+        "id": "periodic_nonnegative_weight_irrationality",
+        "problem": 257,
+        "review_family": "periodic_nonnegative_weight_irrationality",
+        "claim_id": "periodic_nonnegative_weight_irrationality",
+        "contribution_class": "formalised here; novelty unassessed",
+        "original_declaration": "Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic",
+        "original_source": "Erdos249257/CertificateKernel.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
+        "statement": "For every integer base b >= 2 and every eventually-periodic nonnegative rational coefficient sequence γ with a positive value at a positive index in its periodic region, the series sum_a γ(a)/(b^a - 1) is irrational.",
+        "boundary": "This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed."
+      },
+      {
         "id": "newton_small_translation",
         "problem": 1041,
         "review_family": "translation_avoidance",
@@ -11954,6 +11966,22 @@
             "evidence_mode": "Lean kernel plus Comparator for full and pairwise-coprime support",
             "comparator_disposition": "targeted_full_support_representative",
             "boundary": "Structured known families do not cover arbitrary infinite supports."
+          },
+          {
+            "id": "pairwise_coprime_support",
+            "contribution_class": "formalisation of an existing theorem",
+            "summary": "Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted_pairwise_coprime_support",
+            "boundary": "This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
+          },
+          {
+            "id": "periodic_nonnegative_weight_irrationality",
+            "contribution_class": "formalised here; novelty unassessed",
+            "summary": "An eventually-periodic nonnegative rational coefficient sequence with a positive value in its periodic region has an irrational Lambert–Mersenne series; denominator clearing reduces the rational sequence to a periodic Nat-weight certificate.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted_strongest_nonnegative_rational_weight",
+            "boundary": "This does not claim the broader mixed-sign periodic theorem; all coefficient, positivity, base, period, and threshold hypotheses remain explicit."
           },
           {
             "id": "squarefree_support",
