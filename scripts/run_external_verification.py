@@ -111,6 +111,80 @@ def run(
     )
 
 
+def _canonical_output_path(path: Path) -> Path:
+    """Resolve only the explicitly permitted macOS temporary aliases."""
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            if not _is_allowed_platform_alias(current):
+                raise VerificationInputError(f"output path contains a symlink: {path}")
+            current = current.resolve(strict=True)
+        if current.parent == current:
+            break
+        current = current.parent
+    try:
+        existing_mode = os.lstat(candidate).st_mode
+    except FileNotFoundError:
+        existing_mode = None
+    if existing_mode is not None and not stat.S_ISREG(existing_mode):
+        raise VerificationInputError(f"output path is not a regular file: {path}")
+    if len(candidate.parts) >= 2:
+        alias = Path(os.sep, candidate.parts[1])
+        if _is_allowed_platform_alias(alias):
+            return alias.resolve(strict=True).joinpath(*candidate.parts[2:])
+    return candidate
+
+
+def _open_output_descriptor(path: Path) -> int:
+    """Open a runtime receipt relative to no-follow directory descriptors."""
+    directory_flags = os.O_RDONLY
+    directory_flags |= getattr(os, "O_CLOEXEC", 0)
+    directory_flags |= getattr(os, "O_DIRECTORY", 0)
+    directory_flags |= getattr(os, "O_NOFOLLOW", 0)
+    directory = os.open(os.sep, directory_flags)
+    try:
+        for component in path.parts[1:-1]:
+            child = os.open(component, directory_flags, dir_fd=directory)
+            try:
+                if not stat.S_ISDIR(os.fstat(child).st_mode):
+                    raise OSError(f"output parent is not a directory: {path.parent}")
+            except BaseException:
+                os.close(child)
+                raise
+            os.close(directory)
+            directory = child
+        flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+        flags |= getattr(os, "O_CLOEXEC", 0)
+        flags |= getattr(os, "O_NONBLOCK", 0)
+        flags |= getattr(os, "O_NOFOLLOW", 0)
+        return os.open(path.name, flags, 0o644, dir_fd=directory)
+    finally:
+        os.close(directory)
+
+
+def write_runtime_receipt(path: Path, receipt: dict[str, Any]) -> Path:
+    """Write a receipt without allowing an output parent to be substituted."""
+    candidate = _canonical_output_path(path)
+    candidate.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        descriptor = _open_output_descriptor(candidate)
+    except OSError as exc:
+        raise VerificationInputError(
+            f"output path could not be opened safely: {path}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise VerificationInputError(f"output path is not a regular file: {path}")
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            descriptor = -1
+            stream.write(json.dumps(receipt, indent=2) + "\n")
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+    return candidate
+
+
 def is_expected_negative_rejection(
     exit_code: int, log_text: str, expected: str = EXPECTED_MISMATCH
 ) -> bool:
@@ -275,9 +349,8 @@ def main() -> int:
         },
     }
     output = args.output if args.output.is_absolute() else ROOT / args.output
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
-    print(output)
+    written_output = write_runtime_receipt(output, receipt)
+    print(written_output)
     return 0 if passed else 1
 
 
