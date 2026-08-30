@@ -661,6 +661,15 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
         ErdosProblems.Erdos251.prime0] using
         ErdosProblems.Erdos251.primeGap0_not_eventually_periodic hpos
+  · intro T h hrec hsupply
+    simpa [DyadicTailRecurrence, tailShift, RatIntegral, primeGap0, prime0,
+      ErdosProblems.Erdos251.DyadicTailRecurrence,
+      ErdosProblems.Erdos251.tailShift,
+      ErdosProblems.Erdos251.RatIntegral,
+      ErdosProblems.Erdos251.primeGap0,
+      ErdosProblems.Erdos251.prime0] using
+      ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
+        h hrec hsupply
   · intro hprime
     simpa [primeDyadicTerm, primeGapDyadicTerm, primeGap0, prime0,
       ErdosProblems.Erdos251.primeDyadicTerm,

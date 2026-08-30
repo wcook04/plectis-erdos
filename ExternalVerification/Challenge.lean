@@ -325,6 +325,16 @@ theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
 theorem coefficientOnlyNoGo : CoefficientOnlyNoGo :=
   (portfolioClaims Unit).problem251CoefficientOnlyNoGo
 
+theorem primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
+    {T : ℕ → ℚ} (h : ℕ)
+    (hrec : DyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) T)
+    (hsupply : ∀ N₀, ∃ N, N₀ ≤ N ∧
+      ((-1 < tailShift T h N ∧ tailShift T h N < 1) ∧
+       (-1 < tailShift T h (N + 1) ∧ tailShift T h (N + 1) < 1)) ∧
+      primeGap0 (N + h + 1) ≠ primeGap0 (N + 1)) :
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) :=
+  (portfolioClaims Unit).problem251CofinalSmallMismatch h hrec hsupply
+
 theorem irrational_tsum_primeDyadicTerm_iff_primeGap
     (hprime : Summable primeDyadicTerm) :
     Irrational (∑' n : ℕ, primeDyadicTerm n) ↔

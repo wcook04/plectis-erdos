@@ -1153,6 +1153,14 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       ProjectedFullTargetSeparation H D → ¬ScaleFullTargetHit H)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251CoefficientOnlyNoGo : CoefficientOnlyNoGo
+  problem251CofinalSmallMismatch :
+    ∀ {T : ℕ → ℚ} (h : ℕ),
+      DyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) T →
+      (∀ N₀, ∃ N, N₀ ≤ N ∧
+        ((-1 < tailShift T h N ∧ tailShift T h N < 1) ∧
+         (-1 < tailShift T h (N + 1) ∧ tailShift T h (N + 1) < 1)) ∧
+        primeGap0 (N + h + 1) ≠ primeGap0 (N + 1)) →
+      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N)
   problem251Equivalence :
     Summable primeDyadicTerm →
       (Irrational (∑' n : ℕ, primeDyadicTerm n) ↔

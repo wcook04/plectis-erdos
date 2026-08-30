@@ -24,6 +24,7 @@
     "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
     "Erdos249257.ExternalVerification.exists_primeGap0_gt",
     "Erdos249257.ExternalVerification.coefficientOnlyNoGo",
+    "Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
     "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
     "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
