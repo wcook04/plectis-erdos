@@ -21,6 +21,12 @@ def read(rel: str) -> str:
     return (ROOT / rel).read_text(encoding="utf-8")
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep contract failures active when the test runs with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def summary_packet() -> dict[str, object]:
     completed = subprocess.run(
         [sys.executable, str(QUERY)],
@@ -51,7 +57,7 @@ def boundary_errors(
             errors.append(f"agent entry lost public-boundary phrase: {phrase}")
     for phrase in (
         "Unreleased work, private repositories",
-        "not part of\nthe public proof artefact",
+        "not public proof artefact",
     ):
         if phrase not in scope:
             errors.append(f"scope lost public-boundary phrase: {phrase}")
@@ -198,62 +204,89 @@ def main() -> int:
     prior_art = read("docs/PRIOR_ART.md")
     related = read("docs/RELATED_PROBLEMS.md")
     summary = summary_packet()
-    assert not boundary_errors(agents, scope, readme, claims, methodology, summary)
-    assert not prior_art_errors(prior_art)
-    assert not related_problem_errors(related)
+    require(
+        not boundary_errors(agents, scope, readme, claims, methodology, summary),
+        "live first-contact boundary contract is invalid",
+    )
+    require(not prior_art_errors(prior_art), "live prior-art boundary contract is invalid")
+    require(
+        not related_problem_errors(related),
+        "live related-problem boundary contract is invalid",
+    )
     verification_packet = claims["external_verification_packet"]
-    assert not portfolio_visibility_errors(verification_packet)
+    require(
+        not portfolio_visibility_errors(verification_packet),
+        "live portfolio visibility contract is invalid",
+    )
 
     missing_agent_rule = agents.replace(
         "never infer unpublished results or private machinery", "", 1
     )
-    assert any(
-        "agent entry lost public-boundary phrase" in error
-        for error in boundary_errors(
-            missing_agent_rule, scope, readme, claims, methodology, summary
-        )
+    require(
+        any(
+            "agent entry lost public-boundary phrase" in error
+            for error in boundary_errors(
+                missing_agent_rule, scope, readme, claims, methodology, summary
+            )
+        ),
+        "missing agent boundary rule was accepted",
     )
     missing_projection = deepcopy(summary)
     missing_projection["non_claims"] = [
         row for row in summary["non_claims"] if row["id"] != "not_hidden_proof_body_authority"
     ]
-    assert any(
-        "bounded query lost public-boundary non-claims" in error
-        for error in boundary_errors(
-            agents, scope, readme, claims, methodology, missing_projection
-        )
+    require(
+        any(
+            "bounded query lost public-boundary non-claims" in error
+            for error in boundary_errors(
+                agents, scope, readme, claims, methodology, missing_projection
+            )
+        ),
+        "missing projected boundary was accepted",
     )
     novelty_from_absence = prior_art.replace(
         "Failure to identify a matching source is\nnot evidence of novelty.",
         "Failure to identify a matching source establishes novelty.",
         1,
     )
-    assert any(
-        "prior-art map lost claim-faithful comparison boundary" in error
-        for error in prior_art_errors(novelty_from_absence)
+    require(
+        any(
+            "prior-art map lost claim-faithful comparison boundary" in error
+            for error in prior_art_errors(novelty_from_absence)
+        ),
+        "novelty-from-absence mutation was accepted",
     )
     missing_claim_route = prior_art.replace(
         "python3 scripts/query_corpus.py --claim <claim_id>", "", 1
     )
-    assert any(
-        "prior-art map lost claim-faithful comparison boundary" in error
-        for error in prior_art_errors(missing_claim_route)
+    require(
+        any(
+            "prior-art map lost claim-faithful comparison boundary" in error
+            for error in prior_art_errors(missing_claim_route)
+        ),
+        "missing claim route mutation was accepted",
     )
     collapsed_relation = related.replace(
         "The first two packets are `open`; the latter two are `cited only`.",
         "Every related solved problem is progress on the open targets.",
         1,
     )
-    assert any(
-        "related-problem map lost typed relation boundary" in error
-        for error in related_problem_errors(collapsed_relation)
+    require(
+        any(
+            "related-problem map lost typed relation boundary" in error
+            for error in related_problem_errors(collapsed_relation)
+        ),
+        "collapsed related-problem relation was accepted",
     )
     missing_open_handle = related.replace(
         "--open remaining_open.universal_257_all_infinite_supports", "", 1
     )
-    assert any(
-        "related-problem map lost typed relation boundary" in error
-        for error in related_problem_errors(missing_open_handle)
+    require(
+        any(
+            "related-problem map lost typed relation boundary" in error
+            for error in related_problem_errors(missing_open_handle)
+        ),
+        "missing open-target handle was accepted",
     )
     underexposed_portfolio = deepcopy(verification_packet)
     underexposed_portfolio["main_results"] = [
@@ -262,31 +295,43 @@ def main() -> int:
         if row["problem"] != 1049
         or row["id"] == "three_halves_corridor_no_go"
     ]
-    assert any(
-        "problem 1049 portfolio is underexposed" in error
-        for error in portfolio_visibility_errors(underexposed_portfolio)
+    require(
+        any(
+            "problem 1049 portfolio is underexposed" in error
+            for error in portfolio_visibility_errors(underexposed_portfolio)
+        ),
+        "underexposed portfolio mutation was accepted",
     )
     duplicate_portfolio = deepcopy(verification_packet)
     duplicate_portfolio["main_results"][1] = deepcopy(duplicate_portfolio["main_results"][0])
-    assert any(
-        "result id is duplicated" in error
-        for error in portfolio_visibility_errors(duplicate_portfolio)
+    require(
+        any(
+            "result id is duplicated" in error
+            for error in portfolio_visibility_errors(duplicate_portfolio)
+        ),
+        "duplicate portfolio identity mutation was accepted",
     )
     overclaiming_portfolio = deepcopy(verification_packet)
     overclaiming_portfolio["main_results"][0]["boundary"] = (
         "This result solves Erdos 68 and supplies independent proof authority."
     )
-    assert any(
-        "boundary overclaims closure" in error
-        for error in portfolio_visibility_errors(overclaiming_portfolio)
+    require(
+        any(
+            "boundary overclaims closure" in error
+            for error in portfolio_visibility_errors(overclaiming_portfolio)
+        ),
+        "overclaiming portfolio mutation was accepted",
     )
     private_source_portfolio = deepcopy(verification_packet)
     private_source_portfolio["main_results"][0]["original_source"] = (
         "/private/development/hidden.lean"
     )
-    assert any(
-        "non-public source route" in error
-        for error in portfolio_visibility_errors(private_source_portfolio)
+    require(
+        any(
+            "non-public source route" in error
+            for error in portfolio_visibility_errors(private_source_portfolio)
+        ),
+        "private portfolio source mutation was accepted",
     )
 
     print(
