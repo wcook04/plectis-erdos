@@ -161,6 +161,20 @@ def main() -> int:
         require(marker in human, f"human recognition view omitted {marker}")
     require("commit_count" not in human and "diff_size" not in human, "recognition view exposed activity scoring")
 
+    for label, field, malformed in (
+        ("result.class", "class", {}),
+        ("result.claim_ceiling", "claim_ceiling", []),
+        ("result.requested_disposition", "requested_disposition", {}),
+    ):
+        malformed_receipt = copy.deepcopy(receipt)
+        malformed_receipt["result"][field] = malformed
+        try:
+            recognition.build_recognition([(name, malformed_receipt, payload)])
+        except ValueError as exc:
+            require(label in str(exc), f"{label} rejection lacked a bounded diagnostic: {exc}")
+        else:
+            raise AssertionError(f"malformed {label} escaped recognition projection builder")
+
     malformed = copy.deepcopy(projection)
     malformed["chronological"][0]["record_kind"] = "submitted_return"
     try:

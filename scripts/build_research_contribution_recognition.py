@@ -470,6 +470,15 @@ def _recognition_row(
 ) -> dict[str, Any]:
     if receipt.get("record_kind") != "accepted_receipt":
         raise ValueError(f"{name}: recognition projection accepts accepted_receipt only")
+    frontier = receipt.get("frontier")
+    if not isinstance(frontier, dict) or type(frontier.get("problem")) is not int:
+        raise ValueError(f"{name}: accepted frontier problem must be an integer")
+    result = receipt.get("result")
+    if not isinstance(result, dict):
+        raise ValueError(f"{name}: accepted result must be an object")
+    for field in ("class", "claim_ceiling", "requested_disposition"):
+        if not isinstance(result.get(field), str):
+            raise ValueError(f"{name}: accepted result.{field} must be a string")
     row = contributions.project_receipt(name, receipt, payload)
     row["record_kind"] = "accepted_receipt"
     row["public_frontier"] = contributions.public_result_family_route(
