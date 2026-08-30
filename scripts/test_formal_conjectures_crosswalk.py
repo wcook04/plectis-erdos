@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import copy
 import importlib.util
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -285,6 +286,21 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
                 errors = crosswalk.upstream_checkout_errors(manifest, checkout)
             self.assertTrue(any("SHA-256" in error for error in errors))
             self.assertTrue(any("lost signature anchor" in error for error in errors))
+
+    def test_upstream_checkout_probe_ignores_hostile_git_selectors(self) -> None:
+        hostile = {
+            "GIT_DIR": str(ROOT / "not-a-git-directory"),
+            "GIT_NAMESPACE": "hostile-namespace",
+            "GIT_REPLACE_REF_BASE": "refs/replace/hostile/",
+        }
+        with patch.dict(os.environ, hostile, clear=False):
+            errors = crosswalk.upstream_checkout_errors({"problems": []}, ROOT)
+        self.assertTrue(any("expected" in error for error in errors), errors)
+        self.assertFalse(any("not a Git worktree" in error for error in errors))
+        self.assertEqual(
+            crosswalk.ENVIRONMENT_CONTRACT,
+            "clean_committed_snapshot_subprocess_environment_v1",
+        )
 
 
 if __name__ == "__main__":

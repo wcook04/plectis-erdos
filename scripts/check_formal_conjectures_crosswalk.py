@@ -24,6 +24,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parent.parent
 CROSSWALK_PATH = ROOT / "docs" / "formal_conjectures_crosswalk.json"
@@ -31,6 +33,7 @@ PROJECTION_PATH = ROOT / "docs" / "FORMAL_CONJECTURES_CROSSWALK.md"
 PROBLEM_INDEX_PATH = ROOT / "docs" / "problem_index_source.json"
 
 SCHEMA = "formal-conjectures-crosswalk/1"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 UPSTREAM_REPOSITORY = "https://github.com/google-deepmind/formal-conjectures"
 UPSTREAM_COMMIT = "f2de2ed5841e2105009be778ada0c40c08980125"
 EXPECTED_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
@@ -490,6 +493,8 @@ def upstream_checkout_errors(
         capture_output=True,
         text=True,
         check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
     if completed.returncode != 0:
         return [f"upstream checkout is not a Git worktree: {checkout}"]
