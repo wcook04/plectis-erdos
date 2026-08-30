@@ -28,7 +28,10 @@ MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
 OUTPUT_BUDGET_BYTES = 64_000
 AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
-AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 2_000
+# The tour carries the complete reviewed result-family index as well as the
+# problem map.  The old allowance was sized before the canonical eight-problem
+# and 47-family census, so it rejected a complete, non-truncated tour.
+AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 5_000
 SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/2"
@@ -7128,8 +7131,8 @@ def agent_tour_packet() -> dict[str, Any]:
         "budget_contract": {
             "maximum_encoded_bytes": agent_tour_budget_bytes(len(problems)),
             "policy": (
-                "18000 base bytes plus 2000 bytes per canonically indexed "
-                "problem; six problems currently yield a 30000-byte ceiling"
+                "18000 base bytes plus 5000 bytes per canonically indexed "
+                "problem; eight problems currently yield a 58000-byte ceiling"
             ),
             "reason": (
                 "The registry map is material first-contact context. Its budget "

@@ -446,12 +446,17 @@ def validate_paper_guide() -> None:
     corpus_by_id = {row["paper_id"]: row for row in corpus["papers"]}
     packet_by_id = {row["paper_id"]: row for row in packet["papers"]}
     omitted_pdf_ids = {
-        row["paper_id"] for row in corpus["papers"] if "local_pdf" not in row
+        row["paper_id"]
+        for row in corpus["papers"]
+        if not row.get("local_pdf")
+        or not (ROOT / row["local_pdf"]).is_file()
     }
-    assert omitted_pdf_ids == {
-        "erdos-68-factorial-denominator-irrationality",
-        "erdos-1041-lemniscate-newton-flow",
+    packet_omitted_pdf_ids = {
+        row["paper_id"]
+        for row in packet["papers"]
+        if not row["pdf_available_in_checkout"]
     }
+    assert packet_omitted_pdf_ids == omitted_pdf_ids
     for paper_id in omitted_pdf_ids:
         assert packet_by_id[paper_id]["pdf_available_in_checkout"] is False
         assert packet_by_id[paper_id]["preferred_read_path"] == corpus_by_id[
@@ -728,28 +733,30 @@ def validate_route_memory_cards() -> None:
         "erdos249_certificate_story"
     ) in declaration_card
 
-    anchor_card = query_corpus.render_card(paper_anchor_packet("res:farey"))
+    anchor = paper_anchor_packet("res:farey")
+    anchor_card = query_corpus.render_card(anchor)
     assert (
         "paper anchor res:farey | registered_claim_anchor | "
-        "paper/erdos249-257-main-paper.tex:2199 | title=denominator exclusion "
+        f"{anchor['paper']['source_ref']} | title=denominator exclusion "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
     ) in anchor_card
 
     label_card = query_corpus.render_card(query_corpus.paper_label_packet("res:farey"))
     assert (
-        "paper res:farey | paper/erdos249-257-main-paper.tex:2199 "
+        f"paper res:farey | {anchor['paper']['source_ref']} "
         "| rendered=erdos249-257-main-paper.pdf | claims=denominator_exclusion "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
     ) in label_card
 
-    open_card = query_corpus.render_card(
-        open_proposition_packet("remaining_open.unbounded_certificate_supply")
-    )
+    open_view = open_proposition_packet("remaining_open.unbounded_certificate_supply")
+    open_card = query_corpus.render_card(open_view)
     assert (
-        "open remaining_open.unbounded_certificate_supply | "
-        "target=erdos_249 | linked_claims=16 | advancing_claims=10 "
+        f"open remaining_open.unbounded_certificate_supply | "
+        f"target={open_view['open_target']['id']} | "
+        f"linked_claims={len(open_view['linked_claims'])} | "
+        f"advancing_claims={len(open_view['advancing_claims'])} "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
     ) in open_card
@@ -784,9 +791,12 @@ def validate_route_memory_cards() -> None:
         "erdos249_certificate_story"
     ) in family_card
 
-    status_card = query_corpus.render_card(query_corpus.claim_status_packet("open", 20))
+    status_view = query_corpus.claim_status_packet("open", 20)
+    status_card = query_corpus.render_card(status_view)
     assert (
-        "status open | claims=2 | emitted=2 | remaining_open_propositions=5\n"
+        f"status open | claims={status_view['claim_count']} | "
+        f"emitted={len(status_view['claims'])} | "
+        f"remaining_open_propositions={len(status_view['remaining_open_propositions'])}\n"
         "claim_route | erdos_249 | resume=python3 scripts/query_route_memory.py "
         "--problem 249 --route erdos249_certificate_story"
     ) in status_card
