@@ -138,6 +138,16 @@ Lean propositions rather than reviewed public mathematical claims.
 
 - `Erdos249257.GapFareyBound`
 - `Erdos249257.CertificateKernel`
+- **Visible-coprime lattice mass** (`totient_visible_coprime_lattice_mass`) —
+  [`tsum_pos_coprime_inv_mersenne_eq_one`](../Erdos249257/GcdMomentCalculus.lean#L349)
+  proves that the positive coprime Mersenne weights on the visible lattice sum
+  exactly to one. This is the rational normalization behind the fair-coin
+  coprimality form of #249, not an irrationality result. Follow the
+  [paper anchor](papers/full-text/erdos249-257-main-paper.md#res:sternbrocotcylinders)
+  `res:sternbrocotcylinders` or the reviewed claim route
+  `python3 scripts/query_corpus.py --claim stern_brocot_cylinder_law`; both
+  expose the explanation and reverse source links. The exact boundary is
+  unchanged: this identity does not settle #249.
 
 ## #249 / certificate reductions
 
