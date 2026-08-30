@@ -158,6 +158,30 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("workbench accepted malformed ledger JSON")
 
+    unknown_kind_session = workbench.Session(sessions_root, "unknown-kind")
+    unknown_kind_session.directory.mkdir(parents=True)
+    unknown_kind_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    unknown_kind_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "untrusted-move",
+        }
+    )
+    try:
+        unknown_kind_session.moves()
+    except SystemExit as error:
+        if "unsupported move kind" not in str(error):
+            raise AssertionError(f"unknown move kind lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted an unknown move kind")
+
     receipt_session = workbench.Session(sessions_root, "malformed-receipt")
     receipt_session.directory.mkdir(parents=True)
     rows = [

@@ -43,6 +43,7 @@ NOTE_KINDS = (
     "abandonment",
 )
 CLOSE_OUTCOMES = ("established", "open", "abandoned")
+MOVE_KINDS = ("session_opened", "note", "probe", "claim", "session_closed")
 PROBE_TIMEOUT_SECONDS = 600
 SESSION_SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,80}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -246,6 +247,11 @@ class Session:
                 ):
                     raise SystemExit(
                         f"invalid workbench ledger row on line {line_number}: move_id and kind are required"
+                    )
+                if row["kind"] not in MOVE_KINDS:
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: "
+                        f"unsupported move kind {row['kind']!r}"
                     )
                 rows.append(row)
         return rows
