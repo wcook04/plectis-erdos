@@ -338,9 +338,11 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos1049_four_jet_pade_obstruction",
         "erdos257_boolean_mobius_carry",
         "erdos249_carry_anti_compression",
+        "erdos249_fixed_precision_transport_no_go",
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
         "erdos257_boolean_mobius_exact_row_dynamics",
+        "erdos257_half_membership_seam_classification",
     }
     assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
     assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
@@ -469,6 +471,38 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "unconditional" in exact_row["conclusion"]
     assert "verification/comparator.json" in exact_row["transport_admission_boundary"]
     assert "review matrix" in exact_row["transport_admission_boundary"]
+    seam = landscape_by_id["erdos257_half_membership_seam_classification"]
+    assert seam["family_id"] == "half_membership_seam_classification"
+    assert seam["disposition"] == "represented"
+    assert seam["prior_disposition"] == "deferred"
+    assert seam["canonical_family_binding"] == "half_membership_seam_classification"
+    assert seam["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert seam["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert seam["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse"
+    )
+    assert seam["comparator_declaration"] in comparator["theorem_names"]
+    assert seam["source_transport_commit"] == (
+        "7511c208c617b6e36fc56b5e0c5f780a3d4df831"
+    )
+    assert seam["canonical_claim_commit"] == (
+        "0c2f4473e80352a7b4bd72a84d4e813978354509"
+    )
+    assert seam["source_transport_files"] == [
+        "ExternalVerification/Challenge.lean",
+        "ExternalVerification/Solution.lean",
+        "ExternalVerification/Statements.lean",
+    ]
+    assert seam["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse"
+    ]
+    assert "upper-or-middle" in " ".join(seam["exact_hypotheses"])
+    assert "no half-membership witness" in " ".join(seam["limitations"])
+    assert "above" in seam["source_landscape_rank_relative_to"]
+    assert "positiveHalfGreedySkips" in seam["source_landscape_rank_relative_to"]
+    assert "not an unconditional" in seam["conclusion"]
+    assert "verification/comparator.json" in seam["transport_admission_boundary"]
+    assert "review matrix" in seam["transport_admission_boundary"]
     anti = landscape_by_id["erdos249_carry_anti_compression"]
     assert anti["family_id"] == "totient_carry_anti_compression"
     assert anti["disposition"] == "represented"
@@ -485,6 +519,37 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     ]
     assert "finite-Q-rank upper bound" in " ".join(anti["limitations"])
     assert "Canonical source-landscape family" in anti["ranking_status"]
+    fixed = landscape_by_id["erdos249_fixed_precision_transport_no_go"]
+    assert fixed["family_id"] == "fixed_precision_transport_no_go"
+    assert fixed["disposition"] == "represented"
+    assert fixed["prior_disposition"] == "deferred"
+    assert fixed["canonical_family_binding"] == "fixed_precision_transport_no_go"
+    assert fixed["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert fixed["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert fixed["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo"
+    )
+    assert fixed["comparator_declaration"] in comparator["theorem_names"]
+    assert fixed["source_transport_commit"] == (
+        "0c982671140b1a9a2e4f0e410ce807d0ad5e6363"
+    )
+    assert fixed["canonical_claim_commit"] == (
+        "9d43aa4e4df76f08077bd10f9eb2f855f646028a"
+    )
+    assert fixed["source_transport_files"] == [
+        "ExternalVerification/Challenge.lean",
+        "ExternalVerification/Solution.lean",
+        "ExternalVerification/Statements.lean",
+    ]
+    assert fixed["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
+        "Erdos249257.ExternalVerification.vu_step_has_centred_completion",
+        "Erdos249257.ExternalVerification.vu_word_has_prefix_locked_completion",
+    ]
+    assert "synthetic" in " ".join(fixed["limitations"])
+    assert "finite-word" in " ".join(fixed["limitations"])
+    assert "no #249 endpoint" in " ".join(fixed["limitations"])
+    assert "negative-method" in fixed["reason"]
 
 
 def test_adversarial_source_transport_family_merge_is_not_silently_accepted() -> None:
