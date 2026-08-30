@@ -47,12 +47,12 @@ readable without a query or network.
 
 Links name checked routes and limits; reductions are not solutions.
 
-- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [quotient-band breakpoint](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): band factors exactly; cancellation with nonzero moment forces an index ≥ `2d`. Finite; cofinal source open. Divisibility: `67` checked, `300000` external.
-- [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalized-vanishing [bounded-negative no-go](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); unbounded mixed signs are open.
+- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [quotient-band breakpoint](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): band factors exactly; cancellation with nonzero moment forces an index ≥ `2d`. Finite; cofinal input open. Divisibility: `67` checked, `300000` external.
+- [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — [bounded-rise obstruction](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean): bounded rises cannot avoid fresh pairwise-coprime moduli as `u`→∞; normalized-vanishing no-go; mixed-sign bridge open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit top edge. Supply open
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap irrationality; unbounded gaps prove neither. Bridge open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound or tail selector; [pairwise-coprime support](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership stays open.
-- [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height identity](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-two minor `-1/15` rules out displayed rank one only. Irrationality open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack bound or tail selector; [pairwise-coprime support](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
+- [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. Irrationality open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton decay/ray separation/collisions/root retention; invalid saddle block leaves topology/gluing and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor; `31/4` powers lie in `81/200` height region; Hermite–Padé/determinant/prime-support no-go at `3/2`/`7/2`; no irrationality, noncollapse, or remainder control.
 
@@ -121,11 +121,11 @@ order without asking you to decode Lean declaration names first.
 ## Read or run it
 
 - **No-build:** `python3 scripts/verify_claims.py --verify-all` or
-  `--claim <id>` follows claims to source, receipts, and stopping point on a
+  `--claim <id>` follows claims to source, receipts, and boundary on a
   `git clone --depth 1`; missing history uses `git fetch --unshallow`.
 - **Mathematician:** [RESULTS](docs/RESULTS.md) → papers → [SOURCE MAP](docs/SOURCE_MAP.md) → Lean; joint PDF is exposition.
 - **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), [`AGENTS.md`](AGENTS.md), and [`docs/orientation.json`](docs/orientation.json); choose a problem/claim before the registry.
-- **Corpus navigation (no Lean):** run
+- **Navigate without Lean:** run
   `python3 scripts/query_corpus.py --tour --format card`; add
   `--route erdos_<n>` for its paper, source, and open handles.
   `--route agent_native_corpus_navigation` exposes scale, map, and reviewed
@@ -143,7 +143,7 @@ order without asking you to decode Lean declaration names first.
 
 ## Build and verify
 
-Install Lean's toolchain manager, `elan`, from the [Lean setup guide](https://leanprover-community.github.io/get_started.html); [`lean-toolchain`](lean-toolchain) selects `leanprover/lean4:v4.29.1` and [`lake-manifest.json`](lake-manifest.json) pins Mathlib.
+Install `elan` from the [Lean setup guide](https://leanprover-community.github.io/get_started.html); [`lean-toolchain`](lean-toolchain) selects `leanprover/lean4:v4.29.1` and [`lake-manifest.json`](lake-manifest.json) pins Mathlib.
 
 ```sh
 lake exe cache get
@@ -155,7 +155,7 @@ Cold clones navigate first. Focus with
 traces and `--changed-from <git-ref>` selects modules. It rebuilds only the
 selected/stale cone; dependency-index `--check` is constant-time when unchanged.
 
-Release checks are `python3 scripts/check_cold_clone_comprehension.py --quick`
+Release checks: `python3 scripts/check_cold_clone_comprehension.py --quick`
 and `python3 scripts/check_release.py`.
 
 Pinned public Lean corpus: no `sorry`, `admit`, project-defined `axiom`, or
