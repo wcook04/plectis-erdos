@@ -54,11 +54,11 @@ boundary of that relationship.
 
   **Boundary.** Chowla's source is a conjecture in this relation, not the proof source; the theorem formalised here is credited to Erdős (1948).
 
-- P. Erdős, [*On arithmetical properties of Lambert series* (1948)](https://users.renyi.hu/~p_erdos/1948-04.pdf)
+- P. Erdős, [*On arithmetical properties of Lambert series* (1948)](https://users.renyi.hu/~p_erdos/1948-04.pdf) ([read source closure](primary-sources/totient-kernel/erdos-1948-lambert-source-closure.md))
 
-  Full-support Erdős--Borwein irrationality formalised here.
+  **Full-support divisor row.** Printed p. 63 states irrationality of `f(1/t) = Σ_{r≥1}d(r)/t^r` for every integer `|t|>1`, the Erdős--Borwein divisor-weighted Lambert theorem used for the full-support row.
 
-  **Boundary.** The formalisation is a checked rendering, not a priority claim.
+  **Boundary.** Printed p. 66 explicitly says the analogous Euler-totient series `Σφ(n)/t^n` “seem[s] to present difficulties.” This source therefore does not support irrationality of the #249 totient series, any totient-kernel rank/basis, or the release’s Lean/Comparator claims; no novelty or priority claim is made.
 
 - P. Erdős, [*On the irrationality of certain series* (Math. Student 36, 1968)](https://users.renyi.hu/~p_erdos/1969-09.pdf)
 

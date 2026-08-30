@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 11,
-    "artifact_count": 11,
+    "working_tree_only_count": 12,
+    "artifact_count": 12,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 11,
+    "link_and_digest_only_count": 12,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -147,6 +147,24 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/totient-kernel/coons-2010-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/totient-kernel/erdos-1948-lambert.pdf",
+      "sha256": "f263898827e415f8027be8d2082e6e24a13d2cc9fb006076baab282272ed21e3",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://users.renyi.hu/~p_erdos/1948-04.pdf"
+      ],
+      "source_record": "docs/primary-sources/totient-kernel/erdos-1948-lambert-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/totient-kernel/erdos-1948-lambert-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/totient-kernel/erdos-1948-lambert-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     },
