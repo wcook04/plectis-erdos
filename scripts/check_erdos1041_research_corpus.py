@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import sys
 from pathlib import Path, PurePosixPath
@@ -48,7 +49,23 @@ class CorpusError(ValueError):
     pass
 
 
+def safe_public_file(path: Path, label: str) -> Path:
+    """Return a regular file wholly inside the public corpus checkout."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        require(not current.is_symlink(), f"symlinked corpus path: {label}")
+        if current == root:
+            break
+        require(current.parent != current, f"corpus path escapes checkout: {label}")
+        current = current.parent
+    require(candidate.is_file(), f"missing or non-regular corpus file: {label}")
+    return candidate
+
+
 def load_json(path: Path) -> dict[str, Any]:
+    path = safe_public_file(path, str(path.relative_to(ROOT)))
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -59,7 +76,7 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(safe_public_file(path, str(path.relative_to(ROOT))).read_bytes()).hexdigest()
 
 
 def require(condition: bool, message: str) -> None:
@@ -79,8 +96,7 @@ def safe_public_path(raw: Any) -> tuple[str, Path]:
     require(not pure.is_absolute() and ".." not in pure.parts, f"unsafe public path: {raw}")
     require(raw.startswith(f"{PUBLIC_PREFIX}/"), f"path escapes corpus prefix: {raw}")
     path = ROOT.joinpath(*pure.parts)
-    require(path.is_file() and not path.is_symlink(), f"missing or symlinked corpus file: {raw}")
-    return raw, path
+    return raw, safe_public_file(path, raw)
 
 
 def check() -> tuple[int, int, int]:
@@ -141,18 +157,15 @@ def check() -> tuple[int, int, int]:
 
     require(manifest.get("total_bytes") == total_bytes, "manifest total_bytes mismatch")
     require(manifest.get("local_path_replacement_count") == replacement_count, "manifest replacement total mismatch")
-    actual = {
-        path.relative_to(ROOT).as_posix()
-        for path in CORPUS.rglob("*")
-        if path.is_file()
-    }
+    actual: set[str] = set()
+    for path in CORPUS.rglob("*"):
+        if path.is_dir():
+            require(not path.is_symlink(), f"symlinked corpus directory: {path.relative_to(ROOT)}")
+            continue
+        actual.add(safe_public_file(path, str(path.relative_to(ROOT))).relative_to(ROOT).as_posix())
     require(actual == seen | GENERATED_ENVELOPE, f"untracked corpus files: {sorted(actual - seen - GENERATED_ENVELOPE)}; missing: {sorted((seen | GENERATED_ENVELOPE) - actual)}")
     for public_path in sorted(GENERATED_ENVELOPE):
-        path = ROOT / public_path
-        require(
-            path.is_file() and not path.is_symlink(),
-            f"generated envelope file is missing or symlinked: {public_path}",
-        )
+        _, path = safe_public_path(public_path)
         leaked = private_path_leaks(path.read_bytes())
         require(not leaked, f"private local-path marker in {public_path}: {leaked}")
 
