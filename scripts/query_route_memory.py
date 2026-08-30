@@ -788,10 +788,24 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
 def _card(packet: Mapping[str, Any]) -> str:
     problem = packet["problem"]
     route = packet["route"]
+    canonical_record = route.get("canonical_route_memory", {}).get("record", {})
+    canonical_evidence = (
+        canonical_record.get("evidence", {})
+        if isinstance(canonical_record, Mapping)
+        else {}
+    )
+    related_families = canonical_evidence.get("related_families", {})
+    if not isinstance(related_families, Mapping):
+        related_families = {}
     rows = [
         f"route-memory {packet['route_memory_id']} | problem #{problem['erdos_number']}",
-        f"route={route['id'] or 'unrouted'} claims={len(packet['claims'])} families={len(packet['families'])}",
+        f"route={route['id'] or 'unrouted'} claims={len(packet['claims'])} families={len(packet['families'])} canonical_families={len(related_families)}",
     ]
+    if related_families:
+        rows.append(
+            "canonical_family_ids="
+            + ",".join(str(family_id) for family_id in sorted(related_families))
+        )
     if route["id"] is None:
         available = route.get("available_route_ids", [])
         if not isinstance(available, list):

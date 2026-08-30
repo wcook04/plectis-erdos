@@ -203,6 +203,23 @@ def main() -> int:
         and "small-mismatch" in source_current["next_analytic_obligation"].lower(),
         "#251 route-memory next analytic obligation drifted",
     )
+    route_269 = packets[269]["route"]["canonical_route_memory"]["record"]
+    related_269 = route_269["evidence"]["related_families"]
+    require(
+        set(related_269)
+        >= {
+            "conditional_carry_escape",
+            "dyadic_block_alphabet",
+            "rank_two_kernel_no_go",
+            "three_prime_lcm_cells",
+        },
+        "#269 route-memory card lost its canonical result-family fan-in",
+    )
+    for family_id, family in related_269.items():
+        require(
+            family.get("route_id") == f"erdos_269_{family_id}",
+            f"#269 canonical family route drifted for {family_id}",
+        )
     research_packet = packets[1041]
     research = research_packet["research_corpus"]
     require(
@@ -684,6 +701,19 @@ def main() -> int:
         in optimized.stdout,
         "unrouted CLI card omitted canonical route choices",
     )
+    for optimized_flag in (False, True):
+        card_269 = run_cli(
+            "--problem", "269", "--format", "card", optimized=optimized_flag, check=True
+        )
+        require(
+            "canonical_families=4" in card_269.stdout,
+            "#269 CLI card omitted canonical family count",
+        )
+        require(
+            "canonical_family_ids=conditional_carry_escape,dyadic_block_alphabet,rank_two_kernel_no_go,three_prime_lcm_cells"
+            in card_269.stdout,
+            "#269 CLI card omitted canonical family routes",
+        )
     all_packets_result = run_cli("--all", optimized=True, check=True)
     all_packets = json.loads(all_packets_result.stdout)
     require(isinstance(all_packets, list), "--all CLI did not return a packet list")
