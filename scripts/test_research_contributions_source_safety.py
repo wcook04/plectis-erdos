@@ -58,7 +58,9 @@ def main() -> int:
         "receipt link did not escape a hostile filename",
     )
 
-    with tempfile.TemporaryDirectory(prefix="contribution-source-safety-") as temporary:
+    with tempfile.TemporaryDirectory(
+        dir="/tmp", prefix="contribution-source-safety-"
+    ) as temporary:
         root = Path(temporary)
         external = root / "external-receipts"
         external.mkdir()

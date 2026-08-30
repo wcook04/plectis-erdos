@@ -82,11 +82,16 @@ def has_symlink_component(path: Path, root: Path = ROOT) -> bool:
     candidate = Path(os.path.abspath(path))
 
     def platform_alias(component: Path) -> bool:
-        """Allow only macOS's system-owned ``/var`` compatibility alias."""
-        if component != Path("/var"):
+        """Allow only macOS's system-owned temp-directory compatibility aliases."""
+        aliases = {
+            Path("/tmp"): Path("/private/tmp"),
+            Path("/var"): Path("/private/var"),
+        }
+        target = aliases.get(component)
+        if target is None:
             return False
         try:
-            return component.resolve(strict=True) == Path("/private/var")
+            return component.resolve(strict=True) == target
         except OSError:
             return False
 
