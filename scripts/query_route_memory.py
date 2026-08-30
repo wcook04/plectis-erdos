@@ -169,13 +169,20 @@ def _problem_row(root: Path, selector: str | int) -> dict[str, Any]:
     problems = _json(root / "docs" / "problems.json").get("problems", [])
     token = str(selector).strip()
     match_number = re.fullmatch(r"(?:#|erdos\s*)?(\d+)", token, re.IGNORECASE)
+    matches: list[dict[str, Any]] = []
     for row in problems:
         if not isinstance(row, Mapping):
             continue
-        if match_number and int(row.get("erdos_number", -1)) == int(match_number.group(1)):
-            return dict(row)
-        if token.casefold() == str(row.get("problem_id", "")).casefold():
-            return dict(row)
+        if match_number:
+            row_number = row.get("erdos_number")
+            if type(row_number) is int and row_number == int(match_number.group(1)):
+                matches.append(dict(row))
+        elif token.casefold() == str(row.get("problem_id", "")).casefold():
+            matches.append(dict(row))
+    if len(matches) > 1:
+        raise RouteMemoryError("problem_index_duplicate", token)
+    if matches:
+        return matches[0]
     raise RouteMemoryError("unknown_problem", token)
 
 

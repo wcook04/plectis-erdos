@@ -633,6 +633,22 @@ def main() -> int:
                 raise AssertionError(
                     f"malformed --all index escaped: {expected_code}"
                 )
+    for ambiguous_index, selector in (
+        ([{"erdos_number": 249}, {"erdos_number": 249}], 249),
+        ([{"problem_id": "erdos_249"}, {"problem_id": "erdos_249"}], "erdos_249"),
+    ):
+        with patch.object(
+            route_memory, "_json", return_value={"problems": ambiguous_index}
+        ):
+            try:
+                route_memory._problem_row(ROOT, selector)
+            except route_memory.RouteMemoryError as exc:
+                require(
+                    exc.code == "problem_index_duplicate",
+                    f"single-problem duplicate index returned {exc.code}",
+                )
+            else:
+                raise AssertionError("single-problem duplicate index escaped")
     all_cards = run_cli("--all", "--format", "card", check=True)
     require(
         sum(line.startswith("route-memory ") for line in all_cards.stdout.splitlines())
