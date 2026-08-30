@@ -60,11 +60,11 @@ boundary of that relationship.
 
   **Boundary.** Printed p. 66 explicitly says the analogous Euler-totient series `Σφ(n)/t^n` “seem[s] to present difficulties.” This source therefore does not support irrationality of the #249 totient series, any totient-kernel rank/basis, or the release’s Lean/Comparator claims; no novelty or priority claim is made.
 
-- P. Erdős, [*On the irrationality of certain series* (Math. Student 36, 1968)](https://users.renyi.hu/~p_erdos/1969-09.pdf)
+- P. Erdős, [*On the irrationality of certain series* (Math. Student 36, 1968)](https://users.renyi.hu/~p_erdos/1969-09.pdf) ([read source closure](primary-sources/reciprocal-tail/erdos-1968-source-closure.md))
 
-  Pairwise-coprime support condition.
+  **Pairwise-coprime support theorem.** Printed p. 222 states that if `n_1 < n_2 < ...` are pairwise coprime and `Σ 1/n_i < ∞`, then `Σ_i 1/(t^(n_i)-1)` is irrational for every integer `t ≥ 2`; the proof occupies printed pp. 223–225.
 
-  **Boundary.** Only that classical family is attributed to this source; it does not settle universal #257.
+  **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details; printed p. 226 also says the all-primes case is not handled. The source therefore does not support the coprimality-free extension, universal #257, the release's Lean/Comparator claims, or any novelty or priority claim.
 
 - P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X)
 

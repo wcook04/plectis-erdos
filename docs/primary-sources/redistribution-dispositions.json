@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 13,
-    "artifact_count": 13,
+    "working_tree_only_count": 14,
+    "artifact_count": 14,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 13,
+    "link_and_digest_only_count": 14,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -205,6 +205,24 @@
         "docs/PRIOR_ART.md",
         "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
         "docs/primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/erdos-1968-series.pdf",
+      "sha256": "340fff6a8a70d2125587ebc62e8157258ed30a86bb19afe25257bb1cb2126e57",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://users.renyi.hu/~p_erdos/1969-09.pdf"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/erdos-1968-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
       ]
     },
     {
