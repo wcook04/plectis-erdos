@@ -1028,11 +1028,15 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
             ),
         },
         "public_guidance": {
-            "continuation_guide": "docs/research-commons/README.md",
+            "continuation_guide": "docs/AGENT_WORKBENCH.md",
             "return_template": "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
-            "resume_state_template": "docs/research-commons/RESUME_STATE_TEMPLATE.yaml",
-            "credit_policy": "docs/research-commons/CREDIT_POLICY.md",
-            "frontier_handoff_example": "docs/research-commons/FRONTIER_HANDOFF_EXAMPLE.md",
+            "resume_state_template": (
+                "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#6-resume-state-and-promotion-request"
+            ),
+            "credit_policy": "docs/research-commons/CONTRIBUTION_RECOGNITION.md",
+            "frontier_handoff_example": (
+                "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#formal-handoff-from-exposition"
+            ),
             "correction_lineage": (
                 "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#correction-lineage"
             ),
