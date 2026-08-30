@@ -472,16 +472,20 @@ def build_all_packets(*, root: Path = ROOT) -> list[dict[str, Any]]:
     mixed resume snapshot that cannot be validated as one portfolio view.
     """
     rows = _json(root / "docs" / "problems.json").get("problems", [])
-    selectors = sorted(
-        {
-            int(row["erdos_number"])
-            for row in rows
-            if isinstance(row, Mapping)
-            and isinstance(row.get("erdos_number"), int)
-        }
-    )
-    if not selectors:
+    if not isinstance(rows, list) or not rows:
         raise RouteMemoryError("problem_index_empty", "docs/problems.json::problems")
+    selectors: list[int] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, Mapping) or not isinstance(row.get("erdos_number"), int):
+            raise RouteMemoryError(
+                "problem_index_shape",
+                f"docs/problems.json::problems[{index}].erdos_number",
+            )
+        number = int(row["erdos_number"])
+        if number in selectors:
+            raise RouteMemoryError("problem_index_duplicate", str(number))
+        selectors.append(number)
+    selectors.sort()
     packets = [build_packet(number, root=root) for number in selectors]
     snapshots = {
         (

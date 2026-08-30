@@ -410,6 +410,24 @@ def main() -> int:
             )
         else:
             raise AssertionError("mixed --all source snapshots were accepted")
+    for malformed_index, expected_code in (
+        ([{"erdos_number": 68}, {"erdos_number": 68}], "problem_index_duplicate"),
+        ([{"erdos_number": "68"}], "problem_index_shape"),
+    ):
+        with patch.object(
+            route_memory, "_json", return_value={"problems": malformed_index}
+        ):
+            try:
+                route_memory.build_all_packets()
+            except route_memory.RouteMemoryError as exc:
+                require(
+                    exc.code == expected_code,
+                    f"malformed --all index returned {exc.code}",
+                )
+            else:
+                raise AssertionError(
+                    f"malformed --all index escaped: {expected_code}"
+                )
     all_cards = run_cli("--all", "--format", "card", check=True)
     require(
         sum(line.startswith("route-memory ") for line in all_cards.stdout.splitlines())
