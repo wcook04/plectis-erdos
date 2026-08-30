@@ -16,6 +16,7 @@ from unittest.mock import patch
 import build_research_contribution_recognition as recognition
 import build_research_contributions as contributions
 import check_research_contribution_recognition as checker
+import validate_research_return as return_validator
 import validation_singleflight as singleflight
 
 
@@ -39,13 +40,31 @@ def accepted_source() -> tuple[str, dict, bytes, str]:
         env=contributions.git_environment(),
         timeout=contributions.GIT_LOOKUP_TIMEOUT_SECONDS,
     ).stdout.strip()
+    starting = subprocess.run(
+        ["git", "rev-parse", "HEAD^"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+        env=contributions.git_environment(),
+        timeout=contributions.GIT_LOOKUP_TIMEOUT_SECONDS,
+    ).stdout.strip()
+    changed_path = subprocess.run(
+        ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+        env=contributions.git_environment(),
+        timeout=contributions.GIT_LOOKUP_TIMEOUT_SECONDS,
+    ).stdout.splitlines()[0]
     receipt["record_kind"] = "accepted_receipt"
     receipt["return_id"] = "rr-recognition-projection-test"
-    receipt["repository"]["starting_commit"] = head
+    receipt["repository"]["starting_commit"] = starting
     receipt["repository"]["proposed_commit"] = head
     receipt["repository"]["accepted_commit"] = head
-    receipt["repository"]["changed_paths"] = ["docs/repository_identity.json"]
-    receipt["evidence"][0]["artifacts"] = ["docs/repository_identity.json"]
+    receipt["repository"]["changed_paths"] = [changed_path]
+    receipt["evidence"][0]["artifacts"] = [changed_path]
     receipt["review"]["structural_validation"]["state"] = "valid"
     receipt["review"]["reproduction"]["state"] = "reproduced"
     receipt["review"]["accepted_handoff"]["state"] = "accepted"
@@ -57,7 +76,7 @@ def accepted_source() -> tuple[str, dict, bytes, str]:
         "handle": "recognition-human",
         "identifiers": ["id:human"],
     }
-    receipt["identity"]["operator"] = {"relationship": "assisted_by", "name": "Recognition Operator"}
+    receipt["identity"]["operator"] = {"relationship": "named", "name": "Recognition Operator"}
     receipt["identity"]["model_system"] = {
         "state": "disclosed",
         "name": "Recognition Model",
@@ -72,10 +91,143 @@ def accepted_source() -> tuple[str, dict, bytes, str]:
     }
     receipt["identity"]["material_collaborators"] = [{"name": "Recognition Collaborator", "role": "review"}]
     receipt["attribution"]["artifact_credit"] = [
-        {"name": "Recognition Human", "artifact_paths": ["docs/repository_identity.json"]}
+        {"name": "Recognition Human", "artifact_paths": [changed_path]}
     ]
     payload = contributions.canonical(receipt)
     return "rr-recognition-projection-test.json", receipt, payload, head
+
+
+def accepted_result_matrix() -> tuple[list[tuple[str, dict, bytes]], str]:
+    """Build four accepted rows from the public fixture without minting receipts.
+
+    The checked-in fixture remains a submitted, unaccepted adversarial input.
+    These rows are an in-memory acceptance harness: each one receives the
+    exact accepted state required by the intake validator, while retaining the
+    fixture's bounded evidence shape.  This makes the projection test the
+    actual consumer of all result classes rather than a policy-only assertion.
+    """
+    _name, seed, _payload, head = accepted_source()
+    changed_path = seed["repository"]["changed_paths"][0]
+    specifications = (
+        (
+            "positive",
+            "checked_positive",
+            "verified_finite_instance",
+            "accept_handoff",
+            "2026-08-30T00:00:01Z",
+            "Human positive return",
+        ),
+        (
+            "negative",
+            "negative",
+            "negative_for_bounded_route",
+            "no_promotion",
+            "2026-08-30T00:00:02Z",
+            "Human negative return",
+        ),
+        (
+            "inconclusive",
+            "inconclusive",
+            "inconclusive_attempt",
+            "no_promotion",
+            "2026-08-30T00:00:03Z",
+            "Human inconclusive return",
+        ),
+        (
+            "corrective",
+            "corrective",
+            "documentation_correction",
+            "no_promotion",
+            "2026-08-30T00:00:04Z",
+            "Human corrective return",
+        ),
+    )
+    sources: list[tuple[str, dict, bytes]] = []
+    for suffix, result_class, claim_ceiling, disposition, accepted_at, contributor in specifications:
+        receipt = copy.deepcopy(seed)
+        receipt["return_id"] = f"rr-recognition-{suffix}-projection-test"
+        receipt["result"].update(
+            {
+                "class": result_class,
+                "summary": f"Accepted {suffix} projection fixture.",
+                "claim_ceiling": claim_ceiling,
+                "requested_disposition": disposition,
+                "limitations": ["Projection fixture is not a solution of the open problem."],
+                "surviving_boundary": "The universal Erdős #257 proposition remains open.",
+            }
+        )
+        receipt["identity"]["contributor"] = {
+            "name": contributor,
+            "handle": f"recognition-{suffix}",
+            "identifiers": [f"id:{suffix}"],
+        }
+        receipt["identity"]["operator"] = {
+            "relationship": "named",
+            "name": "Recognition Operator",
+        }
+        receipt["identity"]["model_system"] = {
+            "state": "disclosed",
+            "name": f"Recognition Model {suffix}",
+            "version": "2",
+            "resources": ["accepted-result matrix fixture"],
+        }
+        receipt["identity"]["provider"] = {
+            "state": "disclosed",
+            "name": "Recognition Provider",
+            "version": "3",
+            "resources": [],
+        }
+        receipt["attribution"]["artifact_credit"] = [
+            {"name": contributor, "artifact_paths": [changed_path]}
+        ]
+        receipt["attribution"]["requested_display"] = (
+            f"{contributor} — accepted {result_class} projection fixture"
+        )
+        receipt["repository"]["changed_paths"] = [changed_path]
+        receipt["evidence"][0].update(
+            {
+                "command": "python3 scripts/query_corpus.py --problem 257",
+                "exit_state": "passed",
+                "exit_code": 0,
+                "observed": f"Accepted {result_class} fixture evidence.",
+                "artifacts": [changed_path],
+                "replay_state": "reproduced",
+            }
+        )
+        receipt["review"]["accepted_handoff"].update(
+            {
+                "state": "accepted",
+                "reviewer": "Acceptance Reviewer",
+                "decided_at": accepted_at,
+                "authority_ref": f"git:{head}",
+            }
+        )
+        for review_field in ("structural_validation", "reproduction"):
+            receipt["review"][review_field].update(
+                {
+                    "reviewer": "Projection Validator",
+                    "decided_at": accepted_at,
+                    "authority_ref": f"git:{head}",
+                }
+            )
+        if result_class == "corrective":
+            receipt["correction_lineage"] = {
+                "prior_return_reference": "rr-recognition-positive-projection-test",
+                "affected_paths": [changed_path],
+                "starting_commit": seed["repository"]["starting_commit"],
+                "changed_evidence_or_wording": "Corrected the bounded result summary.",
+                "reason": "The earlier accepted fixture used imprecise wording.",
+                "disposition": "supersede",
+            }
+        payload = contributions.canonical(receipt)
+        errors = return_validator.validate_document(
+            receipt,
+            require_accepted=True,
+            repository_identity=checker.repository_identity_contract.load_identity(),
+        )
+        require(not errors, f"accepted {result_class} fixture failed intake validation: {errors}")
+        sources.append((f"{receipt['return_id']}.json", receipt, payload))
+    return sources, head
 
 
 def main() -> int:
@@ -181,6 +333,100 @@ def main() -> int:
     for marker in ("Recognition Human", "Recognition Operator", "Recognition Model", "Recognition Provider", "pending"):
         require(marker in human, f"human recognition view omitted {marker}")
     require("commit_count" not in human and "diff_size" not in human, "recognition view exposed activity scoring")
+
+    matrix_sources, matrix_head = accepted_result_matrix()
+    original_route = contributions.public_result_family_route
+    original_receipt_commit = recognition._receipt_source_commit
+    contributions.public_result_family_route = lambda problem: {
+        "repository_path": f"docs/research-commons/RETURN_PACKAGE_EXAMPLE_{problem}.md",
+        "anchor": "current-public-consumer-fan-in",
+        "relative_link": f"RETURN_PACKAGE_EXAMPLE_{problem}.md#current-public-consumer-fan-in",
+    }
+    recognition._receipt_source_commit = lambda row: matrix_head
+    try:
+        matrix = recognition.build_recognition(matrix_sources)
+    finally:
+        contributions.public_result_family_route = original_route
+        recognition._receipt_source_commit = original_receipt_commit
+
+    require(matrix["accepted_receipt_count"] == 4, "result-class matrix did not count every accepted receipt")
+    require(
+        {row["result"]["class"] for row in matrix["chronological"]}
+        == {"checked_positive", "negative", "inconclusive", "corrective"},
+        "result-class matrix did not retain all accepted result classes",
+    )
+    require(
+        matrix["aggregates"]["by_result_class"]
+        and all(
+            entry["denominator"] == {"accepted_receipts": 4}
+            for entry in matrix["aggregates"]["by_result_class"]
+        ),
+        "result-class aggregate denominator is not the accepted-receipt count",
+    )
+    matrix_ids = {row["return_id"] for row in matrix["chronological"]}
+    for facet in ("by_contributor", "by_model_system"):
+        entries = matrix["aggregates"][facet]
+        require(len(entries) == 4, f"{facet} did not preserve distinct accepted identities")
+        require(
+            {
+                reference["return_id"]
+                for entry in entries
+                for reference in entry["accepted_receipts"]
+            }
+            == matrix_ids,
+            f"{facet} did not retain exact accepted receipt provenance",
+        )
+    provider_entries = matrix["aggregates"]["by_provider"]
+    require(
+        len(provider_entries) == 1
+        and provider_entries[0]["accepted_receipt_count"] == 4,
+        "by_provider did not coalesce its intentionally shared disclosed provider",
+    )
+    require(
+        {
+            reference["return_id"]
+            for reference in provider_entries[0]["accepted_receipts"]
+        }
+        == matrix_ids,
+        "by_provider did not retain exact accepted receipt provenance",
+    )
+    for facet in ("by_operator_relationship", "by_material_collaborator"):
+        entries = matrix["aggregates"][facet]
+        require(len(entries) == 1, f"{facet} did not preserve its shared identity facet")
+        require(
+            entries[0]["accepted_receipt_count"] == 4
+            and entries[0]["denominator"] == {"accepted_receipts": 4},
+            f"{facet} collapsed its accepted-receipt denominator",
+        )
+    correction = matrix["chronological"][-1]
+    require(
+        correction["correction_lineage"]["disposition"] == "supersede",
+        "corrective accepted receipt lost its correction disposition",
+    )
+    require(
+        correction["impact_state"]["correction_lineage_state"] == "supersede",
+        "corrective impact projection lost correction lineage",
+    )
+    require(
+        len(matrix["aggregates"]["by_correction_lineage"]) == 2,
+        "correction aggregate did not preserve the none/supersede split",
+    )
+    matrix_human = recognition.human_projection(matrix).decode("utf-8")
+    for marker in (
+        "checked_positive",
+        "negative",
+        "inconclusive",
+        "corrective",
+        "Recognition Model positive",
+        "Recognition Operator",
+        "supersede",
+        "The universal Erdős #257 proposition remains open.",
+    ):
+        require(marker in matrix_human, f"matrix human view omitted {marker}")
+    require(
+        "commit_count" not in matrix_human and "diff_size" not in matrix_human,
+        "result-class matrix exposed activity scoring",
+    )
 
     malformed_aggregate = copy.deepcopy(projection)
     mutated_aggregate = False
