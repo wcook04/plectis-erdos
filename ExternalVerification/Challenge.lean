@@ -147,6 +147,15 @@ theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
           CarrySectionsEventuallyPeriodicMod v h N₀ u :=
   (portfolioClaims Unit).problem249CarryAntiCompression hirr
 
+theorem fixedPrecisionTropicalNoGo
+    (u : ℕ) (hu : 0 < u)
+    (symbols : List VUSymbol) (hodd : ∀ σ ∈ symbols, Odd σ.unit) (e : ℤ) :
+    ∃ states : List ℤ,
+      VUOrbit u e symbols states ∧
+      List.Forall₂ (fun σ e' => |e'| ≤ vuRadius u σ) symbols states :=
+  (portfolioClaims Unit).problem249FixedPrecisionTropicalNoGo
+    u hu symbols hodd e
+
 theorem tsum_pos_coprime_inv_mersenne_eq_one :
     (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1 :=

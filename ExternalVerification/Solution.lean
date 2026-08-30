@@ -23,6 +23,7 @@ import Erdos249257.TotientActualLcmOrbitSeparation
 import Erdos249257.FirstHarmonicPivot
 import Erdos249257.TotientActualLcmOrbitSign
 import Erdos249257.ActualForeignResidueProjection
+import Erdos249257.TropicalCurvatureCarry
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
@@ -474,6 +475,53 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.canonicalCarryKernelFamily] using
       Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
         hirr
+  · intro u hu symbols hodd e
+    let toSource : VUSymbol → Erdos249257.TotientTailPeriodKiller.VUSymbol :=
+      fun σ => { valuation := σ.valuation, unit := σ.unit }
+    have hcompatible (σ : VUSymbol) (c : ℤ) :
+        VUCompatible u σ c ↔
+          Erdos249257.TotientTailPeriodKiller.VUCompatible u (toSource σ) c := by
+      rfl
+    have hradius (σ : VUSymbol) :
+        vuRadius u σ =
+          Erdos249257.TotientTailPeriodKiller.vuRadius u (toSource σ) := by
+      rfl
+    have hodd' :
+        ∀ σ ∈ symbols.map toSource,
+          Odd σ.unit := by
+      intro σ hσ
+      rcases List.mem_map.1 hσ with ⟨τ, hτ, rfl⟩
+      exact hodd τ hτ
+    have orbit_to_source
+        {e : ℤ} {ss : List VUSymbol} {states : List ℤ}
+        (horbit : VUOrbit u e ss states) :
+        Erdos249257.TotientTailPeriodKiller.VUOrbit u e (ss.map toSource) states := by
+      induction horbit with
+      | nil e =>
+          exact Erdos249257.TotientTailPeriodKiller.VUOrbit.nil e
+      | cons e c e' σ ss states hcompat' hstep htail ih =>
+          exact Erdos249257.TotientTailPeriodKiller.VUOrbit.cons e c e'
+            (toSource σ) (ss.map toSource) states
+            ((hcompatible σ c).mp hcompat') hstep ih
+    have orbit_of_source
+        {e : ℤ} {ss : List VUSymbol} {states : List ℤ}
+        (horbit :
+          Erdos249257.TotientTailPeriodKiller.VUOrbit u e (ss.map toSource) states) :
+        VUOrbit u e ss states := by
+      induction ss generalizing e states with
+      | nil =>
+          cases horbit
+          exact VUOrbit.nil e
+      | cons σ ss ih =>
+          cases horbit with
+          | cons e c e' σ' ss' states hcompat' hstep htail =>
+              exact VUOrbit.cons e c e' σ ss states
+                ((hcompatible σ c).mpr hcompat') hstep (ih htail)
+    obtain ⟨states, horbit, hbounds⟩ :=
+      Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo
+        u hu (symbols.map toSource) hodd' e
+    refine ⟨states, orbit_of_source horbit, ?_⟩
+    simpa [hradius] using hbounds
   · intro B hB base carry digit hrec
     simpa [weightedCarryResidue, weightedCarryQuotient,
       weightedResidueDigit, ErdosProblems.Erdos269.carryResidue,
@@ -857,6 +905,15 @@ theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
         ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
           CarrySectionsEventuallyPeriodicMod v h N₀ u :=
   (portfolioClaims Unit).problem249CarryAntiCompression hirr
+
+theorem fixedPrecisionTropicalNoGo
+    (u : ℕ) (hu : 0 < u)
+    (symbols : List VUSymbol) (hodd : ∀ σ ∈ symbols, Odd σ.unit) (e : ℤ) :
+    ∃ states : List ℤ,
+      VUOrbit u e symbols states ∧
+      List.Forall₂ (fun σ e' => |e'| ≤ vuRadius u σ) symbols states :=
+  (portfolioClaims Unit).problem249FixedPrecisionTropicalNoGo
+    u hu symbols hodd e
 
 theorem irrational_totientSeries_of_actualLcmOrbitSeparationSupply
     (hsupply : PowerTwoActualLcmOrbitSeparationSupply) :

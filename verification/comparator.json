@@ -12,6 +12,7 @@
     "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
     "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
     "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+    "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
     "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
     "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
     "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",

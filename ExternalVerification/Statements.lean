@@ -262,6 +262,37 @@ def CofinalPositiveHalfGreedySkips : Prop :=
       greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
         mersenneWeightRat c
 
+/-! ## Fixed-precision valuation--unit no-go vocabulary -/
+
+structure VUSymbol where
+  valuation : ℕ
+  unit : ℤ
+
+def VUCompatible (u : ℕ) (σ : VUSymbol) (c : ℤ) : Prop :=
+  Odd σ.unit ∧ ∃ z : ℤ,
+    c = (2 : ℤ) ^ σ.valuation * (σ.unit + (2 : ℤ) ^ u * z)
+
+def vuModulus (u : ℕ) (σ : VUSymbol) : ℤ :=
+  (2 : ℤ) ^ (σ.valuation + u)
+
+def vuRadius (u : ℕ) (σ : VUSymbol) : ℤ :=
+  (2 : ℤ) ^ (σ.valuation + u - 1)
+
+def vuBaseDigit (σ : VUSymbol) : ℤ :=
+  (2 : ℤ) ^ σ.valuation * σ.unit
+
+def vuCentredStep (u : ℕ) (σ : VUSymbol) (e : ℤ) : ℤ :=
+  let R := vuRadius u σ
+  let M := vuModulus u σ
+  (2 * e + vuBaseDigit σ + R) % M - R
+
+inductive VUOrbit (u : ℕ) : ℤ → List VUSymbol → List ℤ → Prop
+  | nil (e : ℤ) : VUOrbit u e [] []
+  | cons (e c e' : ℤ) (σ : VUSymbol) (symbols : List VUSymbol)
+      (states : List ℤ) (hcompat : VUCompatible u σ c)
+      (hstep : e' = 2 * e + c) (htail : VUOrbit u e' symbols states) :
+      VUOrbit u e (σ :: symbols) (e' :: states)
+
 /-! The exact Boolean seam used by the half-membership classification.  These
 statement-side definitions intentionally mirror the finite integer-greedy
 construction without importing its proof-bearing source module. -/
@@ -948,6 +979,12 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
                   (Set.range (canonicalCarryKernelFamily u e)))) ∧
           ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
             CarrySectionsEventuallyPeriodicMod v h N₀ u
+  problem249FixedPrecisionTropicalNoGo :
+    ∀ (u : ℕ) (hu : 0 < u)
+      (symbols : List VUSymbol) (hodd : ∀ σ ∈ symbols, Odd σ.unit) (e : ℤ),
+      ∃ states : List ℤ,
+        VUOrbit u e symbols states ∧
+        List.Forall₂ (fun σ e' => |e'| ≤ vuRadius u σ) symbols states
   problem269WeightedCarry :
     ∀ (B : ℤ) (hB : 0 < B)
       (base carry digit : ℕ → ℤ),
