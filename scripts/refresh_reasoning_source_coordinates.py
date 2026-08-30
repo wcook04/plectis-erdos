@@ -20,6 +20,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parent.parent
 PARTS_DIRS = (
@@ -152,6 +154,7 @@ class Resolver:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            env=singleflight.command_environment(),
         )
         if result.returncode:
             detail = result.stderr.strip() or "git show failed"

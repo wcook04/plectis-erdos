@@ -5,10 +5,12 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -74,9 +76,16 @@ def main() -> int:
         coordinates.ROOT = root
         coordinates.PARTS_DIRS = parts_dirs
         try:
-            rendered, declarations, authored_locations, resolved_pin = (
-                coordinates.render_all()
-            )
+            hostile_environment = {
+                "GIT_DIR": "/private/wrong-git-dir",
+                "GIT_NAMESPACE": "wrong-namespace",
+                "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
+                "PYTHONPATH": "/private/wrong-python-path",
+            }
+            with patch.dict(os.environ, hostile_environment, clear=False):
+                rendered, declarations, authored_locations, resolved_pin = (
+                    coordinates.render_all()
+                )
             assert resolved_pin == pin
             assert declarations == 1
             assert authored_locations == 2
