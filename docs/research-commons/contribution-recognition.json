@@ -1,0 +1,35 @@
+{
+  "accepted_receipt_count": 0,
+  "aggregates": {
+    "by_artifact_credit": [],
+    "by_contributor": [],
+    "by_core_promotion_state": [],
+    "by_correction_lineage": [],
+    "by_evidence_state": [],
+    "by_material_collaborator": [],
+    "by_model_system": [],
+    "by_operator_relationship": [],
+    "by_problem": [],
+    "by_problem_owned_proposition_state": [],
+    "by_provider": [],
+    "by_reproduction_state": [],
+    "by_requested_disposition": [],
+    "by_result_class": [],
+    "by_review_state": [],
+    "by_tagged_release_inclusion_state": []
+  },
+  "artifact_role": "generated_accepted_receipt_recognition_and_impact_view",
+  "authority_boundary": "This is a receipt-derived recognition and release-state view. It does not establish mathematical novelty, proof authority, scientific quality, ownership, endorsement, independent review, or release authority. Detached route-memory sidecars are validated at intake but remain separate route authority and are not recognition credit.",
+  "chronological": [],
+  "comparison_policy": "Counts are factual accepted-receipt counts with an explicit accepted-receipt denominator; they are not rankings or measures of mathematical importance. Undisclosed, not_used, and not_recorded identity states remain visibly distinct from disclosed identities. Equal counts remain ties; stable-key ordering is navigation and never a rank.",
+  "denominator": {
+    "accepted_receipts": 0
+  },
+  "generated_by": "scripts/build_research_contribution_recognition.py",
+  "ordering_policy": "Chronological rows use accepted_at then return_id. Aggregate entries use stable lexicographic keys, never commit count, diff size, token spend, compute spend, or activity.",
+  "schema": "accepted-research-contribution-recognition/1",
+  "schema_path": "docs/research-commons/schema/research-contribution-recognition.schema.json",
+  "source_directory": "docs/research-commons/returns",
+  "source_policy": "strict accepted_receipt records only; detached route-memory sidecars are separate intake authority and are not consumed by this projection",
+  "source_projection": "scripts/build_research_contribution_recognition.py"
+}

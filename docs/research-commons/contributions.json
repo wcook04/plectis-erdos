@@ -1,0 +1,14 @@
+{
+  "artifact_role": "generated_accepted_artifact_attribution_view",
+  "authority_boundary": "Receipt-derived attribution evidence only; Lean, docs/claims.json, methodology review, GitHub delivery history, core promotion, and tagged releases retain their own authority.",
+  "chronological": [],
+  "filters": {
+    "by_problem": {},
+    "by_requested_disposition": {},
+    "by_result_class": {}
+  },
+  "generated_by": "scripts/build_research_contributions.py",
+  "schema": "accepted-research-contributions/1",
+  "source_directory": "docs/research-commons/returns",
+  "source_policy": "strict accepted_receipt records only; detached route-memory sidecars are separate intake authority and are not included in this attribution view"
+}
