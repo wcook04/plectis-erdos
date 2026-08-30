@@ -1587,7 +1587,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:d730d37dbd639014573928a84191bef49c49c726c9907709dfdd51e6fbb10d7e",
+      "source_sha256": "sha256:9ec2c6e2aef13a24e1bee6a99e88935ed7e27245fc4d7e446251fc2b51dd3b84",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
@@ -1604,139 +1604,139 @@
           "level": 1,
           "id": "sec:results",
           "title": "Introduction and main results",
-          "line": 35
+          "line": 37
         },
         {
           "level": 1,
           "id": "sec:family",
           "title": "The Lambert-series form of Problem #249",
-          "line": 113
+          "line": 133
         },
         {
           "level": 4,
           "id": "a-nearby-2026-totient-theorem-has-different-coordinates.",
           "title": "A nearby 2026 totient theorem has different coordinates.",
-          "line": 136
+          "line": 156
         },
         {
           "level": 4,
           "id": "exact-identities-and-representations.",
           "title": "Exact identities and representations.",
-          "line": 148
+          "line": 168
         },
         {
           "level": 1,
           "id": "sec:rank",
           "title": "Proof of the dyadic-section basis theorem",
-          "line": 185
+          "line": 205
         },
         {
           "level": 2,
           "id": "prior-work",
           "title": "Prior work",
-          "line": 189
+          "line": 209
         },
         {
           "level": 2,
           "id": "parity-separated-evaluation-matrices",
           "title": "Parity-separated evaluation matrices",
-          "line": 214
+          "line": 234
         },
         {
           "level": 1,
           "id": "sec:carry-rank",
           "title": "Carry-rank consequences of rationality",
-          "line": 230
+          "line": 250
         },
         {
           "level": 1,
           "id": "sec:denominator",
           "title": "A Farey-mediant denominator exclusion",
-          "line": 236
+          "line": 256
         },
         {
           "level": 1,
           "id": "sec:nogo",
           "title": "Obstructions for fixed-coordinate methods",
-          "line": 246
+          "line": 266
         },
         {
           "level": 1,
           "id": "sec:programmes",
           "title": "Further conditional criteria",
-          "line": 258
+          "line": 278
         },
         {
           "level": 4,
           "id": "a-prime-orbit-sufficient-condition.",
           "title": "A prime-orbit sufficient condition.",
-          "line": 264
+          "line": 284
         },
         {
           "level": 4,
           "id": "finite-euler-factor-identities.",
           "title": "Finite Euler-factor identities.",
-          "line": 270
+          "line": 290
         },
         {
           "level": 4,
           "id": "mixed-differences-of-cyclotomic-layers.",
           "title": "Mixed differences of cyclotomic layers.",
-          "line": 297
+          "line": 317
         },
         {
           "level": 1,
           "id": "sec:frontier",
           "title": "Open problems",
-          "line": 343
+          "line": 363
         },
         {
           "level": 2,
           "id": "exact-equivalent-formulations",
           "title": "Exact equivalent formulations",
-          "line": 349
+          "line": 369
         },
         {
           "level": 2,
           "id": "stronger-sufficient-producer-problems",
           "title": "Stronger sufficient producer problems",
-          "line": 378
+          "line": 398
         },
         {
           "level": 2,
           "id": "structural-and-diophantine-routes",
           "title": "Structural and Diophantine routes",
-          "line": 430
+          "line": 450
         },
         {
           "level": 2,
           "id": "independent-extension",
           "title": "Independent extension",
-          "line": 465
+          "line": 485
         },
         {
           "level": 4,
           "id": "the-independent-denominator-exclusion.",
           "title": "The independent denominator exclusion.",
-          "line": 507
+          "line": 527
         },
         {
           "level": 2,
           "id": "sec:open",
           "title": "Logical status and analytic input",
-          "line": 513
+          "line": 533
         },
         {
           "level": 1,
           "id": "formal-source-notes",
           "title": "Formal source notes",
-          "line": 537
+          "line": 557
         },
         {
           "level": 4,
           "id": "registry-coverage.",
           "title": "Registry coverage.",
-          "line": 541
+          "line": 561
         }
       ],
       "citations_rendered": 21,
@@ -1745,8 +1745,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:089d04eb57e676b71c4f498d35aade58dfef7b8b77e1e7c0ff4d5d0c87ea23c5",
-      "pdf_byte_count": 159290,
+      "pdf_sha256": "sha256:93eeedaeba01a35e6adf4c9c3b859082f48e523ef5da275b5686f53171f5681e",
+      "pdf_byte_count": 163113,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1754,7 +1754,7 @@
           {
             "id": "sec:results",
             "title": "Introduction and main results",
-            "line": 35
+            "line": 37
           },
           {
             "id": "sec:ask",
@@ -1764,7 +1764,7 @@
           {
             "id": "sec:open",
             "title": "Logical status and analytic input",
-            "line": 513
+            "line": 533
           }
         ],
         "unresolved_count": 1
