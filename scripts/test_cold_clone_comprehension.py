@@ -331,10 +331,19 @@ def main() -> int:
     # the live Palomar ranking so the positive contract remains executable,
     # while the real shelf is still checked for stale/reordered content.
     showcase = json.loads(diagnostic.read("docs/PALOMAR_RESULT_SHOWCASE.json"))
-    ranked_rows = showcase["candidate_ranking"]
-    ranked_fixture = "\n".join(
-        f"#### {row['rank']}. fixture — `{row['family_id']}`"
-        for row in ranked_rows
+    ranked_rows = list(reversed(showcase["candidate_ranking"]))
+    ranked_fixture = "\n\n".join(
+        "\n".join(
+            (
+                f"#### {row['rank']}. fixture — `{row['family_id']}`",
+                f"- **Checked interface:** `{row['declaration']}`",
+                "- **Exact source:** fixture source",
+                "- **Hard mechanism / natural friction:** fixture friction",
+                "- **Evidence / attribution ceiling:** fixture evidence",
+                "- **Boundary:** fixture boundary",
+            )
+        )
+        for row in sorted(ranked_rows, key=lambda row: row["rank"])
     )
     compliant_paper_library = (
         "## Mathematical signal first\n\n"
@@ -358,7 +367,9 @@ def main() -> int:
         # A concurrently refreshed exporter may already have repaired the
         # committed shelf; the positive contract below still exercises it.
         pass
-    diagnostic.validate_paper_library_first_contact(compliant_paper_library)
+    diagnostic.validate_paper_library_first_contact(
+        compliant_paper_library, ranking=ranked_rows
+    )
     census = diagnostic.semantic_census()
     census_surfaces = {
         path: diagnostic.read(path) for path in diagnostic.CENSUS_SURFACES
@@ -406,6 +417,74 @@ def main() -> int:
         checks += 1
     else:
         raise AssertionError("paper-library invented ranked family escaped")
+
+    mutated_paper_library = compliant_paper_library.replace(
+        "**Exact source:**", "**Unbound source:**", 1
+    )
+    try:
+        diagnostic.validate_paper_library_first_contact(
+            mutated_paper_library, ranking=ranked_rows
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library exact-source deletion escaped")
+
+    mutated_paper_library = compliant_paper_library.replace(
+        "**Hard mechanism / natural friction:**", "**Mechanism:**", 1
+    )
+    try:
+        diagnostic.validate_paper_library_first_contact(
+            mutated_paper_library, ranking=ranked_rows
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library natural-friction deletion escaped")
+
+    mutated_paper_library = compliant_paper_library.replace(
+        "**Evidence / attribution ceiling:**", "**Evidence:**", 1
+    )
+    try:
+        diagnostic.validate_paper_library_first_contact(
+            mutated_paper_library, ranking=ranked_rows
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library evidence-ceiling deletion escaped")
+
+    mutated_paper_library = compliant_paper_library.replace(
+        "**Boundary:**", "**Conclusion:**", 1
+    )
+    try:
+        diagnostic.validate_paper_library_first_contact(
+            mutated_paper_library, ranking=ranked_rows
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library boundary deletion escaped")
+
+    duplicate_rank_rows = copy.deepcopy(ranked_rows)
+    duplicate_rank_rows[1]["rank"] = duplicate_rank_rows[0]["rank"]
+    try:
+        diagnostic.validate_paper_library_first_contact(
+            compliant_paper_library, ranking=duplicate_rank_rows
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("duplicate Palomar rank escaped")
+
+    mutated = copy.deepcopy(human_surfaces)
+    mutated["README.md"] = (
+        "## Corpus at a glance\n\nRaw inventory fixture.\n\n" + mutated["README.md"]
+    )
+    assert_human_rejected(
+        summary, mutated, "raw inventory before all-problem discovery"
+    )
+    checks += 1
 
     for task_id, requirements in diagnostic.human_tasks(summary).items():
         for alternatives in requirements:

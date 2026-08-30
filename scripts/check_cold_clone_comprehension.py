@@ -919,6 +919,23 @@ def validate_human_first_contact(
     ):
         require(f"]({filename})" in readme_prefix, f"README no longer exposes the full reasoning record {filename}")
 
+    problem_portfolio = readme_prefix.find("## Problem papers")
+    raw_inventory = readme_prefix.find("## Corpus at a glance")
+    require(problem_portfolio >= 0, "README lost the all-problem discovery surface")
+    require(raw_inventory >= 0, "README lost the raw corpus-inventory boundary")
+    problem_positions = [
+        readme_prefix.find(f"**#{problem}**", problem_portfolio)
+        for problem in sorted(INDEXED_PROBLEM_NUMBERS)
+    ]
+    require(
+        all(position >= problem_portfolio for position in problem_positions),
+        "README no longer exposes every indexed problem before inventory",
+    )
+    require(
+        all(position < raw_inventory for position in problem_positions),
+        "README places raw scale or numeric inventory before all-problem discovery",
+    )
+
     for task_id, requirements in human_tasks(summary).items():
         for alternatives in requirements:
             require(contains_any(readme_prefix, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
@@ -943,7 +960,9 @@ def validate_human_first_contact(
         require(contains_any(orientation, [programme["claim_ceiling"]]), "cold-clone comprehension invariant")
 
 
-def validate_paper_library_first_contact(paper_readme: str) -> None:
+def validate_paper_library_first_contact(
+    paper_readme: str, *, ranking: list[dict[str, Any]] | None = None
+) -> None:
     """Ensure the generated paper shelf leads with canonical mathematical signal.
 
     The exporter owns the prose; this consumer only checks the public contract:
@@ -956,8 +975,9 @@ def validate_paper_library_first_contact(paper_readme: str) -> None:
         len(paper_readme.encode("utf-8")) <= PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES,
         "paper-library README exceeds its bounded first-contact budget",
     )
-    showcase = json.loads(read("docs/PALOMAR_RESULT_SHOWCASE.json"))
-    ranking = showcase.get("candidate_ranking")
+    if ranking is None:
+        showcase = json.loads(read("docs/PALOMAR_RESULT_SHOWCASE.json"))
+        ranking = showcase.get("candidate_ranking")
     require(isinstance(ranking, list) and ranking, "Palomar candidate ranking is missing")
     signal_heading = paper_readme.find("## Mathematical signal first")
     ranked_heading = paper_readme.find("### Ranked frontier")
@@ -991,12 +1011,37 @@ def validate_paper_library_first_contact(paper_readme: str) -> None:
         ),
         "paper-library README lost Palomar evidence boundary",
     )
+    ranked_candidates = sorted(ranking, key=lambda row: row.get("rank", 0))
+    ranks = [candidate.get("rank") for candidate in ranked_candidates]
+    require(
+        all(isinstance(rank, int) and rank > 0 for rank in ranks),
+        "Palomar candidate ranking has a non-positive or malformed rank",
+    )
+    require(
+        len(ranks) == len(set(ranks)),
+        "Palomar candidate ranking reuses an explicit rank",
+    )
     previous = -1
-    for candidate in sorted(ranking, key=lambda row: row.get("rank", 0)):
+    marker_positions: list[int] = []
+    for candidate in ranked_candidates:
         rank = candidate.get("rank")
         family_id = candidate.get("family_id")
-        require(isinstance(rank, int) and isinstance(family_id, str),
+        declaration = candidate.get("declaration")
+        require(isinstance(rank, int) and isinstance(family_id, str) and family_id,
                 "Palomar candidate ranking row is malformed")
+        require(
+            isinstance(declaration, str) and declaration,
+            f"Palomar candidate {family_id} lacks its checked declaration",
+        )
+        for field in (
+            "evidence_certainty",
+            "overclaim_risk",
+            "mechanism_depth_and_natural_friction",
+        ):
+            require(
+                isinstance(candidate.get(field), str) and candidate[field].strip(),
+                f"Palomar candidate {family_id} lacks {field}",
+            )
         marker = f"#### {rank}."
         marker_position = paper_readme.find(marker, ranked_heading)
         require(
@@ -1008,7 +1053,31 @@ def validate_paper_library_first_contact(paper_readme: str) -> None:
             family_position >= marker_position and family_position < friction_heading,
             f"paper-library README detached ranked family {family_id} from frontier",
         )
+        marker_positions.append(marker_position)
         previous = marker_position
+
+    for index, candidate in enumerate(ranked_candidates):
+        entry_end = (
+            marker_positions[index + 1]
+            if index + 1 < len(marker_positions)
+            else friction_heading
+        )
+        entry = paper_readme[marker_positions[index]:entry_end]
+        for label in (
+            "**Checked interface:**",
+            "**Exact source:**",
+            "**Hard mechanism / natural friction:**",
+            "**Evidence / attribution ceiling:**",
+            "**Boundary:**",
+        ):
+            require(
+                label in entry,
+                f"paper-library README ranked family {candidate['family_id']} lost {label}",
+            )
+        require(
+            candidate["declaration"] in entry,
+            f"paper-library README ranked family {candidate['family_id']} lost its exact checked interface",
+        )
 
 
 def semantic_census() -> dict[str, Any]:
