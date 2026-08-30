@@ -55,6 +55,7 @@ THREE_PRIME_LCM_FAMILY = "three_prime_lcm_cells"
 RANK_TWO_KERNEL_FAMILY = "rank_two_kernel_no_go"
 HEIGHT_FIBRE_FAMILY = "height_fibre_and_shell"
 DYADIC_ALPHABET_FAMILY = "dyadic_block_alphabet"
+ACTUAL_LCM_SEPARATION_FAMILY = "actual_lcm_orbit_separation"
 
 
 @lru_cache(maxsize=16)
@@ -910,6 +911,209 @@ def dyadic_block_alphabet_handoff(
     }
 
 
+def actual_lcm_orbit_separation_handoff(
+    palomar: Mapping[str, Any] | None = None,
+    claims: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Expose the highest-ranked remaining #249 orbit-separation consumer."""
+    palomar = palomar or load_json(PALOMAR)
+    claims_document = claims or load_json(CLAIMS)
+    review_rows = _claim_family_rows(claims_document)
+    review = review_rows.get(ACTUAL_LCM_SEPARATION_FAMILY)
+    if not isinstance(review, dict):
+        raise ValueError("Claims review matrix lacks actual_lcm_orbit_separation")
+    ranks = _canonical_family_ranks(palomar)
+    rank = ranks.get(ACTUAL_LCM_SEPARATION_FAMILY)
+    if rank is None:
+        raise ValueError("Palomar programme order lacks actual_lcm_orbit_separation")
+    claim = next(
+        (
+            row
+            for row in claims_document.get("external_verification_packet", {}).get(
+                "main_results", []
+            )
+            if row.get("review_family") == ACTUAL_LCM_SEPARATION_FAMILY
+        ),
+        None,
+    )
+    if not isinstance(claim, dict):
+        raise ValueError("Claims lacks the actual-LCM separation source claim")
+    source_specs = (
+        (
+            "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+            "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+            "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+            "actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+            "actualLcmTailOrbit_sub_rawApprox_eq",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+            "abs_actualLcmTailOrbit_sub_rawApprox_lt",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+            "PowerTwoActualLcmOrbitSeparationSupply",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+            "powerTwoActualPenultimateSignedMarginSupply_of_actualLcmOrbitSeparation",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+            "irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSign.lean",
+            "actualLcmTailDiff_shift_pos",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSign.lean",
+            "actualLcm_trueEndpointSurvivor_neg",
+        ),
+        (
+            "Erdos249257/TotientActualLcmOrbitSign.lean",
+            "actualLcm_integral_forces_topEdgeResidue",
+        ),
+    )
+    atlas = load_json(ATLAS)
+    declarations = [
+        _live_source_declaration(module, name, atlas)
+        for module, name in source_specs
+    ]
+    ranking_rows = [
+        row
+        for row in palomar.get("candidate_ranking", [])
+        if row.get("family_id") == ACTUAL_LCM_SEPARATION_FAMILY
+    ]
+    if len(ranking_rows) != 1:
+        raise ValueError("Palomar must expose one actual-LCM ranking row")
+    canonical_relations = [
+        row
+        for row in palomar.get("selection_contract", {}).get(
+            "family_relations", []
+        )
+        if row.get("to_family_id") == ACTUAL_LCM_SEPARATION_FAMILY
+    ]
+    canonical_relations.sort(
+        key=lambda row: (
+            ranks.get(str(row.get("from_family_id")), {}).get("problem", 10**9),
+            ranks.get(str(row.get("from_family_id")), {}).get(
+                "programme_position", 10**9
+            ),
+        )
+    )
+    return {
+        "family": {
+            "family_id": ACTUAL_LCM_SEPARATION_FAMILY,
+            "problem": rank["problem"],
+            "authority_rank": {
+                "programme_position": rank["programme_position"],
+                "basis": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                    "programme_family_order"
+                ),
+                "boundary": (
+                    "Within-problem order only; no cross-problem rank is inferred."
+                ),
+            },
+            "palomar_selection_status": ranking_rows[0].get("selection_status"),
+            "proof_status": review.get("contribution_class"),
+            "proof_status_authority": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+                ".families[actual_lcm_orbit_separation].contribution_class"
+            ),
+            "summary": review.get("summary"),
+            "boundary": review.get("boundary"),
+            "claim_id": claim.get("claim_id"),
+        },
+        "hard_mechanism": (
+            "The actual-LCM orbit is identified with a scaled totient series and "
+            "a raw adjacent-suffix approximation whose explicit error radius is "
+            "strictly controlled. A cofinal 1/32 separation supply therefore "
+            "transfers to a signed-margin irrationality consumer; the sign and "
+            "top-edge declarations show why positivity alone still leaves a true "
+            "negative survivor and a residue strip to exclude."
+        ),
+        "source_declarations": declarations,
+        "wrapper": {
+            "declaration": claim.get("wrapper_declaration"),
+            "module": "ExternalVerification/Solution.lean",
+            "line": next(
+                (
+                    line_number
+                    for line_number, line in enumerate(
+                        (ROOT / "ExternalVerification/Solution.lean")
+                        .read_text(encoding="utf-8")
+                        .splitlines(),
+                        start=1,
+                    )
+                    if re.search(
+                        r"^\s*theorem\s+"
+                        + re.escape(
+                            str(claim.get("wrapper_declaration")).rsplit(".", 1)[-1]
+                        )
+                        + r"\b",
+                        line,
+                    )
+                ),
+                None,
+            ),
+            "source_authority": "direct Lean source declaration",
+            "claim_authority": "docs/claims.json::external_verification_packet.main_results[actual_lcm_orbit_separation]",
+        },
+        "natural_friction_evidence": [
+            review.get("boundary"),
+            "The PowerTwoActualLcmOrbitSeparationSupply remains a premise, not a proved producer.",
+        ],
+        "open_producer_boundaries": {
+            "cofinal_separation_supply": (
+                "The quantitative 1/32 cofinal separation supply is open and is "
+                "stronger than mere non-integrality."
+            ),
+            "top_edge_exclusion": (
+                "Sign positivity and top-edge forcing leave the negative survivor "
+                "and punctured/top-edge residue to exclude."
+            ),
+            "endpoint": "The cofinal supply and the #249 endpoint remain open.",
+        },
+        "canonical_relations": canonical_relations,
+        "related_families": [
+            {
+                "family": _family_card(
+                    str(row["from_family_id"]), ranks, palomar, review_rows
+                ),
+                "relation": row["relation"],
+                "relation_class": "canonical_palomar_edge",
+                "reason": row["reason"],
+            }
+            for row in canonical_relations
+        ],
+        "relation_authority": (
+            "Producer-peer relations and positions come from Palomar; source "
+            "status and open boundaries come from Claims and direct Lean declarations."
+        ),
+        "authority": {
+            "claims": "docs/claims.json::external_verification_packet.main_results[actual_lcm_orbit_separation] and review_matrix.families[actual_lcm_orbit_separation]",
+            "palomar": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking, selection_contract.programme_family_order, and family_relations",
+            "source": "Erdos249257/TotientActualLcmOrbitSeparation.lean and TotientActualLcmOrbitSign.lean",
+            "wrapper_source": "ExternalVerification/Solution.lean",
+        },
+        "follow": {
+            "family": "python3 scripts/query_semantic.py family-relations actual_lcm_orbit_separation",
+            "problem": "python3 scripts/query_corpus.py --route erdos_249",
+        },
+    }
+
+
 def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     """Join the expert index to canonical endpoint-facing family packets.
 
@@ -930,6 +1134,7 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
         rank_two_kernel_no_go_handoff(palomar, claims_document),
         height_fibre_and_shell_handoff(palomar, claims_document),
         dyadic_block_alphabet_handoff(palomar, claims_document),
+        actual_lcm_orbit_separation_handoff(palomar, claims_document),
     ]
     supporting_families.sort(
         key=lambda row: (
@@ -1083,7 +1288,98 @@ def source_current_supports(row: Mapping[str, Any]) -> list[dict[str, Any]]:
                 "does not show that an actual totient phase enters a dyadic root."
             ),
         },
+        {
+            "name": "tailOrbitFirstExp_zero_eq_scaled_angle",
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "evidence_kind": "scaled_angle_normal_form",
+            "hard_mechanism": (
+                "The initial tail phase is the exponential of the scaled angle "
+                "(2^h - 1) times the series, fixing the exact starting point "
+                "of the squaring orbit."
+            ),
+            "evidence_boundary": (
+                "The scaled-angle identity supplies an exact coordinate change; "
+                "it does not establish irrationality or phase density."
+            ),
+        },
+        {
+            "name": "tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "evidence_kind": "integral_tail_phase_equivalence",
+            "hard_mechanism": (
+                "Phase 1 is equivalent to an integral actual tail difference, "
+                "so the analytic endpoint is expressed in the orbit's exact "
+                "integer boundary."
+            ),
+            "evidence_boundary": (
+                "This equivalence translates the endpoint condition; it does "
+                "not show that the orbit reaches or avoids phase 1."
+            ),
+        },
+        {
+            "name": "exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "evidence_kind": "dyadic_root_characterization",
+            "hard_mechanism": (
+                "A power-of-two iterate reaches phase 1 exactly when the initial "
+                "phase is a dyadic root of unity, identifying the obstruction "
+                "class without inventing a new route."
+            ),
+            "evidence_boundary": (
+                "The characterization classifies a possible initial phase; it "
+                "does not decide whether the actual series has that phase."
+            ),
+        },
+        {
+            "name": "tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+            "relation": "contrary_evidence",
+            "relation_class": "existing_family_contrary_evidence",
+            "evidence_kind": "finite_nonroot_prefix",
+            "hard_mechanism": (
+                "The checked finite prefix excludes phase 1 for the first sixteen "
+                "power-of-two iterates in the displayed non-dyadic setup."
+            ),
+            "evidence_boundary": (
+                "Finite non-root evidence rules out only that bounded prefix; it "
+                "is not a cofinal producer and does not settle the endpoint."
+            ),
+        },
+        {
+            "name": "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "evidence_kind": "cofinal_nonpositive_phase",
+            "hard_mechanism": (
+                "A non-dyadic initial phase has cofinally many power-of-two "
+                "iterates with nonpositive real part, supplying the sign-side "
+                "phase mechanism consumed by the existing conditional family."
+            ),
+            "evidence_boundary": (
+                "The cofinal sign statement still needs the configured density "
+                "or prime-index margin to produce a strict endpoint gap."
+            ),
+        },
+        {
+            "name": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "evidence_kind": "prime_shift_bridge",
+            "hard_mechanism": (
+                "Cofinal nonpositive phase on shifted natural-prime indices "
+                "feeds the existing strict-gap predicate through the exact "
+                "prime-shift bridge."
+            ),
+            "evidence_boundary": (
+                "The bridge consumes a cofinal prime-shift hypothesis; it does "
+                "not prove that hypothesis or the resulting irrationality."
+            ),
+        },
     )
+    source_module = "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
+    atlas = load_json(ATLAS)
     result = []
     for spec in evidence_specs:
         declaration = declarations.get(spec["name"])
@@ -1092,6 +1388,12 @@ def source_current_supports(row: Mapping[str, Any]) -> list[dict[str, Any]]:
                 "Claims strict-prime family lacks source declaration "
                 f"{spec['name']!r}"
             )
+        if declaration.get("module") != source_module:
+            raise ValueError(
+                "Claims strict-prime family routes source declaration outside "
+                f"{source_module}: {spec['name']!r}"
+            )
+        live = _live_source_declaration(source_module, spec["name"], atlas)
         result.append(
             {
                 "relation": spec["relation"],
@@ -1107,8 +1409,9 @@ def source_current_supports(row: Mapping[str, Any]) -> list[dict[str, Any]]:
                     f"ErdosProblems.Erdos249.{spec['name']}"
                 ),
                 "source": {
-                    "module": declaration.get("module"),
-                    "line": declaration.get("line"),
+                    "module": live["module"],
+                    "line": live["line"],
+                    "signature": live.get("signature"),
                 },
                 "hard_mechanism": spec["hard_mechanism"],
                 "evidence_boundary": spec["evidence_boundary"],

@@ -16435,12 +16435,12 @@
         {
           "name": "naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 166
+          "line": 485
         },
         {
           "name": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 205
+          "line": 524
         },
         {
           "name": "tailOrbitFirstExp_succ",
@@ -16505,7 +16505,7 @@
         {
           "name": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 412
+          "line": 465
         }
       ]
     },

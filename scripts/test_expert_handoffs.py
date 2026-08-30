@@ -6,6 +6,8 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from pathlib import Path
+from unittest.mock import patch
 
 import query_expert_handoffs as handoffs
 
@@ -170,6 +172,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
         for row in packet["supporting_families"]
     }
     assert set(supporting) == {
+        "actual_lcm_orbit_separation",
         "rank_two_kernel_no_go",
         "height_fibre_and_shell",
         "dyadic_block_alphabet",
@@ -178,6 +181,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     assert [
         row["family"]["family_id"] for row in packet["supporting_families"]
     ] == [
+        "actual_lcm_orbit_separation",
         "rank_two_kernel_no_go",
         "height_fibre_and_shell",
         "dyadic_block_alphabet",
@@ -326,6 +330,42 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
         "cofinal_escape"
     ]
 
+    actual = supporting["actual_lcm_orbit_separation"]
+    assert actual["family"]["problem"] == 249
+    assert actual["family"]["authority_rank"]["programme_position"] == 1
+    assert actual["family"]["palomar_selection_status"] == "represented"
+    assert actual["family"]["claim_id"] == (
+        "actual_lcm_orbit_nonintegrality_frontier"
+    )
+    assert "explicit error radius" in actual["hard_mechanism"]
+    assert "1/32" in actual["hard_mechanism"]
+    assert {
+        row["name"] for row in actual["source_declarations"]
+    } == {
+        "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+        "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
+        "actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix",
+        "actualLcmTailOrbit_sub_rawApprox_eq",
+        "abs_actualLcmTailOrbit_sub_rawApprox_lt",
+        "PowerTwoActualLcmOrbitSeparationSupply",
+        "powerTwoActualPenultimateSignedMarginSupply_of_actualLcmOrbitSeparation",
+        "irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        "actualLcmTailDiff_shift_pos",
+        "actualLcm_trueEndpointSurvivor_neg",
+        "actualLcm_integral_forces_topEdgeResidue",
+    }
+    assert isinstance(actual["wrapper"]["line"], int)
+    assert {
+        row["family"]["family_id"] for row in actual["related_families"]
+    } == {"strict_prime_tail_orbit_gap", "first_harmonic_pivot_decomposition"}
+    assert all(
+        row["relation_class"] == "canonical_palomar_edge"
+        for row in actual["related_families"]
+    )
+    assert "cofinal separation supply" in actual[
+        "open_producer_boundaries"
+    ]["cofinal_separation_supply"]
+
 
 def test_strict_prime_successor_is_support_only() -> None:
     question = next(
@@ -339,20 +379,44 @@ def test_strict_prime_successor_is_support_only() -> None:
         "ErdosProblems.Erdos249.tailOrbitFirstExp_add",
         "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_iff_initial_phase",
         "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+        "ErdosProblems.Erdos249.tailOrbitFirstExp_zero_eq_scaled_angle",
+        "ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+        "ErdosProblems.Erdos249.exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+        "ErdosProblems.Erdos249.tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+        "ErdosProblems.Erdos249.cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+        "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
     ]
     assert [support["evidence_kind"] for support in supports] == [
         "one_step_squaring",
         "all_times_squaring_orbit",
         "initial_phase_equivalence",
         "dyadic_root_obstruction",
+        "scaled_angle_normal_form",
+        "integral_tail_phase_equivalence",
+        "dyadic_root_characterization",
+        "finite_nonroot_prefix",
+        "cofinal_nonpositive_phase",
+        "prime_shift_bridge",
     ]
     assert [support["relation"] for support in supports] == [
         "support",
         "support",
         "support",
         "contrary_evidence",
+        "support",
+        "support",
+        "support",
+        "contrary_evidence",
+        "support",
+        "support",
     ]
-    assert supports[-1]["relation_class"] == "existing_family_contrary_evidence"
+    assert supports[3]["relation_class"] == "existing_family_contrary_evidence"
+    assert supports[7]["relation_class"] == "existing_family_contrary_evidence"
+    assert all(
+        support["relation_class"] == "existing_family_support_only"
+        for support in supports
+        if support not in (supports[3], supports[7])
+    )
     for support in supports:
         assert support["family_id"] == "strict_prime_tail_orbit_gap"
         assert support["proof_status"] == "conditional reduction"
@@ -379,6 +443,12 @@ def test_strict_prime_successor_is_support_only() -> None:
         "tailOrbitFirstExp_add",
         "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
         "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+        "tailOrbitFirstExp_zero_eq_scaled_angle",
+        "tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+        "exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+        "tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+        "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+        "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
     )
     for support, name in zip(supports, expected_names):
         expected_line = atlas_lines.get(name)
@@ -389,14 +459,56 @@ def test_strict_prime_successor_is_support_only() -> None:
                 f"handoff coordinate drift for {name}: "
                 f"{support['source']['line']} != {expected_line}"
             )
-    assert "does not show that an actual totient phase" in supports[-1][
+    assert "does not show that an actual totient phase" in supports[3][
         "evidence_boundary"
     ]
+    assert "does not prove that hypothesis" in supports[-1]["evidence_boundary"]
 
     non_249 = next(
         row for row in handoffs.mathematical_questions() if row["problem"] == "257"
     )
     assert handoffs.source_current_supports(non_249) == []
+
+
+def test_strict_prime_cross_problem_source_route_is_rejected() -> None:
+    """A claim row cannot redirect a source-current support to another problem."""
+    question = next(
+        row
+        for row in handoffs.mathematical_questions()
+        if row["id"] == "XQ249-adjacent-phase-separation"
+    )
+    original_load_json = handoffs.load_json
+
+    def hostile_load_json(path: Path) -> dict:
+        payload = original_load_json(path)
+        if path != handoffs.CLAIMS:
+            return payload
+        mutated = deepcopy(payload)
+        family = next(
+            row
+            for row in mutated["claims"]
+            if row.get("id") == "strict_prime_tail_orbit_gap"
+        )
+        declaration = next(
+            row
+            for row in family["declarations"]
+            if row.get("name") == "tailOrbitFirstExp_succ"
+        )
+        declaration["module"] = (
+            "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+        )
+        return mutated
+
+    with patch.object(handoffs, "load_json", side_effect=hostile_load_json):
+        try:
+            handoffs.source_current_supports(question)
+        except ValueError as error:
+            require(
+                "routes source declaration outside" in str(error),
+                f"unexpected cross-problem rejection: {error}",
+            )
+        else:
+            raise AssertionError("cross-problem source route was accepted")
 
 
 def main() -> int:
@@ -408,6 +520,7 @@ def main() -> int:
     test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar()
     test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     test_strict_prime_successor_is_support_only()
+    test_strict_prime_cross_problem_source_route_is_rejected()
     packet = handoffs.question_packet(None)
     assert packet["packet_kind"] == "compact_index"
     assert packet["count"] == 6
