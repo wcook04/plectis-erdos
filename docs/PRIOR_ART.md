@@ -150,7 +150,7 @@ boundary of that relationship.
 
   **Boundary.** It settles the prime-support family at base 2, not universal #257. The source only says that other integer bases and the prime-power variant can be treated by modifications and leaves those details to the reader; its quantitative correlation proof is not formalised here.
 
-- H. Wang and J. M. Grau Ribas, [*Positive dyadic density for rational weighted binary expansions* (arXiv, 2026)](https://arxiv.org/abs/2606.24972)
+- H. Wang, [*Sparse Polynomial-Weighted Expansions* (arXiv:2606.24972v4, 2026)](https://arxiv.org/abs/2606.24972v4) ([read source closure](primary-sources/dyadic-carry/wang-2026-source-closure.md))
 
   Direct antecedent for the rationality-forced integral carry recurrence in the weighted-binary special case (c(n)=n d_n).
 

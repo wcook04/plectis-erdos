@@ -250,7 +250,7 @@ Main theorem:
 supportCoeffZeroWindow_length_le_eps_logb_add
 ```
 
-None of these modules claims a solution of Erdős #249 or #257. The contribution boundary is theorem-family-specific: the carry recurrence and strict-tail geometry have direct prior art (Wang–Grau Ribas; Kovač–Tao); Möbius inversion, repetend algebra, and divisor averaging are classical; the converse/rigidity, certificate-normal-form, and coupled reciprocal-mass families remain exact-source-comparison candidates. No priority claim is made.
+None of these modules claims a solution of Erdős #249 or #257. The contribution boundary is theorem-family-specific: the carry recurrence and strict-tail geometry have direct prior art (Han Wang; Kovač–Tao); Möbius inversion, repetend algebra, and divisor averaging are classical; the converse/rigidity, certificate-normal-form, and coupled reciprocal-mass families remain exact-source-comparison candidates. No priority claim is made.
 
 `SupportSunflowerDichotomy` is an adjacent conditional #257 route. It gives
 the exact carry conversion for finite-core orthogonal-petal bouquets and
