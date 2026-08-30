@@ -96,6 +96,23 @@ is a downstream consumer and is deliberately not a default target. The other
 targets are separate adapter, variant, and residual-check surfaces; their
 declarations do not enlarge the reviewed mathematical corpus.
 
+For a focused replay of the source-level #249 prime-excursion constraints,
+run the named problem module after the ordinary toolchain setup:
+
+```sh
+python3 scripts/lean_fast_build.py ErdosProblems.Erdos249.PeriodMultipleEscape
+```
+
+The module's `pureDyadicEndpointError_succ` identity gives the endpoint-error
+cocycle; `prime_forces_pureDyadicEndpointError_excursion` and
+`exists_late_pureDyadicEndpointError_excursion` expose the adjacent-error
+excursion forced by arbitrarily late prime positions. The directional
+`prime_successor_upper_trap_forces_bottom_lock` and its cofinal companion
+record the additional constraint under an upper-trap hypothesis. These are
+source-level constraints, not reviewed external-verification interfaces: they
+do not supply the actual-series-to-orbit bridge or prove Erdős #249
+irrationality, and the open endpoint remains open.
+
 ## 3. Run the release-surface checks
 
 These checks are ordered from cheap source/navigation checks to the broader
