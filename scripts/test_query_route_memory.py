@@ -32,7 +32,7 @@ def assert_rejected(packet: dict, code: str) -> None:
     try:
         route_memory.validate_packet(packet)
     except route_memory.RouteMemoryError as exc:
-        assert exc.code == code, f"expected {code}, got {exc.code}: {exc}"
+        require(exc.code == code, f"expected {code}, got {exc.code}: {exc}")
         return
     raise AssertionError(f"mutation escaped: {code}")
 
@@ -105,35 +105,70 @@ def main() -> int:
         packets = {
             number: route_memory.build_packet(str(number)) for number in PROBLEMS
         }
-    assert set(packets) == set(PROBLEMS)
+    require(set(packets) == set(PROBLEMS), "route-memory packet set drifted")
     for number, packet in packets.items():
-        assert packet["problem"]["erdos_number"] == number
-        assert packet["selector"]["problem_id"] == f"erdos_{number}"
-        assert packet["resume_state"]["source_commit"] == packet["source_snapshot"]["commit"]
-        assert packet["resume_state"]["state_id"].startswith("sha256:")
-        assert packet["source_snapshot"]["tracked_sources"] == list(route_memory.SOURCE_FILES)
-        assert route_memory.validate_packet(packet)["packet_digest"] == packet["packet_digest"]
+        require(
+            packet["problem"]["erdos_number"] == number,
+            f"route-memory problem identity drifted for #{number}",
+        )
+        require(
+            packet["selector"]["problem_id"] == f"erdos_{number}",
+            f"route-memory selector drifted for #{number}",
+        )
+        require(
+            packet["resume_state"]["source_commit"] == packet["source_snapshot"]["commit"],
+            f"route-memory source commit drifted for #{number}",
+        )
+        require(
+            packet["resume_state"]["state_id"].startswith("sha256:"),
+            f"route-memory state digest is malformed for #{number}",
+        )
+        require(
+            packet["source_snapshot"]["tracked_sources"] == list(route_memory.SOURCE_FILES),
+            f"route-memory tracked source set drifted for #{number}",
+        )
+        require(
+            route_memory.validate_packet(packet)["packet_digest"] == packet["packet_digest"],
+            f"route-memory packet digest is stale for #{number}",
+        )
     research_packet = packets[1041]
     research = research_packet["research_corpus"]
-    assert research["directory"] == "research_corpus/Erdos1041"
-    assert research["strongest_result_summary"]["result_count"] == 35
-    assert research["authority_posture"].startswith("public_safe_research_evidence")
-    assert set(research_packet["source_snapshot"]["research_corpus_digests"]) == {
-        "frontier",
-        "strongest_results",
-        "manifest",
-        "checkpoint",
-    }
-    assert research_packet["resume_state"]["research_corpus_digests"] == research_packet[
-        "source_snapshot"
-    ]["research_corpus_digests"]
+    require(
+        research["directory"] == "research_corpus/Erdos1041",
+        "#1041 research corpus route drifted",
+    )
+    require(
+        research["strongest_result_summary"]["result_count"] == 35,
+        "#1041 strongest-result count drifted",
+    )
+    require(
+        research["authority_posture"].startswith("public_safe_research_evidence"),
+        "#1041 research authority posture drifted",
+    )
+    require(
+        set(research_packet["source_snapshot"]["research_corpus_digests"]) == {
+            "frontier",
+            "strongest_results",
+            "manifest",
+            "checkpoint",
+        },
+        "#1041 research corpus digest set drifted",
+    )
+    require(
+        research_packet["resume_state"]["research_corpus_digests"]
+        == research_packet["source_snapshot"]["research_corpus_digests"],
+        "#1041 resume digest set is not source-bound",
+    )
     routed_declarations = [
         declaration
         for claim in route_memory.build_packet("249", "erdos249_certificate_story")["claims"]
         for declaration in claim["declarations"]
     ]
-    assert routed_declarations
-    assert all(row["source_digest"].startswith("sha256:") for row in routed_declarations)
+    require(routed_declarations, "routed #249 packet has no declarations")
+    require(
+        all(row["source_digest"].startswith("sha256:") for row in routed_declarations),
+        "routed #249 declaration digest is malformed",
+    )
 
     # A route for #257 must never be accepted under #249, even though both
     # routes are valid navigation entries in the same claims projection.
@@ -179,24 +214,37 @@ def main() -> int:
         "--problem", "249", "--route", "erdos249_certificate_story", check=True
     )
     cli_packet = json.loads(completed.stdout)
-    assert route_memory.validate_packet(cli_packet)["route"]["id"] == "erdos249_certificate_story"
+    require(
+        route_memory.validate_packet(cli_packet)["route"]["id"]
+        == "erdos249_certificate_story",
+        "normal CLI route identity drifted",
+    )
     cli_validate = run_cli(
         "--validate", "-", input_text=json.dumps(cli_packet)
     )
-    assert cli_validate.returncode == 0, cli_validate.stderr
-    assert json.loads(cli_validate.stdout)["resume_state"] == cli_packet["resume_state"]
+    require(cli_validate.returncode == 0, cli_validate.stderr)
+    require(
+        json.loads(cli_validate.stdout)["resume_state"] == cli_packet["resume_state"],
+        "normal CLI validation changed resume state",
+    )
     stale_cli = copy.deepcopy(cli_packet)
     stale_cli["source_snapshot"]["commit"] = "0" * 40
     stale_result = run_cli(
         "--validate", "-", input_text=json.dumps(stale_cli)
     )
-    assert stale_result.returncode == 2
-    assert stale_result.stdout == ""
-    assert "stale_source_snapshot" in stale_result.stderr
+    require(stale_result.returncode == 2, "stale CLI packet was accepted")
+    require(stale_result.stdout == "", "stale CLI packet emitted a success payload")
+    require(
+        "stale_source_snapshot" in stale_result.stderr,
+        "stale CLI packet omitted its rejection code",
+    )
     optimized = run_cli(
         "--problem", "257", "--format", "card", optimized=True, check=True
     )
-    assert optimized.stdout.startswith("route-memory erdos_257:unrouted | problem #257")
+    require(
+        optimized.stdout.startswith("route-memory erdos_257:unrouted | problem #257"),
+        "optimized CLI card output drifted",
+    )
     print("query_route_memory: 8 selectors, stale/cross-problem/invented guards, CLI normal/-O PASS")
     return 0
 
