@@ -44,6 +44,12 @@ NOTE_KINDS = (
 )
 CLOSE_OUTCOMES = ("established", "open", "abandoned")
 MOVE_KINDS = ("session_opened", "note", "probe", "claim", "session_closed")
+PROBE_VERDICTS = (
+    "kernel_accepted",
+    "kernel_accepted_with_sorry",
+    "kernel_rejected",
+    "probe_error",
+)
 PROBE_TIMEOUT_SECONDS = 600
 SESSION_SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,80}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -335,10 +341,18 @@ def _probe_verdict(row: dict[str, Any], action: str) -> str:
     """Read a probe verdict only when the durable receipt has a safe shape."""
     receipt = row.get("kernel_receipt")
     verdict = receipt.get("verdict") if isinstance(receipt, dict) else None
-    if not isinstance(verdict, str):
+    if not isinstance(verdict, str) or verdict not in PROBE_VERDICTS:
         raise SystemExit(
             f"{action} refused: probe move {row.get('move_id')} has an invalid kernel receipt"
         )
+    if verdict == "kernel_accepted":
+        if any(
+            type(receipt.get(field)) is not int or receipt.get(field) != 0
+            for field in ("exit_code", "error_count", "sorry_count")
+        ):
+            raise SystemExit(
+                f"{action} refused: probe move {row.get('move_id')} has an invalid kernel receipt"
+            )
     return verdict
 
 

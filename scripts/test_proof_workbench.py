@@ -432,7 +432,12 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
             "move_id": "m002",
             "kind": "probe",
             "input_path": "probes/m002.lean",
-            "kernel_receipt": {"verdict": "kernel_accepted"},
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
         }
     )
     try:
@@ -471,7 +476,12 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
             "kind": "probe",
             "input_path": "probes/m002.lean",
             "input_sha256": "not-a-sha256",
-            "kernel_receipt": {"verdict": "kernel_accepted"},
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
         }
     )
     try:
@@ -494,6 +504,53 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("claim accepted a non-canonical input hash")
 
+    contradictory_receipt_session = workbench.Session(sessions_root, "contradictory-receipt")
+    contradictory_receipt_session.probes_dir.mkdir(parents=True)
+    (contradictory_receipt_session.probes_dir / "m002.lean").write_text(
+        "exact artifact\n", encoding="utf-8"
+    )
+    contradictory_receipt_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    contradictory_receipt_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "input_sha256": workbench._sha256_text("exact artifact\n"),
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 1,
+                "error_count": 1,
+                "sorry_count": 0,
+            },
+        }
+    )
+    try:
+        workbench.cmd_claim(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": sessions_root,
+                    "session": "contradictory-receipt",
+                    "probe": "m002",
+                    "text": "must reject contradictory receipts",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "invalid kernel receipt" not in str(error):
+            raise AssertionError(f"contradictory receipt lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("claim accepted a contradictory kernel receipt")
+
     missing_artifact_session = workbench.Session(sessions_root, "missing-artifact")
     missing_artifact_session.directory.mkdir(parents=True)
     missing_artifact_session.append(
@@ -510,7 +567,12 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
             "kind": "probe",
             "input_path": "probes/m002.lean",
             "input_sha256": "0" * 64,
-            "kernel_receipt": {"verdict": "kernel_accepted"},
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
         }
     )
     try:
@@ -552,7 +614,12 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
             "kind": "probe",
             "input_path": "probes/m002.lean",
             "input_sha256": workbench._sha256_text("expected bytes\n"),
-            "kernel_receipt": {"verdict": "kernel_accepted"},
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
         }
     )
     try:
@@ -594,7 +661,12 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
             "kind": "probe",
             "input_path": "probes/other.lean",
             "input_sha256": workbench._sha256_text("exact artifact\n"),
-            "kernel_receipt": {"verdict": "kernel_accepted"},
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
         }
     )
     try:
