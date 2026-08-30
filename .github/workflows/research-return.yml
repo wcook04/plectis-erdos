@@ -33,7 +33,9 @@ on:
       - "scripts/test_research_contribution_recognition.py"
       - "skills/README.md"
       - "skills/erdos-research-return/**"
+      - "scripts/test_research_contributions_source_safety.py"
       - "scripts/test_research_contributions_symlink_safety.py"
+      - "scripts/test_research_contributions_committed_sources.py"
   push:
     branches: [main]
     paths:
@@ -65,7 +67,9 @@ on:
       - "scripts/test_research_contribution_recognition.py"
       - "skills/README.md"
       - "skills/erdos-research-return/**"
+      - "scripts/test_research_contributions_source_safety.py"
       - "scripts/test_research_contributions_symlink_safety.py"
+      - "scripts/test_research_contributions_committed_sources.py"
   workflow_dispatch:
 
 permissions:
