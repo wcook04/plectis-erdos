@@ -28,6 +28,12 @@ def commit(root: Path, message: str) -> str:
     return git(root, "rev-parse", "HEAD")
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep source-identity regressions active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def main() -> int:
     """A later worktree file must not satisfy a historical source reference."""
     with tempfile.TemporaryDirectory() as tmp:
@@ -54,16 +60,26 @@ def main() -> int:
         check_release.ROOT = root
         try:
             cache: dict[tuple[str, str | None], list[str] | None] = {}
-            assert check_release.module_lines(cache, "Erdos249257/PostRef.lean", old_ref) is None
+            require(
+                check_release.module_lines(cache, "Erdos249257/PostRef.lean", old_ref)
+                is None,
+                "later module was visible at the old formal-source reference",
+            )
             new_lines = check_release.module_lines(cache, "Erdos249257/PostRef.lean", new_ref)
-            assert new_lines is not None
-            assert check_release.name_at_line(new_lines, "postRefOnly", 1)
+            require(new_lines is not None, "later module was not visible at the new reference")
+            require(
+                check_release.name_at_line(new_lines, "postRefOnly", 1),
+                "later module declaration was not found at its new reference",
+            )
             matches_old, old_detail = check_release.formal_source_matches_current_lean_tree(old_ref)
-            assert not matches_old
-            assert "differ from formal-source checkpoint" in old_detail
+            require(not matches_old, "old formal-source reference matched the later tree")
+            require(
+                "differ from formal-source checkpoint" in old_detail,
+                "old-reference mismatch did not identify checkpoint drift",
+            )
             matches_new, new_detail = check_release.formal_source_matches_current_lean_tree(new_ref)
-            assert matches_new
-            assert new_detail == ""
+            require(matches_new, "new formal-source reference did not match its tree")
+            require(new_detail == "", "new formal-source reference reported unexpected drift")
 
             (root / "Erdos249257.lean").write_text(
                 "import Erdos249257.PostRef\n", encoding="utf-8"
@@ -71,8 +87,14 @@ def main() -> int:
             matches_changed_root, changed_root_detail = (
                 check_release.formal_source_matches_current_lean_tree(new_ref)
             )
-            assert not matches_changed_root
-            assert "differ from formal-source checkpoint" in changed_root_detail
+            require(
+                not matches_changed_root,
+                "changed root file was accepted at the immutable source reference",
+            )
+            require(
+                "differ from formal-source checkpoint" in changed_root_detail,
+                "changed root mismatch did not identify checkpoint drift",
+            )
             (root / "Erdos249257.lean").write_text(
                 root_source, encoding="utf-8"
             )
@@ -81,8 +103,14 @@ def main() -> int:
             matches_with_deletion, deletion_detail = (
                 check_release.formal_source_matches_current_lean_tree(new_ref)
             )
-            assert not matches_with_deletion
-            assert "differ from formal-source checkpoint" in deletion_detail
+            require(
+                not matches_with_deletion,
+                "deleted source file was accepted at the immutable source reference",
+            )
+            require(
+                "differ from formal-source checkpoint" in deletion_detail,
+                "deletion mismatch did not identify checkpoint drift",
+            )
             (root / "Erdos249257" / "Stable.lean").write_text(
                 stable_source, encoding="utf-8"
             )
@@ -93,8 +121,14 @@ def main() -> int:
             matches_with_untracked, untracked_detail = (
                 check_release.formal_source_matches_current_lean_tree(new_ref)
             )
-            assert not matches_with_untracked
-            assert "Untracked.lean" in untracked_detail
+            require(
+                not matches_with_untracked,
+                "untracked source file was accepted at the immutable source reference",
+            )
+            require(
+                "Untracked.lean" in untracked_detail,
+                "untracked-source mismatch did not name the unexpected file",
+            )
         finally:
             check_release.ROOT = original_root
 
