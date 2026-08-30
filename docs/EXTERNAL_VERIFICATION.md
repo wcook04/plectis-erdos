@@ -84,12 +84,12 @@ This order projects Palomar's mathematical `candidate_ranking`; it is independen
    - **Source and evidence.** [Lean source](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean); Exact committed source and Comparator transport are available.
    - **Boundary.** The equivalence does not prove irrationality of either series. **Overclaim risk.** High if equivalence is read as irrationality.
 
-10. **Totient kernel rank** (<code>Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel</code>; `subordinate`)
-   - **Reader tier.** exact reduction or structural result
-   - **Consequence.** Important structural support for #249, but it does not prove irrationality or the missing cofinal certificate supply.
-   - **Load-bearing mechanism.** The proof uses exact ranks 2^e+1 and a finite-dimensional contradiction.
-   - **Source and evidence.** [Lean source](../Erdos249257/TotientMahlerDefect.lean); Exact committed source and Comparator transport are available.
-   - **Boundary.** The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved. **Overclaim risk.** Moderate if infinite-dimensionality is treated as an irrationality criterion.
+10. **Totient carry anti compression** (<code>Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank</code>; `represented`)
+   - **Reader tier.** completed direct result
+   - **Consequence.** This is an orbit-level necessary consequence of the #249 rational branch, closer to the endpoint than coefficient-side kernel rank alone, but it derives no contradiction.
+   - **Load-bearing mechanism.** The theorem couples modular orbit regularity with exponential finite-level anti-compression. Its natural friction is exact: modulo a divisor of the multiplier the forcing can vanish and the carry can become geometric, so periodicity supplies no finite-Q-rank upper bound.
+   - **Source and evidence.** [Lean source](../Erdos249257/TotientTailCarryPeriod.lean); The exact source theorem, canonical review family, and Comparator representative are committed; the missing finite-rank contradiction is explicit.
+   - **Boundary.** This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open. **Overclaim risk.** High if modular periodicity and unbounded canonical-kernel rank are reported as incompatible; the source proves no such upper bound and no #249 irrationality.
 
 ### Natural friction and no-go boundaries
 
@@ -415,13 +415,13 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Relation.** `conditional_producer_peer` `first_harmonic_pivot_decomposition`: Both feed the finite first-harmonic certificate socket, but strict-prime uses phase density or adaptive natural-prime escape while the pivot family uses a four-term supplier-fibre budget and residual decorrelation.
    - **Relation.** `endpoint_normal_form_support_for` `totient_certificate_equivalences`: Certificate completeness identifies the exact finite endpoint socket but cannot manufacture the strict-prime route's missing phase-density, cofinal-prime, or uniform-margin producer.
 
-4. **Totient kernel rank** (`totient_kernel_rank`; source-ranked frontier; global rank 10; source disposition `represented`)
-   - **Why here.** Important structural support for #249, but it does not prove irrationality or the missing cofinal certificate supply.
-   - **Source.** <code>Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel</code> in [Lean](../Erdos249257/TotientMahlerDefect.lean)
-   - **Boundary.** The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved.
+4. **Totient kernel rank** (`totient_kernel_rank`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** Exact finite-level dyadic rank growth is strong #249 structure and supports totient_carry_anti_compression, but it is weaker than that orbit-level rationality consequence and provides neither a contradiction nor unbounded certificate supply.
+   - **Source.** <code>Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq</code> in [Lean](../Erdos249257/TotientMahlerDefect.lean)
+   - **Boundary.** Only the finite-level rank is presented as an additional result; full-kernel infinite-dimensionality is prior-art context, and no rationality-to-finite-rank bridge is proved.
 
-5. **Totient carry anti compression** (`totient_carry_anti_compression`; deep mechanism and classification; source disposition `represented`)
-   - **Why here.** The committed representative preserves the orbit-level modular-periodicity and finite-level rank-growth conjunction under hypothetical rationality; it supplies no contradiction or finite-Q-rank upper bound.
+5. **Totient carry anti compression** (`totient_carry_anti_compression`; source-ranked frontier; global rank 10; source disposition `represented`)
+   - **Why here.** This is an orbit-level necessary consequence of the #249 rational branch, closer to the endpoint than coefficient-side kernel rank alone, but it derives no contradiction.
    - **Source.** <code>Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank</code> in [Lean](../Erdos249257/TotientTailCarryPeriod.lean)
    - **Boundary.** This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open.
 
