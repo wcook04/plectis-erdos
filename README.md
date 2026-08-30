@@ -51,7 +51,7 @@ Links name a checked route and its limit; reductions are not solutions.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalized-vanishing [bounded-negative no-go](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); unbounded mixed signs are open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit top edge. Supply open
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap-series irrationality; unbounded gaps prove neither. Bridge open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity/recurrence; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1, 3, 5 (sharp at 7); [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Reach/avoid and half-membership remain open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity/recurrence; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1, 3, 5 (sharp at 7); [composite-dilation identity](Erdos249257/CompositeDilationDefect.lean) budgets foreign divisors (zero for prime support), but arbitrary-support defects have no bound or tail selector; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Reach/avoid; half-membership stays open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — max powers/log cells/grouped sums/shell bounds/rank-two obstruction; three-prime open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton decay/ray separation/collisions/root retention; an invalid saddle block leaves topology, gluing, and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor; `31/4` powers lie in `81/200` height region; Hermite–Padé/determinant/prime-support no-go at `3/2`/`7/2`; no irrationality, noncollapse, or remainder control.
@@ -68,18 +68,16 @@ rank interfaces, finite moments, denominator exclusions, and an
 irrationality/unbounded-certificate equivalence; Martin's theorem and its
 independence premise are not formalised.
 
-The classical **Farey/mediant bound** at `K=240`: Farey's method supplies the
-number directly, with delta `0`—exactly the Farey bound, not an improvement. The
-next denominator fails this window; that does not prove success past every fixed
-cutoff. Packages: **fair-coin coprimality**, **squared-Lambert gcd moments**,
-**Stern–Brocot law** `(2/3)^d`, **Fibonacci run stability** `F_{r+3}`,
-**tempered tail rigidity**, **Möbius-shadow denominator**, and **scalar
-height obstruction**; [gcd](Erdos249257/GcdMomentCalculus.lean),
-[run](Erdos249257/SternBrocotRunGeometry.lean). The map exposes eventually-periodic
-nonnegative weighted irrationality, a
-signed irrational-or-base-terminating dichotomy, five binary-carry criteria,
-and two scoped #249 no-go countermodels. These routes do not show the orbit
-avoids an unsafe band or settle its open problem.
+**Farey/mediant bound** at `K=240` is exactly Farey's bound (delta `0`), no
+improvement; its next denominator fails this window, saying nothing
+beyond fixed cutoffs. Packages: **fair-coin coprimality**,
+**squared-Lambert gcd moments**, **Stern–Brocot law** `(2/3)^d`, **Fibonacci
+stability** `F_{r+3}`, **tempered tails**, **Möbius-shadow denominator**, and
+**scalar height obstruction**; [gcd](Erdos249257/GcdMomentCalculus.lean),
+[run](Erdos249257/SternBrocotRunGeometry.lean). It gives eventually-periodic
+nonnegative and signed irrational/base-terminating dichotomies, five binary-
+carry criteria, and two scoped #249 no-go models—not orbit avoidance or a
+solution.
 
 ## What remains open
 
