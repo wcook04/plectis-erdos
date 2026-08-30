@@ -359,6 +359,10 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
     if args.problem not in PROBLEMS:
         raise SystemExit(f"problem must be one of {sorted(PROBLEMS)}")
     directory = session_dir(args.sessions_root, args.session)
+    if output_path_has_symlink_component(directory):
+        raise SystemExit(
+            f"session output must not traverse symbolic links: {directory}"
+        )
     if directory.exists():
         raise SystemExit(f"session already exists: {args.session}")
     dirty_rows = [line for line in git_output("status", "--porcelain").splitlines() if line.strip()]

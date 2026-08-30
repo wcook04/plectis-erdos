@@ -185,6 +185,51 @@ def check_package_session_path_boundary() -> None:
             raise AssertionError("package input must reject symlinked session material")
 
 
+def check_start_session_path_boundary() -> None:
+    """A start must reject a redirected sessions root before opening the workbench."""
+    with tempfile.TemporaryDirectory(prefix="continue-start-path-") as temporary:
+        root = Path(temporary)
+        real_sessions = root / "real-sessions"
+        real_sessions.mkdir()
+        linked_sessions = root / "linked-sessions"
+        linked_sessions.symlink_to(real_sessions, target_is_directory=True)
+        completed = run(
+            [
+                sys.executable,
+                str(CLI),
+                "--sessions-root",
+                str(linked_sessions),
+                "start",
+                "--session",
+                "symlinked_start",
+                "--problem",
+                "257",
+                "--frontier",
+                "fixture/bounded-return",
+                "--intent",
+                "exercise the public continuation package",
+                "--stop-condition",
+                "stop after one structurally valid inconclusive return",
+                "--contributor",
+                "Symlink Start Contributor",
+                "--model-system",
+                "not_used",
+                "--provider",
+                "not_used",
+                "--allow-dirty",
+            ],
+            expected=1,
+        )
+        require(
+            "session output must not traverse symbolic links" in completed.stderr,
+            f"start path rejection omitted its diagnostic: {completed.stderr}",
+        )
+        require(
+            not any(real_sessions.iterdir()),
+            "start invoked workbench or wrote artifacts before rejecting the path",
+        )
+
+
 def check_replay_command_boundary(sessions_root: Path, session: str) -> None:
     """Exercise the optional replay consumer without launching Lean."""
     session_directory = sessions_root / session
@@ -266,6 +311,7 @@ def main() -> int:
     check_subprocess_timeouts()
     check_replay_execution_posture()
     check_package_session_path_boundary()
+    check_start_session_path_boundary()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"
     ) == "https://github.com/wcook04/plectis-lean-erdos249-257"
