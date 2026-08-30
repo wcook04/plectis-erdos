@@ -229,18 +229,15 @@ replacement for claim authority.
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:897`. Checked theorem;
   reusable obstruction; claims registry: `bounded_rise_fresh_modulus_barrier`
   (`res:barrier`).
-- Given normalized vanishing — supplied for the canonical orbit by Koizumi
-  (Integers 26 (2026), A28; cited, prose bridge) — the signed recovery below
-  uses a uniform negative bound. A distinct source-level analytic criterion
-  replaces that bound with summability of the normalized negative centered mass:
-  under exact natural `C/D` dynamics, positive `C`, the strict centered step,
-  and division-free vanishing, `sylvesterNext_eventually_of_summable_negativeRelativeMass`
-  forces `centeredState = 0` eventually and hence eventual Sylvester steps
-  (`ErdosProblems/Erdos243/SparseResetRecovery.lean:155-193`; Claims:
-  `negative_mass_recovery`). It does not prove these hypotheses for the
-  original orbit; any surviving canonical orbit has divergent normalized
-  negative mass. The open reciprocal-tail endpoint and prime-specific producer
-  remain untouched; this is distinct from the uniform-bound criterion below.
+- Given normalised vanishing — supplied for the canonical orbit by Koizumi
+  (Integers 26 (2026), A28; cited, prose bridge) — a bounded negative part or
+  finite normalised negative mass forces the error to vanish and the
+  Sylvester recurrence to begin
+  (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2177`,
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2264`;
+  `ErdosProblems/Erdos243/SparseResetRecovery.lean:155`,
+  `ErdosProblems/Erdos243/SparseResetRecovery.lean:175`). Checked conditional theorems; the
+  note concedes its absorption and descent lemmas as Koizumi prior art.
 - A separate no-go rules out an eventually periodic negative-error orbit when
   the phase growth is positive
   (`no_eventuallyPeriodicNegative_orbit`,

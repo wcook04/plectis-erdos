@@ -87,6 +87,46 @@ theorem downstream_bounded_negative_part_recovery
   ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
     a C D E B ha hCpos hC hD hE hcentered hbound hvanish
 
+/-! The same centered-state route has a multiplicative strengthening.  The
+summable negative-relative-mass criterion is a separate recovery mechanism:
+it bounds the tail by a convergent product before normalized vanishing forces
+the integer defect to disappear. -/
+
+/-- Downstream reuse of the exact #243 finite-negative-mass recovery.
+
+The consumer keeps the exact next-denominator and next-tail dynamics,
+positivity of the natural tail, the strict centered step equation, and the
+division-free normalized-vanishing input.  The final summability hypothesis
+is precisely the normalized negative mass of the centered state.  This is a
+conditional state-system implication, not a proof that an arbitrary
+Erdos #243 orbit supplies these hypotheses: the unrestricted problem and its
+prime-specific negative-mass producer remain open. -/
+theorem downstream_summable_negative_mass_sylvester_recovery
+    (a D : ℕ → ℤ) (C : ℕ → ℕ)
+    (hD : ∀ n,
+      D (n + 1) = Erdos249257.ExternalVerification.nextDenState (a n) (D n))
+    (hC : ∀ n,
+      C (n + 1) =
+        Erdos249257.ExternalVerification.nextTailState
+          (a n) (D n) (C n))
+    (hCpos : ∀ n, 0 < C n)
+    (hstep : ∀ n, (C (n + 1) : ℤ) =
+      (C n : ℤ) -
+        Erdos249257.ExternalVerification.centeredState
+          (a n) (D n) (C n))
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs
+          (Erdos249257.ExternalVerification.centeredState
+            (a n) (D n) (C n)) < C n)
+    (hsum : Summable
+      (Erdos249257.ExternalVerification.negativeRelativeMass C
+        (fun n ↦ Erdos249257.ExternalVerification.centeredState
+          (a n) (D n) (C n)))) :
+    ∃ N, ∀ n, N ≤ n →
+      a (n + 1) = Erdos249257.ExternalVerification.sylvesterNext (a n) :=
+  Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass
+    a D C hD hC hCpos hstep hvanish hsum
+
 /-! The Boolean–Möbius transport is a second, genuinely reusable view of
 #257 rationality: it removes the support from the downstream certificate while
 retaining the exact rational numerator, denominator, and positivity boundary.
