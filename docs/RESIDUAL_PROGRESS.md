@@ -37,7 +37,7 @@ and its output is structural: an exact carry normal form equivalent to
 irrationality for #68, a complete measure classification of the Mersenne
 achievement set for #257, the exact rank `2^e + 1` and an explicit odd-core
 basis of the dyadic totient kernel for #249, a first integral of the complex
-Newton flow for #1041, exact prefix-LCM dynamics for #269, and proved no-go
+Newton flow for #1041, exact three-prime prefix-LCM dynamics for #269, and proved no-go
 theorems that close named strategies rather than gesture at difficulty.
 [RESULTS](RESULTS.md) states each result and the exact point where it stops.
 
