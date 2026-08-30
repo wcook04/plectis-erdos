@@ -559,6 +559,15 @@ def validate_natural_language_search() -> None:
         assert "current tracked source digests" in row["route_memory"][
             "identity_contract"
         ]
+    ruled_out_card = run(
+        "--search", "what is ruled out", "--limit", "10", "--format", "card"
+    )
+    assert ruled_out_card.returncode == 0
+    assert (
+        "reading_route | transport_curvature_programme | resume="
+        "python3 scripts/query_route_memory.py --problem 249 --route "
+        "transport_curvature_programme"
+    ) in ruled_out_card.stdout
 
 
 def validate_indexed_declaration_lookup() -> None:
