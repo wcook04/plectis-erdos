@@ -54,6 +54,26 @@ arrives at a single problem gets its statement, its checked results, its
 negative results, and its surviving obligation without assembling them from the
 gateway; deliberate repetition of shared context across notes is the design.
 
+### Returning from a problem note to checked evidence
+
+The notes are exposition, not proof authority.  To return from any note to the
+machine-owned problem record, run the matching route below.  Each problem route
+returns its exact paper/source record, checked module inventory, and open
+obligation handles; the [complete eight-problem source map](../docs/SOURCE_MAP.md#complete-eight-problem-return-matrix)
+keeps the same joins readable.  For a source-fingerprinted continuation packet,
+use the route-memory command in the last column.
+
+| Problem | Public problem route | Resumable route-memory handoff |
+|---|---|---|
+| #68 | `python3 scripts/query_corpus.py --route erdos_68` | `python3 scripts/query_route_memory.py --problem 68` |
+| #243 | `python3 scripts/query_corpus.py --route erdos_243` | `python3 scripts/query_route_memory.py --problem 243` |
+| #249 | `python3 scripts/query_corpus.py --route erdos_249` | `python3 scripts/query_route_memory.py --problem 249` |
+| #251 | `python3 scripts/query_corpus.py --route erdos_251` | `python3 scripts/query_route_memory.py --problem 251` |
+| #257 | `python3 scripts/query_corpus.py --route erdos_257` | `python3 scripts/query_route_memory.py --problem 257` |
+| #269 | `python3 scripts/query_corpus.py --route erdos_269` | `python3 scripts/query_route_memory.py --problem 269` |
+| #1041 | `python3 scripts/query_corpus.py --route erdos_1041` | `python3 scripts/query_route_memory.py --problem 1041` |
+| #1049 | `python3 scripts/query_corpus.py --route erdos_1049` | `python3 scripts/query_route_memory.py --problem 1049` |
+
 ## Full Reasoning Records
 
 Two additional papers retain the complete working context for the original
