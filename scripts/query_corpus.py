@@ -2170,6 +2170,39 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
         for open_id in route.get("remaining_open_proposition_ids", [])
     }
     claim_paper = paper_coordinate(claim.get("paper_label"), label_index)
+    programme_contexts = []
+    for route in programme_routes:
+        context = {
+            "id": route["id"],
+            "title": route["title"],
+            "claim_ceiling": route["claim_ceiling"],
+            "problem_targets": [
+                compact_claim(claim_index[target_id])
+                for target_id in route.get("problem_target_claim_ids", [])
+            ],
+            "remaining_open_proposition_ids": route.get(
+                "remaining_open_proposition_ids", []
+            ),
+            "follow": f"python3 scripts/query_corpus.py --route {route['id']}",
+        }
+        problem_number = route_memory_problem_number(route)
+        if problem_number is not None:
+            context["route_memory"] = {
+                "problem_number": problem_number,
+                "command": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{problem_number} --route {route['id']}"
+                ),
+                "authority_posture": (
+                    "derived_resume_handoff_not_claim_or_proof_authority"
+                ),
+                "identity_contract": (
+                    "The route-memory command binds this route to the selected "
+                    "problem and current tracked source digests before resume."
+                ),
+            }
+        programme_contexts.append(context)
+
     return {
         "kind": "claim",
         "authority_posture": "navigation_projection_not_proof_authority",
@@ -2188,22 +2221,7 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
         "remaining_open_propositions": [
             open_index[open_id] for open_id in sorted(open_ids)
         ],
-        "programme_contexts": [
-            {
-                "id": route["id"],
-                "title": route["title"],
-                "claim_ceiling": route["claim_ceiling"],
-                "problem_targets": [
-                    compact_claim(claim_index[target_id])
-                    for target_id in route.get("problem_target_claim_ids", [])
-                ],
-                "remaining_open_proposition_ids": route.get(
-                    "remaining_open_proposition_ids", []
-                ),
-                "follow": f"python3 scripts/query_corpus.py --route {route['id']}",
-            }
-            for route in programme_routes
-        ],
+        "programme_contexts": programme_contexts,
         "wider_programme_open_propositions": [
             open_index[open_id]
             for open_id in sorted(programme_open_ids - open_ids)
@@ -3596,6 +3614,54 @@ def has_exact_discovery_term(query: str, claims: dict[str, Any]) -> bool:
     )
 
 
+def _source_current_research_corpus(
+    row: Mapping[str, Any]
+) -> dict[str, Any] | None:
+    """Attach a research route only while its public files are source-current."""
+    research = row.get("research_corpus")
+    if research is None:
+        return None
+    if not isinstance(research, Mapping):
+        raise ValueError("research corpus route must be an object")
+    indexed_files = research.get("files")
+    if not isinstance(indexed_files, Mapping):
+        raise ValueError("research corpus route files are missing")
+    files: dict[str, dict[str, str]] = {}
+    file_digests: dict[str, str] = {}
+    for key in ("frontier", "strongest_results", "manifest", "checkpoint"):
+        indexed = indexed_files.get(key)
+        if not isinstance(indexed, Mapping):
+            raise ValueError(f"research corpus route file is missing: {key}")
+        raw_path = indexed.get("path")
+        if not isinstance(raw_path, str) or not raw_path:
+            raise ValueError(f"research corpus route file path is invalid: {key}")
+        relative = Path(raw_path)
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ValueError(f"research corpus route path escapes root: {raw_path}")
+        path = ROOT / relative
+        if not path.is_file() or path.is_symlink():
+            raise ValueError(f"research corpus route file is unavailable: {raw_path}")
+        digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+        if indexed.get("content_digest") != digest:
+            raise ValueError(f"research corpus route digest drift: {raw_path}")
+        files[key] = {"path": raw_path, "content_digest": digest}
+        file_digests[key] = digest
+    return {
+        **dict(research),
+        "files": files,
+        "source_fingerprint": {
+            "problem_index": {
+                "path": "docs/problems.json",
+                "content_digest": "sha256:"
+                + hashlib.sha256(
+                    (ROOT / "docs" / "problems.json").read_bytes()
+                ).hexdigest(),
+            },
+            "files": file_digests,
+        },
+    }
+
+
 def problem_registry_route(query: str) -> dict[str, Any] | None:
     """Resolve one exact public Erdős-problem phrase without an atlas scan."""
     normalized_query = normalized_search_text(query)
@@ -3655,8 +3721,8 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
             "generated_problem_index_route_not_claim_status_or_Lean_proof_authority"
         ),
     }
-    research = row.get("research_corpus")
-    if isinstance(research, dict):
+    research = _source_current_research_corpus(row)
+    if research is not None:
         route["research_corpus"] = research
     return route
 

@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import copy
 import re
 import subprocess
 import sys
@@ -154,6 +155,20 @@ def validate_programme_routes() -> None:
         assert route_memory["authority_posture"] == (
             "derived_resume_handoff_not_claim_or_proof_authority"
         )
+        claim_view = query("--claim", route["core_claim_ids"][0])
+        context = next(
+            row
+            for row in claim_view["programme_contexts"]
+            if row["id"] == route_id
+        )
+        assert context["route_memory"]["problem_number"] == expected_problem
+        assert context["route_memory"]["command"] == route_memory["command"]
+        assert context["route_memory"]["authority_posture"] == (
+            "derived_resume_handoff_not_claim_or_proof_authority"
+        )
+        assert "current tracked source digests" in context["route_memory"][
+            "identity_contract"
+        ]
         assert any(
             token in programme["claim_ceiling"].casefold()
             for token in (
@@ -193,9 +208,37 @@ def validate_indexed_problem_routes() -> None:
                 "research_corpus/Erdos1041/FRONTIER.md"
             )
             assert "not_reviewed_claim_registry" in research["authority_posture"]
+            assert research["source_fingerprint"]["problem_index"]["path"] == (
+                "docs/problems.json"
+            )
+            assert set(research["source_fingerprint"]["files"]) == {
+                "frontier",
+                "strongest_results",
+                "manifest",
+                "checkpoint",
+            }
         card = run("--route", route_id, "--format", "card")
         assert card.returncode == 0
         assert card.stdout.startswith(f"problem {route_id} |")
+
+
+def validate_research_corpus_fingerprint() -> None:
+    """A copied index digest must not hide changed public research bytes."""
+    problem = next(
+        row
+        for row in load("docs/problems.json")["problems"]
+        if row["problem_id"] == "erdos_1041"
+    )
+    broken = copy.deepcopy(problem)
+    broken["research_corpus"]["files"]["frontier"]["content_digest"] = (
+        "sha256:" + "0" * 64
+    )
+    try:
+        query_corpus._source_current_research_corpus(broken)
+    except ValueError as error:
+        assert "digest drift" in str(error)
+    else:
+        raise AssertionError("research corpus digest mutation escaped")
 
 
 def validate_agent_tour() -> None:
@@ -690,6 +733,7 @@ def validate_claim_status_packets() -> None:
 def main() -> int:
     validate_programme_routes()
     validate_indexed_problem_routes()
+    validate_research_corpus_fingerprint()
     validate_agent_tour()
     validate_paper_guide()
     validate_natural_language_search()
