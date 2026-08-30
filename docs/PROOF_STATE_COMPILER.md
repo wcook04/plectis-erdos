@@ -97,6 +97,17 @@ The compiler records explicit tactic arguments plus Lean-instantiated
 subgoals as the substitution witness.  It does not pretend that source-level
 argument text is a complete dump of Lean's internal metavariable assignment.
 
+## Return to public evidence
+
+A proof-state packet is a typed continuation artifact, not a public claim. When
+a candidate closes (or the compiler abstains), return to the [complete
+eight-problem return matrix](SOURCE_MAP.md#complete-eight-problem-return-matrix).
+Select the matching row in [`docs/problems.json`](problems.json) to recover its
+exact note, paper/source joins, and open-obligation statement; then use the
+packet's declaration and source coordinates to verify the corresponding Lean
+witness. A closed tactic run does not settle the problem unless the public
+claim registry says so.
+
 ## Causal obstruction receipt
 
 The pilot's divisibility pair is an intervention, not merely two examples.
