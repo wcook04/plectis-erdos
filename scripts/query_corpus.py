@@ -3988,7 +3988,12 @@ def direct_route_search_packet(
         if row.get("availability") == "missing"
     ]
     interpretation = semantic_query_interpretation(query)
-    routed_results = [route]
+    routed_route = dict(route)
+    if route.get("route_kind") == "mathematical_programme":
+        routed_route["route_memory"] = route_packet(route["id"]).get(
+            "route_memory"
+        )
+    routed_results = [routed_route]
     if (
         interpretation["operator"]["id"] == "frontier"
         and remaining_open_proposition_ids
@@ -3999,7 +4004,13 @@ def direct_route_search_packet(
             for row in claims["remaining_open_propositions"]
         }
         routed_results.extend(
-            {"kind": "open_proposition", **open_index[open_id]}
+            {
+                "kind": "open_proposition",
+                **open_index[open_id],
+                "route_memory": open_proposition_packet(open_id)[
+                    "route_memory"
+                ],
+            }
             for open_id in remaining_open_proposition_ids
             if open_id in open_index
         )
@@ -4765,6 +4776,9 @@ def semantic_cell(
                 "remaining_open_propositions"
             ],
             "programme_contexts": packet["programme_contexts"],
+            "route_memory": claim_route_memory_projection(
+                handle, load("docs/claims.json")
+            ),
             "paper_coordinate": packet["paper"],
             "lean_source_identity": packet["lean_source_identity"],
         }
@@ -5965,6 +5979,11 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
             "handle": semantic_result_handle(result),
             "canonical_handle": semantic_result_key(result),
             "reason": "lower_ranked_outside_bounded_witness_slice",
+            **(
+                {"route_memory": result["route_memory"]}
+                if result.get("route_memory") is not None
+                else {}
+            ),
         }
         for result in search["results"]
         if (result["kind"], semantic_result_key(result)) not in selected_keys

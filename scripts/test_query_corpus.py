@@ -1485,6 +1485,26 @@ def main() -> int:
     ]
     assert anchor_cells
     assert all(cell["content"]["route_memory"] is not None for cell in anchor_cells)
+    semantic_claim = query_corpus.semantic_cell(
+        "denominator_exclusion",
+        {"kind": "claim", "id": "denominator_exclusion"},
+        "focused",
+    )
+    assert semantic_claim["content"]["route_memory"]["status"] == "bound"
+    assert any(
+        binding["route_id"] == "erdos249_certificate_story"
+        and binding["problem_number"] == 249
+        for binding in semantic_claim["content"]["route_memory"]["bindings"]
+    )
+    semantic_near_misses = query_corpus.semantic_slice_packet(
+        "what proves denominator exclusion", 1
+    )["near_misses"]
+    assert semantic_near_misses
+    assert any(
+        row.get("route_memory")
+        for row in semantic_near_misses
+        if row["kind"] in {"reading_route", "publication_family"}
+    )
     assert source_declaration["attached_claims"][0]["id"] == "denominator_exclusion"
     assert "res:farey" in {
         row["canonical_handle"] for row in source_declaration["paper_anchors"]
