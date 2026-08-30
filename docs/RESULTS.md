@@ -76,8 +76,9 @@ pass, the high-signal spine is:
   height and rank-two obstructions, plus a distinct weighted-phase observer
   that separates a finite residue digit from an uncontrolled integral
   coboundary; finite translation/root-retention inputs plus a diagnosed saddle
-  gap; and the rational-base recurrence/no-go at `3/2` each isolate a mechanism
-  without claiming the endpoint.
+  gap; and the rational-base recurrence/no-go at `3/2` plus a finite
+  four-jet/Padé obstruction each isolate a mechanism without claiming the
+  endpoint.
 
 The finite #249 certificate band, Stern–Brocot and gcd-moment identities,
 #257 measure/noncollapse geometry, and the cited-only ladders remain useful
@@ -624,6 +625,16 @@ core)**
   The companion forcing bound is indexed as `rational_base_forcing_growth`
   (`res:forcing`): for `s ≥ 2` and positive data it gives a lower bound
   `2^(N+1)`, while `s = 1` collapses exactly to `B·coeff(N+1)`.
+- A distinct source-level four-jet/Padé obstruction is deferred outside the
+  Comparator screen. When `0 < R` and `4R + 2S ≤ n`, the four-jet target has
+  cardinality `(3^R)^2 * (2^S)^2 < 2^n`, forcing two distinct binary selectors
+  to share a four-jet signature
+  (`ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean:129-167`). The
+  accompanying Padé exterior determinants retain their row-content divisors
+  (`ErdosProblems/Erdos1049/RationalPadeArithmetic.lean:80-220`), so the
+  package exposes finite collision and content barriers without supplying an
+  analytic remainder, nonvanishing, or irrationality theorem. It is distinct
+  source evidence, not a Comparator result or an endpoint closure.
 - The Van Assche moving diagonal fails the Amdeberhan–Zeilberger scalar
   recurrence already at `n=0`: its exact residual is
   `-p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2)`, strictly negative for every real
