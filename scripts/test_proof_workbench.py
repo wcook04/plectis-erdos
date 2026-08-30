@@ -739,6 +739,56 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("show accepted a forged claim record")
 
+    stale_claim_session = workbench.Session(sessions_root, "stale-claim")
+    stale_claim_session.probes_dir.mkdir(parents=True)
+    stale_source = "exact artifact\n"
+    stale_artifact = stale_claim_session.probes_dir / "m002.lean"
+    stale_artifact.write_text(stale_source, encoding="utf-8")
+    stale_claim_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    stale_claim_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "input_sha256": workbench._sha256_text(stale_source),
+            "kernel_receipt": {
+                "verdict": "kernel_accepted",
+                "exit_code": 0,
+                "error_count": 0,
+                "sorry_count": 0,
+            },
+        }
+    )
+    stale_claim_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m003",
+            "kind": "claim",
+            "text": "valid then stale",
+            "cited_probe": "m002",
+            "cited_input_sha256": workbench._sha256_text(stale_source),
+            "authority": "kernel_accepted_probe_receipt",
+        }
+    )
+    stale_artifact.write_text("changed artifact\n", encoding="utf-8")
+    try:
+        workbench.cmd_show(
+            type("Args", (), {"sessions_root": sessions_root, "session": "stale-claim"})(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "does not match input hash" not in str(error):
+            raise AssertionError(f"stale claim lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("show exposed a claim after its probe artifact changed")
+
     incomplete_rows = (
         (
             "missing-note-text",

@@ -468,6 +468,23 @@ def _stored_probe_source(session: Session, row: dict[str, Any], action: str) -> 
     return source
 
 
+def _validate_claim_evidence(
+    session: Session, moves: list[dict[str, Any]], action: str
+) -> None:
+    """Keep reader-facing claims tied to probe bytes that still exist exactly."""
+    probes = {
+        row["move_id"]: row
+        for row in moves
+        if row.get("kind") == "probe"
+    }
+    for row in moves:
+        if row.get("kind") != "claim":
+            continue
+        cited = probes.get(row.get("cited_probe"))
+        if cited is not None:
+            _stored_probe_source(session, cited, action)
+
+
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     if session.exists():
@@ -593,6 +610,7 @@ def cmd_close(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     _require_writable_session(session, "close")
     moves = session.moves()
+    _validate_claim_evidence(session, moves, "close")
     counts: dict[str, int] = {}
     for row in moves:
         counts[row["kind"]] = counts.get(row["kind"], 0) + 1
@@ -719,8 +737,10 @@ def cmd_show(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     if not session.exists():
         raise SystemExit(f"unknown session: {args.session}")
+    moves = session.moves()
+    _validate_claim_evidence(session, moves, "show")
     compact = []
-    for row in session.moves():
+    for row in moves:
         entry: dict[str, Any] = {
             "move_id": row["move_id"],
             "kind": row["kind"],
