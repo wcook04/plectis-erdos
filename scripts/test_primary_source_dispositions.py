@@ -96,10 +96,20 @@ def main() -> int:
         "notice omission of the manifest permission boundary was accepted",
     )
 
+    stale_summary = copy.deepcopy(data)
+    stale_summary["artifacts"][0]["disposition"] = "public_redistribution_verified"  # type: ignore[index]
+    stale_summary_errors = notice_errors(
+        stale_summary, notice, requirements, lake_manifest
+    )
+    require(
+        any("all-unverified summary" in error for error in stale_summary_errors),
+        "a changed artifact disposition left stale notice prose green",
+    )
+
     print(
         "test_primary_source_dispositions: baseline clean; "
         "5 unauthorized or inconsistent mutations, 2 private metadata fixtures, "
-        "and 2 notice mutations rejected"
+        "and 3 notice mutations rejected"
     )
     return 0
 

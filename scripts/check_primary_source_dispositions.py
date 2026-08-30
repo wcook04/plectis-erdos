@@ -146,7 +146,28 @@ def notice_errors(
     )
 
     artifacts = data.get("artifacts")
+    unverified_summary = (
+        "Every current record is `working_tree_only`, `link_and_digest_only`, and\n"
+        "`permission_evidence_status: not_verified`."
+    )
+    require(
+        unverified_summary in notice_text,
+        "third-party notice is missing its current unverified disposition summary",
+        errors,
+    )
     if isinstance(artifacts, list):
+        require(
+            all(
+                isinstance(record, dict)
+                and record.get("inventory_state") == "working_tree_only"
+                and record.get("disposition") == "link_and_digest_only"
+                and record.get("permission_evidence_status") == "not_verified"
+                and record.get("public_candidate_inclusion") is False
+                for record in artifacts
+            ),
+            "third-party notice's all-unverified summary no longer matches the disposition ledger",
+            errors,
+        )
         for record in artifacts:
             if not isinstance(record, dict):
                 continue
