@@ -101,7 +101,10 @@ question, public status, problem-owned note, formal directory and module
 counts, open-obligation ids, and typed semantic follow-up commands. The
 packet is a navigation handoff, not proof authority. Expand the matching row
 in `docs/problems.json` for the exact paper/source paths and each open
-obligation statement; then continue the bidirectional traversal with:
+obligation statement; the [complete eight-problem return matrix](SOURCE_MAP.md#complete-eight-problem-return-matrix)
+keeps that proof/paper/source crosswalk in one canonical reader surface and
+provides the source-to-problem back-route. Then continue the bidirectional
+traversal with:
 
 ```sh
 python3 scripts/query_corpus.py --module <problem-module-path>
