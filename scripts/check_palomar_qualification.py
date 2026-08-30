@@ -470,6 +470,7 @@ def candidate_selection_errors(
                 expected_family = {
                     "first_harmonic_pivot": "first_harmonic_pivot_decomposition",
                     "actual_lcm_positive_corridor_top_edge": "actual_lcm_orbit_separation",
+                    "erdos257_boolean_mobius_exact_row_dynamics": "boolean_mobius_exact_row_dynamics",
                 }.get(row.get("candidate_id"))
                 if expected_family and row.get("family_id") != expected_family:
                     errors.append(
@@ -561,6 +562,7 @@ def candidate_selection_errors(
                 "erdos243_centered_state_recovery",
                 "weighted_phase_carry_observer",
                 "erdos257_boolean_mobius_carry",
+                "erdos257_boolean_mobius_exact_row_dynamics",
                 "erdos249_carry_anti_compression",
             }
             if set(candidate_ids) != expected_landscape_ids:

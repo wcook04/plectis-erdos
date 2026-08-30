@@ -340,6 +340,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos249_carry_anti_compression",
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
+        "erdos257_boolean_mobius_exact_row_dynamics",
     }
     assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
     assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
@@ -437,6 +438,37 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "Erdos249257.ExternalVerification.supportCoeffZeroWindow_length_le_eps_logb_add",
     ]
     assert "no universal Erdős #257 irrationality" in " ".join(boolean["limitations"])
+    exact_row = landscape_by_id["erdos257_boolean_mobius_exact_row_dynamics"]
+    assert exact_row["family_id"] == "boolean_mobius_exact_row_dynamics"
+    assert exact_row["disposition"] == "represented"
+    assert exact_row["prior_disposition"] == "deferred"
+    assert exact_row["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert exact_row["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert exact_row["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips"
+    )
+    assert exact_row["comparator_declaration"] in comparator["theorem_names"]
+    assert exact_row["supporting_comparator_declarations"] == []
+    assert exact_row["source_transport_commit"] == (
+        "0502b7ebe8d3d8a14808eecc5bbc663feef711a3"
+    )
+    assert exact_row["canonical_claim_commit"] == (
+        "33c4c32ea71d67afcd550af8c1fb81b380188f12"
+    )
+    assert exact_row["source_transport_files"] == [
+        "ExternalVerification/Challenge.lean",
+        "ExternalVerification/Solution.lean",
+        "ExternalVerification/Statements.lean",
+    ]
+    assert exact_row["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips"
+    ]
+    assert "CofinalPositiveHalfGreedySkips" in exact_row["source_declaration"]
+    assert "cofinal" in " ".join(exact_row["exact_hypotheses"]).lower()
+    assert "finite exact rows" in " ".join(exact_row["limitations"])
+    assert "unconditional" in exact_row["conclusion"]
+    assert "verification/comparator.json" in exact_row["transport_admission_boundary"]
+    assert "review matrix" in exact_row["transport_admission_boundary"]
     anti = landscape_by_id["erdos249_carry_anti_compression"]
     assert anti["family_id"] == "totient_carry_anti_compression"
     assert anti["disposition"] == "represented"
