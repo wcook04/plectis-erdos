@@ -12,6 +12,14 @@ Where this work sits among the numbered problems it is near. Statuses are as lis
 The external catalogue status and the local release status are separate facts.
 Use the exact local packets before interpreting an analogy:
 
+For a machine-first return from any indexed problem, run
+`python3 scripts/query_corpus.py --route erdos_<n>` for `n` in `68, 243, 249,
+251, 257, 269, 1041, 1049`, then follow the [complete eight-problem return
+matrix](SOURCE_MAP.md#complete-eight-problem-return-matrix). That matrix binds
+each public status row to its strongest checked source, paper and TeX record,
+and exact open-obligation handles without changing the status or claim
+authority.
+
 - #249 target: `python3 scripts/query_corpus.py --open remaining_open.erdos_249_irrationality`; return to its problem-owned evidence with `python3 scripts/query_corpus.py --route erdos_249`.
 - #257 target: `python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports`; return to its problem-owned evidence with `python3 scripts/query_corpus.py --route erdos_257`.
 - #69 neighbour: `python3 scripts/query_corpus.py --claim prime_support_irrationality`
