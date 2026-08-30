@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 import validation_singleflight as singleflight
+import route_memory_receipt
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -35,7 +36,7 @@ SOURCE_FILES = (
     "docs/claims.json",
     "docs/orientation.json",
 )
-PUBLIC_ROSTER = frozenset({68, 243, 249, 251, 257, 269, 1041, 1049})
+PUBLIC_ROSTER = route_memory_receipt.ROSTER
 
 
 class RouteMemoryError(ValueError):
