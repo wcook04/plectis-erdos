@@ -40,6 +40,22 @@ SANITIZED_GIT_ENVIRONMENT_KEYS = (
     "GIT_ALTERNATE_OBJECT_DIRECTORIES",
     "GIT_COMMON_DIR",
 )
+SANITIZED_RUNTIME_ENVIRONMENT_KEYS = (
+    "PYTHONHOME",
+    "PYTHONPATH",
+    "PYTHONSTARTUP",
+    "PYTHONUSERBASE",
+    "PYTHONBREAKPOINT",
+    "PYTHONWARNINGS",
+    "PYTHONHASHSEED",
+    "PYTHONOPTIMIZE",
+    "PYTHONUTF8",
+    "PYTHONNOUSERSITE",
+    "PYTHONDONTWRITEBYTECODE",
+    "LC_ALL",
+    "LANG",
+    "LANGUAGE",
+)
 RELEASE_COMMANDS = (
     ("python3", "scripts/check_release.py"),
     ("python3", "scripts/test_root_import_closure.py"),
@@ -53,10 +69,32 @@ class SnapshotError(RuntimeError):
 
 
 def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
-    """Remove inherited Git selectors before any snapshot subprocess runs."""
+    """Run snapshot subprocesses without inherited Git, Python, or locale state."""
     environment = dict(os.environ if base is None else base)
-    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
+    for key in list(environment):
+        if key.startswith("GIT_CONFIG_"):
+            environment.pop(key, None)
+    for key in SANITIZED_GIT_ENVIRONMENT_KEYS + SANITIZED_RUNTIME_ENVIRONMENT_KEYS:
         environment.pop(key, None)
+    environment.update(
+        {
+            "GIT_CONFIG_NOSYSTEM": "1",
+            "GIT_CONFIG_GLOBAL": os.devnull,
+            "GIT_OPTIONAL_LOCKS": "0",
+            "GIT_NO_REPLACE_OBJECTS": "1",
+            "GIT_PAGER": "cat",
+            "GIT_TERMINAL_PROMPT": "0",
+            "GIT_ASKPASS": "/bin/false",
+            "PATH": os.defpath,
+            "LC_ALL": "C.UTF-8",
+            "LANG": "C.UTF-8",
+            "LANGUAGE": "C.UTF-8",
+            "PYTHONHASHSEED": "0",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONUTF8": "1",
+        }
+    )
     return environment
 
 
@@ -180,6 +218,24 @@ def receipt_base(ref: str, commit: str, caller_dirty_paths: list[str]) -> dict[s
         "subprocess_environment": {
             "contract": ENVIRONMENT_CONTRACT,
             "sanitized_git_selectors": list(SANITIZED_GIT_ENVIRONMENT_KEYS),
+            "sanitized_runtime_variables": list(SANITIZED_RUNTIME_ENVIRONMENT_KEYS),
+            "canonical_values": {
+                "GIT_CONFIG_GLOBAL": os.devnull,
+                "GIT_CONFIG_NOSYSTEM": "1",
+                "GIT_OPTIONAL_LOCKS": "0",
+                "GIT_NO_REPLACE_OBJECTS": "1",
+                "GIT_PAGER": "cat",
+                "GIT_TERMINAL_PROMPT": "0",
+                "GIT_ASKPASS": "/bin/false",
+                "PATH": os.defpath,
+                "LC_ALL": "C.UTF-8",
+                "LANG": "C.UTF-8",
+                "LANGUAGE": "C.UTF-8",
+                "PYTHONHASHSEED": "0",
+                "PYTHONNOUSERSITE": "1",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONUTF8": "1",
+            },
         },
         "release_command": list(RELEASE_COMMANDS[0]),
         "release_commands": [list(command) for command in RELEASE_COMMANDS],

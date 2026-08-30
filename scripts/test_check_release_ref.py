@@ -71,31 +71,87 @@ def main() -> int:
                 "GIT_OBJECT_DIRECTORY": "/private/wrong-objects",
                 "GIT_ALTERNATE_OBJECT_DIRECTORIES": "/private/wrong-alternates",
                 "GIT_COMMON_DIR": "/private/wrong-common",
+                "GIT_CONFIG_GLOBAL": "/private/wrong-gitconfig",
+                "GIT_TERMINAL_PROMPT": "1",
+                "GIT_ASKPASS": "/private/wrong-askpass",
+                "PYTHONHOME": "/private/wrong-python-home",
+                "PYTHONPATH": "/private/wrong-python-path",
+                "PYTHONOPTIMIZE": "2",
+                "PYTHONWARNINGS": "error",
+                "PYTHONHASHSEED": "random",
+                "LC_ALL": "C",
+                "LANG": "C",
+                "LANGUAGE": "C",
+                "PATH": "/private/wrong-bin",
             }
             with patch.dict(os.environ, hostile_environment, clear=False):
                 sanitized = check_release_ref.clean_environment()
                 require(
-                    all(key not in sanitized for key in hostile_environment),
-                    "release-ref environment retained a hostile Git selector",
+                    all(
+                        key not in sanitized
+                        for key in (
+                            "GIT_DIR",
+                            "GIT_WORK_TREE",
+                            "GIT_INDEX_FILE",
+                            "GIT_NAMESPACE",
+                            "GIT_REPLACE_REF_BASE",
+                            "GIT_OBJECT_DIRECTORY",
+                            "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+                            "GIT_COMMON_DIR",
+                            "PYTHONHOME",
+                            "PYTHONPATH",
+                            "PYTHONOPTIMIZE",
+                            "PYTHONWARNINGS",
+                        )
+                    ),
+                    "release-ref environment retained inherited selector or Python state",
                 )
                 require(
-                    sanitized["PATH"] == os.environ["PATH"],
-                    "release-ref environment did not preserve PATH",
+                    sanitized["GIT_CONFIG_GLOBAL"] == os.devnull,
+                    "release-ref environment did not disable global Git config",
+                )
+                require(
+                    sanitized["GIT_CONFIG_NOSYSTEM"] == "1",
+                    "release-ref environment did not disable system Git config",
+                )
+                require(
+                    sanitized["GIT_TERMINAL_PROMPT"] == "0"
+                    and sanitized["GIT_ASKPASS"] == "/bin/false",
+                    "release-ref environment retained interactive Git controls",
+                )
+                require(
+                    sanitized["PATH"] == os.defpath,
+                    "release-ref environment did not pin PATH",
+                )
+                require(
+                    sanitized["LC_ALL"] == "C.UTF-8"
+                    and sanitized["LANG"] == "C.UTF-8"
+                    and sanitized["LANGUAGE"] == "C.UTF-8",
+                    "release-ref environment did not pin locale",
+                )
+                require(
+                    sanitized["PYTHONHASHSEED"] == "0"
+                    and sanitized["PYTHONNOUSERSITE"] == "1"
+                    and sanitized["PYTHONDONTWRITEBYTECODE"] == "1"
+                    and sanitized["PYTHONUTF8"] == "1",
+                    "release-ref environment did not pin Python runtime state",
                 )
                 child = check_release_ref.run(
                     [
                         sys.executable,
                         "-c",
                         "import json, os; print(json.dumps({k: os.environ[k] for k in "
-                        "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE') "
+                        "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE', "
+                        "'PYTHONPATH', 'PYTHONHOME', 'LC_ALL', 'LANG') "
                         "if k in os.environ}))",
                     ],
                     cwd=root,
                 )
                 require(child.returncode == 0, "sanitized child process failed")
                 require(
-                    json.loads(child.stdout) == {},
-                    "sanitized child process inherited a Git selector",
+                    json.loads(child.stdout)
+                    == {"LC_ALL": "C.UTF-8", "LANG": "C.UTF-8"},
+                    "sanitized child process inherited Git, Python, or locale state",
                 )
             git(root, "init", "-q")
             git(root, "config", "user.email", "release-ref-test@example.invalid")
@@ -162,6 +218,26 @@ def main() -> int:
                     "sanitized_git_selectors": list(
                         check_release_ref.SANITIZED_GIT_ENVIRONMENT_KEYS
                     ),
+                    "sanitized_runtime_variables": list(
+                        check_release_ref.SANITIZED_RUNTIME_ENVIRONMENT_KEYS
+                    ),
+                    "canonical_values": {
+                        "GIT_CONFIG_GLOBAL": os.devnull,
+                        "GIT_CONFIG_NOSYSTEM": "1",
+                        "GIT_OPTIONAL_LOCKS": "0",
+                        "GIT_NO_REPLACE_OBJECTS": "1",
+                        "GIT_PAGER": "cat",
+                        "GIT_TERMINAL_PROMPT": "0",
+                        "GIT_ASKPASS": "/bin/false",
+                        "PATH": os.defpath,
+                        "LC_ALL": "C.UTF-8",
+                        "LANG": "C.UTF-8",
+                        "LANGUAGE": "C.UTF-8",
+                        "PYTHONHASHSEED": "0",
+                        "PYTHONNOUSERSITE": "1",
+                        "PYTHONDONTWRITEBYTECODE": "1",
+                        "PYTHONUTF8": "1",
+                    },
                 },
                 "probe omitted the subprocess environment contract",
             )
