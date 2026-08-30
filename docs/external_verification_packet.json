@@ -330,6 +330,21 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "fixed_precision_transport_no_go",
+      "problem": 249,
+      "review_family": "fixed_precision_transport_no_go",
+      "claim_id": "fixed_precision_transport_no_go",
+      "contribution_class": "unconditional synthetic no-go; novelty unassessed",
+      "original_declaration": "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
+      "original_source": "Erdos249257/TropicalCurvatureCarry.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
+      "statement": "For every positive fixed precision, every finite word of odd valuation-unit symbols and every incoming integer carry state admit a compatible orbit whose successive states stay within the corresponding valuation-unit radii; fixed-precision local signatures therefore do not by themselves exclude finite centred completions.",
+      "boundary": "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.",
+      "canonical_claim_status": "supports_registered_claim_family:fixed_precision_transport_no_go",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "actual_lcm_orbit_separation",
       "problem": 249,
       "review_family": "actual_lcm_orbit_separation",
@@ -892,6 +907,19 @@
           "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
         },
         {
+          "id": "fixed_precision_transport_no_go",
+          "contribution_class": "unconditional synthetic no-go; novelty unassessed",
+          "summary": "At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
+            "Erdos249257.TotientTailPeriodKiller.vu_step_has_centred_completion",
+            "Erdos249257.TotientTailPeriodKiller.vu_word_has_prefix_locked_completion"
+          ],
+          "boundary": "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
+        },
+        {
           "id": "actual_lcm_orbit_separation",
           "contribution_class": "conditional reduction",
           "summary": "A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer. The landed actual-LCM sign/top-edge analysis is supporting and contrary-boundary evidence: positivity leaves the true survivor negative, and integrality forces the exact top-edge residue.",
@@ -1432,7 +1460,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:f2db5f66fd8bae9f759c2d23656c7fd012f6c0902d6fcd16f10411119276163c",
+    "projection_digest": "sha256:a09b21d8266dbe8b596323cd07f6180e801ec1d90ebacc21e1aea422a869f3e2",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1880,11 +1908,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 17,
+          "family_count": 18,
           "by_class": {
             "not_selected": 4,
             "represented_by": 1,
-            "targeted": 12
+            "targeted": 13
           },
           "dispositions": {
             "totient_kernel_basis": "targeted",
@@ -1895,6 +1923,7 @@
             "stern_brocot_run_fibonacci_stability": "targeted",
             "stern_brocot_cylinder_law": "targeted",
             "lcm_factor_ideal_shift_algebra_no_go": "targeted",
+            "fixed_precision_transport_no_go": "targeted",
             "actual_lcm_orbit_separation": "targeted",
             "actual_foreign_residue_projection": "targeted",
             "first_harmonic_pivot_decomposition": "targeted",
@@ -2502,6 +2531,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:2a165a42558ba94c33c53e06de2bc38f8c2a3d44fb3ef6a3edff5d5882827ee1",
+  "config_digest": "sha256:b9506c33fddd027778359a32991dc6d270b891d47b9627ddabe50358c693c71d",
   "solution_source_digest": "sha256:fe970e29af11bd33c698e7d673aa9b23003462d066eb19b325c7caf715c79c48"
 }

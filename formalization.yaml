@@ -277,6 +277,22 @@ status:
       boundary: "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
       comparator_declaration: "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient"
       literature_dependencies: []
+    - declaration: "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo"
+      file: "Erdos249257/TropicalCurvatureCarry.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "supports_registered_claim_family:fixed_precision_transport_no_go"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "unconditional synthetic no-go; novelty unassessed"
+      statement: "For every positive fixed precision, every finite word of odd valuation-unit symbols and every incoming integer carry state admit a compatible orbit whose successive states stay within the corresponding valuation-unit radii; fixed-precision local signatures therefore do not by themselves exclude finite centred completions."
+      boundary: "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
+      comparator_declaration: "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo"
+      literature_dependencies: []
     - declaration: "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
       file: "Erdos249257/TotientActualLcmOrbitSeparation.lean"
       sorry_count: 0
@@ -824,6 +840,11 @@ alignment:
       module: "Erdos249257/LcmFactorIdealPulseObstruction.lean"
       status: "proved"
       note: "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
+    - source: "For every positive fixed precision, every finite word of odd valuation-unit symbols and every incoming integer carry state admit a compatible orbit whose successive states stay within the corresponding valuation-unit radii; fixed-precision local signatures therefore do not by themselves exclude finite centred completions."
+      lean: "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo"
+      module: "Erdos249257/TropicalCurvatureCarry.lean"
+      status: "proved"
+      note: "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
     - source: "A cofinal quantitative separation supply for the actual power-two LCM tail orbit implies irrationality of the binary totient series."
       lean: "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
       module: "Erdos249257/TotientActualLcmOrbitSeparation.lean"
@@ -1081,6 +1102,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "For every t at least 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds."
         boundary: "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
+      - id: "fixed_precision_transport_no_go"
+        contribution_class: "unconditional synthetic no-go; novelty unassessed"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted"
+        summary: "At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints."
+        boundary: "This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families."
       - id: "actual_lcm_orbit_separation"
         contribution_class: "conditional reduction"
         evidence_mode: "Lean kernel plus Comparator"
@@ -1416,7 +1443,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:f2db5f66fd8bae9f759c2d23656c7fd012f6c0902d6fcd16f10411119276163c"
+  problem_index_digest: "sha256:a09b21d8266dbe8b596323cd07f6180e801ec1d90ebacc21e1aea422a869f3e2"
   problem_count: 8
   problems:
     - id: "erdos_68"

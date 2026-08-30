@@ -7,7 +7,7 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** The 41 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 42 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
@@ -176,7 +176,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Contribution families (17)</summary>
+<summary>Contribution families (18)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -219,6 +219,11 @@ Exact registry keys and Comparator routing are listed separately.
   For every t at least 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds.<br>
   **Boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open.<br>
   *Evidence.* unconditional progress · Lean kernel plus Comparator
+
+- **Fixed precision transport no go**<br>
+  At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints.<br>
+  **Boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.<br>
+  *Evidence.* unconditional synthetic no-go; novelty unassessed · Lean kernel plus Comparator
 
 - **Actual lcm orbit separation**<br>
   A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer. The landed actual-LCM sign/top-edge analysis is supporting and contrary-boundary evidence: positivity leaves the true survivor negative, and integrality forces the exact top-edge residue.<br>
@@ -268,7 +273,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (17)</summary>
+<summary>Technical registry and Comparator routing (18)</summary>
 
 - <code>totient_kernel_basis</code><br>
   Comparator: <code>targeted</code>
@@ -292,6 +297,9 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>targeted</code>
 
 - <code>lcm_factor_ideal_shift_algebra_no_go</code><br>
+  Comparator: <code>targeted</code>
+
+- <code>fixed_precision_transport_no_go</code><br>
   Comparator: <code>targeted</code>
 
 - <code>actual_lcm_orbit_separation</code><br>
@@ -834,7 +842,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 41 statement-isolated interfaces</summary>
+<summary>Show all 42 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -939,6 +947,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Canonical claim status.** `supports_registered_claim_family:lcm_factor_ideal_anchor_pulse_no_go`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open.
+
+- <code>Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo</code>
+  - **Class.** unconditional synthetic no-go; novelty unassessed
+  - **Statement.** For every positive fixed precision, every finite word of odd valuation-unit symbols and every incoming integer carry state admit a compatible orbit whose successive states stay within the corresponding valuation-unit radii; fixed-precision local signatures therefore do not by themselves exclude finite centred completions.
+  - **Canonical claim status.** `supports_registered_claim_family:fixed_precision_transport_no_go`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.
 
 - <code>Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply</code>
   - **Class.** conditional reduction
@@ -1146,7 +1161,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 41 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 42 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.
