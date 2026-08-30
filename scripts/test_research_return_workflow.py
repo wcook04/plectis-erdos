@@ -181,6 +181,19 @@ def issue_form_errors(text: str) -> list[str]:
     return errors
 
 
+def issue_form_link_errors(text: str) -> list[str]:
+    """Require every relative issue-form link to resolve in a clean clone."""
+    errors: list[str] = []
+    for link in re.findall(r"\]\(([^)]+)\)", text):
+        target_ref = link.split("#", 1)[0]
+        if not target_ref or "://" in target_ref:
+            continue
+        target = (ISSUE_FORM.parent / target_ref).resolve()
+        if not target.is_file():
+            errors.append(f"issue form link does not resolve: {link}")
+    return errors
+
+
 def require_rejection(mutated: str, marker: str) -> None:
     errors = workflow_errors(mutated)
     require(errors and any(marker in error for error in errors), f"mutation was accepted: {marker}")
@@ -193,6 +206,7 @@ def main() -> int:
     issue_form = ISSUE_FORM.read_text(encoding="utf-8")
     require(not workflow_errors(workflow), "live research-return workflow violates its contract")
     require(not issue_form_errors(issue_form), "live research-return issue form violates its contract")
+    require(not issue_form_link_errors(issue_form), "live research-return issue form has a dead local link")
 
     require_rejection(workflow.replace(CHECKOUT_SHA, "v4", 1), "not pinned to a full commit")
     require_rejection(workflow.replace("contents: read", "contents: write", 1), "write permission")
