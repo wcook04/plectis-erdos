@@ -26,6 +26,7 @@ import Erdos249257.ActualForeignResidueProjection
 import Erdos249257.TropicalCurvatureCarry
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
+import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
@@ -1097,6 +1098,28 @@ theorem boundedNegativePart_eventually_zero
   simpa [centeredState, ErdosProblems.Erdos243.centeredState] using
     ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
       a C D E B ha hCpos hC hD hE hcentered hbound hvanish
+
+theorem sylvesterNext_eventually_of_summable_negativeRelativeMass
+    (a D : ℕ → ℤ) (C : ℕ → ℕ)
+    (hD : ∀ n, D (n + 1) = nextDenState (a n) (D n))
+    (hC : ∀ n, C (n + 1) = nextTailState (a n) (D n) (C n))
+    (hCpos : ∀ n, 0 < C n)
+    (hstep : ∀ n, (C (n + 1) : ℤ) =
+      (C n : ℤ) - centeredState (a n) (D n) (C n))
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (centeredState (a n) (D n) (C n)) < C n)
+    (hsum : Summable
+      (negativeRelativeMass C
+        (fun n ↦ centeredState (a n) (D n) (C n)))) :
+    ∃ N, ∀ n, N ≤ n → a (n + 1) = sylvesterNext (a n) := by
+  simpa [negativeRelativeMass, sylvesterNext, nextDenState, nextTailState,
+    centeredState, ErdosProblems.Erdos243.negativeRelativeMass,
+    ErdosProblems.Erdos243.sylvesterNext,
+    ErdosProblems.Erdos243.nextDenState,
+    ErdosProblems.Erdos243.nextTailState,
+    ErdosProblems.Erdos243.centeredState] using
+    ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass
+      a D C hD hC hCpos hstep hvanish hsum
 
 theorem finrank_totientKernelThroughLevelFamily_eq (e : ℕ) (he : 1 ≤ e) :
     finrank ℚ

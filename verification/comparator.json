@@ -7,6 +7,7 @@
     "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
     "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
     "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+    "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
     "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
     "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
     "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",

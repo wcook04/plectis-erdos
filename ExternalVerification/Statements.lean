@@ -9,6 +9,7 @@ import Mathlib.Data.Nat.Log
 import Mathlib.Data.Nat.Prime.Nth
 import Mathlib.Analysis.Complex.Basic
 import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.SpecialFunctions.Log.Summable
 import Mathlib.Data.ZMod.Basic
 import Mathlib.GroupTheory.OrderOfElement
 import Mathlib.LinearAlgebra.Dimension.Constructions
@@ -78,6 +79,13 @@ def nextDenState (a D : ℤ) : ℤ :=
 /-- Product-cleared reciprocal-tail update for the reciprocal-tail state. -/
 def nextTailState (a D C : ℤ) : ℤ :=
   a * C - D
+
+/-! ## Summable negative-mass recovery -/
+
+/-- The normalized negative mass of an integral centered tail step. -/
+noncomputable def negativeRelativeMass
+    (C : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
+  (Int.natAbs (min (E n) 0) : ℝ) / C n
 
 noncomputable def prime0 (n : ℕ) : ℕ :=
   Nat.nth Nat.Prime n
@@ -975,6 +983,20 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       (∀ K, ∃ N, ∀ n, N ≤ n →
         K * Int.natAbs (E n) < C n) →
       ∃ N, ∀ n, N ≤ n → E n = 0
+  problem243SummableNegativeMass :
+    ∀ (a D : ℕ → ℤ) (C : ℕ → ℕ),
+      (∀ n, D (n + 1) = nextDenState (a n) (D n)) →
+      (∀ n, C (n + 1) = nextTailState (a n) (D n) (C n)) →
+      (∀ n, 0 < C n) →
+      (∀ n, (C (n + 1) : ℤ) =
+        (C n : ℤ) - centeredState (a n) (D n) (C n)) →
+      (∀ K, ∃ N, ∀ n, N ≤ n →
+        K * Int.natAbs (centeredState (a n) (D n) (C n)) < C n) →
+      (Summable
+        (negativeRelativeMass C
+          (fun n ↦ centeredState (a n) (D n) (C n)))) →
+      ∃ N, ∀ n, N ≤ n →
+        a (n + 1) = sylvesterNext (a n)
   problem249Finite :
     ∀ e : ℕ, 1 ≤ e →
       finrank ℚ
