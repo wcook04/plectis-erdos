@@ -66,9 +66,9 @@ All eight remain open. Pass is mechanism-first:
   quantitative separation supply is unproved, and sign/top-edge information
   does not supply it. Separately, the dyadic totient kernel has rank `2^e + 1`
   with an odd-core basis ([source](Erdos249257/TotientKernelConditional.lean)); all-base extension needs affine independence, but this finite-level spine is no rationality-to-finite-rank bridge or endpoint solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137): hypothetical rationality gives a positive multiplier and tempered carry with common eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1` for every `e`; modulo a divisor, forcing vanishes and the carry is geometric: no finite-rank contradiction or irrationality proof ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
-  consumer records a positive shift, a negative survivor, and a top-edge
-  residue ([consumer](ExternalVerification/Challenge.lean#L198)). Positivity
-  does not exclude that survivor, so no cofinal separation supply is claimed. A separate
+  The diagonal form equates integrality with a full-target foreign-defect hit;
+  cofinal misses would prove irrationality, but the supply is open
+  ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). A separate
   public
   [first-harmonic pivot route](ExternalVerification/Challenge.lean) is now
   represented in Comparator: `windowFirstExp_sum_eq_pivot_decomposition` and
