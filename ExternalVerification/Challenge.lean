@@ -184,6 +184,13 @@ theorem supportCoeff_mul_eq_add_defect
         compositeDilationDefect A a x :=
   (portfolioClaims Unit).problem257CompositeDilationDefect A ha ha0 hx0
 
+theorem seven_le_of_intBand_odd {p D q : ℤ}
+    (hp : 0 < p) (hD : 0 < D) (hq : 0 < q)
+    (hpodd : Odd p) (hDodd : Odd D) (hqodd : Odd q)
+    (hband : IntBand p D q) :
+    7 ≤ p :=
+  (portfolioClaims Unit).problem257HalfTwoAdicBand hp hD hq hpodd hDodd hqodd hband
+
 theorem kernel_235_minor_eq_neg_one_fifteen :
     threePrimeKernelQ 2 3 5 0 0 0 *
           threePrimeKernelQ 2 3 5 1 1 0 -

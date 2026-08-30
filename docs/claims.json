@@ -11557,6 +11557,18 @@
         "boundary": "The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the separate bouquet budget remains conditional on its structural hypotheses."
       },
       {
+        "id": "half_two_adic_band_bound",
+        "problem": 257,
+        "review_family": "half_and_twenty_one_frontiers",
+        "claim_id": "half_greedy_two_thirds_band",
+        "contribution_class": "no-go result",
+        "original_declaration": "Erdos249257.HalfGreedyTwoThirdsBand.seven_le_of_intBand_odd",
+        "original_source": "Erdos249257/HalfGreedyTwoThirdsBand.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
+        "statement": "For positive odd integers p, D, and q, the integer form of the two-thirds band forces p ≥ 7; the small odd numerator classes 1, 3, and 5 are therefore excluded.",
+        "boundary": "This is local 2-adic band arithmetic: p = 7 is sharp for the stated hypotheses, and the theorem does not prove that an actual half-greedy orbit reaches or avoids the band, nor does it prove half-membership."
+      },
+      {
         "id": "three_prime_kernel_minor",
         "problem": 269,
         "review_family": "rank_two_kernel_no_go",
@@ -11947,10 +11959,10 @@
           {
             "id": "half_and_twenty_one_frontiers",
             "contribution_class": "conditional reduction and no-go result",
-            "summary": "Exact greedy characterisations and finite-support exclusions isolate the remaining 1/2 and 1/21 alternatives.",
-            "evidence_mode": "Lean kernel",
-            "comparator_disposition": "not_selected_deep_greedy_state_vocabulary",
-            "boundary": "Neither membership question is decided."
+            "summary": "Exact greedy characterisations, finite-support exclusions, and the odd 2-adic two-thirds-band bound isolate local constraints around the remaining 1/2 and 1/21 alternatives.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally but does not establish reachability or orbit avoidance."
           }
         ]
       },

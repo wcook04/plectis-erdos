@@ -420,6 +420,21 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "half_two_adic_band_bound",
+      "problem": 257,
+      "review_family": "half_and_twenty_one_frontiers",
+      "claim_id": "half_greedy_two_thirds_band",
+      "contribution_class": "no-go result",
+      "original_declaration": "Erdos249257.HalfGreedyTwoThirdsBand.seven_le_of_intBand_odd",
+      "original_source": "Erdos249257/HalfGreedyTwoThirdsBand.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
+      "statement": "For positive odd integers p, D, and q, the integer form of the two-thirds band forces p ≥ 7; the small odd numerator classes 1, 3, and 5 are therefore excluded.",
+      "boundary": "This is local 2-adic band arithmetic: p = 7 is sharp for the stated hypotheses, and the theorem does not prove that an actual half-greedy orbit reaches or avoids the band, nor does it prove half-membership.",
+      "canonical_claim_status": "supports_registered_claim_family:half_greedy_two_thirds_band",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "three_prime_kernel_minor",
       "problem": 269,
       "review_family": "rank_two_kernel_no_go",
@@ -828,10 +843,10 @@
         {
           "id": "half_and_twenty_one_frontiers",
           "contribution_class": "conditional reduction and no-go result",
-          "summary": "Exact greedy characterisations and finite-support exclusions isolate the remaining 1/2 and 1/21 alternatives.",
-          "evidence_mode": "Lean kernel",
-          "comparator_disposition": "not_selected_deep_greedy_state_vocabulary",
-          "boundary": "Neither membership question is decided."
+          "summary": "Exact greedy characterisations, finite-support exclusions, and the odd 2-adic two-thirds-band bound isolate local constraints around the remaining 1/2 and 1/21 alternatives.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally but does not establish reachability or orbit avoidance."
         }
       ]
     },
@@ -1044,7 +1059,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:4ff586aab1cd5b27436990d79848add116991847eb0f63e377fdb1101a601b19",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:a77d0618954ff7be9181ab62efb564b97a585195f16dc0680b1d70afac4b7235",
+    "projection_digest": "sha256:e036d61b7a1e8cb292cde09d6043181c129b9914b0153ae44e2912dbd36357a1",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1662,8 +1677,8 @@
           "family_count": 9,
           "by_class": {
             "not_applicable": 1,
-            "not_selected": 2,
-            "targeted": 6
+            "not_selected": 1,
+            "targeted": 7
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
@@ -1674,7 +1689,7 @@
             "squarefree_support": "not_applicable_to_external_irrationality_input",
             "achievement_set_geometry": "targeted_measure_theorem",
             "restricted_achievement_sets": "targeted_measure_dichotomy",
-            "half_and_twenty_one_frontiers": "not_selected_deep_greedy_state_vocabulary"
+            "half_and_twenty_one_frontiers": "targeted"
           }
         }
       },
@@ -2096,7 +2111,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:2533a039c2dee4decb1a4cde12aae8b029e4478645690716802dad37da31ca03",
+    "digest": "sha256:71c7dd6928f1a6c39c7c687df926b6fa258204eab2173f3f6abc1dd122afa63c",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2104,6 +2119,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:661140a9baa2423e9c32b007b3875b72334cb3ecf7aea1e3c69d0d8521c16f74",
-  "solution_source_digest": "sha256:17ac9583696440d81a9a2923c7db558395e4752cf0e912dfa69916c70ca47948"
+  "config_digest": "sha256:05727c48349ddfaf8f0a968c4ce8189f49a30d5f217650696d1838910616a6be",
+  "solution_source_digest": "sha256:e358c1ef4afd8d7bb1488b1c3d64728b6b603a45ece8e1d78006d0da26840a11"
 }

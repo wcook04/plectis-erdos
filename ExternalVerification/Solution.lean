@@ -9,6 +9,7 @@ import Erdos249257.GcdMomentCalculus
 import Erdos249257.LcmFactorIdealPulseObstruction
 import Erdos249257.RationalSupportCarrySkeleton
 import Erdos249257.CompositeDilationDefect
+import Erdos249257.HalfGreedyTwoThirdsBand
 import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
@@ -23,7 +24,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-seven existing results through the Mathlib-only
+These thin wrappers expose twenty-eight existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -236,6 +237,10 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.CompositeDilationDefect.compositeDilationDefect] using
       Erdos249257.CompositeDilationDefect.supportCoeff_mul_eq_add_defect
         A ha ha0 hx0
+  · intro p D q hp hD hq hpodd hDodd hqodd hband
+    simpa [IntBand, Erdos249257.HalfGreedyTwoThirdsBand.IntBand] using
+      Erdos249257.HalfGreedyTwoThirdsBand.seven_le_of_intBand_odd
+        hp hD hq hpodd hDodd hqodd hband
   · simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
       ErdosProblems.Erdos269.threePrimeKernelQ,
       ErdosProblems.Erdos269.threePrimeHeight,
@@ -437,6 +442,15 @@ theorem supportCoeff_mul_eq_add_defect
     Erdos249257.CompositeDilationDefect.compositeDilationDefect] using
     Erdos249257.CompositeDilationDefect.supportCoeff_mul_eq_add_defect
       A ha ha0 hx0
+
+theorem seven_le_of_intBand_odd {p D q : ℤ}
+    (hp : 0 < p) (hD : 0 < D) (hq : 0 < q)
+    (hpodd : Odd p) (hDodd : Odd D) (hqodd : Odd q)
+    (hband : IntBand p D q) :
+    7 ≤ p := by
+  simpa [IntBand, Erdos249257.HalfGreedyTwoThirdsBand.IntBand] using
+    Erdos249257.HalfGreedyTwoThirdsBand.seven_le_of_intBand_odd
+      hp hD hq hpodd hDodd hqodd hband
 
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M

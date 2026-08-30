@@ -660,8 +660,8 @@
         "family_count": 9,
         "by_class": {
           "not_applicable": 1,
-          "not_selected": 2,
-          "targeted": 6
+          "not_selected": 1,
+          "targeted": 7
         },
         "dispositions": {
           "finite_period_noncollapse": "targeted",
@@ -672,7 +672,7 @@
           "squarefree_support": "not_applicable_to_external_irrationality_input",
           "achievement_set_geometry": "targeted_measure_theorem",
           "restricted_achievement_sets": "targeted_measure_dichotomy",
-          "half_and_twenty_one_frontiers": "not_selected_deep_greedy_state_vocabulary"
+          "half_and_twenty_one_frontiers": "targeted"
         }
       }
     },

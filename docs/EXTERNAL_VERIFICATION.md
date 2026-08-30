@@ -7,7 +7,7 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** The 27 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 28 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
@@ -429,9 +429,9 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
 - **Half and twenty one frontiers**<br>
-  Exact greedy characterisations and finite-support exclusions isolate the remaining 1/2 and 1/21 alternatives.<br>
-  **Boundary.** Neither membership question is decided.<br>
-  *Evidence.* conditional reduction and no-go result · Lean kernel
+  Exact greedy characterisations, finite-support exclusions, and the odd 2-adic two-thirds-band bound isolate local constraints around the remaining 1/2 and 1/21 alternatives.<br>
+  **Boundary.** Neither membership question is decided; the 2-adic bound is sharp locally but does not establish reachability or orbit avoidance.<br>
+  *Evidence.* conditional reduction and no-go result · Lean kernel plus Comparator
 
 </details>
 
@@ -463,7 +463,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>targeted_measure_dichotomy</code>
 
 - <code>half_and_twenty_one_frontiers</code><br>
-  Comparator: <code>not_selected_deep_greedy_state_vocabulary</code>
+  Comparator: <code>targeted</code>
 
 </details>
 
@@ -746,7 +746,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 27 statement-isolated interfaces</summary>
+<summary>Show all 28 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -905,6 +905,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the separate bouquet budget remains conditional on its structural hypotheses.
 
+- <code>Erdos249257.ExternalVerification.seven_le_of_intBand_odd</code>
+  - **Class.** no-go result
+  - **Statement.** For positive odd integers p, D, and q, the integer form of the two-thirds band forces p ≥ 7; the small odd numerator classes 1, 3, and 5 are therefore excluded.
+  - **Canonical claim status.** `supports_registered_claim_family:half_greedy_two_thirds_band`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This is local 2-adic band arithmetic: p = 7 is sharp for the stated hypotheses, and the theorem does not prove that an actual half-greedy orbit reaches or avoids the band, nor does it prove half-membership.
+
 **#269: Three-prime running least common multiples**
 
 - <code>Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen</code>
@@ -960,7 +967,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 27 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 28 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.

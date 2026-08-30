@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-seven-interface
+This module contains only the definitions needed to state the twenty-eight-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -226,6 +226,10 @@ noncomputable def compositeDilationDefect (A : Set ℕ) (a x : ℕ) : ℕ :=
     exact ((a * x).divisors.filter fun d =>
       d ∈ A ∧ ¬ d ∣ x ∧ d ≠ a).card
 
+def IntBand (p D q : ℤ) : Prop :=
+  q * (2 * q + 1) * p < 2 * D * (3 * q + 1) ∧
+    2 * D * (3 * q + 2) < 2 * p * q * (q + 1)
+
 def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
   ∑ n ∈ F, 1 / ((b : ℚ) ^ n - 1)
 
@@ -420,6 +424,16 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       supportCoeff A (a * x) =
         supportCoeff A x + (if a ∣ x then 0 else 1) +
           compositeDilationDefect A a x
+  problem257HalfTwoAdicBand :
+    ∀ {p D q : ℤ},
+      0 < p →
+      0 < D →
+      0 < q →
+      Odd p →
+      Odd D →
+      Odd q →
+      IntBand p D q →
+      7 ≤ p
   problem269 :
     threePrimeKernelQ 2 3 5 0 0 0 *
           threePrimeKernelQ 2 3 5 1 1 0 -
