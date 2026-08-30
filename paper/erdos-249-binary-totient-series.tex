@@ -109,6 +109,13 @@ cofinally many strict jumps, the totient constant is irrational.  The
 cofinal sign condition is not proved; this is a reduction of the remaining
 producer problem, not an irrationality theorem.
 
+The finite Möbius-residue state has a complementary projection form as well:
+it splits exactly into foreign and divisor channels, and finite windows of the
+omitted foreign channels obey a closed geometric budget.  If a future
+analytic comparison controls the limiting foreign defect by that budget and
+the projected state stays farther from every integer, the full target is
+missed.  The comparison and any unbounded separated supply are not proved.
+
 Let $\Stot=\sum_{n\ge1}\ph(n)/2^n$.  A rational value would induce a tempered
 integral tail orbit whose dyadic sections through level $e$ have rank at least
 $2^e-1$; no conflicting upper bound is proved.  Independently, every rational
@@ -438,8 +445,10 @@ gap nor an irrationality criterion.
 \item\label{res:slackcriterion} \stag{conditional reduction}
 \textbf{Canonical strict-jump slack reduction.}  Put
 \[
- m_t=\operatorname{canonicalAdjacentSuffixDepth}(t),\qquad
- d_t=\operatorname{diagonalAdjacentSuffixResidue}(t,0,m_t),
+ \begin{aligned}
+ m_t&=\operatorname{canonicalAdjacentSuffixDepth}(t),\\
+ d_t&=\operatorname{diagonalAdjacentSuffixResidue}(t,0,m_t),
+ \end{aligned}
 \]
 and define the integer slack
 \[
@@ -457,6 +466,33 @@ remains open.
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2667}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{centrality equivalence},
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2757}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{producer equivalence},
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2932}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality consumer}.}
+
+\item\label{res:foreignresidue} \stag{conditional reduction}
+\textbf{Finite foreign-residue projection.}  For $H,D\in\N$, split the
+finite Möbius-residue diagonal into the channels whose indices divide $H$ and
+those that do not.  The checked identity is
+\[
+ \begin{aligned}
+ \operatorname{finiteResidueDiagonal}(H,D)
+   &=\operatorname{projectedForeignDefect}(H,D)\\
+   &\quad+\operatorname{projectedDivisorChannels}(H,D).
+ \end{aligned}
+\]
+When $H\le D$, the divisor term is exactly the explicit radical Möbius
+shadow.  If $2H\le D$, every finite omitted window is bounded by
+\[
+ B_{H,D}=\operatorname{diagonalCoefficient}(H)\left(
+       \frac{2}{2^D}+\frac{4}{3\,4^D}\right).
+\]
+Thus a controlled comparison of the limiting foreign defect with $B_{H,D}$,
+together with separation of the projected state from every integer, forces a
+full-target miss.  The analytic comparison and an unbounded supply of
+separated projections remain unproved; this is a conditional reduction, not
+an irrationality theorem.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/ActualForeignResidueProjection.lean}{276}{abs_foreignTailWindow_le_foreignComplementBound}{finite complement bound},
+\mword{Erdos249257/ActualForeignResidueProjection.lean}{308}{finiteResidueDiagonal_eq_projectedForeign_add_divisor}{exact channel split},
+\mword{Erdos249257/ActualForeignResidueProjection.lean}{414}{scaleFullTarget_miss_of_projected_separation}{conditional target-miss consumer}.}
 
 \item\label{res:periodic} \stag{unconditional progress}
 \textbf{Eventually periodic weights are settled.}  For every integer base
@@ -959,6 +995,34 @@ work, not a closure of Problem~\#249.
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2667}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{centrality equivalence},
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2757}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{producer equivalence},
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2932}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality consumer}.}
+
+\paragraph{Finite foreign-residue projection.}
+For a diagonal height $H$ and cutoff $D$, retain separately the residue
+channels with $d\nmid H$ and those with $d\mid H$.  The formal finite state
+splits exactly as
+\[
+ \begin{aligned}
+ \operatorname{finiteResidueDiagonal}(H,D)
+   &=\operatorname{projectedForeignDefect}(H,D)\\
+   &\quad+\operatorname{projectedDivisorChannels}(H,D).
+ \end{aligned}
+\]
+Once $H\le D$, the second summand is the explicit divisor shadow.  In the
+stable range $2H\le D$, the omitted foreign window has the closed bound
+\[
+ \left|\operatorname{foreignTailWindow}(H,D,L)\right|
+ \le \operatorname{diagonalCoefficient}(H)\left(
+       \frac{2}{2^D}+\frac{4}{3\,4^D}\right).
+\]
+The intended consumer is now transparent: if the limiting foreign defect is
+controlled by this budget, and the finite projected state is farther from
+every integer than the budget, the full target cannot be hit.  The first
+comparison and a cofinal supply of separated projections are the remaining
+analytic/arithmetic obligations.  No unbounded producer is claimed here.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/ActualForeignResidueProjection.lean}{276}{abs_foreignTailWindow_le_foreignComplementBound}{finite complement bound},
+\mword{Erdos249257/ActualForeignResidueProjection.lean}{308}{finiteResidueDiagonal_eq_projectedForeign_add_divisor}{exact channel split},
+\mword{Erdos249257/ActualForeignResidueProjection.lean}{414}{scaleFullTarget_miss_of_projected_separation}{conditional target-miss consumer}.}
 
 \section{Obstructions for fixed-coordinate methods}\label{sec:nogo}
 
