@@ -334,6 +334,17 @@ core)**
   a fatal half-gap (`Erdos249257/HalfCutLocator.lean:654`); the dyadic
   membership question was posed publicly by Kovač in the same discussion,
   and a positive answer would refute universal #257.
+
+- Historical topological source boundary: Kakeya's 1914 paper proves
+  perfectness for subsum sets of absolutely convergent real or complex
+  series, gives the real interval enclosure, and states the exact term-versus-
+  remaining-tail criterion for filling that interval. It also states
+  nowhere density when the criterion fails, but explicitly leaves the
+  “infinitely many failures” necessary-and-sufficient refinement unproved
+  ([source closure](primary-sources/reciprocal-tail/kakeya-1914-source-closure.md)).
+  This is classical subsum-set context only: it does not prove an arithmetic
+  statement about Mersenne denominators, rational points, or universal #257.
+
 - The Comparator theorem `seven_le_of_intBand_odd` adds a local two-adic
   band exclusion: for positive odd integers `p`, `D`, and `q` satisfying the
   stated `IntBand` inequalities, `7 ≤ p`
