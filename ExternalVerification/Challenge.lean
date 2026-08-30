@@ -35,6 +35,14 @@ theorem irrational_factorialGapSeries_iff_cofinal_nonunit_carries :
         B < m ∧ factorialGapStepCarry m ≠ 1 :=
   (portfolioClaims Unit).problem68Carry
 
+/-- A cofinal lower bound on the single coefficient-free complementary
+residue forces Erdős #68 irrationality.  The certificate supply is an
+explicit premise; no theorem here constructs it. -/
+theorem irrational_factorialGapSeries_of_cofinal_global_complementaryTail
+    (hcert : CofinalGlobalComplementaryTailCertificate) :
+    Irrational factorialGapSeries :=
+  (portfolioClaims Unit).problem68GlobalComplementaryTail hcert
+
 theorem no_cofinallyBoundedNegative_of_normalizedVanishes
     (a C D magnitude : ℕ → ℕ) (B : ℕ)
     (hB : 0 < B)

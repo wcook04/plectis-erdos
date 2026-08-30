@@ -25,6 +25,7 @@ import Erdos249257.TotientActualLcmOrbitSign
 import Erdos249257.ActualForeignResidueProjection
 import Erdos249257.TropicalCurvatureCarry
 import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
@@ -449,6 +450,35 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos68.strictFacTop,
       ErdosProblems.Erdos68.factorialGapPrefix] using
       ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries
+  · simpa [CofinalGlobalComplementaryTailCertificate,
+      factorialGapSeries, factorialGapTail, factorialGapTailTerm,
+      pairwiseCollisionCore, collisionCore, endpointDenominatorLcm,
+      endpointTailNumerator, privateQuotient, privateModulus,
+      projectedResidue, complementaryProjectedResidue,
+      factorialBlockIndices, factorialGapDenominator, factorialBlockBase,
+      factorialBlockEndpointLcm, factorialBlockCollisionCore,
+      factorialBlockPrivateModulus, factorialBlockTailNumerator,
+      factorialBlockScale, factorialBlockBudget,
+      Erdos68.factorialGapSeries, Erdos68.factorialGapTail,
+      Erdos68.factorialGapTailTerm,
+      ErdosProblems.Erdos68.pairwiseCollisionCore,
+      ErdosProblems.Erdos68.collisionCore,
+      ErdosProblems.Erdos68.endpointDenominatorLcm,
+      ErdosProblems.Erdos68.endpointTailNumerator,
+      ErdosProblems.Erdos68.privateQuotient,
+      ErdosProblems.Erdos68.privateModulus,
+      ErdosProblems.Erdos68.projectedResidue,
+      ErdosProblems.Erdos68.complementaryProjectedResidue,
+      ErdosProblems.Erdos68.factorialBlockIndices,
+      ErdosProblems.Erdos68.factorialGapDenominator,
+      ErdosProblems.Erdos68.factorialBlockBase,
+      ErdosProblems.Erdos68.factorialBlockEndpointLcm,
+      ErdosProblems.Erdos68.factorialBlockCollisionCore,
+      ErdosProblems.Erdos68.factorialBlockPrivateModulus,
+      ErdosProblems.Erdos68.factorialBlockTailNumerator,
+      ErdosProblems.Erdos68.factorialBlockScale,
+      ErdosProblems.Erdos68.factorialBlockBudget] using
+      ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_global_complementaryTail
   · intro a C D magnitude B hB ha hCpos hC hD hRise hmagnitude hvanish hnegative
     exact ErdosProblems.Erdos243.no_cofinallyBoundedNegative_of_normalizedVanishes
       a C D magnitude B hB ha hCpos hC hD hRise hmagnitude hvanish hnegative
@@ -1165,6 +1195,11 @@ theorem irrational_factorialGapSeries_iff_cofinal_nonunit_carries :
       ∀ B : ℕ, ∃ m : ℕ,
         B < m ∧ factorialGapStepCarry m ≠ 1 :=
   (portfolioClaims Unit).problem68Carry
+
+theorem irrational_factorialGapSeries_of_cofinal_global_complementaryTail
+    (hcert : CofinalGlobalComplementaryTailCertificate) :
+    Irrational factorialGapSeries :=
+  (portfolioClaims Unit).problem68GlobalComplementaryTail hcert
 
 theorem no_cofinallyBoundedNegative_of_normalizedVanishes
     (a C D magnitude : ℕ → ℕ) (B : ℕ)

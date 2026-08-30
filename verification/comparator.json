@@ -4,6 +4,7 @@
   "theorem_names": [
     "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
     "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+    "Erdos249257.ExternalVerification.irrational_factorialGapSeries_of_cofinal_global_complementaryTail",
     "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
     "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
     "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",

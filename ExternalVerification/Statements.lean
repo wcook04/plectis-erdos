@@ -64,6 +64,97 @@ noncomputable def factorialGapStepCarry (m : ℕ) : ℤ :=
   -⌊1 + 1 / ((m.factorial : ℝ) - 1) -
       (m : ℝ) * factorialGapPredecessorGap m⌋
 
+/-! ## Coefficient-free complementary-residue producer for Erdős #68 -/
+
+/-- Lcm of the off-diagonal pairwise gcds in a finite denominator family. -/
+def pairwiseCollisionCore
+    {ι : Type*} [DecidableEq ι]
+    (s : Finset ι) (d : ι → ℕ) : ℕ :=
+  s.lcm fun i =>
+    (s.erase i).lcm fun j => Nat.gcd (d i) (d j)
+
+/-- Collision core after adjoining the distinguished base denominator. -/
+def collisionCore
+    {ι : Type*} [DecidableEq ι]
+    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
+  Nat.lcm base (pairwiseCollisionCore s d)
+
+/-- Common denominator of the distinguished base and finite family. -/
+def endpointDenominatorLcm
+    {ι : Type*} [DecidableEq ι]
+    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
+  Nat.lcm base (s.lcm d)
+
+/-- Reciprocal-tail numerator over the common endpoint denominator. -/
+def endpointTailNumerator
+    {ι : Type*} [DecidableEq ι]
+    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
+  s.sum fun i => endpointDenominatorLcm base s d / d i
+
+/-- Private quotient left after deleting collision-core support. -/
+def privateQuotient
+    {ι : Type*} [DecidableEq ι]
+    (base : ℕ) (s : Finset ι) (d : ι → ℕ) (i : ι) : ℕ :=
+  d i / Nat.gcd (d i) (collisionCore base s d)
+
+/-- Product of the finite-family private quotients. -/
+def privateModulus
+    {ι : Type*} [DecidableEq ι]
+    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
+  s.prod (privateQuotient base s d)
+
+/-- Canonical natural residue and its additive complementary residue. -/
+def projectedResidue (T Q : ℕ) : ℕ :=
+  T % Q
+
+def complementaryProjectedResidue (T Q : ℕ) : ℕ :=
+  projectedResidue (Q - projectedResidue T Q) Q
+
+def factorialBlockIndices (p : ℕ) : Finset ℕ :=
+  Finset.Icc 2 (2 * p - 1)
+
+def factorialGapDenominator (n : ℕ) : ℕ :=
+  n.factorial - 1
+
+def factorialBlockBase (p : ℕ) : ℕ :=
+  (p - 1).factorial
+
+def factorialBlockEndpointLcm (p : ℕ) : ℕ :=
+  endpointDenominatorLcm
+    (factorialBlockBase p) (factorialBlockIndices p) factorialGapDenominator
+
+def factorialBlockCollisionCore (p : ℕ) : ℕ :=
+  collisionCore
+    (factorialBlockBase p) (factorialBlockIndices p) factorialGapDenominator
+
+def factorialBlockPrivateModulus (p : ℕ) : ℕ :=
+  privateModulus
+    (factorialBlockBase p) (factorialBlockIndices p) factorialGapDenominator
+
+def factorialBlockTailNumerator (p : ℕ) : ℕ :=
+  endpointTailNumerator
+    (factorialBlockBase p) (factorialBlockIndices p) factorialGapDenominator
+
+def factorialBlockScale (p : ℕ) : ℕ :=
+  2 * p ^ 2 * (2 * p - 1).factorial
+
+def factorialBlockBudget (p : ℕ) : ℕ :=
+  2 * p + 1
+
+/-- A cofinal coefficient-free lower bound on one global complementary
+residue.  This is a producer hypothesis, not a proved property of the actual
+factorial-gap blocks. -/
+def CofinalGlobalComplementaryTailCertificate : Prop :=
+  ∀ B : ℕ, ∃ p : ℕ,
+    p.Prime ∧
+    B < p ∧
+    1 < factorialBlockPrivateModulus p ∧
+    factorialBlockBudget p * factorialBlockEndpointLcm p <
+      factorialBlockScale p *
+        complementaryProjectedResidue
+          (factorialBlockTailNumerator p)
+          (factorialBlockPrivateModulus p)
+
 def centeredState (a D C : ℤ) : ℤ :=
   D - (a - 1) * C
 
@@ -992,6 +1083,9 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     Irrational factorialGapSeries ↔
       ∀ B : ℕ, ∃ m : ℕ,
         B < m ∧ factorialGapStepCarry m ≠ 1
+  problem68GlobalComplementaryTail :
+    CofinalGlobalComplementaryTailCertificate →
+      Irrational factorialGapSeries
   problem243 :
     ∀ (a C D magnitude : ℕ → ℕ) (B : ℕ),
       0 < B →
