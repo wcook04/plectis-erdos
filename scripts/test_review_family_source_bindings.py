@@ -12,6 +12,8 @@ import json
 import re
 from pathlib import Path
 
+import query_expert_handoffs
+
 
 ROOT = Path(__file__).resolve().parents[1]
 CLAIMS = ROOT / "docs" / "claims.json"
@@ -197,8 +199,34 @@ def test_backfill_stays_review_only_and_strict_prime_is_not_duplicated() -> None
     assert canonical_ids.count("strict_prime_tail_orbit_gap") == 1
 
 
+def test_three_prime_consumer_binding_matches_live_source() -> None:
+    """The real expert handoff must expose every canonical #269 declaration."""
+    source = ROOT / "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+    lines = source.read_text(encoding="utf-8").splitlines()
+    declaration_pattern = re.compile(
+        r"^\s*(?:def|lemma|theorem)\s+([A-Za-z0-9_]+)\b"
+    )
+    for name in query_expert_handoffs.THREE_PRIME_SOURCE_DECLARATIONS:
+        matches = [
+            index
+            for index, line in enumerate(lines, 1)
+            if (match := declaration_pattern.match(line)) and match.group(1) == name
+        ]
+        assert len(matches) == 1, f"{name} in {source}: {matches}"
+
+    packet = query_expert_handoffs.semantic_endpoint_handoff_packet()
+    handoff = next(
+        row
+        for row in packet["supporting_families"]
+        if row["family"]["family_id"] == "three_prime_lcm_cells"
+    )
+    observed = {row["name"] for row in handoff["source_declarations"]}
+    assert observed == set(query_expert_handoffs.THREE_PRIME_SOURCE_DECLARATIONS)
+
+
 if __name__ == "__main__":
     test_review_families_bind_exact_declarations_and_boundaries()
     test_review_family_declarations_match_current_lean_bytes()
     test_backfill_stays_review_only_and_strict_prime_is_not_duplicated()
+    test_three_prime_consumer_binding_matches_live_source()
     print("review-family source bindings: ok")

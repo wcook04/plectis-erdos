@@ -58,6 +58,25 @@ DYADIC_ALPHABET_FAMILY = "dyadic_block_alphabet"
 ACTUAL_LCM_SEPARATION_FAMILY = "actual_lcm_orbit_separation"
 FIRST_HARMONIC_FAMILY = "first_harmonic_pivot_decomposition"
 
+# Canonical source binding consumed by the three-prime handoff.  These are
+# declaration identities, not a positional sample; coordinates and signatures
+# are resolved from the declaration atlas and live Lean source at query time.
+THREE_PRIME_SOURCE_DECLARATIONS = (
+    "smoothPrefixLcm_eq_threePrimeHeight",
+    "SameThreePrimeLogCell",
+    "threePrimeHeight_eq_of_sameLogCell",
+    "smoothPrefixLcm_eq_of_sameLogCell",
+    "threePrimeKernelQ_eq_of_sameLogCell",
+    "threePrimeHeight_firstLogStep",
+    "threePrimeHeight_secondLogStep",
+    "threePrimeHeight_thirdLogStep",
+    "smoothPrefixLcm_firstLogStep",
+    "smoothPrefixLcm_secondLogStep",
+    "smoothPrefixLcm_thirdLogStep",
+    "threePrimePositiveJumpSet_card",
+    "threePrimeJumpSetWithOrigin_card",
+)
+
 
 @lru_cache(maxsize=16)
 def load_json(path: Path) -> dict[str, Any]:
@@ -340,25 +359,10 @@ def three_prime_lcm_cells_handoff(
     if not isinstance(claim, dict):
         raise ValueError("Claims lacks the three_prime_running_lcm source claim")
     source_module = str(claim.get("original_source"))
-    source_names = (
-        "smoothPrefixLcm_eq_threePrimeHeight",
-        "SameThreePrimeLogCell",
-        "threePrimeHeight_eq_of_sameLogCell",
-        "smoothPrefixLcm_eq_of_sameLogCell",
-        "threePrimeKernelQ_eq_of_sameLogCell",
-        "threePrimeHeight_firstLogStep",
-        "threePrimeHeight_secondLogStep",
-        "threePrimeHeight_thirdLogStep",
-        "smoothPrefixLcm_firstLogStep",
-        "smoothPrefixLcm_secondLogStep",
-        "smoothPrefixLcm_thirdLogStep",
-        "threePrimePositiveJumpSet_card",
-        "threePrimeJumpSetWithOrigin_card",
-    )
     atlas = load_json(ATLAS)
     declarations = [
         _live_source_declaration(source_module, name, atlas)
-        for name in source_names
+        for name in THREE_PRIME_SOURCE_DECLARATIONS
     ]
     wrapper_name = str(claim.get("wrapper_declaration"))
     wrapper_module = "ExternalVerification/Solution.lean"
