@@ -4147,19 +4147,19 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         if imported is None:
             continue
         rows = declarations_by_path.get(imported["path"], [])
-        enriched = [
+        used = [row for row in rows if source_counts.get(row["name"], 0) > 0]
+        pool = used or rows
+        propositions = [row for row in pool if row["kind"] in {"theorem", "lemma"}]
+        data = [row for row in pool if row["kind"] not in {"theorem", "lemma"}]
+        retained_rows = propositions[:8] + data[:4]
+        retained = [
             {
                 **compact_declaration(row),
                 "statement_head": row.get("signature"),
                 "usage_count_in_anchor_source": source_counts.get(row["name"], 0),
             }
-            for row in rows
+            for row in retained_rows
         ]
-        used = [row for row in enriched if row["usage_count_in_anchor_source"] > 0]
-        pool = used or enriched
-        propositions = [row for row in pool if row["declaration_kind"] in {"theorem", "lemma"}]
-        data = [row for row in pool if row["declaration_kind"] not in {"theorem", "lemma"}]
-        retained = propositions[:8] + data[:4]
         dependency_capsules.append(
             {
                 "module_id": imported_id,
@@ -4185,7 +4185,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         importer_path = ROOT / importer["path"]
         importer_lines = importer_path.read_text(encoding="utf-8").splitlines()
         importer_declarations = declarations_by_path.get(importer["path"], [])
-        consumers = []
+        consumer_rows: list[tuple[dict[str, Any], list[str]]] = []
         for index, row in enumerate(importer_declarations):
             end = (
                 importer_declarations[index + 1]["line"] - 1
@@ -4199,13 +4199,15 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
                 else []
             )
             if uses:
-                consumers.append(
-                    {
-                        **compact_declaration(row),
-                        "statement_head": row.get("signature"),
-                        "uses_anchor_declarations": uses,
-                    }
-                )
+                consumer_rows.append((row, uses))
+        consumers = [
+            {
+                **compact_declaration(row),
+                "statement_head": row.get("signature"),
+                "uses_anchor_declarations": uses,
+            }
+            for row, uses in consumer_rows[:8]
+        ]
         consumer_capsules.append(
             {
                 "module_id": importer["id"],
@@ -4219,8 +4221,8 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
                     else "exact_import_without_named_declaration_reference"
                 ),
                 "consumers": consumers[:8],
-                "consumer_count": len(consumers),
-                "omitted_consumer_count": max(0, len(consumers) - 8),
+                "consumer_count": len(consumer_rows),
+                "omitted_consumer_count": max(0, len(consumer_rows) - 8),
             }
         )
 

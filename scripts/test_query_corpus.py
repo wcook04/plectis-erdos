@@ -1100,14 +1100,22 @@ def validate_connection_query_ranking() -> None:
     )} == {"producer", "producer_long"}
 
     compile_calls = 0
+    qualified_calls = 0
     compile_pattern = query_corpus.declaration_reference_pattern
+    qualify = query_corpus.qualified_declaration_name
 
     def counted_pattern(names: object) -> object:
         nonlocal compile_calls
         compile_calls += 1
         return compile_pattern(names)
 
+    def counted_qualify(row: dict[str, object]) -> str:
+        nonlocal qualified_calls
+        qualified_calls += 1
+        return qualify(row)
+
     query_corpus.declaration_reference_pattern = counted_pattern
+    query_corpus.qualified_declaration_name = counted_qualify
     try:
         exact = query_corpus.connection_card(
             "irrational_erdosSum_full_support",
@@ -1116,7 +1124,9 @@ def validate_connection_query_ranking() -> None:
         )
     finally:
         query_corpus.declaration_reference_pattern = compile_pattern
+        query_corpus.qualified_declaration_name = qualify
     assert compile_calls == 1
+    assert qualified_calls <= 100
     assert exact["anchor"]["handle"] == "irrational_erdosSum_full_support"
 
 
