@@ -37,6 +37,7 @@ import argparse
 import json
 import os
 import re
+import stat
 import sys
 
 # --- Rendering model, calibrated against live github.com -------------------
@@ -239,11 +240,26 @@ SEVERITY = {"overflow": 3, "too_many_columns": 2, "long_token": 2, "prose_cells"
 
 
 def check_file(path: str) -> list[dict]:
+    """Read one candidate without following a symlink or opening a special file."""
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
     try:
-        with open(path, "r", encoding="utf-8", errors="replace") as fh:
+        descriptor = os.open(path, flags)
+    except OSError:
+        return []
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            return []
+        with os.fdopen(descriptor, "r", encoding="utf-8", errors="replace") as fh:
+            descriptor = -1
             lines = fh.read().splitlines()
     except OSError:
         return []
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
     out = []
     for start, header, body in find_tables(lines):
         if not body:
@@ -265,14 +281,21 @@ SKIP_DIRS = {
 
 def walk(paths):
     for p in paths:
+        if os.path.islink(p):
+            continue
         if os.path.isfile(p):
             if p.endswith(".md"):
                 yield p
             continue
         for dirpath, dirnames, filenames in os.walk(p):
-            dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+            dirnames[:] = [
+                d
+                for d in dirnames
+                if d not in SKIP_DIRS and not os.path.islink(os.path.join(dirpath, d))
+            ]
             for fn in sorted(filenames):
-                if fn.endswith(".md"):
+                candidate = os.path.join(dirpath, fn)
+                if fn.endswith(".md") and not os.path.islink(candidate):
                     yield os.path.join(dirpath, fn)
 
 
