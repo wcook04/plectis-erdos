@@ -114,14 +114,14 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 50 declarations in the committed Comparator roster
+The audit universe is the 51 declarations in the committed Comparator roster
 (`verification/comparator.json`). I ranked them by consequence, endpoint
 proximity, mechanism depth, genuine distinctness, external usefulness,
 digestion value, evidence certainty, natural friction, and overclaim risk—not
 by row count, inherited order, or citation presence. The family-level table
 below is the compact reading map; every declaration remains source-current and
 individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 50-row universe; their
+without a Comparator transport are not counted in the 51-row universe; their
 dispositions are stated in the relevant per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
@@ -499,10 +499,18 @@ replacement for claim authority.
   The classifications are abstract even though their normal form is now in the
   Comparator screen; they supply no prime-specific eventual-small or
   cofinal-mismatch producer.
-- A checked countermodel closes the periodicity route: an explicit unbounded,
-  non-eventually-periodic digit sequence with rational dyadic sum
-  (`carryCoeff_natCast_not_eventually_periodic`,
-  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1163`).
+- The exact finite carry identity and two non-eventual-periodicity theorems close
+  the coefficient-only periodicity implication at the Lean level
+  (`carryPartialSum_natCast_eq`, `carryCoeff_natCast_not_eventually_periodic`,
+  `primeGap0_not_eventually_periodic`,
+  `ExternalVerification/Challenge.lean:309`; source
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1023,1154-1173`). The finite
+  identity supplies the rational-endpoint mechanism; the synthetic carry
+  coefficients and the actual consecutive-prime gaps are both nonperiodic.
+  Coefficient nonperiodicity alone cannot prove irrationality: the standard
+  exponential-dominance limit is paper-level inference, not a Comparator
+  theorem, and the prime-specific cofinal nonintegral-shift producer remains
+  open. No stream identification or #251 irrationality claim is made.
 - Open: cofinally many adjacent index pairs with small tail shifts and
   differing gaps; each smallness condition constrains a complete infinite
   tail.
