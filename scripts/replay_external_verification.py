@@ -21,6 +21,7 @@ import os
 import platform
 import re
 import shutil
+import stat
 import subprocess
 import tempfile
 from pathlib import Path
@@ -83,18 +84,40 @@ def sha256_bytes(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
 
 
+def _read_safe_bytes(path: Path, *, root: Path | None = None) -> bytes:
+    """Read replay input through a no-follow, regular-file descriptor."""
+    candidate = safe_replay_file(path, root=root)
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise ReplayError(f"could not open replay input safely: {candidate}") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ReplayError(f"replay input is not a regular file: {candidate}")
+        with os.fdopen(descriptor, "rb") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 def sha256_file(path: Path, *, root: Path | None = None) -> str:
-    return sha256_bytes(safe_replay_file(path, root=root).read_bytes())
+    return sha256_bytes(_read_safe_bytes(path, root=root))
 
 
 def load_json(path: Path, *, root: Path | None = None) -> dict[str, Any]:
-    path = safe_replay_file(path, root=root)
+    candidate = safe_replay_file(path, root=root)
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        raise ReplayError(f"could not read JSON {path}: {exc}") from exc
+        value = json.loads(_read_safe_bytes(candidate, root=root).decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ReplayError(f"could not read JSON {candidate}: {exc}") from exc
     if not isinstance(value, dict):
-        raise ReplayError(f"JSON root must be an object: {path}")
+        raise ReplayError(f"JSON root must be an object: {candidate}")
     return value
 
 
@@ -334,6 +357,42 @@ def result_row(completed: subprocess.CompletedProcess[str]) -> dict[str, Any]:
     }
 
 
+def _write_replay_receipt(path: Path, receipt: dict[str, Any]) -> None:
+    """Write the independent receipt without following output path links."""
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            if _is_allowed_platform_alias(current):
+                current = current.resolve(strict=True)
+                continue
+            raise ReplayError(f"output path contains a symlink: {candidate}")
+        if current.parent == current:
+            break
+        current = current.parent
+    try:
+        existing_mode = os.lstat(candidate).st_mode
+    except FileNotFoundError:
+        existing_mode = None
+    if existing_mode is not None and not stat.S_ISREG(existing_mode):
+        raise ReplayError(f"output path is not a regular file: {candidate}")
+    candidate.parent.mkdir(parents=True, exist_ok=True)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(candidate, flags, 0o644)
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ReplayError(f"output path is not a regular file: {candidate}")
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            descriptor = -1
+            stream.write(json.dumps(receipt, indent=2) + "\n")
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 def execute(
     *,
     source_commit: str,
@@ -466,8 +525,7 @@ def execute(
         exit_code = 1
     finally:
         receipt["completed_at_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
-        output.parent.mkdir(parents=True, exist_ok=True)
-        output.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+        _write_replay_receipt(output, receipt)
         if temporary is not None:
             temporary.cleanup()
     return receipt, exit_code
@@ -518,7 +576,7 @@ def main() -> int:
         receipt, exit_code = execute(
             source_commit=args.source_commit,
             source_tree=args.source_tree,
-            output=args.output.resolve(),
+            output=args.output,
             workspace=args.workspace.resolve() if args.workspace else None,
         )
         print(args.output)

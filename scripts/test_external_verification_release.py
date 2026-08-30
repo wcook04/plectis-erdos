@@ -129,6 +129,29 @@ def test_replay_file_boundary() -> None:
             require("symlinked replay input" in str(exc), str(exc))
         else:
             raise AssertionError("replay hashed a symlinked tool")
+        fifo = root / "replay.fifo"
+        os.mkfifo(fifo)
+        with patch.object(replay, "safe_replay_file", return_value=fifo):
+            try:
+                replay.sha256_file(fifo)
+            except replay.ReplayError as exc:
+                require("regular file" in str(exc), str(exc))
+            else:
+                raise AssertionError("replay hashed a special file")
+        sentinel = root / "replay-sentinel.json"
+        sentinel.write_text("sentinel\n", encoding="utf-8")
+        output_link = root / "replay-link.json"
+        output_link.symlink_to(sentinel)
+        try:
+            replay._write_replay_receipt(output_link, {"ok": True})
+        except replay.ReplayError as exc:
+            require("output path contains a symlink" in str(exc), str(exc))
+        else:
+            raise AssertionError("replay followed a symlinked output")
+        require(
+            sentinel.read_text(encoding="utf-8") == "sentinel\n",
+            "symlinked replay output modified its target",
+        )
 
 
 def test_runtime_input_boundary() -> None:
