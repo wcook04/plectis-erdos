@@ -123,6 +123,14 @@ def main() -> int:
             "coverage ceiling removed",
         ),
         (
+            reflow_tolerant_replace(
+                guide,
+                "The archived combined #249/#257 PDF is not a default reading route.",
+                "The combined #249/#257 PDF is the default reading route.",
+            ),
+            "retired combined manuscript restored as default gateway",
+        ),
+        (
             guide.replace("## A complete example", "## Internal record"),
             "worked-example section removed",
         ),

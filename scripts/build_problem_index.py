@@ -203,6 +203,20 @@ def paper_facts(
     }
 
 
+def reviewed_problem_facts(
+    row: dict[str, object],
+    matrix: dict[int, dict],
+    papers: dict[str, dict],
+    corpus_present: bool,
+) -> dict[str, object]:
+    """Attach the active problem paper without reviving archived exposition."""
+    routed = dict(row)
+    routed["paper"] = paper_facts(
+        int(row["erdos_number"]), matrix, papers, corpus_present
+    )
+    return routed
+
+
 RESEARCH_CORPUS_FILES = ("frontier", "strongest_results", "manifest", "checkpoint")
 
 
@@ -351,7 +365,10 @@ def build(
         },
         "problem_count": len(problems),
         "problems": problems,
-        "reviewed_problems": source["reviewed_problems"],
+        "reviewed_problems": [
+            reviewed_problem_facts(row, matrix, papers, corpus is not None)
+            for row in source["reviewed_problems"]
+        ],
         "validation_commands": source["validation_commands"],
     }
 
@@ -422,6 +439,41 @@ def main() -> int:
             errors.append(
                 f"{row['problem_id']}: the review matrix names {local_source!r}, "
                 "which is not a manuscript in docs/papers/corpus.json"
+            )
+    for row in source["reviewed_problems"]:
+        erdos_number = row["erdos_number"]
+        local_source = matrix.get(erdos_number, {}).get("paper")
+        if claims is not None and local_source is None:
+            errors.append(
+                f"{row['problem_id']}: the review matrix has no active paper route"
+            )
+        if local_source and row.get("problem_note") != local_source:
+            errors.append(
+                f"{row['problem_id']}: authored problem note {row.get('problem_note')!r} "
+                f"drifted from active paper {local_source!r}"
+            )
+        if corpus is not None and local_source:
+            active_paper = papers.get(local_source)
+            if active_paper is None:
+                errors.append(
+                    f"{row['problem_id']}: active paper {local_source!r} is absent "
+                    "from docs/papers/corpus.json"
+                )
+            elif active_paper.get("publication_state") != "active":
+                errors.append(
+                    f"{row['problem_id']}: paper {local_source!r} is not active in "
+                    "docs/papers/corpus.json"
+                )
+        archived_source = row.get("archived_provenance")
+        archived = papers.get(archived_source) if archived_source else None
+        if corpus is not None and (
+            archived is None
+            or archived.get("publication_state") != "retired"
+            or archived.get("manuscript_status") != "retired_provenance"
+        ):
+            errors.append(
+                f"{row['problem_id']}: archived provenance {archived_source!r} is not "
+                "registered as retired_provenance"
             )
     if errors:
         print(f"build_problem_index: {len(errors)} failure(s)")

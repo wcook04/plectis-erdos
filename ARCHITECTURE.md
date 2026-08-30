@@ -83,7 +83,7 @@ single file that is authoritative for everything.
 | What has been formally checked? | [`Erdos249257.lean`](Erdos249257.lean), [`ErdosProblems.lean`](ErdosProblems.lean), and the Lean modules they import | Formal statements and proofs; kernel checking alone does not create a reviewed public claim |
 | What may the project publicly say about a result? | [`docs/claims.json`](docs/claims.json) | Claim wording, status, supporting Lean names, bounded ranges, and the exact questions that remain open |
 | What evidence and review are required when a claim changes? | [`docs/methodology.json`](docs/methodology.json) | Change classes and review requirements |
-| What does a reader see? | [`README.md`](README.md), [`SCOPE.md`](SCOPE.md), and authored papers such as [`paper/erdos249-257-main-paper.tex`](paper/erdos249-257-main-paper.tex) | Human explanation; these files must stay within the claim record |
+| What does a reader see? | [`README.md`](README.md), [`SCOPE.md`](SCOPE.md), and the eight individual problem papers routed by [`docs/papers/README.md`](docs/papers/README.md) | Human explanation; these files must stay within the claim record. The former combined manuscript, [`paper/erdos249-257-main-paper.tex`](paper/erdos249-257-main-paper.tex), is archived provenance only, not an active gateway. |
 | Which manuscripts are shipped? | [`docs/publication_contract.json`](docs/publication_contract.json) | Paper inventory, file identities, entry routes, and evidence boundaries |
 | What evidence supports the historical checker example? | [`docs/publication_evidence.json`](docs/publication_evidence.json) | The recorded exercise and its limitations |
 | How are releases blocked? | [`scripts/check_release.py`](scripts/check_release.py) and [`.github/workflows/lean.yml`](.github/workflows/lean.yml) | Local release checks and continuous integration |
@@ -172,7 +172,9 @@ The repository holds two Lean roots and they are not interchangeable.
 
 `Erdos249257.lean` is the reviewed corpus. Every public mathematical claim made
 about it has a row in `docs/claims.json`, a status, declaration coordinates, and
-a place in the gateway paper.
+a place in its problem-owned paper. The eight individual problem papers are the
+active mathematical routes; the former combined #249/#257 manuscript is retained
+only as provenance.
 
 `ErdosProblems.lean` is the problem-owned expansion library, currently covering
 Erdős problems 68, 243, 251, 269, 1041, and 1049, plus unpromoted expansion
@@ -322,8 +324,9 @@ the limit of explicitly recorded checks.
 
 - **You want the basic mathematical result and its limits:** read
   [`README.md`](README.md), then [`SCOPE.md`](SCOPE.md).
-- **You want the mathematical argument:** read the
-  [mathematics paper](erdos249-257-main-paper.pdf).
+- **You want the mathematical argument:** choose the relevant entry in the
+  [individual problem-paper index](docs/papers/README.md). The archived combined
+  #249/#257 PDF is not a default reading route.
 - **You want to find the Lean behind one claim:** use
   [`docs/SOURCE_MAP.md`](docs/SOURCE_MAP.md), or run
   `python3 scripts/query_corpus.py --claim <claim_id>`.

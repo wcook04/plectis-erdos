@@ -129,6 +129,11 @@ REQUIRED_ANCHOR_GROUPS = {
         "does not mean that a program understood every sentence",
         "does not prove that every important sentence was selected",
     ),
+    "paper_lifecycle_boundary": (
+        "The eight individual problem papers are the active mathematical routes",
+        "archived provenance only, not an active gateway",
+        "The archived combined #249/#257 PDF is not a default reading route",
+    ),
 }
 
 REQUIRED_PATHS = (

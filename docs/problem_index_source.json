@@ -866,10 +866,10 @@
       "short_title": "The totient constant",
       "status": "open",
       "library_root": "Erdos249257.lean",
-      "exposition": "paper/erdos249-257-main-paper.tex",
+      "archived_provenance": "paper/erdos249-257-main-paper.tex",
       "problem_note": "paper/erdos-249-binary-totient-series.tex",
       "route": "python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic",
-      "note": "The gateway paper and reviewed claim registry own status; this shorter theorem-led note synthesises unregistered expansion modules without promoting them."
+      "note": "The individual problem paper and reviewed claim registry own the active reading route and status. The former combined manuscript is retained only as provenance."
     },
     {
       "problem_id": "erdos_257",
@@ -877,10 +877,10 @@
       "short_title": "Reciprocal sums over infinite exponent supports",
       "status": "open",
       "library_root": "Erdos249257.lean",
-      "exposition": "paper/erdos249-257-main-paper.tex",
+      "archived_provenance": "paper/erdos249-257-main-paper.tex",
       "problem_note": "paper/erdos-257-mersenne-support-subseries.tex",
       "route": "python3 scripts/query_corpus.py --route erdos257_half_story",
-      "note": "The gateway paper and reviewed claim registry own status; this shorter theorem-led note synthesises unregistered expansion modules without promoting them."
+      "note": "The individual problem paper and reviewed claim registry own the active reading route and status. The former combined manuscript is retained only as provenance."
     }
   ],
   "reading_rule": "Select one problem, read its note, then follow the note's links into the pinned Lean source. Do not infer a claim about an Erdős problem from a declaration name, a module name, or a count of checked theorems.",
