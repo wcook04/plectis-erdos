@@ -275,6 +275,38 @@ def main() -> int:
             )
         else:
             raise AssertionError("nested module symlink was accepted")
+    with tempfile.TemporaryDirectory(prefix="route-memory-research-link-") as temp_dir:
+        research_root = Path(temp_dir)
+        outside = research_root / "outside"
+        outside.mkdir()
+        frontier = outside / "FRONTIER.md"
+        frontier.write_text("external", encoding="utf-8")
+        digest = "sha256:" + route_memory.hashlib.sha256(
+            frontier.read_bytes()
+        ).hexdigest()
+        (research_root / "research_corpus").symlink_to(
+            outside, target_is_directory=True
+        )
+        research_problem = {
+            "problem_id": "erdos_1041",
+            "research_corpus": {
+                "files": {
+                    "frontier": {
+                        "path": "research_corpus/FRONTIER.md",
+                        "content_digest": digest,
+                    }
+                }
+            },
+        }
+        try:
+            route_memory._research_source_digests(research_root, research_problem)
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "unsafe_source_path",
+                f"nested research symlink returned {exc.code}",
+            )
+        else:
+            raise AssertionError("nested research symlink was accepted")
     optimized = run_cli(
         "--problem", "257", "--format", "card", optimized=True, check=True
     )

@@ -96,6 +96,8 @@ def _research_source_digests(
         if relative.is_absolute() or ".." in relative.parts:
             raise RouteMemoryError("invented_source_path", raw_path)
         path = root / relative
+        if _path_has_symlink_component(path):
+            raise RouteMemoryError("unsafe_source_path", raw_path)
         if not path.is_file() or path.is_symlink():
             raise RouteMemoryError("research_source_missing", raw_path)
         digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
