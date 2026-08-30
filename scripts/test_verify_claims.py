@@ -19,8 +19,11 @@ inside a namespace but registered under its qualified name.
 from __future__ import annotations
 
 import json
+import os
+import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import verify_claims
 
@@ -108,6 +111,42 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)
         (root / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+
+        # A published checkout must not let caller Git selectors redirect the
+        # child process to a private repository, namespace, or replacement map.
+        hostile_environment = {
+            "GIT_DIR": "/private/wrong-git-dir",
+            "GIT_WORK_TREE": "/private/wrong-work-tree",
+            "GIT_INDEX_FILE": "/private/wrong-index",
+            "GIT_NAMESPACE": "wrong-namespace",
+            "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
+            "GIT_OBJECT_DIRECTORY": "/private/wrong-objects",
+            "GIT_ALTERNATE_OBJECT_DIRECTORIES": "/private/wrong-alternates",
+            "GIT_COMMON_DIR": "/private/wrong-common",
+        }
+        with patch.dict(os.environ, hostile_environment, clear=False):
+            sanitized = verify_claims.clean_environment()
+            assert all(key not in sanitized for key in hostile_environment)
+            assert verify_claims.describe_environment({})[
+                "subprocess_environment"
+            ] == {
+                "contract": verify_claims.ENVIRONMENT_CONTRACT,
+                "sanitized_git_selectors": list(
+                    verify_claims.SANITIZED_GIT_ENVIRONMENT_KEYS
+                ),
+            }
+            child = verify_claims.run(
+                [
+                    sys.executable,
+                    "-c",
+                    "import json, os; print(json.dumps({k: os.environ[k] for k in "
+                    "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE') "
+                    "if k in os.environ}))",
+                ],
+                cwd=root,
+            )
+            assert child.returncode == 0
+            assert json.loads(child.stdout) == {}
 
         # A wrapped declaration recorded at its keyword line must resolve, and a
         # namespaced declaration registered under its qualified name must too.

@@ -61,11 +61,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
 import sys
 import textwrap
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
@@ -128,10 +130,47 @@ OPTIONAL_TOOL_GATES = {"check_metadata.py": "cffconvert"}
 # than by keeping a second list that can drift away from the first.
 PAPER_SUBDIR = "paper"
 LABEL_PATTERN = re.compile(r"\\label\{([^}]+)\}")
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SANITIZED_GIT_ENVIRONMENT_KEYS = (
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_INDEX_FILE",
+    "GIT_NAMESPACE",
+    "GIT_REPLACE_REF_BASE",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+    "GIT_COMMON_DIR",
+)
 
 # `follow_claim` scans the paper sources once per call unless a caller that is
 # following every claim hands it an index it already built.
 _BUILD_INDEX = object()
+
+
+def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
+    """Remove inherited Git selectors before any claim-verification subprocess."""
+    environment = dict(os.environ if base is None else base)
+    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
+        environment.pop(key, None)
+    return environment
+
+
+def run(
+    argv: list[str],
+    *,
+    cwd: Path,
+    timeout: int | None = None,
+) -> subprocess.CompletedProcess[str]:
+    """Run a verifier subprocess with a checkout-independent Git environment."""
+    return subprocess.run(
+        argv,
+        cwd=cwd,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=timeout,
+        env=clean_environment(),
+    )
 
 
 def load_claims() -> dict[str, Any]:
@@ -143,12 +182,7 @@ def load_claims() -> dict[str, Any]:
 def git_output(*args: str) -> str | None:
     """Run a read-only git query, returning None when git cannot answer."""
     try:
-        completed = subprocess.run(
-            ["git", "-C", str(REPO_ROOT), *args],
-            capture_output=True,
-            text=True,
-            check=False,
-        )
+        completed = run(["git", "-C", str(REPO_ROOT), *args], cwd=REPO_ROOT)
     except OSError:
         return None
     if completed.returncode != 0:
@@ -183,6 +217,10 @@ def describe_environment(claims: dict[str, Any]) -> dict[str, Any]:
         "shallow_clone": shallow,
         "pinned_formal_source_ref": formal_ref,
         "pinned_formal_source_present": pinned_present,
+        "subprocess_environment": {
+            "contract": ENVIRONMENT_CONTRACT,
+            "sanitized_git_selectors": list(SANITIZED_GIT_ENVIRONMENT_KEYS),
+        },
         "head": git_output("rev-parse", "HEAD"),
         "missing_optional_tools": sorted(
             tool for tool in set(OPTIONAL_TOOL_GATES.values()) if shutil.which(tool) is None
@@ -607,13 +645,7 @@ def run_gates(environment: dict[str, Any]) -> dict[str, Any]:
         if environment["shallow_clone"] and name in HISTORY_DEPENDENT_GATES:
             results.append({"gate": name, "outcome": "blocked", "reason": "shallow clone"})
             continue
-        completed = subprocess.run(
-            [sys.executable, str(path)],
-            cwd=REPO_ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
+        completed = run([sys.executable, str(path)], cwd=REPO_ROOT)
         tail = (completed.stdout or completed.stderr).strip().splitlines()
         results.append(
             {
