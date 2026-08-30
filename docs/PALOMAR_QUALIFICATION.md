@@ -64,7 +64,8 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`5d5beef651f3296ccd7e3d59216b77809944e8ce` before this consumer refresh:
+`d997ed1c127724abac04d1d43438db34dcedcb1a` immediately before this evidence
+refresh:
 
 - Comparator configuration: `verification/comparator.json`, 31 unique
   theorem names, SHA-256
