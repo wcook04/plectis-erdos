@@ -53,6 +53,12 @@ BETA_LINE = 10
 TAXONOMY = {"proved here": "Lean theorem in the committed formal-source checkpoint"}
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep claims-verification failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def build_register(
     claims: list[dict],
     open_props: list[dict] | None = None,
@@ -126,15 +132,20 @@ def main() -> int:
         }
         with patch.dict(os.environ, hostile_environment, clear=False):
             sanitized = verify_claims.clean_environment()
-            assert all(key not in sanitized for key in hostile_environment)
-            assert verify_claims.describe_environment({})[
-                "subprocess_environment"
-            ] == {
-                "contract": verify_claims.ENVIRONMENT_CONTRACT,
-                "sanitized_git_selectors": list(
-                    verify_claims.SANITIZED_GIT_ENVIRONMENT_KEYS
-                ),
-            }
+            require(
+                all(key not in sanitized for key in hostile_environment),
+                "claims verifier retained a hostile Git selector",
+            )
+            require(
+                verify_claims.describe_environment({})["subprocess_environment"]
+                == {
+                    "contract": verify_claims.ENVIRONMENT_CONTRACT,
+                    "sanitized_git_selectors": list(
+                        verify_claims.SANITIZED_GIT_ENVIRONMENT_KEYS
+                    ),
+                },
+                "claims verifier environment receipt drifted",
+            )
             child = verify_claims.run(
                 [
                     sys.executable,
@@ -145,8 +156,11 @@ def main() -> int:
                 ],
                 cwd=root,
             )
-            assert child.returncode == 0
-            assert json.loads(child.stdout) == {}
+            require(child.returncode == 0, "claims verifier child process failed")
+            require(
+                json.loads(child.stdout) == {},
+                "claims verifier child inherited a hostile Git selector",
+            )
 
         # A wrapped declaration recorded at its keyword line must resolve, and a
         # namespaced declaration registered under its qualified name must too.
