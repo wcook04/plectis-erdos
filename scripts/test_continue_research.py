@@ -194,6 +194,20 @@ def check_package_session_path_boundary() -> None:
         else:
             raise AssertionError("package input must reject symlinked session material")
 
+        redirected = root / "redirected"
+        redirected.mkdir()
+        linked_parent = sessions / "linked-parent"
+        linked_parent.symlink_to(redirected, target_is_directory=True)
+        hidden = linked_parent / ".." / "hidden.json"
+        require(
+            continue_research.has_symlink_component(hidden, sessions),
+            "session path normalized away a symlink before resolving ..",
+        )
+        require(
+            continue_research.output_path_has_symlink_component(hidden),
+            "package output normalized away a symlink before resolving ..",
+        )
+
 
 def check_malformed_utf8_inputs_rejected() -> None:
     """Continuation readers must report malformed text as bounded input errors."""

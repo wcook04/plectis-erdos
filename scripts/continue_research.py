@@ -322,19 +322,48 @@ def cleanup_partial_package(output: Path, expected_files: set[str]) -> str | Non
     return None
 
 
+def _absolute_preserving_dotdot(path: Path) -> Path:
+    """Make a path absolute without normalizing ``..`` before inspection."""
+    return path if path.is_absolute() else Path.cwd() / path
+
+
+def _walk_path_components(path: Path) -> tuple[bool, Path]:
+    """Walk path components in kernel order and return link status and target."""
+    candidate = _absolute_preserving_dotdot(path)
+    aliases = {
+        Path("/tmp"): Path("/private/tmp"),
+        Path("/var"): Path("/private/var"),
+    }
+    current = Path(candidate.anchor)
+    for component in candidate.parts[1:]:
+        if component in {"", "."}:
+            continue
+        if component == "..":
+            current = current.parent
+            continue
+        current /= component
+        if not current.is_symlink():
+            continue
+        try:
+            target = aliases.get(current)
+            if target is None or current.resolve(strict=True) != target:
+                return True, current
+            current = current.resolve(strict=True)
+        except OSError:
+            return True, current
+    return False, current
+
+
 def has_symlink_component(path: Path, root: Path) -> bool:
-    """Return whether a session artifact crosses a symbolic-link component."""
+    """Reject session artifacts that link, or resolve outside ``root``."""
+    root_linked, root_target = _walk_path_components(root)
+    path_linked, path_target = _walk_path_components(path)
+    if root_linked or path_linked:
+        return True
     try:
-        relative = path.relative_to(root)
+        path_target.relative_to(root_target)
     except ValueError:
         return True
-    if root.is_symlink():
-        return True
-    current = root
-    for component in relative.parts:
-        current /= component
-        if current.is_symlink():
-            return True
     return False
 
 
@@ -348,28 +377,8 @@ def output_path_has_symlink_component(path: Path) -> bool:
     canonical ``/tmp`` and ``/var`` aliases are harmless platform links we
     preserve after verifying their exact private targets.
     """
-    candidate = Path(os.path.abspath(path))
-    current = Path(candidate.anchor)
-    for component in candidate.parts[1:]:
-        current /= component
-        if not current.is_symlink():
-            continue
-        try:
-            platform_aliases = {
-                Path("/tmp"): Path("/private/tmp"),
-                Path("/var"): Path("/private/var"),
-            }
-            alias_target = platform_aliases.get(current)
-            is_platform_alias = (
-                alias_target is not None
-                and current.resolve(strict=True) == alias_target
-            )
-        except OSError:
-            is_platform_alias = False
-        if not is_platform_alias:
-            return True
-        current = current.resolve(strict=True)
-    return False
+    linked, _target = _walk_path_components(path)
+    return linked
 
 
 def session_artifact_bytes(path: Path, sessions_root: Path, label: str) -> bytes:
