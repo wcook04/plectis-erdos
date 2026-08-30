@@ -16,6 +16,8 @@ import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
 import Erdos249257.TotientActualLcmOrbitNonintegrality
 import Erdos249257.TotientActualLcmOrbitSeparation
+import Erdos249257.FirstHarmonicPivot
+import Erdos249257.TotientActualLcmOrbitSign
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
@@ -135,6 +137,78 @@ private theorem actualLcmOrbitSeparationSupply_eq_source :
     · rw [actualLcmRawErrorRadius_eq_source,
         actualLcmTailOrbit_eq_source]
       exact hsep
+
+private theorem pivotOffset_eq_source (L s : ℕ) :
+    pivotOffset L s =
+      Erdos249257.TotientTailPeriodKiller.pivotOffset L s := by
+  rfl
+
+private theorem pivotArgument_eq_source (N L s : ℕ) :
+    pivotArgument N L s =
+      Erdos249257.TotientTailPeriodKiller.pivotArgument N L s := by
+  rfl
+
+private theorem pivotPrime_eq_source (N L s : ℕ) :
+    pivotPrime N L s =
+      Erdos249257.TotientTailPeriodKiller.pivotPrime N L s := by
+  rfl
+
+private theorem pivotCofactor_eq_source (N L s : ℕ) :
+    pivotCofactor N L s =
+      Erdos249257.TotientTailPeriodKiller.pivotCofactor N L s := by
+  rfl
+
+private theorem pivotSupplier_eq_source (X L s N : ℕ) :
+    pivotSupplier X L s N =
+      Erdos249257.TotientTailPeriodKiller.pivotSupplier X L s N := by
+  rfl
+
+private theorem pivotSupplierBases_eq_source (X L s : ℕ) :
+    pivotSupplierBases X L s =
+      Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X L s := by
+  rfl
+
+private theorem pivotFiber_eq_source (X L s m : ℕ) :
+    pivotFiber X L s m =
+      Erdos249257.TotientTailPeriodKiller.pivotFiber X L s m := by
+  rfl
+
+private theorem pivotSupplierPrimes_eq_source (X L s m : ℕ) :
+    pivotSupplierPrimes X L s m =
+      Erdos249257.TotientTailPeriodKiller.pivotSupplierPrimes X L s m := by
+  rfl
+
+private theorem pivotBaseOfPrime_eq_source (L s m p : ℕ) :
+    pivotBaseOfPrime L s m p =
+      Erdos249257.TotientTailPeriodKiller.pivotBaseOfPrime L s m p := by
+  rfl
+
+private theorem windowDiscrepancy_eq_source (h N L : ℕ) :
+    windowDiscrepancy h N L =
+      Erdos249257.TotientTailPeriodKiller.windowDiscrepancy h N L := by
+  rfl
+
+private theorem deltaTotient_eq_source (h n : ℕ) :
+    deltaTotient h n =
+      Erdos249257.TotientTailPeriodKiller.deltaTotient h n := by
+  rfl
+
+private theorem carryOrbit_eq_source (h N : ℕ) (d : ℤ) (i : ℕ) :
+    carryOrbit h N d i =
+      Erdos249257.TotientTailPeriodKiller.carryOrbit h N d i := by
+  induction i with
+  | zero => rfl
+  | succ i ih =>
+      simp only [carryOrbit,
+        Erdos249257.TotientTailPeriodKiller.carryOrbit, ih,
+        deltaTotient_eq_source]
+
+private theorem endpointSurvivor_eq_source (h N L : ℕ) (z : ℤ) :
+    endpointSurvivor h N L z =
+      Erdos249257.TotientTailPeriodKiller.endpointSurvivor h N L z := by
+  simp [endpointSurvivor,
+    Erdos249257.TotientTailPeriodKiller.endpointSurvivor,
+    windowDiscrepancy_eq_source]
 
 private theorem dyadicClearedPrefix_eq_source
     (a : ℕ → ℤ) (n L : ℕ) :
@@ -321,6 +395,76 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply
     rw [← actualLcmOrbitSeparationSupply_eq_source]
     exact hsupply
+  · intro X L s m hm hmsmall
+    change
+      (Erdos249257.TotientTailPeriodKiller.pivotSupplierPrimes X L s m).image
+          (Erdos249257.TotientTailPeriodKiller.pivotBaseOfPrime L s m) =
+        Erdos249257.TotientTailPeriodKiller.pivotFiber X L s m
+    exact
+      Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber
+        hm hmsmall
+  · change
+      Erdos249257.TotientTailPeriodKiller.pivotOffset 20 1 = 20 ∧
+        18 ∈ Erdos249257.TotientTailPeriodKiller.pivotFiber 16 20 1 2 ∧
+        Erdos249257.TotientTailPeriodKiller.pivotPrime 18 20 1 = 19 ∧
+        19 ∣ Erdos249257.TotientTailPeriodKiller.pivotArgument 18 20 1 ∧
+        19 ∣ 18 + 1
+    exact
+      Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample
+  · intro h X L s η
+    change
+      (∑ N ∈ Finset.Ico X (2 * X),
+          Erdos249257.TotientTailPeriodKiller.windowFirstExp h N L) =
+        Erdos249257.TotientTailPeriodKiller.pivotCenteredCorrelation h X L s η +
+        Erdos249257.TotientTailPeriodKiller.pivotFiberMeanContribution h X L s η +
+        Erdos249257.TotientTailPeriodKiller.pivotBadContribution h X L s η +
+        Erdos249257.TotientTailPeriodKiller.pivotNonSupplierContribution h X L s
+    exact
+      Erdos249257.TotientTailPeriodKiller.windowFirstExp_sum_eq_pivot_decomposition
+        h X L s η
+  · intro h X L s η hbudget
+    exact
+      Erdos249257.TotientTailPeriodKiller.first_harmonic_gap_of_pivotBudgetAt
+        hbudget
+  · intro hmix
+    exact
+      Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation
+        hmix
+  · intro a J ha hshort
+    rw [totientTail_eq_source, periodLcm_eq_source]
+    exact
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos
+        ha hshort
+  · intro a J K ha hshort d hd
+    have hd' : (d : ℝ) =
+        Erdos249257.TotientTailPeriodKiller.totientTail
+            (2 * Erdos249257.TotientTailPeriodKiller.periodLcm (2 ^ a) + J) -
+          Erdos249257.TotientTailPeriodKiller.totientTail
+            (Erdos249257.TotientTailPeriodKiller.periodLcm (2 ^ a) + J) := by
+      simpa only [totientTail_eq_source, periodLcm_eq_source] using hd
+    exact
+      (by
+        simpa only [periodLcm_eq_source, carryOrbit_eq_source,
+          endpointSurvivor_eq_source] using
+          (Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg
+            ha hshort hd'))
+  · intro a J K ha hshort d hd hroom
+    have hd' : (d : ℝ) =
+        Erdos249257.TotientTailPeriodKiller.totientTail
+            (2 * Erdos249257.TotientTailPeriodKiller.periodLcm (2 ^ a) + J) -
+          Erdos249257.TotientTailPeriodKiller.totientTail
+            (Erdos249257.TotientTailPeriodKiller.periodLcm (2 ^ a) + J) := by
+      simpa only [totientTail_eq_source, periodLcm_eq_source] using hd
+    have hroom' :
+        ((2 * Erdos249257.TotientTailPeriodKiller.periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) <
+          (2 : ℤ) ^ K := by
+      simpa only [periodLcm_eq_source] using hroom
+    exact
+      (by
+        simpa only [periodLcm_eq_source, windowDiscrepancy_eq_source,
+          carryOrbit_eq_source] using
+          (Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue
+            ha hshort hd' hroom'))
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using

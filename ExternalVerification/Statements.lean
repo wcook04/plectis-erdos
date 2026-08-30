@@ -316,6 +316,42 @@ def periodLcm : ℕ → ℕ
 noncomputable def totientTail (N : ℕ) : ℝ :=
   ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
 
+/-! ## Period-killer window and carry vocabulary -/
+
+def deltaTotient (h n : ℕ) : ℤ :=
+  (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
+
+def windowDiscrepancy (h N L : ℕ) : ℤ :=
+  ∑ j ∈ Finset.range L,
+    ((Nat.totient (N + h + 1 + j) : ℤ) -
+      (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
+
+def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+
+noncomputable def windowFirstCos (h N L : ℕ) : ℝ :=
+  Real.cos
+    (2 * Real.pi *
+      (((windowDiscrepancy h N L % (2 ^ L : ℤ) : ℤ) : ℝ) /
+        ((2 ^ L : ℤ) : ℝ)))
+
+noncomputable def windowFirstAngle (h N L : ℕ) : ℝ :=
+  2 * Real.pi *
+    (((windowDiscrepancy h N L % (2 ^ L : ℤ) : ℤ) : ℝ) /
+      ((2 ^ L : ℤ) : ℝ))
+
+noncomputable def windowFirstExp (h N L : ℕ) : ℂ :=
+  Complex.exp ((windowFirstAngle h N L : ℂ) * Complex.I)
+
+def endpointSurvivor (h N L : ℕ) (z : ℤ) : Prop :=
+  |z| ≤ (N + h + L + 2 : ℤ) ∧
+    z % 2 ^ L = windowDiscrepancy h N L % 2 ^ L
+
+def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
+  | 0 => d
+  | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
+
 /-- The actual power-two LCM height used by the diagonal orbit. -/
 def actualLcmHeight (a : ℕ) : ℕ :=
   periodLcm (2 ^ a)
@@ -365,6 +401,118 @@ def PowerTwoActualLcmOrbitSeparationSupply : Prop :=
 def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
   ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
     actualLcmTailOrbit a ∉ Set.range ((↑) : ℤ → ℝ)
+
+/-! ## First-harmonic pivot supplier fibres -/
+
+/-- Offset of the first-harmonic pivot argument `N + (L-s+1)`. -/
+def pivotOffset (L s : ℕ) : ℕ := L - s + 1
+
+/-- The integer argument at which the largest-prime pivot is selected. -/
+def pivotArgument (N L s : ℕ) : ℕ := N + pivotOffset L s
+
+/-- Canonical largest-prime choice from the finite prime-factor set. -/
+noncomputable def pivotPrime (N L s : ℕ) : ℕ :=
+  (pivotArgument N L s).primeFactors.toList.foldl Nat.max 1
+
+/-- Cofactor associated to the canonical largest-prime choice. -/
+noncomputable def pivotCofactor (N L s : ℕ) : ℕ :=
+  pivotArgument N L s / pivotPrime N L s
+
+/-- Exact clean-supplier predicate used by the pivot fibre. -/
+noncomputable def pivotSupplier (X L s N : ℕ) : Prop :=
+  let p := pivotPrime N L s
+  let m := pivotCofactor N L s
+  p.Prime ∧ m * p = pivotArgument N L s ∧ 0 < m ∧
+    m ≤ Nat.sqrt X / 2 ∧ 2 * Nat.sqrt X < p
+
+noncomputable instance (X L s N : ℕ) : Decidable (pivotSupplier X L s N) := by
+  unfold pivotSupplier
+  infer_instance
+
+noncomputable def pivotSupplierBases (X L s : ℕ) : Finset ℕ :=
+  (Finset.Ico X (2 * X)).filter (pivotSupplier X L s)
+
+noncomputable def pivotFiber (X L s m : ℕ) : Finset ℕ :=
+  (pivotSupplierBases X L s).filter fun N => pivotCofactor N L s = m
+
+/-- The shifted prime interval parametrising one supplier fibre. -/
+def pivotSupplierPrimes (X L s m : ℕ) : Finset ℕ :=
+  (Finset.range (2 * X + pivotOffset L s + 1)).filter fun p =>
+    p.Prime ∧ X + pivotOffset L s ≤ m * p ∧
+      m * p < 2 * X + pivotOffset L s
+
+/-- Convert a supplier prime to its canonical window base. -/
+def pivotBaseOfPrime (L s m p : ℕ) : ℕ := m * p - pivotOffset L s
+
+noncomputable def pivotPrimeAngle (h L s m p : ℕ) : ℝ :=
+  2 * Real.pi *
+    (((2 : ℝ) ^ h - 1) * (Nat.totient m : ℝ) * ((p : ℝ) - 1) /
+      (2 * (2 : ℝ) ^ (L - s)))
+
+noncomputable def pivotPrimePhase (h L s m p : ℕ) : ℂ :=
+  Complex.exp ((pivotPrimeAngle h L s m p : ℂ) * Complex.I)
+
+noncomputable def pivotResidualWeight (h N L s m p : ℕ) : ℂ :=
+  windowFirstExp h N L / pivotPrimePhase h L s m p
+
+def pivotGoodCofactor (L s N : ℕ) (η : ℝ) : Prop :=
+  η * pivotCofactor N L s ≤ Nat.totient (pivotCofactor N L s)
+
+noncomputable instance (L s N : ℕ) (η : ℝ) :
+    Decidable (pivotGoodCofactor L s N η) := by
+  classical exact inferInstance
+
+noncomputable def pivotGoodBases (X L s : ℕ) (η : ℝ) : Finset ℕ :=
+  (pivotSupplierBases X L s).filter fun N => pivotGoodCofactor L s N η
+
+noncomputable def pivotBadBases (X L s : ℕ) (η : ℝ) : Finset ℕ :=
+  (pivotSupplierBases X L s).filter fun N => ¬pivotGoodCofactor L s N η
+
+noncomputable def pivotNonSupplierBases (X L s : ℕ) : Finset ℕ :=
+  (Finset.Ico X (2 * X)).filter fun N => ¬pivotSupplier X L s N
+
+noncomputable def pivotPhaseAt (h N L s : ℕ) : ℂ :=
+  pivotPrimePhase h L s (pivotCofactor N L s) (pivotPrime N L s)
+
+noncomputable def pivotResidualAt (h N L s : ℕ) : ℂ :=
+  windowFirstExp h N L / pivotPhaseAt h N L s
+
+noncomputable def pivotFiberMean (h X L s m : ℕ) : ℂ :=
+  ((pivotFiber X L s m).card : ℂ)⁻¹ *
+    ∑ N ∈ pivotFiber X L s m, pivotPhaseAt h N L s
+
+noncomputable def pivotCenteredCorrelation
+    (h X L s : ℕ) (η : ℝ) : ℂ :=
+  ∑ N ∈ pivotGoodBases X L s η,
+    pivotResidualAt h N L s *
+      (pivotPhaseAt h N L s - pivotFiberMean h X L s (pivotCofactor N L s))
+
+noncomputable def pivotFiberMeanContribution
+    (h X L s : ℕ) (η : ℝ) : ℂ :=
+  ∑ N ∈ pivotGoodBases X L s η,
+    pivotResidualAt h N L s *
+      pivotFiberMean h X L s (pivotCofactor N L s)
+
+noncomputable def pivotBadContribution
+    (h X L s : ℕ) (η : ℝ) : ℂ :=
+  ∑ N ∈ pivotBadBases X L s η, windowFirstExp h N L
+
+noncomputable def pivotNonSupplierContribution (h X L s : ℕ) : ℂ :=
+  ∑ N ∈ pivotNonSupplierBases X L s, windowFirstExp h N L
+
+def PivotBudgetAt (h X L s : ℕ) (η : ℝ) : Prop :=
+  (pivotCenteredCorrelation h X L s η).re ≤ (14 / 25 : ℝ) * X ∧
+  ‖pivotFiberMeanContribution h X L s η‖ ≤ (1 / 100 : ℝ) * X ∧
+  ‖pivotBadContribution h X L s η‖ ≤ (1 / 100 : ℝ) * X ∧
+  ‖pivotNonSupplierContribution h X L s‖ ≤ (8 / 25 : ℝ) * X
+
+def DTWPivotResidualDecorrelation : Prop :=
+  ∀ h : ℕ, 0 < h → ∃ s : ℕ, 0 < s ∧ ∃ η : ℝ, 0 < η ∧ η < 1 ∧
+    ∀ X₀ : ℕ, ∃ X L : ℕ,
+      max X₀ 1 ≤ X ∧
+      h ≤ L - s ∧
+      16 * (2 * X + h + L + 2) ≤ 2 ^ L ∧
+      PivotBudgetAt h X L s η
 
 /-- The zero-based dyadic coboundary `(2 - E)c`. -/
 def dyadicCoboundary (c : ℕ → ℤ) (n : ℕ) : ℤ :=
@@ -498,6 +646,61 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem249ActualLcmOrbitSeparation :
     PowerTwoActualLcmOrbitSeparationSupply →
       Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
+  problem249FirstHarmonicPivotFiber :
+    ∀ {X L s m : ℕ}, 0 < m → m ≤ Nat.sqrt X / 2 →
+      (pivotSupplierPrimes X L s m).image (pivotBaseOfPrime L s m) =
+        pivotFiber X L s m
+  problem249FirstHarmonicPivotIsolationCounterexample :
+    pivotOffset 20 1 = 20 ∧
+      18 ∈ pivotFiber 16 20 1 2 ∧
+      pivotPrime 18 20 1 = 19 ∧
+      19 ∣ pivotArgument 18 20 1 ∧
+      19 ∣ 18 + 1
+  problem249FirstHarmonicPivotDecomposition :
+    ∀ (h X L s : ℕ) (η : ℝ),
+      (∑ N ∈ Finset.Ico X (2 * X), windowFirstExp h N L) =
+        pivotCenteredCorrelation h X L s η +
+        pivotFiberMeanContribution h X L s η +
+        pivotBadContribution h X L s η +
+        pivotNonSupplierContribution h X L s
+  problem249FirstHarmonicPivotBudget :
+    ∀ {h X L s : ℕ} {η : ℝ}, PivotBudgetAt h X L s η →
+      (∑ N ∈ Finset.Ico X (2 * X), windowFirstCos h N L) ≤
+        (9 / 10 : ℝ) * X
+  problem249FirstHarmonicPivotResidualDecorrelation :
+    DTWPivotResidualDecorrelation →
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
+  problem249ActualLcmPositiveCorridor :
+    ∀ {a J : ℕ}, 8 ≤ a → J + (a + 6) < 2 * 2 ^ a →
+      0 <
+        totientTail (2 * periodLcm (2 ^ a) + J) -
+          totientTail (periodLcm (2 ^ a) + J)
+  problem249ActualLcmTrueEndpointSurvivor :
+    ∀ {a J K : ℕ}, 8 ≤ a → J + K + (a + 6) < 2 * 2 ^ a →
+      ∀ {d : ℤ},
+        (d : ℝ) =
+          totientTail (2 * periodLcm (2 ^ a) + J) -
+            totientTail (periodLcm (2 ^ a) + J) →
+        -carryOrbit (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) d K < 0 ∧
+        endpointSurvivor (periodLcm (2 ^ a))
+          (periodLcm (2 ^ a) + J) K
+          (-carryOrbit (periodLcm (2 ^ a))
+            (periodLcm (2 ^ a) + J) d K)
+  problem249ActualLcmTopEdgeResidue :
+    ∀ {a J K : ℕ}, 8 ≤ a → J + K + (a + 6) < 2 * 2 ^ a →
+      ∀ {d : ℤ},
+        (d : ℝ) =
+          totientTail (2 * periodLcm (2 ^ a) + J) -
+            totientTail (periodLcm (2 ^ a) + J) →
+        ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) <
+            (2 : ℤ) ^ K →
+        let H := periodLcm (2 ^ a)
+        let e := carryOrbit H (H + J) d K
+        let P := (2 : ℤ) ^ K
+        let B := ((2 * H + J + K + 2 : ℕ) : ℤ)
+        windowDiscrepancy H (H + J) K % P = P - e ∧
+          P - B < windowDiscrepancy H (H + J) K % P ∧
+          windowDiscrepancy H (H + J) K % P < P
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →
