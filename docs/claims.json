@@ -11887,6 +11887,18 @@
         "boundary": "The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open."
       },
       {
+        "id": "actual_foreign_residue_projection",
+        "problem": 249,
+        "review_family": "actual_foreign_residue_projection",
+        "claim_id": "actual_foreign_residue_projection",
+        "contribution_class": "conditional reduction",
+        "original_declaration": "Erdos249257.ActualForeignResidueProjection.scaleFullTarget_miss_of_projected_separation",
+        "original_source": "Erdos249257/ActualForeignResidueProjection.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
+        "statement": "The finite Möbius residue diagonal splits into projected foreign and divisor channels, every finite stable foreign-tail window obeys a closed geometric bound, and a controlled projection separated from every integer forces the full target to be missed.",
+        "boundary": "This is a conditional finite partition/geometric-majorant reduction with a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded separated-projection supply remain unproved; no Erdős #249 endpoint, novelty, significance, priority, or external-review claim is made."
+      },
+      {
         "id": "first_harmonic_pivot_decomposition",
         "problem": 249,
         "review_family": "first_harmonic_pivot_decomposition",
@@ -12346,6 +12358,19 @@
             "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos"
           ],
             "boundary": "The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and #249 endpoint remain open."
+          },
+          {
+            "id": "actual_foreign_residue_projection",
+            "contribution_class": "conditional reduction",
+            "summary": "The finite Möbius residue diagonal splits exactly into projected foreign and divisor channels, the omitted finite foreign tail has a closed geometric majorant, and the generic complement-noncancellation consumer turns a controlled projection separated from every integer into a full-target miss.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.ActualForeignResidueProjection.scaleFullTarget_miss_of_projected_separation",
+              "Erdos249257.ActualForeignResidueProjection.finiteResidueDiagonal_eq_projectedForeign_add_divisor",
+              "Erdos249257.ActualForeignResidueProjection.abs_foreignTailWindow_le_foreignComplementBound"
+            ],
+            "boundary": "This is only a finite partition/geometric-majorant reduction feeding a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded supply of separated projections remain unproved; no Erdős #249 endpoint, novelty, significance, priority, or external-review claim follows."
           },
           {
             "id": "first_harmonic_pivot_decomposition",
