@@ -3059,6 +3059,10 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         }
     )
     claim_rows = [compact_claim(row) for row in claims["claims"] if row["id"] in attached_claim_ids]
+    declaration_preview = declaration_route_memory_rows(
+        [compact_declaration(row) for row in declarations[:packet_limit]],
+        claims,
+    )
     return {
         "kind": "module",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
@@ -3068,10 +3072,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
             (row["sigil"] for row in aliases if row["path"] == module["path"]), None
         ),
         "attached_claims": claim_rows,
-        "declaration_preview": [
-            compact_declaration(row)
-            for row in declarations[:packet_limit]
-        ],
+        "declaration_preview": declaration_preview,
         "declaration_preview_receipt": {
             "total": len(declarations),
             "emitted": min(len(declarations), packet_limit),

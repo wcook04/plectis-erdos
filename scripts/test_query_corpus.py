@@ -1405,6 +1405,19 @@ def main() -> int:
     assert module["declaration_preview_receipt"]["effective_limit"] == 12
     assert "declaration_kind" in module["declaration_preview"][0]
     assert module["module"]["role"] == "Assembled theorem kernel and headline interfaces"
+    adelic_module = query(
+        "--module", "Erdos249257/AdelicHeightObstruction"
+    )
+    adelic_preview = next(
+        row
+        for row in adelic_module["declaration_preview"]
+        if "adelic_height_obstruction" in row["claim_ids"]
+    )
+    assert adelic_preview["route_memory"]["status"] == "bound"
+    assert {
+        (binding["route_id"], binding["problem_number"])
+        for binding in adelic_preview["route_memory"]["bindings"]
+    } == {("arithmetic_obstruction_interfaces", 249)}
     neighbourhood = module["dependency_neighbourhood"]
     receipt = neighbourhood["receipt"]
     assert receipt["imports_total"] == len(module["module"]["imports"])
