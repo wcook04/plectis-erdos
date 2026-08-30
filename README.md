@@ -75,6 +75,12 @@ finite ray separation/root retention while a topology/gluing step is missing
 rules out a literal `3/2` corridor while leaving irrationality open
 ([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean)).
 
+This order is a value audit of the 31 declarations in the committed Comparator
+roster, not a claim that the remaining rows are unimportant. [RESULTS](docs/RESULTS.md#signal-audit-dispositions)
+records the promote/retain/consolidate/demote/replace/long-tail-only decisions
+and their mathematical reasons; the per-problem sections and [source map](docs/SOURCE_MAP.md)
+keep every lower-signal route reachable.
+
 Finite searches, routine certificate shards, cited inputs, and conditional
 predicate stacks remain valuable evidence, but they are supporting routes—not
 cofinal results or solutions. [RESULTS](docs/RESULTS.md) gives the complete
