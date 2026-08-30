@@ -239,14 +239,29 @@ the library's historical Lean~3-era architecture
 pinned revision.  Linked phrases open the corresponding declaration at the
 pinned source revision~\commitshort.
 
-For release review, the selected Comparator surface is exact: the declaration
-\texttt{exists\_primeGap0\_gt} states $\forall M:\mathbb N,\ \exists n,\ M<
-\mathit{primeGap0}(n)$, and
-\texttt{irrational\_tsum\_primeDyadicTerm\_iff\_primeGap} states, under
+For release review, the selected Comparator surface is exact: the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{57}{exists_primeGap0_gt}{unbounded-gap
+theorem} states $\forall M:\mathbb N,\ \exists n,\ M<\mathit{primeGap0}(n)$,
+and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{435}{irrational_tsum_primeDyadicTerm_iff_primeGap}{prime/gap
+irrationality equivalence} states, under
 $\operatorname{Summable}(\mathit{primeDyadicTerm})$, the equivalence between
-irrationality of the prime-term and prime-gap-term sums.  The summability
-hypothesis is retained; these structural rows do not prove the open
-irrationality claim for Problem~\#251.
+irrationality of the prime-term and prime-gap-term sums.  The endpoint-proximate
+abstract classification is represented by
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1551}{irrational_initial_iff_all_positive_tailShifts_nonintegral}{the
+pointwise shift classifier}: for any real dyadic-tail recurrence with integer
+digits, irrationality of the initial state is equivalent to non-integrality of
+every positive shift, and hence to cofinal non-integrality of each fixed shift.
+Its rational-side mechanism is the exact denominator/congruence pair
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1279}{tailShift_integral_iff_den_dvd_mersenne}{denominator
+divisibility} and
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1291}{tailShift_integral_iff_two_pow_modEq_one}{power-of-two
+congruence}; together with the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1525}{not_irrational_initial_iff_exists_eventually_integral_positive_tailShift}{eventual-integrality
+classifier}, they explain why a rational initial state supplies an eventual
+integral shift.  These are recurrence-level results, not a prime-specific
+producer: the cofinal non-integrality property for the actual prime gaps
+remains unproved, so no irrationality claim for Problem~\#251 follows.
 
 \statusboundary
 
