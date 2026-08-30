@@ -298,6 +298,13 @@ for the machine-readable premise/consumer map and
 [`CORPUS_MANIFEST.json`](../research_corpus/Erdos1041/CORPUS_MANIFEST.json)
 for the published-file and digest inventory.
 
+For a machine-first handoff, run
+`python3 scripts/query_corpus.py --route erdos_1041`. The route checks the
+four public frontier files against their indexed digests and returns the
+35-result/open envelope; for a resumable, source-fingerprinted packet use
+`python3 scripts/query_route_memory.py --problem 1041`. Neither route enters
+the reviewed claim registry, Comparator, or Lean proof authority.
+
 Use this compact reading order:
 
 1. [`AttachmentAwareReeb.md`](../research_corpus/Erdos1041/AttachmentAwareReeb.md)
