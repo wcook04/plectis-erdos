@@ -33,6 +33,12 @@ HOSTILE_ENVIRONMENT = {
 }
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep the environment contract active when Python is run with -O."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def run(args: list[str]) -> subprocess.CompletedProcess[str]:
     """Run cold-clone children without ambient checkout or interpreter state."""
     return subprocess.run(
@@ -165,7 +171,50 @@ def check_route_memory_cold_clone() -> int:
     return checked + 1
 
 
+def check_checker_child_environment() -> None:
+    """Prove comprehension subprocesses ignore ambient checkout selectors."""
+    hostile_environment = {
+        **HOSTILE_ENVIRONMENT,
+        "PATH": "/tmp/not-this-bin",
+    }
+    completed = subprocess.CompletedProcess(
+        [sys.executable, "-c", "pass"], 0, stdout="", stderr=""
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(
+            diagnostic.subprocess, "run", return_value=completed
+        ) as run_child:
+            observed = diagnostic.run_child(
+                [sys.executable, "-c", "pass"], cwd=ROOT.parent
+            )
+
+    require(observed is completed, "child result was not returned")
+    require(len(run_child.call_args_list) == 1, "child process was not exercised")
+    kwargs = run_child.call_args.kwargs
+    sanitized = kwargs["env"]
+    for key in (
+        "GIT_DIR",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+        "PYTHONPATH",
+    ):
+        require(key not in sanitized, f"ambient {key} leaked into child")
+    require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale missing")
+    require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
+    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into child")
+    require(
+        kwargs["timeout"] == diagnostic.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "child timeout drifted",
+    )
+    require(
+        diagnostic.ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "cold-clone environment contract drifted",
+    )
+
+
 def main() -> int:
+    check_checker_child_environment()
     with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
         route_memory_checks = check_route_memory_cold_clone()
     packets = diagnostic.collect_agent_packets()

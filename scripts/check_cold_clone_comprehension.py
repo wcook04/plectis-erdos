@@ -30,6 +30,7 @@ from typing import Any
 
 import check_architecture_guide
 import query_corpus
+import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEXED_PROBLEM_NUMBERS = frozenset(
@@ -48,6 +49,7 @@ INDEXED_PROBLEM_COUNT = len(INDEXED_PROBLEM_NUMBERS)
 QUERY = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
 EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
 HUMAN_SURFACES = (
     "README.md",
@@ -332,18 +334,30 @@ def check_route_memory_descriptor() -> None:
     validate_route_memory_descriptor(json.loads(read("docs/corpus_descriptor.json")))
 
 
+def run_child(
+    command: list[str], *, cwd: Path = ROOT
+) -> subprocess.CompletedProcess[str]:
+    """Run a cold-clone child without ambient process state or hangs."""
+    return subprocess.run(
+        command,
+        cwd=cwd,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
+
+
 def check_semantic_corpus_freshness() -> None:
     """Keep the quick entry check honest after claim-route source edits."""
-    completed = subprocess.run(
+    completed = run_child(
         [
             sys.executable,
             str(ROOT / "scripts" / "build_semantic_corpus.py"),
             "--check",
         ],
         cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
     )
     assert completed.returncode == 0, (
         completed.stdout.strip() or completed.stderr.strip()
@@ -386,7 +400,7 @@ def query_packet(*args: str, budget_bytes: int = PACKET_BUDGET_BYTES) -> dict[st
 
 def validate_query_cli_process_smoke() -> None:
     """Prove the installed script still works as a standalone cold process."""
-    completed = subprocess.run(
+    completed = run_child(
         [
             sys.executable,
             str(QUERY),
@@ -394,9 +408,6 @@ def validate_query_cli_process_smoke() -> None:
             "agent_native_corpus_navigation",
         ],
         cwd=ROOT.parent,
-        capture_output=True,
-        text=True,
-        check=False,
     )
     if completed.returncode != 0:
         raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
@@ -409,12 +420,9 @@ def semantic_query_packet(
     *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
 ) -> dict[str, Any]:
     """Run the public semantic CLI exactly as a cold coding agent would."""
-    completed = subprocess.run(
+    completed = run_child(
         [sys.executable, str(SEMANTIC_QUERY), *args],
         cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
     )
     if completed.returncode != 0:
         raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
@@ -430,12 +438,9 @@ def expert_handoff_packet(
     *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
 ) -> dict[str, Any]:
     """Run the cross-domain expert-handoff query from a cold clone."""
-    completed = subprocess.run(
+    completed = run_child(
         [sys.executable, str(EXPERT_HANDOFF_QUERY), *args],
         cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
     )
     if completed.returncode != 0:
         raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
@@ -449,12 +454,9 @@ def expert_handoff_packet(
 
 def check_expert_handoff_protocol() -> str:
     """Run the cross-domain protocol's own structural self-check."""
-    completed = subprocess.run(
+    completed = run_child(
         [sys.executable, str(EXPERT_HANDOFF_QUERY), "--check"],
         cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
     )
     if completed.returncode != 0:
         raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
@@ -723,12 +725,9 @@ def validate_first_command_keeps_its_promise(readme_prefix: str) -> None:
     capability and its description together is a coherent change. What must never
     happen is the description outliving the behaviour.
     """
-    completed = subprocess.run(
+    completed = run_child(
         [sys.executable, "scripts/verify_claims.py", *FIRST_COMMAND_ARGV],
         cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
     )
     assert completed.returncode == 0, (
         "the command the README puts on its first screen exits "
