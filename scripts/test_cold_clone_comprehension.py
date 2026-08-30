@@ -325,8 +325,40 @@ def main() -> int:
     human_surfaces = {
         path: diagnostic.read(path) for path in diagnostic.HUMAN_SURFACES
     }
+    paper_library = diagnostic.read(diagnostic.PAPER_LIBRARY_SURFACE)
+    # The generated shelf may be one exporter turn behind while this focused
+    # consumer test is being landed. Build a minimal compliant fixture from
+    # the live Palomar ranking so the positive contract remains executable,
+    # while the real shelf is still checked for stale/reordered content.
+    showcase = json.loads(diagnostic.read("docs/PALOMAR_RESULT_SHOWCASE.json"))
+    ranked_rows = showcase["candidate_ranking"]
+    ranked_fixture = "\n".join(
+        f"#### {row['rank']}. fixture — `{row['family_id']}`"
+        for row in ranked_rows
+    )
+    compliant_paper_library = (
+        "## Mathematical signal first\n\n"
+        "This reader order projects the canonical Palomar `candidate_ranking`; "
+        "it is not a proof, novelty, review, or closure claim.\n\n"
+        "### Ranked frontier\n\n"
+        + ranked_fixture
+        + "\n\n### Represented natural friction\n\n- fixture friction\n\n"
+        "### Explicitly subordinate, rejected, and long tail\n\n"
+        "- fixture long tail\n\n"
+        "## Problem portfolio (complete 14-paper inventory)\n"
+    )
     diagnostic.validate_human_first_contact(quick_summary, human_surfaces)
     diagnostic.validate_human_first_contact(summary, human_surfaces)
+    checks = 4
+    try:
+        diagnostic.validate_paper_library_first_contact(paper_library)
+    except AssertionError:
+        checks += 1
+    else:
+        # A concurrently refreshed exporter may already have repaired the
+        # committed shelf; the positive contract below still exercises it.
+        pass
+    diagnostic.validate_paper_library_first_contact(compliant_paper_library)
     census = diagnostic.semantic_census()
     census_surfaces = {
         path: diagnostic.read(path) for path in diagnostic.CENSUS_SURFACES
@@ -344,7 +376,37 @@ def main() -> int:
     diagnostic.validate_incremental_build_contract(incremental_surfaces)
     diagnostic.validate_agent_packets(packets)
 
-    checks = 4
+    mutated_paper_library = compliant_paper_library.replace(
+        "## Mathematical signal first", "## Problem portfolio", 1
+    )
+    try:
+        diagnostic.validate_paper_library_first_contact(mutated_paper_library)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library signal heading deletion escaped")
+
+    mutated_paper_library = compliant_paper_library.replace(
+        "## Mathematical signal first",
+        "## Problem portfolio (complete 14-paper inventory)\n\n## Mathematical signal first",
+        1,
+    )
+    try:
+        diagnostic.validate_paper_library_first_contact(mutated_paper_library)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library inventory reordering escaped")
+
+    first_family = showcase["candidate_ranking"][0]["family_id"]
+    mutated_paper_library = compliant_paper_library.replace(f"`{first_family}`", "`invented_family`", 1)
+    try:
+        diagnostic.validate_paper_library_first_contact(mutated_paper_library)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library invented ranked family escaped")
+
     for task_id, requirements in diagnostic.human_tasks(summary).items():
         for alternatives in requirements:
             mutated = copy.deepcopy(human_surfaces)

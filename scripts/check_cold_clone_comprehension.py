@@ -156,6 +156,12 @@ HUMAN_SURFACES = (
     "SCOPE.md",
     "docs/ORIENTATION.md",
 )
+# The paper shelf is a generated first-contact surface with its own authority
+# (Palomar's candidate ranking plus the paper corpus).  Keep it outside the
+# compact human-surface budget so this gate can check the shelf without
+# changing the existing README contract.
+PAPER_LIBRARY_SURFACE = "docs/papers/README.md"
+PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = 40_000
 # Volatile semantic counts live on the audit surfaces, not the compact README.
 CENSUS_SURFACES = ("docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
 INCREMENTAL_BUILD_SURFACES = (
@@ -935,6 +941,74 @@ def validate_human_first_contact(
         require(programme["id"] in orientation, "cold-clone comprehension invariant")
         require(contains_any(orientation, [programme["title"]]), "cold-clone comprehension invariant")
         require(contains_any(orientation, [programme["claim_ceiling"]]), "cold-clone comprehension invariant")
+
+
+def validate_paper_library_first_contact(paper_readme: str) -> None:
+    """Ensure the generated paper shelf leads with canonical mathematical signal.
+
+    The exporter owns the prose; this consumer only checks the public contract:
+    Palomar's ranked families come before the complete inventory, and the
+    generated shelf keeps represented friction and subordinate/long-tail
+    boundaries visible.  Ranking authority is loaded from the committed
+    Palomar showcase rather than duplicated here.
+    """
+    require(
+        len(paper_readme.encode("utf-8")) <= PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES,
+        "paper-library README exceeds its bounded first-contact budget",
+    )
+    showcase = json.loads(read("docs/PALOMAR_RESULT_SHOWCASE.json"))
+    ranking = showcase.get("candidate_ranking")
+    require(isinstance(ranking, list) and ranking, "Palomar candidate ranking is missing")
+    signal_heading = paper_readme.find("## Mathematical signal first")
+    ranked_heading = paper_readme.find("### Ranked frontier")
+    friction_heading = paper_readme.find("### Represented natural friction")
+    long_tail_heading = paper_readme.find(
+        "### Explicitly subordinate, rejected, and long tail"
+    )
+    inventory_heading = paper_readme.find("## Problem portfolio (complete 14-paper inventory)")
+    positions = (
+        signal_heading,
+        ranked_heading,
+        friction_heading,
+        long_tail_heading,
+        inventory_heading,
+    )
+    require(
+        all(position >= 0 for position in positions),
+        "paper-library README lost signal, friction, long-tail, or inventory headings",
+    )
+    require(
+        list(positions) == sorted(positions),
+        "paper-library README moved exhaustive inventory ahead of mathematical signal",
+    )
+    paper_flat = normalized(paper_readme)
+    require("candidate_ranking" in paper_flat,
+            "paper-library README lost Palomar ranking authority")
+    require(
+        (
+            "not a proof, novelty, or closure claim" in paper_flat
+            or "not a proof, novelty, review, or closure claim" in paper_flat
+        ),
+        "paper-library README lost Palomar evidence boundary",
+    )
+    previous = -1
+    for candidate in sorted(ranking, key=lambda row: row.get("rank", 0)):
+        rank = candidate.get("rank")
+        family_id = candidate.get("family_id")
+        require(isinstance(rank, int) and isinstance(family_id, str),
+                "Palomar candidate ranking row is malformed")
+        marker = f"#### {rank}."
+        marker_position = paper_readme.find(marker, ranked_heading)
+        require(
+            marker_position >= 0 and marker_position > previous,
+            f"paper-library README lost canonical ranked family {family_id}",
+        )
+        family_position = paper_readme.find(f"`{family_id}`", marker_position)
+        require(
+            family_position >= marker_position and family_position < friction_heading,
+            f"paper-library README detached ranked family {family_id} from frontier",
+        )
+        previous = marker_position
 
 
 def semantic_census() -> dict[str, Any]:
