@@ -86,12 +86,13 @@ They are separate rendered papers, not hidden source appendices and not
 substitutes for the shorter problem notes. Each records checked premises,
 finite evidence, failed and equivalent routes, and the obligations that remain.
 
-The series is not a replacement for the gateway. Its new declarations live in
-a different library and are **not** reviewed public claims: `docs/claims.json`
-carries no row for them, and kernel checking `ErdosProblems.lean` does not
-promote them into one. The #249/#257 notes may also restate reviewed gateway
-claims, but the exact authority of those claims stays in the registry. Every
-note states this, and the registry records it as
+The series is not a replacement for the gateway. Declarations not selected as
+reviewed public claims live in a different library; selected interfaces are
+registered in `docs/claims.json`, while the Lean files remain their source
+authority. Kernel checking `ErdosProblems.lean` does not promote an unregistered
+declaration into a reviewed claim. The #249/#257 notes may also restate reviewed
+gateway claims, but their exact authority stays in the registry. Every note
+states this, and the registry records it as
 `publication_architecture.problem_series_boundary`.
 
 The notes share `problem-note-preamble.tex`, which fixes the house macros and
