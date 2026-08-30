@@ -74,6 +74,24 @@ tempered-orbit uniqueness, an endpoint for Erdős #249 or #257, a transfer from
 Erdős #260 to either release problem, or any novelty, priority, peer-review,
 acceptance, or significance claim about this repository's Lean abstractions.
 
+## Non-support locators
+
+- The printed p. 1 classification and keywords identify the source as Erdős
+  Problem 260; neither the abstract nor the introduction identifies Erdős
+  #249 or #257 as a target. The printed p. 2 Theorem 1.1 is conditional on
+  rationality of the weighted fixed-base series and therefore is not an
+  endpoint assertion for either release problem.
+- Printed p. 3, Corollary 1.2 records the source's binary-linear consequence
+  under its own support-growth hypothesis; it does not identify the totient
+  series of #249 or all infinite-support subseries of #257. Printed pp. 5–10
+  develop and close the source's polynomial-window argument, not a transfer
+  theorem to those problems.
+- The source's final disclosure on printed p. 10 describes AI assistance and
+  a formalisation commit for this source's theorem. It contains no peer-review,
+  acceptance, priority, or independent significance determination for the
+  release corpus. Those claims are therefore outside the read-source support
+  boundary, not unresolved implications of its theorem.
+
 No outward v4 consumer is asserted here beyond this source record. Existing
 release citations that name a different Wang version remain separate
 version-specific obligations and must not silently inherit v4 metadata.
