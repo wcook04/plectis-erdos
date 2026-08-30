@@ -111,6 +111,19 @@ def main() -> int:
                 "strict accepted-only loading inspected an uncommitted receipt",
             )
 
+    for invalid_problem in (249.0, "249", "../outside"):
+        try:
+            contributions.public_result_family_route(invalid_problem)
+        except ValueError as exc:
+            require(
+                "roster problem integer" in str(exc),
+                f"invalid public frontier route diagnostic drifted: {exc}",
+            )
+        else:
+            raise AssertionError(
+                f"public frontier route accepted invalid problem selector {invalid_problem!r}"
+            )
+
     original_route = contributions.public_result_family_route
     contributions.public_result_family_route = lambda problem: {
         "repository_path": f"docs/research-commons/RETURN_PACKAGE_EXAMPLE_{problem}.md",

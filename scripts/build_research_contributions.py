@@ -20,6 +20,7 @@ from urllib.parse import quote
 import validate_research_return as return_validator
 import repository_identity as repository_identity_contract
 import validation_singleflight as singleflight
+import route_memory_receipt
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -281,6 +282,10 @@ def load_receipts(
 
 
 def public_result_family_route(problem: Any) -> dict[str, str]:
+    if type(problem) is not int or problem not in route_memory_receipt.ROSTER:
+        raise ValueError(
+            f"public result-family route requires one roster problem integer: {problem!r}"
+        )
     package_name = f"RETURN_PACKAGE_EXAMPLE_{problem}.md"
     package_path = ROOT / "docs/research-commons" / package_name
     if not package_path.is_file():
