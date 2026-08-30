@@ -115,6 +115,19 @@ theorem pureDyadicEndpointError_succ (H c : ℕ) (k : ℤ) :
     totientBlock_height_succ, pow_succ]
   ring
 
+/- **Exact cross-gap transport for the fixed-quotient error.**  Moving from
+height `H` to `H + L` multiplies the old error by `2^L`; the complete defect
+is the actual length-`L` totient block beginning at `c + H`, measured against
+the same quotient `k`.  Thus a multi-prime-lock argument must control the
+intervening consecutive totient word, not merely count its endpoint locks. -/
+theorem pureDyadicEndpointError_add (H L c : ℕ) (k : ℤ) :
+    pureDyadicEndpointError (H + L) c k =
+      2 ^ L * pureDyadicEndpointError H c k +
+        pureDyadicEndpointError L (c + H) k := by
+  rw [pureDyadicEndpointError, pureDyadicEndpointError,
+    pureDyadicEndpointError, totientBlock_add, pow_add]
+  ring
+
 /- **Prime-position excursion inequality.**  If the next actual totient
 letter is evaluated at a prime, then a fixed-quotient endpoint error must pay
 for that prime through one of two adjacent error coordinates.
@@ -457,6 +470,7 @@ theorem totient_series_ne_rat_of_den_dvd_128_300 (r : ℚ)
 #print axioms windowDiscrepancy_self_eq_totientBlock_sub
 #print axioms totientBlock_add
 #print axioms pureDyadicEndpointError_succ
+#print axioms pureDyadicEndpointError_add
 #print axioms prime_forces_pureDyadicEndpointError_excursion
 #print axioms exists_late_pureDyadicEndpointError_excursion
 #print axioms prime_successor_upper_trap_forces_bottom_lock
