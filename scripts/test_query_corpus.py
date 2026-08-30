@@ -1416,6 +1416,19 @@ def main() -> int:
         cell["content"]["route_memory"] is not None
         for cell in semantic_declarations
     )
+    semantic_routes = [
+        cell
+        for cell in query_corpus.semantic_slice_packet(
+            "what proves denominator exclusion", 4
+        )["semantic_cells"]
+        if cell["kind"] == "reading_route"
+    ]
+    assert semantic_routes
+    assert all(cell["content"]["route_memory"] for cell in semantic_routes)
+    assert {
+        cell["content"]["route_memory"]["problem_number"]
+        for cell in semantic_routes
+    } == {249}
     assert source_declaration["attached_claims"][0]["id"] == "denominator_exclusion"
     assert "res:farey" in {
         row["canonical_handle"] for row in source_declaration["paper_anchors"]

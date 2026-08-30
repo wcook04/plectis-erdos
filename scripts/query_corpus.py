@@ -4763,6 +4763,7 @@ def semantic_cell(
         content = {
             "route": route,
             "programme": programme,
+            "route_memory": packet.get("route_memory"),
         }
         expansion_command = f"python3 scripts/query_corpus.py --route {handle}"
         if programme and operator_id in ("trace", "digest"):
