@@ -19,7 +19,7 @@ import unicodedata
 from collections import Counter, deque
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LIMIT = 20
@@ -5770,6 +5770,15 @@ def claim_status_packet(status: str, limit: int) -> dict[str, Any]:
     }
 
 
+def route_memory_problem_number(route: Mapping[str, Any]) -> int | None:
+    """Derive a problem selector from an authored programme target claim."""
+    for claim_id in route.get("problem_target_claim_ids", []):
+        match = re.fullmatch(r"(?:erdos|universal)_(\d+)", str(claim_id))
+        if match:
+            return int(match.group(1))
+    return None
+
+
 def route_packet(route_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     route = next(
@@ -5831,6 +5840,22 @@ def route_packet(route_id: str) -> dict[str, Any]:
                 for related_id in route["related_route_ids"]
             ],
         }
+        problem_number = route_memory_problem_number(route)
+        if problem_number is not None:
+            packet["route_memory"] = {
+                "problem_number": problem_number,
+                "command": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{problem_number} --route {route_id}"
+                ),
+                "authority_posture": (
+                    "derived_resume_handoff_not_claim_or_proof_authority"
+                ),
+                "identity_contract": (
+                    "The route-memory command binds this route to the selected "
+                    "problem and current tracked source digests before resume."
+                ),
+            }
     return packet
 
 

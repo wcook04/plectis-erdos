@@ -143,6 +143,17 @@ def validate_programme_routes() -> None:
             for step in route["query_steps"]
             if " --open " in step
         } == expected["open_ids"]
+        route_memory = packet["route_memory"]
+        target_claim_ids = {row["id"] for row in programme["problem_targets"]}
+        expected_problem = 257 if "universal_257" in target_claim_ids else 249
+        assert route_memory["problem_number"] == expected_problem
+        assert route_memory["command"] == (
+            "python3 scripts/query_route_memory.py --problem "
+            f"{expected_problem} --route {route_id}"
+        )
+        assert route_memory["authority_posture"] == (
+            "derived_resume_handoff_not_claim_or_proof_authority"
+        )
         assert any(
             token in programme["claim_ceiling"].casefold()
             for token in (
