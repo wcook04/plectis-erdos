@@ -454,6 +454,12 @@ def validate_packet(packet: Mapping[str, Any], *, root: Path = ROOT) -> dict[str
         raise RouteMemoryError(
             "stale_source_snapshot", "research corpus digest differs from checkout"
         )
+    if snapshot.get("tracked_sources") != expected["source_snapshot"][
+        "tracked_sources"
+    ]:
+        raise RouteMemoryError(
+            "stale_source_snapshot", "tracked source set differs from checkout"
+        )
     expected_claims = {row["id"]: row for row in expected["claims"]}
     module_owners = _problem_module_owners(root)
     for claim in packet.get("claims", []):

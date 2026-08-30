@@ -23,7 +23,7 @@ complete set. [Read or run it](#read-or-run-it) gives routes that need Lean.
 → [architecture and repository guide](ARCHITECTURE.md) · [printable PDF](claim-faithful-publication-systems-paper.pdf)
 
 The [agent-navigation paper](cold-clone-to-proof-receipt.pdf) explains the
-cold-clone route. It assumes no Lean or project history. This public checkout is
+cold-clone route. It assumes no Lean or project history. This checkout is
 not an entrypoint into any private development system.
 Will Cook reviewed claims. **Lean source checked by the pinned Lean kernel**
 is formal proof authority, not for meaning or novelty.

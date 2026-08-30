@@ -90,6 +90,9 @@ def main() -> int:
         "sha256:" + "0" * 64
     )
     assert_rejected(stale_research, "stale_source_snapshot")
+    stale_sources = copy.deepcopy(packets[249])
+    stale_sources["source_snapshot"]["tracked_sources"] = ["docs/claims.json"]
+    assert_rejected(stale_sources, "stale_source_snapshot")
     # A fabricated claim/declaration reference cannot be smuggled into a
     # packet by merely updating its digest fields.
     routed = route_memory.build_packet("249", "erdos249_certificate_story")
