@@ -67,7 +67,17 @@ an eventually bounded negative part, and normalised vanishing, $E$ vanishes
 eventually, and the sequence satisfies the Sylvester recurrence eventually.
 The stated eventual strict-centring hypothesis is redundant, since normalised
 vanishing yields it after a finite shift.  Under the same normalised-vanishing
-hypothesis, finite normalised negative mass is also impossible.
+hypothesis, finite normalised negative mass is also impossible.  The
+source-current recovery interface makes this a separate, endpoint-near
+criterion: under the exact $C/D$ dynamics, positivity, the strict centred-step
+equation, division-free normalised vanishing, and summability of
+$\sum_n(-E_n)_+/C_n$, the centred state vanishes eventually and the Sylvester
+recurrence is recovered
+\lword{Erdos243/SparseResetRecovery.lean}{175}
+      {sylvesterNext_eventually_of_summable_negativeRelativeMass}
+      {the finite-negative-mass recovery theorem}.
+The summability hypothesis is not supplied for the canonical Erd\H{o}s orbit,
+so this remains conditional and does not prove reciprocal-tail irrationality.
 
 The one-sided boundary is unconditional and simpler: when the centred error is
 natural-valued, the update law makes the tail state nonincreasing, so it
@@ -106,13 +116,20 @@ unbounded along a cofinal set and divergent normalised negative mass.
 
 \externalreviewobject{The paper develops the exact centred-state recurrence,
 proves zero-state absorption, excludes constant and periodic negative
-magnitudes, and conditionally excludes the entire cofinally bounded negative
-branch.}{The last theorem retains positivity, bounded-rise, and
-normalised-vanishing hypotheses.  The mixed-sign and unbounded-negative
-regimes keep Problem~\#243 open.}{Comparator selects the eventually periodic
-negative-orbit obstruction and the conditional exclusion of a cofinally
-bounded negative state, with every hypothesis present in the challenge
-statement.}
+magnitudes, and conditionally excludes both the cofinally bounded-negative
+branch and the finite normalised-negative-mass branch.}{The two recovery
+criteria retain their respective positivity, dynamics, centring,
+normalised-vanishing, boundedness, and summability hypotheses.  The mixed-sign
+and unbounded-negative regimes keep Problem~\#243 open.}{Comparator selects the
+eventually periodic negative-orbit obstruction, the conditional exclusion of a
+cofinally bounded negative state, and the exact finite-negative-mass recovery
+interface
+\lword{Erdos243/SparseResetRecovery.lean}{175}
+      {sylvesterNext_eventually_of_summable_negativeRelativeMass}
+      {summable negative-mass recovery}.
+The latter is a conditional state-system implication, not a prime-specific
+producer or an unconditional \#243 endpoint; the missing summability of the
+canonical orbit remains explicit.}
 
 For release review, the selected Comparator rows are exact.  The declaration
 \texttt{no\_eventuallyPeriodicNegative\_orbit} excludes a positive-period,
@@ -122,8 +139,16 @@ and phase-drift equations.  The declaration
 \texttt{no\_cofinallyBoundedNegative\_of\_normalizedVanishes} excludes a
 cofinally bounded negative magnitude under positivity, bounded rise, the same
 recurrences, normalised vanishing, and the cofinal negative-state relation.
-These are conditional exclusions only; mixed-sign and unbounded-negative
-regimes remain outside their conclusions.
+The source-current \texttt{negative\_mass\_recovery} row adds the distinct
+criterion obtained from summability of $\sum_n(-E_n)_+/C_n$, with exact
+declarations
+\texttt{eventually\_zero\_of\_summable\_negativeRelativeMass} and
+\texttt{sylvesterNext\_eventually\_of\_summable\_negativeRelativeMass}.
+It assumes the displayed dynamics, positivity, strict centred step,
+normalised vanishing, and summability; it supplies no canonical-orbit
+summability or prime-specific producer.  These are conditional exclusions
+only; mixed-sign and unbounded-negative regimes remain outside their
+conclusions.
 
 \section{Introduction}\label{sec:problem}
 
