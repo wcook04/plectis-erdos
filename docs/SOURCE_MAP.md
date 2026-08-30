@@ -87,6 +87,29 @@ five expansion roots that are not represented in the reviewed module map.
 Every row remains open at the problem level, and a checked local proposition
 does not upgrade that status.
 
+## Reviewed problem return routes
+
+The two reviewed problems also have problem-owned registry routes. Use the
+registry route to return from a problem number, the reviewed route to recover
+the strongest registered claim spine, and the exact open handles to resume
+work. The paper notes are exposition; the reviewed route's claim and source
+packets retain their own authority boundaries.
+
+| Problem | Problem-owned return | Reviewed result route and paper note | Exact open frontier |
+|---|---|---|---|
+| #249 | `python3 scripts/query_corpus.py --route erdos_249` | `python3 scripts/query_corpus.py --route erdos249_certificate_story`; [problem note](papers/full-text/erdos-249-binary-totient-series.md) | `remaining_open.erdos_249_irrationality`; `remaining_open.unbounded_certificate_supply` |
+| #257 | `python3 scripts/query_corpus.py --route erdos_257` | `python3 scripts/query_corpus.py --route erdos257_half_story`; [problem note](papers/full-text/erdos-257-mersenne-support-subseries.md) | `remaining_open.half_value_membership`; `remaining_open.twenty_one_permanent_affine_supercapacity`; `remaining_open.universal_257_all_infinite_supports` |
+
+From either reviewed route, use the registered claim or paper-anchor query
+to travel back to exact Lean declarations; use the open query for the
+unresolved boundary rather than treating a checked special case as a solution:
+
+```sh
+python3 scripts/query_corpus.py --claim <claim_id>
+python3 scripts/query_corpus.py --paper-anchor <TeX_label_or_source_ref>
+python3 scripts/query_corpus.py --open <remaining_open.id>
+```
+
 ## Build entrypoint
 
 - `Erdos249257.lean`
