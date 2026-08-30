@@ -1656,6 +1656,25 @@ theorem binaryCyclotomicLayer_unboundedPrimeDivisorSupply
     (binaryCyclotomicLayer_layerSupply h hh)
     (binaryCyclotomicLayer_eventualOrderConsumer h hh)
 
+/-- **Exact obstruction to a support-only proof of Erdős #249.**  If the
+totient series were rational, its eventual integral tail-period law would
+hold on some positive period ray.  The actual binary cyclotomic layers still
+have unbounded prime divisors on that same ray.  Thus unbounded prime support
+is compatible with the precise period lock supplied by hypothetical
+rationality; an additional carry or phase-escape bridge is indispensable. -/
+theorem
+    exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational
+    (hrat : ¬ Irrational
+      (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :
+    ∃ h : ℕ, 0 < h ∧
+      UnboundedPrimeDivisorSupply binaryCyclotomicLayer h ∧
+      ∃ N₀ : ℕ, ∀ N, N₀ ≤ N →
+        totientTail (N + h) - totientTail N ∈
+          Set.range ((↑) : ℤ → ℝ) := by
+  obtain ⟨h, hh, hperiod⟩ := eventual_period_of_not_irrational hrat
+  exact ⟨h, hh,
+    binaryCyclotomicLayer_unboundedPrimeDivisorSupply h hh, hperiod⟩
+
 /-- The original global order-consumer predicate is genuinely too strong for
 composite cyclotomic rays: at `h = 2`, `q = 3`, the layer is
 `Φ₆(2) = 3`, whose characteristic prime cannot realise order six. -/
