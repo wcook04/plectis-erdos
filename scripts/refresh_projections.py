@@ -20,42 +20,39 @@ anchor.
 
 from __future__ import annotations
 
-import os
 import subprocess
 import sys
-from collections.abc import Mapping
 from pathlib import Path
+
+import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
-SANITIZED_GIT_ENVIRONMENT_KEYS = (
-    "GIT_DIR",
-    "GIT_WORK_TREE",
-    "GIT_INDEX_FILE",
-    "GIT_NAMESPACE",
-    "GIT_REPLACE_REF_BASE",
-    "GIT_OBJECT_DIRECTORY",
-    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
-    "GIT_COMMON_DIR",
+SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(
+    sorted(singleflight.GIT_CONTEXT_KEYS | singleflight.GIT_PROCESS_CONTROL_KEYS)
+)
+SANITIZED_RUNTIME_ENVIRONMENT_KEYS = tuple(
+    sorted(singleflight.PYTHON_CONTEXT_KEYS | singleflight.LOCALE_KEYS)
 )
 
 
-def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
-    """Remove inherited Git selectors before any projection subprocess."""
-    environment = dict(os.environ if base is None else base)
-    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
-        environment.pop(key, None)
-    return environment
+def clean_environment() -> dict[str, str]:
+    """Use the canonical isolated environment for every projection child."""
+    return singleflight.command_environment()
 
 
-def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
-    """Run a projection command with checkout-independent Git state."""
+def run(
+    args: list[str], cwd: Path
+) -> subprocess.CompletedProcess[str]:
+    """Run a bounded projection command with checkout-independent state."""
     return subprocess.run(
         args,
         cwd=cwd,
         capture_output=True,
         text=True,
         check=False,
+        timeout=SUBPROCESS_TIMEOUT_SECONDS,
         env=clean_environment(),
     )
 
