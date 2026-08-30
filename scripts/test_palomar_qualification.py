@@ -332,6 +332,15 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     strict_prime = landscape_by_id["strict_prime_tail_orbit_gap"]
     assert strict_prime["canonical_claim_commit"] == "ddbe2870877d0b3abcb7d7e3e9b00d00eb91f021"
     assert strict_prime["source_anchor"].endswith("349; 367; 389; 414; 445; 471")
+    for declaration in (
+        "tailOrbitFirstExp_zero_eq_scaled_angle",
+        "tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+        "exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+        "tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+        "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+        "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
+    ):
+        assert declaration in strict_prime["source_declaration"]
     small_mismatch = landscape_by_id["erdos251_small_mismatch_criterion"]
     assert "conditional-endpoint leverage" in small_mismatch["source_landscape_rank_relative_to"].lower()
     assert "prime_gap_reformulation" in small_mismatch["ranked_below"]

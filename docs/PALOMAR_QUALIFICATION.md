@@ -315,8 +315,8 @@ gap and certified-kill socket. Its separate
 `Re(tailOrbitFirstExp h (p - h - 1)) < 9/10`, which yields a positive adaptive
 margin and exact natural-fibre membership. The block-density, cofinal-prime,
 and uniform-margin supplies are unproved for the actual orbit. The family is
-canonically registered, with its current support edge, by Claims commit
-`d24fc09d` and admitted by Comparator
+canonically registered, with its current support/classification edges, by
+Claims commit `ddbe2870` and admitted by Comparator
 transport `e7a58bb3`, but admission does not close either producer. It ranks
 below `actual_lcm_orbit_separation` and
 `first_harmonic_pivot_decomposition`, whose source-specific quantitative
@@ -335,6 +335,13 @@ family. Its exact recurrence
 orbit as repeated squaring and sharpens the producer question; it is not a new
 review family, density estimate, strict-gap occurrence, or certificate
 producer.
+
+The same Claims event binds the exact scaled-angle identity, the phase-one iff
+integral-tail-difference classification, finite dyadic-root exclusion through
+the stated bounded range, and non-dyadicity-to-cofinal-nonpositive-phase
+transport. These sharpen the initial-phase socket but supply neither density
+nor prime alignment; the cofinal nonpositive-prime-shift producer remains
+unproved.
 
 Source commit `f25aa067` further proves the exact all-times power-of-two orbit
 and initial-phase form, and shows that a dyadic-root phase would eventually
