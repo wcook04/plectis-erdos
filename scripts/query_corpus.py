@@ -3616,7 +3616,7 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
         return None
     row = matches[0]
     problem = str(row["erdos_number"])
-    return {
+    route = {
         "kind": "problem",
         "id": row["problem_id"],
         "erdos_number": row["erdos_number"],
@@ -3651,6 +3651,10 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
             "generated_problem_index_route_not_claim_status_or_Lean_proof_authority"
         ),
     }
+    research = row.get("research_corpus")
+    if isinstance(research, dict):
+        route["research_corpus"] = research
+    return route
 
 
 def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
@@ -5790,7 +5794,17 @@ def route_packet(route_id: str) -> dict[str, Any]:
         None,
     )
     if route is None:
-        raise KeyError(f"unknown route id: {route_id}")
+        problem_route = problem_registry_route(route_id)
+        if problem_route is None:
+            raise KeyError(f"unknown route id: {route_id}")
+        return {
+            "kind": "problem_route",
+            "authority_posture": problem_route["authority_posture"],
+            "route": problem_route,
+            "proof_authority": "Lean source checked by the pinned Lean kernel",
+            "release_provenance": claims["release"]["public_projection"],
+            "validation": "python3 scripts/check_release.py",
+        }
     claim_index = {row["id"]: row for row in claims["claims"]}
     open_index = {
         row["id"]: row for row in claims["remaining_open_propositions"]
@@ -6651,6 +6665,21 @@ def render_card(packet: dict[str, Any]) -> str:
         return (
             f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
             f"| next={route['query_steps'][0]}"
+        )
+    if kind == "problem_route":
+        route = packet["route"]
+        research = route.get("research_corpus")
+        research_summary = ""
+        if isinstance(research, dict):
+            strongest = research.get("strongest_result_summary", {})
+            research_summary = (
+                f" | research_results={strongest.get('result_count', 0)}"
+                f" | research_frontier={research['files']['frontier']['path']}"
+            )
+        return (
+            f"problem {route['id']} | #{route['erdos_number']} | {route['status']}"
+            f" | modules={route['module_count']} | note={route['note']['artifact_id']}"
+            f"{research_summary}"
         )
     if kind == "publication_family":
         family = packet["family"]

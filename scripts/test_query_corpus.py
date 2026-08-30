@@ -173,6 +173,31 @@ def validate_programme_routes() -> None:
         assert "| resume=python3 scripts/query_route_memory.py --problem " in card.stdout
 
 
+def validate_indexed_problem_routes() -> None:
+    """Canonical problem ids in the public source map must be executable routes."""
+    problems = load("docs/problems.json")["problems"]
+    for problem in problems:
+        route_id = problem["problem_id"]
+        packet = query("--route", route_id)
+        assert packet["kind"] == "problem_route"
+        route = packet["route"]
+        assert route["id"] == route_id
+        assert route["erdos_number"] == problem["erdos_number"]
+        assert route["authority_posture"] == (
+            "generated_problem_index_route_not_claim_status_or_Lean_proof_authority"
+        )
+        if route_id == "erdos_1041":
+            research = route["research_corpus"]
+            assert research["strongest_result_summary"]["result_count"] == 35
+            assert research["files"]["frontier"]["path"] == (
+                "research_corpus/Erdos1041/FRONTIER.md"
+            )
+            assert "not reviewed claim-registry" in research["authority_posture"]
+        card = run("--route", route_id, "--format", "card")
+        assert card.returncode == 0
+        assert card.stdout.startswith(f"problem {route_id} |")
+
+
 def validate_agent_tour() -> None:
     packet = agent_tour_packet()
     assert packet["kind"] == "agent_corpus_tour"
@@ -640,6 +665,7 @@ def validate_claim_status_packets() -> None:
 
 def main() -> int:
     validate_programme_routes()
+    validate_indexed_problem_routes()
     validate_agent_tour()
     validate_paper_guide()
     validate_natural_language_search()
