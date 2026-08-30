@@ -1974,6 +1974,21 @@ def main() -> int:
         "public-artifact boundary contract failed: "
         f"{public_boundary_check.stdout.strip() or public_boundary_check.stderr.strip()}",
     )
+    primary_source_disposition_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        primary_source_disposition_check.returncode == 0,
+        "third-party source redistribution disposition contract failed: "
+        f"{primary_source_disposition_check.stdout.strip() or primary_source_disposition_check.stderr.strip()}",
+    )
     # The adversarial program starts by running the complete baseline against
     # one collected packet set, then mutates that same set.  Running the
     # standalone diagnostic here as well would repeat every bounded query.
