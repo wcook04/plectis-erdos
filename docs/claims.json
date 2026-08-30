@@ -11876,6 +11876,18 @@
         "boundary": "The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open."
       },
       {
+        "id": "totient_carry_anti_compression",
+        "problem": 249,
+        "review_family": "totient_carry_anti_compression",
+        "claim_id": "totient_carry_kernel_anti_compression",
+        "contribution_class": "locally proved necessary consequence; novelty unassessed",
+        "original_declaration": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+        "original_source": "Erdos249257/TotientTailCarryPeriod.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+        "statement": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry has dyadic sections uniformly eventually periodic modulo its multiplier and canonical carry-section span dimension at least 2^e − 1 for every e.",
+        "boundary": "This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open."
+      },
+      {
         "id": "prime_gap_unboundedness",
         "problem": 251,
         "review_family": "coefficient_only_no_go",
@@ -12285,10 +12297,10 @@
           "comparator_disposition": "targeted",
           "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
         },
-        {
-          "id": "actual_lcm_orbit_separation",
-          "contribution_class": "conditional reduction",
-          "summary": "A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer. The landed actual-LCM sign/top-edge analysis is supporting and contrary-boundary evidence: positivity leaves the true survivor negative, and integrality forces the exact top-edge residue.",
+          {
+            "id": "actual_lcm_orbit_separation",
+            "contribution_class": "conditional reduction",
+            "summary": "A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer. The landed actual-LCM sign/top-edge analysis is supporting and contrary-boundary evidence: positivity leaves the true survivor negative, and integrality forces the exact top-edge residue.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "declarations": [
@@ -12299,12 +12311,12 @@
             "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue",
             "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos"
           ],
-          "boundary": "The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and #249 endpoint remain open."
-        },
-        {
-          "id": "first_harmonic_pivot_decomposition",
-          "contribution_class": "conditional reduction",
-          "summary": "The supplier fibre is an exact prime-image/fibre bijection, while a checked finite counterexample shows that supplier-prime global isolation fails. The load-bearing result is an exact four-term first-harmonic decomposition; under the explicit PivotBudgetAt budgets, the centred real-part bound and three contribution bounds give the 9X/10 gap and a finite certificate, and the conditional pivot-residual-decorrelation theorem transfers a cofinal supply to irrationality.",
+            "boundary": "The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and #249 endpoint remain open."
+          },
+          {
+            "id": "first_harmonic_pivot_decomposition",
+            "contribution_class": "conditional reduction",
+            "summary": "The supplier fibre is an exact prime-image/fibre bijection, while a checked finite counterexample shows that supplier-prime global isolation fails. The load-bearing result is an exact four-term first-harmonic decomposition; under the explicit PivotBudgetAt budgets, the centred real-part bound and three contribution bounds give the 9X/10 gap and a finite certificate, and the conditional pivot-residual-decorrelation theorem transfers a cofinal supply to irrationality.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "declarations": [
@@ -12318,10 +12330,25 @@
             "Erdos249257.TotientTailPeriodKiller.DTWPivotResidualDecorrelation",
             "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation"
           ],
-          "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
-        },
-        {
-          "id": "totient_finite_denominator_exclusion",
+            "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
+          },
+          {
+            "id": "totient_carry_anti_compression",
+            "contribution_class": "locally proved necessary consequence; novelty unassessed",
+            "summary": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have dyadic sections uniformly eventually periodic modulo its multiplier while its canonical carry-section span has dimension at least 2^e − 1 for every e. This is the orbit-level quotient-periodicity/anti-compression conjunction, distinct from the coefficient-side kernel-rank family.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+              "Erdos249257.finrank_canonicalCarryKernel_ge",
+              "Erdos249257.carrySectionsEventuallyPeriodicMod_of_shift_dvd",
+              "Erdos249257.totient_forcing_vanishes_mod_of_dvd_multiplier",
+              "Erdos249257.totient_carry_modEq_geometric_of_dvd_multiplier"
+            ],
+            "boundary": "This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open."
+          },
+          {
+            "id": "totient_finite_denominator_exclusion",
             "contribution_class": "finite computation",
             "summary": "A Farey denominator exclusion through 7.96e34, sharp for its selected window, and diagonal certificates through t=82.",
             "evidence_mode": "Lean kernel and generated finite certificates",
@@ -14692,15 +14719,40 @@
     },
     {
       "id": "totient_carry_kernel_anti_compression",
-      "label": "Unconditional carry-kernel anti-compression",
+      "label": "Totient carry anti-compression",
       "status": "formalised here",
-      "statement": "If the totient coefficient series were rational, one positive-multiplier tempered integral carry would have canonical carry-section span dimension at least 2^e − 1 for every e. The all-level kernel-independence producer is supplied by the CRT–Dirichlet minor theorem. No finite-rank bound for every rationality-supplied carry is proved, so this is an infinite anti-compression barrier rather than an irrationality criterion for S.",
+      "statement": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have uniformly eventually-periodic dyadic sections modulo its multiplier while retaining canonical carry-section span dimension at least 2^e − 1 for every e. No finite-rank bound for every rationality-supplied carry is proved, so this quotient-periodicity/anti-compression conjunction is a necessary consequence rather than an irrationality criterion for S.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
       ],
       "paper_label": "res:carryrank",
       "readme_headline": false,
       "declarations": [
+        {
+          "name": "not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 224
+        },
+        {
+          "name": "finrank_canonicalCarryKernel_ge",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 263
+        },
+        {
+          "name": "carrySectionsEventuallyPeriodicMod_of_shift_dvd",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 180
+        },
+        {
+          "name": "totient_forcing_vanishes_mod_of_dvd_multiplier",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 126
+        },
+        {
+          "name": "totient_carry_modEq_geometric_of_dvd_multiplier",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 140
+        },
         {
           "name": "finrank_canonicalCarryKernel_ge_of_linearIndependent",
           "module": "Erdos249257/TotientCarryKernelRigidity.lean",
