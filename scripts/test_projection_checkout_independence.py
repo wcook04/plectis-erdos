@@ -36,11 +36,13 @@ import os
 import shutil
 import subprocess
 import sys
+import tarfile
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
 import validation_singleflight as singleflight
+import refresh_source_coordinates
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -115,17 +117,61 @@ def check_run_contract() -> None:
         raise SystemExit("projection run helper must use the canonical clean environment")
 
 
-def materialise(destination: Path, shape: str) -> None:
-    """Copy the public tree without version-control or build metadata."""
-    ignored = shutil.ignore_patterns(
-        ".git",
-        ".lake",
-        ".build",
-        "__pycache__",
-        "*.olean",
-        "*.ilean",
+def check_source_coordinate_title_contract() -> None:
+    """TeX and Unicode title spellings must resolve the same paper anchor."""
+    anchors = (
+        (
+            "paper/erdos-68-factorial-denominator-irrationality.tex",
+            "problem",
+            "Erdős #68",
+        ),
+        (
+            "paper/erdos-243-reciprocal-tail-rigidity.tex",
+            "problem",
+            "Erdős #243",
+        ),
+        (
+            "paper/erdos-1041-lemniscate-newton-flow.tex",
+            "problem",
+            "Erdős #1041",
+        ),
+        ("paper/erdos249-257-main-paper.tex", "problem", r"Erd\H{o}s \#249"),
+        ("paper/erdos-251-prime-gap-dyadic-series.tex", "section", "Introduction"),
+        ("paper/erdos-269-three-prime-running-lcm.tex", "section", "Introduction"),
+        ("paper/erdos-1049-rational-base-lambert.tex", "section", "Introduction"),
     )
-    shutil.copytree(ROOT, destination, ignore=ignored)
+    for source, environment, title in anchors:
+        line = refresh_source_coordinates.paper_anchor_line(
+            {"source": source, "environment": environment, "title": title}
+        )
+        if line < 1:
+            raise SystemExit(f"paper anchor resolved to an invalid line: {source}")
+
+
+def materialise(destination: Path, shape: str) -> None:
+    """Materialise tracked ``HEAD`` without version-control or build metadata."""
+    destination.mkdir()
+    with tempfile.NamedTemporaryFile(
+        dir=destination.parent, prefix=".projection-head-", suffix=".tar"
+    ) as archive_file:
+        archived = subprocess.run(
+            ["git", "archive", "--format=tar", "HEAD"],
+            cwd=ROOT,
+            env=singleflight.command_environment(),
+            stdout=archive_file,
+            stderr=subprocess.PIPE,
+            check=False,
+            timeout=singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        )
+        if archived.returncode != 0:
+            raise SystemExit(
+                "could not materialise tracked HEAD: "
+                + archived.stderr.decode("utf-8", errors="replace").strip()
+            )
+        archive_file.flush()
+        archive_file.seek(0)
+        with tarfile.open(fileobj=archive_file, mode="r:") as archive:
+            archive.extractall(destination, filter="data")
     marker = destination / ".checkout-shape"
     marker.mkdir()
     (marker / shape).write_text(
@@ -155,6 +201,7 @@ def regenerate(checkout: Path) -> dict[str, bytes]:
 
 def main() -> int:
     check_run_contract()
+    check_source_coordinate_title_contract()
     workspace = Path(tempfile.mkdtemp(prefix="projection-shape-"))
     try:
         as_main = workspace / "as-main"

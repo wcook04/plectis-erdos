@@ -13,6 +13,7 @@ import argparse
 import json
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -27,15 +28,52 @@ LINK_RE = re.compile(
     r"(?:\{((?:[^{}]|\{[^{}]*\})*)\})?"
 )
 
+_TEX_TITLE_ESCAPES = (
+    (r"\H{o}", "ő"),
+    (r"\H{O}", "Ő"),
+    (r'\"{o}', "ö"),
+    (r'\"{O}', "Ö"),
+    (r"\'{e}", "é"),
+    (r"\'{E}", "É"),
+    (r"\`{e}", "è"),
+    (r"\`{E}", "È"),
+    (r"\~{n}", "ñ"),
+    (r"\~{N}", "Ñ"),
+    (r"\c{c}", "ç"),
+    (r"\c{C}", "Ç"),
+    (r"\#", "#"),
+    (r"\&", "&"),
+    (r"\%", "%"),
+)
+
+
+def canonical_title(title: str) -> str:
+    """Compare authored Unicode titles with their TeX-rendered spellings."""
+    canonical = title
+    for tex, rendered in _TEX_TITLE_ESCAPES:
+        canonical = canonical.replace(tex, rendered)
+    return unicodedata.normalize("NFC", canonical)
+
 
 def paper_anchor_line(anchor: dict[str, object]) -> int:
     path = ROOT / str(anchor["source"])
     text = path.read_text(encoding="utf-8")
-    pattern = re.compile(
-        rf"\\begin\{{{re.escape(str(anchor['environment']))}\}}"
-        rf"\[{re.escape(str(anchor['title']))}\]"
-    )
-    matches = list(pattern.finditer(text))
+    environment = str(anchor["environment"])
+    if environment in {"section", "subsection", "subsubsection"}:
+        pattern = re.compile(
+            rf"\\{environment}\{{([^{{}}]+)\}}"
+        )
+    else:
+        pattern = re.compile(
+            rf"\\begin\{{{re.escape(environment)}\}}"
+            r"\[([^]]+)\]"
+        )
+    expected_title = canonical_title(str(anchor["title"]))
+    matches = [
+        match
+        for match in pattern.finditer(text)
+        if canonical_title(match.group(1)) == expected_title
+    ]
     if len(matches) != 1:
         raise RuntimeError(
             f"paper anchor must resolve exactly once: {anchor} (matches={len(matches)})"
