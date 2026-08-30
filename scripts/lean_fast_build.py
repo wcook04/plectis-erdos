@@ -28,9 +28,16 @@ import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
+TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
+LAKE = TOOLCHAIN_BIN / "lake"
 IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)\s*(?:--.*)?$")
 GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 LAKE_COMMAND_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+
+
+def lake_command(*arguments: str) -> list[str]:
+    """Build a Lake argv with the canonical installed toolchain executable."""
+    return [str(LAKE), *arguments]
 
 
 def _run(
@@ -336,7 +343,7 @@ def lake_targets_up_to_date(
     targets = list(names)
     if not targets:
         return True
-    command = ["lake"]
+    command = lake_command()
     if rehash:
         command.append("--rehash")
     command.extend(["--no-build", "build", *(f"+{name}" for name in targets)])
@@ -369,7 +376,7 @@ def lake_stale_targets(
     targets = list(names)
     if not targets:
         return []
-    command = ["lake"]
+    command = lake_command()
     if rehash:
         command.append("--rehash")
     command.extend(["--no-build", "-v", "build", *(f"+{name}" for name in targets)])
@@ -423,14 +430,13 @@ def propagate_stale_targets(
 def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
     started = time.monotonic()
     result = _run(
-        [
-            "lake",
+        lake_command(
             "--quiet",
             "--no-ansi",
             "--log-level=error",
             "build",
             f"+{name}",
-        ],
+        ),
         cwd=root,
         timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         check=False,
@@ -446,14 +452,13 @@ def build_batch(names: Iterable[str], root: Path = ROOT) -> tuple[int, float]:
         return 0, 0.0
     started = time.monotonic()
     result = _run(
-        [
-            "lake",
+        lake_command(
             "--quiet",
             "--no-ansi",
             "--log-level=error",
             "build",
             *(f"+{name}" for name in modules),
-        ],
+        ),
         cwd=root,
         timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         check=False,
@@ -522,14 +527,13 @@ def run_final_authority_check(
         raise ValueError("final authority check requires at least one target")
     for name in target_list:
         result = _run(
-            [
-                "lake",
+            lake_command(
                 "--quiet",
                 "--no-ansi",
                 "--log-level=error",
                 "build",
                 f"+{name}",
-            ],
+            ),
             cwd=root,
             timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
             check=False,

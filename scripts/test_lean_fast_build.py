@@ -19,6 +19,9 @@ import lean_fast_build as fast
 import validation_singleflight as singleflight
 
 
+LAKE = str(fast.TOOLCHAIN_BIN / "lake")
+
+
 class LeanFastBuildTests(unittest.TestCase):
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
@@ -454,7 +457,7 @@ import Pkg.TooLate
 
         self.assertEqual(
             run.call_args.args[0],
-            ["lake", "--rehash", "--no-build", "-v", "build", "+Pkg.Root"],
+            [LAKE, "--rehash", "--no-build", "-v", "build", "+Pkg.Root"],
         )
 
     def test_stale_frontier_propagates_to_every_import_dependent(self) -> None:
@@ -565,6 +568,23 @@ import Pkg.TooLate
             run.call_args.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
         )
 
+    def test_lake_command_uses_canonical_path_under_hostile_path(self) -> None:
+        completed = fast.subprocess.CompletedProcess([], 0, "", "")
+        with mock.patch.dict(
+            os.environ, {"PATH": "/private/wrong-bin"}, clear=False
+        ), mock.patch.object(
+            fast.subprocess, "run", return_value=completed
+        ) as run:
+            self.assertTrue(fast.lake_targets_up_to_date(["Pkg.Leaf"]))
+
+        command = run.call_args.args[0]
+        self.assertEqual(command[0], LAKE)
+        self.assertNotEqual(command[0], "lake")
+        self.assertEqual(run.call_args.kwargs["env"], singleflight.command_environment())
+        self.assertEqual(
+            run.call_args.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
+        )
+
     def test_changed_targets_reports_git_failure(self) -> None:
         failed = fast.subprocess.CompletedProcess([], 128, "", "bad revision")
         with mock.patch.object(fast.subprocess, "run", return_value=failed):
@@ -645,7 +665,7 @@ import Pkg.TooLate
 
         self.assertEqual(
             run.call_args.args[0],
-            ["lake", "--rehash", "--no-build", "build", "+Pkg.Leaf"],
+            [LAKE, "--rehash", "--no-build", "build", "+Pkg.Leaf"],
         )
         self.assertIs(run.call_args.kwargs["stdout"], fast.subprocess.DEVNULL)
         self.assertIs(run.call_args.kwargs["stderr"], fast.subprocess.DEVNULL)
@@ -671,7 +691,7 @@ import Pkg.TooLate
             self.assertEqual(
                 run.call_args.args[0],
                 [
-                    "lake",
+                    LAKE,
                     "--quiet",
                     "--no-ansi",
                     "--log-level=error",
@@ -704,11 +724,11 @@ import Pkg.TooLate
                 [call.args[0] for call in run.call_args_list],
                 [
                     [
-                        "lake", "--quiet", "--no-ansi", "--log-level=error",
+                        LAKE, "--quiet", "--no-ansi", "--log-level=error",
                         "build", "+Erdos249257",
                     ],
                     [
-                        "lake", "--quiet", "--no-ansi", "--log-level=error",
+                        LAKE, "--quiet", "--no-ansi", "--log-level=error",
                         "build", "+ErdosProblems",
                     ],
                 ],
@@ -740,7 +760,7 @@ import Pkg.TooLate
             self.assertEqual(
                 run.call_args.args[0],
                 [
-                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    LAKE, "--quiet", "--no-ansi", "--log-level=error",
                     "build", "+Pkg.Leaf",
                 ],
             )
@@ -755,11 +775,11 @@ import Pkg.TooLate
             [call.args[0] for call in run.call_args_list],
             [
                 [
-                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    LAKE, "--quiet", "--no-ansi", "--log-level=error",
                     "build", "+Pkg.A",
                 ],
                 [
-                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    LAKE, "--quiet", "--no-ansi", "--log-level=error",
                     "build", "+Pkg.B",
                 ],
             ],
