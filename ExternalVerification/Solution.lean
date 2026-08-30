@@ -30,6 +30,7 @@ import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.WeightedPhaseCarry
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 import ErdosProblems.Erdos1049.RationalBaseLambert
@@ -63,6 +64,29 @@ private theorem periodLcm_eq_source (t : ℕ) :
   | succ t ih =>
       simp [periodLcm,
         Erdos249257.TotientTailPeriodKiller.periodLcm, ih]
+
+private theorem conditionalWindowBase_eq_source
+    (b : ℕ → ℤ) (lo len : ℕ) :
+    windowBase b lo len = ErdosProblems.Erdos269.windowBase b lo len := by
+  induction len with
+  | zero => rfl
+  | succ len ih =>
+      simp [windowBase, ErdosProblems.Erdos269.windowBase, ih]
+
+private theorem conditionalWindowForcing_eq_source
+    (b e : ℕ → ℤ) (lo len : ℕ) :
+    windowForcing b e lo len =
+      ErdosProblems.Erdos269.windowForcing b e lo len := by
+  induction len with
+  | zero => rfl
+  | succ len ih =>
+      simp [windowForcing, ErdosProblems.Erdos269.windowForcing, ih]
+
+private theorem conditionalLeastPositiveResidue_eq_source
+    (C : ℕ) (x : ℤ) :
+    leastPositiveResidue C x =
+      ErdosProblems.Erdos269.leastPositiveResidue C x := by
+  rfl
 
 private theorem totientTail_eq_source (N : ℕ) :
     totientTail N = Erdos249257.TotientTailPeriodKiller.totientTail N := by
@@ -530,6 +554,17 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos269.residueDigit] using
       ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary
         B hB base carry digit hrec
+  · intro b m shortBound hescape B hBpos hBcoprime d hrec hpos hbound
+    have hescape' :
+        ErdosProblems.Erdos269.CofinalLocalWindowEscape b m shortBound := by
+      simpa only [CofinalLocalWindowEscape,
+        ErdosProblems.Erdos269.CofinalLocalWindowEscape,
+        conditionalWindowBase_eq_source,
+        conditionalWindowForcing_eq_source,
+        conditionalLeastPositiveResidue_eq_source] using hescape
+    simpa using
+      ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape
+        b m shortBound hescape' B hBpos hBcoprime d hrec hpos hbound
   · exact GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one
   · exact GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series
   · intro e

@@ -911,6 +911,31 @@ def shiftLinearWeight : List (ℕ × ℤ) → ℤ
   | [] => 0
   | (_, q) :: terms => |q| + shiftLinearWeight terms
 
+/-! ## Conditional local-window carry escape -/
+
+def leastPositiveResidue (C : ℕ) (x : ℤ) : ℕ :=
+  if x % (C : ℤ) = 0 then C else Int.natAbs (x % (C : ℤ))
+
+def windowBase (b : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ
+  | 0 => 1
+  | len + 1 => b (lo + len) * windowBase b lo len
+
+def windowForcing (b e : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | len + 1 => b (lo + len) * windowForcing b e lo len + e (lo + len)
+
+def CofinalLocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ) : Prop :=
+  ∀ B : ℕ, 0 < B → Nat.Coprime B 30 →
+    ∀ lo₀ : ℕ, ∃ lo len : ℕ,
+      lo₀ ≤ lo ∧ 0 < len ∧
+      0 < Int.natAbs (windowBase (fun n => b n) lo len) ∧
+      shortBound B (lo + len) <
+        leastPositiveResidue
+          (Int.natAbs (windowBase (fun n => b n) lo len))
+          (-((B : ℤ) *
+            windowForcing (fun n => b n) (fun n => m n) lo len))
+
 /-- One trusted challenge witness carries the twenty-five exact interfaces selected
 for the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
@@ -1044,6 +1069,15 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
           weightedResidueDigit B (base n)
               (residue n) (residue (n + 1)) +
             base n * quotient n - quotient (n + 1)
+  problem269ConditionalCarryEscape :
+    ∀ (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ),
+      CofinalLocalWindowEscape b m shortBound →
+      (B : ℕ) → 0 < B → Nat.Coprime B 30 →
+      (d : ℕ → ℤ) →
+      (∀ n, d (n + 1) = (b n : ℤ) * d n - (B : ℤ) * (m n : ℤ)) →
+      (∀ n, 0 < d n) →
+      (∀ n, Int.natAbs (d n) ≤ shortBound B n) →
+      False
   problem249VisibleCoprimeMass :
     (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1

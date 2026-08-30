@@ -495,6 +495,19 @@ theorem carry_eq_residueDigit_add_coboundary
         base n * quotient n - quotient (n + 1) :=
   (portfolioClaims Unit).problem269WeightedCarry B hB base carry digit hrec
 
+theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ)
+    (hescape : CofinalLocalWindowEscape b m shortBound)
+    (B : ℕ) (hBpos : 0 < B) (hBcoprime : Nat.Coprime B 30)
+    (d : ℕ → ℤ)
+    (hrec : ∀ n,
+      d (n + 1) = (b n : ℤ) * d n - (B : ℤ) * (m n : ℤ))
+    (hpos : ∀ n, 0 < d n)
+    (hbound : ∀ n, Int.natAbs (d n) ≤ shortBound B n) :
+    False :=
+  (portfolioClaims Unit).problem269ConditionalCarryEscape
+    b m shortBound hescape B hBpos hBcoprime d hrec hpos hbound
+
 theorem exists_small_translation_separating_arguments
     {ι : Type*} [Fintype ι] (c : ι → ℂ)
     (hc : Function.Injective c) {ε : ℝ} (hε : 0 < ε) :
