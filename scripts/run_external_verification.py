@@ -13,6 +13,8 @@ import os
 import subprocess
 from pathlib import Path
 
+import validation_singleflight as singleflight
+
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_MISMATCH = (
     "Challenge and solution theorem statement do not match: "
@@ -22,6 +24,8 @@ EXPECTED_1049_MISMATCH = (
     "Challenge and solution theorem statement do not match: "
     "'Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight'"
 )
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 
 
 def digest(path: Path | None) -> str | None:
@@ -31,7 +35,22 @@ def digest(path: Path | None) -> str | None:
 
 
 def git(*args: str) -> str:
-    return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
+    return run(["git", *args], cwd=ROOT, check=True).stdout.strip()
+
+
+def run(
+    args: list[str], *, cwd: Path, check: bool = False
+) -> subprocess.CompletedProcess[str]:
+    """Run receipt-producing children with bounded, canonical state."""
+    return subprocess.run(
+        args,
+        cwd=cwd,
+        capture_output=True,
+        text=True,
+        check=check,
+        env=singleflight.command_environment(),
+        timeout=SUBPROCESS_TIMEOUT_SECONDS,
+    )
 
 
 def is_expected_negative_rejection(
@@ -65,8 +84,9 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    projection_check = subprocess.run(
-        ["python3", "scripts/build_external_verification.py", "--check"], cwd=ROOT
+    projection_check = run(
+        ["python3", "scripts/build_external_verification.py", "--check"],
+        cwd=ROOT,
     ).returncode
     claims = json.loads((ROOT / "docs/claims.json").read_text(encoding="utf-8"))
     owner = claims["external_verification_packet"]

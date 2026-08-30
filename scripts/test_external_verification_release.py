@@ -7,13 +7,17 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import inspect
 import json
+import os
 import subprocess
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import external_verification_release as release
 import replay_external_verification as replay
+import run_external_verification as receipt
 
 
 def git(root: Path, *args: str) -> str:
@@ -51,6 +55,62 @@ def expect_error(action, fragment: str) -> None:
         )
     else:
         raise AssertionError(f"expected ReleaseIdentityError containing {fragment!r}")
+
+
+def test_receipt_subprocess_environment() -> None:
+    """Receipt production must not inherit ambient Git or runtime controls."""
+    source = inspect.getsource(receipt.main)
+    require(
+        "projection_check = run(" in source,
+        "receipt projection check bypassed the bounded subprocess wrapper",
+    )
+    hostile_environment = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "refs/namespaces/wrong-release",
+        "GIT_REPLACE_REF_BASE": "refs/replace/",
+        "PYTHONHOME": "/private/wrong-python-home",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "PYTHONOPTIMIZE": "2",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "LANGUAGE": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = subprocess.CompletedProcess(
+        ["fixture"], returncode=0, stdout="fixture\n", stderr=""
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(receipt.subprocess, "run", return_value=completed) as runner:
+            require(receipt.git("rev-parse", "HEAD") == "fixture", "receipt Git read failed")
+            receipt.run(["fixture"], cwd=receipt.ROOT)
+
+    require(len(runner.call_args_list) == 2, "receipt subprocess calls were not exercised")
+    for call in runner.call_args_list:
+        kwargs = call.kwargs
+        environment = kwargs["env"]
+        for key in (
+            "GIT_DIR",
+            "GIT_NAMESPACE",
+            "GIT_REPLACE_REF_BASE",
+            "PYTHONHOME",
+            "PYTHONPATH",
+            "PYTHONOPTIMIZE",
+        ):
+            require(key not in environment, f"ambient {key} leaked into receipt child")
+        require(environment["PATH"] == os.defpath, "receipt child PATH was not pinned")
+        require(environment["LC_ALL"] == "C.UTF-8", "receipt child LC_ALL was not pinned")
+        require(environment["LANG"] == "C.UTF-8", "receipt child LANG was not pinned")
+        require(environment["LANGUAGE"] == "C.UTF-8", "receipt child LANGUAGE was not pinned")
+        require(environment["GIT_ASKPASS"] == "/bin/false", "receipt Git prompting was not disabled")
+        require(
+            kwargs["timeout"] == receipt.SUBPROCESS_TIMEOUT_SECONDS,
+            "receipt child timeout drifted",
+        )
+    require(
+        receipt.ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "receipt environment contract drifted",
+    )
 
 
 def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]:
@@ -268,6 +328,7 @@ def test_release_manifest() -> None:
 
 
 def main() -> int:
+    test_receipt_subprocess_environment()
     test_replay_plan()
     test_release_manifest()
     print(
