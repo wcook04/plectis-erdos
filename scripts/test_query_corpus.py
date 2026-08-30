@@ -489,6 +489,8 @@ def validate_agent_tour() -> None:
 def validate_paper_guide() -> None:
     packet = query("--papers", "--format", "json")
     corpus = load("docs/papers/corpus.json")
+    showcase = load("docs/PALOMAR_RESULT_SHOWCASE.json")
+    problems = load("docs/problems.json")["problems"]
     assert packet["kind"] == "paper_reading_guide"
     assert packet["paper_count"] == corpus["paper_count"]
     assert [row["paper_id"] for row in packet["papers"]] == [
@@ -519,13 +521,64 @@ def validate_paper_guide() -> None:
             paper_id
         ]["local_full_text"]
 
+    signal = packet["mathematical_signal_spine"]
+    ranked = signal["ranked_frontier"]
+    expected = sorted(showcase["candidate_ranking"], key=lambda row: row["rank"])
+    assert [row["rank"] for row in ranked] == list(range(1, len(expected) + 1))
+    assert [row["family_id"] for row in ranked] == [
+        row["family_id"] for row in expected
+    ]
+    paper_by_problem = {
+        int(row["erdos_number"]): row["paper"]["paper_id"] for row in problems
+    }
+    assert all(
+        row["paper_id"] == paper_by_problem[int(row["problem"])] for row in ranked
+    )
+    assert all(row["exact_boundary"] for row in ranked)
+    assert ranked[0]["paper_id"] == "erdos-257-mersenne-support-subseries"
+    assert packet["mathematical_default_gateway"] == {
+        key: ranked[0][key]
+        for key in (
+            "rank",
+            "problem",
+            "family_id",
+            "reader_tier",
+            "paper_id",
+            "paper_title",
+            "preferred_read_path",
+            "exact_boundary",
+        )
+    }
+    assert packet["recommended_routes"]["understand_the_mathematics"][0][
+        "path"
+    ] == ranked[0]["preferred_read_path"]
+    assert packet["default_gateway"]["id"] == "human_exposition"
+    assert all(
+        row["paper_id"] == paper_by_problem[int(row["problem"])]
+        for row in signal["natural_friction"]["results"]
+    )
+
     card = run("--papers", "--format", "card")
     assert card.returncode == 0
     assert card.stdout.startswith(
         f"paper reading guide | papers={corpus['paper_count']} "
     )
     assert "papers are exposition" in card.stdout
-    assert len(card.stdout.strip().splitlines()) == corpus["paper_count"] + 2
+    assert card.stdout.index("paper_signal #1") < card.stdout.index(
+        "paper_signal #5"
+    ) < card.stdout.index("paper_signal #9")
+    assert card.stdout.index("paper_signal #9") < card.stdout.index(
+        "paper_friction"
+    ) < card.stdout.index("paper_inventory | exhaustive_not_ranked")
+    assert card.stdout.index("paper_signal #1") < card.stdout.index(
+        "paper_inventory | erdos249-257-main | retired"
+    )
+    assert len(card.stdout.strip().splitlines()) == (
+        corpus["paper_count"]
+        + len(ranked)
+        + len(signal["natural_friction"]["results"])
+        + 5
+    )
 
     natural = query("--ask", "which papers should I read?")
     assert natural["kind"] == "paper_reading_guide"

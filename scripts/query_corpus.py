@@ -8212,6 +8212,8 @@ def paper_reading_guide_packet() -> dict[str, Any]:
     """Return the complete bounded reading guide for shipped manuscripts."""
     corpus = load("docs/papers/corpus.json")
     contract = load("docs/publication_contract.json")
+    claims = load("docs/claims.json")
+    problems = load("docs/problems.json")["problems"]
     artifacts = []
     for row in contract["artifacts"]:
         source = ROOT / row["source_path"]
@@ -8257,6 +8259,53 @@ def paper_reading_guide_packet() -> dict[str, Any]:
             }
         )
     default_gateway = artifact_index["human_exposition"]
+    paper_index = {row["paper_id"]: row for row in papers}
+    paper_by_problem = {
+        int(row["erdos_number"]): row["paper"]["paper_id"] for row in problems
+    }
+    signal = mathematical_signal_spine(claims)
+
+    def bind_paper(result: Mapping[str, Any]) -> dict[str, Any]:
+        problem = int(result["problem"])
+        paper_id = paper_by_problem.get(problem)
+        if paper_id is None or paper_id not in paper_index:
+            raise ValueError(
+                f"Mathematical signal row lacks an active problem paper: #{problem}"
+            )
+        paper = paper_index[paper_id]
+        return {
+            **result,
+            "paper_id": paper_id,
+            "paper_title": paper["title"],
+            "preferred_read_path": paper["preferred_read_path"],
+        }
+
+    signal["ranked_frontier"] = [
+        bind_paper(row) for row in signal["ranked_frontier"]
+    ]
+    signal["natural_friction"] = {
+        **signal["natural_friction"],
+        "results": [
+            bind_paper(row) for row in signal["natural_friction"]["results"]
+        ],
+    }
+    signal["paper_route_contract"] = (
+        "Ranked mathematical families and natural friction lead; the complete "
+        "manuscript shelf follows without becoming a significance order."
+    )
+    mathematical_default_gateway = {
+        key: signal["ranked_frontier"][0][key]
+        for key in (
+            "rank",
+            "problem",
+            "family_id",
+            "reader_tier",
+            "paper_id",
+            "paper_title",
+            "preferred_read_path",
+            "exact_boundary",
+        )
+    }
     return {
         "kind": "paper_reading_guide",
         "schema_version": "erdos249257-paper-reading-guide/1",
@@ -8264,13 +8313,25 @@ def paper_reading_guide_packet() -> dict[str, Any]:
             "generated_paper_navigation_not_Lean_proof_or_claim_status_authority"
         ),
         "paper_count": len(papers),
+        "mathematical_signal_spine": signal,
         "papers": papers,
         "default_gateway": default_gateway,
+        "mathematical_default_gateway": mathematical_default_gateway,
         "recommended_routes": {
             "understand_the_mathematics": [
                 {
+                    "path": mathematical_default_gateway["preferred_read_path"],
+                    "reason": (
+                        "Start with the active paper carrying the highest-ranked "
+                        "source-current mathematical family."
+                    ),
+                },
+                {
                     "artifact_id": "human_exposition",
-                    "reason": "Start with the retained mathematical gateway.",
+                    "reason": (
+                        "Use the retained combined manuscript for provenance and "
+                        "cross-problem synthesis, not as the signal-first paper."
+                    ),
                 },
                 {
                     "path": "docs/RESULTS.md",
@@ -9270,6 +9331,7 @@ def render_card(packet: dict[str, Any]) -> str:
             )
         return "\n".join(rows)
     if kind == "paper_reading_guide":
+        signal = packet["mathematical_signal_spine"]
         rows = [
             f"paper reading guide | papers={packet['paper_count']} "
             f"| index={packet['clone_local_paper_index']}",
@@ -9277,9 +9339,35 @@ def render_card(packet: dict[str, Any]) -> str:
                 "authority | papers are exposition; Lean source proves, "
                 "docs/claims.json declares public status"
             ),
+            (
+                "signal rule | Palomar mathematical rank before the complete "
+                "manuscript shelf; paper inventory order is not significance"
+            ),
         ]
         rows.extend(
-            f"paper {row['paper_id']} | {row['publication_state']} "
+            f"paper_signal #{row['rank']} | problem=#{row['problem']} "
+            f"| tier={row['reader_tier']} | family={row['family_id']} "
+            f"| paper={row['paper_id']} | read={row['preferred_read_path']} "
+            f"| boundary={row['exact_boundary']}"
+            for row in signal["ranked_frontier"]
+        )
+        rows.extend(
+            f"paper_friction | problem=#{row['problem']} "
+            f"| family={row['family_id']} | paper={row['paper_id']} "
+            f"| read={row['preferred_read_path']} | boundary={row['boundary']}"
+            for row in signal["natural_friction"]["results"]
+        )
+        rows.extend(
+            [
+                (
+                    "paper_long_tail | subordinate_not_deleted "
+                    f"| declarations={signal['long_tail']['declaration_count']}"
+                ),
+                "paper_inventory | exhaustive_not_ranked",
+            ]
+        )
+        rows.extend(
+            f"paper_inventory | {row['paper_id']} | {row['publication_state']} "
             f"| {row['title']} | read={row['preferred_read_path']}"
             for row in packet["papers"]
         )
