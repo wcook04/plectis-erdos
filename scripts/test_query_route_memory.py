@@ -238,6 +238,26 @@ def main() -> int:
         "stale_source_snapshot" in stale_result.stderr,
         "stale CLI packet omitted its rejection code",
     )
+    # A packet path must not be substituted through a symlink; stdin remains
+    # available for ordinary pipelines and this guard protects file-based CLI
+    # intake from reading an unreviewed target.
+    import tempfile
+
+    with tempfile.TemporaryDirectory(prefix="route-memory-link-") as temp_dir:
+        packet_path = Path(temp_dir) / "packet.json"
+        link_path = Path(temp_dir) / "packet-link.json"
+        # The path guard must run before packet parsing, so an intentionally
+        # malformed payload keeps this adversarial check independent of a
+        # sibling commit moving HEAD between packet generation and intake.
+        packet_path.write_text("{}", encoding="utf-8")
+        link_path.symlink_to(packet_path)
+        linked = run_cli("--validate", str(link_path))
+        require(linked.returncode == 2, "symlinked packet path was accepted")
+        require(linked.stdout == "", "symlinked packet path emitted a payload")
+        require(
+            "unsafe_input_path" in linked.stderr,
+            "symlinked packet path omitted its rejection code",
+        )
     optimized = run_cli(
         "--problem", "257", "--format", "card", optimized=True, check=True
     )

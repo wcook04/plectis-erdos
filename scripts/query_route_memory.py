@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -127,6 +128,30 @@ def _canonical_digest(value: Any) -> str:
         value, ensure_ascii=False, sort_keys=True, separators=(",", ":")
     ).encode("utf-8")
     return "sha256:" + hashlib.sha256(encoded).hexdigest()
+
+
+def _is_allowed_platform_alias(path: Path) -> bool:
+    """Keep the documented macOS ``/var`` alias usable for temp packets."""
+    try:
+        return path == Path("/var") and path.resolve(strict=True) == Path("/private/var")
+    except OSError:
+        return False
+
+
+def _path_has_symlink_component(path: Path) -> bool:
+    """Reject packet input that could substitute bytes through a path link."""
+    if path.is_symlink():
+        return True
+    current = Path(os.path.abspath(path.parent))
+    while True:
+        if current.is_symlink():
+            if not _is_allowed_platform_alias(current):
+                return True
+            current = current.resolve(strict=True)
+            continue
+        if current.parent == current:
+            return False
+        current = current.parent
 
 
 def _problem_row(root: Path, selector: str | int) -> dict[str, Any]:
@@ -543,7 +568,10 @@ def _load_packet(argument: str) -> dict[str, Any]:
     if argument == "-":
         value = json.load(sys.stdin)
     else:
-        value = json.loads(Path(argument).read_text(encoding="utf-8"))
+        path = Path(argument)
+        if _path_has_symlink_component(path):
+            raise RouteMemoryError("unsafe_input_path", argument)
+        value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise RouteMemoryError("packet_shape", argument)
     return value
