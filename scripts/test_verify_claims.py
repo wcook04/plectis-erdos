@@ -60,6 +60,42 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_safe_read_boundary() -> None:
+    original_root = verify_claims.REPO_ROOT
+    with tempfile.TemporaryDirectory(prefix="claims-input-") as raw_workspace:
+        workspace = Path(raw_workspace)
+        verify_claims.REPO_ROOT = workspace
+        regular = workspace / "regular.txt"
+        regular.write_text("claims input\n", encoding="utf-8")
+        require(
+            verify_claims.safe_read_text(regular) == "claims input\n",
+            "claims verifier rejected a regular source file",
+        )
+
+        directory = workspace / "directory"
+        directory.mkdir()
+        require(
+            verify_claims.safe_read_text(directory) is None,
+            "claims verifier accepted a directory input",
+        )
+
+        symlink = workspace / "symlink.txt"
+        symlink.symlink_to(regular)
+        require(
+            verify_claims.safe_read_text(symlink) is None,
+            "claims verifier followed a symlinked source input",
+        )
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "fifo"
+            os.mkfifo(fifo)
+            require(
+                verify_claims.safe_read_text(fifo) is None,
+                "claims verifier accepted a FIFO source input",
+            )
+    verify_claims.REPO_ROOT = original_root
+
+
 def build_register(
     claims: list[dict],
     open_props: list[dict] | None = None,
@@ -417,4 +453,5 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    check_safe_read_boundary()
     raise SystemExit(main())

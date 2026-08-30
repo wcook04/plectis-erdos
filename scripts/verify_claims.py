@@ -64,6 +64,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import textwrap
@@ -181,8 +182,10 @@ def run(
 
 def load_claims() -> dict[str, Any]:
     """Read the claim register, which is the single owner of claim identity."""
-    with CLAIMS_PATH.open(encoding="utf-8") as handle:
-        return json.load(handle)
+    content = safe_read_text(CLAIMS_PATH)
+    if content is None:
+        raise OSError(f"claims register is not a safe regular file: {CLAIMS_PATH}")
+    return json.loads(content)
 
 
 def safe_read_path(path: Path) -> Path | None:
@@ -207,6 +210,36 @@ def safe_read_path(path: Path) -> Path | None:
     if not candidate.is_file():
         return None
     return candidate
+
+
+def safe_read_text(path: Path, *, errors: str = "strict") -> str | None:
+    """Read an in-checkout file through a no-follow regular-file descriptor."""
+    candidate = safe_read_path(path)
+    if candidate is None:
+        return None
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError:
+        return None
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            return None
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        try:
+            return b"".join(chunks).decode("utf-8", errors=errors)
+        except UnicodeDecodeError:
+            return None
+    finally:
+        os.close(descriptor)
 
 
 def git_output(*args: str) -> str | None:
@@ -295,7 +328,11 @@ def resolve_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
         result["status"] = "module_missing"
         return result
 
-    lines = module_path.read_text(encoding="utf-8", errors="replace").splitlines()
+    content = safe_read_text(module_path, errors="replace")
+    if content is None:
+        result["status"] = "module_missing"
+        return result
+    lines = content.splitlines()
 
     # A declaration inside `namespace Foo` is registered as `Foo.bar` but written
     # as `bar`, so the final component is an accepted spelling of the same name.
@@ -390,7 +427,9 @@ def index_paper_labels() -> dict[str, list[str]] | None:
         tex = safe_read_path(tex)
         if tex is None:
             continue
-        text = tex.read_text(encoding="utf-8", errors="replace")
+        text = safe_read_text(tex, errors="replace")
+        if text is None:
+            continue
         relative = str(tex.relative_to(REPO_ROOT))
         for match in LABEL_PATTERN.finditer(text):
             carriers = index.setdefault(match.group(1), [])
