@@ -67,6 +67,11 @@ def require(condition: bool, message: str) -> None:
         raise CorpusError(message)
 
 
+def private_path_leaks(data: bytes) -> list[str]:
+    """Return portable local-path markers found in one public artifact."""
+    return [label for label, marker in PRIVATE_PATH_MARKERS if marker in data]
+
+
 def safe_public_path(raw: Any) -> tuple[str, Path]:
     require(isinstance(raw, str), "manifest public_path must be a string")
     pure = PurePosixPath(raw)
@@ -128,7 +133,7 @@ def check() -> tuple[int, int, int]:
                 row.get("source_sha256") != row.get("published_sha256"),
                 f"sanitized row retained the source digest: {public_path}",
             )
-        leaked = [label for label, marker in PRIVATE_PATH_MARKERS if marker in data]
+        leaked = private_path_leaks(data)
         require(not leaked, f"private local-path marker in {public_path}: {leaked}")
         total_bytes += len(data)
         replacement_count += replacements
@@ -141,6 +146,14 @@ def check() -> tuple[int, int, int]:
         if path.is_file()
     }
     require(actual == seen | GENERATED_ENVELOPE, f"untracked corpus files: {sorted(actual - seen - GENERATED_ENVELOPE)}; missing: {sorted((seen | GENERATED_ENVELOPE) - actual)}")
+    for public_path in sorted(GENERATED_ENVELOPE):
+        path = ROOT / public_path
+        require(
+            path.is_file() and not path.is_symlink(),
+            f"generated envelope file is missing or symlinked: {public_path}",
+        )
+        leaked = private_path_leaks(path.read_bytes())
+        require(not leaked, f"private local-path marker in {public_path}: {leaked}")
 
     strongest_pointer = manifest.get("strongest_result_map")
     require(isinstance(strongest_pointer, dict), "manifest strongest-result pointer missing")
