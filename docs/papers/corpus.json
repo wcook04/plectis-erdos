@@ -4172,7 +4172,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:f0961a2600994eb268583855b7461db20f25f6eb55339062ea37bbd49ed3411b",
+      "source_sha256": "sha256:4b25525889d1592f11144476160dff466d71a70edca07a67ea93d325b9784fdc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex",
@@ -4189,157 +4189,157 @@
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction",
-          "line": 32
+          "line": 34
         },
         {
           "level": 2,
           "id": "structure",
           "title": "Structure",
-          "line": 101
+          "line": 103
         },
         {
           "level": 1,
           "id": "sec:lcm",
           "title": "The running least common multiple as a product of pure powers",
-          "line": 109
+          "line": 111
         },
         {
           "level": 1,
           "id": "sec:cells",
           "title": "Constancy on logarithmic cells and the jump points",
-          "line": 157
+          "line": 159
         },
         {
           "level": 1,
           "id": "sec:two-prime",
           "title": "The two-prime sums are transcendental",
-          "line": 215
+          "line": 217
         },
         {
           "level": 1,
           "id": "sec:fibre",
           "title": "The height-fibre normal form",
-          "line": 336
+          "line": 338
         },
         {
           "level": 1,
           "id": "sec:shell",
           "title": "A quadratic bound for smooth exponent shells",
-          "line": 383
+          "line": 385
         },
         {
           "level": 1,
           "id": "sec:rank",
           "title": "Non-separability of the three-prime kernel",
-          "line": 438
+          "line": 440
         },
         {
           "level": 1,
           "id": "sec:escape",
           "title": "Dyadic blocks and a conditional carry contradiction",
-          "line": 466
+          "line": 468
         },
         {
           "level": 2,
           "id": "the-four-element-block-alphabet",
           "title": "The four-element block alphabet",
-          "line": 472
+          "line": 474
         },
         {
           "level": 2,
           "id": "the-denominator-reduction-and-its-boundary",
           "title": "The denominator reduction and its boundary",
-          "line": 516
+          "line": 518
         },
         {
           "level": 2,
           "id": "the-window-recurrence-and-the-residue-contradiction",
           "title": "The window recurrence and the residue contradiction",
-          "line": 549
+          "line": 551
         },
         {
           "level": 2,
           "id": "a-finite-check-of-the-escape-condition",
           "title": "A finite check of the escape condition",
-          "line": 630
+          "line": 632
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 647
+          "line": 649
         },
         {
           "level": 2,
           "id": "the-actual-block-data-and-the-missing-bridge",
           "title": "The actual block data and the missing bridge",
-          "line": 653
+          "line": 655
         },
         {
           "level": 2,
           "id": "the-intrinsic-tail-question",
           "title": "The intrinsic tail question",
-          "line": 710
+          "line": 712
         },
         {
           "level": 2,
           "id": "a-denominator-adaptive-sufficient-criterion",
           "title": "A denominator-adaptive sufficient criterion",
-          "line": 732
+          "line": 734
         },
         {
           "level": 2,
           "id": "a-literal-two-dimensional-analytic-route",
           "title": "A literal two-dimensional analytic route",
-          "line": 768
+          "line": 770
         },
         {
           "level": 2,
           "id": "the-structural-frontier",
           "title": "The structural frontier",
-          "line": 798
+          "line": 800
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 815
+          "line": 817
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 819
+          "line": 821
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 825
+          "line": 827
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 831
+          "line": 833
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 837
+          "line": 839
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 843
+          "line": 845
         }
       ],
       "citations_rendered": 16,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:855ac9ff466c2affd3d4ad9cd221c6a6c553c23974a46918b33e280d17866bec",
-      "pdf_byte_count": 170036,
+      "pdf_sha256": "sha256:da2f9bcb9c7b2aff04ccc979cda7c55ca7752051d0896dd31b4411f6d2908f51",
+      "pdf_byte_count": 170597,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4347,22 +4347,22 @@
           {
             "id": "sec:problem",
             "title": "Introduction",
-            "line": 32
+            "line": 34
           },
           {
             "id": "sec:lcm",
             "title": "The running least common multiple as a product of pure powers",
-            "line": 109
+            "line": 111
           },
           {
             "id": "sec:escape",
             "title": "Dyadic blocks and a conditional carry contradiction",
-            "line": 466
+            "line": 468
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 647
+            "line": 649
           }
         ],
         "unresolved_count": 0
