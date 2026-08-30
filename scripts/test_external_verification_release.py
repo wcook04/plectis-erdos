@@ -35,11 +35,20 @@ def digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep release-identity assertions active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def expect_error(action, fragment: str) -> None:
     try:
         action()
     except release.ReleaseIdentityError as exc:
-        assert fragment in str(exc), (fragment, str(exc))
+        require(
+            fragment in str(exc),
+            f"expected error fragment {fragment!r}; got {str(exc)!r}",
+        )
     else:
         raise AssertionError(f"expected ReleaseIdentityError containing {fragment!r}")
 
@@ -113,21 +122,30 @@ def test_replay_plan() -> None:
     commit = "a" * 40
     tree = "b" * 40
     plan = replay.replay_plan(commit, tree)
-    assert plan["source"]["commit"] == commit
-    assert plan["source"]["tree"] == tree
-    assert plan["security"] == {
-        "requires_linux_systemd_transient_unit": True,
-        "network_disabled_inside_comparator": True,
-        "floating_ref_accepted": False,
-        "github_pull_request_merge_sha_accepted": False,
-    }
-    assert plan["statement_contract"]["theorem"] in json.loads(
-        (replay.ROOT / plan["statement_contract"]["positive_config"]).read_text()
-    )["theorem_names"]
+    require(plan["source"]["commit"] == commit, "replay plan lost source commit")
+    require(plan["source"]["tree"] == tree, "replay plan lost source tree")
+    require(
+        plan["security"] == {
+            "requires_linux_systemd_transient_unit": True,
+            "network_disabled_inside_comparator": True,
+            "floating_ref_accepted": False,
+            "github_pull_request_merge_sha_accepted": False,
+        },
+        "replay plan security boundary changed",
+    )
+    require(
+        plan["statement_contract"]["theorem"] in json.loads(
+            (replay.ROOT / plan["statement_contract"]["positive_config"]).read_text()
+        )["theorem_names"],
+        "replay plan theorem is absent from its positive configuration",
+    )
     live_contract = release.contract(release.ROOT)
-    assert all(
-        (release.ROOT / relative).is_file()
-        for relative in live_contract["tracked_artifacts"]
+    require(
+        all(
+            (release.ROOT / relative).is_file()
+            for relative in live_contract["tracked_artifacts"]
+        ),
+        "release contract names a missing tracked artifact",
     )
     positive = json.loads(
         (release.ROOT / live_contract["replay"]["positive_config"]).read_text()
@@ -135,14 +153,29 @@ def test_replay_plan() -> None:
     negative = json.loads(
         (release.ROOT / live_contract["replay"]["negative_config"]).read_text()
     )
-    assert positive["theorem_names"] == [live_contract["replay"]["theorem"]]
-    assert negative["theorem_names"] == [live_contract["replay"]["theorem"]]
-    assert positive["permitted_axioms"] == live_contract["replay"]["permitted_axioms"]
-    assert negative["permitted_axioms"] == live_contract["replay"]["permitted_axioms"]
+    require(
+        positive["theorem_names"] == [live_contract["replay"]["theorem"]],
+        "positive replay theorem differs from the release contract",
+    )
+    require(
+        negative["theorem_names"] == [live_contract["replay"]["theorem"]],
+        "negative replay theorem differs from the release contract",
+    )
+    require(
+        positive["permitted_axioms"] == live_contract["replay"]["permitted_axioms"],
+        "positive replay axioms differ from the release contract",
+    )
+    require(
+        negative["permitted_axioms"] == live_contract["replay"]["permitted_axioms"],
+        "negative replay axioms differ from the release contract",
+    )
     try:
         replay.replay_plan("main", tree)
     except replay.ReplayError as exc:
-        assert "full lowercase Git id" in str(exc)
+        require(
+            "full lowercase Git id" in str(exc),
+            "floating replay error did not identify the immutable-id rule",
+        )
     else:
         raise AssertionError("floating branch name was accepted as a replay commit")
 
@@ -159,24 +192,36 @@ def test_release_manifest() -> None:
             runtime_receipt_path=receipt_path,
         )
         release.validate_manifest(manifest, root=root, runtime_receipt_path=receipt_path)
-        assert manifest["source"]["commit_url"].endswith("/commit/" + commit)
-        assert all(
-            f"/blob/{commit}/" in row["immutable_url"]
-            for row in manifest["tracked_artifacts"]
+        require(
+            manifest["source"]["commit_url"].endswith("/commit/" + commit),
+            "release manifest source URL is not commit-bound",
+        )
+        require(
+            all(
+                f"/blob/{commit}/" in row["immutable_url"]
+                for row in manifest["tracked_artifacts"]
+            ),
+            "release manifest artifact URL is not commit-bound",
         )
         expected_theorem_count = len(
             json.loads(
                 (root / "verification/comparator.json").read_text(encoding="utf-8")
             )["theorem_names"]
         )
-        assert manifest["runtime_receipt"]["theorem_count"] == expected_theorem_count
-        assert manifest["release_assets"]["required"] == [
-            f"external-verification-receipt-{commit}.json",
-            f"external-verification-release-manifest-{commit}.json",
-        ]
+        require(
+            manifest["runtime_receipt"]["theorem_count"] == expected_theorem_count,
+            "release manifest theorem count differs from the comparator contract",
+        )
+        require(
+            manifest["release_assets"]["required"] == [
+                f"external-verification-receipt-{commit}.json",
+                f"external-verification-release-manifest-{commit}.json",
+            ],
+            "release manifest asset names are not commit-bound",
+        )
         encoded = json.dumps(manifest)
-        assert "/blob/main/" not in encoded
-        assert "/blob/HEAD/" not in encoded
+        require("/blob/main/" not in encoded, "release manifest contains a floating main URL")
+        require("/blob/HEAD/" not in encoded, "release manifest contains a floating HEAD URL")
 
         wrong_tree = copy.deepcopy(manifest)
         wrong_tree["source"]["tree"] = "f" * 40
