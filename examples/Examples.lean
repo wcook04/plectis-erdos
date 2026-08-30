@@ -1,6 +1,7 @@
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 import Erdos249257
+import ErdosProblems
 
 /-!
 # Minimal downstream consumer
@@ -54,3 +55,33 @@ theorem downstream_composite_dilation_defect
       supportCoeff A x + (if a ∣ x then 0 else 1) +
         CompositeDilationDefect.compositeDilationDefect A a x :=
   CompositeDilationDefect.supportCoeff_mul_eq_add_defect A ha ha0 hx0
+
+/-! The centered-state recovery family is also a reusable consumer of the
+problem-centric library.  Keep the signed recovery theorem as the one
+downstream example: its centered-zero and Sylvester declarations are
+mechanism evidence inside the same family, not separate endpoint claims. -/
+
+/-- Downstream reuse of the exact #243 centered-state recovery mechanism.
+
+The consumer keeps every load-bearing hypothesis visible: exact natural
+`C/D` dynamics, `a > 1`, positive `C`, strict centering, a uniform lower
+bound on the signed centered error, and division-free normalized vanishing.
+It derives eventual zero centered defect, but does not assert that an
+unrestricted reciprocal-tail orbit satisfies those hypotheses or solve
+Erdős #243. -/
+theorem downstream_bounded_negative_part_recovery
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ) (B : ℕ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n,
+      E n = ErdosProblems.Erdos243.centeredState
+        (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hcentered : ∀ n, Int.natAbs (E n) < C n)
+    (hbound : ∀ n, -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 :=
+  ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
+    a C D E B ha hCpos hC hD hE hcentered hbound hvanish
