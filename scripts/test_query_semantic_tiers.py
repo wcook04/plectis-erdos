@@ -2,8 +2,11 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
 
+from unittest.mock import patch
+
 from query_semantic import (
     PROBLEMS,
+    cmd_problem_registry,
     is_authored_interpretation,
     is_structural_interpretation,
     problem_for_route,
@@ -36,7 +39,46 @@ def test_zone_only_role_is_neither_interpretation_tier() -> None:
 
 
 def test_problem_registry_is_loaded_from_the_public_problem_index() -> None:
-    assert PROBLEMS == ("243", "249", "251", "257", "269", "1049")
+    assert PROBLEMS == ("68", "243", "249", "251", "257", "269", "1041", "1049")
+
+
+def test_problem_registry_exposes_route_memory_resume_command() -> None:
+    captured: dict = {}
+
+    def capture(payload: object) -> int:
+        captured["payload"] = payload
+        return 0
+
+    class Args:
+        problem = None
+
+    with patch("query_semantic.emit", side_effect=capture):
+        result = cmd_problem_registry(
+            {
+                "declaration_roles": [],
+                "zones": [],
+                "statement_nodes": [],
+                "summary": {"per_problem": {}},
+            },
+            Args(),
+        )
+    if result != 0:
+        raise AssertionError(f"problem registry returned {result}")
+
+    if "payload" not in captured:
+        raise AssertionError("problem registry did not emit a packet")
+    rows = captured["payload"]["problems"]
+    if [row["erdos_number"] for row in rows] != [
+        int(problem) for problem in PROBLEMS
+    ]:
+        raise AssertionError("problem registry selector coverage drifted")
+    for row in rows:
+        expected = (
+            "python3 scripts/query_route_memory.py --problem "
+            f"{row['erdos_number']}"
+        )
+        if row["follow"].get("route_memory") != expected:
+            raise AssertionError("problem registry route-memory handoff drifted")
 
 
 def test_historical_both_scope_does_not_leak_into_every_problem() -> None:

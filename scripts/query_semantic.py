@@ -770,6 +770,10 @@ def cmd_problem_registry(corpus: dict, args) -> int:
                         "python3 scripts/query_semantic.py structural-backlog "
                         f"--problem {problem}"
                     ),
+                    "route_memory": (
+                        "python3 scripts/query_route_memory.py --problem "
+                        f"{problem}"
+                    ),
                 },
             }
         )
