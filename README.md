@@ -73,15 +73,15 @@ independence premise are not formalised.
 The classical **Farey/mediant bound** at `K=240`: Farey's method supplies the
 number directly, with delta `0`—exactly the Farey bound, not an improvement. The
 next denominator fails this window; that does not prove success past every fixed
-cutoff. Packages: **fair-coin
-coprimality**, **squared-Lambert gcd moments**, the **Stern–Brocot cylinder law**
-`(2/3)^d`, **Fibonacci/continuant run stability** `F_{r+3}`, **tempered binary
-tail rigidity**, an **exact Möbius-shadow denominator**, and a
-**scalar-localisation height obstruction**. The map exposes eventually-periodic
-nonnegative weighted irrationality, a signed irrational-or-base-terminating
-dichotomy, five binary-carry criteria/consequences, and two scoped #249 no-go
-countermodels. Also: these routes do not show that the actual orbit avoids an unsafe
-band or settle its open problem.
+cutoff. Packages: **fair-coin coprimality**, **squared-Lambert gcd moments**,
+**Stern–Brocot law** `(2/3)^d`, **Fibonacci run stability** `F_{r+3}`,
+**tempered tail rigidity**, **Möbius-shadow denominator**, and **scalar
+height obstruction**; [gcd](Erdos249257/GcdMomentCalculus.lean),
+[run](Erdos249257/SternBrocotRunGeometry.lean). The map exposes eventually-periodic
+nonnegative weighted irrationality, a
+signed irrational-or-base-terminating dichotomy, five binary-carry criteria,
+and two scoped #249 no-go countermodels. Also: these routes do not show that the
+actual orbit avoids an unsafe band or settle its open problem.
 
 ## What remains open
 
