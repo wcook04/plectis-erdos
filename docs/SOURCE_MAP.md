@@ -188,6 +188,20 @@ Lean propositions rather than reviewed public mathematical claims.
   certificate or carry escape remain open; the Mersenne-only instantiation in
   `CyclotomicAnchoredKill.lean:33-105` does not close #249 or justify novelty.
 
+- **Tail-orbit phase-density and natural-prime strict-gap reductions**
+  (`strict_prime_tail_orbit_gap`) —
+  [`TotientStrictPrimeEscape.lean`](../ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L25)
+  makes the two producer interfaces explicit: an `11/100` nonpositive-phase
+  density on arbitrarily late dyadic blocks implies an `89/100` first-harmonic
+  block saving, while the natural-prime strict-gap predicate gives a pointwise
+  `9/10` pivot escape through the wrapper
+  `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`.
+  The density, cofinal prime strict-gap, and positive truncation-margin
+  producers are unproved for the actual totient orbit. This is conditional
+  certificate/irrationality reduction only: it does not close #249, duplicate
+  the finite `first_harmonic_pivot_decomposition` or `actual_lcm_orbit_separation`
+  families, or justify novelty, priority, significance, or external review.
+
 ## #249 / certificate reductions
 
 - `Erdos249257.TotientTailPeriodKiller`
