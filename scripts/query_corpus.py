@@ -2210,6 +2210,7 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
             claims, claim_paper and claim_paper.get("source")
         ),
         "claim": claim,
+        "route_memory": claim_route_memory_projection(claim_id, claims),
         "incoming_edges": incoming,
         "outgoing_edges": outgoing,
         "argument_neighbourhood": {
@@ -6579,6 +6580,8 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "status_summary": row["status_summary"],
                 "primary_narrative_owner": row["primary_narrative_owner"],
                 "view_decision": row["view_decision"],
+                "claim_count": len(row["claim_ids"]),
+                "source_route": row["source_route"],
             }
             for row in families
         ],
@@ -6973,11 +6976,12 @@ def render_card(packet: dict[str, Any]) -> str:
         claim = packet["claim"]
         decls = ", ".join(row["name"] for row in claim["declarations"]) or "none"
         neighbourhood = packet["argument_neighbourhood"]
-        return (
+        card = (
             f"claim {claim['id']} | {claim['status']} | paper={claim.get('paper_label')} "
             f"| incoming={len(neighbourhood['incoming'])} | outgoing={len(neighbourhood['outgoing'])} "
             f"| declarations={decls}"
         )
+        return _append_route_memory_resumes(card, packet.get("route_memory"))
     if kind == "paper_label":
         paper = packet["paper"]
         claim_ids = ",".join(row["id"] for row in packet["attached_claims"]) or "none"

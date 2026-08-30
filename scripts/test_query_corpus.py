@@ -619,6 +619,15 @@ def validate_indexed_declaration_lookup() -> None:
 
 def validate_route_memory_cards() -> None:
     """Cards must preserve every canonical resume command present in JSON."""
+    claim_card = query_corpus.render_card(claim_packet("denominator_exclusion"))
+    assert (
+        "claim denominator_exclusion | formalised here | paper=res:farey "
+        "| incoming=0 | outgoing=1 | declarations="
+        "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053 "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in claim_card
+
     declaration_card = query_corpus.render_card(
         declaration_packet(
             "tsum_totient_div_pow_two_ne_ratCast_of_den_le_"
@@ -940,6 +949,20 @@ def main() -> int:
             "contribution_families"
         ]
     )
+    overview = query("--overview")
+    family_rows = overview["publication_family_index"]
+    expected_families = claims_document["machine_readable_paper"][
+        "publication_assembly"
+    ]["contribution_families"]
+    assert [row["id"] for row in family_rows] == [
+        row["id"] for row in expected_families
+    ]
+    assert [row["claim_count"] for row in family_rows] == [
+        len(row["claim_ids"]) for row in expected_families
+    ]
+    assert [row["source_route"] for row in family_rows] == [
+        row["source_route"] for row in expected_families
+    ]
     module_graph = claims_document["machine_readable_paper"]["module_graph"]
     assert module_graph["root"] == "Erdos249257.lean"
     assert module_graph["additional_roots"] == ["ErdosProblems.lean"]
