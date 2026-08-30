@@ -9,9 +9,9 @@
     "human_responsibility": "Will Cook selected the public scope, accepts responsibility for the claims and correspondence, and does not present CI as mathematical peer review."
   },
   "formalization_schema": {
-    "version": "v0.3",
+    "version": "v0.4",
     "repository": "https://github.com/mathlib-initiative/formalization.yaml",
-    "commit": "fab03cbbed1a5857de17af32de30421a734c77c6"
+    "commit": "99c678e569c7c4c0772db297c5ddd5e4c9b6322e"
   },
   "problem_index_owner": "docs/problem_index_source.json",
   "problem_index_projection": "docs/problems.json",
@@ -42,7 +42,7 @@
       "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
     },
     "roster_source": "verification/comparator.json",
-    "theorem_name_count": 47,
+    "theorem_name_count": 48,
     "theorem_names": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
@@ -61,6 +61,7 @@
       "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
       "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
       "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+      "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
       "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
       "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
       "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
@@ -451,6 +452,21 @@
       "statement": "The exact first-harmonic pivot decomposition and its 9X/10 gap yield a finite certificate whenever the stated PivotBudgetAt bounds hold, and the cofinal pivot-residual-decorrelation socket implies irrationality of the binary totient series.",
       "boundary": "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed.",
       "canonical_claim_status": "supports_registered_claim_family:first_harmonic_pivot_decomposition",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "strict_prime_tail_orbit_gap",
+      "problem": 249,
+      "review_family": "strict_prime_tail_orbit_gap",
+      "claim_id": "strict_prime_tail_orbit_gap",
+      "contribution_class": "conditional reduction",
+      "original_declaration": "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+      "original_source": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+      "statement": "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality.",
+      "boundary": "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families.",
+      "canonical_claim_status": "supports_registered_claim_family:strict_prime_tail_orbit_gap",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
     },
@@ -1080,6 +1096,23 @@
           "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
         },
         {
+          "id": "strict_prime_tail_orbit_gap",
+          "contribution_class": "conditional reduction",
+          "summary": "A single two-branch source mechanism gives an 89/100 first-harmonic block saving from an 11/100 nonpositive-phase density, or an adaptive pivot escape from a cofinal natural-prime tail-orbit strict gap below 9/10. The load-bearing representative is the natural-prime irrationality reduction; block-gap and density declarations remain subordinate.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "ErdosProblems.Erdos249.TotientTailOrbitBlockGap",
+            "ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity",
+            "ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity",
+            "ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap",
+            "ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap",
+            "ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
+            "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+          ],
+          "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
+        },
+        {
           "id": "totient_carry_anti_compression",
           "contribution_class": "locally proved necessary consequence; novelty unassessed",
           "summary": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have dyadic sections uniformly eventually periodic modulo its multiplier while its canonical carry-section span has dimension at least 2^e − 1 for every e. This is the orbit-level quotient-periodicity/anti-compression conjunction, distinct from the coefficient-side kernel-rank family.",
@@ -1591,7 +1624,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:e0b8dcd55eb2b4bdc9b3178c7cc45eba69108cfb8ea53f11241f6447e9a90eb6",
+    "projection_digest": "sha256:751b4cedec71677a69a9dd7d0140df64b5353c55463cddca587ff90b8ac48c73",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1958,10 +1991,10 @@
             "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
             "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
             "present": true,
-            "line_count": 211,
-            "declaration_count": 8,
-            "theorem_count": 5,
-            "content_digest": "sha256:15ebe7ae1ad1fc8c12c85ca4a162689cf29bbe23b4280bb3452e0987694dbbe8"
+            "line_count": 235,
+            "declaration_count": 9,
+            "theorem_count": 6,
+            "content_digest": "sha256:cbf1d44df4f873342121a39718d3ea1b44c62e83e88f2e33ca21f959a412e51b"
           },
           {
             "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -2038,11 +2071,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 18,
+          "family_count": 19,
           "by_class": {
             "not_selected": 4,
             "represented_by": 1,
-            "targeted": 13
+            "targeted": 14
           },
           "dispositions": {
             "totient_kernel_basis": "targeted",
@@ -2057,6 +2090,7 @@
             "actual_lcm_orbit_separation": "targeted",
             "actual_foreign_residue_projection": "targeted",
             "first_harmonic_pivot_decomposition": "targeted",
+            "strict_prime_tail_orbit_gap": "targeted",
             "totient_carry_anti_compression": "targeted",
             "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
@@ -2652,7 +2686,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:717ea9ea612d42807ac1409c33efcb2ea4250f988651505b8dd975ac6f85a1a9",
+    "digest": "sha256:81ca2fcf45c0f3c371c2a731a488cfa6194b78aab38eadb672f359c794d4e8ba",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2660,6 +2694,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:5c5f51a237c8b35c1d05d109a65a47518b6788e1ddb412e8a471aad11335c95d",
-  "solution_source_digest": "sha256:1da414d3e8672345376a0fa628f7fe85a4836053864fdf6e7b58bd80d86badd5"
+  "config_digest": "sha256:afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
+  "solution_source_digest": "sha256:1d5383e11974be554f2ad1641d7785bd36369748a36b0be84c3b874818602980"
 }

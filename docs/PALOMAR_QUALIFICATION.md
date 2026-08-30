@@ -132,7 +132,7 @@ positive-corridor/top-edge route
 (`TotientActualLcmOrbitSign.lean:31-278`) is a subordinate supporting
   candidate within the single `actual_lcm_orbit_separation` family, not a
   distinct family. Its committed transport at `bc0fee48` remains source-landscape
-  support, while the 47-row source-current configuration admits only the family
+  support, while the 48-row source-current configuration admits only the family
   representative; canonical evidence projection remains separate. It proves a positive corridor and forces the exact top-edge residue
 under integral representation, but does not exclude that edge.
 Certificate completeness (`LcmConeFlatness.lean:316-435`) is subordinate and
@@ -287,8 +287,10 @@ separate function-faithful finite-span factorization is not a Comparator row,
 and there is no quotient recurrence, scalar-evaluation implication, literal
 infinite-span theorem, or #269 endpoint.
 
-The source-landscape queue also retains `strict_prime_tail_orbit_gap` as a
-subordinate, source-only #249 producer mechanism. The
+The source-current 70-family authority represents `strict_prime_tail_orbit_gap`
+as a conditional #249 producer mechanism through
+`Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`.
+The
 `TotientTailOrbitNonpositiveBlockDensity` branch assumes at least `11/100`
 nonpositive phases on each sufficiently late dyadic block; unit norm and the
 complement estimate then give an `89/100` block-mean bound, and one truncation
@@ -297,11 +299,19 @@ gap and certified-kill socket. Its separate
 `DTWNaturalPrimeTailOrbitStrictGap` branch assumes cofinally many primes with
 `Re(tailOrbitFirstExp h (p - h - 1)) < 9/10`, which yields a positive adaptive
 margin and exact natural-fibre membership. The block-density, cofinal-prime,
-and uniform-margin supplies are unproved for the actual orbit; this source
-review therefore remains outside the 69-family canonical claims and the
-47-row Comparator admission screen. It proves no #249 irrationality or
-endpoint and makes no novelty, priority, significance, or external-review
-claim.
+and uniform-margin supplies are unproved for the actual orbit. The family is
+canonically registered by Claims commit `bf4b77d6` and admitted by Comparator
+transport `e7a58bb3`, but admission does not close either producer. It ranks
+below `actual_lcm_orbit_separation` and
+`first_harmonic_pivot_decomposition`, whose source-specific quantitative
+sockets are stronger, and above `totient_certificate_equivalences`, because
+it contributes a distinct producer-side phase-density and prime-index
+transport rather than only an endpoint normal form. Certificate completeness
+is prerequisite support, not a producer: nonintegrality alone gives no fixed
+distance from the integers. No large-prime instance, orbit-density theorem,
+or equidistribution input is present. The route proves no unconditional #249
+irrationality or endpoint and makes no novelty, priority, significance, or
+external-review claim.
 
 These dispositions compare consequence, endpoint proximity, hard mechanism,
 distinctness, evidence certainty, natural friction, digestion value, and
@@ -358,9 +368,9 @@ The candidate is bound to the committed current tree observed at
 source currency; it is not a
 release lock or terminal validation claim:
 
-- Comparator configuration: `verification/comparator.json`, 47 unique
+- Comparator configuration: `verification/comparator.json`, 48 unique
   theorem names, SHA-256
-  `5c5f51a237c8b35c1d05d109a65a47518b6788e1ddb412e8a471aad11335c95d`.
+  `afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1`.
 - Challenge: `ExternalVerification.Challenge`.
 - Solution: `ExternalVerification.Solution`.
 - Permitted Comparator axioms: `propext`, `Quot.sound`, and
@@ -402,8 +412,8 @@ Comparator evidence even when a source-faithful transport is committed.
 | Toolchain and Lakefile | pass structurally | Lean v4.29.1 and the committed Lake project files satisfy the current structural profile. |
 | Git dependency provenance | pass structurally | All nine manifest Git packages use credential-free public GitHub URLs and full lowercase 40-character resolved revisions; materialization and transitive Challenge closure remain terminal checks. |
 | Root licence | pass structurally | Exactly one conventional root licence file is present; `LICENSE` is regular nonempty UTF-8 below 1 MiB and its Apache-2.0 identifier matches the project metadata. |
-| Formalization file envelope | pass | The committed `formalization.yaml` is regular UTF-8 and 151,819 bytes, below the 256 KiB intake cap. |
-| Formalization metadata | **red** | Current `formalization.yaml` is v0.3, lacks `project.description`, `responsible_maintainers`, and classification metadata, and its sources lack v0.4 relationships/origin evidence while using pre-v0.4 type labels. |
+| Formalization file envelope | pass | The generated `formalization.yaml` is regular UTF-8 and 155,752 bytes, below the 256 KiB intake cap; the checker remeasures the committed bytes after landing. |
+| Formalization metadata | pass | Generated from the canonical claims packet as v0.4 with a truthful project description, Will Cook as responsible maintainer, `math.NT`/`math.CO` classifications, accepted source types and relationships, and source-based origin metadata. The source authority pins upstream v0.4 commit `99c678e569c7c4c0772db297c5ddd5e4c9b6322e`. |
 | Informal account and boundaries | pass | The showcase gives the exact selected type, mechanism, attribution, limitations, and open frontier. |
 | Challenge import closure and solution axiom audit | withheld | Requires one immutable terminal Palomar-compatible mechanical validation. |
 | Independent NanoDa replay | withheld | Must be bound to the same immutable source commit. |
@@ -416,12 +426,11 @@ spine, so Palomar's reviewer would audit every selected declaration. The
 qualification product keeps the warning visible instead of treating a hard-cap
 pass as proof that the statement surface is optimally small.
 
-The exact decision is therefore **NOT READY**. The local repair remaining is
-to refresh the generated `formalization.yaml` from its owning claim source to
-the official v0.4 profile without overwriting concurrent source work. After an
-immutable product commit is named, one non-duplicated terminal mechanical and
-independent-replay evidence bundle can replace the withheld cells. Submission
-consent and registration remain operator actions.
+The exact decision is therefore **NOT READY**. The static v0.4 metadata deficit
+is closed, but after an immutable product commit is named, one non-duplicated
+terminal mechanical and independent-replay evidence bundle must still replace
+the withheld cells. Submission consent and registration remain operator
+actions.
 
 ## Official authority capture
 

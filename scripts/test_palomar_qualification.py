@@ -75,15 +75,7 @@ def test_normal_and_optimised_checker_agree() -> None:
     assert json.loads(optimised.stdout) == normal
     assert normal["ok"] is True
     assert normal["decision"] == "NOT_READY"
-    assert normal["structural_deficits"] == [
-        "classification_metadata",
-        "formalization_v04_metadata",
-        "project_description",
-        "responsible_maintainers",
-        "source_origin_consistency",
-        "source_relationship_metadata",
-        "v04_source_relationship_vocabulary",
-    ]
+    assert normal["structural_deficits"] == []
 
 
 def test_v04_profile_rejects_missing_source_relationship() -> None:
@@ -159,6 +151,15 @@ def test_pinned_classification_authorities_are_required() -> None:
     ]
     errors = checker.authority_errors(damaged)
     assert any("arxiv-categories.json" in error for error in errors)
+
+    damaged = copy.deepcopy(reconciliation)
+    damaged["official_authorities"] = [
+        row
+        for row in damaged["official_authorities"]
+        if row["path"] != "schema/formalization.schema.json"
+    ]
+    errors = checker.authority_errors(damaged)
+    assert any("schema/formalization.schema.json" in error for error in errors)
 
 
 def test_repository_intake_contract() -> None:
@@ -525,18 +526,26 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "review matrix" in row["transport_admission_boundary"]
     strict_prime = landscape_by_id["strict_prime_tail_orbit_gap"]
     assert strict_prime["family_id"] == "strict_prime_tail_orbit_gap"
-    assert strict_prime["disposition"] == "subordinate"
-    assert strict_prime["comparator_eligibility"] == (
-        "source_landed_but_not_comparator_configured"
+    assert strict_prime["disposition"] == "represented"
+    assert strict_prime["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert strict_prime["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert strict_prime["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification."
+        "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
     )
-    assert strict_prime["queue_role"] == "source_landscape_review_not_comparator_evidence"
     assert "TotientTailOrbitNonpositiveBlockDensity" in strict_prime["source_declaration"]
     assert "DTWNaturalPrimeTailOrbitStrictGap" in strict_prime["source_declaration"]
     assert "11/100" in " ".join(strict_prime["exact_hypotheses"])
     assert "9/10" in strict_prime["statement"]
     assert "cofinal prime" in " ".join(strict_prime["limitations"])
     assert "no unconditional" in " ".join(strict_prime["limitations"])
-    assert "Comparator transport" in strict_prime["reversal_evidence"]
+    assert "actual_lcm_orbit_separation" in strict_prime[
+        "source_landscape_rank_relative_to"
+    ]
+    assert "totient_certificate_equivalences" in strict_prime[
+        "source_landscape_rank_relative_to"
+    ]
+    assert "nonintegrality" in " ".join(strict_prime["contrary_evidence"])
     qualification_text = (ROOT / "docs" / "PALOMAR_QUALIFICATION.md").read_text(
         encoding="utf-8"
     )
@@ -544,7 +553,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "nine targeted theorem-forest discoveries" in qualification_text_compact
     assert "strict_prime_tail_orbit_gap" in qualification_text_compact
     assert "11/100" in qualification_text_compact
-    assert "no #249 irrationality or endpoint" in qualification_text_compact
+    assert "no unconditional #249 irrationality or endpoint" in qualification_text_compact
     weighted = landscape_by_id["weighted_phase_carry_observer"]
     assert "carry_eq_residueDigit_add_coboundary" in weighted["source_declaration"]
     assert "carryResidue_mem_interval" in weighted["source_declaration"]

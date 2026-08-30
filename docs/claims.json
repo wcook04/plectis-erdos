@@ -11596,9 +11596,9 @@
       "human_responsibility": "Will Cook selected the public scope, accepts responsibility for the claims and correspondence, and does not present CI as mathematical peer review."
     },
     "formalization_schema": {
-      "version": "v0.3",
+      "version": "v0.4",
       "repository": "https://github.com/mathlib-initiative/formalization.yaml",
-      "commit": "fab03cbbed1a5857de17af32de30421a734c77c6"
+      "commit": "99c678e569c7c4c0772db297c5ddd5e4c9b6322e"
     },
     "problem_index_owner": "docs/problem_index_source.json",
     "problem_index_projection": "docs/problems.json",

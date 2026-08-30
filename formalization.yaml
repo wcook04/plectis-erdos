@@ -1,27 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/99c678e569c7c4c0772db297c5ddd5e4c9b6322e/schema/formalization.schema.json
 # Generated from docs/claims.json::external_verification_packet.
 # Refresh: python3 scripts/build_external_verification.py
-version: "v0.3"
+version: "v0.4"
 project:
   name: "Eight open Erdős problems: checked subsidiary mathematics"
+  description: "Lean 4 formalization of subsidiary mathematics for eight open Erdős problems, including unconditional irrationality theorems for structured Mersenne supports, exact conditional endpoint reductions, arithmetic classifications, and method barriers; none of the eight open problems is claimed solved."
   authors:
     - "Will Cook"
   license: "Apache-2.0"
-  repository: "https://github.com/wcook04/plectis-lean-erdos249-257"
+  responsible_maintainers:
+    - "Will Cook"
+classification:
+  arxiv: ["math.NT", "math.CO"]
+  msc2020: []
 sources:
   - title: "Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049"
     authors:
       - "Paul Erdős and collaborators"
     id: "https://www.erdosproblems.com/"
-    type: "open-problem index"
+    type: "web discussion"
+    relationship: "background"
     license: "external source; see source site"
-    author_contacted: "n/a"
+    author_endorsement: "n/a"
   - title: "Repository problem notes and cited-source registry"
     authors:
       - "Will Cook"
     id: "docs/papers/corpus.json"
-    type: "source registry and mathematical exposition"
+    type: "other"
+    relationship: "adapts"
     license: "CC-BY-4.0"
-    author_contacted: "n/a"
+    author_endorsement: "n/a"
 status:
   scope: >-
     All eight covered Erdős problems remain open. This repository checks
@@ -356,6 +364,22 @@ status:
       statement: "The exact first-harmonic pivot decomposition and its 9X/10 gap yield a finite certificate whenever the stated PivotBudgetAt bounds hold, and the cofinal pivot-residual-decorrelation socket implies irrationality of the binary totient series."
       boundary: "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed."
       comparator_declaration: "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"
+      literature_dependencies: []
+    - declaration: "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+      file: "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "supports_registered_claim_family:strict_prime_tail_orbit_gap"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "conditional reduction"
+      statement: "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality."
+      boundary: "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
+      comparator_declaration: "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
       literature_dependencies: []
     - declaration: "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
       file: "Erdos249257/TotientTailCarryPeriod.lean"
@@ -827,7 +851,7 @@ automation:
 comparator:
   config: "verification/comparator.json"
   roster_source: "verification/comparator.json"
-  theorem_name_count: 47
+  theorem_name_count: 48
   theorem_names:
     - "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
     - "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries"
@@ -846,6 +870,7 @@ comparator:
     - "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient"
     - "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo"
     - "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
+    - "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
     - "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
     - "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"
     - "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
@@ -981,6 +1006,11 @@ alignment:
       module: "Erdos249257/FirstHarmonicPivot.lean"
       status: "proved"
       note: "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed."
+    - source: "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality."
+      lean: "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+      module: "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
+      status: "proved"
+      note: "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
     - source: "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry has dyadic sections uniformly eventually periodic modulo its multiplier and canonical carry-section span dimension at least 2^e − 1 for every e."
       lean: "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
       module: "Erdos249257/TotientTailCarryPeriod.lean"
@@ -1262,6 +1292,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "The supplier fibre is an exact prime-image/fibre bijection, while a checked finite counterexample shows that supplier-prime global isolation fails. The load-bearing result is an exact four-term first-harmonic decomposition; under the explicit PivotBudgetAt budgets, the centred real-part bound and three contribution bounds give the 9X/10 gap and a finite certificate, and the conditional pivot-residual-decorrelation theorem transfers a cofinal supply to irrationality."
         boundary: "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
+      - id: "strict_prime_tail_orbit_gap"
+        contribution_class: "conditional reduction"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted"
+        summary: "A single two-branch source mechanism gives an 89/100 first-harmonic block saving from an 11/100 nonpositive-phase density, or an adaptive pivot escape from a cofinal natural-prime tail-orbit strict gap below 9/10. The load-bearing representative is the natural-prime irrationality reduction; block-gap and density declarations remain subordinate."
+        boundary: "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
       - id: "totient_carry_anti_compression"
         contribution_class: "locally proved necessary consequence; novelty unassessed"
         evidence_mode: "Lean kernel plus Comparator"
@@ -1579,7 +1615,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:e0b8dcd55eb2b4bdc9b3178c7cc45eba69108cfb8ea53f11241f6447e9a90eb6"
+  problem_index_digest: "sha256:751b4cedec71677a69a9dd7d0140df64b5353c55463cddca587ff90b8ac48c73"
   problem_count: 8
   problems:
     - id: "erdos_68"

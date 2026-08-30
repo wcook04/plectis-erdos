@@ -63,6 +63,18 @@ PINNED_TAXONOMY_AUTHORITIES = {
         "sha256": "b4de69f1f562da01e0f4580cecc0ab36098f5297bb7cdd669c8ec3b0d3606060",
     },
 }
+PINNED_FORMALIZATION_AUTHORITIES = {
+    "formalization.yaml": {
+        "url": "https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/99c678e569c7c4c0772db297c5ddd5e4c9b6322e/formalization.yaml",
+        "commit": "99c678e569c7c4c0772db297c5ddd5e4c9b6322e",
+        "sha256": "23f7e44601f4fa6e3324c0419e3819e1ea908f1b9761626f4c1bfb5520f4cb35",
+    },
+    "schema/formalization.schema.json": {
+        "url": "https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/99c678e569c7c4c0772db297c5ddd5e4c9b6322e/schema/formalization.schema.json",
+        "commit": "99c678e569c7c4c0772db297c5ddd5e4c9b6322e",
+        "sha256": "22bd0b61631535fc68efbdf01e3013362437673ac836d721dfbdf80773244ec3",
+    },
+}
 REPOSITORY_SIZE_LIMIT_BYTES = 500 * 1024 * 1024
 CHALLENGE_SIZE_LIMIT_BYTES = 100 * 1024
 CHALLENGE_LINE_LIMIT = 1000
@@ -483,7 +495,10 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
     by_path = {
         row.get("path"): row for row in authorities if isinstance(row, dict)
     }
-    for path, expected in PINNED_TAXONOMY_AUTHORITIES.items():
+    for path, expected in {
+        **PINNED_TAXONOMY_AUTHORITIES,
+        **PINNED_FORMALIZATION_AUTHORITIES,
+    }.items():
         actual = by_path.get(path)
         if not actual:
             errors.append(f"official authority {path} is not pinned")

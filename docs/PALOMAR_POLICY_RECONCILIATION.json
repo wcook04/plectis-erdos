@@ -61,6 +61,22 @@
       "role": "formalization.yaml v0.4 metadata field profile"
     },
     {
+      "authority": "mathlib-initiative/formalization.yaml",
+      "path": "formalization.yaml",
+      "url": "https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/99c678e569c7c4c0772db297c5ddd5e4c9b6322e/formalization.yaml",
+      "commit": "99c678e569c7c4c0772db297c5ddd5e4c9b6322e",
+      "sha256": "23f7e44601f4fa6e3324c0419e3819e1ea908f1b9761626f4c1bfb5520f4cb35",
+      "role": "upstream v0.4 template and field semantics"
+    },
+    {
+      "authority": "mathlib-initiative/formalization.yaml",
+      "path": "schema/formalization.schema.json",
+      "url": "https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/99c678e569c7c4c0772db297c5ddd5e4c9b6322e/schema/formalization.schema.json",
+      "commit": "99c678e569c7c4c0772db297c5ddd5e4c9b6322e",
+      "sha256": "22bd0b61631535fc68efbdf01e3013362437673ac836d721dfbdf80773244ec3",
+      "role": "machine-readable upstream v0.4 schema"
+    },
+    {
       "authority": "PalomarSubmission",
       "path": "taxonomies/arxiv-categories.json",
       "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/taxonomies/arxiv-categories.json",
@@ -133,7 +149,7 @@
   },
     "current_repository": {
       "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-      "observed_head_before_product": "3702e8249724bf46bf78c0332d1ad92cc0f41cf0",
+      "observed_head_before_product": "4514f51151f2211d0ef48a787e21896292b5bd5d",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -147,8 +163,8 @@
     },
     "comparator": {
       "path": "verification/comparator.json",
-        "committed_sha256": "5c5f51a237c8b35c1d05d109a65a47518b6788e1ddb412e8a471aad11335c95d",
-        "theorem_name_count": 47,
+        "committed_sha256": "afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
+        "theorem_name_count": 48,
       "challenge_module": "ExternalVerification.Challenge",
       "solution_module": "ExternalVerification.Solution",
       "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
@@ -197,15 +213,15 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 69 families (the 60-family dispatch baseline plus canonical actual-LCM, actual-foreign-residue, first-harmonic, weighted-phase-carry, dyadic-tail classification, Boolean–Möbius carry, Boolean–Möbius exact-row dynamics, half-membership seam classification, fixed-precision transport no-go, coefficient-only no-go, canonical totient carry anti-compression, and sharp height-and-Padé evidence) and eight targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current Comparator roster is a nested evidence/admission screen, not the universe boundary; the #269 weighted-phase and conditional-carry rows are now registered without gaining endpoint status. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
+      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and nine targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the strict-prime route is represented below the actual-LCM and first-harmonic routes but above finite certificate normal forms because its distinct producer predicates remain open.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "1c235728d5f50a84339f54466b92fdfd9d9692e6f2b46270adfccf44db5f8688",
-      "review_family_count": 69,
+      "review_matrix_sha256": "59ef36f94727ab277efa119ed7913361f3cc2624448d17b57784639778cb35a5",
+      "review_family_count": 70,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
         "first_harmonic_pivot",
@@ -215,6 +231,7 @@
         "erdos251_integral_tail_classification",
         "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
+        "strict_prime_tail_orbit_gap",
         "erdos249_carry_anti_compression"
       ],
       "comparator_role": "Comparator membership is evidence/eligibility/admission nested below source-landscape population and never defines its candidate universe."
@@ -447,6 +464,28 @@
         "limitations": ["No unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness is supplied.", "Finite exact rows, including the one-way positiveHalfGreedySkips route, do not establish the global premise.", "No unconditional or universal #257 result and no novelty, priority, significance, or external-review claim is made."],
         "reason": "Represented above the one-way positive-half-greedy-skip route because it gives the stronger exact membership classification socket, but below unconditional endpoint families because it supplies no global occurrence or membership witness.",
         "reversal_evidence": "A direct unconditional membership/refutation or an exact source-current producer for the classified seam condition would trigger a fresh ranking; additional finite rows would not."
+      },
+      {
+        "candidate_id": "strict_prime_tail_orbit_gap",
+        "family_id": "strict_prime_tail_orbit_gap",
+        "disposition": "represented",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
+        "source_transport_commit": "e7a58bb335dcb8b56c871a44fbae4d796196f26c",
+        "canonical_claim_commit": "bf4b77d6",
+        "source_declaration": "ErdosProblems.Erdos249.TotientTailOrbitBlockGap; ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity; ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity; ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap; ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "source_file": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+        "source_anchor": "25; 35; 45; 96; 157; 166; 205",
+        "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "statement": "One coherent two-branch conditional producer turns an 11/100 nonpositive-phase density into an 89/100 block saving and a 9/10 finite certificate, or turns a cofinal natural-prime strict gap below 9/10 into adaptive pivot escape.",
+        "hard_mechanism": "Unit norm and the complement estimate yield the exact phase-density saving; one 1/100 truncation budget gives the finite gap, while the prime branch uses a positive adaptive margin and exact natural-fibre membership.",
+        "prerequisite_evidence": ["TotientTailOrbitNonpositiveBlockDensity", "DTWNaturalPrimeTailOrbitStrictGap"],
+        "support_evidence": ["11/100 phase density to 89/100 block mean", "1/100 truncation to 9/10 finite gap", "adaptive natural-prime pivot escape"],
+        "conditional_peer_evidence": ["actual_lcm_orbit_separation", "first_harmonic_pivot_decomposition"],
+        "contrary_evidence": ["Nonintegrality alone supplies no fixed distance from the integers.", "No large-prime instance, orbit-density theorem, or equidistribution input is proved."],
+        "limitations": ["The phase-density, cofinal natural-prime strict-gap, and uniform-margin producers are unproved.", "No unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim follows."],
+        "reason": "Represented below actual_lcm_orbit_separation and first_harmonic_pivot_decomposition because their source-specific quantitative sockets are stronger, but above totient_certificate_equivalences because this family supplies a distinct producer-side phase-density and prime-index mechanism rather than only an endpoint normal form.",
+        "reversal_evidence": "A proved actual-orbit density or cofinal-prime strict-gap producer would promote the route; another finite phase sample or certificate-equivalence restatement would not."
       },
       {
         "candidate_id": "erdos249_carry_anti_compression",
@@ -762,15 +801,15 @@
       "id": "formalization_file_envelope",
       "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
       "status": "pass",
-      "evidence": "The committed formalization.yaml is regular UTF-8 and below the 256 KiB intake cap. Its file envelope passes independently of the red v0.4 content requirements.",
-      "disposition": "file_envelope_satisfied_metadata_still_not_ready"
+      "evidence": "The committed formalization.yaml is regular UTF-8 and below the 256 KiB intake cap.",
+      "disposition": "file_envelope_satisfied"
     },
     {
       "id": "formalization_v04_metadata",
       "source": "PalomarPolicy/docs/specification.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
-      "status": "not_ready",
-      "evidence": "Current formalization.yaml still declares v0.3, has no project.description, responsible_maintainers, or classification block, and its sources have no v0.4 relationship/origin evidence while using source-type labels outside the adopted v0.4 closed vocabulary.",
-      "disposition": "local_generated_metadata_deficit; do_not_claim_ready"
+      "status": "pass",
+      "evidence": "The generated metadata declares v0.4 and includes a truthful project description, named responsible maintainer, math.NT/math.CO classifications, accepted source-type and relationship vocabularies, and a source-based origin profile. The source authority records the exact upstream v0.4 commit.",
+      "disposition": "current_generated_v04_profile_satisfied"
     },
     {
       "id": "informal_account_and_boundaries",
@@ -810,10 +849,9 @@
   ],
   "qualification_decision": {
     "decision": "NOT_READY",
-    "reason": "The main-compatible Palomar product now binds the complete committed candidate universe to a deliberate full-support selection, but formalization.yaml is not yet current v0.4 and terminal immutable mechanical/replay evidence is withheld.",
+    "reason": "The main-compatible Palomar product binds the complete committed candidate universe to a deliberate full-support selection and satisfies the current v0.4 metadata profile, but terminal immutable mechanical/replay evidence is withheld.",
     "readiness_rule": "All applicable structural and terminal gates must be green at one exact source commit; Comparator theorem-name count never substitutes for qualification.",
     "safe_local_repairs_remaining": [
-      "Refresh the generated formalization.yaml from its owning current claim source to v0.4 with a truthful project description, maintainers, classifications, accepted source relationships, and source-origin consistency.",
       "Bind one immutable source commit and consume one non-duplicated Palomar mechanical/replay evidence bundle after integration names that commit."
     ],
     "operator_only_residuals": [
