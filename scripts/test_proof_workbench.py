@@ -182,6 +182,41 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("workbench accepted an unknown move kind")
 
+    duplicate_id_session = workbench.Session(sessions_root, "duplicate-ids")
+    duplicate_id_session.directory.mkdir(parents=True)
+    duplicate_id_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    duplicate_id_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "note",
+            "note_kind": "observation",
+            "text": "first",
+        }
+    )
+    duplicate_id_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "note",
+            "note_kind": "observation",
+            "text": "second",
+        }
+    )
+    try:
+        duplicate_id_session.moves()
+    except SystemExit as error:
+        if "duplicate move id" not in str(error):
+            raise AssertionError(f"duplicate move id lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted duplicate move ids")
+
     receipt_session = workbench.Session(sessions_root, "malformed-receipt")
     receipt_session.directory.mkdir(parents=True)
     rows = [

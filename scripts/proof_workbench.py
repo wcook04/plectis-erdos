@@ -230,6 +230,7 @@ class Session:
             raise SystemExit(
                 f"cannot read workbench ledger {self.ledger_path}: {exc}"
             ) from exc
+        seen_move_ids: set[str] = set()
         for line_number, line in enumerate(lines, 1):
             if line.strip():
                 try:
@@ -248,6 +249,12 @@ class Session:
                     raise SystemExit(
                         f"invalid workbench ledger row on line {line_number}: move_id and kind are required"
                     )
+                if row["move_id"] in seen_move_ids:
+                    raise SystemExit(
+                        f"invalid workbench ledger row on line {line_number}: "
+                        f"duplicate move id {row['move_id']!r}"
+                    )
+                seen_move_ids.add(row["move_id"])
                 if row["kind"] not in MOVE_KINDS:
                     raise SystemExit(
                         f"invalid workbench ledger row on line {line_number}: "
