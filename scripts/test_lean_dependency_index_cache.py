@@ -16,23 +16,25 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent.parent
 MODULE_PATH = ROOT / "scripts" / "build_lean_dependency_index.py"
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep dependency-index assertions active when Python runs with -O."""
+    if not condition:
+        raise AssertionError(message)
+
+
 SPEC = importlib.util.spec_from_file_location(
     "build_lean_dependency_index",
     MODULE_PATH,
 )
-assert SPEC is not None and SPEC.loader is not None
+require(SPEC is not None and SPEC.loader is not None, "dependency-index module loader is unavailable")
 builder = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(builder)
 
 
 def sha256_text(content: str) -> str:
     return f"sha256:{hashlib.sha256(content.encode('utf-8')).hexdigest()}"
-
-
-def require(condition: bool, message: str) -> None:
-    """Keep dependency-bootstrap assertions active when Python is run with -O."""
-    if not condition:
-        raise AssertionError(message)
 
 
 def check_exact_receipt_contract() -> None:
@@ -44,10 +46,13 @@ def check_exact_receipt_contract() -> None:
         "input_fingerprint": input_fingerprint,
         "output_digest": output_digest,
     }
-    assert builder.receipt_matches(
-        receipt,
-        input_fingerprint=input_fingerprint,
-        output_digest=output_digest,
+    require(
+        builder.receipt_matches(
+            receipt,
+            input_fingerprint=input_fingerprint,
+            output_digest=output_digest,
+        ),
+        "canonical dependency-index receipt was rejected",
     )
     mutations = (
         ("schema", "wrong"),
@@ -57,34 +62,61 @@ def check_exact_receipt_contract() -> None:
     )
     for field, value in mutations:
         changed = {**receipt, field: value}
-        assert not builder.receipt_matches(
-            changed,
-            input_fingerprint=input_fingerprint,
-            output_digest=output_digest,
-        ), field
+        require(
+            not builder.receipt_matches(
+                changed,
+                input_fingerprint=input_fingerprint,
+                output_digest=output_digest,
+            ),
+            f"dependency-index receipt mutation was accepted: {field}",
+        )
 
 
 def check_live_input_surface() -> None:
     paths = builder.check_input_paths()
     relative = {path.relative_to(ROOT).as_posix() for path in paths}
-    assert set(builder.CHECK_INPUT_FILES).issubset(relative)
+    require(
+        set(builder.CHECK_INPUT_FILES).issubset(relative),
+        "dependency-index input file set is incomplete",
+    )
     for library_root in builder.LEAN_ROOT_TARGETS:
-        assert f"{library_root}.lean" in relative
-        assert any(
-            name.startswith(f"{library_root}/") and name.endswith(".lean")
-            for name in relative
+        require(
+            f"{library_root}.lean" in relative,
+            f"dependency-index root is missing: {library_root}.lean",
         )
-    assert len(paths) == len(set(paths))
-    assert "docs/claims.json" not in relative
-    assert "scripts/query_corpus.py" not in relative
+        require(
+            any(
+                name.startswith(f"{library_root}/") and name.endswith(".lean")
+                for name in relative
+            ),
+            f"dependency-index root has no public Lean descendants: {library_root}",
+        )
+    require(
+        len(paths) == len(set(paths)),
+        "dependency-index input paths are duplicated",
+    )
+    require(
+        "docs/claims.json" not in relative,
+        "dependency-index unexpectedly includes the claims projection",
+    )
+    require(
+        "scripts/query_corpus.py" not in relative,
+        "dependency-index unexpectedly includes the query corpus",
+    )
     semantic_identities = {
         identity for identity, _payload in builder.semantic_check_inputs()
     }
-    assert semantic_identities == {
-        "docs/claims.json::release.formal_source",
-        "scripts/query_corpus.py::dependency_helpers",
-    }
-    assert builder.check_input_fingerprint().startswith("sha256:")
+    require(
+        semantic_identities == {
+            "docs/claims.json::release.formal_source",
+            "scripts/query_corpus.py::dependency_helpers",
+        },
+        "dependency-index semantic input identities drifted",
+    )
+    require(
+        builder.check_input_fingerprint().startswith("sha256:"),
+        "dependency-index input fingerprint is not a SHA-256 digest",
+    )
 
 
 def check_cached_output_rejection() -> None:
@@ -101,17 +133,25 @@ def check_cached_output_rejection() -> None:
             "output_digest": sha256_text(output.read_text(encoding="utf-8")),
         }
         receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
-        assert builder.load_cached_check(
-            root=ROOT,
-            output=output,
-            receipt_path=receipt_path,
-        ) == receipt
+        require(
+            builder.load_cached_check(
+                root=ROOT,
+                output=output,
+                receipt_path=receipt_path,
+            )
+            == receipt,
+            "valid dependency-index cache receipt was not loaded",
+        )
         output.write_text('{"current":false}\n', encoding="utf-8")
-        assert builder.load_cached_check(
-            root=ROOT,
-            output=output,
-            receipt_path=receipt_path,
-        ) is None
+        require(
+            builder.load_cached_check(
+                root=ROOT,
+                output=output,
+                receipt_path=receipt_path,
+            )
+            is None,
+            "stale dependency-index cache output was accepted",
+        )
 
 
 def check_receipt_uses_verified_snapshot() -> None:
@@ -131,7 +171,10 @@ def check_receipt_uses_verified_snapshot() -> None:
             receipt_path=receipt_path,
         )
         receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
-        assert receipt["input_fingerprint"] == "sha256:verified-at-start"
+        require(
+            receipt["input_fingerprint"] == "sha256:verified-at-start",
+            "dependency-index receipt did not retain its verified snapshot input",
+        )
 
 
 def check_environment_build_is_bounded() -> None:
