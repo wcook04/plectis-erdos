@@ -1301,6 +1301,23 @@ def main() -> int:
         assert open_packet["paper_anchor"]["anchor_class"] == (
             "remaining_open_proposition_anchor"
         )
+        programme_routes = [
+            route
+            for route in all_entrypoints(claims_document)
+            if route.get("route_kind") == "mathematical_programme"
+            and open_id in route.get("remaining_open_proposition_ids", [])
+        ]
+        expected_bindings = {
+            (route["id"], route_memory_problem_number(route))
+            for route in programme_routes
+            if route_memory_problem_number(route) is not None
+        }
+        actual_bindings = {
+            (binding["route_id"], binding["problem_number"])
+            for binding in open_packet["route_memory"]["bindings"]
+        }
+        assert actual_bindings == expected_bindings
+        assert open_packet["route_memory"]["status"] == "bound"
         reverse_open = query(
             "--paper-anchor", open_packet["paper_anchor"]["canonical_handle"]
         )

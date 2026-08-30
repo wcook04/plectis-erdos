@@ -2347,6 +2347,48 @@ def open_proposition_packet(open_id: str) -> dict[str, Any]:
         ),
         None,
     )
+    programme_routes = [
+        route
+        for route in all_entrypoints(claims)
+        if route.get("route_kind") == "mathematical_programme"
+        and open_id in route.get("remaining_open_proposition_ids", [])
+    ]
+    route_memory_bindings = []
+    for route in programme_routes:
+        problem_number = route_memory_problem_number(route)
+        if problem_number is None:
+            continue
+        route_memory_bindings.append(
+            {
+                "route_id": route["id"],
+                "problem_number": problem_number,
+                "command": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{problem_number} --route {route['id']}"
+                ),
+                "authority_posture": (
+                    "derived_resume_handoff_not_claim_or_proof_authority"
+                ),
+                "identity_contract": (
+                    "The route-memory command binds this route to the selected "
+                    "problem and current tracked source digests before resume."
+                ),
+            }
+        )
+    route_memory = {
+        "status": "bound" if route_memory_bindings else "unbound",
+        "bindings": route_memory_bindings,
+        "authority_posture": "derived_resume_handoff_not_claim_or_proof_authority",
+        "boundary": (
+            "Route-memory bindings are navigation handoffs only; they do not "
+            "promote an open proposition or replace claim authority."
+        ),
+    }
+    if not route_memory_bindings:
+        route_memory["unbound_reason"] = (
+            "no canonical mathematical programme carries this open proposition; "
+            "no resume route was invented"
+        )
     return {
         "kind": "open_proposition",
         "authority_posture": "authored_open_boundary_navigation_not_proof_authority",
@@ -2356,6 +2398,7 @@ def open_proposition_packet(open_id: str) -> dict[str, Any]:
         "linked_claims": linked_claims,
         "advancing_claims": advancing_claims,
         "paper_anchor": paper_anchor,
+        "route_memory": route_memory,
         "follow": "python3 scripts/query_corpus.py --claim <claim_id>",
         "source": "docs/claims.json::remaining_open_propositions",
         "validation": "python3 scripts/check_release.py",
