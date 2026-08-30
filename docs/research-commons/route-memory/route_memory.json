@@ -213,6 +213,25 @@
             "mechanism": "A cofinal local-window escape has least positive residue above the allowed short bound, so positivity and the integral carry recurrence cannot coexist.",
             "boundary": "Conditional obstruction only: the cofinal escape producer and the actual-series/rationality bridge remain open; this does not prove the actual #269 conclusion or make endpoint, novelty, priority, significance, or external-review claims.",
             "next_research_route": "Produce the cofinal local-window escape for the actual three-prime running-LCM digit stream, then prove the actual-series/rationality bridge before applying this consumer."
+          },
+          "three_prime_lcm_cells": {
+            "route_id": "erdos_269_three_prime_lcm_cells",
+            "status": "locally_proved_bridge_open",
+            "source_declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight",
+            "source_module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+            "source_anchor": 123,
+            "comparator_declaration": "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
+            "comparator_anchor": 470,
+            "supporting_declarations": [
+              "ErdosProblems.Erdos269.threePrimeHeight_eq_of_sameLogCell",
+              "ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell",
+              "ErdosProblems.Erdos269.smoothPrefixLcm_firstLogStep",
+              "ErdosProblems.Erdos269.smoothPrefixLcm_secondLogStep",
+              "ErdosProblems.Erdos269.smoothPrefixLcm_thirdLogStep"
+            ],
+            "mechanism": "The exact coordinatewise three-prime height equals the literal smooth-prefix running LCM; fixing all three logarithmic coordinates makes the height constant on a cell, while a single coordinate advance multiplies the LCM by the corresponding prime.",
+            "boundary": "This is a locally proved structural product only. Cell constancy and prime-power jump ratios do not prove #269 irrationality, supply the actual-series/rationality bridge, produce cofinal local-window escape, or make endpoint, novelty, priority, significance, or external-review claims.",
+            "next_research_route": "Use the exact height identity, cell decomposition, and coordinate jump ratios to identify the actual three-prime series and derive its rational-carry hypotheses; then separately prove the series/rationality bridge and the cofinal escape needed by the conditional carry consumer."
           }
         }
       },
