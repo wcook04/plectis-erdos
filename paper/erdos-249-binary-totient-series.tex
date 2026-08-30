@@ -300,6 +300,24 @@ reductions as well.
 \mword{Erdos249257/TotientMahlerDefect.lean}{989}{finrank_canonicalTotientKernel_eq}{dimension},
 \mword{Erdos249257/TotientMahlerDefect.lean}{1145}{not_finiteDimensional_span_fullTotientKernel}{infinite-dimensionality directly}.}
 
+\item\label{res:index} \stag{formalised here}
+\textbf{Canonical all-base index and unique coordinates.}  For every integer
+$k\ge2$ and level $e$, the two zero-residue channels are followed at level
+$j+1$ by the unique coordinates
+$r=kq+(d+1)$ with $q<k^j$ and $d<k-1$.  Equivalently, every integer
+$1\le r<k^{j+1}$ with $k\nmid r$ has one and only one such representation.
+The level block therefore has $k^{j+1}-k^j$ coordinates, and the complete
+finite index has exactly
+$2+\sum_{j<e}k^j(k-1)=k^e+1$ elements.  This is the concrete quotient and
+nonzero-last-digit mechanism behind the all-base rank statement: it counts
+the canonical candidates and proves the reduction coordinates, but it does
+not prove their linear independence.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/TotientKernelIndex.lean}{124}{totientKernelSectionIndex_spec}{coordinate specification},
+\mword{Erdos249257/TotientKernelIndex.lean}{213}{existsUnique_totientKernelResidueAtLevel}{unique representation},
+\mword{Erdos249257/TotientKernelIndex.lean}{241}{card_totientKernelSectionLevel}{level count},
+\mword{Erdos249257/TotientKernelIndex.lean}{277}{card_totientKernelIndex}{full index count}.}
+
 \item\label{res:denominator} \stag{formalised here}
 \textbf{Denominator exclusion, sharp for its window.}  If $\Stot=a/q$ with
 $a\in\Z$ and $q\ge1$ then
