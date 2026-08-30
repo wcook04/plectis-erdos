@@ -109,14 +109,22 @@ $X_A=\sum_{n\in A}(2^n-1)^{-1}$ for $A\subseteq\Npos$. Erd\H{o}s
 Problems~\#249 and~\#257 ask whether $S$ is irrational and whether every
 infinite-support $X_A$ is irrational. Both remain open.
 
-One broad exact family consequence for \#257 is already settled: for every
-integer base $b\ge2$, an infinite pairwise-coprime support $A$ with
-$\sum_{a\in A}1/a<\infty$ gives an irrational support series.  Its checked
-adaptive CRT mechanism absorbs small support in the first block and controls
-unselected strays by reciprocal mass.  A broader checked theorem covers
-nonnegative rational coefficients that are eventually periodic and positive
-in their periodic region.  These are family theorems, not universal \#257.
-Both memberships remain open, and the stated \#249 target remains open.
+The current checked spine's strongest direct \#257 consequence is the classical
+full-support theorem: $\sum_{k\ge0}(b^{k+1}-1)^{-1}$ is irrational for every
+integer base $b\ge2$ (Erd\H{o}s~\cite{erdos1948}; exact local route
+\lword{CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{full-support theorem}).
+Its completed mechanism is a bounded Bertrand--CRT first block, middle-window
+divisor-pair averaging, weighted tail control, and parameter closure.  This is
+$A=\Npos$, not the universal assertion for arbitrary infinite supports.
+
+A distinct structured-support theorem says that an infinite pairwise-coprime
+support $A$ with $\sum_{a\in A}1/a<\infty$ also gives an irrational support
+series at every integer base $b\ge2$; its adaptive CRT certificate absorbs
+small support in the first block and controls unselected strays by reciprocal
+mass.  A broader checked theorem covers nonnegative rational coefficients that
+are eventually periodic and positive in their periodic region.  These are
+family theorems, not universal \#257.  Both memberships remain open, and the
+stated \#249 target remains open.
 
 For \#249, Lean proves that the two zero-residue sections
 $\ph_{0,0},\ph_{1,0}$ and all odd-residue dyadic sections form a $\Q$-basis of
@@ -137,11 +145,12 @@ congruence to parity of a single quotient, with failure in the complementary
 translated residue class.  These are exact finite reductions, not an
 unbounded deficit or cofactor supply, so they do not yet yield irrationality.
 
-For \#257, we formalise the classical full-support theorem for every integer
-base $b\ge2$ and known structured-support results. At base $2$, restricting
-digits to $J\subseteq\N$ gives a compact, totally disconnected, nowhere-dense
-achievement set with unique coding, perfect when $J$ is infinite, and of
-measure $2^{-|J^c|}$ for finite $J^c$ and $0$ otherwise. This does not exclude
+At base $2$, restricting digits to $J\subseteq\N$ gives a compact, totally
+disconnected, nowhere-dense achievement set with unique coding.  We also
+formalise the classical full-support theorem for every integer base $b\ge2$
+and known structured-support results.  These restrictions are perfect when
+$J$ is infinite, and have measure $2^{-|J^c|}$ for finite $J^c$ and $0$
+otherwise.  This does not exclude
 rational points. Membership of $1/2$ is equivalent to infinitely many greedy
 omissions; we exclude the upper final branch and cell $-3$, leaving cells
 $-2,-1$ and a tail comparison open. No finite support on ranks at least two

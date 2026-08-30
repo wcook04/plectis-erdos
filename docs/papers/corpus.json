@@ -130,7 +130,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:40fbef18c4f63753db1a6cabc493f951f3ff0cb54d109e92bba241accb09a438",
+      "source_sha256": "sha256:788543f0e907793cf14147d5db6e201341ecc695c5df5e2b7fc9e8db2e70ad1b",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
@@ -147,955 +147,955 @@
           "level": 1,
           "id": "sec:intro",
           "title": "Introduction",
-          "line": 21
+          "line": 23
         },
         {
           "level": 2,
           "id": "what-is-proved",
           "title": "What is proved",
-          "line": 29
+          "line": 31
         },
         {
           "level": 4,
           "id": "what-lean-checked-means-here.",
           "title": "What Lean-checked means here.",
-          "line": 70
+          "line": 72
         },
         {
           "level": 4,
           "id": "reading-map.",
           "title": "Reading map.",
-          "line": 76
+          "line": 78
         },
         {
           "level": 1,
           "id": "sec:spines",
           "title": "The two exact reductions",
-          "line": 84
+          "line": 86
         },
         {
           "level": 2,
           "id": "res:249story",
           "title": "Erd\u0151s #249: tail differences and finite certificates",
-          "line": 90
+          "line": 92
         },
         {
           "level": 4,
           "id": "exact-reduction.",
           "title": "Exact reduction.",
-          "line": 100
+          "line": 102
         },
         {
           "level": 4,
           "id": "unconditional-finite-baseline.",
           "title": "Unconditional finite baseline.",
-          "line": 118
+          "line": 120
         },
         {
           "level": 4,
           "id": "open-boundary.",
           "title": "Open boundary.",
-          "line": 129
+          "line": 131
         },
         {
           "level": 2,
           "id": "res:halfstory",
           "title": "Erd\u0151s #257: half-value membership and final greedy skips",
-          "line": 135
+          "line": 137
         },
         {
           "level": 4,
           "id": "exact-reduction-and-finite-exclusion.",
           "title": "Exact reduction and finite exclusion.",
-          "line": 144
+          "line": 146
         },
         {
           "level": 4,
           "id": "counterexample-consequence.",
           "title": "Counterexample consequence.",
-          "line": 160
+          "line": 162
         },
         {
           "level": 4,
           "id": "open-boundary.-1",
           "title": "Open boundary.",
-          "line": 166
+          "line": 168
         },
         {
           "level": 4,
           "id": "relation-to-prior-work.",
           "title": "Relation to prior work.",
-          "line": 172
+          "line": 174
         },
         {
           "level": 1,
           "id": "sec:ladder",
           "title": "Lambert-series identities and comparison values",
-          "line": 178
+          "line": 180
         },
         {
           "level": 4,
           "id": "probabilistic-reading.",
           "title": "Probabilistic reading.",
-          "line": 252
+          "line": 254
         },
         {
           "level": 4,
           "id": "what-this-section-provesand-does-not-prove.",
           "title": "What this section proves\u2014and does not prove.",
-          "line": 262
+          "line": 264
         },
         {
           "level": 1,
           "id": "sec:eb",
           "title": "Erd\u0151s\u2013Borwein-type irrationality (the #257 direction)",
-          "line": 268
+          "line": 270
         },
         {
           "level": 2,
           "id": "full-support-the-erd\u0151sborwein-constant-every-base",
           "title": "Full support: the Erd\u0151s\u2013Borwein constant, every base",
-          "line": 274
+          "line": 276
         },
         {
           "level": 2,
           "id": "named-infinite-support-cases",
           "title": "Named infinite-support cases",
-          "line": 305
+          "line": 307
         },
         {
           "level": 2,
           "id": "the-base-2-achievement-set",
           "title": "The base-2 achievement set",
-          "line": 353
+          "line": 355
         },
         {
           "level": 4,
           "id": "geometric-and-finite-arithmetic-consequences.",
           "title": "Geometric and finite-arithmetic consequences.",
-          "line": 391
+          "line": 393
         },
         {
           "level": 2,
           "id": "rigidity-of-a-hypothetical-rational-support",
           "title": "Rigidity of a hypothetical rational support",
-          "line": 414
+          "line": 416
         },
         {
           "level": 2,
           "id": "the-target-12",
           "title": "The target 1/2",
-          "line": 495
+          "line": 497
         },
         {
           "level": 4,
           "id": "why-this-target.",
           "title": "Why this target.",
-          "line": 499
+          "line": 501
         },
         {
           "level": 4,
           "id": "a-worked-start.",
           "title": "A worked start.",
-          "line": 513
+          "line": 515
         },
         {
           "level": 2,
           "id": "sec:final-skip-reduction",
           "title": "The final-skip reduction",
-          "line": 594
+          "line": 596
         },
         {
           "level": 4,
           "id": "logical-status-of-the-final-skip-argument.",
           "title": "Logical status of the final-skip argument.",
-          "line": 673
+          "line": 675
         },
         {
           "level": 2,
           "id": "sec:twenty-one-frontier",
           "title": "A second rational target: 1/21",
-          "line": 691
+          "line": 693
         },
         {
           "level": 2,
           "id": "what-remains-open",
           "title": "What remains open",
-          "line": 709
+          "line": 711
         },
         {
           "level": 1,
           "id": "sec:249",
           "title": "The totient constant S (Erd\u0151s #249)",
-          "line": 723
+          "line": 725
         },
         {
           "level": 2,
           "id": "sec:uncond",
           "title": "Unconditional: no small denominator",
-          "line": 735
+          "line": 737
         },
         {
           "level": 2,
           "id": "sec:geom",
           "title": "The geometric picture: S as coprime-pair mass",
-          "line": 771
+          "line": 773
         },
         {
           "level": 2,
           "id": "sec:reduction",
           "title": "Exact certificate characterisation",
-          "line": 791
+          "line": 793
         },
         {
           "level": 4,
           "id": "why-tail-differences-detect-rationality.",
           "title": "Why tail differences detect rationality.",
-          "line": 797
+          "line": 799
         },
         {
           "level": 2,
           "id": "sec:249-open",
           "title": "What remains open",
-          "line": 918
+          "line": 920
         },
         {
           "level": 1,
           "id": "sec:architecture",
           "title": "One transform and the limit of finite evidence",
-          "line": 943
+          "line": 945
         },
         {
           "level": 2,
           "id": "sec:one-transform",
           "title": "One transform, three distinct questions",
-          "line": 949
+          "line": 951
         },
         {
           "level": 2,
           "id": "why-no-status-transfers",
           "title": "Why no status transfers",
-          "line": 977
+          "line": 979
         },
         {
           "level": 2,
           "id": "the-shared-bottleneck",
           "title": "The shared bottleneck",
-          "line": 987
+          "line": 989
         },
         {
           "level": 4,
           "id": "what-finite-witnesses-can-decide.",
           "title": "What finite witnesses can decide.",
-          "line": 1007
+          "line": 1009
         },
         {
           "level": 1,
           "id": "sec:assimilated-packets",
           "title": "Assimilated research packets and the next theorem producers",
-          "line": 1025
+          "line": 1027
         },
         {
           "level": 2,
           "id": "sec:packet-prime-tail",
           "title": "A strict prime-tail endpoint for #249",
-          "line": 1033
+          "line": 1035
         },
         {
           "level": 2,
           "id": "sec:packet-hankel",
           "title": "M\u00f6bius\u2013Mersenne moments and Hankel curvature",
-          "line": 1056
+          "line": 1058
         },
         {
           "level": 2,
           "id": "sec:packet-sieve",
           "title": "A finite Euler-sieve tower and its radial obstruction",
-          "line": 1069
+          "line": 1071
         },
         {
           "level": 2,
           "id": "sec:packet-cusp",
           "title": "A sharp parabolic cusp for the actual totient measure",
-          "line": 1090
+          "line": 1092
         },
         {
           "level": 2,
           "id": "sec:packet-curvature",
           "title": "Prime-ray cyclotomic curvature and affine completion",
-          "line": 1104
+          "line": 1106
         },
         {
           "level": 2,
           "id": "sec:packet-mersenne-cantor",
           "title": "Hereditary Mersenne\u2013Lambert Cantor rigidity for #257",
-          "line": 1116
+          "line": 1118
         },
         {
           "level": 2,
           "id": "sec:packet-fanin",
           "title": "Fan-in: what can actually close a problem",
-          "line": 1143
+          "line": 1145
         },
         {
           "level": 1,
           "id": "sec:verify",
           "title": "Formal verification and reproducibility",
-          "line": 1166
+          "line": 1168
         },
         {
           "level": 4,
           "id": "proof-authority-and-source-identity.",
           "title": "Proof authority and source identity.",
-          "line": 1172
+          "line": 1174
         },
         {
           "level": 4,
           "id": "reproduction-commands-and-artefact-identities.",
           "title": "Reproduction commands and artefact identities.",
-          "line": 1178
+          "line": 1180
         },
         {
           "level": 4,
           "id": "what-the-computation-establishes.",
           "title": "What the computation establishes.",
-          "line": 1184
+          "line": 1186
         },
         {
           "level": 4,
           "id": "section-consequence.",
           "title": "Section consequence.",
-          "line": 1190
+          "line": 1192
         },
         {
           "level": 1,
           "id": "sec:further",
           "title": "Exact remaining problems and further questions",
-          "line": 1196
+          "line": 1198
         },
         {
           "level": 2,
           "id": "two-concrete-scalar-criteria",
           "title": "Two concrete scalar criteria",
-          "line": 1202
+          "line": 1204
         },
         {
           "level": 4,
           "id": "dependency-direction.",
           "title": "Dependency direction.",
-          "line": 1277
+          "line": 1279
         },
         {
           "level": 2,
           "id": "sec:asks",
           "title": "What we need from a mathematician",
-          "line": 1303
+          "line": 1305
         },
         {
           "level": 4,
           "id": "ask-1-249-certificates-beyond-every-cutoff.",
           "title": "Ask 1 (#249): certificates beyond every cutoff.",
-          "line": 1311
+          "line": 1313
         },
         {
           "level": 4,
           "id": "ask-2-249-a-prime-indexed-gap-in-the-tail-orbit.",
           "title": "Ask 2 (#249): a prime-indexed gap in the tail orbit.",
-          "line": 1323
+          "line": 1325
         },
         {
           "level": 4,
           "id": "ask-3-257-the-two-surviving-carries.",
           "title": "Ask 3 (#257): the two surviving carries.",
-          "line": 1339
+          "line": 1341
         },
         {
           "level": 4,
           "id": "ask-4-257-the-tail-comparison.",
           "title": "Ask 4 (#257): the tail comparison.",
-          "line": 1351
+          "line": 1353
         },
         {
           "level": 2,
           "id": "sec:unresolved",
           "title": "The unresolved statements",
-          "line": 1369
+          "line": 1371
         },
         {
           "level": 4,
           "id": "erd\u0151s-249-one-obligation-in-two-equivalent-forms.",
           "title": "Erd\u0151s #249: one obligation in two equivalent forms.",
-          "line": 1373
+          "line": 1375
         },
         {
           "level": 4,
           "id": "erd\u0151s-257-universal-statement-and-counterexample-route.",
           "title": "Erd\u0151s #257: universal statement and counterexample route.",
-          "line": 1397
+          "line": 1399
         },
         {
           "level": 4,
           "id": "the-121-counterexample-route.",
           "title": "The 1/21 counterexample route.",
-          "line": 1417
+          "line": 1419
         },
         {
           "level": 4,
           "id": "conclusion-what-the-reductions-change.",
           "title": "Conclusion: what the reductions change.",
-          "line": 1423
+          "line": 1425
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 1429
+          "line": 1431
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 1433
+          "line": 1435
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 1439
+          "line": 1441
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 1445
+          "line": 1447
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 1451
+          "line": 1453
         },
         {
           "level": 1,
           "id": "app:half-technical",
           "title": "Technical reductions for the half-value branch",
-          "line": 1457
+          "line": 1459
         },
         {
           "level": 2,
           "id": "res:twothirdsband",
           "title": "Exact band for a final skip between two takes",
-          "line": 1498
+          "line": 1500
         },
         {
           "level": 2,
           "id": "app:half-conditional-producers",
           "title": "Conditional criteria and local inputs for structured supports",
-          "line": 1524
+          "line": 1526
         },
         {
           "level": 3,
           "id": "res:sunflower",
           "title": "A conditional pairwise-coprime dilation criterion",
-          "line": 1530
+          "line": 1532
         },
         {
           "level": 3,
           "id": "res:compositedefect",
           "title": "Composite dilation defects",
-          "line": 1538
+          "line": 1540
         },
         {
           "level": 3,
           "id": "res:mixedlayer",
           "title": "Mixed prime-power layers",
-          "line": 1546
+          "line": 1548
         },
         {
           "level": 3,
           "id": "res:halftrapping",
           "title": "Rank-one obstruction and reverse-carry spacing",
-          "line": 1552
+          "line": 1554
         },
         {
           "level": 3,
           "id": "res:halfcarryreachability",
           "title": "Half-carry reachability",
-          "line": 1558
+          "line": 1560
         },
         {
           "level": 4,
           "id": "arbitrarily-late-strip-returns.",
           "title": "Arbitrarily late strip returns.",
-          "line": 1566
+          "line": 1568
         },
         {
           "level": 4,
           "id": "terminal-only-unbounded-depth-approximation.",
           "title": "Terminal-only unbounded-depth approximation.",
-          "line": 1585
+          "line": 1587
         },
         {
           "level": 4,
           "id": "scaled-terminal-vanishing.",
           "title": "Scaled terminal vanishing.",
-          "line": 1605
+          "line": 1607
         },
         {
           "level": 2,
           "id": "app:half-finite-cofinal",
           "title": "Finite-to-unbounded-depth criteria: windows, seams, and compactness",
-          "line": 1625
+          "line": 1627
         },
         {
           "level": 3,
           "id": "res:halfcylindershadow",
           "title": "Finite residuals for the half-value problem",
-          "line": 1631
+          "line": 1633
         },
         {
           "level": 3,
           "id": "res:fixedcoeffrewind",
           "title": "Fixed-coefficient rewind",
-          "line": 1637
+          "line": 1639
         },
         {
           "level": 3,
           "id": "res:selectedhalfwindow",
           "title": "Selected half-carry windows",
-          "line": 1643
+          "line": 1645
         },
         {
           "level": 3,
           "id": "res:rewindphase",
           "title": "A realised rewind criterion",
-          "line": 1649
+          "line": 1651
         },
         {
           "level": 3,
           "id": "res:protectedseam",
           "title": "Localised protected seams",
-          "line": 1655
+          "line": 1657
         },
         {
           "level": 3,
           "id": "res:cofinalwindowseam",
           "title": "Combining the two unbounded-depth half-carry criteria",
-          "line": 1661
+          "line": 1663
         },
         {
           "level": 3,
           "id": "res:integergreedy",
           "title": "Integer-greedy first-wrap reduction",
-          "line": 1667
+          "line": 1669
         },
         {
           "level": 3,
           "id": "res:concreteseam",
           "title": "Exact finite recurrence for the greedy seam",
-          "line": 1673
+          "line": 1675
         },
         {
           "level": 2,
           "id": "app:half-final-skip",
           "title": "Exact final-skip reduction and its exceptional carries",
-          "line": 1679
+          "line": 1681
         },
         {
           "level": 3,
           "id": "app:fatalright-detail",
           "title": "Fatal gaps and eventual right tails",
-          "line": 1685
+          "line": 1687
         },
         {
           "level": 4,
           "id": "the-case-c_d-3.",
           "title": "The case C_D=-3.",
-          "line": 1693
+          "line": 1695
         },
         {
           "level": 4,
           "id": "the-case-c_d-2.",
           "title": "The case C_D=-2.",
-          "line": 1699
+          "line": 1701
         },
         {
           "level": 4,
           "id": "the-two-remaining-inputs.",
           "title": "The two remaining inputs.",
-          "line": 1716
+          "line": 1718
         },
         {
           "level": 4,
           "id": "finite-upper-reset-band-certificates.",
           "title": "Finite upper-reset band certificates.",
-          "line": 1724
+          "line": 1726
         },
         {
           "level": 3,
           "id": "app:halfmembership-detail",
           "title": "Positive half-membership classification",
-          "line": 1730
+          "line": 1732
         },
         {
           "level": 3,
           "id": "res:largestskip",
           "title": "Largest skipped ranks",
-          "line": 1736
+          "line": 1738
         },
         {
           "level": 3,
           "id": "res:boundarypulse",
           "title": "Divisor pulses at the largest-skip boundary",
-          "line": 1748
+          "line": 1750
         },
         {
           "level": 3,
           "id": "res:largestskipinduction",
           "title": "Largest-skip induction",
-          "line": 1754
+          "line": 1756
         },
         {
           "level": 3,
           "id": "res:fixedtailsocket",
           "title": "The fixed-tail survival criterion",
-          "line": 1760
+          "line": 1762
         },
         {
           "level": 3,
           "id": "res:producercarry",
           "title": "Residual identity for the middle-transition support",
-          "line": 1766
+          "line": 1768
         },
         {
           "level": 3,
           "id": "res:quarterband",
           "title": "Quarter-band endpoint cases",
-          "line": 1772
+          "line": 1774
         },
         {
           "level": 3,
           "id": "res:resetdeficit",
           "title": "Right-branch deficit escape",
-          "line": 1786
+          "line": 1788
         },
         {
           "level": 3,
           "id": "res:seamproducer",
           "title": "Alignment of seam and transition carries",
-          "line": 1798
+          "line": 1800
         },
         {
           "level": 2,
           "id": "app:half-evidence",
           "title": "Finite evidence, coordinate changes, and eliminated special cases",
-          "line": 1804
+          "line": 1806
         },
         {
           "level": 3,
           "id": "res:selectedwindowbase",
           "title": "A verified initial selected window",
-          "line": 1810
+          "line": 1812
         },
         {
           "level": 3,
           "id": "res:rewindseambridge",
           "title": "Rewind-to-seam equivalence",
-          "line": 1816
+          "line": 1818
         },
         {
           "level": 3,
           "id": "selected-suffix-cylinders",
           "title": "Selected suffix cylinders",
-          "line": 1822
+          "line": 1824
         },
         {
           "level": 4,
           "id": "status-and-relation-to-prior-work.",
           "title": "Status and relation to prior work.",
-          "line": 1938
+          "line": 1940
         },
         {
           "level": 3,
           "id": "res:prefeedback",
           "title": "Verified finite suffix-cylinder stages",
-          "line": 1944
+          "line": 1946
         },
         {
           "level": 3,
           "id": "res:halfdivisordrop",
           "title": "Half-divisor unit drop",
-          "line": 1958
+          "line": 1960
         },
         {
           "level": 3,
           "id": "res:rewindboundarycounterexample",
           "title": "A finite rewind-boundary obstruction",
-          "line": 1964
+          "line": 1966
         },
         {
           "level": 3,
           "id": "res:producercarrycoordinates",
           "title": "Explicit carry coordinates at the final non-right transition",
-          "line": 1970
+          "line": 1972
         },
         {
           "level": 3,
           "id": "res:campbellboundary",
           "title": "Incompatibility with Campbell\u2019s prime-progression bound",
-          "line": 1984
+          "line": 1986
         },
         {
           "level": 4,
           "id": "appendix-consequence.",
           "title": "Appendix consequence.",
-          "line": 1994
+          "line": 1996
         },
         {
           "level": 1,
           "id": "sec:carry",
           "title": "Auxiliary rationality criteria from binary carry systems",
-          "line": 2000
+          "line": 2002
         },
         {
           "level": 2,
           "id": "app:carry-normal-form",
           "title": "Exact normal form: tail-orbit rigidity",
-          "line": 2036
+          "line": 2038
         },
         {
           "level": 2,
           "id": "app:carry-boolean",
           "title": "Exact #257 coordinates: Boolean\u2013M\u00f6bius carry certificates",
-          "line": 2066
+          "line": 2068
         },
         {
           "level": 4,
           "id": "the-exact-coordinate-chain.",
           "title": "The exact coordinate chain.",
-          "line": 2091
+          "line": 2093
         },
         {
           "level": 2,
           "id": "app:carry-sublog",
           "title": "Necessary condition I: sublogarithmic divisor coverage",
-          "line": 2129
+          "line": 2131
         },
         {
           "level": 2,
           "id": "app:carry-mass",
           "title": "Necessary conditions II: wraps, mass, and unbounded states",
-          "line": 2163
+          "line": 2165
         },
         {
           "level": 2,
           "id": "app:carry-geometry",
           "title": "Independent geometry and one-sided nonmembership certificates",
-          "line": 2246
+          "line": 2248
         },
         {
           "level": 4,
           "id": "appendix-consequence.-1",
           "title": "Appendix consequence.",
-          "line": 2291
+          "line": 2293
         },
         {
           "level": 1,
           "id": "app:totient-technical",
           "title": "Technical reductions for the totient-certificate branch",
-          "line": 2297
+          "line": 2299
         },
         {
           "level": 2,
           "id": "app:totient-normal",
           "title": "Exact unbounded-depth normal forms and cone consequences",
-          "line": 2317
+          "line": 2319
         },
         {
           "level": 4,
           "id": "cone-flatness-and-completeness.",
           "title": "Cone flatness and completeness.",
-          "line": 2323
+          "line": 2325
         },
         {
           "level": 4,
           "id": "an-exact-target-residue-class.",
           "title": "An exact target residue class.",
-          "line": 2339
+          "line": 2341
         },
         {
           "level": 2,
           "id": "app:totient-finite",
           "title": "Fixed-scale mechanisms and conditional unbounded implications",
-          "line": 2378
+          "line": 2380
         },
         {
           "level": 4,
           "id": "a-one-way-analytic-enclosure.",
           "title": "A one-way analytic enclosure.",
-          "line": 2384
+          "line": 2386
         },
         {
           "level": 4,
           "id": "a-reduced-denominator-finite-predicate.",
           "title": "A reduced-denominator finite predicate.",
-          "line": 2408
+          "line": 2410
         },
         {
           "level": 4,
           "id": "verified-finite-certificate-families.",
           "title": "Verified finite certificate families.",
-          "line": 2422
+          "line": 2424
         },
         {
           "level": 4,
           "id": "exact-finite-divisor-index-split-and-sufficient-projection-test.",
           "title": "Exact finite divisor-index split and sufficient projection test.",
-          "line": 2452
+          "line": 2454
         },
         {
           "level": 4,
           "id": "res:t64closure",
           "title": "Primality certificates at changing-lcm scales through t=64.",
-          "line": 2539
+          "line": 2541
         },
         {
           "level": 4,
           "id": "res:t64endpoint",
           "title": "The diagonal certificate at t=64.",
-          "line": 2545
+          "line": 2547
         },
         {
           "level": 2,
           "id": "app:totient-boundaries",
           "title": "Candidate unbounded inputs and no-go boundaries",
-          "line": 2551
+          "line": 2553
         },
         {
           "level": 4,
           "id": "res:flexibleoddwindow",
           "title": "Candidate unbounded input: a three-rank odd window.",
-          "line": 2557
+          "line": 2559
         },
         {
           "level": 4,
           "id": "res:flexibleoddaffine",
           "title": "Exact affine form and bounded zero-orbit obstruction.",
-          "line": 2563
+          "line": 2565
         },
         {
           "level": 4,
           "id": "exact-fresh-prime-deficit-decomposition.",
           "title": "Exact fresh-prime deficit decomposition.",
-          "line": 2569
+          "line": 2571
         },
         {
           "level": 4,
           "id": "exact-one-bit-lifting.",
           "title": "Exact one-bit lifting.",
-          "line": 2583
+          "line": 2585
         },
         {
           "level": 4,
           "id": "independent-no-go-parity-is-not-a-margin-certificate.",
           "title": "Independent no-go: parity is not a margin certificate.",
-          "line": 2597
+          "line": 2599
         },
         {
           "level": 4,
           "id": "independent-no-go-prime-adjunction.",
           "title": "Independent no-go: prime adjunction.",
-          "line": 2620
+          "line": 2622
         },
         {
           "level": 2,
           "id": "app:totient-rank",
           "title": "Unconditional dyadic rank and the rationality-side carry bound",
-          "line": 2663
+          "line": 2665
         },
         {
           "level": 4,
           "id": "relation-to-prior-work.-1",
           "title": "Relation to prior work.",
-          "line": 2681
+          "line": 2683
         },
         {
           "level": 4,
           "id": "appendix-consequence.-2",
           "title": "Appendix consequence.",
-          "line": 2743
+          "line": 2745
         },
         {
           "level": 1,
           "id": "app:lambert-complements",
           "title": "Lambert, probability, and finite-algebraic complements",
-          "line": 2754
+          "line": 2756
         },
         {
           "level": 2,
           "id": "sec:additional-lambert",
           "title": "Weighted Lambert comparison families",
-          "line": 2762
+          "line": 2764
         },
         {
           "level": 4,
           "id": "sec:periodicweights",
           "title": "Periodic weights.",
-          "line": 2770
+          "line": 2772
         },
         {
           "level": 2,
           "id": "app:lambert-algebraic",
           "title": "Finite algebraic boundaries and squared-Lambert coordinates",
-          "line": 2800
+          "line": 2802
         },
         {
           "level": 4,
           "id": "sec:primitiveindex",
           "title": "Finite denominator-clearing boundaries.",
-          "line": 2806
+          "line": 2808
         },
         {
           "level": 4,
           "id": "sec:squared",
           "title": "Squared Lambert calculus.",
-          "line": 2859
+          "line": 2861
         },
         {
           "level": 2,
           "id": "app:lambert-probability",
           "title": "Probability-coordinate geometry: reduced slopes and cylinders",
-          "line": 2879
+          "line": 2881
         },
         {
           "level": 4,
           "id": "reduced-directions-and-cylinder-masses.",
           "title": "Reduced directions and cylinder masses.",
-          "line": 2885
+          "line": 2887
         },
         {
           "level": 4,
           "id": "run-lengths-and-arithmetic-height.",
           "title": "Run lengths and arithmetic height.",
-          "line": 2925
+          "line": 2927
         },
         {
           "level": 4,
           "id": "appendix-consequence.-3",
           "title": "Appendix consequence.",
-          "line": 2974
+          "line": 2976
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 2980
+          "line": 2982
         }
       ],
-      "citations_rendered": 54,
+      "citations_rendered": 55,
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:0148db0d4b0bf762c03bb9792e102b3cb3e4fd1b8fb4d4a23783a63360e503f3",
-      "pdf_byte_count": 443042,
+      "pdf_sha256": "sha256:092926d4fa8802b3e502c5a55d0c5e927d6b59b6c97a8dd77d9b993d4ddf90b4",
+      "pdf_byte_count": 443208,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1103,23 +1103,23 @@
           {
             "id": "sec:spines",
             "title": "The two exact reductions",
-            "line": 84
+            "line": 86
           },
           {
             "id": "sec:architecture",
             "title": "One transform and the limit of finite evidence",
-            "line": 943
+            "line": 945
           },
           {
             "id": "sec:unresolved",
             "title": "The unresolved statements",
-            "line": 1369
+            "line": 1371
           }
         ],
         "unresolved_count": 0,
         "stated_at": {
           "id": "reading-map.",
-          "line": 76
+          "line": 78
         }
       }
     },
@@ -3039,7 +3039,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:64be2c7aec24867afc64ffd652e56f1d041920937eb28d637ae6535e528e9189",
+      "source_sha256": "sha256:61c24febe6d00529cbcc6952b58dd9ac0e4e0a59444c8156449a80eeddd8d7cf",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
@@ -3056,145 +3056,145 @@
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction and main results",
-          "line": 53
+          "line": 59
         },
         {
           "level": 4,
           "id": "the-finite-support-theorem.",
           "title": "The finite-support theorem.",
-          "line": 78
+          "line": 84
         },
         {
           "level": 4,
           "id": "structure.",
           "title": "Structure.",
-          "line": 103
+          "line": 109
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 109
+          "line": 115
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 136
+          "line": 142
         },
         {
           "level": 4,
           "id": "integral-scaled-tails-and-unboundedness.",
           "title": "Integral scaled tails, and unboundedness.",
-          "line": 142
+          "line": 148
         },
         {
           "level": 4,
           "id": "divisor-coverage-cannot-have-long-gaps.",
           "title": "Divisor coverage cannot have long gaps.",
-          "line": 170
+          "line": 176
         },
         {
           "level": 4,
           "id": "a-reciprocal-sum-lower-bound.",
           "title": "A reciprocal-sum lower bound.",
-          "line": 188
+          "line": 194
         },
         {
           "level": 4,
           "id": "a-booleanm\u00f6bius-characterisation.",
           "title": "A Boolean\u2013M\u00f6bius characterisation.",
-          "line": 218
+          "line": 224
         },
         {
           "level": 4,
           "id": "combined-constraints-on-a-rational-counterexample.",
           "title": "Combined constraints on a rational counterexample.",
-          "line": 260
+          "line": 266
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Representative known irrational supports",
-          "line": 266
+          "line": 272
         },
         {
           "level": 1,
           "id": "sec:squarefree",
           "title": "Squarefree support and a coordinate-dependent obstruction",
-          "line": 321
+          "line": 327
         },
         {
           "level": 2,
           "id": "the-values-are-known-at-every-power-of-two-base",
           "title": "The values are known at every power-of-two base",
-          "line": 339
+          "line": 345
         },
         {
           "level": 2,
           "id": "two-block-certificate-hypotheses-have-no-instance",
           "title": "Two block-certificate hypotheses have no instance",
-          "line": 367
+          "line": 373
         },
         {
           "level": 2,
           "id": "the-obstruction-is-a-normalisation-not-the-value",
           "title": "The obstruction is a normalisation, not the value",
-          "line": 413
+          "line": 419
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Achievement-set geometry and the value 1/2",
-          "line": 431
+          "line": 437
         },
         {
           "level": 2,
           "id": "geometry-after-restricting-the-allowed-exponents",
           "title": "Geometry after restricting the allowed exponents",
-          "line": 453
+          "line": 459
         },
         {
           "level": 2,
           "id": "the-value-12",
           "title": "The value 1/2",
-          "line": 483
+          "line": 489
         },
         {
           "level": 2,
           "id": "a-second-rational-target",
           "title": "A second rational target",
-          "line": 602
+          "line": 608
         },
         {
           "level": 2,
           "id": "the-canonical-121-frontier",
           "title": "The canonical 1/21 frontier",
-          "line": 626
+          "line": 632
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Open problems",
-          "line": 670
+          "line": 676
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 771
+          "line": 777
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 777
+          "line": 783
         }
       ],
-      "citations_rendered": 22,
+      "citations_rendered": 23,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:a2362e0b04f2024340200b5d51bc34df05bfcc96f7cd9bfa7de91aa33d88a43f",
-      "pdf_byte_count": 174972,
+      "pdf_sha256": "sha256:67c0d4b184790197bf60e8d375d29285e164aaddc365f88950adba8852abe4d2",
+      "pdf_byte_count": 176570,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3202,12 +3202,12 @@
           {
             "id": "sec:period",
             "title": "Finite-support denominator periods",
-            "line": 109
+            "line": 115
           },
           {
             "id": "sec:map",
             "title": "Representative known irrational supports",
-            "line": 266
+            "line": 272
           },
           {
             "id": "sec:ask",
@@ -3217,7 +3217,7 @@
           {
             "id": "sec:open",
             "title": "Open problems",
-            "line": 670
+            "line": 676
           }
         ],
         "unresolved_count": 1

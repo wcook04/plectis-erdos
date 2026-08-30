@@ -55,18 +55,31 @@ incidence $\scA_A(n)=\#\{d\mid n:d\in A\}$, for which
 $X_A=\sum_{n\ge1}\scA_A(n)2^{-n}$; these coefficients are nonnegative divisor
 counts and need not be binary digits.
 
-The strongest unconditional infinite-support consequences come before the
-finite-support diagnostics.  For every integer base $b\ge2$, every infinite
-pairwise-coprime support $A$ with $\sum_{a\in A}1/a<\infty$ has irrational
-support series.  More generally, the checked nonnegative rational
-coefficient theorem says that an eventually-periodic coefficient sequence,
-positive somewhere in its periodic region, gives an irrational
-\(\sum_{a\ge0}\gamma(a)/(b^a-1)\).  These are complete family theorems, not
-the universal assertion for arbitrary infinite supports.  The pairwise-
-coprime mechanism is an adaptive CRT certificate: small support elements are
-paid for in the first block, while summable reciprocal mass controls the
-unselected strays.  The periodic mechanism is a divisor-orbit sieve followed
-by finite rational-prefix transfer.  The exact checked routes are
+The strongest direct consequence in the checked spine is the classical
+full-support theorem: for every integer base $b\ge2$,
+\[
+  \sum_{k\ge0}\frac1{b^{k+1}-1}
+\]
+is irrational.  This is the case $A=\Npos$, attributed to Erd\H{o}s~\cite{erdos1948}
+and formalised here at
+\mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{full-support irrationality theorem}.
+Its hard step is a completed weighted certificate machine: a bounded
+Bertrand--CRT first block, middle-window divisor-pair averaging with
+pigeonhole selection, weighted tail control, and explicit parameter closure.
+It is a complete family theorem, not the universal assertion for arbitrary
+infinite supports.
+
+A distinct structured-support theorem says that, for every integer base
+$b\ge2$, every infinite pairwise-coprime support $A$ with
+$\sum_{a\in A}1/a<\infty$ has irrational support series.  More generally,
+the checked nonnegative rational coefficient theorem says that an
+eventually-periodic coefficient sequence, positive somewhere in its periodic
+region, gives an irrational
+\(\sum_{a\ge0}\gamma(a)/(b^a-1)\).  The pairwise-coprime mechanism is an
+adaptive CRT certificate: small support elements are paid for in the first
+block, while summable reciprocal mass controls the unselected strays.  The
+periodic mechanism is a divisor-orbit sieve followed by finite rational-prefix
+transfer.  The exact checked routes are
 \mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{pairwise-coprime-support theorem}
 and
 \mword{Erdos249257/CertificateKernel.lean}{12811}{irrational_ratWeightSeries_eventuallyPeriodic}{eventually-periodic coefficient theorem}.
@@ -139,10 +152,10 @@ are cited prior work, not formalised here.  These classifications and scoped
 frontiers do not solve \#257 or either target.
 \end{abstract}
 
-\externalreviewobject{The paper proves finite-support denominator-period
-noncollapse, exact injective coding and a measure dichotomy for restricted
-achievement sets, and formalises the classical full-support irrationality
-theorem for every integer base $b\ge2$.}{These are distinct contribution
+\externalreviewobject{The paper formalises the classical full-support
+irrationality theorem for every integer base $b\ge2$, and proves
+finite-support denominator-period noncollapse, exact injective coding and a
+measure dichotomy for restricted achievement sets.}{These are distinct contribution
 classes: local structure, known achievement-set geometry, and prior
 mathematics.  None treats every infinite support, so universal Problem~\#257
 and the stated rational targets remain open.}{Comparator selects the exact
