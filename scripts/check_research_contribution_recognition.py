@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import stat
 from pathlib import Path
 from typing import Any
 
@@ -100,12 +101,27 @@ def _has_symlink_component(path: Path) -> bool:
 def _read_regular(path: Path, label: str) -> tuple[bytes | None, list[str]]:
     if _has_symlink_component(path):
         return None, [f"{label}: generated output path must not traverse symbolic links"]
-    if not path.is_file():
-        return None, [f"{label}: generated output is missing or not a regular file"]
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
     try:
-        return path.read_bytes(), []
+        descriptor = os.open(path, flags)
     except OSError as exc:
-        return None, [f"{label}: generated output cannot be read: {exc}"]
+        return None, [f"{label}: generated output cannot be read safely: {exc}"]
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            return None, [f"{label}: generated output is missing or not a regular file"]
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        return b"".join(chunks), []
+    except OSError as exc:
+        return None, [f"{label}: generated output cannot be read safely: {exc}"]
+    finally:
+        os.close(descriptor)
 
 
 def _aggregate_source_context_errors(

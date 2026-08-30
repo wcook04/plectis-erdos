@@ -7,9 +7,11 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import subprocess
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import build_research_contribution_recognition as recognition
 import build_research_contributions as contributions
@@ -126,6 +128,25 @@ def main() -> int:
         require(
             checker._has_symlink_component(hidden),
             "recognition checker normalized away a symlink before resolving ..",
+        )
+        regular = output_root / "regular.json"
+        regular.write_bytes(b"{}")
+        file_link = output_root / "file-link.json"
+        file_link.symlink_to(regular)
+        with patch.object(checker, "_has_symlink_component", return_value=False):
+            payload, errors = checker._read_regular(file_link, "test output")
+        require(payload is None, "recognition checker followed a substituted output file")
+        require(
+            any("cannot be read safely" in error for error in errors),
+            "recognition checker did not retain the no-follow descriptor boundary",
+        )
+        fifo = output_root / "output.fifo"
+        os.mkfifo(fifo)
+        payload, errors = checker._read_regular(fifo, "test output")
+        require(payload is None, "recognition checker accepted a special output file")
+        require(
+            any("not a regular file" in error for error in errors),
+            "recognition checker did not reject a special output file",
         )
 
     name, receipt, payload, head = accepted_source()
