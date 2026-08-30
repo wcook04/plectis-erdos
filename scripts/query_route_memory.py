@@ -253,6 +253,110 @@ def _canonical_route_memory(root: Path, problem: Mapping[str, Any]) -> dict[str,
     }
 
 
+def _semantic_family_handoffs(record: Mapping[str, Any]) -> dict[str, Any]:
+    """Expose executable semantic follow-through for a canonical route record.
+
+    Route memory remains the authority for the exact source locators and
+    boundaries in each record.  The semantic query owns family hierarchy and
+    relation interpretation, so this packet carries only stable handles into
+    that query rather than copying a second ranking or relation registry.
+    """
+    problem = record.get("problem")
+    route_id = record.get("route_id")
+    prefix = f"erdos_{problem}_"
+    root_family = (
+        str(route_id)[len(prefix):]
+        if isinstance(route_id, str) and str(route_id).startswith(prefix)
+        else None
+    )
+    evidence = record.get("evidence")
+    evidence = evidence if isinstance(evidence, Mapping) else {}
+    source_current = evidence.get("source_current")
+    source_current = (
+        source_current if isinstance(source_current, Mapping) else {}
+    )
+    source_declaration = evidence.get("source_declaration")
+    source_module = evidence.get("source_module") or source_current.get("module")
+    source_anchor = evidence.get("source_anchor")
+    if source_anchor is None and isinstance(source_declaration, str):
+        short_name = source_declaration.rsplit(".", 1)[-1]
+        declarations = source_current.get("declarations")
+        if isinstance(declarations, list):
+            source_anchor = next(
+                (
+                    declaration.get("line")
+                    for declaration in declarations
+                    if isinstance(declaration, Mapping)
+                    and declaration.get("name") == short_name
+                ),
+                None,
+            )
+    related = evidence.get("related_families")
+    related = related if isinstance(related, Mapping) else {}
+
+    rows: list[dict[str, Any]] = []
+    if root_family:
+        rows.append(
+            {
+                "family_id": root_family,
+                "route_id": route_id,
+                "relation_role": "canonical_route_record",
+                "source_declaration": source_declaration,
+                "source_module": source_module,
+                "source_anchor": source_anchor,
+                "proof_status": record.get("status"),
+                "hard_mechanism": record.get("actual_established"),
+                "natural_friction": record.get("failure_boundary"),
+                "open_boundary": record.get("next_obligation"),
+                "query": (
+                    "python3 scripts/query_semantic.py family-relations "
+                    f"{root_family}"
+                ),
+            }
+        )
+
+    for family_id in sorted(str(value) for value in related):
+        family = related[family_id]
+        if not isinstance(family, Mapping):
+            continue
+        rows.append(
+            {
+                "family_id": family_id,
+                "route_id": family.get("route_id"),
+                "relation_role": "related_family_record",
+                "source_declaration": family.get("source_declaration"),
+                "source_module": family.get("source_module"),
+                "source_anchor": family.get("source_anchor"),
+                "proof_status": family.get("status"),
+                "hard_mechanism": family.get("mechanism"),
+                "natural_friction": family.get("boundary"),
+                "open_boundary": family.get("next_research_route"),
+                "query": (
+                    "python3 scripts/query_semantic.py family-relations "
+                    f"{family_id}"
+                ),
+            }
+        )
+
+    return {
+        "authority_posture": (
+            "Route-memory source locators and boundaries are projected into "
+            "semantic query handles; query_semantic owns family hierarchy, "
+            "relation interpretation, and canonical programme rank."
+        ),
+        "hierarchy_authority": (
+            "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+            "programme_family_order and family_relations"
+        ),
+        "ordering_rule": (
+            "The root is listed first and related records are sorted only for "
+            "determinism; no route-memory array order is a value rank. Run the "
+            "semantic query for stronger/weaker and relation-class edges."
+        ),
+        "families": rows,
+    }
+
+
 def _entrypoints(root: Path) -> list[dict[str, Any]]:
     claims = _json(root / "docs" / "claims.json")
     rows = claims.get("machine_readable_paper", {}).get("entrypoints", [])
@@ -540,6 +644,9 @@ def build_packet(
     source_digests = _source_digests(root)
     source_commit = _head(root)
     canonical_route_memory = _canonical_route_memory(root, problem)
+    semantic_family_handoffs = _semantic_family_handoffs(
+        canonical_route_memory["record"]
+    )
     selector = {
         "problem_id": problem["problem_id"],
         "route_id": route["id"] if route else None,
@@ -558,6 +665,7 @@ def build_packet(
         },
         "research_source_digests": research_source_digests,
         "canonical_route_memory": canonical_route_memory,
+        "semantic_family_handoffs": semantic_family_handoffs,
     }
     state_id = _canonical_digest(identity_material)
     packet = {
@@ -581,6 +689,7 @@ def build_packet(
             "claim_ceiling": route.get("claim_ceiling") if route else None,
             "available_route_ids": available_routes,
             "canonical_route_memory": canonical_route_memory,
+            "semantic_family_handoffs": semantic_family_handoffs,
         },
         "consulted_route_ids": consulted,
         "related_route_ids": related,

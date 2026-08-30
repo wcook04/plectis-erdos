@@ -39,6 +39,99 @@ def assert_rejected(packet: dict, code: str) -> None:
     raise AssertionError(f"mutation escaped: {code}")
 
 
+def _canonical_record(route_id: str) -> dict:
+    document = route_memory._json(ROOT / route_memory_receipt.ROUTE_MEMORY_PATH)
+    return next(
+        row for row in document["records"] if row.get("route_id") == route_id
+    )
+
+
+def test_semantic_family_handoffs_preserve_exact_269_spine() -> None:
+    record = _canonical_record("erdos_269_weighted_phase_carry_observer")
+    handoff = route_memory._semantic_family_handoffs(record)
+    rows = handoff["families"]
+    assert [row["family_id"] for row in rows] == [
+        "weighted_phase_carry_observer",
+        "conditional_carry_escape",
+        "dyadic_block_alphabet",
+        "rank_two_kernel_no_go",
+        "three_prime_lcm_cells",
+    ]
+    weighted = rows[0]
+    assert weighted["source_declaration"] == (
+        "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary"
+    )
+    assert weighted["source_module"] == (
+        "ErdosProblems/Erdos269/WeightedPhaseCarry.lean"
+    )
+    assert weighted["proof_status"] == "locally_proved_bridge_open"
+    assert "integral quotient" in weighted["natural_friction"]
+    assert weighted["query"].endswith(
+        "family-relations weighted_phase_carry_observer"
+    )
+
+    conditional = rows[1]
+    assert conditional["source_declaration"] == (
+        "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+    )
+    assert conditional["proof_status"] == "conditional_obstruction_bridge_open"
+    assert "cofinal local-window escape" in conditional["open_boundary"]
+    assert conditional["query"].endswith(
+        "family-relations conditional_carry_escape"
+    )
+
+    reversed_record = copy.deepcopy(record)
+    related = reversed_record["evidence"]["related_families"]
+    reversed_record["evidence"]["related_families"] = dict(
+        reversed(list(related.items()))
+    )
+    assert route_memory._semantic_family_handoffs(reversed_record) == handoff
+    assert "no route-memory array order is a value rank" in handoff[
+        "ordering_rule"
+    ]
+
+
+def test_semantic_family_handoffs_retain_all_eight_problem_roots() -> None:
+    document = route_memory._json(ROOT / route_memory_receipt.ROUTE_MEMORY_PATH)
+    records = {
+        row["problem"]: row
+        for row in document["records"]
+        if isinstance(row.get("problem"), int)
+    }
+    assert set(records) == set(PROBLEMS)
+    for problem in PROBLEMS:
+        handoff = route_memory._semantic_family_handoffs(records[problem])
+        assert handoff["families"]
+        root = handoff["families"][0]
+        assert root["route_id"].startswith(f"erdos_{problem}_")
+        assert root["proof_status"]
+        assert root["hard_mechanism"]
+        assert root["natural_friction"]
+        assert root["open_boundary"]
+        if problem in {251, 269}:
+            assert root["source_declaration"]
+            assert root["source_module"]
+            assert root["source_anchor"]
+
+
+def test_semantic_family_handoff_binds_251_source_current_route() -> None:
+    record = _canonical_record("erdos_251_small_mismatch_criterion")
+    root = route_memory._semantic_family_handoffs(record)["families"][0]
+    assert root["family_id"] == "small_mismatch_criterion"
+    assert root["source_declaration"] == (
+        "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch"
+    )
+    assert root["source_module"] == (
+        "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+    )
+    assert root["source_anchor"] == 1112
+    assert root["proof_status"] == "conditional_endpoint_reduction"
+    assert "cofinal" in root["open_boundary"]
+    assert root["query"].endswith(
+        "family-relations small_mismatch_criterion"
+    )
+
+
 def run_cli(
     *args: str,
     input_text: str | None = None,
@@ -98,6 +191,9 @@ def check_cli_environment() -> None:
 
 
 def main() -> int:
+    test_semantic_family_handoffs_preserve_exact_269_spine()
+    test_semantic_family_handoffs_retain_all_eight_problem_roots()
+    test_semantic_family_handoff_binds_251_source_current_route()
     hostile = {
         "GIT_DIR": str(ROOT / "not-a-git-directory"),
         "GIT_NAMESPACE": "hostile-namespace",
