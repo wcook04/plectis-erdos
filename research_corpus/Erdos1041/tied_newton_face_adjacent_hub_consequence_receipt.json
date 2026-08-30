@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceAdjacentEllipse.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceAdjacentEllipse.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceAdjacentEllipse.ellipse_distance_sum_le_two_mul",
       "ErdosProblems.Erdos1041.TiedNewtonFaceAdjacentEllipse.adjacent_sector_distance_sum_le_two_mul"
@@ -91,7 +91,7 @@
     },
     {
       "candidate_id": "math_consequence_1b171e479fe369df",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The adjacent-focus ellipse theorem removes the metric half of the tied-face residual and replaces it by a pure adjacent-arm containment obligation.",
       "authority_surface_checked": "landed formal source manifest, exact results, and claim-ceiling addendum",
@@ -99,7 +99,7 @@
     },
     {
       "candidate_id": "math_consequence_40177f204a2a86ce",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "Root continuity remains a later finite-transfer consumer after strict containment is proved.",
       "authority_surface_checked": "route theorem manifest",
@@ -107,7 +107,7 @@
     },
     {
       "candidate_id": "math_consequence_266f46946d7ece2c",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "Historical attribution and unrestricted claim boundary are unchanged by this local model theorem.",
       "authority_surface_checked": "route statement and attribution fields",
@@ -115,7 +115,7 @@
     },
     {
       "candidate_id": "math_consequence_e7ce27d46ae33190",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_sharp_collinear_root_diameter_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_sharp_collinear_root_diameter_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The sharp collinear theorem is structurally disjoint from the regular-polygon focus cover.",
       "authority_surface_checked": "route statement",
@@ -123,7 +123,7 @@
     },
     {
       "candidate_id": "math_consequence_b8f4abc9ef3e05ea",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/global_critical_two_nearest_root_budget_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/global_critical_two_nearest_root_budget_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The global critical-root distance theorem selects actual roots, while this theorem concerns adjacent asymptotic model directions.",
       "authority_surface_checked": "route theorem manifest",

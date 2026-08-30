@@ -31,7 +31,7 @@ Arms
                it carries ZERO safe spokes, not "at most one".
 
 Replay
-  ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/\
+  python3 research_corpus/Erdos1041/\
 scripts/check_erdos1041_visibility_overlap.py --part all
 """
 from __future__ import annotations

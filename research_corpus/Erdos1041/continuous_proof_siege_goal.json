@@ -15,7 +15,7 @@
   "durability": {
     "chat_is_not_authority": true,
     "pasted_return_intake": "state/formal_math/type_b_return_batches/erdos1041_20260828_solution_octuple_returns_01/intake.json",
-    "assimilation_ledger": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260828.md",
+    "assimilation_ledger": "research_corpus/Erdos1041/TypeBReturnAssimilation20260828.md",
     "packet_frontier": "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27",
     "compaction_rule": "Resume from these disk artifacts and receipts; never reconstruct the frontier from chat memory."
   },

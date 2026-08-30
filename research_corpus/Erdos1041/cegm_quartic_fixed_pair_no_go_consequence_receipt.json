@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CEGMQuarticFixedPairNoGo.lean",
+    "lean_path": "research_corpus/Erdos1041/CEGMQuarticFixedPairNoGo.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.CEGMQuarticFixedPairNoGo.separating_threshold",
       "ErdosProblems.Erdos1041.CEGMQuarticFixedPairNoGo.path_crosses_circle"
@@ -12,14 +12,14 @@
   "decisions": [
     {
       "candidate_id": "critical_ellipse_source",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalEllipseFreeHubLab.md",
+      "file": "research_corpus/Erdos1041/CriticalEllipseFreeHubLab.md",
       "decision": "retire_now",
       "mathematical_reason": "Its canonical fixed-nearest-pair target is exactly false.",
       "validation_or_reentry": "source cross-link and packet frontier update"
     },
     {
       "candidate_id": "canonical_erdos1041_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "replace_producer_now",
       "mathematical_reason": "FP-GM is the surviving sufficient two-arm statement.",
       "validation_or_reentry": "JSON parse, producer-relation audit, exact checker, Lean replay"

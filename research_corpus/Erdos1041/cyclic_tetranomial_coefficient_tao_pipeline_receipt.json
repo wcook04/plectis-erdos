@@ -6,9 +6,9 @@
   "input_stage": "computation_guided_proof_generation",
   "output_stage": "verification",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cyclic_tetranomial_coefficient.py"
+    "research_corpus/Erdos1041/CyclicTetranomialCoefficientCase.md",
+    "research_corpus/Erdos1041/CyclicTetranomialCoefficientCase.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_cyclic_tetranomial_coefficient.py"
   ],
   "human_understanding_delta": "Abel summation exposes the correct invariant beyond trinomials. At a root of w^m+a*w^r+b*w^s+c, every spoke value is a subconvex combination of c, the middle tail a*w^r+w^m=-(c+b*w^s), and w^m. If w_2 is the second-smallest quotient root in modulus, the selector |c|+|b||w_2|^s<1 makes the two smallest root spokes safe while leaving a unrestricted. The max-radius condition |c|+|b|R^s<1 and the root-free condition |b|+|c|<=1 are all-spoke corollaries. The argument survives arbitrary translated cyclic lifting.",
   "verification_state": {

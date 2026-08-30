@@ -19,7 +19,7 @@ Gaussian-rational zeros ((1-p^2)+2pi)/(1+p^2); no floating point enters those
 verdicts.  Every maximum on a segment or spoke in the float arm comes from the
 exact critical points of a real polynomial, never from a sample.
 
-Usage:  ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_spoke_calculus.py [--quick]
+Usage:  python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_spoke_calculus.py [--quick]
 """
 from __future__ import annotations
 import argparse, json, math, os, sys
@@ -198,7 +198,7 @@ def main() -> int:
     quick = args.quick
     rng = np.random.default_rng(20260824)
     R: dict = {'schema': 'erdos1041_concyclic_spoke_calculus_receipt_v1',
-               'note': 'formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicSpokeCalculus.md'}
+               'note': 'research_corpus/Erdos1041/ConcyclicSpokeCalculus.md'}
     fails: list[str] = []
 
     nmax = 5 if quick else 6

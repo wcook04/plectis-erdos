@@ -2,11 +2,11 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "generation",
   "output_stage": "verification_and_exposition",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1RationalChart.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceBlockL1RationalChart.md",
   "human_understanding_delta": "The exact noncritical-hub rescue is not isolated: the same selector, hub, cutoff, arms, tails, topology, and metric budget work on the explicit real coefficient box |a+3|<=1/192 and |b-epsilon|<=1/192. Fourteen affine Bernstein sensitivities and the worst tail are controlled exactly; 1/192 is the largest reciprocal-integer radius allowed by this fixed template.",
   "verification_state": {
     "ordinary_proof": "complete affine Bernstein perturbation estimate, exact tail comparison, critical-value passport, component-degree count, and inherited metric composition",
-    "exact_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_rational_chart.py",
+    "exact_checker": "research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_rational_chart.py",
     "lean": {
       "module": "ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1RationalChart",
       "status": "focused_build_and_final_serialized_lake_check_passed",

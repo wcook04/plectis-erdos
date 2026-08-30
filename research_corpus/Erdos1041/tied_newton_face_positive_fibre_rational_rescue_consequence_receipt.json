@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFacePositiveFibreRationalRescue.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFacePositiveFibreRationalRescue.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFacePositiveFibreRationalRescue.armU_nonpos",
       "ErdosProblems.Erdos1041.TiedNewtonFacePositiveFibreRationalRescue.tailU_nonpos",
@@ -14,7 +14,7 @@
   "decisions": [
     {
       "candidate_id": "canonical_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The rescue adds a strict solved tied-face chart with explicit coefficient radius and changes the interpretation of the LF no-go from bad face to bad canonical curve.",
       "authority_surface_checked": "canonical private research packet",
@@ -30,7 +30,7 @@
     },
     {
       "candidate_id": "two_prior_art_routes",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/{constant_perturbation_roots_unit_disk_v0,erdos1041_lemniscate_short_path_v0}.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/{constant_perturbation_roots_unit_disk_v0,erdos1041_lemniscate_short_path_v0}.json",
       "decision": "verified_no_change",
       "mathematical_reason": "A private local model chart changes neither constant-perturbation source status nor the pinned unrestricted-manuscript refutations.",
       "authority_surface_checked": "both displayed source-current routes",

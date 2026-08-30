@@ -2,11 +2,11 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "generation",
   "output_stage": "verification_and_exposition",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1PolyhedralCell.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceBlockL1PolyhedralCell.md",
   "human_understanding_delta": "The 1/192 square is only an inscribed patch. The same rational hub/end/cutoff template works on the complete open convex cell -1875/128<a<0, b<0, below fourteen explicit affine Bernstein facets. Exact elimination reduces the lower envelope to eight active arm facets and seven transitions.",
   "verification_state": {
     "ordinary_proof": "complete Bernstein-cell containment, exact tail monotonicity, critical-value passport, component-degree count, and inherited metric composition",
-    "exact_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py",
+    "exact_checker": "research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py",
     "lean": {
       "module": "ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1PolyhedralCell",
       "status": "focused_build_and_final_serialized_lake_check_passed",

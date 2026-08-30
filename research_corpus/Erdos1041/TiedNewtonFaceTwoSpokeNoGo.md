@@ -103,5 +103,5 @@ The last two steps are not proved here.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_two_spoke_no_go.py --json
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_two_spoke_no_go.py --json
 ```

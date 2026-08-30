@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "exact_quintic_refuting_leftmost_horizontal_fibre_negativity",
   "output_stage": "strict_rational_noncritical_finite_connector_and_quantitative_four_parameter_chart",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFacePositiveFibreRationalRescue.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFacePositiveFibreRationalRescue.md",
   "human_understanding_delta": "The positive leftmost-fibre defect is a curve-selector failure, not a bad tied face. The same Q=15z+5z^2-z^5 has a rational noncritical hub h=-8/5, cutoff 7/5, and conjugate unit directions (-3+/-4i)/5 with all arm/tail Bernstein controls strictly negative and squared metric margin 16/125. This fixed connector persists on the explicit four-real-dimensional closed coefficient box of l_infinity radius 1/6, with worst Bernstein margin 196/9375; it is a transfer-ready chart, not an isolated example.",
   "verification_state": "exact symbolic checker PASS; focused serialized Lean build and final authority replay PASS",
   "publication_or_review_state": "private authoring checkpoint",

@@ -1,0 +1,32 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "research_actor_mode": "type_a_direct_local",
+  "input_stage": "proof_search_and_computational_falsification",
+  "output_stage": "ordinary_exact_proof_with_deterministic_verification_and_pending_lean_kernel_elaboration",
+  "artifact": "research_corpus/Erdos1041/FreePointZeroInsertionFP4Matching.md",
+  "human_understanding_delta": "FP4 is not governed by one global monotonicity or one uniform Holder majorant.  A sharp squared-radius split at 21/25 exposes two complementary coercive mechanisms: logarithmic power-sum energy controls the central region, while the K4 matching product becomes strictly subcritical in the outer region after the largest squared radius is separated from the other three.  The exact one-variable maximum is the conceptual fan-in.",
+  "verification_state": "The ordinary proof was audited inequality by inequality.  The deterministic checker passes all thirteen sections, including forty-eight exact positive Bernstein coefficients, rational exponential estimates, symbolic recovery of the D2 identity and derivative numerators, exact radical positivity, and a 120000-configuration end-to-end replay.  The Lean scalar-kernel source is authored; focused elaboration is capacity-deferred under ticket rct_7d12319183ffd5cbe167 and is not yet claimed as proof evidence.",
+  "publication_or_review_state": "private authoring result; no external review, literature-priority claim, or publication claim",
+  "canonicalization_state": "candidate natural proof architecture recorded in the source-current private corpus; not externally digested or canonicalized",
+  "unresolved_downstream_bottleneck": "FP_m for m>=5 remains open.  The corpus must also prove or correct the currently unlanded general torus/psh implication before using FP4 as a degree-five Conjecture (S) theorem.  Conjecture (S) itself does not imply unrestricted Erdos 1041.",
+  "next_stage_owner": "Erdos1041 higher-degree free-point and torus/psh reduction frontier",
+  "proof_effect": "complete_FP4_theorem_only",
+  "focused_validation": "pass: scripts/check_erdos1041_free_point_zero_insertion_fp4.py, all 13 sections",
+  "lean_validation": {
+    "state": "capacity_deferred_not_proof_evidence",
+    "ticket_id": "rct_7d12319183ffd5cbe167",
+    "reentry_condition": "Reinvoke the focused FreePointFP4Complete module build after the active project build lease clears."
+  },
+  "paper_assimilation": {
+    "paper": "Erdos 1041 private research corpus",
+    "section": "free-point inequality FP4",
+    "canonical_mechanism_family": "central logarithmic energy versus outer K4 matching product",
+    "relation": "complete closure superseding former FP4 residual strata",
+    "understanding_delta": "The previous central-radius, insertion, matching-stratum, and Holder no-go results become subordinate structure.  The apparent Holder obstruction occurs in the central region where log energy is strongest; imposing one large radius removes that obstruction and makes the same K4 product strictly subcritical.",
+    "evidence_boundary": "ordinary exact analytic proof plus exact symbolic/rational verifier; Lean kernel elaboration pending; no claim about FP_m for m>=5, Conjecture (S), or the parent problem",
+    "hard_step": "find the exact 21/25 interface and prove the outer one-variable radical maximum is below 32",
+    "meaningful_failed_route": "global W<=32 is false on the triangle-plus-origin family, so the valid Holder inequality must be used only after a large-radius split",
+    "open_remainder": "higher-degree FP_m, the general torus/psh reduction, and unrestricted Erdos 1041"
+  }
+}

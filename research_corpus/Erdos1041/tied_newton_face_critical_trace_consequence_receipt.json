@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceCriticalTrace.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceCriticalTrace.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceCriticalTrace.modelValue_eq_weightedCriticalValue",
       "ErdosProblems.Erdos1041.TiedNewtonFaceCriticalTrace.weightedCriticalValue_sum_eq_zero",
@@ -92,7 +92,7 @@
     },
     {
       "candidate_id": "math_consequence_054db244a7f91501",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The trace theorem closes the topological tied-face connector residual and replaces it by a precise metric scattering-length obligation.",
       "authority_surface_checked": "landed formal source manifest, exact results, and claim-ceiling addendum",
@@ -100,7 +100,7 @@
     },
     {
       "candidate_id": "math_consequence_00e1972ad9f965cb",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The root-continuity route is a later transfer consumer, not part of the model trace theorem.",
       "authority_surface_checked": "route theorem manifest",
@@ -108,7 +108,7 @@
     },
     {
       "candidate_id": "math_consequence_0efd4bd8a4a687eb",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "Historical attribution and unrestricted claim boundary are unchanged by the local model theorem.",
       "authority_surface_checked": "route statement and attribution fields",
@@ -116,7 +116,7 @@
     },
     {
       "candidate_id": "math_consequence_ff3e47f4c36f86a6",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_sharp_collinear_root_diameter_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_sharp_collinear_root_diameter_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The sharp collinear theorem is structurally disjoint from a complex sparse Newton-face trace.",
       "authority_surface_checked": "route statement",
@@ -124,7 +124,7 @@
     },
     {
       "candidate_id": "math_consequence_1d24770ef4627d81",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/global_critical_two_nearest_root_budget_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/global_critical_two_nearest_root_budget_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The global critical-root metric budget does not imply the sparse-face sublevel trace, and the trace supplies no distance bound.",
       "authority_surface_checked": "route theorem manifest",

@@ -210,5 +210,5 @@ the strict containment needed for finite transfer through equality charts.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_paired_trace.py --json
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_paired_trace.py --json
 ```

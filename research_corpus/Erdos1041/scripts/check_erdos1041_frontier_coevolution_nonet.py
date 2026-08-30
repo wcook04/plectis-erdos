@@ -21,15 +21,15 @@ PREDECESSOR_PORTFOLIO_SHA256 = "18f257bb59a57ee04d3f02478939efa98179ab1e5e171e66
 PREDECESSOR_VALIDATION_SHA256 = "980d53668cca61f728f9e9cc78b29056ea62f85f407432a5b15431fb5f4b1d7c"
 RETURN_INTAKE_SHA256 = "c3ff9b2a42bfee6d65e4a5d63b720e90d0b50e3bc93a2244caca5999838a399e"
 MERGE_DISCRIMINANT_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_merge_tree_discriminant_dichotomy.py"
 )
 FIRST_TWO_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_first_two_critical_optimized_bergman.py"
 )
 JOINT_CHECKER = ROOT / (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_six_return_joint_assimilation.py"
 )
 

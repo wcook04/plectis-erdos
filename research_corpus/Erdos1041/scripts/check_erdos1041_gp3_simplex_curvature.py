@@ -18,7 +18,7 @@ surplus on every product-preserving simplex, in the tangent direction that the
 existing transverse second-variation certificate does not cover.
 
 Replay:
-    ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/\
+    ./repo-python source-provenance://private-authoring-project/ErdosProblems/\
 Erdos1041/scripts/check_erdos1041_gp3_simplex_curvature.py
 """
 

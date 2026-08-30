@@ -545,7 +545,7 @@ is proved; the table is measurement; the Question is open.
 ## 7. Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_degenerate_hub_reduction.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_degenerate_hub_reduction.py
 ```
 
 ## 8. Claim boundary

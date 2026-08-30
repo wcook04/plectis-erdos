@@ -268,6 +268,6 @@ parent theorem. **Erdős #1041 remains open.**
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_last_lobe_capacity_law.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_parent_aware_capacity_budget.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_last_lobe_capacity_law.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_parent_aware_capacity_budget.py
 ```

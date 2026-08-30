@@ -604,7 +604,7 @@ and specialized to `length < 2 * radius` at
 [`#L34-L60`](NearFeketeTransverseClosure.lean#L34-L60). Replay it with:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 --project-root formal_math/erdos257_period_noncollapse ErdosProblems.Erdos1041.NearFeketeTransverseClosure
+lake env lean research_corpus/Erdos1041/NearFeketeTransverseClosure.lean
 ```
 
 Thus the `O(rho^2)` remainder is no longer an open item on a fixed transverse
@@ -646,7 +646,7 @@ for `phi != 0`; and any progress on the constant 2.
 ## Current stability replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py --part stability
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py --part stability
 ```
 
 The 2026-08-27 run reports `stability PASS`, with worst

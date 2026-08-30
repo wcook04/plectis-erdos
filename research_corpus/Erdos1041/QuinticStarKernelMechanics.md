@@ -161,7 +161,12 @@ of `D` over the compact family finds exactly these zeros
 
 Anti-real normal form: `H(w) = -i G(e^{-3 i pi/10} w)` up to gauge, with
 `G` REAL; scaled: `G_0(V) = V^5 + 40 V^2 - 60 V`, safe set
-`{Im G_0 <= 0}`, `G_0' = 5 (V^2 + 2V - 2)(V^2 - 2V + 6)`, critical points
+`{Im G_0 >= 0}` in the primary gauge (the original `{Im G_0 <= 0}` here
+was a sign slip — the stated map with the stated representative forces
+`Re H = 40^{-5/3} Im G_0`; certificate (i) below is stated in the
+mirror/conjugate gauge, which is legitimate since `G_0` is real; exact
+adjudication in `QuinticTangentOrbitExactCertificate.md`, 2026-08-30),
+`G_0' = 5 (V^2 + 2V - 2)(V^2 - 2V + 6)`, critical points
 `-1 +- sqrt 3`, `1 +- i sqrt 5`, critical values `144 -+ 96 sqrt 3` and
 `-144` (double) — ALL REAL (i.e. all `Re H(c) = 0`), sum zero.  This is
 exactly the corpus's `QuinticEqualityTetrahedron.md` equality chart
@@ -176,7 +181,11 @@ the downward vertical value ray `G_0(V_0) - i s` leaves `V_0` at exactly
 (ii) the zero-level saddle hub `c* = 0.12581717 + 0.17317248 i`
 (`arg = 54°`, `|c*| = 40^{-1/3}(sqrt 3 - 1)`) with the SKIP pair
 `(u_1, u_4)`: straight-arm cubic minima `0.645433` and `0.941146`, metric
-budget `Re(c* conj(u_1 + u_4)) = 0.0777592874 > 0`.
+budget `Re(c* conj(u_1 + u_4)) = 0.0777592874 > 0`.  SAME-DAY UPGRADE
+(2026-08-30): certificate (ii) is now EXACT — containment by
+Sturm-certified positivity, closed-form budget
+`5^{2/3}(sqrt 3 - 1)(sqrt 5 - 1) sqrt(10 - 2 sqrt 5)/80`, quantified
+stability floors — see `QuinticTangentOrbitExactCertificate.md`.
 Metric budget at all four stratum hubs (curved Main-Theorem arms
 included): excess `e_i + e_j in [0.041, 0.323]` against slack
 `in [0.078, 1.229]`, clearance factors `1.9x`–`5.0x` — the metric side

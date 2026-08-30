@@ -7,7 +7,7 @@
   "proof_campaign_completion_class": "parent_advance_incomplete",
   "input_stage": "generation",
   "output_stage": "verification_exposition_and_canonicalization",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md",
+  "artifact": "research_corpus/Erdos1041/TypeBReturnAssimilation20260826.md",
   "human_understanding_delta": "The returned radial product contraction was already in the corpus, but its pairwise factor identity contains an exact multiplicative defect. Extracting that defect yields an explicit energy-plus-modulus upper bound for the best radial value and classifies equality.",
   "verification_state": "ordinary all-degree proof; exact symbolic pair identity and exact rational factor, denominator, defect-sum, and strictness kernels replayed by check_erdos1041_type_b_return_assimilation.py",
   "publication_or_review_state": "private authoring corpus; not externally reviewed",

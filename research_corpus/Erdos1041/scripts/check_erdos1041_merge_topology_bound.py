@@ -89,7 +89,7 @@ from formal_math.erdos257_period_noncollapse.ErdosProblems.Erdos1041.scripts.che
 )
 
 SOURCE_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_merge_topology_bound.py"
 )
 

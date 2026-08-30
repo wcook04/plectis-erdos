@@ -4,7 +4,7 @@
   "research_actor_mode": "mixed",
   "input_stage": "generation",
   "output_stage": "verification_and_assimilation",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FullPassBatchAssimilation20260827.md",
+  "artifact": "research_corpus/Erdos1041/FullPassBatchAssimilation20260827.md",
   "human_understanding_delta": "The five substantive full-pass returns collapse to three coordinates rather than five frontiers. The weighted-tree and component-charge returns meet the already-known attachment/common-ancestry obstruction; the near-Fekete half-plane return is conjectural and weaker than source-current cone/cusp authority; and the first-critical branch return uses a valid coordinate but a false pointwise pair-energy cone. The exact cubic no-go separates that coordinate from its producer and prevents numerical endpoint sampling from promoting a false lemma.",
   "verification_state": "exact Gaussian-rational cubic, exact critical-value comparison, exact rational Rouche root-location certificate, and exact local asymptotic sign; ordinary proofs and source-current authority mapping for the retained claims; unrestricted target not claimed",
   "publication_or_review_state": "private authoring assimilation; not externally reviewed",

@@ -61,23 +61,23 @@ from system.lib.formal_math_lemniscate import (  # noqa: E402
 )
 
 SOURCE_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
+    "research_corpus/Erdos1041/scripts/"
     "check_erdos1041_local_model_sweep.py"
 )
 ENGINE_REF = "system/lib/formal_math_lemniscate.py"
 ANALYSIS_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "StraightSpokeHubCriterionLab.md"
 )
 REGIME_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "HardRegimeIsNearFekete.md"
 )
 PACKET_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json"
+    "research_corpus/Erdos1041/research_packet.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "state/formal_math/erdos257_period_noncollapse/"
+    "source-provenance://private-authoring-project/receipts/"
     "erdos1041_local_model_sweep_receipt.json"
 )
 

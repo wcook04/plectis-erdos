@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceNonAdjacentNoGo.open_chart_control_numerators_strict",
       "ErdosProblems.Erdos1041.TiedNewtonFaceNonAdjacentNoGo.connector_length_lt_two_mul_radius"
@@ -12,14 +12,14 @@
   "decisions": [
     {
       "candidate_id": "returned_tied_newton_face_adjacency_no_go",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.md",
+      "file": "research_corpus/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.md",
       "decision": "merge_into_stronger_existing_result",
       "mathematical_reason": "The existing rational quintic already proves the same component obstruction and has strict rather than equality metric slack; the returned robustness idea is upgraded to an explicit coefficient box.",
       "validation_or_reentry": "exact checker and focused Lean build"
     },
     {
       "candidate_id": "free_pair_geometric_mean_two_arm_selector",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "sharpen_now",
       "mathematical_reason": "The explicit box is finite-transfer capital and demonstrates that component-selected nonadjacent charts can have large strict coefficient margins.",
       "validation_or_reentry": "consume the chart in an all-face atlas or analytic aggregate theorem"
@@ -37,19 +37,19 @@
       "validation_or_reentry": "re-enter through the dissemination packet builder after a requested publication/review wave"
     },
     {
-      "candidate_id": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "candidate_id": "source-provenance://private-authoring-project/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The coefficient-box theorem uses affine Bernstein sensitivity, not the general root-continuity lemma adjudicated there.",
       "validation_or_reentry": "only if the finite transfer invokes the root-continuity declaration"
     },
     {
-      "candidate_id": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "candidate_id": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "A private local tied-face chart changes neither the source identity nor the refutation status of the inspected unrestricted drafts.",
       "validation_or_reentry": "only on a parent-proof or source-comparison change"
     },
     {
-      "candidate_id": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_near_fekete_transverse_closure_v0.json",
+      "candidate_id": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_near_fekete_transverse_closure_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The new box is a separate tangential tied-face chart; it does not alter the pinned transverse theorem, its literature comparison, or its transversality exclusions.",
       "validation_or_reentry": "update only after an actual finite tied-face transfer theorem lands"

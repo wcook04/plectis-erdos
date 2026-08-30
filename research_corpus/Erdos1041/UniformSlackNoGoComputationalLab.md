@@ -35,4 +35,4 @@ strict `<2` target or a data-dependent critical-hub selection theorem.
 
 The exact family prefix and its theorem/analysis links are replayed by
 `scripts/check_erdos1041_uniform_slack_no_go.py`; its canonical receipt is
-`state/formal_math/erdos257_period_noncollapse/erdos1041_uniform_slack_no_go_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_uniform_slack_no_go_receipt.json`.

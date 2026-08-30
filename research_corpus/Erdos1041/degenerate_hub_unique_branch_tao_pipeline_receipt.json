@@ -3,8 +3,8 @@
   "input_stage": "proof_generation",
   "output_stage": "exposition_and_understanding",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DegenerateHubUniqueBranchRepair.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DegenerateHubMonodromyKernel.lean"
+    "research_corpus/Erdos1041/DegenerateHubUniqueBranchRepair.md",
+    "research_corpus/Erdos1041/DegenerateHubMonodromyKernel.lean"
   ],
   "human_understanding_delta": "The apparent gap between one critical value and one branch point is closed without adding a hypothesis. Deleting the finite fibre over the sole critical value leaves a connected plane domain, hence a connected cover of a punctured disc. Its cyclic monodromy is transitive, so its generator is one full cycle; local monodromy then forces a single critical preimage whose local degree equals the total degree. The finite algebraic step is separated from the still-analytic covering/local-degree correspondence: Lean proves that transitivity under all integer powers forces full support and a single cycle.",
   "verification_state": {

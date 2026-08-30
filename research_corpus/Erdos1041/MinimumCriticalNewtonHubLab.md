@@ -246,12 +246,12 @@ at the first merge have numerical total length about `1.755`, below two.
 Replay the exact result with
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_minimum_critical_straight_hub.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_minimum_critical_straight_hub.py --check
+python3 research_corpus/Erdos1041/scripts/check_minimum_critical_straight_hub.py
+python3 research_corpus/Erdos1041/scripts/check_minimum_critical_straight_hub.py --check
 ```
 
 Canonical receipt:
-`state/formal_math/erdos257_period_noncollapse/erdos1041_minimum_critical_straight_hub_counterexample_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_minimum_critical_straight_hub_counterexample_receipt.json`.
 
 ## Sharp boundary and theorem-driven falsifiers
 
@@ -281,7 +281,7 @@ reduction above:
 A canonical degree-five, common-radius, near-regular run of 300 trials reached
 critical-scale score `0.9495242630078684` without crossing one.  This is finite
 route-selection evidence only.  Its durable receipt is
-`state/formal_math/erdos257_period_noncollapse/erdos1041_critical_scale_minimum_newton_hub_probe.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_critical_scale_minimum_newton_hub_probe.json`.
 
 The neighboring reciprocal-sweeping and alternating-maze result of Pendyala is
 assimilated in `ReciprocalSweepBoundaryLab.md`.  Its Crofton skeleton is a live
@@ -315,12 +315,12 @@ counterexample to minimum-critical selection.
 The exact selector and numerical branch regression replay with
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_legacy_minimum_critical_descent_regression.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_legacy_minimum_critical_descent_regression.py --check
+python3 research_corpus/Erdos1041/scripts/check_legacy_minimum_critical_descent_regression.py
+python3 research_corpus/Erdos1041/scripts/check_legacy_minimum_critical_descent_regression.py --check
 ```
 
 and bind to
-`state/formal_math/erdos257_period_noncollapse/erdos1041_legacy_minimum_critical_descent_regression_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_legacy_minimum_critical_descent_regression_receipt.json`.
 The endpoint replay is finite numerical regression, not proof authority for the
 open length inequality.
 

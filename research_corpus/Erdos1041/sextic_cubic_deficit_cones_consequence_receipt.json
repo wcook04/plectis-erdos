@@ -2,8 +2,8 @@
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
     "lean_paths": [
-      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicFaceConnectorNoGo.lean",
-      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicRadialDeficitCone.lean"
+      "research_corpus/Erdos1041/SexticCubicFaceConnectorNoGo.lean",
+      "research_corpus/Erdos1041/SexticCubicRadialDeficitCone.lean"
     ],
     "declarations": [
       "ErdosProblems.Erdos1041.SexticCubicFaceConnectorNoGo.not_all_nonpos_of_halfStep_mem",
@@ -16,7 +16,7 @@
   "decisions": [
     {
       "candidate_id": "paired_deficit_cone_formal_consumer",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicPairedDeficitCone.lean",
+      "file": "research_corpus/Erdos1041/SexticCubicPairedDeficitCone.lean",
       "decision": "verified_no_change",
       "mathematical_reason": "This module directly imports the radial-deficit cone and replaces the four-mode budget by a paired six-deficit budget. Its low-mode condition and fifth-root scale are a stronger downstream hypothesis, not a consequence that upgrades the original cone.",
       "authority_surface_checked": "direct import, paired_fourierNormSum_le_six_delta, paired_selectedRay_margin, paired_innerDisk_margin",
@@ -24,7 +24,7 @@
     },
     {
       "candidate_id": "transition_cone_formal_consumer",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicTransitionCone.lean",
+      "file": "research_corpus/Erdos1041/SexticCubicTransitionCone.lean",
       "decision": "verified_no_change",
       "mathematical_reason": "This module imports the paired cone and enlarges the low-mode scale to the cubic-to-transverse transition regime. It records an exhaustive numerical dichotomy but does not establish either branch for arbitrary actual perturbations.",
       "authority_surface_checked": "direct import, transition_fourierNormSum, paired_transition_selectedRay_margin, transition_or_transverse",
@@ -40,7 +40,7 @@
     },
     {
       "candidate_id": "canonical_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The packet already records the no-go, radial-deficit cone, and the remaining normalization dichotomy. This receipt adds their formal consumer relation without changing packet authority or its open claim ceiling.",
       "authority_surface_checked": "exact-results entries, landed formal-source list, claim ceiling, and surviving sextic transfer residual",

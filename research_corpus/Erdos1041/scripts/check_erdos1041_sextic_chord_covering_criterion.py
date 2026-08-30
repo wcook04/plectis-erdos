@@ -11,7 +11,7 @@ Theorem 2 against the original complex model at the breakpoints (a uniform C-gri
  arm 18 exhibits the chord chart genuinely failing below |B| = 9/14.
 
 Run:
-  ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/\
+  python3 research_corpus/Erdos1041/\
 scripts/check_erdos1041_sextic_chord_covering_criterion.py [--check]
 """
 
@@ -398,7 +398,7 @@ def main() -> int:
         "all_pass": not failures,
     }
     dest = pathlib.Path(
-        "state/formal_math/erdos257_period_noncollapse/"
+        "source-provenance://private-authoring-project/receipts/"
         "erdos1041_sextic_chord_covering_criterion_receipt.json"
     )
     dest.parent.mkdir(parents=True, exist_ok=True)

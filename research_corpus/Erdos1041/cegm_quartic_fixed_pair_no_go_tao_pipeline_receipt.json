@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "returned_minimal_quartic_fixed_pair_counterexample",
   "output_stage": "source_connected_exact_minimal_degree_no_go_and_free_pair_replacement",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CEGMQuarticFixedPairNoGo.md",
+  "artifact": "research_corpus/Erdos1041/CEGMQuarticFixedPairNoGo.md",
   "human_understanding_delta": "The fixed nearest pair is not merely bad for two arms: its roots lie in different Gcrit components. The rational circle barrier closes every possible path. The proper surviving quantifiers jointly choose pair and hub in the major-axis-two ellipse.",
   "verification_state": "compact independent exact checker PASS; focused Lean replay passes for Gaussian-rational algebra, threshold, negative-half-line barrier polynomial, and circle-crossing consumer",
   "publication_or_review_state": "private authoring checkpoint; Rouché, positive-half-line Bernstein positivity, merge topology, and cubic minimality consumer remain ordinary mathematics",

@@ -387,7 +387,7 @@ def main() -> int:
           and all(c["ok"] for c in cor))
     report["verdict"] = "PASS" if ok else "FAIL"
 
-    out = Path("state/formal_math/erdos257_period_noncollapse/erdos1041_concyclic_alternation_receipt.json")
+    out = Path("source-provenance://private-authoring-project/receipts/erdos1041_concyclic_alternation_receipt.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2, default=float) + "\n")
     print(json.dumps({k: v for k, v in report.items() if k != "arms"}, indent=2))

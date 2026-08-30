@@ -150,7 +150,7 @@ Its exact authority anchors are
 and [`twoSmallest_path_length_lt_two#L92-L100`](TwoSmallestRootTruncation.lean#L92-L100).
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_two_smallest_root_truncation.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_two_smallest_root_truncation.py
 ```
 
 The 2026-08-27 replay reports `PASS` over 4,400 configurations, with worst

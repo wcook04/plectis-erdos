@@ -42,7 +42,11 @@ and FRONTIER §4.5.  Consequently the `k = 2` merge threshold
 chain (`ConnectedClusterBergman.md` (2), which consumes the AREA, not just
 the capacity) improves strictly to `tanh(1/A_{5,2}*) > 0.9404`; the
 numeric size of the improvement awaits an explicit constant (captured
-follow-up).
+follow-up).  FOLLOW-UP LANDED (2026-08-30):
+`ProperComponentExplicitAreaConstant.md` proves
+`A_{5,2}* <= 4^{-2/5}(1 - 6.76e-8)` (exact-rational certificate), so
+`Theta_{5,2} >= 0.940354223795` — explicit, `+1.362e-8` over the old
+threshold.
 
 ## Proof
 

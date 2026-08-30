@@ -6,9 +6,9 @@
   "input_stage": "analytic_proof_generation_from_verified_L2_selector",
   "output_stage": "verification",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TetranomialProductSensitiveSelector.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TetranomialProductSensitiveSelector.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tetranomial_product_sensitive_selector.py"
+    "research_corpus/Erdos1041/TetranomialProductSensitiveSelector.md",
+    "research_corpus/Erdos1041/TetranomialProductSensitiveSelector.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_tetranomial_product_sensitive_selector.py"
   ],
   "human_understanding_delta": "The crude radial-energy estimate loses the Vieta product. For x_i=|w_i|^(2s) in [0,1], sum x_i<=m-1+product x_i, while the root product makes product x_i=|c|^(2s). This replaces m|b|^2 in the signed L2 selector by the strictly smaller (m-1+|c|^(2s))|b|^2 whenever b is nonzero. The inequality is optimal from cardinality and product alone: equality occurs on the closed cube at x_1=...=x_(m-1)=1, x_m=P, and open-cube families approach it.",
   "verification_state": {

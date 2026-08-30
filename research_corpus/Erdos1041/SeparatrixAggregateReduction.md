@@ -232,15 +232,20 @@ Sigma_{k=1}^{n-1} |f(c_k)|^{1/n}  <=  (n-1) R
 
 — the ARITHMETIC mean of the merge-level capacities is at most the
 circumradius, strictly strengthening Schur–Fekete (geometric mean `<= R`),
-tight exactly on the radial family, PROVED for `n = 2, 3` (psh/torus
-reduction + the self-inversive torus identity
-`|f(c)| = prod_k |1 - conj(c) c_k|` for unimodular roots + a two-point
-free-point inequality), unrefuted anywhere (adversarial sup exactly
+tight on the radial family, PROVED for `n = 2, 3, 4, 5`.  The all-degree
+bridge in `FreePointTorusPshReduction.md` proves
+`FP_{n-1} ==> (S)_n` by the psh root-polydisk maximum principle, the
+self-inversive torus identity
+`|f(c)| = prod_k |1 - conj(c) c_k|` for unimodular roots, and the exact
+concavity exponent conversion.  It consumes the landed `FP_3` and `FP_4`
+theorems for the two new degrees.  The assertion is unrefuted anywhere
+(adversarial sup exactly
 `1.000000` at `n <= 13`; `S = 0.99921` at the (AGG) witness).  Supporting
 exact structure (proved; novelty NOT established, assume classical until
 searched): the coarea identity `Sigma_k |f(c_k)|^{1/n} =
 int_0^inf (nu(lambda^n) - 1) d lambda`, and the sharp critical-value bound
 `|f(c)| <= (2/n)^n (n-1)^{n-1} R^n` with equality at `(z-a)(z-b)^{n-1}`.
-(S) does not imply the parent by itself; the parent carrier remains hub
+(S) does not imply the parent by itself; `FP_m` remains open for `m>=5`,
+and the parent carrier remains hub
 SELECTION (`min_c L(c) < 2`), for which the psh machinery and terminal-strata
 taxonomy above remain the live program.

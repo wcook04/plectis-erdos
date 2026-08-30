@@ -231,18 +231,18 @@ would combine with the crossing-chord machinery of
 
 ```sh
 # Exact counterexample to the former Conjecture U
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_alternation_counterexample.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation_counterexample.py
 
 # Exact counterexample to the smallest-gap common-radius selector
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py
 
 # Lean kernel (focused build)
-cd formal_math/erdos257_period_noncollapse && ../../repo-python scripts/lean_fast_build.py \
+cd source-provenance://private-authoring-project && ../../repo-python scripts/lean_fast_build.py \
   --jobs 2 ErdosProblems.Erdos1041.ConcyclicPotentialBound
 
 # Certificate battery (regular attainment, near-regular shells, controls)
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py
 
 # Degrees 7..10 adversarial rerun (landed 2026-08-25, seed 20260825)
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut.py 20260825
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut.py 20260825
 ```

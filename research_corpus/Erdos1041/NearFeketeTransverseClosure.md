@@ -16,9 +16,7 @@ and [`eventually_length_lt_two`](NearFeketeTransverseClosure.lean#L48-L60).
 Replay the complete Lean module from the repository root with:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
-  --jobs 2 --project-root formal_math/erdos257_period_noncollapse \
-  ErdosProblems.Erdos1041.NearFeketeTransverseClosure
+lake env lean research_corpus/Erdos1041/NearFeketeTransverseClosure.lean
 ```
 
 These declarations formalize only the eventual sign inference.  The uniform

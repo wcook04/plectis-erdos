@@ -185,5 +185,5 @@ gaps (5) to transfer it to the actual polynomial.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_unique_newton_face.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_near_fekete_unique_newton_face.py
 ```

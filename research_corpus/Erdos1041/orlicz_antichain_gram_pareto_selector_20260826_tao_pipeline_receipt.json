@@ -5,9 +5,9 @@
   "input_stage": "return 003 of erdos1041_20260826_return_stream_02 plus the return-002 survivor-local product theorem and sparse-defect exceptional-root no-go",
   "output_stage": "verified returned selector core, overlap-sensitive two-tier strengthening, and corrected target-level claim boundary",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OrliczAntichainGramParetoSelector20260826.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OrliczAntichainGramParetoSelector20260826.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_orlicz_antichain_gram_pareto_selector.py"
+    "research_corpus/Erdos1041/OrliczAntichainGramParetoSelector20260826.md",
+    "research_corpus/Erdos1041/OrliczAntichainGramParetoSelector20260826.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_orlicz_antichain_gram_pareto_selector.py"
   ],
   "human_understanding_delta": "The returned individual-heavy selector is only one point on a sharper Pareto frontier. Exact overlap of edge-bad and Gram-bad roots gives better ages than separate Markov counts. With a reserve of b+2 young roots, two structural-good roots retain the sharper age threshold and a survivor-local pair-product bound; with b+3, two can additionally be individually heavy at the optimal B/P threshold. The Gram-good branch remains conditional because a Gram-bad root can be the essential connector hub.",
   "verification_state": "ordinary exact proof plus checker PASS over 55053 exact rational selector rows and 83943 tier checks, with high-precision four-leaf calibration q4=0.143810397383<h_cl=0.163449418099<=h_opt=0.187827527911<0.3; Lean scalar kernels authored, with focused elaboration pending the repository low-disk firewall already recorded for this wave",

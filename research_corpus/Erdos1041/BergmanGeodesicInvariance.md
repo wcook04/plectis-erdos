@@ -501,7 +501,7 @@ and no argument here reaches the near-Fekete shell that
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_geodesic.py --part all
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_bergman_geodesic.py --part all
 ```
 
 | arm | what fails it |
@@ -519,4 +519,4 @@ and no argument here reaches the near-Fekete shell that
 | `COVER` | Theorem V does not prove (COVER) at the degree-5 origin-spoke lab or a clustered quartic, does prove it at the degree-3 two-segment witness, or a `mu = 1` row is not the Fekete stratum |
 
 Receipt:
-`state/formal_math/erdos257_period_noncollapse/erdos1041_bergman_geodesic_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_bergman_geodesic_receipt.json`.

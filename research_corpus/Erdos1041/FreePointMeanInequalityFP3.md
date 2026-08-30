@@ -78,13 +78,11 @@ sampled sup `2.99375 < 3`.)  QED
 ## Claim boundary
 
 `FP_3` is an ordinary proved theorem about three points of the disk.  It is
-the `m = 3` case of the free-point form of Conjecture (S).  NO claim is made
-here that `FP_3` implies (S) at `n = 4`: the reduction "(S) at degree
-`m + 1` follows from `FP_m`" is recorded in the corpus only as the proof
-route USED at `n = 2, 3` (psh/torus reduction + the self-inversive torus
-identity + `FP_2`), and its general-`n` form has not been checked as a
-landed theorem; composing them is the natural next step and should be done
-against the original session records of
-`SeparatrixAggregateReduction.md`.  (S) itself, even if so obtained, does
+the `m = 3` case of the free-point form of Conjecture (S).  The formerly
+unverified general implication `FP_m ==> (S)_{m+1}` is now proved in
+`FreePointTorusPshReduction.md`: a root-polydisk psh maximum principle, the
+self-inversive torus identity, and the tangent bound for exponent
+`m/(m+1)` compose this theorem into `(S)_4`.  This composition still does
 not imply the parent theorem.  PRIORITY CAVEAT: no literature search; the
-inequality is classical-flavoured; claim "new to this directory" only.
+inequality and bridge are classical-flavoured; claim "proved in this
+directory" only.

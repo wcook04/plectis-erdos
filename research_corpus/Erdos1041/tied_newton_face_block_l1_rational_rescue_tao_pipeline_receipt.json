@@ -2,11 +2,11 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "generation",
   "output_stage": "verification_and_exposition",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1RationalRescue.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceBlockL1RationalRescue.md",
   "human_understanding_delta": "The one-component sextic that kills pointwise block L1 is itself strictly rescued by a rational noncritical hub and an adjacent end pair. All fourteen arm Bernstein coefficients, both tails, and a length bound below 2 are exact. The block-speed excess is therefore unnecessary aggregate cost, and the live arithmetic target must price a selected loop rather than the full block.",
   "verification_state": {
     "ordinary_proof": "complete Bernstein convex-hull containment, exact tail calculus, metric composition, and link to the previously proved one-component passport",
-    "exact_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_rational_rescue.py",
+    "exact_checker": "research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_rational_rescue.py",
     "lean": {
       "module": "ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1RationalRescue",
       "status": "focused_build_and_final_serialized_lake_check_passed",

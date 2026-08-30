@@ -280,8 +280,8 @@ the resulting choice of coordinates.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_reciprocal_newton_expansion.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos1041.ReciprocalNewtonExpansion
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_reciprocal_newton_expansion.py
+lake env lean research_corpus/Erdos1041/ReciprocalNewtonExpansion.lean
 ```
 
 The 2026-08-27 exact replay reports `NEWTON`, `COEFFBOUND`, `BRIDGE`,

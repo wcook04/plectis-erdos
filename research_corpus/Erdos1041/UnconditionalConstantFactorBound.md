@@ -817,5 +817,5 @@ Erdős #1041 is open.
 ## 13. Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py
 ```

@@ -155,6 +155,6 @@ on a canonically selected negative critical merge.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_critical_trace.py --json
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_critical_trace.py --metric-probe --json
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_critical_trace.py --json
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_critical_trace.py --metric-probe --json
 ```

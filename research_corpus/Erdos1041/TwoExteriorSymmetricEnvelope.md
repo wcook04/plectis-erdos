@@ -121,6 +121,6 @@ mountain-pass monotonicity theorem is still required.  The first live case is
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_two_exterior_symmetric_envelope.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_two_exterior_symmetric_envelope.py
 ```
 

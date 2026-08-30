@@ -157,6 +157,6 @@ This is an exact no-go for one stronger selector, not a refutation of Erdős
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_pointwise_l1_no_go.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos1041.TiedNewtonFacePointwiseL1NoGo
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_pointwise_l1_no_go.py
+lake env lean research_corpus/Erdos1041/TiedNewtonFacePointwiseL1NoGo.lean
 ```

@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "adjacent_arm_and_tail_containment_after_metric_closure",
   "output_stage": "greedy_minimum_real_critical_hub_selector_exactly_refuted",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.md",
   "human_understanding_delta": "Critical-value negativity and geometric usability cannot be selected in two independent stages. The exact quintic has a unique most-negative real critical value at c=1/4, but every adjacent bracketing certificate through that hub is blocked by the same positive waypoint at 2/3 for every cutoff. A successful theorem must optimize or certify hub, adjacent pair, and cutoff jointly.",
   "verification_state": "ordinary exact critical-root classification; derivative factorization, rational values, cubic-root comparison, Viete conjugate-pair gap, and cutoff dichotomy Lean checked; independent SymPy rational replay PASS; focused serialized Lean replay PASS",
   "publication_or_review_state": "private authoring checkpoint; not independently reviewed and not a solution of unrestricted Erdős #1041",

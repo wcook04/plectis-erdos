@@ -15,7 +15,7 @@ from system.lib.formal_math_lemniscate import merging_pair_tree
 
 
 ROOT = Path(__file__).resolve().parents[5]
-RECEIPT = ROOT / "state/formal_math/erdos257_period_noncollapse/erdos1041_root_indexed_entrance_ancestry_receipt.json"
+RECEIPT = ROOT / "source-provenance://private-authoring-project/receipts/erdos1041_root_indexed_entrance_ancestry_receipt.json"
 
 
 def tree_shapes(leaves: int):
