@@ -1,7 +1,7 @@
 # External verification portfolio
 
-This directory contains small Lean consumers for seven different parts of the
-Erdős 68/243/249/251/257/269/1041 corpus. The files are useful when a reader wants to reuse
+This directory contains small Lean consumers for eight different parts of the
+Erdős 68/243/249/251/257/269/1041/1049 corpus. The files are useful when a reader wants to reuse
 an exact Comparator-facing interface without treating a conditional reduction
 as a solution of the underlying Erdős problem.
 
@@ -11,6 +11,7 @@ The canonical focused check for the portfolio consumers is:
 python3 scripts/lean_fast_build.py \
   examples/ExternalVerificationPortfolio/Problem68.lean \
   examples/ExternalVerificationPortfolio/Problem1041.lean \
+  examples/ExternalVerificationPortfolio/Problem1049.lean \
   examples/ExternalVerificationPortfolio/Problem243.lean \
   examples/ExternalVerificationPortfolio/Problem249.lean \
   examples/ExternalVerificationPortfolio/Problem251.lean \
@@ -72,6 +73,33 @@ not the missing global topology.  No theorem here glues the relevant Newton
 flow pieces into a curve inside the open lemniscate or proves the required
 length bound `< 2`.  This consumer therefore makes no #1041 solution,
 novelty, or priority claim.
+
+## Erdős #1049: rational-tail dynamics and a rectangular threshold no-go
+
+[`Problem1049.lean`](Problem1049.lean) keeps two source-current interfaces
+distinct. The exact recurrence
+`Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ` says that the
+denominator-cleared tail obeys
+`U_(N+1) = r * U_N - B * coeff (N+1) * s^(N+1)` whenever `r ≠ 0`. The factor
+`s^(N+1)` is the denominator-base tax absent at integer base `s = 1`; the
+identity supplies rational-tail dynamics, not a contradiction for a putative
+rational value.
+
+The separate interface
+`Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff`
+is a sharp no-go for one explicit rectangular two-function Hermite--Padé
+exponent model. In the admissible region `0 ≤ rho` and
+`1 + rho ≤ sigma`, its threshold equals the classical one-function threshold
+exactly at `rho = 0`, `sigma = 1`. The hard step is the cleared-gap sign and
+unique-zero calculation. This theorem constructs no approximating
+polynomials or remainders and is not a universal Padé/Hermite--Padé no-go.
+
+The base-`3/2` coordinatewise-corridor obstruction remains discoverable in the
+consumer as a subordinate scoped mechanism, not a third endpoint. What is
+still missing for the actual Lambert series is a primitive-normalized,
+noncollapsed coefficient family with surviving local gain and analytic
+remainder control. The consumer therefore proves no #1049 irrationality and
+makes no novelty or priority claim.
 
 ## Erdős #243: two conditional recovery criteria
 
