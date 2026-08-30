@@ -52,7 +52,7 @@ Links name a strongest checked route and its limit; reductions are not solutions
 
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — divisibility-failure equivalence; `67` checked, `300000` external, cofinal source open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalised vanishing and Lean no-go results exclude bounded/finite negative mass; unbounded mixed signs open.
-- [**#249: dyadic Euler totients**](erdos-249-binary-totient-series.pdf) · [reasoning surface](erdos249-totient-reasoning-surface.pdf) — ranks, moments, completeness, anti-compression, Farey through `t=82`; unbounded supply open.
+- [**#249: dyadic Euler totients**](erdos-249-binary-totient-series.pdf) · [reasoning surface](erdos249-totient-reasoning-surface.pdf) — ranks, moments, completeness, anti-compression, Farey `K=240`; diagonal certificates through `t=82`; unbounded supply open.
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts, tail recurrence, rational shifts, cofinal non-integral-shift equivalences; prime-tail bridge open.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [reasoning surface](erdos257-mersenne-reasoning-surface.pdf) — full support, finite-period noncollapse, topology, carry criteria; universal #257 and `1/2`/`1/21` open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — maximal powers, logarithmic cells, grouped sums, shell bounds, rank-two obstruction; three-prime problem open.
@@ -74,14 +74,14 @@ independence premise are not formalised.
 The classical **Farey/mediant bound** at `K=240`: Farey's method supplies the
 number directly, with numerical delta `0`—exactly the Farey bound, not an
 improvement. Its next denominator fails this finite window; that does not prove
-successful cases beyond every fixed cutoff. Independent packages: **fair-coin
+successful cases beyond every fixed cutoff. Packages: **fair-coin
 coprimality**, **squared-Lambert gcd moments**, the **Stern–Brocot cylinder law**
 `(2/3)^d`, **Fibonacci/continuant run stability** `F_{r+3}`, **tempered binary
 tail rigidity**, an **exact Möbius-shadow denominator**, and a
 **scalar-localisation height obstruction**. The map exposes eventually-periodic
 nonnegative weighted irrationality, a signed irrational-or-base-terminating
 dichotomy, five binary-carry criteria/consequences, and two scoped #249 no-go
-countermodels. These routes do not show that the actual orbit avoids an unsafe
+countermodels. Also: these routes do not show that the actual orbit avoids an unsafe
 band or settle its open problem.
 
 ## What remains open
@@ -143,7 +143,7 @@ order without asking you to decode Lean declaration names first.
 
 ## Build and verify
 
-For formal editing, install Lean's toolchain manager, `elan`, from the [Lean setup guide](https://leanprover-community.github.io/get_started.html); [`lean-toolchain`](lean-toolchain) selects `leanprover/lean4:v4.29.1` and [`lake-manifest.json`](lake-manifest.json) pins Mathlib.
+Install Lean's toolchain manager, `elan`, from the [Lean setup guide](https://leanprover-community.github.io/get_started.html); [`lean-toolchain`](lean-toolchain) selects `leanprover/lean4:v4.29.1` and [`lake-manifest.json`](lake-manifest.json) pins Mathlib.
 
 ```sh
 lake exe cache get
