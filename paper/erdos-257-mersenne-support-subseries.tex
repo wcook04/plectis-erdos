@@ -1056,6 +1056,65 @@ fatal gap and is therefore semi-decidable, whereas membership is an infinite
 condition.  Computing further can only raise a lower bound on where a fatal
 gap could occur; it cannot establish survival.
 
+Two further conditional routes now sharpen the boundary around this half-value
+problem.  They are logically distinct from the terminal scaled-vanishing
+route: one seeks irrationality from a structured support, while the other
+would produce a rational counterexample from cofinal geometric stages.
+
+\begin{theorem}[orthogonal-petal sunflower route]
+\label{res:sunflower}
+Let $A\subseteq\N$ support an
+\texttt{OrthogonalPetalBouquet} and satisfy
+\texttt{SunflowerForcedSlotTailSelection}.  Then
+
+\[
+  \operatorname{Irrational}\!\left(\sum_{a\in A}\frac{1}{2^a-1}\right).
+\]
+The bouquet hypothesis packages a finite exceptional/core part and residual
+petals that are nontrivial, pairwise coprime, and reciprocal-summable.  The
+remaining selector hypothesis is a uniform tail condition: at every positive
+length $K$ it supplies a shifted block whose binary carry is divisible by
+$2^K$ while its residual tail is bounded.  Neither hypothesis is constructed
+here, so this is a conditional reduction rather than a solution of
+Problem~\#257.
+\end{theorem}
+
+\noindent The hard mechanism is the persistent-reduced-modulus averaging
+argument: the selector forces a carry supply, and the support-series consumer
+turns that supply into irrationality.  The exact formal consumers are
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{531}{sunflowerForcedCarrySupply_of_orthogonalPetalBouquet}{forced carry supply}
+and
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{irrationality endpoint}.
+The source definition of the selector makes the missing analytic obligation
+explicit at
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{uniform tail selector}.
+
+\begin{theorem}[cofinal-cylinder half countermodel route]
+\label{res:cylinderhalf}
+Suppose that for every $N$ there are $M,K$ with
+$\max\{N,1\}\le M$ and a nonempty
+\texttt{CylinderStage}~$K~M$.  Then there is an infinite set
+$A\subseteq\N$ with $0\notin A$ and
+
+\[
+  \sum_{a\in A}\frac{1}{2^a-1}=\frac12.
+\]
+Thus the universal irrationality assertion in Problem~\#257 is false under
+this cofinal-stage hypothesis.  The formal route does not construct the
+cofinal family of full-cylinder stages.
+\end{theorem}
+
+\noindent The bridge first converts each full-cylinder stage into a weaker
+terminal-only strip, then invokes the closed half-achievement-set consumer
+and the positive-support lift.  The exact steps are
+\mword{Erdos249257/SuffixCylinderTerminalOnlyBridge.lean}{264}{cofinalTerminalOnlyStrip_of_cofinalCylinderStages}{terminal-only bridge},
+\mword{Erdos249257/SuffixCylinderTerminalOnlyBridge.lean}{277}{exists_infinite_support_half_of_cofinalCylinderStages}{infinite half-support},
+and
+\mword{Erdos249257/SuffixCylinderTerminalOnlyBridge.lean}{287}{exists_infinite_positive_support_half_of_cofinalCylinderStages}{positive-support lift}.
+This is a conditional countermodel frontier, not evidence that such stages
+exist; proving or refuting their cofinality is the surviving task for this
+route.
+
 One natural route to $1/2$ is closed.  The Boolean support selected by the
 negative values of the M\"obius function has value exactly $1/2$ plus the
 positive M\"obius tail, hence at least $1/2+1/63$
