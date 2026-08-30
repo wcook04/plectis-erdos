@@ -278,6 +278,41 @@ def check_public_surface_file_boundary() -> None:
                 else:
                     raise AssertionError("cold-clone FIFO boundary escaped")
 
+            raced_parent = root / "input-parent"
+            raced_parent.mkdir()
+            original_parent = root / "input-parent-original"
+            outside = root / "outside"
+            outside.mkdir()
+            raced_input = raced_parent / "surface.txt"
+            raced_input.write_text("inside\n", encoding="utf-8")
+            (outside / raced_input.name).write_text("outside\n", encoding="utf-8")
+            original_open = diagnostic.os.open
+
+            def swap_parent(
+                path: Path,
+                flags: int,
+                mode: int = 0o777,
+                *,
+                dir_fd: int | None = None,
+            ) -> int:
+                if dir_fd is not None and Path(path).name == raced_input.name:
+                    raced_parent.rename(original_parent)
+                    raced_parent.symlink_to(outside, target_is_directory=True)
+                if dir_fd is not None:
+                    return original_open(path, flags, mode, dir_fd=dir_fd)
+                return original_open(path, flags, mode)
+
+            with patch.object(diagnostic.os, "open", side_effect=swap_parent):
+                observed = diagnostic.safe_read_text("input-parent/surface.txt")
+            require(
+                observed == "inside\n",
+                "cold-clone reader followed a swapped parent directory",
+            )
+            require(
+                (original_parent / raced_input.name).is_file(),
+                "cold-clone reader did not use the held parent descriptor",
+            )
+
 
 def main() -> int:
     check_checker_child_environment()
