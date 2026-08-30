@@ -360,6 +360,22 @@ def check_session_lifecycle(sessions_root: Path) -> None:
     assert closed["kernel_accepted_probes"] == 0
 
 
+def check_probe_runner_failures() -> None:
+    real_run = workbench.subprocess.run
+    workbench.subprocess.run = lambda *args, **kwargs: (_ for _ in ()).throw(
+        FileNotFoundError(2, "lake")
+    )
+    try:
+        receipt = workbench.run_lean_probe(
+            workbench.repo_root(), "example : True := by trivial\n"
+        )
+    finally:
+        workbench.subprocess.run = real_run
+    assert receipt["verdict"] == "probe_error"
+    assert receipt["detail"] == "lean_probe_unavailable"
+    assert receipt["exit_code"] is None
+
+
 def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
     real_runner = workbench.run_lean_probe
     calls: list[str] = []
@@ -507,6 +523,7 @@ def main() -> int:
         check_session_path_boundaries(tmp)
         check_replay_path_boundary(tmp)
         check_malformed_ledger_boundary(tmp)
+        check_probe_runner_failures()
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
         check_claim_gate(sessions_root, tmp)

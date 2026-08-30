@@ -148,6 +148,19 @@ def run_lean_probe(root: Path, source: str) -> dict[str, Any]:
             "duration_seconds": PROBE_TIMEOUT_SECONDS,
             "output_tail": "",
         }
+    except OSError as exc:
+        return {
+            "verdict": "probe_error",
+            "detail": "lean_probe_unavailable",
+            "exit_code": None,
+            "error_count": None,
+            "sorry_count": None,
+            "duration_seconds": round(
+                (_dt.datetime.now(_dt.timezone.utc) - started).total_seconds(),
+                3,
+            ),
+            "output_tail": str(exc),
+        }
     duration = (
         _dt.datetime.now(_dt.timezone.utc) - started
     ).total_seconds()
