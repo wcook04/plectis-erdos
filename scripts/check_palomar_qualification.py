@@ -704,6 +704,14 @@ def candidate_selection_errors(
                 errors.append(
                     f"candidate screening row {index} names a declaration absent from Comparator"
                 )
+            expected_screening_family = {
+                "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation":
+                    "actual_foreign_residue_projection",
+            }.get(row.get("declaration"))
+            if expected_screening_family and row.get("family_id") != expected_screening_family:
+                errors.append(
+                    f"candidate screening row {index} misbinds its canonical family"
+                )
         ranked_names = [row.get("declaration") for row in ranking or [] if isinstance(row, dict)]
         if len(screening_names) != len(set(screening_names)):
             errors.append("candidate screening contains duplicate declarations")

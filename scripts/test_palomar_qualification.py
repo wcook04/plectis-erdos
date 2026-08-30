@@ -274,6 +274,13 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "ControlledForeignProjection" in " ".join(foreign["exact_hypotheses"])
     assert "unbounded" in " ".join(foreign["limitations"])
     assert "not an irrationality theorem" in foreign["conclusion"]
+    foreign_screen = next(
+        row
+        for row in showcase["candidate_screening"]
+        if row["declaration"] == foreign["comparator_declaration"]
+    )
+    assert foreign_screen["family_id"] == "actual_foreign_residue_projection"
+    assert foreign_screen["disposition"] == "supporting_conditional_reduction"
     for candidate_id in ("certificate_completeness",):
         row = landscape_by_id[candidate_id]
         assert row["disposition"] in {"deferred", "subordinate"}
