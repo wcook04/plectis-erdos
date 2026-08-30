@@ -33,6 +33,7 @@ def accepted_source() -> tuple[str, dict, bytes]:
         capture_output=True,
         text=True,
         env=contributions.git_environment(),
+        timeout=contributions.GIT_LOOKUP_TIMEOUT_SECONDS,
     ).stdout.strip()
     receipt["record_kind"] = "accepted_receipt"
     receipt["return_id"] = "rr-contribution-projection-test"
