@@ -6,10 +6,14 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from copy import deepcopy
 from pathlib import Path
+from unittest.mock import patch
+
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -34,8 +38,57 @@ def summary_packet() -> dict[str, object]:
         capture_output=True,
         text=True,
         check=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
     return json.loads(completed.stdout)
+
+
+def check_summary_packet_environment() -> None:
+    """Prove the public query subprocess ignores ambient runner state."""
+    hostile_environment = {
+        "GIT_DIR": str(ROOT / "not-a-git-directory"),
+        "GIT_WORK_TREE": "/private/wrong-work-tree",
+        "GIT_INDEX_FILE": "/private/wrong-index",
+        "GIT_NAMESPACE": "wrong-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = subprocess.CompletedProcess(
+        [], 0, stdout=json.dumps({"non_claims": []}), stderr=""
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(subprocess, "run", return_value=completed) as run:
+            observed = summary_packet()
+
+    require(observed == {"non_claims": []}, "public query result was not returned")
+    require(len(run.call_args_list) == 1, "public query subprocess was not exercised")
+    kwargs = run.call_args.kwargs
+    sanitized = kwargs["env"]
+    for key in (
+        "GIT_DIR",
+        "GIT_WORK_TREE",
+        "GIT_INDEX_FILE",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+        "PYTHONPATH",
+    ):
+        require(key not in sanitized, f"ambient {key} leaked into public query")
+    require(sanitized["GIT_CONFIG_GLOBAL"] == os.devnull, "global Git config was not disabled")
+    require(sanitized["GIT_OPTIONAL_LOCKS"] == "0", "optional Git locks were not disabled")
+    require(sanitized["GIT_NO_REPLACE_OBJECTS"] == "1", "replacement objects were not disabled")
+    require(sanitized["GIT_ASKPASS"] == "/bin/false", "Git askpass was not disabled")
+    require(sanitized["PYTHONNOUSERSITE"] == "1", "user Python site was not disabled")
+    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into public query")
+    require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale was not pinned")
+    require(sanitized["LANG"] == "C.UTF-8", "canonical language was not pinned")
+    require(
+        kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "public query subprocess timeout drifted",
+    )
 
 
 def boundary_errors(
