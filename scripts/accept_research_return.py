@@ -304,9 +304,13 @@ def build_candidate(
         repository_identity=repository_identity,
     )
     errors.extend(f"submitted: {error}" for error in submitted_errors)
-    if submitted.get("repository", {}).get("proposed_commit") is None:
+    submitted_repository = submitted.get("repository")
+    submitted_repository = (
+        submitted_repository if isinstance(submitted_repository, dict) else {}
+    )
+    if submitted_repository.get("proposed_commit") is None:
         errors.append("submitted.repository.proposed_commit: acceptance requires a proposed commit")
-    proposed_commit = submitted.get("repository", {}).get("proposed_commit")
+    proposed_commit = submitted_repository.get("proposed_commit")
     accepted_commit = decision.get("accepted_commit")
     if (
         isinstance(proposed_commit, str)
@@ -377,7 +381,11 @@ def build_decision_template(
         check_git=True,
         repository_identity=repository_identity,
     )
-    if submitted.get("repository", {}).get("proposed_commit") is None:
+    submitted_repository = submitted.get("repository")
+    submitted_repository = (
+        submitted_repository if isinstance(submitted_repository, dict) else {}
+    )
+    if submitted_repository.get("proposed_commit") is None:
         errors.append("submitted.repository.proposed_commit: acceptance requires a proposed commit")
     if errors:
         return None, [f"submitted: {error}" for error in sorted(set(errors))]
