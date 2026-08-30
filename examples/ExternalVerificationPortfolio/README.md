@@ -1,9 +1,9 @@
 # External verification portfolio
 
-This directory contains small Lean consumers for three different parts of the
-Erdős 249/251/269 corpus. The files are useful when a reader wants to reuse an
-exact Comparator-facing interface without treating a conditional reduction as
-a solution of the underlying Erdős problem.
+This directory contains small Lean consumers for four different parts of the
+Erdős 249/251/257/269 corpus. The files are useful when a reader wants to reuse
+an exact Comparator-facing interface without treating a conditional reduction
+as a solution of the underlying Erdős problem.
 
 The canonical focused check for the portfolio consumers is:
 
@@ -11,6 +11,7 @@ The canonical focused check for the portfolio consumers is:
 python3 scripts/lean_fast_build.py \
   examples/ExternalVerificationPortfolio/Problem249.lean \
   examples/ExternalVerificationPortfolio/Problem251.lean \
+  examples/ExternalVerificationPortfolio/Problem257.lean \
   examples/ExternalVerificationPortfolio/Problem269.lean
 ```
 
@@ -18,6 +19,71 @@ That command imports the shared `ExternalVerification.Solution` surface. The
 existing `ExternalVerification/Solution.lean` mismatch means that a build of
 the #251 or #269 consumer must not be described as Lean-green until that
 mismatch is repaired and the command passes on the repaired source.
+
+## Erdős #257: ranked structured-support frontier
+
+Start with [`Problem257.lean`](Problem257.lean). It calls four distinct public
+`ExternalVerification` wrappers in Palomar order. The first three are
+unconditional theorems for stated structured classes; the fourth is a
+conditional reduction. None proves irrationality for every infinite support,
+and none should be read as a universal solution of #257.
+
+### Full support
+
+The exact wrapper is
+`Erdos249257.ExternalVerification.irrational_erdosSum_full_support`, with the
+single hypothesis `b : ℕ` and `2 ≤ b`. Its source is
+[`CertificateKernel.lean`](../../Erdos249257/CertificateKernel.lean#L8328).
+The hard mechanism is a completed weighted divisor-block certificate: a
+Bertrand/CRT first block, divisor-pair averaging in a middle window, and
+explicit tail closure. The conclusion is for the full-support
+Erdős--Borwein series only; arbitrary infinite support remains outside the
+theorem.
+
+### Pairwise-coprime support
+
+The exact wrapper is
+`Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime`.
+It requires `b : ℕ` with `2 ≤ b`, `A : Set ℕ` with `A.Infinite`,
+`A.Pairwise Nat.Coprime`, and
+`Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / a))`. Its source is
+[`CertificateKernel.lean`](../../Erdos249257/CertificateKernel.lean#L10776).
+Adaptive CRT absorbs small support elements at residue zero, block sizes absorb
+their deterministic hits, and summable reciprocal mass controls the strays.
+The pairwise-coprime and summability hypotheses are essential: this is not an
+arbitrary-support theorem or the universal #257 claim.
+
+### Nonnegative eventually-periodic rational weights
+
+The exact wrapper is
+`Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic`.
+It requires `b m N₀ : ℕ`, `γ : ℕ → ℚ`, `2 ≤ b`, `0 < m`, pointwise
+`0 ≤ γ n`, eventual periodicity `γ (n + m) = γ n` for every `n ≥ N₀`, and
+some `a` with `N₀ ≤ a`, `0 < a`, and `0 < γ a`. Its source is
+[`CertificateKernel.lean`](../../Erdos249257/CertificateKernel.lean#L12811).
+The mechanism clears one common denominator on the prefix-plus-period window,
+reduces to an eventually-periodic natural weight, and applies the weighted
+certificate argument. Mixed-sign weights and arbitrary supports are outside
+the result; this remains a structured-family theorem, not universal #257.
+
+### Orthogonal petals: conditional route
+
+The exact wrapper is
+`Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet`.
+It takes both `OrthogonalPetalBouquet A` and
+`SunflowerForcedSlotTailSelection A`, at base `2`. The bouquet hypothesis
+includes a positive finite-core modulus `Q`; positive exceptional divisors of
+`Q`; positive cores dividing `Q`; petals greater than one, individually
+coprime to `Q`, and pairwise coprime; exact support equality by the exceptional
+frame and core-times-petal rays; and summable reciprocal petal mass. The
+selector requires, for every `K > 0`, a starting point `N` whose first `K`
+support-coefficient block is divisible by `2^K` and whose binary coefficient
+tail is at most `16`. The source route is
+[`SupportSunflowerDichotomy.lean`](../../Erdos249257/SupportSunflowerDichotomy.lean#L540).
+Its hard mechanism is the finite-core divisor/frame decomposition and bounded
+petal tail budget, but the selector is not proved. This is therefore a
+conditional support route, not an unconditional family, universal #257 result,
+or novelty claim.
 
 ## Erdős #249: actual-LCM orbit separation
 
@@ -111,8 +177,9 @@ supporting or contrary evidence rather than extra portfolio families.
 
 For the configured interfaces and their recorded evidence boundaries, see
 [`verification/comparator.json`](../../verification/comparator.json) and the
-the exact source consumers above. The #249, #251, and #269 examples are
+exact source consumers above. The #249, #251, #257, and #269 examples are
 deliberately separate: #249 consumes an actual-LCM separation supply, #251
 consumes the dyadic-tail denominator classifier and an actual-prime mismatch
-obstruction, and #269 exposes a residue/coboundary mechanism plus a
-local-window carry consumer. Their hypotheses and open bridges differ.
+obstruction, #257 separates four support/weight classes with distinct
+hypotheses, and #269 exposes a residue/coboundary mechanism plus a local-window
+carry consumer. Their hypotheses and open bridges differ.
