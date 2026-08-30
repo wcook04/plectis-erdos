@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 9,
-    "artifact_count": 9,
+    "working_tree_only_count": 10,
+    "artifact_count": 10,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 9,
+    "link_and_digest_only_count": 10,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -184,6 +184,25 @@
         "docs/PRIOR_ART.md",
         "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
         "docs/primary-sources/reciprocal-tail/duverney-2001-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/badea-1993-infinite-series.pdf",
+      "sha256": "ff03df05829b9c38edf78232410f60993fd61d578057d1e42c0f1b67fba34e1f",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf",
+        "https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/63/4/107785/a-theorem-on-irrationality-of-infinite-series-and-applications"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/badea-1993-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/badea-1993-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/THIRD_PARTY_NOTICES.md",
+        "docs/primary-sources/reciprocal-tail/badea-1993-source-closure.md"
       ]
     }
   ]
