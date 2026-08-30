@@ -102,6 +102,13 @@ result is exact but local: clean blocks can have either vanishing or nonzero
 coefficients, so correction suppression alone does not produce an unbounded
 certificate family.
 
+There is also a lossless scalar form of the canonical strict-jump test.  At
+each strict LCM jump, the two central-band inequalities are equivalent to
+nonnegativity of one explicit integer slack.  If that slack is nonnegative at
+cofinally many strict jumps, the totient constant is irrational.  The
+cofinal sign condition is not proved; this is a reduction of the remaining
+producer problem, not an irrationality theorem.
+
 Let $\Stot=\sum_{n\ge1}\ph(n)/2^n$.  A rational value would induce a tempered
 integral tail orbit whose dyadic sections through level $e$ have rank at least
 $2^e-1$; no conflicting upper bound is proved.  Independently, every rational
@@ -427,6 +434,29 @@ gap nor an irrationality criterion.
 \mword{Erdos249257/SquareCRTCube.lean}{327}{exists_squareCRT_clean_horizon}{finite horizon},
 \mword{Erdos249257/SquareCRTCube.lean}{459}{squareCRT_clean_block_can_vanish}{vanishing block},
 \mword{Erdos249257/SquareCRTCube.lean}{477}{squareCRT_clean_block_can_be_nonzero}{nonzero block}.}
+
+\item\label{res:slackcriterion} \stag{conditional reduction}
+\textbf{Canonical strict-jump slack reduction.}  Put
+\[
+ m_t=\operatorname{canonicalAdjacentSuffixDepth}(t),\qquad
+ d_t=\operatorname{diagonalAdjacentSuffixResidue}(t,0,m_t),
+\]
+and define the integer slack
+\[
+ \lambda_t=\min\!\left(d_t-2^{m_t-5},
+       (2^{m_t}-2^{m_t-5})-d_t\right).
+\]
+The two-sided central-band test at $t$ is equivalent to
+$\lambda_t\ge0$.  Moreover, the existence, beyond every threshold, of a
+strict LCM jump $H_t<H_{t+1}$ with $\lambda_t\ge0$ is equivalent to the
+corresponding central-band producer; either cofinal producer implies that
+$\Stot$ is irrational.  This exposes one integer observable for exact
+computation and recurrence arguments, but the cofinal sign assertion itself
+remains open.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2667}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{centrality equivalence},
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2757}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{producer equivalence},
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2932}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality consumer}.}
 
 \item\label{res:periodic} \stag{unconditional progress}
 \textbf{Eventually periodic weights are settled.}  For every integer base
@@ -908,6 +938,27 @@ gap nor an irrationality criterion.
 \mword{Erdos249257/SquareCRTCube.lean}{327}{exists_squareCRT_clean_horizon}{finite horizon},
 \mword{Erdos249257/SquareCRTCube.lean}{459}{squareCRT_clean_block_can_vanish}{vanishing block},
 \mword{Erdos249257/SquareCRTCube.lean}{477}{squareCRT_clean_block_can_be_nonzero}{nonzero block}.}
+
+\paragraph{Canonical strict-jump slack.}
+At $t$, let $m_t$ be the checked canonical suffix depth and let
+$d_t$ be its residue at offset $0$.  The scalar
+\[
+ \lambda_t=\min\!\left(d_t-2^{m_t-5},
+       (2^{m_t}-2^{m_t-5})-d_t\right)
+\]
+is the signed distance from that residue to the nearer edge of the central
+band.  The two central inequalities therefore collapse exactly to
+$\lambda_t\ge0$.  The formal producer equivalence says that asking for this
+sign at arbitrarily large strict LCM jumps is neither weaker nor stronger
+than asking for the original two-sided central band there.  The same source
+then transports the scalar producer to irrationality of $\Stot$.  The hard
+step has only moved: no cofinal nonnegative-slack supply is proved, so this
+section records a one-integer target for future arithmetic or computational
+work, not a closure of Problem~\#249.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2667}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{centrality equivalence},
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2757}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{producer equivalence},
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2932}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality consumer}.}
 
 \section{Obstructions for fixed-coordinate methods}\label{sec:nogo}
 
