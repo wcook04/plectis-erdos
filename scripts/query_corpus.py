@@ -8533,7 +8533,7 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
 
 
 def agent_tour_packet() -> dict[str, Any]:
-    """Return a scale-first, corpus-derived tour for an unfamiliar agent.
+    """Return a signal-first, corpus-derived tour for an unfamiliar agent.
 
     The tour is intentionally assembled from committed projections rather than
     paper-specific module names. It exposes the same intent classes that recur
@@ -8557,29 +8557,12 @@ def agent_tour_packet() -> dict[str, Any]:
     reviewed_family_by_problem = {
         str(row["erdos_number"]): row for row in reviewed_family_census
     }
-    paper_by_problem = {
-        str(row["erdos_number"]): (row.get("paper") or {})
-        for row in problems
-    }
-    reviewed_family_index = []
-    for family in reviewed_result_family_index(claims):
-        paper = paper_by_problem.get(str(family["erdos_number"]), {})
-        reviewed_family_index.append(
-            {
-                **family,
-                "paper_source": paper.get("source"),
-                "paper_source_route": (
-                    "python3 scripts/query_corpus.py --paper-source "
-                    f"{paper['source']}"
-                    if paper.get("source")
-                    else None
-                ),
-            }
-        )
+    mathematical_signal = mathematical_signal_spine(claims)
     return {
         "kind": "agent_corpus_tour",
-        "schema_version": "agent-corpus-tour/1",
+        "schema_version": "agent-corpus-tour/2",
         "authority_posture": "computed_navigation_tour_not_proof_authority",
+        "mathematical_signal_spine": mathematical_signal,
         "budget_contract": {
             "maximum_encoded_bytes": agent_tour_budget_bytes(len(problems)),
             "policy": (
@@ -8686,15 +8669,14 @@ def agent_tour_packet() -> dict[str, Any]:
                 "declarations, paper, and exact open obligations."
             ),
         },
-        "reviewed_result_family_index": reviewed_family_index,
         "open_frontier_contract": {
             "indexed_open_problem_count": indexed_open_problem_count,
             "reviewed_remaining_open_proposition_count": len(open_rows),
-            "reviewed_scope": "reviewed #249/#257 claim registry",
+            "reviewed_scope": "all eight indexed problem programmes",
             "distinction": (
-                "Open-proposition rows describe the reviewed #249/#257 claim "
-                "frontier; they are not a count of the canonically indexed "
-                "open Erdős problems."
+                "Open-proposition rows describe exact surviving endpoints and "
+                "selected subfrontiers across all eight programmes; their count "
+                "is not the count of indexed open Erdős problems."
             ),
         },
         "mathematical_map": [
@@ -8835,10 +8817,13 @@ def agent_tour_packet() -> dict[str, Any]:
         },
         "omission_receipt": {
             "omitted": (
-                "the exhaustive declaration rows, proof edges, and full claim "
-                "records"
+                "the exhaustive declaration rows, proof edges, full claim "
+                "records, and per-family review records"
             ),
-            "reason": "first-contact tour stays bounded and points to typed expansions",
+            "reason": (
+                "first-contact tour gives ranked mathematics unequal depth and "
+                "routes exhaustive family detail through each problem"
+            ),
             "expand": (
                 "python3 scripts/query_corpus.py --route "
                 "agent_native_corpus_navigation"
@@ -9375,27 +9360,53 @@ def render_card(packet: dict[str, Any]) -> str:
     if kind == "agent_corpus_tour":
         scale = packet["scale"]
         graph = packet["formal_dependency_graph"]
+        signal = packet["mathematical_signal_spine"]
         frontier = ",".join(row["id"] for row in packet["frontier"])
         problem_ids = ",".join(
             f"#{row['erdos_number']}" for row in packet["problem_map"]
         )
         rows = [
             (
-                f"corpus tour | modules={scale['module_count']} "
+                "corpus tour | signal_source=Palomar "
+                "| mathematical_rank_before_scale_and_inventory"
+            ),
+        ]
+        rows.extend(
+            f"tour_signal #{row['rank']} | problem=#{row['problem']} "
+            f"| tier={row['reader_tier']} | family={row['family_id']} "
+            f"| declaration={row['declaration']} "
+            f"| boundary={row['exact_boundary']}"
+            for row in signal["ranked_frontier"]
+        )
+        rows.extend(
+            f"tour_friction | problem=#{row['problem']} "
+            f"| family={row['family_id']} | boundary={row['boundary']}"
+            for row in signal["natural_friction"]["results"]
+        )
+        rows.extend(
+            [
+                (
+                    "tour_long_tail | subordinate_not_deleted "
+                    f"| declarations={signal['long_tail']['declaration_count']}"
+                ),
+                (
+                    f"scale | modules={scale['module_count']} "
                 f"| theorem_like={scale['theorem_like_count']} "
                 f"| curated_claims={scale['curated_claim_count']} "
                 f"| programmes={scale['mathematical_programme_count']} "
                 f"| contribution_families={scale['contribution_family_count']} "
                 f"| reviewed_open_propositions="
-                f"{scale['reviewed_remaining_open_proposition_count']}"
-            ),
-            (
-                f"problem map | indexed={scale['indexed_problem_count']} "
+                    f"{scale['reviewed_remaining_open_proposition_count']} "
+                    "| counts=descriptive_not_ranked"
+                ),
+                (
+                    f"problem map | indexed={scale['indexed_problem_count']} "
                 f"| open={scale['indexed_open_problem_count']} "
                 f"| ids={problem_ids} "
                 "| route=python3 scripts/query_semantic.py problem-registry"
-            ),
-        ]
+                ),
+            ]
+        )
         for problem in packet.get("problem_map", []):
             route_memory = problem.get("route_memory")
             if not isinstance(route_memory, str) or not route_memory:
@@ -9417,7 +9428,7 @@ def render_card(packet: dict[str, Any]) -> str:
                     "| proof=pinned Lean kernel | public meaning=maintainer review"
                 ),
                 (
-                    "reviewed frontier | scope=#249/#257 "
+                    "open frontier | scope=all-eight "
                     f"| propositions={scale['reviewed_remaining_open_proposition_count']} "
                     f"| ids={frontier}"
                 ),

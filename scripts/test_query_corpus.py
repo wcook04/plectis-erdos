@@ -341,6 +341,13 @@ def validate_research_corpus_fingerprint() -> None:
 def validate_agent_tour() -> None:
     packet = agent_tour_packet()
     assert packet["kind"] == "agent_corpus_tour"
+    assert packet["schema_version"] == "agent-corpus-tour/2"
+    keys = list(packet)
+    assert keys.index("mathematical_signal_spine") < keys.index("scale")
+    assert "reviewed_result_family_index" not in packet
+    assert packet["problem_result_family_contract"]["route"] == (
+        "python3 scripts/query_corpus.py --route <problem_id>"
+    )
     assert packet["scale"]["declaration_count"] > 100_000
     assert packet["scale"]["mathematical_programme_count"] == len(
         PROGRAMME_EXPECTATIONS
@@ -353,11 +360,11 @@ def validate_agent_tour() -> None:
     assert packet["open_frontier_contract"] == {
         "indexed_open_problem_count": 8,
         "reviewed_remaining_open_proposition_count": len(packet["frontier"]),
-        "reviewed_scope": "reviewed #249/#257 claim registry",
+        "reviewed_scope": "all eight indexed problem programmes",
         "distinction": (
-            "Open-proposition rows describe the reviewed #249/#257 claim "
-            "frontier; they are not a count of the canonically indexed open "
-            "Erdős problems."
+            "Open-proposition rows describe exact surviving endpoints and "
+            "selected subfrontiers across all eight programmes; their count "
+            "is not the count of indexed open Erdős problems."
         ),
     }
     assert packet["budget_contract"]["maximum_encoded_bytes"] == (
@@ -462,11 +469,35 @@ def validate_agent_tour() -> None:
     card = run("--tour", "--format", "card")
     assert card.returncode == 0
     lines = card.stdout.strip().splitlines()
-    assert len(lines) == 14
-    assert lines[0].startswith("corpus tour | modules=")
-    assert "reviewed_open_propositions=" in lines[0]
-    assert lines[1].startswith("problem map | indexed=8 | open=8")
-    assert [line.split(" | ")[1] for line in lines[2:10]] == [
+    signal = packet["mathematical_signal_spine"]
+    ranked = signal["ranked_frontier"]
+    friction = signal["natural_friction"]["results"]
+    assert len(lines) == len(ranked) + len(friction) + 16
+    assert lines[0] == (
+        "corpus tour | signal_source=Palomar "
+        "| mathematical_rank_before_scale_and_inventory"
+    )
+    signal_lines = lines[1 : 1 + len(ranked)]
+    assert [line.split(" | ")[0] for line in signal_lines] == [
+        f"tour_signal #{rank}" for rank in range(1, len(ranked) + 1)
+    ]
+    assert all(
+        f"family={row['family_id']}" in line
+        and f"boundary={row['exact_boundary']}" in line
+        for row, line in zip(ranked, signal_lines, strict=True)
+    )
+    friction_start = 1 + len(ranked)
+    scale_index = friction_start + len(friction) + 1
+    assert all(
+        lines[friction_start + index].startswith("tour_friction | ")
+        for index in range(len(friction))
+    )
+    assert lines[scale_index].startswith("scale | modules=")
+    assert "counts=descriptive_not_ranked" in lines[scale_index]
+    problem_map_index = scale_index + 1
+    assert lines[problem_map_index].startswith("problem map | indexed=8 | open=8")
+    problem_route_start = problem_map_index + 1
+    assert [line.split(" | ")[1] for line in lines[problem_route_start : problem_route_start + 8]] == [
         "#68",
         "#243",
         "#249",
@@ -476,11 +507,17 @@ def validate_agent_tour() -> None:
         "#1041",
         "#1049",
     ]
-    assert all("| resume=python3 scripts/query_route_memory.py --problem " in line for line in lines[2:10])
-    assert lines[10].startswith("formal graph | roots=")
-    assert lines[11].startswith("authority | navigation=")
-    assert lines[12].startswith("reviewed frontier | scope=#249/#257")
-    assert lines[13] == (
+    assert all(
+        "| resume=python3 scripts/query_route_memory.py --problem " in line
+        for line in lines[problem_route_start : problem_route_start + 8]
+    )
+    formal_graph_index = problem_route_start + 8
+    assert lines[formal_graph_index].startswith("formal graph | roots=")
+    assert lines[formal_graph_index + 1].startswith("authority | navigation=")
+    assert lines[formal_graph_index + 2].startswith(
+        "open frontier | scope=all-eight"
+    )
+    assert lines[formal_graph_index + 3] == (
         "next | command=python3 scripts/query_corpus.py --route "
         "agent_native_corpus_navigation | requires_lean_build=false"
     )
