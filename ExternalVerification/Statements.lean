@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-two-interface
+This module contains only the definitions needed to state the twenty-four-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -237,7 +237,11 @@ def runHeight (ns : List ℕ) : ℕ :=
 def defectRunLengths (e : List ℕ) : List ℕ :=
   e.map Nat.succ
 
-/-- One trusted challenge witness carries the twenty-three exact interfaces selected
+/-- The closed cylinder mass at a positive Stern--Brocot node. -/
+noncomputable def cylinderMass (a b : ℕ+) : ℝ :=
+  1 / (((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1))
+
+/-- One trusted challenge witness carries the twenty-four exact interfaces selected
 for the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
 each statement separately while the trusted challenge contains one hole. -/
@@ -306,6 +310,11 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     ∀ e : List ℕ,
       Nat.fib (e.length + 3) + Nat.fib (e.length + 1) * e.sum ≤
         runHeight (defectRunLengths e)
+  problem249CylinderMassSplit :
+    ∀ a b : ℕ+,
+      cylinderMass a b =
+        1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+          + cylinderMass (a + b) b + cylinderMass a (a + b)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →

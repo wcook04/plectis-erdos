@@ -11443,6 +11443,17 @@
         "boundary": "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no Erdős #249 endpoint follows."
       },
       {
+        "id": "stern_brocot_cylinder_mass_split",
+        "problem": 249,
+        "review_family": "stern_brocot_cylinder_law",
+        "contribution_class": "formalised exact Stern-Brocot cylinder telescoping identity",
+        "original_declaration": "GcdMomentCalculus.cylinderMass_split",
+        "original_source": "Erdos249257/GcdMomentCalculus.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.cylinderMass_split",
+        "statement": "At every positive Stern-Brocot node (a,b), the closed cylinder mass splits exactly into the node's stop mass and the two child cylinder masses.",
+        "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
+      },
+      {
         "id": "prime_gap_unboundedness",
         "problem": 251,
         "review_family": "coefficient_only_no_go",
@@ -11719,12 +11730,20 @@
             "boundary": "This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows."
           },
           {
-          "id": "stern_brocot_run_fibonacci_stability",
-          "contribution_class": "formalised exact Fibonacci/continuant run stability floor",
-          "summary": "For a positive Stern-Brocot run word, the global height gain from run defects is bounded below by the sharp Fibonacci coefficient F_(r+1) times the total defect.",
+            "id": "stern_brocot_run_fibonacci_stability",
+            "contribution_class": "formalised exact Fibonacci/continuant run stability floor",
+            "summary": "For a positive Stern-Brocot run word, the global height gain from run defects is bounded below by the sharp Fibonacci coefficient F_(r+1) times the total defect.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "boundary": "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows."
+        },
+        {
+          "id": "stern_brocot_cylinder_law",
+          "contribution_class": "formalised exact Stern-Brocot cylinder telescoping identity",
+          "summary": "At every positive Stern-Brocot node, the closed cylinder mass splits into stop mass and the two child cylinders, giving an exact Markov recursion.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
-          "boundary": "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows."
+          "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
         },
         {
           "id": "totient_finite_denominator_exclusion",

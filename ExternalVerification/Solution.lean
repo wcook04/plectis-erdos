@@ -20,7 +20,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-three existing results through the Mathlib-only
+These thin wrappers expose twenty-four existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -140,6 +140,9 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     simpa [runHeight, SternBrocotRunGeometry.runHeight,
       defectRunLengths, SternBrocotRunGeometry.defectRunLengths,
       runBoundaryPair_eq_source] using hsource
+  · intro a b
+    simpa [cylinderMass, GcdMomentCalculus.cylinderMass] using
+      GcdMomentCalculus.cylinderMass_split a b
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
@@ -287,6 +290,12 @@ theorem runHeight_defect_fib_sum_lower (e : List ℕ) :
     Nat.fib (e.length + 3) + Nat.fib (e.length + 1) * e.sum ≤
       runHeight (defectRunLengths e) :=
   (portfolioClaims Unit).problem249SternBrocotRunStability e
+
+theorem cylinderMass_split (a b : ℕ+) :
+    cylinderMass a b =
+      1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+        + cylinderMass (a + b) b + cylinderMass a (a + b) :=
+  (portfolioClaims Unit).problem249CylinderMassSplit a b
 
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
   simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,

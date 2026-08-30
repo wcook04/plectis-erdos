@@ -106,6 +106,12 @@ theorem runHeight_defect_fib_sum_lower (e : List ℕ) :
       runHeight (defectRunLengths e) :=
   (portfolioClaims Unit).problem249SternBrocotRunStability e
 
+theorem cylinderMass_split (a b : ℕ+) :
+    cylinderMass a b =
+      1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+        + cylinderMass (a + b) b + cylinderMass a (a + b) :=
+  (portfolioClaims Unit).problem249CylinderMassSplit a b
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

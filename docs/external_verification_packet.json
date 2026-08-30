@@ -276,6 +276,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "stern_brocot_cylinder_mass_split",
+      "problem": 249,
+      "review_family": "stern_brocot_cylinder_law",
+      "contribution_class": "formalised exact Stern-Brocot cylinder telescoping identity",
+      "original_declaration": "GcdMomentCalculus.cylinderMass_split",
+      "original_source": "Erdos249257/GcdMomentCalculus.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.cylinderMass_split",
+      "statement": "At every positive Stern-Brocot node (a,b), the closed cylinder mass splits exactly into the node's stop mass and the two child cylinder masses.",
+      "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "prime_gap_unboundedness",
       "problem": 251,
       "review_family": "coefficient_only_no_go",
@@ -594,6 +608,14 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "boundary": "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows."
+        },
+        {
+          "id": "stern_brocot_cylinder_law",
+          "contribution_class": "formalised exact Stern-Brocot cylinder telescoping identity",
+          "summary": "At every positive Stern-Brocot node, the closed cylinder mass splits into stop mass and the two child cylinders, giving an exact Markov recursion.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
         },
         {
           "id": "totient_finite_denominator_exclusion",
@@ -954,7 +976,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:4ff586aab1cd5b27436990d79848add116991847eb0f63e377fdb1101a601b19",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:aacb30a7f98d77aab5dbfed3d80bf17e9981e04079248666dbb9141d7976a3a4",
+    "projection_digest": "sha256:dc03c0eb64e78d2d192c09bd18c74c15624958b50f93c664ae7907aa1bfbec2c",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1402,11 +1424,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 11,
+          "family_count": 12,
           "by_class": {
             "not_selected": 4,
             "represented_by": 1,
-            "targeted": 6
+            "targeted": 7
           },
           "dispositions": {
             "totient_kernel_basis": "targeted",
@@ -1415,6 +1437,7 @@
             "totient_visible_coprime_lattice_mass": "targeted",
             "squared_lambert_gcd_moments": "targeted",
             "stern_brocot_run_fibonacci_stability": "targeted",
+            "stern_brocot_cylinder_law": "targeted",
             "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
@@ -2002,7 +2025,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:f710885a56953a45a99ef77cf85d69c82ddd06042cd0860b3a4307db39360aa7",
+    "digest": "sha256:443f1fd64100b74ba89f610419e8ba4414b5b595796faa2d928d08b264b2c9cb",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2010,6 +2033,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:8a4d67147e8accfc14f45fa642ccb46681489c4c525ae5b20190c9d3ea931938",
-  "solution_source_digest": "sha256:7ba2ea7f266fbe288db371b4c5b4a8e1077b0de99249a6c25fb119c659ffec0f"
+  "config_digest": "sha256:fada5020a36f67ba1fac3c2ac19345273e0da3de8a6da2a3a8c4fc389e0545c3",
+  "solution_source_digest": "sha256:1a6e9f408fa1d08a43d2551144aacfd21be268ee9e1d1c78173ff9af453abe38"
 }

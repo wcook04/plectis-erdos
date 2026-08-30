@@ -229,6 +229,22 @@ status:
       boundary: "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no Erdős #249 endpoint follows."
       comparator_declaration: "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower"
       literature_dependencies: []
+    - declaration: "GcdMomentCalculus.cylinderMass_split"
+      file: "Erdos249257/GcdMomentCalculus.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "formalised exact Stern-Brocot cylinder telescoping identity"
+      statement: "At every positive Stern-Brocot node (a,b), the closed cylinder mass splits exactly into the node's stop mass and the two child cylinder masses."
+      boundary: "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
+      comparator_declaration: "Erdos249257.ExternalVerification.cylinderMass_split"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       file: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       sorry_count: 0
@@ -514,6 +530,11 @@ alignment:
       module: "Erdos249257/SternBrocotRunGeometry.lean"
       status: "proved"
       note: "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no Erdős #249 endpoint follows."
+    - source: "At every positive Stern-Brocot node (a,b), the closed cylinder mass splits exactly into the node's stop mass and the two child cylinder masses."
+      lean: "GcdMomentCalculus.cylinderMass_split"
+      module: "Erdos249257/GcdMomentCalculus.lean"
+      status: "proved"
+      note: "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
     - source: "The consecutive prime gaps are unbounded."
       lean: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
@@ -684,6 +705,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "For a positive Stern-Brocot run word, the global height gain from run defects is bounded below by the sharp Fibonacci coefficient F_(r+1) times the total defect."
         boundary: "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows."
+      - id: "stern_brocot_cylinder_law"
+        contribution_class: "formalised exact Stern-Brocot cylinder telescoping identity"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted"
+        summary: "At every positive Stern-Brocot node, the closed cylinder mass splits into stop mass and the two child cylinders, giving an exact Markov recursion."
+        boundary: "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
       - id: "totient_finite_denominator_exclusion"
         contribution_class: "finite computation"
         evidence_mode: "Lean kernel and generated finite certificates"
@@ -937,7 +964,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:aacb30a7f98d77aab5dbfed3d80bf17e9981e04079248666dbb9141d7976a3a4"
+  problem_index_digest: "sha256:dc03c0eb64e78d2d192c09bd18c74c15624958b50f93c664ae7907aa1bfbec2c"
   problem_count: 8
   problems:
     - id: "erdos_68"
