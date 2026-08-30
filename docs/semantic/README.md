@@ -146,6 +146,24 @@ declaration preview, source identity, attached claims, and any bound
 route-memory context before the reader drills into a declaration or source
 coordinate.
 
+For relation-aware traversal around one ranked family, use
+
+```sh
+python3 scripts/query_semantic.py family-relations first_harmonic_pivot_decomposition
+python3 scripts/query_semantic.py family-relations fixed_precision_transport_no_go
+```
+
+This packet projects Palomar's canonical `programme_family_order` and
+`family_relations` into a bidirectional neighborhood: outgoing and incoming
+prerequisites, supports, conditional endpoint peers, and contrary evidence.
+Each peer retains its exact source and wrapper declarations, mechanism,
+summary, and open boundary, so a reader can follow the relation without
+mistaking it for a new claim or proof authority. `stronger_peers` and
+`weaker_peers` are derived from the canonical programme position; relation
+array order never supplies rank. This is a navigation projection, not a
+parallel ranking store, and its exhaustive `relations` list preserves the
+long-tail drilldown.
+
 ### Problem-to-family return packets
 
 The public problem route is the bounded return surface for every indexed

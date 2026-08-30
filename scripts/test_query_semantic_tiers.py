@@ -2,13 +2,17 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
 
+from copy import deepcopy
 from unittest.mock import patch
 
 from query_semantic import (
     PROBLEMS,
+    build_family_relations_packet,
     cmd_problem_registry,
     is_authored_interpretation,
     is_structural_interpretation,
+    load_claims,
+    load_palomar,
     problem_for_route,
     problem_scope_matches,
 )
@@ -116,6 +120,135 @@ def test_problem_route_prefers_authored_node_then_zone_then_exact_namespace() ->
         corpus,
         {"module": "ErdosProblems/Erdos9999/Future.lean"},
     ) == "9999"
+
+
+def test_palomar_relations_expose_249_peers_and_exact_boundaries() -> None:
+    packet = build_family_relations_packet(
+        load_palomar(), load_claims(), "first_harmonic_pivot_decomposition"
+    )
+    assert packet["family"]["source_route"] == "Erdos249257/FirstHarmonicPivot.lean"
+    assert packet["family"]["source_declaration"] == (
+        "Erdos249257.TotientTailPeriodKiller."
+        "irrational_totient_series_of_pivotResidualDecorrelation"
+    )
+    assert "PivotBudgetAt" in packet["family"]["open_boundary"]
+    stronger = [
+        row
+        for row in packet["stronger_peers"]
+        if row["peer"]["family_id"] == "actual_lcm_orbit_separation"
+    ]
+    assert len(stronger) == 1
+    assert stronger[0]["relation_class"] == "conditional_peer"
+    assert stronger[0]["peer"]["source_route"] == (
+        "Erdos249257/TotientActualLcmOrbitSeparation.lean"
+    )
+    assert "cofinal" in stronger[0]["peer"]["open_boundary"]
+
+    contrary = build_family_relations_packet(
+        load_palomar(), load_claims(), "fixed_precision_transport_no_go"
+    )
+    weaker = [
+        row
+        for row in contrary["weaker_peers"]
+        if row["peer"]["family_id"] == "actual_foreign_residue_projection"
+    ]
+    assert len(weaker) == 1
+    assert weaker[0]["relation_class"] == "contrary_evidence"
+    assert contrary["family"]["source_declaration"].endswith(
+        "fixedPrecisionTropicalNoGo; "
+        "Erdos249257.TotientTailPeriodKiller.vu_step_has_centred_completion; "
+        "Erdos249257.TotientTailPeriodKiller.vu_word_has_prefix_locked_completion"
+    )
+    assert "finite-word" in contrary["family"]["open_boundary"]
+
+
+def test_palomar_relation_and_detail_array_order_cannot_change_authority_rank() -> None:
+    palomar = {
+        "selection_contract": {
+            "programme_family_order": [
+                {
+                    "problem": 249,
+                    "family_ids": ["actual_lcm", "first_harmonic", "fixed", "foreign"],
+                }
+            ],
+            "family_relations": [
+                {
+                    "from_family_id": "first_harmonic",
+                    "relation": "independent_conditional_endpoint_peer",
+                    "to_family_id": "actual_lcm",
+                    "reason": "independent endpoint consumers",
+                },
+                {
+                    "from_family_id": "fixed",
+                    "relation": "contrary_evidence_for",
+                    "to_family_id": "foreign",
+                    "reason": "fixed precision does not close global projection",
+                },
+            ],
+        },
+        "candidate_ranking": [],
+        "candidate_value_dispositions": {
+            "source_landscape_candidates": [
+                {
+                    "family_id": "actual_lcm",
+                    "source_declaration": "Source.actual_lcm",
+                    "source_file": "Erdos249257/ActualLcm.lean",
+                    "hard_mechanism": "actual LCM mechanism",
+                },
+                {
+                    "family_id": "first_harmonic",
+                    "source_declaration": "Source.first_harmonic",
+                    "source_file": "Erdos249257/FirstHarmonic.lean",
+                    "hard_mechanism": "first harmonic mechanism",
+                },
+                {
+                    "family_id": "fixed",
+                    "source_declaration": "Source.fixed",
+                    "source_file": "Erdos249257/Fixed.lean",
+                    "hard_mechanism": "fixed precision mechanism",
+                },
+                {
+                    "family_id": "foreign",
+                    "source_declaration": "Source.foreign",
+                    "source_file": "Erdos249257/Foreign.lean",
+                    "hard_mechanism": "foreign projection mechanism",
+                },
+            ]
+        },
+    }
+    claims = {
+        "external_verification_packet": {
+            "review_matrix": [
+                {
+                    "families": [
+                        {
+                            "id": family_id,
+                            "summary": f"{family_id} summary",
+                            "boundary": f"{family_id} boundary",
+                        }
+                        for family_id in ["actual_lcm", "first_harmonic", "fixed", "foreign"]
+                    ]
+                }
+            ]
+        }
+    }
+    reversed_source = deepcopy(palomar)
+    reversed_source["selection_contract"]["family_relations"].reverse()
+    reversed_source["candidate_value_dispositions"][
+        "source_landscape_candidates"
+    ].reverse()
+    reversed_claims = deepcopy(claims)
+    reversed_claims["external_verification_packet"]["review_matrix"][0][
+        "families"
+    ].reverse()
+
+    normal = build_family_relations_packet(palomar, claims, "first_harmonic")
+    reversed_packet = build_family_relations_packet(
+        reversed_source, reversed_claims, "first_harmonic"
+    )
+    assert normal == reversed_packet
+    assert normal["family"]["authority_rank"]["programme_position"] == 2
+    assert normal["stronger_peers"][0]["peer"]["family_id"] == "actual_lcm"
 
 
 if __name__ == "__main__":
