@@ -34,11 +34,12 @@ problem-closure claim; every ranked family remains reachable below.
 | 4 | `periodic_nonnegative_weight_irrationality` / `represented` | `Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic` → `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic` | This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed. |
 | 5 | `actual_lcm_orbit_separation` / `represented` | `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` → `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` | The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open. |
 | 6 | `first_harmonic_pivot_decomposition` / `represented` | `Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation` → `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation` | The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed. |
-| 7 | `strict_prime_tail_orbit_gap` / `represented` | `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` → `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` | The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families. |
+| 7 | `strict_prime_tail_orbit_gap` / `represented` | `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` → `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` | The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families. |
 | 8 | `factorial_carry_characterisation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` → `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` | The equivalence does not supply a cofinal carry producer. |
 | 9 | `prime_gap_reformulation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap` → `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap` | The equivalence does not prove irrationality of either series. |
 | 10 | `totient_carry_anti_compression` / `represented` | `Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` → `Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` | This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open. |
 | 11 | `half_membership_seam_classification` / `represented` | `Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` → `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` | This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made. |
+| 12 | `negative_mass_recovery` / `represented` | `Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass` → `ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass` | This is a conditional recovery criterion: the source theorem assumes every displayed dynamics, positivity, strict centered-step, normalized-vanishing, and summability hypothesis, and does not prove them for the original Erdős #243 orbit. Any surviving canonical orbit must have divergent normalized negative mass. It supplies no prime-specific producer, unconditional #243 endpoint, or reciprocal-tail irrationality, and makes no novelty, priority, significance, or external-review claim. It is distinct from centered_state_dynamics, which uses a uniform lower-bound hypothesis rather than summability of normalized negative mass. |
 
 ### Reader tiers and relational boundaries
 
@@ -78,20 +79,16 @@ The prior-art record, not this table, supplies antecedents.
 
 ## Where the substance is
 
-- Both working records close with a section titled "The wall": every
-  attempted argument class stopped by a stated bound, recorded with
-  what it does not rule out.
-- The mathematics paper closes with "What we need from a mathematician":
-  four self-contained problems; a refuted route is withdrawn and the
-  refutation credited in the next edition.
-- [`docs/RESULTS.md`](RESULTS.md) opens with a ten-minute verdict.
+The working records end at "The wall"; the mathematics paper ends with
+"What we need from a mathematician"; [`docs/RESULTS.md`](RESULTS.md)
+opens with a ten-minute verdict.
 
 ## Scale
 
 Navigation inventory, not results. Generated certificate shards are
 counted as formal source, never as separate mathematical claims. The
 two roots currently expose 1,023 modules and
-153,357 declarations across #68, #243, #249,
+153,356 declarations across #68, #243, #249,
 #251, #257, #269, #1041, and #1049; exact counts and atlas handles
 remain in `docs/orientation.json`.
 
@@ -123,21 +120,14 @@ order, never a significance proxy.
 
 ## Selection spine and long tail
 
-The flagship spine is the exact authored first-read tier named by
-`flagship_spine_rule`; the broader high-signal spine contains every
-authored `view_decision` beginning with `gateway_`. The descriptor records each
-status summary and consumer/open obligation, so the reason for retaining it
-and its natural next friction remain visible. The remaining families are not
-discarded: their exact authored dispositions stay in the descriptor for
-complete drilldown.
+The descriptor exposes the authored flagship spine, broader gateway cohort,
+and lower-signal dispositions with their reasons and open obligations.
 
 Flagship families: 7; gateway cohort: 15; lower-signal families: 15;
-the flagship is a visibility tier, and no order in any bucket is a significance ranking.
+these are visibility tiers, not significance rankings.
 Use `python3 scripts/query_corpus.py --publication-architecture` for the
-selection decisions and `python3 scripts/query_corpus.py --publication-family
-<family_id>` for the full reason, source route, and open obligation. Use the
-problem route for every reviewed family's exact evidence mode, Comparator
-disposition, declarations, and boundary.
+selection decisions and `--publication-family <family_id>` for each full
+reason, source route, open obligation, and Comparator disposition.
 
 ## Principal claim routes
 
@@ -151,24 +141,9 @@ replacement for the exact claim registry.
 
 ## Read by intent
 
-- **instant_orientation** (`instant_orientation`): `python3 scripts/query_corpus.py --route instant_orientation`
-- **agent_native_corpus_navigation** (`agent_native_corpus_navigation`): `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
-- **browse_claim_status** (`browse_claim_status`): `python3 scripts/query_corpus.py --route browse_claim_status`
-- **follow_one_claim** (`follow_one_claim`): `python3 scripts/query_corpus.py --route follow_one_claim`
-- **understand_argument_topology** (`understand_argument_topology`): `python3 scripts/query_corpus.py --route understand_argument_topology`
-- **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`): `python3 scripts/query_corpus.py --route erdos257_half_story`
-- **#249 certificate and harmonic interface** (`erdos249_certificate_story`): `python3 scripts/query_corpus.py --route erdos249_certificate_story`
-- **Classical and structured support irrationality** (`structured_support_families`): `python3 scripts/query_corpus.py --route structured_support_families`
-- **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`): `python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic`
-- **Boolean Möbius carry and global rationality constraints** (`boolean_mobius_constraints`): `python3 scripts/query_corpus.py --route boolean_mobius_constraints`
-- **Transport, curvature, phase separation, and no-go results** (`transport_curvature_programme`): `python3 scripts/query_corpus.py --route transport_curvature_programme`
-- **Mersenne–Lambert identities and obstruction interfaces** (`lambert_obstruction_interfaces`): `python3 scripts/query_corpus.py --route lambert_obstruction_interfaces`
-- **Coprimality probability, gcd moments, and Stern–Brocot geometry** (`probabilistic_gcd_geometry`): `python3 scripts/query_corpus.py --route probabilistic_gcd_geometry`
-- **Half-carry compactness, windows, seams, and finite propagation** (`half_carry_compactness_programme`): `python3 scripts/query_corpus.py --route half_carry_compactness_programme`
-- **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`): `python3 scripts/query_corpus.py --route arithmetic_obstruction_interfaces`
-- **trace_prior_art** (`trace_prior_art`): `python3 scripts/query_corpus.py --route trace_prior_art`
-- **understand_methodology_and_open_boundary** (`understand_methodology_and_open_boundary`): `python3 scripts/query_corpus.py --route understand_methodology_and_open_boundary`
-- **change_or_verify_release** (`change_or_verify_release`): `python3 scripts/query_corpus.py --route change_or_verify_release`
+Use `python3 scripts/query_corpus.py --route <route_id>`.
+All route ids, titles, and reading lists are in
+[`docs/orientation.json`](orientation.json#reading_routes).
 
 ## Drill down
 

@@ -31,10 +31,9 @@ ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
 ORIENTATION_MAX_BYTES = 32_000
-# The source-current Palomar spine now carries ten ranked rows (rather than
-# the original nine). Keep a bounded first-contact ceiling while funding the
-# additional exact boundary and tier labels instead of dropping them.
-ORIENTATION_MARKDOWN_MAX_BYTES = 18_000
+# Keep the human first-read projection aligned with the release scoreboard.
+# Detailed route inventories remain in the machine orientation and query API.
+ORIENTATION_MARKDOWN_MAX_BYTES = 16_000
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
@@ -510,13 +509,9 @@ def render_orientation_markdown(
             "",
             "## Where the substance is",
             "",
-            '- Both working records close with a section titled "The wall": every',
-            "  attempted argument class stopped by a stated bound, recorded with",
-            "  what it does not rule out.",
-            '- The mathematics paper closes with "What we need from a mathematician":',
-            "  four self-contained problems; a refuted route is withdrawn and the",
-            "  refutation credited in the next edition.",
-            "- [`docs/RESULTS.md`](RESULTS.md) opens with a ten-minute verdict.",
+            'The working records end at "The wall"; the mathematics paper ends with',
+            '"What we need from a mathematician"; [`docs/RESULTS.md`](RESULTS.md)',
+            "opens with a ten-minute verdict.",
             "",
             "## Scale",
             "",
@@ -574,21 +569,14 @@ def render_orientation_markdown(
             "",
             "## Selection spine and long tail",
             "",
-            "The flagship spine is the exact authored first-read tier named by",
-            "`flagship_spine_rule`; the broader high-signal spine contains every",
-            "authored `view_decision` beginning with `gateway_`. The descriptor records each",
-            "status summary and consumer/open obligation, so the reason for retaining it",
-            "and its natural next friction remain visible. The remaining families are not",
-            "discarded: their exact authored dispositions stay in the descriptor for",
-            "complete drilldown.",
+            "The descriptor exposes the authored flagship spine, broader gateway cohort,",
+            "and lower-signal dispositions with their reasons and open obligations.",
             "",
             f"Flagship families: {len(flagship)}; gateway cohort: {len(spine)}; lower-signal families: {len(long_tail)};",
-            "the flagship is a visibility tier, and no order in any bucket is a significance ranking.",
+            "these are visibility tiers, not significance rankings.",
             "Use `python3 scripts/query_corpus.py --publication-architecture` for the",
-            "selection decisions and `python3 scripts/query_corpus.py --publication-family",
-            "<family_id>` for the full reason, source route, and open obligation. Use the",
-            "problem route for every reviewed family's exact evidence mode, Comparator",
-            "disposition, declarations, and boundary.",
+            "selection decisions and `--publication-family <family_id>` for each full",
+            "reason, source route, open obligation, and Comparator disposition.",
         ]
     )
     lines.extend(
@@ -608,12 +596,13 @@ def render_orientation_markdown(
             "",
         ]
     )
-    for route in orientation["reading_routes"]:
-        title = route.get("title") or route["id"]
-        lines.append(
-            f"- **{title}** (`{route['id']}`): "
-            f"`python3 scripts/query_corpus.py --route {route['id']}`"
-        )
+    lines.extend(
+        [
+            "Use `python3 scripts/query_corpus.py --route <route_id>`.",
+            "All route ids, titles, and reading lists are in",
+            "[`docs/orientation.json`](orientation.json#reading_routes).",
+        ]
+    )
     lines.extend(
         [
             "",
