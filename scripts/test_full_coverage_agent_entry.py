@@ -171,9 +171,16 @@ def main() -> int:
         == "ordinary_cold_reader_phrase",
         "ordinary overview route drifted",
     )
+    result_family_contract = ordinary["problem_result_family_contract"]
     require(
-        "weight reductions" in query_corpus.render_card(ordinary),
-        "ordinary overview card lost the expected content",
+        result_family_contract["source"]
+        == "docs/claims.json::external_verification_packet.review_matrix",
+        "ordinary overview lost the authoritative result-family source",
+    )
+    require(
+        result_family_contract["problem_fleet_source_projection"]
+        == "inherited_once_here_instead_of_repeated_per_problem",
+        "ordinary overview lost the explicit result-family inheritance marker",
     )
 
     for question in (
