@@ -207,6 +207,13 @@ replacement for claim authority.
   `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1572`) — the
   identification of the concrete prime tail with that recurrence is
   paper-level. Checked theorems; registry: none.
+- The Comparator-facing boundary is also explicit: `exists_primeGap0_gt`
+  proves that consecutive prime gaps are unbounded, while
+  `irrational_tsum_primeDyadicTerm_iff_primeGap` proves, for a summable prime
+  dyadic term, that its irrationality is equivalent to irrationality of the
+  prime-gap dyadic series
+  (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean`). Unbounded coefficients
+  and this equivalence alone prove irrationality of neither series.
 - A checked countermodel closes the periodicity route: an explicit unbounded,
   non-eventually-periodic digit sequence with rational dyadic sum
   (`carryCoeff_natCast_not_eventually_periodic`,
