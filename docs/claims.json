@@ -12628,7 +12628,7 @@
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "An exact weighted-phase carry recurrence splits into a finite residue digit and an uncontrolled integral quotient coboundary; an explicit function-faithful finite-dimensional observer then forces finite realised span.",
             "evidence_mode": "Lean kernel",
-            "comparator_disposition": "not_selected_pending_wrapper_and_statement_isolation",
+            "comparator_disposition": "targeted",
             "declarations": [
               "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary",
               "ErdosProblems.Erdos269.carryResidue_mem_interval",
