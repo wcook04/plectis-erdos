@@ -120,6 +120,18 @@ python3 scripts/query_semantic.py population-backlog --paper erdos249-totient-re
 python3 scripts/query_semantic.py structural-backlog --problem 257
 ```
 
+The semantic graph is an interpretation layer, not a replacement for
+problem-owned evidence. For public problem → strongest checked result → paper
+or source record → exact frontier traversal, start at the canonical [complete
+eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix).
+It is also the reverse route for a semantic reader: use
+`python3 scripts/query_corpus.py --source <module.lean:line>` or
+`--paper-anchor <TeX_label_or_source_ref>` to recover the corresponding claim
+or problem row, then resume with the row's open-obligation handle. For example,
+the #249 `probabilistic_gcd_geometry` family returns through that matrix to
+the exact gcd-moment and Stern–Brocot declarations, paper anchors, and the
+still-open irrationality boundary.
+
 `population-backlog` is the semantic authoring queue.  It scans every authored
 paper, resolves both public `\lword` links and reasoning-surface `\lean` links
 to exact live declaration roles, deduplicates qualified and short spellings,
