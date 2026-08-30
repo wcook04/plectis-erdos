@@ -7,10 +7,12 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import sys
 import tempfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 import run_source_bound_reproduction as subject
 
@@ -77,6 +79,41 @@ def test_isolation_success_and_validation(source: Path, plan: list[dict]) -> dic
     assert not (source / ".lake" / "only-in-copy").exists()
     subject.validate_receipt(receipt, source, plan)
     return receipt
+
+
+def test_environment_isolation(source: Path) -> None:
+    plan = [
+        subject.command(
+            "environment",
+            [
+                sys.executable,
+                "-c",
+                (
+                    "import os; "
+                    "assert os.environ.get('GIT_DIR') is None; "
+                    "assert os.environ.get('GIT_NAMESPACE') is None; "
+                    "assert os.environ.get('GIT_REPLACE_REF_BASE') is None; "
+                    "assert os.environ.get('PYTHONPATH') != 'hostile-pythonpath'; "
+                    "assert os.environ.get('LC_ALL') == 'C.UTF-8'; "
+                    "assert os.environ.get('LANG') == 'C.UTF-8'"
+                ),
+            ],
+            expect_empty_stdout=True,
+            expect_empty_stderr=True,
+        )
+    ]
+    hostile = {
+        "GIT_DIR": str(source / "not-a-git-directory"),
+        "GIT_NAMESPACE": "hostile-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replace/hostile/",
+        "PYTHONPATH": "hostile-pythonpath",
+        "LC_ALL": "C",
+        "LANG": "C",
+    }
+    with patch.dict(os.environ, hostile, clear=False):
+        receipt = subject.execute(source, plan)
+    subject.validate_receipt(receipt, source, plan)
+    assert receipt["environment_contract"] == subject.ENVIRONMENT_CONTRACT
 
 
 def test_rejections(source: Path, plan: list[dict], receipt: dict) -> None:
@@ -204,6 +241,7 @@ def main() -> None:
         plan = tiny_plan()
         test_hashing_and_exclusions(source)
         receipt = test_isolation_success_and_validation(source, plan)
+        test_environment_isolation(source)
         test_rejections(source, plan, receipt)
         test_timestamp_and_tail_rejections(source, plan, receipt)
         test_git_capability_refusal(source)

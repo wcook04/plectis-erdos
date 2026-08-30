@@ -28,8 +28,11 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+import validation_singleflight as singleflight
+
 
 SCHEMA = "erdos249257-source-bound-reproduction/1"
+ENVIRONMENT_CONTRACT = "clean_reproduction_subprocess_environment_v1"
 TAIL_BYTES = 16_000
 DEFAULT_MAX_AGE_SECONDS = 30 * 24 * 60 * 60
 CANONICAL_RECEIPT_PATH = "docs/measurements/source_bound_reproduction_receipt.json"
@@ -323,6 +326,18 @@ def bounded_tail(data: bytes) -> str:
     return data[-TAIL_BYTES:].decode("utf-8", errors="replace")
 
 
+def execution_environment(argv: list[str]) -> dict[str, str]:
+    """Remove ambient configuration while retaining the declared tool path."""
+    environment = singleflight.command_environment()
+    resolved = shutil.which(argv[0], path=os.environ.get("PATH"))
+    if resolved:
+        tool_directory = str(Path(resolved).resolve().parent)
+        path = environment.get("PATH", os.defpath).split(os.pathsep)
+        if tool_directory not in path:
+            environment["PATH"] = os.pathsep.join([tool_directory, *path])
+    return environment
+
+
 def run_command(spec: dict[str, Any], cwd: Path) -> dict[str, Any]:
     started_at = utc_now()
     started = time.monotonic()
@@ -333,6 +348,7 @@ def run_command(spec: dict[str, Any], cwd: Path) -> dict[str, Any]:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
+        env=execution_environment(spec["argv"]),
     )
     after = resource.getrusage(resource.RUSAGE_CHILDREN)
     stdout = completed.stdout
@@ -403,6 +419,7 @@ def execute(
         "source": identity,
         "source_root_label": source_root.name,
         "snapshot_posture": "isolated_copy_excludes_runtime_and_version_control_state",
+        "environment_contract": ENVIRONMENT_CONTRACT,
         "host": host_facts(),
         "started_at": started_at,
         "completed_at": utc_now(),
@@ -497,6 +514,8 @@ def validate_receipt(
 ) -> None:
     if receipt.get("schema") != SCHEMA:
         raise ReproductionError("receipt schema is missing or unsupported")
+    if receipt.get("environment_contract") != ENVIRONMENT_CONTRACT:
+        raise ReproductionError("receipt environment contract is missing or unsupported")
     started_at = parse_utc(receipt.get("started_at"), "started_at")
     completed_at = parse_utc(receipt.get("completed_at"), "completed_at")
     if completed_at < started_at:
