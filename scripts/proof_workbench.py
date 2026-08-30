@@ -32,6 +32,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 MOVE_SCHEMA = "workbench-move/1"
 SESSION_SCHEMA = "workbench-session/1"
 NOTE_KINDS = (
@@ -50,6 +52,7 @@ PROBE_VERDICTS = (
     "probe_error",
 )
 PROBE_TIMEOUT_SECONDS = 600
+TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
 SESSION_SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,80}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
@@ -112,10 +115,21 @@ def _fingerprint_command(root: Path, command: list[str]) -> str:
             capture_output=True,
             text=True,
             check=False,
+            env=singleflight.command_environment(),
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
         ).stdout
-    except (OSError, UnicodeError):
+    except (OSError, UnicodeError, subprocess.TimeoutExpired):
         return ""
     return output.strip() if isinstance(output, str) else ""
+
+
+def _lean_environment() -> dict[str, str]:
+    """Keep Lean on the pinned toolchain while retaining clean process state."""
+    environment = singleflight.command_environment()
+    environment["PATH"] = os.pathsep.join(
+        (str(TOOLCHAIN_BIN), environment["PATH"])
+    )
+    return environment
 
 
 def environment_fingerprint(root: Path) -> dict[str, Any]:
@@ -153,6 +167,7 @@ def run_lean_probe(root: Path, source: str) -> dict[str, Any]:
             text=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
+            env=_lean_environment(),
             timeout=PROBE_TIMEOUT_SECONDS,
         )
     except subprocess.TimeoutExpired:

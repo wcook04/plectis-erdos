@@ -10,10 +10,18 @@ warning, and byte-exact replay bookkeeping.
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 import proof_workbench as workbench
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise AssertionError(message)
 
 
 def _run(sessions_root: Path, argv: list[str]) -> dict:
@@ -1608,6 +1616,55 @@ def check_environment_fingerprint_failures(tmp: Path) -> None:
     assert opened["environment_fingerprint"]["git_head"] == "git_head_unavailable"
 
 
+def check_child_environment_contract() -> None:
+    """Git and Lean children must not inherit ambient process selectors."""
+    observed: list[tuple[list[str], dict[str, object]]] = []
+
+    def fake_run(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        observed.append((command, kwargs))
+        return subprocess.CompletedProcess(command, 0, stdout="head\n", stderr="")
+
+    hostile = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "wrong-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "PATH": "/private/wrong-bin",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "LANGUAGE": "C",
+    }
+    with patch.dict(os.environ, hostile, clear=False):
+        with patch.object(workbench.subprocess, "run", side_effect=fake_run):
+            workbench.environment_fingerprint(workbench.repo_root())
+            workbench.run_lean_probe(workbench.repo_root(), "#check True\n")
+
+    require(len(observed) == 3, "fingerprint and Lean probes must each invoke one child")
+    expected_git = workbench.singleflight.command_environment()
+    for command, kwargs in observed[:2]:
+        require(command[0] == "git", f"unexpected fingerprint command: {command}")
+        require(kwargs["env"] == expected_git, "Git fingerprint inherited ambient environment")
+        require(
+            kwargs["timeout"] == workbench.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+            "Git fingerprint is missing its bounded timeout",
+        )
+    lean_command, lean_kwargs = observed[2]
+    require(lean_command[:3] == ["lake", "env", "lean"], "unexpected Lean probe command")
+    require(
+        lean_kwargs["timeout"] == workbench.PROBE_TIMEOUT_SECONDS,
+        "Lean probe lost its bounded timeout",
+    )
+    lean_environment = lean_kwargs["env"]
+    require(
+        lean_environment["PATH"]
+        == os.pathsep.join((str(workbench.TOOLCHAIN_BIN), os.defpath)),
+        "Lean probe did not use the canonical toolchain path",
+    )
+    for key in ("GIT_DIR", "GIT_NAMESPACE", "GIT_REPLACE_REF_BASE", "PYTHONPATH"):
+        require(key not in lean_environment, f"Lean probe inherited {key}")
+    require(lean_environment["LC_ALL"] == "C.UTF-8", "Lean probe inherited locale state")
+
+
 def check_session_storage_failures(tmp: Path) -> None:
     blocked_root = tmp / "sessions-root-file"
     blocked_root.write_text("not a directory\n", encoding="utf-8")
@@ -1927,6 +1984,7 @@ def main() -> int:
         check_probe_append_failure_cleanup(tmp)
         check_probe_source_snapshot(tmp)
         check_environment_fingerprint_failures(tmp)
+        check_child_environment_contract()
         check_session_storage_failures(tmp)
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
