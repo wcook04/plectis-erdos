@@ -14,10 +14,9 @@ public proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-This prints the statement, re-resolves the declaration, shows the Comparator
-interface and the paper that records it, gives release receipts, and says where
-the claim stops. `--verify-all` checks the complete set. [Read or run it](#read-or-run-it)
-gives routes that need Lean.
+This prints the statement, re-resolves its declaration, shows the Comparator
+interface, paper, release receipts, and claim boundary. `--verify-all` checks the
+complete set. [Read or run it](#read-or-run-it) gives routes that need Lean.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [prior art](docs/PRIOR_ART.md) → [architecture and repository guide](ARCHITECTURE.md)
@@ -52,7 +51,7 @@ Links name a strongest checked route and its limit; reductions are not solutions
 
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — divisibility-failure equivalence; `67` checked, `300000` external, cofinal source open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalised vanishing and Lean no-go results exclude bounded/finite negative mass; unbounded mixed signs open.
-- [**#249: dyadic Euler totients**](erdos-249-binary-totient-series.pdf) · [reasoning surface](erdos249-totient-reasoning-surface.pdf) — ranks, moments, completeness, anti-compression, Farey `K=240`; diagonal certificates through `t=82`; unbounded supply open.
+- [**#249: dyadic Euler totients**](erdos-249-binary-totient-series.pdf) · [reasoning surface](erdos249-totient-reasoning-surface.pdf) — ranks, moments, completeness, anti-compression, [visible mass](Erdos249257/GcdMomentCalculus.lean); Farey `K=240`; diagonal certificates through `t=82`; unbounded supply open.
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts, tail recurrence, rational shifts, cofinal non-integral-shift equivalences; prime-tail bridge open.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [reasoning surface](erdos257-mersenne-reasoning-surface.pdf) — full support, finite-period noncollapse, topology, carry criteria; universal #257 and `1/2`/`1/21` open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — maximal powers, logarithmic cells, grouped sums, shell bounds, rank-two obstruction; three-prime problem open.
@@ -72,9 +71,9 @@ irrationality/unbounded-certificate equivalence; Martin's theorem and its
 independence premise are not formalised.
 
 The classical **Farey/mediant bound** at `K=240`: Farey's method supplies the
-number directly, with numerical delta `0`—exactly the Farey bound, not an
-improvement. Its next denominator fails this finite window; that does not prove
-successful cases beyond every fixed cutoff. Packages: **fair-coin
+number directly, with delta `0`—exactly the Farey bound, not an improvement. The
+next denominator fails this window; that does not prove success past every fixed
+cutoff. Packages: **fair-coin
 coprimality**, **squared-Lambert gcd moments**, the **Stern–Brocot cylinder law**
 `(2/3)^d`, **Fibonacci/continuant run stability** `F_{r+3}`, **tempered binary
 tail rigidity**, an **exact Möbius-shadow denominator**, and a
