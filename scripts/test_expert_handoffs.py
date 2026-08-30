@@ -203,10 +203,28 @@ def test_strict_prime_successor_is_support_only() -> None:
             "python3 scripts/query_semantic.py family-relations "
             "strict_prime_tail_orbit_gap"
         )
-    assert supports[0]["source"]["line"] == 167
-    assert supports[1]["source"]["line"] == 191
-    assert supports[2]["source"]["line"] == 208
-    assert supports[3]["source"]["line"] == 252
+    # Coordinates are generated navigation data: compare the handoff output
+    # with the current atlas instead of pinning historical line numbers.  This
+    # keeps the consumer honest when a source-current proof grows above it.
+    atlas_lines = {
+        row["name"]: row["line"]
+        for row in handoffs.load_json(handoffs.ATLAS).get("declarations", [])
+    }
+    expected_names = (
+        "tailOrbitFirstExp_succ",
+        "tailOrbitFirstExp_add",
+        "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+        "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+    )
+    for support, name in zip(supports, expected_names):
+        expected_line = atlas_lines.get(name)
+        if expected_line is None:
+            raise AssertionError(f"atlas lacks current declaration {name}")
+        if support["source"]["line"] != expected_line:
+            raise AssertionError(
+                f"handoff coordinate drift for {name}: "
+                f"{support['source']['line']} != {expected_line}"
+            )
     assert "does not show that an actual totient phase" in supports[-1][
         "evidence_boundary"
     ]
