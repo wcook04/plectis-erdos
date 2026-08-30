@@ -146,11 +146,17 @@ def test_receipt_destination_boundary() -> None:
             raced_receipt.write_text("placeholder\n", encoding="utf-8")
             original_open = check_release_ref.os.open
 
-            def replace_with_fifo(path: Path, flags: int, mode: int = 0o777) -> int:
-                if Path(path) == raced_receipt:
+            def replace_with_fifo(
+                path: Path,
+                flags: int,
+                mode: int = 0o777,
+                *,
+                dir_fd: int | None = None,
+            ) -> int:
+                if dir_fd is not None and Path(path).name == raced_receipt.name:
                     raced_receipt.unlink()
                     os.mkfifo(raced_receipt)
-                return original_open(path, flags, mode)
+                return original_open(path, flags, mode, dir_fd=dir_fd) if dir_fd is not None else original_open(path, flags, mode)
 
             with patch.object(
                 check_release_ref.os, "open", side_effect=replace_with_fifo
@@ -165,6 +171,51 @@ def test_receipt_destination_boundary() -> None:
                     raise AssertionError(
                         "receipt writer opened a final path replaced by a FIFO"
                     )
+
+        private_tmp = Path("/private/tmp")
+        temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+        with tempfile.TemporaryDirectory(
+            prefix="release-ref-parent-race-", dir=temporary_root
+        ) as raw:
+            root = Path(raw)
+            raced_parent = root / "receipt-parent"
+            raced_parent.mkdir()
+            original_parent = root / "receipt-parent-original"
+            outside = root / "outside"
+            outside.mkdir()
+            sentinel = outside / "sentinel.txt"
+            sentinel.write_text("keep me\n", encoding="utf-8")
+            raced_receipt = raced_parent / "swapped-receipt.json"
+            original_open = check_release_ref.os.open
+
+            def swap_parent(
+                path: Path,
+                flags: int,
+                mode: int = 0o777,
+                *,
+                dir_fd: int | None = None,
+            ) -> int:
+                if dir_fd is not None and Path(path).name == raced_receipt.name:
+                    raced_parent.rename(original_parent)
+                    raced_parent.symlink_to(outside, target_is_directory=True)
+                return original_open(path, flags, mode, dir_fd=dir_fd) if dir_fd is not None else original_open(path, flags, mode)
+
+            with patch.object(check_release_ref.os, "open", side_effect=swap_parent):
+                check_release_ref.write_receipt(
+                    raced_receipt, {"status": "blocked"}
+                )
+            require(
+                not (outside / raced_receipt.name).exists(),
+                "receipt writer followed a swapped parent directory",
+            )
+            require(
+                sentinel.read_text(encoding="utf-8") == "keep me\n",
+                "parent-swap receipt race modified the outside sentinel",
+            )
+            require(
+                (original_parent / raced_receipt.name).is_file(),
+                "receipt writer did not create through the held parent descriptor",
+            )
 
 
 def test_singleflight_worker_flag_is_accepted() -> None:

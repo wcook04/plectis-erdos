@@ -450,12 +450,8 @@ def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
     path = safe_receipt_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(receipt, ensure_ascii=False, indent=2) + "\n"
-    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
-    flags |= getattr(os, "O_NOFOLLOW", 0)
-    flags |= getattr(os, "O_NONBLOCK", 0)
-    flags |= getattr(os, "O_CLOEXEC", 0)
     try:
-        descriptor = os.open(path, flags, 0o644)
+        descriptor = _open_receipt_descriptor(path)
     except OSError as exc:
         raise SnapshotError(
             f"receipt destination could not be opened safely: {path}"
@@ -475,6 +471,41 @@ def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
     finally:
         if descriptor >= 0:
             os.close(descriptor)
+
+
+def _open_receipt_descriptor(path: Path) -> int:
+    """Open a receipt relative to no-follow directory descriptors.
+
+    ``safe_receipt_path`` protects the lexical preflight, but an absolute
+    final open could still follow a parent directory swapped after that
+    check.  Holding each parent directory by descriptor makes the final
+    create/truncate immune to that replacement; ``O_NOFOLLOW`` still protects
+    the final component itself.
+    """
+    directory_flags = os.O_RDONLY
+    directory_flags |= getattr(os, "O_CLOEXEC", 0)
+    directory_flags |= getattr(os, "O_DIRECTORY", 0)
+    directory_flags |= getattr(os, "O_NOFOLLOW", 0)
+    directory = os.open(os.sep, directory_flags)
+    try:
+        for component in path.parts[1:-1]:
+            child = os.open(component, directory_flags, dir_fd=directory)
+            try:
+                if not stat.S_ISDIR(os.fstat(child).st_mode):
+                    raise OSError(f"receipt parent is not a directory: {path.parent}")
+            except BaseException:
+                os.close(child)
+                raise
+            os.close(directory)
+            directory = child
+
+        flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+        flags |= getattr(os, "O_NOFOLLOW", 0)
+        flags |= getattr(os, "O_NONBLOCK", 0)
+        flags |= getattr(os, "O_CLOEXEC", 0)
+        return os.open(path.name, flags, 0o644, dir_fd=directory)
+    finally:
+        os.close(directory)
 
 
 def safe_receipt_path(path: Path) -> Path:
