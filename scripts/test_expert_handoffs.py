@@ -172,6 +172,19 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
     assert candidate["comparator_representative"]["config"] == (
         "verification/comparator.json"
     )
+    assert candidate["public_reuse"] == {
+        "module": "examples/ExternalVerificationPortfolio/Problem1041.lean",
+        "declaration": "critical_balance_selects_two_roots_at_geomMean_scale",
+        "reuses": (
+            "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean"
+        ),
+        "commit": "b8c69ae0a5d90c32fb60b73d57fb88308a1f0514",
+        "validation": "#check plus focused canonical Lean build passed",
+        "boundary": (
+            "This example reuses the Euclidean metric budget only; it does "
+            "not supply a lemniscate-contained path."
+        ),
+    }
     assert any(
         row["declaration"] == "nearestSpoke_unique_nearest_spoke_escapes"
         for row in candidate["natural_friction_evidence"]

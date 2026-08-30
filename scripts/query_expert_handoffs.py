@@ -71,6 +71,7 @@ CRITICAL_PAIR_RESEARCH_SOURCE_MODULE = (
 )
 CRITICAL_PAIR_SOURCE_REVISION = "6bebc6e396a4982d842ba214315dc4a8f043ea60"
 CRITICAL_PAIR_PROMOTION_COMMIT = "678ddff10a5e6811dd2d991f52cfa775b6424c3e"
+CRITICAL_PAIR_PUBLIC_REUSE_COMMIT = "b8c69ae0a5d90c32fb60b73d57fb88308a1f0514"
 CRITICAL_PAIR_COMPARATOR_DECLARATION = (
     "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean"
 )
@@ -525,6 +526,17 @@ def critical_pair_metric_scale_candidate_handoff(
                 "One statement-isolated representative for the geometric-mean "
                 "metric theorem; it does not certify the ordinary global assembly "
                 "or a contained path."
+            ),
+        },
+        "public_reuse": {
+            "module": "examples/ExternalVerificationPortfolio/Problem1041.lean",
+            "declaration": "critical_balance_selects_two_roots_at_geomMean_scale",
+            "reuses": CRITICAL_PAIR_COMPARATOR_DECLARATION,
+            "commit": CRITICAL_PAIR_PUBLIC_REUSE_COMMIT,
+            "validation": "#check plus focused canonical Lean build passed",
+            "boundary": (
+                "This example reuses the Euclidean metric budget only; it does "
+                "not supply a lemniscate-contained path."
             ),
         },
         "natural_friction_evidence": [
