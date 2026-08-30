@@ -177,6 +177,13 @@ theorem exists_shifted_odd_tail_nat_states_of_support_fraction
       (∀ n : ℕ, u n ≡ p.toNat * 2 ^ n [MOD v]) :=
   (portfolioClaims Unit).problem257ShiftedOddTailNatStates A hA p c v hv hvalue
 
+theorem supportCoeff_mul_eq_add_defect
+    (A : Set ℕ) {a x : ℕ} (ha : a ∈ A) (ha0 : 0 < a) (hx0 : 0 < x) :
+    supportCoeff A (a * x) =
+      supportCoeff A x + (if a ∣ x then 0 else 1) +
+        compositeDilationDefect A a x :=
+  (portfolioClaims Unit).problem257CompositeDilationDefect A ha ha0 hx0
+
 theorem kernel_235_minor_eq_neg_one_fifteen :
     threePrimeKernelQ 2 3 5 0 0 0 *
           threePrimeKernelQ 2 3 5 1 1 0 -

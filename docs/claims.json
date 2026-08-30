@@ -11545,6 +11545,18 @@
         "boundary": "This state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit."
       },
       {
+        "id": "composite_dilation_defect_split",
+        "problem": 257,
+        "review_family": "composite_dilation_defect_identity",
+        "claim_id": "composite_dilation_defect_identity",
+        "contribution_class": "unconditional progress",
+        "original_declaration": "Erdos249257.CompositeDilationDefect.supportCoeff_mul_eq_add_defect",
+        "original_source": "Erdos249257/CompositeDilationDefect.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect",
+        "statement": "For a positive support element a and positive x, the divisor-count coefficient at a*x splits into the coefficient at x, the distinguished new divisor when a does not divide x, and an exact finite composite-dilation defect.",
+        "boundary": "The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the separate bouquet budget remains conditional on its structural hypotheses."
+      },
+      {
         "id": "three_prime_kernel_minor",
         "problem": 269,
         "review_family": "rank_two_kernel_no_go",
@@ -11891,6 +11903,14 @@
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "boundary": "The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit."
+          },
+          {
+            "id": "composite_dilation_defect_identity",
+            "contribution_class": "unconditional progress",
+            "summary": "The composite support-dilation identity splits the new divisor count into the old coefficient, the distinguished divisor, and an exact finite defect; its bouquet specialization supplies a separate structural budget.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "boundary": "The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the bouquet budget remains conditional on its structural hypotheses."
           },
           {
             "id": "known_irrational_supports",

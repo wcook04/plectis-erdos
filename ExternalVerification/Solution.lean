@@ -8,6 +8,7 @@ import Erdos249257.GreedyAchievementSet
 import Erdos249257.GcdMomentCalculus
 import Erdos249257.LcmFactorIdealPulseObstruction
 import Erdos249257.RationalSupportCarrySkeleton
+import Erdos249257.CompositeDilationDefect
 import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
@@ -22,7 +23,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-six existing results through the Mathlib-only
+These thin wrappers expose twenty-seven existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -229,6 +230,12 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.binaryCoeffTail] using
       Erdos249257.exists_shifted_odd_tail_nat_states_of_support_fraction
         A hA p c v hv hvalue
+  · intro A a x ha ha0 hx0
+    simpa [supportCoeff, compositeDilationDefect,
+      Erdos249257.supportCoeff,
+      Erdos249257.CompositeDilationDefect.compositeDilationDefect] using
+      Erdos249257.CompositeDilationDefect.supportCoeff_mul_eq_add_defect
+        A ha ha0 hx0
   · simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
       ErdosProblems.Erdos269.threePrimeKernelQ,
       ErdosProblems.Erdos269.threePrimeHeight,
@@ -419,6 +426,17 @@ theorem exists_shifted_odd_tail_nat_states_of_support_fraction
     Erdos249257.binaryCoeffTail] using
     Erdos249257.exists_shifted_odd_tail_nat_states_of_support_fraction
       A hA p c v hv hvalue
+
+theorem supportCoeff_mul_eq_add_defect
+    (A : Set ℕ) {a x : ℕ} (ha : a ∈ A) (ha0 : 0 < a) (hx0 : 0 < x) :
+    supportCoeff A (a * x) =
+      supportCoeff A x + (if a ∣ x then 0 else 1) +
+        compositeDilationDefect A a x := by
+  simpa [supportCoeff, compositeDilationDefect,
+    Erdos249257.supportCoeff,
+    Erdos249257.CompositeDilationDefect.compositeDilationDefect] using
+    Erdos249257.CompositeDilationDefect.supportCoeff_mul_eq_add_defect
+      A ha ha0 hx0
 
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M

@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-six-interface
+This module contains only the definitions needed to state the twenty-seven-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -220,6 +220,12 @@ noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
 
+noncomputable def compositeDilationDefect (A : Set ℕ) (a x : ℕ) : ℕ :=
+  by
+    classical
+    exact ((a * x).divisors.filter fun d =>
+      d ∈ A ∧ ¬ d ∣ x ∧ d ≠ a).card
+
 def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
   ∑ n ∈ F, 1 / ((b : ℚ) ^ n - 1)
 
@@ -406,6 +412,14 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
           (∀ n : ℕ, u (n + 1) +
             v * supportCoeff A (c + n + 1) = 2 * u n) ∧
           (∀ n : ℕ, u n ≡ p.toNat * 2 ^ n [MOD v])
+  problem257CompositeDilationDefect :
+    ∀ (A : Set ℕ) {a x : ℕ},
+      a ∈ A →
+      0 < a →
+      0 < x →
+      supportCoeff A (a * x) =
+        supportCoeff A x + (if a ∣ x then 0 else 1) +
+          compositeDilationDefect A a x
   problem269 :
     threePrimeKernelQ 2 3 5 0 0 0 *
           threePrimeKernelQ 2 3 5 1 1 0 -

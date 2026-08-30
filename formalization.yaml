@@ -393,6 +393,22 @@ status:
       boundary: "This state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit."
       comparator_declaration: "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction"
       literature_dependencies: []
+    - declaration: "Erdos249257.CompositeDilationDefect.supportCoeff_mul_eq_add_defect"
+      file: "Erdos249257/CompositeDilationDefect.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "supports_registered_claim_family:composite_dilation_defect_identity"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "unconditional progress"
+      statement: "For a positive support element a and positive x, the divisor-count coefficient at a*x splits into the coefficient at x, the distinguished new divisor when a does not divide x, and an exact finite composite-dilation defect."
+      boundary: "The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the separate bouquet budget remains conditional on its structural hypotheses."
+      comparator_declaration: "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen"
       file: "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
       sorry_count: 0
@@ -607,6 +623,11 @@ alignment:
       module: "Erdos249257/RationalSupportCarrySkeleton.lean"
       status: "proved"
       note: "This state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit."
+    - source: "For a positive support element a and positive x, the divisor-count coefficient at a*x splits into the coefficient at x, the distinguished new divisor when a does not divide x, and an exact finite composite-dilation defect."
+      lean: "Erdos249257.CompositeDilationDefect.supportCoeff_mul_eq_add_defect"
+      module: "Erdos249257/CompositeDilationDefect.lean"
+      status: "proved"
+      note: "The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the separate bouquet budget remains conditional on its structural hypotheses."
     - source: "The smallest displayed 2,3,5 kernel minor is exactly -1/15."
       lean: "ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen"
       module: "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
@@ -847,6 +868,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "A rational support fraction produces a positive natural shifted tail state satisfying the exact binary recurrence and modular doubling orbit modulo v."
         boundary: "The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit."
+      - id: "composite_dilation_defect_identity"
+        contribution_class: "unconditional progress"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted"
+        summary: "The composite support-dilation identity splits the new divisor count into the old coefficient, the distinguished divisor, and an exact finite defect; its bouquet specialization supplies a separate structural budget."
+        boundary: "The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the bouquet budget remains conditional on its structural hypotheses."
       - id: "known_irrational_supports"
         contribution_class: "Lean formalisation of existing results"
         evidence_mode: "Lean kernel plus Comparator for full support"
@@ -1018,7 +1045,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:7c8f3255d45bf9f3115705971109e2cb86bccd001c3bb144bd5ec5b0cfa374f3"
+  problem_index_digest: "sha256:a77d0618954ff7be9181ab62efb564b97a585195f16dc0680b1d70afac4b7235"
   problem_count: 8
   problems:
     - id: "erdos_68"
