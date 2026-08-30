@@ -24,7 +24,8 @@ programmes, its checked non-restatement centre includes:
   theorems, and a precisely delimited squarefree-support barrier;
 - for #249, exact finite-level ranks and infinite-dimensionality for dyadic
   sections of Euler's totient, denominator growth for a Möbius-shadow object,
-  and scoped barriers and case trichotomies; and
+  and a checked finite-shift-algebra no-go with a synthetic survivor (not an
+  actual-totient construction); and
 - finite evidence: a diagonal certificate band through `t=82` and a historical
   roster of 123 distinct off-diagonal certificates (125 verified log rows),
   neither of which supplies the required unbounded family.
