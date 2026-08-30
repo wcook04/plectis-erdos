@@ -69,7 +69,8 @@ def require(condition: bool, message: str) -> None:
 
 def private_path_leaks(data: bytes) -> list[str]:
     """Return portable local-path markers found in one public artifact."""
-    return [label for label, marker in PRIVATE_PATH_MARKERS if marker in data]
+    folded = data.lower()
+    return [label for label, marker in PRIVATE_PATH_MARKERS if marker.lower() in folded]
 
 
 def safe_public_path(raw: Any) -> tuple[str, Path]:
