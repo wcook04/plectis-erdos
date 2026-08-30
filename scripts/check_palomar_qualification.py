@@ -50,6 +50,18 @@ SOURCE_RELATIONSHIPS = {
     "background",
     "other",
 }
+PINNED_TAXONOMY_AUTHORITIES = {
+    "taxonomies/arxiv-categories.json": {
+        "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/taxonomies/arxiv-categories.json",
+        "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+        "sha256": "3b339cf140a914c50bab39b1c44df2437ce3984bd09bb2150fcb0edd60eda776",
+    },
+    "taxonomies/msc2020-codes.json": {
+        "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/taxonomies/msc2020-codes.json",
+        "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+        "sha256": "b4de69f1f562da01e0f4580cecc0ab36098f5297bb7cdd669c8ec3b0d3606060",
+    },
+}
 
 
 class UnsafeQualificationInput(ValueError):
@@ -217,6 +229,17 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
             errors.append(f"authority {row.get('path')} lacks a 64-hex SHA-256 digest")
         if not str(row.get("url", "")).startswith("https://raw.githubusercontent.com/"):
             errors.append(f"authority {row.get('path')} is not bound to an immutable raw URL")
+    by_path = {
+        row.get("path"): row for row in authorities if isinstance(row, dict)
+    }
+    for path, expected in PINNED_TAXONOMY_AUTHORITIES.items():
+        actual = by_path.get(path)
+        if not actual:
+            errors.append(f"official authority {path} is not pinned")
+            continue
+        for field in ("url", "commit", "sha256"):
+            if actual.get(field) != expected[field]:
+                errors.append(f"official authority {path} disagrees on {field}")
     head = reconciliation.get("current_repository", {}).get("observed_head_before_product", "")
     if not HEX40.fullmatch(head):
         errors.append("current repository observation lacks a full commit")

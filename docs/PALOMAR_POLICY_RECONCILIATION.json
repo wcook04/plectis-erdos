@@ -62,6 +62,22 @@
     },
     {
       "authority": "PalomarSubmission",
+      "path": "taxonomies/arxiv-categories.json",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/taxonomies/arxiv-categories.json",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "3b339cf140a914c50bab39b1c44df2437ce3984bd09bb2150fcb0edd60eda776",
+      "role": "checked-in arXiv classification taxonomy for formalization.yaml"
+    },
+    {
+      "authority": "PalomarSubmission",
+      "path": "taxonomies/msc2020-codes.json",
+      "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/taxonomies/msc2020-codes.json",
+      "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
+      "sha256": "b4de69f1f562da01e0f4580cecc0ab36098f5297bb7cdd669c8ec3b0d3606060",
+      "role": "checked-in MSC2020 classification taxonomy for formalization.yaml"
+    },
+    {
+      "authority": "PalomarSubmission",
       "path": "SECURITY.md",
       "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/SECURITY.md",
       "commit": "e215b184d1b659e8e3e641162a7d63708678016f",

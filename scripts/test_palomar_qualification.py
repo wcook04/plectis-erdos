@@ -112,6 +112,20 @@ review:
     assert "source_origin_consistency" in deficits
 
 
+def test_pinned_classification_authorities_are_required() -> None:
+    reconciliation = json.loads(
+        (ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json").read_text()
+    )
+    damaged = copy.deepcopy(reconciliation)
+    damaged["official_authorities"] = [
+        row
+        for row in damaged["official_authorities"]
+        if row["path"] != "taxonomies/arxiv-categories.json"
+    ]
+    errors = checker.authority_errors(damaged)
+    assert any("arxiv-categories.json" in error for error in errors)
+
+
 def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
     comparator = json.loads(

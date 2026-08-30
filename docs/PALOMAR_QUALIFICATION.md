@@ -79,6 +79,13 @@ refresh:
 - Root licence and declared project licence: `Apache-2.0`.
 - `lakefile.toml` and `lake-manifest.json` are present.
 
+Classification authority is pinned to the PalomarSubmission arXiv and
+MSC2020 taxonomy snapshots at commit
+`e215b184d1b659e8e3e641162a7d63708678016f`; their SHA-256 digests and immutable
+raw URLs are recorded in the policy reconciliation. The qualification checker
+requires those authority bindings before classification metadata can be treated
+as current.
+
 The showcase records all 31 committed declarations across all eight open
 programmes and includes a prose-ranked value-selection spine over that exact
 universe. It does not turn the roster count into a readiness claim.
