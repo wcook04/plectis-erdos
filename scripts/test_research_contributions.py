@@ -84,6 +84,19 @@ def main() -> int:
         == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
         "contribution builder Git timeout drifted from the canonical boundary",
     )
+    unaccepted = json.loads(FIXTURE.read_text(encoding="utf-8"))
+    try:
+        contributions.build_projection(
+            [(FIXTURE.name, unaccepted, contributions.canonical(unaccepted))]
+        )
+    except ValueError as exc:
+        require(
+            "accepts accepted_receipt records only" in str(exc),
+            "direct projection rejection omitted its accepted-only reason",
+        )
+    else:
+        raise AssertionError("direct projection accepted an unaccepted record")
+
     with tempfile.TemporaryDirectory() as directory:
         source_path = Path(directory) / FIXTURE.name
         source_path.write_bytes(FIXTURE.read_bytes())

@@ -335,6 +335,11 @@ def filter_rows(rows: list[dict[str, Any]], field: str) -> dict[str, list[str]]:
 
 
 def build_projection(sources: list[tuple[str, dict[str, Any], bytes]]) -> dict[str, Any]:
+    for name, receipt, _payload in sources:
+        if not isinstance(receipt, dict) or receipt.get("record_kind") != "accepted_receipt":
+            raise ValueError(
+                f"{name}: contribution projection accepts accepted_receipt records only"
+            )
     rows = [project_receipt(name, receipt, payload) for name, receipt, payload in sources]
     for row in rows:
         row["public_frontier"] = public_result_family_route(row["frontier"]["problem"])
