@@ -24,6 +24,7 @@ ENTRY_PACKET_PATH = "docs/publication_entry_packet.json"
 MUTATION_MANIFEST_PATH = "experiments/publication_mutations.json"
 MUTATION_HARNESS_PATH = "scripts/run_publication_mutations.py"
 CLAIMS_PATH = "docs/claims.json"
+PROBLEMS_PATH = "docs/problems.json"
 METHODOLOGY_PATH = "docs/methodology.json"
 AGENT_ENTRY_PATH = "AGENTS.md"
 MAKEFILE_PATH = "paper/Makefile"
@@ -623,6 +624,73 @@ def all_entrypoints(
     ]
 
 
+def build_research_frontier_route(
+    reader: RepositoryReader, source: dict[str, Any]
+) -> dict[str, Any]:
+    """Project the indexed research frontier without promoting its status."""
+    route = source.get("research_frontier_route")
+    if not isinstance(route, dict):
+        raise ValueError("publication entry research frontier route is missing")
+    problem_id = route.get("problem_id")
+    if not isinstance(problem_id, str) or not problem_id:
+        raise ValueError("publication entry research frontier problem id is missing")
+    problems = load_json(reader, PROBLEMS_PATH).get("problems", [])
+    problem = next(
+        (
+            row
+            for row in problems
+            if isinstance(row, dict) and row.get("problem_id") == problem_id
+        ),
+        None,
+    )
+    if problem is None:
+        raise ValueError(f"publication entry research problem is absent: {problem_id}")
+    research = problem.get("research_corpus")
+    if not isinstance(research, dict):
+        raise ValueError(f"publication entry research corpus is absent: {problem_id}")
+    indexed_files = research.get("files")
+    if not isinstance(indexed_files, dict):
+        raise ValueError("publication entry research corpus files are absent")
+    files: dict[str, dict[str, str]] = {}
+    for key in ("frontier", "strongest_results", "manifest", "checkpoint"):
+        indexed = indexed_files.get(key)
+        if not isinstance(indexed, dict):
+            raise ValueError(f"publication entry research file is absent: {key}")
+        raw_path = indexed.get("path")
+        if not isinstance(raw_path, str) or not raw_path:
+            raise ValueError(f"publication entry research file path is invalid: {key}")
+        relative = Path(raw_path)
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ValueError(f"publication entry research file escapes root: {raw_path}")
+        digest = sha256(reader.read_bytes(raw_path))
+        if digest != indexed.get("content_digest"):
+            raise ValueError(f"publication entry research file is stale: {raw_path}")
+        files[key] = {"path": raw_path, "content_digest": digest}
+    summary = research.get("strongest_result_summary")
+    checkpoint = research.get("checkpoint_summary")
+    if not isinstance(summary, dict) or not isinstance(checkpoint, dict):
+        raise ValueError("publication entry research summaries are absent")
+    reading_order = route.get("reading_order")
+    if not isinstance(reading_order, list) or not reading_order:
+        raise ValueError("publication entry research reading order is missing")
+    return {
+        "problem_id": problem_id,
+        "query": route.get("query"),
+        "directory": research.get("directory"),
+        "authority_posture": research.get("authority_posture"),
+        "reading_rule": research.get("reading_rule"),
+        "reading_order": list(reading_order),
+        "files": files,
+        "strongest_result_summary": copy.deepcopy(summary),
+        "checkpoint_summary": copy.deepcopy(checkpoint),
+        "source_index": {
+            "path": PROBLEMS_PATH,
+            "content_digest": sha256(reader.read_bytes(PROBLEMS_PATH)),
+        },
+        "promotion_boundary": route.get("promotion_boundary"),
+    }
+
+
 def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
     """Build the bounded agent packet from canonical publication owners."""
     source = load_json(reader, ENTRY_SOURCE_PATH)
@@ -650,6 +718,7 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
             claims["remaining_open_propositions"]
         ),
     }
+    research_frontier = build_research_frontier_route(reader, source)
 
     owner_paths = [
         ENTRY_SOURCE_PATH,
@@ -659,8 +728,10 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
         METHODOLOGY_PATH,
         MUTATION_MANIFEST_PATH,
         MUTATION_HARNESS_PATH,
+        PROBLEMS_PATH,
         systems_artifact["source_path"],
         systems_artifact["rendered_path"],
+        *[row["path"] for row in research_frontier["files"].values()],
     ]
     content_hashes = {
         path: sha256(reader.read_bytes(path))
@@ -778,6 +849,7 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
         "publication_non_claims": source["publication_non_claims"],
         "registered_mathematical_non_claims": claims["non_claims"],
         "remaining_open_propositions": claims["remaining_open_propositions"],
+        "research_frontier": research_frontier,
         "authority_map": {
             "nodes": source["authority_nodes"],
             "edges": source["authority_edges"],

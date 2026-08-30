@@ -3,6 +3,17 @@
   "packet_path": "docs/publication_entry_packet.json",
   "packet_max_bytes": 32768,
   "thesis": "This public repository separates five parts: Lean source, a human-reviewed record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded.",
+  "research_frontier_route": {
+    "problem_id": "erdos_1041",
+    "query": "python3 scripts/query_corpus.py --route erdos_1041",
+    "reading_order": [
+      "FRONTIER.md",
+      "STRONGEST_RESULTS.json",
+      "CORPUS_MANIFEST.json",
+      "PUBLIC_CORPUS_CHECKPOINT.json"
+    ],
+    "promotion_boundary": "This dated frontier is public research evidence only: its activated results retain their exact premises and falsifiers, do not enter the reviewed claim registry or Comparator, and do not close Erdős 1041."
+  },
   "five_sentence_summary": [
     "Lean checks formal statements and proofs; it does not read the README or papers that explain them.",
     "A mathematician reviews what selected formal results mean, how the public pages may describe them, and what remains open.",

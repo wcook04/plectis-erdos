@@ -3,11 +3,13 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPACT = ROOT / "AGENTS.override.md"
+PUBLICATION_ENTRY = ROOT / "docs" / "publication_entry_packet.json"
 
 # Every provider entry file a coding agent may auto-load. Copilot loads
 # `.github/copilot-instructions.md` AND the agent files (`AGENTS.md`,
@@ -73,6 +75,21 @@ def main() -> int:
         "rules belong in AGENTS.override.md where they cannot contradict a "
         "sibling adapter loaded in the same session"
     )
+
+    packet = json.loads(PUBLICATION_ENTRY.read_text(encoding="utf-8"))
+    frontier = packet["research_frontier"]
+    assert frontier["problem_id"] == "erdos_1041"
+    assert frontier["query"] == "python3 scripts/query_corpus.py --route erdos_1041"
+    assert frontier["strongest_result_summary"]["result_count"] == 35
+    assert frontier["strongest_result_summary"]["status"] == "open"
+    assert frontier["checkpoint_summary"]["exported_source_file_count"] == 685
+    assert set(frontier["files"]) == {
+        "frontier",
+        "strongest_results",
+        "manifest",
+        "checkpoint",
+    }
+    assert "do not close Erdős 1041" in frontier["promotion_boundary"]
 
     # Naming is not enough for Claude Code, which resolves the `@` import and
     # loads that file. `@AGENTS.md` here means a cold clone opens the deep
