@@ -113,7 +113,7 @@ dispositions are stated in the relevant per-problem sections.
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
 | **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; the pairwise CRT and periodic denominator-clearing rows are distinct direct mechanisms; the bouquet and actual-LCM rows add unusually deep endpoint-facing conditional structure, with their unproved supplies kept adjacent rather than hidden. |
-| **retain** | #257's achievement-set measure geometry, #68's exact carry equivalence, #249's finite kernel rank/basis, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction and weighted-phase observer, #1041's ray/root route, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers; the #269 observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the #1049 rectangular threshold is sharp only for its explicit two-function model and supplies no approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
+| **retain** | #257's achievement-set measure geometry, #68's exact carry equivalence, #249's finite kernel rank/basis, #243's bounded-rise, negative-orbit, and signed centered-recovery boundaries, #251's equivalence and countermodel, #269's height/rank obstruction and weighted-phase observer, #1041's ray/root route, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers; the signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses but leaves the unbounded mixed-sign branch open; the #269 observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the #1049 rectangular threshold is sharp only for its explicit two-function model and supplies no approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
@@ -245,6 +245,19 @@ replacement for claim authority.
   does not close the original mixed-sign regime (claims registry:
   `bounded_negative_exclusion`; source coordinate:
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1748`).
+- A distinct signed recovery family makes the centered mechanism executable:
+  `boundedNegativePart_eventually_zero` assumes `a(n)>1`, `C(n)>0`, the exact
+  natural dynamics `C(n+1)+D(n)=a(n)C(n)` and `D(n+1)=a(n)D(n)`,
+  `E(n)=D(n)−(a(n)−1)C(n)`, strict `|E(n)|<C(n)`, a uniform lower bound
+  `E(n)≥−B`, and division-free normalized vanishing; it forces `E=0`
+  eventually. With centered zero and an eventually nonzero next tail,
+  `sylvesterNext_eventually_of_centered_zero` recovers the Sylvester recurrence.
+  The latter two declarations are mechanism evidence for this one family, not
+  separate rows. This is not reciprocal-tail irrationality: the unbounded
+  mixed-sign negative branch and prime-specific producer remain open
+  (`ExternalVerification/Challenge.lean:96-109`; source
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2265`, with supporting
+  declarations at `:1837` and `:1799`).
 - Open: the unbounded mixed-sign regime.
 
 **#249 — is `∑ φ(n)/2ⁿ` irrational? (reviewed core)**

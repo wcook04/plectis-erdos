@@ -89,15 +89,18 @@ not a novelty or priority ranking:
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
   the cofinal producer is still open.
 
-The next boundary results are also worth reading: #243 excludes bounded-rise
-and periodic negative-orbit regimes ([source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean));
-#251 gives unbounded prime gaps and an exact prime-gap equivalence, while a
-public, non-Comparator [denominator classifier](ExternalVerification/Challenge.lean#L245)
-reduces rationality of a dyadic tail to eventual integrality of one positive
-shift; its companion [irrationality normal form](ExternalVerification/Challenge.lean#L258)
-characterises an abstract integer-digit dyadic tail as irrational exactly when
-every positive shift is nonintegral. These are recurrence classifications, not
-a prime-gap producer ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean));
+Next boundary: #243's signed recovery
+(`boundedNegativePart_eventually_zero`) forces `E = D − (a−1)C` to vanish
+eventually under exact `C/D` dynamics `Cₙ₊₁+Dₙ=aₙCₙ`, `Dₙ₊₁=aₙDₙ`, `a>1`,
+`C>0`, strict `|E|<C`, uniform `E≥−B`, and normalized vanishing; centered zero
+with an eventually nonzero next tail recovers Sylvester recurrence
+([consumer](ExternalVerification/Challenge.lean#L96); [source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265)).
+It leaves reciprocal-tail irrationality, the unbounded mixed-sign branch, and
+the prime-specific producer open. #251 gives unbounded prime gaps and an exact
+prime-gap equivalence; public non-Comparator classifiers reduce a dyadic tail's
+rationality to eventual integrality of one positive shift and irrationality to
+nonintegrality of every positive shift ([consumer](ExternalVerification/Challenge.lean#L245)).
+Neither supplies the prime-specific producer ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean));
 #269 checks a
 running-LCM height identity and rank-two obstruction, and a separate
 weighted-phase carry observer splits each digit into a finite residue digit
@@ -114,16 +117,12 @@ irrationality open
 ([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean);
 [transport](ExternalVerification/Challenge.lean#L399)).
 
-This order is a value audit of the 40 declarations in the committed Comparator
-roster, not a claim that the remaining rows are unimportant. [RESULTS](docs/RESULTS.md#signal-audit-dispositions)
-records the promote/retain/consolidate/demote/replace/long-tail-only decisions
-and their mathematical reasons; the per-problem sections and [source map](docs/SOURCE_MAP.md)
-keep every lower-signal route reachable.
-
-Finite searches, routine certificate shards, cited inputs, and conditional
-predicate stacks remain valuable evidence, but they are supporting routes—not
-cofinal results or solutions. [RESULTS](docs/RESULTS.md) gives the complete
-signal audit, exact hypotheses, evidence, and surviving boundary.
+This audits the 40 committed Comparator declarations; other rows remain
+important. [RESULTS](docs/RESULTS.md#signal-audit-dispositions)
+records the mathematical dispositions; its per-problem sections and [source map](docs/SOURCE_MAP.md)
+keep routes reachable. Finite searches, routine shards, cited inputs, and
+conditional predicates remain supporting evidence, not cofinal results or
+solutions; [RESULTS](docs/RESULTS.md) gives exact hypotheses, evidence, and boundaries.
 
 ## Problem papers
 
