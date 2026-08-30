@@ -12836,7 +12836,7 @@
           {
             "id": "conditional_carry_escape",
             "contribution_class": "conditional no-go consumer; novelty and significance unassessed",
-            "summary": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; CofinalLocalWindowEscape, windowBase, windowForcing, and leastPositiveResidue are subordinate finite-window mechanism evidence.",
+            "summary": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.",
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "declarations": [
@@ -12844,9 +12844,10 @@
               "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
               "ErdosProblems.Erdos269.windowBase",
               "ErdosProblems.Erdos269.windowForcing",
-              "ErdosProblems.Erdos269.leastPositiveResidue"
+              "ErdosProblems.Erdos269.leastPositiveResidue",
+              "ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape"
             ],
-            "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
+            "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
           },
           {
             "id": "weighted_phase_carry_observer",
@@ -13390,7 +13391,7 @@
       "id": "three_prime_cofinal_window_carry_extinction",
       "label": "Conditional cofinal-window extinction of bounded carries for #269",
       "status": "conditional reduction",
-      "statement": "If the denominator-dependent cofinal local-window residue escape holds, then for every positive multiplier B coprime to 30 there is no positive integral sequence satisfying the exact cleared recurrence d_{n+1}=b_n d_n−B m_n together with the corresponding short bound. The bridge from the actual running-LCM series to this carry system and the cofinal escape remain open.",
+      "statement": "If the denominator-dependent cofinal local-window residue escape holds, then for every positive multiplier B coprime to 30 there is no positive integral sequence satisfying the exact cleared recurrence d_{n+1}=b_n d_n−B m_n together with the corresponding short bound. The same contradiction applies to an explicitly absorbed nonzero common-factor carry after exact cancellation. The bridge from the actual running-LCM series to this carry system and the cofinal escape remain open.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality"
       ],
@@ -13401,6 +13402,11 @@
           "name": "no_positive_reducedCarry_of_cofinalLocalWindowEscape",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
           "line": 645
+        },
+        {
+          "name": "no_positive_absorbedCarry_of_cofinalLocalWindowEscape",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 689
         }
       ]
     },
