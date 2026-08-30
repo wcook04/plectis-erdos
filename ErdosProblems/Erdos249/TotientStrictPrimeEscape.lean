@@ -161,6 +161,30 @@ def DTWNaturalPrimeTailOrbitStrictGap : Prop :=
       p.Prime ∧
       (tailOrbitFirstExp h (p - h - 1)).re < (9 / 10 : ℝ)
 
+/-- The first tail-orbit phase follows the exact doubling map.  The integer
+carry increment disappears after exponentiation, so the producer questions
+above are questions about the orbit of one phase under repeated squaring. -/
+lemma tailOrbitFirstExp_succ (h M : ℕ) :
+    tailOrbitFirstExp h (M + 1) = (tailOrbitFirstExp h M) ^ 2 := by
+  rw [tailOrbitFirstExp, tailOrbitFirstExp, tail_diff_succ]
+  let d : ℝ := totientTail (M + h) - totientTail M
+  let a : ℤ := deltaTotient h (M + 1)
+  have hexponent :
+      (((2 * Real.pi * (2 * d - (a : ℝ)) : ℝ) : ℂ) * Complex.I) =
+        2 * (((2 * Real.pi * d : ℝ) : ℂ) * Complex.I) +
+          (-(a : ℂ)) * (2 * (Real.pi : ℂ) * Complex.I) := by
+    push_cast
+    dsimp [d, a]
+    ring
+  rw [hexponent, Complex.exp_add]
+  have hperiod :
+      Complex.exp ((-(a : ℂ)) * (2 * (Real.pi : ℂ) * Complex.I)) = 1 := by
+    convert Complex.exp_int_mul_two_pi_mul_I (-a) using 1
+    push_cast
+    ring
+  rw [hperiod, mul_one]
+  exact Complex.exp_nat_mul _ 2
+
 /-- A strict `9/10` gap in the infinite phase leaves a positive truncation
 budget and gives a finite `9/10` pointwise gap. -/
 theorem naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap
