@@ -1542,7 +1542,7 @@
           "contribution_class": "no-go result",
           "summary": "Integer scalar content changes analytic error and exterior determinant by matching factors, yielding no margin by itself.",
           "evidence_mode": "Lean kernel",
-          "comparator_disposition": "represented_by_selected_coordinatewise_no_go",
+          "comparator_disposition": "not_selected_scalar_content_scaling_family",
           "boundary": "The conclusion is scoped to one normalisation strategy."
         },
         {
@@ -1550,7 +1550,7 @@
           "contribution_class": "no-go result",
           "summary": "Endpoint residues at 2 and 3 exclude a common multiplier under unit-endpoint hypotheses.",
           "evidence_mode": "Lean kernel",
-          "comparator_disposition": "represented_by_selected_coordinatewise_no_go",
+          "comparator_disposition": "not_selected_endpoint_residue_and_common_multiplier_family",
           "boundary": "Other local or cross-row arithmetic remains possible."
         },
         {
