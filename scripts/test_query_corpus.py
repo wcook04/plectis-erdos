@@ -566,6 +566,25 @@ def validate_indexed_declaration_lookup() -> None:
 
     assert bare == qualified
     assert source["nearby_declarations"][0]["qualified_name"] == qualified_name
+    declaration_route_memory = bare["matches"][0]["route_memory"]
+    assert declaration_route_memory["status"] == "bound"
+    assert declaration_route_memory["bindings"] == [
+        {
+            "route_id": "erdos249_certificate_story",
+            "problem_number": 249,
+            "command": (
+                "python3 scripts/query_route_memory.py --problem 249 "
+                "--route erdos249_certificate_story"
+            ),
+            "authority_posture": (
+                "derived_resume_handoff_not_claim_or_proof_authority"
+            ),
+            "identity_contract": (
+                "The route-memory command binds this route to the selected "
+                "problem and current tracked source digests before resume."
+            ),
+        }
+    ]
     index_cache = query_corpus.declaration_row_indexes.cache_info()
     qualified_cache = (
         query_corpus.declaration_rows_by_qualified_name.cache_info()
@@ -1311,6 +1330,11 @@ def main() -> int:
 
     unlinked = query("--declaration", "totientTail_pos")["matches"][0]
     assert unlinked["attached_claims"] == []
+    assert unlinked["route_memory"]["status"] == "unbound"
+    assert unlinked["route_memory"]["bindings"] == []
+    assert "no resume route was invented" in unlinked["route_memory"][
+        "unbound_reason"
+    ]
 
     local_declaration = query(
         "--declaration", "tsum_primWeight_div_two_pow_sub_one_eq_totient_series"

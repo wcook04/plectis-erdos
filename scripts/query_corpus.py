@@ -2446,10 +2446,62 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     if not matches:
         raise KeyError(f"unknown declaration name: {name}")
     decorated = decorate_declaration_rows(matches, limit)
+    claims = load("docs/claims.json")
+    programme_routes = [
+        route
+        for route in all_entrypoints(claims)
+        if route.get("route_kind") == "mathematical_programme"
+    ]
+    routed_matches = []
+    for declaration in decorated:
+        bindings = []
+        for claim_id in declaration.get("claim_ids", []):
+            for route in programme_routes:
+                if claim_id not in route.get("core_claim_ids", []):
+                    continue
+                problem_number = route_memory_problem_number(route)
+                if problem_number is None:
+                    continue
+                binding = {
+                    "route_id": route["id"],
+                    "problem_number": problem_number,
+                    "command": (
+                        "python3 scripts/query_route_memory.py --problem "
+                        f"{problem_number} --route {route['id']}"
+                    ),
+                    "authority_posture": (
+                        "derived_resume_handoff_not_claim_or_proof_authority"
+                    ),
+                    "identity_contract": (
+                        "The route-memory command binds this route to the selected "
+                        "problem and current tracked source digests before resume."
+                    ),
+                }
+                if binding["route_id"] not in {
+                    row["route_id"] for row in bindings
+                }:
+                    bindings.append(binding)
+        route_memory = {
+            "status": "bound" if bindings else "unbound",
+            "bindings": bindings,
+            "authority_posture": (
+                "derived_resume_handoff_not_claim_or_proof_authority"
+            ),
+            "boundary": (
+                "Route-memory bindings are navigation handoffs only; they do not "
+                "promote claims or replace Lean declaration authority."
+            ),
+        }
+        if not bindings:
+            route_memory["unbound_reason"] = (
+                "declaration claim IDs do not resolve to a canonical mathematical "
+                "programme; no resume route was invented"
+            )
+        routed_matches.append({**declaration, "route_memory": route_memory})
     return {
         "kind": "declaration",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
-        "matches": decorated,
+        "matches": routed_matches,
         "match_count": len(matches),
         "omitted_match_count": max(0, len(matches) - limit),
         "follow": {
