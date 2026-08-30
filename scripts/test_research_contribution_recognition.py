@@ -161,6 +161,22 @@ def main() -> int:
         require(marker in human, f"human recognition view omitted {marker}")
     require("commit_count" not in human and "diff_size" not in human, "recognition view exposed activity scoring")
 
+    malformed_aggregate = copy.deepcopy(projection)
+    mutated_aggregate = False
+    for entries in malformed_aggregate["aggregates"].values():
+        if entries and entries[0].get("accepted_receipts"):
+            entries[0]["accepted_receipts"][0]["return_id"] = []
+            mutated_aggregate = True
+            break
+    require(mutated_aggregate, "recognition fixture did not expose an aggregate receipt")
+    aggregate_errors = checker._aggregate_source_context_errors(
+        malformed_aggregate, projection
+    )
+    require(
+        any("return_id must be a string" in error for error in aggregate_errors),
+        "recognition checker did not reject an unhashable aggregate return_id",
+    )
+
     for label, field, malformed in (
         ("result.class", "class", {}),
         ("result.claim_ceiling", "claim_ceiling", []),

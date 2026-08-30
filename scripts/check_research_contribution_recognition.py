@@ -132,6 +132,12 @@ def _aggregate_source_context_errors(
                 if not isinstance(reference, dict):
                     continue
                 return_id = reference.get("return_id")
+                if not isinstance(return_id, str):
+                    errors.append(
+                        "machine projection: aggregate "
+                        f"{facet} receipt return_id must be a string"
+                    )
+                    continue
                 expected_reference = expected_by_id.get(return_id)
                 if not isinstance(expected_reference, dict):
                     continue
