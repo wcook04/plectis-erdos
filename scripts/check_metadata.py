@@ -18,6 +18,19 @@ ROOT = Path(__file__).resolve().parent.parent
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 
 
+def _tool_search_path() -> str:
+    """Resolve optional tools without consulting the caller's ambient PATH."""
+    interpreter_directory = str(Path(sys.executable).resolve().parent)
+    return os.pathsep.join(
+        (interpreter_directory, singleflight.command_environment()["PATH"])
+    )
+
+
+def find_tool(executable: str) -> str | None:
+    """Find a metadata validator in the interpreter or canonical tool paths."""
+    return shutil.which(executable, path=_tool_search_path())
+
+
 def execution_environment(executable: str) -> dict[str, str]:
     """Keep the pinned validator discoverable without inheriting ambient state."""
     environment = singleflight.command_environment()
@@ -29,7 +42,7 @@ def execution_environment(executable: str) -> dict[str, str]:
 
 
 def main() -> int:
-    cffconvert = shutil.which("cffconvert")
+    cffconvert = find_tool("cffconvert")
     if cffconvert is None:
         print(
             "cffconvert is required; install it with: python3 -m pip install cffconvert",

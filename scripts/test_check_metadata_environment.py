@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import os
 import subprocess
+import sys
 from pathlib import Path
 from unittest.mock import patch
 
@@ -34,13 +35,25 @@ def main() -> int:
     with patch.dict(os.environ, hostile_environment, clear=False):
         with patch.object(
             check_metadata.shutil, "which", return_value=fake_executable
-        ):
+        ) as which:
             with patch.object(
                 check_metadata.subprocess,
                 "run",
                 return_value=subprocess.CompletedProcess([], 0),
             ) as run:
                 require(check_metadata.main() == 0, "metadata checker failed")
+
+    lookup, = which.call_args.args
+    require(lookup == "cffconvert", "metadata checker looked up the wrong tool")
+    lookup_path = which.call_args.kwargs["path"]
+    require(
+        lookup_path.split(os.pathsep)[0] == str(Path(sys.executable).resolve().parent),
+        "metadata lookup did not prefer the running interpreter",
+    )
+    require(
+        "/private/wrong-bin" not in lookup_path,
+        "ambient PATH leaked into metadata lookup",
+    )
 
     command, = run.call_args.args
     require(
