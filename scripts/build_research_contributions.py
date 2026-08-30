@@ -10,6 +10,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import stat
 import subprocess
 import sys
 import tempfile
@@ -121,6 +122,32 @@ def canonical(value: Any) -> bytes:
 
 def sha256(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
+
+
+def safe_receipt_bytes(path: Path) -> bytes:
+    """Read one receipt without following a substituted path or special file."""
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(path, flags)
+    except OSError as exc:
+        raise ValueError(f"{path.name}: receipt source cannot be read safely") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ValueError(f"{path.name}: receipt source must be a regular file")
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        return b"".join(chunks)
+    except OSError as exc:
+        raise ValueError(f"{path.name}: receipt source cannot be read safely") from exc
+    finally:
+        os.close(descriptor)
 
 
 def _run_git(arguments: list[str], **kwargs: Any) -> subprocess.CompletedProcess[Any]:
@@ -239,7 +266,11 @@ def load_receipts(
         if not path.is_file():
             errors.append(f"{path.name}: receipt source must be a regular file")
             continue
-        payload = path.read_bytes()
+        try:
+            payload = safe_receipt_bytes(path)
+        except ValueError as exc:
+            errors.append(str(exc))
+            continue
         if require_committed:
             try:
                 committed_payload = committed_receipt_payload(path)

@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 from pathlib import Path
 
@@ -83,6 +84,31 @@ def main() -> int:
             projection["accepted_receipt_count"] == 0,
             "safe negative source produced an accepted recognition row",
         )
+
+    with tempfile.TemporaryDirectory(prefix="contribution-descriptor-safety-") as temporary:
+        root = Path(temporary)
+        regular = root / "regular.json"
+        regular.write_bytes(b"{}")
+        require(
+            contributions.safe_receipt_bytes(regular) == b"{}",
+            "receipt descriptor reader rejected a regular file",
+        )
+        linked = root / "linked.json"
+        linked.symlink_to(regular)
+        try:
+            contributions.safe_receipt_bytes(linked)
+        except ValueError as exc:
+            require("cannot be read safely" in str(exc), exc)
+        else:
+            raise AssertionError("receipt descriptor reader followed a symlink")
+        fifo = root / "receipt.fifo"
+        os.mkfifo(fifo)
+        try:
+            contributions.safe_receipt_bytes(fifo)
+        except ValueError as exc:
+            require("regular file" in str(exc), exc)
+        else:
+            raise AssertionError("receipt descriptor reader accepted a special file")
 
     print(
         json.dumps(
