@@ -473,6 +473,7 @@ def candidate_selection_errors(
                     "erdos257_boolean_mobius_exact_row_dynamics": "boolean_mobius_exact_row_dynamics",
                     "erdos257_half_membership_seam_classification": "half_membership_seam_classification",
                     "erdos249_fixed_precision_transport_no_go": "fixed_precision_transport_no_go",
+                    "erdos251_coefficient_only_no_go": "coefficient_only_no_go",
                 }.get(row.get("candidate_id"))
                 if expected_family and row.get("family_id") != expected_family:
                     errors.append(
@@ -568,6 +569,7 @@ def candidate_selection_errors(
                 "erdos257_half_membership_seam_classification",
                 "erdos249_carry_anti_compression",
                 "erdos249_fixed_precision_transport_no_go",
+                "erdos251_coefficient_only_no_go",
             }
             if set(candidate_ids) != expected_landscape_ids:
                 errors.append("source-landscape queue does not cover the admitted and targeted candidates")

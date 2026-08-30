@@ -343,6 +343,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "weighted_phase_carry_observer",
         "erdos257_boolean_mobius_exact_row_dynamics",
         "erdos257_half_membership_seam_classification",
+        "erdos251_coefficient_only_no_go",
     }
     assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
     assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
@@ -550,6 +551,30 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "finite-word" in " ".join(fixed["limitations"])
     assert "no #249 endpoint" in " ".join(fixed["limitations"])
     assert "negative-method" in fixed["reason"]
+    coefficient = landscape_by_id["erdos251_coefficient_only_no_go"]
+    assert coefficient["family_id"] == "coefficient_only_no_go"
+    assert coefficient["disposition"] == "represented"
+    assert coefficient["prior_disposition"] == "deferred"
+    assert coefficient["canonical_family_binding"] == "coefficient_only_no_go"
+    assert coefficient["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert coefficient["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert coefficient["comparator_declaration"] == "Erdos249257.ExternalVerification.coefficientOnlyNoGo"
+    assert coefficient["comparator_declaration"] in comparator["theorem_names"]
+    assert coefficient["source_transport_commit"] == "c9d3660336d9ef4c9497549b26e29f3f953c138d"
+    assert coefficient["canonical_claim_commit"] == "4c4ac3f98352a169d276186c84860e41e7aac731"
+    assert coefficient["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.coefficientOnlyNoGo"
+    ]
+    assert "carryPartialSum_natCast_eq" in coefficient["source_declaration"]
+    assert "carryCoeff_natCast_not_eventually_periodic" in coefficient["source_declaration"]
+    assert "primeGap0_not_eventually_periodic" in coefficient["source_declaration"]
+    assert "finite rational carry" in coefficient["hard_mechanism"]
+    assert "infinite rational-sum limit" in " ".join(coefficient["limitations"])
+    assert "stream-identification" in " ".join(coefficient["limitations"])
+    assert "#251 endpoint" in " ".join(coefficient["limitations"])
+    assert "routine finite searches" in coefficient["reason"]
+    assert "verification/comparator.json" in coefficient["transport_admission_boundary"]
+    assert "51-row" in coefficient["transport_admission_boundary"]
 
 
 def test_adversarial_source_transport_family_merge_is_not_silently_accepted() -> None:
