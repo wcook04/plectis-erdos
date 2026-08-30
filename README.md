@@ -57,36 +57,34 @@ All eight remain open. Pass is mechanism-first:
   seam bits occur beyond every bound, equivalently unbounded upper-or-middle/
   skipped-rank witnesses ([half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse](ExternalVerification/Challenge.lean#L443)).
   No producer; half-membership and #257 remain open.
-- **#249's endpoint-facing frontier is conditional.** An actual-LCM orbit is
-  approximated by an odd-rank raw block with an explicit error radius: the
-  separate sufficient (not equivalent) condition
+- **#249's endpoint-facing frontier is conditional.** The actual-LCM orbit has
+  an odd-rank/error-radius reduction: the sufficient (not equivalent)
   `PowerTwoActualLcmOrbitSeparationSupply` would force the existing signed-margin
   producer and hence irrationality
   ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
-  quantitative separation supply is unproved, and sign/top-edge information
-  does not supply it. The finite dyadic kernel has rank `2^e+1` with an odd-core basis
+  cofinal separation supply is unproved; sign/top-edge data do not supply it.
+  The finite dyadic kernel has rank `2^e+1` with an odd-core basis
   ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); hypothetical rationality
   also forces modularly periodic carries with rank `≥2^e−1`, but divisor reduction
   erases forcing: no finite-rank contradiction or irrationality proof
-  ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). A fixed-precision
-  Comparator no-go gives every finite odd-unit word a centred carry completion at
-  each `u>0` from any incoming integer state ([consumer](ExternalVerification/Challenge.lean#L166));
-  synthetic finite-word evidence: no actual totient arithmetic, growing-precision/
-  global bridge, #249 endpoint, or irrationality. The public actual-LCM
-  The diagonal form equates integrality with a full-target foreign-defect hit;
-  cofinal misses would prove irrationality, but the supply is open
-  ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). A separate
-  public
-  [first-harmonic pivot route](ExternalVerification/Challenge.lean) is now
-  represented in Comparator: `windowFirstExp_sum_eq_pivot_decomposition` and
-  `first_harmonic_gap_of_pivotBudgetAt` expose its four-term decomposition and
-  sufficient `9X/10` certificate budget alongside a conditional cofinal
-  residual-decorrelation endpoint. The supporting
-  `image_pivotSupplierPrimes_eq_pivotFiber` identity and
-  `supplierPrime_not_globally_isolated_counterexample` make the natural
-  friction explicit: a concrete overlap at `X=16` blocks global supplier-prime
-  isolation. The cofinal producer remains open
-  ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
+  ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). Fixed precision admits
+  a centred completion for every finite odd-unit word at `u>0` from any incoming
+  integer state ([consumer](ExternalVerification/Challenge.lean#L166)); this is
+  synthetic finite-word evidence, not actual totient arithmetic, a growing-
+  precision/global bridge, a #249 endpoint, or irrationality. The public actual-LCM
+  diagonal form equates integrality with a full-target foreign-defect hit; cofinal
+  misses would force irrationality, but the supply is open
+  ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). The
+  [first-harmonic pivot route](ExternalVerification/Challenge.lean) is also
+  Comparator-visible: its four-term decomposition and sufficient `9X/10`
+  certificate budget feed a conditional cofinal residual-decorrelation endpoint.
+  A supplier-prime overlap at `X=16` blocks global isolation, so its producer is
+  open ([source](Erdos249257/FirstHarmonicPivot.lean#L514)). Its pointwise
+  prime-index branch asks, for every `h>0,N₀`, for a prime `p` beyond both with
+  `Re(tailOrbitFirstExp h (p-h-1)) < 9/10`, then feeds the same finite
+  certificate ([consumer](ExternalVerification/Challenge.lean#L579)); that cofinal
+  supply is open.
+
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
