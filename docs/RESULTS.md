@@ -95,6 +95,15 @@ replacement for claim authority.
   `ErdosProblems/Erdos68/FactorialZeroPlateau.lean:1090`. Checked theorem;
   exact equivalence, transporting the difficulty without reducing it;
   registry: none.
+- A separate finite quotient-band obstruction is now explicit. For a finite
+  coefficient family whose indices all satisfy `k d ≤ i_j < (k+1)d`, the
+  factorial moment factors as `M = (d!)^k C_d`; in the first band, channel
+  cancellation `C_d = 0` therefore forces `M = 0`. More generally, if all
+  indices are at least `d`, channel cancellation with `M ≠ 0` forces some
+  index to be at least `2d` (`ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean`;
+  paper discussion in `erdos-68-factorial-denominator-irrationality.pdf`).
+  This is a finite-family breakpoint only: it supplies no cancelling family,
+  simultaneous-channel control, residual estimate, or cofinal non-unit carry.
 - The kernel-internal denominator bound is `q ≥ 67`
   (`ErdosProblems/Erdos68/FactorialZeroPlateau.lean:940`); the `300000`
   exclusion is a checked implication
