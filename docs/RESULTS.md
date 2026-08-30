@@ -270,6 +270,14 @@ core)**
   base `b ≥ 2` (Erdős 1948; claim `eb_full_support`), as are pairwise-coprime
   supports with summable reciprocals (Erdős 1968) and eventually periodic
   supports.
+- Historical source boundary: Chowla's 1947 paper defines the ordinary
+  Lambert series `f(x) = ∑ xⁿ/(1−xⁿ)` and a sine-twisted companion, conjectures
+  irrationality for both at nonzero rational arguments, but expressly says he
+  cannot prove the ordinary `f(x)` case. It proves only the sine-twisted
+  `g(1/t)` case for integer `t ≥ 5`, via long zero blocks in sums of two
+  squares ([source closure](primary-sources/reciprocal-tail/chowla-1947-source-closure.md)).
+  Thus Chowla is historical context for the full-support `x = 1/2` Lambert
+  value, not evidence for arbitrary-support #257 or a new release theorem.
 - The base-2 Mersenne achievement set — all subsums of `∑ 1/(2ⁿ−1)` — is
   compact, perfect, totally disconnected, nowhere dense, and of Lebesgue
   measure one (strict-tail Cantor structure after Kovač–Tao, Remark 4.1; the
