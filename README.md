@@ -90,26 +90,8 @@ All eight remain open. Pass is mechanism-first:
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
   the cofinal producer is still open.
 
-Next boundary: #243 recovery. Comparator's `boundedNegativePart_eventually_zero` and distinct `sylvesterNext_eventually_of_summable_negativeRelativeMass` force Sylvester steps under exact `C/D`, `C>0`, strict centered-step, and division-free normalized-vanishing hypotheses; the latter replaces a uniform lower bound with `Summable` normalized negative mass ([consumer](ExternalVerification/Challenge.lean#L111); [source](ErdosProblems/Erdos243/SparseResetRecovery.lean#L175)). Neither supplies the original orbit, mixed-sign/prime production, or reciprocal-tail irrationality; #243 stays open. #251 gives unbounded prime gaps and an exact
-prime-gap equivalence; its public `RealDyadicTailRecurrence` classifiers say
-rationality iff one positive shift is eventually integral and irrationality iff
-every positive shift is nonintegral ([consumer](ExternalVerification/Challenge.lean#L245)).
-The prime-specific producer remains open ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean));
-#269 checks a
-running-LCM height identity and rank-two obstruction, and a separate
-weighted-phase carry observer splits each digit into a finite residue digit
-plus an uncontrolled integral coboundary; only its explicit finite-dimensional
-factorisation yields finite realised span
-([source](ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109)); #1041 isolates
-finite ray separation/root retention while a topology/gluing step is missing
-([source](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)); and #1049
-rules out a literal `3/2` corridor while a finite four-jet/Padé obstruction
-records selector collisions and content barriers. A distinct explicit
-rectangular two-function Hermite–Padé model has a sharp threshold no-go under
-`0 ≤ ρ` and `1+ρ ≤ σ`, but constructs no approximants or remainders, leaving
-irrationality open
-([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean);
-[transport](ExternalVerification/Challenge.lean#L399)).
+Next boundary: #243 recovery. Comparator's `boundedNegativePart_eventually_zero` and distinct `sylvesterNext_eventually_of_summable_negativeRelativeMass` force Sylvester steps under exact `C/D`, `C>0`, strict centered-step, and division-free normalized vanishing; `Summable` negative mass replaces the uniform lower bound ([consumer](ExternalVerification/Challenge.lean#L111); [source](ErdosProblems/Erdos243/SparseResetRecovery.lean#L175)). It supplies neither the original orbit, mixed-sign/prime producer, nor reciprocal-tail irrationality; #243 stays open. #251 gives unbounded prime gaps and a prime-gap equivalence; its classifiers say rationality iff one positive shift is eventually integral and irrationality iff every positive shift is nonintegral ([consumer](ExternalVerification/Challenge.lean#L245)). A Comparator criterion rules out eventual integrality for an actual-prime-gap `DyadicTailRecurrence` with cofinally small adjacent shifts of unequal gaps ([consumer](ExternalVerification/Challenge.lean#L328); [source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112)); no cofinal small-mismatch producer is proved, so #251 remains open.
+#269 checks running-LCM height/rank plus a weighted-phase observer splitting finite residue from uncontrolled integral coboundary; only explicit finite-dimensional factorisation gives finite realised span ([source](ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109)). #1041 isolates finite ray/root retention but lacks topology/gluing ([source](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)). #1049 rules out a literal `3/2` corridor with finite four-jet/Padé selector collisions and content barriers; its distinct rectangular two-function model has a sharp no-go under `0 ≤ ρ` and `1+ρ ≤ σ`, but constructs no approximants or remainders, leaving irrationality open ([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean); [transport](ExternalVerification/Challenge.lean#L399)).
 
 See [RESULTS](docs/RESULTS.md#signal-audit-dispositions) for dispositions,
 evidence, and boundaries; its [source map](docs/SOURCE_MAP.md) keeps routes

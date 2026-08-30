@@ -114,20 +114,20 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 52 declarations in the committed Comparator roster
+The audit universe is the 54 declarations in the committed Comparator roster
 (`verification/comparator.json`). I ranked them by consequence, endpoint
 proximity, mechanism depth, genuine distinctness, external usefulness,
 digestion value, evidence certainty, natural friction, and overclaim risk—not
 by row count, inherited order, or citation presence. The family-level table
 below is the compact reading map; every declaration remains source-current and
 individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 52-row universe; their
+without a Comparator transport are not counted in the 54-row universe; their
 dispositions are stated in the relevant per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
 | **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; the pairwise CRT and periodic denominator-clearing rows are distinct direct mechanisms; the bouquet and actual-LCM rows add unusually deep endpoint-facing conditional structure, with their unproved supplies kept adjacent rather than hidden. |
-| **retain** | #257's achievement-set measure geometry and sublogarithmic zero-window constraint, #68's exact carry equivalence, #249's diagonal full-target reduction, finite kernel rank/basis, and orbit-level carry anti-compression, #243's bounded-rise, negative-orbit, signed centered-recovery, and distinct summable-negative-mass boundaries, #251's equivalence and countermodel, #269's height/rank obstruction and weighted-phase observer, #1041's ray/root route, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the sublog row gives a rationality-conditional coverage bound with a support/numerator-dependent constant, not a contradiction; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers, while the #249 diagonal row makes integrality a full-target foreign-defect hit and the orbit conjunction exposes modular periodicity alongside rank growth and its forcing-erasure friction; the signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses, while the distinct summability criterion removes that lower-bound assumption but still assumes exact dynamics and leaves the unbounded mixed-sign branch open; the #269 observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the #1049 rectangular threshold is sharp only for its explicit two-function model and supplies no approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
+| **retain** | #257's achievement-set measure geometry and sublogarithmic zero-window constraint, #68's exact carry equivalence, #249's diagonal full-target reduction, finite kernel rank/basis, and orbit-level carry anti-compression, #243's bounded-rise, negative-orbit, signed centered-recovery, and distinct summable-negative-mass boundaries, #251's equivalence, countermodel, and small-mismatch criterion, #269's height/rank obstruction and weighted-phase observer, #1041's ray/root route, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the sublog row gives a rationality-conditional coverage bound with a support/numerator-dependent constant, not a contradiction; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers, while the #249 diagonal row makes integrality a full-target foreign-defect hit and the orbit conjunction exposes modular periodicity alongside rank growth and its forcing-erasure friction; the signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses, while the distinct summability criterion removes that lower-bound assumption but still assumes exact dynamics and leaves the unbounded mixed-sign branch open; the #251 small-mismatch row is closer to the actual prime-gap endpoint and isolates the cofinal small-pair/mismatch producer, but supplies none of it; the #269 observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the #1049 rectangular threshold is sharp only for its explicit two-function model and supplies no approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, scalar-height, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; the scalar-height lemma transfers denominator information but is not an irrationality criterion. Grouping these mechanisms preserves their reuse value without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
@@ -494,6 +494,15 @@ replacement for claim authority.
   The classifications are abstract even though their normal form is now in the
   Comparator screen; they supply no prime-specific eventual-small or
   cofinal-mismatch producer.
+- The actual-prime-gap specialization
+  `primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch` makes
+  the missing producer concrete: for a `DyadicTailRecurrence`, cofinally many
+  adjacent pairs of shifts both strictly in `(-1,1)` with unequal corresponding
+  gaps rule out an eventually integral shift (`ExternalVerification/Challenge.lean:328-336`;
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1112-1124`). Its hard step is
+  the adjacent-pair zero obstruction followed by prime-gap non-eventual
+  periodicity. No theorem supplies this cofinal small-mismatch family, so the
+  reduction does not prove #251 irrationality.
 - The exact finite carry identity and non-eventual-periodicity theorem close the
   coefficient-only periodicity implication at the Lean level
   (`carryPartialSum_natCast_eq`, `carryCoeff_natCast_not_eventually_periodic`,
