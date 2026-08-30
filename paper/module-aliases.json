@@ -3,487 +3,572 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 96,
+  "alias_count": 113,
   "aliases": [
     {
       "sigil": "ActForResPro",
-      "module": "ActualForeignResidueProjection.lean",
+      "module": "Erdos249257/ActualForeignResidueProjection.lean",
       "path": "Erdos249257/ActualForeignResidueProjection.lean"
     },
     {
       "sigil": "AdeHeiObs",
-      "module": "AdelicHeightObstruction.lean",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
       "path": "Erdos249257/AdelicHeightObstruction.lean"
     },
     {
       "sigil": "BooMobCar",
-      "module": "BooleanMobiusCarry.lean",
+      "module": "Erdos249257/BooleanMobiusCarry.lean",
       "path": "Erdos249257/BooleanMobiusCarry.lean"
     },
     {
       "sigil": "BooMobCofExaRow",
-      "module": "BooleanMobiusCofinalExactRows.lean",
+      "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
       "path": "Erdos249257/BooleanMobiusCofinalExactRows.lean"
     },
     {
       "sigil": "BooMobSkiRowCof",
-      "module": "BooleanMobiusSkipRowCofinal.lean",
+      "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
       "path": "Erdos249257/BooleanMobiusSkipRowCofinal.lean"
     },
     {
       "sigil": "BooMobSkiCorExaRow",
-      "module": "BooleanMobiusSkippedCoreExactRow.lean",
+      "module": "Erdos249257/BooleanMobiusSkippedCoreExactRow.lean",
       "path": "Erdos249257/BooleanMobiusSkippedCoreExactRow.lean"
     },
     {
       "sigil": "CamShiSyn",
-      "module": "CampbellShiftSynchronization.lean",
+      "module": "Erdos249257/CampbellShiftSynchronization.lean",
       "path": "Erdos249257/CampbellShiftSynchronization.lean"
     },
     {
       "sigil": "CarSurExt",
-      "module": "CarrySurvivorExtinction.lean",
+      "module": "Erdos249257/CarrySurvivorExtinction.lean",
       "path": "Erdos249257/CarrySurvivorExtinction.lean"
     },
     {
       "sigil": "CerKer",
-      "module": "CertificateKernel.lean",
+      "module": "Erdos249257/CertificateKernel.lean",
       "path": "Erdos249257/CertificateKernel.lean"
     },
     {
       "sigil": "CofStrRet",
-      "module": "CofinalStripReturn.lean",
+      "module": "Erdos249257/CofinalStripReturn.lean",
       "path": "Erdos249257/CofinalStripReturn.lean"
     },
     {
       "sigil": "ComDilDef",
-      "module": "CompositeDilationDefect.lean",
+      "module": "Erdos249257/CompositeDilationDefect.lean",
       "path": "Erdos249257/CompositeDilationDefect.lean"
     },
     {
       "sigil": "DiaFleOddWinAff",
-      "module": "DiagonalFlexibleOddWindowAffine.lean",
+      "module": "Erdos249257/DiagonalFlexibleOddWindowAffine.lean",
       "path": "Erdos249257/DiagonalFlexibleOddWindowAffine.lean"
     },
     {
       "sigil": "DiaFleOddWinSup",
-      "module": "DiagonalFlexibleOddWindowSupply.lean",
+      "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
       "path": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean"
     },
     {
       "sigil": "DiaFreLosBri",
-      "module": "DiagonalFreshLossBridge.lean",
+      "module": "Erdos249257/DiagonalFreshLossBridge.lean",
       "path": "Erdos249257/DiagonalFreshLossBridge.lean"
     },
     {
       "sigil": "DiaPinCerT64End",
-      "module": "DiagonalPincerCertificateT64Endpoint.lean",
+      "module": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean",
       "path": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean"
     },
     {
       "sigil": "DiaPinCerT64",
-      "module": "DiagonalPincerCertificatesT64.lean",
+      "module": "Erdos249257/DiagonalPincerCertificatesT64.lean",
       "path": "Erdos249257/DiagonalPincerCertificatesT64.lean"
     },
     {
       "sigil": "DiaPinDec",
-      "module": "DiagonalPincerDecomposition.lean",
+      "module": "Erdos249257/DiagonalPincerDecomposition.lean",
       "path": "Erdos249257/DiagonalPincerDecomposition.lean"
     },
     {
-      "sigil": "DiaPinPriCerT64",
-      "module": "DiagonalPincerPrimeCertificates/ClosureT64.lean",
-      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean"
-    },
-    {
       "sigil": "FirHarPiv",
-      "module": "FirstHarmonicPivot.lean",
+      "module": "Erdos249257/FirstHarmonicPivot.lean",
       "path": "Erdos249257/FirstHarmonicPivot.lean"
     },
     {
       "sigil": "FrePriDefDec",
-      "module": "FreshPrimeDeficitDecomposition.lean",
+      "module": "Erdos249257/FreshPrimeDeficitDecomposition.lean",
       "path": "Erdos249257/FreshPrimeDeficitDecomposition.lean"
     },
     {
       "sigil": "FulTarPriAdjNoGo",
-      "module": "FullTargetPrimeAdjunctionNoGo.lean",
+      "module": "Erdos249257/FullTargetPrimeAdjunctionNoGo.lean",
       "path": "Erdos249257/FullTargetPrimeAdjunctionNoGo.lean"
     },
     {
       "sigil": "GapFarBou",
-      "module": "GapFareyBound.lean",
+      "module": "Erdos249257/GapFareyBound.lean",
       "path": "Erdos249257/GapFareyBound.lean"
     },
     {
       "sigil": "GcdMomCal",
-      "module": "GcdMomentCalculus.lean",
+      "module": "Erdos249257/GcdMomentCalculus.lean",
       "path": "Erdos249257/GcdMomentCalculus.lean"
     },
     {
       "sigil": "GenTaiOrbRig",
-      "module": "GenericTailOrbitRigidity.lean",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
       "path": "Erdos249257/GenericTailOrbitRigidity.lean"
     },
     {
       "sigil": "GreAchSet",
-      "module": "GreedyAchievementSet.lean",
+      "module": "Erdos249257/GreedyAchievementSet.lean",
       "path": "Erdos249257/GreedyAchievementSet.lean"
     },
     {
       "sigil": "HalCarCeiParCon",
-      "module": "HalfCarryCeilParentContraction.lean",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
       "path": "Erdos249257/HalfCarryCeilParentContraction.lean"
     },
     {
       "sigil": "HalCarCofWinOrSeaCon",
-      "module": "HalfCarryCofinalWindowOrSeamConsumer.lean",
+      "module": "Erdos249257/HalfCarryCofinalWindowOrSeamConsumer.lean",
       "path": "Erdos249257/HalfCarryCofinalWindowOrSeamConsumer.lean"
     },
     {
       "sigil": "HalCarProSeaCon",
-      "module": "HalfCarryProtectedSeamConsumer.lean",
+      "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
       "path": "Erdos249257/HalfCarryProtectedSeamConsumer.lean"
     },
     {
       "sigil": "HalCarRea",
-      "module": "HalfCarryReachability.lean",
+      "module": "Erdos249257/HalfCarryReachability.lean",
       "path": "Erdos249257/HalfCarryReachability.lean"
     },
     {
       "sigil": "HalCarRewPha",
-      "module": "HalfCarryRewindPhase.lean",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
       "path": "Erdos249257/HalfCarryRewindPhase.lean"
     },
     {
       "sigil": "HalCarSelWin",
-      "module": "HalfCarrySelectedWindow.lean",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
       "path": "Erdos249257/HalfCarrySelectedWindow.lean"
     },
     {
       "sigil": "HalCarSelWinBas",
-      "module": "HalfCarrySelectedWindowBase.lean",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
       "path": "Erdos249257/HalfCarrySelectedWindowBase.lean"
     },
     {
       "sigil": "HalCylBouPul",
-      "module": "HalfCylinderBoundaryPulse.lean",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
       "path": "Erdos249257/HalfCylinderBoundaryPulse.lean"
     },
     {
       "sigil": "HalCylConSeaAda",
-      "module": "HalfCylinderConcreteSeamAdapter.lean",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
       "path": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean"
     },
     {
       "sigil": "HalCylFatGapRigTai",
-      "module": "HalfCylinderFatalGapRightTail.lean",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
       "path": "Erdos249257/HalfCylinderFatalGapRightTail.lean"
     },
     {
       "sigil": "HalCylFinMidCelEsc",
-      "module": "HalfCylinderFinalMiddleCellEscape.lean",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
       "path": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean"
     },
     {
       "sigil": "HalCylFinSha",
-      "module": "HalfCylinderFiniteShadow.lean",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
       "path": "Erdos249257/HalfCylinderFiniteShadow.lean"
     },
     {
       "sigil": "HalCylFixTaiSoc",
-      "module": "HalfCylinderFixedTailSocket.lean",
+      "module": "Erdos249257/HalfCylinderFixedTailSocket.lean",
       "path": "Erdos249257/HalfCylinderFixedTailSocket.lean"
     },
     {
       "sigil": "HalCylFulSheSeaBri",
-      "module": "HalfCylinderFullShellSeamBridge.lean",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
       "path": "Erdos249257/HalfCylinderFullShellSeamBridge.lean"
     },
     {
       "sigil": "HalCylHalMemCla",
-      "module": "HalfCylinderHalfMembershipClassification.lean",
+      "module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
       "path": "Erdos249257/HalfCylinderHalfMembershipClassification.lean"
     },
     {
       "sigil": "HalCylIntGre",
-      "module": "HalfCylinderIntegerGreedy.lean",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
       "path": "Erdos249257/HalfCylinderIntegerGreedy.lean"
     },
     {
       "sigil": "HalCylLarSkiGap",
-      "module": "HalfCylinderLargestSkipGap.lean",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
       "path": "Erdos249257/HalfCylinderLargestSkipGap.lean"
     },
     {
       "sigil": "HalCylLarSkiInd",
-      "module": "HalfCylinderLargestSkipInduction.lean",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
       "path": "Erdos249257/HalfCylinderLargestSkipInduction.lean"
     },
     {
       "sigil": "HalCylLasProCon",
-      "module": "HalfCylinderLastProducerContradiction.lean",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
       "path": "Erdos249257/HalfCylinderLastProducerContradiction.lean"
     },
     {
       "sigil": "HalCylMidCarLowBou",
-      "module": "HalfCylinderMiddleCarryLowerBound.lean",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
       "path": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean"
     },
     {
       "sigil": "HalCylProCarSoc",
-      "module": "HalfCylinderProducerCarrySocket.lean",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
       "path": "Erdos249257/HalfCylinderProducerCarrySocket.lean"
     },
     {
       "sigil": "HalCylProLowBou",
-      "module": "HalfCylinderProducerLowerBound.lean",
+      "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
       "path": "Erdos249257/HalfCylinderProducerLowerBound.lean"
     },
     {
       "sigil": "HalCylQuaBanEnd",
-      "module": "HalfCylinderQuarterBandEndpoints.lean",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
       "path": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean"
     },
     {
       "sigil": "HalCylResDefEsc",
-      "module": "HalfCylinderResetDeficitEscape.lean",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
       "path": "Erdos249257/HalfCylinderResetDeficitEscape.lean"
     },
     {
       "sigil": "HalCylSeaProAli",
-      "module": "HalfCylinderSeamProducerAlignment.lean",
+      "module": "Erdos249257/HalfCylinderSeamProducerAlignment.lean",
       "path": "Erdos249257/HalfCylinderSeamProducerAlignment.lean"
     },
     {
       "sigil": "HalCylUppResBanCer",
-      "module": "HalfCylinderUpperResetBandCertificates.lean",
+      "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
       "path": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean"
     },
     {
       "sigil": "HalDivUniDro",
-      "module": "HalfDivisorUnitDrop.lean",
+      "module": "Erdos249257/HalfDivisorUnitDrop.lean",
       "path": "Erdos249257/HalfDivisorUnitDrop.lean"
     },
     {
       "sigil": "HalFinMidPhaSie",
-      "module": "HalfFinalMiddlePhaseSieve.lean",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
       "path": "Erdos249257/HalfFinalMiddlePhaseSieve.lean"
     },
     {
       "sigil": "HalGreTwoThiBan",
-      "module": "HalfGreedyTwoThirdsBand.lean",
+      "module": "Erdos249257/HalfGreedyTwoThirdsBand.lean",
       "path": "Erdos249257/HalfGreedyTwoThirdsBand.lean"
     },
     {
       "sigil": "HalTraRetCar",
-      "module": "HalfTrappingReturnCarry.lean",
+      "module": "Erdos249257/HalfTrappingReturnCarry.lean",
       "path": "Erdos249257/HalfTrappingReturnCarry.lean"
     },
     {
       "sigil": "LcmConFla",
-      "module": "LcmConeFlatness.lean",
+      "module": "Erdos249257/LcmConeFlatness.lean",
       "path": "Erdos249257/LcmConeFlatness.lean"
     },
     {
       "sigil": "LcmConNon",
-      "module": "LcmConeNonflat.lean",
+      "module": "Erdos249257/LcmConeNonflat.lean",
       "path": "Erdos249257/LcmConeNonflat.lean"
     },
     {
+      "sigil": "LcmFacIdePulObs",
+      "module": "Erdos249257/LcmFactorIdealPulseObstruction.lean",
+      "path": "Erdos249257/LcmFactorIdealPulseObstruction.lean"
+    },
+    {
       "sigil": "MaxOmeLay",
-      "module": "MaximalOmegaLayer.lean",
+      "module": "Erdos249257/MaximalOmegaLayer.lean",
       "path": "Erdos249257/MaximalOmegaLayer.lean"
     },
     {
       "sigil": "MerLamLad",
-      "module": "MersenneLambertLadder.lean",
+      "module": "Erdos249257/MersenneLambertLadder.lean",
       "path": "Erdos249257/MersenneLambertLadder.lean"
     },
     {
       "sigil": "MerShaDenGro",
-      "module": "MersenneShadowDenominatorGrowth.lean",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
       "path": "Erdos249257/MersenneShadowDenominatorGrowth.lean"
     },
     {
       "sigil": "MerTaiAto",
-      "module": "MersenneTailAtoms.lean",
+      "module": "Erdos249257/MersenneTailAtoms.lean",
       "path": "Erdos249257/MersenneTailAtoms.lean"
     },
     {
       "sigil": "MobSigSupNoGo",
-      "module": "MobiusSignSupportNoGo.lean",
+      "module": "Erdos249257/MobiusSignSupportNoGo.lean",
       "path": "Erdos249257/MobiusSignSupportNoGo.lean"
     },
     {
       "sigil": "PivAntRec",
-      "module": "PivotAntiReconstruction.lean",
+      "module": "Erdos249257/PivotAntiReconstruction.lean",
       "path": "Erdos249257/PivotAntiReconstruction.lean"
     },
     {
       "sigil": "PowTwoBitLif",
-      "module": "PowerTwoBitLift.lean",
+      "module": "Erdos249257/PowerTwoBitLift.lean",
       "path": "Erdos249257/PowerTwoBitLift.lean"
     },
     {
       "sigil": "PowTwoCenBitLif",
-      "module": "PowerTwoCenteredBitLift.lean",
+      "module": "Erdos249257/PowerTwoCenteredBitLift.lean",
       "path": "Erdos249257/PowerTwoCenteredBitLift.lean"
     },
     {
       "sigil": "PriDetLif",
-      "module": "PrimitiveDeterminantLift.lean",
+      "module": "Erdos249257/PrimitiveDeterminantLift.lean",
       "path": "Erdos249257/PrimitiveDeterminantLift.lean"
     },
     {
       "sigil": "PriWeiCer",
-      "module": "PrimitiveWeightCertificate.lean",
+      "module": "Erdos249257/PrimitiveWeightCertificate.lean",
       "path": "Erdos249257/PrimitiveWeightCertificate.lean"
     },
     {
       "sigil": "RatSupCarSke",
-      "module": "RationalSupportCarrySkeleton.lean",
+      "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
       "path": "Erdos249257/RationalSupportCarrySkeleton.lean"
     },
     {
       "sigil": "ResGauObs",
-      "module": "ResidualGaugeObstruction.lean",
+      "module": "Erdos249257/ResidualGaugeObstruction.lean",
       "path": "Erdos249257/ResidualGaugeObstruction.lean"
     },
     {
       "sigil": "RewBouPaiCou",
-      "module": "RewindBoundaryPairCounterexample.lean",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
       "path": "Erdos249257/RewindBoundaryPairCounterexample.lean"
     },
     {
       "sigil": "RewHalDivAda",
-      "module": "RewindHalfDivisorAdapter.lean",
+      "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
       "path": "Erdos249257/RewindHalfDivisorAdapter.lean"
     },
     {
       "sigil": "RewSeaOpeBri",
-      "module": "RewindSeamOperationalBridge.lean",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
       "path": "Erdos249257/RewindSeamOperationalBridge.lean"
     },
     {
       "sigil": "SelSufCyl",
-      "module": "SelectedSuffixCylinder.lean",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
       "path": "Erdos249257/SelectedSuffixCylinder.lean"
     },
     {
       "sigil": "SelSufCylPreFee",
-      "module": "SelectedSuffixCylinderPreFeedback.lean",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
       "path": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean"
     },
     {
       "sigil": "SigQMomObs",
-      "module": "SignedQMomentObstruction.lean",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
       "path": "Erdos249257/SignedQMomentObstruction.lean"
     },
     {
       "sigil": "SquCRTCub",
-      "module": "SquareCRTCube.lean",
+      "module": "Erdos249257/SquareCRTCube.lean",
       "path": "Erdos249257/SquareCRTCube.lean"
     },
     {
       "sigil": "SquMerDiaEnc",
-      "module": "SquaredMersenneDiagonalEnclosure.lean",
+      "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
       "path": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean"
     },
     {
       "sigil": "SteBroRunGeo",
-      "module": "SternBrocotRunGeometry.lean",
+      "module": "Erdos249257/SternBrocotRunGeometry.lean",
       "path": "Erdos249257/SternBrocotRunGeometry.lean"
     },
     {
       "sigil": "SubDivCov",
-      "module": "SublogDivisorCoverage.lean",
+      "module": "Erdos249257/SublogDivisorCoverage.lean",
       "path": "Erdos249257/SublogDivisorCoverage.lean"
     },
     {
       "sigil": "SufCylGloPro",
-      "module": "SuffixCylinderGlobalProducer.lean",
+      "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
       "path": "Erdos249257/SuffixCylinderGlobalProducer.lean"
     },
     {
       "sigil": "SufCylInStr",
-      "module": "SuffixCylinderInStrip.lean",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
       "path": "Erdos249257/SuffixCylinderInStrip.lean"
     },
     {
       "sigil": "SufCylProAutSte",
-      "module": "SuffixCylinderProfiledAutoStep.lean",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
       "path": "Erdos249257/SuffixCylinderProfiledAutoStep.lean"
     },
     {
       "sigil": "SufCylProGap",
-      "module": "SuffixCylinderProfiledGap.lean",
+      "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
       "path": "Erdos249257/SuffixCylinderProfiledGap.lean"
     },
     {
       "sigil": "SufCylProSwa",
-      "module": "SuffixCylinderProfiledSwallow.lean",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
       "path": "Erdos249257/SuffixCylinderProfiledSwallow.lean"
     },
     {
       "sigil": "SufCylSta",
-      "module": "SuffixCylinderStage51.lean",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
       "path": "Erdos249257/SuffixCylinderStage51.lean"
     },
     {
       "sigil": "SufCylTerOnlBri",
-      "module": "SuffixCylinderTerminalOnlyBridge.lean",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
       "path": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean"
     },
     {
       "sigil": "SufCylThr",
-      "module": "SuffixCylinderThreshold.lean",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
       "path": "Erdos249257/SuffixCylinderThreshold.lean"
     },
     {
       "sigil": "SupSunDic",
-      "module": "SupportSunflowerDichotomy.lean",
+      "module": "Erdos249257/SupportSunflowerDichotomy.lean",
       "path": "Erdos249257/SupportSunflowerDichotomy.lean"
     },
     {
       "sigil": "TerOnlCof",
-      "module": "TerminalOnlyCofinal.lean",
+      "module": "Erdos249257/TerminalOnlyCofinal.lean",
       "path": "Erdos249257/TerminalOnlyCofinal.lean"
     },
     {
       "sigil": "TerOnlScaVan",
-      "module": "TerminalOnlyScaledVanishing.lean",
+      "module": "Erdos249257/TerminalOnlyScaledVanishing.lean",
       "path": "Erdos249257/TerminalOnlyScaledVanishing.lean"
     },
     {
       "sigil": "TotParSocCei",
-      "module": "Totient827ParitySocketCeiling.lean",
+      "module": "Erdos249257/Totient827ParitySocketCeiling.lean",
       "path": "Erdos249257/Totient827ParitySocketCeiling.lean"
     },
     {
+      "sigil": "TotActLcmOrbNon",
+      "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+      "path": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean"
+    },
+    {
+      "sigil": "TotActLcmOrbSep",
+      "module": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+      "path": "Erdos249257/TotientActualLcmOrbitSeparation.lean"
+    },
+    {
       "sigil": "TotActLcmOrbSig",
-      "module": "TotientActualLcmOrbitSign.lean",
+      "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
       "path": "Erdos249257/TotientActualLcmOrbitSign.lean"
     },
     {
+      "sigil": "TotActLcmShoKil",
+      "module": "Erdos249257/TotientActualLcmShortKill.lean",
+      "path": "Erdos249257/TotientActualLcmShortKill.lean"
+    },
+    {
+      "sigil": "TotActLcmTopEdgSta",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "path": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean"
+    },
+    {
       "sigil": "TotCarKerRig",
-      "module": "TotientCarryKernelRigidity.lean",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
       "path": "Erdos249257/TotientCarryKernelRigidity.lean"
     },
     {
+      "sigil": "TotKerCon",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "path": "Erdos249257/TotientKernelConditional.lean"
+    },
+    {
+      "sigil": "TotKerInd",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "path": "Erdos249257/TotientKernelIndex.lean"
+    },
+    {
+      "sigil": "TotKerRed",
+      "module": "Erdos249257/TotientKernelReduction.lean",
+      "path": "Erdos249257/TotientKernelReduction.lean"
+    },
+    {
       "sigil": "TotMahDef",
-      "module": "TotientMahlerDefect.lean",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
       "path": "Erdos249257/TotientMahlerDefect.lean"
     },
     {
       "sigil": "TotTaiCarPer",
-      "module": "TotientTailCarryPeriod.lean",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
       "path": "Erdos249257/TotientTailCarryPeriod.lean"
     },
     {
       "sigil": "TotTaiPerKil",
-      "module": "TotientTailPeriodKiller.lean",
+      "module": "Erdos249257/TotientTailPeriodKiller.lean",
       "path": "Erdos249257/TotientTailPeriodKiller.lean"
+    },
+    {
+      "sigil": "TroCurCar",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "path": "Erdos249257/TropicalCurvatureCarry.lean"
+    },
+    {
+      "sigil": "CloT64",
+      "module": "ErdosProblems/DiagonalPincerPrimeCertificates/ClosureT64.lean",
+      "path": "ErdosProblems/DiagonalPincerPrimeCertificates/ClosureT64.lean"
+    },
+    {
+      "sigil": "CycAncKil",
+      "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "path": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean"
+    },
+    {
+      "sigil": "FinEulSie",
+      "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "path": "ErdosProblems/Erdos249/FiniteEulerSieve.lean"
+    },
+    {
+      "sigil": "PerMulEsc",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "path": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
+    },
+    {
+      "sigil": "PriRayCycCur",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean"
+    },
+    {
+      "sigil": "RanOneSubObs",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "path": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean"
+    },
+    {
+      "sigil": "TotStrPriEsc",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
+    },
+    {
+      "sigil": "PriGapDyaTai",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+    },
+    {
+      "sigil": "LadT67",
+      "module": "ErdosProblems/Skip/LadderT67.lean",
+      "path": "ErdosProblems/Skip/LadderT67.lean"
     }
   ],
   "validation": "python3 scripts/build_paper_module_aliases.py --check"

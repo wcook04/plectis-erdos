@@ -14,12 +14,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = ROOT / "paper"
+# Keep the gateway paper and the source-current #249/#251 problem notes in the
+# same source census.  The notes carry exact problem-specific routes while the
+# gateway carries the shared public spine.
 PAPERS = (
     PAPER_DIR / "erdos249-257-main-paper.tex",
+    PAPER_DIR / "erdos-249-binary-totient-series.tex",
+    PAPER_DIR / "erdos-251-prime-gap-dyadic-series.tex",
 )
 OUTPUT = PAPER_DIR / "module-aliases.tex"
 JSON_OUTPUT = PAPER_DIR / "module-aliases.json"
-LINK_RE = re.compile(r"\\(?:lrefx?|lloc|lword)\{([^}]+\.lean)\}")
+# `mword` is the compact paper-note source-link macro used alongside the
+# `lword`/`lref` family.  Keep all source-link macros in the same alias census
+# so a module linked from a paper note receives the same canonical sigil.
+LINK_RE = re.compile(r"\\(?:lrefx?|lloc|lword|mword)\{([^}]+\.lean)\}")
 
 
 def camel_components(stem: str) -> list[str]:
@@ -32,9 +40,18 @@ def camel_components(stem: str) -> list[str]:
     return components
 
 
+def canonical_module_path(module: str) -> str:
+    """Resolve paper shorthand to the repository path used by the atlas."""
+    if module.startswith(("Erdos249257/", "ErdosProblems/")):
+        return module
+    if "/" in module:
+        return f"ErdosProblems/{module}"
+    return f"Erdos249257/{module}"
+
+
 def module_alias(module: str) -> str:
     """Use up to the first three characters of every CamelCase component."""
-    stem = module.removesuffix(".lean")
+    stem = Path(module).stem
     return "".join(component if len(component) <= 3 else component[:3]
                    for component in camel_components(stem))
 
@@ -42,7 +59,10 @@ def module_alias(module: str) -> str:
 def referenced_modules() -> list[str]:
     modules: set[str] = set()
     for paper in PAPERS:
-        modules.update(LINK_RE.findall(paper.read_text(encoding="utf-8")))
+        modules.update(
+            canonical_module_path(module)
+            for module in LINK_RE.findall(paper.read_text(encoding="utf-8"))
+        )
     return sorted(modules)
 
 
@@ -88,7 +108,7 @@ def render_json(aliases: dict[str, str]) -> str:
             {
                 "sigil": alias,
                 "module": module,
-                "path": f"Erdos249257/{module}",
+                "path": module,
             }
             for module, alias in aliases.items()
         ],

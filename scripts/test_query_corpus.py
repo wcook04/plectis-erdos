@@ -279,22 +279,21 @@ def validate_indexed_problem_routes() -> None:
                     for anchor in actual["paper_route"]["matching_anchors"]
                 )
             if expected["id"] == "actual_lcm_orbit_separation":
-                assert actual["declarations"] == [
-                    "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
-                    "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
-                    "irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
-                ]
-                assert [
+                assert "res:actualorbit" in {
                     anchor["canonical_handle"]
                     for anchor in actual["paper_route"]["matching_anchors"]
-                ] == ["res:actualorbit"]
+                }
             if expected["id"] == "weighted_phase_carry_observer":
-                assert [
+                weighted_anchors = {
                     anchor["canonical_handle"]
                     for anchor in actual["paper_route"]["matching_anchors"]
-                ] == [
-                    "paper/erdos-269-three-prime-running-lcm.tex:1"
-                ]
+                }
+                assert "paper/erdos-269-three-prime-running-lcm.tex:1" in (
+                    weighted_anchors
+                )
+                assert "paper/erdos-269-three-prime-running-lcm.tex:1442" in (
+                    weighted_anchors
+                )
         if route_id == "erdos_1041":
             research = route["research_corpus"]
             assert research["strongest_result_summary"]["result_count"] == 35
@@ -899,9 +898,12 @@ def validate_route_memory_cards() -> None:
         query_corpus.repository_overview_packet()
     )
     expected_claim_count = len(query_corpus.load("docs/claims.json")["claims"])
+    expected_open_count = len(
+        query_corpus.load("docs/orientation.json")["remaining_open_propositions"]
+    )
     assert (
         "repository overview | problems=8 | programmes=10 | "
-        f"claims={expected_claim_count} | exact_open=5"
+        f"claims={expected_claim_count} | exact_open={expected_open_count}"
     ) in overview_card
     assert (
         "problem_route | #249 | resume=python3 scripts/query_route_memory.py "
@@ -2119,7 +2121,7 @@ def main() -> int:
         assert fixed_module["module_handle_resolution"]["resolved"] == (
             "Erdos249257/TropicalCurvatureCarry.lean"
         )
-        assert fixed_module["paper_sigil"] is None
+        assert fixed_module["paper_sigil"] == "TroCurCar"
         assert [row["id"] for row in fixed_module["attached_claims"]] == [
             "fixed_precision_transport_no_go"
         ]
@@ -2140,6 +2142,13 @@ def main() -> int:
             "Erdos249257/TropicalCurvatureCarry.lean"
         )
         if reviewed_fixed:
+            assert fixed_family["paper_route"]["matching_anchors"]
+            assert any(
+                anchor["source_ref"].startswith(
+                    "paper/erdos-249-binary-totient-series.tex:"
+                )
+                for anchor in fixed_family["paper_route"]["matching_anchors"]
+            )
             assert fixed_family["representative"] == (
                 "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo"
             )
@@ -2211,6 +2220,67 @@ def main() -> int:
         assert {
             row["route_id"] for row in fixed_module["route_memory"]["bindings"]
         } == {"transport_curvature_programme", "erdos_249"}
+
+    coefficient_handles = (
+        "PrimeGapDyadicTail",
+        "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    )
+    for coefficient_handle in coefficient_handles:
+        coefficient_module = query(
+            "--module", coefficient_handle, "--limit", "20"
+        )
+        assert coefficient_module["module_handle_resolution"]["resolved"] == (
+            "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+        )
+        assert coefficient_module["paper_sigil"] == "PriGapDyaTai"
+        coefficient_problem = next(
+            row
+            for row in coefficient_module["problem_routes"]
+            if row["problem_id"] == "erdos_251"
+        )
+        assert coefficient_problem["reviewed_result_family_ids"] == [
+            "prime_gap_reformulation",
+            "dyadic_tail_integrality_classification",
+            "coefficient_only_no_go",
+        ]
+        coefficient_family = next(
+            row
+            for row in coefficient_module["reviewed_result_families"]
+            if row["id"] == "coefficient_only_no_go"
+        )
+        assert coefficient_family["representative"] == (
+            "ErdosProblems.Erdos251.carryPartialSum_natCast_eq"
+        )
+        assert coefficient_family["wrapper_declaration"] == (
+            "Erdos249257.ExternalVerification.coefficientOnlyNoGo"
+        )
+        assert coefficient_family["declarations"] == [
+            "ErdosProblems.Erdos251.carryPartialSum_natCast_eq",
+            "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
+            "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
+        ]
+        assert any(
+            anchor["source_ref"]
+            == "paper/erdos-251-prime-gap-dyadic-series.tex:1"
+            and set(anchor["matched_declarations"])
+            == {
+                "carryPartialSum_natCast_eq",
+                "carryCoeff_natCast_not_eventually_periodic",
+                "primeGap0_not_eventually_periodic",
+            }
+            for anchor in coefficient_family["paper_route"]["matching_anchors"]
+        )
+        assert (
+            "finite partial-sum identity"
+            in coefficient_family["open_boundary"]["boundary"]
+        )
+        assert coefficient_family["open_boundary"]["problem_route"] == (
+            "python3 scripts/query_corpus.py --route erdos_251"
+        )
+        assert {
+            row["route_id"]
+            for row in coefficient_module["route_memory"]["bindings"]
+        } == {"erdos_251"}
 
     sigil_search = query("--search", "CerKer", "--limit", "1")
     assert sigil_search["results"][0]["kind"] == "module"

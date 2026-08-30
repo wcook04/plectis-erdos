@@ -29,9 +29,9 @@ MAX_SEMANTIC_CELLS = 4
 OUTPUT_BUDGET_BYTES = 64_000
 AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
 # The tour carries the complete reviewed result-family index as well as the
-# problem map.  The old allowance was sized before the canonical eight-problem
-# and 47-family census, so it rejected a complete, non-truncated tour.
-AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 5_000
+# problem map.  The allowance scales with the canonical eight-problem and
+# reviewed-family census so it does not reject a complete, non-truncated tour.
+AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 5_100
 SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/2"
@@ -2179,6 +2179,28 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                     }
                 )
 
+            # A dedicated note can put an exact source-linked explanation in
+            # an unlabelled subsection or paragraph.  Keep those starts
+            # available for the source-ref fallback below; they are admitted
+            # only when their own region contains an authored source link.
+            labelled_offsets = {start["offset"] for start in starts}
+            unlabeled_pattern = re.compile(
+                r"\\(?P<kind>section|subsection|subsubsection|paragraph)"
+                r"\{(?P<title>[^\n}]*)\}"
+            )
+            for match in unlabeled_pattern.finditer(text):
+                if match.start() in labelled_offsets:
+                    continue
+                starts.append(
+                    {
+                        "offset": match.start(),
+                        "anchor_kind": match.group("kind"),
+                        "title": match.group("title"),
+                        "label": None,
+                        "environment": None,
+                    }
+                )
+
         if environments:
             environment_pattern = re.compile(
                 r"\\begin\{(?P<environment>"
@@ -2231,13 +2253,28 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         starts.sort(key=lambda row: row["offset"])
         for index, start in enumerate(starts):
             label_allowlist = paper_row.get("anchor_label_allowlist")
+            region_end = starts[index + 1]["offset"] if index + 1 < len(starts) else len(text)
+            region = text[start["offset"]:region_end]
+            source_link_pattern = (
+                r"\\(?P<macro>lref|lrefx|lword|mref|mword|lloc|mloc)"
+                r"\{(?P<file>[^}]+)\}\{(?P<line>\d+)\}\s*"
+                r"(?:\{(?P<name>[^}]*)\})?\s*"
+                r"(?:\{(?P<label>(?:[^{}]|\{[^{}]*\})*)\})?"
+            )
+            has_source_links = re.search(source_link_pattern, region) is not None
+            source_ref_fallback = (
+                label_allowlist is not None
+                and has_source_links
+                and start["label"] not in label_allowlist
+            )
             # Dedicated notes may allowlist only their selected result labels,
             # but labelled appendix sections remain canonical structural
             # anchors.  In particular, the formal-source appendix can contain
             # the exact \\lref/\\lword declaration links for a family whose
-            # result prose has no separately labelled theorem environment.
-            # Hiding that appendix would make a declaration-bearing family
-            # appear to have no paper return route.
+            # result prose has no separately labelled theorem environment.  A
+            # labelled section with an authored source link is the same kind
+            # of exact return surface: hiding it would make a declaration-
+            # bearing family appear to have no paper route.
             is_structural_navigation = start["anchor_kind"] == "preamble" or (
                 start["anchor_kind"] in {
                     "section",
@@ -2245,8 +2282,16 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                     "subsubsection",
                     "paragraph",
                 }
-                and isinstance(start["label"], str)
-                and start["label"].startswith("app:")
+                and (
+                    source_ref_fallback
+                    or (
+                        isinstance(start["label"], str)
+                        and start["label"].startswith("app:")
+                    )
+                )
+            ) or (
+                start["anchor_kind"] == "formal_environment"
+                and source_ref_fallback
             )
             if (
                 label_allowlist is not None
@@ -2254,12 +2299,26 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 and not is_structural_navigation
             ):
                 continue
-            region_end = starts[index + 1]["offset"] if index + 1 < len(starts) else len(text)
-            region = text[start["offset"]:region_end]
             line = text.count("\n", 0, start["offset"]) + 1
-            label = start["label"]
+            source_ref_fallback = source_ref_fallback or (
+                label_allowlist is not None
+                and is_structural_navigation
+                and start["label"] not in label_allowlist
+            )
+            original_label = start["label"]
+            # A source-linked fallback is a stable coordinate, not a newly
+            # registered paper label.  Dedicated notes can reuse labels from
+            # other papers (for example ``res:rank``); keeping the TeX label
+            # here would make the global label index ambiguous.  The exact
+            # source coordinate remains queryable through canonical_handle.
+            label = None if source_ref_fallback else original_label
             source_ref = f"{relative}:{line}"
-            attached_claims = sorted(claims_by_label.get(label, []), key=lambda row: row["id"])
+            attached_claims = sorted(
+                claims_by_label.get(original_label, [])
+                if not source_ref_fallback
+                else [],
+                key=lambda row: row["id"],
+            )
             open_proposition = open_by_anchor.get(
                 (relative, start["environment"], start["title"])
             )
@@ -2274,13 +2333,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 anchor_class = "section_navigation_anchor"
 
             source_links = []
-            for link in re.finditer(
-                r"\\(?P<macro>lref|lrefx|lword|mref|mword|lloc|mloc)"
-                r"\{(?P<file>[^}]+)\}\{(?P<line>\d+)\}"
-                r"(?:\{(?P<name>[^}]*)\})?"
-                r"(?:\{(?P<label>(?:[^{}]|\{[^{}]*\})*)\})?",
-                region,
-            ):
+            for link in re.finditer(source_link_pattern, region):
                 file_name = link.group("file")
                 macro = link.group("macro")
                 if file_name.startswith("Erdos249257/"):
@@ -3432,6 +3485,14 @@ def reviewed_result_family_module_routes(
             ]
             if not matching_source_rows:
                 continue
+            representative_source_row = next(
+                (
+                    row
+                    for row in matching_source_rows
+                    if row.get("id") == family["id"]
+                ),
+                matching_source_rows[0],
+            )
             declarations = [
                 str(declaration)
                 for declaration in family.get("declarations", [])
@@ -3470,10 +3531,10 @@ def reviewed_result_family_module_routes(
                     "problem_id": problem["problem_id"],
                     "erdos_number": problem["erdos_number"],
                     "source_route": module_path,
-                    "representative": matching_source_rows[0].get(
+                    "representative": representative_source_row.get(
                         "original_declaration"
                     ),
-                    "wrapper_declaration": matching_source_rows[0].get(
+                    "wrapper_declaration": representative_source_row.get(
                         "wrapper_declaration"
                     ),
                     "contribution_class": family.get("contribution_class"),
@@ -7820,8 +7881,8 @@ def agent_tour_packet() -> dict[str, Any]:
         "budget_contract": {
             "maximum_encoded_bytes": agent_tour_budget_bytes(len(problems)),
             "policy": (
-                "18000 base bytes plus 5000 bytes per canonically indexed "
-                "problem; eight problems currently yield a 58000-byte ceiling"
+                "18000 base bytes plus 5100 bytes per canonically indexed "
+                "problem; eight problems currently yield a 58800-byte ceiling"
             ),
             "reason": (
                 "The registry map is material first-contact context. Its budget "
