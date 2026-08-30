@@ -112,6 +112,31 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn('toolchain install "$(tr -d \'\\r\\n\' < lean-toolchain)"', setup)
         self.assertIn('echo "$HOME/.elan/bin" >> "$GITHUB_PATH"', setup)
 
+    def test_cache_warm_installs_lean_from_the_same_checksum_verified_source(self) -> None:
+        lean_workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        warm_workflow = (
+            fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
+        ).read_text(encoding="utf-8")
+        lean_setup = lean_workflow[
+            lean_workflow.index("- name: Install pinned Lean toolchain") :
+            lean_workflow.index("- name: Memory-bounded Lean build")
+        ]
+        warm_setup = warm_workflow[
+            warm_workflow.index("- name: Install pinned Lean toolchain") :
+            warm_workflow.index("- name: Fetch pinned dependency build artifacts")
+        ]
+
+        for marker in (
+            "ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/",
+            "ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2",
+            "sha256sum --check -",
+            'toolchain install "$(tr -d \'\\r\\n\' < lean-toolchain)"',
+        ):
+            self.assertIn(marker, lean_setup)
+            self.assertIn(marker, warm_setup)
+
     def test_ci_fetches_dependency_artifacts_before_the_bounded_build(self) -> None:
         # A cold Actions cache must not fall through to compiling Mathlib from
         # source: that cannot finish inside the runner job ceiling, so the
