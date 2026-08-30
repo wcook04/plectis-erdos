@@ -298,6 +298,19 @@ first-harmonic estimate, so #249 remains open.  The former one-sided companion
 is retired; its checked declarations remain queryable through the claim
 registry and source map.
 
+The finite factor-ideal result is one claim inside the reviewed
+`transport_strategy_no_go_boundaries` family, alongside the fixed-precision
+obstruction.  Retrieve that family with
+`python3 scripts/query_corpus.py --publication-family transport_strategy_no_go_boundaries`, or inspect the factor-ideal claim with
+`python3 scripts/query_corpus.py --claim lcm_factor_ideal_anchor_pulse_no_go`.
+Its exact formal anchors are
+[`lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient`](../Erdos249257/LcmFactorIdealPulseObstruction.lean#L798),
+[`lcm_factorIdeal_sparseAnchor_not_sufficient`](../Erdos249257/LcmFactorIdealPulseObstruction.lean#L866),
+and [`lcmAnchorPulse_t3_letters`](../Erdos249257/LcmFactorIdealPulseObstruction.lean#L895).
+The family remains a synthetic survivor: its forcing letters need not be
+actual totient differences, nonlinear fresh-divisor arguments remain outside
+the result, and no unbounded certificate supply follows.
+
 ## Source-current #1041 frontier (not a wave)
 
 The public #1041 research corpus is a dated source projection, not a new Lean
