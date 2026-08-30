@@ -12302,11 +12302,16 @@
           },
           {
             "id": "negative_mass_recovery",
-            "contribution_class": "conditional reduction",
-            "summary": "Finite normalised negative mass forces eventual zero and hence the Sylvester recurrence.",
+            "contribution_class": "conditional analytic recovery criterion; novelty unassessed",
+            "summary": "Under exact reciprocal-tail C/D dynamics, positive tail, the strict centered-step equation, and division-free normalized vanishing, summability of the normalized negative centered mass forces centeredState to vanish eventually and recovers the Sylvester recurrence. The load-bearing theorem is supported by the exact tail-growth bound and the finite-negative-mass stabilization theorem.",
             "evidence_mode": "Lean kernel",
-            "comparator_disposition": "not_selected_deep_state_vocabulary",
-            "boundary": "Summability of the negative mass is unproved for the original problem."
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "ErdosProblems.Erdos243.tail_growth_le_one_add_negativeRelativeMass",
+              "ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass",
+              "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+            ],
+            "boundary": "The exact criterion assumes a, D : ℕ → ℤ and C : ℕ → ℕ with the declared next-denominator and next-tail dynamics, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable (negativeRelativeMass C (fun n ↦ centeredState (a n) (D n) (C n))). It does not prove these hypotheses for the original Erdős #243 orbit, supply a prime-specific producer, or establish an unconditional #243 endpoint or reciprocal-tail irrationality. Any surviving canonical orbit must have divergent normalized negative mass. This is distinct from centered_state_dynamics, whose recovery criterion uses a uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
           }
         ]
       },
