@@ -2633,6 +2633,38 @@ def module_route_memory_projection(
     return projection
 
 
+def module_problem_routes(
+    module_path: str, problems: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Bind an exact indexed module path back to its problem-owned route."""
+    routes = []
+    for problem in problems:
+        modules = problem.get("modules", [])
+        if not any(
+            isinstance(module, Mapping) and module.get("path") == module_path
+            for module in modules
+        ):
+            continue
+        obligations = problem.get("open_obligations", [])
+        routes.append(
+            {
+                "problem_id": problem["problem_id"],
+                "erdos_number": problem["erdos_number"],
+                "command": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"{problem['problem_id']}"
+                ),
+                "paper_source": problem.get("paper", {}).get("source"),
+                "open_obligation_ids": [
+                    item["id"]
+                    for item in obligations
+                    if isinstance(item, Mapping) and isinstance(item.get("id"), str)
+                ],
+            }
+        )
+    return routes
+
+
 def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     matches = declaration_rows_for_handle(name)
     if not matches:
@@ -3198,6 +3230,9 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         claims,
     )
     module_route_memory = module_route_memory_projection(declarations, claims)
+    problem_routes = module_problem_routes(
+        module["path"], load("docs/problems.json").get("problems", [])
+    )
     return {
         "kind": "module",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
@@ -3208,6 +3243,16 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
         ),
         "attached_claims": claim_rows,
         "declaration_preview": declaration_preview,
+        "problem_routes": problem_routes,
+        "problem_route_contract": {
+            "source": "docs/problems.json::problems[].modules",
+            "matching": "exact indexed module path",
+            "boundary": (
+                "Problem routes are navigation context; they expand the paper, "
+                "families, declarations, sources, and exact open obligations "
+                "without promoting a claim or replacing Lean authority."
+            ),
+        },
         "route_memory": module_route_memory,
         "declaration_preview_receipt": {
             "total": len(declarations),
