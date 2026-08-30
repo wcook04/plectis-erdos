@@ -305,6 +305,37 @@ def rationalBaseClearedTailQ
     (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
 
+/-! ## Rectangular Hermite--Padé threshold comparison -/
+
+/-- Quadratic Archimedean decay expression in the explicit rectangular
+Hermite--Padé exponent model. -/
+noncomputable def hpDecay (rho sigma : ℝ) : ℝ :=
+  (1 + rho ^ 2) / 2 + sigma
+
+/-- Homogeneous polynomial-width expression in the explicit rectangular
+Hermite--Padé exponent model. -/
+noncomputable def hpHeight (rho sigma : ℝ) : ℝ :=
+  (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
+
+/-- Cyclotomic denominator-saving expression in the explicit exponent model. -/
+noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ :=
+  3 * sigma ^ 2 / Real.pi ^ 2
+
+/-- Rational-base height threshold associated with the explicit rectangular
+two-function exponent model. -/
+noncomputable def hpThreshold (rho sigma : ℝ) : ℝ :=
+  (hpDecay rho sigma - hpCyclotomicSaving sigma) /
+    (hpHeight rho sigma + hpDecay rho sigma)
+
+/-- Denominator-cleared difference from the classical one-function threshold.
+
+This is the load-bearing polynomial gap whose sign and unique zero transport
+to the threshold comparison.  The interface deliberately records only this
+explicit model, not a universal Hermite--Padé theorem. -/
+noncomputable def hpClearedGap (rho sigma : ℝ) : ℝ :=
+  (Real.pi ^ 2 + 2) * hpDecay rho sigma - 6 * sigma ^ 2 -
+    (Real.pi ^ 2 - 2) * hpHeight rho sigma
+
 /-! ## Stern--Brocot run stability -/
 
 /-- The direction-free continuant state at alternating run boundaries. -/
@@ -855,5 +886,18 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       rationalBaseClearedTailQ r s B F coeff (N + 1) =
         r * rationalBaseClearedTailQ r s B F coeff N -
           B * coeff (N + 1) * s ^ (N + 1)
+  problem1049RectangularHpGapNonpos :
+    ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
+      hpClearedGap rho sigma ≤ 0
+  problem1049RectangularHpGapEqZeroIff :
+    ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
+      (hpClearedGap rho sigma = 0 ↔ rho = 0 ∧ sigma = 1)
+  problem1049RectangularHpThresholdLeClassical :
+    ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
+      hpThreshold rho sigma ≤ 1 / 2 - 1 / Real.pi ^ 2
+  problem1049RectangularHpThresholdEqClassicalIff :
+    ∀ (rho sigma : ℝ), 0 ≤ rho → 1 + rho ≤ sigma →
+      (hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
+        rho = 0 ∧ sigma = 1)
 
 end Erdos249257.ExternalVerification

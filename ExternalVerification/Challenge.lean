@@ -396,4 +396,27 @@ theorem rationalBaseClearedTailQ_succ
         B * coeff (N + 1) * s ^ (N + 1) :=
   (portfolioClaims Unit).problem1049Recurrence hr N
 
+theorem rectangular_hp_cleared_gap_nonpos
+    (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpClearedGap rho sigma ≤ 0 :=
+  (portfolioClaims Unit).problem1049RectangularHpGapNonpos rho sigma hrho hsigma
+
+theorem rectangular_hp_cleared_gap_eq_zero_iff
+    (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpClearedGap rho sigma = 0 ↔ rho = 0 ∧ sigma = 1 :=
+  (portfolioClaims Unit).problem1049RectangularHpGapEqZeroIff rho sigma hrho hsigma
+
+theorem rectangular_hp_threshold_le_classical
+    (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpThreshold rho sigma ≤ 1 / 2 - 1 / Real.pi ^ 2 :=
+  (portfolioClaims Unit).problem1049RectangularHpThresholdLeClassical rho sigma
+    hrho hsigma
+
+theorem rectangular_hp_threshold_eq_classical_iff
+    (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
+      rho = 0 ∧ sigma = 1 :=
+  (portfolioClaims Unit).problem1049RectangularHpThresholdEqClassicalIff rho sigma
+    hrho hsigma
+
 end Erdos249257.ExternalVerification

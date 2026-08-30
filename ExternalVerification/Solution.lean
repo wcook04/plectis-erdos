@@ -25,6 +25,7 @@ import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 import ErdosProblems.Erdos1049.RationalBaseLambert
+import ErdosProblems.Erdos1049.HermitePadeNoGo
 
 /-!
 # Solutions for the external Comparator packet
@@ -594,6 +595,36 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos1049.rationalBasePrefixQ] using
       ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ
         (r := r) (s := s) (B := B) (F := F) (coeff := coeff) hr N
+  · intro rho sigma hrho hsigma
+    simpa [hpClearedGap, hpDecay, hpHeight, hpCyclotomicSaving,
+      ErdosProblems.Erdos1049.hpClearedGap,
+      ErdosProblems.Erdos1049.hpDecay,
+      ErdosProblems.Erdos1049.hpHeight,
+      ErdosProblems.Erdos1049.hpCyclotomicSaving] using
+      ErdosProblems.Erdos1049.hpClearedGap_nonpos rho sigma hrho hsigma
+  · intro rho sigma hrho hsigma
+    simpa [hpClearedGap, hpDecay, hpHeight, hpCyclotomicSaving,
+      ErdosProblems.Erdos1049.hpClearedGap,
+      ErdosProblems.Erdos1049.hpDecay,
+      ErdosProblems.Erdos1049.hpHeight,
+      ErdosProblems.Erdos1049.hpCyclotomicSaving] using
+      ErdosProblems.Erdos1049.hpClearedGap_eq_zero_iff rho sigma hrho hsigma
+  · intro rho sigma hrho hsigma
+    simpa [hpThreshold, hpDecay, hpHeight, hpCyclotomicSaving,
+      ErdosProblems.Erdos1049.hpThreshold,
+      ErdosProblems.Erdos1049.hpDecay,
+      ErdosProblems.Erdos1049.hpHeight,
+      ErdosProblems.Erdos1049.hpCyclotomicSaving] using
+      ErdosProblems.Erdos1049.rectangular_hp_threshold_le_classical rho sigma
+        hrho hsigma
+  · intro rho sigma hrho hsigma
+    simpa [hpThreshold, hpDecay, hpHeight, hpCyclotomicSaving,
+      ErdosProblems.Erdos1049.hpThreshold,
+      ErdosProblems.Erdos1049.hpDecay,
+      ErdosProblems.Erdos1049.hpHeight,
+      ErdosProblems.Erdos1049.hpCyclotomicSaving] using
+      ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff rho sigma
+        hrho hsigma
 
 theorem irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses :
     Irrational factorialGapSeries ↔
