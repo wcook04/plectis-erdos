@@ -128,6 +128,9 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
         and row["relation_class"] == "natural_friction"
         for row in small_mismatch["relations"]
     )
+    assert "does not prove the supply or actual smallness" in small_mismatch[
+        "family"
+    ]["open_boundary"]
 
     assert carry_escape["family"]["family_id"] == "conditional_carry_escape"
     assert carry_escape["family"]["proof_status"] == (
@@ -142,6 +145,22 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
         "finite_realisedSpan_of_factorisation"
     )
     assert "actual three-prime running-LCM" in carry_escape["family"]["open_boundary"]
+    assert "cofinal local-window escape producer" in carry_escape["family"][
+        "open_boundary"
+    ]
+
+    # Relation-array order is not a hierarchy: canonical programme positions
+    # determine the emitted peer order even when the input array is reversed.
+    palomar = handoffs.load_json(handoffs.PALOMAR)
+    claims = handoffs._claim_family_rows(handoffs.load_json(handoffs.CLAIMS))
+    ranks = handoffs._canonical_family_ranks(palomar)
+    reversed_palomar = deepcopy(palomar)
+    reversed_palomar["selection_contract"]["family_relations"].reverse()
+    assert handoffs._family_hierarchy(
+        "conditional_carry_escape", ranks, palomar, claims
+    ) == handoffs._family_hierarchy(
+        "conditional_carry_escape", ranks, reversed_palomar, claims
+    )
 
 
 def test_strict_prime_successor_is_support_only() -> None:
@@ -151,20 +170,46 @@ def test_strict_prime_successor_is_support_only() -> None:
         if row["id"] == "XQ249-adjacent-phase-separation"
     )
     supports = handoffs.source_current_supports(question)
-    assert len(supports) == 1
-    support = supports[0]
-    assert support["relation"] == "support"
-    assert support["relation_class"] == "existing_family_support_only"
-    assert support["family_id"] == "strict_prime_tail_orbit_gap"
-    assert support["source_declaration"] == (
-        "ErdosProblems.Erdos249.tailOrbitFirstExp_succ"
-    )
-    assert support["source"] == {
-        "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-        "line": 167,
-    }
-    assert "neither adds a route family" in support["support_boundary"]
-    assert "cofinal natural-prime strict-gap" in support["open_boundary"]
+    assert [support["source_declaration"] for support in supports] == [
+        "ErdosProblems.Erdos249.tailOrbitFirstExp_succ",
+        "ErdosProblems.Erdos249.tailOrbitFirstExp_add",
+        "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+        "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+    ]
+    assert [support["evidence_kind"] for support in supports] == [
+        "one_step_squaring",
+        "all_times_squaring_orbit",
+        "initial_phase_equivalence",
+        "dyadic_root_obstruction",
+    ]
+    assert [support["relation"] for support in supports] == [
+        "support",
+        "support",
+        "support",
+        "contrary_evidence",
+    ]
+    assert supports[-1]["relation_class"] == "existing_family_contrary_evidence"
+    for support in supports:
+        assert support["family_id"] == "strict_prime_tail_orbit_gap"
+        assert support["proof_status"] == "conditional reduction"
+        assert support["source"]["module"] == (
+            "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
+        )
+        assert support["hard_mechanism"]
+        assert "cofinal natural-prime strict-gap" in support[
+            "natural_friction_evidence"
+        ]
+        assert support["follow"] == (
+            "python3 scripts/query_semantic.py family-relations "
+            "strict_prime_tail_orbit_gap"
+        )
+    assert supports[0]["source"]["line"] == 167
+    assert supports[1]["source"]["line"] == 191
+    assert supports[2]["source"]["line"] == 208
+    assert supports[3]["source"]["line"] == 252
+    assert "does not show that an actual totient phase" in supports[-1][
+        "evidence_boundary"
+    ]
 
     non_249 = next(
         row for row in handoffs.mathematical_questions() if row["problem"] == "257"
@@ -174,6 +219,9 @@ def test_strict_prime_successor_is_support_only() -> None:
 
 def main() -> int:
     assert handoffs.protocol_errors() == []
+    assert handoffs.FROZEN_PROBLEMS == {
+        "68", "243", "249", "251", "257", "269", "1041", "1049"
+    }
     test_mathematical_handoff_exposes_selector_without_route_invention()
     test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar()
     test_strict_prime_successor_is_support_only()

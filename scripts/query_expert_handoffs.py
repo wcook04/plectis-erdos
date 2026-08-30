@@ -296,10 +296,10 @@ def semantic_endpoint_handoff_route() -> dict[str, Any]:
 def source_current_supports(row: Mapping[str, Any]) -> list[dict[str, Any]]:
     """Expose source-current supporting declarations without minting a family.
 
-    ``tailOrbitFirstExp_succ`` belongs inside the already-ranked strict-prime
-    family. It is a recurrence support for that conditional route, never a
-    new endpoint route or a reason to relax the unsupplied density/cofinal-prime
-    producers.
+    The strict-prime phase declarations belong inside the already-ranked
+    ``strict_prime_tail_orbit_gap`` family.  They make its dynamics and its
+    natural obstruction inspectable, but never add an endpoint route or relax
+    the unsupplied density/cofinal-prime producers.
     """
     if str(row.get("problem") or "") != "249":
         return []
@@ -314,48 +314,128 @@ def source_current_supports(row: Mapping[str, Any]) -> list[dict[str, Any]]:
     )
     if not isinstance(family, dict):
         return []
-    declaration = next(
-        (
-            candidate
-            for candidate in family.get("declarations", [])
-            if candidate.get("name") == "tailOrbitFirstExp_succ"
-        ),
-        None,
-    )
-    if not isinstance(declaration, dict):
-        return []
     review = _claim_family_rows(claims).get("strict_prime_tail_orbit_gap", {})
-    return [
+    if not isinstance(review, dict):
+        raise ValueError("Claims review matrix lacks strict_prime_tail_orbit_gap")
+
+    declarations = {
+        str(candidate.get("name")): candidate
+        for candidate in family.get("declarations", [])
+        if isinstance(candidate, dict) and candidate.get("name")
+    }
+    # This is evidence-role metadata for one source family, not a parallel
+    # family, relation, or rank store.  Declarations and coordinates below are
+    # re-read from Claims at query time.
+    evidence_specs = (
         {
+            "name": "tailOrbitFirstExp_succ",
             "relation": "support",
             "relation_class": "existing_family_support_only",
-            "family_id": "strict_prime_tail_orbit_gap",
-            "source_declaration": (
-                "ErdosProblems.Erdos249.tailOrbitFirstExp_succ"
+            "evidence_kind": "one_step_squaring",
+            "hard_mechanism": (
+                "The integer carry increment disappears after exponentiation, "
+                "so each next phase is the square of the preceding phase."
             ),
-            "source": {
-                "module": declaration.get("module"),
-                "line": declaration.get("line"),
-            },
-            "support_boundary": (
-                "This successor recurrence supports the existing strict-prime "
-                "tail-orbit mechanism only; it neither adds a route family nor "
-                "supplies a density, cofinal-prime, or uniform-margin producer."
+            "evidence_boundary": (
+                "This one-step recurrence makes the existing phase mechanism "
+                "reviewable; it supplies no density, strict-prime occurrence, "
+                "or uniform margin."
             ),
-            "open_boundary": review.get("boundary"),
-            "authority": {
-                "declaration": "docs/claims.json::claims[strict_prime_tail_orbit_gap]",
-                "family_boundary": (
+        },
+        {
+            "name": "tailOrbitFirstExp_add",
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "evidence_kind": "all_times_squaring_orbit",
+            "hard_mechanism": (
+                "Every later phase is an exact power-of-two iterate of an "
+                "earlier phase, so no additional carry information survives "
+                "inside the phase orbit."
+            ),
+            "evidence_boundary": (
+                "The all-times orbit formula classifies the route's phase "
+                "dynamics only; it does not realize the missing density or "
+                "cofinal-prime producer."
+            ),
+        },
+        {
+            "name": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+            "relation": "support",
+            "relation_class": "existing_family_support_only",
+            "evidence_kind": "initial_phase_equivalence",
+            "hard_mechanism": (
+                "The prime-index strict-gap predicate is exactly rewritten as "
+                "a power-of-two orbit condition on the initial phase for each "
+                "shift."
+            ),
+            "evidence_boundary": (
+                "This equivalence locates the same strict-gap burden at an "
+                "initial phase; it proves neither a prime occurrence nor a "
+                "uniform separation margin."
+            ),
+        },
+        {
+            "name": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+            "relation": "contrary_evidence",
+            "relation_class": "existing_family_contrary_evidence",
+            "evidence_kind": "dyadic_root_obstruction",
+            "hard_mechanism": (
+                "A dyadic root reaches the absorbing phase 1 after finitely "
+                "many squarings, which contradicts the cofinal strict-gap "
+                "producer."
+            ),
+            "evidence_boundary": (
+                "This is contrary evidence for the producer only: the source "
+                "does not show that an actual totient phase enters a dyadic root."
+            ),
+        },
+    )
+    result = []
+    for spec in evidence_specs:
+        declaration = declarations.get(spec["name"])
+        if declaration is None:
+            raise ValueError(
+                "Claims strict-prime family lacks source declaration "
+                f"{spec['name']!r}"
+            )
+        result.append(
+            {
+                "relation": spec["relation"],
+                "relation_class": spec["relation_class"],
+                "evidence_kind": spec["evidence_kind"],
+                "family_id": "strict_prime_tail_orbit_gap",
+                "proof_status": review.get("contribution_class"),
+                "proof_status_authority": (
                     "docs/claims.json::external_verification_packet.review_matrix"
-                    ".families[strict_prime_tail_orbit_gap]"
+                    ".families[strict_prime_tail_orbit_gap].contribution_class"
                 ),
-            },
-            "follow": (
-                "python3 scripts/query_semantic.py family-relations "
-                "strict_prime_tail_orbit_gap"
-            ),
-        }
-    ]
+                "source_declaration": (
+                    f"ErdosProblems.Erdos249.{spec['name']}"
+                ),
+                "source": {
+                    "module": declaration.get("module"),
+                    "line": declaration.get("line"),
+                },
+                "hard_mechanism": spec["hard_mechanism"],
+                "evidence_boundary": spec["evidence_boundary"],
+                "natural_friction_evidence": review.get("boundary"),
+                "open_producer_boundary": review.get("boundary"),
+                "authority": {
+                    "declaration": (
+                        "docs/claims.json::claims[strict_prime_tail_orbit_gap]"
+                    ),
+                    "family_boundary": (
+                        "docs/claims.json::external_verification_packet.review_matrix"
+                        ".families[strict_prime_tail_orbit_gap]"
+                    ),
+                },
+                "follow": (
+                    "python3 scripts/query_semantic.py family-relations "
+                    "strict_prime_tail_orbit_gap"
+                ),
+            }
+        )
+    return result
 
 
 def route_memory_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
