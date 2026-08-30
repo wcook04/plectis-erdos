@@ -6,10 +6,13 @@
 from __future__ import annotations
 
 import copy
+import os
+import stat
 import tempfile
 import tomllib
 from pathlib import Path
 from typing import Any
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -78,6 +81,41 @@ def safe_license_file(root: Path, relative: str) -> Path:
     if not candidate.is_file():
         raise UnsafeLicenseInput(f"licensing input is not a regular file: {relative}")
     return candidate
+
+
+def safe_license_text(root: Path, relative: str) -> str:
+    """Read a licensing input through a no-follow regular-file descriptor."""
+    candidate = safe_license_file(root, relative)
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeLicenseInput(
+            f"licensing input could not be opened safely: {relative}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeLicenseInput(
+                f"licensing input is not a regular file: {relative}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+    except OSError as exc:
+        raise UnsafeLicenseInput(
+            f"licensing input could not be read safely: {relative}"
+        ) from exc
+    finally:
+        os.close(descriptor)
+    try:
+        return b"".join(chunks).decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise UnsafeLicenseInput(f"licensing input is not UTF-8: {relative}") from exc
 
 
 def encode_reuse(config: dict[str, Any]) -> str:
@@ -170,10 +208,10 @@ def license_map_errors(
 
 
 def main() -> int:
-    reuse = safe_license_file(ROOT, "REUSE.toml").read_text(encoding="utf-8")
-    readme = safe_license_file(ROOT, "README.md").read_text(encoding="utf-8")
+    reuse = safe_license_text(ROOT, "REUSE.toml")
+    readme = safe_license_text(ROOT, "README.md")
     sources = {
-        path: safe_license_file(ROOT, path).read_text(encoding="utf-8")
+        path: safe_license_text(ROOT, path)
         for path in MANUSCRIPT_SOURCES
     }
     safe_license_dir = ROOT / "LICENSES"
@@ -285,6 +323,32 @@ def main() -> int:
             pass
         else:
             raise AssertionError("symlinked licensing input was accepted")
+
+    private_tmp = Path("/private/tmp")
+    temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+    with tempfile.TemporaryDirectory(
+        prefix="license-map-race-", dir=temporary_root
+    ) as raw:
+        fixture_root = Path(raw)
+        raced = fixture_root / "raced.txt"
+        raced.write_text("placeholder\n", encoding="utf-8")
+        original_open = os.open
+
+        def replace_with_fifo(path: Path, flags: int, mode: int = 0o777) -> int:
+            if Path(path) == raced:
+                raced.unlink()
+                os.mkfifo(raced)
+            return original_open(path, flags, mode)
+
+        with patch.object(os, "open", side_effect=replace_with_fifo):
+            try:
+                safe_license_text(fixture_root, "raced.txt")
+            except UnsafeLicenseInput as error:
+                require("regular file" in str(error), str(error))
+            else:
+                raise AssertionError(
+                    "licensing reader opened a final path replaced by a FIFO"
+                )
 
     print(
         "test_license_map_contract: Apache software and CC-BY manuscript "
