@@ -11761,6 +11761,17 @@
         "boundary": "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows."
       },
       {
+        "id": "negative_mass_recovery",
+        "problem": 243,
+        "review_family": "negative_mass_recovery",
+        "contribution_class": "conditional analytic recovery criterion; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+        "original_source": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+        "statement": "Under exact next-denominator and next-tail C/D dynamics with a, D : ℕ → ℤ, C : ℕ → ℕ, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable normalized negative centered mass, the centered state vanishes eventually and a follows the Sylvester recurrence eventually.",
+        "boundary": "This is a conditional recovery criterion: the source theorem assumes every displayed dynamics, positivity, strict centered-step, normalized-vanishing, and summability hypothesis, and does not prove them for the original Erdős #243 orbit. Any surviving canonical orbit must have divergent normalized negative mass. It supplies no prime-specific producer, unconditional #243 endpoint, or reciprocal-tail irrationality, and makes no novelty, priority, significance, or external-review claim. It is distinct from centered_state_dynamics, which uses a uniform lower-bound hypothesis rather than summability of normalized negative mass."
+      },
+      {
         "id": "eventually_periodic_negative_no_go",
         "problem": 243,
         "review_family": "negative_orbit_no_go",
