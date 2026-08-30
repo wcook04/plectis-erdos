@@ -2,15 +2,6 @@
 
 # Excluding the Bounded Negative Part
 
-The published Koizumi source and its final-article/arXiv-v1 locator crosswalk
-are recorded in the [Koizumi source closure](../../primary-sources/reciprocal-tail/koizumi-2026-source-closure.md).
-
-The original Erdős–Straus source and the printed-page/indexing boundary for
-Theorem 3 are recorded in the [Erdős–Straus source closure](../../primary-sources/reciprocal-tail/erdos-straus-1964-source-closure.md).
-
-Duverney's signed criterion and its exact one-sided summability hypothesis are
-recorded in the [Duverney source closure](../../primary-sources/reciprocal-tail/duverney-2001-source-closure.md).
-
 <div class="center">
 
 <span class="smallcaps">Abstract</span>
@@ -60,7 +51,16 @@ Two published results reach the original problem under analytic hypotheses that 
 \limsup_{n\to\infty}\ \frac{[a_1,\ldots,a_n]}{a_{n+1}}
  \left(\frac{a_{n+1}^{2}}{a_{n+2}}-1\right)>0,
 ```
-where $`[a_1,\ldots,a_n]`$ is the least common multiple \[erdosstraus1964, Theorem 3, p. 132\]. This is the indexing in the original theorem. Erdős’s 1988 survey, followed by the current catalogue summary, instead prints $`a_n^2/a_{n+1}-1`$ in the second factor while retaining the same prefix-LCM quotient; that displayed summary is off by one and is not followed here \[erdos1988, p. 105\]\[erdosproblems\]. Koizumi records the convenient sufficient rate $`a_n^2/a_{n+1}=1+o(1/n)`$ under which the Erdős–Straus criterion settles the problem \[koizumi2025, Remark 21, p. 13\]. Duverney’s Corollary 3.2 assumes the one-sided condition $`\sum_{n\ge0}(a_{n+1}/a_n^{2}-1)<\infty`$ and, for arbitrary numerator signs $`\varepsilon_n\in\{-1,1\}`$, says that $`\sum_{n\ge0}\varepsilon_n/a_n`$ is rational if and only if $`a_{n+1}=a_n^2-(\varepsilon_{n+1}/\varepsilon_n)a_n+\varepsilon_{n+2}/\varepsilon_{n+1}`$ for all large $`n`$ \[duverney2001, Corollary 3.2, p. 287\]. An absolute-convergence hypothesis is stronger than the condition printed by Duverney and is not his exact statement. The all-positive specialisation is the form relevant here. Neither result is formalised here, and the results below do not recover either of them.
+where $`[a_1,\ldots,a_n]`$ is the least common multiple \[erdosstraus1964, Theorem 3, p. 132\]. This is the indexing in the original theorem. Erdős’s 1988 survey, followed by the current catalogue summary, instead prints $`a_n^2/a_{n+1}-1`$ in the second factor while retaining the same prefix-LCM quotient; that displayed summary is off by one and is not followed here \[erdos1988, p. 105\]\[erdosproblems\]. Koizumi records the convenient sufficient rate $`a_n^2/a_{n+1}=1+o(1/n)`$ under which the Erdős–Straus criterion settles the problem \[koizumi2025, Remark 21, p. 13\]. Duverney proved a conditional signed form of the problem itself: for signs $`\epsilon_n\in\{-1,1\}`$, if $`\sum_{n\ge0}(a_{n+1}/a_n^{2}-1)`$ converges, then the reciprocal sum with numerators $`\epsilon_n`$ is rational if and only if
+``` math
+a_{n+1}=a_n^2-(\epsilon_{n+1}/\epsilon_n)a_n
+             +\epsilon_{n+2}/\epsilon_{n+1}
+```
+for all large $`n`$ \[duverney2001, Corollary 3.2, p. 287\]. Absolute convergence is a stronger sufficient specialisation, not the hypothesis printed in that corollary. The all-positive specialisation is the form relevant here. Badea’s positive-term criterion is adjacent but different: for positive rational terms $`b_n/a_n`$, eventual strict inequality
+``` math
+a_{n+1}>\frac{b_{n+1}}{b_n}a_n^2-\frac{b_{n+1}}{b_n}a_n+1
+```
+forces irrationality, while rationality under the corresponding non-strict inequality forces eventual equality \[badea1993, Theorem A, p. 313; Cor. 2.2, p. 316\]. These positive-term hypotheses do not cover the mixed-sign state orbits studied here. Neither result is formalised here, and the results below do not recover either of them.
 
 Koizumi’s work on doubly exponential sequences \[koizumi2025\] bears directly on the state system used below, and supplies the coordinates in which several of the statements of this note are most naturally read. For a rational $`r=p/q`$ with pseudo-greedy expansion $`(a_n)`$, remainders $`(x_n)`$ and gap sequence $`\varepsilon_n=x_n^{-1}+1-a_n`$, his Lemma 15  \[koizumi2025, p. 9\] produces integers $`c_n>0`$, $`d_n`$ and $`e_n`$ with $`x_n=c_n/d_n`$ and $`\varepsilon_n=e_n/c_n`$, satisfying
 ``` math
@@ -727,7 +727,7 @@ Formalise Theorem 3 of \[erdosstraus1964\], with its prefix-LCM quotient and c
 
 #### Duverney.
 
-Formalise Corollary 3.2 of \[duverney2001\], including its signed numerators and absolute convergence hypothesis, and then recover the all-positive specialisation used here. These are useful verification projects, but neither is an additional open mathematical problem.
+Formalise Corollary 3.2 of \[duverney2001\], including its signed numerators and its one-sided summability hypothesis, and then recover the all-positive specialisation used here. These are useful verification projects, but neither is an additional open mathematical problem.
 
 <a id="statements-and-declarations"></a>
 
@@ -795,6 +795,6 @@ The search this supported is superseded. Running it over initial states below $`
 
 9
 
-P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](https://users.renyi.hu/~p_erdos/1964-19.pdf), J. Indian Math. Soc. (N.S.) **27** (1964), 129–133. MR 175848. D. Duverney, [*Irrationality of fast converging series of rational numbers*](https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf), J. Math. Sci. Univ. Tokyo **8** (2001), 275–316. MR 1837165. P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory*](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf), Monogr. Enseign. Math. 28, Geneva, 1980, p. 64. P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). V. Kovač and T. Tao, [*On several irrationality problems for Ahmes series*](https://arxiv.org/abs/2406.17593), Acta Math. Hungar. **175** (2025), 572–608; preprint arXiv:2406.17593v4. J. Koizumi, [*Irrationality of the reciprocal sum of doubly exponential sequences*](https://math.colgate.edu/~integers/aa28/aa28.pdf), Integers **26** (2026), Paper No. A28, 17 pp., doi:[10.5281/zenodo.18714404](https://doi.org/10.5281/zenodo.18714404); preprint arXiv:2504.05933v1. T. F. Bloom, [*Erdős Problem \#243*](https://www.erdosproblems.com/243), `erdosproblems.com/243`, accessed 28 July 2026 (page displays “last edited 21 January 2026”). The current record labels the problem open, cites `[ErGr80, p. 64]` and `[Er88c, p. 105]`, and explicitly describes its status as the website owner’s present assessment rather than a literature-completeness guarantee. The Formal Conjectures Authors, [*FormalConjectures.ErdosProblems.`243`*](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean), Lean source at commit `f776d2f`, 2025, accessed 28 July 2026. Its $`\mathbb{Q}`$-valued `Summable` hypothesis encodes rationality, its indexing is zero-based, and its proof ends in `sorry`.
+P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](https://users.renyi.hu/~p_erdos/1964-19.pdf), J. Indian Math. Soc. (N.S.) **27** (1964), 129–133. MR 175848. D. Duverney, [*Irrationality of fast converging series of rational numbers*](https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf), J. Math. Sci. Univ. Tokyo **8** (2001), 275–316. MR 1837165. C. Badea, [*A theorem on irrationality of infinite series and applications*](https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf), Acta Arith. **63** (1993), no. 4, 313–323. P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory*](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf), Monogr. Enseign. Math. 28, Geneva, 1980, p. 64. P. Erdős, *On the irrationality of certain series: problems and results*, in A. Baker (ed.), *New Advances in Transcendence Theory*, Cambridge UP, 1988, pp. 102–109, doi:[10.1017/CBO9780511897184.009](https://doi.org/10.1017/CBO9780511897184.009). V. Kovač and T. Tao, [*On several irrationality problems for Ahmes series*](https://arxiv.org/abs/2406.17593), Acta Math. Hungar. **175** (2025), 572–608; preprint arXiv:2406.17593v4. J. Koizumi, [*Irrationality of the reciprocal sum of doubly exponential sequences*](https://math.colgate.edu/~integers/aa28/aa28.pdf), Integers **26** (2026), Paper No. A28, 17 pp., doi:[10.5281/zenodo.18714404](https://doi.org/10.5281/zenodo.18714404); preprint arXiv:2504.05933v1. T. F. Bloom, [*Erdős Problem \#243*](https://www.erdosproblems.com/243), `erdosproblems.com/243`, accessed 28 July 2026 (page displays “last edited 21 January 2026”). The current record labels the problem open, cites `[ErGr80, p. 64]` and `[Er88c, p. 105]`, and explicitly describes its status as the website owner’s present assessment rather than a literature-completeness guarantee. The Formal Conjectures Authors, [*FormalConjectures.ErdosProblems.`243`*](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean), Lean source at commit `f776d2f`, 2025, accessed 28 July 2026. Its $`\mathbb{Q}`$-valued `Summable` hypothesis encodes rationality, its indexing is zero-based, and its proof ends in `sorry`.
 
 </div>

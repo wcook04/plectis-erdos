@@ -1353,7 +1353,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:6412e4483f997e12d87b18f859b2e3cd4a61404e9efa9982e30072cffbb96eb7",
+      "source_sha256": "sha256:837be3860299ff9c2ba2f9404e07579cdfa41b9c9a283db57e259c256da27bc4",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
@@ -1382,151 +1382,151 @@
           "level": 2,
           "id": "structure",
           "title": "Structure",
-          "line": 93
+          "line": 102
         },
         {
           "level": 1,
           "id": "sec:state",
           "title": "The centred integer state",
-          "line": 101
+          "line": 110
         },
         {
           "level": 4,
           "id": "the-intended-reading-which-is-not-formalised.",
           "title": "The intended reading, which is not formalised.",
-          "line": 151
+          "line": 160
         },
         {
           "level": 1,
           "id": "sec:defect",
           "title": "The defect identity and its two consequences",
-          "line": 174
+          "line": 183
         },
         {
           "level": 1,
           "id": "sec:descent",
           "title": "Descent when the error is nonnegative",
-          "line": 251
+          "line": 260
         },
         {
           "level": 1,
           "id": "sec:constant",
           "title": "Excluding a constant negative magnitude",
-          "line": 273
+          "line": 282
         },
         {
           "level": 1,
           "id": "sec:periodic",
           "title": "Excluding a periodic negative magnitude",
-          "line": 320
+          "line": 329
         },
         {
           "level": 1,
           "id": "sec:barrier",
           "title": "Bounded rise cannot remain coprime to fresh moduli",
-          "line": 360
+          "line": 369
         },
         {
           "level": 1,
           "id": "sec:bounded",
           "title": "Excluding a bounded negative part",
-          "line": 462
+          "line": 471
         },
         {
           "level": 1,
           "id": "sec:mass",
           "title": "Excluding finite normalised negative mass",
-          "line": 514
+          "line": 523
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 559
+          "line": 568
         },
         {
           "level": 2,
           "id": "global-height-and-old-factor-overlap",
           "title": "Global height and old-factor overlap",
-          "line": 621
+          "line": 630
         },
         {
           "level": 2,
           "id": "the-direct-analytic-question",
           "title": "The direct analytic question",
-          "line": 670
+          "line": 679
         },
         {
           "level": 2,
           "id": "a-barrier-extension",
           "title": "A barrier extension",
-          "line": 692
+          "line": 701
         },
         {
           "level": 2,
           "id": "formalisation-targets",
           "title": "Formalisation targets",
-          "line": 707
+          "line": 716
         },
         {
           "level": 4,
           "id": "erd\u0151sstraus.",
           "title": "Erd\u0151s\u2013Straus.",
-          "line": 711
+          "line": 720
         },
         {
           "level": 4,
           "id": "duverney.",
           "title": "Duverney.",
-          "line": 717
+          "line": 726
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 723
+          "line": 732
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 727
+          "line": 736
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 733
+          "line": 742
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 739
+          "line": 748
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 745
+          "line": 754
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 751
+          "line": 760
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 757
+          "line": 766
         }
       ],
-      "citations_rendered": 31,
+      "citations_rendered": 32,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:1b863c6f9f25cb0329b2ba0821dd9f2e65aa0093051142ae04a721f254d02570",
-      "pdf_byte_count": 160942,
+      "pdf_sha256": "sha256:fa302f7bda863914d6e07509922e8936456f07b53fde484dd15f372d59ed28c8",
+      "pdf_byte_count": 162734,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1539,12 +1539,12 @@
           {
             "id": "sec:bounded",
             "title": "Excluding a bounded negative part",
-            "line": 462
+            "line": 471
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 559
+            "line": 568
           }
         ],
         "unresolved_count": 0
