@@ -259,7 +259,7 @@ grouped by the problem whose note they serve.
 
 ### #1049
 
-- P. Bundschuh and K. Väänänen, *Compositio Math.* 91 (1994), Theorem 2, https://numdam.org/item/CM_1994__91_2_175_0.pdf
+- P. Bundschuh and K. Väänänen, *Compositio Math.* 91 (1994), Theorem 2, [official Numdam PDF](https://numdam.org/item/CM_1994__91_2_175_0.pdf) ([read source closure](primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md))
 
   External irrationality criterion at base `7/2`; the release checks only its elementary Archimedean height inequality.
 

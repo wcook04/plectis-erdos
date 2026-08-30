@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 22,
-    "artifact_count": 22,
+    "working_tree_only_count": 23,
+    "artifact_count": 23,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 22,
+    "link_and_digest_only_count": 23,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -433,6 +433,26 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/kakeya-1914-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/totient-kernel/bundschuh-vaanenen-1994-infinite-product.pdf",
+      "sha256": "e4937a5bbf141c01dc60c6bdb91e0f8a8ad399d69e8e3156b4b27881631913cc",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://numdam.org/item/CM_1994__91_2_175_0.pdf",
+        "https://numdam.org/item/CM_1994__91_2_175_0/"
+      ],
+      "source_record": "docs/primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/COMPARATOR_1049_NUMERICAL_HEIGHT.md",
+        "docs/primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }

@@ -18,7 +18,7 @@ to a separately declared Mathlib-only statement. A deliberately weakened
 nearby statement must be rejected.
 
 This is useful because the inequality is the numerical input used at the base
-`7/2` in an external theorem of Bundschuh and Väänänen. It cleanly separates a
+`7/2` in the external theorem of [Bundschuh and Väänänen](primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md). It cleanly separates a
 kernel-checked arithmetic certificate from the literature theorem that
 consumes it.
 
