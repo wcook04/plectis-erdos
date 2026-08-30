@@ -59,8 +59,9 @@ not a novelty or priority ranking:
   has rank `2^e + 1` with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
   the all-base extension is conditional on affine independence. Separately,
   an actual-LCM orbit is approximated by an odd-rank raw block with an explicit
-  error radius: the cofinal `PowerTwoActualLcmOrbitSeparationSupply` would force
-  the existing signed-margin producer and hence irrationality
+  error radius: the separate sufficient (not equivalent) condition
+  `PowerTwoActualLcmOrbitSeparationSupply` would force the existing signed-margin
+  producer and hence irrationality
   ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
   quantitative separation supply is unproved, and sign/top-edge information
   does not supply it.
@@ -113,7 +114,7 @@ Links name checked routes and limits; reductions are not solutions.
 
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [cofinal equivalence](ErdosProblems/Erdos68/FactorialZeroPlateau.lean): irrationality iff cofinally strict factorial-top misses divisibility; [band](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): nonzero-moment cancellation forces index ≥2d. q≥67; 300000 external; cofinal producer open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — [bounded-rise obstruction](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean): bounded rises cannot avoid fresh pairwise-coprime moduli as `u`→∞; normalized-vanishing no-go; mixed-sign bridge open.
-- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM frontier](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [quantitative separation bridge](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254): an explicit cofinal orbit-to-signed-margin reduction, with its supply open; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit the top edge.
+- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM frontier](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [quantitative separation bridge](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254): a sufficient, non-equivalent cofinal orbit-to-signed-margin reduction, with its supply open; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit the top edge.
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — [tail equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean): irrationality iff cofinally nonintegral tail shifts under its checked recurrence; prime-tail bridge open.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. Irrationality open.

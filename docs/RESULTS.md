@@ -56,8 +56,10 @@ pass, the high-signal spine is:
   with an error radius, turns cofinal distance at least `1/32` plus that radius
   from every integer into the existing signed-margin producer. The exact
   source calls this `PowerTwoActualLcmOrbitSeparationSupply` and then derives
-  irrationality from it, but the supply itself is not proved; neither
-  divisibility nor irrationality alone supplies the required anti-concentration.
+  irrationality from it, but this is a sufficient route, not an equivalence to
+  the separate non-integrality criterion. The supply itself is not proved;
+  neither divisibility nor irrationality alone supplies the required
+  anti-concentration.
   Neither spine by itself supplies a rationality-to-finite-rank bridge or
   solves the binary totient endpoint.
 - **#68, an exact endpoint reduction.** Irrationality is equivalent to
@@ -294,10 +296,10 @@ replacement for claim authority.
   from every integer. The checked raw-block approximation and its explicit
   error bound then force the existing half-word/signed-margin producer, and
   `irrational_totientSeries_of_actualLcmOrbitSeparationSupply` derives
-  irrationality from that hypothesis. This is a new quantitative bridge, not
-  a proof of the bridge's supply: the module explicitly leaves that
-  anti-concentration question open, and the earlier sign/top-edge result does
-  not establish it. See
+  irrationality from that hypothesis. This is a new sufficient, non-equivalent
+  quantitative bridge, not a proof of its supply: the module explicitly leaves
+  that anti-concentration question open, and the earlier sign/top-edge result
+  does not establish it. See
   `Erdos249257/TotientActualLcmOrbitSeparation.lean:254-310` and the transported
   consumer `ExternalVerification/Challenge.lean:159`.
 - Irrationality of `S` has six checked exact characterisations, from
