@@ -1,0 +1,155 @@
+{
+  "schema": "research_route_memory_v1",
+  "authority_posture": "navigation record of checked, tracked corpus boundaries; not a claim registry, proof authority, or a statement of problem status",
+  "scope": "Existing-corpus route memory for the eight-problem public portfolio. First verify the record shape with `python3 scripts/query_route_memory.py --validate`, then select a record with `python3 scripts/query_route_memory.py --problem <number>` (or `--all`) and follow its evidence path and named anchors into checked Lean. Each entry records only the located route and its stated boundary.",
+  "recording_rule": "A negative result is local to the route and assumptions named below. An inconclusive record is not an impossibility result.",
+  "records": [
+    {
+      "route_id": "erdos_68_two_cylinder_exclusion",
+      "problem": 68,
+      "route": "Tail-free predecessor-gap no-repeat criterion",
+      "status": "still_open",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos68/RunCylinder.lean",
+        "anchors": [
+          "irrational_factorialGapSeries_of_eventually_no_consecutive_failures",
+          "consecutive_predecessorGap_failures_iff_two_cylinders"
+        ]
+      },
+      "actual_established": "The conditional no-repeat criterion implies irrationality, and two consecutive threshold failures on the distinguished orbit have an exact two-cylinder classification.",
+      "failure_boundary": "The evidence does not establish the no-consecutive-failures hypothesis for the factorial-gap orbit and does not say that either cylinder occurs cofinally.",
+      "prerequisites_and_assumptions": "The implication assumes eventual exclusion of consecutive predecessor-gap threshold failures on the distinguished factorial-gap orbit.",
+      "next_obligation": "Establish that orbit-level no-repeat hypothesis, or replace this conditional route with a separately evidenced one."
+    },
+    {
+      "route_id": "erdos_243_clean_recovery_length",
+      "problem": 243,
+      "route": "Clean-recovery length as a normalized-mass descent certificate",
+      "status": "negative",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+        "anchors": [
+          "cleanRecoveryWitness_normalizedNegativeMass_return",
+          "cleanRecoveryWitness_payment_lt_length_and_exponential"
+        ]
+      },
+      "actual_established": "A checked nine-step primitive clean recovery returns normalized negative mass from 1/11 to 1/11 while its initial payment is four, below both its length and 2^9.",
+      "failure_boundary": "This rules out a strict descent or payment lower bound determined only by the displayed normalized coordinate and clean-recovery length; it does not classify all primitive-tail invariants.",
+      "prerequisites_and_assumptions": "The route uses the centered primitive cocycle and the exact clean-recovery witness encoded in the cited module.",
+      "next_obligation": "Any replacement invariant must distinguish the certified return from its start and must be checked against that witness."
+    },
+    {
+      "route_id": "erdos_249_rank_one_subrank",
+      "problem": 249,
+      "route": "Rank-one strict-subrank monomial Schur quotients",
+      "status": "negative",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+        "anchors": [
+          "rankOneSubrankQuotient_sub_theta_two_gt",
+          "positive_direct_sum_sub_theta_two_gt",
+          "primitive_form_abs_gt"
+        ]
+      },
+      "actual_established": "Every cited rank-one strict-subrank quotient overshoots the target rung by more than 1/480, and positive finite sums retain that separation.",
+      "failure_boundary": "The obstruction is for the named strict-subrank family and its positive finite sums; it does not reject linear forms outside those assumptions.",
+      "prerequisites_and_assumptions": "The bounds require e at least one, prefix length at least four, and positive weights for the finite-sum extension.",
+      "next_obligation": "A prospective linear-form route must leave this strict-subrank family or change one of its explicit assumptions before it can be evaluated."
+    },
+    {
+      "route_id": "erdos_251_adaptive_affine_cylinder",
+      "problem": 251,
+      "route": "Adaptive affine 2-adic cylinder escape",
+      "status": "superseded",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+        "anchors": [
+          "ratAffinePowTwo_iff_evenIntegral",
+          "ratAffinePowTwo_depth_independent",
+          "cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral"
+        ]
+      },
+      "actual_established": "Cylinder membership is exactly even integrality at its basepoint, independent of depth, and the named cofinal escape hypothesis is equivalent to the non-eventual-integrality conclusion it was intended to produce.",
+      "failure_boundary": "The adaptive cylinder is circular as a producer; this does not settle the prime dyadic-series problem or invalidate separately formulated fixed-lattice statements.",
+      "prerequisites_and_assumptions": "The equivalence uses the dyadic tail recurrence and the stated even-difference condition on the digit stream.",
+      "next_obligation": "A new producer must avoid a target generated by the same orbit; the cited module identifies a fixed-lattice formulation but supplies no new arithmetic input for it."
+    },
+    {
+      "route_id": "erdos_257_terminal_half_and_finite_one_twentyfirst",
+      "problem": 257,
+      "route": "Terminal scaled-vanishing half counterexample and finite 1/21 target",
+      "status": "inconclusive",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+        "anchors": [
+          "exists_rational_half_counterexample_of_terminalScaledVanishing",
+          "not_universal_of_terminalScaledVanishing",
+          "finiteErdosSum_ne_one_div_twenty_one"
+        ]
+      },
+      "actual_established": "A terminal scaled-vanishing sequence would yield an infinite rational half-valued counterexample, while a finite Boolean support on ranks at least two cannot sum to 1/21.",
+      "failure_boundary": "No terminal scaled-vanishing sequence is constructed here, and neither the conditional half statement nor the finite 1/21 exclusion settles Erdős #257.",
+      "prerequisites_and_assumptions": "The half route is conditional on a HalfTerminalOnlyScaledVanishingSequence; the 1/21 result assumes finite Boolean support with every rank at least two.",
+      "next_obligation": "Resolve the terminal scaled-vanishing condition or supply a separately checked bridge from the finite boundary to an infinite-support question."
+    },
+    {
+      "route_id": "erdos_269_least_positive_residue",
+      "problem": 269,
+      "route": "Finite least-positive-residue escape obstruction",
+      "status": "inconclusive",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
+        "anchors": [
+          "no_bounded_positive_state_of_residue_escape",
+          "no_bounded_positive_int_state_of_leastPositiveResidue"
+        ]
+      },
+      "actual_established": "A positive bounded integral state cannot represent a congruence class whose least positive residue is above that bound.",
+      "failure_boundary": "This is a final finite contradiction only: the cited module does not derive its bounded integral state from rationality or construct arbitrarily late escaping windows.",
+      "prerequisites_and_assumptions": "The finite contradiction assumes a positive modulus, a positive bounded state, the stated congruence, and a residue above the bound.",
+      "next_obligation": "Supply both upstream inputs named by the module: the rationality-to-state reduction and late windows with the required residue escape."
+    },
+    {
+      "route_id": "erdos_1041_smallest_gap_selector",
+      "problem": 1041,
+      "route": "Always choose the smallest angular-gap Form-A selector",
+      "status": "negative",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos1041/ConcyclicSmallestGapSelectorCounterexample.lean",
+        "anchors": [
+          "selected_chord_uniquely_shortest",
+          "smallest_gap_common_radius_selector_fails"
+        ]
+      },
+      "actual_established": "The cited five-point configuration has a uniquely shortest selected chord, yet the common-radius selector is blocked at radius zero and at every positive radius up to one.",
+      "failure_boundary": "This refutes only the unconditional smallest-angular-gap rule; it does not refute the unrestricted Form-A-cut objective or settle Erdős #1041.",
+      "prerequisites_and_assumptions": "The counterexample concerns the exact Gaussian-rational cyclic configuration and its common-radius selector defined in the cited module.",
+      "next_obligation": "Any Form-A selector proposal must state why it avoids this unconditional smallest-gap rule and provide evidence for its own scope."
+    },
+    {
+      "route_id": "erdos_1049_rectangular_hermite_pade",
+      "problem": 1049,
+      "route": "Rectangular two-function Hermite-Pade threshold comparison",
+      "status": "negative",
+      "evidence": {
+        "kind": "checked_lean",
+        "path": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+        "anchors": [
+          "rectangular_hp_threshold_le_classical",
+          "rectangular_hp_threshold_eq_classical_iff"
+        ]
+      },
+      "actual_established": "Within the explicit rectangular exponent model, the two-function threshold never exceeds the classical one-function margin, with equality only at the stated endpoint.",
+      "failure_boundary": "The comparison constructs no approximating polynomials or remainders, does not cover every rational-base method, and does not decide the Lambert value at 3/2.",
+      "prerequisites_and_assumptions": "The model assumes rho is nonnegative and sigma is at least 1 plus rho.",
+      "next_obligation": "A rational-base approach must first provide evidence outside this explicit rectangular model before treating it as a possible improvement."
+    }
+  ]
+}
