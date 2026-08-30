@@ -1339,6 +1339,75 @@
       "prior_art_note": "Reclassified from not_assessed on adversarial review. naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap is line-for-line the legacy proof naturalPivotPointEscape_of_naturalPrimeTailOrbitGap (PivotAntiReconstruction.lean:1246) with the fixed budget ε = 1/10 replaced by ε = 9/10 − Re; every other step (fibre membership via mem_pivotFiber_one_overlap_iff, depth via exists_natural_window_depth_with_error, transport via windowFirstCos_le_add_of_tailOrbitGap) is reused unchanged. It is a routine weakening of an existing node, not a new engine. The hypothesis is weaker than DTWNaturalPrimeTailOrbitGap (Re ≤ 4/5 implies Re < 9/10), but no Lean declaration in the corpus formalises that implication, and no separation is proved, so 'strictly weaker' is an informal remark rather than a corpus result.",
       "scope_caveat": "The producer DTWNaturalPrimeTailOrbitStrictGap is unproved: no prime p is known for which (tailOrbitFirstExp h (p−h−1)).re < 9/10 is established, at any h. Calling it the weakest live producer is a statement about hypothesis strength within this lane only; it is not evidence that it is attainable.",
       "confidence": "high"
+    },
+    {
+      "id": "tail_orbit_initial_phase_normal_form",
+      "canonical_statement": "The exact phase recurrence iterates: for every shift h and offsets M,k, tailOrbitFirstExp h (M+k) = (tailOrbitFirstExp h M)^(2^k). Consequently the cofinal strict-prime gap producer is equivalent to a power-of-two orbit condition on the single initial phase at each shift.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "tailOrbitFirstExp_add",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 191
+        },
+        {
+          "declaration": "tailOrbitFirstExp_eq_initial_pow_two",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 201
+        },
+        {
+          "declaration": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 208
+        }
+      ],
+      "concepts": [
+        "tail_orbit_phase",
+        "open_producer_socket"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Induction on the offset using the exact squaring recurrence; the integer carry is absorbed as a full 2π rotation.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "A normal-form classification of the existing strict-gap producer, not an additional prime-distribution result or an endpoint theorem.",
+      "scope_caveat": "The initial-phase equivalence supplies no real-part gap and does not prove that the actual totient phase enters a useful region.",
+      "confidence": "high"
+    },
+    {
+      "id": "dyadic_root_blocks_strict_prime_gap",
+      "canonical_statement": "If a tail-orbit phase reaches 1, or more generally a dyadic root that reaches 1 under finitely many squarings, the cofinal natural-prime strict-gap producer is impossible for that shift.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "tailOrbitFirstExp_eq_one_of_le",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 224
+        },
+        {
+          "declaration": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 238
+        },
+        {
+          "declaration": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 252
+        }
+      ],
+      "concepts": [
+        "tail_orbit_phase",
+        "open_producer_socket",
+        "natural_friction"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "An absorbing phase remains 1 under the squaring dynamics, contradicting the strict real-part bound required by the producer.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "A genuine obstruction conditional on phase entry; it does not establish that the actual orbit enters a dyadic root.",
+      "scope_caveat": "The source proves only the barrier implication. It neither finds a dyadic root in the actual totient orbit nor decides Erdős #249.",
+      "confidence": "high"
     }
   ],
   "declaration_roles": [
@@ -2020,6 +2089,48 @@
       "line": 167,
       "role": "engine",
       "statement_node": "tail_orbit_equals_scaled_series_orbit"
+    },
+    {
+      "declaration": "tailOrbitFirstExp_add",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "line": 191,
+      "role": "engine",
+      "statement_node": "tail_orbit_initial_phase_normal_form"
+    },
+    {
+      "declaration": "tailOrbitFirstExp_eq_initial_pow_two",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "line": 201,
+      "role": "representation",
+      "statement_node": "tail_orbit_initial_phase_normal_form"
+    },
+    {
+      "declaration": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "line": 208,
+      "role": "statement",
+      "statement_node": "tail_orbit_initial_phase_normal_form"
+    },
+    {
+      "declaration": "tailOrbitFirstExp_eq_one_of_le",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "line": 224,
+      "role": "engine",
+      "statement_node": "dyadic_root_blocks_strict_prime_gap"
+    },
+    {
+      "declaration": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "line": 238,
+      "role": "statement",
+      "statement_node": "dyadic_root_blocks_strict_prime_gap"
+    },
+    {
+      "declaration": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "line": 252,
+      "role": "statement",
+      "statement_node": "dyadic_root_blocks_strict_prime_gap"
     },
     {
       "declaration": "windowFirstExp_eq_unreduced",
@@ -2877,6 +2988,18 @@
       "to": "point_escape_socket_implies_249",
       "relation": "generalises",
       "basis": "the strict 9/10 orbit gap is a weaker hypothesis than the 4/5 gap and reaches the same point-escape socket"
+    },
+    {
+      "from": "tail_orbit_initial_phase_normal_form",
+      "to": "strict_prime_escape_socket_implies_249",
+      "relation": "reformulates",
+      "basis": "the exact iff rewrites the same strict-prime producer in terms of one initial phase and its power-of-two orbit; no stronger hypothesis or endpoint conclusion is added"
+    },
+    {
+      "from": "dyadic_root_blocks_strict_prime_gap",
+      "to": "strict_prime_escape_socket_implies_249",
+      "relation": "barrier_for",
+      "basis": "an entered absorbing dyadic root contradicts the strict real-part gap required by the producer, while the source leaves actual root entry open"
     },
     {
       "from": "pivot_fibre_socket_implies_249",

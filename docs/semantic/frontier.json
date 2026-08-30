@@ -575,12 +575,42 @@
    ],
    "closest_producer": null,
    "gap": "no single base and no prime is exhibited anywhere at which any real-part gap is proved. These are the weakest sockets in the spectral lane -- one point, not a cofinal family -- and they are still unproduced.",
-   "mechanism": "The checked phase engine has the exact recurrence tailOrbitFirstExp h (M + 1) = (tailOrbitFirstExp h M)^2: the integer deltaTotient carry contributes a full 2π rotation and disappears under complex exponentiation. This makes the prime-gap socket a question about one unit-modulus squaring orbit, not a new finite-window estimate.",
+   "mechanism": "The checked phase engine has the exact recurrence tailOrbitFirstExp h (M + 1) = (tailOrbitFirstExp h M)^2 and its power-of-two iterate normal form: the integer deltaTotient carry contributes a full 2π rotation and disappears under complex exponentiation. Thus the prime-gap socket is a question about one initial unit-modulus squaring orbit, not a new finite-window estimate; entering a dyadic root is an explicit barrier, not an established event.",
    "mechanism_evidence": [
     {
      "declaration": "tailOrbitFirstExp_succ",
      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
      "line": 167
+    },
+    {
+     "declaration": "tailOrbitFirstExp_add",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 191
+    },
+    {
+     "declaration": "tailOrbitFirstExp_eq_initial_pow_two",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 201
+    },
+    {
+     "declaration": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 208
+    },
+    {
+     "declaration": "tailOrbitFirstExp_eq_one_of_le",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 224
+    },
+    {
+     "declaration": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 238
+    },
+    {
+     "declaration": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 252
     }
    ],
    "next_obligation": "Produce, or refute, a prime-indexed tail-orbit real-part gap beyond every cutoff. The squaring recurrence supplies the reusable dynamics but does not produce any gap and does not close Erdős #249."
