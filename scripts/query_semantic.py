@@ -741,6 +741,9 @@ def cmd_problem_registry(corpus: dict, args) -> int:
         if args.problem and problem != args.problem:
             continue
         semantic_summary = corpus["summary"]["per_problem"].get(problem, {})
+        problem_route = f"python3 scripts/query_corpus.py --route erdos_{problem}"
+        paper = row.get("paper") if isinstance(row.get("paper"), dict) else {}
+        paper_source = paper.get("source")
         rows.append(
             {
                 "problem_id": row["problem_id"],
@@ -758,6 +761,47 @@ def cmd_problem_registry(corpus: dict, args) -> int:
                 ],
                 "note": row.get("note"),
                 "follow": {
+                    "canonical_problem_route": problem_route,
+                    "proof_and_source": {
+                        "command": problem_route,
+                        "returns": [
+                            "result_families",
+                            "declaration_routes",
+                            "open_obligations",
+                        ],
+                        "next": (
+                            "Follow each returned declaration route to its exact "
+                            "Lean source/declaration; the route's family rows "
+                            "preserve the authored family boundary."
+                        ),
+                    },
+                    "paper_source": (
+                        {
+                            "source": paper_source,
+                            "command": (
+                                "python3 scripts/query_corpus.py --paper-source "
+                                f"{paper_source}"
+                            ),
+                            "next": (
+                                "Use the returned anchor inventory, then follow "
+                                "each exact --paper-anchor handle."
+                            ),
+                        }
+                        if isinstance(paper_source, str) and paper_source
+                        else {
+                            "source": None,
+                            "command": None,
+                            "next": "No dedicated paper source is recorded; no paper route was invented.",
+                        }
+                    ),
+                    "open_boundary": {
+                        "source": "docs/problems.json::open_obligations",
+                        "obligation_ids": [
+                            obligation["id"]
+                            for obligation in row.get("open_obligations", [])
+                        ],
+                        "statement_route": f"{problem_route} -> route.open_obligations",
+                    },
                     "problem_detail": (
                         "python3 scripts/query_corpus.py --search "
                         f"'Erdős problem {problem}'"
