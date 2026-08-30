@@ -58,14 +58,14 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-| Disposition | Reader-facing treatment |
-|---|---|
-| **promote** | #257's canonical full-support irrationality theorem and distinct pairwise-coprime extension, #249 finite kernel rank/basis, and #68's exact carry/divisibility equivalence lead the first pass. |
-| **retain** | #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. |
-| **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite denominator, and synthetic LCM-shift results are one supporting arithmetic route; #257's geometry, finite-period, state, and defect results are one supporting universal-boundary route. |
-| **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; they establish provenance or context, not a new #249 conclusion. The canonical #257 full-support theorem is promoted because its completed proof mechanism and exact endpoint are directly useful. |
-| **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. |
-| **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks stay available through the linked source maps, but do not lead the reader. |
+| Disposition | Reader-facing treatment | Mathematical reason |
+|---|---|---|
+| **promote** | #257's full-support irrationality theorem and distinct pairwise-coprime extension, #249 finite kernel rank/basis, and #68's exact carry/divisibility equivalence lead the first pass. | The #257 full-support row is an unconditional endpoint theorem for each `b ≥ 2`; the other promoted rows expose adaptive-CRT, finite-rank, and exact-equivalence mechanisms with their hypotheses visible. |
+| **retain** | #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | Each rules out a named regime or supplies an exact structural identity, but none supplies the missing universal, cofinal, topological, or irrationality bridge. |
+| **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's geometry, finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
+| **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
+| **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
+| **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks remain discoverable through the source maps, but do not lead the reader. | A finite range, routine shard, or unconstructed antecedent cannot establish a cofinal family or universal endpoint, so it is evidence for follow-up rather than first-contact signal. |
 
 The project also audits its own conditional routes. Of 23 substantial Lean
 propositions extracted from hypotheses of conditional theorems, 17 are
