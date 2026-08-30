@@ -160,6 +160,29 @@ def main() -> int:
         directory_path = Path(directory)
         input_path = directory_path / "return.json"
         input_path.write_bytes(FIXTURE.read_bytes())
+        require(
+            validator.read_regular_bytes(input_path, label="test input")
+            == FIXTURE.read_bytes(),
+            "regular return input was not readable through the safe descriptor",
+        )
+        linked_input = directory_path / "linked-return.json"
+        linked_input.symlink_to(input_path)
+        with mock.patch.object(validator, "path_has_symlink_component", return_value=False):
+            try:
+                validator.read_regular_bytes(linked_input, label="test input")
+            except validator.UnsafeReturnPath:
+                pass
+            else:
+                raise AssertionError("final-component return symlink was followed")
+        fifo_input = directory_path / "return.fifo"
+        os.mkfifo(fifo_input)
+        with mock.patch.object(validator, "path_has_symlink_component", return_value=False):
+            try:
+                validator.read_regular_bytes(fifo_input, label="test input")
+            except validator.UnsafeReturnPath:
+                pass
+            else:
+                raise AssertionError("special-file return input crossed the boundary")
         malformed_path = directory_path / "malformed-utf8.json"
         malformed_path.write_bytes(b"{\xff\n")
         malformed_cli = run_cli(malformed_path, "--require-submitted")

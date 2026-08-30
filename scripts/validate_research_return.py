@@ -14,6 +14,7 @@ import datetime as dt
 import json
 import os
 import re
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -131,6 +132,42 @@ def path_has_symlink_component(path: Path) -> bool:
         if current.parent == current:
             return False
         current = current.parent
+
+
+class UnsafeReturnPath(ValueError):
+    """A return-validation input is not a stable, regular file."""
+
+
+def read_regular_bytes(path: Path, *, label: str) -> bytes:
+    """Read a return-validation input without following links or special files."""
+    if path_has_symlink_component(path):
+        raise UnsafeReturnPath(f"{label} path must not traverse symbolic links")
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(path, flags)
+    except OSError as exc:
+        raise UnsafeReturnPath(f"{label} could not be opened safely: {path}") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeReturnPath(f"{label} must be a regular file: {path}")
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                return b"".join(chunks)
+            chunks.append(chunk)
+    except OSError as exc:
+        raise UnsafeReturnPath(f"{label} could not be read safely: {path}") from exc
+    finally:
+        os.close(descriptor)
+
+
+def read_regular_text(path: Path, *, label: str) -> str:
+    """Decode a descriptor-safe return-validation input as UTF-8."""
+    return read_regular_bytes(path, label=label).decode("utf-8")
 
 
 def portable_path_reference(path: Path | None) -> str | None:
@@ -1041,13 +1078,14 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 2
     try:
-        data = json.loads(args.input.read_text(encoding="utf-8"))
+        data = json.loads(read_regular_text(args.input, label="input"))
         identity_contract = repository_identity_contract.load_identity(
             args.repository_identity
         )
     except (
         OSError,
         UnicodeError,
+        UnsafeReturnPath,
         json.JSONDecodeError,
         repository_identity_contract.IdentityError,
     ) as exc:
@@ -1080,9 +1118,12 @@ def main(argv: list[str] | None = None) -> int:
     if route_memory_receipt_path is not None:
         try:
             loaded_route_memory = json.loads(
-                route_memory_receipt_path.read_text(encoding="utf-8")
+                read_regular_text(
+                    route_memory_receipt_path,
+                    label="route_memory_receipt",
+                )
             )
-        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        except (OSError, UnicodeError, UnsafeReturnPath, json.JSONDecodeError) as exc:
             route_memory_errors.append(f"route_memory_receipt: cannot read JSON: {exc}")
         else:
             if not isinstance(loaded_route_memory, dict):
