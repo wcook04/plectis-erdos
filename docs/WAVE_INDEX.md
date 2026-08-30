@@ -336,7 +336,7 @@ open status of #1041, and its machine rows must not be read as Lean claims.
 
 The five expansion roots have no shared Lean-wave chronology. Their exact
 paper/source joins and open boundaries live in the
-[`SOURCE_MAP.md` expansion table](SOURCE_MAP.md#expansion-problem-source-routes)
+[complete eight-problem return matrix](SOURCE_MAP.md#complete-eight-problem-return-matrix)
 and the generated [`problems.json`](problems.json) index. The paper notes are
 the shortest first read:
 
