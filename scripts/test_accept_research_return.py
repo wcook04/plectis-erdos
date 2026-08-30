@@ -163,6 +163,22 @@ def main() -> int:
         )
 
     with tempfile.TemporaryDirectory() as directory:
+        base = Path(directory)
+        real_parent = base / "real-parent"
+        real_parent.mkdir()
+        linked_parent = base / "linked-parent"
+        linked_parent.symlink_to(real_parent, target_is_directory=True)
+        (real_parent / "release").mkdir()
+        logical_root = linked_parent / "release"
+        route_source = logical_root / "docs" / "research-commons" / "route-memory" / "route_memory.json"
+        require(
+            acceptor.route_memory_receipt.path_has_symlink_component(
+                route_source, logical_root
+            ),
+            "route-memory source accepted an arbitrary symlinked checkout ancestor",
+        )
+
+    with tempfile.TemporaryDirectory() as directory:
         malformed = Path(directory) / "malformed-utf8.json"
         malformed.write_bytes(b"{\xff\n")
         decision_template = Path(directory) / "decision-template.json"

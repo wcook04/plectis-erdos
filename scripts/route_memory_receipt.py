@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -57,19 +58,37 @@ def _relative_path(value: Any, path: str, errors: list[str]) -> str | None:
     return text
 
 
+def _platform_alias_target(path: Path) -> Path | None:
+    """Return the target of a verified macOS system-directory alias."""
+    aliases = {
+        Path("/tmp"): Path("/private/tmp"),
+        Path("/var"): Path("/private/var"),
+    }
+    target = aliases.get(path)
+    if target is None:
+        return None
+    try:
+        return target if path.resolve(strict=True) == target else None
+    except OSError:
+        return None
+
+
 def path_has_symlink_component(path: Path, root: Path) -> bool:
     """Reject route-corpus reads that could substitute bytes through a link."""
+    candidate = Path(os.path.abspath(path))
+    checkout = Path(os.path.abspath(root))
     try:
-        relative = path.relative_to(root)
+        candidate.relative_to(checkout)
     except ValueError:
         return True
-    if root.is_symlink():
-        return True
-    current = root
-    for component in relative.parts:
+    current = Path(candidate.anchor)
+    for component in candidate.parts[1:]:
         current /= component
         if current.is_symlink():
-            return True
+            target = _platform_alias_target(current)
+            if target is None:
+                return True
+            current = target
     return False
 
 
