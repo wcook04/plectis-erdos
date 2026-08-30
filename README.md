@@ -131,12 +131,12 @@ order without asking you to decode Lean declaration names first.
 - **Mathematician:** [RESULTS](docs/RESULTS.md) → per-problem papers → [SOURCE MAP](docs/SOURCE_MAP.md) → Lean. The joint PDF is exposition; per-problem papers are routes.
 - **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), [`AGENTS.md`](AGENTS.md), and [`docs/orientation.json`](docs/orientation.json); choose one problem or claim before the registry.
 - **Whole-corpus agent navigation without a Lean build:** run
-  `python3 scripts/query_corpus.py --tour --format card`, then
-  `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
-  The tour exposes corpus scale, mathematical map, canonical eight-problem map,
-  and the distinct reviewed #249/#257 open-proposition frontier. `query_semantic.py
-  problem-registry` drills down; indexes expose every indexed declaration and exact
-  dependencies for both loaded roots. These are navigation projections, not proof authority.
+  `python3 scripts/query_corpus.py --tour --format card`; add
+  `--route erdos_<n>` for a problem's paper, source, and open handles.
+  `--route agent_native_corpus_navigation` exposes corpus scale, the canonical
+  eight-problem map, and the reviewed #249/#257 frontier. `query_semantic.py
+  problem-registry` drills down; indexes expose declarations and dependencies for
+  both roots. These are navigation projections, not proof authority.
 - **Continue or compare:** [`docs/AGENT_WORKBENCH.md`](docs/AGENT_WORKBENCH.md)
   defines the ladder; `proof_workbench.py show --session <slug>` and `replay --session <slug>` recheck append-only work. `hypOf%` and [residual progress](docs/RESIDUAL_PROGRESS.md) separate a reduction from a renamed target. Run `query_corpus.py --publication-architecture` or `--publication-family <id>`; the [Formal Conjectures crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md) binds all eight statements to pinned sources and marks every row `not_ready_to_submit`.
 
