@@ -160,6 +160,20 @@ replacement for claim authority.
   This is a distinct `σ`-coefficient ladder rung, not the Euler-totient
   constant `S`; Nesterenko's analytic proof is not formalised here, and no
   #249 irrationality or novelty claim follows.
+- Cited-only q-zeta antecedent: Postelmans and Van Assche prove that
+  `1`, `ζ_q(1)`, and `ζ_q(2)` are linearly independent for `q = 1/p` with
+  integer `p > 1` (Theorem 1.3). At `q = 1/2`, the release's separately
+  formalised identity `L₂(1) = ζ_{1/2}(2) − ζ_{1/2}(1)` therefore gives an
+  irrational constant-weight squared-Lambert value
+  ([source closure](primary-sources/reciprocal-tail/postelmans-van-assche-2007-source-closure.md)).
+  This does not transfer to the Möbius-weighted totient constant `S`, and the
+  source supplies no #249 or #257 solution.
+- A nearby cited-only sparse criterion of Kaneko, Suzuki, and Tachiya gives
+  irrationality of `∑ f(n)/t^{σ(n)}` and `∑ f(n)/t^{φ(n)}` under explicit
+  nonnegative infinite-support and growth hypotheses ([source closure](primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md)).
+  Here `φ(n)` is a denominator exponent, not the coefficient of `2⁻ⁿ`; this
+  result does not transfer to `S`, arbitrary-support #257, or the release's
+  gcd-moment identities.
 - Unconditional: the dyadic sections `n ↦ φ(2ʲn+r)` of Euler's totient have
   an explicit rational basis, and the level-`e` span has dimension exactly
   `2ᵉ + 1` — `finrank_canonicalTotientKernel_eq`,
@@ -287,6 +301,15 @@ core)**
   squares ([source closure](primary-sources/reciprocal-tail/chowla-1947-source-closure.md)).
   Thus Chowla is historical context for the full-support `x = 1/2` Lambert
   value, not evidence for arbitrary-support #257 or a new release theorem.
+- A distinct periodic-support antecedent is due to Luca and Tachiya: for a
+  nonzero purely periodic integer coefficient sequence, their Theorem A gives
+  irrationality of the associated divisor-convolution Lambert value at every
+  integer base with absolute value greater than one; their stronger Theorem 1
+  gives linear independence for nonnegative periodic coefficients, including
+  full- and odd-support examples ([source closure](primary-sources/reciprocal-tail/luca-tachiya-2014-source-closure.md)).
+  The hypotheses are periodic and coefficient-specific, so this is not a
+  theorem for arbitrary infinite supports and remains distinct from the
+  release's periodic-divisor certificate and mixed-sign boundary.
 - The base-2 Mersenne achievement set — all subsums of `∑ 1/(2ⁿ−1)` — is
   compact, perfect, totally disconnected, nowhere dense, and of Lebesgue
   measure one (strict-tail Cantor structure after Kovač–Tao, Remark 4.1; the
