@@ -140,6 +140,44 @@ theorem downstream_half_membership_endpoint_equivalence :
   exact
     Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse
 
+/-! The #249 fixed-precision tropical no-go is a finite synthetic consumer.
+It realizes a concrete word of odd unit symbols, but the word is not extracted
+from an actual totient sequence and the finite orbit is not an endpoint
+producer for the binary totient series. -/
+
+/-- Downstream reuse of the fixed-precision no-go on a concrete finite word.
+
+The two-symbol word has odd units `1` and `3`, and the theorem supplies a
+compatible orbit whose two successive states are centred at precision `2`.
+This is deliberately synthetic finite data: it carries no actual-totient
+arithmetic and does not establish an endpoint or irrationality result for
+Erdős #249.  The open boundary remains the unbounded, totient-specific supply
+required by the problem's canonical equivalent formulation. -/
+theorem downstream_fixed_precision_synthetic_finite_orbit :
+    ∃ states : List ℤ,
+      Erdos249257.ExternalVerification.VUOrbit 2 0
+          ([⟨0, 1⟩, ⟨1, 3⟩] :
+            List Erdos249257.ExternalVerification.VUSymbol) states ∧
+        List.Forall₂
+          (fun σ e' =>
+            |e'| ≤ Erdos249257.ExternalVerification.vuRadius 2 σ)
+          ([⟨0, 1⟩, ⟨1, 3⟩] :
+            List Erdos249257.ExternalVerification.VUSymbol)
+          states := by
+  have hodd :
+      ∀ σ ∈
+        ([⟨0, 1⟩, ⟨1, 3⟩] :
+          List Erdos249257.ExternalVerification.VUSymbol),
+        Odd σ.unit := by
+    intro σ hσ
+    simp at hσ
+    rcases hσ with rfl | rfl
+    · norm_num
+    · norm_num
+  exact
+    Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo
+      2 (by norm_num) _ hodd 0
+
 /-! The #249 carry anti-compression family is a distinct rationality
 consequence: quotient periodicity and torsion-free section rank coexist.  The
 rank bound is not a finite-rank conclusion, and neither clause supplies an
