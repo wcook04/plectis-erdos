@@ -1,7 +1,7 @@
 # External verification portfolio
 
-This directory contains small Lean consumers for four different parts of the
-Erdős 249/251/257/269 corpus. The files are useful when a reader wants to reuse
+This directory contains small Lean consumers for five different parts of the
+Erdős 243/249/251/257/269 corpus. The files are useful when a reader wants to reuse
 an exact Comparator-facing interface without treating a conditional reduction
 as a solution of the underlying Erdős problem.
 
@@ -9,6 +9,7 @@ The canonical focused check for the portfolio consumers is:
 
 ```bash
 python3 scripts/lean_fast_build.py \
+  examples/ExternalVerificationPortfolio/Problem243.lean \
   examples/ExternalVerificationPortfolio/Problem249.lean \
   examples/ExternalVerificationPortfolio/Problem251.lean \
   examples/ExternalVerificationPortfolio/Problem257.lean \
@@ -20,6 +21,46 @@ consumer is Lean-green only when its exact focused source check reaches a
 successful terminal result on the current checkout; a dependency-bootstrap
 or capacity deferral is not theorem evidence and must not be reported as a
 theorem failure or a passing check.
+
+## Erdős #243: two conditional recovery criteria
+
+[`Problem243.lean`](Problem243.lean) keeps two source-faithful recovery
+criteria distinct.  Neither supplies the missing hypotheses for an
+unrestricted reciprocal-tail orbit, so neither is a solution or an
+irrationality claim for #243.
+
+### Bounded negative part
+
+The exact external wrapper is
+`Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero`.
+It takes natural `a`, `C`, and `D`, an integral centered defect `E`, and the
+exact `C/D/E` dynamics: `C (n + 1) + D n = a n * C n`,
+`D (n + 1) = a n * D n`, and `E n` is the centered state.  Strict centering,
+a uniform lower bound on `E`, and division-free normalized vanishing yield
+eventual `E = 0`.  Its source is
+[`ReciprocalTailRigidity.lean`](../../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265).
+
+The unbounded and mixed-sign branches are not discharged by this wrapper:
+the route still needs an actual-orbit producer for the lower-bound/vanishing
+package.  In particular, no prime-specific input is asserted to produce it.
+
+### Summable normalized negative mass
+
+The stronger endpoint is
+`Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass`.
+It preserves the exact `nextDenState` and `nextTailState` recurrence, positive
+natural tail `C`, the centered step equation, and normalized vanishing; its
+additional premise is summability of the normalized negative mass.  The
+conclusion is eventual Sylvester recurrence, not an unconditional recurrence
+for reciprocal-tail data.  Its source is
+[`SparseResetRecovery.lean`](../../ErdosProblems/Erdos243/SparseResetRecovery.lean#L175).
+
+The missing producer is correspondingly stronger: neither the mixed-sign
+analysis nor a prime-specific negative-mass supply proves the required
+summability.  The defect identity, zero-absorption lemma, and fresh-modulus
+bounded-rise obstruction are reusable supporting mechanisms, not equal
+headlines or extra #243 endpoint claims.  This consumer makes no #243
+irrationality, novelty, or priority claim.
 
 ## Erdős #257: ranked structured-support frontier
 
