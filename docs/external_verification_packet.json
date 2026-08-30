@@ -1624,7 +1624,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:751b4cedec71677a69a9dd7d0140df64b5353c55463cddca587ff90b8ac48c73",
+    "projection_digest": "sha256:7d58bf7df39100ef099851b477cc18bcfd55a7819a056556870abdb7add6fec5",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2009,10 +2009,10 @@
             "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
             "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
             "present": true,
-            "line_count": 215,
-            "declaration_count": 14,
-            "theorem_count": 9,
-            "content_digest": "sha256:cf342e0c75045d92e8de7630c704f0ab2ee5035b4d9c40d60540390074258f7e"
+            "line_count": 268,
+            "declaration_count": 17,
+            "theorem_count": 11,
+            "content_digest": "sha256:7c2833745d718e8efb4d9d824770fa7ce12a2feead633de32cd33cf3f32170e8"
           }
         ],
         "note": {
