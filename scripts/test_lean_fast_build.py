@@ -151,6 +151,20 @@ class LeanFastBuildTests(unittest.TestCase):
                 f"external action is not pinned to a full commit SHA: {line}",
             )
 
+    def test_cache_warm_checkout_does_not_persist_credentials(self) -> None:
+        workflow = (
+            fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
+        ).read_text(encoding="utf-8")
+        checkout = workflow.index("- uses: actions/checkout@")
+        cache = workflow.index("- name: Restore project Lean cache")
+        checkout_step = workflow[checkout:cache]
+
+        self.assertIn(
+            "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            checkout_step,
+        )
+        self.assertIn("persist-credentials: false", checkout_step)
+
     def test_ci_does_not_repeat_required_pr_checks_after_merge(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"
