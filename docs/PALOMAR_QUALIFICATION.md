@@ -112,6 +112,20 @@ No global compatible ray assignment, perturbation-and-gluing construction,
 compact ray-cut connection theorem, lemniscate-length bound, or Erdős #1041
 endpoint is supplied.
 
+For #243, `bounded_rise_coprimality` is now explicit as a distinct
+natural-friction theorem rather than a terse inventory row. Under eventual
+exact reduced numerator/denominator dynamics, multipliers greater than one,
+and pointwise reduced coprimality, each earlier multiplier divides later
+denominators while avoiding later reduced numerators; distinct multipliers
+are consequently pairwise coprime fresh moduli. A numerator tending to
+infinity therefore cannot retain one fixed positive upper bound on every
+eventual rise. This ranks below `centered_state_dynamics` and
+`negative_mass_recovery`, which recover eventual Sylvester structure from
+their exact signed or analytic premises, but above finite searches and
+routine recurrence identities. The original reciprocal-tail orbit is not
+proved to satisfy the bounded-rise premise, and no reciprocal-tail
+irrationality or Erdős #243 endpoint follows.
+
 The actual-LCM separation route is now an eligible represented candidate:
 `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
 is in the source-current committed Comparator roster and is source-faithful to

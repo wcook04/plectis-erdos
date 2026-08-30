@@ -277,6 +277,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos249_carry_anti_compression",
         "erdos68_channel_projection_rigidity",
         "erdos1041_ray_separation",
+        "erdos243_bounded_rise_coprimality",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
         range(1, len(showcase["candidate_ranking"]) + 1)
@@ -363,6 +364,22 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "newton_value_decay" in ray_separation["ranked_below"]
     assert "lemniscate_finite_search" in ray_separation["ranked_above"]
     assert "global" in " ".join(ray_separation["limitations"]).lower()
+    bounded_rise = landscape_by_id["erdos243_bounded_rise_coprimality"]
+    assert bounded_rise["family_id"] == "bounded_rise_coprimality"
+    assert bounded_rise["disposition"] == "represented"
+    assert bounded_rise["comparator_eligibility"] == (
+        "source_landed_but_not_comparator_configured"
+    )
+    assert bounded_rise["canonical_claim_commit"] == (
+        "06198c0ab3969c625e1022eaebfb46208ff0b5e4"
+    )
+    assert "reducedTail_pairwiseCoprime" in bounded_rise["source_declaration"]
+    assert "no_eventuallyBoundedRise_reducedTail" in bounded_rise[
+        "source_declaration"
+    ]
+    assert "centered_state_dynamics" in bounded_rise["ranked_below"]
+    assert "negative_mass_recovery" in bounded_rise["ranked_below"]
+    assert "rise bound" in " ".join(bounded_rise["limitations"]).lower()
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
     negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]

@@ -213,7 +213,7 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and eleven targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection and #1041 ray-separation discoveries are represented below their stronger endpoint/mechanism families, without turning missing cofinal or global-gluing producers into Comparator evidence.",
+      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and twelve targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection, #243 bounded-rise, and #1041 ray-separation discoveries are represented below their stronger endpoint/mechanism families, without turning missing cofinal, bounded-rise, or global-gluing producers into Comparator evidence.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
@@ -234,7 +234,8 @@
         "strict_prime_tail_orbit_gap",
         "erdos249_carry_anti_compression",
         "erdos68_channel_projection_rigidity",
-        "erdos1041_ray_separation"
+        "erdos1041_ray_separation",
+        "erdos243_bounded_rise_coprimality"
       ],
       "comparator_role": "Comparator membership is evidence/eligibility/admission nested below source-landscape population and never defines its candidate universe."
     },
@@ -253,6 +254,32 @@
       "remaining_boundary": "The cofinal separation supply remains unproved; a proved supply, or a later source-current result with equal evidence certainty and a stronger completed endpoint, would justify a fresh ranking against full support."
     },
     "source_landscape_queue": [
+      {
+        "candidate_id": "erdos243_bounded_rise_coprimality",
+        "family_id": "bounded_rise_coprimality",
+        "disposition": "represented",
+        "canonical_claim_commit": "06198c0ab3969c625e1022eaebfb46208ff0b5e4",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos243.reducedTail_pairwiseCoprime; ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail",
+        "source_file": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+        "source_anchor": "1010; 1060",
+        "statement": "Exact reduced-tail dynamics make distinct multipliers pairwise coprime, and exclude simultaneous numerator escape to infinity with one uniform eventual rise bound.",
+        "exact_hypotheses": [
+          "Eventually a(n) > 1, each reduced numerator-denominator pair is coprime, and the exact numerator and denominator recurrences hold.",
+          "One fixed B > 0 bounds every eventual numerator rise, while the numerator tends to infinity."
+        ],
+        "conclusion": "The displayed eventual reduced-tail, bounded-rise, and escape hypotheses are inconsistent; no claim is made that the original reciprocal-tail orbit satisfies bounded rise.",
+        "hard_mechanism": "Earlier multipliers divide later denominators but avoid later reduced numerators, producing fresh pairwise-coprime moduli whose forbidden residue windows cannot be crossed indefinitely by bounded rises.",
+        "attribution": "Source-current Lean in ReciprocalTailRigidity.lean:1010,1060, canonically bound by Claims commit 06198c0a; no novelty, priority, significance, or external-review claim is made.",
+        "limitations": [
+          "No bounded-rise producer for the original reciprocal-tail orbit is proved.",
+          "All exact dynamics, reduced coprimality, multiplier, and escape hypotheses remain explicit.",
+          "No eventual Sylvester recovery, reciprocal-tail irrationality, or Erdős #243 endpoint follows."
+        ],
+        "reason": "Represented below centered_state_dynamics and negative_mass_recovery but above finite search because it is a distinct arithmetic natural-friction theorem, not another helper identity or endpoint claim.",
+        "reversal_evidence": "A source-faithful Comparator transport would strengthen review evidence; a proof of bounded rise for the original orbit would justify promotion, while another finite recurrence instance would not."
+      },
       {
         "candidate_id": "erdos1041_ray_separation",
         "family_id": "ray_separation",

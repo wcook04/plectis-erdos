@@ -32,7 +32,11 @@ DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
 MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
-OUTPUT_BUDGET_BYTES = 73_000
+# Problem routes preserve every reviewed family and its exact boundary.  Eight
+# public problems currently require just under 78 KB for the largest (#249)
+# source-current route, so retain a modest fixed ceiling instead of rejecting
+# the default public command or silently truncating that family inventory.
+OUTPUT_BUDGET_BYTES = 80_000
 AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
 # The tour carries the complete reviewed result-family index as well as the
 # problem map.  The allowance scales with the canonical eight-problem and
@@ -9867,7 +9871,7 @@ def main() -> int:
         encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
             print(
-                f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; lower --limit or use --format card",
+                f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; use --format card",
                 file=sys.stderr,
             )
             return 2
