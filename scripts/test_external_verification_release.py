@@ -21,6 +21,18 @@ import run_external_verification as receipt
 import validation_singleflight as singleflight
 
 
+PUBLIC_PROBLEM_ARTIFACTS = {
+    68: "erdos-68-factorial-denominator-irrationality.pdf",
+    243: "erdos-243-reciprocal-tail-rigidity.pdf",
+    249: "erdos-249-binary-totient-series.pdf",
+    251: "erdos-251-prime-gap-dyadic-series.pdf",
+    257: "erdos-257-mersenne-support-subseries.pdf",
+    269: "erdos-269-three-prime-running-lcm.pdf",
+    1041: "erdos-1041-lemniscate-newton-flow.pdf",
+    1049: "erdos-1049-rational-base-lambert.pdf",
+}
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -734,6 +746,22 @@ def test_replay_plan() -> None:
         raise AssertionError("floating branch name was accepted as a replay commit")
 
 
+def test_public_problem_artifact_coverage() -> None:
+    """Keep the immutable release envelope visible across the full problem fleet."""
+    live_contract = release.contract(release.ROOT)
+    tracked = set(live_contract["tracked_artifacts"])
+    missing = [
+        artifact
+        for _, artifact in sorted(PUBLIC_PROBLEM_ARTIFACTS.items())
+        if artifact not in tracked
+    ]
+    require(
+        not missing,
+        "external-verification release contract omits public problem artifacts: "
+        + ", ".join(missing),
+    )
+
+
 def test_release_manifest() -> None:
     with tempfile.TemporaryDirectory() as temporary:
         parent = Path(temporary)
@@ -830,6 +858,7 @@ def main() -> int:
     test_receipt_subprocess_environment()
     test_replay_subprocess_environment()
     test_replay_plan()
+    test_public_problem_artifact_coverage()
     test_release_manifest()
     print(
         "external-verification release contract: replay plan, immutable manifest, "
