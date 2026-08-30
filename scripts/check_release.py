@@ -42,10 +42,13 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
+from collections.abc import Mapping
 from pathlib import Path
+from typing import Any
 
 from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
 from publication_contract import (
@@ -62,6 +65,32 @@ from systems_paper_evidence import (
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
 CHECKS = 0
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SANITIZED_GIT_ENVIRONMENT_KEYS = (
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_INDEX_FILE",
+    "GIT_NAMESPACE",
+    "GIT_REPLACE_REF_BASE",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+    "GIT_COMMON_DIR",
+)
+_SUBPROCESS_RUN = subprocess.run
+
+
+def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
+    """Remove inherited Git selectors before any release-gate subprocess."""
+    environment = dict(os.environ if base is None else base)
+    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
+        environment.pop(key, None)
+    return environment
+
+
+def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
+    """Run a release-gate subprocess with checkout-independent Git state."""
+    kwargs["env"] = clean_environment()
+    return _SUBPROCESS_RUN(*args, **kwargs)
 
 LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
@@ -308,7 +337,7 @@ def module_lines(
             path = ROOT / rel
             cache[key] = read(path).splitlines() if path.is_file() else None
         else:
-            completed = subprocess.run(
+            completed = run(
                 ["git", "show", f"{source_ref}:{rel}"],
                 cwd=ROOT,
                 capture_output=True,
@@ -330,7 +359,7 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     generated navigation, and release metadata may legitimately advance after
     that checkpoint.
     """
-    comparison = subprocess.run(
+    comparison = run(
         ["git", "diff", "--quiet", formal_ref, "--", *PROOF_PATHS],
         cwd=ROOT,
         capture_output=True,
@@ -339,7 +368,7 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     )
     if comparison.returncode not in (0, 1):
         return False, comparison.stderr.strip() or "could not compare formal source to worktree"
-    untracked = subprocess.run(
+    untracked = run(
         ["git", "ls-files", "--others", "--exclude-standard", "--", *PROOF_PATHS],
         cwd=ROOT,
         capture_output=True,
@@ -526,7 +555,7 @@ def main() -> int:
         "systems paper evidence fixtures stopped rejecting: "
         + ", ".join(systems_paper_fixture_failures),
     )
-    problem_index_check = subprocess.run(
+    problem_index_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "build_problem_index.py"),
@@ -542,7 +571,7 @@ def main() -> int:
         "generated problem-index freshness failed: "
         f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
     )
-    external_verification_check = subprocess.run(
+    external_verification_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "build_external_verification.py"),
@@ -558,7 +587,7 @@ def main() -> int:
         "external-verification projection or statement-isolation check failed: "
         f"{external_verification_check.stdout.strip() or external_verification_check.stderr.strip()}",
     )
-    external_verification_release_check = subprocess.run(
+    external_verification_release_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "test_external_verification_release.py"),
@@ -573,7 +602,7 @@ def main() -> int:
         "external-verification replay or immutable release-identity contract failed: "
         f"{external_verification_release_check.stdout.strip() or external_verification_release_check.stderr.strip()}",
     )
-    note_source_check = subprocess.run(
+    note_source_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "check_problem_note_sources.py"),
@@ -589,7 +618,7 @@ def main() -> int:
         "problem-note pinned-source contract failed: "
         f"{note_source_check.stdout.strip() or note_source_check.stderr.strip()}",
     )
-    paper_corpus_check = subprocess.run(
+    paper_corpus_check = run(
         [
             sys.executable,
             str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
@@ -607,7 +636,7 @@ def main() -> int:
     # Freshness is not the only way the corpus can mislead. Nothing here has
     # been externally reviewed and nothing carries an archival identifier; a
     # field claiming either would read as a credential at publication stage.
-    publication_taxonomy_check = subprocess.run(
+    publication_taxonomy_check = run(
         [
             sys.executable,
             str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
@@ -622,7 +651,7 @@ def main() -> int:
         "paper publication-taxonomy honesty failed: "
         f"{publication_taxonomy_check.stdout.strip() or publication_taxonomy_check.stderr.strip()}",
     )
-    publication_taxonomy_current = subprocess.run(
+    publication_taxonomy_current = run(
         [
             sys.executable,
             str(ROOT / "docs" / "papers" / "build_publication_taxonomy.py"),
@@ -677,7 +706,7 @@ def main() -> int:
             "tag, optionally with a positive correction revision",
         )
         if isinstance(public_tag, str):
-            tag_kind = subprocess.run(
+            tag_kind = run(
                 ["git", "cat-file", "-t", public_tag],
                 cwd=ROOT,
                 capture_output=True,
@@ -688,7 +717,7 @@ def main() -> int:
                 tag_kind.returncode == 0 and tag_kind.stdout.strip() == "tag",
                 "release.formal_source.public_tag must resolve to an annotated tag",
             )
-            resolved_tag = subprocess.run(
+            resolved_tag = run(
                 ["git", "rev-parse", f"{public_tag}^{{}}"],
                 cwd=ROOT,
                 capture_output=True,
@@ -1133,7 +1162,7 @@ def main() -> int:
     paper_sources = [(row["source"], read(ROOT / row["source"])) for row in paper_rows]
     paper = paper_sources[0][1]
     all_paper = "\n".join(text for _path, text in paper_sources)
-    check(subprocess.run(["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"], cwd=ROOT,
+    check(run(["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"], cwd=ROOT,
                          capture_output=True, text=True, check=False).returncode == 0,
           f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit")
     formal_tree_matches, formal_tree_detail = formal_source_matches_current_lean_tree(formal_ref)
@@ -1431,7 +1460,7 @@ def main() -> int:
     check("mathematical programme" in flat_agents,
           "AGENTS.md must expose mathematical programme routes")
 
-    architecture_check = subprocess.run(
+    architecture_check = run(
         [sys.executable, str(ROOT / "scripts" / "check_architecture_guide.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1443,7 +1472,7 @@ def main() -> int:
         "newcomer architecture guide failed: "
         f"{architecture_check.stdout.strip() or architecture_check.stderr.strip()}",
     )
-    architecture_fixture_check = subprocess.run(
+    architecture_fixture_check = run(
         [sys.executable, str(ROOT / "scripts" / "test_architecture_guide.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1455,7 +1484,7 @@ def main() -> int:
         "newcomer architecture guide fixtures failed: "
         f"{architecture_fixture_check.stdout.strip() or architecture_fixture_check.stderr.strip()}",
     )
-    agent_navigation_paper_check = subprocess.run(
+    agent_navigation_paper_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
@@ -1483,7 +1512,7 @@ def main() -> int:
     wave_index_errors = wave_index_entry_errors(wave_index)
     check(not wave_index_errors, "; ".join(wave_index_errors))
 
-    methodology_check = subprocess.run(
+    methodology_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_methodology.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1493,7 +1522,7 @@ def main() -> int:
     check(methodology_check.returncode == 0,
           f"methodology projection drift: {methodology_check.stdout.strip() or methodology_check.stderr.strip()}")
 
-    module_graph_check = subprocess.run(
+    module_graph_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_module_graph.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1503,7 +1532,7 @@ def main() -> int:
     check(module_graph_check.returncode == 0,
           f"module graph drift: {module_graph_check.stdout.strip() or module_graph_check.stderr.strip()}")
 
-    atlas_check = subprocess.run(
+    atlas_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_declaration_atlas.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1513,7 +1542,7 @@ def main() -> int:
     check(atlas_check.returncode == 0,
           f"declaration atlas drift: {atlas_check.stdout.strip() or atlas_check.stderr.strip()}")
 
-    certificate_probe_check = subprocess.run(
+    certificate_probe_check = run(
         [sys.executable, str(ROOT / "scripts" / "probe_certificate_supply.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1523,7 +1552,7 @@ def main() -> int:
     check(certificate_probe_check.returncode == 0,
           f"certificate-supply probe drift: {certificate_probe_check.stdout.strip() or certificate_probe_check.stderr.strip()}")
 
-    second_channel_probe_check = subprocess.run(
+    second_channel_probe_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "probe_second_channel_separation.py"),
@@ -1537,7 +1566,7 @@ def main() -> int:
     check(second_channel_probe_check.returncode == 0,
           f"second-channel separation probe drift: {second_channel_probe_check.stdout.strip() or second_channel_probe_check.stderr.strip()}")
 
-    off_diagonal_roster_check = subprocess.run(
+    off_diagonal_roster_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "build_off_diagonal_certificate_roster.py"),
@@ -1551,7 +1580,7 @@ def main() -> int:
     check(off_diagonal_roster_check.returncode == 0,
           f"off-diagonal certificate roster drift: {off_diagonal_roster_check.stdout.strip() or off_diagonal_roster_check.stderr.strip()}")
 
-    diagonal_depth_roster_check = subprocess.run(
+    diagonal_depth_roster_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "build_checked_diagonal_depth_roster.py"),
@@ -1569,7 +1598,7 @@ def main() -> int:
     # than a reread.  Its coverage contract is what stops a barrier from being
     # described as closing a family of engines while a weaker sibling engine
     # survives it, which has happened here once already.
-    semantic_build = subprocess.run(
+    semantic_build = run(
         [sys.executable, str(ROOT / "scripts" / "build_semantic_corpus.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1579,7 +1608,7 @@ def main() -> int:
     check(semantic_build.returncode == 0,
           f"semantic corpus drift: {semantic_build.stdout.strip() or semantic_build.stderr.strip()}")
 
-    semantic_contract = subprocess.run(
+    semantic_contract = run(
         [sys.executable, str(ROOT / "scripts" / "check_semantic_corpus.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1588,7 +1617,7 @@ def main() -> int:
     )
     check(semantic_contract.returncode == 0,
           f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
-    semantic_review_check = subprocess.run(
+    semantic_review_check = run(
         [sys.executable, str(ROOT / "scripts" / "semantic_review.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1600,7 +1629,7 @@ def main() -> int:
         "semantic review receipt contract: "
         f"{semantic_review_check.stdout.strip() or semantic_review_check.stderr.strip()}",
     )
-    semantic_review_fixtures = subprocess.run(
+    semantic_review_fixtures = run(
         [sys.executable, str(ROOT / "scripts" / "test_semantic_review.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1619,7 +1648,7 @@ def main() -> int:
     # failure mode is worse: a plausible mechanism laid over a proof that works
     # for another reason, or a barrier written up without naming the sibling
     # engines it leaves alive.
-    lab_build = subprocess.run(
+    lab_build = run(
         [sys.executable, str(ROOT / "scripts" / "build_theory_lab.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1629,7 +1658,7 @@ def main() -> int:
     check(lab_build.returncode == 0,
           f"theory lab drift: {lab_build.stdout.strip() or lab_build.stderr.strip()}")
 
-    lab_contract = subprocess.run(
+    lab_contract = run(
         [sys.executable, str(ROOT / "scripts" / "check_theory_lab.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1650,7 +1679,7 @@ def main() -> int:
         "theory lab retains self-invalidating Git-derived provenance",
     )
 
-    coordinate_check = subprocess.run(
+    coordinate_check = run(
         [sys.executable, str(ROOT / "scripts" / "refresh_source_coordinates.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1660,7 +1689,7 @@ def main() -> int:
     check(coordinate_check.returncode == 0,
           f"source-coordinate drift: {coordinate_check.stdout.strip() or coordinate_check.stderr.strip()}")
 
-    reasoning_coordinate_check = subprocess.run(
+    reasoning_coordinate_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "refresh_reasoning_source_coordinates.py"),
@@ -1679,7 +1708,7 @@ def main() -> int:
             or reasoning_coordinate_check.stderr.strip()
         ),
     )
-    reasoning_coordinate_test = subprocess.run(
+    reasoning_coordinate_test = run(
         [sys.executable, str(ROOT / "scripts" / "test_reasoning_source_coordinates.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1695,7 +1724,7 @@ def main() -> int:
         ),
     )
 
-    corpus_check = subprocess.run(
+    corpus_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_corpus_descriptor.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1705,7 +1734,7 @@ def main() -> int:
     check(corpus_check.returncode == 0,
           f"corpus descriptor drift: {corpus_check.stdout.strip() or corpus_check.stderr.strip()}")
 
-    paper_alias_check = subprocess.run(
+    paper_alias_check = run(
         [sys.executable, str(ROOT / "scripts" / "build_paper_module_aliases.py"), "--check"],
         cwd=ROOT,
         capture_output=True,
@@ -1714,7 +1743,7 @@ def main() -> int:
     )
     check(paper_alias_check.returncode == 0,
           f"paper module alias drift: {paper_alias_check.stdout.strip() or paper_alias_check.stderr.strip()}")
-    reasoning_assembly_check = subprocess.run(
+    reasoning_assembly_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
@@ -1733,7 +1762,7 @@ def main() -> int:
             or reasoning_assembly_check.stderr.strip()
         ),
     )
-    boundary = subprocess.run(
+    boundary = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
@@ -1912,7 +1941,7 @@ def main() -> int:
                 (ROOT / rel).is_file(),
                 f"orientation drilldown path does not exist: {rel}",
             )
-    query_check = subprocess.run(
+    query_check = run(
         [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1921,7 +1950,7 @@ def main() -> int:
     )
     check(query_check.returncode == 0,
           f"corpus query surface failed: {query_check.stdout.strip() or query_check.stderr.strip()}")
-    mutation_harness_check = subprocess.run(
+    mutation_harness_check = run(
         [sys.executable, str(ROOT / "scripts" / "test_publication_mutation_harness.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1933,7 +1962,7 @@ def main() -> int:
         "publication mutation harness self-test failed: "
         f"{mutation_harness_check.stdout.strip() or mutation_harness_check.stderr.strip()}",
     )
-    public_boundary_check = subprocess.run(
+    public_boundary_check = run(
         [sys.executable, str(ROOT / "scripts" / "test_public_artifact_boundary.py")],
         cwd=ROOT,
         capture_output=True,
@@ -1950,7 +1979,7 @@ def main() -> int:
     # standalone diagnostic here as well would repeat every bounded query.
     # Keep the diagnostic as a user-facing command, but execute the combined
     # baseline-plus-adversarial program once in the release gate.
-    cold_clone_adversarial = subprocess.run(
+    cold_clone_adversarial = run(
         [sys.executable, str(ROOT / "scripts" / "test_cold_clone_comprehension.py")],
         cwd=ROOT,
         capture_output=True,
