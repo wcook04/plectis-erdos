@@ -6,7 +6,9 @@
 from __future__ import annotations
 
 import json
+import os
 import re
+import tempfile
 from pathlib import Path
 
 
@@ -23,6 +25,24 @@ def require(condition: bool, message: str) -> None:
     """Keep root-closure failures active when run with ``python -O``."""
     if not condition:
         raise AssertionError(message)
+
+
+def safe_public_file(root: Path, path: Path) -> Path:
+    """Resolve only regular files without symlinked checkout components."""
+    root = Path(os.path.abspath(root))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        require(
+            not current.is_symlink(),
+            f"public root-closure path traverses a symbolic link: {candidate}",
+        )
+        if current == root:
+            break
+        require(current.parent != current, f"public root-closure path escaped checkout: {candidate}")
+        current = current.parent
+    require(candidate.is_file(), f"public root-closure path is not a regular file: {candidate}")
+    return candidate
 
 
 def registry_errors(
@@ -104,6 +124,21 @@ def closure_errors(
 
 
 def check_fixtures() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        outside = root / "outside"
+        outside.mkdir()
+        (outside / "Escaped.lean").write_text("theorem escaped : True := True.intro\n", encoding="utf-8")
+        source_dir = root / "Erdos249257"
+        source_dir.mkdir()
+        (source_dir / "linked").symlink_to(outside, target_is_directory=True)
+        try:
+            safe_public_file(root, source_dir / "linked" / "Escaped.lean")
+        except AssertionError:
+            pass
+        else:
+            require(False, "root-closure source guard followed a symlinked parent")
+
     connected = [
         {
             "id": "Erdos249257.A",
@@ -239,7 +274,9 @@ def check_fixtures() -> None:
 
 def main() -> int:
     check_fixtures()
-    claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
+    claims = json.loads(
+        safe_public_file(ROOT, ROOT / "docs" / "claims.json").read_text(encoding="utf-8")
+    )
     graph = claims["machine_readable_paper"]["module_graph"]
     require(
         graph["root"] == "Erdos249257.lean",
@@ -253,7 +290,9 @@ def main() -> int:
     root_imports = [
         imported
         for root in roots
-        for imported in IMPORT_RE.findall((ROOT / root).read_text(encoding="utf-8"))
+        for imported in IMPORT_RE.findall(
+            safe_public_file(ROOT, ROOT / root).read_text(encoding="utf-8")
+        )
     ]
     imports_by_id = {
         str(node["id"]): list(node["imports"]) for node in graph["nodes"]
@@ -274,7 +313,10 @@ def main() -> int:
     public_paths = {
         path.relative_to(ROOT).as_posix()
         for library_root in LIBRARY_ROOTS
-        for path in (ROOT / library_root).rglob("*.lean")
+        for path in (
+            safe_public_file(ROOT, path)
+            for path in (ROOT / library_root).rglob("*.lean")
+        )
     }
     auxiliary_contract = graph["auxiliary_root_contract"]
     errors = [
