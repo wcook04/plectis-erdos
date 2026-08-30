@@ -420,6 +420,13 @@ replacement for claim authority.
   first-harmonic routes and not an #249 proof, novelty, or priority claim
   (`ExternalVerification/Challenge.lean`;
   `ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:25-233`).
+- A source-only cyclotomic companion makes one arithmetic input explicit: for a
+  prime `q`, every prime divisor `p` of the exact `X−2` layer `2^q−1` satisfies
+  `q ∣ p−1`, so `mersenneLayer_unboundedPrimeDivisorSupply` gives unbounded
+  prime divisors along prime indices (`ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:33-108`).
+  This is not the Euler-totient orbit: the layer/order hypotheses do not supply
+  totient-carry escape or irrationality. A separate checked certificate only
+  excludes denominators dividing `2^300(2^30−1)` (`:3265-3271`).
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
