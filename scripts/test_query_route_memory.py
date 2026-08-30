@@ -14,11 +14,18 @@ from pathlib import Path
 from unittest.mock import patch
 
 import query_route_memory as route_memory
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT / "scripts" / "query_route_memory.py"
 PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep CLI environment assertions active when Python is run with -O."""
+    if not condition:
+        raise AssertionError(message)
 
 
 def assert_rejected(packet: dict, code: str) -> None:
@@ -28,6 +35,64 @@ def assert_rejected(packet: dict, code: str) -> None:
         assert exc.code == code, f"expected {code}, got {exc.code}: {exc}"
         return
     raise AssertionError(f"mutation escaped: {code}")
+
+
+def run_cli(
+    *args: str,
+    input_text: str | None = None,
+    optimized: bool = False,
+    check: bool = False,
+) -> subprocess.CompletedProcess[str]:
+    """Run route-memory CLI checks without ambient process state or hangs."""
+    executable = [sys.executable]
+    if optimized:
+        executable.append("-O")
+    return subprocess.run(
+        [*executable, str(SCRIPT), *args],
+        cwd=ROOT,
+        input=input_text,
+        check=check,
+        capture_output=True,
+        text=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
+
+
+def check_cli_environment() -> None:
+    """Prove route-memory CLI fixtures ignore hostile inherited selectors."""
+    hostile_environment = {
+        "GIT_DIR": str(ROOT / "not-a-git-directory"),
+        "GIT_NAMESPACE": "hostile-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replace/hostile/",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = subprocess.CompletedProcess([], 0, stdout="{}", stderr="")
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(subprocess, "run", return_value=completed) as run:
+            observed = run_cli("--problem", "249")
+
+    require(observed is completed, "route-memory CLI result was not returned")
+    require(len(run.call_args_list) == 1, "route-memory CLI was not exercised")
+    kwargs = run.call_args.kwargs
+    sanitized = kwargs["env"]
+    for key in (
+        "GIT_DIR",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+        "PYTHONPATH",
+    ):
+        require(key not in sanitized, f"ambient {key} leaked into route-memory CLI")
+    require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale missing")
+    require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
+    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into route-memory CLI")
+    require(
+        kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "route-memory CLI timeout drifted",
+    )
 
 
 def main() -> int:
@@ -109,44 +174,27 @@ def main() -> int:
     assert_rejected(cross_route, "packet_mismatch")
 
     # Exercise the real CLI, including the optimized interpreter path.
-    completed = subprocess.run(
-        [sys.executable, str(SCRIPT), "--problem", "249", "--route", "erdos249_certificate_story"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
+    check_cli_environment()
+    completed = run_cli(
+        "--problem", "249", "--route", "erdos249_certificate_story", check=True
     )
     cli_packet = json.loads(completed.stdout)
     assert route_memory.validate_packet(cli_packet)["route"]["id"] == "erdos249_certificate_story"
-    cli_validate = subprocess.run(
-        [sys.executable, str(SCRIPT), "--validate", "-"],
-        cwd=ROOT,
-        input=json.dumps(cli_packet),
-        check=False,
-        capture_output=True,
-        text=True,
+    cli_validate = run_cli(
+        "--validate", "-", input_text=json.dumps(cli_packet)
     )
     assert cli_validate.returncode == 0, cli_validate.stderr
     assert json.loads(cli_validate.stdout)["resume_state"] == cli_packet["resume_state"]
     stale_cli = copy.deepcopy(cli_packet)
     stale_cli["source_snapshot"]["commit"] = "0" * 40
-    stale_result = subprocess.run(
-        [sys.executable, str(SCRIPT), "--validate", "-"],
-        cwd=ROOT,
-        input=json.dumps(stale_cli),
-        check=False,
-        capture_output=True,
-        text=True,
+    stale_result = run_cli(
+        "--validate", "-", input_text=json.dumps(stale_cli)
     )
     assert stale_result.returncode == 2
     assert stale_result.stdout == ""
     assert "stale_source_snapshot" in stale_result.stderr
-    optimized = subprocess.run(
-        [sys.executable, "-O", str(SCRIPT), "--problem", "257", "--format", "card"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
+    optimized = run_cli(
+        "--problem", "257", "--format", "card", optimized=True, check=True
     )
     assert optimized.stdout.startswith("route-memory erdos_257:unrouted | problem #257")
     print("query_route_memory: 8 selectors, stale/cross-problem/invented guards, CLI normal/-O PASS")
