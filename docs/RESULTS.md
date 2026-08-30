@@ -121,7 +121,7 @@ digestion value, evidence certainty, natural friction, and overclaim risk—not
 by row count, inherited order, or citation presence. The family-level table
 below is the compact reading map; every declaration remains source-current and
 individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 40-row universe; their
+without a Comparator transport are not counted in the 44-row universe; their
 dispositions are stated in the relevant per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
