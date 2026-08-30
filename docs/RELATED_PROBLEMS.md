@@ -37,12 +37,27 @@ records an `advances_open_target` edge.
 
 ## Relation in this repository
 
-- **#68** — exact factorial-successor and carry frontiers, structural consumers,
-  and a finite denominator exclusion; no irrationality proof.
+- **#68** — the [factorial-carry note](papers/full-text/erdos-68-factorial-denominator-irrationality.md)
+  routes to the exact [FactorialZeroPlateau source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090):
+  factorial-successor and carry frontiers, structural consumers, and a finite
+  denominator exclusion; open boundary: produce cofinally many non-unit
+  carries, not merely one finite miss.
 - **#249** — an unconditional denominator exclusion and conditional reductions,
   no solution.
 - **#257** — named infinite-support cases and full support (`A = ℕ`), not the
   universal statement.
+- **#243** — the [reciprocal-tail note](papers/full-text/erdos-243-reciprocal-tail-rigidity.md)
+  and [ReciprocalTailRigidity source](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L897)
+  exclude bounded negative-error regimes; open boundary: the unbounded
+  mixed-sign/negative-excursion regime.
+- **#251** — the [prime-gap note](papers/full-text/erdos-251-prime-gap-dyadic-series.md)
+  and [PrimeGapDyadicTail source](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L360)
+  expose the exact dyadic-tail machinery; open boundary: cofinally many
+  adjacent small tail shifts at indices where prime gaps differ.
+- **#269** — the [running-lcm note](papers/full-text/erdos-269-three-prime-running-lcm.md)
+  and [ThreePrimeRunningLcm source](../ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L123)
+  expose exact three-prime identities and a conditional residue-escape route;
+  open boundary: the rationality-to-carry bridge and cofinal window escape.
 - **#1041** — the paper-facing route checks Newton-flow ray separation and
   perturbation lemmas. The source-current [frontier delta](../research_corpus/Erdos1041/FRONTIER.md)
   additionally routes the surviving hub-selection, near-Fekete, perimeter,
@@ -53,10 +68,12 @@ records an `advances_open_target` edge.
   and [paper note](papers/full-text/erdos-1041-lemniscate-newton-flow.md)
   together, keeping the source-only frontier separate from reviewed claim
   authority.
-- **#1049** — the integer-base case `b ≥ 2` is
-  `irrational_erdosSum_full_support`; at rational noninteger bases the public
-  modules check clearing, height-region, and Padé obstructions but no
-  irrationality theorem.
+- **#1049** — the [rational-base note](papers/full-text/erdos-1049-rational-base-lambert.md)
+  and [RationalBaseLambert source](../ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155)
+  route the `3/2` clearing, height-region, and Padé obstructions; no
+  irrationality theorem is claimed. The integer-base case `b ≥ 2` is
+  `irrational_erdosSum_full_support`; open boundary: irrationality at `3/2`,
+  the primitive noncollapsed construction, and analytic remainder control.
 - **#69** — the prime-support case of #257; only the identity bridge to
   `∑_p 1/(2ᵖ−1)` is formalised, not the irrationality.
 - **#250** — the ladder neighbour `L(Id)`; cited, not re-proved.
