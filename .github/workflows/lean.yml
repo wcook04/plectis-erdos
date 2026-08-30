@@ -177,6 +177,10 @@ jobs:
         run: python3 scripts/test_dependency_lock_contract.py
       - name: Test bounded build planner
         run: python3 scripts/test_lean_fast_build.py
+      - name: Test dependency-bootstrap environment
+        run: |
+          python3 scripts/test_lean_dependency_environment.py
+          python3 -O scripts/test_lean_dependency_environment.py
       - name: Test dependency-index verification cache
         run: python3 scripts/test_lean_dependency_index_cache.py
       - name: Restore project Lean cache
