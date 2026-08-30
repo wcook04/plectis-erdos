@@ -74,7 +74,7 @@ PYTHON_CONTEXT_KEYS = frozenset(
 )
 PYTHON_STABILITY_KEYS = frozenset({"PYTHONHASHSEED", "PYTHONOPTIMIZE", "PYTHONUTF8"})
 LOCALE_KEYS = frozenset({"LC_ALL", "LANG", "LANGUAGE"})
-GIT_LOOKUP_TIMEOUT_SECONDS = 30
+GIT_LOOKUP_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 
 
 def has_symlink_component(path: Path, root: Path = ROOT) -> bool:

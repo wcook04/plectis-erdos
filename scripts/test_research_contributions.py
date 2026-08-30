@@ -13,6 +13,7 @@ from pathlib import Path
 from unittest import mock
 
 import build_research_contributions as contributions
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,6 +79,11 @@ def accepted_source() -> tuple[str, dict, bytes]:
 
 
 def main() -> int:
+    require(
+        contributions.GIT_LOOKUP_TIMEOUT_SECONDS
+        == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "contribution builder Git timeout drifted from the canonical boundary",
+    )
     with tempfile.TemporaryDirectory() as directory:
         source_path = Path(directory) / FIXTURE.name
         source_path.write_bytes(FIXTURE.read_bytes())
