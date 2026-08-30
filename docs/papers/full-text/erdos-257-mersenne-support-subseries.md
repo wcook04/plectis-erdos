@@ -14,7 +14,11 @@ Erdős #257 asks whether $`X_A=\sum_{a\in A}(2^a-1)^{-1}`$ is irrational for ev
 ``` math
 \sum_{a\in A}\frac1a\ge\frac1{\operatorname{ord}_v(2)}.
 ```
-At the dyadic endpoint $`X_A=p/2^c`$, an infinite support instead forces either nonsummability of the reciprocal support terms or reciprocal mass greater than $`1`$. This becomes a contradiction only after an independent proof of summability and mass at most $`1`$. Finally, rational values admit an exact Boolean–Möbius scaled-tail characterisation from which the support is reconstructed. These constraints are not known to be contradictory.
+At the dyadic endpoint $`X_A=p/2^c`$, an infinite support instead forces either nonsummability of the reciprocal support terms or reciprocal mass greater than $`1`$. This becomes a contradiction only after an independent proof of summability and mass at most $`1`$.
+
+The squarefree support exposes a sharper boundary. A cited theorem of Duverney–Tachiya gives joint $`Q`$-linear independence of $`1`$ and $`X_{Asf}(2^j)`$ for every finite collection of $`jge1`$, hence irrationality at each power-of-two base; this citation is not formalised here. Yet the exact incidence formula $`scA_{Asf}(n)=2^{\omega(n)}-1`$ makes both digitwise and carry-aware block-certificate hypotheses impossible at every even base, already at precision $`q=b^2`$. Adjoining exponent $`1`$ shifts the value by the rational $`1/(b-1)`$ while changing the incidence from odd to even, showing that this no-go is coordinate-dependent rather than an obstruction in the value itself.
+
+Finally, rational values admit an exact Boolean–Möbius scaled-tail characterisation from which the support is reconstructed. These constraints are not known to be contradictory.
 
 On the multiplicative side, a composite support element obeys an exact dilation identity with an explicit foreign-divisor defect. For an orthogonal petal bouquet that defect is bounded by the finite exceptional frame plus the petal incidence, while prime supports have zero defect. This is a local interface for a correlation argument, not a correlation theorem.
 
@@ -27,6 +31,20 @@ We then record the achievement-set geometry. Every restriction to a set $`J`$ of
 > **Relation to the open problem.** These are distinct contribution classes: local structure, known achievement-set geometry, and prior mathematics. None treats every infinite support, so universal Problem #257 and the stated rational targets remain open.
 >
 > **Executable review object.** Comparator selects the exact finite-period theorem, the restricted-set measure dichotomy, the unrestricted measure-one theorem, and the classical full-support theorem; the receipt lists the exact theorem set actually checked. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
+For release review, the selected full-support Comparator row is exact: `irrational_erdosSum_full_support` states that for every integer base $`b\ge2`$,
+``` math
+\operatorname{Irr}\!\left(\sum_{k\ge0}
+    \frac{1}{b^{k+1}-1}\right).
+```
+This is the full-support case $`A=\mathbb{N}_{>0}`$ (with the index shifted to $`k\ge0`$), not a theorem for every infinite support; the universal Problem #257 boundary therefore remains unchanged.
+
+The selected finite-period Comparator row is exact: `finite_period_noncollapse_rat_den_interface` states that for finite nonempty $`F`$ with $`0\notin F`$, integer $`b\ge2`$, and $`\gcd(b,\operatorname{den}(\operatorname{finiteErdosSum}(F,b)))=1`$,
+``` math
+\operatorname{orderOf}(\operatorname{unitOfCoprime}(b,h_{\rm cop}))
+    = \operatorname{lcm}(F).
+```
+This is a reduced-denominator/$`\operatorname{ZMod}`$ order interface for finite supports; it does not extend the finite theorem to arbitrary infinite supports or settle Problem #257.
 
 <a id="sec:problem"></a>
 

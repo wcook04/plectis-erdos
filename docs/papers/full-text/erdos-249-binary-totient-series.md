@@ -16,6 +16,25 @@ For $`j\ge0`$ and $`0\le r<2^j`$, write $`\varphi_{j,r}(n)=\varphi(2^jn+r)`$. We
 ```
 is a $`\mathbb{Q}`$-basis for the span of the $`2`$-kernel of Euler’s totient. Consequently, the span of the dyadic sections through level $`e`$ has dimension exactly $`2^e+1`$ for every $`e\ge1`$, and the two elementary reduction identities generate every $`\mathbb{Q}`$-linear relation among the sections. This determines the entire dyadic-section span; it does not decide the irrationality question below.
 
+The same reduction has an all-base conditional form. For every integer base $`k\ge2`$ and level $`e\ge1`$, the explicit canonical family spans the corresponding truncation; if that family is linearly independent, the truncation has dimension $`k^e+1`$. The independence input is external, so this conditional rank statement is structural and does not prove irrationality of $`S`$.
+
+For release review, the selected dyadic core rows are exact: `finrank_totientKernelThroughLevelFamily_eq` gives dimension $`2^e+1`$ for every $`e\ge1`$, while `exists_totientDyadicSectionBasis` supplies a basis for the full odd-core span. The companion row `not_finiteDimensional_span_fullTotientKernel` records that the full rational span is not finite-dimensional. These are structural coefficient-space results, not a rationality-to-finite-rank bridge.
+
+The selected all-base Comparator row is exact: `finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent` takes integers $`k,e`$ with $`2\le k`$ and $`1\le e`$, together with $`\mathbb{Q}`$-linear independence of the explicit canonical family, and concludes
+``` math
+\operatorname{finrank}_{\mathbb{Q}}\!\left(\operatorname{span}_{\mathbb{Q}}
+   \operatorname{range}(\operatorname{allBaseTotientKernelThroughLevelFamily}(k,e))\right)
+   = k^e+1.
+```
+The checked declaration is the conditional rank interface at [conditional all-base rank](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/TotientKernelConditional.lean#L215). Its independence hypothesis remains an external boundary; this row does not prove irrationality of $`S`$.
+
+The release Comparator also selects the exact combinatorial stability row `runHeight_defect_fib_sum_lower`. For every finite defect list $`e`$, it states
+``` math
+F_{|e|+3}+F_{|e|+1}\sum_{i\in e}i
+  \le \operatorname{runHeight}(\operatorname{defectRunLengths}(e)),
+```
+where $`F_j=\operatorname{fib}(j)`$. This is a finite Stern–Brocot run-height floor; it does not establish denominator survival, irrationality of $`S`$, or a cofinal certificate supply.
+
 The same checked Lambert calculus also identifies the squared-Mersenne layer: the constant weight gives the dyadic divisor-count series $`\sum_{n\ge1}(\sigma(n)-\tau(n))2^{-n}`$, while the totient weight gives the first gcd-moment series $`\sum_{n\ge1}(\mathsf P(n)-n)2^{-n}`$, where $`\mathsf P(n)=\sum_{d\mid n}\varphi(d)(n/d)`$. These are exact structural identities, not an irrationality proof for $`S`$.
 
 At every diagonal scale $`H`$ and squared-layer cutoff $`D`$, the same calculus gives a sharper certificate interface. The scaled diagonal tail difference is an explicit rational centre plus a signed squared-Mersenne tail, whose absolute value is at most $`4\,2^H(2^H-1)/(3(2^{D+1}-1)^2)`$. If that centre is farther from every integer than this radius, the diagonal misses the full integral target. This is a producer-independent separation criterion, not an unbounded certificate family and not a proof that $`S`$ is irrational.

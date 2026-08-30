@@ -24,6 +24,10 @@ An independently regenerated exact GMP certificate supplies a miss at $`m=300000
 
 The finite channel algebra gives a second rigorous layer. In each channel $`d`$, the channel numerator is congruent to the factorial moment modulo $`d!-1`$; simultaneous cancellation through a cutoff $`D`$ therefore forces a specified least common multiple to divide that moment. A two-term prime correction isolates one channel, and a Cramer construction gives arbitrarily remote finite supports that cancel any prescribed finite set of channels and have residual of absolute value at most $`1/2`$. That rounded residual may be zero. Separately, endpoint congruences turn sufficiently large residues or disagreement between two projections into finite exclusions.
 
+There is also a sharp finite breakpoint hidden inside this channel picture: within one quotient band $`kd\le i_j<(k+1)d`$, every factorial extracts the same power $`(d!)^k`$. Thus a vanishing $`d`$-channel forces the factorial moment to vanish; in particular, a nonzero moment with all indices at least $`d`$ must cross the first breakpoint and include some index at least $`2d`$. This is a finite support obstruction, not a cofinal construction.
+
+The evidence route is explicit rather than heuristic: the cofinal carry equivalence is kernel-checked at [the carry equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L971); the quotient-band obstruction at [the band-cancellation theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L91); and the remote finite reduction at [the remote construction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1657). The first identifies the exact missing cofinal input, while the latter two remain finite mechanisms and do not supply it.
+
 No theorem constructs cofinally many non-unit carries, a cofinal family of strictly nonzero translated residuals, or the quantitative residue and scale bounds required by the endpoint arguments. The note therefore proves a carry normal form, finite channel obstructions, and a denominator exclusion—not irrationality of $`S`$.
 
 > **Contribution.** The paper proves exact carry and divisibility equivalences for the factorial-gap series and records a finite denominator exclusion through $`q<300000`$, whose arithmetic certificate is checked outside Lean.
@@ -31,6 +35,13 @@ No theorem constructs cofinally many non-unit carries, a cofinal family of stric
 > **Relation to the open problem.** The equivalences identify the missing cofinal input without supplying it. A finite denominator exclusion does not change the quantifier, and Problem #68 remains open.
 >
 > **Executable review object.** Comparator selects both exact equivalences: cofinal failure of the strict factorial-successor divisibility test and cofinally many non-unit carries. The mixed Lean-plus-certificate denominator computation is reported separately. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
+For release review, the selected Comparator rows are exact. The declaration `irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses` states
+``` math
+\operatorname{Irr}(S)\iff(\forall B)(\exists m>B)\;
+  m\nmid Z_m,
+```
+with $`Z_m=\operatorname{strictFacTopRat}(\operatorname{factorialGapPrefix}(m),m)`$; the declaration `irrational_factorialGapSeries_iff_cofinal_nonunit_carries` states the equivalent condition $`(\forall B)(\exists m>B)\;b_m\ne1`$. Both rows expose the missing cofinal input and neither supplies it, so the irrationality boundary for Problem #68 is unchanged.
 
 <a id="sec:problem"></a>
 
