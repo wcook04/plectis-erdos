@@ -103,6 +103,23 @@ theorem downstream_boolean_mobius_carry_normal_form
       ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U :=
   exists_normalized_support_fraction_iff_exists_booleanMobiusCarry p q hq
 
+/-! The exact-row forest is a separate downstream reuse route for #257.  A
+cofinal supply of positive rational-greedy skips feeds the local skipped-core
+constructor and the cofinal-row closed-set consumer reaches `1/2`.  The
+cofinal-skip hypothesis is deliberately left unproved: finite exact rows at
+isolated endpoints do not supply cofinality, so this is not an unconditional
+#257 counterexample or a solution of the universal problem. -/
+
+/-- Downstream reuse of the exact Boolean--Möbius skip-row consequence.
+
+The consumer keeps the hard global input visible as the explicit, unproved
+`CofinalPositiveHalfGreedySkips` hypothesis and invokes the source's
+proof-bearing endpoint theorem through the public root import. -/
+theorem downstream_boolean_mobius_skip_row_consumer
+    (hskips : CofinalPositiveHalfGreedySkips) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet :=
+  half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips hskips
+
 /-! The #249 carry anti-compression family is a distinct rationality
 consequence: quotient periodicity and torsion-free section rank coexist.  The
 rank bound is not a finite-rank conclusion, and neither clause supplies an
