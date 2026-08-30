@@ -79,6 +79,47 @@ A conditional reduction is not promoted to an unconditional result. When an
 authored paper is absent from the worktree, its coordinate is returned as
 unavailable; the claim and Lean witnesses remain available.
 
+## Problem-owned return routes
+
+The public problem registry is an exact first hop for every indexed Erdős
+problem, including the expansion problems outside the reviewed #249/#257
+claim programmes. `docs/problems.json` is the registry authority; the query
+layer does not infer a problem from a declaration scan or silently promote an
+expansion note into a claim.
+
+Use the problem id from that registry as a runnable return route:
+
+```sh
+python3 scripts/query_corpus.py --route erdos_68
+python3 scripts/query_corpus.py --search "Erdős problem 1041"
+python3 scripts/query_corpus.py --vocabulary
+```
+
+For each of the eight current registry rows (`#68`, `#243`, `#249`, `#251`,
+`#257`, `#269`, `#1041`, and `#1049`), the route packet preserves the exact
+question, public status, problem-owned note, formal directory and module
+counts, open-obligation ids, and typed semantic follow-up commands. The
+packet is a navigation handoff, not proof authority. Expand the matching row
+in `docs/problems.json` for the exact paper/source paths and each open
+obligation statement; then continue the bidirectional traversal with:
+
+```sh
+python3 scripts/query_corpus.py --module <problem-module-path>
+python3 scripts/query_corpus.py --paper-anchor <paper-source-or-label>
+python3 scripts/query_corpus.py --source <module.lean:line>
+python3 scripts/query_semantic.py structural-backlog --problem <n>
+```
+
+Module and source packets carry reverse paper-anchor links, while paper-anchor
+packets carry formal source links. This makes the route explicit in both
+directions: problem → checked/source-owned entry and exact frontier, then proof
+or paper → its counterpart. The `note` remains authored exposition,
+the Lean module remains the proof-bearing source, and `open_obligations` remain
+unresolved regardless of which route selected them. Erdős #1041 additionally
+exposes a dated `research_corpus` handoff; read its `FRONTIER.md` before
+`STRONGEST_RESULTS.json`, and keep that source-current evidence separate from
+the claim registry and Lean proof authority.
+
 The current declaration atlas contains 13 declaration-shaped phrases captured
 from inside Lean block comments by its line-oriented builder. The query layer
 excludes those exact row ids. `scripts/audit_semantic_corpus.py` strips nested
