@@ -218,6 +218,15 @@ grouped by the problem whose note they serve.
 
   **Boundary.** Formulation, not proof; the note's saddle-block diagnosis of a recent manuscript is prose, not Lean.
 
+- Current evidence boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
+  is the dated route for the current source-only research state, not an
+  antecedent source. It records certified strategy refutations, surviving
+  carriers, and open gaps that are not part of this historical bibliography.
+  Read it before generated `STRONGEST_RESULTS.json`, which can lag the dated
+  notes. The corpus is not thereby prior art or a reviewed claim: its rows make
+  no peer-review, priority, novelty, or significance assertion, and #1041
+  remains open.
+
 ### #1049
 
 - P. Bundschuh and K. Väänänen, *Compositio Math.* 91 (1994), Theorem 2, https://numdam.org/item/CM_1994__91_2_175_0.pdf
