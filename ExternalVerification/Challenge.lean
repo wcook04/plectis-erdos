@@ -306,6 +306,9 @@ theorem scaleFullTarget_miss_of_projected_separation
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 
+theorem coefficientOnlyNoGo : CoefficientOnlyNoGo :=
+  (portfolioClaims Unit).problem251CoefficientOnlyNoGo
+
 theorem irrational_tsum_primeDyadicTerm_iff_primeGap
     (hprime : Summable primeDyadicTerm) :
     Irrational (∑' n : ℕ, primeDyadicTerm n) ↔

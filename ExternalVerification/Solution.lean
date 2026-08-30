@@ -647,6 +647,19 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
       ErdosProblems.Erdos251.exists_primeGap0_gt M
+  · refine ⟨?_, ?_, ?_⟩
+    · intro n
+      simpa [carryPartialSum, carryCoeff,
+        ErdosProblems.Erdos251.carryPartialSum,
+        ErdosProblems.Erdos251.carryCoeff] using
+        ErdosProblems.Erdos251.carryPartialSum_natCast_eq n
+    · intro h hpos
+      simpa [carryCoeff, ErdosProblems.Erdos251.carryCoeff] using
+        ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic hpos
+    · intro h hpos
+      simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
+        ErdosProblems.Erdos251.prime0] using
+        ErdosProblems.Erdos251.primeGap0_not_eventually_periodic hpos
   · intro hprime
     simpa [primeDyadicTerm, primeGapDyadicTerm, primeGap0, prime0,
       ErdosProblems.Erdos251.primeDyadicTerm,
@@ -1260,6 +1273,21 @@ theorem seven_le_of_intBand_odd {p D q : ℤ}
 
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
+
+theorem coefficientOnlyNoGo : CoefficientOnlyNoGo := by
+  refine ⟨?_, ?_, ?_⟩
+  · intro n
+    simpa [carryPartialSum, carryCoeff,
+      ErdosProblems.Erdos251.carryPartialSum,
+      ErdosProblems.Erdos251.carryCoeff] using
+      ErdosProblems.Erdos251.carryPartialSum_natCast_eq n
+  · intro h hpos
+    simpa [carryCoeff, ErdosProblems.Erdos251.carryCoeff] using
+      ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic hpos
+  · intro h hpos
+    simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
+      ErdosProblems.Erdos251.prime0] using
+      ErdosProblems.Erdos251.primeGap0_not_eventually_periodic hpos
 
 theorem irrational_tsum_primeDyadicTerm_iff_primeGap
     (hprime : Summable primeDyadicTerm) :
