@@ -380,6 +380,11 @@ theorem exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
       ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U :=
   (portfolioClaims Unit).problem257BooleanMobiusCarry p q hq
 
+theorem half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+    (hskips : CofinalPositiveHalfGreedySkips) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet :=
+  (portfolioClaims Unit).problem257BooleanMobiusExactRowDynamics hskips
+
 theorem supportCoeff_mul_eq_add_defect
     (A : Set ℕ) {a x : ℕ} (ha : a ∈ A) (ha0 : 0 < a) (hx0 : 0 < x) :
     supportCoeff A (a * x) =

@@ -238,6 +238,30 @@ noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
 def mersenneAchievementSet : Set ℝ :=
   {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 
+/-! ## Boolean–Möbius exact-row dynamics -/
+
+/- These statement-side definitions preserve the exact rational greedy-skip
+   socket used by the proof-bearing Boolean–Möbius row constructor. -/
+def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
+
+def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+
+/- Positive skips are required cofinally; finite exact rows alone do not
+   supply this hypothesis. -/
+def CofinalPositiveHalfGreedySkips : Prop :=
+  ∀ N : ℕ, ∃ c : ℕ,
+    max N 4 ≤ c ∧
+      0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) ∧
+      greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+        mersenneWeightRat c
+
 noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
   ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
 
@@ -958,6 +982,9 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       ((∃ A : Set ℕ, 0 ∉ A ∧ (∃ a : ℕ, 0 < a ∧ a ∈ A) ∧
           erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) ↔
         ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U)
+  problem257BooleanMobiusExactRowDynamics :
+    CofinalPositiveHalfGreedySkips →
+      (1 / 2 : ℝ) ∈ mersenneAchievementSet
   problem257CompositeDilationDefect :
     ∀ (A : Set ℕ) {a x : ℕ},
       a ∈ A →

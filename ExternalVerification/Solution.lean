@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import ExternalVerification.Statements
 import Erdos249257.BooleanMobiusCarry
+import Erdos249257.BooleanMobiusSkipRowCofinal
 import Erdos249257.TotientTailCarryPeriod
 import Erdos249257.GreedyAchievementSet
 import Erdos249257.GcdMomentCalculus
@@ -621,6 +622,33 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
         (Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
           p q hq).mpr hsource
       simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using hresult
+  · intro hskips
+    have hrem (x : ℚ) (n : ℕ) :
+        greedyMersenneRemainderRat x n =
+          Erdos249257.greedyMersenneRemainderRat x n := by
+      induction n with
+      | zero => rfl
+      | succ n ih =>
+          simp [greedyMersenneRemainderRat,
+            Erdos249257.greedyMersenneRemainderRat, ih,
+            mersenneWeightRat, Erdos249257.mersenneWeightRat]
+    have hskips' : Erdos249257.CofinalPositiveHalfGreedySkips := by
+      intro N
+      rcases hskips N with ⟨c, hc, hpos, hskip⟩
+      refine ⟨c, hc, ?_, ?_⟩
+      · rw [← hrem (1 / 2 : ℚ) (c - 1)]
+        exact hpos
+      · rw [← hrem (1 / 2 : ℚ) (c - 1)]
+        change greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+          mersenneWeightRat c
+        exact hskip
+    have hhalf :=
+      Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+        hskips'
+    simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+      Erdos249257.mersenneAchievementSet,
+      Erdos249257.positiveMersenneSupportValue,
+      Erdos249257.mersenneWeight] using hhalf
   · intro A a x ha ha0 hx0
     simpa [supportCoeff, compositeDilationDefect,
       Erdos249257.supportCoeff,
