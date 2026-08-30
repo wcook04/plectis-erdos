@@ -43,6 +43,13 @@ SOURCE_TYPES = {
     "original-proof",
     "other",
 }
+SOURCE_RELATIONSHIPS = {
+    "formalizes",
+    "adapts",
+    "independently-proves",
+    "background",
+    "other",
+}
 
 
 class UnsafeQualificationInput(ValueError):
@@ -302,13 +309,134 @@ def candidate_selection_errors(
     return errors
 
 
+def formalization_metadata_deficits(formalization: str) -> list[str]:
+    """Apply the pinned PalomarSubmission v0.4 metadata/profile boundary."""
+    deficits: list[str] = []
+    version = re.search(r"^version:\s*[\"']?([^\"'\s]+)", formalization, re.MULTILINE)
+    if not version or version.group(1) != "v0.4":
+        deficits.append("formalization_v04_metadata")
+
+    project_region = formalization.split("sources:", 1)[0]
+    description = re.search(r"^  description:\s*(.*)$", project_region, re.MULTILINE)
+    if not description or not description.group(1).strip() or len(description.group(1).strip()) > 10_000:
+        deficits.append("project_description")
+    if not re.search(
+        r"^  authors:\s*$.*?^    -\s*\S.*?^  license:",
+        project_region,
+        re.MULTILINE | re.DOTALL,
+    ):
+        deficits.append("project_authors")
+    if not re.search(
+        r"^  responsible_maintainers:\s*$.*?^    -\s*\S",
+        project_region,
+        re.MULTILINE | re.DOTALL,
+    ):
+        deficits.append("responsible_maintainers")
+
+    classification = re.search(
+        r"^classification:\s*$((?:\n^  .*?$)*)",
+        formalization,
+        re.MULTILINE,
+    )
+    if not classification:
+        deficits.append("classification_metadata")
+    else:
+        classification_region = classification.group(1)
+
+        def list_values(field: str) -> list[str] | None:
+            match = re.search(rf"^  {field}:\s*(.*)$", classification_region, re.MULTILINE)
+            if not match:
+                return None
+            inline = match.group(1).strip()
+            if inline.startswith("[") and inline.endswith("]"):
+                return [value.strip().strip("\"'") for value in inline[1:-1].split(",") if value.strip()]
+            tail = classification_region[match.end() :]
+            return [
+                value.strip().strip("\"'")
+                for value in re.findall(r"^    -\s*(.*)$", tail, re.MULTILINE)
+                if value.strip()
+            ]
+
+        arxiv = list_values("arxiv")
+        msc2020 = list_values("msc2020")
+        if (
+            arxiv is None
+            or not 1 <= len(arxiv) <= 8
+            or len(arxiv) != len(set(arxiv))
+            or msc2020 is None
+            or len(msc2020) > 8
+            or len(msc2020) != len(set(msc2020))
+        ):
+            deficits.append("classification_metadata")
+
+    if not re.search(
+        r"^automation:\s*$.*?^  methods:\s*$.*?^    - method:\s*\S",
+        formalization,
+        re.MULTILINE | re.DOTALL,
+    ):
+        deficits.append("automation_metadata")
+    if not re.search(
+        r"^review:\s*$.*?^  status:\s*\S",
+        formalization,
+        re.MULTILINE | re.DOTALL,
+    ):
+        deficits.append("review_metadata")
+
+    source_region = formalization.split("sources:", 1)[-1].split("status:", 1)[0]
+    source_entries: list[dict[str, str]] = []
+    current: dict[str, str] | None = None
+    for line in source_region.splitlines():
+        if line.startswith("  - title:"):
+            current = {"title": line.split(":", 1)[1].strip().strip("\"'")}
+            source_entries.append(current)
+        elif current is not None and line.startswith("    type:"):
+            current["type"] = line.split(":", 1)[1].strip().strip("\"'")
+        elif current is not None and line.startswith("    relationship:"):
+            current["relationship"] = line.split(":", 1)[1].strip().strip("\"'")
+
+    if not source_entries or any(
+        not entry.get("title") or not entry.get("relationship") for entry in source_entries
+    ):
+        deficits.append("source_relationship_metadata")
+
+    source_types = [entry.get("type", "") for entry in source_entries]
+    relationship_values = [entry.get("relationship", "") for entry in source_entries]
+    bad_types = sorted(set(source_type for source_type in source_types if source_type) - SOURCE_TYPES)
+    bad_relationships = sorted(
+        set(relationship for relationship in relationship_values if relationship)
+        - SOURCE_RELATIONSHIPS
+    )
+    if bad_types or bad_relationships:
+        deficits.append("v04_source_relationship_vocabulary")
+
+    if source_entries and all(relationship_values):
+        if any(source_type == "original-proof" for source_type in source_types):
+            origin_ok = all(
+                entry.get("relationship") == "other"
+                for entry in source_entries
+                if entry.get("type") == "original-proof"
+            ) and all(
+                entry.get("relationship") in {"background", "other"}
+                for entry in source_entries
+            )
+        else:
+            origin_ok = any(
+                relationship in {"formalizes", "adapts", "independently-proves"}
+                for relationship in relationship_values
+            )
+        if not origin_ok:
+            deficits.append("source_origin_consistency")
+    else:
+        deficits.append("source_origin_consistency")
+    return sorted(set(deficits))
+
+
 def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showcase: dict[str, Any]) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     deficits: list[str] = []
     formalization = safe_text(root / "formalization.yaml", root=root)
     toolchain = safe_text(root / "lean-toolchain", root=root).strip()
     project_license = re.search(r'^  license:\s*["\']?([^"\'\s]+)', formalization, re.MULTILINE)
-    version = re.search(r'^version:\s*["\']?([^"\'\s]+)', formalization, re.MULTILINE)
     tool_version = re.search(r"lean4:v([0-9]+)\.([0-9]+)\.([0-9]+)", toolchain)
     if not project_license or project_license.group(1) != "Apache-2.0":
         errors.append("formalization.yaml project.license is not Apache-2.0")
@@ -323,16 +451,7 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
     if not tool_version or tuple(map(int, tool_version.groups())) < (4, 28, 0):
         errors.append("lean-toolchain is below Palomar's v4.28.0 minimum")
 
-    if not version or version.group(1) != "v0.4":
-        deficits.append("formalization_v04_metadata")
-    if not re.search(r"^  responsible_maintainers:\s*$", formalization, re.MULTILINE):
-        deficits.append("responsible_maintainers")
-    if not re.search(r"^classification:\s*$", formalization, re.MULTILINE):
-        deficits.append("classification_metadata")
-    source_region = formalization.split("status:", 1)[0]
-    bad_types = sorted(set(re.findall(r'^    type:\s*["\']([^"\']+)["\']', source_region, re.MULTILINE)) - SOURCE_TYPES)
-    if bad_types:
-        deficits.append("v04_source_relationship_vocabulary")
+    deficits.extend(formalization_metadata_deficits(formalization))
 
     selected = showcase.get("candidate_selection", {})
     selected_name = selected.get("declaration", "")

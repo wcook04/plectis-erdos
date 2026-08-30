@@ -91,7 +91,7 @@ universe. It does not turn the roster count into a readiness claim.
 | Comparator path and axiom ceiling | pass structurally | `verification/comparator.json`; the final mechanical axiom report is still withheld. |
 | Toolchain, Lakefile, manifest | pass structurally | Current versions and committed dependency manifest are present. |
 | Root licence | pass structurally | Apache-2.0 is declared and detected consistently. |
-| Formalization metadata | **red** | Current `formalization.yaml` is v0.3, lacks current `responsible_maintainers` and classification fields, and uses pre-v0.4 source labels. |
+| Formalization metadata | **red** | Current `formalization.yaml` is v0.3, lacks `project.description`, `responsible_maintainers`, and classification metadata, and its sources lack v0.4 relationships/origin evidence while using pre-v0.4 type labels. |
 | Informal account and boundaries | pass | The showcase gives the exact selected type, mechanism, attribution, limitations, and open frontier. |
 | Challenge import closure and solution axiom audit | withheld | Requires one immutable terminal Palomar-compatible mechanical validation. |
 | Independent NanoDa replay | withheld | Must be bound to the same immutable source commit. |

@@ -216,7 +216,7 @@
       "id": "formalization_v04_metadata",
       "source": "PalomarPolicy/docs/specification.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
       "status": "not_ready",
-      "evidence": "Current formalization.yaml still declares v0.3, has no current responsible_maintainers field or classification block, and uses source-type labels outside the adopted v0.4 closed vocabulary.",
+      "evidence": "Current formalization.yaml still declares v0.3, has no project.description, responsible_maintainers, or classification block, and its sources have no v0.4 relationship/origin evidence while using source-type labels outside the adopted v0.4 closed vocabulary.",
       "disposition": "local_generated_metadata_deficit; do_not_claim_ready"
     },
     {
@@ -260,7 +260,7 @@
     "reason": "The main-compatible Palomar product now binds the complete committed candidate universe to a deliberate full-support selection, but formalization.yaml is not yet current v0.4 and terminal immutable mechanical/replay evidence is withheld.",
     "readiness_rule": "All applicable structural and terminal gates must be green at one exact source commit; Comparator theorem-name count never substitutes for qualification.",
     "safe_local_repairs_remaining": [
-      "Refresh the generated formalization.yaml from its owning current claim source to v0.4 with truthful maintainers, classifications, and accepted source relationships.",
+      "Refresh the generated formalization.yaml from its owning current claim source to v0.4 with a truthful project description, maintainers, classifications, accepted source relationships, and source-origin consistency.",
       "Bind one immutable source commit and consume one non-duplicated Palomar mechanical/replay evidence bundle after integration names that commit."
     ],
     "operator_only_residuals": [

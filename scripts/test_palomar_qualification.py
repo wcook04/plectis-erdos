@@ -75,6 +75,41 @@ def test_normal_and_optimised_checker_agree() -> None:
     assert json.loads(optimised.stdout) == normal
     assert normal["ok"] is True
     assert normal["decision"] == "NOT_READY"
+    assert normal["structural_deficits"] == [
+        "classification_metadata",
+        "formalization_v04_metadata",
+        "project_description",
+        "responsible_maintainers",
+        "source_origin_consistency",
+        "source_relationship_metadata",
+        "v04_source_relationship_vocabulary",
+    ]
+
+
+def test_v04_profile_rejects_missing_source_relationship() -> None:
+    valid_shape = """version: \"v0.4\"
+project:
+  description: \"A checked mathematical project.\"
+  responsible_maintainers:
+    - \"Will Cook\"
+sources:
+  - title: \"A source\"
+    type: \"other\"
+    relationship: \"formalizes\"
+classification:
+  arxiv: [math.NT]
+  msc2020: []
+automation:
+  methods:
+    - method: \"manual\"
+review:
+  status: \"unchecked\"
+"""
+    assert checker.formalization_metadata_deficits(valid_shape) == []
+    damaged = valid_shape.replace('    relationship: "formalizes"\n', "")
+    deficits = checker.formalization_metadata_deficits(damaged)
+    assert "source_relationship_metadata" in deficits
+    assert "source_origin_consistency" in deficits
 
 
 def test_full_current_roster_and_eight_problem_crosswalk() -> None:
