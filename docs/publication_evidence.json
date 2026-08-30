@@ -17,7 +17,7 @@
     "reconstruction_manifest": "experiments/publication_mutations.json",
     "reconstruction_manifest_digest": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "reconstruction_harness": "scripts/run_publication_mutations.py",
-    "reconstruction_harness_digest": "sha256:01834099e0b6897fabfe67d698fbe5a682f701ae54d367c0e35730e3b2ccd437",
+    "reconstruction_harness_digest": "sha256:9c34b441e32a540395e4e1cb456f2924ea5bd56c77a8bc315073fff0891417ab",
     "operator_verification": "python3 scripts/run_publication_mutations.py --verify-operators",
     "reconstruction_baseline_policy": "the unmutated selected base must pass the configured gate before any mutation outcome is counted",
     "invalid_baseline_policy": "abort the run, report invalid_baseline, retain zero mutation outcomes, and return a nonzero command status",

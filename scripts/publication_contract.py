@@ -140,15 +140,15 @@ class RepositoryReader:
             return self.byte_overrides[relative]
         if self.git_ref is None:
             path = self.root / relative
-        if self._has_symlink_component(path):
-            raise ValueError(
-                f"worktree source path must not traverse symbolic links: {relative}"
-            )
-        if not path.is_file():
-            raise ValueError(
-                f"worktree source path must be a regular file: {relative}"
-            )
-        return path.read_bytes()
+            if self._has_symlink_component(path):
+                raise ValueError(
+                    f"worktree source path must not traverse symbolic links: {relative}"
+                )
+            if not path.is_file():
+                raise ValueError(
+                    f"worktree source path must be a regular file: {relative}"
+                )
+            return path.read_bytes()
         completed = self._git_run("show", self._git_spec(relative))
         if completed.returncode != 0:
             detail = completed.stderr.decode("utf-8", errors="replace").strip()
