@@ -78,6 +78,13 @@ Base 2 is the unique self-normalising point of the geometric law.
 **The squared transform** `L₂(f) = ∑ f(d)/(2^d−1)² = E[(f * ζ)(gcd(X,Y))]`,
 since gcd-divisibility factorises across independent coordinates. Yields
 `L₂(μ) = S − 1/2`, the gcd-moment ladder, and Pillai's gcd-sum function.
+The exact family return is the [probabilistic gcd-geometry route](SOURCE_MAP.md#complete-eight-problem-return-matrix):
+the [totient gcd-moment declaration](../Erdos249257/GcdMomentCalculus.lean#L235)
+and [Stern–Brocot run-stability declaration](../Erdos249257/SternBrocotRunGeometry.lean#L343)
+return to the paper's [probability-coordinate appendix](papers/full-text/erdos249-257-main-paper.md#app:lambert-probability),
+with the stable records `res:directionnormalization`, `res:sternbrocotcylinders`,
+and `res:sternbrocotruns`. These exact identities and combinatorial bounds do
+not close the open #249 irrationality or unbounded-certificate obligations.
 
 ### Wave 21 — `TotientTailPeriodKiller.lean`
 
