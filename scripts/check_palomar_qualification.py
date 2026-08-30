@@ -132,6 +132,7 @@ def load_json(path: Path, *, root: Path) -> dict[str, Any]:
 
 
 def committed_bytes(root: Path, path: str) -> bytes:
+    """Read a qualification input from the immutable repository HEAD."""
     result = subprocess.run(
         ["git", "-C", str(root), "show", f"HEAD:{path}"],
         check=True,
@@ -139,6 +140,14 @@ def committed_bytes(root: Path, path: str) -> bytes:
         stderr=subprocess.PIPE,
     )
     return result.stdout
+
+
+def committed_text(root: Path, path: str) -> str:
+    """Decode a committed qualification input without consulting worktree dirt."""
+    try:
+        return committed_bytes(root, path).decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise ValueError(f"committed qualification input is not UTF-8: {path}") from exc
 
 
 def committed_head(root: Path) -> str:
@@ -525,7 +534,11 @@ def formalization_metadata_deficits(formalization: str) -> list[str]:
 def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showcase: dict[str, Any]) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     deficits: list[str] = []
-    formalization = safe_text(root / "formalization.yaml", root=root)
+    # formalization.yaml is generated from the sibling-owned claims projection.
+    # Qualification must never consume an uncommitted generated projection as
+    # evidence; the owning source can land it, after which HEAD becomes the
+    # qualification input.
+    formalization = committed_text(root, "formalization.yaml")
     toolchain = safe_text(root / "lean-toolchain", root=root).strip()
     project_license = re.search(r'^  license:\s*["\']?([^"\'\s]+)', formalization, re.MULTILINE)
     tool_version = re.search(r"lean4:v([0-9]+)\.([0-9]+)\.([0-9]+)", toolchain)

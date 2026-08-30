@@ -112,6 +112,17 @@ review:
     assert "source_origin_consistency" in deficits
 
 
+def test_generated_formalization_reads_committed_head_only() -> None:
+    committed = checker.committed_text(ROOT, "formalization.yaml")
+    worktree = (ROOT / "formalization.yaml").read_text(encoding="utf-8")
+    expected = subprocess.check_output(
+        ["git", "show", "HEAD:formalization.yaml"], cwd=ROOT
+    ).decode("utf-8")
+    assert committed == expected
+    if worktree != committed:
+        assert checker.committed_text(ROOT, "formalization.yaml") != worktree
+
+
 def test_pinned_classification_authorities_are_required() -> None:
     reconciliation = json.loads(
         (ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json").read_text()
