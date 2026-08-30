@@ -231,7 +231,6 @@ def related_problem_errors(related: str) -> list[str]:
         "--open remaining_open.universal_257_all_infinite_supports",
         "--claim prime_support_irrationality",
         "--claim sigma_transcendence",
-        "The first two packets are `open`; the latter two are `cited only`",
         "records an `advances_open_target` edge",
         "untouched analogy",
     )
@@ -407,8 +406,8 @@ def main() -> int:
         "missing claim route mutation was accepted",
     )
     collapsed_relation = related.replace(
-        "The first two packets are `open`; the latter two are `cited only`.",
-        "Every related solved problem is progress on the open targets.",
+        "external catalogue status and the local release status are separate facts",
+        "catalogue status closes every local target directly",
         1,
     )
     require(
@@ -417,6 +416,15 @@ def main() -> int:
             for error in related_problem_errors(collapsed_relation)
         ),
         "collapsed related-problem relation was accepted",
+    )
+    order_neutral_relation = related.replace(
+        "The first two packets are `open`; the latter two are `cited only`.",
+        "Each local target and cited neighbour retains its independently recorded status.",
+        1,
+    )
+    require(
+        not related_problem_errors(order_neutral_relation),
+        "related-problem validation must not require a first-two/latter-two row order",
     )
     missing_open_handle = related.replace(
         "--open remaining_open.universal_257_all_infinite_supports", "", 1
@@ -491,6 +499,35 @@ def main() -> int:
         "private portfolio source mutation was accepted",
     )
 
+
+    expanded_portfolio = deepcopy(verification_packet)
+    expanded_result = deepcopy(
+        next(row for row in verification_packet["main_results"] if row["problem"] == 68)
+    )
+    expanded_result["id"] = "factorial_nonunit_carry_equivalence__independent_certificate"
+    expanded_result["statement"] = (
+        "An independent finite factorial-successor certificate records another bounded carry mechanism."
+    )
+    expanded_result["boundary"] = (
+        "This finite certificate remains bounded and does not supply cofinally many non-unit carries."
+    )
+    expanded_portfolio["main_results"].append(expanded_result)
+    require(
+        not portfolio_visibility_errors(expanded_portfolio),
+        "portfolio validation must permit more than two distinct strong results per problem",
+    )
+
+    legacy_selector_metadata = deepcopy(verification_packet)
+    legacy_selector_metadata["headline_results"] = []
+    legacy_selector_metadata["representative_result"] = None
+    legacy_selector_metadata["selected_rows"] = []
+    legacy_selector_metadata["main_results"] = list(
+        reversed(legacy_selector_metadata["main_results"])
+    )
+    require(
+        not portfolio_visibility_errors(legacy_selector_metadata),
+        "portfolio validation must not depend on headline, representative, or selected-row metadata",
+    )
     targeted_endpoint_mutations = {
         "factorial_nonunit_carry_equivalence": (
             "The factorial-denominator series is irrational, proving the #68 endpoint."
@@ -540,7 +577,7 @@ def main() -> int:
         "test_public_artifact_boundary: first-contact surfaces reject "
         "private or unpublished proof authority and novelty inference; "
         "portfolio visibility preserves all eight problems and multiple "
-        "source-bound strong results; 17 negative fixtures rejected"
+        "source-bound strong results; 17 negative fixtures and 2 non-timid acceptance fixtures exercised"
     )
     return 0
 
