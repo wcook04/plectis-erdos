@@ -12,6 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "lean.yml"
 WARM_WORKFLOW = ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
+SETUP_PYTHON_ACTION = "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97"
+PINNED_PYTHON_VERSION = 'python-version: "3.12.9"'
+PINNED_PYTHON_JOBS = ("build", "external-verification", "release-surfaces")
 REQUIRED_KEYS = {
     "GIT_CONFIG_NOSYSTEM",
     "GIT_CONFIG_GLOBAL",
@@ -54,6 +57,39 @@ def workflow_environment(path: Path) -> dict[str, str]:
     )
 
 
+def job_body(workflow: str, job: str) -> str:
+    match = re.search(rf"(?ms)^  {re.escape(job)}:\n(?P<body>.*?)(?=^  \S|\Z)", workflow)
+    require(match is not None, f"Lean workflow lost the {job} job")
+    return match.group("body") if match is not None else ""
+
+
+def require_pinned_python(workflow: str) -> None:
+    for job in PINNED_PYTHON_JOBS:
+        body = job_body(workflow, job)
+        setup_steps = re.findall(
+            rf"(?ms)^      - name: Install the pinned Python runtime\n"
+            rf"(?P<body>.*?)(?=^      - |\Z)",
+            body,
+        )
+        require(
+            len(setup_steps) == 1,
+            f"{job} must install the pinned Python action exactly once",
+        )
+        setup_body = setup_steps[0] if setup_steps else ""
+        require(
+            setup_body.count(SETUP_PYTHON_ACTION) == 1,
+            f"{job} must install the pinned Python action exactly once",
+        )
+        require(
+            setup_body.count(PINNED_PYTHON_VERSION) == 1,
+            f"{job} must install Python 3.12.9 exactly once",
+        )
+        require(
+            setup_body.count("cache: false") == 1,
+            f"{job} must not use an implicit setup-python cache",
+        )
+
+
 def main() -> int:
     environment = workflow_environment(WORKFLOW)
     warm_environment = workflow_environment(WARM_WORKFLOW)
@@ -66,6 +102,7 @@ def main() -> int:
         "Lean workflow environment lost a required Git/Python portability key",
     )
     workflow = WORKFLOW.read_text(encoding="utf-8")
+    require_pinned_python(workflow)
     require(
         re.search(r"(?m)^    env:\n", workflow) is None,
         "a Lean job added a job-level environment that could override the baseline",

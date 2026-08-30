@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
+SETUP_PYTHON_ACTION = "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97"
 EXPECTED_ENVIRONMENT = {
     "GIT_CONFIG_NOSYSTEM": '"1"',
     "GIT_CONFIG_GLOBAL": "/dev/null",
@@ -95,7 +96,19 @@ def main() -> int:
         "cache-warm job lost its resource boundary",
     )
     require(
-        len(re.findall(r"uses:[^\n]*@[0-9a-f]{40}(?:\s|#|$)", body)) == 2,
+        body.count(SETUP_PYTHON_ACTION) == 1,
+        "cache-warm job must install the pinned Python action exactly once",
+    )
+    require(
+        body.count('python-version: "3.12.9"') == 1,
+        "cache-warm job must install Python 3.12.9 exactly once",
+    )
+    require(
+        body.count("cache: false") == 1,
+        "cache-warm job must not use an implicit setup-python cache",
+    )
+    require(
+        len(re.findall(r"uses:[^\n]*@[0-9a-f]{40}(?:\s|#|$)", body)) == 3,
         "cache-warm actions are not pinned to immutable revisions",
     )
     print("test_lean_cache_warm_environment: cache-warm commands are isolated and pinned")

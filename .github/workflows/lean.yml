@@ -135,6 +135,11 @@ jobs:
         with:
           fetch-depth: 0 # change gate compares the complete PR or push range
           persist-credentials: false
+      - name: Install the pinned Python runtime
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12.9"
+          cache: false
       - name: Detect supported-root Lean changes
         id: lean-inputs
         env:
@@ -322,6 +327,12 @@ jobs:
           fi
           echo "changed=$changed" >> "$GITHUB_OUTPUT"
           echo "External-verification inputs changed: $changed"
+      - name: Install the pinned Python runtime
+        if: steps.external-inputs.outputs.changed == 'true'
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12.9"
+          cache: false
       - name: Initialize failure-safe verification receipt
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -576,10 +587,11 @@ jobs:
         run: |
           python3 scripts/test_erdos1041_research_corpus.py
           python3 -O scripts/test_erdos1041_research_corpus.py
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+      - name: Install the pinned Python runtime
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: "3.12"
+          python-version: "3.12.9"
+          cache: false
       - name: Install metadata validators
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement requirements-release.txt
