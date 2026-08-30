@@ -1,0 +1,65 @@
+{
+  "schema": "research-return-receipt/1",
+  "record_kind": "validation_fixture",
+  "return_id": "rr-fixture-valid-negative",
+  "submitted_at": "2026-08-27T12:00:00Z",
+  "identity": {
+    "contributor": {"name": "Fixture Contributor"},
+    "operator": {"relationship": "undisclosed", "name": null},
+    "material_collaborators": []
+  },
+  "repository": {
+    "origin": "https://github.com/wcook04/plectis-lean-erdos249-257",
+    "starting_commit": "335e4658d69e591597b30fb2beb7200ae7f232c0",
+    "proposed_commit": null,
+    "accepted_commit": null,
+    "changed_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"]
+  },
+  "frontier": {
+    "problem": 249,
+    "handle": "fixture/negative-bounded-route",
+    "bounded_question": "Does the deliberately bounded fixture route satisfy its stated check?",
+    "stop_condition": "Stop after the bounded fixture check completes; do not infer a mathematical counterexample from the harness result.",
+    "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"]
+  },
+  "result": {
+    "class": "negative",
+    "summary": "The fixture records a negative validation case; its passing harness command is not mathematical evidence.",
+    "claim_ceiling": "validation_fixture_only",
+    "surviving_boundary": "The validation result applies only to this fixture route and changes no Erdős problem status.",
+    "limitations": ["Validation fixture only; no mathematical return is asserted."],
+    "requested_disposition": "not_requested"
+  },
+  "evidence": [
+    {
+      "command": "python3 -c 'raise SystemExit(0)'",
+      "exit_state": "passed",
+      "exit_code": 0,
+      "observed": "The fixture command exited successfully; it is data for validator coverage, not mathematical evidence.",
+      "environment": "Python standard library.",
+      "artifacts": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+      "replay_state": "not_applicable"
+    }
+  ],
+  "review": {
+    "structural_validation": {"state": "pending", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Pending validator run."},
+    "reproduction": {"state": "pending", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Fixture only."},
+    "mathematical_review": {"state": "not_required", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Fixture only."},
+    "claim_boundary_review": {"state": "not_required", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Fixture only."},
+    "accepted_handoff": {"state": "pending", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Fixtures cannot be accepted receipts."},
+    "problem_owned_proposition": {"state": "not_requested", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not requested."},
+    "core_promotion": {"state": "not_requested", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not requested."},
+    "tagged_release_inclusion": {"state": "not_requested", "reviewer": null, "decided_at": null, "authority_ref": null, "notes": "Not requested."}
+  },
+  "attribution": {
+    "artifact_credit": [{"name": "Fixture Contributor", "artifact_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"]}],
+    "requested_display": "Fixture Contributor — negative validation fixture only",
+    "existing_corpus_authorship_preserved": true
+  },
+  "safety": {
+    "private_material_removed": true,
+    "credentials_removed": true,
+    "evidence_truthfully_reported": true,
+    "no_claim_overreach": true
+  }
+}

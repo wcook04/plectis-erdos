@@ -1,0 +1,797 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research-commons/schema/research-contribution-recognition.schema.json",
+  "title": "Plectis accepted research contribution recognition projection",
+  "description": "Machine-readable accepted-receipt recognition and impact projection. It preserves receipt-linked attribution and review state without treating activity as scientific credit.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_path",
+    "artifact_role",
+    "generated_by",
+    "source_projection",
+    "source_directory",
+    "source_policy",
+    "authority_boundary",
+    "ordering_policy",
+    "comparison_policy",
+    "accepted_receipt_count",
+    "denominator",
+    "chronological",
+    "aggregates"
+  ],
+  "properties": {
+    "schema": {"const": "accepted-research-contribution-recognition/1"},
+    "schema_path": {"const": "docs/research-commons/schema/research-contribution-recognition.schema.json"},
+    "artifact_role": {"const": "generated_accepted_receipt_recognition_and_impact_view"},
+    "generated_by": {"const": "scripts/build_research_contribution_recognition.py"},
+    "source_projection": {"const": "scripts/build_research_contribution_recognition.py"},
+    "source_directory": {"const": "docs/research-commons/returns"},
+    "source_policy": {
+      "const": "strict accepted_receipt records only; detached route-memory sidecars are separate intake authority and are not consumed by this projection"
+    },
+    "authority_boundary": {"type": "string", "minLength": 1},
+    "ordering_policy": {"type": "string", "minLength": 1},
+    "comparison_policy": {"type": "string", "minLength": 1},
+    "accepted_receipt_count": {"type": "integer", "minimum": 0},
+    "denominator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accepted_receipts"],
+      "properties": {"accepted_receipts": {"type": "integer", "minimum": 0}}
+    },
+    "chronological": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/recognitionRow"}
+    },
+    "aggregates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "by_contributor",
+        "by_artifact_credit",
+        "by_material_collaborator",
+        "by_model_system",
+        "by_provider",
+        "by_operator_relationship",
+        "by_problem",
+        "by_result_class",
+        "by_requested_disposition",
+        "by_evidence_state",
+        "by_reproduction_state",
+        "by_review_state",
+        "by_correction_lineage",
+        "by_problem_owned_proposition_state",
+        "by_core_promotion_state",
+        "by_tagged_release_inclusion_state"
+      ],
+      "properties": {
+        "by_contributor": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_artifact_credit": {"type": "array", "items": {"$ref": "#/$defs/artifactCreditAggregateEntry"}},
+        "by_material_collaborator": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_model_system": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_provider": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_operator_relationship": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_problem": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_result_class": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_requested_disposition": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_evidence_state": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_reproduction_state": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_review_state": {"type": "array", "items": {"$ref": "#/$defs/reviewStateAggregateEntry"}},
+        "by_correction_lineage": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_problem_owned_proposition_state": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_core_promotion_state": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}},
+        "by_tagged_release_inclusion_state": {"type": "array", "items": {"$ref": "#/$defs/aggregateEntry"}}
+      }
+    }
+  },
+  "$defs": {
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*//)(?!.*\\/$)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))(?!.*(?:^|/)\\.git(?:/|$)).+$"
+    },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "return_id",
+        "accepted_at",
+        "identity",
+        "receipt_path",
+        "receipt_sha256",
+        "accepted_commit",
+        "accepted_commit_url",
+        "accepted_receipt_url",
+        "artifact_credit_paths",
+        "artifact_credit_urls",
+        "evidence_artifact_paths",
+        "evidence_artifact_urls",
+        "problem",
+        "result_class",
+        "result_summary",
+        "claim_ceiling",
+        "requested_disposition",
+        "evidence_states",
+        "evidence_records",
+        "reproduction_state",
+        "review_states",
+        "review_authorities",
+        "review_decisions",
+        "correction_lineage_state",
+        "limitations",
+        "surviving_boundary",
+        "problem_owned_proposition_state",
+        "core_promotion_state",
+        "tagged_release_inclusion_state"
+      ],
+      "properties": {
+        "return_id": {"type": "string", "minLength": 1},
+        "accepted_at": {"type": "string", "format": "date-time"},
+        "identity": {"$ref": "#/$defs/identityReference"},
+        "receipt_path": {"$ref": "#/$defs/relativePath"},
+        "receipt_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "accepted_commit": {"$ref": "#/$defs/commit"},
+        "accepted_commit_url": {"type": "string", "format": "uri"},
+        "accepted_receipt_url": {"type": "string", "format": "uri"},
+        "artifact_credit_paths": {"type": "array", "items": {"$ref": "#/$defs/relativePath"}},
+        "artifact_credit_urls": {"type": "array", "items": {"type": "string", "format": "uri"}},
+        "evidence_artifact_paths": {"type": "array", "items": {"$ref": "#/$defs/relativePath"}},
+        "evidence_artifact_urls": {"type": "array", "items": {"type": "string", "format": "uri"}},
+        "problem": {"type": "integer"},
+        "result_class": {"type": "string", "minLength": 1},
+        "result_summary": {"type": "string", "minLength": 1},
+        "claim_ceiling": {"type": "string", "minLength": 1},
+        "requested_disposition": {"type": "string", "minLength": 1},
+        "evidence_states": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["exit_state", "replay_state"],
+            "properties": {
+              "exit_state": {"type": "string", "minLength": 1},
+              "replay_state": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "evidence_records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifactEvidenceRecord"}
+        },
+        "reproduction_state": {"type": "string", "minLength": 1},
+        "review_states": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "structural_validation",
+            "reproduction",
+            "mathematical_review",
+            "claim_boundary_review",
+            "accepted_handoff",
+            "problem_owned_proposition",
+            "core_promotion",
+            "tagged_release_inclusion"
+          ],
+          "properties": {
+            "structural_validation": {"type": "string", "minLength": 1},
+            "reproduction": {"type": "string", "minLength": 1},
+            "mathematical_review": {"type": "string", "minLength": 1},
+            "claim_boundary_review": {"type": "string", "minLength": 1},
+            "accepted_handoff": {"type": "string", "minLength": 1},
+            "problem_owned_proposition": {"type": "string", "minLength": 1},
+            "core_promotion": {"type": "string", "minLength": 1},
+            "tagged_release_inclusion": {"type": "string", "minLength": 1}
+          }
+        },
+        "review_authorities": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "structural_validation",
+            "reproduction",
+            "mathematical_review",
+            "claim_boundary_review",
+            "accepted_handoff",
+            "problem_owned_proposition",
+            "core_promotion",
+            "tagged_release_inclusion"
+          ],
+          "properties": {
+            "structural_validation": {"$ref": "#/$defs/reviewAuthority"},
+            "reproduction": {"$ref": "#/$defs/reviewAuthority"},
+            "mathematical_review": {"$ref": "#/$defs/reviewAuthority"},
+            "claim_boundary_review": {"$ref": "#/$defs/reviewAuthority"},
+            "accepted_handoff": {"$ref": "#/$defs/reviewAuthority"},
+            "problem_owned_proposition": {"$ref": "#/$defs/reviewAuthority"},
+            "core_promotion": {"$ref": "#/$defs/reviewAuthority"},
+            "tagged_release_inclusion": {"$ref": "#/$defs/reviewAuthority"}
+          }
+        },
+        "review_decisions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "structural_validation",
+            "reproduction",
+            "mathematical_review",
+            "claim_boundary_review",
+            "accepted_handoff",
+            "problem_owned_proposition",
+            "core_promotion",
+            "tagged_release_inclusion"
+          ],
+          "properties": {
+            "structural_validation": {"$ref": "#/$defs/reviewDecision"},
+            "reproduction": {"$ref": "#/$defs/reviewDecision"},
+            "mathematical_review": {"$ref": "#/$defs/reviewDecision"},
+            "claim_boundary_review": {"$ref": "#/$defs/reviewDecision"},
+            "accepted_handoff": {"$ref": "#/$defs/reviewDecision"},
+            "problem_owned_proposition": {"$ref": "#/$defs/reviewDecision"},
+            "core_promotion": {"$ref": "#/$defs/reviewDecision"},
+            "tagged_release_inclusion": {"$ref": "#/$defs/reviewDecision"}
+          }
+        },
+        "correction_lineage_state": {"type": "string", "minLength": 1},
+        "limitations": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "surviving_boundary": {"type": "string", "minLength": 1},
+        "problem_owned_proposition_state": {"type": "string", "minLength": 1},
+        "core_promotion_state": {"type": "string", "minLength": 1},
+        "tagged_release_inclusion_state": {"type": "string", "minLength": 1}
+      }
+    },
+    "aggregateEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "label",
+        "detail",
+        "accepted_receipt_count",
+        "denominator",
+        "accepted_receipts"
+      ],
+      "properties": {
+        "key": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "detail": {"type": "object"},
+        "accepted_receipt_count": {"type": "integer", "minimum": 1},
+        "denominator": {"$ref": "#/$defs/denominator"},
+        "accepted_receipts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/sourceReference"}
+        }
+      }
+    },
+    "reviewStateAggregateEntry": {
+      "allOf": [
+        {"$ref": "#/$defs/aggregateEntry"},
+        {
+          "type": "object",
+          "properties": {
+            "detail": {"$ref": "#/$defs/reviewStateAggregateDetail"}
+          }
+        }
+      ]
+    },
+    "reviewStateAggregateDetail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_field", "state", "review_authorities", "review_decisions"],
+      "properties": {
+        "review_field": {"type": "string", "minLength": 1},
+        "state": {"type": "string", "minLength": 1},
+        "review_authorities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["return_id", "authority_ref", "authority_url"],
+            "properties": {
+              "return_id": {"type": "string", "minLength": 1},
+              "authority_ref": {"type": ["string", "null"]},
+              "authority_url": {"type": ["string", "null"], "format": "uri"}
+            }
+          }
+        },
+        "review_decisions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["return_id", "decision"],
+            "properties": {
+              "return_id": {"type": "string", "minLength": 1},
+              "decision": {"$ref": "#/$defs/reviewDecision"}
+            }
+          }
+        }
+      }
+    },
+    "denominator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accepted_receipts"],
+      "properties": {"accepted_receipts": {"type": "integer", "minimum": 0}}
+    },
+    "reviewAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority_ref", "authority_url"],
+      "properties": {
+        "authority_ref": {"type": ["string", "null"]},
+        "authority_url": {"type": ["string", "null"], "format": "uri"}
+      }
+    },
+    "reviewDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "authority_ref",
+        "authority_url",
+        "decided_at",
+        "reviewer",
+        "notes"
+      ],
+      "properties": {
+        "state": {"type": "string", "minLength": 1},
+        "authority_ref": {"type": ["string", "null"]},
+        "authority_url": {"type": ["string", "null"], "format": "uri"},
+        "decided_at": {"type": ["string", "null"], "format": "date-time"},
+        "reviewer": {"type": ["string", "null"]},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "reviewDecisions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "structural_validation",
+        "reproduction",
+        "mathematical_review",
+        "claim_boundary_review",
+        "accepted_handoff",
+        "problem_owned_proposition",
+        "core_promotion",
+        "tagged_release_inclusion"
+      ],
+      "properties": {
+        "structural_validation": {"$ref": "#/$defs/reviewDecision"},
+        "reproduction": {"$ref": "#/$defs/reviewDecision"},
+        "mathematical_review": {"$ref": "#/$defs/reviewDecision"},
+        "claim_boundary_review": {"$ref": "#/$defs/reviewDecision"},
+        "accepted_handoff": {"$ref": "#/$defs/reviewDecision"},
+        "problem_owned_proposition": {"$ref": "#/$defs/reviewDecision"},
+        "core_promotion": {"$ref": "#/$defs/reviewDecision"},
+        "tagged_release_inclusion": {"$ref": "#/$defs/reviewDecision"}
+      }
+    },
+    "identityReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contributor",
+        "operator",
+        "material_collaborators",
+        "model_system",
+        "provider"
+      ],
+      "properties": {
+        "contributor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "handle", "identifiers"],
+          "properties": {
+            "name": {"type": "string", "minLength": 1},
+            "handle": {"type": ["string", "null"]},
+            "identifiers": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "operator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["relationship", "name"],
+          "properties": {
+            "relationship": {"type": "string", "minLength": 1},
+            "name": {"type": ["string", "null"]}
+          }
+        },
+        "material_collaborators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "role"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "role": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "model_system": {"$ref": "#/$defs/systemDisclosure"},
+        "provider": {"$ref": "#/$defs/systemDisclosure"}
+      }
+    },
+    "systemDisclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": ["string", "null"]},
+        "resources": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "impactState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "problem",
+        "result_class",
+        "claim_ceiling",
+        "requested_disposition",
+        "evidence_states",
+        "reproduction_state",
+        "review_states",
+        "correction_lineage_state",
+        "limitations",
+        "surviving_boundary",
+        "problem_owned_proposition_state",
+        "core_promotion_state",
+        "tagged_release_inclusion_state",
+        "review_authorities",
+        "review_decisions"
+      ],
+      "properties": {
+        "problem": {"type": "integer"},
+        "result_class": {"type": "string", "minLength": 1},
+        "claim_ceiling": {"type": "string", "minLength": 1},
+        "requested_disposition": {"type": "string", "minLength": 1},
+        "evidence_states": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["exit_state", "replay_state"],
+            "properties": {
+              "exit_state": {"type": "string", "minLength": 1},
+              "replay_state": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "reproduction_state": {"type": "string", "minLength": 1},
+        "review_states": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "structural_validation",
+            "reproduction",
+            "mathematical_review",
+            "claim_boundary_review",
+            "accepted_handoff",
+            "problem_owned_proposition",
+            "core_promotion",
+            "tagged_release_inclusion"
+          ],
+          "properties": {
+            "structural_validation": {"type": "string", "minLength": 1},
+            "reproduction": {"type": "string", "minLength": 1},
+            "mathematical_review": {"type": "string", "minLength": 1},
+            "claim_boundary_review": {"type": "string", "minLength": 1},
+            "accepted_handoff": {"type": "string", "minLength": 1},
+            "problem_owned_proposition": {"type": "string", "minLength": 1},
+            "core_promotion": {"type": "string", "minLength": 1},
+            "tagged_release_inclusion": {"type": "string", "minLength": 1}
+          }
+        },
+        "correction_lineage_state": {"type": "string", "minLength": 1},
+        "limitations": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "surviving_boundary": {"type": "string", "minLength": 1},
+        "problem_owned_proposition_state": {"type": "string", "minLength": 1},
+        "core_promotion_state": {"type": "string", "minLength": 1},
+        "tagged_release_inclusion_state": {"type": "string", "minLength": 1},
+        "review_authorities": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "structural_validation",
+            "reproduction",
+            "mathematical_review",
+            "claim_boundary_review",
+            "accepted_handoff",
+            "problem_owned_proposition",
+            "core_promotion",
+            "tagged_release_inclusion"
+          ],
+          "properties": {
+            "structural_validation": {"$ref": "#/$defs/reviewAuthority"},
+            "reproduction": {"$ref": "#/$defs/reviewAuthority"},
+            "mathematical_review": {"$ref": "#/$defs/reviewAuthority"},
+            "claim_boundary_review": {"$ref": "#/$defs/reviewAuthority"},
+            "accepted_handoff": {"$ref": "#/$defs/reviewAuthority"},
+            "problem_owned_proposition": {"$ref": "#/$defs/reviewAuthority"},
+            "core_promotion": {"$ref": "#/$defs/reviewAuthority"},
+            "tagged_release_inclusion": {"$ref": "#/$defs/reviewAuthority"}
+          }
+        },
+        "review_decisions": {
+          "$ref": "#/$defs/reviewDecisions"
+        }
+      }
+    },
+    "artifactCreditRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "return_id",
+        "accepted_at",
+        "receipt_path",
+        "receipt_sha256",
+        "credit_name",
+        "contributor",
+        "operator",
+        "material_collaborators",
+        "model_system",
+        "provider",
+        "result_summary",
+        "impact_state",
+        "correction_lineage",
+        "evidence_records",
+        "evidence_artifact_paths",
+        "evidence_artifact_urls",
+        "accepted_commit",
+        "accepted_commit_url",
+        "accepted_receipt_url",
+        "artifact_url"
+      ],
+      "properties": {
+        "return_id": {"type": "string", "minLength": 1},
+        "accepted_at": {"type": "string", "format": "date-time"},
+        "receipt_path": {"$ref": "#/$defs/relativePath"},
+        "receipt_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "credit_name": {"type": "string", "minLength": 1},
+        "contributor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "handle", "identifiers"],
+          "properties": {
+            "name": {"type": "string", "minLength": 1},
+            "handle": {"type": ["string", "null"]},
+            "identifiers": {"type": "array", "items": {"type": "string", "minLength": 1}}
+          }
+        },
+        "operator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["relationship", "name"],
+          "properties": {
+            "relationship": {"type": "string", "minLength": 1},
+            "name": {"type": ["string", "null"]}
+          }
+        },
+        "material_collaborators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "role"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "role": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "model_system": {"$ref": "#/$defs/disclosedIdentity"},
+        "provider": {"$ref": "#/$defs/disclosedIdentity"},
+        "result_summary": {"type": "string", "minLength": 1},
+        "impact_state": {"$ref": "#/$defs/impactState"},
+        "correction_lineage": {"$ref": "#/$defs/artifactCorrectionLineage"},
+        "evidence_records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifactEvidenceRecord"}
+        },
+        "evidence_artifact_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/relativePath"}
+        },
+        "evidence_artifact_urls": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "format": "uri"}
+        },
+        "accepted_commit": {"$ref": "#/$defs/commit"},
+        "accepted_commit_url": {"type": "string", "format": "uri"},
+        "accepted_receipt_url": {"type": "string", "format": "uri"},
+        "artifact_url": {"type": "string", "format": "uri"}
+      }
+    },
+    "artifactEvidenceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "observed",
+        "environment",
+        "exit_state",
+        "exit_code",
+        "replay_state",
+        "artifacts",
+        "artifact_urls"
+      ],
+      "properties": {
+        "command": {"type": "string", "minLength": 1},
+        "observed": {"type": "string", "minLength": 1},
+        "environment": {"type": "string", "minLength": 1},
+        "exit_state": {"type": "string", "minLength": 1},
+        "exit_code": {"type": "integer"},
+        "replay_state": {"type": "string", "minLength": 1},
+        "artifacts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/relativePath"}
+        },
+        "artifact_urls": {
+          "type": "array",
+          "items": {"type": "string", "format": "uri"}
+        }
+      }
+    },
+    "artifactCorrectionLineage": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "disposition",
+        "prior_return_reference",
+        "prior_receipt_url",
+        "starting_commit",
+        "starting_commit_url",
+        "affected_paths",
+        "affected_path_urls",
+        "changed_evidence_or_wording",
+        "reason"
+      ],
+      "properties": {
+        "state": {"type": "string", "minLength": 1},
+        "disposition": {"type": "string", "minLength": 1},
+        "prior_return_reference": {"type": "string", "minLength": 1},
+        "prior_receipt_url": {"type": ["string", "null"], "format": "uri"},
+        "starting_commit": {"$ref": "#/$defs/commit"},
+        "starting_commit_url": {"type": ["string", "null"], "format": "uri"},
+        "affected_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/relativePath"}
+        },
+        "affected_path_urls": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "format": "uri"}
+        },
+        "changed_evidence_or_wording": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "disclosedIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": ["string", "null"]},
+        "resources": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "artifactCreditDetail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_path", "credit_records"],
+      "properties": {
+        "artifact_path": {"$ref": "#/$defs/relativePath"},
+        "credit_records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifactCreditRecord"}
+        }
+      }
+    },
+    "artifactCreditAggregateEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "label",
+        "detail",
+        "accepted_receipt_count",
+        "denominator",
+        "accepted_receipts"
+      ],
+      "properties": {
+        "key": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "detail": {"$ref": "#/$defs/artifactCreditDetail"},
+        "accepted_receipt_count": {"type": "integer", "minimum": 1},
+        "denominator": {"$ref": "#/$defs/denominator"},
+        "accepted_receipts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/sourceReference"}
+        }
+      }
+    },
+    "publicFrontier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository_path", "anchor", "relative_link"],
+      "properties": {
+        "repository_path": {"$ref": "#/$defs/relativePath"},
+        "anchor": {"type": "string", "minLength": 1},
+        "relative_link": {"type": "string", "minLength": 1}
+      }
+    },
+    "recognitionRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A projected accepted receipt. The nested receipt fields retain the accepted-receipt contract; the builder's semantic validator enforces source binding and path safety.",
+      "required": [
+        "return_id",
+        "accepted_at",
+        "receipt_path",
+        "receipt_sha256",
+        "record_kind",
+        "identity",
+        "repository",
+        "frontier",
+        "public_frontier",
+        "result",
+        "evidence",
+        "review",
+        "attribution",
+        "source",
+        "impact_state"
+      ],
+      "properties": {
+        "return_id": {"type": "string", "minLength": 1},
+        "accepted_at": {"type": "string", "format": "date-time"},
+        "receipt_path": {"$ref": "#/$defs/relativePath"},
+        "receipt_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "record_kind": {"const": "accepted_receipt"},
+        "identity": {"type": "object"},
+        "repository": {"type": "object"},
+        "frontier": {"type": "object"},
+        "public_frontier": {"$ref": "#/$defs/publicFrontier"},
+        "result": {"type": "object"},
+        "evidence": {"type": "array", "minItems": 1},
+        "review": {"type": "object"},
+        "attribution": {"type": "object"},
+        "correction_lineage": {"type": "object"},
+        "source": {"$ref": "#/$defs/sourceReference"},
+        "impact_state": {"$ref": "#/$defs/impactState"}
+      }
+    }
+  }
+}
