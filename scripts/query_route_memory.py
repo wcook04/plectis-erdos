@@ -483,11 +483,17 @@ def build_all_packets(*, root: Path = ROOT) -> list[dict[str, Any]]:
     if not selectors:
         raise RouteMemoryError("problem_index_empty", "docs/problems.json::problems")
     packets = [build_packet(number, root=root) for number in selectors]
-    commits = {packet["source_snapshot"]["commit"] for packet in packets}
-    if len(commits) != 1:
+    snapshots = {
+        (
+            packet["source_snapshot"]["commit"],
+            tuple(sorted(packet["source_snapshot"]["digests"].items())),
+        )
+        for packet in packets
+    }
+    if len(snapshots) != 1:
         raise RouteMemoryError(
             "moving_source_snapshot",
-            "--all observed more than one source commit while building packets",
+            "--all observed more than one shared source snapshot while building packets",
         )
     return packets
 

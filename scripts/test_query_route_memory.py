@@ -386,6 +386,30 @@ def main() -> int:
             == packet["packet_digest"],
             "--all CLI emitted an invalid packet",
         )
+    divergent_base = copy.deepcopy(all_packets[0])
+    divergent_calls = 0
+
+    def divergent_builder(selector: int, *, root: Path) -> dict:
+        nonlocal divergent_calls
+        packet = copy.deepcopy(divergent_base)
+        packet["problem"]["erdos_number"] = selector
+        if divergent_calls == 1:
+            packet["source_snapshot"]["digests"]["docs/claims.json"] = (
+                "sha256:" + "0" * 64
+            )
+        divergent_calls += 1
+        return packet
+
+    with patch.object(route_memory, "build_packet", side_effect=divergent_builder):
+        try:
+            route_memory.build_all_packets()
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "moving_source_snapshot",
+                f"mixed --all snapshot returned {exc.code}",
+            )
+        else:
+            raise AssertionError("mixed --all source snapshots were accepted")
     all_cards = run_cli("--all", "--format", "card", check=True)
     require(
         sum(line.startswith("route-memory ") for line in all_cards.stdout.splitlines())
