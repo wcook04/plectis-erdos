@@ -85,6 +85,28 @@ def test_release_file_boundary() -> None:
         )
 
 
+def test_runtime_input_boundary() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        private = root / "private"
+        private.mkdir()
+        (private / "secret.bin").write_bytes(b"outside\n")
+        repository = root / "verification"
+        repository.mkdir()
+        (repository / "linked").symlink_to(private, target_is_directory=True)
+        try:
+            receipt.safe_runtime_file(
+                repository / "linked" / "secret.bin", root=root
+            )
+        except receipt.VerificationInputError:
+            pass
+        else:
+            raise AssertionError("runtime receipt followed a symlinked parent")
+        link = root / "binary-link"
+        link.symlink_to(private / "secret.bin")
+        require(receipt.digest(link) is None, "runtime receipt hashed a symlinked tool")
+
+
 def test_fixture_git_environment() -> None:
     """Synthetic release repositories must ignore ambient Git/runtime state."""
     hostile_environment = {
@@ -466,6 +488,7 @@ def test_release_manifest() -> None:
 
 
 def main() -> int:
+    test_runtime_input_boundary()
     test_release_file_boundary()
     test_fixture_git_environment()
     test_receipt_subprocess_environment()

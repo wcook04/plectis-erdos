@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 import validation_singleflight as singleflight
@@ -28,8 +29,65 @@ ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 
 
+class VerificationInputError(RuntimeError):
+    """Raised when a receipt input crosses the intended file boundary."""
+
+
+def _is_allowed_platform_alias(path: Path) -> bool:
+    """Permit the host's canonical temporary-directory aliases only."""
+    try:
+        aliases = {
+            Path("/var"): Path("/private/var"),
+            Path("/tmp"): Path("/private/tmp"),
+        }
+        return path in aliases and path.resolve(strict=True) == aliases[path]
+    except OSError:
+        return False
+
+
+def safe_runtime_file(path: Path, *, root: Path | None = None) -> Path:
+    """Return a regular receipt input without following path symlinks.
+
+    Canonical repository inputs must stay below ``root``.  External tool,
+    log, and receipt paths remain supported, but their path components still
+    cannot be substituted through symlinks.
+    """
+    root_path = Path(os.path.abspath(root)) if root is not None else None
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            if not _is_allowed_platform_alias(current):
+                raise VerificationInputError(f"symlinked verification input: {path}")
+            current = current.resolve(strict=True)
+        if root_path is not None and current == root_path:
+            break
+        if current.parent == current:
+            if root_path is None:
+                break
+            raise VerificationInputError(f"verification input escaped checkout: {path}")
+        current = current.parent
+    if not candidate.is_file():
+        raise VerificationInputError(f"verification input is not a regular file: {path}")
+    return candidate
+
+
+def optional_runtime_text(path: Path | None) -> str:
+    """Read an optional external log only when it is a safe regular file."""
+    if path is None:
+        return ""
+    try:
+        return safe_runtime_file(path).read_text(encoding="utf-8", errors="replace")
+    except (OSError, VerificationInputError):
+        return ""
+
+
 def digest(path: Path | None) -> str | None:
-    if path is None or not path.is_file():
+    if path is None:
+        return None
+    try:
+        path = safe_runtime_file(path)
+    except (OSError, VerificationInputError):
         return None
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -88,12 +146,22 @@ def main() -> int:
         ["python3", "scripts/build_external_verification.py", "--check"],
         cwd=ROOT,
     ).returncode
-    claims = json.loads((ROOT / "docs/claims.json").read_text(encoding="utf-8"))
+    claims = json.loads(
+        safe_runtime_file(ROOT / "docs/claims.json", root=ROOT).read_text(
+            encoding="utf-8"
+        )
+    )
     owner = claims["external_verification_packet"]
     packet = json.loads(
-        (ROOT / "docs/external_verification_packet.json").read_text(encoding="utf-8")
+        safe_runtime_file(
+            ROOT / "docs/external_verification_packet.json", root=ROOT
+        ).read_text(encoding="utf-8")
     )
-    manifest = json.loads((ROOT / "lake-manifest.json").read_text(encoding="utf-8"))
+    manifest = json.loads(
+        safe_runtime_file(ROOT / "lake-manifest.json", root=ROOT).read_text(
+            encoding="utf-8"
+        )
+    )
     mathlib = next(package for package in manifest["packages"] if package["name"] == "mathlib")
     observed_revisions = {
         "comparator": args.comparator_rev,
@@ -111,20 +179,11 @@ def main() -> int:
         args.expected_commit is None or repository_commit == args.expected_commit
     )
     pins_match = observed_revisions == owner["comparator"]["pins"]
-    negative_text = (
-        args.negative_log.read_text(encoding="utf-8", errors="replace")
-        if args.negative_log is not None and args.negative_log.is_file()
-        else ""
-    )
+    negative_text = optional_runtime_text(args.negative_log)
     negative_semantic_rejection = is_expected_negative_rejection(
         args.negative_exit, negative_text
     )
-    local_1049_negative_text = (
-        args.local_1049_negative_log.read_text(encoding="utf-8", errors="replace")
-        if args.local_1049_negative_log is not None
-        and args.local_1049_negative_log.is_file()
-        else ""
-    )
+    local_1049_negative_text = optional_runtime_text(args.local_1049_negative_log)
     local_1049_negative_semantic_rejection = is_expected_negative_rejection(
         args.local_1049_negative_exit,
         local_1049_negative_text,
@@ -162,7 +221,9 @@ def main() -> int:
             "sandbox_mode": args.sandbox_mode,
         },
         "proof_environment": {
-            "lean_toolchain": (ROOT / "lean-toolchain").read_text().strip(),
+            "lean_toolchain": safe_runtime_file(
+                ROOT / "lean-toolchain", root=ROOT
+            ).read_text().strip(),
             "mathlib_revision": mathlib["rev"],
         },
         "comparator_toolchain": {
@@ -221,4 +282,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except VerificationInputError as exc:
+        print(f"run_external_verification: unsafe input: {exc}", file=sys.stderr)
+        raise SystemExit(1)
