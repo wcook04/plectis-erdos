@@ -50,6 +50,19 @@ README_PRINCIPAL_END = "<!-- END generated_principal_declaration_anchors -->"
 WAVE_SHAPE_BEGIN = "<!-- BEGIN generated_package_shape -->"
 WAVE_SHAPE_END = "<!-- END generated_package_shape -->"
 
+# These are authored publication decisions, not a locally inferred ranking.
+# Keep the broader gateway cohort below so readers can distinguish the
+# discriminating first-read spine from the complete gateway drilldown.
+FLAGSHIP_VIEW_DECISIONS = frozenset(
+    {
+        "gateway_headline",
+        "gateway_headline_finite_matrix",
+        "gateway_spine",
+        "gateway_spine_future_257_companion_detail",
+        "gateway_supporting_spine",
+    }
+)
+
 
 def canonical_digest(value: Any) -> str:
     encoded = json.dumps(
@@ -71,20 +84,24 @@ def build_selection_navigation(claims: dict[str, Any]) -> dict[str, Any]:
         "contribution_families"
     ]
     spine = []
+    flagship = []
     long_tail = []
     for family in families:
         decision = str(family["view_decision"])
         if decision.startswith("gateway_"):
-            spine.append(
-                {
-                    "id": family["id"],
-                    "view_decision": decision,
-                    "status_summary": family["status_summary"],
-                    "consumer_or_open_obligation": family[
-                        "consumer_or_open_obligation"
-                    ],
-                }
-            )
+            row = {
+                "id": family["id"],
+                "view_decision": decision,
+                "status_summary": family["status_summary"],
+                "consumer_or_open_obligation": family[
+                    "consumer_or_open_obligation"
+                ],
+            }
+            spine.append(row)
+            if decision in FLAGSHIP_VIEW_DECISIONS:
+                flagship.append(
+                    {"id": family["id"], "view_decision": decision}
+                )
         else:
             long_tail.append(
                 {
@@ -98,10 +115,18 @@ def build_selection_navigation(claims: dict[str, Any]) -> dict[str, Any]:
             "contribution_families"
         ),
         "decision_field": "view_decision",
+        "flagship_spine_rule": (
+            "The flagship tier is exactly the authored view_decision set: "
+            "gateway_headline, gateway_headline_finite_matrix, gateway_spine, "
+            "gateway_spine_future_257_companion_detail, and "
+            "gateway_supporting_spine; it is not a numeric rank."
+        ),
+        "flagship_spine": flagship,
         "high_signal_spine_rule": (
             "The high-signal spine is exactly the authored family subset whose "
             "view_decision begins with gateway_; this is a selection bucket, "
-            "not a rank within the bucket."
+            "not a rank. The flagship_spine is its narrower first-read tier; "
+            "other gateway rows remain here."
         ),
         "high_signal_spine": spine,
         "long_tail_dispositions": long_tail,
@@ -415,11 +440,12 @@ def render_orientation_markdown(
             "For a dedicated paper's anchor census use",
             "`python3 scripts/query_corpus.py --paper-source <paper_source>`, then",
             "follow each exact `--paper-anchor` handle. The machine descriptor's",
-            "selection surface separates the authored gateway spine from the complete",
+            "selection surface separates the authored flagship spine, gateway cohort, and",
             "lower-signal disposition list; review-matrix order is only stable drilldown",
             "order, never a significance proxy.",
         ]
     )
+    flagship = selection_navigation["flagship_spine"]
     spine = selection_navigation["high_signal_spine"]
     long_tail = selection_navigation["long_tail_dispositions"]
     lines.extend(
@@ -427,15 +453,16 @@ def render_orientation_markdown(
             "",
             "## Selection spine and long tail",
             "",
-            "The high-signal spine is the exact authored `view_decision` bucket whose",
-            "decision begins with `gateway_`. The descriptor records each spine family's",
+            "The flagship spine is the exact authored first-read tier named by",
+            "`flagship_spine_rule`; the broader high-signal spine contains every",
+            "authored `view_decision` beginning with `gateway_`. The descriptor records each",
             "status summary and consumer/open obligation, so the reason for retaining it",
             "and its natural next friction remain visible. The remaining families are not",
             "discarded: their exact authored dispositions stay in the descriptor for",
             "complete drilldown.",
             "",
-            f"Gateway spine families: {len(spine)}; lower-signal families: {len(long_tail)};",
-            "no order inside either bucket is a significance ranking.",
+            f"Flagship families: {len(flagship)}; gateway cohort: {len(spine)}; lower-signal families: {len(long_tail)};",
+            "the flagship is a visibility tier, and no order in any bucket is a significance ranking.",
             "Use `python3 scripts/query_corpus.py --publication-architecture` for the",
             "selection decisions and `python3 scripts/query_corpus.py --publication-family",
             "<family_id>` for the full reason, source route, and open obligation. Use the",

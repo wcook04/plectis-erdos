@@ -89,21 +89,22 @@ record, and exact open obligations:
 For a dedicated paper's anchor census use
 `python3 scripts/query_corpus.py --paper-source <paper_source>`, then
 follow each exact `--paper-anchor` handle. The machine descriptor's
-selection surface separates the authored gateway spine from the complete
+selection surface separates the authored flagship spine, gateway cohort, and
 lower-signal disposition list; review-matrix order is only stable drilldown
 order, never a significance proxy.
 
 ## Selection spine and long tail
 
-The high-signal spine is the exact authored `view_decision` bucket whose
-decision begins with `gateway_`. The descriptor records each spine family's
+The flagship spine is the exact authored first-read tier named by
+`flagship_spine_rule`; the broader high-signal spine contains every
+authored `view_decision` beginning with `gateway_`. The descriptor records each
 status summary and consumer/open obligation, so the reason for retaining it
 and its natural next friction remain visible. The remaining families are not
 discarded: their exact authored dispositions stay in the descriptor for
 complete drilldown.
 
-Gateway spine families: 15; lower-signal families: 6;
-no order inside either bucket is a significance ranking.
+Flagship families: 7; gateway cohort: 15; lower-signal families: 6;
+the flagship is a visibility tier, and no order in any bucket is a significance ranking.
 Use `python3 scripts/query_corpus.py --publication-architecture` for the
 selection decisions and `python3 scripts/query_corpus.py --publication-family
 <family_id>` for the full reason, source route, and open obligation. Use the
