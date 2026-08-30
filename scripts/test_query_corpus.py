@@ -192,7 +192,11 @@ def validate_programme_routes() -> None:
 
 def validate_indexed_problem_routes() -> None:
     """Canonical problem ids in the public source map must be executable routes."""
-    problems = load("docs/problems.json")["problems"]
+    index = load("docs/problems.json")
+    assert index["route_template"] == (
+        "python3 scripts/query_corpus.py --route <problem_id>"
+    )
+    problems = index["problems"]
     claims = load("docs/claims.json")
     review_matrix = {
         row["problem"]: row
