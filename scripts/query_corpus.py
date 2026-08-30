@@ -6937,6 +6937,29 @@ def summary_packet() -> dict[str, Any]:
     }
 
 
+def _route_memory_resume_commands(route_memory: Any) -> list[str]:
+    """Return canonical resume commands carried by a route-memory projection.
+
+    Semantic cells may expose a direct command (reading-route bindings) or a
+    bound projection whose commands live inside its binding rows.  Card output
+    is a reader-facing continuation surface, so preserve both shapes without
+    inventing commands for unbound route memory.
+    """
+    if not isinstance(route_memory, dict):
+        return []
+    commands: list[str] = []
+    direct = route_memory.get("command")
+    if isinstance(direct, str) and direct:
+        commands.append(direct)
+    for binding in route_memory.get("bindings", []):
+        if not isinstance(binding, dict):
+            continue
+        command = binding.get("command")
+        if isinstance(command, str) and command and command not in commands:
+            commands.append(command)
+    return commands
+
+
 def render_card(packet: dict[str, Any]) -> str:
     kind = packet["kind"]
     if kind == "claim":
@@ -7091,10 +7114,13 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| operator={packet['query_interpretation']['operator']['id']} "
             f"| cells={len(packet['semantic_cells'])}"
         ]
-        rows.extend(
-            f"{cell['kind']} | {cell['handle']} | {cell['selection_reason']}"
-            for cell in packet["semantic_cells"]
-        )
+        for cell in packet["semantic_cells"]:
+            line = f"{cell['kind']} | {cell['handle']} | {cell['selection_reason']}"
+            content = cell.get("content")
+            route_memory = content.get("route_memory") if isinstance(content, dict) else None
+            for command in _route_memory_resume_commands(route_memory):
+                line += f" | resume={command}"
+            rows.append(line)
         rows.extend(
             f"semantic_node | {row['node_id']} | authored_semantic_followup"
             for row in packet["query_interpretation"].get(

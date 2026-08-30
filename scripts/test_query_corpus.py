@@ -1467,6 +1467,24 @@ def main() -> int:
         cell["content"]["route_memory"]["problem_number"]
         for cell in semantic_routes
     } == {249}
+    semantic_card = query_corpus.render_card(
+        query_corpus.semantic_slice_packet("what proves denominator exclusion", 4)
+    )
+    assert (
+        "reading_route | erdos249_certificate_story | ranked_query_relative_match "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in semantic_card
+    assert (
+        "reading_route | probabilistic_gcd_geometry | ranked_query_relative_match "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "probabilistic_gcd_geometry"
+    ) in semantic_card
+    assert (
+        "publication_family | erdos249_quantitative_headline | "
+        "ranked_query_relative_match | resume=python3 scripts/query_route_memory.py "
+        "--problem 249 --route erdos249_certificate_story"
+    ) in semantic_card
     semantic_open = query_corpus.semantic_slice_packet(
         "remaining_open.unbounded_certificate_supply", 4
     )
