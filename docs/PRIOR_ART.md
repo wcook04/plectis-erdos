@@ -66,6 +66,12 @@ boundary of that relationship.
 
   **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details; printed p. 226 also says the all-primes case is not handled. The source therefore does not support the coprimality-free extension, universal #257, the release's Lean/Comparator claims, or any novelty or priority claim.
 
+- D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series* (2019)](https://doi.org/10.1515/forum-2018-0299) ([author preprint](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf); [read source closure](primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md))
+
+  **Squarefree-support antecedent.** Corollary 1.2 (PDF p. 4; proof pp. 10–11), specialised to `E` equal to the primes, `s=2`, `ell=1`, and `q=2`, proves linear independence of `1` and the squarefree Lambert values at bases `2^j`; Example 1.1 displays the family using `|mu(n)|`.
+
+  **Boundary.** The condition `|q|^L <= s` is essential to this specialisation, so the result does not give squarefree irrationality at every integer base and does not settle universal #257. It also does not prove the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims; no novelty or priority claim is made.
+
 - P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X)
 
   Broader irrationality theorem containing the relevant Mersenne--Lambert specialisation.

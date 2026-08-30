@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 14,
-    "artifact_count": 14,
+    "working_tree_only_count": 15,
+    "artifact_count": 15,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 14,
+    "link_and_digest_only_count": 15,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -280,6 +280,25 @@
         "docs/PRIOR_ART.md",
         "docs/THIRD_PARTY_NOTICES.md",
         "docs/primary-sources/reciprocal-tail/badea-1993-source-closure.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-lambert.pdf",
+      "sha256": "63e117c607868089e4ac6d41dc330ad742b3721f062c52d8ca92070425ae3f5e",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf",
+        "https://doi.org/10.1515/forum-2018-0299"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
       ]
     }
   ]
