@@ -31,7 +31,7 @@ explicit parameter closure. The exact source declaration is at
 the preceding source lines.
 
 The value-selection record evaluates all 31 committed Comparator rows. Its
-high-signal spine is:
+complete high-signal spine over that exact universe is:
 
 1. `irrational_erdosSum_full_support` — selected: unconditional direct
    irrationality, a completed certificate mechanism, canonical endpoint, and
@@ -64,7 +64,7 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`fbd85bca4c8a205bd6642b7a8d29985bf4f66ca0` immediately before this evidence
+`a183829b4cb914e93ec6f99bd7e78359cc9689d0` immediately before this evidence
 refresh:
 
 - Comparator configuration: `verification/comparator.json`, 31 unique

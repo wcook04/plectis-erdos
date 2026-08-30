@@ -133,7 +133,7 @@
   },
   "current_repository": {
     "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-    "observed_head_before_product": "fbd85bca4c8a205bd6642b7a8d29985bf4f66ca0",
+    "observed_head_before_product": "a183829b4cb914e93ec6f99bd7e78359cc9689d0",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
