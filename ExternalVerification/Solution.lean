@@ -6,6 +6,7 @@ Authors: Will Cook
 import ExternalVerification.Statements
 import Erdos249257.GreedyAchievementSet
 import Erdos249257.GcdMomentCalculus
+import Erdos249257.LcmFactorIdealPulseObstruction
 import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
@@ -20,7 +21,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-four existing results through the Mathlib-only
+These thin wrappers expose twenty-five existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -37,6 +38,45 @@ private theorem runBoundaryPair_eq_source (ns : List ℕ) :
   | nil => rfl
   | cons n ns ih =>
       simp [runBoundaryPair, SternBrocotRunGeometry.runBoundaryPair, ih]
+
+private theorem periodLcm_eq_source (t : ℕ) :
+    periodLcm t = Erdos249257.TotientTailPeriodKiller.periodLcm t := by
+  induction t with
+  | zero => rfl
+  | succ t ih =>
+      simp [periodLcm,
+        Erdos249257.TotientTailPeriodKiller.periodLcm, ih]
+
+private theorem dyadicClearedPrefix_eq_source
+    (a : ℕ → ℤ) (n L : ℕ) :
+    dyadicClearedPrefix a n L =
+      Erdos249257.TotientTailPeriodKiller.dyadicClearedPrefix a n L := by
+  induction L with
+  | zero => rfl
+  | succ L ih =>
+      simp [dyadicClearedPrefix,
+        Erdos249257.TotientTailPeriodKiller.dyadicClearedPrefix, ih]
+
+private theorem shiftLinearCombination_eq_source
+    (terms : List (ℕ × ℤ)) (f : ℕ → ℤ) (n : ℕ) :
+    shiftLinearCombination terms f n =
+      Erdos249257.TotientTailPeriodKiller.shiftLinearCombination terms f n := by
+  induction terms with
+  | nil => rfl
+  | cons term terms ih =>
+      rcases term with ⟨h, q⟩
+      simp [shiftLinearCombination,
+        Erdos249257.TotientTailPeriodKiller.shiftLinearCombination, ih]
+
+private theorem shiftLinearWeight_eq_source (terms : List (ℕ × ℤ)) :
+    shiftLinearWeight terms =
+      Erdos249257.TotientTailPeriodKiller.shiftLinearWeight terms := by
+  induction terms with
+  | nil => rfl
+  | cons term terms ih =>
+      rcases term with ⟨h, q⟩
+      simp [shiftLinearWeight,
+        Erdos249257.TotientTailPeriodKiller.shiftLinearWeight, ih]
 
 /-! The statement-only packet owns isomorphic copies of the finite index
 types, because `Statements.lean` must not import proof-bearing source modules.
@@ -143,6 +183,13 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
   · intro a b
     simpa [cylinderMass, GcdMomentCalculus.cylinderMass] using
       GcdMomentCalculus.cylinderMass_split a b
+  · intro t ht
+    simpa only [dyadicCoboundary,
+      Erdos249257.TotientTailPeriodKiller.dyadicCoboundary,
+      periodLcm_eq_source, dyadicClearedPrefix_eq_source,
+      shiftLinearCombination_eq_source, shiftLinearWeight_eq_source] using
+      Erdos249257.TotientTailPeriodKiller.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient
+        t ht
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
@@ -296,6 +343,31 @@ theorem cylinderMass_split (a b : ℕ+) :
       1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
         + cylinderMass (a + b) b + cylinderMass a (a + b) :=
   (portfolioClaims Unit).problem249CylinderMassSplit a b
+
+theorem lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient
+    (t : ℕ) (ht : 3 ≤ t) :
+    ∃ c a : ℕ → ℤ,
+      (∃ k, c k ≠ 0) ∧
+      (∀ i, a i = dyadicCoboundary c i) ∧
+      ∀ terms : List (ℕ × ℤ),
+        ∃ d b : ℕ → ℤ,
+          (∀ i, d i = shiftLinearCombination terms c i) ∧
+          (∀ i, b i = shiftLinearCombination terms a i) ∧
+          (∀ i, b i = dyadicCoboundary d i) ∧
+          (∀ n L, dyadicClearedPrefix b n L =
+            (2 : ℤ) ^ L * d n - d (n + L)) ∧
+          (∀ i, (Nat.totient (periodLcm t) : ℤ) ∣ b i) ∧
+          (∀ j, j ∣ periodLcm t → ∀ i, (Nat.totient j : ℤ) ∣ b i) ∧
+          (∀ i, |d i| ≤ shiftLinearWeight terms *
+            |(Nat.totient (periodLcm t) : ℤ)|) ∧
+          ∀ i, |b i| ≤ shiftLinearWeight terms *
+            (2 * |(Nat.totient (periodLcm t) : ℤ)|) := by
+  simpa only [dyadicCoboundary,
+    Erdos249257.TotientTailPeriodKiller.dyadicCoboundary,
+    periodLcm_eq_source, dyadicClearedPrefix_eq_source,
+    shiftLinearCombination_eq_source, shiftLinearWeight_eq_source] using
+    Erdos249257.TotientTailPeriodKiller.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient
+      t ht
 
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
   simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,

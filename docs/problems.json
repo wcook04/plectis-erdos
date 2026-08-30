@@ -490,11 +490,11 @@
       },
       "external_check": {
         "state": "reviewed",
-        "family_count": 12,
+        "family_count": 13,
         "by_class": {
           "not_selected": 4,
           "represented_by": 1,
-          "targeted": 7
+          "targeted": 8
         },
         "dispositions": {
           "totient_kernel_basis": "targeted",
@@ -504,6 +504,7 @@
           "squared_lambert_gcd_moments": "targeted",
           "stern_brocot_run_fibonacci_stability": "targeted",
           "stern_brocot_cylinder_law": "targeted",
+          "lcm_factor_ideal_shift_algebra_no_go": "targeted",
           "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
           "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
           "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",

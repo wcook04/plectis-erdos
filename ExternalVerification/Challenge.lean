@@ -112,6 +112,26 @@ theorem cylinderMass_split (a b : ℕ+) :
         + cylinderMass (a + b) b + cylinderMass a (a + b) :=
   (portfolioClaims Unit).problem249CylinderMassSplit a b
 
+theorem lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient
+    (t : ℕ) (ht : 3 ≤ t) :
+    ∃ c a : ℕ → ℤ,
+      (∃ k, c k ≠ 0) ∧
+      (∀ i, a i = dyadicCoboundary c i) ∧
+      ∀ terms : List (ℕ × ℤ),
+        ∃ d b : ℕ → ℤ,
+          (∀ i, d i = shiftLinearCombination terms c i) ∧
+          (∀ i, b i = shiftLinearCombination terms a i) ∧
+          (∀ i, b i = dyadicCoboundary d i) ∧
+          (∀ n L, dyadicClearedPrefix b n L =
+            (2 : ℤ) ^ L * d n - d (n + L)) ∧
+          (∀ i, (Nat.totient (periodLcm t) : ℤ) ∣ b i) ∧
+          (∀ j, j ∣ periodLcm t → ∀ i, (Nat.totient j : ℤ) ∣ b i) ∧
+          (∀ i, |d i| ≤ shiftLinearWeight terms *
+            |(Nat.totient (periodLcm t) : ℤ)|) ∧
+          ∀ i, |b i| ≤ shiftLinearWeight terms *
+            (2 * |(Nat.totient (periodLcm t) : ℤ)|) :=
+  (portfolioClaims Unit).problem249LcmFactorIdealShiftAlgebra t ht
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

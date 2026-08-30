@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-four-interface
+This module contains only the definitions needed to state the twenty-five-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -241,7 +241,33 @@ def defectRunLengths (e : List ℕ) : List ℕ :=
 noncomputable def cylinderMass (a b : ℕ+) : ℝ :=
   1 / (((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1))
 
-/-- One trusted challenge witness carries the twenty-four exact interfaces selected
+/-! ## LCM factor-ideal shift-algebra no-go -/
+
+def periodLcm : ℕ → ℕ
+  | 0 => 1
+  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
+
+/-- The zero-based dyadic coboundary `(2 - E)c`. -/
+def dyadicCoboundary (c : ℕ → ℤ) (n : ℕ) : ℤ :=
+  2 * c n - c (n + 1)
+
+/-- The depth-`L` cleared binary prefix, accumulated from left to right. -/
+def dyadicClearedPrefix (a : ℕ → ℤ) (n : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | L + 1 => 2 * dyadicClearedPrefix a n L + a (n + L)
+
+/-- Evaluation of a finite integer shift polynomial on a sequence. -/
+def shiftLinearCombination : List (ℕ × ℤ) → (ℕ → ℤ) → (ℕ → ℤ)
+  | [], _ => fun _ => 0
+  | (h, q) :: terms, f => fun n =>
+      q * f (n + h) + shiftLinearCombination terms f n
+
+/-- The `ℓ1` weight of a finite shift polynomial. -/
+def shiftLinearWeight : List (ℕ × ℤ) → ℤ
+  | [] => 0
+  | (_, q) :: terms => |q| + shiftLinearWeight terms
+
+/-- One trusted challenge witness carries the twenty-five exact interfaces selected
 for the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
 each statement separately while the trusted challenge contains one hole. -/
@@ -315,6 +341,24 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       cylinderMass a b =
         1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
           + cylinderMass (a + b) b + cylinderMass a (a + b)
+  problem249LcmFactorIdealShiftAlgebra :
+    ∀ (t : ℕ), 3 ≤ t →
+      ∃ c a : ℕ → ℤ,
+        (∃ k, c k ≠ 0) ∧
+        (∀ i, a i = dyadicCoboundary c i) ∧
+        ∀ terms : List (ℕ × ℤ),
+          ∃ d b : ℕ → ℤ,
+            (∀ i, d i = shiftLinearCombination terms c i) ∧
+            (∀ i, b i = shiftLinearCombination terms a i) ∧
+            (∀ i, b i = dyadicCoboundary d i) ∧
+            (∀ n L, dyadicClearedPrefix b n L =
+              (2 : ℤ) ^ L * d n - d (n + L)) ∧
+            (∀ i, (Nat.totient (periodLcm t) : ℤ) ∣ b i) ∧
+            (∀ j, j ∣ periodLcm t → ∀ i, (Nat.totient j : ℤ) ∣ b i) ∧
+            (∀ i, |d i| ≤ shiftLinearWeight terms *
+              |(Nat.totient (periodLcm t) : ℤ)|) ∧
+            ∀ i, |b i| ≤ shiftLinearWeight terms *
+              (2 * |(Nat.totient (periodLcm t) : ℤ)|)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →

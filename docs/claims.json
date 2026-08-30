@@ -11454,6 +11454,18 @@
         "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
       },
       {
+        "id": "lcm_factor_ideal_shift_algebra_no_go",
+        "problem": 249,
+        "review_family": "lcm_factor_ideal_shift_algebra_no_go",
+        "claim_id": "lcm_factor_ideal_anchor_pulse_no_go",
+        "contribution_class": "unconditional progress",
+        "original_declaration": "Erdos249257.TotientTailPeriodKiller.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
+        "original_source": "Erdos249257/LcmFactorIdealPulseObstruction.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
+        "statement": "For every t >= 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds.",
+        "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
+      },
+      {
         "id": "prime_gap_unboundedness",
         "problem": 251,
         "review_family": "coefficient_only_no_go",
@@ -11744,6 +11756,14 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "boundary": "This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open."
+        },
+        {
+          "id": "lcm_factor_ideal_shift_algebra_no_go",
+          "contribution_class": "unconditional progress",
+          "summary": "For every t at least 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
         },
         {
           "id": "totient_finite_denominator_exclusion",
