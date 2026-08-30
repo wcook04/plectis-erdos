@@ -90,14 +90,7 @@ All eight remain open. Pass is mechanism-first:
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
   the cofinal producer is still open.
 
-Next boundary: #243's signed recovery
-(`boundedNegativePart_eventually_zero`) forces `E = D − (a−1)C` to vanish
-eventually under exact `C/D` dynamics `Cₙ₊₁+Dₙ=aₙCₙ`, `Dₙ₊₁=aₙDₙ`, `a>1`,
-`C>0`, strict `|E|<C`, uniform `E≥−B`, and normalized vanishing; centered zero
-with an eventually nonzero next tail recovers Sylvester recurrence
-([Comparator](ExternalVerification/Challenge.lean#L96); [source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265)).
-It leaves reciprocal-tail irrationality, the unbounded mixed-sign branch, and
-the prime-specific producer open. #251 gives unbounded prime gaps and an exact
+Next boundary: #243 recovery. Comparator's `boundedNegativePart_eventually_zero` and distinct `sylvesterNext_eventually_of_summable_negativeRelativeMass` force Sylvester steps under exact `C/D`, `C>0`, strict centered-step, and division-free normalized-vanishing hypotheses; the latter replaces a uniform lower bound with `Summable` normalized negative mass ([consumer](ExternalVerification/Challenge.lean#L111); [source](ErdosProblems/Erdos243/SparseResetRecovery.lean#L175)). Neither supplies the original orbit, mixed-sign/prime production, or reciprocal-tail irrationality; #243 stays open. #251 gives unbounded prime gaps and an exact
 prime-gap equivalence; its public `RealDyadicTailRecurrence` classifiers say
 rationality iff one positive shift is eventually integral and irrationality iff
 every positive shift is nonintegral ([consumer](ExternalVerification/Challenge.lean#L245)).
