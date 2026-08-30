@@ -168,7 +168,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         for row in showcase["frontier_by_problem"]
         for name in row["comparator_declarations"]
     ]
-    assert len(names) == 44
+    assert len(names) == 46
     assert len(names) == len(set(names))
     assert [row["problem"] for row in showcase["frontier_by_problem"]] == [68, 243, 249, 251, 257, 269, 1041, 1049]
     assert showcase["candidate_selection"]["declaration"] in names
@@ -253,10 +253,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "actualLcmRawErrorRadius" in hypotheses
     assert "actualLcmTailOrbit" in hypotheses
     assert "Irrational" in landscape_by_id["actual_lcm_orbit_separation"]["conclusion"]
-    for candidate_id in (
-        "certificate_completeness",
-        "weighted_phase_carry_observer",
-    ):
+    for candidate_id in ("certificate_completeness",):
         row = landscape_by_id[candidate_id]
         assert row["disposition"] in {"deferred", "subordinate"}
         assert row["comparator_eligibility"] == (
@@ -295,7 +292,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert centered["disposition"] == "represented"
     assert centered["prior_disposition"] == "deferred"
     assert centered["canonical_family_binding"] == "centered_state_dynamics"
-    assert centered["comparator_eligibility"] == "source_landed_but_not_comparator_configured"
+    assert centered["comparator_eligibility"] == "committed_source_faithful_transport"
     assert centered["source_transport_commit"] == "ea12f041307bfea8ca423d8f76f6fe2d38c35055"
     assert centered["source_transport_files"] == [
         "ExternalVerification/Challenge.lean",
@@ -307,6 +304,17 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "Erdos249257.ExternalVerification.centeredState_eventually_zero",
         "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
     ]
+    assert centered["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero"
+    )
+    assert centered["supporting_comparator_declarations"] == []
+    assert centered["subordinate_source_declarations"] == [
+        "Erdos249257.ExternalVerification.centeredState_eventually_zero",
+        "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_centered_zero",
+    ]
+    assert centered["canonical_claim_commit"] == (
+        "717ba73e587ee0be9ae388d352f24ad9f22cb55d"
+    )
     assert "boundedNegativePart_eventually_zero" in centered["source_declaration"]
     assert "mixed-sign branch" in " ".join(centered["limitations"])
     committed = {
@@ -323,6 +331,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos1049_four_jet_pade_obstruction",
         "erdos257_boolean_mobius_carry",
         "erdos249_carry_anti_compression",
+        "erdos243_centered_state_recovery",
+        "weighted_phase_carry_observer",
     }
     assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
     assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
@@ -384,6 +394,20 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "finite_realisedSpan_of_factorisation" in weighted["source_declaration"]
     assert "uncontrolled integral coboundary" in weighted["conclusion"]
     assert any("scalar-evaluation" in item for item in weighted["limitations"])
+    assert weighted["disposition"] == "represented"
+    assert weighted["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert weighted["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert weighted["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary"
+    )
+    assert weighted["comparator_declaration"] in comparator["theorem_names"]
+    assert weighted["supporting_comparator_declarations"] == []
+    assert weighted["source_transport_commit"] == (
+        "cec8ee43219b3f2059902be78ee0fc54df3dd6e9"
+    )
+    assert weighted["canonical_claim_commit"] == (
+        "97d96fb5307061dfe79035c19212572c07cc9055"
+    )
     boolean = landscape_by_id["erdos257_boolean_mobius_carry"]
     assert boolean["family_id"] == "boolean_mobius_carry"
     assert boolean["disposition"] == "represented"

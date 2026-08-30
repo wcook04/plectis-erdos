@@ -133,7 +133,7 @@
   },
     "current_repository": {
       "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-    "observed_head_before_product": "603ebf9d32967c3b65ee5d814b5a4c1d81ba803f",
+    "observed_head_before_product": "94d10503ab3414b5acfb302fdf88da0c6042d724",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -147,8 +147,8 @@
     },
     "comparator": {
       "path": "verification/comparator.json",
-      "committed_sha256": "be515d9e05622e02ff4b65e9fce4521353469ee66d127e340a01570eb5bbe069",
-      "theorem_name_count": 44,
+      "committed_sha256": "76235ec6ca1adc55b360625fef011b2cee2d0d05148224bbb20f325ce027b17b",
+      "theorem_name_count": 46,
       "challenge_module": "ExternalVerification.Challenge",
       "solution_module": "ExternalVerification.Solution",
       "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
@@ -174,14 +174,14 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-    "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 65 families (the 60-family dispatch baseline plus canonical actual-LCM, first-harmonic, weighted-phase-carry, dyadic-tail classification, Boolean–Möbius carry, canonical totient carry anti-compression, and sharp height-and-Padé evidence) and eight targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 44-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
+    "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 65 families (the 60-family dispatch baseline plus canonical actual-LCM, first-harmonic, weighted-phase-carry, dyadic-tail classification, Boolean–Möbius carry, canonical totient carry anti-compression, and sharp height-and-Padé evidence) and eight targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 46-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "96bbeedbbe0c70a718fe492975a95eb2f99dd87fe53c832e708befc1fe94b21a",
+      "review_matrix_sha256": "28b4836a8a51a1acd79ba5b1b6e2b227e417f4bd5c9e4beb7c850316bd05ea55",
       "review_family_count": 65,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
@@ -292,7 +292,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.tailShift_integral_iff_den_dvd_mersenne", "Erdos249257.ExternalVerification.tailShift_integral_iff_two_pow_modEq_one", "Erdos249257.ExternalVerification.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift", "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral"],
         "comparator_declaration": "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The exact abstract classification transport is registered by its source-faithful representative in the committed verification/comparator.json 44-row screen; the canonical review matrix carries dyadic_tail_integrality_classification, while integral_shift_classification and the existing prime-gap equivalence remain distinct.",
+        "transport_admission_boundary": "The exact abstract classification transport is registered by its source-faithful representative in the committed verification/comparator.json 46-row screen; the canonical review matrix carries dyadic_tail_integrality_classification, while integral_shift_classification and the existing prime-gap equivalence remain distinct.",
         "reason": "Represented after source-current value review: this is endpoint-proximate and mathematically useful denominator classification with strong digestion value. Its exact four-declaration ExternalVerification transport is committed, its canonical review family is explicit, and its all-positive-tail-shifts representative is now in the Comparator screen; the prime-specific cofinal mismatch producer remains open, so it remains below direct endpoint families.",
         "reversal_evidence": "Register the source-faithful abstract classification in Comparator and prove a genuinely new prime-specific mismatch or eventual-small producer; another equivalent classifier would remain subordinate."
       },
@@ -312,7 +312,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry", "Erdos249257.ExternalVerification.BooleanMobiusCarryCertificate", "Erdos249257.ExternalVerification.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit", "Erdos249257.ExternalVerification.one_div_oddOrder_le_reciprocalMass_of_support_fraction", "Erdos249257.ExternalVerification.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction", "Erdos249257.ExternalVerification.supportCoeffZeroWindow_length_le_eps_logb_add"],
         "comparator_declaration": "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The exact Boolean–Möbius transport is committed in ExternalVerification at 712bc4c3 and registered as a source-faithful representative in the committed 44-row verification/comparator.json screen; the canonical review matrix now carries boolean_mobius_carry as a distinct family from shifted_odd_tail_state.",
+        "transport_admission_boundary": "The exact Boolean–Möbius transport is committed in ExternalVerification at 712bc4c3 and registered as a source-faithful representative in the committed 46-row verification/comparator.json screen; the canonical review matrix now carries boolean_mobius_carry as a distinct family from shifted_odd_tail_state.",
         "statement": "For p : ℤ and q > 0, a nonempty normalized positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate exists.",
         "exact_hypotheses": [
           "p : ℤ, q > 0, 0 ∉ A, and A has the explicit nonempty positive-index support witness required by the equivalence.",
@@ -350,7 +350,7 @@
         "transport_declarations": ["Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"],
         "comparator_declaration": "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful representative is committed in ExternalVerification at 4932144a, registered in the committed 44-row verification/comparator.json screen, and the canonical review matrix binds totient_carry_anti_compression. Supporting carry-kernel, modular-periodicity, forcing-vanishing, and geometric-orbit rows are mechanisms and contrary evidence, not separate families.",
+        "transport_admission_boundary": "The source-faithful representative is committed in ExternalVerification at 4932144a, registered in the committed 46-row verification/comparator.json screen, and the canonical review matrix binds totient_carry_anti_compression. Supporting carry-kernel, modular-periodicity, forcing-vanishing, and geometric-orbit rows are mechanisms and contrary evidence, not separate families.",
         "statement": "Under the non-irrationality branch for the binary totient series, a positive multiplier v and tempered integral carry u exist with common eventual modular periodicity for every dyadic section, while the canonical carry-kernel rank is at least 2^e - 1 at every level.",
         "exact_hypotheses": [
           "The representative assumes ¬ Irrational (binaryCoeffSeries Nat.totient), with the exact positive multiplier, tempered integer carry, and dyadic-section definitions from TotientTailCarryPeriod.lean.",
@@ -378,27 +378,38 @@
         "disposition": "represented",
         "prior_disposition": "deferred",
         "canonical_family_binding": "centered_state_dynamics",
-        "comparator_eligibility": "source_landed_but_not_comparator_configured",
-        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_transport_commit": "ea12f041307bfea8ca423d8f76f6fe2d38c35055",
+        "canonical_claim_commit": "717ba73e587ee0be9ae388d352f24ad9f22cb55d",
         "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
         "transport_declarations": ["Erdos249257.ExternalVerification.sylvesterNext_eventually_of_centered_zero", "Erdos249257.ExternalVerification.centeredState_eventually_zero", "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero"],
+        "comparator_declaration": "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+        "supporting_comparator_declarations": [],
+        "subordinate_source_declarations": ["Erdos249257.ExternalVerification.centeredState_eventually_zero", "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_centered_zero"],
         "source_declaration": "ErdosProblems.Erdos243.boundedNegativePart_eventually_zero; ErdosProblems.Erdos243.centeredState_eventually_zero; ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero",
         "source_file": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
         "source_anchor": "1799; 1837; 2265",
-        "reason": "Represented after source-current value review: this is a distinct, high-signal executable signed recovery mechanism with stronger digestion value than another periodic/no-go restatement. It remains below direct endpoints because its mixed-sign producer and reciprocal-tail irrationality consequence are open, and its exact transport is not yet Comparator-configured.",
-        "reversal_evidence": "A committed source-faithful Comparator registration preserves representation; a proved unbounded mixed-sign producer or direct reciprocal-tail endpoint would justify promotion, while another periodic or bounded-negative exclusion would remain subordinate."
+        "reason": "Represented after the committed source/config event: this is a distinct, high-signal executable signed recovery mechanism with stronger digestion value than another periodic/no-go restatement. Its load-bearing boundedNegativePart_eventually_zero declaration is now the Comparator representative, while centeredState_eventually_zero and sylvesterNext_eventually_of_centered_zero remain subordinate mechanism evidence. It stays below direct endpoint families because its mixed-sign producer and reciprocal-tail irrationality consequence are open.",
+        "reversal_evidence": "A proved unbounded mixed-sign producer or direct reciprocal-tail endpoint would justify promotion, while another periodic or bounded-negative exclusion would remain subordinate; a duplicate transport row would not change the disposition."
       },
       {
         "candidate_id": "weighted_phase_carry_observer",
         "family_id": "weighted_phase_carry_observer",
-        "disposition": "deferred",
-        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "disposition": "represented",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
+        "source_transport_commit": "cec8ee43219b3f2059902be78ee0fc54df3dd6e9",
+        "canonical_claim_commit": "97d96fb5307061dfe79035c19212572c07cc9055",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary"],
+        "comparator_declaration": "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
+        "supporting_comparator_declarations": [],
         "source_declaration": "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary; ErdosProblems.Erdos269.carryResidue_mem_interval; ErdosProblems.Erdos269.residueDigit_mem_interval; ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation",
         "source_file": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
         "source_anchor": "109-145; 150-175; 157-183; 334-355",
-        "reason": "Exact finite-residue/uncontrolled-coboundary and function-faithful observer factorization mechanism; no endpoint or committed Comparator transport.",
-        "reversal_evidence": "A source-faithful transport preserving both theorem boundaries, or a proved quotient recurrence/scalar-to-function bridge yielding the #269 endpoint."
+        "reason": "Represented after the committed source/config event: this remains one coherent, reusable weighted-phase observer mechanism with exact finite-residue/uncontrolled-coboundary separation and a precise function-faithful span criterion. It stays below direct endpoint families because the Comparator row exposes the residue decomposition but not a quotient recurrence, observer factorization, or #269 endpoint.",
+        "reversal_evidence": "A committed transport of the observer factorization preserving its function-faithful hypotheses would strengthen representation; a proved quotient recurrence or scalar-to-function bridge yielding the #269 endpoint could promote it, while a routine residue restatement would not."
       }
     ]
   },
