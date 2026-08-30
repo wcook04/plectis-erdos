@@ -16,76 +16,19 @@ the displayed implication; it does not prove that its hypotheses occur.
 ## Ten-minute verdict
 
 All eight Erdős problems remain open. The development is neither a partial
-solution nor an empty collection of restatements. For a first mathematical
-pass, the high-signal spine is:
+solution nor an empty collection of restatements. For the two reviewed
+programmes, its checked non-restatement centre includes:
 
-- **#257, a completed unconditional endpoint theorem in the full-support
-  case.** The checked divisor-block proof combines a bounded Bertrand/CRT first
-  block, middle-window divisor-pair averaging, weighted tail control, and
-  parameter closure (`irrational_erdosSum_full_support`). It proves the
-  canonical full-support series irrational in every integer base `b ≥ 2`, but
-  not universal #257. A distinct adaptive-CRT certificate proves irrationality
-  for every infinite pairwise-coprime support with summable reciprocal mass;
-  those structured-support hypotheses likewise leave arbitrary support open.
-  A separate direct result covers nonnegative rational eventually periodic
-  coefficient sequences with a positive periodic-tail value: one common
-  denominator reduces the claim to the periodic divisor-orbit sieve
-  (`irrational_ratWeightSeries_eventuallyPeriodic`,
-  `Erdos249257/CertificateKernel.lean:12811`); mixed-sign coefficients and
-  arbitrary supports remain outside its hypotheses. A deeper, genuinely
-  distinct conditional route proves the base-2 support series under a finite-
-  core orthogonal-petal bouquet plus the uniform
-  `SunflowerForcedSlotTailSelection` predicate
-  (`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`,
-  `Erdos249257/SupportSunflowerDichotomy.lean:540`); the selector and bouquet
-  are not constructed for arbitrary supports. Separately, the full base-2
-  Mersenne achievement set has Lebesgue measure exactly one, while the
-  supported-set theorem gives exact finite-complement measure or zero for an
-  infinite complement (`volume_mersenneAchievementSet`,
-  `Erdos249257/GreedyAchievementSet.lean:996`;
-  `volume_supportedMersenneAchievementSet_dichotomy`,
-  `ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:397`). This is
-  consequential global geometry, not a classification of rational points or
-  a universal irrationality theorem.
-- **#249, a constructive kernel-rank spine.** The exact dyadic totient-kernel
-  rank `2^e + 1`, its odd-core basis, and the resulting infinite-dimensional
-  span expose a real finite-level mechanism; the all-base rank is conditional
-  on the displayed affine independence input. None of these gives a
-  rationality-to-finite-rank bridge or solves the binary totient endpoint.
-- **#68, an exact endpoint reduction.** Irrationality is equivalent to
-  cofinally many strict factorial-top divisibility misses, equivalently to
-  cofinally many non-unit carries. The equivalence transfers the hard
-  producer question exactly; it does not supply that producer.
-- **#243 and #251, boundary results that diagnose the missing input.** Fresh
-  pairwise-coprime moduli obstruct bounded rises, while periodic/vanishing
-  negative-error regimes are excluded; for #251, unbounded prime gaps and an
-  exact prime-gap irrationality equivalence still leave the concrete tail
-  bridge open.
-- **#269, #1041, and #1049, structurally useful route checks.** Running-LCM
-  height and rank-two obstructions, finite translation/root-retention inputs
-  plus a diagnosed saddle gap, and the rational-base recurrence/no-go at
-  `3/2` each isolate a mechanism without claiming the endpoint.
-
-The finite #249 certificate band, Stern–Brocot and gcd-moment identities,
-#257 measure/noncollapse geometry, and the cited-only ladders remain useful
-supporting routes. They are deliberately secondary to the mechanisms above:
-finite ranges do not become cofinal theorems, and cited analytic inputs do
-not become Lean results by appearing in the same paper.
-
-### Signal-audit dispositions
-
-These are editorial dispositions for first-contact signal, not novelty,
-priority, or proof-status claims. The detailed sections below retain the
-full evidence and exact boundaries.
-
-| Disposition | Reader-facing treatment | Mathematical reason |
-|---|---|---|
-| **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, and nonnegative rational eventually-periodic coefficient theorem, plus #249 finite kernel rank/basis and #68's exact carry/divisibility equivalence, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; pairwise CRT and periodic denominator-clearing are distinct direct mechanisms; rank and equivalence expose exact finite-level and endpoint interfaces with hypotheses visible. |
-| **retain** | #257's orthogonal-petal bouquet reduction and achievement-set measure geometry, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The bouquet route has genuine structural depth but requires an unconstructed selector and bouquet; the measure rows give consequential global geometry without classifying rational points; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
-| **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
-| **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
-| **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
-| **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks remain discoverable through the source maps, but do not lead the reader. | A finite range, routine shard, or unconstructed antecedent cannot establish a cofinal family or universal endpoint, so it is evidence for follow-up rather than first-contact signal. |
+- for #257, exact finite-period noncollapse, eventually-periodic support
+  irrationality, a signed periodic-weight dichotomy, feedback and rank-gap
+  theorems, and a precisely delimited squarefree-support barrier;
+- for #249, exact finite-level ranks and infinite-dimensionality for dyadic
+  sections of Euler's totient, denominator growth for a Möbius-shadow object,
+  and a checked finite-shift-algebra no-go with a synthetic survivor (not an
+  actual-totient construction); and
+- finite evidence: a diagonal certificate band through `t=82` and a historical
+  roster of 123 distinct off-diagonal certificates (125 verified log rows),
+  neither of which supplies the required unbounded family.
 
 The project also audits its own conditional routes. Of 23 substantial Lean
 propositions extracted from hypotheses of conditional theorems, 17 are
@@ -159,6 +102,8 @@ replacement for claim authority.
   indices are at least `d`, channel cancellation with `M ≠ 0` forces some
   index to be at least `2d` (`ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean`;
   paper discussion in `erdos-68-factorial-denominator-irrationality.pdf`).
+  Registry: `channel_quotient_band_breakpoint` (`res:bandbreakpoint`), queryable
+  with `python3 scripts/query_corpus.py --claim channel_quotient_band_breakpoint`.
   This is a finite-family breakpoint only: it supplies no cancelling family,
   simultaneous-channel control, residual estimate, or cofinal non-unit carry.
 - The kernel-internal denominator bound is `q ≥ 67`
@@ -179,7 +124,8 @@ replacement for claim authority.
   coprime to an infinite family of fresh pairwise-coprime moduli —
   `no_boundedRise_of_tailAvoidance`,
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:897`. Checked theorem;
-  reusable obstruction; registry: none.
+  reusable obstruction; claims registry: `bounded_rise_fresh_modulus_barrier`
+  (`res:barrier`).
 - Given normalised vanishing — supplied for the canonical orbit by Koizumi
   (Integers 26 (2026), A28; cited, prose bridge) — a bounded negative part or
   finite normalised negative mass forces the error to vanish and the
@@ -192,8 +138,12 @@ replacement for claim authority.
 - A separate no-go rules out an eventually periodic negative-error orbit when
   the phase growth is positive
   (`no_eventuallyPeriodicNegative_orbit`,
-  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean`). It does not cover
-  arbitrary unbounded negative behaviour, so the mixed-sign boundary remains.
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:796`; claims registry:
+  `eventually_periodic_negative_no_go`). Its exact hypotheses include
+  `2 ≤ a(n)`, `0 < e(N+n) < a(N+n)`, the denominator, tail, and shape
+  recurrences, and positive-period/positive-drift equations. It does not cover
+  arbitrary mixed-sign or unbounded negative behaviour, so the open boundary
+  remains.
 - The Comparator interface
   `no_cofinallyBoundedNegative_of_normalizedVanishes` makes another conditional
   no-go exact: with `a(n) > 1`, positive `C` and `magnitude`, the coupled
@@ -203,7 +153,9 @@ replacement for claim authority.
   bounded negative part, the hypotheses are inconsistent
   (`ErdosProblems/Erdos243/ReciprocalTailRigidity.lean`). Every dynamical,
   positivity, bounded-rise, and vanishing assumption remains explicit; this
-  does not close the original mixed-sign regime.
+  does not close the original mixed-sign regime (claims registry:
+  `bounded_negative_exclusion`; source coordinate:
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:1748`).
 - Open: the unbounded mixed-sign regime.
 
 **#249 — is `∑ φ(n)/2ⁿ` irrational? (reviewed core)**
@@ -257,7 +209,8 @@ replacement for claim authority.
   explicit canonical spanning family; under its stated linear-independence
   hypothesis, the level-`e` span has dimension `kᵉ + 1`
   (`finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent`,
-  `Erdos249257/TotientKernelConditional.lean`). The independence is an
+  `Erdos249257/TotientKernelConditional.lean:215`; claims registry:
+  `all_base_totient_kernel_conditional_rank`). The independence is an
   external affine-ordering input not proved here, and this conditional rank
   statement does not prove irrationality of `S`.
 - Irrationality of `S` has six checked exact characterisations, from
@@ -321,7 +274,9 @@ replacement for claim authority.
   (`irrational_initial_iff_cofinalNonintegralTailShifts`,
   `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:1572`) — the
   identification of the concrete prime tail with that recurrence is
-  paper-level. Checked theorems; registry: none.
+  paper-level. Claims registry: `prime_gap_unboundedness_and_nonperiodicity`
+  and `prime_gap_irrationality_equivalence`; the actual prime-tail bridge
+  remains open.
 - The Comparator-facing boundary is also explicit: `exists_primeGap0_gt`
   proves that consecutive prime gaps are unbounded, while
   `irrational_tsum_primeDyadicTerm_iff_primeGap` proves, for a summable prime
@@ -344,8 +299,10 @@ core)**
   exponents and every base `b ≥ 2`, the reduced denominator of `∑_{n∈F} 1/(bⁿ−1)` is coprime to `b`
   and has multiplicative order exactly `lcm F` — `finite_period_noncollapse`
   (Comparator interface `finite_period_noncollapse_rat_den_interface`),
-  `Erdos249257/CertificateKernel.lean:5091`, with no witness-supply
-  hypothesis. Checked theorem; registry: none.
+  `Erdos249257/CertificateKernel.lean:5246`, with no witness-supply
+  hypothesis. Checked theorem; claims registry: `finite_period_noncollapse`
+  (`res:period`). It is a finite-support denominator result, not an
+  irrationality theorem for arbitrary infinite supports.
 - Formalised known results: the full-support series is irrational in every
   base `b ≥ 2` (Erdős 1948; claim `eb_full_support`), as are pairwise-coprime
   supports with summable reciprocals (Erdős 1968) and eventually periodic
@@ -474,7 +431,10 @@ core)**
   supply the missing rationality-to-irrationality bridge.
 - Open: any three-prime case; the rationality-to-carry bridge and the
   cofinal window escape.
-
+- The finite residue contradiction and conditional cofinal-window carry
+  extinction are indexed as `three_prime_finite_residue_contradiction` and
+  `three_prime_cofinal_window_carry_extinction` in `docs/claims.json`, with
+  paper routes `res:consumer` and `res:windowconsumer`.
 **#1041 — short connections inside polynomial lemniscates?**
 
 - Checked: quantitative root retention under constant perturbation
@@ -487,7 +447,9 @@ core)**
   distinct (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:197`). The
   ray-separation exclusion is checked in consumer form only: the
   exponential-decay connection equation is its hypothesis, not a theorem
-  (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:315`). Registry: none.
+  (`ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:315`). Claims registry:
+  `newton_ray_separation_consumer`; the global short-connection topology and
+  length argument remain open.
 - The note's main independent contribution is prose, not Lean: a specific
   invalid three-ended local block at an interior Morse saddle in a recent
   manuscript's load-bearing Proposition 12 — identified as a proof gap, not
@@ -511,7 +473,10 @@ core)**
   `ErdosProblems/Erdos1049/RationalBaseLambert.lean:155`), scalar content is
   neutral for the local-to-Archimedean balance, and unit endpoints exclude
   both `2` and `3` from a common divisor
-  (`ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean:293`). Registry: none.
+  (`ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean:293`). Claims registry:
+  `three_halves_coordinatewise_corridor_no_go` (`res:nocorridor`) and
+  `rational_base_cleared_tail_recurrence` (`res:tailrec`); both are exact
+  formal boundaries, not an irrationality result.
 - The elementary height inequality used by Bundschuh–Väänänen's external
   irrationality criterion at `7/2` is checked
   (`ErdosProblems/Erdos1049/RationalBaseLambert.lean:83`);
@@ -523,6 +488,9 @@ core)**
   state (`ErdosProblems/Erdos1049/RationalBaseLambert.lean`). The
   `s^(N+1)` forcing term records the denominator-base tax; this recurrence is
   not itself a rationality contradiction, so it yields no #1049 endpoint.
+  The companion forcing bound is indexed as `rational_base_forcing_growth`
+  (`res:forcing`): for `s ≥ 2` and positive data it gives a lower bound
+  `2^(N+1)`, while `s = 1` collapses exactly to `B·coeff(N+1)`.
 - The Van Assche moving diagonal fails the Amdeberhan–Zeilberger scalar
   recurrence already at `n=0`: its exact residual is
   `-p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2)`, strictly negative for every real
@@ -530,7 +498,9 @@ core)**
   (`ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean:67,94`). This finite obstruction
   proves only non-transfer of that recurrence; it supplies no general
   recurrence, endpoint, lattice, valuation, denominator, or irrationality
-  theorem. Registry: none.
+  theorem. Claims registry: `van_assche_qapery_diagonal_no_go`; its source-bound
+  ceiling is recurrence non-transfer at `n=0`, not an endpoint or irrationality
+  result.
 - Open: irrationality at `3/2`; the primitive noncollapsed construction;
   analytic remainder control. The note proves no irrationality result and
   says so.
