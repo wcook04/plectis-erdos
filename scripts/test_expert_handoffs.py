@@ -173,6 +173,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     }
     assert set(supporting) == {
         "actual_lcm_orbit_separation",
+        "first_harmonic_pivot_decomposition",
         "rank_two_kernel_no_go",
         "height_fibre_and_shell",
         "dyadic_block_alphabet",
@@ -182,6 +183,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
         row["family"]["family_id"] for row in packet["supporting_families"]
     ] == [
         "actual_lcm_orbit_separation",
+        "first_harmonic_pivot_decomposition",
         "rank_two_kernel_no_go",
         "height_fibre_and_shell",
         "dyadic_block_alphabet",
@@ -365,6 +367,31 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     assert "cofinal separation supply" in actual[
         "open_producer_boundaries"
     ]["cofinal_separation_supply"]
+
+    pivot = supporting["first_harmonic_pivot_decomposition"]
+    assert pivot["family"]["problem"] == 249
+    assert pivot["family"]["authority_rank"]["programme_position"] == 2
+    assert pivot["family"]["palomar_selection_status"] == "represented"
+    assert pivot["family"]["claim_id"] == "first_harmonic_pivot_decomposition"
+    assert "four-term first-harmonic decomposition" in pivot["hard_mechanism"]
+    assert "9X/10" in pivot["hard_mechanism"]
+    assert len(pivot["source_declarations"]) == 9
+    assert all(
+        row["module"] == "Erdos249257/FirstHarmonicPivot.lean"
+        and isinstance(row["line"], int)
+        and row["signature"]
+        for row in pivot["source_declarations"]
+    )
+    assert isinstance(pivot["wrapper"]["line"], int)
+    assert {
+        row["family_id"] for row in pivot["related_families"]
+    } == {"actual_lcm_orbit_separation"}
+    assert pivot["related_families"][0]["relation"] == (
+        "independent_conditional_endpoint_peer"
+    )
+    assert "cofinal decorrelation" in pivot["open_producer_boundaries"][
+        "cofinal_decorrelation"
+    ]
 
 
 def test_strict_prime_successor_is_support_only() -> None:

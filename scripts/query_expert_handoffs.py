@@ -56,6 +56,7 @@ RANK_TWO_KERNEL_FAMILY = "rank_two_kernel_no_go"
 HEIGHT_FIBRE_FAMILY = "height_fibre_and_shell"
 DYADIC_ALPHABET_FAMILY = "dyadic_block_alphabet"
 ACTUAL_LCM_SEPARATION_FAMILY = "actual_lcm_orbit_separation"
+FIRST_HARMONIC_FAMILY = "first_harmonic_pivot_decomposition"
 
 
 @lru_cache(maxsize=16)
@@ -1114,6 +1115,168 @@ def actual_lcm_orbit_separation_handoff(
     }
 
 
+def first_harmonic_pivot_handoff(
+    palomar: Mapping[str, Any] | None = None,
+    claims: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Expose the exact #249 first-harmonic pivot consumer."""
+    palomar = palomar or load_json(PALOMAR)
+    claims_document = claims or load_json(CLAIMS)
+    review_rows = _claim_family_rows(claims_document)
+    review = review_rows.get(FIRST_HARMONIC_FAMILY)
+    if not isinstance(review, dict):
+        raise ValueError("Claims review matrix lacks first_harmonic_pivot_decomposition")
+    ranks = _canonical_family_ranks(palomar)
+    rank = ranks.get(FIRST_HARMONIC_FAMILY)
+    if rank is None:
+        raise ValueError("Palomar programme order lacks first_harmonic_pivot_decomposition")
+    claim = next(
+        (
+            row
+            for row in claims_document.get("external_verification_packet", {}).get(
+                "main_results", []
+            )
+            if row.get("review_family") == FIRST_HARMONIC_FAMILY
+        ),
+        None,
+    )
+    if not isinstance(claim, dict):
+        raise ValueError("Claims lacks the first-harmonic pivot source claim")
+    source_module = "Erdos249257/FirstHarmonicPivot.lean"
+    source_names = tuple(
+        str(declaration).rsplit(".", 1)[-1]
+        for declaration in review.get("declarations", [])
+    )
+    if len(source_names) != 9:
+        raise ValueError("Claims first-harmonic row must name nine declarations")
+    atlas = load_json(ATLAS)
+    declarations = [
+        _live_source_declaration(source_module, name, atlas)
+        for name in source_names
+    ]
+    ranking_rows = [
+        row
+        for row in palomar.get("candidate_ranking", [])
+        if row.get("family_id") == FIRST_HARMONIC_FAMILY
+    ]
+    if len(ranking_rows) != 1:
+        raise ValueError("Palomar must expose one first-harmonic ranking row")
+    wrapper_name = str(claim.get("wrapper_declaration"))
+    wrapper_module = "ExternalVerification/Solution.lean"
+    wrapper_pattern = re.compile(
+        r"^\s*theorem\s+" + re.escape(wrapper_name.rsplit(".", 1)[-1]) + r"\b"
+    )
+    wrapper_line = next(
+        (
+            line_number
+            for line_number, line in enumerate(
+                (ROOT / wrapper_module).read_text(encoding="utf-8").splitlines(),
+                start=1,
+            )
+            if wrapper_pattern.search(line)
+        ),
+        None,
+    )
+    if wrapper_line is None:
+        raise ValueError(f"source file lacks wrapper declaration {wrapper_name}")
+    canonical_relations = [
+        row
+        for row in palomar.get("selection_contract", {}).get(
+            "family_relations", []
+        )
+        if row.get("from_family_id") == FIRST_HARMONIC_FAMILY
+    ]
+    canonical_relations.sort(
+        key=lambda row: (
+            ranks.get(str(row.get("to_family_id")), {}).get("problem", 10**9),
+            ranks.get(str(row.get("to_family_id")), {}).get(
+                "programme_position", 10**9
+            ),
+        )
+    )
+    return {
+        "family": {
+            "family_id": FIRST_HARMONIC_FAMILY,
+            "problem": rank["problem"],
+            "authority_rank": {
+                "programme_position": rank["programme_position"],
+                "basis": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                    "programme_family_order"
+                ),
+                "boundary": (
+                    "Within-problem order only; no cross-problem rank is inferred."
+                ),
+            },
+            "palomar_selection_status": ranking_rows[0].get("selection_status"),
+            "proof_status": review.get("contribution_class"),
+            "proof_status_authority": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+                ".families[first_harmonic_pivot_decomposition].contribution_class"
+            ),
+            "summary": review.get("summary"),
+            "boundary": review.get("boundary"),
+            "claim_id": claim.get("claim_id"),
+        },
+        "hard_mechanism": (
+            "Supplier fibres are identified exactly with prime-image fibres, and "
+            "the four-term first-harmonic decomposition separates supplier, bad, "
+            "non-supplier, and remainder contributions. Under the explicit "
+            "PivotBudgetAt and dyadic-room hypotheses these bounds yield the 9X/10 "
+            "gap; the DTWPivotResidualDecorrelation consumer then transfers a "
+            "cofinal producer to irrationality."
+        ),
+        "source_declarations": declarations,
+        "wrapper": {
+            "declaration": wrapper_name,
+            "module": wrapper_module,
+            "line": wrapper_line,
+            "source_authority": "direct Lean source declaration",
+            "claim_authority": "docs/claims.json::external_verification_packet.main_results[first_harmonic_pivot_decomposition]",
+        },
+        "natural_friction_evidence": [
+            review.get("boundary"),
+            "The finite supplier-isolation counterexample prevents silently "
+            "promoting fibre bijections to a prime-distribution theorem.",
+        ],
+        "open_producer_boundaries": {
+            "pivot_budget": (
+                "PivotBudgetAt and the dyadic-room inequality are explicit premises; "
+                "no decorrelation estimate supplying them is proved."
+            ),
+            "cofinal_decorrelation": (
+                "The cofinal decorrelation producer named "
+                "DTWPivotResidualDecorrelation is not proved."
+            ),
+            "endpoint": "The #249 endpoint remains open.",
+        },
+        "canonical_relations": canonical_relations,
+        "related_families": [
+            {
+                "family_id": row["to_family_id"],
+                "relation": row["relation"],
+                "relation_class": "canonical_palomar_edge",
+                "reason": row["reason"],
+            }
+            for row in canonical_relations
+        ],
+        "relation_authority": (
+            "Producer-peer relations and positions come from Palomar; source "
+            "status and open premises come from Claims and direct Lean declarations."
+        ),
+        "authority": {
+            "claims": "docs/claims.json::external_verification_packet.main_results[first_harmonic_pivot_decomposition] and review_matrix.families[first_harmonic_pivot_decomposition]",
+            "palomar": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking, selection_contract.programme_family_order, and family_relations",
+            "source": source_module,
+            "wrapper_source": wrapper_module,
+        },
+        "follow": {
+            "family": "python3 scripts/query_semantic.py family-relations first_harmonic_pivot_decomposition",
+            "problem": "python3 scripts/query_corpus.py --route erdos_249",
+        },
+    }
+
+
 def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     """Join the expert index to canonical endpoint-facing family packets.
 
@@ -1135,6 +1298,7 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
         height_fibre_and_shell_handoff(palomar, claims_document),
         dyadic_block_alphabet_handoff(palomar, claims_document),
         actual_lcm_orbit_separation_handoff(palomar, claims_document),
+        first_harmonic_pivot_handoff(palomar, claims_document),
     ]
     supporting_families.sort(
         key=lambda row: (
