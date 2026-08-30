@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{e45d6a35a72c412491efaaffc2dc79761b3644d0}
-\renewcommand{\commitshort}{e45d6a35a72c}
+\renewcommand{\commit}{a832baef3b2db5a1120b025b42bd2b86adb7e336}
+\renewcommand{\commitshort}{a832baef3b2d}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -1261,9 +1261,9 @@ The hypothesis
 \lword{Erdos249/TotientStrictPrimeEscape.lean}{157}{DTWNaturalPrimeTailOrbitStrictGap}{asks}
 for cofinally many primes $p$ at which the first tail-orbit exponential has
 real part strictly below $9/10$.  Granting it,
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{262}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{a positive adaptive truncation budget}
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{485}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{a positive adaptive truncation budget}
 follows, and then
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{301}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{$\Stot$ is irrational}.
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{524}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{$\Stot$ is irrational}.
 The $9/10$ hypothesis is weaker than the earlier $4/5$ hypothesis, but no
 instance of this cofinal hypothesis is proved.
 The companion block branch is recorded in the same family: a nonpositive
@@ -1291,11 +1291,16 @@ and the formal prime-gap predicate is exactly the same $9/10$ test on these
 initial-phase iterates along the shifted primes
 \lword{Erdos249/TotientStrictPrimeEscape.lean}{191}{tailOrbitFirstExp_add}{iterate formula},
 \lword{Erdos249/TotientStrictPrimeEscape.lean}{201}{tailOrbitFirstExp_eq_initial_pow_two}{initial-phase normal form},
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{208}{naturalPrimeTailOrbitStrictGap_iff_initial_phase}{initial-phase equivalence}.
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{278}{naturalPrimeTailOrbitStrictGap_iff_initial_phase}{initial-phase equivalence}.
 The same dynamics gives a sharp obstruction: if an iterate is a dyadic root of
 unity, repeated squaring reaches the absorbing phase $1$, so the cofinal strict
 gap is impossible
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{252}{not_naturalPrimeTailOrbitStrictGap_of_dyadic_root}{dyadic-root obstruction}.
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{322}{not_naturalPrimeTailOrbitStrictGap_of_dyadic_root}{dyadic-root obstruction}.
+There is also a precise conditional bridge from phase information to the
+prime-index hypothesis: cofinally many nonpositive phases at shifted prime
+indices imply the strict prime-orbit gap
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{465}{naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift}{prime-alignment implication}.
+The bridge does not supply those prime-aligned visits.
 These are classification and obstruction statements for one conditional
 family, not a classification of the actual initial phase.
 This identifies the missing input as phase-density or prime-index supply for
@@ -1399,7 +1404,7 @@ These are the linked predicates
 \lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{95}{PrimeRayLayerSupply}{Layer},
 \lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{102}{BoundedDegreeOrderConsumer}{BoundedOrder},
 and
-\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{142}{FinitePrimeSupportEscape}{FinitePrimeEscape}.
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{151}{FinitePrimeSupportEscape}{FinitePrimeEscape}.
 The bounded-order condition does not assert an exact multiplicative order; it
 asserts only the displayed divisibility for some $k\le d$.
 
@@ -1461,10 +1466,10 @@ and $(hq,p-1,L)$ is a finite tail-difference certificate.
 \end{equivform}
 
 \noindent This is
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{3042}{CyclotomicAnchoredKillSupply}{CyclotomicAnchoredKillSupply}.
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{3174}{CyclotomicAnchoredKillSupply}{CyclotomicAnchoredKillSupply}.
 For the binary layers, clean anchors satisfying every condition before the
 certificate are already supplied, and
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{3138}{binaryCyclotomicAnchoredKillSupply_iff_irrational}{the checked equivalence}
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{3270}{binaryCyclotomicAnchoredKillSupply_iff_irrational}{the checked equivalence}
 identifies formulation~\ref{prob:cyclotomic} with irrationality of $\Stot$.
 The unknown is phase escape of the totient discrepancy modulo $2^L$, not
 large prime divisors or multiplicative order.  The checked $p=331$ instances
@@ -1472,10 +1477,12 @@ are finite models of this exact predicate; unbounded support alone does not
 imply it.
 
 The
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{1666}{exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational}{checked conditional support/period no-go}
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{1665}{exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational}{checked conditional support/period no-go}
 makes that limitation exact.  If $\Stot$ were rational, its eventual integral
-tail-period law would supply some $h>0$, while the actual binary cyclotomic
-layers would still have unbounded prime divisors on the same $h$-ray.
+tail-period law would supply some $h>0$, while
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{158}{UnboundedPrimeDivisorSupply}{unbounded prime divisors}
+would persist on the same $h$-ray for the actual binary cyclotomic layers, by
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{1652}{binaryCyclotomicLayer_unboundedPrimeDivisorSupply}{the checked binary-layer theorem}.
 Consequently, unbounded support cannot be the missing contradiction unless an
 additional carry- or phase-escape theorem relates that support to the period
 law.  This is a necessary-state theorem under hypothetical rationality: it
@@ -1490,11 +1497,11 @@ $(td,N,td)$ is a finite tail-difference certificate?
 \end{problem}
 
 \noindent This is the depth-locked predicate
-\lword{Erdos249/PeriodMultipleEscape.lean}{354}{ApFullDepthEscape}{ApFullDepthEscape}.
+\lword{Erdos249/PeriodMultipleEscape.lean}{367}{ApFullDepthEscape}{ApFullDepthEscape}.
 It is stronger than the exact period-multiple characterisation because the
 certificate depth is forced to equal the period.  A positive answer proves
 irrationality through
-\lword{Erdos249/PeriodMultipleEscape.lean}{363}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
+\lword{Erdos249/PeriodMultipleEscape.lean}{376}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
 a negative answer eliminates this route only.
 
 \begin{problem}[first-harmonic anti-concentration on supplier fibres]
