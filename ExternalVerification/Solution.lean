@@ -6,6 +6,7 @@ Authors: Will Cook
 import ExternalVerification.Statements
 import Erdos249257.GreedyAchievementSet
 import Erdos249257.GcdMomentCalculus
+import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
 import ErdosProblems.Erdos68.FactorialZeroPlateau
@@ -19,7 +20,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-two existing results through the Mathlib-only
+These thin wrappers expose twenty-three existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -29,6 +30,13 @@ namespace Erdos249257.ExternalVerification
 
 open scoped ENNReal
 open Module MeasureTheory
+
+private theorem runBoundaryPair_eq_source (ns : List ℕ) :
+    runBoundaryPair ns = SternBrocotRunGeometry.runBoundaryPair ns := by
+  induction ns with
+  | nil => rfl
+  | cons n ns ih =>
+      simp [runBoundaryPair, SternBrocotRunGeometry.runBoundaryPair, ih]
 
 /-! The statement-only packet owns isomorphic copies of the finite index
 types, because `Statements.lean` must not import proof-bearing source modules.
@@ -127,6 +135,11 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
         k e hk he hcanon'
   · exact GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one
   · exact GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series
+  · intro e
+    have hsource := SternBrocotRunGeometry.runHeight_defect_fib_sum_lower e
+    simpa [runHeight, SternBrocotRunGeometry.runHeight,
+      defectRunLengths, SternBrocotRunGeometry.defectRunLengths,
+      runBoundaryPair_eq_source] using hsource
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
@@ -269,6 +282,11 @@ theorem tsum_totient_div_mersenne_sq_eq_gcd_moment_series :
           ((∑ e ∈ (n : ℕ).divisors, (Nat.totient e : ℝ) * (((n : ℕ) / e : ℕ) : ℝ))
             - ((n : ℕ) : ℝ)) * ((1 : ℝ) / 2) ^ (n : ℕ)) :=
   (portfolioClaims Unit).problem249SquaredGcdMoment
+
+theorem runHeight_defect_fib_sum_lower (e : List ℕ) :
+    Nat.fib (e.length + 3) + Nat.fib (e.length + 1) * e.sum ≤
+      runHeight (defectRunLengths e) :=
+  (portfolioClaims Unit).problem249SternBrocotRunStability e
 
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
   simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,

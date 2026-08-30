@@ -101,6 +101,11 @@ theorem tsum_totient_div_mersenne_sq_eq_gcd_moment_series :
             - ((n : ℕ) : ℝ)) * ((1 : ℝ) / 2) ^ (n : ℕ)) :=
   (portfolioClaims Unit).problem249SquaredGcdMoment
 
+theorem runHeight_defect_fib_sum_lower (e : List ℕ) :
+    Nat.fib (e.length + 3) + Nat.fib (e.length + 1) * e.sum ≤
+      runHeight (defectRunLengths e) :=
+  (portfolioClaims Unit).problem249SternBrocotRunStability e
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

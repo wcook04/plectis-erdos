@@ -213,6 +213,22 @@ status:
       boundary: "This exact identity does not prove irrationality of the binary totient series; the constant-weight squared-Lambert irrationality is cited external mathematics, and no Erdős #249 endpoint follows."
       comparator_declaration: "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
       literature_dependencies: []
+    - declaration: "SternBrocotRunGeometry.runHeight_defect_fib_sum_lower"
+      file: "Erdos249257/SternBrocotRunGeometry.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "formalised exact Fibonacci/continuant run stability floor"
+      statement: "For every finite defect list e, the height of the corresponding positive Stern-Brocot run word is at least F_(r+3) + F_(r+1) times the total defect, where r is the number of runs."
+      boundary: "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no Erdős #249 endpoint follows."
+      comparator_declaration: "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       file: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       sorry_count: 0
@@ -493,6 +509,11 @@ alignment:
       module: "Erdos249257/GcdMomentCalculus.lean"
       status: "proved"
       note: "This exact identity does not prove irrationality of the binary totient series; the constant-weight squared-Lambert irrationality is cited external mathematics, and no Erdős #249 endpoint follows."
+    - source: "For every finite defect list e, the height of the corresponding positive Stern-Brocot run word is at least F_(r+3) + F_(r+1) times the total defect, where r is the number of runs."
+      lean: "SternBrocotRunGeometry.runHeight_defect_fib_sum_lower"
+      module: "Erdos249257/SternBrocotRunGeometry.lean"
+      status: "proved"
+      note: "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no Erdős #249 endpoint follows."
     - source: "The consecutive prime gaps are unbounded."
       lean: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
@@ -657,6 +678,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "At base one half, the totient-weighted squared-Mersenne Lambert series is the dyadic Pillai gcd-sum-minus-n series, exposing the first fair-coin gcd moment."
         boundary: "This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows."
+      - id: "stern_brocot_run_fibonacci_stability"
+        contribution_class: "formalised exact Fibonacci/continuant run stability floor"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted"
+        summary: "For a positive Stern-Brocot run word, the global height gain from run defects is bounded below by the sharp Fibonacci coefficient F_(r+1) times the total defect."
+        boundary: "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows."
       - id: "totient_finite_denominator_exclusion"
         contribution_class: "finite computation"
         evidence_mode: "Lean kernel and generated finite certificates"
@@ -910,7 +937,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:88b6c49648c41ca7d84496dd9065810eac5e8fdb293d4a334697641055727615"
+  problem_index_digest: "sha256:aacb30a7f98d77aab5dbfed3d80bf17e9981e04079248666dbb9141d7976a3a4"
   problem_count: 8
   problems:
     - id: "erdos_68"

@@ -262,6 +262,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "stern_brocot_run_fibonacci_stability",
+      "problem": 249,
+      "review_family": "stern_brocot_run_fibonacci_stability",
+      "contribution_class": "formalised exact Fibonacci/continuant run stability floor",
+      "original_declaration": "SternBrocotRunGeometry.runHeight_defect_fib_sum_lower",
+      "original_source": "Erdos249257/SternBrocotRunGeometry.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower",
+      "statement": "For every finite defect list e, the height of the corresponding positive Stern-Brocot run word is at least F_(r+3) + F_(r+1) times the total defect, where r is the number of runs.",
+      "boundary": "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no Erdős #249 endpoint follows.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "prime_gap_unboundedness",
       "problem": 251,
       "review_family": "coefficient_only_no_go",
@@ -572,6 +586,14 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "boundary": "This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows."
+        },
+        {
+          "id": "stern_brocot_run_fibonacci_stability",
+          "contribution_class": "formalised exact Fibonacci/continuant run stability floor",
+          "summary": "For a positive Stern-Brocot run word, the global height gain from run defects is bounded below by the sharp Fibonacci coefficient F_(r+1) times the total defect.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "boundary": "This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows."
         },
         {
           "id": "totient_finite_denominator_exclusion",
@@ -932,7 +954,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:4ff586aab1cd5b27436990d79848add116991847eb0f63e377fdb1101a601b19",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:88b6c49648c41ca7d84496dd9065810eac5e8fdb293d4a334697641055727615",
+    "projection_digest": "sha256:aacb30a7f98d77aab5dbfed3d80bf17e9981e04079248666dbb9141d7976a3a4",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1380,11 +1402,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 10,
+          "family_count": 11,
           "by_class": {
             "not_selected": 4,
             "represented_by": 1,
-            "targeted": 5
+            "targeted": 6
           },
           "dispositions": {
             "totient_kernel_basis": "targeted",
@@ -1392,6 +1414,7 @@
             "totient_kernel_all_base_index": "targeted",
             "totient_visible_coprime_lattice_mass": "targeted",
             "squared_lambert_gcd_moments": "targeted",
+            "stern_brocot_run_fibonacci_stability": "targeted",
             "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
@@ -1979,7 +2002,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:ffdc01b9b5d26c5867dc92601d5a6d941e4089f2171d508754cd733befba228d",
+    "digest": "sha256:f710885a56953a45a99ef77cf85d69c82ddd06042cd0860b3a4307db39360aa7",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -1987,6 +2010,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:7b165a7de947e5c7acd91b9764612d568fb8d6104a7762773d6c034dadb56adc",
-  "solution_source_digest": "sha256:4a0cb3bd7a814d6aa49193de479e11a7a8c5f4ba8407de764756badfb3d8eaf1"
+  "config_digest": "sha256:8a4d67147e8accfc14f45fa642ccb46681489c4c525ae5b20190c9d3ea931938",
+  "solution_source_digest": "sha256:7ba2ea7f266fbe288db371b4c5b4a8e1077b0de99249a6c25fb119c659ffec0f"
 }

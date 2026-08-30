@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import Mathlib.Data.Nat.Totient
+import Mathlib.Data.Nat.Fib.Basic
 import Mathlib.Data.Nat.Log
 import Mathlib.Data.Nat.Prime.Nth
 import Mathlib.Analysis.Complex.Basic
@@ -219,7 +220,24 @@ def rationalBaseClearedTailQ
     (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
 
-/-- One trusted challenge witness carries the twenty exact interfaces selected
+/-! ## Stern--Brocot run stability -/
+
+/-- The direction-free continuant state at alternating run boundaries. -/
+def runBoundaryPair : List ℕ → ℕ × ℕ
+  | [] => (1, 1)
+  | n :: ns =>
+      let p := runBoundaryPair ns
+      (n * p.1 + p.2, p.1)
+
+/-- The arithmetic height of an alternating Stern--Brocot run word. -/
+def runHeight (ns : List ℕ) : ℕ :=
+  (runBoundaryPair ns).1 + (runBoundaryPair ns).2
+
+/-- Replace every nonnegative defect by the positive run length `1 + e`. -/
+def defectRunLengths (e : List ℕ) : List ℕ :=
+  e.map Nat.succ
+
+/-- One trusted challenge witness carries the twenty-three exact interfaces selected
 for the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
 each statement separately while the trusted challenge contains one hole. -/
@@ -284,6 +302,10 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       = ∑' n : ℕ+,
           ((∑ e ∈ (n : ℕ).divisors, (Nat.totient e : ℝ) * (((n : ℕ) / e : ℕ) : ℝ))
             - ((n : ℕ) : ℝ)) * ((1 : ℝ) / 2) ^ (n : ℕ))
+  problem249SternBrocotRunStability :
+    ∀ e : List ℕ,
+      Nat.fib (e.length + 3) + Nat.fib (e.length + 1) * e.sum ≤
+        runHeight (defectRunLengths e)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →

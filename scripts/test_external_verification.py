@@ -47,7 +47,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertEqual(
             packet["challenge_import_closure"]["proof_bearing_internal_import_count"], 0
         )
-        self.assertEqual(len(packet["main_results"]), 22)
+        self.assertEqual(len(packet["main_results"]), 23)
         self.assertEqual(
             {row["problem"] for row in packet["main_results"]},
             {68, 243, 249, 251, 257, 269, 1041, 1049},
@@ -65,7 +65,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         registered = [row for row in packet["main_results"] if row.get("claim_id")]
         unregistered = [row for row in packet["main_results"] if not row.get("claim_id")]
         self.assertEqual(len(registered), 5)
-        self.assertEqual(len(unregistered), 17)
+        self.assertEqual(len(unregistered), 18)
         self.assertTrue(all(
             row["canonical_claim_status"].startswith("supports_registered_claim_family:")
             for row in registered
@@ -93,7 +93,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("<summary>Contribution families (5)</summary>", human)
         self.assertIn("<summary>Technical registry and Comparator routing (5)</summary>", human)
         self.assertIn("## Comparator interface appendix", human)
-        self.assertIn("<summary>Show all 22 statement-isolated interfaces</summary>", human)
+        self.assertIn("<summary>Show all 23 statement-isolated interfaces</summary>", human)
         # Identifiers are emitted verbatim: <wbr> is stripped by GitHub's HTML
         # sanitiser, and zero-width or soft-hyphen breaks survive but corrupt
         # copy-paste of a Lean declaration name.
