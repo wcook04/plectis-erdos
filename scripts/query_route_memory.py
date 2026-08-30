@@ -219,6 +219,31 @@ def _route_for(
         )
     if route_targets - expected_targets:
         raise RouteMemoryError("cross_problem_route", route_id)
+    related_values = route.get("related_route_ids", [])
+    if not isinstance(related_values, list) or any(
+        not isinstance(value, str) or not value.strip() for value in related_values
+    ):
+        raise RouteMemoryError("route_relationship_shape", route_id)
+    if len(related_values) != len(set(related_values)):
+        raise RouteMemoryError("route_relationship_duplicate", route_id)
+    indexed_routes = {
+        str(row.get("id")): row
+        for row in rows
+        if isinstance(row, Mapping) and row.get("id")
+    }
+    for related_id in related_values:
+        related = indexed_routes.get(related_id)
+        if related is None:
+            raise RouteMemoryError("invented_related_route", related_id)
+        if related.get("route_kind") != "mathematical_programme":
+            raise RouteMemoryError("route_relationship_type", related_id)
+        related_targets = set(related.get("problem_target_claim_ids", []))
+        if (
+            not expected_targets
+            or not related_targets.intersection(expected_targets)
+            or related_targets - expected_targets
+        ):
+            raise RouteMemoryError("cross_problem_route", related_id)
     return route, sorted(
         str(row["id"])
         for row in rows

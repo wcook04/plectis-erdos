@@ -208,6 +208,69 @@ def main() -> int:
     cross_route["consulted_route_ids"] = ["erdos257_half_story"]
     assert_rejected(cross_route, "packet_mismatch")
 
+    route_shape = {
+        "id": "main",
+        "route_kind": "mathematical_programme",
+        "problem_target_claim_ids": ["universal_257"],
+    }
+    related_route = {
+        "id": "related",
+        "route_kind": "mathematical_programme",
+        "problem_target_claim_ids": ["universal_257"],
+        "related_route_ids": [],
+    }
+    relationship_cases = (
+        ({**route_shape, "related_route_ids": ["not-indexed"]}, "invented_related_route"),
+        ({**route_shape, "related_route_ids": ["related", "related"]}, "route_relationship_duplicate"),
+        ({**route_shape, "related_route_ids": None}, "route_relationship_shape"),
+        ({**route_shape, "related_route_ids": ["related"]}, "route_relationship_type"),
+    )
+    for malformed_route, expected_code in relationship_cases:
+        indexed_related = related_route
+        if expected_code == "route_relationship_type":
+            indexed_related = {**related_route, "route_kind": "claim_route"}
+        with patch.object(
+            route_memory,
+            "_entrypoints",
+            return_value=[malformed_route, indexed_related],
+        ):
+            try:
+                route_memory._route_for(
+                    ROOT,
+                    {"problem_id": "erdos_257", "erdos_number": 257},
+                    "main",
+                )
+            except route_memory.RouteMemoryError as exc:
+                require(
+                    exc.code == expected_code,
+                    f"malformed relationship returned {exc.code}",
+                )
+            else:
+                raise AssertionError(
+                    f"malformed relationship escaped: {expected_code}"
+                )
+    with patch.object(
+        route_memory,
+        "_entrypoints",
+        return_value=[
+            {**route_shape, "related_route_ids": ["related"]},
+            {
+                **related_route,
+                "problem_target_claim_ids": ["erdos_249"],
+            },
+        ],
+    ):
+        try:
+            route_memory._route_for(
+                ROOT,
+                {"problem_id": "erdos_257", "erdos_number": 257},
+                "main",
+            )
+        except route_memory.RouteMemoryError as exc:
+            require(exc.code == "cross_problem_route", "cross-problem relationship escaped")
+        else:
+            raise AssertionError("cross-problem relationship escaped")
+
     # Exercise the real CLI, including the optimized interpreter path.
     check_cli_environment()
     completed = run_cli(
