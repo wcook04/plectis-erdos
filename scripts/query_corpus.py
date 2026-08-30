@@ -19,7 +19,7 @@ import unicodedata
 from collections import Counter, deque
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Iterable, Mapping
 
 from build_module_synopsis_index import (
     OWNER_ADOPTION as MODULE_SYNOPSIS_OWNER_ADOPTION,
@@ -3990,6 +3990,16 @@ def identifier_counts(text: str) -> dict[str, int]:
     return counts
 
 
+def declaration_reference_pattern(names: Iterable[str]) -> re.Pattern[str] | None:
+    """Compile one exact identifier scan for a declaration-name collection."""
+    alternatives = sorted({name for name in names if name}, key=lambda name: (-len(name), name))
+    if not alternatives:
+        return None
+    return re.compile(
+        r"\b(?:" + "|".join(re.escape(name) for name in alternatives) + r")\b"
+    )
+
+
 def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     """Project one source-current public module relationship card.
 
@@ -4168,6 +4178,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         )
 
     producer_names = {row["name"] for row in module_declarations}
+    producer_reference_pattern = declaration_reference_pattern(producer_names)
     importer_rows = [row for row in atlas["modules"] if module["id"] in row.get("imports", [])]
     consumer_capsules = []
     for importer in importer_rows[: min(6, limit)]:
@@ -4182,7 +4193,11 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
                 else len(importer_lines)
             )
             span = "\n".join(importer_lines[row["line"] - 1 : end])
-            uses = sorted(name for name in producer_names if re.search(rf"\b{re.escape(name)}\b", span))
+            uses = (
+                sorted({match.group(0) for match in producer_reference_pattern.finditer(span)})
+                if producer_reference_pattern is not None
+                else []
+            )
             if uses:
                 consumers.append(
                     {

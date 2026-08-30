@@ -1091,6 +1091,34 @@ def validate_connection_query_ranking() -> None:
     )
     assert receipt["excluded_module_broad_count"] > 100
 
+    pattern = query_corpus.declaration_reference_pattern(
+        {"producer", "producer_long"}
+    )
+    assert pattern is not None
+    assert {match.group(0) for match in pattern.finditer(
+        "producer_long uses producer, not producer_suffix"
+    )} == {"producer", "producer_long"}
+
+    compile_calls = 0
+    compile_pattern = query_corpus.declaration_reference_pattern
+
+    def counted_pattern(names: object) -> object:
+        nonlocal compile_calls
+        compile_calls += 1
+        return compile_pattern(names)
+
+    query_corpus.declaration_reference_pattern = counted_pattern
+    try:
+        exact = query_corpus.connection_card(
+            "irrational_erdosSum_full_support",
+            20,
+            "why does this result work",
+        )
+    finally:
+        query_corpus.declaration_reference_pattern = compile_pattern
+    assert compile_calls == 1
+    assert exact["anchor"]["handle"] == "irrational_erdosSum_full_support"
+
 
 def validate_paper_semantic_citation_aliases() -> None:
     """Qualified authored roles must resolve ordinary source-level paper links."""
