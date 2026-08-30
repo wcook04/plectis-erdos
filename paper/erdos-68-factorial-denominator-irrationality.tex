@@ -312,6 +312,43 @@ The formal statements are
 \pdecl{channelWeight_mul_denominator}, and
 \pdecl{channelEvent_eq_zero_of_not_dvd}.
 
+There is a separate finite rigidity before any congruence is taken.  For a
+finite coefficient family $(c_j,i_j)$, write
+
+\[
+  M=\sum_j c_j i_j!,\qquad
+  C_d=\sum_j c_j\frac{i_j!}{(d!)^{\lfloor i_j/d\rfloor}}.
+\]
+If all indices lie in one quotient band
+$kd\le i_j<(k+1)d$, then the quotient $\lfloor i_j/d\rfloor$ is constant
+and the factorial moment factors exactly:
+
+\begin{theorem}[quotient-band breakpoint]
+\label{res:bandbreakpoint}
+Under the band hypothesis,
+\[
+  M=(d!)^k C_d.
+\]
+In particular, in the first band $d\le i_j<2d$, channel cancellation
+$C_d=0$ forces $M=0$.  If all indices are at least $d$, channel cancellation
+and $M\ne0$ therefore force at least one index $i_j\ge2d$.
+\end{theorem}
+
+\noindent The exact factorisation is checked for every quotient band at
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{71}{factorialMoment_eq_factorial_pow_mul_channelNumerator_band}{the band identity},
+and its zero-channel consequence is
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{91}{factorialMoment_eq_zero_of_channelNumerator_eq_zero_band}{band cancellation}.
+The first-band form is explicit at
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{101}{factorialMoment_eq_factorial_mul_channelNumerator_firstBand}{first-band factorisation};
+the final breakpoint alternative is
+\lword{Erdos68/ChannelBreakpointRigidity.lean}{130}{exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero}{breakpoint witness}.
+The hard step is the constant quotient, not a valuation estimate: within one
+band every factorial has the same extracted power of $d!$.  Thus a nonzero
+moment cannot be hidden entirely below $2d$ while the $d$-channel cancels.
+This is a finite-family obstruction only.  It constructs no cancelling
+family, says nothing about simultaneous channels or residual size, and does
+not by itself address the cofinal non-unit-carry input for Problem~\#68.
+
 Let $\lambda$ be a finitely supported integer vector on indices $n\ge2$, let
 $M=M(\lambda)$ be its factorial moment, and let $\chn d\lambda$ be the $d$-th
 channel numerator.  The kernel checks two facts about them.
