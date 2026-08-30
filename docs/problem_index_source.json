@@ -884,6 +884,7 @@
     }
   ],
   "reading_rule": "Select one problem, read its note, then follow the note's links into the pinned Lean source. Do not infer a claim about an Erdős problem from a declaration name, a module name, or a count of checked theorems.",
+  "route_template": "python3 scripts/query_corpus.py --route <problem_id>",
   "validation_commands": [
     "python3 scripts/build_problem_index.py --check",
     "python3 scripts/check_problem_note_sources.py --coverage",

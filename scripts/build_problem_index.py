@@ -321,6 +321,7 @@ def build(
         "generated_by": "scripts/build_problem_index.py",
         "authored_source": "docs/problem_index_source.json",
         "reading_rule": source["reading_rule"],
+        "route_template": source["route_template"],
         "status_vocabulary": source["status_vocabulary"],
         "library_roots": source["library_roots"],
         # Both routes below are joins into surfaces that already hold the
@@ -356,7 +357,13 @@ def build(
 
 
 def canonical(data: dict) -> bytes:
-    return (json.dumps(data, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+    # This is a machine-readable route projection with a strict cold-reader
+    # byte budget.  Compact JSON preserves the complete object and its key
+    # order while keeping newly joined problem/family routes inside that
+    # externally advertised envelope.
+    return (
+        json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n"
+    ).encode("utf-8")
 
 
 def main() -> int:
