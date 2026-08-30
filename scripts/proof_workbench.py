@@ -99,27 +99,32 @@ def _sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
+def _fingerprint_command(root: Path, command: list[str]) -> str:
+    """Read optional environment metadata without breaking session creation."""
+    try:
+        output = subprocess.run(
+            command,
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        ).stdout
+    except (OSError, UnicodeError):
+        return ""
+    return output.strip() if isinstance(output, str) else ""
+
+
 def environment_fingerprint(root: Path) -> dict[str, Any]:
-    head = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        cwd=root,
-        capture_output=True,
-        text=True,
-        check=False,
-    ).stdout.strip()
-    dirty = subprocess.run(
-        ["git", "status", "--porcelain"],
-        cwd=root,
-        capture_output=True,
-        text=True,
-        check=False,
-    ).stdout.strip()
+    head = _fingerprint_command(root, ["git", "rev-parse", "HEAD"])
+    dirty = _fingerprint_command(root, ["git", "status", "--porcelain"])
     toolchain_path = root / "lean-toolchain"
-    toolchain = (
-        toolchain_path.read_text(encoding="utf-8").strip()
-        if toolchain_path.is_file()
-        else "lean_toolchain_file_absent"
-    )
+    if toolchain_path.is_file():
+        try:
+            toolchain = toolchain_path.read_text(encoding="utf-8").strip()
+        except (OSError, UnicodeError):
+            toolchain = "lean_toolchain_unavailable"
+    else:
+        toolchain = "lean_toolchain_file_absent"
     return {
         "git_head": head or "git_head_unavailable",
         "dirty_path_count": len(

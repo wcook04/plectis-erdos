@@ -843,6 +843,35 @@ def check_probe_runner_failures() -> None:
         assert receipt["exit_code"] is None
 
 
+def check_environment_fingerprint_failures(tmp: Path) -> None:
+    real_run = workbench.subprocess.run
+
+    def unavailable(*args, **kwargs):
+        raise FileNotFoundError(2, "git")
+
+    workbench.subprocess.run = unavailable
+    try:
+        fingerprint = workbench.environment_fingerprint(workbench.repo_root())
+        assert fingerprint["git_head"] == "git_head_unavailable"
+        assert fingerprint["dirty_path_count"] == 0
+        opened = workbench.cmd_open(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": tmp / "fingerprint-sessions",
+                    "session": "degraded-fingerprint",
+                    "actor": "outsider",
+                    "intent": "fingerprint boundary",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    finally:
+        workbench.subprocess.run = real_run
+    assert opened["environment_fingerprint"]["git_head"] == "git_head_unavailable"
+
+
 def check_session_storage_failures(tmp: Path) -> None:
     blocked_root = tmp / "sessions-root-file"
     blocked_root.write_text("not a directory\n", encoding="utf-8")
@@ -1104,6 +1133,7 @@ def main() -> int:
         check_replay_path_boundary(tmp)
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
+        check_environment_fingerprint_failures(tmp)
         check_session_storage_failures(tmp)
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
