@@ -76,6 +76,12 @@ Finally, rational values admit an exact Boolean--M\"obius scaled-tail
 characterisation from which the support is reconstructed.  These constraints
 are not known to be contradictory.
 
+On the multiplicative side, a composite support element obeys an exact
+dilation identity with an explicit foreign-divisor defect.  For an orthogonal
+petal bouquet that defect is bounded by the finite exceptional frame plus the
+petal incidence, while prime supports have zero defect.  This is a local
+interface for a correlation argument, not a correlation theorem.
+
 There is one further conditional countermodel frontier.  A sequence of finite
 terminal-only words whose depths tend to infinity and whose scaled terminal
 carry tends to zero would converge to the rational value $1/2$ through actual
@@ -1138,6 +1144,51 @@ and
 The source definition of the selector makes the missing analytic obligation
 explicit at
 \mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{uniform tail selector}.
+
+\begin{theorem}[the composite-dilation defect]
+\label{res:compositedefect}
+Let $A\subseteq\N$ and let $a,x\in\Npos$ with $a\in A$.  Define the foreign-divisor
+defect
+\[
+  \delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
+\]
+Then the divisor incidence satisfies the exact identity
+\[
+  \scA_A(ax)=\scA_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
+\]
+If every member of $A$ is prime, then $\delta_A(a,x)=0$, so the familiar
+prime-support dilation formula is recovered.  More generally, if $A$ has an
+\texttt{OrthogonalPetalBouquet} witness $h_B$, then for every $i\in\N$,
+\[
+  \delta_A(\operatorname{ray}_{h_B}(i),x)\le
+  |h_B.\mathrm{exceptional}|+
+  \scA_{\operatorname{range}(h_B.\mathrm{petal})}(x),
+\]
+where $\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)$.
+\end{theorem}
+
+\noindent The first identity is the finite divisor partition checked at
+\mword{Erdos249257/CompositeDilationDefect.lean}{30}{supportCoeff_mul_eq_add_defect}{exact dilation identity}.
+The hard point is that a composite multiplier can create support divisors
+which are neither the multiplier itself nor old divisors of $x$; they are
+recorded by $\delta_A$ rather than silently discarded.  The defect vanishes
+under the prime-support hypothesis by
+\mword{Erdos249257/CompositeDilationDefect.lean}{103}{compositeDilationDefect_eq_zero_of_prime_support}{prime-support no-defect},
+and the corresponding incidence formula is
+\mword{Erdos249257/CompositeDilationDefect.lean}{119}{supportCoeff_mul_prime_support}{prime specialization}.
+For a bouquet, every non-exceptional foreign divisor injects into a unique
+petal divisor of $x$, yielding the displayed budget through
+\mword{Erdos249257/CompositeDilationDefect.lean}{133}{mem_compositeDilationDefect_bouquet_imp_exceptional_or_petal_dvd}{foreign-divisor classification}
+and
+\mword{Erdos249257/CompositeDilationDefect.lean}{151}{compositeDilationDefect_le_exceptional_add_petalCoeff}{defect bound}.
+The correction is concrete already for $A=\{2,6\}$: multiplying $x=1$ by
+the composite support element $6$ creates the additional support divisor $2$,
+so $\delta_A(6,1)=1$
+(\mword{Erdos249257/CompositeDilationDefect.lean}{218}{compositeDilationDefect_two_six_fixture}{two-six witness}).
+Thus a composite bouquet cannot be analysed by copying the prime formula
+until this explicit foreign channel has been budgeted.  This theorem provides
+that local budget only; it neither bounds defects along an infinite orbit nor
+supplies the uniform tail selector required by Theorem~\ref{res:sunflower}.
 
 \begin{theorem}[cofinal-cylinder half countermodel route]
 \label{res:cylinderhalf}
