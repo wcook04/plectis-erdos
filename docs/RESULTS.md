@@ -152,6 +152,12 @@ replacement for claim authority.
   claimed).
 - Open: the unbounded certificate supply, which is equivalent to #249 itself;
   a checked splice construction shows no finite inspection can settle it.
+- Two additional checked #249 families are directly inspectable: an exact
+  [squared-Lambert gcd-moment transfer](../Erdos249257/GcdMomentCalculus.lean)
+  at base `1/2`, and a [Stern–Brocot run-stability floor](../Erdos249257/SternBrocotRunGeometry.lean)
+  `F_{r+3} + F_{r+1} · ∑ eᵢ`. These finite identities/inequalities do not
+  establish analytic denominator survival or the unbounded family, so #249
+  remains open.
 
 **#251 — is `∑ pₙ/2ⁿ` irrational?**
 
