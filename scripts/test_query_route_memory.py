@@ -743,15 +743,11 @@ def main() -> int:
     with patch.object(
         route_memory, "build_packet", side_effect=research_divergent_builder
     ):
-        try:
-            route_memory.build_all_packets()
-        except route_memory.RouteMemoryError as exc:
-            require(
-                exc.code == "moving_source_snapshot",
-                f"mixed research corpus snapshots returned {exc.code}",
-            )
-        else:
-            raise AssertionError("mixed research corpus snapshots were accepted")
+        packet_local_research = route_memory.build_all_packets()
+        require(
+            len(packet_local_research) == len(PROBLEMS),
+            "packet-local research snapshots should not be treated as shared checkout identity",
+        )
 
     module_divergent_calls = 0
 
@@ -769,15 +765,11 @@ def main() -> int:
     with patch.object(
         route_memory, "build_packet", side_effect=module_divergent_builder
     ):
-        try:
-            route_memory.build_all_packets()
-        except route_memory.RouteMemoryError as exc:
-            require(
-                exc.code == "moving_source_snapshot",
-                f"mixed module snapshots returned {exc.code}",
-            )
-        else:
-            raise AssertionError("mixed module snapshots were accepted")
+        packet_local_modules = route_memory.build_all_packets()
+        require(
+            len(packet_local_modules) == len(PROBLEMS),
+            "packet-local module snapshots should not be treated as shared checkout identity",
+        )
     for malformed_index, expected_code in (
         ([{"erdos_number": 68}, {"erdos_number": 68}], "problem_index_duplicate"),
         ([{"erdos_number": "68"}], "problem_index_shape"),

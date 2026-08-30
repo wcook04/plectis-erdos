@@ -666,6 +666,7 @@ def build_all_packets(*, root: Path = ROOT) -> list[dict[str, Any]]:
             packet["source_snapshot"]["commit"],
             tuple(sorted(packet["source_snapshot"]["digests"].items())),
             tuple(packet["source_snapshot"]["tracked_sources"]),
+            packet["route"]["canonical_route_memory"]["sha256"],
         )
         for packet in packets
     }
