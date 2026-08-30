@@ -436,6 +436,20 @@ replacement for claim authority.
   (`tsum_pos_coprime_inv_mersenne_eq_one`). It supplies the reduced-direction
   mass behind the fair-coin form of the totient constant, but is a rational
   normalization identity, not an irrationality result.
+- A newly executable #249 complement-noncancellation reduction is deliberately
+  subordinate to the actual-LCM frontier. The exact finite Möbius-residue
+  split `finiteResidueDiagonal_eq_projectedForeign_add_divisor` separates
+  foreign and divisor channels, while
+  `abs_foreignTailWindow_le_foreignComplementBound` gives each omitted stable
+  window a closed geometric budget. The consumer
+  `scaleFullTarget_miss_of_projected_separation` then rules out a full-target
+  hit when `ControlledForeignProjection` holds and the projected state is
+  farther from every integer than that budget
+  (`ExternalVerification/Challenge.lean:280-295`;
+  `Erdos249257/ActualForeignResidueProjection.lean:276-417`). The analytic
+  bridge identifying the actual complement with this bound, and any unbounded
+  separated-projection supply, remain unproved: this sharpens the reduction,
+  not #249 irrationality.
 
 **#251 — is `∑ pₙ/2ⁿ` irrational?**
 
