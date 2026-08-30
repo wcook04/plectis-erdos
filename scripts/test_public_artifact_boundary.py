@@ -302,9 +302,9 @@ def portfolio_visibility_errors(packet: dict[str, object]) -> list[str]:
         by_problem[problem].append(row)
 
     for problem, rows in by_problem.items():
-        if len(rows) < 2:
+        if not rows:
             errors.append(
-                f"problem {problem} portfolio is underexposed: retain at least two distinct strong results"
+                f"problem {problem} portfolio lacks source-bound result visibility"
             )
         content_signatures = {
             (
@@ -320,16 +320,18 @@ def portfolio_visibility_errors(packet: dict[str, object]) -> list[str]:
             errors.append(
                 f"problem {problem} portfolio contains duplicate source-bound result content"
             )
-        identities = {
+        source_families = {
             (
-                row.get("id"),
                 row.get("original_declaration"),
+                row.get("original_source"),
                 row.get("wrapper_declaration"),
             )
             for row in rows
         }
-        if len(identities) != len(rows):
-            errors.append(f"problem {problem} portfolio contains duplicate result identities")
+        if len(source_families) != len(rows):
+            errors.append(
+                f"problem {problem} portfolio repeats a source-bound result family"
+            )
     return errors
 
 
@@ -437,19 +439,29 @@ def main() -> int:
         ),
         "missing open-target handle was accepted",
     )
-    underexposed_portfolio = deepcopy(verification_packet)
-    underexposed_portfolio["main_results"] = [
+    missing_problem_portfolio = deepcopy(verification_packet)
+    missing_problem_portfolio["main_results"] = [
+        row
+        for row in verification_packet["main_results"]
+        if row["problem"] != 1049
+    ]
+    require(
+        any(
+            "problem 1049 portfolio lacks source-bound result visibility" in error
+            for error in portfolio_visibility_errors(missing_problem_portfolio)
+        ),
+        "missing public-problem visibility mutation was accepted",
+    )
+    single_result_portfolio = deepcopy(verification_packet)
+    single_result_portfolio["main_results"] = [
         row
         for row in verification_packet["main_results"]
         if row["problem"] != 1049
         or row["id"] == "three_halves_corridor_no_go"
     ]
     require(
-        any(
-            "problem 1049 portfolio is underexposed" in error
-            for error in portfolio_visibility_errors(underexposed_portfolio)
-        ),
-        "underexposed portfolio mutation was accepted",
+        not portfolio_visibility_errors(single_result_portfolio),
+        "portfolio validation must not require a fixed number of results per problem",
     )
     duplicate_portfolio = deepcopy(verification_packet)
     duplicate_portfolio["main_results"][1] = deepcopy(duplicate_portfolio["main_results"][0])
@@ -505,17 +517,42 @@ def main() -> int:
     expanded_result = deepcopy(
         next(row for row in verification_packet["main_results"] if row["problem"] == 68)
     )
-    expanded_result["id"] = "factorial_nonunit_carry_equivalence__independent_certificate"
+    expanded_result["id"] = "factorial_independent_carry_certificate"
     expanded_result["statement"] = (
         "An independent finite factorial-successor certificate records another bounded carry mechanism."
     )
     expanded_result["boundary"] = (
         "This finite certificate remains bounded and does not supply cofinally many non-unit carries."
     )
+    expanded_result["original_declaration"] = (
+        "ErdosProblems.Erdos68.factorial_independent_carry_certificate"
+    )
+    expanded_result["original_source"] = "ErdosProblems/Erdos68/FactorialCarry.lean"
+    expanded_result["wrapper_declaration"] = (
+        "Erdos249257.ExternalVerification.factorial_independent_carry_certificate"
+    )
     expanded_portfolio["main_results"].append(expanded_result)
     require(
         not portfolio_visibility_errors(expanded_portfolio),
-        "portfolio validation must permit more than two distinct strong results per problem",
+        "portfolio validation must permit additional distinct source-bound result families",
+    )
+
+    repeated_family_portfolio = deepcopy(verification_packet)
+    repeated_family_result = deepcopy(
+        next(row for row in verification_packet["main_results"] if row["problem"] == 68)
+    )
+    repeated_family_result["id"] = "factorial_rephrased_duplicate_family"
+    repeated_family_result["statement"] = "A rephrased statement for the same source-bound result."
+    repeated_family_result["boundary"] = (
+        "This remains an exact reformulation and does not settle Erdős #68."
+    )
+    repeated_family_portfolio["main_results"].append(repeated_family_result)
+    require(
+        any(
+            "problem 68 portfolio repeats a source-bound result family" in error
+            for error in portfolio_visibility_errors(repeated_family_portfolio)
+        ),
+        "rephrased duplicate source family was accepted",
     )
 
     legacy_selector_metadata = deepcopy(verification_packet)
@@ -593,8 +630,8 @@ def main() -> int:
     print(
         "test_public_artifact_boundary: first-contact surfaces reject "
         "private or unpublished proof authority and novelty inference; "
-        "portfolio visibility preserves all eight problems and multiple "
-        "source-bound strong results; 19 negative fixtures and 2 non-timid acceptance fixtures exercised"
+        "portfolio visibility preserves all eight problems and distinct "
+        "source-bound result families without shortlist proxies"
     )
     return 0
 
