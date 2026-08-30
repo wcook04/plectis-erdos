@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import ExternalVerification.Statements
 import Erdos249257.GreedyAchievementSet
+import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
@@ -17,7 +18,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose nineteen existing results through the Mathlib-only
+These thin wrappers expose twenty existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -27,6 +28,29 @@ namespace Erdos249257.ExternalVerification
 
 open scoped ENNReal
 open Module MeasureTheory
+
+/-! The statement-only packet owns isomorphic copies of the finite index
+types, because `Statements.lean` must not import proof-bearing source modules.
+This equivalence is the explicit transport boundary for the all-base rank
+claim. -/
+def totientKernelHeadIndexEquiv :
+    TotientKernelHeadIndex ≃ Erdos249257.TotientKernelHeadIndex where
+  toFun
+    | .F00 => .F00
+    | .F10 => .F10
+  invFun
+    | .F00 => .F00
+    | .F10 => .F10
+  left_inv := by
+    intro i
+    cases i <;> rfl
+  right_inv := by
+    intro i
+    cases i <;> rfl
+
+def totientKernelIndexEquiv (k e : ℕ) :
+    TotientKernelIndex k e ≃ Erdos249257.TotientKernelIndex k e :=
+  totientKernelHeadIndexEquiv.sumCongr (Equiv.refl _)
 
 theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
   constructor
@@ -66,6 +90,40 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.fullTotientKernelFamily,
       Erdos249257.totientKernelSeq] using
       Erdos249257.totientDyadicSectionBasis
+  · intro k e hk he hcanon
+    have hcanon' :
+        LinearIndependent ℚ (Erdos249257.canonicalAllBaseTotientKernelFamily k e) := by
+      refine (linearIndependent_equiv' (totientKernelIndexEquiv k e) ?_).mp hcanon
+      funext i
+      cases i with
+      | inl i =>
+          cases i <;>
+            simp [Function.comp_def, canonicalAllBaseTotientKernelFamily,
+              allBaseTotientKernelSeq, totientKernelIndexEquiv,
+              totientKernelHeadIndexEquiv,
+              Erdos249257.canonicalAllBaseTotientKernelFamily,
+              Erdos249257.allBaseTotientKernelSeq]
+          all_goals
+            funext n
+            rfl
+      | inr i =>
+          simp [Function.comp_def, canonicalAllBaseTotientKernelFamily,
+            allBaseTotientKernelSeq, totientKernelSectionLevel,
+            totientKernelSectionResidue, totientKernelIndexEquiv,
+            totientKernelHeadIndexEquiv,
+            Erdos249257.canonicalAllBaseTotientKernelFamily,
+            Erdos249257.allBaseTotientKernelSeq,
+            Erdos249257.totientKernelSectionLevel,
+            Erdos249257.totientKernelSectionResidue]
+          funext n
+          rfl
+    simpa [allBaseTotientKernelThroughLevelFamily, allBaseTotientKernelSeq,
+      AllBaseTotientKernelThroughLevelIndex,
+      Erdos249257.allBaseTotientKernelThroughLevelFamily,
+      Erdos249257.allBaseTotientKernelSeq,
+      Erdos249257.AllBaseTotientKernelThroughLevelIndex] using
+      Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
+        k e hk he hcanon'
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
@@ -187,6 +245,15 @@ theorem exists_totientDyadicSectionBasis :
       (Basis TotientOddCoreIndex ℚ
         (Submodule.span ℚ (Set.range fullTotientKernelFamily))) :=
   (portfolioClaims Unit).problem249Basis
+
+theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
+    (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
+    (hcanon : LinearIndependent ℚ (canonicalAllBaseTotientKernelFamily k e)) :
+    finrank ℚ
+      (Submodule.span ℚ
+        (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
+      k ^ e + 1 := by
+  simpa using (portfolioClaims Unit).problem249AllBaseRank k e hk he hcanon
 
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
   simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,

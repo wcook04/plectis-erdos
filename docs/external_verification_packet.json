@@ -220,6 +220,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "totient_kernel_all_base_rank",
+      "problem": 249,
+      "review_family": "totient_kernel_all_base_index",
+      "contribution_class": "formalised unconditional spanning and conditional rank with external independence input",
+      "original_declaration": "Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+      "original_source": "Erdos249257/TotientKernelConditional.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+      "statement": "Under 2 ≤ k, 1 ≤ e, and linear independence of the explicit canonical all-base family, the actual all-base totient kernel through level e has rational span dimension k^e + 1.",
+      "boundary": "The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "prime_gap_unboundedness",
       "problem": 251,
       "review_family": "coefficient_only_no_go",
@@ -512,7 +526,7 @@
           "contribution_class": "formalised unconditional spanning and conditional rank with external independence input",
           "summary": "For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence.",
           "evidence_mode": "Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence",
-          "comparator_disposition": "not_selected_external_independence_boundary",
+          "comparator_disposition": "targeted",
           "boundary": "Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input."
         },
         {
@@ -1919,7 +1933,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:097e60b08779ecfa78e99cf4ff7ed41f172d130096d4579010e8f3253ed4f3ad",
+    "digest": "sha256:259965e3d1f474061b88ac8190d665425f7da7e2aac58b5e7e18d0070b56b888",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -1927,6 +1941,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:2fa28f3148dc9089ccb4d4414e0bd53ea1d6ee6686c43b4a859a65d5c0089479",
-  "solution_source_digest": "sha256:1f8204cd41f3248ddb1bcd4987496a8443081d3b96be9c63adc3ab8358e33e80"
+  "config_digest": "sha256:203c90120b05e2bbacaf94abc84d2d3a049bbf40e34f8d1ed53664ef4994def3",
+  "solution_source_digest": "sha256:d9b37cdfd64e85f760903c5fa0e08e6aae2bb6603ffeed3be8971440b0de44c2"
 }

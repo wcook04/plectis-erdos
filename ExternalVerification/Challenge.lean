@@ -80,6 +80,15 @@ theorem exists_totientDyadicSectionBasis :
         (Submodule.span ℚ (Set.range fullTotientKernelFamily))) :=
   (portfolioClaims Unit).problem249Basis
 
+theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
+    (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
+    (hcanon : LinearIndependent ℚ (canonicalAllBaseTotientKernelFamily k e)) :
+    finrank ℚ
+      (Submodule.span ℚ
+        (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
+      k ^ e + 1 :=
+  (portfolioClaims Unit).problem249AllBaseRank k e hk he hcanon
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

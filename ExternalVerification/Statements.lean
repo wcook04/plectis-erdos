@@ -17,7 +17,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the nineteen-interface
+This module contains only the definitions needed to state the twenty-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -110,6 +110,12 @@ external verification boundary. -/
 def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n =>
   Nat.totient (2 ^ j * n + r)
 
+/-! ## All-base totient-kernel index reduction -/
+
+/-- The `(j,r)` base-`k` kernel channel of Euler's totient. -/
+def allBaseTotientKernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
+  Nat.totient (k ^ j * n + r)
+
 /-- Every dyadic totient channel at levels `0,...,e`. -/
 abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
   Σ j : Fin (e + 1), Fin (2 ^ j.val)
@@ -118,6 +124,53 @@ abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
 def totientKernelThroughLevelFamily (e : ℕ) :
     TotientKernelThroughLevelIndex e → ℕ → ℚ
   | ⟨j, r⟩ => totientKernelSeq j.val r.val
+
+/-- The two distinguished zero-residue channels in the all-base reduction. -/
+inductive TotientKernelHeadIndex
+  | F00
+  | F10
+  deriving DecidableEq
+
+instance : Fintype TotientKernelHeadIndex where
+  elems := {.F00, .F10}
+  complete := by
+    intro i
+    cases i <;> simp
+
+/-- Coordinates for nonzero canonical sections through levels `1,...,e`. -/
+abbrev TotientKernelSectionIndex (k e : ℕ) :=
+  Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)
+
+/-- The complete finite-level all-base index. -/
+abbrev TotientKernelIndex (k e : ℕ) :=
+  TotientKernelHeadIndex ⊕ TotientKernelSectionIndex k e
+
+/-- The positive level represented by a canonical section coordinate. -/
+def totientKernelSectionLevel {k e : ℕ}
+    (i : TotientKernelSectionIndex k e) : ℕ :=
+  i.1.val + 1
+
+/-- The residue represented by a quotient/nonzero-digit coordinate. -/
+def totientKernelSectionResidue {k e : ℕ}
+    (i : TotientKernelSectionIndex k e) : ℕ :=
+  k * i.2.1.val + (i.2.2.val + 1)
+
+/-- The filtration-compatible all-base family of canonical channels. -/
+def canonicalAllBaseTotientKernelFamily (k e : ℕ) :
+    TotientKernelIndex k e → ℕ → ℚ
+  | Sum.inl .F00 => allBaseTotientKernelSeq k 0 0
+  | Sum.inl .F10 => allBaseTotientKernelSeq k 1 0
+  | Sum.inr i => allBaseTotientKernelSeq k
+      (totientKernelSectionLevel i) (totientKernelSectionResidue i)
+
+/-- Every base-`k` totient channel through level `e`. -/
+abbrev AllBaseTotientKernelThroughLevelIndex (k e : ℕ) :=
+  Σ j : Fin (e + 1), Fin (k ^ j.val)
+
+/-- The complete finite all-base kernel through level `e`. -/
+def allBaseTotientKernelThroughLevelFamily (k e : ℕ) :
+    AllBaseTotientKernelThroughLevelIndex k e → ℕ → ℚ
+  | ⟨j, r⟩ => allBaseTotientKernelSeq k j.val r.val
 
 /-- The full dyadic-kernel index. -/
 abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
@@ -166,7 +219,7 @@ def rationalBaseClearedTailQ
     (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
 
-/-- One trusted challenge witness carries the nineteen exact interfaces selected
+/-- One trusted challenge witness carries the twenty exact interfaces selected
 for the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
 each statement separately while the trusted challenge contains one hole. -/
@@ -216,6 +269,13 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     Nonempty
       (Basis TotientOddCoreIndex ℚ
         (Submodule.span ℚ (Set.range fullTotientKernelFamily)))
+  problem249AllBaseRank :
+    ∀ (k e : ℕ), 2 ≤ k → 1 ≤ e →
+      LinearIndependent ℚ (canonicalAllBaseTotientKernelFamily k e) →
+      finrank ℚ
+        (Submodule.span ℚ
+          (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
+        k ^ e + 1
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →

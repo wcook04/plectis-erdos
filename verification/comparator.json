@@ -9,6 +9,7 @@
     "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
     "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
     "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
+    "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
     "Erdos249257.ExternalVerification.exists_primeGap0_gt",
     "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",

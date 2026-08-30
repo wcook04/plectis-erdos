@@ -165,6 +165,22 @@ status:
       boundary: "The basis theorem does not connect rationality to finite kernel rank."
       comparator_declaration: "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis"
       literature_dependencies: []
+    - declaration: "Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent"
+      file: "Erdos249257/TotientKernelConditional.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "formalised unconditional spanning and conditional rank with external independence input"
+      statement: "Under 2 ≤ k, 1 ≤ e, and linear independence of the explicit canonical all-base family, the actual all-base totient kernel through level e has rational span dimension k^e + 1."
+      boundary: "The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series."
+      comparator_declaration: "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent"
+      literature_dependencies: []
     - declaration: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       file: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
       sorry_count: 0
@@ -430,6 +446,11 @@ alignment:
       module: "Erdos249257/TotientMahlerDefect.lean"
       status: "proved"
       note: "The basis theorem does not connect rationality to finite kernel rank."
+    - source: "Under 2 ≤ k, 1 ≤ e, and linear independence of the explicit canonical all-base family, the actual all-base totient kernel through level e has rational span dimension k^e + 1."
+      lean: "Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent"
+      module: "Erdos249257/TotientKernelConditional.lean"
+      status: "proved"
+      note: "The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series."
     - source: "The consecutive prime gaps are unbounded."
       lean: "ErdosProblems.Erdos251.exists_primeGap0_gt"
       module: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
@@ -579,7 +600,7 @@ claim_review_matrix:
       - id: "totient_kernel_all_base_index"
         contribution_class: "formalised unconditional spanning and conditional rank with external independence input"
         evidence_mode: "Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence"
-        comparator_disposition: "not_selected_external_independence_boundary"
+        comparator_disposition: "targeted"
         summary: "For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence."
         boundary: "Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input."
       - id: "totient_finite_denominator_exclusion"

@@ -11399,6 +11399,17 @@
         "boundary": "The basis theorem does not connect rationality to finite kernel rank."
       },
       {
+        "id": "totient_kernel_all_base_rank",
+        "problem": 249,
+        "review_family": "totient_kernel_all_base_index",
+        "contribution_class": "formalised unconditional spanning and conditional rank with external independence input",
+        "original_declaration": "Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+        "original_source": "Erdos249257/TotientKernelConditional.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+        "statement": "Under 2 ≤ k, 1 ≤ e, and linear independence of the explicit canonical all-base family, the actual all-base totient kernel through level e has rational span dimension k^e + 1.",
+        "boundary": "The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series."
+      },
+      {
         "id": "prime_gap_unboundedness",
         "problem": 251,
         "review_family": "coefficient_only_no_go",
@@ -11655,7 +11666,7 @@
             "contribution_class": "formalised unconditional spanning and conditional rank with external independence input",
             "summary": "For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence.",
             "evidence_mode": "Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence",
-            "comparator_disposition": "not_selected_external_independence_boundary",
+            "comparator_disposition": "targeted",
             "boundary": "Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input."
           },
           {

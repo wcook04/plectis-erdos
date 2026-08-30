@@ -232,7 +232,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>targeted</code>
 
 - <code>totient_kernel_all_base_index</code><br>
-  Comparator: <code>not_selected_external_independence_boundary</code>
+  Comparator: <code>targeted</code>
 
 - <code>totient_finite_denominator_exclusion</code><br>
   Comparator: <code>not_selected_finite_family_has_separate_receipt</code>
@@ -690,7 +690,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 19 statement-isolated interfaces</summary>
+<summary>Show all 20 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -746,6 +746,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Canonical claim status.** `supports_registered_claim_family:dyadic_totient_basis`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The basis theorem does not connect rationality to finite kernel rank.
+
+- <code>Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent</code>
+  - **Class.** formalised unconditional spanning and conditional rank with external independence input
+  - **Statement.** Under 2 ≤ k, 1 ≤ e, and linear independence of the explicit canonical all-base family, the actual all-base totient kernel through level e has rational span dimension k^e + 1.
+  - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** The linear-independence hypothesis is the external affine-ordering boundary and is not proved here; this does not prove irrationality of the binary totient series.
 
 **#251: Prime-gap dyadic series**
 
@@ -848,7 +855,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 19 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 20 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.
