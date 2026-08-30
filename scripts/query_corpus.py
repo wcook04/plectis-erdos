@@ -3879,6 +3879,44 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
         return None
     row = matches[0]
     problem = str(row["erdos_number"])
+    claims = load("docs/claims.json")
+    review_matrix = claims.get("external_verification_packet", {}).get(
+        "review_matrix", []
+    )
+    review_row = next(
+        (
+            candidate
+            for candidate in review_matrix
+            if candidate.get("problem") == row["erdos_number"]
+        ),
+        None,
+    )
+    result_families = []
+    if review_row is not None:
+        for rank, family in enumerate(review_row.get("families", []), 1):
+            declarations = [
+                str(declaration)
+                for declaration in family.get("declarations", [])
+            ]
+            result_families.append(
+                {
+                    "rank": rank,
+                    "id": family["id"],
+                    "contribution_class": family.get("contribution_class"),
+                    "summary": family.get("summary"),
+                    "evidence_mode": family.get("evidence_mode"),
+                    "comparator_disposition": family.get(
+                        "comparator_disposition"
+                    ),
+                    "declarations": declarations,
+                    "declaration_routes": [
+                        "python3 scripts/query_corpus.py --declaration "
+                        f"{declaration}"
+                        for declaration in declarations
+                    ],
+                    "boundary": family.get("boundary"),
+                }
+            )
     route = {
         "kind": "problem",
         "id": row["problem_id"],
@@ -3895,7 +3933,24 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
         "open_obligation_ids": [
             obligation["id"] for obligation in row.get("open_obligations", [])
         ],
+        "open_obligations": row.get("open_obligations", []),
         "note": row.get("note"),
+        "paper": row.get("paper"),
+        "result_family_contract": {
+            "source": "docs/claims.json::external_verification_packet.review_matrix",
+            "meaning": (
+                "Each row is an authored contribution family for this problem. "
+                "The family summary, evidence mode, declaration handles, and "
+                "boundary are navigation context; they do not promote an "
+                "expansion result into a reviewed claim or close the problem."
+            ),
+            "ordering": (
+                "Claim-registry review-matrix order; all families are retained, "
+                "and no theorem or declaration count is used as a significance "
+                "proxy."
+            ),
+        },
+        "result_families": result_families,
         "follow": {
             "semantic_problem_registry": (
                 "python3 scripts/query_semantic.py problem-registry "
@@ -6552,6 +6607,16 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "open_obligation_ids": [
                     item["id"] for item in row.get("open_obligations", [])
                 ],
+                "result_family_count": len(
+                    row.get("external_check", {}).get("dispositions", {})
+                ),
+                "result_family_ids": list(
+                    row.get("external_check", {}).get("dispositions", {})
+                ),
+                "result_route": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"{row['problem_id']}"
+                ),
                 "route_memory": (
                     "python3 scripts/query_route_memory.py --problem "
                     f"{row['erdos_number']}"
@@ -6585,6 +6650,20 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
             }
             for row in families
         ],
+        "problem_result_family_contract": {
+            "source": "docs/claims.json::external_verification_packet.review_matrix",
+            "route": "python3 scripts/query_corpus.py --route <problem_id>",
+            "ordering": (
+                "Each problem route preserves claim-registry review-matrix order "
+                "across all distinct families; theorem and declaration counts "
+                "are not used as a significance proxy."
+            ),
+            "boundary": (
+                "Family rows are navigation context. Their evidence mode and "
+                "declaration handles do not promote expansion material into "
+                "reviewed claims or close an Erdős problem."
+            ),
+        },
         "repository_map": [
             {"layer": "proof", "owner": "Lean source and pinned kernel"},
             {"layer": "public_status", "owner": "docs/claims.json"},
@@ -6701,6 +6780,12 @@ def agent_tour_packet() -> dict[str, Any]:
                 "status": row["status"],
                 "module_count": len(row.get("modules", [])),
                 "note": row.get("note"),
+                "result_family_count": len(
+                    row.get("external_check", {}).get("dispositions", {})
+                ),
+                "result_family_ids": list(
+                    row.get("external_check", {}).get("dispositions", {})
+                ),
                 "follow": (
                     "python3 scripts/query_corpus.py --route "
                     f"{row['problem_id']}"
@@ -6733,6 +6818,15 @@ def agent_tour_packet() -> dict[str, Any]:
                 "invented_route_or_reference",
                 "cross_problem_route_or_declaration",
             ],
+        },
+        "problem_result_family_contract": {
+            "source": "docs/claims.json::external_verification_packet.review_matrix",
+            "route": "python3 scripts/query_corpus.py --route <problem_id>",
+            "meaning": (
+                "The problem map names every distinct review-matrix family; "
+                "expand the problem route for its summary, evidence mode, "
+                "declarations, paper, and exact open obligations."
+            ),
         },
         "open_frontier_contract": {
             "indexed_open_problem_count": indexed_open_problem_count,
@@ -7230,9 +7324,14 @@ def render_card(packet: dict[str, Any]) -> str:
                 f" | research_results={strongest.get('result_count', 0)}"
                 f" | research_frontier={research['files']['frontier']['path']}"
             )
+        paper = route.get("paper") or {}
+        paper_summary = paper.get("source") or paper.get("resolution", "")
         card = (
             f"problem {route['id']} | #{route['erdos_number']} | {route['status']}"
             f" | modules={route['module_count']} | note={route['note']['artifact_id']}"
+            f" | families={len(route.get('result_families', []))}"
+            f" | paper={paper_summary}"
+            f" | open={len(route.get('open_obligations', []))}"
             f"{research_summary}"
         )
         return _append_route_memory_resumes(

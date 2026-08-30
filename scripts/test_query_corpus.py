@@ -193,6 +193,11 @@ def validate_programme_routes() -> None:
 def validate_indexed_problem_routes() -> None:
     """Canonical problem ids in the public source map must be executable routes."""
     problems = load("docs/problems.json")["problems"]
+    claims = load("docs/claims.json")
+    review_matrix = {
+        row["problem"]: row
+        for row in claims["external_verification_packet"]["review_matrix"]
+    }
     for problem in problems:
         route_id = problem["problem_id"]
         packet = query("--route", route_id)
@@ -203,6 +208,33 @@ def validate_indexed_problem_routes() -> None:
         assert route["authority_posture"] == (
             "generated_problem_index_route_not_claim_status_or_Lean_proof_authority"
         )
+        assert route["paper"] == problem["paper"]
+        assert route["open_obligations"] == problem["open_obligations"]
+        expected_families = review_matrix[problem["erdos_number"]]["families"]
+        families = route["result_families"]
+        assert [row["id"] for row in families] == [
+            row["id"] for row in expected_families
+        ]
+        assert [row["rank"] for row in families] == list(
+            range(1, len(expected_families) + 1)
+        )
+        assert route["result_family_contract"]["source"] == (
+            "docs/claims.json::external_verification_packet.review_matrix"
+        )
+        for actual, expected in zip(families, expected_families):
+            assert actual["contribution_class"] == expected["contribution_class"]
+            assert actual["summary"] == expected["summary"]
+            assert actual["evidence_mode"] == expected["evidence_mode"]
+            assert actual["comparator_disposition"] == expected[
+                "comparator_disposition"
+            ]
+            assert actual["declarations"] == expected.get("declarations", [])
+            assert actual["declaration_routes"] == [
+                "python3 scripts/query_corpus.py --declaration "
+                f"{declaration}"
+                for declaration in expected.get("declarations", [])
+            ]
+            assert actual["boundary"] == expected["boundary"]
         if route_id == "erdos_1041":
             research = route["research_corpus"]
             assert research["strongest_result_summary"]["result_count"] == 35
@@ -282,6 +314,33 @@ def validate_agent_tour() -> None:
         1041,
         1049,
     }
+    problem_index = {
+        row["erdos_number"]: row for row in load("docs/problems.json")["problems"]
+    }
+    for row in packet["problem_map"]:
+        indexed = problem_index[row["erdos_number"]]
+        assert row["result_family_count"] == len(
+            indexed["external_check"]["dispositions"]
+        )
+        assert row["result_family_ids"] == list(
+            indexed["external_check"]["dispositions"]
+        )
+    overview = query("--overview")
+    assert overview["problem_result_family_contract"]["source"] == (
+        "docs/claims.json::external_verification_packet.review_matrix"
+    )
+    for row in overview["problem_fleet"]:
+        indexed = problem_index[row["erdos_number"]]
+        assert row["result_family_count"] == len(
+            indexed["external_check"]["dispositions"]
+        )
+        assert row["result_family_ids"] == list(
+            indexed["external_check"]["dispositions"]
+        )
+        assert row["result_route"] == (
+            "python3 scripts/query_corpus.py --route "
+            f"{indexed['problem_id']}"
+        )
     route_memory_contract = packet["route_memory_contract"]
     assert route_memory_contract["selector_source"] == (
         "problem_map[].erdos_number from docs/problems.json"
