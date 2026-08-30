@@ -5958,11 +5958,72 @@ def publication_family_packet(family_id: str) -> dict[str, Any]:
         raise KeyError(f"unknown publication family id: {family_id}")
     claim_index = {row["id"]: row for row in claims["claims"]}
     family_claims = [claim_index[claim_id] for claim_id in family["claim_ids"]]
+    source_route = str(family.get("source_route", ""))
+    route_index = {row["id"]: row for row in all_entrypoints(claims)}
+    candidate_routes = []
+    route_match = re.fullmatch(
+        r"\s*python3 scripts/query_corpus\.py --route ([^\s]+)\s*",
+        source_route,
+    )
+    claim_match = re.fullmatch(
+        r"\s*python3 scripts/query_corpus\.py --claim ([^\s]+)\s*",
+        source_route,
+    )
+    if route_match:
+        route = route_index.get(route_match.group(1))
+        if route and route.get("route_kind") == "mathematical_programme":
+            candidate_routes = [route]
+    elif claim_match:
+        claim_source = claim_match.group(1)
+        candidate_routes = [
+            route
+            for route in route_index.values()
+            if route.get("route_kind") == "mathematical_programme"
+            and claim_source in route.get("core_claim_ids", [])
+        ]
+    route_memory_bindings = []
+    for route in candidate_routes:
+        problem_number = route_memory_problem_number(route)
+        if problem_number is None:
+            continue
+        route_memory_bindings.append(
+            {
+                "route_id": route["id"],
+                "problem_number": problem_number,
+                "command": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{problem_number} --route {route['id']}"
+                ),
+                "authority_posture": (
+                    "derived_resume_handoff_not_claim_or_proof_authority"
+                ),
+                "identity_contract": (
+                    "The route-memory command binds this route to the selected "
+                    "problem and current tracked source digests before resume."
+                ),
+            }
+        )
+    route_memory = {
+        "status": "bound" if route_memory_bindings else "unbound",
+        "source_route": source_route,
+        "bindings": route_memory_bindings,
+        "authority_posture": "derived_resume_handoff_not_claim_or_proof_authority",
+        "boundary": (
+            "Route-memory bindings are navigation handoffs only; they do not "
+            "promote claims, prove mathematics, or replace the family source route."
+        ),
+    }
+    if not route_memory_bindings:
+        route_memory["unbound_reason"] = (
+            "source_route does not resolve to a canonical mathematical programme "
+            "with a problem selector; no resume route was invented"
+        )
     return {
         "kind": "publication_family",
         "authority_posture": "publication_assembly_navigation_not_proof_authority",
         "family": family,
         "claims": [compact_claim(claim) for claim in family_claims],
+        "route_memory": route_memory,
         "status_counts": dict(
             sorted(
                 {

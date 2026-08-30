@@ -15,6 +15,7 @@ from pathlib import Path
 import query_corpus
 from query_corpus import (
     agent_tour_packet,
+    all_entrypoints,
     artifact_inventory,
     artifact_packet,
     claim_status_packet,
@@ -26,6 +27,7 @@ from query_corpus import (
     paper_anchor_inventory,
     paper_anchor_packet,
     route_packet,
+    route_memory_problem_number,
     source_coordinate_packet,
 )
 
@@ -829,6 +831,50 @@ def main() -> int:
     assert family_card.stdout.startswith(
         "publication family exact_certificate_equivalence_and_deposits |"
     )
+    for family in publication_assembly["contribution_families"]:
+        family_packet = query("--publication-family", family["id"])
+        bindings = family_packet["route_memory"]["bindings"]
+        expected_routes = []
+        route_match = re.fullmatch(
+            r"\s*python3 scripts/query_corpus\.py --route ([^\s]+)\s*",
+            family["source_route"],
+        )
+        claim_match = re.fullmatch(
+            r"\s*python3 scripts/query_corpus\.py --claim ([^\s]+)\s*",
+            family["source_route"],
+        )
+        programme_routes = {
+            row["id"]: row
+            for row in all_entrypoints(claims_document)
+            if row.get("route_kind") == "mathematical_programme"
+        }
+        if route_match and route_match.group(1) in programme_routes:
+            expected_routes = [programme_routes[route_match.group(1)]]
+        elif claim_match:
+            expected_routes = [
+                row
+                for row in programme_routes.values()
+                if claim_match.group(1) in row.get("core_claim_ids", [])
+            ]
+        expected_bindings = {
+            (
+                row["id"],
+                route_memory_problem_number(row),
+            )
+            for row in expected_routes
+            if route_memory_problem_number(row) is not None
+        }
+        actual_bindings = {
+            (row["route_id"], row["problem_number"]) for row in bindings
+        }
+        assert actual_bindings == expected_bindings
+        assert family_packet["route_memory"]["status"] == (
+            "bound" if expected_bindings else "unbound"
+        )
+        if not expected_bindings:
+            assert "no resume route was invented" in family_packet["route_memory"][
+                "unbound_reason"
+            ]
     architecture_card = run("--publication-architecture", "--format", "card")
     assert architecture_card.returncode == 0
     assert architecture_card.stdout.startswith("publication architecture |")
