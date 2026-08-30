@@ -178,6 +178,22 @@ def main() -> int:
             "route-memory source accepted an arbitrary symlinked checkout ancestor",
         )
 
+    with tempfile.TemporaryDirectory(dir="/tmp") as directory, tempfile.TemporaryDirectory(
+        dir="/tmp"
+    ) as redirected:
+        base = Path(directory)
+        link = base / "link"
+        link.symlink_to(redirected, target_is_directory=True)
+        hidden_link = link / ".." / "hidden-link.json"
+        require(
+            acceptor.path_has_symlink_component(hidden_link),
+            "input path normalized away a symlink before resolving ..",
+        )
+        require(
+            acceptor.parent_has_symlink(hidden_link),
+            "output parent normalized away a symlink before resolving ..",
+        )
+
     with tempfile.TemporaryDirectory() as directory:
         malformed = Path(directory) / "malformed-utf8.json"
         malformed.write_bytes(b"{\xff\n")

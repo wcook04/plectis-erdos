@@ -193,34 +193,41 @@ def _is_allowed_platform_alias(path: Path) -> bool:
         return False
 
 
+def _absolute_preserving_dotdot(path: Path) -> Path:
+    """Make a path absolute without normalizing ``..`` before inspection."""
+    return path if path.is_absolute() else Path.cwd() / path
+
+
+def _path_has_symlink_component(path: Path) -> bool:
+    """Walk path components in kernel order, including links before ``..``."""
+    candidate = _absolute_preserving_dotdot(path)
+    current = Path(candidate.anchor)
+    for component in candidate.parts[1:]:
+        if component in {"", "."}:
+            continue
+        if component == "..":
+            current = current.parent
+            continue
+        current /= component
+        if not current.is_symlink():
+            continue
+        if not _is_allowed_platform_alias(current):
+            return True
+        try:
+            current = current.resolve(strict=True)
+        except OSError:
+            return True
+    return False
+
+
 def parent_has_symlink(path: Path) -> bool:
     """Reject mutable parent links, including arbitrary filesystem-root links."""
-    current = Path(os.path.abspath(path.parent))
-    while True:
-        if current.is_symlink():
-            if not _is_allowed_platform_alias(current):
-                return True
-            current = current.resolve(strict=True)
-            continue
-        if current.parent == current:
-            return False
-        current = current.parent
+    return _path_has_symlink_component(path.parent)
 
 
 def path_has_symlink_component(path: Path) -> bool:
     """Reject input files that escape through a symlinked path component."""
-    if path.is_symlink():
-        return True
-    current = Path(os.path.abspath(path.parent))
-    while True:
-        if current.is_symlink():
-            if not _is_allowed_platform_alias(current):
-                return True
-            current = current.resolve(strict=True)
-            continue
-        if current.parent == current:
-            return False
-        current = current.parent
+    return path.is_symlink() or _path_has_symlink_component(path)
 
 
 def write_new_file(path: Path, payload: bytes) -> str | None:
