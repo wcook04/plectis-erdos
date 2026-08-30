@@ -64,8 +64,16 @@ All eight remain open. Pass is mechanism-first:
   producer and hence irrationality
   ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
   quantitative separation supply is unproved, and sign/top-edge information
-  does not supply it. Separately, the dyadic totient kernel has rank `2^e + 1`
-  with an odd-core basis ([source](Erdos249257/TotientKernelConditional.lean)); all-base extension needs affine independence, but this finite-level spine is no rationality-to-finite-rank bridge or endpoint solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137): hypothetical rationality gives a positive multiplier and tempered carry with common eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1` for every `e`; modulo a divisor, forcing vanishes and the carry is geometric: no finite-rank contradiction or irrationality proof ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
+  does not supply it. Separately, the finite dyadic kernel has rank `2^e+1`
+  for `e≥1` with an odd-core basis
+  ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); all-base extension needs
+  affine independence, but this is no rationality-to-finite-rank bridge or endpoint
+  solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137):
+  hypothetical rationality gives a positive multiplier and tempered carry with common
+  eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1`
+  for every `e`; modulo a divisor, forcing vanishes and the carry is geometric: no
+  finite-rank contradiction or irrationality proof
+  ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
   The diagonal form equates integrality with a full-target foreign-defect hit;
   cofinal misses would prove irrationality, but the supply is open
   ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). A separate
