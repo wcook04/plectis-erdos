@@ -281,6 +281,9 @@ def portfolio_visibility_errors(packet: dict[str, object]) -> list[str]:
         ):
             if not isinstance(row.get(field), str) or not row[field].strip():
                 errors.append(f"problem {problem} result lacks source-bound {field}")
+        for field in ("review_family", "contribution_class"):
+            if not isinstance(row.get(field), str) or not row[field].strip():
+                errors.append(f"problem {problem} result lacks high-signal {field}")
         source = row.get("original_source", "")
         wrapper = row.get("wrapper_declaration", "")
         if isinstance(source, str) and not source.startswith(("Erdos249257/", "ErdosProblems/")):
@@ -463,6 +466,16 @@ def main() -> int:
         not portfolio_visibility_errors(single_result_portfolio),
         "portfolio validation must not require a fixed number of results per problem",
     )
+    for field in ("review_family", "contribution_class"):
+        missing_signal_portfolio = deepcopy(verification_packet)
+        del missing_signal_portfolio["main_results"][0][field]
+        require(
+            any(
+                f"result lacks high-signal {field}" in error
+                for error in portfolio_visibility_errors(missing_signal_portfolio)
+            ),
+            f"missing high-signal {field} mutation was accepted",
+        )
     duplicate_portfolio = deepcopy(verification_packet)
     duplicate_portfolio["main_results"][1] = deepcopy(duplicate_portfolio["main_results"][0])
     require(
