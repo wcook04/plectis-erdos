@@ -455,6 +455,13 @@ def main() -> int:
                 ),
                 encoding="utf-8",
             )
+            (root / "scripts" / "test_expert_handoffs.py").write_text(
+                auxiliary_gate_source(
+                    label="test_expert_handoffs: synthetic source-current handoff",
+                    exit_code=0,
+                ),
+                encoding="utf-8",
+            )
             git(root, "add", ".")
             git(root, "commit", "-qm", "passing release snapshot")
             passing_commit = git(root, "rev-parse", "HEAD")
@@ -530,7 +537,7 @@ def main() -> int:
             )
             require(
                 probe["gate_coverage"] == {
-                    "configured_gate_count": 4,
+                    "configured_gate_count": 5,
                     "started_gate_count": 0,
                     "completed_gate_count": 0,
                     "failed_gate_count": 0,
@@ -590,12 +597,13 @@ def main() -> int:
                     ["python3", "scripts/test_root_import_closure.py"],
                     ["python3", "scripts/test_release_source_identity.py"],
                     ["python3", "scripts/test_query_route_memory.py"],
+                    ["python3", "scripts/test_expert_handoffs.py"],
                 ],
                 "release command coverage changed unexpectedly",
             )
             require(
                 [row["exit_code"] for row in passed["gate_results"]]
-                == [0, 0, 0, 0],
+                == [0, 0, 0, 0, 0],
                 "passing snapshot did not report every gate exit",
             )
             require(
@@ -604,9 +612,9 @@ def main() -> int:
             )
             require(
                 passed["gate_coverage"] == {
-                    "configured_gate_count": 4,
-                    "started_gate_count": 4,
-                    "completed_gate_count": 4,
+                    "configured_gate_count": 5,
+                    "started_gate_count": 5,
+                    "completed_gate_count": 5,
                     "failed_gate_count": 0,
                     "timed_out_gate_count": 0,
                     "all_configured_gates_completed": True,
@@ -639,7 +647,7 @@ def main() -> int:
             )
             require(
                 [row["exit_code"] for row in root_failed["gate_results"]]
-                == [0, 9, 0, 0],
+                == [0, 9, 0, 0, 0],
                 "root gate failure receipt lost gate exits",
             )
             require(
@@ -647,7 +655,7 @@ def main() -> int:
                 "root gate failure count is incorrect",
             )
             require(
-                root_failed["gate_coverage"]["completed_gate_count"] == 4,
+                root_failed["gate_coverage"]["completed_gate_count"] == 5,
                 "root gate failure did not complete the configured gates",
             )
             require(
@@ -707,7 +715,7 @@ def main() -> int:
             )
             require(
                 [row["exit_code"] for row in source_failed["gate_results"]]
-                == [0, 0, 11, 0],
+                == [0, 0, 11, 0, 0],
                 "source identity gate receipt lost gate exits",
             )
             require(
@@ -759,7 +767,7 @@ def main() -> int:
             )
             require(
                 [row["exit_code"] for row in route_failed["gate_results"]]
-                == [0, 0, 0, 13],
+                == [0, 0, 0, 13, 0],
                 "route-memory gate receipt lost gate exits",
             )
             require(
@@ -782,6 +790,58 @@ def main() -> int:
                 root,
                 "scripts/test_query_route_memory.py",
                 "restore passing route memory",
+            )
+
+            (root / "scripts" / "test_expert_handoffs.py").write_text(
+                auxiliary_gate_source(
+                    label="test_expert_handoffs: synthetic source-current handoff",
+                    exit_code=17,
+                ),
+                encoding="utf-8",
+            )
+            expert_failure_commit = commit_path(
+                root,
+                "scripts/test_expert_handoffs.py",
+                "failing expert handoff snapshot",
+            )
+            expert_failed, expert_failed_exit = check_release_ref.validate_ref(
+                expert_failure_commit,
+                timeout_seconds=30,
+                probe_only=False,
+            )
+            require(
+                expert_failed_exit == 17,
+                "expert-handoff gate exit was not preserved",
+            )
+            require(
+                expert_failed["status"] == "failed",
+                "expert-handoff gate failure was not reported as failed",
+            )
+            require(
+                [row["exit_code"] for row in expert_failed["gate_results"]]
+                == [0, 0, 0, 0, 17],
+                "expert-handoff gate receipt lost gate exits",
+            )
+            require(
+                expert_failed["failed_gate_count"] == 1,
+                "expert-handoff gate failure count is incorrect",
+            )
+            require(
+                "synthetic source-current handoff" in expert_failed["stdout_tail"],
+                "expert-handoff failure receipt lost gate output",
+            )
+
+            (root / "scripts" / "test_expert_handoffs.py").write_text(
+                auxiliary_gate_source(
+                    label="test_expert_handoffs: synthetic source-current handoff",
+                    exit_code=0,
+                ),
+                encoding="utf-8",
+            )
+            commit_path(
+                root,
+                "scripts/test_expert_handoffs.py",
+                "restore passing expert handoff",
             )
 
             (root / "scripts" / "check_release.py").write_text(
@@ -836,7 +896,7 @@ def main() -> int:
             )
             require(
                 [row["exit_code"] for row in failed["gate_results"]]
-                == [7, 0, 0, 0],
+                == [7, 0, 0, 0, 0],
                 "release gate failure receipt lost gate exits",
             )
             require(
@@ -892,7 +952,7 @@ def main() -> int:
             )
             require(
                 timed_out["gate_coverage"] == {
-                    "configured_gate_count": 4,
+                    "configured_gate_count": 5,
                     "started_gate_count": 1,
                     "completed_gate_count": 0,
                     "failed_gate_count": 0,
@@ -902,6 +962,7 @@ def main() -> int:
                         ["python3", "scripts/test_root_import_closure.py"],
                         ["python3", "scripts/test_release_source_identity.py"],
                         ["python3", "scripts/test_query_route_memory.py"],
+                        ["python3", "scripts/test_expert_handoffs.py"],
                     ],
                 },
                 "timeout receipt gate coverage is incomplete",
