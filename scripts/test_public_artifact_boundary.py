@@ -181,6 +181,20 @@ def portfolio_visibility_errors(packet: dict[str, object]) -> list[str]:
             errors.append(
                 f"problem {problem} portfolio is underexposed: retain at least two distinct strong results"
             )
+        content_signatures = {
+            (
+                row.get("statement"),
+                row.get("boundary"),
+                row.get("original_declaration"),
+                row.get("original_source"),
+                row.get("wrapper_declaration"),
+            )
+            for row in rows
+        }
+        if len(content_signatures) != len(rows):
+            errors.append(
+                f"problem {problem} portfolio contains duplicate source-bound result content"
+            )
         identities = {
             (
                 row.get("id"),
@@ -311,6 +325,23 @@ def main() -> int:
         ),
         "duplicate portfolio identity mutation was accepted",
     )
+    duplicate_content_portfolio = deepcopy(verification_packet)
+    first_result = duplicate_content_portfolio["main_results"][0]
+    second_result_index = next(
+        index
+        for index, row in enumerate(duplicate_content_portfolio["main_results"])
+        if index != 0 and row["problem"] == first_result["problem"]
+    )
+    duplicate_content_result = deepcopy(first_result)
+    duplicate_content_result["id"] = f"{first_result['id']}__renamed"
+    duplicate_content_portfolio["main_results"][second_result_index] = duplicate_content_result
+    require(
+        any(
+            "duplicate source-bound result content" in error
+            for error in portfolio_visibility_errors(duplicate_content_portfolio)
+        ),
+        "renamed duplicate result content was accepted",
+    )
     overclaiming_portfolio = deepcopy(verification_packet)
     overclaiming_portfolio["main_results"][0]["boundary"] = (
         "This result solves Erdos 68 and supplies independent proof authority."
@@ -338,7 +369,7 @@ def main() -> int:
         "test_public_artifact_boundary: first-contact surfaces reject "
         "private or unpublished proof authority and novelty inference; "
         "portfolio visibility preserves all eight problems and multiple "
-        "source-bound strong results; 10 negative fixtures rejected"
+        "source-bound strong results; 11 negative fixtures rejected"
     )
     return 0
 
