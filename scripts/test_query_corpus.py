@@ -546,6 +546,19 @@ def validate_natural_language_search() -> None:
         "lambert_obstruction_interfaces",
         "arithmetic_obstruction_interfaces",
     }
+    for row in ruled_out["results"]:
+        if (
+            row["kind"] != "reading_route"
+            or row["route_kind"] != "mathematical_programme"
+        ):
+            continue
+        assert row["route_memory"] == route_packet(row["id"])["route_memory"]
+        assert row["route_memory"]["authority_posture"] == (
+            "derived_resume_handoff_not_claim_or_proof_authority"
+        )
+        assert "current tracked source digests" in row["route_memory"][
+            "identity_contract"
+        ]
 
 
 def validate_indexed_declaration_lookup() -> None:

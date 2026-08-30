@@ -4472,20 +4472,29 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         ) is not None:
             rank = -10 + hint_priority
         if rank is not None:
+            route_result = {
+                "kind": "reading_route",
+                "id": row["id"],
+                "route_kind": row.get("route_kind", "reading_route"),
+                "title": row.get("title"),
+                "intent": row["intent"],
+                "problem_target_claim_ids": row.get(
+                    "problem_target_claim_ids", []
+                ),
+            }
+            if row.get("route_kind") == "mathematical_programme":
+                # Generic search is a reader-facing fan-in just like an exact
+                # route lookup. Preserve the canonical route-memory handoff so
+                # the selected problem and current source-digest contract are
+                # not lost at this boundary.
+                route_result["route_memory"] = route_packet(row["id"]).get(
+                    "route_memory"
+                )
             ranked.append(
                 (
                     rank,
                     f"route:{row['id']}",
-                    {
-                        "kind": "reading_route",
-                        "id": row["id"],
-                        "route_kind": row.get("route_kind", "reading_route"),
-                        "title": row.get("title"),
-                        "intent": row["intent"],
-                        "problem_target_claim_ids": row.get(
-                            "problem_target_claim_ids", []
-                        ),
-                    },
+                    route_result,
                 )
             )
 
