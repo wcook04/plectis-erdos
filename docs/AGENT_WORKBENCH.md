@@ -1,4 +1,4 @@
-# The Agent Workbench
+# Agent workbench
 
 This corpus is agent-native. It is not an autonomous theorem prover and
 is deliberately not trying to become one. It is a deep, instrumented
@@ -7,6 +7,11 @@ agent — a reasoning model or a human — where the agent supplies the
 search policy, the conjectures, and the judgment, and the environment
 supplies what raw intelligence cannot supply for itself: exactness,
 honesty, and replayability.
+
+Use this page for agent operations. Start with [CONTRIBUTING.md](../CONTRIBUTING.md)
+before proposing a correction, strengthening, claim change, or release change;
+then use the authority and validation contract in [AGENTS.md](../AGENTS.md).
+Reader introductions belong in the README and results guide rather than here.
 
 ## Design thesis
 
@@ -41,10 +46,23 @@ When a session begins from a problem number, read the matching row in the
 generated [problem index](problems.json), then follow the detailed
 [source map](SOURCE_MAP.md). The row supplies the question, status, paper
 note, module inventory, paper/source coordinates, and open obligations; the
-source map supplies the bounded proof/paper/source traversal. The compact
-problem roster is:
+source map supplies the bounded proof/paper/source traversal. The current
+mathematical gateways are the eight individual problem papers:
 
-`#68 · #243 · #249 · #251 · #257 · #269 · #1041 · #1049`
+| Problem | Canonical paper |
+|---|---|
+| #68 | `erdos-68-factorial-denominator-irrationality.pdf` |
+| #243 | `erdos-243-reciprocal-tail-rigidity.pdf` |
+| #249 | `erdos-249-binary-totient-series.pdf` |
+| #251 | `erdos-251-prime-gap-dyadic-series.pdf` |
+| #257 | `erdos-257-mersenne-support-subseries.pdf` |
+| #269 | `erdos-269-three-prime-running-lcm.pdf` |
+| #1041 | `erdos-1041-lemniscate-newton-flow.pdf` |
+| #1049 | `erdos-1049-rational-base-lambert.pdf` |
+
+`erdos249-257-main-paper.pdf` and its TeX source are a retired joint manuscript
+kept for archive and provenance. Do not use that manuscript as the current
+gateway for either problem.
 
 For a machine-readable return from any roster row, run the bounded registry
 route before opening a large source file:

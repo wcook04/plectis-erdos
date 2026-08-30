@@ -11,6 +11,10 @@ larger ongoing formal-mathematics workflow: its release discipline, claim
 registry, graph structure, generated atlas, and adversarial checks are public
 evidence of that workflow. They do not create hidden proof authority.
 
+Use [docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md) for the compact command
+routes and [CONTRIBUTING.md](CONTRIBUTING.md) for contribution mechanics. This
+file remains the deeper authority, mutation, and validation contract.
+
 ## Eight-problem cold-start card
 
 A blank-slate agent must receive the complete problem fleet here; it must not
