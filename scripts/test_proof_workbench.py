@@ -226,6 +226,44 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
         else:
             raise AssertionError(f"{action} accepted a malformed kernel receipt")
 
+    missing_hash_session = workbench.Session(sessions_root, "missing-hash")
+    missing_hash_session.directory.mkdir(parents=True)
+    missing_hash_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    missing_hash_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "kernel_receipt": {"verdict": "kernel_accepted"},
+        }
+    )
+    try:
+        workbench.cmd_claim(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": sessions_root,
+                    "session": "missing-hash",
+                    "probe": "m002",
+                    "text": "must retain an exact input hash",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "invalid input hash" not in str(error):
+            raise AssertionError(f"missing input hash lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("claim accepted a probe without an input hash")
+
 
 def check_session_lifecycle(sessions_root: Path) -> None:
     opened = _run(

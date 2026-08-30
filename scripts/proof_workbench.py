@@ -263,6 +263,16 @@ def _probe_verdict(row: dict[str, Any], action: str) -> str:
     return verdict
 
 
+def _probe_input_hash(row: dict[str, Any], action: str) -> str:
+    """Require a claim to retain the hash of its cited stored artifact."""
+    input_sha256 = row.get("input_sha256")
+    if not isinstance(input_sha256, str) or not input_sha256:
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} has an invalid input hash"
+        )
+    return input_sha256
+
+
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     if session.exists():
@@ -362,7 +372,7 @@ def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         {
             "text": args.text,
             "cited_probe": args.probe,
-            "cited_input_sha256": cited["input_sha256"],
+            "cited_input_sha256": _probe_input_hash(cited, "claim"),
             "authority": "kernel_accepted_probe_receipt",
         }
     )
