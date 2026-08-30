@@ -67,11 +67,88 @@ def contract_errors(example: str, readme: str, lakefile: str) -> list[str]:
     return errors
 
 
+def portfolio_contract_errors(
+    problem249: str, problem269: str, portfolio_readme: str
+) -> list[str]:
+    """Return missing exact-wrapper and open-boundary obligations."""
+    errors: list[str] = []
+    requirements = {
+        "Problem249 exact wrapper": (
+            problem249,
+            "irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        ),
+        "Problem249 exact premise": (
+            problem249,
+            "Erdos249257.ExternalVerification.PowerTwoActualLcmOrbitSeparationSupply",
+        ),
+        "Problem249 open separation boundary": (
+            problem249,
+            "separation supply is a premise, not a proved",
+        ),
+        "Problem249 natural-prime wrapper": (
+            problem249,
+            "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        ),
+        "Problem249 strict-gap producer boundary": (
+            problem249,
+            "nonpositive-block density and the cofinal prime strict-gap supply remain open",
+        ),
+        "Problem269 residue/coboundary wrapper": (
+            problem269,
+            "carry_eq_residueDigit_add_coboundary",
+        ),
+        "Problem269 local-window wrapper": (
+            problem269,
+            "no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        ),
+        "Problem269 exact open producer": (
+            problem269,
+            "CofinalLocalWindowEscape",
+        ),
+        "Problem269 actual-series boundary": (
+            problem269,
+            "actual-series/rationality bridge",
+        ),
+        "portfolio first target": (
+            portfolio_readme,
+            "examples/ExternalVerificationPortfolio/Problem249.lean",
+        ),
+        "portfolio second target": (
+            portfolio_readme,
+            "examples/ExternalVerificationPortfolio/Problem269.lean",
+        ),
+        "portfolio conditional claim ceiling": (
+            portfolio_readme,
+            "conditional obstruction, not\nan unconditional #269 endpoint",
+        ),
+        "portfolio terminal evidence boundary": (
+            portfolio_readme,
+            "a dependency-bootstrap\nor capacity deferral is not theorem evidence",
+        ),
+    }
+    for label, (surface, token) in requirements.items():
+        if token not in surface:
+            errors.append(f"external verification portfolio lost {label}")
+    if "existing `ExternalVerification/Solution.lean` mismatch" in portfolio_readme:
+        errors.append("external verification portfolio retained stale Solution mismatch")
+    return errors
+
+
 def main() -> int:
     example = (ROOT / "examples" / "Examples.lean").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
     assert not contract_errors(example, readme, lakefile)
+    problem249 = (
+        ROOT / "examples" / "ExternalVerificationPortfolio" / "Problem249.lean"
+    ).read_text(encoding="utf-8")
+    problem269 = (
+        ROOT / "examples" / "ExternalVerificationPortfolio" / "Problem269.lean"
+    ).read_text(encoding="utf-8")
+    portfolio_readme = (
+        ROOT / "examples" / "ExternalVerificationPortfolio" / "README.md"
+    ).read_text(encoding="utf-8")
+    assert not portfolio_contract_errors(problem249, problem269, portfolio_readme)
 
     implicit_hypothesis = example.replace(
         "(hupper : (whole : ℝ) - (pfx : ℝ) ≤",
@@ -143,10 +220,45 @@ def main() -> int:
         for error in contract_errors(example, readme, default_example)
     )
 
+    renamed_problem249_wrapper = problem249.replace(
+        "irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        "irrational_totientSeries_of_unspecifiedSupply",
+    )
+    assert any(
+        "Problem249 exact wrapper" in error
+        for error in portfolio_contract_errors(
+            renamed_problem249_wrapper, problem269, portfolio_readme
+        )
+    )
+
+    renamed_natural_prime_wrapper = problem249.replace(
+        "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "irrational_totient_series_of_unspecifiedGap",
+    )
+    assert any(
+        "Problem249 natural-prime wrapper" in error
+        for error in portfolio_contract_errors(
+            renamed_natural_prime_wrapper, problem269, portfolio_readme
+        )
+    )
+
+    hidden_problem269_boundary = problem269.replace(
+        "actual-series/rationality bridge",
+        "completed actual-series bridge",
+        1,
+    )
+    assert any(
+        "Problem269 actual-series boundary" in error
+        for error in portfolio_contract_errors(
+            problem249, hidden_problem269_boundary, portfolio_readme
+        )
+    )
+
     print(
         "test_downstream_example_contract: proved and conditional consumers "
         "retain an exact conclusion, explicit open boundary, and non-default "
-        "Lake target; 7 negative fixtures rejected"
+        "Lake target; portfolio wrappers and open boundaries remain exact; "
+        "10 negative fixtures rejected"
     )
     return 0
 

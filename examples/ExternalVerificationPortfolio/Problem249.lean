@@ -48,11 +48,10 @@ priority claim.
 -/
 example
     (hsupply :
-      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine
-        .PowerTwoActualLcmOrbitSeparationSupply) :
+      Erdos249257.ExternalVerification.PowerTwoActualLcmOrbitSeparationSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
-  Erdos249257.ExternalVerification
-    .irrational_totientSeries_of_actualLcmOrbitSeparationSupply hsupply
+  Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply
+    hsupply
 
 /-! ## Natural-prime strict-gap endpoint route -/
 
@@ -87,7 +86,7 @@ claim.
 example
     (hgap : Erdos249257.ExternalVerification.DTWNaturalPrimeTailOrbitStrictGap) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
-  Erdos249257.ExternalVerification
-    .irrational_totient_series_of_naturalPrimeTailOrbitStrictGap hgap
+  Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
+    hgap
 
 end ExternalVerificationPortfolio.Problem249

@@ -15,10 +15,11 @@ python3 scripts/lean_fast_build.py \
   examples/ExternalVerificationPortfolio/Problem269.lean
 ```
 
-That command imports the shared `ExternalVerification.Solution` surface. The
-existing `ExternalVerification/Solution.lean` mismatch means that a build of
-the #251 or #269 consumer must not be described as Lean-green until that
-mismatch is repaired and the command passes on the repaired source.
+That command imports the shared `ExternalVerification.Solution` surface. A
+consumer is Lean-green only when its exact focused source check reaches a
+successful terminal result on the current checkout; a dependency-bootstrap
+or capacity deferral is not theorem evidence and must not be reported as a
+theorem failure or a passing check.
 
 ## Erdős #257: ranked structured-support frontier
 
