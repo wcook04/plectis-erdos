@@ -41,6 +41,21 @@ that the eight-problem entry surface, both public Lean roots, claim/source
 routes, paper handles, open-boundary routes, and environment guidance are
 present before any toolchain download.
 
+Before installing or building anything, a reader can return from any indexed
+problem to its public evidence with the same no-build query surface:
+
+```sh
+python3 scripts/query_corpus.py --route erdos_<n>
+# <n> is one of 68, 243, 249, 251, 257, 269, 1041, or 1049
+```
+
+The packet identifies the problem-owned note, formal directory, module
+inventory, and open-obligation handles. Expand the matching row in
+[`docs/problems.json`](problems.json), then follow the exact paper/source and
+frontier joins described in [`docs/SEMANTIC_COMPILER.md`](SEMANTIC_COMPILER.md).
+This route is navigation evidence only: the Lean kernel remains proof
+authority and every problem-level open boundary remains open.
+
 ## 2. Reproduce the pinned Lean environment
 
 Install [elan](https://leanprover-community.github.io/get_started.html) once
