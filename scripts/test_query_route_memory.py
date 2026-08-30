@@ -10,6 +10,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -131,6 +132,11 @@ def main() -> int:
             route_memory.validate_packet(packet)["packet_digest"] == packet["packet_digest"],
             f"route-memory packet digest is stale for #{number}",
         )
+        require(
+            packet["resume_state"]["module_digests"]
+            == packet["source_snapshot"]["module_digests"],
+            f"module digests are not carried into resume state for #{number}",
+        )
     research_packet = packets[1041]
     research = research_packet["research_corpus"]
     require(
@@ -169,6 +175,31 @@ def main() -> int:
         all(row["source_digest"].startswith("sha256:") for row in routed_declarations),
         "routed #249 declaration digest is malformed",
     )
+    with tempfile.TemporaryDirectory(prefix="route-memory-module-stale-") as temp_dir:
+        stale_root = Path(temp_dir)
+        (stale_root / "Module.lean").write_text("actual", encoding="utf-8")
+        try:
+            route_memory._module_refs(
+                stale_root,
+                {
+                    "problem_id": "erdos_249",
+                    "modules": [
+                        {
+                            "module": "Module",
+                            "path": "Module.lean",
+                            "content_digest": "sha256:" + "0" * 64,
+                            "declaration_count": 1,
+                        }
+                    ],
+                },
+            )
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "module_source_stale",
+                f"stale module digest returned {exc.code}",
+            )
+        else:
+            raise AssertionError("stale module digest was accepted")
 
     # A route for #257 must never be accepted under #249, even though both
     # routes are valid navigation entries in the same claims projection.
@@ -345,8 +376,6 @@ def main() -> int:
     # A packet path must not be substituted through a symlink; stdin remains
     # available for ordinary pipelines and this guard protects file-based CLI
     # intake from reading an unreviewed target.
-    import tempfile
-
     with tempfile.TemporaryDirectory(prefix="route-memory-link-") as temp_dir:
         packet_path = Path(temp_dir) / "packet.json"
         link_path = Path(temp_dir) / "packet-link.json"

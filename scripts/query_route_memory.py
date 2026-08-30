@@ -337,16 +337,25 @@ def _families_for(root: Path, claim_ids: set[str]) -> list[dict[str, Any]]:
     return result
 
 
-def _module_refs(problem: Mapping[str, Any]) -> list[dict[str, Any]]:
+def _module_refs(root: Path, problem: Mapping[str, Any]) -> list[dict[str, Any]]:
     refs: list[dict[str, Any]] = []
-    for module in problem.get("modules", []):
+    modules = problem.get("modules", [])
+    if not isinstance(modules, list):
+        raise RouteMemoryError("module_reference_shape", str(problem.get("problem_id")))
+    for index, module in enumerate(modules):
         if not isinstance(module, Mapping):
-            continue
+            raise RouteMemoryError("module_reference_shape", str(index))
+        path = module.get("path")
+        if not isinstance(path, str) or not path:
+            raise RouteMemoryError("module_reference_shape", str(index))
+        actual_digest = _safe_module_digest(root, path)
+        if module.get("content_digest") != actual_digest:
+            raise RouteMemoryError("module_source_stale", path)
         refs.append(
             {
                 "module": module.get("module"),
-                "path": module.get("path"),
-                "content_digest": module.get("content_digest"),
+                "path": path,
+                "content_digest": actual_digest,
                 "declaration_count": module.get("declaration_count"),
             }
         )
@@ -421,7 +430,7 @@ def build_packet(
     claim_refs = _claims_for(root, route)
     claim_ids = {row["id"] for row in claim_refs}
     family_refs = _families_for(root, claim_ids)
-    module_refs = _module_refs(problem)
+    module_refs = _module_refs(root, problem)
     research_source_digests = _research_source_digests(root, problem)
     consulted = [str(route["id"])] if route is not None else []
     related = [str(value) for value in route.get("related_route_ids", [])] if route else []
@@ -444,6 +453,9 @@ def build_packet(
         "claim_ids": [row["id"] for row in claim_refs],
         "family_ids": [row["id"] for row in family_refs],
         "module_paths": [row["path"] for row in module_refs],
+        "module_digests": {
+            row["path"]: row["content_digest"] for row in module_refs
+        },
         "research_source_digests": research_source_digests,
     }
     state_id = _canonical_digest(identity_material)
@@ -481,6 +493,9 @@ def build_packet(
         "source_snapshot": {
             "commit": source_commit,
             "digests": source_digests,
+            "module_digests": {
+                row["path"]: row["content_digest"] for row in module_refs
+            },
             "tracked_sources": list(SOURCE_FILES),
             "research_corpus_digests": research_source_digests,
         },
@@ -490,6 +505,9 @@ def build_packet(
             "selector": selector,
             "source_commit": source_commit,
             "source_digests": source_digests,
+            "module_digests": {
+                row["path"]: row["content_digest"] for row in module_refs
+            },
             "research_corpus_digests": research_source_digests,
         },
         "boundaries": {
