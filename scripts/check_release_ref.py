@@ -134,7 +134,16 @@ def run(
 
 
 def resolve_commit(ref: str) -> str:
-    completed = run(["git", "rev-parse", "--verify", f"{ref}^{{commit}}"], cwd=ROOT)
+    completed = run(
+        [
+            "git",
+            "rev-parse",
+            "--verify",
+            "--end-of-options",
+            f"{ref}^{{commit}}",
+        ],
+        cwd=ROOT,
+    )
     if completed.returncode != 0:
         raise SnapshotError(
             completed.stderr.strip() or f"could not resolve commit ref {ref!r}"

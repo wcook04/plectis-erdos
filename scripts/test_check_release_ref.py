@@ -177,6 +177,26 @@ def test_singleflight_worker_flag_is_accepted() -> None:
     )
 
 
+def test_commit_ref_resolution_ends_git_options() -> None:
+    """A supplied ref must remain data even when it begins with a dash."""
+    resolved_commit = "a" * 40
+    completed = subprocess.CompletedProcess(
+        ["git"], returncode=0, stdout=f"{resolved_commit}\n", stderr=""
+    )
+    with patch.object(check_release_ref, "run", return_value=completed) as runner:
+        require(
+            check_release_ref.resolve_commit("--format=%(refname)") == resolved_commit,
+            "ref resolution did not return the requested commit",
+        )
+    call = runner.call_args
+    require(call is not None, "ref resolution did not invoke Git")
+    argv = call.args[0]
+    require(
+        argv[2:4] == ["--verify", "--end-of-options"],
+        "ref resolution allowed caller input before Git's option boundary",
+    )
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -214,6 +234,7 @@ def main() -> int:
     test_snapshot_clone_isolation_flags_are_pinned()
     test_receipt_destination_boundary()
     test_singleflight_worker_flag_is_accepted()
+    test_commit_ref_resolution_ends_git_options()
     original_root = check_release_ref.ROOT
     try:
         with tempfile.TemporaryDirectory() as tmp:
