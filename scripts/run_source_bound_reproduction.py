@@ -33,6 +33,7 @@ import validation_singleflight as singleflight
 
 SCHEMA = "erdos249257-source-bound-reproduction/1"
 ENVIRONMENT_CONTRACT = "clean_reproduction_subprocess_environment_v1"
+COMMAND_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 TAIL_BYTES = 16_000
 DEFAULT_MAX_AGE_SECONDS = 30 * 24 * 60 * 60
 CANONICAL_RECEIPT_PATH = "docs/measurements/source_bound_reproduction_receipt.json"
@@ -349,6 +350,7 @@ def run_command(spec: dict[str, Any], cwd: Path) -> dict[str, Any]:
         stderr=subprocess.PIPE,
         check=False,
         env=execution_environment(spec["argv"]),
+        timeout=COMMAND_TIMEOUT_SECONDS,
     )
     after = resource.getrusage(resource.RUSAGE_CHILDREN)
     stdout = completed.stdout

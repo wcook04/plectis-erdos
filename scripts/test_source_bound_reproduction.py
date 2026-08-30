@@ -8,6 +8,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import subprocess
 import sys
 import tempfile
 from datetime import datetime, timedelta, timezone
@@ -137,6 +138,21 @@ def test_environment_isolation(source: Path) -> None:
     require(
         receipt["environment_contract"] == subject.ENVIRONMENT_CONTRACT,
         "reproduction receipt lost its environment contract",
+    )
+
+
+def test_command_timeout() -> None:
+    spec = subject.command("bounded", [sys.executable, "-c", "pass"])
+    completed = subprocess.CompletedProcess(
+        spec["argv"], returncode=0, stdout=b"", stderr=b""
+    )
+    with patch.object(subject.subprocess, "run", return_value=completed) as runner:
+        result = subject.run_command(spec, Path("/isolated-source"))
+    require(result["exit_code"] == 0, "bounded source command did not complete")
+    require(runner.call_args is not None, "bounded source command was not invoked")
+    require(
+        runner.call_args.kwargs["timeout"] == subject.COMMAND_TIMEOUT_SECONDS,
+        "source-bound command lost its worker timeout",
     )
 
 
@@ -272,6 +288,7 @@ def main() -> None:
         test_hashing_and_exclusions(source)
         receipt = test_isolation_success_and_validation(source, plan)
         test_environment_isolation(source)
+        test_command_timeout()
         test_rejections(source, plan, receipt)
         test_timestamp_and_tail_rejections(source, plan, receipt)
         test_git_capability_refusal(source)
