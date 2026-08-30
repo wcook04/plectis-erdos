@@ -108,9 +108,9 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:5a58bb85bf049c231880802971498f657262d151586ce5afb4ce40c2d6f21d65",
-    "docs/claims.json": "sha256:7c4ee59932411d6abdd09219aaaedc3a816186b79426ba0fc7fb8492d9436972",
+    "docs/claims.json": "sha256:dc1fe676836c0947d355f1c1cbb85ab96d63413b6352e71a6fe77e51ce654290",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:7c8f3255d45bf9f3115705971109e2cb86bccd001c3bb144bd5ec5b0cfa374f3",
+    "docs/problems.json": "sha256:a77d0618954ff7be9181ab62efb564b97a585195f16dc0680b1d70afac4b7235",
     "docs/publication_contract.json": "sha256:4b39280aa45242daf661dd9a3d88cd3950a5ba37d600094eb2b8f38bd4f5b6ee",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
@@ -120,7 +120,7 @@
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:01a817d5abd09e1a5ef8e625031f04b73196f569c78c5a6d30ee03791fba0c54",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:b9337d8519569d5d091c988658d572e7ed2b72243dc2fe7bb47c030d1f785f09",
     "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:f32f5d4009993e6b07e29fee9eb4fa3fa077d5e170961f094b477659a36f255a",
-    "scripts/run_publication_mutations.py": "sha256:01834099e0b6897fabfe67d698fbe5a682f701ae54d367c0e35730e3b2ccd437"
+    "scripts/run_publication_mutations.py": "sha256:9c34b441e32a540395e4e1cb456f2924ea5bd56c77a8bc315073fff0891417ab"
   },
   "five_sentence_summary": [
     "Lean checks formal statements and proofs; it does not read the README or papers that explain them.",
@@ -363,7 +363,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:7c8f3255d45bf9f3115705971109e2cb86bccd001c3bb144bd5ec5b0cfa374f3",
+      "content_digest": "sha256:a77d0618954ff7be9181ab62efb564b97a585195f16dc0680b1d70afac4b7235",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
