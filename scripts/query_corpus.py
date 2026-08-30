@@ -8681,9 +8681,6 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "result_family_ids": reviewed_family_by_problem.get(
                     str(row["erdos_number"]), {}
                 ).get("family_ids", []),
-                "result_family_source": (
-                    "docs/claims.json::external_verification_packet.review_matrix"
-                ),
                 "result_route": (
                     "python3 scripts/query_corpus.py --route "
                     f"{row['problem_id']}"
@@ -8732,6 +8729,9 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
         },
         "problem_result_family_contract": {
             "source": "docs/claims.json::external_verification_packet.review_matrix",
+            "problem_fleet_source_projection": (
+                "inherited_once_here_instead_of_repeated_per_problem"
+            ),
             "route": "python3 scripts/query_corpus.py --route <problem_id>",
             "ordering": (
                 "Each problem route preserves claim-registry review-matrix order "

@@ -1026,6 +1026,16 @@ def validate_route_memory_cards() -> None:
     overview_card = query_corpus.render_card(
         query_corpus.repository_overview_packet()
     )
+    overview_packet = query_corpus.repository_overview_packet()
+    assert all("result_family_source" not in row for row in overview_packet["problem_fleet"])
+    assert overview_packet["problem_result_family_contract"]["source"] == (
+        "docs/claims.json::external_verification_packet.review_matrix"
+    )
+    assert len(
+        (json.dumps(overview_packet, ensure_ascii=False, indent=2) + "\n").encode(
+            "utf-8"
+        )
+    ) <= query_corpus.OUTPUT_BUDGET_BYTES
     expected_claim_count = len(query_corpus.load("docs/claims.json")["claims"])
     expected_open_count = len(
         query_corpus.load("docs/orientation.json")["remaining_open_propositions"]
