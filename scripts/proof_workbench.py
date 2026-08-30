@@ -302,6 +302,13 @@ class Session:
                         f"invalid workbench ledger row on line {line_number}: "
                         "session_closed must be the final move"
                     )
+                if row["kind"] == "note":
+                    note_text = row.get("text")
+                    if not isinstance(note_text, str) or not note_text.strip():
+                        raise SystemExit(
+                            f"invalid workbench note on line {line_number}: "
+                            "invalid text"
+                        )
                 if row["kind"] == "claim":
                     claim_text = row.get("text")
                     if not isinstance(claim_text, str) or not claim_text.strip():
@@ -561,6 +568,8 @@ def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
 def cmd_note(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     _require_writable_session(session, "note")
+    if not isinstance(args.text, str) or not args.text.strip():
+        raise SystemExit("note refused: note text must be non-empty")
     record = _base_record(session, "note")
     record.update(
         {

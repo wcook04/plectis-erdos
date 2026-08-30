@@ -964,6 +964,28 @@ def check_session_lifecycle(sessions_root: Path) -> None:
             raise AssertionError(f"blank actor lacked a bounded diagnostic: {error}")
     else:
         raise AssertionError("workbench accepted whitespace-only actor identity")
+    _run(
+        sessions_root,
+        ["open", "--session", "blank-note", "--intent", "advisory note"],
+    )
+    try:
+        _run(
+            sessions_root,
+            [
+                "note",
+                "--session",
+                "blank-note",
+                "--kind",
+                "observation",
+                "--text",
+                " ",
+            ],
+        )
+    except SystemExit as error:
+        if "note text" not in str(error):
+            raise AssertionError(f"blank note lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted whitespace-only note text")
     try:
         _run(
             sessions_root,
