@@ -691,7 +691,17 @@ def cmd_replay(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     for row in session.moves():
         if row.get("kind") != "probe":
             continue
-        stored = replay_probe_path(session, row.get("input_path"))
+        try:
+            canonical_path = _canonical_probe_path(row, "replay")
+        except SystemExit:
+            results.append(
+                {
+                    "move_id": row.get("move_id"),
+                    "replay": "input_path_rejected",
+                }
+            )
+            continue
+        stored = replay_probe_path(session, canonical_path)
         if stored is None:
             results.append(
                 {

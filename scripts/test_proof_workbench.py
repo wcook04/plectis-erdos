@@ -114,6 +114,21 @@ def check_replay_path_boundary(tmp: Path) -> None:
             "kernel_receipt": receipt,
         }
     )
+    (sessions_root / "replay" / "probes" / "other.lean").write_text(
+        source, encoding="utf-8"
+    )
+    session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m004",
+            "at": "2026-08-30T00:00:00+00:00",
+            "kind": "probe",
+            "input_path": "probes/other.lean",
+            "input_sha256": workbench._sha256_text(source),
+            "label": "noncanonical",
+            "kernel_receipt": receipt,
+        }
+    )
     calls: list[str] = []
     real_runner = workbench.run_lean_probe
     workbench.run_lean_probe = lambda _root, text: calls.append(text) or receipt
@@ -127,6 +142,7 @@ def check_replay_path_boundary(tmp: Path) -> None:
     if result["all_match"]:
         raise AssertionError("replay treated rejected probe paths as matches")
     if [row["replay"] for row in result["results"]] != [
+        "input_path_rejected",
         "input_path_rejected",
         "input_path_rejected",
     ]:
