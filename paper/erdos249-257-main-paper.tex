@@ -349,6 +349,56 @@ one-parameter lcm-diagonal form.  Every lcm-diagonal scale \(t\le82\) is
 verified, but neither this bounded band nor the denominator bound proves the
 unbounded supply.
 
+\paragraph{Three routes, with different logical status.}
+The exact equivalences above identify the endpoint, but they do not make the
+three most useful current mechanisms interchangeable.  The
+\lword{LcmConeFlatness.lean}{399}{irrational_totient_series_iff_pointwise_certificates}{pointwise certificate theorem}
+and its
+\lword{LcmConeFlatness.lean}{426}{irrational_totient_series_iff_lcm_diagonal_certificate_supply}{lcm-diagonal form}
+are the canonical endpoint reduction: they say precisely what a cofinal
+certificate supply would have to provide.  The finite diagonal records are
+evidence for this target, not a proof of its cofinal quantifier.
+
+The actual-LCM orbit supplies a different, unconditional obstruction.  At
+power-of-two lcm heights, the translated tail difference is positive under
+the explicit short-window condition
+\(a\ge8\) and \(J+(a+6)<2\,2^a\), by
+\lword{TotientActualLcmOrbitSign.lean}{39}{actualLcmTailDiff_shift_pos}{the sign-corridor theorem}.
+If that orbit is integral, the true carry survivor is instead negative and
+lies at the endpoint; once the modulus width clears the endpoint strip, the
+integral discrepancy is forced onto the top edge, where the directed central
+kill inequality fails.  The paired statements are
+\lword{TotientActualLcmOrbitSign.lean}{172}{actualLcm_trueEndpointSurvivor_neg}{the true-survivor theorem}
+and
+\lword{TotientActualLcmOrbitSign.lean}{211}{actualLcm_integral_forces_topEdgeResidue}{the top-edge obstruction}.
+Thus positivity does not itself prove non-integrality: it leaves possible
+spurious nonnegative survivors, and the remaining hard step is to exclude
+that top-edge band or obtain cofinal non-integrality by another argument.
+
+The first-harmonic route is a third, analytic-scale mechanism rather than a
+variant of the lcm reduction.  For positive cofactors
+\(m\le\sqrt X/2\), supplier-prime fibres have the exact shifted-product
+parametrisation and set-level bijection recorded in
+\lword{FirstHarmonicPivot.lean}{299}{mem_pivotFiber_iff_exists_supplierPrime}{the fibre theorem}
+and
+\lword{FirstHarmonicPivot.lean}{384}{image_pivotSupplierPrimes_eq_pivotFiber}{the image theorem}.
+The source also records the cheapest warning against overreading this
+structure: with pivot \(38=2\cdot19\), the supplier prime \(19\) also divides
+the distinct window argument \(18+1=19\), so global prime isolation is false
+\lword{FirstHarmonicPivot.lean}{394}{supplierPrime_not_globally_isolated_counterexample}{by explicit counterexample}.
+What remains exact is the four-term
+\lword{FirstHarmonicPivot.lean}{514}{windowFirstExp_sum_eq_pivot_decomposition}{pivot decomposition};
+the \(14/25,1/100,1/100,8/25\) budget implication at
+\lword{FirstHarmonicPivot.lean}{543}{first_harmonic_gap_of_pivotBudgetAt}{the budget theorem}
+would give a first-harmonic gap, and only the conditional
+\lword{FirstHarmonicPivot.lean}{577}{irrational_totient_series_of_pivotResidualDecorrelation}{residual-decorrelation consumer}
+turns a cofinal supply of those gaps into irrationality.  No
+prime-distribution or decorrelation estimate is asserted there; proving the
+cofinal budget inequalities is the open hard step.  These routes therefore
+give a useful reader map---exact endpoint, unconditional sign-and-residue
+friction, and conditional harmonic mechanism---without claiming that any one
+has closed \#249.
+
 \subsection{Erd\H{o}s \#257: half-value membership and final greedy skips}
 \label{res:halfstory}
 
