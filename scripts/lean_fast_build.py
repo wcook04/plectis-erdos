@@ -24,9 +24,30 @@ import sys
 import time
 from typing import Iterable
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parents[1]
 IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)\s*(?:--.*)?$")
+GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
+LAKE_COMMAND_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+
+
+def _run(
+    command: list[str],
+    *,
+    cwd: Path,
+    timeout_seconds: float,
+    **kwargs: object,
+) -> subprocess.CompletedProcess[str]:
+    """Run Git/Lake without ambient selectors and with an explicit deadline."""
+    return subprocess.run(
+        command,
+        cwd=cwd,
+        env=singleflight.command_environment(),
+        timeout=timeout_seconds,
+        **kwargs,
+    )
 
 
 def default_jobs() -> int:
@@ -175,9 +196,10 @@ def changed_lean_paths(base: str, root: Path = ROOT) -> set[Path]:
     )
     changed_paths: set[Path] = set()
     for command in commands:
-        completed = subprocess.run(
+        completed = _run(
             command,
             cwd=root,
+            timeout_seconds=GIT_COMMAND_TIMEOUT_SECONDS,
             capture_output=True,
             text=True,
             check=False,
@@ -318,9 +340,10 @@ def lake_targets_up_to_date(
     if rehash:
         command.append("--rehash")
     command.extend(["--no-build", "build", *(f"+{name}" for name in targets)])
-    result = subprocess.run(
+    result = _run(
         command,
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
         check=False,
@@ -350,9 +373,10 @@ def lake_stale_targets(
     if rehash:
         command.append("--rehash")
     command.extend(["--no-build", "-v", "build", *(f"+{name}" for name in targets)])
-    result = subprocess.run(
+    result = _run(
         command,
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
@@ -398,7 +422,7 @@ def propagate_stale_targets(
 
 def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
     started = time.monotonic()
-    result = subprocess.run(
+    result = _run(
         [
             "lake",
             "--quiet",
@@ -408,6 +432,7 @@ def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
             f"+{name}",
         ],
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         check=False,
     )
     return name, result.returncode, time.monotonic() - started
@@ -420,7 +445,7 @@ def build_batch(names: Iterable[str], root: Path = ROOT) -> tuple[int, float]:
     if not modules:
         return 0, 0.0
     started = time.monotonic()
-    result = subprocess.run(
+    result = _run(
         [
             "lake",
             "--quiet",
@@ -430,6 +455,7 @@ def build_batch(names: Iterable[str], root: Path = ROOT) -> tuple[int, float]:
             *(f"+{name}" for name in modules),
         ],
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         check=False,
     )
     return result.returncode, time.monotonic() - started
@@ -495,7 +521,7 @@ def run_final_authority_check(
     if not target_list:
         raise ValueError("final authority check requires at least one target")
     for name in target_list:
-        result = subprocess.run(
+        result = _run(
             [
                 "lake",
                 "--quiet",
@@ -505,6 +531,7 @@ def run_final_authority_check(
                 f"+{name}",
             ],
             cwd=root,
+            timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
             check=False,
         )
         if result.returncode:

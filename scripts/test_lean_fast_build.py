@@ -16,6 +16,7 @@ import unittest
 from unittest import mock
 
 import lean_fast_build as fast
+import validation_singleflight as singleflight
 
 
 class LeanFastBuildTests(unittest.TestCase):
@@ -546,6 +547,23 @@ import Pkg.TooLate
                 )
             self.assertEqual(run.call_count, 2)
             self.assertIn("HEAD~1", run.call_args_list[0].args[0])
+            for call in run.call_args_list:
+                self.assertEqual(
+                    call.kwargs["env"], singleflight.command_environment()
+                )
+                self.assertEqual(
+                    call.kwargs["timeout"], fast.GIT_COMMAND_TIMEOUT_SECONDS
+                )
+
+    def test_lake_commands_use_clean_environment_and_bounded_deadline(self) -> None:
+        completed = fast.subprocess.CompletedProcess([], 0, "", "")
+        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+            self.assertTrue(fast.lake_targets_up_to_date(["Pkg.Leaf"]))
+
+        self.assertEqual(run.call_args.kwargs["env"], singleflight.command_environment())
+        self.assertEqual(
+            run.call_args.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
+        )
 
     def test_changed_targets_reports_git_failure(self) -> None:
         failed = fast.subprocess.CompletedProcess([], 128, "", "bad revision")
