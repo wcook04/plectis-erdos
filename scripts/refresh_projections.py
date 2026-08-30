@@ -20,11 +20,44 @@ anchor.
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
+from collections.abc import Mapping
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SANITIZED_GIT_ENVIRONMENT_KEYS = (
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_INDEX_FILE",
+    "GIT_NAMESPACE",
+    "GIT_REPLACE_REF_BASE",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+    "GIT_COMMON_DIR",
+)
+
+
+def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
+    """Remove inherited Git selectors before any projection subprocess."""
+    environment = dict(os.environ if base is None else base)
+    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
+        environment.pop(key, None)
+    return environment
+
+
+def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
+    """Run a projection command with checkout-independent Git state."""
+    return subprocess.run(
+        args,
+        cwd=cwd,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=clean_environment(),
+    )
 
 # Dependency order, mirroring the sequence check_release.py verifies: the atlas
 # and module graph read the Lean sources, the source coordinates read the atlas
@@ -49,9 +82,7 @@ BUILDERS = (
 
 
 def tracked_diff() -> set[str]:
-    result = subprocess.run(
-        ["git", "diff", "--name-only"], cwd=ROOT, capture_output=True, text=True, check=False
-    )
+    result = run(["git", "diff", "--name-only"], cwd=ROOT)
     return {line for line in result.stdout.split("\n") if line}
 
 
@@ -63,9 +94,7 @@ def main() -> int:
         if not script.is_file():
             print(f"missing builder: scripts/{builder}")
             return 1
-        result = subprocess.run(
-            [sys.executable, str(script)], cwd=ROOT, capture_output=True, text=True, check=False
-        )
+        result = run([sys.executable, str(script)], cwd=ROOT)
         if result.returncode != 0:
             print(f"scripts/{builder} failed:")
             print(result.stderr.strip() or result.stdout.strip())
@@ -73,13 +102,7 @@ def main() -> int:
 
     stale = []
     for builder in BUILDERS:
-        result = subprocess.run(
-            [sys.executable, str(ROOT / "scripts" / builder), "--check"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
+        result = run([sys.executable, str(ROOT / "scripts" / builder), "--check"], cwd=ROOT)
         if result.returncode != 0:
             stale.append((builder, result.stdout.strip() or result.stderr.strip()))
 
