@@ -2101,7 +2101,28 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         starts.sort(key=lambda row: row["offset"])
         for index, start in enumerate(starts):
             label_allowlist = paper_row.get("anchor_label_allowlist")
-            if label_allowlist is not None and start["label"] not in label_allowlist:
+            # Dedicated notes may allowlist only their selected result labels,
+            # but labelled appendix sections remain canonical structural
+            # anchors.  In particular, the formal-source appendix can contain
+            # the exact \\lref/\\lword declaration links for a family whose
+            # result prose has no separately labelled theorem environment.
+            # Hiding that appendix would make a declaration-bearing family
+            # appear to have no paper return route.
+            is_structural_appendix = (
+                start["anchor_kind"] in {
+                    "section",
+                    "subsection",
+                    "subsubsection",
+                    "paragraph",
+                }
+                and isinstance(start["label"], str)
+                and start["label"].startswith("app:")
+            )
+            if (
+                label_allowlist is not None
+                and start["label"] not in label_allowlist
+                and not is_structural_appendix
+            ):
                 continue
             region_end = starts[index + 1]["offset"] if index + 1 < len(starts) else len(text)
             region = text[start["offset"]:region_end]
@@ -2155,9 +2176,12 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                     }
                 )
 
+            canonical_handle = (
+                source_ref if is_structural_appendix else (label or source_ref)
+            )
             inventory.append(
                 {
-                    "canonical_handle": label or source_ref,
+                    "canonical_handle": canonical_handle,
                     "label": label,
                     "paper": {
                         "label": label,
@@ -2350,6 +2374,12 @@ def paper_source_packet(source: str) -> dict[str, Any]:
 def paper_label_index() -> dict[str, dict[str, Any]]:
     index: dict[str, dict[str, Any]] = {}
     for anchor in paper_anchor_inventory():
+        # Appendix sections are navigation handles, not registered paper
+        # labels.  Their labels (for example, ``app:index``) can repeat in
+        # separate papers and must not shadow claim labels or make claim
+        # lookup ambiguous.
+        if anchor["anchor_class"] == "section_navigation_anchor":
+            continue
         label = anchor["label"]
         if label is None:
             continue

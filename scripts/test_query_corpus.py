@@ -239,6 +239,21 @@ def validate_indexed_problem_routes() -> None:
                 for declaration in expected.get("declarations", [])
             ]
             assert actual["boundary"] == expected["boundary"]
+            if expected.get("declarations"):
+                assert actual["paper_route"]["matching_anchors"], (
+                    f"{route_id}/{expected['id']} lost its exact paper return route"
+                )
+                assert all(
+                    anchor["source_ref"].startswith(actual["paper_route"]["source"] + ":")
+                    for anchor in actual["paper_route"]["matching_anchors"]
+                )
+                assert all(
+                    query_corpus.paper_anchor_packet(anchor["canonical_handle"])[
+                        "paper"
+                    ]["source_ref"]
+                    == anchor["source_ref"]
+                    for anchor in actual["paper_route"]["matching_anchors"]
+                )
         if route_id == "erdos_1041":
             research = route["research_corpus"]
             assert research["strongest_result_summary"]["result_count"] == 35
