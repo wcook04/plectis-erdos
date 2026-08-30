@@ -7,11 +7,14 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import re
+import stat
 import tempfile
 import tomllib
 from pathlib import Path
 from typing import Any
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -213,22 +216,50 @@ def safe_dependency_file(root: Path, relative: str) -> Path:
     return candidate
 
 
+def read_dependency_text(root: Path, relative: str) -> str:
+    """Read a dependency-lock input through a no-follow regular descriptor."""
+    candidate = safe_dependency_file(root, relative)
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency input could not be opened safely: {relative}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeDependencyInput(
+                f"dependency input is not a regular file: {relative}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        try:
+            return b"".join(chunks).decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise UnsafeDependencyInput(
+                f"dependency input is not valid UTF-8: {relative}"
+            ) from exc
+    except OSError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency input could not be read safely: {relative}"
+        ) from exc
+    finally:
+        os.close(descriptor)
+
+
 def main() -> int:
-    toolchain = safe_dependency_file(ROOT, "lean-toolchain").read_text(
-        encoding="utf-8"
-    )
-    lakefile = safe_dependency_file(ROOT, "lakefile.toml").read_text(
-        encoding="utf-8"
-    )
-    manifest = safe_dependency_file(ROOT, "lake-manifest.json").read_text(
-        encoding="utf-8"
-    )
-    requirements = safe_dependency_file(
-        ROOT, "requirements-release.txt"
-    ).read_text(encoding="utf-8")
-    workflow = safe_dependency_file(
-        ROOT, ".github/workflows/lean.yml"
-    ).read_text(encoding="utf-8")
+    toolchain = read_dependency_text(ROOT, "lean-toolchain")
+    lakefile = read_dependency_text(ROOT, "lakefile.toml")
+    manifest = read_dependency_text(ROOT, "lake-manifest.json")
+    requirements = read_dependency_text(ROOT, "requirements-release.txt")
+    workflow = read_dependency_text(ROOT, ".github/workflows/lean.yml")
     require(
         not dependency_lock_errors(toolchain, lakefile, manifest),
         "the live Lean dependency lock must satisfy its contract",
@@ -368,11 +399,37 @@ def main() -> int:
         else:
             raise AssertionError("symlinked dependency input was accepted")
 
+        regular = fixture_root / "regular.txt"
+        regular.write_text("public\n", encoding="utf-8")
+        require(
+            read_dependency_text(fixture_root, "regular.txt") == "public\n",
+            "regular dependency input was not readable through the safe descriptor",
+        )
+        linked = fixture_root / "forced-link.toml"
+        linked.symlink_to(outside)
+        with patch(__name__ + ".safe_dependency_file", return_value=linked):
+            try:
+                read_dependency_text(fixture_root, "forced-link.toml")
+            except UnsafeDependencyInput:
+                pass
+            else:
+                raise AssertionError("final-component dependency symlink was followed")
+
+        fifo = fixture_root / "dependency.fifo"
+        os.mkfifo(fifo)
+        with patch(__name__ + ".safe_dependency_file", return_value=fifo):
+            try:
+                read_dependency_text(fixture_root, "dependency.fifo")
+            except UnsafeDependencyInput:
+                pass
+            else:
+                raise AssertionError("special dependency input crossed the boundary")
+
     print(
         "test_dependency_lock_contract: Lean, direct Mathlib input, and "
         f"{len(manifest_data['packages'])} exact package revisions plus "
         f"{len(RELEASE_VALIDATOR_REQUIREMENTS)} release-validator pins agree; "
-        "11 negative fixtures rejected"
+        "13 negative fixtures rejected"
     )
     return 0
 
