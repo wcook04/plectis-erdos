@@ -202,7 +202,51 @@
           "exists_rational_half_counterexample_of_terminalScaledVanishing",
           "not_universal_of_terminalScaledVanishing",
           "finiteErdosSum_ne_one_div_twenty_one"
-        ]
+        ],
+        "related_families": {
+          "orthogonal_petal_sunflower_reduction": {
+            "route_id": "erdos_257_orthogonal_petal_sunflower_reduction",
+            "status": "conditional_sunflower_selector_open",
+            "source_declaration": "Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+            "source_module": "Erdos249257/SupportSunflowerDichotomy.lean",
+            "source_anchor": 540,
+            "comparator_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+            "comparator_anchor": 1278,
+            "solution_export": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+            "solution_export_anchor": 1278,
+            "mechanism": "A finite-core orthogonal-petal bouquet and the exact uniform tail-selection predicate compose through the forced-carry certificate consumer to irrationality; the alternating-core, squared-prime-petal witness shows that the structural class is non-vacuous.",
+            "boundary": "The bouquet structure and uniform tail selector remain hypotheses: the selector is not proved, and this route supplies no cofinal positive-skip producer. It is not an unconditional Erdős #257 result; no endpoint, novelty, priority, significance, or external-review claim is made.",
+            "next_research_route": "Construct or refute the uniform tail-selection predicate for an explicitly witnessed orthogonal bouquet, then apply the exact public wrapper without treating the non-vacuous finite witness as global supply."
+          },
+          "boolean_mobius_exact_row_dynamics": {
+            "route_id": "erdos_257_boolean_mobius_exact_row_dynamics",
+            "status": "conditional_exact_row_supply_open",
+            "source_declaration": "Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+            "source_module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+            "source_anchor": 73,
+            "comparator_declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+            "comparator_anchor": 996,
+            "solution_export": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+            "solution_export_anchor": 996,
+            "mechanism": "If positive rational-greedy remainders occur cofinally below the next Mersenne weight, the skipped-core and upper-half Boolean-word construction supplies cofinally many exact local half rows and hence (1 / 2 : ℝ) ∈ mersenneAchievementSet.",
+            "boundary": "CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N it requires c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows do not establish cofinality, so this is only a conditional half-membership/counterexample route; no unconditional #257 solution, novelty, priority, significance, or external-review claim is made.",
+            "next_research_route": "Produce or refute the required cofinal positive-skip supply for the actual greedy recurrence, using the seam classification as an exact target and preserving the finite-row boundary."
+          },
+          "half_membership_seam_classification": {
+            "route_id": "erdos_257_half_membership_seam_classification",
+            "status": "exact_seam_classification_supply_open",
+            "source_declaration": "Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+            "source_module": "Erdos249257/HalfCylinderHalfMembershipClassification.lean",
+            "source_anchor": 126,
+            "comparator_declaration": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+            "comparator_anchor": 1001,
+            "solution_export": "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse",
+            "solution_export_anchor": 1001,
+            "mechanism": "Membership of 1/2 is exactly equivalent to unbounded false successor terminal bits, the unbounded upper-or-middle seam branch, cofinal terminal-false positions, unbounded skipped ranks along the integer seam, infinite greedy skipped support, and the absence of a last half-greedy skip.",
+            "boundary": "The exact endpoint-socket equivalences do not supply an unbounded terminal-false or upper-or-middle occurrence, cofinal positive skips, skipped-support production, or a half-membership witness. Finite exact rows do not establish the global supply; this is not an unconditional or universal Erdős #257 result and makes no novelty, priority, significance, or external-review claim.",
+            "next_research_route": "Use the equivalent seam predicates to target the missing cofinal positive-skip or terminal-false producer, and keep every finite-row witness subordinate to that explicit supply obligation."
+          }
+        }
       },
       "actual_established": "A terminal scaled-vanishing sequence would yield an infinite rational half-valued counterexample, while a finite Boolean support on ranks at least two cannot sum to 1/21.",
       "failure_boundary": "No terminal scaled-vanishing sequence is constructed here, and neither the conditional half statement nor the finite 1/21 exclusion settles Erdős #257.",
