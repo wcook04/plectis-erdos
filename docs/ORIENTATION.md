@@ -101,6 +101,14 @@ Open one programme with
 The packet returns the ordered claim handles, exact open boundary, related
 programmes, and source owners without loading the exhaustive graph.
 
+## Publication-family census
+
+The canonical overview enumerates 21 distinct families, including
+supporting and source-only results: `python3 scripts/query_corpus.py --overview`.
+Open one with `python3 scripts/query_corpus.py --publication-family <family_id>`.
+Its packet returns claims, source route, and resume handoff; order follows
+publication architecture, not theorem count or novelty.
+
 ## Principal claim routes
 
 | Claim | Status | Paper |
@@ -234,5 +242,7 @@ python3 scripts/query_corpus.py --module Erdos249257/CertificateKernel.lean
 python3 scripts/query_corpus.py --module CerKer
 python3 scripts/query_corpus.py --route instant_orientation
 python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic
+python3 scripts/query_corpus.py --overview
+python3 scripts/query_corpus.py --publication-family <family_id>
 python3 scripts/query_corpus.py --search "what remains open for 257" --limit 5
 ```
