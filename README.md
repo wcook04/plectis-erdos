@@ -47,7 +47,7 @@ readable without a query or network.
 
 Links name checked routes and limits; reductions are not solutions.
 
-- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [quotient-band breakpoint](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): band factors exactly; cancellation with nonzero moment forces an index ≥ `2d`. Finite; cofinal input open. Divisibility: `67` checked, `300000` external.
+- [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [cofinal equivalence](ErdosProblems/Erdos68/FactorialZeroPlateau.lean): irrationality iff cofinally strict factorial-top misses divisibility; [band](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): nonzero-moment cancellation forces index ≥2d. q≥67; 300000 external; cofinal producer open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — [bounded-rise obstruction](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean): bounded rises cannot avoid fresh pairwise-coprime moduli as `u`→∞; normalized-vanishing no-go; mixed-sign bridge open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit top edge. Supply open
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap irrationality; unbounded gaps prove neither. Bridge open.
@@ -58,9 +58,8 @@ Links name checked routes and limits; reductions are not solutions.
 
 ## What the formal source establishes
 
-**Formalised here** means checked Lean, not a priority claim; **proved here** is our
-argument; **conditional reduction** names an open hypothesis;
-**verified finite instance** checks inputs. For each
+**Formalised** means checked Lean, not priority; **proved** is our argument;
+**conditional reduction** names an open hypothesis; **verified finite instance** checks inputs. For each
 integer `b ≥ 2`, `∑ 1/(bⁿ - 1)` is irrational (a checked rendering of Erdős
 (1948)). #257's `1/2` criterion gives an infinite-support consequence; last-skip
 rules out its upper branch and `-3`, while `-2`/`-1` remain conditional. #249 has
@@ -69,8 +68,7 @@ irrationality/unbounded-certificate equivalence; Martin's theorem and its
 independence premise are not formalised.
 
 **Farey/mediant bound** at `K=240` is Farey's bound (delta `0`); no
-improvement, and its next denominator fails this window—nothing beyond fixed
-cutoffs. Packages: **fair-coin coprimality**,
+improvement; next denominator fails this window; fixed cutoffs only. Packages: **fair-coin coprimality**,
 **squared-Lambert gcd moments**, **Stern–Brocot law** `(2/3)^d`, **Fibonacci
 stability** `F_{r+3}`, **tempered tails**, **Möbius-shadow denominator**, and
 **scalar height obstruction**; [gcd](Erdos249257/GcdMomentCalculus.lean),
@@ -80,7 +78,7 @@ criteria, and two scoped #249 no-go models—not orbit avoidance or solution.
 
 ## What remains open
 
-- #249: prove `S` irrational and supply an unbounded certificate; #257: prove irrationality for every infinite `A ⊆ ℕ` beyond named formalised families.
+- Open: #249's irrationality and unbounded certificate; #257's irrationality for every infinite `A` beyond named formalised families.
 
 “The wall” records failures; [expert handoff questions](docs/RESULTS.md#exact-questions-for-a-human-expert) name input, guess, alternatives, evidence, consumer, and endpoint boundary; or run `python3 scripts/query_expert_handoffs.py`.
 
