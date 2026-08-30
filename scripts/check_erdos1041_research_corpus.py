@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import re
+import stat
 import sys
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -64,19 +65,45 @@ def safe_public_file(path: Path, label: str) -> Path:
     return candidate
 
 
-def load_json(path: Path) -> dict[str, Any]:
-    path = safe_public_file(path, str(path.relative_to(ROOT)))
+def read_public_bytes(path: Path, label: str) -> bytes:
+    """Read public bytes through a no-follow descriptor after path admission."""
+    candidate = safe_public_file(path, label)
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        raise CorpusError(f"cannot read {path.relative_to(ROOT)}: {exc}") from exc
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise CorpusError(f"cannot safely read corpus file: {label}: {exc}") from exc
+    try:
+        require(
+            stat.S_ISREG(os.fstat(descriptor).st_mode),
+            f"non-regular corpus file: {label}",
+        )
+        with os.fdopen(descriptor, "rb") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    label = str(path.relative_to(ROOT))
+    try:
+        value = json.loads(read_public_bytes(path, label).decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise CorpusError(f"cannot read {label}: {exc}") from exc
     if not isinstance(value, dict):
-        raise CorpusError(f"{path.relative_to(ROOT)} must contain a JSON object")
+        raise CorpusError(f"{label} must contain a JSON object")
     return value
 
 
 def sha256(path: Path) -> str:
-    return hashlib.sha256(safe_public_file(path, str(path.relative_to(ROOT))).read_bytes()).hexdigest()
+    return hashlib.sha256(
+        read_public_bytes(path, str(path.relative_to(ROOT)))
+    ).hexdigest()
 
 
 def require(condition: bool, message: str) -> None:
@@ -130,7 +157,7 @@ def check() -> tuple[int, int, int]:
         public_path, path = safe_public_path(row.get("public_path"))
         require(public_path not in seen, f"duplicate manifest path: {public_path}")
         seen.add(public_path)
-        data = path.read_bytes()
+        data = read_public_bytes(path, public_path)
         digest = hashlib.sha256(data).hexdigest()
         require(SHA256_RE.fullmatch(str(row.get("published_sha256", ""))) is not None, f"malformed digest: {public_path}")
         require(digest == row.get("published_sha256"), f"digest mismatch: {public_path}")
@@ -166,7 +193,7 @@ def check() -> tuple[int, int, int]:
     require(actual == seen | GENERATED_ENVELOPE, f"untracked corpus files: {sorted(actual - seen - GENERATED_ENVELOPE)}; missing: {sorted((seen | GENERATED_ENVELOPE) - actual)}")
     for public_path in sorted(GENERATED_ENVELOPE):
         _, path = safe_public_path(public_path)
-        leaked = private_path_leaks(path.read_bytes())
+        leaked = private_path_leaks(read_public_bytes(path, public_path))
         require(not leaked, f"private local-path marker in {public_path}: {leaked}")
 
     strongest_pointer = manifest.get("strongest_result_map")

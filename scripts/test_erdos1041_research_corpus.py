@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import os
 import tempfile
 from pathlib import Path
 
@@ -68,6 +69,27 @@ def test_public_path_rejects_symlinked_parent() -> None:
             checker.ROOT = original_root
 
 
+def test_public_bytes_rejects_special_file() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        fifo = root / "corpus.fifo"
+        os.mkfifo(fifo)
+        original_root = checker.ROOT
+        checker.ROOT = root
+        try:
+            try:
+                checker.read_public_bytes(fifo, "corpus.fifo")
+            except checker.CorpusError as error:
+                require(
+                    "non-regular" in str(error) or "missing" in str(error),
+                    f"special corpus path returned an unexpected error: {error}",
+                )
+            else:
+                require(False, "special corpus path was accepted")
+        finally:
+            checker.ROOT = original_root
+
+
 def test_live_corpus() -> None:
     file_count, result_count, total_bytes = checker.check()
     require(file_count > 0, "public corpus unexpectedly contains no files")
@@ -78,6 +100,7 @@ def test_live_corpus() -> None:
 def main() -> int:
     test_private_path_variants()
     test_public_path_rejects_symlinked_parent()
+    test_public_bytes_rejects_special_file()
     test_live_corpus()
     print(
         "test_erdos1041_research_corpus: case-insensitive private-path and "
