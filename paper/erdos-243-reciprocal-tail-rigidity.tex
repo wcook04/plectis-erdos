@@ -69,6 +69,15 @@ The stated eventual strict-centring hypothesis is redundant, since normalised
 vanishing yields it after a finite shift.  Under the same normalised-vanishing
 hypothesis, finite normalised negative mass is also impossible.
 
+The one-sided boundary is unconditional and simpler: when the centred error is
+natural-valued, the update law makes the tail state nonincreasing, so it
+stabilises and forces $E_n=0$ eventually.  The kernel route is
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1843}{centeredState_eventually_zero}{nonnegative-error descent},
+followed by
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1805}{sylvesterNext_eventually_of_centered_zero}{eventual Sylvester recurrence}.
+This is the exact easy branch; the unresolved problem begins when negative
+excursions are allowed.
+
 There is also a weaker conclusion from normalised vanishing alone.  It makes
 strict increases of $\gcd(C_n,D_n)$ sublinear in number and forces constant-gcd
 blocks of every prescribed finite length arbitrarily far out.  It does not
