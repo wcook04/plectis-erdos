@@ -65,6 +65,28 @@ def main() -> int:
         "an unaccepted fixture crossed the accepted gate",
     )
 
+    negative_fixture = json.loads(
+        (ROOT / "docs/research-commons/returns/negative-example.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    require(
+        not validator.validate_document(negative_fixture, repository_identity=identity),
+        "the committed negative fixture should validate before mutation",
+    )
+    for invalid_exit_code in (False, True, 0.0):
+        mutated_exit_code = copy.deepcopy(negative_fixture)
+        mutated_exit_code["evidence"][0]["exit_code"] = invalid_exit_code
+        require(
+            any(
+                "evidence[0].exit_code: passed evidence must have exit code 0" in error
+                for error in validator.validate_document(
+                    mutated_exit_code, repository_identity=identity
+                )
+            ),
+            f"passed evidence accepted non-integer exit code {invalid_exit_code!r}",
+        )
+
     mutated_kind = copy.deepcopy(fixture)
     mutated_kind["record_kind"] = "accepted_receipt"
     require(

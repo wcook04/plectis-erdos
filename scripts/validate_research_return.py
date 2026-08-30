@@ -684,7 +684,7 @@ def validate_document(
                 check.error(f"{base}.exit_state", "has an unknown value")
             elif state == "passed":
                 passed_evidence += 1
-                if code != 0:
+                if type(code) is not int or code != 0:
                     check.error(f"{base}.exit_code", "passed evidence must have exit code 0")
             elif state == "failed" and (not isinstance(code, int) or isinstance(code, bool) or code == 0):
                 check.error(f"{base}.exit_code", "failed evidence must have a non-zero integer exit code")
