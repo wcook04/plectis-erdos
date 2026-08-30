@@ -8,18 +8,42 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import re
 import subprocess
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 import check_cold_clone_comprehension as diagnostic
 import query_route_memory as route_memory
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
 ROUTE_MEMORY_SCRIPT = ROOT / "scripts" / "query_route_memory.py"
 FROZEN_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
+HOSTILE_ENVIRONMENT = {
+    "GIT_DIR": "/tmp/not-this-checkout/.git",
+    "GIT_NAMESPACE": "refs/namespaces/not-this-cold-clone",
+    "GIT_REPLACE_REF_BASE": "refs/replace/",
+    "PYTHONPATH": "/tmp/not-this-python-path",
+    "LC_ALL": "C",
+    "LANG": "C",
+}
+
+
+def run(args: list[str]) -> subprocess.CompletedProcess[str]:
+    """Run cold-clone children without ambient checkout or interpreter state."""
+    return subprocess.run(
+        args,
+        cwd=ROOT,
+        env=singleflight.command_environment(),
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
 
 
 def assert_rejected(packets: dict, label: str) -> None:
@@ -105,17 +129,13 @@ def check_route_memory_cold_clone() -> int:
         raise AssertionError("descriptor route-memory selector mutation was accepted")
     checked = 0
     for problem_number in FROZEN_PROBLEMS:
-        result = subprocess.run(
+        result = run(
             [
                 sys.executable,
                 str(ROUTE_MEMORY_SCRIPT),
                 "--problem",
                 str(problem_number),
-            ],
-            cwd=ROOT,
-            check=False,
-            capture_output=True,
-            text=True,
+            ]
         )
         if result.returncode != 0:
             raise AssertionError(
@@ -128,7 +148,7 @@ def check_route_memory_cold_clone() -> int:
             raise AssertionError(f"route-memory resume identity drifted for #{problem_number}")
         checked += 1
 
-    cross_problem = subprocess.run(
+    cross_problem = run(
         [
             sys.executable,
             str(ROUTE_MEMORY_SCRIPT),
@@ -136,11 +156,7 @@ def check_route_memory_cold_clone() -> int:
             "249",
             "--route",
             "erdos257_half_story",
-        ],
-        cwd=ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
+        ]
     )
     if cross_problem.returncode != 2 or cross_problem.stdout:
         raise AssertionError("cross-problem route was not rejected by the CLI")
@@ -150,7 +166,8 @@ def check_route_memory_cold_clone() -> int:
 
 
 def main() -> int:
-    route_memory_checks = check_route_memory_cold_clone()
+    with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
+        route_memory_checks = check_route_memory_cold_clone()
     packets = diagnostic.collect_agent_packets()
     summary = packets["summary"]
     quick_summary = diagnostic.quick_summary()
