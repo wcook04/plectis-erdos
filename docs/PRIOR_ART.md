@@ -42,11 +42,11 @@ attribution evidence only.
 Each entry gives the source, then its relationship to this release, then the
 boundary of that relationship.
 
-- P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory* (1980)](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf); P. Erdős, [*On the irrationality of certain series: problems and results* (1988)](https://doi.org/10.1017/CBO9780511897184.009)
+- P. Erdős and R. L. Graham, [*Old and New Problems and Results in Combinatorial Number Theory* (1980)](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf); P. Erdős, [*On the irrationality of certain series: problems and results* (1988)](https://doi.org/10.1017/CBO9780511897184.009) ([Renyi scan](https://users.renyi.hu/~p_erdos/1988-22.pdf); [read source closure](primary-sources/reciprocal-tail/erdos-1988-source-closure.md))
 
-  Original published formulations for the #249 and #257 problem setting.
+  Original published formulations for the #249 and #257 problem setting. Erdős's 1988 article, printed p. 105, explicitly asks whether every increasing support gives an irrational \(\sum_k(2^{n_k}-1)^{-1}\); its density/LCM irrationality theorem is a separate result on pp. 106--108.
 
-  **Boundary.** They formulate open problems; they are not proofs of either universal statement.
+  **Boundary.** The p. 105 subseries statement is posed as open, not proved; the separate LCM theorem does not automatically apply to Mersenne denominators. These sources therefore do not prove universal #257 or #249, and do not support the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims.
 
 - S. Chowla, [*On Series of the Lambert Type which assume Irrational Values for Rational Values of the Argument* (1947)](https://insa.nic.in/UI/Archivesection.aspx?JID=MA%3D%3D&JYrs=MTk0Nw%3D%3D)
 

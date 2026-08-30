@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 17,
-    "artifact_count": 17,
+    "working_tree_only_count": 18,
+    "artifact_count": 18,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 17,
+    "link_and_digest_only_count": 18,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -337,6 +337,25 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/borwein-1992-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/erdos-1988-problems-and-results.pdf",
+      "sha256": "b2bfc375d04b65332d6b8817633ff3968283a3f33c1f1ace366b03ac9fab8c88",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://users.renyi.hu/~p_erdos/1988-22.pdf",
+        "https://doi.org/10.1017/CBO9780511897184.009"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/erdos-1988-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/erdos-1988-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/erdos-1988-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }
