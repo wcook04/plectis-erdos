@@ -527,41 +527,64 @@ def cross_check_return(
     manifest: dict[str, Any],
     returned: dict[str, Any],
 ) -> list[str]:
-    returned_identity = returned.get("identity", {})
-    manifest_identity = manifest["identity"]
+    if not isinstance(manifest, dict):
+        return ["continuation manifest: must be an object"]
+    if not isinstance(returned, dict):
+        return ["return: must be an object"]
+
+    def mapping(value: Any) -> dict[str, Any]:
+        return value if isinstance(value, dict) else {}
+
+    returned_repository = mapping(returned.get("repository"))
+    returned_frontier = mapping(returned.get("frontier"))
+    returned_identity = mapping(returned.get("identity"))
+    manifest_identity = mapping(manifest.get("identity"))
+    manifest_frontier = mapping(manifest.get("frontier"))
+    returned_contributor = mapping(returned_identity.get("contributor"))
+    returned_operator = mapping(returned_identity.get("operator"))
+    manifest_contributor = mapping(manifest_identity.get("contributor"))
+    manifest_operator = mapping(manifest_identity.get("operator"))
     pairs = (
         (
             "repository.origin",
-            returned.get("repository", {}).get("origin"),
-            manifest["repository_origin"],
+            returned_repository.get("origin"),
+            manifest.get("repository_origin"),
         ),
-        ("repository.starting_commit", returned.get("repository", {}).get("starting_commit"), manifest["starting_commit"]),
-        ("frontier.problem", returned.get("frontier", {}).get("problem"), manifest["problem"]),
-        ("frontier.handle", returned.get("frontier", {}).get("handle"), manifest["frontier"]["handle"]),
+        (
+            "repository.starting_commit",
+            returned_repository.get("starting_commit"),
+            manifest.get("starting_commit"),
+        ),
+        ("frontier.problem", returned_frontier.get("problem"), manifest.get("problem")),
+        (
+            "frontier.handle",
+            returned_frontier.get("handle"),
+            manifest_frontier.get("handle"),
+        ),
         (
             "frontier.bounded_question",
-            returned.get("frontier", {}).get("bounded_question"),
-            manifest["frontier"]["intent"],
+            returned_frontier.get("bounded_question"),
+            manifest_frontier.get("intent"),
         ),
         (
             "frontier.stop_condition",
-            returned.get("frontier", {}).get("stop_condition"),
-            manifest["frontier"]["stop_condition"],
+            returned_frontier.get("stop_condition"),
+            manifest_frontier.get("stop_condition"),
         ),
         (
             "identity.contributor.name",
-            returned_identity.get("contributor", {}).get("name"),
-            manifest_identity["contributor"]["name"],
+            returned_contributor.get("name"),
+            manifest_contributor.get("name"),
         ),
         (
             "identity.operator.relationship",
-            returned_identity.get("operator", {}).get("relationship"),
-            manifest_identity["operator"]["relationship"],
+            returned_operator.get("relationship"),
+            manifest_operator.get("relationship"),
         ),
         (
             "identity.operator.name",
-            returned_identity.get("operator", {}).get("name"),
-            manifest_identity["operator"]["name"],
+            returned_operator.get("name"),
+            manifest_operator.get("name"),
         ),
     )
     errors = [
@@ -569,16 +592,16 @@ def cross_check_return(
         for path, actual, expected in pairs
         if actual != expected
     ]
-    proposed_commit = returned.get("repository", {}).get("proposed_commit")
+    proposed_commit = returned_repository.get("proposed_commit")
     if isinstance(proposed_commit, str) and not git_is_ancestor(
-        manifest["starting_commit"], proposed_commit
+        manifest.get("starting_commit", ""), proposed_commit
     ):
         errors.append(
             "repository.proposed_commit: is not a descendant of the opened session starting commit"
         )
     for field in ("model_system", "provider"):
-        actual = returned_identity.get(field, {})
-        expected = manifest_identity[field]
+        actual = mapping(returned_identity.get(field))
+        expected = mapping(manifest_identity.get(field))
         for key in ("state", "name"):
             if actual.get(key) != expected.get(key):
                 errors.append(
@@ -586,11 +609,20 @@ def cross_check_return(
                 )
     returned_collaborators = {
         (item.get("name"), item.get("role"))
-        for item in returned_identity.get("material_collaborators", [])
+        for item in (
+            returned_identity.get("material_collaborators", [])
+            if isinstance(returned_identity.get("material_collaborators", []), list)
+            else []
+        )
         if isinstance(item, dict)
     }
-    for collaborator in manifest_identity["material_collaborators"]:
-        identity = (collaborator["name"], collaborator["role"])
+    manifest_collaborators = manifest_identity.get("material_collaborators", [])
+    if not isinstance(manifest_collaborators, list):
+        manifest_collaborators = []
+    for collaborator in manifest_collaborators:
+        if not isinstance(collaborator, dict):
+            continue
+        identity = (collaborator.get("name"), collaborator.get("role"))
         if identity not in returned_collaborators:
             errors.append(
                 "identity.material_collaborators: opened-session collaborator "

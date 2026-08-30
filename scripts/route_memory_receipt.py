@@ -254,14 +254,21 @@ def validate_return_receipt(
         _error(errors, "route_memory_return.schema", f"must be {RETURN_RECEIPT_SCHEMA}")
     if value.get("return_id") != returned.get("return_id"):
         _error(errors, "route_memory_return.return_id", "must equal return.json return_id")
-    expected_problem = consultation.get("problem")
-    if value.get("problem") != expected_problem or returned.get("frontier", {}).get("problem") != expected_problem:
+    consultation_map = consultation if isinstance(consultation, dict) else {}
+    returned_frontier = returned.get("frontier")
+    frontier_problem = (
+        returned_frontier.get("problem")
+        if isinstance(returned_frontier, dict)
+        else None
+    )
+    expected_problem = consultation_map.get("problem")
+    if value.get("problem") != expected_problem or frontier_problem != expected_problem:
         _error(errors, "route_memory_return.problem", "must equal both the opened session and return frontier problem")
     binding = _validate_route_memory_binding(value.get("route_memory"), "route_memory_return.route_memory", root, errors)
-    if value.get("route_memory") != consultation.get("route_memory"):
+    if value.get("route_memory") != consultation_map.get("route_memory"):
         _error(errors, "route_memory_return.route_memory", "does not match the opened continuation consultation")
     disposition = value.get("disposition")
-    if disposition != consultation.get("disposition"):
+    if disposition != consultation_map.get("disposition"):
         _error(errors, "route_memory_return.disposition", "does not match the opened continuation consultation")
     relationships = value.get("relationships")
     if not isinstance(relationships, list):
@@ -270,7 +277,7 @@ def validate_return_receipt(
     if binding is None:
         return errors
     records, _ = binding
-    expected_routes = consultation.get("routes") if isinstance(consultation.get("routes"), list) else []
+    expected_routes = consultation_map.get("routes") if isinstance(consultation_map.get("routes"), list) else []
     expected_ids = {route.get("route_id") for route in expected_routes if isinstance(route, dict)}
     if disposition == "no_applicable_route":
         if relationships:

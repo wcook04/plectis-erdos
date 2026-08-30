@@ -211,6 +211,47 @@ def check_malformed_utf8_inputs_rejected() -> None:
             raise AssertionError("continuation ledger reader accepted malformed UTF-8")
 
 
+def check_nested_return_shape_boundary() -> None:
+    """Malformed nested return objects must remain validation errors, not crashes."""
+    manifest = {
+        "repository_origin": "https://github.com/wcook04/plectis-lean-erdos249-257",
+        "starting_commit": "0" * 40,
+        "problem": 257,
+        "frontier": {"handle": "bounded", "intent": "question", "stop_condition": "stop"},
+        "identity": {
+            "contributor": {"name": "Contributor"},
+            "operator": {"relationship": "same_as_contributor", "name": "Contributor"},
+            "model_system": {"state": "not_used"},
+            "provider": {"state": "not_used"},
+            "material_collaborators": [],
+        },
+    }
+    for malformed in (
+        {"repository": "corrupt", "frontier": "corrupt", "identity": "corrupt"},
+        {
+            "repository": {},
+            "frontier": {},
+            "identity": {
+                "contributor": "corrupt",
+                "operator": "corrupt",
+                "model_system": "corrupt",
+                "provider": "corrupt",
+                "material_collaborators": "corrupt",
+            },
+        },
+    ):
+        errors = continue_research.cross_check_return(manifest, malformed)
+        require(errors, "cross-check accepted malformed nested return objects")
+
+    route_errors = continue_research.route_memory_receipt.validate_return_receipt(
+        {},
+        {"return_id": "rr-shape-boundary", "frontier": "corrupt"},
+        None,
+        ROOT,
+    )
+    require(route_errors, "route-memory validator crashed or accepted a malformed frontier")
+
+
 def check_start_session_path_boundary() -> None:
     """A start must reject a redirected sessions root before opening the workbench."""
     with tempfile.TemporaryDirectory(prefix="continue-start-path-") as temporary:
@@ -338,6 +379,7 @@ def main() -> int:
     check_replay_execution_posture()
     check_package_session_path_boundary()
     check_malformed_utf8_inputs_rejected()
+    check_nested_return_shape_boundary()
     check_start_session_path_boundary()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"
