@@ -80,8 +80,8 @@ height obstruction**; [gcd](Erdos249257/GcdMomentCalculus.lean),
 [run](Erdos249257/SternBrocotRunGeometry.lean). The map exposes eventually-periodic
 nonnegative weighted irrationality, a
 signed irrational-or-base-terminating dichotomy, five binary-carry criteria,
-and two scoped #249 no-go countermodels. Also: these routes do not show that the
-actual orbit avoids an unsafe band or settle its open problem.
+and two scoped #249 no-go countermodels. These routes do not show the orbit
+avoids an unsafe band or settle its open problem.
 
 ## What remains open
 
