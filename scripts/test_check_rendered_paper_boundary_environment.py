@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import os
 import subprocess
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -19,7 +20,37 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_rendered_file_boundary() -> None:
+    """Rendered inputs cannot redirect through a symlinked checkout path."""
+    with tempfile.TemporaryDirectory(prefix="rendered-boundary-") as raw:
+        root = Path(raw) / "checkout"
+        outside = Path(raw) / "outside"
+        root.mkdir()
+        outside.mkdir()
+        (outside / "paper.tex").write_text("private paper\n", encoding="utf-8")
+        linked = root / "paper.tex"
+        linked.symlink_to(outside / "paper.tex")
+        original_root = boundary.ROOT
+        boundary.ROOT = root
+        try:
+            try:
+                boundary.safe_rendered_file(linked)
+            except boundary.UnsafeRenderedInput as error:
+                require("symlinked" in str(error), str(error))
+            else:
+                raise AssertionError("rendered checker followed a symlink")
+            regular = root / "regular.pdf"
+            regular.write_bytes(b"pdf fixture")
+            require(
+                boundary.safe_rendered_file(regular) == regular,
+                "rendered checker rejected a regular in-root file",
+            )
+        finally:
+            boundary.ROOT = original_root
+
+
 def main() -> int:
+    check_rendered_file_boundary()
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_NAMESPACE": "refs/namespaces/wrong-release",

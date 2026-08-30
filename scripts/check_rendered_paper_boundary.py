@@ -131,6 +131,32 @@ PUBLIC_REPRODUCIBILITY_PATHS = (
 )
 
 
+class UnsafeRenderedInput(ValueError):
+    """A rendered-boundary input escaped the checkout or is not a file."""
+
+
+def safe_rendered_file(path: Path) -> Path:
+    """Read only regular, non-symlink files beneath the release checkout."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeRenderedInput(f"symlinked rendered-boundary input: {candidate}")
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeRenderedInput(
+                f"rendered-boundary input escaped checkout: {candidate}"
+            )
+        current = current.parent
+    if not candidate.is_file():
+        raise UnsafeRenderedInput(
+            f"rendered-boundary input is not a regular file: {candidate}"
+        )
+    return candidate
+
+
 def visible_tex(text: str) -> str:
     """Approximate the material that can contribute visible prose."""
     text = "\n".join(COMMENT_RE.sub("", line) for line in text.splitlines())
@@ -143,6 +169,10 @@ def visible_tex(text: str) -> str:
 
 
 def source_errors(path: Path) -> list[str]:
+    try:
+        path = safe_rendered_file(path)
+    except UnsafeRenderedInput as error:
+        return [str(error)]
     text = path.read_text(encoding="utf-8")
     visible = visible_tex(text)
     for public_path in PUBLIC_REPRODUCIBILITY_PATHS:
@@ -215,6 +245,7 @@ def run_render_tool(
 
 
 def rendered_text(pdf: Path, pdftotext: str) -> str:
+    pdf = safe_rendered_file(pdf)
     completed = run_render_tool(pdftotext, [str(pdf), "-"])
     if completed.returncode != 0:
         detail = completed.stderr.strip() or "pdftotext failed"
@@ -224,6 +255,7 @@ def rendered_text(pdf: Path, pdftotext: str) -> str:
 
 def rendered_hrefs(pdf: Path, pdftohtml: str) -> set[str]:
     """Extract the actual URI annotations emitted into the rendered PDF."""
+    pdf = safe_rendered_file(pdf)
     completed = run_render_tool(
         pdftohtml, ["-q", "-xml", "-hidden", "-stdout", str(pdf)]
     )
@@ -239,6 +271,11 @@ def rendered_source_link_errors(
     pdftohtml: str,
 ) -> list[str]:
     """Require every authored Lean coordinate to survive as the pinned PDF URI."""
+    try:
+        tex = safe_rendered_file(tex)
+        pdf = safe_rendered_file(pdf)
+    except UnsafeRenderedInput as error:
+        return [str(error)]
     source = tex.read_text(encoding="utf-8")
     commit_match = re.search(
         r"\\(?:re)?newcommand\{\\commit\}\{([0-9a-f]{40})\}", source
@@ -297,6 +334,7 @@ def rendered_source_link_errors(
 
 
 def rendered_pages(pdf: Path, pdftotext: str, first: int, last: int) -> str:
+    pdf = safe_rendered_file(pdf)
     completed = run_render_tool(
         pdftotext, ["-f", str(first), "-l", str(last), str(pdf), "-"]
     )
@@ -436,10 +474,16 @@ def main() -> int:
         if pdftohtml is None:
             errors.append("pdftohtml is required for the rendered-link check")
         if pdftotext is not None and pdftohtml is not None:
-            aliases = json.loads(ALIASES.read_text(encoding="utf-8"))
+            try:
+                aliases = json.loads(safe_rendered_file(ALIASES).read_text(encoding="utf-8"))
+            except UnsafeRenderedInput as error:
+                errors.append(str(error))
+                aliases = {}
             for tex, pdf in PAPERS:
-                if not pdf.is_file():
-                    errors.append(f"{pdf.relative_to(ROOT)}: rendered paper is missing")
+                try:
+                    safe_rendered_file(pdf)
+                except UnsafeRenderedInput as error:
+                    errors.append(str(error))
                     continue
                 try:
                     text = rendered_text(pdf, pdftotext)
@@ -450,8 +494,10 @@ def main() -> int:
                 errors.extend(first_minute_errors(pdf, pdftotext))
                 errors.extend(rendered_source_link_errors(tex, pdf, pdftohtml))
             for pdf in ARCHITECTURE_PAPERS:
-                if not pdf.is_file():
-                    errors.append(f"{pdf.relative_to(ROOT)}: rendered paper is missing")
+                try:
+                    safe_rendered_file(pdf)
+                except UnsafeRenderedInput as error:
+                    errors.append(str(error))
                     continue
                 try:
                     text = rendered_text(pdf, pdftotext)
