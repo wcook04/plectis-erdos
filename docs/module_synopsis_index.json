@@ -8,6 +8,14 @@
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
   },
+  "owner_adoption": {
+    "status": "adopted",
+    "projection_owner": "scripts/build_module_synopsis_index.py",
+    "canonical_artifact": "docs/module_synopsis_index.json",
+    "integration_consumer": "scripts/query_corpus.py::module_synopsis_index",
+    "consumer_rule": "The consumer accepts this projection only when its schema, source fingerprint, query contract, and owner-adoption receipt all match.",
+    "boundary": "The projection digests authored Lean module headers for navigation; it is neither Lean proof authority nor public claim-status authority."
+  },
   "modules": [
     {
       "id": "Erdos249257",

@@ -21,6 +21,12 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Mapping
 
+from build_module_synopsis_index import (
+    OWNER_ADOPTION as MODULE_SYNOPSIS_OWNER_ADOPTION,
+    QUERY_CONTRACT as MODULE_SYNOPSIS_QUERY_CONTRACT,
+    SCHEMA as MODULE_SYNOPSIS_SCHEMA,
+)
+
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
@@ -360,7 +366,12 @@ def module_synopsis_index() -> dict[str, str | None]:
         atlas = load("docs/declaration_atlas.json")
     except (json.JSONDecodeError, OSError, KeyError):
         return {}
-    if packet.get("source_fingerprint") != atlas.get("source_fingerprint"):
+    if (
+        packet.get("schema_version") != MODULE_SYNOPSIS_SCHEMA
+        or packet.get("source_fingerprint") != atlas.get("source_fingerprint")
+        or packet.get("query_contract") != MODULE_SYNOPSIS_QUERY_CONTRACT
+        or packet.get("owner_adoption") != MODULE_SYNOPSIS_OWNER_ADOPTION
+    ):
         return {}
     return {
         row["path"]: row.get("synopsis")
@@ -7497,6 +7508,86 @@ def claim_route_memory_projection(
     return projection
 
 
+def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, Any]:
+    """Keep every signal identity while routing verbose judgement to detail.
+
+    Programme routes are first-contact packets.  Palomar's complete per-family
+    prose remains available through the problem route, but repeating it inside
+    every overlapping programme made those packets grow with the corpus.  This
+    projection keeps ordering, source, declaration, family, and relation-edge
+    identities; only descriptive prose is omitted.
+    """
+    problem = int(spine["problem"])
+    retained_fields = (
+        "tier_order",
+        "tier_id",
+        "within_tier_order",
+        "global_rank",
+        "programme_order",
+        "family_id",
+        "signal_family_id",
+        "source_disposition",
+        "screening_disposition",
+        "source_kind",
+        "declaration",
+        "source_declaration",
+        "source_file",
+    )
+    relation_fields = (
+        "from_family_id",
+        "relation",
+        "to_family_id",
+        "direction",
+    )
+    result_fields = (*retained_fields, "relations")
+    results = []
+    omitted_fields: set[str] = set()
+    relation_reason_count = 0
+    for result in spine["results"]:
+        relations = []
+        for relation in result.get("relations", []):
+            relations.append([relation.get(key) for key in relation_fields])
+            if "reason" in relation:
+                relation_reason_count += 1
+        omitted_fields.update(set(result) - set(result_fields))
+        results.append([result.get(key) for key in retained_fields] + [relations])
+    if relation_reason_count:
+        omitted_fields.add("relations[].reason")
+    detail_route = f"python3 scripts/query_corpus.py --route erdos_{problem}"
+    return {
+        "problem": problem,
+        "ordering_contract": spine["ordering_contract"],
+        "result_fields": list(result_fields),
+        "relation_fields": list(relation_fields),
+        "results": results,
+        "projection_receipt": {
+            "projection": "bounded_identity_projection",
+            "result_count": len(results),
+            "identity_contract": (
+                "Columnar result_fields and relation_fields preserve every family, "
+                "declaration, source, ordering, disposition, and relation-edge "
+                "identity without repeating field names per row."
+            ),
+            "omitted_fields": sorted(omitted_fields),
+            "omitted_relation_reason_count": relation_reason_count,
+            "detail_handles": {
+                "complete_problem_signal": detail_route,
+                "exact_declaration": (
+                    "python3 scripts/query_corpus.py --declaration "
+                    "<source_declaration>"
+                ),
+                "publication_family": (
+                    "python3 scripts/query_corpus.py --publication-family <family_id>"
+                ),
+            },
+            "authority_posture": (
+                "bounded_navigation_projection_not_mathematical_judgement_or_"
+                "proof_authority"
+            ),
+        },
+    }
+
+
 def route_packet(route_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     route = next(
@@ -7600,7 +7691,9 @@ def route_packet(route_id: str) -> dict[str, Any]:
                 raise ValueError(
                     f"Palomar signal authority lacks programme #{problem_number}"
                 )
-            packet["programme"]["mathematical_signal_spine"] = programme_signal
+            packet["programme"]["mathematical_signal_spine"] = (
+                bounded_programme_signal_projection(programme_signal)
+            )
             packet["route_memory"] = {
                 "problem_number": problem_number,
                 "command": (
@@ -9279,6 +9372,10 @@ def render_card(packet: dict[str, Any]) -> str:
                 _append_route_memory_resumes(card, packet.get("route_memory"))
             ]
             signal = programme["mathematical_signal_spine"]
+            signal_rows = [
+                dict(zip(signal["result_fields"], row, strict=True))
+                for row in signal["results"]
+            ]
             rows.extend(
                 (
                     f"programme_signal #{row['programme_order']} "
@@ -9286,7 +9383,7 @@ def render_card(packet: dict[str, Any]) -> str:
                     f"| source_disposition={row['source_disposition']} "
                     f"| declaration={row['declaration']}"
                 )
-                for row in signal["results"]
+                for row in signal_rows
             )
             return "\n".join(rows)
         card = (

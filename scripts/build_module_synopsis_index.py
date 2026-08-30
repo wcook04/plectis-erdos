@@ -24,6 +24,20 @@ QUERY_CONTRACT = {
         "identity, attached claims, and route-memory context."
     ),
 }
+OWNER_ADOPTION = {
+    "status": "adopted",
+    "projection_owner": "scripts/build_module_synopsis_index.py",
+    "canonical_artifact": "docs/module_synopsis_index.json",
+    "integration_consumer": "scripts/query_corpus.py::module_synopsis_index",
+    "consumer_rule": (
+        "The consumer accepts this projection only when its schema, source "
+        "fingerprint, query contract, and owner-adoption receipt all match."
+    ),
+    "boundary": (
+        "The projection digests authored Lean module headers for navigation; "
+        "it is neither Lean proof authority nor public claim-status authority."
+    ),
+}
 
 
 def extract_synopsis(path: Path) -> str | None:
@@ -63,6 +77,7 @@ def build() -> dict[str, Any]:
         "module_count": len(modules),
         "synopsis_count": sum(bool(row["synopsis"]) for row in modules),
         "query_contract": QUERY_CONTRACT,
+        "owner_adoption": OWNER_ADOPTION,
         "modules": modules,
         "freshness_contract": {
             "source_owner": "Lean /-! ... -/ module headers",
@@ -99,6 +114,8 @@ def main() -> int:
             failures.append("source_fingerprint")
         if packet.get("query_contract") != QUERY_CONTRACT:
             failures.append("query_contract")
+        if packet.get("owner_adoption") != OWNER_ADOPTION:
+            failures.append("owner_adoption")
         if expected_paths != actual_paths:
             failures.append("module_inventory")
         if failures:

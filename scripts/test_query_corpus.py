@@ -182,6 +182,42 @@ def validate_programme_routes() -> None:
                 "no ",
             )
         )
+        signal = programme["mathematical_signal_spine"]
+        receipt = signal["projection_receipt"]
+        assert receipt["projection"] == "bounded_identity_projection"
+        assert receipt["result_count"] == len(signal["results"])
+        assert receipt["omitted_fields"]
+        assert receipt["detail_handles"]["complete_problem_signal"] == (
+            f"python3 scripts/query_corpus.py --route erdos_{expected_problem}"
+        )
+        assert receipt["detail_handles"]["exact_declaration"].endswith(
+            "<source_declaration>"
+        )
+        assert receipt["detail_handles"]["publication_family"].endswith(
+            "<family_id>"
+        )
+        required_result_fields = {
+            "family_id",
+            "signal_family_id",
+            "declaration",
+            "source_declaration",
+            "source_file",
+            "relations",
+        }
+        assert required_result_fields <= set(signal["result_fields"])
+        assert all(len(row) == len(signal["result_fields"]) for row in signal["results"])
+        relation_index = signal["result_fields"].index("relations")
+        assert set(signal["relation_fields"]) == {
+            "from_family_id",
+            "relation",
+            "to_family_id",
+            "direction",
+        }
+        assert all(
+            len(relation) == len(signal["relation_fields"])
+            for row in signal["results"]
+            for relation in row[relation_index]
+        )
         encoded = json.dumps(packet, ensure_ascii=False).encode("utf-8")
         assert len(encoded) <= 16_384
         card = run("--route", route_id, "--format", "card")
@@ -1475,6 +1511,15 @@ def validate_external_assurance_routes() -> None:
     )
 
 
+def validate_module_synopsis_owner_adoption() -> None:
+    index = query_corpus.module_synopsis_index()
+    assert index
+    module = "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+    assert index[module]
+    packet = query("--module", module)
+    assert packet["module"]["authored_synopsis"] == index[module]
+
+
 def main() -> int:
     validate_programme_routes()
     validate_indexed_problem_routes()
@@ -1488,6 +1533,7 @@ def main() -> int:
     validate_paper_semantic_citation_aliases()
     validate_mathematical_signal_spine()
     validate_external_assurance_routes()
+    validate_module_synopsis_owner_adoption()
     bare_ask = subprocess.run(
         [
             sys.executable,
