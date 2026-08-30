@@ -640,7 +640,22 @@
     {
      "declaration": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
      "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 465
+    },
+    {
+     "declaration": "TotientTailOrbitCofinalNonpositive",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
      "line": 412
+    },
+    {
+     "declaration": "totientTailOrbitCofinalNonpositive_of_irrational",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 418
+    },
+    {
+     "declaration": "totientTailOrbitCofinalNonpositive_iff_irrational",
+     "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+     "line": 445
     }
    ],
    "next_obligation": "Produce, or refute, a prime-indexed tail-orbit real-part gap beyond every cutoff. The squaring recurrence supplies the reusable dynamics but does not produce any gap and does not close Erdős #249."

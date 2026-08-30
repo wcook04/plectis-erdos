@@ -1327,7 +1327,7 @@
         {
           "declaration": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 412
+          "line": 465
         }
       ],
       "concepts": [
@@ -1351,6 +1351,21 @@
       "logical_class": "equivalence_or_classification",
       "problem": "249",
       "evidence": [
+        {
+          "declaration": "TotientTailOrbitCofinalNonpositive",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 412
+        },
+        {
+          "declaration": "totientTailOrbitCofinalNonpositive_of_irrational",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 418
+        },
+        {
+          "declaration": "totientTailOrbitCofinalNonpositive_iff_irrational",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 445
+        },
         {
           "declaration": "tailOrbitFirstExp_add",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",

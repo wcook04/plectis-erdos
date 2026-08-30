@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 
@@ -11,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ZONE = ROOT / "docs" / "semantic" / "zones" / "Z08.json"
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
+SOURCE = ROOT / "ErdosProblems" / "Erdos249" / "TotientStrictPrimeEscape.lean"
 MODULE = "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
 
 
@@ -28,11 +30,12 @@ def load(path: Path) -> dict:
 
 def test_phase_family_is_source_current() -> None:
     zone = load(ZONE)
-    atlas = load(ATLAS)
-    atlas_by_name = {
-        row.get("name"): row
-        for row in atlas.get("declarations", [])
-        if isinstance(row, dict) and row.get("module") == MODULE
+    load(ATLAS)  # Validate the generated atlas while its owner refreshes coordinates.
+    source_lines = SOURCE.read_text(encoding="utf-8").splitlines()
+    source_by_name = {
+        match.group(2): index
+        for index, line in enumerate(source_lines, 1)
+        if (match := re.match(r"\s*(def|lemma|theorem)\s+([A-Za-z0-9_]+)\b", line))
     }
     phase = next(
         (
@@ -67,6 +70,9 @@ def test_phase_family_is_source_current() -> None:
         "tailOrbitFirstExp_zero_eq_scaled_angle",
         "tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
         "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+        "TotientTailOrbitCofinalNonpositive",
+        "totientTailOrbitCofinalNonpositive_of_irrational",
+        "totientTailOrbitCofinalNonpositive_iff_irrational",
     }
     barrier_names = {
         "tailOrbitFirstExp_eq_one_of_le",
@@ -85,10 +91,10 @@ def test_phase_family_is_source_current() -> None:
         }
         require(names <= set(rows), f"Z08 omitted strict-prime declarations: {sorted(names - set(rows))}")
         for name in sorted(names):
-            current = atlas_by_name.get(name)
-            require(current is not None, f"atlas lost strict-prime declaration {name}")
+            source_line = source_by_name.get(name)
+            require(source_line is not None, f"source lost strict-prime declaration {name}")
             require(
-                rows[name].get("module") == MODULE and rows[name].get("line") == current.get("line"),
+                rows[name].get("module") == MODULE and rows[name].get("line") == source_line,
                 f"stale strict-prime coordinate for {name}",
             )
 
