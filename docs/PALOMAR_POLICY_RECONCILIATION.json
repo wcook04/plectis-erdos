@@ -133,7 +133,7 @@
   },
   "current_repository": {
     "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-    "observed_head_before_product": "2e02f3ad520df14e40938000909e0e44d7e0ef52",
+    "observed_head_before_product": "7bc548af0eee0a82de69ea8703482f43c1115bf5",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -147,8 +147,8 @@
     },
     "comparator": {
       "path": "verification/comparator.json",
-      "committed_sha256": "7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
-      "theorem_name_count": 31,
+      "committed_sha256": "f9b4b036bbb00da53dc6e955cbf5f6cf1dad8f0f48f7d8a0c74da9c0e95c8316",
+      "theorem_name_count": 32,
       "challenge_module": "ExternalVerification.Challenge",
       "solution_module": "ExternalVerification.Solution",
       "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
@@ -169,14 +169,113 @@
   },
   "candidate_value_selection": {
     "showcase_path": "docs/PALOMAR_RESULT_SHOWCASE.json",
+    "disposition_record": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_value_dispositions",
     "authority": "HEAD:verification/comparator.json",
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-    "selection_basis": "The full committed Comparator universe is evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, and overclaim risk. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
+    "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 62 families (the 60-family dispatch baseline plus canonical actual-LCM and weighted-phase-carry registrations) and six targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 32-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
-    "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection."
+    "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
+    "source_landscape_universe": {
+      "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
+      "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
+      "review_matrix_sha256": "ef919962e59349e5e3e3c540628243b22d33d6aaa7b817bf353bd4129421e0c6",
+      "review_family_count": 62,
+      "dispatch_baseline_count": 60,
+      "targeted_discovery_ids": [
+        "first_harmonic_pivot",
+        "actual_lcm_positive_corridor_top_edge",
+        "certificate_completeness",
+        "erdos1049_four_jet_pade_obstruction",
+        "erdos251_integral_tail_classification",
+        "weighted_phase_carry_observer"
+      ],
+      "comparator_role": "Comparator membership is evidence/eligibility/admission nested below source-landscape population and never defines its candidate universe."
+    },
+    "source_landscape_disposition": {
+      "candidate_id": "actual_lcm_orbit_separation",
+      "disposition": "represented",
+      "prior_disposition": "deferred",
+      "admission_commit": "0450c65e717b3c57b4ed67c99483f2578339eaaa",
+      "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+      "source_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+      "source_file": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+      "source_anchor": "305",
+      "claim_id": "actual_lcm_orbit_nonintegrality_frontier",
+      "evidence_ceiling": "Quantitative separation is sufficient, not equivalent, to actual-LCM non-integrality; the cofinal supply remains unproved.",
+      "reason": "The committed source-faithful wrapper has a deep quantitative separation mechanism and a direct #249 irrationality implication, so it is represented as a conditional high-signal route. It remains below full support because its cofinal separation supply is a premise rather than a completed producer.",
+      "remaining_boundary": "The cofinal separation supply remains unproved; a proved supply, or a later source-current result with equal evidence certainty and a stronger completed endpoint, would justify a fresh ranking against full support."
+    },
+    "source_landscape_queue": [
+      {
+        "candidate_id": "first_harmonic_pivot",
+        "family_id": "first_harmonic_pivot",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "source_declaration": "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation",
+        "source_file": "Erdos249257/FirstHarmonicPivot.lean",
+        "source_anchor": "543-595",
+        "reason": "Deep conditional first-harmonic budget route; no committed Comparator transport or cofinal decorrelation producer.",
+        "reversal_evidence": "A source-faithful Comparator wrapper with the same budgets and conclusion, or a proved cofinal decorrelation supply."
+      },
+      {
+        "candidate_id": "actual_lcm_positive_corridor_top_edge",
+        "family_id": "actual_lcm_orbit_separation",
+        "disposition": "subordinate",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "source_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue",
+        "source_file": "Erdos249257/TotientActualLcmOrbitSign.lean",
+        "source_anchor": "31-278",
+        "reason": "Unconditional sign/top-edge boundary retained as a subordinate component of the existing actual-LCM frontier; it is not a duplicate family or Comparator evidence.",
+        "reversal_evidence": "An independent top-edge exclusion or a source-faithful committed transport preserving the exact sign and residue boundary."
+      },
+      {
+        "candidate_id": "certificate_completeness",
+        "family_id": "certificate_completeness",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "source_declaration": "Erdos249257.irrational_totient_series_iff_lcm_diagonal_certificate_supply",
+        "source_file": "Erdos249257/LcmConeFlatness.lean",
+        "source_anchor": "316-435",
+        "reason": "Exact endpoint equivalence and excellent digestion infrastructure, but no new certificate producer or committed Comparator transport.",
+        "reversal_evidence": "A source-faithful transport plus a genuinely new unbounded certificate producer."
+      },
+      {
+        "candidate_id": "erdos1049_four_jet_pade_obstruction",
+        "family_id": "erdos1049_four_jet_pade_obstruction",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "source_declaration": "ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank",
+        "source_file": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean; ErdosProblems/Erdos1049/RationalPadeArithmetic.lean; ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
+        "source_anchor": "ZudilinConeArithmetic.lean:129-167; RationalPadeArithmetic.lean:80-220; QAperyDiagonalNonEquivalence.lean:61-100",
+        "reason": "Strong finite collision and arithmetic no-go package, but indirect endpoint consequence and no committed Comparator transport.",
+        "reversal_evidence": "A source-faithful wrapper preserving the rank and obstruction boundaries; an analytic nonvanishing/height result is needed for endpoint promotion."
+      },
+      {
+        "candidate_id": "erdos251_integral_tail_classification",
+        "family_id": "integral_shift_classification",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "source_declaration": "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+        "source_file": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "source_anchor": "1276-1535",
+        "reason": "Endpoint-proximate exact denominator/eventual-integrality classifier, but the prime-specific producer and Comparator transport are absent.",
+        "reversal_evidence": "A source-faithful wrapper plus a genuinely new prime-specific mismatch or eventual-small producer."
+      },
+      {
+        "candidate_id": "weighted_phase_carry_observer",
+        "family_id": "weighted_phase_carry_observer",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "source_declaration": "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary; ErdosProblems.Erdos269.carryResidue_mem_interval; ErdosProblems.Erdos269.residueDigit_mem_interval; ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation",
+        "source_file": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+        "source_anchor": "109-145; 150-175; 157-183; 334-355",
+        "reason": "Exact finite-residue/uncontrolled-coboundary and function-faithful observer factorization mechanism; no endpoint or committed Comparator transport.",
+        "reversal_evidence": "A source-faithful transport preserving both theorem boundaries, or a proved quotient recurrence/scalar-to-function bridge yielding the #269 endpoint."
+      }
+    ]
   },
   "requirements": [
     {

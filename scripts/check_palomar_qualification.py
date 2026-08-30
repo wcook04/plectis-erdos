@@ -33,6 +33,7 @@ SELECTION_AXES = {
     "evidence_certainty",
     "overclaim_risk",
 }
+VALUE_DISPOSITIONS = {"selected", "represented", "deferred", "subordinate", "rejected", "long_tail"}
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 SOURCE_TYPES = {
@@ -265,23 +266,233 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
 
 
 def candidate_selection_errors(
-    comparator: dict[str, Any], showcase: dict[str, Any]
+    comparator: dict[str, Any], showcase: dict[str, Any], root: Path | None = None
 ) -> list[str]:
     """Require an explicit, complete, source-backed value-selection record."""
     errors: list[str] = []
+    if root is None:
+        root = Path(__file__).resolve().parents[1]
     names = comparator.get("theorem_names", [])
     universe = showcase.get("candidate_universe")
     if not isinstance(universe, dict):
         return ["showcase lacks the authority-backed candidate universe"]
     universe_names = universe.get("declarations")
-    if universe.get("authority") != "HEAD:verification/comparator.json":
-        errors.append("candidate universe is not bound to HEAD:verification/comparator.json")
+    if universe.get("authority") != "HEAD:docs/claims.json::external_verification_packet.review_matrix":
+        errors.append("candidate universe is not bound to the committed claims review matrix")
+    screen = universe.get("comparator_screen")
+    if not isinstance(screen, dict):
+        errors.append("candidate universe lacks its nested Comparator screen")
+    else:
+        if screen.get("authority") != "HEAD:verification/comparator.json":
+            errors.append("nested Comparator screen is not bound to HEAD:verification/comparator.json")
+        if screen.get("roster_field") != "candidate_universe.declarations":
+            errors.append("nested Comparator screen does not identify its roster field")
+        if screen.get("partition") != "candidate_value_dispositions.eligible_groups":
+            errors.append("nested Comparator screen does not identify its exact partition")
+        if screen.get("comparator_sha256") != showcase.get("source_authority", {}).get(
+            "comparator_sha256"
+        ):
+            errors.append("nested Comparator screen digest disagrees with showcase authority")
     if not isinstance(universe_names, list) or universe_names != names:
-        errors.append("candidate universe does not exactly equal the committed Comparator roster")
-    if universe.get("comparator_sha256") != showcase.get("source_authority", {}).get(
-        "comparator_sha256"
-    ):
-        errors.append("candidate universe Comparator digest disagrees with showcase authority")
+        errors.append("nested Comparator screen roster does not exactly equal the committed Comparator roster")
+    try:
+        claims = json.loads(committed_bytes(root, "docs/claims.json"))
+        review_matrix = claims["external_verification_packet"]["review_matrix"]
+        review_rows = [
+            row
+            for group in review_matrix
+            for row in group.get("families", [])
+            if isinstance(row, dict)
+        ]
+    except (KeyError, TypeError, json.JSONDecodeError, subprocess.CalledProcessError):
+        review_rows = []
+        errors.append("candidate universe cannot read the committed claims review matrix")
+    review_ids = [row.get("id") for row in review_rows]
+    if universe.get("source_review_matrix_path") != "docs/claims.json::external_verification_packet.review_matrix":
+        errors.append("source-landscape universe has the wrong review-matrix path")
+    if universe.get("source_review_family_count") != len(review_rows):
+        errors.append("source-landscape universe count disagrees with the committed review matrix")
+    if universe.get("source_review_family_count_at_dispatch") != 60:
+        errors.append("source-landscape universe does not preserve the 60-family dispatch baseline")
+    expected_review_digest = hashlib.sha256(committed_bytes(root, "docs/claims.json")).hexdigest()
+    if universe.get("source_review_matrix_sha256") != expected_review_digest:
+        errors.append("source-landscape universe digest does not match the committed claims matrix")
+    source_ids = universe.get("source_review_family_ids")
+    if not isinstance(source_ids, list) or source_ids != review_ids:
+        errors.append("source-landscape universe does not consume every committed review family in order")
+    if not isinstance(universe.get("source_review_matrix_sha256"), str):
+        errors.append("source-landscape universe lacks the committed review-matrix digest")
+    source_contract = universe.get("source_family_disposition_contract")
+    required_source_fields = {
+        "disposition",
+        "support_evidence",
+        "contrary_evidence",
+        "cheapest_probe",
+        "stop_evidence",
+        "hard_mechanism",
+        "attribution",
+        "limitations",
+        "open_boundary",
+    }
+    expected_bindings = {
+        "support_evidence": "source_review_row.summary",
+        "contrary_evidence": "source_review_row.boundary",
+        "cheapest_probe": "source_review_row.evidence_mode plus exact source-coordinate comparison",
+        "stop_evidence": "source_review_row.boundary",
+        "hard_mechanism": "source_review_row.summary",
+        "attribution": "source_review_row.contribution_class",
+        "limitations": "source_review_row.boundary",
+        "open_boundary": "source_review_row.boundary",
+    }
+    if not isinstance(source_contract, dict):
+        errors.append("source-landscape universe lacks its family evidence contract")
+    else:
+        if set(source_contract.get("required_fields", [])) != required_source_fields:
+            errors.append("source-landscape family evidence contract is incomplete")
+        if source_contract.get("field_bindings") != expected_bindings:
+            errors.append("source-landscape family evidence bindings are not canonical")
+    source_dispositions = universe.get("source_family_dispositions")
+    if not isinstance(source_dispositions, dict) or set(source_dispositions) != set(review_ids):
+        errors.append("source-landscape universe lacks one disposition for every review family")
+    else:
+        for row in review_rows:
+            family_id = row.get("id")
+            disposition = source_dispositions.get(family_id)
+            if disposition not in VALUE_DISPOSITIONS:
+                errors.append(f"source-landscape family {family_id} has an invalid disposition")
+            if not row.get("summary") or not row.get("boundary"):
+                errors.append(f"source-landscape family {family_id} lacks support or contrary evidence")
+            if not row.get("evidence_mode") or not row.get("contribution_class"):
+                errors.append(f"source-landscape family {family_id} lacks probe or attribution evidence")
+        if any(not isinstance(family_id, str) for family_id in source_dispositions):
+            errors.append("source-landscape family disposition IDs are invalid")
+
+    discoveries = universe.get("targeted_theorem_forest_discoveries")
+    expected_discoveries = {
+        "first_harmonic_pivot",
+        "actual_lcm_positive_corridor_top_edge",
+        "certificate_completeness",
+        "erdos1049_four_jet_pade_obstruction",
+        "erdos251_integral_tail_classification",
+        "weighted_phase_carry_observer",
+    }
+    if not isinstance(discoveries, list) or {
+        row.get("candidate_id") for row in discoveries if isinstance(row, dict)
+    } != expected_discoveries:
+        errors.append("targeted theorem-forest discoveries do not match the source-landscape queue")
+    else:
+        for row in discoveries:
+            if row.get("disposition") not in VALUE_DISPOSITIONS:
+                errors.append(f"targeted discovery {row.get('candidate_id')} has an invalid disposition")
+            if not isinstance(row.get("source_landscape_record"), str):
+                errors.append(f"targeted discovery {row.get('candidate_id')} lacks its source-landscape record")
+
+    disposition_record = showcase.get("candidate_value_dispositions")
+    if not isinstance(disposition_record, dict):
+        errors.append("showcase lacks the candidate value-disposition record")
+    else:
+        groups = disposition_record.get("eligible_groups")
+        if not isinstance(groups, list) or not groups:
+            errors.append("candidate value-disposition record lacks eligible groups")
+        else:
+            grouped_names: list[str] = []
+            for index, group in enumerate(groups, 1):
+                if not isinstance(group, dict):
+                    errors.append(f"candidate value-disposition group {index} is not an object")
+                    continue
+                disposition = group.get("disposition")
+                if disposition not in VALUE_DISPOSITIONS:
+                    errors.append(f"candidate value-disposition group {index} has an invalid disposition")
+                declarations = group.get("declarations")
+                if not isinstance(declarations, list) or not declarations:
+                    errors.append(f"candidate value-disposition group {index} lacks declarations")
+                else:
+                    grouped_names.extend(declarations)
+                    if not all(isinstance(name, str) and name.strip() for name in declarations):
+                        errors.append(f"candidate value-disposition group {index} has invalid declarations")
+                if not isinstance(group.get("reason"), str) or not group["reason"].strip():
+                    errors.append(f"candidate value-disposition group {index} lacks reason")
+            if len(grouped_names) != len(set(grouped_names)):
+                errors.append("candidate value-disposition groups contain duplicate declarations")
+            if set(grouped_names) != set(names):
+                errors.append("candidate value-disposition groups do not partition Comparator")
+            selected_groups = [group for group in groups if isinstance(group, dict) and group.get("disposition") == "selected"]
+            if len(selected_groups) != 1 or selected_groups[0].get("declarations") != [
+                showcase.get("candidate_selection", {}).get("declaration")
+            ]:
+                errors.append("candidate value-disposition selected group disagrees with candidate selection")
+
+        landscape = disposition_record.get("source_landscape_candidates")
+        if not isinstance(landscape, list) or not landscape:
+            errors.append("candidate value-disposition record lacks source-landscape candidates")
+        else:
+            required_landscape = {
+                "candidate_id",
+                "family_id",
+                "disposition",
+                "comparator_eligibility",
+                "queue_role",
+                "source_declaration",
+                "source_file",
+                "source_anchor",
+                "statement",
+                "exact_hypotheses",
+                "conclusion",
+                "hard_mechanism",
+                "attribution",
+                "limitations",
+                "reason",
+                "reversal_evidence",
+            }
+            for index, row in enumerate(landscape, 1):
+                if not isinstance(row, dict):
+                    errors.append(f"source-landscape candidate {index} is not an object")
+                    continue
+                missing = sorted(field for field in required_landscape if not row.get(field))
+                if missing:
+                    errors.append(f"source-landscape candidate {index} lacks fields: {missing}")
+                if row.get("disposition") not in VALUE_DISPOSITIONS:
+                    errors.append(f"source-landscape candidate {index} has an invalid disposition")
+                eligibility = row.get("comparator_eligibility")
+                if eligibility == "committed_source_faithful_transport":
+                    if row.get("queue_role") != "source_landscape_review_with_committed_comparator_evidence":
+                        errors.append(
+                            f"source-landscape candidate {index} mislabels committed Comparator evidence"
+                        )
+                    if row.get("comparator_declaration") not in names:
+                        errors.append(
+                            f"source-landscape candidate {index} names a non-Comparator declaration"
+                        )
+                elif eligibility == "source_landed_but_not_comparator_configured":
+                    if row.get("queue_role") != "source_landscape_review_not_comparator_evidence":
+                        errors.append(
+                            f"source-landscape candidate {index} mislabels source-landscape-only review"
+                        )
+                    if row.get("comparator_declaration"):
+                        errors.append(
+                            f"source-landscape candidate {index} source-landscape row must not name Comparator evidence"
+                        )
+                else:
+                    errors.append(f"source-landscape candidate {index} has invalid Comparator eligibility")
+
+            candidate_ids = [
+                row.get("candidate_id")
+                for row in landscape
+                if isinstance(row, dict)
+            ]
+            if len(candidate_ids) != len(set(candidate_ids)):
+                errors.append("source-landscape candidates contain duplicate candidate IDs")
+            expected_landscape_ids = {
+                "actual_lcm_orbit_separation",
+                "first_harmonic_pivot",
+                "actual_lcm_positive_corridor_top_edge",
+                "certificate_completeness",
+                "erdos1049_four_jet_pade_obstruction",
+                "erdos251_integral_tail_classification",
+                "weighted_phase_carry_observer",
+            }
+            if set(candidate_ids) != expected_landscape_ids:
+                errors.append("source-landscape queue does not cover the admitted and targeted candidates")
 
     contract = showcase.get("selection_contract")
     if not isinstance(contract, dict):
@@ -602,7 +813,7 @@ def evaluate(root: Path) -> dict[str, Any]:
     comparator = json.loads(committed_bytes(root, "verification/comparator.json"))
     errors = authority_errors(recon)
     errors.extend(roster_errors(root, comparator, showcase, recon))
-    errors.extend(candidate_selection_errors(comparator, showcase))
+    errors.extend(candidate_selection_errors(comparator, showcase, root))
     selected = showcase.get("candidate_selection", {})
     recon_selection = recon.get("candidate_value_selection", {})
     if not isinstance(recon_selection, dict):

@@ -5,8 +5,12 @@
     "claim_registry": "docs/claims.json",
     "proof_authority": "Lean source checked by the pinned kernel",
     "comparator_authority": "HEAD:verification/comparator.json",
-    "comparator_sha256": "7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
-    "comparator_theorem_count": 31,
+    "comparator_sha256": "f9b4b036bbb00da53dc6e955cbf5f6cf1dad8f0f48f7d8a0c74da9c0e95c8316",
+    "comparator_theorem_count": 32,
+    "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
+    "source_review_matrix_sha256": "ef919962e59349e5e3e3c540628243b22d33d6aaa7b817bf353bd4129421e0c6",
+    "source_review_family_count": 62,
+    "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
@@ -25,6 +29,7 @@
       "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
       "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
       "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
@@ -43,7 +48,7 @@
     "all_eight_programmes_remain_open": true
   },
   "selection_contract": {
-    "authority_basis": "Every declaration in candidate_universe is read from the exact committed HEAD:verification/comparator.json roster; uncommitted Comparator edits, roster order, and ease of qualification are not selection evidence.",
+    "authority_basis": "Every source family is read from the exact committed HEAD:docs/claims.json review matrix plus the explicitly recorded theorem-forest discoveries; the exact committed HEAD:verification/comparator.json roster is a nested evidence/admission screen. Uncommitted Comparator edits, roster order, and ease of qualification are not selection evidence.",
     "ranking_axes": [
       {
         "axis": "mathematical_nontriviality",
@@ -83,9 +88,36 @@
     "reversal_evidence": "Reverse the choice only if a newly committed, source-checked Comparator row has a strictly stronger direct consequence at the same or closer endpoint, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis or overclaim risk; uncommitted dirt or a row count cannot reverse it."
   },
   "candidate_universe": {
-    "authority": "HEAD:verification/comparator.json",
-    "comparator_sha256": "7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
-    "selection_scope": "all_committed_comparator_rows",
+    "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
+    "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
+    "source_review_matrix_sha256": "ef919962e59349e5e3e3c540628243b22d33d6aaa7b817bf353bd4129421e0c6",
+    "source_review_family_count": 62,
+    "source_review_family_count_at_dispatch": 60,
+    "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
+    "source_review_family_ids": ["factorial_carry_characterisation","factorial_channel_and_projection_rigidity","factorial_conditional_producers","factorial_finite_certificates","factorial_lcm_growth","centered_state_dynamics","negative_orbit_no_go","bounded_rise_coprimality","bounded_negative_exclusion","negative_mass_recovery","totient_kernel_basis","totient_kernel_rank","totient_kernel_all_base_index","totient_visible_coprime_lattice_mass","squared_lambert_gcd_moments","stern_brocot_run_fibonacci_stability","stern_brocot_cylinder_law","lcm_factor_ideal_shift_algebra_no_go","actual_lcm_orbit_separation","totient_finite_denominator_exclusion","totient_carry_rank","totient_lambert_coefficients","eventually_periodic_lambert","totient_certificate_equivalences","prime_gap_reformulation","integral_shift_classification","totient_shift_propagation","small_mismatch_criterion","coefficient_only_no_go","finite_period_noncollapse","rational_support_constraints","shifted_odd_tail_state","composite_dilation_defect_identity","known_irrational_supports","pairwise_coprime_support","periodic_nonnegative_weight_irrationality","orthogonal_petal_sunflower_reduction","squarefree_support","achievement_set_geometry","restricted_achievement_sets","half_and_twenty_one_frontiers","three_prime_lcm_cells","two_prime_transcendence","height_fibre_and_shell","rank_two_kernel_no_go","dyadic_block_alphabet","conditional_carry_escape","weighted_phase_carry_observer","three_prime_finite_search","newton_value_decay","ray_separation","translation_avoidance","root_retention","published_proof_gap","lemniscate_finite_search","scalar_content_no_go","endpoint_residues","four_jet_collision","coordinatewise_corridor_no_go","rational_base_tail_recurrence","seven_halves_irrationality","height_and_pade_arithmetic"],
+    "source_family_disposition_contract": {
+      "authority_binding": "Resolve each source_review_row against HEAD:docs/claims.json::external_verification_packet.review_matrix.",
+      "required_fields": ["disposition", "support_evidence", "contrary_evidence", "cheapest_probe", "stop_evidence", "hard_mechanism", "attribution", "limitations", "open_boundary"],
+      "field_bindings": {"support_evidence":"source_review_row.summary", "contrary_evidence":"source_review_row.boundary", "cheapest_probe":"source_review_row.evidence_mode plus exact source-coordinate comparison", "stop_evidence":"source_review_row.boundary", "hard_mechanism":"source_review_row.summary", "attribution":"source_review_row.contribution_class", "limitations":"source_review_row.boundary", "open_boundary":"source_review_row.boundary"},
+      "comparator_role": "Comparator membership is an evidence, eligibility, and admission field nested below the source universe."
+    },
+    "source_family_dispositions": {"factorial_carry_characterisation":"represented","factorial_channel_and_projection_rigidity":"represented","factorial_conditional_producers":"subordinate","factorial_finite_certificates":"long_tail","factorial_lcm_growth":"long_tail","centered_state_dynamics":"represented","negative_orbit_no_go":"rejected","bounded_rise_coprimality":"represented","bounded_negative_exclusion":"represented","negative_mass_recovery":"subordinate","totient_kernel_basis":"represented","totient_kernel_rank":"represented","totient_kernel_all_base_index":"represented","totient_visible_coprime_lattice_mass":"represented","squared_lambert_gcd_moments":"represented","stern_brocot_run_fibonacci_stability":"represented","stern_brocot_cylinder_law":"represented","lcm_factor_ideal_shift_algebra_no_go":"rejected","actual_lcm_orbit_separation":"represented","totient_finite_denominator_exclusion":"long_tail","totient_carry_rank":"subordinate","totient_lambert_coefficients":"represented","eventually_periodic_lambert":"represented","totient_certificate_equivalences":"subordinate","prime_gap_reformulation":"represented","integral_shift_classification":"represented","totient_shift_propagation":"represented","small_mismatch_criterion":"subordinate","coefficient_only_no_go":"rejected","finite_period_noncollapse":"represented","rational_support_constraints":"subordinate","shifted_odd_tail_state":"represented","composite_dilation_defect_identity":"represented","known_irrational_supports":"represented","pairwise_coprime_support":"represented","periodic_nonnegative_weight_irrationality":"represented","orthogonal_petal_sunflower_reduction":"represented","squarefree_support":"long_tail","achievement_set_geometry":"represented","restricted_achievement_sets":"represented","half_and_twenty_one_frontiers":"subordinate","three_prime_lcm_cells":"represented","two_prime_transcendence":"long_tail","height_fibre_and_shell":"represented","rank_two_kernel_no_go":"rejected","dyadic_block_alphabet":"represented","conditional_carry_escape":"subordinate","three_prime_finite_search":"long_tail","newton_value_decay":"represented","ray_separation":"represented","translation_avoidance":"represented","root_retention":"represented","published_proof_gap":"long_tail","lemniscate_finite_search":"long_tail","scalar_content_no_go":"rejected","endpoint_residues":"rejected","four_jet_collision":"subordinate","coordinatewise_corridor_no_go":"rejected","rational_base_tail_recurrence":"represented","seven_halves_irrationality":"long_tail","height_and_pade_arithmetic":"subordinate","weighted_phase_carry_observer":"represented"},
+    "targeted_theorem_forest_discoveries": [
+      {"candidate_id":"first_harmonic_pivot","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[first_harmonic_pivot]"},
+      {"candidate_id":"actual_lcm_positive_corridor_top_edge","disposition":"subordinate","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[actual_lcm_positive_corridor_top_edge]"},
+      {"candidate_id":"certificate_completeness","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[certificate_completeness]"},
+      {"candidate_id":"erdos1049_four_jet_pade_obstruction","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos1049_four_jet_pade_obstruction]"},
+      {"candidate_id":"erdos251_integral_tail_classification","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos251_integral_tail_classification]"},
+      {"candidate_id":"weighted_phase_carry_observer","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[weighted_phase_carry_observer]"}
+    ],
+    "comparator_screen": {
+      "authority": "HEAD:verification/comparator.json",
+      "comparator_sha256": "f9b4b036bbb00da53dc6e955cbf5f6cf1dad8f0f48f7d8a0c74da9c0e95c8316",
+      "theorem_count": 32,
+      "roster_field": "candidate_universe.declarations",
+      "partition": "candidate_value_dispositions.eligible_groups",
+      "semantic_role": "Exact 32-row evidence/eligibility/admission screen nested inside the wider source universe; it does not define candidate-universe membership."
+    },
     "declarations": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
@@ -104,6 +136,7 @@
       "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
       "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
       "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
@@ -118,6 +151,280 @@
       "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
       "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
       "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+    ]
+  },
+  "candidate_value_dispositions": {
+    "disposition_vocabulary": [
+      "selected",
+      "represented",
+      "deferred",
+      "subordinate",
+      "rejected",
+      "long_tail"
+    ],
+    "eligible_disposition_vocabulary": [
+      "selected",
+      "represented",
+      "subordinate",
+      "rejected",
+      "long_tail"
+    ],
+    "authority_rule": "The following groups partition exactly the committed Comparator roster. Source-landscape records preserve exact source identities, value judgments, and admission history; a source-landscape candidate is Comparator evidence only when its record names a committed source-faithful ExternalVerification row.",
+    "eligible_groups": [
+      {
+        "disposition": "selected",
+        "declarations": [
+          "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+        ],
+        "reason": "The unconditional full-support irrationality theorem has the clearest direct endpoint, a completed certificate mechanism, exact source identity, and the lowest overclaim risk when its b >= 2 and non-universal boundary remain visible."
+      },
+      {
+        "disposition": "represented",
+        "declarations": [
+          "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+          "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
+          "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet"
+        ],
+        "reason": "These are genuinely distinct #257 support/coefficient routes and are represented in the high-signal spine; their exact structured or conditional hypotheses are part of their value and are not silently generalized."
+      },
+      {
+        "disposition": "represented",
+        "declarations": [
+          "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
+        ],
+        "reason": "The committed wrapper represents a genuinely distinct #249 quantitative actual-LCM route: its endpoint is direct under an explicit cofinal separation supply, while that supply remains the natural unproved producer and prevents selection over the unconditional full-support theorem."
+      },
+      {
+        "disposition": "subordinate",
+        "declarations": [
+          "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+          "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
+          "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel"
+        ],
+        "reason": "Each is mathematically useful and independently retained, but the first two are endpoint reductions without their missing producers and the #249 rank result does not itself prove irrationality or cofinal certificate supply."
+      },
+      {
+        "disposition": "rejected",
+        "declarations": [
+          "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor"
+        ],
+        "reason": "This is a sharp no-go for one proof architecture, not a direct endpoint or a complete candidate mechanism; it remains visible as a boundary rather than being promoted as a solution."
+      },
+      {
+        "disposition": "long_tail",
+        "declarations": [
+          "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+          "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
+          "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
+          "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+          "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
+          "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+          "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+          "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+          "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower",
+          "Erdos249257.ExternalVerification.cylinderMass_split",
+          "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
+          "Erdos249257.ExternalVerification.exists_primeGap0_gt",
+          "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+          "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
+          "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
+          "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction",
+          "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect",
+          "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
+          "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+          "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
+          "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
+          "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
+          "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+        ],
+        "reason": "These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking."
+      }
+    ],
+    "source_landscape_candidates": [
+      {
+        "candidate_id": "actual_lcm_orbit_separation",
+        "family_id": "actual_lcm_orbit_separation",
+        "disposition": "represented",
+        "prior_disposition": "deferred",
+        "admission_commit": "0450c65e717b3c57b4ed67c99483f2578339eaaa",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
+        "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        "source_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        "source_file": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+        "source_anchor": "305",
+        "claim_id": "actual_lcm_orbit_nonintegrality_frontier",
+        "evidence_ceiling": "Quantitative separation is sufficient, not equivalent, to actual-LCM non-integrality; the cofinal supply remains unproved.",
+        "statement": "A cofinal quantitative separation supply for the actual power-two LCM tail orbit implies irrationality of the binary totient series.",
+        "exact_hypotheses": [
+          "For every a₀, there exist a and q with max 2 a₀ <= a and oddGuardedCanonicalAdjacentSuffixDepth (2^a) = 2q+1.",
+          "For every integer z, 1/32 + actualLcmRawErrorRadius a q <= |actualLcmTailOrbit a - z|."
+        ],
+        "conclusion": "Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+        "hard_mechanism": "The route turns a raw adjacent-suffix approximation and an explicit error radius into a uniform signed-margin separation from every integer, then transports that margin to the irrationality endpoint. The cofinal separation supply is the natural hard producer and is not supplied by the implication theorem.",
+        "attribution": "This is a source-specific Lean theorem in the current committed tree; no novelty, priority, or independent Comparator evidence is claimed.",
+        "limitations": [
+          "The cofinal PowerTwoActualLcmOrbitSeparationSupply is a premise, not a proved supply in this declaration.",
+          "The committed ExternalVerification wrapper establishes transport identity and conclusion shape, not the missing cofinal supply.",
+          "It does not close the binary totient irrationality endpoint without the missing supply and does not alter the open universal boundaries."
+        ],
+        "reason": "Now represented rather than selected: the committed row preserves the source supply clauses and irrationality conclusion, so it earns visibility as a serious conditional #249 route. Full support remains selected because it has a completed unconditional endpoint and lower hidden-premise risk.",
+        "reversal_evidence": "A proved cofinal separation supply, or a later source-current result with equal evidence certainty and a stronger completed endpoint, would justify a fresh ranking against full support; the current implication alone does not."
+      },
+      {
+        "candidate_id": "first_harmonic_pivot",
+        "family_id": "first_harmonic_pivot",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation",
+        "source_file": "Erdos249257/FirstHarmonicPivot.lean",
+        "source_anchor": "543-595",
+        "statement": "A cofinal first-harmonic pivot residual-decorrelation supply implies irrationality of the binary totient series.",
+        "exact_hypotheses": [
+          "For every h > 0 there exist s > 0 and η with 0 < η < 1 such that for every X₀ there exist X,L with max X₀ 1 ≤ X, h ≤ L-s, 16*(2*X+h+L+2) ≤ 2^L, and PivotBudgetAt X L s.",
+          "PivotBudgetAt requires pivotCenteredCorrelation.re ≤ (14/25)*X, ‖pivotFiberMeanContribution‖ ≤ (1/100)*X, ‖pivotBadContribution‖ ≤ (1/100)*X, and ‖pivotNonSupplierContribution‖ ≤ (8/25)*X."
+        ],
+        "conclusion": "Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+        "hard_mechanism": "The source decomposes the first harmonic into supplier fibres, a pivot correlation, bad and non-supplier contributions, and a controlled remainder; the four explicit budgets sum to the strict first-harmonic gap bound 9/10·X.",
+        "attribution": "This is a source-current Lean theorem in FirstHarmonicPivot.lean; the source claim records the finite decomposition and a counterexample to global isolation, with no novelty or priority claim.",
+        "limitations": [
+          "The DTWPivotResidualDecorrelation premise is a cofinal producer hypothesis, not a supplied theorem in this declaration.",
+          "No prime-distribution or independent decorrelation producer is established, so this source route is not a Comparator result or an irrationality proof for the open endpoint.",
+          "The finite counterexample to global isolation remains a natural friction point and prevents silently treating the pivot as a universal local argument."
+        ],
+        "reason": "Deferred after value review: this is a genuinely deep conditional #249 route with a visible harmonic budget mechanism and high digestion value, but it lacks a committed Comparator transport and its cofinal decorrelation supply remains open.",
+        "reversal_evidence": "A committed source-faithful Comparator wrapper with the same budgets and conclusion, or a proved cofinal decorrelation supply, would reopen ranking against full support; a routine restatement or finite pivot check would not."
+      },
+      {
+        "candidate_id": "actual_lcm_positive_corridor_top_edge",
+        "family_id": "actual_lcm_orbit_separation",
+        "disposition": "subordinate",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue",
+        "source_file": "Erdos249257/TotientActualLcmOrbitSign.lean",
+        "source_anchor": "31-278",
+        "statement": "The actual-LCM positive corridor makes the true translated tail difference positive; if the difference is integral and the dyadic modulus has room, its discrepancy is forced into the top-edge residue strip.",
+        "exact_hypotheses": [
+          "8 ≤ a and J + K + (a + 6) < 2*2^a.",
+          "There is d : ℤ representing the translated actual-LCM tail difference exactly.",
+          "The directed room inequality ((2*periodLcm(2^a)+J+K+2 : ℕ) : ℤ) < 2^K holds."
+        ],
+        "conclusion": "The discrepancy residue is P-e and satisfies P-B < residue < P, where P=2^K, e is the positive carry orbit, and B is the directed endpoint-strip bound.",
+        "hard_mechanism": "A quarter-height lower bound on the first lookahead letter, amplified by 2^(a+5), dominates the LCM height; positive remaining letters and the directed tail bound yield the sign, then carry tracking identifies the exact top-edge residue.",
+        "attribution": "This is source-current Lean sign/carry analysis in TotientActualLcmOrbitSign.lean, linked by docs/claims.json to actual_lcm_positive_corridor_top_edge; no duplicate frontier family or novelty claim is made.",
+        "limitations": [
+          "This is a boundary component subordinate to actual_lcm_orbit_separation, not a second frontier family and not Comparator evidence.",
+          "The top-edge strip is not excluded by the sign theorem; a central-band contradiction and cofinal non-integrality supply remain unavailable.",
+          "The theorem does not itself prove irrationality or convert positive sign into a nonintegrality conclusion."
+        ],
+        "reason": "Subordinate after value review: the unconditional sign and exact top-edge obstruction are consequential and distinct as a proof boundary, but docs/claims.json places them under the existing actual-LCM frontier and explicitly requires an independent top-edge exclusion.",
+        "reversal_evidence": "Only a source-faithful committed transport that preserves the sign and top-edge conclusion could make this Comparator-representable; an independent top-edge exclusion would elevate its endpoint value, while a duplicate row would not."
+      },
+      {
+        "candidate_id": "certificate_completeness",
+        "family_id": "certificate_completeness",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Erdos249257.irrational_totient_series_iff_lcm_diagonal_certificate_supply",
+        "source_file": "Erdos249257/LcmConeFlatness.lean",
+        "source_anchor": "316-435",
+        "statement": "Irrationality of the binary totient series is equivalent to cofinal certified-kill supply, equivalently to pointwise certificate supply and the lcm-diagonal certificate formulation.",
+        "exact_hypotheses": [
+          "The certified-kill equivalence identifies existence of a certificate at h,N with tailDiff(N,h) outside the integer range.",
+          "For all h > 0 and N, the pointwise certificate-supply equivalence quantifies an L with certifiedKill h N L.",
+          "The lcm-diagonal form quantifies a cofinal supply of the corresponding actual LCM certificates."
+        ],
+        "conclusion": "Irrationality is equivalent to all positive shifted tail differences being nonintegral, equivalently to pointwise and cofinal certificate supply.",
+        "hard_mechanism": "The source stitches exact integer-membership scaling, certified-kill existence, tail-difference nonintegrality, and cofinal lcm-diagonal certificates into an iff chain rather than a one-way sufficient route.",
+        "attribution": "This is source-current equivalence infrastructure in LcmConeFlatness.lean; no novelty, priority, or Comparator transport is claimed.",
+        "limitations": [
+          "An equivalence classifies the endpoint but does not produce a single unbounded certificate or a new source of certificates.",
+          "It is not a committed Comparator declaration and must not be counted as Comparator evidence.",
+          "The open certificate supply remains the mathematical boundary, so completeness does not replace the selected full-support theorem."
+        ],
+        "reason": "Deferred after value review: this is highly consequential exact endpoint classification and excellent digestion infrastructure, but it supplies no missing producer and has no committed Comparator wrapper.",
+        "reversal_evidence": "A source-faithful committed transport plus a genuinely new certificate producer would justify elevating this route; an additional equivalent reformulation without a producer would remain deferred."
+      },
+      {
+        "candidate_id": "erdos1049_four_jet_pade_obstruction",
+        "family_id": "erdos1049_four_jet_pade_obstruction",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank",
+        "source_file": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean; ErdosProblems/Erdos1049/RationalPadeArithmetic.lean; ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
+        "source_anchor": "ZudilinConeArithmetic.lean:129-167; RationalPadeArithmetic.lean:80-220; QAperyDiagonalNonEquivalence.lean:61-100",
+        "statement": "A rank-bounded four-jet signature forces distinct binary selectors with equal four-jet sum; accompanying Padé content identities and the QApery residual calculation expose arithmetic and diagonal obstructions.",
+        "exact_hypotheses": [
+          "For R,S with 0 < R and 4*R + 2*S ≤ n, the four-jet target cardinality (3^R)^2*(2^S)^2 is less than 2^n.",
+          "The selector conclusion is a finite collision of Bool-weighted four-jet sums, not an analytic remainder estimate.",
+          "The Padé exterior determinant statements retain their row-content divisors, and the QApery residual factorization is strictly negative/nonzero at n=0 for every p > 1."
+        ],
+        "conclusion": "Distinct binary selectors share the same four-jet signature, while the source's content-adjusted Padé and QApery calculations rule out the tempting diagonal recurrence at its stated boundary.",
+        "hard_mechanism": "Finite image-cardinality collision combines with exact determinant-content bookkeeping and a sign obstruction; the arithmetic prevents hidden height gains from being smuggled in through row-content divisors.",
+        "attribution": "These are source-current Erdős #1049 declarations in the named modules; the source record makes no novelty or endpoint-closure claim.",
+        "limitations": [
+          "The four-jet result is finite combinatorics and does not supply analytic nonvanishing or irrationality.",
+          "The Padé content and QApery results are obstructions/no-go evidence, not a completed solution to #1049.",
+          "No source-faithful Comparator row currently represents this combined route, so it must remain outside the committed Comparator universe."
+        ],
+        "reason": "Deferred after value review: the collision-plus-obstruction package has strong independent mechanism and review value, but its endpoint consequence is indirect and its evidence class is source-landscape Lean rather than Comparator transport.",
+        "reversal_evidence": "A committed wrapper preserving the finite rank hypotheses and the exact obstruction conclusions would justify representation; a new analytic nonvanishing/height result would be needed before it could challenge the selected endpoint."
+      },
+      {
+        "candidate_id": "erdos251_integral_tail_classification",
+        "family_id": "integral_shift_classification",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+        "source_file": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "source_anchor": "1276-1535",
+        "statement": "For a dyadic tail recurrence, positive tail shifts are integral exactly when the tail denominator divides a Mersenne number; the initial tail is rational exactly when some positive shift is eventually integral.",
+        "exact_hypotheses": [
+          "DyadicTailRecurrence supplies the recurrence needed for tailShift_integral_iff_den_dvd_mersenne.",
+          "For positive h,N, tailShift integrality is equivalent to (T N).den dividing 2^h - 1, equivalently 2^h ≡ 1 modulo (T N).den.",
+          "The rationality classification quantifies a fixed positive shift that is eventually integral; the prime-gap nonintegrality route additionally requires its explicit eventual-small or cofinal-mismatch hypotheses."
+        ],
+        "conclusion": "¬Irrational(initial tail) is equivalent to existence of an eventually integral positive tail shift, while prime-specific eventual nonintegrality remains a separate producer obligation.",
+        "hard_mechanism": "Block identities reduce real tail rationality to exact denominator/Mersenne divisibility and eventual integrality, exposing the arithmetic boundary a prime-gap producer must cross.",
+        "attribution": "This is source-current Erdős #251 classification material in PrimeGapDyadicTail.lean; no novelty, priority, or Comparator transport is claimed.",
+        "limitations": [
+          "The classifier does not prove the prime-tail cofinal mismatch or eventual-small hypothesis needed for irrationality.",
+          "It is distinct source evidence, not a committed Comparator declaration and not an unconditional endpoint result.",
+          "The existing Comparator prime-gap equivalence remains a separate transport surface; this queue item does not silently merge the two."
+        ],
+        "reason": "Deferred after value review: this is endpoint-proximate and mathematically useful denominator classification with strong digestion value, but it lacks the prime-specific producer and a source-faithful Comparator row.",
+        "reversal_evidence": "A committed wrapper preserving the denominator and eventual-integrality hypotheses plus a genuinely new prime-specific mismatch result would elevate the route; another equivalent classifier would remain subordinate."
+      },
+      {
+        "candidate_id": "weighted_phase_carry_observer",
+        "family_id": "weighted_phase_carry_observer",
+        "disposition": "deferred",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary; ErdosProblems.Erdos269.carryResidue_mem_interval; ErdosProblems.Erdos269.residueDigit_mem_interval; ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation",
+        "source_file": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+        "source_anchor": "109-145; 150-175; 157-183; 334-355",
+        "statement": "The weighted-phase carry recurrence splits each digit into a finite residue digit plus an integral quotient coboundary, and a genuinely function-faithful factorization through a finite-dimensional observer forces the realised symbolic span to be finite-dimensional.",
+        "exact_hypotheses": [
+          "For B : ℤ with 0 < B and hrec : ∀ n, carry (n+1) = base n * carry n - B * digit n, the residue/quotient decomposition gives the exact digit identity.",
+          "For DivisionRing 𝕜 modules with FiniteDimensional 𝕜 E, linear maps realise, C, and readout must satisfy realise = readout.comp C before finite-dimensionality of range realise follows."
+        ],
+        "conclusion": "The residue coordinate is finite and the remaining quotient contribution is an uncontrolled integral coboundary; only the stated observer factorization yields FiniteDimensional 𝕜 (LinearMap.range realise).",
+        "hard_mechanism": "Exact Euclidean residue reconstruction isolates the bounded digit coordinate while preserving the quotient transfer, and the span theorem uses kernel faithfulness and a linear factorization rather than a single scalar evaluation.",
+        "attribution": "These are source-current Erdős #269 Lean declarations in WeightedPhaseCarry.lean; the source and paper explicitly retain their non-endpoint scope and make no novelty or priority claim.",
+        "limitations": [
+          "No quotient recurrence or finite-state property is assumed or concluded for the integral transfer coordinate.",
+          "No scalar-evaluation implication and no literal infinite-dimensional-span theorem follows from the residue split alone.",
+          "The candidate does not prove the Erdős #269 endpoint and has no committed Comparator transport."
+        ],
+        "reason": "Deferred after value review: this is one coherent, reusable weighted-phase observer mechanism with exact finite-residue/uncontrolled-coboundary separation and a precise function-faithful span criterion, but it is not an endpoint theorem and remains outside the Comparator evidence screen.",
+        "reversal_evidence": "A source-faithful Comparator transport preserving both theorem boundaries, or a proved quotient recurrence/scalar-to-function bridge yielding the #269 endpoint, would justify promotion; a routine residue restatement would not."
+      }
     ]
   },
   "candidate_ranking": [
@@ -140,7 +447,7 @@
       "rank": 2,
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "family_id": "pairwise_coprime_support",
-      "selection_status": "strong_runner_up",
+      "selection_status": "represented",
       "mathematical_nontriviality": "A distinct broad structured-support theorem for a non-dilation class.",
       "consequence_and_endpoint_proximity": "Direct irrationality for every infinite pairwise-coprime support with summable reciprocal mass, but not for arbitrary supports.",
       "mechanism_depth_and_natural_friction": "Adaptive CRT weighted coefficient certificates absorb first-block hits and control residue strays through summable reciprocals.",
@@ -155,7 +462,7 @@
       "rank": 3,
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
       "family_id": "orthogonal_petal_sunflower_reduction",
-      "selection_status": "conditional_high_signal",
+      "selection_status": "represented",
       "mathematical_nontriviality": "A deep structural support route with a nontrivial bouquet and tail-selection interface.",
       "consequence_and_endpoint_proximity": "Direct irrationality under the displayed structure, but the structural predicates are not constructed for arbitrary supports.",
       "mechanism_depth_and_natural_friction": "The conditional selector is the natural friction; omitting it would turn a reduction into a false unconditional theorem.",
@@ -170,7 +477,7 @@
       "rank": 4,
       "declaration": "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
       "family_id": "periodic_nonnegative_weight_irrationality",
-      "selection_status": "direct_structured_result",
+      "selection_status": "represented",
       "mathematical_nontriviality": "Direct irrationality for an eventually periodic nonnegative rational coefficient class.",
       "consequence_and_endpoint_proximity": "Close to the Lambert-series endpoint but not a universal support theorem and not the mixed-sign statement.",
       "mechanism_depth_and_natural_friction": "A periodic divisor-orbit sieve and denominator clearing route are visible in the source.",
@@ -183,9 +490,24 @@
     },
     {
       "rank": 5,
+      "declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+      "family_id": "actual_lcm_orbit_separation",
+      "selection_status": "represented",
+      "mathematical_nontriviality": "A genuinely quantitative actual-LCM orbit-separation implication, with an explicit margin beyond approximation error rather than a finite identity or a count-only obstruction.",
+      "consequence_and_endpoint_proximity": "It points directly at the binary totient irrationality endpoint for Erdős #249, conditional on a cofinal separation supply; it does not prove that supply.",
+      "mechanism_depth_and_natural_friction": "The source carries a raw adjacent-suffix approximation, an explicit error radius, and uniform separation from every integer into a signed-margin producer. The cofinal PowerTwoActualLcmOrbitSeparationSupply is the natural friction and remains a premise.",
+      "genuinely_distinct_content_and_independence": "This is a quantitative actual-LCM orbit route, distinct from finite kernel-rank, factor-ideal no-go, and full-support #257 mechanisms.",
+      "external_review_value": "High for a reviewer of the #249 endpoint because the actual LCM, approximation scale, integer-distance margin, and missing producer are named rather than compressed into an irrationality headline.",
+      "proof_digestion_value": "It exposes how quantitative orbit separation would feed the irrationality theorem and identifies the exact producer a future proof must supply.",
+      "evidence_certainty": "The source definition and implication are committed at Erdos249257/TotientActualLcmOrbitSeparation.lean:305, and the exact wrapper is committed in ExternalVerification/Challenge.lean and ExternalVerification/Solution.lean at the configured declaration.",
+      "overclaim_risk": "High unless the two cofinal supply clauses stay attached: the implication is source-faithful and checked, but the supply itself is not proved here.",
+      "why_not_ranked_first": "It has exceptional endpoint proximity and a deep mechanism, but it is conditional on the missing cofinal producer; the selected full-support theorem is an unconditional completed endpoint with lower hidden-premise risk."
+    },
+    {
+      "rank": 6,
       "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
       "family_id": "factorial_carry_irrationality_equivalence",
-      "selection_status": "endpoint_reduction",
+      "selection_status": "subordinate",
       "mathematical_nontriviality": "An exact equivalence translating irrationality into a cofinal non-unit carry condition.",
       "consequence_and_endpoint_proximity": "Maximal endpoint proximity for #68, but it does not prove the cofinal producer.",
       "mechanism_depth_and_natural_friction": "The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.",
@@ -197,10 +519,10 @@
       "why_not_ranked_first": "It reaches an open endpoint more directly but does not itself establish the endpoint, unlike the selected full-support theorem."
     },
     {
-      "rank": 6,
+      "rank": 7,
       "declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "family_id": "prime_gap_dyadic_equivalence",
-      "selection_status": "endpoint_reduction",
+      "selection_status": "subordinate",
       "mathematical_nontriviality": "An exact irrationality equivalence linked to the prime-gap series.",
       "consequence_and_endpoint_proximity": "Very close to #251's target but proves neither side irrational and retains a summability premise.",
       "mechanism_depth_and_natural_friction": "The key mechanism is summation-by-parts normalization; the target irrationality remains open.",
@@ -212,10 +534,10 @@
       "why_not_ranked_first": "It is a reduction rather than a proved irrationality consequence."
     },
     {
-      "rank": 7,
+      "rank": 8,
       "declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
       "family_id": "totient_kernel_rank",
-      "selection_status": "deep_supporting_result",
+      "selection_status": "subordinate",
       "mathematical_nontriviality": "A genuinely infinite-dimensional consequence of exact finite-level rank growth.",
       "consequence_and_endpoint_proximity": "Important structural support for #249, but it does not prove irrationality or the missing cofinal certificate supply.",
       "mechanism_depth_and_natural_friction": "The proof uses exact ranks 2^e+1 and a finite-dimensional contradiction.",
@@ -253,6 +575,12 @@
     ]
   },
   "selection_comparison": [
+    {
+      "declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+      "family_id": "actual_lcm_orbit_separation",
+      "disposition": "represented_conditional_alternative",
+      "reason": "This newly committed #249 row is the strongest endpoint-near alternative: its exact source-faithful separation supply implies irrationality through a quantitative signed-margin mechanism. It remains below full support because the cofinal supply is a premise rather than a completed producer, so selecting it would carry a larger hidden-hypothesis risk."
+    },
     {
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
       "family_id": "pairwise_coprime_support",
@@ -465,7 +793,8 @@
         "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
         "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower",
         "Erdos249257.ExternalVerification.cylinderMass_split",
-        "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient"
+        "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
+        "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
       ]
     },
     {
