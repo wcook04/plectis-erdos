@@ -53,15 +53,41 @@ example
   Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply
     hsupply
 
-/-! ## Natural-prime strict-gap endpoint route -/
+/-! ## Natural-prime phase dynamics and strict-gap endpoint route -/
 
 #check ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap
+#check ErdosProblems.Erdos249.tailOrbitFirstExp_zero_eq_scaled_angle
+#check ErdosProblems.Erdos249.exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic
+#check ErdosProblems.Erdos249.tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen
+#check ErdosProblems.Erdos249.cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic
+#check ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift
 #check ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap
 #check Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
 
 /-
-The source exposes two related ways to manufacture the finite certificate.
-First, `TotientTailOrbitNonpositiveBlockDensity` supplies an `11/100`
+For a fixed positive shift `h`, the source identifies the initial actual-tail
+phase exactly as
+
+`exp (2 * pi * I * ((2^h - 1) * S))`,
+
+where `S` is the binary totient series; every later phase is obtained by
+repeated squaring.  Reaching phase `1` after finitely many squarings is
+therefore equivalent to the real angle `(2^h - 1) * S` being dyadic.  The
+existing exact certificate at time `14` excludes this obstruction for
+`1 <= h <= 16` and root depth at most `14`, but it does not prove global
+non-dyadicity.
+
+For any fixed `h` whose angle is non-dyadic, elementary doubling geometry
+gives cofinally many indices with nonpositive real phase.  This is an
+anti-concentration statement in the limited sense of cofinal occurrence: it
+does not give a positive block density or put those indices at shifted primes.
+The theorem
+`naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift` isolates
+that remaining arithmetic supply: cofinally many nonpositive phases with
+`N + h + 1` prime imply the existing strict prime-orbit gap.
+
+The source also exposes a block-density route.  A
+`TotientTailOrbitNonpositiveBlockDensity` hypothesis supplies an `11/100`
 fraction of nonpositive phases on a late dyadic block.  Unit norm bounds the
 remaining phases by `1`, so the block mean is at most `89/100`; one truncation
 depth with a uniform `1/100` tail error then reaches the finite `9/10`
@@ -78,10 +104,11 @@ chooses `L` from the positive margin
 finite truncation.  The Comparator wrapper below exposes that exact
 conditional endpoint beside actual-LCM separation.
 
-Neither producer is proved for the actual totient orbit: the `11/100`
-nonpositive-block density and the cofinal prime strict-gap supply remain open.
-This consumer therefore makes no unconditional #249, novelty, or priority
-claim.
+The global non-dyadicity, `11/100` nonpositive-block density, and cofinal
+prime-alignment supplies remain open.  In particular, cofinal nonpositive
+occurrence at unrestricted indices does not imply either of the latter two
+producers.  This consumer therefore makes no unconditional #249, novelty, or
+priority claim.
 -/
 example
     (hgap : Erdos249257.ExternalVerification.DTWNaturalPrimeTailOrbitStrictGap) :
