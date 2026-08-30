@@ -85,6 +85,20 @@ odd-core span.  The companion row
 full rational span is not finite-dimensional.  These are structural
 coefficient-space results, not a rationality-to-finite-rank bridge.
 
+The selected all-base Comparator row is exact:
+\texttt{finrank\_allBaseTotientKernelThroughLevelFamily\_eq\_of\_linearIndependent}
+takes integers $k,e$ with $2\le k$ and $1\le e$, together with
+\(\Q\)-linear independence of the explicit canonical family, and concludes
+\[
+ \operatorname{finrank}_{\Q}\!\left(\operatorname{span}_{\Q}
+   \operatorname{range}(\operatorname{allBaseTotientKernelThroughLevelFamily}(k,e))\right)
+   = k^e+1.
+\]
+The checked declaration is the conditional rank interface at
+\mword{Erdos249257/TotientKernelConditional.lean}{215}{finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent}{conditional all-base rank}.
+Its independence hypothesis remains an external boundary; this row does not
+prove irrationality of $\Stot$.
+
 The release Comparator also selects the exact combinatorial stability row
 \texttt{runHeight\_defect\_fib\_sum\_lower}.  For every finite defect list
 $e$, it states
