@@ -106,6 +106,11 @@ corresponding reverse route. This keeps a useful explanation connected to the
 checked declaration and its unresolved boundary without promoting the lab's
 mechanism vocabulary into a mathematical result.
 
+For a module-level handoff, use `python3 scripts/query_corpus.py --module
+<module_path_or_sigil>`. A source path or paper sigil returns the authored
+synopsis, declaration preview, exact source identity, attached claims, and
+route-memory context before you return to the problem matrix and its boundary.
+
 ## What this layer does not decide
 
 Not novelty, not significance, not correctness. A mechanism is an explanation;
