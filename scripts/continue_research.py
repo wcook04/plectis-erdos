@@ -17,6 +17,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -255,6 +256,36 @@ def session_dir(sessions_root: Path, slug: str) -> Path:
     return sessions_root / slug
 
 
+def cleanup_partial_start(directory: Path) -> str | None:
+    """Remove only the known artifacts created by a failed start transaction."""
+    if not directory.exists():
+        return None
+    if directory.is_symlink():
+        return f"partial start cleanup refused for symlinked session: {directory}"
+    allowed_names = {
+        "continuation.json",
+        "ledger.jsonl",
+        "probes",
+        "route-memory-consultation.json",
+        "route-memory-return-template.json",
+        "route.json",
+    }
+    try:
+        unexpected = sorted(
+            child.name for child in directory.iterdir()
+            if child.name not in allowed_names
+        )
+        if unexpected:
+            return (
+                "partial start cleanup refused for unexpected session artifacts: "
+                + ", ".join(unexpected)
+            )
+        shutil.rmtree(directory)
+    except OSError as exc:
+        return f"partial start cleanup failed: {directory}: {exc}"
+    return None
+
+
 def has_symlink_component(path: Path, root: Path) -> bool:
     """Return whether a session artifact crosses a symbolic-link component."""
     try:
@@ -431,78 +462,97 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
     route_records, _ = route_memory_receipt.canonical_corpus(ROOT)
     route_record = route_records[args.problem]
     operator = args.operator or args.contributor
-    opened = run_json_command(
-        workbench_command(
-            args.sessions_root,
-            "open",
-            "--session",
-            args.session,
-            "--intent",
-            args.intent,
-            "--actor",
-            operator,
+    opened = False
+    try:
+        opened_receipt = run_json_command(
+            workbench_command(
+                args.sessions_root,
+                "open",
+                "--session",
+                args.session,
+                "--intent",
+                args.intent,
+                "--actor",
+                operator,
+            )
         )
-    )
-    route_ids = [item["route_id"] for item in route_memory["routes"]]
-    note_text = (
-        f"frontier={args.frontier}; stop_condition={args.stop_condition}; "
-        f"route_memory_disposition={route_memory['disposition']}; route_ids={route_ids}"
-    )
-    planned = run_json_command(
-        workbench_command(
-            args.sessions_root,
-            "note",
-            "--session",
-            args.session,
-            "--kind",
-            "plan",
-            "--text",
-            note_text,
+        opened = True
+        route_ids = [item["route_id"] for item in route_memory["routes"]]
+        note_text = (
+            f"frontier={args.frontier}; stop_condition={args.stop_condition}; "
+            f"route_memory_disposition={route_memory['disposition']}; route_ids={route_ids}"
         )
-    )
-    manifest = {
-        "schema": SESSION_SCHEMA,
-        "session": args.session,
-        "created_at": utc_now(),
-        "starting_commit": starting_commit,
-        "repository_origin": repository_origin,
-        "dirty_at_start": bool(dirty_rows),
-        "problem": args.problem,
-        "frontier": {
-            "handle": args.frontier,
-            "intent": args.intent,
-            "stop_condition": args.stop_condition,
-        },
-        "route_memory": route_memory,
-        "identity": {
-            "contributor": {"name": args.contributor},
-            "operator": {
-                "relationship": "same_as_contributor" if operator == args.contributor else "named",
-                "name": operator,
+        planned = run_json_command(
+            workbench_command(
+                args.sessions_root,
+                "note",
+                "--session",
+                args.session,
+                "--kind",
+                "plan",
+                "--text",
+                note_text,
+            )
+        )
+        manifest = {
+            "schema": SESSION_SCHEMA,
+            "session": args.session,
+            "created_at": utc_now(),
+            "starting_commit": starting_commit,
+            "repository_origin": repository_origin,
+            "dirty_at_start": bool(dirty_rows),
+            "problem": args.problem,
+            "frontier": {
+                "handle": args.frontier,
+                "intent": args.intent,
+                "stop_condition": args.stop_condition,
             },
-            "model_system": disclosure(args.model_system),
-            "provider": disclosure(args.provider),
-            "material_collaborators": args.material_collaborator,
-        },
-        "composed_commands": [
-            f"python3 scripts/query_corpus.py --search 'Erdős problem {args.problem}' --format json",
-            f"python3 scripts/query_route_memory.py --problem {args.problem}",
-            "python3 scripts/proof_workbench.py open ...",
-            "python3 scripts/proof_workbench.py note --kind plan ...",
-        ],
-        "authority_boundary": (
-            "The route is navigation and the workbench records a session; neither changes Lean proof, "
-            "docs/claims.json, mathematical review, or release authority."
-        ),
-    }
-    (directory / "route.json").write_text(dump_json(route), encoding="utf-8")
-    (directory / "route-memory-consultation.json").write_text(
-        dump_json(route_memory), encoding="utf-8"
-    )
-    (directory / "route-memory-return-template.json").write_text(
-        dump_json(route_memory_receipt.return_receipt_template(route_memory)), encoding="utf-8"
-    )
-    (directory / "continuation.json").write_text(dump_json(manifest), encoding="utf-8")
+            "route_memory": route_memory,
+            "identity": {
+                "contributor": {"name": args.contributor},
+                "operator": {
+                    "relationship": "same_as_contributor" if operator == args.contributor else "named",
+                    "name": operator,
+                },
+                "model_system": disclosure(args.model_system),
+                "provider": disclosure(args.provider),
+                "material_collaborators": args.material_collaborator,
+            },
+            "composed_commands": [
+                f"python3 scripts/query_corpus.py --search 'Erdős problem {args.problem}' --format json",
+                f"python3 scripts/query_route_memory.py --problem {args.problem}",
+                "python3 scripts/proof_workbench.py open ...",
+                "python3 scripts/proof_workbench.py note --kind plan ...",
+            ],
+            "authority_boundary": (
+                "The route is navigation and the workbench records a session; neither changes Lean proof, "
+                "docs/claims.json, mathematical review, or release authority."
+            ),
+        }
+        (directory / "route.json").write_text(dump_json(route), encoding="utf-8")
+        (directory / "route-memory-consultation.json").write_text(
+            dump_json(route_memory), encoding="utf-8"
+        )
+        (directory / "route-memory-return-template.json").write_text(
+            dump_json(route_memory_receipt.return_receipt_template(route_memory)), encoding="utf-8"
+        )
+        (directory / "continuation.json").write_text(dump_json(manifest), encoding="utf-8")
+    except SystemExit as exc:
+        if not opened:
+            raise
+        cleanup_error = cleanup_partial_start(directory)
+        detail = f"start failed: {exc}"
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
+        raise SystemExit(detail) from exc
+    except Exception as exc:
+        if not opened:
+            raise
+        cleanup_error = cleanup_partial_start(directory)
+        detail = f"start failed: {type(exc).__name__}: {exc}"
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
+        raise SystemExit(detail) from exc
     return {
         "schema": "research-continuation-start/1",
         "session": args.session,
@@ -518,7 +568,7 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
             "boundary": route_record["failure_boundary"],
             "next_obligation": route_record["next_obligation"],
         },
-        "workbench_open_move": opened.get("move_id"),
+        "workbench_open_move": opened_receipt.get("move_id"),
         "workbench_plan_move": planned.get("move_id"),
         "next": [
             f"python3 scripts/proof_workbench.py note --session {args.session} --kind observation --text '<public observation>'",
