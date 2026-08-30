@@ -619,7 +619,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>not_selected_unproved_bridge_and_deep_predicates</code>
 
 - <code>weighted_phase_carry_observer</code><br>
-  Comparator: <code>not_selected_pending_wrapper_and_statement_isolation</code>
+  Comparator: <code>targeted</code>
 
 - <code>three_prime_finite_search</code><br>
   Comparator: <code>not_applicable_not_a_lean_theorem</code>

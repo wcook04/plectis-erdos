@@ -1152,7 +1152,7 @@
           "contribution_class": "locally proved result; novelty unassessed",
           "summary": "An exact weighted-phase carry recurrence splits into a finite residue digit and an uncontrolled integral quotient coboundary; an explicit function-faithful finite-dimensional observer then forces finite realised span.",
           "evidence_mode": "Lean kernel",
-          "comparator_disposition": "not_selected_pending_wrapper_and_statement_isolation",
+          "comparator_disposition": "targeted",
           "declarations": [
             "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary",
             "ErdosProblems.Erdos269.carryResidue_mem_interval",
@@ -1324,7 +1324,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:65f303ab83ded2079148c05f37e208dbe208e329d74f30e59bc33038bccd7269",
+    "projection_digest": "sha256:8fccaffda288e496dac50fb904275aa278be8eab3e4a303a7d8095ecbc2b4994",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1666,11 +1666,11 @@
           "family_count": 5,
           "by_class": {
             "not_selected": 1,
-            "represented_by": 2,
-            "targeted": 2
+            "represented_by": 1,
+            "targeted": 3
           },
           "dispositions": {
-            "centered_state_dynamics": "represented_by_selected_boundary_theorems",
+            "centered_state_dynamics": "targeted",
             "negative_orbit_no_go": "targeted_representative_periodic_theorem",
             "bounded_rise_coprimality": "represented_by_stronger_selected_boundary_theorem",
             "bounded_negative_exclusion": "targeted",
@@ -1772,11 +1772,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 15,
+          "family_count": 16,
           "by_class": {
             "not_selected": 4,
             "represented_by": 1,
-            "targeted": 10
+            "targeted": 11
           },
           "dispositions": {
             "totient_kernel_basis": "targeted",
@@ -1789,6 +1789,7 @@
             "lcm_factor_ideal_shift_algebra_no_go": "targeted",
             "actual_lcm_orbit_separation": "targeted",
             "first_harmonic_pivot_decomposition": "targeted",
+            "totient_carry_anti_compression": "targeted",
             "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
@@ -1945,12 +1946,11 @@
           "family_count": 12,
           "by_class": {
             "not_applicable": 1,
-            "not_selected": 1,
-            "targeted": 10
+            "targeted": 11
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
-            "rational_support_constraints": "not_selected_deep_support_vocabulary",
+            "boolean_mobius_carry": "targeted",
             "shifted_odd_tail_state": "targeted",
             "composite_dilation_defect_identity": "targeted",
             "known_irrational_supports": "targeted_full_support_representative",
@@ -2101,9 +2101,9 @@
           "family_count": 8,
           "by_class": {
             "not_applicable": 2,
-            "not_selected": 2,
+            "not_selected": 1,
             "represented_by": 2,
-            "targeted": 2
+            "targeted": 3
           },
           "dispositions": {
             "three_prime_lcm_cells": "targeted_running_lcm_identity",
@@ -2112,7 +2112,7 @@
             "rank_two_kernel_no_go": "targeted",
             "dyadic_block_alphabet": "represented_by_three_prime_structure_target",
             "conditional_carry_escape": "not_selected_unproved_bridge_and_deep_predicates",
-            "weighted_phase_carry_observer": "not_selected_pending_wrapper_and_statement_isolation",
+            "weighted_phase_carry_observer": "targeted",
             "three_prime_finite_search": "not_applicable_not_a_lean_theorem"
           }
         }
@@ -2392,5 +2392,5 @@
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
   "config_digest": "sha256:cb6b298518b40349b977a16d13c47850cbae1cf7e17fdc06b40aad9c61005329",
-  "solution_source_digest": "sha256:066a3e5220d86f00d4ba706057bd731da517d247f1520b3742dc3428a5f5b38e"
+  "solution_source_digest": "sha256:b274acd1d110f0326838b1b31f6fd35e0f0f06b3d15cf89c9cd156d4efc9c504"
 }
