@@ -32,6 +32,7 @@ def main() -> int:
         "PYTHONPATH": "/private/wrong-python-path",
         "LC_ALL": "C",
         "LANG": "en_US.UTF-8",
+        "LANGUAGE": "fr_FR",
     }
     with tempfile.TemporaryDirectory() as raw:
         with patch.dict(os.environ, hostile_environment, clear=False):
@@ -40,7 +41,7 @@ def main() -> int:
                 all(
                     key not in sanitized
                     for key in hostile_environment
-                    if key not in {"LC_ALL", "LANG"}
+                    if key not in {"LC_ALL", "LANG", "LANGUAGE"}
                 ),
                 "dependency environment retained a hostile selector",
             )
@@ -58,7 +59,7 @@ def main() -> int:
                     "-c",
                     "import json, os; print(json.dumps({k: os.environ[k] for k in "
                     "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE', 'PYTHONPATH', "
-                    "'LC_ALL', 'LANG', 'PATH') "
+                    "'LC_ALL', 'LANG', 'LANGUAGE', 'PATH') "
                     "if k in os.environ}))",
                 ],
                 cwd=Path(raw),
@@ -72,6 +73,7 @@ def main() -> int:
                 child_environment == {
                     "LC_ALL": "C.UTF-8",
                     "LANG": "C.UTF-8",
+                    "LANGUAGE": "C.UTF-8",
                     "PATH": os.pathsep.join(
                         (str(build_lean_dependency_index.TOOLCHAIN_BIN), os.defpath)
                     ),
