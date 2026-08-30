@@ -36,7 +36,7 @@
 % ---------------------------------------------------------------------------
 % Public formal-source checkpoint used by this paper.
 \newcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
-\newcommand{\commitshort}{c2b44eb04090}
+\newcommand{\commitshort}{9e231ce4371f}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main}
@@ -108,6 +108,15 @@ Let $S=\sum_{n\ge1}\ph(n)/2^n$ and
 $X_A=\sum_{n\in A}(2^n-1)^{-1}$ for $A\subseteq\Npos$. Erd\H{o}s
 Problems~\#249 and~\#257 ask whether $S$ is irrational and whether every
 infinite-support $X_A$ is irrational. Both remain open.
+
+One broad exact family consequence for \#257 is already settled: for every
+integer base $b\ge2$, an infinite pairwise-coprime support $A$ with
+$\sum_{a\in A}1/a<\infty$ gives an irrational support series.  Its checked
+adaptive CRT mechanism absorbs small support in the first block and controls
+unselected strays by reciprocal mass.  A broader checked theorem covers
+nonnegative rational coefficients that are eventually periodic and positive
+in their periodic region.  These are family theorems, not universal \#257.
+Both memberships remain open, and the stated \#249 target remains open.
 
 For \#249, Lean proves that the two zero-residue sections
 $\ph_{0,0},\ph_{1,0}$ and all odd-residue dyadic sections form a $\Q$-basis of
