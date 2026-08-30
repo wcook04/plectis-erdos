@@ -12002,6 +12002,18 @@
         "boundary": "This state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit."
       },
       {
+        "id": "boolean_mobius_carry",
+        "problem": 257,
+        "review_family": "boolean_mobius_carry",
+        "claim_id": "boolean_mobius_carry",
+        "contribution_class": "locally proved exact equivalence plus conditional consequences; novelty unassessed",
+        "original_declaration": "Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+        "original_source": "Erdos249257/BooleanMobiusCarry.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+        "statement": "For p : ℤ and q > 0, a nonempty positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate exists, with positive square-root-bounded integer orbit, divisible carry differences, and support reconstructed from its Boolean Möbius transform.",
+        "boundary": "The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made."
+      },
+      {
         "id": "composite_dilation_defect_split",
         "problem": 257,
         "review_family": "composite_dilation_defect_identity",
