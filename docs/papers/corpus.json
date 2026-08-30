@@ -1162,7 +1162,7 @@
       "home_repository": "plectis-lean-erdos249-257",
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
-      "local_full_text": "docs/papers/full-text/erdos-068.md",
+      "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/erdos-68-factorial-denominator-irrationality.tex",
       "source_sha256": "sha256:7a79a936a41e08af7c2267cecd994e4a7fa9ffd21ef602fc77df91b6e0763ecf",
       "canonical_source_commit": null,
@@ -1173,7 +1173,7 @@
       "sections": [
         {
           "level": 1,
-          "id": "erdos-068",
+          "id": "erdos-68-factorial-denominator-irrationality",
           "title": "Factorial Carries and Finite Channel Obstructions",
           "line": 1
         },
@@ -1285,6 +1285,9 @@
         "registry_fallback": "Factorial Digits and the Open Boundary for Erd\u0151s Problem #68",
         "manuscript_title": "Factorial Carries and Finite Channel Obstructions"
       },
+      "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
+      "pdf_sha256": "sha256:797587bb93c6600b9807372f34ae282ae0afc7a54aa866165f97bdca6013819e",
+      "pdf_byte_count": 138245,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4344,7 +4347,7 @@
       "home_repository": "plectis-lean-erdos249-257",
       "licence": "CC-BY-4.0",
       "copyright": "2026 Will Cook",
-      "local_full_text": "docs/papers/full-text/erdos-1041.md",
+      "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/erdos-1041-lemniscate-newton-flow.tex",
       "source_sha256": "sha256:4ec1c2bb4f128b2e7b3a725ac9d0faf8b88e9adba1fdcf6eecef109d2fc6217b",
       "canonical_source_commit": null,
@@ -4355,7 +4358,7 @@
       "sections": [
         {
           "level": 1,
-          "id": "erdos-1041",
+          "id": "erdos-1041-lemniscate-newton-flow",
           "title": "Newton Flow and Critical-Value Ray Separation",
           "line": 1
         },
@@ -4479,6 +4482,9 @@
         "registry_fallback": "Exact Kernels and the Open Boundary for Erd\u0151s Problem 1041",
         "manuscript_title": "Newton Flow and Critical-Value Ray Separation"
       },
+      "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
+      "pdf_sha256": "sha256:fef42215352b59683888890a59f9d01525905a929ea9fad89da4a665f469353d",
+      "pdf_byte_count": 98246,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",

@@ -8,17 +8,17 @@
 
 </div>
 
-Let $`f(z)=\prod_{i}(z-z_i)`$ be monic with every root in the open unit disc. Erdős, Herzog, and Piranian asked whether two roots can always be joined by a curve of length less than $`2`$ contained in the open lemniscate $`\{|f|<1\}`$. The problem is open. A manuscript posted in March 2026 claims the result for all such $`f`$; its Proposition 12 is a load-bearing spanning-tree decomposition whose printed proof contains an invalid local saddle block. At an interior Morse saddle a sufficiently small chart lies wholly in the open component and contains all four sectors, so the asserted one-lower/two-upper three-ended neighbourhood does not follow. The proposition itself is not refuted and may admit a cut-annulus or four-pronged repair. An independent June 2026 preprint proves the degree-four case. This note isolates and checks a dynamical input that could support an alternative decomposition.
+Let $`f(z)=\prod_{i}(z-z_i)`$ be monic with every root in the open unit disc. Erdős, Herzog, and Piranian asked whether two roots can always be joined by a curve of length less than $`2`$ contained in the open lemniscate $`\{|f|<1\}`$. The problem is open. A manuscript posted in March 2026 claims the result for all such $`f`$; its Proposition 12 is a load-bearing spanning-tree decomposition whose printed proof contains an invalid local saddle block. At an interior Morse saddle a sufficiently small chart lies wholly in the open component and contains all four sectors, so the asserted one-lower/two-upper three-ended neighbourhood does not follow. The proposition itself is not refuted and may admit a cut-annulus or four-pronged repair. An independent June 2026 preprint proves the degree-four case. The current public frontier is more specific than this dynamical diagnosis alone: near a Fekete configuration, radial deficits can be removed from the containment problem, while a degree-five analysis isolates rapid nearly-simultaneous merging near the regular pentagon. The exact degree-five statement that would close that residual is recorded, but is not proved. This note therefore separates a genuine degree-five target, surviving carriers, and certified failures of tempting selection rules rather than presenting a uniform list of partial estimates.
 
 Along a trajectory of the complex Newton field $`-f/f'`$ the polynomial value satisfies $`w'=-w`$, so $`f(z(t))=e^{-t}f(z(0))`$ and $`e^{t}f(z(t))`$ is a first integral. Both are checked by the Lean kernel. The consequence is a separation criterion: the endpoints of any finite Newton-flow connection lie on one oriented ray from the origin, so critical values on distinct rays admit no saddle-to-saddle connection. The criterion is sharper than the one the manuscript uses. Distinct critical values, and even distinct critical-value moduli, do not exclude saddle connections; distinct critical-value *arguments* do. The obstruction to arranging distinct arguments by perturbation is also made explicit: for each pair of critical values the set of common translations causing a ray collision is a one-real-parameter locus, given in closed form.
 
 What remains is the planar topology and the length bookkeeping. Neither is proved here, and Erdős \#1041 is not settled.
 
-> **Contribution.** The paper checks exponential Newton-value decay, parameterises positive-ray collisions, constructs arbitrarily small translations avoiding all collisions in a finite family, and proves root retention under a quantified constant perturbation.
+> **Contribution.** The paper checks exponential Newton-value decay, parameterises positive-ray collisions, constructs arbitrarily small translations avoiding all collisions in a finite family, and proves root retention under a quantified constant perturbation. It also records the current near-Fekete reduction and the degree-five residual.
 >
-> **Relation to the open problem.** These are dynamical and perturbative inputs. They do not repair the global topology and metric gluing needed for a curve of length less than $`2`$, so Problem #1041 remains open.
+> **Relation to the open problem.** These are dynamical, perturbative, and frontier inputs. They do not repair the global topology and metric gluing needed for a curve of length less than $`2`$, so Problem #1041 remains open. The degree-five target and the no-go witnesses are boundaries around the open theorem, not a hidden closure.
 >
-> **Executable review object.** Comparator selects the finite-family small-translation theorem and the quantified root-retention theorem. The literature diagnosis and finite computation remain separate evidence classes. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+> **Executable review object.** Comparator selects the finite-family small-translation theorem and the quantified root-retention theorem. The frontier section is selected as mathematical orientation; its ordinary proofs, exact certificates, and computations remain separate evidence classes. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
 
 <a id="sec:problem"></a>
 
@@ -32,7 +32,7 @@ What remains is the planar topology and the length bookkeeping. Neither is prove
 
 Numbering and current status follow Bloom’s Erdős problem catalogue \[bloom\]. The problem is open. The original source is Problem 5 on printed p. 139 of Erdős–Herzog–Piranian \[ehp1958, p. 139\]; the preceding paragraph records the known input that one component of the lemniscate contains at least two zeros.
 
-Two recent manuscripts are relevant. The 48-page manuscript posted by `shtuka` on 24 March 2026 \[march2026, Theorem 1, p. 1\] claims the unrestricted statement. Its Proposition 12 (p. 16, with proof continuing through p. 30) supplies the spanning-tree decomposition used in the final proof. The defect was located publicly in the problem’s discussion thread: on 25 March 2026 Tao observed that the invocation of Lemma 8 there is unjustified and that the flow lines need not organise into connected trees, and on 26 March 2026 the manuscript’s author agreed that the statement of Proposition 12 itself, not only its printed proof, is incorrect, and set the strategy aside. Section <a href="#sec:gap" data-reference-type="ref" data-reference="sec:gap">4</a> records an independent diagnosis of the same failure through the local three-ended saddle model, together with possible repairs. No counterexample to the proposition is exhibited there. Pendyala’s independent June 2026 preprint \[june2026, Thm. 1, p. 1\] proves the degree-four case. The quartic theorem does not close the problem.
+Two recent manuscripts are relevant. The 48-page manuscript posted by `shtuka` on 24 March 2026 \[march2026, Theorem 1, p. 1\] claims the unrestricted statement. Its Proposition 12 (p. 16, with proof continuing through p. 30) supplies the spanning-tree decomposition used in the final proof. The defect was located publicly in the problem’s discussion thread: on 25 March 2026 Tao observed that the invocation of Lemma 8 there is unjustified and that the flow lines need not organise into connected trees, and on 26 March 2026 the manuscript’s author agreed that the statement of Proposition 12 itself, not only its printed proof, is incorrect, and set the strategy aside. Section <a href="#sec:gap" data-reference-type="ref" data-reference="sec:gap">5</a> records an independent diagnosis of the same failure through the local three-ended saddle model, together with possible repairs. No counterexample to the proposition is exhibited there. Pendyala’s independent June 2026 preprint \[june2026, Thm. 1, p. 1\] proves the degree-four case. The quartic theorem does not close the problem.
 
 The object we work with is not the lemniscate directly but the flow that foliates it.
 
@@ -51,6 +51,93 @@ The object we work with is not the lemniscate directly but the flow that foliate
 | Coefficient perturbation and slack stability | Open | Must first create injective critical values and preserve the component, collars and length budget. |
 | Reeb decomposition and length fan-in | Open | The two surviving producers. |
 | Random search to degree $`10`$ | Verified finite instances | Upper bounds for sampled configurations only. |
+
+<a id="sec:frontier"></a>
+
+# The current frontier: what survives near Fekete configurations
+
+The August 29 public research update changes the useful first reading of this problem. It does not add a proof of Erdős #1041; it identifies the geometric regime in which the remaining difficulty is concentrated and kills several attractive but false shortcuts. The source of the update is pinned to commit [`f214a6b4`](https://github.com/wcook04/plectis-lean-erdos249-257/tree/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041) and the dated synthesis is [`FRONTIER.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/FRONTIER.md). The distinctions below are part of the result: a theorem, a refutation, a certificate, and a measurement do not have interchangeable force.
+
+<a id="near-fekete-stability-removes-the-radial-distraction"></a>
+
+## Near-Fekete stability removes the radial distraction
+
+Write $`a_i=\rho_i u_i`$, with $`|u_i|=1`$, and put $`D=|\operatorname{disc}(f)|/n^n`$. The quantitative Fekete–Hadamard estimate in [`NearFeketeRadialAngularSplit.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md) says that, when $`D\ge1-\eta`$ and $`\eta\le1/(80n^2)`$,
+``` math
+1-\rho_i^2\le \frac{n\eta}{n-1},\qquad
+  |a_i-a_j|\ge \frac{2-2\sqrt\eta-n\eta}{n-1},
+```
+and the roots lie within $`7\sqrt\eta`$ of a rotated regular $`n`$-gon, after a bijection. The mechanism is a normalised Vandermonde Gram determinant: near equality in Hadamard’s inequality forces both the radii and the angular separation to be near extremal. This is an ordinary mathematical result in the public research corpus, not a new Lean declaration.
+
+The associated radial monotonicity theorem is the more important reader conclusion. Under the stronger near-Fekete condition $`\eta\le1/(10n^4)`$ used by this corollary, replacing the radii by one can only increase the values along the corresponding radial spoke. Thus radial deficits help containment; the unresolved near-Fekete problem is angular. On exact regular-gon directions this becomes unconditional for $`n\le6`$: arbitrary radii in the stated band give
+``` math
+|f(s\,\omega\zeta^i)|\le1-s^n
+ \quad(0\le s\le\rho_i),
+```
+so every two-radii path is contained. The good spoke in the general on-circle averaging identity may move with $`s`$, however; that is why an existence statement at one level does not supply a fixed pair of roots.
+
+<a id="the-degree-five-target-is-now-explicit"></a>
+
+## The degree-five target is now explicit
+
+The degree-five analysis sharpens the two-nearest-spoke threshold. If a critical point $`c`$ satisfies $`|f(c)|\le1/M_n`$, then both straight segments to the two nearest roots remain in $`\{|f|\le1\}`$ and their total length is at most $`2`$. The envelope is obtained by maximising the exact product along the second spoke; at degree five,
+``` math
+M_5=(1-t_*)(1+t_*)^3\sqrt{16t_*^2-4t_*+1},
+ \qquad
+ t_*={5\over16}+{3\sqrt{105}\over80},
+ \qquad
+ {1\over M_5}=0.2760461\ldots.
+```
+This is an 11-fold improvement over the earlier deep-low threshold, but it does not assert that every quintic has a critical value below this level.
+
+The exact remaining degree-five statement is therefore not “improve the constant” but the following selection problem:
+
+> For every monic quintic with roots in the closed unit disc, there is a critical point $`c`$ with $`|f(c)|\le1`$ and two roots $`a,b`$ such that $`|f|\le1`$ on $`[c,a]\cup[c,b]`$ and $`|c-a|+|c-b|\le2`$.
+
+The public file calls this (SPOKE-5). Together with the existing two-segment reduction it would settle degree five, but (SPOKE-5) is not proved. Coverage experiments put the residual in rapid, nearly simultaneous merging near the regular pentagon: the generic sampled families were covered, whereas the surviving band has every named merge threshold active and $`D`$ near $`1`$. Those percentages locate the work; they are not a theorem.
+
+At the same degree, the terminal connected component admits a sharper area identity. If $`K_t=\{|f|\le t\}`$ is connected and the centred exterior map is
+``` math
+\psi(\zeta)=t^{1/n}\zeta+a_0+
+ \sum_{k\ge1}a_k\zeta^{-k},
+```
+then Grönwall’s identity gives
+``` math
+\operatorname{Area}(K_t)=\pi\left(t^{2/n}-
+ \sum_{k\ge1}k|a_k|^2\right),
+ \qquad
+ a_1=-\frac{c_{n-2}}{n\,t^{1/n}}
+ \quad\text{after centring}.
+```
+It replaces a Pólya upper bound at that terminal node, but extending it to proper components and connecting it to the parent theorem remains open. The degree-five statements and their evidence classes are recorded in [`Degree5AssemblyAndSharpenedCuts.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/Degree5AssemblyAndSharpenedCuts.md).
+
+<a id="the-no-go-boundaries-force-hub-selection"></a>
+
+## The no-go boundaries force hub selection
+
+The same frontier is useful because it closes off three misleading readings. First, the strict-argmin first-merge hub need not have two-arm length below $`2`$. A degree-five tie-locus witness, moved into the open unit disc, has
+``` math
+L(c_*)=2.0573432753\ldots>2,
+```
+with a 50-digit two-instrument reconstruction and a margin about 97 times that of the earlier degree-four witness. This is computational certificate evidence, not an exact rational theorem; the parent remains viable because a different hub at the same configuration supplies the relevant pair. Second, the aggregate estimate $`\sum_cL(c)\le2(n-1)R`$ is refuted at degree four on an open violating region and at one degree-five witness. Its algebraic factor
+``` math
+\sum_{k=1}^{n-1}|f(c_k)|^{1/n}\le(n-1)R
+```
+survives as a separate conjecture, but the metric factor is not automatic. These two boundaries, including the distinction between the surviving algebraic half and the dead aggregate, are in [`MinimalHubArmBudgetRefutation.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/MinimalHubArmBudgetRefutation.md) and [`SeparatrixAggregateReduction.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/SeparatrixAggregateReduction.md).
+
+Third, the origin is not a uniform near-Fekete hub. An exact rational quintic with roots scaled by $`999999/1000000`$ has four of five origin spokes escaping $`\{|f|\le1\}`$ at explicit rational sample points, even though $`1-D=3.19991\cdot10^{-4}`$. Consequently no fixed $`\eta`$-neighbourhood of the Fekete locus can force two contained origin spokes in degree five. The mechanism is angular: the first several Fourier modes can point against different spokes. The certificate is exact for the displayed witness; the claim that the phenomenon persists throughout a limiting family is computational. The full witness and replay route are in [`NearFeketeRadialAngularSplit.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md).
+
+<a id="the-surviving-carrier-and-the-actual-open-endpoint"></a>
+
+## The surviving carrier and the actual open endpoint
+
+What survives these refutations is not a fixed hub but a selector. On the ray-separated dense class, the public frontier records the canonical open row
+``` math
+\min_{c\ \mathrm{admissible}} L(c)\le2,
+```
+where admissibility includes the two inverse-ray arms being contained in the relevant lemniscate component. Its measured values remain below $`2`$ at the refuting configurations, and the existing attachment and lower semicontinuity reductions would turn this row into the parent theorem. No proof of the row is currently available. In particular, the nonzero hub that rescues the origin-spoke witnesses is evidence for the selector, not a universal construction.
+
+The honest current endpoint is therefore a containment selector with three separate obligations: choose the hub, keep both arms inside the component, and control the metric fan-in. The Lean module cited elsewhere in this note checks the Newton value equation, ray-collision avoidance, and root-retention inputs; the new frontier files above are ordinary proof, exact-certificate, and computational research records, not formal authority for (SPOKE-5), the no-go generalisations, or the parent theorem. Keeping those authority boundaries visible is part of making the frontier reusable.
 
 <a id="sec:newton"></a>
 
@@ -104,7 +191,7 @@ The cost of that condition is also checked, and it is small.
 
 </div>
 
-So each pair of critical values contributes a one-real-parameter forbidden locus in the translation plane, given in closed form (*translated same positive ray parameterization*). A finite union of such loci has empty interior, which is the shape one wants for an avoidance argument. Turning that into a perturbation of $`f`$ is not immediate: the translation model must be replaced by an actual perturbation of the roots that keeps them inside $`\mathbb{D}`$ and preserves the length slack. That is the first open producer of §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">6</a>.
+So each pair of critical values contributes a one-real-parameter forbidden locus in the translation plane, given in closed form (*translated same positive ray parameterization*). A finite union of such loci has empty interior, which is the shape one wants for an avoidance argument. Turning that into a perturbation of $`f`$ is not immediate: the translation model must be replaced by an actual perturbation of the roots that keeps them inside $`\mathbb{D}`$ and preserves the length slack. That is the first open producer of §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">7</a>.
 
 <a id="sec:gap"></a>
 
@@ -297,13 +384,13 @@ Erdős #1041 remains open. The source now publicly verifies the Newton kernel, 
 
 Every word of this manuscript was generated by agents based on large language models operating within Will Cook’s private research system for artificial intelligence. The formal proofs and repository software were likewise drafted and revised by the agents through that system under Cook’s direction. Cook set the objectives and acceptance criteria, selected and reviewed the public claims, and approved the published version. Cook assumes responsibility for the accuracy, interpretation, and presentation of the work. Generative systems are production tools, not authors, and supply no independent authority.
 
-Lean does not authorise the exposition, the citation choices, or the interpretation, for which the author remains responsible. This manuscript is authored exposition, not Lean proof authority. The checked core is the Newton value equation, the exponential first integral, the consumer form of ray separation, the finite planar-avoidance theorem, quantitative constant-translation root retention, and the ray-collision parameterisation. The decomposition and length statements of §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">6</a> are not proved. The diagnosis of Proposition 12 in §<a href="#sec:gap" data-reference-type="ref" data-reference="sec:gap">4</a> concerns its printed local saddle construction; it does not refute the proposition’s statement. The search results of §<a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">5</a> are computations.
+Lean does not authorise the exposition, the citation choices, or the interpretation, for which the author remains responsible. This manuscript is authored exposition, not Lean proof authority. The checked core is the Newton value equation, the exponential first integral, the consumer form of ray separation, the finite planar-avoidance theorem, quantitative constant-translation root retention, and the ray-collision parameterisation. The decomposition and length statements of §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">7</a> are not proved. The diagnosis of Proposition 12 in §<a href="#sec:gap" data-reference-type="ref" data-reference="sec:gap">5</a> concerns its printed local saddle construction; it does not refute the proposition’s statement. The search results of §<a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">6</a> are computations.
 
 <a id="app:sources"></a>
 
 # Guide to the formal sources
 
-The public `ErdosProblems.Erdos1041.NewtonFlowRaySeparation` module contains the checked source for this note. The search of §<a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">5</a> is `scripts/search_counterexample.py` in the source package. The declaration table below is pinned to the shared formal-source commit used throughout this problem-note series.
+The public `ErdosProblems.Erdos1041.NewtonFlowRaySeparation` module contains the checked source for this note. The search of §<a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">6</a> is `scripts/search_counterexample.py` in the source package. The declaration table below is pinned to the shared formal-source commit used throughout this problem-note series.
 
 - [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L34)
 
