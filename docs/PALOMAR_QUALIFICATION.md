@@ -31,9 +31,9 @@ explicit parameter closure. The exact source declaration is at
 the preceding source lines.
 
 The value-selection record starts from the committed claims review matrix,
-which currently contains 64 source families (the 60-family dispatch baseline
+which currently contains 65 source families (the 60-family dispatch baseline
 plus the newly canonical actual-LCM, weighted-phase-carry, dyadic-tail
-classification, and Boolean–Möbius carry families), and eight targeted theorem-forest
+classification, Boolean–Möbius carry, and totient carry anti-compression families), and eight targeted theorem-forest
 discoveries. Each source family has an explicit selected, represented,
 deferred, subordinate, rejected, or long-tail disposition, with support and
 contrary evidence, cheapest probe, stop evidence, hard mechanism,
@@ -185,9 +185,10 @@ alongside canonical-carry-kernel rank at least `2^e - 1` at every level. This
 is one orbit-level conjunction, not a second coefficient-side rank family. The
 modulo-`v` forcing-vanishing and geometric-orbit mechanisms preserve the natural
 friction: periodicity alone yields no finite-`Q`-rank upper bound or
-contradiction. The transport is committed at `4932144a`, but its canonical
-claims-family identity and Comparator registration remain pending, so the
-candidate is deferred and is not an endpoint proof.
+contradiction. The transport is committed at `4932144a`, and canonical claims commit
+`f063b15e` binds the canonical `totient_carry_anti_compression` claims family,
+while Comparator registration remains pending. The candidate is represented
+for ranked review and is not an endpoint proof.
 
 This selection explicitly resists underclaim: a classical theorem is not
 demoted merely because it is already known or because another row has a more
@@ -201,7 +202,7 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`4932144ada05d6c617f43a372ede18a56900df7b` at the start of this semantic
+`2bbd6867c4e6781e22e36819112fd4b0c6585426` at the start of this semantic
 population pass. This observation records source currency; it is not a
 release lock or terminal validation claim:
 

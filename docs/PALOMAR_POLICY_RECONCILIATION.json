@@ -133,7 +133,7 @@
   },
     "current_repository": {
       "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-      "observed_head_before_product": "4932144ada05d6c617f43a372ede18a56900df7b",
+      "observed_head_before_product": "2bbd6867c4e6781e22e36819112fd4b0c6585426",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -174,15 +174,15 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-    "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 64 families (the 60-family dispatch baseline plus canonical actual-LCM, first-harmonic, weighted-phase-carry, dyadic-tail classification, Boolean–Möbius carry, and sharp height-and-Padé evidence) and eight targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 42-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
+    "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 65 families (the 60-family dispatch baseline plus canonical actual-LCM, first-harmonic, weighted-phase-carry, dyadic-tail classification, Boolean–Möbius carry, canonical totient carry anti-compression, and sharp height-and-Padé evidence) and eight targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 42-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "d65f41e13f7c704d3bd48dab595e1813191e58289d90934805b1ab1cf9eba14d",
-      "review_family_count": 64,
+      "review_matrix_sha256": "e17b48a45a689b42b058a3fb4fe49d68e18fb1761dd459d0d52f8f90b7acc9ff",
+      "review_family_count": 65,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
         "first_harmonic_pivot",
@@ -334,10 +334,10 @@
       },
       {
         "candidate_id": "erdos249_carry_anti_compression",
-        "family_id": "totient_carry_anti_compression_pending_canonical",
-        "disposition": "deferred",
-        "prior_disposition": "not_yet_canonical",
-        "canonical_family_binding": "Pending canonical claims adjudication; proposed totient_carry_anti_compression may consolidate into an existing totient_carry_kernel_anti_compression family rather than create a duplicate.",
+        "family_id": "totient_carry_anti_compression",
+        "disposition": "represented",
+        "prior_disposition": "deferred_pending_canonical_claims",
+        "canonical_family_binding": "totient_carry_anti_compression (canonical claim id: totient_carry_kernel_anti_compression)",
         "comparator_eligibility": "committed_source_transport_pending_comparator_registration",
         "queue_role": "source_landscape_review_not_comparator_evidence",
         "source_declaration": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank; Erdos249257.finrank_canonicalCarryKernel_ge; Erdos249257.carrySectionsEventuallyPeriodicMod_of_shift_dvd; Erdos249257.totient_forcing_vanishes_mod_of_dvd_multiplier; Erdos249257.totient_carry_modEq_geometric_of_dvd_multiplier",
@@ -346,7 +346,7 @@
         "source_transport_commit": "4932144ada05d6c617f43a372ede18a56900df7b",
         "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
         "transport_declarations": ["Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"],
-        "transport_admission_boundary": "The source-faithful representative is committed in ExternalVerification at 4932144a, but the candidate remains outside evidence until verification/comparator.json registration and canonical review matrix family adjudication. Supporting carry-kernel, modular-periodicity, forcing-vanishing, and geometric-orbit rows are mechanisms and contrary evidence, not separate families.",
+        "transport_admission_boundary": "The source-faithful representative is committed in ExternalVerification at 4932144a and the canonical review matrix binds totient_carry_anti_compression; it remains outside Comparator evidence until verification/comparator.json registration. Supporting carry-kernel, modular-periodicity, forcing-vanishing, and geometric-orbit rows are mechanisms and contrary evidence, not separate families.",
         "statement": "Under the non-irrationality branch for the binary totient series, a positive multiplier v and tempered integral carry u exist with common eventual modular periodicity for every dyadic section, while the canonical carry-kernel rank is at least 2^e - 1 at every level.",
         "exact_hypotheses": [
           "The representative assumes ¬ Irrational (binaryCoeffSeries Nat.totient), with the exact positive multiplier, tempered integer carry, and dyadic-section definitions from TotientTailCarryPeriod.lean.",
@@ -355,18 +355,18 @@
         ],
         "conclusion": "Hypothetical rationality forces uniform modular eventual periodicity of dyadic sections together with canonical carry-kernel rank at least 2^e - 1 for every level.",
         "hard_mechanism": "The orbit-level conjunction couples common modular periodicity under a rationality-supplied multiplier with finite-level anti-compression rank growth; the forcing-vanishing and geometric-orbit lemmas show why periodicity alone does not yield a finite-Q-rank upper bound.",
-        "attribution": "This is the source-current Erdos #249 transport from TotientTailPeriod.lean:224, committed in the three-file ExternalVerification batch at 4932144a; novelty, priority, significance, and external-review claims remain unassessed pending canonical claims adjudication.",
+        "attribution": "This is the source-current Erdos #249 totient_carry_anti_compression family from TotientTailCarryPeriod.lean:224, canonically recorded under claim id totient_carry_kernel_anti_compression at f063b15e and transported in the three-file ExternalVerification batch at 4932144a; novelty, priority, significance, and external-review claims remain unassessed.",
         "limitations": [
           "This is a necessary consequence of non-irrationality only: it gives no contradiction, no bound on the rationality-supplied carry rank, and no #249 irrationality proof.",
           "Forcing can vanish modulo a divisor of v and the resulting carry orbit can be geometric, so modular periodicity does not by itself imply a finite-Q-rank upper bound.",
-          "The canonical family identity is pending claims-owner adjudication; the supporting carry-kernel rank and modular mechanisms must not be counted as separate families or confused with the coefficient-side totient_kernel family."
+          "The canonical claims matrix binds this as one coherent family; the supporting carry-kernel rank and modular mechanisms must not be counted as separate families or confused with the coefficient-side totient_kernel family."
         ],
         "source_landscape_rank_relative_to": "Provisional endpoint-facing review: below completed unconditional endpoint families and below actual-LCM/first-harmonic conditional producer routes, but above routine coefficient-side rank inventory because it isolates a distinct orbit-level modular-periodicity plus anti-compression conjunction.",
-        "ranking_status": "Awaiting canonical claims-family identity and Comparator admission; this provisional review is not a selected candidate and does not replace the full-support selection.",
+        "ranking_status": "Canonical source-landscape family; awaiting Comparator admission. It is represented for ranked review, is not selected, and does not replace the full-support selection.",
         "ranked_below": ["known_irrational_supports", "actual_lcm_orbit_separation", "first_harmonic_pivot_decomposition"],
         "ranked_above": ["totient_kernel_rank"],
-        "reason": "Deferred for canonical family adjudication and Comparator registration: the committed row is endpoint-facing and mathematically distinct, but the claims owner may consolidate it into an existing anti-compression family. Its contrary modulo-forcing boundary prevents any endpoint or finite-rank claim.",
-        "reversal_evidence": "Canonical claims should either bind one coherent totient_carry_anti_compression family or explicitly consolidate it into totient_carry_kernel_anti_compression, followed by source-faithful Comparator registration; a proof of contradiction or a finite-Q-rank upper bound would change its value disposition."
+        "reason": "Represented after canonical claims adjudication: the source-current transport is endpoint-facing and mathematically distinct as an orbit-level modular-periodicity plus anti-compression conjunction. It remains below the unconditional full-support and conditional producer routes because the contrary modulo-forcing boundary gives no endpoint or finite-rank contradiction, and Comparator registration remains separate evidence.",
+        "reversal_evidence": "A source-faithful Comparator registration would strengthen evidence certainty; a proof of contradiction or a finite-Q-rank upper bound would change its value disposition, while a routine coefficient-side restatement would not."
       },
       {
         "candidate_id": "erdos243_centered_state_recovery",

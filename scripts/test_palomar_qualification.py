@@ -185,9 +185,9 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert universe["authority"] == (
         "HEAD:docs/claims.json::external_verification_packet.review_matrix"
     )
-    assert universe["source_review_family_count"] == 64
+    assert universe["source_review_family_count"] == 65
     assert universe["source_review_family_count_at_dispatch"] == 60
-    assert len(universe["source_review_family_ids"]) == 64
+    assert len(universe["source_review_family_ids"]) == 65
     assert set(universe["source_family_dispositions"]) == set(
         universe["source_review_family_ids"]
     )
@@ -402,8 +402,8 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     ]
     assert "no universal Erdős #257 irrationality" in " ".join(boolean["limitations"])
     anti = landscape_by_id["erdos249_carry_anti_compression"]
-    assert anti["family_id"] == "totient_carry_anti_compression_pending_canonical"
-    assert anti["disposition"] == "deferred"
+    assert anti["family_id"] == "totient_carry_anti_compression"
+    assert anti["disposition"] == "represented"
     assert anti["comparator_eligibility"] == (
         "committed_source_transport_pending_comparator_registration"
     )
@@ -412,7 +412,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
     ]
     assert "finite-Q-rank upper bound" in " ".join(anti["limitations"])
-    assert "canonical claims-family identity" in anti["ranking_status"]
+    assert "Canonical source-landscape family" in anti["ranking_status"]
 
 
 def test_adversarial_source_transport_family_merge_is_not_silently_accepted() -> None:
