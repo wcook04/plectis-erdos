@@ -94,6 +94,22 @@ exact rational-base cleared-tail recurrence and the $3/2$
 coordinatewise-corridor exclusion with its nonempty-shift and nonempty-window
 hypotheses.}
 
+The selected cleared-tail Comparator row is an exact algebraic interface.  For
+arbitrary rationals $r,s,B,F$, an arbitrary coefficient stream
+$\mathit{coeff}\colon\mathbb N\to\mathbb Q$, $r\ne0$, and every $N\in\mathbb N$,
+\texttt{rationalBaseClearedTailQ\_succ} states
+\[
+ Q_{N+1}=rQ_N-B\,\mathit{coeff}(N+1)s^{N+1},
+\]
+where $Q_N$ is the rational-base cleared-tail state.  Its forcing term is
+therefore part of the exact identity, not an approximation or an irrationality
+claim.  The companion row
+\texttt{threeHalves\_no\_coordinatewiseCorridor} assumes only $N\ge1$ and
+$K\ge1$ and excludes the specific predicate
+\texttt{CoordinatewiseCorridor}$(3,2,N,K,Q,\mathit{digit})$.  Together these
+rows rule out this literal clearing shape at $3/2$ while leaving other
+linear-form or clearing architectures, and the irrationality question, open.
+
 \section{Introduction}\label{sec:problem}
 
 Let $t>1$ be a rational number and let $\tau(n)$ count the divisors of $n$.
