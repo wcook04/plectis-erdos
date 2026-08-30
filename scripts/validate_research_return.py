@@ -167,7 +167,10 @@ OVERCLAIM_RE = re.compile(
 # declaration to the return frontier so a copied command cannot silently
 # provide evidence for a different problem.
 PROBLEM_SELECTOR_RE = re.compile(r"(?<![A-Za-z0-9_])--problem(?:=|\s+)(\d+)(?!\d)")
-PROBLEMS = {68, 243, 249, 251, 257, 269, 1041, 1049}
+# Route-memory receipt owns the frozen public roster used by return intake.
+# Reusing it keeps selector validation aligned with the canonical route
+# authority instead of maintaining a second set that can drift.
+PROBLEMS = route_memory_receipt.ROSTER
 RESULT_CLASSES = {"checked_positive", "negative", "inconclusive", "corrective"}
 CLAIM_CEILINGS = {
     "formalized_proposition",

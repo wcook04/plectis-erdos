@@ -45,6 +45,10 @@ def main() -> int:
     fixture = json.loads(FIXTURE.read_text(encoding="utf-8"))
     identity = validator.repository_identity_contract.load_identity()
     require(
+        validator.PROBLEMS is validator.route_memory_receipt.ROSTER,
+        "return selector roster must reuse route-memory authority",
+    )
+    require(
         validator.GIT_COMMAND_TIMEOUT_SECONDS
         == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
         "return validator Git timeout drifted from the canonical boundary",
