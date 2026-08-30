@@ -35,6 +35,32 @@ jobs:
   warm:
     runs-on: ubuntu-24.04
     timeout-minutes: 180
+    # Keep direct Lake/Git commands on the same environment-neutral contract
+    # as the single-flight release workers. Empty selectors override any
+    # inherited checkout/object mapping without hiding the active checkout.
+    env:
+      GIT_CONFIG_NOSYSTEM: "1"
+      GIT_CONFIG_GLOBAL: /dev/null
+      GIT_OPTIONAL_LOCKS: "0"
+      GIT_NO_REPLACE_OBJECTS: "1"
+      GIT_PAGER: cat
+      GIT_TERMINAL_PROMPT: "0"
+      GIT_ASKPASS: /bin/false
+      GIT_DIR: ""
+      GIT_WORK_TREE: ""
+      GIT_INDEX_FILE: ""
+      GIT_NAMESPACE: ""
+      GIT_REPLACE_REF_BASE: ""
+      GIT_OBJECT_DIRECTORY: ""
+      GIT_ALTERNATE_OBJECT_DIRECTORIES: ""
+      GIT_COMMON_DIR: ""
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      LANGUAGE: C.UTF-8
+      PYTHONHASHSEED: "0"
+      PYTHONNOUSERSITE: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
