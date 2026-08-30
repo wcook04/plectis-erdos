@@ -855,6 +855,22 @@ theorem no_eventuallyPeriodicNegative_orbit
   (portfolioClaims Unit).problem243Periodic a D C e N h M hh hM ha hepos helt
     hD hC hshape hperiod hphase
 
+theorem boundedNegativePart_eventually_zero
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ) (B : ℕ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hcentered : ∀ n, Int.natAbs (E n) < C n)
+    (hbound : ∀ n, -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 := by
+  simpa [centeredState, ErdosProblems.Erdos243.centeredState] using
+    ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
+      a C D E B ha hCpos hC hD hE hcentered hbound hvanish
+
 theorem finrank_totientKernelThroughLevelFamily_eq (e : ℕ) (he : 1 ≤ e) :
     finrank ℚ
       (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =
