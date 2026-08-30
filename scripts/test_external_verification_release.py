@@ -192,7 +192,10 @@ def test_fixture_git_environment() -> None:
     )
     with patch.dict(os.environ, hostile_environment, clear=False):
         with patch.object(subprocess, "run", return_value=completed) as runner:
-            require(git(Path("/fixture"), "rev-parse", "HEAD") == "fixture", "fixture Git read failed")
+            require(
+                release.git(Path("/fixture"), "rev-parse", "HEAD") == "fixture",
+                "fixture Git read failed",
+            )
 
     kwargs = runner.call_args.kwargs
     environment = kwargs["env"]

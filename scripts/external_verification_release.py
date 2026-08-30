@@ -23,6 +23,8 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTRACT_PATH = Path("verification/external-verification-release-contract.json")
@@ -127,6 +129,8 @@ def git(root: Path, *args: str) -> str:
         capture_output=True,
         text=True,
         check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
     if completed.returncode != 0:
         raise ReleaseIdentityError(
