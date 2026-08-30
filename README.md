@@ -40,12 +40,11 @@ All eight remain open. Pass is mechanism-first:
 - A distinct adaptive-CRT extension handles every infinite pairwise-coprime
   support with summable reciprocal mass ([source](Erdos249257/CertificateKernel.lean));
   its structured-support hypotheses do not settle arbitrary infinite support.
-- A deeper support route proves the base-2 series irrational under an explicit
-  finite-core orthogonal-petal bouquet and uniform tail-selection predicate
-  ([source](Erdos249257/SupportSunflowerDichotomy.lean)). Those structural
-  hypotheses are the unresolved selector: neither is constructed for arbitrary
-  supports, so this remains a conditional reduction rather than another
-  settled support family.
+- A deeper #257 route is conditional: a finite-core orthogonal-petal bouquet plus
+  `SunflowerForcedSlotTailSelection` yields base-2 irrationality
+  ([consumer](ExternalVerification/Challenge.lean#L396); [source](Erdos249257/SupportSunflowerDichotomy.lean#L540)).
+  The bouquet/selector are not constructed for arbitrary supports; this is not
+  universal #257.
 - A separate coefficient-class theorem proves irrationality when a rational
   weight sequence is nonnegative, eventually periodic, and positive at a
   positive index in its periodic tail; denominator clearing feeds a periodic

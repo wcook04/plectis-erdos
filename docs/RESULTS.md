@@ -31,6 +31,7 @@ pass, the high-signal spine is:
   series under a finite-core orthogonal-petal bouquet plus the uniform
   `SunflowerForcedSlotTailSelection` predicate
   (`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`,
+  `ExternalVerification/Challenge.lean:396`,
   `Erdos249257/SupportSunflowerDichotomy.lean:540`); the selector and bouquet
   are not constructed for arbitrary supports. A separate direct result covers
   nonnegative rational eventually periodic coefficient sequences with a
