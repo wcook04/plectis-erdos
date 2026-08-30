@@ -26,6 +26,13 @@ against the same problem-index and corpus snapshot, use
 and evidence routes only: they do not promote research rows into the reviewed
 claim registry or Comparator, and they do not close #1041.
 
+For the full reader-facing frontier across all eight programmes, use the
+generated [external-verification dossier](docs/EXTERNAL_VERIFICATION.md). It
+keeps the distinct result families, evidence classes, exact Comparator
+dispositions, and surviving open boundaries together; it is a projection for
+verification navigation, not a replacement for `docs/claims.json` or Lean
+proof authority.
+
 ## What the corpus is, by shape
 
 Size is not evidence; re-derive shapes with
