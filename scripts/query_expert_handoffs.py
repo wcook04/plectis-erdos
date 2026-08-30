@@ -119,11 +119,49 @@ def route_memory_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def problem_route_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
+    """Expose the canonical problem packet without inventing a programme route."""
+    raw_problem = row.get("problem")
+    token = str(raw_problem).strip() if isinstance(raw_problem, (str, int)) else ""
+    if not re.fullmatch(r"\d+", token) or token not in FROZEN_PROBLEMS:
+        return {
+            "status": "unbound",
+            "authority_posture": (
+                "derived_problem_navigation_not_claim_or_proof_authority"
+            ),
+            "boundary": (
+                "The expert question does not select a public problem route; no "
+                "problem route was invented."
+            ),
+            "unbound_reason": (
+                "question does not carry one of the frozen public problem selectors"
+            ),
+        }
+    return {
+        "status": "bound",
+        "problem_number": int(token),
+        "command": f"python3 scripts/query_corpus.py --route erdos_{token}",
+        "authority_posture": (
+            "derived_problem_navigation_not_claim_or_proof_authority"
+        ),
+        "identity_contract": (
+            "The canonical problem route expands the paper record, every "
+            "review-matrix result family, declaration handles where supplied, "
+            "and exact open obligations."
+        ),
+        "boundary": (
+            "This problem route is navigation context only; it does not bind an "
+            "expert question to a programme route or promote a claim."
+        ),
+    }
+
+
 def respondent_view(row: dict[str, Any]) -> dict[str, Any]:
     """Return the handoff without evaluator-only expected answers."""
     if row.get("domain") != SYSTEMS_DOMAIN:
         view = dict(row)
         view["route_memory"] = route_memory_handoff(row)
+        view["problem_route"] = problem_route_handoff(row)
         return view
     return {
         key: value
@@ -170,6 +208,7 @@ def compact_respondent_view(row: dict[str, Any]) -> dict[str, Any]:
     }
     if row.get("domain") == MATH_DOMAIN:
         result["route_memory"] = route_memory_handoff(row)
+        result["problem_route"] = problem_route_handoff(row)
     return result
 
 

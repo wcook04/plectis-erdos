@@ -75,6 +75,15 @@ def test_mathematical_handoff_exposes_selector_without_route_invention() -> None
         )
         assert "current source digests" in route_memory["identity_contract"]
         assert "no resume route was invented" in route_memory["unbound_reason"]
+        problem_route = packet["problem_route"]
+        assert problem_route["status"] == "bound"
+        assert problem_route["problem_number"] == 249
+        assert problem_route["command"] == (
+            "python3 scripts/query_corpus.py --route erdos_249"
+        )
+        assert "every review-matrix result family" in problem_route[
+            "identity_contract"
+        ]
 
     invalid = handoffs.route_memory_handoff(
         {"domain": handoffs.MATH_DOMAIN, "problem": "249/257"}
@@ -83,6 +92,11 @@ def test_mathematical_handoff_exposes_selector_without_route_invention() -> None
     assert invalid["bindings"] == []
     assert "command" not in invalid
     assert "frozen public problem selectors" in invalid["unbound_reason"]
+    invalid_problem_route = handoffs.problem_route_handoff(
+        {"domain": handoffs.MATH_DOMAIN, "problem": "249/257"}
+    )
+    assert invalid_problem_route["status"] == "unbound"
+    assert "command" not in invalid_problem_route
 
 
 def main() -> int:
@@ -99,12 +113,21 @@ def main() -> int:
         assert len(row["current_evidence"]) >= 2
         assert len(row["discriminating_evidence"]) >= 2
         assert row["detail_command"].endswith(row["id"])
+        if row["domain"] == handoffs.MATH_DOMAIN:
+            assert row["problem_route"]["status"] == "bound"
+            assert row["problem_route"]["command"].startswith(
+                "python3 scripts/query_corpus.py --route erdos_"
+            )
+        else:
+            assert "problem_route" not in row
 
     for question in handoffs.all_questions():
         detail = handoffs.question_packet(None, question["id"])
         assert detail["packet_kind"] == "full_question"
         assert detail["count"] == 1
         assert detail["results"][0]["id"] == question["id"]
+        if question["domain"] == handoffs.MATH_DOMAIN:
+            assert detail["results"][0]["problem_route"]["status"] == "bound"
 
     second_channel = next(
         row
