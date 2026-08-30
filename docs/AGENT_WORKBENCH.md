@@ -40,8 +40,9 @@ Three consequences fall out of this inversion:
 When a session begins from a problem number, read the matching row in the
 generated [problem index](problems.json), then follow the detailed
 [source map](SOURCE_MAP.md). The row supplies the question, status, paper
-note, module inventory, and open obligations; the source map supplies the
-bounded proof/paper/source traversal. The compact problem roster is:
+note, module inventory, paper/source coordinates, and open obligations; the
+source map supplies the bounded proof/paper/source traversal. The compact
+problem roster is:
 
 `#68 · #243 · #249 · #251 · #257 · #269 · #1041 · #1049`
 
@@ -54,17 +55,22 @@ python3 scripts/query_corpus.py --route erdos_<n>
 ```
 
 The packet returns the problem question, public status, note, formal module
-coverage, and exact open-obligation handles. For #249 and #257, continue from
-the [source map](SOURCE_MAP.md#reviewed-problem-return-routes) to the reviewed
-result route and its registered claim/paper/source reverse links. For the
-source-only roots, the expansion table supplies the principal checked module
-and unresolved producer. The route is navigation evidence only; it does not
-promote problem-owned notes into reviewed claims or close an open problem.
+coverage, and exact open-obligation handles. Follow the matching row in
+`problems.json` for its `modules`, `paper`, `note.source_path`,
+`note.rendered_path`, and exact open-obligation statements, then use the
+[complete eight-problem return matrix](SOURCE_MAP.md#complete-eight-problem-return-matrix)
+for the strongest checked source, paper/source record, and exact frontier
+route. For #249 and #257, the matrix continues to the reviewed result route
+and its registered claim/paper/source reverse links. For #68, #243, #251,
+#269, and #1049, the same matrix supplies each source-only route's principal
+checked module and unresolved producer. The route is navigation evidence only;
+it does not promote problem-owned notes into reviewed claims or close an open
+problem.
 
 For the reviewed #249/#257 core, begin with `docs/orientation.json` and one
 typed `query_corpus.py` route. For #68, #243, #251, #269, and #1049, use the
-expansion-problem table in `SOURCE_MAP.md` to reach the principal checked
-module and the exact unresolved producer. For #1041, read the dated
+corresponding row in the complete return matrix to reach the principal checked
+module, paper/source record, and exact unresolved producer. For #1041, read the dated
 [`FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md) before its machine
 result map: it contains current refutations and surviving premise families
 that the older paper note does not enumerate. None of these dispatches
