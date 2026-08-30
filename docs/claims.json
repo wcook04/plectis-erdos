@@ -11898,6 +11898,17 @@
         "boundary": "The equivalence does not prove irrationality of either series."
       },
       {
+        "id": "dyadic_tail_integrality_classification",
+        "problem": 251,
+        "review_family": "dyadic_tail_integrality_classification",
+        "contribution_class": "abstract Lean-checked classification and normal form; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+        "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+        "statement": "For any integer-digit real dyadic tail recurrence T(N + 1) = 2*T(N) - g(N + 1), the initial value T(0) is irrational exactly when every positive-length tail shift is nonintegral.",
+        "boundary": "This exact normal form covers arbitrary integer-digit dyadic tail recurrences with the declared real state type; it does not supply a cofinal nonintegral shift for the consecutive-prime-gap recurrence. The prime-specific producer remains open, so no prime-gap irrationality, novelty, significance, or external-review claim is made and Erdős #251 remains open."
+      },
+      {
         "id": "mersenne_achievement_measure_one",
         "problem": 257,
         "review_family": "achievement_set_geometry",
@@ -12079,6 +12090,17 @@
         "wrapper_declaration": "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
         "statement": "The rational-base cleared tail obeys its exact first-order recurrence.",
         "boundary": "The recurrence is not derived from a rationality contradiction."
+      },
+      {
+        "id": "rectangular_hp_threshold",
+        "problem": 1049,
+        "review_family": "height_and_pade_arithmetic",
+        "contribution_class": "locally proved sharp model-specific no-go; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff",
+        "original_source": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff",
+        "statement": "For the explicit rectangular two-function exponent model, with real rho and sigma satisfying 0 <= rho and 1 + rho <= sigma, the threshold equals 1/2 - 1/pi^2 exactly when rho = 0 and sigma = 1.",
+        "boundary": "This is a sharp no-go only for the explicit rectangular two-function model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Pade or Hermite-Pade no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
       }
     ],
     "review_matrix": [
