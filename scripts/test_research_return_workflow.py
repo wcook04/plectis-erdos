@@ -36,6 +36,7 @@ REPRODUCIBILITY_ENV = (
     'PYTHONUTF8: "1"',
     'PATH: "/usr/local/bin:/usr/bin:/bin"',
     'LC_ALL: "C.UTF-8"',
+    'LANGUAGE: "C.UTF-8"',
 )
 
 REQUIRED_COMMANDS = (
