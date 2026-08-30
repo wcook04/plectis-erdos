@@ -20,6 +20,24 @@ import validation_singleflight as singleflight
 ROOT = Path(__file__).resolve().parent.parent
 QUERY = ROOT / "scripts" / "query_corpus.py"
 PUBLIC_PROBLEM_IDS = (68, 243, 249, 251, 257, 269, 1041, 1049)
+UNSUPPORTED_RESULT_CLAIM_PHRASES = (
+    "proves irrationality",
+    "establishes irrationality",
+    "proving the #",
+    "proves the #",
+    "solves erdos",
+    "settles erdos",
+    "proves the problem",
+    "settles #",
+    "solves #",
+    "proves universal erdos",
+    "proves universal erdős",
+    "novel result",
+    "novel contribution",
+    "first proof",
+    "first to prove",
+    "new theorem",
+)
 
 
 def safe_read_path(root: Path, relative: str) -> Path:
@@ -274,6 +292,13 @@ def portfolio_visibility_errors(packet: dict[str, object]) -> list[str]:
             errors.append(f"problem {problem} result boundary lacks an explicit claim ceiling")
         if any(token in boundary for token in ("solves erdos", "settles erdos", "proves the problem")):
             errors.append(f"problem {problem} result boundary overclaims closure")
+        for field in ("statement", "boundary"):
+            claim_text = str(row.get(field, "")).casefold()
+            if any(phrase in claim_text for phrase in UNSUPPORTED_RESULT_CLAIM_PHRASES):
+                errors.append(
+                    f"problem {problem} result {result_id} overclaims endpoint or novelty "
+                    f"in {field}"
+                )
         by_problem[problem].append(row)
 
     for problem, rows in by_problem.items():
@@ -466,11 +491,56 @@ def main() -> int:
         "private portfolio source mutation was accepted",
     )
 
+    targeted_endpoint_mutations = {
+        "factorial_nonunit_carry_equivalence": (
+            "The factorial-denominator series is irrational, proving the #68 endpoint."
+        ),
+        "prime_gap_irrationality_equivalence": (
+            "The prime-value series is irrational, proving the #251 endpoint."
+        ),
+        "erdos_support_pairwise_coprime": (
+            "This proves universal Erdos #257 for every infinite support."
+        ),
+        "totient_kernel_finite_rank": (
+            "The finite-rank identity proves irrationality of the binary totient series "
+            "and settles #249."
+        ),
+        "bounded_negative_exclusion": (
+            "The reduced-tail exclusion proves irrationality of the #243 series."
+        ),
+    }
+    for result_id, statement in targeted_endpoint_mutations.items():
+        mutated = deepcopy(verification_packet)
+        target = next(row for row in mutated["main_results"] if row["id"] == result_id)
+        target["statement"] = statement
+        require(
+            any(
+                f"result {result_id} overclaims endpoint or novelty" in error
+                for error in portfolio_visibility_errors(mutated)
+            ),
+            f"endpoint mutation for {result_id} was accepted",
+        )
+
+    novel_mutation = deepcopy(verification_packet)
+    novel_target = next(
+        row
+        for row in novel_mutation["main_results"]
+        if row["id"] == "totient_kernel_finite_rank"
+    )
+    novel_target["statement"] = "This is a novel contribution to the #249 endpoint."
+    require(
+        any(
+            "result totient_kernel_finite_rank overclaims endpoint or novelty" in error
+            for error in portfolio_visibility_errors(novel_mutation)
+        ),
+        "unsupported novelty mutation was accepted",
+    )
+
     print(
         "test_public_artifact_boundary: first-contact surfaces reject "
         "private or unpublished proof authority and novelty inference; "
         "portfolio visibility preserves all eight problems and multiple "
-        "source-bound strong results; 11 negative fixtures rejected"
+        "source-bound strong results; 17 negative fixtures rejected"
     )
     return 0
 
