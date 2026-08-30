@@ -865,6 +865,13 @@ theorem actualLcm_integral_forces_topEdgeResidue
       windowDiscrepancy H (H + J) K % P < P :=
   (portfolioClaims Unit).problem249ActualLcmTopEdgeResidue ha hshort hd hroom
 
+theorem scaleFullTarget_miss_of_projected_separation
+    {H D : ℕ} (hcontrol : ControlledForeignProjection H D)
+    (hseparation : ProjectedFullTargetSeparation H D) :
+    ¬ScaleFullTargetHit H :=
+  (portfolioClaims Unit).problem249ActualForeignResidueProjection.2.2
+    hcontrol hseparation
+
 theorem irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses :
     Irrational factorialGapSeries ↔
       ∀ B : ℕ, ∃ m : ℕ,
