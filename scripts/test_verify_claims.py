@@ -150,8 +150,49 @@ def check_gate_timeout_contract() -> None:
     )
 
 
+def check_optional_tool_discovery_contract() -> None:
+    """Optional gate availability must ignore a hostile caller PATH."""
+    observed_paths: list[str | None] = []
+
+    def fake_which(tool: str, mode: int = os.F_OK, path: str | None = None) -> None:
+        del tool, mode
+        observed_paths.append(path)
+        return None
+
+    hostile = {"PATH": "/private/host-tools/bin"}
+    with patch.dict(os.environ, hostile, clear=False):
+        with patch.object(verify_claims.shutil, "which", side_effect=fake_which):
+            require(
+                not verify_claims.optional_tool_available("cffconvert"),
+                "hostile optional-tool lookup unexpectedly reported availability",
+            )
+    require(len(observed_paths) == 1, "optional-tool discovery made an unexpected lookup count")
+    require(
+        observed_paths[0]
+        == os.pathsep.join((str(Path(sys.executable).resolve().parent), os.defpath)),
+        "optional-tool discovery consulted ambient PATH",
+    )
+
+    calls: list[str] = []
+    with patch.object(
+        verify_claims,
+        "optional_tool_available",
+        side_effect=lambda tool: calls.append(tool) or False,
+    ):
+        with patch.object(verify_claims, "git_output", return_value=None):
+            verify_claims.describe_environment({})
+        with patch.object(
+            verify_claims,
+            "run",
+            return_value=subprocess.CompletedProcess([], 0, "", ""),
+        ):
+            verify_claims.run_gates({"shallow_clone": True})
+    require(calls.count("cffconvert") == 2, "both optional-gate consumers must use the isolated lookup")
+
+
 def main() -> int:
     check_gate_timeout_contract()
+    check_optional_tool_discovery_contract()
     failures: list[str] = []
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)

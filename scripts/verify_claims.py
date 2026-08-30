@@ -150,6 +150,17 @@ def clean_environment() -> dict[str, str]:
     return singleflight.command_environment()
 
 
+def _optional_tool_search_path() -> str:
+    """Find optional tools beside this interpreter, then on canonical system PATH."""
+    interpreter_bin = str(Path(sys.executable).resolve().parent)
+    return os.pathsep.join((interpreter_bin, clean_environment()["PATH"]))
+
+
+def optional_tool_available(tool: str) -> bool:
+    """Resolve optional tools without consulting the caller's ambient PATH."""
+    return shutil.which(tool, path=_optional_tool_search_path()) is not None
+
+
 def run(
     argv: list[str],
     *,
@@ -251,7 +262,9 @@ def describe_environment(claims: dict[str, Any]) -> dict[str, Any]:
         },
         "head": git_output("rev-parse", "HEAD"),
         "missing_optional_tools": sorted(
-            tool for tool in set(OPTIONAL_TOOL_GATES.values()) if shutil.which(tool) is None
+            tool
+            for tool in set(OPTIONAL_TOOL_GATES.values())
+            if not optional_tool_available(tool)
         ),
         "blocks": blocks,
     }
@@ -671,7 +684,7 @@ def run_gates(environment: dict[str, Any]) -> dict[str, Any]:
     for path in sorted(scripts_dir.glob("check_*.py")):
         name = path.name
         needed = OPTIONAL_TOOL_GATES.get(name)
-        if needed and shutil.which(needed) is None:
+        if needed and not optional_tool_available(needed):
             results.append({"gate": name, "outcome": "blocked", "reason": f"requires {needed}"})
             continue
         if environment["shallow_clone"] and name in HISTORY_DEPENDENT_GATES:
