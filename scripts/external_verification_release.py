@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -37,17 +38,56 @@ class ReleaseIdentityError(RuntimeError):
     """Raised when a candidate is not an immutable, reproducible release."""
 
 
+def _is_allowed_platform_alias(path: Path) -> bool:
+    """Permit the host's canonical temporary-directory aliases only."""
+    try:
+        aliases = {
+            Path("/var"): Path("/private/var"),
+            Path("/tmp"): Path("/private/tmp"),
+        }
+        return path in aliases and path.resolve(strict=True) == aliases[path]
+    except OSError:
+        return False
+
+
+def safe_release_file(path: Path, *, root: Path | None = None) -> Path:
+    """Return a regular file without following a symlinked path component.
+
+    Repository inputs must remain inside ``root``.  The separately produced
+    runtime receipt has no such root, but still cannot be supplied through a
+    symlink.  macOS's ``/var`` and ``/tmp`` aliases are the only permitted
+    platform indirections for that external asset.
+    """
+    root_path = Path(os.path.abspath(root)) if root is not None else None
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            if not _is_allowed_platform_alias(current):
+                raise ReleaseIdentityError(f"symlinked release input: {path}")
+            current = current.resolve(strict=True)
+        if root_path is not None and current == root_path:
+            break
+        if current.parent == current:
+            if root_path is None:
+                break
+            raise ReleaseIdentityError(f"release input escaped checkout: {path}")
+        current = current.parent
+    if not candidate.is_file():
+        raise ReleaseIdentityError(f"required release input is not a regular file: {path}")
+    return candidate
+
+
 def sha256_bytes(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
 
 
-def sha256_file(path: Path) -> str:
-    if not path.is_file():
-        raise ReleaseIdentityError(f"required file is absent: {path}")
-    return sha256_bytes(path.read_bytes())
+def sha256_file(path: Path, *, root: Path | None = None) -> str:
+    return sha256_bytes(safe_release_file(path, root=root).read_bytes())
 
 
-def load_json(path: Path) -> dict[str, Any]:
+def load_json(path: Path, *, root: Path | None = None) -> dict[str, Any]:
+    path = safe_release_file(path, root=root)
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -79,7 +119,7 @@ def full_sha(value: Any, field: str) -> str:
 
 
 def contract(root: Path) -> dict[str, Any]:
-    value = load_json(root / CONTRACT_PATH)
+    value = load_json(root / CONTRACT_PATH, root=root)
     if value.get("schema") != "erdos-external-verification-release-contract/1":
         raise ReleaseIdentityError("unsupported external-verification release contract")
     pins = value.get("toolchain")
@@ -129,7 +169,7 @@ def exact_source_identity(
 
 
 def expected_config(root: Path, relative_path: str) -> dict[str, Any]:
-    value = load_json(root / relative_path)
+    value = load_json(root / relative_path, root=root)
     names = value.get("theorem_names")
     if not isinstance(names, list) or not names or not all(
         isinstance(name, str) and name for name in names
@@ -184,7 +224,9 @@ def validate_runtime_receipt(
         raise ReleaseIdentityError("runtime receipt theorem set differs from comparator.json")
     if statement.get("permitted_axioms") != config.get("permitted_axioms"):
         raise ReleaseIdentityError("runtime receipt axiom budget differs from comparator.json")
-    if statement.get("config_digest") != sha256_file(root / "verification/comparator.json"):
+    if statement.get("config_digest") != sha256_file(
+        root / "verification/comparator.json", root=root
+    ):
         raise ReleaseIdentityError("runtime receipt config digest is stale")
 
     checks = receipt.get("checks")
@@ -211,7 +253,7 @@ def artifact_rows(
         rows.append(
             {
                 "path": relative,
-                "sha256": sha256_file(path),
+                "sha256": sha256_file(path, root=root),
                 "immutable_url": f"{repository}/blob/{source_commit}/{relative}",
             }
         )
@@ -254,7 +296,7 @@ def build_manifest(
         },
         "contract": {
             "path": str(CONTRACT_PATH),
-            "sha256": sha256_file(root / CONTRACT_PATH),
+            "sha256": sha256_file(root / CONTRACT_PATH, root=root),
             "immutable_url": f"{repository}/blob/{source_commit}/{CONTRACT_PATH}",
         },
         "toolchain": release_contract["toolchain"],
@@ -308,7 +350,9 @@ def validate_manifest(
         "immutable_url", ""
     ):
         raise ReleaseIdentityError("manifest contract URL is not commit-pinned")
-    if manifest.get("contract", {}).get("sha256") != sha256_file(root / CONTRACT_PATH):
+    if manifest.get("contract", {}).get("sha256") != sha256_file(
+        root / CONTRACT_PATH, root=root
+    ):
         raise ReleaseIdentityError("release contract digest differs from checkout")
     if manifest.get("toolchain") != release_contract["toolchain"]:
         raise ReleaseIdentityError("manifest toolchain differs from release contract")
@@ -324,9 +368,7 @@ def validate_manifest(
         source_tree=source_tree,
         release_contract=release_contract,
     )
-    if manifest.get("runtime_receipt", {}).get("sha256") != sha256_file(
-        runtime_receipt_path
-    ):
+    if manifest.get("runtime_receipt", {}).get("sha256") != sha256_file(runtime_receipt_path):
         raise ReleaseIdentityError("manifest runtime-receipt digest is stale")
     expected_names = [
         release_contract["release_assets"]["runtime_receipt_pattern"].format(

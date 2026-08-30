@@ -60,6 +60,31 @@ def expect_error(action, fragment: str) -> None:
         raise AssertionError(f"expected ReleaseIdentityError containing {fragment!r}")
 
 
+def test_release_file_boundary() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        private = root / "private"
+        private.mkdir()
+        (private / "secret.json").write_text("{}\n", encoding="utf-8")
+        repository = root / "verification"
+        repository.mkdir()
+        (repository / "linked").symlink_to(private, target_is_directory=True)
+        expect_error(
+            lambda: release.load_json(
+                repository / "linked" / "secret.json", root=root
+            ),
+            "symlinked release input",
+        )
+        external = root / "external-receipt.json"
+        external.write_text("{}\n", encoding="utf-8")
+        link = root / "receipt-link.json"
+        link.symlink_to(external)
+        expect_error(
+            lambda: release.load_json(link),
+            "symlinked release input",
+        )
+
+
 def test_fixture_git_environment() -> None:
     """Synthetic release repositories must ignore ambient Git/runtime state."""
     hostile_environment = {
@@ -441,6 +466,7 @@ def test_release_manifest() -> None:
 
 
 def main() -> int:
+    test_release_file_boundary()
     test_fixture_git_environment()
     test_receipt_subprocess_environment()
     test_replay_subprocess_environment()
