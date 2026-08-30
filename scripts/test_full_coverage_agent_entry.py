@@ -4,14 +4,24 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 import query_corpus
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep the environment contract active when Python is run with -O."""
+    if not condition:
+        raise AssertionError(message)
 
 
 def run_query(*args: str) -> dict:
@@ -21,8 +31,55 @@ def run_query(*args: str) -> dict:
         check=True,
         capture_output=True,
         text=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
     return json.loads(completed.stdout)
+
+
+def check_query_environment() -> None:
+    """Prove cold-clone overview queries ignore ambient process selectors."""
+    hostile_environment = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "refs/namespaces/wrong-release",
+        "GIT_REPLACE_REF_BASE": "refs/replace/",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = subprocess.CompletedProcess(
+        [sys.executable, "scripts/query_corpus.py"],
+        0,
+        stdout="{}",
+        stderr="",
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(subprocess, "run", return_value=completed) as run:
+            require(run_query("--overview") == {}, "query result was not returned")
+
+    require(len(run.call_args_list) == 1, "overview query was not exercised")
+    kwargs = run.call_args.kwargs
+    sanitized = kwargs["env"]
+    for key in (
+        "GIT_DIR",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+        "PYTHONPATH",
+    ):
+        require(key not in sanitized, f"ambient {key} leaked into overview query")
+    require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale missing")
+    require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
+    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into overview query")
+    require(
+        kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "overview query timeout drifted",
+    )
+    require(
+        ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "full-coverage query environment contract drifted",
+    )
 
 
 def assert_complete(packet: dict) -> None:
@@ -68,6 +125,7 @@ def assert_complete(packet: dict) -> None:
 
 
 def main() -> int:
+    check_query_environment()
     explicit = run_query("--overview")
     ordinary = run_query(
         "--ask",
