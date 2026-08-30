@@ -76,6 +76,15 @@ truncation; if that family is linearly independent, the truncation has dimension
 $k^e+1$.  The independence input is external, so this conditional rank statement
 is structural and does not prove irrationality of $\Stot$.
 
+For release review, the selected dyadic core rows are exact:
+\texttt{finrank\_totientKernelThroughLevelFamily\_eq} gives dimension
+$2^e+1$ for every $e\ge1$, while
+\texttt{exists\_totientDyadicSectionBasis} supplies a basis for the full
+odd-core span.  The companion row
+\texttt{not\_finiteDimensional\_span\_fullTotientKernel} records that the
+full rational span is not finite-dimensional.  These are structural
+coefficient-space results, not a rationality-to-finite-rank bridge.
+
 The same checked Lambert calculus also identifies the squared-Mersenne layer:
 the constant weight gives the dyadic divisor-count series
 \(\sum_{n\ge1}(\sigma(n)-\tau(n))2^{-n}\), while the totient weight gives
