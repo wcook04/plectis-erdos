@@ -63,14 +63,14 @@ This order projects Palomar's mathematical `candidate_ranking`; it is independen
    - **Source and evidence.** [Lean source](../Erdos249257/FirstHarmonicPivot.lean); The source theorem, canonical review family, and exact Comparator endpoint wrapper are committed; the cofinal decorrelation producer is explicitly absent.
    - **Boundary.** The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed. **Overclaim risk.** High unless DTWPivotResidualDecorrelation remains attached as an unproved cofinal premise; this is not an unconditional #249 result.
 
-7. **Factorial carry irrationality equivalence** (<code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries</code>; `subordinate`)
+7. **Factorial carry characterisation** (<code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries</code>; `subordinate`)
    - **Reader tier.** exact reduction or structural result
    - **Consequence.** Maximal endpoint proximity for #68, but it does not prove the cofinal producer.
    - **Load-bearing mechanism.** The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.
    - **Source and evidence.** [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean); Exact committed source and Comparator transport are available.
    - **Boundary.** The equivalence does not supply a cofinal carry producer. **Overclaim risk.** High if the equivalence is mistaken for a cofinal carry proof.
 
-8. **Prime gap dyadic equivalence** (<code>Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap</code>; `subordinate`)
+8. **Prime gap reformulation** (<code>Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap</code>; `subordinate`)
    - **Reader tier.** exact reduction or structural result
    - **Consequence.** Very close to #251's target but proves neither side irrational and retains a summability premise.
    - **Load-bearing mechanism.** The key mechanism is summation-by-parts normalization; the target irrationality remains open.
