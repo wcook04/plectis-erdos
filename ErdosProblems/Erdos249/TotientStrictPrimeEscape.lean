@@ -405,6 +405,59 @@ theorem cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic
     dsimp [z] at hnormSq hreHalf hrepos ⊢
     nlinarith
 
+/-- Every positive-shift actual tail phase visits the closed left half-plane
+cofinally.  Unlike `TotientTailOrbitNonpositiveBlockDensity`, this asks for no
+positive density or dyadic-block control; unlike
+`DTWNaturalPrimeTailOrbitStrictGap`, it asks for no prime alignment. -/
+def TotientTailOrbitCofinalNonpositive : Prop :=
+  ∀ h : ℕ, 0 < h →
+    ∀ N₀ : ℕ, ∃ N ≥ N₀, (tailOrbitFirstExp h N).re ≤ 0
+
+/-- Irrationality makes every positive-shift initial angle non-dyadic, so
+doubling expansivity supplies cofinally many left-half-plane visits. -/
+theorem totientTailOrbitCofinalNonpositive_of_irrational
+    (hirr : Irrational
+      (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :
+    TotientTailOrbitCofinalNonpositive := by
+  intro h hh N₀
+  have hnd : ¬ IsDyadicReal
+      (((2 : ℝ) ^ h - 1) *
+        (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) := by
+    intro hdyadic
+    obtain ⟨k, hroot⟩ :=
+      (exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic h).2 hdyadic
+    have hkphase : tailOrbitFirstExp h k = 1 := by
+      rw [tailOrbitFirstExp_eq_initial_pow_two]
+      exact hroot
+    have hint :=
+      (tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int h k).1 hkphase
+    exact
+      (irrational_totient_series_iff_all_tail_diffs_nonintegral.1
+        hirr h hh k) hint
+  exact cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic h hnd N₀
+
+/-- **Exact qualitative orbit normal form for Erdős #249.**  Cofinal
+left-half-plane visits at every positive shift are equivalent to irrationality
+of the binary totient series.  If one tail difference were integral, its phase
+would be `1` and remain there forever, contradicting the cofinal visit for that
+same shift.  This equivalence does not prove the visit supply or promote
+unaligned visits to the stronger natural-prime condition. -/
+theorem totientTailOrbitCofinalNonpositive_iff_irrational :
+    TotientTailOrbitCofinalNonpositive ↔
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  constructor
+  · intro hsupply
+    apply irrational_totient_series_iff_all_tail_diffs_nonintegral.2
+    intro h hh N hint
+    have hphase : tailOrbitFirstExp h N = 1 :=
+      (tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int h N).2 hint
+    obtain ⟨M, hNM, hM⟩ := hsupply h hh N
+    have hphaseM : tailOrbitFirstExp h M = 1 :=
+      tailOrbitFirstExp_eq_one_of_le hNM hphase
+    rw [hphaseM] at hM
+    norm_num at hM
+  · exact totientTailOrbitCofinalNonpositive_of_irrational
+
 /-- The missing arithmetic bridge is now explicit: cofinally many nonpositive
 phases whose shifted indices are prime imply the existing strict prime-orbit
 gap.  Non-dyadicity alone proves the phase occurrence above, but not this prime
