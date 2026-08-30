@@ -220,7 +220,7 @@
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "59ef36f94727ab277efa119ed7913361f3cc2624448d17b57784639778cb35a5",
+      "review_matrix_sha256": "0837c12ffd4013262ac184e43478bc4554cb7236f986472adbd03bf346c93981",
       "review_family_count": 70,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
@@ -472,15 +472,15 @@
         "comparator_eligibility": "committed_source_faithful_transport",
         "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_transport_commit": "e7a58bb335dcb8b56c871a44fbae4d796196f26c",
-        "canonical_claim_commit": "bf4b77d6",
-        "source_declaration": "ErdosProblems.Erdos249.TotientTailOrbitBlockGap; ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity; ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity; ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap; ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "canonical_claim_commit": "d24fc09d1df0f3f3cce6ac3c14b0e3c90bc17232",
+        "source_declaration": "ErdosProblems.Erdos249.TotientTailOrbitBlockGap; ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity; ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity; ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap; ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.tailOrbitFirstExp_succ",
         "source_file": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
         "source_anchor": "25; 35; 45; 96; 157; 166; 205",
         "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
         "statement": "One coherent two-branch conditional producer turns an 11/100 nonpositive-phase density into an 89/100 block saving and a 9/10 finite certificate, or turns a cofinal natural-prime strict gap below 9/10 into adaptive pivot escape.",
         "hard_mechanism": "Unit norm and the complement estimate yield the exact phase-density saving; one 1/100 truncation budget gives the finite gap, while the prime branch uses a positive adaptive margin and exact natural-fibre membership.",
         "prerequisite_evidence": ["TotientTailOrbitNonpositiveBlockDensity", "DTWNaturalPrimeTailOrbitStrictGap"],
-        "support_evidence": ["11/100 phase density to 89/100 block mean", "1/100 truncation to 9/10 finite gap", "adaptive natural-prime pivot escape"],
+        "support_evidence": ["tailOrbitFirstExp_succ gives exact repeated squaring of the tail phase but no density or occurrence producer", "11/100 phase density to 89/100 block mean", "1/100 truncation to 9/10 finite gap", "adaptive natural-prime pivot escape"],
         "conditional_peer_evidence": ["actual_lcm_orbit_separation", "first_harmonic_pivot_decomposition"],
         "contrary_evidence": ["Nonintegrality alone supplies no fixed distance from the integers.", "No large-prime instance, orbit-density theorem, or equidistribution input is proved."],
         "limitations": ["The phase-density, cofinal natural-prime strict-gap, and uniform-margin producers are unproved.", "No unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim follows."],
@@ -522,8 +522,12 @@
         "ranking_status": "Canonical source-landscape family with committed Comparator evidence. It is represented for ranked review, is not selected, and does not replace the full-support selection.",
         "ranked_below": ["known_irrational_supports", "actual_lcm_orbit_separation", "first_harmonic_pivot_decomposition"],
         "ranked_above": ["totient_kernel_rank"],
-        "reason": "Represented after canonical claims adjudication and committed source-faithful Comparator fan-in: the source-current transport is endpoint-facing and mathematically distinct as an orbit-level modular-periodicity plus anti-compression conjunction. It remains below the unconditional full-support and conditional producer routes because the contrary modulo-forcing boundary gives no endpoint or finite-rank contradiction.",
-        "reversal_evidence": "A source-faithful Comparator registration would strengthen evidence certainty; a proof of contradiction or a finite-Q-rank upper bound would change its value disposition, while a routine coefficient-side restatement would not."
+        "prerequisite_evidence": ["Hypothetical non-irrationality supplies the positive multiplier and tempered integral carry used by the representative."],
+        "support_evidence": ["totient_kernel_rank supplies the coefficient-side finite-level rank mechanism but is strictly weaker than the orbit-level conjunction."],
+        "conditional_peer_evidence": ["strict_prime_tail_orbit_gap and totient_certificate_equivalences expose producer-side and endpoint-normal-form sockets, respectively, without duplicating this rationality consequence."],
+        "contrary_evidence": ["Modulo a divisor of the multiplier, totient forcing can vanish and the carry orbit can become geometric; eventual modular periodicity therefore gives no finite-Q-rank upper bound."],
+        "reason": "Promoted into the unequal top-ten Palomar ranking after the survivor audit: the committed source-current transport is endpoint-facing and mathematically distinct as an orbit-level modular-periodicity plus anti-compression conjunction, and is stronger than coefficient-side totient_kernel_rank alone. It remains below strict-prime, actual-LCM, and first-harmonic producer routes because the contrary modulo-forcing boundary gives no endpoint or finite-rank contradiction.",
+        "reversal_evidence": "A proof of contradiction or a finite-Q-rank upper bound would promote it; evidence that its orbit-level conjunction is derivable without hypothetical rationality would force reclassification, while another coefficient-side rank restatement would not."
       },
       {
         "candidate_id": "erdos249_fixed_precision_transport_no_go",

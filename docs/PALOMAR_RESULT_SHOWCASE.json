@@ -8,7 +8,7 @@
     "comparator_sha256": "afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
     "comparator_theorem_count": 48,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "59ef36f94727ab277efa119ed7913361f3cc2624448d17b57784639778cb35a5",
+    "source_review_matrix_sha256": "0837c12ffd4013262ac184e43478bc4554cb7236f986472adbd03bf346c93981",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -458,7 +458,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "59ef36f94727ab277efa119ed7913361f3cc2624448d17b57784639778cb35a5",
+    "source_review_matrix_sha256": "0837c12ffd4013262ac184e43478bc4554cb7236f986472adbd03bf346c93981",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -1255,9 +1255,9 @@
         "comparator_eligibility": "committed_source_faithful_transport",
         "queue_role": "source_landscape_review_with_committed_comparator_evidence",
         "source_transport_commit": "e7a58bb335dcb8b56c871a44fbae4d796196f26c",
-        "canonical_claim_commit": "bf4b77d6",
+        "canonical_claim_commit": "d24fc09d1df0f3f3cce6ac3c14b0e3c90bc17232",
         "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
-        "source_declaration": "ErdosProblems.Erdos249.TotientTailOrbitBlockGap; ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity; ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity; ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap; ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "source_declaration": "ErdosProblems.Erdos249.TotientTailOrbitBlockGap; ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity; ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity; ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap; ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap; ErdosProblems.Erdos249.tailOrbitFirstExp_succ",
         "source_file": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
         "source_anchor": "25; 35; 45; 96; 157; 166; 205",
         "statement": "This one coherent conditional producer has two branches: a late-dyadic-block density of nonpositive tail-orbit phases yields a 9/10 finite first-harmonic gap and certified-kill supply, while cofinally many prime indices with Re(tailOrbitFirstExp h (p - h - 1)) < 9/10 yield natural pivot-fibre escape and the same irrationality endpoint.",
@@ -1274,6 +1274,7 @@
           "DTWNaturalPrimeTailOrbitStrictGap is the unproved cofinal natural-prime producer for the adaptive branch."
         ],
         "support_evidence": [
+          "tailOrbitFirstExp_succ gives the exact repeated-squaring recurrence tailOrbitFirstExp h (M + 1) = (tailOrbitFirstExp h M)^2; it makes the orbit mechanism reviewable but supplies no density or strict-gap occurrence.",
           "Unit norm plus the complement estimate converts 11/100 nonpositive phases into the exact 89/100 block-mean bound.",
           "A single 1/100 truncation budget at endpoint 2X converts that infinite-orbit bound into the finite 9/10 certified-kill gap.",
           "The positive adaptive margin at a strict prime index feeds the exact natural pivot-fibre membership calculation."
@@ -1286,7 +1287,7 @@
           "Irrationality or nonintegrality by itself gives no fixed distance from the integers and therefore supplies neither strict-gap producer.",
           "The source proves no large-prime instance, equidistribution theorem, or actual-orbit density estimate."
         ],
-        "attribution": "These are source-current Erdős #249 declarations in TotientStrictPrimeEscape.lean, canonically registered as strict_prime_tail_orbit_gap by Claims commit bf4b77d6 and represented by the Comparator row landed at e7a58bb3. No novelty, priority, significance, or external-review claim is asserted.",
+        "attribution": "These are source-current Erdős #249 declarations in TotientStrictPrimeEscape.lean, canonically registered as strict_prime_tail_orbit_gap and extended with the subordinate tailOrbitFirstExp_succ support edge by Claims commit d24fc09d; the family is represented by the Comparator row landed at e7a58bb3. No novelty, priority, significance, or external-review claim is asserted.",
         "limitations": [
           "The late-block density antecedent, cofinal prime strict-gap antecedent, and required uniform separation supply are unproved for the actual totient orbit.",
           "Irrationality or nonintegrality alone gives no fixed distance from the integers, so certificate completeness cannot manufacture either producer predicate.",
@@ -1831,18 +1832,18 @@
     },
     {
       "rank": 10,
-      "declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
-      "family_id": "totient_kernel_rank",
-      "selection_status": "subordinate",
-      "mathematical_nontriviality": "A genuinely infinite-dimensional consequence of exact finite-level rank growth.",
-      "consequence_and_endpoint_proximity": "Important structural support for #249, but it does not prove irrationality or the missing cofinal certificate supply.",
-      "mechanism_depth_and_natural_friction": "The proof uses exact ranks 2^e+1 and a finite-dimensional contradiction.",
-      "genuinely_distinct_content_and_independence": "Independent kernel-rank route with clear separation from the analytic endpoint.",
-      "external_review_value": "High for structural review, with the relationship to prior non-k-regularity work disclosed.",
-      "proof_digestion_value": "Clarifies what rank growth does and does not buy for irrationality.",
-      "evidence_certainty": "Exact committed source and Comparator transport are available.",
-      "overclaim_risk": "Moderate if infinite-dimensionality is treated as an irrationality criterion.",
-      "why_not_ranked_first": "Its consequence is farther from a solved endpoint than the selected direct irrationality theorem."
+      "declaration": "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+      "family_id": "totient_carry_anti_compression",
+      "selection_status": "represented",
+      "mathematical_nontriviality": "Hypothetical non-irrationality forces one tempered integral carry whose every dyadic section is eventually periodic modulo a common multiplier while canonical carry-kernel ranks grow at least as 2^e - 1.",
+      "consequence_and_endpoint_proximity": "This is an orbit-level necessary consequence of the #249 rational branch, closer to the endpoint than coefficient-side kernel rank alone, but it derives no contradiction.",
+      "mechanism_depth_and_natural_friction": "The theorem couples modular orbit regularity with exponential finite-level anti-compression. Its natural friction is exact: modulo a divisor of the multiplier the forcing can vanish and the carry can become geometric, so periodicity supplies no finite-Q-rank upper bound.",
+      "genuinely_distinct_content_and_independence": "It is one coherent orbit-level conjunction, not a duplicate of the coefficient-side totient_kernel_rank family, strict-prime phase production, or certificate completeness.",
+      "external_review_value": "High because the rationality consequence and the failed contradiction route are both statement-isolated and adjacent.",
+      "proof_digestion_value": "It shows simultaneously what rationality would regularize and why that regularity does not compress the carry enough to contradict rank growth.",
+      "evidence_certainty": "The exact source theorem, canonical review family, and Comparator representative are committed; the missing finite-rank contradiction is explicit.",
+      "overclaim_risk": "High if modular periodicity and unbounded canonical-kernel rank are reported as incompatible; the source proves no such upper bound and no #249 irrationality.",
+      "why_not_ranked_first": "It outranks coefficient-side kernel inventory because it is tied directly to hypothetical rationality, but remains below the producer-side strict-prime, first-harmonic, and actual-LCM routes because it supplies neither a contradiction nor a certificate producer."
     }
   ],
   "candidate_selection": {
@@ -1931,7 +1932,13 @@
       "declaration": "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
       "family_id": "totient_kernel_rank",
       "disposition": "supporting_structural",
-      "reason": "Exact finite-level dyadic rank growth is strong #249 structure, but it does not provide the irrationality bridge or unbounded certificate supply."
+      "reason": "Exact finite-level dyadic rank growth is strong #249 structure and supports totient_carry_anti_compression, but it is weaker than that orbit-level rationality consequence and provides neither a contradiction nor unbounded certificate supply."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+      "family_id": "totient_kernel_rank",
+      "disposition": "supporting_structural",
+      "reason": "Infinite-dimensionality is the coefficient-side consequence of exact kernel-rank growth; it supports anti-compression but is farther from hypothetical rationality and gives no finite-rank contradiction or certificate producer."
     },
     {
       "declaration": "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
@@ -2094,12 +2101,6 @@
       "family_id": "rational_base_tail_recurrence",
       "disposition": "supporting_exact_recurrence",
       "reason": "The cleared-tail recurrence is exact rational-base infrastructure, but no contradiction or irrationality consequence is derived."
-    },
-    {
-      "declaration": "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
-      "family_id": "totient_carry_anti_compression",
-      "disposition": "supporting_conditional_anti_compression",
-      "reason": "The committed representative preserves the orbit-level modular-periodicity and finite-level rank-growth conjunction under hypothetical rationality; it supplies no contradiction or finite-Q-rank upper bound."
     },
     {
       "declaration": "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",

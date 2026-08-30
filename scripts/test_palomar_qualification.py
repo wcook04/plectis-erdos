@@ -537,6 +537,11 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     )
     assert "TotientTailOrbitNonpositiveBlockDensity" in strict_prime["source_declaration"]
     assert "DTWNaturalPrimeTailOrbitStrictGap" in strict_prime["source_declaration"]
+    assert "tailOrbitFirstExp_succ" in strict_prime["source_declaration"]
+    assert strict_prime["canonical_claim_commit"] == (
+        "d24fc09d1df0f3f3cce6ac3c14b0e3c90bc17232"
+    )
+    assert "repeated-squaring" in " ".join(strict_prime["support_evidence"])
     assert "11/100" in " ".join(strict_prime["exact_hypotheses"])
     assert "9/10" in strict_prime["statement"]
     assert "cofinal prime" in " ".join(strict_prime["limitations"])
@@ -677,6 +682,21 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     ]
     assert "finite-Q-rank upper bound" in " ".join(anti["limitations"])
     assert "Canonical source-landscape family" in anti["ranking_status"]
+    ranked_by_family = {
+        row["family_id"]: row for row in showcase["candidate_ranking"]
+    }
+    assert ranked_by_family["totient_carry_anti_compression"]["rank"] == 10
+    assert "totient_kernel_rank" not in ranked_by_family
+    anti_screen = [
+        row for row in showcase["candidate_screening"]
+        if row["family_id"] == "totient_carry_anti_compression"
+    ]
+    assert anti_screen == []
+    kernel_screen = next(
+        row for row in showcase["candidate_screening"]
+        if row["family_id"] == "totient_kernel_rank"
+    )
+    assert "supports totient_carry_anti_compression" in kernel_screen["reason"]
     fixed = landscape_by_id["erdos249_fixed_precision_transport_no_go"]
     assert fixed["family_id"] == "fixed_precision_transport_no_go"
     assert fixed["disposition"] == "represented"

@@ -300,7 +300,8 @@ gap and certified-kill socket. Its separate
 `Re(tailOrbitFirstExp h (p - h - 1)) < 9/10`, which yields a positive adaptive
 margin and exact natural-fibre membership. The block-density, cofinal-prime,
 and uniform-margin supplies are unproved for the actual orbit. The family is
-canonically registered by Claims commit `bf4b77d6` and admitted by Comparator
+canonically registered, with its current support edge, by Claims commit
+`d24fc09d` and admitted by Comparator
 transport `e7a58bb3`, but admission does not close either producer. It ranks
 below `actual_lcm_orbit_separation` and
 `first_harmonic_pivot_decomposition`, whose source-specific quantitative
@@ -312,6 +313,13 @@ distance from the integers. No large-prime instance, orbit-density theorem,
 or equidistribution input is present. The route proves no unconditional #249
 irrationality or endpoint and makes no novelty, priority, significance, or
 external-review claim.
+
+`tailOrbitFirstExp_succ` is subordinate mechanism evidence inside that same
+family. Its exact recurrence
+`tailOrbitFirstExp h (M + 1) = (tailOrbitFirstExp h M)^2` identifies the phase
+orbit as repeated squaring and sharpens the producer question; it is not a new
+review family, density estimate, strict-gap occurrence, or certificate
+producer.
 
 These dispositions compare consequence, endpoint proximity, hard mechanism,
 distinctness, evidence certainty, natural friction, digestion value, and
@@ -334,8 +342,28 @@ modulo-`v` forcing-vanishing and geometric-orbit mechanisms preserve the natural
 friction: periodicity alone yields no finite-`Q`-rank upper bound or
 contradiction. The transport is committed at `4932144a`, and canonical claims commit
 `f063b15e` binds the canonical `totient_carry_anti_compression` claims family,
-while Comparator registration is now current. The candidate is represented
-for ranked review and is not an endpoint proof.
+while Comparator registration is now current. The complete survivor audit
+places this family at rank 10, above coefficient-side `totient_kernel_rank`
+because it is tied directly to hypothetical non-irrationality. It remains
+below `strict_prime_tail_orbit_gap`, `first_harmonic_pivot_decomposition`, and
+`actual_lcm_orbit_separation`: those are producer-side routes, whereas
+anti-compression supplies neither a finite-`Q`-rank upper bound nor a
+certificate producer. `totient_certificate_equivalences` is an endpoint
+normal form, not a substitute producer. The candidate is represented for
+ranked review and is not an endpoint proof.
+
+The same audit retained the other named survivors without uniform promotion.
+`negative_mass_recovery` is a high-signal analytic #243 recovery criterion but
+assumes summability and the full dynamics; `half_membership_seam_classification`
+remains above the one-way `boolean_mobius_exact_row_dynamics` route but below
+unconditional endpoints because neither occurrence nor cofinal skip supply is
+proved; `small_mismatch_criterion` is actual-prime-gap specialized but assumes
+the cofinal small-mismatch producer. For #269, `conditional_carry_escape` is a
+more endpoint-facing conditional consumer, but lacks both cofinal escape and
+the actual-series bridge, while `weighted_phase_carry_observer` retains the
+reusable residue/coboundary mechanism with an uncontrolled quotient
+coboundary and no endpoint. These relations keep the long tail queryable
+without promoting helpers or conditional consumers into solved problems.
 
 The retained #249 fixed-precision transport no-go is now represented in the
 same committed screen. Its representative
