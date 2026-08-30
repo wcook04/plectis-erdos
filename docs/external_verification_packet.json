@@ -475,6 +475,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "small_mismatch_criterion",
+      "problem": 251,
+      "review_family": "small_mismatch_criterion",
+      "contribution_class": "conditional actual-prime-gap endpoint reduction; novelty and significance unassessed",
+      "original_declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+      "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+      "statement": "For the actual prime-gap dyadic tail, cofinally many adjacent pairs of strictly small h-shifts with unequal corresponding prime gaps force failure of eventual RatIntegral h-shifts.",
+      "boundary": "The representative assumes T : ℕ → ℚ, the DyadicTailRecurrence for the actual prime-gap digits, and for every N₀ an N ≥ N₀ whose adjacent h-shifts both lie strictly in (-1, 1) while the corresponding prime gaps differ. Under that cofinal small-mismatch supply it excludes eventual RatIntegral h-shifts; it does not prove the supply or actual smallness. rationalPrimeGapTail_has_positive_shift_not_eventually_small records the contrary rational-state obstruction for at least one positive shift. This is a conditional reduction only: no #251 irrationality, infinite rational-sum limit, universal producer, novelty, priority, significance, or external-review claim is made; #251 remains open. The actual-prime-gap specialization is distinct from coefficient_only_no_go and does not duplicate prime_gap_reformulation.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "mersenne_achievement_measure_one",
       "problem": 257,
       "review_family": "achievement_set_geometry",
@@ -1101,11 +1115,18 @@
         },
         {
           "id": "small_mismatch_criterion",
-          "contribution_class": "conditional reduction",
-          "summary": "Cofinal adjacent small mismatches would rule out eventual integral shifts for the prime-gap tail.",
-          "evidence_mode": "Lean kernel",
-          "comparator_disposition": "not_selected_open_producer_hypothesis",
-          "boundary": "The cofinal mismatch producer is unproved."
+          "contribution_class": "conditional actual-prime-gap endpoint reduction; novelty and significance unassessed",
+          "summary": "For the actual prime-gap dyadic tail, cofinally many adjacent pairs of strictly small h-shifts with unequal corresponding prime gaps force failure of eventual RatIntegral h-shifts. The adjacent-pair zero obstruction is the load-bearing mechanism; exact non-eventual periodicity of consecutive prime gaps supplies the actual-prime-gap contrast.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+            "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch",
+            "ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne",
+            "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
+            "ErdosProblems.Erdos251.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+          ],
+          "boundary": "The representative assumes T : ℕ → ℚ, the DyadicTailRecurrence for the actual prime-gap digits, and for every N₀ an N ≥ N₀ whose adjacent h-shifts both lie strictly in (-1, 1) while the corresponding prime gaps differ. Under that cofinal small-mismatch supply it excludes eventual RatIntegral h-shifts; it does not prove the supply or actual smallness. rationalPrimeGapTail_has_positive_shift_not_eventually_small records the contrary rational-state obstruction for at least one positive shift. This is a conditional reduction only: no #251 irrationality, infinite rational-sum limit, universal producer, novelty, priority, significance, or external-review claim is made; #251 remains open. The actual-prime-gap specialization is distinct from coefficient_only_no_go and does not duplicate prime_gap_reformulation."
         },
         {
           "id": "coefficient_only_no_go",
@@ -2560,7 +2581,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:fb0e4033c820f8a8a1fd14accbfce7842dc1f34fa024fd1bd93285d4575762e0",
+    "digest": "sha256:717ea9ea612d42807ac1409c33efcb2ea4250f988651505b8dd975ac6f85a1a9",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2568,6 +2589,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:8ab02c8c7b2e953a7e8dc8fa4305ef52cba80f7e3e570473e3932eb265e5a900",
-  "solution_source_digest": "sha256:45d605824cec22c7275d58c9d48748a207a2b8ae14b2f845d38782d2995a3601"
+  "config_digest": "sha256:44c4cb6e455b1d35f80b4f8f69027e07f1b8e2b1a8ca9dbee75c64325740b29b",
+  "solution_source_digest": "sha256:1da414d3e8672345376a0fa628f7fe85a4836053864fdf6e7b58bd80d86badd5"
 }
