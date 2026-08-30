@@ -101,6 +101,11 @@ replacement for claim authority.
   (`ErdosProblems/Erdos68/FactorialZeroPlateau.lean:876`) whose evaluation is an external
   computation, not a kernel result.
 - Open: produce infinitely many non-unit carries.
+- A parallel carry form makes the same boundary explicit: irrationality is
+  equivalent to cofinally many non-unit carries
+  (`irrational_factorialGapSeries_iff_cofinal_nonunit_carries`,
+  `ErdosProblems/Erdos68/FactorialZeroPlateau.lean`). The equivalence supplies
+  no cofinal carry producer, so #68 remains open.
 
 **#243 — does rationality force eventual Sylvester recurrence?**
 
@@ -118,6 +123,11 @@ replacement for claim authority.
   `ErdosProblems/Erdos243/SparseResetRecovery.lean:155`,
   `ErdosProblems/Erdos243/SparseResetRecovery.lean:175`). Checked conditional theorems; the
   note concedes its absorption and descent lemmas as Koizumi prior art.
+- A separate no-go rules out an eventually periodic negative-error orbit when
+  the phase growth is positive
+  (`no_eventuallyPeriodicNegative_orbit`,
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean`). It does not cover
+  arbitrary unbounded negative behaviour, so the mixed-sign boundary remains.
 - Open: the unbounded mixed-sign regime.
 
 **#249 — is `∑ φ(n)/2ⁿ` irrational? (reviewed core)**
