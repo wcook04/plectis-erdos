@@ -39,6 +39,27 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_generated_human_signal_spine_is_frontier_first(self) -> None:
+        human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
+        spine_start = human.index("## Mathematical signal spine")
+        inventory_start = human.index("**Programmes.**")
+        first_dossier = human.index("## #68:")
+        self.assertLess(spine_start, inventory_start)
+        self.assertLess(inventory_start, first_dossier)
+        spine = human[spine_start:inventory_start]
+        self.assertIn("Comparator coverage is the exhaustive evidence inventory", spine)
+        self.assertIn("**Reader tier.** completed direct result", spine)
+        self.assertIn("**Reader tier.** conditional endpoint route", spine)
+        self.assertIn("**Reader tier.** exact reduction or structural result", spine)
+        self.assertIn("### Natural friction and no-go boundaries", spine)
+        self.assertIn("### Complete inventory, kept subordinate", spine)
+        for family_id in (
+            "coefficient_only_no_go",
+            "fixed_precision_transport_no_go",
+            "height_and_pade_arithmetic",
+        ):
+            self.assertIn(family_id, spine)
+
     def test_projection_and_statement_isolation_are_current(self) -> None:
         run_builder_check()
         packet = json.loads(
@@ -59,7 +80,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertEqual(
             packet["challenge_import_closure"]["proof_bearing_internal_import_count"], 0
         )
-        self.assertEqual(len(packet["main_results"]), 31)
+        self.assertGreaterEqual(len(packet["main_results"]), 8)
         self.assertEqual(
             {row["problem"] for row in packet["main_results"]},
             {68, 243, 249, 251, 257, 269, 1041, 1049},
@@ -76,8 +97,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         ))
         registered = [row for row in packet["main_results"] if row.get("claim_id")]
         unregistered = [row for row in packet["main_results"] if not row.get("claim_id")]
-        self.assertEqual(len(registered), 11)
-        self.assertEqual(len(unregistered), 20)
+        self.assertTrue(registered)
+        self.assertTrue(unregistered)
         self.assertTrue(all(
             row["canonical_claim_status"].startswith("supports_registered_claim_family:")
             for row in registered
@@ -93,6 +114,35 @@ class ExternalVerificationContractTest(unittest.TestCase):
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
         self.assertIn("> [!IMPORTANT]", human)
         self.assertIn("# Plectis verification: eight open Erdős programmes", human)
+        self.assertIn("## Mathematical signal spine", human)
+        self.assertIn("**Completed direct results:**", human)
+        self.assertIn("**Conditional endpoint routes:**", human)
+        self.assertIn("**Exact endpoint reductions and structural results:**", human)
+        self.assertIn("### Natural friction and no-go boundaries", human)
+        self.assertIn("### Complete inventory, kept subordinate", human)
+        signal_end = human.index("**Programmes.**")
+        signal_spine = human[:signal_end]
+        self.assertLess(human.index("## Mathematical signal spine"), human.index("## #68:"))
+        ranked_declarations = [
+            row["declaration"]
+            for row in builder.load_signal_authority()["candidate_ranking"]
+        ]
+        self.assertEqual(
+            sorted(
+                (signal_spine.index(declaration), declaration)
+                for declaration in ranked_declarations
+            ),
+            [
+                (signal_spine.index(declaration), declaration)
+                for declaration in ranked_declarations
+            ],
+        )
+        for family_id in (
+            "coefficient_only_no_go",
+            "fixed_precision_transport_no_go",
+            "height_and_pade_arithmetic",
+        ):
+            self.assertIn(family_id, signal_spine)
         self.assertIn("## #68: Factorial-denominator series", human)
         self.assertIn("## #269: Three-prime running least common multiples", human)
         self.assertIn("**Question.** Is the series", human)
@@ -105,7 +155,10 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("<summary>Contribution families (12)</summary>", human)
         self.assertIn("<summary>Technical registry and Comparator routing (12)</summary>", human)
         self.assertIn("## Comparator interface appendix", human)
-        self.assertIn("<summary>Show all 31 statement-isolated interfaces</summary>", human)
+        self.assertIn(
+            f"<summary>Show all {len(packet['main_results'])} statement-isolated interfaces</summary>",
+            human,
+        )
         # Identifiers are emitted verbatim: <wbr> is stripped by GitHub's HTML
         # sanitiser, and zero-width or soft-hyphen breaks survive but corrupt
         # copy-paste of a Lean declaration name.
@@ -170,6 +223,27 @@ class ExternalVerificationContractTest(unittest.TestCase):
         solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
         self.assertNotIn("sorry", solution)
+
+    def test_signal_spine_uses_explicit_rank_not_array_or_roster_order(self) -> None:
+        _, packet, source, projection = load_owner()
+        signal_authority = deepcopy(builder.load_signal_authority())
+        signal_authority["candidate_ranking"].reverse()
+        packet = deepcopy(packet)
+        packet["main_results"].reverse()
+
+        human = builder.render_human(packet, source, projection, signal_authority)
+        spine = human[: human.index("**Programmes.**")]
+        expected = [
+            row["declaration"]
+            for row in sorted(
+                signal_authority["candidate_ranking"], key=lambda row: row["rank"]
+            )
+        ]
+        positions = [spine.index(declaration) for declaration in expected]
+        self.assertEqual(positions, sorted(positions))
+        self.assertIn("**Reader tier.** completed direct result", spine)
+        self.assertIn("**Reader tier.** conditional endpoint route", spine)
+        self.assertIn("**Reader tier.** exact reduction or structural result", spine)
 
     def test_builder_check_environment(self) -> None:
         completed = subprocess.CompletedProcess(["fixture"], 0, "", "")

@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = ROOT / "docs/claims.json"
 PROBLEM_SOURCE_PATH = ROOT / "docs/problem_index_source.json"
 PROBLEM_PROJECTION_PATH = ROOT / "docs/problems.json"
+PALOMAR_SHOWCASE_PATH = ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json"
 OUTPUTS = {
     "config": ROOT / "verification/comparator.json",
     "negative_config": ROOT / "verification/comparator-negative-mismatch.json",
@@ -34,7 +35,10 @@ OUTPUTS = {
 }
 
 IMPORT_LINE_RE = re.compile(r"^import\s+([^\n]+)$", re.M)
-PRIOR_RESULT_RE = re.compile(r"formalisation|known geometry", re.I)
+PRIOR_RESULT_RE = re.compile(
+    r"formalisation of (?:an )?existing|known geometry",
+    re.I,
+)
 
 
 def canonical_claim_status(result: dict) -> str:
@@ -180,6 +184,31 @@ def load_owner() -> tuple[dict, dict, dict, dict]:
     if any(row.get("status") != "open" for row in projection["problems"]):
         raise ValueError("every canonical problem-index row must retain status=open")
     return claims, packet, source, projection
+
+
+def load_signal_authority() -> dict:
+    """Read the existing mathematical-value judgement without copying it here."""
+    showcase = json.loads(safe_text(PALOMAR_SHOWCASE_PATH))
+    if showcase.get("schema") != "plectis-palomar-result-showcase/1":
+        raise ValueError("Palomar result showcase has an unsupported schema")
+    ranking = showcase.get("candidate_ranking")
+    contract = showcase.get("selection_contract")
+    if not isinstance(ranking, list) or not ranking:
+        raise ValueError("Palomar result showcase lacks candidate_ranking")
+    if not isinstance(contract, dict) or not contract.get("ranking_axes"):
+        raise ValueError("Palomar result showcase lacks its selection contract")
+    ranks = [row.get("rank") for row in ranking]
+    declarations = [row.get("declaration") for row in ranking]
+    if sorted(ranks) != list(range(1, len(ranking) + 1)):
+        raise ValueError("Palomar candidate_ranking must use unique contiguous ranks")
+    if len(declarations) != len(set(declarations)) or any(
+        not isinstance(name, str) or not name for name in declarations
+    ):
+        raise ValueError("Palomar candidate_ranking declarations must be unique")
+    return {
+        "selection_contract": contract,
+        "candidate_ranking": ranking,
+    }
 
 
 def declaration_exists(source: str, full_name: str) -> bool:
@@ -591,7 +620,175 @@ def _render_routing_item(family: dict) -> list[str]:
     ]
 
 
-def render_human(packet: dict, problem_source: dict, problem_projection: dict) -> str:
+def _ranked_candidate_tier(candidate: dict) -> str:
+    """Project the ranking into reader tiers without creating a second ranking."""
+    if candidate["selection_status"] == "subordinate":
+        return "structural"
+    conditional_text = " ".join(
+        str(candidate.get(key, ""))
+        for key in (
+            "consequence_and_endpoint_proximity",
+            "mechanism_depth_and_natural_friction",
+            "overclaim_risk",
+            "why_not_ranked_first",
+        )
+    ).lower()
+    if any(
+        marker in conditional_text
+        for marker in ("conditional", "unresolved", "missing producer", "not constructed")
+    ):
+        return "conditional"
+    return "completed"
+
+
+def _render_ranked_candidate(candidate: dict, result: dict) -> list[str]:
+    """Keep consequence, hard step, evidence, and surviving boundary adjacent."""
+    tier_labels = {
+        "completed": "completed direct result",
+        "conditional": "conditional endpoint route",
+        "structural": "exact reduction or structural result",
+    }
+    return [
+        (
+            f"{candidate['rank']}. **{_family_display_label(candidate['family_id'])}** "
+            f"({_md_code(candidate['declaration'])}; `{candidate['selection_status']}`)"
+        ),
+        f"   - **Reader tier.** {tier_labels[_ranked_candidate_tier(candidate)]}",
+        f"   - **Consequence.** {candidate['consequence_and_endpoint_proximity']}",
+        (
+            "   - **Load-bearing mechanism.** "
+            f"{candidate['mechanism_depth_and_natural_friction']}"
+        ),
+        (
+            f"   - **Source and evidence.** [Lean source](../{result['original_source']}); "
+            f"{candidate['evidence_certainty']}"
+        ),
+        (
+            f"   - **Boundary.** {result['boundary']} "
+            f"**Overclaim risk.** {candidate['overclaim_risk']}"
+        ),
+        "",
+    ]
+
+
+def _render_signal_spine(packet: dict, signal_authority: dict) -> list[str]:
+    result_by_declaration = {
+        row["wrapper_declaration"]: row for row in packet["main_results"]
+    }
+    ranked = sorted(signal_authority["candidate_ranking"], key=lambda row: row["rank"])
+    missing = [
+        row["declaration"]
+        for row in ranked
+        if row["declaration"] not in result_by_declaration
+    ]
+    if missing:
+        raise ValueError(
+            "Palomar candidate_ranking declarations lack Comparator interfaces: "
+            + ", ".join(missing)
+        )
+
+    lines = [
+        "## Mathematical signal spine",
+        "",
+        (
+            "This order projects Palomar's mathematical `candidate_ranking`; it is independent "
+            "of Comparator roster order, programme number, insertion time, theorem count, and "
+            "qualification convenience. Comparator coverage is the exhaustive evidence inventory, "
+            "not a significance ranking. Checked propositions are therefore given unequal reader "
+            "attention: each promoted result keeps its hard step and surviving boundary adjacent."
+        ),
+        "",
+        "### Reader tiers",
+        "",
+        (
+            "- **Completed direct results:** unconditional checked consequences with their "
+            "scope kept visible."
+        ),
+        (
+            "- **Conditional endpoint routes:** target-facing routes whose explicit producer "
+            "or selector remains open."
+        ),
+        (
+            "- **Exact endpoint reductions and structural results:** results that sharpen the "
+            "remaining problem without being presented as endpoint theorems."
+        ),
+        "",
+        "### Source-ranked frontier",
+        "",
+    ]
+    tiers = {_ranked_candidate_tier(row) for row in ranked}
+    if tiers != {"completed", "conditional", "structural"}:
+        raise ValueError("Palomar candidate_ranking must populate all three reader tiers")
+    for candidate in ranked:
+        lines.extend(
+            _render_ranked_candidate(
+                candidate, result_by_declaration[candidate["declaration"]]
+            )
+        )
+
+    no_go_rows = sorted(
+        (
+            (int(problem["problem"]), family)
+            for problem in packet["review_matrix"]
+            for family in problem["families"]
+            if "no-go" in family.get("contribution_class", "").lower()
+            or "obstruction" in family.get("contribution_class", "").lower()
+            or "no_go" in family["id"]
+        ),
+        key=lambda item: item[1]["id"],
+    )
+    if not no_go_rows:
+        raise ValueError("review_matrix lacks natural-friction/no-go families")
+    lines.extend(
+        [
+            "### Natural friction and no-go boundaries",
+            "",
+            (
+                "These checked obstructions are an alphabetical, deliberately unranked tier. "
+                "They show where natural proof friction survives without competing with direct "
+                "endpoint results for headline position."
+            ),
+            "",
+        ]
+    )
+    for problem, family in no_go_rows:
+        lines.extend(
+            [
+                (
+                    f"- **[#{problem}](#{_programme_anchor(problem)}) · "
+                    f"{_family_display_label(family['id'])}** (`{family['id']}`)<br>"
+                ),
+                f"  {family['summary']}<br>",
+                f"  **Boundary.** {family['boundary']}<br>",
+                (
+                    f"  *Evidence.* {family['contribution_class']} · "
+                    f"{family['evidence_mode']}"
+                ),
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            "### Complete inventory, kept subordinate",
+            "",
+            (
+                "Every contribution family and every statement-isolated interface remains "
+                "queryable in the programme dossiers and the [Comparator interface appendix]"
+                "(#comparator-interface-appendix). Subordination is a presentation judgement, "
+                "not deletion or an adverse mathematical disposition."
+            ),
+            "",
+        ]
+    )
+    return lines
+
+
+def render_human(
+    packet: dict,
+    problem_source: dict,
+    problem_projection: dict,
+    signal_authority: dict,
+) -> str:
     source_by_id = {row["problem_id"]: row for row in problem_source["problems"]}
     families_by_problem = {
         int(problem["problem"]): problem["families"] for problem in packet["review_matrix"]
@@ -760,6 +957,7 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
                 "(#comparator-interface-appendix)."
             ),
             "",
+            *_render_signal_spine(packet, signal_authority),
             "**Programmes.** " + " · ".join(index_links),
             "",
             "---",
@@ -877,7 +1075,11 @@ def render_packet(
 
 
 def build_outputs(
-    packet: dict, problem_source: dict, problem_projection: dict, closure: list[Path]
+    packet: dict,
+    problem_source: dict,
+    problem_projection: dict,
+    signal_authority: dict,
+    closure: list[Path],
 ) -> dict[Path, bytes]:
     config_bytes = (json.dumps(comparator_config(packet), indent=2) + "\n").encode()
     negative_bytes = (json.dumps(negative_config(packet), indent=2) + "\n").encode()
@@ -888,7 +1090,9 @@ def build_outputs(
         OUTPUTS["packet"]: render_packet(
             packet, problem_source, problem_projection, closure, config_bytes
         ).encode(),
-        OUTPUTS["human"]: render_human(packet, problem_source, problem_projection).encode(),
+        OUTPUTS["human"]: render_human(
+            packet, problem_source, problem_projection, signal_authority
+        ).encode(),
         OUTPUTS["outreach"]: render_outreach(packet).encode(),
     }
 
@@ -905,12 +1109,15 @@ def main() -> int:
     )
     args = parser.parse_args()
     _, packet, problem_source, problem_projection = load_owner()
+    signal_authority = load_signal_authority()
     closure, errors = validate(packet, problem_source)
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
-    outputs = build_outputs(packet, problem_source, problem_projection, closure)
+    outputs = build_outputs(
+        packet, problem_source, problem_projection, signal_authority, closure
+    )
     selected = args.only or list(OUTPUTS)
     outputs = {OUTPUTS[name]: outputs[OUTPUTS[name]] for name in selected}
     stale: list[str] = []

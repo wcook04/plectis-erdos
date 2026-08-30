@@ -7,7 +7,143 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** The 42 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 43 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+
+## Mathematical signal spine
+
+This order projects Palomar's mathematical `candidate_ranking`; it is independent of Comparator roster order, programme number, insertion time, theorem count, and qualification convenience. Comparator coverage is the exhaustive evidence inventory, not a significance ranking. Checked propositions are therefore given unequal reader attention: each promoted result keeps its hard step and surviving boundary adjacent.
+
+### Reader tiers
+
+- **Completed direct results:** unconditional checked consequences with their scope kept visible.
+- **Conditional endpoint routes:** target-facing routes whose explicit producer or selector remains open.
+- **Exact endpoint reductions and structural results:** results that sharpen the remaining problem without being presented as endpoint theorems.
+
+### Source-ranked frontier
+
+1. **Known irrational supports** (<code>Erdos249257.ExternalVerification.irrational_erdosSum_full_support</code>; `selected`)
+   - **Reader tier.** completed direct result
+   - **Consequence.** Directly settles the canonical full-support member of Erdős #257 for every integer base b >= 2, while leaving universal arbitrary-support irrationality open.
+   - **Load-bearing mechanism.** The source exposes the bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail bounds, and explicit parameter closure.
+   - **Source and evidence.** [Lean source](../Erdos249257/CertificateKernel.lean); The exact source theorem is committed at Erdos249257/CertificateKernel.lean:8323-8331 and is transported by the committed Challenge/Solution pair.
+   - **Boundary.** This is the classical full-support theorem, not universal Erdos #257. **Overclaim risk.** Low only under the stated boundary: this is full support, not all infinite supports, and local proof plus Comparator is not a novelty or human-review claim.
+
+2. **Pairwise coprime support** (<code>Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime</code>; `represented`)
+   - **Reader tier.** completed direct result
+   - **Consequence.** Direct irrationality for every infinite pairwise-coprime support with summable reciprocal mass, but not for arbitrary supports.
+   - **Load-bearing mechanism.** Adaptive CRT weighted coefficient certificates absorb first-block hits and control residue strays through summable reciprocals.
+   - **Source and evidence.** [Lean source](../Erdos249257/CertificateKernel.lean); The exact source theorem is committed at Erdos249257/CertificateKernel.lean:10768-10782 and is transported by the committed Challenge/Solution pair.
+   - **Boundary.** This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit. **Overclaim risk.** Moderate unless infinitude, pairwise coprimality, and summable reciprocal mass stay visible in every projection.
+
+3. **Orthogonal petal sunflower reduction** (<code>Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet</code>; `represented`)
+   - **Reader tier.** conditional endpoint route
+   - **Consequence.** Direct irrationality under the displayed structure, but the structural predicates are not constructed for arbitrary supports.
+   - **Load-bearing mechanism.** The conditional selector is the natural friction; omitting it would turn a reduction into a false unconditional theorem.
+   - **Source and evidence.** [Lean source](../Erdos249257/SupportSunflowerDichotomy.lean); Exact committed source and Comparator transport are available.
+   - **Boundary.** This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem. **Overclaim risk.** High if the bouquet and uniform tail-selection hypotheses are silently treated as automatic.
+
+4. **Periodic nonnegative weight irrationality** (<code>Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic</code>; `represented`)
+   - **Reader tier.** completed direct result
+   - **Consequence.** Close to the Lambert-series endpoint but not a universal support theorem and not the mixed-sign statement.
+   - **Load-bearing mechanism.** A periodic divisor-orbit sieve and denominator clearing route are visible in the source.
+   - **Source and evidence.** [Lean source](../Erdos249257/CertificateKernel.lean); Exact committed source and Comparator transport are available.
+   - **Boundary.** This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed. **Overclaim risk.** Moderate if the mixed-sign or arbitrary-support cases are inferred.
+
+5. **Actual lcm orbit separation** (<code>Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply</code>; `represented`)
+   - **Reader tier.** conditional endpoint route
+   - **Consequence.** It points directly at the binary totient irrationality endpoint for Erdős #249, conditional on a cofinal separation supply; it does not prove that supply.
+   - **Load-bearing mechanism.** The source carries a raw adjacent-suffix approximation, an explicit error radius, and uniform separation from every integer into a signed-margin producer. The cofinal PowerTwoActualLcmOrbitSeparationSupply is the natural friction and remains a premise.
+   - **Source and evidence.** [Lean source](../Erdos249257/TotientActualLcmOrbitSeparation.lean); The source definition and implication are committed at Erdos249257/TotientActualLcmOrbitSeparation.lean:305, and the exact wrapper is committed in ExternalVerification/Challenge.lean and ExternalVerification/Solution.lean at the configured declaration.
+   - **Boundary.** The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open. **Overclaim risk.** High unless the two cofinal supply clauses stay attached: the implication is source-faithful and checked, but the supply itself is not proved here.
+
+6. **Factorial carry irrationality equivalence** (<code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries</code>; `subordinate`)
+   - **Reader tier.** exact reduction or structural result
+   - **Consequence.** Maximal endpoint proximity for #68, but it does not prove the cofinal producer.
+   - **Load-bearing mechanism.** The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.
+   - **Source and evidence.** [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean); Exact committed source and Comparator transport are available.
+   - **Boundary.** The equivalence does not supply a cofinal carry producer. **Overclaim risk.** High if the equivalence is mistaken for a cofinal carry proof.
+
+7. **Prime gap dyadic equivalence** (<code>Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap</code>; `subordinate`)
+   - **Reader tier.** exact reduction or structural result
+   - **Consequence.** Very close to #251's target but proves neither side irrational and retains a summability premise.
+   - **Load-bearing mechanism.** The key mechanism is summation-by-parts normalization; the target irrationality remains open.
+   - **Source and evidence.** [Lean source](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean); Exact committed source and Comparator transport are available.
+   - **Boundary.** The equivalence does not prove irrationality of either series. **Overclaim risk.** High if equivalence is read as irrationality.
+
+8. **Totient kernel rank** (<code>Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel</code>; `subordinate`)
+   - **Reader tier.** exact reduction or structural result
+   - **Consequence.** Important structural support for #249, but it does not prove irrationality or the missing cofinal certificate supply.
+   - **Load-bearing mechanism.** The proof uses exact ranks 2^e+1 and a finite-dimensional contradiction.
+   - **Source and evidence.** [Lean source](../Erdos249257/TotientMahlerDefect.lean); Exact committed source and Comparator transport are available.
+   - **Boundary.** The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved. **Overclaim risk.** Moderate if infinite-dimensionality is treated as an irrationality criterion.
+
+### Natural friction and no-go boundaries
+
+These checked obstructions are an alphabetical, deliberately unranked tier. They show where natural proof friction survives without competing with direct endpoint results for headline position.
+
+- **[#243](#programme-243) · Bounded negative exclusion** (`bounded_negative_exclusion`)<br>
+  Normalised vanishing excludes a cofinally bounded negative part and forces eventual Sylvester behaviour.<br>
+  **Boundary.** Every positivity, dynamics, bounded-rise, and vanishing hypothesis remains explicit.<br>
+  *Evidence.* conditional reduction and no-go result · Lean kernel plus Comparator
+
+- **[#251](#programme-251) · Coefficient only no go** (`coefficient_only_no_go`)<br>
+  The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream.<br>
+  **Boundary.** CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims.<br>
+  *Evidence.* coefficient-only barrier; novelty and significance unassessed · Lean kernel plus authored synthesis
+
+- **[#1049](#programme-1049) · Coordinatewise corridor no go** (`coordinatewise_corridor_no_go`)<br>
+  The coordinatewise corridor forces a power-versus-linear inequality and cannot occur at base 3/2.<br>
+  **Boundary.** This excludes one proof architecture and proves no irrationality statement.<br>
+  *Evidence.* no-go result · Lean kernel plus Comparator
+
+- **[#1049](#programme-1049) · Endpoint residues** (`endpoint_residues`)<br>
+  Endpoint residues at 2 and 3 exclude a common multiplier under unit-endpoint hypotheses.<br>
+  **Boundary.** Other local or cross-row arithmetic remains possible.<br>
+  *Evidence.* no-go result · Lean kernel
+
+- **[#249](#programme-249) · Fixed precision transport no go** (`fixed_precision_transport_no_go`)<br>
+  At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints.<br>
+  **Boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.<br>
+  *Evidence.* unconditional synthetic no-go; novelty unassessed · Lean kernel plus Comparator
+
+- **[#1049](#programme-1049) · Four jet collision** (`four_jet_collision`)<br>
+  Binary selectors collide in the four-jet signature at the stated rank and depth.<br>
+  **Boundary.** A signed relation is not nonzero analytic data.<br>
+  *Evidence.* locally proved result and no-go result; novelty unassessed · Lean kernel
+
+- **[#257](#programme-257) · Half and twenty one frontiers** (`half_and_twenty_one_frontiers`)<br>
+  Exact greedy characterisations, finite-support exclusions, the odd 2-adic two-thirds-band bound, and two conditional rational-half countermodel frontiers isolate local constraints around the remaining 1/2 and 1/21 alternatives.<br>
+  **Boundary.** Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents.<br>
+  *Evidence.* conditional reduction and no-go result · Lean kernel plus Comparator
+
+- **[#1049](#programme-1049) · Height and pade arithmetic** (`height_and_pade_arithmetic`)<br>
+  For the explicit rectangular two-function exponent model, the cleared gap is nonpositive throughout rho >= 0 and 1 + rho <= sigma, and the threshold is at most 1/2 - 1/pi^2 with equality exactly at rho = 0, sigma = 1. The gap sign and unique-zero mechanism support this sharp threshold no-go within the wider height-and-Padé arithmetic family.<br>
+  **Boundary.** This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open.<br>
+  *Evidence.* locally proved sharp model-specific no-go; novelty unassessed · Lean kernel plus Comparator
+
+- **[#249](#programme-249) · Lcm factor ideal shift algebra no go** (`lcm_factor_ideal_shift_algebra_no_go`)<br>
+  For every t at least 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds.<br>
+  **Boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open.<br>
+  *Evidence.* unconditional progress · Lean kernel plus Comparator
+
+- **[#243](#programme-243) · Negative orbit no go** (`negative_orbit_no_go`)<br>
+  Constant, eventually constant, periodic, and eventually periodic negative-error orbits are excluded in their stated regimes.<br>
+  **Boundary.** The exclusions do not cover arbitrary unbounded negative behaviour.<br>
+  *Evidence.* no-go result · Lean kernel plus Comparator
+
+- **[#269](#programme-269) · Rank two kernel no go** (`rank_two_kernel_no_go`)<br>
+  The 2,3,5 kernel is not rank one and its smallest displayed minor equals -1/15.<br>
+  **Boundary.** Failure of rank one does not itself imply irrationality.<br>
+  *Evidence.* no-go result · Lean kernel plus Comparator
+
+- **[#1049](#programme-1049) · Scalar content no go** (`scalar_content_no_go`)<br>
+  Integer scalar content changes analytic error and exterior determinant by matching factors, yielding no margin by itself.<br>
+  **Boundary.** The conclusion is scoped to one normalisation strategy.<br>
+  *Evidence.* no-go result · Lean kernel
+
+### Complete inventory, kept subordinate
+
+Every contribution family and every statement-isolated interface remains queryable in the programme dossiers and the [Comparator interface appendix](#comparator-interface-appendix). Subordination is a presentation judgement, not deletion or an adverse mathematical disposition.
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
@@ -129,9 +265,9 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* conditional reduction and no-go result · Lean kernel plus Comparator
 
 - **Negative mass recovery**<br>
-  Finite normalised negative mass forces eventual zero and hence the Sylvester recurrence.<br>
-  **Boundary.** Summability of the negative mass is unproved for the original problem.<br>
-  *Evidence.* conditional reduction · Lean kernel
+  Under exact reciprocal-tail C/D dynamics, positive tail, the strict centered-step equation, and division-free normalized vanishing, summability of the normalized negative centered mass forces centeredState to vanish eventually and recovers the Sylvester recurrence. The load-bearing theorem is supported by the exact tail-growth bound and the finite-negative-mass stabilization theorem.<br>
+  **Boundary.** The exact criterion assumes a, D : ℕ → ℤ and C : ℕ → ℕ with the declared next-denominator and next-tail dynamics, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable (negativeRelativeMass C (fun n ↦ centeredState (a n) (D n) (C n))). It does not prove these hypotheses for the original Erdős #243 orbit, supply a prime-specific producer, or establish an unconditional #243 endpoint or reciprocal-tail irrationality. Any surviving canonical orbit must have divergent normalized negative mass. This is distinct from centered_state_dynamics, whose recovery criterion uses a uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made.<br>
+  *Evidence.* conditional analytic recovery criterion; novelty unassessed · Lean kernel
 
 </details>
 
@@ -151,7 +287,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>targeted</code>
 
 - <code>negative_mass_recovery</code><br>
-  Comparator: <code>not_selected_deep_state_vocabulary</code>
+  Comparator: <code>targeted</code>
 
 </details>
 
@@ -382,9 +518,9 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* conditional reduction · Lean kernel
 
 - **Coefficient only no go**<br>
-  An exact finite carry identity and non-eventual-periodicity theorem show that coefficient growth and irregularity alone do not force irrationality: the authored paper-level synthesis uses the endpoint decay to exhibit a synthetic nonperiodic rational dyadic-sum countermodel, contrasted with the actual prime-gap nonperiodicity theorem.<br>
-  **Boundary.** CoefficientOnlyNoGo checks only the finite identity and two non-eventual-periodicity statements; it does not prove the infinite rational-sum limit, identify the synthetic coefficients with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims.<br>
-  *Evidence.* no-go result · Lean kernel for finite identity/nonperiodicity plus authored synthesis and standard exponential-dominance limit for the infinite sum
+  The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream.<br>
+  **Boundary.** CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims.<br>
+  *Evidence.* coefficient-only barrier; novelty and significance unassessed · Lean kernel plus authored synthesis
 
 </details>
 
@@ -407,7 +543,7 @@ Exact registry keys and Comparator routing are listed separately.
   Comparator: <code>not_selected_open_producer_hypothesis</code>
 
 - <code>coefficient_only_no_go</code><br>
-  Comparator: <code>targeted_coefficient_only_no_go</code>
+  Comparator: <code>targeted</code>
 
 </details>
 
@@ -842,7 +978,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 42 statement-isolated interfaces</summary>
+<summary>Show all 43 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -991,6 +1127,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** Unbounded coefficients alone do not force irrationality.
+
+- <code>Erdos249257.ExternalVerification.coefficientOnlyNoGo</code>
+  - **Class.** formalisation of exact finite identity and nonperiodicity contrast; novelty and significance unassessed
+  - **Statement.** The coefficient-only wrapper records the exact finite carry partial-sum identity together with non-eventual-periodicity of the synthetic coefficient stream and the actual prime-gap stream, exposing the limits of coefficient-only reasoning.
+  - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** The wrapper proves the finite identity and the two non-eventual-periodicity statements only. It does not assert the infinite rational-sum limit of the synthetic countermodel, identify the synthetic coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims.
 
 - <code>Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap</code>
   - **Class.** locally proved result; novelty unassessed
@@ -1161,7 +1304,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 42 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 43 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.
