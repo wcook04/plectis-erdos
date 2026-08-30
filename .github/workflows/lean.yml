@@ -677,6 +677,11 @@ jobs:
       - name: Test immutable release source resolution
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_release_source_identity.py
+      - name: Test source-current expert handoffs
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: |
+          python3 scripts/test_expert_handoffs.py
+          python3 -O scripts/test_expert_handoffs.py
       - name: Test clean committed-snapshot release wrapper
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_check_release_ref.py
