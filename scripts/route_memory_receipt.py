@@ -48,13 +48,18 @@ def _relative_path(value: Any, path: str, errors: list[str]) -> str | None:
     if text is None:
         return None
     candidate = Path(text)
+    raw_parts = text.split("/")
     if (
         candidate.is_absolute()
         or "\\" in text
-        or ".." in candidate.parts
+        or any(part in {"", ".", ".."} for part in raw_parts)
         or not candidate.parts
     ):
-        _error(errors, path, "must be a repository-relative path without '..' or backslashes")
+        _error(
+            errors,
+            path,
+            "must be a canonical repository-relative path without empty, '.', '..', or backslash segments",
+        )
     return text
 
 

@@ -327,6 +327,23 @@ def check_changed_evidence_shape_boundary() -> None:
             any("changed_evidence" in error for error in errors),
             "changed_evidence rejection omitted its field diagnostic",
         )
+    for noncanonical in (
+        "docs/./ambiguous.txt",
+        "docs//ambiguous.txt",
+    ):
+        value = json.loads(json.dumps(template))
+        value["return_id"] = returned["return_id"]
+        value["relationships"][0]["relationship"] = "supersedes"
+        value["relationships"][0]["changed_evidence"] = [noncanonical]
+        noncanonical_return = dict(returned)
+        noncanonical_return["repository"] = {"changed_paths": [noncanonical]}
+        errors = route_memory_receipt.validate_return_receipt(
+            value, noncanonical_return, consultation, ROOT
+        )
+        require(
+            any("canonical repository-relative path" in error for error in errors),
+            f"noncanonical route-memory evidence path {noncanonical!r} was accepted",
+        )
 
 
 def check_start_session_path_boundary() -> None:
