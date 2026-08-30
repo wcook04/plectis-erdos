@@ -10,6 +10,7 @@ import json
 import subprocess
 import tempfile
 from pathlib import Path
+from unittest import mock
 
 import build_research_contributions as contributions
 
@@ -80,6 +81,15 @@ def main() -> int:
         source_path = Path(directory) / FIXTURE.name
         source_path.write_bytes(FIXTURE.read_bytes())
         require(contributions.load_receipts(Path(directory)) == [], "unaccepted fixture entered attribution sources")
+
+    with tempfile.TemporaryDirectory() as directory:
+        name, _receipt, payload = accepted_source()
+        Path(directory, name).write_bytes(payload)
+        with mock.patch.object(contributions, "committed_receipt_paths", return_value=[]):
+            require(
+                contributions.load_receipts(Path(directory), require_committed=True) == [],
+                "strict accepted-only loading inspected an uncommitted receipt",
+            )
 
     original_route = contributions.public_result_family_route
     contributions.public_result_family_route = lambda problem: {

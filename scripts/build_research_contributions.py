@@ -233,7 +233,8 @@ def load_receipts(
     errors: list[str] = []
     worktree_paths = set(directory.glob("*.json"))
     committed_paths = set(committed_receipt_paths(directory)) if require_committed else set()
-    for path in sorted(worktree_paths | committed_paths):
+    candidate_paths = committed_paths if require_committed else worktree_paths
+    for path in sorted(candidate_paths):
         if require_committed and path in committed_paths and not path.exists():
             errors.append(f"{path.name}: receipt source committed in HEAD is missing from worktree")
             continue
