@@ -8,7 +8,7 @@
     "comparator_sha256": "ef970718e15171d8d3d21b8ea6620bd2ccd179509bc19ec9aaf998a72b87e12c",
     "comparator_theorem_count": 40,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "8d38affbb4ced780617ab8d382ed09c05949e2208ab2d3c641ad6d39b1aeff8d",
+    "source_review_matrix_sha256": "298da5f80c6ce88dd9d0ea155223eb954ae336eb3182c19b8ec453d4120f0226",
     "source_review_family_count": 64,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -98,7 +98,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "8d38affbb4ced780617ab8d382ed09c05949e2208ab2d3c641ad6d39b1aeff8d",
+    "source_review_matrix_sha256": "298da5f80c6ce88dd9d0ea155223eb954ae336eb3182c19b8ec453d4120f0226",
     "source_review_family_count": 64,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",

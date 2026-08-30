@@ -181,7 +181,7 @@
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "8d38affbb4ced780617ab8d382ed09c05949e2208ab2d3c641ad6d39b1aeff8d",
+      "review_matrix_sha256": "298da5f80c6ce88dd9d0ea155223eb954ae336eb3182c19b8ec453d4120f0226",
       "review_family_count": 64,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
