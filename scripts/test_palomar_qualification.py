@@ -260,6 +260,20 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "actualLcmRawErrorRadius" in hypotheses
     assert "actualLcmTailOrbit" in hypotheses
     assert "Irrational" in landscape_by_id["actual_lcm_orbit_separation"]["conclusion"]
+    foreign = landscape_by_id["actual_foreign_residue_projection"]
+    assert foreign["family_id"] == "actual_foreign_residue_projection"
+    assert foreign["disposition"] == "represented"
+    assert foreign["prior_disposition"] == "deferred"
+    assert foreign["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert foreign["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert foreign["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
+    )
+    assert foreign["comparator_declaration"] in comparator["theorem_names"]
+    assert foreign["source_transport_commit"] == "8a08768f3758f11e9640535523232b0300316a4b"
+    assert "ControlledForeignProjection" in " ".join(foreign["exact_hypotheses"])
+    assert "unbounded" in " ".join(foreign["limitations"])
+    assert "not an irrationality theorem" in foreign["conclusion"]
     for candidate_id in ("certificate_completeness",):
         row = landscape_by_id[candidate_id]
         assert row["disposition"] in {"deferred", "subordinate"}
@@ -370,6 +384,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     }
     assert set(committed) == {
         "actual_lcm_orbit_separation",
+        "actual_foreign_residue_projection",
         "first_harmonic_pivot",
         "erdos269_conditional_carry_escape",
         "erdos251_integral_tail_classification",

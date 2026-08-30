@@ -212,6 +212,45 @@
     },
     "source_landscape_queue": [
       {
+        "candidate_id": "actual_foreign_residue_projection",
+        "family_id": "actual_foreign_residue_projection",
+        "disposition": "represented",
+        "prior_disposition": "deferred",
+        "canonical_family_binding": "actual_foreign_residue_projection",
+        "canonical_claim_commit": "404592da8e164b24faaeae021642fa2e131319a8",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
+        "source_transport_commit": "8a08768f3758f11e9640535523232b0300316a4b",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": [
+          "Erdos249257.ExternalVerification.abs_foreignTailWindow_le_foreignComplementBound",
+          "Erdos249257.ExternalVerification.finiteResidueDiagonal_eq_projectedForeign_add_divisor",
+          "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
+        ],
+        "comparator_declaration": "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
+        "supporting_comparator_declarations": [],
+        "transport_admission_boundary": "The source-faithful actual-foreign-residue transport is committed at 8a08768 and its load-bearing representative is registered in the source-current HEAD:verification/comparator.json screen; the finite split and foreign-window bound remain subordinate mechanisms, and canonical claims bind the one family at 404592da.",
+        "source_declaration": "Erdos249257.ActualForeignResidueProjection.scaleFullTarget_miss_of_projected_separation; Erdos249257.ActualForeignResidueProjection.finiteResidueDiagonal_eq_projectedForeign_add_divisor; Erdos249257.ActualForeignResidueProjection.abs_foreignTailWindow_le_foreignComplementBound",
+        "source_file": "Erdos249257/ActualForeignResidueProjection.lean",
+        "source_anchor": "276; 308; 414",
+        "statement": "The finite Möbius residue diagonal splits into projected foreign and divisor channels, the omitted finite foreign tail has a closed geometric majorant, and a controlled projection separated from every integer forces the full target to be missed.",
+        "exact_hypotheses": [
+          "The finite residue diagonal and foreign/divisor channels use the exact natural-number H,D and projection definitions of ActualForeignResidueProjection.lean.",
+          "The finite foreign-tail window is bounded by the stated closed geometric majorant; this does not imply an infinite-tail or actual-LCM identification.",
+          "The load-bearing consumer assumes ControlledForeignProjection and an unbounded supply of projections separated from every integer; neither bridge is supplied by the transport."
+        ],
+        "conclusion": "Under the controlled-projection and separated-supply hypotheses, the full target is missed; this is a conditional #249 reduction, not an irrationality theorem.",
+        "hard_mechanism": "The exact finite Möbius partition isolates a foreign channel, the geometric tail bound controls the omitted window, and the generic complement-noncancellation consumer converts uniform projection separation into a full-target miss.",
+        "attribution": "Source-current #249 actual_foreign_residue_projection from ActualForeignResidueProjection.lean:276, 308, 414, canonically bound at 404592da and transported at 8a08768; novelty, priority, significance, and external review remain unassessed.",
+        "limitations": [
+          "ControlledForeignProjection is an unproved analytic bridge; the transport does not identify the controlled projection with the actual target orbit.",
+          "No unbounded separated-projection supply is proved, so the conditional consumer does not close the #249 endpoint.",
+          "The finite partition and geometric majorant are subordinate mechanisms inside one family; no novelty, priority, significance, external-review, or #249 irrationality claim is made."
+        ],
+        "reason": "Represented after source-current Claims and Comparator fan-in: this distinct endpoint-facing conditional reduction exposes finite foreign-channel control and its natural noncancellation friction, but its two analytic bridges remain open, so it stays below the stronger actual-LCM and first-harmonic routes.",
+        "reversal_evidence": "A source-faithful controlled-projection theorem together with an unbounded separated-projection supply would justify fresh ranking; another finite partition or generic noncancellation restatement would not."
+      },
+      {
         "candidate_id": "first_harmonic_pivot",
         "family_id": "first_harmonic_pivot_decomposition",
         "disposition": "represented",

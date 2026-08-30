@@ -558,6 +558,7 @@ def candidate_selection_errors(
                 errors.append("source-landscape candidates contain duplicate candidate IDs")
             expected_landscape_ids = {
                 "actual_lcm_orbit_separation",
+                "actual_foreign_residue_projection",
                 "first_harmonic_pivot",
                 "actual_lcm_positive_corridor_top_edge",
                 "certificate_completeness",

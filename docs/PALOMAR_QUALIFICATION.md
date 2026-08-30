@@ -117,7 +117,18 @@ and `9/10` budget remain source-level mechanism evidence. It sits immediately
 below the actual-LCM conditional route and above kernel-rank structure because
 it is an independent conditional endpoint consumer with a deeper visible
 analytic budget; no cofinal decorrelation producer is supplied. The
-actual-LCM positive-corridor/top-edge route
+actual-foreign-residue projection is also now represented as a distinct
+conditional #249 reduction through
+`Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation`,
+transported at `8a08768` and canonically bound at `404592da`. Its exact finite
+Möbius foreign/divisor split, geometric tail majorant, and generic
+complement-noncancellation consumer give it more endpoint value than routine
+finite identities, but it remains below the actual-LCM and first-harmonic routes:
+`ControlledForeignProjection` and any unbounded supply of projections separated
+from every integer are unproved. The finite split and window bound are
+subordinate mechanisms, and no #249 endpoint, irrationality, novelty, priority,
+significance, or external-review claim follows. The actual-LCM
+positive-corridor/top-edge route
 (`TotientActualLcmOrbitSign.lean:31-278`) is a subordinate supporting
   candidate within the single `actual_lcm_orbit_separation` family, not a
   distinct family. Its committed transport at `bc0fee48` remains source-landscape
@@ -359,7 +370,7 @@ The showcase records the current claims review matrix and its source-family
 dispositions across all eight open programmes, then adds the targeted
 theorem-forest queue. It separately nests all 47 committed Comparator
 declarations in an exact value-disposition screen and records the actual-LCM
-and first-harmonic conditional candidates with their committed transport and
+actual-foreign and first-harmonic conditional candidates with their committed transport and
 exact open producers. Neither the roster count nor a conditional implication
 becomes a readiness claim; source-landscape review remains distinct from
 Comparator evidence even when a source-faithful transport is committed.

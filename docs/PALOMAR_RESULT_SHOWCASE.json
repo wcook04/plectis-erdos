@@ -221,7 +221,7 @@
       "field_bindings": {"support_evidence":"source_review_row.summary", "contrary_evidence":"source_review_row.boundary", "cheapest_probe":"source_review_row.evidence_mode plus exact source-coordinate comparison", "stop_evidence":"source_review_row.boundary", "hard_mechanism":"source_review_row.summary", "attribution":"source_review_row.contribution_class", "limitations":"source_review_row.boundary", "open_boundary":"source_review_row.boundary"},
       "comparator_role": "Comparator membership is an evidence, eligibility, and admission field nested below the source universe."
     },
-    "source_family_dispositions": {"factorial_carry_characterisation":"represented","factorial_channel_and_projection_rigidity":"represented","factorial_conditional_producers":"subordinate","factorial_finite_certificates":"long_tail","factorial_lcm_growth":"long_tail","centered_state_dynamics":"represented","negative_orbit_no_go":"rejected","bounded_rise_coprimality":"represented","bounded_negative_exclusion":"represented","negative_mass_recovery":"subordinate","totient_kernel_basis":"represented","totient_kernel_rank":"represented","totient_kernel_all_base_index":"represented","totient_visible_coprime_lattice_mass":"represented","squared_lambert_gcd_moments":"represented","stern_brocot_run_fibonacci_stability":"represented","stern_brocot_cylinder_law":"represented","lcm_factor_ideal_shift_algebra_no_go":"rejected","fixed_precision_transport_no_go":"represented","actual_lcm_orbit_separation":"represented","actual_foreign_residue_projection":"deferred","first_harmonic_pivot_decomposition":"represented","totient_carry_anti_compression":"represented","totient_finite_denominator_exclusion":"long_tail","totient_carry_rank":"subordinate","totient_lambert_coefficients":"represented","eventually_periodic_lambert":"represented","totient_certificate_equivalences":"subordinate","prime_gap_reformulation":"represented","integral_shift_classification":"represented","dyadic_tail_integrality_classification":"represented","totient_shift_propagation":"represented","small_mismatch_criterion":"represented","coefficient_only_no_go":"represented","finite_period_noncollapse":"represented","boolean_mobius_carry":"represented","boolean_mobius_exact_row_dynamics":"represented","half_membership_seam_classification":"represented","shifted_odd_tail_state":"represented","composite_dilation_defect_identity":"represented","known_irrational_supports":"represented","pairwise_coprime_support":"represented","periodic_nonnegative_weight_irrationality":"represented","orthogonal_petal_sunflower_reduction":"represented","squarefree_support":"long_tail","achievement_set_geometry":"represented","restricted_achievement_sets":"represented","half_and_twenty_one_frontiers":"subordinate","three_prime_lcm_cells":"represented","two_prime_transcendence":"long_tail","height_fibre_and_shell":"represented","rank_two_kernel_no_go":"rejected","dyadic_block_alphabet":"represented","conditional_carry_escape":"subordinate","weighted_phase_carry_observer":"represented","three_prime_finite_search":"long_tail","newton_value_decay":"represented","ray_separation":"represented","translation_avoidance":"represented","root_retention":"represented","published_proof_gap":"long_tail","lemniscate_finite_search":"long_tail","scalar_content_no_go":"rejected","endpoint_residues":"rejected","four_jet_collision":"subordinate","coordinatewise_corridor_no_go":"rejected","rational_base_tail_recurrence":"represented","seven_halves_irrationality":"long_tail","height_and_pade_arithmetic":"represented"},
+    "source_family_dispositions": {"factorial_carry_characterisation":"represented","factorial_channel_and_projection_rigidity":"represented","factorial_conditional_producers":"subordinate","factorial_finite_certificates":"long_tail","factorial_lcm_growth":"long_tail","centered_state_dynamics":"represented","negative_orbit_no_go":"rejected","bounded_rise_coprimality":"represented","bounded_negative_exclusion":"represented","negative_mass_recovery":"subordinate","totient_kernel_basis":"represented","totient_kernel_rank":"represented","totient_kernel_all_base_index":"represented","totient_visible_coprime_lattice_mass":"represented","squared_lambert_gcd_moments":"represented","stern_brocot_run_fibonacci_stability":"represented","stern_brocot_cylinder_law":"represented","lcm_factor_ideal_shift_algebra_no_go":"rejected","fixed_precision_transport_no_go":"represented","actual_lcm_orbit_separation":"represented","actual_foreign_residue_projection":"represented","first_harmonic_pivot_decomposition":"represented","totient_carry_anti_compression":"represented","totient_finite_denominator_exclusion":"long_tail","totient_carry_rank":"subordinate","totient_lambert_coefficients":"represented","eventually_periodic_lambert":"represented","totient_certificate_equivalences":"subordinate","prime_gap_reformulation":"represented","integral_shift_classification":"represented","dyadic_tail_integrality_classification":"represented","totient_shift_propagation":"represented","small_mismatch_criterion":"represented","coefficient_only_no_go":"represented","finite_period_noncollapse":"represented","boolean_mobius_carry":"represented","boolean_mobius_exact_row_dynamics":"represented","half_membership_seam_classification":"represented","shifted_odd_tail_state":"represented","composite_dilation_defect_identity":"represented","known_irrational_supports":"represented","pairwise_coprime_support":"represented","periodic_nonnegative_weight_irrationality":"represented","orthogonal_petal_sunflower_reduction":"represented","squarefree_support":"long_tail","achievement_set_geometry":"represented","restricted_achievement_sets":"represented","half_and_twenty_one_frontiers":"subordinate","three_prime_lcm_cells":"represented","two_prime_transcendence":"long_tail","height_fibre_and_shell":"represented","rank_two_kernel_no_go":"rejected","dyadic_block_alphabet":"represented","conditional_carry_escape":"subordinate","weighted_phase_carry_observer":"represented","three_prime_finite_search":"long_tail","newton_value_decay":"represented","ray_separation":"represented","translation_avoidance":"represented","root_retention":"represented","published_proof_gap":"long_tail","lemniscate_finite_search":"long_tail","scalar_content_no_go":"rejected","endpoint_residues":"rejected","four_jet_collision":"subordinate","coordinatewise_corridor_no_go":"rejected","rational_base_tail_recurrence":"represented","seven_halves_irrationality":"long_tail","height_and_pade_arithmetic":"represented"},
     "targeted_theorem_forest_discoveries": [
       {"candidate_id":"first_harmonic_pivot","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[first_harmonic_pivot]"},
       {"candidate_id":"actual_lcm_positive_corridor_top_edge","disposition":"subordinate","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[actual_lcm_positive_corridor_top_edge]"},
@@ -341,6 +341,13 @@
       {
         "disposition": "represented",
         "declarations": [
+          "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
+        ],
+        "reason": "The committed wrapper represents one coherent actual_foreign_residue_projection family: its finite partition, geometric majorant, and generic noncancellation consumer are endpoint-facing but remain below the actual-LCM and first-harmonic routes because the controlled-projection bridge and unbounded separated supply are open."
+      },
+      {
+        "disposition": "represented",
+        "declarations": [
           "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
           "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff",
           "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
@@ -398,8 +405,7 @@
           "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
           "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
           "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
-          "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
-          "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
+          "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
         ],
         "reason": "These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking."
       }
@@ -434,6 +440,46 @@
         ],
         "reason": "Now represented rather than selected: the committed row preserves the source supply clauses and irrationality conclusion, so it earns visibility as a serious conditional #249 route. Full support remains selected because it has a completed unconditional endpoint and lower hidden-premise risk.",
         "reversal_evidence": "A proved cofinal separation supply, or a later source-current result with equal evidence certainty and a stronger completed endpoint, would justify a fresh ranking against full support; the current implication alone does not."
+      },
+      {
+        "candidate_id": "actual_foreign_residue_projection",
+        "family_id": "actual_foreign_residue_projection",
+        "disposition": "represented",
+        "prior_disposition": "deferred",
+        "canonical_family_binding": "actual_foreign_residue_projection",
+        "canonical_claim_commit": "404592da8e164b24faaeae021642fa2e131319a8",
+        "comparator_eligibility": "committed_source_faithful_transport",
+        "queue_role": "source_landscape_review_with_committed_comparator_evidence",
+        "source_transport_commit": "8a08768f3758f11e9640535523232b0300316a4b",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": [
+          "Erdos249257.ExternalVerification.abs_foreignTailWindow_le_foreignComplementBound",
+          "Erdos249257.ExternalVerification.finiteResidueDiagonal_eq_projectedForeign_add_divisor",
+          "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
+        ],
+        "comparator_declaration": "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
+        "supporting_comparator_declarations": [],
+        "transport_admission_boundary": "The source-faithful actual-foreign-residue transport is committed at 8a08768 and its load-bearing representative is registered in the source-current HEAD:verification/comparator.json screen; the finite split and foreign-window bound remain subordinate mechanisms, and canonical claims bind the one family at 404592da.",
+        "source_declaration": "Erdos249257.ActualForeignResidueProjection.scaleFullTarget_miss_of_projected_separation; Erdos249257.ActualForeignResidueProjection.finiteResidueDiagonal_eq_projectedForeign_add_divisor; Erdos249257.ActualForeignResidueProjection.abs_foreignTailWindow_le_foreignComplementBound",
+        "source_file": "Erdos249257/ActualForeignResidueProjection.lean",
+        "source_anchor": "276; 308; 414",
+        "statement": "The finite Möbius residue diagonal splits into projected foreign and divisor channels, the omitted finite foreign tail has a closed geometric majorant, and a controlled projection separated from every integer forces the full target to be missed.",
+        "exact_hypotheses": [
+          "The finite residue diagonal and foreign/divisor channels use the exact natural-number H,D and projection definitions of ActualForeignResidueProjection.lean.",
+          "The finite foreign-tail window is bounded by the stated closed geometric majorant; this does not imply an infinite-tail or actual-LCM identification.",
+          "The load-bearing consumer assumes ControlledForeignProjection and an unbounded supply of projections separated from every integer; neither bridge is supplied by the transport."
+        ],
+        "conclusion": "Under the controlled-projection and separated-supply hypotheses, the full target is missed; this is a conditional #249 reduction, not an irrationality theorem.",
+        "hard_mechanism": "The exact finite Möbius partition isolates a foreign channel, the geometric tail bound controls the omitted window, and the generic complement-noncancellation consumer converts uniform projection separation into a full-target miss.",
+        "attribution": "This is the source-current #249 actual_foreign_residue_projection family from ActualForeignResidueProjection.lean:276, 308, 414, canonically bound at 404592da and transported by the committed ExternalVerification batch at 8a08768; novelty, priority, significance, and external review remain unassessed.",
+        "limitations": [
+          "ControlledForeignProjection is an unproved analytic bridge; the transport does not identify the controlled projection with the actual target orbit.",
+          "No unbounded separated-projection supply is proved, so the conditional consumer does not close the #249 endpoint.",
+          "The finite partition and geometric majorant are subordinate mechanisms inside one family; no novelty, priority, significance, external-review, or #249 irrationality claim is made."
+        ],
+        "source_landscape_rank_relative_to": "Below the represented actual_lcm_orbit_separation and first_harmonic_pivot_decomposition routes because its control bridge and separated supply are both open, but above routine finite identities because it exposes an endpoint-facing foreign-channel reduction and its natural noncancellation friction.",
+        "reason": "Represented after the source-current Claims and Comparator fan-in: the finite foreign/divisor split and geometric majorant provide a distinct endpoint-facing conditional reduction, while the missing controlled-projection bridge and unbounded separated supply prevent promotion above the stronger actual-LCM and first-harmonic routes or to an endpoint result.",
+        "reversal_evidence": "A source-faithful proof of the controlled projection and an unbounded separated-projection supply would justify fresh ranking; another finite partition, window bound, or generic noncancellation restatement would not."
       },
       {
         "candidate_id": "first_harmonic_pivot",
