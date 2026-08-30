@@ -23,6 +23,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "docs" / "primary-sources" / "redistribution-dispositions.json"
+NOTICE = ROOT / "docs" / "THIRD_PARTY_NOTICES.md"
 SOURCE_ROOT = ROOT / "docs" / "primary-sources"
 SCHEMA = "plectis.third_party_source_redistribution_dispositions.v1"
 DISPOSITIONS = {
@@ -111,6 +112,106 @@ def primary_source_metadata_errors() -> list[str]:
         else:
             metadata[name] = path.read_bytes()
     errors.extend(metadata_private_path_errors(metadata))
+    return errors
+
+
+def notice_errors(
+    data: dict[str, Any],
+    notice_text: str,
+    requirements_text: str,
+    lake_manifest_text: str,
+) -> list[str]:
+    """Keep the human-readable notice synchronized with release authorities."""
+    errors: list[str] = []
+    require(
+        "Third-party source-artifact notices" in notice_text,
+        "third-party notice is missing its release heading",
+        errors,
+    )
+    require(
+        "not a release allowlist" in notice_text,
+        "third-party notice must distinguish notices from the release allowlist",
+        errors,
+    )
+    require(
+        "primary-sources/redistribution-dispositions.json" in notice_text,
+        "third-party notice must name the canonical disposition ledger",
+        errors,
+    )
+    require(
+        "retrieval, citation, attribution" in notice_text.lower()
+        and "permission" in notice_text.lower(),
+        "third-party notice must distinguish retrieval evidence from permission",
+        errors,
+    )
+
+    artifacts = data.get("artifacts")
+    if isinstance(artifacts, list):
+        for record in artifacts:
+            if not isinstance(record, dict):
+                continue
+            path = record.get("path")
+            if not isinstance(path, str):
+                continue
+            require(
+                path in notice_text,
+                f"third-party notice is missing artifact path: {path}",
+                errors,
+            )
+            digest = record.get("sha256")
+            if isinstance(digest, str):
+                require(
+                    digest in notice_text,
+                    f"third-party notice is missing digest for {path}",
+                    errors,
+                )
+            routes = record.get("official_retrieval_routes", [])
+            if isinstance(routes, list):
+                for route in routes:
+                    if isinstance(route, str):
+                        require(
+                            route in notice_text,
+                            f"third-party notice is missing official route for {path}",
+                            errors,
+                        )
+            for boundary in ("source_record", "support_boundary_ref"):
+                reference = record.get(boundary)
+                if isinstance(reference, str):
+                    require(
+                        reference in notice_text,
+                        f"third-party notice is missing {boundary} for {path}",
+                        errors,
+                    )
+
+    requirement_lines = [
+        line.strip()
+        for line in requirements_text.splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+    require(
+        "requirements-release.txt" in notice_text
+        and f"{len(requirement_lines)} exact `name==version` records" in notice_text,
+        "third-party notice must reconcile the release-validator manifest count",
+        errors,
+    )
+    require(
+        "pip --require-hashes" in notice_text
+        and "do not grant permission" in notice_text,
+        "third-party notice must bind hash-pinned retrieval to the permission boundary",
+        errors,
+    )
+    try:
+        lake_manifest = json.loads(lake_manifest_text)
+    except json.JSONDecodeError:
+        lake_manifest = {}
+    packages = lake_manifest.get("packages") if isinstance(lake_manifest, dict) else None
+    package_count = len(packages) if isinstance(packages, list) else 0
+    require(
+        "lake-manifest.json" in notice_text
+        and f"{package_count} HTTPS Git dependency records" in notice_text,
+        "third-party notice must reconcile the Lake manifest package count",
+        errors,
+    )
     return errors
 
 
@@ -296,6 +397,12 @@ def main() -> int:
     try:
         data = json.loads(LEDGER.read_text(encoding="utf-8"))
         errors = disposition_errors(data, tracked=tracked_paths(), present=present_artifact_paths())
+        notice_text = NOTICE.read_text(encoding="utf-8")
+        requirements_text = (ROOT / "requirements-release.txt").read_text(encoding="utf-8")
+        lake_manifest_text = (ROOT / "lake-manifest.json").read_text(encoding="utf-8")
+        errors.extend(
+            notice_errors(data, notice_text, requirements_text, lake_manifest_text)
+        )
     except (OSError, json.JSONDecodeError, subprocess.CalledProcessError) as exc:
         print(f"check_primary_source_dispositions: FAIL: {exc}", file=sys.stderr)
         return 1
