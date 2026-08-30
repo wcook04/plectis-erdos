@@ -227,7 +227,8 @@ core)**
 
 - Native unconditional: for every finite nonempty support `F` of positive
   exponents and every base `b ≥ 2`, the reduced denominator of `∑_{n∈F} 1/(bⁿ−1)` is coprime to `b`
-  and has multiplicative order exactly `lcm F` — `finite_period_noncollapse`,
+  and has multiplicative order exactly `lcm F` — `finite_period_noncollapse`
+  (Comparator interface `finite_period_noncollapse_rat_den_interface`),
   `Erdos249257/CertificateKernel.lean:5091`, with no witness-supply
   hypothesis. Checked theorem; registry: none.
 - Formalised known results: the full-support series is irrational in every
@@ -239,7 +240,8 @@ core)**
   measure one (strict-tail Cantor structure after Kovač–Tao, Remark 4.1; the
   measure clause is proved here; positive measure was asserted informally by
   Kovač on the erdosproblems.com #257 discussion page in August 2025, and no
-  published source computes the exact value) —
+  published source computes the exact value) — the Comparator theorem
+  `volume_mersenneAchievementSet`,
   `Erdos249257/GreedyAchievementSet.lean:996`,
   `Erdos249257/GreedyAchievementSet.lean:1633–1658`; claim
   `greedy_achievement_geometry`. Membership of `1/2` is equivalent to
@@ -256,6 +258,13 @@ core)**
   `Erdos249257/RationalSupportCarrySkeleton.lean`). This exposes structure
   under a rationality hypothesis; it does not exclude rational infinite
   supports or settle universal #257.
+- For a support restriction `J`, the transported measure dichotomy
+  `volume_supportedMersenneAchievementSet_dichotomy`
+  (`ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean`) gives exact
+  measure `((2 : ℝ≥0∞) ^ F.card)⁻¹` when `J = (↑F)ᶜ` for a finite `F`, or
+  measure zero when `Jᶜ` is infinite. This classifies the restricted
+  achievement-set measure, not its rational points, so it does not settle
+  universal #257.
 - A separate unconditional composite-dilation identity now exposes the
   lower-rank defect rather than hiding it in a prime-only adapter:
   `supportCoeff_mul_eq_add_defect`
