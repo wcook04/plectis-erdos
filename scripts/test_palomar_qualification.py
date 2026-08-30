@@ -123,6 +123,27 @@ def test_generated_formalization_reads_committed_head_only() -> None:
         assert checker.committed_text(ROOT, "formalization.yaml") != worktree
 
 
+def test_structural_qualification_ignores_mutable_source_reads() -> None:
+    showcase = json.loads((ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json").read_text())
+    reconciliation = json.loads(
+        (ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json").read_text()
+    )
+    original_safe_text = checker.safe_text
+
+    def poisoned_worktree(path: Path, *, root: Path) -> str:
+        value = original_safe_text(path, root=root)
+        if path.name == "CertificateKernel.lean":
+            return value.replace("irrational_erdosSum_full_support", "poisoned_source_name")
+        return value
+
+    checker.safe_text = poisoned_worktree
+    try:
+        errors, _ = checker.static_requirement_errors(ROOT, reconciliation, showcase)
+    finally:
+        checker.safe_text = original_safe_text
+    assert not any("selected candidate" in error for error in errors)
+
+
 def test_pinned_classification_authorities_are_required() -> None:
     reconciliation = json.loads(
         (ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json").read_text()
@@ -241,6 +262,8 @@ def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
 if __name__ == "__main__":
     test_safe_input_boundary()
     test_normal_and_optimised_checker_agree()
+    test_generated_formalization_reads_committed_head_only()
+    test_structural_qualification_ignores_mutable_source_reads()
     test_full_current_roster_and_eight_problem_crosswalk()
     test_adversarial_candidate_universe_drop_is_not_silently_accepted()
     test_adversarial_selection_semantics_drop_is_not_silently_accepted()

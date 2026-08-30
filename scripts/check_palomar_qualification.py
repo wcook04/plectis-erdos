@@ -150,6 +150,15 @@ def committed_text(root: Path, path: str) -> str:
         raise ValueError(f"committed qualification input is not UTF-8: {path}") from exc
 
 
+def committed_file_exists(root: Path, path: str) -> bool:
+    """Report whether a regular qualification input exists in committed HEAD."""
+    try:
+        committed_bytes(root, path)
+    except subprocess.CalledProcessError:
+        return False
+    return True
+
+
 def committed_head(root: Path) -> str:
     result = subprocess.run(
         ["git", "-C", str(root), "rev-parse", "HEAD"],
@@ -539,18 +548,20 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
     # evidence; the owning source can land it, after which HEAD becomes the
     # qualification input.
     formalization = committed_text(root, "formalization.yaml")
-    toolchain = safe_text(root / "lean-toolchain", root=root).strip()
+    toolchain = committed_text(root, "lean-toolchain").strip()
     project_license = re.search(r'^  license:\s*["\']?([^"\'\s]+)', formalization, re.MULTILINE)
     tool_version = re.search(r"lean4:v([0-9]+)\.([0-9]+)\.([0-9]+)", toolchain)
     if not project_license or project_license.group(1) != "Apache-2.0":
         errors.append("formalization.yaml project.license is not Apache-2.0")
-    if not (root / "LICENSE").is_file():
+    if not committed_file_exists(root, "LICENSE"):
         errors.append("root LICENSE is missing")
-    if not (root / "lakefile.toml").is_file() or not (root / "lake-manifest.json").is_file():
+    if not committed_file_exists(root, "lakefile.toml") or not committed_file_exists(
+        root, "lake-manifest.json"
+    ):
         errors.append("lakefile.toml and lake-manifest.json must both be present")
-    if not (root / "ExternalVerification" / "Challenge.lean").is_file():
+    if not committed_file_exists(root, "ExternalVerification/Challenge.lean"):
         errors.append("ExternalVerification/Challenge.lean is missing")
-    if not (root / "ExternalVerification" / "Solution.lean").is_file():
+    if not committed_file_exists(root, "ExternalVerification/Solution.lean"):
         errors.append("ExternalVerification/Solution.lean is missing")
     if not tool_version or tuple(map(int, tool_version.groups())) < (4, 28, 0):
         errors.append("lean-toolchain is below Palomar's v4.28.0 minimum")
@@ -562,11 +573,15 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
     roster = set(flatten_showcase(showcase))
     if selected_name not in roster:
         errors.append("selected showcase candidate is absent from the committed Comparator roster")
-    source_file = root / selected.get("source_file", "")
+    source_path = selected.get("source_file", "")
+    source_file = root / source_path
     short_name = selected_name.rsplit(".", 1)[-1]
-    source_text = safe_text(source_file, root=root) if source_file.is_file() else ""
+    try:
+        source_text = committed_text(root, source_path)
+    except (OSError, ValueError, subprocess.CalledProcessError):
+        source_text = ""
     source_short_name = selected.get("source_declaration", "").rsplit(".", 1)[-1]
-    if not source_file.is_file() or not re.search(
+    if not source_path or not source_text or not re.search(
         rf"\btheorem\s+{re.escape(short_name)}\b", source_text
     ):
         errors.append("selected candidate does not resolve to its declared current Lean source")
