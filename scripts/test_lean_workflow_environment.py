@@ -21,6 +21,8 @@ REQUIRED_KEYS = {
     "GIT_OPTIONAL_LOCKS",
     "GIT_NO_REPLACE_OBJECTS",
     "GIT_ASKPASS",
+    "GIT_NAMESPACE",
+    "GIT_REPLACE_REF_BASE",
     "PYTHONHOME",
     "PYTHONPATH",
     "PYTHONOPTIMIZE",
@@ -101,6 +103,11 @@ def main() -> int:
         REQUIRED_KEYS <= environment.keys(),
         "Lean workflow environment lost a required Git/Python portability key",
     )
+    for key in ("GIT_NAMESPACE", "GIT_REPLACE_REF_BASE"):
+        require(
+            environment[key] == '""',
+            f"Lean workflow environment must clear {key}",
+        )
     workflow = WORKFLOW.read_text(encoding="utf-8")
     require_pinned_python(workflow)
     require(
