@@ -17,6 +17,12 @@ OPEN_BOUNDARY = (
 )
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep citation identity failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def top_level_values(cff: str, key: str) -> list[str]:
     pattern = re.compile(
         rf"^{re.escape(key)}:\s*(?:\"([^\"]*)\"|'([^']*)'|([^\n#]+?))\s*$",
@@ -84,23 +90,32 @@ def main() -> int:
     claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
     release = claims["release"]
     cff = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
-    assert (ROOT / MAIN_PAPER).is_file()
-    assert not citation_identity_errors(cff, release)
+    require((ROOT / MAIN_PAPER).is_file(), f"missing citation target: {MAIN_PAPER}")
+    require(
+        not citation_identity_errors(cff, release),
+        "canonical CITATION.cff identity contract failed",
+    )
 
     wrong_repository = cff.replace(
         str(release["repository"]),
         "https://github.com/example/wrong-repository",
         1,
     )
-    assert any(
-        "repository-code" in error
-        for error in citation_identity_errors(wrong_repository, release)
+    require(
+        any(
+            "repository-code" in error
+            for error in citation_identity_errors(wrong_repository, release)
+        ),
+        "wrong repository fixture was not rejected",
     )
 
     wrong_tag = cff.replace(str(release["tag"]), "v0.5.0", 1)
-    assert any(
-        "tagged-release identifier" in error
-        for error in citation_identity_errors(wrong_tag, release)
+    require(
+        any(
+            "tagged-release identifier" in error
+            for error in citation_identity_errors(wrong_tag, release)
+        ),
+        "wrong tag fixture was not rejected",
     )
 
     duplicated_version = cff.replace(
@@ -108,9 +123,12 @@ def main() -> int:
         f'version: "{release["version"]}"\nversion: "{release["version"]}"',
         1,
     )
-    assert any(
-        "top-level version" in error
-        for error in citation_identity_errors(duplicated_version, release)
+    require(
+        any(
+            "top-level version" in error
+            for error in citation_identity_errors(duplicated_version, release)
+        ),
+        "duplicated version fixture was not rejected",
     )
 
     overstated_abstract = cff.replace(
@@ -118,21 +136,30 @@ def main() -> int:
         "It solves Erdős #249 and the universal #257 problem.",
         1,
     )
-    assert any(
-        "open-problem boundary" in error
-        for error in citation_identity_errors(overstated_abstract, release)
+    require(
+        any(
+            "open-problem boundary" in error
+            for error in citation_identity_errors(overstated_abstract, release)
+        ),
+        "overstated abstract fixture was not rejected",
     )
 
     lost_paper_route = cff.replace(MAIN_PAPER, "paper/missing-paper.tex", 1)
-    assert any(
-        "exposition citation route" in error
-        for error in citation_identity_errors(lost_paper_route, release)
+    require(
+        any(
+            "exposition citation route" in error
+            for error in citation_identity_errors(lost_paper_route, release)
+        ),
+        "lost paper route fixture was not rejected",
     )
 
     wrong_type = cff.replace("type: software", "type: dataset", 1)
-    assert any(
-        "top-level type" in error
-        for error in citation_identity_errors(wrong_type, release)
+    require(
+        any(
+            "top-level type" in error
+            for error in citation_identity_errors(wrong_type, release)
+        ),
+        "wrong type fixture was not rejected",
     )
 
     print(
