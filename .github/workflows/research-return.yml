@@ -1,0 +1,295 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Research return intake
+
+on:
+  pull_request:
+    paths:
+      - ".github/ISSUE_TEMPLATE/research_return.yml"
+      - ".github/workflows/research-return.yml"
+      - ".github/fixtures/unaccepted-research-return.json"
+      - "docs/research-commons/CONTRIBUTION_RECOGNITION.md"
+      - "docs/research-commons/contribution-recognition.json"
+      - "docs/research-commons/schema/research-contribution-recognition.schema.json"
+      - "docs/repository_identity.json"
+      - "return.json"
+      - "route-memory.json"
+      - "docs/research-commons/**"
+      - "scripts/accept_research_return.py"
+      - "scripts/agent_doctor.py"
+      - "scripts/test_agent_doctor.py"
+      - "scripts/build_research_contributions.py"
+      - "scripts/check_research_commons_contract.py"
+      - "scripts/continue_research.py"
+      - "scripts/test_continue_research.py"
+      - "scripts/test_failure_aware_continuation.py"
+      - "scripts/test_accept_research_return_output_safety.py"
+      - "scripts/test_accept_research_return.py"
+      - "scripts/test_research_continuation_e2e.py"
+      - "scripts/test_public_continuation_vertical_slice.py"
+      - "scripts/test_research_contributions.py"
+      - "scripts/route_memory_receipt.py"
+      - "scripts/query_route_memory.py"
+      - "scripts/test_query_route_memory.py"
+      - "scripts/test_route_memory_promotion.py"
+      - "scripts/test_route_memory_receipt.py"
+      - "scripts/test_research_return_workflow.py"
+      - "scripts/test_validate_research_return.py"
+      - "scripts/validate_research_return.py"
+      - "scripts/repository_identity.py"
+      - "scripts/build_research_contribution_recognition.py"
+      - "scripts/check_research_contribution_recognition.py"
+      - "scripts/test_research_contribution_recognition.py"
+      - "scripts/test_check_research_contribution_recognition.py"
+      - "scripts/test_research_commons_identity_contract.py"
+      - "skills/README.md"
+      - "skills/erdos-research-return/**"
+      - "scripts/test_research_contributions_symlink_safety.py"
+  push:
+    branches: [main]
+    paths:
+      - ".github/ISSUE_TEMPLATE/research_return.yml"
+      - ".github/workflows/research-return.yml"
+      - ".github/fixtures/unaccepted-research-return.json"
+      - "docs/research-commons/CONTRIBUTION_RECOGNITION.md"
+      - "docs/research-commons/contribution-recognition.json"
+      - "docs/research-commons/schema/research-contribution-recognition.schema.json"
+      - "docs/repository_identity.json"
+      - "return.json"
+      - "route-memory.json"
+      - "docs/research-commons/**"
+      - "scripts/accept_research_return.py"
+      - "scripts/agent_doctor.py"
+      - "scripts/test_agent_doctor.py"
+      - "scripts/build_research_contributions.py"
+      - "scripts/check_research_commons_contract.py"
+      - "scripts/continue_research.py"
+      - "scripts/test_continue_research.py"
+      - "scripts/test_failure_aware_continuation.py"
+      - "scripts/test_accept_research_return_output_safety.py"
+      - "scripts/test_accept_research_return.py"
+      - "scripts/test_research_continuation_e2e.py"
+      - "scripts/test_public_continuation_vertical_slice.py"
+      - "scripts/test_research_contributions.py"
+      - "scripts/route_memory_receipt.py"
+      - "scripts/query_route_memory.py"
+      - "scripts/test_query_route_memory.py"
+      - "scripts/test_route_memory_promotion.py"
+      - "scripts/test_route_memory_receipt.py"
+      - "scripts/test_research_return_workflow.py"
+      - "scripts/test_validate_research_return.py"
+      - "scripts/validate_research_return.py"
+      - "scripts/repository_identity.py"
+      - "scripts/build_research_contribution_recognition.py"
+      - "scripts/check_research_contribution_recognition.py"
+      - "scripts/test_research_contribution_recognition.py"
+      - "scripts/test_check_research_contribution_recognition.py"
+      - "scripts/test_research_commons_identity_contract.py"
+      - "skills/README.md"
+      - "skills/erdos-research-return/**"
+      - "scripts/test_research_contributions_symlink_safety.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: research-return-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate return and accepted attribution
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GIT_NAMESPACE: ""
+      GIT_REPLACE_REF_BASE: ""
+      # Keep Git diagnostics, transports, editors, and diff/merge hooks from
+      # changing the public return checks or depending on runner state.
+      GIT_TRACE: ""
+      GIT_TRACE2: ""
+      GIT_TRACE_PACKET: ""
+      GIT_TRACE_PERFORMANCE: ""
+      GIT_TRACE_SETUP: ""
+      GIT_TRACE_CURL: ""
+      GIT_TRACE2_EVENT: ""
+      GIT_TRACE2_PERF: ""
+      GIT_SSH: ""
+      GIT_SSH_COMMAND: ""
+      GIT_SSH_VARIANT: ""
+      GIT_EXTERNAL_DIFF: ""
+      GIT_DIFF_OPTS: ""
+      GIT_EDITOR: ""
+      GIT_SEQUENCE_EDITOR: ""
+      GIT_MERGE_AUTOEDIT: ""
+      # Keep intake checks independent of runner-local imports and bytecode
+      # caches; all return evidence must be replayable from the checkout.
+      PYTHONPATH: ""
+      PYTHONHOME: ""
+      PYTHONSTARTUP: ""
+      PYTHONUSERBASE: ""
+      PYTHONBREAKPOINT: ""
+      PYTHONWARNINGS: ""
+      PYTHONOPTIMIZE: ""
+      PYTHONNOUSERSITE: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      # Keep the runner's base command lookup independent of any hosted-image
+      # additions; setup-python prepends the selected interpreter directory.
+      PATH: "/usr/local/bin:/usr/bin:/bin"
+      # Keep any generator or diagnostic that iterates a hash-backed collection
+      # stable across clean runners.
+      PYTHONHASHSEED: "0"
+      PYTHONUTF8: "1"
+      # Keep locale-sensitive parsing and diagnostics stable on the supported
+      # Ubuntu runner image.
+      LC_ALL: "C.UTF-8"
+      LANG: "C.UTF-8"
+      LANGUAGE: "C.UTF-8"
+      # Keep Git ancestry validation independent of runner-local config and
+      # credential prompting; the checkout is the only repository input.
+      GIT_TERMINAL_PROMPT: "0"
+      GIT_CONFIG_NOSYSTEM: "1"
+      GIT_CONFIG_GLOBAL: "/dev/null"
+      GIT_OPTIONAL_LOCKS: "0"
+      GIT_NO_REPLACE_OBJECTS: "1"
+      GIT_PAGER: "cat"
+      GIT_ASKPASS: "/bin/false"
+    steps:
+      - name: Check out the candidate source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Install the pinned Python runtime
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12.9"
+          cache: false
+
+      - name: Verify the read-only workflow and issue intake contract
+        run: |
+          python3 scripts/test_research_return_workflow.py
+          python3 -O scripts/test_research_return_workflow.py
+
+      - name: Keep unaccepted GitHub returns out of promotion and recognition
+        run: |
+          set -euo pipefail
+          fixture=.github/fixtures/unaccepted-research-return.json
+          python3 scripts/validate_research_return.py "$fixture" --require-submitted
+          if python3 -O scripts/validate_research_return.py "$fixture" --require-accepted; then
+            echo "unaccepted fixture entered the accepted promotion gate" >&2
+            exit 1
+          fi
+          python3 -O - "$fixture" <<'PY'
+          import sys
+          import tempfile
+          from pathlib import Path
+
+          sys.path.insert(0, "scripts")
+          import build_research_contributions as contributions
+          import build_research_contribution_recognition as recognition
+
+          fixture = Path(sys.argv[1])
+          with tempfile.TemporaryDirectory() as directory:
+              source = Path(directory) / fixture.name
+              source.write_bytes(fixture.read_bytes())
+              accepted_sources = contributions.load_receipts(Path(directory))
+              if accepted_sources:
+                  raise SystemExit("unaccepted fixture entered accepted recognition sources")
+              projection = contributions.build_projection(accepted_sources)
+              if projection["chronological"] or any(projection["filters"].values()):
+                  raise SystemExit("unaccepted fixture entered an accepted recognition projection")
+              recognition_projection = recognition.build_recognition(accepted_sources)
+              recognition.validate_projection(recognition_projection)
+              if (
+                  recognition_projection["accepted_receipt_count"] != 0
+                  or recognition_projection["chronological"]
+                  or any(recognition_projection["aggregates"].values())
+              ):
+                  raise SystemExit("unaccepted fixture entered the canonical recognition projection")
+          PY
+
+      - name: Verify accepted-only recognition and impact projections
+        run: |
+          set -euo pipefail
+          python3 scripts/test_research_contribution_recognition.py
+          python3 -O scripts/test_research_contribution_recognition.py
+          python3 scripts/check_research_contribution_recognition.py
+          python3 -O scripts/check_research_contribution_recognition.py
+          python3 -O scripts/test_check_research_contribution_recognition.py
+          python3 scripts/test_check_research_contribution_recognition.py
+          python3 scripts/test_research_commons_identity_contract.py
+          python3 -O scripts/test_research_commons_identity_contract.py
+          python3 scripts/test_research_contributions_result_classes.py
+          python3 -O scripts/test_research_contributions_result_classes.py
+          python3 scripts/test_research_contributions_output_safety.py
+          python3 -O scripts/test_research_contributions_output_safety.py
+          python3 scripts/test_research_contributions_source_safety.py
+          python3 -O scripts/test_research_contributions_source_safety.py
+          python3 scripts/test_research_contributions_symlink_safety.py
+          python3 -O scripts/test_research_contributions_symlink_safety.py
+          python3 scripts/test_research_contributions_committed_sources.py
+          python3 -O scripts/test_research_contributions_committed_sources.py
+
+      - name: Validate the pull-request return artifact when present
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          set -euo pipefail
+          if test -f route-memory.json && ! test -f return.json; then
+            echo "route-memory.json requires its return.json intake artifact" >&2
+            exit 1
+          fi
+          if test -f return.json && ! test -f route-memory.json; then
+            echo "return.json requires its route-memory.json intake receipt" >&2
+            exit 1
+          fi
+          if test -f return.json; then
+            validation_command=(python3 scripts/validate_research_return.py return.json --require-submitted --check-git --require-route-memory-receipt --route-memory-receipt route-memory.json)
+            "${validation_command[@]}"
+          fi
+
+      - name: Keep transient intake artifacts out of accepted history
+        if: ${{ github.event_name != 'pull_request' }}
+        run: test ! -e return.json && ! -e route-memory.json
+
+      - name: Exercise start, package, and adversarial return validation
+        run: |
+          set -euo pipefail
+          python3 scripts/test_validate_research_return.py
+          python3 -O scripts/test_validate_research_return.py
+          python3 scripts/test_continue_research.py
+          python3 -O scripts/test_continue_research.py
+          python3 scripts/test_failure_aware_continuation.py
+          python3 -O scripts/test_failure_aware_continuation.py
+          python3 scripts/test_agent_doctor.py
+          python3 -O scripts/test_agent_doctor.py
+          python3 scripts/test_accept_research_return_output_safety.py
+          python3 -O scripts/test_accept_research_return_output_safety.py
+          python3 scripts/test_research_continuation_e2e.py
+          python3 scripts/test_route_memory_promotion.py
+          python3 -O scripts/test_route_memory_promotion.py
+          python3 scripts/test_route_memory_receipt.py
+          python3 -O scripts/test_route_memory_receipt.py
+          python3 scripts/test_query_route_memory.py
+          python3 -O scripts/test_query_route_memory.py
+          python3 scripts/test_public_continuation_vertical_slice.py
+          python3 -O scripts/test_public_continuation_vertical_slice.py
+
+      - name: Validate accepted receipts and generated attribution views
+        run: |
+          set -euo pipefail
+          python3 scripts/test_accept_research_return.py
+          python3 -O scripts/test_accept_research_return.py
+          python3 scripts/test_research_contributions.py
+          # Keep the accepted-only generated projection checked when Python
+          # assertions are disabled, as on optimized downstream invocations.
+          python3 -O scripts/test_research_contributions.py
+          python3 scripts/build_research_contributions.py --check
+          python3 -O scripts/build_research_contributions.py --check
+
+      - name: Check the complete public research-commons contract
+        run: |
+          python3 scripts/check_research_commons_contract.py
+          python3 -O scripts/check_research_commons_contract.py

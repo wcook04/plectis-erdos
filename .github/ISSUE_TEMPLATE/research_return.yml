@@ -1,0 +1,265 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Public research return
+description: >-
+  Return a bounded checked, negative, inconclusive, or corrective result with
+  its public evidence.
+title: "[research return] "
+labels: ["research-return"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a public return from a cited repository generation.
+        For the complete field-by-field contract, copy
+        `docs/research-commons/RETURN_PACKAGE_TEMPLATE.md`. Do not include
+        private paths, credentials, caches, correspondence, or unpublished
+        proof material; use the security route for sensitive reports.
+        Canonical routes: [contributor guide](../../CONTRIBUTING.md),
+        [commons contract](../../docs/research-commons/README.md),
+        [return template](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md),
+        [resume state](../../docs/research-commons/RESUME_STATE_TEMPLATE.yaml),
+        [frontier handoff](../../docs/research-commons/FRONTIER_HANDOFF_EXAMPLE.md),
+        [credit policy](../../docs/research-commons/CREDIT_POLICY.md), and
+        [accepted contributions](../../docs/research-commons/CONTRIBUTIONS.md).
+        Before selecting a problem frontier, inspect every material result family
+        and its exact open boundary in the generated [problem index](../../docs/PROBLEMS.md),
+        then use the [eight-problem result-family front door](../../docs/research-commons/README.md#eight-problem-result-family-front-door)
+        and the matching return package's current fan-in. Run
+        `python3 scripts/query_corpus.py --search "all result families"` to enumerate
+        the complete ranked census, then
+        `python3 scripts/query_corpus.py --publication-family <family_id>` to
+        resolve one family's claims, paper label, source route, and open boundary.
+        This keeps the complete
+        public frontier visible; it does not turn activity into scientific credit.
+        After acceptance, inspect the [accepted-receipt recognition and impact
+        view](../../docs/research-commons/CONTRIBUTION_RECOGNITION.md) and its
+        [machine-readable projection](../../docs/research-commons/contribution-recognition.json).
+        They preserve separate contributor, operator, collaborator, model, and
+        provider identities, exclude unaccepted work, and do not rank activity.
+        Use [`scripts/continue_research.py`](../../scripts/continue_research.py)
+        for session and package transitions and
+        [`scripts/validate_research_return.py`](../../scripts/validate_research_return.py)
+        before submitting. If the return would change a reviewed claim, consult
+        the [methodology](../../docs/methodology.json). For a correction-class
+        return, use the [broken source or paper link](broken_link.yml) form for
+        navigation defects, or the [mathematical discrepancy](math_discrepancy.yml)
+        form for disagreements about a checked proposition or authority
+        interpretation.
+  - type: textarea
+    id: return_json
+    attributes:
+      label: Machine-readable return
+      description: >-
+        Paste the complete `return.json` produced by
+        `scripts/continue_research.py package`, or an equivalent document
+        conforming to the tracked receipt schema. Before submission, run
+        `python3 scripts/validate_research_return.py return.json
+        --require-submitted --check-git --require-route-memory-receipt
+        --route-memory-receipt route-memory.json` locally so the starting and
+        proposed commits, ancestry, changed public paths, and canonical
+        route-memory sidecar are checked together against this repository
+        checkout.
+      render: json
+    validations:
+      required: true
+  - type: input
+    id: contributor
+    attributes:
+      label: Contributor name or handle
+      description: The name or handle to credit for the returned artifact.
+    validations:
+      required: true
+  - type: textarea
+    id: route_memory_json
+    attributes:
+      label: Route-memory receipt
+      description: >-
+        Paste the complete `route-memory.json` produced beside `return.json`
+        by `scripts/continue_research.py package`. Before submission, validate
+        both files with `python3 scripts/validate_research_return.py return.json
+        --require-submitted --check-git --require-route-memory-receipt
+        --route-memory-receipt route-memory.json` so the consulted route IDs
+        and checked route-memory digest remain bound to this return.
+      render: json
+    validations:
+      required: true
+  - type: input
+    id: starting_commit
+    attributes:
+      label: Starting commit
+      description: >-
+        The full commit from which this return starts (`git rev-parse HEAD`).
+      placeholder: 40-character commit hash
+    validations:
+      required: true
+  - type: input
+    id: problem_route
+    attributes:
+      label: Problem and exact route
+      description: >-
+        Name one problem and its public claim, declaration, or remaining-open
+        handle. For an open frontier, include the exact `problem.open_obligations`
+        or reviewed `remaining_open.*` id that the next contributor can replay.
+      placeholder: "#249 — remaining_open.unbounded_certificate_supply (or problem.open_obligations[0].id)"
+    validations:
+      required: true
+  - type: input
+    id: result_family
+    attributes:
+      label: Result family and significance rank
+      description: >-
+        Record the exact publication-family id and significance rank from the
+        complete family census, or write not applicable with the source-only or
+        non-family boundary that makes no publication family apply.
+      placeholder: "erdos249_gap_certificate_supply (rank 17), or not applicable — source-only route"
+    validations:
+      required: true
+  - type: textarea
+    id: bounded_question
+    attributes:
+      label: Bounded question and stop condition
+      description: State one question that can be replayed, and when to stop.
+      placeholder: >-
+        Replay the named finite route through the stated parameter range; stop
+        at the first missing assumption.
+    validations:
+      required: true
+  - type: textarea
+    id: formal_navigation
+    attributes:
+      label: Formal navigation and evidence handles
+      description: >-
+        Record the exact public paper anchor, problem, open-frontier,
+        module, claim, qualified declaration, and source-coordinate queries
+        used to connect this return to formal evidence and the next bounded
+        action. Write not applicable only when no formal route exists, and
+        explain that boundary in the evidence field. Use --paper-anchor only
+        with a canonical label returned by the claim packet; a note title,
+        source_path, or paper.source_ref is a reading locator, not a selector.
+        For a source-only route, mark paper and claim not applicable and
+        retain the problem, open-frontier, module, declaration, and source
+        handles.
+      placeholder: |-
+        python3 scripts/query_corpus.py --paper-anchor <canonical_paper_label>
+        python3 scripts/query_corpus.py --problem <number>
+        python3 scripts/query_corpus.py --search "all result families"
+        python3 scripts/query_corpus.py --publication-family <family_id>
+        python3 scripts/query_corpus.py --open <remaining_open.id>
+        python3 scripts/query_corpus.py --module <module-or-path>
+        python3 scripts/query_corpus.py --claim <claim_id>
+        python3 scripts/query_corpus.py --declaration <qualified_declaration>
+        python3 scripts/query_corpus.py --source <module>:<positive_line>
+        next: use scripts/continue_research.py start/check for the bounded continuation package
+        boundary: canonical paper label only; source-only: paper/claim not applicable
+        observed: <exact route output and authority boundary>
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: changed_paths
+    attributes:
+      label: Public artifact and changed paths
+      description: List only public paths and describe what a cold reader can inspect.
+      placeholder: "docs/...\nArtifact: ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: result_class
+    attributes:
+      label: Result class
+      options:
+        - Checked positive
+        - Negative
+        - Inconclusive
+        - Correction
+    validations:
+      required: true
+  - type: textarea
+    id: conclusion_boundary
+    attributes:
+      label: Conclusion and surviving boundary
+      description: >-
+        Give the exact conclusion and say what remains open or unestablished.
+        Do not call a finite or conditional result a solution.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Commands and exit states
+      description: >-
+        Record every command actually run, its exit state, relevant public
+        environment, and the exact source or script used.
+      render: text
+      placeholder: |-
+        command: python3 scripts/query_corpus.py --problem <number>
+        exit: 0
+        observed: <short output>
+        environment: <pinned public toolchain, if relevant>
+    validations:
+      required: true
+  - type: textarea
+    id: attribution_limits
+    attributes:
+      label: Attribution, credit, and limitations
+      description: >-
+        Cite prior work, request credit for the returned artifact, preserve
+        existing authorship and licenses, and list assumptions or missing
+        review.
+    validations:
+      required: true
+  - type: textarea
+    id: correction_lineage
+    attributes:
+      label: Correction lineage
+      description: >-
+        For an original or later correction, preserve the earlier return and
+        state the prior return reference, affected paths and starting
+        generation, changed evidence or wording, correction reason, and
+        disposition. For a non-correction return, write not applicable.
+      placeholder: |-
+        Prior return reference: <none or exact path/ref>
+        Affected paths and starting generation: <paths and commit>
+        Changed evidence or wording: <what changed>
+        Correction reason: <reason or not applicable>
+        Correction disposition: <retain|supersede|withdraw|request review>
+    validations:
+      required: true
+  - type: textarea
+    id: resume_state
+    attributes:
+      label: Resume state and next action
+      description: >-
+        Name the last completed step, one next bounded action, and the stop
+        condition for the next contributor.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_safety
+    attributes:
+      label: Public-safety confirmation
+      options:
+        - label: >-
+            I removed private paths, credentials, caches, personal data,
+            correspondence, and unpublished material.
+          required: true
+        - label: >-
+            I am not asking the repository owner to infer novelty, independent
+            review, or a solution from this return.
+          required: true
+        - label: >-
+            I understand that a reviewed-claim change requires the
+            methodology-defined review and claim-registry transition.
+          required: true
+  - type: checkboxes
+    id: acceptance_boundary
+    attributes:
+      label: Acceptance boundary
+      options:
+        - label: >-
+            I understand that opening or submitting this issue creates a
+            submitted return, not an accepted receipt; until a reviewer
+            records and commits an explicit accepted receipt, this work is not
+            promoted or included in accepted-only recognition views.
+          required: true
