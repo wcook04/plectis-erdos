@@ -528,6 +528,8 @@ def _validate_claim_evidence(
 
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
+    if not isinstance(args.intent, str) or not args.intent.strip():
+        raise SystemExit("open refused: intent must be non-empty")
     if session.exists():
         raise SystemExit(f"session already exists: {session.directory}")
     try:
@@ -652,6 +654,8 @@ def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
 def cmd_close(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     _require_writable_session(session, "close")
+    if not isinstance(args.summary, str) or not args.summary.strip():
+        raise SystemExit("close refused: outcome summary must be non-empty")
     moves = session.moves()
     _validate_claim_evidence(session, moves, "close")
     counts: dict[str, int] = {}

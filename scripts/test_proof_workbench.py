@@ -946,6 +946,45 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
 
 
 def check_session_lifecycle(sessions_root: Path) -> None:
+    try:
+        _run(
+            sessions_root,
+            [
+                "open",
+                "--session",
+                "blank-intent",
+                "--intent",
+                " ",
+            ],
+        )
+    except SystemExit as error:
+        if "intent" not in str(error):
+            raise AssertionError(f"blank session intent lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted whitespace-only session intent")
+    _run(
+        sessions_root,
+        ["open", "--session", "blank-summary", "--intent", "closure summary"],
+    )
+    try:
+        _run(
+            sessions_root,
+            [
+                "close",
+                "--session",
+                "blank-summary",
+                "--outcome",
+                "open",
+                "--summary",
+                " ",
+            ],
+        )
+    except SystemExit as error:
+        if "summary" not in str(error):
+            raise AssertionError(f"blank closure summary lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted whitespace-only closure summary")
+
     opened = _run(
         sessions_root,
         [
