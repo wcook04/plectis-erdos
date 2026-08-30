@@ -2,6 +2,9 @@
 
 # Excluding the Bounded Negative Part
 
+The published Koizumi source and its final-article/arXiv-v1 locator crosswalk
+are recorded in the [Koizumi source closure](../../primary-sources/reciprocal-tail/koizumi-2026-source-closure.md).
+
 <div class="center">
 
 <span class="smallcaps">Abstract</span>
