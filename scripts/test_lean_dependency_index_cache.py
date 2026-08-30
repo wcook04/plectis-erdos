@@ -152,6 +152,17 @@ def check_cached_output_rejection() -> None:
             is None,
             "stale dependency-index cache output was accepted",
         )
+        linked = temporary_root / "linked-index.json"
+        linked.symlink_to(output)
+        require(
+            builder.load_cached_check(
+                root=ROOT,
+                output=linked,
+                receipt_path=receipt_path,
+            )
+            is None,
+            "symlinked dependency-index cache output was accepted",
+        )
 
 
 def check_safe_dependency_input_boundary() -> None:
@@ -192,6 +203,42 @@ def check_safe_dependency_input_boundary() -> None:
                 pass
             else:
                 raise AssertionError("dependency FIFO input escaped the non-blocking boundary")
+
+
+def check_safe_dependency_output_boundary() -> None:
+    with tempfile.TemporaryDirectory(prefix="dependency-output-") as directory:
+        workspace = Path(directory)
+        regular = workspace / "regular.json"
+        builder.safe_output_text(regular, '{"safe":true}\n', root=workspace)
+        require(
+            regular.read_text(encoding="utf-8") == '{"safe":true}\n',
+            "regular dependency output was not written through the safe descriptor",
+        )
+
+        private = workspace / "private.json"
+        private.write_text('{"private":true}\n', encoding="utf-8")
+        linked = workspace / "linked.json"
+        linked.symlink_to(private)
+        try:
+            builder.safe_output_text(linked, '{"public":true}\n', root=workspace)
+        except builder.UnsafeDependencyInput:
+            pass
+        else:
+            raise AssertionError("dependency output followed a final-component symlink")
+        require(
+            private.read_text(encoding="utf-8") == '{"private":true}\n',
+            "dependency output symlink target was modified",
+        )
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "output.fifo"
+            os.mkfifo(fifo)
+            try:
+                builder.safe_output_text(fifo, "blocked\n", root=workspace)
+            except builder.UnsafeDependencyInput:
+                pass
+            else:
+                raise AssertionError("dependency output accepted a special file")
 
 
 def check_receipt_uses_verified_snapshot() -> None:
@@ -271,6 +318,7 @@ def check_environment_build_is_bounded() -> None:
 
 def main() -> int:
     check_safe_dependency_input_boundary()
+    check_safe_dependency_output_boundary()
     check_exact_receipt_contract()
     check_live_input_surface()
     check_cached_output_rejection()
