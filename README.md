@@ -41,6 +41,17 @@ not a novelty or priority ranking:
 - A distinct adaptive-CRT extension handles every infinite pairwise-coprime
   support with summable reciprocal mass ([source](Erdos249257/CertificateKernel.lean));
   its structured-support hypotheses do not settle arbitrary infinite support.
+- A separate coefficient-class theorem proves irrationality when a rational
+  weight sequence is nonnegative, eventually periodic, and positive at a
+  positive index in its periodic tail; denominator clearing feeds a periodic
+  divisor-orbit sieve ([source](Erdos249257/CertificateKernel.lean)). This is
+  not the mixed-sign or arbitrary-support theorem.
+- A deeper support route proves the base-2 series irrational under an explicit
+  finite-core orthogonal-petal bouquet and uniform tail-selection predicate
+  ([source](Erdos249257/SupportSunflowerDichotomy.lean)). Those structural
+  hypotheses are the unresolved selector: neither is constructed for arbitrary
+  supports, so this remains a conditional reduction rather than another
+  settled support family.
 - **#249 has an exact finite-level kernel spine.** The dyadic totient kernel
   has rank `2^e + 1` with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
   the all-base extension is conditional on affine independence and no

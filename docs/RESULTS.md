@@ -27,6 +27,18 @@ pass, the high-signal spine is:
   not universal #257. A distinct adaptive-CRT certificate proves irrationality
   for every infinite pairwise-coprime support with summable reciprocal mass;
   those structured-support hypotheses likewise leave arbitrary support open.
+  A separate direct result covers nonnegative rational eventually periodic
+  coefficient sequences with a positive periodic-tail value: one common
+  denominator reduces the claim to the periodic divisor-orbit sieve
+  (`irrational_ratWeightSeries_eventuallyPeriodic`,
+  `Erdos249257/CertificateKernel.lean:12811`); mixed-sign coefficients and
+  arbitrary supports remain outside its hypotheses. A deeper, genuinely
+  distinct conditional route proves the base-2 support series under a finite-
+  core orthogonal-petal bouquet plus the uniform
+  `SunflowerForcedSlotTailSelection` predicate
+  (`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`,
+  `Erdos249257/SupportSunflowerDichotomy.lean:540`); the selector and bouquet
+  are not constructed for arbitrary supports.
 - **#249, a constructive kernel-rank spine.** The exact dyadic totient-kernel
   rank `2^e + 1`, its odd-core basis, and the resulting infinite-dimensional
   span expose a real finite-level mechanism; the all-base rank is conditional
@@ -60,8 +72,8 @@ full evidence and exact boundaries.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
-| **promote** | #257's full-support irrationality theorem and distinct pairwise-coprime extension, #249 finite kernel rank/basis, and #68's exact carry/divisibility equivalence lead the first pass. | The #257 full-support row is an unconditional endpoint theorem for each `b ≥ 2`; the other promoted rows expose adaptive-CRT, finite-rank, and exact-equivalence mechanisms with their hypotheses visible. |
-| **retain** | #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | Each rules out a named regime or supplies an exact structural identity, but none supplies the missing universal, cofinal, topological, or irrationality bridge. |
+| **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, and nonnegative rational eventually-periodic coefficient theorem, plus #249 finite kernel rank/basis and #68's exact carry/divisibility equivalence, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; pairwise CRT and periodic denominator-clearing are distinct direct mechanisms; rank and equivalence expose exact finite-level and endpoint interfaces with hypotheses visible. |
+| **retain** | #257's orthogonal-petal bouquet reduction, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The bouquet route has genuine structural depth but requires an unconstructed selector and bouquet; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's geometry, finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
