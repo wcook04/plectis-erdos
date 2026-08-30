@@ -419,11 +419,29 @@ def validate_ref(
 
 
 def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
+    path = safe_receipt_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    payload = json.dumps(receipt, ensure_ascii=False, indent=2) + "\n"
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(path, flags, 0o644)
+    with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+        stream.write(payload)
+
+
+def safe_receipt_path(path: Path) -> Path:
+    """Reject symlinked receipt destinations without restricting their root."""
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise SnapshotError(f"receipt destination contains a symlink: {candidate}")
+        if current.parent == current:
+            break
+        current = current.parent
+    if candidate.exists() and not candidate.is_file():
+        raise SnapshotError(f"receipt destination is not a regular file: {candidate}")
+    return candidate
 
 
 def render_text(receipt: dict[str, Any]) -> str:

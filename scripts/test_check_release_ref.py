@@ -47,6 +47,39 @@ def test_snapshot_command_path_boundary() -> None:
         )
 
 
+def test_receipt_destination_boundary() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        outside = root / "outside"
+        outside.mkdir()
+        sentinel = outside / "sentinel.txt"
+        sentinel.write_text("keep me\n", encoding="utf-8")
+
+        linked_receipt = root / "receipt.json"
+        linked_receipt.symlink_to(sentinel)
+        try:
+            check_release_ref.write_receipt(linked_receipt, {"status": "blocked"})
+        except check_release_ref.SnapshotError as error:
+            require("symlink" in str(error), str(error))
+        else:
+            raise AssertionError("receipt writer followed a symlinked destination")
+        require(
+            sentinel.read_text(encoding="utf-8") == "keep me\n",
+            "receipt writer modified the symlink target",
+        )
+
+        linked_parent = root / "linked"
+        linked_parent.symlink_to(outside, target_is_directory=True)
+        try:
+            check_release_ref.write_receipt(
+                linked_parent / "nested-receipt.json", {"status": "blocked"}
+            )
+        except check_release_ref.SnapshotError as error:
+            require("symlink" in str(error), str(error))
+        else:
+            raise AssertionError("receipt writer followed a symlinked parent")
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -81,6 +114,7 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 
 def main() -> int:
     test_snapshot_command_path_boundary()
+    test_receipt_destination_boundary()
     original_root = check_release_ref.ROOT
     try:
         with tempfile.TemporaryDirectory() as tmp:
@@ -674,8 +708,8 @@ def main() -> int:
     print(
         "test_check_release_ref: caller dirt excluded, exact commits selected, "
         "dirty paths bounded, root disk census and immutable source adversary "
-        "always reported, first failing gate exit preserved, and timeout receipt "
-        "coverage serialized"
+        "always reported, first failing gate exit preserved, timeout receipt "
+        "coverage serialized, and receipt destinations cannot follow symlinks"
     )
     return 0
 
