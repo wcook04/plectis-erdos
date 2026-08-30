@@ -109,8 +109,19 @@ All eight remain open. Pass is mechanism-first:
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
   the cofinal producer is still open.
 
-Next boundary: #243 recovery. Comparator's `boundedNegativePart_eventually_zero` and distinct `sylvesterNext_eventually_of_summable_negativeRelativeMass` force Sylvester steps under exact `C/D`, `C>0`, strict centered-step, and division-free normalized vanishing; `Summable` negative mass replaces the uniform lower bound ([consumer](ExternalVerification/Challenge.lean#L111); [source](ErdosProblems/Erdos243/SparseResetRecovery.lean#L175)). It supplies neither the original orbit, mixed-sign/prime producer, nor reciprocal-tail irrationality; #243 stays open. #251 gives unbounded prime gaps and a prime-gap equivalence; its classifiers say rationality iff one positive shift is eventually integral and irrationality iff every positive shift is nonintegral ([consumer](ExternalVerification/Challenge.lean#L245)). A Comparator criterion rules out eventual integrality for an actual-prime-gap `DyadicTailRecurrence` with cofinally small adjacent shifts of unequal gaps ([consumer](ExternalVerification/Challenge.lean#L328); [source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112)); no cofinal small-mismatch producer is proved, so #251 remains open.
-#269: Comparator excludes short-bounded carries under `CofinalLocalWindowEscape`, `B>0`, `Nat.Coprime B 30` ([consumer](ExternalVerification/Challenge.lean#L498)); producer and actual-series/rationality-to-carry bridge remain open; irrationality is open. #1041 ray/root retention; topology/gluing remains open ([source](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)). #1049 rules out a literal `3/2` corridor via finite four-jet/Padé collisions and content barriers; its rectangular two-function model has a sharp no-go under `0 ≤ ρ`, `1+ρ ≤ σ`, but no approximants/remainders or irrationality theorem ([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean); [transport](ExternalVerification/Challenge.lean#L399)).
+Next boundary: #243’s signed centered recovery forces `E = D − (a−1)C` to
+vanish eventually under exact `C/D` dynamics, `a>1`, `C>0`, strict `|E|<C`, a
+uniform lower bound, and normalized vanishing; its summable negative-mass
+criterion instead recovers eventual Sylvester steps. Neither supplies an
+unrestricted orbit or mixed-sign/prime producer, so reciprocal-tail
+irrationality remains open ([source](ErdosProblems/Erdos243/SparseResetRecovery.lean#L175)).
+#251 has exact rationality/irrationality tail-shift classifications and an
+actual-prime-gap small-mismatch criterion; its cofinal mismatch producer remains
+open ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112)). #269’s
+height/rank and weighted-phase routes leave the actual carry bridge and cofinal
+window producer open; #1041 leaves topology/gluing open; #1049’s finite
+four-jet/Padé and explicit rectangular-model no-go constructs no approximants or
+remainders. All eight endpoints remain open.
 
 See [RESULTS](docs/RESULTS.md#signal-audit-dispositions) for dispositions,
 evidence, and boundaries; its [source map](docs/SOURCE_MAP.md) keeps routes
