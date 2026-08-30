@@ -295,6 +295,39 @@ theorem downstream_boolean_mobius_skip_row_consumer
     (1 / 2 : ℝ) ∈ mersenneAchievementSet :=
   half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips hskips
 
+/-! The squarefree-support forest supplies a distinct negative mechanism for
+#257.  Its unshifted divisor-incidence sequence is odd and positive, so the
+carry-aware certificate engine cannot even start at an even base.  Adjoining
+`1` is important contrary evidence: the shifted support has incidence
+`2 ^ ω(n)`, so this is a normalization-specific obstruction, not an
+irrationality theorem for the squarefree series. -/
+
+/-- Downstream reuse of the exact squarefree-support carry no-go.
+
+The consumer keeps the source hypotheses `b ≥ 2` and `2 ∣ b` and exposes the
+full carried block schema, including its positive precision, middle-block
+budget, and arithmetic-growth clauses.  The hard source mechanism is the
+parity reduction `b ∣ squarefreeIncidence (N + K)` for a nontrivial block,
+followed by the density contradiction for the short-block regime.  The same
+source module separately refutes the digitwise schema and proves that
+adjoining `1` removes this parity obstruction.  Neither result supplies an
+irrationality proof for squarefree support or the universal Erdős #257 claim.
+-/
+theorem downstream_squarefree_support_carry_certificate_no_go
+    {b : ℕ} (hb : 2 ≤ b) (hbeven : 2 ∣ b) :
+    ¬ (∀ q : ℕ, 0 < q → ∃ N K L C : ℕ, K ≤ L ∧
+        (b ^ K ∣ ∑ r ∈ Finset.Icc 1 K,
+          Erdos249257.supportCoeff
+            (ErdosProblems.Erdos257.squarefreeSupport) (N + r) * b ^ (K - r)) ∧
+        (∑ r ∈ Finset.Icc (K + 1) L,
+          Erdos249257.supportCoeff
+            (ErdosProblems.Erdos257.squarefreeSupport) (N + r) * b ^ (L - r) ≤ C) ∧
+        (∃ t : ℕ, 0 < Erdos249257.supportCoeff
+          (ErdosProblems.Erdos257.squarefreeSupport) (N + L + 1 + t)) ∧
+        q * (C + (N + L + 2)) < b ^ L) :=
+  ErdosProblems.Erdos257.not_exists_carry_certificates_squarefreeSupport
+    hb hbeven
+
 /-! The half-membership endpoint is also available through the
 Comparator-facing proof-bearing namespace.  This consumer records the exact
 equivalence without pretending that an endpoint equivalence is itself an
