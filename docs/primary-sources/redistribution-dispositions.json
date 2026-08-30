@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 18,
-    "artifact_count": 18,
+    "working_tree_only_count": 21,
+    "artifact_count": 21,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 18,
+    "link_and_digest_only_count": 21,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -356,6 +356,64 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/erdos-1988-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/luca-tachiya-2014-periodic.pdf",
+      "sha256": "0acc2bf11481a63fa37bb6fd726f85da7d090e4ab7419f73fffb5884838b24cf",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf",
+        "https://doi.org/10.1142/S1793042113501121"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/luca-tachiya-2014-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/luca-tachiya-2014-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/luca-tachiya-2014-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/postelmans-van-assche-2007-q-zeta.pdf",
+      "sha256": "1687777a636088e1065fd7de469b8cc163f3cb146198419388d9a72eab785df9",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/math/0604312v1",
+        "https://arxiv.org/pdf/math/0604312v1",
+        "https://doi.org/10.1016/j.jnt.2006.11.011"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/postelmans-van-assche-2007-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/postelmans-van-assche-2007-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/postelmans-van-assche-2007-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-sparse-series.pdf",
+      "sha256": "a5eac0ee53fbd2db8e8931384f578e2a72c6a8eb0727cb3ef228f5ea0064ed6b",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/2601.20743",
+        "https://arxiv.org/pdf/2601.20743"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }

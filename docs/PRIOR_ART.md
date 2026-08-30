@@ -48,7 +48,7 @@ boundary of that relationship.
 
   **Boundary.** The p. 105 subseries statement is posed as open, not proved; the separate LCM theorem does not automatically apply to Mersenne denominators. These sources therefore do not prove universal #257 or #249, and do not support the release's Lean, Comparator, Palomar, geometry, or totient-kernel claims.
 
-- S. Chowla, [*On Series of the Lambert Type which assume Irrational Values for Rational Values of the Argument* (1947)](https://insa.nic.in/UI/Archivesection.aspx?JID=MA%3D%3D&JYrs=MTk0Nw%3D%3D)
+- S. Chowla, [*On Series of the Lambert Type which assume Irrational Values for Rational Values of the Argument* (1947)](https://insa.nic.in/UI/Archivesection.aspx?JID=MA%3D%3D&JYrs=MTk0Nw%3D%3D) ([read source closure](primary-sources/reciprocal-tail/chowla-1947-source-closure.md))
 
   Historical conjectural predecessor: its rational-argument Lambert question contains the full-support specialisation \(x=1/b\).
 
@@ -78,7 +78,7 @@ boundary of that relationship.
 
   **Boundary.** The paper sums over every positive index, not an arbitrary infinite support, so it does not settle universal #257, prime-support or squarefree subseries, or the release's #249 reductions. Its contour-integral proof is not formalised here; no novelty or priority claim is made.
 
-- H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős's irrationality criterion for certain sparse infinite series* (2026)](https://arxiv.org/abs/2601.20743)
+- H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős's irrationality criterion for certain sparse infinite series* (2026)](https://arxiv.org/abs/2601.20743) ([read source closure](primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md))
 
   Nearby current work proving irrationality for sparse series such as \(\sum d(n)^k/t^{\varphi(n)}\).
 
@@ -90,13 +90,13 @@ boundary of that relationship.
 
   **Boundary.** The release uses classical transforms and claims a Lean-checked composition, not new Möbius inversion, Lambert identities, or the cited factorisation theorems.
 
-- Y. V. Nesterenko, [*Modular functions and transcendence questions* (1996)](https://doi.org/10.1070/SM1996v187n09ABEH000158)
+- Y. V. Nesterenko, [*Modular functions and transcendence questions* (1996)](https://doi.org/10.1070/SM1996v187n09ABEH000158) ([read source closure](primary-sources/totient-kernel/nesterenko-1996-source-closure.md))
 
   Direct source for the cited-only transcendence of the divisor-sum ladder rung \(L(\mathrm{Id})=\sum_{m\geq1}\sigma(m)/2^m\).
 
   **Boundary.** This positions one ladder row only; no part of its modular-transcendence proof is formalised here.
 
-- K. Postelmans and W. Van Assche, [*Irrationality of \(\zeta_q(1)\) and \(\zeta_q(2)\)* (2007)](https://doi.org/10.1016/j.jnt.2006.11.011)
+- K. Postelmans and W. Van Assche, [*Irrationality of \(\zeta_q(1)\) and \(\zeta_q(2)\)* (2007)](https://doi.org/10.1016/j.jnt.2006.11.011) ([read source closure](primary-sources/reciprocal-tail/postelmans-van-assche-2007-source-closure.md))
 
   Primary source for the cited-only linear independence of \(1,\zeta_q(1),\zeta_q(2)\) when \(q^{-1}\) is an integer of absolute value greater than one. At \(q=1/2\), this implies the irrationality of the squared-ladder value \(L_2(\mathbf1)=\zeta_{1/2}(2)-\zeta_{1/2}(1)\).
 
@@ -132,7 +132,7 @@ boundary of that relationship.
 
   **Boundary.** The release's dyadic Lean independence result is separately formalised from this broader comparison input by a finite CRT–Dirichlet–determinant argument; Martin does not present the release's Lean statement or proof. The all-base paper theorem applies Martin directly; Lean checks its zero-residue and composite-base arithmetic layers but does not formalise Martin's positive-density theorem or the final all-base independence step. Martin needs neither odd slopes, nor primitivity, nor a residue bound, and concludes strictly more. A \(\sigma\) analogue would likewise not be new. Exact-title, DOI and venue searches did not locate a separate journal publication, so this is cited as a public preprint.
 
-- F. Luca and Y. Tachiya, [*Irrationality of Lambert series associated with a periodic sequence* (2014)](https://doi.org/10.1142/S1793042113501121)
+- F. Luca and Y. Tachiya, [*Irrationality of Lambert series associated with a periodic sequence* (2014)](https://doi.org/10.1142/S1793042113501121) ([read source closure](primary-sources/reciprocal-tail/luca-tachiya-2014-source-closure.md))
 
   Direct antecedent for the eventually-periodic coefficient family. Their rational-coefficient theorem contains the indicator-support case and the nonnegative rational weights formalised here.
 
