@@ -8,6 +8,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import os
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
@@ -26,6 +27,12 @@ SPEC.loader.exec_module(builder)
 
 def sha256_text(content: str) -> str:
     return f"sha256:{hashlib.sha256(content.encode('utf-8')).hexdigest()}"
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep dependency-bootstrap assertions active when Python is run with -O."""
+    if not condition:
+        raise AssertionError(message)
 
 
 def check_exact_receipt_contract() -> None:
@@ -128,16 +135,51 @@ def check_receipt_uses_verified_snapshot() -> None:
 
 
 def check_environment_build_is_bounded() -> None:
-    with patch.object(builder.subprocess, "run") as run:
-        run.return_value.returncode = 0
-        builder.ensure_elaborated_environment()
-    assert run.call_args.args[0] == [
-        builder.sys.executable,
-        str(builder.LEAN_FAST_BUILD),
-        "--lake-staleness",
-        *builder.LEAN_ROOT_TARGETS,
-    ]
-    assert run.call_args.kwargs["cwd"] == builder.ROOT
+    hostile_environment = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "refs/namespaces/wrong-dependency",
+        "GIT_REPLACE_REF_BASE": "refs/replace/",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(builder.subprocess, "run") as run:
+            run.return_value.returncode = 0
+            builder.ensure_elaborated_environment()
+    require(
+        run.call_args.args[0]
+        == [
+            builder.sys.executable,
+            str(builder.LEAN_FAST_BUILD),
+            "--lake-staleness",
+            *builder.LEAN_ROOT_TARGETS,
+        ],
+        "dependency-bootstrap command drifted",
+    )
+    require(run.call_args.kwargs["cwd"] == builder.ROOT, "bootstrap cwd drifted")
+    sanitized = run.call_args.kwargs["env"]
+    for key in (
+        "GIT_DIR",
+        "GIT_NAMESPACE",
+        "GIT_REPLACE_REF_BASE",
+        "PYTHONPATH",
+    ):
+        require(key not in sanitized, f"ambient {key} leaked into bootstrap")
+    require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale missing")
+    require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
+    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into bootstrap")
+    require(
+        run.call_args.kwargs["timeout"]
+        == builder.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "dependency-bootstrap timeout drifted",
+    )
+    require(
+        builder.ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "dependency-index environment contract drifted",
+    )
 
 
 def main() -> int:

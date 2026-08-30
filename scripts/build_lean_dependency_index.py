@@ -49,8 +49,9 @@ QUERY_CORPUS_DEPENDENCY_HELPERS = (
 
 
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
-    """Run dependency-bootstrap commands without ambient checkout state."""
+    """Run dependency-bootstrap commands without ambient state or hangs."""
     kwargs["env"] = singleflight.command_environment()
+    kwargs.setdefault("timeout", singleflight.GIT_COMMAND_TIMEOUT_SECONDS)
     return subprocess.run(*args, **kwargs)
 
 
