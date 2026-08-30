@@ -219,6 +219,14 @@ core)**
 - Open: repair or refute that decomposition; the planar topology and length
   bookkeeping.
 
+- Current-source boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
+  is the dated route for later source-only research evidence. Read it before
+  the generated `STRONGEST_RESULTS.json`: it records certified refutations of
+  several proposed strategies, surviving carriers, and exact open gaps while
+  leaving the unrestricted endpoint open. These rows are not reviewed claim
+  entries, peer review, priority, novelty, or significance findings; the
+  frontier itself flags priority/novelty as unchecked for named new rows.
+
 **#1049 — Lambert series at rational bases, beginning with `3/2`?**
 
 - Checked exclusions at `3/2`, each of one named mechanism only: the
