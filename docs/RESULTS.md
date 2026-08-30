@@ -114,14 +114,14 @@ These are editorial dispositions for first-contact signal, not novelty,
 priority, or proof-status claims. The detailed sections below retain the
 full evidence and exact boundaries.
 
-The audit universe is the 45 declarations in the committed Comparator roster
+The audit universe is the 46 declarations in the committed Comparator roster
 (`verification/comparator.json`). I ranked them by consequence, endpoint
 proximity, mechanism depth, genuine distinctness, external usefulness,
 digestion value, evidence certainty, natural friction, and overclaim risk—not
 by row count, inherited order, or citation presence. The family-level table
 below is the compact reading map; every declaration remains source-current and
 individually inspectable in the per-problem sections. Source-review families
-without a Comparator transport are not counted in the 45-row universe; their
+without a Comparator transport are not counted in the 46-row universe; their
 dispositions are stated in the relevant per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
@@ -269,7 +269,7 @@ replacement for claim authority.
   The latter two declarations are mechanism evidence for this one family, not
   separate rows. This is not reciprocal-tail irrationality: the unbounded
   mixed-sign negative branch and prime-specific producer remain open
-  (`ExternalVerification/Challenge.lean:96-109`; source
+  (Comparator wrapper: `ExternalVerification/Challenge.lean:96-109`; source
   `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:2265`, with supporting
   declarations at `:1837` and `:1799`).
 - Open: the unbounded mixed-sign regime.

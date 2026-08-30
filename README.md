@@ -65,12 +65,9 @@ All eight remain open. Pass is mechanism-first:
   ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
   quantitative separation supply is unproved, and sign/top-edge information
   does not supply it. Separately, the finite dyadic kernel has rank `2^e+1`
-  for `e≥1` with an odd-core basis
-  ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); all-base extension needs
-  affine independence, but this is no rationality-to-finite-rank bridge or endpoint
-  solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137):
-  hypothetical rationality gives a positive multiplier and tempered carry with common
-  eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1`
+  for `e≥1` with an odd-core basis ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); all-base extension needs
+  affine independence, but this is no rationality-to-finite-rank bridge or endpoint solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137):
+  hypothetical rationality gives a positive multiplier and tempered carry with common eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1`
   for every `e`; modulo a divisor, forcing vanishes and the carry is geometric: no
   finite-rank contradiction or irrationality proof
   ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
@@ -98,7 +95,7 @@ Next boundary: #243's signed recovery
 eventually under exact `C/D` dynamics `Cₙ₊₁+Dₙ=aₙCₙ`, `Dₙ₊₁=aₙDₙ`, `a>1`,
 `C>0`, strict `|E|<C`, uniform `E≥−B`, and normalized vanishing; centered zero
 with an eventually nonzero next tail recovers Sylvester recurrence
-([consumer](ExternalVerification/Challenge.lean#L96); [source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265)).
+([Comparator](ExternalVerification/Challenge.lean#L96); [source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265)).
 It leaves reciprocal-tail irrationality, the unbounded mixed-sign branch, and
 the prime-specific producer open. #251 gives unbounded prime gaps and an exact
 prime-gap equivalence; its public `RealDyadicTailRecurrence` classifiers say
