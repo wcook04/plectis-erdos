@@ -39,7 +39,7 @@ Bundschuh-Väänänen theorem remains a cited external result.
 ## Proof handle
 
 - [Public Lean source](../ErdosProblems/Erdos1049/RationalBaseLambert.lean): theorem `sevenHalves_bundschuhVaananen_margin`
-- [Independent challenge statement](../ExternalVerification1049/Challenge.lean): theorem `comparator_sevenHalves_numericalHeight`
+- [Separately declared challenge statement](../ExternalVerification1049/Challenge.lean): theorem `comparator_sevenHalves_numericalHeight`
 - [Source transport](../ExternalVerification1049/Solution.lean)
 - [Deliberate mismatch](../ExternalVerification1049/NegativeSolution.lean)
 - [Machine-readable scope](../verification/comparator-1049-numerical-height.metadata.json)
