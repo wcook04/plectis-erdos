@@ -171,6 +171,9 @@ The bullets below index the mathematical gateway paper; the systems paper is
 outlined by its description above.
 
 - The Mersenne–Lambert ladder that places both constants on one line.
+- The [composite-dilation defect](../Erdos249257/CompositeDilationDefect.lean):
+  an exact foreign-divisor correction, zero on prime support, with no arbitrary-
+  support tail bound or irrationality conclusion.
 - Erdős–Borwein-type irrationality (the #257 direction): full support at every base, plus named infinite-support cases.
 - The totient constant `S` (Erdős #249): the unconditional denominator bound, the coprimality reading, and the exact reduction to finite certificates.
 - Formalisation architecture and mathematical lessons: how infinite questions are separated from finite kernel-checkable witnesses.
