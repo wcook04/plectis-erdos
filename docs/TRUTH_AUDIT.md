@@ -32,6 +32,16 @@ The central distinction used below is:
 - **CONDITIONAL** means the Lean implication is proved, but one or more
   hypotheses have no known instance or are known to fail in the intended use.
 
+## #1041 source-frontier supersession
+
+The committed source-only [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
+is the dated correction route for the current #1041 research state. Read it
+before generated `STRONGEST_RESULTS.json`: the frontier supersedes activation
+rows it records as refuted, while preserving the surviving carriers, exact
+open gaps, and their stated evidence classes. This is source-level research
+lineage, not a transition in `docs/claims.json`; it does not close #1041 or
+establish peer review, priority, novelty, or significance.
+
 ## Census populations are not interchangeable
 
 The corpus-shape queries and the demand lattice answer different questions.
