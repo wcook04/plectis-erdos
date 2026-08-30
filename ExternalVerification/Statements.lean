@@ -95,6 +95,17 @@ def smoothPrefixLcm (p q r x : ℕ) : ℕ :=
   (smoothPrefixExponents p q r x).lcm
     fun e => smooth3Val p q r e.1 e.2.1 e.2.2
 
+def smoothExponentBox (hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  (Finset.range (hp + 1)).product
+    ((Finset.range (hq + 1)).product (Finset.range (hr + 1)))
+
+def smoothPointHeight (p q r : ℕ) (e : ℕ × ℕ × ℕ) : ℕ :=
+  threePrimeHeight p q r (smooth3Val p q r e.1 e.2.1 e.2.2)
+
+def smoothHeightFiber
+    (p q r hp hq hr H : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  (smoothExponentBox hp hq hr).filter fun e => smoothPointHeight p q r e = H
+
 abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
 
 def SamePositiveRay (a b : ℂ) : Prop :=
@@ -359,6 +370,17 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       (∀ n, e (N + n + h) = e (N + n)) →
       (∀ n, C (N + n + h) = C (N + n) + M) →
       False
+  problem243BoundedRiseTailAvoidance :
+    ∀ (u m : ℕ → ℕ) (N B : ℕ),
+      0 < B →
+      (∀ n, N ≤ n → 1 < m n) →
+      (∀ {i j : ℕ}, N ≤ i → N ≤ j → i ≠ j →
+        Nat.Coprime (m i) (m j)) →
+      (∀ {i t : ℕ}, N ≤ i → i < t →
+        Nat.Coprime (m i) (u t)) →
+      (∀ n, N ≤ n → u (n + 1) ≤ u n + B) →
+      Filter.Tendsto u Filter.atTop Filter.atTop →
+      False
   problem249Finite :
     ∀ e : ℕ, 1 ≤ e →
       finrank ℚ
@@ -496,6 +518,12 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     ∀ {p q r x : ℕ}, p.Prime → q.Prime → r.Prime →
       p ≠ q → p ≠ r → q ≠ r → x ≠ 0 →
       smoothPrefixLcm p q r x = threePrimeHeight p q r x
+  problem269HeightGrouping :
+    ∀ (p q r hp hq hr : ℕ),
+      (∑ e ∈ smoothExponentBox hp hq hr,
+        threePrimeKernelQ p q r e.1 e.2.1 e.2.2) =
+        ∑ H ∈ (smoothExponentBox hp hq hr).image (smoothPointHeight p q r),
+          (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹)
   problem1041 :
     ∀ (c : ι → ℂ),
       Function.Injective c →

@@ -154,6 +154,9 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     exact ErdosProblems.Erdos243.no_cofinallyBoundedNegative_of_normalizedVanishes
       a C D magnitude B hB ha hCpos hC hD hRise hmagnitude hvanish hnegative
   · exact ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit
+  · intro u m N B hB hm hpair havoid hrise huTop
+    exact ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance
+      u m N B hB hm hpair havoid hrise huTop
   · intro e he
     simpa [totientKernelThroughLevelFamily, totientKernelSeq,
       Erdos249257.totientKernelThroughLevelFamily,
@@ -295,6 +298,17 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos269.smooth3Val] using
       ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
         hp hq hr hpq hpr hqr hx
+  · intro p q r hp hq hr
+    simpa [smoothExponentBox, smoothPointHeight, smoothHeightFiber,
+      threePrimeKernelQ, threePrimeHeight, smooth3Val,
+      ErdosProblems.Erdos269.smoothExponentBox,
+      ErdosProblems.Erdos269.smoothPointHeight,
+      ErdosProblems.Erdos269.smoothHeightFiber,
+      ErdosProblems.Erdos269.threePrimeKernelQ,
+      ErdosProblems.Erdos269.threePrimeHeight,
+      ErdosProblems.Erdos269.smooth3Val] using
+      ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight
+        p q r hp hq hr
   · intro c hc ε hε
     simpa [SamePositiveRay, ErdosProblems.Erdos1041.SamePositiveRay] using
       ErdosProblems.Erdos1041.exists_small_translation_separating_arguments c hc hε

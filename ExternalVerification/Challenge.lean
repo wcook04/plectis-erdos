@@ -63,6 +63,20 @@ theorem no_eventuallyPeriodicNegative_orbit
   (portfolioClaims Unit).problem243Periodic a D C e N h M hh hM ha hepos helt
     hD hC hshape hperiod hphase
 
+theorem no_boundedRise_of_tailAvoidance
+    (u m : ℕ → ℕ) (N B : ℕ)
+    (hB : 0 < B)
+    (hm : ∀ n, N ≤ n → 1 < m n)
+    (hpair : ∀ {i j : ℕ}, N ≤ i → N ≤ j → i ≠ j →
+      Nat.Coprime (m i) (m j))
+    (havoid : ∀ {i t : ℕ}, N ≤ i → i < t →
+      Nat.Coprime (m i) (u t))
+    (hrise : ∀ n, N ≤ n → u (n + 1) ≤ u n + B)
+    (huTop : Filter.Tendsto u Filter.atTop Filter.atTop) :
+    False :=
+  (portfolioClaims Unit).problem243BoundedRiseTailAvoidance
+    u m N B hB hm hpair havoid hrise huTop
+
 theorem finrank_totientKernelThroughLevelFamily_eq (e : ℕ) (he : 1 ≤ e) :
     finrank ℚ
       (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =
@@ -226,6 +240,14 @@ theorem smoothPrefixLcm_eq_threePrimeHeight
     (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) (hx : x ≠ 0) :
     smoothPrefixLcm p q r x = threePrimeHeight p q r x :=
   (portfolioClaims Unit).problem269Lcm hp hq hr hpq hpr hqr hx
+
+theorem finiteSmoothKernelSum_groupedByHeight
+    (p q r hp hq hr : ℕ) :
+    (∑ e ∈ smoothExponentBox hp hq hr,
+      threePrimeKernelQ p q r e.1 e.2.1 e.2.2) =
+      ∑ H ∈ (smoothExponentBox hp hq hr).image (smoothPointHeight p q r),
+        (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹) :=
+  (portfolioClaims Unit).problem269HeightGrouping p q r hp hq hr
 
 theorem exists_small_translation_separating_arguments
     {ι : Type*} [Fintype ι] (c : ι → ℂ)
