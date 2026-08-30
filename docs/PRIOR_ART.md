@@ -102,7 +102,7 @@ boundary of that relationship.
 
   **Boundary.** The release formalises the identity placing \(L_2(\mathbf1)\) in this q-zeta family, not the Hermite--Padé proof. Linear independence of the constant-weight row gives no irrationality transfer to the Möbius row \(L_2(\mu)=S-1/2\), which remains open.
 
-- S. Kakeya, [*On the Set of Partial Sums of an Infinite Series* (1914)](https://doi.org/10.11429/ptmps1907.7.14_250)
+- S. Kakeya, [*On the Set of Partial Sums of an Infinite Series* (1914)](https://doi.org/10.11429/ptmps1907.7.14_250) ([read source closure](primary-sources/reciprocal-tail/kakeya-1914-source-closure.md))
 
   Classical strict-tail criterion for subsum sets: domination of every remaining tail by its term gives the Cantor-set regime.
 

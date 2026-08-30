@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 21,
-    "artifact_count": 21,
+    "working_tree_only_count": 22,
+    "artifact_count": 22,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 21,
+    "link_and_digest_only_count": 22,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -414,6 +414,25 @@
       "consumer_refs": [
         "docs/PRIOR_ART.md",
         "docs/primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/kakeya-1914-partial-sums.pdf",
+      "sha256": "fd07aaea155e1a726b1705137d70c3e7bf9d435dbd12dd155cced4db42400dfe",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://www.jstage.jst.go.jp/article/ptmps1907/7/14/7_14_250/_pdf/-char/ja",
+        "https://doi.org/10.11429/ptmps1907.7.14_250"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/kakeya-1914-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/kakeya-1914-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/kakeya-1914-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }
