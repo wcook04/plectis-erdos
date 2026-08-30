@@ -172,6 +172,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "centered_state_dynamics",
+      "problem": 243,
+      "review_family": "centered_state_dynamics",
+      "contribution_class": "locally proved signed recovery/rigidity theorem; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos243.boundedNegativePart_eventually_zero",
+      "original_source": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+      "statement": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and division-free normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually; centered-zero plus an eventually nonzero next tail recovers eventual Sylvester recurrence.",
+      "boundary": "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "eventually_periodic_negative_no_go",
       "problem": 243,
       "review_family": "negative_orbit_no_go",
@@ -2391,6 +2405,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:cb6b298518b40349b977a16d13c47850cbae1cf7e17fdc06b40aad9c61005329",
+  "config_digest": "sha256:ea914e10080c526730b7933b4c49c06a4a2d8b8db7400699fede7a30f57dd1f1",
   "solution_source_digest": "sha256:b274acd1d110f0326838b1b31f6fd35e0f0f06b3d15cf89c9cd156d4efc9c504"
 }
