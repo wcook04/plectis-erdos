@@ -769,26 +769,73 @@ def validate_natural_language_search() -> None:
         "the Lean graph?"
     )
     capability = query("--ask", capability_question, "--format", "json")
-    assert capability["kind"] == "reading_route"
-    assert capability["route"]["id"] == "agent_native_corpus_navigation"
+    assert capability["kind"] == "agent_capability_map"
+    assert capability["schema_version"] == (
+        "public_mathematical_corpus_capability_map_v1"
+    )
     assert capability["routing_receipt"] == {
         "selection": "agent_capability_discovery",
         "declaration_scan_required": False,
         "synopsis_projection_required": False,
-        "reason": (
-            "The question asks for the corpus query grammar and graph handles, "
-            "so the authored agent-native navigation route is the direct "
-            "bounded answer."
-        ),
     }
+    assert capability["corpus_topology"]["problem_count"] == 8
+    assert {
+        row["dimension"] for row in capability["searchable_dimensions"]
+    } == {
+        "problem_and_programme",
+        "claim_status_and_open_frontier",
+        "formal_source_coordinate",
+        "proof_and_dependency_graph",
+        "semantic_relation",
+        "paper_publication_and_artifact",
+    }
+    assert {row["surface_id"] for row in capability["integration_surfaces"]} == {
+        "comparator",
+        "palomar",
+    }
+    assert all(
+        row["counts_as_problem"] is False
+        for row in capability["integration_surfaces"]
+    )
+    assert capability["authority_boundary"]["claim_status"] == "docs/claims.json"
     capability_card = run(
         "--ask", capability_question, "--format", "card"
     )
     assert capability_card.returncode == 0, capability_card.stderr
     assert "search_surface |" in capability_card.stdout
     assert "--declaration <Lean_name>" in capability_card.stdout
-    assert "--connections <module-or-declaration>" in capability_card.stdout
-    assert "handle_classes |" in capability_card.stdout
+    assert "--connections <module_or_declaration>" in capability_card.stdout
+    assert "--open <remaining_open_id>" in capability_card.stdout
+    assert "--dependency-path <source> <target>" in capability_card.stdout
+    assert "integration | comparator | counts_as_problem=false" in capability_card.stdout
+    assert "integration | palomar | counts_as_problem=false" in capability_card.stdout
+    assert "claim_status=docs/claims.json" in capability_card.stdout
+
+    for paraphrase in (
+        "What can I search here?",
+        "Show available search surfaces",
+        "What query grammar is available?",
+        "What kinds of mathematical objects can this tool find?",
+    ):
+        assert query_corpus.is_agent_capability_discovery_query(paraphrase), paraphrase
+    for targeted in (
+        "How do I navigate claims about Erdos 257?",
+        "Find declaration booleanMobiusCarry",
+        "Show theorem irrational_erdosSum_full_support",
+    ):
+        assert not query_corpus.is_agent_capability_discovery_query(targeted), targeted
+
+    original_search_packet = query_corpus.search_packet
+    query_corpus.search_packet = lambda *_args, **_kwargs: (_ for _ in ()).throw(
+        AssertionError("capability discovery must not scan declarations")
+    )
+    try:
+        direct_capability = query_corpus.semantic_slice_packet(
+            "Show available search surfaces", 8
+        )
+    finally:
+        query_corpus.search_packet = original_search_packet
+    assert direct_capability["kind"] == "agent_capability_map"
     backlog_route = query(
         "--search",
         "which paper proofs lack semantic interpretation",

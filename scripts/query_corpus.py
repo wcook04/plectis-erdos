@@ -4661,7 +4661,38 @@ def is_agent_capability_discovery_query(query: str) -> bool:
     synopsis can never turn first-contact discovery into a whole-source scan.
     """
     text = normalized_search_text(query)
-    corpus_scope = any(
+    if re.search(r"\b(?:erdos|problem)\s*\d+\b", text):
+        return False
+    if re.search(r"\b(?:claim|declaration|theorem|open)\s+[a-z0-9_']{4,}\b", text):
+        return False
+    strong_meta_cue = any(
+        cue in text
+        for cue in (
+            "what can i search",
+            "what can we search",
+            "what is searchable",
+            "available search surfaces",
+            "show available search surfaces",
+            "query grammar",
+            "available query grammar",
+            "what can this tool find",
+            "what kinds of mathematical objects",
+            "how do i search",
+            "how can i search",
+            "search capabilities",
+            "search affordances",
+            "query capabilities",
+        )
+    )
+    scoped_navigation_cue = any(
+        cue in text
+        for cue in (
+            "how do i traverse",
+            "how can i traverse",
+            "how do i navigate",
+            "how can i navigate",
+        )
+    ) and any(
         cue in text
         for cue in (
             "corpus",
@@ -4669,28 +4700,158 @@ def is_agent_capability_discovery_query(query: str) -> bool:
             "repo",
             "mathematical graph",
             "lean graph",
-            "declarations",
-            "claims",
+            "query surface",
         )
     )
-    discovery_cue = any(
-        cue in text
-        for cue in (
-            "what can i search",
-            "what can we search",
-            "what is searchable",
-            "how do i search",
-            "how can i search",
-            "how do i traverse",
-            "how can i traverse",
-            "how do i navigate",
-            "how can i navigate",
-            "search capabilities",
-            "search affordances",
-            "query capabilities",
-        )
+    return strong_meta_cue or scoped_navigation_cue
+
+
+def agent_capability_discovery_packet(query: str) -> dict[str, Any]:
+    """Return the complete bounded public search grammar for a cold agent."""
+    problems = sorted(
+        (
+            {
+                "problem_id": f"erdos_{int(row['erdos_number'])}",
+                "erdos_number": int(row["erdos_number"]),
+                "status": row.get("status", "open"),
+                "command": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"erdos_{int(row['erdos_number'])} --format card"
+                ),
+            }
+            for row in load("docs/problems.json").get("problems", [])
+            if row.get("erdos_number") is not None
+        ),
+        key=lambda row: row["erdos_number"],
     )
-    return corpus_scope and discovery_cue
+    dimensions = [
+        {
+            "dimension": "problem_and_programme",
+            "handles": [row["problem_id"] for row in problems],
+            "commands": [
+                "python3 scripts/query_corpus.py --route <problem_or_programme_id>",
+                "python3 scripts/query_route_memory.py --problem <number> --route <route_id>",
+            ],
+        },
+        {
+            "dimension": "claim_status_and_open_frontier",
+            "handles": ["claim_id", "claim_status", "remaining_open_proposition_id"],
+            "commands": [
+                "python3 scripts/query_corpus.py --claim <claim_id>",
+                "python3 scripts/query_corpus.py --status <claim_status>",
+                "python3 scripts/query_corpus.py --open <remaining_open_id>",
+            ],
+        },
+        {
+            "dimension": "formal_source_coordinate",
+            "handles": ["Lean declaration", "module", "module.lean:line"],
+            "commands": [
+                "python3 scripts/query_corpus.py --declaration <Lean_name>",
+                "python3 scripts/query_corpus.py --module <path_or_id_or_paper_sigil>",
+                "python3 scripts/query_corpus.py --source <module.lean:line>",
+            ],
+        },
+        {
+            "dimension": "proof_and_dependency_graph",
+            "handles": [
+                "prerequisite",
+                "consumer",
+                "proof cone",
+                "dependency path",
+                "goal support",
+                "proof plan",
+            ],
+            "commands": [
+                "python3 scripts/query_corpus.py --connections <module_or_declaration> --query <task>",
+                "python3 scripts/query_corpus.py --proof-cone <Lean_name> --depth 2",
+                "python3 scripts/query_corpus.py --dependency-path <source> <target> --depth 4",
+                "python3 scripts/query_corpus.py --goal-support <goal>",
+                "python3 scripts/query_corpus.py --proof-plan <goal> --depth 4",
+            ],
+        },
+        {
+            "dimension": "semantic_relation",
+            "handles": [
+                "support",
+                "frontier",
+                "no-go or falsifier",
+                "alternate coordinate",
+                "analogy",
+                "trace",
+            ],
+            "commands": [
+                "python3 scripts/query_corpus.py --search <short natural query> --limit 10",
+                "python3 scripts/query_corpus.py --ask <question>",
+                "python3 scripts/query_corpus.py --vocabulary",
+            ],
+        },
+        {
+            "dimension": "paper_publication_and_artifact",
+            "handles": ["paper", "paper anchor", "artifact path or digest", "publication artifact"],
+            "commands": [
+                "python3 scripts/query_corpus.py --papers",
+                "python3 scripts/query_corpus.py --paper-anchor <label_or_source_ref>",
+                "python3 scripts/query_corpus.py --artifact <path_or_sha256>",
+                "python3 scripts/query_corpus.py --publication-artifact <id>",
+            ],
+        },
+    ]
+    integrations = [
+        {
+            "surface_id": "comparator",
+            "counts_as_problem": False,
+            "command": "python3 scripts/query_corpus.py --route comparator_assurance",
+            "boundary": (
+                "Statement/axiom/replay assurance only; not novelty, significance, "
+                "priority, peer review, or independent mathematical verification."
+            ),
+        },
+        {
+            "surface_id": "palomar",
+            "counts_as_problem": False,
+            "command": "python3 scripts/query_corpus.py --route palomar_qualification",
+            "boundary": (
+                "Repository-local readiness only; not acceptance, registration, "
+                "publication, endorsement, or automatic submission."
+            ),
+        },
+    ]
+    return {
+        "kind": "agent_capability_map",
+        "schema_version": "public_mathematical_corpus_capability_map_v1",
+        "status": "ready",
+        "query": query,
+        "corpus_topology": {
+            "problem_count": len(problems),
+            "problems": problems,
+            "integration_surface_count": len(integrations),
+            "counting_rule": (
+                "Comparator and Palomar are integration surfaces, not ninth or "
+                "tenth mathematical problems."
+            ),
+        },
+        "searchable_dimensions": dimensions,
+        "integration_surfaces": integrations,
+        "authority_boundary": {
+            "proof": "Lean source checked by the pinned Lean kernel",
+            "claim_status": "docs/claims.json",
+            "mathematical_meaning": (
+                "maintainer-reviewed claim records and authored interpretation"
+            ),
+            "navigation": (
+                "committed generated JSON projections; navigation is not proof authority"
+            ),
+        },
+        "consumer_action": (
+            "Choose one handle class and run its smallest typed command; use "
+            "ordinary semantic search only when no exact handle is known."
+        ),
+        "routing_receipt": {
+            "selection": "agent_capability_discovery",
+            "declaration_scan_required": False,
+            "synopsis_projection_required": False,
+        },
+    }
 
 
 def is_paper_reading_query(query: str) -> bool:
@@ -7039,21 +7200,7 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     if scope_boundary is not None:
         return scope_boundary
     if is_agent_capability_discovery_query(query):
-        packet = route_packet("agent_native_corpus_navigation")
-        return {
-            **packet,
-            "query": query,
-            "routing_receipt": {
-                "selection": "agent_capability_discovery",
-                "declaration_scan_required": False,
-                "synopsis_projection_required": False,
-                "reason": (
-                    "The question asks for the corpus query grammar and graph "
-                    "handles, so the authored agent-native navigation route is "
-                    "the direct bounded answer."
-                ),
-            },
-        }
+        return agent_capability_discovery_packet(query)
     if is_repository_overview_query(query):
         return repository_overview_packet(query)
     if is_paper_reading_query(query):
@@ -9410,6 +9557,45 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| operators={len(packet['operators'])} "
             f"| vocabulary={len(packet['vocabulary'])}"
         )
+    if kind == "agent_capability_map":
+        topology = packet["corpus_topology"]
+        rows = [
+            (
+                f"capability map | problems={topology['problem_count']} "
+                f"| integrations={topology['integration_surface_count']} "
+                f"| dimensions={len(packet['searchable_dimensions'])}"
+            )
+        ]
+        rows.append(
+            "problem_handles | "
+            + ",".join(
+                row["problem_id"] for row in topology["problems"]
+            )
+        )
+        for dimension in packet["searchable_dimensions"]:
+            rows.append(
+                f"search_dimension | {dimension['dimension']} "
+                f"| handles={','.join(dimension['handles'])}"
+            )
+            rows.extend(
+                f"search_surface | {command}"
+                for command in dimension["commands"]
+            )
+        for surface in packet["integration_surfaces"]:
+            rows.append(
+                f"integration | {surface['surface_id']} "
+                f"| counts_as_problem={str(surface['counts_as_problem']).lower()} "
+                f"| command={surface['command']} | boundary={surface['boundary']}"
+            )
+        authority = packet["authority_boundary"]
+        rows.append(
+            "authority | "
+            f"proof={authority['proof']} | claim_status={authority['claim_status']} "
+            f"| meaning={authority['mathematical_meaning']} "
+            f"| navigation={authority['navigation']}"
+        )
+        rows.append(f"next | {packet['consumer_action']}")
+        return "\n".join(rows)
     if kind == "semantic_slice":
         rows = [
             f"semantic slice {packet['query']!r} "
