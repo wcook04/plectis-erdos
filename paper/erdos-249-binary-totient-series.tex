@@ -1164,6 +1164,45 @@ The sign corridor therefore removes one branch but exposes the remaining
 arithmetic task.  A proof must exclude this persistent top boundary (or find
 cofinal non-integrality); a sign-only modular kill is not available.
 
+\paragraph{A quantitative bridge, and its route-pruning test.}
+The adjacent arithmetic producer makes the finite evidence at the actual
+LCM heights explicit rather than treating it as a numerical table:
+\mword{Erdos249257/TotientActualLcmShortKill.lean}{18}{lcmDiagonalArithmeticKill_two_pow_four}{the \(t=2^4\), length-\(23\) kill}
+and
+\mword{Erdos249257/TotientActualLcmShortKill.lean}{27}{lcmDiagonalArithmeticKill_two_pow_six}{the \(t=2^6\), length-\(93\) kill}
+give
+\mword{Erdos249257/TotientActualLcmShortKill.lean}{35}{actualLcmTailOrbit_four_and_six_notMem_int}{actual-orbit non-integrality at both heights}.
+The same file packages the latter witness as a short-arithmetic producer
+through exponent six
+\mword{Erdos249257/TotientActualLcmShortKill.lean}{54}{powerTwoActualLcmShortArithmeticKillSupply_through_six}{but explicitly stops at that finite prefix}; it does not supply the missing cofinal quantifier.
+
+A more consequential unbounded route asks for quantitative
+anti-concentration, not merely a sign.  At odd rank \(2q+1\), the exact raw
+LCM block approximates the actual orbit with the elementary error bound
+\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{141}{abs_actualLcmTailOrbit_sub_rawApprox_lt}{recorded here};
+the raw block itself is an integer half-word divided by \(4^q\)
+\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{179}{actualLcmRawApprox_eq_half_div_fourPow}{by the normalization identity}.
+Separation of that raw value from every integer by \(1/32\) forces the
+half-word band
+\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{208}{halfWordBandAt_of_rawApprox_integerSeparation}{through the exact threshold lemma}.
+The formal cofinal hypothesis strengthens this to \(1/32\) plus the orbit
+error, and its consumer yields irrationality
+\mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{254}{PowerTwoActualLcmOrbitSeparationSupply}{only conditionally}.
+Thus the hard step is an actual cofinal anti-concentration estimate; finite
+separation, the sign corridor, and the exact endpoint reduction do not imply
+it.
+
+There is also a precise no-go for a tempting substitute.  In the positive
+short LCM window, a terminal dyadic staircase would force the complete
+discrepancy word to vanish modulo its terminal power of two, but the last
+positive arithmetic letter is strictly smaller than that modulus, so
+\mword{Erdos249257/TotientActualLcmTopEdgeStaircase.lean}{251}{not_actualLcmTerminalDyadicStaircase_of_room}{the staircase is impossible under the stated room hypothesis}.
+The companion
+\mword{Erdos249257/TotientActualLcmTopEdgeStaircase.lean}{297}{windowDiscrepancy_emod_two_pow_eq_terminal}{terminal-remainder identity}
+shows what survives: only the final letters control that residue.  This
+prunes total dyadic annihilation, not every top-edge pattern; the remaining
+endpoint problem is still to prove a nonzero cofinal residue gap.
+
 \section{Obstructions for fixed-coordinate methods}\label{sec:nogo}
 
 \ref{res:primindex} has a one-line proof.  Take a prime

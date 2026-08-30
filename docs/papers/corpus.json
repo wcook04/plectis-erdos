@@ -1595,12 +1595,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:0a4d0dcf40390cc2a45873e31be23d4ba73a25a3e3d48948bfe1709671141773",
+      "source_sha256": "sha256:a1a895a8d4a391ec109bde23b5ab588918f1c14a3b0a244d7cc9ce33c779be51",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-249-binary-totient-series.tex",
-      "section_count": 29,
+      "section_count": 30,
       "sections": [
         {
           "level": 1,
@@ -1693,88 +1693,94 @@
           "line": 445
         },
         {
+          "level": 4,
+          "id": "a-quantitative-bridge-and-its-route-pruning-test.",
+          "title": "A quantitative bridge, and its route-pruning test.",
+          "line": 453
+        },
+        {
           "level": 1,
           "id": "sec:nogo",
           "title": "Obstructions for fixed-coordinate methods",
-          "line": 453
+          "line": 463
         },
         {
           "level": 1,
           "id": "sec:programmes",
           "title": "Further conditional criteria",
-          "line": 465
+          "line": 475
         },
         {
           "level": 4,
           "id": "a-prime-orbit-sufficient-condition.",
           "title": "A prime-orbit sufficient condition.",
-          "line": 471
+          "line": 481
         },
         {
           "level": 4,
           "id": "finite-euler-factor-identities.",
           "title": "Finite Euler-factor identities.",
-          "line": 477
+          "line": 487
         },
         {
           "level": 4,
           "id": "mixed-differences-of-cyclotomic-layers.",
           "title": "Mixed differences of cyclotomic layers.",
-          "line": 504
+          "line": 514
         },
         {
           "level": 1,
           "id": "sec:frontier",
           "title": "Open problems",
-          "line": 550
+          "line": 560
         },
         {
           "level": 2,
           "id": "exact-equivalent-formulations",
           "title": "Exact equivalent formulations",
-          "line": 556
+          "line": 566
         },
         {
           "level": 2,
           "id": "stronger-sufficient-producer-problems",
           "title": "Stronger sufficient producer problems",
-          "line": 585
+          "line": 595
         },
         {
           "level": 2,
           "id": "structural-and-diophantine-routes",
           "title": "Structural and Diophantine routes",
-          "line": 637
+          "line": 647
         },
         {
           "level": 2,
           "id": "independent-extension",
           "title": "Independent extension",
-          "line": 672
+          "line": 682
         },
         {
           "level": 4,
           "id": "the-independent-denominator-exclusion.",
           "title": "The independent denominator exclusion.",
-          "line": 714
+          "line": 724
         },
         {
           "level": 2,
           "id": "sec:open",
           "title": "Logical status and analytic input",
-          "line": 720
+          "line": 730
         },
         {
           "level": 1,
           "id": "formal-source-notes",
           "title": "Formal source notes",
-          "line": 744
+          "line": 754
         },
         {
           "level": 4,
           "id": "registry-coverage.",
           "title": "Registry coverage.",
-          "line": 748
+          "line": 758
         }
       ],
       "citations_rendered": 21,
@@ -1783,8 +1789,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:2467e2d406fc644fc82ccfc538645953383cef068e957570e7d29755c1237e4c",
-      "pdf_byte_count": 189492,
+      "pdf_sha256": "sha256:83788477d3aad3e059c3d791a185d9dd22b9d05894579116c0c7f6cad44dfa4d",
+      "pdf_byte_count": 194872,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1802,7 +1808,7 @@
           {
             "id": "sec:open",
             "title": "Logical status and analytic input",
-            "line": 720
+            "line": 730
           }
         ],
         "unresolved_count": 1
