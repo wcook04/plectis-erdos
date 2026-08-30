@@ -50,6 +50,7 @@ CORPUS = ROOT / "docs" / "semantic_corpus.json"
 LAB = ROOT / "docs" / "theory_lab.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
+import validation_singleflight as singleflight  # noqa: E402
 from build_theory_lab import (  # noqa: E402
     BENCHMARK_ARMS,
     CONTROL_ARMS,
@@ -93,11 +94,18 @@ MECHANISM_KINDS = {
 PROBLEM_REACHES = {"249", "257", "both", "shared_substrate"}
 CONFIDENCE_STATES = {"evidence_bound_authored_mechanism"}
 FAILURE_KINDS = {"candidate_route_ruled_out", "mechanism_scope_exceeded"}
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 
 
 def git(*args: str) -> tuple[int, str]:
     proc = subprocess.run(
-        ("git",) + args, cwd=str(ROOT), capture_output=True, text=True, check=False
+        ("git",) + args,
+        cwd=str(ROOT),
+        capture_output=True,
+        text=True,
+        check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
     )
     return proc.returncode, proc.stdout
 
