@@ -4272,6 +4272,13 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                         "status_summary": row["status_summary"],
                         "primary_narrative_owner": row["primary_narrative_owner"],
                         "view_decision": row["view_decision"],
+                        # Search is a bounded reader entry point too: preserve
+                        # the same canonical resume identity as the dedicated
+                        # family packet instead of dropping the route binding
+                        # at the fan-in boundary.
+                        "route_memory": publication_family_packet(row["id"])[
+                            "route_memory"
+                        ],
                     },
                 )
             )

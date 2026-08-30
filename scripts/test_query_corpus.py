@@ -861,6 +861,22 @@ def main() -> int:
         "diagonal_pincer_t64_primality_closure",
         "diagonal_pincer_t64_endpoint_certificate",
     }
+    family_search = query(
+        "--search", "exact_certificate_equivalence_and_deposits", "--limit", "10"
+    )
+    searched_family = next(
+        row
+        for row in family_search["results"]
+        if row["kind"] == "publication_family"
+        and row["id"] == "exact_certificate_equivalence_and_deposits"
+    )
+    assert searched_family["route_memory"] == certificate_family["route_memory"]
+    assert set(searched_family["route_memory"]) >= {
+        "status",
+        "bindings",
+        "source_route",
+        "boundary",
+    }
     family_card = run(
         "--publication-family",
         "exact_certificate_equivalence_and_deposits",
