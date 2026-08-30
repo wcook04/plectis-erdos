@@ -229,6 +229,19 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     screened = {row["declaration"] for row in showcase["candidate_screening"]}
     assert ranked.isdisjoint(screened)
     assert ranked | screened == set(comparator["theorem_names"])
+    ranked_by_declaration = {
+        row["declaration"]: row for row in showcase["candidate_ranking"]
+    }
+    assert ranked_by_declaration[
+        "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries"
+    ]["family_id"] == "factorial_carry_characterisation"
+    assert ranked_by_declaration[
+        "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap"
+    ]["family_id"] == "prime_gap_reformulation"
+    assert all(
+        row["family_id"] in universe["source_review_family_ids"]
+        for row in showcase["candidate_ranking"]
+    )
     assert showcase["candidate_ranking"][0]["declaration"] == showcase["candidate_selection"]["declaration"]
     assert {
         row["axis"] for row in showcase["selection_contract"]["ranking_axes"]

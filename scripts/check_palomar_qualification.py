@@ -655,6 +655,18 @@ def candidate_selection_errors(
             errors.append("candidate ranking contains duplicate declarations")
         if any(name not in names for name in ranked_names):
             errors.append("candidate ranking contains a declaration absent from Comparator")
+        if isinstance(source_ids, list):
+            ranked_family_ids = {
+                row.get("family_id")
+                for row in ranking
+                if isinstance(row, dict) and isinstance(row.get("family_id"), str)
+            }
+            unknown_family_ids = sorted(ranked_family_ids - set(source_ids))
+            if unknown_family_ids:
+                errors.append(
+                    "candidate ranking contains family IDs absent from the committed review matrix: "
+                    + ", ".join(unknown_family_ids)
+                )
         required_prose = {
             "mathematical_nontriviality",
             "consequence_and_endpoint_proximity",

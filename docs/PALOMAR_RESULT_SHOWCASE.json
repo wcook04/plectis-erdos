@@ -1131,7 +1131,7 @@
     {
       "rank": 7,
       "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
-      "family_id": "factorial_carry_irrationality_equivalence",
+      "family_id": "factorial_carry_characterisation",
       "selection_status": "subordinate",
       "mathematical_nontriviality": "An exact equivalence translating irrationality into a cofinal non-unit carry condition.",
       "consequence_and_endpoint_proximity": "Maximal endpoint proximity for #68, but it does not prove the cofinal producer.",
@@ -1146,7 +1146,7 @@
     {
       "rank": 8,
       "declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
-      "family_id": "prime_gap_dyadic_equivalence",
+      "family_id": "prime_gap_reformulation",
       "selection_status": "subordinate",
       "mathematical_nontriviality": "An exact irrationality equivalence linked to the prime-gap series.",
       "consequence_and_endpoint_proximity": "Very close to #251's target but proves neither side irrational and retains a summability premise.",
@@ -1226,7 +1226,7 @@
     },
     {
       "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
-      "family_id": "factorial_carry_irrationality_equivalence",
+      "family_id": "factorial_carry_characterisation",
       "disposition": "not_selected_alternative",
       "reason": "It is an exact #68 endpoint reduction with excellent review value, but its cofinal non-unit-carry producer remains unproved; an equivalence to the open endpoint is not a direct irrationality result."
     },
