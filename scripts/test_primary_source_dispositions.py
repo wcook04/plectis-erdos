@@ -20,6 +20,7 @@ from check_primary_source_dispositions import (
     notice_errors,
     present_artifact_paths,
     read_regular_bytes,
+    safe_reference_file,
     tracked_paths,
 )
 
@@ -34,7 +35,39 @@ def reject(data: dict[str, object], marker: str, tracked: set[str], present: set
     require(errors and any(marker in error for error in errors), f"mutation was accepted: {marker}")
 
 
+def check_reference_boundary() -> int:
+    """Reject traversal and symlinked-parent support references."""
+    with tempfile.TemporaryDirectory(prefix="primary-source-reference-") as raw:
+        root = Path(raw) / "checkout"
+        docs = root / "docs"
+        docs.mkdir(parents=True)
+        regular = docs / "support.md"
+        regular.write_text("support\n", encoding="utf-8")
+        require(
+            safe_reference_file("docs/support.md", root=root),
+            "regular support reference was rejected",
+        )
+
+        private = root.parent / "private.md"
+        private.write_text("private\n", encoding="utf-8")
+        require(
+            not safe_reference_file("docs/../private.md", root=root),
+            "support reference traversal escaped the checkout",
+        )
+
+        private_dir = root.parent / "private-dir"
+        private_dir.mkdir()
+        (private_dir / "record.md").write_text("private\n", encoding="utf-8")
+        (docs / "linked").symlink_to(private_dir, target_is_directory=True)
+        require(
+            not safe_reference_file("docs/linked/record.md", root=root),
+            "support reference followed a symlinked parent",
+        )
+    return 3
+
+
 def main() -> int:
+    reference_checks = check_reference_boundary()
     with tempfile.TemporaryDirectory(prefix="primary-source-boundary-") as raw:
         root = Path(raw)
         fifo = root / "disposition.fifo"
@@ -126,7 +159,7 @@ def main() -> int:
     print(
         "test_primary_source_dispositions: baseline clean; "
         "5 unauthorized or inconsistent mutations, 2 private metadata fixtures, "
-        "and 3 notice mutations rejected"
+        f"3 notice mutations, and {reference_checks} path-boundary checks rejected"
     )
     return 0
 

@@ -103,6 +103,32 @@ def read_regular_bytes(path: Path, *, root: Path | None = ROOT) -> bytes:
             os.close(descriptor)
 
 
+def safe_reference_file(reference: str, *, root: Path = ROOT) -> bool:
+    """Accept only normalized regular files beneath the asserted checkout."""
+    path = PurePosixPath(reference)
+    if (
+        path.is_absolute()
+        or path.as_posix() != reference
+        or not reference.startswith("docs/")
+        or ".." in path.parts
+    ):
+        return False
+    root = Path(os.path.abspath(root))
+    candidate = Path(os.path.abspath(root.joinpath(*path.parts)))
+    if candidate != root and root not in candidate.parents:
+        return False
+    current = candidate
+    while True:
+        if current.is_symlink():
+            return False
+        if current == root:
+            break
+        if current.parent == current:
+            return False
+        current = current.parent
+    return candidate.is_file()
+
+
 def tracked_paths() -> set[str]:
     result = subprocess.run(
         ["git", "ls-files", "--", "docs/primary-sources"],
@@ -384,16 +410,22 @@ def disposition_errors(
             ref = record.get(field)
             require(isinstance(ref, str) and ref.startswith("docs/"), f"{raw_path} lacks {field}", errors)
             if isinstance(ref, str):
-                ref_path = ROOT / ref
-                require(ref_path.is_file() and not ref_path.is_symlink(), f"{raw_path} has unusable {field}", errors)
+                require(
+                    safe_reference_file(ref),
+                    f"{raw_path} has unusable {field}",
+                    errors,
+                )
         consumers = record.get("consumer_refs")
         require(isinstance(consumers, list) and consumers, f"{raw_path} lacks consumer_refs", errors)
         if isinstance(consumers, list):
             for consumer in consumers:
                 require(isinstance(consumer, str), f"{raw_path} has a non-string consumer ref", errors)
                 if isinstance(consumer, str):
-                    consumer_path = ROOT / consumer
-                    require(consumer_path.is_file() and not consumer_path.is_symlink(), f"{raw_path} has unusable consumer ref", errors)
+                    require(
+                        safe_reference_file(consumer),
+                        f"{raw_path} has unusable consumer ref",
+                        errors,
+                    )
 
         if inventory_state == "tracked_release_snapshot":
             expected_counts["tracked_release_snapshot_count"] += 1
