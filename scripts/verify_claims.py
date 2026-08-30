@@ -61,6 +61,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -172,6 +173,30 @@ def load_claims() -> dict[str, Any]:
         return json.load(handle)
 
 
+def safe_read_path(path: Path) -> Path | None:
+    """Return an ordinary in-checkout file, or ``None`` for an unsafe path.
+
+    The claim register names source and paper files, so those names are
+    untrusted input when this verifier is run against a worktree.  Refuse
+    checkout escapes, symbolic-link components, and non-regular files before
+    any reader opens the path.
+    """
+    root = Path(os.path.abspath(REPO_ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            return None
+        if current == root:
+            break
+        if current.parent == current:
+            return None
+        current = current.parent
+    if not candidate.is_file():
+        return None
+    return candidate
+
+
 def git_output(*args: str) -> str | None:
     """Run a read-only git query, returning None when git cannot answer."""
     try:
@@ -247,7 +272,8 @@ def resolve_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
         "signature": None,
         "docstring": None,
     }
-    if not module_path.is_file():
+    module_path = safe_read_path(module_path)
+    if module_path is None:
         result["status"] = "module_missing"
         return result
 
@@ -343,6 +369,9 @@ def index_paper_labels() -> dict[str, list[str]] | None:
         return None
     index: dict[str, list[str]] = {}
     for tex in sorted(paper_dir.rglob("*.tex")):
+        tex = safe_read_path(tex)
+        if tex is None:
+            continue
         text = tex.read_text(encoding="utf-8", errors="replace")
         relative = str(tex.relative_to(REPO_ROOT))
         for match in LABEL_PATTERN.finditer(text):

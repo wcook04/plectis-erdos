@@ -87,6 +87,7 @@ def claim(
     line: int,
     status: str = "proved here",
     paper_label: str | None = None,
+    module: str = "Sample.lean",
 ) -> dict:
     return {
         "id": "sample_claim",
@@ -95,7 +96,7 @@ def claim(
         "statement": "A sample statement.",
         "paper_label": paper_label,
         "declarations": [
-            {"name": decl_name, "module": "Sample.lean", "line": line}
+            {"name": decl_name, "module": module, "line": line}
         ],
     }
 
@@ -200,6 +201,33 @@ def main() -> int:
                 "claims verifier child inherited ambient execution state",
             )
 
+        # A claim register is untrusted input too: source and paper references
+        # must not make the verifier follow a symlink or an absolute path out of
+        # the checkout while trying to prove that the register is sound.
+        outside_module = root.parent / "outside.lean"
+        outside_module.write_text(SAMPLE_MODULE, encoding="utf-8")
+        (root / "linked.lean").symlink_to(outside_module)
+        report = run_case(
+            root,
+            build_register(
+                [claim("Sample.alpha", ALPHA_KEYWORD_LINE, module="linked.lean")]
+            ),
+        )
+        require(
+            statuses(report) == {"module_missing"},
+            "claims verifier followed a symlinked source path",
+        )
+        report = run_case(
+            root,
+            build_register(
+                [claim("Sample.alpha", ALPHA_KEYWORD_LINE, module=str(outside_module))]
+            ),
+        )
+        require(
+            statuses(report) == {"module_missing"},
+            "claims verifier accepted a source path outside the checkout",
+        )
+
         # A wrapped declaration recorded at its keyword line must resolve, and a
         # namespaced declaration registered under its qualified name must too.
         for name, line, label in (
@@ -270,6 +298,19 @@ def main() -> int:
         )
         if not report["verified"]:
             failures.append(f"resolvable paper label reported as broken: {report['problems']}")
+
+        # A paper label carried only by a symlink is not evidence from this
+        # checkout and must not be indexed as though it were a committed paper.
+        outside_paper = root.parent / "outside.tex"
+        outside_paper.write_text("\\label{res:leaked}\n", encoding="utf-8")
+        (root / "paper" / "linked.tex").symlink_to(outside_paper)
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:leaked")]),
+        )
+        if "paper_label_resolves_to_no_paper" not in statuses(report):
+            failures.append(f"symlinked paper label was accepted: {report['problems']}")
+        (root / "paper" / "linked.tex").unlink()
 
         # Absent paper sources are an environment fact, not a claim fault. A
         # checkout without the write-ups must still verify, or the exposition
