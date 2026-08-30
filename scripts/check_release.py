@@ -1933,6 +1933,18 @@ def main() -> int:
         "publication mutation harness self-test failed: "
         f"{mutation_harness_check.stdout.strip() or mutation_harness_check.stderr.strip()}",
     )
+    public_boundary_check = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "test_public_artifact_boundary.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        public_boundary_check.returncode == 0,
+        "public-artifact boundary contract failed: "
+        f"{public_boundary_check.stdout.strip() or public_boundary_check.stderr.strip()}",
+    )
     # The adversarial program starts by running the complete baseline against
     # one collected packet set, then mutates that same set.  Running the
     # standalone diagnostic here as well would repeat every bounded query.
