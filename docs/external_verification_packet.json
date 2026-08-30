@@ -464,8 +464,8 @@
       "original_declaration": "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
       "original_source": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
-      "statement": "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality.",
-      "boundary": "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families.",
+      "statement": "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality. The exact initial phase is the scaled-angle character of (2^h - 1) times the series, and the strict-gap route is an orbit of repeated squaring from that phase.",
+      "boundary": "The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families.",
       "canonical_claim_status": "supports_registered_claim_family:strict_prime_tail_orbit_gap",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
@@ -1115,9 +1115,15 @@
             "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_iff_initial_phase",
             "ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_of_le",
             "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_phase_one",
-            "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root"
+            "ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
+            "ErdosProblems.Erdos249.tailOrbitFirstExp_zero_eq_scaled_angle",
+            "ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int",
+            "ErdosProblems.Erdos249.exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic",
+            "ErdosProblems.Erdos249.tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen",
+            "ErdosProblems.Erdos249.cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+            "ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift"
           ],
-          "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. The exact squaring and absorbing-dyadic-root lemmas provide phase classification and contrary evidence only; the source does not prove that an actual phase enters a dyadic root. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
+          "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. The scaled-angle and phase/integrality equivalences, finite 1 ≤ h ≤ 16 and k ≤ 14 root exclusion, and non-dyadicity-to-cofinal-nonpositive-phase theorem provide classification or finite evidence only; they do not prove a density/equidistribution theorem, prime alignment, or actual dyadic-root entry. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
         },
         {
           "id": "totient_carry_anti_compression",
@@ -1632,7 +1638,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:4c1035d3c912ae6313a67aa66d623dceb2e7b6d2d4ede94573dc94fa919d4659",
+    "projection_digest": "sha256:dec969061ce67c4530d294d9cef2a36ba2acebaaf3e48e1b03dccd4629fe25b3",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1999,10 +2005,10 @@
             "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
             "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
             "present": true,
-            "line_count": 478,
+            "line_count": 477,
             "declaration_count": 22,
             "theorem_count": 19,
-            "content_digest": "sha256:a463d5054586b27e5d152c228f7798356b964c143d07c3ddb2f302f2af1dd6b3"
+            "content_digest": "sha256:403dff37b2b429afa1236f2dac40afd6de706f130a61f1e7648882539ad071bb"
           },
           {
             "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -2672,13 +2678,12 @@
           "family_count": 7,
           "by_class": {
             "not_applicable": 1,
-            "not_selected": 1,
-            "represented_by": 2,
+            "not_selected": 3,
             "targeted": 3
           },
           "dispositions": {
-            "scalar_content_no_go": "represented_by_selected_coordinatewise_no_go",
-            "endpoint_residues": "represented_by_selected_coordinatewise_no_go",
+            "scalar_content_no_go": "not_selected_scalar_content_scaling_family",
+            "endpoint_residues": "not_selected_endpoint_residue_and_common_multiplier_family",
             "four_jet_collision": "not_selected_finite_combinatorial_family",
             "coordinatewise_corridor_no_go": "targeted",
             "rational_base_tail_recurrence": "targeted",

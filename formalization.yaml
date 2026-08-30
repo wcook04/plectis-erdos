@@ -377,8 +377,8 @@ status:
       local_proof_provenance: "proved_in_this_repository"
       novelty_status: "unassessed_no_priority_claim"
       contribution_class: "conditional reduction"
-      statement: "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality."
-      boundary: "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
+      statement: "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality. The exact initial phase is the scaled-angle character of (2^h - 1) times the series, and the strict-gap route is an orbit of repeated squaring from that phase."
+      boundary: "The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
       comparator_declaration: "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
       literature_dependencies: []
     - declaration: "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
@@ -1006,11 +1006,11 @@ alignment:
       module: "Erdos249257/FirstHarmonicPivot.lean"
       status: "proved"
       note: "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed."
-    - source: "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality."
+    - source: "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality. The exact initial phase is the scaled-angle character of (2^h - 1) times the series, and the strict-gap route is an orbit of repeated squaring from that phase."
       lean: "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
       module: "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
       status: "proved"
-      note: "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
+      note: "The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
     - source: "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry has dyadic sections uniformly eventually periodic modulo its multiplier and canonical carry-section span dimension at least 2^e − 1 for every e."
       lean: "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
       module: "Erdos249257/TotientTailCarryPeriod.lean"
@@ -1297,7 +1297,7 @@ claim_review_matrix:
         evidence_mode: "Lean kernel plus Comparator"
         comparator_disposition: "targeted"
         summary: "A single two-branch source mechanism gives an 89/100 first-harmonic block saving from an 11/100 nonpositive-phase density, or an adaptive pivot escape from a cofinal natural-prime tail-orbit strict gap below 9/10. The exact squaring law reduces the latter to a power-of-two orbit of one initial phase and shows that an entered dyadic root obstructs that producer, without proving such an entry. The load-bearing representative is the natural-prime irrationality reduction; block-gap, density, and phase-classification declarations remain subordinate."
-        boundary: "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. The exact squaring and absorbing-dyadic-root lemmas provide phase classification and contrary evidence only; the source does not prove that an actual phase enters a dyadic root. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
+        boundary: "The 11/100 phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. The scaled-angle and phase/integrality equivalences, finite 1 ≤ h ≤ 16 and k ≤ 14 root exclusion, and non-dyadicity-to-cofinal-nonpositive-phase theorem provide classification or finite evidence only; they do not prove a density/equidistribution theorem, prime alignment, or actual dyadic-root entry. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
       - id: "totient_carry_anti_compression"
         contribution_class: "locally proved necessary consequence; novelty unassessed"
         evidence_mode: "Lean kernel plus Comparator"
@@ -1615,7 +1615,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:4c1035d3c912ae6313a67aa66d623dceb2e7b6d2d4ede94573dc94fa919d4659"
+  problem_index_digest: "sha256:dec969061ce67c4530d294d9cef2a36ba2acebaaf3e48e1b03dccd4629fe25b3"
   problem_count: 8
   problems:
     - id: "erdos_68"
