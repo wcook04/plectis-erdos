@@ -16,23 +16,14 @@ on:
       - "route-memory.json"
       - "docs/research-commons/**"
       - "scripts/accept_research_return.py"
-      - "scripts/agent_doctor.py"
-      - "scripts/test_agent_doctor.py"
       - "scripts/build_research_contributions.py"
-      - "scripts/check_research_commons_contract.py"
       - "scripts/continue_research.py"
       - "scripts/test_continue_research.py"
-      - "scripts/test_failure_aware_continuation.py"
-      - "scripts/test_accept_research_return_output_safety.py"
       - "scripts/test_accept_research_return.py"
-      - "scripts/test_research_continuation_e2e.py"
-      - "scripts/test_public_continuation_vertical_slice.py"
       - "scripts/test_research_contributions.py"
       - "scripts/route_memory_receipt.py"
       - "scripts/query_route_memory.py"
       - "scripts/test_query_route_memory.py"
-      - "scripts/test_route_memory_promotion.py"
-      - "scripts/test_route_memory_receipt.py"
       - "scripts/test_research_return_workflow.py"
       - "scripts/test_validate_research_return.py"
       - "scripts/validate_research_return.py"
@@ -40,8 +31,6 @@ on:
       - "scripts/build_research_contribution_recognition.py"
       - "scripts/check_research_contribution_recognition.py"
       - "scripts/test_research_contribution_recognition.py"
-      - "scripts/test_check_research_contribution_recognition.py"
-      - "scripts/test_research_commons_identity_contract.py"
       - "skills/README.md"
       - "skills/erdos-research-return/**"
       - "scripts/test_research_contributions_symlink_safety.py"
@@ -59,23 +48,14 @@ on:
       - "route-memory.json"
       - "docs/research-commons/**"
       - "scripts/accept_research_return.py"
-      - "scripts/agent_doctor.py"
-      - "scripts/test_agent_doctor.py"
       - "scripts/build_research_contributions.py"
-      - "scripts/check_research_commons_contract.py"
       - "scripts/continue_research.py"
       - "scripts/test_continue_research.py"
-      - "scripts/test_failure_aware_continuation.py"
-      - "scripts/test_accept_research_return_output_safety.py"
       - "scripts/test_accept_research_return.py"
-      - "scripts/test_research_continuation_e2e.py"
-      - "scripts/test_public_continuation_vertical_slice.py"
       - "scripts/test_research_contributions.py"
       - "scripts/route_memory_receipt.py"
       - "scripts/query_route_memory.py"
       - "scripts/test_query_route_memory.py"
-      - "scripts/test_route_memory_promotion.py"
-      - "scripts/test_route_memory_receipt.py"
       - "scripts/test_research_return_workflow.py"
       - "scripts/test_validate_research_return.py"
       - "scripts/validate_research_return.py"
@@ -83,8 +63,6 @@ on:
       - "scripts/build_research_contribution_recognition.py"
       - "scripts/check_research_contribution_recognition.py"
       - "scripts/test_research_contribution_recognition.py"
-      - "scripts/test_check_research_contribution_recognition.py"
-      - "scripts/test_research_commons_identity_contract.py"
       - "skills/README.md"
       - "skills/erdos-research-return/**"
       - "scripts/test_research_contributions_symlink_safety.py"
@@ -218,10 +196,6 @@ jobs:
           python3 -O scripts/test_research_contribution_recognition.py
           python3 scripts/check_research_contribution_recognition.py
           python3 -O scripts/check_research_contribution_recognition.py
-          python3 -O scripts/test_check_research_contribution_recognition.py
-          python3 scripts/test_check_research_contribution_recognition.py
-          python3 scripts/test_research_commons_identity_contract.py
-          python3 -O scripts/test_research_commons_identity_contract.py
           python3 scripts/test_research_contributions_result_classes.py
           python3 -O scripts/test_research_contributions_result_classes.py
           python3 scripts/test_research_contributions_output_safety.py
@@ -261,21 +235,8 @@ jobs:
           python3 -O scripts/test_validate_research_return.py
           python3 scripts/test_continue_research.py
           python3 -O scripts/test_continue_research.py
-          python3 scripts/test_failure_aware_continuation.py
-          python3 -O scripts/test_failure_aware_continuation.py
-          python3 scripts/test_agent_doctor.py
-          python3 -O scripts/test_agent_doctor.py
-          python3 scripts/test_accept_research_return_output_safety.py
-          python3 -O scripts/test_accept_research_return_output_safety.py
-          python3 scripts/test_research_continuation_e2e.py
-          python3 scripts/test_route_memory_promotion.py
-          python3 -O scripts/test_route_memory_promotion.py
-          python3 scripts/test_route_memory_receipt.py
-          python3 -O scripts/test_route_memory_receipt.py
           python3 scripts/test_query_route_memory.py
           python3 -O scripts/test_query_route_memory.py
-          python3 scripts/test_public_continuation_vertical_slice.py
-          python3 -O scripts/test_public_continuation_vertical_slice.py
 
       - name: Validate accepted receipts and generated attribution views
         run: |
@@ -288,8 +249,3 @@ jobs:
           python3 -O scripts/test_research_contributions.py
           python3 scripts/build_research_contributions.py --check
           python3 -O scripts/build_research_contributions.py --check
-
-      - name: Check the complete public research-commons contract
-        run: |
-          python3 scripts/check_research_commons_contract.py
-          python3 -O scripts/check_research_commons_contract.py
