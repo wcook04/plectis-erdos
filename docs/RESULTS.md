@@ -67,6 +67,14 @@ pass, the high-signal spine is:
   real finite-level mechanism; the all-base rank is conditional on the
   displayed affine-independence input. Neither spine solves the binary
   totient endpoint.
+- A distinct orbit-level carry anti-compression result is now checked: under
+  hypothetical rationality, one positive multiplier supplies a tempered
+  integral carry whose dyadic sections share an eventual modular period, while
+  the canonical carry-kernel rank is at least `2^e-1` for every `e`. The hard
+  friction is that modulo a divisor of the multiplier the totient forcing
+  vanishes and the carry becomes geometric, so this gives no finite-rank
+  contradiction or irrationality proof (`ExternalVerification/Challenge.lean:137`;
+  `Erdos249257/TotientTailCarryPeriod.lean:224`).
 - **#68, an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently to
   cofinally many non-unit carries. The equivalence transfers the hard
@@ -1008,11 +1016,18 @@ arguments.
 These five registry claims are not restatements of either endpoint. Each has a
 separate limitation, and none settles an Erdős problem.
 
-- `totient_carry_kernel_anti_compression` — if `S` were rational, one
-  rationality-supplied tempered integral carry would have canonical
-  carry-section span dimension at least `2^e-1` for every `e`.
-  Boundary: no finite-rank upper bound for such carries is known, so this does
-  not contradict rationality.
+- **Orbit-level carry anti-compression** — the checked consumer
+  `not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`
+  exposes one positive multiplier `v` and tempered integral carry `u` under
+  hypothetical rationality: every dyadic section is eventually periodic modulo
+  `v`, while its canonical carry-kernel rank is at least `2^e-1` for every `e`
+  (`ExternalVerification/Challenge.lean:137`;
+  `Erdos249257/TotientTailCarryPeriod.lean:224`). This is one orbit-level
+  conjunction, not the coefficient-side rank-only family. Natural friction:
+  modulo a divisor of `v`, totient forcing disappears and `u` is geometric, so
+  quotient periodicity cannot yield a finite-`ℚ`-rank upper bound. Boundary:
+  necessary consequence of rationality only; no contradiction or #249
+  irrationality proof follows.
 - `primitive_coordinate_index_obstruction` — clearing `(φ*μ)(n)/n` through
   level `N` forces a two-tier primorial divisor; no fixed positive index clears
   every level.
