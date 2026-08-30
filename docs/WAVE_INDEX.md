@@ -20,6 +20,14 @@ Read order for humans:
 5. `Erdos249257.lean` and `ErdosProblems.lean` — inspect package topology only
    when import structure is the question.
 
+For an external statement-identity handoff, use the generated [Formal
+Conjectures crosswalk](FORMAL_CONJECTURES_CROSSWALK.md). It binds each of the
+eight problem rows to its pinned upstream declaration, source hash, and local
+problem route. For a module or paper handle, use
+`python3 scripts/query_corpus.py --module <module_path_or_sigil>` or
+`--paper-anchor <TeX_label_or_source_ref>` to recover the corresponding
+proof/source context before returning to the problem's exact boundary.
+
 Lean source checked by the pinned Lean kernel is proof authority. Wave order
 does not strengthen a claim or close an exact open proposition. Erdős #249 and
 the universal form of #257 remain open.
