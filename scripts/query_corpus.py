@@ -7038,10 +7038,15 @@ def render_card(packet: dict[str, Any]) -> str:
         )
     if kind == "source_coordinate":
         source = packet["source"]
-        return (
+        card = (
             f"source {source['source_ref']} | module={source['module_id']} "
             f"| nearby_declarations={len(packet['nearby_declarations'])}"
         )
+        for declaration in packet["nearby_declarations"]:
+            card = _append_route_memory_resumes(
+                card, declaration.get("route_memory")
+            )
+        return card
     if kind == "artifact":
         match = packet["matches"][0]
         return (

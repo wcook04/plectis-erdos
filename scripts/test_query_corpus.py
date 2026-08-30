@@ -693,6 +693,16 @@ def validate_route_memory_cards() -> None:
         "--problem 257 --route erdos257_half_story"
     ) in status_card
 
+    source_card = query_corpus.render_card(
+        source_coordinate_packet("Erdos249257/CertificateKernel.lean:18384", 20)
+    )
+    assert (
+        "source Erdos249257/CertificateKernel.lean:18384 "
+        "| module=Erdos249257.CertificateKernel | nearby_declarations=1 "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in source_card
+
 
 def validate_connection_query_ranking() -> None:
     packet = query_corpus.connection_card(
