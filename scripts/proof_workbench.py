@@ -303,6 +303,12 @@ class Session:
                         "session_closed must be the final move"
                     )
                 if row["kind"] == "claim":
+                    claim_text = row.get("text")
+                    if not isinstance(claim_text, str) or not claim_text.strip():
+                        raise SystemExit(
+                            f"invalid workbench claim on line {line_number}: "
+                            "invalid claim text"
+                        )
                     cited_probe_id = row.get("cited_probe")
                     if not isinstance(cited_probe_id, str) or not cited_probe_id:
                         raise SystemExit(
@@ -611,6 +617,8 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
 def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     _require_writable_session(session, "claim")
+    if not isinstance(args.text, str) or not args.text.strip():
+        raise SystemExit("claim refused: claim text must be non-empty")
     probes = {
         row["move_id"]: row
         for row in session.moves()

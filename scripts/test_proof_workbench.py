@@ -914,6 +914,11 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
             {"schema": workbench.MOVE_SCHEMA, "move_id": "m002", "kind": "claim", "text": "claim"},
             "cited_probe",
         ),
+        (
+            "blank-claim-text",
+            {"schema": workbench.MOVE_SCHEMA, "move_id": "m002", "kind": "claim", "text": ""},
+            "claim text",
+        ),
     )
     for session_name, row, field in incomplete_rows:
         reader_session = workbench.Session(sessions_root, session_name)
@@ -1185,6 +1190,24 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
         assert accepted["kernel_receipt"]["verdict"] == (
             "kernel_accepted"
         )
+        try:
+            _run(
+                sessions_root,
+                [
+                    "claim",
+                    "--session",
+                    "t_claims",
+                    "--text",
+                    " ",
+                    "--probe",
+                    accepted["move_id"],
+                ],
+            )
+        except SystemExit as error:
+            if "claim text" not in str(error):
+                raise AssertionError(f"blank claim lacked a bounded diagnostic: {error}")
+        else:
+            raise AssertionError("claim accepted whitespace-only credit")
         rejected = _run(
             sessions_root,
             [
