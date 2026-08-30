@@ -113,6 +113,79 @@ def test_receipt_subprocess_environment() -> None:
     )
 
 
+def test_replay_subprocess_environment() -> None:
+    """Independent replay probes must use clean state and bounded commands."""
+    hostile_environment = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "refs/namespaces/wrong-replay",
+        "GIT_REPLACE_REF_BASE": "refs/replace/",
+        "PYTHONHOME": "/private/wrong-python-home",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "PYTHONOPTIMIZE": "2",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "LANGUAGE": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = subprocess.CompletedProcess(
+        ["fixture"], returncode=0, stdout="fixture\n", stderr=""
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(replay.subprocess, "run", return_value=completed) as runner:
+            require(replay.git(Path("/fixture"), "rev-parse", "HEAD") == "fixture", "replay Git read failed")
+            require(
+                replay.sandbox_mode(Path("/fixture")) == "user-manager",
+                "replay systemd probe failed",
+            )
+            replay.run(["fixture"], cwd=Path("/fixture"))
+            _command, comparator_environment = replay.comparator_command(
+                source=Path("/fixture"),
+                tools={
+                    "comparator": Path("/tmp/comparator"),
+                    "landrun": Path("/tmp/landrun"),
+                    "lean4export": Path("/tmp/lean4export"),
+                },
+                mode="user-manager",
+                config="verification/comparator.json",
+            )
+
+    require(len(runner.call_args_list) == 3, "replay probes were not exercised")
+    for call in runner.call_args_list:
+        kwargs = call.kwargs
+        environment = kwargs["env"]
+        for key in (
+            "GIT_DIR",
+            "GIT_NAMESPACE",
+            "GIT_REPLACE_REF_BASE",
+            "PYTHONHOME",
+            "PYTHONPATH",
+            "PYTHONOPTIMIZE",
+        ):
+            require(key not in environment, f"ambient {key} leaked into replay")
+        require(environment["PATH"] == os.defpath, "replay PATH was not pinned")
+        require(environment["LC_ALL"] == "C.UTF-8", "replay LC_ALL was not pinned")
+        require(environment["LANG"] == "C.UTF-8", "replay LANG was not pinned")
+        require(environment["LANGUAGE"] == "C.UTF-8", "replay LANGUAGE was not pinned")
+        require(environment["GIT_ASKPASS"] == "/bin/false", "replay Git prompting was not disabled")
+        require(
+            kwargs["timeout"] == replay.SUBPROCESS_TIMEOUT_SECONDS,
+            "replay default timeout drifted",
+        )
+    require(
+        comparator_environment["PATH"] == os.defpath,
+        "comparator command retained ambient PATH",
+    )
+    require(
+        comparator_environment["COMPARATOR_LANDRUN"] == "/tmp/landrun",
+        "comparator command lost its pinned landrun path",
+    )
+    require(
+        replay.ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "replay environment contract drifted",
+    )
+
+
 def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]:
     root = parent / "repo"
     root.mkdir()
@@ -329,6 +402,7 @@ def test_release_manifest() -> None:
 
 def main() -> int:
     test_receipt_subprocess_environment()
+    test_replay_subprocess_environment()
     test_replay_plan()
     test_release_manifest()
     print(

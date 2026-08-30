@@ -26,6 +26,8 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTRACT_RELATIVE = Path("verification/external-verification-release-contract.json")
@@ -35,6 +37,8 @@ SYNTHETIC_MERGE_MESSAGE_RE = re.compile(
     r"Merge [0-9a-f]{40} into [0-9a-f]{40}(?:\n|$)"
 )
 LOG_TAIL_BYTES = 12_000
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SUBPROCESS_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 
 
 class ReplayError(RuntimeError):
@@ -74,14 +78,19 @@ def run(
     timeout: int | None = None,
     env: dict[str, str] | None = None,
 ) -> subprocess.CompletedProcess[str]:
+    environment = singleflight.command_environment()
+    if env is not None:
+        environment.update(env)
     return subprocess.run(
         argv,
         cwd=cwd,
-        env=env,
+        env=environment,
         capture_output=True,
         text=True,
         check=False,
-        timeout=timeout,
+        timeout=(
+            SUBPROCESS_TIMEOUT_SECONDS if timeout is None else timeout
+        ),
     )
 
 
@@ -240,7 +249,7 @@ def comparator_command(
     mode: str,
     config: str,
 ) -> tuple[list[str], dict[str, str]]:
-    environment = dict(os.environ)
+    environment = singleflight.command_environment()
     environment["COMPARATOR_LANDRUN"] = str(tools["landrun"])
     environment["COMPARATOR_LEAN4EXPORT"] = str(tools["lean4export"])
     common = [
