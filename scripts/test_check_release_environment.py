@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import os
+import inspect
 import subprocess
 import sys
 import tempfile
@@ -23,6 +24,15 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
+    source = inspect.getsource(check_release)
+    require(
+        "primary_source_disposition_check = run(" in source,
+        "primary-source disposition gate bypassed the release subprocess wrapper",
+    )
+    require(
+        "primary_source_disposition_check = subprocess.run(" not in source,
+        "primary-source disposition gate still invokes raw subprocess.run",
+    )
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_WORK_TREE": "/private/wrong-work-tree",

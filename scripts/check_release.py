@@ -1977,7 +1977,7 @@ def main() -> int:
         "public-artifact boundary contract failed: "
         f"{public_boundary_check.stdout.strip() or public_boundary_check.stderr.strip()}",
     )
-    primary_source_disposition_check = subprocess.run(
+    primary_source_disposition_check = run(
         [
             sys.executable,
             str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
