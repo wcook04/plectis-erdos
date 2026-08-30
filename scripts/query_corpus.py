@@ -1948,6 +1948,17 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 "python3 scripts/build_external_verification.py --check",
                 "python3 scripts/test_external_verification.py",
             ],
+            "authority_owners": [
+                "docs/claims.json::external_verification_packet",
+                "docs/EXTERNAL_VERIFICATION.md",
+                comparator["config"],
+            ],
+            "adjacent_handle_classes": [
+                "declaration",
+                "module",
+                "artifact",
+                "route",
+            ],
             "authority_posture": (
                 "configured_statement_axiom_and_kernel_assurance_not_novelty_"
                 "significance_source_fidelity_or_peer_review"
@@ -1985,6 +1996,17 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
             "query_steps": [
                 "python3 scripts/check_palomar_qualification.py --json",
                 "python3 scripts/test_palomar_qualification.py",
+            ],
+            "authority_owners": [
+                "docs/PALOMAR_POLICY_RECONCILIATION.json",
+                "docs/PALOMAR_QUALIFICATION.md",
+                "docs/PALOMAR_RESULT_SHOWCASE.json",
+            ],
+            "adjacent_handle_classes": [
+                "publication_family",
+                "declaration",
+                "paper_source",
+                "route",
             ],
             "authority_posture": (
                 "repository_local_qualification_projection_not_palomar_"
@@ -2440,6 +2462,9 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 )
             ) or (
                 start["anchor_kind"] == "formal_environment"
+                and source_ref_fallback
+            ) or (
+                start["anchor_kind"] == "enumerated_result"
                 and source_ref_fallback
             )
             if (

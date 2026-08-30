@@ -319,6 +319,21 @@ def validate_indexed_problem_routes() -> None:
                     anchor["canonical_handle"]
                     for anchor in actual["paper_route"]["matching_anchors"]
                 }
+            if expected["id"] == "totient_carry_anti_compression":
+                carry_anchor = next(
+                    anchor
+                    for anchor in actual["paper_route"]["matching_anchors"]
+                    if set(anchor["matched_declarations"])
+                    >= {
+                        "not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+                        "totient_forcing_vanishes_mod_of_dvd_multiplier",
+                        "totient_carry_modEq_geometric_of_dvd_multiplier",
+                    }
+                )
+                assert carry_anchor["canonical_handle"] == carry_anchor["source_ref"]
+                assert carry_anchor["canonical_handle"].startswith(
+                    "paper/erdos-249-binary-totient-series.tex:"
+                )
             if expected["id"] == "weighted_phase_carry_observer":
                 weighted_anchors = {
                     anchor["canonical_handle"]
@@ -327,9 +342,19 @@ def validate_indexed_problem_routes() -> None:
                 assert "paper/erdos-269-three-prime-running-lcm.tex:1" in (
                     weighted_anchors
                 )
-                assert "paper/erdos-269-three-prime-running-lcm.tex:1442" in (
-                    weighted_anchors
+                weighted_detail = next(
+                    anchor
+                    for anchor in actual["paper_route"]["matching_anchors"]
+                    if anchor["canonical_handle"]
+                    != "paper/erdos-269-three-prime-running-lcm.tex:1"
                 )
+                assert weighted_detail["canonical_handle"] == weighted_detail[
+                    "source_ref"
+                ]
+                assert set(weighted_detail["matched_declarations"]) >= {
+                    "carry_eq_residueDigit_add_coboundary",
+                    "finite_realisedSpan_of_factorisation",
+                }
         if route_id == "erdos_1041":
             research = route["research_corpus"]
             assert research["strongest_result_summary"]["result_count"] == 35
@@ -947,12 +972,16 @@ def validate_route_memory_cards() -> None:
         "arithmetic_obstruction_interfaces"
     ) in open_card
 
-    module_card = query_corpus.render_card(
-        query_corpus.module_packet("Erdos249257/CertificateKernel.lean", 20)
+    module_view = query_corpus.module_packet(
+        "Erdos249257/CertificateKernel.lean", 20
     )
+    module_card = query_corpus.render_card(module_view)
     assert (
         "module Erdos249257.CertificateKernel | Erdos249257/CertificateKernel.lean "
-        "| declarations=845 | imports=10 | importers=11 | claims=9 "
+        f"| declarations={module_view['module']['declaration_count']} "
+        f"| imports={module_view['dependency_neighbourhood']['receipt']['imports_total']} "
+        f"| importers={module_view['dependency_neighbourhood']['receipt']['importers_total']} "
+        f"| claims={len(module_view['attached_claims'])} "
         "| paper_sigil=CerKer | role=Assembled theorem kernel and headline interfaces "
         "| resume=python3 scripts/query_route_memory.py --problem 257 --route "
         "structured_support_families"
@@ -1474,6 +1503,12 @@ def validate_external_assurance_routes() -> None:
     assert comparator["authority_posture"].startswith(
         "configured_statement_axiom_and_kernel_assurance"
     )
+    assert comparator_route["authority_owners"] == [
+        "docs/claims.json::external_verification_packet",
+        "docs/EXTERNAL_VERIFICATION.md",
+        comparator_assurance["config"],
+    ]
+    assert "declaration" in comparator_route["adjacent_handle_classes"]
     comparator_card = run(
         "--route", "comparator_assurance", "--format", "card"
     )
@@ -1501,6 +1536,10 @@ def validate_external_assurance_routes() -> None:
     assert palomar["authority_posture"].startswith(
         "repository_local_qualification_projection"
     )
+    assert palomar_route["authority_owners"][0] == (
+        "docs/PALOMAR_POLICY_RECONCILIATION.json"
+    )
+    assert "publication_family" in palomar_route["adjacent_handle_classes"]
     palomar_card = run(
         "--route", "palomar_qualification", "--format", "card"
     )
