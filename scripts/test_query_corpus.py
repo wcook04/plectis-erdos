@@ -742,6 +742,19 @@ def validate_claim_status_packets() -> None:
         direct = claim_status_packet(status.upper(), 1)
         assert direct["status"] == status
         assert len(direct["claims"]) == min(1, len(expected))
+        for compact in direct["claims"]:
+            route_memory = direct["route_memory"]["by_claim"][compact["id"]]
+            assert route_memory["status"] in {"bound", "unbound"}
+            assert all(
+                binding["command"].startswith(
+                    "python3 scripts/query_route_memory.py --problem "
+                )
+                for binding in route_memory["bindings"]
+            )
+            if route_memory["status"] == "unbound":
+                assert "no resume route was invented" in route_memory[
+                    "unbound_reason"
+                ]
         card = run("--status", status, "--format", "card")
         assert card.returncode == 0
         assert card.stdout.startswith(f"status {status} | claims={len(expected)}")

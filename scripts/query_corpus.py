@@ -5881,6 +5881,43 @@ def claim_status_packet(status: str, limit: int) -> dict[str, Any]:
     remaining_open = (
         claims["remaining_open_propositions"] if canonical_status == "open" else []
     )
+    emitted_claims = matching_claims[:limit]
+    programme_routes = [
+        route
+        for route in all_entrypoints(claims)
+        if route.get("route_kind") == "mathematical_programme"
+    ]
+    route_memory_by_claim = {}
+    for claim in emitted_claims:
+        bindings = []
+        for route in programme_routes:
+            if (
+                claim["id"] not in route.get("core_claim_ids", [])
+                and claim["id"] not in route.get("problem_target_claim_ids", [])
+            ):
+                continue
+            problem_number = route_memory_problem_number(route)
+            if problem_number is None:
+                continue
+            bindings.append(
+                {
+                    "route_id": route["id"],
+                    "problem_number": problem_number,
+                    "command": (
+                        "python3 scripts/query_route_memory.py --problem "
+                        f"{problem_number} --route {route['id']}"
+                    ),
+                }
+            )
+        route_memory_by_claim[claim["id"]] = {
+            "status": "bound" if bindings else "unbound",
+            "bindings": bindings,
+        }
+        if not bindings:
+            route_memory_by_claim[claim["id"]]["unbound_reason"] = (
+                "claim does not resolve to a canonical mathematical programme; "
+                "no resume route was invented"
+            )
     return {
         "kind": "claim_status",
         "authority_posture": "claim_registry_status_navigation_not_proof_authority",
@@ -5888,11 +5925,22 @@ def claim_status_packet(status: str, limit: int) -> dict[str, Any]:
         "meaning": taxonomy[canonical_status],
         "claim_count": len(matching_claims),
         "claims": [
-            compact_status_claim(claim) for claim in matching_claims[:limit]
+            compact_status_claim(claim) for claim in emitted_claims
         ],
         "omitted_claim_count": max(0, len(matching_claims) - limit),
         "limit": limit,
         "remaining_open_propositions": remaining_open,
+        "route_memory": {
+            "by_claim": route_memory_by_claim,
+            "authority_posture": (
+                "derived_resume_handoff_not_claim_or_proof_authority"
+            ),
+            "identity_contract": (
+                "Bindings are complete canonical programme options for each "
+                "emitted claim; they are not ranked and resolve current source "
+                "digests when queried."
+            ),
+        },
         "proof_authority": "Lean source checked by the pinned Lean kernel",
         "expansion": {
             "claim": "python3 scripts/query_corpus.py --claim <claim_id>",
