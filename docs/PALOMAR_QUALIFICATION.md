@@ -354,8 +354,8 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`4ab2697dfd7f1cced0f9dff116df529f05c93814` at the start of this semantic
-population pass. This observation records source currency; it is not a
+`02e3a19fe704b354b73794b2d65ddbc3348129a9` at the start of this evidence refresh. This observation records
+source currency; it is not a
 release lock or terminal validation claim:
 
 - Comparator configuration: `verification/comparator.json`, 47 unique
