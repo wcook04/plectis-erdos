@@ -196,6 +196,11 @@ Lean propositions rather than reviewed public mathematical claims.
   block saving, while the natural-prime strict-gap predicate gives a pointwise
   `9/10` pivot escape through the wrapper
   `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`.
+  The same module records the exact phase update
+  [`tailOrbitFirstExp_succ`](../ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L167):
+  after the integer carry disappears under exponentiation, the first phase
+  evolves by squaring. This is orbit-mechanism evidence only; it supplies none
+  of the density, cofinal prime strict-gap, or uniform-margin hypotheses.
   The density, cofinal prime strict-gap, and positive truncation-margin
   producers are unproved for the actual totient orbit. This is conditional
   certificate/irrationality reduction only: it does not close #249, duplicate
