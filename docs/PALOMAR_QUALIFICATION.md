@@ -13,45 +13,58 @@ the result crosswalk is [`PALOMAR_RESULT_SHOWCASE.json`](PALOMAR_RESULT_SHOWCASE
 The selected Comparator declaration is:
 
 ```text
-Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime
+Erdos249257.ExternalVerification.irrational_erdosSum_full_support
 ```
 
-It is the cleanest high-signal candidate in the committed current roster:
-for every integer `b >= 2` and every infinite pairwise-coprime support `A`
-whose reciprocal indicator is summable, it proves
-`Irrational (erdosSupportSeries b A)`. The conclusion covers a broad
-non-dilation class, not one convenient finite instance or a renamed adapter.
+It is the strongest current direct endpoint result in the committed
+Comparator spine: for every integer `b >= 2`, it proves irrationality of the
+full-support Erdős–Borwein series
+`∑' k, 1 / (b^(k+1) - 1)`. This is a canonical member of Erdős #257, not a
+convenient finite instance or a renamed adapter.
 
 The hard step is visible in the source rather than hidden behind the
-headline: `CertificateKernel.lean` supplies weighted coefficient certificates
-through an adaptive CRT. Small support elements are absorbed into the first
-block, unselected elements are controlled as residue strays, and summable
-reciprocals pay for the weighted tail. The exact source declaration is at
-`Erdos249257/CertificateKernel.lean:10776` and its proof consumes the
-certificate producer at the following lines.
+headline: `CertificateKernel.lean` closes a weighted divisor-block certificate
+pipeline using a bounded Bertrand/CRT first-block frame, middle-window
+divisor-pair averaging with pigeonhole selection, weighted tail control, and
+explicit parameter closure. The exact source declaration is at
+`Erdos249257/CertificateKernel.lean:8328`, with the mechanism documented at
+the preceding source lines.
 
-This beats the other plausible showcase choices on the combined review
-criteria, not because it is easiest to check:
+The value-selection record evaluates all 31 committed Comparator rows. Its
+high-signal spine is:
 
-- `irrational_erdosSum_full_support` has a stronger direct consequence for
-  the classical full-support subcase, but it is a narrower already-known
-  theorem and hides the non-dilation support mechanism.
-- `irrational_erdosSupportSeries_of_orthogonalPetalBouquet` exposes a deeper
-  structural route, but its bouquet and uniform tail-selection predicates are
-  conditional and are not constructed for arbitrary supports.
-- `threeHalves_no_coordinatewiseCorridor` is a useful sharp obstruction, but
-  it excludes one architecture and concludes no irrationality statement.
+1. `irrational_erdosSum_full_support` — selected: unconditional direct
+   irrationality, a completed certificate mechanism, canonical endpoint, and
+   exact source/Comparator evidence.
+2. `irrational_erdosSupportSeries_pairwise_coprime` — strong runner-up: a
+   distinct adaptive-CRT result for a broad non-dilation class, but with
+   infinitude, pairwise-coprimality, and summable-reciprocal hypotheses.
+3. `irrational_erdosSupportSeries_of_orthogonalPetalBouquet` — deep but
+   conditional: the bouquet and uniform tail-selection predicates are not
+   constructed for arbitrary supports.
+4. `irrational_ratWeightSeries_eventuallyPeriodic` — direct structured
+   irrationality, but for a coefficient class rather than the universal
+   support endpoint and not the mixed-sign theorem.
+5. `irrational_factorialGapSeries_iff_cofinal_nonunit_carries` and
+   `irrational_tsum_primeDyadicTerm_iff_primeGap` — exact endpoint reductions
+   with high routing value, but neither supplies the missing irrationality
+   producer.
+6. `not_finiteDimensional_span_fullTotientKernel` — deep independent #249
+   structure, but farther from the irrationality endpoint.
 
-The selected theorem is still not a solution of Erdős #257. Its infinitude,
-pairwise-coprimality, and summable-reciprocal hypotheses remain explicit, and
-the universal infinite-support statement remains open. Local Lean provenance
-and Comparator acceptance, once run for the final commit, are not novelty or
-human-peer-review evidence.
+This selection explicitly resists underclaim: a classical theorem is not
+demoted merely because it is already known or because another row has a more
+general-looking hypothesis. It also resists hype: the selected theorem proves
+only full support, does not solve universal Erdős #257, and does not claim
+novelty or human peer review. A newly committed source-checked row would
+replace it only with a strictly stronger direct consequence, genuinely deeper
+independent mechanism, equal-or-better evidence certainty, and no larger
+hidden-hypothesis risk.
 
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`53c2e1f18641d6577c3e1e640eaeaf137a9046a7`:
+`5d5beef651f3296ccd7e3d59216b77809944e8ce` before this consumer refresh:
 
 - Comparator configuration: `verification/comparator.json`, 31 unique
   theorem names, SHA-256
@@ -66,7 +79,8 @@ The candidate is bound to the committed current tree observed at
 - `lakefile.toml` and `lake-manifest.json` are present.
 
 The showcase records all 31 committed declarations across all eight open
-programmes. It does not turn the roster count into a readiness claim.
+programmes and includes a prose-ranked value-selection spine over that exact
+universe. It does not turn the roster count into a readiness claim.
 
 ## Qualification cells
 

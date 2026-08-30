@@ -42,39 +42,221 @@
     ],
     "all_eight_programmes_remain_open": true
   },
+  "selection_contract": {
+    "authority_basis": "Every declaration in candidate_universe is read from the exact committed HEAD:verification/comparator.json roster; uncommitted Comparator edits, roster order, and ease of qualification are not selection evidence.",
+    "ranking_axes": [
+      {
+        "axis": "mathematical_nontriviality",
+        "test": "Prefer a substantive theorem or obstruction with a real mathematical mechanism over a routine identity, finite instance, or renamed transport."
+      },
+      {
+        "axis": "consequence_and_endpoint_proximity",
+        "test": "Prefer a direct consequence for an Erdős target or a faithful exact reduction to its remaining endpoint, while keeping any missing producer explicit."
+      },
+      {
+        "axis": "mechanism_depth_and_natural_friction",
+        "test": "Expose the hard certificate, averaging, recurrence, or obstruction step and the hypotheses that make it work; do not flatten friction into a headline."
+      },
+      {
+        "axis": "genuinely_distinct_content_and_independence",
+        "test": "Prefer a result that adds a distinct mathematical route or support class rather than a corollary or duplicate wrapper."
+      },
+      {
+        "axis": "external_review_value",
+        "test": "Prefer a statement whose exact scope, source attribution, and significance can be checked by a reader without reconstructing hidden context."
+      },
+      {
+        "axis": "proof_digestion_value",
+        "test": "Prefer a result that teaches a reusable mechanism and connects the source theorem to the open boundary."
+      },
+      {
+        "axis": "evidence_certainty",
+        "test": "Require an exact current source declaration, committed Challenge transport, and source-checked hypotheses and conclusion."
+      },
+      {
+        "axis": "overclaim_risk",
+        "test": "Penalize hidden conditionality, missing cofinal supply, and language that could be read as solving a still-open problem."
+      }
+    ],
+    "anti_underclaim_boundary": "Do not select a timid proxy merely because it is easy to qualify: an unconditional direct theorem with a visible hard mechanism must remain eligible even when it is classical or leaves the universal problem open.",
+    "anti_hype_boundary": "No selected result closes universal Erdős #257 or any other open programme; exact hypotheses, prior-art attribution, proof authority, limitations, and the surviving open boundary remain part of the result.",
+    "reversal_evidence": "Reverse the choice only if a newly committed, source-checked Comparator row has a strictly stronger direct consequence at the same or closer endpoint, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis or overclaim risk; uncommitted dirt or a row count cannot reverse it."
+  },
+  "candidate_universe": {
+    "authority": "HEAD:verification/comparator.json",
+    "comparator_sha256": "7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
+    "selection_scope": "all_committed_comparator_rows",
+    "declarations": [
+      "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+      "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+      "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
+      "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
+      "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+      "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+      "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
+      "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+      "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one",
+      "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+      "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower",
+      "Erdos249257.ExternalVerification.cylinderMass_split",
+      "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
+      "Erdos249257.ExternalVerification.exists_primeGap0_gt",
+      "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
+      "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+      "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+      "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
+      "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
+      "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction",
+      "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect",
+      "Erdos249257.ExternalVerification.seven_le_of_intBand_odd",
+      "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+      "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
+      "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+      "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
+      "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
+      "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
+      "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
+      "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+    ]
+  },
+  "candidate_ranking": [
+    {
+      "rank": 1,
+      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+      "family_id": "known_irrational_supports",
+      "selection_status": "selected",
+      "mathematical_nontriviality": "Unconditional irrationality of the full-support Erdős–Borwein series, with a completed certificate machine rather than a finite computation or a formal restatement.",
+      "consequence_and_endpoint_proximity": "Directly settles the canonical full-support member of Erdős #257 for every integer base b >= 2, while leaving universal arbitrary-support irrationality open.",
+      "mechanism_depth_and_natural_friction": "The source exposes the bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail bounds, and explicit parameter closure.",
+      "genuinely_distinct_content_and_independence": "It is the classical full-support route and is not collapsed into the separate non-dilation support theorem.",
+      "external_review_value": "The target is a named Erdős–Borwein constant family with a direct source statement and a short isolated Comparator type.",
+      "proof_digestion_value": "It gives a reader a complete certificate-to-irrationality story and identifies the mechanism that differs from arbitrary-support routes.",
+      "evidence_certainty": "The exact source theorem is committed at Erdos249257/CertificateKernel.lean:8323-8331 and is transported by the committed Challenge/Solution pair.",
+      "overclaim_risk": "Low only under the stated boundary: this is full support, not all infinite supports, and local proof plus Comparator is not a novelty or human-review claim.",
+      "why_ranked_first": "It dominates the current spine on combined direct consequence, completed mechanism, endpoint clarity, and evidence certainty; its classical status is disclosed rather than treated as a reason to hide it."
+    },
+    {
+      "rank": 2,
+      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+      "family_id": "pairwise_coprime_support",
+      "selection_status": "strong_runner_up",
+      "mathematical_nontriviality": "A distinct broad structured-support theorem for a non-dilation class.",
+      "consequence_and_endpoint_proximity": "Direct irrationality for every infinite pairwise-coprime support with summable reciprocal mass, but not for arbitrary supports.",
+      "mechanism_depth_and_natural_friction": "Adaptive CRT weighted coefficient certificates absorb first-block hits and control residue strays through summable reciprocals.",
+      "genuinely_distinct_content_and_independence": "Independent of full support because pairwise coprimality is a separate support mechanism, not a full-support corollary.",
+      "external_review_value": "High for readers studying structured support families, with exact hypotheses and Erdős (1968) attribution.",
+      "proof_digestion_value": "Excellent mechanism case study, but its extra support hypotheses make the universal boundary easier to misunderstand.",
+      "evidence_certainty": "The exact source theorem is committed at Erdos249257/CertificateKernel.lean:10768-10782 and is transported by the committed Challenge/Solution pair.",
+      "overclaim_risk": "Moderate unless infinitude, pairwise coprimality, and summable reciprocal mass stay visible in every projection.",
+      "why_not_ranked_first": "It is broader in support-class language but less direct as the canonical full-support endpoint and carries more restrictive hypotheses."
+    },
+    {
+      "rank": 3,
+      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+      "family_id": "orthogonal_petal_sunflower_reduction",
+      "selection_status": "conditional_high_signal",
+      "mathematical_nontriviality": "A deep structural support route with a nontrivial bouquet and tail-selection interface.",
+      "consequence_and_endpoint_proximity": "Direct irrationality under the displayed structure, but the structural predicates are not constructed for arbitrary supports.",
+      "mechanism_depth_and_natural_friction": "The conditional selector is the natural friction; omitting it would turn a reduction into a false unconditional theorem.",
+      "genuinely_distinct_content_and_independence": "Distinct from both full support and pairwise coprime supports.",
+      "external_review_value": "Good for reviewing the proposed reduction, weaker for a headline candidate because its admissible supports are not supplied.",
+      "proof_digestion_value": "High conditional-route value, but not a complete mechanism-to-endpoint package.",
+      "evidence_certainty": "Exact committed source and Comparator transport are available.",
+      "overclaim_risk": "High if the bouquet and uniform tail-selection hypotheses are silently treated as automatic.",
+      "why_not_ranked_first": "The unresolved selector makes it less certain and less broadly applicable than the unconditional full-support result."
+    },
+    {
+      "rank": 4,
+      "declaration": "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
+      "family_id": "periodic_nonnegative_weight_irrationality",
+      "selection_status": "direct_structured_result",
+      "mathematical_nontriviality": "Direct irrationality for an eventually periodic nonnegative rational coefficient class.",
+      "consequence_and_endpoint_proximity": "Close to the Lambert-series endpoint but not a universal support theorem and not the mixed-sign statement.",
+      "mechanism_depth_and_natural_friction": "A periodic divisor-orbit sieve and denominator clearing route are visible in the source.",
+      "genuinely_distinct_content_and_independence": "A coefficient-class route rather than a support-class duplicate.",
+      "external_review_value": "Readable and source-comparable, with nonnegativity, periodicity, and positive-tail hypotheses exposed.",
+      "proof_digestion_value": "Useful bridge from periodic weights to support questions.",
+      "evidence_certainty": "Exact committed source and Comparator transport are available.",
+      "overclaim_risk": "Moderate if the mixed-sign or arbitrary-support cases are inferred.",
+      "why_not_ranked_first": "Its coefficient hypotheses are farther from the canonical arbitrary-support question than full support."
+    },
+    {
+      "rank": 5,
+      "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+      "family_id": "factorial_carry_irrationality_equivalence",
+      "selection_status": "endpoint_reduction",
+      "mathematical_nontriviality": "An exact equivalence translating irrationality into a cofinal non-unit carry condition.",
+      "consequence_and_endpoint_proximity": "Maximal endpoint proximity for #68, but it does not prove the cofinal producer.",
+      "mechanism_depth_and_natural_friction": "The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.",
+      "genuinely_distinct_content_and_independence": "A factorial carry route, independent of the Lambert-support results.",
+      "external_review_value": "High as an exact reduction, provided equivalence is not reported as a solved irrationality theorem.",
+      "proof_digestion_value": "Excellent for routing future work to the actual missing producer.",
+      "evidence_certainty": "Exact committed source and Comparator transport are available.",
+      "overclaim_risk": "High if the equivalence is mistaken for a cofinal carry proof.",
+      "why_not_ranked_first": "It reaches an open endpoint more directly but does not itself establish the endpoint, unlike the selected full-support theorem."
+    },
+    {
+      "rank": 6,
+      "declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
+      "family_id": "prime_gap_dyadic_equivalence",
+      "selection_status": "endpoint_reduction",
+      "mathematical_nontriviality": "An exact irrationality equivalence linked to the prime-gap series.",
+      "consequence_and_endpoint_proximity": "Very close to #251's target but proves neither side irrational and retains a summability premise.",
+      "mechanism_depth_and_natural_friction": "The key mechanism is summation-by-parts normalization; the target irrationality remains open.",
+      "genuinely_distinct_content_and_independence": "Distinct prime-gap route, not a support-series corollary.",
+      "external_review_value": "Good for verifying the exact normalization and its open boundary.",
+      "proof_digestion_value": "Useful connective tissue, not a headline endpoint result.",
+      "evidence_certainty": "Exact committed source and Comparator transport are available.",
+      "overclaim_risk": "High if equivalence is read as irrationality.",
+      "why_not_ranked_first": "It is a reduction rather than a proved irrationality consequence."
+    },
+    {
+      "rank": 7,
+      "declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+      "family_id": "totient_kernel_rank",
+      "selection_status": "deep_supporting_result",
+      "mathematical_nontriviality": "A genuinely infinite-dimensional consequence of exact finite-level rank growth.",
+      "consequence_and_endpoint_proximity": "Important structural support for #249, but it does not prove irrationality or the missing cofinal certificate supply.",
+      "mechanism_depth_and_natural_friction": "The proof uses exact ranks 2^e+1 and a finite-dimensional contradiction.",
+      "genuinely_distinct_content_and_independence": "Independent kernel-rank route with clear separation from the analytic endpoint.",
+      "external_review_value": "High for structural review, with the relationship to prior non-k-regularity work disclosed.",
+      "proof_digestion_value": "Clarifies what rank growth does and does not buy for irrationality.",
+      "evidence_certainty": "Exact committed source and Comparator transport are available.",
+      "overclaim_risk": "Moderate if infinite-dimensionality is treated as an irrationality criterion.",
+      "why_not_ranked_first": "Its consequence is farther from a solved endpoint than the selected direct irrationality theorem."
+    }
+  ],
   "candidate_selection": {
     "selected": true,
     "problem": 257,
-    "family_id": "pairwise_coprime_support",
-    "claim_id": "support_families",
-    "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
-    "source_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
+    "family_id": "known_irrational_supports",
+    "claim_id": "eb_full_support",
+    "declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+    "source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "source_file": "Erdos249257/CertificateKernel.lean",
-    "source_anchor": "10768-10782",
-    "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series erdosSupportSeries b A is irrational.",
+    "source_anchor": "8323-8331",
+    "statement": "For every integer base b >= 2, the full-support Erdős–Borwein series sum over k >= 0 of 1/(b^(k+1)-1) is irrational.",
     "exact_hypotheses": [
-      "2 <= b",
-      "A is infinite",
-      "A is pairwise Nat.Coprime",
-      "the indicator of A weighted by reciprocal index is summable"
+      "2 <= b"
     ],
-    "conclusion": "Irrational (erdosSupportSeries b A)",
-    "hard_mechanism": "The proof consumes weighted coefficient certificates produced by an adaptive CRT. Small support elements are paid in the first block, unselected support petals are controlled as residue strays, and summable reciprocals close the weighted tail bound.",
-    "why_this_is_the_showcase": "It is an unconditional theorem for a broad non-dilation infinite support class, exposes a real certificate mechanism rather than only a recurrence or finite computation, and has a clean statement-isolated Challenge type.",
-    "attribution": "The source docstring records Erdős (1968) for this support theorem; the local Lean proof is the proof authority, while the cited source supplies attribution and statement-fidelity context.",
+    "conclusion": "Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))",
+    "hard_mechanism": "The source proof closes a weighted divisor-block certificate pipeline: a bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail control, and explicit parameter closure. The local theorem is the final consumer of that completed machine.",
+    "why_this_is_the_showcase": "It is the strongest direct and unconditional endpoint result in the committed Comparator spine: a canonical full-support member of Erdős #257 with a visible completed mechanism and a clean statement-isolated Challenge type. Its classical attribution is disclosed, not hidden, and does not diminish its review value.",
+    "attribution": "The source docstring records Erdős (1948) for the full-support theorem; the local Lean proof is the proof authority, while the cited source and repository prior-art ledger supply attribution and statement-fidelity context.",
     "limitations": [
-      "It does not prove irrationality for every infinite support.",
+      "It proves only the full-support series, not irrationality for every infinite support.",
       "It does not solve universal Erdős #257.",
-      "The infinitude, pairwise-coprimality, and summable-reciprocal hypotheses are not optional.",
+      "The base condition b >= 2 is part of the theorem and no other base or support interpretation is implicit.",
       "Comparator establishes statement identity and configured axiom use, not novelty or editorial significance."
     ]
   },
   "selection_comparison": [
     {
-      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
-      "family_id": "known_irrational_supports",
+      "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+      "family_id": "pairwise_coprime_support",
       "disposition": "not_selected_alternative",
-      "reason": "It has the strongest direct consequence for the full-support subcase, but it formalises the classical already-known full-support theorem and exposes less of the non-dilation support mechanism that the showcase is meant to make reviewable."
+      "reason": "It is the nearest alternative and remains a high-value distinct result, but its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses cover a narrower support class; the selected full-support theorem has the more canonical direct endpoint and a completed divisor-block certificate pipeline."
     },
     {
       "declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
@@ -87,6 +269,18 @@
       "family_id": "coordinatewise_corridor_no_go",
       "disposition": "not_selected_alternative",
       "reason": "It is a sharp, useful no-go result, but it excludes one proof architecture and concludes no irrationality statement; it is lower consequence for the selected Palomar candidate."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+      "family_id": "factorial_carry_irrationality_equivalence",
+      "disposition": "not_selected_alternative",
+      "reason": "It is an exact #68 endpoint reduction with excellent review value, but its cofinal non-unit-carry producer remains unproved; an equivalence to the open endpoint is not a direct irrationality result."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+      "family_id": "totient_kernel_rank",
+      "disposition": "not_selected_alternative",
+      "reason": "It is a deep independent #249 structural theorem, but infinite-dimensional kernel rank is farther from the irrationality endpoint than the selected direct result and does not supply the missing unbounded certificate family."
     }
   ],
   "frontier_by_problem": [

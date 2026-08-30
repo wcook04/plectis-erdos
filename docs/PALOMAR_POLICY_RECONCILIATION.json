@@ -117,7 +117,7 @@
   },
   "current_repository": {
     "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
-    "observed_head_before_product": "53c2e1f18641d6577c3e1e640eaeaf137a9046a7",
+    "observed_head_before_product": "5d5beef651f3296ccd7e3d59216b77809944e8ce",
     "authority_scope": "committed HEAD tree; uncommitted sibling edits are not consumed",
     "alternate_ref": {
       "ref": "local-research-20260829",
@@ -150,6 +150,17 @@
       "project_license": "Apache-2.0",
       "structural_status": "pass"
     }
+  },
+  "candidate_value_selection": {
+    "showcase_path": "docs/PALOMAR_RESULT_SHOWCASE.json",
+    "authority": "HEAD:verification/comparator.json",
+    "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+    "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
+    "selected_family_id": "known_irrational_supports",
+    "selection_basis": "The full committed Comparator universe is evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, and overclaim risk. The selected row is the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline.",
+    "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
+    "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
+    "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection."
   },
   "requirements": [
     {
@@ -212,7 +223,7 @@
       "id": "informal_account_and_boundaries",
       "source": "PalomarPolicy/CONTRIBUTING.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
       "status": "pass",
-      "evidence": "PALOMAR_RESULT_SHOWCASE.json and PALOMAR_QUALIFICATION.md expose exact hypotheses, mechanism, attribution, limitations, and the universal #257 open boundary.",
+      "evidence": "PALOMAR_RESULT_SHOWCASE.json and PALOMAR_QUALIFICATION.md expose the all-row value-selection record, exact full-support hypotheses, completed mechanism, attribution, limitations, and the universal #257 open boundary.",
       "disposition": "product_surface_satisfied"
     },
     {
@@ -246,7 +257,7 @@
   ],
   "qualification_decision": {
     "decision": "NOT_READY",
-    "reason": "The main-compatible Palomar product is now explicit, but formalization.yaml is not yet current v0.4 and terminal immutable mechanical/replay evidence is withheld.",
+    "reason": "The main-compatible Palomar product now binds the complete committed candidate universe to a deliberate full-support selection, but formalization.yaml is not yet current v0.4 and terminal immutable mechanical/replay evidence is withheld.",
     "readiness_rule": "All applicable structural and terminal gates must be green at one exact source commit; Comparator theorem-name count never substitutes for qualification.",
     "safe_local_repairs_remaining": [
       "Refresh the generated formalization.yaml from its owning current claim source to v0.4 with truthful maintainers, classifications, and accepted source relationships.",

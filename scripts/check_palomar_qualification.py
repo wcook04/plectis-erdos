@@ -23,6 +23,16 @@ from typing import Any
 
 
 PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
+SELECTION_AXES = {
+    "mathematical_nontriviality",
+    "consequence_and_endpoint_proximity",
+    "mechanism_depth_and_natural_friction",
+    "genuinely_distinct_content_and_independence",
+    "external_review_value",
+    "proof_digestion_value",
+    "evidence_certainty",
+    "overclaim_risk",
+}
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 SOURCE_TYPES = {
@@ -206,6 +216,92 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
     return errors
 
 
+def candidate_selection_errors(
+    comparator: dict[str, Any], showcase: dict[str, Any]
+) -> list[str]:
+    """Require an explicit, complete, source-backed value-selection record."""
+    errors: list[str] = []
+    names = comparator.get("theorem_names", [])
+    universe = showcase.get("candidate_universe")
+    if not isinstance(universe, dict):
+        return ["showcase lacks the authority-backed candidate universe"]
+    universe_names = universe.get("declarations")
+    if universe.get("authority") != "HEAD:verification/comparator.json":
+        errors.append("candidate universe is not bound to HEAD:verification/comparator.json")
+    if not isinstance(universe_names, list) or universe_names != names:
+        errors.append("candidate universe does not exactly equal the committed Comparator roster")
+    if universe.get("comparator_sha256") != showcase.get("source_authority", {}).get(
+        "comparator_sha256"
+    ):
+        errors.append("candidate universe Comparator digest disagrees with showcase authority")
+
+    contract = showcase.get("selection_contract")
+    if not isinstance(contract, dict):
+        errors.append("showcase lacks the value-selection contract")
+    else:
+        axes = {
+            row.get("axis")
+            for row in contract.get("ranking_axes", [])
+            if isinstance(row, dict)
+        }
+        missing_axes = sorted(SELECTION_AXES - axes)
+        if missing_axes:
+            errors.append(f"selection contract omits ranking axes: {missing_axes}")
+        for field in (
+            "authority_basis",
+            "anti_underclaim_boundary",
+            "anti_hype_boundary",
+            "reversal_evidence",
+        ):
+            if not isinstance(contract.get(field), str) or not contract[field].strip():
+                errors.append(f"selection contract lacks {field}")
+
+    ranking = showcase.get("candidate_ranking")
+    if not isinstance(ranking, list) or not ranking:
+        errors.append("showcase lacks a ranked candidate spine")
+    else:
+        ranks = [row.get("rank") for row in ranking if isinstance(row, dict)]
+        if ranks != list(range(1, len(ranking) + 1)):
+            errors.append("candidate ranking ranks are not consecutive from one")
+        ranked_names = [row.get("declaration") for row in ranking if isinstance(row, dict)]
+        if len(ranked_names) != len(set(ranked_names)):
+            errors.append("candidate ranking contains duplicate declarations")
+        if any(name not in names for name in ranked_names):
+            errors.append("candidate ranking contains a declaration absent from Comparator")
+        required_prose = {
+            "mathematical_nontriviality",
+            "consequence_and_endpoint_proximity",
+            "mechanism_depth_and_natural_friction",
+            "genuinely_distinct_content_and_independence",
+            "external_review_value",
+            "proof_digestion_value",
+            "evidence_certainty",
+            "overclaim_risk",
+        }
+        for index, row in enumerate(ranking, 1):
+            if not isinstance(row, dict):
+                errors.append(f"candidate ranking row {index} is not an object")
+                continue
+            missing = sorted(
+                field
+                for field in required_prose
+                if not isinstance(row.get(field), str) or not row[field].strip()
+            )
+            if missing:
+                errors.append(
+                    f"candidate ranking row {index} lacks required prose: {missing}"
+                )
+            reason_field = "why_ranked_first" if index == 1 else "why_not_ranked_first"
+            if not isinstance(row.get(reason_field), str) or not row[reason_field].strip():
+                errors.append(f"candidate ranking row {index} lacks {reason_field}")
+        selected_name = showcase.get("candidate_selection", {}).get("declaration")
+        if ranking[0].get("declaration") != selected_name:
+            errors.append("candidate selection does not match ranked candidate one")
+        if ranking[0].get("selection_status") != "selected":
+            errors.append("ranked candidate one is not marked selected")
+    return errors
+
+
 def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showcase: dict[str, Any]) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     deficits: list[str] = []
@@ -263,6 +359,21 @@ def evaluate(root: Path) -> dict[str, Any]:
     comparator = json.loads(committed_bytes(root, "verification/comparator.json"))
     errors = authority_errors(recon)
     errors.extend(roster_errors(root, comparator, showcase, recon))
+    errors.extend(candidate_selection_errors(comparator, showcase))
+    selected = showcase.get("candidate_selection", {})
+    recon_selection = recon.get("candidate_value_selection", {})
+    if not isinstance(recon_selection, dict):
+        errors.append("reconciliation lacks the Palomar candidate value-selection record")
+    else:
+        for field, expected in (
+            ("showcase_path", "docs/PALOMAR_RESULT_SHOWCASE.json"),
+            ("authority", "HEAD:verification/comparator.json"),
+            ("selected_declaration", selected.get("declaration")),
+            ("selected_source_declaration", selected.get("source_declaration")),
+            ("selected_family_id", selected.get("family_id")),
+        ):
+            if recon_selection.get(field) != expected:
+                errors.append(f"reconciliation candidate selection disagrees on {field}")
     static_errors, deficits = static_requirement_errors(root, recon, showcase)
     errors.extend(static_errors)
     decision = recon.get("qualification_decision", {}).get("decision")
