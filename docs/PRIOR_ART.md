@@ -265,7 +265,7 @@ grouped by the problem whose note they serve.
 
   **Boundary.** The analytic argument remains external, and nothing follows at `3/2`.
 
-- T. Amdeberhan and D. Zeilberger, [*$q$-Apéry irrationality proofs by $q$-WZ pairs* (1998)](https://doi.org/10.1006/aama.1997.0565); W. Van Assche, [*Little $q$-Legendre polynomials and irrationality of certain Lambert series* (2001)](https://doi.org/10.1023/A:1012930828917); P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X)
+- T. Amdeberhan and D. Zeilberger, [*$q$-Apéry irrationality proofs by $q$-WZ pairs* (1998)](https://doi.org/10.1006/aama.1997.0565) ([read source closure](primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md)); W. Van Assche, [*Little $q$-Legendre polynomials and irrationality of certain Lambert series* (2001)](https://doi.org/10.1023/A:1012930828917); P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X)
 
   Amdeberhan--Zeilberger and Van Assche target the same Lambert value with the same little-$q$-Legendre kernel on different moving diagonals; Van Assche cites Borwein's Lemma 2 for the neighbouring evaluation used in the comparison.
 

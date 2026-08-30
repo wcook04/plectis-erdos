@@ -17,11 +17,11 @@
   "inventory": {
     "root": "docs/primary-sources/",
     "tracked_release_snapshot_count": 0,
-    "working_tree_only_count": 23,
-    "artifact_count": 23,
+    "working_tree_only_count": 24,
+    "artifact_count": 24,
     "permission_evidence_status": "none_of_the_bound_records_asserts_a_redistribution_grant",
     "public_candidate_verified_count": 0,
-    "link_and_digest_only_count": 23,
+    "link_and_digest_only_count": 24,
     "operator_permission_required_count": 0,
     "unresolved_release_blocker_count": 0
   },
@@ -453,6 +453,26 @@
         "docs/PRIOR_ART.md",
         "docs/COMPARATOR_1049_NUMERICAL_HEIGHT.md",
         "docs/primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md",
+        "docs/THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "path": "docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery.pdf",
+      "sha256": "0aa934e636ccb32d2abe5ede3209849f1f673e2fbd6217d0f23d6107c3e60a28",
+      "inventory_state": "working_tree_only",
+      "disposition": "link_and_digest_only",
+      "public_candidate_inclusion": false,
+      "permission_evidence_status": "not_verified",
+      "official_retrieval_routes": [
+        "https://arxiv.org/abs/math/9804122",
+        "https://arxiv.org/pdf/math/9804122",
+        "https://doi.org/10.1006/aama.1997.0565"
+      ],
+      "source_record": "docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md",
+      "support_boundary_ref": "docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md",
+      "consumer_refs": [
+        "docs/PRIOR_ART.md",
+        "docs/primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md",
         "docs/THIRD_PARTY_NOTICES.md"
       ]
     }
