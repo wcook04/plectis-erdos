@@ -324,6 +324,44 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     )
     assert "boundedNegativePart_eventually_zero" in centered["source_declaration"]
     assert "mixed-sign branch" in " ".join(centered["limitations"])
+    small_mismatch = landscape_by_id["erdos251_small_mismatch_criterion"]
+    assert small_mismatch["family_id"] == "small_mismatch_criterion"
+    assert small_mismatch["disposition"] == "represented"
+    assert small_mismatch["prior_disposition"] == "deferred"
+    assert small_mismatch["canonical_family_binding"] == "small_mismatch_criterion"
+    assert small_mismatch["canonical_claim_commit"] == (
+        "96b2dc35cb1a73ad63ce4e01565aeb88cd477c12"
+    )
+    assert small_mismatch["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert small_mismatch["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert small_mismatch["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch"
+    )
+    assert small_mismatch["comparator_declaration"] in comparator["theorem_names"]
+    assert small_mismatch["source_transport_commit"] == (
+        "750e4d3218248bea5785b16e6f271bb3ab76ff7e"
+    )
+    assert "cofinal" in " ".join(small_mismatch["exact_hypotheses"]).lower()
+    assert "No theorem supplies cofinally many adjacent small mismatches" in " ".join(
+        small_mismatch["limitations"]
+    )
+    assert "not a #251 irrationality" in small_mismatch["conclusion"]
+    carry_escape = landscape_by_id["erdos269_conditional_carry_escape"]
+    assert carry_escape["family_id"] == "conditional_carry_escape"
+    assert carry_escape["disposition"] == "subordinate"
+    assert carry_escape["prior_disposition"] == "deferred"
+    assert carry_escape["comparator_eligibility"] == "committed_source_faithful_transport"
+    assert carry_escape["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
+    assert carry_escape["comparator_declaration"] == (
+        "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+    )
+    assert carry_escape["comparator_declaration"] in comparator["theorem_names"]
+    assert carry_escape["source_transport_commit"] == (
+        "069245dfa77c55565611f04f9269707e0c31ce24"
+    )
+    assert "CofinalLocalWindowEscape" in " ".join(carry_escape["exact_hypotheses"])
+    assert "rationality-to-carry" in " ".join(carry_escape["limitations"])
+    assert "not an Erdős #269 endpoint" in carry_escape["conclusion"]
     committed = {
         row["candidate_id"]: row
         for row in landscape
@@ -333,7 +371,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert set(committed) == {
         "actual_lcm_orbit_separation",
         "first_harmonic_pivot",
-        "actual_lcm_positive_corridor_top_edge",
+        "erdos269_conditional_carry_escape",
         "erdos251_integral_tail_classification",
         "erdos1049_four_jet_pade_obstruction",
         "erdos257_boolean_mobius_carry",
@@ -345,17 +383,14 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos257_boolean_mobius_exact_row_dynamics",
         "erdos257_half_membership_seam_classification",
         "erdos251_coefficient_only_no_go",
+        "erdos251_small_mismatch_criterion",
     }
     assert committed["first_harmonic_pivot"]["family_id"] == "first_harmonic_pivot_decomposition"
-    assert committed["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
+    assert committed["erdos269_conditional_carry_escape"]["family_id"] == "conditional_carry_escape"
     assert committed["first_harmonic_pivot"]["comparator_declaration"] in comparator["theorem_names"]
-    assert committed["actual_lcm_positive_corridor_top_edge"]["comparator_declaration"] in comparator["theorem_names"]
+    assert committed["erdos269_conditional_carry_escape"]["comparator_declaration"] in comparator["theorem_names"]
     assert set(committed["first_harmonic_pivot"]["supporting_comparator_declarations"]) <= set(comparator["theorem_names"])
-    assert set(committed["actual_lcm_positive_corridor_top_edge"]["supporting_comparator_declarations"]) <= set(comparator["theorem_names"])
-    for row in (
-        committed["first_harmonic_pivot"],
-        committed["actual_lcm_positive_corridor_top_edge"],
-    ):
+    for row in (committed["first_harmonic_pivot"],):
         assert row["source_transport_commit"] == "bc0fee48e14719391a77e90ea98205400b98993b"
         assert row["source_transport_files"] == [
             "ExternalVerification/Challenge.lean",
@@ -371,7 +406,9 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         if row["comparator_eligibility"]
         == "committed_source_transport_pending_comparator_registration"
     }
-    assert set(pending) == set()
+    assert set(pending) == {"actual_lcm_positive_corridor_top_edge"}
+    assert pending["actual_lcm_positive_corridor_top_edge"]["family_id"] == "actual_lcm_orbit_separation"
+    assert "comparator_declaration" not in pending["actual_lcm_positive_corridor_top_edge"]
     row = landscape_by_id["erdos251_integral_tail_classification"]
     assert row["family_id"] == "dyadic_tail_integrality_classification"
     assert row["disposition"] == "represented"
@@ -413,7 +450,6 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary"
     )
     assert weighted["comparator_declaration"] in comparator["theorem_names"]
-    assert weighted["supporting_comparator_declarations"] == []
     assert weighted["source_transport_commit"] == (
         "cec8ee43219b3f2059902be78ee0fc54df3dd6e9"
     )
@@ -575,7 +611,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "#251 endpoint" in " ".join(coefficient["limitations"])
     assert "routine finite searches" in coefficient["reason"]
     assert "verification/comparator.json" in coefficient["transport_admission_boundary"]
-    assert "52-row" in coefficient["transport_admission_boundary"]
+    assert "source-current committed" in coefficient["transport_admission_boundary"]
     negative_mass = landscape_by_id["erdos243_negative_mass_recovery"]
     assert negative_mass["family_id"] == "negative_mass_recovery"
     assert negative_mass["disposition"] == "represented"
@@ -600,7 +636,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "negativeRelativeMass" in negative_mass["hard_mechanism"]
     assert "prime-specific producer" in " ".join(negative_mass["limitations"])
     assert "unconditional #243 endpoint" in " ".join(negative_mass["limitations"])
-    assert "52-row" in negative_mass["transport_admission_boundary"]
+    assert "source-current committed" in negative_mass["transport_admission_boundary"]
 
 
 def test_adversarial_source_transport_family_merge_is_not_silently_accepted() -> None:

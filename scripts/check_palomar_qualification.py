@@ -571,6 +571,8 @@ def candidate_selection_errors(
                 "erdos249_carry_anti_compression",
                 "erdos249_fixed_precision_transport_no_go",
                 "erdos251_coefficient_only_no_go",
+                "erdos251_small_mismatch_criterion",
+                "erdos269_conditional_carry_escape",
                 "erdos243_negative_mass_recovery",
             }
             if set(candidate_ids) != expected_landscape_ids:
