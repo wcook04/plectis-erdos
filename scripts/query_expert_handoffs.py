@@ -64,9 +64,16 @@ FIRST_HARMONIC_FAMILY = "first_harmonic_pivot_decomposition"
 # a position or a second hierarchy.
 CRITICAL_PAIR_METRIC_FAMILY = "critical_pair_metric_scale"
 CRITICAL_PAIR_SOURCE_MODULE = (
+    "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+)
+CRITICAL_PAIR_RESEARCH_SOURCE_MODULE = (
     "research_corpus/Erdos1041/CriticalTwoRootProximity.lean"
 )
 CRITICAL_PAIR_SOURCE_REVISION = "6bebc6e396a4982d842ba214315dc4a8f043ea60"
+CRITICAL_PAIR_PROMOTION_COMMIT = "678ddff10a5e6811dd2d991f52cfa775b6424c3e"
+CRITICAL_PAIR_COMPARATOR_DECLARATION = (
+    "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean"
+)
 CRITICAL_PAIR_SOURCE_DECLARATIONS = (
     "two_add_le_two_of_bernoulli",
     "two_add_le_two_of_disk_inverse_balance",
@@ -496,6 +503,30 @@ def critical_pair_metric_scale_candidate_handoff(
                 "Lean theorem."
             ),
         },
+        "source_provenance": {
+            "promoted_module": CRITICAL_PAIR_SOURCE_MODULE,
+            "public_research_module": CRITICAL_PAIR_RESEARCH_SOURCE_MODULE,
+            "byte_identical": True,
+            "promotion_commit": CRITICAL_PAIR_PROMOTION_COMMIT,
+            "boundary": (
+                "The promoted module is the buildable source authority; the "
+                "research-corpus copy remains the public provenance anchor."
+            ),
+        },
+        "comparator_representative": {
+            "declaration": CRITICAL_PAIR_COMPARATOR_DECLARATION,
+            "config": "verification/comparator.json",
+            "surfaces": [
+                "ExternalVerification/Statements.lean",
+                "ExternalVerification/Challenge.lean",
+                "ExternalVerification/Solution.lean",
+            ],
+            "role": (
+                "One statement-isolated representative for the geometric-mean "
+                "metric theorem; it does not certify the ordinary global assembly "
+                "or a contained path."
+            ),
+        },
         "natural_friction_evidence": [
             {
                 "declaration": "nearestSpoke_unique_nearest_spoke_escapes",
@@ -540,7 +571,10 @@ def critical_pair_metric_scale_candidate_handoff(
                 "programme_family_order (#1041 context only)"
             ),
             "source": CRITICAL_PAIR_SOURCE_MODULE,
+            "research_source": CRITICAL_PAIR_RESEARCH_SOURCE_MODULE,
             "source_revision": CRITICAL_PAIR_SOURCE_REVISION,
+            "promotion_commit": CRITICAL_PAIR_PROMOTION_COMMIT,
+            "comparator": CRITICAL_PAIR_COMPARATOR_DECLARATION,
             "adjudication_receipt": (
                 "cap_quick_erdos_1041_critical_pair_metric_scale_so_4510a65321c7"
             ),

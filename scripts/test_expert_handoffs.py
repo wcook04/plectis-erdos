@@ -151,10 +151,26 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
         "allStraightCubic_every_pair_midpoint_escapes",
     }
     assert all(
-        row["module"] == "research_corpus/Erdos1041/CriticalTwoRootProximity.lean"
+        row["module"] == "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
         and isinstance(row["line"], int)
         and row["coordinate_authority"] == "direct Lean source declaration"
         for row in declarations.values()
+    )
+    assert candidate["source_provenance"] == {
+        "promoted_module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+        "public_research_module": "research_corpus/Erdos1041/CriticalTwoRootProximity.lean",
+        "byte_identical": True,
+        "promotion_commit": "678ddff10a5e6811dd2d991f52cfa775b6424c3e",
+        "boundary": (
+            "The promoted module is the buildable source authority; the "
+            "research-corpus copy remains the public provenance anchor."
+        ),
+    }
+    assert candidate["comparator_representative"]["declaration"] == (
+        "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean"
+    )
+    assert candidate["comparator_representative"]["config"] == (
+        "verification/comparator.json"
     )
     assert any(
         row["declaration"] == "nearestSpoke_unique_nearest_spoke_escapes"
