@@ -642,6 +642,64 @@ def main() -> int:
             "activated": False,
         }
 
+        # The manifest, persisted consultation, and fillable return template
+        # are one immutable route-memory identity.  Mutating any one artifact
+        # must fail closed before a return can be accepted.
+        session_directory = sessions / session
+        continuation_path = session_directory / "continuation.json"
+        consultation_path = session_directory / "route-memory-consultation.json"
+        template_path = session_directory / "route-memory-return-template.json"
+        continuation_bytes = continuation_path.read_bytes()
+        consultation_bytes = consultation_path.read_bytes()
+        template_bytes = template_path.read_bytes()
+
+        def check_identity_mutation(
+            path: Path, payload: dict, marker: str, original: bytes
+        ) -> None:
+            path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+            try:
+                mutated = run([*common, "check", "--session", session], expected=1)
+                mutated_receipt = json.loads(mutated.stdout)
+                require(not mutated_receipt["valid"], f"mutation unexpectedly accepted: {path}")
+                require(
+                    any(marker in error for error in mutated_receipt["errors"]),
+                    f"mutation missing {marker!r}: {mutated_receipt['errors']}",
+                )
+            finally:
+                path.write_bytes(original)
+
+        manifest_mutation = load(continuation_path)
+        manifest_mutation["route_memory"] = (
+            continue_research.route_memory_receipt.consultation_for_problem(249, ROOT)
+        )
+        check_identity_mutation(
+            continuation_path,
+            manifest_mutation,
+            "persisted artifact does not match continuation manifest",
+            continuation_bytes,
+        )
+
+        consultation_mutation = load(consultation_path)
+        consultation_mutation["problem"] = 249
+        check_identity_mutation(
+            consultation_path,
+            consultation_mutation,
+            "problem does not match continuation manifest",
+            consultation_bytes,
+        )
+
+        template_mutation = load(template_path)
+        if template_mutation["relationships"]:
+            template_mutation["relationships"][0]["relationship"] = "confirms"
+        else:
+            template_mutation["disposition"] = "no_applicable_route"
+        check_identity_mutation(
+            template_path,
+            template_mutation,
+            "does not match canonical consultation",
+            template_bytes,
+        )
+
         validation_fixture = json.loads(json.dumps(returned))
         validation_fixture["record_kind"] = "validation_fixture"
         validation_fixture_path = temp / "validation-fixture.json"

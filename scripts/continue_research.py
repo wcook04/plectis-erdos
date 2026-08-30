@@ -735,9 +735,62 @@ def check_session(
     route_path = session_artifact_path(
         directory / "route.json", sessions_root, "session route"
     )
-    for label, value in (("continuation", manifest), ("route", load_json(route_path)), ("route-memory consultation", consultation), ("workbench ledger", ledger)):
+    persisted_consultation: dict[str, Any] | None = None
+    consultation_path = directory / "route-memory-consultation.json"
+    try:
+        consultation_path = session_artifact_path(
+            consultation_path, sessions_root, "route-memory consultation"
+        )
+        persisted_consultation = load_json(consultation_path)
+    except (OSError, json.JSONDecodeError, SystemExit) as exc:
+        errors.append(f"route-memory consultation: cannot read JSON: {exc}")
+
+    persisted_template: dict[str, Any] | None = None
+    template_path = directory / "route-memory-return-template.json"
+    try:
+        template_path = session_artifact_path(
+            template_path, sessions_root, "route-memory return template"
+        )
+        persisted_template = load_json(template_path)
+    except (OSError, json.JSONDecodeError, SystemExit) as exc:
+        errors.append(f"route-memory return template: cannot read JSON: {exc}")
+
+    for label, value in (
+        ("continuation", manifest),
+        ("route", load_json(route_path)),
+        ("route-memory consultation", consultation),
+        ("persisted route-memory consultation", persisted_consultation),
+        ("persisted route-memory return template", persisted_template),
+        ("workbench ledger", ledger),
+    ):
         errors.extend(f"{label}: {error}" for error in return_validator.public_safety_errors(value))
     errors.extend(route_memory_receipt.validate_consultation(consultation, ROOT))
+    if persisted_consultation is not None:
+        errors.extend(
+            route_memory_receipt.validate_consultation(persisted_consultation, ROOT)
+        )
+        if persisted_consultation != consultation:
+            errors.append(
+                "route-memory consultation: persisted artifact does not match continuation manifest"
+            )
+        if (
+            isinstance(persisted_consultation, dict)
+            and persisted_consultation.get("problem") != manifest.get("problem")
+        ):
+            errors.append(
+                "route-memory consultation: problem does not match continuation manifest"
+            )
+    if persisted_template is not None and isinstance(consultation, dict):
+        try:
+            expected_template = route_memory_receipt.return_receipt_template(
+                consultation
+            )
+        except (KeyError, TypeError):
+            expected_template = None
+        if expected_template is not None and persisted_template != expected_template:
+            errors.append(
+                "route-memory return template: does not match canonical consultation"
+            )
     probes = [row for row in ledger if row.get("kind") == "probe"]
     closed = next((row for row in reversed(ledger) if row.get("kind") == "session_closed"), None)
     replay_posture = replay_execution_posture(
