@@ -33,6 +33,11 @@ def main() -> int:
         "primary_source_disposition_check = subprocess.run(" not in source,
         "primary-source disposition gate still invokes raw subprocess.run",
     )
+    require(
+        "safe_release_path" in inspect.getsource(check_release.read)
+        and "safe_release_path" in inspect.getsource(check_release.file_digest),
+        "release artifact readers bypass the in-checkout path guard",
+    )
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_WORK_TREE": "/private/wrong-work-tree",
@@ -99,25 +104,47 @@ def main() -> int:
                 },
                 "sanitized release child inherited ambient execution state",
             )
-            with patch.object(
-                check_release,
-                "_SUBPROCESS_RUN",
-                return_value=subprocess.CompletedProcess(
-                    ["fixture"], returncode=0, stdout="", stderr=""
-                ),
-            ) as runner:
-                check_release.run(
-                    ["fixture"],
-                    cwd=Path(raw),
-                    capture_output=True,
-                    text=True,
-                    check=False,
+
+        private = Path(raw) / "private"
+        private.mkdir()
+        (private / "secret.txt").write_text("outside release\n", encoding="utf-8")
+        docs = Path(raw) / "docs"
+        docs.mkdir()
+        (docs / "linked").symlink_to(private, target_is_directory=True)
+        original_root = check_release.ROOT
+        check_release.ROOT = Path(raw)
+        try:
+            try:
+                check_release.safe_release_path(docs / "linked" / "secret.txt")
+            except check_release.UnsafeReleasePath:
+                pass
+            else:
+                require(
+                    False,
+                    "release gate followed a symlinked parent directory",
                 )
-            require(runner.call_args is not None, "release wrapper did not invoke its subprocess")
-            require(
-                runner.call_args.kwargs["timeout"] == check_release.SUBPROCESS_TIMEOUT_SECONDS,
-                "release wrapper omitted its default subprocess timeout",
+        finally:
+            check_release.ROOT = original_root
+
+        with patch.object(
+            check_release,
+            "_SUBPROCESS_RUN",
+            return_value=subprocess.CompletedProcess(
+                ["fixture"], returncode=0, stdout="", stderr=""
+            ),
+        ) as runner:
+            check_release.run(
+                ["fixture"],
+                cwd=Path(raw),
+                capture_output=True,
+                text=True,
+                check=False,
             )
+        require(runner.call_args is not None, "release wrapper did not invoke its subprocess")
+        require(
+            runner.call_args.kwargs["timeout"] == check_release.SUBPROCESS_TIMEOUT_SECONDS,
+            "release wrapper omitted its default subprocess timeout",
+        )
 
     require(
         check_release.ENVIRONMENT_CONTRACT

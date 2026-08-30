@@ -124,12 +124,46 @@ def check(ok: bool, msg: str) -> None:
         fail(msg)
 
 
+class UnsafeReleasePath(ValueError):
+    """A release-gate input is outside the regular in-checkout file boundary."""
+
+
+def _safe_release_component(path: Path) -> Path:
+    """Reject checkout escapes and symbolic-link components."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeReleasePath(f"symlinked release path: {candidate}")
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeReleasePath(f"release path escaped checkout: {candidate}")
+        current = current.parent
+
+    return candidate
+
+
+def safe_release_path(path: Path) -> Path:
+    """Reject checkout escapes, symbolic-link components, and special files."""
+    candidate = _safe_release_component(path)
+    if not candidate.is_file():
+        raise UnsafeReleasePath(f"release path is not a regular file: {candidate}")
+    return candidate
+
+
 def file_digest(path: Path) -> str:
-    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+    return "sha256:" + hashlib.sha256(safe_release_path(path).read_bytes()).hexdigest()
 
 
 def read(path: Path) -> str:
-    return path.read_text(encoding="utf-8")
+    return safe_release_path(path).read_text(encoding="utf-8")
+
+
+def read_bytes(path: Path) -> bytes:
+    """Read a release artifact only after applying the path boundary."""
+    return safe_release_path(path).read_bytes()
 
 
 def flattened(text: str) -> str:
@@ -1409,12 +1443,11 @@ def main() -> int:
     }
     for dirpath, dirnames, filenames in os.walk(ROOT):
         dirnames[:] = [d for d in dirnames if d not in license_scan_excluded_dirs]
+        for dirname in dirnames:
+            _safe_release_component(Path(dirpath) / dirname)
         for fname in filenames:
             path = Path(dirpath) / fname
-            try:
-                head = path.read_text(encoding="utf-8", errors="ignore")[:2000]
-            except OSError:
-                continue
+            head = safe_release_path(path).read_text(encoding="utf-8", errors="ignore")[:2000]
             spdx_ids.update(re.findall(r"SPDX-License-Identifier: ([A-Za-z0-9.\-]+)", head))
     # REUSE-IgnoreEnd
     for lic in sorted(spdx_ids):
@@ -1775,7 +1808,7 @@ def main() -> int:
     check(descriptor.get("release_provenance") == public_projection,
           "corpus descriptor release provenance drifted from docs/claims.json")
     descriptor_path = ROOT / "docs" / "corpus_descriptor.json"
-    check(len(descriptor_path.read_bytes()) <= 64_000,
+    check(len(read_bytes(descriptor_path)) <= 64_000,
           "corpus descriptor exceeds the 64 KB registration-envelope budget")
     compact_graph = descriptor.get("compact_graph", {})
     check("module_graph" not in compact_graph and "high_salience_declarations" not in compact_graph,
@@ -1921,7 +1954,7 @@ def main() -> int:
         "navigation_snapshot" not in descriptor.get("identity", {}),
         "corpus descriptor retains the ambiguous historical navigation snapshot",
     )
-    check(len(orientation_path.read_bytes()) <= 32_000,
+    check(len(read_bytes(orientation_path)) <= 32_000,
           "orientation JSON exceeds the 32 KB bounded first-read budget")
     for target in orientation.get("drilldowns", {}).values():
         targets = target if isinstance(target, list) else [target]
@@ -2006,4 +2039,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except UnsafeReleasePath as exc:
+        print(f"check_release: unsafe release path: {exc}", file=sys.stderr)
+        sys.exit(1)
