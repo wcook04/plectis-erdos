@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import ExternalVerification.Statements
 import Erdos249257.BooleanMobiusCarry
+import Erdos249257.TotientTailCarryPeriod
 import Erdos249257.GreedyAchievementSet
 import Erdos249257.GcdMomentCalculus
 import Erdos249257.LcmFactorIdealPulseObstruction
@@ -292,6 +293,7 @@ def totientKernelIndexEquiv (k e : ℕ) :
     TotientKernelIndex k e ≃ Erdos249257.TotientKernelIndex k e :=
   totientKernelHeadIndexEquiv.sumCongr (Equiv.refl _)
 
+set_option maxHeartbeats 1000000 in
 theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
   constructor
   · simpa [factorialGapSeries, factorialGapTail, factorialGapTailTerm,
@@ -381,6 +383,16 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.AllBaseTotientKernelThroughLevelIndex] using
       Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
         k e hk he hcanon'
+  · intro hirr
+    simpa [binaryCoeffSeries, IsTemperedBinaryOrbit,
+      CarrySectionsEventuallyPeriodicMod, carryKernelSeq,
+      canonicalCarryKernelFamily, Erdos249257.binaryCoeffSeries,
+      Erdos249257.IsTemperedBinaryOrbit,
+      Erdos249257.CarrySectionsEventuallyPeriodicMod,
+      Erdos249257.carryKernelSeq,
+      Erdos249257.canonicalCarryKernelFamily] using
+      Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+        hirr
   · exact GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one
   · exact GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series
   · intro e

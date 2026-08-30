@@ -134,6 +134,19 @@ theorem finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
       k ^ e + 1 :=
   (portfolioClaims Unit).problem249AllBaseRank k e hk he hcanon
 
+theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+    (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :
+    ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+      IsTemperedBinaryOrbit Nat.totient v u ∧
+        (∀ e : ℕ,
+          2 ^ e - 1 ≤
+            Module.finrank ℚ
+              (Submodule.span ℚ
+                (Set.range (canonicalCarryKernelFamily u e)))) ∧
+        ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+          CarrySectionsEventuallyPeriodicMod v h N₀ u :=
+  (portfolioClaims Unit).problem249CarryAntiCompression hirr
+
 theorem tsum_pos_coprime_inv_mersenne_eq_one :
     (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1 :=

@@ -30,7 +30,7 @@ submitted proofs.
 namespace Erdos249257.ExternalVerification
 
 open scoped ENNReal
-open Module MeasureTheory
+open Filter Module MeasureTheory
 
 /-! ## One statement-isolated interface for every indexed problem -/
 
@@ -265,6 +265,35 @@ noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
 
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
+
+/-! ## Totient carry anti-compression -/
+
+/- The coefficient series and tempered orbit are restated here so the
+   Challenge remains independent of the proof-bearing Erdos249257 modules. -/
+noncomputable def binaryCoeffSeries (c : ℕ → ℕ) : ℝ :=
+  ∑' n : ℕ, (c (n + 1) : ℝ) / (2 : ℝ) ^ (n + 1)
+
+/-! The exact integral recurrence and subexponential boundary for a binary
+carry orbit. -/
+def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
+  (∀ N : ℕ,
+      u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
+    Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
+
+abbrev TotientCarryIndex (e : ℕ) :=
+  Σ j : Fin e, Fin (2 ^ (j.val + 1))
+
+def carryKernelSeq (u : ℕ → ℤ) (j r : ℕ) : ℕ → ℚ := fun n =>
+  u (2 ^ j * n + r)
+
+def canonicalCarryKernelFamily (u : ℕ → ℤ) (e : ℕ) :
+    TotientCarryIndex e → ℕ → ℚ
+  | ⟨j, r⟩ => carryKernelSeq u (j.val + 1) r.val
+
+def CarrySectionsEventuallyPeriodicMod
+    (v h N₀ : ℕ) (u : ℕ → ℤ) : Prop :=
+  ∀ j r n : ℕ, N₀ ≤ n →
+    u (2 ^ j * n + r) ≡ u (2 ^ j * (n + h) + r) [ZMOD (v : ℤ)]
 
 /-! ## Boolean–Möbius carry certificate -/
 
@@ -715,6 +744,17 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
         (Submodule.span ℚ
           (Set.range (allBaseTotientKernelThroughLevelFamily k e))) =
         k ^ e + 1
+  problem249CarryAntiCompression :
+    (¬ Irrational (binaryCoeffSeries Nat.totient)) →
+      ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ,
+        IsTemperedBinaryOrbit Nat.totient v u ∧
+          (∀ e : ℕ,
+            2 ^ e - 1 ≤
+              Module.finrank ℚ
+                (Submodule.span ℚ
+                  (Set.range (canonicalCarryKernelFamily u e)))) ∧
+          ∃ h : ℕ, 0 < h ∧ ∃ N₀ : ℕ,
+            CarrySectionsEventuallyPeriodicMod v h N₀ u
   problem249VisibleCoprimeMass :
     (∑' p : ℕ × ℕ, if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
         then 1 / ((2 : ℝ) ^ (p.1 + p.2) - 1) else 0) = 1
