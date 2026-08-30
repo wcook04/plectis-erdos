@@ -680,4 +680,30 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
     (by simpa [W, F] using hresidueEscape)
     hmod
 
+/-- A hypothetical carry recurrence with an absorbed nonzero common factor is
+already contradictory once its reduced denominator satisfies the same cofinal
+local-window escape premise.  This is only a conditional bridge from absorbed
+integral carries to the existing reduced-carry consumer; it proves no
+irrationality statement without the separate actual-series carry bridge and a
+producer for `CofinalLocalWindowEscape`. -/
+theorem no_positive_absorbedCarry_of_cofinalLocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ)
+    (hescape : CofinalLocalWindowEscape b m shortBound)
+    (B : ℕ) (hBpos : 0 < B) (hBcoprime : Nat.Coprime B 30)
+    (c d : ℕ → ℤ) (smoothFactor : ℤ)
+    (hsmooth : smoothFactor ≠ 0)
+    (hfactor : ∀ n, c n = smoothFactor * d n)
+    (hrec : ∀ n,
+      c (n + 1) =
+        (b n : ℤ) * c n - (smoothFactor * (B : ℤ)) * (m n : ℤ))
+    (hpos : ∀ n, 0 < d n)
+    (hbound : ∀ n, Int.natAbs (d n) ≤ shortBound B n) :
+    False := by
+  exact no_positive_reducedCarry_of_cofinalLocalWindowEscape
+    b m shortBound hescape B hBpos hBcoprime d
+    (integralCarry_cancel_commonFactor c d
+      (fun n => (b n : ℤ)) (fun n => (m n : ℤ))
+      smoothFactor (B : ℤ) hsmooth hfactor hrec)
+    hpos hbound
+
 end ErdosProblems.Erdos269
