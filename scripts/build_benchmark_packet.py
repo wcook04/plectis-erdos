@@ -45,7 +45,11 @@ import re
 import subprocess
 import sys
 
+import validation_singleflight as singleflight
+
 ROOT = Path(__file__).resolve().parents[1]
+ENVIRONMENT_CONTRACT = "clean_reproduction_subprocess_environment_v1"
+GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 CORPUS = ROOT / "docs" / "semantic_corpus.json"
 LAB = ROOT / "docs" / "theory_lab.json"
 ARMS = (
@@ -91,10 +95,24 @@ def git(*args: str, cwd: Path | None = None) -> str:
         capture_output=True,
         text=True,
         check=False,
+        env=singleflight.command_environment(),
+        timeout=GIT_COMMAND_TIMEOUT_SECONDS,
     )
     if proc.returncode != 0:
         raise RuntimeError(f"git {' '.join(args)} failed: {proc.stderr.strip()}")
     return proc.stdout
+
+
+def _remove_worktree(dest: Path) -> None:
+    """Remove a prior packet with the same bounded, ambient-free Git call."""
+    subprocess.run(
+        ("git", "worktree", "remove", "--force", str(dest)),
+        cwd=str(ROOT),
+        capture_output=True,
+        check=False,
+        env=singleflight.command_environment(),
+        timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+    )
 
 
 def code_mask(lines: list[str]) -> list[bool]:
@@ -247,23 +265,13 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
     node = node_for(corpus, target)
 
     if dest.exists():
-        subprocess.run(
-            ("git", "worktree", "remove", "--force", str(dest)),
-            cwd=str(ROOT),
-            capture_output=True,
-            check=False,
-        )
+        _remove_worktree(dest)
     dest.parent.mkdir(parents=True, exist_ok=True)
     git("worktree", "add", "--detach", str(dest), parent)
 
     available = declarations_at(dest)
     if target in available:
-        subprocess.run(
-            ("git", "worktree", "remove", "--force", str(dest)),
-            cwd=str(ROOT),
-            capture_output=True,
-            check=False,
-        )
+        _remove_worktree(dest)
         raise SystemExit(
             f"LEAK: {target!r} is present at the cut {parent[:8]}; "
             "the -S search found a later edit, not the introduction"
@@ -446,12 +454,7 @@ def main() -> int:
 
     dest = Path(args.dest).resolve()
     if args.remove:
-        subprocess.run(
-            ("git", "worktree", "remove", "--force", str(dest)),
-            cwd=str(ROOT),
-            capture_output=True,
-            check=False,
-        )
+        _remove_worktree(dest)
         print(f"removed {dest}")
         return 0
 
