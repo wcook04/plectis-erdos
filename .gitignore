@@ -11,9 +11,19 @@ docs/primary-sources/**/*.pdf
 docs/primary-sources/**/*.scan
 docs/primary-sources/**/*.tar
 docs/primary-sources/**/*.tar.gz
+docs/primary-sources/**/*.tar.bz2
+docs/primary-sources/**/*.tar.xz
+docs/primary-sources/**/*.tbz
+docs/primary-sources/**/*.tbz2
+docs/primary-sources/**/*.txz
 docs/primary-sources/**/*.tgz
 docs/primary-sources/**/*.zip
+docs/primary-sources/**/*.rar
 docs/primary-sources/**/*.7z
+docs/primary-sources/**/*.gz
+docs/primary-sources/**/*.bz2
+docs/primary-sources/**/*.xz
+docs/primary-sources/**/*.zst
 
 # Transient probe file written by scripts/residual_evaluator.py, one probe at a
 # time. It is the question put to the kernel on the last iteration, not a
