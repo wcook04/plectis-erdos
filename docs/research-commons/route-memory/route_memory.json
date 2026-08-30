@@ -52,7 +52,41 @@
           "rankOneSubrankQuotient_sub_theta_two_gt",
           "positive_direct_sum_sub_theta_two_gt",
           "primitive_form_abs_gt"
-        ]
+        ],
+        "related_families": {
+          "actual_lcm_orbit_separation": {
+            "route_id": "erdos_249_actual_lcm_orbit_separation",
+            "status": "conditional_reduction_supply_open",
+            "source_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+            "source_module": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+            "source_anchor": 305,
+            "comparator_declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+            "comparator_anchor": 976,
+            "comparator_transport_commit": "7be4c462b7752a1c6764127c7c442a7a2cef58bb",
+            "comparator_registration_commit": "00b182253d3940d9493cfde4311d5fc318156c6d",
+            "solution_export": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+            "solution_export_anchor": 976,
+            "mechanism": "At canonically guarded odd ranks, a cofinal 1/32 separation between the actual-LCM orbit and every integer passes through the raw-block approximation and error radius to the half-word band and signed-margin irrationality consumer; the positive actual-LCM tail corridor instead leaves a negative endpoint survivor, while integrality forces the top-edge residue.",
+            "boundary": "The cofinal quantitative separation supply is unproved and stronger than mere non-integrality. Positivity does not remove the negative true survivor, and top-edge forcing does not supply cofinal non-integrality. The actual-LCM supply/residual-decorrelation producer and the #249 endpoint remain open; no novelty, priority, significance, or external-review claim is made.",
+            "next_research_route": "Construct a source-checked cofinal actual-LCM separation or residual-decorrelation producer, respecting the punctured/top-edge boundary, then apply this exact wrapper before making any #249 endpoint claim."
+          },
+          "first_harmonic_pivot_decomposition": {
+            "route_id": "erdos_249_first_harmonic_pivot_decomposition",
+            "status": "conditional_pivot_budget_supply_open",
+            "source_declaration": "Erdos249257.TotientTailPeriodKiller.windowFirstExp_sum_eq_pivot_decomposition",
+            "source_module": "Erdos249257/FirstHarmonicPivot.lean",
+            "source_anchor": 514,
+            "comparator_declaration": "Erdos249257.ExternalVerification.windowFirstExp_sum_eq_pivot_decomposition",
+            "comparator_anchor": 1027,
+            "comparator_transport_commit": "bc0fee48e14719391a77e90ea98205400b98993b",
+            "comparator_registration_commit": "00b182253d3940d9493cfde4311d5fc318156c6d",
+            "solution_export": "Erdos249257.ExternalVerification.windowFirstExp_sum_eq_pivot_decomposition",
+            "solution_export_anchor": 1027,
+            "mechanism": "The exact supplier-prime fibre/image bijection feeds a four-term first-harmonic decomposition into centred, good-fibre, bad, and non-supplier contributions; under PivotBudgetAt and the dyadic-room inequality, the bounds give the 9X/10 gap and the conditional pivot-residual-decorrelation consumer.",
+            "boundary": "The checked X=16 supplier-isolation counterexample rules out treating supplier primes as globally isolated, and no prime-distribution estimate is supplied. PivotBudgetAt, the 16*(2X+h+L+2) ≤ 2^L room, and DTWPivotResidualDecorrelation remain hypotheses with no cofinal producer; the #249 endpoint remains open and no novelty, priority, significance, or external-review claim is made.",
+            "next_research_route": "Build a cofinal producer for the stated pivot budgets or pivot-residual decorrelation while retaining the X=16 isolation counterexample as a guardrail, then consume the exact four-term decomposition through the public wrapper."
+          }
+        }
       },
       "actual_established": "Every cited rank-one strict-subrank quotient overshoots the target rung by more than 1/480, and positive finite sums retain that separation.",
       "failure_boundary": "The obstruction is for the named strict-subrank family and its positive finite sums; it does not reject linear forms outside those assumptions.",
