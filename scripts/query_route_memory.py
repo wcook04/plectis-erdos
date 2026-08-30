@@ -627,14 +627,15 @@ def build_all_packets(*, root: Path = ROOT) -> list[dict[str, Any]]:
         )
     selectors.sort()
     packets = [build_packet(number, root=root) for number in selectors]
+    # Module and attached research digests are deliberately packet-local:
+    # different problems select different modules and research corpora.  They
+    # therefore cannot identify a shared portfolio snapshot.  Only the
+    # checkout-wide identity inputs belong in this moving-checkout guard.
     snapshots = {
         (
             packet["source_snapshot"]["commit"],
             tuple(sorted(packet["source_snapshot"]["digests"].items())),
-            tuple(sorted(packet["source_snapshot"]["module_digests"].items())),
-            tuple(
-                sorted(packet["source_snapshot"]["research_corpus_digests"].items())
-            ),
+            tuple(packet["source_snapshot"]["tracked_sources"]),
         )
         for packet in packets
     }

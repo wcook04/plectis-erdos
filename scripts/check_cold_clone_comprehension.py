@@ -273,6 +273,27 @@ SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
 # trimmed: dropping routes to fit would make the packet silently incomplete.
 PACKET_BUDGET_BYTES = 20_480
+# The publication architecture is the one intentionally portfolio-wide
+# packet: it carries one route-memory row for every selected family, while
+# ordinary detail packets remain under the fixed agent budget above. Keep a
+# fixed allowance for the architecture envelope and scale only with the
+# source-controlled family index.
+PUBLICATION_ARCHITECTURE_BASE_BUDGET_BYTES = 12_000
+PUBLICATION_ARCHITECTURE_BYTES_PER_FAMILY = 1_200
+
+
+def publication_architecture_budget_bytes(family_count: int) -> int:
+    """Return the bounded budget for the portfolio architecture packet."""
+    require(
+        type(family_count) is int and family_count > 0,
+        "publication architecture family count must be a positive integer",
+    )
+    return (
+        PUBLICATION_ARCHITECTURE_BASE_BUDGET_BYTES
+        + PUBLICATION_ARCHITECTURE_BYTES_PER_FAMILY * family_count
+    )
+
+
 AGENT_TOUR_BUDGET_BYTES = query_corpus.agent_tour_budget_bytes(
     INDEXED_PROBLEM_COUNT
 )
@@ -1256,7 +1277,12 @@ def collect_proof_plan_packets() -> dict[str, Any]:
 def collect_agent_packets() -> dict[str, Any]:
     """Collect only bounded query replies needed to walk the public graph."""
     summary = query_packet(budget_bytes=SUMMARY_PACKET_BUDGET_BYTES)
-    publication_architecture = query_packet("--publication-architecture")
+    publication_architecture = query_packet(
+        "--publication-architecture",
+        budget_bytes=publication_architecture_budget_bytes(
+            summary["publication_family_count"]
+        ),
+    )
     expert_questions = semantic_query_packet("expert-questions")
     expert_handoffs = expert_handoff_packet()
     mathematical_question_ids = [
@@ -1456,6 +1482,11 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         "authored_editorial_topology_not_proof_authority"
     ), "cold-clone comprehension invariant")
     require(len(architecture["family_index"]) == summary["publication_family_count"], "cold-clone comprehension invariant")
+    require(
+        encoded_bytes(architecture)
+        <= publication_architecture_budget_bytes(summary["publication_family_count"]),
+        "cold-clone comprehension invariant",
+    )
     require(set(packets["publication_families"]) == {
         row["id"] for row in architecture["family_index"]
     }, "cold-clone comprehension invariant")
