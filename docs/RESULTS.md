@@ -71,9 +71,11 @@ pass, the high-signal spine is:
   exact prime-gap irrationality equivalence still leave the concrete tail
   bridge open.
 - **#269, #1041, and #1049, structurally useful route checks.** Running-LCM
-  height and rank-two obstructions, finite translation/root-retention inputs
-  plus a diagnosed saddle gap, and the rational-base recurrence/no-go at
-  `3/2` each isolate a mechanism without claiming the endpoint.
+  height and rank-two obstructions, plus a distinct weighted-phase observer
+  that separates a finite residue digit from an uncontrolled integral
+  coboundary; finite translation/root-retention inputs plus a diagnosed saddle
+  gap; and the rational-base recurrence/no-go at `3/2` each isolate a mechanism
+  without claiming the endpoint.
 
 The finite #249 certificate band, Stern–Brocot and gcd-moment identities,
 #257 measure/noncollapse geometry, and the cited-only ladders remain useful
@@ -98,7 +100,7 @@ individually inspectable in the per-problem sections.
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
 | **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; the pairwise CRT and periodic denominator-clearing rows are distinct direct mechanisms; the bouquet and actual-LCM rows add unusually deep endpoint-facing conditional structure, with their unproved supplies kept adjacent rather than hidden. |
-| **retain** | #257's achievement-set measure geometry, #68's exact carry equivalence, #249's finite kernel rank/basis, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
+| **retain** | #257's achievement-set measure geometry, #68's exact carry equivalence, #249's finite kernel rank/basis, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction and weighted-phase observer, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers; the #269 observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
@@ -523,6 +525,21 @@ core)**
   extinction are indexed as `three_prime_finite_residue_contradiction` and
   `three_prime_cofinal_window_carry_extinction` in `docs/claims.json`, with
   paper routes `res:consumer` and `res:windowconsumer`.
+- A separate source-only family in `ErdosProblems/Erdos269/WeightedPhaseCarry.lean`
+  keeps one coherent observer mechanism visible. For `B : ℤ` with `0 < B` and
+  the displayed carry recurrence, `carry_eq_residueDigit_add_coboundary`
+  gives the exact residue-digit plus integral-quotient-coboundary identity
+  (`WeightedPhaseCarry.lean:109`); `carryResidue_mem_interval` and
+  `residueDigit_mem_interval` give the finite intervals under their explicit
+  positivity and canonical-reduction hypotheses (`:150`, `:157`). The separate
+  `finite_realisedSpan_of_factorisation` theorem gives finite-dimensional
+  realised span only for `DivisionRing` modules with finite-dimensional
+  observer space and an explicit linear factorisation
+  `realise = readout.comp C` (`:334`). The quotient coboundary remains
+  uncontrolled: no finite-state quotient, literal infinite realised span,
+  scalar-evaluation implication, or #269 rationality/irrationality conclusion
+  follows. This is not a 33rd Comparator row and is distinct from the
+  three-prime cell, rank-two no-go, and conditional carry-escape families.
 **#1041 — short connections inside polynomial lemniscates?**
 
 - Checked: quantitative root retention under constant perturbation

@@ -76,8 +76,11 @@ The next boundary results are also worth reading: #243 excludes bounded-rise
 and periodic negative-orbit regimes ([source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean));
 #251 gives unbounded prime gaps and an exact prime-gap equivalence
 ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)); #269 checks a
-running-LCM height identity and rank-two obstruction
-([source](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)); #1041 isolates
+running-LCM height identity and rank-two obstruction, and a separate
+weighted-phase carry observer splits each digit into a finite residue digit
+plus an uncontrolled integral coboundary; only its explicit finite-dimensional
+factorisation yields finite realised span
+([source](ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109)); #1041 isolates
 finite ray separation/root retention while a topology/gluing step is missing
 ([source](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)); and #1049
 rules out a literal `3/2` corridor while leaving irrationality open
@@ -119,7 +122,7 @@ Links name checked routes and limits; reductions are not solutions.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM frontier](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [quantitative separation bridge](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254): a sufficient, non-equivalent cofinal orbit-to-signed-margin reduction, with its supply open; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit the top edge.
 - [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — [tail equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean): irrationality iff cofinally nonintegral tail shifts under its checked recurrence; prime-tail bridge open.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
-- [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. Irrationality open.
+- [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. A separate [weighted-phase observer](ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109) splits a carry into finite residue and uncontrolled integral coboundary; finite realised span needs an explicit finite-dimensional factorisation. This source-only family proves no finite-state quotient or irrationality. Irrationality open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — [ray separation/root retention](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean): finite shifts avoid shared rays; strict margins keep roots in the open disc; decay is a checked hypothesis. Invalid saddle block leaves topology/gluing and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — [q-Apéry no-go](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean): n=0 residual < 0 for p>1; 3/2 corridor; 7/2 height bound; no irrationality, noncollapse, or remainder control.
 
