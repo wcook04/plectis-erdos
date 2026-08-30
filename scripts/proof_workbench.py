@@ -253,11 +253,16 @@ class Session:
         return f"m{len(self.moves()) + 1:03d}"
 
     def append(self, record: dict[str, Any]) -> dict[str, Any]:
-        with self.ledger_path.open("a", encoding="utf-8") as handle:
-            handle.write(
-                json.dumps(record, sort_keys=True, ensure_ascii=False)
-                + "\n"
-            )
+        try:
+            with self.ledger_path.open("a", encoding="utf-8") as handle:
+                handle.write(
+                    json.dumps(record, sort_keys=True, ensure_ascii=False)
+                    + "\n"
+                )
+        except (OSError, UnicodeError) as exc:
+            raise SystemExit(
+                f"cannot append workbench ledger {self.ledger_path}: {exc}"
+            ) from exc
         return record
 
 
@@ -303,7 +308,13 @@ def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     if session.exists():
         raise SystemExit(f"session already exists: {session.directory}")
-    session.probes_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        session.probes_dir.mkdir(parents=True, exist_ok=True)
+        session.ledger_path.touch()
+    except OSError as exc:
+        raise SystemExit(
+            f"cannot create workbench session {session.directory}: {exc}"
+        ) from exc
     record = {
         "schema": SESSION_SCHEMA,
         "move_id": "m001",
@@ -318,7 +329,6 @@ def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
             " kernel authority"
         ),
     }
-    session.ledger_path.touch()
     return session.append(record)
 
 

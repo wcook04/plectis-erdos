@@ -385,6 +385,53 @@ def check_probe_runner_failures() -> None:
         assert receipt["exit_code"] is None
 
 
+def check_session_storage_failures(tmp: Path) -> None:
+    blocked_root = tmp / "sessions-root-file"
+    blocked_root.write_text("not a directory\n", encoding="utf-8")
+    try:
+        workbench.cmd_open(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": blocked_root,
+                    "session": "blocked-root",
+                    "actor": "outsider",
+                    "intent": "storage boundary",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "cannot create workbench session" not in str(error):
+            raise AssertionError(f"blocked session root lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("session creation leaked a filesystem failure")
+
+    sessions_root = tmp / "append-failure-sessions"
+    session = workbench.Session(sessions_root, "append-failure")
+    session.directory.mkdir(parents=True)
+    session.ledger_path.touch()
+    real_open = workbench.Path.open
+
+    def fail_ledger_open(path: Path, *args, **kwargs):
+        if path == session.ledger_path:
+            raise PermissionError(13, "ledger storage denied")
+        return real_open(path, *args, **kwargs)
+
+    workbench.Path.open = fail_ledger_open
+    try:
+        try:
+            session.append({"schema": workbench.MOVE_SCHEMA, "move_id": "m001", "kind": "note"})
+        except SystemExit as error:
+            if "cannot append workbench ledger" not in str(error):
+                raise AssertionError(f"ledger append lacked a bounded diagnostic: {error}")
+        else:
+            raise AssertionError("ledger append leaked a filesystem failure")
+    finally:
+        workbench.Path.open = real_open
+
+
 def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
     real_runner = workbench.run_lean_probe
     calls: list[str] = []
@@ -599,6 +646,7 @@ def main() -> int:
         check_replay_path_boundary(tmp)
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
+        check_session_storage_failures(tmp)
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
         check_claim_gate(sessions_root, tmp)
