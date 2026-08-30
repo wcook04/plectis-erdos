@@ -331,6 +331,21 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "first_harmonic_pivot_decomposition",
+      "problem": 249,
+      "review_family": "first_harmonic_pivot_decomposition",
+      "claim_id": "first_harmonic_pivot_decomposition",
+      "contribution_class": "conditional reduction",
+      "original_declaration": "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation",
+      "original_source": "Erdos249257/FirstHarmonicPivot.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
+      "statement": "The exact first-harmonic pivot decomposition and its 9X/10 gap yield a finite certificate whenever the stated PivotBudgetAt bounds hold, and the cofinal pivot-residual-decorrelation socket implies irrationality of the binary totient series.",
+      "boundary": "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed.",
+      "canonical_claim_status": "supports_registered_claim_family:first_harmonic_pivot_decomposition",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "totient_carry_anti_compression",
       "problem": 249,
       "review_family": "totient_carry_anti_compression",
@@ -2368,7 +2383,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:dd4aa8eba2e1fd491437f59c1a74c597d544c25b3a601a687c60187578bc019e",
+    "digest": "sha256:7ffdc4ba468cfae8342780bc16f19e931ed170ab4f504b700cdcbe31b47bc42d",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2376,6 +2391,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:67116d872a78c50cf60bba466025b1e72ee827ed795baaab0710c12cd3c646c5",
-  "solution_source_digest": "sha256:039f8a5a9c6136615ceea9e18ce7f9f1348bfeaa744f7fb7d375cd47b8facbf7"
+  "config_digest": "sha256:cb6b298518b40349b977a16d13c47850cbae1cf7e17fdc06b40aad9c61005329",
+  "solution_source_digest": "sha256:066a3e5220d86f00d4ba706057bd731da517d247f1520b3742dc3428a5f5b38e"
 }

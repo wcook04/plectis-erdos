@@ -277,6 +277,22 @@ status:
       boundary: "The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open."
       comparator_declaration: "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
       literature_dependencies: []
+    - declaration: "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation"
+      file: "Erdos249257/FirstHarmonicPivot.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "supports_registered_claim_family:first_harmonic_pivot_decomposition"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "conditional reduction"
+      statement: "The exact first-harmonic pivot decomposition and its 9X/10 gap yield a finite certificate whenever the stated PivotBudgetAt bounds hold, and the cofinal pivot-residual-decorrelation socket implies irrationality of the binary totient series."
+      boundary: "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed."
+      comparator_declaration: "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"
+      literature_dependencies: []
     - declaration: "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
       file: "Erdos249257/TotientTailCarryPeriod.lean"
       sorry_count: 0
@@ -744,6 +760,11 @@ alignment:
       module: "Erdos249257/TotientActualLcmOrbitSeparation.lean"
       status: "proved"
       note: "The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open."
+    - source: "The exact first-harmonic pivot decomposition and its 9X/10 gap yield a finite certificate whenever the stated PivotBudgetAt bounds hold, and the cofinal pivot-residual-decorrelation socket implies irrationality of the binary totient series."
+      lean: "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation"
+      module: "Erdos249257/FirstHarmonicPivot.lean"
+      status: "proved"
+      note: "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed."
     - source: "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry has dyadic sections uniformly eventually periodic modulo its multiplier and canonical carry-section span dimension at least 2^e − 1 for every e."
       lean: "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
       module: "Erdos249257/TotientTailCarryPeriod.lean"
