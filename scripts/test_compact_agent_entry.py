@@ -68,6 +68,7 @@ def main() -> int:
         "--route erdos257_half_story",
         "--route browse_claim_status",
         'query_corpus.py --goal-support "<Lean or mathematical goal>"',
+        "proof_cockpit.py --format card",
         "check_cold_clone_comprehension.py --quick",
         "docs/orientation.json::agent_entry",
         "docs/publication_entry_packet.json",
@@ -136,6 +137,24 @@ def main() -> int:
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert "[`AGENTS.override.md`](AGENTS.override.md)" in readme
+
+    # These are public agent dependencies, not private conveniences. A prior
+    # deep entry referenced the writing skill even though no such file shipped
+    # in a cold clone; keep both native surfaces on disk and executable.
+    assert (ROOT / "skills/public-mathematical-writing/SKILL.md").is_file()
+    cockpit = ROOT / "scripts/proof_cockpit.py"
+    assert cockpit.is_file()
+    completed = subprocess.run(
+        [sys.executable, str(cockpit), "--format", "json"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stderr
+    cockpit_packet = json.loads(completed.stdout)
+    assert cockpit_packet["artifact_role"] == "cold_clone_proof_control_card"
+    assert cockpit_packet["corpus"]["problem_count"] == 8
 
     print(
         "compact agent entry: pass "
