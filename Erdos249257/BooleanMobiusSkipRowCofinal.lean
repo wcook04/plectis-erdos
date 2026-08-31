@@ -26,6 +26,30 @@ def CofinalPositiveHalfGreedySkips : Prop :=
       greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
         mersenneWeightRat c
 
+/-- Every finite rational half-greedy residual is strictly positive.  Weak
+nonnegativity comes from greedy subtraction; equality would make one half a
+finite positive Mersenne sum, contradicting the odd-denominator theorem. -/
+theorem greedyMersenneRemainderRat_half_pos (n : ℕ) :
+    0 < greedyMersenneRemainderRat (1 / 2 : ℚ) n := by
+  have hnonneg := greedyMersenneRemainderRat_nonneg_of_nonneg
+    (x := (1 / 2 : ℚ)) (by norm_num) n
+  apply lt_of_le_of_ne hnonneg
+  intro hzero
+  have hrem := greedyMersenneRemainderRat_eq_sub_finiteErdosSum
+    (1 / 2 : ℚ) n
+  rw [hzero] at hrem
+  have hsum :
+      finiteErdosSum (greedyMersennePrefixRat (1 / 2 : ℚ) n) 2 =
+        (1 / 2 : ℚ) := by
+    linarith
+  have hodd := finiteErdosSum_den_odd
+    (greedyMersennePrefixRat (1 / 2 : ℚ) n)
+    (zero_not_mem_greedyMersennePrefixRat (1 / 2 : ℚ) n)
+  rw [hsum] at hodd
+  obtain ⟨k, hk⟩ := hodd
+  norm_num at hk
+  omega
+
 /-- One positive rational-greedy skip supplies an actual exact local
 Mersenne half row. -/
 theorem exactLocalMersenneHalfRow_of_positiveHalfGreedySkip
@@ -75,5 +99,35 @@ theorem half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
   exact half_mem_mersenneAchievementSet_of_cofinalExactLocalRows
     (cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips hskips)
+
+/-- **Exact obstruction for the cofinal skipped-core route.**  The proposed
+cofinal positive-skip supply is not a weaker producer than half-membership:
+it is equivalent to the endpoint itself.  The reverse implication uses the
+general rational cofinal-skip characterization; strict positivity contributes
+no extra escape hatch because finite half-greedy residuals never vanish.
+
+This theorem does not prove either side and does not decide Erdős #257. -/
+theorem cofinalPositiveHalfGreedySkips_iff_half_mem :
+    CofinalPositiveHalfGreedySkips ↔
+      (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
+  constructor
+  · exact half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+  · intro hhalf N
+    have hhalf' :
+        ((((1 : ℚ) / 2 : ℚ) : ℝ)) ∈ mersenneAchievementSet := by
+      simpa using hhalf
+    have hcofinal :=
+      (rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips
+        ((1 : ℚ) / 2) (by norm_num)).mp hhalf'
+    obtain ⟨n, hn, hskipReal⟩ := hcofinal (max N 4)
+    have hskipRat :
+        ¬ mersenneWeightRat (n + 1) ≤
+          greedyMersenneRemainderRat (1 / 2 : ℚ) n := by
+      intro htakeRat
+      exact hskipReal
+        ((rational_greedy_take_iff_real ((1 : ℚ) / 2) n).mp htakeRat)
+    refine ⟨n + 1, by omega, ?_, ?_⟩
+    · simpa using greedyMersenneRemainderRat_half_pos n
+    · simpa using (lt_of_not_ge hskipRat)
 
 end Erdos249257
