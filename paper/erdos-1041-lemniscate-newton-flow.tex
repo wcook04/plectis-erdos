@@ -174,7 +174,7 @@ Ray separation of critical values & Checked (consumer form) & Endpoints of a fin
 Ray-collision locus & Checked & $\beta=(ra-b)/(1-r)$, $r>0$, $r\ne1$: one real parameter per pair. \\
 Quartic case & Cited & Proved in \cite[Thm.~1, p.~1]{june2026}; does not extend to general degree. \\
 Translated quartic quotient fibres & Ordinary theorem with a Lean-checked metric kernel & For $f(z)=P((z-h)^q)$, $P$ monic quartic and $q\ge2$; Pendyala supplies the quartic geometry, while Lean checks the root-lift density, exact primitive, and strict endpoint budget. \\
-Signed-moment cyclic tetranomials & Lean-checked two-root safe-spoke theorem & For a finite root family of $g(w)=w^m+aw^r+bw^s+c$, an exact signed $L^2$ moment budget selects two distinct roots whose complete spokes are safe; $|c|+|b||w|^s<1$ and $|b|+|c|\le1$ remain useful pointwise sufficient conditions. \\
+Signed-moment cyclic tetranomials & Lean-checked two-index safe-spoke theorem & For an indexed finite root family of $g(w)=w^m+aw^r+bw^s+c$, an exact signed $L^2$ moment budget selects two distinct indices whose complete spokes are safe; distinct root values require injectivity of the indexing map. \\
 Concyclic zeros with $2\rho^n\le1$ & Ordinary proof; finite exact and numerical checks & Distinct-root theorem; not Lean checked; the unrestricted concyclic case remains open. \\
 Unrestricted proof of \cite[Theorem~1, p.~1]{march2026} & Proof gap & Proposition~12 uses a false three-ended local saddle block; located publicly by Tao (25 March 2026), conceded by the author at statement level (26 March 2026).  No counterexample is exhibited. \\
 Constant-translation ray separation and root retention & Checked & After critical-value injectivity, arbitrary small ray avoidance and an explicit unit-disc margin. \\
@@ -317,8 +317,8 @@ Lean checks this factorization and the resulting strict spoke theorem under
 the exact weak exponent hypotheses $1\le s\le r\le m$; it also checks the
 coefficient-only corollary above.
 
-There is a stronger, genuinely two-root formal theorem.  Let $S$ be a finite
-family of roots, $N=|S|\ge2$, and
+There is a stronger, genuinely two-index formal theorem.  Let $S$ index a
+finite family of roots, $N=|S|\ge2$, and
 \[
   M=\sum_{i\in S}w_i^s.
 \]
@@ -338,7 +338,9 @@ $|c+bw_i^s|<1$ and $|c+bw_j^s|<1$.  Feeding those inequalities into the
 Abel decomposition proves, in Lean, that both complete root spokes lie
 strictly in $\{|g|<1\}$.  The signed cross term is essential: this interface
 can certify configurations outside the coefficient-only triangle
-$|b|+|c|\le1$.
+$|b|+|c|\le1$.  The formal hypotheses do not require $i\mapsto w_i$ to be
+injective, so distinct indices need not denote distinct root values; the
+ordinary two-root consequence requires a root enumeration without repetition.
 
 For $q\ge2$ and $f(z)=g((z-h)^q)$, the ordinary regular-fibre mean-square
 identity puts every quotient root inside the unit disk.  Lifting two selected
