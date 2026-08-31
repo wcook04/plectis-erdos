@@ -54,6 +54,14 @@ greater than $k$ times the four-jet target, some equal-jet selector pair has
 different remainders.  The required multiplicity bound for an actual
 $q$-Ap\'ery or Zudilin family is not proved.
 
+A distinct conditional improvement appears when the two endpoint coordinates
+are already Pl\"ucker-collinear modulo $2^S3^R$.  If the second coordinate of
+every tail row is a unit and every adjacent minor vanishes, then every pairwise
+minor vanishes.  A B\'ezout shear reduces the selector image from two residue
+coordinates to one, and the sufficient width drops from $2S+4R$ to $S+2R$.
+This is an exact halving of the ambient exponent budget under its hypotheses;
+the paper does not prove those hypotheses for an actual approximation family.
+
 At the rational base $3/2$ we also retain two earlier scoped arithmetic
 obstructions.  One quantitative result concerns an explicit
 rectangular two-function exponent model, whose threshold is no larger than the
@@ -129,8 +137,9 @@ irrationality at $3/2$, or supplies a method-wide obstruction.
 \externalreviewobject{The paper proves the sharp $2^{64}<3^{41}<2^{65}$
 certificate, its rectangular height and Hankel-charge consequences, the
 Zudilin scalar and scalar-plus-border no-go inequalities, the rank-$41$
-four-jet threshold with its unit-block optimality statement, and the abstract
-bounded-fibre escape theorem.  It also retains the exact rational-base tail
+four-jet threshold with its unit-block optimality statement, the abstract
+bounded-fibre escape theorem, and the conditional B\'ezout--Pl\"ucker reduction
+from the ambient $2S+4R$ selector width to $S+2R$.  It also retains the exact rational-base tail
 recurrence, the literal coordinatewise-clearing exclusion at $3/2$, and the
 earlier endpoint and Pad\'e arithmetic.}{These are exact scoped exclusions and
 finite counting theorems.  They do not supply a remainder-fibre bound for an
@@ -139,7 +148,8 @@ result; Problem~\#1049 remains open.}{A dedicated AdelicHeightBridge Comparator
 package binds the sharp power, height, charge, rank-$41$, and bounded-fibre
 interfaces.  A separate RationalBaseBarrier package binds the exact
 cleared-tail recurrence, its exponential forcing bound, and the literal
-coordinatewise-corridor exclusion at $3/2$.  Registration of either package
+coordinatewise-corridor exclusion at $3/2$.  A BezoutPluckerJets package binds
+the minor-propagation and halved-threshold family.  Registration of any package
 in the public portfolio is a separate release step.}
 
 The dedicated RationalBaseBarrier Comparator package exposes three parts of
@@ -468,7 +478,7 @@ local-to-Archimedean balance.  Section~\ref{sec:endpoints} proves the endpoint
 congruences at $(3,2)$, deduces from them and from
 Section~\ref{sec:primitive} that neither integer scalar content nor a common divisor
 of the two specialised evaluations supplies the targeted endpoint gain, gives the
-four-jet collision count, and records one further
+four-jet collision count and its conditional B\'ezout--Pl\"ucker compression, and records one further
 exclusion on Zudilin's scalar parameters.
 Sections~\ref{sec:corridor} and~\ref{sec:tail} return to the elementary
 clearing scheme and record what the residue $s^{n}$ costs there, first as an
@@ -1011,6 +1021,48 @@ $|A|\le |B|k$, contrary to the hypothesis.
 
 \noindent This finite escape principle is
 \lword{Erdos1049/AdelicHeightBridge.lean}{311}{exists_ne_map_eq_map_ne_of_card_mul_lt}{checked here}.
+
+\begin{theorem}[B\'ezout--Pl\"ucker tail collapse]
+\label{res:plucker-collapse}
+Let $R_0$ be a commutative ring and let $w_n=(A_n,B_n)\in R_0^2$.  Suppose
+that every $B_n$ is a unit and every adjacent minor vanishes:
+\[
+ A_nB_{n+1}-B_nA_{n+1}=0\qquad(n\ge0).
+\]
+Then every pairwise minor $A_iB_j-B_iA_j$ vanishes.  In particular, take
+$R_0=\Z/(2^S3^R)\Z$ with $R>0$.  If $S+2R\le k$, there are two distinct
+binary selectors $s,t\in\{0,1\}^{k}$ such that
+\[
+ \sum_{i<k}s_iw_i=\sum_{i<k}t_iw_i.
+\]
+Thus the sufficient width is $S+2R$, rather than the ambient two-coordinate
+width $2S+4R$.
+\end{theorem}
+
+\begin{proof}
+A unit second coordinate makes each row a unimodular anchor.  Vanishing of the
+next minor therefore writes the next row as a scalar multiple of the current
+one; induction places the entire tail on the line through $w_0$ and proves the
+pairwise-minor assertion.  A determinant-one B\'ezout shear sends $w_0$ to
+$(1,0)$, so all selector sums have only one free residue coordinate and occupy
+at most $2^S3^R$ values.  Finally
+\[
+ 2^S3^R<2^S4^R=2^{S+2R}\le2^k,
+\]
+and pigeonhole gives the two selectors.
+\end{proof}
+
+\noindent The minor propagation is
+\lword{Erdos1049/BezoutPluckerJets.lean}{191}{adjacent_det_zero_forces_all_det_zero}{kernel checked};
+the one-dimensional collision after a B\'ezout shear is
+\lword{Erdos1049/BezoutPluckerJets.lean}{145}{binary_row_collision_of_anchor_det_zero}{kernel checked};
+and the explicit $2$/$3$-depth endpoint is
+\lword{Erdos1049/BezoutPluckerJets.lean}{249}{zmod_binary_tail_collision_of_two_three_depth}{kernel checked}.
+This conditional theorem is stronger than the ambient four-jet count only
+after its minor-vanishing hypothesis has been established.  No such all-tail
+hypothesis is proved here for an actual $q$-Ap\'ery or Zudilin family, and the
+theorem says nothing about whether the resulting selector difference has
+nonzero analytic remainder.
 
 \noindent\textbf{Boundary.}
 Corollary~\ref{res:rankfortyone} is a sharp finite kernel statement at
@@ -1770,14 +1822,15 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 \section{Guide to the formal sources}\label{app:index}
 
 Each linked phrase opens its Lean declaration at the pinned source
-revision~\commitshort.  The declarations of this note live in six modules:
+revision~\commitshort.  The declarations of this note live in seven modules:
 \texttt{RationalBaseLambert}, \texttt{QAperyDiagonalNonEquivalence},
 \texttt{RationalPadeArithmetic}, \texttt{ZudilinConeArithmetic},
-\texttt{ZudilinHeightRegion}, and \texttt{HermitePadeNoGo}.  The first contains
+\texttt{ZudilinHeightRegion}, \texttt{HermitePadeNoGo}, and
+\texttt{BezoutPluckerJets}.  The first contains
 the corridor, cleared-tail recurrence, and elementary $7/2$ certificate; the
 second checks the finite $n=0$ diagonal residual; the remaining four separate
 the Pad\'e exponent arithmetic, endpoint arithmetic, logarithmic comparisons,
-and rectangular exponent model.  The link
+rectangular exponent model, and B\'ezout--Pl\"ucker tail collapse.  The link
 coordinates are validated against that pinned revision, so they remain correct
 as later work moves lines in the working tree.
 
