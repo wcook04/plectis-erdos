@@ -103,6 +103,11 @@ def check_live_input_surface() -> None:
         "scripts/query_corpus.py" not in relative,
         "dependency-index unexpectedly includes the query corpus",
     )
+    require(
+        "scripts/build_lean_dependency_index.py" not in relative
+        and "scripts/lean_fast_build.py" not in relative,
+        "operational wrapper churn invalidates the semantic projection receipt",
+    )
     semantic_identities = {
         identity for identity, _payload in builder.semantic_check_inputs()
     }
@@ -163,6 +168,17 @@ def check_cached_output_rejection() -> None:
             is None,
             "symlinked dependency-index cache output was accepted",
         )
+
+
+def check_tracked_cold_clone_receipt() -> None:
+    receipt = builder.load_cached_check(
+        receipt_path=builder.TRACKED_CHECK_RECEIPT,
+    )
+    require(receipt is not None, "tracked cold-clone receipt is stale")
+    require(
+        receipt["verification_posture"].startswith("tracked_receipt_from_full_"),
+        "tracked receipt lost its full-export provenance boundary",
+    )
 
 
 def check_safe_dependency_input_boundary() -> None:
@@ -316,6 +332,16 @@ def check_environment_build_is_bounded() -> None:
         "dependency-index environment contract drifted",
     )
 
+    for observed, expected in ((-15, 143), (143, 143)):
+        killed = builder.subprocess.CompletedProcess([], observed, "partial build\n")
+        with patch.object(builder, "run", return_value=killed):
+            try:
+                builder.ensure_elaborated_environment()
+            except SystemExit as exc:
+                require(exc.code == expected, "external signal exit was not preserved")
+            else:
+                raise AssertionError("external signal exit became a successful build")
+
 
 def main() -> int:
     check_safe_dependency_input_boundary()
@@ -323,6 +349,7 @@ def main() -> int:
     check_exact_receipt_contract()
     check_live_input_surface()
     check_cached_output_rejection()
+    check_tracked_cold_clone_receipt()
     check_receipt_uses_verified_snapshot()
     check_environment_build_is_bounded()
     print("lean dependency index cache: PASS")

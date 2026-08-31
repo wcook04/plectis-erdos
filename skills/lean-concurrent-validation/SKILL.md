@@ -31,7 +31,10 @@ inputs produce the same semantic key across clones on the same host; unrelated
 paper and README edits do not defeat reuse. One
 detached owner runs; followers consume the same in-flight or terminal receipt.
 Different Lean validations queue behind one `lean-host` resource lock, so a
-focused check cannot race a root check or another clone's build.
+focused check cannot race a root check or another clone's build. The resource
+lock lives in a host-wide namespace above the repository-specific receipt
+cache. This also lets an independent authoring checkout implement the same
+small filesystem protocol without importing private code into this repository.
 
 The owner also prepares `.lake/packages` through
 `scripts/lean_package_share.py`. The first compatible checkout publishes an
@@ -78,7 +81,11 @@ The JSON receipt contains the key. `status --key <key>` is read-only;
 `collect --key <key> --wait` is the explicit resume path. The `run` subcommand
 combines submit-or-join with collection. If an agent or terminal disappears,
 the detached owner continues. Reissuing the exact build command joins or
-reuses it; no person must recreate the build or supervise a retry loop.
+reuses it. If the host externally terminates a Lean child with SIGTERM or
+SIGKILL, the same owner automatically resumes the partial build up to three
+bounded attempts. Exhaustion becomes exit `75`, with the last signal exit kept
+in the receipt; it is never reported as a theorem failure. No person must
+recreate the build or supervise a retry loop.
 
 ## Storage and evidence boundary
 
@@ -86,6 +93,10 @@ The default state root is a repository-identity directory under the host's
 platform cache (`$XDG_CACHE_HOME`, `~/Library/Caches`, or `~/.cache`). This is
 what lets equivalent cold clones share. Set
 `VALIDATION_SINGLEFLIGHT_STATE_ROOT` only for deliberate isolation.
+The host-wide heavy-build mutex defaults to
+`<platform-cache>/plectis-lean/host-locks-v1/resource-lean-host.lock`; set
+`PLECTIS_LEAN_HOST_LOCK_ROOT` only when every cooperating process uses the
+same override.
 
 Persistent stdout and stderr retain bounded tails. Terminal state is cleaned
 automatically at most once per hour under the seven-day/one-GiB/ten-thousand-

@@ -6,8 +6,11 @@
 from __future__ import annotations
 
 import sys
+import tempfile
+from pathlib import Path
 
 from run_publication_mutations import (
+    clone_at_checkpoint,
     parse_check_count,
     resolve_commit,
     run_mutations,
@@ -46,6 +49,12 @@ def main() -> int:
     checkpoint = resolve_commit("HEAD")
     assert parse_check_count("check_release: all 5,207 checks passed") == 5207
     assert parse_check_count("failure across 4,920 checks") == 4920
+
+    with tempfile.TemporaryDirectory() as directory:
+        shared = clone_at_checkpoint(checkpoint, Path(directory))
+        alternates = shared / ".git" / "objects" / "info" / "alternates"
+        assert alternates.is_file()
+        assert alternates.read_text().strip()
 
     invalid = run_mutations(
         synthetic_manifest(1, checkpoint),

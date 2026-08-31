@@ -106,8 +106,11 @@ python3 scripts/lean_fast_build.py ErdosProblems.Erdos249.PeriodMultipleEscape
 Both commands automatically enter the tracked public singleflight scheduler.
 On one host, identical source/toolchain requests from separate clones join the
 same future, while different Lean validations serialize behind one heavy-build
-lock. State defaults to the platform cache directory under the public
-repository identity, not to the checkout. The cache retains bounded log tails
+lock. The heavy lock is host-wide and intentionally lives above any repository
+slug, so public cold clones and other cooperating Plectis checkouts queue before
+Lake starts rather than discovering contention through SIGTERM. State defaults
+to the platform cache directory under the public repository identity, not to
+the checkout. The cache retains bounded log tails
 and launches hourly terminal-state cleanup; it is disposable acceleration and
 never substitutes for the recorded Lake exit code. Lean keys cover every
 visible Lean source plus their toolchain and build
@@ -134,7 +137,12 @@ python3 scripts/validation_singleflight.py submit --class lean \
 
 `run` is the corresponding submit-or-join-and-collect command. A later caller
 with the same semantic key reuses the in-flight or completed receipt; no human
-retry is needed to preserve the detached owner.
+retry is needed to preserve the detached owner. If the host sends SIGTERM or
+SIGKILL, that owner resumes partial build output automatically for up to three
+attempts; exhaustion is recorded as deferred exit 75, not a theorem failure.
+`PLECTIS_LEAN_HOST_LOCK_ROOT` can relocate the cross-repository lock namespace
+for a container or CI worker; all cooperating processes on that host must use
+the same value.
 
 The module's `pureDyadicEndpointError_succ` identity gives the endpoint-error
 cocycle; `prime_forces_pureDyadicEndpointError_excursion` and

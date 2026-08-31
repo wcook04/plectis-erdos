@@ -538,9 +538,13 @@ python3 scripts/lean_fast_build.py --jobs 2
 The wrapper is the public concurrency boundary. Equivalent clean clones share
 one content-keyed validation future in the repository-scoped host cache;
 different Lean targets queue behind one `lean-host` owner instead of writing
-the same machine's build trees concurrently. The detached owner continues if
-an attached caller exits, completed output is bounded, and terminal state is
-cleaned automatically. Same-lock cold clones also receive independent
+the same machine's build trees concurrently. That heavy-owner lock is above
+the repository slug, allowing cooperating public and authoring checkouts to
+join the same pre-launch queue without sharing mutable build trees. The detached owner continues if
+an attached caller exits; externally killed Lean children automatically resume
+from partial output for up to three attempts, with exhaustion classified as
+deferred exit 75 rather than a theorem failure. Completed output is bounded,
+and terminal state is cleaned automatically. Same-lock cold clones receive independent
 copy-on-write `.lake/packages` trees from a host seed when the filesystem
 supports it; mutable cache directories are never symlinked. Set
 `VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an

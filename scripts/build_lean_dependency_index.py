@@ -28,6 +28,7 @@ SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
 CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
+TRACKED_CHECK_RECEIPT = ROOT / "docs" / "lean_dependency_index_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 # The global single-flight environment deliberately strips ambient PATH.  The
@@ -41,9 +42,7 @@ CHECK_INPUT_FILES = (
     "lakefile.toml",
     "lean-toolchain",
     "scripts/build_declaration_atlas.py",
-    "scripts/build_lean_dependency_index.py",
     "scripts/export_lean_dependency_edges.lean",
-    "scripts/lean_fast_build.py",
 )
 QUERY_CORPUS_DEPENDENCY_HELPERS = (
     "atlas_declarations",
@@ -297,26 +296,36 @@ def load_cached_check(
     *,
     root: Path = ROOT,
     output: Path = OUTPUT,
-    receipt_path: Path = CHECK_RECEIPT,
+    receipt_path: Path | None = None,
 ) -> dict[str, Any] | None:
-    """Return a receipt only when the verified inputs and output are exact."""
-    if not output.is_file() or not receipt_path.is_file():
-        return None
-    try:
-        receipt = json.loads(safe_dependency_text(receipt_path, root=None))
-    except (json.JSONDecodeError, OSError):
+    """Return a local or tracked receipt only for exact semantic inputs."""
+    if not output.is_file():
         return None
     try:
         content = safe_dependency_text(output, root=None)
     except UnsafeDependencyInput:
         return None
-    if not receipt_matches(
-        receipt,
-        input_fingerprint=check_input_fingerprint(root),
-        output_digest=sha256_text(content),
-    ):
-        return None
-    return receipt
+    input_fingerprint = check_input_fingerprint(root)
+    output_digest = sha256_text(content)
+    candidates = (
+        [receipt_path]
+        if receipt_path is not None
+        else [CHECK_RECEIPT, TRACKED_CHECK_RECEIPT]
+    )
+    for candidate in candidates:
+        if not candidate.is_file():
+            continue
+        try:
+            receipt = json.loads(safe_dependency_text(candidate, root=None))
+        except (json.JSONDecodeError, OSError, UnsafeDependencyInput):
+            continue
+        if receipt_matches(
+            receipt,
+            input_fingerprint=input_fingerprint,
+            output_digest=output_digest,
+        ):
+            return receipt
+    return None
 
 
 def write_check_receipt(
@@ -369,6 +378,18 @@ def ensure_elaborated_environment() -> None:
     )
     if completed.returncode:
         sys.stderr.write(completed.stdout)
+        if singleflight.is_external_termination_exit(completed.returncode):
+            signal_exit = (
+                128 + abs(completed.returncode)
+                if completed.returncode < 0
+                else completed.returncode
+            )
+            print(
+                "bounded Lean root build was externally terminated; "
+                f"preserving signal exit {signal_exit} for owner recovery",
+                file=sys.stderr,
+            )
+            raise SystemExit(signal_exit)
         raise RuntimeError(
             f"bounded Lean root build exited {completed.returncode}"
         )
@@ -395,6 +416,18 @@ def export_environment() -> tuple[
     if completed.returncode:
         sys.stderr.write(completed.stdout)
         sys.stderr.write(completed.stderr)
+        if singleflight.is_external_termination_exit(completed.returncode):
+            signal_exit = (
+                128 + abs(completed.returncode)
+                if completed.returncode < 0
+                else completed.returncode
+            )
+            print(
+                "Lean dependency exporter was externally terminated; "
+                f"preserving signal exit {signal_exit} for owner recovery",
+                file=sys.stderr,
+            )
+            raise SystemExit(signal_exit)
         raise RuntimeError(
             f"Lean dependency exporter exited {completed.returncode}"
         )
