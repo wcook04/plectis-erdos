@@ -119,6 +119,17 @@ only if $1/2\in\Ach$.  The proposed producer is therefore not a weaker local
 condition waiting for an estimate: it is an exact reformulation of the open
 endpoint.  This route-identification theorem proves neither side.
 
+The same greedy orbit has a sharper general dynamical form.  After rescaling
+the remainder to $y_N(x)=2^N r_N(x)$, the achievement set is exactly the set
+of nonnegative initial values whose orbit stays below the universal barrier
+$2$ at every rank.  For every nonnegative rational $q$, membership is
+equivalent to crossing the moving lower separatrix
+\[
+ 2y_N(q)<\frac{2^{N+1}}{2^{N+1}-1}
+\]
+beyond every cutoff.  In particular this is the source-current canonical
+$1/21$ frontier.  It does not prove that those crossings occur.
+
 For finite nonempty $F\subseteq\Npos$ at base $b\ge2$, let $D_F$ be the
 reduced denominator of $\sum_{n\in F}(b^n-1)^{-1}$.  The finite theorem is
 $\operatorname{ord}_{D_F}(b)=\lcm(F)$.  If $\lcm(F)\ge2$, then
@@ -162,9 +173,10 @@ while adjoining $1$ preserves irrationality and restores arbitrarily long
 base-$2$ opening blocks.  Since the squarefree values at every power-of-two
 base are jointly controlled by the literature, that failure is internal to a
 normalisation rather than to the value itself.  Finite support represents neither
-$1/2$ nor $1/21$: membership of the first is equivalent to unbounded greedy
-skips, and membership of the second to excluding one explicit fatal aligned
-branch whose eventual affine-supercapacity regime remains possible.  For
+$1/2$ nor $1/21$: membership of either rational target is equivalent to
+cofinal crossings of the exact scaled lower separatrix.  At $1/21$ the older
+fatal-aligned-branch coordinate remains an equivalent negative classification,
+and its eventual affine-supercapacity regime remains possible.  For
 $1/2$, membership would refute \#257, while non-membership would eliminate
 only this one candidate.  Tao--Ter\"av\"ainen's base-$2$
 prime-support theorem and Duverney--Tachiya's power-of-two squarefree theorem
@@ -1395,14 +1407,52 @@ already a Boolean expansion: the missing step is a proof that the relevant
 integer multiplicities can be converted into zero--one reciprocal-Mersenne
 digits without changing the value.
 
-\subsection{The canonical \texorpdfstring{$1/21$}{1/21} frontier}
+\subsection{The canonical scaled-greedy frontier at \texorpdfstring{$1/21$}{1/21}}
 
 The finite-support obstruction makes $1/21$ useful only if the infinite
 problem is stated in coordinates that retain the actual greedy orbit.  Let
 \[
  r_N=\operatorname{greedyMersenneRemainder}(1/21,N)
 \]
-be the real remainder after rank $N$, and let
+be the real remainder after rank $N$, put $y_N=2^Nr_N$, and set
+\[
+ c_{N+1}=\frac{2^{N+1}}{2^{N+1}-1}.
+\]
+The scaled recurrence is a nearly doubling map: it sends $y_N$ to
+$2y_N-c_{N+1}$ when $c_{N+1}\le2y_N$, and to $2y_N$ otherwise.  The latter is
+the exact lower branch, so rank $N+1$ is skipped precisely when
+$2y_N<c_{N+1}$.
+
+\begin{theorem}[scaled-greedy trap and rational lower separatrix]
+\label{res:scaled-greedy-trap}
+For every nonnegative real $x$, writing $y_N(x)=2^N
+\operatorname{greedyMersenneRemainder}(x,N)$,
+\[
+ x\in\Ach\quad\Longleftrightarrow\quad
+ y_N(x)<2\quad\hbox{for every }N.
+\]
+For every nonnegative rational $q$ this is also equivalent to
+\[
+ \forall K\ \exists N\ge K:\qquad
+ 2y_N(q)<\frac{2^{N+1}}{2^{N+1}-1}.
+\]
+In particular, $1/21\in\Ach$ if and only if its scaled greedy orbit crosses
+this moving lower separatrix beyond every cutoff.
+\end{theorem}
+
+\noindent The trap-set equality is
+\mword{Erdos249257/GreedyTrapDynamics.lean}{302}{mersenneAchievementSet_eq_scaledGreedyTrap}{kernel checked},
+the general rational criterion is
+\mword{Erdos249257/GreedyTrapDynamics.lean}{163}{rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally}{kernel checked},
+and its $1/21$ specialization is
+\mword{Erdos249257/GreedyTrapDynamics.lean}{283}{one_div_twentyOne_mem_iff_scaledLowerBranchCofinally}{kernel checked}.
+The hard direction uses the rational normal form: membership is equivalent to
+infinitely many omitted exponents, and a skip is exactly a lower-separatrix
+crossing.  This is an exact reformulation, not a proof that the crossings
+occur.  It asks for neither convergence nor a prescribed uniform bound.
+
+The quotient coordinate gives a complementary classification of what
+nonmembership would have to look like.  Let
 \[
  Q_N=\left\lfloor\frac{2^N}{21}\right\rfloor-P_N,
 \]
@@ -1413,7 +1463,8 @@ been removed.  These are not independent models: the formal source proves an
 exact identity relating $Q_N$, $2^Nr_N$ and a finite-prefix divisor tail
 (\mword{Erdos249257/BooleanMobiusCarry.lean}{2117}{twentyOneGreedyDefect_add_mod_div_eq_scaled_remainder_add_tail}{checked}).
 
-The sharper route works directly with the denominator-$21$ greedy orbit.
+A finer denominator-specific coordinate works directly with the
+denominator-$21$ quotient-greedy orbit.
 At even depth $2R$, write
 \[
  \begin{aligned}
@@ -1432,7 +1483,7 @@ skipped exponents (hence cofinite eventual selection), eventual
 quotient/rational-greedy alignment, and eventual occupation of every doubling
 block.
 
-\begin{theorem}[canonical quotient-greedy frontier at $1/21$]
+\begin{theorem}[fatal-branch quotient refinement at $1/21$]
 \label{res:one-over-twenty-one-frontier}
 The following statements hold.
 \begin{enumerate}
@@ -1495,7 +1546,12 @@ problem beside it.
 
 \begin{problem}[membership of 1/21 in the Mersenne achievement set]
 \label{prob:one-over-twenty-one-membership}
-Exclude the explicit fatal/cofinite/aligned branch $\mathcal F_{21}$.
+Prove cofinal crossings of the exact moving lower separatrix
+\[
+ 2\,\operatorname{scaledGreedyRemainder}(1/21,N)
+ <\operatorname{mersenneScale}(N+1).
+\]
+Equivalently, exclude the explicit fatal/cofinite/aligned branch $\mathcal F_{21}$.
 It is sufficient either to contradict the eventual permanent
 affine-supercapacity recurrence forced by that branch or to force an unbounded
 sequence of closed canonical quotient rows; neither sufficient route is
