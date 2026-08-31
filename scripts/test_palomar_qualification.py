@@ -80,6 +80,10 @@ def test_normal_and_optimised_checker_agree() -> None:
     assert "withheld_terminal_gates" not in normal
     assert normal["external_follow_on"]["performed"] == []
     assert "publication" in normal["external_follow_on"]["not_local_readiness_criteria"]
+    reconciliation_text = (ROOT / "docs" / "PALOMAR_POLICY_RECONCILIATION.json").read_text(
+        encoding="utf-8"
+    )
+    assert "operator_only" not in reconciliation_text
 
 
 def test_v04_profile_rejects_missing_source_relationship() -> None:

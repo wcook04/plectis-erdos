@@ -145,7 +145,7 @@
     "public_view": "https://data.palomar-registry.org/recent.json",
     "public_view_role": "read-only projection, not registry authority",
     "canonical_registry_role": "PalomarDatabase is private and is not available as a local submission authority",
-    "registration_action": "operator_only_not_performed"
+    "registration_action": "not_performed_external_follow_on"
   },
     "current_repository": {
       "remote": "https://github.com/wcook04/plectis-lean-erdos249-257",
