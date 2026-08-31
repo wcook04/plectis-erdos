@@ -11,6 +11,85 @@ eight problem-specific mathematical papers.
 **All eight problems remain open.** A formal reduction is not a solution, and
 a large finite computation does not change an infinite quantifier.
 
+For a command-free human first read, begin with
+[A reader's way in](HUMAN_ENTRY.md).
+
+## The experiment
+
+This repository is also an open experiment in agent-assisted mathematics. The
+aim is to let independent people and their agents work on genuinely hard open
+problems without losing the context, failed attempts, evidence, or credit when
+their work comes back.
+
+It was built initially by one undergraduate, without a lab, an institutional
+research team, or a dedicated compute allocation. The point of publishing the
+infrastructure is that nobody else should have to rebuild that fixed layer
+before they can add mathematics, compute, criticism, or a better tool.
+The companion paper,
+[From Spare Compute to Cumulative Mathematics](open-source-mathematics-strategy.pdf),
+sets out the production model, contribution protocol, attention funnel,
+precedents, credit policy, security boundary, and evaluation plan.
+
+- **Mathematicians** can inspect the exact [open questions and surviving
+  boundaries](docs/RESULTS.md), choose one, and contribute an argument,
+  reduction, correction, or counterexample.
+- **Lean users** can formalise a missing step, repair a statement, or check
+  whether the formal and informal claims agree.
+- **Compute hobbyists and agent builders** can clone the repository, point a
+  local coding agent at the agent entry file, and run a bounded route exposed
+  by the mathematicians and formal corpus. The agent can read the relevant
+  papers, query the corpus, run experiments, attempt Lean steps, and package
+  whatever it finds.
+- **Infrastructure contributors** can improve the agent workflow, navigation,
+  tests, reproducibility, governance, or contributor experience. An idea is
+  welcome even before it has an implementation.
+
+No agent needs access to a private workbench. The public clone contains the
+papers, formal source, problem graph, claim boundaries, checks, and return
+tools. A useful return does not have to solve a problem: a reproducible failed
+route, finite calculation, obstruction, correction, or better research tool
+can prevent the next contributor from starting again.
+
+The roles are deliberately different. Mathematicians and formalisation
+contributors design or review meaningful routes. Compute contributors run
+those routes and return candidate evidence; they are not asked to decide that
+an agent has proved an Erdős problem. Lean can check that source proves the
+formal statement written in it, but it cannot by itself establish that the
+statement has the intended meaning, is novel, or settles the original
+problem. Those questions require scarce human review and, eventually, the
+appropriate external mathematical community.
+
+```bash
+git clone https://github.com/wcook04/plectis-lean-erdos249-257.git
+cd plectis-lean-erdos249-257
+```
+
+Then ask any local coding agent:
+
+> Read `AGENTS.override.md`. Inspect the eight problem frontiers and their
+> papers. Choose one bounded published route that matches the tools available
+> here, work until its recorded stop condition, validate the result, and
+> prepare a candidate return with exact evidence, limitations, and credit. Do
+> not promote the claim beyond the evidence class that was actually checked.
+
+For an infrastructure idea, use the
+[architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml).
+For mathematical progress without a finished patch, use the
+[research-progress form](.github/ISSUE_TEMPLATE/research_progress.yml).
+Accepted work is recorded against exact public files, evidence, starting and
+accepted commits, and requested contribution roles. That record is used to
+generate the public contribution and recognition views; it does not turn
+activity into a score or acceptance into a mathematical claim.
+
+If a candidate survives replay, adversarial checking, statement reconciliation,
+and human triage, a mature Lean result can be packaged through Comparator and
+submitted to [Palomar](https://palomar-registry.org/), while a mathematical
+account can be taken to the [Erdős Problems](https://www.erdosproblems.com/)
+community and the relevant research audience. Palomar provides a durable
+formal record and automated checks, not human peer review or endorsement.
+This repository can prepare evidence for those external routes; it cannot
+declare community acceptance for itself.
+
 ## Start here
 
 If you are arriving as a reader, begin with
@@ -35,9 +114,9 @@ understand how the repository is organised, continue to the
 [workbench](docs/AGENT_WORKBENCH.md); those operational surfaces are not the
 human introduction.
 
-## Help advance the project
+## How contributed work comes back
 
-You can contribute on either of two first-class tracks:
+The repository has two first-class contribution tracks:
 
 - **Advance the mathematics:** take one bounded open frontier, return a proof,
   reduction, computation, counterexample, correction, or reproducible failed
@@ -46,15 +125,11 @@ You can contribute on either of two first-class tracks:
   navigation route, validation check, reproducibility tool, governance rule,
   or contributor experience.
 
-Start with a fork or clone. A finished patch is not required: use the
-[research-progress form](.github/ISSUE_TEMPLATE/research_progress.yml) for a
-mathematical finding or the
-[architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml)
-for an infrastructure idea. Accepted work is recorded against exact public
-paths and the contribution roles you supplied, so conceptualization,
-mathematics, software, validation, and writing credit survive later
-assimilation. The project publishes a provenance ledger and non-scalar
-recognition views rather than ranking people by activity.
+Open a focused pull request when you have a patch. If you only have a finding
+or idea, open the matching issue; maintainers can turn accepted substance into
+a tracked design note or research artifact without taking the originator's
+credit. Accepted receipts preserve conceptualization, mathematics, software,
+validation, and writing roles beside the exact paths that survive assimilation.
 
 Agents are welcome. The [compact agent entry](AGENTS.override.md) routes a
 cold clone through the papers, corpus queries, problem frontiers, validation,

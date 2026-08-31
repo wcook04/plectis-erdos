@@ -9,7 +9,8 @@
 # library. Every name here must appear exactly once in
 # docs/publication_contract.json.
 PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
-  cold-clone-to-proof-receipt erdos249-totient-reasoning-surface \
+  cold-clone-to-proof-receipt open-source-mathematics-strategy \
+  erdos249-totient-reasoning-surface \
   erdos257-mersenne-reasoning-surface \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-68-factorial-denominator-irrationality \

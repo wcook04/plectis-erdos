@@ -20,6 +20,23 @@ result, useful stopping point, or tooling improvement. The return says where
 the work began, what changed, what another person can check, what conclusion
 the evidence supports, and what remains unresolved.
 
+The default mathematical routes are designed or reviewed by mathematicians
+and formalisation contributors. A compute donor does not have to invent a
+research objective or decide whether an agent has solved a problem. They can
+run a bounded packet with an exact question, source neighbourhood, permitted
+experiment, expected evidence, and stop condition, then return what happened.
+
+An agent's `solution found` message remains an unreviewed candidate. The
+commons can replay it, ask independent contributors or agents to attack it,
+reconcile the formal and informal statements, and decide whether it deserves
+scarce specialist attention. A mature formal result may then be packaged with
+Comparator for [Palomar](https://palomar-registry.org/), and relevant
+mathematical work can be placed before the
+[Erdős Problems](https://www.erdosproblems.com/) community. Those are external
+routes. Palomar is a formal registry and automated filter rather than human
+peer review, and this repository cannot grant novelty, endorsement, or broad
+mathematical acceptance.
+
 There are two ways in. A person can open an ordinary pull request or a
 research-progress issue and describe the work in their own words. An agent or
 an experienced contributor can also attach the structured package produced by
@@ -36,6 +53,11 @@ The receipt and accepted artifact are ordinary tracked files, so older clones
 receive both when they update. A later correction points back to the earlier
 receipt instead of erasing it. The history therefore records who did what,
 what was known at the time, and what the work did not establish.
+
+Several independent contributions may make a candidate cheaper for an expert
+to inspect, but headcount is not evidence. The useful signal is legible work:
+independent replay, adversarial checking, repaired failure modes, a stable
+formal interface, and an exposition that a specialist can audit.
 
 Begin with the [human contributor guide](../../CONTRIBUTING.md). Read the
 [credit and stewardship policy](CREDIT_POLICY.md) when attribution matters.

@@ -15,7 +15,7 @@ SPDX-FileCopyrightText = "2026 Will Cook"
 SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
-path = ["erdos249-257-main-paper.pdf", "claim-faithful-publication-systems-paper.pdf", "cold-clone-to-proof-receipt.pdf", "erdos249-totient-reasoning-surface.pdf", "erdos257-mersenne-reasoning-surface.pdf", "erdos-68-factorial-denominator-irrationality.pdf", "erdos-249-binary-totient-series.pdf", "erdos-257-mersenne-support-subseries.pdf", "erdos-243-reciprocal-tail-rigidity.pdf", "erdos-251-prime-gap-dyadic-series.pdf", "erdos-269-three-prime-running-lcm.pdf", "erdos-1041-lemniscate-newton-flow.pdf", "erdos-1049-rational-base-lambert.pdf", ".github/banner.png"]
+path = ["erdos249-257-main-paper.pdf", "claim-faithful-publication-systems-paper.pdf", "cold-clone-to-proof-receipt.pdf", "open-source-mathematics-strategy.pdf", "erdos249-totient-reasoning-surface.pdf", "erdos257-mersenne-reasoning-surface.pdf", "erdos-68-factorial-denominator-irrationality.pdf", "erdos-249-binary-totient-series.pdf", "erdos-257-mersenne-support-subseries.pdf", "erdos-243-reciprocal-tail-rigidity.pdf", "erdos-251-prime-gap-dyadic-series.pdf", "erdos-269-three-prime-running-lcm.pdf", "erdos-1041-lemniscate-newton-flow.pdf", "erdos-1049-rational-base-lambert.pdf", ".github/banner.png"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 Will Cook"
 SPDX-License-Identifier = "CC-BY-4.0"

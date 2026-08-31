@@ -11,7 +11,9 @@ body:
         Tell us what you found in your own words. A proof correction, counterexample,
         failed route, clearer explanation, source correction, or reproducible tooling
         improvement can all be useful. If you have a branch or patch, link it. The
-        maintainers can record exact credit and history if the work is accepted.
+        maintainers can record exact credit and history if the work is accepted. If
+        an agent says it found a solution, report that as a candidate and show the
+        evidence; do not upgrade the claim on the agent's confidence alone.
   - type: textarea
     id: question
     attributes:
@@ -24,6 +26,20 @@ body:
     attributes:
       label: What did you find or change?
       description: Explain the result, correction, obstruction, or improvement in ordinary language.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_class
+    attributes:
+      label: What is the strongest evidence class reached so far?
+      description: Choose the narrowest accurate answer. This controls triage, not credit.
+      options:
+        - Unreviewed person or agent lead
+        - Reproducible finite computation
+        - Lean accepts the stated formal declaration
+        - Independent replay or adversarial check
+        - Qualified human mathematical review
+        - Correction, reference, exposition, or scoped negative result
     validations:
       required: true
   - type: textarea
@@ -53,4 +69,6 @@ body:
       label: Public-material confirmation
       options:
         - label: I have not included credentials, private correspondence, personal data, or unpublished material that should remain private.
+          required: true
+        - label: I understand that submission, reproducibility, or Lean acceptance does not by itself establish intended meaning, novelty, a solved Erdős problem, peer review, or community acceptance.
           required: true

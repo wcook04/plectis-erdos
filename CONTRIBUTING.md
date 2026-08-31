@@ -30,6 +30,24 @@ remains unresolved. If you have an observation but no finished patch, open a
 plain-language research-progress issue and write it in your own words. You do
 not need to learn the receipt format before telling us something useful.
 
+For compute contributions, begin with a bounded route exposed by the papers,
+claim registry, or agent entry. Those routes are authored or reviewed by
+mathematicians and formalisation contributors and should name the question,
+evidence class, and stopping condition. You may run them through Claude Code,
+Codex, Cursor, Antigravity, another agent harness, ordinary scripts, or your own
+reasoning. The runner is your choice; the returned evidence boundary is the
+shared contract.
+
+If an agent reports a solution, submit the source and evidence as a
+**candidate**, not as an established solution. Maintainers first replay it and
+try to break it. Lean acceptance establishes that the written formal
+declaration follows in the pinned environment; it does not by itself establish
+that the declaration means what was intended, is novel, settles the original
+problem, or has been accepted by mathematicians. Work that survives internal
+triage can be prepared for Comparator and Palomar and placed before the Erdős
+Problems community or another appropriate research audience. Those external
+routes do not transfer their authority back to a repository status field.
+
 ## What happens to returned work
 
 The issue or pull request keeps the public history of a proposed change. When

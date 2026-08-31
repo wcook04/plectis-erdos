@@ -163,6 +163,15 @@ focused builds and exact cache receipts avoid repeating unchanged work. Its
 dogfood session is evidence of acceptance and replay, not a proof of optimal
 reasoning or external novelty.
 
+`open-source-mathematics-strategy.tex` is the open-participation strategy. It
+explains how mathematicians, formalisation contributors, compute donors, agent
+builders, infrastructure contributors, and reviewers can share one public
+problem corpus without sharing proof authority. Its candidate-to-attention
+funnel routes mature formal work toward Comparator and Palomar and relevant
+mathematical work toward the Erdős Problems community, while leaving novelty,
+peer review, and community acceptance outside the repository. It reports no
+solved endpoint or measured discovery-rate improvement.
+
 ## Build
 
 ```sh

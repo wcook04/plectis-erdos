@@ -81,6 +81,26 @@
       ]
     },
     {
+      "id": "open_source_mathematics_strategy",
+      "title": "From Spare Compute to Cumulative Mathematics",
+      "artifact_class": "open_source_research_strategy",
+      "source_path": "paper/open-source-mathematics-strategy.tex",
+      "source_content_digest": "sha256:cd1181e31150836f38ac5c7e3d60bc0c0ff53e34f1949de1d70acf41e38b6b52",
+      "rendered_path": "open-source-mathematics-strategy.pdf",
+      "rendered_content_digest": "sha256:5304ec19c9773aeab615c4e947ef198097e27ea81f5c26c549f5cf74b4c9bc07",
+      "authority_posture": "authored_open_source_strategy_and_contribution_protocol_not_Lean_proof_authority_and_not_community_acceptance_authority",
+      "claim_scope": "A strategy and implemented-case paper for an open research commons that accepts compute, mathematical direction, architecture improvements, and review. It defines role-bounded contribution packets, a candidate-to-attention funnel, provenance-preserving adoption, and evaluation measures. All eight Erdős problems remain open; the paper reports no measured discovery-rate improvement, independent mathematical review, proof of optimal architecture, or community acceptance of a new mathematical result.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
+      "entry_route_id": "understand_open_source_research_strategy",
+      "validation": [
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/test_contribution_entry.py",
+        "python3 scripts/test_compact_agent_entry.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
       "id": "erdos_249_reasoning_record",
       "title": "The Binary Totient Series",
       "artifact_class": "mathematical_companion",
@@ -347,6 +367,43 @@
         "publication_artifact_id",
         "artifact",
         "digest",
+        "reading_route"
+      ]
+    },
+    {
+      "id": "understand_open_source_research_strategy",
+      "title": "Open participation, distributed compute, review, and credit",
+      "intent": "Understand how an outside mathematician, formaliser, compute donor, agent builder, infrastructure contributor, or reviewer can add useful work without receiving authority to declare a proof or community acceptance.",
+      "discovery_terms": [
+        "open source mathematics strategy",
+        "contribute spare compute",
+        "run an agent on an Erdős problem",
+        "improve the research architecture",
+        "how are contributors credited",
+        "what happens if an agent claims a solution"
+      ],
+      "read": [
+        "README.md",
+        "paper/open-source-mathematics-strategy.tex",
+        "CONTRIBUTING.md",
+        "docs/research-commons/CREDIT_POLICY.md",
+        "docs/research-commons/README.md",
+        "docs/publication_contract.json"
+      ],
+      "query_steps": [
+        "python3 scripts/query_corpus.py --publication-artifact open_source_mathematics_strategy",
+        "python3 scripts/query_corpus.py --artifact open-source-mathematics-strategy.pdf"
+      ],
+      "authority_owners": [
+        "paper/open-source-mathematics-strategy.tex",
+        "docs/research-commons/README.md",
+        "docs/publication_contract.json"
+      ],
+      "adjacent_handle_classes": [
+        "publication_artifact_id",
+        "artifact",
+        "contribution_track",
+        "evidence_class",
         "reading_route"
       ]
     }
