@@ -23,6 +23,7 @@ import ErdosProblems.Skip.LadderT67
 import ErdosProblems.Erdos68.GapScalarNormalForm
 import ErdosProblems.Erdos68.PrimeThresholdParity
 import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
+import ErdosProblems.Erdos243.RepairEntropy
 
 /-!
 # Problem-centric Erdős research library
