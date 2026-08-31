@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #243's cancellation and feedback interfaces
 % advance independently of the corpus default.
-\renewcommand{\commit}{63a7f05c17da22556344c74f871bbf34f0c1ede6}
-\renewcommand{\commitshort}{63a7f05c17da}
+\renewcommand{\commit}{c55323931665f57dcf4600a674696e2ee10042bc}
+\renewcommand{\commitshort}{c55323931665}
 \hypersetup{
   pdftitle={Excluding the bounded negative part: Lean-checked rigidity for Erdős Problem 243},
   pdfsubject={Erdős Problem Notes: Problem 243},
@@ -78,6 +78,18 @@ recurrence is recovered
       {the finite-negative-mass recovery theorem}.
 The summability hypothesis is not supplied for the canonical Erd\H{o}s orbit,
 so this remains conditional and does not prove reciprocal-tail irrationality.
+
+For dynamically reduced recovery intervals we also prove an exact
+repair-entropy inequality.  If a family of old moduli is deleted during a
+length-$L$ recovery, then the square of its transversal least common multiple
+is charged against the same finite product that controls the recovery:
+\[
+ K^L\lcm(m_q:q\in R)^2<(K+1)^L.
+\]
+Thus independently repaired moduli have a quantitative cardinality bound, and
+normalised vanishing forces every sufficiently late recovery of a fixed length
+to be cancellation-free.  This does not exclude recoveries whose lengths tend
+to infinity; that escape is the remaining obstruction.
 
 The one-sided boundary is unconditional and simpler: when the centred error is
 natural-valued, the update law makes the tail state nonincreasing, so it
@@ -1387,6 +1399,61 @@ Since $D_n=D_0\prod_{j<n}a_j$, the quotient is integral and
 $M_nL_n=D_n$.  It records the multiplicity lost when the full product scale
 is compressed to an LCM.
 
+\subsection{Repair entropy across a recovery}
+
+The cumulative quotient does not by itself distinguish one large deletion
+from many small ones.  The reduced recurrence does.  Let $u,h,c:\N\to\N$ and
+$e:\N\to\Z$ satisfy
+\[
+ h_nu_{n+1}=u_n-e_n,
+ \qquad u_n>0,
+ \qquad h_n>0.
+\]
+Fix $K,r,L\in\N$ with $K,L>0$, assume
+\[
+ K|e_{r+i}|<u_{r+i}\quad(0\le i<L),
+ \qquad u_r\le u_{r+L},
+\]
+and let $R$ be a finite family of moduli.  Suppose every $m_q$, $q\in R$,
+divides the deletion product $\prod_{r\le n<r+L}c_n$, and that
+$c_n^2\mid h_n$ throughout the interval.  Then
+\begin{equation}\label{eq:repair-entropy}
+ K^L\lcm(m_q:q\in R)^2<(K+1)^L.
+\end{equation}
+This is the
+\lword{Erdos243/RepairEntropy.lean}{48}
+      {repairedFamily_recovery_energy_divisionFree}
+      {repair-entropy conservation law}.
+
+The square in~\eqref{eq:repair-entropy} is the key point.  Exact denominator
+reduction charges $c_n^2$ to the scale growth, so a repaired family whose LCM
+is at least $2^{|R|}$ satisfies
+\[
+ K^L4^{|R|}<(K+1)^L.
+\]
+The formal consequence is
+\lword{Erdos243/RepairEntropy.lean}{78}
+      {repaired_card_bound_of_independent}
+      {the independent-repair cardinality bound}.
+It rules out positive-density deletion of independent old moduli inside
+recoveries with a fixed relative-error budget.
+
+There is also an endpoint that does not mention a chosen modulus family.  If
+$K|e_n|<u_n$ eventually for every $K$, then for each fixed $L>0$ there is an
+$N$ such that every recovery $u_r\le u_{r+L}$ with $r\ge N$ satisfies
+\[
+ \prod_{0\le i<L}h_{r+i}=1.
+\]
+Thus a surviving nontrivial reset must have recovery length tending to
+infinity.  Lean checks this as
+\lword{Erdos243/RepairEntropy.lean}{107}
+      {eventually_recoveryPayment_eq_one_of_fixedLength}
+      {eventual disappearance of fixed-length reset payments}.
+The theorem does not bound a recovery length that varies with $r$, nor does it
+supply a lower bound for the LCM of the moduli repaired in such an interval.
+Those are the missing inputs needed to turn~\eqref{eq:repair-entropy} into a
+global contradiction.
+
 \begin{problem}[global overlap-height growth]\label{res:lcmheight}
 For every nonterminal canonical orbit satisfying Problem~\ref{res:problem},
 must
@@ -1535,7 +1602,8 @@ Each linked phrase opens its Lean declaration at the pinned source
 revision~\commitshort.  The state system, the exclusions, the barrier, and the
 bounded-negative-part theorem are in \texttt{ReciprocalTailRigidity.lean}; the
 finite-negative-mass theorem is in \texttt{SparseResetRecovery.lean}; and the
-residue reduction of Appendix~\ref{app:residue} is in
+repair-entropy inequalities are in \texttt{RepairEntropy.lean}.  The residue
+reduction of Appendix~\ref{app:residue} is in
 \texttt{FiniteHorizonResidue.lean}.  Three distinctions are worth carrying into
 the source.  The
 identification of any of these modules with reciprocal tails is the exposition
@@ -1600,6 +1668,9 @@ absorption of a vanishing centred state & \lrefx{Erdos243/ReciprocalTailRigidity
 contrapositive along a tail & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2248}{eventually_nonzero_of_zero_absorbing}\\
 bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2265}{boundedNegativePart_eventually_zero}\\
 eventual bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2352}{eventuallyBoundedNegativePart_eventually_zero}\\
+repair-entropy conservation & \lrefx{Erdos243/RepairEntropy.lean}{48}{repairedFamily_recovery_energy_divisionFree}\\
+independent-repair bound & \lrefx{Erdos243/RepairEntropy.lean}{78}{repaired_card_bound_of_independent}\\
+fixed-length reset disappearance & \lrefx{Erdos243/RepairEntropy.lean}{107}{eventually_recoveryPayment_eq_one_of_fixedLength}\\
 forced numerator & \lrefx{Erdos243/FiniteHorizonResidue.lean}{22}{forcedNumerator}\\
 polynomial congruence & \lrefx{Erdos243/FiniteHorizonResidue.lean}{26}{forcedNumerator_modEq}\\
 exact-division cancellation & \lrefx{Erdos243/FiniteHorizonResidue.lean}{41}{quotient_modEq_of_modEq_mul}\\
