@@ -205,11 +205,14 @@ def safe_output_text(
 
 
 def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
-    """Run dependency-bootstrap commands without ambient state or hangs."""
+    """Run Lean dependency commands in the bounded validation time domain."""
     environment = singleflight.command_environment()
     environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
     kwargs["env"] = environment
-    kwargs.setdefault("timeout", singleflight.GIT_COMMAND_TIMEOUT_SECONDS)
+    # Both callers elaborate Lean state. A cold runner can legitimately take
+    # longer than the short timeout used for metadata-only Git queries, so keep
+    # them inside the same bounded worker budget as the validation owner.
+    kwargs.setdefault("timeout", singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS)
     return subprocess.run(*args, **kwargs)
 
 
