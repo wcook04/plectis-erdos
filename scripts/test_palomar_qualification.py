@@ -74,8 +74,12 @@ def test_normal_and_optimised_checker_agree() -> None:
     assert optimised.returncode == 0, optimised.stdout + optimised.stderr
     assert json.loads(optimised.stdout) == normal
     assert normal["ok"] is True
-    assert normal["decision"] == "NOT_READY"
+    assert normal["decision"] == "READY"
     assert normal["structural_deficits"] == []
+    assert "operator_only_gates" not in normal
+    assert "withheld_terminal_gates" not in normal
+    assert normal["external_follow_on"]["performed"] == []
+    assert "publication" in normal["external_follow_on"]["not_local_readiness_criteria"]
 
 
 def test_v04_profile_rejects_missing_source_relationship() -> None:

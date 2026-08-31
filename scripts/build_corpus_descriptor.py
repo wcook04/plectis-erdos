@@ -295,7 +295,9 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "id": route["id"],
             "read": route["read"],
         }
-        if route.get("title"):
+        # Mathematical programme titles already live in the adjacent compact
+        # programme index. Do not repeat them in the route list.
+        if route.get("title") and route.get("route_kind") != "mathematical_programme":
             row["title"] = route["title"]
         reading_routes.append(row)
     mathematical_programmes = [
@@ -391,19 +393,20 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "rendered_paper_boundary": "python3 scripts/check_rendered_paper_boundary.py",
         },
         "queries": {
-            "summary": "python3 scripts/query_corpus.py --format card",
-            "claim": "python3 scripts/query_corpus.py --claim <claim_id>",
-            "claim_status": "python3 scripts/query_corpus.py --status <claim_status> [--limit 1..100]",
-            "paper_label": "python3 scripts/query_corpus.py --paper-label <TeX_label>",
-            "paper_anchor": "python3 scripts/query_corpus.py --paper-anchor <TeX_label_or_source_ref>",
-            "open_proposition": "python3 scripts/query_corpus.py --open <remaining_open.id>",
-            "declaration": "python3 scripts/query_corpus.py --declaration <Lean_name>",
-            "source_coordinate": "python3 scripts/query_corpus.py --source <module.lean:line>",
-            "artifact_or_digest": "python3 scripts/query_corpus.py --artifact <path_or_sha256>",
-            "module": "python3 scripts/query_corpus.py --module <path_or_id_or_paper_sigil>",
-            "reading_route": "python3 scripts/query_corpus.py --route <route_id>",
-            "mathematical_programme": "python3 scripts/query_corpus.py --route <programme_route_id>",
-            "search": "python3 scripts/query_corpus.py --search <text> [--limit 1..100]",
+            "command": "python3 scripts/query_corpus.py",
+            "selectors": {
+                "summary": "--format card",
+                "claim": "--claim <claim_id>",
+                "claim_status": "--status <claim_status> [--limit 1..100]",
+                "paper_anchor": "--paper-anchor <label_or_source_ref>",
+                "open_proposition": "--open <remaining_open.id>",
+                "declaration": "--declaration <Lean_name>",
+                "source_coordinate": "--source <module.lean:line>",
+                "artifact_or_digest": "--artifact <path_or_sha256>",
+                "module": "--module <path_or_id_or_paper_sigil>",
+                "route": "--route <route_or_programme_id>",
+                "search": "--search <text> [--limit 1..100]",
+            },
         },
         "external_registration": {
             "path": "docs/corpus_descriptor.json",
@@ -729,6 +732,8 @@ def render_readme_scale_strip(
 def replace_readme_scale_strip(readme: str, replacement: str) -> str:
     start = readme.find(README_SCALE_BEGIN)
     end = readme.find(README_SCALE_END)
+    if start < 0 and end < 0:
+        return readme
     if start < 0 or end < 0 or end < start:
         raise ValueError("README corpus-at-a-glance generated-region markers are missing")
     end += len(README_SCALE_END)
@@ -753,6 +758,8 @@ def render_readme_principal_declaration_anchors(orientation: dict[str, Any]) -> 
 def replace_readme_principal_declaration_anchors(readme: str, replacement: str) -> str:
     start = readme.find(README_PRINCIPAL_BEGIN)
     end = readme.find(README_PRINCIPAL_END)
+    if start < 0 and end < 0:
+        return readme
     if start < 0 or end < 0 or end < start:
         raise ValueError("README principal-declaration generated-region markers are missing")
     end += len(README_PRINCIPAL_END)

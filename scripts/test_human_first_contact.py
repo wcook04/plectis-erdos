@@ -8,6 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HUMAN_ENTRY = ROOT / "HUMAN_ENTRY.md"
 
 
 def require(condition: bool, message: str) -> None:
@@ -19,8 +20,30 @@ def words(text: str) -> list[str]:
     return re.findall(r"[A-Za-z0-9][A-Za-z0-9'’+#./−≥≤]*", text)
 
 
+def authored_prose_blocks(text: str) -> list[str]:
+    """Return ordinary prose blocks, excluding metadata and navigation syntax."""
+    blocks: list[str] = []
+    for raw in re.split(r"\n\s*\n", text):
+        lines = [
+            line.strip()
+            for line in raw.splitlines()
+            if line.strip() and not line.lstrip().startswith("<!--")
+        ]
+        if not lines or lines[0].startswith("#"):
+            continue
+        if any(
+            line.startswith(("- ", "* ", "+ ", "> ", "|"))
+            or re.match(r"\d+[.)]\s", line)
+            for line in lines
+        ):
+            continue
+        blocks.append(" ".join(lines))
+    return blocks
+
+
 def main() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    human_entry = HUMAN_ENTRY.read_text(encoding="utf-8")
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
     docs_index = (ROOT / "docs/README.md").read_text(encoding="utf-8")
 
@@ -42,9 +65,63 @@ def main() -> None:
         "AGENTS.override.md" in readme and "docs/AGENT_WORKBENCH.md" in readme,
         "README must route agents to the separate workbench",
     )
+    first_screen = readme.split("## What is here", 1)[0]
+    require(
+        "[A reader's way in](HUMAN_ENTRY.md)" in first_screen,
+        "README does not lead human readers to the prose-first entry",
+    )
+    require(
+        not re.search(r"(?m)^\|.+\|$", first_screen),
+        "README first screen uses a routing table instead of prose",
+    )
     require(
         "query_semantic.py" not in readme and "--publication-architecture" not in readme,
         "README exposes machine drilldowns that belong in agent documentation",
+    )
+
+    human_words = words(human_entry)
+    prose_blocks = authored_prose_blocks(human_entry)
+    prose_word_count = sum(len(words(block)) for block in prose_blocks)
+    require(
+        450 <= len(human_words) <= 1_200,
+        "HUMAN_ENTRY must be a substantial but bounded prose introduction",
+    )
+    require(
+        len(prose_blocks) >= 10 and prose_word_count / len(human_words) >= 0.9,
+        "HUMAN_ENTRY is not predominantly authored explanatory prose",
+    )
+    require(
+        len(words(prose_blocks[0])) >= 35,
+        "HUMAN_ENTRY does not explain the project before routing the reader",
+    )
+    require("All eight problems remain open" in human_entry, "human entry blurs the open boundary")
+    require(
+        "Comparator" in human_entry and "Palomar" in human_entry,
+        "human entry does not explain the two public review surfaces",
+    )
+    require("AGENTS.override.md" not in human_entry, "human entry leaks the agent router")
+    require("python3 " not in human_entry, "human entry exposes shell commands")
+    require("scripts/" not in human_entry, "human entry exposes implementation paths")
+    require("```" not in human_entry, "human entry contains a code block")
+    require(
+        not re.search(r"(?m)^\|.+\|$", human_entry),
+        "human entry contains a machine-like routing table",
+    )
+    require(
+        not re.search(r"(?<![A-Za-z])--[a-z][a-z0-9-]*", human_entry),
+        "human entry exposes command-line flags",
+    )
+    require(
+        not re.search(r"\b(?:route|claim|problem|statement|family)_id\b", human_entry),
+        "human entry exposes machine-readable identifiers",
+    )
+    require(
+        not re.search(
+            r"(?i)(?:^|[\s(])(?:[\w.-]+/)+[\w.-]+|"
+            r"\b[\w-]+\.(?:json|py|lean|toml|ya?ml)\b|::",
+            human_entry,
+        ),
+        "human entry exposes implementation coordinates instead of explaining them",
     )
 
     paper_slugs = (

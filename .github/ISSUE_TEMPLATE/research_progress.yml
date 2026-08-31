@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Research progress or correction
+description: Share useful work in ordinary language; no receipt or command output is required.
+title: "[research progress] "
+labels: ["research-return"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tell us what you found in your own words. A proof correction, counterexample,
+        failed route, clearer explanation, source correction, or reproducible tooling
+        improvement can all be useful. If you have a branch or patch, link it. The
+        repository can turn accepted work into a provenance-and-credit receipt later.
+  - type: textarea
+    id: question
+    attributes:
+      label: What question or problem were you working on?
+      description: Name the Erdős problem, paper, proof, or repository issue if you know it.
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: What did you find or change?
+      description: Explain the result, correction, obstruction, or improvement in ordinary language.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What can another person inspect or replay?
+      description: Link a branch, pull request, patch, source, calculation, or describe how you checked it.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: What remains unresolved or uncertain?
+      description: State assumptions, limits, failed checks, or questions that survive.
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: How should we credit you?
+      description: Give the name or handle you want attached to accepted work.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_material
+    attributes:
+      label: Public-material confirmation
+      options:
+        - label: I have not included credentials, private correspondence, personal data, or unpublished material that should remain private.
+          required: true

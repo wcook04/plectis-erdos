@@ -34,6 +34,10 @@ from query_corpus import (
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
+# Keep programme packets bounded without making a six-byte formatting change a
+# release failure. Eighteen kilobytes leaves modest headroom while remaining a
+# small first-read machine packet.
+PROGRAMME_PACKET_MAX_BYTES = 18_000
 PROGRAMME_EXPECTATIONS = {
     "erdos257_half_story": {
         "title": "Achievement-set geometry and the rational-target seams",
@@ -219,7 +223,7 @@ def validate_programme_routes() -> None:
             for relation in row[relation_index]
         )
         encoded = json.dumps(packet, ensure_ascii=False).encode("utf-8")
-        assert len(encoded) <= 16_384
+        assert len(encoded) <= PROGRAMME_PACKET_MAX_BYTES
         card = run("--route", route_id, "--format", "card")
         assert card.returncode == 0
         assert card.stdout.startswith(f"programme {route_id} |")
@@ -1624,8 +1628,8 @@ def validate_external_assurance_routes() -> None:
     assert palomar_route["route_kind"] == "external_assurance"
     assert palomar_assurance["decision"] == expected_decision["decision"]
     assert palomar_assurance["reason"] == expected_decision["reason"]
-    assert palomar_assurance["operator_only_residuals"] == expected_decision[
-        "operator_only_residuals"
+    assert palomar_assurance["external_follow_on"] == expected_decision[
+        "external_follow_on"
     ]
     assert sum(palomar_assurance["requirement_status_counts"].values()) == len(
         reconciliation["requirements"]

@@ -75,6 +75,8 @@ REPRODUCIBILITY_ENV = (
 REQUIRED_COMMANDS = (
     "python3 scripts/test_research_return_workflow.py",
     "python3 -O scripts/test_research_return_workflow.py",
+    "python3 scripts/test_contribution_entry.py",
+    "python3 -O scripts/test_contribution_entry.py",
     "python3 scripts/test_research_contribution_recognition.py",
     "python3 -O scripts/test_research_contribution_recognition.py",
     "python3 scripts/check_research_contribution_recognition.py",

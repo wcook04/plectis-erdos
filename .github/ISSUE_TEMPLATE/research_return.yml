@@ -1,15 +1,18 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-name: Public research return
-description: >-
-  Return a bounded checked, negative, inconclusive, or corrective result with
-  its public evidence.
+name: Structured research return
+description: Agent or advanced route for a replayable, machine-validated research package.
 title: "[research return] "
 labels: ["research-return"]
 body:
   - type: markdown
     attributes:
       value: |
+        This is the structured route for agents and contributors who already
+        have a return package. To share useful work in ordinary language, use
+        the [research progress or correction form](research_progress.yml)
+        instead; the repository can produce the receipt during assimilation.
+
         Use this form for a public return from a cited repository generation.
         For the complete field-by-field contract, copy
         `docs/research-commons/RETURN_PACKAGE_TEMPLATE.md`. Do not include

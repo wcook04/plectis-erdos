@@ -13,14 +13,27 @@ a large finite computation does not change an infinite quantifier.
 
 ## Start here
 
-| If you want to… | Read… |
-|---|---|
-| Understand the mathematics and its limits | [Results and open boundaries](docs/RESULTS.md) |
-| Choose one of the eight problem papers | [The paper table below](#the-eight-problem-papers) |
-| Check scope, attribution, or prior work | [Scope](SCOPE.md) and [prior art](docs/PRIOR_ART.md) |
-| Trace a public claim into Lean | [Source map](docs/SOURCE_MAP.md) and [verification dossier](docs/EXTERNAL_VERIFICATION.md) |
-| Understand the documentation or contribute | [Documentation guide](docs/README.md) and [architecture and repository guide](ARCHITECTURE.md) |
-| Work on the repository as an agent | [Compact agent entry](AGENTS.override.md) |
+If you are arriving as a reader, begin with
+[A reader's way in](HUMAN_ENTRY.md). It explains what the project is trying
+to do, what the formal work can and cannot tell you, and how to choose a
+mathematical thread without first learning the repository's internal
+machinery.
+
+The [results and open boundaries](docs/RESULTS.md) give a fuller mathematical
+account. The papers below are the main reading objects, and the
+[scope](SCOPE.md) and [prior-art guide](docs/PRIOR_ART.md) explain the limits
+and attribution around them. Readers who want to trace a claim into Lean can
+use the [source map](docs/SOURCE_MAP.md) and
+[verification dossier](docs/EXTERNAL_VERIFICATION.md).
+
+If you want to contribute, the [human contributor guide](CONTRIBUTING.md)
+explains how work from a clone comes back with provenance and credit. To
+understand how the repository is organised, continue to the
+[documentation guide](docs/README.md) and
+[architecture and repository guide](ARCHITECTURE.md). Coding agents have a separate
+[compact entry](AGENTS.override.md) and
+[workbench](docs/AGENT_WORKBENCH.md); those operational surfaces are not the
+human introduction.
 
 ## What is here
 

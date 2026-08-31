@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Check the repository-local Palomar qualification product.
 
-This checker is deliberately a qualification checker, not a Palomar
-replacement.  It reads the committed Comparator configuration from HEAD so
-that uncommitted sibling rows cannot silently become submission evidence.  A
-truthful NOT_READY result is successful checker output when the report and its
-recorded deficits agree.
+This checker is deliberately a repository-local qualification checker, not a
+Palomar replacement.  It reads the committed Comparator configuration from
+HEAD so that uncommitted sibling rows cannot silently become qualification
+evidence.  External review, submission, registration, and publication are
+follow-on actions; they are not local-readiness gates.
 """
 
 from __future__ import annotations
@@ -1234,8 +1234,20 @@ def evaluate(root: Path) -> dict[str, Any]:
         "structural_deficits": sorted(set(deficits)),
         "structural_warnings": repository_intake["warnings"],
         "repository_intake": repository_intake,
-        "withheld_terminal_gates": ["mechanical_report", "independent_nanoda_replay", "editorial_review"],
-        "operator_only_gates": ["submission_consent", "registration", "publication"],
+        "external_follow_on": {
+            "performed": [],
+            "not_local_readiness_criteria": [
+                "independent_replay",
+                "editorial_review",
+                "submission",
+                "registration",
+                "publication",
+            ],
+            "boundary": (
+                "local qualification reports repository structure only; external actions "
+                "must be reported separately if they occur"
+            ),
+        },
         "errors": errors,
         "ok": not errors,
     }

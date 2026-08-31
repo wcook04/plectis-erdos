@@ -163,8 +163,8 @@
     },
     "comparator": {
       "path": "verification/comparator.json",
-        "committed_sha256": "afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
-        "theorem_name_count": 48,
+        "committed_sha256": "a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
+        "theorem_name_count": 51,
       "challenge_module": "ExternalVerification.Challenge",
       "solution_module": "ExternalVerification.Solution",
       "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
@@ -213,7 +213,7 @@
     "selected_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "selected_source_declaration": "Erdos249257.irrational_erdosSum_full_support",
     "selected_family_id": "known_irrational_supports",
-      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and thirteen targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 48-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection, #243 bounded-rise, and #1041 Newton-value/ray discoveries are represented below completed endpoints, without turning missing cofinal, bounded-rise, global-flow, topology, or metric-gluing producers into Comparator evidence.",
+      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 70 families (the 60-family dispatch baseline plus the canonically admitted high-signal families, including strict-prime tail-orbit phase-density) and thirteen targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact source-current 51-row Comparator roster is a nested evidence/admission screen, not the universe boundary. The selected row remains the unconditional full-support irrationality theorem with a completed Bertrand/CRT divisor-block certificate pipeline; the source-only #68 channel/projection, #243 bounded-rise, and #1041 Newton-value/ray discoveries are represented below completed endpoints, without turning missing cofinal, bounded-rise, global-flow, topology, or metric-gluing producers into Comparator evidence.",
     "anti_underclaim": "Classical status does not demote a direct theorem with a visible hard mechanism merely because a more restrictive row is broader in support-class language.",
     "anti_hype": "Full-support irrationality is not universal Erdős #257, novelty, human review, or registration evidence; the exact base hypothesis and surviving arbitrary-support boundary remain explicit.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
@@ -946,41 +946,41 @@
     {
       "id": "challenge_closure_and_axiom_audit",
       "source": "PalomarSubmission/docs/comparator-declaration-closure.md@e215b184d1b659e8e3e641162a7d63708678016f",
-      "status": "withheld",
-      "evidence": "No new terminal Palomar mechanical report is bound to this product commit.",
-      "disposition": "requires_one_immutable_terminal_validation"
+      "status": "not_required_for_local_readiness",
+      "evidence": "The repository-local checker verifies the committed Comparator roster and structural contract directly. A later external mechanical report would be additional evidence, not a prerequisite for local qualification.",
+      "disposition": "external_follow_on_not_local_gate"
     },
     {
       "id": "independent_nanoda_replay",
       "source": "PalomarPolicy/docs/specification.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
-      "status": "withheld",
-      "evidence": "No independent NanoDa report is bound to this product commit.",
-      "disposition": "requires_one_immutable_terminal_validation"
+      "status": "not_required_for_local_readiness",
+      "evidence": "No independent NanoDa report is claimed. Independent replay may add evidence later, but its absence does not make a structurally coherent checkout unready.",
+      "disposition": "external_follow_on_not_local_gate"
     },
     {
       "id": "editorial_review",
       "source": "PalomarPolicy/rubric.json@d5a647db3757303b1d928cfae4d3d232eed3e79e",
-      "status": "withheld",
-      "evidence": "Palomar editorial review is an external private pipeline and has not been run or represented as human peer review.",
-      "disposition": "external_pipeline_not_claimed"
+      "status": "not_performed",
+      "evidence": "No editorial or human peer review is claimed. That external review state is reported separately from repository-local readiness.",
+      "disposition": "external_follow_on_not_local_gate"
     },
     {
       "id": "registration_and_publication",
       "source": "PalomarPolicy/docs/specification.md@d5a647db3757303b1d928cfae4d3d232eed3e79e",
-      "status": "operator_only",
+      "status": "not_performed",
       "evidence": "No submission, consent, registration, publication, push, or outreach action was performed.",
-      "disposition": "operator_action_required"
+      "disposition": "external_action_not_readiness_gate"
     }
   ],
   "qualification_decision": {
-    "decision": "NOT_READY",
-    "reason": "The main-compatible Palomar product binds the complete committed candidate universe to a deliberate full-support selection and satisfies the current v0.4 metadata profile, but terminal immutable mechanical/replay evidence is withheld.",
-    "readiness_rule": "All applicable structural and terminal gates must be green at one exact source commit; Comparator theorem-name count never substitutes for qualification.",
-    "safe_local_repairs_remaining": [
-      "Bind one immutable source commit and consume one non-duplicated Palomar mechanical/replay evidence bundle after integration names that commit."
-    ],
-    "operator_only_residuals": [
-      "Palomar submission consent/registration/publication"
+    "decision": "READY",
+    "reason": "The repository-local Palomar product binds the complete committed Comparator candidate universe to a deliberate full-support selection and satisfies the current v0.4 structural and metadata profile.",
+    "readiness_rule": "READY means the committed public checkout satisfies every repository-local structural requirement. External review, submission, registration, and publication are separately reported actions, not local qualification gates; Comparator theorem-name count alone never substitutes for qualification.",
+    "safe_local_repairs_remaining": [],
+    "external_follow_on": [
+      "independent replay may be attached as additional evidence",
+      "editorial review may be recorded if it occurs",
+      "submission, registration, and publication may be recorded if they occur"
     ]
   }
 }

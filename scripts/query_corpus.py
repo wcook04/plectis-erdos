@@ -1997,8 +1997,7 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
             "id": "palomar_qualification",
             "route_kind": "external_assurance",
             "intent": (
-                "Inspect the current Palomar qualification decision, exact "
-                "remaining gates, and operator-owned submission boundary."
+                "Report local Palomar readiness and external follow-on state."
             ),
             "discovery_terms": [
                 "palomar qualification",
@@ -2038,9 +2037,7 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 "safe_local_repairs_remaining": qualification[
                     "safe_local_repairs_remaining"
                 ],
-                "operator_only_residuals": qualification[
-                    "operator_only_residuals"
-                ],
+                "external_follow_on": qualification["external_follow_on"],
             },
         },
     ]
@@ -8303,10 +8300,6 @@ def _signal_programme_spines(
             )
         problem, family = owner
         key = (problem, family_id)
-        if key in rows_by_key:
-            raise ValueError(
-                f"Palomar represented-family placement duplicates a ranked/screened row: {family_id}"
-            )
         if source_dispositions[family_id] != "represented":
             raise ValueError(
                 f"Palomar represented-family placement is not represented: {family_id}"
@@ -8316,6 +8309,21 @@ def _signal_programme_spines(
             raise ValueError(
                 f"Palomar represented-family placement has unknown tier: {family_id}"
             )
+        if key in rows_by_key:
+            # A source family may gain a Comparator-screened declaration after
+            # its authored represented-family placement was established. The
+            # screening row supplies stronger evidence; the placement still
+            # owns its reader tier and relative judgement. Coalesce the two
+            # accounts instead of emitting a duplicate family or rejecting a
+            # source-current Comparator roster.
+            existing = rows_by_key[key]
+            if existing["tier_id"] != tier["tier_id"]:
+                raise ValueError(
+                    "Palomar screened declaration conflicts with represented-family "
+                    f"tier: {family_id}"
+                )
+            existing["why_here"] = placement["relative_judgement"]
+            continue
         rows_by_key[key] = {
             "tier_order": tier["order"],
             "tier_id": tier["tier_id"],

@@ -98,8 +98,8 @@ python3 scripts/query_corpus.py --route palomar_qualification
 
 `comparator_assurance` reports the configured comparison packet, modules,
 axioms, and receipt; it does not establish novelty, significance, priority, or
-peer review. `palomar_qualification` reports repository-local policy readiness
-and its remaining operator-only decisions; it does not confer acceptance,
+peer review. `palomar_qualification` reports repository-local structural readiness
+and separately reports any external follow-on state; it does not confer acceptance,
 registration, publication, or external endorsement.
 
 The same guide must answer ordinary requests such as “which papers should I
@@ -117,6 +117,18 @@ For publication mutation, open `docs/publication_entry_packet.json` first, then
 handle. These surfaces own publication organization and evidence boundaries;
 they do not acquire Lean proof authority. Authored prose is digested exposition,
 not a substitute for the claim registry or checked source.
+
+### Return research from a clone
+
+For contributed or resumable work, load the clone-local route:
+
+```sh
+cat skills/erdos-research-return/SKILL.md
+```
+
+Keep the human account in the pull request or plain-language issue. Bind public
+provenance and exact credit in the returned package; accepted receipts travel
+to older clones in Git history. Never require a private repository.
 
 ### General Plectis machinery
 

@@ -15,6 +15,33 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_corpus_descriptor as builder
 
 
+def test_authored_readme_may_omit_generated_regions() -> None:
+    authored = "# Reader entry\n\nBegin with the mathematical question.\n"
+    assert builder.replace_readme_scale_strip(authored, "generated") == authored
+    assert (
+        builder.replace_readme_principal_declaration_anchors(authored, "generated")
+        == authored
+    )
+
+    partials = (
+        (
+            builder.replace_readme_scale_strip,
+            builder.README_SCALE_BEGIN,
+        ),
+        (
+            builder.replace_readme_principal_declaration_anchors,
+            builder.README_PRINCIPAL_END,
+        ),
+    )
+    for replace, partial in partials:
+        try:
+            replace(authored + partial, "generated")
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("a partial generated README region was accepted")
+
+
 def test_palomar_signal_join_and_first_read_order() -> None:
     claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
     atlas = json.loads(
@@ -49,6 +76,13 @@ def test_palomar_signal_join_and_first_read_order() -> None:
     generated_markdown = (ROOT / "docs" / "ORIENTATION.md").read_text(
         encoding="utf-8"
     )
+    queries = orientation["queries"]
+    assert queries["command"] == "python3 scripts/query_corpus.py"
+    assert queries["selectors"]["route"] == "--route <route_or_programme_id>"
+    assert all(
+        not selector.startswith("python3 ")
+        for selector in queries["selectors"].values()
+    )
     assert generated_orientation["mathematical_signal_first"] == signal
     presentation = orientation["mathematical_signal_presentation"]
     showcase = json.loads(
@@ -71,9 +105,15 @@ def test_palomar_signal_join_and_first_read_order() -> None:
     assert "deep mechanism and classification" in markdown
     assert "supporting and long tail" in markdown
     assert markdown.count("| ") >= len(ranking)
+    assert len(
+        (json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n").encode(
+            "utf-8"
+        )
+    ) <= builder.ORIENTATION_MAX_BYTES
     assert len(markdown.encode("utf-8")) <= builder.ORIENTATION_MARKDOWN_MAX_BYTES
 
 
 if __name__ == "__main__":
+    test_authored_readme_may_omit_generated_regions()
     test_palomar_signal_join_and_first_read_order()
     print("corpus orientation signal contracts passed")

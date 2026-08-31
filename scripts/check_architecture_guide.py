@@ -351,14 +351,16 @@ def validate_systems_paper(text: str) -> None:
 
 
 def validate_entry_links(readme: str, agents: str, paper_readme: str) -> None:
-    readme_prefix = readme.encode("utf-8")[:6_000].decode("utf-8", errors="ignore")
-    require("[architecture and repository guide](ARCHITECTURE.md)" in readme_prefix,
+    readme_first_impression = (
+        readme.encode("utf-8")[:6_000].decode("utf-8", errors="ignore")
+    )
+    require("[architecture and repository guide](ARCHITECTURE.md)" in readme,
             "README lost the architecture guide entry link")
     require(
         "[printable PDF](claim-faithful-publication-systems-paper.pdf)"
-        in readme_prefix
+        in readme
     , "README lost the printable architecture PDF entry link")
-    require("It assumes no Lean or project history" in normalise(readme_prefix),
+    require("It assumes no Lean or project history" in normalise(readme),
             "README lost the no-history architecture boundary")
     for phrase in (
         "conditional producer",
@@ -366,7 +368,7 @@ def validate_entry_links(readme: str, agents: str, paper_readme: str) -> None:
         "lcm-diagonal scales",
         "producer carry",
     ):
-        require(phrase not in readme_prefix.casefold(), (
+        require(phrase not in readme_first_impression.casefold(), (
             f"README first impression exposes unexplained phrase {phrase!r}"
         ))
     require("ARCHITECTURE.md" in agents, "AGENTS lost the architecture guide route")

@@ -3,84 +3,106 @@
 
 # Contributing
 
-This repository is a pinned scholarly artefact, so contributions work a
-little differently from an ordinary software project: the mathematics, the
-paper, and the metadata are released together as one citable object, and
-substantial changes land only as a new tagged release with refreshed claim
-and citation metadata.
+This repository is meant to be cloned, explored, improved, and brought back
+into contact with the people who are working on it. A contribution does not
+have to solve an Erdős problem to be useful. A corrected proof step, a failed
+route with a reproducible reason, a counterexample, a sharper boundary, a
+better explanation, or a repaired public check can all save future work.
+
+The simplest contribution path is the familiar one. Fork or clone the public
+repository, make a focused change on a branch, and open a pull request against
+the public repository. Explain the mathematical question or repository
+problem you started from, what you changed or learned, what evidence another
+person can inspect, and what remains unresolved. If you have an observation
+but no finished patch, open a plain-language research-progress issue instead.
+You do not need to understand the repository's receipt format before telling
+us something useful.
+
+## What happens to returned work
+
+Every proposed change keeps its delivery history in the public issue or pull
+request. When work is accepted, the repository can also record a small,
+committed receipt that says who contributed, which exact artifacts are being
+credited, which public generation the work began from, what evidence was
+checked, and which limitations survived. Generated contribution views are
+built from those accepted receipts. This makes credit travel with the
+repository rather than living only in a private notebook, a chat transcript,
+or a disappearing web page.
+
+Acceptance and mathematical claim status are deliberately separate. An
+accepted correction can be credited without being called a new theorem. A
+negative or inconclusive result can be credited when it rules out a route or
+leaves a reproducible stopping point. A formal proof can be accepted as an
+artifact while novelty, exposition, or a stronger public claim still needs
+work. Earlier credit remains visible when a later contribution corrects or
+supersedes it.
+
+Credit is attached to the work actually returned. Contributors, collaborators,
+people operating tools, and disclosed model systems remain distinct rather
+than being collapsed into one author field. The project does not rank people
+by commit count, diff size, or the number of generated records. See the
+[credit and stewardship policy](docs/research-commons/CREDIT_POLICY.md) for the
+full boundary and the [accepted contributions](docs/research-commons/CONTRIBUTIONS.md)
+for the public, receipt-backed view.
+
+## Staying in sync
+
+A clone records the public commit from which its work began. That starting
+point lets later readers distinguish the contributor's change from work that
+landed in the meantime. Once accepted work reaches the public main branch or
+a tagged release, anyone with an older clone can fetch it and merge or rebase
+in the ordinary Git way. The accepted receipt, the credited artifact, and the
+generated recognition view arrive together because they are public repository
+files. None of that route depends on the private development repository.
+
+If two contributions overlap, preserve both histories and reconcile them in a
+new change; do not silently rewrite the earlier return. If a later discovery
+shows an accepted artifact was wrong, make a corrective return that names the
+earlier one and says whether it should be retained as history, superseded, or
+withdrawn from current use.
 
 ## What is welcome
 
-- **Error reports.** A wrong or misstated result, a Lean build failure, a
-  broken source/paper link, or an exposition mistake. Use the issue forms;
-  each one asks for exactly the evidence that makes the report checkable.
-- **Corrections.** Fixes to prose, citations, or documentation that do not
-  change any mathematical claim.
-- **Strengthenings.** New formalised results are best proposed in an issue
-  first, since they change the claim registry and therefore the release.
+Mathematical errors and overstatements are especially valuable reports. So are
+Lean build failures, broken source or paper links, missing attribution,
+exposition that hides an assumption, counterexamples to intermediate claims,
+and improvements to the clone-local checks. New formal results are welcome,
+but their public description must be no stronger than the evidence, and all
+eight headline Erdős problems remain open unless an extraordinary independent
+mathematical process establishes otherwise.
 
-## The rules that keep the release trustworthy
+Ordinary prose, citation, and tooling corrections can arrive as normal pull
+requests. A research return is useful when the provenance matters: for
+example, a bounded investigation that another person should be able to resume,
+or a negative result whose exact starting point and evidence should not be
+lost. The [research commons guide](docs/research-commons/README.md) explains
+that lifecycle without requiring you to read a schema.
 
-- `docs/claims.json` is the single owner of release identity and claim
-  status. Never edit a status table, the scope statement, or citation
-  metadata directly without updating the registry; `scripts/check_release.py`
-  fails when any surface drifts from it.
-- `docs/methodology.json` owns the claim-transition rules and change
-  classifications; `METHODOLOGY.md` is generated from it. Follow the
-  applicable change class before altering a public claim. A successful Lean
-  build alone does not authorise a stronger mathematical statement.
-- Do not weaken the open-problem boundary. The release states plainly that
-  Erdős #249 and the universal #257 remain open; wording that blurs that is a
-  defect, not an improvement.
-- No `sorry`, `admit`, new `axiom`, or `native_decide` anywhere in the Lean
-  proof corpus, including `examples/`. One deliberate exception sits outside
-  the default build: `ExternalVerification/Challenge.lean` states the trusted
-  propositions Comparator checks the solution against, so it carries `sorry`
-  by construction.
-- The paper pins every source link to the release tag. Changes that move
-  declaration line numbers require regenerating those pins as part of a new
-  release, not as a drive-by edit.
+## For agents and maintainers
 
-## Local checks
+The human route above is the contract. The commands below implement it; they
+are not prerequisites for reporting a useful result. Agents should use the
+clone-local [research-return skill](skills/erdos-research-return/SKILL.md), and
+maintainers should preserve the contributor's prose rather than replacing it
+with machine field names.
 
-```sh
-lake exe cache get                 # fetch the prebuilt Mathlib cache
-python3 scripts/test_dependency_lock_contract.py  # verify the pinned Lean/Mathlib lock
-lake build                         # elaborate and kernel-check the library
-lake build Examples                # build the downstream consumer example
-python3 scripts/refresh_projections.py  # regenerate every projection in dependency order
-python3 scripts/check_release.py   # cross-surface release checks
-python3 scripts/test_projection_checkout_independence.py  # projections ignore the checkout shape
-python3 scripts/build_module_graph.py --check  # exact public Lean import graph
-python3 scripts/refresh_source_coordinates.py --check  # claim/paper line pins
-python3 scripts/test_methodology_contract.py  # adversarial claim-transition fixtures
-python3 scripts/test_declaration_head_contract.py  # wrapped and odd-tailed declaration names stay in the atlas
-python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes \
-  --requirement requirements-release.txt  # metadata and licence checks
-python3 scripts/check_metadata.py  # CITATION.cff schema validation (same command as CI)
-python3 scripts/test_citation_identity_contract.py  # citation/release identity and open boundary
-reuse lint                         # licence validation
-python3 scripts/test_license_map_contract.py  # semantic software/manuscript licence split
-python3 scripts/check_cold_clone_comprehension.py --quick  # fast committed-surface readability check
-python3 scripts/check_cold_clone_comprehension.py  # standalone bounded cold-reader baseline
-python3 scripts/test_cold_clone_comprehension.py  # combined baseline-plus-adversarial release-gate check
-python3 scripts/test_query_corpus.py  # bounded claim/declaration/module/route queries
-```
+To open and package a bounded, attributable structured research session, use
+`scripts/continue_research.py`. Its `start`, `check`, and `package` commands
+bind the public origin, starting commit, contributor identity, problem route,
+evidence, and route-memory receipt. The resulting `return.json` and
+`route-memory.json` may accompany a pull request. Validate them with
+`scripts/validate_research_return.py` before submission. The detailed field
+contract is in the [return package template](docs/research-commons/RETURN_PACKAGE_TEMPLATE.md).
 
-CI runs the build and release-surface checks on every push.
-`scripts/check_release.py` executes the bounded query suite and the combined
-cold-clone baseline-plus-adversarial program. A failure therefore blocks the
-release gate. The standalone quick and full comprehension commands remain
-useful while editing because they produce narrower readability receipts
-without running the entire release check.
+After a contribution has actually landed, `scripts/accept_research_return.py`
+can bind the reviewed result to its accepted public commit. Then
+`scripts/build_research_contributions.py` and
+`scripts/build_research_contribution_recognition.py` rebuild the accepted-only
+credit views. A submitted return must never appear there before acceptance,
+and an accepted receipt must never silently strengthen `docs/claims.json`.
 
-Editing `docs/claims.json`, `docs/declaration_atlas.json`, `docs/methodology.json`
-or the paper sources changes what the projections should say, so run
-`scripts/refresh_projections.py` and commit whatever it rewrites together with
-the edit that caused it. Two failure modes make this worth doing as one motion.
-Regenerating only some builders leaves the rest stale: on 2026-07-19 a run of
-paper edits refreshed the corpus descriptor but not the source coordinates, and
-the paper anchors in `docs/claims.json` stayed pinned to pre-edit line numbers
-for ten commits. And `docs/corpus_descriptor.json` records the last commit that
-touched its inputs, which it cannot know while it is being written, so a content
-commit pushed on its own is always red until its refresh lands.
+For an ordinary source change, run the narrow checks named by the agent entry
+and the affected subsystem. Lean changes must build with the pinned toolchain.
+Changes to claims, papers, or generated projections must follow the authority
+and builder order in [AGENTS.md](AGENTS.md). CI exercises the public return
+validator, the acceptance boundary, and the accepted-only attribution views.
