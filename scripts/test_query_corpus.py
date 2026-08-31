@@ -30,6 +30,14 @@ from query_corpus import (
     route_memory_problem_number,
     source_coordinate_packet,
 )
+from check_release import MAX_ROUTE_FIRST_CONTACT_BYTES
+from check_problem_note_sources import (
+    declares_at,
+    note_pinned_commit,
+    pinned_commit as corpus_pinned_commit,
+    snapshot_lines,
+)
+from refresh_source_coordinates import PAPERS as LIVE_COORDINATE_PAPERS
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT / "scripts" / "query_corpus.py"
@@ -1819,10 +1827,27 @@ def main() -> int:
         for family in publication_assembly["contribution_families"]
         for claim_id in family["claim_ids"]
     ]
-    assert len(assembled_claim_ids) == len(set(assembled_claim_ids))
-    assert set(assembled_claim_ids) == {
-        claim["id"] for claim in claims_document["claims"]
-    }
+    duplicate_assembled_claim_ids = sorted(
+        claim_id
+        for claim_id in set(assembled_claim_ids)
+        if assembled_claim_ids.count(claim_id) > 1
+    )
+    assert not duplicate_assembled_claim_ids, (
+        "publication contribution families overlap on claims: "
+        f"{duplicate_assembled_claim_ids}"
+    )
+    registry_claim_ids = {claim["id"] for claim in claims_document["claims"]}
+    assert registry_claim_ids, (
+        "docs/claims.json carries no claims, so the publication census would "
+        "compare an empty set against an empty set"
+    )
+    assert set(assembled_claim_ids) == registry_claim_ids, (
+        "publication contribution census drifted: claims in docs/claims.json "
+        "carried by no contribution family="
+        f"{sorted(registry_claim_ids - set(assembled_claim_ids))}, "
+        "claim ids named by a family but absent from the registry="
+        f"{sorted(set(assembled_claim_ids) - registry_claim_ids)}"
+    )
     certificate_family = query(
         "--publication-family", "exact_certificate_equivalence_and_deposits"
     )
@@ -1955,19 +1980,33 @@ def main() -> int:
     assert reduction["paper"]["label"] == reduction_claim["paper_label"]
 
     half_route = query("--route", "erdos257_half_story")["route"]
-    assert half_route["query_steps"] == [
-        "python3 scripts/query_corpus.py --claim greedy_achievement_geometry",
-        "python3 scripts/query_corpus.py --claim half_greedy_two_thirds_band",
-        "python3 scripts/query_corpus.py --claim half_membership_seam_classification",
-        "python3 scripts/query_corpus.py --claim fatal_gap_right_tail_classification",
-        "python3 scripts/query_corpus.py --claim twenty_one_quotient_greedy_frontier",
-        "python3 scripts/query_corpus.py --claim final_middle_cell_escape",
-        "python3 scripts/query_corpus.py --claim final_middle_neg_two_phase_sieve",
-        "python3 scripts/query_corpus.py --claim last_producer_tail_escape_reduction",
-        "python3 scripts/query_corpus.py --open remaining_open.half_value_membership",
-        "python3 scripts/query_corpus.py --open remaining_open.twenty_one_permanent_affine_supercapacity",
-        "python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports",
+    authored_half_route = next(
+        row
+        for row in claims_document["machine_readable_paper"]["entrypoints"]
+        if row["id"] == "erdos257_half_story"
+    )
+    expected_half_route_steps = [
+        f"python3 scripts/query_corpus.py --claim {claim_id}"
+        for claim_id in authored_half_route["core_claim_ids"]
+    ] + [
+        f"python3 scripts/query_corpus.py --open {open_id}"
+        for open_id in authored_half_route["remaining_open_proposition_ids"]
     ]
+    assert authored_half_route["core_claim_ids"], (
+        "erdos257_half_story in docs/claims.json carries no core_claim_ids, so "
+        "the query-step spine would be derived from nothing"
+    )
+    assert authored_half_route["remaining_open_proposition_ids"], (
+        "erdos257_half_story in docs/claims.json carries no "
+        "remaining_open_proposition_ids, so the query-step spine would be "
+        "derived from nothing"
+    )
+    assert half_route["query_steps"] == expected_half_route_steps, (
+        "erdos257_half_story query steps drifted from its authored claim and "
+        "open spine in docs/claims.json: served="
+        f"{half_route['query_steps']}, derived-from-registry="
+        f"{expected_half_route_steps}"
+    )
     band_claim = query("--claim", "half_greedy_two_thirds_band")
     assert {
         row["id"] for row in band_claim["remaining_open_propositions"]
@@ -2289,24 +2328,68 @@ def main() -> int:
     finally:
         query_corpus.paper_anchor_inventory = original_anchor_inventory  # type: ignore[method-assign]
 
-    open_expectations = {
-        "remaining_open.erdos_249_irrationality": ("erdos_249", 1),
-        "remaining_open.unbounded_certificate_supply": ("erdos_249", 10),
-        "remaining_open.half_value_membership": ("universal_257", 5),
-        "remaining_open.twenty_one_permanent_affine_supercapacity": (
-            "universal_257",
-            1,
-        ),
-        "remaining_open.universal_257_all_infinite_supports": ("universal_257", 6),
+    # The open-proposition expectations are derived from the committed registry
+    # rather than listed here.  An authored list rots every time the corpus
+    # grows: it was last written when only #249 and #257 were registered, and
+    # by then the registry already carried eleven open propositions across the
+    # eight Erdos problems this repository holds material for.
+    open_propositions = claims_document["remaining_open_propositions"]
+    assert open_propositions, (
+        "docs/claims.json registers no remaining-open propositions, so the "
+        "open-proposition checks below would assert nothing"
+    )
+    advancing_edge_counts: dict[str, int] = {}
+    for edge in claims_document["machine_readable_paper"]["argument_graph"]["edges"]:
+        effect = edge.get("remaining_open_effect")
+        if not effect:
+            continue
+        effect_open_id = effect["remaining_open_proposition_id"]
+        advancing_edge_counts[effect_open_id] = (
+            advancing_edge_counts.get(effect_open_id, 0) + 1
+        )
+    assert advancing_edge_counts, (
+        "no argument-graph edge carries a remaining_open_effect, so every "
+        "advancing-claim count below would be derived from nothing"
+    )
+    # Which open propositions the paper-anchor surface actually attaches is a
+    # property of the parsed TeX, so it is read from the anchor inventory
+    # instead of being listed.  A proposition whose registry paper_anchor does
+    # not resolve in the inventory is a real substrate gap, not an expectation
+    # to encode here.
+    anchored_open_ids = {
+        attached["id"]
+        for anchor in paper_anchor_inventory()
+        for attached in anchor.get("attached_open_propositions") or []
     }
-    for open_id, (target, advancing_count) in open_expectations.items():
+    assert anchored_open_ids, (
+        "no paper anchor in the inventory attaches a remaining-open "
+        "proposition, so the anchor checks below would assert nothing"
+    )
+    for proposition in open_propositions:
+        open_id = proposition["id"]
+        target = proposition["open_target_claim"]
+        advancing_count = advancing_edge_counts.get(open_id, 0)
+        assert advancing_count, (
+            f"open proposition {open_id} has no advancing argument-graph edge, "
+            "so nothing in the corpus is recorded as moving it"
+        )
         open_packet = query("--open", open_id)
-        assert open_packet["kind"] == "open_proposition"
-        assert open_packet["status"] == "open"
-        assert open_packet["open_target"]["id"] == target
-        assert len(open_packet["advancing_claims"]) == advancing_count
-        assert open_packet["paper_anchor"]["anchor_class"] == (
-            "remaining_open_proposition_anchor"
+        assert open_packet["kind"] == "open_proposition", (
+            f"--open {open_id} returned kind {open_packet['kind']!r}, expected "
+            "'open_proposition'"
+        )
+        assert open_packet["status"] == "open", (
+            f"--open {open_id} reports status {open_packet['status']!r}; every "
+            "registered remaining-open proposition must still read 'open'"
+        )
+        assert open_packet["open_target"]["id"] == target, (
+            f"--open {open_id} names target {open_packet['open_target']['id']!r}, "
+            f"but docs/claims.json records open_target_claim {target!r}"
+        )
+        assert len(open_packet["advancing_claims"]) == advancing_count, (
+            f"--open {open_id} served {len(open_packet['advancing_claims'])} "
+            "advancing claims, but the argument graph in docs/claims.json "
+            f"carries {advancing_count} edges with that remaining_open_effect"
         )
         programme_routes = [
             route
@@ -2323,14 +2406,47 @@ def main() -> int:
             (binding["route_id"], binding["problem_number"])
             for binding in open_packet["route_memory"]["bindings"]
         }
-        assert actual_bindings == expected_bindings
-        assert open_packet["route_memory"]["status"] == "bound"
+        assert actual_bindings == expected_bindings, (
+            f"--open {open_id} route-memory bindings drifted from the "
+            f"programme routes in docs/claims.json: served={sorted(actual_bindings)}, "
+            f"derived-from-registry={sorted(expected_bindings)}"
+        )
+        expected_route_memory_status = "bound" if expected_bindings else "unbound"
+        assert open_packet["route_memory"]["status"] == (
+            expected_route_memory_status
+        ), (
+            f"--open {open_id} route-memory status is "
+            f"{open_packet['route_memory']['status']!r}, but "
+            f"{len(expected_bindings)} programme-route bindings were derived "
+            f"from docs/claims.json, which reads {expected_route_memory_status!r}"
+        )
+        served_anchor = open_packet["paper_anchor"]
+        assert bool(served_anchor) == (open_id in anchored_open_ids), (
+            f"--open {open_id} exposes paper_anchor={served_anchor!r}, but the "
+            "paper-anchor inventory "
+            f"{'does' if open_id in anchored_open_ids else 'does not'} attach "
+            "this proposition; the two surfaces must agree"
+        )
+        if not served_anchor:
+            continue
+        assert served_anchor["anchor_class"] == (
+            "remaining_open_proposition_anchor"
+        ), (
+            f"--open {open_id} anchor class is "
+            f"{served_anchor['anchor_class']!r}, expected "
+            "'remaining_open_proposition_anchor'"
+        )
         reverse_open = query(
-            "--paper-anchor", open_packet["paper_anchor"]["canonical_handle"]
+            "--paper-anchor", served_anchor["canonical_handle"]
         )
         assert [row["id"] for row in reverse_open["attached_open_propositions"]] == [
             open_id
-        ]
+        ], (
+            "--paper-anchor "
+            f"{served_anchor['canonical_handle']} attaches "
+            f"{[row['id'] for row in reverse_open['attached_open_propositions']]}, "
+            f"expected exactly [{open_id!r}]"
+        )
 
     open_search = query("--search", "remaining_open.unbounded_certificate_supply", "--limit", "1")
     assert open_search["results"][0]["kind"] == "open_proposition"
@@ -2621,15 +2737,70 @@ def main() -> int:
     assert exact_row_family["representative"] == (
         "Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips"
     )
-    assert exact_row_family["paper_route"] == {
-        "source": "paper/erdos-257-mersenne-support-subseries.tex",
-        "command": (
-            "python3 scripts/query_corpus.py --paper-source "
-            "paper/erdos-257-mersenne-support-subseries.tex"
-        ),
-        "matching_anchors": [],
-        "authority_posture": "authored_paper_navigation_not_proof_authority",
+    # The paper source is read from the problem index rather than repeated, and
+    # the anchor list is checked for correctness rather than for emptiness: it
+    # was authored as ``[]`` when the #257 note carried no anchor over this
+    # family's declarations, so asserting emptiness turned later paper coverage
+    # into a test failure.
+    problems_index = json.loads(
+        (ROOT / "docs" / "problems.json").read_text(encoding="utf-8")
+    )["problems"]
+    exact_row_problem_row = next(
+        row
+        for row in problems_index
+        if row["problem_id"] == exact_row_family["problem_id"]
+    )
+    exact_row_paper_source = exact_row_problem_row["paper"]["source"]
+    exact_row_paper_route = exact_row_family["paper_route"]
+    assert exact_row_paper_route["source"] == exact_row_paper_source, (
+        "boolean_mobius_exact_row_dynamics paper route names source "
+        f"{exact_row_paper_route['source']!r}, but docs/problems.json records "
+        f"{exact_row_paper_source!r} for {exact_row_family['problem_id']}"
+    )
+    assert exact_row_paper_route["command"] == (
+        "python3 scripts/query_corpus.py --paper-source "
+        f"{exact_row_paper_source}"
+    ), (
+        "boolean_mobius_exact_row_dynamics paper route command is "
+        f"{exact_row_paper_route['command']!r}, expected the typed "
+        f"--paper-source route for {exact_row_paper_source}"
+    )
+    assert exact_row_paper_route["authority_posture"] == (
+        "authored_paper_navigation_not_proof_authority"
+    ), (
+        "boolean_mobius_exact_row_dynamics paper route authority posture is "
+        f"{exact_row_paper_route['authority_posture']!r}"
+    )
+    exact_row_declaration_names = {
+        name.rsplit(".", 1)[-1] for name in exact_row_family["declarations"]
     }
+    assert exact_row_declaration_names, (
+        "boolean_mobius_exact_row_dynamics registers no declarations, so the "
+        "anchor cross-check below would compare against nothing"
+    )
+    for anchor in exact_row_paper_route["matching_anchors"]:
+        assert anchor["source_ref"].startswith(f"{exact_row_paper_source}:"), (
+            "boolean_mobius_exact_row_dynamics matched an anchor outside its "
+            f"own paper: {anchor['source_ref']!r} is not in "
+            f"{exact_row_paper_source}"
+        )
+        assert anchor["command"] == (
+            "python3 scripts/query_corpus.py --paper-anchor "
+            f"{anchor['canonical_handle']}"
+        ), (
+            f"anchor {anchor['canonical_handle']!r} carries command "
+            f"{anchor['command']!r}, expected its typed --paper-anchor route"
+        )
+        unregistered = sorted(
+            set(anchor["matched_declarations"]) - exact_row_declaration_names
+        )
+        assert anchor["matched_declarations"] and not unregistered, (
+            f"anchor {anchor['canonical_handle']!r} matched "
+            f"{anchor['matched_declarations']} for "
+            "boolean_mobius_exact_row_dynamics, but the family registers "
+            f"{sorted(exact_row_declaration_names)}; unregistered="
+            f"{unregistered}"
+        )
     assert "CofinalPositiveHalfGreedySkips is an unproved global supply premise" in (
         exact_row_family["open_boundary"]["boundary"]
     )
@@ -2708,13 +2879,31 @@ def main() -> int:
         assert half_family["claim_paper_routes"][0]["command"] == (
             "python3 scripts/query_corpus.py --paper-anchor res:halfmembership"
         )
-        assert half_family["problem_route"] == (
-            "python3 scripts/query_corpus.py --route erdos_257"
+        # A reviewed result family carries its problem route inside
+        # open_boundary; the bare top-level key belongs to the weaker
+        # claim-registry family route this family was promoted out of.
+        assert half_family["open_boundary"]["problem_route"] == (
+            f"python3 scripts/query_corpus.py --route {half_family['problem_id']}"
+        ), (
+            "half_membership_seam_classification problem route is "
+            f"{half_family['open_boundary']['problem_route']!r}, expected the "
+            f"typed route for {half_family['problem_id']}"
         )
-        assert "does not supply any unbounded terminal-false" in (
-            half_family["open_boundary"]["boundary"]
+        # What matters is that one negated clause denies supplying both the
+        # terminal-false occurrences and a half-membership witness.  Matching
+        # the authored phrasing word for word made a prose revision look like a
+        # lost boundary, so bind the negation to its objects instead.
+        half_boundary = half_family["open_boundary"]["boundary"]
+        assert "does not supply" in half_boundary, (
+            "half_membership_seam_classification boundary no longer denies "
+            f"supplying anything: {half_boundary!r}"
         )
-        assert "no half-membership witness" in half_family["open_boundary"]["boundary"]
+        half_denial = half_boundary.split("does not supply", 1)[1].split(";")[0]
+        for denied in ("unbounded terminal-false", "half-membership witness"):
+            assert denied in half_denial, (
+                f"half_membership_seam_classification boundary stops denying "
+                f"{denied!r}; the denial clause reads {half_denial!r}"
+            )
         assert half_family["open_boundary"]["problem_open_obligation_ids"] == [
             "arithmetic_rigidity_for_thin_supports",
             "formalise_measure_and_stride_geometry",
@@ -2820,8 +3009,21 @@ def main() -> int:
                 "python3 scripts/query_corpus.py --route erdos_249"
             )
             fixed_problem_family_key = "claim_family_ids"
-        assert fixed_family["programme_route"]["id"] == (
-            "transport_curvature_programme"
+            # programme_route is a claim-registry family-route field.  A
+            # reviewed family reaches its programme through the module's route
+            # memory instead, which is asserted below for both shapes.
+            assert fixed_family["programme_route"]["id"] == (
+                "transport_curvature_programme"
+            ), (
+                "fixed_precision_transport_no_go claim-family route names "
+                f"programme {fixed_family['programme_route']!r}, expected "
+                "transport_curvature_programme"
+            )
+        assert "transport_curvature_programme" in {
+            row["route_id"] for row in fixed_module["route_memory"]["bindings"]
+        }, (
+            "TropicalCurvatureCarry route memory lost its programme binding: "
+            f"{sorted(row['route_id'] for row in fixed_module['route_memory']['bindings'])}"
         )
         fixed_problem = next(
             row
@@ -2858,11 +3060,30 @@ def main() -> int:
             for row in coefficient_module["problem_routes"]
             if row["problem_id"] == "erdos_251"
         )
-        assert coefficient_problem["reviewed_result_family_ids"] == [
-            "prime_gap_reformulation",
-            "dyadic_tail_integrality_classification",
-            "coefficient_only_no_go",
+        # The #251 family spine grows as the note is extended, so the problem
+        # route's census is checked against the families this same packet
+        # serves rather than against an authored list.
+        coefficient_served_family_ids = [
+            row["id"]
+            for row in coefficient_module["reviewed_result_families"]
+            if row["problem_id"] == coefficient_problem["problem_id"]
         ]
+        assert coefficient_served_family_ids, (
+            "PrimeGapDyadicTail serves no reviewed result family for "
+            f"{coefficient_problem['problem_id']}, so the problem-route census "
+            "below would be compared against nothing"
+        )
+        assert coefficient_problem["reviewed_result_family_ids"] == (
+            coefficient_served_family_ids
+        ), (
+            "the erdos_251 problem route names "
+            f"{coefficient_problem['reviewed_result_family_ids']}, but the "
+            f"module packet serves {coefficient_served_family_ids}"
+        )
+        assert "coefficient_only_no_go" in coefficient_served_family_ids, (
+            "PrimeGapDyadicTail no longer serves coefficient_only_no_go: "
+            f"{coefficient_served_family_ids}"
+        )
         coefficient_family = next(
             row
             for row in coefficient_module["reviewed_result_families"]
@@ -3069,22 +3290,86 @@ def main() -> int:
     assert invalid_source_line.returncode == 2
     assert "exceeds" in invalid_source_line.stderr
 
-    source_link_count = 0
+    # Two kinds of paper carry source links, and they answer to different
+    # sources.  The gateway paper and the #257 note are the ones
+    # scripts/refresh_source_coordinates.py keeps on the live atlas, so their
+    # links must open in this checkout.  Every other problem note declares its
+    # own \commit and is a pinned snapshot -- "a link can then be wrong only if
+    # it was wrong when written" -- so its coordinates are checked against the
+    # commit the note pins, not against a tree that has moved since.  Checking
+    # a pinned note against the live atlas reported six correct #249 links as
+    # broken and would have been "repaired" by repointing the note away from
+    # the commit it was reviewed against.
+    live_coordinate_papers = {
+        str(path.relative_to(ROOT)) for path in LIVE_COORDINATE_PAPERS
+    }
+    assert live_coordinate_papers, (
+        "scripts/refresh_source_coordinates.py maintains no paper, so every "
+        "source link below would be treated as a pinned snapshot"
+    )
+    corpus_default_commit = corpus_pinned_commit()
+    snapshot_cache: dict[tuple[str, str], list[str]] = {}
+    live_link_count = 0
+    pinned_link_count = 0
     for anchor in paper_anchor_inventory():
+        paper_source = anchor["paper"]["source"]
+        if paper_source in live_coordinate_papers:
+            for link in anchor["source_links"]:
+                live_link_count += 1
+                packet = source_coordinate_packet(link["source_ref"], 20)
+                assert packet["coordinate_receipt"]["line_exists"] is True, (
+                    f"{paper_source} links {link['source_ref']}, which does not "
+                    "exist in this checkout"
+                )
+                names = {row["name"] for row in packet["nearby_declarations"]}
+                if link["declaration"]:
+                    assert link["declaration"] in names, (
+                        f"{link['source_ref']} does not declare "
+                        f"{link['declaration']!r}; nearby declarations are "
+                        f"{sorted(names)}"
+                    )
+                reverse_anchors = {
+                    paper_anchor["canonical_handle"]
+                    for row in packet["nearby_declarations"]
+                    for paper_anchor in row["paper_anchors"]
+                }
+                assert anchor["canonical_handle"] in reverse_anchors, (
+                    f"{link['source_ref']} does not route back to anchor "
+                    f"{anchor['canonical_handle']!r}; it routes to "
+                    f"{sorted(reverse_anchors)}"
+                )
+            continue
+        note_commit = note_pinned_commit(
+            (ROOT / paper_source).read_text(encoding="utf-8"),
+            corpus_default_commit,
+        )
         for link in anchor["source_links"]:
-            source_link_count += 1
-            packet = source_coordinate_packet(link["source_ref"], 20)
-            assert packet["coordinate_receipt"]["line_exists"] is True
-            names = {row["name"] for row in packet["nearby_declarations"]}
-            if link["declaration"]:
-                assert link["declaration"] in names
-            reverse_anchors = {
-                paper_anchor["canonical_handle"]
-                for row in packet["nearby_declarations"]
-                for paper_anchor in row["paper_anchors"]
-            }
-            assert anchor["canonical_handle"] in reverse_anchors
-    assert source_link_count > 100
+            if not link["declaration"]:
+                continue
+            pinned_link_count += 1
+            module, _, line_text = link["source_ref"].rpartition(":")
+            lines = snapshot_lines(note_commit, module, snapshot_cache)
+            assert lines, (
+                f"{paper_source} pins commit {note_commit}, but {module} "
+                "cannot be read from that snapshot"
+            )
+            index = int(line_text) - 1
+            assert 0 <= index < len(lines), (
+                f"{paper_source} links {link['source_ref']}, past the end of "
+                f"{module} at its pinned commit {note_commit} "
+                f"({len(lines)} lines)"
+            )
+            assert declares_at(lines, index, link["declaration"]), (
+                f"{paper_source} links {link['source_ref']} for "
+                f"{link['declaration']!r}, but at its pinned commit "
+                f"{note_commit} that line reads {lines[index].strip()!r}"
+            )
+    assert live_link_count > 100, (
+        f"only {live_link_count} live-atlas source links were checked"
+    )
+    assert pinned_link_count > 100, (
+        f"only {pinned_link_count} pinned-snapshot source links were checked"
+    )
 
     descriptor = json.loads(
         (ROOT / "docs" / "corpus_descriptor.json").read_text(encoding="utf-8")
@@ -3170,8 +3455,23 @@ def main() -> int:
     for route_row in orientation_document["reading_routes"]:
         route_view = route_packet(route_row["id"])
         closure_checks += 1
-        assert route_view["route"]["id"] == route_row["id"]
-        assert sum((ROOT / path).stat().st_size for path in route_row["read"]) <= 48_000
+        assert route_view["route"]["id"] == route_row["id"], (
+            f"--route {route_row['id']} served id {route_view['route']['id']!r}"
+        )
+        # The first-contact budget belongs to the release gate; read it from
+        # there instead of keeping a second copy of the number in this file.
+        first_contact_bytes = sum(
+            (ROOT / path).stat().st_size for path in route_row["read"]
+        )
+        assert first_contact_bytes <= MAX_ROUTE_FIRST_CONTACT_BYTES, (
+            f"route {route_row['id']!r} first-contact bundle is "
+            f"{first_contact_bytes} bytes over the "
+            f"{MAX_ROUTE_FIRST_CONTACT_BYTES}-byte budget: "
+            + ", ".join(
+                f"{path}={(ROOT / path).stat().st_size}"
+                for path in route_row["read"]
+            )
+        )
 
     assert closure_checks > 150
 

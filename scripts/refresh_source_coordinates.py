@@ -13,12 +13,19 @@ import argparse
 import json
 import re
 import sys
-import unicodedata
 from pathlib import Path
+
+from query_corpus import canonical_lean_module_path, canonical_paper_title
 
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS = ROOT / "docs" / "claims.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
+# Only the papers that track the live Lean source.  Every other problem note
+# declares its own ``\commit`` pin and is verified against that snapshot by
+# scripts/check_problem_note_sources.py, whose contract is that a link "can
+# then be wrong only if it was wrong when written".  Refreshing a pinned note
+# from the live atlas silently repoints it away from the commit it was
+# reviewed against, so this list must not become a glob over paper/.
 PAPERS = (
     ROOT / "paper" / "erdos249-257-main-paper.tex",
     ROOT / "paper" / "erdos-257-mersenne-support-subseries.tex",
@@ -28,31 +35,10 @@ LINK_RE = re.compile(
     r"(?:\{((?:[^{}]|\{[^{}]*\})*)\})?"
 )
 
-_TEX_TITLE_ESCAPES = (
-    (r"\H{o}", "ő"),
-    (r"\H{O}", "Ő"),
-    (r'\"{o}', "ö"),
-    (r'\"{O}', "Ö"),
-    (r"\'{e}", "é"),
-    (r"\'{E}", "É"),
-    (r"\`{e}", "è"),
-    (r"\`{E}", "È"),
-    (r"\~{n}", "ñ"),
-    (r"\~{N}", "Ñ"),
-    (r"\c{c}", "ç"),
-    (r"\c{C}", "Ç"),
-    (r"\#", "#"),
-    (r"\&", "&"),
-    (r"\%", "%"),
-)
-
-
-def canonical_title(title: str) -> str:
-    """Compare authored Unicode titles with their TeX-rendered spellings."""
-    canonical = title
-    for tex, rendered in _TEX_TITLE_ESCAPES:
-        canonical = canonical.replace(tex, rendered)
-    return unicodedata.normalize("NFC", canonical)
+# The TeX-escape table and its normalisation live in query_corpus so the
+# registry's paper anchors are keyed exactly once, by the same rule the
+# navigation surface uses to attach an anchor to its open proposition.
+canonical_title = canonical_paper_title
 
 
 def paper_anchor_line(anchor: dict[str, object]) -> int:
@@ -108,16 +94,10 @@ def render() -> tuple[str, dict[Path, str]]:
 
     def replace(match: re.Match[str]) -> str:
         macro, filename, name, label = match.groups()
-        if filename.startswith("Erdos249257/"):
-            module = filename
-        elif filename.startswith("ErdosProblems/"):
-            module = filename
-        elif re.match(r"Erdos\d+/", filename):
-            module = f"ErdosProblems/{filename}"
-        elif macro.startswith("m"):
-            module = f"ErdosProblems/{filename}"
-        else:
-            module = f"Erdos249257/{filename}"
+        module = canonical_lean_module_path(
+            filename,
+            bool(re.match(r"Erdos\d+/", filename) or macro.startswith("m")),
+        )
         key = (module, name)
         if key not in lines:
             raise RuntimeError(f"paper declaration absent from atlas: {key}")

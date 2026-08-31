@@ -194,8 +194,7 @@
         "id": "understand_argument_topology",
         "intent": "See how the #249 reduction, #257 families, carry trunk, and open targets relate.",
         "read": [
-          "docs/orientation.json",
-          "docs/SOURCE_MAP.md"
+          "docs/orientation.json"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --claim <claim_id>",
@@ -1480,13 +1479,14 @@
             "first_harmonic_certificate_interface",
             "first_harmonic_pivot_decomposition",
             "adjacent_phase_separation_reduction",
-            "pivot_anti_reconstruction_reduction"
+            "pivot_anti_reconstruction_reduction",
+            "strict_prime_tail_orbit_gap"
           ],
-          "status_summary": "Conditional harmonic and phase consumers, including an exact four-term pivot decomposition and budget, ending in an exact window-pair equivalence.",
+          "status_summary": "Conditional harmonic and phase consumers, including an exact four-term pivot decomposition and budget, an exact window-pair equivalence, and the two-branch tail-orbit phase-density and natural-prime strict-gap producers that feed the same certificate socket.",
           "prior_art_posture": "No matching combined theorem is identified; all novelty language remains provisional.",
           "primary_narrative_owner": "docs/claims.json::claims",
           "source_route": "python3 scripts/query_corpus.py --claim pivot_anti_reconstruction_reduction",
-          "consumer_or_open_obligation": "Supply a cofinal first-harmonic pivot budget, adjacent-pair separator, or anti-reconstruction producer.",
+          "consumer_or_open_obligation": "Supply a cofinal first-harmonic pivot budget, adjacent-pair separator, anti-reconstruction producer, or one of the two tail-orbit strict-gap antecedents (late-block nonpositive phase density, or cofinally many natural primes with tail-orbit real part below 9/10).",
           "view_decision": "registry_only_after_one_sided_companion_retirement"
         },
         {

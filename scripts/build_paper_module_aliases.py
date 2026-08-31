@@ -11,6 +11,7 @@ import re
 import sys
 from pathlib import Path
 
+from query_corpus import canonical_lean_module_path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = ROOT / "paper"
@@ -43,12 +44,23 @@ def camel_components(stem: str) -> list[str]:
 
 
 def canonical_module_path(module: str) -> str:
-    """Resolve paper shorthand to the repository path used by the atlas."""
-    if module.startswith(("Erdos249257/", "ErdosProblems/")):
-        return module
-    if "/" in module:
-        return f"ErdosProblems/{module}"
-    return f"Erdos249257/{module}"
+    """Resolve paper shorthand to the repository path used by the atlas.
+
+    A slash in the shorthand does not name the library root: both roots carry
+    nested sub-directories (``Erdos249257/DiagonalPincerPrimeCertificates/`` and
+    ``ErdosProblems/Skip/``), so the old "a slash means ErdosProblems" guess
+    minted a sigil for a module that does not exist and left ``--module
+    CloT64`` unresolvable.  The resolution rule is shared with query_corpus;
+    here a shorthand that names no module is refused outright rather than
+    turned into a dangling sigil.
+    """
+    resolved = canonical_lean_module_path(module)
+    if not (ROOT / resolved).is_file():
+        raise ValueError(
+            f"paper source link names no module in this checkout: {module!r} "
+            f"(resolved to {resolved})"
+        )
+    return resolved
 
 
 def module_alias(module: str) -> str:

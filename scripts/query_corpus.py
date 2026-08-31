@@ -37,6 +37,44 @@ MAX_SEMANTIC_CELLS = 4
 # source-current route, so retain a modest fixed ceiling instead of rejecting
 # the default public command or silently truncating that family inventory.
 OUTPUT_BUDGET_BYTES = 80_000
+# The house agent-packet budget, shared with scripts/proof_state_compiler.py
+# (MAX_PACKET_BYTES) and scripts/build_corpus_descriptor.py
+# (DESCRIPTOR_MAX_BYTES).  OUTPUT_BUDGET_BYTES is the hard CLI ceiling; this is
+# the tighter budget a single navigation packet is expected to sit inside, so a
+# packet that grows with the corpus keeps headroom instead of hitting the wall.
+MODULE_PACKET_BUDGET_BYTES = 64_000
+# docs/claims.json records a remaining-open proposition's paper anchor by
+# (source, environment, title).  The registry spells accented titles either as
+# authored TeX (``Erd\H{o}s \#249``) or as rendered Unicode (``Erdős #243``),
+# and names a sectioning command by its command name, while the TeX scan below
+# reports the raw title and leaves ``environment`` empty for a sectioning
+# command.  Matching the two spellings literally silently dropped the anchor:
+# six of the eight problems' open propositions resolved to no paper anchor at
+# all.  These helpers are the single canonical key, shared with
+# scripts/refresh_source_coordinates.py, which rewrites the anchor lines.
+PAPER_TITLE_TEX_ESCAPES = (
+    (r"\H{o}", "ő"),
+    (r"\H{O}", "Ő"),
+    (r'\"{o}', "ö"),
+    (r'\"{O}', "Ö"),
+    (r"\'{e}", "é"),
+    (r"\'{E}", "É"),
+    (r"\`{e}", "è"),
+    (r"\`{E}", "È"),
+    (r"\~{n}", "ñ"),
+    (r"\~{N}", "Ñ"),
+    (r"\c{c}", "ç"),
+    (r"\c{C}", "Ç"),
+    (r"\#", "#"),
+    (r"\&", "&"),
+    (r"\%", "%"),
+)
+PAPER_SECTIONING_ANCHOR_KINDS = frozenset(
+    {"section", "subsection", "subsubsection", "paragraph"}
+)
+LEAN_LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
+
+
 AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
 # The tour carries the complete reviewed result-family index as well as the
 # problem map.  The allowance scales with the canonical eight-problem and
@@ -57,6 +95,52 @@ SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/2"
 SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
+
+
+@lru_cache(maxsize=None)
+def canonical_lean_module_path(module: str, prefer_problems: bool = False) -> str:
+    """Resolve a paper source-link shorthand to the module path in this checkout.
+
+    A slash in the shorthand does not name the library root: both roots carry
+    nested sub-directories (``Erdos249257/DiagonalPincerPrimeCertificates/`` and
+    ``ErdosProblems/Skip/``).  Guessing the root from the shape of the shorthand
+    minted coordinates for modules that do not exist -- ``Skip/LadderT67.lean``
+    resolved to ``Erdos249257/Skip/LadderT67.lean``, which no source query can
+    open.  Resolve against the checkout, and fall back to the macro's own
+    convention only when neither root holds the file.
+    """
+    if module.startswith(tuple(f"{root}/" for root in LEAN_LIBRARY_ROOTS)):
+        return module
+    roots = (
+        tuple(reversed(LEAN_LIBRARY_ROOTS)) if prefer_problems else LEAN_LIBRARY_ROOTS
+    )
+    for root in roots:
+        candidate = f"{root}/{module}"
+        if (ROOT / candidate).is_file():
+            return candidate
+    return f"{roots[0]}/{module}"
+
+
+def canonical_paper_title(title: str) -> str:
+    """Compare authored Unicode titles with their TeX-rendered spellings."""
+    canonical = title
+    for tex, rendered in PAPER_TITLE_TEX_ESCAPES:
+        canonical = canonical.replace(tex, rendered)
+    return unicodedata.normalize("NFC", canonical)
+
+
+def canonical_paper_anchor_key(
+    source: str, environment: str | None, title: str | None, anchor_kind: str | None = None
+) -> tuple[str, str | None, str | None]:
+    """Key a paper anchor the same way from the registry and from the TeX scan."""
+    resolved_environment = environment
+    if resolved_environment is None and anchor_kind in PAPER_SECTIONING_ANCHOR_KINDS:
+        resolved_environment = anchor_kind
+    return (
+        source,
+        resolved_environment,
+        canonical_paper_title(title) if isinstance(title, str) else title,
+    )
 
 
 def agent_tour_budget_bytes(indexed_problem_count: int) -> int:
@@ -2308,7 +2392,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         if label:
             claims_by_label.setdefault(label, []).append(compact_claim(claim))
     open_by_anchor = {
-        (
+        canonical_paper_anchor_key(
             row["paper_anchor"]["source"],
             row["paper_anchor"]["environment"],
             row["paper_anchor"]["title"],
@@ -2472,7 +2556,28 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             # labelled section with an authored source link is the same kind
             # of exact return surface: hiding it would make a declaration-
             # bearing family appear to have no paper route.
+            # A registered remaining-open proposition names its own paper
+            # location in docs/claims.json.  That declaration is the canonical
+            # return surface for the open problem, so a note's result-label
+            # allowlist must not hide it: dropping it left six of the eight
+            # problems' open propositions with no paper anchor at all.  It is
+            # still not promoted into the global label index -- the fallback
+            # below gives it a source-ref handle, because `res:problem` and
+            # `sec:problem` are reused across the problem notes.
+            open_anchor_key = canonical_paper_anchor_key(
+                relative,
+                start["environment"],
+                start["title"],
+                start["anchor_kind"],
+            )
+            declares_open_proposition = (
+                label_allowlist is not None
+                and start["label"] not in label_allowlist
+                and open_anchor_key in open_by_anchor
+            )
             is_structural_navigation = start["anchor_kind"] == "preamble" or (
+                declares_open_proposition
+            ) or (
                 start["anchor_kind"] in {
                     "section",
                     "subsection",
@@ -2519,9 +2624,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 else [],
                 key=lambda row: row["id"],
             )
-            open_proposition = open_by_anchor.get(
-                (relative, start["environment"], start["title"])
-            )
+            open_proposition = open_by_anchor.get(open_anchor_key)
             attached_open_propositions = [open_proposition] if open_proposition else []
             if attached_open_propositions:
                 anchor_class = "remaining_open_proposition_anchor"
@@ -2536,16 +2639,13 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             for link in re.finditer(source_link_pattern, region):
                 file_name = link.group("file")
                 macro = link.group("macro")
-                if file_name.startswith("Erdos249257/"):
-                    module = file_name
-                elif file_name.startswith("ErdosProblems/"):
-                    module = file_name
-                elif re.match(r"Erdos\d+/", file_name):
-                    module = f"ErdosProblems/{file_name}"
-                elif macro.startswith("m"):
-                    module = f"ErdosProblems/{file_name}"
-                else:
-                    module = f"Erdos249257/{file_name}"
+                module = canonical_lean_module_path(
+                    file_name,
+                    bool(
+                        re.match(r"Erdos\d+/", file_name)
+                        or macro.startswith("m")
+                    ),
+                )
                 source_links.append(
                     {
                         "edge_kind": "authored_source_link",
@@ -3257,6 +3357,25 @@ def declaration_route_memory_rows(
             )
         routed_matches.append({**declaration, "route_memory": route_memory})
     return routed_matches
+
+
+def module_source_problem_routes(
+    module_path: str,
+    problems: list[dict[str, Any]],
+    claims: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Problem routes this module source-binds to through its own families.
+
+    Both ``--module`` and the module rows of ``--search`` hand an agent a
+    resume route, so they have to agree on it.  Deriving the source-bound
+    problem handoff here keeps one definition instead of two.
+    """
+    return [
+        route
+        for route in module_problem_routes(module_path, problems, claims)
+        if route.get("reviewed_result_family_ids")
+        or route.get("claim_family_ids")
+    ]
 
 
 def module_route_memory_projection(
@@ -4406,14 +4525,23 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     module_route_memory = module_route_memory_projection(
         declarations,
         claims,
-        [
-            route
-            for route in problem_routes
-            if route.get("reviewed_result_family_ids")
-            or route.get("claim_family_ids")
-        ],
+        module_source_problem_routes(module["path"], problems, claims),
     )
-    return {
+    # Every family route a problem route carries is already served in full at
+    # the top of this packet, and each problem route keeps its
+    # ``reviewed_result_family_ids`` / ``claim_family_ids``.  Re-inlining the
+    # bodies inside the problem routes duplicated them byte for byte, which on
+    # the assembled kernel module was 58,730 of the packet's 139,052 bytes.
+    problem_routes = [
+        {
+            key: value
+            for key, value in route.items()
+            if key
+            not in {"reviewed_result_family_routes", "claim_family_routes"}
+        }
+        for route in problem_routes
+    ]
+    packet = {
         "kind": "module",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
         "lean_source_identity": formal_source_identity(claims),
@@ -4500,8 +4628,96 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
                 "exhaustive": "docs/claims.json::machine_readable_paper.module_graph",
             },
         },
+        "family_route_receipt": module_family_route_receipt(
+            reviewed_family_routes,
+            claim_family_routes,
+            len(reviewed_family_routes),
+            len(claim_family_routes),
+        ),
         "validation": "python3 scripts/build_declaration_atlas.py --check",
     }
+    fit_module_family_routes(packet, reviewed_family_routes, claim_family_routes)
+    return packet
+
+
+def module_family_route_receipt(
+    served_reviewed: list[dict[str, Any]],
+    served_claim_families: list[dict[str, Any]],
+    reviewed_total: int,
+    claim_family_total: int,
+) -> dict[str, Any]:
+    """Name what the module packet's family enumerations left out, and where it is."""
+    served_reviewed_ids = [row["id"] for row in served_reviewed]
+    served_claim_family_ids = [row["id"] for row in served_claim_families]
+    return {
+        "budget_bytes": MODULE_PACKET_BUDGET_BYTES,
+        "reviewed_result_families_total": reviewed_total,
+        "reviewed_result_families_emitted": len(served_reviewed),
+        "reviewed_result_families_omitted": reviewed_total - len(served_reviewed),
+        "claim_family_routes_total": claim_family_total,
+        "claim_family_routes_emitted": len(served_claim_families),
+        "claim_family_routes_omitted": (
+            claim_family_total - len(served_claim_families)
+        ),
+        "emitted_reviewed_result_family_ids": served_reviewed_ids,
+        "emitted_claim_family_route_ids": served_claim_family_ids,
+        "family_id_census": (
+            "problem_routes[].reviewed_result_family_ids and "
+            "problem_routes[].claim_family_ids name every family for this "
+            "module, emitted or not"
+        ),
+        "family_drilldown": "python3 scripts/query_corpus.py --claim <claim_id>",
+        "exhaustive": (
+            "docs/claims.json::claims and "
+            "docs/claims.json::external_verification_packet.main_results"
+        ),
+        "reason": (
+            "per_family_route_bodies_grow_with_the_corpus_so_the_module_packet"
+            "_carries_a_budgeted_head_and_a_named_route_to_the_rest"
+        ),
+    }
+
+
+def fit_module_family_routes(
+    packet: dict[str, Any],
+    reviewed_family_routes: list[dict[str, Any]],
+    claim_family_routes: list[dict[str, Any]],
+) -> None:
+    """Trim the module packet's family enumerations to the house packet budget.
+
+    ``--module`` on a large assembled module used to blow straight through
+    ``OUTPUT_BUDGET_BYTES`` and refuse to answer at all, because the
+    reviewed-family and claim-family expansions are per-family enumerations:
+    every family the corpus grows lengthens them, so the packet size was a
+    function of corpus size rather than of module size.  Drop whole family
+    rows from the tail, newest census entries first, until the encoded packet
+    fits, and record what was dropped in ``family_route_receipt``.
+    """
+    reviewed_total = len(reviewed_family_routes)
+    claim_family_total = len(claim_family_routes)
+    served_reviewed = list(reviewed_family_routes)
+    served_claim_families = list(claim_family_routes)
+    while True:
+        packet["reviewed_result_families"] = served_reviewed
+        packet["claim_family_routes"] = served_claim_families
+        packet["family_route_receipt"] = module_family_route_receipt(
+            served_reviewed,
+            served_claim_families,
+            reviewed_total,
+            claim_family_total,
+        )
+        encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
+        if len(encoded.encode("utf-8")) <= MODULE_PACKET_BUDGET_BYTES:
+            return
+        # Claim-registry family routes are the weaker join: a reviewed family
+        # is the Comparator-promoted canonical route for the same module, so
+        # it is the last thing to go.
+        if served_claim_families:
+            served_claim_families = served_claim_families[:-1]
+        elif served_reviewed:
+            served_reviewed = served_reviewed[:-1]
+        else:
+            return
 
 
 SEARCH_STOP_WORDS = frozenset(
@@ -5847,14 +6063,13 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                         "role": roles.get(row["id"], "Unclassified module"),
                         "declaration_count": row["declaration_count"],
                         "import_count": len(row["imports"]),
-                        "route_memory": module_route_memory_projection(
-                            [
-                                declaration
-                                for declaration in atlas_declarations(atlas)
-                                if declaration["module"] == row["path"]
-                            ],
-                            claims,
-                        ),
+                        # route_memory is filled in below, for the emitted rows
+                        # only: it needs the module's source-bound problem
+                        # routes, which are too costly to build for every
+                        # ranked module and were simply omitted here, so a
+                        # module reached through --search handed back a
+                        # different resume route than the same module reached
+                        # through --module.
                     },
                 )
             )
@@ -6102,6 +6317,20 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     ]
     ranked.sort(key=search_result_sort_key)
     results = [item[2] for item in ranked]
+    emitted_results = results[:limit]
+    problems = load("docs/problems.json").get("problems", [])
+    for result in emitted_results:
+        if result["kind"] != "module":
+            continue
+        result["route_memory"] = module_route_memory_projection(
+            [
+                declaration
+                for declaration in atlas_declarations(atlas)
+                if declaration["module"] == result["path"]
+            ],
+            claims,
+            module_source_problem_routes(result["path"], problems, claims),
+        )
     missing_registered_artifacts = [
         row["artifact_handle"]
         for row in artifact_inventory()
@@ -6113,7 +6342,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         "query": query,
         "query_interpretation": semantic_query_interpretation(query),
         "match_count": len(results),
-        "results": results[:limit],
+        "results": emitted_results,
         "omitted_match_count": max(0, len(results) - limit),
         "limit": limit,
         "artifact_availability_receipt": {
