@@ -266,19 +266,28 @@ a proof-engineering idiom.
 
 \subsubsection*{Two square-root-scale consumers (half-membership track)}
 
-\begin{thm}[257rig:c16 --- \texttt{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}, \texttt{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}]
-If
+\begin{thm}[257rig:c16 --- a square-root carry bound implies half-membership]
+Write $G$ for the greedy support and $C_G(N)$ for its centred carry. If
 \[
-\forall N,\quad \mathrm{mobiusCenteredHalfCarry}(\mathrm{greedySupport}(1/2),N) \;\le\; 2\sqrt N + 4,
+\forall N,\qquad C_G(N) \le 2\sqrt N + 4,
 \]
-then the greedy skipped support is infinite and $\mathrm{erdosSupportSeries}(2,\mathrm{greedyMersenneSupport}(1/2)) = 1/2$. Nonnegativity of the left side is unconditional (see 257bm:i-carry below); ONLY the upper $2\sqrt N+4$ bound remains open. Distinct from 257bm:c11's dyadic-band route and from 257bm:c7's largest-skip socket — the corpus records this as a genuinely independent square-root-scale frontier.
+then the greedy skipped support is infinite and its reciprocal-Mersenne series equals $1/2$.
+Nonnegativity of $C_G$ is unconditional (see 257bm:i-carry below); only the upper
+$2\sqrt N+4$ bound remains open. This is independent of 257bm:c11's dyadic-band route and
+257bm:c7's largest-skip socket.
 \par\noindent\ev{Open} \scale{cofinal} \coord{other:sqrt-carry-growth} \lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:817} \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:834}
 \end{thm}
 
-\begin{thm}[257rig:c17 --- \texttt{exists\_infinite\_support\_half\_of\_cofinalTerminalOnlyStrip}]
+\begin{thm}[257rig:c17 --- cofinal terminal-strip witnesses imply half-membership]
 \[
-\forall N\ \exists\ \text{depth } M\ge N,\ \exists\ \text{normalized word } a,\quad |\mathrm{integerHalfCarry}(\mathrm{wordSupport}(a),M-1)| \le \mathrm{halfStripBound}(M) \;\Longrightarrow\; \exists A\ \text{infinite},\ \mathrm{erdosSupportSeries}(2,A)=1/2.
+\begin{aligned}
+&\forall N\ \exists M\ge N\ \exists\text{ normalized }a:\quad
+ |C_a(M-1)| \le H(M) \\
+&\hspace{4em}\Longrightarrow\quad
+ \exists A\text{ infinite},\qquad \sum_{n\in A}\frac1{2^n-1}=\frac12,
+\end{aligned}
 \]
+where $C_a$ is the integer half-carry of the word support and $H$ is the stated strip bound.
 Same architecture as 257bm:d4: cofinal, no coherence, mutually incompatible witnesses allowed.
 Trades off against 257bm:c7 in the OPPOSITE direction — it tolerates any support inside the
 depth-$M$ window but demands the carry inside a $\sim2\sqrt M$ strip, whereas 257bm:c7 tolerates
@@ -288,7 +297,7 @@ in any prior bank.
 \par\noindent\ev{Open} \scale{cofinal} \coord{other:sqrt-carry-growth} \lean{HalfCarryCofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:34} \lean{exists\_infinite\_support\_half\_of\_cofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:192}
 \end{thm}
 
-\begin{thm}[257rig:c18 --- \texttt{greedy\_half\_infinite\_of\_cofinalStripReturn}]
+\begin{thm}[257rig:c18 --- cofinal returns of the greedy carry]
 Cofinal RETURNS of the actual greedy carry to the square-root strip give an infinite support
 with value exactly $1/2$, an alternate coordinate to 257rig:c16's pointwise bound. The exact
 bridge between the two is already landed: \texttt{halfGreedy\_precriticalSuffix\_lt\_iff\_futureSkipCoverage} shows sharp capacity $\Leftrightarrow$
@@ -300,7 +309,7 @@ here) costs exactly the future-skip capacity term.
 
 \subsubsection*{The non-effective horizon consumer}
 
-\begin{thm}[257bm:c19 --- \texttt{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}]
+\begin{thm}[257bm:c19 --- the non-effective frozen-margin consumer]
 At every dyadically safe rank $k>0$, the frozen margin $\mathrm{greedyHalfFrozenMargin}(k,J)$ is
 nonnegative for SOME horizon $J$ (monotone up in $J$). The proof is a bare limit argument
 (\texttt{tendsto\_finiteCoeffWindow\_atTop} then \texttt{(tendsto\_order.1 hlim).1 ...\allowbreak.exists}), so $J$ is produced non-effectively — the exact-row route needs the specific horizon $J=c-3$ (consumed at \texttt{halfGreedy\_precriticalSuffix\_lt\_iff\_frozenMargin\_nonneg},
@@ -315,16 +324,14 @@ $(k+J+3)/2^J < |\mathrm{halfGreedyNextDyadicExcessNumerator}(k)|/\mathrm{halfGre
 
 \subsubsection*{The equivalence \texttt{CofinalPositiveHalfGreedySkips} reduces to}
 
-\begin{thm}[257bm:c20 --- \texttt{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite} (A5/A6, public)]
+\begin{thm}[257bm:c20 --- half-membership is equivalent to infinitely many greedy skips]
 \[
 (1/2:\mathbb{R})\in\mathrm{mersenneAchievementSet} \;\Longleftrightarrow\; (\mathrm{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}.
 \]
-The positivity conjunct of 257bm:c2's hypothesis ($0<\mathrm{greedyMersenneRemainderRat}(1/2,c-1)$)
-is unconditionally dischargeable (odd-denominator parity, 257bm:i9-style), so
-$\mathrm{CofinalPositiveHalfGreedySkips} \Leftrightarrow (\mathrm{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}$,
-which this theorem proves equivalent to $1/2\in\mathrm{mersenneAchievementSet}$ directly — the
-consumer 257bm:c2 chains into is, once unwound, this exact equivalence. See 257bm:k5 for why
-this makes 257bm:c2 a trap, not a shortcut.
+Odd-denominator parity supplies the positivity clause in 257bm:c2 automatically. Thus its
+cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is
+infinite, which the displayed theorem identifies with half-membership. See 257bm:k5 for the
+reason this restatement does not itself prove membership.
 \par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
 \end{thm}
 
@@ -503,13 +510,17 @@ inside its domain, since $\varphi(n)\le n$ is standard.
 \par\noindent\ev{Cited} \scale{uniform} \coord{binary-digit} \lean{binaryCoeffTail\_le}{GenericTailOrbitRigidity.lean:85}
 \end{thm}
 
-\begin{thm}[257bm:i-t7 --- \texttt{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit} (T7), public, THE cross-problem bridge]
+\begin{thm}[257bm:i-t7 --- rationality is equivalent to a tempered binary orbit]
 For $c:\N\to\N$ with $\forall n,\ c\,n\le n$:
 \[
 \mathrm{HasRationalValue}(\mathrm{binaryCoeffSeries}\,c) \;\Longleftrightarrow\; \exists v>0,\ \exists u:\N\to\Z,\ \mathrm{IsTemperedBinaryOrbit}(c,v,u),
 \]
-where $\mathrm{binaryCoeffSeries}\,c := \sum'_n c(n{+}1)/2^{n+1}$ and $\mathrm{IsTemperedBinaryOrbit}(c,v,u) := (\forall N,\ u(N{+}1)=2u(N)-v\cdot c(N{+}1)) \wedge u(N)/2^N\to0$. ONLY the linear
-growth bound $c\,n\le n$ is required — no divisor, Mersenne, or \#257-specific structure at all.
+Here the series is $\sum'_n c(n{+}1)/2^{n+1}$, and a tempered orbit satisfies
+\[
+u(N{+}1)=2u(N)-v c(N{+}1),\qquad \frac{u(N)}{2^N}\longrightarrow0.
+\]
+Only the linear growth bound $c(n)\le n$ is required; the theorem uses no divisor,
+Mersenne, or \#257-specific structure.
 Fully problem-agnostic; instantiating $c:=\varphi$ gives a candidate \#249 reduction to the SAME
 criterion used for \#257, modulo an index-shift caveat that remains unverified.
 \par\noindent\ev{Lean} \scale{uniform} \coord{binary-digit} \lean{IsTemperedBinaryOrbit}{GenericTailOrbitRigidity.lean:67} \lean{binaryCoeffSeries}{GenericTailOrbitRigidity.lean:37} \lean{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit}{GenericTailOrbitRigidity.lean:426}
@@ -649,8 +660,8 @@ split inside the negative cell that the corpus has managed to exclude so far.
 
 \subsubsection*{Total gap mass (\texttt{HalfGapMass})}
 
-\begin{defn}[257hg:i1 --- \texttt{mersenneGap}]
-$\mathrm{mersenneGap}(n) := \mathrm{mersenneWeight}(n) - \mathrm{mersenneTail}(n) > 0$, the
+\begin{defn}[257hg:i1 --- the Mersenne gap]
+Let $g_n:=w_n-T_n>0$, the
 per-level shortfall between a single weight and the true tail sum beyond it.
 \par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2314} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2323}
 \end{defn}
@@ -697,12 +708,10 @@ independently-proved analogue on this half-membership track is UNVERIFIED, flagg
 \end{thm}
 
 \begin{prop}[257hg:i5 --- unconditional safety corollaries]
-$\mathtt{unitNumerator\_skipSafe}$: unit numerators ($u=1$) are always safe. The fatal converse
-forces $3a<2u$ ($\mathtt{three\_mul\_lt\_two\_mul\_of\_fatal}$); fatality forces $u\ge2$
-unconditionally ($\mathtt{two\_le\_of\_fatal}$) and $u\ge3$ once $u$ is odd
-($\mathtt{three\_le\_of\_fatal\_of\_odd}$). Mirror statements
-$\mathtt{unitNumerator\_skipSafe\_actualTail}$, $\mathtt{three\_mul\_lt\_two\_mul\_of\_actualTail\_fatal}$, $\mathtt{three\_le\_of\_actualTail\_fatal\_of\_odd}$ hold for the actual (not merely
-three-channel-bounded) Mersenne tail.
+Unit numerators ($u=1$) are always safe. Conversely, fatality forces $3a<2u$, hence
+$u\ge2$, and it forces $u\ge3$ when $u$ is odd. The same conclusions hold for the actual
+Mersenne tail, rather than only its three-channel bound. The exact declaration names are linked
+below.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:lambert-bound} \lean{unitNumerator\_skipSafe}{HalfGreedyFatalGap.lean:135} \lean{two\_le\_of\_fatal}{HalfGreedyFatalGap.lean:161} \lean{three\_le\_of\_fatal\_of\_odd}{HalfGreedyFatalGap.lean:173} \lean{unitNumerator\_skipSafe\_actualTail}{HalfGreedyFatalGap.lean:246}
 \end{prop}
 

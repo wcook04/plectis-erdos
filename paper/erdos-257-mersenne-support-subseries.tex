@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{5e28e73cf70a0ccf3219bb7197401307fb6d3bfd}
-\renewcommand{\commitshort}{5e28e73cf70a}
+\renewcommand{\commit}{ca0e13f8acf5ccf48506e4bdb870953d3a0856fa}
+\renewcommand{\commitshort}{ca0e13f8acf5}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -364,6 +364,7 @@ or
 \]
 \end{theorem}
 
+\begin{sloppypar}
 \noindent Checked as
 \mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2210}{dyadic_support_fraction_reciprocalMass_diverges_or_gt_one}{Lean}.
 The two alternatives are an exact necessary consequence of a dyadic rational
@@ -371,6 +372,7 @@ value.  They do not contradict rationality by themselves: a contradiction
 requires separate proofs that the reciprocal terms are summable and that the
 mass is at most $1$.  The formal nonsummability alternative also does not, by
 itself, assert a particular asymptotic law for the partial sums.
+\end{sloppypar}
 
 \paragraph{A Boolean--M\"obius characterisation.}
 The preceding theorems give necessary conditions.  The next statement is an
@@ -845,9 +847,9 @@ Lebesgue measure~$1$.
 
 \noindent Checked as
 \mword{Erdos249257/GreedyAchievementSet.lean}{656}{isCompact_mersenneAchievementSet}{compact},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1633}{perfect_mersenneAchievementSet}{perfect},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1649}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1658}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1656}{perfect_mersenneAchievementSet}{perfect},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1672}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1681}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
 and
 \mword{Erdos249257/GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}{of measure one}.
 So $\Ach$ is a fat Cantor set: strict tail domination
@@ -894,7 +896,7 @@ example below uses an exact rational upper bound.  For
 $x=3/4$, the greedy algorithm skips $\wgt1=1$ and leaves residual $3/4$,
 while the exact zero-lookahead upper bound for the remaining tail is
 $2\wgt2=2/3<3/4$; hence $3/4\notin\Ach$
-(\mword{Erdos249257/GreedyAchievementSet.lean}{1761}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1784}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
 
 The selector-to-subsum map sending a $0/1$ string $(\varepsilon_n)$ to
 $\sum_n\varepsilon_n\wgt n$, which the strict tail inequality makes injective,
@@ -1034,7 +1036,7 @@ Moreover no finite support has value $1/2$.
 \end{theorem}
 
 \noindent Checked as
-\mword{Erdos249257/GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form},
+\mword{Erdos249257/GreedyAchievementSet.lean}{2571}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form},
 \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{the terminal-bit form},
 \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{213}{half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong}{the skipped-rank form},
 \mword{Erdos249257/HalfCylinderFatalGapRightTail.lean}{781}{seamGreedyEventuallyRight_iff_existsFatalHalfGap}{the fatal-gap equivalence},
@@ -1110,8 +1112,8 @@ exclusion to show that the limiting support is infinite:
 \mword{Erdos249257/TerminalOnlyScaledVanishing.lean}{165}{half_mem_mersenneAchievementSet_of_terminalScaledVanishing}{achievement-set conclusion},
 \mword{Erdos249257/TerminalOnlyScaledVanishing.lean}{221}{exists_infinite_support_half_of_terminalScaledVanishing}{infinite-support lift}.
 The problem-level refutation is the direct formal consequence
-\mword{Erdos257/HalfCounterexampleFrontier.lean}{31}{exists_rational_half_counterexample_of_terminalScaledVanishing}{rational half counterexample},
-\mword{Erdos257/HalfCounterexampleFrontier.lean}{39}{not_universal_of_terminalScaledVanishing}{universal-claim refutation}.
+\lword{Erdos257/HalfCounterexampleFrontier.lean}{31}{exists_rational_half_counterexample_of_terminalScaledVanishing}{rational half counterexample},
+\lword{Erdos257/HalfCounterexampleFrontier.lean}{39}{not_universal_of_terminalScaledVanishing}{universal-claim refutation}.
 
 The formal source also proves equivalent terminal-bit and unbounded
 skipped-rank formulations in its internal half-cylinder seam coordinate; the

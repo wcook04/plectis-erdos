@@ -7,7 +7,7 @@ namespace. This subsection catalogues only the declarations the earlier parts do
 of it decides O1--O5 above; it fills in machinery that those targets' own producer chains were
 stated abstractly against.
 
-\subsubsection{The middle-cell update-step chain (\texttt{HalfCylinderMiddleCarryLowerBound.lean})}
+\subsubsection{The middle-cell update-step chain}
 
 The O5 discussion above states \texttt{SeamTwoSidedDyadicCellEscape} and
 \texttt{SeamUpperResetDyadicBandEscape} as named hypotheses without exposing the per-row update
@@ -63,7 +63,7 @@ derives the band from a quarter-scale overshoot exclusion plus the pulse bound $
 d\ge13$; it is evidence the base case is not itself an obstruction, nothing more.
 \end{obs}
 
-\subsubsection{Forgetting witnesses: the terminal-only bridge (\texttt{SuffixCylinderTerminalOnlyBridge.lean})}
+\subsubsection{Forgetting witnesses: the terminal-only bridge}
 
 This entire file is new and previously uncited. It is a lossy-projection bridge: every object in
 the corpus's much richer suffix-cylinder stage machinery (\texttt{CylinderStage},
@@ -101,7 +101,7 @@ for HALF: it has not been checked against O3's \texttt{CofinalExactLocalMersenne
 direction; no equivalence claim is made anywhere in the file.
 \end{obs}
 
-\subsubsection{A strict weakening chain for the last-producer socket (\texttt{HalfCylinderLastProducerContradiction.lean})}
+\subsubsection{A strict weakening chain for the last-producer socket}
 
 Five declarations extend the already-cited \texttt{SeamMiddleProducerSqrtEscape} socket with a
 genuine strength reduction, wiring the $-3$ cell closure into the producer chain rather than
@@ -131,7 +131,7 @@ it (\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerTailEscape}{HalfC
 \mathrm{ExceptNegThree}\Rightarrow\mathrm{HALF}$, three strictly decreasing sockets where previously
 only the endpoints were exposed; all three antecedents remain \ev{Open}.
 
-\subsubsection{The governed frozen-margin producer (\texttt{HalfCylinderFiniteShadow.lean})}
+\subsubsection{The governed frozen-margin producer}
 
 One further declaration completes a chain the earlier parts cite only up to its antecedent
 equivalence (\lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1229}).
@@ -151,8 +151,7 @@ excess-sign equivalence already noted above. This is the module's actual promise
 antecedent's own first-passage bound ($J\le k+1$, uniform) is \ev{Open} and has not been checked
 against any of O3--O5's producer sockets.
 
-\subsubsection{Exact carry-pivot normal form
-(\texttt{SuffixCylinderCarryPivot.lean})}
+\subsubsection{Exact carry-pivot normal form}
 
 Numeral-adjacent boundary words have more structure than the previously used
 coefficient bound.  If the lower suffix numeral is one larger than the upper
@@ -177,7 +176,7 @@ The stage-level theorem consumes adjacent profiled prefixes directly
 not produce adjacent stages cofinally and therefore does not close HALF or
 universal \#257.
 
-\subsubsection{New tree: \texttt{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean}}
+\subsubsection{New Mersenne-subseries rigidity tree}
 
 This module works in the new \texttt{ErdosProblems.Erdos257} namespace and states in its own header
 that its results ``concern achievement-set geometry and do not settle the universal irrationality
@@ -204,7 +203,7 @@ which is exactly where unique binary coding is spent). None of this module touch
 subseries value; it is a self-contained measure-and-topology classification of achievement sets, orthogonal
 to O1--O5.
 
-\subsubsection{New tree: \texttt{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean}}
+\subsubsection{New half-counterexample frontier tree}
 
 This short module restates $\mathrm{U257}$ in the new namespace
 (\lean{UniversalMersenneSubseriesIrrationality}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:26}) and gives it a
@@ -231,7 +230,7 @@ for every finite $F$
 $\operatorname{lcm}(F)=6$, after which the eight subsets of $\{2,3,6\}$ are exact arithmetic.
 This removes finite termination for that target; it does not establish achievement-set membership.
 
-\subsubsection{New tree: \texttt{Erdos249257/Primitive23Multiplicity.lean}}
+\subsubsection{New primitive-$23$ multiplicity tree}
 
 This module records the exact arithmetic of the primitive cone
 $2p+3q=n$, $p,q>0$, $\gcd(p,q)=1$
@@ -249,8 +248,7 @@ route diagnostics rather than as a counterexample: the file does not prove that 
 integer-multiplicity expansion of $1/21$ Booleanises.  The recurring multiplicities are precisely
 the unresolved collision data, not zero--one support digits.
 
-\subsubsection{Current $1/21$ frontier:
-\texttt{Erdos249257/TwentyOneQuotientGreedy.lean}}
+\subsubsection{Current $1/21$ frontier}
 
 The later quotient-greedy analysis removes the diffuse alternatives.  Let
 \texttt{TwentyOneFatalAlignedBranch} denote the explicit branch consisting

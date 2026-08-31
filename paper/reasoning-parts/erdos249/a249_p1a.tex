@@ -84,7 +84,20 @@ $\forall r:\mathbb{Q},\ 1\le h\le 16,\ r.\mathrm{den}\mid
 \end{prop}
 
 \begin{prop}[cert:b11 --- diagonal pincer finite deposits, historical bank and current band]
-$\mathrm{certifiedKill\_diagonal\_all\_imported} : \forall t \in \{1,2,3,4,5,7,8,9,11,13,16,17,\dots\},\ \mathrm{certifiedKill}(\mathrm{periodLcm}(t))(\mathrm{periodLcm}(t))(\mathrm{diagonalPincerKillDepth}(t))$, with explicit certificate depths $[6,5,7,7,9,14,15,14,21,22,23,26,\dots]$, extended by sibling modules through $t=64$ (28 explicit deposits total, endpoint \texttt{certifiedKill\_diagonal\_t64}). Each instance is a finite \texttt{decide}/\texttt{norm\_num} computation on explicit \texttt{Nat.totient} values, factored via checked prime-power blocks (\texttt{FactorBlock}, \texttt{totient\_factorBlocks}, \texttt{prime\_dvd\_factorBlocks}) with Lucas-primality certificates for the primes involved. This is the concrete finite floor of the single-parameter diagonal sequence $P(t) := \exists L,\ \mathrm{certifiedKill}(\mathrm{periodLcm}(t))(\mathrm{periodLcm}(t))\,L$ (cert:b3 below): it produces $P(t)$ for these 28 explicit $t$, and does \emph{not} establish $P(t)$ for infinitely many $t$ — quantifier order is exact: a finite witnessed list, not a cofinal supply.
+Let $H_t=\operatorname{lcm}(1,\ldots,t)$ and let
+\[
+P(t)\quad:\Longleftrightarrow\quad \exists L,\ \mathrm{certifiedKill}(H_t,H_t,L).
+\]
+The checked certificate bank proves $P(t)$ at 28 explicit indices, ending at $t=64$.
+For the initial indices
+\[
+t=1,2,3,4,5,7,8,9,11,13,16,17,\ldots,
+\]
+the corresponding depths begin
+$6,5,7,7,9,14,15,14,21,22,23,26,\ldots$.
+Each entry is a finite kernel computation on explicit totient values. The factorisations use
+checked prime-power blocks and Lucas primality certificates. Thus the bank proves a finite list
+of instances of $P(t)$; it does not prove that $P(t)$ holds for infinitely many $t$.
 \par\noindent\ev{Cert} \scale{fixed} \coord{other:lcm-diagonal} \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} \lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844} \lean{certifiedKill\_diagonal\_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}
 
 The historical 28 deposits are now a strict subset of the aggregate theorem

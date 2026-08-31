@@ -35,11 +35,11 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public formal-source checkpoint used by this paper.
-\newcommand{\commit}{f25aa067c8457f28c0311e7972b524054a2de6b1}
-\newcommand{\commitshort}{f25aa067c845}
+\newcommand{\commit}{ca0e13f8acf5ccf48506e4bdb870953d3a0856fa}
+\newcommand{\commitshort}{ca0e13f8acf5}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
-\newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main}
+\newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\PK}{Erdos249257}
 \input{module-aliases.tex}
 % Formal source coordinates and exact declaration names remain in the
@@ -66,6 +66,7 @@
 \newcommand{\lloc}[2]{\href{\repobase/\PK/#1\#L#2}{Lean source}}
 % \rref{rootfile}: link a repository-root navigation file at the public main branch.
 \newcommand{\rref}[1]{\href{\rootbase/\detokenize{#1}}{repository record}}
+\newcommand{\rootword}[4]{\href{\rootbase/#1\#L#2}{#4}}
 \emergencystretch=2em
 
 \newtheorem{theorem}{Theorem}[section]
@@ -4286,15 +4287,15 @@ recurrence gives
   \zeta_{h,M+1}=\zeta_{h,M}^{\,2}
 \]
 because its integer carry increment vanishes after exponentiation
-\lword{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean}{167}{tailOrbitFirstExp_succ}{exact squaring recurrence}.
+\rootword{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean}{167}{tailOrbitFirstExp_succ}{exact squaring recurrence}.
 Thus
 \(\zeta_{h,M+k}=\zeta_{h,M}^{2^k}=\zeta_{h,0}^{2^{M+k}}\), and the formal
 prime-gap predicate is equivalent to the same threshold test on this
 initial-phase orbit along shifted primes
-\lword{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean}{278}{naturalPrimeTailOrbitStrictGap_iff_initial_phase}{initial-phase equivalence}.
+\rootword{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean}{278}{naturalPrimeTailOrbitStrictGap_iff_initial_phase}{initial-phase equivalence}.
 If an iterate is a dyadic root of unity, repeated squaring reaches the
 absorbing phase (1), which obstructs the strict producer
-\lword{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean}{322}{not_naturalPrimeTailOrbitStrictGap_of_dyadic_root}{dyadic-root obstruction}.
+\rootword{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean}{322}{not_naturalPrimeTailOrbitStrictGap_of_dyadic_root}{dyadic-root obstruction}.
 This is one conditional family and a useful natural-friction boundary, not a
 classification of the actual initial phase: it proves no anti-concentration,
 phase density, equidistribution, or cofinal prime supply.

@@ -295,8 +295,15 @@ four independent producers that happen to agree so far.
 
 The cleanest of the four coordinates to reason about directly is the rung ladder, because at each
 finite $J$ it is a genuinely finite, decidable question. Fix $J\ge2$ and set
-$$w_n^{(J)}:=\sum_{q=1}^{J}2^{-qn},\qquad T_{n+1}^{(J)}:=\sum_{q=1}^{J}\frac{2^{-qn}}{2^q-1},\qquad
-\mathrm{HalfRung}(J):=\exists\,A\subseteq\{2,3,\ldots\},\ \sum_{n\in A}w_n^{(J)}=\tfrac12.$$
+\[
+\begin{aligned}
+w_n^{(J)}&:=\sum_{q=1}^{J}2^{-qn}, &
+T_{n+1}^{(J)}&:=\sum_{q=1}^{J}\frac{2^{-qn}}{2^q-1},\\
+\mathrm{HalfRung}(J)&:\Longleftrightarrow
+\exists A\subseteq\{2,3,\ldots\},&
+\sum_{n\in A}w_n^{(J)}&=\tfrac12.
+\end{aligned}
+\]
 Every result in this subsection is \ev{Math}, proved in ordinary mathematics and cross-checked by
 exhaustive or randomised computation, \emph{not} yet formalised in Lean.
 

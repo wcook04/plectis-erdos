@@ -493,9 +493,9 @@ Zero Mersenne/seam content in the core lemma — pure $(d,E,j)$ arithmetic over 
 
 \begin{obs}[Rows 13 through 31 are unconditionally certified]
 \label{cert:band-through-31}
-$\mathsf{seamUpperResetDyadicBandEscape\_through\_thirty}$ verifies Definition~\ref{defn:band-escape}
-by kernel computation of $\mathrm{rem}(s)$ for every row $13\le s\le31$ — e.g.\ row 14 gives $\mathrm{rem}(14)=392$,
-row 31 gives $\mathrm{rem}(31)=4187487147$ — with \textbf{zero} rows failing the band-avoidance test.
+The linked certificate verifies Definition~\ref{defn:band-escape} by kernel computation for every
+row $13\le s\le31$. For example, $\mathrm{rem}(14)=392$ and
+$\mathrm{rem}(31)=4{,}187{,}487{,}147$. No row in this interval fails the band-avoidance test.
 \lean{Erdos249257.seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}.
 \ev{Cert}\scale{bounded}
 \end{obs}

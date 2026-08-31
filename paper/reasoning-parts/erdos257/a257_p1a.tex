@@ -389,9 +389,12 @@ that pair of properties.
 
 \begin{thm}[The half-skip dichotomy via Erd\H{o}s--Borwein irrationality]
 \label{thm:half-skip-dichotomy}
-$1/2\in\mathrm{mersenneAchievementSet} \iff (\mathrm{greedyMersenneSkippedSupport}(1/2))
-\text{ is infinite}$. Forward direction uses irrationality of the Erd\H{o}s--Borwein
-constant (\emph{erdosBorweinMersenneConstant} $=\mathrm{mersenneTail}\,0$, unconditional):
+Write $K$ for the Mersenne achievement set and $G(1/2)$ for the greedy skipped support. Then
+\[
+\frac12\in K \quad\Longleftrightarrow\quad G(1/2)\text{ is infinite}.
+\]
+The forward direction uses irrationality of the Erd\H{o}s--Borwein constant (the complete
+Mersenne tail from rank zero):
 if only finitely many exponents were skipped, the constant would equal $1/2$ plus a
 finite rational, contradicting irrationality. The mechanism (rational/finite-representable
 target, irrational full-series baseline $\Rightarrow$ complement support infinite) is
@@ -481,10 +484,12 @@ $\mathrm{mersenneTail}\,n = \mathrm{mersenneWeight}(n{+}1)+\mathrm{mersenneTail}
 
 \begin{lem}[Fatal-gap exclusion: kills every support, not just greedy]
 \label{lem:fatal-gap-exclusion}
-If $t$ lies strictly inside the rank-$(d{+}1)$ gap
-$(\mathrm{mersenneSupportPrefix}\,A\,d + \mathrm{mersenneTail}(d{+}1),\,
-\mathrm{mersenneSupportPrefix}\,A\,d + \mathrm{mersenneWeight}(d{+}1))$ for a fixed prefix
-mass, then $\mathrm{positiveMersenneSupportValue}\,A\ne t$ for \emph{every} support $A$
+Write $P_A(d)$ for the rank-$d$ prefix, $T(d+1)$ for the remaining tail, and $w_{d+1}$ for
+the next weight. If
+\[
+P_A(d)+T(d+1)<t<P_A(d)+w_{d+1},
+\]
+then the full support value is not $t$ for \emph{every} support $A$
 achieving that prefix, not merely the greedy orbit. Pure consequence of
 superincreasingness, no Mersenne-specific arithmetic beyond the weight function. The
 ``kill certificate'' primitive: any concrete numeric interval computation landing inside a
@@ -522,14 +527,15 @@ rule out the actual greedy orbit's half-representation.
 \lean{IsStraddlePrefix.erase\_top}{HalfCutLocator.lean:334}
 \end{lem}
 
-\begin{thm}[Last-skip iff local fatality: half-membership as an infinite pointwise conjunction]
+\begin{thm}[Last-skip iff local fatality: a pointwise criterion]
 \label{thm:last-skip-iff-fatal}
-$\mathrm{IsLastHalfGreedySkip}\,M \iff M\in\mathrm{greedyMersenneSkippedSupport}(1/2)
-\land \mathrm{GreedyMersenneFatalAt}(1/2)\,M$. Equivalently: no last skip exists iff every
-actual skip survives, giving
-$1/2\in\mathrm{mersenneAchievementSet} \iff \forall M\in
-\mathrm{greedyMersenneSkippedSupport}(1/2),\, \mathrm{greedyMersenneRemainder}(1/2)\,M\le
-\mathrm{mersenneTail}\,M$. Turns half-membership into an infinite conjunction over
+Write $G$ for the greedy skipped support, $R_M$ for the greedy remainder, and $T_M$ for the
+remaining tail. A rank $M$ is the last skip exactly when $M\in G$ and the state at $M$ is fatal.
+Equivalently,
+\[
+\frac12\in K \quad\Longleftrightarrow\quad \forall M\in G,\ R_M\le T_M.
+\]
+This turns half-membership into an infinite conjunction over
 \emph{actually skipped} ranks only — the reduction from a global fatal-state statement to
 a rank-local pointwise inequality is a generic greedy-recursion fact.
 \par\ev{Lean}\scale{uniform}\coord{greedy-orbit}
@@ -699,11 +705,12 @@ nonmembership of any point, and in particular says nothing about $1/2$ directly.
 
 \begin{lem}[Half-divisor unit drop: smallest single-bit coefficient producer]
 \label{lem:half-divisor-unit-drop}
-At row $2(N{+}1)$, changing only exponent $N{+}1$ from \emph{false} to \emph{true} in a
-\emph{HalfWord N} adds exactly the half-divisor incidence to \emph{supportCoeff}:
-$\mathrm{supportCoeff}(\mathrm{wordSupport}(\mathrm{extend}\,a\,\mathrm{true}))(2(N{+}1)) =
-\mathrm{supportCoeff}(\mathrm{wordSupport}(\mathrm{extend}\,a\,\mathrm{false}))(2(N{+}1))
-+ 1$. The smallest possible ``flip one bit, coefficient changes by exactly $1$''
+Let $C_a(m)$ denote the support coefficient of the word $a$ at $m$. At row $2(N+1)$,
+changing only exponent $N+1$ from false to true gives
+\[
+C_{a\mathbin{+}\mathrm{true}}(2N+2)=C_{a\mathbin{+}\mathrm{false}}(2N+2)+1.
+\]
+This is the smallest possible ``flip one bit, coefficient changes by exactly $1$''
 producer. The mechanism (flipping a single word-bit changes a divisor-incidence sum by
 exactly the number of new divisor relations created) is a generic digit/divisor-incidence
 fact, restating for any base-$2$ divisor-coefficient bookkeeping, including \#249's own
