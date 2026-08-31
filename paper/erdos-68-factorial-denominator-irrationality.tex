@@ -69,7 +69,16 @@ specified least common multiple to divide that moment.  A two-term prime
 correction isolates one channel, and a Cramer construction gives arbitrarily
 remote finite supports that cancel any prescribed finite set of channels and
 have residual of absolute value at most $1/2$.  That rounded residual may be
-zero.  Separately, endpoint congruences turn sufficiently large residues or
+zero.  The lcm obstruction also has a quantitative endpoint.  If a positive
+moment $M$ is divisible by every channel modulus through $D=2t^2$ and
+$M<(R+1)!-1$, then, for $t\ge2^{32}$,
+\[
+  3t^3<2(R+1).
+\]
+Thus a family satisfying these hypotheses cannot have
+$2(R(t)+1)\le3t^3$ eventually.  This is a checked cubic radius obstruction,
+not a construction of the required moments or channel cancellations.
+Separately, endpoint congruences turn sufficiently large residues or
 disagreement between two projections into finite exclusions.
 
 There is also a sharp finite breakpoint hidden inside this channel picture:
@@ -186,6 +195,7 @@ Irrationality of $\Ser$ & Open & No proof is claimed. \\
 Canonical factorial digit kernel & Checked & Floor formula, digit bounds, remainder recurrence, finite expansion, zero-tail propagation. \\
 Channel integrality & Checked & $(d!)^{\lfloor i/d\rfloor}\mid i!$, with exact denominator cancellation. \\
 Channel congruence and LCM obstruction & Checked & $\chn d\lambda\equiv M\pmod{d!-1}$; annihilating channels through $D$ forces $\Lc_D\mid M$. \\
+Square-subsequence channel radius & Checked & If $M>0$, $\Lc_{2t^2}\mid M$, and $M<(R+1)!-1$, then $3t^3<2(R+1)$ for $t\ge2^{32}$; the reverse cubic bound cannot hold eventually. \\
 Two-term prime channel corrector & Checked & The pair $(p,-1)$ on $(p-1,p)$ has moment $0$, all channels $0$ except $d=p$, and $p$-channel numerator $p!-1$. \\
 Weighted projection rigidity & Checked & If $Z\equiv T\pmod R$, $Q_i\mid R$, and $Z\le B<Q_i$, then unequal residues $T\bmod Q_1$ and $T\bmod Q_2$ exclude that endpoint. \\
 Factor-split projection reduction & Checked & Two divisor factors of one private modulus support the same cancellation and disagreement bounds; coprime factors give a branch-free floor and may lie in one private quotient. \\
@@ -420,8 +430,45 @@ the congruence forces every normalised channel defect to be integral.
 
 Theorem~\ref{res:congruence} is an obstruction rather than a source of
 cancellation.  Any finite family that kills the low channels must have moment
-divisible by $\Lc_D$, and $\Lc_D$ grows faster than the tail shrinks.  The
-returned analysis proposes the quantitative form
+divisible by $\Lc_D$.  The following checked theorem quantifies the resulting
+radius cost without assuming an unproved asymptotic for $\Lc_D$.
+
+\begin{theorem}[square-subsequence channel radius]\label{res:channel-radius}
+Let $t,M,R\in\mathbb N$.  Suppose that $t\ge2^{32}$, $M>0$,
+\[
+  \Lc_{2t^2}\mid M,
+  \qquad
+  M<(R+1)!-1.
+\]
+Then
+\[
+  3t^3<2(R+1).
+\]
+Consequently, for sequences $M(t),R(t)$ satisfying the same three hypotheses
+for every sufficiently large $t$, there is no $T$ such that
+$2(R(t)+1)\le3t^3$ for all $t\ge T$.
+\end{theorem}
+
+The proof is finite.  It takes the final block of $2t$ factorial gaps below
+$D=2t^2$, bounds their product by $\Lc_D$ times an explicit power of $D$, and
+counts the loss from pairwise gcds by the cubic exponent
+$\binom{2t+1}{3}$.  A Stirling estimate then converts the factorial upper bound
+on $M$ into the displayed lower bound for $R$.  The pointwise statement is
+checked at
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1084}{square_subsequence_radius_three_halves_lower}{the sharp radius theorem},
+and its sequence form at
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1103}{no_eventual_square_subsequence_three_halves_upper}{the eventual no-go theorem}.
+A coarser checked form says that $R(t)+1$ cannot be $o(t^3)$ under the
+corresponding hypotheses from $t\ge4096$ onward
+\lword{Erdos68/ChannelIntegralCongruence.lean}{905}{not_isLittleO_square_subsequence_radius}{the little-o obstruction}.
+
+The theorem does not show that a kernel attached to the factorial-gap series
+has vanishing channels through $2t^2$, nor does it construct the positive
+moment $M$ and radius $R$ with the stated factorial inequality.  It therefore
+restricts any such channel construction but does not supply the missing
+cofinal non-unit carries.
+
+For comparison, the returned analysis also proposes the asymptotic form
 \[
   \log \lcm_{2\le n\le N}(n!-1)\ \gg\ N^{4/3}\log N
   \qquad(N\to\infty).
@@ -1454,6 +1501,11 @@ series.
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{140}{lambda34_channel_ge_five}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{151}{lambda34ResidualOfTail}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{156}{lambda34_residual_bounds}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{868}{square_subsequence_radius_cubic_lower}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{885}{no_eventual_square_subsequence_cubic_upper}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{905}{not_isLittleO_square_subsequence_radius}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1084}{square_subsequence_radius_three_halves_lower}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1103}{no_eventual_square_subsequence_three_halves_upper}
 \end{itemize}
 
 \clearpage
