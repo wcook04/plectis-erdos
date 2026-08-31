@@ -1,5 +1,6 @@
 import ErdosProblems.Erdos1041.CriticalTwoRootProximity
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
+import ErdosProblems.Erdos1049.AdelicHeightBridge
 import ErdosProblems.Erdos1049.HermitePadeNoGo
 import ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence
 import ErdosProblems.Erdos1049.RationalBaseLambert

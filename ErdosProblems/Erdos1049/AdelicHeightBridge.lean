@@ -70,8 +70,10 @@ theorem fortyOne_sixtyFive_lt_logTwo_div_logThree :
 
 /-! ## The Archimedean deficit -/
 
-/-- **Exact distance from the Bundschuh--Väänänen frontier.**  The two
-certificates subtract exactly: `41/65 - 2/5 = 3/13`. -/
+/-- **Strict certificate gap above the Bundschuh--Väänänen frontier.**  The
+displayed certificates give the threshold `41/65 - 2/5 = 3/13`; the theorem
+proves a strict lower bound above that threshold, not an exact value for the
+actual gap. -/
 theorem threeHalves_bv_height_gap_gt_threeThirteenths :
     (3 : ℝ) / 13 < Real.log 2 / Real.log 3 - (1 / 2 - 1 / Real.pi ^ 2) := by
   have hratio := fortyOne_sixtyFive_lt_logTwo_div_logThree
