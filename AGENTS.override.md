@@ -72,6 +72,7 @@ This lane is not a mathematical query. Start with the committed cold-clone
 contract and bounded orientation:
 
 ```sh
+python3 scripts/proof_cockpit.py --format card
 python3 scripts/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 ```
@@ -159,6 +160,7 @@ Use the smallest relevant proof first:
 
 ```sh
 python3 scripts/test_compact_agent_entry.py
+python3 scripts/test_proof_cockpit.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 python3 scripts/check_architecture_guide.py
 ```

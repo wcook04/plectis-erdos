@@ -15,6 +15,12 @@ Use [docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md) for the compact command
 routes and [CONTRIBUTING.md](CONTRIBUTING.md) for contribution mechanics. This
 file remains the deeper authority, mutation, and validation contract.
 
+For a cold-clone status question, continuation, proof-frontier scan, or first
+action, run `python3 scripts/proof_cockpit.py --format card` before opening
+large registries or source trees. Its public-native contract is
+[docs/PROOF_COCKPIT.md](docs/PROOF_COCKPIT.md). The card composes public facts;
+it never imports private workflow state and is not proof authority.
+
 For any reader-facing mathematical Markdown or manuscript edit, load
 [skills/public-mathematical-writing/SKILL.md](skills/public-mathematical-writing/SKILL.md).
 It keeps mathematical truth and evidence upstream of prose and keeps the human
@@ -570,6 +576,7 @@ never declaration names or mathematical prose.
 A separate diagnostic checks that a cold clone stays readable:
 
 ```sh
+python3 scripts/test_proof_cockpit.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 python3 scripts/check_architecture_guide.py
 python3 scripts/test_architecture_guide.py

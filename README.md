@@ -306,12 +306,10 @@ These are navigation counts, not novelty claims.
   indexed declaration and exact dependencies for both loaded roots; coverage
   keeps direct evidence, family context, and structural discovery distinct.
   These are navigation projections, not proof authority.
-- **Agent working inside the corpus:** [the Agent Workbench](docs/AGENT_WORKBENCH.md)
-  gives the instrument panel, the typed move grammar, and the three-rung
-  invention ladder that fixes what a session may claim. Sessions are append-only
-  ledgers under `workbench/sessions/`; `python3 scripts/proof_workbench.py show
-  --session <slug>` reads one without Lean, and `replay --session <slug>`
-  re-runs its stored probes and reports whether the recorded verdicts still hold. The one landed prospective session,
+- **Agent control:** the [proof cockpit](docs/PROOF_COCKPIT.md) gives one
+  cold-clone status/frontier card (`python3 scripts/proof_cockpit.py`), while
+  [the Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves
+  and kernel probes under `workbench/sessions/`. The one landed prospective session,
   [`carry_pivot_2026_07_27`](workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
   produced [`SuffixCylinderCarryPivot.lean`](Erdos249257/SuffixCylinderCarryPivot.lean).
   Only kernel receipts assert; ledger notes and static nominations stay advisory.

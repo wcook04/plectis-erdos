@@ -249,6 +249,8 @@ The main local commands are:
 python3 scripts/check_architecture_guide.py
 
 # Fast check of the committed first-reading surfaces; no Lean build
+python3 scripts/proof_cockpit.py --check
+python3 scripts/test_proof_cockpit.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 
 # Full check of public claims, documents, generated files, and release rules
