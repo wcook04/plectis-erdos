@@ -23,7 +23,8 @@
         "research_corpus/Erdos269/BoundedRadixTailEscape.lean",
         "research_corpus/Erdos269/DyadicRadixTailEscape.lean",
         "research_corpus/Erdos269/DyadicOrderedTailRecurrence.lean",
-        "research_corpus/Erdos269/ThreePrimeRunningLcm.lean"
+        "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "research_corpus/Erdos269/research_packet.json"
       ]
     },
     {
@@ -175,7 +176,8 @@
       ],
       "why_it_matters": "Forces any successful mechanism to be genuinely nonlocal or measure-theoretic, not a finite automaton.",
       "public_authority_paths": [
-        "research_corpus/Erdos269/KernelCarryRank.lean"
+        "research_corpus/Erdos269/KernelCarryRank.lean",
+        "research_corpus/Erdos269/research_packet.json"
       ]
     },
     {

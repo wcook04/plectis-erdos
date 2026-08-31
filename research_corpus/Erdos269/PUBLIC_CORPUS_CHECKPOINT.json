@@ -9,7 +9,7 @@
   "publication_scope": "committed problem-facing Lean, mathematical notes, labs, and the research packet",
   "status": "source_current_problem_snapshot",
   "corpus_manifest_path": "research_corpus/Erdos269/CORPUS_MANIFEST.json",
-  "corpus_manifest_sha256": "0fb94307584a7c407ae689ad1c7344db964945367b8956c8ca5e0a9c46513b51",
+  "corpus_manifest_sha256": "8aac99e42c65d591d64cd8f7c882ed16cfa10bff14f55df94071bad2d528f541",
   "strongest_result_map_path": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
-  "strongest_result_map_sha256": "6652d6547147953274b9a90772ab50e1ef514164fb26d8373634f354cf808a05"
+  "strongest_result_map_sha256": "9d212f4fed6145207cd4d1bf37e9752a7a71468982d1b540e6a54f6edf6f1113"
 }
