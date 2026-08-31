@@ -74,6 +74,29 @@ The exact actual-LCM frontier is
   \forall a_0\ \exists a\ge a_0,\ R_a\notin\Z
 \]
 (\mword{Erdos249257/TotientActualLcmOrbitNonintegrality.lean}{37}{irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply}{exact frontier}).
+A second exact frontier removes an apparently free search variable.  Given a
+basepoint $c$ and a positive odd $v$, choose $H>0$ with $\ph(v)\mid H$ and
+$vM=2^H-1$.  Irrationality is equivalent to the existence of such $H,M$ for
+which the least nonnegative residue
+\[
+ \bigl(-\operatorname{totientBlock}(H,c)\bigr)\bmod M
+\]
+lies strictly between the two endpoint intervals of width $c+H+1$
+(\lword{Erdos249/CyclotomicAnchoredKill.lean}{2976}{fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational}{canonical Mersenne equivalence}).
+Thus the basepoint is canonically $N=c$; no remote $N$ remains to be found.
+The residue evolves by an exact affine doubling recurrence.  This is an exact
+reformulation, not a proof of the still-missing centered-gap supply.
+
+A third exact frontier shows that locking certificate depth to its period
+costs nothing.  One arbitrary-depth seed certificate on a $d$-ray forces
+full-depth certificates on an eventually $2$-syndetic set of multipliers, so
+the pointwise full-depth predicate, its cofinal version, the arbitrary-depth
+period-multiple supply, and irrationality of $\Stot$ are equivalent
+(\lword{Erdos249/FullDepthRayAmplifier.lean}{364}{eventually_twoSyndetic_fullDepthKillMultipliers_of_seed}{eventual two-syndeticity};
+\lword{Erdos249/FullDepthRayAmplifier.lean}{406}{apFullDepthEscape_iff_irrational}{pointwise equivalence};
+\lword{Erdos249/FullDepthRayAmplifier.lean}{438}{cofinalFullDepthKillSupply_iff_irrational}{cofinal equivalence}).
+This amplification does not produce the initial non-integral shift or seed;
+Problem~\#249 therefore remains open.
 A stronger quantitative consumer assumes that, for every $a_0$, there are
 $a,q\in\N$ such that
 \[
@@ -177,8 +200,9 @@ made for the conditional endpoint routes, and formalisation alone is not
 presented as evidence that Problem~\#249 is solved.
 \end{abstract}
 
-\externalreviewobject{The paper first exposes two distinct conditional
-endpoint consumers for Problem~\#249: quantitative separation of the actual
+\externalreviewobject{The paper first exposes the exact actual-LCM,
+canonical-Mersenne, and full-depth period-multiple frontiers, followed by two
+distinct quantitative consumers for Problem~\#249: separation of the actual
 power-two LCM orbit, and a four-term first-harmonic budget with a cofinal
 residual-decorrelation producer.  It then gives the explicit odd-core basis,
 relation normal form, exact finite-level rank $2^e+1$, and the sharp positive
@@ -223,6 +247,10 @@ the problem statement.
 The closest checked routes to the endpoint come first.  The actual power-two
 LCM orbit gives an exact cofinal non-integrality equivalence and a stronger
 quantitative separation consumer; the latter still lacks its cofinal supply.
+The canonical Mersenne formulation removes the remote-basepoint search, and
+the full-depth amplifier proves that forcing certificate depth to equal the
+period loses no strength: one seed gives eventual $2$-syndeticity on its ray.
+Both are exact reformulations of the open endpoint, not new producers.
 The independent first-harmonic route turns four explicit supplier-fibre
 budgets into a $9X/10$ window bound and reaches irrationality only under its
 fully quantified residual-decorrelation socket.  That socket is unproved, and
@@ -316,6 +344,57 @@ rational (Section~\ref{sec:carry-rank}).
 {\small
 \begin{enumerate}[label=\textbf{R\arabic*.},ref=R\arabic*,leftmargin=2.4em,
   itemsep=0.2em,topsep=0.25em]
+
+\item\label{res:canonicalmersenne} \stag{formalised here}
+\textbf{Canonical Mersenne arithmetic frontier.}  Let
+\[
+ B_{H,N}=\sum_{j=0}^{H-1}\ph(N+1+j)2^{H-1-j},\qquad
+ \rho_{H,N,M}=(-B_{H,N})\bmod M.
+\]
+For every $c,v\in\N$ with $v>0$ and $\gcd(2,v)=1$, the statement that there
+are $H,M\in\N$ with
+\[
+ H>0,\qquad \ph(v)\mid H,\qquad vM=2^H-1,
+ \qquad c+H+1<\rho_{H,c,M}<M-(c+H+1)
+\]
+is equivalent, after quantifying over $c,v$, to irrationality of $\Stot$.
+The basepoint is exactly $c$, the dyadic valuation of a prospective rational
+denominator; the older centered-residue supply searched for a remote
+$N\ge\max(c,N_0)$.  The canonical statement implies that older supply by
+feeding $\max(c,N_0)$ into its $c$-slot.  Moreover, whenever $M\mid2^H-1$,
+the finite residue obeys the exact recurrence
+\[
+ \rho_{H,N+1,M}
+ =\bigl(2\rho_{H,N,M}-(\ph(N+H+1)-\ph(N+1))\bigr)\bmod M.
+\]
+This removes analytic tails, carry trajectories, and remote-basepoint search
+from the equivalent residual, but it does not prove the required central gap.
+{\footnotesize\emph{Checked:}
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{2185}{fullMersenneBlockResidue_succ}{residue recurrence},
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{2943}{fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint}{dominance over the remote supply},
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{2976}{fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational}{exact equivalence}.}
+
+\item\label{res:fulldepth} \stag{formalised here}
+\textbf{Full-depth ray amplification and exactness.}  Fix $d>0$ and $N$.
+If $(d,N,L)$ is a finite tail-difference certificate at any depth $L$, then
+there is $T>0$ such that every pair $\{t,t+1\}$ with $t\ge T$ contains a
+multiplier $m$ for which $(md,N,md)$ is a certificate.  Thus one seed forces
+an eventually $2$-syndetic family whose depth equals its period.  Pointwise,
+\[
+ \exists t>0:\ (td,N,td)\text{ is certified}
+ \quad\Longleftrightarrow\quad R_{N+d}-R_N\notin\Z.
+\]
+Consequently the predicate demanding such a full-depth certificate for every
+$d>0,N$ is equivalent to irrationality of $\Stot$.  Its cofinal-in-$N$
+version is equivalent both to the older arbitrary-depth period-multiple
+supply and to irrationality.  The theorem proves that the depth lock is free;
+it does not produce the first non-integral shift or seed.
+{\footnotesize\emph{Checked:}
+\lword{Erdos249/FullDepthRayAmplifier.lean}{364}{eventually_twoSyndetic_fullDepthKillMultipliers_of_seed}{eventual two-syndeticity},
+\lword{Erdos249/FullDepthRayAmplifier.lean}{388}{exists_fullDepthKill_on_ray_iff_shift_notMem_int}{pointwise equivalence},
+\lword{Erdos249/FullDepthRayAmplifier.lean}{406}{apFullDepthEscape_iff_irrational}{global equivalence},
+\lword{Erdos249/FullDepthRayAmplifier.lean}{421}{cofinalFullDepthKillSupply_iff_periodMultipleKillSupply}{cofinal depth deletion},
+\lword{Erdos249/FullDepthRayAmplifier.lean}{438}{cofinalFullDepthKillSupply_iff_irrational}{cofinal endpoint}.}
 
 \item\label{res:basis} \stag{unconditional progress}
 \textbf{Basis theorem.}  The family
@@ -1531,20 +1610,35 @@ law.  This is a necessary-state theorem under hypothetical rationality: it
 neither constructs a rational example nor proves that the rationality
 hypothesis is consistent, and Erd\H{o}s \#249 remains open.
 
-\subsection{Stronger sufficient producer problems}
+\subsection{Exact full-depth reduction and a stronger sufficient producer}
 
-\begin{problem}[full-depth period-multiple escape]\label{prob:fulldepth}
-For every $d\ge1$ and every $N\in\N$, is there a $t\ge1$ such that
-$(td,N,td)$ is a finite tail-difference certificate?
-\end{problem}
-
-\noindent This is the depth-locked predicate
-\lword{Erdos249/PeriodMultipleEscape.lean}{441}{ApFullDepthEscape}{ApFullDepthEscape}.
-It is stronger than the exact period-multiple characterisation because the
-certificate depth is forced to equal the period.  A positive answer proves
-irrationality through
-\lword{Erdos249/PeriodMultipleEscape.lean}{450}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
-a negative answer eliminates this route only.
+The older interface
+\lword{Erdos249/PeriodMultipleEscape.lean}{441}{ApFullDepthEscape}{ApFullDepthEscape}
+asks, for every $d\ge1$ and $N$, for a $t\ge1$ such that $(td,N,td)$ is a
+finite tail-difference certificate.  It was originally recorded only as a
+sufficient condition because the certificate depth is forced to equal its
+period.  The source-current amplifier removes that asymmetry completely.
+For fixed $d,N$, one certificate $(d,N,L)$ at any depth yields a threshold
+$T>0$ beyond which every adjacent pair of multipliers contains an $m$ with a
+full-depth certificate $(md,N,md)$
+(\lword{Erdos249/FullDepthRayAmplifier.lean}{364}{eventually_twoSyndetic_fullDepthKillMultipliers_of_seed}{checked}).
+Together with finite-certificate faithfulness, this gives the pointwise
+equivalence
+\[
+ \exists t>0:\ (td,N,td)\text{ is certified}
+ \quad\Longleftrightarrow\quad R_{N+d}-R_N\notin\Z
+\]
+(\lword{Erdos249/FullDepthRayAmplifier.lean}{388}{exists_fullDepthKill_on_ray_iff_shift_notMem_int}{checked}).
+Therefore $\operatorname{ApFullDepthEscape}$ is equivalent to irrationality,
+not merely sufficient for it
+(\lword{Erdos249/FullDepthRayAmplifier.lean}{406}{apFullDepthEscape_iff_irrational}{checked}).
+The cofinal full-depth supply is likewise equivalent to the arbitrary-depth
+period-multiple supply and hence to irrationality
+(\lword{Erdos249/FullDepthRayAmplifier.lean}{421}{cofinalFullDepthKillSupply_iff_periodMultipleKillSupply}{depth deletion};
+\lword{Erdos249/FullDepthRayAmplifier.lean}{438}{cofinalFullDepthKillSupply_iff_irrational}{endpoint equivalence}).
+What remains open is the producer itself: the amplifier converts one
+non-integral shift, equivalently one seed, into a dense ray of full-depth
+certificates but does not furnish that seed.
 
 \begin{problem}[first-harmonic anti-concentration on supplier fibres]
 \label{prob:firstharmonic}
