@@ -5,6 +5,20 @@ that an agent can execute using only tracked files in this clone. They work
 repo-locally; optional installation only makes them available from other
 directories.
 
+Do not choose from filenames alone. Route an ordinary-language task or print
+the full catalog (including each skill's frontmatter description):
+
+```sh
+python3 scripts/agent_entry.py --entry "<task>"
+python3 scripts/agent_entry.py --skills
+python3 scripts/agent_entry.py --skill mine-open-problem
+```
+
+[`registry.json`](registry.json) owns task-lane routing and complete skill
+coverage. Each linked `SKILL.md` owns its workflow. The router checks that the
+registry, directory names, paths, and skill frontmatter agree before returning
+a recommendation.
+
 - [Install clone skills](install-clone-skills/SKILL.md): preview, copy, link,
   and verify these skills for Codex, Claude, or another directory-based agent
   harness without overwriting a different installed skill.

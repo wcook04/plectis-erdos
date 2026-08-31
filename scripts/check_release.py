@@ -1499,6 +1499,8 @@ def main() -> int:
         "scripts/check_release.py",
         "scripts/check_architecture_guide.py",
         "scripts/test_architecture_guide.py",
+        "scripts/agent_entry.py",
+        "scripts/test_agent_entry.py",
         "scripts/query_corpus.py",
     ):
         check(required in agents, f"AGENTS.md does not route through {required}")
@@ -1535,6 +1537,18 @@ def main() -> int:
         architecture_fixture_check.returncode == 0,
         "newcomer architecture guide fixtures failed: "
         f"{architecture_fixture_check.stdout.strip() or architecture_fixture_check.stderr.strip()}",
+    )
+    agent_entry_check = run(
+        [sys.executable, str(ROOT / "scripts" / "test_agent_entry.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        agent_entry_check.returncode == 0,
+        "clone-local agent entry failed: "
+        f"{agent_entry_check.stdout.strip() or agent_entry_check.stderr.strip()}",
     )
     agent_navigation_paper_check = run(
         [

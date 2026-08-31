@@ -584,6 +584,8 @@ jobs:
       # compact entry exists to defer. First contact is what this job is for.
       - name: Every provider adapter routes to the compact entry
         run: python3 scripts/test_compact_agent_entry.py
+      - name: Ordinary tasks route to complete clone-local skill cards
+        run: python3 scripts/test_agent_entry.py
 
   shallow-clone-is-an-environment-problem:
     # `git clone --depth 1` truncates history, and the gates that read pinned

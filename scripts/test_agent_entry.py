@@ -1,0 +1,124 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+"""Regression checks for clone-local task and skill discovery."""
+
+from __future__ import annotations
+
+import json
+import shutil
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+from agent_entry import entry_packet
+from agent_skill_catalog import ROOT, load_catalog
+
+
+ROUTE_CASES = {
+    "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
+    "report theorem status and what remains open": ("mathematical_status", "explain-public-system"),
+    "attack one open problem with proof search": ("bounded_research", "mine-open-problem"),
+    "run a sustained research campaign and keep working": (
+        "sustained_research",
+        "run-coupled-research-goals",
+    ),
+    "run a Lean build for the changed Lean source": ("lean_validation", "lean-concurrent-validation"),
+    "propagate the downstream consequences of this new result": (
+        "propagate_delta",
+        "propagate-research-consequences",
+    ),
+    "edit the paper's reader-facing mathematical writing": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "add a ninth problem to the corpus": ("add_problem", "add-open-problem"),
+    "package a research return from an older clone": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "prepare a PR and submit pull request": ("submit_change", "submit-pull-request"),
+    "install skills into Codex": ("install_skills", "install-clone-skills"),
+    "improve cold clone agent entry and skill discovery": (
+        "repository_architecture",
+        "propagate-research-consequences",
+    ),
+}
+
+
+def run_cli(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        [sys.executable, str(root / "scripts" / "agent_entry.py"), *args],
+        cwd=root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+
+def main() -> int:
+    catalog = load_catalog()
+    skill_ids = {row["id"] for row in catalog["skills"]}
+    disk_ids = {
+        path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md") if path.is_file()
+    }
+    assert skill_ids == disk_ids
+    assert all(row["description"] for row in catalog["skills"])
+    assert all("/Users/" not in json.dumps(row) for row in catalog["lanes"])
+    assert "ai_workflow" not in json.dumps(catalog)
+    for lane in catalog["lanes"]:
+        for reference in lane["read"]:
+            assert (ROOT / reference.split("#", 1)[0]).exists(), (lane["id"], reference)
+        for command in lane["commands"]:
+            words = command.split()
+            if len(words) >= 2 and words[0] == "python3" and words[1].startswith("scripts/"):
+                assert (ROOT / words[1]).is_file(), (lane["id"], command)
+
+    for task, (expected_lane, expected_skill) in ROUTE_CASES.items():
+        packet = entry_packet(catalog, task)
+        assert packet["primary_lane"]["id"] == expected_lane, (task, packet)
+        assert expected_skill in {row["id"] for row in packet["skills"]}, (task, packet)
+        assert packet["primary_lane"]["read"], task
+        assert packet["primary_lane"]["boundary"], task
+
+    fallback = entry_packet(catalog, "frobnicate the unspecified material")
+    assert fallback["route_status"] == "fallback"
+    assert fallback["primary_lane"]["id"] == catalog["fallback_lane"]
+
+    listed = run_cli(ROOT, "--skills", "--json")
+    assert listed.returncode == 0, listed.stderr
+    assert {row["id"] for row in json.loads(listed.stdout)["skills"]} == skill_ids
+
+    routed = run_cli(ROOT, "--entry", "run a lean build", "--json")
+    assert routed.returncode == 0, routed.stderr
+    assert json.loads(routed.stdout)["primary_lane"]["id"] == "lean_validation"
+
+    # Re-run the public command in a miniature cold clone containing only its
+    # declared tracked inputs. This catches accidental imports from the parent
+    # checkout, sibling repositories, user configuration, or private tooling.
+    with tempfile.TemporaryDirectory(prefix="plectis-agent-entry-") as temporary:
+        clone = Path(temporary)
+        (clone / "scripts").mkdir()
+        (clone / "skills").mkdir()
+        for rel in ("scripts/agent_entry.py", "scripts/agent_skill_catalog.py"):
+            shutil.copy2(ROOT / rel, clone / rel)
+        shutil.copy2(ROOT / "skills" / "registry.json", clone / "skills" / "registry.json")
+        for row in catalog["skills"]:
+            destination = clone / row["path"]
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / row["path"], destination)
+        cold = run_cli(clone, "--entry", "improve cold clone navigation", "--json")
+        assert cold.returncode == 0, cold.stderr
+        assert json.loads(cold.stdout)["primary_lane"]["id"] == "repository_architecture"
+
+    print(
+        "agent entry: pass "
+        f"({len(skill_ids)} skills, {len(catalog['lanes'])} lanes, "
+        f"{len(ROUTE_CASES)} task fixtures, miniature cold clone)"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

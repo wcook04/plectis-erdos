@@ -73,6 +73,15 @@ cd plectis-lean-erdos249-257
 
 Then give any local coding agent one of these jobs:
 
+The agent does not need to guess which workflow file matches the job. The
+clone-local entry router turns ordinary language into a bounded lane, minimum
+read set, and purpose-bearing skill recommendation:
+
+```bash
+python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
+python3 scripts/agent_entry.py --skills
+```
+
 - **Explain it:** “Read `AGENTS.override.md` and use
   `skills/explain-public-system/SKILL.md` to explain this project to a
   mathematician, a compute contributor, or a complete newcomer.”

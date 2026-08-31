@@ -576,6 +576,9 @@ never declaration names or mathematical prose.
 A separate diagnostic checks that a cold clone stays readable:
 
 ```sh
+python3 scripts/agent_entry.py --entry "<task>"
+python3 scripts/agent_entry.py --skills
+python3 scripts/test_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 python3 scripts/check_architecture_guide.py
 python3 scripts/test_architecture_guide.py

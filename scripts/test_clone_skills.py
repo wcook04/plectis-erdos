@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import subprocess
 import tempfile
 from pathlib import Path
@@ -44,6 +45,8 @@ def main() -> int:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     skill_index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")
     entry = (ROOT / "AGENTS.override.md").read_text(encoding="utf-8")
+    registry = json.loads((ROOT / "skills" / "registry.json").read_text(encoding="utf-8"))
+    registered = {row["id"] for row in registry["skills"]}
 
     listed = run("--list").stdout
     for name in SKILLS:
@@ -52,7 +55,14 @@ def main() -> int:
         source = skill.read_text(encoding="utf-8")
         assert f"name: {name}" in source, name
         assert name in listed, name
+        description = next(
+            line.removeprefix("description: ")
+            for line in source.splitlines()
+            if line.startswith("description: ")
+        )
+        assert description in listed, name
         assert name in skill_index, name
+        assert name in registered, name
         assert "/Users/" not in source and "src/ai_workflow" not in source, name
 
     for name in (
@@ -64,7 +74,7 @@ def main() -> int:
         "submit-pull-request",
     ):
         assert name in readme, name
-        assert name in entry, name
+    assert "agent_entry.py --skills" in entry
     assert "install_agent_skills.py" in readme
 
     with tempfile.TemporaryDirectory(prefix="plectis-skill-test-") as temp:

@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -48,6 +50,9 @@ def main() -> int:
         "--route erdos257_half_story",
         "--route browse_claim_status",
         'query_corpus.py --goal-support "<Lean or mathematical goal>"',
+        'agent_entry.py --entry "<task in ordinary language>"',
+        "agent_entry.py --skills",
+        "skills/<id>/SKILL.md",
         "check_cold_clone_comprehension.py --quick",
         "docs/orientation.json::agent_entry",
         "docs/publication_entry_packet.json",
@@ -110,6 +115,16 @@ def main() -> int:
     deep = DEEP.read_text(encoding="utf-8")
     assert "[docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md)" in deep
     assert "[CONTRIBUTING.md](CONTRIBUTING.md)" in deep
+
+    skill_router = ROOT / "scripts" / "test_agent_entry.py"
+    completed = subprocess.run(
+        [sys.executable, str(skill_router)],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stdout + completed.stderr
 
     workbench = WORKBENCH.read_text(encoding="utf-8")
     for paper in (

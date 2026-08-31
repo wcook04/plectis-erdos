@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -128,6 +129,8 @@ def main() -> int:
     ):
         require(marker in skill, f"research-return skill omits local tool {marker}")
     require("skills/erdos-research-return/SKILL.md" in agent_entry, "compact agent entry omits return skill")
+    registry = json.loads(text("skills/registry.json"))
+    registered_skills = {row["id"] for row in registry["skills"]}
     for clone_skill in (
         "install-clone-skills",
         "explain-public-system",
@@ -137,7 +140,11 @@ def main() -> int:
         "add-open-problem",
         "submit-pull-request",
     ):
-        require(clone_skill in agent_entry, f"compact agent entry omits {clone_skill}")
+        require(clone_skill in registered_skills, f"skill registry omits {clone_skill}")
+    require(
+        "agent_entry.py --skills" in agent_entry,
+        "compact agent entry does not route to the complete skill registry",
+    )
 
     consequence_skill = text("skills/propagate-research-consequences/SKILL.md")
     for contract in (

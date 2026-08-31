@@ -21,17 +21,14 @@ import shutil
 import sys
 from pathlib import Path
 
+from agent_skill_catalog import SkillCatalogError, load_catalog
+
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS_ROOT = ROOT / "skills"
 
 
-def skill_directories() -> dict[str, Path]:
-    return {
-        path.parent.name: path.parent
-        for path in sorted(SKILLS_ROOT.glob("*/SKILL.md"))
-        if path.is_file()
-    }
+def skill_directories(catalog: dict[str, object]) -> dict[str, Path]:
+    return {row["id"]: ROOT / Path(row["path"]).parent for row in catalog["skills"]}
 
 
 def same_tree(left: Path, right: Path) -> bool:
@@ -57,8 +54,9 @@ def target_directory(args: argparse.Namespace) -> Path:
     raise ValueError("choose --target codex|claude or provide --target-dir")
 
 
-def selected_skills(args: argparse.Namespace) -> dict[str, Path]:
-    available = skill_directories()
+def selected_skills(
+    args: argparse.Namespace, available: dict[str, Path]
+) -> dict[str, Path]:
     if not args.skill:
         return available
     missing = sorted(set(args.skill) - set(available))
@@ -115,16 +113,21 @@ def parser() -> argparse.ArgumentParser:
 
 def main() -> int:
     args = parser().parse_args()
-    available = skill_directories()
+    try:
+        catalog = load_catalog()
+        available = skill_directories(catalog)
+    except (OSError, SkillCatalogError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     if args.list:
-        for name in available:
-            print(f"{name}\t{available[name].relative_to(ROOT)}")
+        for row in catalog["skills"]:
+            print(f"{row['id']}\t{row['description']}\t{row['path']}")
         if args.target is None and args.target_dir is None:
             return 0
 
     try:
         target = target_directory(args)
-        chosen = selected_skills(args)
+        chosen = selected_skills(args, available)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

@@ -12,6 +12,17 @@ only tracked files in this checkout. Do not depend on `ai_workflow`, sibling
 repositories, private caches, auto-memory, unpublished state, or inferred
 results.
 
+Route the actual task before opening broad files:
+
+```sh
+python3 scripts/agent_entry.py --entry "<task in ordinary language>"
+```
+
+This clone-local command recommends a task lane, the smallest read set, and the
+relevant skills. Use `python3 scripts/agent_entry.py --skills` for the complete
+purpose-bearing catalog. Its routing metadata is navigation, not mathematical
+authority.
+
 ## Route the task before reading broadly
 
 ### Mathematics, theorem status, problem progress, or paper synthesis
@@ -106,15 +117,13 @@ publication contract or emitted handle. These own organisation, not Lean proof.
 
 ### Explain, install, mine, validate, propagate, or add a problem
 
-Use the clone-local skills in `skills/`: `explain-public-system`,
-`install-clone-skills`, `run-coupled-research-goals`, `mine-open-problem`,
-`lean-concurrent-validation`, `propagate-research-consequences`, `add-open-problem`, and
-`submit-pull-request`. The mining skill may coordinate subagents, but the
-integrating agent verifies every return. After a stable mathematical or
-architecture delta, the propagation skill gives each plausible downstream
-consumer a disposition before the result is packaged. The submission skill may
-prepare and commit locally; it pushes or opens a pull request only after
-explicit authorisation.
+Do not guess from filenames. Run `python3 scripts/agent_entry.py --skills`, or
+route the task with `--entry`, before opening one `skills/<id>/SKILL.md`.
+The mining skill may coordinate subagents, but the integrating agent verifies
+every return. After a stable mathematical or architecture delta, propagation
+gives each plausible downstream consumer a disposition before packaging.
+Submission may prepare and commit locally; it pushes or opens a pull request
+only after explicit authorisation.
 
 ### Return research from a clone
 
