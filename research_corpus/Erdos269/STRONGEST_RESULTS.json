@@ -8,7 +8,7 @@
     {
       "result_id": "bounded_radix_dichotomy_and_exact_recurrence",
       "status": "strongest_premise",
-      "exact_statement": "The normalized dyadic tail states X_a = (H(2^a)/2)*T_a of S obey the exact integer-coefficient recurrence X_(a+1) = b_a*X_a - d_a with radix b_a in {2,6,10,30} (Lean-checked identification with the successive threePrimeHeight ratio), and the actual infinite tail either reaches an exact integral state at some scale or returns cofinally often to distance at least 1/31 from every integer (boundedRadix_zero_or_cofinal_far, dyadicBlockBase235_integer_or_cofinal_far). The infinite-tail specialization is closed; excluding the exact-integral-state branch, and its per-denominator generalization, is the precise unresolved throat.",
+      "exact_statement": "The normalized dyadic tail states X_a = (H(2^a)/2)*T_a of S obey the exact integer-coefficient recurrence X_(a+1) = b_a*X_a - d_a with radix b_a in {2,6,10,30} (Lean-checked identification with the successive threePrimeHeight ratio), and the ACTUAL infinite tail either reaches an exact integral state at some scale or returns cofinally often to distance at least 1/31 from every integer — the specialized owner is dyadicShellTsumTail_integer_or_cofinal_far (DyadicShellSummability.lean:188); boundedRadix_zero_or_cofinal_far and dyadicBlockBase235_integer_or_cofinal_far are the generic bounded-radix engines behind it and do not by themselves identify the #269 tail. The infinite-tail specialization is closed; excluding the exact-integral-state branch, and its per-denominator generalization, is the precise unresolved throat.",
       "hypotheses": "The genuine {2,3,5} source series; no unproved input.",
       "named_consumers": [
         "all_scale_rationality_lattice_and_collision",
@@ -22,6 +22,7 @@
       "public_authority_paths": [
         "research_corpus/Erdos269/BoundedRadixTailEscape.lean",
         "research_corpus/Erdos269/DyadicRadixTailEscape.lean",
+        "research_corpus/Erdos269/DyadicShellSummability.lean",
         "research_corpus/Erdos269/DyadicOrderedTailRecurrence.lean",
         "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
         "research_corpus/Erdos269/research_packet.json"
@@ -62,28 +63,29 @@
       ]
     },
     {
-      "result_id": "unconditional_cubic_width",
-      "status": "strongest_premise",
-      "exact_statement": "X_m <= 40*(m+4)^3 for every m, by the exact depth-K pinning telescope (trueNormalizedState_eq_telescope) plus the proved quadratic digit majorant and the closed form of the poly-geometric series. With this width the forced-equality theorem becomes unconditional: an integer seed surviving all windows forever equals the true state (surviving_window_orbit_eq_true_state), and the companion seed-extinction census is cofinally decisive.",
-      "hypotheses": "None beyond the source series.",
+      "result_id": "cubic_width_telescope_and_open_bound",
+      "status": "proved_telescope_with_named_open_width_target",
+      "exact_statement": "PROVED: the exact depth-K pinning telescope trueNormalizedState_eq_telescope — X_m = (digit sum over K shells) + (H(2^m)/2)*T_(m+K) — and the quadratic digit majorant dyadicOrderedBlockDigit235_le_quadratic (d_a <= 15*(a+1)^2, DyadicShellSummability.lean). OPEN TARGET, NOT A LEAN THEOREM: the cubic width bound X_m <= 40*(m+4)^3. Its two defining inequalities are machine-verified, and the derivation is short — majorize every digit by 15*(m+i+1)^2 in the telescope and evaluate the poly-geometric series sum_(i>=0) 15*(m+i+1)^2/2^(i+1) = 15*(m^2+4m+6) <= 40*(m+4)^3 — but the corpus records proving and discharging it into surviving_window_orbit_eq_true_state as the open width-instantiation question. Once discharged, forced equality holds with that width and the seed-extinction census (finite horizon: first indices A <= 400, seed depth 256) becomes cofinally decisive; until then both are conditional on the width.",
+      "hypotheses": "The telescope and digit majorant are unconditional; the width bound X_m <= 40*(m+4)^3 is the open input (short derivation above, unformalised).",
       "named_consumers": [
         "integral_branch_rigidity_telescope",
         "erdos_269_parent"
       ],
       "supersedes": [
-        "width hypotheses left conditional in earlier integral-branch treatments"
+        "treating the width docstring as a landed theorem; width hypotheses left implicit in earlier integral-branch treatments"
       ],
-      "why_it_matters": "Cubic enclosure against exponentially growing moduli is the sharpest finishing shape in the corpus.",
+      "why_it_matters": "Cubic enclosure against exponentially growing moduli is the sharpest finishing shape in the corpus — and proving the short width bound is step zero of spending it.",
       "public_authority_paths": [
         "research_corpus/Erdos269/IntegralBranchWidth.lean",
-        "research_corpus/Erdos269/IntegralBranchExtinction.lean"
+        "research_corpus/Erdos269/IntegralBranchExtinction.lean",
+        "research_corpus/Erdos269/DyadicShellSummability.lean"
       ]
     },
     {
       "result_id": "integral_branch_rigidity_telescope",
       "status": "strongest_premise",
-      "exact_statement": "Under an integrality hypothesis X_A = w, the pinning telescope yields the exact identity X_(A+k) + N_k = w*B_k with N_0 = 0, N_(k+1) = b_(A+k)*N_k + d_(A+k), B_0 = 1, B_(k+1) = b_(A+k)*B_k, and M_k = prod_(j<=k) b_(A+j) >= 2^(k+1). The least residue of -(b_(A+k)*N_k + d_(A+k)) modulo M_k must equal the true state whenever that state fits inside (0, hi] with hi < M_k; a residue outside the enclosure refutes integrality at A. The modulus grows exponentially while the enclosure grows only cubically (40*(A+k+4)^3), so for each A all but boundedly many depths are refutation opportunities. The named missing piece is UNIFORMITY IN A (tracked in the module header as the uniform-depth target).",
-      "hypotheses": "X_A integral; everything else unconditional.",
+      "exact_statement": "Under an integrality hypothesis X_A = w, the pinning telescope yields the exact identity X_(A+k) + N_k = w*B_k with N_0 = 0, N_(k+1) = b_(A+k)*N_k + d_(A+k), B_0 = 1, B_(k+1) = b_(A+k)*B_k, and M_k = prod_(j<=k) b_(A+j) >= 2^(k+1). The least residue of -(b_(A+k)*N_k + d_(A+k)) modulo M_k must equal the true state whenever that state fits inside (0, hi] with hi < M_k; a residue outside the enclosure refutes integrality at A. Once the cubic width bound is proved (see cubic_width_telescope_and_open_bound — a short derivation, but currently OPEN), the modulus grows exponentially while the enclosure grows only cubically, so for each A all but boundedly many depths are refutation opportunities. The named missing pieces are the width bound and UNIFORMITY IN A (both tracked in the module header as the width/uniform-depth targets).",
+      "hypotheses": "X_A integral; the telescope is unconditional; quantitative refutation additionally needs the open cubic width bound.",
       "named_consumers": [
         "erdos_269_parent"
       ],
@@ -99,7 +101,7 @@
     {
       "result_id": "torus_coding_identification",
       "status": "strongest_premise",
-      "exact_statement": "b_a = 2 * 3^[a in B(log2 3)] * 5^[a in B(log2 5)] where B(theta) is the Beatty set {floor(j*theta)}: the radix word is the coding of a rotation on the 2-torus by (log_3 2, log_5 2) under a product partition. Verified: 0 mismatches against the literal engine for a = 1..2600; radix frequencies match the independent-rotation prediction to five decimals over 300,000 letters; factor complexity is exactly (n+1)^2 for n = 1..22. The state lower bound X_a >= (1/60)*(floor(a/(2 log2 3))+1)*(floor(a/(2 log2 5))+1) grows quadratically, so no interval confinement exists for S (unlike the pure-power channels).",
+      "exact_statement": "b_a = 2 * 3^[a in B(log2 3)] * 5^[a in B(log2 5)] where B(theta) is the Beatty set {floor(j*theta)}: the radix word is the coding of a rotation on the 2-torus by (log_3 2, log_5 2) under a product partition. Verified: 0 mismatches against the literal engine for a = 1..2600; radix frequencies match the independent-rotation prediction to five decimals over 300,000 letters; factor complexity is exactly (n+1)^2 for n = 1..22. The state lower bound X_a >= (1/60)*(floor(a/(2 log2 3))+1)*(floor(a/(2 log2 5))+1) (recorded in PurePowerIrrationalityNote.md:175 and the packet's exact_results, with the matching upper bound X_a <= a^2+6a+11) grows quadratically, so no interval confinement exists for S (unlike the pure-power channels).",
       "hypotheses": "Identification is exact; the complexity and frequency rows are finite measurements.",
       "named_consumers": [
         "digit_word_complexity_criterion",
@@ -110,7 +112,9 @@
       ],
       "why_it_matters": "Puts the whole problem inside quasi-periodic dynamics of rank two, where equidistribution and complexity tools actually exist.",
       "public_authority_paths": [
-        "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md"
+        "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+        "research_corpus/Erdos269/PurePowerIrrationalityNote.md",
+        "research_corpus/Erdos269/research_packet.json"
       ]
     },
     {
@@ -134,8 +138,8 @@
     {
       "result_id": "digit_word_complexity_criterion",
       "status": "strongest_premise",
-      "exact_statement": "Under rationality S = p/q, the proper carry-normalized digit word eps_a = floor(b_a*{X_a}) satisfies P_eps(n) <= q*P_b(n) <= q*(n+1)^2 for every n, because the window (eps_a,...,eps_(a+n-1)) is a function of ({X_a}, b_a,...,b_(a+n-1)) and {X_a} takes at most q values while the radix word has complexity (n+1)^2. Contrapositive: SUPERQUADRATIC subword complexity of the proper digit word proves S irrational, and q >= P_eps(n)/(n+1)^2 for every n. Conjectured exact law (receipt): p_W(n) = sum over radix factors u in L_b(n) of prod(u), which would give P_eps(n)/(n+1)^2 >= 2^n; measured EXACTLY ATTAINED at n = 1, 2 (hit fraction 1.0), sample-limited at n = 3, 4.",
-      "hypotheses": "The criterion is proved; the exact product law is conjectural with finite support.",
+      "exact_statement": "Under rationality S = p/q, the proper carry-normalized digit word eps_a = floor(b_a*{X_a}) satisfies P_eps(n) <= q*P_b(n) <= q*(n+1)^2 for every n (PurePowerIrrationalityNote.md section 6), because the window (eps_a,...,eps_(a+n-1)) is a function of ({X_a}, b_a,...,b_(a+n-1)) and {X_a} takes at most q values while the radix word has complexity (n+1)^2; the same counting caps the JOINT word W = (b_a, eps_a) at p_W(n) <= q*(n+1)^2. Contrapositive: SUPERQUADRATIC subword complexity of either word proves S irrational, and q >= p_W(n)/(n+1)^2 for every n. The cell-ceiling law and its measurements live in RationalLatticeTorusSqueezeLab.md section 5c and are about p_W, the JOINT word, not eps alone: p_W(n) <= sum over radix factors u in L_b(n) of prod(u), with equality exactly when the theta-orbit visits every cell of every radix cylinder; measured EXACTLY ATTAINED at n = 1 (ceiling 48 = 2+6+10+30) and n = 2 (660), hit fraction 1.000000, sample-limited at n = 3, 4. Saturation at all n would give p_W(n)/(n+1)^2 >= 2^n — astronomically past the q-cap.",
+      "hypotheses": "Both criteria are proved; the exact cell-ceiling saturation law is conjectural with finite support (equality condition: orbit visits every cell).",
       "named_consumers": [
         "erdos_269_parent"
       ],
@@ -144,13 +148,14 @@
       ],
       "why_it_matters": "A proved irrationality criterion no prior packet has ever exposed, with a measured 2^n-sized target.",
       "public_authority_paths": [
-        "research_corpus/Erdos269/PurePowerIrrationalityNote.md"
+        "research_corpus/Erdos269/PurePowerIrrationalityNote.md",
+        "research_corpus/Erdos269/RationalLatticeTorusSqueezeLab.md"
       ]
     },
     {
       "result_id": "torus_fourier_value_representation",
       "status": "strongest_premise",
-      "exact_statement": "S = lim_(M->infty) [triple Fourier partial sum over |m_i| <= M] - 17/2, where each mode contributes c(m1)c'(m2)c''(m3) / [(1-e(lambda)/8)(1-e(lambda*theta)/27)(1-e(lambda*phi)/125)] with lambda = m1 + m2*log_3 2 + m3*log_5 2, c(m) = 1/(ln2 - 2*pi*i*m), c'(m) = 2/(ln3 - 2*pi*i*m), c''(m) = 4/(ln5 - 2*pi*i*m). The 17/2 correction is exact (8 at the origin plus an exact 1/2 from the three channel telescopes). Convergence is the 1/M jump rate, monotone in sign; the triple sum is only conditionally summable (sum |c c' c''| diverges like (log M)^3) and needs regularisation before any Diophantine estimate can be extracted.",
+      "exact_statement": "S = lim_(M->infty) [triple Fourier partial sum over |m_i| <= M] - 17/2. With theta = log2(3) and phi = log2(5), each mode contributes c(m1)c'(m2)c''(m3) / [(1-e(lambda)/8)(1-e(lambda*theta)/27)(1-e(lambda*phi)/125)] where lambda = m1 + m2/theta + m3/phi = m1 + m2*log_3 2 + m3*log_5 2, c(m) = 1/(ln2 - 2*pi*i*m), c'(m) = 2/(ln3 - 2*pi*i*m), c''(m) = 4/(ln5 - 2*pi*i*m). The 17/2 correction is exact (8 at the origin plus an exact 1/2 from the three channel telescopes). Convergence is the 1/M jump rate, monotone in sign; the triple sum is only conditionally summable (sum |c c' c''| diverges like (log M)^3) and needs regularisation before any Diophantine estimate can be extracted.",
       "hypotheses": "Exact representation; NOT an irrationality argument.",
       "named_consumers": [
         "erdos_269_parent"
@@ -183,7 +188,7 @@
     {
       "result_id": "projective_shadow_congruence_and_abundance",
       "status": "strongest_premise",
-      "exact_statement": "Rationality with denominator B coprime to 30 forces the shadow congruence d_a*H_b = d_b*H_a (mod B) across admissible window pairs (Lean-checked exact factorization; witnesses B = 11 with carries 61 and 259, B = 7). Measured abundance across all 133 denominators coprime to 30 in [7,500], starts a <= 3000: EVERY denominator admits violating pairs (violating fraction 0.828 at B = 7 up to 0.988 at B = 499); admissible endpoints appear at density about one per two starts and persist to the top of every range; same-start pairs are ALWAYS coherent (P = 1.0000), so any construction must pair different starts; far-separated pairs are equidistributed (coherence ratio 0.92x-1.23x).",
+      "exact_statement": "Rationality with denominator B coprime to 30 forces the shadow congruence d_a*H_b = d_b*H_a (mod B) across admissible window pairs (Lean-checked exact factorization; witnesses B = 11 with carries 61 and 259, B = 7). Measured abundance across all 133 denominators coprime to 30 in [7,500], starts a <= 3000: EVERY denominator admits violating pairs (violating fraction 0.828 at B = 7 up to 0.988 at B = 499); admissible endpoints appear at density about one per two starts and persist to the top of every range; same-start pairs are ALWAYS coherent (P = 1.0000), so any construction must pair different starts; far-separated (half-list) pairs are equidistributed with coherence ratio 0.92x-1.18x, against 1.23x-6.42x at neighbouring starts — the residual coherence is purely short-range.",
       "hypotheses": "The congruence is exact; the abundance rows are finite measurements, not the cofinal theorem.",
       "named_consumers": [
         "erdos_269_parent"
@@ -217,7 +222,7 @@
     {
       "result_id": "integral_branch_local_and_lyapunov_no_gos",
       "status": "exact_no_go",
-      "exact_statement": "All bounded-lookahead functionals on the integral branch are exactly falsified: uniform escape within five blocks is false (31 counterexamples, max delay 7); every uniform post-clear cap K <= 100 is dead (exact affine-cylinder reconstruction with residue delay 101 at anchor a = 100); the a = 2295 source word survives four transitions; one-step raw-gap descent fails 71 times in starts 1..3000; and the predeclared TWO-step gap-descent law is false at starts 2220 and 2602 (each trapped for length 7 with gaps 1871381 -> 2073386 -> 2001740 and 2776610 -> 2870292 -> 2851196). Escape delay does NOT accumulate in the measured range (640,000 exact certificates, zero non-escaping pairs, depth <= 18), but no finite rectangle supplies the universal quantifiers.",
+      "exact_statement": "All bounded-lookahead functionals on the integral branch are exactly falsified: uniform escape within five blocks is false (31 counterexamples, max delay 7); EVERY uniform post-clear cap through 199 is dead (the exact affine-cylinder certificate at anchor a = 100 has a 181-digit denominator whose canonical state remains trapped for 200 post-clear steps, superseding the earlier delay-101 figure); the a = 2295 source word survives four transitions; one-step raw-gap descent fails 71 times in starts 1..3000; and the predeclared TWO-step gap-descent law is false at starts 2220 and 2602 (each trapped for length 7 with gaps 1871381 -> 2073386 -> 2001740 and 2776610 -> 2870292 -> 2851196). Escape delay does NOT accumulate in the measured range (640,000 exact certificates, zero non-escaping pairs, depth <= 18), but no finite rectangle supplies the universal quantifiers.",
       "hypotheses": "Exact integer witnesses; replayable.",
       "named_consumers": [
         "erdos_269_parent"
@@ -270,18 +275,19 @@
     {
       "result_id": "projective_same_start_and_cantor_no_gos",
       "status": "exact_no_go",
-      "exact_statement": "Same-start window pairs can NEVER supply the projective producer: their shadow congruence holds identically (P = 1.0000 at every tested denominator); any construction must pair different starts. Standard Cantor-series criteria do not instantiate on the jump ordering; direct p-adic convergence fails (denominators carry unbounded contributions from the other prime channels); and the all-ones reindexing of S is impossible — every all-ones frame has unbounded states because the smooth counting function grows (max unit-radix run 2698, no right-special separation), so the pure-power proof cannot be transplanted mechanically.",
+      "exact_statement": "Same-start window pairs can NEVER supply the projective producer: their shadow congruence holds identically (P = 1.0000 at every tested denominator); any construction must pair different starts. Standard Cantor-series criteria do not instantiate on the jump ordering; direct p-adic convergence fails (denominators carry unbounded contributions from the other prime channels). The all-ones reindexing of S EXISTS and is verified exactly in Q (S = sum 1/(r_1...r_n) with r_n in {1,2,3,5}, checked against the height sum over 130,901 smooth numbers below 2^140; 99.78% of letters are 1) — what is impossible is the TRANSPLANT of the pure-power proof onto that frame: the states are unbounded (max unit-radix run 2698) and no usable repeated factor / right-special separation exists, so interval confinement never engages.",
       "hypotheses": "Exact measurements and exact frame arithmetic.",
       "named_consumers": [
         "erdos_269_parent"
       ],
       "supersedes": [
-        "same-start projective pairs; naive Cantor-criterion citation; mechanical channel transplants"
+        "same-start projective pairs; naive Cantor-criterion citation; mechanical channel transplants; the false claim that no all-ones reindexing exists"
       ],
       "why_it_matters": "Fences the three cheapest-looking shortcuts on the surviving routes.",
       "public_authority_paths": [
         "research_corpus/Erdos269/research_packet.json",
-        "research_corpus/Erdos269/PurePowerIrrationalityNote.md"
+        "research_corpus/Erdos269/PurePowerIrrationalityNote.md",
+        "research_corpus/Erdos269/RationalLatticeTorusSqueezeLab.md"
       ]
     }
   ]
