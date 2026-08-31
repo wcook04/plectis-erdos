@@ -137,10 +137,13 @@ finite counting theorems.  They do not supply a remainder-fibre bound for an
 actual approximation family, an analytic decay estimate, or an irrationality
 result; Problem~\#1049 remains open.}{A dedicated AdelicHeightBridge Comparator
 package binds the sharp power, height, charge, rank-$41$, and bounded-fibre
-interfaces.  Registration of that package in the public portfolio is a
-separate release step.}
+interfaces.  A separate RationalBaseBarrier package binds the exact
+cleared-tail recurrence, its exponential forcing bound, and the literal
+coordinatewise-corridor exclusion at $3/2$.  Registration of either package
+in the public portfolio is a separate release step.}
 
-The selected cleared-tail Comparator row is an exact algebraic interface.  For
+The dedicated RationalBaseBarrier Comparator package exposes three parts of
+one mechanism.  Its cleared-tail row is an exact algebraic interface.  For
 arbitrary rationals $r,s,B,F$, an arbitrary coefficient stream
 $\mathit{coeff}\colon\mathbb N\to\mathbb Q$, $r\ne0$, and every $N\in\mathbb N$,
 \texttt{rationalBaseClearedTailQ\_succ} states
@@ -149,7 +152,10 @@ $\mathit{coeff}\colon\mathbb N\to\mathbb Q$, $r\ne0$, and every $N\in\mathbb N$,
 \]
 where $Q_N$ is the rational-base cleared-tail state.  Its forcing term is
 therefore part of the exact identity, not an approximation or an irrationality
-claim.  The companion row
+claim.  The second row,
+\texttt{twoPow\_le\_rationalBaseForcingNat}, proves that this forcing magnitude
+is at least $2^{N+1}$ when $s\ge2$ and the integer data are positive.  The
+third row,
 \texttt{threeHalves\_no\_coordinatewiseCorridor} assumes only $N\ge1$ and
 $K\ge1$ and excludes the specific predicate
 \texttt{CoordinatewiseCorridor}$(3,2,N,K,Q,\mathit{digit})$.  Together these
