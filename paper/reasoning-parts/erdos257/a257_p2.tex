@@ -8,7 +8,9 @@ Lean tree, \ev{Cert} is an exact finite computation (integer arithmetic, no floa
 independently reproduced), \ev{Math} is ordinary mathematics carried out in prose and checked by
 a human or an adversarial audit pass but not yet formalised, \ev{Cited} invokes a published
 external theorem, and \ev{Open} marks an unproved hypothesis that some consumer theorem is
-conditioned on. Scale answers a different question, ``over how much of the problem does this
+conditioned on.
+
+Scale answers a different question, ``over how much of the problem does this
 claim range'': \scale{fixed} is one concrete numeral or witness; \scale{bounded} produces a
 witness whose size is controlled by the input (typically $\le n$ for input $n$); \scale{uniform}
 holds unconditionally for every $n$ above an explicit threshold, with no existential slack;
@@ -219,6 +221,9 @@ witness sequence could simply walk through. An audit pass read each Lean proof b
 statement) of eighteen such candidates drawn from the fixed/bounded/uniform rows of
 Table~\ref{tab:scale-ladder} and their immediate neighbours, checking specifically for a proof
 technique general enough to instantiate at an unboundedly growing parameter without degradation.
+
+\par\medskip
+
 None promoted. The recurring blockers were three: a finite certificate table baked into the proof
 (the bound only extends as far as the table was built, \emph{e.g.} rows~13--31 in
 \lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78});
@@ -226,10 +231,13 @@ a kernel \texttt{interval\_cases}/\texttt{decide} discharge over an explicitly b
 is definitionally not re-runnable past its stated bound; and constants inside the bound that
 degrade with the very parameter a cofinal witness would need to grow (a threshold of the shape
 $2^{(r+5)/2}$ or a margin that shrinks as $1/\sqrt N$ is uniform \emph{at} any fixed depth but does
-not, by itself, manufacture the next witness at a larger depth). This is consistent with, not a
-substitute for, the general logical point above: promoting a uniform statement to a cofinal one
-requires new content — an explicit witness-producing construction — not a change of quantifier
-bookkeeping.
+not, by itself, manufacture the next witness at a larger depth).
+
+\par\medskip
+
+This is consistent with, not a substitute for, the general logical point above: promoting a
+uniform statement to a cofinal one requires new content — an explicit witness-producing
+construction — not a change of quantifier bookkeeping.
 \end{rem}
 
 \section{One orbit in four coordinates}

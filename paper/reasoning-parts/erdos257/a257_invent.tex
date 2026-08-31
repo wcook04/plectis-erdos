@@ -117,7 +117,9 @@ profinite integers along the $+1$-orbit. Define
 \]
 truncated at level $L$ in the obvious way. Then $\Theta_L(M)=\Psi_L(M)$ where $M$ is viewed in
 $\widehat{\Z}$, and the map $M\mapsto M+1$ is the odometer, which is uniquely ergodic with respect
-to Haar measure. The corpus's own Reduction~(A), $F(n)=\sum_{d\in D_n} 2^{\,d-i_d(n)}/(2^d-1)$,
+to Haar measure.
+
+The corpus's own Reduction~(A), $F(n)=\sum_{d\in D_n} 2^{\,d-i_d(n)}/(2^d-1)$,
 is \emph{the same functional} $\sum_d 2^{-i_d}/(1-2^{-d})$ restricted to the greedy take-set
 $D_n$ instead of to all $d\ge2$. That two reductions derived years and coordinates apart are one
 functional on $\widehat{\Z}$ evaluated on two divisor sets is, to my knowledge, not recorded
@@ -132,6 +134,7 @@ specialist will recognise: a lower bound for $\mathrm{dist}(\Theta_L(M),\Z)$ wit
 $L\asymp \log_2 M$, valid for all large $M$ in a specified set, at precision $2^{-L/2}$.
 
 Three technique families are the plausible shapes, and it is worth being explicit about which.
+
 \emph{(a) Voronoi summation / delta method for the divisor function.} $\tau$ has an exact Voronoi
 expansion, and the natural attack is to bound
 $\sum_{M\in[X,2X]} e\bigl(a\,\Theta_L(M)\bigr)$ for $1\le|a|\le 2^{L}$ by opening each
@@ -153,7 +156,9 @@ $[M+1,M+L]$ has length $L\asymp\log_2 M$. Voronoi-based technology for $\sum_{M<
 --- including the Kloosterman-refined results of Deshouillers--Iwaniec type and every subsequent
 improvement --- produces an asymptotic only for $H\ge M^{\theta}$ with $\theta>0$ fixed, because
 the dual sum after Voronoi runs to length $\sim M/H$ and the error term is controlled only when
-that dual length is a power saving against $M$. At $H=\log M$ the dual sum is of length $M/\log M$
+that dual length is a power saving against $M$.
+
+At $H=\log M$ the dual sum is of length $M/\log M$
 and there is no saving at all: the method returns the trivial bound. This is not a deficiency of
 one paper; it is the reason short-interval divisor problems are stated with power-length windows.
 Technique family (a) is therefore not merely unproved here, it is out of range by an
@@ -167,7 +172,9 @@ function bounded by $1$ has, in almost all windows $[x,x+h]$ with $h\to\infty$ a
 slowly, essentially its long average. Two mismatches, both fatal as stated. First, the conclusion
 is \emph{almost all} $x$, whereas the seam needs \emph{every} reset row $r\ge31$; a set of
 exceptional $x$ of density zero can still contain every reset row, because the reset rows are
-themselves a density-zero set defined by the orbit rather than independently of it. Second,
+themselves a density-zero set defined by the orbit rather than independently of it.
+
+Second,
 $\tau$ is not bounded by $1$ and the relevant statistic is not an average of a multiplicative
 function but the distance to $\Z$ of a \emph{dyadically weighted} sum of $\tau$-values; the
 weights $2^{-i}$ mean that a single value $\tau(M+1)$ contributes half the phase, so no averaging
@@ -209,6 +216,7 @@ $|w_s|\gtrsim 2^{s}$. Setting $s=r+L$ gives $4^{L}|w_r|\lesssim 2^{\,r+L}$, that
 \[
 L\ \lesssim\ r-\log_2|w_r|.
 \]
+
 This reproduces, with no fitting, the empirical law recorded at maximal slack $0.0$ over rows
 $14..1500$. A socket-violating run needs $L\ge (r-3)/2$, hence
 $\log_2|w_r|\le (r+3)/2$; the corpus's threshold $2^{(r+5)/2}$ is this bound with one bit of
@@ -232,15 +240,19 @@ $P/t$ & $2.267$ & $2.378$ & $2.514$ & $2.560$ & $3.031$\\
 \hline
 \end{tabular}
 \end{center}
+
 The observed median of $\mathrm{dist}$ is $0.24471$ against $0.25$ for the uniform law, and
 $P/t$ hovers near $2$, the exact value for a uniform fractional part. Truncation is irrelevant at
-this range: the quantiles at $L=16,24,32$ agree to three significant figures. So the fractional
+this range: the quantiles at $L=16,24,32$ agree to three significant figures.
+
+So the fractional
 part of $\Theta_L$ behaves like Haar measure with a mildly heavy near-integer tail of constant
 $c\approx 2.5$. Feeding the required precision $2^{-(r-5)/2}$ into that profile,
 \[
 \sum_{r\ge 31} c\cdot 2^{-(r-5)/2}\ \approx\ 2.5\cdot 2^{5/2}\cdot\frac{2^{-31/2}}{1-2^{-1/2}}
 \ \approx\ 1.0\times 10^{-3},
 \]
+
 so under the Haar model the expected number of reset rows beyond the certified range that violate
 $\sqrt{\ }$-escape is about $10^{-3}$, and Borel--Cantelli gives ``finitely many failures'' with
 room to spare. This is consistent with, and independently derived from, the corpus's own
@@ -255,11 +267,15 @@ Form~(iii) asks only for a sign, not a magnitude, and a sign is a statement abou
 the branch threshold the remainder falls on. In deviation coordinates the $M$ branch fires iff
 $4\,\mathrm{rem}(s)<2^{\,s+1}+4+p$ and then $\mathrm{rem}(s+1)=4\,\mathrm{rem}(s)+2^{\,s+1}-p$;
 the $U$ branch carries. Substituting $\mathrm{rem}=w+2^{s}$ turns the $M$-branch update into
-$w_{s+1}=4w_s+2^{\,s+1}-p$ and the $R$-branch update into $w_{s+1}=4w_s-4-p$. The concrete first
+$w_{s+1}=4w_s+2^{\,s+1}-p$ and the $R$-branch update into $w_{s+1}=4w_s-4-p$.
+
+The concrete first
 step is: prove that the $M$-branch firing condition and the reset condition together force
 $w_{s+1}>0$ by a purely algebraic inequality in $(w_s,p,s)$, with $p\le 2(s-2)$ the only input
 about the pulse. If that closes, the same computation with the $U$-branch carry condition should
-give the negative sign, and the pair is a genuine lemma one rung below $\sqrt{\ }$-escape. If it
+give the negative sign, and the pair is a genuine lemma one rung below $\sqrt{\ }$-escape.
+
+If it
 does not close, the residual is a bound on $p$ that is sharper than $p\le2(s-2)$, which is itself
 a short-window divisor count and hence lands back on $\Theta$ --- which would be informative,
 because it would show the sign law is not strictly easier. Either outcome is a result; the

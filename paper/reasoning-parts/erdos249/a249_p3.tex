@@ -1,4 +1,4 @@
-\section{Interface index: what stands between the corpus and a proof}
+\section{Frontier index: what stands between the corpus and a proof}
 
 This section is the join layer of the paper. Parts I--II inventory what the corpus proves; this
 part inventories, obligation by obligation, exactly what is \emph{missing} to turn each proved
@@ -328,15 +328,22 @@ $2(H{+}q{+}2)\le 4^q$, and any integral representative $z$ with $z = \mathtt{act
 \]
 This is an \emph{exact equality}, not a bound. Comparing it against the dominance inequality above,
 \emph{the dominance inequality is literally equivalent to
-$\mathtt{carryOrbit}\,H\,H\,z\,(2q{+}1)\le 0$}. But SGN-02
+$\mathtt{carryOrbit}\,H\,H\,z\,(2q{+}1)\le 0$}.
+
+\par\medskip
+
+But SGN-02
 (\lean{actualLcm_trueEndpointSurvivor_neg}{TotientActualLcmOrbitSign.lean:172}, \ev{Lean},
 \scale{uniform}) proves that under integrality the true carry orbit is \emph{strictly positive}
 throughout this exact corridor: for $a\ge 8$ and $J{+}K{+}(a{+}6)<2\cdot 2^a$,
 \[
   0 < \mathtt{carryOrbit}\ H\ (H{+}J)\ d\ K
 \]
-whenever $d$ is the real-valued representative of the translated tail difference. So the two
-branches of the corridor-escape disjunction that
+whenever $d$ is the real-valued representative of the translated tail difference.
+
+\par\medskip
+
+So the two branches of the corridor-escape disjunction that
 \lean{actualLcmTailOrbit_notMem_int_of_actualTerminalCarryCorridorEscape}{TotientActualLcmTopEdgeStaircase.lean:1824}
 offers are \emph{not} symmetric: SGN-02 has already eliminated the branch that the identity most
 naturally supplies (dominance, $\mathtt{carryOrbit}\le 0$), and the surviving branch is the
@@ -345,6 +352,9 @@ naturally supplies (dominance, $\mathtt{carryOrbit}\le 0$), and the surviving br
   2\cdot \mathtt{actualOddHalfCenteredLift}\ a\ q \;\le\;
   \mathtt{diagonalWindowIncrement}(2^a)(2q{+}2) - (2H{+}2q{+}3) .
 \]
+
+\par\medskip
+
 This is stated precisely so the reader can check it: it is neither a refutation of the dominance
 route (SGN-02 constrains the sign of $\mathtt{carryOrbit}$, it does not itself bound
 $\mathtt{diagonalWindowIncrement}$ or $\mathtt{actualOddHalfCenteredLift}$ against $0$, so dominance

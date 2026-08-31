@@ -1,7 +1,9 @@
 \section{What is open, stated exactly}
 
 Erdős \#249 asks whether $S = \sum_{n\ge 0} \varphi(n)/2^n$ is irrational. It is
-\ev{Open}: nothing in this corpus decides it. Every attack recorded in Parts
+\ev{Open}: nothing in this corpus decides it.
+
+Every attack recorded in Parts
 I--IV terminates, in one of exactly two ways, at a small number of
 \emph{cofinal supply obligations} on the totient tail
 $R_N := \sum_{j\ge 0}\varphi(N+1+j)/2^{j+1}$
@@ -9,7 +11,9 @@ $R_N := \sum_{j\ge 0}\varphi(N+1+j)/2^{j+1}$
 either it proves a genuine theorem of the shape ``\emph{if} this cofinal
 predicate holds, \emph{then} $S$ is irrational,'' with the predicate itself
 left completely unproved, or it prunes one specific proof shape and shows it
-cannot supply the predicate. This section renders every such obligation
+cannot supply the predicate.
+
+This section renders every such obligation
 exactly as Lean states it, gives its site, records which of them are proved
 \emph{equivalent} to one another (iff) and which are proved only
 \emph{sufficient} (one-directional, an easier target implied by a harder
@@ -85,9 +89,11 @@ $R_{N+h}-R_N\in\mathbb{Z}$ for all $N\ge N_0$; the certificate hypothesis
 instantiated at that $(h,N_0)$ produces an $N\ge N_0$ where
 $R_{N+h}-R_N\notin\mathbb{Z}$, a contradiction via \texttt{tail\_diff\_notMem\_int\_of\_certifiedKill}
 (\lean{Erdos249257.tail_diff_notMem_int_of_certifiedKill}{TotientTailPeriodKiller.lean:262}).
+
 For the forward direction, irrationality gives pointwise non-integrality of
 every positive tail shift and certificate completeness supplies a witness
 already at $N=N_0$.
+
 \emph{What supplying Obligation 1 would take:} an arithmetic (not merely
 existential) argument that, for every period length $h$ and past every
 threshold $N_0$, the totient window discrepancy's residue mod $2^L$ can be
@@ -138,7 +144,9 @@ t\ge N_0$ simultaneously, so a single diagonal witness at $t$ discharges
 lemma \lean{Erdos249257.irrational_totient_series_of_lcm_certificate_supply}{LcmDiagonalReduction.lean:92}
 which itself reduces to the multiple-period form above.  Conversely,
 irrationality and pointwise certificate completeness give the diagonal
-witness already at $t=t_0$.  $P(t)$ is verified for every $t\le82$
+witness already at $t=t_0$.
+
+$P(t)$ is verified for every $t\le82$
 (\lean{ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82}{ErdosProblems/Skip/LadderT67.lean:71264}).
 The historical bank contained 28 explicit values through $t=64$
 (\lean{Erdos249257.certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860},
@@ -167,7 +175,9 @@ rational there is $t_1$ such that for every $t\ge t_1$ and every $q>0,m$,
 $R_{qH_t+mH_t}-R_{qH_t}\in\mathbb{Z}$ — rationality flattens the
 \emph{whole} cone $\{k H_t : k\ge 1\}$, not just one difference
 (\lean{Erdos249257.rational_totient_series_forces_lcm_cone_flatness}{CertificateKernel.lean:19002},
-\ev{Lean}, unconditional). A sharper cone-form producer,
+\ev{Lean}, unconditional).
+
+A sharper cone-form producer,
 \texttt{coneNonflatCert}, needs only a \emph{one-sided} radius per vertex —
 information-theoretically half of \texttt{certifiedKill}'s pairwise floor —
 and proves that some pair in a finite multiplier menu $Q$ is non-integral;
@@ -207,6 +217,7 @@ no scale-degrading constants:
 \lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
 \quad \ev{Open} (the predicate; unproved at every $h,X_0$)
 \quad \scale{cofinal} \quad \coord{other:first-harmonic}.
+
 \[
   \mathrm{DTWFirstHarmonicNormGap} \ \Longrightarrow\ \mathrm{Irrational}(S).
 \]
@@ -218,7 +229,9 @@ $\exists N\ge N_0\ \exists L$ directly); what is missing is not scale and not
 coordinate, it is the arithmetic input itself — not one instance of a
 constant-saving cancellation bound for the complex exponential sum
 $\sum_{N\in[X,2X)} e(D(h,N,L)/2^L)$ is proved anywhere in the corpus, at any
-$h,X,L$. A strictly stronger \emph{subset} form (a saving on any nonempty
+$h,X,L$.
+
+A strictly stronger \emph{subset} form (a saving on any nonempty
 finite $T\subseteq[0,2X)$, no density or partition hypothesis) is also
 proved sufficient and unconditional as an implication:
 \lean{Erdos249257.exists_certifiedKill_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:53}
@@ -226,7 +239,9 @@ consumes the elementary block lemma
 \lean{Erdos249257.exists_certifiedKill_of_first_harmonic_gap}{FirstHarmonicGap.lean:128}
 (\ev{Lean}, unconditional: \emph{any} constant-saving first-harmonic gap on
 one dyadic block forces a finite kill certificate, via $\cos(\pi/8)>9/10$
-and averaging). \emph{What supplying this form would take:} genuine
+and averaging).
+
+\emph{What supplying this form would take:} genuine
 cancellation for the first additive character of the totient window
 discrepancy — a Weyl-type bound, uniform in $h$ and growing $L$, on a
 character sum built from $\varphi$ differences, not merely an existence
@@ -280,7 +295,9 @@ quantity below a modulus, divisible by that modulus, must be $0$) against
 the unconditional positivity of every short-window letter,
 $0<\mathrm{lcmRayArithmeticLetter}(2^a,j)$ for $a\ge8$, $0<j<2\cdot2^a$
 (\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter_pos_of_lt_two_mul}{TotientActualLcmOrbitArithmetic.lean:1703},
-\ev{Lean}, unconditional, no rationality hypothesis). \emph{Do not attempt a
+\ev{Lean}, unconditional, no rationality hypothesis).
+
+\emph{Do not attempt a
 full terminal-staircase producer}: it is provably empty. The corpus's own
 route past this dead end is the \emph{punctured} staircase (all but the
 last letter vanish; the last is retained and pinned exactly to the half-turn
@@ -297,7 +314,9 @@ $2^{m-1}$,
 \]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.ActualLcmTopEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:900}
 \quad \ev{Open} (a definition, unproved at any $a$)
-\quad \scale{bounded} \quad \coord{mobius-mersenne}. Note this is a
+\quad \scale{bounded} \quad \coord{mobius-mersenne}.
+
+Note this is a
 \emph{one-sided} inequality — only the upper (positive) carry arc is
 excluded, not a symmetric two-sided band — because the corridor's lower half
 is already discharged unconditionally: for $a\ge8$ and $J+(a{+}6)<2\cdot2^a$,
@@ -307,7 +326,9 @@ is already discharged unconditionally: for $a\ge8$ and $J+(a{+}6)<2\cdot2^a$,
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos}{TotientActualLcmOrbitSign.lean:39}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{mobius-mersenne} — a rare
 genuinely unconditional, non-hypothetical real-analytic theorem in this
-corpus, needing no rationality assumption at all. Its companion shows that
+corpus, needing no rationality assumption at all.
+
+Its companion shows that
 \emph{if} the orbit is integral, the residue is forced to the exact top
 edge $2^K-e$ ($e>0$ small), \emph{outside} the arc a symmetric certificate
 would need:
@@ -315,12 +336,15 @@ would need:
 (\ev{Lean}, \scale{bounded}) — this is the exact statement of ``here is
 what remains,'' pinning the missing exclusion to one named residue class
 rather than leaving it implicit.
+
 \[
   \mathrm{ActualLcmTopEdgeResidueGap}(a,J,K,m)\ \Longrightarrow\
   R_{2H+J}-R_{H+J}\notin\mathbb{Z}.
 \]
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_notMem_int_of_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260}
-\quad \ev{Lean} \quad \scale{bounded} \quad \coord{mobius-mersenne}. The
+\quad \ev{Lean} \quad \scale{bounded} \quad \coord{mobius-mersenne}.
+
+The
 cofinal target built from it:
 \[
   \mathrm{PowerTwoActualLcmTopEdgeResidueGapSupply} :\equiv\
@@ -416,6 +440,7 @@ $B=2H+(2q{+}1)+2$.
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply}{TotientActualLcmTopEdgeStaircase.lean:1895}
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}. Direct endpoint
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTerminalCarryCorridorEscapeSupply}{TotientActualLcmTopEdgeStaircase.lean:2230}.
+
 This form is not arbitrary: under integrality it is exactly one side of a
 proved identity,
 \[
@@ -427,6 +452,7 @@ proved identity,
 \emph{equality}, not an inequality: the doubled centered-lift state is
 exactly (terminal arithmetic letter) minus (true carry). Escaping either
 side of this named open interval is exactly the corridor-escape supply.
+
 Crucially, the sign machinery has already eliminated the branch this
 identity most naturally supplies:
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg}{TotientActualLcmOrbitSign.lean:172}
@@ -453,7 +479,9 @@ $\mathrm{lcmRayArithmeticLetter}(t,j) = \varphi(H_t+j)-\varphi(H_t)$ for
 \ev{Lean}), and
 $\mathrm{LcmDiagonalArithmeticKill}(t,L)\iff\mathrm{certifiedKill}(H_t,H_t,L)$
 (\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmDiagonalArithmeticKill_iff_certifiedKill}{TotientActualLcmOrbitArithmetic.lean:2045},
-\ev{Lean}). Consequently
+\ev{Lean}).
+
+Consequently
 \[
   \mathrm{PowerTwoActualLcmShortArithmeticKillSupply} :\equiv
   \forall a_0,\ \exists a,L,\quad a_0\le a\ \wedge\ L<2\cdot2^a\ \wedge\
@@ -469,7 +497,9 @@ and it is verified at exactly two exponents, $a=4$ (depth $L=23$) and
 $a=6$ (depth $L=93$), each traced to a pre-existing compressed diagonal
 certificate:
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_four_and_six_notMem_int}{TotientActualLcmShortKill.lean:35}
-\ev{Cert} \scale{fixed}. The bounded stub
+\ev{Cert} \scale{fixed}.
+
+The bounded stub
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoActualLcmShortArithmeticKillSupply_through_six}{TotientActualLcmShortKill.lean:54}
 (\ev{Lean}, \scale{bounded}, proof is a single hard-coded witness
 $(a,L)=(6,93)$, with no argument in $a$ at all) proves the supply only for
@@ -541,6 +571,7 @@ orbit $u$ with
 \]
 \lean{Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:carry-kernel-rank}.
+
 An opposite inequality — a rationality-side rank \emph{upper} bound — would
 of course contradict the displayed lower bound:
 \[
@@ -553,7 +584,9 @@ new theorem schema, not an open proposition isolated by the preceding
 mathematics: the corpus gives no
 reason rationality should force it, and explicit finite-rank
 shift-polynomial countermodels show that periodic denominator data alone do
-not.  The most direct generic construction is also impossible: no
+not.
+
+The most direct generic construction is also impossible: no
 \texttt{CompressedAdjointCertificate} ($Q\cdot v\cdot A =
 \mathrm{boundary}$ with $|\mathrm{boundary}|<Q\cdot v$ and $A\ne0$) can
 exist —
@@ -561,7 +594,9 @@ exist —
 \quad \ev{Lean} — and the full family is proved infinite-dimensional in
 span:
 \lean{Erdos249257.not_finiteDimensional_span_fullTotientKernel}{TotientMahlerDefect.lean:1145}
-\quad \ev{Lean}. What rationality \emph{does} buy — uniform eventual
+\quad \ev{Lean}.
+
+What rationality \emph{does} buy — uniform eventual
 periodicity of $u$'s dyadic sections modulo some $v>0$ — is proved to
 \emph{not} promote to any finite rank bound without further arithmetic
 input:
@@ -583,11 +618,15 @@ is proved to be the exact first failing denominator
 (\lean{Erdos249257.gap_check_window_1_240_first_failure}{GapFareyBound.lean:225},
 \ev{Lean}) — so re-running the same window buys nothing further; a new $K$
 needs a freshly committed totient residue and freshly computed
-continued-fraction convergents, both hard-coded numerals. The cofinal
+continued-fraction convergents, both hard-coded numerals.
+
+The cofinal
 upgrade would be: a proved growth law $g(K)\to\infty$ such that for every
 $K$ the $(N{=}1,K)$ gap check passes for all $q\le g(K)$ — equivalently, a
 lower bound on the convergent denominators of the underlying totient-window
-constant, uniform in $K$. \ev{Open} \scale{cofinal} \coord{farey}. One
+constant, uniform in $K$. \ev{Open} \scale{cofinal} \coord{farey}.
+
+One
 natural strengthening is proved to be a hard ceiling, not a route to
 unboundedness: at a prime-power reduced denominator, the ``unit-gap''
 refinement can rescue \emph{at most one} additional lattice point beyond
@@ -679,16 +718,6 @@ of the material above decides Erdős \#249, \#257, or any weakening of them.
 fixed toolchain, and library manifest are published in the companion
 repository. This manuscript provides navigation and exposition rather than
 proof authority.
-
-\paragraph{Declaration of generative AI use.} Every word of this manuscript was
-generated by agents based on large language models operating within Will Cook's
-private research system for artificial intelligence. The formal proofs and
-repository software were likewise drafted and revised by the agents through
-that system under Cook's direction. Cook set the objectives and acceptance
-criteria, selected and reviewed the public claims, and approved the published
-version. Cook assumes responsibility for the accuracy, interpretation, and
-presentation of the work. Generative systems are production tools, not authors,
-and supply no independent authority.
 
 \paragraph{Authority boundary.} Kernel checking establishes that a proposition
 was proved; it does not authorise the exposition, literature judgements, or any

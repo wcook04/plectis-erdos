@@ -1,4 +1,4 @@
-\subsection{Recently published declarations}
+\subsection{Recently added declarations}
 
 The modules surveyed above were read at an earlier snapshot. Four already-public modules have
 since grown by union merge, and one wholly new problem-centric tree,
@@ -169,7 +169,9 @@ identity
 \]
 not merely an inequality
 (\lean{supportCoeff\_add\_deepDivisorCount\_eq\_of\_carry\_pivot}{SuffixCylinderCarryPivot.lean:163},
-\ev{Lean}).  The stage-level theorem consumes adjacent profiled prefixes directly
+\ev{Lean}).
+
+The stage-level theorem consumes adjacent profiled prefixes directly
 (\lean{profiledGapStage\_carry\_pivot\_of\_hasAdjacentPrefixes}{SuffixCylinderCarryPivot.lean:228},
 \ev{Lean}).  This is a local normal form for the two-sheet boundary.  It does
 not produce adjacent stages cofinally and therefore does not close HALF or
@@ -215,7 +217,9 @@ $\mathtt{erdosSupportSeries}\ 2\ A=1/2$
 module's own docstring states plainly that the producer sequence itself ``has only been checked to a
 large finite cutoff'': this is a restatement of the already-\ev{Open} O2 producer obligation in a new
 namespace, not a new result, and it duplicates \S O2's own logic (any HALF witness is $\neg\mathrm{U257}$)
-rather than extending it.  The module now also proves an unconditional finite-support obstruction at
+rather than extending it.
+
+The module now also proves an unconditional finite-support obstruction at
 the second rational target $1/21$:
 \[
   F\subseteq\{n:n\ge2\}\quad\Longrightarrow\quad

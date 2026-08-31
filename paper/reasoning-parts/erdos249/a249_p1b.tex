@@ -1,4 +1,4 @@
-\subsection{Consumers}
+\subsection{Consequence theorems}
 
 This subsection lists every premise in the corpus whose conclusion is
 \emph{conditional} on an unsupplied hypothesis, with that hypothesis rendered
@@ -579,7 +579,7 @@ a route to a proof.
 \lean{tsum_pos_coprime_pair_pow}{GeometricCoprimality.lean:182}
 \end{prop}
 
-\subsection{Killers and countermodels}
+\subsection{Obstructions and countermodels}
 
 Adversarial constructions and no-go results, kept with the mechanism that
 closes each route so the machinery outlives the framing. Per the corpus's
@@ -644,12 +644,20 @@ There is $c{:}\mathbb N\to\mathbb N$ with: (a) arbitrarily many, arbitrarily-sep
 explicit ``$6,0$'' carry pairs (for every $N,G,K$ a block of $K$ such pairs beyond $N$, pairwise
 separated by $>G$); (b) $\forall n,\ c(n)\le6$; (c) $\forall n,\ c(n)\le n$; (d) $\forall n,\ c(n)\equiv\varphi(n)\pmod2$
 (exact parity agreement with Euler's totient); (e) $c$ is \textbf{not} eventually periodic; yet
-(f) $\sum_n' c(n)/2^n = 3/2$, a \emph{rational} number. \textbf{Kills}: any \#249 proof strategy
+(f) $\sum_n' c(n)/2^n = 3/2$, a \emph{rational} number.
+
+\par\medskip
+
+\textbf{Kills}: any \#249 proof strategy
 whose only inputs are uniform boundedness, the trivial growth bound $c(n)\le n$, exact
 $\varphi$-parity agreement, and failure of eventual periodicity — \emph{even strengthened} to
 cofinal, arbitrarily-separated, arbitrarily-long-block non-periodicity. The obstruction is
 structural, not a shortage of non-periodicity witnesses: a rational coboundary can carry unlimited
-\emph{visible} aperiodic structure while summing to a fixed rational. \textbf{Doctrine consequence}
+\emph{visible} aperiodic structure while summing to a fixed rational.
+
+\par\medskip
+
+\textbf{Doctrine consequence}
 (matches project memory \texttt{feedback\_erdos\_reductions\_rejected\_bank\_real\_results}): only
 arguments using actual quantitative totient/Mersenne size or residue information (as in the
 $\mathtt{TotientActualLcm}\ast$/$\mathtt{TotientFixedRank}\ast$ families) can possibly close \#249;

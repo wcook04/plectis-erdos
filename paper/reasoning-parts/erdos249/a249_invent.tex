@@ -205,12 +205,15 @@ $t$, with $m=N+t$,
   \;+\;\underbrace{(2^{h}-1)\sum_{t=h+1}^{L}\frac{\varphi(N+t)}{2^{t}}}_{\text{body}}
   \;+\;\underbrace{\sum_{t=L+1}^{L+h}\frac{\varphi(N+t)}{2^{t-h}}}_{\text{tail}} .
 \end{equation}
+
 So the phase is a \emph{geometrically weighted linear form in $\varphi$ at
 $L+h$ consecutive arguments}, with the value at offset $t$ entering modulo
-$2^{t}$ and with an odd multiplier $2^h-1$ throughout the body. Two features
-control everything that follows. First, the weight at offset $t$ has
+$2^{t}$ and with an odd multiplier $2^h-1$ throughout the body.
+
+Two features control everything that follows. First, the weight at offset $t$ has
 denominator exactly $2^{t}$, so offset $t$ contributes nothing unless
 $v_2(\varphi(N+t))<t$: the $2$-adic valuation of the totient is the gate.
+
 Second, $2^h-1$ is odd, so the multiplier never closes a gate that
 $\varphi$ leaves open.
 
@@ -246,6 +249,7 @@ exact: from $\varphi=\mu * \mathrm{id}$,
   S=\sum_{d\ge 1}\mu(d)\,\frac{2^{d}}{(2^{d}-1)^{2}}
   \qquad (\ev{Math};\ \text{verified to }16\ \text{digits},\ S=1.3676308019850223\ldots,\ \ev{Cert}).
 \end{equation}
+
 But the method does not transfer, for a reason that can be stated
 quantitatively rather than vaguely. Erd\H{o}s's argument for $E$ exploits
 that the coefficient $d(N)$ has enormous multiplicative fluctuation: over
@@ -255,7 +259,9 @@ identifiable spikes into the digit stream. The coefficient here is
 $\varphi(N)$, which satisfies $\varphi(N)/N\in[c/\log\log N,1]$: its
 multiplicative fluctuation over $N\le Y$ is a factor $e^{\gamma}\log\log Y$,
 that is, $\log\log Y$ rather than $Y^{c/\log\log Y}$. There are no spikes to
-find. In the M\"obius--Mersenne coordinate \eqref{eq:mobmers} the situation is
+find.
+
+In the M\"obius--Mersenne coordinate \eqref{eq:mobmers} the situation is
 worse rather than better: the coefficients $\mu(d)$ change sign, so the
 digit blocks contributed by successive $d$ cancel rather than accumulate,
 and there is no positivity to run a block argument on. This is, as far as
@@ -438,7 +444,9 @@ not supply it. \ev{Math} \scale{cofinal}.
 Propositions~\ref{prop:dickman} and \ref{prop:badcof} isolate possible
 bookkeeping bounds, subject to their stated uniform estimates.  The
 fixed-$s$ quantifier leaves the fibre-mean modulus deep, and the centred term
-has a separate correlation obstruction.  Factoring the pivot argument as
+has a separate correlation obstruction.
+
+Factoring the pivot argument as
 $n=mp$ and dividing out the pivot phase leaves
 \[
   \operatorname{Re}\sum_{m}\ \sum_{p\,:\,mp\in[X,2X)+t}
@@ -448,7 +456,9 @@ $n=mp$ and dividing out the pivot phase leaves
 \]
 where $\overline{e}_m$ is the fibre mean and, by \eqref{eq:window}, $w(n)$ is
 the character of the same weighted totient sum with the single offset $t$
-deleted. Vinogradov's bilinear method requires that, after the decomposition
+deleted.
+
+Vinogradov's bilinear method requires that, after the decomposition
 $n=mp$, the summand split as $\alpha_m\beta_p$ (Type II) or be independent of
 $p$ given $m$ (Type I), up to boundedly many pieces. The weight $w(mp)$ is
 neither: it is a function of the totients of the $L+h$ integers
@@ -465,6 +475,7 @@ needed is
     e\Bigl(\frac{\varphi(p+1)}{8}+\frac{\varphi(p+2)}{16}+\cdots\Bigr)
   \;\le\;\Bigl(\frac{9}{10}-\delta\Bigr)\,\bigl(\pi(2X)-\pi(X)\bigr).
 \]
+
 The missing input is thus a \emph{non-correlation between a fixed quadratic
 character at $p$ and the $2$-adic behaviour of $\varphi$ at the shifts
 $p+1,p+2,\dots$}: a correlation statement for two arithmetic functions at
@@ -487,7 +498,9 @@ averaged bound: if
 \]
 with $L_k$ any admissible depth sequence, then infinitely many blocks satisfy
 the gap and Proposition~\ref{prop:transfer} applies. Logarithmic averaging is
-exactly the regime in which the entropy-decrement method operates. The first
+exactly the regime in which the entropy-decrement method operates.
+
+The first
 concrete step is not to prove this but to decide whether the method reaches
 it: the phase $e\bigl(D(h,N,L)/2^{L}\bigr)$ is not multiplicative, but it is
 a bounded \emph{local function of a multiplicative function} --- a fixed
@@ -528,6 +541,7 @@ the residual position inside the dyadic cylinder.
 that no pointwise producer in this programme has ever been supplied at even
 one large index, across seven independent attempts, while the single audited
 row whose missing input is a block average is the first-harmonic row.
+
 Second, and sharper: digit behaviour \emph{along the primes} is strictly
 harder than digit behaviour on average even for constants where the average
 case is settled. The only constants whose digits are understood at all along a sparse
@@ -549,7 +563,9 @@ because a predicate quantifying existentially over subsets
 $T\subseteq[X,2X)$ is collapse-exposed: the proved collapse
 \lean{Erdos249257.\allowbreak dtwWindowSeparatedPairs_iff_\allowbreak irrational_totient_series}{PivotAntiReconstruction.lean:1765}
 works precisely by \emph{choosing} $T=\{N,N+1\}$. That warning applies to a
-free $T$. It does not apply to a $T$ named in advance as a function of
+free $T$.
+
+It does not apply to a $T$ named in advance as a function of
 $(h,X,L)$, and the corpus already contains the right one:
 \[
   T_{h,X,L}\;:=\;\mathrm{pivotFiber}(X,L,L-h,1)
@@ -557,7 +573,9 @@ $(h,X,L)$, and the corpus already contains the right one:
 \]
 a membership equality rather than a sampled surrogate
 (\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:423},
-\ev{Lean}). The proposal is to prove
+\ev{Lean}).
+
+The proposal is to prove
 \begin{equation}\label{eq:primefibre}
   \forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
   16(2X+h+L+2)\le 2^{L}
@@ -567,15 +585,19 @@ a membership equality rather than a sampled surrogate
 which by the landed subset consumer yields a certificate at some
 $N\ge X\ge X_0$, hence irrationality. \ev{Open}
 
-Three features make this the sharpest available target. (i) On this fibre the
+Three features make this the sharpest available target.
+
+(i) On this fibre the
 cofactor is $m=1$, so the pivot coefficient is $(2^{h}-1)\varphi(1)=2^{h}-1$,
 which is \emph{odd}, so the $2$-adic triviality described above cannot occur.
+
 (ii) The pivot modulus is
 $2^{h+1}$, \emph{fixed} once $h$ is fixed, so the fibre-mean term is governed
 by the prime number theorem in progressions to a fixed power of two, where
 the Ramanujan main term $c_{2^{h+1}}(2^{h}-1)=\mu(2^{h+1})=0$ vanishes for
 every $h\ge1$ and the error term is effective; the fixed-$s$ deep-modulus
 obstruction does not apply to this separately defined canonical fibre.
+
 (iii) The bookkeeping budgets of \S\ref{sub:pivot} disappear:
 inside $T$ there are no non-suppliers and no bad cofactors. What remains is
 exactly one estimate --- decorrelation of the fixed phase

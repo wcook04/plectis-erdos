@@ -1,4 +1,4 @@
-\section{Interface index: what stands between the corpus and a proof}
+\section{Frontier index: what stands between the corpus and a proof}
 
 This section is the sharp end of the paper. Parts I--II assembled the corpus; here every
 result in it is tested against three exact open obligations and rendered as a usable premise:
@@ -499,12 +499,18 @@ prefixes.
 $|\mathrm{integerHalfCarry}(\mathrm{wordSupport}\,a)(M{-}1)| \le \mathrm{halfStripBound}\,M
 \Rightarrow \exists A$ infinite with $\mathrm{erdosSupportSeries}\,2\,A=1/2$. Same architecture
 as the obligation: cofinal, no coherence, mutually incompatible witnesses allowed.
+
+\par\medskip
+
 \textbf{Mismatch (\texttt{multiple}):} the two sockets trade off in opposite directions and
 neither implies the other. C4a tolerates \emph{any} support inside the depth-$M$ window but
 demands the carry inside a $\sim 2\sqrt M$ strip; the obligation form ($\star$) tolerates a carry
 up to $2^{M/2-1}$ — exponentially looser — but demands the support be confined to ranks $<
 M/2+1$, since the exact fill encodes the residue in the pure upper window where the Mersenne
 quotient is exactly $2^{M-d}$. The gap is support \emph{locality}, not carry size.
+
+\par\medskip
+
 \textbf{Closes it:} a lower-half confinement upgrade of the strip witnesses — $\forall N\
 \exists c\ge N$ with a strip-scale witness whose support lies in $[2,c)$ at depth $2c{-}3$. Then
 $2\sqrt{2c}+4 < 2^{c-2}$ for $c\ge8$ and the existing fill fires verbatim. This identifies C4a as
@@ -698,12 +704,18 @@ new route for \#257.
 \textbf{Yields:} for $A=$ (finite exceptional set dividing $Q$) $\cup \{\mathrm{core}_i \cdot
 \mathrm{petal}_i\}$ with cores $\mid Q$, petals pairwise coprime and coprime to $Q$, $\sum
 1/\mathrm{petal}_i<\infty$: if \texttt{SunflowerForcedSlotTailSelection} $A$ then irrational.
+
+\par\medskip
+
 \textbf{Mismatch (\texttt{multiple}):} two gaps. (i) On the support: the bouquet class strictly
 generalises pairwise-coprime but still demands globally pairwise-coprime, summable petals — it
 inherits NM-06's exclusion of the primes and adds nothing in the divisor-dense regime. (ii) On
 the selector: \texttt{SunflowerForcedSlotTailSelection} is an unproved cofinal supply — grep for
 ``dichotomy'' in the file returns only the namespace; despite the filename there is no dichotomy
 theorem there.
+
+\par\medskip
+
 \textbf{Closes it:} for the selector, $\forall K{>}0\ \exists N$, $2^K \mid$ the carried first
 block $\wedge\ \mathrm{binaryCoeffTail}(\mathrm{supportCoeff}\,A)(N{+}K)\le16$, from the
 bouquet's persistent-reduced-modulus averaging — the file states this is what that averaging
@@ -718,11 +730,17 @@ line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148).
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall N_0$: $A$ infinite and $m$-periodic above
 $N_0$ $\Rightarrow$ irrational. Plus: the class of supports with irrational series is closed
 under finite symmetric difference in both directions.
+
+\par\medskip
+
 \textbf{Mismatch (\texttt{hypothesis\_strength}):} the widest unconditional class landed (all
 moduli, all thresholds, no bound anywhere), but eventual periodicity is a measure-zero, countable
 condition; the complement is everything interesting. The two-way finite-perturbation transfer
 shows the good class is a union of finite-symmetric-difference equivalence classes — precisely
 why it cannot be enlarged by prefix surgery; the obstruction is asymptotic.
+
+\par\medskip
+
 \textbf{Closes it:} a ``locally periodic at cofinally many scales'' version — $\forall q{>}0\
 \exists N\ \exists m\le f(N)$ such that $A\cap[N,N{+}L]$ is $m$-periodic for $L$ large enough
 that the periodic sieve manufactures one block certificate. The periodic producer already only
@@ -779,6 +797,9 @@ whose non-existence is the entire content, for every $A$ at once.
 $u(n{+}1)+v\cdot\mathrm{supportCoeff}\,A\,(c{+}n{+}1)=2u(n)$: $u$ is unbounded, and $1+v|F| \le
 2u(L{-}c{-}1)$ for every finite $F\subseteq A$ with all elements dividing $L$. Stated for the
 general denominator $2^c v$, not just dyadic.
+
+\par\medskip
+
 \textbf{Mismatch (\texttt{multiple}):} traced to a dead end. The proof picks $2B{+}1$ elements of
 $A$, sets $L=(c{+}1)\prod F$, forcing $\mathrm{supportCoeff}\,A\,L\ge|F|$; then
 $u(L{-}c{-}1)=v\cdot\mathrm{binaryCoeffTail}(\mathrm{supportCoeff}\,A)(L{-}1)\ge v|F|/2$, so $1+v|F|
@@ -786,6 +807,9 @@ $u(L{-}c{-}1)=v\cdot\mathrm{binaryCoeffTail}(\mathrm{supportCoeff}\,A)(L{-}1)\ge
 ``supportCoeff is unbounded on common multiples,'' not a rigidity. The linear tail bound cannot
 rescue it either: $L$ is exponential in $|F|$ by construction, so $N{+}2$ is astronomically
 larger than $|F|$.
+
+\par\medskip
+
 \textbf{Closes it:} a common-multiple selection with divisor economy — an infinite $A$ must admit
 $L$ with $|\{a\in A: a\mid L\}| > 2\,\mathrm{binaryCoeffTail}(\mathrm{supportCoeff}\,A)(L{-}1) +
 1/v$. Since the tail is a $2^{-j}$-weighted average near $L$, this demands an anti-concentration
@@ -820,12 +844,18 @@ full verification; this is recorded as a strong promotability hypothesis, not a 
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall$ $\mathbb Z$-valued $m$-periodic weight
 $w$: irrational$(\sum w(a)/(b^a-1))$ $\vee$ $\exists k,z,\ b^k x=z$; the terminating branch closes
 unconditionally as soon as $\mathrm{intWeightedCoeff}\,w$ is one-signed and frequently nonzero.
+
+\par\medskip
+
 \textbf{Mismatch (\texttt{multiple}):} two mismatches. (i) periodicity of the weight is still
 required — this is the signed lift of NM-08, not an escape from it. (ii) the one-sidedness clause
 is \emph{free} for \#257 (a 0/1 support indicator gives $\mathrm{supportCoeff}\,A\ge0$
 automatically) — the sign machinery buys nothing here; it was built for the signed \#249 lane.
 The genuinely transferable content is the dichotomy shape itself: irrational-or-$b$-adically-
 terminating, terminating branch killable by a positive far tail.
+
+\par\medskip
+
 \textbf{Closes it:} an aperiodic version of the dichotomy — for arbitrary $A$, either
 $\mathrm{erdosSupportSeries}\,2\,A$ is irrational or $2^k\cdot$it is an integer. For infinite $A$
 the terminating branch is already excluded by \texttt{finiteErdosSum\_den\_odd}-style parity plus

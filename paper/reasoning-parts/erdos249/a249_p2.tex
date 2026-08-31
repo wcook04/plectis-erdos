@@ -7,6 +7,7 @@ values on one side of a threshold, e.g.\ $\forall a\ge 8$, but the proof or the 
 it do not survive removing the threshold), \scale{uniform} (holds unconditionally for every value
 of every free parameter, with no scale restriction at all), and \scale{cofinal} (an existential
 claim of the shape $\forall N_0\,\exists N\ge N_0,\ P(N)$ — infinitely often, arbitrarily far out).
+
 The source tables underlying this ladder also mark a handful of pure identities and converters
 \texttt{n/a} when they are not indexed by any problem-scale parameter at all (they are definitions
 or unconditional equivalences); for ladder purposes these are folded into \scale{uniform}, since an
@@ -354,7 +355,9 @@ a heuristic remark: \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrb
 shows that for a balanced-pulse family of radius $m$, any finite \texttt{State} type collapsing the
 family to a single autonomous summary must satisfy $|\mathrm{State}|\ge\lfloor m/2\rfloor+2$ —
 unbounded in $m$ — so no finite-state decoder can recover the shift $r$ from its collapsed state
-(\ev{Lean}, \scale{uniform}, coordinate \texttt{binary-digit}). This is the formal shadow of the
+(\ev{Lean}, \scale{uniform}, coordinate \texttt{binary-digit}).
+
+This is the formal shadow of the
 elementary facts that $0\le\varphi(n)\le n$, that $\varphi$ is unbounded, and
 that $\varphi$ has average order $\tfrac6{\pi^2}n$, equivalently
 $\sum_{k\le x}\varphi(k)\sim\tfrac3{\pi^2}x^2$ (\ev{Math}),
@@ -377,7 +380,9 @@ divisor-convolution power series for free; no finite-state decoder is ever neede
 relevant recursion (the cyclotomic T1--T6 chain: \lean{mobiusNumeratorPolynomial\_eq\_gcdWord}{RepunitMobiusNumerator.lean:205}
 through \lean{cyclotomic\_dvd\_primeJump\_new\_fibre}{PrimePowerJumpDynamics.lean:281}) is a finite,
 exact polynomial identity at every squarefree radical $r$, uniform in $r$, with no growth-driven
-state explosion. This is precisely why the corpus's strongest \emph{unconditional} denominator
+state explosion.
+
+This is precisely why the corpus's strongest \emph{unconditional} denominator
 result — the exact-value and lower-bound formulas of
 \lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147} and
 \lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60} — lives

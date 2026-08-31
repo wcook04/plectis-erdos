@@ -237,6 +237,9 @@ $L(\mu):=\sum_d \mu(d)/(2^d-1) = \tfrac12$ (rational, trivially) alongside
 $L(1) = \sum_d 1/(2^d-1) = E$, the Erd\H{o}s--Borwein constant, which
 \emph{is} proved irrational in this same kernel
 (\lean{irrational_erdosBorwein_series}{CertificateKernel.lean:8335}, \ev{Lean}).
+
+\par\medskip
+
 This is the opposite regime from Proposition~\ref{prop:shift}'s
 \textbf{binary-digit coordinate}, where the corresponding weight satisfies
 $0\le\varphi(n)\le n$ and is unbounded.  The function $\varphi$ has average
@@ -251,6 +254,9 @@ base-power specialisation
 \ev{Lean}, \coord{n/a}, fully coordinate-free) has a genuine chance of
 transferring to $T$ precisely because its weight is bounded, in a way it does
 not have a chance of transferring directly to the raw $\varphi(n)/2^n$ series.
+
+\par\medskip
+
 No such transfer is proved; \S\ref{ssec:mobius} below (cross-referenced
 here, developed in Part~2 of this paper) records exactly why the transfer has
 so far failed (the ``$\mu$-pollution'' obstruction) rather than merely

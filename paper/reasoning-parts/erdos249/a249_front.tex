@@ -17,6 +17,22 @@ being made is that those failures are not independent --- they are repeated
 measurements of a single obstruction, and that obstruction has a shape which
 can be stated.
 
+\begin{rem}[Literature coordinates]
+The nearby literature serves three distinct roles.  Kova\v{c}--Tao's
+\href{https://arxiv.org/abs/2406.17593v4}{Ahmes-series paper} maps a broader
+Lambert-subseries landscape, but does not treat the coefficient series $S$.
+Merca's \href{https://doi.org/10.1007/s11139-016-9856-3}{Lambert-series
+factorization theorem} and the
+\href{https://doi.org/10.55016/ojs/cdm.v14i1.62425}{Merca--Schmidt}
+factor-pair formalism provide transform background for the
+M\"obius--Mersenne coordinate.  Finally,
+\href{https://arxiv.org/abs/1511.02221}{Balasubramanian--Giri--Srivastav,
+Theorem~2.2} gives uniform shifted-correlation estimates for the relevant
+divisor-convolution class.  It does not supply the dyadic residue small-ball
+or phase anti-concentration required by $\mathrm{Sep}$.  These are contextual
+or method sources, not proofs of the open certificate supply. \ev{Cited}
+\end{rem}
+
 The open question has a sharp equivalent inside the corpus, and it is the
 statement everything below is measured against. Write $2^{N} S = \Phi_N + R_N$
 with $\Phi_N := \sum_{n \le N} \varphi(n) 2^{N-n} \in \N$ and
@@ -28,6 +44,7 @@ denominator, there are $h > 0$ and $N_0$ with $R_{N+h} - R_N \in \Z$ for every
 $N \ge N_0$
 (\lean{Erdos249257.eventual\_period\_of\_not\_irrational}{TotientTailPeriodKiller.lean:358},
 explicit witnesses $h = \varphi(\mathrm{oddPart}(r.\mathrm{den}))$, $N_0 = v_2(r.\mathrm{den})$).
+
 So it suffices to refute integrality cofinally on every period ray. The finite
 device that refutes it is a residue certificate:
 \[
@@ -44,6 +61,7 @@ the depth-$L$ truncation of $2^{L}(R_{N+h} - R_N)$, and
 a decidable condition
 (\lean{Erdos249257.TotientTailPeriodKiller.windowDiscrepancy}{TotientTailPeriodKiller.lean:66},
 \lean{Erdos249257.TotientTailPeriodKiller.certifiedKill}{TotientTailPeriodKiller.lean:72}).
+
 The radius $N{+}h{+}L{+}2$ is exactly the crude tail bound coming from
 $\varphi(m) \le m$, so a certificate is sound: it forces
 $R_{N+h} - R_N \notin \Z$, and in fact certificates are \emph{complete} for
@@ -731,16 +749,22 @@ It is tempting to say the finite-inspection theorem points at analysis. It does
 not. B1 says any proof must use $\varphi$ at unbounded indices --- a necessary
 condition satisfied by \emph{every} open route here (the LCM diagonal as
 $t \to \infty$, the actual-LCM supply for $a \ge 8$, the Farey growth law as
-$K \to \infty$, the rank bound for all $e$). B1 does not discriminate. What
-selects this route is a sharper pair: (1) B4, proved, kills the only mechanism
+$K \to \infty$, the rank bound for all $e$). B1 does not discriminate.
+
+\par\medskip
+
+What selects this route is a sharper pair: (1) B4, proved, kills the only mechanism
 the corpus ever found for reaching full resolution at unbounded range by
 \emph{prescribing} values, and its own stated repair is accumulation over the
 word --- which is what an exponential sum measures; and (2)
 Observation~\ref{obs:pointwise}, an observed pattern and not a theorem, shows
 that every single-index producer has failed to be supplied at even one large
 index, while this route's missing input is a block average and therefore never
-requires naming a good index. B1's real contribution is narrower but still
-load-bearing: it proves that the finite deposits can never be extended into a
+requires naming a good index.
+
+\par\medskip
+
+B1's real contribution is narrower but still load-bearing: it proves that the finite deposits can never be extended into a
 proof, so the gap between the census and the obligation is a gap in kind, not
 in degree. That is a genuine no-go about method, of the same species as a
 relativization barrier. It is not a selector.
@@ -782,7 +806,9 @@ It implies $\mathrm{Irrational}(S)$.
 It inherits Survivor 1's evasions of B1, B4, B5, B6 and B7 verbatim: the four
 terms are exact finite sums over canonical largest-prime supplier fibres of the
 same accumulated-word phases, with no sample choice and nothing prescribed. Its
-specific advantages are three. The decomposition is an \emph{exact identity},
+specific advantages are three.
+
+The decomposition is an \emph{exact identity},
 proved unconditionally with \texttt{\#print axioms} clean
 (\lean{Erdos249257.windowFirstExp\_sum\_eq\_pivot\_decomposition}{FirstHarmonicPivot.lean:514},
 budget consumer
@@ -795,6 +821,7 @@ interval of primes, proved as a membership equality
 (\lean{Erdos249257.mem\_pivotFiber\_one\_overlap\_iff}{FirstHarmonicPivot.lean:423}),
 with the totient factorisation at the pivot the honest
 $\varphi(mp) = \varphi(m)(p-1)$ and the non-divisibility discharged by size.
+
 Three of the four terms are then counting bookkeeping; only the first needs a
 genuine correlation estimate, and only in real part.
 
@@ -910,60 +937,28 @@ coordinate-disjoint from everything else, which is its whole value, but its
 obvious approach is closed and the missing input is a rigidity theorem nobody
 has stated.
 
-\section{How to use this document}
+\section{Reading the detailed record}
 
-\paragraph{Evidence bands.} Every claim carries one, and they are never
-blurred. \ev{Lean} means kernel-checked, with the declaration named and the
-file:line given. \ev{Cert} means an exact finite computation, valid exactly on
-the stated range. \ev{Math} means ordinary mathematics, proved here or
-elsewhere but not formalised --- Theorem~\ref{thm:gamma} is the important
-instance, and its unformalised composition step is flagged where it occurs.
-\ev{Cited} means published, with the reference. \ev{Open} means not proved, by
-anyone, anywhere. A proved no-go and an audit over a corpus are both valuable
-and are never conflated: B1, B2, B4, B5, B6 and B7 are proved eliminations; B3
-is an audit and is labelled as evidence every time it is used.
+The opening note has already defined the evidence bands, scale tags,
+coordinates, and catalogue terminology.  This section therefore gives only
+the order of dependence needed for the longer reference material.
 
-\paragraph{The scale axis.} This is the load-bearing axis of the whole
-document. \scale{fixed} means one instance; \scale{bounded} means every
-instance up to an explicit bound; \scale{cofinal} means infinitely often past
-every threshold; \scale{uniform} means for all parameters with no dependence.
-The single most important structural fact about the corpus is narrower:
-\emph{every direct certificate deposit for $\mathrm{Sep}$ is fixed or bounded,
-although the corpus also contains uniform and cofinal structural theorems}.
-Those stronger-scale results do not produce $\mathrm{Sep}$. Theorem~\ref{thm:gamma}
-says that no accumulation of bounded verification, at any bound, is evidence
-that the cofinal statement holds. Read every result's \texttt{scale} tag before
-reading its content.
+\paragraph{Scale and coordinate discipline.} Every direct certificate deposit
+for $\mathrm{Sep}$ is fixed or bounded, although the corpus also contains
+uniform and cofinal structural theorems.  Those stronger-scale results do not
+produce $\mathrm{Sep}$, and Theorem~\ref{thm:gamma} shows why extending bounded
+verification does not establish the cofinal statement.  The coordinate tags
+are equally literal: the $\gamma$-splice concerns \coord{binary-digit}, the
+rank floor \coord{carry-rank}, positivity \coord{actual-lcm}, and the Farey
+exclusion \coord{farey}.  An obstruction in one coordinate does not transfer
+without a proved map.
 
-\paragraph{Coordinates, and why obstructions are relative to them.} Every
-obstruction carries a \texttt{coord} tag, because an obstruction is always an
-obstruction \emph{in a representation}, never a property of the object. The
-$\gamma$-splice obstructs arguments in the \coord{binary-digit} coordinate;
-the rank floor lives in \coord{carry-rank}; positivity lives in
-\coord{actual-lcm}; the Farey exclusion lives in \coord{farey}. Two
-consequences follow, and both matter for anyone attacking the problem. First,
-before reporting a new wall, name the coordinate it was met in and test a
-re-representation. Second, an obstruction proved in one coordinate is silent
-about another: Survivor 5 survives precisely because it is coordinate-disjoint
-from the certificate lane, and Survivor 1 survives because the first-harmonic
-coordinate is the one in which the corpus's proved collapse mechanism has no
-purchase.
-
-\paragraph{Map of what follows.} The premise catalogue records, for each
-coordinate, the exact statements the corpus holds, with hypotheses, evidence
-band, scale, and Lean declaration. It is followed by the typed-implication
-tables (which statement feeds which, and at which quantifier shape), the
-near-miss index against the open obligations, and the promotion audit whose
-verdicts are summarised as B3. Nothing after this point restates the barriers;
-they are all here.
-
-\paragraph{Read this in full before starting.} That instruction is not
-politeness. The recurring practical failure of this programme has not been a
-shortage of ideas; it has been rediscovering the same reformulations, because
-no single document held the whole picture. Every dead route in
-\S\ref{sec:wall} was found more than once. If you are about to prescribe
-totient values at engineered positions, read B4 first. If you are about to
-define a bounded carry state, read B5. If you are about to look for a weaker
-sufficient condition, read B2 --- there probably isn't one, and the corpus has
-already proved as much three times. The purpose of assembling the wall is that
-the next attempt should start where the last one stopped.
+\paragraph{Order of dependence.} Read the wall in \S\ref{sec:wall} before
+selecting an attack.  In particular, B4 governs prescribed totient values, B5
+bounded carry states, and B2 purportedly weaker certificate conditions.  The
+mathematical-ingredient catalogue that follows may then be entered by
+coordinate: it records hypotheses, evidence band, scale, and Lean declaration.
+The later tables give the exact implication graph, the near misses at each open
+obligation, and the promotion audit summarised as B3.  These tables are
+reference material; the wall and the surviving-route argument are intended to
+be read linearly.

@@ -137,6 +137,21 @@ finite $J$, whose coding range is finite.
 \lean{supportedMersenneDigitValue\_injective}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:54}.
 \end{thm}
 
+\begin{rem}[Achievement-set terminology and source boundary]
+We use the modern term \emph{achievement set} for the subsum set that
+\href{https://doi.org/10.11429/ptmps1907.7.250}{Kakeya's 1914 note} describes
+as a set of partial sums.  Kakeya proves perfectness for an absolutely
+convergent series and nowhere density under an all-index strict-tail
+condition; \href{https://arxiv.org/abs/2406.17593v4}{Kova\v{c}--Tao,
+Remark~4.1} verifies that strict-tail condition for the fixed-base Mersenne
+weights.  Those sources are the classical topological antecedent.  The local
+volume dichotomy, injectivity, and greedy-membership statements above and
+below are Lean-checked claims of this corpus.  The sparse power-series criteria
+of \href{https://arxiv.org/abs/2601.20743}{Kaneko--Suzuki--Tachiya} give
+neighboring sparse-support context, not a theorem about arbitrary reciprocal
+Mersenne subseries. \ev{Cited}
+\end{rem}
+
 \begin{thm}[Membership equals greedy survival; the fatal-gap dichotomy]
 \label{thm:greedy-survival}
 $x \in \mathcal{A}$ iff $0 \le x$ and the canonical greedy (take-if-possible) residual after every
@@ -159,13 +174,19 @@ Finally, the certified computation. All of it is exact integer arithmetic, no fl
 Truncation rungs $J = 3,\dots,22$ all \emph{proved} to survive (not merely computed). Seam orbit
 certified to row $200{,}000$: branch counts $\mathrm{R{:}M{:}U} = 100197{:}49899{:}49898$, the
 target inequality failing at exactly one reset row, $r = 7$; maximal pure-R run $19$, attained at
-row $158{,}096$. Independently, rows $6 \le n \le 2500$: $1209$ resets, zero classification
+row $158{,}096$.
+
+Independently, rows $6 \le n \le 2500$: $1209$ resets, zero classification
 anomalies, minimum in-scope margin $+1.1119$ bits at row $14$ growing to $\approx 1246$ bits by row
-$2500$ (mean $627$), never re-approaching the threshold. Sharp tail margin, ranks $2$ to $3000$: no
+$2500$ (mean $627$), never re-approaching the threshold.
+
+Sharp tail margin, ranks $2$ to $3000$: no
 fatal skip, take fraction $0.4992$, tightest take-margin $+0.0340$ bits at rank $7$ (the near-tie
 $1/126 \ge 1/127$ --- the single tightest real data point in the corpus, and the first case any
 proposed proof should be tested against). Greedy set certified to $m = 200{,}000$ with
-$0 \le 1/2 - \sum_{d \in G} x_d < 2^{-199999}$. A half-trapping macro receipt reaches depth
+$0 \le 1/2 - \sum_{d \in G} x_d < 2^{-199999}$.
+
+A half-trapping macro receipt reaches depth
 $13{,}548{,}057$ (labelled in its own source as a private exact finite computation receipt, not
 publication authority). Kernel-checked corroboration of the low rows:
 \lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}
@@ -253,12 +274,18 @@ look superficially unrelated. (1) \emph{Generic lattice covering} proves the wro
 prefix lattice breaches the $2^{t/2}$ safety radius in $74\%$ of $t \in [8,26]$ --- witness
 $t = 15$, where fans of $\{2,3,5,6,10\}$ sum to $2^{15}+1$, at circular distance $1$; expected
 near-hits grow like $2^{t/6}$. Any generic bound on prefix cancellation therefore proves the
-opposite of what is wanted. \ev{Cert} (2) \emph{Digit-cascade impossibility} is false statically:
+opposite of what is wanted. \ev{Cert}
+
+(2) \emph{Digit-cascade impossibility} is false statically:
 explicit words exist at $t = 20$ (top $18$ of $20$ bits all-$1$) and $t = 22$ (top $20$ of $22$
 all-$0$), and an unconditional construction supplies about $t/12$ independent single-bit knobs,
-verified with zero exceptions to $t = 601$. \ev{Cert} (3) \emph{Integer-window static adversary
+verified with zero exceptions to $t = 601$. \ev{Cert}
+
+(3) \emph{Integer-window static adversary
 search} finds nothing: zero hits, exhaustively for $t \le 22$ and exactly at $t = 40, 42, 45$ over
-all cut positions. \ev{Cert} The reconciliation is the content: residues mod $2^t$ are
+all cut positions. \ev{Cert}
+
+The reconciliation is the content: residues mod $2^t$ are
 adversary-tunable, but the integer \emph{magnitude} is not, because the row weights are
 gap-dominated. So the static tier and the dynamic tier coincide identically, and all three families
 were, without knowing it, measuring the same single orbit.
@@ -750,49 +777,30 @@ half-value branch with a non-singleton witness space, which makes it the best ta
 Route 1 is where the actual obstruction lives, and Route 5 is Route 1 in another coordinate.
 Neither problem is close to being solved, and no route above is a proof of anything.
 
-\section{How to use this document}
+\section{Reading the detailed record}
 \label{sec:257-howto}
 
-\textbf{Read it in full before starting work.} That instruction is not a courtesy. The recurring
-practical failure of this programme has not been difficulty; it has been rediscovery --- the same
-reformulations, the same dead attack families, arrived at independently three times because no
-single document held the whole picture. This document is that picture for \#257. Anything proposed
-without reading it has a substantial prior probability of already appearing above with its
-mechanism of death recorded.
+The opening note has already defined the evidence bands, scale tags,
+coordinates, and catalogue terminology.  The longer record has two different
+reading modes, and they should not be confused.
 
-\textbf{Evidence bands are never blurred.} \ev{Lean} means kernel-checked, with the declaration
-name as the authority and the file:line as where it sat at the pinned checkpoint. \ev{Cert} means
-exact finite computation, integer arithmetic, no floating point. \ev{Math} means ordinary
-mathematics, proved but not formalised. \ev{Cited} means published, with the reference given.
-\ev{Open} means not proved by anyone. A composite tag means the statement has parts at different
-bands. Declarations in the per-problem tree carry an \texttt{Erdos257/} path prefix; everything
-else lives in the main package.
+\paragraph{Read linearly.} Sections~\ref{sec:257-wall} and
+\ref{sec:257-survivors} form one argument: the first identifies the recurring
+obstructions, and the second isolates the routes those obstructions do not
+exclude.  Read them in order before selecting a new attack.
 
-\textbf{The scale axis is the load-bearing one.} Statements carry \scale{fixed} (a specific index
-or depth), \scale{bounded} (all indices up to a parameter), \scale{cofinal} (arbitrarily large
-indices), or \scale{uniform} (all indices, or independent of the parameter). The single most
-important structural fact about the corpus is that its certified content sits on the
-fixed/bounded side --- rungs $J \le 22$, seam rows $\le 200{,}000$, ranks $\le 3000$, macro depth
-$\le 13{,}548{,}057$ --- while both open obligations are cofinal. By Theorem~\ref{thm:one-sided}
-that gap is a gap in kind, not in degree: no amount of extension on the fixed/bounded side becomes
-a proof. Read a scale tag as a hard type, not as a measure of how far along something is.
+\paragraph{Use as reference.} The mathematical-ingredient catalogue may be
+entered by coordinate: the certificate method and universal-direction record;
+the greedy and achievement-set geometry; the seam model, master identity, and
+dynamics; the half-carry and Boolean--M\"obius coordinates; and the support
+rigidity results.  The later implication tables record what chains with what,
+while the near-miss index gives the exact mismatch at each open obligation.
 
-\textbf{Obstructions are coordinate-relative.} Every obstruction below carries a coordinate tag,
-such as \coord{half-carry} or \coord{seam-row}, because an obstruction is always an obstruction \emph{in a representation}, never a property of the
-object. \coord{half-carry} facts say nothing about \coord{seam-row} arguments; a wall in the
-\coord{diophantine} coordinate (Proposition~\ref{prop:exponent-gap}) is silent about the
-\coord{certificate-engine} coordinate. Before recording any new wall, name the coordinate it lives
-in and test at least one re-representation. Several of the barriers above are strong precisely
-because they are coordinate-free --- Proposition~\ref{prop:local-void} mentions no Mersenne
-structure at all and binds \#249 identically --- and that is worth stating explicitly when it is
-true, and not otherwise.
-
-\textbf{Map of what follows.} The premise catalogue comes next: every landed statement with exact
-hypotheses, conclusion, coordinate, scale and site, organised by lane --- the certificate kernel and
-universal-direction inventory; the greedy/achievement-set geometry; the seam model, its master
-identity and its dynamics; the half-carry and Boolean--M\"obius coordinates; and the support
-rigidity results. After the catalogue come the typed implication tables, which record what chains
-with what, and the near-miss index, which records, for each open obligation, the statements that
-come closest and the exact mismatch in each case. The catalogue is a reference surface and may be
-read by lane. Sections~\ref{sec:257-wall} and \ref{sec:257-survivors} are not: they are an argument,
-and they should be read in order.
+\paragraph{Scale and coordinate discipline.} The direct certified instances
+remain fixed or bounded --- rungs $J \le 22$, seam rows $\le 200{,}000$, ranks
+$\le 3000$, and macro depth $\le 13{,}548{,}057$ --- whereas the open
+obligations are cofinal.  Theorem~\ref{thm:one-sided} shows that extending a
+bounded range does not establish a cofinal statement.  Coordinate tags are
+equally literal: an obstruction in \coord{half-carry}, \coord{seam-row}, or
+\coord{diophantine} does not transfer to another representation without a
+proved map.  Coordinate-free barriers are marked explicitly.

@@ -26,7 +26,7 @@
 
 \runninghead{Erd\H{o}s \#1041: admissible hubs and ray separation}
 \title{Admissible Hubs and Newton-Flow Ray Separation}
-\subtitle{Checked dynamical inputs and the metric throat for Erd\H{o}s Problem~\#1041}
+\subtitle{Checked dynamical inputs and the remaining metric problem for Erd\H{o}s~\#1041}
 \author{Will Cook}
 \date{August 2026}
 
@@ -39,54 +39,38 @@
 Let $f(z)=\prod_i(z-z_i)$ be monic with roots in the closed unit disc.  Erd\H{o}s,
 Herzog, and Piranian ask whether two roots can always be joined by a curve of
 length less than $2$ inside $\{|f|<1\}$.  The global assertion remains open.
-The current metric throat is an admissible-hub selection problem: on the
-ray-separated dense class, find a critical hub $c$ whose two inverse-ray arms
-lie in the relevant component and prove
+
+Two exact inputs isolate the obstruction. At every critical point, two
+nearest-root occurrences have total Euclidean distance at most $2$; Lean
+checks the reciprocal critical balance and disk inverse-square estimate used
+by the ordinary polynomial-level argument. This does not prove containment.
+An exact quintic has a nearest straight spoke that leaves $\{|f|<1\}$, and an
+exact cubic has an escaping midpoint on every straight root-pair segment.
+
+Along the complex Newton field $-f/f'$, the value satisfies
+$f(z(t))=e^{-t}f(z(0))$. Lean checks this value equation, the resulting
+positive-ray obstruction to finite saddle connections, and the finite
+translation and root-retention interfaces.
+
+The remaining metric problem is therefore one of admissible-hub selection.
+On the ray-separated dense class, one must find a critical hub $c$ whose two
+inverse-ray arms stay in the relevant component and satisfy
 \[
   \min_{c\ \mathrm{admissible}} L(c)\le2.
 \]
-At degree five this becomes the explicit selection statement (SPOKE-5): every
-monic quintic with roots in the closed unit disc has a critical point and two
-roots whose contained nearest-root spokes have total length at most $2$.
-Neither selection assertion is proved here.  The near-Fekete reduction removes
-radial deficits from the containment question, and the degree-five envelope is
-already explicit: a critical value at most $1/M_5$, where
+At degree five, a critical value at most $1/M_5$, where
 \[
  M_5=(1-t_*)(1+t_*)^3\sqrt{16t_*^2-4t_*+1},
  \qquad t_*={5\over16}+{3\sqrt{105}\over80},
  \qquad 1/M_5=0.2760461\ldots,
 \]
-gives two contained nearest-root spokes of total length at most $2$.  The
-degree-five residual is a universal selection assertion at this threshold, not a
-constant chase.  The global Euclidean budget underneath this question is a
-separate solved subproblem: at every critical point, two nearest-root
-occurrences have total distance at most $2$.  The mechanism is the reciprocal
-critical balance together with the disk inverse-square estimate; Lean checks
-those two ingredients, while the polynomial-level assembly is an ordinary
-proof in the source map
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/6bebc6e396a4982d842ba214315dc4a8f043ea60/research_corpus/Erdos1041/CriticalTwoRootProximity.lean}{\texttt{CriticalTwoRootProximity.lean}}.
-This is a distance theorem, not a containment theorem: an exact quintic has a
-nearest straight spoke that exits $\{|f|<1\}$, and an exact cubic has an
-escaping midpoint on every straight root-pair segment.  Curved branch
-selection, rather than raw Euclidean budget, is therefore the surviving
-obligation.  The checked dynamical input is also exact.  Along a trajectory
-of the complex Newton field $-f/f'$, the polynomial value obeys $w'=-w$ and
-therefore $f(z(t))=e^{-t}f(z(0))$:
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{50}{newtonFlow_value_hasDerivAt}{the value equation}
-and
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{64}{newtonFlow_scaledValue_hasDerivAt_zero}{the scaled first integral};
-the endpoints of a finite connection consequently lie on one oriented ray, so
-distinct positive rays exclude a saddle connection
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}{the ray-separation theorem},
-while the Claims/Comparator-selected finite perturbation interfaces are
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{197}{exists_small_translation_separating_arguments}{the translation theorem}
-and
-\lword{Erdos1041/NewtonFlowRaySeparation.lean}{287}{constant_perturbation_roots_in_unitDisk}{the unit-disc margin}.
-The degree-five threshold, the no-go witnesses, and the selector formulation
-are ordinary proof, exact-certificate, and computational evidence rather than
-additional kernel-checked theorems.  The remaining work is coefficient
-genericity, component stability, planar topology, and metric gluing; these
-obligations are not discharged here, and Erd\H{o}s \#1041 is not settled.
+would give two contained nearest-root spokes of total length at most $2$.
+The near-Fekete reduction removes radial deficits from this containment
+question, but neither the general hub selection nor its degree-five form is
+proved. The threshold and no-go witnesses are ordinary proofs, exact
+certificates, or computations, not additional kernel-checked theorems.
+Coefficient genericity, component stability, planar topology, and metric
+gluing remain open.
 \end{abstract}
 
 \externalreviewobject{The paper checks exponential Newton-value decay,
@@ -135,6 +119,16 @@ catalogue \cite{bloom}.
 The problem is open.  The original source is Problem~5 on printed p.~139 of
 Erd\H{o}s--Herzog--Piranian \cite[p.~139]{ehp1958}; the preceding paragraph records the
 known input that one component of the lemniscate contains at least two zeros.
+
+Recent work on polynomial lemniscates separates component counts from metric
+path questions. Ghosh and Ramachandran characterize the number of components
+through critical points and critical values \cite[Lemma~7]{ghosh2023}; for the
+binomial family $z^n-a$, the condition $|a|<1$ puts the filled unit lemniscate
+in the connected regime. Connectedness alone gives no path-length bound.
+Our dynamical terminology is also standard: Sutherland calls
+$\dot z=-f(z)/f'(z)$ the continuous Newton flow and observes that $f(z(t))$
+moves on a straight radial line \cite[p.~42]{sutherland1992}. We use this
+value-space identity, not a claim that the global trajectory graph is a tree.
 
 Two recent manuscripts are relevant.  The 48-page manuscript posted by
 \texttt{shtuka} on 24 March 2026
@@ -239,12 +233,15 @@ Let $f$ be monic of degree $n\ge3$ with distinct zeros on a circle of radius
 $\rho$.  If $2\rho^n\le1$, two adjacent zeros are joined by their straight
 chord, whose length is at most $2\rho\sin(\pi/n)<2$, and the chord lies in
 $\{|f|<1\}$.  (If a zero is repeated, the short-connection conclusion is
-immediate; the distinct case is the substantive one.)  After normalisation to
+immediate; the distinct case is the substantive one.)
+
+After normalisation to
 the unit circle, self-inversive realification and alternation against $z^n-c$
 select a zero-free gap on which the polynomial modulus is at most $2$; a
 harmonic normal-derivative argument transfers this arc bound strictly to the
 chord.  The complete ordinary proof is
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md}{\texttt{ConcyclicAlternation.md}}.
+
 This is not a Lean theorem: the
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py}{exact-rational checker}
 tests finitely many load-bearing identities and configurations, while the
@@ -459,6 +456,7 @@ with a 50-digit two-instrument reconstruction and a margin about 97 times
 that of the earlier degree-four witness.  This is computational certificate
 evidence, not an exact rational theorem; the parent remains viable because a
 different hub at the same configuration supplies the relevant pair.
+
 Second, the aggregate estimate
 $\sum_cL(c)\le2(n-1)R$ is refuted at degree four on an open violating region
 and at one degree-five witness.  Its algebraic factor
@@ -820,19 +818,9 @@ metric gluing remain the exact unresolved producers.
 
 \section*{Statements and declarations}
 
-\paragraph{Declaration of generative AI use.} Every word of this manuscript was
-generated by agents based on large language models operating within Will Cook's
-private research system for artificial intelligence. The formal proofs and
-repository software were likewise drafted and revised by the agents through
-that system under Cook's direction. Cook set the objectives and acceptance
-criteria, selected and reviewed the public claims, and approved the published
-version. Cook assumes responsibility for the accuracy, interpretation, and
-presentation of the work. Generative systems are production tools, not authors,
-and supply no independent authority.
-
-Lean does not authorise the exposition, the citation choices, or the
-interpretation, for which the author remains responsible.  This manuscript is
-authored exposition, not Lean proof authority.  The checked
+Lean does not check the exposition, citation choices, or interpretation. This
+manuscript cites Lean only for the formal statements and proofs that the pinned
+kernel accepts. The checked
 core is the Newton value equation, the exponential first integral, the consumer
 form of ray separation, the finite planar-avoidance theorem, quantitative
 constant-translation root retention, and the ray-collision parameterisation.  The
@@ -880,6 +868,15 @@ throughout this problem-note series.
 \bibitem{ehp1958} P.~Erd\H{o}s, F.~Herzog, and G.~Piranian,
   \emph{Metric properties of polynomials}, J. Analyse Math. \textbf{6}
   (1958), 125--148. \url{https://doi.org/10.1007/BF02790232}
+\bibitem{ghosh2023} S.~Ghosh and K.~Ramachandran,
+  \emph{Number of Components of Polynomial Lemniscates: A Problem of Erd\H{o}s,
+  Herzog, and Piranian}, arXiv:2312.13673v1 (2023).
+  \url{https://arxiv.org/abs/2312.13673}
+\bibitem{sutherland1992} S.~Sutherland,
+  \emph{Bad Polynomials for Newton's Method}, in B.~Bielefeld and M.~Lyubich
+  (eds.), \emph{Conformal Dynamics Problem List}, Stony Brook IMS preprint
+  (1992), 42--44.
+  \url{https://www.math.stonybrook.edu/preprints/ims92-7.pdf}
 \bibitem{march2026} \texttt{shtuka},
   \emph{A Short Path Joining Two Zeros Inside a Polynomial Lemniscate},
   manuscript posted 24 March 2026, 48~pp.

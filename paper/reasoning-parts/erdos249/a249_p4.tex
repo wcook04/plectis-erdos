@@ -204,13 +204,17 @@ strengthening, \(\exists t:\mathbb Z,\ H\cdot c\cdot x = t\cdot x.\mathrm{num}\)
 Mersenne-scale corollary — for positive \(x\), if \(2^r\mid x.\mathrm{num.natAbs}\)
 and \(x<2/(2^n-1)\), then \(2^r(2^n-1)<2\cdot x.\mathrm{den}\) — is
 \lean{Erdos249257.AdelicHeightObstruction.positiveRat\_mersenne\_height}{AdelicHeightObstruction.lean:103} (generic form
-\lean{positiveRat\_numDivisor\_mul\_lt\_two\_mul\_den}{AdelicHeightObstruction.lean:77}). A companion rigidity fact
+\lean{positiveRat\_numDivisor\_mul\_lt\_two\_mul\_den}{AdelicHeightObstruction.lean:77}).
+
+A companion rigidity fact
 rules out smuggling the discarded information back in through a linear
 channel: if a linear map \(\Lambda:V\to W\) factors through a surjective
 evaluation \(\mathrm{ev}\) (\(\ker\mathrm{ev}\le\ker\Lambda\)), then
 \(\Lambda\) is \emph{exactly} \(\mathrm{ev}(\cdot)\bullet w_0\) for a single
 fixed \(w_0\) —
-\lean{Erdos249257.AdelicHeightObstruction.linearDescender\_eq\_smul\_eval}{AdelicHeightObstruction.lean:120}. The upstream
+\lean{Erdos249257.AdelicHeightObstruction.linearDescender\_eq\_smul\_eval}{AdelicHeightObstruction.lean:120}.
+
+The upstream
 primitive these import,
 \lean{Erdos249257.RationalDenominatorSurvival.divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17} and
 \lean{survivingDivisor\_dvd\_scaled\_divInt\_den}{RationalDenominatorSurvival.lean:38}, gives the exact
@@ -387,11 +391,15 @@ about \(S\). Nonflatness is an unconditional \emph{sufficient} certificate
 mechanism, information-theoretically half the depth floor of the pairwise
 \(\mathrm{certifiedKill}\) (one-sided versus two-sided radius charging), but
 it has been proved only for individual finite menus \(Q\); no menu of
-unbounded scale has been supplied. Neither direction decides \#249: flatness
+unbounded scale has been supplied.
+
+Neither direction decides \#249: flatness
 gives a contrapositive route (exhibit \emph{any} cone nonintegrality at
 arbitrarily large \(t\) and rationality is refuted) and nonflatness sharpens
 the certificate needed, but the underlying producer obligation — a
-nonintegral tail difference at cofinally many scales — is unchanged. Note
+nonintegral tail difference at cofinally many scales — is unchanged.
+
+Note
 also the coordinate warning from the manuscript's own Appendix C
 (\lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{LcmConeFlatness.lean:90}): cone flatness is a
 \emph{necessary} consequence, and only the sharper diagonal-pincer /
@@ -447,7 +455,9 @@ totient-kernel — \emph{not} the Möbius coordinate).
 source module.} This does \emph{not} show irrationality of \(S\). It proves
 the dyadic-kernel \emph{side} is infinite-rank; the module's own docstring
 names the missing input as ``a rationality-side finite-rank compression, or
-equivalent contradiction.'' The companion necessary-consequence-of-rationality
+equivalent contradiction.''
+
+The companion necessary-consequence-of-rationality
 theorem, \(\neg\mathrm{Irrational}(S) \implies \exists v>0,\exists U:\mathbb
 N\to\mathbb Z,\ \mathrm{IsTemperedBinaryOrbit}(\varphi,v,U)\wedge\forall
 e,\ 2^e-1\le\mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathrm{range}(
@@ -456,7 +466,9 @@ e,\ 2^e-1\le\mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathrm{range}(
 shows the SCALE side is finished — the \(2^e-1\) floor holds for all \(e\)
 with a uniform proof — but the opposite inequality (a rationality-side rank
 \emph{upper} bound) is exactly what is missing, and its absence is the
-entire open content here. A \emph{third}, independent coordinate exhibits
+entire open content here.
+
+A \emph{third}, independent coordinate exhibits
 the same coordinate-relative phenomenon: the Möbius-incidence companion
 matrix \(U_N(i,j)=\mu((i+1)/(j+1))\) if \((j+1)\mid(i+1)\) else \(0\) is
 lower triangular with diagonal \(1\), hence \(\det U_N=1\) for every \(N\),
@@ -683,7 +695,9 @@ audit table below reports the verdict for all eighteen.
 Of the eighteen, \textbf{sixteen are conclusively NOT\_PROMOTABLE}: reading
 the proof body exposes a documented arithmetic, logical, or coordinate
 obstruction that a routine strengthening cannot cross, and the row's own
-record states exactly what new input would be required. \textbf{Two}
+record states exactly what new input would be required.
+
+\textbf{Two}
 (\texttt{NM-02}, \texttt{NM-03} in the \(\#257\)-universal obligation) are
 genuine exceptions: the auditor found the promotion is available with, in
 its own words, ``no new mathematics'' — a pure widening of an already-general
@@ -691,7 +705,9 @@ proof to a wider stated target. Crucially, \emph{neither of these two closes
 anything}: they widen an equivalence or a corollary from one fixed target
 value to a family of targets, without touching the missing arithmetic
 content (a cofinal certificate supply, a rank upper bound, an anti-concentration
-estimate) that every genuine closure of \(\#249\) or \(\#257\) requires. So
+estimate) that every genuine closure of \(\#249\) or \(\#257\) requires.
+
+So
 while the promotion audit is not literally eighteen-for-eighteen at the level
 of ``can this exact statement be re-derived for a wider scope,'' it is
 eighteen-for-eighteen at the level that matters for this paper's obligations:
