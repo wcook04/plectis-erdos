@@ -173,6 +173,7 @@ Exponential first integral & Checked & $\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0$
 Ray separation of critical values & Checked (consumer form) & Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. \\
 Ray-collision locus & Checked & $\beta=(ra-b)/(1-r)$, $r>0$, $r\ne1$: one real parameter per pair. \\
 Quartic case & Cited & Proved in \cite[Thm.~1, p.~1]{june2026}; does not extend to general degree. \\
+Translated quartic quotient fibres & Ordinary theorem with a Lean-checked metric kernel & For $f(z)=P((z-h)^q)$, $P$ monic quartic and $q\ge2$; Pendyala supplies the quartic geometry, while Lean checks the root-lift density, exact primitive, and strict endpoint budget. \\
 Concyclic zeros with $2\rho^n\le1$ & Ordinary proof; finite exact and numerical checks & Distinct-root theorem; not Lean checked; the unrestricted concyclic case remains open. \\
 Unrestricted proof of \cite[Theorem~1, p.~1]{march2026} & Proof gap & Proposition~12 uses a false three-ended local saddle block; located publicly by Tao (25 March 2026), conceded by the author at statement level (26 March 2026).  No counterexample is exhibited. \\
 Constant-translation ray separation and root retention & Checked & After critical-value injectivity, arbitrary small ray avoidance and an explicit unit-disc margin. \\
@@ -278,6 +279,49 @@ distinct members of its fibre, lifting both quotient spokes, or assembling
 their union as a path in the relevant component.  Thus the Lean theorem is the
 load-bearing analytic kernel for this translated cyclic-trinomial family, not
 the complete path theorem and not a proof of unrestricted Erd\H{o}s~\#1041.
+
+\subsection*{Translated quartic quotient fibres}
+
+Pendyala's degree-four theorem can also be lifted through every nontrivial
+cyclic power.  Let $P$ be a monic quartic, let $q\ge2$, and set
+\[
+  f(z)=P((z-h)^q).
+\]
+If all listed zeros of $f$ lie in the open unit disk, averaging the squared
+moduli over each complete $q$-point fibre shows that every quotient root
+$w$ of $P$ satisfies $|w|<1$.  Pendyala's chord-or-radial proof then supplies
+the quotient geometry.  The extra issue is metric: a short chord in the
+$w$-plane need not lift isometrically through $y\mapsto y^q$.
+
+Put $\alpha=1/q$.  Along a quotient chord whose supporting line has distance
+$d$ from the origin, the root-lift density is controlled pointwise by
+\[
+  \bigl(\sqrt{d^2+x^2}\bigr)^{\alpha-1}
+    \le x^{\alpha-1}\qquad(x>0),
+\]
+and Lean checks the exact primitive
+\[
+  \alpha\int_0^A x^{\alpha-1}\,dx=A^\alpha.
+\]
+Splitting at the perpendicular foot, and at the origin when the chord crosses
+it, yields the ordinary power-map chord-lift estimate
+\[
+  \operatorname{length}(\widetilde{[a,b]})
+    \le |a|^{1/q}+|b|^{1/q}.
+\]
+The formal source also checks the strict endpoint consumer: if
+$0\le a,b<1$, $\alpha>0$, and a candidate length $L$ is at most
+$a^\alpha+b^\alpha$, then $L<2$.  Thus both Pendyala branches survive the
+power-map lift, giving the asserted short path for every translated quartic
+quotient fibre, in each degree $4q\ge8$.
+
+The attribution and proof boundary are exact.  Pendyala proves the quartic
+geometric theorem and its four-point radial lemma.  The local Lean module
+checks the antitone density inequality, its integral, the strict powered
+endpoint budget, and the final length fan-in.  It does not formalize
+Pendyala's geometric lemma, the continuous covering-space construction of the
+root lift, or the ordinary chord/radial case assembly.  This is a structured
+all-scale family, not a proof of unrestricted Erd\H{o}s~\#1041.
 
 \subsection*{The degree-five target is now explicit}
 
