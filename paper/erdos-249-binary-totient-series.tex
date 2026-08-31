@@ -951,10 +951,9 @@ consequence as infinite-dimensionality understated it.  The sharp form is a
 basis.
 
 \begin{remark}
-\ref{res:basis} and \ref{res:rank} are statements about $\ph$, not about
-$\Stot$; they are true, and their proofs are complete, whether or not $\Stot$
-is irrational.  Their connection to \#249 is not thematic but a single proved
-transport, and it is \ref{res:carryrank}.
+\ref{res:basis} and \ref{res:rank} concern $\ph$.  Their complete proofs are
+independent of the arithmetic status of $\Stot$.  The single proved transport
+to \#249 is \ref{res:carryrank}.
 \end{remark}
 
 \section{Carry-rank consequences of rationality}\label{sec:carry-rank}
@@ -1062,8 +1061,8 @@ where
                   +F_H(2,s+3)+F_H(2,s+4).
 \]
 This is the hard mechanism behind the finite curvature margins: a future
-cofinal argument must control the adverse budget \(\mathcal A_H(s)\), not merely
-the old-prime margin.  The current formal result supplies no such cofinal
+cofinal argument must control the adverse budget \(\mathcal A_H(s)\).  Control
+of the old-prime margin alone is insufficient.  The current formal result supplies no such cofinal
 bound, so this decomposition is a finite estimate, not an irrationality proof.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/FreshPrimeDeficitDecomposition.lean}{91}{endpointFreshDeficit_nonneg}{endpoint nonnegativity},
@@ -1181,8 +1180,8 @@ The same file records the latter witness as a short arithmetic result
 through exponent six
 \mword{Erdos249257/TotientActualLcmShortKill.lean}{54}{powerTwoActualLcmShortArithmeticKillSupply_through_six}{but explicitly stops at that finite prefix}; it does not supply the missing cofinal quantifier.
 
-A stronger unbounded approach asks for quantitative
-anti-concentration, not merely a sign.  At odd rank \(2q+1\), the exact raw
+A stronger unbounded approach asks for a quantitative anti-concentration
+bound.  A sign alone gives too little information.  At odd rank \(2q+1\), the exact raw
 LCM block approximates the actual orbit with the elementary error bound
 \mword{Erdos249257/TotientActualLcmOrbitSeparation.lean}{141}{abs_actualLcmTailOrbit_sub_rawApprox_lt}{recorded here};
 the raw block itself is an integer half-word divided by \(4^q\)
@@ -1511,8 +1510,7 @@ equivalence
  \quad\Longleftrightarrow\quad R_{N+d}-R_N\notin\Z
 \]
 (\lword{Erdos249/FullDepthRayAmplifier.lean}{388}{exists_fullDepthKill_on_ray_iff_shift_notMem_int}{checked}).
-Therefore $\operatorname{ApFullDepthEscape}$ is equivalent to irrationality,
-not merely sufficient for it
+Therefore $\operatorname{ApFullDepthEscape}$ is equivalent to irrationality
 (\lword{Erdos249/FullDepthRayAmplifier.lean}{406}{apFullDepthEscape_iff_irrational}{checked}).
 The cofinal full-depth supply is likewise equivalent to the arbitrary-depth
 period-multiple supply and hence to irrationality

@@ -1094,7 +1094,8 @@ processes contending for the same compiler and checkout.''
 
 Lean validation uses a semantic single-flight queue. A request is identified
 by the reachable source, logical targets, toolchain, dependency lock, and
-authority mode, rather than merely by its command string or working directory.
+authority mode. Its command string and working directory do not determine
+request identity.
 Equivalent requests share one owner and may reuse a completed receipt; changed
 inputs require a fresh build. Distinct requests that would still compete for
 the same host-wide Mathlib resource are serialized by a shared conflict key.
@@ -1189,7 +1190,7 @@ The next evaluation should ask more than how many theorems additional compute
 produces. It should compare graph-aware and graph-blind agents on frontier
 selection, repeated-dead-end rate, time to a useful obstruction, premise
 discovery, proof completion, and calibration of public claims. It should test
-transfer across unrelated mathematical domains, not only across neighbouring
+transfer between unrelated mathematical domains as well as between neighbouring
 Erd\H{o}s problems. Independent teams should replay result packets and review
 whether no-go edges are scoped correctly. The central scaling question is
 whether an increasingly rich map of what works and what cannot work makes
@@ -1291,8 +1292,8 @@ navigate problem-sized mathematical worlds rather than treat a large Lean
 repository as a bag of files or one prompt. Second, scaling search safely
 requires reasoning scope, mutation permission, validator capacity, evidence
 class, public-claim permission, and reviewer attention to remain non-fungible
-until an explicit fan-in gate. Together these make a claim-transition operating
-system rather than merely an agent wrapper around a prover.
+until an explicit fan-in gate. Together these properties make the architecture
+a claim-transition operating system with a prover as one component.
 
 The boundaries follow immediately. Questions are not work records. Work
 records are not experiments. Experiments are not proofs. Lean proofs are not

@@ -205,8 +205,7 @@ the
 \lword{Erdos68/CanonicalFactorialDigits.lean}{196}{factorial_expansion_partial}{finite
 factorial expansion}, and the
 \lword{Erdos68/CanonicalFactorialDigits.lean}{269}{zero_remainder_forces_zero_digit_tail}{zero-remainder
-termination theorem}; they hold for every real $x$,
-not only for $\Ser$.
+termination theorem}; they hold for every real $x$, including $\Ser$.
 
 The rational direction is also kernel-checked.  If $q>0$ and $q\le n$, then
 \[
@@ -491,8 +490,8 @@ every channel $d>p$ vanishes, because both indices lie below $d$; and the
 $p$-channel numerator is exactly $p!-1$.
 \end{theorem}
 
-\noindent The theorem holds for every prime, not merely for sampled primes.  Its use is
-arithmetic rather than analytic: it supplies, at cost zero in the moment, a unit
+\noindent The theorem holds uniformly over all primes.  Its use is arithmetic:
+at zero cost in the moment it supplies a unit
 in the $p$-channel.  Adding an integer multiple of this corrector to any
 candidate kernel shifts the $p$-channel numerator by multiples of $p!-1$ and
 leaves every other channel and the moment untouched.
@@ -1028,8 +1027,8 @@ factor reduction has no opaque floor premise left: the two surviving
 arithmetic estimates are exposed independently and neither follows merely
 from the existence of the selected prime.
 
-The irrationality implication also works for every natural block parameter at
-least three, not only prime parameters.  What remains open is the arithmetic
+The irrationality implication works for every natural block parameter at
+least three, including composite parameters.  What remains open is the arithmetic
 input.  Wilson supplies cofinal prefix-private factors without analytic
 input.  The stronger source-backed large-prime selection remains relevant
 because it supplies a positive-density family and a linear lower bound for

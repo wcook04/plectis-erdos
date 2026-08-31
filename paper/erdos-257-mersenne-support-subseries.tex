@@ -129,9 +129,9 @@ $\scA_A(n)=\#\{d\mid n: d\in A\}$,
   \tag{1}\label{eq:incidence}
 \]
 The transform is worth reading carefully, because it is where the arithmetic
-of the problem enters.  The datum is a $0/1$ selector, the indicator of $A$;
-what appears in~\eqref{eq:incidence} is not that selector but its divisor
-transform, a nonnegative integer sequence bounded by the divisor function,
+of the problem enters.  The datum is the $0/1$ indicator of $A$.
+Equation~\eqref{eq:incidence} contains its divisor transform, a nonnegative
+integer sequence bounded by the divisor function,
 $\scA_A(n)\le d(n)$.  So \#257 is not a generic question about binary digit
 sequences.  Equation~\eqref{eq:incidence} is a power-series representation,
 not a binary expansion: its coefficients are divisor counts drawn from a
@@ -198,9 +198,9 @@ what remains.
 
 \section{Finite-support denominator periods}\label{sec:period}
 
-A finite support has a rational value, so for a finite support the question is
-not irrationality but arithmetic: how large the denominator is, and how the
-base sits inside it.  Theorem~\ref{res:period} answers the second exactly and,
+A finite support has a rational value.  The relevant arithmetic questions are
+the size of its denominator and the position of the base within that
+denominator.  Theorem~\ref{res:period} answers the second exactly and,
 under its stated hypothesis $\lcm(F)\ge2$, gives a strict lower bound for the
 first.  The omitted boundary is genuine: at $b=2$ and $F=\{1\}$ the two
 quantities are both~$1$.
@@ -278,8 +278,7 @@ the divisor function --- the series $\sum f(n)2^{-n}$ is rational exactly when
 a tempered scaled-tail sequence exists for some $v\ge1$, and every such
 sequence is then
 the scaled tail
-$u(n)=v\sum_{j\ge1}f(n+j)2^{-j}$, so the orbit is unique rather than merely
-available
+$u(n)=v\sum_{j\ge1}f(n+j)2^{-j}$; hence exactly one such orbit exists
 (\mword{Erdos249257/GenericTailOrbitRigidity.lean}{426}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{checked}).
 
 The next theorem exhibits such an orbit for $X_A$ itself, with the coefficient
@@ -545,7 +544,7 @@ the support-series formulation displayed in the table is its later corollary.
 \emph{The mechanisms are not nested, and one non-containment is proved.}  The
 base-$b$ full-support theorem is exactly the $A=\Npos$ statement; the
 multiples rows genuinely specialise it after a base change, but the sparse
-rows do not, and this is not merely an artefact of how they were proved.  The
+rows do not.  The distinction is intrinsic: the
 denominator-gap criterion behind the factorial and power-of-two rows
 \emph{provably cannot} reach the full support: the prefix lcm grows too slowly
 for its hypothesis to hold
@@ -1550,8 +1549,8 @@ interval?
 \]
 \end{problem}
 
-\noindent This is not merely sufficient: it is the $x=1/21$ specialization
-of the general membership equivalence in
+\noindent This condition is both necessary and sufficient.  It is the
+$x=1/21$ specialization of the general membership equivalence in
 Theorem~\ref{res:scaled-greedy-trap}
 (\mword{Erdos249257/GreedyTrapDynamics.lean}{275}{one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded}{checked}).
 It asks for neither convergence, a prescribed $B$, a global bound nor bounded
