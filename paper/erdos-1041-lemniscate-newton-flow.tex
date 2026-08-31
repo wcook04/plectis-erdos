@@ -174,6 +174,7 @@ Ray separation of critical values & Checked (consumer form) & Endpoints of a fin
 Ray-collision locus & Checked & $\beta=(ra-b)/(1-r)$, $r>0$, $r\ne1$: one real parameter per pair. \\
 Quartic case & Cited & Proved in \cite[Thm.~1, p.~1]{june2026}; does not extend to general degree. \\
 Translated quartic quotient fibres & Ordinary theorem with a Lean-checked metric kernel & For $f(z)=P((z-h)^q)$, $P$ monic quartic and $q\ge2$; Pendyala supplies the quartic geometry, while Lean checks the root-lift density, exact primitive, and strict endpoint budget. \\
+Coefficient-controlled cyclic tetranomials & Ordinary path theorem with Lean-checked spoke bounds & For $g(w)=w^m+aw^r+bw^s+c$, two roots satisfying $|c|+|b||w|^s<1$ have safe spokes; $|b|+|c|\le1$ is an all-root sufficient condition. \\
 Concyclic zeros with $2\rho^n\le1$ & Ordinary proof; finite exact and numerical checks & Distinct-root theorem; not Lean checked; the unrestricted concyclic case remains open. \\
 Unrestricted proof of \cite[Theorem~1, p.~1]{march2026} & Proof gap & Proposition~12 uses a false three-ended local saddle block; located publicly by Tao (25 March 2026), conceded by the author at statement level (26 March 2026).  No counterexample is exhibited. \\
 Constant-translation ray separation and root retention & Checked & After critical-value injectivity, arbitrary small ray avoidance and an explicit unit-disc margin. \\
@@ -279,6 +280,51 @@ distinct members of its fibre, lifting both quotient spokes, or assembling
 their union as a path in the relevant component.  Thus the Lean theorem is the
 load-bearing analytic kernel for this translated cyclic-trinomial family, not
 the complete path theorem and not a proof of unrestricted Erd\H{o}s~\#1041.
+
+\subsection*{Coefficient-controlled cyclic tetranomial spokes}
+
+The first additional lower monomial admits an exact Abel-tail criterion.  Let
+\[
+  g(w)=w^m+aw^r+bw^s+c,\qquad m>r>s\ge1,
+\]
+assume all roots of $g$ lie in the open unit disk, and let $w_1,w_2$ be roots
+of the two smallest moduli.  If
+\[
+  |c|+|b|\,|w_2|^s<1,
+\]
+then the complete radial spokes from $w_1$ and $w_2$ to the origin lie in
+$\{|g|<1\}$, and their broken line has length strictly below $2$.  The simpler
+coefficient condition
+\[
+  |b|+|c|\le1
+\]
+makes every root spoke safe; the coefficient $a$ is unrestricted.
+
+The mechanism is visible in one identity.  At a root $w$ and for
+$0\le u\le1$,
+\[
+\begin{split}
+ g(uw)={}&(1-u^s)c
+  -(u^s-u^r)(aw^r+w^m)
+  -(u^r-u^m)w^m,\\
+ aw^r+w^m={}&-(c+bw^s).
+\end{split}
+\]
+The three scalar coefficients are nonnegative and sum to $1-u^m$.  Thus the
+root-dependent budget $|c|+|b||w|^s<1$, together with $|w|<1$ and $|c|<1$,
+puts every vector in the Abel decomposition strictly inside the unit ball.
+Lean checks this factorization and the resulting strict spoke theorem under
+the exact weak exponent hypotheses $1\le s\le r\le m$; it also checks the
+coefficient-only corollary above.
+
+For $q\ge2$ and $f(z)=g((z-h)^q)$, the ordinary regular-fibre mean-square
+identity puts every quotient root inside the unit disk.  Lifting two selected
+quotient spokes gives a path through $h$ whose two displacement lengths sum
+to less than $2$.  The Lean module does not formalize the selection of the two
+smallest quotient roots, Vieta's constant-term step, cyclic-fibre lifting, or
+the final path assembly.  Without the displayed two-root or coefficient
+budget, the tetranomial selector remains open; this family does not solve
+unrestricted Erd\H{o}s~\#1041.
 
 \subsection*{Translated quartic quotient fibres}
 
