@@ -1423,13 +1423,19 @@ $2y_N-c_{N+1}$ when $c_{N+1}\le2y_N$, and to $2y_N$ otherwise.  The latter is
 the exact lower branch, so rank $N+1$ is skipped precisely when
 $2y_N<c_{N+1}$.
 
-\begin{theorem}[scaled-greedy trap and rational lower separatrix]
+\begin{theorem}[scaled-greedy trap, escape, and cofinal return]
 \label{res:scaled-greedy-trap}
 For every nonnegative real $x$, writing $y_N(x)=2^N
 \operatorname{greedyMersenneRemainder}(x,N)$,
 \[
  x\in\Ach\quad\Longleftrightarrow\quad
  y_N(x)<2\quad\hbox{for every }N.
+\]
+If $x\notin\Ach$, then $y_N(x)\to+\infty$.  Conversely, a single bounded
+cofinal subsequence already characterizes membership:
+\[
+ x\in\Ach\quad\Longleftrightarrow\quad
+ \exists B\in\R\ \forall K\ \exists N\ge K:\qquad y_N(x)\le B.
 \]
 For every nonnegative rational $q$ this is also equivalent to
 \[
@@ -1441,9 +1447,19 @@ this moving lower separatrix beyond every cutoff.
 \end{theorem}
 
 \noindent The trap-set equality is
-\mword{Erdos249257/GreedyTrapDynamics.lean}{302}{mersenneAchievementSet_eq_scaledGreedyTrap}{kernel checked},
-the general rational criterion is
-\mword{Erdos249257/GreedyTrapDynamics.lean}{163}{rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally}{kernel checked},
+\mword{Erdos249257/GreedyTrapDynamics.lean}{262}{mersenneAchievementSet_eq_scaledGreedyTrap}{kernel checked},
+the escape theorem is
+\mword{Erdos249257/GreedyTrapDynamics.lean}{189}{scaledGreedyRemainder_tendsto_atTop_of_not_mem}{kernel checked},
+and the bounded-cofinal-return equivalence is
+\mword{Erdos249257/GreedyTrapDynamics.lean}{225}{mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded}{kernel checked}.
+The escape proof locates a fatal rank at which the residual exceeds the
+complete remaining tail by some $\delta>0$.  That excess persists, so the
+scaled residual is at least $2^N\delta$ thereafter.  This is the hard step in
+the reverse bounded-return implication: an orbit with even one bounded
+cofinal subsequence cannot lie outside $\Ach$.
+
+The general rational criterion is
+\mword{Erdos249257/GreedyTrapDynamics.lean}{152}{rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally}{kernel checked},
 and its $1/21$ specialization is
 \mword{Erdos249257/GreedyTrapDynamics.lean}{283}{one_div_twentyOne_mem_iff_scaledLowerBranchCofinally}{kernel checked}.
 The hard direction uses the rational normal form: membership is equivalent to
@@ -1614,9 +1630,10 @@ interval?
 \]
 \end{problem}
 
-\noindent This is not merely sufficient: it is equivalent to
-$1/21\in\Ach$
-(\mword{Erdos249257/BooleanMobiusCarry.lean}{2716}{one_div_twenty_one_mem_iff_scaledGreedyRemainderCofinallyBounded}{checked}).
+\noindent This is not merely sufficient: it is the $x=1/21$ specialization
+of the general membership equivalence in
+Theorem~\ref{res:scaled-greedy-trap}
+(\mword{Erdos249257/GreedyTrapDynamics.lean}{275}{one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded}{checked}).
 It asks for neither convergence, a prescribed $B$, a global bound nor bounded
 return gaps.  Two concrete stronger targets are cofinal recurrence of
 $Q_N\le1$
