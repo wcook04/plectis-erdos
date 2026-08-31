@@ -1177,7 +1177,9 @@ def worker(state_root: Path, key: str, token: str) -> int:
                 }
             )
             write_receipt(state, key, receipt)
-            resource_lock = open_lock(resource_lock_path(state, resource_group))
+            selected_resource_lock = resource_lock_path(state, resource_group)
+            selected_resource_lock.parent.mkdir(parents=True, exist_ok=True)
+            resource_lock = open_lock(selected_resource_lock)
             assert resource_lock is not None
         receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
         write_receipt(state, key, receipt)

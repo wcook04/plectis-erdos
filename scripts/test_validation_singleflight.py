@@ -26,7 +26,9 @@ class ValidationSingleflightTests(unittest.TestCase):
         self._host_lock_environment = mock.patch.dict(
             os.environ,
             {
-                singleflight.HOST_LOCK_ROOT_ENV: self._host_lock_directory.name,
+                singleflight.HOST_LOCK_ROOT_ENV: str(
+                    Path(self._host_lock_directory.name) / "not-created-yet"
+                ),
             },
             clear=False,
         )
