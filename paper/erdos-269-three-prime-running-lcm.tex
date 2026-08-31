@@ -62,8 +62,8 @@ reduction and conclusion on the erdosproblems.com discussion page on 26 June
 2026 (commit \texttt{a9d3ab8}), after Fan's post.  The argument here was found
 independently, and this note claims no priority for it.
 
-For three pairwise distinct primes $p,q,r$, the contribution is exact finite
-structure, not an irrationality theorem.  Writing $\Lprefix(x)$ for the least
+For three pairwise distinct primes $p,q,r$, the contribution is exact
+structure and exact reductions, not an irrationality theorem.  Writing $\Lprefix(x)$ for the least
 common multiple of the $\{p,q,r\}$-smooth numbers not exceeding $x$, we
 Lean-check
 \[
@@ -72,7 +72,24 @@ Lean-check
 \]
 This yields the logarithmic cells and jump ratios, a finite height-fibre normal
 form, and the shell bound $9\,\#\mathcal S\le(j+3)^2$ under the stated ordered
-box hypothesis.  Two statements in the smallest case $\{2,3,5\}$ are exact.
+box hypothesis.  The kernel has a stronger phase transition than the smallest
+minor suggests: for every order $n$ there are injective row and column index
+families whose $n\times n$ determinant is nonzero simultaneously in every
+third-coordinate layer.  Consequently no finite exact separation
+$\sum_{\ell<d}f_\ell(i)G_\ell(j,k)$ exists.
+
+For the smallest case $\{2,3,5\}$, the literal infinite dyadic shell mass is
+summable and its height-normalised tail $X_a$ obeys the exact ordered affine
+recurrence.  Either some $X_a$ is integral or cofinally many $X_a$ lie at
+distance at least $1/31$ from every integer.  Rationality of the full shell
+sum places every $X_a$ on one common $1/q$-lattice and therefore forces two
+distinct scales to collide modulo one.  The remaining integral branch is not
+opaque: $X_a$ satisfies an exact pinning identity, integrality is upward
+closed, and any orbit that follows the same recurrence forever inside the
+same shrinking anchor windows must equal the true infinite tail.  These
+statements expose, but do not exclude, the integral branch.
+
+Two further statements in $\{2,3,5\}$ are concrete.
 First, group the jumps of $\Lprefix$, that is, the points at which its value
 increases, into the blocks cut out by consecutive powers of two.  Each open
 block $(2^{a},2^{a+1})$ contains at most one pure $3$-power and at most one
@@ -85,9 +102,8 @@ $\beta_0=2$, $\beta_1=6$, $\beta_2=10$ and $\beta_4=30$.  Second, the
 reciprocal of the running least common multiple at a smooth point is not a
 product of functions of the three exponents separately: on the smallest
 nontrivial two-by-two exponent rectangle its determinant is exactly $-1/15$.
-Thus that matrix has rank two, so the kernel is not a single product of three
-one-variable functions on that rectangle and no argument may assume such a
-form for it.
+Thus that matrix has rank two.  It is the first concrete instance of the
+arbitrary-order theorem, not the endpoint of the rank analysis.
 
 Two further exact obstructions sharpen the carry frontier.  Under channel
 surjectivity and explicit $2\to3$ and $2\to5$ anchor equalities, block-nullity
@@ -154,13 +170,15 @@ does not settle any three-prime instance of Problem~\#269.
 
 \externalreviewobject{The paper proves two-prime transcendence using an
 external analytic theorem, then develops exact three-prime running-LCM cells,
-quadratic shell bounds, a rank-two kernel obstruction, and a conditional carry
+arbitrary-order kernel rank, the actual infinite shell orbit, the all-scale
+rationality lattice, integral-branch pinning, and a conditional carry
 criterion.}{The two-prime result has paper-plus-external-theorem authority.
-The three-prime structure does not supply the missing divisibility bridge, so
-the three-prime problem remains open.}{Comparator carries the exact
-running-LCM identity, the smallest rank-two kernel minor, the conditional
-reduced-carry extinction interface, and the weighted-phase residue--coboundary
-observer
+The exact three-prime reductions do not exclude the integral state or the
+forced modular collision, so the three-prime problem remains open.}{Comparator
+carries the exact running-LCM identity and infinite-rank obstruction, the
+actual shell-orbit dichotomy, the all-scale lattice and collision target, the
+integral-branch pinning family, the conditional reduced-carry extinction
+interface, and the weighted-phase residue--coboundary observer
 \lword{Erdos269/WeightedPhaseCarry.lean}{109}
       {carry_eq_residueDigit_add_coboundary}{the weighted-phase carry split}.
 The conditional extinction interface preserves its cofinal-escape,
@@ -259,8 +277,7 @@ kernel}
 For $b\in\{p,q,r\}$ we call the set of positive powers of $b$ the \emph{$b$-channel}.
 
 We treat $|P|=3$ throughout, writing $P=\{p,q,r\}$, and the smallest instance is
-$\{2,3,5\}$.  Two of the statements proved here are unconditional and exact
-rather than approximate.  Theorem~\ref{res:dyadic-alphabet} determines exactly
+$\{2,3,5\}$.  Theorem~\ref{res:dyadic-alphabet} determines exactly
 the alphabet of the dyadic compression of the \emph{jump word}, that is, of the
 sequence of prime multipliers of $\Lprefix$ read in increasing order of the
 points where $\Lprefix$ increases (Section~\ref{sec:cells}): the radix
@@ -268,11 +285,10 @@ $\beta_a$ of the block between $2^{a}$ and $2^{a+1}$, meaning the product of the
 multipliers that occur in that block, takes one of the four
 values $2$, $6$, $10$, $30$ and no others.
 Theorem~\ref{res:rank} shows that the smallest two-by-two restriction of the
-kernel at $\{2,3,5\}$ has determinant $-1/15$ and hence rank two.  In
-particular, it is not a product $f(i)g(j)h(k)$, so no argument may assume that
-form for the kernel on that rectangle.  A rank-two matrix is itself a sum of
-two rank-one matrices, so decompositions into several separable terms are not
-excluded; what is excluded is the single product form.
+kernel at $\{2,3,5\}$ has determinant $-1/15$ and hence rank two.
+Theorem~\ref{res:infinite-rank} gives the full statement: nonsingular minors
+exist in every order, uniformly in the remaining coordinate, and every finite
+exact separation $\sum_{\ell<d}f_\ell(i)G_\ell(j,k)$ is impossible.
 The mechanism is a small computation: $\hgt(6)=4\cdot3\cdot5=60$ and not $6$,
 because the running least common multiple at a smooth cutoff already sees
 powers of the other primes that the cutoff itself does not contain.
@@ -387,6 +403,10 @@ Height-fibre normal form & \authlean & Exact finite identity; Theorem~\ref{res:f
 Infinite limit of that expansion & \authnone & Not proved here; Section~\ref{sec:fibre}. \\
 Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & \authlean & Unconditional; Theorem~\ref{res:shell}. \\
 $2\times2$ kernel restriction has rank two at $\{2,3,5\}$ & \authlean & Unconditional local obstruction; determinant $-1/15$ in Theorem~\ref{res:rank}. \\
+Arbitrary-order nonsingular kernel minors and no finite exact separation & \authlean & Unconditional structural obstruction; Theorem~\ref{res:infinite-rank}. \\
+Actual infinite shell recurrence and integral-or-cofinally-$1/31$-far dichotomy & \authlean & Exact for the literal $\{2,3,5\}$ orbit; Theorem~\ref{res:actual-orbit}; the integral branch remains. \\
+All-scale $1/q$ lattice and forced collision under rationality & \authlean & Exact reduction; Theorem~\ref{res:all-scale-lattice}; collision exclusion remains open. \\
+Pinning, upward closure and window rigidity of the integral branch & \authlean & Exact structural analysis; Theorem~\ref{res:pinning}; it does not exclude a surviving integral seed. \\
 Dyadic block radix lies in $\{2,6,10,30\}$ & \authlean & Unconditional; Theorem~\ref{res:dyadic-alphabet}. \\
 Canonical least-positive-residue arithmetic & \authlean & Unconditional finite lemma; Theorem~\ref{res:consumer}. \\
 \addlinespace[2pt]
@@ -409,7 +429,9 @@ Section~\ref{sec:cells} develops its jump structure, and
 Section~\ref{sec:two-prime} uses that structure to prove transcendence of both
 two-prime sums.  Section~\ref{sec:fibre} gives the finite
 three-prime normal form, Section~\ref{sec:shell} bounds fibre multiplicity, and
-Section~\ref{sec:rank} records the obstruction to separating the kernel.
+Section~\ref{sec:rank} proves arbitrary-order non-separability of the kernel.
+Section~\ref{sec:actual-orbit} constructs the actual infinite shell orbit,
+derives the all-scale rationality lattice, and analyses its integral branch.
 Section~\ref{sec:escape} determines the block alphabet, proves the conditional
 contradiction, and states the remaining unproved hypothesis.
 Section~\ref{sec:open} collects the questions that remain.  Linked phrases open
@@ -957,13 +979,142 @@ sees powers of the other primes that the cutoff itself does not contain.  That
 is the mechanism behind the non-separation.
 
 A nonzero two-by-two minor rules out writing the kernel as
-$f(i)g(j)h(k)$ on this box, so no argument may assume that single product form
-here.  It rules out nothing further: a rank-two matrix is itself a sum of two
-rank-one matrices, so sums of separable terms, higher-rank decompositions,
-separable majorants, changes of variable, and one-dimensional estimates applied
-after a decomposition all remain available.  It gives no
-rank lower bound beyond two, and it is not an independence or irrationality
-statement.
+$f(i)g(j)h(k)$ on this box.  The source-current argument does not stop there.
+
+\begin{theorem}[arbitrary-order non-separability]\label{res:infinite-rank}
+Let $p,q,r$ be primes with $p\ne q$, $p\ne r$ and $q\ne r$.  For every
+$n\ge0$ there are injective maps $I,J:\{0,\ldots,n-1\}\to\N$ such that, for
+every $k\ge0$,
+\[
+ \det\bigl(\Kernel(I(a),J(b),k)\bigr)_{0\le a,b<n}\ne0.
+\]
+Consequently, for no finite $d$ do there exist rational-valued functions
+$f_\ell(i)$ and $G_\ell(j,k)$, $0\le\ell<d$, satisfying
+\[
+ \Kernel(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)
+ \qquad\hbox{for all }i,j,k.
+\]
+\end{theorem}
+
+\begin{proof}
+Factoring the pure row and column powers from the kernel leaves the carry
+matrix associated with the fractional parts of $i\log_r p$ and
+$j\log_r q$.  Distinctness of the primes makes both logarithmic rotations
+nonperiodic.  For each $n$ one may choose their fractional parts in opposite
+orders, giving the staircase matrix with entry $r^{-1}$ on and below the
+diagonal and entry $1$ above it.  Its determinant is
+$r^{-1}(r^{-1}-1)^{n-1}$, which is nonzero; the removed row and column factors
+are nonzero as well, uniformly in $k$.  A representation with $d$ summands
+would factor every $(d+1)\times(d+1)$ matrix through a $d$-dimensional space
+and force its determinant to vanish, contradicting the first assertion.
+\end{proof}
+
+The exact $-1/15$ computation in Theorem~\ref{res:rank} is the smallest
+visible witness.  Theorem~\ref{res:infinite-rank} excludes every finite exact
+separation of the displayed form, but it is still not an independence,
+irrationality or transcendence statement.
+
+\section{The actual shell orbit and its integral branch}\label{sec:actual-orbit}
+
+We now pass from finite kernel structure to the literal infinite
+$\{2,3,5\}$ shell sum.  Let $s_a$ be the total reciprocal running-height mass
+of the smooth exponent triples in $[2^a,2^{a+1})$, put
+\[
+ T_a=\sum_{n\ge0}s_{a+n},\qquad
+ X_a=\frac{\hgt(2^a)}2T_a,
+\]
+and let $b_a\in\{2,6,10,30\}$ and $d_a\in\N$ be respectively the ordered
+block radix and ordered block digit.  These are the literal objects, not an
+abstract bounded-radix model.
+
+\begin{theorem}[actual shell-orbit dichotomy]\label{res:actual-orbit}
+The series $\sum_{a\ge0}s_a$ is summable, and for every $a\ge0$,
+\[
+ X_{a+1}=b_aX_a-d_a.
+\]
+Moreover, either $X_a\in\Z$ for some $a$, or for every $a_0$ there is
+$a\ge a_0$ such that
+\[
+ |X_a-z|\ge\frac1{31}\qquad\hbox{for every }z\in\Z.
+\]
+\end{theorem}
+
+The recurrence follows by splitting the infinite tail after its first shell
+and using the exact height and ordered-digit identities.  Summability follows
+from the quadratic shell-count bound and geometric dyadic decay.  The last
+assertion is the bounded-radix alternative applied with $2\le b_a\le30$.
+It does not eliminate the first branch.
+
+The same finite clearing works simultaneously at all scales.  Write
+$h_a=\hgt(2^a)/2$, which is an integer for $a\ge1$.
+
+\begin{theorem}[all-scale rationality lattice]\label{res:all-scale-lattice}
+Every finite shell window clears at its upper normaliser: for all
+$u,v\ge0$ there is $m\in\N$ such that
+\[
+ h_{u+v}\sum_{i=0}^{v-1}s_{u+i}=m.
+\]
+If $q>0$ and $T_1=p/q$ for integers $p,q$, then
+\[
+ qX_a\in\Z\qquad(a\ge1).
+\]
+Consequently there are $i<j$ and $z\in\Z$ with
+\[
+ X_{1+j}-X_{1+i}=z.
+\]
+\end{theorem}
+
+\begin{proof}
+Every denominator in the finite window divides the height at its upper
+endpoint, which proves the first assertion.  Splitting $T_1$ into that finite
+window and the tail at $a$, multiplying by $q h_a$, and using the clearing
+identity proves $qX_a\in\Z$.  Among $q+1$ such integers two have the same
+residue modulo $q$; their corresponding states differ by an integer.
+\end{proof}
+
+Thus pairwise incongruence of the actual $X_a$ modulo one would prove
+irrationality.  The source does not establish it: rationality predicts a
+collision rather than contradicting any known orbit theorem.
+
+The integral branch in Theorem~\ref{res:actual-orbit} has a further exact
+structure.
+
+\begin{theorem}[pinning and rigidity of the integral branch]\label{res:pinning}
+For every $a\ge0$,
+\[
+ X_a=\frac{d_a}{b_a}+\frac{X_{a+1}}{b_a},\qquad X_a>0.
+\]
+If $X_a$ is integral, then $X_n$ is integral for every $n\ge a$.
+
+More generally, fix $A$, a positive width function $w$, and a real orbit
+$(y_n)_{n\ge A}$ satisfying $y_{n+1}=b_ny_n-d_n$.  Suppose that for every
+$n\ge A$, both $y_n$ and $X_n$ lie in
+\[
+ \left(\frac{d_n}{b_n},\frac{d_n}{b_n}+w(n)\right],
+\]
+and that for every $\varepsilon>0$ there is $k_0$ such that
+$w(A+k)/2^k<\varepsilon$ for all $k\ge k_0$.  Then $y_A=X_A$.
+\end{theorem}
+
+\begin{proof}
+The first identity is the recurrence solved for $X_a$; positivity follows
+because every shell contains the dyadic point $2^a$.  Integer coefficients in
+the forward recurrence give upward closure.  For the final assertion, the
+difference of the two orbits is multiplied by $b_n\ge2$ at each step, whereas
+the common window bounds its absolute value at time $A+k$ by $w(A+k)$.
+Hence
+\[
+ 2^k|y_A-X_A|\le w(A+k).
+\]
+The stated decay forces $y_A=X_A$.
+\end{proof}
+
+This theorem turns indefinite survival of an integral seed inside the exact
+windows into equality with the genuine infinite tail.  It does not prove that
+no seed survives.  The three theorem families in this section are
+source-current Lean results; their public source registration is pending, so
+the displayed arguments rather than the paper's pinned links are the present
+public proof record.
 
 \section{Dyadic blocks and a conditional carry contradiction}\label{sec:escape}
 
