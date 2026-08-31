@@ -1,0 +1,286 @@
+{
+  "schema": "erdos269_strongest_result_activation_map_v1",
+  "problem_id": "erdos_269",
+  "status": "open",
+  "source_checkpoint": "832ab7f5d3ffd88eb7bbac065be2c4de2a08b266",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the three-prime parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "bounded_radix_dichotomy_and_exact_recurrence",
+      "status": "strongest_premise",
+      "exact_statement": "The normalized dyadic tail states X_a = (H(2^a)/2)*T_a of S obey the exact integer-coefficient recurrence X_(a+1) = b_a*X_a - d_a with radix b_a in {2,6,10,30} (Lean-checked identification with the successive threePrimeHeight ratio), and the actual infinite tail either reaches an exact integral state at some scale or returns cofinally often to distance at least 1/31 from every integer (boundedRadix_zero_or_cofinal_far, dyadicBlockBase235_integer_or_cofinal_far). The infinite-tail specialization is closed; excluding the exact-integral-state branch, and its per-denominator generalization, is the precise unresolved throat.",
+      "hypotheses": "The genuine {2,3,5} source series; no unproved input.",
+      "named_consumers": [
+        "all_scale_rationality_lattice_and_collision",
+        "integral_branch_rigidity_telescope",
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "any treatment of (b_a, d_a) as an opaque word without the {2,6,10,30} radix theorem"
+      ],
+      "why_it_matters": "It converts rationality into a statement about one explicit bounded-radix orbit and names the single surviving branch.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/BoundedRadixTailEscape.lean",
+        "research_corpus/Erdos269/DyadicRadixTailEscape.lean",
+        "research_corpus/Erdos269/DyadicOrderedTailRecurrence.lean",
+        "research_corpus/Erdos269/ThreePrimeRunningLcm.lean"
+      ]
+    },
+    {
+      "result_id": "all_scale_rationality_lattice_and_collision",
+      "status": "strongest_premise",
+      "exact_statement": "If S = p/q then EVERY X_a lies on the (1/q)-lattice simultaneously, with an explicit integer witness; by pigeonhole on (1/q)Z/Z rationality forces two distinct scales a < b with X_b - X_a in Z (exists_normalizedTailState_collision_of_value_eq_rat). Contrapositive: pairwise incongruence of the X_a mod 1 proves S irrational. Additionally, for p in {2,3,5}, every smooth x < p^m satisfies p*H(x) | H(p^m) (smoothHeight_mul_prime_dvd_boundaryHeight): the same rational prefix clears at THREE families of prime-power boundaries, not only dyadic ones — the 3- and 5-boundary lattices are new and unexploited by any prior packet.",
+      "hypotheses": "Arithmetic reduction only; no irrationality claim.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "single-scale integral-state framings; the q = 1 branch is the special case X_a - 0 in Z"
+      ],
+      "why_it_matters": "The collision statement covers every denominator at once and admits three boundary families of constraints.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/RationalLatticeReduction.lean"
+      ]
+    },
+    {
+      "result_id": "pinning_telescope_upward_closure_and_corrected_local_law",
+      "status": "strongest_premise",
+      "exact_statement": "X_a = d_a/b_a + X_(a+1)/b_a exactly; every true state is strictly positive; integrality is upward-closed (the integral-index set is empty or a final segment, so the question concentrates on a first integral index). CORRECTED LOCAL LAW (research_packet.json negative_results[26]): b_a | d_a plus positivity does NOT force X_(a+1) = 0; the correct statement is X_a in Z iff b_a | X_(a+1), and X_(a+1) < b_a fails cofinally. The 'killed outright' sentence in the IntegralBranchExtinction.lean header prose overstates; trust the declarations and the packet correction, not that sentence.",
+      "hypotheses": "Integer-coefficient recurrence; positivity of genuine tails.",
+      "named_consumers": [
+        "integral_branch_rigidity_telescope",
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "local zero-gap extinction claims at scales with b_a | d_a"
+      ],
+      "why_it_matters": "Concentrates the integral branch on a first integral index and fences the one known wrong local shortcut.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/IntegralBranchExtinction.lean",
+        "research_corpus/Erdos269/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "unconditional_cubic_width",
+      "status": "strongest_premise",
+      "exact_statement": "X_m <= 40*(m+4)^3 for every m, by the exact depth-K pinning telescope (trueNormalizedState_eq_telescope) plus the proved quadratic digit majorant and the closed form of the poly-geometric series. With this width the forced-equality theorem becomes unconditional: an integer seed surviving all windows forever equals the true state (surviving_window_orbit_eq_true_state), and the companion seed-extinction census is cofinally decisive.",
+      "hypotheses": "None beyond the source series.",
+      "named_consumers": [
+        "integral_branch_rigidity_telescope",
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "width hypotheses left conditional in earlier integral-branch treatments"
+      ],
+      "why_it_matters": "Cubic enclosure against exponentially growing moduli is the sharpest finishing shape in the corpus.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/IntegralBranchWidth.lean",
+        "research_corpus/Erdos269/IntegralBranchExtinction.lean"
+      ]
+    },
+    {
+      "result_id": "integral_branch_rigidity_telescope",
+      "status": "strongest_premise",
+      "exact_statement": "Under an integrality hypothesis X_A = w, the pinning telescope yields the exact identity X_(A+k) + N_k = w*B_k with N_0 = 0, N_(k+1) = b_(A+k)*N_k + d_(A+k), B_0 = 1, B_(k+1) = b_(A+k)*B_k, and M_k = prod_(j<=k) b_(A+j) >= 2^(k+1). The least residue of -(b_(A+k)*N_k + d_(A+k)) modulo M_k must equal the true state whenever that state fits inside (0, hi] with hi < M_k; a residue outside the enclosure refutes integrality at A. The modulus grows exponentially while the enclosure grows only cubically (40*(A+k+4)^3), so for each A all but boundedly many depths are refutation opportunities. The named missing piece is UNIFORMITY IN A (tracked in the module header as the uniform-depth target).",
+      "hypotheses": "X_A integral; everything else unconditional.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "bounded-lookahead delay caps and gap-descent Lyapunov candidates (all exactly falsified)"
+      ],
+      "why_it_matters": "This is the closest thing to one-lemma-away in the corpus: exponential modulus versus cubic width, missing only uniformity in the start index.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/IntegralRigidity.lean",
+        "research_corpus/Erdos269/IntegralBranchWidth.lean"
+      ]
+    },
+    {
+      "result_id": "torus_coding_identification",
+      "status": "strongest_premise",
+      "exact_statement": "b_a = 2 * 3^[a in B(log2 3)] * 5^[a in B(log2 5)] where B(theta) is the Beatty set {floor(j*theta)}: the radix word is the coding of a rotation on the 2-torus by (log_3 2, log_5 2) under a product partition. Verified: 0 mismatches against the literal engine for a = 1..2600; radix frequencies match the independent-rotation prediction to five decimals over 300,000 letters; factor complexity is exactly (n+1)^2 for n = 1..22. The state lower bound X_a >= (1/60)*(floor(a/(2 log2 3))+1)*(floor(a/(2 log2 5))+1) grows quadratically, so no interval confinement exists for S (unlike the pure-power channels).",
+      "hypotheses": "Identification is exact; the complexity and frequency rows are finite measurements.",
+      "named_consumers": [
+        "digit_word_complexity_criterion",
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "opaque-word functional searches (Lyapunov, coboundary, observer) on the source"
+      ],
+      "why_it_matters": "Puts the whole problem inside quasi-periodic dynamics of rank two, where equidistribution and complexity tools actually exist.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md"
+      ]
+    },
+    {
+      "result_id": "pure_power_channel_irrationality_and_telescope",
+      "status": "strongest_premise",
+      "exact_statement": "Sigma_p = sum_(m>=1) 1/H(p^m) is irrational for every channel p of every finite prime support with r >= 2 (elementary, unconditional; Lean module PurePowerIrrationality, four theorems, no sorry). The exact telescope sum_(p in {2,3,5}) (p-1)*Sigma_p = 1 makes the three channel values rationally dependent even though each is irrational. NOVELTY UNVERIFIED for r >= 3 — do not present as new without a prior-art pass (Cantor-series / Ostrowski literature); for r = 2 Hecke–Mahler gives more.",
+      "hypotheses": "None; the proof is the small-nonzero-linear-form criterion with right-special radix factors.",
+      "named_consumers": [
+        "digit_word_complexity_criterion",
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "nothing about S itself — the single failing hypothesis is the all-ones digit sequence"
+      ],
+      "why_it_matters": "A genuine unconditional theorem in the family that isolates, in one line, exactly what makes S hard.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/PurePowerIrrationality.lean",
+        "research_corpus/Erdos269/PurePowerIrrationalityNote.md"
+      ]
+    },
+    {
+      "result_id": "digit_word_complexity_criterion",
+      "status": "strongest_premise",
+      "exact_statement": "Under rationality S = p/q, the proper carry-normalized digit word eps_a = floor(b_a*{X_a}) satisfies P_eps(n) <= q*P_b(n) <= q*(n+1)^2 for every n, because the window (eps_a,...,eps_(a+n-1)) is a function of ({X_a}, b_a,...,b_(a+n-1)) and {X_a} takes at most q values while the radix word has complexity (n+1)^2. Contrapositive: SUPERQUADRATIC subword complexity of the proper digit word proves S irrational, and q >= P_eps(n)/(n+1)^2 for every n. Conjectured exact law (receipt): p_W(n) = sum over radix factors u in L_b(n) of prod(u), which would give P_eps(n)/(n+1)^2 >= 2^n; measured EXACTLY ATTAINED at n = 1, 2 (hit fraction 1.0), sample-limited at n = 3, 4.",
+      "hypotheses": "The criterion is proved; the exact product law is conjectural with finite support.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "the retired Adamczewski–Bugeaud route, which measured the complexity of the RADIX word (Theta(n^2), useless)"
+      ],
+      "why_it_matters": "A proved irrationality criterion no prior packet has ever exposed, with a measured 2^n-sized target.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/PurePowerIrrationalityNote.md"
+      ]
+    },
+    {
+      "result_id": "torus_fourier_value_representation",
+      "status": "strongest_premise",
+      "exact_statement": "S = lim_(M->infty) [triple Fourier partial sum over |m_i| <= M] - 17/2, where each mode contributes c(m1)c'(m2)c''(m3) / [(1-e(lambda)/8)(1-e(lambda*theta)/27)(1-e(lambda*phi)/125)] with lambda = m1 + m2*log_3 2 + m3*log_5 2, c(m) = 1/(ln2 - 2*pi*i*m), c'(m) = 2/(ln3 - 2*pi*i*m), c''(m) = 4/(ln5 - 2*pi*i*m). The 17/2 correction is exact (8 at the origin plus an exact 1/2 from the three channel telescopes). Convergence is the 1/M jump rate, monotone in sign; the triple sum is only conditionally summable (sum |c c' c''| diverges like (log M)^3) and needs regularisation before any Diophantine estimate can be extracted.",
+      "hypotheses": "Exact representation; NOT an irrationality argument.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "purely combinatorial value access; this is the first analytic representation of the value"
+      ],
+      "why_it_matters": "Every mode is governed by a linear form in logarithms of 2, 3, 5 — the same input the digit-side routes reduced to, visible in the value itself.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md"
+      ]
+    },
+    {
+      "result_id": "kernel_nonseparability",
+      "status": "strongest_premise",
+      "exact_statement": "The literal full three-prime kernel admits no finite-dimensional function-faithful observer: faithfulness would force finite realised rank while its nonsingular minors have arbitrary order (not_finite_separable_threePrimeKernel; uniform in the third layer).",
+      "hypotheses": "None.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "all finite-dimensional observer constructions"
+      ],
+      "why_it_matters": "Forces any successful mechanism to be genuinely nonlocal or measure-theoretic, not a finite automaton.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/KernelCarryRank.lean"
+      ]
+    },
+    {
+      "result_id": "projective_shadow_congruence_and_abundance",
+      "status": "strongest_premise",
+      "exact_statement": "Rationality with denominator B coprime to 30 forces the shadow congruence d_a*H_b = d_b*H_a (mod B) across admissible window pairs (Lean-checked exact factorization; witnesses B = 11 with carries 61 and 259, B = 7). Measured abundance across all 133 denominators coprime to 30 in [7,500], starts a <= 3000: EVERY denominator admits violating pairs (violating fraction 0.828 at B = 7 up to 0.988 at B = 499); admissible endpoints appear at density about one per two starts and persist to the top of every range; same-start pairs are ALWAYS coherent (P = 1.0000), so any construction must pair different starts; far-separated pairs are equidistributed (coherence ratio 0.92x-1.23x).",
+      "hypotheses": "The congruence is exact; the abundance rows are finite measurements, not the cofinal theorem.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "scarcity readings of the projective producer; the construction is abundant, only the proof is missing"
+      ],
+      "why_it_matters": "The producer needs exactly two inputs — cofinal admissible endpoints and defect equidistribution mod B — both statements about the torus rotation.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+        "research_corpus/Erdos269/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "stammering_retired_and_the_named_diophantine_gap",
+      "status": "exact_no_go",
+      "exact_statement": "The Adamczewski–Bugeaud stammering route is retired for the three-prime radix word: repetition exponents at record simultaneous-approximation denominators decay to 1 like 1 + O(q^(-1/2)); Dirichlet in dimension two caps simultaneous approximation at exponent 1/2 while the criterion needs 1 at the same denominator. The failure margin is a full power q^(1/2). The precise external input that would reopen ANY repetition-based lane is an effective bound max(||q*log_3 2||, ||q*log_5 2||) >> q^(-1+delta); current technology gives only exp(-C*(log B)^2) (Laurent–Mignotte–Nesterenko) and ||q*log_3 2|| >> q^(-4.117) (via Rhin).",
+      "hypotheses": "Measured retirement plus the structural Dirichlet cap; the reopening bound is beyond current published technology.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "re-attempting repetition structure without a new two-log lower bound"
+      ],
+      "why_it_matters": "Names the exact Diophantine gap; do not respend it blindly.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+        "research_corpus/Erdos269/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "integral_branch_local_and_lyapunov_no_gos",
+      "status": "exact_no_go",
+      "exact_statement": "All bounded-lookahead functionals on the integral branch are exactly falsified: uniform escape within five blocks is false (31 counterexamples, max delay 7); every uniform post-clear cap K <= 100 is dead (exact affine-cylinder reconstruction with residue delay 101 at anchor a = 100); the a = 2295 source word survives four transitions; one-step raw-gap descent fails 71 times in starts 1..3000; and the predeclared TWO-step gap-descent law is false at starts 2220 and 2602 (each trapped for length 7 with gaps 1871381 -> 2073386 -> 2001740 and 2776610 -> 2870292 -> 2851196). Escape delay does NOT accumulate in the measured range (640,000 exact certificates, zero non-escaping pairs, depth <= 18), but no finite rectangle supplies the universal quantifiers.",
+      "hypotheses": "Exact integer witnesses; replayable.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "raw cap gap as a Lyapunov function; any fixed-delay programme; lookahead-constant repair"
+      ],
+      "why_it_matters": "The winning integral-branch argument must be source-conditioned or genuinely nonlocal.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/IntegralTailStructureLab.md",
+        "research_corpus/Erdos269/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "coboundary_and_observer_no_gos",
+      "status": "exact_no_go",
+      "exact_statement": "No radix-phase-conditioned polynomial of total degree <= 2 in the eight nonconstant direct source coordinates solves the integral-tail coboundary (exact 180-column system with a primitive left-null certificate on 116 equations), and no finite-dimensional function-faithful observer of the full kernel exists (nonsingular minors of arbitrary order). The frozen-digit torus squeeze is RETRACTED: freezing digits at absolute indices A+j while moving only the radix phase does NOT satisfy G_A(tau_a) = X_a for a != A (exact mismatch X_2 = 0.8559... vs G_1(tau_2) = 0.5389...).",
+      "hypotheses": "Exact certificates.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "degree-<=2 coboundary search; finite observers; the frozen-digit squeeze"
+      ],
+      "why_it_matters": "Three whole functional families are closed with certificates; budget must go elsewhere.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/SourceLinearCoboundaryNoGo.md",
+        "research_corpus/Erdos269/SourceQuadraticCoboundaryNoGo.md",
+        "research_corpus/Erdos269/KernelCarryRank.lean",
+        "research_corpus/Erdos269/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "finite_certificate_ceiling",
+      "status": "exact_no_go",
+      "exact_statement": "Deeper finite escape certificates cannot discharge the unbounded-height producer: the largest denominator excludable at window depth L is Theta(sqrt(B_L)) — measured exponent 0.4974 over 420 depths, exclusion of every odd denominator up to ~10^187 at depth 420 — so finite window certificates alone never supply the universal quantifier. Likewise the continued fraction of X_1 is Diophantine-generic (13,109 airtight-certified partial quotients, Gauss–Kuzmin frequencies, Levy constant within 0.18%, largest partial quotient 129,114): no Liouville-flavoured lever exists, and X_1 is not rational with denominator below 2^22482.",
+      "hypotheses": "Finite measurements with exact certification; the ceiling fit is over 420 depths.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "scan-extension as progress; exceptional-approximation attacks"
+      ],
+      "why_it_matters": "The missing input is an all-scale theorem, not a deeper computation.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+        "research_corpus/Erdos269/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "projective_same_start_and_cantor_no_gos",
+      "status": "exact_no_go",
+      "exact_statement": "Same-start window pairs can NEVER supply the projective producer: their shadow congruence holds identically (P = 1.0000 at every tested denominator); any construction must pair different starts. Standard Cantor-series criteria do not instantiate on the jump ordering; direct p-adic convergence fails (denominators carry unbounded contributions from the other prime channels); and the all-ones reindexing of S is impossible — every all-ones frame has unbounded states because the smooth counting function grows (max unit-radix run 2698, no right-special separation), so the pure-power proof cannot be transplanted mechanically.",
+      "hypotheses": "Exact measurements and exact frame arithmetic.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "same-start projective pairs; naive Cantor-criterion citation; mechanical channel transplants"
+      ],
+      "why_it_matters": "Fences the three cheapest-looking shortcuts on the surviving routes.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/research_packet.json",
+        "research_corpus/Erdos269/PurePowerIrrationalityNote.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "plectis_public_problem_corpus_checkpoint_v1",
+  "problem_id": "erdos_269",
+  "source_repository": "private_authoring_repository_not_included",
+  "source_commit": "832ab7f5d3ffd88eb7bbac065be2c4de2a08b266",
+  "source_subtree": "source-provenance://Erdos269",
+  "source_subtree_tree": "b6dea1c813dec9a16fd5b0efc907cf6b299e4090",
+  "exported_source_file_count": 31,
+  "publication_scope": "committed problem-facing Lean, mathematical notes, labs, and the research packet",
+  "status": "source_current_problem_snapshot",
+  "corpus_manifest_path": "research_corpus/Erdos269/CORPUS_MANIFEST.json",
+  "corpus_manifest_sha256": "0fb94307584a7c407ae689ad1c7344db964945367b8956c8ca5e0a9c46513b51",
+  "strongest_result_map_path": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
+  "strongest_result_map_sha256": "6652d6547147953274b9a90772ab50e1ef514164fb26d8373634f354cf808a05"
+}

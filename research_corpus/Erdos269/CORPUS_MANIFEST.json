@@ -1,0 +1,297 @@
+{
+  "schema": "erdos269_public_research_corpus_manifest_v1",
+  "problem_id": "erdos_269",
+  "status": "open",
+  "source_checkpoint": "832ab7f5d3ffd88eb7bbac065be2c4de2a08b266",
+  "source_prefix": "source-provenance://Erdos269",
+  "public_prefix": "research_corpus/Erdos269",
+  "file_count": 31,
+  "total_bytes": 424859,
+  "local_path_replacement_count": 107,
+  "strongest_result_map": {
+    "path": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
+    "sha256": "6652d6547147953274b9a90772ab50e1ef514164fb26d8373634f354cf808a05",
+    "result_count": 16
+  },
+  "files": [
+    {
+      "source_path": "source-provenance://Erdos269/AGENTS.md",
+      "public_path": "research_corpus/Erdos269/AGENTS.md",
+      "source_sha256": "8698c98519c6506304d9ebb560f359ddae939252e61e54a051364fc18e29c3a0",
+      "published_sha256": "4ba1e161d389cd7a710de75eb280ac1ee709d03b413f7ff05a850f5d235eb2ca",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 2,
+      "bytes": 1670
+    },
+    {
+      "source_path": "source-provenance://Erdos269/BlockMassEngines.lean",
+      "public_path": "research_corpus/Erdos269/BlockMassEngines.lean",
+      "source_sha256": "f7fac792bced7515f9f2e50810953f18a9896e897d352611466d4f716cf435af",
+      "published_sha256": "f7fac792bced7515f9f2e50810953f18a9896e897d352611466d4f716cf435af",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5610
+    },
+    {
+      "source_path": "source-provenance://Erdos269/BoundedRadixTailEscape.lean",
+      "public_path": "research_corpus/Erdos269/BoundedRadixTailEscape.lean",
+      "source_sha256": "a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61",
+      "published_sha256": "a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7797
+    },
+    {
+      "source_path": "source-provenance://Erdos269/CarryLiftExtinction.lean",
+      "public_path": "research_corpus/Erdos269/CarryLiftExtinction.lean",
+      "source_sha256": "7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1",
+      "published_sha256": "7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 12458
+    },
+    {
+      "source_path": "source-provenance://Erdos269/DyadicBlockMassIdentity.lean",
+      "public_path": "research_corpus/Erdos269/DyadicBlockMassIdentity.lean",
+      "source_sha256": "aa8a13d21f911f5ac181e6af049b83794b37b5e8633bfe387addde18a01b789d",
+      "published_sha256": "aa8a13d21f911f5ac181e6af049b83794b37b5e8633bfe387addde18a01b789d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 8990
+    },
+    {
+      "source_path": "source-provenance://Erdos269/DyadicBlockThresholdPartition.lean",
+      "public_path": "research_corpus/Erdos269/DyadicBlockThresholdPartition.lean",
+      "source_sha256": "0db1ce6438fc4eeb85854bd174849f3fa51ce33c0757a72518d28a5ccf0e9f2b",
+      "published_sha256": "0db1ce6438fc4eeb85854bd174849f3fa51ce33c0757a72518d28a5ccf0e9f2b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7557
+    },
+    {
+      "source_path": "source-provenance://Erdos269/DyadicOrderedTailRecurrence.lean",
+      "public_path": "research_corpus/Erdos269/DyadicOrderedTailRecurrence.lean",
+      "source_sha256": "b591d5f23c6d6bb8c486f2a3390a41ee03ff90e2d9da2cd2165e79d9755bf06a",
+      "published_sha256": "b591d5f23c6d6bb8c486f2a3390a41ee03ff90e2d9da2cd2165e79d9755bf06a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5272
+    },
+    {
+      "source_path": "source-provenance://Erdos269/DyadicRadixTailEscape.lean",
+      "public_path": "research_corpus/Erdos269/DyadicRadixTailEscape.lean",
+      "source_sha256": "d8b6c181c8af288f270986b0d2d0e9adcf2c237b5c8491eab176791ff937d4a9",
+      "published_sha256": "d8b6c181c8af288f270986b0d2d0e9adcf2c237b5c8491eab176791ff937d4a9",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1535
+    },
+    {
+      "source_path": "source-provenance://Erdos269/DyadicShellSummability.lean",
+      "public_path": "research_corpus/Erdos269/DyadicShellSummability.lean",
+      "source_sha256": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad",
+      "published_sha256": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 8918
+    },
+    {
+      "source_path": "source-provenance://Erdos269/DyadicWindowComputationalLab.md",
+      "public_path": "research_corpus/Erdos269/DyadicWindowComputationalLab.md",
+      "source_sha256": "82b896006ad36cd471ae0e04baf8d4cd393980f704f558570f225d3371510cab",
+      "published_sha256": "a793c5680ebccfb0c2076e6fc00081bd0f36526698437e3044dd962a3447515f",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 22,
+      "bytes": 30405
+    },
+    {
+      "source_path": "source-provenance://Erdos269/HalfHeightDenominatorTransport.lean",
+      "public_path": "research_corpus/Erdos269/HalfHeightDenominatorTransport.lean",
+      "source_sha256": "310cd828fb9547c4d7d9b47d752ff18bb4ac2e489c50d1e92190c97229d248fe",
+      "published_sha256": "310cd828fb9547c4d7d9b47d752ff18bb4ac2e489c50d1e92190c97229d248fe",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7808
+    },
+    {
+      "source_path": "source-provenance://Erdos269/IntegralBranchExtinction.lean",
+      "public_path": "research_corpus/Erdos269/IntegralBranchExtinction.lean",
+      "source_sha256": "eb07a6562fc26ac2077023182c094ede0b92fe6fb74227969e5e1c45187698c2",
+      "published_sha256": "eb07a6562fc26ac2077023182c094ede0b92fe6fb74227969e5e1c45187698c2",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 18628
+    },
+    {
+      "source_path": "source-provenance://Erdos269/IntegralBranchWidth.lean",
+      "public_path": "research_corpus/Erdos269/IntegralBranchWidth.lean",
+      "source_sha256": "b6aee824f399204803ac348c59d697a711535411b5635a6f76b8f974b861d54e",
+      "published_sha256": "b6aee824f399204803ac348c59d697a711535411b5635a6f76b8f974b861d54e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2791
+    },
+    {
+      "source_path": "source-provenance://Erdos269/IntegralRigidity.lean",
+      "public_path": "research_corpus/Erdos269/IntegralRigidity.lean",
+      "source_sha256": "095527265faa310da5714eacc4c196d78f47d7fc828fade764658a74627a3c3f",
+      "published_sha256": "095527265faa310da5714eacc4c196d78f47d7fc828fade764658a74627a3c3f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3643
+    },
+    {
+      "source_path": "source-provenance://Erdos269/IntegralTailStructureLab.md",
+      "public_path": "research_corpus/Erdos269/IntegralTailStructureLab.md",
+      "source_sha256": "dec597cfe282097af7b46f2c236a8aa45a7cd54fbaf7997376c4c2c69c3abcc0",
+      "published_sha256": "0f064fa7d352b6c527503e1a0d955a4430acd398bd1d537c0fd932181fa15d6c",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 2,
+      "bytes": 2885
+    },
+    {
+      "source_path": "source-provenance://Erdos269/KernelCarryRank.lean",
+      "public_path": "research_corpus/Erdos269/KernelCarryRank.lean",
+      "source_sha256": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "published_sha256": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 28103
+    },
+    {
+      "source_path": "source-provenance://Erdos269/PurePowerIrrationality.lean",
+      "public_path": "research_corpus/Erdos269/PurePowerIrrationality.lean",
+      "source_sha256": "5bdbb46516f43bd8875d101cc3b02d071ec86499c9ca8a5b7c54678b5859e765",
+      "published_sha256": "5bdbb46516f43bd8875d101cc3b02d071ec86499c9ca8a5b7c54678b5859e765",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7380
+    },
+    {
+      "source_path": "source-provenance://Erdos269/PurePowerIrrationalityNote.md",
+      "public_path": "research_corpus/Erdos269/PurePowerIrrationalityNote.md",
+      "source_sha256": "9090ad541c5d39fd39be065b7adc18a21dc084e4fbf14a3761e29ccf54c7ae2c",
+      "published_sha256": "9090ad541c5d39fd39be065b7adc18a21dc084e4fbf14a3761e29ccf54c7ae2c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 9312
+    },
+    {
+      "source_path": "source-provenance://Erdos269/RationalLatticeReduction.lean",
+      "public_path": "research_corpus/Erdos269/RationalLatticeReduction.lean",
+      "source_sha256": "e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d",
+      "published_sha256": "e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14849
+    },
+    {
+      "source_path": "source-provenance://Erdos269/RationalLatticeTorusSqueezeLab.md",
+      "public_path": "research_corpus/Erdos269/RationalLatticeTorusSqueezeLab.md",
+      "source_sha256": "73bcfcfcee9991388175b1f871d89a19ff17ec5f7986c057cecf841884b077d0",
+      "published_sha256": "73bcfcfcee9991388175b1f871d89a19ff17ec5f7986c057cecf841884b077d0",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 23916
+    },
+    {
+      "source_path": "source-provenance://Erdos269/ResidueEscape.lean",
+      "public_path": "research_corpus/Erdos269/ResidueEscape.lean",
+      "source_sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e",
+      "published_sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7612
+    },
+    {
+      "source_path": "source-provenance://Erdos269/RestrictedFloorSum.lean",
+      "public_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "published_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 29164
+    },
+    {
+      "source_path": "source-provenance://Erdos269/SourceLinearCoboundaryNoGo.md",
+      "public_path": "research_corpus/Erdos269/SourceLinearCoboundaryNoGo.md",
+      "source_sha256": "96ef82f03c7eab84ee23d33c41339b3dc03bdd886631a1c0533a947af0b9591e",
+      "published_sha256": "cf221e01a3ad80acc9a473e6296f2ccf54c100cd61c6b86b74d72bfe342b4d68",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 2,
+      "bytes": 3796
+    },
+    {
+      "source_path": "source-provenance://Erdos269/SourceQuadraticCoboundaryNoGo.md",
+      "public_path": "research_corpus/Erdos269/SourceQuadraticCoboundaryNoGo.md",
+      "source_sha256": "c9a6e0f3495d637f86e74c328c97dda25d200305111458e4f16e10a3d300aad4",
+      "published_sha256": "c9a6e0f3495d637f86e74c328c97dda25d200305111458e4f16e10a3d300aad4",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2503
+    },
+    {
+      "source_path": "source-provenance://Erdos269/TensorDirichletJordanCompletion.md",
+      "public_path": "research_corpus/Erdos269/TensorDirichletJordanCompletion.md",
+      "source_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+      "published_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4290
+    },
+    {
+      "source_path": "source-provenance://Erdos269/ThreeChannelBlockRigidity.lean",
+      "public_path": "research_corpus/Erdos269/ThreeChannelBlockRigidity.lean",
+      "source_sha256": "2c9d599188304481e3489a22ff2b2dd5204a0383bb6eb808b1ab50a672a18825",
+      "published_sha256": "2c9d599188304481e3489a22ff2b2dd5204a0383bb6eb808b1ab50a672a18825",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4764
+    },
+    {
+      "source_path": "source-provenance://Erdos269/ThreePrimeRunningLcm.lean",
+      "public_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "published_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 40600
+    },
+    {
+      "source_path": "source-provenance://Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+      "public_path": "research_corpus/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+      "source_sha256": "169c1421a44913e20dc501c608511b1f3ef7bbad28feb8e22828976424264eaf",
+      "published_sha256": "234d113bb6185d0793e23b52df53a3b6443af8f04f72723e906de0316da4dffc",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 8,
+      "bytes": 15379
+    },
+    {
+      "source_path": "source-provenance://Erdos269/WeightedPhaseCarry.lean",
+      "public_path": "research_corpus/Erdos269/WeightedPhaseCarry.lean",
+      "source_sha256": "dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3",
+      "published_sha256": "dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14605
+    },
+    {
+      "source_path": "source-provenance://Erdos269/research_packet.json",
+      "public_path": "research_corpus/Erdos269/research_packet.json",
+      "source_sha256": "7b902bc26d69689475a7c200b47f158fcc5baa0561e586c7be8b4240445174f9",
+      "published_sha256": "1c8dc2a24d48f39817d0fe8167677d925afa24e6ae1e70131be41bb4572a98d6",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 71,
+      "bytes": 85463
+    },
+    {
+      "source_path": "source-provenance://Erdos269/returned_packets_20260723.json",
+      "public_path": "research_corpus/Erdos269/returned_packets_20260723.json",
+      "source_sha256": "b7fa55bbc3d1a6720e5f21b376891afb0f14d309bd491a169ae8909ced6d38cc",
+      "published_sha256": "b7fa55bbc3d1a6720e5f21b376891afb0f14d309bd491a169ae8909ced6d38cc",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7156
+    }
+  ]
+}

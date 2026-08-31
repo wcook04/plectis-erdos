@@ -1,0 +1,838 @@
+{
+  "schema": "aiw-formal-math-assimilation/1",
+  "problem_id": "erdos_269",
+  "title": "Three-prime running-LCM irrationality",
+  "frontier_integrity": {
+    "canonical_frontier": {
+      "kind": "declared_target",
+      "producer_ids": []
+    },
+    "producer_relations": {
+      "equivalent_to_target": [],
+      "target_deciding_but_stronger": [
+        "exclude_exact_integral_dyadic_tails",
+        "cofinal_projective_window_pair_incoherence",
+        "bounded_residue_lift_balance",
+        "unbounded_height_certificate"
+      ],
+      "auxiliary_not_target_deciding": [
+        "carry_faithful_weighted_phase_observer"
+      ],
+      "out_of_scope_for_target": []
+    },
+    "selection_rule": "The three-generator irrationality statement remains the frontier; the listed arithmetic producers are stronger sufficient routes or auxiliary representation work."
+  },
+  "source_returns": [
+    {
+      "attachment": "pasted-text-1.txt",
+      "sha256": "383ebd8fb2fc7b1427be99fc5635e9a44225d35ba05e751a207f077b6ed2a16e",
+      "role": "exact lattice, jump, separation-rank, cocycle, and numerical analysis"
+    },
+    {
+      "attachment": "pasted-text-2.txt",
+      "sha256": "1beb5cd640aabca08a5d42a73b5433c80863a377646f4a71eb7af8c139ca12d2",
+      "role": "p-adic and residue-escape analysis with finite denominator exclusion"
+    },
+    {
+      "attachment": "pasted-text-6.txt",
+      "sha256": "1c9c3db5089ebbaff80e83d54a02753714b6dec24bb45069b1716e76e4770e4f",
+      "role": "finite Farey certificate and scalar-tail no-go"
+    },
+    {
+      "attachment": "9bb4e258-1d5d-4ef0-b231-432be3be45e5/pasted-text.txt",
+      "sha256": "8a0ac2385725199aac1f6aff0595966459d723de997b9a69afc8fa941f456f4a",
+      "role": "restricted two-dimensional floor sums, pure-power block equations, denominator reduction away from 30, logarithmic-window compression, and finite local residue-escape certificates"
+    },
+    {
+      "attachment": "cf4bebbf-e4df-413d-99ad-90bd4d05114f/pasted-text.txt",
+      "sha256": "6ecfbcf3281e865130ac759eabc906668c1eb751caaa1f43fad8856c384c3379",
+      "role": "target-faithful weighted phase identity, exact carry residue-transfer decomposition, unit-carry rational shadows, and the function-faithful observer criterion"
+    },
+    {
+      "attachment": "8da706fa-0772-425f-b096-220ab36e8750/pasted-text.txt",
+      "sha256": "0ea1af43ba624a40deb9bc8ec4dcbf28b6be912848ed527cb71e231bbe6bca95",
+      "role": "carry-to-coboundary audit, weighted-versus-unweighted block defect, canonical-lift counterexample, and bounded residue-lift producer"
+    },
+    {
+      "attachment": "7d629511-ab83-40cb-9acf-ee9b958a9427/pasted-text.txt",
+      "sha256": "31820fc577e5e14df12b072b3e95c27df25d54da01c53c74eaa6a27a4c1b9631",
+      "role": "bounded-radix zero-or-cofinal-escape theorem, exact-cancellation rationality transport, correction of absolute-numerator escape to least-positive-residue escape, restricted-floor discrepancy analysis, and finite adversarial computation"
+    }
+  ],
+  "target": {
+    "status": "open",
+    "statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+    "smallest_instance": "prime support {2,3,5}"
+  },
+  "landed_formal_source": [
+    "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+    "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+    "ErdosProblems/Erdos269/ResidueEscape.lean",
+    "ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
+    "ErdosProblems/Erdos269/DyadicRadixTailEscape.lean",
+    "ErdosProblems/Erdos269/BlockMassEngines.lean",
+    "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+    "ErdosProblems/Erdos269/CarryLiftExtinction.lean",
+    "ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean",
+    "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+    "scripts/check_erdos269_three_prime.py",
+    "scripts/check_erdos269_dyadic_windows.py",
+    "scripts/check_erdos269_affine_cylinders.py",
+    "scripts/check_erdos269_ordered_tail_recurrence.py",
+    "scripts/check_erdos269_integral_tail_escape.py",
+    "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+    "scripts/check_erdos269_tail_orbit_separation.py",
+    "scripts/check_erdos269_prime_power_boundary_ladder.py"
+  ],
+  "exact_results": [
+    {
+      "id": "running_lcm_height",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight",
+        "ErdosProblems.Erdos269.threePrimeHeight_le_cube"
+      ],
+      "statement": "For three pairwise-distinct primes and x>0, the literal Finset.lcm of the actual filtered smooth prefix equals the product of the three maximal pure prime powers; this height is at most x^3.",
+      "claim_boundary": "The named declarations prove the finite three-prime running-LCM identity and cubic upper bound under their explicit positivity and distinctness hypotheses. They do not prove the irrationality conclusion for Erdős #269, an unbounded residue escape, or a universal result beyond the stated three-prime height estimate.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:56Z with the final serialized Lake authority check.",
+        "claim_boundary": "This is a checked finite running-LCM height bound. The downstream irrationality and residue-escape producers remain open."
+      }
+    },
+    {
+      "id": "running_lcm_log_cell_constancy",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.SameThreePrimeLogCell",
+        "ErdosProblems.Erdos269.threePrimeHeight_eq_of_sameLogCell",
+        "ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell",
+        "ErdosProblems.Erdos269.threePrimeKernelQ_eq_of_sameLogCell"
+      ],
+      "statement": "For three pairwise-distinct primes and positive cutoffs, equality of the three natural-log coordinates forces equality of the literal smooth-prefix Finset.lcm; the associated rational lattice kernel is constant on the same cells.",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "claim_boundary": "This is a checked finite logarithmic-cell constancy result under the explicit prime and cutoff hypotheses. It does not order the infinite jump sequence, prove an irrationality conclusion, or supply an unbounded residue-escape theorem.",
+      "validation": {
+        "proof_authority": "The four named declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:56Z with the final serialized Lake authority check.",
+        "claim_boundary": "The result makes the finite cell invariance replayable; the ordered expansion and irrationality producers remain open."
+      }
+    },
+    {
+      "id": "kernel_not_rank_one",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.kernel_235_not_rankOne",
+        "ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen"
+      ],
+      "statement": "The {2,3,5} lattice kernel fails rank-one separation; the smallest 2x2 determinant is -1/15.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused module build re-elaborated ThreePrimeRunningLcm.lean and completed the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 911 jobs and the final serialized Lake authority check; the explicit non-rank-one witness and -1/15 minor replayed successfully.",
+        "claim_boundary": "This is an exact finite rank-two witness for the {2,3,5} kernel. It does not establish a general three-prime nonseparability theorem, evaluate the infinite ordered expansion, or prove irrationality by itself."
+      }
+    },
+    {
+      "id": "prime_power_jump_expansion",
+      "status": "lean_checked_finite_core",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.smoothHeightFiber",
+        "ErdosProblems.Erdos269.smoothHeightFiber_kernel_sum",
+        "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight"
+      ],
+      "statement": "Every finite rectangular smooth-lattice sum groups exactly by its genuine running-LCM height, with coefficient equal to the corresponding height-fiber cardinality. Together with logarithmic-cell constancy, this is the finite core of the ordered prime-power-jump expansion; the infinite limit and explicit pure-power ordering remain to be formalized.",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "claim_boundary": "This is a checked finite grouping identity for rectangular smooth-lattice sums. It does not justify passage to an infinite ordered expansion, establish pure-power ordering, or prove irrationality.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:56Z with the final serialized Lake authority check.",
+        "claim_boundary": "The finite core is source-current and replayable; the infinite limit and jump-ordering obligations remain open."
+      }
+    },
+    {
+      "id": "single_coordinate_jump_ratio",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.smoothPrefixLcm_firstLogStep",
+        "ErdosProblems.Erdos269.smoothPrefixLcm_secondLogStep",
+        "ErdosProblems.Erdos269.smoothPrefixLcm_thirdLogStep"
+      ],
+      "statement": "For pairwise-distinct primes and positive cutoffs, advancing exactly one natural-log coordinate by one multiplies the literal smooth-prefix Finset.lcm by the corresponding base p, q, or r.",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "claim_boundary": "This is a checked one-coordinate finite transition law under the explicit positivity and distinctness hypotheses. It does not identify the globally ordered jump sequence or prove an irrationality conclusion.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:56Z with the final serialized Lake authority check.",
+        "claim_boundary": "The coordinate transition is replayable; global ordering and the downstream irrationality producer remain open."
+      }
+    },
+    {
+      "id": "finite_pure_power_jump_enumeration",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.positivePrimePowers_card",
+        "ErdosProblems.Erdos269.positivePrimePowers_disjoint",
+        "ErdosProblems.Erdos269.threePrimePositiveJumpSet_card"
+      ],
+      "statement": "Positive power channels of distinct primes are disjoint; consequently, the union of the first n positive powers in each of three pairwise-distinct prime channels has exactly 3n elements.",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "claim_boundary": "This is an exact finite cardinality result for three distinct prime-power channels. It does not establish their order relative to one another in the infinite logarithmic sequence or prove irrationality.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:56Z with the final serialized Lake authority check.",
+        "claim_boundary": "The finite channel count is source-current and replayable; infinite ordering and irrationality remain open."
+      }
+    },
+    {
+      "id": "finite_jump_enumeration_with_origin",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.one_not_mem_positivePrimePowers",
+        "ErdosProblems.Erdos269.threePrimeJumpSetWithOrigin_card"
+      ],
+      "statement": "The common origin 1 lies in no positive prime-power channel, so adjoining it to the first n positive powers from three distinct prime channels gives exactly 3n+1 finite jump values.",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "claim_boundary": "This is an exact finite count after adjoining the origin to three positive prime-power channels. It does not prove a global jump enumeration, an infinite ordering statement, or irrationality.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:56Z with the final serialized Lake authority check.",
+        "claim_boundary": "The finite augmented count is source-current and replayable; the infinite jump-ordering and irrationality obligations remain open."
+      }
+    },
+    {
+      "id": "multiplicity_bound",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.exponent_unique_in_short_interval",
+        "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic"
+      ],
+      "statement": "For the actual filtered smooth exponent shell, fixing two coordinates is injective when the jump interval has multiplicative width at most the remaining base; if sorted heights sum to j, then 9 times the shell cardinality is at most (j+3)^2.",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "claim_boundary": "This is a checked finite shell multiplicity bound with its explicit interval and sorted-height hypotheses. It does not provide a sharp asymptotic, an infinite jump expansion, or an irrationality proof.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:56Z with the final serialized Lake authority check.",
+        "claim_boundary": "The finite multiplicity estimate is source-current and replayable; sharp asymptotics and the downstream irrationality producer remain open."
+      }
+    },
+    {
+      "id": "actual_dyadic_block_radix_alphabet",
+      "status": "lean_checked",
+      "theorems": [
+        "ErdosProblems.Erdos269.threePrimeHeight_dyadicBlock_succ",
+        "ErdosProblems.Erdos269.smoothPrefixLcm235_dyadicBlock_succ"
+      ],
+      "statement": "Every interval (2^a,2^(a+1)) contains at most one pure power from each non-dyadic channel. Lean now identifies the four-symbol dyadicBlockBase235 with the exact successive ratio of both the computational threePrimeHeight and the literal smoothPrefixLcm along 2^a -> 2^(a+1). Consequently the actual compressed {2,3,5} dyadic radix lies in {2,6,10,30}, with no hidden larger base. The integer block digit and tail recurrence are not identified by this theorem.",
+      "source_path": "research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_commit": "f3d7e872909961ce3017fedd8d41852433f79ee4",
+      "source_sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.threePrimeHeight_dyadicBlock_succ",
+        "ErdosProblems.Erdos269.smoothPrefixLcm235_dyadicBlock_succ"
+      ],
+      "claim_boundary": "The named declarations prove the exact successive-height ratio and the resulting four-symbol radix alphabet for the {2,3,5} dyadic block. They do not identify the integer block digit, prove the tail recurrence or escape dichotomy, or settle Erdős #269.",
+      "validation": {
+        "proof_authority": "The named Lean declarations are in the cited source-current commit; the focused ThreePrimeRunningLcm replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "lake env lean research_corpus/Erdos269/ThreePrimeRunningLcm.lean",
+        "proof_result": "Exit 0 with the final serialized Lake authority check at 2026-08-27T09:02:56Z.",
+        "claim_boundary": "This is a checked dyadic radix-alphabet identification. It leaves the integer digit model, tail dynamics, escape conclusion, and the unrestricted Erdős #269 statement open."
+      }
+    },
+    {
+      "id": "actual_dyadic_radix_escape_fanin",
+      "status": "lean_checked",
+      "theorems": [
+        "ErdosProblems.Erdos269.dyadicBlockBase235_integer_or_cofinal_far"
+      ],
+      "statement": "Lean instantiates the bounded-radix dichotomy with the actual {2,3,5} dyadic height ratio. Every real affine orbit with integer digits and radix dyadicBlockBase235 either reaches an integer state or is cofinally at distance at least 1/31 from every integer. The generic theorem takes the digit sequence and recurrence as inputs; DyadicShellSummability now supplies both inputs for the genuine infinite source tail."
+    },
+    {
+      "id": "block_mass_combinatorial_engines",
+      "status": "lean_checked_algebraic_engines",
+      "theorems": [
+        "ErdosProblems.Erdos269.List.prod_eq_one_add_suffixCorrection",
+        "ErdosProblems.Erdos269.suffixCorrection_pair",
+        "ErdosProblems.Erdos269.tailCap_bellman",
+        "ErdosProblems.Erdos269.tailCap_lt_succ"
+      ],
+      "statement": "Lean checks the suffix-product telescope that expands each block height quotient and the exact Bellman fixed-point identity behind the quadratic state cap and its constant 27. These are the two algebraic engines used by the checker-level block-digit and state-cap derivations. They do not yet identify the actual integer block digit, derive its affine recurrence from the ordered {2,3,5} source, or prove Erdős #269."
+    },
+    {
+      "id": "dyadic_block_digit_half_height_mass",
+      "status": "lean_checked_all_scale_height_factorization_threshold_partition_and_ordered_digit",
+      "theorems": [
+        "ErdosProblems.Erdos269.mem_strictSmoothExponents235_iff",
+        "ErdosProblems.Erdos269.mem_dyadicSmoothShell235_iff",
+        "ErdosProblems.Erdos269.log_two_eq_of_mem_dyadicSmoothShell235",
+        "ErdosProblems.Erdos269.threePrimeHeight_dyadicShell_factor_two",
+        "ErdosProblems.Erdos269.halfClearedMassOne_eq_blockDigitOne",
+        "ErdosProblems.Erdos269.halfClearedMassTwo_eq_blockDigitTwo",
+        "ErdosProblems.Erdos269.halfOpenMass_eq_rightClosedMass_add",
+        "ErdosProblems.Erdos269.clearedMassTwo_eq_two_mul_blockDigitTwo",
+        "ErdosProblems.Erdos269.pow_log_dyadic_suffix_eq_if",
+        "ErdosProblems.Erdos269.oddHeightSuffix235_eq_thresholdFactors",
+        "ErdosProblems.Erdos269.dyadicHalfClearedMass235_eq_thresholdCounts",
+        "ErdosProblems.Erdos269.dyadicHalfClearedMass235_eq_orderedBlockDigit235"
+      ],
+      "receipt": "source-provenance://private-authoring-project/receipts/erdos269_block_mass_identity_receipt.json",
+      "statement": "For every scale a and every actual {2,3,5}-smooth point in the half-open dyadic shell, Lean proves that the right-endpoint running height equals the point height times 2 and an odd suffix product. Lean now partitions that suffix at all scales by the unique new 3- and 5-power thresholds and sums it exactly as N+2*C3+4*C5+8*C35. Threshold order gives C35=C3 or C35=C5, hence the ordered source digit N+10*C3+4*C5 or N+2*C3+12*C5. This closes endpoint normalization, cell summation, and odd-jump ordering as analytic ambiguities. Independently, exact enumeration for 1<=a<=100 verifies sum_x H(2^(a+1))/H(x)=2*blockDigit(a), with 50,134 source values and zero failures; that finite horizon is not counted. Binding the ordered digit into the actual rationality carry recurrence remains open."
+    },
+    {
+      "id": "finite_farey_certificate_235_M200",
+      "status": "independently_regenerated_exactly",
+      "statement": "The M=200 finite box and cubic tail exclude every rational denominator below approximately 1.64e90, but do not exclude all denominators."
+    },
+    {
+      "id": "finite_denominator_exclusion",
+      "status": "advisory_computation",
+      "statement": "A separate exact truncation excludes rational denominators through 1,022,266."
+    },
+    {
+      "id": "prime_channel_residue_escape_consumer",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/ResidueEscape.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.no_bounded_positive_state_of_residue_escape",
+        "ErdosProblems.Erdos269.no_bounded_positive_int_state_of_leastPositiveResidue",
+        "ErdosProblems.Erdos269.leastPositiveResidue_eq_natAbs_of_pos_le_modEq"
+      ],
+      "statement": "A positive tail state bounded by K cannot represent modulo C a canonical positive residue in (K,C]. Lean now checks both the original natural-state theorem and the integer-valued carry form, including positivity, the canonical interval 1,...,C, and congruence of the least-positive representative."
+    },
+    {
+      "id": "canonical_window_residue_equality",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.integralCarry_window",
+        "ErdosProblems.Erdos269.leastPositiveResidue_windowForcing_eq_carry"
+      ],
+      "statement": "Any positive integral carry bounded by its positive modulus is exactly the least positive representative of its congruence class. Specializing the integral-carry window identity, Lean proves that the canonical residue of -B times the accumulated forcing modulo the absolute window base is exactly the endpoint carry whenever that carry lies in the canonical interval. This upgrades the local-window consumer from a contradiction inequality to an exact endpoint invariant."
+    },
+    {
+      "id": "fixed_window_residue_shortcut_counterexamples",
+      "status": "independently_regenerated_exact_arithmetic",
+      "statement": "Canonical window residues need not be coprime to the window base: (W,F,B)=(6,4,1) gives residue 2. Nor does a fixed window admit a denominator-independent positive lower bound: (60,47,37) and (3627970560000000,3526148954135949157,152854142178707) both give least positive residue 1. Therefore an escaping-window producer must genuinely choose its window in response to the reduced denominator."
+    },
+    {
+      "id": "restricted_floor_sum_shell_formula",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.strictSmoothShell_card_between_purePowers",
+        "ErdosProblems.Erdos269.strictSmoothShell_card_eq_restrictedFloorSum_sub",
+        "ErdosProblems.Erdos269.strictPExponentFiber_card_at_pow"
+      ],
+      "statement": "For positive bases, the strict three-prime smooth count is exactly a restricted two-dimensional sum of one-dimensional exponent fibers. At a pure p-power cutoff every fiber has the kernel-checked cardinality a - Nat.log p (q^j r^k), so Psi(p^a) = V_p(a); after a checked channel-swap bijection, every pure-power shell from p^a to q^b has exact multiplicity V_q(b) - V_p(a)."
+    },
+    {
+      "id": "restricted_floor_sum_discrete_derivative",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.restrictedLogFloorSum_succ_sub",
+        "ErdosProblems.Erdos269.strictSmoothShell_card_eq_restrictedFloorSum_sub"
+      ],
+      "statement": "For bases p,q,r greater than one, V_p(a+1) - V_p(a) is exactly the cardinality W_p(a+1) of the admissible (q,r)-exponent pairs below p^(a+1). The proof kernel-checks the old-pair increment and new-pair Nat.log boundary separately."
+    },
+    {
+      "id": "pure_power_block_shadow_separation",
+      "status": "advisory_complete_derivation",
+      "statement": "True shell multiplicities satisfy exact pure-power block equations that every nontrivial upward rational shadow violates, furnishing a true-versus-shadow invariant absent from the earlier scalar recurrence."
+    },
+    {
+      "id": "denominator_reduction_coprime_thirty",
+      "status": "lean_checked_absorption_and_cancellation_core",
+      "source_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.smooth3Val_dvd_threePrimeHeight_of_le",
+        "ErdosProblems.Erdos269.integralCarry_cancel_commonFactor",
+        "ErdosProblems.Erdos269.reducedCarry_pos_le_of_commonFactor",
+        "ErdosProblems.Erdos269.reducedIntegralCarry_window"
+      ],
+      "statement": "Every fixed {p,q,r}-smooth factor kernel-checkably divides the running three-prime height once the cutoff reaches it. If the integral carry states share that absorbed nonzero factor, Lean cancels it from the full recurrence, transfers positivity and the sharp upper bound through a positive factor, and derives the exact local-window identity with the reduced denominator. For {2,3,5}, the remaining denominator is the coprime-to-30 part."
+    },
+    {
+      "id": "projective_two_window_residue_coherence",
+      "status": "lean_checked_consumer_with_exact_source_witness",
+      "theorems": [
+        "ErdosProblems.Erdos269.HalfHeightDenominatorTransport.reducedCarry_projective_shadow"
+      ],
+      "verifier": "source-provenance://private-authoring-project/scripts/check_erdos269_projective_window_pair.py",
+      "receipt": "source-provenance://private-authoring-project/receipts/erdos269_projective_window_pair_receipt.json",
+      "statement": "Two reduced endpoint carries from one rational candidate must satisfy d_a*H_b=d_b*H_a modulo the reduced denominator B. For B=11, exact actual windows ending at dyadic scales 4 and 7 have canonical carries 61 and 259, separately below bounds 150 and 398 and separately coprime to 11. Neither local size nor nonunit-residue consumer fires, but the height residues are 5 and 2 and the projective defect is 61*2-259*5=4 mod 11. Thus the pair is impossible. This opens cross-window projective incoherence as an independent denominator-elimination mechanism without supplying universal or cofinal quantifiers."
+    },
+    {
+      "id": "projective_quotient_defect_factorization_and_small_band_no_go",
+      "status": "lean_checked_factorization_with_exact_mechanism_counterexample",
+      "theorems": [
+        "ErdosProblems.Erdos269.HalfHeightDenominatorTransport.projectiveDefect_eq_windowQuotientDefect"
+      ],
+      "verifier": "source-provenance://private-authoring-project/scripts/check_erdos269_projective_quotient_scan.py",
+      "receipt": "source-provenance://private-authoring-project/receipts/erdos269_projective_quotient_scan_receipt.json",
+      "statement": "Writing each canonical carry as d_i=k_i*M_i-B*F_i and endpoint height as H_i=S_i*M_i factors the projective cross-defect into M_1*M_2*(k_1*S_2-k_2*S_1) plus an exact multiple of B. The integer-only checker verifies this identity on every emitted pair. An exact B=7 pair has quotient defect 129120, centered residue -2 modulo 7, and original projective defect 1 modulo 7, falsifying the proposed quarter-modulus concentration while both carries satisfy the base-clear, short-bound, and denominator-coprimality gates. Thus quotient normalization remains the right computational observable, but a uniform small-centered-defect inequality is decisively unavailable. The bounded scan supplies no universal denominator or cofinal-window quantifier."
+    },
+    {
+      "id": "logarithmic_local_window_compression",
+      "status": "lean_checked_algebraic_core",
+      "source_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.windowForcing_difference_eq_potential",
+        "ErdosProblems.Erdos269.affineRecurrence_window",
+        "ErdosProblems.Erdos269.integralCarry_window_potential"
+      ],
+      "statement": "The local forcing for any shell word of the form m_n = V_(n+1) - V_n kernel-checkably expands into the endpoint potential difference plus a recursively explicit weighted sum of the interior (b_n-1)V_n terms. Substitution into the integral-carry recurrence gives the exact division-free local-window numerator formula. The separate logarithmic window-length estimate and cofinal anti-concentration producer remain open."
+    },
+    {
+      "id": "local_window_certificates_B_1_7_16",
+      "status": "independently_regenerated_exactly",
+      "statement": "The durable integer-only checker reproduces the three reported local windows for B=1,7,16 exactly. A fresh bounded scan also found a consumer-firing window of length at most 14 for all 106,666 tested pairs with B<=1000 coprime to 30 and 100<=a<=500. Both statements are finite regression evidence, not cofinal escape."
+    },
+    {
+      "id": "weighted_affine_phase_carry_boundary",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/WeightedPhaseCarry.lean",
+      "source_commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+      "source_sha256": "dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.weightedPhaseCoeff_mul_add",
+        "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary"
+      ],
+      "statement": "Beatty-weight exponents reindex exactly under every dn+s section; any supplied affine cone-count split therefore lifts to the target-faithful weighted phase coefficient identity. Exact integral carry decomposes into a canonical finite residue digit plus an unrestricted integral coboundary."
+    },
+    {
+      "id": "unit_carry_tail_splice_countermodel",
+      "status": "lean_checked_finite_core",
+      "source_path": "research_corpus/Erdos269/WeightedPhaseCarry.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.unitCarry_shadow_term",
+        "ErdosProblems.Erdos269.unitCarry_shadow_window",
+        "ErdosProblems.Erdos269.tailSplice_partialSum"
+      ],
+      "statement": "For every multiplicative jump word with bases at least two, the coefficient base_n-1 is an exact reciprocal difference. Every finite true-prefix/unit-carry-tail splice has the corresponding telescoping rational partial-sum formula."
+    },
+    {
+      "id": "function_faithful_observer_criterion",
+      "status": "lean_checked_abstract_core",
+      "source_path": "research_corpus/Erdos269/WeightedPhaseCarry.lean",
+      "source_commit": "29099573e974dd49188e936e9b9ae72b8854b642",
+      "source_sha256": "dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.realise_eq_of_observer_eq",
+        "ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation",
+        "ErdosProblems.Erdos269.finite_realisedSpan_of_functionFaithfulObserver"
+      ],
+      "statement": "Kernel inclusion for an observer implies equality of full symbolic realizations, and an explicit factorization through a finite-dimensional observer forces the realised symbolic span to be finite-dimensional. Equality after one scalar evaluation is strictly weaker."
+    },
+    {
+      "id": "full_kernel_finite_observer_no_go",
+      "status": "lean_checked_mechanism_elimination",
+      "theorems": [
+        "ErdosProblems.Erdos269.finite_realisedSpan_of_functionFaithfulObserver",
+        "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor",
+        "ErdosProblems.Erdos269.not_finite_separable_threePrimeKernel"
+      ],
+      "statement": "Every function-faithful observer into a finite-dimensional space forces the full symbolic realisation to have finite-dimensional range, without assuming a separately chosen readout factorisation. The already checked arbitrary-order nonsingular minors of the literal three-prime kernel therefore rule out every finite-dimensional function-faithful observer of that full kernel. This does not rule out an observer on a specially rank-collapsed reachable subspace; proving that collapse is now a necessary producer rather than an implicit hope."
+    },
+    {
+      "id": "carry_lift_weighted_block_defect",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/CarryLiftExtinction.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.carryLift_blockDefect"
+      ],
+      "statement": "The exact carry-lift recurrence telescopes over every finite block to an endpoint error difference plus the weighted interior defect sum (base_n-1)E_n. This formally isolates why bounded carry error does not imply ordinary unweighted ChannelBlockNull."
+    },
+    {
+      "id": "block_null_two_anchor_carry_extinction",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/CarryLiftExtinction.lean",
+      "source_commit": "7a8295244568cc889926d6819b3668a744458f67",
+      "source_sha256": "7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.perturbation_eq_zero_of_blockNull_twoAnchors",
+        "ErdosProblems.Erdos269.carryLiftError_eq_product_of_perturbation_zero"
+      ],
+      "statement": "For a surjective three-channel word, ordinary block-nullity plus genuine 2-to-3 and 2-to-5 zero anchors kills the entire carry-lift perturbation. The lift error then equals its nonzero initial error times the full base product and therefore has absolute value at least 2^N."
+    },
+    {
+      "id": "bounded_carry_lift_impossibility",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/CarryLiftExtinction.lean",
+      "source_commit": "7a8295244568cc889926d6819b3668a744458f67",
+      "source_sha256": "7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.no_carryLift_of_errorBound_below_twoPow",
+        "ErdosProblems.Erdos269.no_bounded_carryLift_of_blockNull_twoAnchors"
+      ],
+      "statement": "No nontrivial carry lift can simultaneously have block-null perturbation, the two anchors, bases at least two, and uniformly bounded error. More generally, any proposed error bound that falls below 2^N at one index is impossible."
+    },
+    {
+      "id": "unit_accurate_first_block_obstruction",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/CarryLiftExtinction.lean",
+      "source_commit": "7a8295244568cc889926d6819b3668a744458f67",
+      "source_sha256": "7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.int_eq_zero_or_one_of_unit_accuracy",
+        "ErdosProblems.Erdos269.binaryLift_twoAnchors_force_firstBlock_sum_one",
+        "ErdosProblems.Erdos269.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull"
+      ],
+      "statement": "Any integer lift within one of four real states in (0,1) is binary; the two early anchors then force the first complete 2-channel block sum to equal one, contradicting block-nullity. This is independent of choosing floor, ceiling, or nearest-integer representatives."
+    },
+    {
+      "id": "bounded_radix_zero_or_cofinal_constant_escape",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/BoundedRadixTailEscape.lean",
+      "source_commit": "4e712fe89012c5fdce5e319bfc3ceae0736601de",
+      "source_sha256": "a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far"
+      ],
+      "statement": "For every real affine orbit x_(a+1)=P_a*x_a-c_a with integral digits and 2<=P_a<=30, Lean proves that either one orbit value is an integer or, cofinally often, the value is at distance at least 1/31 from every integer. The proof checks exact witness alignment and exponential rebound of every nonzero near-integer error."
+    },
+    {
+      "id": "exact_cancellation_rationality_transport",
+      "status": "lean_checked_abstract_core",
+      "source_path": "research_corpus/Erdos269/BoundedRadixTailEscape.lean",
+      "source_commit": "4e712fe89012c5fdce5e319bfc3ceae0736601de",
+      "source_sha256": "a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.rational_of_scaledTail_integer"
+      ],
+      "statement": "If tau=X*S-A with nonzero integral X and a nonzero integral scale B makes B*tau integral, Lean constructs an explicit rational q with S=q."
+    },
+    {
+      "id": "canonical_local_window_residue_predicate",
+      "status": "lean_checked_definition_and_denominator_interface",
+      "source_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.CofinalLocalWindowEscape",
+        "ErdosProblems.Erdos269.reducedIntegralCarry_window"
+      ],
+      "statement": "CofinalLocalWindowEscape requires the least positive residue of -B times the forcing modulo the positive window base to exceed the short bound, and the short bound is now explicitly allowed to depend on the reduced denominator B. The invalid absolute-numerator comparison and the denominator-independent bound interface have both been removed."
+    },
+    {
+      "id": "cofinal_local_window_reduced_carry_extinction",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/RestrictedFloorSum.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+      ],
+      "statement": "For every positive B coprime to 30, CofinalLocalWindowEscape contradicts any everywhere-positive reduced integral carry d_(n+1)=b_n d_n-Bm_n whose absolute state is bounded by the corresponding denominator-dependent shortBound(B,n). The proof unrolls one emitted window, passes from the integer identity to the least-positive residue congruence modulo the absolute window base, and invokes the finite residue consumer. Thus the bad-window bridge is now complete; the problem-specific producer remains open."
+    },
+    {
+      "id": "residue_delay_five_uniform_bound_counterexample",
+      "status": "exact_finite_counterexample",
+      "statement": "The exact integer checker tests 2,402,066 coprime denominator/anchor pairs with B<=10000 and 100<=a<=1000 and finds 31 cases whose first residue escape occurs more than five blocks after the base product first clears the denominator. The maximum observed delay is seven, attained at (B,a)=(1961,221),(7591,460),(7591,461); exact trajectory replay verifies zero modular lift at every step of all three longest traps. This decisively falsifies the proposed uniform delay-five producer. The compact durable witness is source-provenance://private-authoring-project/receipts/erdos269_residue_delay_five_nogo_receipt.json."
+    },
+    {
+      "id": "affine_cylinder_delay_101_counterexample",
+      "status": "exact_finite_counterexample_with_structural_reduction",
+      "theorems": [
+        "ErdosProblems.Erdos269.affineCylinder_step_nested",
+        "ErdosProblems.Erdos269.tailCap_step_of_shellMass",
+        "ErdosProblems.Erdos269.tailCap_step_compose"
+      ],
+      "statement": "For every requested depth d, the zero-lift inequalities reduce exactly to a rational interval max(F_t/M_t)<q/B<=min((9F_t+A_t)/(9M_t)), intersected with the exact denominator band making the initial window the first base-clear window. Lean proves the one-step nesting law, turns each quadratic one-shell mass bound into the required Bellman cap inequality, and composes consecutive jump factors without loss. The remaining analytic wiring is to identify the actual block digit with that ordered shell-mass composition. Exact integer checks through depth 200 show every cylinder collapsing to its final constraint; the depth-200 witness has a 181-digit denominator coprime to 30, first clears at length 206, and fires at length 406 after exact residue delay 200. Its maximum digit/capacity utilization is 7041/24200 and its minimum cap slack numerator is 299668. This extends finite cap falsification through K<=199 but is not counted as progress by itself: a longer finite horizon does not prove unbounded delay or arbitrary-depth denominator admissibility. The durable receipt is source-provenance://private-authoring-project/receipts/erdos269_affine_cylinder_depth_receipt.json."
+    },
+    {
+      "id": "bellman_shell_mass_composition",
+      "status": "lean_checked_analytic_wiring",
+      "theorems": [
+        "ErdosProblems.Erdos269.tailCap_step_of_shellMass",
+        "ErdosProblems.Erdos269.tailCap_step_compose"
+      ],
+      "statement": "The quadratic shell bound 9*d<=(J+4)^2 implies 9*d+tailCap(J+1)<=b*tailCap(J) for every jump multiplier b>=2, and two such affine cap inequalities compose with compressed digit c*d+e and radix c*b. The all-scale threshold partition supplies the exact ordered suffix-mass coefficient patterns on the actual source. This deletes new cell-combinatorics and analytic-inequality search inside one-, two-, and three-jump dyadic blocks. The source digit and genuine infinite tail are now bound into the bounded-radix dichotomy; controlling the surviving exact-integral branch or its Farey phase remains open."
+    },
+    {
+      "id": "farey_band_nonmonotone_occupancy",
+      "status": "exact_mechanism_elimination",
+      "statement": "A complete logarithmic floor-sum decision procedure counts all q/B in each exact affine-cylinder interval with B in the first-clear band and gcd(B,30)=1. At actual anchor a=100 it certifies occupied-to-empty adjacent first-clear shifts at depths 16, 24, and 50, the reverse polarity at depths 32, 40, 64, and 80, and six singleton bands. All compared cylinders are exactly nested. Therefore nesting, later first-clear length, and coarse interval width cannot propagate denominator admissibility; an arbitrary-depth producer must control the endpoint's arithmetic Farey phase or select anchors cofinally. This does not prove arbitrary-depth occupancy or irrationality. The durable receipt is source-provenance://private-authoring-project/receipts/erdos269_farey_band_receipt.json."
+    },
+    {
+      "id": "ordered_source_tail_affine_recurrence",
+      "status": "lean_checked_actual_infinite_tail_dichotomy",
+      "theorems": [
+        "ErdosProblems.Erdos269.half_threePrimeHeight_mul_dyadicShellMassQ235",
+        "ErdosProblems.Erdos269.dyadicNormalizedTailStateQ235_succ",
+        "ErdosProblems.Erdos269.half_threePrimeHeight_mul_dyadicShellMassR235",
+        "ErdosProblems.Erdos269.dyadicNormalizedTailStateR235_succ",
+        "ErdosProblems.Erdos269.summable_dyadicShellMassR235",
+        "ErdosProblems.Erdos269.dyadicShellTsumTailR235_eq_shell_add",
+        "ErdosProblems.Erdos269.dyadicNormalizedShellTsumTailR235_succ",
+        "ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far"
+      ],
+      "verifier": "source-provenance://private-authoring-project/scripts/check_erdos269_ordered_tail_recurrence.py",
+      "receipt": "source-provenance://private-authoring-project/receipts/erdos269_ordered_tail_recurrence_receipt.json",
+      "statement": "Lean proves the literal real shell masses summable from an all-scale polynomial-geometric majorant, constructs their genuine infinite tsum tail, proves its exact first-shell decomposition, and instantiates the source-identified recurrence X_(a+1)=dyadicBlockBase235(a)X_a-d_a. Applying the bounded-radix theorem, this actual infinite normalized tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The exact-Fraction checker now also replays both summability majorants on forty source-faithful scales. The only surviving branch of this dichotomy is exclusion of exact integral normalized states; no irrationality theorem is claimed."
+    },
+    {
+      "id": "denominator_one_post_clear_automaton",
+      "status": "exact_three_transition_mechanism_elimination",
+      "theorems": [
+        "ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far",
+        "ErdosProblems.Erdos269.leastPositiveResidue_windowForcing_eq_carry"
+      ],
+      "verifier": "source-provenance://private-authoring-project/scripts/check_erdos269_integral_tail_escape.py",
+      "receipt": "source-provenance://private-authoring-project/receipts/erdos269_integral_tail_escape_receipt.json",
+      "statement": "The sole exact-integral branch has a denominator-one local-window automaton. A proposed uniform three-transition rule survives every start through 2000 but fails exactly at a=2295: after first base-clear, canonical states 385235, 217423, 432920, and 1100228 all remain below their caps, and only the next state 8326020 escapes the cap 2514339. This exact delay-four source word decisively eliminates every proof that assumes escape within three post-clear transitions. All 3000 tested starts escape by total length at most 11, but that bounded horizon is not a theorem or a replacement cap conjecture."
+    },
+    {
+      "id": "phase_conditioned_source_linear_coboundary_no_go",
+      "status": "exact_finite_rank_mechanism_elimination",
+      "verifier": "source-provenance://private-authoring-project/scripts/check_erdos269_source_linear_coboundary.py",
+      "receipt": "source-provenance://private-authoring-project/receipts/erdos269_source_linear_coboundary_receipt.json",
+      "statement": "An exact integral normalized tail would provide a coboundary d_a=b_a C_a-C_(a+1). The source-linear probe lets C_a be an arbitrary rational linear combination of 1, a, a^2 and the boundary and cumulative pair-count coordinates for all three channels, with independent coefficients for each actual radix phase 2, 6, 10, and 30. This 36-parameter class strictly contains the failed single-A2 proposal. On the actual initial source word, its coefficient system becomes inconsistent at equation 27: coefficient rank 26, augmented rank 27. A primitive integer left-null certificate pairs to zero with every candidate column but nontrivially with the actual digit vector. Thus direct finite-rank source-linear coboundaries are decisively eliminated; any integral tail must use nonlinear or unbounded-memory phase information, or only a later-onset formula. Erdős #269 remains open."
+    },
+    {
+      "id": "phase_conditioned_source_quadratic_coboundary_no_go",
+      "status": "exact_nonlinear_functional_class_elimination",
+      "verifier": "source-provenance://private-authoring-project/scripts/check_erdos269_source_quadratic_coboundary.py",
+      "receipt": "source-provenance://private-authoring-project/receipts/erdos269_source_quadratic_coboundary_receipt.json",
+      "statement": "The first source-specified nonlinear enlargement also fails exactly. Take every polynomial of total degree at most two in the eight nonconstant scale, boundary-count, and cumulative-count coordinates, with independent coefficients in radix phases 2, 6, 10, and 30. This gives 45 base monomials and 180 phase-conditioned coefficients. On the actual first 116 source equations the coefficient rank is 115 and the augmented rank is 116. A primitive 116-support integer left-null vector, with coefficients up to 788 bits, annihilates all 180 columns but pairs nontrivially with the actual digit word. Thus every direct phase-conditioned quadratic source coboundary is eliminated; any surviving source-coordinate integral carry must be degree at least three, nonpolynomial, unbounded-memory, or later-onset. Exact integral tails remain unexcluded."
+    },
+    {
+      "id": "dyadic_radix_word_two_torus_coding",
+      "status": "ordinary_mathematical_identification_not_lean_checked",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_torus_coding.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_torus_coding_receipt.json",
+      "statement": "The dyadic radix word is identified exactly. A power of 3 lies in the shell [2^a, 2^(a+1)) exactly when floor(j log_2 3) = a, and likewise for 5, so b_a = 2 * 3^[a in B(log_2 3)] * 5^[a in B(log_2 5)] where B is the Beatty set. The two indicator sequences are Sturmian with slopes log_3 2 and log_5 2, so the radix word is their superposition: a coding of a rotation on the 2-torus by (log_3 2, log_5 2) under a product partition. Checked letter by letter against the literal source engine with 0 mismatches for a = 1..2600. Over 300,000 letters the radix frequencies match the independent-rotation prediction to five decimals (2: 0.21009 vs 0.21012; 6: 0.35924 vs 0.35920; 10: 0.15898 vs 0.15895; 30: 0.27169 vs 0.27173). The factor-complexity bound p(n) <= (n+1)^2 is immediate from the product structure, and equality is measured exactly for n = 1..22 (4, 9, 16, ..., 529) - the rank-2 rotation signature rather than the Sturmian n+1. Every retired functional attempt on the integral-tail branch treated this word as opaque. The source system is a cocycle over an ergodic 2-torus rotation whose angles are ratios of logarithms of 2, 3 and 5."
+    },
+    {
+      "id": "product_sturmian_stammering_no_go",
+      "status": "transcendence_route_retired_on_measured_evidence_and_dirichlet_cap",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_stammering.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_stammering_receipt.json",
+      "statement": "The Adamczewski-Bugeaud criterion (Schmidt Subspace Theorem on stammering expansions) needs prefixes that are (1+eps)-powers with eps bounded away from zero. For the product of two Sturmian words the period must serve both slopes at once, so the governing quantity is simultaneous approximation of (log_3 2, log_5 2). Measured against the literal 400,000-letter word at the record simultaneous denominators, the repetition exponents are 2.2615 at q = 65 and then 1.0089, 1.0115, 1.0085, 1.0074 at q = 7061, 7126, 15810, 45807: matched length tracks 1/||q alpha|| and grows like q^(1/2) while the period grows like q, so the exponent decays to 1 like 1 + O(q^-1/2). Dirichlet in dimension two caps simultaneous approximation at exponent 1/2 whereas the criterion needs exponent 1 for both slopes at the same denominator, a measure-zero condition on the slope pair. CLAIM BOUNDARY: this retires the route on measured evidence plus the Dirichlet cap, not as a theorem. A theorem needs an effective lower bound max(||q log_3 2||, ||q log_5 2||) >> q^(-1+delta); Laurent-Mignotte-Nesterenko for two logarithms gives only exp(-C (log B)^2), weaker than any fixed power, and the best known irrationality measure for log3/log2 gives only q^(-4.117). That gap is the precise external input the lane would require."
+    },
+    {
+      "id": "normalized_tail_diophantine_genericity",
+      "status": "airtight_certified_finite_measurement_with_exact_denominator_exclusion",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_continued_fraction.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_continued_fraction_receipt.json",
+      "statement": "The normalized tail X_1 = sum over {2,3,5}-smooth s >= 2 of 1/H(s) was expanded to 13,109 airtight-certified partial quotients. Certification is by common prefix of the continued fractions of the two endpoints of the interval (F/B, (F+kappa)/B] that provably contains X_1, so no approximation heuristic enters: continued-fraction prefixes are cylinder memberships and cylinders are intervals. The engine truncation F/B was independently verified to equal the direct smooth-number sum exactly as rationals. Results: Gauss-Kuzmin frequencies 0.4208/0.1665/0.0917/0.0575 against 0.4150/0.1699/0.0931/0.0589; Levy constant 1.18869 against pi^2/(12 ln 2) = 1.18657; largest partial quotient 129,114; empirical irrationality exponent 2.005. X_1 is Diophantine-generic: there is no self-similar, automatic or algebraic continued-fraction structure to exploit, and no Liouville conspiracy at any scale below 22,483-bit denominators. Since a rational has a terminating expansion with all convergent denominators at most its own, the non-termination of the certified range proves X_1 is not rational with denominator below 2^22482 (about 10^6768). The series value is 1 + X_1, so the same exclusion applies to it."
+    },
+    {
+      "id": "lattice_first_hit_denominator_exclusion",
+      "status": "exact_denominator_exclusion_and_measured_route_ceiling",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_denominator_exclusion.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_denominator_exclusion_receipt.json",
+      "statement": "Excluding every denominator q <= Q at window depth L is exactly the statement min{q >= 1 : (q*A) mod B <= W} > Q with A = (-F) mod B and W = Q*kappa/9: a first-hit of a rotation in an interval, solvable by the Stern-Brocot recursion in O(log B) rather than the O(Q) of a per-denominator scan. The recursion was brute-force verified on 4,000 random instances and the certificate was cross-checked sound against a direct 200,000-term denominator scan at ten depths. At depth 420 every odd denominator up to about 10^187 is excluded exactly. Across the measured depths the certified bound fits log2 Q = 0.4974 log2 B - 5.29, with fitted exponent within 0.5% of 1/2. This is an exact finite denominator screen plus a measured square-root law, not a theorem that residue bias never accumulates or that every escape/Farey argument is globally capped at sqrt(B_L). The later depth-200 affine-cylinder witness also shows that long delays occur at much larger denominators. A cofinal conclusion still requires an all-scale anti-concentration theorem, a scale-dependent escape law, or an arbitrary-depth admissibility theorem; deeper finite certificates alone do not supply that quantifier."
+    },
+    {
+      "id": "escape_is_generic_with_no_accumulation",
+      "status": "exact_finite_small_denominator_census_superseded_as_a_global_delay_claim",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_escape_depth_law.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_escape_depth_law_receipt.json",
+      "statement": "An exact finite census checks 640,000 certificates: every odd denominator q <= 120 coprime to 30 against every start a <= 20,000. There are zero non-escaping pairs in this rectangle; the maximum escape depth is 18, concentrated at depths 10-13. Mean excess over the counting threshold log_8(q*kappa) is 0.97, and the largest is 7.09 at q=113, a=11569. This is evidence that the previously tested finite-feature functionals have no small-denominator delayed-conspiracy signal in the declared rectangle. It is not a genericity theorem, a no-accumulation theorem, or evidence that increasing lookahead cannot help. The later exact affine-cylinder witness affine_cylinder_delay_101_counterexample has a 181-digit denominator and remains trapped for 200 post-clear steps, so it refutes every uniform escape cap through 199 and supersedes the global extrapolation formerly attached to this census. Neither finite result excludes integral tails or proves an arbitrary-depth delay family."
+    },
+    {
+      "id": "projective_defect_equidistributes_across_far_pairs",
+      "status": "exact_enumeration_reducing_the_projective_producer_to_equidistribution",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_projective_cofinality.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_projective_cofinality_receipt.json",
+      "statement": "Every admissible window endpoint - base clears the cap, residue does not escape it, residue coprime to B - was enumerated for all 133 denominators coprime to 30 in [7,500] across starts a <= 3000; the packet's B=11 witness is reproduced exactly (carries 61 and 259, heights 5 and 2 modulo 11, defect 4). Every denominator admits violating pairs, at fractions from 0.828 at B=7 to 0.988 at B=499. Admissible endpoints occur at density about one per two starts and persist to the top of every range (latest admissible start 2992-3000 for every B), and violating pairs exist with both starts above 2963 for every B. Two structural facts. First, SAME-START pairs are always coherent, P = 1.0000 exactly at every tested B, so any construction must pair different starts - a constraint not previously recorded. Second, for different starts the residual coherence is purely short-range: neighbouring endpoints give coherence 1.23x, 2.06x and 6.42x uniform at B = 7, 101, 499, while endpoints separated by half the list give 1.18x, 1.10x and 0.92x, i.e. equidistributed. The producer's construction is therefore abundant rather than scarce, and what it needs is a proof of two things: that admissible endpoints occur cofinally, and that the projective defect equidistributes modulo B across far-separated pairs. Together with the integral-tail branch's need for anti-concentration of (-qF_L) mod B_L, BOTH remaining routes reduce to the same missing analytic input about the torus-rotation cocycle. Finite enumeration; no cofinal quantifier is supplied."
+    },
+    {
+      "id": "torus_fourier_representation_of_the_value",
+      "status": "ordinary_tensor_dirichlet_jordan_completion_pending_independent_review",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_torus_fourier_representation.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_torus_fourier_receipt.json",
+      "ordinary_proof_source": "research_corpus/Erdos269/TensorDirichletJordanCompletion.md",
+      "ordinary_proof_sha256": "2f81be4d570fc45d80fb798ca578ffd9fa49b2014438dc5f197b9132a5809904",
+      "correction": "The rectangular symmetric limit is now supplied by the authored tensor Dirichlet--Jordan/dominated-convergence proof in TensorDirichletJordanCompletion.md: finite rectangular mode sums are first identified with weighted products of one-dimensional partial sums; their uniform bounded-variation bound is dominated by the summable geometric lattice measure; the only midpoint discrepancies are the three pure-prime axes and the origin, whose total correction is 17/2. This correction supersedes the earlier wording that left the global interchange as an unwritten regularization seam. It supplies neither a priority claim nor any Diophantine, irrationality, transcendence, or exact-integral-tail conclusion.",
+      "statement": "The VALUE, not only the digit word, has an explicit torus-analytic form. With L = log_2 s, theta = log_2 3, phi = log_2 5, the running height satisfies 1/H(s) = 2^{L} 3^{L/theta} 5^{L/phi} / s^3 with braces the fractional part - verified to maximum relative error 1.5e-14 over 4,000 smooth s. Summing over the smooth lattice s = 2^i 3^j 5^k gives S = sum W(L)/(8^i 27^j 125^k) with W the value of a bounded function at the 3-torus point ({L},{L/theta},{L/phi}). Because 2^x 3^y 5^z factorises, each Fourier mode turns the (i,j,k) sum into a product of three ordinary geometric series: writing lambda = m1 + m2/theta + m3/phi, the mode contributes c(m1)c'(m2)c''(m3) divided by (1-e(lambda)/8)(1-e(lambda theta)/27)(1-e(lambda phi)/125), with c(m)=1/(ln2-2 pi i m), c'(m)=2/(ln3-2 pi i m), c''(m)=4/(ln5-2 pi i m). W jumps wherever a coordinate hits zero and the Fourier series converges there to the midpoint; those points are exactly the three coordinate axes of the lattice, contributing 9-1=8 at the origin plus ((p-1)/2) sum_n 1/H(p^n) on each axis. The axis terms total exactly 1/2 by a telescope - at each prime power the height multiplies by p, so (p-1)/H(p^n) = 1/H(p^n -1) - 1/H(p^n), and summing over every prime power gives sum_p (p-1) sum_n 1/H(p^n) = 1/H(1) = 1, checked exactly in rationals with truncated value exactly 1 - 1/H(last). Hence S = lim_M [triple Fourier partial sum] - 17/2. Corrected partial sums give errors 7.04e-2, 5.31e-2, 2.09e-2, 9.87e-3, 4.39e-3 at M = 20, 40, 80, 160, 320: monotone and halving as M doubles, the 1/M rate a jump-discontinuous Fourier series gives. This is the first representation of the value as an explicit analytic object; each mode is governed by lambda = m1 + m2 log_3 2 + m3 log_5 2, a linear form in logarithms of 2, 3 and 5, placing the arithmetic exactly where the torus reading predicted. CLAIM BOUNDARY: an exact representation, not an irrationality argument. The triple sum is only conditionally summable - sum |c c' c''| diverges like (log M)^3 - so it converges as a symmetric limit and needs regularisation before any Diophantine estimate could be extracted."
+    },
+    {
+      "id": "running_height_prime_power_telescope",
+      "status": "exact_elementary_identity",
+      "verifier": "source-provenance://private-authoring-project/probes/erdos269_torus_fourier_representation.py",
+      "receipt": "source-provenance://private-authoring-project/probe-receipts/erdos269_torus_fourier_receipt.json",
+      "statement": "sum over p in {2,3,5} of (p-1) sum_(n>=1) 1/H(p^n) = 1 exactly. Proof: the running height changes only at prime powers, where it multiplies by p, so (p-1)/H(p^n) = 1/H(p^n - 1) - 1/H(p^n); summing that telescope over every prime power collapses to 1/H(1) = 1. Verified in exact rational arithmetic: the sum truncated at 10^40 equals 1 - 1/H(last), so the residual is exactly the truncation term. The identity is what makes the axis jump-correction of the torus Fourier representation exactly 1/2, hence the total correction exactly 17/2."
+    },
+    {
+      "id": "prime_power_boundary_clearing",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/RationalLatticeReduction.lean",
+      "source_commit": "267be22e24a0044fa26e0dd8f302e2a365c625c8",
+      "source_sha256": "e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos269.smoothHeight_mul_prime_dvd_boundaryHeight",
+        "ErdosProblems.Erdos269.threePrimeHeight_smooth_dvd_heightNormalizer235",
+        "ErdosProblems.Erdos269.heightNormalizer235_mul_shellMass_eq_nat"
+      ],
+      "statement": "For p in {2,3,5}, m >= 1 and every {2,3,5}-smooth x < p^m, p*H(x) divides H(p^m); equivalently the whole rational prefix below p^m clears against H(p^m)/p. Clearing therefore holds at ALL THREE prime-power boundary families, not only at powers of two, so rationality puts q*U_{p,m} in Z for U_{p,m} = (H(p^m)/p) T(p^m) at every boundary. Exact check: 2,609 (p,m,s) triples through p^9, zero failures."
+    },
+    {
+      "id": "all_scale_rational_lattice",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/RationalLatticeReduction.lean",
+      "source_commit": "267be22e24a0044fa26e0dd8f302e2a365c625c8",
+      "source_sha256": "e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+        "ErdosProblems.Erdos269.dyadicShellTsumTailR235_eq_range_add",
+        "ErdosProblems.Erdos269.heightNormalizer235_mul_windowMass_eq_int",
+        "ErdosProblems.Erdos269.two_mul_heightNormalizer235"
+      ],
+      "statement": "If S = p/q then every normalized dyadic tail state X_a = (H(2^a)/2) T_a is (1/q)-integral simultaneously, with explicit integer witness p*(H(2^a)/2) - q*(cleared prefix). No exceptional scale exists under rationality."
+    },
+    {
+      "id": "rational_tail_state_collision_target",
+      "status": "lean_checked",
+      "source_path": "research_corpus/Erdos269/RationalLatticeReduction.lean",
+      "source_commit": "267be22e24a0044fa26e0dd8f302e2a365c625c8",
+      "source_sha256": "e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d",
+      "source_declarations": [
+        "ErdosProblems.Erdos269.qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+        "ErdosProblems.Erdos269.exists_normalizedTailState_collision_of_value_eq_rat"
+      ],
+      "statement": "If S is rational then two DISTINCT scales carry normalized tail states differing by an integer (pigeonhole on (1/q)Z mod 1). Contrapositive: pairwise incongruence of the X_a mod 1 implies irrationality. Since X_{a'} - X_a in Z is equivalent to (B_{a'} - B_a) S in Z, the criterion is an iff. This is the correct general-denominator target; the exceptional-integral-state branch is the sub-case X_a = 0 mod 1 and can only ever reach q = 1."
+    },
+    {
+      "id": "prime_power_jump_identity_with_counts",
+      "status": "exact_checker",
+      "statement": "S = sum_{p in {2,3,5}} sum_{m>=1} (p-1) A(p^m)/H(p^m) with A(x) = #{s smooth : 2 <= s < x}; the A-weighted refinement of the landed telescope sum_p (p-1) sum_m 1/H(p^m) = 1. Exact finite form at a boundary R verified at 33 boundaries below 100,000, zero failures. Exhibits S as three one-dimensional prime-power series with three-dimensional irrational-simplex lattice-count coefficients, which is why no one-slope Hecke-Mahler theorem applies."
+    },
+    {
+      "id": "prime_power_boundary_ladder_recurrence",
+      "status": "exact_checker",
+      "statement": "On the merged ordered boundary ladder r_1 < r_2 < ... the tails obey U_{j+1} = p_j U_j - C_j with PRIME multiplier p_j in {2,3,5} and UNWEIGHTED gap count C_j, a strictly more elementary recurrence than the dyadic one with radices in {2,6,10,30} and {1,3,5,15}-weighted digits. Verified over 200 consecutive steps with zero failures; at dyadic boundaries it reproduces the dyadic states to 15 digits (U at 2^5 = 5.64900580461722 = X_5; U at 2^200 = 3596.0361820664 = X_200). Cocycle equivalence: S is rational iff some Q >= 1, index J and polynomially bounded integer sequence satisfy n_{j+1} = p_j n_j - Q C_j."
+    },
+    {
+      "id": "two_sided_normalized_state_bounds",
+      "status": "exact_checker",
+      "statement": "Rigorous all-start bounds: (1/60)(floor(a/(2 log_2 3))+1)(floor(a/(2 log_2 5))+1) <= X_a <= a^2 + 6a + 11. The lower bound is Omega(a^2), so the tail state is genuinely unbounded and the hypothesis X_{a+1} < b_a fails cofinally."
+    },
+    {
+      "id": "tail_orbit_mod_one_equidistribution_measurement",
+      "status": "measurement",
+      "statement": "Over a <= 1200 with exact digits and truncation bound 1.3e-56: all 1200 fractional parts {X_a} are pairwise distinct, min gap 8.834e-07 at (830,979), min distance to Z 9.697e-04 at a=545 decaying like 1/a, 20-bin chi^2 = 8.0 on 19 df, and |Weyl(h)| = 0.0139/0.0074/0.0114 for h=1,2,3 against 1/sqrt(N) = 0.0289. The orbit behaves like a low-discrepancy equidistributed sequence, and equidistribution mod 1 would imply irrationality via the collision target."
+    }
+  ],
+  "negative_results": [
+    "No finite separated-factor decomposition represents the literal three-prime kernel.",
+    "Direct p-adic convergence fails because denominators carry unbounded contributions from the other prime channels.",
+    "Standard Cantor-series criteria do not instantiate on the jump ordering.",
+    "A positive scalar tail bound or finitely many carry bits cannot exclude rationality at arbitrary denominator height.",
+    "Finite Farey exclusion is not an unbounded irrationality proof.",
+    "The pure-power block equations exclude nontrivial upward rational shadows but do not exclude every rational tail state.",
+    "The local residue certificates at B = 1, 7, and 16 do not establish cofinal anti-concentration for arbitrary denominators.",
+    "Polynomially bounded integral carry, finite carry residues, or a rational scalar specialisation do not by themselves furnish a function-faithful finite quotient.",
+    "The literal full three-prime kernel admits no finite-dimensional function-faithful observer: faithfulness would force finite realised rank, while its nonsingular minors have arbitrary order. Any surviving finite-observer route must first prove a genuine finite-rank collapse on the source-reachable subspace; restricting the state space without that theorem is not progress.",
+    "The carry recurrence supplies a weighted block defect, not ordinary unweighted ChannelBlockNull; bounded endpoint error alone does not remove the interior weighted term.",
+    "Canonical small-error integer lifts cannot satisfy both early anchors and the first complete 2-channel block-null equation: the forced block sum is one.",
+    "The canonical window residue is not generally coprime to the window base, and fixed windows can have admissible reduced denominators whose least positive residue is exactly one. A universal bounded-length or denominator-independent window rule is therefore unavailable.",
+    "The exact dyadic checker can certify bounded rectangles of denominator/start pairs, but no finite rectangle supplies the universal B or cofinal-a quantifiers. Its value is to test and falsify candidate window rules against the exact residue consumer.",
+    "Uniform escape within five blocks after the dyadic window base first exceeds B is false: 31 exact counterexamples occur in the B<=10000, 100<=a<=1000 adversarial scan, with maximum delay seven.",
+    "Small uniform post-clear delay is decisively unavailable: exact affine-cylinder reconstruction produces residue delay 101 at the actual anchor a=100 and therefore falsifies every cap K<=100. This is not evidence for cap 101 and does not prove unbounded delay; the next producer must control delay as a function of denominator height or prove/refute arbitrary-depth admissible cylinders.",
+    "Individual canonical residues can both satisfy the local size and coprimality constraints while being globally incompatible with one rational numerator. For B=11 the exact carries 61 and 259 pass both local tests but violate the required height-weighted projective congruence by 4 modulo 11. One-window admissibility is therefore strictly incomplete.",
+    "Quotient normalization exactly factors every projective cross-defect, but its centered residues are not uniformly small: an exact locally admissible B=7 pair already has centered quotient defect -2, outside the quarter-modulus band. A direct small-error ceiling inequality is therefore unavailable; the producer must control full modular discrepancy.",
+    "The denominator-one integral-tail automaton does not escape uniformly within three transitions after first base-clear: the exact source word at a=2295 remains cap-admissible for four transitions. A fixed-three modular classification is therefore unavailable.",
+    "No radix-phase-conditioned polynomial of total degree at most two in the eight nonconstant direct source coordinates solves the integral-tail coboundary. The exact 180-column system has a primitive left-null separator on the first 116 actual equations. Higher-degree, nonpolynomial, unbounded-memory, and later-onset mechanisms remain open.",
+    "The Adamczewski-Bugeaud stammering route is retired for the three-prime radix word. Repetition exponents at the record simultaneous-approximation denominators decay to 1 like 1 + O(q^-1/2), a full power short of the criterion's requirement, because two rationally independent slopes cap simultaneous approximation at Dirichlet exponent 1/2. Closing it as a theorem needs an effective bound max(||q log_3 2||, ||q log_5 2||) >> q^(-1+delta) that current linear-forms-in-logarithms results do not supply.",
+    "No exceptional Diophantine structure exists in the normalized tail to carry a proof. 2,162 airtight-certified partial quotients are Gauss-Kuzmin distributed with a Levy constant within 0.9% of theory and irrationality exponent 2.005, so the delayed-carry conspiracy the retired Lyapunov, coboundary and observer attempts were searching for does not exist below 3,737-bit denominators.",
+    "Deeper finite escape certificates cannot discharge the unbounded-height producer. The largest denominator excludable at window depth L is Theta(sqrt(B_L)) - measured exponent 0.4974 over 420 depths - which is the best-approximation barrier, and B_L grows only exponentially in depth.",
+    "The premise shared by every retired functional attempt on the integral-tail branch is false in the measured range: escape delay does not accumulate. 640,000 exact certificates give zero non-escaping pairs, maximum depth 18, and an extreme excess consistent with generic extreme-value behaviour, so there is no residue bias for a Lyapunov function, coboundary or finite observer to detect.",
+    "Same-start window pairs can never supply the projective producer: their shadow congruence holds identically, measured at P = 1.0000 across every denominator tested. Any construction must pair different starts, and the residual coherence among different-start pairs is short-range only.",
+    "The frozen-digit torus squeeze is invalid and is RETRACTED. Defining G_A(tau) with digits frozen at absolute indices A+j while only the radix phase moves does NOT satisfy G_A(tau_a) = X_a for a != A, so integrality on the orbit never lifts to the torus. Exact falsifier: X_2 = 0.855916114335898 against G_1(tau_2) = 0.538856461107848, defect 0.317; defect 152.5 at a=40. Structurally, the covariance Phi(T theta) = b_0(theta) Phi(theta) - d_0 needs the digit source to shift too, and the three-prime digit is a lattice count at the translated scale, growing like n^2, so it is not a function on a compact torus at all. Any valid torus argument must move the complete source and retain or eliminate the non-compact scale variable.",
+    "The two-sided residue annulus buys nothing. Adding the Omega(a^2) lower bound to the log-window residue test so that rho must lie in [lower(a+L), upper(a+L)] rather than merely below upper(a+L) excluded ZERO additional starts over 400 tested (271 excluded one-sided, 0 gained, 129 inconclusive). The lower bound sits a factor about 37 below the upper one and trims a negligible slice of an already thin target.",
+    "The local zero-gap extinction step is invalid: b_a | d_a plus positivity does NOT force X_{a+1} = 0. The correct local statement is X_a in Z iff b_a | X_{a+1}, and X_{a+1} < b_a fails cofinally because X_a = Omega(a^2). Already repaired in-tree as the quantitative zero_gap_digit_separation."
+  ],
+  "open_producers": [
+    {
+      "id": "exclude_exact_integral_dyadic_tails",
+      "priority": 1,
+      "statement": "Exclude every exact integral state of the genuine normalized source tail X_a=H(2^a)T_a/2. Lean proves that this orbit either has such a state or returns cofinally 1/31-far from all integers. The denominator-one automaton remains the direct arithmetic representation, but the exact a=2295 source word kills every uniform three-transition post-clear proof, and exact left-null certificates now eliminate every direct phase-conditioned source potential of total degree at most two. Analyze longer surviving error cones through a genuinely nonlocal all-scale invariant, prove that an integral carry would force a finite-degree source potential, or move to nonpolynomial/unbounded-memory structure."
+    },
+    {
+      "id": "cofinal_projective_window_pair_incoherence",
+      "priority": 2,
+      "statement": "For every positive B coprime to 30, construct arbitrarily late pairs of exact dyadic windows whose canonical endpoint carries are individually within the analytic bounds but violate d_a*H_b=d_b*H_a modulo B. Equivalently after the Lean-checked exact factorization, force nonzero full modular discrepancy between the weighted ceiling quotients k_i*S_j. The B=11 pair opens the consumer, while the exact B=7 quarter-band counterexample rules out replacing this modular producer by a uniform small-centered-error inequality. Neither finite witness supplies the universal/cofinal producer."
+    },
+    {
+      "id": "carry_faithful_weighted_phase_observer",
+      "priority": 2,
+      "statement": "The full symbolic three-prime kernel cannot have a finite-dimensional function-faithful observer. To retain this route, use the all-scale true cone or block identities to prove that the actual rationality-reachable weighted phase subspace has finite realised rank, and only then construct a faithful finite observer on that collapsed subspace. Otherwise move to an infinite-dimensional or nonlinear observer."
+    },
+    {
+      "id": "bounded_residue_lift_balance",
+      "priority": 3,
+      "statement": "Construct, from the actual rationality carry, a bounded residue lift whose perturbation satisfies the required unweighted channel-block equations and the two genuine transition anchors, or replace ordinary block-nullity by a weighted rigidity theorem that consumes the exact block-defect identity."
+    },
+    {
+      "id": "unbounded_height_certificate",
+      "priority": 4,
+      "statement": "Replace one finite Farey bound by a family with denominator exclusion tending to infinity."
+    }
+  ],
+  "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open. Update 2026-08-23: the torus-squeeze endgame claim is retracted (see negative_results); Lean now also checks prime-power boundary clearing, the all-scale rational lattice, and the general-denominator collision target. No irrationality or transcendence theorem is proved.",
+  "public_projection": {
+    "state": "withheld_pending_human_mathematical_review",
+    "minimum_release": "validated Lean declarations plus explicit surviving open producer and finite-certificate boundary"
+  }
+}
