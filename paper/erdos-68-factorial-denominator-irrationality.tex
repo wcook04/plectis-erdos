@@ -7,8 +7,8 @@
 % Build from the public paper directory with `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{63a7f05c17da22556344c74f871bbf34f0c1ede6}
-\renewcommand{\commitshort}{63a7f05c17da}
+\renewcommand{\commit}{f551ab1f2a76fe79aee9e90329c88ff0a9a60620}
+\renewcommand{\commitshort}{f551ab1f2a76}
 \usepackage{longtable}
 \hypersetup{
   pdftitle={Factorial carries and finite channel obstructions for Erdős Problem 68},
@@ -53,6 +53,14 @@ for the integer in $Z_m=mZ_{m-1}+1-b_m$.  The central formal equivalence is
 An independently regenerated exact GMP certificate supplies a miss at
 $m=300000$; the corresponding Lean theorem proves that
 every representation $\Ser=a/q$ with $q>0$ has $q\ge300000$.
+
+The carry recurrence also closes a tempting two-step route.  Under two
+consecutive unit carries, the exact cleared width-one window factors through
+the same positive two-step normalizer in its numerator and denominator.
+Cancelling that factor leaves only the universal reduced-fraction inequality
+$0<U_{m+2}\le V_{m+2}$.  Thus prime-power or quotient-gcd information
+extracted only after assuming the adjacent pair cannot exclude it.  This is
+an exact no-go theorem, not a proof that adjacent unit carries never occur.
 
 The finite channel algebra gives a second rigorous layer.  In each channel
 $d$, the channel numerator is congruent to the factorial moment modulo
@@ -132,6 +140,7 @@ Contribution & Exact scope \\
 \midrule
 Denominator exclusion & If $\Ser=a/q$ with $q>0$, then $q\ge300000$. \\
 Integral frontier & $\Ser\notin\mathbb Q$ iff for every $B$ some $m>B$ satisfies $m\nmid Z_m$. \\
+Adjacent-unit no-go & Under two consecutive unit carries, the complete cleared window cancels to the universal bound $0<U_{m+2}\le V_{m+2}$; it cannot exclude the pair. \\
 Structural reductions & Finite channel congruences, a two-term prime corrector, and endpoint projections isolate explicit missing inputs. \\
 Not a contribution & No cofinal miss, cofinal strict residual nonvanishing, or irrationality theorem is proved. \\
 \bottomrule
@@ -183,6 +192,7 @@ Factor-split projection reduction & Checked & Two divisor factors of one private
 Zero plateau and first-exit carry & Checked & Grid threshold, plateau equality of grid integers, forced zero digit, carry $b\in\{0,-1\}$. \\
 Prime-power prefix obstruction & Checked & Rationality forces $p^k$ to divide the strict successor at $kp$ whenever the factorial clears the denominator and $p$ is coprime to it. \\
 Exact carry characterization & Checked & The normalized strict successors converge to $\Ser$; $\Ser$ is rational exactly when $b_m=1$ eventually, equivalently $\Ser$ is irrational exactly when non-unit carries occur cofinally. \\
+Adjacent-unit cancellation normalizer & Checked & Under consecutive unit carries, the exact offset and denominator share the same positive two-step normalizer, so their window inequality reduces to the universal future numerator bound. \\
 Explicit denominator bound & Checked implication; exact finite certificate & Exact reduction gives $60\nmid Z_{60}$, $64\nmid Z_{64}$, and $67\nmid Z_{67}$.  An exact GMP computation certifies all carries through $300000$ and $b_{300000}\ne1$; the Lean-checked carry theorem gives $q\ge300000$ in every rational representation $\Ser=a/q$ with $q>0$. \\
 Digits eventually zero $\iff$ $\Ser$ rational & Returned derivation & Complete on the return; not yet kernel-checked here. \\
 Factorial-gap lcm growth $\gg N^{4/3}\log N$ & Derived, source-verified & Derived below from a cited factorial-congruence theorem; not kernel-checked and not used as an input to any claim below. \\
@@ -550,6 +560,49 @@ rational normalization gives
 \[
   60\nmid Z_{60},\qquad 64\nmid Z_{64},\qquad 67\nmid Z_{67}.
 \]
+
+\subsection{Why the adjacent-unit window is circular}
+\label{sec:adjacent-unit-no-go}
+
+One proposed argument tries to exclude two consecutive unit carries by
+extracting a prime-power or quotient-gcd obstruction from their cleared
+width-one window.  The exact two-step recurrence shows why this cannot work.
+Let $U_k$ and $V_k$ be the positive numerator and denominator of the reduced
+predecessor gap, and let $G_k>0$ be the exact transition normalizer.  For
+$m\ge3$, the two unit carries are equivalent to an integer offset $\Omega_m$
+satisfying
+\[
+  0<\Omega_m\le D_m.
+\]
+The window denominator telescopes independently of the carry values:
+\[
+  D_m=V_{m+2}G_{m+1}G_m
+     =V_m(m!-1)((m+1)!-1).
+\]
+Under the adjacent-unit assumption, the offset has the matching
+factorization
+\[
+  \Omega_m=U_{m+2}G_{m+1}G_m.
+\]
+Cancelling the common positive normalizer therefore reduces the complete
+window to
+\[
+  0<U_{m+2}\le V_{m+2},
+\]
+the universal numerator bound for a reduced strict-successor gap.
+
+The four load-bearing formal statements are the
+\lword{Erdos68/AdjacentUnitCarryWindow.lean}{148}{consecutive_unit_carries_iff_positive_offset_le_den}{positive-offset window},
+\lword{Erdos68/AdjacentUnitCarryWindow.lean}{215}{twoStep_den_mul_transitionNormalizers}{denominator telescope},
+\lword{Erdos68/AdjacentUnitCarryWindow.lean}{243}{adjacentUnitCarryWindowDen_eq_twoStep_den}{window-denominator identity}, and
+\lword{Erdos68/AdjacentUnitCarryWindow.lean}{337}{adjacentUnitCarryWindowOffset_eq_twoStep_reducedNumerator}{unit-pair offset factorization}.
+They do not disprove adjacent unit carries.  They prove that a surviving-prime,
+prime-power, or quotient-gcd obstruction obtained only after imposing the pair
+is circular: it rewrites a bound that every reduced positive fraction already
+satisfies.  A successful cofinal argument must constrain the raw predecessor
+state before the pair assumption, for example through independent prefix
+arithmetic or an Archimedean non-concentration estimate.
+
 At $m=60$ the recurrence also proves $b_{60}\ne1$, and hence $q\ge60$.
 Since $67$ is prime, the prime-miss theorem applied at $67$ gives the stronger
 checked bound
@@ -1338,7 +1391,8 @@ for nothing above.  The finite computations are finite.
 \section{Guide to the formal sources}\label{app:sources}
 
 The public \texttt{ErdosProblems.Erdos68} package contains the checked source
-for this note.  The release snapshot contains twelve cited modules:
+for this note.  The release snapshot contains fifteen cited modules:
+\texttt{AdjacentUnitCarryWindow},
 \texttt{CanonicalFactorialDigits},
 \texttt{ChannelBreakpointRigidity},
 \texttt{ChannelIntegralCongruence},
@@ -1348,6 +1402,8 @@ for this note.  The release snapshot contains twelve cited modules:
 \texttt{FactorialChannelCertificate},
 \texttt{FactorialZeroPlateau},
 \texttt{FiniteDefectAutomaton},
+\texttt{GapScalarNormalForm},
+\texttt{PrimeThresholdParity},
 \texttt{PrimeUnitTranslator},
 \texttt{PrimeZeroBranch}, and
 \texttt{StrictSuccessorArithmetic}.
@@ -1358,6 +1414,10 @@ pinned to the shared formal-source commit used throughout this problem-note
 series.
 
 \begin{itemize}[leftmargin=*]
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{148}{consecutive_unit_carries_iff_positive_offset_le_den}
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{215}{twoStep_den_mul_transitionNormalizers}
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{243}{adjacentUnitCarryWindowDen_eq_twoStep_den}
+\item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{337}{adjacentUnitCarryWindowOffset_eq_twoStep_reducedNumerator}
 \item \lref{Erdos68/FactorialZeroPlateau.lean}{876}{rational_denominator_ge_of_nonunit_carry}
 \item \lref{Erdos68/FactorialZeroPlateau.lean}{940}{sixty_seven_le_rational_denominator}
 \item \lref{Erdos68/FactorialZeroPlateau.lean}{1090}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
