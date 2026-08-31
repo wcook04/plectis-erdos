@@ -84,6 +84,14 @@ cold start: can a reader identify the question, principal result, reason for
 interest, evidence class, hard step, and exact open boundary without learning
 an internal command vocabulary first?
 
+Audit the publication boundary from that same cold start. Every reader-facing
+link must resolve from a fresh public clone or from a public browser session
+without private credentials. Do not print local filesystem paths,
+private-repository paths, or internal-only artifact locators. Replace them with
+a stable public page or download. When an unpublished artifact is necessary
+evidence, publish it through the repository's release process before linking
+it; otherwise remove the dependency and state the evidence boundary plainly.
+
 Run `python3 scripts/test_public_writing_contract.py` after changing the public
 front doors or this routing contract. Run the owning paper, corpus, claim, and
 release checks after changing mathematical content.

@@ -226,10 +226,9 @@ unproved declaration, up to its zero-based indexing
 \texttt{Summable} hypothesis asserts the existence of a sum in $\Q$; the
 finite indexing shift changes that sum only by a rational prefix.  The
 declaration therefore does encode the rationality premise, but its proof is
-\texttt{sorry}.  We use it as statement-level prior art, not as proof
-authority; the development below is independent of it.
-What is machine-checked below concerns the state system rather than the
-analytic problem: the exclusion of constant and
+\texttt{sorry}.  Its role here is statement-level prior art; it supplies no
+proof authority, and the development below is independent of it.
+The machine-checked results concern the state system: they exclude constant and
 periodic negative magnitudes, the bounded-rise barrier of
 Theorem~\ref{res:barrier}, and the two conditional endpoints
 (Theorems~\ref{res:bounded} and~\ref{res:mass}), each stated with the exact
@@ -245,38 +244,37 @@ $E$, and the whole question is whether $E$ can avoid vanishing.
 
 \statusboundary
 
-\begin{table}[t]
-\centering
-\small
-\begin{tabular}{@{}
-  >{\raggedright\arraybackslash}p{0.36\linewidth}
-  >{\raggedright\arraybackslash}p{0.17\linewidth}
-  >{\raggedright\arraybackslash}p{0.39\linewidth}@{}}
-\toprule
-Statement & Status & Treatment here \\
-\midrule
-Problem~\#243 as stated & Open & Not proved. \\
-Defect identity & Proved here & Theorem~\ref{res:defect}, an identity in $\Z[a,a',D,C]$. \\
-Eventual vanishing forces the recurrence & Proved here & Theorem~\ref{res:eventual}. \\
-Zero is absorbing & Proved here & Theorem~\ref{res:absorb}, under strict centring. \\
-Nonnegative $E$ & Proved here & Theorem~\ref{res:descent}, by descent. \\
-Constantly negative $E$ & Excluded here & Theorem~\ref{res:constant}, at any magnitude and scale. \\
-Periodic negative magnitude & Excluded here & Theorem~\ref{res:periodic}, in the regime $e_n<a_n$ and with positive drift $M>0$. \\
-Coprime-modulus barrier & Proved here & Theorem~\ref{res:barrier}. \\
-Bounded negative part & Excluded here; conditional & Theorem~\ref{res:bounded}; see its hypotheses. \\
-Normalised vanishing alone & Gcd changes are sparse & Proposition~\ref{res:gcdsparse}; arbitrarily late finite constant blocks, not eventual constancy. \\
-Finite normalised negative mass & Excluded here; conditional & Theorem~\ref{res:mass}, Section~\ref{sec:mass}; normalised vanishing remains an input. \\
-Factorial residue reduction & Proved here; superseded for its original purpose & Theorem~\ref{res:residue}, Appendix~\ref{app:residue}. \\
-Normalised vanishing & Assumed here; supplied by prior art & Section~\ref{sec:bounded}; derived in~\cite{koizumi2025}, see Section~\ref{sec:problem}.  The separate strict-centring hypothesis retained in the Lean-matching statement follows eventually by taking $K=1$. \\
-Unbounded, divergent-mass negative excursions & Necessary conditions proved here; orbit-level case open & Section~\ref{sec:open}: Proposition~\ref{res:frontier} gives conditions any counterexample must satisfy, not a separate open problem; Problem~\ref{res:excursions} is the surviving orbit-level obstruction. \\
-Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; the Erd\H{o}s--Straus hypothesis is implied by that of Theorem~\ref{res:descent}. \\
-State system equals reciprocal tails & Not formalised & Section~\ref{sec:state}. \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{quote}\small
+\textbf{Strongest result.}
+Under the exact integer dynamics, positivity, normalised vanishing, and an
+eventually bounded negative part, the centred error $E_n$ is eventually zero.
+The original sequence therefore satisfies the Sylvester recurrence from some
+point onward (Theorem~\ref{res:bounded}).
 
-\noindent Taken together the exclusions constrain the shape of any
-counterexample.  By Theorem~\ref{res:absorb} a counterexample has $E_n\ne0$ for
+\smallskip
+\textbf{Second endpoint.}
+The same conclusion holds when the normalised negative mass
+$\sum_n(-E_n)_+/C_n$ is finite, provided the strict centred-step equation is
+available (Theorem~\ref{res:mass}).
+
+\smallskip
+\textbf{What remains open.}
+Koizumi's coordinates provide normalised vanishing for the canonical orbit,
+but they do not provide either bounded negative excursions or finite
+normalised negative mass.  Any surviving counterexample must therefore have
+cofinally unbounded negative excursions and divergent normalised negative
+mass (Proposition~\ref{res:frontier}).
+
+\smallskip
+\textbf{Proof spine.}
+Bounded negative errors control the rise of the integer tail state.  A gcd
+stabilisation reduces the orbit to pairwise-coprime fresh moduli, and a block
+of consecutive multiples then gives the contradiction.  The finite-mass
+argument replaces the uniform bound by a summable recovery estimate.
+\end{quote}
+
+\noindent The remaining exclusions sharpen this boundary.  By
+Theorem~\ref{res:absorb}, a counterexample has $E_n\ne0$ for
 every large $n$.  By Theorem~\ref{res:descent} it cannot have $E$ eventually
 nonnegative.  If its tail is all negative, Theorems~\ref{res:constant}
 and~\ref{res:periodic} exclude, respectively, constant magnitude and periodic
@@ -399,8 +397,8 @@ realisation}, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1875}{natDen_eq_nextDenState}{denominator
 realisation}, and the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1972}{natTail_eq_sub_centeredState}{signed
-update law}.  A reader should treat the identification with reciprocal tails as
-motivation for the definitions and not as a checked step.
+update law}.  The identification with reciprocal tails motivates the
+definitions.  The formal development does not check that identification.
 
 \begin{proposition}[scale equivariance]\label{res:scale}
 For every $s,a,D,C\in\Z$,
@@ -521,10 +519,9 @@ the displayed right-hand side.
 
 \noindent This is the
 \lword{Erdos243/DynamicCancellation.lean}{268}{reducedStep_secondOrder}{two-step
-primitive recurrence}.  Its hard point is not a formal induction: it keeps
-both changing cancellation factors visible.  Thus it is stronger than a
-one-step congruence, but it is not an autonomous recurrence and cannot by
-itself force $a_1=a^2-a+1$.
+primitive recurrence}.  The hard point is keeping both changing cancellation
+factors visible.  The result is stronger than a one-step congruence, though it
+remains non-autonomous and cannot by itself force $a_1=a^2-a+1$.
 
 There is a complementary integer identity when the relevant step is
 cancellation-free.  Put $q=ap-p_1$, and suppose the next primitive coordinate
@@ -572,11 +569,10 @@ transport equivalence}, obtained from the factored defect at
 transport defect}.  The nonzero-raw-numerator hypothesis is essential: if
 $u-e=0$, the factorised mismatch cannot identify $a_1$.
 
-These three identities do not manufacture the hypotheses of the orbit.  In
-particular, they do not prove that cancellation is eventually absent, that
-the curvature has one sign, or that the feedback gate is met cofinally; the
-global mixed-sign and unbounded-negative regimes of Problem~\#243 remain
-open.
+These three identities require orbit-level hypotheses that remain unproved:
+eventual absence of cancellation, a fixed sign for the curvature, or cofinal
+passage through the feedback gate.  The global mixed-sign and
+unbounded-negative regimes of Problem~\#243 remain open.
 
 \begin{theorem}[sequence form]\label{res:eventual}
 Let $a,D,C:\N\to\Z$ satisfy $D_{n+1}=\den(a_n,D_n)$ and
@@ -616,11 +612,10 @@ of a vanishing centred state}, with the companion
 along a tail}: if zero is absorbing beyond some index and $E$ does not vanish
 eventually, then $E$ is nowhere zero beyond that index.
 
-Absorption changes the shape of the problem.  Without it, one would have to
-exclude an $E$ that dips to zero and recovers.  With it, either $E$ hits zero
-once and is finished, or it is never zero at all.  Sections~\ref{sec:constant}
-and~\ref{sec:periodic} then restrict to the special all-negative case; this is
-not a without-loss reduction for a mixed-sign tail.  The mixed-sign analysis
+Absorption changes the shape of the problem.  Either $E$ hits zero once and
+stays there, or it is never zero.  Sections~\ref{sec:constant}
+and~\ref{sec:periodic} address the special all-negative case only.  The
+mixed-sign analysis
 in Sections~\ref{sec:bounded} and~\ref{sec:mass} instead separates cofinally
 negative errors from an eventually positive tail.
 
@@ -992,9 +987,9 @@ numerator and denominator coprime, that is, a reduced exact tail.
 
 \noindent The stabilisation of the tail gcd is the checked statement cited at
 the end of the proof; the last clause, that the divided orbit is a reduced
-exact tail, is exposition and carries no separate label.  The hypothesis is
-boundedness \emph{along a cofinal set} and not
-boundedness at every index.  That is what the situation gives: the tail gcd is
+exact tail, is exposition and carries no separate label.  Boundedness is
+required only \emph{along a cofinal set}.  That is what the situation gives:
+the tail gcd is
 controlled only at the negative indices, and cofinally many of them is all the
 divisibility chain needs.
 
@@ -1037,11 +1032,10 @@ and it does not exclude cofinally unbounded negative excursions.
 \section{Excluding a bounded negative part}\label{sec:bounded}
 
 Assembling the previous section gives Theorem~\ref{res:bounded}, the endpoint
-of the barrier argument.  Theorem~\ref{res:mass} in the next section is a
-second endpoint under a different finiteness hypothesis, and neither theorem
-contains the other.  Theorem~\ref{res:mass} assumes no orbit structure, only
-the state recurrence with $C_n>0$, so it is not a special case of
-Theorem~\ref{res:bounded}; conversely hypothesis~(5) below does not imply
+of the barrier argument.  Theorem~\ref{res:mass} in the next section uses a
+different finiteness hypothesis.  The two results are incomparable:
+Theorem~\ref{res:mass} assumes only the state recurrence with $C_n>0$, while
+hypothesis~(5) below does not imply
 finite \emph{normalised negative mass}, by which we mean convergence of
 $\sum_n(-E_n)_+/C_n$, where $x_+=\max(x,0)$, since a constant negative part
 $-b$ gives $C_n\sim bn$ and hence a divergent sum.  The hypotheses of
@@ -1142,8 +1136,9 @@ finite shift, because summability of $\sum1/a_n$ forces $a_n\to\infty$.
 Hypothesis~(2) is the pair of recurrences $c_{n+1}=a_nc_n-d_n$ and
 $d_{n+1}=a_nd_n$ of Lemma~15(2), and hypothesis~(3) is that lemma's
 $a_n=(d_n-e_n)/c_n+1$ read as $e_n=d_n-(a_n-1)c_n$, which is the map $\ctr$.
-Hypothesis~(4) holds at every index, not merely eventually, from the centring
-range $-c_n/2\le e_n<c_n/2$ of the same lemma.  Hypothesis~(6) is the vanishing
+The centring range $-c_n/2\le e_n<c_n/2$ in the same lemma gives
+hypothesis~(4) at every index, which is stronger than the eventual form used
+here.  Hypothesis~(6) is the vanishing
 of the gap sequence in Corollary~10, since $\varepsilon_n=e_n/c_n$.  The sole
 hypothesis not supplied is~(5), the eventual bound on the negative part;
 nothing in~\cite{koizumi2025} yields it and nothing here does either, so
@@ -1445,10 +1440,9 @@ canonical integer state.  Must
 \noindent An affirmative answer closes Problem~\#243 by
 Theorem~\ref{res:mass}.  Since $\delta_n\to0$, convergence is equivalently
 expressible as boundedness of the partial products
-$\prod_{n<N}(1+\delta_n)$; that is an explanatory reformulation, not a second
-success criterion.  A negative answer must be a sequence satisfying the full
-growth and rationality hypotheses, not merely a locally admissible state
-orbit.
+$\prod_{n<N}(1+\delta_n)$; this is the same criterion in multiplicative form.
+A negative answer requires a sequence satisfying the full growth and
+rationality hypotheses.  A locally admissible state orbit is insufficient.
 
 \begin{remark}
 One further question is not left open here, since it is answered
@@ -1463,8 +1457,8 @@ reading of Section~\ref{sec:state}, this is normalised vanishing.  Strict
 centring comes from the same source and is stronger than what
 Theorem~\ref{res:bounded} assumes: for a rational reciprocal sum, the range
 $-c_n/2\le e_n<c_n/2$ of his Lemma~4(2)
-~\cite[p.~11]{koizumi2025} gives $|E_n|<C_n$ at every index, not
-merely for all large $n$; eventual strict centring also follows directly from
+~\cite[p.~11]{koizumi2025} gives $|E_n|<C_n$ at every index, which is stronger
+than eventual strict centring.  The eventual form also follows directly from
 normalised vanishing with $K=1$.  What remains unsupplied is hypothesis~(5), the bound
 on the negative part, which is why the theorem is still conditional.
 \end{remark}
@@ -1502,8 +1496,9 @@ projects, but neither is an additional open mathematical problem.
 
 \paragraph{Artefact and data availability.} The
 \href{\sourceurl}{pinned formal-source revision} contains the Lean sources, the
-fixed toolchain, and the library manifest used in the verification.  This
-manuscript provides navigation rather than proof authority.
+fixed toolchain, and the library manifest used in the verification.  Proof
+authority remains with those sources; this manuscript provides navigation and
+exposition.
 
 Lean checks each proof term against the fixed library
 version, and the sources linked here contain no proof placeholders and no
