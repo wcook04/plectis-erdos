@@ -4917,12 +4917,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:d27d621cfed0ef0b57fc679523e939aa0ed294d4fdc7946ab7d95c0b11414199",
+      "source_sha256": "sha256:f25952e05b4673b1387f1d5cb03c99751e8e6f4171520cb3fd0a5539149329f9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
-      "section_count": 40,
+      "section_count": 42,
       "sections": [
         {
           "level": 1,
@@ -4934,245 +4934,253 @@
           "level": 1,
           "id": "the-problem-many-kinds-of-evidence",
           "title": "The problem: many kinds of evidence",
-          "line": 23
+          "line": 19
         },
         {
           "level": 4,
           "id": "the-novelty-claim-and-its-ceiling.",
           "title": "The novelty claim and its ceiling.",
-          "line": 45
+          "line": 41
         },
         {
           "level": 2,
           "id": "two-architectural-claims",
           "title": "Two architectural claims",
-          "line": 53
+          "line": 49
         },
         {
           "level": 4,
           "id": "a-problem-is-a-mathematical-world-not-a-folder.",
           "title": "A problem is a mathematical world, not a folder.",
-          "line": 57
+          "line": 53
         },
         {
           "level": 4,
           "id": "authority-is-separated-before-it-is-recombined.",
           "title": "Authority is separated before it is recombined.",
-          "line": 63
+          "line": 59
         },
         {
           "level": 1,
           "id": "sec:lifecycle",
           "title": "The whole lifecycle in one picture",
-          "line": 86
+          "line": 82
+        },
+        {
+          "level": 2,
+          "id": "skill-addressable-job-lifecycles",
+          "title": "Skill-addressable job lifecycles",
+          "line": 99
         },
         {
           "level": 1,
           "id": "sec:private",
           "title": "The private workbench",
-          "line": 99
+          "line": 116
         },
         {
           "level": 2,
           "id": "disk-is-shared-memory",
           "title": "Disk is shared memory",
-          "line": 103
+          "line": 120
         },
         {
           "level": 2,
           "id": "type-a-and-type-b",
           "title": "Type A and Type B",
-          "line": 113
+          "line": 130
         },
         {
           "level": 2,
           "id": "concurrency-without-shared-state-confusion",
           "title": "Concurrency without shared-state confusion",
-          "line": 132
+          "line": 149
         },
         {
           "level": 2,
           "id": "the-control-plane-is-executable",
           "title": "The control plane is executable",
-          "line": 140
+          "line": 157
         },
         {
           "level": 2,
           "id": "what-continuous-mathematical-work-looks-like",
           "title": "What continuous mathematical work looks like",
-          "line": 152
+          "line": 169
+        },
+        {
+          "level": 2,
+          "id": "coupled-continuous-goals-discovery-and-stewardship",
+          "title": "Coupled continuous goals: discovery and stewardship",
+          "line": 181
         },
         {
           "level": 1,
           "id": "sec:mathloop",
           "title": "The mathematical reasoning loop",
-          "line": 162
+          "line": 206
         },
         {
           "level": 2,
           "id": "experiments-are-route-selectors",
           "title": "Experiments are route selectors",
-          "line": 168
+          "line": 216
         },
         {
           "level": 4,
           "id": "failure-modes-are-mathematical-outputs.",
           "title": "Failure modes are mathematical outputs.",
-          "line": 176
+          "line": 224
         },
         {
           "level": 2,
           "id": "three-oracles-not-one",
           "title": "Three oracles, not one",
-          "line": 182
+          "line": 230
+        },
+        {
+          "level": 2,
+          "id": "from-local-progress-to-reusable-mathematics",
+          "title": "From local progress to reusable mathematics",
+          "line": 246
         },
         {
           "level": 2,
           "id": "problem-sized-lean-worlds-and-bounded-theorem-neighbourhoods",
           "title": "Problem-sized Lean worlds and bounded theorem neighbourhoods",
-          "line": 198
+          "line": 256
         },
         {
           "level": 1,
           "id": "sec:public",
           "title": "The public Lean repository",
-          "line": 216
+          "line": 274
         },
         {
           "level": 1,
           "id": "sec:assurance",
           "title": "Comparator, Palomar, and publication",
-          "line": 242
+          "line": 304
         },
         {
           "level": 2,
           "id": "comparator-an-exact-statement-firewall",
           "title": "Comparator: an exact-statement firewall",
-          "line": 246
+          "line": 308
         },
         {
           "level": 2,
           "id": "palomar-selecting-what-deserves-review",
           "title": "Palomar: selecting what deserves review",
-          "line": 254
+          "line": 316
         },
         {
           "level": 2,
           "id": "publication-and-propagation",
           "title": "Publication and propagation",
-          "line": 262
+          "line": 324
         },
         {
           "level": 2,
           "id": "applying-taos-proof-abundance-programme",
           "title": "Applying Tao\u2019s proof-abundance programme",
-          "line": 272
+          "line": 334
         },
         {
           "level": 1,
           "id": "sec:example",
           "title": "One complete boundary: finite is not unbounded",
-          "line": 284
+          "line": 346
         },
         {
           "level": 1,
           "id": "sec:routes",
           "title": "Inspection routes",
-          "line": 312
+          "line": 374
         },
         {
           "level": 1,
           "id": "sec:trust",
           "title": "What can be trusted",
-          "line": 336
+          "line": 398
         },
         {
           "level": 1,
           "id": "sec:scaling",
           "title": "Scaling from one clone to a search network",
-          "line": 358
+          "line": 424
         },
         {
           "level": 2,
           "id": "clone-attach-compute-and-mine-bounded-results",
           "title": "Clone, attach compute, and mine bounded results",
-          "line": 362
+          "line": 432
         },
         {
           "level": 2,
           "id": "the-no-go-graph-as-a-new-mathematical-object",
           "title": "The no-go graph as a new mathematical object",
-          "line": 380
+          "line": 458
         },
         {
           "level": 2,
           "id": "an-experimental-agenda",
           "title": "An experimental agenda",
-          "line": 390
+          "line": 468
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to other approaches",
-          "line": 396
+          "line": 474
         },
         {
           "level": 4,
           "id": "theorem-proving-agents.",
           "title": "Theorem-proving agents.",
-          "line": 400
+          "line": 478
         },
         {
           "level": 4,
           "id": "graphs-and-checked-exposition.",
           "title": "Graphs and checked exposition.",
-          "line": 406
+          "line": 484
         },
         {
           "level": 4,
           "id": "auditable-scientific-agents.",
           "title": "Auditable scientific agents.",
-          "line": 416
+          "line": 494
         },
         {
           "level": 4,
           "id": "contribution-and-limits.",
           "title": "Contribution and limits.",
-          "line": 424
+          "line": 502
         },
         {
           "level": 4,
           "id": "scaling-beyond-this-corpus.",
           "title": "Scaling beyond this corpus.",
-          "line": 430
+          "line": 508
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 436
+          "line": 514
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 448
-        },
-        {
-          "level": 4,
-          "id": "declaration-of-generative-ai-use.",
-          "title": "Declaration of generative AI use.",
-          "line": 458
+          "line": 526
         }
       ],
-      "citations_rendered": 17,
-      "fallback_title_drift": {
-        "registry_fallback": "From Lean Proofs to Public Claims",
-        "manuscript_title": "Problem-Sized Lean Worlds"
-      },
+      "citations_rendered": 18,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:3669da74a48967c8cb93d80e7309eff080f2bdc542b795c5b431aed1394153b5",
-      "pdf_byte_count": 117489,
+      "pdf_sha256": "sha256:778c5d59226034111e851a220b98d8ba7b69e6f6f9617e69d7f71086ca783917",
+      "pdf_byte_count": 133536,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -5190,7 +5198,7 @@
           {
             "id": "sec:trust",
             "title": "What can be trusted",
-            "line": 336
+            "line": 398
           },
           {
             "id": "sec:limits",

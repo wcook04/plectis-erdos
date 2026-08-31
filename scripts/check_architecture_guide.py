@@ -31,9 +31,11 @@ MAX_GUIDE_BYTES = 18_000
 # leases, resident metabolism, trace projections, federated mathematical
 # memory, proof/publication gates, the scale/review boundary, and the public
 # job lifecycle from invocation through consequence propagation and old-base
-# assimilation. The per-artifact increment remains the only
+# assimilation. The enlarged base also covers the coupled discovery and corpus-
+# stewardship roles, local-to-general digestion, and their public skill routes.
+# The per-artifact increment remains the only
 # inventory-dependent allowance.
-SYSTEMS_PAPER_BASE_BYTES = 60_000
+SYSTEMS_PAPER_BASE_BYTES = 66_000
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 

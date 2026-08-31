@@ -11,6 +11,39 @@ local delta. It is the bridge between validation and return. It does not make
 the result stronger; it finds the places whose recorded meaning may now be
 stale.
 
+## Continuous stewardship mode
+
+This skill may own the appraisal half of a coupled continuous-goal system. It
+re-enters on a stable mathematical or authority delta, not on a timer and not
+because another agent is still busy. A theorem, counterexample, no-go,
+source-status change, paper correction, Comparator result, Palomar outcome, or
+external review can be a wake event. An unchanged corpus is a reason to yield,
+not to emit another status report.
+
+Before choosing one visible result, reconstruct the relevant candidate
+universe from source authority. Include stronger results absent from the
+current paper, Comparator roster, or navigation. Group declarations into
+coherent mathematical families; do not count wrappers, equivalent
+reformulations, or routine corollaries as independent discoveries merely
+because they have different names.
+
+Make four decisions separately:
+
+- **authority**: what Lean, computation, paper argument, citation, or review
+  actually establishes;
+- **mathematical appraisal**: logical reach, mechanism depth, independence,
+  sharpness, reuse, and surviving boundary;
+- **exposition placement**: what leads, what receives detailed explanation,
+  and what remains subordinate or discoverable only in the corpus; and
+- **work allocation**: the next missing implication, falsifier, source check,
+  formal interface, or discriminating computation worth funding.
+
+No scalar, theorem count, file order, recency signal, or validation convenience
+may decide all four. The stewardship pass is a second semantic check, not a
+second proof authority. It may detect a trivial restatement, duplicate family,
+stale paper, weak Comparator interface, missing attribution, or overclaim; it
+may not convert significance or agreement into proof.
+
 ## Fix the change boundary
 
 Record the starting commit, current commit, changed object, evidence class,
@@ -55,6 +88,14 @@ problem frontier and open obligations, computations and recorded no-gos,
 claims and methodology, papers, Comparator or Palomar packets, query routes,
 and generated public projections. Preserve authority and logical reach as
 separate facts.
+
+When the delta changes mathematical appraisal, update reader order and future
+work deliberately. The strongest truthful result or mechanism should receive
+the most prominent paper treatment; a worked example may remain prominent for
+expository reasons only when that reason is stated. Return a ranked frontier
+to `mine-open-problem`: the source-pinned strongest result, the exact open
+boundary, missing evidence or consumer, and the cheapest next test that could
+change the ranking. Do not return merely a list of touched files.
 
 For an architecture delta, inspect the compact agent entry, contributor docs,
 skills, builders, tests, generated routes, and any public paper that describes

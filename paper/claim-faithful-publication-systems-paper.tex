@@ -273,7 +273,9 @@ solved.}
 \label{fig:job-lifecycle}
 \end{figure}
 
-The current owners are \texttt{mine-open-problem} for invocation and research,
+The current owners are \texttt{explain-public-system} for reader orientation,
+\texttt{run-coupled-research-goals} for discovery--stewardship coordination,
+\texttt{mine-open-problem} for invocation and research,
 \texttt{lean-concurrent-validation} for bounded Lean checks,
 \texttt{propagate-research-consequences} for downstream reconciliation,
 \texttt{erdos-research-return} for packaging and maintainer assimilation, and
@@ -446,6 +448,102 @@ new idea. It must then preserve a useful re-entry point rather than manufacture
 busywork or quietly weaken the endpoint. Long-running computation is likewise
 not a reason to poll idly when an independent proof, source, exposition, or
 adversarial lane remains safe to advance.
+
+\subsection{Coupled continuous goals: discovery and stewardship}
+\papersectiontarget{systems-coupled-goals}
+
+One continuous goal is not enough for a moving mathematical corpus. A
+problem-directed miner can remain close to the proof frontier, yet that same
+proximity makes it a poor sole judge of whether a new lemma is routine,
+whether an older theorem is stronger, or where the result belongs in a paper.
+The implementation therefore admits two coupled goals with different
+responsibilities. The \emph{discovery goal} reads the current problem world,
+runs discriminating computations, attempts proofs, records falsifiers, and
+returns the smallest stable mathematical delta. The \emph{stewardship goal}
+reads that delta against the whole source-current corpus, composes related
+declarations into coherent result families, and reconciles their downstream
+uses. Neither role receives the other's authority.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}[
+  role/.style={draw=gray!58, rounded corners=3pt, align=center, fill=white,
+    text width=3.05cm, minimum height=1.25cm, inner sep=5pt},
+  object/.style={role, fill=TealBlue!6, draw=TealBlue!60!black,
+    text width=2.72cm},
+  output/.style={role, fill=ForestGreen!6, draw=ForestGreen!55!black,
+    text width=3.15cm},
+  arr/.style={-{Stealth[length=2.2mm]}, semithick, draw=gray!78!black},
+  feedback/.style={-{Stealth[length=2.2mm]}, densely dashed,
+    draw=Violet!75!black}
+]
+\node[role, fill=MidnightBlue!5, draw=MidnightBlue!55] (mine) at (0,0)
+  {\textbf{Discovery goal}\\[-1pt]\scriptsize read, compute, conjecture, prove, falsify};
+\node[object, right=7mm of mine] (delta)
+  {\textbf{Landed delta}\\[-1pt]\scriptsize theorem, no-go, computation, boundary};
+\node[role, fill=BurntOrange!7, draw=BurntOrange!65!black,
+  right=7mm of delta] (steward)
+  {\textbf{Stewardship goal}\\[-1pt]\scriptsize appraise, compose, reconcile, explain};
+\node[output, below=9mm of delta] (surfaces)
+  {\textbf{Current public}\\[-1pt]\textbf{picture}\\[-1pt]\scriptsize paper order, Comparator, Palomar, frontier};
+\draw[arr] (mine) -- (delta);
+\draw[arr] (delta) -- (steward);
+\draw[arr] (steward) -- (surfaces);
+\draw[feedback] (surfaces.west) to[out=180,in=-90]
+  node[below left, font=\tiny\sffamily, align=center]
+  {ranked next question, missing evidence,\\discriminating test} (mine.south);
+\end{tikzpicture}
+\caption{The coupled continuous-goal lifecycle. A landed mathematical delta
+wakes stewardship; a changed appraisal or consumer gap can change the next
+mining target. An unchanged corpus produces no model heartbeat.}
+\label{fig:coupled-goals}
+\end{figure}
+
+The stewardship pass makes four decisions separately. \emph{Authority}
+records what Lean, a computation, a paper argument, or an external source
+actually establishes. \emph{Mathematical appraisal} asks about logical reach,
+mechanism depth, independence, sharpness, reuse, and the surviving open
+boundary. \emph{Exposition placement} determines what leads the abstract,
+which theorem receives the longest explanation, and what remains subordinate.
+\emph{Work allocation} determines which missing implication or consumer
+deserves the next unit of compute or expert attention. A result can be highly
+significant but mechanically unready, fully checked but mathematically
+routine, or ideal as a worked example without being the corpus's strongest
+theorem. No single scalar or status is allowed to decide all four questions.
+
+This is also a second checking layer, but not a second proof authority. The
+steward may detect that a purported advance merely restates the open problem,
+that several theorem names express one result, that a paper has buried a
+stronger theorem, that Comparator exposes a weaker interface, or that a
+Palomar packet omits the hard mechanism. It may then narrow, regroup,
+reorder, or defer the projection. It may not turn significance, repeated
+agreement, or polished exposition into a proof. Lean validation, intended-
+meaning review, prior-art assessment, and community acceptance remain
+distinct gates.
+
+The clone-local \texttt{run-coupled-research-goals} skill operationalises this
+division by invoking \texttt{mine-open-problem} and
+\texttt{propagate-research-consequences} as separate jobs with source-pinned
+hand-offs. A single agent may execute the two jobs sequentially; two tasks,
+machines, models, or people may also hold the roles. The separation is logical,
+not a requirement to buy two computers.
+
+The coupling is event-driven. A newly landed theorem, counterexample,
+authority change, paper correction, or external review outcome can wake the
+stewardship goal. Its output is a source-pinned appraisal and a changed
+consumer or frontier disposition, not a recurring status report. That output
+may in turn wake the discovery goal with a stronger target, a missing
+hypothesis, a counterexample request, or the cheapest discriminating
+computation. If neither the mathematical frontier nor a downstream consumer
+has changed, both goals yield rather than polling one another.
+
+Before either role begins, \texttt{explain-public-system} provides a separate
+cold-clone orientation job. An agent can read the public corpus and companion
+papers, adapt the explanation to a lay reader, mathematician, formaliser,
+compute contributor, reviewer, or infrastructure contributor, and point to the
+exact evidence behind its account. The human therefore need not learn the file
+layout before asking a useful question. Explanation remains a projection: it
+cannot promote its own summary into proof or acceptance.
 
 \section{The mathematical reasoning loop}\label{sec:mathloop}
 \papersectiontarget{systems-mathloop}
@@ -946,6 +1044,17 @@ result packet with provenance, scope, formal status, mathematical role, and a
 nearest stronger open statement. Palomar can allocate scarce expert attention
 to those packets; Comparator can protect selected exact interfaces; neither is
 replaced by scale.
+
+At scale, fan-in is a persistent stewardship role rather than an end-of-run
+cleanup task. It consumes each stable delta, compares it with the complete
+candidate universe, updates the paper hierarchy and assurance interfaces when
+warranted, and returns a newly ranked frontier to the mining fleet. Several
+miners may therefore share one stewardship goal, and one steward may consume
+results from several problems, provided every write and mathematical object
+still has one owner. The steward is allowed to say that a large run produced
+no new mathematical family, or that a short negative result should outrank
+many formal lemmas. This prevents compute volume and theorem count from
+becoming accidental editorial policy.
 
 Fleet size and validation capacity are deliberately different variables. In
 principle, many logical agents can search disjoint mathematical neighbourhoods;

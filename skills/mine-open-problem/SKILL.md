@@ -34,6 +34,13 @@ counterexamples, computations, and no-go results. State the target,
 hypotheses, evidence class, known obstruction, and stop condition before a
 long run.
 
+If a stewardship or consequence-propagation receipt exists, consume its
+source-pinned frontier before selecting work. Treat its ranking as a reasoned
+allocation input, not proof authority. Prefer the strongest attackable
+transition, which may be a decisive no-go, a missing bridge, a counterexample,
+or a computation that separates two serious mechanisms rather than the
+nearest editable lemma.
+
 ## 2. Use parallel work without parallel authority
 
 When the harness supports subagents, give them independent jobs such as:
@@ -59,6 +66,13 @@ returned material. Agreement between agents is not independent proof.
 6. Try to break the strongest candidate before promoting it.
 7. Return the smallest evidence-bearing change and name the stronger statement
    that remains unproved.
+
+The returned delta must be usable by a separate stewardship goal. Name the
+source identity, exact statement or computation, evidence class, relation to
+the previous frontier, failed routes it supersedes, plausible consumers, and
+the next open boundary. Do not decide paper prominence or Palomar readiness
+from inside the proof run; supply the evidence that lets the stewardship pass
+make those decisions against the whole corpus.
 
 Lean work follows `AGENTS.md`, the pinned toolchain, and focused validation.
 Computation records its exact domain, program, inputs, outputs, and

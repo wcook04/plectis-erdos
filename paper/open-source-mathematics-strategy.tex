@@ -112,6 +112,56 @@ reduction, a killed route, a source correction, or a better next question.
 When the endpoint remains open, that is not a failed run.  Losing the state and
 paying to rediscover it would be.
 
+\subsection*{Two coupled goals, not one endless agent}
+\papersectiontarget{strategy-coupled-goals}
+
+The most useful public deployment has two persistent roles.  A
+\emph{discovery goal} stays close to one mathematical frontier: it reads the
+corpus, compares attacks, uses computation to discriminate them, attempts
+ordinary and formal proofs, and returns the smallest stable theorem,
+counterexample, no-go, computation, or corrected boundary.  A
+\emph{stewardship goal} stays close to the corpus as a whole: it compares the
+new object with existing results, decides which declarations form one
+mathematical family, reconciles the paper and assurance surfaces, and returns
+the strongest next question to the discovery goal.  The corresponding systems
+contract is stated in the \papersectionlink{claim-faithful-publication-systems-paper.pdf}%
+{systems-coupled-goals}{coupled-goals section of the systems paper}.
+
+The two roles can be run by different people, agent harnesses, or machines.
+A compute contributor may operate only the discovery side.  A mathematician
+may supply a direction, assess whether a result is genuinely nontrivial, or
+repair the statement and exposition without paying for a long model run.  An
+expositor may improve the paper projection; a Lean contributor may strengthen
+the formal interface; an agent builder may make the loop cheaper.  All of
+these acts remain attributable contributions to one evolving mathematical
+record.
+
+The stewardship role is not a ceremonial reviewer added after the work.  Its
+appraisal changes where future effort goes.  It may discover that a new
+``theorem'' is only a reformulation, that five declarations are one coherent
+result family, that a short no-go eliminates an expensive research direction,
+or that a paper still leads with a weaker theorem.  It then updates four
+separate outputs: proof and evidence status, mathematical appraisal, paper
+prominence, and the next allocation of compute or expert attention.  These
+outputs may influence one another, but they are not one score and none can
+promote an unproved claim.
+
+The coupling is event-driven.  A stable mathematical delta wakes the steward;
+a changed appraisal, missing consumer, or sharper open boundary can wake the
+miner.  An unchanged repository should consume no agent turn merely to report
+that it is unchanged.  This makes continuous work a sequence of inspectable
+state transitions rather than an expensive synonym for leaving a chat window
+open.
+
+The public \repolink{skills/run-coupled-research-goals/SKILL.md}%
+{run-coupled-research-goals skill} makes this control shape executable in a
+cold clone.  It invokes the existing mining and consequence-propagation jobs,
+preserves a shared source pin, and passes committed objects and receipts rather
+than conversational claims of progress.  One agent may alternate between the
+roles, or different people, models, subscriptions, and machines may supply
+them.  The architecture requires distinct decisions, not an unnecessarily
+grand collection of laptops.
+
 This is not a proposal to place a public queue in front of a private machine.
 The public clone must stand on its own.  The larger private workbench explains
 how the initial corpus was produced, but it grants no proof or publication
@@ -134,9 +184,14 @@ useful work.  From one clone, a person or agent can choose one of five first
 actions: mine a bounded problem route; contribute mathematical direction
 without paying for the compute that follows it; formalise or review one claim;
 repair the research machinery; or propose another sourced problem world.  The
-clone-local skills explain the system, select and run a frontier, install the
-same workflows in a compatible agent harness, and describe the present
-multi-stage process for adding a problem.
+clone-local \repolink{skills/explain-public-system/SKILL.md}%
+{explain-public-system skill} lets an agent read the public corpus and companion
+papers on the newcomer's behalf, explain the claim boundaries at the requested
+level, and point back to exact evidence.  The reader can therefore begin with
+the ordinary request ``explain this repository to me'' rather than first
+mastering its file layout.  The other skills select and run a frontier,
+coordinate the coupled goals, install the same workflows in a compatible agent
+harness, and describe the present multi-stage process for adding a problem.
 
 \begin{figure}[H]
 \centering
@@ -879,6 +934,33 @@ A continuous mining run should execute a visible loop:
       separately for review.
 \end{enumerate}
 
+A continuous stewardship run executes a second loop beside it:
+
+\begin{enumerate}
+\item wake on a stable theorem, counterexample, computation, authority change,
+      paper correction, or review outcome rather than on a timer;
+\item rebuild the relevant candidate universe from source authority, including
+      stronger results absent from the present paper or Comparator roster;
+\item group declarations into coherent mathematical families and distinguish
+      a new mechanism from a renamed residual, routine corollary, or duplicate;
+\item decide proof authority, mathematical significance, exposition order,
+      and future work allocation separately;
+\item reconcile the paper, Comparator interface, Palomar disposition, claim
+      boundary, navigation, and contributor lineage wherever the result has a
+      real consequence; and
+\item return a source-pinned frontier update: the strongest surviving result,
+      its hard step, the exact boundary, and the next discriminating question.
+\end{enumerate}
+
+This second loop explains why paper order is allowed to change as the corpus
+improves.  A paper is a reader-facing projection of current mathematical
+judgement, not a chronological dump of agent activity.  The strongest exact
+results and mechanisms should lead; routine scaffolding remains available but
+receives less space.  Comparator remains an exact-interface firewall, and
+Palomar remains an external review route.  The stewardship goal may prepare
+and prioritise those objects, but it cannot award novelty, acceptance, or
+canonical status to itself.
+
 Subagents can divide literature reading, computation, proof search,
 formalisation, and adversarial review when their questions and evidence remain
 independent.  The integrating agent must read and verify their returns, and
@@ -1121,6 +1203,8 @@ What is the experiment? & \repolink{README.md}{README.md} \\
 Where should an agent begin? & \repolink{AGENTS.override.md}{AGENTS.override.md} \\
 How can an agent explain the system? &
 \repolink{skills/explain-public-system/SKILL.md}{explain-public-system skill} \\
+How can an agent run the coupled research lifecycle? &
+\repolink{skills/run-coupled-research-goals/SKILL.md}{coupled-goal skill} \\
 How can an agent mine a frontier? &
 \repolink{skills/mine-open-problem/SKILL.md}{mine-open-problem skill} \\
 How is a bounded Lean change validated? &

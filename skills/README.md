@@ -10,7 +10,12 @@ directories.
   harness without overwriting a different installed skill.
 - [Explain the public system](explain-public-system/SKILL.md): read the public
   papers, corpus, claim boundaries, and contributor routes and explain them for
-  a selected audience.
+  a selected audience without requiring the reader to learn the repository
+  first.
+- [Run coupled research goals](run-coupled-research-goals/SKILL.md): coordinate
+  an event-driven discovery goal and corpus-stewardship goal, with source-pinned
+  hand-offs and separate authority, appraisal, exposition, and allocation
+  decisions.
 - [Mine an open problem](mine-open-problem/SKILL.md): select or accept one
   bounded frontier, use reading, computation, reasoning, Lean, and optional
   subagents, and return an evidence-bearing delta.

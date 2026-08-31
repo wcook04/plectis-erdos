@@ -107,8 +107,8 @@ publication contract or emitted handle. These own organisation, not Lean proof.
 ### Explain, install, mine, validate, propagate, or add a problem
 
 Use the clone-local skills in `skills/`: `explain-public-system`,
-`install-clone-skills`, `mine-open-problem`, `lean-concurrent-validation`,
-`propagate-research-consequences`, `add-open-problem`, and
+`install-clone-skills`, `run-coupled-research-goals`, `mine-open-problem`,
+`lean-concurrent-validation`, `propagate-research-consequences`, `add-open-problem`, and
 `submit-pull-request`. The mining skill may coordinate subagents, but the
 integrating agent verifies every return. After a stable mathematical or
 architecture delta, the propagation skill gives each plausible downstream

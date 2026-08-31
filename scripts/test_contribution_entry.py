@@ -54,6 +54,7 @@ def main() -> int:
         "skills/README.md",
         "skills/install-clone-skills/SKILL.md",
         "skills/explain-public-system/SKILL.md",
+        "skills/run-coupled-research-goals/SKILL.md",
         "skills/mine-open-problem/SKILL.md",
         "skills/lean-concurrent-validation/SKILL.md",
         "skills/propagate-research-consequences/SKILL.md",
@@ -130,6 +131,7 @@ def main() -> int:
     for clone_skill in (
         "install-clone-skills",
         "explain-public-system",
+        "run-coupled-research-goals",
         "mine-open-problem",
         "propagate-research-consequences",
         "add-open-problem",

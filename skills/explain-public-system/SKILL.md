@@ -21,13 +21,21 @@ Never infer private state or turn an agent summary into proof authority.
 
 3. Read `docs/RESULTS.md` and the problem or paper handles relevant to the
    reader's question. Use `python3 scripts/query_corpus.py --ask "..."` for a
-   narrower route.
+   narrower route. For a whole-system explanation, read the three companion
+   papers below; for a bounded question, read only the papers and exact
+   sections named by the corpus route.
 4. Read `METHODOLOGY.md` before explaining proof status, and
    `CONTRIBUTING.md` before explaining participation or credit.
 5. Use the companion papers when the reader wants depth:
    - `claim-faithful-publication-systems-paper.pdf` for claims and publication;
    - `cold-clone-to-proof-receipt.pdf` for navigation and verification;
    - `open-source-mathematics-strategy.pdf` for the open-source strategy.
+
+The agent performs this reading on the reader's behalf. Do not make prior
+knowledge of the repository, Lean, Git, or the paper set a condition of entry.
+Expose the exact source, paper section, declaration, or contributor route
+behind each important statement so that the reader can inspect as much or as
+little of the evidence as they want.
 
 ## Match the reader
 
@@ -46,6 +54,12 @@ stop condition, and the return path. Explain that useful output includes a
 counterexample, exact computation, corrected statement, reproducible failed
 route, or tooling improvement.
 
+For somebody asking how sustained work operates, show
+`run-coupled-research-goals`. Explain the discovery goal and stewardship goal
+in ordinary language, how a stable delta wakes the second role, and why proof
+status, mathematical appraisal, paper prominence, and the next allocation of
+effort remain separate decisions.
+
 For an infrastructure contributor, show the architecture proposal route and
 the distinction between improving the conversion machinery and advancing a
 mathematical claim.
@@ -58,6 +72,13 @@ Answer four questions:
 2. What mathematical and technical objects are already here?
 3. What can this reader do next, using one exact command or file?
 4. What does that action not establish?
+
+End with one copyable natural-language prompt appropriate to the reader, for
+example: “Explain this repository to me as a mathematician and show me the
+strongest result and exact remaining boundary,” or “Run one coupled research
+cycle on a bounded frontier and return the evidence, consumer dispositions,
+and next question.” The prompt is an entry convenience, not a new authority
+surface.
 
 Keep the authority order explicit: Lean checks the exact proposition in the
 source; the claim registry controls the public description; papers explain;

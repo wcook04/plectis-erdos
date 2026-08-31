@@ -13,6 +13,7 @@ INSTALLER = ROOT / "scripts" / "install_agent_skills.py"
 SKILLS = (
     "install-clone-skills",
     "explain-public-system",
+    "run-coupled-research-goals",
     "mine-open-problem",
     "lean-concurrent-validation",
     "propagate-research-consequences",
@@ -56,6 +57,7 @@ def main() -> int:
 
     for name in (
         "explain-public-system",
+        "run-coupled-research-goals",
         "mine-open-problem",
         "propagate-research-consequences",
         "add-open-problem",

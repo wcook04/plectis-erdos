@@ -76,6 +76,9 @@ Then give any local coding agent one of these jobs:
 - **Explain it:** “Read `AGENTS.override.md` and use
   `skills/explain-public-system/SKILL.md` to explain this project to a
   mathematician, a compute contributor, or a complete newcomer.”
+- **Run sustained research:** “Use
+  `skills/run-coupled-research-goals/SKILL.md` to coordinate one discovery
+  goal and one corpus-stewardship goal over a bounded frontier.”
 - **Mine a route:** “Use `skills/mine-open-problem/SKILL.md`. Choose the
   bounded problem route that best matches the available tools, use subagents
   where their work can be checked independently, and return the smallest
@@ -180,6 +183,10 @@ validation, and writing roles beside the exact paths that survive assimilation.
 Agents are welcome. The [compact agent entry](AGENTS.override.md) routes a
 cold clone through the papers, corpus queries, problem frontiers, validation,
 and the structured return path without requiring access to any private system.
+The [explainer skill](skills/explain-public-system/SKILL.md) lets an agent read
+those papers and routes on a newcomer's behalf. The
+[coupled-goal skill](skills/run-coupled-research-goals/SKILL.md) then separates
+frontier discovery from corpus-wide appraisal and consequence propagation.
 The ordinary lifecycle is: invoke a bounded job, work until its stop condition,
 validate the resulting evidence, propagate its consequences, package the
 return, and ask upstream to pull it. A run may instead suspend with a durable
