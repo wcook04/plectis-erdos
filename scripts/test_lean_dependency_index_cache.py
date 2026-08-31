@@ -307,8 +307,8 @@ def check_environment_build_is_bounded() -> None:
     )
     require(
         run.call_args.kwargs["timeout"]
-        == builder.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
-        "dependency-bootstrap timeout drifted",
+        == builder.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        "Lean dependency command escaped the validation-worker timeout budget",
     )
     require(
         builder.ENVIRONMENT_CONTRACT
