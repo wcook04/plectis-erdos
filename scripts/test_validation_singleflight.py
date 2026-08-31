@@ -261,6 +261,7 @@ class ValidationSingleflightTests(unittest.TestCase):
             marker = Path(directory) / "first-attempt"
             code = (
                 "import os,pathlib,signal,sys; "
+                f"assert os.environ.get({singleflight.HOST_LOCK_HELD_ENV!r}) == '1'; "
                 f"p=pathlib.Path({str(marker)!r}); "
                 "already=p.exists(); "
                 "p.write_text('partial progress'); "

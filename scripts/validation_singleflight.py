@@ -33,6 +33,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "repository-validation-singleflight/1"
 SINGLEFLIGHT_STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
 HOST_LOCK_ROOT_ENV = "PLECTIS_LEAN_HOST_LOCK_ROOT"
+HOST_LOCK_HELD_ENV = "AIW_PLECTIS_LEAN_HOST_LOCK_HELD"
 ROSTER_VALIDATORS = {
     "toolchain-cache": "lean-toolchain",
     "lean": "scripts/lean_fast_build.py",
@@ -1180,6 +1181,9 @@ def worker(state_root: Path, key: str, token: str) -> int:
             assert resource_lock is not None
         receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
         write_receipt(state, key, receipt)
+        child_environment = command_environment()
+        if resource_group == "lean-host":
+            child_environment[HOST_LOCK_HELD_ENV] = "1"
         with open_output_log(stdout_path) as stdout, open_output_log(stderr_path) as stderr:
             attempt = 0
             last_attempt_code = 75
@@ -1194,7 +1198,7 @@ def worker(state_root: Path, key: str, token: str) -> int:
                     # Keep timeout cleanup scoped to the validator child rather
                     # than the detached worker that owns the receipt.
                     start_new_session=True,
-                    env=command_environment(),
+                    env=child_environment,
                 )
                 receipt.update(
                     {
