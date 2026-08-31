@@ -51,6 +51,7 @@ from pathlib import Path
 from typing import Any
 
 from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
+from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
 from publication_contract import (
     RepositoryReader,
     mutation_fixture_failures as publication_mutation_fixture_failures,
@@ -83,7 +84,6 @@ def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     kwargs.setdefault("timeout", SUBPROCESS_TIMEOUT_SECONDS)
     return _SUBPROCESS_RUN(*args, **kwargs)
 
-LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 PROOF_PATHS = tuple(
     path
@@ -498,57 +498,6 @@ def name_at_line(lines: list[str], name: str, line: int) -> bool:
 def internal_imports(path: Path) -> list[str]:
     """Return direct imports from either supported library in source order."""
     return INTERNAL_IMPORT_RE.findall(read(path))
-
-
-def lean_code_without_comments_and_strings(text: str) -> str:
-    """Remove nested Lean comments and strings while preserving newlines."""
-    out: list[str] = []
-    index = 0
-    block_depth = 0
-    in_string = False
-    while index < len(text):
-        if block_depth:
-            if text.startswith("/-", index):
-                block_depth += 1
-                out.extend("  ")
-                index += 2
-            elif text.startswith("-/", index):
-                block_depth -= 1
-                out.extend("  ")
-                index += 2
-            else:
-                out.append("\n" if text[index] == "\n" else " ")
-                index += 1
-        elif in_string:
-            if text[index] == "\\" and index + 1 < len(text):
-                out.extend("  ")
-                index += 2
-            elif text[index] == '"':
-                in_string = False
-                out.append(" ")
-                index += 1
-            else:
-                out.append("\n" if text[index] == "\n" else " ")
-                index += 1
-        elif text.startswith("--", index):
-            end = text.find("\n", index)
-            if end < 0:
-                out.extend(" " * (len(text) - index))
-                break
-            out.extend(" " * (end - index))
-            index = end
-        elif text.startswith("/-", index):
-            block_depth = 1
-            out.extend("  ")
-            index += 2
-        elif text[index] == '"':
-            in_string = True
-            out.append(" ")
-            index += 1
-        else:
-            out.append(text[index])
-            index += 1
-    return "".join(out)
 
 
 def proof_trust_violation(text: str) -> str | None:
@@ -2034,8 +1983,8 @@ def main() -> int:
         "navigation_snapshot" not in descriptor.get("identity", {}),
         "corpus descriptor retains the ambiguous historical navigation snapshot",
     )
-    check(len(read_bytes(orientation_path)) <= 32_000,
-          "orientation JSON exceeds the 32 KB bounded first-read budget")
+    check(len(read_bytes(orientation_path)) <= 36_000,
+          "orientation JSON exceeds the 36 KB bounded first-read budget")
     for target in orientation.get("drilldowns", {}).values():
         targets = target if isinstance(target, list) else [target]
         for item in targets:

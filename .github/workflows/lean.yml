@@ -486,11 +486,44 @@ jobs:
           test '${{ steps.comparator.outputs.local_1049_positive_exit }}' = 0
           test '${{ steps.comparator.outputs.local_1049_negative_exit }}' != 0
           grep -q 'statement do not match' artifacts-1049-negative.log
-      - name: Print post-verification axiom audit
+      # This step used to be `lake build <module>.AxiomAudit`, which was a gate
+      # that could not fail: `#print axioms` prints and never errors, nothing
+      # parsed the output, and on a warm `.lake` the module is cached so the
+      # build emitted no axiom lines at all.  A green check meant nothing.
+      #
+      # `lake env lean <file>` re-elaborates the audit source every run, so the
+      # lines are always produced, and the three assertions below turn them
+      # into an actual gate.  The empty-output assertion is the load-bearing
+      # one: without it, any future change that stops producing audit lines
+      # would silently pass both grep checks.
+      - name: Post-verification axiom audit (gated)
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
-          lake build ExternalVerification.AxiomAudit
-          lake build ExternalVerification1049.AxiomAudit
+          set -euo pipefail
+          : > axiom-audit.log
+          for src in ExternalVerification/AxiomAudit.lean \
+                     ExternalVerification1049/AxiomAudit.lean; do
+            printf '=== %s ===\n' "$src" >> axiom-audit.log
+            lake env lean "$src" 2>&1 | tee -a axiom-audit.log
+          done
+
+          audited=$(grep -c 'depends on axioms' axiom-audit.log || true)
+          if [[ "$audited" -eq 0 ]]; then
+            echo "axiom audit produced no 'depends on axioms' lines; the gate did not run" >&2
+            exit 1
+          fi
+          echo "axiom audit covered $audited declarations"
+
+          if grep -q 'sorryAx' axiom-audit.log; then
+            echo "axiom audit found sorryAx: a compared declaration is not proved" >&2
+            grep -n 'sorryAx' axiom-audit.log >&2
+            exit 1
+          fi
+          if grep -q 'ofReduceBool\|Lean.trustCompiler' axiom-audit.log; then
+            echo "axiom audit found a native-reduction axiom (native_decide)" >&2
+            grep -n 'ofReduceBool\|Lean.trustCompiler' axiom-audit.log >&2
+            exit 1
+          fi
       - name: Upload external-verification receipt
         if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

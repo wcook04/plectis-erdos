@@ -531,10 +531,19 @@ class ExternalVerificationContractTest(unittest.TestCase):
 
         prepare = workflow.index("- name: Prepare trusted challenge inputs")
         compare = workflow.index("- name: Run positive and adversarial Comparator checks")
-        audit = workflow.index("- name: Print post-verification axiom audit")
+        audit = workflow.index("- name: Post-verification axiom audit (gated)")
         self.assertLess(prepare, compare)
         self.assertLess(compare, audit)
         self.assertNotIn("AxiomAudit", workflow[prepare:compare])
+
+        # The audit must remain a gate, not a print.  It previously ran
+        # `lake build <module>.AxiomAudit`, which could not fail: `#print
+        # axioms` never errors, and a warm `.lake` cache emits no axiom lines
+        # at all.  Pin the three properties that make it real.
+        audit_step = workflow[audit:].split("- name:", 2)[1]
+        self.assertIn("lake env lean", audit_step)
+        self.assertIn("sorryAx", audit_step)
+        self.assertIn("depends on axioms", audit_step)
 
 
 if __name__ == "__main__":

@@ -220,8 +220,64 @@ def check() -> tuple[int, int, int]:
     return len(files), len(results), total_bytes
 
 
+# `research_corpus/Erdos1041` is source-only: it is absent from `lakefile.toml`
+# and from both root import files, so no job in this repository elaborates it,
+# and it sits outside `check_release.py`'s `LIBRARY_ROOTS` proof-trust scan.
+# SCOPE.md already says it extends neither the checkpoint nor `docs/claims.json`,
+# but nothing enforced that boundary at the token level: a `sorry` or a fresh
+# `native_decide` could land here and no gate in the repository would notice.
+#
+# `sorry`, `admit`, and project-defined axioms have no justification in a
+# published corpus and are rejected outright.  `native_decide` is a different
+# case: nine uses are already here and are load-bearing for the finite
+# counterexample evidence.  Deleting them is a mathematical decision, not a
+# hygiene one, so they are pinned instead — the exact files and the exact count.
+# A tenth use, or a use in a new file, fails until the pin is updated
+# deliberately.  Note that `native_decide` disqualifies a result from Palomar
+# (its Comparator forbids `Lean.ofReduceBool`), so this pin also marks exactly
+# which sources are ineligible for that route.
+NATIVE_DECIDE_PIN = {
+    f"{PUBLIC_PREFIX}/CentroidHubCounterexample.lean": 4,
+    f"{PUBLIC_PREFIX}/QuarticCoreRadiusCase.lean": 5,
+}
+FORBIDDEN_TOKEN_RE = re.compile(r"\bsorry\b|\badmit\b|(?<![\w.])axiom\s+")
+NATIVE_DECIDE_RE = re.compile(r"native_decide|\+native\b")
+
+
+def check_proof_trust() -> tuple[int, int]:
+    """Gate the source-only corpus that no Lean job in this repository builds."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lean_source import lean_code_without_comments_and_strings
+
+    observed: dict[str, int] = {}
+    scanned = 0
+    for path in sorted(CORPUS.rglob("*.lean")):
+        rel = path.relative_to(ROOT).as_posix()
+        scanned += 1
+        code = lean_code_without_comments_and_strings(
+            path.read_text(encoding="utf-8")
+        )
+        forbidden = FORBIDDEN_TOKEN_RE.search(code)
+        if forbidden:
+            raise CorpusError(
+                f"{rel} contains {forbidden.group(0).strip()!r}; the research "
+                "corpus is published source and must not carry proof holes"
+            )
+        count = len(NATIVE_DECIDE_RE.findall(code))
+        if count:
+            observed[rel] = count
+
+    if observed != NATIVE_DECIDE_PIN:
+        raise CorpusError(
+            "native_decide surface moved; update NATIVE_DECIDE_PIN deliberately. "
+            f"expected {NATIVE_DECIDE_PIN}, observed {observed}"
+        )
+    return scanned, sum(observed.values())
+
+
 def main() -> int:
     try:
+        scanned, native_decide_count = check_proof_trust()
         file_count, result_count, total_bytes = check()
     except CorpusError as exc:
         print(f"check_erdos1041_research_corpus: FAIL: {exc}", file=sys.stderr)
@@ -229,7 +285,9 @@ def main() -> int:
     print(
         "check_erdos1041_research_corpus: "
         f"{file_count} content-addressed files, {result_count} activated results, "
-        f"{total_bytes} bytes; checkpoint coherent"
+        f"{total_bytes} bytes; checkpoint coherent; "
+        f"{scanned} Lean sources scanned, no sorry/admit/axiom, "
+        f"{native_decide_count} pinned native_decide uses (not Palomar-eligible)"
     )
     return 0
 

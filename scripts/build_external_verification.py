@@ -416,10 +416,94 @@ def quote(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
+SORRY_RE = re.compile(r"\bsorry\b")
+CHALLENGE_FILENAME = "Challenge.lean"
+
+
+def _lean_sources() -> list[Path]:
+    """Every committed Lean source, excluding build output."""
+    return sorted(p for p in ROOT.rglob("*.lean") if ".lake" not in p.parts)
+
+
+def sorry_census() -> dict:
+    """Derive the `sorry` accounting in `formalization.yaml` from the tree.
+
+    These four numbers used to be hand-written literals here, and they drifted:
+    the projection reported one `sorry` and said "The only sorry is ...", while
+    two statement-isolated Challenge fixtures carried one each.  Counting them
+    means the published number cannot disagree with the source again.
+
+    The scan reuses the lexer in ``scripts/lean_source.py`` — the same one the
+    release gate uses — so that prose in a docstring asserting the *absence* of
+    `sorry` is not counted as one.  A second, divergent lexer here would be its
+    own defect, and that module is stdlib-only precisely so this builder can
+    reach it without importing the release gate's heavier dependencies.
+    """
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
+
+    root_lean_files = {f"{root}.lean" for root in LIBRARY_ROOTS}
+    challenge: dict[str, int] = {}
+    corpus: dict[str, int] = {}
+    other: dict[str, int] = {}
+    for path in _lean_sources():
+        text = path.read_text(encoding="utf-8")
+        if "sorry" not in text:
+            continue
+        count = len(SORRY_RE.findall(lean_code_without_comments_and_strings(text)))
+        if not count:
+            continue
+        rel = path.relative_to(ROOT).as_posix()
+        if path.name == CHALLENGE_FILENAME:
+            challenge[rel] = count
+        elif path.parts[len(ROOT.parts)] in LIBRARY_ROOTS or rel in root_lean_files:
+            corpus[rel] = count
+        else:
+            other[rel] = count
+
+    # The guard, not just the count: a `sorry` anywhere other than a declared
+    # Challenge fixture is a proof-trust failure, and must not be absorbed into
+    # a total that still reads as "intentional".
+    if corpus or other:
+        offenders = ", ".join(sorted({**corpus, **other}))
+        raise SystemExit(
+            "build_external_verification: sorry outside a statement-isolated "
+            f"Challenge fixture: {offenders}"
+        )
+
+    return {
+        "challenge": challenge,
+        "total": sum(challenge.values()),
+        "corpus_total": 0,
+    }
+
+
+def render_sorry_boundary(census: dict) -> str:
+    """Name the fixtures rather than asserting a count the reader cannot check."""
+    files = sorted(census["challenge"])
+    if not files:
+        return (
+            "No sorry anywhere in the repository, including the Comparator "
+            "challenge fixtures."
+        )
+    listed = "; ".join(files)
+    where = (
+        f"the statement-isolated Comparator challenge fixture ({listed})"
+        if len(files) == 1
+        else f"one of the statement-isolated Comparator challenge fixtures ({listed})"
+    )
+    return (
+        f"Every sorry is a trusted proposition package in {where}. Each is the "
+        "fixture against which Comparator checks the proof-bearing solution; "
+        "the proof corpus and every solution wrapper have sorry_count 0."
+    )
+
+
 def render_formalization(
     packet: dict, problem_projection: dict, comparator_source: dict
 ) -> str:
     schema_commit = packet["formalization_schema"]["commit"]
+    census = sorry_census()
     lines = [
         f"# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/{schema_commit}/schema/formalization.schema.json",
         "# Generated from docs/claims.json::external_verification_packet.",
@@ -435,7 +519,10 @@ def render_formalization(
         "    - \"Will Cook\"",
         "classification:",
         "  arxiv: [\"math.NT\", \"math.CO\"]",
-        "  msc2020: []",
+        # Required by the Palomar submission spec, and empty here until now.
+        # 11J72 (irrationality; linear independence over a field) is the code
+        # the private source tree already carries for this corpus.
+        "  msc2020: [\"11J72\"]",
         "sources:",
         "  - title: \"Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049\"",
         "    authors:",
@@ -458,11 +545,11 @@ def render_formalization(
         "    All eight covered Erdős problems remain open. This repository checks",
         "    subsidiary theorems, formalises selected known results, verifies finite",
         "    instances, and records conditional reductions and method barriers.",
-        "  proof_corpus_sorry_count: 0",
-        "  sorry_count: 1",
+        f"  proof_corpus_sorry_count: {census['corpus_total']}",
+        f"  sorry_count: {census['total']}",
         "  sorry_in_definitions: 0",
-        "  trusted_challenge_sorry_count: 1",
-        "  sorry_boundary: \"The only sorry is the trusted proposition package in the statement-isolated Comparator challenge. It is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0.\"",
+        f"  trusted_challenge_sorry_count: {census['total']}",
+        f"  sorry_boundary: {quote(render_sorry_boundary(census))}",
         "  axioms:",
     ]
     for axiom in packet["comparator"]["permitted_axioms"]:
@@ -601,7 +688,7 @@ def render_formalization(
                 "        promotion_boundary: \"This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface.\"",
             ])
     lines.extend([
-        "  trusted_challenge_holes: 1",
+        f"  trusted_challenge_holes: {census['total']}",
         "  packet: \"docs/EXTERNAL_VERIFICATION.md\"",
         "  receipt_contract: \"docs/external_verification_packet.json::receipt_contract\"",
         "",
