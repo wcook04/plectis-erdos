@@ -537,6 +537,16 @@ residual being exactly zero, and no cofinal family with a strictly nonzero
 rounded residual has been produced.  This is the most direct remaining
 hypothesis, stated in \S\ref{sec:open}.
 
+The Mathlib-only Comparator surface
+\texttt{ExternalVerification68PrimeUnitTranslator} now carries this family at
+its natural strength: the complete prime-translator profile, the exact integer
+translation law \pdecl{channelResidual_appendPrimeTranslator}, and the
+unconditional remote Cramer-grid reduction above.  Its deliberate negative
+fixture changes the theorem type by an extra hypothesis.  Comparator replay or
+Palomar acceptance would check those declarations under the configured trust
+budget; neither would prove the missing strict nonvanishing statement or turn
+the construction into a solution of Problem~68.
+
 \section{Zero plateaux, first exit, and denominator bounds}\label{sec:plateau}
 
 A second, independent route works on the rational grid rather than on channels.
