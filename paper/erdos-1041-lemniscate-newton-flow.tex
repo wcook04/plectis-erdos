@@ -251,6 +251,34 @@ is regression and stress-test evidence.  The arc constant $2$ is sharp on the
 regular $n$-gon, so this chord argument does not reach radii tending to $1$;
 the unrestricted concyclic case and Erd\H{o}s~\#1041 remain open.
 
+\subsection*{Cyclic trinomial fibres}
+
+There is also a positive structured family in every cyclic lift degree.  Fix
+integers $1\le r\le m$ and $q\ge1$, and consider the translated polynomial
+\[
+ f(z)=(z-h)^{qm}+a(z-h)^{qr}+c.
+\]
+Writing $w=(z-h)^q$ reduces the root equation to
+$w^m+aw^r+c=0$.  At such a quotient root the middle coefficient can be
+eliminated exactly: for $0\le u\le1$,
+\[
+ u^mw^m+au^rw^r+c
+   =(1-u^r)c-(u^r-u^m)w^m.
+\]
+The two coefficients on the right are nonnegative and have total at most one.
+Lean therefore proves that, if $|w|<1$ and $|c|<1$, the complete radial spoke
+is strictly contained in the open unit lemniscate.  This is an all-root
+statement; no Vieta-small root selection is needed for the containment bound.
+
+For a nontrivial cyclic fibre, two selected displacements $y_1,y_2$ with
+$|y_1|,|y_2|<1$ also satisfy $|y_1|+|y_2|<2$.  The formal source checks the
+factorization, strict spoke estimate, and this metric budget.  It does not yet
+check the ordinary finite argument selecting a suitable quotient root and two
+distinct members of its fibre, lifting both quotient spokes, or assembling
+their union as a path in the relevant component.  Thus the Lean theorem is the
+load-bearing analytic kernel for this translated cyclic-trinomial family, not
+the complete path theorem and not a proof of unrestricted Erd\H{o}s~\#1041.
+
 \subsection*{The degree-five target is now explicit}
 
 The degree-five analysis sharpens the two-nearest-spoke threshold.  If a
