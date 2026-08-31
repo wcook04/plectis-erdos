@@ -8205,6 +8205,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
+          "path": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
           "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
           "role": "Lean proof module",
@@ -10465,6 +10471,7 @@
           "path": "ErdosProblems/Root.lean",
           "role": "Lean proof module",
           "imports": [
+            "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
             "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
             "ErdosProblems.Erdos1049.HermitePadeNoGo",
             "ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence",
