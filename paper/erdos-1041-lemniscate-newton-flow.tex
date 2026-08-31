@@ -174,7 +174,7 @@ Ray separation of critical values & Checked (consumer form) & Endpoints of a fin
 Ray-collision locus & Checked & $\beta=(ra-b)/(1-r)$, $r>0$, $r\ne1$: one real parameter per pair. \\
 Quartic case & Cited & Proved in \cite[Thm.~1, p.~1]{june2026}; does not extend to general degree. \\
 Translated quartic quotient fibres & Ordinary theorem with a Lean-checked metric kernel & For $f(z)=P((z-h)^q)$, $P$ monic quartic and $q\ge2$; Pendyala supplies the quartic geometry, while Lean checks the root-lift density, exact primitive, and strict endpoint budget. \\
-Coefficient-controlled cyclic tetranomials & Ordinary path theorem with Lean-checked spoke bounds & For $g(w)=w^m+aw^r+bw^s+c$, two roots satisfying $|c|+|b||w|^s<1$ have safe spokes; $|b|+|c|\le1$ is an all-root sufficient condition. \\
+Signed-moment cyclic tetranomials & Lean-checked two-root safe-spoke theorem & For a finite root family of $g(w)=w^m+aw^r+bw^s+c$, an exact signed $L^2$ moment budget selects two distinct roots whose complete spokes are safe; $|c|+|b||w|^s<1$ and $|b|+|c|\le1$ remain useful pointwise sufficient conditions. \\
 Concyclic zeros with $2\rho^n\le1$ & Ordinary proof; finite exact and numerical checks & Distinct-root theorem; not Lean checked; the unrestricted concyclic case remains open. \\
 Unrestricted proof of \cite[Theorem~1, p.~1]{march2026} & Proof gap & Proposition~12 uses a false three-ended local saddle block; located publicly by Tao (25 March 2026), conceded by the author at statement level (26 March 2026).  No counterexample is exhibited. \\
 Constant-translation ray separation and root retention & Checked & After critical-value injectivity, arbitrary small ray avoidance and an explicit unit-disc margin. \\
@@ -317,13 +317,38 @@ Lean checks this factorization and the resulting strict spoke theorem under
 the exact weak exponent hypotheses $1\le s\le r\le m$; it also checks the
 coefficient-only corollary above.
 
+There is a stronger, genuinely two-root formal theorem.  Let $S$ be a finite
+family of roots, $N=|S|\ge2$, and
+\[
+  M=\sum_{i\in S}w_i^s.
+\]
+Lean proves the exact signed energy identity
+\[
+ \sum_{i\in S}|c+bw_i^s|^2
+ =N|c|^2+|b|^2\sum_{i\in S}|w_i^s|^2
+   +2\mathop{\rm Re}(\overline c\,bM).
+\]
+Consequently, if every $|w_i|<1$, $|c|<1$, and
+\[
+ N\bigl(|b|^2+|c|^2\bigr)
+   +2\mathop{\rm Re}(\overline c\,bM)<N-1,
+\]
+then two distinct indices $i,j\in S$ satisfy
+$|c+bw_i^s|<1$ and $|c+bw_j^s|<1$.  Feeding those inequalities into the
+Abel decomposition proves, in Lean, that both complete root spokes lie
+strictly in $\{|g|<1\}$.  The signed cross term is essential: this interface
+can certify configurations outside the coefficient-only triangle
+$|b|+|c|\le1$.
+
 For $q\ge2$ and $f(z)=g((z-h)^q)$, the ordinary regular-fibre mean-square
 identity puts every quotient root inside the unit disk.  Lifting two selected
 quotient spokes gives a path through $h$ whose two displacement lengths sum
-to less than $2$.  The Lean module does not formalize the selection of the two
-smallest quotient roots, Vieta's constant-term step, cyclic-fibre lifting, or
-the final path assembly.  Without the displayed two-root or coefficient
-budget, the tetranomial selector remains open; this family does not solve
+to less than $2$.  The new Lean theorem assumes the finite root family, its
+signed moment $M$, and the displayed budget; it does not derive that budget
+from arbitrary tetranomial coefficients, prove that the supplied family is a
+complete root multiset, perform cyclic-fibre lifting, or construct the final
+path object.  Without the signed-moment, root-dependent, or coefficient-only
+budget, the tetranomial case remains open; this family does not solve
 unrestricted Erd\H{o}s~\#1041.
 
 \subsection*{Translated quartic quotient fibres}
