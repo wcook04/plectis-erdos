@@ -51,8 +51,14 @@ def main() -> int:
         ".github/ISSUE_TEMPLATE/architecture_proposal.yml",
         ".github/PULL_REQUEST_TEMPLATE.md",
         "skills/README.md",
+        "skills/install-clone-skills/SKILL.md",
+        "skills/explain-public-system/SKILL.md",
+        "skills/mine-open-problem/SKILL.md",
+        "skills/add-open-problem/SKILL.md",
         "skills/erdos-research-return/SKILL.md",
         "skills/public-mathematical-writing/SKILL.md",
+        "scripts/install_agent_skills.py",
+        "scripts/test_clone_skills.py",
         "scripts/continue_research.py",
         "scripts/validate_research_return.py",
         "scripts/accept_research_return.py",
@@ -106,6 +112,13 @@ def main() -> int:
     ):
         require(marker in skill, f"research-return skill omits local tool {marker}")
     require("skills/erdos-research-return/SKILL.md" in agent_entry, "compact agent entry omits return skill")
+    for clone_skill in (
+        "install-clone-skills",
+        "explain-public-system",
+        "mine-open-problem",
+        "add-open-problem",
+    ):
+        require(clone_skill in agent_entry, f"compact agent entry omits {clone_skill}")
 
     public_surfaces = "\n".join(
         text(path)

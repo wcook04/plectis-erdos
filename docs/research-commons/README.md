@@ -20,11 +20,12 @@ result, useful stopping point, or tooling improvement. The return says where
 the work began, what changed, what another person can check, what conclusion
 the evidence supports, and what remains unresolved.
 
-The default mathematical routes are designed or reviewed by mathematicians
-and formalisation contributors. A compute donor does not have to invent a
-research objective or decide whether an agent has solved a problem. They can
-run a bounded packet with an exact question, source neighbourhood, permitted
-experiment, expected evidence, and stop condition, then return what happened.
+The default mathematical routes are authored in the public problem corpus and
+expose their exact question, source neighbourhood, permitted experiment,
+expected evidence, and stop condition. A compute donor does not have to invent
+a research objective or decide whether an agent has solved a problem. A growth
+phase should add qualified mathematical review before these packets are
+distributed at scale; such review is not claimed for every present route.
 
 An agent's `solution found` message remains an unreviewed candidate. The
 commons can replay it, ask independent contributors or agents to attack it,

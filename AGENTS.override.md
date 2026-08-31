@@ -22,21 +22,15 @@ Query the public corpus before reading papers or Lean source:
 python3 scripts/query_corpus.py --ask "<question>"
 ```
 
-For “what is in this repository?”, “give me the lay of the land”, “walk me
-through this codebase”, “what are the interesting/non-trivial results?”, “what
-has been formalized?”, or a request for full coverage, the ordinary-language
-query must resolve to the same complete bounded overview as:
+For a repository overview or full-coverage request, use:
 
 ```sh
 python3 scripts/query_corpus.py --overview --format card
 ```
 
-That overview covers every mathematical programme, all claim-status classes,
-every exact remaining-open proposition, the publication-family index, and the
-companion Plectis boundary. Do not answer a repository-wide question from one
-flagship problem or a theorem count. Follow its `answer_contract`: weight
-substantive reductions, reusable interfaces, and honest obstructions above raw
-volume, while retaining the exact open boundary.
+It covers every programme, status class, exact open proposition, paper family,
+and the companion boundary. Do not answer from one flagship or theorem count;
+follow its `answer_contract` and preserve every exact open boundary.
 
 Follow the returned claim, remaining-open, declaration, module, and paper
 handles. For a corpus-wide progress review, the bounded route must include:
@@ -99,31 +93,26 @@ python3 scripts/query_corpus.py --route comparator_assurance
 python3 scripts/query_corpus.py --route palomar_qualification
 ```
 
-`comparator_assurance` reports the configured comparison packet, modules,
-axioms, and receipt; it does not establish novelty, significance, priority, or
-peer review. `palomar_qualification` reports repository-local structural readiness
-and separately reports any external follow-on state; it does not confer acceptance,
-registration, publication, or external endorsement.
+`comparator_assurance` does not establish novelty, significance, priority, or
+peer review. `palomar_qualification` does not confer acceptance, registration,
+publication, or external endorsement.
 
-The same guide must answer ordinary requests such as “which papers should I
-read?” through `--ask`. It separates the mathematical gateway, specialist
-companion, repository-systems guide, and reciprocal Plectis route; it also
-refuses to send a cold reader into a registered artifact absent from the
-checkout. After choosing a paper, follow its typed claim, open, declaration,
-source, or publication handles rather than treating prose as authority.
-`docs/papers/README.md` is the human question-first index, while
-`docs/papers/corpus.json` is the machine inventory of every carried manuscript
-and section anchor.
+For paper choice use `--ask`, `docs/papers/README.md`, and the machine inventory
+`docs/papers/corpus.json`. Follow typed claim and source handles; prose is not
+proof authority.
 
-For publication mutation, open `docs/publication_entry_packet.json` first, then
-`docs/publication_contract.json` or one typed query-corpus paper/publication
-handle. These surfaces own publication organization and evidence boundaries;
-they do not acquire Lean proof authority. Authored prose is digested exposition,
-not a substitute for the claim registry or checked source.
+For publication mutation, open `docs/publication_entry_packet.json`, then the
+publication contract or emitted handle. These own organisation, not Lean proof.
+
+### Explain, install, mine, or add a problem
+
+Use the clone-local skills in `skills/`: `explain-public-system`,
+`install-clone-skills`, `mine-open-problem`, and `add-open-problem`. The mining
+skill may coordinate subagents, but the integrating agent verifies every return.
 
 ### Return research from a clone
 
-For contributed or resumable work, load the clone-local route:
+For contributed or resumable work, load:
 
 ```sh
 cat skills/erdos-research-return/SKILL.md

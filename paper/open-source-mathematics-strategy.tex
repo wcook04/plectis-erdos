@@ -5,7 +5,7 @@
 \usepackage{paper-house-style}
 \usepackage{booktabs,array,float,placeins,multicol,graphicx}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric,matrix}
 \usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,citecolor=linkinternal]{hyperref}
 \hypersetup{
   bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
@@ -106,10 +106,52 @@ authority to a returned result.  Contributors may use any model runner or no
 model at all.  What joins their work is the public problem definition,
 evidence contract, and review path.
 
+\subsection*{What one clone lets a contributor do}
+
+A contributor does not need to understand the whole repository before doing
+useful work.  From one clone, a person or agent can choose one of five first
+actions: mine a bounded problem route; contribute mathematical direction
+without paying for the compute that follows it; formalise or review one claim;
+repair the research machinery; or propose another sourced problem world.  The
+clone-local skills explain the system, select and run a frontier, install the
+same workflows in a compatible agent harness, and describe the present
+multi-stage process for adding a problem.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  action/.style={draw,rounded corners=2pt,align=center,text width=23mm,
+                 minimum height=13mm,fill=white},
+  arr/.style={-{Latex[length=1.8mm]},semithick}
+]
+\matrix[column sep=3mm,row sep=2mm] {
+  \node[action] (mine) {mine one\\bounded route}; &
+  \node[action] (direct) {give mathematical\\direction}; &
+  \node[action] (formal) {formalise or\\review a claim}; &
+  \node[action] (repair) {improve the\\machinery}; &
+  \node[action] (add) {propose another\\problem world}; \\
+};
+\node[draw,rounded corners=2pt,below=7mm of formal,align=center,
+      text width=.76\linewidth,minimum height=10mm,fill=black!3] (return)
+      {Return the smallest inspectable delta: source, evidence, starting state,
+       tool roles, limitation, and the statement that remains open.};
+\draw[arr] (mine.south) -- (mine.south |- return.north);
+\draw[arr] (direct.south) -- (direct.south |- return.north);
+\draw[arr] (formal.south) -- (formal.south |- return.north);
+\draw[arr] (repair.south) -- (repair.south |- return.north);
+\draw[arr] (add.south) -- (add.south |- return.north);
+\end{tikzpicture}
+\caption{Five useful first actions.  None requires an endpoint solution, and
+none receives a stronger status than the evidence returned with it.}
+\label{fig:first-actions}
+\end{figure}
+
 \section{A production model for mathematical progress}\label{sec:model}
 
-The phrase ``turn compute into mathematics'' is useful only after its hidden
-variables are made explicit.  Let
+Candidate production depends jointly on compute, model capability, human
+direction, infrastructure, problem choice, and accumulated knowledge.
+Mathematical progress additionally depends on validation and scarce human
+review.  The notation below makes those dependencies explicit.  Let
 \[
  C_t,\ A_t,\ H_t,\ I_t,\ P,\ K_t,\ V_t,\ R_t
 \]
@@ -162,35 +204,57 @@ status merely because it changed the process.
 \centering
 \resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
-  node distance=6mm and 9mm,
-  box/.style={draw,rounded corners,align=center,minimum height=8mm,
-              text width=27mm,fill=white},
-  wide/.style={box,text width=42mm},
-  arr/.style={-{Latex[length=2mm]},thick},
-  back/.style={-{Latex[length=2mm]},thick,dashed}
+  role/.style={draw,rounded corners=2pt,align=center,text width=28mm,
+               minimum height=7mm,fill=white,font=\small},
+  stage/.style={draw,rounded corners=3pt,align=center,text width=43mm,
+                minimum height=18mm,fill=black!3,font=\small},
+  outputbox/.style={draw,rounded corners=3pt,align=center,text width=34mm,
+                    minimum height=12mm,fill=white,font=\small},
+  receipt/.style={draw,rounded corners=2pt,align=center,text width=58mm,
+                  minimum height=12mm,font=\scriptsize,fill=white},
+  band/.style={draw=black!45,rounded corners=4pt,inner sep=4mm},
+  arr/.style={-{Latex[length=2mm]},thick}
 ]
-\node[box] (compute) {compute and\\agent capability};
-\node[box,below=of compute] (insight) {mathematical\\direction};
-\node[box,below=of insight] (infra) {infrastructure\\contributions};
-\node[wide,right=of insight] (world) {versioned problem world\\papers, source, graph, experiments, no-gos};
-\node[wide,right=of world] (fan) {validation and review\\formal check, meaning, scope, attribution};
-\node[box,right=of fan] (math) {reviewable\\mathematics};
-\node[box,below=of fan] (credit) {public provenance\\and role credit};
-\draw[arr] (compute.east) -- (world.west);
-\draw[arr] (insight.east) -- (world.west);
-\draw[arr] (infra.east) -- (world.west);
-\draw[arr] (world) -- (fan);
-\draw[arr] (fan) -- (math);
-\draw[arr] (fan) -- (credit);
-\draw[back] (math.north) to[bend left=30] node[above,align=center,font=\scriptsize]
-  {theorems, counterexamples,\\no-gos, corrections} (world.north);
-\draw[back] (credit.south) to[bend right=26] node[below,align=center,font=\scriptsize]
-  {accepted architecture changes\\improve the conversion layer} (infra.south);
+\node[role] (direction) {mathematical direction};
+\node[role,below=2mm of direction] (compute) {compute and agents};
+\node[role,below=2mm of compute] (formal) {formalisation};
+\node[role,below=2mm of formal] (infra) {infrastructure};
+\node[role,below=2mm of infra] (review) {review and exposition};
+\node[role,below=2mm of review] (new) {new problems and funding};
+\node[band,fit=(direction)(new),label={[font=\bfseries\small]above:outside functions}] (roles) {};
+
+\node[stage,right=13mm of roles] (engine)
+  {choose a frontier\\[1mm]read the relevant corpus\\[1mm]
+   reason, compute, and formalise\\[1mm]return a candidate};
+\node[band,fit=(engine),label={[font=\bfseries\small]above:shared engine}] (engineband) {};
+
+\node[outputbox,right=13mm of engineband,yshift=11mm] (funnel)
+  {replay, challenge,\\statement reconciliation};
+\node[outputbox,below=5mm of funnel] (accepted)
+  {accepted corpus and\\public provenance};
+\node[band,fit=(funnel)(accepted),label={[font=\bfseries\small]above:public result}] (resultband) {};
+
+\draw[arr] (roles.east) -- (engineband.west);
+\draw[arr] (engineband.east) -- (resultband.west);
+\draw[arr] (funnel) -- (accepted);
+
+\node[receipt,below=7mm of roles,xshift=35mm] (resource)
+  {resource receipt: human time; API, subscription, or hardware use; model;
+   harness; starting commit};
+\node[receipt,right=5mm of resource] (lineage)
+  {contribution receipt: who supplied what, which evidence supports it, and
+   which later work uses, repairs, or explains it};
+\node[draw=none,below=3mm of $(resource.south)!0.5!(lineage.south)$,
+      align=center,font=\scriptsize,text width=120mm] (feedback)
+  {Accepted mathematics enlarges the reusable corpus.  Accepted architecture
+   changes improve the engine used by later runs.};
 \end{tikzpicture}
 }
-\caption{The open-source conversion loop.  Search output crosses a validation
-and review boundary before it becomes public mathematical progress.  Accepted
-mathematical and architectural returns improve different state variables.}
+\caption{The conversion loop.  The labels on the left are functions, not
+classes of people: one person may perform several, and several people may
+perform one.  Search output crosses replay and review before it enters the
+accepted corpus.  Mathematical returns enlarge the corpus; architecture
+returns alter the engine.}
 \label{fig:conversion}
 \end{figure}
 
@@ -226,31 +290,28 @@ The eight current problems were selected as demanding research environments,
 not as a claim that they were the eight most tractable or valuable open
 problems.  Their papers expose materially different contribution points.
 
-\begin{center}
-\small
-\begin{tabular}{@{}p{0.09\linewidth}p{0.31\linewidth}p{0.49\linewidth}@{}}
-\toprule
-Problem & Mathematical world & Examples of exact open contribution points \\
-\midrule
-68 & Factorial reciprocal series & Cofinal non-unit carries, weighted collision
-mass, valuation amplification, endpoint escape, or a nonintegral Cramer residual. \\
-243 & Reciprocal-tail rigidity & Exclude unbounded divergent-mass negative
-excursions; prove overlap-height growth, summability, or a variable-rise CRT barrier. \\
-249 & Binary totient series & Dyadic phase anti-concentration, carry-rank
-compression, coupled denominator approximants, or a scoped no-go for one of these routes. \\
-251 & Prime-gap dyadic series & Cofinal tail-shift escape or a finite
-logarithmic-block anti-concentration theorem for actual prime gaps. \\
-257 & Mersenne-support subseries & Greedy-orbit recurrence, rational-target
-classification, fatal-gap exclusion, or realised finite-denominator structure. \\
-269 & Three-prime running LCM & Identify the literal rationality-to-carry
-bridge, prove tail nonintegrality, or construct a faithful two-dimensional representation. \\
-1041 & Lemniscate geometry & Repair or refute the saddle decomposition,
-construct the ray-cut graph, or prove metric gluing and perturbation stability. \\
-1049 & Rational-base Lambert series & Build a noncollapsed four-jet or
-determinant family with analytic decay, or prove a structural obstruction for a named class. \\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  card/.style={draw,rounded corners=2pt,align=left,text width=.19\linewidth,
+               minimum height=21mm,inner sep=1.5mm,fill=white,font=\small}
+]
+\matrix[column sep=3mm,row sep=3mm] {
+  \node[card] {\textbf{68}\\Factorial reciprocal series\\Carries and denominator escape}; &
+  \node[card] {\textbf{243}\\Reciprocal-tail rigidity\\Discrete dynamics and recovery}; &
+  \node[card] {\textbf{249}\\Binary totient series\\Arithmetic tails and anti-concentration}; &
+  \node[card] {\textbf{251}\\Prime-gap dyadic series\\Actual-prime structure versus tail escape}; \\
+  \node[card] {\textbf{257}\\Mersenne-support subseries\\Achievement sets and rational targets}; &
+  \node[card] {\textbf{269}\\Running least-common-multiple sums\\Finite-state structure and carries}; &
+  \node[card] {\textbf{1041}\\Lemniscate geometry\\Local flow versus global path geometry}; &
+  \node[card] {\textbf{1049}\\Rational-base Lambert series\\Approximation kernels and obstructions}; \\
+};
+\end{tikzpicture}
+\caption{Eight distinct research environments.  The results map and the
+problem papers state their exact frontiers; this strategy paper does not
+reproduce the specialist vocabulary needed to attack them.}
+\label{fig:problem-worlds}
+\end{figure}
 
 Every row admits more than theorem proving.  A mathematician may sharpen a
 hypothesis or supply a counterexample.  A programmer may run a discriminating
@@ -268,68 +329,59 @@ source, experiments, known counterexamples, failed mechanisms, source
 literature, and exact open obligations.  A bounded task is a neighbourhood in
 that world, not an invitation to read the repository indiscriminately.
 
-The current public clone exposes these layers separately:
+The public layers carry different kinds of evidence.  Their order is easier to
+read as an authority ladder than as one all-purpose badge.
 
-\begin{center}
-\small
-\begin{tabular}{@{}p{0.26\linewidth}p{0.34\linewidth}p{0.32\linewidth}@{}}
-\toprule
-Surface & What it supplies & What it cannot decide \\
-\midrule
-Problem papers and \repolink{docs/RESULTS.md}{results map}
-  & Mathematical statements, proof spine, limits, and exact open questions
-  & Kernel acceptance or community importance \\
-Lean source and pinned toolchain
-  & Formal propositions and proof terms accepted by Lean
-  & Intended meaning, novelty, or faithful exposition \\
-Corpus queries and navigation graph
-  & Bounded routes through declarations, claims, papers, and relations
-  & Proof or permission to strengthen a claim \\
-Experiments and finite certificates
-  & Exact inputs, programs, finite outputs, and interpretations
-  & An unbounded theorem \\
-Comparator and Palomar
-  & Exact-interface comparison, permitted-axiom checking, a pinned registry
-    record, and an automated editorial filter
-  & Human expert review, novelty, endorsement, or broad acceptance \\
-Research commons
-  & Structured return, review, adoption, correction, provenance, and credit
-  & Automatic correctness or entitlement to merge \\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{figure}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  rung/.style={draw,rounded corners=2pt,align=center,text width=34mm,
+               minimum height=23mm,inner sep=2mm,font=\small,fill=white},
+  arr/.style={-{Latex[length=1.8mm]},semithick}
+]
+\node[rung] (exp) {\textbf{Experiment}\\establishes a finite output\\[1mm]
+  \emph{not} an unbounded theorem};
+\node[rung,right=4mm of exp] (lean) {\textbf{Lean kernel}\\accepts the exact formal proposition\\[1mm]
+  \emph{not} its intended meaning};
+\node[rung,right=4mm of lean] (match) {\textbf{Statement review}\\checks formal--informal alignment\\[1mm]
+  \emph{not} novelty or importance};
+\node[rung,right=4mm of match] (expert) {\textbf{Expert review}\\assesses soundness and relevance\\[1mm]
+  \emph{not} community consensus};
+\node[rung,right=4mm of expert] (community) {\textbf{Community uptake}\\develops through criticism and reuse\\[1mm]
+  cannot be granted by this repository};
+\draw[arr] (exp) -- (lean);
+\draw[arr] (lean) -- (match);
+\draw[arr] (match) -- (expert);
+\draw[arr] (expert) -- (community);
+\end{tikzpicture}
+}
+\caption{Evidence and acceptance remain separate.  A candidate need not pass
+through every box in a single line, but no earlier box inherits the authority
+of a later one.}
+\label{fig:authority-ladder}
+\end{figure}
 
-The project is a wrapper and composition layer around substantial prior work,
-not a replacement for it.  Its principal inheritances are explicit:
+The project is a composition layer around substantial prior work, not a
+replacement for it.  Erd\H{o}s Problems supplies questions, sources, status,
+and a problem community \cite{erdosproblems}.  Lean supplies the formal
+language and kernel \cite{lean4}.  DeepMind's
+\texttt{formal-conjectures} supplies a public one-problem-file model with
+metadata, snapshots, issues, and pull requests \cite{formalconjectures}.
+Comparator and Palomar supply exact-interface checking, permitted-axiom
+inspection, and a durable formal record with a deliberately limited editorial
+claim \cite{palomar}.  Polymath supplies a social precedent for publishing
+small, tentative, and negative contributions \cite{polymath}.  BOINC and GIMPS
+supply the volunteer-compute precedent and make visible why executable work,
+independent checks, and legible credit matter \cite{boinc,gimps}.  The present
+repository wraps these practices into a route that a newcomer can enter
+without first rebuilding each component.
 
-\begin{center}
-\footnotesize
-\renewcommand{\arraystretch}{1.12}
-\begin{tabular}{@{}p{0.29\linewidth}p{0.62\linewidth}@{}}
-\toprule
-Inherited project or practice & How it is used here \\
-\midrule
-Erd\H{o}s Problems \cite{erdosproblems}
-  & Hard questions, historical status, sources, and a problem community become
-    problem-sized formal worlds with exact frontiers and typed return routes. \\
-Lean 4 \cite{lean4}
-  & Kernel-checked definitions, statements, and proofs are used incrementally
-    inside a search, experiment, exposition, and adoption loop. \\
-DeepMind \texttt{formal-conjectures} \cite{formalconjectures}
-  & One-problem files, metadata, snapshots, issues, and pull requests are extended
-    with deep path/no-go records and separate mathematical and architecture credit. \\
-Comparator and Palomar \cite{palomar}
-  & Exact interfaces, permitted-axiom checks, pinned records, and an automated
-    filter receive candidates from a corpus of routes, evidence, and contributor lineage. \\
-Polymath \cite{polymath}
-  & Open partial and negative collaboration is given replayable evidence bundles
-    and formal, computational, and architectural lineage. \\
-BOINC and GIMPS \cite{boinc,gimps}
-  & Donated compute, executable clients, independent checks, and visible credit
-    inspire mathematician-designed packets for open-ended path mining. \\
-\bottomrule
-\end{tabular}
-\end{center}
+The same underlying substrate can support several reader projections: a short
+public primer, a specialist paper, a detailed proof account, Lean declarations,
+an agent explanation, and machine-readable queries.  Each projection must link
+back to its source claims and evidence.  A shorter or friendlier account does
+not acquire permission to strengthen them.
 
 An external runner begins at \repolink{AGENTS.override.md}{the compact agent
 entry}.  It can inspect all problem frontiers, choose a bounded question, read
@@ -377,10 +429,12 @@ The complete protocol has eight steps.
 The accessibility claim is role-bounded.  A non-specialist compute
 contributor is not asked to decide what constitutes a proof or to invent a
 mathematically meaningful objective unaided.  The default work unit is a
-packet prepared from a mathematician-authored or mathematician-reviewed
-route: an exact open statement, a relevant source neighbourhood, a permitted
+packet prepared from an authored mathematical route: an exact open statement,
+a relevant source neighbourhood, a permitted
 experiment or proof obligation, an expected evidence class, and a stopping
-condition.  The contributor and agent execute the packet and return evidence.
+condition.  Qualified mathematical review should precede large-scale
+distribution; it is not claimed for every present route.  The contributor and
+agent execute the packet and return evidence.
 Lean checks a formal proposition.  A qualified reviewer checks whether that
 proposition says what was intended and whether the return is relevant.  The
 return remains a candidate until the applicable gates have been crossed.
@@ -492,6 +546,30 @@ partial and negative work is one such reason.  It is also technically useful:
 provenance makes later correction, reproduction, and literature attribution
 possible.
 
+\subsection*{Record now, trace consequences later}
+
+The first ledger should remain descriptive.  A contribution receipt records
+who supplied which object, from which public state, under which role, with
+which evidence and limitation.  It need not guess the contribution's eventual
+importance.  Later accepted work can add reviewed lineage edges such as
+\emph{uses}, \emph{enables}, \emph{repairs}, \emph{formalises}, \emph{refutes},
+or \emph{explains}.  A consequence view can then show which later results,
+tools, or expositions depend on an earlier contribution.
+
+This is more informative than awarding points at intake, but it is not an
+objective measure of impact.  Time does not establish causation, and a graph
+edge is an authored claim that may need correction.  The view should therefore
+remain inspectable, non-scalar, and corrigible.  A small observation may later
+have many consequences; a large compute run may have none beyond its negative
+result.  Both retain their original receipt.
+
+Any financial reward scheme would require a separate prospective policy for
+eligibility, conflicts, funding, tax, dispute, and the treatment of old
+receipts.  Existing attribution must not silently become a financial contract.
+The graph can record that an idea mattered; it cannot, at present, send an
+invoice.  Pure mining runs can still disclose the model, provider, harness,
+compute donor, starting commit, and any human direction as distinct roles.
+
 \section{Distributed compute without distributed authority}\label{sec:security}
 
 Volunteer compute has an established precedent.  BOINC packages scientific
@@ -520,11 +598,13 @@ no secrets, bounded resources, and explicit artefact retention.  Promotion to
 trusted infrastructure is a later review decision.
 
 A useful compute return records at least the source commit, model and runner,
-tool disclosure, prompt or task packet, wall-clock and token or hardware
-budget where available, commands, changed paths, outputs, and validation
-receipts.  It also records failures and the stopping rule.  This is required
-for capability comparisons as well as security: a claimed improvement is not
-interpretable when attempts, scaffolding, and cost are invisible.
+tool disclosure, prompt or task packet, wall-clock time, human time, token or
+subscription use, and hardware budget where available, together with commands,
+changed paths, outputs, validation receipts, failures, and the stopping rule.
+These inputs should not be forced into one exchange rate: a mathematician's
+hour, an API bill, and a donated graphics processor are different resources.
+They can still be disclosed well enough to make a capability comparison
+interpretable and to reveal when hidden scaffolding paid most of the cost.
 
 The first public mode may remain deliberately simple: contributors clone the
 repository and run their own agents locally.  A later volunteer-compute layer
@@ -591,6 +671,41 @@ composition and its implementation in one open mathematical corpus.  The
 paper makes no universal priority claim and reports no controlled comparison
 showing that the composition increases discovery rate.
 
+\section{Adding another problem world}\label{sec:add-problem}
+
+The architecture is intended to hold more than the present eight problems,
+but adding a folder is not enough.  A coherent new world needs a canonical
+question and primary source; a dated account of its current status; an explicit
+public claim boundary; a readable primer or problem note; formal statements
+with an informal-faithfulness account where formalisation is appropriate;
+known literature, computations, counterexamples, and failed routes; exact open
+contribution points; navigation and validation routes; attribution; and a
+maintainer or review path.
+
+The public skill for adding a problem separates three states.  A proposal may
+begin as a sourced issue.  An incubating formal lane may add checked source
+under a problem-owned namespace while stating that it is not yet a reviewed
+public claim.  A fully indexed world joins the problem registry, paper corpus,
+query routes, return schema, cold-start inventory, and relevant external
+crosswalks.  These are distinct transitions because a checked proposition, a
+published paper, a reviewed claim, and a Comparator selection are different
+facts.
+
+The last transition is not yet a one-command public operation.  The current
+paper-corpus fan-in has a maintainer-owned stage, several checks enumerate the
+present roster, and the bounded problem index is already close to its size
+limit.  The immediate infrastructure work is therefore to derive rosters from
+one public authority, admit an explicit incubating state, split verbose detail
+out of the bounded index, and make an absent external crosswalk record a normal
+state rather than an error.  Until then, the add-problem skill reports the
+couplings instead of concealing them behind a scaffold command.
+
+Arbitrary depth is a design target, not a measured scaling result.  The useful
+test is whether a cold agent can retrieve the relevant neighbourhood without
+reading every paper or rediscovering an existing failure as the number and
+depth of worlds grow.  That test should be repeated whenever the roster or
+navigation machinery changes.
+
 \section{Participation and growth}\label{sec:growth}
 
 The project should present several independent reasons to clone the
@@ -602,10 +717,10 @@ repository.
       learning the private orchestration system.
 \item A \textbf{Lean user} can formalise a paper deduction, audit a statement,
       simplify a proof, or improve the checked interface.
-\item A \textbf{compute hobbyist} can run a local agent against a real open
-      problem using a bounded route designed or reviewed by mathematicians,
-      and return reproducible evidence even when it is negative.  The
-      contributor is not asked to certify a proof claim.
+\item A \textbf{compute hobbyist} can run a local agent against a bounded route
+      in a real open problem and return reproducible evidence even when it is
+      negative.  The contributor is not asked to certify a proof claim;
+      mathematical review remains downstream.
 \item An \textbf{agent builder} can compare runners on a stable problem world
       while disclosing compute, attempts, and starting state.
 \item An \textbf{infrastructure contributor} can improve the conversion from
@@ -673,13 +788,37 @@ finite data, failed mechanisms, and unresolved obligations.  General process
 memory records lessons that transfer: a navigation failure, an experiment
 pattern, a formalisation pitfall, a validation gap, or a review rule.
 
-The system calls the second movement \emph{up-propagation}.  A local lesson is
-not copied immediately into a universal mathematical-reasoning rule.  It is
-first stated with its evidence, sibling cases, proposed scope, and
-over-generalisation guard.  If the pattern survives review, it may improve a
-general skill or route.  Computational reasoning can likewise become a
-specialised skill with reusable experiment forms, but every new experiment
-still records its finite domain and interpretation.
+A continuous mining run should execute a visible loop:
+
+\begin{enumerate}
+\item re-read the current frontier and the relevant corpus neighbourhood;
+\item check whether the proposed route, calculation, or failure is already
+      recorded;
+\item compare distinct attacks and run the cheapest exact computation that can
+      distinguish or refute them;
+\item carry out the warranted analytic and incremental Lean work;
+\item attack the strongest candidate for dropped hypotheses, counterexamples,
+      and stronger prior art;
+\item return the smallest evidence-bearing delta with its starting state and
+      surviving boundary; and
+\item add problem-local knowledge while proposing reusable process lessons
+      separately for review.
+\end{enumerate}
+
+Subagents can divide literature reading, computation, proof search,
+formalisation, and adversarial review when their questions and evidence remain
+independent.  The integrating agent must read and verify their returns, and
+each lane keeps its own starting state and stop condition.  Parallel agents
+can multiply attempts.  They do not multiply truth.
+
+The system calls learning a reusable lesson from a local run
+\emph{up-propagation}.  A local lesson is not copied immediately into a
+universal mathematical-reasoning rule.  It is first stated with its evidence,
+sibling cases, proposed scope, and over-generalisation guard.  If the pattern
+survives review, it may improve a general skill or route.  Computational
+reasoning can likewise become a specialised skill with reusable experiment
+forms, but every new experiment still records its finite domain and
+interpretation.
 
 This produces a graph that is richer than a theorem library.  Nodes may be
 endpoints, conjectures, representations, computations, proofs,
@@ -691,9 +830,9 @@ a route; it cannot become a proof dependency or a public implication without
 the corresponding evidence.
 
 As this graph grows, it may support a different kind of agent training or
-retrieval: not only examples of successful proofs, but tempting arguments
-paired with the exact reason they fail; not only theorem statements, but
-frontier neighbourhoods showing the remaining cut.  Whether this improves
+retrieval: successful proofs alongside tempting arguments paired with the
+exact reason they fail, and theorem statements alongside frontier
+neighbourhoods showing the remaining cut.  Whether this improves
 mathematical originality or merely makes models more confident within known
 territory is an open empirical question.
 
@@ -826,6 +965,12 @@ Question & Public route \\
 \midrule
 What is the experiment? & \repolink{README.md}{README.md} \\
 Where should an agent begin? & \repolink{AGENTS.override.md}{AGENTS.override.md} \\
+How can an agent explain the system? &
+\repolink{skills/explain-public-system/SKILL.md}{explain-public-system skill} \\
+How can an agent mine a frontier? &
+\repolink{skills/mine-open-problem/SKILL.md}{mine-open-problem skill} \\
+How are clone skills installed elsewhere? &
+\repolink{skills/install-clone-skills/SKILL.md}{install-clone-skills skill} \\
 What is proved and what remains open? & \repolink{docs/RESULTS.md}{docs/RESULTS.md} \\
 Which papers and problems exist? & \repolink{docs/papers/README.md}{docs/papers/README.md} \\
 How can I contribute mathematics? & \repolink{CONTRIBUTING.md}{CONTRIBUTING.md} and the
@@ -833,6 +978,8 @@ research-progress issue form \\
 How can I improve the architecture? &
 \repolink{docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md}{architecture contribution guide}
 and the architecture-proposal issue form \\
+How can I propose or add another problem? &
+\repolink{skills/add-open-problem/SKILL.md}{add-open-problem skill} \\
 How is a return validated? &
 \repolink{docs/research-commons/README.md}{research-commons protocol} \\
 How is credit recorded? &

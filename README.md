@@ -64,13 +64,41 @@ git clone https://github.com/wcook04/plectis-lean-erdos249-257.git
 cd plectis-lean-erdos249-257
 ```
 
-Then ask any local coding agent:
+Then give any local coding agent one of four jobs:
+
+- **Explain it:** “Read `AGENTS.override.md` and use
+  `skills/explain-public-system/SKILL.md` to explain this project to a
+  mathematician, a compute contributor, or a complete newcomer.”
+- **Mine a route:** “Use `skills/mine-open-problem/SKILL.md`. Choose the
+  bounded problem route that best matches the available tools, use subagents
+  where their work can be checked independently, and return the smallest
+  evidence-bearing result.”
+- **Improve the machinery:** “Read the architecture contribution path, find
+  one reproducible bottleneck in the cold-clone workflow, and propose or
+  implement a focused repair with credit.”
+- **Add a problem:** “Use `skills/add-open-problem/SKILL.md` to prepare a
+  sourced proposal, incubating formal lane, or fully indexed problem world.”
+
+The more general mining prompt is:
 
 > Read `AGENTS.override.md`. Inspect the eight problem frontiers and their
 > papers. Choose one bounded published route that matches the tools available
 > here, work until its recorded stop condition, validate the result, and
 > prepare a candidate return with exact evidence, limitations, and credit. Do
 > not promote the claim beyond the evidence class that was actually checked.
+
+The skills work directly from the clone. To make them available in other
+working directories, preview and then apply the optional installer:
+
+```bash
+python3 scripts/install_agent_skills.py --list
+python3 scripts/install_agent_skills.py --target codex
+python3 scripts/install_agent_skills.py --target codex --apply
+```
+
+Replace `codex` by `claude`, or provide `--target-dir` for another
+directory-based harness. Installation changes instructions, not proof status;
+the repository remains the evidence source.
 
 For an infrastructure idea, use the
 [architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml).
