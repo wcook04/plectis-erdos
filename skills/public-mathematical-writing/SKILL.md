@@ -1,0 +1,89 @@
+---
+name: public-mathematical-writing
+description: Edit this repository's reader-facing mathematical Markdown, papers, and front doors without weakening claim boundaries or making readers begin with commands, schemas, or internal names.
+---
+
+# Public mathematical writing
+
+Use this skill for `HUMAN_ENTRY.md`, the reader-facing parts of `README.md`,
+result and scope guides, paper full text, and manuscript prose. It travels with
+the public clone and depends only on files in this repository.
+
+Do not apply it to command references, generated JSON, schemas, or agent-only
+workbench instructions. Those files should stay exact and operational. The
+point is to give readers a real account of the mathematics before asking them
+to understand the repository machinery.
+
+## Begin from the claim, not the draft
+
+Before changing mathematical prose, read the exact current result from its
+owning Lean declaration, the matching entry in `docs/claims.json` when one
+exists, and the present paper or result guide. Keep these distinctions intact:
+
+- a Lean-checked theorem, a cited theorem, a finite computation, a conditional
+  reduction, a counterexample, and an open conjecture are different kinds of
+  evidence;
+- preserve every hypothesis, quantifier, implication direction, attribution,
+  and stated limit;
+- never turn acceptance by Lean, Comparator, Palomar, a maintainer, or a pull
+  request into novelty, peer review, importance, endorsement, or a solution;
+- keep the unresolved statement beside the result that stops short of it.
+
+If the sources disagree, stop the prose edit and repair the authority surface
+first. A smoother paragraph cannot settle a mathematical discrepancy.
+
+## Write for the reader in front of you
+
+A human front door should first answer four ordinary questions in prose: what
+problem is being studied, what has been established, why that result is worth
+reading, and what remains open. Give the reader a useful next link after that.
+Do not make a command, table, field name, route id, badge, or file inventory do
+the work of an explanation.
+
+Tables are fine as later reference material when genuinely parallel facts need
+scanning. Commands are fine in agent and maintainer sections. Neither belongs
+before a reader has been told what the mathematical object is and why the
+page exists.
+
+For a paper or theorem explanation:
+
+1. State the strongest accurate result early and name its evidence class.
+2. Explain the question and the obstruction before listing declarations or
+   files.
+3. Give the proof spine, then spend the most space on the step that does real
+   mathematical work.
+4. Introduce notation only when it lowers the total reading cost. Use one name
+   for the same object across prose, Lean, figures, and indexes.
+5. Put a simple nontrivial example before an abstraction when it reveals the
+   mechanism, and say where the example stops representing the theorem.
+6. Distinguish original proof, cited result, correction, computation, and
+   exposition in citation wording.
+7. End the result where the evidence ends. State the next open implication
+   plainly instead of closing with promotional language.
+
+## Prose pass
+
+Use direct, understated English. Name the mathematician, contributor, program,
+or formal declaration that performs an action when the actor matters. Cut
+generic throat-clearing, staged revelations, slogans, repeated three-part
+lists, inflated significance claims, and conclusions that merely repeat the
+opening. Keep standard mathematical terminology and define repository jargon
+that a new reader cannot infer.
+
+Vary sentence length naturally. Preserve a useful irregular sentence rather
+than polishing every paragraph into the same cadence. Do not invent warmth,
+certainty, history, motivation, examples, sources, or a personal voice that
+the source does not contain.
+
+## Final check
+
+Compare every changed mathematical sentence with its declaration, claim row,
+computation, or cited source. Check the rendered Markdown links and compile a
+changed manuscript when its toolchain is available. Then read the page from a
+cold start: can a reader identify the question, principal result, reason for
+interest, evidence class, hard step, and exact open boundary without learning
+an internal command vocabulary first?
+
+Run `python3 scripts/test_public_writing_contract.py` after changing the public
+front doors or this routing contract. Run the owning paper, corpus, claim, and
+release checks after changing mathematical content.

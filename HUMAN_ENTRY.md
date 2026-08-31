@@ -3,11 +3,10 @@
 
 # A reader's way in
 
-This repository is a public record of serious work around eight unsolved
-problems of Paul Erdős. It brings together Lean proofs, mathematical papers,
-plain-language summaries, and checks that keep those different accounts from
-quietly drifting apart. You do not need to know Lean, or know how the
-repository is organised, to begin reading.
+This repository follows eight unsolved problems of Paul Erdős. It contains
+Lean proofs, mathematical papers, explanations for readers, and checks that
+compare the claims in those different forms. You do not need to know Lean or
+understand the directory layout to begin.
 
 All eight problems remain open. The project proves intermediate theorems,
 formalises results already known in the literature, tests exact finite cases,
@@ -31,19 +30,17 @@ reader wants to inspect the exact statement.
 
 ## A good first mathematical thread
 
-If you want the clearest example of a genuine theorem family, begin with the
-work around Erdős Problem 257. The repository checks irrationality for several
-important restricted classes of supports and develops the topology and measure
-theory of the associated achievement sets. The universal question, covering
-every infinite support, is still open.
+Problem 257 is the clearest place to begin with a completed theorem family.
+The repository checks irrationality for several restricted classes of supports
+and develops the topology and measure theory of the associated achievement
+sets. The universal question, covering every infinite support, is still open.
 
-If you are more interested in the anatomy of a failed route, the work around
-Problem 249 is useful for a different reason. It contains exact reductions,
-finite denominator exclusions, and a long certificate programme, while also
-showing that several attractive reformulations are equivalent to the original
-open problem rather than progress beyond it. That negative information is part
-of the mathematical value: it tells a future researcher which apparent
-shortcuts do not remove the hard step.
+Problem 249 shows something different: what a failed route can teach. It
+contains exact reductions, finite denominator exclusions, and a long
+certificate programme. It also proves that several attractive reformulations
+are equivalent to the original open problem, so they do not remove its hard
+step. A future researcher can see which apparent shortcuts have already been
+tested and why they stop.
 
 The other six programmes each have their own paper. They concern factorial
 denominators, rapidly growing reciprocal sums, prime gaps, running least common
@@ -68,10 +65,10 @@ small set of candidates for possible external review and records whether the
 repository is structurally ready for that process. It does not confer
 acceptance, importance, publication, or endorsement.
 
-The practical reading rule is simple: start with the mathematical question,
-read the result and its stated limit together, and only then follow the formal
-source if you want the exact theorem. Do not infer importance from the number
-of files, the number of declarations, or the size of a numerical bound.
+Start with the mathematical question. Read each result together with its
+stated limit, then follow the formal source when you want the exact theorem.
+The number of files, declarations, or computed cases does not measure the
+importance of a result.
 
 ## Where to go next
 

@@ -3,33 +3,29 @@
 
 # Contributing
 
-This repository is meant to be cloned, explored, improved, and brought back
-into contact with the people who are working on it. A contribution does not
-have to solve an Erdős problem to be useful. A corrected proof step, a failed
-route with a reproducible reason, a counterexample, a sharper boundary, a
-better explanation, or a repaired public check can all save future work.
+This repository is public so that other people can clone it, do useful work,
+and send that work back. A contribution does not have to solve an Erdős
+problem. A corrected proof step, a counterexample, a failed route with a reason
+another person can check, a clearer boundary, or a repaired public check can
+all save future work.
 
-The simplest contribution path is the familiar one. Fork or clone the public
-repository, make a focused change on a branch, and open a pull request against
-the public repository. Explain the mathematical question or repository
-problem you started from, what you changed or learned, what evidence another
-person can inspect, and what remains unresolved. If you have an observation
-but no finished patch, open a plain-language research-progress issue instead.
-You do not need to understand the repository's receipt format before telling
-us something useful.
+The ordinary contribution path is enough: fork or clone the repository, make
+a focused change, and open a pull request. Explain the question you started
+from, what you changed or learned, what another person can inspect, and what
+remains unresolved. If you have an observation but no finished patch, open a
+plain-language research-progress issue and write it in your own words. You do
+not need to learn the receipt format before telling us something useful.
 
 ## What happens to returned work
 
-Every proposed change keeps its delivery history in the public issue or pull
-request. When work is accepted, the repository can also record a small,
-committed receipt that says who contributed, which exact artifacts are being
-credited, which public generation the work began from, what evidence was
-checked, and which limitations survived. Generated contribution views are
-built from those accepted receipts. This makes credit travel with the
-repository rather than living only in a private notebook, a chat transcript,
-or a disappearing web page.
+The issue or pull request keeps the public history of a proposed change. When
+maintainers accept the work, they can commit a short receipt recording who
+contributed, which files or results are being credited, which public commit the
+work began from, what was checked, and what remains limited. The public credit
+pages are rebuilt from accepted receipts. The credit then travels with every
+clone instead of living only in a notebook, chat, or web page.
 
-Acceptance and mathematical claim status are deliberately separate. An
+Acceptance and mathematical claim status are separate. An
 accepted correction can be credited without being called a new theorem. A
 negative or inconclusive result can be credited when it rules out a route or
 leaves a reproducible stopping point. A formal proof can be accepted as an
@@ -37,23 +33,23 @@ artifact while novelty, exposition, or a stronger public claim still needs
 work. Earlier credit remains visible when a later contribution corrects or
 supersedes it.
 
-Credit is attached to the work actually returned. Contributors, collaborators,
-people operating tools, and disclosed model systems remain distinct rather
-than being collapsed into one author field. The project does not rank people
-by commit count, diff size, or the number of generated records. See the
+Credit is attached to the work actually returned. The receipt records
+contributors, collaborators, tool operators, and disclosed model systems as
+different roles instead of collapsing them into one author field. The project
+does not rank people by commit count, diff size, or the number of generated
+records. See the
 [credit and stewardship policy](docs/research-commons/CREDIT_POLICY.md) for the
 full boundary and the [accepted contributions](docs/research-commons/CONTRIBUTIONS.md)
 for the public, receipt-backed view.
 
 ## Staying in sync
 
-A clone records the public commit from which its work began. That starting
-point lets later readers distinguish the contributor's change from work that
-landed in the meantime. Once accepted work reaches the public main branch or
-a tagged release, anyone with an older clone can fetch it and merge or rebase
-in the ordinary Git way. The accepted receipt, the credited artifact, and the
-generated recognition view arrive together because they are public repository
-files. None of that route depends on the private development repository.
+A returned contribution records the public commit where the work began. Later
+readers can then separate the contribution from changes that landed in the
+meantime. Once accepted work reaches the public main branch or a tagged
+release, older clones can fetch it and merge or rebase in the usual way. The
+receipt, the credited artifact, and the public credit page arrive together as
+repository files. This does not depend on a private development checkout.
 
 If two contributions overlap, preserve both histories and reconcile them in a
 new change; do not silently rewrite the earlier return. If a later discovery
@@ -72,7 +68,7 @@ eight headline Erdős problems remain open unless an extraordinary independent
 mathematical process establishes otherwise.
 
 Ordinary prose, citation, and tooling corrections can arrive as normal pull
-requests. A research return is useful when the provenance matters: for
+requests. A structured research return is useful when the history matters: for
 example, a bounded investigation that another person should be able to resume,
 or a negative result whose exact starting point and evidence should not be
 lost. The [research commons guide](docs/research-commons/README.md) explains
@@ -80,8 +76,8 @@ that lifecycle without requiring you to read a schema.
 
 ## For agents and maintainers
 
-The human route above is the contract. The commands below implement it; they
-are not prerequisites for reporting a useful result. Agents should use the
+The human route above is the contract. The machinery below implements it; none
+of it is a prerequisite for reporting a useful result. Agents should use the
 clone-local [research-return skill](skills/erdos-research-return/SKILL.md), and
 maintainers should preserve the contributor's prose rather than replacing it
 with machine field names.

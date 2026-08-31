@@ -83,6 +83,9 @@ must be changed through their builder, never by hand.
 
 ### Publication, systems-paper, or artifact-boundary work
 
+Mathematical prose follows
+[the writing skill](skills/public-mathematical-writing/SKILL.md).
+
 For paper choice, role, availability, or reading order, start with:
 
 ```sh

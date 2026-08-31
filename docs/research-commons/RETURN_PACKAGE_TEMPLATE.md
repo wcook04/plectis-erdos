@@ -11,25 +11,28 @@ itself promote a reviewed claim.
 ## Canonical routes
 
 For cold-clone orientation, begin with the [reader orientation](../ORIENTATION.md)
-and choose a bounded problem route from the [frontier index](../WAVE_INDEX.md#problem-<number>-route),
+and choose a bounded problem route from the generated [problem index](../problems.json),
 then return here to record the exact evidence and attributable outcome.
-When the return names a problem, preserve that route's exact stable
-`#problem-<number>-route` anchor so the next reader can re-enter the same
-bounded frontier without guessing from chronology.
+When the return names a problem, preserve its exact stable `erdos_<n>` route id
+from `python3 scripts/query_corpus.py --route erdos_<n>` and use the
+[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix)
+for the human crosswalk; do not invent an anchor from wave chronology.
 
-Start with the [research-commons contract](README.md) and keep the
-[credit and stewardship policy](CREDIT_POLICY.md) beside the return. Use the
-[portable resume-state template](RESUME_STATE_TEMPLATE.yaml) or the worked
-[frontier handoff](FRONTIER_HANDOFF_EXAMPLE.md) when the next contributor needs
-to continue the route. The [accepted-receipt recognition and impact view](CONTRIBUTION_RECOGNITION.md)
+Start with the [agent workbench cold-start route](../AGENT_WORKBENCH.md) and
+keep the [accepted-contribution index](CONTRIBUTIONS.md) beside the return.
+For continuation, retain the route-memory sidecar described in section 4 and
+follow the selected problem's frontier route in the [complete eight-problem
+return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix). The
+[accepted-receipt recognition and impact view](CONTRIBUTION_RECOGNITION.md)
 and its [machine-readable projection](contribution-recognition.json) expose
 contributor, artifact, result, evidence, review, promotion, correction, and
 release-inclusion details only after an accepted receipt exists. They preserve
 distinct human, operator, collaborator, model, and provider identities and do
 not rank activity. The generated [accepted-contributions view](CONTRIBUTIONS.md)
 remains the compact receipt-backed artifact-credit index. After acceptance, follow
-the row's `public_frontier` path and anchor to the matching
-`RETURN_PACKAGE_EXAMPLE_<number>.md#current-public-consumer-fan-in`; it exposes
+the row's `public_frontier` path and use the matching row in the [complete
+eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix);
+it exposes
 the complete result-family frontier and surviving boundary, but creates no extra
 recognition credit. Validate a saved return with
 [`scripts/validate_research_return.py`](../../scripts/validate_research_return.py);
@@ -57,7 +60,7 @@ python3 scripts/query_corpus.py --module <module-or-path returned by --problem>
 ```
 
 The namespaced `<artifact_id>::<label>` handle keeps repeated paper labels
-attached to the correct problem note; the [dedicated anchor ladder](../PROOF_STATE_COMPILER.md#dedicated-paper-anchor-discovery)
+attached to the correct problem note; the [public-evidence return route](../PROOF_STATE_COMPILER.md#return-to-public-evidence)
 documents the same bridge. A note's `source_path` or
 `paper.source_ref` remains a reading locator, not a selector input; the
 source-only #68 and #1041 routes continue through their returned Lean module.
@@ -79,24 +82,25 @@ not proof authority; preserve the pinned Lean source, registered claim, and
 problem boundary in the return.
 
 For the public problem route, start with the generated
-[exact problem route](../PROBLEMS.md#problem-<number>-route), which exposes every `material_result_families`
+[problem index](../problems.json), which exposes every `material_result_families`
 entry—its mechanism, exact scope, Lean route, and open boundary—before you
-follow named Lean interfaces. Then use the selected package's [current public
-consumer fan-in](RETURN_PACKAGE_EXAMPLE_<number>.md#current-public-consumer-fan-in)
-for the compact grouped route to its strongest distinct public results; the
+follow named Lean interfaces. For the reader-facing proof/paper/source
+crosswalk and compact grouped route to its strongest distinct public results,
+use the [complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix);
+the
 legacy `strongest_result` field must not stand in for that full frontier. For
 the complete family census and a reverse route to one selected family, run
 `python3 scripts/query_corpus.py --search "all result families"`, then
 `python3 scripts/query_corpus.py --publication-family <family_id>`. The returned
 `significance_rank` is a navigation order, not a novelty or priority claim. For
 the all-eight proof-to-paper/source dispatch table, use the
-[proof-state route](../PROOF_STATE_COMPILER.md#problem-to-proof-to-paper-route).
+[proof-state public-evidence route](../PROOF_STATE_COMPILER.md#return-to-public-evidence).
 It is a navigation aid, not proof authority.
 
 For the paper-to-formal crosswalk, use the
-[exact problem/source route](../SOURCE_MAP.md#problem-<number>-source-route). For
-a registered problem note, continue through its [exact note-anchor
-crosswalk](../SOURCE_MAP.md#registered-problem-note-anchor-joins) before
+[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix).
+For a registered problem note, continue through its exact note-anchor
+crosswalk in that matrix before
 following the returned declaration and source-coordinate route. The map
 connects canonical paper and source records to problem, claim, module,
 declaration, and source-coordinate routes; it is a navigation aid, not proof
@@ -267,8 +271,9 @@ python3 scripts/continue_research.py package \
 Record the exact `route_memory.sha256`, `return_id`, route relationship, and
 changed-evidence paths from the sidecar; the validator rejects a different
 problem or route, a stale canonical digest, or changed evidence that is absent
-from `return.repository.changed_paths`. See the [commons intake guidance](README.md#bind-route-memory-at-accepted-return-intake)
-for the corresponding accepted-receipt command and its authority boundary.
+from `return.repository.changed_paths`. See the [accepted contribution
+recognition view](CONTRIBUTION_RECOGNITION.md) for the corresponding
+accepted-receipt command and its authority boundary.
 The package transition copies `return.json` and `route-memory.json` together;
 do not submit a return without the sidecar, and do not treat a successful
 local join as accepted recognition.
@@ -304,10 +309,9 @@ the first next command instead of hiding the failure.
 - **Disclosed provider:** `<name/version/resources, undisclosed, not_used, or not_recorded>`
 - **Known limitations:** `<assumptions, bounded range, missing review, or unresolved failure>`
 
-For source-backed claims, begin with the
-[primary-source evidence guide](../primary-sources/README.md) and record the
-exact artifact, digest, and locator you checked; a citation label alone is not
-evidence. If the guide marks the source unresolved, carry that status into the
+For source-backed claims, begin with the [prior-art and attribution map](../PRIOR_ART.md#principal-sources)
+and record the exact artifact, digest, and locator you checked; a citation
+label alone is not evidence. If the map marks the source unresolved, carry that status into the
 return and do not state a theorem-level conclusion from metadata or an
 unreadable publisher route.
 

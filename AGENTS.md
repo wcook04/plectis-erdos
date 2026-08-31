@@ -15,6 +15,11 @@ Use [docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md) for the compact command
 routes and [CONTRIBUTING.md](CONTRIBUTING.md) for contribution mechanics. This
 file remains the deeper authority, mutation, and validation contract.
 
+For any reader-facing mathematical Markdown or manuscript edit, load
+[skills/public-mathematical-writing/SKILL.md](skills/public-mathematical-writing/SKILL.md).
+It keeps mathematical truth and evidence upstream of prose and keeps the human
+front door in ordinary language; agent surfaces may remain command-heavy.
+
 ## Eight-problem cold-start card
 
 A blank-slate agent must receive the complete problem fleet here; it must not

@@ -50,11 +50,13 @@ def main() -> int:
         ".github/PULL_REQUEST_TEMPLATE.md",
         "skills/README.md",
         "skills/erdos-research-return/SKILL.md",
+        "skills/public-mathematical-writing/SKILL.md",
         "scripts/continue_research.py",
         "scripts/validate_research_return.py",
         "scripts/accept_research_return.py",
         "scripts/build_research_contributions.py",
         "scripts/build_research_contribution_recognition.py",
+        "scripts/test_public_writing_contract.py",
     )
     for path in required_files:
         require((ROOT / path).is_file(), f"clone-local contribution route is missing {path}")
@@ -64,6 +66,7 @@ def main() -> int:
         "HUMAN_ENTRY.md",
         "docs/research-commons/README.md",
         "docs/research-commons/CREDIT_POLICY.md",
+        "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
         "skills/README.md",
     ):
         for target in local_markdown_links(source):

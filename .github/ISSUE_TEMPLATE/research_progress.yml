@@ -11,7 +11,7 @@ body:
         Tell us what you found in your own words. A proof correction, counterexample,
         failed route, clearer explanation, source correction, or reproducible tooling
         improvement can all be useful. If you have a branch or patch, link it. The
-        repository can turn accepted work into a provenance-and-credit receipt later.
+        maintainers can record exact credit and history if the work is accepted.
   - type: textarea
     id: question
     attributes:

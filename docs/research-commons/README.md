@@ -3,37 +3,33 @@
 
 # The research commons
 
-The research commons is how work can leave this repository in somebody else's
-clone and come back without losing its origin, evidence, or credit. It is not a
-private intake system. Its records, schemas, examples, checks, and accepted
-contribution views all live in this public repository.
+The research commons lets somebody clone the repository, work independently,
+and send the result back without losing its origin, evidence, or credit. The
+whole process is public: the records, examples, checks, and accepted credit
+pages all live in this repository.
 
-A contributor begins from a particular public commit and follows a bounded
-question. They may return a proof, a correction, a counterexample, a negative
-result, an inconclusive exploration with a useful stopping point, or a tooling
-improvement. The return names the starting point, the changed artifacts, the
-evidence another person can replay, the conclusion that is justified, and the
-boundary that remains.
+A contributor starts from a particular public commit and follows a bounded
+question. They might return a proof, correction, counterexample, negative
+result, useful stopping point, or tooling improvement. The return says where
+the work began, what changed, what another person can check, what conclusion
+the evidence supports, and what remains unresolved.
 
-There are two equally legitimate front doors. A person can open an ordinary
-pull request or a plain-language research-progress issue and describe the work
-in their own words. An agent or an advanced contributor can also attach the
-structured return package produced by the repository's continuation tooling.
-The structured path improves replay and assimilation, but the schema is not a
-test of whether a human is allowed to contribute.
+There are two ways in. A person can open an ordinary pull request or a
+research-progress issue and describe the work in their own words. An agent or
+an experienced contributor can also attach the structured package produced by
+the continuation tools. That package makes later checking and attribution
+easier. It is not an entrance exam for contributors.
 
-When returned work is accepted into the public repository, a committed receipt
-binds it to the accepted commit and preserves the contributor, collaborators,
-tool operators, and any disclosed model systems as separate identities. The
-accepted-only views are regenerated from those receipts. They credit exact
-artifacts and evidence; they do not turn acceptance into novelty, peer review,
-mathematical truth, or a stronger claim.
+When maintainers accept returned work, a committed receipt ties it to the
+accepted commit. It records the contributor, collaborators, tool operators,
+and any disclosed model systems as separate roles. The public credit pages are
+rebuilt from those receipts. Acceptance does not establish novelty, peer
+review, mathematical truth, or a stronger claim.
 
-Because the receipt and the accepted artifact are ordinary tracked files,
-older clones receive them when they update from the public repository. A later
-correction points back to the earlier receipt instead of erasing it. This gives
-the project a public memory of who did what, what was known at the time, and
-what the work did not establish.
+The receipt and accepted artifact are ordinary tracked files, so older clones
+receive both when they update. A later correction points back to the earlier
+receipt instead of erasing it. The history therefore records who did what,
+what was known at the time, and what the work did not establish.
 
 Begin with the [human contributor guide](../../CONTRIBUTING.md). Read the
 [credit and stewardship policy](CREDIT_POLICY.md) when attribution matters.
