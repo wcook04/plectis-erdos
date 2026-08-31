@@ -10,23 +10,56 @@ Lake's content-trace checker to validate restored CI outputs instead of using
 checkout mtimes, which are new on every GitHub runner.
 
 ``--plan`` reports compact dependency-wave sizes. Add ``--verbose-plan`` when
-the exact module names are needed for diagnosis.
+the exact module names are needed for diagnosis. Normal executions enter the
+public host-shared validation singleflight; ``--singleflight-worker`` is the
+private recursion boundary used by that tracked scheduler.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import os
 from pathlib import Path
 import re
 import subprocess
 import sys
 import time
+import tomllib
 from typing import Iterable
+
+import validation_singleflight as singleflight
+import lean_package_share
 
 
 ROOT = Path(__file__).resolve().parents[1]
+TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
+LAKE = TOOLCHAIN_BIN / "lake"
 IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)\s*(?:--.*)?$")
+GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
+LAKE_COMMAND_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+
+
+def lake_command(*arguments: str) -> list[str]:
+    """Build a Lake argv with the canonical installed toolchain executable."""
+    return [str(LAKE), *arguments]
+
+
+def _run(
+    command: list[str],
+    *,
+    cwd: Path,
+    timeout_seconds: float,
+    **kwargs: object,
+) -> subprocess.CompletedProcess[str]:
+    """Run Git/Lake without ambient selectors and with an explicit deadline."""
+    return subprocess.run(
+        command,
+        cwd=cwd,
+        env=singleflight.command_environment(),
+        timeout=timeout_seconds,
+        **kwargs,
+    )
 
 
 def default_jobs() -> int:
@@ -152,6 +185,72 @@ def resolve_targets(
     return resolved
 
 
+def lake_library_names(root: Path = ROOT) -> set[str] | None:
+    """Return declared Lake library names, or ``None`` for fixture roots."""
+
+    lakefile = root / "lakefile.toml"
+    if not lakefile.is_file():
+        return None
+    try:
+        config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
+    except (OSError, tomllib.TOMLDecodeError) as error:
+        raise ValueError(f"cannot parse Lake configuration: {lakefile}") from error
+    return {
+        library["name"]
+        for library in config.get("lean_lib", [])
+        if isinstance(library, dict) and isinstance(library.get("name"), str)
+    }
+
+
+def is_registered_lake_module(name: str, root: Path = ROOT) -> bool:
+    """Tell whether a discovered module name is a valid Lake library target."""
+
+    library_names = lake_library_names(root)
+    if library_names is None:
+        # Small unit-test fixture roots do not need a Lake manifest to exercise
+        # the historical module-target path.
+        return True
+    return any(
+        name == library or name.startswith(f"{library}.")
+        for library in library_names
+    )
+
+
+def direct_source_targets(
+    names: Iterable[str], modules: dict[str, Path], root: Path = ROOT
+) -> dict[str, Path]:
+    """Return existing discovered sources whose names are not Lake targets."""
+
+    return {
+        name: modules[name]
+        for name in names
+        if name in modules and not is_registered_lake_module(name, root)
+    }
+
+
+def direct_source_lake_imports(
+    direct_names: Iterable[str],
+    graph: dict[str, set[str]],
+    root: Path = ROOT,
+) -> list[str]:
+    """Return registered import roots that must exist before direct checks.
+
+    An unregistered source is elaborated with ``lake env lean`` rather than a
+    Lake module target.  Its registered imports still need a final Lake build:
+    the initial staleness snapshot can race a later cache invalidation and
+    leave a transitive object missing immediately before direct elaboration.
+    """
+
+    return sorted(
+        {
+            imported
+            for name in direct_names
+            for imported in graph[name]
+            if is_registered_lake_module(imported, root)
+        }
+    )
+
+
 def default_root_targets(modules: dict[str, Path], root: Path = ROOT) -> list[str]:
     """Return the package roots without relying on Lake's unbounded default."""
 
@@ -175,9 +274,10 @@ def changed_lean_paths(base: str, root: Path = ROOT) -> set[Path]:
     )
     changed_paths: set[Path] = set()
     for command in commands:
-        completed = subprocess.run(
+        completed = _run(
             command,
             cwd=root,
+            timeout_seconds=GIT_COMMAND_TIMEOUT_SECONDS,
             capture_output=True,
             text=True,
             check=False,
@@ -314,13 +414,14 @@ def lake_targets_up_to_date(
     targets = list(names)
     if not targets:
         return True
-    command = ["lake"]
+    command = lake_command()
     if rehash:
         command.append("--rehash")
     command.extend(["--no-build", "build", *(f"+{name}" for name in targets)])
-    result = subprocess.run(
+    result = _run(
         command,
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
         check=False,
@@ -346,13 +447,14 @@ def lake_stale_targets(
     targets = list(names)
     if not targets:
         return []
-    command = ["lake"]
+    command = lake_command()
     if rehash:
         command.append("--rehash")
     command.extend(["--no-build", "-v", "build", *(f"+{name}" for name in targets)])
-    result = subprocess.run(
+    result = _run(
         command,
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
@@ -398,16 +500,16 @@ def propagate_stale_targets(
 
 def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
     started = time.monotonic()
-    result = subprocess.run(
-        [
-            "lake",
+    result = _run(
+        lake_command(
             "--quiet",
             "--no-ansi",
             "--log-level=error",
             "build",
             f"+{name}",
-        ],
+        ),
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         check=False,
     )
     return name, result.returncode, time.monotonic() - started
@@ -420,16 +522,16 @@ def build_batch(names: Iterable[str], root: Path = ROOT) -> tuple[int, float]:
     if not modules:
         return 0, 0.0
     started = time.monotonic()
-    result = subprocess.run(
-        [
-            "lake",
+    result = _run(
+        lake_command(
             "--quiet",
             "--no-ansi",
             "--log-level=error",
             "build",
             *(f"+{name}" for name in modules),
-        ],
+        ),
         cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
         check=False,
     )
     return result.returncode, time.monotonic() - started
@@ -495,20 +597,92 @@ def run_final_authority_check(
     if not target_list:
         raise ValueError("final authority check requires at least one target")
     for name in target_list:
-        result = subprocess.run(
-            [
-                "lake",
+        result = _run(
+            lake_command(
                 "--quiet",
                 "--no-ansi",
                 "--log-level=error",
                 "build",
                 f"+{name}",
-            ],
+            ),
             cwd=root,
+            timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
             check=False,
         )
         if result.returncode:
             return result.returncode
+    return 0
+
+
+def run_source_authority_check(
+    sources: Iterable[Path], root: Path = ROOT
+) -> int:
+    """Check unregistered Lean sources directly through the pinned Lake env."""
+
+    resolved_root = root.resolve()
+    for source in sources:
+        relative_source = source.resolve().relative_to(resolved_root)
+        result = _run(
+            lake_command("env", "lean", relative_source.as_posix()),
+            cwd=root,
+            timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
+            check=False,
+        )
+        if result.returncode:
+            return result.returncode
+    return 0
+
+
+def prepare_dependency_packages(root: Path, state_root: Path | None = None) -> int:
+    """Attach/publish a COW package seed, hydrating once when necessary."""
+
+    state_root = state_root or singleflight.default_state_root()
+    try:
+        receipt = lean_package_share.prepare_workspace(root, state_root)
+    except (
+        OSError,
+        ValueError,
+        json.JSONDecodeError,
+        lean_package_share.PackageShareError,
+    ) as error:
+        print(f"lean-fast-build: package sharing unavailable: {error}", file=sys.stderr)
+        receipt = {"status": "package_sharing_unavailable"}
+    status = str(receipt.get("status") or "unknown")
+    print(f"lean-fast-build: package-share={status}", file=sys.stderr, flush=True)
+    if status != "hydrate_then_publish":
+        return 0
+    print(
+        "lean-fast-build: hydrating the host's first same-lock dependency cache",
+        file=sys.stderr,
+        flush=True,
+    )
+    completed = _run(
+        lake_command("exe", "cache", "get"),
+        cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
+        check=False,
+    )
+    if completed.returncode:
+        return completed.returncode
+    try:
+        published = lean_package_share.prepare_workspace(root, state_root)
+        print(
+            f"lean-fast-build: package-share={published.get('status', 'unknown')}",
+            file=sys.stderr,
+            flush=True,
+        )
+    except (
+        OSError,
+        ValueError,
+        json.JSONDecodeError,
+        lean_package_share.PackageShareError,
+    ) as error:
+        # The hydrated checkout remains usable. Failure to publish an optional
+        # COW seed must not be misreported as a Lean failure.
+        print(
+            f"lean-fast-build: hydrated locally; host seed publication skipped: {error}",
+            file=sys.stderr,
+        )
     return 0
 
 
@@ -527,6 +701,13 @@ def main(argv: list[str] | None = None) -> int:
         help="build changed Lean modules relative to REF (default: HEAD), plus untracked Lean files",
     )
     parser.add_argument("--jobs", type=int, default=default_jobs())
+    parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument(
+        "--singleflight-state-root",
+        type=Path,
+        default=None,
+        help=argparse.SUPPRESS,
+    )
     parser.add_argument("--plan", action="store_true")
     parser.add_argument(
         "--verbose-plan",
@@ -570,6 +751,57 @@ def main(argv: list[str] | None = None) -> int:
             target_modules = resolve_targets(args.targets, modules, root)
     except (RuntimeError, ValueError) as error:
         parser.error(str(error))
+    if (
+        not args.singleflight_worker
+        and not args.plan
+        and root.resolve() == singleflight.ROOT.resolve()
+    ):
+        state_root = singleflight.default_state_root()
+        specification = singleflight.validator_spec(
+            "lean",
+            target_modules,
+            None,
+            state_root,
+            lean_jobs=args.jobs,
+            lean_lake_staleness=args.lake_staleness,
+        )
+        receipt = singleflight.submit(specification, state_root)
+        terminal, code = singleflight.collect(
+            state_root,
+            receipt["key"],
+            True,
+            24 * 60 * 60,
+        )
+        if terminal.get("state") != "terminal":
+            print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+            return code
+        stdout = terminal.get("stdout", {}).get("tail")
+        stderr = terminal.get("stderr", {}).get("tail")
+        if stdout:
+            print(stdout, end="" if stdout.endswith("\n") else "\n")
+        if stderr:
+            print(
+                stderr,
+                end="" if stderr.endswith("\n") else "\n",
+                file=sys.stderr,
+            )
+        print(
+            "lean-fast-build: shared validation "
+            f"key={receipt['key'][:12]} reuse={receipt.get('reuse', 'owner')} "
+            f"exit={code}",
+            file=sys.stderr,
+        )
+        return code
+    if (
+        args.singleflight_worker
+        and not args.plan
+        and root.resolve() == singleflight.ROOT.resolve()
+    ):
+        package_code = prepare_dependency_packages(root, args.singleflight_state_root)
+        if package_code:
+            return package_code
+    direct_targets = direct_source_targets(target_modules, modules, root)
+    direct_target_names = set(direct_targets)
     graph = reachable_graph(target_modules, modules)
     build_waves = waves(reachable(target_modules, graph), graph)
     use_lake_staleness = args.lake_staleness
@@ -577,11 +809,22 @@ def main(argv: list[str] | None = None) -> int:
     if use_lake_staleness:
         # One verbose Lake authority query reports the complete stale import
         # closure.  Partition that verdict into topological waves locally.
+        lake_targets = sorted(
+            name
+            for name in reachable(target_modules, graph)
+            if name not in direct_target_names
+        )
         stale_targets = propagate_stale_targets(
-            lake_stale_targets(target_modules, root), build_waves, graph
+            lake_stale_targets(lake_targets, root) if lake_targets else [],
+            build_waves,
+            graph,
         )
         pending = [
-            [name for name in wave if name in stale_targets]
+            [
+                name
+                for name in wave
+                if name in stale_targets and name not in direct_target_names
+            ]
             for wave in build_waves
         ]
         pending = [wave for wave in pending if wave]
@@ -600,6 +843,7 @@ def main(argv: list[str] | None = None) -> int:
                     cached_olean_mtimes=output_mtimes,
                     cached_config_mtime_ns=config_mtime,
                 )
+                and name not in direct_target_names
             ]
             for wave in build_waves
         ]
@@ -625,8 +869,33 @@ def main(argv: list[str] | None = None) -> int:
         if failed:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
-    print("lean-fast-build: final serialized Lake authority check", flush=True)
-    return run_final_authority_check(target_modules, root)
+    lake_target_names = list(
+        dict.fromkeys(
+            [name for name in target_modules if name not in direct_target_names]
+            + direct_source_lake_imports(direct_target_names, graph, root)
+        )
+    )
+    if lake_target_names:
+        print("lean-fast-build: final serialized Lake authority check", flush=True)
+        lake_result = run_final_authority_check(lake_target_names, root)
+        if lake_result:
+            return lake_result
+    if direct_targets:
+        print("lean-fast-build: direct Lake environment source check", flush=True)
+    source_result = run_source_authority_check(direct_targets.values(), root)
+    if source_result:
+        return source_result
+    if args.singleflight_worker and root.resolve() == singleflight.ROOT.resolve():
+        compacted = lean_package_share.compact_setup_json(root)
+        print(
+            "lean-fast-build: setup-compaction="
+            f"{compacted.get('status', 'unknown')} "
+            f"files={compacted.get('compressed_count', 0)} "
+            f"freed={compacted.get('physical_bytes_freed_by_file_blocks', 0)}",
+            file=sys.stderr,
+            flush=True,
+        )
+    return 0
 
 
 if __name__ == "__main__":

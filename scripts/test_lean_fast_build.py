@@ -18,6 +18,9 @@ from unittest import mock
 import lean_fast_build as fast
 
 
+LAKE = str(fast.TOOLCHAIN_BIN / "lake")
+
+
 class LeanFastBuildTests(unittest.TestCase):
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
@@ -381,7 +384,7 @@ import Pkg.TooLate
 
         self.assertEqual(
             run.call_args.args[0],
-            ["lake", "--rehash", "--no-build", "-v", "build", "+Pkg.Root"],
+            [LAKE, "--rehash", "--no-build", "-v", "build", "+Pkg.Root"],
         )
 
     def test_stale_frontier_propagates_to_every_import_dependent(self) -> None:
@@ -555,7 +558,7 @@ import Pkg.TooLate
 
         self.assertEqual(
             run.call_args.args[0],
-            ["lake", "--rehash", "--no-build", "build", "+Pkg.Leaf"],
+            [LAKE, "--rehash", "--no-build", "build", "+Pkg.Leaf"],
         )
         self.assertIs(run.call_args.kwargs["stdout"], fast.subprocess.DEVNULL)
         self.assertIs(run.call_args.kwargs["stderr"], fast.subprocess.DEVNULL)
@@ -581,7 +584,7 @@ import Pkg.TooLate
             self.assertEqual(
                 run.call_args.args[0],
                 [
-                    "lake",
+                    LAKE,
                     "--quiet",
                     "--no-ansi",
                     "--log-level=error",
@@ -614,11 +617,11 @@ import Pkg.TooLate
                 [call.args[0] for call in run.call_args_list],
                 [
                     [
-                        "lake", "--quiet", "--no-ansi", "--log-level=error",
+                        LAKE, "--quiet", "--no-ansi", "--log-level=error",
                         "build", "+Erdos249257",
                     ],
                     [
-                        "lake", "--quiet", "--no-ansi", "--log-level=error",
+                        LAKE, "--quiet", "--no-ansi", "--log-level=error",
                         "build", "+ErdosProblems",
                     ],
                 ],
@@ -650,7 +653,7 @@ import Pkg.TooLate
             self.assertEqual(
                 run.call_args.args[0],
                 [
-                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    LAKE, "--quiet", "--no-ansi", "--log-level=error",
                     "build", "+Pkg.Leaf",
                 ],
             )
@@ -665,11 +668,11 @@ import Pkg.TooLate
             [call.args[0] for call in run.call_args_list],
             [
                 [
-                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    LAKE, "--quiet", "--no-ansi", "--log-level=error",
                     "build", "+Pkg.A",
                 ],
                 [
-                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    LAKE, "--quiet", "--no-ansi", "--log-level=error",
                     "build", "+Pkg.B",
                 ],
             ],

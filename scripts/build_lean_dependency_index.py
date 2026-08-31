@@ -9,13 +9,16 @@ import argparse
 import hashlib
 import inspect
 import json
+import os
 import subprocess
+import stat
 import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
 import query_corpus
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -26,6 +29,11 @@ LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
 CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+# The global single-flight environment deliberately strips ambient PATH.  The
+# documented elan install is the one deterministic toolchain location that
+# this builder must add back before launching Lake or Lean.
+TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
 CHECK_INPUT_FILES = (
     "docs/declaration_atlas.json",
     "docs/generated_certificate_manifest.json",
@@ -46,6 +54,165 @@ QUERY_CORPUS_DEPENDENCY_HELPERS = (
 )
 
 
+class UnsafeDependencyInput(ValueError):
+    """A dependency-index input is outside its root or is not a regular file."""
+
+
+def safe_dependency_path(path: Path, root: Path | None = ROOT) -> Path:
+    """Resolve a dependency input without following checkout symlinks."""
+    candidate = Path(os.path.abspath(path))
+    if root is not None:
+        root = Path(os.path.abspath(root))
+        if candidate != root and root not in candidate.parents:
+            raise UnsafeDependencyInput(f"dependency input escaped checkout: {candidate}")
+        current = candidate
+        while True:
+            if current.is_symlink():
+                raise UnsafeDependencyInput(f"symlinked dependency input: {candidate}")
+            if current == root:
+                break
+            if current.parent == current:
+                raise UnsafeDependencyInput(f"dependency input escaped checkout: {candidate}")
+            current = current.parent
+    if not candidate.is_file():
+        raise UnsafeDependencyInput(
+            f"dependency input is not a regular file: {candidate}"
+        )
+    return candidate
+
+
+def safe_dependency_bytes(path: Path, root: Path | None = ROOT) -> bytes:
+    """Read a dependency input through a no-follow regular-file descriptor."""
+    candidate = safe_dependency_path(path, root=root)
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeDependencyInput(
+                f"dependency input is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                return b"".join(chunks)
+            chunks.append(chunk)
+    finally:
+        os.close(descriptor)
+
+
+def safe_dependency_text(path: Path, root: Path | None = ROOT) -> str:
+    """Decode one dependency input read through its safe descriptor."""
+    candidate = Path(os.path.abspath(path))
+    try:
+        return safe_dependency_bytes(path, root=root).decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency input is not UTF-8: {candidate}"
+        ) from exc
+
+
+def safe_output_path(path: Path, root: Path | None = None) -> Path:
+    """Resolve a generated output without following any path component."""
+    platform_aliases = {
+        Path("/tmp"): Path("/private/tmp"),
+        Path("/var"): Path("/private/var"),
+    }
+    candidate = Path(os.path.abspath(path))
+    if root is not None:
+        root = Path(os.path.abspath(root))
+        if candidate != root and root not in candidate.parents:
+            raise UnsafeDependencyInput(f"dependency output escaped checkout: {candidate}")
+        current = candidate
+        while current != root:
+            if current.is_symlink():
+                raise UnsafeDependencyInput(f"symlinked dependency output: {candidate}")
+            if current.parent == current:
+                raise UnsafeDependencyInput(f"dependency output escaped checkout: {candidate}")
+            current = current.parent
+    else:
+        current = candidate
+        while True:
+            if current.is_symlink():
+                target = platform_aliases.get(current)
+                if target is None or current.resolve(strict=True) != target:
+                    raise UnsafeDependencyInput(
+                        f"symlinked dependency output: {candidate}"
+                    )
+                current = target
+                continue
+            if current.parent == current:
+                break
+            current = current.parent
+    return candidate
+
+
+def safe_output_bytes(
+    path: Path,
+    content: bytes,
+    *,
+    root: Path | None = None,
+) -> None:
+    """Write a generated output through a no-follow regular-file descriptor."""
+    candidate = safe_output_path(path, root=root)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags, 0o644)
+    except OSError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency output could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeDependencyInput(
+                f"dependency output is not a regular file: {candidate}"
+            )
+        offset = 0
+        while offset < len(content):
+            written = os.write(descriptor, content[offset:])
+            if written <= 0:
+                raise UnsafeDependencyInput(
+                    f"dependency output write made no progress: {candidate}"
+                )
+            offset += written
+        os.fsync(descriptor)
+    except OSError as exc:
+        raise UnsafeDependencyInput(
+            f"dependency output could not be written safely: {candidate}"
+        ) from exc
+    finally:
+        os.close(descriptor)
+
+
+def safe_output_text(
+    path: Path,
+    content: str,
+    *,
+    root: Path | None = None,
+) -> None:
+    """Write UTF-8 generated output through the safe byte writer."""
+    safe_output_bytes(path, content.encode("utf-8"), root=root)
+
+
+def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
+    """Run dependency-bootstrap commands without ambient state or hangs."""
+    environment = singleflight.command_environment()
+    environment["PATH"] = os.pathsep.join((str(TOOLCHAIN_BIN), environment["PATH"]))
+    kwargs["env"] = environment
+    kwargs.setdefault("timeout", singleflight.GIT_COMMAND_TIMEOUT_SECONDS)
+    return subprocess.run(*args, **kwargs)
+
+
 def sha256_text(content: str) -> str:
     return f"sha256:{hashlib.sha256(content.encode('utf-8')).hexdigest()}"
 
@@ -62,7 +229,7 @@ def check_input_paths(root: Path = ROOT) -> list[Path]:
 def semantic_check_inputs(root: Path = ROOT) -> list[tuple[str, bytes]]:
     """Project large shared owners to the exact values this builder consumes."""
     claims = json.loads(
-        (root / "docs" / "claims.json").read_text(encoding="utf-8")
+        safe_dependency_text(root / "docs" / "claims.json", root=root)
     )
     formal_source = json.dumps(
         claims["release"]["formal_source"],
@@ -99,7 +266,7 @@ def check_input_fingerprint(root: Path = ROOT) -> str:
         relative = path.relative_to(root).as_posix()
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
-        digest.update(path.read_bytes())
+        digest.update(safe_dependency_bytes(path, root=root))
         digest.update(b"\0")
     for identity, payload in semantic_check_inputs(root):
         digest.update(identity.encode("utf-8"))
@@ -133,10 +300,13 @@ def load_cached_check(
     if not output.is_file() or not receipt_path.is_file():
         return None
     try:
-        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        receipt = json.loads(safe_dependency_text(receipt_path, root=None))
     except (json.JSONDecodeError, OSError):
         return None
-    content = output.read_text(encoding="utf-8")
+    try:
+        content = safe_dependency_text(output, root=None)
+    except UnsafeDependencyInput:
+        return None
     if not receipt_matches(
         receipt,
         input_fingerprint=check_input_fingerprint(root),
@@ -173,19 +343,18 @@ def write_check_receipt(
         ),
     }
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = receipt_path.with_suffix(".tmp")
-    temporary.write_text(
+    safe_output_text(
+        receipt_path,
         json.dumps(receipt, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
     )
-    temporary.replace(receipt_path)
 
 
 def ensure_elaborated_environment() -> None:
-    completed = subprocess.run(
+    completed = run(
         [
             sys.executable,
             str(LEAN_FAST_BUILD),
+            "--singleflight-worker",
             "--lake-staleness",
             *LEAN_ROOT_TARGETS,
         ],
@@ -212,7 +381,7 @@ def export_environment() -> tuple[
     dict[str, int],
     dict[str, dict[str, Any]],
 ]:
-    completed = subprocess.run(
+    completed = run(
         ["lake", "env", "lean", str(EXPORTER)],
         cwd=ROOT,
         text=True,
@@ -633,6 +802,7 @@ def encoded(packet: dict[str, Any]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument(
         "--full-check",
         action="store_true",
@@ -661,7 +831,11 @@ def main() -> int:
         )
         return 2
     if args.check:
-        if not OUTPUT.is_file() or OUTPUT.read_text(encoding="utf-8") != content:
+        try:
+            current = safe_dependency_text(OUTPUT, root=ROOT)
+        except UnsafeDependencyInput:
+            current = None
+        if current != content:
             print(f"stale Lean dependency index: {OUTPUT}", file=sys.stderr)
             return 1
         write_check_receipt(
@@ -675,7 +849,7 @@ def main() -> int:
             f"{packet['coverage']['source_resolved_direct_edge_count']} edges)"
         )
         return 0
-    OUTPUT.write_text(content, encoding="utf-8")
+    safe_output_text(OUTPUT, content, root=ROOT)
     write_check_receipt(
         content,
         packet,

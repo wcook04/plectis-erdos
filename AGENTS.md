@@ -11,6 +11,15 @@ larger ongoing formal-mathematics workflow: its release discipline, claim
 registry, graph structure, generated atlas, and adversarial checks are public
 evidence of that workflow. They do not create hidden proof authority.
 
+Use [docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md) for the compact command
+routes and [CONTRIBUTING.md](CONTRIBUTING.md) for contribution mechanics. This
+file remains the deeper authority, mutation, and validation contract.
+
+For any reader-facing mathematical Markdown or manuscript edit, load
+[skills/public-mathematical-writing/SKILL.md](skills/public-mathematical-writing/SKILL.md).
+It keeps mathematical truth and evidence upstream of prose and keeps the human
+front door in ordinary language; agent surfaces may remain command-heavy.
+
 ## Eight-problem cold-start card
 
 A blank-slate agent must receive the complete problem fleet here; it must not
@@ -267,11 +276,12 @@ Lean build when a result must be checked.
    missing original run logs or exact targets.
 7. Read `SCOPE.md` before describing what the project proves. Erdős #249 and
    the universal form of #257 remain open.
-8. For one claim, follow its `paper_label` into
-   `paper/erdos249-257-main-paper.tex`, then follow its `declarations` to the
-   named Lean source coordinates. To read the surrounding exposition rather
-   than locate a claim, use the generated full text in `docs/papers/`, where
-   the manuscript's own section labels are HTML anchors:
+8. For one claim, use `docs/papers/corpus.json` to resolve its `paper_label`
+   to the owning individual problem paper, then follow its `declarations` to
+   the named Lean source coordinates. The archived combined #249/#257
+   manuscript is provenance, not the default gateway. To read surrounding
+   exposition rather than locate a claim, use the generated full text in
+   `docs/papers/`, where each manuscript's own section labels are HTML anchors:
    `grep -n '<a id="sec:unresolved">' docs/papers/full-text/*.md`.
 9. Read `docs/papers/corpus.json` when the task concerns what the papers say
    rather than what Lean checked. It is the bounded index to every registered
@@ -522,8 +532,22 @@ running the expensive release gate.
 Run the full proof authority check after Lean changes:
 
 ```sh
-lake build
+python3 scripts/lean_fast_build.py --jobs 2
 ```
+
+The wrapper is the public concurrency boundary. Equivalent clean clones share
+one content-keyed validation future in the repository-scoped host cache;
+different Lean targets queue behind one `lean-host` owner instead of writing
+the same machine's build trees concurrently. The detached owner continues if
+an attached caller exits, completed output is bounded, and terminal state is
+cleaned automatically. Same-lock cold clones also receive independent
+copy-on-write `.lake/packages` trees from a host seed when the filesystem
+supports it; mutable cache directories are never symlinked. Set
+`VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an
+explicitly isolated cache is required. None of this cache state is proof
+authority: the terminal receipt preserves the underlying Lake exit code.
+The clone-local operational guide is
+[skills/lean-concurrent-validation/SKILL.md](skills/lean-concurrent-validation/SKILL.md).
 
 The release checker validates claim status, declaration coordinates, paper
 anchors, the machine-readable module and argument graphs, the exhaustive
