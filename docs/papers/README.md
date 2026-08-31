@@ -11,7 +11,7 @@ mirrored or restored to an active publication route.
 
 This checkout carries 13 active papers and 1 retired provenance paper. Pick the question you are actually asking:
 
-## Problem portfolio
+## Problem portfolio (complete 14-paper inventory)
 
 The active mathematical notes form a growing problem-by-problem portfolio: Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. Start with the named problem, then use its note for the exact checked results and remaining obligation. Retired combined manuscripts are provenance, not the portfolio's front door.
 
@@ -49,7 +49,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction an
 
 This paper states no reading route. Its evidence boundary is in [The wall](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [What the wall does not block](full-text/erdos249-totient-reasoning-surface.md#sec:survivors).
 
-### What tail-shift condition would prove irrationality in Erdős #251, and what prime-gap input is still missing?
+### What tail-shift condition would prove irrationality in Erdős #251, which natural affine schedules provably cannot supply it, and what prime-gap input still survives?
 
 **An Integral-Shift Criterion for Dyadic Tail Recurrences**
 
@@ -101,7 +101,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **From Lean Proofs to Public Claims**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 30 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 31 sections · `claim-faithful-publication-systems` · native to this repository
 
 The paper's own reading map sends a first pass to [The release workflow](full-text/claim-faithful-publication-systems-paper.md#sec:picture), [The reviewed record](full-text/claim-faithful-publication-systems-paper.md#sec:record), [What the checks establish](full-text/claim-faithful-publication-systems-paper.md#sec:trust), [Scope, reuse, and limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 

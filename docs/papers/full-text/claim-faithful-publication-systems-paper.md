@@ -54,6 +54,8 @@ Section <a href="#sec:picture" data-reference-type="ref" data-reference="sec:pi
 
 Read the upper half of Figure <a href="#fig:architecture" data-reference-type="ref" data-reference="fig:architecture">2</a> from left to right. A mathematician first reads the Lean source and records the approved public wording and its limit in the claim record. A separate mathematical index helps the reviewer find formal statements, but it is only a generated navigation view and has no authority over the claim. Authored public documents use the reviewed wording; generated views merely reorganise source records. The dashed arrows show the two human judgements. The lower half is automated: each job runs on its own fresh copy. The decision is only whether both jobs pass.
 
+The public `scripts/proof_cockpit.py` card gives an agent this separation. It reads checkout and toolchain identity, corpus scale, registered open propositions, problem obligations, and workbench sessions from public files. It imports no private state and adds no evidence layer to Figure <a href="#fig:architecture" data-reference-type="ref" data-reference="fig:architecture">2</a>. Its `--check` mode runs the claim-registry, cold-clone, and projection-freshness checks; neither mode invokes Lean or decides whether prose follows from a theorem.
+
 Once a person has compared a formal theorem with its public wording, a program can preserve the resulting decision about names, files, wording, and limits. It cannot decide whether the decision was correct. The workflow does not technically force a second independent mathematician: one maintainer can edit the Lean statement, record, and prose together so that every comparison agrees with the same mistake.
 
 The two automated jobs answer different questions. `lake build` checks the formal statements and proofs; it never reads the README. `python3 scripts/check_release.py` compares the recorded relationships among source, record, public pages, and generated files; it does not run Lean. The workflow in `.github/workflows/lean.yml` runs them as two separate jobs and begins each from a fresh checkout \[githubrunners\]. A checker error stops the program, and the workflow treats that exit as a failing job. A pass proves no mathematics, and publication remains a human decision.
@@ -306,6 +308,17 @@ The failure supplies the governing limit. The registered checking boundary is on
 <a id="app:repro"></a>
 
 # Reproducibility
+
+<a id="public-first-contact."></a>
+
+#### Public first contact.
+
+A fresh public clone can reproduce the control card and structural checks:
+
+    python3 scripts/proof_cockpit.py --format card
+    python3 scripts/proof_cockpit.py --check
+
+The first reads committed public metadata; the second checks the claim registry, cold-clone contract, and orientation freshness. Neither checks a proof. Formal authority begins with the pinned Lean build named by the card.
 
 <a id="dated-navigation-counts."></a>
 

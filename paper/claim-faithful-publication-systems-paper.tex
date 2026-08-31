@@ -31,7 +31,7 @@
 \title{From Lean Proofs to Public Claims}
 \subtitle{Release checks and trust boundaries in one formal mathematics repository}
 \author{Will Cook}
-\date{July 2026}
+\date{August 2026}
 
 \begin{document}
 \maketitle
@@ -289,6 +289,14 @@ reviewed wording; generated views merely reorganise source records.  The
 dashed arrows show the two human judgements.  The lower half is automated:
 each job runs on its own fresh copy.  The decision is only whether both jobs
 pass.
+
+The public \path{scripts/proof_cockpit.py} card gives an agent this separation.
+It reads checkout and toolchain
+identity, corpus scale, registered open propositions, problem obligations, and
+workbench sessions from public files.  It imports no private state and adds no
+evidence layer to Figure~\ref{fig:architecture}.  Its \texttt{--check} mode
+runs the claim-registry, cold-clone, and projection-freshness checks; neither
+mode invokes Lean or decides whether prose follows from a theorem.
 
 Once a person has compared a formal theorem with its public wording, a program
 can preserve the resulting decision about names, files, wording, and limits.
@@ -882,6 +890,16 @@ structural comparisons passed on the named revision.
 
 \appendix
 \section{Reproducibility}\label{app:repro}
+
+\paragraph{Public first contact.}
+A fresh public clone can reproduce the control card and structural checks:
+\begin{verbatim}
+python3 scripts/proof_cockpit.py --format card
+python3 scripts/proof_cockpit.py --check
+\end{verbatim}
+The first reads committed public metadata; the second checks the claim
+registry, cold-clone contract, and orientation freshness.  Neither checks a
+proof.  Formal authority begins with the pinned Lean build named by the card.
 
 \paragraph{Dated navigation counts.}
 At the semantic review's snapshot, taken before the eight-problem
