@@ -2,7 +2,7 @@
   "schema": "erdos269_strongest_result_activation_map_v1",
   "problem_id": "erdos_269",
   "status": "open",
-  "source_checkpoint": "832ab7f5d3ffd88eb7bbac065be2c4de2a08b266",
+  "source_checkpoint": "060b42c3acd7fc5ec054273ddf6ff65faf42d3c7",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the three-prime parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -64,9 +64,9 @@
     },
     {
       "result_id": "cubic_width_telescope_and_open_bound",
-      "status": "proved_telescope_with_named_open_width_target",
+      "status": "SUPERSEDED_width_now_proved_see_proved_width_div_and_lemma_r_layer",
       "exact_statement": "PROVED: the exact depth-K pinning telescope trueNormalizedState_eq_telescope — X_m = (digit sum over K shells) + (H(2^m)/2)*T_(m+K) — and the quadratic digit majorant dyadicOrderedBlockDigit235_le_quadratic (d_a <= 15*(a+1)^2, DyadicShellSummability.lean). OPEN TARGET, NOT A LEAN THEOREM: the cubic width bound X_m <= 40*(m+4)^3. Its two defining inequalities are machine-verified, and the derivation is short — majorize every digit by 15*(m+i+1)^2 in the telescope and evaluate the poly-geometric series sum_(i>=0) 15*(m+i+1)^2/2^(i+1) = 15*(m^2+4m+6) <= 40*(m+4)^3 — but the corpus records proving and discharging it into surviving_window_orbit_eq_true_state as the open width-instantiation question. Once discharged, forced equality holds with that width and the seed-extinction census (finite horizon: first indices A <= 400, seed depth 256) becomes cofinally decisive; until then both are conditional on the width.",
-      "hypotheses": "The telescope and digit majorant are unconditional; the width bound X_m <= 40*(m+4)^3 is the open input (short derivation above, unformalised).",
+      "hypotheses": "SUPERSEDED 2026-08-31 evening: the width question is CLOSED - X_a <= a^2+4a+6 is proved (BlockKernelProgrammeLab.md section 3) and the repaired Lean width module is green; read proved_width_div_and_lemma_r_layer instead of treating any width bound as open.",
       "named_consumers": [
         "integral_branch_rigidity_telescope",
         "erdos_269_parent"
@@ -84,18 +84,19 @@
     {
       "result_id": "integral_branch_rigidity_telescope",
       "status": "strongest_premise",
-      "exact_statement": "Under an integrality hypothesis X_A = w, the pinning telescope yields the exact identity X_(A+k) + N_k = w*B_k with N_0 = 0, N_(k+1) = b_(A+k)*N_k + d_(A+k), B_0 = 1, B_(k+1) = b_(A+k)*B_k, and M_k = prod_(j<=k) b_(A+j) >= 2^(k+1). The least residue of -(b_(A+k)*N_k + d_(A+k)) modulo M_k must equal the true state whenever that state fits inside (0, hi] with hi < M_k; a residue outside the enclosure refutes integrality at A. Once the cubic width bound is proved (see cubic_width_telescope_and_open_bound — a short derivation, but currently OPEN), the modulus grows exponentially while the enclosure grows only cubically, so for each A all but boundedly many depths are refutation opportunities. The named missing pieces are the width bound and UNIFORMITY IN A (both tracked in the module header as the width/uniform-depth targets).",
-      "hypotheses": "X_A integral; the telescope is unconditional; quantitative refutation additionally needs the open cubic width bound.",
+      "exact_statement": "Under an integrality hypothesis X_A = w, the pinning telescope yields the exact identity X_(A+k) + N_k = w*B_k with N_0 = 0, N_(k+1) = b_(A+k)*N_k + d_(A+k), B_0 = 1, B_(k+1) = b_(A+k)*B_k, and M_k = prod_(j<=k) b_(A+j) >= 2^(k+1). The least residue of -(b_(A+k)*N_k + d_(A+k)) modulo M_k must equal the true state whenever that state fits inside (0, hi] with hi < M_k; a residue outside the enclosure refutes integrality at A. THE WIDTH IS NOW PROVED (r4 update: X_a <= a^2+4a+6, BlockKernelProgrammeLab.md section 3; both Lean width/rigidity modules repaired green), so the modulus grows exponentially while the enclosure grows only quadratically and for each A all but boundedly many depths are refutation opportunities. The single missing piece is UNIFORMITY IN A - and the wave campaign proved single-window uniformity is CIRCULAR (equivalent to an effective irrationality measure for the tail): the surviving uniform route is the multi-start P-class block machinery of p_class_lemma_layer_and_j_certificates.",
+      "hypotheses": "X_A integral; the telescope and the quadratic width are unconditional.",
       "named_consumers": [
         "erdos_269_parent"
       ],
       "supersedes": [
         "bounded-lookahead delay caps and gap-descent Lyapunov candidates (all exactly falsified)"
       ],
-      "why_it_matters": "This is the closest thing to one-lemma-away in the corpus: exponential modulus versus cubic width, missing only uniformity in the start index.",
+      "why_it_matters": "The per-start machinery is finished; the campaign relocated the whole difficulty into the multi-start spread question.",
       "public_authority_paths": [
         "research_corpus/Erdos269/IntegralRigidity.lean",
-        "research_corpus/Erdos269/IntegralBranchWidth.lean"
+        "research_corpus/Erdos269/IntegralBranchWidth.lean",
+        "research_corpus/Erdos269/BlockKernelProgrammeLab.md"
       ]
     },
     {
@@ -203,6 +204,83 @@
       ]
     },
     {
+      "result_id": "block_kernel_programme_note",
+      "status": "strongest_premise",
+      "exact_statement": "BlockKernelProgrammeLab.md (sections 0-13) is the governing document of the 2026-08-31 seven-wave campaign and SUPERSEDES every older framing it corrects: it carries the proved [P2*] lemma layer over P-classes, the J-certificate machinery with a fully verified exclusion at B_max ~ 1.135*10^105, the proved DIV / Lemma R / width layer, the spread-constant kappa duality, the (R1) renormalization and multiplicative companion mechanism, eleven-plus landed errata (including corrections to THIS packet family's earlier rows), and the two terminal open statements. Read it FIRST, before any other dossier content; where any other row or desk text conflicts with it, the note governs.",
+      "hypotheses": "Every claim inside carries an explicit evidence label (PROVED-HERE / PROVED-ON-DISK / VERIFIED-COMPUTATIONALLY / OPEN); nothing claims the parent theorem.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "the r3 packet framing of the five-producer frontier as the sharpest state; the open-cubic-width step-zero framing; all pre-campaign mu_p and complexity-excess readings"
+      ],
+      "why_it_matters": "It is the single current map: everything proved, everything retired-with-proof, and exactly two named open cores.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/BlockKernelProgrammeLab.md"
+      ]
+    },
+    {
+      "result_id": "p_class_lemma_layer_and_j_certificates",
+      "status": "strongest_premise",
+      "exact_statement": "PROVED ([P2*], note section 4, audited): if starts a_1 < ... < a_m share one realized window product P = Q_(a+L)/Q_a (a P-CLASS - at most 4 realized P values per L, by the floor lemma; the radix-word cylinder restriction is unnecessary and costs 23x-138x in member pool), a_1 >= a_0(M), and c != 0 satisfies (i*) sum c_r*Ehat'_r = 0 mod P/2 (Ehat' = Ehat/30; 30 | Ehat is proved), (ii) sum c_r*Q_(a_r) != 0 mod B, (iii*) sum |c_r|*W(a_r+L) < P/B with W(a) = a^2+6a+11 on the X-scale, then S is not a rational with reduced denominator M*B. J-LEMMA: with Lambda the (i*)-kernel and Lambda_beta the subgroup generated by budget-admissible vectors, J = [Lambda:Lambda_beta] < infinity and B not dividing J implies the block kills B; J = 1 kills every admissible B at once. VERIFIED INSTANCE (wave-2, independently re-verified twice, exact end-to-end): L = 128, m = 64, P-class at a_1 = 10005 excludes every reduced denominator M*B with M | Q_10005 30-smooth and 1 < B <= ~1.135*10^105 (witnesses exhibited to B = 10^100+267). J = 1 held in 124/124 scan blocks and 44/44 structural blocks; index-deficient blocks EXIST (within-cylinder parity correlates) but are FAVOURABLE (denser lattice).",
+      "hypotheses": "The lemma layer is proved; the certificates are finite exclusions, not the parent theorem; cofinal families (A16 in the note) remain OPEN.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "the sqrt(B_L) finite-certificate ceiling AS A BARRIER for multi-start blocks - it is the rank-1 case of this family and dissolves as m grows (measured exponent 0.82-0.92 vs 0.50); single-window escape framings"
+      ],
+      "why_it_matters": "The strongest finite exclusion machinery in the corpus, with the barrier evasion measured and the whole remaining content isolated in the spread constant.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/BlockKernelProgrammeLab.md",
+        "research_corpus/Erdos269/wave_engines/lattice.py",
+        "research_corpus/Erdos269/wave_engines/verify_headline.py",
+        "research_corpus/Erdos269/wave_engines/headline_certificate.json",
+        "research_corpus/Erdos269/wave_engines/engine.py"
+      ]
+    },
+    {
+      "result_id": "proved_width_div_and_lemma_r_layer",
+      "status": "strongest_premise",
+      "exact_statement": "PROVED (note sections 2-3, 10; wave-6 audits): the quadratic width X_a <= a^2+4a+6 (full height; the sharper 0.28a^2+2.82a+7.08 also derived; the older cubic 40*(m+4)^3 framing is OBSOLETE - the width question is CLOSED, not open); DIV: 3 not dividing b_a implies 3 | e_a, 5 not dividing b_a implies 5 | e_a (two-line threshold-count proof), hence 30 | Ehat identically; LEMMA R: 30 | b_(n-2)*b_(n-1)*b_n always (from 4 > 3 and 8 > 5 alone - 3-free radix runs have length <= 1, 5-free <= 2), so the mod-30 window-forcing automaton is 3-step forgetting: Ehat' mod 30 is a function of the window-end index alone. Also proved unconditionally (no Four Exponentials input): any torus box with |I|+|J| > 1 meets the orbit closure with positive lower density; and b_a = 30 implies b_(a+1) != 30.",
+      "hypotheses": "None open; these are finished proofs recorded with receipts in the note.",
+      "named_consumers": [
+        "p_class_lemma_layer_and_j_certificates",
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "cubic_width_telescope_and_open_bound's open-width framing; any desk text calling the width bound step zero"
+      ],
+      "why_it_matters": "The width and divisibility layer that every block certificate consumes is now theorem-grade, and the repaired Lean modules (IntegralBranchExtinction/Rigidity/Width all green, rigidityN = windowForcing dedup landed) carry it.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/BlockKernelProgrammeLab.md",
+        "research_corpus/Erdos269/IntegralBranchWidth.lean",
+        "research_corpus/Erdos269/IntegralRigidity.lean",
+        "research_corpus/Erdos269/DyadicShellSummability.lean"
+      ]
+    },
+    {
+      "result_id": "spread_core_and_terminal_statements",
+      "status": "terminal_open_cores_with_proved_scaffolding",
+      "exact_statement": "The campaign's converged endpoint (note sections 10-13). PROVED: the exact duality for the kernel lattice - with kappa = min over 1<=q<N of max_r ||q*Ehat'_r/N|| (N = (P/2)/gcd), the sandwich max(W_max, W_min/kappa) <= lambda_m <= m^1.5*W_max/kappa is tight (0.5-4.1 bits measured), kappa > 0 iff full index, and kappa unifies BOTH halves of the block question (index-deficiency only helps). TERMINAL OPEN CORE 1 (B > 1): SPREAD - kappa >= ~ (1/2)*N^(-1/m) cofinally over admissible P-class blocks. TERMINAL OPEN CORE 2 (B = 1, converged through (R1)): a fixed A in {0..5} with C_(p_r)(A) = F_(p_r)({(A+n_r)*log5(2)}) odd for infinitely many convergents p_r of log2(3) - the odd witness is MEASURED at a constant level (A* <= 5 across 86 family members to p <= 6.17*10^39, mean 1.05), and wave-7's Theorem W7-N1 PROVES no combinatorial rearrangement of the level constraints can substitute: any proof must evaluate the specific orbit {n_r*log5(2)} in a non-bounded-remainder arc. Classified: Baker-silent (needs distance from a fixed point, not from zero) and Four-Exponentials-adjacent. Supporting proved machinery: the (R1) renormalization to an O(log A) Euclid/Ostrowski trace (verified to A = 10^60), the multiplicative companion mechanism (Lemma S with the +s(A) term, Lemma T), the mu pseudo-norm layer with max(mu_p, mu_(p-3)) >= 0.354 unconditionally, and the O(log p) floor-sum evaluator for C_p(A).",
+      "hypotheses": "The scaffolding is proved/audited; both cores are OPEN; every named escape from them is retired with a proof inside the note.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "the five-producer frontier as the operative target list; the pre-campaign two-throat framing"
+      ],
+      "why_it_matters": "These two statements are, after seven audited waves, the entire remaining distance to the parent theorem.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/BlockKernelProgrammeLab.md",
+        "research_corpus/Erdos269/wave_engines/trace.py",
+        "research_corpus/Erdos269/wave_engines/companion.py",
+        "research_corpus/Erdos269/wave_engines/mrl.py",
+        "research_corpus/Erdos269/wave_engines/eng.py",
+        "research_corpus/Erdos269/wave_engines/v0_selfcheck.py"
+      ]
+    },
+    {
       "result_id": "stammering_retired_and_the_named_diophantine_gap",
       "status": "exact_no_go",
       "exact_statement": "The Adamczewski–Bugeaud stammering route is retired for the three-prime radix word: repetition exponents at record simultaneous-approximation denominators decay to 1 like 1 + O(q^(-1/2)); Dirichlet in dimension two caps simultaneous approximation at exponent 1/2 while the criterion needs 1 at the same denominator. The failure margin is a full power q^(1/2). The precise external input that would reopen ANY repetition-based lane is an effective bound max(||q*log_3 2||, ||q*log_5 2||) >> q^(-1+delta); current technology gives only exp(-C*(log B)^2) (Laurent–Mignotte–Nesterenko) and ||q*log_3 2|| >> q^(-4.117) (via Rhin).",
@@ -288,6 +366,22 @@
         "research_corpus/Erdos269/research_packet.json",
         "research_corpus/Erdos269/PurePowerIrrationalityNote.md",
         "research_corpus/Erdos269/RationalLatticeTorusSqueezeLab.md"
+      ]
+    },
+    {
+      "result_id": "wave_campaign_no_gos_2026_08_31",
+      "status": "exact_no_go",
+      "exact_statement": "Seven-wave retirements, each with a proof or exact certificate in BlockKernelProgrammeLab.md - do not respend: (1) UNIFORM SINGLE-WINDOW ESCAPE is circular - the exact escape law shows the only B-dependence is the real {B*X_A}, so uniformity in B is an effective irrationality measure for the tail itself. (2) METRIC/STATISTICAL routes are dead: S is Dirichlet-exact-generic (16,044 certified CF partial quotients of S itself, Khinchin/Levy matched, measure -> 2.001) and the digit word has ZERO measurable surplus over a matched random null - no digit-statistics argument can work. (3) NAIVE WEIGHTED CURVATURE TRANSPORT is dead: the unweighted parallelogram law D_(u,v)M = uv/(alpha*beta) + bounded integer word is exact, but the weighted defect is NEVER bounded (jump-set density >= a^(-1/2) under any shift - the Dirichlet cap again); exact unit-transfer families do not exist (exhaustive at L <= 10, scale <= 3000); second differences amplify. (4) The epsilon-Hamming-1 companion MRL is insufficient (14,091 of 27,766 single-slot pairs do NOT flip parity - outside-trace slots absorb) and the identical-trace/head-flip family is empty (0/93). (5) Theorem W7-N1: NO F2-combination of level-constraint parities yields a contradiction (the all-ones cover is unsolvable at every length) - the A-coupling/telescoping escape is closed. (6) The B = 1 branch is UNDECIDABLE by bounded-modulus / bounded-suffix readers (two-line proof), and an explicit mod-30 splice countermodel keeps the real radix word, satisfies DIV, has bounded digit perturbation <= 29 and an integral orbit while reproducing the index statistics identically - any wedge must use structure a bounded perturbation cannot preserve. (7) No p-uniform proof of the mu lower bound exists (inf_p mu_p = 0 near-certain via deep resonances ||q_70*log5(2)|| ~ 0.0013) - family structure is mandatory. (8) Per-member window avoidance does NOT subsume the block question (counterexample Ehat' = (1,0,...,0) mod N has J = infinity). (9) The coset covering-radius route to short escaping vectors loses a factor m!*B^2 - structural, not fixable. (10) The (I2)/(I3)/(I5) identity layer is PARITY-VOID for the triangle count (all integer-argument instantiations collapse to 1 = 1; F2-nullspace of the 16-dim statement space is 0 over 20,000 values). (11) Matveev/Baker windows for the companion slivers are p^(o(1)) (K ~ 1.75*10^11): sliver-emptiness is proved but measure-to-witness conversion across it is a power-of-p mismatch - the quantifier-reversed pointwise residue is the only surviving form.",
+      "hypotheses": "Each retirement carries its proof, witness, or exact certificate in the note; none is a mere failed search.",
+      "named_consumers": [
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "all pre-campaign versions of these lanes, including this packet family's own r3 framings where they conflict"
+      ],
+      "why_it_matters": "Eleven more closed doors with proofs; the surviving budget goes to the two terminal cores only.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/BlockKernelProgrammeLab.md"
       ]
     }
   ]

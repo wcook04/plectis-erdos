@@ -2,16 +2,16 @@
   "schema": "erdos269_public_research_corpus_manifest_v1",
   "problem_id": "erdos_269",
   "status": "open",
-  "source_checkpoint": "832ab7f5d3ffd88eb7bbac065be2c4de2a08b266",
+  "source_checkpoint": "060b42c3acd7fc5ec054273ddf6ff65faf42d3c7",
   "source_prefix": "source-provenance://Erdos269",
   "public_prefix": "research_corpus/Erdos269",
-  "file_count": 31,
-  "total_bytes": 424859,
+  "file_count": 42,
+  "total_bytes": 605567,
   "local_path_replacement_count": 107,
   "strongest_result_map": {
     "path": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
-    "sha256": "3137b4f4b74e609c27213c5e69a7483882d461753d611101a672ac06bcb8c29e",
-    "result_count": 16
+    "sha256": "237ecfc682ed5525a743178331794f5c1d43a5d9ac0720ea4f6bb67f2ee7ecef",
+    "result_count": 21
   },
   "files": [
     {
@@ -22,6 +22,15 @@
       "relation": "source_faithful_public_sanitized_copy",
       "local_path_replacements": 2,
       "bytes": 1670
+    },
+    {
+      "source_path": "source-provenance://Erdos269/BlockKernelProgrammeLab.md",
+      "public_path": "research_corpus/Erdos269/BlockKernelProgrammeLab.md",
+      "source_sha256": "320eda14c56d225caebb15536bbc2e57ab877c19941fcbfdba641dbe3724dc2b",
+      "published_sha256": "320eda14c56d225caebb15536bbc2e57ab877c19941fcbfdba641dbe3724dc2b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 77091
     },
     {
       "source_path": "source-provenance://Erdos269/BlockMassEngines.lean",
@@ -116,29 +125,29 @@
     {
       "source_path": "source-provenance://Erdos269/IntegralBranchExtinction.lean",
       "public_path": "research_corpus/Erdos269/IntegralBranchExtinction.lean",
-      "source_sha256": "eb07a6562fc26ac2077023182c094ede0b92fe6fb74227969e5e1c45187698c2",
-      "published_sha256": "eb07a6562fc26ac2077023182c094ede0b92fe6fb74227969e5e1c45187698c2",
+      "source_sha256": "3c6bc417ae44e7fc80db7893ac3f33626a9ef954d60fe424ea93e102d7b57e3f",
+      "published_sha256": "3c6bc417ae44e7fc80db7893ac3f33626a9ef954d60fe424ea93e102d7b57e3f",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 18628
+      "bytes": 16326
     },
     {
       "source_path": "source-provenance://Erdos269/IntegralBranchWidth.lean",
       "public_path": "research_corpus/Erdos269/IntegralBranchWidth.lean",
-      "source_sha256": "b6aee824f399204803ac348c59d697a711535411b5635a6f76b8f974b861d54e",
-      "published_sha256": "b6aee824f399204803ac348c59d697a711535411b5635a6f76b8f974b861d54e",
+      "source_sha256": "7ca898c060190b3ccb0809fd2f94895fef701c3808b2a51d7c24eaafd093630c",
+      "published_sha256": "7ca898c060190b3ccb0809fd2f94895fef701c3808b2a51d7c24eaafd093630c",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 2791
+      "bytes": 3880
     },
     {
       "source_path": "source-provenance://Erdos269/IntegralRigidity.lean",
       "public_path": "research_corpus/Erdos269/IntegralRigidity.lean",
-      "source_sha256": "095527265faa310da5714eacc4c196d78f47d7fc828fade764658a74627a3c3f",
-      "published_sha256": "095527265faa310da5714eacc4c196d78f47d7fc828fade764658a74627a3c3f",
+      "source_sha256": "0ff4305a3b932db9e8087e7a9f3a4b47f75d111503f8fbefd0b89b728bc9c5e6",
+      "published_sha256": "0ff4305a3b932db9e8087e7a9f3a4b47f75d111503f8fbefd0b89b728bc9c5e6",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 3643
+      "bytes": 6829
     },
     {
       "source_path": "source-provenance://Erdos269/IntegralTailStructureLab.md",
@@ -292,6 +301,96 @@
       "relation": "exact_copy",
       "local_path_replacements": 0,
       "bytes": 7156
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/README.md",
+      "public_path": "research_corpus/Erdos269/wave_engines/README.md",
+      "source_sha256": "74cdacb31310cbabb51a4da6f8539e85117c64420502dc5616d0b34ddbac3904",
+      "published_sha256": "74cdacb31310cbabb51a4da6f8539e85117c64420502dc5616d0b34ddbac3904",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2606
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/companion.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/companion.py",
+      "source_sha256": "6f98552a3df068ea60065156d15f2c62e0823071d14a98a4420378ab0f41c7b4",
+      "published_sha256": "6f98552a3df068ea60065156d15f2c62e0823071d14a98a4420378ab0f41c7b4",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4091
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/eng.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/eng.py",
+      "source_sha256": "a0696e331fc963e07b4460165d1a3e4fa2aa1c37aecfcf883d9e01ffe126f159",
+      "published_sha256": "a0696e331fc963e07b4460165d1a3e4fa2aa1c37aecfcf883d9e01ffe126f159",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 6997
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/engine.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/engine.py",
+      "source_sha256": "a0445eb5ca16ec97b916b962a7c52858046a9ac1cf57068c09bd4b243e20118c",
+      "published_sha256": "a0445eb5ca16ec97b916b962a7c52858046a9ac1cf57068c09bd4b243e20118c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7952
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/headline_certificate.json",
+      "public_path": "research_corpus/Erdos269/wave_engines/headline_certificate.json",
+      "source_sha256": "71d9aef9dd11006861832892c70c62c00375b654b0e93cc436e91c4b85ae1e35",
+      "published_sha256": "0aaabb339b3d47670bbddc1901be92df7dee6f9e12c50b1a48b3202ccd4131cb",
+      "relation": "source_faithful_public_sanitized_copy",
+      "local_path_replacements": 0,
+      "bytes": 53411
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/lattice.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/lattice.py",
+      "source_sha256": "d166a585be46e0221e3c7135ee5aca82c7ddfd37f57f4f843a350550e3fb5962",
+      "published_sha256": "d166a585be46e0221e3c7135ee5aca82c7ddfd37f57f4f843a350550e3fb5962",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 8010
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/mrl.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/mrl.py",
+      "source_sha256": "e61a281dcfad008798687d9b4034fcf902a371ae32ef080d7687fb15ec4696e3",
+      "published_sha256": "e61a281dcfad008798687d9b4034fcf902a371ae32ef080d7687fb15ec4696e3",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5494
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/trace.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/trace.py",
+      "source_sha256": "41c8a043d5786554b2a7176fabb3e8d2e3d47bc1dcb17c9deaefaec92220b487",
+      "published_sha256": "41c8a043d5786554b2a7176fabb3e8d2e3d47bc1dcb17c9deaefaec92220b487",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1286
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/v0_selfcheck.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/v0_selfcheck.py",
+      "source_sha256": "97db8d953b48df89a18fa8f43661ddecc5deb856c4464b4126dfa5b85e8be2fd",
+      "published_sha256": "97db8d953b48df89a18fa8f43661ddecc5deb856c4464b4126dfa5b85e8be2fd",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4285
+    },
+    {
+      "source_path": "source-provenance://Erdos269/wave_engines/verify_headline.py",
+      "public_path": "research_corpus/Erdos269/wave_engines/verify_headline.py",
+      "source_sha256": "0da5e3a2de455b775ece752405534bc54cfd5d9209e5dd9302afa61987a43d72",
+      "published_sha256": "0da5e3a2de455b775ece752405534bc54cfd5d9209e5dd9302afa61987a43d72",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7512
     }
   ]
 }

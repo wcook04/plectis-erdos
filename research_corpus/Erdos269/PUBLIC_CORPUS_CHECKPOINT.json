@@ -2,14 +2,14 @@
   "schema": "plectis_public_problem_corpus_checkpoint_v1",
   "problem_id": "erdos_269",
   "source_repository": "private_authoring_repository_not_included",
-  "source_commit": "832ab7f5d3ffd88eb7bbac065be2c4de2a08b266",
+  "source_commit": "060b42c3acd7fc5ec054273ddf6ff65faf42d3c7",
   "source_subtree": "source-provenance://Erdos269",
-  "source_subtree_tree": "b6dea1c813dec9a16fd5b0efc907cf6b299e4090",
-  "exported_source_file_count": 31,
+  "source_subtree_tree": "df20b4696f4b1e169c17baedf0d59792b1ba1978",
+  "exported_source_file_count": 42,
   "publication_scope": "committed problem-facing Lean, mathematical notes, labs, and the research packet",
   "status": "source_current_problem_snapshot",
   "corpus_manifest_path": "research_corpus/Erdos269/CORPUS_MANIFEST.json",
-  "corpus_manifest_sha256": "2025e4bd6cab8568b06450f89ef2f1f55eaf01aa2188d80fc20b4c8d97264bd2",
+  "corpus_manifest_sha256": "574138e024b94ea327f6d096c9ab4e568a5bc4ee09055e423d1de940120ca371",
   "strongest_result_map_path": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
-  "strongest_result_map_sha256": "3137b4f4b74e609c27213c5e69a7483882d461753d611101a672ac06bcb8c29e"
+  "strongest_result_map_sha256": "237ecfc682ed5525a743178331794f5c1d43a5d9ac0720ea4f6bb67f2ee7ecef"
 }

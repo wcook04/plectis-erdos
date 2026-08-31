@@ -1,7 +1,7 @@
 # Erdős 269 research corpus
 
 This directory is the complete public-safe committed research corpus for the
-three-prime case of Erdős Problem 269 at source checkpoint `832ab7f5d3ffd88eb7bbac065be2c4de2a08b266`.
+three-prime case of Erdős Problem 269 at source checkpoint `060b42c3acd7fc5ec054273ddf6ff65faf42d3c7`.
 The problem — irrationality of `S = sum over {2,3,5}-smooth s of 1/H(s)`,
 with `H` the running LCM of the smooth prefix — remains OPEN; these files
 contain proved reductions, Lean-checked statements, exact computations,

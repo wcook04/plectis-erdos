@@ -44,29 +44,48 @@ theorem trueNormalizedState_eq_telescope (m K : ℕ) :
   | zero =>
     simp only [Finset.range_zero, Finset.sum_empty]
     unfold trueNormalizedState dyadicNormalizedTailStateR235
-    dyadicShellTsumTailR235
     simp
   | succ K ih =>
-    have hpin := trueNormalizedState_pinning m
-    have hsplit := dyadicShellTsumTailR235_eq_shell_add (m + K)
-    have hprod : ∏ j ∈ Finset.range (K + 1),
-        (dyadicBlockBase235 (m + j) : ℝ)
-        = (dyadicBlockBase235 m : ℝ) * ∏ j ∈ Finset.range K,
-          (dyadicBlockBase235 (m + 1 + j) : ℝ) := by
-      rw [Finset.prod_range_succ']
-      congr 1
-      exact Finset.prod_congr rfl (fun j _ => by rw [Nat.add_right_comm])
-    have hrec := dyadicNormalizedShellTsumTailR235_succ (m + K)
-    have hstate : trueNormalizedState (m + K + 1)
-        = trueNormalizedState ((m + K) + 1) := rfl
-    rw [Finset.sum_range_succ (n := K + 1)]
-    rw [ih]
-    have hsplit' : dyadicShellTsumTailR235 (m + K)
-        = dyadicShellMassR235 (m + K) + dyadicShellTsumTailR235 (m + K + 1) :=
-      hsplit
-    rw [hstate, hrec]
-    field_simp [Finset.prod_range_succ']
-    nlinarith [hprod, hsplit',
-      dyadicBlockBase235_pos (m + K) |> mod_cast le_refl _ |>.elim]
+    -- the radix word telescopes the three-smooth height: one factor per shell
+    have hHprod : ∀ n : ℕ, (threePrimeHeight 2 3 5 (2 ^ (m + n)) : ℝ)
+        = (threePrimeHeight 2 3 5 (2 ^ m) : ℝ)
+          * ∏ j ∈ Finset.range n, (dyadicBlockBase235 (m + j) : ℝ) := by
+      intro n
+      induction n with
+      | zero => simp
+      | succ n ihn =>
+        have hstep : (threePrimeHeight 2 3 5 (2 ^ (m + (n + 1))) : ℝ)
+            = (dyadicBlockBase235 (m + n) : ℝ)
+              * (threePrimeHeight 2 3 5 (2 ^ (m + n)) : ℝ) :=
+          mod_cast threePrimeHeight_dyadicBlock_succ (m + n)
+        rw [Finset.prod_range_succ, hstep, ihn]
+        ring
+    have hbpos : (0 : ℝ) < ∏ j ∈ Finset.range (K + 1),
+        (dyadicBlockBase235 (m + j) : ℝ) :=
+      Finset.prod_pos fun j _ => by exact_mod_cast dyadicBlockBase235_pos (m + j)
+    have hbne : (∏ j ∈ Finset.range (K + 1),
+        (dyadicBlockBase235 (m + j) : ℝ)) ≠ 0 := ne_of_gt hbpos
+    have hdigit : (threePrimeHeight 2 3 5 (2 ^ (m + K + 1)) : ℝ) / 2
+        * dyadicShellMassR235 (m + K)
+        = (dyadicOrderedBlockDigit235 (m + K) : ℝ) :=
+      half_threePrimeHeight_mul_dyadicShellMassR235 (m + K)
+    have hH : (threePrimeHeight 2 3 5 (2 ^ (m + K + 1)) : ℝ)
+        = (threePrimeHeight 2 3 5 (2 ^ m) : ℝ)
+          * ∏ j ∈ Finset.range (K + 1), (dyadicBlockBase235 (m + j) : ℝ) :=
+      hHprod (K + 1)
+    -- the new shell's mass is exactly the next digit over the radix product
+    have hkey : (threePrimeHeight 2 3 5 (2 ^ m) : ℝ) / 2
+          * dyadicShellMassR235 (m + K)
+        = (dyadicOrderedBlockDigit235 (m + K) : ℝ)
+          / ∏ j ∈ Finset.range (K + 1), (dyadicBlockBase235 (m + j) : ℝ) := by
+      rw [eq_div_iff hbne, ← hdigit, hH]
+      ring
+    have hT : dyadicShellTsumTailR235 (m + K)
+        = dyadicShellMassR235 (m + K)
+          + dyadicShellTsumTailR235 (m + (K + 1)) :=
+      dyadicShellTsumTailR235_eq_shell_add (m + K)
+    rw [Finset.sum_range_succ, ih]
+    linear_combination
+      (threePrimeHeight 2 3 5 (2 ^ m) : ℝ) / 2 * hT + hkey
 
 end ErdosProblems.Erdos269

@@ -142,7 +142,7 @@ theorem trueNormalizedState_pinning (a : ℕ) :
   have hbne : (dyadicBlockBase235 a : ℝ) ≠ 0 := by
     exact ne_of_gt (by exact_mod_cast dyadicBlockBase235_pos a)
   have hm := trueNormalizedState_pinning_mul a
-  refine Eq.trans ?_ (add_div _ _ _).symm
+  refine Eq.trans ?_ (add_div _ _ _)
   exact eq_div_iff hbne |>.mpr hm
 
 /-- **Zero-gap separation.**  When the block radix divides the ordered
@@ -222,91 +222,44 @@ theorem trueNormalizedState_le_iterated (m k : ℕ) :
     rw [Finset.range_zero, Finset.sum_empty]
     norm_num
   | succ k ih =>
-    have hbpos : (0 : ℝ) < (dyadicBlockBase235 m : ℝ) := by
-      exact_mod_cast dyadicBlockBase235_pos m
-    have hb2 : (2 : ℝ) ≤ (dyadicBlockBase235 m : ℝ) :=
-      mod_cast (dyadicBlockBase235_mem_interval m).1
-    have hnonneg : 0 ≤ trueNormalizedState (m + 1) :=
+    -- peel one further shell at the deepest recorded index `m + k`
+    have hidx : m + k + 1 = m + (k + 1) := Nat.add_assoc m k 1
+    have hbpos : (0 : ℝ) < (dyadicBlockBase235 (m + k) : ℝ) := by
+      exact_mod_cast dyadicBlockBase235_pos (m + k)
+    have hb2 : (2 : ℝ) ≤ (dyadicBlockBase235 (m + k) : ℝ) :=
+      mod_cast (dyadicBlockBase235_mem_interval (m + k)).1
+    have hnonneg : 0 ≤ trueNormalizedState (m + (k + 1)) :=
       le_of_lt (trueNormalizedState_pos _)
-    have hd : 0 ≤ (dyadicOrderedBlockDigit235 m : ℝ) := Nat.cast_nonneg _
-    have hpin := trueNormalizedState_pinning m
-    have hsplit : trueNormalizedState m ≤
-        (dyadicOrderedBlockDigit235 m : ℝ) / 2
-          + trueNormalizedState (m + 1) / 2 := by
-      have e1 : (dyadicOrderedBlockDigit235 m : ℝ)
-          / (dyadicBlockBase235 m : ℝ)
-          ≤ (dyadicOrderedBlockDigit235 m : ℝ) / 2 := by
+    have hd : 0 ≤ (dyadicOrderedBlockDigit235 (m + k) : ℝ) := Nat.cast_nonneg _
+    have hpin := trueNormalizedState_pinning (m + k)
+    rw [hidx] at hpin
+    have hsplit : trueNormalizedState (m + k) ≤
+        (dyadicOrderedBlockDigit235 (m + k) : ℝ) / 2
+          + trueNormalizedState (m + (k + 1)) / 2 := by
+      have e1 : (dyadicOrderedBlockDigit235 (m + k) : ℝ)
+          / (dyadicBlockBase235 (m + k) : ℝ)
+          ≤ (dyadicOrderedBlockDigit235 (m + k) : ℝ) / 2 := by
         rw [div_le_div_iff₀ hbpos (by norm_num : (0 : ℝ) < 2)]
         nlinarith
-      have e2 : trueNormalizedState (m + 1)
-          / (dyadicBlockBase235 m : ℝ)
-          ≤ trueNormalizedState (m + 1) / 2 := by
+      have e2 : trueNormalizedState (m + (k + 1))
+          / (dyadicBlockBase235 (m + k) : ℝ)
+          ≤ trueNormalizedState (m + (k + 1)) / 2 := by
         refine div_le_div_of_nonneg_left hnonneg (by norm_num : (0 : ℝ) < 2) ?_
         linarith
       linarith
-    -- induction hypothesis one shell deeper, with indices reindexed
-    have h0 := trueNormalizedState_le_iterated (m + 1) k
-    have hsumeq :
-        (∑ i ∈ Finset.range k,
-            ((dyadicOrderedBlockDigit235 (m + 1 + i) : ℝ) / 2 ^ (i + 1)))
-          = (∑ i ∈ Finset.range k,
-            ((dyadicOrderedBlockDigit235 (m + (i + 1)) : ℝ) / 2 ^ (i + 1))) :=
-      Finset.sum_congr rfl fun i _ => by
-        rw [Nat.add_right_comm, ← Nat.add_assoc]
-    have hremeq :
-        trueNormalizedState (m + 1 + k) = trueNormalizedState (m + (k + 1)) := by
-      rw [Nat.add_right_comm, ← Nat.add_assoc]
-    rw [hsumeq, hremeq] at h0
-    -- halve the deeper digit sum exactly into the new shells
-    have hhalf :
-        ((∑ i ∈ Finset.range k,
-            ((dyadicOrderedBlockDigit235 (m + (i + 1)) : ℝ) / 2 ^ (i + 1)))
-              / 2)
-          = (∑ i ∈ Finset.range k,
-            ((dyadicOrderedBlockDigit235 (m + (i + 1)) : ℝ) / 2 ^ (i + 2))) := by
-      rw [Finset.sum_div]
-      refine Finset.sum_congr rfl fun i _ => ?_
-      have heq : (2 : ℝ) ^ (i + 2) = 2 ^ (i + 1) * 2 := by
-        rw [pow_succ, pow_succ]
-      rw [heq]
-      exact div_div _ _ _
-    have hremhalve :
-        trueNormalizedState (m + (k + 1)) / 2 ^ k / 2
-          = trueNormalizedState (m + (k + 1)) / 2 ^ (k + 1) := by
-      rw [pow_succ]
-      ring
+    have hpow : (0 : ℝ) < (2 : ℝ) ^ k := by positivity
+    have h2X : 2 * trueNormalizedState (m + k)
+        ≤ (dyadicOrderedBlockDigit235 (m + k) : ℝ)
+          + trueNormalizedState (m + (k + 1)) := by linarith
+    -- push the extra shell through the factor `2^-k` already accumulated
+    have hstep : trueNormalizedState (m + k) / 2 ^ k
+        ≤ (dyadicOrderedBlockDigit235 (m + k) : ℝ) / 2 ^ (k + 1)
+          + trueNormalizedState (m + (k + 1)) / 2 ^ (k + 1) := by
+      rw [pow_succ, ← add_div,
+        div_le_div_iff₀ hpow (by positivity : (0 : ℝ) < 2 ^ k * 2)]
+      nlinarith [mul_le_mul_of_nonneg_right h2X hpow.le]
     rw [Finset.sum_range_succ]
-    calc trueNormalizedState m
-        ≤ (dyadicOrderedBlockDigit235 m : ℝ) / 2
-            + trueNormalizedState (m + 1) / 2 := hsplit
-      _ ≤ (dyadicOrderedBlockDigit235 m : ℝ) / 2
-            + ((∑ i ∈ Finset.range k,
-                  ((dyadicOrderedBlockDigit235 (m + (i + 1)) : ℝ) /
-                    2 ^ (i + 1)))
-                + trueNormalizedState (m + (k + 1)) / 2 ^ k) / 2 := by
-          linarith [h0]
-      _ ≤ (dyadicOrderedBlockDigit235 m : ℝ) / 2
-            + (∑ i ∈ Finset.range k,
-                  ((dyadicOrderedBlockDigit235 (m + (i + 1)) : ℝ) /
-                    2 ^ (i + 2)))
-              + trueNormalizedState (m + (k + 1)) / 2 ^ (k + 1) := by
-          have hsplitdiv :
-              ((∑ i ∈ Finset.range k,
-                    ((dyadicOrderedBlockDigit235 (m + (i + 1)) : ℝ) /
-                      2 ^ (i + 1)))
-                + trueNormalizedState (m + (k + 1)) / 2 ^ k) / 2
-                = (∑ i ∈ Finset.range k,
-                    ((dyadicOrderedBlockDigit235 (m + (i + 1)) : ℝ) /
-                      2 ^ (i + 1))) / 2
-                  + trueNormalizedState (m + (k + 1)) / 2 ^ k / 2 := by
-                  rw [add_div]
-          rw [hsplitdiv, hhalf, hremhalve]
-          ring_nf
-      _ ≤ (∑ i ∈ Finset.range (k + 1),
-              ((dyadicOrderedBlockDigit235 (m + i) : ℝ) / 2 ^ (i + 1)))
-            + trueNormalizedState (m + (k + 1)) / 2 ^ (k + 1) := by
-          rw [Finset.sum_range_succ]
-          ring_nf
+    linarith [ih, hstep]
 
 /-! ## Forced equality of window-tracking orbits -/
 
@@ -348,37 +301,31 @@ theorem surviving_window_orbit_eq_true_state
         ≤ |y (A + k) - trueNormalizedState (A + k)| := by
     intro k
     induction k with
-    | zero => simpa
+    | zero => simp
     | succ k ih =>
+      have hbposR : (0 : ℝ) < (dyadicBlockBase235 (A + k) : ℝ) := by
+        exact_mod_cast dyadicBlockBase235_pos (A + k)
       have hb2 : (2 : ℝ) ≤ (dyadicBlockBase235 (A + k) : ℝ) :=
         mod_cast (dyadicBlockBase235_mem_interval (A + k)).1
+      have hts : ∀ n : ℕ, trueNormalizedState n
+          = dyadicNormalizedTailStateR235 dyadicShellTsumTailR235 n :=
+        fun _ => rfl
       have h1 := hrec (A + k) (by omega)
       have h2 := dyadicNormalizedShellTsumTailR235_succ (A + k)
       have hdiff : y (A + k + 1) - trueNormalizedState (A + k + 1)
           = (dyadicBlockBase235 (A + k) : ℝ)
             * (y (A + k) - trueNormalizedState (A + k)) := by
-        rw [h1, h2]
+        rw [h1, hts (A + k + 1), h2, hts (A + k)]
         ring
       have hstep : (2 : ℝ) * |y (A + k) - trueNormalizedState (A + k)|
           ≤ |y (A + k + 1) - trueNormalizedState (A + k + 1)| := by
         rw [hdiff, abs_mul]
-        have habsp : 0 < |(dyadicBlockBase235 (A + k) : ℝ)| :=
-          abs_pos.mpr (mod_cast dyadicBlockBase235_pos (A + k))
-        have hle : 2 * |y (A + k) - trueNormalizedState (A + k)|
-            ≤ |(dyadicBlockBase235 (A + k) : ℝ)|
-              * |y (A + k) - trueNormalizedState (A + k)| := by
-          refine mul_le_mul_of_nonneg_right ?_ (abs_nonneg _)
-          rwa [abs_of_pos habsp]
-        calc (2 : ℝ) * |y (A + k) - trueNormalizedState (A + k)|
-            ≤ |(dyadicBlockBase235 (A + k) : ℝ)|
-              * |y (A + k) - trueNormalizedState (A + k)| := hle
-          _ = |(dyadicBlockBase235 (A + k) : ℝ) *
-                (y (A + k) - trueNormalizedState (A + k))| :=
-                (abs_mul _ _).symm
+        refine mul_le_mul_of_nonneg_right ?_ (abs_nonneg _)
+        rwa [abs_of_pos hbposR]
       calc (2 : ℝ) ^ (k + 1) * |y A - trueNormalizedState A|
           = 2 * ((2 : ℝ) ^ k * |y A - trueNormalizedState A|) := by ring
         _ ≤ 2 * |y (A + k) - trueNormalizedState (A + k)| :=
-          mul_le_mul_of_nonneg_right ih (by norm_num)
+          mul_le_mul_of_nonneg_left ih (by norm_num)
         _ ≤ |y (A + k + 1) - trueNormalizedState (A + k + 1)| := hstep
   -- both orbits sit inside the same window at A + k, so their difference
   -- is at most the width
