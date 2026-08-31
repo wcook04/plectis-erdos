@@ -89,6 +89,19 @@ For paper choice, role, availability, or reading order, start with:
 python3 scripts/query_corpus.py --papers
 ```
 
+For external assurance and release qualification, use the exact bounded routes:
+
+```sh
+python3 scripts/query_corpus.py --route comparator_assurance
+python3 scripts/query_corpus.py --route palomar_qualification
+```
+
+`comparator_assurance` reports the configured comparison packet, modules,
+axioms, and receipt; it does not establish novelty, significance, priority, or
+peer review. `palomar_qualification` reports repository-local policy readiness
+and its remaining operator-only decisions; it does not confer acceptance,
+registration, publication, or external endorsement.
+
 The same guide must answer ordinary requests such as “which papers should I
 read?” through `--ask`. It separates the mathematical gateway, specialist
 companion, repository-systems guide, and reciprocal Plectis route; it also
