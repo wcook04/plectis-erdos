@@ -51,9 +51,19 @@ rebuilt from those receipts. Acceptance does not establish novelty, peer
 review, mathematical truth, or a stronger claim.
 
 The receipt and accepted artifact are ordinary tracked files, so older clones
-receive both when they update. A later correction points back to the earlier
-receipt instead of erasing it. The history therefore records who did what,
-what was known at the time, and what the work did not establish.
+receive both when they update. Work returned from an older starting commit is
+reviewed in two passes: the original delta is replayed from its common ancestor,
+then the accepted substance is reconciled with current main and checked again.
+Any material conflict resolution is preserved as separately credited
+integration work. A later correction points back to the earlier receipt
+instead of erasing it. The history therefore records who did what, what was
+known at the time, and what the work did not establish.
+
+After a stable result, the clone-local consequence-propagation skill checks
+the Lean, claim, paper, computation, route, validation, and contributor
+surfaces that may now be stale. Each candidate is updated, verified unchanged,
+deferred with a re-entry condition, or excluded with a reason before the
+return is packaged.
 
 Several independent contributions may make a candidate cheaper for an expert
 to inspect, but headcount is not evidence. The useful signal is legible work:

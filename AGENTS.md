@@ -539,8 +539,10 @@ The wrapper is the public concurrency boundary. Equivalent clean clones share
 one content-keyed validation future in the repository-scoped host cache;
 different Lean targets queue behind one `lean-host` owner instead of writing
 the same machine's build trees concurrently. The detached owner continues if
-an attached caller exits, completed output is bounded, and terminal state is
-cleaned automatically. Same-lock cold clones also receive independent
+an attached caller exits; externally killed Lean children automatically resume
+from partial output for up to three attempts, with exhaustion classified as
+deferred exit 75 rather than a theorem failure. Completed output is bounded,
+and terminal state is cleaned automatically. Same-lock cold clones receive independent
 copy-on-write `.lake/packages` trees from a host seed when the filesystem
 supports it; mutable cache directories are never symlinked. Set
 `VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an
@@ -548,6 +550,14 @@ explicitly isolated cache is required. None of this cache state is proof
 authority: the terminal receipt preserves the underlying Lake exit code.
 The clone-local operational guide is
 [skills/lean-concurrent-validation/SKILL.md](skills/lean-concurrent-validation/SKILL.md).
+
+After any stable theorem, counterexample, no-go, computation, correction,
+exposition change, or architecture repair, load
+[skills/propagate-research-consequences/SKILL.md](skills/propagate-research-consequences/SKILL.md)
+before packaging the work. The first pass is relative to the recorded starting
+commit. If the branch is later reconciled with a newer main branch, rerun the
+pass on the integration delta. Dependency edges nominate candidates; they do
+not author semantic consequences or strengthen claims.
 
 The release checker validates claim status, declaration coordinates, paper
 anchors, the machine-readable module and argument graphs, the exhaustive

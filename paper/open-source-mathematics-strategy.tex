@@ -430,7 +430,16 @@ of one file or one diff type per commit. Pushing to a fork and opening the pull
 request are external actions and occur only after the contributor authorises
 them.
 
-The complete protocol has eight steps.
+Upstream work may continue while the contributor's branch remains open. The
+recorded starting commit supplies the common ancestor from which Git recovers
+the original delta; the contributor does not need a copy of the maintainer's
+private or current working tree. Review therefore has two passes. First,
+reproduce the change in its original public context. Second, reconcile the
+accepted substance with current main and rerun the present checks. A material
+conflict resolution is a new, separately credited integration change. It does
+not erase or retrospectively rewrite the original contribution.
+
+The complete protocol has nine steps.
 
 \begin{enumerate}
 \item \textbf{Clone.}  Record the exact public commit and environment.
@@ -446,6 +455,11 @@ The complete protocol has eight steps.
       computation receives a computation receipt; a formal theorem receives a
       Lean receipt; neither receives semantic or publication authority from
       that fact alone.
+\item \textbf{Propagate.}  Enumerate the plausible Lean, claim, paper,
+      computation, route, validation, and contributor consumers.  Update each
+      one, verify it unchanged, defer it with a re-entry condition, or explain
+      why it is not a consequence.  Repeat this pass after old-branch work is
+      reconciled with current main.
 \item \textbf{Return.}  Submit source, evidence, starting commit, tool
       disclosure, collaborators, requested contribution roles, and the exact
       stronger statement that remains unproved.
@@ -599,6 +613,12 @@ importance.  Later accepted work can add reviewed lineage edges such as
 or \emph{explains}.  A consequence view can then show which later results,
 tools, or expositions depend on an earlier contribution.
 
+This later view begins with an immediate obligation. Before a result is
+returned, the clone-local \texttt{propagate-research-consequences} skill gives
+every plausible downstream consumer a disposition. The later graph may reveal
+further consequences as the corpus grows, but it does not excuse leaving known
+current consumers stale.
+
 This is more informative than awarding points at intake, but it is not an
 objective measure of impact.  Time does not establish causation, and a graph
 edge is an authored claim that may need correction.  The view should therefore
@@ -716,6 +736,7 @@ paper makes no universal priority claim and reports no controlled comparison
 showing that the composition increases discovery rate.
 
 \section{Adding another problem world}\label{sec:add-problem}
+\papersectiontarget{strategy-add-problem}
 
 The architecture is intended to hold more than the present eight problems,
 but adding a folder is not enough.  A coherent new world needs a canonical
@@ -734,6 +755,12 @@ query routes, return schema, cold-start inventory, and relevant external
 crosswalks.  These are distinct transitions because a checked proposition, a
 published paper, a reviewed claim, and a Comparator selection are different
 facts.
+
+After any of these transitions, consequence propagation inspects the problem
+registry, paper corpus, query routes, cold-start inventory, validation roster,
+return schema, and external crosswalks. A new problem is complete at its stated
+entry level only when every affected consumer has an explicit disposition; a
+new directory is not itself a lifecycle receipt.
 
 The last transition is not yet a one-command public operation.  The current
 paper-corpus fan-in has a maintainer-owned stage, several checks enumerate the
@@ -1096,6 +1123,10 @@ How can an agent explain the system? &
 \repolink{skills/explain-public-system/SKILL.md}{explain-public-system skill} \\
 How can an agent mine a frontier? &
 \repolink{skills/mine-open-problem/SKILL.md}{mine-open-problem skill} \\
+How is a bounded Lean change validated? &
+\repolink{skills/lean-concurrent-validation/SKILL.md}{lean-concurrent-validation skill} \\
+How are downstream consequences reconciled? &
+\repolink{skills/propagate-research-consequences/SKILL.md}{propagate-research-consequences skill} \\
 How are clone skills installed elsewhere? &
 \repolink{skills/install-clone-skills/SKILL.md}{install-clone-skills skill} \\
 What is proved and what remains open? & \repolink{docs/RESULTS.md}{docs/RESULTS.md} \\
@@ -1110,6 +1141,7 @@ How can an agent prepare a pull request? &
 How can I propose or add another problem? &
 \repolink{skills/add-open-problem/SKILL.md}{add-open-problem skill} \\
 How is a return validated? &
+\repolink{skills/erdos-research-return/SKILL.md}{erdos-research-return skill} and the
 \repolink{docs/research-commons/README.md}{research-commons protocol} \\
 How is credit recorded? &
 \repolink{docs/research-commons/CREDIT_POLICY.md}{credit policy} \\

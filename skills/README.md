@@ -14,6 +14,12 @@ directories.
 - [Mine an open problem](mine-open-problem/SKILL.md): select or accept one
   bounded frontier, use reading, computation, reasoning, Lean, and optional
   subagents, and return an evidence-bearing delta.
+- [Validate Lean concurrently](lean-concurrent-validation/SKILL.md): submit,
+  join, resume, or collect one bounded Lean build without making a validator
+  queue into mathematical authority.
+- [Propagate research consequences](propagate-research-consequences/SKILL.md):
+  trace a stable mathematical or architecture delta through its downstream
+  consumers, including a second pass after older-clone work is integrated.
 - [Add an open problem](add-open-problem/SKILL.md): propose, incubate, or fully
   register another sourced problem world without silently promoting it into a
   reviewed claim.

@@ -104,14 +104,17 @@ proof authority.
 For publication mutation, open `docs/publication_entry_packet.json`, then the
 publication contract or emitted handle. These own organisation, not Lean proof.
 
-### Explain, install, mine, or add a problem
+### Explain, install, mine, validate, propagate, or add a problem
 
 Use the clone-local skills in `skills/`: `explain-public-system`,
-`install-clone-skills`, `mine-open-problem`, `add-open-problem`, and
+`install-clone-skills`, `mine-open-problem`, `lean-concurrent-validation`,
+`propagate-research-consequences`, `add-open-problem`, and
 `submit-pull-request`. The mining skill may coordinate subagents, but the
-integrating agent verifies every return. The submission skill may prepare and
-commit locally; it pushes or opens a pull request only after explicit
-authorisation.
+integrating agent verifies every return. After a stable mathematical or
+architecture delta, the propagation skill gives each plausible downstream
+consumer a disposition before the result is packaged. The submission skill may
+prepare and commit locally; it pushes or opens a pull request only after
+explicit authorisation.
 
 ### Return research from a clone
 
@@ -124,6 +127,11 @@ cat skills/erdos-research-return/SKILL.md
 Keep the human account in the pull request or plain-language issue. Bind public
 provenance and exact credit in the returned package; accepted receipts travel
 to older clones in Git history. Never require a private repository.
+
+An older clone remains a valid source of work. Preserve its recorded starting
+commit and original delta, reconcile the reviewed change with current main,
+then rerun current validation and consequence propagation. A material conflict
+resolution is a separately credited integration change.
 
 ### General Plectis machinery
 

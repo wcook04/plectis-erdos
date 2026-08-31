@@ -80,6 +80,10 @@ Then give any local coding agent one of these jobs:
   bounded problem route that best matches the available tools, use subagents
   where their work can be checked independently, and return the smallest
   evidence-bearing result.”
+- **Propagate a result:** “Use
+  `skills/propagate-research-consequences/SKILL.md` after a stable theorem,
+  no-go, computation, correction, or infrastructure change. Check every
+  plausible mathematical and repository consumer before packaging it.”
 - **Improve the machinery:** “Read the architecture contribution path, find
   one reproducible bottleneck in the cold-clone workflow, and propose or
   implement a focused repair with credit.”
@@ -176,6 +180,10 @@ validation, and writing roles beside the exact paths that survive assimilation.
 Agents are welcome. The [compact agent entry](AGENTS.override.md) routes a
 cold clone through the papers, corpus queries, problem frontiers, validation,
 and the structured return path without requiring access to any private system.
+The ordinary lifecycle is: invoke a bounded job, work until its stop condition,
+validate the resulting evidence, propagate its consequences, package the
+return, and ask upstream to pull it. A run may instead suspend with a durable
+frontier and re-entry condition; closure is not reserved for solved problems.
 
 ## What is here
 

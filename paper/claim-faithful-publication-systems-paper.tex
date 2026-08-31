@@ -237,6 +237,52 @@ later agent does not have to rediscover them. The final feedback step turns a
 local success or failure into a reusable route, check, or warning when it
 genuinely generalises.
 
+\subsection{Skill-addressable job lifecycles}
+\papersectiontarget{systems-job-lifecycle}
+
+The public clone gives each recurring job one entry skill. A skill owns the
+job's starting state, permitted mutations, required evidence, stopping or
+re-entry condition, and next owner; it does not acquire the authority of the
+objects it coordinates. Figure~\ref{fig:job-lifecycle} records the ordinary
+research path.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}[
+  job/.style={draw=gray!58, rounded corners=2.5pt, align=center, fill=white,
+    text width=2.35cm, minimum height=1.02cm, inner sep=4pt},
+  arr/.style={-{Stealth[length=2.1mm]}, semithick, draw=gray!78!black}
+]
+\node[job] (invoke) at (0,0) {\textbf{Invoke}\\[-1pt]\scriptsize choose a bounded route};
+\node[job, right=4mm of invoke] (work) {\textbf{Work}\\[-1pt]\scriptsize continue or suspend};
+\node[job, right=4mm of work] (validate) {\textbf{Validate}\\[-1pt]\scriptsize computation or Lean};
+\node[job, right=4mm of validate] (propagate) {\textbf{Propagate}\\[-1pt]\scriptsize classify every consumer};
+\node[job, below=7mm of propagate] (package) {\textbf{Package}\\[-1pt]\scriptsize evidence and provenance};
+\node[job, left=4mm of package] (propose) {\textbf{Propose}\\[-1pt]\scriptsize pull request or issue};
+\node[job, left=4mm of propose] (adopt) {\textbf{Review and adopt}\\[-1pt]\scriptsize reconcile, accept, credit};
+\draw[arr] (invoke) -- (work);
+\draw[arr] (work) -- (validate);
+\draw[arr] (validate) -- (propagate);
+\draw[arr] (propagate) -- (package);
+\draw[arr] (package) -- (propose);
+\draw[arr] (propose) -- (adopt);
+\end{tikzpicture}
+\caption{The clone-local job lifecycle. Closure means that the present delta
+has evidence and dispositions; it does not mean that the open problem is
+solved.}
+\label{fig:job-lifecycle}
+\end{figure}
+
+The current owners are \texttt{mine-open-problem} for invocation and research,
+\texttt{lean-concurrent-validation} for bounded Lean checks,
+\texttt{propagate-research-consequences} for downstream reconciliation,
+\texttt{erdos-research-return} for packaging and maintainer assimilation, and
+\texttt{submit-pull-request} for preparing the Git proposal. The separate
+\texttt{add-open-problem} lifecycle moves through proposal, incubating formal
+lane, and fully indexed public world. \texttt{public-mathematical-writing}
+governs a paper projection when propagation reaches exposition. These names
+are repository entrypoints rather than a second claim taxonomy.
+
 \section{The private workbench}\label{sec:private}
 
 \subsection{Disk is shared memory}
@@ -565,6 +611,12 @@ reason, or mark outside scope. Empty lexical search is not evidence of no
 consequence, and no projection may bulk-strengthen a family of claims. A formal
 evidence cell carries the result, its explicit non-claim, evidence class,
 source and receipt links, and next unresolved obligation through this fan-out.
+The public \texttt{propagate-research-consequences} skill implements the same
+discipline without depending on the private workbench. For work returned from
+an older clone, it runs once against the contributor's recorded starting
+commit and again after the reviewed change has been reconciled with current
+main. The original delta and any conflict-resolution delta remain separate
+evidence and receive separate attribution.
 
 This same architecture distinguishes mathematical propagation from process
 propagation. A theorem, counterexample, or no-go changes the mathematical graph
@@ -934,6 +986,13 @@ failed route need not be mislabelled as a theorem. Later corrections append a
 new history rather than erasing the earlier contributor. Attribution and pull
 requests are standard practice; the architectural role here is to carry credit
 and provenance through fan-in without allowing either to strengthen the claim.
+
+The named starting commit remains useful even when main advances. Git retains
+the common ancestor needed to inspect the contributor's original delta. A
+maintainer can replay that state, reconcile the reviewed substance with the
+current tree, and rerun current validation and consequence propagation. A
+material conflict resolution is a new integration contribution; it does not
+rewrite the origin of the earlier work.
 
 The exact contributor-facing sequence is specified in the
 \papersectionlink{open-source-mathematics-strategy.pdf}%

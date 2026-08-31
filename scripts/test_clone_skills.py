@@ -14,6 +14,8 @@ SKILLS = (
     "install-clone-skills",
     "explain-public-system",
     "mine-open-problem",
+    "lean-concurrent-validation",
+    "propagate-research-consequences",
     "add-open-problem",
     "submit-pull-request",
     "erdos-research-return",
@@ -50,11 +52,12 @@ def main() -> int:
         assert f"name: {name}" in source, name
         assert name in listed, name
         assert name in skill_index, name
-        assert "/Users/" not in source and "ai_workflow" not in source, name
+        assert "/Users/" not in source and "src/ai_workflow" not in source, name
 
     for name in (
         "explain-public-system",
         "mine-open-problem",
+        "propagate-research-consequences",
         "add-open-problem",
         "submit-pull-request",
     ):

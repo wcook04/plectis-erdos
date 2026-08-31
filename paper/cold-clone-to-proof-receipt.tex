@@ -454,6 +454,40 @@ inspection without deciding intended meaning. The cold-clone tour adds a
 front-door contract across exhaustive inventory, selective semantics, public
 claims, and agent receipts.
 
+\section{From a proof receipt to a public return}\label{sec:return}
+\papersectiontarget{cold-clone-return-lifecycle}
+
+A proof receipt closes only the validation job. It does not say whether a
+claim record, paper, computation, open frontier, query route, or contributor
+surface has become stale. The clone therefore continues through an explicit
+sequence: invoke a bounded route with \texttt{mine-open-problem}; continue,
+suspend, or close the research run at its stated stopping condition; validate
+the stable delta; classify its downstream consumers with
+\texttt{propagate-research-consequences}; package the evidence and provenance
+with \texttt{erdos-research-return}; and prepare the proposed upstream change
+with \texttt{submit-pull-request}. Pushing a branch or opening the pull request
+still requires the contributor's authorisation.
+
+The sequence is deliberately independent of the agent harness. A contributor
+may use Codex, Claude Code, Cursor, another runner, ordinary scripts, or no
+agent. The shared contract is the starting commit, changed source, evidence,
+claim ceiling, surviving limitation, consequence dispositions, and stop or
+re-entry condition. A suspended run can therefore be resumed without being
+misreported as either failure or proof.
+
+The starting commit also permits work from an older clone to survive current
+development. Git retains the common ancestor and hence the original delta.
+Maintainers first reproduce that delta in its stated context, then reconcile
+the reviewed substance with current main. Validation and consequence
+propagation are repeated on the integration delta. Material conflict
+resolution is recorded and credited as new work; the contributor's original
+authorship is preserved. The complete governance sequence appears in the
+\papersectionlink{open-source-mathematics-strategy.pdf}%
+{strategy-protocol}{companion contribution protocol}, while the wider job map
+appears in the
+\papersectionlink{claim-faithful-publication-systems-paper.pdf}%
+{systems-job-lifecycle}{systems lifecycle}.
+
 \section{Limits and transfer conditions}\label{sec:limits}
 \papersectiontarget{cold-clone-limits}
 
@@ -506,7 +540,7 @@ without making speed look like authority.
 \section{How to reproduce the audit}\label{app:repro}
 
 The public repository commits the tour, route, projections, workbench session,
-and validators used in this paper. The shortest reproduction route has three
+and validators used in this paper. The shortest reproduction route has four
 bounded tasks.
 
 \paragraph{1. Orient without compiling Lean.}
@@ -539,6 +573,19 @@ python3 scripts/build_lean_dependency_index.py --check --full-check
 The first ordinary check after a cold clone may perform the full export; a
 matching restored Lake cache can carry the exact receipt. The full-check form
 always bypasses it.
+
+\paragraph{4. Inspect the return lifecycle.}
+The clone-local owners can be read without installing them globally:
+\begin{routeblock}
+cat skills/mine-open-problem/SKILL.md
+cat skills/propagate-research-consequences/SKILL.md
+cat skills/erdos-research-return/SKILL.md
+cat skills/submit-pull-request/SKILL.md
+python3 scripts/test_clone_skills.py
+python3 scripts/test_contribution_entry.py
+\end{routeblock}
+These commands inspect and test the route. They do not push a branch, open a
+pull request, accept a contribution, or alter mathematical status.
 
 \clearpage
 {\scriptsize

@@ -90,10 +90,19 @@ the roles describe work rather than deciding authorship.
 
 A returned contribution records the public commit where the work began. Later
 readers can then separate the contribution from changes that landed in the
-meantime. Once accepted work reaches the public main branch or a tagged
-release, older clones can fetch it and merge or rebase in the usual way. The
-receipt, the credited artifact, and the public credit page arrive together as
-repository files. This does not depend on a private development checkout.
+meantime. Git retains the common ancestor between that starting point and the
+contributor's branch, so maintainers can inspect the original change even when
+the public main branch has advanced. They first replay the contribution in its
+original context, then reconcile the reviewed substance with the current
+repository. A real conflict is new integration work and receives its own
+credit; it is not a reason to erase the original contribution.
+
+Once accepted work reaches the public main branch or a tagged release, an older
+clone can fetch it and merge or rebase in the usual way. The receipt, the
+credited artifact, and the public credit page arrive together as repository
+files. This does not depend on a private development checkout. Validation and
+downstream consequence checks are repeated after reconciliation because an
+old-branch receipt cannot certify the current repository state.
 
 If two contributions overlap, preserve both histories and reconcile them in a
 new change; do not silently rewrite the earlier return. If a later discovery
@@ -129,6 +138,8 @@ package remains the specialized front door for mathematical problem sessions.
 The human route above is the contract. The machinery below implements it; none
 of it is a prerequisite for reporting a useful result. Agents should use the
 clone-local [research-return skill](skills/erdos-research-return/SKILL.md), and
+the [consequence-propagation skill](skills/propagate-research-consequences/SKILL.md)
+after a stable result, and
 the [pull-request submission skill](skills/submit-pull-request/SKILL.md) when
 turning owned work into commits and a proposed GitHub return. That skill stops
 before pushing or opening the pull request unless the contributor explicitly

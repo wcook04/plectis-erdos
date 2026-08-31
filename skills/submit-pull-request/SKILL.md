@@ -30,6 +30,21 @@ git diff --check
 Do not discard, rewrite, or include unrelated changes. Do not expose private
 paths, credentials, prompts, caches, or material outside the public clone.
 
+Confirm that the recorded start belongs to the branch and inspect the original
+delta:
+
+```sh
+git merge-base --is-ancestor <starting-commit> HEAD
+git diff --stat <starting-commit>..HEAD
+git log --oneline <starting-commit>..HEAD
+```
+
+Do not rebase merely because upstream has advanced. A pull request preserves
+the branch history and compares it from a common ancestor. If current upstream
+creates a real conflict, reconcile it deliberately and record that integration
+work separately. Never rewrite a published contributor branch or force-push
+without explicit authorisation.
+
 ## Make reviewable commits
 
 Group changes by one coherent review question. Typical groups are:
@@ -63,6 +78,10 @@ Run the narrow tests required by every changed subsystem, followed by the
 public-boundary and contribution-entry checks when relevant. Record exact
 commands, results, omissions, and environmental deferrals. A green test is
 evidence about that test, not acceptance of a mathematical claim.
+
+Run `skills/propagate-research-consequences/SKILL.md` before finalising the
+return. The pull-request body should disclose any deferred downstream consumer
+and its re-entry condition.
 
 Review the complete branch diff against its intended base:
 

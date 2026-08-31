@@ -145,6 +145,19 @@ where supplied, and the exact open-obligation statements. From there,
 proof, source, and exposition drilldowns. These are navigation projections;
 Lean source remains proof authority and the family boundaries remain open.
 
+### The job lifecycle
+
+Skills own recurring jobs. A run invokes `mine-open-problem`, continues or
+suspends at a stop condition, uses `lean-concurrent-validation` when Lean
+authority is needed, runs `propagate-research-consequences` after a delta, packages with
+`erdos-research-return`, and prepares the proposal with
+`submit-pull-request`. `add-open-problem` separately owns proposal, incubation,
+and full indexing.
+
+If main advances, Git preserves the original delta. Maintainers review it, reconcile it, and
+rerun validation and propagation. Material conflict resolution remains a
+distinct, credited change.
+
 For module-level source traversal, use the same read-only query surface:
 
 ```sh

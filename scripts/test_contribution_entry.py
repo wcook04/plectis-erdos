@@ -35,10 +35,11 @@ def main() -> int:
     human, marker, mechanics = contributing.partition("## For agents and maintainers")
     require(bool(marker), "contributor guide does not separate human meaning from agent mechanics")
     require(len(re.findall(r"\b[\w’'-]+\b", human)) >= 500, "human contribution route is too thin")
+    human_flat = " ".join(human.lower().split())
     for forbidden in ("```", "|---", "python3 ", "scripts/", "--require-", "return.json"):
         require(forbidden not in human, f"human contribution route exposes implementation syntax: {forbidden}")
     for concept in ("pull request", "plain-language", "accepted receipt", "credit", "older clone", "architecture"):
-        require(concept in human.lower(), f"human contribution route omits {concept!r}")
+        require(concept in human_flat, f"human contribution route omits {concept!r}")
 
     required_files = (
         "docs/research-commons/README.md",
@@ -54,6 +55,8 @@ def main() -> int:
         "skills/install-clone-skills/SKILL.md",
         "skills/explain-public-system/SKILL.md",
         "skills/mine-open-problem/SKILL.md",
+        "skills/lean-concurrent-validation/SKILL.md",
+        "skills/propagate-research-consequences/SKILL.md",
         "skills/add-open-problem/SKILL.md",
         "skills/submit-pull-request/SKILL.md",
         "skills/erdos-research-return/SKILL.md",
@@ -128,10 +131,25 @@ def main() -> int:
         "install-clone-skills",
         "explain-public-system",
         "mine-open-problem",
+        "propagate-research-consequences",
         "add-open-problem",
         "submit-pull-request",
     ):
         require(clone_skill in agent_entry, f"compact agent entry omits {clone_skill}")
+
+    consequence_skill = text("skills/propagate-research-consequences/SKILL.md")
+    for contract in (
+        "git diff --name-status <starting-commit>..HEAD",
+        "--changed-from <starting-commit>",
+        "update now",
+        "verify unchanged",
+        "Reconcile work from an older clone",
+    ):
+        require(contract in consequence_skill, f"consequence skill omits {contract!r}")
+    require(
+        "common ancestor" in submission_skill and "common ancestor" in skill,
+        "submission and assimilation skills omit old-base Git semantics",
+    )
 
     public_surfaces = "\n".join(
         text(path)

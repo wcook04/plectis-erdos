@@ -38,6 +38,27 @@ Use `scripts/continue_research.py check` before packaging. Then use
 --require-route-memory-receipt`. A pull request may carry the pair as transient
 intake artifacts; they do not belong on the accepted main branch.
 
+Before packaging a stable result, run
+`skills/propagate-research-consequences/SKILL.md`. The return should distinguish
+consequences updated now from those verified unchanged, deferred with a
+re-entry condition, or outside scope.
+
+## Reconcile an older starting commit
+
+Upstream may advance while a contributor works. The recorded starting commit
+remains the evidence context and common ancestor for the original delta. First
+replay and inspect the contribution against that commit. Then integrate the
+reviewed change onto current main with the ordinary Git operation appropriate
+to the history: merge, rebase, or a focused commit transplant. Do not apply an
+old patch blindly, and do not require access to a private backup. Fetch the
+public history if a shallow clone does not contain the starting commit.
+
+If the histories conflict, treat the resolution as a new integration delta.
+Preserve the contributor's original authorship and credit the maintainer who
+performed material reconciliation. Rerun current validation and consequence
+propagation after integration; the original branch receipt does not certify the
+new repository state.
+
 ## Assimilate accepted work
 
 Acceptance is a local evidence decision, not a ritual gate. Determine whether

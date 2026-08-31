@@ -90,27 +90,27 @@ FIRST_MINUTE_CONTRACT = {
             "compressed trace has an observation boundary",
             "authority-bearing artefact and receipt",
         ),
-        (6, 7): (
+        (6, 8): (
             "experiments are route selectors",
             "a lean no-go theorem",
             "three oracles, not one",
             "problem-sized lean worlds and bounded theorem neighbourhoods",
             "1,024 lean modules and 153,396 declarations",
         ),
-        (8, 10): (
+        (9, 10): (
             "comparator: an exact-statement firewall",
             "palomar: selecting what deserves review",
             "proof generation, verification, exposition, publication and community digestion",
             "natural friction",
             "paper authoring itself participates in this loop",
         ),
-        (10, 10): (
+        (11, 11): (
             "t ≤ 82",
             "no matter how large a fixed checked bound is",
             "relationship had not been registered",
             "nine of the ten edits were rejected",
         ),
-        (11, 13): (
+        (13, 14): (
             "semantic single-flight queue",
             "host-wide mathlib resource",
             "four separate scaling limits",

@@ -29,9 +29,11 @@ MAX_GUIDE_BYTES = 18_000
 # The base now covers the complete private-to-public architecture rather than
 # the former release-check case study: authority-aware routing, temporal work
 # leases, resident metabolism, trace projections, federated mathematical
-# memory, proof/publication gates, and the scale/review boundary. The
-# per-artifact increment remains the only inventory-dependent allowance.
-SYSTEMS_PAPER_BASE_BYTES = 55_000
+# memory, proof/publication gates, the scale/review boundary, and the public
+# job lifecycle from invocation through consequence propagation and old-base
+# assimilation. The per-artifact increment remains the only
+# inventory-dependent allowance.
+SYSTEMS_PAPER_BASE_BYTES = 60_000
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 

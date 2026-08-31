@@ -72,12 +72,21 @@ proposed as a reusable skill change only with its evidence, intended scope,
 sibling examples, and an over-generalisation guard. One successful trick does
 not become universal mathematical method by enthusiasm.
 
-## 5. Validate and return
+## 5. Validate, propagate, and return
 
-Use the smallest relevant checks first. For a resumable or externally returned
-session, read `skills/erdos-research-return/SKILL.md` and package the starting
-commit, contributor and tool roles, evidence, changed paths, failures, stop
-condition, claim ceiling, and surviving boundary.
+Use the smallest relevant checks first. When a theorem, reduction,
+counterexample, no-go, computation, correction, or architecture lesson becomes
+stable, read `skills/propagate-research-consequences/SKILL.md` and inspect its
+mathematical and repository consumers before packaging it.
+
+The run has three honest exits. **Continue** when the recorded route and stop
+condition still justify another discriminating step. **Suspend** when the
+frontier, failed attempts, and re-entry condition are durable but the present
+run should stop. **Close** when the smallest evidence-bearing delta has been
+validated and its consequences have dispositions. For a resumable or
+externally returned session, read `skills/erdos-research-return/SKILL.md` and
+package the starting commit, contributor and tool roles, evidence, changed
+paths, failures, stop condition, claim ceiling, and surviving boundary.
 
 Report agent-generated endpoint claims as candidates. Lean acceptance does not
 by itself establish intended meaning, novelty, significance, or community

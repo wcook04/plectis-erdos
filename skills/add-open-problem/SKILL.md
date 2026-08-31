@@ -85,6 +85,9 @@ one-command import until those couplings have been removed.
 7. Add focused tests for root imports, problem-index completeness, paper
    registration, source links, cold-clone comprehension, and public/private
    boundaries. Build the focused Lean root and the paper.
+8. Run `skills/propagate-research-consequences/SKILL.md` from the problem's
+   starting commit. Give every affected registry, roster, route, paper,
+   validator, return surface, and external crosswalk an explicit disposition.
 
 Before adding many worlds, split verbose problem detail out of the bounded
 index or deliberately revise its byte budget; the current index is already
