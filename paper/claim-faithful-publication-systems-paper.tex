@@ -40,7 +40,7 @@
 
 \begin{abstract}
 This paper presents an executable architecture for AI-assisted mathematics
-under proof abundance. It separates six things that are often confused:
+under proof abundance. It separates six things that are commonly collapsed:
 cognition authority, permission to change shared state, validation capacity,
 evidence class, public-claim authority, and reviewer attention. Work advances
 only when the next gate matches the evidence. A failed route may change later
@@ -57,8 +57,9 @@ route from a question to the strongest public claim its evidence supports.
 The mathematical workflow keeps conjecture, computation, formal proof,
 interpretation, public wording, and external review distinct. Computation may
 reject a route or supply finite evidence; it does not prove an unbounded
-theorem. Lean checks the formal statement in the source, not whether that
-statement captures the intended mathematics or whether the paper describes it
+theorem. Lean verifies that a proof establishes the formal statement written in
+the source; it does not verify whether that statement captures the intended
+mathematics or whether the paper describes it
 well. Comparator checks selected propositions and their axiom boundary;
 Palomar selects result families for review. Neither tool decides novelty,
 importance, acceptance, or whether an open problem has been solved.
@@ -67,9 +68,13 @@ The public repository is a self-contained output whose Lean source, claim
 record, papers, navigation, and release checks can be inspected from a fresh
 clone. A worked example follows a finite certificate for Erd\H{o}s Problem 249
 and shows why a checked finite range cannot become an unbounded conclusion.
+This is a working prototype rather than a validated multi-user service. As of
+31 August 2026, the author had not recorded a completed external cold-clone use
+or an accepted external contribution.
 The rule is simple: each stage may pass forward only the claim its evidence
 supports, together with the boundary it does not cross. All eight problems
 remain open.
+The paper does not claim a solution to any of them.
 \end{abstract}
 
 \section{The problem: many kinds of evidence}
@@ -114,8 +119,8 @@ recombined only at explicit fan-in gates. The same machinery carries proofs,
 counterexamples, no-gos, and unresolved obligations while preserving their
 different evidence classes. Crucially, a local failure may alter the next
 agent's route, context, lease, experiment, or validator, but never the truth
-status of a mathematical statement. Among the systems compared in
-Section~\ref{sec:related}, none exhibits this complete composition. This is a
+status of a mathematical statement. Among the systems compared in this paper,
+none spans this complete chain. This is a
 bounded claim over the cited systems, not a proof of universal priority or an
 independent evaluation.
 
@@ -177,6 +182,7 @@ standard after a generalisation guard. Reviewed claim and publication artefacts
 connect the two. Neither graph may rewrite the other by implication.
 
 \section{The whole lifecycle in one picture}\label{sec:lifecycle}
+\papersectiontarget{systems-lifecycle}
 
 Figure~\ref{fig:lifecycle} shows the main path. It is a loop rather than a
 one-way publishing pipeline: failed proofs, reviewer objections, and public
@@ -419,6 +425,7 @@ failure of every possible proof.
 
 \subsection{Three oracles, not one}
 
+Experiments are route selectors; they do not become a fourth oracle.
 The workflow separates three answers that are often compressed into the word
 ``verified''.
 
@@ -519,6 +526,7 @@ of useful failures propagate. The supported claim is that failures \emph{can}
 alter the durable control plane without altering mathematical truth.
 
 \section{The public Lean repository}\label{sec:public}
+\papersectiontarget{systems-public}
 
 The public checkout begins at a deliberate boundary. It contains every file
 needed to inspect its claims and replay its checks. It does not call back into
@@ -719,7 +727,9 @@ author. After the relationship was registered, only the escaped edit was
 reconstructed against the repaired checklist. The other nine edits were not
 rerun against the extended checklist. The finite theorem makes no
 \(t=83\) or cofinal claim. These limitations are part of the evidence, not
-footnotes to be discarded after the repair.
+footnotes to be discarded after the repair. This is a coverage boundary, not a
+reliability score. The post-repair witness accepts the current README and
+rejects a test copy containing the false clause.
 
 The same architecture handles other shapes of progress. Problem 257 separates
 a theorem for full-support representations from a stronger arbitrary-support
@@ -777,6 +787,7 @@ authority layer.}
 \end{table}
 
 \section{What can be trusted}\label{sec:trust}
+\papersectiontarget{systems-trust}
 
 The architecture supports a chain of narrow conclusions:
 
@@ -802,11 +813,14 @@ can still overclaim. Literature status can still change.
 
 The system reduces these risks by keeping sources plural, boundaries explicit,
 and negative tests close to high-risk claims. It does not claim to eliminate
-human judgement. This is the same limit encountered in assurance cases: a
-formal notation can record an asserted support relationship without proving
-that the evidence is true or sufficient for the top claim \cite{gsn}.
+human judgement. It does not technically force a second independent
+mathematician to review the result. This is the same limit encountered in
+assurance cases: a formal notation can record an asserted support relationship
+without proving that the evidence is true or sufficient for the top claim
+\cite{gsn}.
 
 \section{Scaling from one clone to a search network}\label{sec:scaling}
+\papersectiontarget{systems-scaling}
 
 \subsection{Clone, attach compute, and mine bounded results}
 
@@ -869,12 +883,26 @@ new history rather than erasing the earlier contributor. Attribution and pull
 requests are standard practice; the architectural role here is to carry credit
 and provenance through fan-in without allowing either to strengthen the claim.
 
+The exact contributor-facing sequence is specified in the
+\papersectionlink{open-source-mathematics-strategy.pdf}%
+{strategy-protocol}{companion contribution protocol}; its credit model is
+separated in the
+\papersectionlink{open-source-mathematics-strategy.pdf}%
+{strategy-credit}{provenance and credit section}. The navigation assumptions
+made here are tested by the
+\papersectionlink{cold-clone-to-proof-receipt.pdf}%
+{cold-clone-problem}{cold-clone case study}.
+
 The current public clone supplies the mathematical corpus and its gates. The
 full private orchestration layer is not yet distributed as a turnkey public
 service, so mass multi-provider mining is a design target rather than a
 reported benchmark. The important point is that the public interfaces do not
 depend on one private scheduler. A laboratory with many frontier models can
 replace the producer while retaining the same evidence boundary.
+
+No outside contributor had completed this path by 31 August 2026. The
+cross-paper links, clone-local skills, and pull-request route are therefore
+implemented prototype interfaces whose usability remains an external test.
 
 \subsection{The no-go graph as a new mathematical object}
 

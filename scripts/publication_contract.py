@@ -317,9 +317,7 @@ def validate_systems_evidence_source(
     errors: list[str] = []
     normalized = normalize_latex_evidence(source_text)
     required_patterns = {
-        "plain architecture title": (
-            r"from lean proofs to public claims"
-        ),
+        "plain architecture title": r"problem-sized lean worlds",
         "formal source owner": r"erdos249257\.lean",
         "reviewed claim owner": r"docs/claims\.json",
         "paper inventory owner": r"docs/publication_contract\.json",

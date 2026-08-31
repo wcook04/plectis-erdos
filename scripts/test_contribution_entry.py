@@ -55,6 +55,7 @@ def main() -> int:
         "skills/explain-public-system/SKILL.md",
         "skills/mine-open-problem/SKILL.md",
         "skills/add-open-problem/SKILL.md",
+        "skills/submit-pull-request/SKILL.md",
         "skills/erdos-research-return/SKILL.md",
         "skills/public-mathematical-writing/SKILL.md",
         "scripts/install_agent_skills.py",
@@ -102,6 +103,17 @@ def main() -> int:
     require("What remains open or uncertain?" in pull_request, "pull request route omits result boundary")
     require("python3" not in pull_request and "```" not in pull_request, "pull request front door is command-first")
 
+    submission_skill = text("skills/submit-pull-request/SKILL.md")
+    submission_skill_flat = " ".join(submission_skill.split())
+    for boundary in (
+        "pull request",
+        "explicit authorisation",
+        "git diff --cached --check",
+        "Never force-push",
+        "does not mean that the patch is accepted",
+    ):
+        require(boundary in submission_skill_flat, f"submission skill omits {boundary!r}")
+
     skill = text("skills/erdos-research-return/SKILL.md")
     agent_entry = text("AGENTS.override.md")
     for marker in (
@@ -117,6 +129,7 @@ def main() -> int:
         "explain-public-system",
         "mine-open-problem",
         "add-open-problem",
+        "submit-pull-request",
     ):
         require(clone_skill in agent_entry, f"compact agent entry omits {clone_skill}")
 

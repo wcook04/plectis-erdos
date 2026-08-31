@@ -15,6 +15,7 @@ SKILLS = (
     "explain-public-system",
     "mine-open-problem",
     "add-open-problem",
+    "submit-pull-request",
     "erdos-research-return",
     "public-mathematical-writing",
 )
@@ -51,7 +52,12 @@ def main() -> int:
         assert name in skill_index, name
         assert "/Users/" not in source and "ai_workflow" not in source, name
 
-    for name in ("explain-public-system", "mine-open-problem", "add-open-problem"):
+    for name in (
+        "explain-public-system",
+        "mine-open-problem",
+        "add-open-problem",
+        "submit-pull-request",
+    ):
         assert name in readme, name
         assert name in entry, name
     assert "install_agent_skills.py" in readme

@@ -9,6 +9,13 @@ problem. A corrected proof step, a counterexample, a failed route with a reason
 another person can check, a clearer boundary, or a repaired public check can
 all save future work.
 
+This contributor path is still a prototype. As of 31 August 2026, the author
+had not recorded a completed external cold-clone run or an accepted outside
+contribution. Reports about setup friction, unclear instructions, broken links,
+agent-skill portability, unsafe defaults, or unnecessary steps are therefore
+substantive architecture contributions rather than housekeeping beneath the
+project's notice.
+
 There are two first-class tracks:
 
 1. **Mathematics:** proofs, reductions, computations, counterexamples,
@@ -31,9 +38,9 @@ plain-language research-progress issue and write it in your own words. You do
 not need to learn the receipt format before telling us something useful.
 
 For compute contributions, begin with a bounded route exposed by the papers,
-claim registry, or agent entry. Those routes are authored or reviewed by
-mathematicians and formalisation contributors and should name the question,
-evidence class, and stopping condition. You may run them through Claude Code,
+claim registry, or agent entry. The present routes are authored in the public
+corpus and should name the question, evidence class, and stopping condition;
+qualified external mathematical review is not claimed for every route. You may run them through Claude Code,
 Codex, Cursor, Antigravity, another agent harness, ordinary scripts, or your own
 reasoning. The runner is your choice; the returned evidence boundary is the
 shared contract.
@@ -122,8 +129,11 @@ package remains the specialized front door for mathematical problem sessions.
 The human route above is the contract. The machinery below implements it; none
 of it is a prerequisite for reporting a useful result. Agents should use the
 clone-local [research-return skill](skills/erdos-research-return/SKILL.md), and
-maintainers should preserve the contributor's prose rather than replacing it
-with machine field names.
+the [pull-request submission skill](skills/submit-pull-request/SKILL.md) when
+turning owned work into commits and a proposed GitHub return. That skill stops
+before pushing or opening the pull request unless the contributor explicitly
+authorises those external actions. Maintainers should preserve the
+contributor's prose rather than replacing it with machine field names.
 
 To open and package a bounded, attributable structured research session, use
 `scripts/continue_research.py`. Its `start`, `check`, and `package` commands

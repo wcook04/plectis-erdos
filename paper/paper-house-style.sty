@@ -42,6 +42,12 @@
 \definecolor{linkexternal}{HTML}{275D8C}
 \definecolor{linkinternal}{HTML}{6E2B2B}
 
+% Stable cross-document links between sibling PDFs. A named destination is
+% more durable than a page number: sections may move while their semantic role
+% remains the same. All public PDFs are copied to one directory at release.
+\newcommand{\papersectiontarget}[1]{\hypertarget{#1}{}}
+\newcommand{\papersectionlink}[3]{\href{#1\#nameddest=#2}{#3}}
+
 \RequirePackage{titlesec}
 \titleformat{\section}{\Large\bfseries}{\thesection}{0.85em}{}
 \titlespacing*{\section}{0pt}{2.6ex plus .8ex minus .3ex}{1.5ex plus .3ex}

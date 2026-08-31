@@ -1,6 +1,7 @@
 ## What changed, and why?
 
-Choose the track (`mathematics` or `architecture`). Describe the mathematical question or repository problem you started from and
+Choose the track (`mathematics` or `architecture`; cold-clone cleanup belongs
+to architecture). Describe the mathematical question or repository problem you started from and
 the useful difference this pull request makes. Plain language is welcome.
 
 ## What can another person check?

@@ -73,10 +73,13 @@ The architecture combines five functions without confusing their roles:
 complete inventory, selective interpretation, short intent-based routes,
 recorded reasoning, and incremental validation. It is not an autonomous theorem
 prover, a portability study, or evidence that the agent's reasoning was optimal
-or mathematically novel outside the repository history.
+or mathematically novel outside the repository history. It is a prototype
+audited in the author's environment. As of 31 August 2026, no completed
+external cold-clone use had been recorded.
 \end{abstract}
 
 \section{The cold-clone problem}\label{sec:problem}
+\papersectiontarget{cold-clone-problem}
 
 The first interaction with a large Lean repository is usually a filesystem.
 The reader sees source files, generated files, scripts, papers, and build
@@ -116,6 +119,15 @@ Sections~\ref{sec:authority} and~\ref{sec:incremental} mark the transition from
 navigation to kernel authority and explain the incremental validation path.
 Section~\ref{sec:dogfood} gives a replayed case study; the remaining sections
 compare related systems and state the limits of transfer.
+
+This paper owns the navigation and validation case study. The wider
+\papersectionlink{claim-faithful-publication-systems-paper.pdf}%
+{systems-lifecycle}{claim-transition lifecycle} is described in the systems
+paper, while the
+\papersectionlink{open-source-mathematics-strategy.pdf}%
+{strategy-protocol}{contribution protocol} specifies how an outsider returns a
+change. These links lead to named destinations in the sibling PDFs rather than
+to page numbers.
 
 \section{Four views of the mathematical library}\label{sec:layers}
 
@@ -255,6 +267,7 @@ sees the same facts through a different question contract rather than a
 separate hard-coded example.
 
 \section{From navigation to proof authority}\label{sec:authority}
+\papersectiontarget{cold-clone-authority}
 
 The architecture treats navigation and proof as separate capabilities
 (Figure~\ref{fig:sequence}). A static query may nominate a theorem or dependency
@@ -442,6 +455,7 @@ front-door contract across exhaustive inventory, selective semantics, public
 claims, and agent receipts.
 
 \section{Limits and transfer conditions}\label{sec:limits}
+\papersectiontarget{cold-clone-limits}
 
 This is a case study of one repository at one audited revision. Its projection
 schemas and routing engine are reusable mechanisms, but another project must
@@ -449,6 +463,11 @@ supply its own source roots, programme map, claim vocabulary, frontier
 statements, and authority owners. The paper gives no evidence that a new
 project can adopt the architecture cheaply or that agents using it outperform
 agents with an ordinary README.
+
+The audit was author-operated. No external contributor had yet completed the
+tour, attempted the documented return path, or reported where the first-contact
+explanation failed. Cold-clone usability and maintainer burden are therefore
+open empirical questions, not properties established by the internal replay.
 
 Counts describe artifact coverage, not mathematical understanding. Direct
 dependency edges are not proof explanations. Authored semantic nodes may be

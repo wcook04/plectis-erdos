@@ -17,6 +17,9 @@ directories.
 - [Add an open problem](add-open-problem/SKILL.md): propose, incubate, or fully
   register another sourced problem world without silently promoting it into a
   reviewed claim.
+- [Submit a pull request](submit-pull-request/SKILL.md): turn owned work into
+  coherent validated commits and a contribution-template draft, then push and
+  open the pull request only when explicitly authorised.
 - [Erdős research return](erdos-research-return/SKILL.md): prepare, validate,
   assimilate, and credit a public research contribution without depending on a
   private repository.

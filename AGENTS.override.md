@@ -107,8 +107,11 @@ publication contract or emitted handle. These own organisation, not Lean proof.
 ### Explain, install, mine, or add a problem
 
 Use the clone-local skills in `skills/`: `explain-public-system`,
-`install-clone-skills`, `mine-open-problem`, and `add-open-problem`. The mining
-skill may coordinate subagents, but the integrating agent verifies every return.
+`install-clone-skills`, `mine-open-problem`, `add-open-problem`, and
+`submit-pull-request`. The mining skill may coordinate subagents, but the
+integrating agent verifies every return. The submission skill may prepare and
+commit locally; it pushes or opens a pull request only after explicit
+authorisation.
 
 ### Return research from a clone
 

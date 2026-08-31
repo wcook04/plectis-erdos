@@ -59,12 +59,19 @@ statement has the intended meaning, is novel, or settles the original
 problem. Those questions require scarce human review and, eventually, the
 appropriate external mathematical community.
 
+This is a working proof of concept, not a finished contributor platform. As of
+31 August 2026, no external user had completed the documented cold-clone path
+or contributed an accepted change. Finding broken instructions, reducing setup
+friction, testing the skills in another agent harness, and improving the pull-
+request experience are therefore useful architecture contributions in their
+own right.
+
 ```bash
 git clone https://github.com/wcook04/plectis-lean-erdos249-257.git
 cd plectis-lean-erdos249-257
 ```
 
-Then give any local coding agent one of four jobs:
+Then give any local coding agent one of these jobs:
 
 - **Explain it:** “Read `AGENTS.override.md` and use
   `skills/explain-public-system/SKILL.md` to explain this project to a
@@ -76,6 +83,10 @@ Then give any local coding agent one of four jobs:
 - **Improve the machinery:** “Read the architecture contribution path, find
   one reproducible bottleneck in the cold-clone workflow, and propose or
   implement a focused repair with credit.”
+- **Audit the prototype:** “Begin as if this were a genuinely cold clone. Note
+  every missing dependency, unclear instruction, stale link, unsafe default,
+  or needless step. Fix one coherent failure and use
+  `skills/submit-pull-request/SKILL.md` to prepare the return.”
 - **Add a problem:** “Use `skills/add-open-problem/SKILL.md` to prepare a
   sourced proposal, incubating formal lane, or fully indexed problem world.”
 
@@ -104,6 +115,9 @@ For an infrastructure idea, use the
 [architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml).
 For mathematical progress without a finished patch, use the
 [research-progress form](.github/ISSUE_TEMPLATE/research_progress.yml).
+An agent preparing a patch should use the
+[submit-pull-request skill](skills/submit-pull-request/SKILL.md); pushing the
+branch and opening the pull request happen only when the contributor asks.
 Accepted work is recorded against exact public files, evidence, starting and
 accepted commits, and requested contribution roles. That record is used to
 generate the public contribution and recognition views; it does not turn
