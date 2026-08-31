@@ -532,8 +532,22 @@ running the expensive release gate.
 Run the full proof authority check after Lean changes:
 
 ```sh
-lake build
+python3 scripts/lean_fast_build.py --jobs 2
 ```
+
+The wrapper is the public concurrency boundary. Equivalent clean clones share
+one content-keyed validation future in the repository-scoped host cache;
+different Lean targets queue behind one `lean-host` owner instead of writing
+the same machine's build trees concurrently. The detached owner continues if
+an attached caller exits, completed output is bounded, and terminal state is
+cleaned automatically. Same-lock cold clones also receive independent
+copy-on-write `.lake/packages` trees from a host seed when the filesystem
+supports it; mutable cache directories are never symlinked. Set
+`VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an
+explicitly isolated cache is required. None of this cache state is proof
+authority: the terminal receipt preserves the underlying Lake exit code.
+The clone-local operational guide is
+[skills/lean-concurrent-validation/SKILL.md](skills/lean-concurrent-validation/SKILL.md).
 
 The release checker validates claim status, declaration coordinates, paper
 anchors, the machine-readable module and argument graphs, the exhaustive

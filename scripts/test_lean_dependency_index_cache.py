@@ -283,6 +283,7 @@ def check_environment_build_is_bounded() -> None:
         == [
             builder.sys.executable,
             str(builder.LEAN_FAST_BUILD),
+            "--singleflight-worker",
             "--lake-staleness",
             *builder.LEAN_ROOT_TARGETS,
         ],

@@ -354,6 +354,7 @@ def ensure_elaborated_environment() -> None:
         [
             sys.executable,
             str(LEAN_FAST_BUILD),
+            "--singleflight-worker",
             "--lake-staleness",
             *LEAN_ROOT_TARGETS,
         ],
@@ -801,6 +802,7 @@ def encoded(packet: dict[str, Any]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument(
         "--full-check",
         action="store_true",

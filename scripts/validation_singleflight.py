@@ -3,7 +3,8 @@
 
 ``submit`` starts at most one detached process group for one exact validation
 input.  Equivalent callers receive its shared future or terminal receipt;
-``collect --wait`` is the only command that waits deliberately.  The command
+``run`` is the one-command submit/join/collect path; ``collect --wait`` resumes
+an already known future.  The command
 does not interpret a validator's result: its terminal exit code is the exit
 code from the existing validator, including 75 for unavailable environments.
 """
@@ -30,7 +31,6 @@ from typing import Any, BinaryIO, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "repository-validation-singleflight/1"
-DEFAULT_STATE_ROOT = ROOT / ".validation-singleflight"
 SINGLEFLIGHT_STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
 ROSTER_VALIDATORS = {
     "toolchain-cache": "lean-toolchain",
@@ -44,9 +44,10 @@ ROSTER_VALIDATORS = {
     "dependency-index": "scripts/build_lean_dependency_index.py",
     "publication-mutations": "scripts/run_publication_mutations.py",
     "palomar": "scripts/check_palomar_qualification.py",
-    "paper-render": "scripts/render_paper.py",
 }
 TAIL_BYTES = 16_000
+MAX_STORED_LOG_BYTES = 4 * 1024 * 1024
+TRUNCATED_LOG_PREFIX = b"[plectis: earlier validation output truncated; retained tail follows]\n"
 LAUNCH_GRACE_SECONDS = 15.0
 DEFAULT_TTL_SECONDS = 7 * 24 * 60 * 60
 DEFAULT_RECENT_SECONDS = 10 * 60
@@ -55,10 +56,19 @@ DEFAULT_WORKER_TIMEOUT_SECONDS = DEFAULT_COLLECT_TIMEOUT_SECONDS
 WORKER_TIMEOUT_EXIT_CODE = 124
 DEFAULT_MAX_BYTES = 1 << 30
 DEFAULT_MAX_INODES = 10_000
+AUTOMATIC_CLEANUP_INTERVAL_SECONDS = 60 * 60
 GIT_COMMAND_TIMEOUT_SECONDS = 30
 STATE_DIRECTORIES = ("jobs", "locks", "artifacts")
 COPY_TREE_MARKERS = ("lean-toolchain", "lakefile.toml")
 COPY_TREE_DIRECTORIES = ("ErdosProblems", "docs", "scripts")
+RESOURCE_GROUPS = {
+    "toolchain-cache": "lean-host",
+    "lean": "lean-host",
+    "comparator": "lean-host",
+    "historical": "lean-host",
+    "dependency-index": "lean-host",
+    "palomar": "lean-host",
+}
 GIT_CONTEXT_KEYS = frozenset(
     {
         "GIT_DIR",
@@ -109,19 +119,6 @@ PYTHON_CONTEXT_KEYS = frozenset(
     }
 )
 LOCALE_KEYS = frozenset({"LC_ALL", "LANG", "LANGUAGE"})
-PAPER_RENDER_TRACKED_OUTPUTS = frozenset(
-    {
-        "claim-faithful-publication-systems-paper.pdf",
-        "erdos-1049-rational-base-lambert.pdf",
-        "erdos-243-reciprocal-tail-rigidity.pdf",
-        "erdos-249-binary-totient-series.pdf",
-        "erdos-251-prime-gap-dyadic-series.pdf",
-        "erdos-257-mersenne-support-subseries.pdf",
-        "erdos-269-three-prime-running-lcm.pdf",
-        "erdos249-257-main-paper.pdf",
-    }
-)
-PAPER_SOURCE_SUFFIXES = frozenset({".bib", ".cls", ".json", ".sty", ".tex"})
 COMPARATOR_REPLAY_AUTHORITY_PATHS = (
     ROOT / "scripts/validation_singleflight.py",
     ROOT / "scripts/verify-comparator.sh",
@@ -140,6 +137,35 @@ COMPARATOR_REPLAY_AUTHORITY_PATHS = (
 
 class ValidationError(RuntimeError):
     """A malformed or unsafe single-flight request."""
+
+
+def default_state_root() -> Path:
+    """Return one repository-identity cache shared by equivalent cold clones."""
+
+    override = os.environ.get(SINGLEFLIGHT_STATE_ROOT_ENV)
+    if override:
+        candidate = Path(override).expanduser()
+        return candidate if candidate.is_absolute() else Path.cwd() / candidate
+    identity_path = ROOT / "docs/repository_identity.json"
+    slug = "plectis-lean"
+    try:
+        identity = json.loads(identity_path.read_text(encoding="utf-8"))
+        configured = identity.get("current", {}).get("slug")
+        if isinstance(configured, str) and configured.strip():
+            slug = configured.strip()
+    except (OSError, json.JSONDecodeError):
+        pass
+    xdg_cache = os.environ.get("XDG_CACHE_HOME")
+    if xdg_cache:
+        cache_home = Path(xdg_cache).expanduser()
+    elif sys.platform == "darwin":
+        cache_home = Path.home() / "Library" / "Caches"
+    else:
+        cache_home = Path.home() / ".cache"
+    return cache_home / "plectis-lean" / slug / "validation-singleflight-v1"
+
+
+DEFAULT_STATE_ROOT = default_state_root()
 
 
 def utc_now() -> str:
@@ -201,6 +227,25 @@ def bounded_tail(path: Path) -> str:
         return handle.read().decode("utf-8", errors="replace")
 
 
+def compact_output_log(
+    path: Path, max_bytes: int = MAX_STORED_LOG_BYTES
+) -> dict[str, Any]:
+    """Bound persistent output after the child exits without changing its result."""
+
+    size = path.stat().st_size
+    if size <= max_bytes:
+        return {"observed_bytes": size, "stored_bytes": size, "truncated": False}
+    with path.open("rb") as handle:
+        handle.seek(max(0, size - max_bytes))
+        tail = handle.read(max_bytes)
+    atomic_write(path, TRUNCATED_LOG_PREFIX + tail)
+    return {
+        "observed_bytes": size,
+        "stored_bytes": path.stat().st_size,
+        "truncated": True,
+    }
+
+
 def regular_file(path: Path, label: str) -> None:
     try:
         mode = path.lstat().st_mode
@@ -258,7 +303,7 @@ def reject_unsafe_state_root(path: Path) -> Path:
     if resolved == repository_root:
         raise ValidationError("state root must not be a checkout, clone, or worktree")
 
-    default_root = DEFAULT_STATE_ROOT.resolve(strict=False)
+    default_root = default_state_root().resolve(strict=False)
     if resolved != default_root:
         try:
             resolved.relative_to(default_root)
@@ -296,12 +341,25 @@ def ensure_state_root(path: Path) -> dict[str, Path]:
     return directories
 
 
-def open_lock(path: Path) -> int:
+def open_lock(path: Path, *, blocking: bool = True) -> int | None:
     if os.path.lexists(path):
         regular_file(path, "lock")
     descriptor = os.open(path, os.O_CREAT | os.O_RDWR, 0o600)
-    fcntl.flock(descriptor, fcntl.LOCK_EX)
+    try:
+        fcntl.flock(
+            descriptor,
+            fcntl.LOCK_EX | (0 if blocking else fcntl.LOCK_NB),
+        )
+    except BlockingIOError:
+        os.close(descriptor)
+        return None
     return descriptor
+
+
+def job_lock_path(state: dict[str, Path], key: str) -> Path:
+    """Use 256 stable buckets instead of one permanent lock inode per job."""
+
+    return safe_child(state["locks"], f"job-{key[:2]}.lock")
 
 
 def atomic_write(path: Path, data: bytes) -> None:
@@ -411,14 +469,12 @@ def worktree_fingerprint(
     *,
     excluded_paths: Iterable[str] = (),
 ) -> dict[str, Any]:
-    head = git_output("rev-parse", "HEAD").decode().strip()
     tree = git_output("rev-parse", "HEAD^{tree}").decode().strip()
     excluded = frozenset(excluded_paths)
     diff_args = ["diff", "--binary", "HEAD", "--", "."]
     diff_args.extend(f":(exclude){path}" for path in sorted(excluded))
     diff = git_output(*diff_args)
     untracked = []
-    root_resolved = ROOT.resolve()
     state_resolved = state_root.resolve()
     for raw in git_output("ls-files", "--others", "--exclude-standard", "-z").split(b"\0"):
         if not raw:
@@ -441,13 +497,12 @@ def worktree_fingerprint(
     identity_path = ROOT / "docs/repository_identity.json"
     identity = digest_file(identity_path) if identity_path.is_file() else None
     return {
-        "commit": head,
         "tree": tree,
         "dirty": bool(diff or untracked),
         "dirty_fingerprint": digest_bytes(dirty_material),
         "untracked_file_count": len(untracked),
-        "repository_root": root_resolved.name,
         "repository_identity": identity,
+        "identity_policy": "tree_and_dirty_content_checkout_independent",
     }
 
 
@@ -460,22 +515,47 @@ def regular_digest_rows(paths: Iterable[Path]) -> list[dict[str, str]]:
     return rows
 
 
-def paper_render_source_paths() -> list[Path]:
-    """Return the tracked source inputs that can affect the paper package."""
-    paths = []
-    for raw in git_output("ls-files", "--", "paper").decode("utf-8").splitlines():
-        path = ROOT / raw
-        if path.name == "Makefile" or path.suffix in PAPER_SOURCE_SUFFIXES:
-            paths.append(path)
-    paths.extend(
-        (
-            ROOT / "scripts" / "render_paper.py",
-            # render_paper.py imports this module for the child environment
-            # and the single-flight command boundary.
-            ROOT / "scripts" / "validation_singleflight.py",
-        )
+def git_content_digest_rows(pathspecs: Iterable[str]) -> list[dict[str, str]]:
+    """Digest current Git-selected content without checkout-local identity.
+
+    Cached paths remain represented when deleted, so different source
+    deletions cannot share a result. Ignored build output never enters the key.
+    """
+    raw_paths = git_output(
+        "ls-files",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--",
+        *pathspecs,
     )
-    return paths
+    rows: list[dict[str, str]] = []
+    for raw in sorted(set(raw_paths.split(b"\0"))):
+        if not raw:
+            continue
+        relative = raw.decode("utf-8", errors="surrogateescape")
+        path = ROOT / relative
+        if not path.exists():
+            rows.append({"path": relative, "state": "absent"})
+            continue
+        regular_file(path, relative)
+        relative_to_root(path)
+        rows.append({"path": relative, "sha256": digest_file(path)})
+    return rows
+
+
+def merge_digest_rows(*groups: Iterable[dict[str, str]]) -> list[dict[str, str]]:
+    """Merge content rows by path while rejecting inconsistent duplicates."""
+    merged: dict[str, dict[str, str]] = {}
+    for group in groups:
+        for row in group:
+            path = row["path"]
+            previous = merged.get(path)
+            if previous is not None and previous != row:
+                raise ValidationError(f"inconsistent validation input digest: {path}")
+            merged[path] = row
+    return [merged[path] for path in sorted(merged)]
 
 
 def resolve_lean_target(target: str) -> Path:
@@ -575,6 +655,9 @@ def validator_spec(
     state_root: Path,
     output_format: str | None = None,
     check: bool = False,
+    *,
+    lean_jobs: int = 2,
+    lean_lake_staleness: bool = False,
 ) -> dict[str, Any]:
     if kind not in ROSTER_VALIDATORS:
         raise ValidationError(f"unknown validation class: {kind}")
@@ -595,18 +678,30 @@ def validator_spec(
             ROOT / "lakefile.toml",
         ]
     elif kind == "lean":
-        if not targets:
-            raise ValidationError("lean validation requires at least one --target")
+        if lean_jobs < 1:
+            raise ValidationError("Lean validation jobs must be positive")
         target_paths = [resolve_lean_target(target) for target in sorted(set(targets))]
         command = [
             sys.executable,
             "scripts/lean_fast_build.py",
             "--singleflight-worker",
+            "--singleflight-state-root",
+            str(state_root.resolve()),
             "--jobs",
-            "2",
-            *sorted(set(targets)),
+            str(lean_jobs),
         ]
-        authority_paths = [ROOT / "scripts/lean_fast_build.py", ROOT / "lean-toolchain", ROOT / "lake-manifest.json", ROOT / "lakefile.toml", *target_paths]
+        if lean_lake_staleness:
+            command.append("--lake-staleness")
+        command.extend(sorted(set(targets)))
+        authority_paths = [
+            ROOT / "scripts/validation_singleflight.py",
+            ROOT / "scripts/lean_fast_build.py",
+            ROOT / "scripts/lean_package_share.py",
+            ROOT / "lean-toolchain",
+            ROOT / "lake-manifest.json",
+            ROOT / "lakefile.toml",
+            *target_paths,
+        ]
     elif kind == "paper":
         if targets or ref:
             raise ValidationError("paper validation accepts no target or ref arguments")
@@ -744,22 +839,33 @@ def validator_spec(
             ROOT / "ErdosProblems/ExternalVerificationPortfolio/Challenge.lean",
             ROOT / "ErdosProblems/ExternalVerificationPortfolio/Solution.lean",
         ]
-    elif kind == "paper-render":
-        if targets or ref:
-            raise ValidationError("paper-render validation accepts no targets or ref")
-        command = [sys.executable, "scripts/render_paper.py", "--singleflight-worker"]
-        authority_paths = paper_render_source_paths()
     else:  # comparator
         if targets or ref:
             raise ValidationError("comparator validation accepts no target or ref arguments")
         command = ["bash", "scripts/verify-comparator.sh"]
         authority_paths = list(COMPARATOR_REPLAY_AUTHORITY_PATHS)
 
-    if kind == "paper-render":
-        repository = worktree_fingerprint(
-            state_root,
-            excluded_paths=PAPER_RENDER_TRACKED_OUTPUTS,
+    relevant_sources = regular_digest_rows(authority_paths)
+    if kind == "lean":
+        # Lean sharing follows mathematical/build inputs, not an unrelated
+        # README, paper, or generated-doc edit. Hash every visible Lean source
+        # (including deletions) plus the explicit toolchain/build authorities.
+        # This remains conservative across modules without coupling the
+        # scheduler to Lake's evolving dependency graph.
+        relevant_sources = merge_digest_rows(
+            relevant_sources,
+            git_content_digest_rows([":(glob)**/*.lean"]),
         )
+        identity_path = ROOT / "docs/repository_identity.json"
+        repository = {
+            "repository_identity": (
+                digest_file(identity_path) if identity_path.is_file() else None
+            ),
+            "identity_policy": (
+                "all_visible_lean_content_and_build_authorities_"
+                "checkout_independent"
+            ),
+        }
     else:
         # Preserve the one-argument seam used by callers and focused tests that
         # replace the generic repository fingerprint function.
@@ -773,7 +879,7 @@ def validator_spec(
             "lean_toolchain": digest_file(ROOT / "lean-toolchain") if (ROOT / "lean-toolchain").is_file() else None,
             "lake_manifest": digest_file(ROOT / "lake-manifest.json") if (ROOT / "lake-manifest.json").is_file() else None,
         },
-        "relevant_sources": regular_digest_rows(authority_paths),
+        "relevant_sources": relevant_sources,
     }
     key = hashlib.sha256(canonical_json(inputs)).hexdigest()
     return {"schema": SCHEMA, "key": key, "inputs": inputs, "command": command}
@@ -851,7 +957,7 @@ def owner_is_live(owner: Any) -> bool:
 
 
 def receipt_is_live(receipt: dict[str, Any]) -> bool:
-    if receipt.get("state") not in {"launching", "future", "running"}:
+    if receipt.get("state") not in {"launching", "future", "queued", "running"}:
         return False
     if owner_is_live(receipt.get("owner")):
         return True
@@ -977,9 +1083,11 @@ def launch_worker(state: dict[str, Path], specification: dict[str, Any], previou
 
 def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
     validate_specification(specification)
+    automatic_cleanup(state_root)
     state = ensure_state_root(state_root)
     key = specification["key"]
-    lock = open_lock(safe_child(state["locks"], f"{key}.lock"))
+    lock = open_lock(job_lock_path(state, key))
+    assert lock is not None
     try:
         existing = load_receipt(state, key)
         if existing is not None and existing.get("state") == "terminal":
@@ -1015,11 +1123,26 @@ def worker(state_root: Path, key: str, token: str) -> int:
         return 75
     stdout_path = safe_child(artifact, "stdout.log")
     stderr_path = safe_child(artifact, "stderr.log")
-    receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
-    write_receipt(state, key, receipt)
+    resource_group = RESOURCE_GROUPS.get(receipt["inputs"]["validation_class"])
+    resource_lock: int | None = None
     started = utc_now()
     timed_out = False
     try:
+        if resource_group:
+            receipt.update(
+                {
+                    "state": "queued",
+                    "updated_at": utc_now(),
+                    "resource_group": resource_group,
+                }
+            )
+            write_receipt(state, key, receipt)
+            resource_lock = open_lock(
+                safe_child(state["locks"], f"resource-{resource_group}.lock")
+            )
+            assert resource_lock is not None
+        receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
+        write_receipt(state, key, receipt)
         with open_output_log(stdout_path) as stdout, open_output_log(stderr_path) as stderr:
             child = subprocess.Popen(
                 receipt["command"],
@@ -1043,6 +1166,14 @@ def worker(state_root: Path, key: str, token: str) -> int:
         code = 75
         stderr_path.write_text(f"validation environment unavailable: {exc}\n", encoding="utf-8")
         stdout_path.touch(exist_ok=True)
+    finally:
+        if resource_lock is not None:
+            fcntl.flock(resource_lock, fcntl.LOCK_UN)
+            os.close(resource_lock)
+    output_storage = {
+        "stdout": compact_output_log(stdout_path),
+        "stderr": compact_output_log(stderr_path),
+    }
     terminal = {
         **receipt,
         "state": "terminal",
@@ -1058,6 +1189,7 @@ def worker(state_root: Path, key: str, token: str) -> int:
         "stdout": {"path": f"artifacts/{key}/stdout.log", "sha256": digest_file(stdout_path), "tail": bounded_tail(stdout_path)},
         "stderr": {"path": f"artifacts/{key}/stderr.log", "sha256": digest_file(stderr_path), "tail": bounded_tail(stderr_path)},
         "artifacts": [f"artifacts/{key}/stdout.log", f"artifacts/{key}/stderr.log"],
+        "output_storage": output_storage,
         "validation_authority": ROSTER_VALIDATORS[receipt["inputs"]["validation_class"]],
     }
     write_receipt(state, key, terminal)
@@ -1105,6 +1237,21 @@ def tree_usage(path: Path) -> tuple[int, int]:
     return bytes_used, inodes
 
 
+def validation_state_usage(state: dict[str, Path]) -> tuple[int, int]:
+    """Measure scheduler receipts/logs without charging COW package seeds."""
+    bytes_used = 0
+    inodes = 0
+    for name in STATE_DIRECTORIES:
+        child_bytes, child_inodes = tree_usage(state[name])
+        bytes_used += child_bytes
+        inodes += child_inodes
+    marker = state["root"] / "automatic-cleanup.json"
+    if marker.is_file() and not marker.is_symlink():
+        bytes_used += marker.stat().st_size
+        inodes += 1
+    return bytes_used, inodes
+
+
 def remove_tree(path: Path) -> None:
     if not os.path.lexists(path):
         return
@@ -1115,6 +1262,7 @@ def remove_tree(path: Path) -> None:
 def cleanup(state_root: Path, ttl_seconds: float, max_bytes: int, max_inodes: int, recent_seconds: float) -> dict[str, Any]:
     state = ensure_state_root(state_root)
     lock = open_lock(safe_child(state["locks"], "cleanup.lock"))
+    assert lock is not None
     try:
         terminal: list[tuple[float, str, dict[str, Any]]] = []
         skipped_live: list[str] = []
@@ -1133,7 +1281,8 @@ def cleanup(state_root: Path, ttl_seconds: float, max_bytes: int, max_inodes: in
                 # receipt. Recheck under the per-job lock before converting
                 # it to a terminal environment failure, so cleanup cannot
                 # race a submitter or a worker publishing completion.
-                job_lock = open_lock(safe_child(state["locks"], f"{key}.lock"))
+                job_lock = open_lock(job_lock_path(state, key))
+                assert job_lock is not None
                 try:
                     current = load_receipt(state, key)
                     if current is None:
@@ -1166,7 +1315,7 @@ def cleanup(state_root: Path, ttl_seconds: float, max_bytes: int, max_inodes: in
             except (TypeError, ValueError):
                 stamp = path.stat().st_mtime
             terminal.append((stamp, key, receipt))
-        bytes_used, inodes = tree_usage(state["root"])
+        bytes_used, inodes = validation_state_usage(state)
         now = time.time()
         removed: list[str] = []
         for stamp, key, _receipt in sorted(terminal):
@@ -1181,7 +1330,7 @@ def cleanup(state_root: Path, ttl_seconds: float, max_bytes: int, max_inodes: in
             job.unlink(missing_ok=True)
             remove_tree(artifact)
             removed.append(key)
-            bytes_used, inodes = tree_usage(state["root"])
+            bytes_used, inodes = validation_state_usage(state)
         return {
             "schema": SCHEMA,
             "removed": removed,
@@ -1190,6 +1339,45 @@ def cleanup(state_root: Path, ttl_seconds: float, max_bytes: int, max_inodes: in
             "bytes": bytes_used,
             "inodes": inodes,
         }
+    finally:
+        fcntl.flock(lock, fcntl.LOCK_UN)
+        os.close(lock)
+
+
+def automatic_cleanup(state_root: Path) -> dict[str, Any]:
+    """Rate-limit a detached terminal-state cleanup from normal submissions."""
+
+    state = ensure_state_root(state_root)
+    marker = safe_child(state["root"], "automatic-cleanup.json")
+    lock = open_lock(
+        safe_child(state["locks"], "automatic-cleanup.lock"), blocking=False
+    )
+    if lock is None:
+        return {"status": "cleanup_already_scheduled"}
+    try:
+        if marker.is_file() and time.time() - marker.stat().st_mtime < AUTOMATIC_CLEANUP_INTERVAL_SECONDS:
+            return {"status": "cleanup_recent"}
+        atomic_write(marker, canonical_json({"scheduled_at": utc_now()}) + b"\n")
+        try:
+            subprocess.Popen(
+                [
+                    sys.executable,
+                    str(Path(__file__).resolve()),
+                    "--state-root",
+                    str(state["root"]),
+                    "cleanup",
+                ],
+                cwd=ROOT,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                start_new_session=True,
+                env=command_environment(),
+            )
+        except OSError as exc:
+            marker.unlink(missing_ok=True)
+            return {"status": "cleanup_launch_failed", "detail": str(exc)}
+        return {"status": "cleanup_scheduled"}
     finally:
         fcntl.flock(lock, fcntl.LOCK_UN)
         os.close(lock)
@@ -1205,16 +1393,28 @@ def emit(value: dict[str, Any]) -> None:
     print(json.dumps(value, indent=2, sort_keys=True))
 
 
+def add_validation_request_arguments(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--class", dest="kind", choices=tuple(ROSTER_VALIDATORS), required=True)
+    parser.add_argument("--target", action="append", default=[])
+    parser.add_argument("--ref")
+    parser.add_argument("--format", dest="output_format", choices=("card", "json"))
+    parser.add_argument("--check", action="store_true", help="check generated output instead of replacing it")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--state-root", type=Path, default=DEFAULT_STATE_ROOT, help="local cache/receipt root; untracked and safe to delete through cleanup")
+    parser.add_argument("--state-root", type=Path, default=default_state_root(), help="host-shared cache/receipt root; safe to delete through cleanup")
     commands = parser.add_subparsers(dest="action", required=True)
     submit_parser = commands.add_parser("submit", help="start or share a detached validation future")
-    submit_parser.add_argument("--class", dest="kind", choices=tuple(ROSTER_VALIDATORS), required=True)
-    submit_parser.add_argument("--target", action="append", default=[])
-    submit_parser.add_argument("--ref")
-    submit_parser.add_argument("--format", dest="output_format", choices=("card", "json"))
-    submit_parser.add_argument("--check", action="store_true", help="check generated output instead of replacing it")
+    add_validation_request_arguments(submit_parser)
+    run_parser = commands.add_parser("run", help="submit or join, then collect one validation result")
+    add_validation_request_arguments(run_parser)
+    run_parser.add_argument(
+        "--timeout-seconds",
+        type=float,
+        default=24 * 60 * 60,
+        help="maximum attached collection time; the detached owner continues after timeout",
+    )
     for name in ("status", "collect"):
         child = commands.add_parser(name, help=f"read a validation receipt{' or explicitly wait' if name == 'collect' else ''}")
         child.add_argument("--key", type=parse_key, required=True)
@@ -1239,7 +1439,7 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
-        if args.action == "submit":
+        if args.action in {"submit", "run"}:
             receipt = submit(
                 validator_spec(
                     args.kind,
@@ -1251,8 +1451,17 @@ def main(argv: list[str] | None = None) -> int:
                 ),
                 args.state_root,
             )
-            emit(receipt)
-            return 0
+            if args.action == "submit":
+                emit(receipt)
+                return 0
+            terminal, code = collect(
+                args.state_root,
+                receipt["key"],
+                True,
+                args.timeout_seconds,
+            )
+            emit(terminal)
+            return code
         if args.action == "status":
             emit(status(args.state_root, args.key))
             return 0

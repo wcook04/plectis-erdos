@@ -575,6 +575,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--query", default=DEFAULT_QUERY)
     parser.add_argument("--format", choices=("json", "card"), default="card")
+    parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
     packet = dogfood_packet(args.query)
     if args.format == "json":

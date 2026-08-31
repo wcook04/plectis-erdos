@@ -103,6 +103,39 @@ run the named problem module after the ordinary toolchain setup:
 python3 scripts/lean_fast_build.py ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
+Both commands automatically enter the tracked public singleflight scheduler.
+On one host, identical source/toolchain requests from separate clones join the
+same future, while different Lean validations serialize behind one heavy-build
+lock. State defaults to the platform cache directory under the public
+repository identity, not to the checkout. The cache retains bounded log tails
+and launches hourly terminal-state cleanup; it is disposable acceleration and
+never substitutes for the recorded Lake exit code. Lean keys cover every
+visible Lean source plus their toolchain and build
+authorities rather than the entire Git tree, so unrelated paper or README edits
+do not force a duplicate proof build. To submit without attaching the current
+shell, use:
+
+The admitted owner also manages a same-lock dependency seed through
+`scripts/lean_package_share.py`. On APFS (or a Linux filesystem supporting
+reflinks), each clone keeps an independent `.lake/packages` path while
+unchanged files share physical blocks. The first healthy checkout publishes
+the host seed; later cold clones attach before building. The lane rejects dirty
+dependency repositories and mutable-cache symlinks and never falls back to a
+full byte-for-byte copy. Unsupported filesystems simply retain ordinary local
+Lake behavior. Successful macOS builds also compact large repeated
+`*.setup.json` manifests with transparent filesystem compression after checking
+byte identity and source stability. Only the current and one previous semantic
+package seed are retained.
+
+```sh
+python3 scripts/validation_singleflight.py submit --class lean \
+  --target ErdosProblems.Erdos249.PeriodMultipleEscape
+```
+
+`run` is the corresponding submit-or-join-and-collect command. A later caller
+with the same semantic key reuses the in-flight or completed receipt; no human
+retry is needed to preserve the detached owner.
+
 The module's `pureDyadicEndpointError_succ` identity gives the endpoint-error
 cocycle; `prime_forces_pureDyadicEndpointError_excursion` and
 `exists_late_pureDyadicEndpointError_excursion` expose the adjacent-error

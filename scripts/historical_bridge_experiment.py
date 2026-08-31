@@ -420,6 +420,7 @@ def main() -> int:
         description="run the blinded historical bridge shadow experiment"
     )
     parser.add_argument("--compact", action="store_true")
+    parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
     packet = run_experiment()
     print(

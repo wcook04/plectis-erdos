@@ -32,6 +32,10 @@ CORPUS_REL = "docs/papers/corpus.json"
 
 
 def main() -> int:
+    unknown = [argument for argument in sys.argv[1:] if argument != "--singleflight-worker"]
+    if unknown:
+        print("usage: check_paper_corpus.py [--singleflight-worker]", file=sys.stderr)
+        return 2
     repo_root = Path(__file__).resolve().parents[2]
     corpus_path = repo_root / CORPUS_REL
     try:

@@ -10,12 +10,15 @@ Lake's content-trace checker to validate restored CI outputs instead of using
 checkout mtimes, which are new on every GitHub runner.
 
 ``--plan`` reports compact dependency-wave sizes. Add ``--verbose-plan`` when
-the exact module names are needed for diagnosis.
+the exact module names are needed for diagnosis. Normal executions enter the
+public host-shared validation singleflight; ``--singleflight-worker`` is the
+private recursion boundary used by that tracked scheduler.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import os
 from pathlib import Path
 import re
@@ -26,6 +29,7 @@ import tomllib
 from typing import Iterable
 
 import validation_singleflight as singleflight
+import lean_package_share
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -629,6 +633,59 @@ def run_source_authority_check(
     return 0
 
 
+def prepare_dependency_packages(root: Path, state_root: Path | None = None) -> int:
+    """Attach/publish a COW package seed, hydrating once when necessary."""
+
+    state_root = state_root or singleflight.default_state_root()
+    try:
+        receipt = lean_package_share.prepare_workspace(root, state_root)
+    except (
+        OSError,
+        ValueError,
+        json.JSONDecodeError,
+        lean_package_share.PackageShareError,
+    ) as error:
+        print(f"lean-fast-build: package sharing unavailable: {error}", file=sys.stderr)
+        receipt = {"status": "package_sharing_unavailable"}
+    status = str(receipt.get("status") or "unknown")
+    print(f"lean-fast-build: package-share={status}", file=sys.stderr, flush=True)
+    if status != "hydrate_then_publish":
+        return 0
+    print(
+        "lean-fast-build: hydrating the host's first same-lock dependency cache",
+        file=sys.stderr,
+        flush=True,
+    )
+    completed = _run(
+        lake_command("exe", "cache", "get"),
+        cwd=root,
+        timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
+        check=False,
+    )
+    if completed.returncode:
+        return completed.returncode
+    try:
+        published = lean_package_share.prepare_workspace(root, state_root)
+        print(
+            f"lean-fast-build: package-share={published.get('status', 'unknown')}",
+            file=sys.stderr,
+            flush=True,
+        )
+    except (
+        OSError,
+        ValueError,
+        json.JSONDecodeError,
+        lean_package_share.PackageShareError,
+    ) as error:
+        # The hydrated checkout remains usable. Failure to publish an optional
+        # COW seed must not be misreported as a Lean failure.
+        print(
+            f"lean-fast-build: hydrated locally; host seed publication skipped: {error}",
+            file=sys.stderr,
+        )
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -644,6 +701,13 @@ def main(argv: list[str] | None = None) -> int:
         help="build changed Lean modules relative to REF (default: HEAD), plus untracked Lean files",
     )
     parser.add_argument("--jobs", type=int, default=default_jobs())
+    parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument(
+        "--singleflight-state-root",
+        type=Path,
+        default=None,
+        help=argparse.SUPPRESS,
+    )
     parser.add_argument("--plan", action="store_true")
     parser.add_argument(
         "--verbose-plan",
@@ -687,6 +751,55 @@ def main(argv: list[str] | None = None) -> int:
             target_modules = resolve_targets(args.targets, modules, root)
     except (RuntimeError, ValueError) as error:
         parser.error(str(error))
+    if (
+        not args.singleflight_worker
+        and not args.plan
+        and root.resolve() == singleflight.ROOT.resolve()
+    ):
+        state_root = singleflight.default_state_root()
+        specification = singleflight.validator_spec(
+            "lean",
+            target_modules,
+            None,
+            state_root,
+            lean_jobs=args.jobs,
+            lean_lake_staleness=args.lake_staleness,
+        )
+        receipt = singleflight.submit(specification, state_root)
+        terminal, code = singleflight.collect(
+            state_root,
+            receipt["key"],
+            True,
+            24 * 60 * 60,
+        )
+        if terminal.get("state") != "terminal":
+            print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+            return code
+        stdout = terminal.get("stdout", {}).get("tail")
+        stderr = terminal.get("stderr", {}).get("tail")
+        if stdout:
+            print(stdout, end="" if stdout.endswith("\n") else "\n")
+        if stderr:
+            print(
+                stderr,
+                end="" if stderr.endswith("\n") else "\n",
+                file=sys.stderr,
+            )
+        print(
+            "lean-fast-build: shared validation "
+            f"key={receipt['key'][:12]} reuse={receipt.get('reuse', 'owner')} "
+            f"exit={code}",
+            file=sys.stderr,
+        )
+        return code
+    if (
+        args.singleflight_worker
+        and not args.plan
+        and root.resolve() == singleflight.ROOT.resolve()
+    ):
+        package_code = prepare_dependency_packages(root, args.singleflight_state_root)
+        if package_code:
+            return package_code
     direct_targets = direct_source_targets(target_modules, modules, root)
     direct_target_names = set(direct_targets)
     graph = reachable_graph(target_modules, modules)
@@ -769,7 +882,20 @@ def main(argv: list[str] | None = None) -> int:
             return lake_result
     if direct_targets:
         print("lean-fast-build: direct Lake environment source check", flush=True)
-    return run_source_authority_check(direct_targets.values(), root)
+    source_result = run_source_authority_check(direct_targets.values(), root)
+    if source_result:
+        return source_result
+    if args.singleflight_worker and root.resolve() == singleflight.ROOT.resolve():
+        compacted = lean_package_share.compact_setup_json(root)
+        print(
+            "lean-fast-build: setup-compaction="
+            f"{compacted.get('status', 'unknown')} "
+            f"files={compacted.get('compressed_count', 0)} "
+            f"freed={compacted.get('physical_bytes_freed_by_file_blocks', 0)}",
+            file=sys.stderr,
+            flush=True,
+        )
+    return 0
 
 
 if __name__ == "__main__":

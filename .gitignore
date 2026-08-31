@@ -39,11 +39,9 @@ _residual_probe.lean
 *.out
 *.toc
 
-# State directory for scripts/validation_singleflight.py, the dedup/cache
-# layer that many documented check and release commands (see
-# docs/release/RELEASE_HISTORY_TRUST.md and
-# docs/research-commons/RETURN_PACKAGE_TEMPLATE.md) submit work through. It is
-# a run-to-run cache, not a source or evidence file.
+# Legacy checkout-local state for scripts/validation_singleflight.py. New cold
+# clones use a repository-scoped host cache so equivalent checkouts can share;
+# either location is disposable acceleration, never evidence.
 .validation-singleflight/
 
 # Conventional scratch/output directory. Nothing under a top-level tmp/ is
