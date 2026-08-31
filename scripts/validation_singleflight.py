@@ -147,7 +147,7 @@ def default_state_root() -> Path:
         candidate = Path(override).expanduser()
         return candidate if candidate.is_absolute() else Path.cwd() / candidate
     identity_path = ROOT / "docs/repository_identity.json"
-    slug = "plectis-lean"
+    slug = "plectis-lean-erdos249-257"
     try:
         identity = json.loads(identity_path.read_text(encoding="utf-8"))
         configured = identity.get("current", {}).get("slug")
