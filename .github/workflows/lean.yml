@@ -162,11 +162,24 @@ jobs:
 
           if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
             changed=true
+          # This pathspec also decides whether "Verify elaborated dependency
+          # index" runs, so it has to cover every file
+          # build_lean_dependency_index.CHECK_INPUT_FILES declares -- the two
+          # docs/ projections included. Leaving docs/declaration_atlas.json out
+          # was not theoretical: the index copies its source_fingerprint from
+          # the atlas and query_corpus rejects the whole index when the two
+          # disagree, and on 2026-08-30 four consecutive atlas-only commits
+          # (e75afbb3, 53db1318, 0d188b6d, 1169acce) changed that fingerprint
+          # with changed=false, so the verification step never ran and a
+          # dependency index that no longer matched the tree shipped green.
+          # scripts/test_lean_fast_build.py pins the coverage.
           elif git diff --quiet "$base" "$head" -- \
             Erdos249257.lean 'Erdos249257/**' \
             ErdosProblems.lean 'ErdosProblems/**' \
             'adapters/**' 'examples/**' 'residualbench/**' \
             lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
+            docs/declaration_atlas.json \
+            docs/generated_certificate_manifest.json \
             scripts/build_declaration_atlas.py \
             scripts/build_lean_dependency_index.py \
             scripts/export_lean_dependency_edges.lean \
@@ -741,6 +754,13 @@ jobs:
       - name: Test publication artifact mutations
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_artifact_contract.py
+      # The artifact digests above are only worth anything while the route that
+      # refreshes them stays honest. A restamp that stamped a revised .tex onto
+      # a PDF nobody rebuilt would make the registry certify the mismatch it
+      # exists to catch, so the refusal is tested, not assumed.
+      - name: Test publication digest restamp refusals
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: python3 scripts/test_publication_contract_restamp.py
       - name: Test exact claim packet boundaries
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_claim_packet_boundaries.py

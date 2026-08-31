@@ -290,6 +290,53 @@ class LeanFastBuildTests(unittest.TestCase):
         )
         self.assertIn("adapters", core)
 
+    def test_core_gate_watches_every_declared_dependency_index_input(self) -> None:
+        """An unwatched index input is an index verification that never runs.
+
+        `lean-inputs` gates "Verify elaborated dependency index" as well as the
+        build, so a file that can change the committed index but is absent from
+        the pathspec makes that step skip on exactly the commit that broke it.
+        `build_lean_dependency_index.CHECK_INPUT_FILES` is the builder's own
+        list of what can change its output; this pins the gate to it.
+
+        Not hypothetical. `docs/declaration_atlas.json` is where the index gets
+        both its source coordinates and the `source_fingerprint` that
+        `query_corpus.lean_dependency_index` requires it to share with the
+        atlas, and it was missing from this pathspec. On 2026-08-30 four
+        atlas-only commits (e75afbb3, 53db1318, 0d188b6d, 1169acce) moved that
+        fingerprint with `changed=false`; the verification never ran, and every
+        formal dependency neighbourhood, path, cone and proof plan in the
+        corpus reported itself `unavailable_or_stale` from then on.
+        """
+        import build_lean_dependency_index as index_builder
+
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        core = workflow.split("- name: Detect supported-root Lean changes", 1)[1]
+        core = core.split("- name: Test pinned proof-environment lock", 1)[0]
+
+        # Read the pathspec itself, not the surrounding prose: a path named
+        # only in a comment would satisfy a whole-block substring search while
+        # the gate stayed blind to it.
+        self.assertIn('git diff --quiet "$base" "$head" -- ', core)
+        pathspec = core.split('git diff --quiet "$base" "$head" -- ', 1)[1]
+        pathspec = pathspec.split("; then", 1)[0]
+        self.assertIn("lean-toolchain", pathspec, "the pathspec parse drifted")
+
+        self.assertGreaterEqual(len(index_builder.CHECK_INPUT_FILES), 9)
+        for declared in index_builder.CHECK_INPUT_FILES:
+            with self.subTest(input=declared):
+                self.assertIn(
+                    declared,
+                    pathspec,
+                    f"{declared} can change the committed dependency index but "
+                    "is not in the lean-inputs pathspec, so a commit that "
+                    "touches only it skips 'Verify elaborated dependency "
+                    "index' and can land a stale docs/lean_dependency_index"
+                    ".json",
+                )
+
     def test_a_separate_workflow_warms_the_main_cache(self) -> None:
         """`lean.yml` has no push trigger, so something else must warm main.
 

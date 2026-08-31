@@ -65,27 +65,53 @@ def test_mathematical_handoff_exposes_selector_without_route_invention() -> None
         for row in handoffs.mathematical_questions()
         if row["id"] == "XQ249-lcm-diagonal-supply"
     )
-    compact = handoffs.compact_respondent_view(question)
-    full = handoffs.respondent_view(question)
-    for packet in (compact, full):
-        route_memory = packet["route_memory"]
+    # Derived navigation depends only on the question's problem selector, so a
+    # per-row copy repeated each block once per handoff.  It is packet-level.
+    assert "route_memory" not in handoffs.compact_respondent_view(question)
+    assert "problem_route" not in handoffs.respondent_view(question)
+    index = handoffs.question_packet(None)
+    detail = handoffs.question_packet(None, question["id"])
+    for packet in (index, detail):
+        entry = packet["problem_navigation"]["problems"]["249"]
+        route_memory = entry["route_memory"]
         assert route_memory["status"] == "unbound"
         assert route_memory["problem_number"] == 249
         assert route_memory["bindings"] == []
         assert route_memory["command"] == (
             "python3 scripts/query_route_memory.py --problem 249"
         )
-        assert "current source digests" in route_memory["identity_contract"]
-        assert "no resume route was invented" in route_memory["unbound_reason"]
-        problem_route = packet["problem_route"]
+        problem_route = entry["problem_route"]
         assert problem_route["status"] == "bound"
         assert problem_route["problem_number"] == 249
         assert problem_route["command"] == (
             "python3 scripts/query_corpus.py --route erdos_249"
         )
-        assert "every review-matrix result family" in problem_route[
-            "identity_contract"
-        ]
+
+    # The per-question packet still states the complete contracts ...
+    detail_entry = detail["problem_navigation"]["problems"]["249"]
+    assert "current source digests" in detail_entry["route_memory"][
+        "identity_contract"
+    ]
+    assert "no resume route was invented" in detail_entry["route_memory"][
+        "unbound_reason"
+    ]
+    assert "every review-matrix result family" in detail_entry["problem_route"][
+        "identity_contract"
+    ]
+    # ... and the bounded index names them instead of dropping them silently.
+    navigation_receipt = index["problem_navigation"][
+        "bounded_navigation_omission_receipt"
+    ]
+    for field in (
+        "route_memory.identity_contract",
+        "route_memory.unbound_reason",
+        "route_memory.boundary",
+        "problem_route.identity_contract",
+        "problem_route.boundary",
+        "problem_route.paper_source.identity_contract",
+    ):
+        assert field in navigation_receipt["omitted_fields"], field
+    assert "--question" in navigation_receipt["question_drilldown"]
 
     invalid = handoffs.route_memory_handoff(
         {"domain": handoffs.MATH_DOMAIN, "problem": "249/257"}
@@ -583,6 +609,67 @@ def test_strict_prime_successor_is_support_only() -> None:
     assert handoffs.source_current_supports(non_249) == []
 
 
+def test_bounded_support_index_head_and_receipt_agree_with_source() -> None:
+    """The emitted head is the top of the source order; the receipt is exact."""
+    question = next(
+        row
+        for row in handoffs.mathematical_questions()
+        if row["id"] == "XQ249-lcm-diagonal-supply"
+    )
+    supports = handoffs.source_current_supports(question)
+    index = handoffs.question_packet(None)
+    detail = handoffs.question_packet(None, question["id"])
+
+    block = index["source_current_support_index"]
+    head = block["ranked_head"]
+    receipt = block["bounded_support_omission_receipt"]
+    assert len(head) == handoffs.COMPACT_SUPPORT_HEAD
+    assert [row["rank"] for row in head] == list(range(1, len(head) + 1))
+    assert [row["source_declaration"] for row in head] == [
+        row["source_declaration"] for row in supports[: len(head)]
+    ]
+    assert receipt["support_count"] == len(supports)
+    assert receipt["omitted_support_count"] == len(supports) - len(head)
+    assert receipt["omitted_source_declarations"] == [
+        row["source_declaration"] for row in supports[len(head):]
+    ]
+    # A contiguous head can hide a relation entirely, so the receipt says which.
+    assert receipt["omitted_relation_counts"]["contrary_evidence"] == 2
+    assert receipt["question_drilldown"] == (
+        "python3 scripts/query_expert_handoffs.py --question "
+        "XQ249-lcm-diagonal-supply"
+    )
+    assert receipt["claim_drilldown"] == handoffs.SUPPORT_CLAIM_DRILLDOWN
+
+    # The family-level fields are carried once, not once per support, and the
+    # boundary paragraph the supports repeat under two names is emitted whole.
+    for field in receipt["hoisted_family_fields"]:
+        assert all(row[field] == supports[0][field] for row in supports)
+        assert all(field not in row for row in head)
+    for alias in receipt["family_boundary_aliases"]:
+        assert all(row[alias] == block["family_boundary"] for row in supports)
+    assert block["applies_to_questions"] == [
+        "XQ249-lcm-diagonal-supply",
+        "XQ249-pivot-decorrelation",
+        "XQ249-adjacent-phase-separation",
+    ]
+
+    # The drilldown the receipt names really does return the whole list.
+    detail_block = detail["source_current_support_index"]
+    assert [row["source_declaration"] for row in detail_block["ranked_head"]] == [
+        row["source_declaration"] for row in supports
+    ]
+    assert detail_block["bounded_support_omission_receipt"][
+        "omitted_support_count"
+    ] == 0
+
+    # A #257 handoff has no strict-prime supports, so it carries no block.
+    without = handoffs.question_packet(
+        None, "XQ257-second-channel-separation"
+    )
+    assert "source_current_support_index" not in without
+
+
 def test_strict_prime_cross_problem_source_route_is_rejected() -> None:
     """A claim row cannot redirect a source-current support to another problem."""
     question = next(
@@ -632,6 +719,7 @@ def main() -> int:
     test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar()
     test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     test_strict_prime_successor_is_support_only()
+    test_bounded_support_index_head_and_receipt_agree_with_source()
     test_strict_prime_cross_problem_source_route_is_rejected()
     packet = handoffs.question_packet(None)
     assert packet["packet_kind"] == "compact_index"
@@ -644,13 +732,17 @@ def main() -> int:
         assert len(row["current_evidence"]) >= 2
         assert len(row["discriminating_evidence"]) >= 2
         assert row["detail_command"].endswith(row["id"])
+        assert "problem_route" not in row
+        assert "route_memory" not in row
+        assert "source_current_supports" not in row
         if row["domain"] == handoffs.MATH_DOMAIN:
-            assert row["problem_route"]["status"] == "bound"
-            assert row["problem_route"]["command"].startswith(
+            entry = packet["problem_navigation"]["problems"][row["problem"]]
+            assert entry["problem_route"]["status"] == "bound"
+            assert entry["problem_route"]["command"].startswith(
                 "python3 scripts/query_corpus.py --route erdos_"
             )
         else:
-            assert "problem_route" not in row
+            assert row["problem"] not in packet["problem_navigation"]["problems"]
 
     for question in handoffs.all_questions():
         detail = handoffs.question_packet(None, question["id"])
@@ -658,7 +750,8 @@ def main() -> int:
         assert detail["count"] == 1
         assert detail["results"][0]["id"] == question["id"]
         if question["domain"] == handoffs.MATH_DOMAIN:
-            assert detail["results"][0]["problem_route"]["status"] == "bound"
+            entry = detail["problem_navigation"]["problems"][question["problem"]]
+            assert entry["problem_route"]["status"] == "bound"
 
     second_channel = next(
         row

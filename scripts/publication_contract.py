@@ -1244,7 +1244,9 @@ def validate_publication_contract(
             if artifact[digest_field] != actual:
                 errors.append(
                     f"publication artifact {artifact_id!r} {digest_field} drifted: "
-                    f"expected {artifact[digest_field]}, actual {actual}"
+                    f"expected {artifact[digest_field]}, actual {actual}; review the "
+                    "revision, then run python3 scripts/check_publication_contract.py "
+                    "--restamp"
                 )
         try:
             source_text = reader.read_text(source)
@@ -1487,6 +1489,120 @@ def validate_publication_contract(
 
     errors.extend(validate_publication_entry_packet(reader))
     return errors
+
+
+ARTIFACT_DIGEST_FIELDS = (
+    ("source_path", "source_content_digest"),
+    ("rendered_path", "rendered_content_digest"),
+)
+
+
+def artifact_digest_restamp_plan(
+    reader: RepositoryReader,
+) -> tuple[list[dict[str, str]], list[str]]:
+    """Recompute drifted artifact digests from the manuscripts on disk.
+
+    A publication artifact is a ``.tex`` source and the ``.pdf`` built from
+    it. The registry pins both by digest, so revising a manuscript makes the
+    registry stale and ``check_publication_contract.py`` red until the pair is
+    stamped again. This plan is the honest way to do that: it reads the two
+    files and reports what the registry would have to say to describe them.
+
+    It restamps a pair only when both halves moved together, because that is
+    the one thing a machine can prove here. A source that moved while its
+    rendered PDF did not is refused: the published PDF was not rebuilt, so
+    stamping the new source would record a manuscript the released artifact
+    does not print.
+
+    What this cannot decide is whether the revision changed what the artifact
+    *claims*. Read ``git diff`` on the source before applying the plan; a
+    restamp records new bytes, it does not review new mathematics.
+    """
+    contract = load_json(reader, CONTRACT_PATH)
+    restamps: list[dict[str, str]] = []
+    refusals: list[str] = []
+    for artifact in contract.get("artifacts", []):
+        artifact_id = artifact.get("id", "<unknown>")
+        missing = {field for pair in ARTIFACT_DIGEST_FIELDS for field in pair} - set(
+            artifact
+        )
+        if missing:
+            refusals.append(
+                f"publication artifact {artifact_id!r} lacks the fields a restamp "
+                f"needs: {sorted(missing)}"
+            )
+            continue
+        observed: dict[str, tuple[str, str, bool]] = {}
+        for path_field, digest_field in ARTIFACT_DIGEST_FIELDS:
+            relative = artifact[path_field]
+            try:
+                actual = sha256(reader.read_bytes(relative))
+            except (FileNotFoundError, OSError, ValueError, UnicodeError) as error:
+                refusals.append(
+                    f"publication artifact {artifact_id!r} cannot be restamped: "
+                    f"{relative} is unreadable ({error})"
+                )
+                break
+            observed[digest_field] = (
+                relative,
+                actual,
+                artifact[digest_field] != actual,
+            )
+        if len(observed) != len(ARTIFACT_DIGEST_FIELDS):
+            continue
+        source_path, _, source_drifted = observed["source_content_digest"]
+        rendered_path, _, rendered_drifted = observed["rendered_content_digest"]
+        if source_drifted and not rendered_drifted:
+            refusals.append(
+                f"publication artifact {artifact_id!r} moved its source without its "
+                f"rendered artifact: {source_path} changed while {rendered_path} "
+                "still matches the registry, so the published PDF was never rebuilt "
+                "from this source. Rebuild it with "
+                f"`make -C paper {Path(source_path).stem}.pdf` and restamp the pair "
+                "together."
+            )
+            continue
+        for digest_field, (relative, actual, drifted) in observed.items():
+            if not drifted:
+                continue
+            restamps.append(
+                {
+                    "artifact_id": artifact_id,
+                    "field": digest_field,
+                    "path": relative,
+                    "expected": artifact[digest_field],
+                    "actual": actual,
+                }
+            )
+    return restamps, refusals
+
+
+def apply_artifact_digest_restamps(
+    root: Path,
+    restamps: list[dict[str, str]],
+) -> None:
+    """Rewrite the named digest literals and no other byte of the registry.
+
+    The registry also carries titles, paths, claim scopes, and authority
+    postures. Those are human judgments about what an artifact asserts, so a
+    restamp must never touch them; replacing the exact ``"<field>": "<old>"``
+    text keeps the edit provably confined to the digests in the plan.
+    """
+    path = root / CONTRACT_PATH
+    text = path.read_text(encoding="utf-8")
+    for record in restamps:
+        needle = f'"{record["field"]}": "{record["expected"]}"'
+        occurrences = text.count(needle)
+        if occurrences != 1:
+            raise ValueError(
+                f"refusing to restamp {record['artifact_id']}: "
+                f"{needle} appears {occurrences} times in {CONTRACT_PATH}"
+            )
+        text = text.replace(
+            needle,
+            f'"{record["field"]}": "{record["actual"]}"',
+        )
+    path.write_text(text, encoding="utf-8")
 
 
 def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:

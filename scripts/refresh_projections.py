@@ -73,6 +73,17 @@ BUILDERS = (
     "scripts/build_methodology.py",
     "scripts/build_module_graph.py",
     "scripts/build_declaration_atlas.py",
+    # The authored zones under docs/semantic/zones/ pin Lean line numbers by
+    # hand, and until 2026-08-31 no refresher owned them at all: 3722 of the
+    # 149090 pinned rows across 39 of the 94 zones had rotted onto the wrong
+    # line, which is how test_cyclotomic_semantic_digest.py came to fail. This
+    # reads the atlas and is read by the rosters and the corpus, so it sits
+    # between them.
+    "scripts/refresh_zone_source_coordinates.py",
+    # Reads the Lean module headers and the atlas fingerprint. It had a
+    # freshness check and no refresher, so it rotted until query_corpus
+    # started rejecting it outright.
+    "scripts/build_module_synopsis_index.py",
     # The rosters read the Lean data files and the authored zones, and the
     # semantic corpus reads the zones back. They belong above it.
     "scripts/build_off_diagonal_certificate_roster.py",

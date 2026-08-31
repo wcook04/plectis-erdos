@@ -1731,6 +1731,52 @@ def main() -> int:
         "theory lab retains self-invalidating Git-derived provenance",
     )
 
+    # The authored semantic zones pin Lean line numbers by hand. Nothing checked
+    # them until 2026-08-31, by which point 3722 pinned rows across 39 of the 94
+    # zones named a line their declaration had moved off, and the only surface
+    # that noticed was one digest test for one zone.
+    zone_coordinate_check = run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "refresh_zone_source_coordinates.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        zone_coordinate_check.returncode == 0,
+        "semantic zone source-coordinate drift: "
+        + (
+            zone_coordinate_check.stdout.strip()
+            or zone_coordinate_check.stderr.strip()
+        ),
+    )
+
+    # docs/module_synopsis_index.json carries its own freshness check and was
+    # in neither this gate nor the refresh pipeline, so nothing ran the check
+    # and nothing rebuilt the file. query_corpus rejects the index outright
+    # when its fingerprint disagrees with the atlas, so the rot showed up only
+    # as an empty index behind a bare assert.
+    synopsis_check = run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_module_synopsis_index.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        synopsis_check.returncode == 0,
+        "module synopsis index freshness: "
+        + (synopsis_check.stdout.strip() or synopsis_check.stderr.strip()),
+    )
+
     coordinate_check = run(
         [sys.executable, str(ROOT / "scripts" / "refresh_source_coordinates.py"), "--check"],
         cwd=ROOT,

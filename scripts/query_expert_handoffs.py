@@ -6,6 +6,14 @@
 The default is a bounded six-question index.  Open one complete handoff with
 ``--question QUESTION_ID``; use ``--domain systems`` for the complete
 ten-minute reader protocol.
+
+Derived navigation -- the problem route, its paper source, the resume-route
+selector, and the source-current supporting declarations -- depends on a
+question's problem selector rather than on the question, so it is emitted once
+per packet under ``problem_navigation`` and ``source_current_support_index``
+instead of once per row.  The index bounds both: it keeps the selectors and a
+ranked head, and each block carries a receipt naming exactly what it withheld
+and the command that returns it.  Nothing is dropped without a receipt.
 """
 
 from __future__ import annotations
@@ -51,6 +59,61 @@ SEMANTIC_HANDOFF_ROOT_FAMILIES = (
     "small_mismatch_criterion",
     "conditional_carry_escape",
 )
+STRICT_PRIME_SUPPORT_FAMILY = "strict_prime_tail_orbit_gap"
+# ``source_current_supports`` below is a per-family enumeration: it grows every
+# time the strict-prime family gains a reviewable declaration, and its
+# family-level fields (proof status, authority pointers, the Claims boundary
+# paragraph, the follow command) repeat verbatim on every element.  The
+# authority function still returns the complete list with every field.  The
+# emitted packets carry that list once per packet, with the repeated
+# family-level fields hoisted to a single block, and the compact index carries
+# only a ranked head plus a receipt naming what was withheld and the commands
+# that retrieve it.  The head limit is a fixed cost; the full list is one
+# ``--question`` away.
+COMPACT_SUPPORT_HEAD = 2
+SUPPORT_PER_DECLARATION_FIELDS = (
+    "relation",
+    "relation_class",
+    "evidence_kind",
+    "source_declaration",
+    "source",
+    "hard_mechanism",
+    "evidence_boundary",
+)
+SUPPORT_FAMILY_FIELDS = (
+    "family_id",
+    "proof_status",
+    "proof_status_authority",
+    "natural_friction_evidence",
+    "open_producer_boundary",
+    "authority",
+    "follow",
+)
+# ``natural_friction_evidence`` and ``open_producer_boundary`` are the same
+# Claims family boundary read twice, so every support carries that paragraph
+# twice.  The packet carries it once, under the name of the field it comes
+# from, and the receipt records both aliases.
+SUPPORT_FAMILY_BOUNDARY_ALIASES = (
+    "natural_friction_evidence",
+    "open_producer_boundary",
+)
+SUPPORT_FAMILY_BOUNDARY_AUTHORITY = (
+    "docs/claims.json::external_verification_packet.review_matrix"
+    f".families[{STRICT_PRIME_SUPPORT_FAMILY}].boundary"
+)
+SUPPORT_CLAIM_DRILLDOWN = (
+    f"python3 scripts/query_corpus.py --claim {STRICT_PRIME_SUPPORT_FAMILY}"
+)
+# Derived navigation blocks are a function of the question's problem selector,
+# not of the question: the five mathematical handoffs resolve to two distinct
+# problems, so per-row emission repeats each contract paragraph five times.
+# The bounded index keeps the selectors and routes the invariant contract prose
+# to the per-question packet that every row already names in detail_command.
+NAVIGATION_SELECTOR_FIELDS = {
+    "route_memory": ("status", "problem_number", "bindings", "command"),
+    "problem_route": ("status", "problem_number", "command"),
+}
+PAPER_SOURCE_SELECTOR_FIELDS = ("status", "source", "command")
 THREE_PRIME_LCM_FAMILY = "three_prime_lcm_cells"
 RANK_TWO_KERNEL_FAMILY = "rank_two_kernel_no_go"
 HEIGHT_FIBRE_FAMILY = "height_fibre_and_shell"
@@ -2026,14 +2089,210 @@ def problem_route_handoff(row: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def _packet_source_current_supports(
+    rows: list[dict[str, Any]]
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Return the one support list a packet carries, and the questions it serves.
+
+    ``source_current_supports`` is a function of the question's problem
+    selector, so every #249 handoff resolves the same list.  Emitting it once
+    per packet is only honest while that is true, so disagreement is an error
+    rather than a silent first-row win.
+    """
+    supports: list[dict[str, Any]] = []
+    question_ids: list[str] = []
+    for row in rows:
+        candidate = source_current_supports(row)
+        if not candidate:
+            continue
+        if supports and candidate != supports:
+            raise ValueError(
+                "source-current supports disagree across the packet's "
+                f"questions: {question_ids[0]!r} and {row['id']!r}"
+            )
+        supports = candidate
+        question_ids.append(row["id"])
+    return supports, question_ids
+
+
+def source_current_support_index(
+    rows: list[dict[str, Any]], head_limit: int | None
+) -> dict[str, Any] | None:
+    """Carry the support enumeration once, as a ranked head plus a receipt.
+
+    ``head_limit`` of ``None`` keeps every support; the compact index passes
+    ``COMPACT_SUPPORT_HEAD``.  Either way the family-level fields that repeat
+    verbatim on every support are hoisted into this block exactly once, and the
+    receipt names both the withheld rows and the commands that return them.
+    """
+    supports, question_ids = _packet_source_current_supports(rows)
+    if not supports:
+        return None
+    limit = len(supports) if head_limit is None else min(head_limit, len(supports))
+    head = [
+        {
+            "rank": position,
+            **{field: support[field] for field in SUPPORT_PER_DECLARATION_FIELDS},
+        }
+        for position, support in enumerate(supports[:limit], start=1)
+    ]
+    family = supports[0]
+    for field in SUPPORT_FAMILY_FIELDS:
+        if any(support[field] != family[field] for support in supports):
+            raise ValueError(
+                f"source-current support field {field!r} is not family-level; "
+                "it cannot be hoisted out of the per-support rows"
+            )
+    question_drilldown = (
+        "python3 scripts/query_expert_handoffs.py --question "
+        f"{question_ids[0]}"
+    )
+    return {
+        "rank_rule": (
+            "Rank is the source order of the family's reviewable declarations "
+            "in docs/claims.json; the head is that order's contiguous top."
+        ),
+        "applies_to_questions": question_ids,
+        **{
+            field: family[field]
+            for field in SUPPORT_FAMILY_FIELDS
+            if field not in SUPPORT_FAMILY_BOUNDARY_ALIASES
+        },
+        "family_boundary": family[SUPPORT_FAMILY_BOUNDARY_ALIASES[0]],
+        "family_boundary_authority": SUPPORT_FAMILY_BOUNDARY_AUTHORITY,
+        "ranked_head": head,
+        "bounded_support_omission_receipt": {
+            "support_head_limit": limit,
+            "support_count": len(supports),
+            "omitted_support_count": len(supports) - len(head),
+            "omitted_source_declarations": [
+                support["source_declaration"] for support in supports[limit:]
+            ],
+            # A contiguous head can hide a whole evidence relation in the tail,
+            # so name what the omitted rows are as well as how many.
+            "omitted_relation_counts": dict(
+                sorted(
+                    Counter(
+                        support["relation"] for support in supports[limit:]
+                    ).items()
+                )
+            ),
+            "hoisted_family_fields": list(SUPPORT_FAMILY_FIELDS),
+            "family_boundary_aliases": list(SUPPORT_FAMILY_BOUNDARY_ALIASES),
+            "question_drilldown": question_drilldown,
+            "claim_drilldown": SUPPORT_CLAIM_DRILLDOWN,
+            "family_relation_drilldown": family["follow"],
+            "reason": (
+                "source_current_supports_grow_with_the_family_and_repeat_the"
+                "_same_family_level_fields_on_every_row_including_one_boundary"
+                "_paragraph_under_two_names_so_the_packet_carries_them_once"
+                "_and_the_compact_index_carries_a_ranked_head_with_named"
+                "_routes_to_the_rest"
+            ),
+        },
+    }
+
+
+def problem_navigation_index(
+    rows: list[dict[str, Any]], bounded: bool
+) -> dict[str, Any] | None:
+    """Carry the derived route blocks once per problem instead of once per row.
+
+    ``route_memory_handoff`` and ``problem_route_handoff`` depend only on the
+    question's problem selector, so five mathematical handoffs emit two
+    distinct blocks.  The bounded index keeps the selectors and statuses and
+    routes the invariant contract prose to the per-question packet; the
+    per-question packet carries the blocks whole.
+    """
+    navigation: dict[str, Any] = {}
+    withheld: set[str] = set()
+    for row in rows:
+        if row.get("domain") != MATH_DOMAIN:
+            continue
+        route_memory = route_memory_handoff(row)
+        problem_route = problem_route_handoff(row)
+        entry = {"route_memory": route_memory, "problem_route": problem_route}
+        if bounded:
+            entry = {
+                "route_memory": {
+                    field: route_memory[field]
+                    for field in NAVIGATION_SELECTOR_FIELDS["route_memory"]
+                    if field in route_memory
+                },
+                "problem_route": {
+                    field: problem_route[field]
+                    for field in NAVIGATION_SELECTOR_FIELDS["problem_route"]
+                    if field in problem_route
+                },
+            }
+            paper_source = problem_route.get("paper_source")
+            if isinstance(paper_source, dict):
+                entry["problem_route"]["paper_source"] = {
+                    field: paper_source[field]
+                    for field in PAPER_SOURCE_SELECTOR_FIELDS
+                    if field in paper_source
+                }
+                withheld.update(
+                    f"problem_route.paper_source.{field}"
+                    for field in paper_source
+                    if field not in PAPER_SOURCE_SELECTOR_FIELDS
+                )
+            withheld.update(
+                f"route_memory.{field}"
+                for field in route_memory
+                if field not in NAVIGATION_SELECTOR_FIELDS["route_memory"]
+            )
+            withheld.update(
+                f"problem_route.{field}"
+                for field in problem_route
+                if field
+                not in NAVIGATION_SELECTOR_FIELDS["problem_route"]
+                and field != "paper_source"
+            )
+        token = str(row.get("problem"))
+        existing = navigation.get(token)
+        if existing is not None and existing != entry:
+            raise ValueError(
+                f"derived navigation disagrees inside problem {token}; it "
+                "cannot be carried once per problem"
+            )
+        navigation[token] = entry
+    if not navigation:
+        return None
+    packet = {
+        "keyed_by": "problem",
+        "authority_posture": (
+            "derived_navigation_not_claim_or_proof_authority"
+        ),
+        "problems": dict(sorted(navigation.items())),
+    }
+    if bounded:
+        packet["bounded_navigation_omission_receipt"] = {
+            "omitted_fields": sorted(withheld),
+            "question_drilldown": (
+                "python3 scripts/query_expert_handoffs.py --question "
+                "<QUESTION_ID from results[].id, also in results[].detail_command>"
+            ),
+            "reason": (
+                "route_memory_and_problem_route_depend_only_on_the_problem"
+                "_selector_so_the_index_carries_one_block_per_problem_and"
+                "_routes_the_invariant_contract_prose_to_the_question_packet"
+            ),
+        }
+    return packet
+
+
 def respondent_view(row: dict[str, Any]) -> dict[str, Any]:
-    """Return the handoff without evaluator-only expected answers."""
+    """Return the handoff without evaluator-only expected answers.
+
+    Derived navigation and source-current supports are packet-level: they are
+    functions of the question's problem selector, so carrying them inside every
+    row repeated each block once per question.  ``question_packet`` emits them
+    once, which also keeps this row byte-identical to the same question as
+    served by ``query_semantic.py expert-questions``.
+    """
     if row.get("domain") != SYSTEMS_DOMAIN:
-        view = dict(row)
-        view["route_memory"] = route_memory_handoff(row)
-        view["problem_route"] = problem_route_handoff(row)
-        view["source_current_supports"] = source_current_supports(row)
-        return view
+        return dict(row)
     return {
         key: value
         for key, value in row.items()
@@ -2077,10 +2336,6 @@ def compact_respondent_view(row: dict[str, Any]) -> dict[str, Any]:
             f"{row['id']}"
         ),
     }
-    if row.get("domain") == MATH_DOMAIN:
-        result["route_memory"] = route_memory_handoff(row)
-        result["problem_route"] = problem_route_handoff(row)
-        result["source_current_supports"] = source_current_supports(row)
     return result
 
 
@@ -2408,7 +2663,7 @@ def question_packet(
             raise ValueError(f"no expert handoff {question_id!r}")
     full_packet = bool(question_id) or (domain == SYSTEMS_DOMAIN and len(rows) == 1)
     domain_counts = Counter(row["domain"] for row in rows)
-    return {
+    packet = {
         "question": "exact inputs requested from human experts",
         "rule": (
             "Every row names the requested input, current guess, alternatives, "
@@ -2423,6 +2678,15 @@ def question_packet(
             for row in rows
         ],
     }
+    navigation = problem_navigation_index(rows, bounded=not full_packet)
+    if navigation is not None:
+        packet["problem_navigation"] = navigation
+    supports = source_current_support_index(
+        rows, None if full_packet else COMPACT_SUPPORT_HEAD
+    )
+    if supports is not None:
+        packet["source_current_support_index"] = supports
+    return packet
 
 
 def main() -> int:

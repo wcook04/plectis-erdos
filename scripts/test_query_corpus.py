@@ -1325,10 +1325,26 @@ def validate_claim_status_packets() -> None:
         if status == "verified finite instance":
             assert all(row["bounded_domain"] for row in packet["claims"])
         if status == "open":
-            assert {row["id"] for row in packet["claims"]} == {
-                "erdos_249",
-                "universal_257",
+            # Derived from the claim registry, not listed here. This assertion
+            # used to name erdos_249 and universal_257 by hand, from when those
+            # were the whole corpus; it has been eight problems for a while and
+            # every one of them is open, but the assertion sat behind earlier
+            # failures and never ran to notice.
+            registry_open = {
+                row["id"]
+                for row in claims_document["claims"]
+                if str(row.get("status", "")).lower() == "open"
             }
+            assert len(registry_open) >= 2, (
+                "the claim registry reports fewer than two open claims, which "
+                "would make this check vacuous; the repository states that all "
+                "eight Erdős problems remain open"
+            )
+            assert {row["id"] for row in packet["claims"]} == registry_open, (
+                "the open-status packet disagrees with docs/claims.json: "
+                f"packet={sorted(row['id'] for row in packet['claims'])} "
+                f"registry={sorted(registry_open)}"
+            )
             assert {
                 row["id"] for row in packet["remaining_open_propositions"]
             } == {
@@ -1396,9 +1412,31 @@ def validate_mathematical_signal_spine() -> None:
     ]
     assert all(row["exact_boundary"] for row in instant_frontier)
     instant_card = query_corpus.render_card(instant)
-    assert instant_card.index("family=actual_lcm_orbit_separation") < instant_card.index(
-        "family=first_harmonic_pivot_decomposition"
-    ) < instant_card.index("family=totient_kernel_rank")
+    card_signal_families = [
+        line.split("family=", 1)[1].split(" | ", 1)[0]
+        for line in instant_card.splitlines()
+        if line.startswith("global_signal #")
+    ]
+    assert card_signal_families == [row["family_id"] for row in expected]
+    # The rendered card is the public order of mathematical attention, so the
+    # #249 ordering it shows must match the argued ranking in
+    # docs/PALOMAR_RESULT_SHOWCASE.json: the two conditional producer routes
+    # (ranks 5 and 6) sit above totient_carry_anti_compression (rank 10), whose
+    # own "why_not_ranked_first" says it "remains below the producer-side
+    # strict-prime, first-harmonic, and actual-LCM routes because it supplies
+    # neither a contradiction nor a certificate producer".
+    assert (
+        card_signal_families.index("actual_lcm_orbit_separation")
+        < card_signal_families.index("first_harmonic_pivot_decomposition")
+        < card_signal_families.index("totient_carry_anti_compression")
+    )
+    # Coefficient-side totient_kernel_rank is screened out of the ranking as
+    # supporting_structural for totient_carry_anti_compression, so it must not
+    # reappear on the instant card as a ranked global signal.
+    assert "totient_kernel_rank" not in card_signal_families
+    assert "totient_kernel_rank" in {
+        row["family_id"] for row in showcase["candidate_screening"]
+    }
     assert instant_card.count("global_signal #") == len(expected)
 
     adversarial_claims = copy.deepcopy(load("docs/claims.json"))
@@ -1458,11 +1496,26 @@ def validate_mathematical_signal_spine() -> None:
     carry_escape = programme_spines[269][0]
     assert "CofinalLocalWindowEscape" in carry_escape["boundary"]
     assert "rationality-to-actual-series carry bridge" in carry_escape["why_here"]
+    # The #249 spine leads with the three families the survivor audit put on
+    # the global ranked frontier; coefficient-side totient_kernel_rank sits
+    # fifth, below totient_certificate_equivalences, because it is screened as
+    # supporting_structural for totient_carry_anti_compression.
     assert [row["family_id"] for row in programme_spines[249]][:3] == [
         "actual_lcm_orbit_separation",
         "first_harmonic_pivot_decomposition",
-        "totient_kernel_rank",
+        "strict_prime_tail_orbit_gap",
     ]
+    assert [row["tier_id"] for row in programme_spines[249]][:3] == [
+        "source_ranked_frontier",
+        "source_ranked_frontier",
+        "source_ranked_frontier",
+    ]
+    # Reversing the source arrays must not disturb the committed order.
+    assert [row["family_id"] for row in programme_spines[249]] == next(
+        row["family_ids"]
+        for row in showcase["selection_contract"]["programme_family_order"]
+        if row["problem"] == 249
+    )
     assert [row["family_id"] for row in programme_spines[1049]] == [
         "rational_base_tail_recurrence",
         "height_and_pade_arithmetic",
@@ -1653,9 +1706,18 @@ def validate_external_assurance_routes() -> None:
 
 def validate_module_synopsis_owner_adoption() -> None:
     index = query_corpus.module_synopsis_index()
-    assert index
+    # An empty index is not an empty repository: query_corpus discards the
+    # whole index when its recorded fingerprint disagrees with the declaration
+    # atlas, so this is what a stale docs/module_synopsis_index.json looks like
+    # from here. The bare assert said none of that.
+    assert index, (
+        "module synopsis index is empty; query_corpus rejects it when "
+        "docs/module_synopsis_index.json disagrees with the declaration atlas. "
+        "Run python3 scripts/build_module_synopsis_index.py --check to see the "
+        "drift, then python3 scripts/refresh_projections.py to rebuild it."
+    )
     module = "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
-    assert index[module]
+    assert index[module], f"module synopsis index has no synopsis for {module}"
     packet = query("--module", module)
     assert packet["module"]["authored_synopsis"] == index[module]
 

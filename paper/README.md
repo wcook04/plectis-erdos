@@ -120,6 +120,18 @@ repin `\commit` in the shared preamble to a commit that is **pushed** (links
 resolve on GitHub, so an unpushed local merge is not a valid pin), rebuild, and
 refresh the digests in `docs/publication_contract.json`.
 
+That last step has a command; it is not a hand edit. `python3
+scripts/check_publication_contract.py --restamp` prints every digest that no
+longer describes the file it names, and `--restamp --apply` writes them. It
+touches nothing but those digest strings, so the title, claim scope, and
+authority posture of a row stay where a human put them — read `git diff` on the
+source first and confirm the revision is one you meant to publish, because the
+command recomputes bytes, it does not review mathematics. It refuses any row
+whose `.tex` moved while its `.pdf` did not: that pair means the published PDF
+was never rebuilt from the source beside it, and stamping the new source would
+record a manuscript the released artifact does not print. Rebuild the PDF and
+restamp the pair together.
+
 `docs/problems.json`, built by `scripts/build_problem_index.py`, is the
 machine-readable index over the same material: one row per problem naming its
 modules, its note, what is checked, what is not, and the obligation that

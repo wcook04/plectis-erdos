@@ -32,6 +32,7 @@ from typing import Any
 
 import check_architecture_guide
 import query_corpus
+import query_expert_handoffs
 import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -279,6 +280,41 @@ SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
 # trimmed: dropping routes to fit would make the packet silently incomplete.
 PACKET_BUDGET_BYTES = 20_480
+# The expert-handoff compact index is the one packet that is a chooser over
+# every handoff at once, and this gate pins most of its content itself: it
+# requires six rows, and requires ten fields of each mathematical row to equal
+# `python3 scripts/query_semantic.py expert-questions` field-for-field. Those
+# pinned rows plus the packet scaffolding measure 16,612 bytes on their own --
+# 81% of the fixed packet budget above -- so the derived navigation the surface
+# exists to provide has under 3,900 bytes to live in.
+#
+# Measured on 2026-08-31, after densifying the emitter (the packet had reached
+# 116,052 bytes by repeating one family's ten source-current supports, with
+# their family-level fields and one boundary paragraph carried twice on every
+# row, into three of the six rows):
+#
+#     16,612  six pinned question rows and packet scaffolding
+#      2,094  derived navigation, one bounded block per problem (two today)
+#              plus the receipt naming the withheld contract prose
+#      5,137  source-current support index: the family block once, the ranked
+#              head of two of ten supports, and the omission receipt
+#     ------
+#     23,843  measured total
+#
+# Every arrangement that fits 20,480 has to delete something the bounded-surface
+# discipline keeps: with the navigation block the support index has to lose its
+# boundary paragraph, its omitted-declaration names *and* its ranked head; drop
+# the navigation block entirely and the head still has to go to zero. A head of
+# zero is a pointer, not a bounded surface. So this surface gets its own named
+# ceiling rather than a hollowed-out packet.
+#
+# 26,624 leaves 2,781 bytes of headroom. That is one more systems handoff --
+# measured at 2,852 bytes for the one that exists, and the only growth axis the
+# protocol leaves open, since protocol_errors() freezes the mathematical
+# handoffs at five and the support head is capped by COMPACT_SUPPORT_HEAD. It
+# still fails on a runaway projection: the pre-densification packet was 4.4x
+# this ceiling.
+EXPERT_HANDOFF_INDEX_BUDGET_BYTES = 26_624
 # The publication architecture is the one intentionally portfolio-wide
 # packet: it carries one route-memory row for every selected family, while
 # ordinary detail packets remain under the fixed agent budget above. Keep a
@@ -1439,7 +1475,10 @@ def collect_agent_packets() -> dict[str, Any]:
         ),
     )
     expert_questions = semantic_query_packet("expert-questions")
-    expert_handoffs = expert_handoff_packet()
+    expert_handoffs = expert_handoff_packet(
+        budget_bytes=EXPERT_HANDOFF_INDEX_BUDGET_BYTES
+    )
+    handoff_support_index = expert_handoffs["source_current_support_index"]
     mathematical_question_ids = [
         row["id"] for row in expert_questions["results"]
     ]
@@ -1455,8 +1494,11 @@ def collect_agent_packets() -> dict[str, Any]:
         "sources": {},
         "modules": {},
         "sigil_modules": {},
+        # --tour renders a human card by default, like --papers; the routes
+        # around it default to JSON. Ask for it explicitly rather than reading
+        # a reading card as a packet.
         "agent_tour": query_packet(
-            "--tour", budget_bytes=AGENT_TOUR_BUDGET_BYTES
+            "--tour", "--format", "json", budget_bytes=AGENT_TOUR_BUDGET_BYTES
         ),
         "semantic_dictionary": query_packet("--vocabulary"),
         "problem_registry": semantic_query_packet("problem-registry"),
@@ -1527,6 +1569,13 @@ def collect_agent_packets() -> dict[str, Any]:
         "expert_handoff_protocol_check": check_expert_handoff_protocol(),
         "expert_handoff_review_template": expert_handoff_packet(
             "--review-template", SYSTEMS_EXPERT_QUESTION_ID
+        ),
+        # The bounded support index withholds source-current declarations
+        # behind a named claim drilldown. Walk that command from the cold
+        # clone so the receipt is checked against a real reply, not its own
+        # promise.
+        "expert_handoff_support_claim": query_packet(
+            "--claim", handoff_support_index["family_id"]
         ),
     }
     for row in summary["remaining_open_propositions"]:
@@ -1713,6 +1762,225 @@ def validate_bounded_ranked_signal(
             f"{row['source_declaration']} through the receipt's declaration "
             "drilldown",
         )
+
+
+def full_source_current_supports(question_id: str) -> list[dict[str, Any]]:
+    """Return every source-current support the handoff authority carries."""
+    row = next(
+        candidate
+        for candidate in query_expert_handoffs.all_questions()
+        if candidate["id"] == question_id
+    )
+    return query_expert_handoffs.source_current_supports(row)
+
+
+def validate_bounded_expert_handoff_supports(packets: dict[str, Any]) -> None:
+    """Keep the handoff support enumeration a bounded head with a live tail.
+
+    ``source_current_supports`` grows with its family and repeats seven
+    family-level fields -- one of them a boundary paragraph carried under two
+    names -- on every element, so emitting it inside every matching question
+    turned a fixed index cost into a function of the family's size. The head
+    must stay capped and must be the contiguous top of the source order, the
+    hoisted fields must really be family-level, the receipt must count and name
+    exactly what was withheld, and every withheld support must still resolve
+    through the commands the receipt itself names.
+    """
+    index_packet = packets["expert_handoffs"]
+    block = index_packet["source_current_support_index"]
+    receipt = block["bounded_support_omission_receipt"]
+    head = block["ranked_head"]
+    question_ids = block["applies_to_questions"]
+
+    carriers = [
+        row["id"]
+        for row in index_packet["results"]
+        if full_source_current_supports(row["id"])
+    ]
+    require(
+        question_ids == carriers,
+        f"the support index claims to serve {question_ids}, but the index rows "
+        f"carrying source-current supports are {carriers}",
+    )
+    full = full_source_current_supports(question_ids[0])
+    for question_id in question_ids[1:]:
+        require(
+            full_source_current_supports(question_id) == full,
+            f"handoff {question_id} resolves different source-current supports "
+            f"from {question_ids[0]}; one shared block would be a false merge",
+        )
+
+    limit = receipt["support_head_limit"]
+    require(
+        limit == query_expert_handoffs.COMPACT_SUPPORT_HEAD,
+        f"support receipt reports head limit {limit}, but the query emits "
+        f"{query_expert_handoffs.COMPACT_SUPPORT_HEAD}",
+    )
+    require(
+        len(head) == min(limit, len(full)),
+        f"bounded support index carries {len(head)} ranked rows; expected "
+        f"{min(limit, len(full))} (head limit {limit}, {len(full)} supports)",
+    )
+    require(
+        [row["rank"] for row in head] == list(range(1, len(head) + 1)),
+        "bounded support head is not the contiguous top of the source order: "
+        f"{[row['rank'] for row in head]}",
+    )
+    require(
+        [row["source_declaration"] for row in head]
+        == [row["source_declaration"] for row in full[: len(head)]],
+        "bounded support head is not the top of the source order it claims: "
+        f"{[row['source_declaration'] for row in head]}",
+    )
+    require(
+        receipt["support_count"] == len(full),
+        f"support receipt claims {receipt['support_count']} supports, but the "
+        f"handoff authority carries {len(full)}",
+    )
+    omitted = full[len(head):]
+    require(
+        receipt["omitted_support_count"] == len(omitted),
+        f"support receipt claims {receipt['omitted_support_count']} omitted "
+        f"supports, but {len(omitted)} were withheld",
+    )
+    require(
+        receipt["omitted_source_declarations"]
+        == [row["source_declaration"] for row in omitted],
+        "support receipt does not name the withheld declarations it withheld",
+    )
+    require(
+        receipt["omitted_relation_counts"]
+        == dict(sorted(Counter(row["relation"] for row in omitted).items())),
+        "support receipt miscounts the evidence relations it withheld: "
+        f"{receipt['omitted_relation_counts']}",
+    )
+
+    # The hoisted fields are the reason the block is affordable at all. They
+    # are only honest to hoist while every support really does agree on them.
+    for field in receipt["hoisted_family_fields"]:
+        require(
+            all(row[field] == full[0][field] for row in full),
+            f"support receipt hoists {field!r} as family-level, but the "
+            "supports disagree on it",
+        )
+        require(
+            all(field not in row for row in head),
+            f"support receipt hoists {field!r} out of the rows, but the ranked "
+            "head still carries it",
+        )
+    aliases = receipt["family_boundary_aliases"]
+    require(
+        len(aliases) > 1,
+        "support receipt should record every alias of the hoisted boundary",
+    )
+    require(
+        all(
+            row[alias] == block["family_boundary"]
+            for row in full
+            for alias in aliases
+        ),
+        "the hoisted family boundary is not the paragraph the supports carry "
+        f"under {aliases}",
+    )
+
+    # Every withheld support must resolve through a command the receipt names.
+    require(
+        receipt["question_drilldown"]
+        == (
+            "python3 scripts/query_expert_handoffs.py --question "
+            f"{question_ids[0]}"
+        ),
+        "support receipt does not name the per-question drilldown: "
+        f"{receipt['question_drilldown']}",
+    )
+    detail = packets["expert_handoff_details"][question_ids[0]]
+    detail_head = detail["source_current_support_index"]["ranked_head"]
+    require(
+        [row["source_declaration"] for row in detail_head]
+        == [row["source_declaration"] for row in full],
+        "the receipt's question drilldown does not return the complete support "
+        "list it promises",
+    )
+    require(
+        receipt["claim_drilldown"] == query_expert_handoffs.SUPPORT_CLAIM_DRILLDOWN,
+        f"support receipt names an unexpected claim drilldown: "
+        f"{receipt['claim_drilldown']}",
+    )
+    claim_declarations = {
+        declaration["name"]
+        for declaration in packets["expert_handoff_support_claim"]["claim"][
+            "declarations"
+        ]
+    }
+    for row in omitted:
+        name = row["source_declaration"].rsplit(".", 1)[-1]
+        require(
+            name in claim_declarations,
+            f"withheld support {row['source_declaration']} is unreachable "
+            f"through the receipt's own drilldown, {receipt['claim_drilldown']}",
+        )
+
+
+def validate_bounded_expert_handoff_navigation(packets: dict[str, Any]) -> None:
+    """Keep the per-problem navigation block one honest block per problem."""
+    index_packet = packets["expert_handoffs"]
+    navigation = index_packet["problem_navigation"]
+    receipt = navigation["bounded_navigation_omission_receipt"]
+    problems = navigation["problems"]
+    expected = sorted({
+        str(row["problem"])
+        for row in index_packet["results"]
+        if row["domain"] == "mathematics"
+    })
+    require(
+        sorted(problems) == expected,
+        f"navigation carries problems {sorted(problems)}, but the index rows "
+        f"select {expected}",
+    )
+    withheld = set(receipt["omitted_fields"])
+    require(withheld, "bounded navigation must name the fields it withheld")
+    for problem, entry in problems.items():
+        detail_question = next(
+            row["id"]
+            for row in index_packet["results"]
+            if str(row.get("problem")) == problem
+            and row["domain"] == "mathematics"
+        )
+        detail = packets["expert_handoff_details"][detail_question][
+            "problem_navigation"
+        ]["problems"][problem]
+        for block_name, bounded_block in entry.items():
+            complete = detail[block_name]
+            for field, value in bounded_block.items():
+                if field == "paper_source":
+                    for nested, nested_value in value.items():
+                        require(
+                            complete["paper_source"][nested] == nested_value,
+                            f"bounded navigation altered {block_name}."
+                            f"paper_source.{nested} for problem {problem}",
+                        )
+                    for nested in complete["paper_source"]:
+                        if nested in value:
+                            continue
+                        require(
+                            f"{block_name}.paper_source.{nested}" in withheld,
+                            f"{block_name}.paper_source.{nested} was withheld "
+                            "from the index without a receipt entry",
+                        )
+                    continue
+                require(
+                    complete[field] == value,
+                    f"bounded navigation altered {block_name}.{field} for "
+                    f"problem {problem}",
+                )
+            for field in complete:
+                if field in bounded_block:
+                    continue
+                require(
+                    f"{block_name}.{field}" in withheld,
+                    f"{block_name}.{field} was withheld from the index without "
+                    "a receipt entry",
+                )
 
 
 def validate_agent_packets(packets: dict[str, Any]) -> None:
@@ -2341,7 +2609,14 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         "mathematics": 5,
         "systems": 1,
     }, "cold-clone comprehension invariant")
-    require(encoded_bytes(expert_handoffs) <= PACKET_BUDGET_BYTES, "cold-clone comprehension invariant")
+    require(
+        encoded_bytes(expert_handoffs) <= EXPERT_HANDOFF_INDEX_BUDGET_BYTES,
+        f"expert-handoff index encodes {encoded_bytes(expert_handoffs)} bytes, "
+        f"over the {EXPERT_HANDOFF_INDEX_BUDGET_BYTES}-byte chooser budget; "
+        "densify a per-family or per-row enumeration rather than raising it",
+    )
+    validate_bounded_expert_handoff_supports(packets)
+    validate_bounded_expert_handoff_navigation(packets)
     handoff_index_by_id = {
         row["id"]: row for row in expert_handoffs["results"]
     }
