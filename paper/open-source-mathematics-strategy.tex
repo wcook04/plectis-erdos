@@ -102,6 +102,16 @@ result, and preserving the exact statement that remains open.  A solution is
 one possible output of this process.  The cumulative record is the output that
 can be produced on every serious run.
 
+Each problem is therefore treated as a continuous goal rather than a sequence
+of blank-slate prompts.  The endpoint persists while the frontier changes.  A
+new agent run starts from the accumulated theorems, computations,
+counterexamples, failed mechanisms, citations, and open obligations; chooses a
+direct mathematical transition worth attempting; and returns an inspectable
+delta plus the boundary that survived.  It may hand back a theorem, a narrower
+reduction, a killed route, a source correction, or a better next question.
+When the endpoint remains open, that is not a failed run.  Losing the state and
+paying to rediscover it would be.
+
 This is not a proposal to place a public queue in front of a private machine.
 The public clone must stand on its own.  The larger private workbench explains
 how the initial corpus was produced, but it grants no proof or publication
@@ -561,6 +571,17 @@ formal publication decisions remain separate judgements.  A role ledger is
 more honest than either a winner-takes-all solver credit or a pseudonymous
 collective record when the project can preserve exact provenance.
 
+The same rule applies when a local result is carried into a broader library.
+The ledger should distinguish the person or run that produced the local
+observation from the expert who recognised its natural generality, reconciled
+it with prior art, designed the library interface, rewrote or formalised the
+proof, and stewarded review.  If that expert turns a problem-specific result
+into a Mathlib-quality contribution, the project does not demand ownership of
+the resulting pull request or paper.  It asks for a reasonable provenance
+link back to the route from which the idea arose, while crediting the expert
+fully for the mathematical judgement and upstream work they actually
+performed.  Provenance is not a device for seizing authorship in arrears.
+
 This policy is deliberately generous because attribution is part of the
 growth strategy.  A stranger needs a reason to spend thought or compute on a
 project whose open problems remain unsolved.  Durable, inspectable credit for
@@ -805,11 +826,14 @@ case, an explicit protocol, and falsifiable measures for a later study.
 
 \section{Learning from every run}\label{sec:learning}
 
-The research memory has two levels.  Problem-local memory records the exact
+The research memory has three levels.  Problem-local memory records the exact
 objects that change the mathematical search: proved lemmas, counterexamples,
-finite data, failed mechanisms, and unresolved obligations.  General process
-memory records lessons that transfer: a navigation failure, an experiment
-pattern, a formalisation pitfall, a validation gap, or a review rule.
+finite data, failed mechanisms, and unresolved obligations.  Reusable
+mathematical memory records results that have survived a separate
+generalisation and integration pass.  General process memory records lessons
+that transfer: a navigation failure, an experiment pattern, a formalisation
+pitfall, a validation gap, or a review rule.  A local theorem does not enter
+the second level merely because its variables have been renamed.
 
 A continuous mining run should execute a visible loop:
 
@@ -842,6 +866,76 @@ survives review, it may improve a general skill or route.  Computational
 reasoning can likewise become a specialised skill with reusable experiment
 forms, but every new experiment still records its finite domain and
 interpretation.
+
+\subsection{The local-to-general track}\label{sec:local-to-general}
+\papersectiontarget{strategy-local-to-general}
+
+Hard problems are useful partly because they generate mathematical by-products
+under sustained pressure.  A partial theorem that does not solve its parent
+problem may still deserve a life outside it.  The proposed digestion route is:
+
+\begin{enumerate}
+\item identify the exact local result and retain its problem-specific proof and
+      provenance;
+\item separate the hypotheses genuinely used from the coordinates and names of
+      the motivating problem;
+\item search the literature and the target library for an existing theorem,
+      collision, preferred abstraction, and likely downstream consumers;
+\item state the natural general result, with the local theorem exhibited as a
+      transparent special case rather than hidden by the abstraction;
+\item falsify proposed weakenings, check the general proof independently, and
+      test at least one other real use; and
+\item ask a qualified mathematician and Lean contributor to decide whether the
+      result is important, well-shaped, documented, maintainable, and ready for
+      an upstream discussion.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=6mm and 9mm,
+  box/.style={draw,rounded corners=2pt,align=center,inner sep=5pt,
+              text width=35mm,font=\footnotesize},
+  gate/.style={box,fill=black!4,text width=39mm},
+  arr/.style={-{Latex[length=2mm]},thick}
+]
+\node[box] (world) {hard problem world\\local proof, no-go, or computation};
+\node[gate,right=of world] (digest) {digestion gate\\hypotheses, prior art, falsifiers};
+\node[box,right=of digest] (generic) {reusable candidate\\general theorem, API, consumers};
+\node[gate,below=of generic] (expert) {expert stewardship\\meaning, fit, maintenance, credit};
+\node[box,left=of expert] (library) {shared library\\feeds later worlds, or records why not};
+\draw[arr] (world) -- (digest);
+\draw[arr] (digest) -- (generic);
+\draw[arr] (generic) -- (expert);
+\draw[arr] (expert) -- (library);
+\end{tikzpicture}
+\caption{A local result becomes reusable only through a second mathematical
+and social gate.  Formal correctness is necessary where Lean applies, but it
+does not decide generality, library fit, or stewardship.}
+\label{fig:local-to-general}
+\end{figure}
+
+Mathlib is the clearest external model for the final stage, and also a warning
+against automating it badly.  Its contribution guide welcomes useful
+contributions and supplies a public fork-and-pull-request route; it does not
+reserve contribution to people with institutional credentials.  It also sets
+high standards for generality, integration, maintainability, style, and
+documentation, and its current AI policy rejects low-quality unsupervised
+agent submissions while requiring AI use to be disclosed \cite{mathlib}.
+Accordingly, this project should never direct a compute donor to spray raw
+agent lemmas into Mathlib.  A subject and Lean expert must take custody of a
+candidate, understand it, decide whether it belongs, bring it to community
+standards, and own the discussion.  The public contribution is then theirs in
+the roles they performed; the originating problem route remains a provenance
+fact, not a competing claim of ownership.
+
+The present prototype does not automate this track and reports no Mathlib
+contribution produced by it.  It can preserve local evidence and provenance,
+and it can help prepare a candidate.  Canonical status and upstream acceptance
+remain external outcomes.  The
+\papersectionlink{claim-faithful-publication-systems-paper.pdf}%
+{systems-mathloop}{systems paper's mathematical loop} describes the authority
+separation underneath this handoff.
 
 This produces a graph that is richer than a theorem library.  Nodes may be
 endpoints, conjectures, representations, computations, proofs,

@@ -357,6 +357,16 @@ an agent to mutate indefinitely without a new receipt.
 
 \subsection{What continuous mathematical work looks like}
 
+A continuous goal is not a request to repeat the same prompt forever. It is a
+durable research object with a fixed ultimate question, a mutable frontier,
+and an explicit claim ceiling. Each new run resumes from the latest accepted
+state: the sources already read, the routes already killed, the computations
+already interpreted, the formal obligations still open, and the precise
+statement that remains unproved. The agent then selects the highest-value
+available transition in that state. It may close a lemma, produce a
+counterexample, sharpen a reduction, repair a source claim, or expose a
+smaller obstruction. Merely producing more activity is not a transition.
+
 A representative internal trace makes this less abstract. Over fifteen
 successive turns, one problem-directed run recorded 313 visible progress
 updates and 3,491 command events, with linked workers exploring separate
@@ -384,9 +394,15 @@ control shape actually used: search and validation interleave; failed routes
 remain informative; concurrency is conditional on separable work; and every
 claimed advance must eventually cross from a narrative of activity into an
 authority-bearing artefact and receipt. The design aim is continuous
-mathematical pressure with discrete, inspectable commitments.
+mathematical pressure with discrete, inspectable commitments. A run may stop
+because the next step needs an unavailable validator, a human decision, or a
+new idea. It must then preserve a useful re-entry point rather than manufacture
+busywork or quietly weaken the endpoint. Long-running computation is likewise
+not a reason to poll idly when an independent proof, source, exposition, or
+adversarial lane remains safe to advance.
 
 \section{The mathematical reasoning loop}\label{sec:mathloop}
+\papersectiontarget{systems-mathloop}
 
 The mathematical lane begins before Lean. A problem is first stated in ordinary
 mathematical language, with its known status and source. Candidate mechanisms
@@ -454,6 +470,42 @@ record, locator, and public citation preserve the original authorship and
 claim scope while Lean checks only the new formal statement. Thus the cycle
 is: ground sources, navigate, compute, conjecture, formalise, interpret,
 publish, and return the enlarged graph to the next iteration.
+
+\subsection{From local progress to reusable mathematics}
+
+Problem-sized worlds are deliberately local, but their useful by-products
+need not remain local. A lemma discovered while attacking one Erd\H{o}s problem
+may encode a comparison principle, finite combinatorial device, analytic
+estimate, or Lean interface that belongs in a wider mathematical library. The
+system therefore distinguishes \emph{process up-propagation}---a lesson that
+improves how later agents work---from \emph{mathematical
+canonicalisation}---the conversion of a local result into a reusable theorem.
+
+Canonicalisation is a second research act, not a change of filename. It asks
+which hypotheses the proof really uses, removes problem-specific coordinates,
+searches for prior art and existing library interfaces, and states a natural
+general theorem for which the motivating local result is an explicit
+specialisation. The candidate is then attacked again: dropped hypotheses need
+counterexample tests, the general proof needs its own exact check, and at least
+one genuine additional consumer or explanatory use should be identified.
+Broader syntax without broader mathematical use is not yet a canonical
+result.
+
+This yields three statuses that must not be collapsed: checked inside one
+problem world; proposed as reusable mathematics; and suitable for an external
+shared library. The present system can preserve the first, help construct and
+test the second, and prepare evidence for the third. It cannot grant the third
+status to itself. Mathlib is open to new contributors, but its current guide
+sets high standards for generality, integration, maintainability, style,
+documentation, and responsible disclosed use of AI \cite{mathlib}. A subject
+and Lean expert must decide whether a candidate belongs there, reshape and
+review it as needed, and take responsibility for any upstream discussion or
+pull request. The originating route should remain visible in provenance; the
+expert should receive explicit credit for the generalisation, library design,
+formalisation, review, and stewardship actually supplied. The
+\papersectionlink{open-source-mathematics-strategy.pdf}%
+{strategy-local-to-general}{open-source strategy} gives the corresponding
+participation and credit protocol.
 
 \subsection{Problem-sized Lean worlds and bounded theorem neighbourhoods}
 
@@ -1133,6 +1185,9 @@ development of mutation testing}, IEEE Transactions on Software Engineering
 Notation Community Standard, Version 3}, SCSC-141C, May 2021.
 \bibitem{taoai} T.~Tao, \emph{Mathematics in the age of AI}, preprint, 2026,
 \href{https://doi.org/10.48550/arXiv.2608.16753}{arXiv}.
+\bibitem{mathlib} Lean community, \emph{Contributing to mathlib},
+\href{https://leanprover-community.github.io/contribute/index.html}%
+{contributor guide}, accessed August 2026.
 \bibitem{leandojo} K.~Yang et al., \emph{LeanDojo: Theorem Proving with
 Retrieval-Augmented Language Models}, NeurIPS 2023.
 \bibitem{pantograph} J.~Storrs et al., \emph{Pantograph: A Machine-to-Machine

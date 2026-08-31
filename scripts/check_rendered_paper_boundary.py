@@ -97,7 +97,7 @@ FIRST_MINUTE_CONTRACT = {
             "problem-sized lean worlds and bounded theorem neighbourhoods",
             "1,024 lean modules and 153,396 declarations",
         ),
-        (8, 9): (
+        (8, 10): (
             "comparator: an exact-statement firewall",
             "palomar: selecting what deserves review",
             "proof generation, verification, exposition, publication and community digestion",
