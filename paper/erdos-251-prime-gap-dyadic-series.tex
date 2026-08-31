@@ -138,9 +138,11 @@ unboundedness of the actual prime gaps.}{These are exact recurrence
 classifications and strategy-elimination results.  They do not prove a single
 lcm-diagonal miss or cofinal small-mismatch event for the actual prime-gap
 orbit, and Problem~\#251 remains open.}{Three Comparator packages bind the
-lcm-diagonal criterion, the quadratic polynomial-shift countermodel, and the
-signed-window plus affine/fixed-lattice circularity family.  Public Lean-source
-and portfolio registration of the last family remain separate release steps.}
+prime/prime-gap identity, the order-lattice and deciding-schedule criterion,
+the quadratic polynomial-shift countermodel, and the signed-window plus
+affine/fixed-lattice circularity family.  These four packages are registered
+in the source-current Palomar portfolio; terminal Comparator/NanoDa replay and
+public immutable source identity remain separate release steps.}
 
 \section{Introduction}\label{sec:problem}
 
@@ -554,12 +556,14 @@ $g_{n+1}-g_n=4n+10$, while $T_{N+h}-T_N$ is the difference of two even
 integer squares.  Strict growth makes the word unbounded and nonperiodic.
 \end{proof}
 
-Theorem~\ref{res:lcmdiagonal} and
-Proposition~\ref{res:polynomialcountermodel} are the exact statements exposed
-by the two existing Comparator packages.  A third package exposes
-Theorems~\ref{res:signedwindow} and~\ref{res:affinecollapse}.  The displayed
-proofs are self-contained ordinary proofs; public registration of the latter
-source-current Lean family remains pending.
+Theorems~\ref{res:infinite} and~\ref{res:lcmdiagonal}, together with the exact
+order-lattice and generic deciding-schedule refinements, are exposed by the
+prime/prime-gap identity and diagonal-criterion Comparator packages.
+Proposition~\ref{res:polynomialcountermodel} has its own package, while a
+fourth package exposes Theorems~\ref{res:signedwindow}
+and~\ref{res:affinecollapse}.  The displayed proofs are self-contained
+ordinary proofs; terminal Comparator/NanoDa replay remains a separate release
+gate.
 
 \section{Summation by parts, with the endpoint retained}\label{sec:parts}
 
