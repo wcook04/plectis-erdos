@@ -20,6 +20,9 @@ import ErdosProblems.Erdos249.RankOneSharpFloor
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Root
 import ErdosProblems.Skip.LadderT67
+import ErdosProblems.Erdos68.GapScalarNormalForm
+import ErdosProblems.Erdos68.PrimeThresholdParity
+import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
 
 /-!
 # Problem-centric Erdős research library
