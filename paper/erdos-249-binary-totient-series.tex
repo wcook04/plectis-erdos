@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{a832baef3b2db5a1120b025b42bd2b86adb7e336}
-\renewcommand{\commitshort}{a832baef3b2d}
+\renewcommand{\commit}{234347aac64e8f186ca816281f68fa9ed1365b1b}
+\renewcommand{\commitshort}{234347aac64e}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -375,12 +375,12 @@ $|q\Theta_2-p|>21q/320$.  Hence neither adding atoms nor taking positive direct
 sums can repair this rank-one approximation mechanism; signed cancellation
 and genuinely coupled higher-rank kernels remain outside the theorem.
 {\footnotesize\emph{Checked:}
-\lword{Erdos249/RankOneSharpFloor.lean}{534}{unique minimizer},
-\lword{Erdos249/RankOneSharpFloor.lean}{624}{uniform $21/320$ floor},
-\lword{Erdos249/RankOneSharpFloor.lean}{634}{$1/16$ floor},
-\lword{Erdos249/RankOneSharpFloor.lean}{645}{$1/15$ failure},
-\lword{Erdos249/RankOneSharpFloor.lean}{655}{positive direct sums},
-\lword{Erdos249/RankOneSharpFloor.lean}{693}{rational linear-form obstruction}.}
+\lword{Erdos249/RankOneSharpFloor.lean}{534}{rankOneSubrankQuotient_eq_one_five_iff}{unique minimizer},
+\lword{Erdos249/RankOneSharpFloor.lean}{624}{rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty}{uniform $21/320$ floor},
+\lword{Erdos249/RankOneSharpFloor.lean}{634}{rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen}{$1/16$ floor},
+\lword{Erdos249/RankOneSharpFloor.lean}{645}{not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen}{$1/15$ failure},
+\lword{Erdos249/RankOneSharpFloor.lean}{655}{positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty}{positive direct sums},
+\lword{Erdos249/RankOneSharpFloor.lean}{693}{primitive_form_abs_gt_twentyOne_div_threeTwenty}{rational linear-form obstruction}.}
 
 \item\label{res:index} \stag{formalised here}
 \textbf{Canonical all-base index and unique coordinates.}  For every integer
@@ -1508,10 +1508,10 @@ and $(hq,p-1,L)$ is a finite tail-difference certificate.
 \end{equivform}
 
 \noindent This is
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{3174}{CyclotomicAnchoredKillSupply}{CyclotomicAnchoredKillSupply}.
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{3231}{CyclotomicAnchoredKillSupply}{CyclotomicAnchoredKillSupply}.
 For the binary layers, clean anchors satisfying every condition before the
 certificate are already supplied, and
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{3270}{binaryCyclotomicAnchoredKillSupply_iff_irrational}{the checked equivalence}
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{3327}{binaryCyclotomicAnchoredKillSupply_iff_irrational}{the checked equivalence}
 identifies formulation~\ref{prob:cyclotomic} with irrationality of $\Stot$.
 The unknown is phase escape of the totient discrepancy modulo $2^L$, not
 large prime divisors or multiplicative order.  The checked $p=331$ instances
@@ -1519,12 +1519,12 @@ are finite models of this exact predicate; unbounded support alone does not
 imply it.
 
 The
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{1665}{exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational}{checked conditional support/period no-go}
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{1706}{exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational}{checked conditional support/period no-go}
 makes that limitation exact.  If $\Stot$ were rational, its eventual integral
 tail-period law would supply some $h>0$, while
 \lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{158}{UnboundedPrimeDivisorSupply}{unbounded prime divisors}
 would persist on the same $h$-ray for the actual binary cyclotomic layers, by
-\lword{Erdos249/CyclotomicAnchoredKill.lean}{1652}{binaryCyclotomicLayer_unboundedPrimeDivisorSupply}{the checked binary-layer theorem}.
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{1693}{binaryCyclotomicLayer_unboundedPrimeDivisorSupply}{the checked binary-layer theorem}.
 Consequently, unbounded support cannot be the missing contradiction unless an
 additional carry- or phase-escape theorem relates that support to the period
 law.  This is a necessary-state theorem under hypothetical rationality: it
@@ -1539,11 +1539,11 @@ $(td,N,td)$ is a finite tail-difference certificate?
 \end{problem}
 
 \noindent This is the depth-locked predicate
-\lword{Erdos249/PeriodMultipleEscape.lean}{367}{ApFullDepthEscape}{ApFullDepthEscape}.
+\lword{Erdos249/PeriodMultipleEscape.lean}{441}{ApFullDepthEscape}{ApFullDepthEscape}.
 It is stronger than the exact period-multiple characterisation because the
 certificate depth is forced to equal the period.  A positive answer proves
 irrationality through
-\lword{Erdos249/PeriodMultipleEscape.lean}{376}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
+\lword{Erdos249/PeriodMultipleEscape.lean}{450}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
 a negative answer eliminates this route only.
 
 \begin{problem}[first-harmonic anti-concentration on supplier fibres]
