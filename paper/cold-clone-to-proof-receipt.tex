@@ -139,44 +139,41 @@ of understanding.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  wide/.style={draw=gray!55, rounded corners=3pt, align=left, inner sep=7pt,
-    text width=10.65cm, fill=white},
-  branch/.style={wide, text width=4.82cm, minimum height=3.35cm},
-  arr/.style={-{Stealth[length=2.2mm]}, semithick, draw=gray!70!black},
-  note/.style={font=\scriptsize\sffamily, text=gray!72!black, fill=white,
-    inner sep=1.5pt},
-  kicker/.style={font=\scriptsize\sffamily\bfseries, text=gray!68!black}
+  wide/.style={paper box, text width=10.7cm},
+  branch/.style={paper box, text width=4.75cm, minimum height=2.6cm},
+  arr/.style={paper arrow},
+  note/.style={paper label}
 ]
 \node[wide, fill=MidnightBlue!5] (atlas) at (0,0)
-  {{\scriptsize\sffamily\bfseries\color{gray!68!black} SOURCE INVENTORY}\\[2pt]
-   \textbf{Exhaustive declaration atlas}\hfill
-   \textcolor{MidnightBlue!85}{\small\textbf{1,019 modules \(\cdot\) 153,253 declarations}}\\[2pt]
-   \footnotesize Source coordinates, declaration kinds, module roles, and a route
-   for every live declaration; 503 modules are generated certificate shards.};
-\node[branch, fill=TealBlue!5, below left=12mm and -5.34cm of atlas.south] (dep)
-  {{\scriptsize\sffamily\bfseries\color{gray!68!black} FORMAL STRUCTURE}\\[2pt]
-   \textbf{Loaded-root dependency index}\\[2pt]
-   \textcolor{TealBlue!75!black}{\textbf{Exact reference edges, joined to source}}\\[3pt]
-   \footnotesize Type and value references with source coordinates. Unresolved
-   atlas rows and edge pairs are reported, never treated as independence.};
-\node[branch, fill=BurntOrange!6, below right=12mm and -5.34cm of atlas.south] (semantic)
-  {{\scriptsize\sffamily\bfseries\color{gray!68!black} AUTHORED MEANING}\\[2pt]
-   \textbf{Tiered semantic graph}\\[2pt]
-   \textcolor{BurntOrange!80!black}{\textbf{\SemanticAuthoredTheoremLike/\SemanticAuthoredTheoremLike\ theorem-like links}}\\[3pt]
-   \footnotesize \SemanticAuthoredInterpreted\ authored interpretations:
-   \SemanticDirectEvidence\ direct evidence and \SemanticContextual\ bounded
-   family context. \SemanticStructuralOnly\ remain exact source-structural
-   families only.};
-\node[wide, fill=ForestGreen!6, below=12mm of $(dep.south)!0.5!(semantic.south)$] (claims)
-  {{\scriptsize\sffamily\bfseries\color{gray!68!black} PUBLICATION SURFACE}\\[2pt]
-   \textbf{Reviewed public claim map}\hfill
-   \textcolor{ForestGreen!70!black}{\footnotesize\textbf{101 claims; 10 programmes; 5 open propositions}}\\[2pt]
-   \footnotesize Public wording, status, evidence, claim ceiling, and the
-   stronger adjacent statement.};
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} SOURCE INVENTORY}\\[3pt]
+   {\large\textbf{Exhaustive declaration atlas}}\hfill
+   {\small\bfseries\color{MidnightBlue!85}1,019 modules \(\cdot\) 153,253 declarations}\\[3pt]
+   \footnotesize Every live declaration has source coordinates, a kind, a
+   module role, and a route.};
+\node[branch, fill=BurntOrange!6, below=11mm of atlas, xshift=-2.82cm] (semantic)
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} AUTHORED MEANING}\\[3pt]
+   {\normalsize\textbf{Tiered semantic graph}}\\[4pt]
+   {\small\bfseries\color{BurntOrange!80!black}\SemanticAuthoredTheoremLike\ linked theorem-like declarations}\\[4pt]
+   \footnotesize Authored interpretations are distinguished from exact
+   source-structural families.};
+\node[branch, fill=TealBlue!5, below=11mm of atlas, xshift=2.82cm] (dep)
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} FORMAL STRUCTURE}\\[3pt]
+   {\normalsize\textbf{Loaded-root dependency index}}\\[4pt]
+   {\small\bfseries\color{TealBlue!72!black}exact reference edges}\\[4pt]
+   \footnotesize Type and value references are joined to source; unresolved
+   rows remain explicit.};
+\node[wide, fill=ForestGreen!6, below=11mm of $(semantic.south)!0.5!(dep.south)$] (claims)
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} PUBLICATION SURFACE}\\[3pt]
+   {\large\textbf{Reviewed public claim map}}\hfill
+   {\small\bfseries\color{ForestGreen!68!black}101 claims \(\cdot\) 5 open propositions}\\[3pt]
+   \footnotesize Public wording records status, evidence, the claim ceiling,
+   and the nearest stronger statement.};
 \coordinate (fork) at ($(atlas.south)+(0,-4mm)$);
-\draw[arr] (atlas.south) -- (fork) -| node[note,pos=.72] {formal slice} (dep.north);
-\draw[arr] (fork) -| node[note,pos=.72] {authored selection} (semantic.north);
-\draw[arr] (semantic.south) |- node[note,pos=.42] {reviewed selection} (claims.north);
+\draw[arr] (atlas.south) -- (fork) -| node[note,pos=.72] {authored selection} (semantic.north);
+\draw[arr] (fork) -| node[note,pos=.72] {formal slice} (dep.north);
+\draw[arr] (semantic.south) -- ++(0,-5mm) -|
+  node[note,pos=.28] {reviewed selection} ([xshift=-2.4cm]claims.north);
+\draw[arr] (dep.south) -- ++(0,-5mm) -| ([xshift=2.4cm]claims.north);
 \end{tikzpicture}
 \caption{The navigation layers. The dependency index and semantic graph are
 different partial views of the exhaustive atlas; neither is presented as a
@@ -277,38 +274,36 @@ closes a goal, or that an English interpretation is mathematically faithful.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  stagebox/.style={draw, rounded corners=3pt, align=center, text width=1.86cm,
-    minimum height=1.36cm, fill=white, inner sep=5pt},
+  stagebox/.style={paper stage, text width=1.88cm},
   exact/.style={stagebox, draw=ForestGreen!70!black, fill=ForestGreen!6},
   nav/.style={stagebox, draw=MidnightBlue!75, fill=MidnightBlue!5},
-  arr/.style={-{Stealth[length=2.2mm]}, semithick, draw=gray!78!black},
-  step/.style={font=\tiny\sffamily\bfseries, text=gray!70!black},
+  arr/.style={paper arrow},
   phase/.style={draw, rounded corners=2pt, inner sep=3pt,
     font=\scriptsize\sffamily\bfseries}
 ]
 \node[nav] (clone)
-  {{\tiny\sffamily\bfseries\color{gray!70!black} 1 · CLONE}\\[3pt]
-   \small cold clone\\[-1pt]\footnotesize committed projections};
-\node[nav, right=3.5mm of clone] (tour)
-  {{\tiny\sffamily\bfseries\color{gray!70!black} 2 · ROUTE}\\[3pt]
-   \small bounded tour\\[-1pt]\footnotesize intent route};
-\node[nav, right=3.5mm of tour] (cone)
-  {{\tiny\sffamily\bfseries\color{gray!70!black} 3 · FOCUS}\\[3pt]
-   \small declaration\\[-1pt]\footnotesize proof cone};
-\node[exact, right=3.5mm of cone] (probe)
-  {{\tiny\sffamily\bfseries\color{gray!70!black} 4 · VERIFY}\\[3pt]
-   \small stored Lean probe\\[-1pt]\footnotesize kernel verdict};
-\node[exact, right=3.5mm of probe] (claim)
-  {{\tiny\sffamily\bfseries\color{gray!70!black} 5 · BIND}\\[3pt]
-   \small cited claim\\[-1pt]\footnotesize replay receipt};
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 1 \; CLONE}\\[4pt]
+   \textbf{Cold clone}\\[2pt]\footnotesize committed projections};
+\node[nav, right=4mm of clone] (tour)
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 2 \; ROUTE}\\[4pt]
+   \textbf{Bounded tour}\\[2pt]\footnotesize intent and scope};
+\node[nav, right=4mm of tour] (cone)
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 3 \; FOCUS}\\[4pt]
+   \textbf{Proof cone}\\[2pt]\footnotesize exact declaration};
+\node[exact, right=4mm of cone] (probe)
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 4 \; VERIFY}\\[4pt]
+   \textbf{Lean probe}\\[2pt]\footnotesize kernel verdict};
+\node[exact, right=4mm of probe] (claim)
+  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 5 \; BIND}\\[4pt]
+   \textbf{Cited claim}\\[2pt]\footnotesize replay receipt};
 \draw[arr] (clone) -- (tour);
 \draw[arr] (tour) -- (cone);
 \draw[arr] (cone) -- (probe);
 \draw[arr] (probe) -- (claim);
-\draw[densely dashed, gray!70] ($(cone.east)!0.5!(probe.west)+(0,-11mm)$) --
+\draw[paper boundary] ($(cone.east)!0.5!(probe.west)+(0,-12mm)$) --
   ($(cone.east)!0.5!(probe.west)+(0,13mm)$);
 \node[font=\scriptsize\sffamily\bfseries, text=gray!70!black,
-  above=9mm of $(cone.east)!0.5!(probe.west)$] {AUTHORITY BOUNDARY};
+  above=14mm of $(cone.east)!0.5!(probe.west)$] {AUTHORITY BOUNDARY};
 \node[phase, draw=MidnightBlue!35, fill=MidnightBlue!4,
   below=5mm of $(clone.south)!0.5!(cone.south)$]
   {NAVIGATION \(\cdot\) fast, bounded, advisory};

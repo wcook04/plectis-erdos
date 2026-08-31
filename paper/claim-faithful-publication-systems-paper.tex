@@ -194,37 +194,41 @@ external review route cannot alter what Lean checked.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  box/.style={draw=gray!58, rounded corners=3pt, align=center, fill=white,
-    text width=2.15cm, minimum height=1.28cm, inner sep=5pt},
+  box/.style={paper stage, text width=2.05cm},
   private/.style={box, fill=MidnightBlue!5, draw=MidnightBlue!55},
   formal/.style={box, fill=TealBlue!6, draw=TealBlue!60!black},
   public/.style={box, fill=ForestGreen!6, draw=ForestGreen!55!black},
   assure/.style={box, fill=BurntOrange!7, draw=BurntOrange!65!black},
-  arr/.style={-{Stealth[length=2.2mm]}, semithick, draw=gray!78!black},
-  back/.style={-{Stealth[length=2.2mm]}, densely dashed, draw=Violet!75!black},
-  lab/.style={font=\tiny\sffamily\bfseries, text=gray!70!black}
+  arr/.style={paper arrow},
+  back/.style={paper feedback},
+  lab/.style={font=\scriptsize\sffamily\bfseries, text=gray!70!black}
 ]
-\node[private] (intent) at (0,0) {\textbf{Intent and route}\\[-1pt]\scriptsize question, scope, work claim};
-\node[private, right=4mm of intent] (reason) {\textbf{Reason and test}\\[-1pt]\scriptsize candidates, experiments, dead ends};
-\node[formal, right=4mm of reason] (lean) {\textbf{Formalise}\\[-1pt]\scriptsize statement, proof, kernel check};
-\node[public, right=4mm of lean] (claim) {\textbf{Explain}\\[-1pt]\scriptsize graph, claim, paper, limits};
-\node[assure, right=4mm of claim] (review) {\textbf{Assure and release}\\[-1pt]\scriptsize Comparator, Palomar, checks};
+\node[private] (intent) at (0,0) {{\scriptsize\sffamily\bfseries 1 \; SELECT}\\[3pt]
+  \textbf{Intent and route}\\[2pt]\scriptsize question, scope, claim};
+\node[private, right=3.5mm of intent] (reason) {{\scriptsize\sffamily\bfseries 2 \; TEST}\\[3pt]
+  \textbf{Reason and test}\\[2pt]\scriptsize candidates and failures};
+\node[formal, right=3.5mm of reason] (lean) {{\scriptsize\sffamily\bfseries 3 \; CHECK}\\[3pt]
+  \textbf{Formalise}\\[2pt]\scriptsize proof and kernel verdict};
+\node[public, right=3.5mm of lean] (claim) {{\scriptsize\sffamily\bfseries 4 \; EXPLAIN}\\[3pt]
+  \textbf{Public claim}\\[2pt]\scriptsize result, evidence, limit};
+\node[assure, right=3.5mm of claim] (review) {{\scriptsize\sffamily\bfseries 5 \; RELEASE}\\[3pt]
+  \textbf{Assure}\\[2pt]\scriptsize replay and boundary checks};
 \draw[arr] (intent) -- (reason);
 \draw[arr] (reason) -- (lean);
 \draw[arr] (lean) -- (claim);
 \draw[arr] (claim) -- (review);
 \draw[back] (review.south) to[out=-115,in=-65,looseness=1.15]
-  node[lab, below=4pt] {review, failures, and reusable lessons return; authority does not} (reason.south);
+  node[lab, below=4pt] {failures and review return as evidence; authority stays put} (reason.south);
 \node[font=\scriptsize\sffamily\bfseries, text=MidnightBlue!75!black,
   above=5mm of $(intent.north)!0.5!(reason.north)$] {PRIVATE WORKBENCH};
 \node[font=\scriptsize\sffamily\bfseries, text=ForestGreen!62!black,
   above=5mm of $(lean.north)!0.5!(review.north)$] {SELF-CONTAINED PUBLIC ARTEFACT};
-\draw[densely dashed, gray!60] ($(reason.east)!0.5!(lean.west)+(0,-8mm)$) --
+\draw[paper boundary] ($(reason.east)!0.5!(lean.west)+(0,-9mm)$) --
   ($(reason.east)!0.5!(lean.west)+(0,12mm)$);
 \end{tikzpicture}
-\caption{The end-to-end architecture. The dashed vertical line is a release
-boundary, not a network connection: the public repository must remain usable
-without the private workbench.}
+\caption{The end-to-end architecture. The dashed vertical line marks the
+release boundary. Everything to its right remains usable without the private
+workbench.}
 \label{fig:lifecycle}
 \end{figure}
 
@@ -249,17 +253,23 @@ research path.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  job/.style={draw=gray!58, rounded corners=2.5pt, align=center, fill=white,
-    text width=2.35cm, minimum height=1.02cm, inner sep=4pt},
-  arr/.style={-{Stealth[length=2.1mm]}, semithick, draw=gray!78!black}
+  job/.style={paper stage, text width=2.35cm, minimum height=1.25cm},
+  arr/.style={paper arrow}
 ]
-\node[job] (invoke) at (0,0) {\textbf{Invoke}\\[-1pt]\scriptsize choose a bounded route};
-\node[job, right=4mm of invoke] (work) {\textbf{Work}\\[-1pt]\scriptsize continue or suspend};
-\node[job, right=4mm of work] (validate) {\textbf{Validate}\\[-1pt]\scriptsize computation or Lean};
-\node[job, right=4mm of validate] (propagate) {\textbf{Propagate}\\[-1pt]\scriptsize classify every consumer};
-\node[job, below=7mm of propagate] (package) {\textbf{Package}\\[-1pt]\scriptsize evidence and provenance};
-\node[job, left=4mm of package] (propose) {\textbf{Propose}\\[-1pt]\scriptsize pull request or issue};
-\node[job, left=4mm of propose] (adopt) {\textbf{Review and adopt}\\[-1pt]\scriptsize reconcile, accept, credit};
+\node[job, fill=MidnightBlue!5] (invoke) at (0,0)
+  {{\scriptsize\sffamily\bfseries 1}\\[2pt]\textbf{Invoke}\\[2pt]\scriptsize bounded route};
+\node[job, fill=MidnightBlue!5, right=5mm of invoke] (work)
+  {{\scriptsize\sffamily\bfseries 2}\\[2pt]\textbf{Work}\\[2pt]\scriptsize continue or suspend};
+\node[job, fill=TealBlue!5, right=5mm of work] (validate)
+  {{\scriptsize\sffamily\bfseries 3}\\[2pt]\textbf{Validate}\\[2pt]\scriptsize computation or Lean};
+\node[job, fill=TealBlue!5, right=5mm of validate] (propagate)
+  {{\scriptsize\sffamily\bfseries 4}\\[2pt]\textbf{Propagate}\\[2pt]\scriptsize classify consequences};
+\node[job, fill=ForestGreen!6, below=8mm of propagate] (package)
+  {{\scriptsize\sffamily\bfseries 5}\\[2pt]\textbf{Package}\\[2pt]\scriptsize evidence and provenance};
+\node[job, fill=ForestGreen!6, left=5mm of package] (propose)
+  {{\scriptsize\sffamily\bfseries 6}\\[2pt]\textbf{Propose}\\[2pt]\scriptsize pull request or issue};
+\node[job, fill=BurntOrange!7, left=5mm of propose] (adopt)
+  {{\scriptsize\sffamily\bfseries 7}\\[2pt]\textbf{Review and adopt}\\[2pt]\scriptsize reconcile, accept, credit};
 \draw[arr] (invoke) -- (work);
 \draw[arr] (work) -- (validate);
 \draw[arr] (validate) -- (propagate);
@@ -467,25 +477,28 @@ uses. Neither role receives the other's authority.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  role/.style={draw=gray!58, rounded corners=3pt, align=center, fill=white,
-    text width=3.05cm, minimum height=1.25cm, inner sep=5pt},
+  role/.style={paper stage, text width=3.05cm, minimum height=1.5cm},
   object/.style={role, fill=TealBlue!6, draw=TealBlue!60!black,
     text width=2.72cm},
   output/.style={role, fill=ForestGreen!6, draw=ForestGreen!55!black,
     text width=3.15cm},
-  arr/.style={-{Stealth[length=2.2mm]}, semithick, draw=gray!78!black},
-  feedback/.style={-{Stealth[length=2.2mm]}, densely dashed,
-    draw=Violet!75!black}
+  arr/.style={paper arrow},
+  feedback/.style={paper feedback}
 ]
 \node[role, fill=MidnightBlue!5, draw=MidnightBlue!55] (mine) at (0,0)
-  {\textbf{Discovery goal}\\[-1pt]\scriptsize read, compute, conjecture, prove, falsify};
+  {{\scriptsize\sffamily\bfseries DISCOVERY}\\[3pt]\textbf{Test the frontier}\\[2pt]
+   \scriptsize compute, prove, or falsify};
 \node[object, right=7mm of mine] (delta)
-  {\textbf{Landed delta}\\[-1pt]\scriptsize theorem, no-go, computation, boundary};
+  {{\scriptsize\sffamily\bfseries HANDOFF}\\[3pt]\textbf{Landed delta}\\[2pt]
+   \scriptsize theorem, no-go, computation};
 \node[role, fill=BurntOrange!7, draw=BurntOrange!65!black,
   right=7mm of delta] (steward)
-  {\textbf{Stewardship goal}\\[-1pt]\scriptsize appraise, compose, reconcile, explain};
+  {{\scriptsize\sffamily\bfseries STEWARDSHIP}\\[3pt]\textbf{Place the result}\\[2pt]
+   \scriptsize appraise, reconcile, explain};
 \node[output, below=9mm of delta] (surfaces)
-  {\textbf{Current public}\\[-1pt]\textbf{picture}\\[-1pt]\scriptsize paper order, Comparator, Palomar, frontier};
+  {{\scriptsize\sffamily\bfseries PUBLIC SURFACE}\\[3pt]
+   \textbf{Current mathematical picture}\\[2pt]
+   \scriptsize paper order, evidence, frontier};
 \draw[arr] (mine) -- (delta);
 \draw[arr] (delta) -- (steward);
 \draw[arr] (steward) -- (surfaces);

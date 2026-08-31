@@ -69,6 +69,34 @@
 \captionsetup{font=small,labelfont=bf,skip=9pt,width=.92\linewidth}
 \renewcommand{\arraystretch}{1.12}
 
+% Shared diagram grammar.  Reader-facing figures use the same restrained
+% hierarchy as the surrounding page: a short eyebrow, a substantial title,
+% one compact explanatory line, and an optional evidence badge.  The styles
+% are installed only when a manuscript loads TikZ.
+\AtBeginDocument{%
+  \@ifpackageloaded{tikz}{%
+    \tikzset{
+      paper box/.style={draw=gray!48, line width=.45pt, rounded corners=3pt,
+        fill=white, align=left, inner xsep=7pt, inner ysep=6pt,
+        font=\small},
+      paper card/.style={paper box, minimum height=13mm},
+      paper stage/.style={paper box, align=center, minimum height=14mm},
+      paper arrow/.style={-{Stealth[length=2.15mm,width=1.45mm]},
+        line width=.7pt, draw=gray!72!black},
+      paper feedback/.style={paper arrow, densely dashed,
+        draw=Violet!72!black},
+      paper eyebrow/.style={font=\scriptsize\sffamily\bfseries,
+        text=gray!70!black},
+      paper label/.style={font=\scriptsize\sffamily,
+        text=gray!72!black, fill=white, inner sep=1.5pt},
+      paper badge/.style={rounded corners=2pt, inner xsep=4pt, inner ysep=2pt,
+        font=\scriptsize\sffamily\bfseries},
+      paper boundary/.style={densely dashed, line width=.55pt,
+        draw=gray!62}
+    }%
+  }{}%
+}
+
 % Front matter: title block with an optional italic subtitle, small-caps
 % author, and a hairline rule; the abstract is set small with a small-caps
 % head and symmetric indents.
