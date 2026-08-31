@@ -1914,6 +1914,7 @@ Define $L(f) := \sum_{n\ge1} f(n)/(2^n-1)$ (level 1, no square). Writing $A := \
 \begin{longtable}{@{}l l l@{}}
 \caption{The Mersenne--Lambert ladder five-row status table (docstring @ \texttt{CertificateKernel.lean:18063--18083}, body \texttt{MersenneLambertLadder.lean}).}\\
 \toprule
+\papertablehead
 Weight $f$ & Value $L(f)$ & Status \\
 \midrule
 \endfirsthead
@@ -3466,16 +3467,19 @@ recorded against the Lean source; nothing is compressed to ``$\forall\dots$'' wh
 specifies bounds.
 
 \begingroup
-\fontsize{6}{7.2}\selectfont
+\begin{landscape}
+\fontsize{8}{9.8}\selectfont
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{p{3.2cm}p{2.7cm}p{1.1cm}p{5.8cm}p{1.4cm}}
+\begin{longtable}{@{}p{0.22\linewidth}p{0.18\linewidth}p{0.08\linewidth}p{0.34\linewidth}p{0.12\linewidth}@{}}
 \caption{The \#249 scale ladder. Every row above the rule is proved; every row below it is the
 cofinal target or a direct consumer of it.}\\
 \toprule
+\papertablehead
 \textbf{Result} & \textbf{Lean site} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate}\\
 \midrule
 \endfirsthead
 \toprule
+\papertablehead
 \textbf{Result} & \textbf{Lean site} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate}\\
 \midrule
 \endhead
@@ -3484,7 +3488,7 @@ cofinal target or a direct consumer of it.}\\
 \bottomrule
 \endlastfoot
 
-\multicolumn{5}{l}{\emph{-- \scale{uniform} (includes source-tagged \texttt{n/a} unconditional identities/converters) --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{uniform} (includes source-tagged \texttt{n/a} unconditional identities/converters) --}}\\
 totientTail well-defined & \lean{totientTail}{TotientTailPeriodKiller.lean:57} & uniform & $\forall N$ & binary-digit\\
 $2^N\!\cdot\! S$ split & \lean{two\_pow\_mul\_totient\_series\_eq}{TotientTailPeriodKiller.lean:150} & uniform & $\forall N$ & binary-digit\\
 windowDiscrepancy (def) & \lean{windowDiscrepancy}{TotientTailPeriodKiller.lean:66} & uniform & $\forall h\,\forall N\,\forall L$ & other-binary-window\\
@@ -3565,7 +3569,7 @@ signed Hankel terminal-parity engine & \lean{scaled\_dyadic\_sum\_ne\_zero}{Sign
 residual gauge obstruction (locked minors) & \lean{det\_residualMonomialMatrix}{ResidualGaugeObstruction.lean:47} & uniform & $\forall d\,\forall e{:}\mathrm{Fin}\,d{\to}\mathbb{N}\,\forall z{:}\mathrm{Fin}\,d{\to}\mathbb{C}$ ($z$ nonzero) & other-first-harmonic-phase\\
 incidence-quotient no compression & \lean{incidenceMobius\_det\_eq\_one}{IncidenceQuotientHermitePade.lean:56} & uniform & $\forall N{:}\mathbb{N}$ & mobius-mersenne\\
 
-\multicolumn{5}{l}{\emph{-- \scale{bounded} --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{bounded} --}}\\
 Farey window $K{=}240$ denominator bound & \lean{gap\_check\_window\_1\_240\_le\_79639646646701375323355774875831053}{GapFareyBound.lean:176} & bounded &
 $\forall q{:}\mathbb{N},\,0{<}q{\le}$\newline
 $79{,}639{,}646{,}646{,}701{,}$\newline
@@ -3592,7 +3596,7 @@ numerator-gap $\Rightarrow$ $\lnot$ hit (\#257-flavored) & \lean{scaleFullTarget
 periodic-weight Lambert dichotomy & \lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14175} & bounded & $\forall b{\ge}2\,\forall m{>}0\,\forall w$ ($w(n{+}m){=}w(n)$) & mobius-mersenne\\
 non-negative periodic $\Rightarrow$ irrational (unconditional) & \lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583} & bounded & $\forall b{\ge}2\,\forall m{>}0$, $w$ periodic, $\ge0$, frequently ${\ne}0$ & mobius-mersenne\\
 
-\multicolumn{5}{l}{\emph{-- \scale{fixed} --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{fixed} --}}\\
 all $h\in[1,8]$ kill certificate at depth 16, $N{=}12$ & \lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} & fixed & $\forall h\in[1,8]$, \texttt{certifiedKill}\,$h$\,12\,16 (by \texttt{decide}) & other-binary-window\\
 $h\in[1,16]$, exponent 14 kill table & \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:18890} & fixed & $\forall h\in[1,16]$, denominator exponent 14 (by \texttt{decide}) & other-binary-window\\
 rank-2 kill not shallower at $(h,N){=}(1,8)$ & \lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19090} & fixed & measured over $t{\le}20$ (30/40 cells) & other-binary-window\\
@@ -3604,10 +3608,10 @@ echo-vs-height two-front wall & prose:echo\_versus\_height\_two\_front\_wall & f
 period-4 zeroset escape witness & \lean{intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14226} & fixed & $\forall n,\,n{\equiv}3\!\!\pmod 4$ (fixed weight $w$) & mobius-mersenne\\
 
 \midrule
-\multicolumn{5}{c}{\emph{--- frontier: everything below this line is the cofinal target or a direct consumer of it ---}}\\
+\papertablehead\multicolumn{5}{c}{\emph{--- frontier: everything below this line is the cofinal target or a direct consumer of it ---}}\\
 \midrule
 
-\multicolumn{5}{l}{\emph{-- \scale{cofinal} (OPEN) --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{cofinal} (OPEN) --}}\\
 \textbf{THE WALL} — certificate supply $\Rightarrow$ Irrational $S$ & \lean{irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394} & \textbf{cofinal} & $\forall h{\ge}1\,\forall N_0{\ge}0\,\exists N{\ge}N_0\,\exists L,\ \texttt{certifiedKill}\,h\,N\,L$ & other-binary-window\\
 multiple-certificate supply (weakened) & \lean{irrational\_totient\_series\_of\_multiple\_certificate\_supply}{CarrySurvivorExtinction.lean:502} & cofinal & $\forall h_0{>}0\,\forall N_0\,\exists m{>}0\,\exists N{\ge}N_0\,\exists L$ & other-lcm-period-multiple\\
 LCM-diagonal one-parameter restatement & \lean{irrational\_totient\_series\_of\_lcm\_diagonal\_certificate\_supply}{LcmDiagonalReduction.lean:112} & cofinal & $\forall t_0\,\exists t{\ge}t_0\,\exists L$ & other-lcm-diagonal\\
@@ -3625,6 +3629,7 @@ mod-4 pulse survivor kill (fourfold reduction) & \lean{irrational\_totientSeries
 two-adic pulse at arbitrary depth $K$ & \lean{exists\_prime\_totient\_twoAdic\_pulse\_divisors}{TotientTwoAdicPulseBlock.lean:54} & cofinal & $\forall K{\ge}2\,\forall H{>}K\,\forall B\,\exists\text{cofinally many primes}\,p{>}B$ & p-adic\\
 two-adic pulse transfer (needs eventual integrality) & \lean{eventual\_integral\_tailDiff\_has\_cofinal\_twoAdic\_half\_pulse}{TotientTwoAdicPulseBlock.lean:327} & cofinal & $\forall K{\ge}2$, given TA-01 pulse $+$ eventual integrality & p-adic\\
 \end{longtable}
+\end{landscape}
 \endgroup
 
 \noindent $^\dagger$ The source normal-form table tags \texttt{actualLcmTailDiff\_shift\_pos} \scale{bounded}
@@ -5130,9 +5135,21 @@ The following additional no-gos and route-pruning results were read in full
 and are recorded here in compressed form; each follows the same (a)/(b)/(c)/(d)
 discipline as above but is presented as a table row for space.
 
-\begin{longtable}{p{0.16\linewidth}p{0.40\linewidth}p{0.36\linewidth}}
+\begin{landscape}
+\small
+\begin{longtable}{@{}p{0.20\linewidth}p{0.38\linewidth}p{0.36\linewidth}@{}}
+\toprule
+\papertablehead
 \textbf{Route} & \textbf{Mechanism \& site} & \textbf{Scope / salvage} \\
-\hline\endhead
+\midrule
+\endfirsthead
+\toprule
+\papertablehead
+\textbf{Route} & \textbf{Mechanism \& site} & \textbf{Scope / salvage} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
 Full terminal dyadic staircase (annihilate every suffix letter mod growing
 powers of 2) &
 \(a\ge8\), room bound \(\Rightarrow\) \texttt{ActualLcmTerminalDyadicStaircase}
@@ -5148,7 +5165,6 @@ the penultimate letter
 (\lean{puncturedDyadicStaircase\_penultimate\_eq\_half}{TotientActualLcmTopEdgeStaircase.lean:1187}). The
 generic mechanism (\(0<e<2^m\wedge2^m\mid e\Rightarrow e=0\)) is reusable
 anywhere a positive quantity is asked to vanish mod a wider modulus. \\
-\hline
 LCM factor-ideal retention (keep only the homogeneous ``factor-only'' part
 of an LCM-ray decomposition) &
 An explicit nonzero all-horizon countermodel, built from multiples of
@@ -5165,7 +5181,6 @@ SYNTHETIC — no claim that the compensation letters occur as actual totient
 differences. Salvage: a future factor-ideal argument must control the
 \emph{fresh} channel via
 \lean{totient\_eq\_sum\_mobiusTotientChannel}{LcmFactorIdealPulseObstruction.lean:328}, not just the old one. \\
-\hline
 Two-prime ``full-target diamond'' (four simultaneous ray hits certify more
 than one) &
 The four-hit diamond
@@ -5181,7 +5196,6 @@ The 4-condition diamond carries zero information beyond its base point — a
 positive-holonomy argument needs an independently-defined projection of the
 foreign state \emph{plus} control of the discarded complement; a bare
 2/4-point diamond cannot supply new information beyond its own scale. \\
-\hline
 Fixed-precision local valuation-unit signature (2-adic ``tropical curvature
 carry'' attack) &
 For any finite word of odd-unit-part 2-adic symbols at fixed precision
@@ -5195,7 +5209,6 @@ finite centred carry completions — no obstruction is derivable from a
 fixed-window local signature alone; growing precision, or extra arithmetic
 coupling, is required. Pure 2-adic dynamics, zero totient content, reusable
 against any similarly-shaped fixed-window carry-certificate attack. \\
-\hline
 Fixed-depth affine carry reset (distinguishing two carry histories after a
 long common tail) &
 For the affine binary orbit \(\mathrm{orbit}(0)=u_0\),
@@ -5208,7 +5221,6 @@ After \(L\) common steps the endpoint residue mod \(2^L\) is
 predecessor information exactly, not approximately. Directly relevant to any
 argument hoping to distinguish two carry histories from a shared long
 suffix; the terminal forcing word alone determines the residue. \\
-\hline
 Bounded finite-state / autonomous successor decoder for the binary carry &
 For a balanced-pulse family at location \(m\) whose predecessor \texttt{State}
 is constant across the whole family, no \(\mathrm{decode}:\mathrm{State}\to
@@ -5222,7 +5234,6 @@ exactly determines the post-\(m\) tail — independent of whether the
 coefficients are \(\varphi\) or a Möbius-support indicator. A hard stop
 against finite-automaton-computes-the-expansion style attacks on either
 problem. \\
-\hline
 Period-4 sign weight as a route to A7's ``frequently nonzero'' hypothesis for
 free &
 The divisor coefficient of the period-4 sign weight
@@ -5237,7 +5248,6 @@ nonnegative-periodic irrationality closure
 (\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583})
 is not free — it is why the corpus lands a dichotomy for general periodic
 signed weights rather than an unconditional supply theorem. \\
-\hline
 Certified finite-depth ``death'' certificates as a route to membership proofs
 (both problems) &
 \(\mathtt{CertifiedGreedyMersenneDeath}(x,\mathrm{level},\mathrm{lookahead})\)
@@ -5250,7 +5260,6 @@ Structural one-sidedness, recurring across the WHOLE certified-kill family
 certified-death \(\Rightarrow\) non-membership, but absence of a found
 certificate, or survival through any finite depth, proves \emph{nothing}
 about membership or rationality. \\
-\hline
 Reconstructing one totient value from a two-tail absolute-value linear
 combination &
 For any finite \(w:\iota\to\mathbb Q\), \(x:\iota\to\mathbb N\) with
@@ -5264,7 +5273,6 @@ kills the entire ``isolate one coefficient via absolute-value two-tail
 bookkeeping'' family before it starts. The proof mechanism is problem-agnostic
 (any \(c(n)\le n\) sequence gets the same floor by the triangle inequality)
 and transfers verbatim to a \#257 reformulation. \\
-\hline
 Homogeneous Mersenne-primitive prime factor alone forces a contradiction &
 For the completely-multiplicative control \(c(n)=n\) (zero totient content):
 if \(K<q\), \(q\mid2^K-1\), the corresponding tail shift is integral at every
@@ -5276,7 +5284,6 @@ warning: \#257's denominators \(2^n-1\) are literally this \(q\mid2^K-1\)
 object, so ``a large primitive Mersenne prime factor alone forces a
 contradiction'' should be checked against this lemma before being attempted
 on either problem. \\
-\hline
 Prime-power reduced-denominator unit-gap strengthening (rescuing extra Farey
 lattice points) &
 At a prime-power reduced denominator \(p^e\), the unit-gap refinement can
@@ -5290,7 +5297,6 @@ known dead end for extending the \(\approx7.96\times10^{34}\) Farey rung
 strengthening expecting more than +1 lattice point per prime power; the
 underlying reduced-denominator-implies-unit-numerator technique is reusable
 for other denominator-exclusion arguments. \\
-\hline
 Fixed rank-3 finite-difference kernel squeezing more than one dyadic bit of
 curvature information &
 \(\mathrm{fixedRankSecondDifference}(2^{n+1}\cdot2,\,2^{n+1}\cdot3)=-2^{n+1}\)
@@ -5307,6 +5313,7 @@ classification itself
 over \(\mathbb Z\), zero number-theoretic content) is fully reusable for any
 3-point finite-difference argument on either problem. \\
 \end{longtable}
+\end{landscape}
 
 \section{Why the bounds are load-bearing}
 \label{sec:promotion-audit}
@@ -5350,75 +5357,88 @@ are recorded honestly below rather than folded into the sixteen, because
 collapsing that distinction would itself be exactly the kind of
 quantifier-slippage error this paper's accuracy rules forbid.
 
-\begin{longtable}{p{0.10\linewidth}p{0.14\linewidth}p{0.10\linewidth}p{0.58\linewidth}}
+\begin{landscape}
+\small
+\begin{longtable}{@{}p{0.12\linewidth}p{0.18\linewidth}p{0.13\linewidth}p{0.51\linewidth}@{}}
+\toprule
+\papertablehead
 \textbf{Obligation} & \textbf{Row / site} & \textbf{Gap kind} &
 \textbf{Verdict and exact blocker} \\
-\hline\endhead
+\midrule
+\endfirsthead
+\toprule
+\papertablehead
+\textbf{Obligation} & \textbf{Row / site} & \textbf{Gap kind} &
+\textbf{Verdict and exact blocker} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
 249-supply & e1-companion,
-\lean{exists\_certifiedKill\_of\_first\_harmonic\_gap}{FirstHarmonicGap.lean:128} & hypothesis\_strength &
-NOT\_PROMOTABLE. The consumer already has the obligation's exact quantifier
+\lean{exists\_certifiedKill\_of\_first\_harmonic\_gap}{FirstHarmonicGap.lean:128} & hypothesis strength &
+Not promotable. The consumer already has the obligation's exact quantifier
 shape; the missing input is a single unproved arithmetic fact — a
 constant-saving first-harmonic (Weyl-sum) cancellation bound
 \(\sum_{N\in[X,2X)}\cos(2\pi\cdot(\ldots)/2^L)\le(9/10)X\) — not proved at
 any \(X,h,L\) anywhere in the corpus. \\
 249-supply & SGN-01,
-\lean{actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39} & hypothesis\_strength &
-NOT\_PROMOTABLE. Positivity is exactly HALF of the needed certificate: the
+\lean{actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39} & hypothesis strength &
+Not promotable. Positivity is exactly HALF of the needed certificate: the
 companion theorem in the same file proves integrality forces the residue to
 the TOP edge, not a kill — the lower half of the band is discharged
 unconditionally and cofinally, the upper half is untouched. \\
 249-supply & TE-04,
-\lean{actualLcmTailDiff\_notMem\_int\_of\_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260} & hypothesis\_strength &
-NOT\_PROMOTABLE. The consumer side is finished and cofinal (proved for
+\lean{actualLcmTailDiff\_notMem\_int\_of\_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260} & hypothesis strength &
+Not promotable. The consumer side is finished and cofinal (proved for
 every \(a\ge8\)); the residual is purely the one-sided residue-gap
 \emph{producer}, unconditionally unsupplied at even one large \(a\). \\
 249-supply & TE-05-weakest,
-\lean{PowerTwoFlexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:1908} & hypothesis\_strength &
-NOT\_PROMOTABLE. The exact identity pinning the target shows the dominance
+\lean{PowerTwoFlexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:1908} & hypothesis strength &
+Not promotable. The exact identity pinning the target shows the dominance
 inequality is equivalent to \(\mathrm{carryOrbit}\le0\), and the sign
 machinery (SGN-02) already proves the true carry orbit is strictly
 \emph{positive} under integrality — the corridor-escape branch the identity
 naturally supplies is exactly the branch already eliminated. \\
 249-supply & SEP-02,
-\lean{abs\_actualLcmTailOrbit\_sub\_rawApprox\_lt}{TotientActualLcmOrbitSeparation.lean:141} & scale\_only &
-NOT\_PROMOTABLE. The analytic tail is fully discharged with an explicit,
+\lean{abs\_actualLcmTailOrbit\_sub\_rawApprox\_lt}{TotientActualLcmOrbitSeparation.lean:141} & scale only &
+Not promotable. The analytic tail is fully discharged with an explicit,
 uniform error radius; only two exponents (\(a=4,6\)) have the resulting
 finite distance-to-integer question verified unconditionally
 (\lean{actualLcmTailOrbit\_four\_and\_six\_notMem\_int}{TotientActualLcmShortKill.lean:35}); nothing beyond
 \(a=6\) is proved. \\
 249-supply & b7,
-\lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60} & coordinate\_only &
-NOT\_PROMOTABLE. The only proved unbounded-growth quantity in the
+\lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60} & coordinate only &
+Not promotable. The only proved unbounded-growth quantity in the
 Möbius--Mersenne coordinate, uniform in \(t\), but there is no landed
 transport from a denominator lower bound to \(\mathrm{certifiedKill}\) or to
 totient-tail non-integrality — a different coordinate from the obligation. \\
 249-supply & d4/d5,
 \lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}, \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300} &
-coordinate\_only & NOT\_PROMOTABLE. The scale side of a second, independent
+coordinate only & Not promotable. The scale side of a second, independent
 open obligation (unbounded carry-kernel rank forced by rationality) is
 finished uniformly in \(e\); the opposite (rationality-side rank upper
 bound) is missing, and one natural route to it is proved dead
 (\lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}). \\
 257-reset & rc-2 / F4-adjacent,
 \lean{one\_third\_lt\_scaledMersenneTail\_floorWall}{HalfCylinderMiddleCarryLowerBound.lean:2308} & multiple &
-NOT\_PROMOTABLE. The excess-side run-length law is only half-assembled: an
+Not promotable. The excess-side run-length law is only half-assembled: an
 exact iterate identity exists, and an upper bound on the terminal excess
 exists separately, but no theorem in Lean composes the two into an
 excess-side run-length statement, even though every ingredient is present. \\
 257-reset & E1,
-\lean{SeamGreedyRemainderGapBound}{HalfCylinderSeamLimit.lean:192} & coordinate\_only &
-NOT\_PROMOTABLE. Supplies an UPPER bound on the remainder (the ceiling half
+\lean{SeamGreedyRemainderGapBound}{HalfCylinderSeamLimit.lean:192} & coordinate only &
+Not promotable. Supplies an UPPER bound on the remainder (the ceiling half
 of the picture); the obligation needs a LOWER bound on the deviation
 magnitude — the two do not compose without an additional input. \\
 257-reset & rc-8,
 prose \emph{erdos257\_reset\_crossing\_unification\_2026\_07\_24.md}\,\S6 &
-multiple & NOT\_PROMOTABLE. Two gaps at once: the sign law is
+multiple & Not promotable. Two gaps at once: the sign law is
 \ev{Cert}/empirical only (flagged \ev{Open} as an unconditional lemma, not
 proved), and even if proved it delivers only the SIGN of the deviation, not
 its magnitude, which is what the obligation needs. \\
 257-cofinal-rows & TH-sharp-capacity-progress,
-\lean{exists\_exactRowStrictUpperFill\_of\_skippedCoreSharpCapacity}{BooleanMobiusSkipRow.lean:238} & hypothesis\_strength &
-NOT\_PROMOTABLE. Unconditional and strictly more general than every actual
+\lean{exists\_exactRowStrictUpperFill\_of\_skippedCoreSharpCapacity}{BooleanMobiusSkipRow.lean:238} & hypothesis strength &
+Not promotable. Unconditional and strictly more general than every actual
 consumer, but it needs a per-\(c\) input
 (\(\mathrm{localBinarySuffix}\,D\,1\,(2c{-}2)<2^{c-2}\)) that the corpus
 only ever supplies through a route which then rigidly collapses onto one
@@ -5426,27 +5446,27 @@ specific support family — the deficit hypothesis is a self-imposed
 restriction of the consumers, and the general input itself is unsupplied. \\
 257-cofinal-rows & precriticalSuffix\_lt\_of\_future\_skip\_after\_takenBlock,
 \lean{halfGreedy\_precriticalSuffix\_lt\_of\_future\_skip\_after\_takenBlock}{BooleanMobiusCriticalCapacityCofinal.lean:603} &
-hypothesis\_strength & NOT\_PROMOTABLE. Unconditional and uniform in both
+hypothesis strength & Not promotable. Unconditional and uniform in both
 parameters \((c,t)\); the sole missing input is an orbit-level skip-gap
 bound on the rational half-greedy orbit, never proved and never previously
 isolated as a target anywhere in the banks. \\
 257-cofinal-rows & greedyHalfFrozenMargin\_nonneg,
-\lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1198} & scale\_only &
-NOT\_PROMOTABLE. The margin-nonnegativity horizon is produced by a
+\lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1198} & scale only &
+Not promotable. The margin-nonnegativity horizon is produced by a
 \emph{non-effective} limit argument (an existential horizon from a
 convergence fact); the exact-row route needs the SPECIFIC effective horizon
 \(J=k-2\), and effectivising it is explicitly recorded as unfinished
 bookkeeping, not new mathematics — but it is still unfinished. \\
 257-cofinal-rows & C4a,
 \lean{HalfCarryCofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:34} & multiple &
-NOT\_PROMOTABLE. Trades off against the obligation in the opposite
+Not promotable. Trades off against the obligation in the opposite
 direction on \emph{support locality}: tolerates any support inside a depth
 window but demands a carry inside a tight \(\sim2\sqrt M\) strip, where the
 obligation tolerates an exponentially looser carry but demands the support
 be confined to a lower window — the gap is support locality, not carry
 size, and neither socket implies the other. \\
 257-universal & NM-02,
-\lean{infinite\_greedyMersenneSkippedSupport\_of\_half\_mem}{GreedyAchievementSet.lean:2495} & scale\_only &
+\lean{infinite\_greedyMersenneSkippedSupport\_of\_half\_mem}{GreedyAchievementSet.lean:2495} & scale only &
 \textbf{PROMOTABLE (no new mathematics), but does not close anything.}
 The proof was opened and found already uniform in the target in every
 internal step; only the statement's own quantifier is artificially pinned
@@ -5455,7 +5475,7 @@ from a one-target equivalence to one covering every rational target — the
 highest-value mechanical promotion in the bank — but it supplies no new
 arithmetic content: it is a restatement, not a producer. \\
 257-universal & NM-03,
-\lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589} & scale\_only &
+\lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589} & scale only &
 \textbf{PROMOTABLE (no new mathematics), but does not close anything.} The
 headline is pinned to target \(1/2\) while its engine
 (\lean{finiteErdosSum\_den\_odd}{DyadicPrefixCompression.lean:1513}) is already fully general over
@@ -5465,22 +5485,23 @@ available with zero new arithmetic. Paired with NM-02: universal \#257 at
 an infinitely-skipping greedy Mersenne orbit — a genuine reformulation, not
 a resolution. \\
 257-universal & NM-04,
-\lean{dyadic\_support\_fraction\_reciprocalMass\_diverges\_or\_gt\_one}{RationalSupportCarrySkeleton.lean:2210} & coordinate\_only &
-NOT\_PROMOTABLE (partial mechanical content only). The dyadic restriction
+\lean{dyadic\_support\_fraction\_reciprocalMass\_diverges\_or\_gt\_one}{RationalSupportCarrySkeleton.lean:2210} & coordinate only &
+Not promotable (partial mechanical content only). The dyadic restriction
 \(v=1\) is a call-site choice, not a proof constraint — the general-\(v\)
 conclusion is already landed for arbitrary \((v,h,L,F)\) at
 \lean{shiftedBooleanCollision\_wrap\_bound\_of\_common\_multiple}{RationalSupportCarrySkeleton.lean:1968} — but
 the strict form needed for non-dyadic targets requires one genuinely new
 auxiliary bound (a mean-least-residue estimate) not present in the corpus. \\
 257-universal & NM-12,
-\lean{half\_mem\_mersenneAchievementSet\_or\_exists\_fatal\_gap}{HalfCutLocator.lean:623} & scale\_only &
-NOT\_PROMOTABLE (unverified, not merely blocked). The killer and the
+\lean{half\_mem\_mersenneAchievementSet\_or\_exists\_fatal\_gap}{HalfCutLocator.lean:623} & scale only &
+Not promotable (unverified, not merely blocked). The killer and the
 dichotomy scaffold are already target-generic; the two endpoint kills that
 pin the dichotomy to \(1/2\) generalise on their face, but their proof
 bodies were explicitly \emph{not} read in this audit pass — recorded as a
 strong promotability hypothesis, not a verified promotion, since a
 \texttt{norm\_num}-style numeric step could hide a \(1/2\)-specific bound. \\
 \end{longtable}
+\end{landscape}
 
 \subsection*{Classification of the sixteen genuine blockers}
 

@@ -30,16 +30,19 @@ recorded against the Lean source; nothing is compressed to ``$\forall\dots$'' wh
 specifies bounds.
 
 \begingroup
-\fontsize{6}{7.2}\selectfont
+\begin{landscape}
+\fontsize{8}{9.8}\selectfont
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{p{3.2cm}p{2.7cm}p{1.1cm}p{5.8cm}p{1.4cm}}
+\begin{longtable}{@{}p{0.22\linewidth}p{0.18\linewidth}p{0.08\linewidth}p{0.34\linewidth}p{0.12\linewidth}@{}}
 \caption{The \#249 scale ladder. Every row above the rule is proved; every row below it is the
 cofinal target or a direct consumer of it.}\\
 \toprule
+\papertablehead
 \textbf{Result} & \textbf{Lean site} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate}\\
 \midrule
 \endfirsthead
 \toprule
+\papertablehead
 \textbf{Result} & \textbf{Lean site} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate}\\
 \midrule
 \endhead
@@ -48,7 +51,7 @@ cofinal target or a direct consumer of it.}\\
 \bottomrule
 \endlastfoot
 
-\multicolumn{5}{l}{\emph{-- \scale{uniform} (includes source-tagged \texttt{n/a} unconditional identities/converters) --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{uniform} (includes source-tagged \texttt{n/a} unconditional identities/converters) --}}\\
 totientTail well-defined & \lean{totientTail}{TotientTailPeriodKiller.lean:57} & uniform & $\forall N$ & binary-digit\\
 $2^N\!\cdot\! S$ split & \lean{two\_pow\_mul\_totient\_series\_eq}{TotientTailPeriodKiller.lean:150} & uniform & $\forall N$ & binary-digit\\
 windowDiscrepancy (def) & \lean{windowDiscrepancy}{TotientTailPeriodKiller.lean:66} & uniform & $\forall h\,\forall N\,\forall L$ & other-binary-window\\
@@ -129,7 +132,7 @@ signed Hankel terminal-parity engine & \lean{scaled\_dyadic\_sum\_ne\_zero}{Sign
 residual gauge obstruction (locked minors) & \lean{det\_residualMonomialMatrix}{ResidualGaugeObstruction.lean:47} & uniform & $\forall d\,\forall e{:}\mathrm{Fin}\,d{\to}\mathbb{N}\,\forall z{:}\mathrm{Fin}\,d{\to}\mathbb{C}$ ($z$ nonzero) & other-first-harmonic-phase\\
 incidence-quotient no compression & \lean{incidenceMobius\_det\_eq\_one}{IncidenceQuotientHermitePade.lean:56} & uniform & $\forall N{:}\mathbb{N}$ & mobius-mersenne\\
 
-\multicolumn{5}{l}{\emph{-- \scale{bounded} --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{bounded} --}}\\
 Farey window $K{=}240$ denominator bound & \lean{gap\_check\_window\_1\_240\_le\_79639646646701375323355774875831053}{GapFareyBound.lean:176} & bounded &
 $\forall q{:}\mathbb{N},\,0{<}q{\le}$\newline
 $79{,}639{,}646{,}646{,}701{,}$\newline
@@ -156,7 +159,7 @@ numerator-gap $\Rightarrow$ $\lnot$ hit (\#257-flavored) & \lean{scaleFullTarget
 periodic-weight Lambert dichotomy & \lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14175} & bounded & $\forall b{\ge}2\,\forall m{>}0\,\forall w$ ($w(n{+}m){=}w(n)$) & mobius-mersenne\\
 non-negative periodic $\Rightarrow$ irrational (unconditional) & \lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583} & bounded & $\forall b{\ge}2\,\forall m{>}0$, $w$ periodic, $\ge0$, frequently ${\ne}0$ & mobius-mersenne\\
 
-\multicolumn{5}{l}{\emph{-- \scale{fixed} --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{fixed} --}}\\
 all $h\in[1,8]$ kill certificate at depth 16, $N{=}12$ & \lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} & fixed & $\forall h\in[1,8]$, \texttt{certifiedKill}\,$h$\,12\,16 (by \texttt{decide}) & other-binary-window\\
 $h\in[1,16]$, exponent 14 kill table & \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:18890} & fixed & $\forall h\in[1,16]$, denominator exponent 14 (by \texttt{decide}) & other-binary-window\\
 rank-2 kill not shallower at $(h,N){=}(1,8)$ & \lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19090} & fixed & measured over $t{\le}20$ (30/40 cells) & other-binary-window\\
@@ -168,10 +171,10 @@ echo-vs-height two-front wall & prose:echo\_versus\_height\_two\_front\_wall & f
 period-4 zeroset escape witness & \lean{intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14226} & fixed & $\forall n,\,n{\equiv}3\!\!\pmod 4$ (fixed weight $w$) & mobius-mersenne\\
 
 \midrule
-\multicolumn{5}{c}{\emph{--- frontier: everything below this line is the cofinal target or a direct consumer of it ---}}\\
+\papertablehead\multicolumn{5}{c}{\emph{--- frontier: everything below this line is the cofinal target or a direct consumer of it ---}}\\
 \midrule
 
-\multicolumn{5}{l}{\emph{-- \scale{cofinal} (OPEN) --}}\\
+\papertablehead\multicolumn{5}{l}{\emph{-- \scale{cofinal} (OPEN) --}}\\
 \textbf{THE WALL} — certificate supply $\Rightarrow$ Irrational $S$ & \lean{irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394} & \textbf{cofinal} & $\forall h{\ge}1\,\forall N_0{\ge}0\,\exists N{\ge}N_0\,\exists L,\ \texttt{certifiedKill}\,h\,N\,L$ & other-binary-window\\
 multiple-certificate supply (weakened) & \lean{irrational\_totient\_series\_of\_multiple\_certificate\_supply}{CarrySurvivorExtinction.lean:502} & cofinal & $\forall h_0{>}0\,\forall N_0\,\exists m{>}0\,\exists N{\ge}N_0\,\exists L$ & other-lcm-period-multiple\\
 LCM-diagonal one-parameter restatement & \lean{irrational\_totient\_series\_of\_lcm\_diagonal\_certificate\_supply}{LcmDiagonalReduction.lean:112} & cofinal & $\forall t_0\,\exists t{\ge}t_0\,\exists L$ & other-lcm-diagonal\\
@@ -189,6 +192,7 @@ mod-4 pulse survivor kill (fourfold reduction) & \lean{irrational\_totientSeries
 two-adic pulse at arbitrary depth $K$ & \lean{exists\_prime\_totient\_twoAdic\_pulse\_divisors}{TotientTwoAdicPulseBlock.lean:54} & cofinal & $\forall K{\ge}2\,\forall H{>}K\,\forall B\,\exists\text{cofinally many primes}\,p{>}B$ & p-adic\\
 two-adic pulse transfer (needs eventual integrality) & \lean{eventual\_integral\_tailDiff\_has\_cofinal\_twoAdic\_half\_pulse}{TotientTwoAdicPulseBlock.lean:327} & cofinal & $\forall K{\ge}2$, given TA-01 pulse $+$ eventual integrality & p-adic\\
 \end{longtable}
+\end{landscape}
 \endgroup
 
 \noindent $^\dagger$ The source normal-form table tags \texttt{actualLcmTailDiff\_shift\_pos} \scale{bounded}

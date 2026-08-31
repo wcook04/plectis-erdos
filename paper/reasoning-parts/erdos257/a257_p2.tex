@@ -36,180 +36,150 @@ proved (fixed, bounded, or uniform); everything below it is what the open produc
 (cofinal), stated with its exact quantifier prefix so the gap is visible, not merely asserted.
 
 \begingroup
-\footnotesize
+\begin{landscape}
+\fontsize{8}{9.8}\selectfont
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{p{0.28\textwidth}|p{0.13\textwidth}|p{0.25\textwidth}|p{0.14\textwidth}}
-\hline
+\begin{longtable}{@{}p{0.42\linewidth}p{0.11\linewidth}p{0.29\linewidth}p{0.12\linewidth}@{}}
+\toprule
+\papertablehead
 \textbf{Result} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate} \\
-\hline
+\midrule
 \endfirsthead
-\hline
+\toprule
+\papertablehead
 \textbf{Result} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate} \\
-\hline
+\midrule
 \endhead
-\hline
+\bottomrule
 \endfoot
-\multicolumn{4}{|l|}{\emph{Fixed — one concrete witness or numeral}} \\
-\hline
+\papertablehead\multicolumn{4}{l}{\emph{Fixed — one concrete witness or numeral}} \\
 Smallest concrete exact row: support $\{2,3,6\}$ satisfies
 $\mathrm{localPrefixQuotient}=2^5-1$. \lean{exactLocalMersenneHalfRow\_six}{BooleanMobiusExactRowSeed.lean:34}
 \ev{Cert}
 & \scale{fixed} & $n=6$ & \coord{mobius-mersenne} \\
-\hline
 One-point counter-model: the double-or-recycle transition shape alone, even seeded, is not
 cofinal. \lean{boundedDoubleOrRecycleModel\_not\_cofinal}{BooleanMobiusExactRowDichotomy.lean:79}
 \ev{Lean}
 & \scale{fixed} & $n=6$ (free-standing model) & \coord{other:meta-logical} \\
-\hline
 The combined-residue-mass $\le 1$ sufficient test for sharp capacity is not necessary: fixture
 $D=\{2,3\}$, $c=5$. \lean{splitFractionMass\_one\_bound\_not\_necessary\_fixture}{BooleanMobiusSkippedCoreCriticalCapacity.lean:183}
 \ev{Cert}
 & \scale{fixed} & $D=\{2,3\},\ c=5$ & \coord{mobius-mersenne} \\
-\hline
 Exact residual fixture: $\tfrac12-W(\{2,3,6,7\})=\tfrac1{16002}$.
 \lean{half\_sub\_four\_term\_prefix\_eq}{HalfCutLocator.lean:664} \ev{Cert}
 & \scale{fixed} & none (numeric instance) & \coord{other:regression-fixture} \\
-\hline
 Closed-form Möbius--Lambert value $\sum_{d\ge1}\mu(d)/(2^d-1)=1/2$ (imported identity).
 \lean{tsum\_moebius\_div\_two\_pow\_sub\_one\_eq\_half}{MersenneLambertLadder.lean:587} \ev{Cited}
 & \scale{fixed} & none (closed-form value) & \coord{mobius-mersenne} \\
-\hline
 The one natural negative-Möbius candidate support overshoots: $1/2 <
 \sum_{d\in N}1/(2^d-1)$ for $N=\{d\ge2:\mu(d)=-1\}$.
 \lean{half\_lt\_tsum\_negativeMobius}{MobiusSignSupportNoGo.lean:164} \ev{Lean}
 & \scale{fixed} & one fixed candidate support $N$ & \coord{mobius-mersenne} \\
-\hline
-\multicolumn{4}{|l|}{\emph{Bounded — a witness exists, controlled by the input}} \\
-\hline
+\papertablehead\multicolumn{4}{l}{\emph{Bounded — a witness exists, controlled by the input}} \\
 Every exact row continues: doubles unboundedly, or recycles to some $c\le n$.
 \lean{exactLocalMersenneHalfRow\_double\_or\_recycle}{BooleanMobiusExactRowDichotomy.lean:26}
 \ev{Lean}
 & \scale{bounded} & $\forall n\ge6$, given a row at $n$: $(\ldots)\lor\exists c\le n(\ldots)$
 & \coord{mobius-mersenne} \\
-\hline
 Every above-half bounded support recycles into a genuine exact row at some $2c-2$ with $c\le n$.
 \lean{exists\_skippedCoreExactRow\_of\_value\_above}{BooleanMobiusExactRowCrossing.lean:155} \ev{Lean}
 & \scale{bounded} & $\forall E$ bounded $[2,n]$: $\exists c\le n$ & \coord{binary-digit} \\
-\hline
 (\#249 cross-lane check) $\sum\varphi(n)/2^n$ matches no rational whose denominator divides
 $2^{14}(2^h-1)$, for any $h\le16$.
 \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_upto\_sixteen}{CarrySurvivorExtinction.lean:587} \ev{Cert}
 & \scale{bounded} & $\forall h\le16$ (explicit bound) & \coord{binary-digit} \\
-\hline
 Truncation-rung ladder: $\mathrm{HalfRung}(J)$ proved for every $3\le J\le22$ via the finite
 decision procedure (\S\ref{sec:four-coordinates}, Theorem~\ref{thm:tr-finite-decision}).
 (source: \texttt{erdos257\_truncation\_rung\_ladder\_2026\_07\_24.md}, \S5) \ev{Math}+\ev{Cert}
 & \scale{bounded} & $3\le J\le22$ (finite table, exhaustive) & \coord{rung-truncation} \\
-\hline
-\multicolumn{4}{|l|}{\emph{Uniform — unconditional for every $n$ past an explicit threshold}} \\
-\hline
+\papertablehead\multicolumn{4}{l}{\emph{Uniform — unconditional for every $n$ past an explicit threshold}} \\
 Master achievement/greedy-survival criterion.
 \lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1458} \ev{Lean}
 & \scale{uniform} & $\forall x\ \forall n$ (iff) & \coord{greedy-orbit} \\
-\hline
 Membership iff every actually-skipped rank survives.
 \lean{no\_lastHalfGreedySkip\_iff\_every\_skip\_survives}{HalfCylinderFixedTailSocket.lean:57} \ev{Lean}
 & \scale{uniform} & $\forall M\in$ skipped support & \coord{greedy-orbit} \\
-\hline
 Every crossing core is forced to be the canonical rational half-greedy prefix.
 \lean{eq\_halfGreedyPrefixSupport\_of\_critical\_crossing}{BooleanMobiusCriticalCapacityCofinal.lean:50}
 \ev{Lean}
 & \scale{uniform} & $\forall c\ge4\ \forall D$ bounded $[2,c)$ & \coord{greedy-orbit} \\
-\hline
 Theorem A payoff: reset $\sqrt{\ }$-escape socket $\Rightarrow$ membership.
 \lean{half\_mem\_mersenneAchievementSet\_of\_largestSkipLateStepSocket}{HalfCylinderLargestSkipInduction.lean:167}
 \ev{Lean}
 & \scale{uniform} & $\forall s\ge14$, given the socket hypothesis & \coord{seam-integer} \\
-\hline
 Band-avoidance certified for every row $13\le r\le31$ (feeds the F5/Theorem A uniform hypothesis
 as an exhaustively-verified finite range). \lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}
 \ev{Cert}
 & \scale{uniform} & $13\le r\le31$, exhaustive & \coord{seam-integer} \\
-\hline
 Critical-band-index reduction: a $(d{+}1)$-way check collapses to one nearest-boundary check.
 \lean{half\_mem\_mersenneAchievementSet\_of\_upperResetCriticalBandEscape}{HalfUpperResetCriticalBand.lean:896}
 \ev{Lean}
 & \scale{uniform} & $\forall d,E$ with $E\le2^{d+1}$ & \coord{other:dyadic-boundary} \\
-\hline
 Parity kill: no finite support hits $1/2$ exactly. \lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589}
 \ev{Lean}
 & \scale{uniform} & $\forall A$ finite, $0\notin A$ & \coord{other:denominator-parity} \\
-\hline
 Erdős--Borwein irrationality at every integer base.
 \lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335} \ev{Lean}
 & \scale{uniform} & $\forall b\ge2$ & \coord{mobius-mersenne} \\
-\hline
 Erdős 1968: any infinite, pairwise-coprime, reciprocal-summable index set gives an irrational
 support series. \lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776}
 \ev{Lean}
 & \scale{uniform} & $\forall b\ge2\ \forall A$ (infinite, coprime, summable) & \coord{mobius-mersenne} \\
-\hline
 Generic block-certificate engine (problem-agnostic): weighted-coefficient series is irrational
 given a per-precision divisibility/window certificate.
 \lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8665}
 \ev{Lean}
 & \scale{uniform} & $\forall b\ge2\ \forall c\,(\forall m,c(m)\le m)$, given $\forall q\,\exists N,K,L,C$
 & \coord{binary-digit} \\
-\hline
 Finite greedy-prefix denominators are odd (source of the parity boundary exclusion,
 \S\ref{sec:four-coordinates}). \lean{halfGreedyPrefixDenominator\_odd}{DyadicPrefixCompression.lean:1521}
 \ev{Lean}
 & \scale{uniform} & $\forall n$ & \coord{other:denominator-parity} \\
-\hline
-\multicolumn{4}{|c|}{\textbf{--- frontier: every entry below needs a cofinal witness,
+\papertablehead\multicolumn{4}{c}{\textbf{--- frontier: every entry below needs a cofinal witness,
 $\forall N\,\exists n\ge N(\ldots)$, not yet supplied ---}} \\
-\hline
-\multicolumn{4}{|l|}{\emph{Cofinal — the shape both open producers actually need}} \\
-\hline
+\papertablehead\multicolumn{4}{l}{\emph{Cofinal — the shape both open producers actually need}} \\
 THE master open supply: exact rows recur at arbitrarily large endpoints, with no coherence
 required between witnesses. \lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:38}
 \ev{Open}
 & \scale{cofinal} & $\forall N\ \exists n\ge N,\ \mathrm{ExactLocalMersenneHalfRow}(n)$
 & \coord{mobius-mersenne} \\
-\hline
 Payoff theorem consuming the row above: compactness of the achievement set forces $1/2$ itself to
 be achieved. \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71}
 \ev{Lean} (theorem proved; \emph{hypothesis} open)
 & \scale{cofinal} & given $\forall N\,\exists n\ge N(\ldots)$ & \coord{other:topological-achievement-set} \\
-\hline
 Shortest known open target: the canonical rational half-greedy orbit itself has infinitely many
 positive skip events. \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22}
 \ev{Open}
 & \scale{cofinal} & $\forall N\ \exists c\ge\max(N,4),\ 0<\mathrm{rem}(c{-}1)<w_c$
 & \coord{greedy-orbit} \\
-\hline
 Payoff theorem consuming the row above, with zero further combinatorial search once supplied.
 \lean{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73}
 \ev{Lean} (theorem proved; hypothesis open)
 & \scale{cofinal} & given $\forall N\,\exists c\ge N(\ldots)$ & \coord{greedy-orbit} \\
-\hline
 Master half-branch dichotomy: membership iff the greedy skip set is infinite.
 \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527}
 \ev{Lean} (iff proved; both sides cofinal-shaped)
 & \scale{cofinal} & iff $(\mathrm{skippedSupport}).\mathrm{Infinite}$ & \coord{greedy-orbit} \\
-\hline
 Seven-way classification hub: membership iff the seam word is not eventually right, iff
 unbounded terminal-false, iff cofinally many skipped ranks, \emph{etc.}
 \lean{half\_mem\_mersenneAchievementSet\_iff\_not\_seamGreedyEventuallyRight}{HalfCylinderHalfMembershipClassification.lean:112}
 \ev{Lean}
 & \scale{cofinal} & every right-hand side is $\exists^\infty$/Unbounded-shaped & \coord{seam-integer} \\
-\hline
 Ladder dichotomy: either infinitely many rungs survive (\#257 false, explicit limit support) or an
 eventual bad-rank wall closes only this producer. (source: \texttt{erdos257\_truncation\_rung\_ladder\_2026\_07\_24.md},
 Cor.~8) \ev{Math}
 & \scale{cofinal} & open branch (a): $\exists^\infty J,\ \mathrm{HalfRung}(J)$ & \coord{rung-truncation} \\
-\hline
 The unconditional wall, stated in its four equivalent forms (run length, deviation, distance-to-integer,
 greedy support). (source: \texttt{erdos257\_sqrt\_escape\_digit\_reduction\_2026\_07\_24.md}, \S5)
 \ev{Conjecture}/\ev{Open}
 & \scale{cofinal} & $\forall r\ge10,\ |\mathrm{rem}(r{+}1)-2^{r+1}|>2^{(r+5)/2}$ & \coord{seam-integer} \\
-\hline
 \caption{The scale ladder for Erdős \#257. Every row above the frontier is machine-checked or
 exactly certified at fixed/bounded/uniform scale; every row below it is exactly the cofinal
 statement an open producer needs, with its quantifier prefix made explicit so the gap cannot be
 mistaken for a finite verification.}
 \label{tab:scale-ladder}
 \end{longtable}
+\end{landscape}
 \endgroup
 
 \begin{rem}[Nothing promotes for free]
