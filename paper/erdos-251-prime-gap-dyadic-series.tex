@@ -11,13 +11,13 @@
 \renewcommand{\commit}{c8e41c76b4ce888601213778ddce8b148359d11f}
 \renewcommand{\commitshort}{c8e41c76b4ce}
 \hypersetup{
-  pdftitle={An integral-shift criterion for dyadic tail recurrences, and the prime-gap series of Erdős Problem 251},
+  pdftitle={Diagonal criteria and circularity for dyadic tail recurrences in Erdős Problem 251},
   pdfsubject={Erdős Problem Notes: Problem 251},
   pdfkeywords={irrationality, prime gaps, dyadic series, summation by parts, Lean 4},
 }
 
 \runninghead{Erd\H{o}s \#251: the prime-gap dyadic series}
-\title{An Integral-Shift Criterion for Dyadic Tail Recurrences}
+\title{Diagonal Criteria and Circularity for Dyadic Tail Recurrences}
 \subtitle{Erd\H{o}s Problem~\#251, with the principal statements checked in Lean~4}
 \author{Will Cook}
 \date{July 2026}
@@ -28,9 +28,31 @@
 
 \begin{abstract}
 \noindent
-Call a sequence $(T_N)_{N\ge0}$ of rational numbers a \emph{dyadic tail
-recurrence with digits $g$} when $T_{N+1}=2T_N-g_{N+1}$ for every $N$, with
-integer digits $g_N$.  Its block identity is
+Call a sequence $(T_N)_{N\ge0}$ a \emph{dyadic tail recurrence with digits
+$g$} when $T_{N+1}=2T_N-g_{N+1}$ for every $N$, with integer digits $g_N$.
+Let $L_0=1$ and $L_j=\operatorname{lcm}(1,\ldots,j)$ for $j\ge1$.  For every
+real dyadic tail recurrence,
+\[
+ \operatorname{Irr}(T_0)
+ \quad\Longleftrightarrow\quad
+ T_{2L_j}-T_{L_j}\notin\Z\quad\hbox{for every }j\ge0.
+\]
+Thus one predetermined lcm diagonal replaces the quantification over all
+positive shift lengths and all basepoints.  This exact criterion does not
+prove the required diagonal non-integrality for the actual prime-gap orbit.
+
+For rational recurrences, the same finite algebra identifies two tempting but
+circular replacements for the missing prime input.  Writing
+$D_N=T_{N+h}-T_N$ and $D_{N+r}=2^rD_N-B_{h,N,r}$, membership in the
+data-dependent affine class $-B_{h,N,r}+2^{r+1}\Z$ is exactly the assertion
+$D_N\in2\Z$, independently of $r$.  Under the parity condition on the
+difference digits, cofinal escape from these classes is therefore equivalent
+to non-eventual integrality.  Even the fixed-lattice repair collapses: under
+any dyadically dominated terminal bound, cofinal separation of $B_{h,N,r}$
+from $2^r\Z$ is again equivalent to non-eventual integrality.  Neither
+formulation supplies new arithmetic about consecutive primes.
+
+The recurrence has the block identity
 \[
  T_{N+h}=2^{h}T_N-
  \bigl(g_{N+1}2^{h-1}+\cdots+g_{N+h}\bigr).
@@ -71,11 +93,13 @@ $h$-shifts both lie in $(-1,1)$ and the corresponding prime gaps differ, they
 cannot both be integral.  Thus a contradiction would follow from cofinally
 many such pairs; neither their two smallness inequalities nor that cofinal
 occurrence is proved.  Unboundedness and nonperiodicity of the prime gaps,
-although both Lean-checked, do not supply either property.  Indeed, an
-explicit unbounded, non-eventually-periodic integer sequence has a rational
-dyadic sum, so the missing argument must control the full prime-gap tails
-rather than the coefficients alone.  The source-current coefficient-only
-interface makes this warning precise: for the synthetic linear carry $K_n=n$,
+although both Lean-checked, do not supply either property.  More sharply, the
+explicit quadratic word $g_n=2(n^2+4n+2)$ and orbit $T_n=2(n+4)^2$ satisfy the
+recurrence, the word is positive, even and strictly increasing, every fixed
+tail shift is integral, and every adjacent digit difference avoids $\pm2$.
+Thus positivity, parity, polynomial growth, unboundedness and nonperiodicity
+cannot force the adjacent-small-mismatch mechanism.  A second
+coefficient-only warning uses the synthetic linear carry $K_n=n$:
 the finite emitted sum is $-n/2^n$ while its emitted coefficients are not
 eventually periodic
 (\lword{Erdos251/PrimeGapDyadicTail.lean}{1157}
@@ -105,17 +129,18 @@ the missing producer must control complete adjacent infinite tails, while
 prime-gap nonperiodicity alone supplies only the unequal-gap clause.
 \end{abstract}
 
-\externalreviewobject{The paper proves the exact prime/prime-gap summation
-identity, classifies rationality through integral tail shifts, proves that
-actual prime gaps are unbounded, and gives, at paper level, a nonperiodic
-rational countermodel to a tempting coefficient-only route.}{These results expose the missing
-cofinal nonintegrality statement for the actual prime gaps without proving it.
-Problem~\#251 remains open.}{Comparator selects the prime-gap unboundedness
-theorem, the exact irrationality equivalence between the two infinite series,
-and the conditional actual-prime-gap small-mismatch specialization, with the
-summability and recurrence hypotheses retained; its coefficient-only no-go
-transport checks only finite identities and nonperiodicity, leaving every
-cofinal producer and the infinite-limit step open.}
+\externalreviewobject{The paper proves the one-sequence lcm-diagonal
+irrationality criterion, the signed $\pm2$ window normal form, two exact
+affine/fixed-lattice circularity theorems, and a complete quadratic
+polynomial-shift countermodel.  It also proves the exact prime/prime-gap
+summation identity, the general integral-shift classification, and
+unboundedness of the actual prime gaps.}{These are exact recurrence
+classifications and strategy-elimination results.  They do not prove a single
+lcm-diagonal miss or cofinal small-mismatch event for the actual prime-gap
+orbit, and Problem~\#251 remains open.}{Three Comparator packages bind the
+lcm-diagonal criterion, the quadratic polynomial-shift countermodel, and the
+signed-window plus affine/fixed-lattice circularity family.  Public Lean-source
+and portfolio registration of the last family remain separate release steps.}
 
 \section{Introduction}\label{sec:problem}
 
@@ -249,7 +274,11 @@ sequence $\kappa_n=n-1$, which is unbounded and hence not eventually periodic,
 and whose dyadic sum $\sum_{n\ge0}\kappa_n2^{-(n+1)}$ is zero.
 
 \paragraph{Outline.}
-Section~\ref{sec:parts} replaces the primes by their consecutive gaps, the
+Section~\ref{sec:diagonal-collapse} begins with the strongest exact
+recurrence-level conclusions: the lcm-diagonal irrationality criterion, the
+signed two-window normal form, the affine and fixed-lattice circularity
+equivalences, and the quadratic polynomial-shift countermodel.
+Section~\ref{sec:parts} then replaces the primes by their consecutive gaps, the
 natural increments studied by prime-distribution theory.  Summation by parts
 with the endpoint retained gives an exact finite identity, and the termwise
 relation $v_n=2u_{n+1}-u_n$ between the gap terms and the prime terms makes the
@@ -316,6 +345,10 @@ prime-specific producer, not a proof of Problem~\#251 irrationality.
 Statement & Status & Treatment here \\
 \midrule
 Irrationality of $\Pi$ & Open & Not proved. \\
+Lcm-diagonal irrationality criterion & Lean-checked abstractly; an equivalence & Theorem~\ref{res:lcmdiagonal}. \\
+Signed two-window normal form & Lean-checked abstractly; an equivalence & Theorem~\ref{res:signedwindow}. \\
+Affine and fixed-lattice cofinal escape tests & Lean-checked abstractly; both equivalences & Theorem~\ref{res:affinecollapse}; neither supplies a prime-specific producer. \\
+Quadratic polynomial-shift countermodel & Lean-checked & Proposition~\ref{res:polynomialcountermodel}. \\
 Finite prime-gap identity & Proved here & Theorem~\ref{res:parts}, with the endpoint retained. \\
 Infinite prime-gap identity & Lean-checked unconditionally & Theorem~\ref{res:infinite}, with summability discharged by the polynomial prime bound. \\
 Prime-series/gap-series irrationality equivalence & Lean-checked unconditionally & Corollary~\ref{res:irr-equivalence}. \\
@@ -354,6 +387,179 @@ which, if proved, would give irrationality of $\Pi$.
 summation by parts; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11N05, 68V20 (secondary).
+
+\section{One diagonal, and two circular escape tests}\label{sec:diagonal-collapse}
+
+We first record the strongest recurrence-level conclusions.  They apply to
+arbitrary integer digits and therefore separate the finite algebra from the
+prime-specific input still missing in Problem~\#251.
+
+For a real recurrence put
+\[
+ \Delta_hT(N)=T_{N+h}-T_N,
+\]
+and let $L_0=1$, $L_j=\operatorname{lcm}(1,\ldots,j)$ for $j\ge1$.
+
+\begin{theorem}[lcm-diagonal criterion]\label{res:lcmdiagonal}
+Let $g:\N\to\Z$ and $T:\N\to\R$ satisfy
+$T_{N+1}=2T_N-g_{N+1}$ for every $N$.  Then
+\[
+ \operatorname{Irr}(T_0)
+ \quad\Longleftrightarrow\quad
+ \Delta_{L_j}T(L_j)\notin\Z
+ \quad\hbox{for every }j\ge0.
+\]
+\end{theorem}
+
+\begin{proof}
+The exact rationality classification proved in
+Theorem~\ref{res:escape-irrational} says that an irrational initial state has
+no integral positive shift at any basepoint.  This gives the forward
+implication.  Conversely, if $T_0$ is rational, some positive shift length
+$h$ is integral at every basepoint beyond an index $N_0$.  Choose $j$ so large
+that $N_0\le L_j$ and $h\mid L_j$.  The cocycle identity
+\[
+ \Delta_{a+b}T(N)=\Delta_aT(N)+\Delta_bT(N+a)
+\]
+shows by induction that every positive multiple of $h$ is integral at every
+such basepoint.  Hence $\Delta_{L_j}T(L_j)$ is integral, contradicting the
+right-hand side.
+\end{proof}
+
+The factorial schedule $j!$ has the same divisibility property, but the lcm
+schedule is pointwise no larger and is the canonical endpoint used here.  The
+theorem is an exact one-sequence reformulation; it gives no non-integrality
+statement for the actual prime-gap recurrence.
+
+The adjacent-small-mismatch condition also admits an exact normal form.  For a
+rational recurrence and a fixed $h$, write
+\[
+ D_N=\Delta_hT(N),\qquad
+ \delta_N=g_{N+h+1}-g_{N+1}.
+\]
+Then $D_{N+1}=2D_N-\delta_N$.
+
+\begin{theorem}[signed two-window normal form]\label{res:signedwindow}
+Assume that $\delta_N$ is even.  The conjunction
+\[
+ -1<D_N<1,\qquad -1<D_{N+1}<1,\qquad \delta_N\ne0
+\]
+is equivalent to
+\[
+ \bigl(\delta_N=2\ \hbox{ and }\tfrac12<D_N<1\bigr)
+ \quad\hbox{or}\quad
+ \bigl(\delta_N=-2\ \hbox{ and }-1<D_N<-\tfrac12\bigr).
+\]
+\end{theorem}
+
+\begin{proof}
+The recurrence and the two unit windows give $-3<\delta_N<3$.  A nonzero even
+integer in that interval is $2$ or $-2$.  Substitution into
+$D_{N+1}=2D_N-\delta_N$ gives the stated half-window and, in the reverse
+direction, recovers the second unit window.
+\end{proof}
+
+For the longer block, set
+\[
+ B_{h,N,r}=\sum_{i=0}^{r-1}2^{r-1-i}\delta_{N+i};
+ \qquad D_{N+r}=2^rD_N-B_{h,N,r}.
+\]
+Call the data-dependent affine condition
+\[
+ \mathcal A_{N,r}:\qquad
+ D_{N+r}\in -B_{h,N,r}+2^{r+1}\Z.
+\]
+
+\begin{theorem}[affine and fixed-lattice circularity]\label{res:affinecollapse}
+For every rational dyadic tail recurrence and all $h,N,r\ge0$,
+\[
+ \mathcal A_{N,r}\quad\Longleftrightarrow\quad D_N\in2\Z.
+\tag{2.1}\label{eq:affinecollapse}
+\]
+Consequently, if every $\delta_N$ is even, then
+\[
+ \bigl(\forall N_0\ \exists N,r:\ N_0<N\text{ and }\neg\mathcal A_{N,r}\bigr)
+ \quad\Longleftrightarrow\quad
+ D_N\notin\Z\text{ for arbitrarily large }N.
+\tag{2.2}\label{eq:affinecofinal}
+\]
+
+There is a second equivalence.  Let $b:\N\to\Q$ satisfy
+$|D_N|\le b(N)$ for every $N$, and suppose that for every $N$ and every
+positive integer $q$ there is an $r$ with
+\[
+ 2b(N+r)q<2^r.
+\tag{2.3}\label{eq:dyadicscale}
+\]
+Then
+\[
+ \begin{split}
+ &\forall N_0\ \exists N,r:\ N_0<N\text{ and }
+   \forall z\in\Z,\quad
+   b(N+r)<|B_{h,N,r}-2^rz|\\
+ &\hspace{35mm}\Longleftrightarrow\quad
+ D_N\notin\Z\text{ for arbitrarily large }N.
+ \end{split}
+\tag{2.4}\label{eq:fixedcollapse}
+\]
+\end{theorem}
+
+\begin{proof}
+Substituting $D_{N+r}=2^rD_N-B_{h,N,r}$ into $\mathcal A_{N,r}$ cancels the
+observed block from both sides and leaves $D_N=2z$.  This proves
+\eqref{eq:affinecollapse}.  After one recurrence step, evenness of
+$\delta_N$ identifies even integrality at $N+1$ with ordinary integrality at
+$N$.  The forward implication in~\eqref{eq:affinecofinal} follows, while the
+reverse implication chooses a nonintegral $D_N$ and the legal depth $r=0$.
+
+For~\eqref{eq:fixedcollapse}, eventual integrality and the block identity give
+some $z\in\Z$ with
+\[
+ B_{h,N,r}-2^rz=-D_{N+r},
+\]
+so the displayed strict separation contradicts $|D_{N+r}|\le b(N+r)$.
+Conversely, if $D_N$ is nonintegral and has reduced denominator $q$, then its
+distance from every integer is at least $1/q$.  Choose $r$ from
+\eqref{eq:dyadicscale}, scale this separation by $2^r$, and use the block
+identity together with $|D_{N+r}|\le b(N+r)$.  The triangle inequality gives
+$|B_{h,N,r}-2^rz|>b(N+r)$ for every integer $z$.
+\end{proof}
+
+The first equivalence shows that the apparent affine hierarchy contains no
+depth-dependent information: it is the pullback of even integrality through
+the recurrence identity.  The fixed lattice removes that data dependence, but
+under the stated growth condition rational denominator separation already
+forces every required escape.  Hence neither cofinal condition is an
+independent source of information about consecutive primes.
+
+Finally, the coarse coefficient profile itself has an exact infinite
+counterexample.
+
+\begin{proposition}[quadratic polynomial-shift countermodel]\label{res:polynomialcountermodel}
+Put
+\[
+ g_n=2(n^2+4n+2),\qquad T_n=2(n+4)^2.
+\]
+Then $g_n$ is positive, even and strictly increasing,
+$T_{n+1}=2T_n-g_{n+1}$, every shift $T_{N+h}-T_N$ is integral, and
+\[
+ g_{N+2}-g_{N+1}\ne2,-2
+ \qquad\hbox{for every }N.
+\]
+\end{proposition}
+
+\begin{proof}
+All assertions follow by expansion.  In particular
+$g_{n+1}-g_n=4n+10$, while $T_{N+h}-T_N$ is the difference of two even
+integer squares.  Strict growth makes the word unbounded and nonperiodic.
+\end{proof}
+
+Theorem~\ref{res:lcmdiagonal} and
+Proposition~\ref{res:polynomialcountermodel} are the exact statements exposed
+by the two existing Comparator packages.  A third package exposes
+Theorems~\ref{res:signedwindow} and~\ref{res:affinecollapse}.  The displayed
+proofs are self-contained ordinary proofs; public registration of the latter
+source-current Lean family remains pending.
 
 \section{Summation by parts, with the endpoint retained}\label{sec:parts}
 
