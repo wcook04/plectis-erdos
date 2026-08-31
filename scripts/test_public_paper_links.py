@@ -52,9 +52,10 @@ def test_network_classification_distinguishes_broken_and_access_control(monkeypa
         lambda _urls, jobs, timeout: [
             MODULE.NetworkResult("https://example.test/gone", 404, "", "Not Found"),
             MODULE.NetworkResult("https://example.test/blocked", 403, "", "Forbidden"),
+            MODULE.NetworkResult("https://example.test/timeout", 0, "", "TimeoutError"),
         ],
     )
     receipt = MODULE.audit(network=True, jobs=2, timeout=1.0)
     assert not receipt["ok"]
     assert [row["status"] for row in receipt["broken_network_rows"]] == [404]
-    assert [row["status"] for row in receipt["inconclusive_network_rows"]] == [403]
+    assert [row["status"] for row in receipt["inconclusive_network_rows"]] == [403, 0]

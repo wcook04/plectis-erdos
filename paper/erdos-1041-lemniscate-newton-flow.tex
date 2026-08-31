@@ -73,6 +73,16 @@ Coefficient genericity, component stability, planar topology, and metric
 gluing remain open.
 \end{abstract}
 
+\begin{paperresult}{What the analysis isolates}
+\textbf{Exact inputs.} Critical-point balance gives two nearest-root
+distances with total at most $2$, while the Newton flow transports $f$
+exactly by $f(z(t))=e^{-t}f(z(0))$.  Exact examples show why straight spokes
+and root-pair segments do not solve the containment problem.  \textbf{Sharp
+degree-five target.} A critical value at most $1/M_5$ would suffice.
+\textbf{Open boundary.} The missing theorem is an admissible critical hub
+whose inverse-ray arms stay in the right component and meet the metric bound.
+\end{paperresult}
+
 \externalreviewobject{The paper checks exponential Newton-value decay,
 parameterises positive-ray collisions, constructs arbitrarily small
 translations avoiding all collisions in a finite family, and proves root
@@ -243,9 +253,9 @@ harmonic normal-derivative argument transfers this arc bound strictly to the
 chord.  The complete ordinary proof is
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md}{\texttt{ConcyclicAlternation.md}}.
 
-This is not a Lean theorem: the
+The argument is an ordinary proof outside Lean.  The
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py}{exact-rational checker}
-tests finitely many load-bearing identities and configurations, while the
+checks finitely many load-bearing identities and configurations, while the
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation.py}{numerical checker}
 is regression and stress-test evidence.  The arc constant $2$ is sharp on the
 regular $n$-gon, so this chord argument does not reach radii tending to $1$;

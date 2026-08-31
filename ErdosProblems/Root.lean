@@ -1,6 +1,7 @@
 import ErdosProblems.Erdos1041.CriticalTwoRootProximity
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 import ErdosProblems.Erdos1049.AdelicHeightBridge
+import ErdosProblems.Erdos1049.BezoutPluckerJets
 import ErdosProblems.Erdos1049.HermitePadeNoGo
 import ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence
 import ErdosProblems.Erdos1049.RationalBaseLambert
@@ -18,6 +19,7 @@ import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos243.WeightedCRTRepair
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.FiniteEulerSieve
+import ErdosProblems.Erdos249.FullDepthRayAmplifier
 import ErdosProblems.Erdos249.LcmJumpKillFromDiagonal
 import ErdosProblems.Erdos249.PeriodMultipleEscape
 import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature

@@ -77,6 +77,17 @@ survives normalisation, whose selected polynomial pair and remainder are
 nonzero, and whose decay beats its height.
 \end{abstract}
 
+\begin{paperresult}{What the paper rules out}
+\textbf{Exact arithmetic.} The bracket $2^{64}<3^{41}<2^{65}$ excludes the
+stated scalar and first-order Hermite--Pad\'e height mechanisms at $3/2$.
+It also yields the sharp finite four-jet count at bottom depth $41$, with a
+B\'ezout--Pl\"ucker reduction under explicit minor and unit hypotheses.
+\textbf{Transfer obstruction.} Direct integer-base clearing fails by an exact
+growth inequality and forcing recurrence.  \textbf{Open boundary.} No
+primitive noncollapsed approximation family with a sufficiently small
+nonzero remainder is constructed, so no irrationality at $3/2$ is proved.
+\end{paperresult}
+
 \section{Introduction}\label{sec:problem}
 
 Let $t>1$ be a rational number and let $\tau(n)$ count the divisors of $n$.
@@ -230,9 +241,8 @@ treated by Kova\v{c} and Tao~\cite{kovactao2024}.
 The rational non-integer
 progress relevant here is instead the height criterion of Bundschuh and
 V\"a\"an\"anen~\cite{bv1994}, which remains the strongest explicit numerical
-threshold among the sources compared here for this value.  It is not the only
-later source admitting
-non-integral rational bases: Zudilin's Pad\'e-and-Hankel treatment of the
+threshold among the sources compared here for this value.  Zudilin's later
+Pad\'e-and-Hankel treatment also admits non-integral rational bases: its
 generalized $q$-logarithm remarks that its results also hold for non-integer
 $p=r/s$ with $|p|>1$, under an assumption $\log|r|>c\log|s|$ for some computable
 $c>0$~\cite{zudilin2016}.  No value of $c$ is computed there, and we do not
@@ -240,9 +250,8 @@ compute one; we record the remark because it shows the rational-base extension
 was already contemplated, and because any threshold of that shape is a
 statement about $\log s/\log r$ of exactly the kind
 Section~\ref{sec:sevenhalves} treats.
-No claim of priority is made for anything below,
-which concerns the formal status of an argument rather than a new theorem
-about $F(t)$.
+No claim of priority is made for the analysis below.  It records the formal
+status and limits of the argument; it does not add a theorem about $F(t)$.
 
 \paragraph{Erd\H{o}s's integer-base argument, in outline.}
 For an integer $b\ge2$, Erd\H{o}s rewrites
@@ -1829,10 +1838,10 @@ equality case for the exponent model & \lrefx{Erdos1049/HermitePadeNoGo.lean}{12
   investigations of a certain infinite product}},
   Compositio Math. \textbf{91} (1994), no.~2, 175--199.
 \bibitem{zudilin2004} W.~Zudilin,
-  \href{https://www.impan.pl/shop/en/publication/transaction/download/product/82435}{\emph{Heine's
+  \href{https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/en/publishing-house/journals-and-series/acta-arithmetica/all/111/2/82435/heine-s-basic-transform-and-a-permutation-group-for-q-harmonic-series}{\emph{Heine's
   basic transform and a permutation group for \(q\)-harmonic series}},
   Acta Arith. \textbf{111} (2004), no.~2, 153--164,
-  doi:\href{https://doi.org/10.4064/aa111-2-4}{10.4064/aa111-2-4}.
+  doi:10.4064/aa111-2-4.
 \bibitem{zudilin2016} W.~Zudilin,
   \href{https://arxiv.org/abs/1601.02688}{\emph{Irrationality of the generalized
   \(q\)-logarithm}}, Res. Number Theory \textbf{2} (2016), Paper 24,
@@ -1847,9 +1856,10 @@ equality case for the exponent model & \lrefx{Erdos1049/HermitePadeNoGo.lean}{12
   zero, a power series is both \(k\)- and \(\ell\)-Mahler for multiplicatively
   independent \(k,\ell\) if and only if it is a rational function.
 \bibitem{rhinviola1996} G.~Rhin and C.~Viola,
-  \emph{On a permutation group related to $\zeta(2)$},
+  \href{https://geodesic.mathdoc.fr/articles/10.4064/aa-77-1-23-56/}
+  {\emph{On a permutation group related to $\zeta(2)$}},
   Acta Arith. \textbf{77} (1996), no.~1, 23--56,
-  doi:\href{https://doi.org/10.4064/aa-77-1-23-56}{10.4064/aa-77-1-23-56}.
+  doi:10.4064/aa-77-1-23-56.
 \bibitem{vanassche2001} W.~Van Assche,
   \href{https://arxiv.org/abs/math/0101187}{\emph{Little \(q\)-Legendre
   polynomials and irrationality of certain Lambert series}},

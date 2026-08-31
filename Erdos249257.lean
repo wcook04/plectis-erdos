@@ -49,6 +49,7 @@ import Erdos249257.GapFareyBound
 import Erdos249257.GeneratedCertificates
 import Erdos249257.GenericTailOrbitRigidity
 import Erdos249257.GreedyAchievementSet
+import Erdos249257.GreedyTrapDynamics
 import Erdos249257.HalfCarryCeilParentContraction
 import Erdos249257.HalfCarryCofinalWindowOrSeamConsumer
 import Erdos249257.HalfCarryProtectedSeamConsumer

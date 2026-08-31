@@ -14,7 +14,9 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import json
+import shutil
 import ssl
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -120,7 +122,40 @@ def check_url(url: str, *, timeout: float) -> NetworkResult:
     except urllib.error.HTTPError as exc:
         return NetworkResult(url, int(exc.code), exc.geturl(), str(exc.reason))
     except Exception as exc:  # network failures must be represented in the receipt
-        return NetworkResult(url, 0, "", f"{type(exc).__name__}: {exc}")
+        urllib_error = f"{type(exc).__name__}: {exc}"
+        curl = shutil.which("curl")
+        if curl:
+            try:
+                completed = subprocess.run(
+                    [
+                        curl,
+                        "--location",
+                        "--silent",
+                        "--show-error",
+                        "--output",
+                        "/dev/null",
+                        "--max-time",
+                        str(timeout),
+                        "--write-out",
+                        "%{http_code}\\n%{url_effective}",
+                        url,
+                    ],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout + 2,
+                )
+                lines = completed.stdout.splitlines()
+                if completed.returncode == 0 and lines and lines[0].isdigit():
+                    return NetworkResult(
+                        url,
+                        int(lines[0]),
+                        lines[1] if len(lines) > 1 else url,
+                        "",
+                    )
+            except (OSError, subprocess.TimeoutExpired):
+                pass
+        return NetworkResult(url, 0, "", urllib_error)
 
 
 def run_network(urls: Iterable[str], *, jobs: int, timeout: float) -> list[NetworkResult]:
@@ -145,9 +180,15 @@ def audit(*, network: bool, jobs: int, timeout: float) -> dict:
     broken = [
         row
         for row in network_rows
-        if not 200 <= row.status < 400 and row.status not in INCONCLUSIVE_HTTP_CODES
+        if row.status != 0
+        and not 200 <= row.status < 400
+        and row.status not in INCONCLUSIVE_HTTP_CODES
     ]
-    inconclusive = [row for row in network_rows if row.status in INCONCLUSIVE_HTTP_CODES]
+    inconclusive = [
+        row
+        for row in network_rows
+        if row.status == 0 or row.status in INCONCLUSIVE_HTTP_CODES
+    ]
     ok = not local_uri_rows and not missing_cross_rows and not broken
     return {
         "schema": "public_paper_link_audit_v1",

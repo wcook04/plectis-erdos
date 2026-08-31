@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 124,
+  "alias_count": 126,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -89,6 +89,11 @@
       "sigil": "DiaPinDec",
       "module": "Erdos249257/DiagonalPincerDecomposition.lean",
       "path": "Erdos249257/DiagonalPincerDecomposition.lean"
+    },
+    {
+      "sigil": "CloT64",
+      "module": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean"
     },
     {
       "sigil": "FirHarPiv",
@@ -521,11 +526,6 @@
       "path": "Erdos249257/TropicalCurvatureCarry.lean"
     },
     {
-      "sigil": "CloT64",
-      "module": "ErdosProblems/DiagonalPincerPrimeCertificates/ClosureT64.lean",
-      "path": "ErdosProblems/DiagonalPincerPrimeCertificates/ClosureT64.lean"
-    },
-    {
       "sigil": "DynCan",
       "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
       "path": "ErdosProblems/Erdos243/DynamicCancellation.lean"
@@ -546,6 +546,11 @@
       "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
     },
     {
+      "sigil": "RepEnt",
+      "module": "ErdosProblems/Erdos243/RepairEntropy.lean",
+      "path": "ErdosProblems/Erdos243/RepairEntropy.lean"
+    },
+    {
       "sigil": "SpaResRec",
       "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
       "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean"
@@ -561,6 +566,11 @@
       "path": "ErdosProblems/Erdos249/FiniteEulerSieve.lean"
     },
     {
+      "sigil": "FulDepRayAmp",
+      "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+      "path": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean"
+    },
+    {
       "sigil": "PerMulEsc",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
       "path": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
@@ -571,9 +581,9 @@
       "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean"
     },
     {
-      "sigil": "RanOneSubObs",
-      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
-      "path": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean"
+      "sigil": "RanOneShaFlo",
+      "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+      "path": "ErdosProblems/Erdos249/RankOneSharpFloor.lean"
     },
     {
       "sigil": "TotStrPriEsc",

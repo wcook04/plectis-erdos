@@ -44,6 +44,7 @@
 \definecolor{papertableheader}{HTML}{E3EAF0}
 \definecolor{papertablerow}{HTML}{F2F5F7}
 \definecolor{papertablerule}{HTML}{7D8991}
+\definecolor{paperresultrule}{HTML}{315B72}
 
 % Stable cross-document links between sibling PDFs. A named destination is
 % more durable than a page number: sections may move while their semantic role
@@ -84,6 +85,20 @@
   \papertablebody
   \arrayrulecolor{papertablerule}%
   \setlength{\extrarowheight}{1.4pt}%
+}
+
+% A compact front-matter panel for the result a scanning reader should retain.
+% It is deliberately short and unbreakable: manuscripts should state one
+% result, its evidence, and its limit here, then supply the argument below.
+\newenvironment{paperresult}[1]{%
+  \par\addvspace{0.7em}
+  \begin{center}\begin{minipage}{0.94\linewidth}
+    {\color{paperresultrule}\rule{\linewidth}{0.8pt}}\par\vspace{4pt}
+    {\small\sffamily\bfseries\color{paperresultrule}#1}\par\smallskip
+    \small\color{black}
+}{%
+    \par\vspace{4pt}{\color{paperresultrule}\rule{\linewidth}{0.45pt}}
+    \end{minipage}\end{center}\par\addvspace{0.5em}
 }
 
 % Shared diagram grammar.  Reader-facing figures use the same restrained

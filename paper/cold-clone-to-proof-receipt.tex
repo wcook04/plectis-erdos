@@ -78,6 +78,16 @@ audited in the author's environment. As of 31 August 2026, no completed
 external cold-clone use had been recorded.
 \end{abstract}
 
+\begin{paperresult}{What this paper establishes}
+\textbf{Result.} A cold clone exposes the library's complete declaration
+inventory, reviewed mathematical routes, public claim boundaries, and exact
+source links before Lean is built.  Accepted proof probes are issued by the
+pinned Lean process and can be replayed byte for byte.  \textbf{Evidence.}
+The audited repository contains 1,019 modules and 153,253 declarations; the
+paper includes a replayed session case study.  \textbf{Limit.} This is a
+single-environment prototype with no recorded external cold-clone use.
+\end{paperresult}
+
 \section{The cold-clone problem}\label{sec:problem}
 \papersectiontarget{cold-clone-problem}
 
@@ -90,10 +100,10 @@ conditional, finite, or open? Where does a declaration sit in the formal
 dependency graph? Which surface is exhaustive, and which is a human selection?
 What may be trusted without compiling anything?
 
-This is not only a convenience problem. When an agent cannot see a library's
-option surface, it tends to rediscover existing lemmas, confuse a finite result
-with its open unbounded neighbour, or build a new local index because the
-existing one was not discoverable. Conversely, loading every declaration,
+Poor first-contact navigation changes the mathematics an agent attempts. An
+agent that cannot see a library's option surface may rediscover existing
+lemmas, confuse a finite result with its open unbounded neighbour, or build a
+new local index because the existing one was not discoverable. Loading every declaration,
 paper, and proof edge into one prompt destroys the distinctions the extra
 context was meant to reveal. A useful first-contact surface must therefore be
 small, expandable, and honest about what it omits.
@@ -517,8 +527,8 @@ genuinely changed formal environment.
 
 \section{What the architecture guarantees}\label{sec:conclusion}
 
-An agent-native formal repository should not merely contain many proofs. It
-should reveal, from a cold clone, what mathematics exists, what each navigation
+An agent-native formal repository needs to reveal, from a cold clone, what
+mathematics exists, what each navigation
 layer knows, what remains open, and which next action crosses into proof
 authority. The architecture here realises that sequence with committed
 projections, a bounded intent tour, exact loaded-root dependency data, a
