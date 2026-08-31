@@ -150,6 +150,16 @@ The basis and finite-rank statements are locally proved with novelty
 unassessed; full-kernel infinite-dimensionality is a kernel-checked consequence
 already implied by Coons's non-$2$-regularity result.
 
+A second unconditional result determines the positive rank-one
+M\"obius--Mersenne cone exactly.  Its quotient has the unique minimizer
+$(e,Y)=(1,5)$; every admissible quotient and every nonempty finite positive
+mixture exceeds $\Theta_2=\Stot-1/2$ by more than $21/320$.  Thus $1/16$ is a
+valid uniform unit-fraction floor, while $1/15$ already fails at the unique
+minimizer.  Equivalently, a rational representation $Q(e,Y)=p/q$ satisfies
+$|q\Theta_2-p|>21q/320$.  This rules out the complete positive rank-one and
+positive direct-sum mechanism, but not signed cancellation or genuinely
+coupled higher-rank approximants.
+
 The same reduction has an all-base conditional form.  For every integer base
 $k\ge2$ and level $e\ge1$, the explicit canonical family spans the corresponding
 truncation; if that family is linearly independent, the truncation has dimension
@@ -171,7 +181,8 @@ presented as evidence that Problem~\#249 is solved.
 endpoint consumers for Problem~\#249: quantitative separation of the actual
 power-two LCM orbit, and a four-term first-harmonic budget with a cofinal
 residual-decorrelation producer.  It then gives the explicit odd-core basis,
-relation normal form, and exact finite-level rank $2^e+1$, followed by a
+relation normal form, exact finite-level rank $2^e+1$, and the sharp positive
+rank-one/direct-sum floor with its unique minimizer, followed by a
 status-tagged inventory of mechanisms, no-go results, and finite
 evidence.}{The actual-LCM separation supply is stronger than the exact
 non-integrality frontier and remains unproved.  The first-harmonic budgets
@@ -189,7 +200,9 @@ and
       {the first-harmonic route},
 as well as the odd-core basis and finite-rank rows.  The exact actual-LCM
 equivalence, the top-edge obstruction, and the $38=2\cdot19$ counterexample
-remain adjacent source evidence.  Full-kernel infinite-dimensionality is
+remain adjacent source evidence.  Comparator also carries the sharp
+rank-one/direct-sum no-go family, including its rational-linear-form endpoint.
+Full-kernel infinite-dimensionality is
 prior-art context from Coons; the all-base independence input uses Martin
 externally; no novelty or priority claim is made for the conditional routes.}
 
@@ -219,7 +232,10 @@ The principal unconditional result is structural: the two zero-residue
 sections $\ph_{0,0}$ and $\ph_{1,0}$, together with the odd-residue sections,
 form a rational basis, and the two reduction identities below generate every
 rational relation among the sections.  It gives exact finite-level rank but
-no rationality-to-finite-rank bridge.  The remaining inventory includes the
+no rationality-to-finite-rank bridge.  The positive rank-one
+M\"obius--Mersenne cone is also determined sharply: one unique minimizer,
+the uniform $21/320$ floor, the $1/16$ versus $1/15$ boundary, and closure
+under arbitrary finite positive mixing.  The remaining inventory includes the
 finite Farey denominator exclusion, finite diagonal certificates at every
 $t\le82$, Lambert and gcd-moment identities, conditional producer interfaces,
 and explicit no-go boundaries.  Exact equivalences remain reformulations of
@@ -339,6 +355,32 @@ the latter is the complete truncation wrapper, with its explicit hypothesis $e\g
 while the canonical-family rank is the intermediary because even residues reduce to
 the odd-core family.
 \mword{Erdos249257/TotientMahlerDefect.lean}{1145}{not_finiteDimensional_span_fullTotientKernel}{infinite-dimensionality directly}.}
+
+\item\label{res:rankonefloor} \stag{unconditional progress}
+\textbf{Sharp positive rank-one and direct-sum floor.}  Put
+\[
+ \Theta_2=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}=\Stot-\frac12,
+ \qquad
+ Q(e,Y)=
+ \frac{\bigl(\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
+      {\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{2e+2}}.
+\]
+For every $e\ge1$ and $Y\ge4$, the quotient $Q(e,Y)$ is uniquely minimized
+at $(1,5)$ and satisfies $Q(e,Y)-\Theta_2>21/320>1/16$.  The stronger
+unit-fraction floor $1/15$ fails already at $(1,5)$.  Every nonempty finite
+positive weighted average of admissible $Q(e,Y)$ has the same strict
+$21/320$ separation.  In rational-linear-form language, if
+$Q(e,Y)=p/q$ with $p\in\Z$ and $q\ge1$, then
+$|q\Theta_2-p|>21q/320$.  Hence neither adding atoms nor taking positive direct
+sums can repair this rank-one approximation mechanism; signed cancellation
+and genuinely coupled higher-rank kernels remain outside the theorem.
+{\footnotesize\emph{Checked:}
+\lword{Erdos249/RankOneSharpFloor.lean}{534}{unique minimizer},
+\lword{Erdos249/RankOneSharpFloor.lean}{624}{uniform $21/320$ floor},
+\lword{Erdos249/RankOneSharpFloor.lean}{634}{$1/16$ floor},
+\lword{Erdos249/RankOneSharpFloor.lean}{645}{$1/15$ failure},
+\lword{Erdos249/RankOneSharpFloor.lean}{655}{positive direct sums},
+\lword{Erdos249/RankOneSharpFloor.lean}{693}{rational linear-form obstruction}.}
 
 \item\label{res:index} \stag{formalised here}
 \textbf{Canonical all-base index and unique coordinates.}  For every integer
@@ -1613,11 +1655,17 @@ ladder
  \Theta_r=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^r},
  \qquad \Theta_2=\Stot-\frac12.
 \]
-The positive rank-one family has already been excluded at a quantitative
-scale: every admissible monomial quotient, and every positive finite average
-of them, exceeds $\Theta_2$ by more than $1/480$
-(\lword{Erdos249/RankOneSubrankObstruction.lean}{238}{rankOneSubrankQuotient_sub_theta_two_gt}{rank-one gap},
-\lword{Erdos249/RankOneSubrankObstruction.lean}{300}{positive_direct_sum_sub_theta_two_gt}{positive-sum gap}).
+Result~\ref{res:rankonefloor} excludes the positive rank-one family by an
+exact extremal calculation, not a coarse interval screen.  The unique minimum
+is $(e,Y)=(1,5)$, and every admissible quotient, hence every nonempty finite
+positive normalized average of them, satisfies
+\[
+ Q(e,Y)-\Theta_2>\frac{21}{320}>\frac1{16}.
+\]
+The stronger unit-fraction floor $1/15$ fails already at the minimizer.  Thus
+adding atoms or positive rank-one blocks cannot create a small linear form;
+the remaining route must use signed cancellation, off-diagonal coupling, or
+genuinely higher rank.
 
 \begin{problem}[genuinely coupled denominator compression]\label{prob:hankel}
 Construct integers $P_n$ and $Q_n>0$ from a genuinely off-diagonal,
