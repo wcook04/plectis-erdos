@@ -1,6 +1,6 @@
 <a id="erdos-1041-lemniscate-newton-flow"></a>
 
-# Newton Flow and Critical-Value Ray Separation
+# Admissible Hubs and Newton-Flow Ray Separation
 
 <div class="center">
 
@@ -8,19 +8,17 @@
 
 </div>
 
-Let $`f(z)=\prod_{i}(z-z_i)`$ be monic with every root in the open unit disc. Erdős, Herzog, and Piranian asked whether two roots can always be joined by a curve of length less than $`2`$ contained in the open lemniscate $`\{|f|<1\}`$. The problem is open. A manuscript posted in March 2026 claims the result for all such $`f`$; its Proposition 12 is a load-bearing spanning-tree decomposition whose printed proof contains an invalid local saddle block. At an interior Morse saddle a sufficiently small chart lies wholly in the open component and contains all four sectors, so the asserted one-lower/two-upper three-ended neighbourhood does not follow. The proposition itself is not refuted and may admit a cut-annulus or four-pronged repair. An independent June 2026 preprint proves the degree-four case. The current public frontier is more specific than this dynamical diagnosis alone: near a Fekete configuration, radial deficits can be removed from the containment problem, while a degree-five analysis isolates rapid nearly-simultaneous merging near the regular pentagon. Its exact envelope is already explicit: a critical value at most $`1/M_5`$, where
+Let $`f(z)=\prod_i(z-z_i)`$ be monic with roots in the closed unit disc. Erdős, Herzog, and Piranian ask whether two roots can always be joined by a curve of length less than $`2`$ inside $`\{|f|<1\}`$. The global assertion remains open. The current metric throat is an admissible-hub selection problem: on the ray-separated dense class, find a critical hub $`c`$ whose two inverse-ray arms lie in the relevant component and prove
+``` math
+\min_{c\ \mathrm{admissible}} L(c)\le2.
+```
+At degree five this becomes the explicit selection statement (SPOKE-5): every monic quintic with roots in the closed unit disc has a critical point and two roots whose contained nearest-root spokes have total length at most $`2`$. Neither selection assertion is proved here. The near-Fekete reduction removes radial deficits from the containment question, and the degree-five envelope is already explicit: a critical value at most $`1/M_5`$, where
 ``` math
 M_5=(1-t_*)(1+t_*)^3\sqrt{16t_*^2-4t_*+1},
  \qquad t_*={5\over16}+{3\sqrt{105}\over80},
  \qquad 1/M_5=0.2760461\ldots,
 ```
-gives two contained nearest-root spokes of total length at most $`2`$. The remaining degree-five statement is therefore a universal selection assertion at this threshold, not a further constant chase; it is recorded below but not proved. This note therefore separates a genuine degree-five target, surviving carriers, and certified failures of tempting selection rules rather than presenting a uniform list of partial estimates.
-
-Along a trajectory of the complex Newton field $`-f/f'`$ the polynomial value satisfies $`w'=-w`$, so $`f(z(t))=e^{-t}f(z(0))`$ and $`e^{t}f(z(t))`$ is a first integral. Both are checked by the Lean kernel. The consequence is a separation criterion: the endpoints of any finite Newton-flow connection lie on one oriented ray from the origin, so critical values on distinct rays admit no saddle-to-saddle connection. The criterion is sharper than the one the manuscript uses. Distinct critical values, and even distinct critical-value moduli, do not exclude saddle connections; distinct critical-value *arguments* do. The obstruction to arranging distinct arguments by perturbation is also made explicit: for each pair of critical values the set of common translations causing a ray collision is a one-real-parameter locus, given in closed form.
-
-The formal route is explicit: Newton-value decay is checked at [the value equation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50) and [the scaled first integral](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64); the connection boundary is [the ray-separation theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L315), while the finite perturbation and root-retention interfaces are [the translation theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197) and [the unit-disc margin](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287). These are finite dynamical and stability interfaces, not the missing global topology or length-$`2`$ gluing argument.
-
-What remains is the planar topology and the length bookkeeping. Neither is proved here, and Erdős \#1041 is not settled.
+gives two contained nearest-root spokes of total length at most $`2`$. The degree-five residual is a universal selection assertion at this threshold, not a constant chase. The global Euclidean budget underneath this question is a separate solved subproblem: at every critical point, two nearest-root occurrences have total distance at most $`2`$. The mechanism is the reciprocal critical balance together with the disk inverse-square estimate; Lean checks those two ingredients, while the polynomial-level assembly is an ordinary proof in the source map [`CriticalTwoRootProximity.lean`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/6bebc6e396a4982d842ba214315dc4a8f043ea60/research_corpus/Erdos1041/CriticalTwoRootProximity.lean). This is a distance theorem, not a containment theorem: an exact quintic has a nearest straight spoke that exits $`\{|f|<1\}`$, and an exact cubic has an escaping midpoint on every straight root-pair segment. Curved branch selection, rather than raw Euclidean budget, is therefore the surviving obligation. The checked dynamical input is also exact. Along a trajectory of the complex Newton field $`-f/f'`$, the polynomial value obeys $`w'=-w`$ and therefore $`f(z(t))=e^{-t}f(z(0))`$: [the value equation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50) and [the scaled first integral](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64); the endpoints of a finite connection consequently lie on one oriented ray, so distinct positive rays exclude a saddle connection [the ray-separation theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L315), while the Claims/Comparator-selected finite perturbation interfaces are [the translation theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197) and [the unit-disc margin](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287). The degree-five threshold, the no-go witnesses, and the selector formulation are ordinary proof, exact-certificate, and computational evidence rather than additional kernel-checked theorems. The remaining work is coefficient genericity, component stability, planar topology, and metric gluing; these obligations are not discharged here, and Erdős \#1041 is not settled.
 
 > **Contribution.** The paper checks exponential Newton-value decay, parameterises positive-ray collisions, constructs arbitrarily small translations avoiding all collisions in a finite family, and proves root retention under a quantified constant perturbation. It also records the current near-Fekete reduction and the degree-five residual.
 >
@@ -61,6 +59,9 @@ The object we work with is not the lemniscate directly but the flow that foliate
 | Ray separation of critical values | Checked (consumer form) | Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. |
 | Ray-collision locus | Checked | $`\beta=(ra-b)/(1-r)`$, $`r>0`$, $`r\ne1`$: one real parameter per pair. |
 | Quartic case | Cited | Proved in \[june2026, Thm. 1, p. 1\]; does not extend to general degree. |
+| Translated quartic quotient fibres | Ordinary theorem with a Lean-checked metric kernel | For $`f(z)=P((z-h)^q)`$, $`P`$ monic quartic and $`q\ge2`$; Pendyala supplies the quartic geometry, while Lean checks the root-lift density, exact primitive, and strict endpoint budget. |
+| Coefficient-controlled cyclic tetranomials | Ordinary path theorem with Lean-checked spoke bounds | For $`g(w)=w^m+aw^r+bw^s+c`$, two roots satisfying $`|c|+|b||w|^s<1`$ have safe spokes; $`|b|+|c|\le1`$ is an all-root sufficient condition. |
+| Concyclic zeros with $`2\rho^n\le1`$ | Ordinary proof; finite exact and numerical checks | Distinct-root theorem; not Lean checked; the unrestricted concyclic case remains open. |
 | Unrestricted proof of \[march2026, Theorem 1, p. 1\] | Proof gap | Proposition 12 uses a false three-ended local saddle block; located publicly by Tao (25 March 2026), conceded by the author at statement level (26 March 2026). No counterexample is exhibited. |
 | Constant-translation ray separation and root retention | Checked | After critical-value injectivity, arbitrary small ray avoidance and an explicit unit-disc margin. |
 | Coefficient perturbation and slack stability | Open | Must first create injective critical values and preserve the component, collars and length budget. |
@@ -90,6 +91,88 @@ The associated radial monotonicity theorem is the more important reader conclusi
  \quad(0\le s\le\rho_i),
 ```
 so every two-radii path is contained. The good spoke in the general on-circle averaging identity may move with $`s`$, however; that is why an existence statement at one level does not supply a fixed pair of roots.
+
+<a id="a-bounded-radius-concyclic-class"></a>
+
+## A bounded-radius concyclic class
+
+There is nevertheless a clean theorem for a different on-circle mechanism. Let $`f`$ be monic of degree $`n\ge3`$ with distinct zeros on a circle of radius $`\rho`$. If $`2\rho^n\le1`$, two adjacent zeros are joined by their straight chord, whose length is at most $`2\rho\sin(\pi/n)<2`$, and the chord lies in $`\{|f|<1\}`$. (If a zero is repeated, the short-connection conclusion is immediate; the distinct case is the substantive one.) After normalisation to the unit circle, self-inversive realification and alternation against $`z^n-c`$ select a zero-free gap on which the polynomial modulus is at most $`2`$; a harmonic normal-derivative argument transfers this arc bound strictly to the chord. The complete ordinary proof is [`ConcyclicAlternation.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md). This is not a Lean theorem: the [exact-rational checker](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py) tests finitely many load-bearing identities and configurations, while the [numerical checker](https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation.py) is regression and stress-test evidence. The arc constant $`2`$ is sharp on the regular $`n`$-gon, so this chord argument does not reach radii tending to $`1`$; the unrestricted concyclic case and Erdős #1041 remain open.
+
+<a id="cyclic-trinomial-fibres"></a>
+
+## Cyclic trinomial fibres
+
+There is also a positive structured family in every cyclic lift degree. Fix integers $`1\le r\le m`$ and $`q\ge1`$, and consider the translated polynomial
+``` math
+f(z)=(z-h)^{qm}+a(z-h)^{qr}+c.
+```
+Writing $`w=(z-h)^q`$ reduces the root equation to $`w^m+aw^r+c=0`$. At such a quotient root the middle coefficient can be eliminated exactly: for $`0\le u\le1`$,
+``` math
+u^mw^m+au^rw^r+c
+   =(1-u^r)c-(u^r-u^m)w^m.
+```
+The two coefficients on the right are nonnegative and have total at most one. Lean therefore proves that, if $`|w|<1`$ and $`|c|<1`$, the complete radial spoke is strictly contained in the open unit lemniscate. This is an all-root statement; no Vieta-small root selection is needed for the containment bound.
+
+For a nontrivial cyclic fibre, two selected displacements $`y_1,y_2`$ with $`|y_1|,|y_2|<1`$ also satisfy $`|y_1|+|y_2|<2`$. The formal source checks the factorization, strict spoke estimate, and this metric budget. It does not yet check the ordinary finite argument selecting a suitable quotient root and two distinct members of its fibre, lifting both quotient spokes, or assembling their union as a path in the relevant component. Thus the Lean theorem is the load-bearing analytic kernel for this translated cyclic-trinomial family, not the complete path theorem and not a proof of unrestricted Erdős #1041.
+
+<a id="coefficient-controlled-cyclic-tetranomial-spokes"></a>
+
+## Coefficient-controlled cyclic tetranomial spokes
+
+The first additional lower monomial admits an exact Abel-tail criterion. Let
+``` math
+g(w)=w^m+aw^r+bw^s+c,\qquad m>r>s\ge1,
+```
+assume all roots of $`g`$ lie in the open unit disk, and let $`w_1,w_2`$ be roots of the two smallest moduli. If
+``` math
+|c|+|b|\,|w_2|^s<1,
+```
+then the complete radial spokes from $`w_1`$ and $`w_2`$ to the origin lie in $`\{|g|<1\}`$, and their broken line has length strictly below $`2`$. The simpler coefficient condition
+``` math
+|b|+|c|\le1
+```
+makes every root spoke safe; the coefficient $`a`$ is unrestricted.
+
+The mechanism is visible in one identity. At a root $`w`$ and for $`0\le u\le1`$,
+``` math
+\begin{split}
+ g(uw)={}&(1-u^s)c
+  -(u^s-u^r)(aw^r+w^m)
+  -(u^r-u^m)w^m,\\
+ aw^r+w^m={}&-(c+bw^s).
+\end{split}
+```
+The three scalar coefficients are nonnegative and sum to $`1-u^m`$. Thus the root-dependent budget $`|c|+|b||w|^s<1`$, together with $`|w|<1`$ and $`|c|<1`$, puts every vector in the Abel decomposition strictly inside the unit ball. Lean checks this factorization and the resulting strict spoke theorem under the exact weak exponent hypotheses $`1\le s\le r\le m`$; it also checks the coefficient-only corollary above.
+
+For $`q\ge2`$ and $`f(z)=g((z-h)^q)`$, the ordinary regular-fibre mean-square identity puts every quotient root inside the unit disk. Lifting two selected quotient spokes gives a path through $`h`$ whose two displacement lengths sum to less than $`2`$. The Lean module does not formalize the selection of the two smallest quotient roots, Vieta’s constant-term step, cyclic-fibre lifting, or the final path assembly. Without the displayed two-root or coefficient budget, the tetranomial selector remains open; this family does not solve unrestricted Erdős #1041.
+
+<a id="translated-quartic-quotient-fibres"></a>
+
+## Translated quartic quotient fibres
+
+Pendyala’s degree-four theorem can also be lifted through every nontrivial cyclic power. Let $`P`$ be a monic quartic, let $`q\ge2`$, and set
+``` math
+f(z)=P((z-h)^q).
+```
+If all listed zeros of $`f`$ lie in the open unit disk, averaging the squared moduli over each complete $`q`$-point fibre shows that every quotient root $`w`$ of $`P`$ satisfies $`|w|<1`$. Pendyala’s chord-or-radial proof then supplies the quotient geometry. The extra issue is metric: a short chord in the $`w`$-plane need not lift isometrically through $`y\mapsto y^q`$.
+
+Put $`\alpha=1/q`$. Along a quotient chord whose supporting line has distance $`d`$ from the origin, the root-lift density is controlled pointwise by
+``` math
+\bigl(\sqrt{d^2+x^2}\bigr)^{\alpha-1}
+    \le x^{\alpha-1}\qquad(x>0),
+```
+and Lean checks the exact primitive
+``` math
+\alpha\int_0^A x^{\alpha-1}\,dx=A^\alpha.
+```
+Splitting at the perpendicular foot, and at the origin when the chord crosses it, yields the ordinary power-map chord-lift estimate
+``` math
+\operatorname{length}(\widetilde{[a,b]})
+    \le |a|^{1/q}+|b|^{1/q}.
+```
+The formal source also checks the strict endpoint consumer: if $`0\le a,b<1`$, $`\alpha>0`$, and a candidate length $`L`$ is at most $`a^\alpha+b^\alpha`$, then $`L<2`$. Thus both Pendyala branches survive the power-map lift, giving the asserted short path for every translated quartic quotient fibre, in each degree $`4q\ge8`$.
+
+The attribution and proof boundary are exact. Pendyala proves the quartic geometric theorem and its four-point radial lemma. The local Lean module checks the antitone density inequality, its integral, the strict powered endpoint budget, and the final length fan-in. It does not formalize Pendyala’s geometric lemma, the continuous covering-space construction of the root lift, or the ordinary chord/radial case assembly. This is a structured all-scale family, not a proof of unrestricted Erdős #1041.
 
 <a id="the-degree-five-target-is-now-explicit"></a>
 

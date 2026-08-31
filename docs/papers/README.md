@@ -11,117 +11,7 @@ mirrored or restored to an active publication route.
 
 This checkout carries 13 active papers and 1 retired provenance paper. Pick the question you are actually asking:
 
-## Mathematical signal first
-
-This reader order projects the canonical Palomar `candidate_ranking`,
-joined to the exact source and boundary in `docs/claims.json`. It is a
-mathematical value judgement, not a proof, novelty, review, or closure
-claim. The complete paper inventory follows after this deliberately small
-frontier spine.
-
-### Ranked frontier
-
-#### 1. Erdős #257 — `known_irrational_supports`
-
-- **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSum_full_support`
-- **Exact source:** `Erdos249257.irrational_erdosSum_full_support` in [Erdos249257/CertificateKernel.lean](../../Erdos249257/CertificateKernel.lean)
-- **Consequence:** Directly settles the canonical full-support member of Erdős #257 for every integer base b >= 2, while leaving universal arbitrary-support irrationality open.
-- **Hard mechanism / natural friction:** The source exposes the bounded Bertrand/CRT first-block frame, middle-window divisor-pair averaging with pigeonhole selection, weighted tail bounds, and explicit parameter closure.
-- **Evidence / attribution ceiling:** formalisation of an existing theorem. The exact source theorem is committed at Erdos249257/CertificateKernel.lean:8323-8331 and is transported by the committed Challenge/Solution pair.
-- **Boundary:** This is the classical full-support theorem, not universal Erdos #257. Low only under the stated boundary: this is full support, not all infinite supports, and local proof plus Comparator is not a novelty or human-review claim.
-
-#### 2. Erdős #257 — `pairwise_coprime_support`
-
-- **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime`
-- **Exact source:** `Erdos249257.irrational_erdosSupportSeries_pairwise_coprime` in [Erdos249257/CertificateKernel.lean](../../Erdos249257/CertificateKernel.lean)
-- **Consequence:** Direct irrationality for every infinite pairwise-coprime support with summable reciprocal mass, but not for arbitrary supports.
-- **Hard mechanism / natural friction:** Adaptive CRT weighted coefficient certificates absorb first-block hits and control residue strays through summable reciprocals.
-- **Evidence / attribution ceiling:** formalisation of an existing theorem. The exact source theorem is committed at Erdos249257/CertificateKernel.lean:10768-10782 and is transported by the committed Challenge/Solution pair.
-- **Boundary:** This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit. Moderate unless infinitude, pairwise coprimality, and summable reciprocal mass stay visible in every projection.
-
-#### 3. Erdős #257 — `orthogonal_petal_sunflower_reduction`
-
-- **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet`
-- **Exact source:** `Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` in [Erdos249257/SupportSunflowerDichotomy.lean](../../Erdos249257/SupportSunflowerDichotomy.lean)
-- **Consequence:** Direct irrationality under the displayed structure, but the structural predicates are not constructed for arbitrary supports.
-- **Hard mechanism / natural friction:** The conditional selector is the natural friction; omitting it would turn a reduction into a false unconditional theorem.
-- **Evidence / attribution ceiling:** conditional reduction; novelty unassessed. Exact committed source and Comparator transport are available.
-- **Boundary:** This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem. High if the bouquet and uniform tail-selection hypotheses are silently treated as automatic.
-
-#### 4. Erdős #257 — `periodic_nonnegative_weight_irrationality`
-
-- **Paper route:** [erdos-257-mersenne-support-subseries](full-text/erdos-257-mersenne-support-subseries.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic`
-- **Exact source:** `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic` in [Erdos249257/CertificateKernel.lean](../../Erdos249257/CertificateKernel.lean)
-- **Consequence:** Close to the Lambert-series endpoint but not a universal support theorem and not the mixed-sign statement.
-- **Hard mechanism / natural friction:** A periodic divisor-orbit sieve and denominator clearing route are visible in the source.
-- **Evidence / attribution ceiling:** formalised here; novelty unassessed. Exact committed source and Comparator transport are available.
-- **Boundary:** This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed. Moderate if the mixed-sign or arbitrary-support cases are inferred.
-
-#### 5. Erdős #249 — `actual_lcm_orbit_separation`
-
-- **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
-- **Exact source:** `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` in [Erdos249257/TotientActualLcmOrbitSeparation.lean](../../Erdos249257/TotientActualLcmOrbitSeparation.lean)
-- **Consequence:** It points directly at the binary totient irrationality endpoint for Erdős #249, conditional on a cofinal separation supply; it does not prove that supply.
-- **Hard mechanism / natural friction:** The source carries a raw adjacent-suffix approximation, an explicit error radius, and uniform separation from every integer into a signed-margin producer. The cofinal PowerTwoActualLcmOrbitSeparationSupply is the natural friction and remains a premise.
-- **Evidence / attribution ceiling:** conditional reduction. The source definition and implication are committed at Erdos249257/TotientActualLcmOrbitSeparation.lean:305, and the exact wrapper is committed in ExternalVerification/Challenge.lean and ExternalVerification/Solution.lean at the configured declaration.
-- **Boundary:** The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open. High unless the two cofinal supply clauses stay attached: the implication is source-faithful and checked, but the supply itself is not proved here.
-
-#### 6. Erdős #249 — `first_harmonic_pivot_decomposition`
-
-- **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation`
-- **Exact source:** `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation` in [Erdos249257/FirstHarmonicPivot.lean](../../Erdos249257/FirstHarmonicPivot.lean)
-- **Consequence:** It points directly at Erdős #249 irrationality from an explicit cofinal analytic producer, independently of the actual-LCM orbit route; that producer remains unproved.
-- **Hard mechanism / natural friction:** Supplier fibres, pivot correlation, bad and non-supplier contributions, and the controlled remainder are kept separate. The finite counterexample to global isolation and the missing DTWPivotResidualDecorrelation supply are the natural friction.
-- **Evidence / attribution ceiling:** conditional reduction. The source theorem, canonical review family, and exact Comparator endpoint wrapper are committed; the cofinal decorrelation producer is explicitly absent.
-- **Boundary:** The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed. High unless DTWPivotResidualDecorrelation remains attached as an unproved cofinal premise; this is not an unconditional #249 result.
-
-#### 7. Erdős #68 — `factorial_carry_characterisation`
-
-- **Paper route:** [erdos-68-factorial-denominator-irrationality](full-text/erdos-68-factorial-denominator-irrationality.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries`
-- **Exact source:** `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` in [ErdosProblems/Erdos68/FactorialZeroPlateau.lean](../../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
-- **Consequence:** Maximal endpoint proximity for #68, but it does not prove the cofinal producer.
-- **Hard mechanism / natural friction:** The carry recurrence is the useful mechanism; the missing cofinal witness is the natural unresolved friction.
-- **Evidence / attribution ceiling:** locally proved result; novelty unassessed. Exact committed source and Comparator transport are available.
-- **Boundary:** The equivalence does not supply a cofinal carry producer. High if the equivalence is mistaken for a cofinal carry proof.
-
-#### 8. Erdős #251 — `prime_gap_reformulation`
-
-- **Paper route:** [erdos-251-prime-gap-dyadic-series](full-text/erdos-251-prime-gap-dyadic-series.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap`
-- **Exact source:** `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap` in [ErdosProblems/Erdos251/PrimeGapDyadicTail.lean](../../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
-- **Consequence:** Very close to #251's target but proves neither side irrational and retains a summability premise.
-- **Hard mechanism / natural friction:** The key mechanism is summation-by-parts normalization; the target irrationality remains open.
-- **Evidence / attribution ceiling:** locally proved result; novelty unassessed. Exact committed source and Comparator transport are available.
-- **Boundary:** The equivalence does not prove irrationality of either series. High if equivalence is read as irrationality.
-
-#### 9. Erdős #249 — `totient_kernel_rank`
-
-- **Paper route:** [erdos-249-binary-totient-series](full-text/erdos-249-binary-totient-series.md)
-- **Checked interface:** `Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel`
-- **Exact source:** `Erdos249257.not_finiteDimensional_span_fullTotientKernel` in [Erdos249257/TotientMahlerDefect.lean](../../Erdos249257/TotientMahlerDefect.lean)
-- **Consequence:** Important structural support for #249, but it does not prove irrationality or the missing cofinal certificate supply.
-- **Hard mechanism / natural friction:** The proof uses exact ranks 2^e+1 and a finite-dimensional contradiction.
-- **Evidence / attribution ceiling:** Lean formalisation of an existing consequence of Coons. Exact committed source and Comparator transport are available.
-- **Boundary:** The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved. Moderate if infinite-dimensionality is treated as an irrationality criterion.
-
-### Complete disposition-aware inventory
-
-Every represented, deferred, subordinate, rejected, and long-tail family
-remains queryable; demotion here is never deletion. Exact reasons and source
-boundaries live in [Palomar qualification](../PALOMAR_QUALIFICATION.md) and
-the [ExternalVerification reader projection](../EXTERNAL_VERIFICATION.md).
-The paper shelf below is complete inventory and is not a second value order.
-
-Dispositions: `selected`, `represented`, `deferred`, `subordinate`, `rejected`, `long_tail`.
-
-## Problem portfolio (complete paper inventory)
+## Problem portfolio (complete 14-paper inventory)
 
 The active mathematical notes form a growing problem-by-problem portfolio: Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. Start with the named problem, then use its note for the exact checked results and remaining obligation. Retired combined manuscripts are provenance, not the portfolio's front door.
 
@@ -131,7 +21,7 @@ The active mathematical notes form a growing problem-by-problem portfolio: Erdő
 
 **Factorial Carries and Finite Channel Obstructions**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 18 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 19 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [Finite channel congruences and the LCM obstruction](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Weighted projection rigidity](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [The missing cofinal inputs](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
@@ -139,7 +29,7 @@ This paper states no reading route. Its evidence boundary is in [The problem](fu
 
 **Excluding the Bounded Negative Part**
 
-[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex) · 28 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
+[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex) · 29 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Excluding a bounded negative part](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [Complements and further questions](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
 
@@ -161,9 +51,9 @@ This paper states no reading route. Its evidence boundary is in [The wall](full-
 
 ### What tail-shift condition would prove irrationality in Erdős #251, which natural affine schedules provably cannot supply it, and what prime-gap input still survives?
 
-**An Integral-Shift Criterion for Dyadic Tail Recurrences**
+**Diagonal Criteria and Circularity for Dyadic Tail Recurrences**
 
-[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex) · 23 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
+[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex) · 24 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-251-prime-gap-dyadic-series.md#sec:problem), [The tail recurrence and integral shifts](full-text/erdos-251-prime-gap-dyadic-series.md#sec:tail), [Complements and further questions](full-text/erdos-251-prime-gap-dyadic-series.md#sec:open).
 
@@ -187,33 +77,33 @@ This paper states no reading route. Its evidence boundary is in [The problem, an
 
 **The Three-Prime Running Least Common Multiple**
 
-[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex) · 26 sections · `erdos-269-three-prime-running-lcm` · native to this repository
+[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex) · 27 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [The running least common multiple as a product of pure powers](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [Dyadic blocks and a conditional carry contradiction](full-text/erdos-269-three-prime-running-lcm.md#sec:escape), [Complements and further questions](full-text/erdos-269-three-prime-running-lcm.md#sec:open).
 
 ### Which Newton-flow separation facts are checked for Erdős #1041, and what exactly fails in the recent claimed global decomposition?
 
-**Newton Flow and Critical-Value Ray Separation**
+**Admissible Hubs and Newton-Flow Ray Separation**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 20 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 24 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-1041-lemniscate-newton-flow.md#sec:problem), [The Newton value equation](full-text/erdos-1041-lemniscate-newton-flow.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [Complements and further questions](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
 
 ### Which linear-form constructions fail at the rational base 3/2 for Erdős #1049, and what primitive kernel is still needed?
 
-**Arithmetic Boundaries at Base 3/2**
+**Sharp Height and Four-Jet Obstructions at Base 3/2**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex) · 28 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex) · 29 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [Integer scalar content is neutral](full-text/erdos-1049-rational-base-lambert.md#sec:primitive), [Endpoint residues at (3,2) and the four-jet kernel](full-text/erdos-1049-rational-base-lambert.md#sec:endpoints), [Complements and further questions](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
 ### Lean proves the formal statement. Who checks that the README describes it faithfully?
 
-**From Lean Proofs to Public Claims**
+**Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 30 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 40 sections · `claim-faithful-publication-systems` · native to this repository
 
-The paper's own reading map sends a first pass to [The release workflow](full-text/claim-faithful-publication-systems-paper.md#sec:picture), [The reviewed record](full-text/claim-faithful-publication-systems-paper.md#sec:record), [What the checks establish](full-text/claim-faithful-publication-systems-paper.md#sec:trust), [Scope, reuse, and limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
+The paper's own reading map sends a first pass to [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
 
 ### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
 
@@ -227,7 +117,7 @@ This paper states no reading route. Its evidence boundary is in [The cold-clone 
 
 **Plectis: What a Stranger Can Check**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/7d76950b9e3954d908730be5cec28b62f7678448/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 30 sections · `plectis-public-system` · mirror to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/plectis-public-system.md#sec:problem), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions).
 
@@ -246,6 +136,7 @@ is proof authority. In order:
 
 > checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition.
 
+- `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
 - `erdos-68-factorial-denominator-irrationality` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #68, which remains open.
 - `erdos-243-reciprocal-tail-rigidity` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #243, which remains open.
 - `erdos-249-binary-totient-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
@@ -259,7 +150,6 @@ is proof authority. In order:
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
-- `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
 
 ## For agents
 

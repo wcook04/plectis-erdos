@@ -1,6 +1,6 @@
 <a id="erdos-251-prime-gap-dyadic-series"></a>
 
-# An Integral-Shift Criterion for Dyadic Tail Recurrences
+# Diagonal Criteria and Circularity for Dyadic Tail Recurrences
 
 <div class="center">
 
@@ -8,7 +8,17 @@
 
 </div>
 
-Call a sequence $`(T_N)_{N\ge0}`$ of rational numbers a *dyadic tail recurrence with digits $`g`$* when $`T_{N+1}=2T_N-g_{N+1}`$ for every $`N`$, with integer digits $`g_N`$. Its block identity is
+Call a sequence $`(T_N)_{N\ge0}`$ a *dyadic tail recurrence with digits $`g`$* when $`T_{N+1}=2T_N-g_{N+1}`$ for every $`N`$, with integer digits $`g_N`$. Let $`L_0=1`$ and $`L_j=\operatorname{lcm}(1,\ldots,j)`$ for $`j\ge1`$. For every real dyadic tail recurrence,
+``` math
+\operatorname{Irr}(T_0)
+ \quad\Longleftrightarrow\quad
+ T_{2L_j}-T_{L_j}\notin\mathbb{Z}\quad\hbox{for every }j\ge0.
+```
+Thus one predetermined lcm diagonal replaces the quantification over all positive shift lengths and all basepoints. This exact criterion does not prove the required diagonal non-integrality for the actual prime-gap orbit.
+
+For rational recurrences, the same finite algebra identifies two tempting but circular replacements for the missing prime input. Writing $`D_N=T_{N+h}-T_N`$ and $`D_{N+r}=2^rD_N-B_{h,N,r}`$, membership in the data-dependent affine class $`-B_{h,N,r}+2^{r+1}\mathbb{Z}`$ is exactly the assertion $`D_N\in2\mathbb{Z}`$, independently of $`r`$. Under the parity condition on the difference digits, cofinal escape from these classes is therefore equivalent to non-eventual integrality. Even the fixed-lattice repair collapses: under any dyadically dominated terminal bound, cofinal separation of $`B_{h,N,r}`$ from $`2^r\mathbb{Z}`$ is again equivalent to non-eventual integrality. Neither formulation supplies new arithmetic about consecutive primes.
+
+The recurrence has the block identity
 ``` math
 T_{N+h}=2^{h}T_N-
  \bigl(g_{N+1}2^{h-1}+\cdots+g_{N+h}\bigr).
@@ -28,15 +38,15 @@ and therefore the unconditional identity and irrationality equivalence
  \Longleftrightarrow
  \operatorname{Irr}\!\left(\sum_{i\ge0}\frac{g_i}{2^{\,i+1}}\right).
 ```
-Problem #251 remains open. Under non-irrationality, the denominator decomposition selects a positive fixed shift that is eventually integral but not eventually confined to $`(-1,1)`$. This is compatible with rationality, not a contradiction. The finite obstruction is exact: if two adjacent $`h`$-shifts both lie in $`(-1,1)`$ and the corresponding prime gaps differ, they cannot both be integral. Thus a contradiction would follow from cofinally many such pairs; neither their two smallness inequalities nor that cofinal occurrence is proved. Unboundedness and nonperiodicity of the prime gaps, although both Lean-checked, do not supply either property. Indeed, an explicit unbounded, non-eventually-periodic integer sequence has a rational dyadic sum, so the missing argument must control the full prime-gap tails rather than the coefficients alone. The source-current coefficient-only interface makes this warning precise: for the synthetic linear carry $`K_n=n`$, the finite emitted sum is $`-n/2^n`$ while its emitted coefficients are not eventually periodic ([finite endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1157); [coefficient nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1163)). The actual prime-gap sequence is likewise not eventually periodic ([prime-gap nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023)). Thus nonperiodicity alone cannot prove irrationality. The ordinary limit $`-n/2^n\to0`$ is a standard analytic consequence, but it is not part of the transported Lean theorem; the prime-specific cofinal nonintegrality step remains open.
+Problem #251 remains open. Under non-irrationality, the denominator decomposition selects a positive fixed shift that is eventually integral but not eventually confined to $`(-1,1)`$. This is compatible with rationality, not a contradiction. The finite obstruction is exact: if two adjacent $`h`$-shifts both lie in $`(-1,1)`$ and the corresponding prime gaps differ, they cannot both be integral. Thus a contradiction would follow from cofinally many such pairs; neither their two smallness inequalities nor that cofinal occurrence is proved. Unboundedness and nonperiodicity of the prime gaps, although both Lean-checked, do not supply either property. More sharply, the explicit quadratic word $`g_n=2(n^2+4n+2)`$ and orbit $`T_n=2(n+4)^2`$ satisfy the recurrence, the word is positive, even and strictly increasing, every fixed tail shift is integral, and every adjacent digit difference avoids $`\pm2`$. Thus positivity, parity, polynomial growth, unboundedness and nonperiodicity cannot force the adjacent-small-mismatch mechanism. A second coefficient-only warning uses the synthetic linear carry $`K_n=n`$: the finite emitted sum is $`-n/2^n`$ while its emitted coefficients are not eventually periodic ([finite endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1157); [coefficient nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1163)). The actual prime-gap sequence is likewise not eventually periodic ([prime-gap nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023)). Thus nonperiodicity alone cannot prove irrationality. The ordinary limit $`-n/2^n\to0`$ is a standard analytic consequence, but it is not part of the transported Lean theorem; the prime-specific cofinal nonintegrality step remains open.
 
 The source-current Comparator transport packages the endpoint-adjacent mechanism as follows: for a rational tail $`T`$ obeying the actual prime-gap recurrence, if every threshold admits adjacent $`h`$-shifts in $`(-1,1)`$ with unequal corresponding prime gaps, then that $`h`$-shift is not eventually integral [the conditional prime-gap small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112). This is a conditional reduction, not a source of the two smallness inequalities or their cofinal supply; hence it proves neither irrationality of the prime-gap series nor Problem #251. The natural friction is exact: the missing producer must control complete adjacent infinite tails, while prime-gap nonperiodicity alone supplies only the unequal-gap clause.
 
-> **Contribution.** The paper proves the exact prime/prime-gap summation identity, classifies rationality through integral tail shifts, proves that actual prime gaps are unbounded, and gives, at paper level, a nonperiodic rational countermodel to a tempting coefficient-only route.
+> **Contribution.** The paper proves the one-sequence lcm-diagonal irrationality criterion, the signed $`\pm 2`$ window normal form, two exact affine/fixed-lattice circularity theorems, and a complete quadratic polynomial-shift countermodel. It also proves the exact prime/prime-gap summation identity, the general integral-shift classification, and unboundedness of the actual prime gaps.
 >
-> **Relation to the open problem.** These results expose the missing cofinal nonintegrality statement for the actual prime gaps without proving it. Problem #251 remains open.
+> **Relation to the open problem.** These are exact recurrence classifications and strategy-elimination results. They do not prove a single lcm-diagonal miss or cofinal small-mismatch event for the actual prime-gap orbit, and Problem #251 remains open.
 >
-> **Executable review object.** Comparator selects the prime-gap unboundedness theorem, the exact irrationality equivalence between the two infinite series, and the conditional actual-prime-gap small-mismatch specialization, with the summability and recurrence hypotheses retained; its coefficient-only no-go transport checks only finite identities and nonperiodicity, leaving every cofinal producer and the infinite-limit step open. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+> **Executable review object.** Three Comparator packages bind the prime/prime-gap identity, the order-lattice and deciding-schedule criterion, the quadratic polynomial-shift countermodel, and the signed-window plus affine/fixed-lattice circularity family. These four packages are registered in the source-current Palomar portfolio; terminal Comparator/NanoDa replay and public immutable source identity remain separate release steps. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
 
 <a id="sec:problem"></a>
 
@@ -93,13 +103,13 @@ Problem #251 also appears as the unproved declaration `erdos_251` in the *Forma
 
 The digits $`p_n`$ grow, so the series is not a digit expansion in any bounded alphabet, and the standard rationality criteria for such expansions do not apply directly. The classical elementary criteria for series of this kind instead control irrationality through the growth of the denominators. Erdős and Straus named a sum $`\sum_k 1/a_k`$ over a strictly increasing sequence of positive integers an *Ahmes series* \[erdosstraus1963\]; for such a series the condition $`a_k^{1/2^k}\to\infty`$ is sufficient for irrationality, and it is sharp, since shifted Sylvester sequences grow like $`C^{2^{k}}`$ for arbitrarily large $`C`$ and have rational reciprocal sum. Both statements and their attribution are recorded in the introduction of Kovač and Tao \[kovactao2024, §1\], who develop the elementary technology for such series much further. Splitting each term $`p_i/2^{\,i+1}`$ into $`p_i`$ copies of $`2^{-(i+1)}`$ writes $`\Pi`$ as a sum of unit fractions, but with repetitions, and the denominators occurring in it are exactly the powers of two. Even ignoring the repetitions the growth hypothesis fails by every available margin, since $`(2^{\,n})^{1/2^{\,n}}\to1`$, and every arithmetic constraint has to come from the numerators instead.
 
-What replaces growth control is denominator control on the sequence of rescaled tails. Rationality of the sum turns out to be equivalent to an eventual integrality condition on differences of those tails, and that condition uses nothing about the numerators beyond the fact that they are integers. The condition does not by itself force the numerators to repeat: Proposition <a href="#res:telescope" data-reference-type="ref" data-reference="res:telescope">15</a>, applied to $`K_n=n`$, produces the integer sequence $`\kappa_n=n-1`$, which is unbounded and hence not eventually periodic, and whose dyadic sum $`\sum_{n\ge0}\kappa_n2^{-(n+1)}`$ is zero.
+What replaces growth control is denominator control on the sequence of rescaled tails. Rationality of the sum turns out to be equivalent to an eventual integrality condition on differences of those tails, and that condition uses nothing about the numerators beyond the fact that they are integers. The condition does not by itself force the numerators to repeat: Proposition <a href="#res:telescope" data-reference-type="ref" data-reference="res:telescope">19</a>, applied to $`K_n=n`$, produces the integer sequence $`\kappa_n=n-1`$, which is unbounded and hence not eventually periodic, and whose dyadic sum $`\sum_{n\ge0}\kappa_n2^{-(n+1)}`$ is zero.
 
 <a id="outline."></a>
 
 #### Outline.
 
-Section <a href="#sec:parts" data-reference-type="ref" data-reference="sec:parts">2</a> replaces the primes by their consecutive gaps, the natural increments studied by prime-distribution theory. Summation by parts with the endpoint retained gives an exact finite identity, and the termwise relation $`v_n=2u_{n+1}-u_n`$ between the gap terms and the prime terms makes the passage to the limit a matter of summability alone; the explicit polynomial prime bound supplies that summability inside the formal development. Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">3</a> rescales the tails of a dyadic series into a recurrence and develops it: the block identity, the integral-shift criterion, the collapse of every rational solution onto an eventually integral shift, its contrapositive over the reals, and a local obstruction that converts an infinite-tail condition into a single comparison of gaps. Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">4</a> shows that the tail constraint does not by itself make the coefficient sequence eventually periodic, and Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">5</a> states the remaining obligation. The pinned Lean 4 toolchain and Mathlib revision check the formal statements. The cited system paper identifies Lean 4 \[lean4, abstract and §1, pp. 625–626\], while the Mathlib paper documents the library’s historical Lean 3-era architecture \[mathlib, abstract and §1.1, p. 367\]; it is not authority for the current pinned revision. Linked phrases open the corresponding declaration at the pinned source revision c8e41c76b4ce.
+Section <a href="#sec:diagonal-collapse" data-reference-type="ref" data-reference="sec:diagonal-collapse">2</a> begins with the strongest exact recurrence-level conclusions: the lcm-diagonal irrationality criterion, the signed two-window normal form, the affine and fixed-lattice circularity equivalences, and the quadratic polynomial-shift countermodel. Section <a href="#sec:parts" data-reference-type="ref" data-reference="sec:parts">3</a> then replaces the primes by their consecutive gaps, the natural increments studied by prime-distribution theory. Summation by parts with the endpoint retained gives an exact finite identity, and the termwise relation $`v_n=2u_{n+1}-u_n`$ between the gap terms and the prime terms makes the passage to the limit a matter of summability alone; the explicit polynomial prime bound supplies that summability inside the formal development. Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">4</a> rescales the tails of a dyadic series into a recurrence and develops it: the block identity, the integral-shift criterion, the collapse of every rational solution onto an eventually integral shift, its contrapositive over the reals, and a local obstruction that converts an infinite-tail condition into a single comparison of gaps. Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">5</a> shows that the tail constraint does not by itself make the coefficient sequence eventually periodic, and Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">6</a> states the remaining obligation. The pinned Lean 4 toolchain and Mathlib revision check the formal statements. The cited system paper identifies Lean 4 \[lean4, abstract and §1, pp. 625–626\], while the Mathlib paper documents the library’s historical Lean 3-era architecture \[mathlib, abstract and §1.1, p. 367\]; it is not authority for the current pinned revision. Linked phrases open the corresponding declaration at the pinned source revision c8e41c76b4ce.
 
 For release review, the selected Comparator surface is exact: the [unbounded-gap theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L57) states $`\forall M:\mathbb N,\ \exists n,\ M<\mathit{primeGap0}(n)`$, and the [prime/gap irrationality equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L435) states, under $`\operatorname{Summable}(\mathit{primeDyadicTerm})`$, the equivalence between irrationality of the prime-term and prime-gap-term sums. The endpoint-proximate abstract classification is represented by [the pointwise shift classifier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1551): for any real dyadic-tail recurrence with integer digits, irrationality of the initial state is equivalent to non-integrality of every positive shift, and hence to cofinal non-integrality of each fixed shift. Its rational-side mechanism is the exact denominator/congruence pair [denominator divisibility](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1279) and [power-of-two congruence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1291); together with the [eventual-integrality classifier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1525), they explain why a rational initial state supplies an eventual integral shift. These are recurrence-level results, not a prime-specific producer: the cofinal non-integrality property for the actual prime gaps remains unproved, so no irrationality claim for Problem #251 follows. The current Comparator surface also carries the endpoint-adjacent specialization [the conditional prime-gap small-mismatch transport](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112): it preserves the actual recurrence, the cofinal adjacent $`(-1,1)`$ hypotheses, and the unequal gap condition, and concludes failure of eventual integrality. The source does not supply those pairs, so this is a reduction exposing the missing prime-specific producer, not a proof of Problem #251 irrationality.
 
@@ -108,21 +118,25 @@ For release review, the selected Comparator surface is exact: the [unbounded-gap
 | Statement | Status | Treatment here |
 |:---|:---|:---|
 | Irrationality of $`\Pi`$ | Open | Not proved. |
-| Finite prime-gap identity | Proved here | Theorem <a href="#res:parts" data-reference-type="ref" data-reference="res:parts">2</a>, with the endpoint retained. |
-| Infinite prime-gap identity | Lean-checked unconditionally | Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">3</a>, with summability discharged by the polynomial prime bound. |
-| Prime-series/gap-series irrationality equivalence | Lean-checked unconditionally | Corollary <a href="#res:irr-equivalence" data-reference-type="ref" data-reference="res:irr-equivalence">4</a>. |
-| Block identity for the tail recurrence | Proved here | Theorem <a href="#res:block" data-reference-type="ref" data-reference="res:block">6</a>. |
-| Integral shift criterion | Proved here; an equivalence | Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">7</a>. |
-| Totient shift from an odd denominator | Proved here | Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">8</a>. |
-| Propagation of an integral shift | Proved here | Theorem <a href="#res:propagate" data-reference-type="ref" data-reference="res:propagate">9</a>. |
-| Eventual integral shift for every rational-valued recurrence | Lean-checked | Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">10</a>. |
-| Rationality/integral-shift classification | Lean-checked abstractly; an equivalence | Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">11</a>. |
-| Finite-approximation gap | Paper-level | Elementary inference used in Proposition <a href="#res:truncation" data-reference-type="ref" data-reference="res:truncation">19</a>; not a named Lean declaration at the pinned revision. |
-| Actual prime gaps are unbounded and not eventually periodic | Lean-checked | Proposition <a href="#res:gap-nonperiodic" data-reference-type="ref" data-reference="res:gap-nonperiodic">14</a>. |
-| Adjacent small-mismatch pair excludes simultaneous integrality | Lean-checked | Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">12</a>. |
+| Lcm-diagonal irrationality criterion | Lean-checked abstractly; an equivalence | Theorem <a href="#res:lcmdiagonal" data-reference-type="ref" data-reference="res:lcmdiagonal">1</a>. |
+| Signed two-window normal form | Lean-checked abstractly; an equivalence | Theorem <a href="#res:signedwindow" data-reference-type="ref" data-reference="res:signedwindow">2</a>. |
+| Affine and fixed-lattice cofinal escape tests | Lean-checked abstractly; both equivalences | Theorem <a href="#res:affinecollapse" data-reference-type="ref" data-reference="res:affinecollapse">3</a>; neither supplies a prime-specific producer. |
+| Quadratic polynomial-shift countermodel | Lean-checked | Proposition <a href="#res:polynomialcountermodel" data-reference-type="ref" data-reference="res:polynomialcountermodel">4</a>. |
+| Finite prime-gap identity | Proved here | Theorem <a href="#res:parts" data-reference-type="ref" data-reference="res:parts">6</a>, with the endpoint retained. |
+| Infinite prime-gap identity | Lean-checked unconditionally | Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">7</a>, with summability discharged by the polynomial prime bound. |
+| Prime-series/gap-series irrationality equivalence | Lean-checked unconditionally | Corollary <a href="#res:irr-equivalence" data-reference-type="ref" data-reference="res:irr-equivalence">8</a>. |
+| Block identity for the tail recurrence | Proved here | Theorem <a href="#res:block" data-reference-type="ref" data-reference="res:block">10</a>. |
+| Integral shift criterion | Proved here; an equivalence | Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">11</a>. |
+| Totient shift from an odd denominator | Proved here | Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">12</a>. |
+| Propagation of an integral shift | Proved here | Theorem <a href="#res:propagate" data-reference-type="ref" data-reference="res:propagate">13</a>. |
+| Eventual integral shift for every rational-valued recurrence | Lean-checked | Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">14</a>. |
+| Rationality/integral-shift classification | Lean-checked abstractly; an equivalence | Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">15</a>. |
+| Finite-approximation gap | Paper-level | Elementary inference used in Proposition <a href="#res:truncation" data-reference-type="ref" data-reference="res:truncation">23</a>; not a named Lean declaration at the pinned revision. |
+| Actual prime gaps are unbounded and not eventually periodic | Lean-checked | Proposition <a href="#res:gap-nonperiodic" data-reference-type="ref" data-reference="res:gap-nonperiodic">18</a>. |
+| Adjacent small-mismatch pair excludes simultaneous integrality | Lean-checked | Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">16</a>. |
 | Concrete prime-gap tail recurrence and rational-candidate bridge | Paper-level recurrence; Lean-checked conditional bridge | The rational candidate recurrence is unconditional; its representation of the actual scaled tail assumes non-irrationality. |
-| Rationality alone forces periodic integer coefficients | False | Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">4</a>, Proposition <a href="#res:telescope" data-reference-type="ref" data-reference="res:telescope">15</a>. |
-| Cofinal adjacent small-mismatch hypothesis | Proposed sufficient theorem | Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">18</a>; not proved. |
+| Rationality alone forces periodic integer coefficients | False | Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">5</a>, Proposition <a href="#res:telescope" data-reference-type="ref" data-reference="res:telescope">19</a>. |
+| Cofinal adjacent small-mismatch hypothesis | Proposed sufficient theorem | Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">22</a>; not proved. |
 
 <div class="minipage">
 
@@ -131,6 +145,153 @@ For release review, the selected Comparator surface is exact: the [unbounded-gap
 </div>
 
 **Keywords.** irrationality; prime gaps; dyadic series; summation by parts; Lean 4. **MSC 2020.** 11J72 (primary); 11N05, 68V20 (secondary).
+
+<a id="sec:diagonal-collapse"></a>
+
+# One diagonal, and two circular escape tests
+
+We first record the strongest recurrence-level conclusions. They apply to arbitrary integer digits and therefore separate the finite algebra from the prime-specific input still missing in Problem #251.
+
+For a real recurrence put
+``` math
+\Delta_hT(N)=T_{N+h}-T_N,
+```
+and let $`L_0=1`$, $`L_j=\operatorname{lcm}(1,\ldots,j)`$ for $`j\ge1`$.
+
+<div id="res:lcmdiagonal" class="theorem">
+
+**Theorem 1** (lcm-diagonal criterion). *Let $`g:\mathbb{N}\to\mathbb{Z}`$ and $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ for every $`N`$. Then
+``` math
+\operatorname{Irr}(T_0)
+ \quad\Longleftrightarrow\quad
+ \Delta_{L_j}T(L_j)\notin\mathbb{Z}
+ \quad\hbox{for every }j\ge0.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The exact rationality classification proved in Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">15</a> says that an irrational initial state has no integral positive shift at any basepoint. This gives the forward implication. Conversely, if $`T_0`$ is rational, some positive shift length $`h`$ is integral at every basepoint beyond an index $`N_0`$. Choose $`j`$ so large that $`N_0\le L_j`$ and $`h\mid L_j`$. The cocycle identity
+``` math
+\Delta_{a+b}T(N)=\Delta_aT(N)+\Delta_bT(N+a)
+```
+shows by induction that every positive multiple of $`h`$ is integral at every such basepoint. Hence $`\Delta_{L_j}T(L_j)`$ is integral, contradicting the right-hand side. ◻
+
+</div>
+
+The factorial schedule $`j!`$ has the same divisibility property, but the lcm schedule is pointwise no larger and is the canonical endpoint used here. The theorem is an exact one-sequence reformulation; it gives no non-integrality statement for the actual prime-gap recurrence.
+
+The adjacent-small-mismatch condition also admits an exact normal form. For a rational recurrence and a fixed $`h`$, write
+``` math
+D_N=\Delta_hT(N),\qquad
+ \delta_N=g_{N+h+1}-g_{N+1}.
+```
+Then $`D_{N+1}=2D_N-\delta_N`$.
+
+<div id="res:signedwindow" class="theorem">
+
+**Theorem 2** (signed two-window normal form). *Assume that $`\delta_N`$ is even. The conjunction
+``` math
+-1<D_N<1,\qquad -1<D_{N+1}<1,\qquad \delta_N\ne0
+```
+is equivalent to
+``` math
+\bigl(\delta_N=2\ \hbox{ and }\tfrac12<D_N<1\bigr)
+ \quad\hbox{or}\quad
+ \bigl(\delta_N=-2\ \hbox{ and }-1<D_N<-\tfrac12\bigr).
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The recurrence and the two unit windows give $`-3<\delta_N<3`$. A nonzero even integer in that interval is $`2`$ or $`-2`$. Substitution into $`D_{N+1}=2D_N-\delta_N`$ gives the stated half-window and, in the reverse direction, recovers the second unit window. ◻
+
+</div>
+
+For the longer block, set
+``` math
+B_{h,N,r}=\sum_{i=0}^{r-1}2^{r-1-i}\delta_{N+i};
+ \qquad D_{N+r}=2^rD_N-B_{h,N,r}.
+```
+Call the data-dependent affine condition
+``` math
+\mathcal A_{N,r}:\qquad
+ D_{N+r}\in -B_{h,N,r}+2^{r+1}\mathbb{Z}.
+```
+
+<div id="res:affinecollapse" class="theorem">
+
+**Theorem 3** (affine and fixed-lattice circularity). *For every rational dyadic tail recurrence and all $`h,N,r\ge0`$,
+``` math
+\mathcal A_{N,r}\quad\Longleftrightarrow\quad D_N\in2\mathbb{Z}.
+\tag{2.1}\label{eq:affinecollapse}
+```
+Consequently, if every $`\delta_N`$ is even, then
+``` math
+\bigl(\forall N_0\ \exists N,r:\ N_0<N\text{ and }\neg\mathcal A_{N,r}\bigr)
+ \quad\Longleftrightarrow\quad
+ D_N\notin\mathbb{Z}\text{ for arbitrarily large }N.
+\tag{2.2}\label{eq:affinecofinal}
+```*
+
+*There is a second equivalence. Let $`b:\mathbb{N}\to\mathbb{Q}`$ satisfy $`|D_N|\le b(N)`$ for every $`N`$, and suppose that for every $`N`$ and every positive integer $`q`$ there is an $`r`$ with
+``` math
+2b(N+r)q<2^r.
+\tag{2.3}\label{eq:dyadicscale}
+```
+Then
+``` math
+\begin{split}
+ &\forall N_0\ \exists N,r:\ N_0<N\text{ and }
+   \forall z\in\mathbb{Z},\quad
+   b(N+r)<|B_{h,N,r}-2^rz|\\
+ &\hspace{35mm}\Longleftrightarrow\quad
+ D_N\notin\mathbb{Z}\text{ for arbitrarily large }N.
+ \end{split}
+\tag{2.4}\label{eq:fixedcollapse}
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Substituting $`D_{N+r}=2^rD_N-B_{h,N,r}`$ into $`\mathcal A_{N,r}`$ cancels the observed block from both sides and leaves $`D_N=2z`$. This proves <a href="#eq:affinecollapse" data-reference-type="eqref" data-reference="eq:affinecollapse">[eq:affinecollapse]</a>. After one recurrence step, evenness of $`\delta_N`$ identifies even integrality at $`N+1`$ with ordinary integrality at $`N`$. The forward implication in <a href="#eq:affinecofinal" data-reference-type="eqref" data-reference="eq:affinecofinal">[eq:affinecofinal]</a> follows, while the reverse implication chooses a nonintegral $`D_N`$ and the legal depth $`r=0`$.
+
+For <a href="#eq:fixedcollapse" data-reference-type="eqref" data-reference="eq:fixedcollapse">[eq:fixedcollapse]</a>, eventual integrality and the block identity give some $`z\in\mathbb{Z}`$ with
+``` math
+B_{h,N,r}-2^rz=-D_{N+r},
+```
+so the displayed strict separation contradicts $`|D_{N+r}|\le b(N+r)`$. Conversely, if $`D_N`$ is nonintegral and has reduced denominator $`q`$, then its distance from every integer is at least $`1/q`$. Choose $`r`$ from <a href="#eq:dyadicscale" data-reference-type="eqref" data-reference="eq:dyadicscale">[eq:dyadicscale]</a>, scale this separation by $`2^r`$, and use the block identity together with $`|D_{N+r}|\le b(N+r)`$. The triangle inequality gives $`|B_{h,N,r}-2^rz|>b(N+r)`$ for every integer $`z`$. ◻
+
+</div>
+
+The first equivalence shows that the apparent affine hierarchy contains no depth-dependent information: it is the pullback of even integrality through the recurrence identity. The fixed lattice removes that data dependence, but under the stated growth condition rational denominator separation already forces every required escape. Hence neither cofinal condition is an independent source of information about consecutive primes.
+
+Finally, the coarse coefficient profile itself has an exact infinite counterexample.
+
+<div id="res:polynomialcountermodel" class="proposition">
+
+**Proposition 4** (quadratic polynomial-shift countermodel). *Put
+``` math
+g_n=2(n^2+4n+2),\qquad T_n=2(n+4)^2.
+```
+Then $`g_n`$ is positive, even and strictly increasing, $`T_{n+1}=2T_n-g_{n+1}`$, every shift $`T_{N+h}-T_N`$ is integral, and
+``` math
+g_{N+2}-g_{N+1}\ne2,-2
+ \qquad\hbox{for every }N.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* All assertions follow by expansion. In particular $`g_{n+1}-g_n=4n+10`$, while $`T_{N+h}-T_N`$ is the difference of two even integer squares. Strict growth makes the word unbounded and nonperiodic. ◻
+
+</div>
+
+Theorems <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">7</a> and <a href="#res:lcmdiagonal" data-reference-type="ref" data-reference="res:lcmdiagonal">1</a>, together with the exact order-lattice and generic deciding-schedule refinements, are exposed by the prime/prime-gap identity and diagonal-criterion Comparator packages. Proposition <a href="#res:polynomialcountermodel" data-reference-type="ref" data-reference="res:polynomialcountermodel">4</a> has its own package, while a fourth package exposes Theorems <a href="#res:signedwindow" data-reference-type="ref" data-reference="res:signedwindow">2</a> and <a href="#res:affinecollapse" data-reference-type="ref" data-reference="res:affinecollapse">3</a>. The displayed proofs are self-contained ordinary proofs; terminal Comparator/NanoDa replay remains a separate release gate.
 
 <a id="sec:parts"></a>
 
@@ -146,7 +307,7 @@ both empty, hence zero, at $`n=0`$. We call these the [dyadic partial sum](https
 
 <div id="res:abel" class="proposition">
 
-**Proposition 1** (finite summation by parts). *For every rational sequence $`P`$ and every $`n\ge0`$,
+**Proposition 5** (finite summation by parts). *For every rational sequence $`P`$ and every $`n\ge0`$,
 ``` math
 D(P,n+1)=P(0)+\Delta(P,n)-\frac{P(n)}{2^{\,n+1}} .
 ```*
@@ -165,7 +326,7 @@ Specialising to $`P(i)=p_i`$, whose first value is $`p_0=2`$, and writing $`g_i=
 
 <div id="res:parts" class="theorem">
 
-**Theorem 2** (prime-gap reformulation). *Let $`p_0=2,p_1=3,\ldots`$ be the primes in increasing order and $`g_i=p_{i+1}-p_i`$. For every $`n\ge0`$,
+**Theorem 6** (prime-gap reformulation). *Let $`p_0=2,p_1=3,\ldots`$ be the primes in increasing order and $`g_i=p_{i+1}-p_i`$. For every $`n\ge0`$,
 ``` math
 \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
  =2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}} .
@@ -188,7 +349,7 @@ for the terms of the prime series and of the gap series, so that $`\sum_{n\ge0}u
 
 <div id="res:infinite" class="theorem">
 
-**Theorem 3** (infinite prime-gap identity). *Let $`u_n=p_n/2^{\,n+1}`$ and $`v_n=g_n/2^{\,n+1}`$. If $`(u_n)`$ is summable, then $`(v_n)`$ is summable and
+**Theorem 7** (infinite prime-gap identity). *Let $`u_n=p_n/2^{\,n+1}`$ and $`v_n=g_n/2^{\,n+1}`$. If $`(u_n)`$ is summable, then $`(v_n)`$ is summable and
 ``` math
 \sum_{n\ge0}u_n=2+\sum_{n\ge0}v_n .
 ```*
@@ -211,7 +372,7 @@ The summability transfer is the [gap-series summability theorem](https://github.
 
 <div id="res:irr-equivalence" class="corollary">
 
-**Corollary 4** (exact irrationality reformulation). *With $`u_n`$ and $`v_n`$ as in Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">3</a>, and $`(u_n)`$ summable,
+**Corollary 8** (exact irrationality reformulation). *With $`u_n`$ and $`v_n`$ as in Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">7</a>, and $`(u_n)`$ summable,
 ``` math
 \operatorname{Irr}\!\left(\sum_{n\ge0}u_n\right)
  \quad\Longleftrightarrow\quad
@@ -227,7 +388,7 @@ These are the [normalised irrationality equivalence](https://github.com/wcook04/
 
 #### The summability hypothesis.
 
-The formal source now proves the elementary polynomial bound $`p_n\le1250(n+1)^4`$, using prime counting and central-binomial growth, and deduces summability directly ([polynomial bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L360), [summability](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L379)). Thus Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">3</a> and Corollary <a href="#res:irr-equivalence" data-reference-type="ref" data-reference="res:irr-equivalence">4</a> are now unconditional Lean-checked statements; the prime number theorem remains useful context but is no longer a proof dependency of this note. The open content is exactly irrationality of the prime-gap series. Concretely, $`\Pi=3.674643966\ldots`$ is irrational if and only if $`\sum_{n\ge0}g_n2^{-(n+1)}=1.674643966\ldots`$ is, and neither is known.
+The formal source now proves the elementary polynomial bound $`p_n\le1250(n+1)^4`$, using prime counting and central-binomial growth, and deduces summability directly ([polynomial bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L360), [summability](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L379)). Thus Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">7</a> and Corollary <a href="#res:irr-equivalence" data-reference-type="ref" data-reference="res:irr-equivalence">8</a> are now unconditional Lean-checked statements; the prime number theorem remains useful context but is no longer a proof dependency of this note. The open content is exactly irrationality of the prime-gap series. Concretely, $`\Pi=3.674643966\ldots`$ is irrational if and only if $`\sum_{n\ge0}g_n2^{-(n+1)}=1.674643966\ldots`$ is, and neither is known.
 
 <a id="sec:tail"></a>
 
@@ -238,11 +399,11 @@ The series is not attacked directly. Suppose $`\sum_{i\ge0}a_i2^{-(i+1)}`$ conve
 T_N=2^{\,N+1}\sum_{i>N}\frac{a_i}{2^{\,i+1}}
     =\sum_{j\ge1}\frac{a_{N+j}}{2^{\,j}} .
 ```
-Two facts follow immediately. First $`T_{N+1}=2T_N-a_{N+1}`$, so moving one level along doubles the rescaled tail and subtracts a single coefficient. Second $`T_0=2\sum_{i\ge0}a_i2^{-(i+1)}-a_0`$, so the sum is rational exactly when $`T_0`$ is. The whole of Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">3</a> therefore studies that recurrence in isolation, assuming nothing about the coefficients beyond the fact that they are integers; the prime-gap instance is resumed at the end of the section. The following definition is the object so obtained, stripped of its origin.
+Two facts follow immediately. First $`T_{N+1}=2T_N-a_{N+1}`$, so moving one level along doubles the rescaled tail and subtracts a single coefficient. Second $`T_0=2\sum_{i\ge0}a_i2^{-(i+1)}-a_0`$, so the sum is rational exactly when $`T_0`$ is. The whole of Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">4</a> therefore studies that recurrence in isolation, assuming nothing about the coefficients beyond the fact that they are integers; the prime-gap instance is resumed at the end of the section. The following definition is the object so obtained, stripped of its origin.
 
 <div id="def:rec" class="definition">
 
-**Definition 5**. Let $`g:\mathbb{N}\to\mathbb{Z}`$ and $`T:\mathbb{N}\to\mathbb{Q}`$. Say $`T`$ satisfies the *dyadic tail recurrence* with *digits* $`g`$ when
+**Definition 9**. Let $`g:\mathbb{N}\to\mathbb{Z}`$ and $`T:\mathbb{N}\to\mathbb{Q}`$. Say $`T`$ satisfies the *dyadic tail recurrence* with *digits* $`g`$ when
 ``` math
 T_{N+1}=2T_N-g_{N+1}\qquad\text{for every }N .
 ```
@@ -250,15 +411,15 @@ We call the sequence $`(T_N)_{N\ge0}`$ the *orbit* of $`T_0`$ under $`g`$, write
 
 </div>
 
-These are the [tail recurrence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L482), the [shift](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L544), and [integrality](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L575). The digits are arbitrary integers. In the intended instance they are the prime gaps and $`T_N`$ is the scaled tail of $`\Pi`$ after level $`N`$, but that instantiation needs a summability argument and is not made here; every statement below is a theorem about Definition <a href="#def:rec" data-reference-type="ref" data-reference="def:rec">5</a>.
+These are the [tail recurrence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L482), the [shift](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L544), and [integrality](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L575). The digits are arbitrary integers. In the intended instance they are the prime gaps and $`T_N`$ is the scaled tail of $`\Pi`$ after level $`N`$, but that instantiation needs a summability argument and is not made here; every statement below is a theorem about Definition <a href="#def:rec" data-reference-type="ref" data-reference="def:rec">9</a>.
 
-One small orbit, referred to again below, is worth having in view. Take every digit $`g_N=0`$ and $`T_0=1/12`$. Then $`T_{N+1}=2T_N`$, so the orbit is $`\tfrac1{12},\tfrac16,\tfrac13,\tfrac23,\tfrac43,\ldots`$, and $`\sigma_h(N)=(2^{h}-1)2^{\,N}/12`$. The shift of length $`2`$ is not integral at $`N=0`$, where $`\sigma_2(0)=\tfrac13-\tfrac1{12}=\tfrac14`$, and is integral at $`N=2`$, where $`\sigma_2(2)=\tfrac43-\tfrac13=1`$; the shift of length $`1`$ is $`\sigma_1(N)=2^{\,N}/12`$ and is never integral. The change at $`N=2`$ is accounted for by Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">10</a>, and the failure at $`h=1`$ by Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">7</a>.
+One small orbit, referred to again below, is worth having in view. Take every digit $`g_N=0`$ and $`T_0=1/12`$. Then $`T_{N+1}=2T_N`$, so the orbit is $`\tfrac1{12},\tfrac16,\tfrac13,\tfrac23,\tfrac43,\ldots`$, and $`\sigma_h(N)=(2^{h}-1)2^{\,N}/12`$. The shift of length $`2`$ is not integral at $`N=0`$, where $`\sigma_2(0)=\tfrac13-\tfrac1{12}=\tfrac14`$, and is integral at $`N=2`$, where $`\sigma_2(2)=\tfrac43-\tfrac13=1`$; the shift of length $`1`$ is $`\sigma_1(N)=2^{\,N}/12`$ and is never integral. The change at $`N=2`$ is accounted for by Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">14</a>, and the failure at $`h=1`$ by Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">11</a>.
 
 Iterating the recurrence $`h`$ times multiplies $`T_N`$ by $`2^{h}`$ and accumulates an explicit integer, which we now name. Define $`B_{0,N}=0`$ and $`B_{h+1,N}=2B_{h,N}+g_{N+h+1}`$, so that $`B_{h,N}=g_{N+1}2^{\,h-1}+\cdots+g_{N+h}`$: the [tail block](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L647). Thus $`B_{1,N}=g_{N+1}`$, $`B_{2,N}=2g_{N+1}+g_{N+2}`$ and $`B_{3,N}=4g_{N+1}+2g_{N+2}+g_{N+3}`$: the block puts the weights $`2^{\,h-1},\ldots,2^{0}`$ on the $`h`$ digits following index $`N`$.
 
 <div id="res:block" class="theorem">
 
-**Theorem 6** (block identity). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$, and let $`B_{h,N}`$ be as above. For every $`N`$ and $`h`$,
+**Theorem 10** (block identity). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$, and let $`B_{h,N}`$ be as above. For every $`N`$ and $`h`$,
 ``` math
 T_{N+h}=2^{h}T_N-B_{h,N},
  \qquad\text{hence}\qquad
@@ -275,17 +436,17 @@ T_{N+h}=2^{h}T_N-B_{h,N},
 
 Formalised as the [iterated block identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L653) and the [scaled shift identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L667). The shift also obeys the recurrence in its own right, $`\sigma_h(N+1)=2\sigma_h(N)-(g_{N+h+1}-g_{N+1})`$, the [shift step identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L563).
 
-Since $`B_{h,N}`$ is an integer, Theorem <a href="#res:block" data-reference-type="ref" data-reference="res:block">6</a> converts a question about the shift into a question about the single scaled term $`(2^{h}-1)T_N`$.
+Since $`B_{h,N}`$ is an integer, Theorem <a href="#res:block" data-reference-type="ref" data-reference="res:block">10</a> converts a question about the shift into a question about the single scaled term $`(2^{h}-1)T_N`$.
 
 <div id="res:shiftiff" class="theorem">
 
-**Theorem 7** (integral-shift criterion). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$. For every $`N`$ and $`h`$, the shift $`\sigma_h(N)`$ is integral if and only if $`(2^{h}-1)T_N`$ is integral.*
+**Theorem 11** (integral-shift criterion). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$. For every $`N`$ and $`h`$, the shift $`\sigma_h(N)`$ is integral if and only if $`(2^{h}-1)T_N`$ is integral.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* By Theorem <a href="#res:block" data-reference-type="ref" data-reference="res:block">6</a> the two differ by the integer $`B_{h,N}`$, and subtracting an integer does not change integrality. ◻
+*Proof.* By Theorem <a href="#res:block" data-reference-type="ref" data-reference="res:block">10</a> the two differ by the integer $`B_{h,N}`$, and subtracting an integer does not change integrality. ◻
 
 </div>
 
@@ -302,23 +463,23 @@ This is the [denominator classification](https://github.com/wcook04/plectis-lean
 
 <div id="res:totient" class="theorem">
 
-**Theorem 8** (a shift of totient length). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$, and let $`\varphi`$ be Euler’s totient function. If the reduced denominator $`d`$ of $`T_N`$ is odd, then $`\sigma_{\varphi(d)}(N)`$ is integral.*
+**Theorem 12** (a shift of totient length). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$, and let $`\varphi`$ be Euler’s totient function. If the reduced denominator $`d`$ of $`T_N`$ is odd, then $`\sigma_{\varphi(d)}(N)`$ is integral.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Since $`d`$ is odd, $`2`$ and $`d`$ are coprime, so Euler’s congruence gives $`2^{\varphi(d)}\equiv1\pmod d`$, that is $`d\mid 2^{\varphi(d)}-1`$. Writing $`2^{\varphi(d)}-1=dk`$ and $`T_N=u/d`$ in lowest terms, $`(2^{\varphi(d)}-1)T_N=ku`$ is an integer, and Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">7</a> transfers this to the shift. ◻
+*Proof.* Since $`d`$ is odd, $`2`$ and $`d`$ are coprime, so Euler’s congruence gives $`2^{\varphi(d)}\equiv1\pmod d`$, that is $`d\mid 2^{\varphi(d)}-1`$. Writing $`2^{\varphi(d)}-1=dk`$ and $`T_N=u/d`$ in lowest terms, $`(2^{\varphi(d)}-1)T_N=ku`$ is an integer, and Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">11</a> transfers this to the shift. ◻
 
 </div>
 
 Formalised as the [totient shift](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L877) and the [Euler multiplier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L695). For example, if $`\operatorname{den}T_N=3`$ then $`\varphi(3)=2`$ and $`(2^{2}-1)T_N=3T_N`$ is an integer, so $`\sigma_2(N)`$ is integral, while $`(2^{1}-1)T_N=T_N`$ is not; if $`\operatorname{den}T_N=5`$ then $`\varphi(5)=4`$ and $`\sigma_4(N)`$ is integral.
 
-The hypothesis is a genuine restriction: the argument uses coprimality of $`2`$ with the denominator, and the even part of a denominator is exactly what the doubling in the recurrence acts on. It cannot be dropped. If $`T_N=1/2`$ then $`2^{h}-1`$ is odd for every $`h\ge1`$, so $`(2^{h}-1)T_N`$ is never an integer and, by Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">7</a>, no shift at $`N`$ is integral.
+The hypothesis is a genuine restriction: the argument uses coprimality of $`2`$ with the denominator, and the even part of a denominator is exactly what the doubling in the recurrence acts on. It cannot be dropped. If $`T_N=1/2`$ then $`2^{h}-1`$ is odd for every $`h\ge1`$, so $`(2^{h}-1)T_N`$ is never an integer and, by Theorem <a href="#res:shiftiff" data-reference-type="ref" data-reference="res:shiftiff">11</a>, no shift at $`N`$ is integral.
 
 <div id="res:propagate" class="theorem">
 
-**Theorem 9** (propagation). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$, and fix $`h`$ and $`N`$. If $`\sigma_h(N)`$ is integral, then $`\sigma_h(N+k)`$ is integral for every $`k\ge0`$.*
+**Theorem 13** (propagation). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$, and fix $`h`$ and $`N`$. If $`\sigma_h(N)`$ is integral, then $`\sigma_h(N+k)`$ is integral for every $`k\ge0`$.*
 
 </div>
 
@@ -330,11 +491,11 @@ The hypothesis is a genuine restriction: the argument uses coprimality of $`2`$ 
 
 Formalised as the [one-step propagation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L888) and the [propagation to every later index](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L900).
 
-The three preceding theorems combine as follows, and this is the statement the rest of the note rests on. The special case is immediate: if $`\operatorname{den}T_0`$ is already odd, then Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">8</a> at $`N=0`$ makes the shift of length $`\varphi(\operatorname{den}T_0)`$ integral and Theorem <a href="#res:propagate" data-reference-type="ref" data-reference="res:propagate">9</a> keeps it integral at every later index, so one may take $`N_0=0`$. In general a denominator carries a power of two as well, and the key point is that the doubling in the recurrence annihilates exactly the $`2`$-adic part of a denominator, and nothing else: after finitely many steps the orbit therefore reaches a term with odd reduced denominator, which is precisely the situation Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">8</a> handles. No control of the digits is needed anywhere.
+The three preceding theorems combine as follows, and this is the statement the rest of the note rests on. The special case is immediate: if $`\operatorname{den}T_0`$ is already odd, then Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">12</a> at $`N=0`$ makes the shift of length $`\varphi(\operatorname{den}T_0)`$ integral and Theorem <a href="#res:propagate" data-reference-type="ref" data-reference="res:propagate">13</a> keeps it integral at every later index, so one may take $`N_0=0`$. In general a denominator carries a power of two as well, and the key point is that the doubling in the recurrence annihilates exactly the $`2`$-adic part of a denominator, and nothing else: after finitely many steps the orbit therefore reaches a term with odd reduced denominator, which is precisely the situation Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">12</a> handles. No control of the digits is needed anywhere.
 
 <div id="res:collapse" class="theorem">
 
-**Theorem 10** (exact denominator dynamics and eventual integrality). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$ (Definition <a href="#def:rec" data-reference-type="ref" data-reference="def:rec">5</a>). Then some fixed positive shift is integral from some point onwards:
+**Theorem 14** (exact denominator dynamics and eventual integrality). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$ (Definition <a href="#def:rec" data-reference-type="ref" data-reference="def:rec">9</a>). Then some fixed positive shift is integral from some point onwards:
 ``` math
 \exists h\ge1\ \exists N_0\ \forall N\ge N_0,\qquad
  \sigma_h(N)\in\mathbb{Z}.
@@ -349,23 +510,23 @@ The three preceding theorems combine as follows, and this is the statement the r
 \operatorname{den}(T_{N+1})
  =\frac{\operatorname{den}(T_N)}{\gcd(2,\operatorname{den}(T_N))}.
 ```
-Thus each even denominator loses exactly one factor of $`2`$, while an odd denominator is unchanged. After finitely many steps the denominator is odd. Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">8</a>, applied at that index $`s`$, supplies the positive shift $`h=\varphi(\operatorname{den}T_s)`$, and Theorem <a href="#res:propagate" data-reference-type="ref" data-reference="res:propagate">9</a> keeps that shift integral at every later index. ◻
+Thus each even denominator loses exactly one factor of $`2`$, while an odd denominator is unchanged. After finitely many steps the denominator is odd. Theorem <a href="#res:totient" data-reference-type="ref" data-reference="res:totient">12</a>, applied at that index $`s`$, supplies the positive shift $`h=\varphi(\operatorname{den}T_s)`$, and Theorem <a href="#res:propagate" data-reference-type="ref" data-reference="res:propagate">13</a> keeps that shift integral at every later index. ◻
 
 </div>
 
 The one-step formula is the [denominator recurrence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1217), with its [odd case](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1226) and [even case](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1236).
 
-In the orbit displayed after Definition <a href="#def:rec" data-reference-type="ref" data-reference="def:rec">5</a> the proof runs as follows: $`\operatorname{den}T_0=12=2^{2}\cdot3`$, so $`s=2`$, the orbit reaches $`T_2=1/3`$ with odd denominator, and $`h=\varphi(3)=2`$. That is exactly the shift length seen to be integral there from index $`2`$ onwards, and no shorter one works.
+In the orbit displayed after Definition <a href="#def:rec" data-reference-type="ref" data-reference="def:rec">9</a> the proof runs as follows: $`\operatorname{den}T_0=12=2^{2}\cdot3`$, so $`s=2`$, the orbit reaches $`T_2=1/3`$ with odd denominator, and $`h=\varphi(3)=2`$. That is exactly the shift length seen to be integral there from index $`2`$ onwards, and no shorter one works.
 
-Three features of the argument are used later. The proof may take as its number of preparatory steps the $`2`$-adic valuation of $`\operatorname{den}T_0`$. The resulting shift length $`h`$ is the totient of the odd denominator reached from a hypothetical rational initial value, and is not known in advance for the prime-gap orbit. This is why this argument requires Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">17</a> for every $`h`$, rather than for one preassigned shift length. Finally, the digits enter only through the integer $`B_{s,0}`$, so the conclusion holds for an arbitrary integer digit sequence.
+Three features of the argument are used later. The proof may take as its number of preparatory steps the $`2`$-adic valuation of $`\operatorname{den}T_0`$. The resulting shift length $`h`$ is the totient of the odd denominator reached from a hypothetical rational initial value, and is not known in advance for the prime-gap orbit. This is why this argument requires Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">21</a> for every $`h`$, rather than for one preassigned shift length. Finally, the digits enter only through the integer $`B_{s,0}`$, so the conclusion holds for an arbitrary integer digit sequence.
 
 In the current formal source, denominator factorisation and cancellation are packaged directly in the [fixed-denominator theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L830), and the quantified conclusion is the [eventual integral-shift theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L853) for the actual prime-gap tail state.
 
-The useful contrapositive is stated for a real recurrence. Call its shifts *cofinally non-integral* when, for every fixed $`h\ge1`$ and every threshold $`N_0`$, some $`N\ge N_0`$ has $`\sigma_h(N)\notin\mathbb{Z}`$. This is precisely the negation of the conclusion of Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">10</a>: no shift length whatever becomes integral and stays integral.
+The useful contrapositive is stated for a real recurrence. Call its shifts *cofinally non-integral* when, for every fixed $`h\ge1`$ and every threshold $`N_0`$, some $`N\ge N_0`$ has $`\sigma_h(N)\notin\mathbb{Z}`$. This is precisely the negation of the conclusion of Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">14</a>: no shift length whatever becomes integral and stays integral.
 
 <div id="res:escape-irrational" class="theorem">
 
-**Theorem 11** (exact rationality classification). *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ with integer $`g`$. If its shifts are defined by $`\sigma_h(N)=T_{N+h}-T_N`$, then the following are equivalent:*
+**Theorem 15** (exact rationality classification). *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ with integer $`g`$. If its shifts are defined by $`\sigma_h(N)=T_{N+h}-T_N`$, then the following are equivalent:*
 
 1.  *$`T_0`$ is rational;*
 
@@ -379,7 +540,7 @@ The useful contrapositive is stated for a real recurrence. Call its shifts *cofi
 
 <div class="proof">
 
-*Proof.* For <span class="upright">(i)</span>$`\Rightarrow`$<span class="upright">(iii)</span>, choose $`q\in\mathbb{Q}`$ whose real cast is $`T_0`$. The real block identity identifies the whole orbit with the cast of the rational recurrence starting at $`q`$; Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">10</a> applied to that rational orbit then gives <span class="upright">(iii)</span>. The implication <span class="upright">(iii)</span>$`\Rightarrow`$<span class="upright">(ii)</span> is immediate. For <span class="upright">(ii)</span>$`\Rightarrow`$<span class="upright">(i)</span>, the real block identity gives
+*Proof.* For <span class="upright">(i)</span>$`\Rightarrow`$<span class="upright">(iii)</span>, choose $`q\in\mathbb{Q}`$ whose real cast is $`T_0`$. The real block identity identifies the whole orbit with the cast of the rational recurrence starting at $`q`$; Theorem <a href="#res:collapse" data-reference-type="ref" data-reference="res:collapse">14</a> applied to that rational orbit then gives <span class="upright">(iii)</span>. The implication <span class="upright">(iii)</span>$`\Rightarrow`$<span class="upright">(ii)</span> is immediate. For <span class="upright">(ii)</span>$`\Rightarrow`$<span class="upright">(i)</span>, the real block identity gives
 ``` math
 \sigma_h(N)=(2^h-1)T_N-B_{h,N}.
 ```
@@ -401,7 +562,7 @@ The Lean-checked polynomial prime bound gives convergence. A paper-level index s
 ``` math
 \mathcal T_{N+1}=2\mathcal T_N-g_{N+1}.
 ```
-If $`G=\sum_{n\ge0}g_n/2^{n+1}`$, then $`\mathcal T_0=2G-g_0=2G-1=2.349287932\ldots`$. Together with Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">3</a>, this shows that $`\Pi`$, $`G`$, and $`\mathcal T_0`$ have the same rationality status. Thus Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">11</a> identifies Problem #251 exactly with cofinal shift escape for $`\mathcal T`$. Lean checks the rational candidate recurrence unconditionally and, under non-irrationality of the series, its representation of every scaled real tail. The displayed recurrence for $`\mathcal T`$ is the elementary index-shift deduction above. What is not proved is the cofinal non-integrality needed by Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">11</a>.
+If $`G=\sum_{n\ge0}g_n/2^{n+1}`$, then $`\mathcal T_0=2G-g_0=2G-1=2.349287932\ldots`$. Together with Theorem <a href="#res:infinite" data-reference-type="ref" data-reference="res:infinite">7</a>, this shows that $`\Pi`$, $`G`$, and $`\mathcal T_0`$ have the same rationality status. Thus Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">15</a> identifies Problem #251 exactly with cofinal shift escape for $`\mathcal T`$. Lean checks the rational candidate recurrence unconditionally and, under non-irrationality of the series, its representation of every scaled real tail. The displayed recurrence for $`\mathcal T`$ is the elementary index-shift deduction above. What is not proved is the cofinal non-integrality needed by Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">15</a>.
 
 <a id="sec:local-certificate"></a>
 
@@ -415,7 +576,7 @@ turns simultaneous integrality of two adjacent shifts into a single comparison o
 
 <div id="res:smallpair" class="theorem">
 
-**Theorem 12** (adjacent small-shift obstruction). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$. Fix $`h`$ and $`N`$. If
+**Theorem 16** (adjacent small-shift obstruction). *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer digits $`g`$. Fix $`h`$ and $`N`$. If
 ``` math
 -1<\sigma_h(N)<1,\qquad -1<\sigma_h(N+1)<1,
  \qquad g_{N+h+1}\ne g_{N+1},
@@ -430,13 +591,13 @@ then $`\sigma_h(N)`$ and $`\sigma_h(N+1)`$ cannot both be integral. Consequently
 
 </div>
 
-The finite contradiction is the [adjacent small-shift obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L979); its quantified form is the [cofinal small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1006); and the actual-prime-gap specialisation is the [prime-gap specialisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112). Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">12</a> is conditional on its two tail inequalities; no theorem asserting that such pairs occur is claimed here.
+The finite contradiction is the [adjacent small-shift obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L979); its quantified form is the [cofinal small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1006); and the actual-prime-gap specialisation is the [prime-gap specialisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112). Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">16</a> is conditional on its two tail inequalities; no theorem asserting that such pairs occur is claimed here.
 
-All three are stated for a rational orbit, while the prime-gap tail $`\mathcal T`$ of Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">3</a> is real, so the rational statement does not on its own discharge the instances that arise downstream. The same argument gives the real form directly.
+All three are stated for a rational orbit, while the prime-gap tail $`\mathcal T`$ of Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">4</a> is real, so the rational statement does not on its own discharge the instances that arise downstream. The same argument gives the real form directly.
 
 <div id="res:smallpair-real" class="corollary">
 
-**Corollary 13** (adjacent small-shift obstruction, real form). *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ with integer digits $`g`$, and write $`\sigma_h(N)=T_{N+h}-T_N`$. Fix $`h`$ and $`N`$. If
+**Corollary 17** (adjacent small-shift obstruction, real form). *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ with integer digits $`g`$, and write $`\sigma_h(N)=T_{N+h}-T_N`$. Fix $`h`$ and $`N`$. If
 ``` math
 -1<\sigma_h(N)<1,\qquad -1<\sigma_h(N+1)<1,
  \qquad g_{N+h+1}\ne g_{N+1},
@@ -451,13 +612,13 @@ then $`\sigma_h(N)`$ and $`\sigma_h(N+1)`$ do not both lie in $`\mathbb{Z}`$. Co
 
 </div>
 
-Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">13</a> is proved here and is not a declaration in the pinned Lean module, whose small-shift theorems are stated for the rational orbit. It is the form that applies to the real tail, and it carries the same two unproved inequalities as its rational counterpart.
+Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">17</a> is proved here and is not a declaration in the pinned Lean module, whose small-shift theorems are stated for the rational orbit. It is the form that applies to the real tail, and it carries the same two unproved inequalities as its rational counterpart.
 
-The third hypothesis, on its own, is available. For the actual gaps tabulated in Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a> it reads $`g_4=2\ne4=g_3`$ at $`h=1`$, $`N=2`$; and Proposition <a href="#res:gap-nonperiodic" data-reference-type="ref" data-reference="res:gap-nonperiodic">14</a> below says precisely that for each fixed $`h\ge1`$ the inequality $`g_{N+h+1}\ne g_{N+1}`$ holds for arbitrarily large $`N`$, since its failure from some index onwards is eventual periodicity with period $`h`$. What is missing is the pair of inequalities, each of which constrains a complete infinite tail.
+The third hypothesis, on its own, is available. For the actual gaps tabulated in Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a> it reads $`g_4=2\ne4=g_3`$ at $`h=1`$, $`N=2`$; and Proposition <a href="#res:gap-nonperiodic" data-reference-type="ref" data-reference="res:gap-nonperiodic">18</a> below says precisely that for each fixed $`h\ge1`$ the inequality $`g_{N+h+1}\ne g_{N+1}`$ holds for arbitrarily large $`N`$, since its failure from some index onwards is eventual periodicity with period $`h`$. What is missing is the pair of inequalities, each of which constrains a complete infinite tail.
 
 <div id="res:gap-nonperiodic" class="proposition">
 
-**Proposition 14** (prime gaps do not become periodic). *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
+**Proposition 18** (prime gaps do not become periodic). *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
 
 </div>
 
@@ -467,13 +628,13 @@ The third hypothesis, on its own, is available. For the actual gaps tabulated in
 
 </div>
 
-Lean checks the factorial argument as [unboundedness of the actual gaps](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L57) and the conclusion as [non-eventual periodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023). Combining nonperiodicity with eventual strict smallness of one positive shift would also exclude eventual integrality, but eventual smallness at every sufficiently large index is stronger than the cofinal adjacent-pair hypothesis in Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">12</a> and is not asserted here.
+Lean checks the factorial argument as [unboundedness of the actual gaps](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L57) and the conclusion as [non-eventual periodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023). Combining nonperiodicity with eventual strict smallness of one positive shift would also exclude eventual integrality, but eventual smallness at every sufficiently large index is stronger than the cofinal adjacent-pair hypothesis in Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">16</a> and is not asserted here.
 
 <a id="sec:carry"></a>
 
 # Nonperiodic coefficients with a rational sum
 
-Proposition <a href="#res:gap-nonperiodic" data-reference-type="ref" data-reference="res:gap-nonperiodic">14</a> shows that the prime gaps are not eventually periodic. One might therefore hope that rationality of a dyadic series forces its integer coefficients to be eventually periodic, and play the two against each other. The hoped-for implication is false, and a single explicit sequence refutes it.
+Proposition <a href="#res:gap-nonperiodic" data-reference-type="ref" data-reference="res:gap-nonperiodic">18</a> shows that the prime gaps are not eventually periodic. One might therefore hope that rationality of a dyadic series forces its integer coefficients to be eventually periodic, and play the two against each other. The hoped-for implication is false, and a single explicit sequence refutes it.
 
 The construction runs the emission of coefficients backwards. Let $`K:\mathbb{N}\to\mathbb{Q}`$ be arbitrary, read $`K_n`$ as the value carried into level $`n`$, and put $`\kappa_n=2K_n-K_{n+1}`$: the [carry coefficient](https://github.com/wcook04/plectis-lean-erdos249-257/blob/c8e41c76b4ce888601213778ddce8b148359d11f/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1129). That definition is exactly the statement that
 ``` math
@@ -484,7 +645,7 @@ so at each level the carried value splits into one emitted coefficient and a new
 
 <div id="res:telescope" class="proposition">
 
-**Proposition 15** (exact telescoping). *Let $`K:\mathbb{N}\to\mathbb{Q}`$ be arbitrary and $`\kappa_n=2K_n-K_{n+1}`$. For every $`n\ge0`$,
+**Proposition 19** (exact telescoping). *Let $`K:\mathbb{N}\to\mathbb{Q}`$ be arbitrary and $`\kappa_n=2K_n-K_{n+1}`$. For every $`n\ge0`$,
 ``` math
 \sum_{i=0}^{n-1}\frac{\kappa_i}{2^{\,i+1}}=K_0-\frac{K_n}{2^{\,n}} .
 ```*
@@ -523,7 +684,7 @@ Problem #251 is open. The public Lean source now proves unconditional convergen
 
 <div id="prob:divisor-hit" class="problem">
 
-**Problem 16** (divisor-hitting shift escape). For every $`r\ge1`$, does some positive multiple of $`r`$ escape cofinally?
+**Problem 20** (divisor-hitting shift escape). For every $`r\ge1`$, does some positive multiple of $`r`$ escape cofinally?
 ``` math
 \forall r\ge1\ \exists m\ge1:\qquad \mathsf E(mr).
 ```
@@ -534,7 +695,7 @@ This is the weaker recurrence-level target suggested by the denominator mechanis
 
 <div id="prob:escape" class="problem">
 
-**Problem 17** (universal prime-gap shift escape). For every $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
+**Problem 21** (universal prime-gap shift escape). For every $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
 ``` math
 \sum_{j\ge1}
  \frac{g_{N+h+j}-g_{N+j}}{2^j}\notin\mathbb{Z}.
@@ -543,11 +704,11 @@ This is the weaker recurrence-level target suggested by the denominator mechanis
 
 </div>
 
-The series in <a href="#eq:shift-escape" data-reference-type="eqref" data-reference="eq:shift-escape">[eq:shift-escape]</a> is exactly $`\mathcal T_{N+h}-\mathcal T_N`$. Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">11</a> makes Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">17</a> equivalent to irrationality of $`\Pi`$. This all-shifts form is pointwise stronger than the sufficient target in Problem <a href="#prob:divisor-hit" data-reference-type="ref" data-reference="prob:divisor-hit">16</a>: a hypothetical rational value chooses a shift length from the odd part of its reduced denominator, and one needs only hit a compatible multiple rather than escape at every prescribed $`h`$.
+The series in <a href="#eq:shift-escape" data-reference-type="eqref" data-reference="eq:shift-escape">[eq:shift-escape]</a> is exactly $`\mathcal T_{N+h}-\mathcal T_N`$. Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">15</a> makes Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">21</a> equivalent to irrationality of $`\Pi`$. This all-shifts form is pointwise stronger than the sufficient target in Problem <a href="#prob:divisor-hit" data-reference-type="ref" data-reference="prob:divisor-hit">20</a>: a hypothetical rational value chooses a shift length from the odd part of its reduced denominator, and one needs only hit a compatible multiple rather than escape at every prescribed $`h`$.
 
 <div id="prob:smallpair" class="problem">
 
-**Problem 18** (cofinal adjacent small mismatch). For every fixed $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
+**Problem 22** (cofinal adjacent small mismatch). For every fixed $`h\ge1`$ and every $`N_0`$, prove that some $`N\ge N_0`$ satisfies
 ``` math
 \begin{split}
 \left|\sum_{j\ge1}
@@ -561,9 +722,9 @@ g_{N+h+1}&\ne g_{N+1}.
 
 </div>
 
-The two sums are adjacent $`h`$-shifts. Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">13</a> turns each instance of <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a> into a finite contradiction to simultaneous integrality; Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">12</a> is the Lean-checked rational case. A cofinal family of such pairs therefore proves Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">17</a>; Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">11</a> then gives irrationality of the gap series, and Corollary <a href="#res:irr-equivalence" data-reference-type="ref" data-reference="res:irr-equivalence">4</a> transfers it to $`\Pi`$. This formulation deliberately asks only for sporadic adjacent pairs; the stronger assertion that a fixed shift is eventually always smaller than one is unnecessary.
+The two sums are adjacent $`h`$-shifts. Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">17</a> turns each instance of <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a> into a finite contradiction to simultaneous integrality; Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">16</a> is the Lean-checked rational case. A cofinal family of such pairs therefore proves Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">21</a>; Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">15</a> then gives irrationality of the gap series, and Corollary <a href="#res:irr-equivalence" data-reference-type="ref" data-reference="res:irr-equivalence">8</a> transfers it to $`\Pi`$. This formulation deliberately asks only for sporadic adjacent pairs; the stronger assertion that a fixed shift is eventually always smaller than one is unnecessary.
 
-Several natural prime-distribution inputs are insufficient. Isolated small gaps, isolated large gaps, average gap estimates, and the occurrence of any one fixed finite pattern do not suffice: both inequalities in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a> contain the complete infinite continuation. Nor does parity: after the first gap all $`g_n`$ are even. Unboundedness and non-eventual-periodicity of the actual gaps, though now checked, do not imply the required small-tail recurrence. In particular, Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">4</a> shows that no argument can deduce eventual periodicity from rationality alone.
+Several natural prime-distribution inputs are insufficient. Isolated small gaps, isolated large gaps, average gap estimates, and the occurrence of any one fixed finite pattern do not suffice: both inequalities in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a> contain the complete infinite continuation. Nor does parity: after the first gap all $`g_n`$ are even. Unboundedness and non-eventual-periodicity of the actual gaps, though now checked, do not imply the required small-tail recurrence. In particular, Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">5</a> shows that no argument can deduce eventual periodicity from rationality alone.
 
 <a id="a-finite-truncation-criterion."></a>
 
@@ -591,7 +752,7 @@ Here $`D_{h,N,L}\bmod2^L`$ denotes the least nonnegative residue, including when
 
 <div id="res:truncation" class="proposition">
 
-**Proposition 19** (finite truncation). *Let $`M(n)\ge g_n`$ for every $`n`$, assume that the series below converges, and put
+**Proposition 23** (finite truncation). *Let $`M(n)\ge g_n`$ for every $`n`$, assume that the series below converges, and put
 ``` math
 R_{h,N,L}(M)=
  \sum_{j>L}\frac{M(N+h+j)+M(N+j)}{2^j}.
@@ -601,7 +762,7 @@ Suppose that for every fixed $`h\ge1`$ and every $`N_0`$ there exist $`N\ge N_0`
 \operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M).
 \tag{5.3}\label{eq:truncation}
 ```
-Then Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">17</a> holds.*
+Then Problem <a href="#prob:escape" data-reference-type="ref" data-reference="prob:escape">21</a> holds.*
 
 </div>
 
@@ -613,7 +774,7 @@ Then Problem <a href="#prob:escape" data-reference-type="ref" data-reference="p
 
 The last distance-to-integers inference is the elementary paper argument in the displayed proof: an error at most $`R`$ cannot reach an integer when the approximation is farther than $`R`$ from every integer. It is not currently a named Lean declaration. For instance, if $`S_{h,N,L}=2/5`$ and $`R_{h,N,L}(M)=1/20`$, the full sum lies within $`1/20`$ of $`2/5`$ and so at distance at least $`7/20`$ from every integer, which settles <a href="#eq:shift-escape" data-reference-type="eqref" data-reference="eq:shift-escape">[eq:shift-escape]</a> at that $`N`$. The prime-gap tail bound, the convergence used above, and the existence of blocks satisfying <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> are not consequences of that inference. The proposition’s full sum is moreover real-valued, so the reverse-triangle step used here is a paper proof and not an instance of any rational-valued formal declaration.
 
-Taking the classical bound $`M(n)\ll n\log n`$, a choice $`L=\lceil A\log_2(N+h+2)\rceil`$ with any fixed $`A>1`$ makes the right side a negative power of $`N`$ up to logarithms. Thus <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> asks for a finite dyadic anti-concentration estimate on a logarithmic-length block, not control of an infinite tail and not eventual periodicity of the full gap sequence. For Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">18</a>, the same truncation must certify two adjacent full-tail values inside the open unit interval, together with the displayed gap mismatch. A finite prefix is useful only when its omitted tail is rigorously dominated.
+Taking the classical bound $`M(n)\ll n\log n`$, a choice $`L=\lceil A\log_2(N+h+2)\rceil`$ with any fixed $`A>1`$ makes the right side a negative power of $`N`$ up to logarithms. Thus <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> asks for a finite dyadic anti-concentration estimate on a logarithmic-length block, not control of an infinite tail and not eventual periodicity of the full gap sequence. For Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">22</a>, the same truncation must certify two adjacent full-tail values inside the open unit interval, together with the displayed gap mismatch. A finite prefix is useful only when its omitted tail is rigorously dominated.
 
 What <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> requires is joint control of the finite block of weighted differences $`(g_{N+h+1}-g_{N+1},\ldots,g_{N+h+L}-g_{N+L})`$ modulo powers of two, along a block of logarithmic length. We do not know how to obtain such control and we make no progress on it here. The strongest results on prime gaps address a different shape of question. Zhang’s bounded-gap theorem \[zhang2014, Theorem 1, p. 1122\] produces infinitely many bounded consecutive-prime gaps. Maynard proves substantially more than an individual-gap statement: \[maynard2015, Theorem 1.1, p. 384\] bounds $`\liminf_n(p_{n+m}-p_n)`$ for every fixed $`m`$, and hence gives bounded clusters of every fixed size; \[maynard2015, Theorem 1.3, p. 385\] gives the explicit unconditional bound $`\liminf_n(p_{n+1}-p_n)\le 600`$. The large-gap theorem of Ford, Green, Konyagin, Maynard and Tao \[fgkmt2018, Theorem 1, p. 66\] bounds the largest single consecutive-prime gap below $`X`$. None of these results supplies the joint dyadic distribution of a logarithmic block of consecutive gap differences required by <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a>. The same introduction notes a separate sequel on chains of large gaps; the cited theorem itself supplies no residue-sensitive block estimate of the kind needed here.
 
@@ -621,7 +782,7 @@ What <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:tr
 
 #### What remains to be formalised.
 
-Unconditional convergence, the infinite series identity, the actual rational scaled-tail state and its recurrence, the eventual-integral-shift theorem, the abstract rationality classification, and the prime-specific local small-mismatch theorem are Lean-checked. Paper-level are the modular rewriting by $`D_{h,N,L}`$, the finite-approximation inference, the positive carry countermodel above, the identification of the concrete tail $`\mathcal T`$ with the checked recurrence, and the real form of the small-shift obstruction in Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">13</a>. The missing statements are the multiple-in-shift lemma used by Problem <a href="#prob:divisor-hit" data-reference-type="ref" data-reference="prob:divisor-hit">16</a>, a prime-gap tail domination sharp enough for a certificate, and a cofinal anti-concentration or adjacent-mismatch theorem. No theorem supplies the cofinal pairs in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>, and no cited prime-distribution estimate is claimed or formalised as supplying those statements.
+Unconditional convergence, the infinite series identity, the actual rational scaled-tail state and its recurrence, the eventual-integral-shift theorem, the abstract rationality classification, and the prime-specific local small-mismatch theorem are Lean-checked. Paper-level are the modular rewriting by $`D_{h,N,L}`$, the finite-approximation inference, the positive carry countermodel above, the identification of the concrete tail $`\mathcal T`$ with the checked recurrence, and the real form of the small-shift obstruction in Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">17</a>. The missing statements are the multiple-in-shift lemma used by Problem <a href="#prob:divisor-hit" data-reference-type="ref" data-reference="prob:divisor-hit">20</a>, a prime-gap tail domination sharp enough for a certificate, and a cofinal anti-concentration or adjacent-mismatch theorem. No theorem supplies the cofinal pairs in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>, and no cited prime-distribution estimate is claimed or formalised as supplying those statements.
 
 <a id="statements-and-declarations"></a>
 
@@ -655,7 +816,7 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 # Guide to the formal sources
 
-Each linked phrase opens its Lean declaration at the pinned source revision c8e41c76b4ce. All declarations of this note live in one module. The summation-by-parts declarations are prime-specific; most of Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">3</a> is stated for arbitrary integer digits and arbitrary rational or real orbits, while Section <a href="#sec:local-certificate" data-reference-type="ref" data-reference="sec:local-certificate">3.1</a> records the actual-gap specialisation. The concrete prime-gap tail, its unconditional convergence, its rational candidate state and the real-to-rational scaled-tail bridge are all defined and checked in the pinned Lean module.
+Each linked phrase opens its Lean declaration at the pinned source revision c8e41c76b4ce. All declarations of this note live in one module. The summation-by-parts declarations are prime-specific; most of Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">4</a> is stated for arbitrary integer digits and arbitrary rational or real orbits, while Section <a href="#sec:local-certificate" data-reference-type="ref" data-reference="sec:local-certificate">4.1</a> records the actual-gap specialisation. The concrete prime-gap tail, its unconditional convergence, its rational candidate state and the real-to-rational scaled-tail bridge are all defined and checked in the pinned Lean module.
 
 <div class="thebibliography">
 

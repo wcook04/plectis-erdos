@@ -76,21 +76,46 @@ FIRST_MINUTE_CONTRACT = {
         ),
     },
     "claim-faithful-publication-systems-paper.pdf": {
-        (1, 2): (
-            "from lean proofs to public claims",
+        (1, 3): (
+            "problem-sized lean worlds",
+            "among the systems compared in this paper, none spans this complete chain",
+            "six things that are commonly collapsed",
+            "more reasoning cannot buy a write lease",
             "lean verifies that a proof establishes the formal statement written in the source",
             "eight problems remain open",
-            "finite certificate at every lcm-diagonal scale",
-            "t ≤ 82",
-            "beyond every fixed cutoff",
-            "relationship had not been registered",
-            "the release workflow",
-            "docs/claims.json",
-            "scripts/check_release.py",
         ),
-        (1, 3): (
-            "lean checks the formal proofs",
-            "whether both jobs pass",
+        (3, 6): (
+            "type a and type b",
+            "313 visible progress updates and 3,491 command events",
+            "compressed trace has an observation boundary",
+            "authority-bearing artefact and receipt",
+        ),
+        (6, 7): (
+            "experiments are route selectors",
+            "a lean no-go theorem",
+            "three oracles, not one",
+            "problem-sized lean worlds and bounded theorem neighbourhoods",
+            "1,024 lean modules and 153,396 declarations",
+        ),
+        (8, 9): (
+            "comparator: an exact-statement firewall",
+            "palomar: selecting what deserves review",
+            "proof generation, verification, exposition, publication and community digestion",
+            "natural friction",
+            "paper authoring itself participates in this loop",
+        ),
+        (10, 10): (
+            "t ≤ 82",
+            "no matter how large a fixed checked bound is",
+            "relationship had not been registered",
+            "nine of the ten edits were rejected",
+        ),
+        (11, 13): (
+            "semantic single-flight queue",
+            "host-wide mathlib resource",
+            "four separate scaling limits",
+            "only an accepted receipt enters",
+            "no-go graph as a new mathematical object",
         ),
     },
     "cold-clone-to-proof-receipt.pdf": {

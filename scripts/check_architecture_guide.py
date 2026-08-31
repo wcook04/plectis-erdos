@@ -26,7 +26,12 @@ MAX_GUIDE_BYTES = 18_000
 # inventory, whose exact membership is independently checked against the build
 # and licence manifests.  A stable conceptual base plus a small per-artifact
 # allowance therefore scales only when the governed public surface scales.
-SYSTEMS_PAPER_BASE_BYTES = 45_000
+# The base now covers the complete private-to-public architecture rather than
+# the former release-check case study: authority-aware routing, temporal work
+# leases, resident metabolism, trace projections, federated mathematical
+# memory, proof/publication gates, and the scale/review boundary. The
+# per-artifact increment remains the only inventory-dependent allowance.
+SYSTEMS_PAPER_BASE_BYTES = 55_000
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 
@@ -168,80 +173,129 @@ BANNED_SHORTHAND = (
 )
 
 PAPER_SECTION_ORDER = (
-    r"\section{The publication gap}",
-    r"\section{The release workflow}",
-    r"\section{One claim from Lean theorem to public page}",
-    r"\section{What the checks establish}",
-    r"\section{A boundary the checklist missed}",
-    r"\section{Scope, reuse, and limits}",
-    r"\section{Related systems}",
+    r"\section{The problem: many kinds of evidence}",
+    r"\section{The whole lifecycle in one picture}",
+    r"\section{The private workbench}",
+    r"\section{The mathematical reasoning loop}",
+    r"\section{The public Lean repository}",
+    r"\section{Comparator, Palomar, and publication}",
+    r"\section{One complete boundary: finite is not unbounded}",
+    r"\section{Inspection routes}",
+    r"\section{What can be trusted}",
+    r"\section{Scaling from one clone to a search network}",
+    r"\section{Relation to other approaches}",
     r"\section{Conclusion}",
     r"\section{Reproducibility}",
 )
 
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
-        "Lean verifies that a proof establishes the formal statement written in the source",
+        "Among the systems compared in this paper, none spans this complete chain",
+        "claim-transition architecture",
+        "six things that are commonly collapsed",
+        "bounded claim over the cited systems",
         "All eight problems remain open",
         "does not claim a solution to any of them",
     ),
-    "five_real_parts": (
-        "Lean source",
-        "maintainer-reviewed claim record",
-        "authored public documents",
-        "generated indexes and summaries",
-        "release program and continuous-integration workflow",
+    "problem_worlds_and_nonfungible_authority": (
+        "A problem is a mathematical world, not a folder",
+        "bounded neighbourhood inside a problem-sized world",
+        "The architecture treats six resources as non-fungible",
+        "More reasoning cannot buy a write lease",
+        "two coupled graphs with a guarded crossing",
+        "Neither graph may rewrite the other by implication",
     ),
-    "plain_diagram_labels": (
-        "reading map, code index",
-        "machine-readable summary",
+    "private_authority_and_concurrency": (
+        "Durable state lives in files",
+        "Type A and Type B",
+        "substrate access, not model quality",
+        "claims exact paths for a bounded lease",
+        "append-only ledgers and immutable receipts",
+        "fan-in barrier",
     ),
-    "real_owners": (
-    "Erdos249257.lean",
-    "ErdosProblems.lean",
+    "executable_control_plane": (
+        "typed option surface",
+        "past work from present permission",
+        "SQLite store in write-ahead-log mode",
+        "daemon as not running while queued jobs remained visible",
+        "always-on architecture",
+        "currently healthy service",
+    ),
+    "continuous_trace_boundary": (
+        "313 visible progress updates and 3,491 command events",
+        "compressed trace has an observation boundary",
+        "Completeness is therefore an explicit field",
+        "authority-bearing artefact and receipt",
+    ),
+    "mathematical_reasoning_and_graphs": (
+        "Experiments are route selectors",
+        "A failed agent attempt",
+        "A Lean no-go theorem",
+        "Every no-go keeps its scope visible",
+        "Problem-sized Lean worlds and bounded theorem neighbourhoods",
+        "1,024 Lean modules and 153,396 declarations",
+        "177 exact results, seven open producers, 72 negative results",
+        "designed omission, not exhaustive loading",
+        "working memory is federated rather than a copied mega-index",
+        "semantic second pass",
+        "no projection may bulk-strengthen a family of claims",
+    ),
+    "assurance_and_digestion": (
+        "Comparator: an exact-statement firewall",
+        "Comparator-checked",
+        "Palomar: selecting what deserves review",
+        "proof generation, verification, exposition, publication and community digestion",
+        "natural friction",
+        "Paper authoring itself participates in this loop",
+        "active digestion and interpretability pass in Tao's sense",
+        "That reflexivity is provenance, not validation",
+        "never local status fields",
+    ),
+    "worked_boundary_and_failure": (
+        "forall t\\le82",
+        "No matter how large a fixed checked bound is",
+        "relationship had not been registered",
+        "Nine of the ten edits were rejected",
+        "original run logs were not retained",
+        "other nine edits were not rerun",
+    ),
+    "scale_without_authority_inflation": (
+        "result mining",
+        "semantic single-flight queue",
+        "host-wide Mathlib resource",
+        "four separate scaling limits",
+        "no-go graph as a new mathematical object",
+        "graph-conditioned models",
+        "design target rather than a reported benchmark",
+    ),
+    "public_return_and_credit": (
+        "fork or clone the repository",
+        "pull request or research-progress issue",
+        "Only an accepted receipt enters",
+        "Acceptance, mathematical claim status, and release inclusion remain separate",
+        "Attribution and pull requests are standard practice",
+    ),
+    "real_public_routes": (
+        "Erdos249257.lean",
+        "ErdosProblems.lean",
         "docs/claims.json",
-        "docs/publication_contract.json",
-        "docs/publication_evidence.json",
         "scripts/check_release.py",
         ".github/workflows/lean.yml",
-    ),
-    "decision_boundary": (
-        "Lean checks the formal proofs",
-        "A maintainer reviews what those proofs mean",
-        "The release machinery checks that the recorded relationships remain intact",
-        "does not technically force a second independent mathematician",
-    ),
-    "worked_trace": (
-        # The historical deposits were recorded at 28 breakpoints through
-        # t = 64.  The current theorem covers every scale t <= 82, so pin the
-        # public semantic boundary rather than a superseded deposit count.
-        "Lean has checked a finite certificate at every lcm-diagonal scale",
-        "beyond every fixed cutoff",
-        "public meaning, not its internal name",
-        "certified_kill_instances",
-    ),
-    "release_flow": (
-        "lake build",
-        "python3 scripts/check_release.py",
-        "two separate jobs",
-        "treats that exit as a failing job",
-    ),
-    "coverage_ceiling": (
-        "A boundary the checklist missed",
-        "coverage boundary, not a reliability score",
-        "only after a person has identified and recorded that relationship",
-    ),
-    # The three named objects and the passages that instantiate the general
-    # machinery on them are load-bearing: losing them returns the paper to a
-    # generic systems essay beside a decorative example.
-    "worked_example_governs": (
-        "No Lean theorem carries the first to the second",
-        "Instantiated on the worked example",
-        "boundary witness",
-        "assurance perimeter",
-        "Coverage can also shrink",
+        "docs/research-commons/CONTRIBUTIONS.md",
     ),
 }
+
+# The cold-reader architecture guide still avoids private Type A/B labels and
+# unexplained quantifier jargon.  The systems paper has the different job of
+# explaining those mechanisms and the finite/unbounded mathematical boundary.
+PAPER_BANNED_SHORTHAND = (
+    re.compile(r"\bM(?:10|[1-9])\b"),
+    re.compile(r"\b9/10\b"),
+    re.compile(r"\b5,207\b"),
+    re.compile(r"\bMRS\b"),
+    re.compile(r"\bAccess Skeleton\b", re.IGNORECASE),
+    re.compile(r"\bVinum\b", re.IGNORECASE),
+)
 
 
 def normalise(text: str) -> str:
@@ -316,10 +370,15 @@ def validate_systems_paper(text: str) -> None:
     ))
 
     require(
-        "From Lean Proofs to Public Claims" in text
-        and "Release checks and trust boundaries in one formal mathematics repository"
+        "Problem-Sized Lean Worlds" in text
+        and "An authority-separated architecture from AI search to public mathematical claims"
         in text
     , "systems paper lost its plain architecture title")
+    require(
+        text.count("% BEGIN generated_semantic_coverage_macros") == 1
+        and text.count("% END generated_semantic_coverage_macros") == 1,
+        "systems paper lost its semantic-corpus builder region",
+    )
 
     positions = [text.find(heading) for heading in PAPER_SECTION_ORDER]
     require(all(position >= 0 for position in positions), (
@@ -334,7 +393,7 @@ def validate_systems_paper(text: str) -> None:
                 f"systems paper lost {group_id} anchor {anchor!r}"
             ))
 
-    for pattern in BANNED_SHORTHAND:
+    for pattern in PAPER_BANNED_SHORTHAND:
         require(not pattern.search(text), (
             f"systems paper exposes private or score-like shorthand {pattern.pattern!r}"
         ))
@@ -342,10 +401,8 @@ def validate_systems_paper(text: str) -> None:
     require(len(re.findall(r"\bsentence\b", text, flags=re.IGNORECASE)) <= 4, (
         "systems paper has drifted back to a sentence-centred case study"
     ))
-    public_meaning = compact.find("public meaning, not its internal name")
-    internal_id = compact.find("certified_kill_instances")
-    require(0 <= public_meaning < internal_id, (
-        "systems paper exposes its internal claim id before the public meaning"
+    require("certified_kill_instances" not in compact, (
+        "systems paper regressed from public mathematical meaning to an internal claim id"
     ))
     require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
 

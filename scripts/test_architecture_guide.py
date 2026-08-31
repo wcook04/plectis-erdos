@@ -143,7 +143,7 @@ def main() -> int:
     paper_mutations = (
         (
             systems_paper.replace(
-                r"\section{The release workflow}",
+                r"\section{The whole lifecycle in one picture}",
                 r"\section{Background}",
             ),
             "real architecture section removed",
@@ -153,11 +153,7 @@ def main() -> int:
             "real claim owner hidden",
         ),
         (
-            reflow_tolerant_replace(
-                systems_paper,
-                "does not technically force a second independent mathematician",
-                "enforces independent review",
-            ),
+            systems_paper.replace("Comparator-checked", "Independently verified"),
             "review-enforcement boundary inflated",
         ),
         (
@@ -167,10 +163,34 @@ def main() -> int:
         (
             reflow_tolerant_replace(
                 systems_paper,
-                "navigation, reading map, code index, machine-readable summary; no authority",
-                "orientation, declaration atlas,\\\\\n  machine entry packet",
+                "% BEGIN generated_semantic_coverage_macros",
+                "% semantic coverage macros removed",
             ),
-            "private diagram labels reintroduced",
+            "semantic-corpus builder boundary removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                systems_paper,
+                "semantic single-flight queue",
+                "ordinary build command",
+            ),
+            "Lean queue architecture removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                systems_paper,
+                "The architecture treats six resources as non-fungible",
+                "The architecture uses several resources",
+            ),
+            "non-fungible authority thesis removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                systems_paper,
+                "That reflexivity is provenance, not validation",
+                "That reflexivity validates the architecture",
+            ),
+            "self-authoring validation ceiling inflated",
         ),
     )
     for mutated, label in paper_mutations:
