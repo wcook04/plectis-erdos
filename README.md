@@ -32,10 +32,7 @@ cold-clone route and the recorded workbench session.
 
 The repository began with #249 and #257 and keeps that name so old citations
 continue to resolve. Those are reviewed headline programmes, not the whole
-corpus. The companion [Plectis](https://github.com/wcook04/plectis) repository
-owns the runnable research tooling and claims no proof authority here. The
-[art-led public front door](https://wcook04.github.io/) explains how the system,
-the eight programmes, the papers, and this proof corpus fit together.
+corpus.
 
 **AI assistance and responsibility.** Large-language-model agents drafted and
 revised prose, Lean proofs, and repository software. Will Cook set the
@@ -47,6 +44,35 @@ matters: those remain authored judgements, and the papers state them per result.
 
 Routes: [mathematics](docs/RESULTS.md) · [verification](docs/EXTERNAL_VERIFICATION.md)
 · [systems](ARCHITECTURE.md) · `query_corpus.py --overview` / `--papers`.
+
+
+## The wider system, briefly
+
+This repository is one output of a larger private system I built and direct
+alone. The public pieces, in the order a person meets them:
+
+- [Plectis](https://github.com/wcook04/plectis): the runnable slice of that
+  system, components you clone and run locally, each with one claim and one
+  check.
+- [The website](https://wcook04.github.io/plectis/): the human wrapper. Tools
+  like Claude Code are an agent's wrapper around a repository; the website is
+  the same thing for a person, the substrate of these repositories made
+  interpretable: the papers, the eight problems as readable pages, the
+  component map, and an AI review packet.
+- The videos, which show the private frontend on screen:
+  [1 minute](https://youtu.be/R_--vExxWyk),
+  [5 minutes](https://youtu.be/VoWByIOIuBE),
+  [29 minutes](https://youtu.be/jA_xC8gmdSs). No repository checks run in them.
+- [The doctrine](https://wcook04.github.io/plectis/docs/doctrine.html): the
+  written rules the building agents read before they work.
+
+This Lean repository is the showcase: what the internal system produces when it
+is pointed at something deliberately hard. The system is not restricted to
+mathematics; the same machinery runs research, forecasting, and
+agent-reliability work. The aspiration is a full research lab with its own
+frontend in a year or two, with support. An agent landing here cold should
+read [AGENTS.override.md](AGENTS.override.md) first; a person should start with
+the mathematics below.
 
 ## Problem papers
 
@@ -436,3 +462,30 @@ the paper source and rendered PDFs, is CC-BY-4.0.
 
 Use the issue forms for corrections. [`CONTRIBUTING.md`](CONTRIBUTING.md)
 explains local checks; [`SECURITY.md`](SECURITY.md) gives the private route.
+
+## Where I actually am
+
+I am 22. I took a year out of my economics degree at Bristol for mental health
+reasons, and working on this became my life. I am about a month from running
+out of money, and I rushed this release because real life caught up with me.
+That is not a pity play, it is just where I am. As this is written the
+repository has zero stars.
+
+This repository is the output. The private system behind it is bigger: the
+videos show the entire frontend, the docs on the website carry how I think
+about AI and safe systems, and Plectis is the prototype of what the system
+could look like in a year or two with support. There are other apps I use
+daily that I would happily open-source too; I keep choosing the mathematics
+because it is the part a stranger can verify.
+
+I have been doing this alone for a year and I do not really know how to
+interact with people, especially Silicon Valley, where everyone is rightfully
+busy. So I designed this to be cloned instead of pitched. That is what this
+repository is for: the eight problems mapped to their exact open steps, every
+claim bound to what is actually proved, and the machinery for working on them
+already built, where an agent cannot mark its own work and the kernel decides.
+It was made on the bet that models improve, so that whoever points better ones
+at it starts from here instead of from zero. A solution found that way is
+yours, credit included. I do not care about prestige or glory. I need support,
+or at least people using what I built. The
+[routes are on the site](https://wcook04.github.io/plectis/#contact).
