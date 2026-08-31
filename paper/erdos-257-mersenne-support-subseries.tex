@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{ec787e648a672e2a501b7e5453230a5e6d16d766}
-\renewcommand{\commitshort}{ec787e648a67}
+\renewcommand{\commit}{5e28e73cf70a0ccf3219bb7197401307fb6d3bfd}
+\renewcommand{\commitshort}{5e28e73cf70a}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -110,16 +110,14 @@ an equivalence over infinite objects, not a contradiction: finite supports
 already supply certificates, and no universal irrationality conclusion
 follows.
 
-At the half endpoint, a new exact-row transport makes the conditional route
-more concrete.  If the rational greedy remainder after rank $c-1$ is positive
-but smaller than $\wgt c$, the checked skipped-core construction fills the
-upper half by a Boolean word and produces an exact finite quotient row at
-endpoint $2c-2$.  Rows at arbitrarily large endpoints have values converging
-to $1/2$; the closed-set consumer therefore gives $1/2\in\Ach$ even when the
-finite row witnesses are mutually incompatible.  The needed supply is the
-unproved hypothesis that such positive skips occur cofinally.  Thus this is a
-conditional membership/refutation route, and finite rows do not provide the
-missing cofinal supply.
+At the half endpoint, every finite rational greedy remainder is strictly
+positive, so a skipped rank cannot hide a prematurely exhausted expansion.
+If that remainder is smaller than $\wgt c$, the skipped-core construction
+fills the upper half by a Boolean word and produces an exact finite quotient
+row at endpoint $2c-2$.  More sharply, cofinal positive skips occur if and
+only if $1/2\in\Ach$.  The proposed producer is therefore not a weaker local
+condition waiting for an estimate: it is an exact reformulation of the open
+endpoint.  This route-identification theorem proves neither side.
 
 For finite nonempty $F\subseteq\Npos$ at base $b\ge2$, let $D_F$ be the
 reduced denominator of $\sum_{n\in F}(b^n-1)^{-1}$.  The finite theorem is
@@ -1126,23 +1124,38 @@ remainder after ranks through $c-1$.  Whenever $c\ge4$ and
 
 the skipped-core constructor first turns the finite greedy core into an exact
 local quotient row at endpoint $2c-2$,
-\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{31}{exactLocalMersenneHalfRow_of_positiveHalfGreedySkip}{the local row constructor}.
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{55}{exactLocalMersenneHalfRow_of_positiveHalfGreedySkip}{the local row constructor}.
 The hard finite step is explicit: the deficit below $1/2$ is below the next
 Mersenne weight, so a Boolean word fills the entire upper-half capacity,
 \mword{Erdos249257/BooleanMobiusSkippedCoreExactRow.lean}{228}{exists_upperHalfBooleanWord_of_skippedCore}{the upper-half Boolean fill}.
+The residual cannot vanish at any finite rank,
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{32}{greedyMersenneRemainderRat_half_pos}{the strict-positivity theorem};
+the odd denominator of every finite positive Mersenne sum rules out exact
+finite exhaustion of $1/2$.
 If positive skips occur cofinally in the exact sense
 \mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{22}{CofinalPositiveHalfGreedySkips}{the cofinal-skip hypothesis},
 their endpoints are cofinal by
-\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{60}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{the row fan-in}.
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{84}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{the row fan-in}.
 The row-value estimate makes the discrepancy at endpoint $n$ at most
 $(n+1)/2^n$, and the closed-set consumer then places $1/2$ in $\Ach$,
 \mword{Erdos249257/BooleanMobiusCofinalExactRows.lean}{71}{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{the closed-set consumer}.
 No compatibility between the finite witnesses is assumed.  The global
-\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{73}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{conditional endpoint theorem}
-therefore remains conditional: \texttt{CofinalPositiveHalfGreedySkips} is not
-proved, and neither one finite row nor finitely many exact rows imply it.
-This route gives a conditional $1/2$-membership (and hence conditional
-counterexample) criterion, not an unconditional solution of Problem~\#257.
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{97}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{forward endpoint theorem}
+is in fact reversible.
+
+\begin{theorem}[the positive-skip route is exact]
+\label{res:positiveskipexact}
+The condition \texttt{CofinalPositiveHalfGreedySkips} holds if and only if
+$1/2\in\Ach$.
+\end{theorem}
+
+\noindent This is
+\mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{110}{cofinalPositiveHalfGreedySkips_iff_half_mem}{the checked equivalence}.
+Thus cofinal positive skips are not an independently weaker producer:
+proving them already proves the half-membership endpoint, while
+half-membership forces them because finite residuals never vanish.  Neither
+side is established here, so the theorem identifies the exact obstruction
+without supplying an unconditional counterexample to Problem~\#257.
 
 \begin{theorem}[terminal scaled-vanishing countermodel frontier]
 \label{res:terminalhalf}
