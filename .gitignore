@@ -29,3 +29,23 @@ docs/primary-sources/**/*.zst
 # time. It is the question put to the kernel on the last iteration, not a
 # source file, and the run overwrites it.
 _residual_probe.lean
+
+# LaTeX build byproducts. Running `make` (or `pdflatex`/`tectonic` directly)
+# against paper/*.tex produces these alongside the tracked .pdf; they are the
+# exact set paper/Makefile's own `clean` target removes. No .aux/.log/.out/.toc
+# file is ever intentionally committed, so this is safe repo-wide.
+*.aux
+*.log
+*.out
+*.toc
+
+# State directory for scripts/validation_singleflight.py, the dedup/cache
+# layer that many documented check and release commands (see
+# docs/release/RELEASE_HISTORY_TRUST.md and
+# docs/research-commons/RETURN_PACKAGE_TEMPLATE.md) submit work through. It is
+# a run-to-run cache, not a source or evidence file.
+.validation-singleflight/
+
+# Conventional scratch/output directory. Nothing under a top-level tmp/ is
+# ever tracked.
+/tmp/

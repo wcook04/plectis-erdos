@@ -544,6 +544,79 @@ def check_changed_evidence_shape_boundary() -> None:
         )
 
 
+def check_repository_origin_override() -> None:
+    """--repository-origin redirects the source but never relaxes the GitHub-URL shape check.
+
+    This checkout's own ``origin`` remote is whatever it was cloned from (a
+    local path in this test's own case), so the flow must be exercisable
+    without depending on that ambient state -- but the override must still
+    be exactly as strict as the git-derived default it replaces.
+    """
+    def start_command(session: str, sessions: Path) -> list[str]:
+        return [
+            sys.executable,
+            str(CLI),
+            "--sessions-root",
+            str(sessions),
+            "start",
+            "--session",
+            session,
+            "--problem",
+            "257",
+            "--frontier",
+            "fixture/origin-override",
+            "--intent",
+            "exercise the repository-origin override validation",
+            "--stop-condition",
+            "stop immediately",
+            "--contributor",
+            "Origin Override Contributor",
+            "--model-system",
+            "not_used",
+            "--provider",
+            "not_used",
+            "--allow-dirty",
+        ]
+
+    with tempfile.TemporaryDirectory(prefix="continue-origin-override-") as temporary:
+        sessions = Path(temporary) / "sessions"
+
+        rejected = run(
+            [
+                *start_command("origin_override_rejected", sessions),
+                "--repository-origin",
+                "/not/a/github/url",
+            ],
+            expected=1,
+        )
+        require(
+            "origin must be a public GitHub SSH or HTTPS repository URL" in rejected.stderr,
+            f"--repository-origin override skipped shape validation: {rejected.stderr}",
+        )
+        require(
+            not (sessions / "origin_override_rejected").exists(),
+            "rejected --repository-origin override still wrote session artifacts",
+        )
+
+        accepted = run(
+            [
+                *start_command("origin_override_accepted", sessions),
+                "--repository-origin",
+                "git@github.com:example/mirror.git",
+            ]
+        )
+        accepted_receipt = json.loads(accepted.stdout)
+        require(
+            accepted_receipt["repository_origin"] == "https://github.com/example/mirror",
+            f"--repository-origin override did not canonicalize: {accepted_receipt}",
+        )
+        manifest = load(sessions / "origin_override_accepted" / "continuation.json")
+        require(
+            manifest["repository_origin"] == "https://github.com/example/mirror",
+            f"--repository-origin override was not recorded in the session manifest: {manifest}",
+        )
+
+
 def check_start_session_path_boundary() -> None:
     """A start must reject a redirected sessions root before opening the workbench."""
     with tempfile.TemporaryDirectory(prefix="continue-start-path-") as temporary:
@@ -680,6 +753,7 @@ def main() -> int:
     check_nested_return_shape_boundary()
     check_changed_evidence_shape_boundary()
     check_start_session_path_boundary()
+    check_repository_origin_override()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"
     ) == "https://github.com/wcook04/plectis-lean-erdos249-257"
@@ -755,6 +829,13 @@ def main() -> int:
                 "--material-collaborator",
                 "Fixture Collaborator::verification",
                 "--allow-dirty",
+                # This checkout's own ``origin`` remote is whatever the caller
+                # cloned from -- a local path in a disposable test clone, a
+                # fork, or a mirror -- and this test must pass unmodified from
+                # any of those.  Assert a plausible public origin explicitly
+                # rather than depending on ambient git remote configuration.
+                "--repository-origin",
+                "https://github.com/wcook04/plectis-lean-erdos249-257",
             ]
         )
         start_receipt = json.loads(started.stdout)

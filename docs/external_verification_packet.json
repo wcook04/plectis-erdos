@@ -42,10 +42,11 @@
       "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
     },
     "roster_source": "verification/comparator.json",
-    "theorem_name_count": 48,
+    "theorem_name_count": 51,
     "theorem_names": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+      "Erdos249257.ExternalVerification.irrational_factorialGapSeries_of_cofinal_global_complementaryTail",
       "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
       "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
       "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
@@ -62,6 +63,7 @@
       "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
       "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+      "Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor",
       "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
       "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation",
       "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
@@ -89,6 +91,7 @@
       "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
       "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
       "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
+      "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean",
       "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
       "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
       "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
@@ -1685,9 +1688,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
+    "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:dec969061ce67c4530d294d9cef2a36ba2acebaaf3e48e1b03dccd4629fe25b3",
+    "projection_digest": "sha256:0e22492b776c8e4f792fbc68b10cf9b298daca14f3705338ce5786e77edbb084",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2054,10 +2057,10 @@
             "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
             "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
             "present": true,
-            "line_count": 477,
-            "declaration_count": 22,
-            "theorem_count": 19,
-            "content_digest": "sha256:403dff37b2b429afa1236f2dac40afd6de706f130a61f1e7648882539ad071bb"
+            "line_count": 530,
+            "declaration_count": 25,
+            "theorem_count": 21,
+            "content_digest": "sha256:d1c192d9ea692136eb58382e87fba2fdc61372de70dd7213c6fc083efbf2c09b"
           },
           {
             "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -2505,7 +2508,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1041_note",
-          "title": "Newton Flow and Critical-Value Ray Separation",
+          "title": "Admissible Hubs and Newton-Flow Ray Separation",
           "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "rendered_path": "erdos-1041-lemniscate-newton-flow.pdf",
           "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2748,7 +2751,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:81ca2fcf45c0f3c371c2a731a488cfa6194b78aab38eadb672f359c794d4e8ba",
+    "digest": "sha256:f93c0f928a7e442f42f2bc1b947f51396a3966ea22c15d255b2833069cb86fdc",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2756,6 +2759,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1",
-  "solution_source_digest": "sha256:1d5383e11974be554f2ad1641d7785bd36369748a36b0be84c3b874818602980"
+  "config_digest": "sha256:a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
+  "solution_source_digest": "sha256:d30a98f75037ef23d3a0f75992c229a6f336d215ff8127cc8ee06f9b2f382e0a"
 }

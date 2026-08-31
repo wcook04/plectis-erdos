@@ -413,7 +413,16 @@ def declaration_key(module: str, name: str, line: object) -> str:
     return f"{module}:{line}:{name}"
 
 
-def collect() -> dict:
+def collect(*, defer_review_receipts: bool = False) -> dict:
+    """Assemble the semantic corpus from the committed tree.
+
+    ``defer_review_receipts`` builds the corpus without attaching semantic
+    review receipts and without failing on stale ones. It exists for exactly
+    one caller: ``semantic_review.py --rebind``, which must see the candidate
+    subjects before it can prove that a stale digest reflects only a moved
+    atlas fingerprint rather than changed mathematical content. Nothing that
+    writes ``docs/semantic_corpus.json`` may use it.
+    """
     atlas = load(ATLAS)
     manifest = load(MANIFEST)
     claims = load(CLAIMS)
@@ -881,17 +890,25 @@ def collect() -> dict:
     formal_revision = str(
         claims.get("release", {}).get("formal_source", {}).get("ref", "")
     )
-    review_errors = apply_review_registry(
-        review_registry,
-        nodes,
-        edges,
-        evidence_fingerprint=str(atlas.get("source_fingerprint", "")),
-        reviewed_revision=formal_revision,
-    )
+    if defer_review_receipts:
+        review_errors = []
+    else:
+        review_errors = apply_review_registry(
+            review_registry,
+            nodes,
+            edges,
+            evidence_fingerprint=str(atlas.get("source_fingerprint", "")),
+            reviewed_revision=formal_revision,
+        )
     if review_errors:
         raise ValueError(
             "semantic review registry is invalid:\n  "
             + "\n  ".join(review_errors)
+            + "\n\nA receipt goes stale when the declaration atlas is rebuilt, "
+            "even if no reviewed statement changed. To find out which it is, run:\n"
+            "  python3 scripts/semantic_review.py --rebind\n"
+            "That command rebinds a receipt only when it can prove the reviewed "
+            "material is unchanged, and refuses when the mathematics moved."
         )
 
     headline_claim_node_ids: dict[str, set[str]] = {}

@@ -437,16 +437,45 @@ def license_selection_errors(report: dict[str, object]) -> list[str]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true", help="validate evidence without treating known hazards as a test error")
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="validate evidence without treating known hazards as a test error (default when no mode is given)",
+    )
     parser.add_argument("--release-gate", action="store_true", help="fail when the public clone is not safe")
     parser.add_argument("--report", type=Path, default=audit.REPORT_PATH)
     args = parser.parse_args(argv)
     if not args.check and not args.release_gate:
-        parser.error("choose --check or --release-gate")
+        # Bare invocation (no flags) is what every other scripts/test_*.py accepts and
+        # what a plain `python3 scripts/test_reachable_release_history.py` run should do.
+        # Default to the same non-gating validation CI runs on every push; the stricter
+        # --release-gate stays an explicit opt-in and is unaffected by this default.
+        args.check = True
     try:
         report = json.loads(args.report.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
-        print(f"test_reachable_release_history: cannot read report ({type(exc).__name__})", file=sys.stderr)
+        # Naming the exception class told a reader nothing about which file was
+        # missing or how to produce it, and this check compares against a
+        # committed audit the operator owns rather than one it may generate.
+        try:
+            location = args.report.relative_to(ROOT)
+        except ValueError:
+            location = args.report
+        print(
+            f"test_reachable_release_history: cannot read {location} "
+            f"({type(exc).__name__}: {exc})",
+            file=sys.stderr,
+        )
+        print(
+            "This check compares the committed reachable-history audit against a "
+            "fresh scan, so it cannot run without that committed report. The "
+            "report carries a release decision over the repository's whole "
+            "object history and is an operator artifact, not a projection to "
+            "regenerate casually. To produce one:\n"
+            "  python3 scripts/audit_reachable_release_history.py --write-report\n"
+            "then read its release_decision before committing it.",
+            file=sys.stderr,
+        )
         return 2
     errors = adversarial_context_errors()
     if errors:

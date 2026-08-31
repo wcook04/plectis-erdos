@@ -93,22 +93,12 @@ systems papers are listed separately in the [complete paper index](docs/papers/R
 | **1049** | For which rational bases is the associated Lambert-type series irrational? | [PDF](erdos-1049-rational-base-lambert.pdf) · [full text](docs/papers/full-text/erdos-1049-rational-base-lambert.md) |
 
 The eight papers are the canonical public starting point for the mathematics.
-The combined [printable PDF](claim-faithful-publication-systems-paper.pdf)
-is retained for archive and provenance; it is not a ninth mathematical
-programme or a replacement for the individual papers. It assumes no Lean or
-project history. The
+The combined [printable PDF](claim-faithful-publication-systems-paper.pdf) is
+retained for archive and provenance. It assumes no Lean or project history. The
 [cold-clone navigation paper](cold-clone-to-proof-receipt.pdf) explains the
-repository's verification design rather than asserting another mathematical
-result.
+repository's verification design. Neither is a ninth mathematical programme.
 
 ## How a public claim is checked
-
-The public verification route re-reads a recorded Lean declaration, reports
-its assumptions, shows the separately configured Comparator statement, and
-points to the paper and release receipt. The full-support example formalises
-Erdős's 1948 theorem; it is not a novelty claim and does not prove universal
-Problem 257. Exact commands and contribution procedures live in the
-[agent workbench](docs/AGENT_WORKBENCH.md).
 
 The evidence order is simple:
 
@@ -120,7 +110,52 @@ The evidence order is simple:
    for possible review. Neither establishes novelty, significance, acceptance,
    or solution status.
 
+The verification route re-reads a recorded declaration, reports its assumptions,
+shows the separately configured Comparator statement, and points to the paper
+and release receipt; commands live in the
+[agent workbench](docs/AGENT_WORKBENCH.md). The full-support example formalises
+Erdős's 1948 theorem, and does not prove universal Problem 257.
+
+None of that waits for anyone to remember it. Every pull request runs three
+gates, each written so that it can fail. The proof-trust scanner rejects
+`sorry`, `admit`, a bare `axiom`, and native evaluators in release-bearing
+sources, and `check_release.py` feeds the scanner a planted `sorry` and fails if
+it accepts it, so green means the scanner worked rather than stayed silent. The
+axiom audit fails on `sorryAx`, on `ofReduceBool` and `Lean.trustCompiler`, and
+on producing no axiom lines at all: before that last guard a warm build could
+emit nothing and still pass.
+[Comparator](https://github.com/leanprover/comparator) runs twice in a Landrun
+sandbox at pinned revisions, once on the declared statements and once on a
+deliberately wrong statement it is required to reject. If the planted mismatch
+passes, the first run proved nothing and the build fails.
+
 The repository is self-contained: its public claims do not depend on a private
-checkout, an agent's memory, or unreleased work. In particular, do not infer results from private or unreleased work. See the [methodology](METHODOLOGY.md)
-for the complete claim discipline and [reproducibility guide](docs/REPRODUCIBILITY.md)
-for build and release checks.
+checkout, an agent's memory, or unreleased work. Read it the same way: do not
+infer results from private or unreleased work. See the
+[methodology](METHODOLOGY.md) for the complete claim discipline and the
+[reproducibility guide](docs/REPRODUCIBILITY.md) for build and release checks.
+
+## Licence
+
+Code, scripts, and documentation use Apache-2.0; manuscripts use CC-BY-4.0;
+that is, the Lean sources, the scripts, the certificate data, and these pages
+are Apache-2.0, while the paper sources, the rendered PDFs, and the banner
+figure are CC-BY-4.0. [`REUSE.toml`](REUSE.toml) is the machine-readable
+inventory of that split, in-file SPDX headers take precedence over it, and
+[`LICENSES/`](LICENSES) holds the two full licence texts.
+
+## Build on it
+
+The library is meant to be imported, not only read. A downstream project
+depends on this package and writes `import Erdos249257` or
+`import ErdosProblems`; those two roots are the supported public interface and
+the only default Lake targets.
+
+[`examples/Examples.lean`](examples/Examples.lean) is the minimal consumer. It
+sits outside the library and is built separately by `lake build Examples`, so it
+exercises the same import route an external project would. It specialises the
+full-support theorem to base 3, and it shows how a conditional interface is
+consumed: its conditional shell-pressure example leaves the analytic hypothesis
+explicit, and so does not prove universal #257. The
+[`ExternalVerificationPortfolio`](examples/ExternalVerificationPortfolio) keeps
+that discipline across the other problems.

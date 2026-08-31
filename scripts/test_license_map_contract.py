@@ -57,6 +57,26 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def describe(errors: list[str]) -> str:
+    """Render an error list so a failure names the violation, not just its kind."""
+    if not errors:
+        return "no errors reported"
+    return "; ".join(errors)
+
+
+def require_no_errors(errors: list[str], label: str) -> None:
+    """Fail with every observed violation, never a bare 'is invalid'."""
+    require(not errors, f"{label}: {describe(errors)}")
+
+
+def require_reports(errors: list[str], fragment: str, label: str) -> None:
+    """Fail a negative fixture with the errors it actually produced."""
+    require(
+        any(fragment in error for error in errors),
+        f"{label}; expected an error naming {fragment!r}, got: {describe(errors)}",
+    )
+
+
 class UnsafeLicenseInput(ValueError):
     """A release-licensing input escaped the checkout or is not a file."""
 
@@ -223,21 +243,19 @@ def main() -> int:
         .as_posix()
         for path in safe_license_dir.glob("*.txt")
     }
-    require(
-        not license_map_errors(reuse, readme, sources, license_files),
+    require_no_errors(
+        license_map_errors(reuse, readme, sources, license_files),
         "live license map contract is invalid",
     )
 
     config = tomllib.loads(reuse)
     missing_override = copy.deepcopy(config)
     missing_override["annotations"] = missing_override["annotations"][:1]
-    require(
-        any(
-            "CC-BY-4.0 override" in error
-            for error in license_map_errors(
-                encode_reuse(missing_override), readme, sources, license_files
-            )
+    require_reports(
+        license_map_errors(
+            encode_reuse(missing_override), readme, sources, license_files
         ),
+        "CC-BY-4.0 override",
         "missing manuscript license override was accepted",
     )
 
@@ -245,25 +263,21 @@ def main() -> int:
     incomplete_override["annotations"][1]["path"] = sorted(
         MANUSCRIPT_BINARIES - {"erdos249-257-main-paper.pdf"}
     )
-    require(
-        any(
-            "exact rendered-artifact set" in error
-            for error in license_map_errors(
-                encode_reuse(incomplete_override), readme, sources, license_files
-            )
+    require_reports(
+        license_map_errors(
+            encode_reuse(incomplete_override), readme, sources, license_files
         ),
+        "exact rendered-artifact set",
         "incomplete manuscript artifact override was accepted",
     )
 
     wrong_blanket = copy.deepcopy(config)
     wrong_blanket["annotations"][0]["SPDX-License-Identifier"] = MANUSCRIPT_LICENSE
-    require(
-        any(
-            "Apache-2.0 blanket" in error
-            for error in license_map_errors(
-                encode_reuse(wrong_blanket), readme, sources, license_files
-            )
+    require_reports(
+        license_map_errors(
+            encode_reuse(wrong_blanket), readme, sources, license_files
         ),
+        "Apache-2.0 blanket",
         "wrong blanket license was accepted",
     )
 
@@ -274,24 +288,16 @@ def main() -> int:
         f"{SPDX_LICENSE_HEADER}{APACHE}",
         1,
     )
-    require(
-        any(
-            path in error
-            for error in license_map_errors(
-                reuse, readme, lost_source_header, license_files
-            )
-        ),
+    require_reports(
+        license_map_errors(reuse, readme, lost_source_header, license_files),
+        path,
         "wrong manuscript source header was accepted",
     )
 
     missing_license_text = license_files - {f"LICENSES/{MANUSCRIPT_LICENSE}.txt"}
-    require(
-        any(
-            f"missing for {MANUSCRIPT_LICENSE}" in error
-            for error in license_map_errors(
-                reuse, readme, sources, missing_license_text
-            )
-        ),
+    require_reports(
+        license_map_errors(reuse, readme, sources, missing_license_text),
+        f"missing for {MANUSCRIPT_LICENSE}",
         "missing manuscript license text was accepted",
     )
 
@@ -301,13 +307,9 @@ def main() -> int:
         "Code and manuscripts follow the repository default;",
         1,
     )
-    require(
-        any(
-            "licence boundary" in error
-            for error in license_map_errors(
-                reuse, weakened_readme, sources, license_files
-            )
-        ),
+    require_reports(
+        license_map_errors(reuse, weakened_readme, sources, license_files),
+        "licence boundary",
         "weakened README license boundary was accepted",
     )
 

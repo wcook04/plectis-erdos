@@ -1417,6 +1417,18 @@ def collect_proof_plan_packets() -> dict[str, Any]:
     }
 
 
+def full_ranked_signal() -> list[dict[str, Any]]:
+    """Return Palomar's complete ranked signal from the summary's own drilldown."""
+    orientation = json.loads(read("docs/orientation.json"))
+    return orientation["mathematical_signal_first"]
+
+
+def omitted_ranked_signal_rows(summary: dict[str, Any]) -> list[dict[str, Any]]:
+    """Return the ranked families the bounded summary replaced with a receipt."""
+    head_ranks = {row["rank"] for row in summary["mathematical_signal_first"]}
+    return [row for row in full_ranked_signal() if row["rank"] not in head_ranks]
+
+
 def collect_agent_packets() -> dict[str, Any]:
     """Collect only bounded query replies needed to walk the public graph."""
     summary = query_packet(budget_bytes=SUMMARY_PACKET_BUDGET_BYTES)
@@ -1537,6 +1549,10 @@ def collect_agent_packets() -> dict[str, Any]:
             sigil = module.get("paper_sigil")
             if sigil:
                 packets["sigil_modules"][sigil] = query_packet("--module", sigil)
+    packets["omitted_ranked_signal"] = {
+        row["family_id"]: query_packet("--declaration", row["source_declaration"])
+        for row in omitted_ranked_signal_rows(summary)
+    }
     artifact = query_packet("--artifact", "docs/orientation.json")
     packets["artifact"] = artifact
     digest = artifact["matches"][0]["content_digest"]
@@ -1597,6 +1613,108 @@ def validate_proof_plan_packets(proof_plans: dict[str, Any]) -> None:
     require(encoded_bytes(ready) <= PACKET_BUDGET_BYTES, "cold-clone comprehension invariant")
 
 
+def validate_bounded_ranked_signal(
+    summary: dict[str, Any], packets: dict[str, Any]
+) -> None:
+    """Keep the ranked signal a bounded head with an honest, reachable tail.
+
+    The summary budget is a fixed orientation cost, so a per-family
+    enumeration inside it silently turns that budget into a function of corpus
+    size.  The head must stay capped, the omission receipt must state exactly
+    how much was withheld, and every withheld family must still resolve
+    through the follow-up commands the receipt itself names.
+    """
+    head = summary["mathematical_signal_first"]
+    receipt = summary["bounded_summary_omission_receipt"]
+    full = full_ranked_signal()
+    limit = receipt["ranked_signal_head_limit"]
+    head_ranks = [row["rank"] for row in head]
+    require(
+        limit == query_corpus.SUMMARY_RANKED_SIGNAL_HEAD,
+        f"summary receipt reports ranked-signal head limit {limit}, but the "
+        f"query emits {query_corpus.SUMMARY_RANKED_SIGNAL_HEAD}",
+    )
+    require(
+        len(head) == min(limit, len(full)),
+        f"bounded summary carries {len(head)} ranked-signal rows; expected "
+        f"{min(limit, len(full))} (head limit {limit}, {len(full)} ranked families)",
+    )
+    require(
+        head_ranks == list(range(1, len(head) + 1)),
+        "bounded summary ranked-signal head is not the contiguous top of "
+        f"Palomar's ranking: {head_ranks}",
+    )
+    require(
+        receipt["ranked_signal_family_count"] == len(full),
+        f"summary receipt claims {receipt['ranked_signal_family_count']} ranked "
+        f"families, but docs/orientation.json carries {len(full)}",
+    )
+    require(
+        receipt["omitted_ranked_signal_count"] == len(full) - len(head),
+        f"summary receipt claims {receipt['omitted_ranked_signal_count']} omitted "
+        f"ranked families, but {len(full) - len(head)} were withheld",
+    )
+    require(
+        receipt["ranked_signal_drilldown"]
+        == "python3 scripts/query_corpus.py --overview",
+        "summary receipt does not name the full ranked-signal drilldown command: "
+        f"{receipt['ranked_signal_drilldown']}",
+    )
+    require(
+        "--declaration" in receipt["ranked_signal_family_drilldown"],
+        "summary receipt does not name a per-family declaration drilldown: "
+        f"{receipt['ranked_signal_family_drilldown']}",
+    )
+    require(
+        "mathematical_signal_presentation.relational_placements"
+        in receipt["omitted_fields"],
+        "bounded summary withheld Palomar's relational placements without "
+        "recording them in omitted_fields",
+    )
+    presentation = json.loads(read("docs/orientation.json"))[
+        "mathematical_signal_presentation"
+    ]
+    withheld_placements = len(presentation["relational_placements"])
+    reported_placements = summary["mathematical_signal_presentation"][
+        "relational_placement_count"
+    ]
+    require(
+        reported_placements == withheld_placements,
+        f"bounded summary reports {reported_placements} withheld relational "
+        f"placements, but docs/orientation.json carries {withheld_placements}",
+    )
+
+    omitted = omitted_ranked_signal_rows(summary)
+    probed = packets["omitted_ranked_signal"]
+    require(
+        {row["family_id"] for row in omitted} == set(probed),
+        "the omitted ranked families were not all probed through the receipt's "
+        f"declaration drilldown: {sorted(set(probed))}",
+    )
+    overview_families = {
+        row["family_id"]
+        for row in query_corpus.repository_overview_packet()[
+            "mathematical_signal_spine"
+        ]["ranked_frontier"]
+    }
+    for row in omitted:
+        family_id = row["family_id"]
+        require(
+            family_id in overview_families,
+            f"omitted ranked family {family_id} is unreachable through the "
+            "receipt's own drilldown, python3 scripts/query_corpus.py --overview",
+        )
+        require(
+            any(
+                match["qualified_name"] == row["source_declaration"]
+                for match in probed[family_id]["matches"]
+            ),
+            f"omitted ranked family {family_id} does not resolve to "
+            f"{row['source_declaration']} through the receipt's declaration "
+            "drilldown",
+        )
+
+
 def validate_agent_packets(packets: dict[str, Any]) -> None:
     summary = packets["summary"]
     require(summary["kind"] == "corpus_summary", "cold-clone comprehension invariant")
@@ -1608,14 +1726,25 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     require("does not imply hidden proof authority" in (
         summary["release_provenance"]["boundary"]
     ), "cold-clone comprehension invariant")
-    require(encoded_bytes(summary) <= SUMMARY_PACKET_BUDGET_BYTES, "cold-clone comprehension invariant")
+    require(
+        encoded_bytes(summary) <= SUMMARY_PACKET_BUDGET_BYTES,
+        f"bounded summary encodes {encoded_bytes(summary)} bytes, over the "
+        f"{SUMMARY_PACKET_BUDGET_BYTES}-byte cold-start orientation budget; "
+        "densify a per-family enumeration rather than raising the budget",
+    )
     require(summary["remaining_open_propositions"], "cold-clone comprehension invariant")
     require(summary["scale"]["theorem_like_count"] > (
         summary["scale"]["generated_certificate_declaration_count"]
     ), "cold-clone comprehension invariant")
     require(summary["curated_claim_count"] >= len(summary["principal_claims"]), "cold-clone comprehension invariant")
     require(summary["publication_family_count"] > 0, "cold-clone comprehension invariant")
-    require(len(summary["mathematical_programmes"]) == len(STORY_ROUTES), "cold-clone comprehension invariant")
+    require(
+        len(summary["mathematical_programmes"]) == len(STORY_ROUTES),
+        f"bounded summary carries {len(summary['mathematical_programmes'])} "
+        f"mathematical programmes, but {len(STORY_ROUTES)} story routes are "
+        "declared; every programme must keep a reading route",
+    )
+    validate_bounded_ranked_signal(summary, packets)
 
     validate_proof_plan_packets(packets["proof_plans"])
 

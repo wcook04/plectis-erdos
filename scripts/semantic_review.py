@@ -139,7 +139,10 @@ def subject_digest(
 def receipt_payload(review: dict) -> dict:
     return {
         field: review[field]
-        for field in sorted(REQUIRED_RECEIPT_FIELDS | {"notes", "source_refs"})
+        for field in sorted(
+            REQUIRED_RECEIPT_FIELDS
+            | {"notes", "source_refs", "evidence_rebindings"}
+        )
         if field in review
     }
 
@@ -312,13 +315,314 @@ def _find_subject(
     raise ValueError("select --digest-node or --digest-relation")
 
 
+SUBSTANTIVE_MATERIAL_FIELDS_EXCLUDED = ("evidence_fingerprint",)
+
+
+def substantive_material(material: dict) -> dict:
+    """Return the reviewed mathematics, with the moving pins removed.
+
+    A receipt's digest covers the declaration-atlas source fingerprint, which
+    is a fingerprint of the whole Lean tree. Adding an unrelated module moves
+    it, so every receipt goes stale even though no reviewed wording, evidence
+    coordinate, or boundary changed. This projection is what stays fixed when
+    only that pin moves, and it is the thing a rebind is not allowed to alter.
+    """
+    return {
+        key: value
+        for key, value in material.items()
+        if key not in SUBSTANTIVE_MATERIAL_FIELDS_EXCLUDED
+    }
+
+
+def material_for(
+    subject_kind: str,
+    subject: dict,
+    *,
+    evidence_fingerprint: str,
+    reviewed_revision: str,
+) -> dict:
+    if subject_kind == "statement_node":
+        return node_review_material(
+            subject,
+            evidence_fingerprint=evidence_fingerprint,
+            reviewed_revision=reviewed_revision,
+        )
+    if subject_kind == "relation":
+        return relation_review_material(
+            subject,
+            evidence_fingerprint=evidence_fingerprint,
+            reviewed_revision=reviewed_revision,
+        )
+    raise ValueError(f"unsupported semantic-review subject kind: {subject_kind!r}")
+
+
+def _subject_index(corpus: dict) -> dict[tuple[str, str], dict]:
+    index: dict[tuple[str, str], dict] = {}
+    for node in corpus.get("statement_nodes", []):
+        subject = dict(node)
+        subject.pop("semantic_review", None)
+        index[("statement_node", str(node.get("id")))] = subject
+    for edge in corpus.get("relations", []):
+        if edge.get("suppressed_in_views"):
+            continue
+        subject = dict(edge)
+        subject.pop("semantic_review", None)
+        index[("relation", relation_subject_id(edge))] = subject
+    return index
+
+
+def _field_changes(before: dict, after: dict) -> list[str]:
+    changes = []
+    for key in sorted(set(before) | set(after)):
+        if before.get(key) != after.get(key):
+            changes.append(key)
+    return changes
+
+
+def rebind_receipts(
+    registry: dict,
+    committed_corpus: dict,
+    candidate_corpus: dict,
+    *,
+    reviewed_revision: str,
+) -> tuple[list[dict], list[str]]:
+    """Rebind every stale receipt whose reviewed material is provably unchanged.
+
+    Returns the rebinding records, every refusal, and every receipt that
+    already binds the rebuilt tree and is only waiting on the corpus. A
+    receipt is rebound only
+    when all three hold: its stored digest reproduces exactly under the
+    fingerprint the committed corpus was built with, so it was genuinely valid
+    before; the subject still exists; and its substantive material is
+    byte-identical between the committed and candidate corpora. Anything else
+    is a real content change and needs a real re-review, so it is refused by
+    name and the registry is left alone.
+    """
+    old_fingerprint = str(committed_corpus.get("evidence_fingerprint", ""))
+    new_fingerprint = str(candidate_corpus.get("evidence_fingerprint", ""))
+    old_subjects = _subject_index(committed_corpus)
+    new_subjects = _subject_index(candidate_corpus)
+
+    rebindings: list[dict] = []
+    refusals: list[str] = []
+    already_current: list[str] = []
+
+    for review in registry.get("reviews", []):
+        kind = str(review.get("subject_kind"))
+        subject_id = str(review.get("subject_id"))
+        identity = (kind, subject_id)
+        label = f"{kind} {subject_id}"
+
+        if review.get("reviewed_revision") != reviewed_revision:
+            refusals.append(
+                f"{label}: receipt targets formal-source revision "
+                f"{review.get('reviewed_revision')!r} but the claims release pins "
+                f"{reviewed_revision!r}; the formal source moved, so this needs a "
+                "re-review, not a rebind"
+            )
+            continue
+
+        old_subject = old_subjects.get(identity)
+        new_subject = new_subjects.get(identity)
+        if old_subject is None:
+            refusals.append(
+                f"{label}: absent from the committed corpus, so there is no "
+                "previous state to prove the receipt against"
+            )
+            continue
+        if new_subject is None:
+            refusals.append(
+                f"{label}: the subject no longer exists in the rebuilt corpus; "
+                "retire the receipt or restore the subject"
+            )
+            continue
+
+        old_material = material_for(
+            kind,
+            old_subject,
+            evidence_fingerprint=old_fingerprint,
+            reviewed_revision=reviewed_revision,
+        )
+        new_material = material_for(
+            kind,
+            new_subject,
+            evidence_fingerprint=new_fingerprint,
+            reviewed_revision=reviewed_revision,
+        )
+        if review.get("evidence_digest") != canonical_digest(old_material):
+            if review.get("evidence_digest") == canonical_digest(new_material):
+                # Already rebound against the rebuilt tree; the committed
+                # corpus on disk is simply the one that has not caught up.
+                already_current.append(label)
+                continue
+            refusals.append(
+                f"{label}: the stored digest does not reproduce against the "
+                "committed corpus, so this receipt was already stale for a "
+                "reason other than a moved atlas fingerprint"
+            )
+            continue
+        changed = _field_changes(
+            substantive_material(old_material), substantive_material(new_material)
+        )
+        if changed:
+            refusals.append(
+                f"{label}: reviewed material changed in {', '.join(changed)}; "
+                "this is a mathematical change and needs a real re-review"
+            )
+            continue
+
+        expected = canonical_digest(new_material)
+        if expected == review.get("evidence_digest"):
+            continue
+
+        rebindings.append(
+            {
+                "review": review,
+                "subject_kind": kind,
+                "subject_id": subject_id,
+                "previous_evidence_digest": review["evidence_digest"],
+                "previous_evidence_fingerprint": old_fingerprint,
+                "evidence_fingerprint": new_fingerprint,
+                "evidence_digest": expected,
+            }
+        )
+
+    return rebindings, refusals, already_current
+
+
+def apply_rebindings(rebindings: list[dict]) -> None:
+    """Rewrite each receipt in place, keeping the previous binding on record."""
+    for record in rebindings:
+        review = record["review"]
+        history = list(review.get("evidence_rebindings", []))
+        history.append(
+            {
+                "previous_evidence_digest": record["previous_evidence_digest"],
+                "previous_evidence_fingerprint": record[
+                    "previous_evidence_fingerprint"
+                ],
+                "evidence_fingerprint": record["evidence_fingerprint"],
+                "reason": (
+                    "declaration-atlas source fingerprint moved; reviewed "
+                    "wording, evidence coordinates, boundary, and formal-source "
+                    "revision were verified unchanged"
+                ),
+            }
+        )
+        review["evidence_digest"] = record["evidence_digest"]
+        review["evidence_rebindings"] = history
+
+
+def _rebind_command(*, apply_changes: bool) -> int:
+    # Imported here, not at module scope: build_semantic_corpus imports this
+    # module, so a top-level import would be circular.
+    import build_semantic_corpus
+
+    registry = load(REGISTRY)
+    committed_corpus = load(CORPUS)
+    claims = load(CLAIMS)
+    revision = formal_source_revision(claims)
+
+    try:
+        candidate_corpus = build_semantic_corpus.collect(defer_review_receipts=True)
+    except Exception as error:  # noqa: BLE001 - report the builder's own message
+        print("semantic review rebind: FAIL: could not rebuild the candidate corpus")
+        print(f"  {error}")
+        return 1
+
+    rebindings, refusals, already_current = rebind_receipts(
+        registry,
+        committed_corpus,
+        candidate_corpus,
+        reviewed_revision=revision,
+    )
+
+    if already_current and not rebindings and not refusals:
+        print(
+            f"semantic review rebind: {len(already_current)} receipt(s) already "
+            "bind the rebuilt declaration atlas; docs/semantic_corpus.json is "
+            "the surface that has not caught up"
+        )
+        print("next: python3 scripts/build_semantic_corpus.py")
+        return 0
+
+    if refusals:
+        print("semantic review rebind: REFUSED")
+        for refusal in refusals:
+            print(f"  {refusal}")
+        print(
+            "\nNo receipt was rewritten. A rebind may only move the atlas "
+            "fingerprint pin; it may never re-bless changed mathematics."
+        )
+        return 1
+
+    if not rebindings:
+        print(
+            "semantic review rebind: every receipt already binds the current "
+            "declaration-atlas fingerprint; nothing to do"
+        )
+        return 0
+
+    print(
+        f"semantic review rebind: {len(rebindings)} receipt(s) went stale only "
+        "because the declaration-atlas source fingerprint moved"
+    )
+    print(f"  from {committed_corpus.get('evidence_fingerprint')}")
+    print(f"    to {candidate_corpus.get('evidence_fingerprint')}")
+    print(
+        "  reviewed wording, evidence coordinates, boundaries, and the pinned "
+        f"formal-source revision {revision} are unchanged for every one"
+    )
+    for record in rebindings:
+        print(f"    {record['subject_kind']} {record['subject_id']}")
+
+    if not apply_changes:
+        print(
+            "\nThis was a dry run. Re-run with --rebind --apply to write the "
+            "rebound receipts, then rebuild the semantic corpus."
+        )
+        return 0
+
+    apply_rebindings(rebindings)
+    REGISTRY.write_text(
+        json.dumps(registry, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(
+        f"\nrewrote {REGISTRY.relative_to(ROOT)}; each rebound receipt keeps its "
+        "previous digest and fingerprint under evidence_rebindings"
+    )
+    print("next: python3 scripts/build_semantic_corpus.py")
+    return 0
+
+
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--report", action="store_true")
     parser.add_argument("--digest-node")
     parser.add_argument("--digest-relation")
+    parser.add_argument(
+        "--rebind",
+        action="store_true",
+        help=(
+            "report which receipts went stale purely because the declaration "
+            "atlas fingerprint moved, and refuse any whose reviewed material "
+            "actually changed"
+        ),
+    )
+    parser.add_argument(
+        "--apply",
+        action="store_true",
+        help="with --rebind, write the rebound receipts to the registry",
+    )
     args = parser.parse_args(argv)
+
+    if args.apply and not args.rebind:
+        parser.error("--apply is only meaningful with --rebind")
+
+    if args.rebind:
+        return _rebind_command(apply_changes=args.apply)
 
     corpus = load(CORPUS)
     claims = load(CLAIMS)

@@ -3,13 +3,19 @@
 # SPDX-License-Identifier: Apache-2.0
 """Regenerate every committed projection in dependency order, then verify.
 
-``check_release.py`` regenerates six projections with ``--check`` and fails if
-any committed copy is stale. Refreshing them by hand means remembering six
-commands in the right order, and forgetting one is not hypothetical: on
-2026-07-19 a run of paper edits refreshed the corpus descriptor and the
-publication entry packet but never re-ran ``refresh_source_coordinates.py``, so
-the paper anchors in ``docs/claims.json`` stayed pinned to pre-edit line numbers
-for ten commits and release-surfaces was red the whole way.
+``check_release.py`` re-runs each committed projection's builder with
+``--check`` and fails the release if any committed copy is stale. Refreshing
+them by hand means remembering every command in the right order, and forgetting
+one is not hypothetical: on 2026-07-19 a run of paper edits refreshed the corpus
+descriptor and the publication entry packet but never re-ran
+``refresh_source_coordinates.py``, so the paper anchors in ``docs/claims.json``
+stayed pinned to pre-edit line numbers for ten commits and release-surfaces was
+red the whole way.
+
+That kept happening, so the list is no longer trusted to prose.
+``test_refresh_projections_coverage.py`` reads ``check_release.py`` and fails
+when the release gate checks a projection this pipeline never rebuilds. It
+found five such projections on the day it was written.
 
 Run this after editing claims, the atlas, the methodology, or the paper, and
 commit whatever it rewrites together with the edit that caused it. Descriptor
@@ -20,6 +26,7 @@ anchor.
 
 from __future__ import annotations
 
+import argparse
 import subprocess
 import sys
 from pathlib import Path
@@ -63,18 +70,33 @@ def run(
 # the one projection this list omitted, and it stayed stale through the paper
 # provenance edit while every builder listed above refreshed cleanly.
 BUILDERS = (
-    "build_methodology.py",
-    "build_module_graph.py",
-    "build_declaration_atlas.py",
+    "scripts/build_methodology.py",
+    "scripts/build_module_graph.py",
+    "scripts/build_declaration_atlas.py",
+    # The rosters read the Lean data files and the authored zones, and the
+    # semantic corpus reads the zones back. They belong above it.
+    "scripts/build_off_diagonal_certificate_roster.py",
+    "scripts/build_checked_diagonal_depth_roster.py",
     # Source-coordinate refresh rewrites docs/claims.json, which is an input
     # to the semantic corpus. It must therefore precede both semantic layers;
     # placing it afterwards makes one full refresh invalidate its own output.
-    "refresh_source_coordinates.py",
-    "build_semantic_corpus.py",
-    "build_theory_lab.py",
-    "build_corpus_descriptor.py",
-    "build_paper_module_aliases.py",
-    "build_publication_entry_packet.py",
+    "scripts/refresh_source_coordinates.py",
+    "scripts/refresh_reasoning_source_coordinates.py",
+    # Reads the refreshed claims and writes docs/problems.json, which the
+    # corpus descriptor reads.
+    "scripts/build_problem_index.py",
+    "scripts/build_semantic_corpus.py",
+    "scripts/build_theory_lab.py",
+    "scripts/build_external_verification.py",
+    "docs/papers/build_publication_taxonomy.py",
+    # The corpus descriptor reads paper/module-aliases.json, so the alias
+    # builder has to come first. It did not until 2026-08-31, and the symptom
+    # was a full refresh that reported its own descriptor stale and blamed an
+    # impure builder: the descriptor was pure, it was just reading the aliases
+    # from before the run.
+    "scripts/build_paper_module_aliases.py",
+    "scripts/build_corpus_descriptor.py",
+    "scripts/build_publication_entry_packet.py",
 )
 
 
@@ -83,30 +105,75 @@ def tracked_diff() -> set[str]:
     return {line for line in result.stdout.split("\n") if line}
 
 
-def main() -> int:
+def parse_args(argv: list[str] | None) -> argparse.Namespace:
+    dependency_order = "\n".join(
+        f"  {index}. {builder}" for index, builder in enumerate(BUILDERS, start=1)
+    )
+    parser = argparse.ArgumentParser(
+        prog="refresh_projections.py",
+        description=__doc__,
+        epilog=f"Builders, in the dependency order this script runs them:\n{dependency_order}",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help=(
+            "report which committed projections are stale by running every "
+            "builder's own --check, without regenerating or writing anything"
+        ),
+    )
+    return parser.parse_args(argv)
+
+
+def check_only() -> int:
+    """Run every builder's --check and report staleness without mutating the tree."""
+    stale = []
+    for builder in BUILDERS:
+        script = ROOT / builder
+        if not script.is_file():
+            print(f"missing builder: {builder}")
+            return 1
+        result = run([sys.executable, str(script), "--check"], cwd=ROOT)
+        if result.returncode != 0:
+            stale.append((builder, result.stdout.strip() or result.stderr.strip()))
+
+    if stale:
+        print("projections are stale:")
+        for builder, message in stale:
+            print(f"  {builder}: {message}")
+        print("run python3 scripts/refresh_projections.py to regenerate")
+        return 1
+
+    print("refresh_projections --check: every projection is current")
+    return 0
+
+
+def refresh() -> int:
+    """Regenerate every projection in dependency order, then verify convergence."""
     before = tracked_diff()
 
     for builder in BUILDERS:
-        script = ROOT / "scripts" / builder
+        script = ROOT / builder
         if not script.is_file():
-            print(f"missing builder: scripts/{builder}")
+            print(f"missing builder: {builder}")
             return 1
         result = run([sys.executable, str(script)], cwd=ROOT)
         if result.returncode != 0:
-            print(f"scripts/{builder} failed:")
+            print(f"{builder} failed:")
             print(result.stderr.strip() or result.stdout.strip())
             return 1
 
     stale = []
     for builder in BUILDERS:
-        result = run([sys.executable, str(ROOT / "scripts" / builder), "--check"], cwd=ROOT)
+        result = run([sys.executable, str(ROOT / builder), "--check"], cwd=ROOT)
         if result.returncode != 0:
             stale.append((builder, result.stdout.strip() or result.stderr.strip()))
 
     if stale:
         print("projections did not converge after a full refresh:")
         for builder, message in stale:
-            print(f"  scripts/{builder}: {message}")
+            print(f"  {builder}: {message}")
         print("this means a builder is not a pure function of the committed tree")
         return 1
 
@@ -122,6 +189,13 @@ def main() -> int:
     else:
         print("refresh_projections: every projection was already current")
     return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    if args.check:
+        return check_only()
+    return refresh()
 
 
 if __name__ == "__main__":

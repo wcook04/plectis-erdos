@@ -458,7 +458,25 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
             "only when the unrelated state is already understood"
         )
     starting_commit = git_output("rev-parse", "HEAD")
-    repository_origin = canonical_github_origin(git_output("remote", "get-url", "origin"))
+    # ``repository_origin`` is provenance for the eventual return package, not
+    # a build input: nothing downstream fetches it, so this is exactly as
+    # trustworthy (and exactly as spoofable, by ``git remote set-url``) as the
+    # self-asserted ``--contributor``/``--operator``/``--model-system`` fields
+    # already recorded alongside it.  The ambient ``origin`` remote is the
+    # right *default* source for a plain GitHub clone, but a fork, a mirror,
+    # or an offline/local-path checkout (this repo's own cloned-for-testing
+    # posture included) has no GitHub remote to read.  ``--repository-origin``
+    # lets such a caller assert the public URL the eventual return is bound
+    # for; ``canonical_github_origin`` still enforces the shape either way, so
+    # this can only redirect *where* the value comes from, never relax what
+    # it must look like.  ``starting_commit`` above is untouched and always
+    # git-derived, so the commit/ancestry checks in ``cross_check_return``
+    # keep verifying against the real checkout regardless of this override.
+    repository_origin = canonical_github_origin(
+        args.repository_origin
+        if args.repository_origin is not None
+        else git_output("remote", "get-url", "origin")
+    )
     # The corpus navigator is a typed selector surface, not a problem-number
     # CLI.  Keep this adapter on the current public selector so a cold clone
     # cannot fail before the continuation session is opened.
@@ -1115,6 +1133,16 @@ def build_parser() -> argparse.ArgumentParser:
     start.add_argument("--stop-condition", required=True)
     start.add_argument("--contributor", required=True)
     start.add_argument("--operator")
+    start.add_argument(
+        "--repository-origin",
+        help=(
+            "assert the public GitHub origin this session's return is bound for, "
+            "instead of reading 'git remote get-url origin' from this checkout; "
+            "still validated as a GitHub SSH or HTTPS repository URL. Use this "
+            "for a fork, a mirror, or an offline/local-path clone whose ambient "
+            "origin is not the public repository the return will be sent to."
+        ),
+    )
     start.add_argument("--model-system", default="undisclosed")
     start.add_argument("--provider", default="undisclosed")
     start.add_argument(

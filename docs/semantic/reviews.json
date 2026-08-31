@@ -13,8 +13,10 @@
       "A receipt is not Lean proof authority.",
       "A receipt is not a novelty or prior-art judgement.",
       "A model review is not represented as human mathematical review.",
-      "Unreceipted nodes remain authored navigation, not reviewed semantic fidelity."
-    ]
+      "Unreceipted nodes remain authored navigation, not reviewed semantic fidelity.",
+      "A rebinding is not a re-review; it records that the atlas pin moved while the reviewed material did not."
+    ],
+    "rebinding": "The digest covers the declaration-atlas source fingerprint, which fingerprints the whole Lean tree, so adding an unrelated module makes every receipt stale without any reviewed statement having changed. python3 scripts/semantic_review.py --rebind moves that pin, and only that pin: it recomputes a digest solely when the reviewed wording, evidence coordinates, boundary, and pinned formal-source revision are byte-identical, and refuses by name otherwise. Each rebound receipt keeps its superseded digest and fingerprint under evidence_rebindings."
   },
   "reviews": [
     {
@@ -24,9 +26,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:858e833de6db87ec1cfcc091ca70207ee83ed801aba8bc3771a50576af305924",
+      "evidence_digest": "sha256:e0ae4eb9c3a737023247a88d95cee40ce2cca6be8fe1dbfb95ecc0019f9105b6",
       "review_scope": "Canonical statement checked against all four cited declaration signatures and the eb_full_support and eb_constant claim boundaries.",
-      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint; not Lean proof authority, independent human mathematical review, or novelty assessment."
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint; not Lean proof authority, independent human mathematical review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:858e833de6db87ec1cfcc091ca70207ee83ed801aba8bc3771a50576af305924",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -35,9 +45,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:e96728567c776812d0dc2bdcda539db14bf5b4c58a90042b58fc714da28bdcf7",
+      "evidence_digest": "sha256:9ce5233816b9c37bdd50ed5ef925055bc08e445f083e910ae03dc23179ec4158",
       "review_scope": "Factorial and power-of-two support wording checked against the general-base and base-two theorem signatures and the support_families boundary.",
-      "claim_ceiling": "These are named support families only, not universal Erdős #257; the receipt is not Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "These are named support families only, not universal Erdős #257; the receipt is not Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:e96728567c776812d0dc2bdcda539db14bf5b4c58a90042b58fc714da28bdcf7",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -46,9 +64,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:3c5682056cbbe953a1e3c9dd5d0e3c702d3fd12c93f41ff2ac11397e04bc0e93",
+      "evidence_digest": "sha256:04e13748ab841b6ac8071d888fc17bbea6f06298c9e8a39add7782956a8fd1f3",
       "review_scope": "Hypotheses and conclusion checked against the pairwise-coprime support theorem and its certificate-supply theorem.",
-      "claim_ceiling": "Named support-class consistency only, not universal Erdős #257, Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Named support-class consistency only, not universal Erdős #257, Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:3c5682056cbbe953a1e3c9dd5d0e3c702d3fd12c93f41ff2ac11397e04bc0e93",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -57,9 +83,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:4b318d962c4c82ef88d1e1ab9ce6cf27c6e6f56ee56f1d33c749089a929fa558",
+      "evidence_digest": "sha256:df4f6a5b522155120ef94cc5710a0f6cbc0b98c5ed86be7f183e59054031c9e2",
       "review_scope": "Natural, rational, eventually-periodic, and residue-weight wording checked against the six cited signatures and nonnegative coefficient hypotheses.",
-      "claim_ceiling": "Source-to-wording semantic consistency only; not a mixed-sign theorem, Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Source-to-wording semantic consistency only; not a mixed-sign theorem, Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:4b318d962c4c82ef88d1e1ab9ce6cf27c6e6f56ee56f1d33c749089a929fa558",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -68,9 +102,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:add00b41770c113ebde782fed84addc197b4e2ba8219216b98b23aa878c536f9",
+      "evidence_digest": "sha256:39d172d4f227d345051c3606b961119bfd223dc671f29700e70dcea0494b6a2e",
       "review_scope": "Irrational-or-base-terminating dichotomy and its conditional corollary checked against the four cited integer-weight signatures.",
-      "claim_ceiling": "The terminating alternative remains part of the theorem; this receipt is not Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "The terminating alternative remains part of the theorem; this receipt is not Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:add00b41770c113ebde782fed84addc197b4e2ba8219216b98b23aa878c536f9",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -79,9 +121,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:81e7287914b5b4fe8837969cdf5830ccd0c495e3f906e248bac740a1888aefdf",
+      "evidence_digest": "sha256:6e089ee88276bd6539f174a4b202f991c3d21b4c4f81c724689168a8ca8bb8c9",
       "review_scope": "All four denominator rungs and the three transported formulations checked against their exact signatures and denominator constants.",
-      "claim_ceiling": "A bounded denominator exclusion and its transports, not irrationality of the Erdős #249 constant, Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "A bounded denominator exclusion and its transports, not irrationality of the Erdős #249 constant, Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:81e7287914b5b4fe8837969cdf5830ccd0c495e3f906e248bac740a1888aefdf",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -90,9 +140,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:095f1172de8e432202b1aa02599068998aea8e41fc86f3ad00a11778fac65f00",
+      "evidence_digest": "sha256:d519451c9c704212b843a7ec5da7fe95382d36f7c40875d2eee12d0e25c9cbd8",
       "review_scope": "Four iff theorems plus the integral-tail implication checked against exact signatures; the both-sides-open caveat was checked explicitly.",
-      "claim_ceiling": "This receipt confirms an equivalence to the open problem and does not establish either side, Lean proof authority, human review, or novelty."
+      "claim_ceiling": "This receipt confirms an equivalence to the open problem and does not establish either side, Lean proof authority, human review, or novelty.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:095f1172de8e432202b1aa02599068998aea8e41fc86f3ad00a11778fac65f00",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -101,9 +159,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:77501e4e04127ea66671cc41b1b2a56469e1e500ac2139695d760629a23016e9",
+      "evidence_digest": "sha256:d01ebd671781b2a170f8d131d2e3cf3a15f6ca9379dfdd6ad3fd4b0e85bf9e67",
       "review_scope": "Finite-level linear independence, separated-minor certificate, and exact 2^e+1 rank wording checked against four signatures.",
-      "claim_ceiling": "Finite-level dyadic-section structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Finite-level dyadic-section structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:77501e4e04127ea66671cc41b1b2a56469e1e500ac2139695d760629a23016e9",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -112,9 +178,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:67bceb4bc05fd87c42027bf4fc57dd68c02719b24941f4fde77f0f301709dcab",
+      "evidence_digest": "sha256:7aac51080fd8deaa58a720cd63fd4307e08fa26bbfa77c13d9b1ce3007d90523",
       "review_scope": "Infinite-dimensional span wording checked against the exact not_finiteDimensional theorem signature.",
-      "claim_ceiling": "Coefficient-sequence structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Coefficient-sequence structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:67bceb4bc05fd87c42027bf4fc57dd68c02719b24941f4fde77f0f301709dcab",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -123,9 +197,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:fe7a79fb97e63e69d3492d048845fb9718481c93d1f32d9141d956d35a46c1db",
+      "evidence_digest": "sha256:f3ae6ffe7d15645e97568713989d4212dfe28e3eaea241b6d6de67dc9fad027a",
       "review_scope": "Canonical arithmetic-and-index wording checked against the five cited declaration signatures and the nine-declaration all_base_totient_kernel_index_reduction headline boundary.",
-      "claim_ceiling": "Arithmetic reduction, unique quotient/nonzero-digit coordinates, and finite-index cardinality only; not all-base affine-section independence, basis, rank, Martin's theorem, irrationality, Lean proof authority, independent human review, or novelty assessment."
+      "claim_ceiling": "Arithmetic reduction, unique quotient/nonzero-digit coordinates, and finite-index cardinality only; not all-base affine-section independence, basis, rank, Martin's theorem, irrationality, Lean proof authority, independent human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:fe7a79fb97e63e69d3492d048845fb9718481c93d1f32d9141d956d35a46c1db",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -134,9 +216,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:6ac7c5d1763cb1add27d9f6ff678f5b34bc19813e9e4a4d8f8d20709f36842d0",
+      "evidence_digest": "sha256:97ede5782694eaf11e6b538a3d5d8c3f25b7316f7991e73f0904121451170e4e",
       "review_scope": "Support-series identity, digit-map range, continuity role, and injectivity wording checked against the five cited declarations.",
-      "claim_ceiling": "Representation and coding consistency only; not Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Representation and coding consistency only; not Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:6ac7c5d1763cb1add27d9f6ff678f5b34bc19813e9e4a4d8f8d20709f36842d0",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -145,9 +235,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:853a2532516205b2d3037a3213cbc07fc4b1818799274da689d0a7bf0a89bfeb",
+      "evidence_digest": "sha256:b05302672a2a3ab564107b9d33551872fa2233d30d8688b77ff335c518d660eb",
       "review_scope": "Membership iff survival, support recovery, and residual-suffix identity checked against the three exact signatures.",
-      "claim_ceiling": "Greedy representation consistency only; not resolution of half-value membership, Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Greedy representation consistency only; not resolution of half-value membership, Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:853a2532516205b2d3037a3213cbc07fc4b1818799274da689d0a7bf0a89bfeb",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -156,9 +254,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:050f89cca94951050cc20194fdbff6f61349a2ffec7029a8e490b72e88e809c8",
+      "evidence_digest": "sha256:21ecc3e003cec0fce9a5f0389dc97c0b1518003f0e04b7cb047f6963d67faca9",
       "review_scope": "Compactness, perfection, total disconnectedness, and nowhere-density wording checked against four exact theorem signatures.",
-      "claim_ceiling": "Topological properties only; measure one is separately evidenced. Not Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Topological properties only; measure one is separately evidenced. Not Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:050f89cca94951050cc20194fdbff6f61349a2ffec7029a8e490b72e88e809c8",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -167,9 +273,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:5c84d1e6307381eb0426a1d989ed75dfb937d57c6cc9465bb2420c05014051f0",
+      "evidence_digest": "sha256:1ed29868282b55ff458d75291da0289438ac450752196b75bf788fd2de7572c1",
       "review_scope": "Cylinder-stage volumes, nested intersection, and final measure-one wording checked against four exact signatures after removing the unsupported topology clause.",
-      "claim_ceiling": "Measure calculation only; nowhere density is separately evidenced. Not Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Measure calculation only; nowhere density is separately evidenced. Not Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:5c84d1e6307381eb0426a1d989ed75dfb937d57c6cc9465bb2420c05014051f0",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -178,9 +292,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:aee73f029549656de046d2ca143522c6b2ef6cbc5d4dc673ce8e612ef94ad5e9",
+      "evidence_digest": "sha256:f15a575022e686479c5a03f840658713afd5f49e18a43efdf6a9dca8c7caabf6",
       "review_scope": "Half-membership iff infinite skipped support checked against both exact signatures and the open-proposition boundary.",
-      "claim_ceiling": "Both sides remain open; the receipt does not decide membership, universal Erdős #257, Lean proof authority, human review, or novelty."
+      "claim_ceiling": "Both sides remain open; the receipt does not decide membership, universal Erdős #257, Lean proof authority, human review, or novelty.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:aee73f029549656de046d2ca143522c6b2ef6cbc5d4dc673ce8e612ef94ad5e9",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -189,9 +311,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:16daf2190735d51ed3b387a2cd321dfae2df151e4e59ce96d44a920ccb5ece86",
+      "evidence_digest": "sha256:78dd0aa9da2bc992f4519e0d541941685feb04afa414e20d2861c8a16c93a2ae",
       "review_scope": "The D>=13, middle-cell -3, eventually-right contradiction and explicit untouched branches checked against the two cited declarations.",
-      "claim_ceiling": "One branch-local exclusion only; cells -2 and -1 and the pure-right branch remain. Not Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "One branch-local exclusion only; cells -2 and -1 and the pure-right branch remain. Not Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:16daf2190735d51ed3b387a2cd321dfae2df151e4e59ce96d44a920ccb5ece86",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -200,9 +330,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:a520886331aa7c36b1461be4fc36bd273cba2c9417f54b5664e10f8421ed9f61",
+      "evidence_digest": "sha256:d2f60be5c59d52fc2e919e2565a8ba3704fece4e9f0c265af3ad284b55ba9a5b",
       "review_scope": "The D>=13 upper-transition eventually-right contradiction and explicit untouched branches checked against the exact theorem signature.",
-      "claim_ceiling": "Upper branch at a last false terminal only; middle and pure-right branches remain. Not Lean proof authority, human review, or novelty assessment."
+      "claim_ceiling": "Upper branch at a last false terminal only; middle and pure-right branches remain. Not Lean proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:a520886331aa7c36b1461be4fc36bd273cba2c9417f54b5664e10f8421ed9f61",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -211,9 +349,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:bd51dae01de04303356e7bd35d24d487e9b30f9a622ffaa7a1530340d43ad9a7",
+      "evidence_digest": "sha256:e34b98cf34be9dd560e55da8bbafa1e4139951e5d6f0af0541dc99b695dbf1c1",
       "review_scope": "The historical aggregates and the current contiguous t<=82 theorem were checked against all four cited signatures and the repaired certified_kill_instances claim boundary.",
-      "claim_ceiling": "A finite aggregate only: no certificate at t=83 and no unbounded supply. Not Lean proof authority, independent human review, or novelty assessment."
+      "claim_ceiling": "A finite aggregate only: no certificate at t=83 and no unbounded supply. Not Lean proof authority, independent human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:bd51dae01de04303356e7bd35d24d487e9b30f9a622ffaa7a1530340d43ad9a7",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -222,9 +368,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:94e93c7fd624aba57b034e270a633886abd1a253df59385d1fdf98273f56ee29",
+      "evidence_digest": "sha256:c422fba486f970d465e460bca2c4b3f9b6920aed209dee521fc3f7e3388a78c7",
       "review_scope": "The reduced-shadow decomposition, full-target equivalence, generic-scale transport, and restatement boundary were checked against all seven cited signatures.",
-      "claim_ceiling": "An exact reformulation of diagonal integrality, not a proof of target avoidance, cofinal non-integrality, or Erdős #249. Not proof, human-review, or novelty authority."
+      "claim_ceiling": "An exact reformulation of diagonal integrality, not a proof of target avoidance, cofinal non-integrality, or Erdős #249. Not proof, human-review, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:94e93c7fd624aba57b034e270a633886abd1a253df59385d1fdf98273f56ee29",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -233,9 +387,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:637fa2318e905eb7397681e27dcfeb37d7bead1d823aa74df34553c83f2773a3",
+      "evidence_digest": "sha256:9f3b089ad6b854c98270b2a641bc48321a38eeb8846d91d81626579e76047e3e",
       "review_scope": "Complementary-denominator divisibility, exact numerator transfer, and the rational-linear descender classification were checked against all four cited signatures.",
-      "claim_ceiling": "Scalar clearing and rational-linear channels only; no irrationality conclusion or exclusion of nonlinear or multivariable methods. Not proof, human-review, or novelty authority."
+      "claim_ceiling": "Scalar clearing and rational-linear channels only; no irrationality conclusion or exclusion of nonlinear or multivariable methods. Not proof, human-review, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:637fa2318e905eb7397681e27dcfeb37d7bead1d823aa74df34553c83f2773a3",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -244,9 +406,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:022e6b5d372b544355dd441c1a462b80015d547fd9f86ae9af7f83542c7013fb",
+      "evidence_digest": "sha256:f7575008632350b4d76d53cd03ef6d3391e352bca572faf33307c6c8f94ddfc0",
       "review_scope": "The fixed-k bound, both epsilon-logarithmic forms, every rationality and positivity hypothesis, and the deliberately recorded docstring mismatch were checked against the three cited signatures.",
-      "claim_ceiling": "A necessary zero-window bound under an assumed rational support-series value, not an unconditional irrationality theorem or universal Erdős #257. Not proof, human-review, or novelty authority."
+      "claim_ceiling": "A necessary zero-window bound under an assumed rational support-series value, not an unconditional irrationality theorem or universal Erdős #257. Not proof, human-review, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:022e6b5d372b544355dd441c1a462b80015d547fd9f86ae9af7f83542c7013fb",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -255,9 +425,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:1f13c5ab5f69936c07405976b6b5e68d26913c3e9f8597bcd9136186343d53c2",
+      "evidence_digest": "sha256:a40fbaeb102c026527e9b8d4bdb4bbfcab3b0a4f187d3478c78d66a1e1b7bf40",
       "review_scope": "Relation label and basis checked after separating measure evidence from topology evidence.",
-      "claim_ceiling": "The nodes jointly support the fat Cantor description; neither node alone implies the other. Not proof or novelty authority."
+      "claim_ceiling": "The nodes jointly support the fat Cantor description; neither node alone implies the other. Not proof or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:1f13c5ab5f69936c07405976b6b5e68d26913c3e9f8597bcd9136186343d53c2",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -266,9 +444,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:fe008d093f4be868ac7d952d7d2fd2e78e20592de343aaa3b6f59e57bf27b10e",
+      "evidence_digest": "sha256:4c2a1d4f2cf9121c4a3f1365e00bc14aa9af770ce614976f7e85e2a1f5dfee9e",
       "review_scope": "Closed transport relation checked against the continuous injective digit-coding endpoint; the previous open-dependency label was rejected.",
-      "claim_ceiling": "Typed semantic transport only, not Lean proof dependency, an open obligation, proof authority, or novelty authority."
+      "claim_ceiling": "Typed semantic transport only, not Lean proof dependency, an open obligation, proof authority, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:fe008d093f4be868ac7d952d7d2fd2e78e20592de343aaa3b6f59e57bf27b10e",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -277,9 +463,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:ca8282eb0dadfa8095e3dd3e1ce3f6227653daf819aa86099d20d58f6b9df6e5",
+      "evidence_digest": "sha256:b6a60f242b2d5f7b63b212d5a2e9952a0b7f2a8d17099df24e1e7fd3dd0d8b0d",
       "review_scope": "Base-two specialisation checked against the exact full-support and Erdős-Borwein signatures named in the relation basis.",
-      "claim_ceiling": "A semantic specialisation receipt only; not proof authority, human review, or novelty assessment."
+      "claim_ceiling": "A semantic specialisation receipt only; not proof authority, human review, or novelty assessment.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:ca8282eb0dadfa8095e3dd3e1ce3f6227653daf819aa86099d20d58f6b9df6e5",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -288,9 +482,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:1e82bb0f01ba1292ee6d136c4ac7b26c9353d0e98464dd1811bd96cc29508376",
+      "evidence_digest": "sha256:dcca8577acd5d2d03dcdfa5cf5fbf77f7bb5b53709b62ca1b0f79875a83f9b51",
       "review_scope": "Equivalence label and basis checked against the shared half-membership endpoint and finite-skip/fatal-gap classification.",
-      "claim_ceiling": "Both endpoint presentations remain open; this receipt does not decide either, prove universal Erdős #257, or supply novelty authority."
+      "claim_ceiling": "Both endpoint presentations remain open; this receipt does not decide either, prove universal Erdős #257, or supply novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:1e82bb0f01ba1292ee6d136c4ac7b26c9353d0e98464dd1811bd96cc29508376",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -299,9 +501,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:eaf4d601f1dfe400fb5e56a226b5af2744973165ebf4222bb34f8ca7ccbc5770",
+      "evidence_digest": "sha256:4dcb08374c6c0ceae0043163307938d04db3bc541e6863dd36d9f0234f1a8c72",
       "review_scope": "The finite-set quantifiers, rank-at-least-two hypothesis, exact target 1/21, denominator-order mechanism, and non-membership ceiling were checked against the theorem signature and proof.",
-      "claim_ceiling": "Finite nontermination at one target only; not achievement-set membership, an infinite support, a counterexample, universal Erdős #257, human review, or novelty authority."
+      "claim_ceiling": "Finite nontermination at one target only; not achievement-set membership, an infinite support, a counterexample, universal Erdős #257, human review, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:eaf4d601f1dfe400fb5e56a226b5af2744973165ebf4222bb34f8ca7ccbc5770",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -310,9 +520,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:d70e4959358fc2c71caefe212bb34f2bf1d67a0cbef93833d9d56ffc0d2c6507",
+      "evidence_digest": "sha256:ab9580db0e7240539462b3ee42f7731643c149fa86bbea1f0ec0e17e35e4d773",
       "review_scope": "Positivity, coprimality, and the exact 2p+3q=n equation were checked against the definition.",
-      "claim_ceiling": "A Diophantine representation definition only; not a reciprocal-Mersenne expansion identity, Booleanisation theorem, proof authority beyond the cited declaration, human review, or novelty authority."
+      "claim_ceiling": "A Diophantine representation definition only; not a reciprocal-Mersenne expansion identity, Booleanisation theorem, proof authority beyond the cited declaration, human review, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:d70e4959358fc2c71caefe212bb34f2bf1d67a0cbef93833d9d56ffc0d2c6507",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -321,9 +539,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:7a8392285533ba2b49b9c382ec3a8632da6a20f526ac1783bcc650099db60a92",
+      "evidence_digest": "sha256:967ebe7ea2e79acf5b82ebb345eafe7a953d7d2f09a750cc8361b81b456ece6f",
       "review_scope": "The uniform n>=11 quantifier and existence of a positive coprime 2p+3q representation were checked against the exact theorem signature and its parity split.",
-      "claim_ceiling": "Eventual primitive-rank coverage only; not coefficient uniqueness, Booleanisation, achievement-set membership, universal Erdős #257, human review, or novelty authority."
+      "claim_ceiling": "Eventual primitive-rank coverage only; not coefficient uniqueness, Booleanisation, achievement-set membership, universal Erdős #257, human review, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:7a8392285533ba2b49b9c382ec3a8632da6a20f526ac1783bcc650099db60a92",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "statement_node",
@@ -332,9 +558,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:44275af6e359239fc9978d8c1b5648a2f2b6e71182bf68cb289e55667ad8528c",
+      "evidence_digest": "sha256:de341ed829625dc036902aaddf43ce3d7de7725cc20d3f27b9c3ede78ef54aeb",
       "review_scope": "Rank-ten nonexistence, two explicit rank-eleven witnesses, and two distinct witnesses at every rank 10k for k>=2 were checked against all three cited theorem signatures.",
-      "claim_ceiling": "Exact collision data only; not a carry resolution, a zero-one support, achievement-set membership, universal Erdős #257, human review, or novelty authority."
+      "claim_ceiling": "Exact collision data only; not a carry resolution, a zero-one support, achievement-set membership, universal Erdős #257, human review, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:44275af6e359239fc9978d8c1b5648a2f2b6e71182bf68cb289e55667ad8528c",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -343,9 +577,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:a510019c82c4b5454f097add57d0d4115edcedb0df62733b8ebdc82362ce7201",
+      "evidence_digest": "sha256:060fab7c97018b1264155672d8792c8f83f804359d4b0e4c94f2f59d68551f30",
       "review_scope": "The complementary relation was checked as a finite-support boundary for one candidate rational target, not as an implication toward or away from the universal assertion.",
-      "claim_ceiling": "Typed navigation relation only; neither endpoint decides achievement-set membership or universal Erdős #257."
+      "claim_ceiling": "Typed navigation relation only; neither endpoint decides achievement-set membership or universal Erdős #257.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:a510019c82c4b5454f097add57d0d4115edcedb0df62733b8ebdc82362ce7201",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -354,9 +596,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:88b37ac7717a090a1a005b6e17ccee3b12de952e7a26c94990a5f94b20fe43c3",
+      "evidence_digest": "sha256:984d20dd753799c83824d620d46e0d282b45f1324581c1c859cd9ae8f80b7edb",
       "review_scope": "The theorem-to-definition relation was checked against the constructed witnesses and exact IsPrimitive23Solution predicate.",
-      "claim_ceiling": "Typed semantic relation only; not a formal dependency receipt, Booleanisation, or novelty authority."
+      "claim_ceiling": "Typed semantic relation only; not a formal dependency receipt, Booleanisation, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:88b37ac7717a090a1a005b6e17ccee3b12de952e7a26c94990a5f94b20fe43c3",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -365,9 +615,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:6a4e876d4141250078d41889ca8870f45d12e106e5ebd09900b3e5d647eb1d16",
+      "evidence_digest": "sha256:2e5b0d74aaecf1ffd50db28f1d091aa43dfddec594862ef0cb9ac47456fdd98e",
       "review_scope": "The defect and multiplicity node was checked as an exact family of instances of the primitive-rank definition.",
-      "claim_ceiling": "Typed semantic relation only; not a zero-one coefficient theorem, formal proof dependency receipt, or novelty authority."
+      "claim_ceiling": "Typed semantic relation only; not a zero-one coefficient theorem, formal proof dependency receipt, or novelty authority.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:6a4e876d4141250078d41889ca8870f45d12e106e5ebd09900b3e5d647eb1d16",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     },
     {
       "subject_kind": "relation",
@@ -376,9 +634,17 @@
       "reviewer_type": "ai_semantic_consistency_review",
       "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
       "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:b9501857e4e28379cc85b29cd65b136c27dca3aba38143324e2bac4aaefa364e",
+      "evidence_digest": "sha256:81bec22bf21d459dc9f444dce0427fe53a084f3980ef0782963aacb30b8283f5",
       "review_scope": "The relation was checked as a route-level complement: finite nontermination states the target boundary while recurrent primitive multiplicity identifies the unresolved collision mechanism.",
-      "claim_ceiling": "The two nodes remain diagnostics; together they do not prove an expansion identity, Booleanisation, achievement-set membership, or universal Erdős #257."
+      "claim_ceiling": "The two nodes remain diagnostics; together they do not prove an expansion identity, Booleanisation, achievement-set membership, or universal Erdős #257.",
+      "evidence_rebindings": [
+        {
+          "previous_evidence_digest": "sha256:b9501857e4e28379cc85b29cd65b136c27dca3aba38143324e2bac4aaefa364e",
+          "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
+          "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        }
+      ]
     }
   ]
 }

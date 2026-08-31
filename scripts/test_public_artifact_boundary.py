@@ -157,6 +157,11 @@ def check_read_path_boundary() -> None:
             raise AssertionError("public-boundary reader accepted a directory")
 
 
+def flowed(text: str) -> str:
+    """Collapse every run of whitespace, so line wrapping stops being content."""
+    return " ".join(text.split())
+
+
 def boundary_errors(
     agents: str,
     scope: str,
@@ -167,20 +172,26 @@ def boundary_errors(
 ) -> list[str]:
     """Return every missing public-proof boundary required at first contact."""
     errors: list[str] = []
+    # Compare on collapsed whitespace. What these phrases assert is a boundary,
+    # and a boundary is the same boundary whichever column its sentence wraps
+    # at; matching raw text made a paragraph reflow look like a lost promise.
+    flowed_agents = flowed(agents)
+    flowed_scope = flowed(scope)
+    flowed_readme = flowed(readme)
     for phrase in (
         "not an entrypoint into any private development system",
-        "Work only from the files\nin this repository",
+        "Work only from the files in this repository",
         "never infer unpublished results or private machinery",
     ):
-        if phrase not in agents:
+        if flowed(phrase) not in flowed_agents:
             errors.append(f"agent entry lost public-boundary phrase: {phrase}")
     for phrase in (
         "Unreleased work, private repositories",
         "not public proof artefact",
     ):
-        if phrase not in scope:
+        if flowed(phrase) not in flowed_scope:
             errors.append(f"scope lost public-boundary phrase: {phrase}")
-    if "do not infer results from private or unreleased work" not in readme:
+    if "do not infer results from private or unreleased work" not in flowed_readme:
         errors.append("README lost private-or-unreleased inference boundary")
 
     non_claims = {row["id"] for row in claims["non_claims"]}

@@ -12,7 +12,7 @@ project:
     - "Will Cook"
 classification:
   arxiv: ["math.NT", "math.CO"]
-  msc2020: []
+  msc2020: ["11J72"]
 sources:
   - title: "Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049"
     authors:
@@ -36,10 +36,10 @@ status:
     subsidiary theorems, formalises selected known results, verifies finite
     instances, and records conditional reductions and method barriers.
   proof_corpus_sorry_count: 0
-  sorry_count: 1
+  sorry_count: 2
   sorry_in_definitions: 0
-  trusted_challenge_sorry_count: 1
-  sorry_boundary: "The only sorry is the trusted proposition package in the statement-isolated Comparator challenge. It is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1049/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
   axioms:
     - "propext"
     - "Quot.sound"
@@ -851,10 +851,11 @@ automation:
 comparator:
   config: "verification/comparator.json"
   roster_source: "verification/comparator.json"
-  theorem_name_count: 48
+  theorem_name_count: 51
   theorem_names:
     - "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
     - "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries"
+    - "Erdos249257.ExternalVerification.irrational_factorialGapSeries_of_cofinal_global_complementaryTail"
     - "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes"
     - "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero"
     - "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
@@ -871,6 +872,7 @@ comparator:
     - "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo"
     - "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
     - "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+    - "Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor"
     - "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
     - "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"
     - "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
@@ -898,6 +900,7 @@ comparator:
     - "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
     - "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments"
     - "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk"
+    - "Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean"
     - "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor"
     - "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
     - "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
@@ -1615,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:dec969061ce67c4530d294d9cef2a36ba2acebaaf3e48e1b03dccd4629fe25b3"
+  problem_index_digest: "sha256:0e22492b776c8e4f792fbc68b10cf9b298daca14f3705338ce5786e77edbb084"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1683,6 +1686,6 @@ external_verification:
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "Irrationality at base three halves, or for any rational base."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
-  trusted_challenge_holes: 1
+  trusted_challenge_holes: 2
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

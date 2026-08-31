@@ -222,7 +222,12 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Boundary.** The equivalence does not supply a cofinal carry producer.
    - **Relation.** `supports_without_producing` `factorial_channel_and_projection_rigidity`: Finite channel rigidity feeds the carry endpoint route but supplies no cofinal non-unit carry.
 
-2. **Factorial channel and projection rigidity** (`factorial_channel_and_projection_rigidity`; deep mechanism and classification; source disposition `represented`)
+2. **Factorial conditional producers** (`factorial_conditional_producers`; conditional endpoint leverage; source disposition `subordinate`)
+   - **Why here.** A single coefficient-free cofinal complementary-tail certificate would imply the #68 endpoint, but the certificate supply is an explicit unproved premise; this is a shorter conditional consumer, not an irrationality proof.
+   - **Source.** <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_of_cofinal_global_complementaryTail</code> in [Lean](../ExternalVerification/Statements.lean)
+   - **Boundary.** The producer hypotheses are unproved.
+
+3. **Factorial channel and projection rigidity** (`factorial_channel_and_projection_rigidity`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The finite channel and projection machinery is the deepest represented #68 mechanism below the endpoint equivalence, but it supplies no cofinal obstruction.
    - **Source authority.** Canonical review family `factorial_channel_and_projection_rigidity` in [claims](../docs/claims.json)
    - **Boundary.** These finite and structural results do not produce a cofinal obstruction.
@@ -433,7 +438,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 4. **Totient certificate equivalences** (`totient_certificate_equivalences`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** Below the actual-LCM, first-harmonic, and strict-prime producer routes but above medium totient kernel machinery: three exact equivalences expose the endpoint and certificate sockets, while the equivalent lcm-diagonal, period-multiple-kill, and separated-window producers all remain unresolved.
-   - **Source authority.** Canonical review family `totient_certificate_equivalences` in [claims](../docs/claims.json)
+   - **Source.** <code>Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor</code> in [Lean](../ExternalVerification/Statements.lean)
    - **Boundary.** Equivalent producer statements are as hard as the unresolved target.
    - **Relation.** `endpoint_normal_form_support_for` `strict_prime_tail_orbit_gap`: Certificate completeness identifies the exact finite endpoint socket but cannot manufacture the strict-prime route's missing phase-density, cofinal-prime, or uniform-margin producer.
 
@@ -1183,7 +1188,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 
 1. **Newton value decay** (`newton_value_decay`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The Newton value equation and exponential first integral are the load-bearing local mechanism, while metric gluing to a short curve remains open.
-   - **Source authority.** Canonical review family `newton_value_decay` in [claims](../docs/claims.json)
+   - **Source.** <code>Erdos249257.ExternalVerification.exists_two_roots_dist_sum_le_two_mul_geomMean</code> in [Lean](../ExternalVerification/Statements.lean)
    - **Boundary.** Value decay alone does not give a short connecting curve.
    - **Relation.** `mechanism_support_for` `ray_separation`: The exponential first integral confines a Newton trajectory to one value ray, yielding the separation obstruction.
 

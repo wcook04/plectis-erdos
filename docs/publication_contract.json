@@ -226,7 +226,7 @@
     },
     {
       "id": "erdos_1041_note",
-      "title": "Newton Flow and Critical-Value Ray Separation",
+      "title": "Admissible Hubs and Newton-Flow Ray Separation",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
       "source_content_digest": "sha256:000a4b0d995c969998c731e91ad1746aa847ae68ece5de495a0142c039df2848",

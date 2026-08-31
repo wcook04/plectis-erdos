@@ -212,7 +212,7 @@ def main() -> int:
             f"specific question was misrouted as an overview: {specific_question}",
         )
 
-    papers = run_query("--papers")
+    papers = run_query("--papers", "--format", "json")
     paper_question = run_query(
         "--ask",
         "Which papers should I read, in what order, and what does each establish?",

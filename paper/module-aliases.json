@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 125,
+  "alias_count": 124,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -489,11 +489,6 @@
       "sigil": "TotCarKerRig",
       "module": "Erdos249257/TotientCarryKernelRigidity.lean",
       "path": "Erdos249257/TotientCarryKernelRigidity.lean"
-    },
-    {
-      "sigil": "TotKerCon",
-      "module": "Erdos249257/TotientKernelConditional.lean",
-      "path": "Erdos249257/TotientKernelConditional.lean"
     },
     {
       "sigil": "TotKerInd",

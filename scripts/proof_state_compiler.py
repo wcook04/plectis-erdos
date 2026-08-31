@@ -17,8 +17,10 @@ import argparse
 import hashlib
 import itertools
 import json
+import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -33,10 +35,42 @@ MAX_CANDIDATES = 8
 MAX_DISCHARGE_TACTICS = 8
 MAX_PACKET_BYTES = 64_000
 ENVIRONMENT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
+# The global single-flight environment deliberately strips ambient PATH.  The
+# documented elan install is the one deterministic toolchain location that
+# this compiler must add back before launching Lake or Lean (same contract
+# as scripts/build_lean_dependency_index.py and scripts/proof_workbench.py).
+TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
 
 
 class RequestError(ValueError):
     """Raised when a proof-state request exceeds the bounded contract."""
+
+
+class ToolchainUnavailable(RuntimeError):
+    """Raised when the pinned Lean toolchain (``lake``) is not on PATH.
+
+    This is a cloneability signal, not a proof failure: it fires only when
+    the ``lake`` executable itself cannot be found (a fresh clone without
+    the Lean toolchain installed).  Any other subprocess failure -- a
+    non-zero exit, a real Lean rejection, a timeout -- is a different,
+    louder failure and must not be swallowed here.
+    """
+
+
+class LeanDependenciesUnavailable(ToolchainUnavailable):
+    """Raised when ``lake`` is installed but the dependencies are not fetched.
+
+    A fresh clone has ``lean-toolchain`` but no ``.lake/packages``, so the
+    first ``lake`` call tries to resolve mathlib and dies inside git with a
+    message about checking out a revision.  That is the same cloneability
+    signal as a missing toolchain and reads nothing like one, so it gets its
+    own name and its own sentence.
+
+    The trigger is structural -- the packages directory is absent -- and never
+    the text of a failure.  With dependencies present, a failing ``lake`` stays
+    a loud error, which is what keeps this from becoming a check that cannot
+    fail.
+    """
 
 
 def _sha256_bytes(payload: bytes) -> str:
@@ -53,22 +87,42 @@ def _file_digest(path: Path) -> str | None:
     return _sha256_bytes(path.read_bytes())
 
 
+def _lean_environment() -> dict[str, str]:
+    """Keep Lean on the pinned toolchain while retaining clean process state."""
+    environment = singleflight.command_environment()
+    environment["PATH"] = os.pathsep.join(
+        (str(TOOLCHAIN_BIN), environment["PATH"])
+    )
+    return environment
+
+
 def _command_output(
     command: list[str],
     *,
     cwd: Path,
     timeout_seconds: float,
 ) -> str:
-    completed = subprocess.run(
-        command,
-        cwd=cwd,
-        env=singleflight.command_environment(),
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-        timeout=timeout_seconds,
-    )
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=cwd,
+            env=_lean_environment(),
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+            timeout=timeout_seconds,
+        )
+    except FileNotFoundError as error:
+        if command and command[0] == "lake":
+            raise ToolchainUnavailable(
+                "`lake` was not found on PATH (checked "
+                f"{TOOLCHAIN_BIN} and the sanitized system PATH). Install "
+                "the pinned Lean toolchain with elan -- see lean-toolchain "
+                "and https://leanprover-community.github.io/get_started.html "
+                "-- then re-run this check."
+            ) from error
+        raise
     if completed.returncode != 0:
         rendered = " ".join(command)
         raise RuntimeError(
@@ -78,12 +132,59 @@ def _command_output(
     return completed.stdout.strip()
 
 
+def _require_lean_dependencies(repo_root: Path) -> None:
+    """Fail early, and legibly, when the dependency tree is incomplete.
+
+    The probe compares the packages ``lake-manifest.json`` pins against what is
+    actually in ``.lake/packages``. Anything missing means the next ``lake``
+    call goes out to resolve it and, in a fresh or offline clone, dies inside
+    git with a message about checking out a revision -- which reads like the
+    repository is broken rather than like a setup step nobody has run.
+
+    Presence, not error text, is the trigger, and the whole manifest has to be
+    present before this stands aside. A partly-resolved tree still counts as
+    incomplete: a failed ``lake`` run leaves the directory of the package it
+    died on behind, so "``.lake/packages`` exists" is not the same question.
+    With every package in place, a failing ``lake`` stays a loud error.
+    """
+    manifest_path = repo_root / "lake-manifest.json"
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        # No readable manifest is not a dependency verdict this probe can make.
+        return
+    required = {
+        str(package["name"])
+        for package in manifest.get("packages", [])
+        if package.get("name")
+    }
+    if not required:
+        return
+    packages_dir = repo_root / ".lake" / "packages"
+    present = (
+        {entry.name for entry in packages_dir.iterdir() if entry.is_dir()}
+        if packages_dir.is_dir()
+        else set()
+    )
+    missing = sorted(required - present)
+    if not missing:
+        return
+    raise LeanDependenciesUnavailable(
+        f"{len(missing)} of {len(required)} Lean dependencies pinned in "
+        f"lake-manifest.json are absent from {packages_dir}: "
+        f"{', '.join(missing)}. Run `lake exe cache get` and then `lake build` "
+        "in this checkout (see docs/REPRODUCIBILITY.md), then re-run this "
+        "check."
+    )
+
+
 def environment_fingerprint(
     repo_root: Path = ROOT,
     *,
     timeout_seconds: float = ENVIRONMENT_COMMAND_TIMEOUT_SECONDS,
 ) -> dict[str, Any]:
     """Return the exact local environment identity used by transition runs."""
+    _require_lean_dependencies(repo_root)
     git_head = _command_output(
         ["git", "rev-parse", "HEAD"],
         cwd=repo_root,
@@ -484,7 +585,7 @@ def _run_candidate(
         completed = subprocess.run(
             ["lake", "env", "lean", "--stdin", "--json"],
             cwd=repo_root,
-            env=singleflight.command_environment(),
+            env=_lean_environment(),
             input=source,
             text=True,
             stdout=subprocess.PIPE,
@@ -495,6 +596,15 @@ def _run_candidate(
         timed_out = False
         output = completed.stdout
         return_code = completed.returncode
+    except FileNotFoundError as error:
+        raise ToolchainUnavailable(
+            "`lake` was not found while running a Lean transition probe "
+            f"(checked {TOOLCHAIN_BIN} and the sanitized system PATH). "
+            "Install the pinned Lean toolchain with elan -- see "
+            "lean-toolchain and "
+            "https://leanprover-community.github.io/get_started.html -- "
+            "then re-run this check."
+        ) from error
     except subprocess.TimeoutExpired as exc:
         timed_out = True
         output = (exc.stdout or "") + (exc.stderr or "")
@@ -1133,17 +1243,21 @@ def main() -> int:
     args = parser.parse_args()
 
     request = _load_request(args)
-    if request is not None:
-        packet = compile_request(
-            request,
-            repo_root=args.repo_root,
-            timeout_seconds=args.timeout_seconds,
-        )
-    else:
-        packet = compile_pilot_suite(
-            repo_root=args.repo_root,
-            timeout_seconds=args.timeout_seconds,
-        )
+    try:
+        if request is not None:
+            packet = compile_request(
+                request,
+                repo_root=args.repo_root,
+                timeout_seconds=args.timeout_seconds,
+            )
+        else:
+            packet = compile_pilot_suite(
+                repo_root=args.repo_root,
+                timeout_seconds=args.timeout_seconds,
+            )
+    except ToolchainUnavailable as error:
+        print(f"REFUSED: {error}", file=sys.stderr)
+        return 2
     if packet.get("packet_bytes", 0) > MAX_PACKET_BYTES:
         raise SystemExit(
             "proof_state_compiler: packet exceeds 64000 bytes; "

@@ -42,6 +42,17 @@ AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
 # problem map.  The allowance scales with the canonical eight-problem and
 # reviewed-family census so it does not reject a complete, non-truncated tour.
 AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 5_100
+# The bounded summary is the cold-start orientation read, so it has to stay
+# inside a fixed byte budget while the corpus keeps growing.  Palomar's ranked
+# signal and its relational placements are per-family enumerations: every new
+# reviewed family lengthens them, so emitting them in full made the summary
+# budget a function of corpus size rather than of orientation cost.  Emit a
+# ranked head and an omission receipt that names where the rest is reachable.
+SUMMARY_RANKED_SIGNAL_HEAD = 6
+SUMMARY_RANKED_SIGNAL_DRILLDOWN = "python3 scripts/query_corpus.py --overview"
+SUMMARY_RANKED_SIGNAL_FAMILY_DRILLDOWN = (
+    "python3 scripts/query_corpus.py --declaration <source_declaration>"
+)
 SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/2"
@@ -9325,6 +9336,19 @@ def summary_packet() -> dict[str, Any]:
         }
         for row in orientation["principal_claims"]
     ]
+    ranked_signal = orientation["mathematical_signal_first"]
+    ranked_head = ranked_signal[:SUMMARY_RANKED_SIGNAL_HEAD]
+    summary_orientation["mathematical_signal_first"] = ranked_head
+    presentation = orientation["mathematical_signal_presentation"]
+    relational_placements = presentation["relational_placements"]
+    summary_orientation["mathematical_signal_presentation"] = {
+        **{
+            key: value
+            for key, value in presentation.items()
+            if key != "relational_placements"
+        },
+        "relational_placement_count": len(relational_placements),
+    }
     return {
         "kind": "corpus_summary",
         **summary_orientation,
@@ -9340,10 +9364,24 @@ def summary_packet() -> dict[str, Any]:
         },
         "bounded_summary_omission_receipt": {
             "omitted_sections": list(bounded_omissions),
-            "omitted_fields": ["principal_claims[].declarations"],
+            "omitted_fields": [
+                "principal_claims[].declarations",
+                "mathematical_signal_presentation.relational_placements",
+            ],
             "drilldown": "docs/orientation.json",
             "claim_drilldown": "python3 scripts/query_corpus.py --claim <claim_id>",
+            "ranked_signal_head_limit": SUMMARY_RANKED_SIGNAL_HEAD,
+            "ranked_signal_family_count": len(ranked_signal),
+            "omitted_ranked_signal_count": len(ranked_signal) - len(ranked_head),
+            "ranked_signal_drilldown": SUMMARY_RANKED_SIGNAL_DRILLDOWN,
+            "ranked_signal_family_drilldown": (
+                SUMMARY_RANKED_SIGNAL_FAMILY_DRILLDOWN
+            ),
             "reason": "non_mathematical_owner_metadata_kept_out_of_bounded_agent_summary",
+            "per_family_enumeration_reason": (
+                "ranked_signal_and_relational_placements_grow_with_the_corpus_so_the"
+                "_bounded_summary_carries_a_ranked_head_and_a_named_route_to_the_rest"
+            ),
         },
     }
 

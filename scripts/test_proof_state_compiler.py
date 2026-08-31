@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import tempfile
 from pathlib import Path
 from unittest import mock
 
@@ -63,21 +64,131 @@ def check_subprocess_environment() -> None:
     if observed != "fixture":
         raise AssertionError(f"unexpected mocked command output: {observed!r}")
     call = run.call_args
-    if call.kwargs["env"] != singleflight.command_environment():
-        raise AssertionError("proof-state subprocess retained ambient environment")
+    expected_environment = dict(singleflight.command_environment())
+    expected_environment["PATH"] = os.pathsep.join(
+        (str(compiler.TOOLCHAIN_BIN), expected_environment["PATH"])
+    )
+    if call.kwargs["env"] != expected_environment:
+        raise AssertionError(
+            "proof-state subprocess drifted from the canonical elan-visible "
+            "environment"
+        )
     if call.kwargs["timeout"] != 7:
         raise AssertionError("proof-state subprocess lost its explicit timeout")
+
+
+def check_toolchain_absence_is_a_clean_skip_signal() -> None:
+    """A missing `lake` must raise ToolchainUnavailable, never a bare crash.
+
+    This is the inverse of ``check_subprocess_environment``: it proves the
+    skip path is wired to genuine absence (``FileNotFoundError`` from the
+    OS trying to exec ``lake``) and not to "the check failed for some other
+    reason".  A non-zero exit or a real Lean rejection must still surface
+    as a different, louder failure -- see ``check_typed_rejection``, which
+    exercises exactly that path with a live Lean rejection when the
+    toolchain is actually present.
+    """
+    real_run = compiler.subprocess.run
+    real_require = compiler._require_lean_dependencies
+
+    def missing_lake_only(command, *args, **kwargs):
+        if command and command[0] == "lake":
+            raise FileNotFoundError(2, "No such file or directory", "lake")
+        return real_run(command, *args, **kwargs)
+
+    compiler.subprocess.run = missing_lake_only
+    # Stand the dependency probe down. It runs first and raises a subclass of
+    # the same exception, so leaving it live would let this check pass in an
+    # unbuilt clone without ever reaching the `lake` exec it exists to test.
+    compiler._require_lean_dependencies = lambda _repo_root: None
+    try:
+        try:
+            compiler.environment_fingerprint(compiler.ROOT, timeout_seconds=1)
+        except compiler.LeanDependenciesUnavailable as error:
+            raise AssertionError(
+                "the missing-`lake` probe was answered by the dependency "
+                f"signal instead of the exec failure: {error}"
+            ) from error
+        except compiler.ToolchainUnavailable:
+            pass
+        else:
+            raise AssertionError(
+                "environment_fingerprint did not raise ToolchainUnavailable "
+                "when `lake` was absent"
+            )
+    finally:
+        compiler.subprocess.run = real_run
+        compiler._require_lean_dependencies = real_require
+
+
+def check_unfetched_dependencies_are_a_clean_skip_signal() -> None:
+    """An unbuilt clone must say so, and a built one must not get the excuse.
+
+    A fresh clone has `lake` but no `.lake/packages`, and the raw failure is a
+    git error about checking out a mathlib revision, which reads like the
+    repository is broken. Both halves matter: absent packages must produce the
+    named signal, and present packages must not, or a genuine `lake` failure
+    would be skipped as an environment problem.
+    """
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        (root / "lake-manifest.json").write_text(
+            json.dumps({"packages": [{"name": "mathlib"}, {"name": "batteries"}]}),
+            encoding="utf-8",
+        )
+        packages = root / ".lake" / "packages"
+
+        def refuses(stage: str) -> None:
+            try:
+                compiler._require_lean_dependencies(root)
+            except compiler.LeanDependenciesUnavailable:
+                return
+            raise AssertionError(
+                f"an incomplete checkout ({stage}) did not raise "
+                "LeanDependenciesUnavailable"
+            )
+
+        refuses("nothing fetched")
+        # A `lake` run that dies mid-resolution leaves the package it was
+        # working on behind. That is still incomplete, and the earlier shallow
+        # probe stopped firing at exactly this point.
+        (packages / "mathlib").mkdir(parents=True)
+        refuses("resolution stopped partway")
+
+        (packages / "batteries").mkdir(parents=True)
+        # Complete tree: the probe must stand aside so that a genuine `lake`
+        # failure still reaches the caller as a failure.
+        compiler._require_lean_dependencies(root)
 
 
 def check_live_pilot() -> dict:
     packet = compiler.compile_pilot_suite()
     assert packet["schema_version"] == compiler.PILOT_SCHEMA
     assert packet["packet_bytes"] < compiler.MAX_PACKET_BYTES
-    assert packet["pilot_verdict"] == {
+    expected_verdict = {
         "blocked_control_is_precise": True,
         "counterfactual_closes": True,
         "independent_ready_control_closes": True,
     }
+    if packet["pilot_verdict"] != expected_verdict:
+        first_failure = next(
+            (
+                failure
+                for case in packet["cases"].values()
+                for transition in case["lean_tested_transitions"]
+                for failure in transition["typed_failures"]
+            ),
+            None,
+        )
+        raise AssertionError(
+            "live Lean pilot verdict mismatch: Lean genuinely ran (this is "
+            "not a missing-toolchain skip) but its verdict does not match "
+            f"the expected controls. expected={expected_verdict!r} "
+            f"observed={packet['pilot_verdict']!r}. A common cause in a "
+            "checkout that has not run `lake build` is an unresolved local "
+            "import (e.g. \"unknown module prefix 'Erdos249257'\"); first "
+            f"typed failure: {first_failure!r}"
+        )
     causal = packet["causal_obstruction_receipt"]
     assert causal["same_target"]
     assert causal["same_candidate_action"]
@@ -142,14 +253,31 @@ def main() -> int:
     check_goal_parser()
     check_minimal_cuts()
     check_subprocess_environment()
-    packet = check_live_pilot()
-    check_typed_rejection()
+    check_toolchain_absence_is_a_clean_skip_signal()
+    check_unfetched_dependencies_are_a_clean_skip_signal()
+    try:
+        packet = check_live_pilot()
+        check_typed_rejection()
+    except compiler.ToolchainUnavailable as error:
+        print(
+            "SKIPPED test_proof_state_compiler: the live-Lean checks "
+            "(check_live_pilot, check_typed_rejection) need a working pinned "
+            "Lean environment, which this checkout does not have. "
+            f"{error} These checks would have compiled the pilot's three "
+            "causal controls and one typed-rejection probe through real "
+            "Lean elaboration -- see lean-toolchain and "
+            "docs/PROOF_STATE_COMPILER.md for the setup route. The static "
+            "checks that do not need Lean (goal parser, minimal cuts, "
+            "subprocess environment isolation, toolchain-absence signal) "
+            "still ran and passed."
+        )
+        return 0
     print(
         json.dumps(
             {
                 "schema": "proof-state-compiler-test-receipt/1",
                 "passed": True,
-                "checks": 5,
+                "checks": 6,
                 "pilot_packet_bytes": packet["packet_bytes"],
                 "environment_fingerprint": packet[
                     "environment_fingerprint"
