@@ -9,6 +9,20 @@ problem. A corrected proof step, a counterexample, a failed route with a reason
 another person can check, a clearer boundary, or a repaired public check can
 all save future work.
 
+There are two first-class tracks:
+
+1. **Mathematics:** proofs, reductions, computations, counterexamples,
+   corrections, exposition, and reproducible negative or inconclusive results.
+2. **Architecture:** ideas or implementations that improve agent workflows,
+   navigation, validation, reproducibility, tooling, governance, or the public
+   contributor experience.
+
+You can contribute an architecture idea before you have code. Use the
+[architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml)
+or read the [architecture contribution path](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
+If an idea is adopted, the accepting change preserves the originator's credit
+in a tracked artifact and accepted receipt.
+
 The ordinary contribution path is enough: fork or clone the repository, make
 a focused change, and open a pull request. Explain the question you started
 from, what you changed or learned, what another person can inspect, and what
@@ -42,6 +56,11 @@ records. See the
 full boundary and the [accepted contributions](docs/research-commons/CONTRIBUTIONS.md)
 for the public, receipt-backed view.
 
+Artifact credit may also carry CRediT-aligned contribution roles such as
+conceptualization, formal analysis, methodology, software, validation, and
+writing. Select every role that is accurate; no single role is privileged, and
+the roles describe work rather than deciding authorship.
+
 ## Staying in sync
 
 A returned contribution records the public commit where the work began. Later
@@ -73,6 +92,12 @@ example, a bounded investigation that another person should be able to resume,
 or a negative result whose exact starting point and evidence should not be
 lost. The [research commons guide](docs/research-commons/README.md) explains
 that lifecycle without requiring you to read a schema.
+
+Architecture proposals and implementations use the same accepted-receipt and
+public-credit rail as mathematical returns, but they do not claim a fictional
+problem number. Their structured frontier declares `track: architecture` and a
+bounded architecture area. The existing `continue_research.py` continuation
+package remains the specialized front door for mathematical problem sessions.
 
 ## For agents and maintainers
 

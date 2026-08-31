@@ -35,6 +35,31 @@ understand how the repository is organised, continue to the
 [workbench](docs/AGENT_WORKBENCH.md); those operational surfaces are not the
 human introduction.
 
+## Help advance the project
+
+You can contribute on either of two first-class tracks:
+
+- **Advance the mathematics:** take one bounded open frontier, return a proof,
+  reduction, computation, counterexample, correction, or reproducible failed
+  route.
+- **Improve the architecture:** propose or build a better agent workflow,
+  navigation route, validation check, reproducibility tool, governance rule,
+  or contributor experience.
+
+Start with a fork or clone. A finished patch is not required: use the
+[research-progress form](.github/ISSUE_TEMPLATE/research_progress.yml) for a
+mathematical finding or the
+[architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml)
+for an infrastructure idea. Accepted work is recorded against exact public
+paths and the contribution roles you supplied, so conceptualization,
+mathematics, software, validation, and writing credit survive later
+assimilation. The project publishes a provenance ledger and non-scalar
+recognition views rather than ranking people by activity.
+
+Agents are welcome. The [compact agent entry](AGENTS.override.md) routes a
+cold clone through the papers, corpus queries, problem frontiers, validation,
+and the structured return path without requiring access to any private system.
+
 ## What is here
 
 The strongest completed results concern restricted forms of Problem 257. The

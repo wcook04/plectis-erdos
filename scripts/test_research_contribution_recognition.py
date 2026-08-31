@@ -334,6 +334,61 @@ def main() -> int:
         require(marker in human, f"human recognition view omitted {marker}")
     require("commit_count" not in human and "diff_size" not in human, "recognition view exposed activity scoring")
 
+    architecture_receipt = copy.deepcopy(receipt)
+    architecture_receipt["return_id"] = "rr-architecture-recognition-test"
+    architecture_receipt["frontier"] = {
+        "track": "architecture",
+        "area": "validation",
+        "handle": "accepted-architecture-recognition",
+        "bounded_question": "Can accepted architecture work retain provenance and roles?",
+        "stop_condition": "Stop when generic recognition and architecture facets validate.",
+        "starting_paths": ["CONTRIBUTING.md"],
+    }
+    architecture_receipt["result"].update(
+        {
+            "class": "checked_positive",
+            "summary": "Architecture recognition preserves its bounded accepted evidence.",
+            "claim_ceiling": "validated_architecture_change",
+            "surviving_boundary": "Acceptance does not establish mathematical truth or universal quality.",
+            "requested_disposition": "consider_architecture_adoption",
+        }
+    )
+    architecture_receipt["evidence"][0]["command"] = "python3 scripts/test_research_contribution_recognition.py"
+    architecture_receipt["evidence"][0]["exit_state"] = "passed"
+    architecture_receipt["evidence"][0]["exit_code"] = 0
+    architecture_receipt["evidence"][0]["replay_state"] = "reproduced"
+    architecture_receipt["review"]["mathematical_review"]["state"] = "not_required"
+    architecture_receipt["review"]["claim_boundary_review"]["state"] = "not_required"
+    for review_field in ("structural_validation", "reproduction"):
+        architecture_receipt["review"][review_field]["reviewer"] = "Architecture Validator"
+        architecture_receipt["review"][review_field]["decided_at"] = "2026-08-30T00:00:00Z"
+    architecture_receipt["attribution"]["artifact_credit"][0]["contribution_roles"] = [
+        "conceptualization",
+        "validation",
+    ]
+    architecture_payload = contributions.canonical(architecture_receipt)
+    architecture_errors = return_validator.validate_document(
+        architecture_receipt,
+        require_accepted=True,
+        repository_identity=checker.repository_identity_contract.load_identity(),
+    )
+    require(not architecture_errors, f"accepted architecture fixture failed validation: {architecture_errors}")
+    recognition._receipt_source_commit = lambda row: head
+    try:
+        architecture_projection = recognition.build_recognition(
+            [("rr-architecture-recognition-test.json", architecture_receipt, architecture_payload)]
+        )
+    finally:
+        recognition._receipt_source_commit = original_receipt_commit
+    architecture_row = architecture_projection["chronological"][0]
+    require(architecture_row["source"]["problem"] is None, "architecture recognition invented a problem")
+    require(architecture_row["source"]["track"] == "architecture", "architecture recognition lost its track")
+    require(architecture_projection["aggregates"]["by_problem"] == [], "architecture recognition entered a problem facet")
+    require(architecture_projection["aggregates"]["by_architecture_area"][0]["key"] == "validation", "architecture area facet drifted")
+    architecture_human = recognition.human_projection(architecture_projection).decode("utf-8")
+    for marker in ("Architecture", "validation", "conceptualization"):
+        require(marker in architecture_human, f"architecture recognition view omitted {marker}")
+
     matrix_sources, matrix_head = accepted_result_matrix()
     original_route = contributions.public_result_family_route
     original_receipt_commit = recognition._receipt_source_commit

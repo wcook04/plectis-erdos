@@ -37,16 +37,18 @@ def main() -> int:
     require(len(re.findall(r"\b[\w’'-]+\b", human)) >= 500, "human contribution route is too thin")
     for forbidden in ("```", "|---", "python3 ", "scripts/", "--require-", "return.json"):
         require(forbidden not in human, f"human contribution route exposes implementation syntax: {forbidden}")
-    for concept in ("pull request", "plain-language", "accepted receipt", "credit", "older clone"):
+    for concept in ("pull request", "plain-language", "accepted receipt", "credit", "older clone", "architecture"):
         require(concept in human.lower(), f"human contribution route omits {concept!r}")
 
     required_files = (
         "docs/research-commons/README.md",
         "docs/research-commons/CREDIT_POLICY.md",
+        "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
         "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
         "docs/research-commons/schema/research-return-receipt.schema.json",
         ".github/ISSUE_TEMPLATE/research_progress.yml",
         ".github/ISSUE_TEMPLATE/research_return.yml",
+        ".github/ISSUE_TEMPLATE/architecture_proposal.yml",
         ".github/PULL_REQUEST_TEMPLATE.md",
         "skills/README.md",
         "skills/erdos-research-return/SKILL.md",
@@ -66,6 +68,7 @@ def main() -> int:
         "HUMAN_ENTRY.md",
         "docs/research-commons/README.md",
         "docs/research-commons/CREDIT_POLICY.md",
+        "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
         "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
         "skills/README.md",
     ):
@@ -77,6 +80,16 @@ def main() -> int:
         require(field in simple_issue, f"plain-language research form omits {field}")
     for forbidden in ("python3", "return.json", "route-memory.json", "render: json"):
         require(forbidden not in simple_issue, f"plain-language research form exposes {forbidden}")
+
+    architecture_issue = text(".github/ISSUE_TEMPLATE/architecture_proposal.yml")
+    for field in ("id: area", "id: problem", "id: proposal", "id: replay", "id: credit", "id: roles"):
+        require(field in architecture_issue, f"architecture proposal form omits {field}")
+    architecture_guide = text("docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md")
+    for concept in ("idea", "accepted receipt", "conceptualization", "software", "validation", "non-scalar"):
+        require(concept in architecture_guide.lower(), f"architecture contribution path omits {concept!r}")
+    receipt_schema = text("docs/research-commons/schema/research-return-receipt.schema.json")
+    for contract in ('"architecture"', '"contribution_roles"', '"consider_architecture_adoption"'):
+        require(contract in receipt_schema, f"receipt schema omits architecture contract {contract}")
 
     pull_request = text(".github/PULL_REQUEST_TEMPLATE.md")
     require("Credit and provenance" in pull_request, "pull request route omits contribution credit")

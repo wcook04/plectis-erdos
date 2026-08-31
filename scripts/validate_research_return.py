@@ -209,6 +209,32 @@ PROBLEM_SELECTOR_RE = re.compile(r"(?<![A-Za-z0-9_])--problem(?:=|\s+)(\d+)(?!\d
 # Reusing it keeps selector validation aligned with the canonical route
 # authority instead of maintaining a second set that can drift.
 PROBLEMS = route_memory_receipt.ROSTER
+ARCHITECTURE_AREAS = {
+    "agent_workflow",
+    "navigation",
+    "validation",
+    "reproducibility",
+    "public_experience",
+    "governance",
+    "tooling",
+    "other",
+}
+CONTRIBUTION_ROLES = {
+    "conceptualization",
+    "data_curation",
+    "formal_analysis",
+    "funding_acquisition",
+    "investigation",
+    "methodology",
+    "project_administration",
+    "resources",
+    "software",
+    "supervision",
+    "validation",
+    "visualization",
+    "writing_original_draft",
+    "writing_review_editing",
+}
 RESULT_CLASSES = {"checked_positive", "negative", "inconclusive", "corrective"}
 CLAIM_CEILINGS = {
     "formalized_proposition",
@@ -217,6 +243,9 @@ CLAIM_CEILINGS = {
     "documentation_correction",
     "negative_for_bounded_route",
     "inconclusive_attempt",
+    "architecture_proposal",
+    "validated_architecture_change",
+    "architecture_correction",
     "cited_only",
     "open",
     "validation_fixture_only",
@@ -226,6 +255,7 @@ DISPOSITIONS = {
     "review_correction",
     "consider_problem_proposition",
     "consider_core_promotion",
+    "consider_architecture_adoption",
     "no_promotion",
     "not_requested",
 }
@@ -614,11 +644,28 @@ def validate_document(
         if len(changed_paths) != len(set(changed_paths)):
             check.error("repository.changed_paths", "must not contain duplicates")
 
-    frontier_fields = {"problem", "handle", "bounded_question", "stop_condition", "starting_paths"}
-    frontier = check.object(root.get("frontier"), "frontier", frontier_fields, frontier_fields)
+    frontier_fields = {"track", "problem", "area", "handle", "bounded_question", "stop_condition", "starting_paths"}
+    frontier_required = {"handle", "bounded_question", "stop_condition", "starting_paths"}
+    frontier = check.object(root.get("frontier"), "frontier", frontier_required, frontier_fields)
+    contribution_track: str | None = None
     if frontier:
-        if not isinstance(frontier.get("problem"), int) or frontier.get("problem") not in PROBLEMS:
-            check.error("frontier.problem", f"must be one of {sorted(PROBLEMS)}")
+        track = frontier.get("track")
+        if track is None and type(frontier.get("problem")) is int:
+            contribution_track = "mathematics"
+        elif isinstance(track, str) and track in {"mathematics", "architecture"}:
+            contribution_track = track
+        else:
+            check.error("frontier.track", "must be mathematics or architecture")
+        if contribution_track == "mathematics":
+            if type(frontier.get("problem")) is not int or frontier.get("problem") not in PROBLEMS:
+                check.error("frontier.problem", f"must be one of {sorted(PROBLEMS)}")
+            if "area" in frontier:
+                check.error("frontier.area", "is reserved for architecture contributions")
+        elif contribution_track == "architecture":
+            if "problem" in frontier:
+                check.error("frontier.problem", "must be omitted for architecture contributions")
+            if frontier.get("area") not in ARCHITECTURE_AREAS:
+                check.error("frontier.area", f"must be one of {sorted(ARCHITECTURE_AREAS)}")
         for field in ("handle", "bounded_question", "stop_condition"):
             check.string(frontier.get(field), f"frontier.{field}")
         paths = check.string_list(frontier.get("starting_paths"), "frontier.starting_paths", nonempty=True)
@@ -657,8 +704,8 @@ def validate_document(
             negative_ceilings.add("validation_fixture_only")
         expected = {
             "negative": negative_ceilings,
-            "inconclusive": {"inconclusive_attempt", "open"},
-            "corrective": {"documentation_correction"},
+            "inconclusive": {"inconclusive_attempt", "architecture_proposal", "open"},
+            "corrective": {"documentation_correction", "architecture_correction"},
         }
         if (
             isinstance(result_class, str)
@@ -667,6 +714,21 @@ def validate_document(
             and ceiling not in expected[result_class]
         ):
             check.error("result.claim_ceiling", f"is inconsistent with result class {result_class}")
+        architecture_ceilings = {
+            "architecture_proposal",
+            "validated_architecture_change",
+            "architecture_correction",
+        }
+        if contribution_track == "architecture":
+            if not isinstance(ceiling, str) or ceiling not in architecture_ceilings:
+                check.error("result.claim_ceiling", "architecture returns require an architecture claim ceiling")
+            if isinstance(requested_disposition, str) and requested_disposition in {"consider_problem_proposition", "consider_core_promotion"}:
+                check.error("result.requested_disposition", "architecture returns cannot request mathematical promotion")
+        elif contribution_track == "mathematics":
+            if isinstance(ceiling, str) and ceiling in architecture_ceilings:
+                check.error("result.claim_ceiling", "mathematics returns cannot use an architecture claim ceiling")
+            if requested_disposition == "consider_architecture_adoption":
+                check.error("result.requested_disposition", "mathematics returns cannot request architecture adoption")
 
     correction_lineage: dict[str, Any] | None = None
     if result and result.get("class") == "corrective":
@@ -798,7 +860,12 @@ def validate_document(
         else:
             for index, item in enumerate(credits):
                 base = f"attribution.artifact_credit[{index}]"
-                credit = check.object(item, base, {"name", "artifact_paths"}, {"name", "artifact_paths"})
+                credit = check.object(
+                    item,
+                    base,
+                    {"name", "artifact_paths"},
+                    {"name", "artifact_paths", "contribution_roles"},
+                )
                 if credit:
                     name = check.string(credit.get("name"), f"{base}.name")
                     if name is not None:
@@ -809,6 +876,20 @@ def validate_document(
                         _relative_path(artifact, f"{base}.artifact_paths[{path_index}]", check)
                     if len(paths) != len(set(paths)):
                         check.error(f"{base}.artifact_paths", "must not contain duplicates")
+                    if "contribution_roles" in credit:
+                        roles = check.string_list(
+                            credit.get("contribution_roles"),
+                            f"{base}.contribution_roles",
+                            nonempty=True,
+                        )
+                        if len(roles) != len(set(roles)):
+                            check.error(f"{base}.contribution_roles", "must not contain duplicates")
+                        unknown_roles = sorted(set(roles) - CONTRIBUTION_ROLES)
+                        if unknown_roles:
+                            check.error(
+                                f"{base}.contribution_roles",
+                                f"contains unknown roles {unknown_roles}",
+                            )
             missing_credit = sorted(set(changed_paths) - set(credited_paths))
             foreign_credit = sorted(set(credited_paths) - set(changed_paths))
             if missing_credit:

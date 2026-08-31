@@ -3,9 +3,11 @@
   "authority_boundary": "Receipt-derived attribution evidence only; Lean, docs/claims.json, methodology review, GitHub delivery history, core promotion, and tagged releases retain their own authority.",
   "chronological": [],
   "filters": {
+    "by_architecture_area": {},
     "by_problem": {},
     "by_requested_disposition": {},
-    "by_result_class": {}
+    "by_result_class": {},
+    "by_track": {}
   },
   "generated_by": "scripts/build_research_contributions.py",
   "schema": "accepted-research-contributions/1",

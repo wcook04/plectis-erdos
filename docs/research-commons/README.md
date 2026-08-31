@@ -8,6 +8,12 @@ and send the result back without losing its origin, evidence, or credit. The
 whole process is public: the records, examples, checks, and accepted credit
 pages all live in this repository.
 
+Mathematical work and architecture work share this provenance rail. The
+[architecture contribution path](ARCHITECTURE_CONTRIBUTIONS.md) welcomes ideas
+and implementations for workflows, navigation, validation, reproducibility,
+tooling, governance, and contributor experience without assigning them a fake
+Erdős problem number.
+
 A contributor starts from a particular public commit and follows a bounded
 question. They might return a proof, correction, counterexample, negative
 result, useful stopping point, or tooling improvement. The return says where

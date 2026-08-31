@@ -13,11 +13,23 @@ disclosed model or service used during the work. The receipt records those
 roles separately. This makes assistance visible without obscuring human
 responsibility or inventing authorship. It does not guess at undisclosed use.
 
+Within artifact credit, optional CRediT-aligned roles describe what each person
+supplied: for example conceptualization, formal analysis, investigation,
+methodology, software, validation, visualization, or writing. Multiple roles
+may apply. The role list describes contributions; it does not by itself decide
+authorship, ownership, correctness, or priority.
+
 Positive, negative, inconclusive, and corrective work can all receive credit.
 The returned artifact must be useful, bounded, traceable, and accepted. It does
 not need to look like a theorem or increase a score. The repository does not
 rank contributors by commits, lines changed, receipt counts, model usage, or
 another activity count.
+
+Architecture ideas and implementations receive the same treatment. An adopted
+idea should become a public design note, implementation, test, or other tracked
+artifact that cites the proposal and names its originator. An issue mention by
+itself is delivery history; the accepted artifact and receipt make the credit
+durable in every clone.
 
 Submission is not acceptance. Issues, pull requests, and Git history preserve
 the delivery history, but work appears on the accepted credit pages only after

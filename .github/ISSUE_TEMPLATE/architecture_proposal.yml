@@ -1,0 +1,90 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Architecture idea or improvement
+description: Propose or contribute a workflow, tool, validation, navigation, governance, or contributor-experience improvement.
+title: "[architecture] "
+labels: ["architecture", "help wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Architecture contributions are first-class work. An idea, design,
+        implementation, test, or review can be credited under the contributor's
+        requested name and role if it is adopted. Plain language is welcome.
+        See the [architecture contribution path](../../docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Agent workflow
+        - Navigation
+        - Validation
+        - Reproducibility
+        - Public contributor experience
+        - Governance
+        - Tooling
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What observable problem does this address?
+      description: Describe what currently fails, costs time, hides useful work, or prevents contribution.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What do you propose?
+      description: An idea is enough. Include a patch, branch, sketch, or prior-art link if one exists.
+    validations:
+      required: true
+  - type: textarea
+    id: replay
+    attributes:
+      label: How could another person evaluate it?
+      description: Give an observable acceptance test, minimal replay, example, or stop condition.
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: How should we credit you?
+      description: Give the public name or handle that should travel with adopted work.
+    validations:
+      required: true
+  - type: checkboxes
+    id: roles
+    attributes:
+      label: Requested contribution roles
+      description: Select every role that accurately describes your contribution. Maintainers preserve these when the accepted artifact supports them.
+      options:
+        - label: Conceptualization
+        - label: Methodology
+        - label: Software
+        - label: Validation
+        - label: Investigation or formal analysis
+        - label: Writing, visualization, resources, or another role explained below
+  - type: textarea
+    id: collaborators
+    attributes:
+      label: Collaborators, prior art, and additional roles
+      description: Name material collaborators and sources separately, and explain any requested role not listed above.
+  - type: textarea
+    id: boundary
+    attributes:
+      label: What remains uncertain or out of scope?
+      description: State costs, risks, untested cases, or decisions that the proposal does not settle.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_safety
+    attributes:
+      label: Public-material confirmation
+      options:
+        - label: I have not included credentials, private correspondence, personal data, or unpublished material that should remain private.
+          required: true
+        - label: I understand that a submitted proposal is reviewed before any contributed code is trusted or executed.
+          required: true

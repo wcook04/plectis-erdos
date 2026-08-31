@@ -56,7 +56,9 @@ FACET_NAMES = (
     "by_model_system",
     "by_provider",
     "by_operator_relationship",
+    "by_track",
     "by_problem",
+    "by_architecture_area",
     "by_result_class",
     "by_requested_disposition",
     "by_evidence_state",
@@ -302,6 +304,7 @@ def _receipt_reference(row: dict[str, Any]) -> dict[str, Any]:
     def artifact_url(path: str) -> str:
         return _accepted_blob_url(origin, accepted_commit, path)
 
+    track = contributions.contribution_track(row["frontier"])
     return {
         "return_id": row["return_id"],
         "accepted_at": row["accepted_at"],
@@ -317,7 +320,10 @@ def _receipt_reference(row: dict[str, Any]) -> dict[str, Any]:
         "artifact_credit_urls": [artifact_url(path) for path in sorted(set(artifact_paths))],
         "evidence_artifact_paths": evidence_artifacts,
         "evidence_artifact_urls": [artifact_url(path) for path in evidence_artifacts],
-        "problem": row["frontier"]["problem"],
+        "track": track,
+        "scope_label": contributions.contribution_scope_label(row["frontier"]),
+        "problem": row["frontier"].get("problem"),
+        "architecture_area": row["frontier"].get("area") if track == "architecture" else None,
         "result_class": row["result"]["class"],
         "result_summary": row["result"]["summary"],
         "claim_ceiling": row["result"]["claim_ceiling"],
@@ -432,8 +438,12 @@ def _review_decisions(row: dict[str, Any]) -> dict[str, dict[str, Any]]:
 def _impact_state(row: dict[str, Any]) -> dict[str, Any]:
     review = row["review"]
     correction_lineage = row.get("correction_lineage")
+    track = contributions.contribution_track(row["frontier"])
     return {
-        "problem": row["frontier"]["problem"],
+        "track": track,
+        "scope_label": contributions.contribution_scope_label(row["frontier"]),
+        "problem": row["frontier"].get("problem"),
+        "architecture_area": row["frontier"].get("area") if track == "architecture" else None,
         "result_class": row["result"]["class"],
         "claim_ceiling": row["result"]["claim_ceiling"],
         "requested_disposition": row["result"]["requested_disposition"],
@@ -471,8 +481,12 @@ def _recognition_row(
     if receipt.get("record_kind") != "accepted_receipt":
         raise ValueError(f"{name}: recognition projection accepts accepted_receipt only")
     frontier = receipt.get("frontier")
-    if not isinstance(frontier, dict) or type(frontier.get("problem")) is not int:
-        raise ValueError(f"{name}: accepted frontier problem must be an integer")
+    if not isinstance(frontier, dict):
+        raise ValueError(f"{name}: accepted frontier must be an object")
+    try:
+        contributions.contribution_track(frontier)
+    except ValueError as exc:
+        raise ValueError(f"{name}: accepted frontier is invalid: {exc}") from exc
     result = receipt.get("result")
     if not isinstance(result, dict):
         raise ValueError(f"{name}: accepted result must be an object")
@@ -481,9 +495,7 @@ def _recognition_row(
             raise ValueError(f"{name}: accepted result.{field} must be a string")
     row = contributions.project_receipt(name, receipt, payload)
     row["record_kind"] = "accepted_receipt"
-    row["public_frontier"] = contributions.public_result_family_route(
-        row["frontier"]["problem"]
-    )
+    row["public_frontier"] = contributions.public_contribution_route(row["frontier"])
     row["source"] = _receipt_reference(row)
     if row.get("correction_lineage") is not None:
         _correction_lineage_detail(row)
@@ -590,6 +602,7 @@ def _artifact_credit_records(
                 "receipt_path": row["receipt_path"],
                 "receipt_sha256": row["receipt_sha256"],
                 "credit_name": credit["name"],
+                "contribution_roles": list(credit.get("contribution_roles", [])),
                 "contributor": {
                     "name": contributor["name"],
                     "handle": contributor.get("handle"),
@@ -699,9 +712,19 @@ def _entity_descriptor(
         if value.get("name"):
             label += f" — {value['name']}"
         return [(canonical(detail), label, detail)]
+    if facet == "by_track":
+        track = contributions.contribution_track(row["frontier"])
+        return [(track, track, {"track": track})]
     if facet == "by_problem":
+        if contributions.contribution_track(row["frontier"]) != "mathematics":
+            return []
         problem = str(row["frontier"]["problem"])
         return [(problem, f"Erdős #{problem}", {"problem": row["frontier"]["problem"]})]
+    if facet == "by_architecture_area":
+        if contributions.contribution_track(row["frontier"]) != "architecture":
+            return []
+        area = row["frontier"]["area"]
+        return [(area, area, {"architecture_area": area})]
     if facet == "by_result_class":
         value = row["result"]["class"]
         return [(value, value, {"result_class": value})]
@@ -906,9 +929,7 @@ def validate_projection(projection: dict[str, Any]) -> None:
         if not isinstance(source, dict) or not isinstance(repository, dict):
             raise ValueError(f"{return_id}: recognition source reference is missing")
         try:
-            expected_public_frontier = contributions.public_result_family_route(
-                row["frontier"]["problem"]
-            )
+            expected_public_frontier = contributions.public_contribution_route(row["frontier"])
         except (KeyError, TypeError, ValueError) as exc:
             raise ValueError(f"{return_id}: public frontier route cannot be derived: {exc}") from exc
         if row.get("public_frontier") != expected_public_frontier:
@@ -1261,7 +1282,7 @@ def _aggregate_source_links(accepted_receipts: list[dict[str, Any]]) -> str:
             f"model_system={_md(_disclosure_text(identity['model_system']))}; "
             f"provider={_md(_disclosure_text(identity['provider']))}; "
             f"accepted_commit=[`{_code(reference['accepted_commit'])}`]({reference['accepted_commit_url']}); "
-            f"problem=Erdős #{_md(reference['problem'])}; "
+            f"track={_md(reference['track'])}; scope={_md(reference['scope_label'])}; "
             f"result_class={_md(reference['result_class'])}; "
             f"result_summary={_md(reference['result_summary'])}; "
             f"claim_ceiling={_md(reference['claim_ceiling'])}; "
@@ -1436,11 +1457,12 @@ def _aggregate_detail_text(
                     f"receipt_path={_md(record.get('receipt_path', 'unknown'))}; "
                     f"receipt_sha256={_md(record.get('receipt_sha256', 'unknown'))}; "
                     f"credit_name={_md(record.get('credit_name', 'unknown'))}; "
+                    f"contribution_roles={', '.join(_md(role) for role in record.get('contribution_roles', [])) or 'not recorded'}; "
                     f"contributor={' — '.join(contributor_parts)}; "
                     f"operator={operator_text}; collaborators={collaborators}; "
                     f"model_system={_md(_disclosure_text(record.get('model_system', {'state': 'not_recorded'})))}; "
                     f"provider={_md(_disclosure_text(record.get('provider', {'state': 'not_recorded'})))}; "
-                    f"artifact={artifact_text}; problem=Erdős #{_md(impact.get('problem', 'unknown'))}; "
+                    f"artifact={artifact_text}; track={_md(impact.get('track', 'unknown'))}; scope={_md(impact.get('scope_label', 'unknown'))}; "
                     f"result_class={_md(impact.get('result_class', 'unknown'))}; "
                     f"result_summary={_md(record.get('result_summary', 'unknown'))}; "
                     f"claim_ceiling={_md(impact.get('claim_ceiling', 'unknown'))}; "
@@ -1625,7 +1647,13 @@ def human_projection(projection: dict[str, Any]) -> bytes:
             for field in REVIEW_FIELDS
         )
         artifact_credit_text = "; ".join(
-            f"{_md(credit['name'])}: "
+            f"{_md(credit['name'])}"
+            + (
+                f" ({', '.join(_md(role) for role in credit['contribution_roles'])})"
+                if credit.get("contribution_roles")
+                else ""
+            )
+            + ": "
             + ", ".join(
                 _source_path_link(path, artifact_urls_by_path[path])
                 for path in credit["artifact_paths"]
@@ -1640,9 +1668,16 @@ def human_projection(projection: dict[str, Any]) -> bytes:
         provider = identity.get("provider", {"state": "not_recorded"})
         model_text = _disclosure_text(model)
         provider_text = _disclosure_text(provider)
+        scope_label = contributions.contribution_scope_label(row["frontier"])
+        track = contributions.contribution_track(row["frontier"])
+        route_label = (
+            f"Erdős #{row['frontier']['problem']} current fan-in"
+            if track == "mathematics"
+            else "architecture contribution path"
+        )
         lines.extend(
             [
-                f"### {_md(row['accepted_at'])} — Erdős #{row['frontier']['problem']} — {_md(result['class'])}",
+                f"### {_md(row['accepted_at'])} — {_md(scope_label)} — {_md(result['class'])}",
                 "",
                 f"- Receipt: {_receipt_link(row)}",
                 f"- Contributor: {_contributor_identity_text(identity['contributor'])}",
@@ -1650,14 +1685,14 @@ def human_projection(projection: dict[str, Any]) -> bytes:
                 f"- Material collaborators: {_md(collaborator_text)}",
                 f"- Model/system disclosure: `{_code(model.get('state', 'not_recorded'))}` — {_md(model_text)}",
                 f"- Provider disclosure: `{_code(provider.get('state', 'not_recorded'))}` — {_md(provider_text)}",
-                f"- Problem/frontier: Erdős #{row['frontier']['problem']} — `{_code(row['frontier']['handle'])}`",
-                f"- Public result-family fan-in: [Erdős #{row['frontier']['problem']} current fan-in]({row['public_frontier']['relative_link']})",
+                f"- Track/frontier: `{_code(track)}` — {_md(scope_label)} — `{_code(row['frontier']['handle'])}`",
+                f"- Public frontier: [{_md(route_label)}]({row['public_frontier']['relative_link']})",
                 f"- Result and claim ceiling: `{_code(result['class'])}` / `{_code(result['claim_ceiling'])}`",
                 f"- Requested disposition: `{_code(result['requested_disposition'])}`",
                 f"- Reproduction state: `{_code(review['reproduction']['state'])}`",
                 f"- Review states: {_md(review_text)}",
                 f"- Review decision details: {review_detail_text}",
-                f"- Impact projection: problem=Erdős #{row['impact_state']['problem']}; result_class=`{_code(row['impact_state']['result_class'])}`; claim_ceiling=`{_code(row['impact_state']['claim_ceiling'])}`; requested_disposition=`{_code(row['impact_state']['requested_disposition'])}`; evidence_states=`{_code(impact_evidence_text)}`; reproduction_state=`{_code(row['impact_state']['reproduction_state'])}`; review_states={_md(impact_review_text)}; correction_lineage_state=`{_code(row['impact_state']['correction_lineage_state'])}`; problem_owned_proposition_state=`{_code(row['impact_state']['problem_owned_proposition_state'])}`; core_promotion_state=`{_code(row['impact_state']['core_promotion_state'])}`; tagged_release_inclusion_state=`{_code(row['impact_state']['tagged_release_inclusion_state'])}`",
+                f"- Impact projection: track=`{_code(row['impact_state']['track'])}`; scope={_md(row['impact_state']['scope_label'])}; result_class=`{_code(row['impact_state']['result_class'])}`; claim_ceiling=`{_code(row['impact_state']['claim_ceiling'])}`; requested_disposition=`{_code(row['impact_state']['requested_disposition'])}`; evidence_states=`{_code(impact_evidence_text)}`; reproduction_state=`{_code(row['impact_state']['reproduction_state'])}`; review_states={_md(impact_review_text)}; correction_lineage_state=`{_code(row['impact_state']['correction_lineage_state'])}`; problem_owned_proposition_state=`{_code(row['impact_state']['problem_owned_proposition_state'])}`; core_promotion_state=`{_code(row['impact_state']['core_promotion_state'])}`; tagged_release_inclusion_state=`{_code(row['impact_state']['tagged_release_inclusion_state'])}`",
                 f"- Core-promotion state: `{_code(review['core_promotion']['state'])}`",
                 f"- Tagged-release inclusion: `{_code(review['tagged_release_inclusion']['state'])}`",
                 f"- Summary: {_md(result['summary'])}",

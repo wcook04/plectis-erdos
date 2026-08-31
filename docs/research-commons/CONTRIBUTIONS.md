@@ -10,8 +10,8 @@ release inclusion, a contributor comparison, or evidence about model quality.
 Negative and inconclusive artifacts appear on exactly the same chronological rail
 when repository acceptance records that they saved reproducible work.
 
-For each accepted record, follow its `public_frontier` route to inspect every
-material result family and the exact surviving boundary for that problem. This
+For each accepted record, follow its `public_frontier` route to inspect either the
+material result family or the architecture contribution contract. This
 canonical navigation does not change the credited artifact or its claim ceiling.
 
 For receipt-bound identity, impact, evidence, review, correction, promotion, and
@@ -23,7 +23,11 @@ and are not copied into or counted by this accepted-receipt attribution view.
 
 ## Chronological accepted artifacts
 
+## Filter by contribution track
+
 ## Filter by Erdős problem
+
+## Filter by architecture area
 
 ## Filter by result class
 

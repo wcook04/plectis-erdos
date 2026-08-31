@@ -336,6 +336,37 @@ def public_result_family_route(problem: Any) -> dict[str, str]:
     }
 
 
+def contribution_track(frontier: Any) -> str:
+    """Return the explicit track, with legacy problem receipts remaining mathematical."""
+    if not isinstance(frontier, dict):
+        raise ValueError("contribution frontier must be an object")
+    track = frontier.get("track")
+    if track is None and type(frontier.get("problem")) is int:
+        return "mathematics"
+    if isinstance(track, str) and track in {"mathematics", "architecture"}:
+        return track
+    raise ValueError(f"contribution frontier has an unknown track: {track!r}")
+
+
+def contribution_scope_label(frontier: dict[str, Any]) -> str:
+    track = contribution_track(frontier)
+    if track == "mathematics":
+        return f"Erdős #{frontier['problem']}"
+    return f"Architecture — {str(frontier['area']).replace('_', ' ')}"
+
+
+def public_contribution_route(frontier: dict[str, Any]) -> dict[str, str]:
+    if contribution_track(frontier) == "mathematics":
+        return public_result_family_route(frontier.get("problem"))
+    if not isinstance(frontier.get("area"), str) or frontier.get("area") not in return_validator.ARCHITECTURE_AREAS:
+        raise ValueError(f"architecture contribution has an unknown area: {frontier.get('area')!r}")
+    return {
+        "repository_path": "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
+        "anchor": "architecture-contribution-path",
+        "relative_link": "ARCHITECTURE_CONTRIBUTIONS.md#architecture-contribution-path",
+    }
+
+
 def project_receipt(name: str, receipt: dict[str, Any], payload: bytes) -> dict[str, Any]:
     row = {
         "return_id": receipt["return_id"],
@@ -359,7 +390,15 @@ def filter_rows(rows: list[dict[str, Any]], field: str) -> dict[str, list[str]]:
     grouped: dict[str, list[str]] = {}
     for row in rows:
         if field == "problem":
+            if contribution_track(row["frontier"]) != "mathematics":
+                continue
             key = str(row["frontier"]["problem"])
+        elif field == "track":
+            key = contribution_track(row["frontier"])
+        elif field == "architecture_area":
+            if contribution_track(row["frontier"]) != "architecture":
+                continue
+            key = str(row["frontier"]["area"])
         elif field == "result_class":
             key = str(row["result"]["class"])
         elif field == "requested_disposition":
@@ -378,7 +417,7 @@ def build_projection(sources: list[tuple[str, dict[str, Any], bytes]]) -> dict[s
             )
     rows = [project_receipt(name, receipt, payload) for name, receipt, payload in sources]
     for row in rows:
-        row["public_frontier"] = public_result_family_route(row["frontier"]["problem"])
+        row["public_frontier"] = public_contribution_route(row["frontier"])
     return {
         "schema": SCHEMA,
         "artifact_role": "generated_accepted_artifact_attribution_view",
@@ -394,7 +433,9 @@ def build_projection(sources: list[tuple[str, dict[str, Any], bytes]]) -> dict[s
         ),
         "chronological": rows,
         "filters": {
+            "by_track": filter_rows(rows, "track"),
             "by_problem": filter_rows(rows, "problem"),
+            "by_architecture_area": filter_rows(rows, "architecture_area"),
             "by_result_class": filter_rows(rows, "result_class"),
             "by_requested_disposition": filter_rows(rows, "requested_disposition"),
         },
@@ -429,7 +470,13 @@ def disclosure_text(value: dict[str, Any] | None) -> str:
 
 def artifact_credit_text(items: list[dict[str, Any]]) -> str:
     return "; ".join(
-        f"{item['name']}: {', '.join(item['artifact_paths'])}"
+        f"{item['name']}"
+        + (
+            f" ({', '.join(item['contribution_roles'])})"
+            if item.get("contribution_roles")
+            else ""
+        )
+        + f": {', '.join(item['artifact_paths'])}"
         for item in items
     )
 
@@ -475,8 +522,8 @@ def human_projection(projection: dict[str, Any]) -> bytes:
         "Negative and inconclusive artifacts appear on exactly the same chronological rail",
         "when repository acceptance records that they saved reproducible work.",
         "",
-        "For each accepted record, follow its `public_frontier` route to inspect every",
-        "material result family and the exact surviving boundary for that problem. This",
+        "For each accepted record, follow its `public_frontier` route to inspect either the",
+        "material result family or the architecture contribution contract. This",
         "canonical navigation does not change the credited artifact or its claim ceiling.",
         "",
         "For receipt-bound identity, impact, evidence, review, correction, promotion, and",
@@ -505,9 +552,16 @@ def human_projection(projection: dict[str, Any]) -> bytes:
         evidence_text = "; ".join(
             f"{item['exit_state']}/{item['replay_state']}" for item in row["evidence"]
         )
+        scope_label = contribution_scope_label(row["frontier"])
+        track = contribution_track(row["frontier"])
+        route_label = (
+            f"Erdős #{row['frontier']['problem']} current fan-in"
+            if track == "mathematics"
+            else "architecture contribution path"
+        )
         lines.extend(
             [
-                f"### {markdown_text(row['accepted_at'])} — Erdős #{row['frontier']['problem']} — {markdown_text(result['class'])}",
+                f"### {markdown_text(row['accepted_at'])} — {markdown_text(scope_label)} — {markdown_text(result['class'])}",
                 "",
                 f"- Receipt: {links[row['return_id']]}",
                 f"- Contributor: {markdown_text(identity['contributor']['name'])}",
@@ -517,8 +571,9 @@ def human_projection(projection: dict[str, Any]) -> bytes:
                 f"- Material collaborators: {markdown_text(collaborator_text)}",
                 f"- Requested display: {markdown_text(row['attribution']['requested_display'])}",
                 f"- Artifact credit: {markdown_text(artifact_credit_text(row['attribution']['artifact_credit']))}",
+                f"- Track: `{code_text(track)}`",
                 f"- Frontier: `{code_text(row['frontier']['handle'])}`",
-                f"- Public result-family fan-in: [Erdős #{row['frontier']['problem']} current fan-in]({row['public_frontier']['relative_link']})",
+                f"- Public frontier: [{markdown_text(route_label)}]({row['public_frontier']['relative_link']})",
                 f"- Starting commit: `{repository['starting_commit']}`",
                 f"- Proposed commit: `{repository['proposed_commit']}`",
                 f"- Accepted commit: `{repository['accepted_commit']}`",
@@ -543,7 +598,9 @@ def human_projection(projection: dict[str, Any]) -> bytes:
             ]
         )
     filters = projection["filters"]
+    lines.extend(filtered_section("Filter by contribution track", filters["by_track"], links))
     lines.extend(filtered_section("Filter by Erdős problem", filters["by_problem"], links))
+    lines.extend(filtered_section("Filter by architecture area", filters["by_architecture_area"], links))
     lines.extend(filtered_section("Filter by result class", filters["by_result_class"], links))
     lines.extend(
         filtered_section(

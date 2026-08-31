@@ -1,6 +1,6 @@
 ## What changed, and why?
 
-Describe the mathematical question or repository problem you started from and
+Choose the track (`mathematics` or `architecture`). Describe the mathematical question or repository problem you started from and
 the useful difference this pull request makes. Plain language is welcome.
 
 ## What can another person check?
@@ -21,6 +21,12 @@ Tell us the name or handle you want credited, identify material collaborators
 or prior work, and mention the public commit or release from which you began if
 it matters. If this continues an earlier return, link it rather than replacing
 its history.
+
+Request every contribution role that accurately applies, such as
+conceptualization, formal analysis, methodology, software, validation,
+visualization, or writing. If this implements somebody else's public idea,
+name and link them so the accepted artifact can preserve both idea and
+implementation credit.
 
 ## Maintainer and agent follow-through
 

@@ -81,6 +81,55 @@ def main() -> int:
         "an unaccepted fixture crossed the accepted gate",
     )
 
+    architecture_fixture = copy.deepcopy(fixture)
+    architecture_fixture["return_id"] = "rr-architecture-validator-test"
+    architecture_fixture["frontier"] = {
+        "track": "architecture",
+        "area": "tooling",
+        "handle": "cold-clone-contribution-loop",
+        "bounded_question": "Can a cold clone validate one architecture contribution?",
+        "stop_condition": "Stop when the architecture receipt validates.",
+        "starting_paths": ["CONTRIBUTING.md"],
+    }
+    architecture_fixture["result"].update(
+        {
+            "class": "checked_positive",
+            "summary": "The bounded architecture validation path is executable.",
+            "claim_ceiling": "validated_architecture_change",
+            "surviving_boundary": "This does not establish mathematical correctness or universal workflow quality.",
+            "requested_disposition": "consider_architecture_adoption",
+        }
+    )
+    architecture_fixture["evidence"][0]["command"] = "python3 scripts/test_validate_research_return.py"
+    architecture_fixture["evidence"][0]["exit_state"] = "passed"
+    architecture_fixture["evidence"][0]["exit_code"] = 0
+    architecture_fixture["evidence"][0]["replay_state"] = "reproduced"
+    architecture_fixture["attribution"]["artifact_credit"][0]["contribution_roles"] = [
+        "conceptualization",
+        "software",
+        "validation",
+    ]
+    require(
+        not validator.validate_document(
+            architecture_fixture,
+            require_submitted=True,
+            repository_identity=identity,
+        ),
+        "first-class architecture receipt did not validate",
+    )
+    architecture_with_problem = copy.deepcopy(architecture_fixture)
+    architecture_with_problem["frontier"]["problem"] = 257
+    require(
+        any("frontier.problem" in error for error in validator.validate_document(architecture_with_problem)),
+        "architecture receipt accepted a fictitious problem attribution",
+    )
+    architecture_bad_role = copy.deepcopy(architecture_fixture)
+    architecture_bad_role["attribution"]["artifact_credit"][0]["contribution_roles"] = ["idea_owner"]
+    require(
+        any("unknown roles" in error for error in validator.validate_document(architecture_bad_role)),
+        "architecture receipt accepted an unknown credit role",
+    )
+
     negative_fixture = json.loads(
         (ROOT / "docs/research-commons/returns/negative-example.json").read_text(
             encoding="utf-8"

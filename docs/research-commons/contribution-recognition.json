@@ -1,6 +1,7 @@
 {
   "accepted_receipt_count": 0,
   "aggregates": {
+    "by_architecture_area": [],
     "by_artifact_credit": [],
     "by_contributor": [],
     "by_core_promotion_state": [],
@@ -16,7 +17,8 @@
     "by_requested_disposition": [],
     "by_result_class": [],
     "by_review_state": [],
-    "by_tagged_release_inclusion_state": []
+    "by_tagged_release_inclusion_state": [],
+    "by_track": []
   },
   "artifact_role": "generated_accepted_receipt_recognition_and_impact_view",
   "authority_boundary": "This is a receipt-derived recognition and release-state view. It does not establish mathematical novelty, proof authority, scientific quality, ownership, endorsement, independent review, or release authority. Detached route-memory sidecars are validated at intake but remain separate route authority and are not recognition credit.",

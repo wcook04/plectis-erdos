@@ -169,6 +169,43 @@ def main() -> int:
         require(marker in human, f"human attribution view omitted {marker}")
     require("commit_count" not in human and "diff_size" not in human, "activity leaderboard field entered attribution prose")
 
+    architecture_name, architecture_receipt, _payload = accepted_source()
+    architecture_name = "rr-architecture-contribution-projection-test.json"
+    architecture_receipt["return_id"] = "rr-architecture-contribution-projection-test"
+    architecture_receipt["frontier"] = {
+        "track": "architecture",
+        "area": "agent_workflow",
+        "handle": "architecture-credit-rail",
+        "bounded_question": "Can architecture work use the accepted credit rail?",
+        "stop_condition": "Stop when the projection records track, area, path, and roles.",
+        "starting_paths": ["CONTRIBUTING.md"],
+    }
+    architecture_receipt["result"].update(
+        {
+            "class": "checked_positive",
+            "summary": "The accepted architecture artifact is projected without a problem number.",
+            "claim_ceiling": "validated_architecture_change",
+            "surviving_boundary": "Acceptance does not establish universal architecture quality.",
+            "requested_disposition": "consider_architecture_adoption",
+        }
+    )
+    architecture_receipt["attribution"]["artifact_credit"][0]["contribution_roles"] = [
+        "conceptualization",
+        "software",
+    ]
+    architecture_payload = contributions.canonical(architecture_receipt)
+    architecture_projection = contributions.build_projection(
+        [(architecture_name, architecture_receipt, architecture_payload)]
+    )
+    architecture_row = architecture_projection["chronological"][0]
+    require(architecture_projection["filters"]["by_track"] == {"architecture": [architecture_receipt["return_id"]]}, "architecture track filter drifted")
+    require(architecture_projection["filters"]["by_problem"] == {}, "architecture receipt entered a problem filter")
+    require(architecture_projection["filters"]["by_architecture_area"] == {"agent_workflow": [architecture_receipt["return_id"]]}, "architecture area filter drifted")
+    require(architecture_row["public_frontier"]["repository_path"].endswith("ARCHITECTURE_CONTRIBUTIONS.md"), "architecture contribution route was not projected")
+    architecture_human = contributions.human_projection(architecture_projection).decode("utf-8")
+    for marker in ("Architecture", "agent workflow", "conceptualization", "software"):
+        require(marker in architecture_human, f"architecture contribution view omitted {marker}")
+
     print("build_research_contributions: unaccepted exclusion and human/operator/model/provider projection PASS")
     return 0
 

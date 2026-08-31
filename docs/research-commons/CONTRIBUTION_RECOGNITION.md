@@ -74,7 +74,17 @@ Denominator: `0` accepted receipts; entries are stable-key sorted.
 Denominator: `0` accepted receipts; entries are stable-key sorted.
 
 
+### Track
+
+Denominator: `0` accepted receipts; entries are stable-key sorted.
+
+
 ### Problem
+
+Denominator: `0` accepted receipts; entries are stable-key sorted.
+
+
+### Architecture Area
 
 Denominator: `0` accepted receipts; entries are stable-key sorted.
 
