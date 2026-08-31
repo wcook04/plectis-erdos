@@ -571,6 +571,9 @@ jobs:
       # column and the reader gets a horizontal scrollbar with every other
       # column squashed.  `<wbr>` and `style` are both stripped by GitHub's
       # sanitiser, so the only fix is structural and the only guard is a check.
+      # Content-addressed exact-copy corpus files remain report-only when their
+      # bytes match the manifest: changing those tables would break provenance,
+      # and the corpus-integrity step above is their authoritative gate.
       - name: Markdown tables fit the rendered column
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_markdown_table_render.py --fail-on overflow .

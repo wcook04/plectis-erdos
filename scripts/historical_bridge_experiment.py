@@ -26,10 +26,12 @@ from pathlib import Path
 from typing import Any
 
 import proof_state_compiler as compiler
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "erdos249257-historical-bridge-experiment/1"
+ENVIRONMENT_CONTRACT = "clean_reproduction_subprocess_environment_v1"
 INTRODUCTION_COMMIT = "11078b7791c429b99b057218bdce49597f0ce14c"
 EXPECTED_PARENT = "8906a4c7978b69ed197b54e981f1873720c8a7be"
 FUTURE_MODULE = "Erdos249257/RewindHalfDivisorAdapter.lean"
@@ -56,6 +58,7 @@ def _run(
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         check=False,
+        env=singleflight.command_environment(),
         timeout=timeout_seconds,
     )
 
@@ -417,6 +420,7 @@ def main() -> int:
         description="run the blinded historical bridge shadow experiment"
     )
     parser.add_argument("--compact", action="store_true")
+    parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
     packet = run_experiment()
     print(

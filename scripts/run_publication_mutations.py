@@ -22,12 +22,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MANIFEST = ROOT / "experiments" / "publication_mutations.json"
 MANIFEST_SCHEMA = "erdos249257-publication-mutation-operators/1"
 RUN_SCHEMA = "erdos249257-publication-mutation-run/1"
 VERIFY_SCHEMA = "erdos249257-publication-mutation-operator-verification/1"
+SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 
 
 class MutationError(RuntimeError):
@@ -284,17 +287,28 @@ def apply_operator(repo: Path, row: dict[str, Any]) -> dict[str, Any]:
 
 
 def run_checked(argv: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
-    completed = subprocess.run(
-        argv,
-        cwd=cwd,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    if completed.returncode != 0:
+    for attempt in range(1, singleflight.MAX_EXTERNAL_TERMINATION_ATTEMPTS + 1):
+        completed = subprocess.run(
+            argv,
+            cwd=cwd,
+            capture_output=True,
+            text=True,
+            check=False,
+            env=singleflight.command_environment(),
+            timeout=SUBPROCESS_TIMEOUT_SECONDS,
+        )
+        if completed.returncode == 0:
+            return completed
+        if (
+            singleflight.is_external_termination_exit(completed.returncode)
+            and attempt < singleflight.MAX_EXTERNAL_TERMINATION_ATTEMPTS
+        ):
+            continue
         detail = completed.stderr.strip() or completed.stdout.strip()
-        raise MutationError(f"{' '.join(argv)} failed: {detail}")
-    return completed
+        raise MutationError(
+            f"{' '.join(argv)} failed with exit {completed.returncode}: {detail}"
+        )
+    raise MutationError(f"{' '.join(argv)} exhausted external-termination recovery")
 
 
 def clone_at_checkpoint(checkpoint: str, parent: Path) -> Path:
@@ -303,15 +317,18 @@ def clone_at_checkpoint(checkpoint: str, parent: Path) -> Path:
         [
             "git",
             "clone",
-            "--local",
-            "--no-hardlinks",
+            "--shared",
+            "--no-checkout",
             "--quiet",
             str(ROOT),
             str(clone),
         ],
         ROOT,
     )
-    run_checked(["git", "checkout", "--detach", "--quiet", checkpoint], clone)
+    run_checked(
+        ["git", "checkout", "--detach", "--force", "--quiet", checkpoint],
+        clone,
+    )
     return clone
 
 

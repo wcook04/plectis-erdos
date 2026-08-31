@@ -38,7 +38,7 @@
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
       "entry_route_id": "understand_repository_architecture",
       "evidence_receipt_path": "docs/publication_evidence.json",
-      "evidence_receipt_digest": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
+      "evidence_receipt_digest": "sha256:873813def49ba6ed003e43694c1ea962751dd688db39f1a231a81a1dd3018447",
       "validation": [
         "python3 scripts/check_architecture_guide.py",
         "python3 scripts/check_rendered_paper_boundary.py",

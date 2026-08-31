@@ -31,6 +31,10 @@ CORPUS_REL = "docs/papers/corpus.json"
 
 
 def main() -> int:
+    unknown = [argument for argument in sys.argv[1:] if argument != "--singleflight-worker"]
+    if unknown:
+        print("usage: check_paper_corpus.py [--singleflight-worker]", file=sys.stderr)
+        return 2
     repo_root = Path(__file__).resolve().parents[2]
     corpus_path = repo_root / CORPUS_REL
     try:
@@ -43,7 +47,15 @@ def main() -> int:
     missing: list[str] = []
     checked = 0
 
-    for paper in corpus.get("papers", []):
+    papers = corpus.get("papers", [])
+    if not isinstance(papers, list):
+        print(f"cannot read {CORPUS_REL}: papers is not a list", file=sys.stderr)
+        return 2
+
+    for paper in papers:
+        if not isinstance(paper, dict):
+            print(f"cannot read {CORPUS_REL}: paper is not an object", file=sys.stderr)
+            return 2
         source_rel = paper.get("local_source")
         expected = paper.get("source_sha256")
         if not source_rel or not expected:
