@@ -327,7 +327,17 @@ class LeanFastBuildTests(unittest.TestCase):
         pathspec = pathspec.split("; then", 1)[0]
         self.assertIn("lean-toolchain", pathspec, "the pathspec parse drifted")
 
-        self.assertGreaterEqual(len(index_builder.CHECK_INPUT_FILES), 9)
+        # Seven, not nine. This floor is a ratchet against the list silently
+        # shrinking, and it read 9 until 3daf0de6 removed
+        # build_lean_dependency_index.py and lean_fast_build.py on purpose:
+        # test_lean_dependency_index_cache.check_live_input_surface requires
+        # both to be absent, because those wrappers feed check_input_paths and
+        # editing one would invalidate a semantic projection receipt that no
+        # Lean statement had moved. The ratchet was left at 9, so restoring
+        # them to satisfy it breaks that test instead. The pathspec below still
+        # names both files: a wrapper edit should re-run the build gate even
+        # though it does not invalidate the cached index.
+        self.assertGreaterEqual(len(index_builder.CHECK_INPUT_FILES), 7)
         for declared in index_builder.CHECK_INPUT_FILES:
             with self.subTest(input=declared):
                 self.assertIn(

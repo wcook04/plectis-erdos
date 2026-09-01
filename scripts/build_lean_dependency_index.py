@@ -42,9 +42,7 @@ CHECK_INPUT_FILES = (
     "lakefile.toml",
     "lean-toolchain",
     "scripts/build_declaration_atlas.py",
-    "scripts/build_lean_dependency_index.py",
     "scripts/export_lean_dependency_edges.lean",
-    "scripts/lean_fast_build.py",
 )
 QUERY_CORPUS_DEPENDENCY_HELPERS = (
     "atlas_declarations",
