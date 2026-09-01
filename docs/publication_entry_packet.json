@@ -108,9 +108,9 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:6b89054ebbf6315398e911a5708dd7ab53c1c2fe24eec0abb74e7ea6bc0aa015",
-    "docs/claims.json": "sha256:bef049681b7bdf807d341b6ffbc4de02b5ad2ac1c262bf3b252fc52f7d419cbf",
+    "docs/claims.json": "sha256:8556f0b4de1b807b5786e34085d54ea742ef67665c36c8790cb39634a208ac27",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:22c4d93bdcef1817d502db225a17225ced5db2e9c4eb5eebe5210e21e2997fe0",
+    "docs/problems.json": "sha256:3e541e4df836bb78bb2ed0e96587fd4f1b9d7e0e2b84f3a51528e0a880f23bd6",
     "docs/publication_contract.json": "sha256:f98a040f13cad7ba042ff1add74e94ad3ab8782074ddbfd8bb87a7d051fb2b6b",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
@@ -435,7 +435,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:22c4d93bdcef1817d502db225a17225ced5db2e9c4eb5eebe5210e21e2997fe0",
+      "content_digest": "sha256:3e541e4df836bb78bb2ed0e96587fd4f1b9d7e0e2b84f3a51528e0a880f23bd6",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

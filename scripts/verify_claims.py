@@ -762,6 +762,74 @@ def run_gates(environment: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def restamp_drifted_locators(claims: dict[str, Any]) -> list[dict[str, Any]]:
+    """Move recorded lines onto the positions the source actually reports.
+
+    Only `drifted` declarations move. That status is reached solely by finding
+    a declaration keyword introducing the name, so the new line is a definition
+    site rather than a call site. `declaration_missing` and `module_missing`
+    are left alone and reported: those say the register names something the
+    corpus no longer has, which is a claim defect, not a line-number defect.
+
+    The rewrite is a targeted substitution on the committed text so that
+    restamping nine integers does not reformat the whole register.
+    """
+    moved: list[dict[str, Any]] = []
+    unresolved: list[dict[str, Any]] = []
+    for claim in claims.get("claims", []):
+        for declaration in claim.get("declarations", []):
+            if not isinstance(declaration, dict) or "line" not in declaration:
+                continue
+            resolution = resolve_declaration(declaration)
+            if resolution["status"] in {"declaration_missing", "module_missing"}:
+                unresolved.append({"claim": claim.get("id"), **resolution})
+            elif resolution["status"] == "drifted":
+                moved.append({"claim": claim.get("id"), **resolution})
+    if unresolved:
+        raise SystemExit(
+            "refusing to restamp while declarations are unresolved:\n"
+            + "\n".join(
+                f"  {row['status']:<20} {row['name']} in {row['module']}"
+                for row in unresolved
+            )
+        )
+    if not moved:
+        return moved
+
+    # One declaration can be cited by several claims, so a locator is keyed by
+    # (name, module, recorded line) and every copy of it moves together.
+    locators: dict[tuple[str, str, int], int] = {}
+    for row in moved:
+        key = (row["name"], row["module"], row["recorded_line"])
+        previous = locators.setdefault(key, row["resolved_line"])
+        if previous != row["resolved_line"]:
+            raise SystemExit(
+                f"locator {row['name']} resolved to both {previous} and "
+                f"{row['resolved_line']}"
+            )
+
+    text = CLAIMS_PATH.read_text(encoding="utf-8")
+    for (name, module, recorded), resolved in locators.items():
+        block = re.compile(
+            r'(\{\s*"name":\s*"'
+            + re.escape(name)
+            + r'",\s*"module":\s*"'
+            + re.escape(module)
+            + r'",\s*"line":\s*)'
+            + str(recorded)
+            + r'(\s*\})'
+        )
+        text, count = block.subn(
+            lambda m, target=resolved: f"{m.group(1)}{target}{m.group(2)}", text
+        )
+        if count == 0:
+            raise SystemExit(
+                f"no locator matched {name} at line {recorded}"
+            )
+    CLAIMS_PATH.write_text(text, encoding="utf-8")
+    return moved
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Follow a public claim to its source, receipts, and boundary.",
@@ -772,6 +840,7 @@ def main() -> int:
             "  python3 scripts/verify_claims.py --claim eb_full_support\n"
             "  python3 scripts/verify_claims.py --verify-all\n"
             "  python3 scripts/verify_claims.py --gates\n"
+            "  python3 scripts/verify_claims.py --restamp\n"
         ),
     )
     mode = parser.add_mutually_exclusive_group()
@@ -779,11 +848,31 @@ def main() -> int:
     mode.add_argument("--list", action="store_true", help="list every claim id and status")
     mode.add_argument("--verify-all", action="store_true", help="re-resolve every claim locator")
     mode.add_argument("--gates", action="store_true", help="run every committed check_*.py")
+    mode.add_argument(
+        "--restamp",
+        action="store_true",
+        help="move drifted locators onto the lines the source reports",
+    )
     parser.add_argument("--json", action="store_true", help="emit machine-readable output")
     args = parser.parse_args()
 
     claims = load_claims()
     environment = describe_environment(claims)
+
+    if args.restamp:
+        moved = restamp_drifted_locators(claims)
+        if args.json:
+            print(json.dumps({"restamped": moved}, indent=2))
+        elif not moved:
+            print("every claim locator already matches its source")
+        else:
+            for row in moved:
+                print(
+                    f"  {row['name']} in {row['module']}: "
+                    f"{row['recorded_line']} -> {row['resolved_line']}"
+                )
+            print(f"restamped {len(moved)} drifted locator(s)")
+        return 0
 
     if args.list or not (args.claim or args.verify_all or args.gates):
         rows = [

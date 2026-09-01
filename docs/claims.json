@@ -15996,17 +15996,17 @@
         {
           "name": "perfect_mersenneAchievementSet",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 1633
+          "line": 1656
         },
         {
           "name": "isTotallyDisconnected_mersenneAchievementSet",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 1649
+          "line": 1672
         },
         {
           "name": "isNowhereDense_mersenneAchievementSet",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 1658
+          "line": 1681
         },
         {
           "name": "mem_mersenneAchievementSet_iff_greedy_survival",
@@ -16016,12 +16016,12 @@
         {
           "name": "three_fourths_not_mem_mersenneAchievementSet",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 1761
+          "line": 1784
         },
         {
           "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2527
+          "line": 2571
         },
         {
           "name": "finite_boolSupport_ne_half",
@@ -16092,17 +16092,17 @@
         {
           "name": "HalfSecondChannelSeparatedRat",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2857
+          "line": 2901
         },
         {
           "name": "halfSecondChannelSeparatedRat_of_pos_le_six",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2917
+          "line": 2961
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 3095
+          "line": 3139
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",
@@ -16112,7 +16112,7 @@
         {
           "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2527
+          "line": 2571
         }
       ]
     },

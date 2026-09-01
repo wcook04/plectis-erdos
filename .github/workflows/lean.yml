@@ -298,7 +298,8 @@ jobs:
             elif git diff --quiet "$base" "$head" -- \
               Erdos249257.lean 'Erdos249257/**' \
               ErdosProblems.lean 'ErdosProblems/**' \
-              ExternalVerification ExternalVerification1049 'verification/**' \
+              ExternalVerification ExternalVerification1049 \
+              ExternalVerification1041SolvedFamilies 'verification/**' \
               lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
               docs/claims.json docs/problem_index_source.json docs/problems.json \
               docs/EXTERNAL_VERIFICATION.md docs/COMPARATOR_1049_NUMERICAL_HEIGHT.md \
@@ -490,7 +491,8 @@ jobs:
           set -euo pipefail
           : > axiom-audit.log
           for src in ExternalVerification/AxiomAudit.lean \
-                     ExternalVerification1049/AxiomAudit.lean; do
+                     ExternalVerification1049/AxiomAudit.lean \
+                     ExternalVerification1041SolvedFamilies/AxiomAudit.lean; do
             printf '=== %s ===\n' "$src" >> axiom-audit.log
             lake env lean "$src" 2>&1 | tee -a axiom-audit.log
           done

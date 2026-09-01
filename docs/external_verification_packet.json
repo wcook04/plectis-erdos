@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:22c4d93bdcef1817d502db225a17225ced5db2e9c4eb5eebe5210e21e2997fe0",
+    "projection_digest": "sha256:3e541e4df836bb78bb2ed0e96587fd4f1b9d7e0e2b84f3a51528e0a880f23bd6",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2508,7 +2508,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1041_note",
-          "title": "Admissible Hubs and Newton-Flow Ray Separation",
+          "title": "Critical-Value Separation and Admissible Hubs",
           "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "rendered_path": "erdos-1041-lemniscate-newton-flow.pdf",
           "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
