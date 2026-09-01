@@ -463,9 +463,22 @@ def main() -> int:
         research["directory"] == "research_corpus/Erdos1041",
         "#1041 research corpus route drifted",
     )
+    # Against STRONGEST_RESULTS.json, not a frozen number. This was pinned to
+    # 35 while the register holds 45, so landing #1041 results broke a test
+    # whose projection was right. Comparing to the file still catches the real
+    # defect -- a packet that miscounts the register -- and cannot go stale.
+    strongest = json.loads(
+        (ROOT / "research_corpus" / "Erdos1041" / "STRONGEST_RESULTS.json").read_text(
+            encoding="utf-8"
+        )
+    )
     require(
-        research["strongest_result_summary"]["result_count"] == 35,
-        "#1041 strongest-result count drifted",
+        research["strongest_result_summary"]["result_count"] == len(strongest["results"]),
+        "#1041 strongest-result count drifted from STRONGEST_RESULTS.json",
+    )
+    require(
+        research["strongest_result_summary"]["result_count"] > 0,
+        "#1041 strongest-result summary is empty",
     )
     require(
         research["authority_posture"].startswith("public_safe_research_evidence"),
