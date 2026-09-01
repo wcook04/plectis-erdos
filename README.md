@@ -5,12 +5,28 @@
 
 ![System map: pipeline, problem-sized Lean worlds, public artifacts, and the clone-work-return-credit loop](.github/system-map.png)
 
-Plectis is an AI-assisted mathematical research system. This repository is
-its public proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269,
-1041, and 1049: exact reductions, model families, theorems, countermodels,
-method boundaries, and certificates. **It does not solve them. All eight
-problems remain open.** Each programme states what is checked and what still
-blocks the question. For a command-free first read, begin with
+*Not a trophy case of solved problems: a machine-checked launchpad on
+deliberately unsolved ones.*
+
+Plectis applies AI search, computation, ordinary mathematics, and Lean to
+eight long-standing open Erdős problems: 68, 243, 249, 251, 257, 269, 1041,
+and 1049. **All eight remain open, and that is the premise, not the
+failure.** The problems were chosen because solving them was never a
+reasonable expected outcome for a solo, self-funded undergraduate project:
+they are hard enough that a model cannot close the gap with plausible prose,
+and a finite computation cannot settle an infinite quantifier.
+
+The product is the frontier, not a finish line. Each problem carries its
+exact reductions, checked intermediate theorems, countermodels, no-go
+results, finite certificates, failed routes preserved so nobody pays to
+rediscover them, and the precise obligation that still blocks the endpoint.
+Lean makes each accepted local advance exact; its limits are stated below.
+
+The repository is public so the work does not end with its author. Clone the
+frontier, work one open edge with your own models, compute, or expertise,
+and keep the result or return it. Accepted returns are replayed, checked,
+and credited as what they are: a countermodel as a countermodel, a theorem
+as a theorem. For a command-free first read, begin with
 [A reader's way in](HUMAN_ENTRY.md).
 
 **Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),

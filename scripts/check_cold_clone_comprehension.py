@@ -256,7 +256,11 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # Raised 27_200 -> 27_600 when the generated corpus region grew with the
     # 2026-09-01 reconciliation (claim records 103 -> 129) and the system-map
     # figure line joined the header. Authored prose shrank in the same pass.
-    "README.md": 27_600 + 400 * INDEXED_PROBLEM_COUNT,
+    # Raised 27_600 -> 28_400 for the framing reorder (operator-directed,
+    # 2026-09-01): the first screen now answers why these problems, what the
+    # intended outcome was, what Lean contributes, and why the repository is
+    # public, before the results inventory.
+    "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
