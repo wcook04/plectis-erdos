@@ -1,0 +1,227 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #257: reciprocal-summable supports at every integer base"
+  description: >-
+    If A is an infinite set of positive exponents and the sum of 1/a over a
+    in A converges, then for every integer b at least two the sum of
+    1/(b^a - 1) over a in A is irrational. A uniform pointwise inequality
+    transfers the independently reconstructed binary close-return mechanism
+    to every radix, and an exact radix integer orbit gives the contradiction.
+    The formalization makes no theorem-priority claim, does not identify its
+    base-two proof with Erdős's omitted argument, and does not cover
+    reciprocal-divergent supports or the universal Erdős #257 problem.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "first_wave_candidate_paper_revision_applied_axiom_audit_replayed_in_this_public_repository_pending_commit_pin"
+  selected_project: "."
+  comparator_config: "ExternalVerification257ReciprocalSupport/comparator.json"
+  formalization_metadata: "ExternalVerification257ReciprocalSupport/formalization.yaml"
+  repository_scope: "prepared_in_this_public_repository_pending_commit_pin"
+  challenge_lines: 46
+  challenge_bytes: 1787
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "challenge_solution_and_axiom_audit_replayed_in_this_repository_with_exactly_propext_Classical_choice_and_Quot_sound_terminal_Comparator_NanoDa_is_run_by_Palomar_not_the_submitter"
+  research_interest_status: "plausible_specialist_audience_self_assessed_not_palomar_reviewed"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "the packet is present in this public repository but its pinning commit SHA is not yet created"
+  resolved_blockers:
+    - "the theorem revision is applied to paper/erdos-257-mersenne-support-subseries.tex in this repository and the result, mechanism, and boundary labels resolve"
+    - "the source library and packet are present in this public repository and replay under its own lakefile"
+  not_a_blocker:
+    - "A local terminal Comparator/NanoDa replay is our own assurance standard, not a Palomar submitter requirement. Palomar writes its own NanoDa-enabled protected configuration, runs the mechanical review, and registers nothing until the submitter chooses registration after seeing that review. The supported local runner additionally requires a Linux systemd boundary and returns typed exit 75 on macOS."
+  note: >-
+    The statement-isolated Challenge, proof transport, exact Comparator
+    configuration, axiom audit, and deliberate-negative fixture are prepared.
+    A source-current paper revision with stable theorem, transfer-mechanism,
+    and boundary labels is also staged against the pinned public-paper base.
+    This all-base complete support-regime theorem is the first presented
+    Palomar candidate, but the
+    staged paper must be promoted by its authoritative owner before the route
+    is live. The metadata is not a Comparator verdict, Palomar editorial
+    outcome, or registry entry. The operator has directed submission of the
+    portfolio's strongest results once the authoritative paper, exact public
+    commit, and replay evidence exist; recheck the then-current policy before
+    that identity-bound external act.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72"]
+
+
+sources:
+  - title: "On the irrationality of certain series"
+    authors:
+      - "Paul Erdős"
+    id: "https://users.renyi.hu/~p_erdos/1969-09.pdf"
+    type: "paper"
+    location: "The Mathematics Student 36 (1968, issued 1969), 222--226"
+    relationship: "independently-proves"
+    note: >-
+      Erdős proves the pairwise-coprime reciprocal-summable case and states
+      that pairwise coprimality can be removed by a more complicated argument,
+      without printing that argument. This formalization independently proves
+      the stated no-coprimality conclusion at base two and then proves a local
+      all-base strengthening by uniform atom comparison. A bounded source
+      search found no printed proof of the exact historical extension, but that
+      non-location does not support a first-proof or priority claim.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  source_current_authority:
+    module: "Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean"
+    last_committing_revision: "a226cd795566874d4d3a25b348b9bc0a0eeba98b"
+    sha256: "059e8818deda74c3d24f9f276f82f1370785cc0c4926339eec2d42a4f5f5d038"
+    final_declaration: "Erdos257PeriodNoncollapse.irrational_erdosSupportSeries_of_summable_reciprocal"
+    subordinate_mechanism: "Erdos257PeriodNoncollapse.shiftedRadixAtom_sub_zero_le_two_mul_binary_sub_zero; Erdos257PeriodNoncollapse.exists_shiftedRadixSupportAtom_closeReturn_of_summable_reciprocal"
+  scope: >-
+    The compared result states that every infinite reciprocal-summable support
+    A gives an irrational reciprocal-power subseries at every integer base at
+    least two. The zero exponent is normalized to zero by real division. No
+    pairwise-coprimality, periodicity, density, or powerful-support hypothesis
+    is assumed. Challenge.lean contains the deliberate Comparator
+    specification sorry; the proof-bearing Solution.lean and its imported
+    source theorem are sorry-free. The atom comparison and close-return
+    producer are subordinate proof mechanisms rather than extra results.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    ExternalVerification257ReciprocalSupport/Challenge.lean. It is excluded
+    from the proof-corpus count; Solution.lean transports a complete checked
+    source proof.
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+      file: "ExternalVerification257ReciprocalSupport/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "ExternalVerification257ReciprocalSupport/comparator.json"
+      canonical_claim_status: "checked_complete_support_regime_theorem_beneath_open_universal_erdos_257"
+      local_proof_provenance: "independent_base_two_reconstruction_plus_checked_all_base_strengthening"
+      novelty_status: "historical_base_two_extension_stated_by_Erdos_local_all_base_strengthening_no_theorem_priority_claim"
+      contribution_class: "independent explicit proof reconstruction, binary-to-radix transfer, and Lean verification"
+      statement: >-
+        If A is infinite and its reciprocal-support indicator is summable,
+        then for every integer b at least two the series with terms
+        1/(b^a - 1) supported on A is irrational.
+      boundary: >-
+        This does not cover reciprocal-divergent supports, identify the
+        base-two proof with Erdős's omitted argument, establish a theorem
+        priority claim, or solve universal Erdős #257.
+      paper_alignment:
+        paper_id: "erdos-257-mersenne-support-subseries"
+        source_path: "paper/erdos-257-mersenne-support-subseries.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/c7f752d0aec77a29ef852ddc2e805ccc38f7a609/paper/erdos-257-mersenne-support-subseries.tex"
+        authoritative_base_commit: "c7f752d0aec77a29ef852ddc2e805ccc38f7a609"
+        staged_revision_path: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-257-mersenne-support-subseries.patch"
+        result_label: "res:reciprocal-support"
+        mechanism_section_label: "sec:reciprocal-support"
+        boundary_label: "bdry:reciprocal-support"
+        relation: "exact_paper_theorem_with_subordinate_mechanism"
+        status: "staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion"
+        note: >-
+          The pinned URL identifies the exact clean public-paper base, not a
+          published version of the new theorem. The local staged patch adds
+          the all-base result, transfer mechanism, and boundary labels and must
+          be promoted by the authoritative paper owner before this route can
+          be marked live.
+      comparator_declaration: "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+      literature_dependencies:
+        - statement: >-
+            Erdős stated the no-coprimality extension after his printed
+            pairwise-coprime proof but did not print the extended argument.
+          source: "On the irrationality of certain series"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Source, attribution, and claim-boundary review"
+      tool_setup: "Human-directed provenance and scope review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted proof engineering, formalization, and statement-isolated verification packaging"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Pinned cold replay through scripts/verify-comparator.sh, with exact
+        positive acceptance and deliberate-negative mismatch rejection behind
+        the required systemd boundary.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "lake env lean with pinned lake-manifest.json and lean-toolchain"
+  notes: >-
+    Human source and claim-boundary review remain separate from kernel
+    checking, Comparator preparation, and any future Palomar editorial review.
+    AI agents assisted proof development, source comparison, formalization,
+    verification packaging, and exposition under Will Cook's direction.
+
+fidelity:
+  divergences: >-
+    The historical statement removes pairwise coprimality in its base-two
+    context without printing the proof. The local development supplies an
+    independent shifted-atom, gcd-orbit-mean, LCM-prefix, and Cesàro proof,
+    then transfers its close returns to every integer base by a uniform atom
+    displacement inequality. It does not claim that this is Erdős's omitted
+    proof or make a theorem-priority claim for the all-base strengthening.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem, Challenge/Solution type identity, axiom audit,
+    historical attribution, and scope boundary were checked locally. No human
+    mathematical peer review, Palomar editorial decision, or registry
+    acceptance is claimed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257ReciprocalSupport"
+  statements:
+    - source: >-
+        Erdős's no-coprimality reciprocal-summable Mersenne-support extension,
+        used as the historical base-two anchor and strengthened locally to
+        every integer base by binary-to-radix atom displacement transfer.
+      lean: "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+      module: "ExternalVerification257ReciprocalSupport/Challenge.lean"
+      status: "independently-proved"
+      note: >-
+        The compared declaration exposes exactly the final irrationality
+        theorem. The base-two proof architecture is independently
+        reconstructed; the atom comparison and shifted close-return theorem
+        remain internal mechanisms.
+
+acknowledgements: "Mathlib contributors; Paul Erdős for the cited theorem statement."

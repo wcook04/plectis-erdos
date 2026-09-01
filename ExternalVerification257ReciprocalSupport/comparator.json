@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257ReciprocalSupport.Challenge",
+  "solution_module": "ExternalVerification257ReciprocalSupport.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
