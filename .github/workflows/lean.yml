@@ -116,7 +116,6 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
-          cache: false
       - name: Detect supported-root Lean changes
         id: lean-inputs
         env:
@@ -322,7 +321,6 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
-          cache: false
       - name: Initialize failure-safe verification receipt
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -616,7 +614,6 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
-          cache: false
       - name: Install metadata validators
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement requirements-release.txt
