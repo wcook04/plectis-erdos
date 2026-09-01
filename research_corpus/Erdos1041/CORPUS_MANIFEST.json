@@ -6,7 +6,7 @@
   "source_prefix": "source-provenance://Erdos1041",
   "public_prefix": "research_corpus/Erdos1041",
   "file_count": 839,
-  "total_bytes": 7148979,
+  "total_bytes": 7149362,
   "local_path_replacement_count": 1318,
   "strongest_result_map": {
     "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
@@ -3599,11 +3599,11 @@
     {
       "source_path": "source-provenance://Erdos1041/TypeBReturnAssimilation20260828.md",
       "public_path": "research_corpus/Erdos1041/TypeBReturnAssimilation20260828.md",
-      "source_sha256": "fe4c9d963b06c09b4e479f017ec007d87eb839ff401ecf9e7b31279f33dda1e5",
-      "published_sha256": "fe4c9d963b06c09b4e479f017ec007d87eb839ff401ecf9e7b31279f33dda1e5",
+      "source_sha256": "8d9a5b2be6150e9195bffe4621bc9ee2d1977b3db24d5a81990c0bc0b76ac599",
+      "published_sha256": "8d9a5b2be6150e9195bffe4621bc9ee2d1977b3db24d5a81990c0bc0b76ac599",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 46972
+      "bytes": 47355
     },
     {
       "source_path": "source-provenance://Erdos1041/TypeBReturnAssimilation20260829.md",

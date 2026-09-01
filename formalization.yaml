@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:3e541e4df836bb78bb2ed0e96587fd4f1b9d7e0e2b84f3a51528e0a880f23bd6"
+  problem_index_digest: "sha256:fc62dc309daa7cbc97ddb92abd530b35b7de2d37dfa6f5f22899c65f2beea7dc"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1674,8 +1674,8 @@ external_verification:
         content_digests:
           frontier: "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
           strongest_results: "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
-          manifest: "sha256:aba4634c2321bcd222a770addf279bb9f6dc4217b07120fc17851b2843901d73"
-          checkpoint: "sha256:de87e82f929c1875966e580159eaf3574822c88ace8e38b4d15597a25055e702"
+          manifest: "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46"
+          checkpoint: "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f"
         activated_result_count: 45
         source_checkpoint: "867638684907b4ebd4ab2ef7b5de22dafda71e36"
         source_subtree_tree: "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d"

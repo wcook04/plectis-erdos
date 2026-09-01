@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:3e541e4df836bb78bb2ed0e96587fd4f1b9d7e0e2b84f3a51528e0a880f23bd6",
+    "projection_digest": "sha256:fc62dc309daa7cbc97ddb92abd530b35b7de2d37dfa6f5f22899c65f2beea7dc",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2553,7 +2553,7 @@
         "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
-          "title": "Admissible Hubs and Newton-Flow Ray Separation",
+          "title": "Critical-Value Separation and Admissible Hubs",
           "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "pdf": "erdos-1041-lemniscate-newton-flow.pdf",
           "full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
@@ -2592,11 +2592,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:aba4634c2321bcd222a770addf279bb9f6dc4217b07120fc17851b2843901d73"
+              "content_digest": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:de87e82f929c1875966e580159eaf3574822c88ace8e38b4d15597a25055e702"
+              "content_digest": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f"
             }
           },
           "strongest_result_summary": {
