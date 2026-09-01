@@ -504,10 +504,9 @@ Corrections are received through the issue forms.
 I am 22. I took a year out of my economics degree at Bristol for mental health
 reasons, and working on this became my life. I am about a month from running
 out of money, and I rushed this release because real life caught up with me.
-That is not a pity play, it is just where I am. As this is written the
-repository has zero stars.
+I'm not trying to get pity, it is just my situation rn.
 
-This repository is the output. The private system behind it is bigger: the
+This repo is part of the result. The private system behind it is bigger: the
 videos show the entire frontend, the docs on the website carry how I think
 about AI and safe systems, and Plectis is the prototype of what the system
 could look like in a year or two with support. There are other apps I use
@@ -515,7 +514,7 @@ daily that I would happily open-source too; I keep choosing the mathematics
 because it is the part a stranger can verify.
 
 I have been doing this alone for a year and I do not really know how to
-interact with people, especially Silicon Valley, where everyone is rightfully
+interact with experts, especially Silicon Valley, where everyone is rightfully
 busy. So I designed this to be cloned instead of pitched. That is what this
 repository is for: the eight problems mapped to their exact open steps, every
 claim bound to what is actually proved, and the machinery for working on them
