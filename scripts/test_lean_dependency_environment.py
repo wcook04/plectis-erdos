@@ -99,9 +99,15 @@ def main() -> int:
                 kwargs["env"] == expected_environment,
                 "dependency run helper drifted from the canonical environment",
             )
+            # The worker budget, not the Git one. Both callers of this helper
+            # elaborate Lean state, and GIT_COMMAND_TIMEOUT_SECONDS is 30s --
+            # the bound for metadata-only Git queries. Asserting it here would
+            # demand that a cold dependency build finish inside half a minute,
+            # which is why build_lean_dependency_index.run defaults to the
+            # worker timeout and says so.
             require(
                 kwargs["timeout"]
-                == validation_singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+                == validation_singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
                 "dependency run helper lost its bounded timeout",
             )
 
