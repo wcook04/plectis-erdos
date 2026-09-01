@@ -5,28 +5,27 @@
 
 ![System map: pipeline, problem-sized Lean worlds, public artifacts, and the clone-work-return-credit loop](.github/system-map.png)
 
-*Not a trophy case of solved problems: a machine-checked launchpad on
-deliberately unsolved ones.*
-
 Plectis applies AI search, computation, ordinary mathematics, and Lean to
 eight long-standing open Erdős problems: 68, 243, 249, 251, 257, 269, 1041,
-and 1049. **All eight remain open, and that is the premise, not the
-failure.** The problems were chosen because solving them was never a
-reasonable expected outcome for a solo, self-funded undergraduate project:
-they are hard enough that a model cannot close the gap with plausible prose,
-and a finite computation cannot settle an infinite quantifier.
+and 1049. **All eight problems remain open.** The problems were selected on
+the expectation that a solo, self-funded undergraduate project would not
+solve them. The object of the project is to measure how much exact,
+machine-checked, reusable progress can be accumulated on problems of this
+difficulty, and to publish that progress in a form another researcher can
+continue.
 
-The product is the frontier, not a finish line. Each problem carries its
-exact reductions, checked intermediate theorems, countermodels, no-go
-results, finite certificates, failed routes preserved so nobody pays to
-rediscover them, and the precise obligation that still blocks the endpoint.
-Lean makes each accepted local advance exact; its limits are stated below.
+The output is the current research frontier of each problem: exact
+reductions, machine-checked intermediate theorems, countermodels, no-go
+results, finite certificates, failed routes recorded to prevent duplicated
+effort, and a precise statement of the obligation that still blocks each
+endpoint. Lean checks the exact formal statement of each accepted
+intermediate result; the limits of that checking are stated below.
 
-The repository is public so the work does not end with its author. Clone the
-frontier, work one open edge with your own models, compute, or expertise,
-and keep the result or return it. Accepted returns are replayed, checked,
-and credited as what they are: a countermodel as a countermodel, a theorem
-as a theorem. For a command-free first read, begin with
+The repository is public so that work can continue independently of its
+author. A reader can clone the current frontier, work on one open edge with
+their own models, compute, or mathematical expertise, and either retain or
+return the result. Accepted returns are replayed, validated, and attributed
+according to their evidence class. For a command-free first read, begin with
 [A reader's way in](HUMAN_ENTRY.md).
 
 **Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
