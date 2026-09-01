@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "all_degree_near_fekete_tied_newton_face_residual",
   "output_stage": "exact_degree_five_complete_spoke_no_go_and_truncated_connector_rescue",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.md",
   "human_understanding_delta": "The first tied low-mode face already exhibits selector motion with radius: the linear term makes three rays unsafe near zero, while the quadratic term creates a positive bump on the remaining two. Complete spokes are therefore the wrong universal object; truncated connectors are logically necessary.",
   "verification_state": "ordinary exact root-of-unity reduction; radical bounds, five-ray no-go, two-piece quartic Bernstein connector, and outward ray safety Lean checked; deterministic exact-bound replay",
   "publication_or_review_state": "private authoring checkpoint; not peer reviewed and not a solution of the parent problem",

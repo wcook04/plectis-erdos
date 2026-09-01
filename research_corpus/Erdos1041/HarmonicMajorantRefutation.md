@@ -140,8 +140,8 @@ Erdős #1041 is open.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py refutation
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py identity
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py coverage
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py precondition --max-degree 12
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py refutation
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py identity
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py coverage
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_harmonic_majorant.py precondition --max-degree 12
 ```

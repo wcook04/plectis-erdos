@@ -79,7 +79,6 @@ COVER.  Erdős 1041 remains open.
 ## Validation
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
-  --jobs 2 ErdosProblems.Erdos1041.AuditedSynthesisStrictCriticalBudget20260827
+lake env lean research_corpus/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.lean
 ./repo-python -m system.lib.formal_math_frontier_integrity --repo-root . --check-currency
 ```

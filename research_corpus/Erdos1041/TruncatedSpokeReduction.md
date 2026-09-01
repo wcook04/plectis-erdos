@@ -207,7 +207,7 @@ further restriction of it and could fail where the general form succeeds. Erdős
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_truncated_spoke_chord.py mechanism
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_truncated_spoke_chord.py coverage --grid 30
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_truncated_spoke_chord.py calibrate --max-degree 4
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_truncated_spoke_chord.py mechanism
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_truncated_spoke_chord.py coverage --grid 30
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_truncated_spoke_chord.py calibrate --max-degree 4
 ```

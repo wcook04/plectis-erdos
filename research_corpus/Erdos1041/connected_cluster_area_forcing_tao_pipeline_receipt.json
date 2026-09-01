@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "generation_from_connected_cluster_bergman_and_merge_tree_falsifier",
   "output_stage": "analytic_theorem_with_lean_checked_scalar_consumer_and_bounded_numerical_no_go",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConnectedClusterAreaForcing.md",
+  "artifact": "research_corpus/Erdos1041/ConnectedClusterAreaForcing.md",
   "human_understanding_delta": "Disjoint component areas turn CDF into a fixed-level reciprocal-barrier pigeonhole theorem. The merge-tree-only strengthening is false in the near-regular shell, so actual area or Green defects remain load-bearing rather than optional refinements.",
   "verification_state": "ordinary analytic proof; finite scalar kernel and composition Lean-checked; deterministic numerical merge-tree falsifier with residual gates",
   "publication_or_review_state": "private authoring checkpoint; not peer reviewed and not an unrestricted solution",

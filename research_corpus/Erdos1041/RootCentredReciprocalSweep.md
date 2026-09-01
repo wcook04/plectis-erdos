@@ -258,7 +258,7 @@ progress on the constant 2. Erdős #1041 remains open.
 ## Current replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_root_centred_sweep.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_root_centred_sweep.py
 ```
 
 The 2026-08-27 replay checks 28,000 configurations, with maximum Cauchy

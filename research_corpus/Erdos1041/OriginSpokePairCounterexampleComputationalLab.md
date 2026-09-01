@@ -52,11 +52,11 @@ adapted to the polynomial's branch structure, or the global Reeb route.
 ## Durable replay
 
 ```bash
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_origin_spoke_pair.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_origin_spoke_pair.py --check
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_origin_spoke_pair.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_origin_spoke_pair.py --check
 ```
 
 The canonical receipt is
-`state/formal_math/erdos257_period_noncollapse/erdos1041_origin_spoke_pair_counterexample_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_origin_spoke_pair_counterexample_receipt.json`.
 It binds the analytic hypothesis, exact Gaussian-rational computation,
 falsifier, claim ceiling, source hashes, and consequence decisions.

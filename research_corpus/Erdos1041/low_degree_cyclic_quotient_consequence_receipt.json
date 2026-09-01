@@ -2,7 +2,7 @@
   "schema_version": "mathematical_consequence_receipt_v1",
   "input_stage": "proof_generation",
   "output_stage": "exposition_and_understanding",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/low_degree_cyclic_quotient_consequence_receipt.json",
+  "artifact": "research_corpus/Erdos1041/low_degree_cyclic_quotient_consequence_receipt.json",
   "human_understanding_delta": "The quadratic, cubic, and quartic cyclic quotient cases are one coherent frontier rather than three isolated lemmas. Degree two is controlled by an exact quadratic factorization, degree three by a global charge selector and cyclotomic envelope, and degree four by the chord-lift metric plus Pendyala's attributed chord-or-radial dichotomy. The close-pair branch extends to every quotient degree, and Hilbert-space convexity sharpens its explicit quintic certificate to d^2<=5/9, within 0.003 of the exact envelope threshold. The first genuinely new boundary is the quantitatively separated quotient-root regime beginning in degree five.",
   "verification_state": {
     "analytic": "complete in the four companion notes",
@@ -15,7 +15,7 @@
   "next_stage_owner": "Codex mathematical closure loop, then the formal-math Refinery after Lean validation and scoped landing",
   "progress_anchors": [
     {
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
+      "file": "research_corpus/Erdos1041/CubicQuotientFiberCase.lean",
       "source_digest": "sha256:8d48e206629d9d6283b7f1c66aa01651d9ff45314c0ed541f566c329131fa6dd",
       "declarations": [
         "cubic_has_safe_root_spoke",
@@ -23,21 +23,21 @@
       ]
     },
     {
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/EvenSymmetricTrinomialCase.lean",
+      "file": "research_corpus/Erdos1041/EvenSymmetricTrinomialCase.lean",
       "source_digest": "sha256:fb0981cdd543d678557df048536962999c40ec627798db269a62a77f39c0d5f3",
       "declarations": [
         "two_short_displacements_give_short_hub"
       ]
     },
     {
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticQuotientFiberCase.lean",
+      "file": "research_corpus/Erdos1041/QuarticQuotientFiberCase.lean",
       "source_digest": "sha256:64127e86c0bf185402796e4716200629038d9abbfe553908f55a4710f09a3d18",
       "declarations": [
         "rootLift_length_lt_two_of_le_endpoint_budget"
       ]
     },
     {
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClosePairCyclicQuotientCase.lean",
+      "file": "research_corpus/Erdos1041/ClosePairCyclicQuotientCase.lean",
       "source_digest": "sha256:710f93eff4136b531f42615f1ae6af6c8e2ee2716bb3ca829beefa05265f2092",
       "declarations": [
         "closePair_chord_factor_budget",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RefinedQuinticClosePair.lean",
+      "file": "research_corpus/Erdos1041/RefinedQuinticClosePair.lean",
       "source_digest": "sha256:22e7ad24d9a321ee3d35cbf6261a041538435145686e03eeea5fed6400e2fd8c",
       "declarations": [
         "quintic_refined_chord_envelope",

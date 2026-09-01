@@ -2,11 +2,11 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "generation",
   "output_stage": "verification_and_exposition",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceEvenSymmetricDiameter.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceEvenSymmetricDiameter.md",
   "human_understanding_delta": "Every even tied-face polynomial -z^(2m)+sum a_k z^(2k)+b with a_k<=0 and b<0 has the entire real axis in its negative half-plane preimage. The opposite-end diameter is therefore an all-degree contained connector of exact length 2R. The block-L1 family is globally covered; its polyhedral rational chart supplies the separate strict-slack subcell.",
   "verification_state": {
     "ordinary_proof": "complete one-line sign proof, asymptotic-end interpretation, metric composition, and distinction between global equality cone and strict subcell",
-    "exact_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_even_symmetric_diameter.py",
+    "exact_checker": "research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_even_symmetric_diameter.py",
     "lean": {
       "module": "ErdosProblems.Erdos1041.TiedNewtonFaceEvenSymmetricDiameter",
       "status": "focused_build_and_final_serialized_lake_check_passed",

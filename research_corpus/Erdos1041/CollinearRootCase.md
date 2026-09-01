@@ -454,7 +454,7 @@ The deterministic falsifier/exact-arithmetic companion is
 `scripts/check_erdos1041_collinear_chebyshev.py`.  The checkpoint run was
 
 ```text
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_collinear_chebyshev.py \
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_collinear_chebyshev.py \
   --max-n 10 --samples 20000 --seed 1041
 ```
 

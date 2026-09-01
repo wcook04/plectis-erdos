@@ -103,6 +103,11 @@ def check_live_input_surface() -> None:
         "scripts/query_corpus.py" not in relative,
         "dependency-index unexpectedly includes the query corpus",
     )
+    require(
+        "scripts/build_lean_dependency_index.py" not in relative
+        and "scripts/lean_fast_build.py" not in relative,
+        "operational wrapper churn invalidates the semantic projection receipt",
+    )
     semantic_identities = {
         identity for identity, _payload in builder.semantic_check_inputs()
     }
@@ -163,6 +168,17 @@ def check_cached_output_rejection() -> None:
             is None,
             "symlinked dependency-index cache output was accepted",
         )
+
+
+def check_tracked_cold_clone_receipt() -> None:
+    receipt = builder.load_cached_check(
+        receipt_path=builder.TRACKED_CHECK_RECEIPT,
+    )
+    require(receipt is not None, "tracked cold-clone receipt is stale")
+    require(
+        receipt["verification_posture"].startswith("tracked_receipt_from_full_"),
+        "tracked receipt lost its full-export provenance boundary",
+    )
 
 
 def check_safe_dependency_input_boundary() -> None:
@@ -333,6 +349,7 @@ def main() -> int:
     check_exact_receipt_contract()
     check_live_input_surface()
     check_cached_output_rejection()
+    check_tracked_cold_clone_receipt()
     check_receipt_uses_verified_snapshot()
     check_environment_build_is_bounded()
     print("lean dependency index cache: PASS")

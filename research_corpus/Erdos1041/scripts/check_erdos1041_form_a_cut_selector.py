@@ -34,7 +34,7 @@ import sys
 
 import numpy as np
 
-RECEIPT = ("state/formal_math/erdos257_period_noncollapse/"
+RECEIPT = ("source-provenance://private-authoring-project/receipts/"
            "erdos1041_form_a_cut_selector_receipt.json")
 
 
@@ -301,7 +301,7 @@ def main() -> int:
         print(f"[{nm}] {'PASS' if r['ok'] else 'FAIL'}")
     ok = all(r["ok"] for r in out)
     payload = {"kind": "erdos1041_form_a_cut_selector_receipt",
-               "note": "formal_math/erdos257_period_noncollapse/ErdosProblems/"
+               "note": "source-provenance://private-authoring-project/ErdosProblems/"
                        "Erdos1041/FormACutAdjacentSelector.md",
                "ok": ok, "arms": out}
     if not args.no_receipt:

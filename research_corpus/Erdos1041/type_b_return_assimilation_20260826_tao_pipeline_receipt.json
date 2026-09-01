@@ -4,7 +4,7 @@
   "research_actor_mode": "mixed",
   "input_stage": "generation",
   "output_stage": "verification_and_assimilation",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md",
+  "artifact": "research_corpus/Erdos1041/TypeBReturnAssimilation20260826.md",
   "human_understanding_delta": "Separates the valid merge-tree area theorem, arbitrary-modulus root-ray contraction, convex-hull projection, and auxiliary reductions from an invalid claimed full composition. The exact Bergman symbol collision and inequality-direction mismatch are exposed.",
   "verification_state": "ordinary proofs cross-checked; exact finite kernels replayed by check_erdos1041_type_b_return_assimilation.py; no unrestricted theorem claimed",
   "publication_or_review_state": "private authoring assimilation; not externally reviewed",

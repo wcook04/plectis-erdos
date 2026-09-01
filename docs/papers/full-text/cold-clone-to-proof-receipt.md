@@ -8,7 +8,7 @@
 
 </div>
 
-A large formal library can be mechanically exact and still be practically unreadable to the next human or reasoning agent. This paper presents a repository architecture that separates first-contact comprehension from proof checking. At the audited revision, a cold clone exposes a bounded six-line tour, a mathematical map of ten programmes, a reviewed public claim map with five explicit open propositions, and an elaborated loaded-root reference graph joined to source coordinates. These are committed navigation products: they require no Lean build and make omissions and authority boundaries explicit. The inventory behind them spans 1,019 Lean modules and 153,253 declarations; 503 of those modules and 8,171 of those declarations are explicitly marked machine-generated certificate shards, counted as formal source and never as separate mathematical claims. The marked figures are a classification floor, not the generated share: large emitted families predate the markers, so the true machine-generated share is substantially higher.
+A large formal library can be mechanically exact and still be practically unreadable to the next human or reasoning agent. This paper presents a repository architecture that separates first-contact comprehension from proof checking. At the audited revision, a cold clone exposes a public proof cockpit that composes checkout and toolchain identity, corpus scale, exact open propositions, problem obligations, and committed workbench receipts. Beneath that card sit a bounded six-line tour, a mathematical map of ten programmes, a reviewed public claim map with five explicit open propositions, and an elaborated loaded-root reference graph joined to source coordinates. These are committed navigation products: they require no Lean build and make omissions and authority boundaries explicit. The inventory behind them spans 1,019 Lean modules and 153,253 declarations; 503 of those modules and 8,171 of those declarations are explicitly marked machine-generated certificate shards, counted as formal source and never as separate mathematical claims. The marked figures are a classification floor, not the generated share: large emitted families predate the markers, so the true machine-generated share is substantially higher.
 
 Navigation does not receive proof authority. A session notary records an agent’s observations, falsifiable conjectures, abandoned routes, exact Lean probes, and claims. Probe verdicts come from the pinned Lean process and cannot be authored by the agent; claims must cite an accepted probe, and replay reruns the stored bytes. Compilation is similarly separated from orientation. Lake outputs and content traces support focused or changed-cone builds, while an exact cached receipt prevents an unchanged dependency-index check from repeating a full environment export. A dogfood session records six reasoning notes, one accepted probe, and two claims, and its probe replays at the audited revision.
 
@@ -63,7 +63,9 @@ The claim map selects 101 results for public exposition. It records 37 as proved
 
 # A bounded tour over an unbounded drilldown
 
-The first command returns a six-line card rather than a database dump. It derives corpus scale, formal-graph scale and misses, the authority boundary, the eight-problem map, the open frontier, and the available intent classes from the committed projections. The full packet uses a registry-scaled budget: 18 kB of base context plus 2 kB per indexed problem, hence 34 kB for the present eight-problem registry. It expands the card into a mathematical map, status counts, reader-specific contracts, and typed follow-up commands.
+The public entry command is `python3 scripts/proof_cockpit.py`. Its compact card combines the checkout, pinned toolchain, corpus scale, exact open frontier, problem-local obligations, recorded workbench outcomes, and the next typed commands. Every field comes from the public clone. No private task ledger, provider trace, memory, or operator state is required. The cockpit is an observation and routing surface: even its `--check` mode runs public structural checks, not Lean, and cannot promote a navigation result or workbench note into a theorem.
+
+The underlying tour command returns a six-line card rather than a database dump. It derives corpus scale, formal-graph scale and misses, the authority boundary, the eight-problem map, the open frontier, and the available intent classes from the committed projections. The full packet uses a registry-scaled budget: 18 kB of base context plus 2 kB per indexed problem, hence 34 kB for the present eight-problem registry. It expands the card into a mathematical map, status counts, reader-specific contracts, and typed follow-up commands.
 
 Five intent lenses cover the main transitions:
 
@@ -152,7 +154,7 @@ Finally, the first full project build and the first elaborated graph export rema
 
 # Authority-preserving agent entry
 
-An agent-native formal repository should not merely contain many proofs. It should reveal, from a cold clone, what mathematics exists, what each navigation layer knows, what remains open, and which next action crosses into proof authority. The architecture here realises that sequence with committed projections, a bounded intent tour, exact loaded-root dependency data, a session notary, focused builds, and cache-bound validation receipts.
+An agent-native formal repository should not merely contain many proofs. It should reveal, from a cold clone, what mathematics exists, what each navigation layer knows, what remains open, and which next action crosses into proof authority. The architecture here realises that sequence with committed projections, a public proof cockpit, a bounded intent tour, exact loaded-root dependency data, a session notary, focused builds, and cache-bound validation receipts.
 
 The central design choice is separation. Comprehension comes before compilation; nomination comes before application; reasoning notes remain distinct from kernel verdicts; exhaustive routing remains distinct from selective interpretation; and a public claim remains distinct from the formal statement it describes. Those boundaries let a capable agent move quickly without making speed look like authority.
 
@@ -176,11 +178,11 @@ These commands inspect committed projections only:
 
 <div class="routeblock">
 
-python3 scripts/query_corpus.py –tour –format card python3 scripts/query_corpus.py –route agent_native_corpus_navigation python3 scripts/query_corpus.py –search \<ordinary-language-query\> python3 scripts/query_semantic.py inventory \<candidate-name\> –limit 1 python3 scripts/check_cold_clone_comprehension.py –quick
+python3 scripts/proof_cockpit.py –check python3 scripts/query_corpus.py –tour –format card python3 scripts/query_corpus.py –route agent_native_corpus_navigation python3 scripts/query_corpus.py –search \<ordinary-language-query\> python3 scripts/query_semantic.py inventory \<candidate-name\> –limit 1 python3 scripts/check_cold_clone_comprehension.py –quick
 
 </div>
 
-The full tour packet is obtained by omitting the format flag. A declaration name returned by inventory can be expanded into a direct neighbourhood or bounded proof cone.
+The cockpit check validates the public claim registry, cold-clone contract, and generated-orientation freshness; it does not run Lean. The full tour packet is obtained by omitting the format flag. A declaration name returned by inventory can be expanded into a direct neighbourhood or bounded proof cone.
 
 <a id="cross-into-proof-authority."></a>
 

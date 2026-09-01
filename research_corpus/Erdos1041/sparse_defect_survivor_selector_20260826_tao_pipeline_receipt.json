@@ -5,9 +5,9 @@
   "input_stage": "returns 001 and 002 of erdos1041_20260826_return_stream_02 plus source-current LC3, ER4, RIA3, combined-charge, and COVER corpus",
   "output_stage": "verified deletion no-go, strengthened survivor-local selector, and corrected combined-charge evidence boundary",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SparseDefectSurvivorSelector20260826.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SparseDefectSurvivorSelector20260826.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sparse_defect_survivor_selector.py"
+    "research_corpus/Erdos1041/SparseDefectSurvivorSelector20260826.md",
+    "research_corpus/Erdos1041/SparseDefectSurvivorSelector20260826.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_sparse_defect_survivor_selector.py"
   ],
   "human_understanding_delta": "A fixed determinant floor and only one Gram-bad row do not permit deletion before allocation: the actual star family concentrates 1-1/n of ER4 mass on that exceptional root, which is itself the short connector hub. The returned product-age repair can be made survivor-local, and its sharp complement-energy form is exact on the star survivors. A separate returned combined-charge no-go is not accepted because its bundle omits the claimed trace certificate and cites a quartic checker for a different straight-spoke mechanism.",
   "verification_state": "ordinary exact proof plus exact rational checker PASS (10 star degrees and 3104 rational selector rows). The Lean scalar kernels are authored but focused elaboration is pending: lean_fast_build returned the repository's validation_deferred_low_disk receipt with 11102527488 free bytes below the 12884901888 safety floor; this is explicitly not proof evidence and was not bypassed.",

@@ -3,9 +3,9 @@
   "input_stage": "forum_assimilation_and_computation_guided_proof_generation",
   "output_stage": "verified_analytic_proof_and_formal_kernel",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticCoreRadiusCase.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticCoreRadiusCase.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quartic_core_radius_case.py"
+    "research_corpus/Erdos1041/QuarticCoreRadiusCase.md",
+    "research_corpus/Erdos1041/QuarticCoreRadiusCase.lean",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_quartic_core_radius_case.py"
   ],
   "human_understanding_delta": "Pendyala's contained degree-four chord-or-two-radii path can be used as a multiplicative core, not merely as a terminal quartic theorem. Four roots in D(h,R) contribute strictly less than R^4 along a path shorter than 2R; every extra root costs only R+|z_k-h|. This yields the exact all-degree criterion R^4 product_k(R+|z_k-h|)<=1 and the uniform radius threshold rho<2^{-(n-4)/n}. An exact dense quintic with every pair-square above 5/9 demonstrates strict extension beyond the existing close-pair and sparse-coefficient classes.",
   "verification_state": {

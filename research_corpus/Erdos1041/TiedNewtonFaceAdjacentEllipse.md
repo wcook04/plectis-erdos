@@ -164,6 +164,6 @@ motivate the analytic containment theorem but are not promoted to proof.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_adjacent_hub.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_adjacent_hub.py
 ```
 

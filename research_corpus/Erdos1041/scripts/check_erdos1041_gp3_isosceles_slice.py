@@ -19,7 +19,7 @@ isosceles slice of the radial surplus inequality; the off-isosceles coupled
 case, GP3, the selector lemma, and unrestricted Erdos 1041 remain open.
 
 Replay:
-    ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/\
+    ./repo-python source-provenance://private-authoring-project/ErdosProblems/\
 Erdos1041/scripts/check_erdos1041_gp3_isosceles_slice.py
 """
 

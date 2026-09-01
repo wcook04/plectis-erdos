@@ -2117,6 +2117,19 @@ def main() -> int:
           "bounded cold-clone baseline/adversarial check failed: "
           f"{cold_clone_adversarial.stdout.strip() or cold_clone_adversarial.stderr.strip()}")
 
+    proof_cockpit_check = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "test_proof_cockpit.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        proof_cockpit_check.returncode == 0,
+        "cold-clone proof cockpit check failed: "
+        f"{proof_cockpit_check.stdout.strip() or proof_cockpit_check.stderr.strip()}",
+    )
+
     # --- report ---------------------------------------------------------------------
     if ERRORS:
         print(f"check_release: {len(ERRORS)} failure(s) across {CHECKS} checks")

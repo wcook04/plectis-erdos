@@ -9,7 +9,7 @@ Three experiments, measurement grade (float, dense grids, refinement):
   E3  topological co-connectivity: does some component of {|g| <= 1} cap D
       contain two distinct roots (grid contour labelling)?
 
-Run:  ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/probe_erdos1041_concyclic_structure.py
+Run:  python3 research_corpus/Erdos1041/scripts/probe_erdos1041_concyclic_structure.py
 """
 import math
 import numpy as np

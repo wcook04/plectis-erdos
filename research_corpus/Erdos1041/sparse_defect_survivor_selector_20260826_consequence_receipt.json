@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SparseDefectSurvivorSelector20260826.lean",
+    "lean_path": "research_corpus/Erdos1041/SparseDefectSurvivorSelector20260826.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.SparseDefectSurvivorSelector20260826.survivorProductSq_le_pairSq_mul_energyPow",
       "ErdosProblems.Erdos1041.SparseDefectSurvivorSelector20260826.er4_pair_transport",
@@ -38,7 +38,7 @@
     },
     {
       "candidate_id": "semantic_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The packet must retire deletion-only Gram allocation, register the survivor-local theorem and exact star family, preserve the rejected evidence status of return 001, and keep the target claim open.",
       "authority_surface_checked": "landed_formal_source, exact_results, negative_results, combined-charge producer, and claim-ceiling addenda",
@@ -46,7 +46,7 @@
     },
     {
       "candidate_id": "semantic_combined_charge_consumer",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTreeLengthCharge.md",
+      "file": "research_corpus/Erdos1041/CriticalTreeLengthCharge.md",
       "decision": "verified_no_change",
       "mathematical_reason": "Return 001 does not supply the exact inverse-ray trace certificate needed to refute the componentwise combined-charge lemma. Its named quartic checks straight-spoke containment, a different mechanism, so the source-current open status is correct.",
       "authority_surface_checked": "component charge statement, named quartic checker, evidence-bundle inventory, and current open producer",
@@ -54,7 +54,7 @@
     },
     {
       "candidate_id": "semantic_attachment_allocation_consumers",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RootIndexedEntranceAncestry.md",
+      "file": "research_corpus/Erdos1041/RootIndexedEntranceAncestry.md",
       "decision": "verified_no_change",
       "mathematical_reason": "RIA3 already provides the correct survivor-product geometric identity. The new theorem is a downstream same-pair selector and does not change RIA3's statement.",
       "authority_surface_checked": "RIA3 survivor product, ER4 entrance energy, and the new complement-energy theorem",

@@ -13,11 +13,15 @@ from pathlib import Path
 from unittest.mock import patch
 
 from run_publication_mutations import (
+    clone_at_checkpoint,
     parse_check_count,
+    resolve_commit,
     run_mutations,
 )
 import run_publication_mutations as experiment
 import validation_singleflight as singleflight
+
+
 
 
 def require(condition: bool, message: str) -> None:
@@ -26,35 +30,9 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
-def synthetic_manifest(gate_returncode: int, checkpoint: str) -> dict:
-    token = "PUBLICATION_MUTATION_HARNESS_SYNTHETIC_TOKEN"
-    return {
-        "suite_id": "publication-mutation-harness-self-test",
-        "experiment_kind": "deterministic_reconstruction_not_exact_historical_replay",
-        "checkpoint": checkpoint,
-        "historical_evidence": "synthetic_self_test",
-        "default_gate_command": [
-            sys.executable,
-            "-c",
-            f"raise SystemExit({gate_returncode})",
-        ],
-        "operators": [
-            {
-                "id": "T1",
-                "expected_historical_outcome": "escaped",
-                "exact_original_target_registered": False,
-                "operation": {
-                    "kind": "append_text",
-                    "path": "README.md",
-                    "must_be_absent": token,
-                    "text": f"\n{token}\n",
-                },
-            }
-        ],
-    }
+def check_subprocess_isolation() -> None:
+    """The harness must sanitise a hostile environment before it shells out."""
 
-
-def main() -> int:
     hostile = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_NAMESPACE": "refs/namespaces/wrong-mutations",
@@ -108,77 +86,72 @@ def main() -> int:
         "mutation environment contract drifted",
     )
 
-    with tempfile.TemporaryDirectory(prefix="publication-mutation-fixture-") as raw:
-        source = Path(raw) / "source"
-        source.mkdir()
-        (source / "README.md").write_text("fixture\n", encoding="utf-8")
-        experiment.run_checked(["git", "init", "-q"], source)
-        experiment.run_checked(["git", "add", "README.md"], source)
-        experiment.run_checked(
-            [
-                "git",
-                "-c",
-                "user.email=mutation-test@example.invalid",
-                "-c",
-                "user.name=Publication mutation test",
-                "commit",
-                "-qm",
-                "fixture checkpoint",
-            ],
-            source,
-        )
-        checkpoint = experiment.run_checked(
-            ["git", "rev-parse", "HEAD"], source
-        ).stdout.strip()
-        original_root = experiment.ROOT
-        experiment.ROOT = source
-        try:
-            invalid = run_mutations(
-                synthetic_manifest(1, checkpoint),
-                ["T1"],
-                30,
-                "HEAD",
-                checkpoint,
-            )
-            valid = run_mutations(
-                synthetic_manifest(0, checkpoint),
-                ["T1"],
-                30,
-                "HEAD",
-                checkpoint,
-            )
-        finally:
-            experiment.ROOT = original_root
 
-    require(
-        parse_check_count("check_release: all 5,207 checks passed") == 5207,
-        "release check count parser lost comma handling",
-    )
-    require(
-        parse_check_count("failure across 4,920 checks") == 4920,
-        "release failure count parser lost comma handling",
-    )
+def synthetic_manifest(gate_returncode: int, checkpoint: str) -> dict:
+    token = "PUBLICATION_MUTATION_HARNESS_SYNTHETIC_TOKEN"
+    return {
+        "suite_id": "publication-mutation-harness-self-test",
+        "experiment_kind": "deterministic_reconstruction_not_exact_historical_replay",
+        "checkpoint": checkpoint,
+        "historical_evidence": "synthetic_self_test",
+        "default_gate_command": [
+            sys.executable,
+            "-c",
+            f"raise SystemExit({gate_returncode})",
+        ],
+        "operators": [
+            {
+                "id": "T1",
+                "expected_historical_outcome": "escaped",
+                "exact_original_target_registered": False,
+                "operation": {
+                    "kind": "append_text",
+                    "path": "README.md",
+                    "must_be_absent": token,
+                    "text": f"\n{token}\n",
+                },
+            }
+        ],
+    }
 
-    require(invalid["status"] == "invalid_baseline", "red baseline did not abort")
-    require(invalid["baseline"]["status"] == "failed", "red baseline status drifted")
-    require(
-        invalid["summary"]["baseline_valid"] is False,
-        "red baseline was reported as valid",
-    )
-    require(invalid["summary"]["run_count"] == 0, "red baseline ran mutations")
-    require(invalid["results"] == [], "red baseline emitted mutation outcomes")
 
-    require(valid["status"] == "completed", "green baseline did not complete")
-    require(valid["baseline"]["status"] == "passed", "green baseline status drifted")
-    require(
-        valid["summary"]["baseline_valid"] is True,
-        "green baseline was reported as invalid",
+def main() -> int:
+    check_subprocess_isolation()
+    checkpoint = resolve_commit("HEAD")
+    assert parse_check_count("check_release: all 5,207 checks passed") == 5207
+    assert parse_check_count("failure across 4,920 checks") == 4920
+
+    with tempfile.TemporaryDirectory() as directory:
+        shared = clone_at_checkpoint(checkpoint, Path(directory))
+        alternates = shared / ".git" / "objects" / "info" / "alternates"
+        assert alternates.is_file()
+        assert alternates.read_text().strip()
+
+    invalid = run_mutations(
+        synthetic_manifest(1, checkpoint),
+        ["T1"],
+        30,
+        "HEAD",
+        checkpoint,
     )
-    require(valid["summary"]["run_count"] == 1, "green baseline ran wrong mutation count")
-    require(
-        valid["results"][0]["outcome"] == "escaped",
-        "green baseline mutation outcome drifted",
+    assert invalid["status"] == "invalid_baseline"
+    assert invalid["baseline"]["status"] == "failed"
+    assert invalid["summary"]["baseline_valid"] is False
+    assert invalid["summary"]["run_count"] == 0
+    assert invalid["results"] == []
+
+    valid = run_mutations(
+        synthetic_manifest(0, checkpoint),
+        ["T1"],
+        30,
+        "HEAD",
+        checkpoint,
     )
+    assert valid["status"] == "completed"
+    assert valid["baseline"]["status"] == "passed"
+    assert valid["summary"]["baseline_valid"] is True
+    assert valid["summary"]["run_count"] == 1
+    assert valid["results"][0]["outcome"] == "escaped"
 
     print(
         "publication_mutation_harness: red baseline aborts without outcomes; "

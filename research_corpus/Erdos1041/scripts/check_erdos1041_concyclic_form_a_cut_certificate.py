@@ -23,7 +23,7 @@ Writes state/formal_math/probes/erdos1041_concyclic_fac_certificate_receipt.json
 with an aggregate verdict PASS/FAIL.  Nothing here proves Erdos #1041 or its
 concyclic case; see the .md companion for claim boundaries.
 
-Run:  ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py
+Run:  python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py
 """
 import json
 import math

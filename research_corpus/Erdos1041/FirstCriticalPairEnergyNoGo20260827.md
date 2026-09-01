@@ -155,7 +155,7 @@ mechanism (combined charge, COVER, or an exact equivalent). The declared Erdős
 The finite certificate is reproducible from the repository root:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_first_critical_pair_energy_no_go.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_first_critical_pair_energy_no_go.py
 ```
 
 The terminal result is `status=exact_first_critical_pair_energy_no_go_verified`.

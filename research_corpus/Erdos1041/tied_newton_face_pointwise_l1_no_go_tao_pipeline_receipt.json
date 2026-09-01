@@ -2,11 +2,11 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "generation",
   "output_stage": "verification_and_exposition",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFacePointwiseL1NoGo.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFacePointwiseL1NoGo.md",
   "human_understanding_delta": "The strongest pointwise launch conjecture in the fibre-L1 packet is not merely unproved: an exact degree-six fibre with strictly left-half-plane critical values has full inverse-speed L1 larger than the regular baseline. The viable residual must retain component blocks, external factors, weights, or integration.",
   "verification_state": {
     "ordinary_proof": "complete exact factorization, critical-value classification, inverse-speed formula, and rational radical certificate",
-    "exact_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_pointwise_l1_no_go.py",
+    "exact_checker": "research_corpus/Erdos1041/scripts/check_erdos1041_tied_newton_face_pointwise_l1_no_go.py",
     "lean": {
       "module": "ErdosProblems.Erdos1041.TiedNewtonFacePointwiseL1NoGo",
       "status": "focused_build_and_final_serialized_lake_check_passed",

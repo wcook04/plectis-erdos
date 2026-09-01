@@ -22,6 +22,9 @@ import validation_singleflight as singleflight
 LAKE = str(fast.TOOLCHAIN_BIN / "lake")
 
 
+LAKE = str(fast.TOOLCHAIN_BIN / "lake")
+
+
 class LeanFastBuildTests(unittest.TestCase):
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(

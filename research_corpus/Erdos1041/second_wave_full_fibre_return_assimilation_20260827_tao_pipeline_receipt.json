@@ -5,7 +5,7 @@
   "proof_campaign_completion_class": "retrieval_only_invalid_completion",
   "input_stage": "generation",
   "output_stage": "verification_and_canonicalization",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SecondWaveFullFibreReturnAssimilation20260827.md",
+  "artifact": "research_corpus/Erdos1041/SecondWaveFullFibreReturnAssimilation20260827.md",
   "human_understanding_delta": "The return independently rederives the source-current full-fibre two-short-arm theorem and reciprocal resultant identity, but lands no new parent-proof authority. It confirms that the first unsupported edge is constructive attachment: turn a global metric budget and safe root-attached arms into one merging pair without extra length.",
   "verification_state": "claim-by-claim cross-check against source-current corpus authority complete; no new theorem promoted; unrestricted target remains open",
   "publication_or_review_state": "private research assimilation; not externally reviewed",

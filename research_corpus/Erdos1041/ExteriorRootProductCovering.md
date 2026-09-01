@@ -218,8 +218,6 @@ theorem. **Erdős #1041 remains open.**
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_exterior_root_product_covering.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
-  --jobs 2 --project-root formal_math/erdos257_period_noncollapse \
-  ErdosProblems.Erdos1041.ExteriorRootProductCovering
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_exterior_root_product_covering.py
+lake env lean research_corpus/Erdos1041/ExteriorRootProductCovering.lean
 ```

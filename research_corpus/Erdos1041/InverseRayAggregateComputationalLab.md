@@ -72,6 +72,6 @@ one of those one-way outcomes is obtained, Erdős #1041 remains open.
 Replay:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_inverse_ray_aggregate.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_inverse_ray_aggregate.py --check
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_inverse_ray_aggregate.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_inverse_ray_aggregate.py --check
 ```

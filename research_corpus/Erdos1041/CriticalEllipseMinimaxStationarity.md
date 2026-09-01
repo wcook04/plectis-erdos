@@ -218,5 +218,5 @@ polynomial for which the global minimum of the two-arm objective exceeds
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_critical_ellipse_minimax_stationarity.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_critical_ellipse_minimax_stationarity.py
 ```

@@ -21,6 +21,23 @@ import lean_fast_build as fast_build  # noqa: E402
 
 
 class ValidationSingleflightTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self._host_lock_directory = tempfile.TemporaryDirectory()
+        self._host_lock_environment = mock.patch.dict(
+            os.environ,
+            {
+                singleflight.HOST_LOCK_ROOT_ENV: str(
+                    Path(self._host_lock_directory.name) / "not-created-yet"
+                ),
+            },
+            clear=False,
+        )
+        self._host_lock_environment.start()
+
+    def tearDown(self) -> None:
+        self._host_lock_environment.stop()
+        self._host_lock_directory.cleanup()
+
     @staticmethod
     def _safe_spec(command: list[str]) -> dict[str, object]:
         inputs = {
@@ -65,6 +82,22 @@ class ValidationSingleflightTests(unittest.TestCase):
             self.assertEqual(
                 singleflight.default_state_root(), Path("/tmp/public-lean-shared")
             )
+
+    def test_heavy_lean_lock_is_host_wide_not_checkout_scoped(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.dict(
+            os.environ,
+            {
+                "XDG_CACHE_HOME": directory,
+                singleflight.HOST_LOCK_ROOT_ENV: str(Path(directory) / "host-locks"),
+            },
+            clear=False,
+        ):
+            first = singleflight.ensure_state_root(Path(directory) / "clone-a")
+            second = singleflight.ensure_state_root(Path(directory) / "clone-b")
+            first_lock = singleflight.resource_lock_path(first, "lean-host")
+            second_lock = singleflight.resource_lock_path(second, "lean-host")
+        self.assertEqual(first_lock, second_lock)
+        self.assertEqual(first_lock.name, "resource-lean-host.lock")
 
     def test_semantic_repository_fingerprint_has_no_checkout_or_commit_identity(
         self,
@@ -230,6 +263,7 @@ class ValidationSingleflightTests(unittest.TestCase):
             marker = Path(directory) / "first-attempt"
             code = (
                 "import os,pathlib,signal,sys; "
+                f"assert os.environ.get({singleflight.HOST_LOCK_HELD_ENV!r}) == '1'; "
                 f"p=pathlib.Path({str(marker)!r}); "
                 "already=p.exists(); "
                 "p.write_text('partial progress'); "

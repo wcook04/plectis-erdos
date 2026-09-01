@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceHorizontalFibreHubwiseNoGo.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceHorizontalFibreHubwiseNoGo.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceHorizontalFibreHubwiseNoGo.negative_hub_data",
       "ErdosProblems.Erdos1041.TiedNewtonFaceHorizontalFibreHubwiseNoGo.nonreal_critical_value_kernel",
@@ -13,7 +13,7 @@
   "decisions": [
     {
       "candidate_id": "canonical_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The no-go changes the exact result inventory, negative-result inventory, claim ceiling, and the priority-one tied-face producer.",
       "authority_surface_checked": "canonical private research packet",
@@ -45,7 +45,7 @@
     },
     {
       "candidate_id": "constant_perturbation_prior_art_route",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The no-go uses a fixed model polynomial and inverse-fibre geometry, not constant perturbation root continuity.",
       "authority_surface_checked": "source-current prior-art route",
@@ -53,7 +53,7 @@
     },
     {
       "candidate_id": "erdos1041_unrestricted_prior_art_route",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "This private mechanism no-go neither changes the source identity nor the refutation status of the inspected unrestricted drafts.",
       "authority_surface_checked": "source-current prior-art route",

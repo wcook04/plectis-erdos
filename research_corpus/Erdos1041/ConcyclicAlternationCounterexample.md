@@ -83,7 +83,6 @@ inequalities. The companion checker prints the exact rational margins and
 requires all certificates to be positive.
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_alternation_counterexample.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 \
-  ErdosProblems.Erdos1041.ConcyclicAlternationCounterexample
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation_counterexample.py
+lake env lean research_corpus/Erdos1041/ConcyclicAlternationCounterexample.lean
 ```

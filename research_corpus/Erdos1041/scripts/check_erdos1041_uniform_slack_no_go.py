@@ -18,19 +18,19 @@ from system.lib.formal_math_experiment_contract import (
 REPO_ROOT = Path(__file__).resolve().parents[5]
 SOURCE_REF = str(Path(__file__).resolve().relative_to(REPO_ROOT))
 LEAN_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "CassiniTreeBudget.lean"
 )
 LAB_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "UniformSlackNoGoComputationalLab.md"
 )
 PACKET_REF = (
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/"
+    "research_corpus/Erdos1041/"
     "research_packet.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / (
-    "state/formal_math/erdos257_period_noncollapse/"
+    "source-provenance://private-authoring-project/receipts/"
     "erdos1041_uniform_slack_no_go_receipt.json"
 )
 

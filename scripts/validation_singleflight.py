@@ -26,12 +26,14 @@ import sys
 import tempfile
 import time
 from pathlib import Path
-from typing import Any, BinaryIO, Iterable
+from typing import Any, BinaryIO, Iterable, Mapping
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "repository-validation-singleflight/1"
 SINGLEFLIGHT_STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
+HOST_LOCK_ROOT_ENV = "PLECTIS_LEAN_HOST_LOCK_ROOT"
+HOST_LOCK_HELD_ENV = "AIW_PLECTIS_LEAN_HOST_LOCK_HELD"
 ROSTER_VALIDATORS = {
     "toolchain-cache": "lean-toolchain",
     "lean": "scripts/lean_fast_build.py",
@@ -149,6 +151,25 @@ class ValidationError(RuntimeError):
     """A malformed or unsafe single-flight request."""
 
 
+def default_cache_home() -> Path:
+    xdg_cache = os.environ.get("XDG_CACHE_HOME")
+    if xdg_cache:
+        return Path(xdg_cache).expanduser()
+    if sys.platform == "darwin":
+        return Path.home() / "Library" / "Caches"
+    return Path.home() / ".cache"
+
+
+def default_host_lock_root() -> Path:
+    """Return the cross-repository namespace for heavy Lean ownership."""
+
+    override = os.environ.get(HOST_LOCK_ROOT_ENV)
+    if override:
+        candidate = Path(override).expanduser()
+        return candidate if candidate.is_absolute() else Path.cwd() / candidate
+    return default_cache_home() / "plectis-lean" / "host-locks-v1"
+
+
 def default_state_root() -> Path:
     """Return one repository-identity cache shared by equivalent cold clones."""
 
@@ -165,17 +186,18 @@ def default_state_root() -> Path:
             slug = configured.strip()
     except (OSError, json.JSONDecodeError):
         pass
-    xdg_cache = os.environ.get("XDG_CACHE_HOME")
-    if xdg_cache:
-        cache_home = Path(xdg_cache).expanduser()
-    elif sys.platform == "darwin":
-        cache_home = Path.home() / "Library" / "Caches"
-    else:
-        cache_home = Path.home() / ".cache"
-    return cache_home / "plectis-lean" / slug / "validation-singleflight-v1"
+    return default_cache_home() / "plectis-lean" / slug / "validation-singleflight-v1"
 
 
 DEFAULT_STATE_ROOT = default_state_root()
+
+
+def resource_lock_path(state: Mapping[str, Path], resource_group: str) -> Path:
+    """Use one host lock for Lean, while retaining state-local auxiliary locks."""
+
+    if resource_group == "lean-host":
+        return default_host_lock_root() / "resource-lean-host.lock"
+    return safe_child(state["locks"], f"resource-{resource_group}.lock")
 
 
 def utc_now() -> str:
@@ -816,6 +838,8 @@ def validator_spec(
             ROOT / "scripts/query_corpus.py",
             ROOT / "docs/declaration_atlas.json",
             ROOT / "docs/claims.json",
+            ROOT / "docs/lean_dependency_index.json",
+            ROOT / "docs/lean_dependency_index_check.json",
             ROOT / "lean-toolchain",
             ROOT / "lake-manifest.json",
             ROOT / "lakefile.toml",
@@ -1153,12 +1177,15 @@ def worker(state_root: Path, key: str, token: str) -> int:
                 }
             )
             write_receipt(state, key, receipt)
-            resource_lock = open_lock(
-                safe_child(state["locks"], f"resource-{resource_group}.lock")
-            )
+            selected_resource_lock = resource_lock_path(state, resource_group)
+            selected_resource_lock.parent.mkdir(parents=True, exist_ok=True)
+            resource_lock = open_lock(selected_resource_lock)
             assert resource_lock is not None
         receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
         write_receipt(state, key, receipt)
+        child_environment = command_environment()
+        if resource_group == "lean-host":
+            child_environment[HOST_LOCK_HELD_ENV] = "1"
         with open_output_log(stdout_path) as stdout, open_output_log(stderr_path) as stderr:
             attempt = 0
             last_attempt_code = 75
@@ -1173,7 +1200,7 @@ def worker(state_root: Path, key: str, token: str) -> int:
                     # Keep timeout cleanup scoped to the validator child rather
                     # than the detached worker that owns the receipt.
                     start_new_session=True,
-                    env=command_environment(),
+                    env=child_environment,
                 )
                 receipt.update(
                     {

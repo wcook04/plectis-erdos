@@ -478,8 +478,8 @@ on any row measured here. That is why the reduction quantifies over
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py --part all
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_visibility_overlap.py --part all
 ```
 
 Arms: `topology`, `covermu`, `extremal`, `amgm`, `e16`. Receipt:
-`state/formal_math/erdos257_period_noncollapse/erdos1041_visibility_overlap_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_visibility_overlap_receipt.json`.

@@ -2031,12 +2031,66 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
     """
     external = claims["external_verification_packet"]
     comparator = external["comparator"]
-    reconciliation = load("docs/PALOMAR_POLICY_RECONCILIATION.json")
-    qualification = reconciliation["qualification_decision"]
-    requirement_counts: dict[str, int] = {}
-    for row in reconciliation["requirements"]:
-        status = str(row["status"])
-        requirement_counts[status] = requirement_counts.get(status, 0) + 1
+    palomar_owner = "docs/PALOMAR_POLICY_RECONCILIATION.json"
+    if (ROOT / palomar_owner).is_file():
+        reconciliation = load(palomar_owner)
+        qualification = reconciliation["qualification_decision"]
+        requirement_counts: dict[str, int] = {}
+        for row in reconciliation["requirements"]:
+            status = str(row["status"])
+            requirement_counts[status] = requirement_counts.get(status, 0) + 1
+        palomar_read = [
+            "docs/PALOMAR_QUALIFICATION.md",
+            palomar_owner,
+            "docs/PALOMAR_RESULT_SHOWCASE.json",
+        ]
+        palomar_query_steps = [
+            "python3 scripts/check_palomar_qualification.py --json",
+            "python3 scripts/test_palomar_qualification.py",
+        ]
+        palomar_posture = (
+            "repository_local_qualification_projection_not_palomar_"
+            "acceptance_registration_or_publication_authority"
+        )
+        palomar_assurance = {
+            "availability": "available",
+            "decision": qualification["decision"],
+            "reason": qualification["reason"],
+            "readiness_rule": qualification["readiness_rule"],
+            "requirement_status_counts": dict(sorted(requirement_counts.items())),
+            "safe_local_repairs_remaining": qualification[
+                "safe_local_repairs_remaining"
+            ],
+            # This checkout's reconciliation owner may still carry the earlier
+            # key name for the same operator-owned boundary.
+            "operator_only_residuals": qualification.get(
+                "operator_only_residuals",
+                qualification.get("external_follow_on", []),
+            ),
+        }
+    else:
+        palomar_read = []
+        palomar_query_steps = []
+        palomar_posture = (
+            "repository_local_qualification_artifact_availability_boundary_"
+            "not_palomar_acceptance_registration_or_publication_authority"
+        )
+        palomar_assurance = {
+            "availability": "not_present_in_this_commit",
+            "required_owner": palomar_owner,
+            "reason": (
+                "This committed public checkout does not carry the Palomar "
+                "qualification owner packet, so no readiness decision can be "
+                "reported from this commit."
+            ),
+            "safe_local_repairs_remaining": [
+                "Ship and validate the registered Palomar qualification owner "
+                "packet before advertising a readiness decision."
+            ],
+            "operator_only_residuals": [
+                "Palomar submission consent, registration, and publication"
+            ],
+        }
     return [
         {
             "id": "comparator_assurance",
@@ -2067,10 +2121,11 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 comparator["config"],
             ],
             "adjacent_handle_classes": [
+                "artifact",
+                "claim_id",
                 "declaration",
                 "module",
-                "artifact",
-                "route",
+                "source_coordinate",
             ],
             "authority_posture": (
                 "configured_statement_axiom_and_kernel_assurance_not_novelty_"
@@ -2092,7 +2147,8 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
             "id": "palomar_qualification",
             "route_kind": "external_assurance",
             "intent": (
-                "Report local Palomar readiness and external follow-on state."
+                "Inspect the current Palomar qualification decision, exact "
+                "remaining gates, and operator-owned submission boundary."
             ),
             "discovery_terms": [
                 "palomar qualification",
@@ -2100,40 +2156,16 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 "palomar submission",
                 "registry qualification",
             ],
-            "read": [
-                "docs/PALOMAR_QUALIFICATION.md",
-                "docs/PALOMAR_POLICY_RECONCILIATION.json",
-                "docs/PALOMAR_RESULT_SHOWCASE.json",
-            ],
-            "query_steps": [
-                "python3 scripts/check_palomar_qualification.py --json",
-                "python3 scripts/test_palomar_qualification.py",
-            ],
-            "authority_owners": [
-                "docs/PALOMAR_POLICY_RECONCILIATION.json",
-                "docs/PALOMAR_QUALIFICATION.md",
-                "docs/PALOMAR_RESULT_SHOWCASE.json",
-            ],
+            "read": palomar_read,
+            "query_steps": palomar_query_steps,
+            "authority_owners": [palomar_owner],
             "adjacent_handle_classes": [
-                "publication_family",
-                "declaration",
-                "paper_source",
-                "route",
+                "publication_artifact_id",
+                "route_id",
+                "artifact",
             ],
-            "authority_posture": (
-                "repository_local_qualification_projection_not_palomar_"
-                "acceptance_registration_or_publication_authority"
-            ),
-            "assurance": {
-                "decision": qualification["decision"],
-                "reason": qualification["reason"],
-                "readiness_rule": qualification["readiness_rule"],
-                "requirement_status_counts": dict(sorted(requirement_counts.items())),
-                "safe_local_repairs_remaining": qualification[
-                    "safe_local_repairs_remaining"
-                ],
-                "external_follow_on": qualification["external_follow_on"],
-            },
+            "authority_posture": palomar_posture,
+            "assurance": palomar_assurance,
         },
     ]
 
@@ -9945,27 +9977,14 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"programme {route['id']} | {programme['title']} "
                 f"| claims={claims} | open={open_ids}"
             )
-            rows = [
-                _append_route_memory_resumes(card, packet.get("route_memory"))
-            ]
-            signal = programme["mathematical_signal_spine"]
-            signal_rows = [
-                dict(zip(signal["result_fields"], row, strict=True))
-                for row in signal["results"]
-            ]
-            rows.extend(
-                (
-                    f"programme_signal #{row['programme_order']} "
-                    f"| tier={row['tier_id']} | family={row['family_id']} "
-                    f"| source_disposition={row['source_disposition']} "
-                    f"| declaration={row['declaration']}"
-                )
-                for row in signal_rows
-            )
-            return "\n".join(rows)
-        card = (
+        next_step = (
+            route["query_steps"][0]
+            if route.get("query_steps")
+            else "none (owner artifact unavailable in this commit)"
+        )
+        return (
             f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
-            f"| next={route['query_steps'][0]}"
+            f"| next={next_step}"
         )
         if route.get("id") == "agent_native_corpus_navigation":
             rows = [card]

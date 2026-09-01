@@ -15,6 +15,12 @@ Use [docs/AGENT_WORKBENCH.md](docs/AGENT_WORKBENCH.md) for the compact command
 routes and [CONTRIBUTING.md](CONTRIBUTING.md) for contribution mechanics. This
 file remains the deeper authority, mutation, and validation contract.
 
+For a cold-clone status question, continuation, proof-frontier scan, or first
+action, run `python3 scripts/proof_cockpit.py --format card` before opening
+large registries or source trees. Its public-native contract is
+[docs/PROOF_COCKPIT.md](docs/PROOF_COCKPIT.md). The card composes public facts;
+it never imports private workflow state and is not proof authority.
+
 For any reader-facing mathematical Markdown or manuscript edit, load
 [skills/public-mathematical-writing/SKILL.md](skills/public-mathematical-writing/SKILL.md).
 It keeps mathematical truth and evidence upstream of prose and keeps the human
@@ -538,7 +544,9 @@ python3 scripts/lean_fast_build.py --jobs 2
 The wrapper is the public concurrency boundary. Equivalent clean clones share
 one content-keyed validation future in the repository-scoped host cache;
 different Lean targets queue behind one `lean-host` owner instead of writing
-the same machine's build trees concurrently. The detached owner continues if
+the same machine's build trees concurrently. That heavy-owner lock is above
+the repository slug, allowing cooperating public and authoring checkouts to
+join the same pre-launch queue without sharing mutable build trees. The detached owner continues if
 an attached caller exits; externally killed Lean children automatically resume
 from partial output for up to three attempts, with exhaustion classified as
 deferred exit 75 rather than a theorem failure. Completed output is bounded,
@@ -576,6 +584,7 @@ never declaration names or mathematical prose.
 A separate diagnostic checks that a cold clone stays readable:
 
 ```sh
+python3 scripts/test_proof_cockpit.py
 python3 scripts/agent_entry.py --entry "<task>"
 python3 scripts/agent_entry.py --skills
 python3 scripts/test_agent_entry.py

@@ -650,6 +650,6 @@ systolic assertion, `S(f)<=1`, or unrestricted Erdős 1041.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_type_b_return_assimilation.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_type_b_return_assimilation.py
 ./repo-python -m system.lib.formal_math_frontier_integrity --repo-root . --check-currency
 ```

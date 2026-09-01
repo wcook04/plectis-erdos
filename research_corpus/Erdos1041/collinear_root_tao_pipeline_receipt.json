@@ -4,10 +4,10 @@
   "input_stage": "verification",
   "output_stage": "exposition_understanding_and_review",
   "artifact": {
-    "analytic_proof": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.md",
-    "lean_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.lean",
-    "sharp_lean_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
-    "sharp_adapter_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+    "analytic_proof": "research_corpus/Erdos1041/CollinearRootCase.md",
+    "lean_module": "research_corpus/Erdos1041/CollinearRootCase.lean",
+    "sharp_lean_module": "research_corpus/Erdos1041/SharpCollinearAlternation.lean",
+    "sharp_adapter_module": "research_corpus/Erdos1041/SharpCollinearChebyshev.lean",
     "analytic_headline": "The sharp minimum-critical-height problem for monic real-rooted degree n polynomials of root diameter D has value (D/2)^n / (2^(n-1) cos(pi/(2n))^n), attained by the endpoint-normalized scaled Chebyshev polynomial. The minimizing critical gap gives an adjacent chord at the same level. Consequently the Erdős path conclusion holds for collinear roots in the open unit disk, and even in the closed unit disk for n>=3",
     "clean_formal_theorem": "ErdosProblems.Erdos1041.CollinearScaleCriticalFamily.exists_diameter_chord",
     "strict_corollary": "ErdosProblems.Erdos1041.CollinearScaleCriticalFamily.exists_erdos1041_chord",
@@ -25,8 +25,8 @@
   "consequence_decisions": {
     "update_now": [
       "math_consequence_58edeb39711b5321 research_packet.json: add the sharp collinear exact-result row and exact Lean declaration crosswalk",
-      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CollinearRootCase.md: replace pending formal-boundary prose with the verified alternation and comparator boundary",
-      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/collinear_root_tao_pipeline_receipt.json: move verification to exposition/review with exact validation and handoff state"
+      "research_corpus/Erdos1041/CollinearRootCase.md: replace pending formal-boundary prose with the verified alternation and comparator boundary",
+      "research_corpus/Erdos1041/collinear_root_tao_pipeline_receipt.json: move verification to exposition/review with exact validation and handoff state"
     ],
     "verified_no_change": [
       "math_consequence_5a839c10f03fa086 constant_perturbation_roots_unit_disk_v0.json: different perturbative supplier; it does not consume collinear alternation",

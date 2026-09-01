@@ -91,5 +91,5 @@ The parent theorem remains open.
 Replay:
 
 ```text
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_orbit_pointwise_no_go.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_near_fekete_orbit_pointwise_no_go.py
 ```

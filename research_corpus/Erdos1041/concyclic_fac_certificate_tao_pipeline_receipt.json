@@ -2,10 +2,10 @@
   "input_stage": "generation",
   "output_stage": "verification",
   "artifact": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicPotentialBound.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicFormACutCertificate.md",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/probe_erdos1041_concyclic_structure.py",
+    "research_corpus/Erdos1041/ConcyclicPotentialBound.lean",
+    "research_corpus/Erdos1041/ConcyclicFormACutCertificate.md",
+    "research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py",
+    "research_corpus/Erdos1041/scripts/probe_erdos1041_concyclic_structure.py",
     "state/formal_math/probes/erdos1041_concyclic_fac_certificate_receipt.json",
     "state/formal_math/probes/erdos1041_fac_n7_10_rerun_20260825.log"
   ],

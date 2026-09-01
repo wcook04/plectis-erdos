@@ -106,7 +106,7 @@ cover the other sextic faces, and transfer the atlas to actual polynomials.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_companion.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 \
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_sextic_null_branch_companion.py
+./repo-python source-provenance://private-authoring-project/scripts/lean_fast_build.py --jobs 2 \
   ErdosProblems/Erdos1041/SexticNullBranchCompanion.lean
 ```

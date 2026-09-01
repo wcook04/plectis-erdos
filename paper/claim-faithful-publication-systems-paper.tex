@@ -253,6 +253,20 @@ later agent does not have to rediscover them. The final feedback step turns a
 local success or failure into a reusable route, check, or warning when it
 genuinely generalises.
 
+The public \path{scripts/proof_cockpit.py} card gives an agent this separation.
+It reads checkout and toolchain
+identity, corpus scale, registered open propositions, problem obligations, and
+workbench sessions from public files.  It imports no private state and adds no
+evidence layer to Figure~\ref{fig:architecture}.  Its \texttt{--check} mode
+runs the claim-registry, cold-clone, and projection-freshness checks; neither
+mode invokes Lean or decides whether prose follows from a theorem.
+
+Once a person has compared a formal theorem with its public wording, a program
+can preserve the resulting decision about names, files, wording, and limits.
+It cannot decide whether the decision was correct.  The workflow does not
+technically force a second independent mathematician: one maintainer can edit
+the Lean statement, record, and prose together so that every comparison agrees
+with the same mistake.
 \subsection{Skill-addressable job lifecycles}
 \papersectiontarget{systems-job-lifecycle}
 
@@ -1320,12 +1334,32 @@ into accumulated ambiguity.
 \small
 \section{Reproducibility}\label{app:repro}
 
-The public repository is the reproducible object for this paper. A fresh clone
-can inspect the architecture guide, query the paper and problem corpus, build
-the Lean roots, check the Comparator packet, inspect the Palomar qualification
-surface, and run the release checks. The exact commands and current file
-identities live in \path{ARCHITECTURE.md}, \path{docs/publication_contract.json},
-and the generated query routes; volatile counts are intentionally omitted here.
+\paragraph{Public first contact.}
+A fresh public clone can reproduce the control card and structural checks:
+\begin{verbatim}
+python3 scripts/proof_cockpit.py --format card
+python3 scripts/proof_cockpit.py --check
+\end{verbatim}
+The first reads committed public metadata; the second checks the claim
+registry, cold-clone contract, and orientation freshness.  Neither checks a
+proof.  Formal authority begins with the pinned Lean build named by the card.
+
+\paragraph{Dated navigation counts.}
+At the semantic review's snapshot, taken before the eight-problem
+consolidation of 2026-08-02 enlarged the corpus to 153,238 declarations, all
+151,761 then-live declarations were inventoried and routed, and all
+\SemanticAuthoredTheoremLike\ author-written theorem-like
+declarations had an exact node link.  Of those,
+\SemanticAuthoredInterpreted\ (\SemanticAuthoredPercent\%) participated in
+authored mathematical interpretations: \SemanticDirectEvidence\ as exact
+proposition evidence and \SemanticContextual\ as bounded certificate- or
+module-family context.  The remaining \SemanticStructuralOnly\ were linked only
+through exact source-module and normalised-signature families, not authored
+mathematical paraphrases.  Every declaration selected for a public claim had
+an authored route.  The command
+\texttt{python3 scripts/query\_semantic.py coverage} derives these volatile
+navigation counts and checks their references.  They do not measure semantic
+review quality or public-claim completeness.
 
 The worked-example evidence is recorded in
 \path{docs/publication_evidence.json}. The reconstruction file

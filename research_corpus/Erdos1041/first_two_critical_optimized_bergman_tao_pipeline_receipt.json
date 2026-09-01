@@ -4,7 +4,7 @@
   "research_actor_mode": "mixed",
   "input_stage": "generation",
   "output_stage": "verification_and_assimilation",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstTwoCriticalOptimizedBergman.md",
+  "artifact": "research_corpus/Erdos1041/FirstTwoCriticalOptimizedBergman.md",
   "human_understanding_delta": "The returned separated-level theorem is valid but stops at a nonoptimal geometric-mean level. The exact first-merge Bergman cost is strictly decreasing, so pushing the regular level to min(beta_2,1) yields a strictly stronger all-degree sufficient theorem and a smaller tied-level residual.",
   "verification_state": "ordinary analytic proof with Lean-checked scalar sign and budget kernels plus exact symbolic replay; unrestricted target not claimed",
   "publication_or_review_state": "private authoring assimilation; not externally reviewed",

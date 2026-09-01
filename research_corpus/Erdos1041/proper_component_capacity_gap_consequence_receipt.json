@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ProperComponentCapacityGap.lean",
+    "lean_path": "research_corpus/Erdos1041/ProperComponentCapacityGap.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.ProperComponentCapacityGap.exterior_poisson_peak_identity",
       "ErdosProblems.Erdos1041.ProperComponentCapacityGap.exterior_radius_gt_degree_gap",
@@ -37,7 +37,7 @@
     },
     {
       "candidate_id": "math_consequence_2878996e8672bba0",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The strict proper-node deficit is a new exact result and changes the COVER/Bergman residual from an unconstrained capacity coordinate to an explicit threshold-forcing problem plus a terminal-node case.",
       "authority_surface_checked": "exact_results, landed_formal_source, claim-ceiling addenda, and open COVER producer",
@@ -45,7 +45,7 @@
     },
     {
       "candidate_id": "semantic_connected_cluster_bergman_consumer",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConnectedClusterBergman.md",
+      "file": "research_corpus/Erdos1041/ConnectedClusterBergman.md",
       "decision": "update_now",
       "mathematical_reason": "Its exact capacity criterion composes monotonically with the new strict upper bound, yielding Corollary 3 in the new theorem note and the revised packet asks; the original theorem statement remains correct.",
       "authority_surface_checked": "capacity form (3) and ProperComponentCapacityGap Corollary 3",
@@ -53,7 +53,7 @@
     },
     {
       "candidate_id": "semantic_first_merge_cover_consumer",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BergmanGeodesicInvariance.md",
+      "file": "research_corpus/Erdos1041/BergmanGeodesicInvariance.md",
       "decision": "update_now",
       "mathematical_reason": "Its first-merge area criterion consumes the new strict Pólya upper bound directly, yielding Corollary 4 and a sharper Desk 4 residual; the source theorem itself needs no rewrite.",
       "authority_surface_checked": "first-merge geodesic/COVER theorem and ProperComponentCapacityGap Corollary 4",
@@ -61,7 +61,7 @@
     },
     {
       "candidate_id": "math_consequence_4cec9b008b686b12",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "This route concerns root persistence under constant perturbation and has no capacity-gap hypothesis or consumer.",
       "authority_surface_checked": "route theorem manifest",
@@ -69,7 +69,7 @@
     },
     {
       "candidate_id": "math_consequence_eb8a814bbaabdba0_and_ca39aceb0a699802",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The historical route and near-Fekete attribution remain correct. The new theorem changes private current research state, not their source identity or refutation claims.",
       "authority_surface_checked": "prior-art route statement, refutation, and near-Fekete route",

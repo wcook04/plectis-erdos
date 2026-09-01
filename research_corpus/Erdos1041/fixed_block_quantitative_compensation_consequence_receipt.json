@@ -3,8 +3,8 @@
   "problem_id": "erdos_1041",
   "delta_class": "statement_strengthened",
   "progress_anchor": {
-    "ordinary_authority_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md",
-    "formal_kernel_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockCompensation.lean",
+    "ordinary_authority_path": "research_corpus/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md",
+    "formal_kernel_path": "research_corpus/Erdos1041/FixedBlockCompensation.lean",
     "declaration": "ErdosProblems.Erdos1041.moved_sum_le_baseline_add_fixed_slack",
     "exact_delta": "If M and F are the moved and fixed sheets and sum_B L <= C(|M|+|F|)-Delta, then sum_M L <= C|M|+S_F-Delta and min_M L <= C+(S_F-Delta)/|M|, where S_F=C|F|-sum_F L. Thus Delta>S_F is the exact strict-shortening interface. The three-sheet transposition at Delta=0 attains equality.",
     "strongest_verified_authority": "ordinary_exact_mathematics_plus_exact_rational_replay",
@@ -12,13 +12,13 @@
   },
   "decisions": [
     {
-      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md",
+      "surface": "research_corpus/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md",
       "decision": "update_now",
       "mathematical_reason": "The fixed-average-at-least-C criterion is only the zero-slack specialization; the exact quantitative theorem identifies the weaker canonical residual S_F/|M|.",
       "validation_or_reentry": "Exact rational owner checker passed. Re-enter Lean validation when the build firewall reports at least 25 GiB free and no project owner."
     },
     {
-      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "surface": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The open monodromy producer must consume the occupied allocation theorem and launch at the strict-margin-versus-fixed-slack comparison or a direct moved-block bound.",
       "validation_or_reentry": "JSON parse passed; frontier and packet validators must bind the updated digest."
@@ -30,7 +30,7 @@
       "validation_or_reentry": "Regenerate revision 14, run ten-packet attention integrity, rebuild the local folders, and run the fleet validator."
     },
     {
-      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Root.lean",
+      "surface": "source-provenance://private-authoring-project/ErdosProblems/Root.lean",
       "decision": "defer_with_reason",
       "mathematical_reason": "The new formal kernel must not enter the root authority surface before focused elaboration succeeds.",
       "validation_or_reentry": "Remove or keep the import uncommitted until lean_fast_build.py validates ErdosProblems.Erdos1041.FixedBlockCompensation after the low-disk guard clears."
@@ -55,11 +55,11 @@
     }
   ],
   "source_files": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockCompensation.lean",
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md"
+    "research_corpus/Erdos1041/FixedBlockCompensation.lean",
+    "research_corpus/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md"
   ],
   "propagated_surface_files": [
-    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "research_corpus/Erdos1041/research_packet.json",
     "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/source_current_registry.manifest.json",
     "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/build_fleet.py",
     "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_01_cluster_direct_selection.json",

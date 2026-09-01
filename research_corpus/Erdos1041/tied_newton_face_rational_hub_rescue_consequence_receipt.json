@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceRationalHubRescue.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceRationalHubRescue.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceRationalHubRescue.tailU_nonpos",
       "ErdosProblems.Erdos1041.TiedNewtonFaceRationalHubRescue.connector_length_lt_two_mul_radius"
@@ -12,7 +12,7 @@
   "decisions": [
     {
       "candidate_id": "canonical_erdos1041_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The rescue changes the interpretation of the immediately preceding no-go and the next selector target.",
       "validation_or_reentry": "JSON parse, exact checker, Lean replay, frontier audit"

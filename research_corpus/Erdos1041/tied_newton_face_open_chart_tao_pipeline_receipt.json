@@ -2,7 +2,7 @@
   "schema": "tao_pipeline_receipt_v1",
   "input_stage": "returned_exact_adjacent_pair_no_go_with_qualitative_open_chart",
   "output_stage": "quantitative_rational_nonadjacent_open_chart_with_strict_metric_slack",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.md",
+  "artifact": "research_corpus/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.md",
   "human_understanding_delta": "The returned quintic duplicates the already-landed topological adjacency no-go, but its robustness suggestion can be made much sharper. Around Q=-(65/27)z+(100/27)z^2-z^5, the fixed rational hub, cutoff, and conjugate rational directions survive independent perturbations of radius 2/3 in all four real coefficient coordinates. Exact l1 sensitivity leaves all 24 Bernstein controls strictly negative; the largest upper control is -29/1053 and the squared metric margin remains 2/117.",
   "verification_state": "exact symbolic checker PASS; focused serialized Lean build and final authority replay PASS",
   "publication_or_review_state": "private authoring checkpoint; harmonic component count and end classification remain ordinary mathematics",

@@ -606,7 +606,7 @@ it does not reach the near-Fekete shell.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_segment_bound.py --part all --trials 3 --grid 701
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_bergman_segment_bound.py --part all --trials 3 --grid 701
 ```
 
 Arms, each fail-closed:
@@ -624,4 +624,4 @@ Arms, each fail-closed:
 | `THRESH` | the `tanh(1)` / `tanh^2(1/8)` ratio drops below `40`, or the `coth(1)` edge of Theorem E is not exact |
 
 Receipt:
-`state/formal_math/erdos257_period_noncollapse/erdos1041_bergman_segment_bound_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_bergman_segment_bound_receipt.json`.

@@ -115,5 +115,5 @@ Combined charge, COVER, and FP--GM remain independent routes.
 Replay:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_partial_critical_cluster_monodromy.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_partial_critical_cluster_monodromy.py
 ```

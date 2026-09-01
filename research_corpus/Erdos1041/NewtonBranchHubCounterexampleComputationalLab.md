@@ -151,12 +151,12 @@ The exact checker contains the authority-bearing resultant, root-count,
 boundary-isolation, Rouché, and rational distance certificates:
 
 ```bash
-./repo-python formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_newton_branch_hub.py
-./repo-python formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_newton_branch_hub.py --check
+./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_newton_branch_hub.py
+./repo-python source-provenance://private-authoring-project/scripts/check_erdos1041_newton_branch_hub.py --check
 ```
 
 Its canonical output is
-`state/formal_math/erdos257_period_noncollapse/erdos1041_newton_branch_hub_counterexample_receipt.json`.
+`source-provenance://private-authoring-project/receipts/erdos1041_newton_branch_hub_counterexample_receipt.json`.
 
 The exact quintic's critical balance and earlier straight-spoke obstruction are
 Lean-checked in `ErdosProblems.Erdos1041.CriticalTwoRootProximity`. The new

@@ -37,6 +37,27 @@ PROVIDER_ADAPTERS = (
 ADAPTER_BYTE_CEILING = 1_500
 
 
+def query_route(route_id: str) -> dict[str, object]:
+    """Execute one route advertised by the compact cold-clone entry."""
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "query_corpus.py"),
+            "--route",
+            route_id,
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, (
+        f"documented compact-entry route failed: {route_id}: "
+        f"{completed.stderr.strip()}"
+    )
+    return json.loads(completed.stdout)
+
+
 def main() -> int:
     text = COMPACT.read_text(encoding="utf-8")
     encoded = text.encode("utf-8")
@@ -50,6 +71,7 @@ def main() -> int:
         "--route erdos257_half_story",
         "--route browse_claim_status",
         'query_corpus.py --goal-support "<Lean or mathematical goal>"',
+        "proof_cockpit.py --format card",
         'agent_entry.py --entry "<task in ordinary language>"',
         "agent_entry.py --skills",
         "skills/<id>/SKILL.md",
@@ -64,6 +86,28 @@ def main() -> int:
         "Do not absorb the complete deep contract",
     ):
         assert required in text, required
+
+    # Projection-only checks can pass while an advertised route returns
+    # "unknown route id". Exercise the public commands themselves.
+    for route_id, authority_prefix in (
+        (
+            "comparator_assurance",
+            "configured_statement_axiom_and_kernel_assurance",
+        ),
+        (
+            "palomar_qualification",
+            "repository_local_qualification_",
+        ),
+    ):
+        packet = query_route(route_id)
+        assert packet["kind"] == "reading_route", route_id
+        route = packet["route"]
+        assert isinstance(route, dict), route_id
+        assert route["id"] == route_id
+        assert route["route_kind"] == "external_assurance"
+        assert route["authority_owners"]
+        assert route["adjacent_handle_classes"]
+        assert str(packet["authority_posture"]).startswith(authority_prefix)
 
     # Every adapter must name the compact owner, and Claude Code must actually
     # *import* it: `@AGENTS.override.md`, not a mention of it beside an
@@ -153,6 +197,24 @@ def main() -> int:
     assert "current gateway" in retired_paragraph
     assert "default" not in retired_paragraph
     assert "canonical" not in retired_paragraph
+
+    # These are public agent dependencies, not private conveniences. A prior
+    # deep entry referenced the writing skill even though no such file shipped
+    # in a cold clone; keep both native surfaces on disk and executable.
+    assert (ROOT / "skills/public-mathematical-writing/SKILL.md").is_file()
+    cockpit = ROOT / "scripts/proof_cockpit.py"
+    assert cockpit.is_file()
+    completed = subprocess.run(
+        [sys.executable, str(cockpit), "--format", "json"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stderr
+    cockpit_packet = json.loads(completed.stdout)
+    assert cockpit_packet["artifact_role"] == "cold_clone_proof_control_card"
+    assert cockpit_packet["corpus"]["problem_count"] == 8
 
     print(
         "compact agent entry: pass "

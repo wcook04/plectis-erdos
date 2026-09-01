@@ -244,7 +244,16 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # kernel. That reader is the one most likely to have the failure the tool
     # addresses, and every route to it ran through a document they had no
     # reason to open. Six lines, funded with slack rather than to the byte.
-    "README.md": 24_200 + 400 * INDEXED_PROBLEM_COUNT,
+    # 2026-08-31: raised to fund the wider-system map and the author's-state
+    # note, both operator-requested. The README named the front door in one
+    # sentence and nothing else about the estate; a reader had no route to the
+    # website, the videos, or the doctrine without leaving for the site first.
+    # The map sits under the opening routes; the author's note closes the file,
+    # after the licence, as the last thing read. The paragraph that pointed at
+    # the front door was deleted since the map now owns it. The verify command
+    # stays above the first heading, so the positional pin below still holds.
+    # Funded with slack rather than to the byte, per the notes above.
+    "README.md": 27_200 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
@@ -274,7 +283,14 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # instead of `every indexed declaration` — which is the tell that the window,
 # not the ordering, was the binding constraint. A first-contact window that
 # cannot hold a runnable command is mis-sized for what it claims to protect.
-README_FIRST_CONTACT_BUDGET_BYTES = 19_400
+# 2026-08-31: 19_400 -> 21_000, tracking the whole-file raise above. The
+# operator-requested wider-system map sits between the opening and the problem
+# table, which moved every pinned section down by about 1.3 kB; the author's
+# note went to the tail instead, so the window pays only for the map. A
+# first-contact window that cannot hold where the rest of the estate lives is
+# mis-sized for a reader deciding whether to look at all. Funded with slack,
+# and it still fails on a runaway projection.
+README_FIRST_CONTACT_BUDGET_BYTES = 21_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than

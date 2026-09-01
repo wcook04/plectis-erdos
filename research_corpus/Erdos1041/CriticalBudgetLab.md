@@ -51,9 +51,7 @@ and the general root-selection consumer is
 Replay the Lean module from the repository root with:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
-  --jobs 2 --project-root formal_math/erdos257_period_noncollapse \
-  ErdosProblems.Erdos1041.CriticalTwoRootProximity
+lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
 ```
 
 This closes the Euclidean metric subproblem B1. It still does not prove that

@@ -199,5 +199,5 @@ standalone corpus material for absorption by the active proof lane.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_three_exterior_endpoint_and_selector.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_three_exterior_endpoint_and_selector.py
 ```

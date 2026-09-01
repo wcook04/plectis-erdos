@@ -22,7 +22,7 @@ Checks (all must pass, exit 0):
   coarea         L(t) = (1/2pi) int_0^t p(s)/s ds and the alpha = 1/pi
                  integrating-factor identity for P(z) = z^2 - r^2.
 
-Run: ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_global_tree_admissible_product.py
+Run: python3 research_corpus/Erdos1041/scripts/check_erdos1041_global_tree_admissible_product.py
 """
 import cmath
 import itertools

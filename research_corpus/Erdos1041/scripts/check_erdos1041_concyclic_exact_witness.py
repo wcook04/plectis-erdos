@@ -183,7 +183,7 @@ def main() -> int:
         rep["cases"].append(case)
 
     rep["verdict"] = "PASS" if ok else "FAIL"
-    out = Path("state/formal_math/erdos257_period_noncollapse/erdos1041_concyclic_exact_witness.json")
+    out = Path("source-provenance://private-authoring-project/receipts/erdos1041_concyclic_exact_witness.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(rep, indent=2) + "\n")
     print(json.dumps(rep, indent=2))

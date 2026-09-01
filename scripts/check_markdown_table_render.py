@@ -34,6 +34,7 @@ Usage
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -238,6 +239,70 @@ def analyse(header: list[str], body: list[list[str]]) -> dict:
 
 SEVERITY = {"overflow": 3, "too_many_columns": 2, "long_token": 2, "prose_cells": 1}
 
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXACT_COPY_MANIFESTS = (
+    os.path.join(REPO_ROOT, "research_corpus", "Erdos1041", "CORPUS_MANIFEST.json"),
+)
+
+
+def sha256_file(path: str) -> str:
+    digest = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def verified_exact_copy_paths(
+    repo_root: str = REPO_ROOT,
+    manifest_paths: tuple[str, ...] | None = None,
+) -> set[str]:
+    """Return manifest-declared exact copies whose current bytes still match.
+
+    Exact-copy publication and layout repair can conflict: changing a source
+    snapshot merely to improve its rendered table would falsify its provenance.
+    The exception therefore comes from the content-addressed contract, not from
+    a directory-name allowlist. A missing, malformed, non-exact, or digest-stale
+    row receives no exception.
+    """
+    if manifest_paths is None:
+        manifest_paths = EXACT_COPY_MANIFESTS
+    root = os.path.realpath(repo_root)
+    verified: set[str] = set()
+    for manifest_path in manifest_paths:
+        try:
+            with open(manifest_path, "r", encoding="utf-8") as fh:
+                manifest = json.load(fh)
+        except (OSError, json.JSONDecodeError):
+            continue
+        for row in manifest.get("files", []):
+            if row.get("relation") != "exact_copy":
+                continue
+            public_path = row.get("public_path")
+            published_sha256 = row.get("published_sha256")
+            if not isinstance(public_path, str) or not isinstance(published_sha256, str):
+                continue
+            candidate = os.path.realpath(os.path.join(root, public_path))
+            try:
+                if os.path.commonpath((root, candidate)) != root:
+                    continue
+                if sha256_file(candidate) == published_sha256:
+                    verified.add(candidate)
+            except OSError:
+                continue
+    return verified
+
+
+def apply_gate_exemptions(results: list[dict], exact_copies: set[str]) -> None:
+    """Mark overflow findings that cannot be repaired without breaking identity."""
+    for result in results:
+        result["overflow_gate_exempt"] = bool(
+            result["overflow_px"] > 0
+            and os.path.realpath(os.path.abspath(result["path"])) in exact_copies
+        )
+        if result["overflow_gate_exempt"]:
+            result["gate_exemption"] = "manifest_verified_exact_copy"
+
 
 def check_file(path: str) -> list[dict]:
     """Read one candidate without following a symlink or opening a special file."""
@@ -316,6 +381,7 @@ def main() -> int:
     results = []
     for path in walk(args.paths):
         results.extend(check_file(path))
+    apply_gate_exemptions(results, verified_exact_copy_paths())
     results.sort(key=lambda r: (-r["severity"], -r["overflow_px"]))
 
     if args.json:
@@ -323,20 +389,30 @@ def main() -> int:
         print()
     else:
         overflow = [r for r in results if r["overflow_px"] > 0]
+        exempt_overflow = [r for r in overflow if r["overflow_gate_exempt"]]
         print(
             f"{len(results)} table(s) with findings across "
             f"{len({r['path'] for r in results})} file(s); "
-            f"{len(overflow)} overflow the {CONTENT_PX}px column"
+            f"{len(overflow)} overflow the {CONTENT_PX}px column; "
+            f"{len(exempt_overflow)} manifest-verified exact-copy overflow(s) "
+            f"are report-only"
         )
         for r in results[: args.limit]:
             print(f"\n{r['path']}:{r['line']}  ({r['ncols']} cols, {r['nrows']} rows)")
             for kind, msg in r["findings"]:
                 print(f"    [{kind}] {msg}")
+            if r["overflow_gate_exempt"]:
+                print(
+                    "    [gate_exemption] manifest-verified exact copy; changing "
+                    "layout here would break the content-addressed publication contract"
+                )
         if len(results) > args.limit:
             print(f"\n... and {len(results) - args.limit} more")
 
     if args.fail_on == "overflow":
-        return 1 if any(r["overflow_px"] > 0 for r in results) else 0
+        return 1 if any(
+            r["overflow_px"] > 0 and not r["overflow_gate_exempt"] for r in results
+        ) else 0
     if args.fail_on == "any":
         return 1 if results else 0
     return 0

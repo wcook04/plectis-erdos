@@ -4,8 +4,8 @@
   "artifact_id": "partial_critical_cluster_monodromy",
   "date": "2026-08-27",
   "status": "ordinary_exact_conditional_theorem_with_pinned_candidate_evidence",
-  "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialCriticalClusterMonodromyLab.md",
-  "checker_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_partial_critical_cluster_monodromy.py",
+  "source_path": "research_corpus/Erdos1041/PartialCriticalClusterMonodromyLab.md",
+  "checker_path": "research_corpus/Erdos1041/scripts/check_erdos1041_partial_critical_cluster_monodromy.py",
   "result": {
     "proved": "A Jordan contour enclosing exactly a connected edge subtree of the ray-separated sheet tree acts as one full cycle on that subtree's incident sheet block and fixes the complement. A moved-block average complete-lift bound at most two then solves the target conditionally by the fixed-block theorem.",
     "candidate_evidence": "Pinned degree-6 and degree-9 near-Fekete witnesses admit circles wholly inside the unit value disk enclosing exactly their two and three admissible critical values. Numerical continuation gives moved cycles of sizes three and four with means about 1.84327 and 1.63875, while the largest individual lift exceeds two in both rows.",
@@ -15,6 +15,6 @@
     "surviving_frontier": "Bound or interval-certify the partial-cluster moved-block average, then connect failure to a complementary Bergman merge-node certificate."
   },
   "validation_commands": [
-    "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_partial_critical_cluster_monodromy.py"
+    "python3 research_corpus/Erdos1041/scripts/check_erdos1041_partial_critical_cluster_monodromy.py"
   ]
 }

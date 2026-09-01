@@ -50,7 +50,7 @@ Arms, each fail-closed
 
 Replay:
 
-    ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/\\
+    ./repo-python source-provenance://private-authoring-project/ErdosProblems/\\
 Erdos1041/scripts/check_erdos1041_bergman_segment_bound.py --part all \\
         --trials 3 --grid 701
 """

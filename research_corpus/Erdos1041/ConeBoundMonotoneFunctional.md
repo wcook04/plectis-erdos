@@ -608,5 +608,5 @@ should precede any claim that it is new.
 ## Replay
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cone_bound_all_degrees.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_cone_bound_all_degrees.py
 ```

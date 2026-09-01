@@ -31,9 +31,7 @@ and the general logarithmic-balance theorem is
 Replay the complete Lean module from the repository root with:
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
-  --jobs 2 --project-root formal_math/erdos257_period_noncollapse \
-  ErdosProblems.Erdos1041.CriticalTwoRootProximity
+lake env lean research_corpus/Erdos1041/CriticalTwoRootProximity.lean
 ```
 
 Those declarations establish a Euclidean budget for a nearest pair selected by

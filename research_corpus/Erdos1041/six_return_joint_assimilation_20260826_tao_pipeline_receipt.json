@@ -4,7 +4,7 @@
   "research_actor_mode": "mixed",
   "input_stage": "generation",
   "output_stage": "verification_and_assimilation",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SixReturnJointAssimilation20260826.md",
+  "artifact": "research_corpus/Erdos1041/SixReturnJointAssimilation20260826.md",
   "human_understanding_delta": "Six returns which appeared to end at different residuals share one allocation failure: a global scalar or full-fibre budget has not been placed on one attachment-compatible pair in one safe component. The local assimilation also retains a positive full-energy excess on every nontrivial merge node and the singleton component contribution in the lifetime integral, while removing one unnecessary power of the spectral ceiling from the dimension-free Gram estimate.",
   "verification_state": "ordinary analytic proofs with Lean-checked scalar fan-in, exact symbolic derivative and integral replay, exact rational cubic certificate, and deterministic finite regressions; unrestricted target not claimed",
   "publication_or_review_state": "private authoring assimilation; not externally reviewed",

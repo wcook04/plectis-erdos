@@ -166,12 +166,45 @@ a two-root component area bound `Area(U) <= A* pi t^{2/5}` with
 decisive band `beta_1/t >= 0.99`.  The Grönwall identity above is the natural
 route (extend to proper components via the exterior Blaschke factor).
 
+## ADDENDUM (2026-08-29, same day, solve session): (SPOKE-5) fails in the
+## rotated-gon pocket; the certificate target redirects to (CUT-5)
+
+The recommendation above is superseded in one respect.  At the exact
+on-circle configuration `a_k = exp(i(2 pi k/5 + delta_k))`,
+`delta = (0.0689, 0.06052, 0.0681, 0.06473, 0.06125)` (exact rationals),
+the 35-dps adjudication in `TwoTierStraightStarSelectorLab.md` (checker
+instrument 5b) gives: two critical points admissible
+(`|f(c)| = 0.999882188, 0.999886801`), and the MINIMUM over admissible hubs
+and all root pairs with `|c-a|+|c-b| <= 2` of `sup |f|` on the two straight
+segments is `1.000085364` — every critical-hub straight star escapes.  So
+(SPOKE-5) AS STATED IS VIOLATED at degree 5 as well (evidence class:
+high-precision numerics on exact rational input; not an interval
+certificate); the adversarial pin quoted above (`0.9999997708`) searched
+the beta-chart around `z^5 - 1` and did not reach this pocket.  The same
+configuration IS closed by the Form A-cut (`sup |f| = 0.999886911` at pair
+`(2,4)`, truncations `0.35`), by a free-hub star (`sup = 0.9999668` at
+`h = 0.95 c`), and by descent arms (`min_c L(c) = 1.7885`).  The
+recommended finite-certificate targets for closing degree 5 are, in order
+(third adversarial round, same session: radial-truncation cuts ALSO fail at
+two deeper gon-limit corners, `sup |f| = 1.0000067/1.0000084`, while
+descent arms close with `min_c L(c) = 1.8307/1.8334` and free-hub stars
+close thinly): (i) the DESCENT-ARM bound `min_c L(c) <= 2` — the canonical
+FRONTIER carrier, with the biggest measured margins in the pocket — and the
+free-hub two-segment family (`TwoSegmentContainmentReduction.md`);
+(ii) (CUT-5), the Form A-cut family of `TruncatedSpokeReduction.md`
+(length-free, parent-wired, atlas-aligned) on the bulk, carried at real
+scale by the exact remainder budget (`FormACutQuantitativeExpansion.md`
+(S)), not by model margins alone.  Lemma S5, the Grönwall identity, and
+the coverage machinery above are unaffected.
+
 ## Claim boundary
 
 Lemma S5 and the Grönwall identity: proved (with the stated grid-vs-interval
 caveat on S5's corner analysis).  Coverage fractions, residual geometry,
 `(SPOKE-5)` pins: computational (calibrated instrument; three digit-for-digit
-corpus cross-checks recorded in the session).  Degree 5 remains OPEN; nothing
-here is a parent proof.  The degree-5 argmin-arm refutation upgrade extracted
-from the same session is landed separately in
+corpus cross-checks recorded in the session).  `(SPOKE-5)` itself is
+VIOLATED at an explicit on-circle pocket configuration — see the addendum
+above; the degree-5 certificate target is now (CUT-5).  Degree 5 remains
+OPEN; nothing here is a parent proof.  The degree-5 argmin-arm refutation
+upgrade extracted from the same session is landed separately in
 `MinimalHubArmBudgetRefutation.md` Addendum 2.

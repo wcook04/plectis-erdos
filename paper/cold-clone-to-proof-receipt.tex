@@ -39,24 +39,30 @@
 \title{From a Cold Clone to a Proof Receipt}
 \subtitle{Agent-native navigation and incremental validation for a large Lean development}
 \author{Will Cook}
-\date{July 2026}
+\date{August 2026}
 
 \begin{document}
 \maketitle
 \paperprovenance
 
 \begin{abstract}
-A large formal library can be mechanically exact and still be difficult to
-enter. This paper describes a repository architecture that separates
-first-contact comprehension from proof checking. At the audited revision, a
-cold clone exposes a six-line tour, a map of ten mathematical programmes, five
-explicit open propositions, reviewed public claims, and an elaborated
-reference graph joined to source coordinates. These committed projections
-require no Lean build and state both their omissions and their authority
-boundaries. The underlying inventory contains 1,019 Lean modules and 153,253
-declarations. At least 503 modules and 8,171 declarations are generated
-certificate shards; they count as formal source, not as separate mathematical
-claims.
+A large formal library can be mechanically exact and still be practically
+unreadable to the next human or reasoning agent. This paper presents a
+repository architecture that separates first-contact comprehension from proof
+checking. At the audited revision, a cold clone exposes a public proof cockpit
+that composes checkout and toolchain identity, corpus scale, exact open
+propositions, problem obligations, and committed workbench receipts. Beneath
+that card sit a bounded six-line tour, a mathematical map of ten programmes, a
+reviewed public claim map with five explicit open propositions, and an
+elaborated loaded-root reference graph joined to source coordinates. These are
+committed navigation products: they require no Lean build and make omissions
+and authority boundaries explicit.
+The inventory behind them spans 1,019 Lean modules and 153,253 declarations;
+503 of those modules and 8,171 of those declarations are explicitly marked
+machine-generated certificate shards, counted as formal source and never as
+separate mathematical claims.  The marked figures are a classification
+floor, not the generated share: large emitted families predate the markers,
+so the true machine-generated share is substantially higher.
 
 Navigation does not receive proof authority. A session notary records an
 agent's observations, falsifiable conjectures, abandoned routes, exact Lean
@@ -229,7 +235,17 @@ not outputs inferred by the proof kernel.
 
 \section{A short tour with exact follow-up queries}\label{sec:tour}
 
-The first command returns a six-line card rather than a database dump. It
+The public entry command is
+\texttt{python3 scripts/proof\_cockpit.py}.  Its compact card combines the
+checkout, pinned toolchain, corpus scale, exact open frontier, problem-local
+obligations, recorded workbench outcomes, and the next typed commands.  Every
+field comes from the public clone.  No private task ledger, provider trace,
+memory, or operator state is required.  The cockpit is an observation and
+routing surface: even its \texttt{--check} mode runs public structural checks,
+not Lean, and cannot promote a navigation result or workbench note into a
+theorem.
+
+The underlying tour command returns a six-line card rather than a database dump. It
 derives corpus scale, formal-graph scale and misses, the authority boundary,
 the eight-problem map, the open frontier, and the available intent classes from the committed
 projections. The full packet uses a registry-scaled budget: 18\,kB of base
@@ -531,8 +547,9 @@ An agent-native formal repository needs to reveal, from a cold clone, what
 mathematics exists, what each navigation
 layer knows, what remains open, and which next action crosses into proof
 authority. The architecture here realises that sequence with committed
-projections, a bounded intent tour, exact loaded-root dependency data, a
-session notary, focused builds, and cache-bound validation receipts.
+projections, a public proof cockpit, a bounded intent tour, exact loaded-root
+dependency data, a session notary, focused builds, and cache-bound validation
+receipts.
 
 The central design choice is separation. Comprehension comes before
 compilation; nomination comes before application; reasoning notes remain
@@ -551,15 +568,17 @@ bounded tasks.
 \paragraph{1. Orient without compiling Lean.}
 These commands inspect committed projections only:
 \begin{routeblock}
+python3 scripts/proof_cockpit.py --check
 python3 scripts/query_corpus.py --tour --format card
 python3 scripts/query_corpus.py --route agent_native_corpus_navigation
 python3 scripts/query_corpus.py --search <ordinary-language-query>
 python3 scripts/query_semantic.py inventory <candidate-name> --limit 1
 python3 scripts/check_cold_clone_comprehension.py --quick
 \end{routeblock}
-The full tour packet is obtained by omitting the format flag. A declaration
-name returned by inventory can be expanded into a direct neighbourhood or
-bounded proof cone.
+The cockpit check validates the public claim registry, cold-clone contract, and
+generated-orientation freshness; it does not run Lean.  The full tour packet is
+obtained by omitting the format flag. A declaration name returned by inventory
+can be expanded into a direct neighbourhood or bounded proof cone.
 
 \paragraph{2. Check a proof.}
 Beginning formal work enters the notary and then the focused builder:

@@ -105,7 +105,7 @@ consumers.
 ## 4. Replay and claim boundary
 
 ```sh
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_adaptive_cluster_selection.py
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_adaptive_cluster_selection.py
 ```
 
 Theorem 1 is ordinary exact complex analysis. The sweep uses IEEE-754 root

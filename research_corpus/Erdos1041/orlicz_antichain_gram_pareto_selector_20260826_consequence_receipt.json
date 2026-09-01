@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OrliczAntichainGramParetoSelector20260826.lean",
+    "lean_path": "research_corpus/Erdos1041/OrliczAntichainGramParetoSelector20260826.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.OrliczAntichainGramParetoSelector20260826.two_survive_exact_union_count",
       "ErdosProblems.Erdos1041.OrliczAntichainGramParetoSelector20260826.sharpPair_product_transport",
@@ -29,7 +29,7 @@
     },
     {
       "candidate_id": "semantic_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The packet must register the overlap-sensitive Pareto strengthening, the abstract scope of the four-leaf no-go, and the unchanged complete-consumer residual.",
       "authority_surface_checked": "exact results, negative results, landed source, claim ceiling, and open producers",
@@ -37,7 +37,7 @@
     },
     {
       "candidate_id": "semantic_sparse_defect_selector",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SparseDefectSurvivorSelector20260826.md",
+      "file": "research_corpus/Erdos1041/SparseDefectSurvivorSelector20260826.md",
       "decision": "verified_no_change",
       "mathematical_reason": "Its survivor-local pair-product theorem is reused unchanged and its exceptional-root no-go prevents Gram-good selection from becoming a universal deletion rule.",
       "authority_surface_checked": "Theorem A, star family, and exceptional-or-regular boundary",
@@ -45,7 +45,7 @@
     },
     {
       "candidate_id": "semantic_root_centered_bergman",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RootCentredBergman.md",
+      "file": "research_corpus/Erdos1041/RootCentredBergman.md",
       "decision": "verified_no_change",
       "mathematical_reason": "Conformal-radius monotonicity gives a lower Green-product bound from youth, whereas this consumer requires an upper bound; the new selector does not discharge it.",
       "authority_surface_checked": "root-centred conformal radius and Green-product hypothesis",
@@ -53,7 +53,7 @@
     },
     {
       "candidate_id": "semantic_combined_charge_and_cover",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json::open_producers",
+      "file": "research_corpus/Erdos1041/research_packet.json::open_producers",
       "decision": "verified_no_change",
       "mathematical_reason": "Neither component trace control nor the universal intrinsic one-root cover follows from the selected pair tuple.",
       "authority_surface_checked": "combined-charge and COVER producer statements",

@@ -7,7 +7,7 @@
   "proof_campaign_completion_class": "residual_only_invalid_completion",
   "input_stage": "generation",
   "output_stage": "verification_exposition_and_canonicalization",
-  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md",
+  "artifact": "research_corpus/Erdos1041/TypeBReturnAssimilation20260826.md",
   "human_understanding_delta": "The all-critical arc-product conjecture has a clean discriminant form, but it does not select an admissible short edge. An exact scalar countermodel blocks the advertised inference. The corrected target-deciding statement is the admissible subproduct inequality, or equivalently the global conjecture plus an explicit lower compensation factor over inadmissible critical points.",
   "verification_state": "ordinary exact algebraic proof; resultant normalization, radical-free scalar countermodel, and compensation kernel replay in exact rational arithmetic",
   "publication_or_review_state": "private authoring corpus; not externally reviewed",

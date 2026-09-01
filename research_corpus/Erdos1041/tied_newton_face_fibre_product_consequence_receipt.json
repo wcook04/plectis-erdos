@@ -1,7 +1,7 @@
 {
   "schema": "mathematical_consequence_decisions_v1",
   "progress_anchor": {
-    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceFibreProduct.lean",
+    "lean_path": "research_corpus/Erdos1041/TiedNewtonFaceFibreProduct.lean",
     "declarations": [
       "ErdosProblems.Erdos1041.TiedNewtonFaceFibreProduct.normSq_real_sub_ge",
       "ErdosProblems.Erdos1041.TiedNewtonFaceFibreProduct.prod_factorSq_le_one",
@@ -13,7 +13,7 @@
   "decisions": [
     {
       "candidate_id": "canonical_erdos1041_research_packet",
-      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "file": "research_corpus/Erdos1041/research_packet.json",
       "decision": "update_now",
       "mathematical_reason": "The product/moment theorem is a new exact result and changes the fibre route without reviving the false LF producer.",
       "authority_surface_checked": "canonical private research packet",
@@ -29,7 +29,7 @@
     },
     {
       "candidate_id": "three_prior_art_routes",
-      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/{constant_perturbation_roots_unit_disk_v0,erdos1041_lemniscate_short_path_v0,erdos1041_near_fekete_transverse_closure_v0}.json",
+      "file": "source-provenance://private-authoring-project/prior_art_routes/{constant_perturbation_roots_unit_disk_v0,erdos1041_lemniscate_short_path_v0,erdos1041_near_fekete_transverse_closure_v0}.json",
       "decision": "verified_no_change",
       "mathematical_reason": "The algebraic fibre identity changes neither source identity, root-continuity prior art, nor the pinned transverse finite-transfer theorem.",
       "authority_surface_checked": "all three displayed source-current routes",

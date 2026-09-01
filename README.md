@@ -1,327 +1,500 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis Lean: eight open Erdős problems
+# Plectis: a public frontier across eight open Erdős problems
 
-This repository studies Erdős Problems 68, 243, 249, 251, 257, 269, 1041,
-and 1049 in Lean. It contains formalised theorems from the literature, new
-checked reductions and obstructions, finite certificates, countermodels, and
-eight problem-specific mathematical papers.
+Plectis is an AI-assisted mathematical research system. Its public
+proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
+It contains exact reductions, model families, theorems,
+countermodels, method boundaries, and certificates. **It does not solve them. All eight problems remain open.**
+Each programme states what is checked and what still blocks the question.
 
-**All eight problems remain open.** A formal reduction is not a solution, and
-a large finite computation does not change an infinite quantifier.
-
-For a command-free human first read, begin with
-[A reader's way in](HUMAN_ENTRY.md).
-
-## The experiment
-
-This repository is also an open experiment in agent-assisted mathematics. The
-aim is to let independent people and their agents work on genuinely hard open
-problems without losing the context, failed attempts, evidence, or credit when
-their work comes back.
-
-It was built initially by one undergraduate, without a lab, an institutional
-research team, or a dedicated compute allocation. The point of publishing the
-infrastructure is that nobody else should have to rebuild that fixed layer
-before they can add mathematics, compute, criticism, or a better tool.
-The companion paper,
-[From Spare Compute to Cumulative Mathematics](open-source-mathematics-strategy.pdf),
-sets out the production model, contribution protocol, attention funnel,
-precedents, credit policy, security boundary, and evaluation plan.
-
-- **Mathematicians** can inspect the exact [open questions and surviving
-  boundaries](docs/RESULTS.md), choose one, and contribute an argument,
-  reduction, correction, or counterexample.
-- **Lean users** can formalise a missing step, repair a statement, or check
-  whether the formal and informal claims agree.
-- **Compute hobbyists and agent builders** can clone the repository, point a
-  local coding agent at the agent entry file, and run a bounded route exposed
-  by the mathematicians and formal corpus. The agent can read the relevant
-  papers, query the corpus, run experiments, attempt Lean steps, and package
-  whatever it finds.
-- **Infrastructure contributors** can improve the agent workflow, navigation,
-  tests, reproducibility, governance, or contributor experience. An idea is
-  welcome even before it has an implementation.
-
-No agent needs access to a private workbench. The public clone contains the
-papers, formal source, problem graph, claim boundaries, checks, and return
-tools. A useful return does not have to solve a problem: a reproducible failed
-route, finite calculation, obstruction, correction, or better research tool
-can prevent the next contributor from starting again.
-
-The roles are deliberately different. Mathematicians and formalisation
-contributors design or review meaningful routes. Compute contributors run
-those routes and return candidate evidence; they are not asked to decide that
-an agent has proved an Erdős problem. Lean can check that source proves the
-formal statement written in it, but it cannot by itself establish that the
-statement has the intended meaning, is novel, or settles the original
-problem. Those questions require scarce human review and, eventually, the
-appropriate external mathematical community.
-
-This is a working proof of concept, not a finished contributor platform. As of
-31 August 2026, no external user had completed the documented cold-clone path
-or contributed an accepted change. Finding broken instructions, reducing setup
-friction, testing the skills in another agent harness, and improving the pull-
-request experience are therefore useful architecture contributions in their
-own right.
+**Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
+then inspect one proof handle. No Lean build is needed for the first check:
 
 ```bash
-git clone https://github.com/wcook04/plectis-lean-erdos249-257.git
-cd plectis-lean-erdos249-257
+python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-Then give any local coding agent one of these jobs:
+The command prints the statement, re-resolves its declaration, names any
+Comparator interface and paper, shows the release receipts, and states where
+the claim stops. Most claims intentionally have no Comparator interface.
+`--verify-all` checks all 103 claims and 335 declarations in about a fifth of a
+second. [Read or run it](#read-or-run-it) lists the routes that do need Lean.
 
-The agent does not need to guess which workflow file matches the job. The
-clone-local entry router turns ordinary language into a bounded lane, minimum
-read set, and purpose-bearing skill recommendation:
+[RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
+→ [prior art and attribution](docs/PRIOR_ART.md)
+→ [architecture and repository guide](ARCHITECTURE.md) ·
+[printable PDF](claim-faithful-publication-systems-paper.pdf).
+It assumes no Lean or project history. The
+[agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
+cold-clone route and the recorded workbench session.
 
-```bash
-python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
-python3 scripts/agent_entry.py --skills
-```
+The repository began with #249 and #257 and keeps that name so old citations
+continue to resolve. Those are reviewed headline programmes, not the whole
+corpus.
 
-- **Explain it:** “Read `AGENTS.override.md` and use
-  `skills/explain-public-system/SKILL.md` to explain this project to a
-  mathematician, a compute contributor, or a complete newcomer.”
-- **Run sustained research:** “Use
-  `skills/run-coupled-research-goals/SKILL.md` to coordinate one discovery
-  goal and one corpus-stewardship goal over a bounded frontier.”
-- **Mine a route:** “Use `skills/mine-open-problem/SKILL.md`. Choose the
-  bounded problem route that best matches the available tools, use subagents
-  where their work can be checked independently, and return the smallest
-  evidence-bearing result.”
-- **Propagate a result:** “Use
-  `skills/propagate-research-consequences/SKILL.md` after a stable theorem,
-  no-go, computation, correction, or infrastructure change. Check every
-  plausible mathematical and repository consumer before packaging it.”
-- **Improve the machinery:** “Read the architecture contribution path, find
-  one reproducible bottleneck in the cold-clone workflow, and propose or
-  implement a focused repair with credit.”
-- **Audit the prototype:** “Begin as if this were a genuinely cold clone. Note
-  every missing dependency, unclear instruction, stale link, unsafe default,
-  or needless step. Fix one coherent failure and use
-  `skills/submit-pull-request/SKILL.md` to prepare the return.”
-- **Add a problem:** “Use `skills/add-open-problem/SKILL.md` to prepare a
-  sourced proposal, incubating formal lane, or fully indexed problem world.”
+**AI assistance and responsibility.** Large-language-model agents drafted and
+revised prose, Lean proofs, and repository software. Will Cook set the
+objectives, selected and reviewed the public claims and the cited sources, and
+is responsible for the release; the tools are not authors. The pinned Lean
+kernel checks the exact formal propositions. It does not establish that a
+proposition expresses the intended mathematics, that a result is new, or that it
+matters: those remain authored judgements, and the papers state them per result.
 
-The more general mining prompt is:
+Routes: [mathematics](docs/RESULTS.md) · [verification](docs/EXTERNAL_VERIFICATION.md)
+· [systems](ARCHITECTURE.md) · `query_corpus.py --overview` / `--papers`.
 
-> Read `AGENTS.override.md`. Inspect the eight problem frontiers and their
-> papers. Choose one bounded published route that matches the tools available
-> here, work until its recorded stop condition, validate the result, and
-> prepare a candidate return with exact evidence, limitations, and credit. Do
-> not promote the claim beyond the evidence class that was actually checked.
 
-The skills work directly from the clone. To make them available in other
-working directories, preview and then apply the optional installer:
+## The wider system, briefly
 
-```bash
-python3 scripts/install_agent_skills.py --list
-python3 scripts/install_agent_skills.py --target codex
-python3 scripts/install_agent_skills.py --target codex --apply
-```
+This repository is one output of a larger private system I built and direct
+alone. The public pieces, in the order a person meets them:
 
-Replace `codex` by `claude`, or provide `--target-dir` for another
-directory-based harness. Installation changes instructions, not proof status;
-the repository remains the evidence source.
+- [Plectis](https://github.com/wcook04/plectis): the runnable slice of that
+  system, components you clone and run locally, each with one claim and one
+  check.
+- [The website](https://wcook04.github.io/plectis/): the human wrapper. Tools
+  like Claude Code are an agent's wrapper around a repository; the website is
+  the same thing for a person, the substrate of these repositories made
+  interpretable: the papers, the eight problems as readable pages, the
+  component map, and an AI review packet.
+- The videos, which show the private frontend on screen:
+  [1 minute](https://youtu.be/R_--vExxWyk),
+  [5 minutes](https://youtu.be/VoWByIOIuBE),
+  [29 minutes](https://youtu.be/jA_xC8gmdSs). No repository checks run in them.
+- [The doctrine](https://wcook04.github.io/plectis/docs/doctrine.html): the
+  written rules the building agents read before they work.
 
-For an infrastructure idea, use the
-[architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml).
-For mathematical progress without a finished patch, use the
-[research-progress form](.github/ISSUE_TEMPLATE/research_progress.yml).
-An agent preparing a patch should use the
-[submit-pull-request skill](skills/submit-pull-request/SKILL.md); pushing the
-branch and opening the pull request happen only when the contributor asks.
-Accepted work is recorded against exact public files, evidence, starting and
-accepted commits, and requested contribution roles. That record is used to
-generate the public contribution and recognition views; it does not turn
-activity into a score or acceptance into a mathematical claim.
+This Lean repository is the showcase: what the internal system produces when it
+is pointed at something deliberately hard. The system is not restricted to
+mathematics; the same machinery runs research, forecasting, and
+agent-reliability work. The aspiration is a full research lab with its own
+frontend in a year or two, with support. An agent landing here cold should
+read [AGENTS.override.md](AGENTS.override.md) first; a person should start with
+the mathematics below.
 
-If a candidate survives replay, adversarial checking, statement reconciliation,
-and human triage, a mature Lean result can be packaged through Comparator and
-submitted to [Palomar](https://palomar-registry.org/), while a mathematical
-account can be taken to the [Erdős Problems](https://www.erdosproblems.com/)
-community and the relevant research audience. Palomar provides a durable
-formal record and automated checks, not human peer review or endorsement.
-This repository can prepare evidence for those external routes; it cannot
-declare community acceptance for itself.
+## Problem papers
 
-## Start here
+[`docs/papers/corpus.json`](docs/papers/corpus.json) indexes them by machine.
 
-If you are arriving as a reader, begin with
-[A reader's way in](HUMAN_ENTRY.md). It explains what the project is trying
-to do, what the formal work can and cannot tell you, and how to choose a
-mathematical thread without first learning the repository's internal
-machinery.
+| Problem | Mathematical statement |
+|---|---|
+| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? |
+| **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? |
+| **#249** | Is `∑ φ(n)/2ⁿ` irrational? |
+| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? |
+| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? |
+| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? |
+| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? |
+| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? |
 
-The [results and open boundaries](docs/RESULTS.md) give a fuller mathematical
-account. The papers below are the main reading objects, and the
-[scope](SCOPE.md) and [prior-art guide](docs/PRIOR_ART.md) explain the limits
-and attribution around them. Readers who want to trace a claim into Lean can
-use the [source map](docs/SOURCE_MAP.md) and
-[verification dossier](docs/EXTERNAL_VERIFICATION.md).
+This table is the blank-slate agent and reader inventory: no query is required
+to discover which problems exist or what they ask. It is navigation, not proof
+authority or a novelty claim. Drilldown is optional and uses only tracked
+public files; it does not require `ai_workflow`, a sibling checkout, a private
+cache, or network access.
 
-If you want to contribute, the [human contributor guide](CONTRIBUTING.md)
-explains how work from a clone comes back with provenance and credit. To
-understand how the repository is organised, continue to the
-[documentation guide](docs/README.md) and
-[architecture and repository guide](ARCHITECTURE.md). Coding agents have a separate
-[compact entry](AGENTS.override.md) and
-[workbench](docs/AGENT_WORKBENCH.md); those operational surfaces are not the
-human introduction.
+### Public checked frontier; what remains
 
-## How contributed work comes back
+[**#68: factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf).
+A checked hypothesis-free equivalence reduces irrationality to one integer
+divisibility test failing infinitely often. The kernel-internal denominator
+bound is `67`; the `300000` exclusion is a checked implication evaluated
+externally. Producing infinitely many failures remains open.
 
-The repository has two first-class contribution tracks:
+[**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf).
+Koizumi supplies normalised vanishing for the canonical orbit. Lean then
+excludes a bounded negative part and finite normalised negative mass; the
+missing negative-part bound and the unbounded mixed-sign regime remain open.
 
-- **Advance the mathematics:** take one bounded open frontier, return a proof,
-  reduction, computation, counterexample, correction, or reproducible failed
-  route.
-- **Improve the architecture:** propose or build a better agent workflow,
-  navigation route, validation check, reproducibility tool, governance rule,
-  or contributor experience.
+[**#249: dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [claim-bounded reasoning surface](erdos249-totient-reasoning-surface.pdf).
+For every `k≥2`, the paper derives section-span rank `k^e+1`, explicit bases,
+and the relation normal form from Martin plus elementary reductions. Lean checks
+the dyadic theorem and all-base arithmetic, residue coordinates, canonical
+spanning, and exact rank conditional on linear independence; Martin and that
+independence are not formalised. Coons already implies infinite rank. Reduced
+denominators through `79,639,646,646,701,375,323,355,774,875,831,053` and
+diagonal scales through `t=82` are excluded; no `t=83` or unbounded producer is
+proved.
 
-Open a focused pull request when you have a patch. If you only have a finding
-or idea, open the matching issue; maintainers can turn accepted substance into
-a tracked design note or research artifact without taking the originator's
-credit. Accepted receipts preserve conceptualization, mathematics, software,
-validation, and writing roles beside the exact paths that survive assimilation.
+[**#251: prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf).
+Summability and the prime-gap identity are checked unconditionally via an
+elementary polynomial prime bound; for any sequence obeying the checked tail
+recurrence, irrationality is exactly equivalent to cofinal non-integral tail
+shifts. The concrete prime-tail bridge remains open; no theorem produces the
+required cofinal adjacent small-mismatch gap pairs.
 
-Agents are welcome. The [compact agent entry](AGENTS.override.md) routes a
-cold clone through the papers, corpus queries, problem frontiers, validation,
-and the structured return path without requiring access to any private system.
-The [explainer skill](skills/explain-public-system/SKILL.md) lets an agent read
-those papers and routes on a newcomer's behalf. The
-[coupled-goal skill](skills/run-coupled-research-goals/SKILL.md) then separates
-frontier discovery from corpus-wide appraisal and consequence propagation.
-The ordinary lifecycle is: invoke a bounded job, work until its stop condition,
-validate the resulting evidence, propagate its consequences, package the
-return, and ask upstream to pull it. A run may instead suspend with a durable
-frontier and re-entry condition; closure is not reserved for solved problems.
+[**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [claim-bounded reasoning surface](erdos257-mersenne-reasoning-surface.pdf).
+Lean checks full support, finite-period noncollapse, and exact restricted-set
+coding, topology, perfectness, and measure. Prime support at base `2` and
+squarefree support at power-of-two bases are cited prior results. Universal #257
+and the `1/2` and `1/21` targets remain open.
 
-## What is here
+[**#269: three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf).
+For every two-prime set, both the de-duplicated and repeated sums are
+transcendental, by a paper argument using Loxton–van der Poorten in the
+Bugeaud–Laurent form. **This is not first and not formalised.** Steve Fan posted
+the same factorisation and conclusion on the erdosproblems.com #269 discussion
+page on 26 June 2026; this note was first released publicly on 22 July 2026.
+This project therefore claims no priority for the two-prime theorem, and no Lean
+declaration asserts it. From three primes onward the problem remains open; Lean
+checks exact structure and a conditional carry consumer, not the
+rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion.
 
-The strongest completed results concern restricted forms of Problem 257. The
-library checks the classical full-support irrationality theorem for every
-integer base `b ≥ 2`, a pairwise-coprime support theorem under explicit
-summability hypotheses, and an irrationality theorem for nonnegative rational
-eventually-periodic coefficients with a positive periodic tail. It also proves
-global topological and measure statements for Mersenne achievement sets.
-Universal Problem 257, which quantifies over every infinite support, remains
-open.
+[**#1041: short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf).
+Newton-flow value decay, the ray-separation consumer (connection decay is its
+hypothesis), the translation collision locus, and quantitative root-retention
+bounds are checked. The printed proof of a recent claimed spanning-tree
+decomposition has an invalid local saddle block (a proof gap, not a
+counterexample); repairing the topology and metric gluing remains open.
 
-The sharpest current open socket for Problem 1041 is geometric rather than
-computational: on the ray-separated locus, prove that some admissible critical
-hub has total spoke length at most `2`, then pass to the boundary by lower
-semicontinuity. Its degree-five `SPOKE-5` instance would settle that degree.
-Neither statement is proved; the Lean library supplies local ray separation
-and root retention, not the missing global hub selection and path containment.
+[**#1049: multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf).
+Lean checks construction-specific no-go theorems, four-jet cancellation, and
+direct-clearing obstructions at `3/2`, plus the elementary height inequality used
+by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality
+result; `3/2`, the primitive noncollapsed construction, and analytic remainder
+control remain open.
 
-For Problem 249, the library gives exact finite-level structure for the
-dyadic sections of Euler's totient and several routes that would imply
-irrationality if their stated cofinal hypotheses were proved. Those hypotheses
-remain open. The repository also records why several tempting finite-state or
-fixed-precision arguments cannot close the problem.
+[Retained joint #249/#257 exposition](erdos249-257-main-paper.pdf) ·
+[![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml)
 
-The other six programmes isolate similarly precise boundaries: a carry
-characterisation for Problem 68; conditional recovery criteria for Problem
-243; a prime-gap reformulation and tail criteria for Problem 251; running-LCM
-cell and carry structure for Problem 269; local Newton-flow and root-retention
-results for Problem 1041; and a growing-rank four-jet collision kernel plus
-explicit Padé-model obstructions for Problem 1049. The #1049 kernel produces
-finite selector collisions under its rank inequality, not approximating
-polynomials, nonzero remainders, or an irrationality theorem. Each paper states
-what has been checked and what still prevents an endpoint theorem.
+## External verification
 
-The public order of mathematical attention comes from the canonical
-[Palomar result showcase](docs/PALOMAR_RESULT_SHOWCASE.json), joined to exact
-claim boundaries in [the claim registry](docs/claims.json). File order,
-problem number, theorem count, and the table below are not independent
-rankings.
+Nineteen selected Lean propositions are declared a second time, without proofs,
+in [`ExternalVerification/Statements.lean`](ExternalVerification/Statements.lean).
+Comparator checks the proof-bearing module against those separate declarations
+and against a fixed axiom budget of `propext`, `Quot.sound`, and
+`Classical.choice`; an adversarial fixture alters one statement and must be
+rejected. [`formalization.yaml`](formalization.yaml) records, per selected
+result, the contribution class, exact statement, source declaration, boundary,
+`sorry` count, and axioms. Manifest and [verification packet](docs/EXTERNAL_VERIFICATION.md)
+cover all eight problem programmes; [replay](docs/EXTERNAL_VERIFICATION_REPLAY.md)
+gives the reviewer-run Linux route. The same check runs in continuous
+integration against the reviewed source commit. Comparator checks propositions
+only: no paper deduction, cited theorem, external computation, intended
+meaning, novelty, or significance.
 
-## The eight problem papers
+[RESULTS](docs/RESULTS.md) gives each strongest checked result and its limit;
+[prior art](docs/PRIOR_ART.md) records classical, subsuming, and earlier public
+work. The finite #249 result is the
+classical Farey/mediant bound (numerical delta `0`): Farey's method supplies
+the number directly, exactly the Farey bound, not an improvement. Full-kernel
+infinite rank is Coons's prior result, the all-base rank paper theorem uses
+Martin externally, and #269's two-prime result is not first.
 
-These papers are the main mathematical reading objects. Each is available as
-a PDF and as navigable Markdown. Specialist companion papers and repository
-systems papers are listed separately in the [complete paper index](docs/papers/README.md).
+This self-contained public Plectis checkout is not an entrypoint into any private
+development system. `v0.9.0` is the latest tagged release and citation anchor;
+[`docs/claims.json`](docs/claims.json) pins the exact formal-source checkpoint
+this release ships. Lean source checked by the pinned Lean kernel is
+proof authority; do not infer results from private or unreleased work.
 
-| Problem | Mathematical question | Paper |
+## What the formal source establishes
+
+Labels are descriptions, not scores. **Formalised here** means a statement
+rendered and kernel-checked in Lean, which for a known theorem is a checked
+rendering and not a priority claim; **proved here** means the argument is this
+project's. **Verified finite instance** means
+Lean checked only the listed inputs; **conditional reduction** means the
+conclusion depends on a named open condition.
+
+| Status | Result |
+|---|---|
+| **formalised here** | For every integer `b ≥ 2`, the full-support series `∑ 1/(bⁿ - 1)` is irrational; Erdős (1948) is a checked rendering rather than a new result. Several named infinite-support families are also formalised; this does not cover every infinite support. |
+| **formalised here** | The base-2 Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level. |
+| **proved here** | For the #257 test value `1/2`, achievement-set membership is equivalent to infinitely many greedy skips and would produce an infinite support of rational sum, refuting universal #257. Under the last-skip schema's hypotheses (a rank floor, a carry condition, and a strict middle-cell inequality), the upper branch and the middle coordinate `-3` are impossible. |
+| **conditional reduction** | Within that same last-skip contradiction schema, the two still-unexcluded middle coordinates, `-2` and `-1`, would also be ruled out if one current contribution were larger than the sum of all later possible contributions. That inequality is not proved. |
+| **formalised here** | The dyadic sections of Euler's totient have an explicit rational basis; for `e ≥ 1` the level-`e` span has dimension exactly `2ᵉ + 1`. The Lean proof is an independent constructive route to an independence consequence of Martin's stronger theorem; this is a theorem about the coefficient sequence, not the irrationality of `S`. |
+| **unconditional progress** | For every integer `k ≥ 2`, the sections through level `e ≥ 1` have rank `kᵉ + 1`, with an explicit basis and complete scalar relation normal form. The paper combines Martin's external affine-independence theorem with Lean-checked zero-channel and composite-base reduction identities, exact fixed-level residue coordinates, unconditional spanning, and a `kᵉ + 1` rank theorem parameterised by explicit linear independence. Martin's theorem and the all-base linear-independence premise are not formalised. |
+| **formalised here** | Applying the classical Farey/mediant bound directly to the committed `K=240` interval excludes rational denominators through `79 639 646 646 701 375 323 355 774 875 831 053` (about `7.96 × 10³⁴`). This is exactly the Farey bound, not an improvement on it; Lean also checks that the next denominator fails this finite window. |
+| **proved here** | `S` is irrational exactly when every positive binary tail difference is non-integral, equivalently when every fixed pair has a finite certificate. Finishing the argument would require certificates at arbitrarily large stages; that step is not proved. |
+| **verified finite instance** | Lean proves a diagonal certificate at every `t ≤ 82`. Historical free-position audit: 125 verified log rows represent 123 distinct off-diagonal `(h,N,L)` certificates in 122 Lean files. This finite evidence does not prove successful cases beyond every fixed cutoff. |
+
+### Other exact mathematics in the corpus
+
+| Package | Exact checked content | Boundary |
 |---|---|---|
-| **68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | [PDF](erdos-68-factorial-denominator-irrationality.pdf) · [full text](docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) |
-| **243** | Does rationality of a rapidly converging reciprocal sum force the Sylvester recurrence eventually? | [PDF](erdos-243-reciprocal-tail-rigidity.pdf) · [full text](docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) |
-| **249** | Is `∑_{n≥1} φ(n)/2ⁿ` irrational? | [PDF](erdos-249-binary-totient-series.pdf) · [full text](docs/papers/full-text/erdos-249-binary-totient-series.md) |
-| **251** | Is the dyadic series formed from consecutive prime gaps irrational? | [PDF](erdos-251-prime-gap-dyadic-series.pdf) · [full text](docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) |
-| **257** | Is `∑_{n∈A} 1/(2ⁿ−1)` irrational for every infinite support `A`? | [PDF](erdos-257-mersenne-support-subseries.pdf) · [full text](docs/papers/full-text/erdos-257-mersenne-support-subseries.md) |
-| **269** | Is the reciprocal sum of running least common multiples irrational for three or more primes? | [PDF](erdos-269-three-prime-running-lcm.pdf) · [full text](docs/papers/full-text/erdos-269-three-prime-running-lcm.md) |
-| **1041** | Can two roots in the unit disc be joined by a curve of length less than `2` inside the open lemniscate? | [PDF](erdos-1041-lemniscate-newton-flow.pdf) · [full text](docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) |
-| **1049** | For which rational bases is the associated Lambert-type series irrational? | [PDF](erdos-1049-rational-base-lambert.pdf) · [full text](docs/papers/full-text/erdos-1049-rational-base-lambert.md) |
+| Fair-coin coprimality | `S = 1/2 + P(gcd(X,Y)=1)` for independent `P(X=n)=2⁻ⁿ`. | Irrationality remains open. |
+| Squared-Lambert gcd moments | Two exact divisor-sum identities for squared Lambert denominators. | No transfer to the open Möbius row. |
+| Stern–Brocot cylinder law | Exact stop/child splitting; depth error at most `(2/3)^d`. | Probability law, not irrationality. |
+| Fibonacci/continuant run stability | Height at least `F_{r+3}` with exact defect expansion. | No analytic denominator-clearing theorem. |
+| Tempered binary tail rigidity | Exact rationality/carry-orbit classification for `c(n) ≤ n`. | Needs problem-specific orbit control. |
+| Exact Möbius-shadow denominator | Exact reduced denominator and an explicit divisor lower bound. | No unbounded avoidance supply. |
+| Scalar-localisation height obstruction | If `H ∣ x.den` and `(c·x).den ∣ H`, then `x.den/H ∣ |c|`. | Local obstruction only. |
 
-The eight papers are the canonical public starting point for the mathematics.
-The combined [printable PDF](claim-faithful-publication-systems-paper.pdf) is
-retained for archive and provenance. It assumes no Lean or project history. The
-[cold-clone navigation paper](cold-clone-to-proof-receipt.pdf) explains the
-repository's verification design. Neither is a ninth mathematical programme.
+Typed routes expose sources: `probabilistic_gcd_geometry` for the first four
+rows, `boolean_mobius_constraints` for tail rigidity, and
+`arithmetic_obstruction_interfaces` for the last two. Orientation also lists
+eventually-periodic nonnegative weighted irrationality, a signed
+irrational-or-base-terminating dichotomy, five binary-carry
+criteria/consequences, and two scoped #249 no-go countermodels.
+Five further obstructions are stated with their limits in
+[RESULTS](docs/RESULTS.md#other-standalone-exact-obstructions).
 
-## How a public claim is checked
+An exact final-skip band formula does not show that the actual orbit avoids
+an unsafe band.
 
-The evidence order is simple:
+[Orientation](docs/ORIENTATION.md) routes claims; the retained
+[mathematics paper](erdos249-257-main-paper.pdf) preserves the joint
+#249/#257 exposition.
 
-1. Lean source checked by the pinned kernel is formal proof authority.
-2. `docs/claims.json` records the public statement, status, and exact open
-   boundary.
-3. Papers and human-facing pages explain the mathematics within that boundary.
-4. Comparator checks configured statements, while Palomar orders candidates
-   for possible review. Neither establishes novelty, significance, acceptance,
-   or solution status.
+## What remains open
 
-The verification route re-reads a recorded declaration, reports its assumptions,
-shows the separately configured Comparator statement, and points to the paper
-and release receipt; commands live in the
-[agent workbench](docs/AGENT_WORKBENCH.md). The full-support example formalises
-Erdős's 1948 theorem, and does not prove universal Problem 257.
+- Prove that `S = ∑ φ(n)/2ⁿ` is irrational without placing a bound on a possible
+  rational denominator.
+- Produce the unbounded certificate supply required by the exact #249
+  reduction.
+- Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite
+  `A ⊆ ℕ`, rather than only the named support families formalised here.
 
-None of that waits for anyone to remember it. Every pull request runs three
-gates, each written so that it can fail. The proof-trust scanner rejects
-`sorry`, `admit`, a bare `axiom`, and native evaluators in release-bearing
-sources, and `check_release.py` feeds the scanner a planted `sorry` and fails if
-it accepts it, so green means the scanner worked rather than stayed silent. The
-axiom audit fails on `sorryAx`, on `ofReduceBool` and `Lean.trustCompiler`, and
-on producing no axiom lines at all: before that last guard a warm build could
-emit nothing and still pass.
-[Comparator](https://github.com/leanprover/comparator) runs twice in a Landrun
-sandbox at pinned revisions, once on the declared statements and once on a
-deliberately wrong statement it is required to reject. If the planted mismatch
-passes, the first run proved nothing and the build fails.
+The two working records each close with a section titled "The wall": every
+attempted argument class is stopped by a stated bound, recorded with what it
+does not rule out.
 
-The repository is self-contained: its public claims do not depend on a private
-checkout, an agent's memory, or unreleased work. Read it the same way: do not
-infer results from private or unreleased work. See the
-[methodology](METHODOLOGY.md) for the complete claim discipline and the
-[reproducibility guide](docs/REPRODUCIBILITY.md) for build and release checks.
+[`SCOPE.md`](SCOPE.md) is the short boundary statement. The exact expert
+handoffs state what input is requested, current guess, alternatives,
+discriminating evidence, checked consumer, and endpoint-or-counterexample
+boundary. See
+[RESULTS](docs/RESULTS.md#exact-questions-for-a-human-expert) and
+`python3 scripts/query_expert_handoffs.py`. A refuted route is withdrawn in
+the next edition and the refutation credited.
 
-## Licence
+<!-- BEGIN generated_corpus_at_a_glance -->
+<!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
+## Corpus at a glance
 
-Code, scripts, and documentation use Apache-2.0; manuscripts use CC-BY-4.0;
-that is, the Lean sources, the scripts, the certificate data, and these pages
-are Apache-2.0, while the paper sources, the rendered PDFs, and the banner
-figure are CC-BY-4.0. [`REUSE.toml`](REUSE.toml) is the machine-readable
-inventory of that split, in-file SPDX headers take precedence over it, and
-[`LICENSES/`](LICENSES) holds the two full licence texts.
+The layer a mathematician should judge is small: 103 curated claim records in 21 contribution families, reaching Lean source through 333 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-## Build on it
+The rest is engineering inventory. About 93% of the 153,320 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
-The library is meant to be imported, not only read. A downstream project
-depends on this package and writes `import Erdos249257` or
-`import ErdosProblems`; those two roots are the supported public interface and
-the only default Lake targets.
+| Engineering inventory | Current size |
+|---|---:|
+| Lean modules (the two library roots) | 1,023 |
+| Formal results and supporting lemmas | 151,085 |
+| Curated claim records | 103 |
+| Contribution families | 21 |
 
-[`examples/Examples.lean`](examples/Examples.lean) is the minimal consumer. It
-sits outside the library and is built separately by `lake build Examples`, so it
-exercises the same import route an external project would. It specialises the
-full-support theorem to base 3, and it shows how a conditional interface is
-consumed: its conditional shell-pressure example leaves the analytic hypothesis
-explicit, and so does not prove universal #257. The
-[`ExternalVerificationPortfolio`](examples/ExternalVerificationPortfolio) keeps
-that discipline across the other problems.
+Generated shards are counted as formal source and never as separate
+mathematical claims. Claim records span every status, including cited and
+open, and are partitioned exactly once.
+These are navigation counts, not novelty claims.
+<!-- END generated_corpus_at_a_glance -->
+
+## Read or run it
+
+- **Follow one claim, without installing Lean:** `verify_claims.py`, above, also
+  shows the Lean proof text, and both it and `--verify-all` work on a
+  `git clone --depth 1` checkout. Run it with no
+  argument for the environment check, which exits `2` and prints
+  `git fetch --unshallow` when a truncated history cannot reach the gates that
+  read pinned commits; never `1`, so a shallow clone can never be misread as a
+  claim that failed. `check_release.py` remains the authority for locators.
+- **Mathematician:** use the top reading route, then follow one result from
+  [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers are the
+  live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
+- **Coding agent, routed by the job:** the clone-local entry router turns
+  ordinary language into a bounded lane, minimum read set, and skill
+  recommendation, so an agent need not guess which workflow file matches:
+
+  ```bash
+  python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
+  python3 scripts/agent_entry.py --skills
+  ```
+
+  The skills work directly from the clone; `python3 scripts/install_agent_skills.py
+  --list` previews making them available in other working directories.
+- **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), then the
+  bounded [`docs/orientation.json`](docs/orientation.json); select one programme
+  or claim before expanding the registry. [`AGENTS.md`](AGENTS.md) is the deep one.
+- **Whole-corpus agent navigation, without a Lean build:** run
+  `python3 scripts/query_corpus.py --tour --format card`, then follow
+  `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
+  The no-build tour exposes corpus scale, the mathematical map, canonical
+  eight-problem map, the distinct reviewed #249/#257 open-proposition
+  frontier, and authority boundaries. Use
+  `query_semantic.py problem-registry` for every indexed problem and
+  `structural-backlog` for authored replacement. Committed indexes expose every
+  indexed declaration and exact dependencies for both loaded roots; coverage
+  keeps direct evidence, family context, and structural discovery distinct.
+  These are navigation projections, not proof authority.
+- **Agent control:** the [proof cockpit](docs/PROOF_COCKPIT.md) gives one
+  cold-clone status/frontier card (`python3 scripts/proof_cockpit.py`), while
+  [the Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves
+  and kernel probes under `workbench/sessions/`. The one landed prospective session,
+  [`carry_pivot_2026_07_27`](workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
+  produced [`SuffixCylinderCarryPivot.lean`](Erdos249257/SuffixCylinderCarryPivot.lean).
+  Only kernel receipts assert; ledger notes and static nominations stay advisory.
+- **Building proof search:** `hypOf%` lifts an unresolved hypothesis out of
+  binder position into a `Prop`, so whether a sketch's remaining obligation
+  differs from the target it started from becomes a question for the kernel
+  rather than for a rater; the failure
+  [AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
+  not prevent. [Deciding whether a sketch reduced its target or renamed
+  it](docs/RESIDUAL_PROGRESS.md) has the evaluator, its eight labelled fixtures,
+  and what it refuses to decide.
+  [The proof-state compiler](docs/PROOF_STATE_COMPILER.md) asks the pinned Lean
+  environment which candidate applications it actually accepts from a goal, and
+  [the semantic compiler](docs/SEMANTIC_COMPILER.md) nominates declarations
+  structurally without claiming they apply.
+- **Publication topology:** run
+  `python3 scripts/query_corpus.py --publication-architecture` or
+  `python3 scripts/query_corpus.py --publication-family <id>`.
+- **Placing this against the public benchmark:** the
+  [Formal Conjectures crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md) binds all
+  eight programmes to Google DeepMind's Formal Conjectures statements at a pinned
+  upstream commit, with a SHA-256 per source file and the indexing, ambient-type,
+  and cast differences a reviewer must inspect. It is statement identity and
+  adapter-review metadata, not a Lean equivalence proof or a submission-readiness
+  decision; every row is `not_ready_to_submit`.
+  [Related problems](docs/RELATED_PROBLEMS.md) places five of the eight
+  programmes among the neighbouring numbered problems, each external status as
+  listed on its erdosproblems.com page.
+- **Verify:** `python3 scripts/check_cold_clone_comprehension.py --quick`
+  checks reading surfaces without Lean; `python3 scripts/check_release.py`
+  runs the full public-surface/query sweep.
+
+## How the repository fits together
+
+The package has two compact supported roots. [`Erdos249257.lean`](Erdos249257.lean)
+preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](ErdosProblems.lean)
+is the problem-owned expansion surface: work lives under its actual Erdős
+problem number instead of being forced into the historical #249/#257 tree.
+Kernel checking of that second root establishes its exact Lean propositions;
+it does not by itself promote them into the reviewed claim registry or claim
+that an open problem is solved.
+
+The source has five reader-facing layers:
+
+- **Assembled kernel.** [`CertificateKernel.lean`](Erdos249257/CertificateKernel.lean)
+  contains the common series machinery, the full-support Erdős-Borwein theorem,
+  named support-family interfaces, and the unconditional #249 denominator
+  exclusion.
+- **The #249 reduction spine.** The period-killer, lcm-diagonal, cone, diagonal
+  pincer, fresh-loss, and transport modules turn the open irrationality problem
+  into exact certificate or avoidance obligations. Finite certificate modules
+  verify explicit parameters; they do not supply the unbounded family required
+  by the reduction.
+- **The #257 carry trunk.** The tail-orbit, achievement-set, Boolean-Möbius
+  carry, reciprocal-mass, and divisor-coverage modules give exact criteria and
+  necessary conditions, not the universal #257 theorem.
+- **Navigation.** The atlas finds every declaration and import. Selected
+  semantic meanings carry scoped reviews (`python3 scripts/query_semantic.py
+  semantic-reviews`), not human, novelty, or proof authority. The theory lab
+  adds nine mechanisms, nine transfer capsules, and three failure receipts;
+  four holdouts have no results, so no measured transfer is claimed.
+- **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded
+  results and explicit open frontiers for one problem at a time. New entries
+  remain outside the reviewed claim registry until mathematical review
+  establishes their intended meaning and public framing.
+
+[SOURCE MAP](docs/SOURCE_MAP.md) gives module order; [METHODOLOGY](METHODOLOGY.md)
+governs claim changes; [WAVE INDEX](docs/WAVE_INDEX.md) gives chronology, not
+reading order.
+
+<!-- BEGIN generated_principal_declaration_anchors -->
+<!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
+## Following a result into Lean
+
+The paper links each headline result to the relevant source. For a particular
+topic, start with the [source map](docs/SOURCE_MAP.md); it gives the module
+order without asking you to decode Lean declaration names first.
+<!-- END generated_principal_declaration_anchors -->
+
+## Build and verify
+
+Everything above this heading runs with Python alone. Building the Lean source
+needs the toolchain, and `lake` arrives with it: install `elan`, Lean's
+toolchain manager, from the
+[Lean setup guide](https://leanprover-community.github.io/get_started.html).
+`elan` then reads [`lean-toolchain`](lean-toolchain) and selects
+`leanprover/lean4:v4.29.1`; [`lake-manifest.json`](lake-manifest.json) pins the
+matching Mathlib.
+
+```sh
+lake exe cache get   # fetches the pinned Mathlib build: several GB, once
+lake build
+```
+
+For a focused build, run
+`python3 scripts/lean_fast_build.py --jobs 2 [target]`. Add `--lake-staleness`
+with restored `.lake` outputs so it trusts Lake content traces, not checkout
+times. Without a target it checks both roots; `--plan` reports waves without
+building. Partial caches stay on that trace-aware path even when a root output
+is absent. One verbose no-build verdict identifies the stale frontier, which is
+expanded through local import dependents; same-wave targets then share Lake
+graph scans in batches capped by `--jobs`.
+A cold clone can navigate before this step; formal editing needs the
+pinned toolchain. Later builds reuse outputs and rebuild only the selected or
+stale dependency cone; `--changed-from <git-ref>` selects changed modules.
+The dependency-index validator stores an exact `.lake` receipt: unchanged
+inputs make `--check` constant-time; `--check --full-check` forces an audit.
+
+Check the public release surfaces separately:
+
+```sh
+python3 scripts/check_cold_clone_comprehension.py --quick
+python3 scripts/check_release.py
+python3 scripts/test_methodology_contract.py
+```
+
+The pinned public Lean proof corpus contains no `sorry`, `admit`, project-defined
+`axiom`, or `native_decide`; finite computations use kernel-checked `decide`.
+One deliberate exception is outside the default build:
+[`ExternalVerification/Challenge.lean`](ExternalVerification/Challenge.lean)
+states the trusted propositions Comparator checks the solution against; they
+carry `sorry` by construction.
+
+## Use as a Lean package
+
+Import the reviewed #249/#257 root:
+
+```lean
+import Erdos249257
+```
+
+For the problem-owned expansion surface, import:
+
+```lean
+import ErdosProblems
+```
+
+[`examples/Examples.lean`](examples/Examples.lean) is the minimal downstream
+consumer; its conditional shell-pressure example leaves the analytic
+hypothesis explicit and does not prove universal #257.
+
+## Citation and licence
+
+Use [`CITATION.cff`](CITATION.cff) for `v0.9.0`.
+Code, scripts, and documentation are Apache-2.0. The manuscript layer, including
+the paper source and rendered PDFs, is CC-BY-4.0.
+[`REUSE.toml`](REUSE.toml) is complete.
+
+Use the issue forms for corrections. [`CONTRIBUTING.md`](CONTRIBUTING.md)
+explains local checks; [`SECURITY.md`](SECURITY.md) gives the private route.
+
+## Where I actually am
+
+I am 22. I took a year out of my economics degree at Bristol for mental health
+reasons, and working on this became my life. I am about a month from running
+out of money, and I rushed this release because real life caught up with me.
+That is not a pity play, it is just where I am. As this is written the
+repository has zero stars.
+
+This repository is the output. The private system behind it is bigger: the
+videos show the entire frontend, the docs on the website carry how I think
+about AI and safe systems, and Plectis is the prototype of what the system
+could look like in a year or two with support. There are other apps I use
+daily that I would happily open-source too; I keep choosing the mathematics
+because it is the part a stranger can verify.
+
+I have been doing this alone for a year and I do not really know how to
+interact with people, especially Silicon Valley, where everyone is rightfully
+busy. So I designed this to be cloned instead of pitched. That is what this
+repository is for: the eight problems mapped to their exact open steps, every
+claim bound to what is actually proved, and the machinery for working on them
+already built, where an agent cannot mark its own work and the kernel decides.
+It was made on the bet that models improve, so that whoever points better ones
+at it starts from here instead of from zero. A solution found that way is
+yours, credit included. I do not care about prestige or glory. I need support,
+or at least people using what I built. The
+[routes are on the site](https://wcook04.github.io/plectis/#contact).

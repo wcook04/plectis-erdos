@@ -271,5 +271,5 @@ proved in `BridgeIdentityProof.md` §4.
 
 ```sh
 ./repo-python formal_math/probes/erdos1041_phase_dependence.py
-./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py --part phase
+python3 research_corpus/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py --part phase
 ```

@@ -263,9 +263,9 @@ chord as soon as `rho <= 2^{-1/n}`.
 ## 6. Calibration
 
 Receipts
-`state/formal_math/erdos257_period_noncollapse/erdos1041_concyclic_alternation_receipt.json`
+`source-provenance://private-authoring-project/receipts/erdos1041_concyclic_alternation_receipt.json`
 (verdict `PASS`) and
-`state/formal_math/erdos257_period_noncollapse/erdos1041_concyclic_exact_witness.json`
+`source-provenance://private-authoring-project/receipts/erdos1041_concyclic_exact_witness.json`
 (verdict `PASS`).  Verifiers
 [scripts/check_erdos1041_concyclic_alternation.py](scripts/check_erdos1041_concyclic_alternation.py)
 and
