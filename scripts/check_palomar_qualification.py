@@ -594,7 +594,16 @@ def candidate_selection_errors(
         or dispatch_family_count > len(review_rows)
     ):
         errors.append("source-landscape universe has an invalid dispatch-family baseline")
-    expected_review_digest = hashlib.sha256(committed_bytes(root, "docs/claims.json")).hexdigest()
+    # The review matrix, not the whole register. The field is named for the
+    # claims matrix and the error says so, but hashing every byte of
+    # docs/claims.json meant any unrelated edit -- restamping nine claim
+    # locators, say -- reported that the candidate universe disagreed with a
+    # review matrix that had not moved. source_review_family_count and
+    # source_review_family_ids already pin the substantive agreement; this
+    # digest now covers exactly the object those fields are drawn from.
+    expected_review_digest = hashlib.sha256(
+        json.dumps(review_matrix, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
     if universe.get("source_review_matrix_sha256") != expected_review_digest:
         errors.append("source-landscape universe digest does not match the committed claims matrix")
     source_ids = universe.get("source_review_family_ids")

@@ -23,8 +23,17 @@ def test_default_packet() -> None:
     assert packet["schema"] == "plectis-lean-proof-cockpit/1"
     assert packet["corpus"]["problem_count"] == 8
     assert packet["corpus"]["open_problem_count"] == 8
-    assert packet["corpus"]["claim_count"] == 103
-    assert packet["frontier"]["headline_open_proposition_count"] == 5
+    # Against the register, not a frozen number. Both counts were pinned to a
+    # snapshot (103 claims, 5 open propositions) of a corpus that keeps
+    # growing, so every landed claim broke this test while the projection it
+    # guards was correct. Comparing to docs/claims.json still catches the real
+    # defect -- a cockpit that drops or invents rows -- and cannot go stale.
+    register = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
+    assert packet["corpus"]["claim_count"] == len(register["claims"])
+    assert packet["corpus"]["claim_count"] > 0
+    assert packet["frontier"]["headline_open_proposition_count"] == len(
+        register["remaining_open_propositions"]
+    )
     assert packet["proof_authority"] == "Lean source checked by the pinned Lean kernel"
     assert packet["next_actions"]["kernel_check"].endswith("--jobs 2")
     assert all("ai_workflow" not in json.dumps(row) for row in packet["workbench"]["sessions"])

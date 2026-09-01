@@ -8,7 +8,7 @@
     "comparator_sha256": "a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
     "comparator_theorem_count": 51,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "c619cdab56f6ff5388b753d425b615af2ecc173e40b7c32670928eb8456a8296",
+    "source_review_matrix_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
@@ -520,7 +520,7 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "c619cdab56f6ff5388b753d425b615af2ecc173e40b7c32670928eb8456a8296",
+    "source_review_matrix_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
     "source_review_family_count": 70,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
@@ -1453,8 +1453,14 @@
           "The criterion proves no #251 irrationality, no infinite rational-sum limit, and no universal producer; novelty, priority, significance, and external review remain unassessed."
         ],
         "source_landscape_rank_relative_to": "Conditional-endpoint leverage tier: below the ranked #251 prime-gap reformulation and the #243 negative-mass recovery because it fixes one h-shift and still assumes its cofinal smallness/mismatch supply, but above abstract classification and synthetic coefficient-only no-go because it is an actual-prime, endpoint-adjacent conditional obstruction with a precise missing producer.",
-        "ranked_below": ["prime_gap_reformulation", "negative_mass_recovery"],
-        "ranked_above": ["dyadic_tail_integrality_classification", "coefficient_only_no_go"],
+        "ranked_below": [
+          "prime_gap_reformulation",
+          "negative_mass_recovery"
+        ],
+        "ranked_above": [
+          "dyadic_tail_integrality_classification",
+          "coefficient_only_no_go"
+        ],
         "reason": "Retained as the first conditional-endpoint-leverage screen after the source-current survivor audit: this one coherent actual-prime-gap criterion exposes the adjacent-pair zero obstruction and its exact cofinal small-mismatch producer. It remains conditional on that producer and is not promoted to a #251 endpoint result.",
         "reversal_evidence": "A proof of the exact cofinal small-mismatch/smallness producer or a direct #251 irrationality theorem would justify a fresh ranking; another finite gap computation or coefficient-only nonperiodicity row would not."
       },
@@ -1875,8 +1881,14 @@
           "It is distinct from centered_state_dynamics because summability replaces the uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
         ],
         "source_landscape_rank_relative_to": "Rank 12: below the #257 seam classification and direct/producer-side endpoint routes because every original-orbit premise remains open, but above routine finite searches and generic screening because it replaces the uniform lower-bound route with a distinct summability mechanism.",
-        "ranked_below": ["half_membership_seam_classification", "centered_state_dynamics"],
-        "ranked_above": ["coefficient_only_no_go", "weighted_phase_carry_observer"],
+        "ranked_below": [
+          "half_membership_seam_classification",
+          "centered_state_dynamics"
+        ],
+        "ranked_above": [
+          "coefficient_only_no_go",
+          "weighted_phase_carry_observer"
+        ],
         "reason": "Promoted into the unequal Palomar ranking as one source-current analytic recovery family: the summability mechanism materially changes how #243's surviving orbit must be understood, while preserving that the original-orbit hypotheses and endpoint remain unproved.",
         "reversal_evidence": "A proof of the original-orbit summability or a direct reciprocal-tail endpoint could promote its ranking, while another finite negative-mass calculation would not; a duplicate transport row would not change the disposition."
       },
