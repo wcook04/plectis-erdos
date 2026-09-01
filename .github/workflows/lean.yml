@@ -42,7 +42,7 @@ permissions:
 # explicit at their point of use; they must not change the safety baseline.
 env:
   GIT_CONFIG_NOSYSTEM: "1"
-  GIT_CONFIG_GLOBAL: /dev/null
+  GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
   GIT_OPTIONAL_LOCKS: "0"
   GIT_NO_REPLACE_OBJECTS: "1"
   GIT_PAGER: cat
