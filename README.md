@@ -28,8 +28,10 @@ return the result. Accepted returns are replayed, validated, and attributed
 according to their evidence class. For a command-free first read, begin with
 [A reader's way in](HUMAN_ENTRY.md).
 
-**Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
-then inspect one proof handle. No Lean build is needed for the first check:
+The recommended entry point is the mathematics. The
+[eight-programme verification map](docs/EXTERNAL_VERIFICATION.md) lists the
+selected propositions per problem, and a single proof handle can be inspected
+without a Lean build:
 
 ```bash
 python3 scripts/verify_claims.py --claim eb_full_support
@@ -39,13 +41,14 @@ The command prints the statement, re-resolves its declaration, names any
 Comparator interface and paper, shows the release receipts, and states where
 the claim stops. Most claims intentionally have no Comparator interface.
 `--verify-all` checks every claim record and its declarations in under a
-second. [Read or run it](#read-or-run-it) lists the routes that do need Lean.
+second. [Read or run it](#read-or-run-it) lists the routes that require Lean.
 
-[RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
-→ [prior art and attribution](docs/PRIOR_ART.md)
-→ [architecture and repository guide](ARCHITECTURE.md) ·
-[printable PDF](claim-faithful-publication-systems-paper.pdf), which assumes
-no Lean or project history. The
+The reading order for the mathematical account is [RESULTS](docs/RESULTS.md),
+[SCOPE](SCOPE.md), the [SOURCE MAP](docs/SOURCE_MAP.md), and
+[prior art and attribution](docs/PRIOR_ART.md). The
+[architecture and repository guide](ARCHITECTURE.md) and its
+[printable PDF](claim-faithful-publication-systems-paper.pdf) assume no Lean
+or project history. The
 [agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
 cold-clone route and the recorded workbench session.
 
@@ -61,40 +64,37 @@ kernel checks the exact formal propositions. It does not establish that a
 proposition expresses the intended mathematics, that a result is new, or that it
 matters: those remain authored judgements, and the papers state them per result.
 
-Machine route: `query_corpus.py --overview` / `--papers`.
+The machine-readable overview is produced by `query_corpus.py --overview` and
+`query_corpus.py --papers`.
 
 
 ## The wider system, briefly
 
-This repository is one output of a larger private system I built and direct
-alone. The public pieces, in the order a person meets them:
+This repository is one output of a larger private system that I built and
+direct alone. Four public surfaces derive from that system.
+[Plectis](https://github.com/wcook04/plectis) is its runnable slice:
+components that can be cloned and run locally, each carrying one claim and one
+check. [The website](https://wcook04.github.io/plectis/) presents the same
+substrate for a human reader: the papers, the eight problems as readable
+pages, the component map, and an AI review packet. Three videos show the
+private frontend on screen
+([1 minute](https://youtu.be/R_--vExxWyk),
+[5 minutes](https://youtu.be/VoWByIOIuBE),
+[29 minutes](https://youtu.be/jA_xC8gmdSs)); no repository checks run in
+them. [The doctrine](https://wcook04.github.io/plectis/docs/doctrine.html)
+records the written rules the building agents read before they work.
 
-- [Plectis](https://github.com/wcook04/plectis): the runnable slice of that
-  system, components you clone and run locally, each with one claim and one
-  check.
-- [The website](https://wcook04.github.io/plectis/): the human wrapper. Tools
-  like Claude Code are an agent's wrapper around a repository; the website is
-  the same thing for a person, the substrate of these repositories made
-  interpretable: the papers, the eight problems as readable pages, the
-  component map, and an AI review packet.
-- The videos, which show the private frontend on screen:
-  [1 minute](https://youtu.be/R_--vExxWyk),
-  [5 minutes](https://youtu.be/VoWByIOIuBE),
-  [29 minutes](https://youtu.be/jA_xC8gmdSs). No repository checks run in them.
-- [The doctrine](https://wcook04.github.io/plectis/docs/doctrine.html): the
-  written rules the building agents read before they work.
-
-This Lean repository is the showcase: what the internal system produces when it
-is pointed at something deliberately hard. The system is not restricted to
-mathematics; the same machinery runs research, forecasting, and
-agent-reliability work. The aspiration is a full research lab with its own
-frontend in a year or two, with support. An agent landing here cold should
-read [AGENTS.override.md](AGENTS.override.md) first; a person should start with
-the mathematics below.
+This Lean repository is the system's demonstration on deliberately hard
+mathematics. The same machinery runs research, forecasting, and
+agent-reliability work. The aim, given support, is a full research laboratory
+with its own frontend within one to two years. An agent arriving cold should
+read [AGENTS.override.md](AGENTS.override.md) first; a person should begin
+with the mathematics below.
 
 ## Problem papers
 
-[`docs/papers/corpus.json`](docs/papers/corpus.json) indexes them by machine.
+[`docs/papers/corpus.json`](docs/papers/corpus.json) is the machine-readable
+index of the papers.
 
 | Problem | Mathematical statement |
 |---|---|
@@ -300,76 +300,86 @@ These are navigation counts, not novelty claims.
 
 ## Read or run it
 
-- **Follow one claim, without installing Lean:** `verify_claims.py`, above, also
-  shows the Lean proof text, and both it and `--verify-all` work on a
-  `git clone --depth 1` checkout. Run it with no
-  argument for the environment check, which exits `2` and prints
-  `git fetch --unshallow` when a truncated history cannot reach the gates that
-  read pinned commits; never `1`, so a shallow clone can never be misread as a
-  claim that failed. `check_release.py` remains the authority for locators.
-- **Mathematician:** use the top reading route, then follow one result from
-  [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers are the
-  live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
-- **Coding agent, routed by the job:** the clone-local entry router turns
-  ordinary language into a bounded lane, minimum read set, and skill
-  recommendation, so an agent need not guess which workflow file matches:
+A single claim can be followed without installing Lean. `verify_claims.py`,
+shown above, also prints the Lean proof text, and both it and `--verify-all`
+work on a `git clone --depth 1` checkout. Run with no argument it performs an
+environment check, which exits `2` and prints `git fetch --unshallow` when a
+truncated history cannot reach the gates that read pinned commits; it never
+exits `1` in that case, so a shallow clone cannot be misread as a claim that
+failed. `check_release.py` remains the authority for locators.
 
-  ```bash
-  python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
-  python3 scripts/agent_entry.py --skills
-  ```
+A mathematician can follow the reading order above and then trace one result
+from the [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers
+are the live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
 
-  The skills work from the clone; `scripts/install_agent_skills.py --list`
-  previews installing them elsewhere.
-- **Coding agent, reading order:** read [`AGENTS.override.md`](AGENTS.override.md), then the
-  bounded [`docs/orientation.json`](docs/orientation.json); select one programme
-  or claim before expanding the registry. [`AGENTS.md`](AGENTS.md) is the deep one.
-- **Whole-corpus agent navigation, without a Lean build:** run
-  `python3 scripts/query_corpus.py --tour --format card`, then follow
-  `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
-  The no-build tour exposes corpus scale, the mathematical map, canonical
-  eight-problem map, the distinct reviewed #249/#257 open-proposition
-  frontier, and authority boundaries. Use
-  `query_semantic.py problem-registry` for every indexed problem and
-  `structural-backlog` for authored replacement. Committed indexes expose every
-  indexed declaration and exact dependencies for both loaded roots; coverage
-  keeps direct evidence, family context, and structural discovery distinct.
-  These are navigation projections, not proof authority.
-- **Agent control:** the [proof cockpit](docs/PROOF_COCKPIT.md) gives one
-  cold-clone status/frontier card (`python3 scripts/proof_cockpit.py`), while
-  [the Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves
-  and kernel probes under `workbench/sessions/`. The one landed prospective session,
-  [`carry_pivot_2026_07_27`](workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
-  produced [`SuffixCylinderCarryPivot.lean`](Erdos249257/SuffixCylinderCarryPivot.lean).
-  Only kernel receipts assert; ledger notes and static nominations stay advisory.
-- **Building proof search:** `hypOf%` lifts an unresolved hypothesis out of
-  binder position into a `Prop`, so whether a sketch's remaining obligation
-  differs from the target it started from becomes a question for the kernel
-  rather than for a rater; the failure
-  [AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
-  not prevent. [Deciding whether a sketch reduced its target or renamed
-  it](docs/RESIDUAL_PROGRESS.md) has the evaluator, its eight labelled fixtures,
-  and what it refuses to decide.
-  [The proof-state compiler](docs/PROOF_STATE_COMPILER.md) asks the pinned Lean
-  environment which candidate applications it actually accepts from a goal, and
-  [the semantic compiler](docs/SEMANTIC_COMPILER.md) nominates declarations
-  structurally without claiming they apply.
-- **Publication topology:** run
-  `python3 scripts/query_corpus.py --publication-architecture` or
-  `python3 scripts/query_corpus.py --publication-family <id>`.
-- **Placing this against the public benchmark:** the
-  [Formal Conjectures crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md) binds all
-  eight programmes to Google DeepMind's Formal Conjectures statements at a pinned
-  upstream commit, with a SHA-256 per source file and the indexing, ambient-type,
-  and cast differences a reviewer must inspect. It is statement identity and
-  adapter-review metadata, not a Lean equivalence proof or a submission-readiness
-  decision; every row is `not_ready_to_submit`.
-  [Related problems](docs/RELATED_PROBLEMS.md) places five of the eight
-  programmes among the neighbouring numbered problems, each external status as
-  listed on its erdosproblems.com page.
-- **Verify:** `python3 scripts/check_cold_clone_comprehension.py --quick`
-  checks reading surfaces without Lean; `python3 scripts/check_release.py`
-  runs the full public-surface/query sweep.
+A coding agent is routed by job description. The clone-local entry router
+maps ordinary language to a bounded lane, a minimum read set, and a skill
+recommendation, so the agent does not select a workflow file by guessing:
+
+```bash
+python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
+python3 scripts/agent_entry.py --skills
+```
+
+The skills work from the clone; `scripts/install_agent_skills.py --list`
+previews installing them elsewhere. The agent reading order is
+[`AGENTS.override.md`](AGENTS.override.md), then the bounded
+[`docs/orientation.json`](docs/orientation.json), selecting one programme or
+claim before expanding the registry; [`AGENTS.md`](AGENTS.md) is the complete
+reference.
+
+Whole-corpus navigation requires no Lean build.
+`python3 scripts/query_corpus.py --tour --format card` and
+`python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
+expose corpus scale, the mathematical map, the canonical eight-problem map,
+the distinct reviewed #249/#257 open-proposition frontier, and authority
+boundaries. `query_semantic.py problem-registry` lists every indexed problem
+and `structural-backlog` lists authored replacement. Committed indexes expose
+every indexed declaration and exact dependencies for both loaded roots;
+coverage keeps direct evidence, family context, and structural discovery
+distinct. These are navigation projections, not proof authority.
+
+The [proof cockpit](docs/PROOF_COCKPIT.md) produces one cold-clone
+status and frontier card (`python3 scripts/proof_cockpit.py`), and
+[the Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves
+and kernel probes under `workbench/sessions/`. The one landed prospective
+session,
+[`carry_pivot_2026_07_27`](workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
+produced [`SuffixCylinderCarryPivot.lean`](Erdos249257/SuffixCylinderCarryPivot.lean).
+Only kernel receipts assert; ledger notes and static nominations stay
+advisory.
+
+For proof-search construction, `hypOf%` lifts an unresolved hypothesis out of
+binder position into a `Prop`, so whether a sketch's remaining obligation
+differs from the target it started from becomes a question for the kernel
+rather than for a rater; this is the failure mode
+[AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
+not prevent. [Deciding whether a sketch reduced its target or renamed
+it](docs/RESIDUAL_PROGRESS.md) documents the evaluator, its eight labelled
+fixtures, and what it refuses to decide.
+[The proof-state compiler](docs/PROOF_STATE_COMPILER.md) asks the pinned Lean
+environment which candidate applications it actually accepts from a goal, and
+[the semantic compiler](docs/SEMANTIC_COMPILER.md) nominates declarations
+structurally without claiming they apply.
+
+Publication topology is reported by
+`python3 scripts/query_corpus.py --publication-architecture` and
+`python3 scripts/query_corpus.py --publication-family <id>`.
+
+The [Formal Conjectures crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md)
+places the corpus against the public benchmark: it binds all eight programmes
+to Google DeepMind's Formal Conjectures statements at a pinned upstream
+commit, with a SHA-256 per source file and the indexing, ambient-type, and
+cast differences a reviewer must inspect. It is statement identity and
+adapter-review metadata, not a Lean equivalence proof or a
+submission-readiness decision; every row is `not_ready_to_submit`.
+[Related problems](docs/RELATED_PROBLEMS.md) places five of the eight
+programmes among the neighbouring numbered problems, each external status as
+listed on its erdosproblems.com page.
+
+`python3 scripts/check_cold_clone_comprehension.py --quick` checks the
+reading surfaces without Lean; `python3 scripts/check_release.py` runs the
+full public-surface and query sweep.
 
 ## How the repository fits together
 
@@ -381,29 +391,27 @@ Kernel checking of that second root establishes its exact Lean propositions;
 it does not by itself promote them into the reviewed claim registry or claim
 that an open problem is solved.
 
-The source has five reader-facing layers:
-
-- **Assembled kernel.** [`CertificateKernel.lean`](Erdos249257/CertificateKernel.lean)
-  contains the common series machinery, the full-support Erdős-Borwein theorem,
-  named support-family interfaces, and the unconditional #249 denominator
-  exclusion.
-- **The #249 reduction spine.** The period-killer, lcm-diagonal, cone, diagonal
-  pincer, fresh-loss, and transport modules turn the open irrationality problem
-  into exact certificate or avoidance obligations. Finite certificate modules
-  verify explicit parameters; they do not supply the unbounded family required
-  by the reduction.
-- **The #257 carry trunk.** The tail-orbit, achievement-set, Boolean-Möbius
-  carry, reciprocal-mass, and divisor-coverage modules give exact criteria and
-  necessary conditions, not the universal #257 theorem.
-- **Navigation.** The atlas finds every declaration and import. Selected
-  semantic meanings carry scoped reviews (`python3 scripts/query_semantic.py
-  semantic-reviews`), not human, novelty, or proof authority. The theory lab
-  adds nine mechanisms, nine transfer capsules, and three failure receipts;
-  four holdouts have no results, so no measured transfer is claimed.
-- **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded
-  results and explicit open frontiers for one problem at a time. New entries
-  remain outside the reviewed claim registry until mathematical review
-  establishes their intended meaning and public framing.
+The source has five reader-facing layers. The assembled kernel,
+[`CertificateKernel.lean`](Erdos249257/CertificateKernel.lean), contains the
+common series machinery, the full-support Erdős-Borwein theorem, named
+support-family interfaces, and the unconditional #249 denominator exclusion.
+The #249 reduction spine, comprising the period-killer, lcm-diagonal, cone,
+diagonal pincer, fresh-loss, and transport modules, turns the open
+irrationality problem into exact certificate or avoidance obligations; finite
+certificate modules verify explicit parameters and do not supply the
+unbounded family required by the reduction. The #257 carry trunk, comprising
+the tail-orbit, achievement-set, Boolean-Möbius carry, reciprocal-mass, and
+divisor-coverage modules, gives exact criteria and necessary conditions, not
+the universal #257 theorem. The navigation layer finds every declaration and
+import through the atlas; selected semantic meanings carry scoped reviews
+(`python3 scripts/query_semantic.py semantic-reviews`), which are neither
+human, novelty, nor proof authority, and the theory lab records nine
+mechanisms, nine transfer capsules, and three failure receipts, with four
+holdouts that have no results, so no measured transfer is claimed. The
+problem-owned expansion, `ErdosProblems/Erdos<N>/`, contains bounded results
+and explicit open frontiers for one problem at a time; new entries remain
+outside the reviewed claim registry until mathematical review establishes
+their intended meaning and public framing.
 
 [SOURCE MAP](docs/SOURCE_MAP.md) gives module order; [METHODOLOGY](METHODOLOGY.md)
 governs claim changes; [WAVE INDEX](docs/WAVE_INDEX.md) gives chronology, not
@@ -433,9 +441,9 @@ lake exe cache get   # fetches the pinned Mathlib build: several GB, once
 lake build
 ```
 
-For a focused build, run
-`python3 scripts/lean_fast_build.py --jobs 2 [target]`. Add `--lake-staleness`
-with restored `.lake` outputs so it trusts Lake content traces, not checkout
+A focused build runs through
+`python3 scripts/lean_fast_build.py --jobs 2 [target]`. With restored `.lake`
+outputs, `--lake-staleness` makes it trust Lake content traces, not checkout
 times. Without a target it checks both roots; `--plan` reports waves without
 building. Partial caches stay on that trace-aware path even when a root output
 is absent. One verbose no-build verdict identifies the stale frontier, which is
@@ -447,7 +455,7 @@ stale dependency cone; `--changed-from <git-ref>` selects changed modules.
 The dependency-index validator stores an exact `.lake` receipt: unchanged
 inputs make `--check` constant-time; `--check --full-check` forces an audit.
 
-Check the public release surfaces separately:
+The public release surfaces are checked separately:
 
 ```sh
 python3 scripts/check_cold_clone_comprehension.py --quick
@@ -464,13 +472,13 @@ carry `sorry` by construction.
 
 ## Use as a Lean package
 
-Import the reviewed #249/#257 root:
+The reviewed #249/#257 root is imported with:
 
 ```lean
 import Erdos249257
 ```
 
-For the problem-owned expansion surface, import:
+The problem-owned expansion surface is imported with:
 
 ```lean
 import ErdosProblems
@@ -482,13 +490,14 @@ hypothesis explicit and does not prove universal #257.
 
 ## Citation and licence
 
-Use [`CITATION.cff`](CITATION.cff) for `v0.9.0`.
-Code, scripts, and documentation are Apache-2.0. The manuscript layer, including
-the paper source and rendered PDFs, is CC-BY-4.0.
+Citation metadata for `v0.9.0` is in [`CITATION.cff`](CITATION.cff).
+Code, scripts, and documentation are Apache-2.0. The manuscript layer,
+including the paper source and rendered PDFs, is CC-BY-4.0.
 [`REUSE.toml`](REUSE.toml) is complete.
 
-Use the issue forms for corrections. [`CONTRIBUTING.md`](CONTRIBUTING.md)
-explains local checks; [`SECURITY.md`](SECURITY.md) gives the private route.
+Corrections are received through the issue forms.
+[`CONTRIBUTING.md`](CONTRIBUTING.md) explains local checks;
+[`SECURITY.md`](SECURITY.md) gives the private route.
 
 ## Where I actually am
 
