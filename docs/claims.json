@@ -6842,6 +6842,14 @@
           ]
         },
         {
+          "id": "Erdos249257.GreedyTrapDynamics",
+          "path": "Erdos249257/GreedyTrapDynamics.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusCarry"
+          ]
+        },
+        {
           "id": "Erdos249257.HalfCarryCeilParentContraction",
           "path": "Erdos249257/HalfCarryCeilParentContraction.lean",
           "role": "Fixed-coefficient rewind contraction",
@@ -8217,6 +8225,22 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1049.AdelicHeightBridge",
+          "path": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.ZudilinHeightRegion",
+            "ErdosProblems.Erdos1049.HermitePadeNoGo",
+            "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.BezoutPluckerJets",
+          "path": "ErdosProblems/Erdos1049/BezoutPluckerJets.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1049.HermitePadeNoGo",
           "path": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
           "role": "Lean proof module",
@@ -8307,6 +8331,16 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos243.RepairEntropy",
+          "path": "ErdosProblems/Erdos243/RepairEntropy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.WeightedCRTRepair",
+            "ErdosProblems.Erdos243.SparseResetRecovery",
+            "ErdosProblems.Erdos243.PrimitivePrefixRigidity"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.SparseResetRecovery",
           "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
           "role": "Lean proof module",
@@ -8341,6 +8375,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.FullDepthRayAmplifier",
+          "path": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PeriodMultipleEscape"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos249.LcmJumpKillFromDiagonal",
           "path": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
           "role": "Lean proof module",
@@ -8365,6 +8407,14 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.TropicalCurvatureCarry"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.RankOneSharpFloor",
+          "path": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.RankOneSubrankObstruction"
           ]
         },
         {
@@ -8464,6 +8514,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.AdjacentUnitCarryWindow",
+          "path": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PrimeThresholdParity"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
           "path": "ErdosProblems/Erdos68/CanonicalFactorialDigits.lean",
           "role": "Lean proof module",
@@ -8532,6 +8590,23 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos68.CanonicalFactorialDigits"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.GapScalarNormalForm",
+          "path": "ErdosProblems/Erdos68/GapScalarNormalForm.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialZeroPlateau"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PrimeThresholdParity",
+          "path": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.PrimeZeroBranch",
+            "ErdosProblems.Erdos68.GapScalarNormalForm"
           ]
         },
         {
@@ -10473,6 +10548,8 @@
           "imports": [
             "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
             "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
+            "ErdosProblems.Erdos1049.AdelicHeightBridge",
+            "ErdosProblems.Erdos1049.BezoutPluckerJets",
             "ErdosProblems.Erdos1049.HermitePadeNoGo",
             "ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence",
             "ErdosProblems.Erdos1049.RationalBaseLambert",
@@ -10490,6 +10567,7 @@
             "ErdosProblems.Erdos243.WeightedCRTRepair",
             "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
             "ErdosProblems.Erdos249.FiniteEulerSieve",
+            "ErdosProblems.Erdos249.FullDepthRayAmplifier",
             "ErdosProblems.Erdos249.LcmJumpKillFromDiagonal",
             "ErdosProblems.Erdos249.PeriodMultipleEscape",
             "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",

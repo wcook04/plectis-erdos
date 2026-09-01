@@ -125,7 +125,10 @@
 % Coordinates and long source identifiers must be allowed to wrap in narrow
 % table cells. xurl supplies sensible breaks at punctuation without adding
 % visible hyphens or changing the underlying text.
-\newcommand{\coord}[1]{{\small\nolinkurl{coord:#1}}\xspace}
+% \nolinkurl manipulates catcodes and cannot be written into the hyperref
+% bookmark file, so \coord supplies a plain-text PDF string. This sibling
+% has no \coord in a heading today; the guard keeps it that way by design.
+\newcommand{\coord}[1]{\texorpdfstring{{\small\nolinkurl{coord:#1}}}{coord:#1}\xspace}
 \newcommand{\codeid}[1]{\nolinkurl{#1}}
 
 % ---------------------------------------------------------------------------

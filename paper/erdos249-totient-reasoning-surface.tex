@@ -122,7 +122,10 @@
 
 % The representation a statement is expressed in. Obstructions are relative to
 % a coordinate, never to the object, so every obstruction carries one.
-\newcommand{\coord}[1]{{\small\nolinkurl{coord:#1}}\xspace}
+% \nolinkurl manipulates catcodes, so it cannot be written into the
+% hyperref bookmark file. \coord appears in subsubsection titles, so it
+% must supply a plain-text PDF string alongside the typeset form.
+\newcommand{\coord}[1]{\texorpdfstring{{\small\nolinkurl{coord:#1}}}{coord:#1}\xspace}
 \newcommand{\codeid}[1]{\nolinkurl{#1}}
 
 % ---------------------------------------------------------------------------

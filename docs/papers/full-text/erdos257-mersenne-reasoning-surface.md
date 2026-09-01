@@ -2353,7 +2353,7 @@ The later quotient-greedy analysis removes the diffuse alternatives. Let `Twenty
  \quad\Longleftrightarrow\quad
  \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
 ```
-.
+`coord:greedy-orbit`.
 
 On the fatal branch the canonical quotient remainder $`s_R`$ is eventually strictly above the closed capacity $`2^R`$ (), and thereafter the support appends $`R+1`$ while $`s_R`$ follows one explicit affine recurrence (). Conversely, closed rows $`s_R\le2^R`$ along any unbounded sequence decay after normalisation and put $`1/21`$ in the achievement set (; ).
 
