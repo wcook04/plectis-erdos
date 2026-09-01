@@ -18,7 +18,7 @@ namespace ErdosProblems.Erdos249.RankOneSubrankObstruction
 
 open scoped BigOperators
 open ArithmeticFunction
-open Erdos257PeriodNoncollapse.SignedQMomentObstruction
+open Erdos249257.SignedQMomentObstruction
 
 /-! ## Möbius atoms `d = 1, …, 7` -/
 
