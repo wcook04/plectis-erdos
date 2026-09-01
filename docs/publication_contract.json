@@ -249,14 +249,14 @@
     },
     {
       "id": "erdos_1041_note",
-      "title": "Admissible Hubs and Newton-Flow Ray Separation",
+      "title": "Critical-Value Separation and Admissible Hubs",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
-      "source_content_digest": "sha256:9888af566baa1d8e776f0e8ef0c360ee359eda5f9e847588b4f69cd209940e5e",
+      "source_content_digest": "sha256:968275ddcd0080d959e31a7230aa2f36c1f86ce635e0d2f853b65f9493bd6820",
       "rendered_path": "erdos-1041-lemniscate-newton-flow.pdf",
-      "rendered_content_digest": "sha256:918197b6d1a8b48afc5cadf065dc1523b1b9bbf9139b923a8cb11a01bca2ab2a",
+      "rendered_content_digest": "sha256:e452c56fb6651c4ea097fddbc25d815bf503127df69f47380c0938759a913207",
       "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of ErdosProblems.Erdos1041.NewtonFlowRaySeparation. Lean checks Newton-flow value decay, the exponential first integral, the oriented-ray connection obstruction, the exact common-translation collision locus, finite affine-line avoidance, and root retention under small constant perturbations. The note identifies an invalid three-ended local saddle block in the printed proof of Proposition 12 of a March 2026 manuscript; it does not refute the proposition, and a four-pronged or cut-annulus repair may exist. The global decomposition, perturbation stability, and strict length gluing are not proved; Erdős Problem 1041 remains open.",
+      "claim_scope": "Exposition of ErdosProblems.Erdos1041. The paper proves an all-degree critical-value-separation regime by a resolved inverse branch, the area formula, Polya's area-capacity inequality, and an exact coefficient estimate; a sharp all-degree collinear theorem; a complete primitive sparse quintic theorem; and translated cubic quotient-fibre theorems in every degree 3q. Those separation and solved-family assemblies are ordinary mathematics, not kernel-checked authority. Lean checks Newton-flow value decay, the exponential first integral, the oriented-ray connection obstruction, the exact common-translation collision locus, finite affine-line avoidance, root retention under small constant perturbations, and the three solved-family kernels selected by ExternalVerification1041SolvedFamilies. The note identifies an invalid three-ended local saddle block in the printed proof of Proposition 12 of a March 2026 manuscript; it does not refute the proposition, and a four-pronged or cut-annulus repair may exist. Near-tied critical values and multiple saddles are excluded; the global decomposition, perturbation stability, and strict length gluing are not proved; Erdos Problem 1041 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [

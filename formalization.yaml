@@ -36,10 +36,10 @@ status:
     subsidiary theorems, formalises selected known results, verifies finite
     instances, and records conditional reductions and method barriers.
   proof_corpus_sorry_count: 0
-  sorry_count: 2
+  sorry_count: 5
   sorry_in_definitions: 0
-  trusted_challenge_sorry_count: 2
-  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1049/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
+  trusted_challenge_sorry_count: 5
+  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
   axioms:
     - "propext"
     - "Quot.sound"
@@ -1686,6 +1686,6 @@ external_verification:
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "Irrationality at base three halves, or for any rational base."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
-  trusted_challenge_holes: 2
+  trusted_challenge_holes: 5
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

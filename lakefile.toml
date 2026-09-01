@@ -89,22 +89,6 @@ globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants"]
 name = "ResidualBench"
 srcDir = "residualbench"
 
-# The all-base reciprocal-summable support irrationality theorem and the
-# eighteen-module closure it is proved from.  This is the substantive
-# mathematics behind the ExternalVerification257ReciprocalSupport packet, kept
-# as its own library so the packet imports a real development rather than
-# restating it.
-[[lean_lib]]
-name = "Erdos257PeriodNoncollapse"
-globs = ["Erdos257PeriodNoncollapse.*"]
-
-# Statement-isolated packet for the all-base theorem: Challenge holds the
-# Mathlib-only statement, Solution discharges it from the library above, and
-# NegativeSolution is the deliberate semantic mismatch.  Not a default target.
-[[lean_lib]]
-name = "ExternalVerification257ReciprocalSupport"
-globs = ["ExternalVerification257ReciprocalSupport.*"]
-
 # Three solved polynomial families beneath the open Erdos #1041 problem: the
 # sharp collinear Chebyshev comparison kernel, the primitive quintic two-tail
 # energy selector, and the translated cubic quotient-fibre spoke.  The checked
