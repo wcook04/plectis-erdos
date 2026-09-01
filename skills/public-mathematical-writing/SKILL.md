@@ -106,7 +106,8 @@ python3 scripts/query_corpus.py --ask "<the mathematical question>"
 
 Then follow the exact claim, remaining-open proposition, declaration, problem,
 or paper handle returned by the public corpus. No private checkout, memory,
-prompt packet, provider trace, or `ai_workflow` path is an input to public prose.
+prompt packet, provider trace, or private-repository path is an input to
+public prose.
 
 ## Authority order
 

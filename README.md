@@ -3,11 +3,15 @@
 
 # Plectis: a public frontier across eight open Erdős problems
 
-Plectis is an AI-assisted mathematical research system. Its public
-proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
-It contains exact reductions, model families, theorems,
-countermodels, method boundaries, and certificates. **It does not solve them. All eight problems remain open.**
-Each programme states what is checked and what still blocks the question.
+![System map: pipeline, problem-sized Lean worlds, public artifacts, and the clone-work-return-credit loop](.github/system-map.png)
+
+Plectis is an AI-assisted mathematical research system. This repository is
+its public proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269,
+1041, and 1049: exact reductions, model families, theorems, countermodels,
+method boundaries, and certificates. **It does not solve them. All eight
+problems remain open.** Each programme states what is checked and what still
+blocks the question. For a command-free first read, begin with
+[A reader's way in](HUMAN_ENTRY.md).
 
 **Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
 then inspect one proof handle. No Lean build is needed for the first check:
@@ -19,14 +23,14 @@ python3 scripts/verify_claims.py --claim eb_full_support
 The command prints the statement, re-resolves its declaration, names any
 Comparator interface and paper, shows the release receipts, and states where
 the claim stops. Most claims intentionally have no Comparator interface.
-`--verify-all` checks all 103 claims and 335 declarations in about a fifth of a
+`--verify-all` checks every claim record and its declarations in under a
 second. [Read or run it](#read-or-run-it) lists the routes that do need Lean.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [prior art and attribution](docs/PRIOR_ART.md)
 → [architecture and repository guide](ARCHITECTURE.md) ·
-[printable PDF](claim-faithful-publication-systems-paper.pdf).
-It assumes no Lean or project history. The
+[printable PDF](claim-faithful-publication-systems-paper.pdf), which assumes
+no Lean or project history. The
 [agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
 cold-clone route and the recorded workbench session.
 
@@ -42,8 +46,7 @@ kernel checks the exact formal propositions. It does not establish that a
 proposition expresses the intended mathematics, that a result is new, or that it
 matters: those remain authored judgements, and the papers state them per result.
 
-Routes: [mathematics](docs/RESULTS.md) · [verification](docs/EXTERNAL_VERIFICATION.md)
-· [systems](ARCHITECTURE.md) · `query_corpus.py --overview` / `--papers`.
+Machine route: `query_corpus.py --overview` / `--papers`.
 
 
 ## The wider system, briefly
@@ -89,11 +92,11 @@ the mathematics below.
 | **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? |
 | **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? |
 
-This table is the blank-slate agent and reader inventory: no query is required
-to discover which problems exist or what they ask. It is navigation, not proof
+The table is the complete problem inventory: a reader or agent needs no query
+to learn which problems exist or what they ask. It is navigation, not proof
 authority or a novelty claim. Drilldown is optional and uses only tracked
-public files; it does not require `ai_workflow`, a sibling checkout, a private
-cache, or network access.
+public files; it needs no private checkout, sibling repository, cache, or
+network access.
 
 ### Public checked frontier; what remains
 
@@ -301,9 +304,9 @@ These are navigation counts, not novelty claims.
   python3 scripts/agent_entry.py --skills
   ```
 
-  The skills work directly from the clone; `python3 scripts/install_agent_skills.py
-  --list` previews making them available in other working directories.
-- **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), then the
+  The skills work from the clone; `scripts/install_agent_skills.py --list`
+  previews installing them elsewhere.
+- **Coding agent, reading order:** read [`AGENTS.override.md`](AGENTS.override.md), then the
   bounded [`docs/orientation.json`](docs/orientation.json); select one programme
   or claim before expanding the registry. [`AGENTS.md`](AGENTS.md) is the deep one.
 - **Whole-corpus agent navigation, without a Lean build:** run

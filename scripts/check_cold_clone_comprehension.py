@@ -253,7 +253,10 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # the front door was deleted since the map now owns it. The verify command
     # stays above the first heading, so the positional pin below still holds.
     # Funded with slack rather than to the byte, per the notes above.
-    "README.md": 27_200 + 400 * INDEXED_PROBLEM_COUNT,
+    # Raised 27_200 -> 27_600 when the generated corpus region grew with the
+    # 2026-09-01 reconciliation (claim records 103 -> 129) and the system-map
+    # figure line joined the header. Authored prose shrank in the same pass.
+    "README.md": 27_600 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
