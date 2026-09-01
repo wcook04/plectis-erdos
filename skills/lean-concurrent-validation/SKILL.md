@@ -78,7 +78,11 @@ The JSON receipt contains the key. `status --key <key>` is read-only;
 `collect --key <key> --wait` is the explicit resume path. The `run` subcommand
 combines submit-or-join with collection. If an agent or terminal disappears,
 the detached owner continues. Reissuing the exact build command joins or
-reuses it; no person must recreate the build or supervise a retry loop.
+reuses it. If the host externally terminates a Lean child with SIGTERM or
+SIGKILL, the same owner automatically resumes the partial build up to three
+bounded attempts. Exhaustion becomes exit `75`, with the last signal exit kept
+in the receipt; it is never reported as a theorem failure. No person must
+recreate the build or supervise a retry loop.
 
 ## Storage and evidence boundary
 

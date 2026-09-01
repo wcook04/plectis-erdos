@@ -316,6 +316,16 @@ def check_environment_build_is_bounded() -> None:
         "dependency-index environment contract drifted",
     )
 
+    for observed, expected in ((-15, 143), (143, 143)):
+        killed = builder.subprocess.CompletedProcess([], observed, "partial build\n")
+        with patch.object(builder, "run", return_value=killed):
+            try:
+                builder.ensure_elaborated_environment()
+            except SystemExit as exc:
+                require(exc.code == expected, "external signal exit was not preserved")
+            else:
+                raise AssertionError("external signal exit became a successful build")
+
 
 def main() -> int:
     check_safe_dependency_input_boundary()

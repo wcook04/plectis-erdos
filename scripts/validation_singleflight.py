@@ -53,6 +53,16 @@ DEFAULT_TTL_SECONDS = 7 * 24 * 60 * 60
 DEFAULT_RECENT_SECONDS = 10 * 60
 DEFAULT_COLLECT_TIMEOUT_SECONDS = 30 * 60
 DEFAULT_WORKER_TIMEOUT_SECONDS = DEFAULT_COLLECT_TIMEOUT_SECONDS
+MAX_EXTERNAL_TERMINATION_ATTEMPTS = 3
+EXTERNAL_TERMINATION_RETRY_DELAY_SECONDS = 2
+EXTERNAL_TERMINATION_EXIT_CODES = frozenset(
+    {
+        -signal.SIGTERM,
+        -signal.SIGKILL,
+        128 + signal.SIGTERM,
+        128 + signal.SIGKILL,
+    }
+)
 WORKER_TIMEOUT_EXIT_CODE = 124
 DEFAULT_MAX_BYTES = 1 << 30
 DEFAULT_MAX_INODES = 10_000
@@ -1005,6 +1015,12 @@ def wait_for_worker(process: subprocess.Popen[Any]) -> tuple[int, bool]:
         return WORKER_TIMEOUT_EXIT_CODE, True
 
 
+def is_external_termination_exit(code: int) -> bool:
+    """Recognize host/process-manager kills, never Lean diagnostics."""
+
+    return code in EXTERNAL_TERMINATION_EXIT_CODES
+
+
 def publish_launch_failure(
     state: dict[str, Path],
     initial: dict[str, Any],
@@ -1144,24 +1160,75 @@ def worker(state_root: Path, key: str, token: str) -> int:
         receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
         write_receipt(state, key, receipt)
         with open_output_log(stdout_path) as stdout, open_output_log(stderr_path) as stderr:
-            child = subprocess.Popen(
-                receipt["command"],
-                cwd=ROOT,
-                stdout=stdout,
-                stderr=stderr,
-                # Keep timeout cleanup scoped to the validator child rather
-                # than the detached worker that owns the receipt.
-                start_new_session=True,
-                env=command_environment(),
-            )
-            receipt["child"] = process_identity(child.pid)
-            receipt["updated_at"] = utc_now()
-            write_receipt(state, key, receipt)
-            code, timed_out = wait_for_worker(child)
-            if timed_out:
-                stderr.write(
-                    f"validation worker timed out after {DEFAULT_WORKER_TIMEOUT_SECONDS} seconds\n".encode()
+            attempt = 0
+            last_attempt_code = 75
+            external_termination_exits: list[int] = []
+            while attempt < MAX_EXTERNAL_TERMINATION_ATTEMPTS:
+                attempt += 1
+                child = subprocess.Popen(
+                    receipt["command"],
+                    cwd=ROOT,
+                    stdout=stdout,
+                    stderr=stderr,
+                    # Keep timeout cleanup scoped to the validator child rather
+                    # than the detached worker that owns the receipt.
+                    start_new_session=True,
+                    env=command_environment(),
                 )
+                receipt.update(
+                    {
+                        "attempt": attempt,
+                        "child": process_identity(child.pid),
+                        "state": "running",
+                        "updated_at": utc_now(),
+                    }
+                )
+                write_receipt(state, key, receipt)
+                last_attempt_code, timed_out = wait_for_worker(child)
+                if timed_out:
+                    stderr.write(
+                        f"validation worker timed out after {DEFAULT_WORKER_TIMEOUT_SECONDS} seconds\n".encode()
+                    )
+                    break
+                if not is_external_termination_exit(last_attempt_code):
+                    break
+                external_termination_exits.append(last_attempt_code)
+                if attempt >= MAX_EXTERNAL_TERMINATION_ATTEMPTS:
+                    stderr.write(
+                        (
+                            "validation owner exhausted automatic recovery after "
+                            f"{attempt} externally terminated attempt(s); deferring as exit 75 "
+                            f"(last child exit {last_attempt_code})\n"
+                        ).encode()
+                    )
+                    break
+                stderr.write(
+                    (
+                        "validation owner automatically resuming partial build after "
+                        f"external child exit {last_attempt_code} "
+                        f"(next attempt {attempt + 1}/{MAX_EXTERNAL_TERMINATION_ATTEMPTS})\n"
+                    ).encode()
+                )
+                stderr.flush()
+                receipt.update(
+                    {
+                        "state": "retrying_external_termination",
+                        "child": None,
+                        "last_attempt_exit_code": last_attempt_code,
+                        "updated_at": utc_now(),
+                    }
+                )
+                write_receipt(state, key, receipt)
+                time.sleep(EXTERNAL_TERMINATION_RETRY_DELAY_SECONDS)
+            code = (
+                75
+                if is_external_termination_exit(last_attempt_code)
+                else last_attempt_code
+            )
+            receipt["attempt_count"] = attempt
+            receipt["last_attempt_exit_code"] = last_attempt_code
+            receipt["automatic_resume_count"] = max(0, attempt - 1)
+            receipt["external_termination_exits"] = external_termination_exits
     except OSError as exc:
         code = 75
         stderr_path.write_text(f"validation environment unavailable: {exc}\n", encoding="utf-8")

@@ -80,15 +80,19 @@ coverage, and exact open-obligation handles. Follow the matching row in
 for the strongest checked source, paper/source record, and exact frontier
 route. For #249 and #257, the matrix continues to the reviewed result route
 and its registered claim/paper/source reverse links. For #68, #243, #251,
-#269, and #1049, the same matrix supplies each source-only route's principal
-checked module and unresolved producer. The route is navigation evidence only;
-it does not promote problem-owned notes into reviewed claims or close an open
-problem.
+#269, and #1049, use the matrix together with the generated problem-index row:
+its `what_is_checked` and `what_is_not_checked` lists expose the complete
+checked-result inventory and evidence ceiling, while the matrix supplies the
+principal checked module and unresolved producer. These results remain
+source-level evidence, not reviewed claim rows. The route is navigation
+evidence only; it does not promote problem-owned notes into reviewed claims or
+close an open problem.
 
 For the reviewed #249/#257 core, begin with `docs/orientation.json` and one
 typed `query_corpus.py` route. For #68, #243, #251, #269, and #1049, use the
-corresponding row in the complete return matrix to reach the principal checked
-module, paper/source record, and exact unresolved producer. For #1041, read the dated
+corresponding generated row and complete return matrix to reach the
+checked-result inventory, principal checked module, paper/source record, and
+exact unresolved producer. For #1041, read the dated
 [`FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md) before its machine
 result map: it contains current refutations and surviving premise families
 that the older paper note does not enumerate. None of these dispatches

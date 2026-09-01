@@ -134,7 +134,9 @@ python3 scripts/validation_singleflight.py submit --class lean \
 
 `run` is the corresponding submit-or-join-and-collect command. A later caller
 with the same semantic key reuses the in-flight or completed receipt; no human
-retry is needed to preserve the detached owner.
+retry is needed to preserve the detached owner. If the host sends SIGTERM or
+SIGKILL, that owner resumes partial build output automatically for up to three
+attempts; exhaustion is recorded as deferred exit 75, not a theorem failure.
 
 The module's `pureDyadicEndpointError_succ` identity gives the endpoint-error
 cocycle; `prime_forces_pureDyadicEndpointError_excursion` and

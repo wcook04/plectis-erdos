@@ -49,30 +49,45 @@ raise lower bounds on a displayed rational denominator, but cannot discharge
 the quantifier `∀ B, ∃ m > B`.  This consumer therefore proves no #68
 irrationality and makes no novelty or priority claim.
 
-## Erdős #1041: local perturbation mechanisms
+## Erdős #1041: the sharp critical-pair metric budget
 
-[`Problem1041.lean`](Problem1041.lean) keeps two unconditional local tools
-distinct without promoting either to a solution of the lemniscate problem.
-The wrapper
-`Erdos249257.ExternalVerification.exists_small_translation_separating_arguments`
-uses finite affine-line avoidance: an injective finite complex family admits
-an arbitrarily small common translation after which every value is nonzero
-and no two values lie on the same positive ray.
+This portfolio route now leads with the source-current
+`critical_pair_metric_scale` family as one positive mechanism with its exact
+natural friction.  The runnable
+[`Problem1041.lean`](Problem1041.lean) remains on the repository's registered
+Lean modules; the stronger research-corpus family is linked here rather than
+restated or silently promoted.  Its Lean theorem
+[`exists_two_roots_dist_sum_le_two_mul_geomMean`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L289)
+says that logarithmic critical balance, together with
+`r^n = ∏ k, ‖c - z k‖`, selects two distinct roots whose distances from `c`
+sum to at most `2r`.  Its hard algebraic core is
+[`two_add_le_two_of_disk_inverse_balance`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L160):
+reciprocal balance gives `e ≤ (N-1)δ`; a hypothetical `δ+e>2` turns the disk
+inverse-square estimate into `N < x + (N-1)/x` for
+`1 ≤ x = e/δ ≤ N-1`, contradicting the elementary quadratic bound.
 
-The separate wrapper
-`Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk`
-is quantitative root retention.  For a positive-degree monic split polynomial
-whose roots have norm at most `ρ`, it preserves all roots of `f + C shift`
-inside the open unit disk under the exact positive-`ε` and strict margin
-`((natDegree + 1) * ε)^(natDegree)⁻¹ + ρ < 1`, together with
-`‖shift‖ < ε`.  Both sources are in
-[`NewtonFlowRaySeparation.lean`](../../ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197).
+The evidence split is deliberate.  Lean checks that algebraic implication and
+the geometric-mean pair selector.  The ordinary proof in
+[`GlobalCriticalTwoNearestBudget.md`](../../research_corpus/Erdos1041/GlobalCriticalTwoNearestBudget.md)
+assembles the full polynomial statement: at every critical point of a monic
+polynomial whose roots lie in the closed unit disk, the two nearest root
+occurrences have total Euclidean distance at most `2`.  The consumer does not
+misstate that complete assembly as one Lean theorem.
 
-These results provide finite critical-value ray separation and root control,
-not the missing global topology.  No theorem here glues the relevant Newton
-flow pieces into a curve inside the open lemniscate or proves the required
-length bound `< 2`.  This consumer therefore makes no #1041 solution,
-novelty, or priority claim.
+The same source forest rules out the tempting completion.  An exact quintic
+has a unique nearest straight spoke that exits `{|f|<1}`, and an exact cubic
+has an escaping midpoint on every straight root-pair segment; see
+[`nearestSpoke_unique_nearest_spoke_escapes`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L428)
+and
+[`allStraightCubic_every_pair_midpoint_escapes`](../../research_corpus/Erdos1041/CriticalTwoRootProximity.lean#L569).
+Thus the Euclidean budget is solved, but star-shapedness, nearest-root spokes,
+and a universal straight chord are not available.  The remaining problem is
+to select contained curved descending branches, control their turning, and
+perform the topology and strict length-`<2` fan-in.  No contained path,
+unrestricted Erdős #1041 theorem, novelty, priority, significance, or external
+review claim follows.  The existing translation-avoidance and root-retention
+wrappers remain supporting perturbative interfaces rather than headline
+families.
 
 ## Erdős #1049: rational-tail dynamics and a rectangular threshold no-go
 

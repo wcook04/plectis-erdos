@@ -21,7 +21,7 @@ measurement plus adjudication, not by an absent proof.
 | Aggregate `Sigma_c L(c) <= 2(n-1) R_MEC` (AGG) | **FALSE** at `n = 4` (open violating region, ratio `1.001059`) and `n = 5` (one certified witness, ratio `1.000338`) | `SeparatrixAggregateReduction.md` addendum |
 | `CriticalTreeLengthCharge.md` (A), (E), componentwise (F) | **FALSE** — same deg-4 witness has ALL hubs admissible, so the admissible-set aggregate is exactly the refuted sum | same addendum |
 | `AdmissibleCriticalArcProductLab.md` (AQ), (CAQ) | **FALSE** at the same witness (measured `1.001853`) | same addendum |
-| Aggregate/sum form of the open producer `critical_point_selection_with_inverse_ray_length_control` | **FALSE**; only its SELECTION form survives | same addendum |
+| Aggregate/sum form of the open inverse-ray selection producer | **FALSE**; only its SELECTION form survives | same addendum |
 | Origin two-radii connector inside the near-Fekete shell (any `eta`-neighbourhood) | **FALSE** for `n = 3` (proved) and every `n >= 5` (exact rational quintic witness; 4 of 5 spokes escape by rational signs) | `NearFeketeRadialAngularSplit.md` Theorem 7 |
 
 Older no-gos in `research_packet.json::negative_results` remain in force.

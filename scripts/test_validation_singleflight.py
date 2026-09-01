@@ -128,6 +128,15 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertTrue(payload.startswith(singleflight.TRUNCATED_LOG_PREFIX))
         self.assertLessEqual(len(payload), len(singleflight.TRUNCATED_LOG_PREFIX) + 1_024)
 
+    def test_only_external_signal_exits_are_automatic_retry_candidates(self) -> None:
+        for code in (-15, -9, 143, 137):
+            with self.subTest(code=code):
+                self.assertTrue(singleflight.is_external_termination_exit(code))
+        for code in (0, 1, 2, 75, singleflight.WORKER_TIMEOUT_EXIT_CODE):
+            with self.subTest(code=code):
+                self.assertFalse(singleflight.is_external_termination_exit(code))
+        self.assertEqual(singleflight.MAX_EXTERNAL_TERMINATION_ATTEMPTS, 3)
+
     def test_scheduler_cleanup_budget_excludes_cow_package_seeds(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             state = singleflight.ensure_state_root(Path(directory))
@@ -213,6 +222,31 @@ class ValidationSingleflightTests(unittest.TestCase):
                 or intervals[1]["end"] <= intervals[0]["start"],
                 intervals,
             )
+
+    def test_external_sigterm_is_resumed_by_the_same_owner(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            singleflight, "automatic_cleanup", return_value={"status": "fixture"}
+        ):
+            marker = Path(directory) / "first-attempt"
+            code = (
+                "import os,pathlib,signal,sys; "
+                f"p=pathlib.Path({str(marker)!r}); "
+                "already=p.exists(); "
+                "p.write_text('partial progress'); "
+                "os.kill(os.getpid(), signal.SIGTERM) if not already else sys.exit(0)"
+            )
+            specification = self._safe_spec([sys.executable, "-c", code])
+            submitted = singleflight.submit(
+                specification, Path(directory) / "state"
+            )
+            terminal, exit_code = singleflight.collect(
+                Path(directory) / "state", submitted["key"], True, 15
+            )
+        self.assertEqual(exit_code, 0, terminal)
+        self.assertEqual(terminal["attempt_count"], 2)
+        self.assertEqual(terminal["automatic_resume_count"], 1)
+        self.assertEqual(terminal["external_termination_exits"], [-15])
+        self.assertIn("automatically resuming partial build", terminal["stderr"]["tail"])
 
     def test_public_fast_build_enters_singleflight_before_lake(self) -> None:
         specification = {"key": "f" * 64}

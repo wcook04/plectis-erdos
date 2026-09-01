@@ -123,14 +123,13 @@ exposes a dated `research_corpus` handoff; read its `FRONTIER.md` before
 `STRONGEST_RESULTS.json`, and keep that source-current evidence separate from
 the claim registry and Lean proof authority.
 
-The current declaration atlas contains 13 declaration-shaped phrases captured
-from inside Lean block comments by its line-oriented builder. The query layer
-excludes those exact row ids. `scripts/audit_semantic_corpus.py` strips nested
-Lean comments from the source and fails unless the derived false-positive set
-is exactly the configured suppression set. The atlas remains the raw
-projection until its builder and active downstream projections can be
-regenerated together; query summaries therefore report both raw and effective
-declaration counts.
+The current declaration atlas/query path has no configured comment-derived
+false-positive rows. The query layer strips nested Lean comments from the
+source before semantic matching, and `scripts/audit_semantic_corpus.py` fails
+unless its independently derived false-positive set remains exactly equal to
+that empty suppression set. The atlas remains the raw projection until its
+builder and active downstream projections can be regenerated together; query
+summaries therefore report both raw and effective declaration counts.
 
 ## Question operators
 
