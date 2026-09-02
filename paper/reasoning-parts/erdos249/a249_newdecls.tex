@@ -462,8 +462,8 @@ coprime to $hq$, $hq\mid p-1$, and $p-1\ge N_0$. The characteristic-prime
 exceptional case in the cyclotomic order decomposition is eliminated
 directly, by choosing $q>2^h$ (rules out $p=q$) and $q>h$ (rules out
 $p\mid h$).
-\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1464}
-\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer_prime_order_decomposition}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1390}
+\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1607}
+\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer_prime_order_decomposition}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1431}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}.
 \end{thm}
 
@@ -483,8 +483,8 @@ The kernel decides two independent certificates at the composite cyclotomic
 anchor period $h=30$ (natural basepoint $N=300$, and the prime-anchored
 basepoint $N=330$), yielding a genuine new denominator exclusion:
 $S\ne r$ for every $r\in\mathbb{Q}$ with $r.\mathrm{den}\mid 2^{300}(2^{30}-1)$.
-\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_natural}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3167}
-\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_den_dvd_30_300}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3188}
+\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_natural}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3356}
+\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_den_dvd_30_300}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3377}
 \quad \ev{Cert} \quad \scale{fixed} \quad \coord{other:cyclotomic-anchor} --- a
 finite exclusion, not evidence toward the cofinal supply.
 \end{obs}
@@ -499,8 +499,8 @@ fixed finite set of primes $S$, all sufficiently large prime indices $q$
 avoid $S$ entirely on layer $C(mq)$; combined with a nontrivial-layer
 hypothesis this forces arbitrarily large new prime divisors on cofinally
 many prime indices.
-\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:156}
-\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:203}
+\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:165}
+\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:242}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}. This
 is the abstract producer instantiated unconditionally for $X-2$ in
 \S\ref{prime-ray-curvature}'s sibling result above; polynomial resultant
@@ -562,12 +562,12 @@ cyclotomic channel at height $h$ is literally the order-2 channel at height
 $2h$: the 2--3--4 fan of channels is a nested family along the tower
 $h,2h,4h,\dots$, not three unrelated moduli.
 \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_add}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:77}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_two_mul}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:94}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_two_mul}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:373}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:lcm-period-multiple}.
 \end{thm}
 
 \begin{obs}[Supply $\Leftrightarrow$ irrational --- reduction, not a result]
-\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}
+\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}
 \quad \ev{Lean} (equivalence proved; both directions of the underlying
 predicate are exactly as open as \#249 itself)
 \quad \scale{cofinal} \quad \coord{other:lcm-period-multiple}. The paper's
@@ -586,10 +586,10 @@ including the Cole factors of $2^{67}-1$ and the Mersenne prime $2^{127}-1$.
 One of the eight is certified at its own locked depth $L=h=67$, the concrete
 instance of the sufficient (not known necessary) depth-equals-period form
 $\mathrm{ApFullDepthEscape}$.
-\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:192}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:211}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300_fullDepth}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:219}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totient_series_ne_rat_of_den_dvd_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:255}
+\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:471}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:490}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300_fullDepth}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:498}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totient_series_ne_rat_of_den_dvd_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:534}
 \quad \ev{Cert} \quad \scale{fixed} \quad \coord{other:lcm-period-multiple}
 --- eight finite exclusions, not evidence toward the cofinal supply.
 \end{obs}
@@ -602,7 +602,7 @@ adaptive truncation budget, and proves the sharper predicate still closes
 \#249 through the existing singleton-certificate endpoint. This is, exactly
 as its own comment states, a reduction: ``the producer itself remains
 unproved.''
-\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:205}
+\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
 \quad \ev{Lean} (implication proved; antecedent
 \ev{Open})
 \quad \scale{cofinal} \quad \coord{other:first-harmonic}.

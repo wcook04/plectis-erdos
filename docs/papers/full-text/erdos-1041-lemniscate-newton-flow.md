@@ -888,47 +888,47 @@ Lean does not check the exposition, citation choices, or interpretation. This ma
 
 The public `ErdosProblems.Erdos1041.NewtonFlowRaySeparation` module contains the checked source for this note. The search of §<a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">8</a> is `scripts/search_counterexample.py` in the source package. The declaration table below is pinned to the shared formal-source commit used throughout this problem-note series.
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L34)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L34)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L38)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L38)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L77)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L77)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L80)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L80)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L84)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L84)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L92)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L92)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L127)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L127)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L130)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L130)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L147)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L147)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L152)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L152)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L162)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L162)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L179)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L179)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L197)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L230)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L230)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L257)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L257)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L287)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L306)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L306)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L315)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0f41cf184ec7490b9713e7a7be681db1dd9e5084/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L315)
 
 <div class="thebibliography">
 

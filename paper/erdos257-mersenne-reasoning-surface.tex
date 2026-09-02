@@ -54,7 +54,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
+\newcommand{\commit}{0f41cf184ec7490b9713e7a7be681db1dd9e5084}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -357,11 +357,11 @@ $E \approx 1.6067$, a relative density of about $62\%$. The positive-index digit
 $\mathcal{A}$ is injective: each achievable real has \emph{exactly one} support.
 \coord{achievement-set} \scale{uniform} \ev{Lean}\\
 \textbf{Sites:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656},
-\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1633},
-\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1649},
-\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1658},
+\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1656},
+\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1672},
+\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1681},
 \lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996},
-\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1559}.
+\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1582}.
 \end{thm}
 
 \begin{thm}[Support-restricted refinement]
@@ -477,7 +477,7 @@ specific real orbit. There is no family to range over.
 \coord{meta} \scale{uniform} \ev{Lean}\ev{Math}\\
 \textbf{Sites:} \lean{weightedBoolSum\_separated}{HalfCylinderIntegerGreedy.lean:447},
 \lean{three\_mul\_tailWeight\_add\_exactLateGap\_eq\_three\_mul\_headWeight}{HalfCylinderLargestSkipGap.lean:230},
-\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1559}.
+\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1582}.
 \end{obs}
 
 All six barriers below are consequences of Observation~\ref{obs:no-ensemble} in different
@@ -623,7 +623,7 @@ Each of the following is logically \emph{equivalent} to $1/2 \in \mathcal{A}$, n
 \item the negation of \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526}, and all seven forms of the
   associated classification chain.
 \end{enumerate}
-Forward directions are landed Lean (e.g.\ \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527},
+Forward directions are landed Lean (e.g.\ \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571},
 \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
 \lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}).
 The reverse directions of (d) and (e) are derived here from Lemma~\ref{lem:sqrt-witness} and are
@@ -724,10 +724,10 @@ two alternatives are exactly complementary
 (\lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}),
 with \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526} a finite witness type. In the other
 direction, certified death implies non-membership
-(\lean{certifiedGreedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1739}, over
-\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1733}; $3/4$ is certified dead at
+(\lean{certifiedGreedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1762}, over
+\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1756}; $3/4$ is certified dead at
 level $1$, lookahead $0$, by
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1755}), whereas the
+\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1778}), whereas the
 absence of such a certificate at any depth $D$ is compatible with a certificate at depth $D+1$ and
 therefore proves nothing. Membership asserts survival at \emph{every} rank
 (Theorem~\ref{thm:greedy-survival}), an infinite conjunction with no finite sub-conjunction
@@ -1172,9 +1172,9 @@ measure in its ambient interval $[0,E]$, whose length is $E\approx1.6067$.
 \scale{n/a} \ev{Lean}\\
 \textbf{Site:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656},
 \lean{isClosed\_mersenneAchievementSet}{GreedyAchievementSet.lean:660},
-\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1633},
-\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1649},
-\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1658},
+\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1656},
+\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1672},
+\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1681},
 \lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}. The proofs use only
 superincreasingness of $\{x_n\}$ and summability, so the argument transfers verbatim to any strictly
 superincreasing weight series.\\
@@ -1457,8 +1457,8 @@ separated (\emph{HalfSecondChannelSeparatedRat}) at every skipped rank, then
 $1/2\in\mathrm{mersenneAchievementSet}$; a rational specialization discharges the
 hypothesis from row $7$ on.
 \par\ev{Lean}\scale{uniform}\coord{second-channel-phase}
-\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3062}
-\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3095}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3106}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3139}
 \end{thm}
 
 \begin{thm}[Straddle-prefix closed-set criterion]
@@ -1800,8 +1800,8 @@ finite rational, contradicting irrationality. The mechanism (rational/finite-rep
 target, irrational full-series baseline $\Rightarrow$ complement support infinite) is
 fully general and would restate for \#249's own baseline constant if one exists.
 \par\ev{Lean}\scale{cofinal}\coord{greedy-orbit}
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527}
-\lean{irrational\_erdosBorweinMersenneConstant}{GreedyAchievementSet.lean:2446}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571}
+\lean{irrational\_erdosBorweinMersenneConstant}{GreedyAchievementSet.lean:2469}
 \end{thm}
 
 \begin{thm}[The nine-way half-membership classification hub]
@@ -2384,7 +2384,7 @@ where $\mathrm{mersenneAchievementSet} := \{x \mid \exists A:\mathrm{Set}\,\N,\ 
 \mathrm{CofinalPositiveHalfGreedySkips} \;\longrightarrow\; \mathrm{CofinalExactLocalMersenneHalfRows} \;\longrightarrow\; (1/2:\mathbb{R})\in\mathrm{mersenneAchievementSet},
 \]
 where $\mathrm{CofinalPositiveHalfGreedySkips} := \forall N,\ \exists c,\ \max(N,4)\le c \wedge 0 < \mathrm{greedyMersenneRemainderRat}(1/2,c-1) < \mathrm{mersenneWeightRat}(c)$ — the canonical rational half-greedy orbit itself has infinitely many positive skip events. A single skip at $c$ already gives $\mathrm{ExactLocalMersenneHalfRow}(2c-2)$ unconditionally (\texttt{exactLocalMersenneHalfRow\_of\_positiveHalfGreedySkip}, no capacity hypothesis at that step). This is the SHORTEST known path to the disproof: cofinally many such skips close the chain with zero further combinatorial search.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{greedy-orbit} \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:60} \lean{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73} \lean{exactLocalMersenneHalfRow\_of\_positiveHalfGreedySkip}{BooleanMobiusSkipRowCofinal.lean:31}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{greedy-orbit} \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84} \lean{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:97} \lean{exactLocalMersenneHalfRow\_of\_positiveHalfGreedySkip}{BooleanMobiusSkipRowCofinal.lean:55}
 \end{thm}
 
 \subsubsection*{The coherent-repair consumer (superseded, kept as a fallback target)}
@@ -2633,7 +2633,7 @@ Odd-denominator parity supplies the positivity clause in 257bm:c2 automatically.
 cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is
 infinite, which the displayed theorem identifies with half-membership. See 257bm:k5 for the
 reason this restatement does not itself prove membership.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
 \end{thm}
 
 \subsection{Invariants}
@@ -2964,7 +2964,7 @@ split inside the negative cell that the corpus has managed to exclude so far.
 \begin{defn}[257hg:i1 --- the Mersenne gap]
 Let $g_n:=w_n-T_n>0$, the
 per-level shortfall between a single weight and the true tail sum beyond it.
-\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2314} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2323}
+\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2337} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2346}
 \end{defn}
 
 \begin{thm}[257hg:i2 --- \texttt{mersenneGap\_tail\_le}, \texttt{tendsto\_mersenneGap\_tail\_zero}]
@@ -3728,11 +3728,11 @@ positive skip events. \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRow
 & \scale{cofinal} & $\forall N\ \exists c\ge\max(N,4),\ 0<\mathrm{rem}(c{-}1)<w_c$
 & \coord{greedy-orbit} \\
 Payoff theorem consuming the row above, with zero further combinatorial search once supplied.
-\lean{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73}
+\lean{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:97}
 \ev{Lean} (theorem proved; hypothesis open)
 & \scale{cofinal} & given $\forall N\,\exists c\ge N(\ldots)$ & \coord{greedy-orbit} \\
 Master half-branch dichotomy: membership iff the greedy skip set is infinite.
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571}
 \ev{Lean} (iff proved; both sides cofinal-shaped)
 & \scale{cofinal} & iff $(\mathrm{skippedSupport}).\mathrm{Infinite}$ & \coord{greedy-orbit} \\
 Seven-way classification hub: membership iff the seam word is not eventually right, iff
@@ -4181,8 +4181,8 @@ obstruction on $4\,\mathrm{rem}(D)-\mathrm{belowPulse}(D)-4$.
 
 \begin{obs}[F4 / two-sided cell exclusion] \ev{Lean}
 \lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374},
-\lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:3362},
-\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:3413}.
+\lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:4398},
+\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}.
 \textbf{Yields:} excluding exactly three integer values of the middle coordinate
 ($4\,\mathrm{rem}-\mathrm{belowPulse}-4 \notin \{-3,-2,-1\}$) plus one right-pulse-leak bound
 propagates, by induction from a decide-checked row-5 base, the two-sided invariant $\forall s
@@ -4428,9 +4428,9 @@ above.
 
 \begin{obs}[Cofinal positive skips \emph{is} the obligation] \ev{Lean}
 \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22},
-\lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:60},
+\lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84},
 line 60; A5
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527},
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571},
 A6 (\lean{}{GreedyAchievementSet.lean:1515}); positivity discharge
 \lean{}{BooleanMobiusCriticalCapacityCofinal.lean:138}.
 \textbf{Yields:} cofinally many positive rational-greedy skips $\Rightarrow$
@@ -4562,7 +4562,7 @@ aggregate form.
 \end{obs}
 
 \begin{obs}[NM-02 / single-target to all-rational-targets, promotable] \ev{Lean}
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571}
 (forward \lean{}{GreedyAchievementSet.lean:2482}; reverse
 \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}).
 \textbf{Yields:} $(1/2:\mathbb R)\in\mathrm{mersenneAchievementSet} \Leftrightarrow
@@ -5306,10 +5306,10 @@ denominator.
 \lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589}. Separately,
 $\mathsf{CertifiedGreedyMersenneDeath}$ is a decidable, finite-depth certificate proving a real $x$
 is \emph{not} in $\mathcal A$ (e.g.\ $3/4$ is machine-certified dead at level 1, lookahead 0:
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1755}), and this
+\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1778}), and this
 one-sidedness is structural: \textbf{absence} of a found death certificate, or survival through any
 finite depth, proves \emph{nothing} about membership.
-\lean{Erdos249257.CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1733}.
+\lean{Erdos249257.CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1756}.
 
 \textbf{Scope.} The odd-denominator fact rules out every finite support as a $1/2$-witness,
 unconditionally (this is exactly B4/C3 of Part~I/III's cut-locator machinery, and it is why any
@@ -5910,7 +5910,7 @@ Five biconditionals, each with $(1/2:\R)\in\mathcal{A}$ on the right:
 \text{(5)}\ \ \mathtt{HalfCarryCofinalTerminalOnlyStrip},
 \]
 where $G:=\mathtt{greedyMersenneSupport}(1/2)$. The forward directions of (2)--(5) are landed
-Lean (\lean{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73},
+Lean (\lean{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:97},
 \lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
 \lean{half_mem_mersenneAchievementSet_of_cofinalStripReturn}{CofinalStripReturn.lean:157},
 \lean{half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:134},
@@ -6133,7 +6133,7 @@ a small modulus predicts. That datum does not discriminate.
 Third, and this is the sharpest internal check available: pseudorandomness is a claim about the
 \emph{absence} of structure, and the corpus contains an unmistakable piece of \emph{present}
 structure --- strict superincreasingness of the Mersenne weights, which forces the digit coding to
-be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1559},
+be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1582},
 \ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
 coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
 description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The
@@ -6256,7 +6256,7 @@ unconditional Lean iff, to a purely combinatorial statement about one fixed orbi
 \[
 \mathrm{HALF}\ \Longleftrightarrow\ \left(\mathtt{greedyMersenneSkippedSupport}(1/2)\right).\mathrm{Infinite}
 \]
-(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2527},
+(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2571},
 \ev{Lean}, \scale{uniform}, coordinate \coord{mobius-mersenne}, target-generic in the reverse
 direction --- the forward direction uses only that the target is rational, so the same theorem
 holds verbatim for every rational $t\ge 0$ in place of $1/2$).
@@ -6286,7 +6286,7 @@ $(\mathtt{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite}$, so
 \end{prop}
 \ev{Math, adversarially verified} (Survivor 7, composition-survivor pass). \scale{cofinal}.
 \coord{mobius-mersenne, greedy orbit}. This closes off what the source bank advertised as "the
-shortest known path" to a disproof (\lean{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:60}): there is no shortcut through it, because it is not shorter.
+shortest known path" to a disproof (\lean{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84}): there is no shortcut through it, because it is not shorter.
 
 \begin{prop}[The terminal-only cofinal strip is equivalent to HALF]
 \label{prop:strip-equiv}

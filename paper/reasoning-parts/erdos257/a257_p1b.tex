@@ -83,7 +83,7 @@ where $\mathrm{mersenneAchievementSet} := \{x \mid \exists A:\mathrm{Set}\,\N,\ 
 \mathrm{CofinalPositiveHalfGreedySkips} \;\longrightarrow\; \mathrm{CofinalExactLocalMersenneHalfRows} \;\longrightarrow\; (1/2:\mathbb{R})\in\mathrm{mersenneAchievementSet},
 \]
 where $\mathrm{CofinalPositiveHalfGreedySkips} := \forall N,\ \exists c,\ \max(N,4)\le c \wedge 0 < \mathrm{greedyMersenneRemainderRat}(1/2,c-1) < \mathrm{mersenneWeightRat}(c)$ — the canonical rational half-greedy orbit itself has infinitely many positive skip events. A single skip at $c$ already gives $\mathrm{ExactLocalMersenneHalfRow}(2c-2)$ unconditionally (\texttt{exactLocalMersenneHalfRow\_of\_positiveHalfGreedySkip}, no capacity hypothesis at that step). This is the SHORTEST known path to the disproof: cofinally many such skips close the chain with zero further combinatorial search.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{greedy-orbit} \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:60} \lean{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73} \lean{exactLocalMersenneHalfRow\_of\_positiveHalfGreedySkip}{BooleanMobiusSkipRowCofinal.lean:31}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{greedy-orbit} \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84} \lean{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:97} \lean{exactLocalMersenneHalfRow\_of\_positiveHalfGreedySkip}{BooleanMobiusSkipRowCofinal.lean:55}
 \end{thm}
 
 \subsubsection*{The coherent-repair consumer (superseded, kept as a fallback target)}
@@ -332,7 +332,7 @@ Odd-denominator parity supplies the positivity clause in 257bm:c2 automatically.
 cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is
 infinite, which the displayed theorem identifies with half-membership. See 257bm:k5 for the
 reason this restatement does not itself prove membership.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
 \end{thm}
 
 \subsection{Invariants}
@@ -663,7 +663,7 @@ split inside the negative cell that the corpus has managed to exclude so far.
 \begin{defn}[257hg:i1 --- the Mersenne gap]
 Let $g_n:=w_n-T_n>0$, the
 per-level shortfall between a single weight and the true tail sum beyond it.
-\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2314} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2323}
+\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2337} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2346}
 \end{defn}
 
 \begin{thm}[257hg:i2 --- \texttt{mersenneGap\_tail\_le}, \texttt{tendsto\_mersenneGap\_tail\_zero}]

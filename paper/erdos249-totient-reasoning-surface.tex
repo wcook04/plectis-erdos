@@ -54,7 +54,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
+\newcommand{\commit}{0f41cf184ec7490b9713e7a7be681db1dd9e5084}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -408,7 +408,7 @@ bound on the carry family
 Several re-encodings are proved \emph{equivalent}
 to $\mathrm{Irrational}(S)$, not merely sufficient for it: the period-multiple
 kill supply
-(\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}),
+(\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}),
 the base certificate supply and its lcm-diagonal normal form
 (\lean{irrational\_totient\_series\_iff\_certificate\_supply}{LcmConeFlatness.lean:412};
 \lean{irrational\_totient\_series\_iff\_lcm\_diagonal\_certificate\_supply}{LcmConeFlatness.lean:426}),
@@ -647,7 +647,7 @@ is never used as a premise elsewhere in this document.
 \item \emph{Certificate completeness.} Every certificate vocabulary is an
   \emph{iff} with the underlying non-integrality, so every re-encoding of
   $\mathrm{Sep}$ is equivalent to $\mathrm{Sep}$
-  (\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153},
+  (\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432},
   forward at \texttt{:132}, converse at \texttt{:143}).
 \item \emph{Sample choice.} Any weakening in which the prover may \emph{choose}
   which indices to test collapses to $\mathrm{Irrational}(S)$ outright, because
@@ -1079,7 +1079,7 @@ $\ge \arccos(9/10)/2\pi \approx 0.0718$ from every integer.
 It implies $\mathrm{Irrational}(S)$.
 \coord{prime-pivot} \scale{cofinal} \ev{Lean}
 \lean{DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157}
-\lean{irrational\_totient\_series\_of\_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:205}
+\lean{irrational\_totient\_series\_of\_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
 \end{defn}
 
 It evades B1, B4, B5, B6 and B7 for the reasons given for Survivor 1: a
@@ -1111,15 +1111,15 @@ $\mathrm{certifiedKill}(td,\,N,\,td)$; unpacked,
 \]
 It implies $\mathrm{Irrational}(S)$.
 \coord{period-ray} \scale{cofinal} \ev{Lean}
-\lean{ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:162}
-\lean{irrational\_totient\_series\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:171}
+\lean{ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441}
+\lean{irrational\_totient\_series\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:450}
 \end{defn}
 
 This is the shortest fully stated open inequality the programme has produced.
 Its evasion of B2 is recorded on disk rather than argued: its ambient parent
 $\mathrm{PeriodMultipleKillSupply}$ is \emph{proved} equivalent to
 $\mathrm{Irrational}(S)$ and $\mathrm{ApFullDepthEscape}$ implies it
-(\lean{periodMultipleKillSupply\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:165}),
+(\lean{periodMultipleKillSupply\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:444}),
 so it is at least as strong, and possibly strictly stronger --- the file's own
 docstring records ``sufficient for irrationality; not known necessary''. Being
 possibly strictly stronger, certificate completeness cannot collapse it back.
@@ -2831,7 +2831,7 @@ search over any of the certificate families above as evidence toward rationality
 finite prefix of confirmed kills (Prop.~\ref{prop:SK-01-inv}, Prop.~\ref{prop:B11-inv}) as
 anything more than a floor to extend.
 \scale{n/a}\ \ev{Lean (structural caveat, cross-problem)}\ \coord{n/a}\\
-\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1733}
+\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1756}
 \end{obs}
 % ---- part a249_newdecls ----
 \subsection{Recently added declarations}
@@ -3298,8 +3298,8 @@ coprime to $hq$, $hq\mid p-1$, and $p-1\ge N_0$. The characteristic-prime
 exceptional case in the cyclotomic order decomposition is eliminated
 directly, by choosing $q>2^h$ (rules out $p=q$) and $q>h$ (rules out
 $p\mid h$).
-\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1464}
-\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer_prime_order_decomposition}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1390}
+\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1607}
+\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer_prime_order_decomposition}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1431}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}.
 \end{thm}
 
@@ -3319,8 +3319,8 @@ The kernel decides two independent certificates at the composite cyclotomic
 anchor period $h=30$ (natural basepoint $N=300$, and the prime-anchored
 basepoint $N=330$), yielding a genuine new denominator exclusion:
 $S\ne r$ for every $r\in\mathbb{Q}$ with $r.\mathrm{den}\mid 2^{300}(2^{30}-1)$.
-\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_natural}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3167}
-\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_den_dvd_30_300}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3188}
+\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_natural}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3356}
+\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_den_dvd_30_300}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3377}
 \quad \ev{Cert} \quad \scale{fixed} \quad \coord{other:cyclotomic-anchor} --- a
 finite exclusion, not evidence toward the cofinal supply.
 \end{obs}
@@ -3335,8 +3335,8 @@ fixed finite set of primes $S$, all sufficiently large prime indices $q$
 avoid $S$ entirely on layer $C(mq)$; combined with a nontrivial-layer
 hypothesis this forces arbitrarily large new prime divisors on cofinally
 many prime indices.
-\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:156}
-\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:203}
+\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:165}
+\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:242}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}. This
 is the abstract producer instantiated unconditionally for $X-2$ in
 \S\ref{prime-ray-curvature}'s sibling result above; polynomial resultant
@@ -3398,12 +3398,12 @@ cyclotomic channel at height $h$ is literally the order-2 channel at height
 $2h$: the 2--3--4 fan of channels is a nested family along the tower
 $h,2h,4h,\dots$, not three unrelated moduli.
 \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_add}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:77}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_two_mul}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:94}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_two_mul}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:373}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:lcm-period-multiple}.
 \end{thm}
 
 \begin{obs}[Supply $\Leftrightarrow$ irrational --- reduction, not a result]
-\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}
+\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}
 \quad \ev{Lean} (equivalence proved; both directions of the underlying
 predicate are exactly as open as \#249 itself)
 \quad \scale{cofinal} \quad \coord{other:lcm-period-multiple}. The paper's
@@ -3422,10 +3422,10 @@ including the Cole factors of $2^{67}-1$ and the Mersenne prime $2^{127}-1$.
 One of the eight is certified at its own locked depth $L=h=67$, the concrete
 instance of the sufficient (not known necessary) depth-equals-period form
 $\mathrm{ApFullDepthEscape}$.
-\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:192}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:211}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300_fullDepth}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:219}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totient_series_ne_rat_of_den_dvd_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:255}
+\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:471}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:490}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300_fullDepth}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:498}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totient_series_ne_rat_of_den_dvd_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:534}
 \quad \ev{Cert} \quad \scale{fixed} \quad \coord{other:lcm-period-multiple}
 --- eight finite exclusions, not evidence toward the cofinal supply.
 \end{obs}
@@ -3438,7 +3438,7 @@ adaptive truncation budget, and proves the sharper predicate still closes
 \#249 through the existing singleton-certificate endpoint. This is, exactly
 as its own comment states, a reduction: ``the producer itself remains
 unproved.''
-\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:205}
+\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
 \quad \ev{Lean} (implication proved; antecedent
 \ev{Open})
 \quad \scale{cofinal} \quad \coord{other:first-harmonic}.
@@ -5271,8 +5271,8 @@ Certified finite-depth ``death'' certificates as a route to membership proofs
 (both problems) &
 \(\mathtt{CertifiedGreedyMersenneDeath}(x,\mathrm{level},\mathrm{lookahead})\)
 is a decidable, finite-depth certificate proving non-membership only
-(\lean{greedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1724}; witness
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1755}, \(3/4\) certified dead at
+(\lean{greedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1747}; witness
+\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1778}, \(3/4\) certified dead at
 level 1). \ev{Cert} \scale{bounded} \coord{greedy-orbit} &
 Structural one-sidedness, recurring across the WHOLE certified-kill family
 (\lean{TotientTailPeriodKiller.lean}{TotientTailPeriodKiller.lean}, \lean{LcmConeFlatness.lean}{LcmConeFlatness.lean}, this one):
@@ -5485,7 +5485,7 @@ obligation tolerates an exponentially looser carry but demands the support
 be confined to a lower window — the gap is support locality, not carry
 size, and neither socket implies the other. \\
 257-universal & NM-02,
-\lean{infinite\_greedyMersenneSkippedSupport\_of\_half\_mem}{GreedyAchievementSet.lean:2495} & scale only &
+\lean{infinite\_greedyMersenneSkippedSupport\_of\_half\_mem}{GreedyAchievementSet.lean:2547} & scale only &
 \textbf{PROMOTABLE (no new mathematics), but does not close anything.}
 The proof was opened and found already uniform in the target in every
 internal step; only the statement's own quantifier is artificially pinned
@@ -6093,7 +6093,7 @@ many multiplicative values. \ev{Open}
 \]
 \lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:205}
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
 \quad \ev{Open} \quad \scale{cofinal}.
 
 \paragraph{What it says, after Lemma~\ref{lem:orbit}.}
@@ -6194,11 +6194,11 @@ is itself a well-defined finite piece of work.
   \forall d\ge 1\ \forall N\ \exists t\ge 1:\ \mathrm{certifiedKill}(td,\,N,\,td),
 \]
 unpacked, $(N+2td+2:\Z)<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)$.
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:162},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:171},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:450},
 ambient equivalence
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}
 \quad \ev{Open} \quad \scale{cofinal}. It is the shortest fully stated open
 inequality the programme has produced.
 

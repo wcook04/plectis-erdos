@@ -107,11 +107,11 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:6b89054ebbf6315398e911a5708dd7ab53c1c2fe24eec0abb74e7ea6bc0aa015",
-    "docs/claims.json": "sha256:f9958b473e2fa2fc37da813b41e36dc16c2406b548600421fc35c2fde17ba762",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:6f21a1c28dd78a29cdf9074fc5fdee375fe71377210fa3f99aa5b98c2fd23b26",
+    "docs/claims.json": "sha256:6e882fc7b54ae035b7200a818b24d894acc233d7cbe8c66b3ffad77e7b8f5453",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:fc62dc309daa7cbc97ddb92abd530b35b7de2d37dfa6f5f22899c65f2beea7dc",
-    "docs/publication_contract.json": "sha256:f98a040f13cad7ba042ff1add74e94ad3ab8782074ddbfd8bb87a7d051fb2b6b",
+    "docs/problems.json": "sha256:86e883e76b2bbb9ac53343ee82a886d4ce9849d7e5ba13f1fd92ff48ac60acc9",
+    "docs/publication_contract.json": "sha256:7310c66b8505f487dce7454283a5814ac95dee0840f2144020027796410a0f0e",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -435,7 +435,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:fc62dc309daa7cbc97ddb92abd530b35b7de2d37dfa6f5f22899c65f2beea7dc",
+      "content_digest": "sha256:86e883e76b2bbb9ac53343ee82a886d4ce9849d7e5ba13f1fd92ff48ac60acc9",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -448,9 +448,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-08-12-r2",
+      "public_tag": "formal-source-2026-09-02",
       "publication_state": "published_committed_checkpoint",
-      "ref": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
+      "ref": "0f41cf184ec7490b9713e7a7be681db1dd9e5084",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

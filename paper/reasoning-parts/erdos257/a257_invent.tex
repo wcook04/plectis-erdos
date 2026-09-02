@@ -443,7 +443,7 @@ Five biconditionals, each with $(1/2:\R)\in\mathcal{A}$ on the right:
 \text{(5)}\ \ \mathtt{HalfCarryCofinalTerminalOnlyStrip},
 \]
 where $G:=\mathtt{greedyMersenneSupport}(1/2)$. The forward directions of (2)--(5) are landed
-Lean (\lean{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73},
+Lean (\lean{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:97},
 \lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
 \lean{half_mem_mersenneAchievementSet_of_cofinalStripReturn}{CofinalStripReturn.lean:157},
 \lean{half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:134},
@@ -666,7 +666,7 @@ a small modulus predicts. That datum does not discriminate.
 Third, and this is the sharpest internal check available: pseudorandomness is a claim about the
 \emph{absence} of structure, and the corpus contains an unmistakable piece of \emph{present}
 structure --- strict superincreasingness of the Mersenne weights, which forces the digit coding to
-be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1559},
+be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1582},
 \ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
 coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
 description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The

@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:fc62dc309daa7cbc97ddb92abd530b35b7de2d37dfa6f5f22899c65f2beea7dc",
+    "projection_digest": "sha256:86e883e76b2bbb9ac53343ee82a886d4ce9849d7e5ba13f1fd92ff48ac60acc9",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1816,7 +1816,7 @@
         ],
         "note": {
           "artifact_id": "erdos_68_note",
-          "title": "Factorial Carries and Finite Channel Obstructions",
+          "title": "Factorial-Channel Obstructions and Exact Orbit Boundaries",
           "source_path": "paper/erdos-68-factorial-denominator-irrationality.tex",
           "rendered_path": "erdos-68-factorial-denominator-irrationality.pdf",
           "authority_posture": "authored_mathematical_exposition_of_unregistered_expansion_modules_and_an_external_finite_certificate_not_Lean_proof_authority"
@@ -1862,7 +1862,7 @@
         "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement.",
         "paper": {
           "paper_id": "erdos-68-factorial-denominator-irrationality",
-          "title": "Factorial Carries and Finite Channel Obstructions",
+          "title": "Factorial-Channel Obstructions and Exact Orbit Boundaries",
           "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
           "pdf": "erdos-68-factorial-denominator-irrationality.pdf",
           "full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
@@ -2678,7 +2678,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1049_note",
-          "title": "Sharp Height and Four-Jet Obstructions at Base 3/2",
+          "title": "Sharp Normalized Hankel Order and Arithmetic Obstructions at Base $3/2$",
           "source_path": "paper/erdos-1049-rational-base-lambert.tex",
           "rendered_path": "erdos-1049-rational-base-lambert.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2719,7 +2719,7 @@
         "finite_search": null,
         "paper": {
           "paper_id": "erdos-1049-rational-base-lambert",
-          "title": "Sharp Height and Four-Jet Obstructions at Base 3/2",
+          "title": "Sharp Normalized Hankel Order and Arithmetic Obstructions at Base 3/2",
           "source": "paper/erdos-1049-rational-base-lambert.tex",
           "pdf": "erdos-1049-rational-base-lambert.pdf",
           "full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",

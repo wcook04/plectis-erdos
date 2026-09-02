@@ -178,7 +178,7 @@ bound on the carry family
 Several re-encodings are proved \emph{equivalent}
 to $\mathrm{Irrational}(S)$, not merely sufficient for it: the period-multiple
 kill supply
-(\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}),
+(\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432}),
 the base certificate supply and its lcm-diagonal normal form
 (\lean{irrational\_totient\_series\_iff\_certificate\_supply}{LcmConeFlatness.lean:412};
 \lean{irrational\_totient\_series\_iff\_lcm\_diagonal\_certificate\_supply}{LcmConeFlatness.lean:426}),
@@ -417,7 +417,7 @@ is never used as a premise elsewhere in this document.
 \item \emph{Certificate completeness.} Every certificate vocabulary is an
   \emph{iff} with the underlying non-integrality, so every re-encoding of
   $\mathrm{Sep}$ is equivalent to $\mathrm{Sep}$
-  (\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153},
+  (\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:432},
   forward at \texttt{:132}, converse at \texttt{:143}).
 \item \emph{Sample choice.} Any weakening in which the prover may \emph{choose}
   which indices to test collapses to $\mathrm{Irrational}(S)$ outright, because
@@ -849,7 +849,7 @@ $\ge \arccos(9/10)/2\pi \approx 0.0718$ from every integer.
 It implies $\mathrm{Irrational}(S)$.
 \coord{prime-pivot} \scale{cofinal} \ev{Lean}
 \lean{DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157}
-\lean{irrational\_totient\_series\_of\_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:205}
+\lean{irrational\_totient\_series\_of\_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:524}
 \end{defn}
 
 It evades B1, B4, B5, B6 and B7 for the reasons given for Survivor 1: a
@@ -881,15 +881,15 @@ $\mathrm{certifiedKill}(td,\,N,\,td)$; unpacked,
 \]
 It implies $\mathrm{Irrational}(S)$.
 \coord{period-ray} \scale{cofinal} \ev{Lean}
-\lean{ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:162}
-\lean{irrational\_totient\_series\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:171}
+\lean{ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:441}
+\lean{irrational\_totient\_series\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:450}
 \end{defn}
 
 This is the shortest fully stated open inequality the programme has produced.
 Its evasion of B2 is recorded on disk rather than argued: its ambient parent
 $\mathrm{PeriodMultipleKillSupply}$ is \emph{proved} equivalent to
 $\mathrm{Irrational}(S)$ and $\mathrm{ApFullDepthEscape}$ implies it
-(\lean{periodMultipleKillSupply\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:165}),
+(\lean{periodMultipleKillSupply\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:444}),
 so it is at least as strong, and possibly strictly stronger --- the file's own
 docstring records ``sufficient for irrationality; not known necessary''. Being
 possibly strictly stronger, certificate completeness cannot collapse it back.
