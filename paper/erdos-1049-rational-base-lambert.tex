@@ -9,14 +9,14 @@
 \renewcommand{\commit}{0f41cf184ec7490b9713e7a7be681db1dd9e5084}
 \renewcommand{\commitshort}{0f41cf184ec7}
 \hypersetup{
-  pdftitle={Sharp normalized Hankel order and arithmetic obstructions at base 3/2 for Erdős Problem 1049},
+  pdftitle={Sharp height and four-jet obstructions at base 3/2 for Erdős Problem 1049},
   pdfsubject={Erdős Problem Notes: Problem 1049},
-  pdfkeywords={irrationality, Lambert series, rational base, Hankel determinant, q-logarithm, Padé approximation, Lean 4},
+  pdfkeywords={irrationality, Lambert series, rational base, Padé approximation, Lean 4},
 }
 
-\runninghead{Erd\H{o}s \#1049: sharp Hankel order and arithmetic obstructions}
-\title{Sharp Normalized Hankel Order and Arithmetic Obstructions at Base $3/2$}
-\subtitle{An exact all-rank formula and named-route closures for Erd\H{o}s
+\runninghead{Erd\H{o}s \#1049: sharp obstructions at base 3/2}
+\title{Sharp Height and Four-Jet Obstructions at Base $3/2$}
+\subtitle{An exact $41/65$ certificate for Erd\H{o}s
 Problem~\#1049}
 \author{Will Cook}
 \date{July 2026}
@@ -35,31 +35,7 @@ Erd\H{o}s Problem~\#1049 asks whether \(F(t)\) is irrational for every
 rational \(t>1\).  The problem remains open, and this paper proves no
 irrationality result at \(t=3/2\).
 
-Our strongest theorem sharpens the normalized Hankel estimate in Zudilin's
-Pad\'e construction.  At \(x=z=1\), if \(V_N^*\) is his rank-\(N\)
-normalized determinant, then for every \(N\ge1\)
-\[
- \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
- \qquad
- [q^{\operatorname{ord}_q V_N^*}]V_N^*
-   =\frac{(N!)^2(N+1)!}{2^N}.
-\]
-The published argument proves the displayed order only as a lower bound.  An
-associated-graded recurrence identifies every transformed-row leading
-coefficient, and a Vandermonde determinant proves equality.  Thus additional
-normalized-Hankel \(q\)-order cannot supply the missing analytic decay in this
-specific construction.  This is a route closure, not an irrationality result:
-denominator-factor extraction and alternative integral models remain open.
-
-Separately, at a rational target $a/q$, prime support in the denominator
-coordinate of an integral approximation row forces the sharp gap
-$|Ba/q-A|\ge1/q$.  A first-power determinant condition forces that gap in at
-least one of two rows, and two noncollinear integral rows cannot both have
-remainders tending to zero.  These are exact arithmetic endgames, but their
-prime-support and analytic-decay hypotheses are not constructed for the
-actual $q$-Ap\'ery family.
-
-At \(3/2\), a second exact input is
+The main exact input is
 \[
  2^{64}<3^{41}<2^{65}.
 \]
@@ -101,13 +77,7 @@ survives normalisation, whose selected polynomial pair and remainder are
 nonzero, and whose decay beats its height.
 \end{abstract}
 
-\begin{paperresult}{Sharp formula and exact remaining boundary}
-\textbf{All-rank formula.} Zudilin's normalized Hankel lower bound is an
-equality at $x=z=1$, with first coefficient $(N!)^2(N+1)!/2^N$; hidden
-normalized-Hankel order is therefore unavailable as extra analytic decay.
-\textbf{Rational gap.} Prime-supported integral rows have a sharp $1/q$
-gap, and noncollinear pairs cannot both decay to zero; constructing the
-required rows remains open.
+\begin{paperresult}{What the paper rules out}
 \textbf{Exact arithmetic.} The bracket $2^{64}<3^{41}<2^{65}$ excludes the
 stated scalar and first-order Hermite--Pad\'e height mechanisms at $3/2$.
 It also yields the sharp finite four-jet count at bottom depth $41$, with a
@@ -280,19 +250,6 @@ compute one; we record the remark because it shows the rational-base extension
 was already contemplated, and because any threshold of that shape is a
 statement about $\log s/\log r$ of exactly the kind
 Section~\ref{sec:sevenhalves} treats.
-
-Section~\ref{sec:hankel-order} returns to the normalized determinant in
-Zudilin's Section~4 and sharpens its $q$-order estimate at $x=z=1$.  The
-closest recent determinant comparison we found is Chern--Jiu--Li--Wang's
-theory of $q$-binomial transforms~\cite{chern2026}.  Their theorems determine
-the highest degree and leading coefficient in an independent transform
-parameter for two finite $q$-binomial transforms of an arbitrary sequence.
-The result below instead determines the lowest $q$-exponent and first
-coefficient of Zudilin's particular infinite $q$-hypergeometric moment
-sequence after fixing $x=z=1$.  Their paper neither treats this sequence nor
-the generalized $q$-logarithm, so its leading-coefficient theorems do not imply
-Theorem~\ref{res:zudilin-sharp-qorder}.  This is an exact comparison of theorem
-statements, not a priority claim.
 No claim of priority is made for the analysis below.  It records the formal
 status and limits of the argument; it does not add a theorem about $F(t)$.
 
@@ -417,9 +374,7 @@ but no claim of exact optimality at every $T$ is made.
 \paragraph{Results and boundary.}
 The linked Lean declarations establish exact inequalities, congruences,
 finite collision counts, recurrence identities, and exclusions for the named
-models.  The normalized-Hankel theorem is an ordinary all-rank proof with a
-Lean-checked source-tail, recurrence, and determinant chain plus finite replay,
-not yet an end-to-end Lean theorem.  Bundschuh and V\"a\"an\"anen's theorem at \(7/2\),
+models.  Bundschuh and V\"a\"an\"anen's irrationality theorem at \(7/2\),
 Rivin's functional nonrationality theorem, and the two-variable Mahler theorem
 used below remain external results.  None of the formal statements proves an
 irrationality result at a rational noninteger base.  At \(3/2\), the missing
@@ -427,13 +382,8 @@ step is still an actual primitive approximation family with nonzero remainder
 and an asymptotic height margin.
 
 \paragraph{Structure.}
-Section~\ref{sec:hankel-order} proves the all-rank normalized-Hankel order and
-leading coefficient and states exactly which analytic route it closes.
 Section~\ref{sec:sharp} derives the height and charge exclusions from the sharp
-$41/65$ power certificate.  Section~\ref{sec:prime-support} proves the sharp
-one- and two-row rational gaps, the no-double-decay theorem, the real
-unit-determinant height--decay tradeoff, and the reduced selector collision.
-Section~\ref{sec:primitive} proves that integer scalar content is neutral for the
+$41/65$ power certificate.  Section~\ref{sec:primitive} proves that integer scalar content is neutral for the
 local-to-Archimedean balance.
 
 Section~\ref{sec:endpoints} proves the endpoint
@@ -453,110 +403,9 @@ declaration at the pinned source revision~\commitshort.
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; Lambert series; rational base;
-Hankel determinant; $q$-logarithm; Pad\'e approximation; Lean~4.
+Pad\'e approximation; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11J82, 68V20 (secondary).
-
-\section{Exact normalized-Hankel order in Zudilin's construction}
-\label{sec:hankel-order}
-
-At $x=z=1$, Zudilin's normalized moments are
-\[
- v_m^*=\sum_{t\ge0}q^{(m+1)t}
- \frac{(q;q)_m^3(q^{t+1};q)_m}{(q^{m+1+t};q)_{m+1}},
- \qquad
- V_N^*=\det_{0\le i,j<N}(v_{i+j}^*).
-\]
-His row transformation proves
-\[
- \operatorname{ord}_q V_N^*\ge
- \frac{N(N-1)(2N-1)}6
-\]
-for every $N\ge1$~\cite[Section~4]{zudilin2016}.  Tracking the first
-associated-graded coefficient shows that this estimate is always sharp.
-
-\begin{theorem}[sharp normalized Hankel order]
-\label{res:zudilin-sharp-qorder}
-For every $N\ge1$,
-\[
- \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
-\]
-and the coefficient of the first nonzero monomial is
-\[
- [q^{N(N-1)(2N-1)/6}]V_N^*
-   =\frac{(N!)^2(N+1)!}{2^N}.
-\]
-\end{theorem}
-
-\begin{proof}
-We sharpen the source row operation before taking the determinant.  For a
-formal series $H(X)=1+\sum_{r\ge1}a_rX^r$, let $c_{j,t}$ be the coefficient of
-tail state zero after $j$ applications of the associated-graded backward
-shift, starting in tail state $t$.  A positive state moves down one place with
-coefficient $-1$, while state zero emits state $s-1$ with coefficient $a_s$.
-Thus
-\[
- c_{0,t}=\mathbf1_{t=0},\qquad
- c_{j+1,t}=-c_{j,t-1}\ (t>0),\qquad
- c_{j+1,0}=\sum_{s\ge1}a_sc_{j,s-1}.
-\]
-If $h_r=[X^r]H(X)^{-1}$, the reciprocal identity
-$h_{r+1}=-\sum_{s=1}^{r+1}a_sh_{r+1-s}$ gives, by induction,
-\[
- c_{j,t}=(-1)^jh_{j-t}\quad(0\le t\le j),
- \qquad c_{j,t}=0\quad(t>j).
-\]
-
-For the actual normalized summand, the ratio of consecutive moment indices
-has associated-grade factor
-\[
- H_t(X)=\frac{(1-X)^3(1-q^tX)^2}
- {(1-q^tX^2)(1-q^{t+1}X^2)}.
-\]
-At $q=0$ this is $(1-X)^3$ for $t\ge1$, while
-$H_0(X)=(1-X)^4/(1+X)$.  Consequently the $t\ge1$ states contribute
-$(-1)^j\binom{j-t+2}{2}$, and state zero contributes
-\[
- (-1)^j\frac{(j+1)(j+2)(2j+3)}6.
-\]
-Summing $0\le t\le j$ gives the transformed-row leading term
-\[
- D_jv_{j+\ell}^*
- =(-1)^j\frac{(j+1)^2(j+2)}2
-   q^{j(j+1)/2+j\ell}
-  +O\!\left(q^{j(j+1)/2+j\ell+1}\right),
-\]
-where $D_j$ denotes the determinant-preserving source row operation.
-
-After extracting the row factors, the first coefficient matrix is
-$(q^{j\ell})_{0\le j,\ell<N}$.  Its Vandermonde determinant has order
-$N(N-1)(N-2)/6$; the row factors contribute
-$N(N-1)(N+1)/6$.  Their sum is the asserted
-$N(N-1)(2N-1)/6$.  The product of the row coefficients has absolute value
-\[
- \prod_{j=0}^{N-1}\frac{(j+1)^2(j+2)}2
- =\frac{(N!)^2(N+1)!}{2^N},
-\]
-and the row signs cancel the leading Vandermonde sign.  Hence the first
-coefficient is positive and has the displayed value.
-\end{proof}
-
-\paragraph{Consequence and evidence boundary.}
-The theorem closes one named possibility: the normalized determinant cannot
-decay faster through an unrecorded increase in $q$-order.  It does not extract
-a denominator factor, improve the remaining height balance, or prove
-irrationality at $3/2$.  Lean checks the generic recurrence
-\lword{Erdos1049/AdelicHeightBridge.lean}{185}{hankelAssociatedCoeff_eq_reciprocal}{at all depths} and its actual positive/zero tail specializations
-\lword{Erdos1049/AdelicHeightBridge.lean}{388}{hankelAssociatedCoeff_zudilinPositiveTail_closed}{and} \lword{Erdos1049/AdelicHeightBridge.lean}{419}{hankelAssociatedCoeff_zudilinZeroTail_zero}{respectively}.
-The exact tail fan-in \lword{Erdos1049/AdelicHeightBridge.lean}{1454}{zudilinAssociatedTailRowCoeff_eq}{gives the row scalar, while the literal source recurrence} \lword{Erdos1049/AdelicHeightBridge.lean}{1206}{zudilinNormalizedTail_succ}{holds for every index}.
-The step is $1$ below degree $n+1$ \lword{Erdos1049/AdelicHeightBridge.lean}{1005}{coeff_zudilinNormalizedTailStepUnit_eq_zero_of_pos_lt}{with first coefficient $-5$ or $-3$} \lword{Erdos1049/AdelicHeightBridge.lean}{930}{coeff_zudilinNormalizedTailStepUnit_first}{and the exact operator recurrence} \lword{Erdos1049/AdelicHeightBridge.lean}{591}{zudilinBackwardShiftApply_succ}{holds on arbitrary sequences}.
-The first transformed row is complete in every column: \lword{Erdos1049/AdelicHeightBridge.lean}{1407}{zudilinTransformedNormalizedMoment_one_initialMonomial}{packages exact order $\ell+1$ and leading coefficient $-6$}.
-The exact source $D_j$ row matrix preserves every Hankel determinant
-\lword{Erdos1049/AdelicHeightBridge.lean}{700}{det_zudilinBackwardShiftedMomentMatrix}{in power series}; exact tails have unit first monomial
-\lword{Erdos1049/AdelicHeightBridge.lean}{1294}{coeff_zudilinNormalizedTail_leading}{and moments isolate the zero tail below degree $n+1$} \lword{Erdos1049/AdelicHeightBridge.lean}{1349}{coeff_zudilinNormalizedMoment_of_lt}{in every row}.
-Lean checks determinant noncancellation \lword{Erdos1049/AdelicHeightBridge.lean}{1567}{det_zudilinAssociatedLeadingMatrix}{at every rank}, exact order \lword{Erdos1049/AdelicHeightBridge.lean}{1727}{six_mul_order_det_zudilinAssociatedLeadingMatrix}{and the}
-factorial assembly \lword{Erdos1049/AdelicHeightBridge.lean}{1738}{zudilinSharpHankelOrderAndCoeff_algebraicAssembly}{plus the generic unique-minimum bridge} \lword{Erdos1049/AdelicHeightBridge.lean}{771}{order_det_eq_of_unique_minimizing_permutation}{for filtered determinants}.
-The serialized Lean replay and exact ranks $1$ through $7$ pass; only the filtered initial-monomial iteration for rows $j\ge2$ and all columns remains formal.
 
 \section{The sharp $41/65$ certificate}\label{sec:sharp}
 
@@ -679,196 +528,6 @@ Lean propositions.  Their role is exclusion: scalar content and the forced
 first-order border do not supply enough charge.  Higher residual valuations,
 determinant cancellation, a different integral model, and irrationality of
 $F(3/2)$ remain open.
-
-\section{Prime-supported rational gaps and two-row escape}
-\label{sec:prime-support}
-
-A second strand concerns the arithmetic conclusion of a rational linear-form
-argument.  Let \(a,q,A,B\in\Z\) with \(q>0\), and
-write
-\[
-  \Lambda_{A,B}(a/q)=B\frac aq-A .
-\]
-Here \(q\) is the denominator used to present the rational target, whereas
-\(B\) is a coefficient of an integral approximation row.  They play different
-roles.
-
-\begin{theorem}[prime-supported two-row gap]
-\label{res:prime-supported-two-selector-gap}
-Let \(\ell\) be prime and let
-\((A_1,B_1),(A_2,B_2)\in\Z^2\).  Suppose
-\[
- \ell\nmid q,\qquad
- \ell\mid B_1,\quad \ell\mid B_2,\qquad
- \ell^2\nmid A_1B_2-A_2B_1 .
-\]
-Then
-\[
- \left|\Lambda_{A_1,B_1}(a/q)\right|\ge\frac1q
- \quad\hbox{or}\quad
- \left|\Lambda_{A_2,B_2}(a/q)\right|\ge\frac1q .
-\]
-The constant \(1/q\) cannot be increased uniformly.
-\end{theorem}
-
-\begin{proof}
-If \(\ell\) divided both \(A_1\) and \(A_2\), then \(\ell^2\) would divide
-both \(A_1B_2\) and \(A_2B_1\), contrary to the determinant hypothesis.
-Choose \(i\in\{1,2\}\) with \(\ell\nmid A_i\).  If
-\(B_i a-A_iq=0\), primality and \(\ell\mid B_i\) would force
-\(\ell\mid A_i\) or \(\ell\mid q\), again a contradiction.  Hence the
-integer \(B_i a-A_iq\) is nonzero, and
-\[
- \left|\Lambda_{A_i,B_i}(a/q)\right|
- =\frac{|B_i a-A_iq|}{q}\ge\frac1q .
-\]
-For sharpness take \(a=1\), \(q=2\), \(\ell=3\),
-\((A_1,B_1)=(1,3)\), and \((A_2,B_2)=(2,3)\).  The determinant is \(-3\),
-while both absolute remainders are \(1/2\).
-\end{proof}
-
-\begin{corollary}[rational two-row no-double-decay]
-\label{res:rational-two-selector-no-double-decay}
-Let \((A_{1,n},B_{1,n})\) and \((A_{2,n},B_{2,n})\) be sequences of integral
-rows satisfying
-\[
- A_{1,n}B_{2,n}-A_{2,n}B_{1,n}\ne0
- \qquad\hbox{for every }n .
-\]
-Then the two sequences
-\[
- \Lambda_{A_{1,n},B_{1,n}}(a/q),
- \qquad
- \Lambda_{A_{2,n},B_{2,n}}(a/q)
-\]
-cannot both tend to zero.
-\end{corollary}
-
-\begin{proof}
-At each \(n\), the nonzero exterior determinant prevents both rational linear
-forms from vanishing.  Every nonzero integral linear form at \(a/q\) has
-absolute value at least \(1/q\).  If both sequences tended to zero, then
-eventually both absolute values would be strictly smaller than \(1/q\), a
-contradiction.
-\end{proof}
-
-This corollary is an obstruction at rational targets, not an irrationality
-theorem.  An application must still construct noncollinear rows whose two
-analytic remainders tend to zero under the contrary rationality hypothesis.
-
-\begin{proposition}[one-row prime-supported gap]
-\label{res:prime-supported-one-row-gap}
-Let \(\ell\) be prime, \(\ell\mid B\), \(\ell\nmid A\), and
-\(\ell\nmid q\).  Then
-\[
- \left|\Lambda_{A,B}(a/q)\right|\ge\frac1q .
-\]
-The constant is sharp.
-\end{proposition}
-
-\begin{proof}
-The numerator \(Ba-Aq\) cannot vanish: otherwise \(\ell\mid Aq\), and
-primality would contradict \(\ell\nmid A\) and \(\ell\nmid q\).  Its
-absolute value is therefore at least one.  Equality is attained by
-\(a=1,q=2,\ell=3,A=1,B=3\).
-\end{proof}
-
-\begin{corollary}[one-row prime-power-supported gap]
-\label{res:prime-power-supported-one-row-gap}
-Let \(\ell\) be prime, let \(r\ge1\), and suppose
-\(\ell^r\mid B\), \(\ell\nmid A\), and \(\ell\nmid q\).  Then
-\[
- \left|\Lambda_{A,B}(a/q)\right|\ge\frac1q .
-\]
-\end{corollary}
-
-\begin{proof}
-Since \(r\ge1\), the prime \(\ell\) divides \(B\), and
-Proposition~\ref{res:prime-supported-one-row-gap} applies.
-\end{proof}
-
-The prime-power hypothesis records stronger denominator data but does not
-improve the sharp \(1/q\) conclusion.
-
-\begin{proposition}[real unit-determinant height--decay tradeoff]
-\label{res:unit-determinant-height-decay}
-Let \(F\in\R\), let \((A_1,B_1),(A_2,B_2)\in\R^2\), and let
-\(u,v,w,z\in\R\) satisfy \(|uz-vw|=1\).  Define the recombined rows by
-\[
- (A'_1,B'_1)=u(A_1,B_1)+v(A_2,B_2),\qquad
- (A'_2,B'_2)=w(A_1,B_1)+z(A_2,B_2).
-\]
-Suppose
-\[
- |u|,|v|,|w|,|z|\le H
-\]
-and both recombined linear forms have absolute value at most
-\(\varepsilon\ge0\).  Then
-\[
- |A_1B_2-A_2B_1|
- \le 2H\varepsilon\bigl(|B_1|+|B_2|\bigr).
-\]
-\end{proposition}
-
-\begin{proof}
-Writing \(e_i=B'_iF-A'_i\), cancellation of the \(F\)-terms gives
-\[
- A'_1B'_2-A'_2B'_1=e_2B'_1-e_1B'_2.
-\]
-Its absolute value is at most
-\(\varepsilon(|B'_1|+|B'_2|)\).  The determinant of the recombined rows is
-\((uz-vw)(A_1B_2-A_2B_1)\), so its absolute value equals that of the original
-determinant.  Finally each new denominator coordinate is at most
-\(H(|B_1|+|B_2|)\), giving the displayed bound.
-\end{proof}
-
-The transformation is real and has determinant of absolute value one;
-integer-unimodular changes of basis are a special case.  Thus the proposition
-quantifies a genuine coefficient-height cost: a change of basis cannot make
-both remainders small without paying in the size of its coefficients.
-
-\begin{proposition}[zero-denominator selector collision]
-\label{res:zero-denominator-selector-collision}
-Let \(N\ge1\) and \(w_i\in(\Z/N\Z)^2\) for \(i<k\).  If every second
-coordinate of \(w_i\) is zero and
-\[
- N<2^k,
-\]
-then two distinct binary selectors have the same vector sum.
-\end{proposition}
-
-\begin{proof}
-Map a binary selector to the first coordinate of its sum.  There are \(2^k\)
-selectors and only \(N\) possible values, so two distinct selectors collide.
-Their second-coordinate sums are both zero by hypothesis.
-\end{proof}
-
-The threshold is \(N<2^k\), rather than the ambient two-coordinate condition
-\(N^2<2^k\), because the denominator coordinate has already collapsed.
-
-\paragraph{Exact Lean identities.}
-The six source-current declarations corresponding to the results above are,
-in theorem order:
-\begin{flushleft}\small
-\path{rational_twoSelector_gap_of_prime_tail_support}\\
-\path{rational_twoSelector_not_both_tendsto_zero}\\
-\path{rational_integerLinearForm_gap_of_prime_support}\\
-\path{rational_integerLinearForm_gap_of_prime_power_support}\\
-\path{twoSelector_unimodular_height_decay_tradeoff}\\
-\path{zmod_binary_collision_of_zero_denominator_coordinates}
-\end{flushleft}
-The formal statements have the same hypotheses and conclusions as the
-displayed results.
-
-\paragraph{Exact remaining hypotheses.}
-\label{bdry:prime-support-remaining-hypotheses}
-Nothing in this section proves that the actual \(q\)-Ap\'ery rows contain a
-suitable prime in their denominator coordinates cofinally, proves the
-first-power determinant condition for a cofinal pair of rows, or supplies the
-analytic remainder estimates needed to invoke
-Corollary~\ref{res:rational-two-selector-no-double-decay}.  These are the exact
-remaining hypotheses between the proved arithmetic consequences and an
-irrationality proof at \(3/2\).
 
 \section{Integer scalar content is neutral}\label{sec:primitive}
 
@@ -2190,11 +1849,6 @@ equality case for the exponent model & \lrefx{Erdos1049/HermitePadeNoGo.lean}{12
   The remark that the results extend to non-integer \(p=r/s\), \(|p|>1\), under
   an assumption \(\log|r|>c\log|s|\) for a computable \(c>0\), is at the end of
   the introduction; no value of \(c\) is computed there.
-\bibitem{chern2026} S.~Chern, L.~Jiu, S.~Li, and L.~Wang,
-  \href{https://arxiv.org/abs/2401.17220}{\emph{Leading coefficient in the
-  Hankel determinants related to binomial and $q$-binomial transforms}},
-  Adv. Appl. Math. \textbf{176} (2026), 103051,
-  doi:\href{https://doi.org/10.1016/j.aam.2026.103051}{10.1016/j.aam.2026.103051}.
 \bibitem{adamczewskibell2013} B.~Adamczewski and J.~P. Bell,
   \href{https://arxiv.org/abs/1303.2019}{\emph{A problem about Mahler
   functions}}, Ann. Sc. Norm. Super. Pisa Cl. Sci. \textbf{17} (2017), no.~4,

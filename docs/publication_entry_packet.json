@@ -107,11 +107,11 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:6f21a1c28dd78a29cdf9074fc5fdee375fe71377210fa3f99aa5b98c2fd23b26",
-    "docs/claims.json": "sha256:6e882fc7b54ae035b7200a818b24d894acc233d7cbe8c66b3ffad77e7b8f5453",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:154a54eebc16d00077bf9fed65f451306306df4c522afc5cabb595b6f7d190c6",
+    "docs/claims.json": "sha256:8cad075247aa3b433bc8a09d4767631b057ca0d499b2618ce569d6f18e5e473f",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:86e883e76b2bbb9ac53343ee82a886d4ce9849d7e5ba13f1fd92ff48ac60acc9",
-    "docs/publication_contract.json": "sha256:7310c66b8505f487dce7454283a5814ac95dee0840f2144020027796410a0f0e",
+    "docs/problems.json": "sha256:a4bd03ceb719c832dd352fd9bfbea5dbda6275b895c8fb3c65893c0cf64317f2",
+    "docs/publication_contract.json": "sha256:2c3b30191876359e42cbbaa5a75ab732992d2788c86335cf5d11fd790999d2ca",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 121,
+        "line": 91,
         "source": "paper/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
@@ -435,7 +435,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:86e883e76b2bbb9ac53343ee82a886d4ce9849d7e5ba13f1fd92ff48ac60acc9",
+      "content_digest": "sha256:a4bd03ceb719c832dd352fd9bfbea5dbda6275b895c8fb3c65893c0cf64317f2",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

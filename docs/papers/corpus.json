@@ -1106,8 +1106,8 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:9f8a1200102f65761704a2ba2d087222d073e1279fa98df4856d334677303189",
-      "pdf_byte_count": 457942,
+      "pdf_sha256": "sha256:f790a203a4faa782ca7d9a8a708514fafdfdc10b6cb89f7b548d583df41751d6",
+      "pdf_byte_count": 457775,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1306,8 +1306,8 @@
         "manuscript_title": "Factorial-Channel Obstructions and Exact Orbit Boundaries"
       },
       "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:4c8808a285bd82e4417ce043d2e2628c5eefa16dfd9af9aae6bf7f8e9195ad41",
-      "pdf_byte_count": 153258,
+      "pdf_sha256": "sha256:2d41b313b735ef0df3e8121ca686b53dbe6e1b4633695b7c486d3f45d48486e6",
+      "pdf_byte_count": 162317,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1551,8 +1551,8 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:10763dbce7a3093f313329be1ef8ed34cbcc0fc6bdd37411f7f92515c9c280bd",
-      "pdf_byte_count": 168107,
+      "pdf_sha256": "sha256:420257272634984bf95ae9f247a2219c2a8cc5c0ce31f0b77dad72bfbb6e7aad",
+      "pdf_byte_count": 168061,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1807,8 +1807,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:f2dd8ebbaa1a0f76c3d156a52f0a8b9ecc5ede45e2bb80be6772a543f10958e7",
-      "pdf_byte_count": 204999,
+      "pdf_sha256": "sha256:0f059743cd14af94d97868e6019ae02fa2f3d759b42107b6991810b87af85f49",
+      "pdf_byte_count": 204789,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1869,7 +1869,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:155c8188c37f2a1814f63c42c6b28ae66139b21da29fe32feb8856b8119f91b4",
+      "source_sha256": "sha256:9d5d7b4b2266ed60f0ef9e719933d4ed04cc528e9b35183464557d524bb0f54c",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
@@ -2773,8 +2773,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:2de005451311f7c8e1b9ab15cf3d0c1b89b98f4259add12be8fa2959120ba2b4",
-      "pdf_byte_count": 727393,
+      "pdf_sha256": "sha256:37cf3a53b7dd7a1f71667281def5cbbf964bdedaf9cc10e314a230d7a2fa71fb",
+      "pdf_byte_count": 727404,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2978,7 +2978,7 @@
       ],
       "citations_rendered": 22,
       "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:5dcdb2dad91b673b0c8689bd39d0550b0f53f786e03a9c11ffb914fa089f5ff1",
+      "pdf_sha256": "sha256:ca27efcfbe8efc2ebec144c1699cd8eb3e6a93b14cd70d52d675d35d9c39f44f",
       "pdf_byte_count": 152775,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -3199,8 +3199,8 @@
       ],
       "citations_rendered": 24,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:e7139153c8d0175d25f53dc815fd7ed0063dad6e593bcc41eb14845bc7b0db92",
-      "pdf_byte_count": 180766,
+      "pdf_sha256": "sha256:26a59371292e08fff78d67109bcaa8ff4146c1a0a7f56d7a4459b3f7bc02b81e",
+      "pdf_byte_count": 180764,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3266,7 +3266,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:377d711793aedb4926fda7be15f7f7b922ccba2f37f995b8f7c3eda5c59b2182",
+      "source_sha256": "sha256:cd77c567379fe7e572262c9912f23f656164372e8fc778bcaf66185ccd6160ed",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
@@ -4104,8 +4104,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:69e11d3b47575c342e83989e8e64f42632ca22609a80a9a18d6a6ee272c57fb8",
-      "pdf_byte_count": 666910,
+      "pdf_sha256": "sha256:49e47e0dc57ec7a7c3fc1cdcc867440f2a9e70033cfccaef231b006611df373b",
+      "pdf_byte_count": 666906,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4338,8 +4338,8 @@
       ],
       "citations_rendered": 17,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:8c7838730bda6f1db487a38623be83ac7cc6d5cd16fd930902be2b0fb049825c",
-      "pdf_byte_count": 169777,
+      "pdf_sha256": "sha256:e35e52795dce38d5da9fd739404cf57a7a7ac085757566216b647527bf68a763",
+      "pdf_byte_count": 169778,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4617,8 +4617,8 @@
         "manuscript_title": "Critical-Value Separation and Admissible Hubs"
       },
       "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:e452c56fb6651c4ea097fddbc25d815bf503127df69f47380c0938759a913207",
-      "pdf_byte_count": 159433,
+      "pdf_sha256": "sha256:7a32b857672ed38f1357fded656cafc03cec0228dcab28722627b3bd0167cd61",
+      "pdf_byte_count": 159431,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4649,7 +4649,7 @@
     },
     {
       "paper_id": "erdos-1049-rational-base-lambert",
-      "title": "Sharp Normalized Hankel Order and Arithmetic Obstructions at Base 3/2",
+      "title": "Sharp Height and Four-Jet Obstructions at Base 3/2",
       "title_source": "manuscript",
       "question_this_paper_answers": "Which linear-form constructions fail at the rational base 3/2 for Erd\u0151s #1049, and what primitive kernel is still needed?",
       "subject": "Erd\u0151s #1049",
@@ -4667,13 +4667,13 @@
       "preferred_citation": {
         "author": "Will Cook",
         "year": "2026",
-        "title": "Sharp Normalized Hankel Order and Arithmetic Obstructions at Base 3/2",
+        "title": "Sharp Height and Four-Jet Obstructions at Base 3/2",
         "repository": "plectis-lean-erdos249-257",
         "canonical_source_commit": null,
         "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Sharp Normalized Hankel Order and Arithmetic Obstructions at Base 3/2. plectis-lean-erdos249-257. CC-BY-4.0. https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
+        "text": "Will Cook (2026). Sharp Height and Four-Jet Obstructions at Base 3/2. plectis-lean-erdos249-257. CC-BY-4.0. https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -4684,226 +4684,196 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:b93b5e357166d64f7e56e601072d7848f8ad561675488074b9cc02406c712962",
+      "source_sha256": "sha256:fa6cdb5ebec6a9a64be66406e909a1c30862a74ab54d167a96095e514b810d43",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-1049-rational-base-lambert.tex",
-      "section_count": 34,
+      "section_count": 29,
       "sections": [
         {
           "level": 1,
           "id": "erdos-1049-rational-base-lambert",
-          "title": "Sharp Normalized Hankel Order and Arithmetic Obstructions at Base 3/2",
+          "title": "Sharp Height and Four-Jet Obstructions at Base 3/2",
           "line": 1
         },
         {
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction",
-          "line": 54
+          "line": 43
         },
         {
           "level": 4,
           "id": "relation-to-prior-work.",
           "title": "Relation to prior work.",
-          "line": 68
+          "line": 57
         },
         {
           "level": 4,
           "id": "erd\u0151ss-integer-base-argument-in-outline.",
           "title": "Erd\u0151s\u2019s integer-base argument, in outline.",
-          "line": 106
+          "line": 93
         },
         {
           "level": 4,
           "id": "the-direct-cut-and-clear-attempt-studied-here.",
           "title": "The direct cut-and-clear attempt studied here.",
-          "line": 112
+          "line": 99
         },
         {
           "level": 4,
           "id": "terminology.",
           "title": "Terminology.",
-          "line": 120
+          "line": 107
         },
         {
           "level": 4,
           "id": "the-shortfall-at-32.",
           "title": "The shortfall at 3/2.",
-          "line": 128
+          "line": 115
         },
         {
           "level": 4,
           "id": "sharpness.",
           "title": "Sharpness.",
-          "line": 142
+          "line": 129
         },
         {
           "level": 4,
           "id": "results-and-boundary.",
           "title": "Results and boundary.",
-          "line": 154
+          "line": 141
         },
         {
           "level": 4,
           "id": "structure.",
           "title": "Structure.",
-          "line": 160
-        },
-        {
-          "level": 1,
-          "id": "sec:hankel-order",
-          "title": "Exact normalized-Hankel order in Zudilin\u2019s construction",
-          "line": 170
-        },
-        {
-          "level": 4,
-          "id": "consequence-and-evidence-boundary.",
-          "title": "Consequence and evidence boundary.",
-          "line": 243
+          "line": 147
         },
         {
           "level": 1,
           "id": "sec:sharp",
           "title": "The sharp 41/65 certificate",
-          "line": 249
-        },
-        {
-          "level": 1,
-          "id": "sec:prime-support",
-          "title": "Prime-supported rational gaps and two-row escape",
-          "line": 353
-        },
-        {
-          "level": 4,
-          "id": "exact-lean-identities.",
-          "title": "Exact Lean identities.",
-          "line": 499
-        },
-        {
-          "level": 4,
-          "id": "bdry:prime-support-remaining-hypotheses",
-          "title": "Exact remaining hypotheses.",
-          "line": 518
+          "line": 157
         },
         {
           "level": 1,
           "id": "sec:primitive",
           "title": "Integer scalar content is neutral",
-          "line": 524
+          "line": 261
         },
         {
           "level": 1,
           "id": "sec:endpoints",
           "title": "Endpoint residues at (3,2) and the four-jet kernel",
-          "line": 586
+          "line": 323
         },
         {
           "level": 1,
           "id": "sec:corridor",
           "title": "Failure of coordinatewise clearing at 3/2",
-          "line": 843
+          "line": 580
         },
         {
           "level": 1,
           "id": "sec:tail",
           "title": "The cleared-tail recurrence and the size of the forcing term",
-          "line": 920
+          "line": 657
         },
         {
           "level": 1,
           "id": "sec:sevenhalves",
           "title": "The height criterion at 7/2",
-          "line": 982
+          "line": 719
         },
         {
           "level": 2,
           "id": "the-81200-logarithmic-region",
           "title": "The 81/200 logarithmic region",
-          "line": 1013
+          "line": 750
         },
         {
           "level": 1,
           "id": "sec:pade",
           "title": "Denominator exponents for a homogenised Pad\u00e9 construction",
-          "line": 1039
+          "line": 776
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 1079
+          "line": 816
         },
         {
           "level": 2,
           "id": "exact-kernel-escape",
           "title": "Exact kernel escape",
-          "line": 1127
+          "line": 864
         },
         {
           "level": 2,
           "id": "determinant-families",
           "title": "Determinant families",
-          "line": 1194
+          "line": 931
         },
         {
           "level": 2,
           "id": "asymptotic-adequacy-after-kernel-escape",
           "title": "Asymptotic adequacy after kernel escape",
-          "line": 1220
+          "line": 957
         },
         {
           "level": 2,
           "id": "one-exact-alternative-criterion-test",
           "title": "One exact alternative-criterion test",
-          "line": 1240
+          "line": 977
         },
         {
           "level": 2,
           "id": "the-quantitative-height-limitation",
           "title": "The quantitative height limitation",
-          "line": 1265
+          "line": 1002
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 1293
+          "line": 1030
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 1297
+          "line": 1034
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 1303
+          "line": 1040
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 1309
+          "line": 1046
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 1315
+          "line": 1052
         }
       ],
-      "citations_rendered": 33,
+      "citations_rendered": 31,
       "fallback_title_drift": {
         "registry_fallback": "Arithmetic Boundaries at Base 3/2",
-        "manuscript_title": "Sharp Normalized Hankel Order and Arithmetic Obstructions at Base 3/2"
+        "manuscript_title": "Sharp Height and Four-Jet Obstructions at Base 3/2"
       },
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:7da55225c9026190bc00359dc904dc6ca5ec12321e969714e71aa67f46fc5dcf",
-      "pdf_byte_count": 184851,
+      "pdf_sha256": "sha256:a65717d5eceb344c267220b2a5765838a3875e5183343320374a592b951b9896",
+      "pdf_byte_count": 184850,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4911,22 +4881,22 @@
           {
             "id": "sec:problem",
             "title": "Introduction",
-            "line": 54
+            "line": 43
           },
           {
             "id": "sec:primitive",
             "title": "Integer scalar content is neutral",
-            "line": 524
+            "line": 261
           },
           {
             "id": "sec:endpoints",
             "title": "Endpoint residues at (3,2) and the four-jet kernel",
-            "line": 586
+            "line": 323
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 1079
+            "line": 816
           }
         ],
         "unresolved_count": 0
@@ -5247,8 +5217,8 @@
         "manuscript_title": "Problem-Sized Lean Worlds"
       },
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:6b89054ebbf6315398e911a5708dd7ab53c1c2fe24eec0abb74e7ea6bc0aa015",
-      "pdf_byte_count": 140550,
+      "pdf_sha256": "sha256:154a54eebc16d00077bf9fed65f451306306df4c522afc5cabb595b6f7d190c6",
+      "pdf_byte_count": 140553,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -5444,8 +5414,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:a2872fcaec08ef953f5a6b509da6a12205184a2d7f0be9c6c12b08134c29d5a4",
-      "pdf_byte_count": 83164,
+      "pdf_sha256": "sha256:97ceb85875ef2417a30da5ac91dc3e631351f9034969d915502776c1dff15562",
+      "pdf_byte_count": 83163,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
