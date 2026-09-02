@@ -1,0 +1,901 @@
+{
+  "schema": "aiw-formal-math-assimilation/1",
+  "problem_id": "erdos_249",
+  "title": "Irrationality of the binary totient series",
+  "frontier_integrity": {
+    "canonical_frontier": {"kind": "equivalent_reduction", "producer_ids": ["totient_specific_moving_dyadic_escape"]},
+    "producer_relations": {
+      "equivalent_to_target": ["totient_specific_moving_dyadic_escape"],
+      "target_deciding_but_stronger": ["theta_two_denominator_compression", "uniform_growing_level_specialisation"],
+      "auxiliary_not_target_deciding": ["cusp_frontier_formalisation"],
+      "out_of_scope_for_target": ["general_prime_ray_polynomial_realisability"]
+    },
+    "selection_rule": "The Lean-equivalent FullMersenneCanonicalBasepointResidueGapSupply obligation is the frontier. Irrationality-measure bounds and other sufficient constructions are alternate stronger routes, not the target."
+  },
+  "source_returns": [
+    {
+      "attachment": "8fd437be-e19a-4f58-a891-bd9c8fbb8664/pasted-text.txt",
+      "sha256": "f77238a95cc6cdf48bfd9704320c0f96f686694bb54fecd1e06bdb31be2c3c8b",
+      "role": "sharp Stern-Brocot cusp-frontier asymptotic, rational geometric-model falsifier, and Lean consumer map"
+    },
+    {
+      "attachment": "1b09196f-b9d7-4d23-994e-cab36aa4ba13/pasted-text.txt",
+      "sha256": "8841e8cec6124c0afc8fbc8e04a182e6297d8e3f877d6210e9d9b04594a9eeac",
+      "role": "Mobius-Mersenne power ladder, signed Hankel nonvanishing, denominator obstruction, and exact finite dyadic valuation"
+    },
+    {
+      "attachment": "0425e482-f16b-4f1f-b749-08bc7c2e7814/pasted-text.txt",
+      "sha256": "32e9ed2c6ef54f075a8b6f9d9eae24cf1018e538bcf6502281c7b93a7a5e1397",
+      "role": "finite Euler-sieve tower, natural-boundary formula, fixed-level quasimodular special values, and the s=1 versus s=2 obstruction"
+    },
+    {
+      "attachment": "61b8c1d3-478d-4506-85f8-c50a1ae32efe/pasted-text.txt",
+      "sha256": "5f728468e4e330ac48e4a62a5d500d0a33136f25e15049c1dae8e88de5b3fa26",
+      "role": "sharp strict-9/10 prime-orbit endpoint, metric Riesz-product theorem, locked irrational adversary, and finite certificate deposit"
+    },
+    {
+      "attachment": "f4bb963b-39c9-4570-b754-54ef7561c0d3/pasted-text.txt",
+      "sha256": "0b17fe6eab522b8e30078ed901f1cda61e5cf12d5befc5a2e0a12fff1a53ebdb",
+      "role": "prime-ray cyclotomic curvature producer, bounded-degree exact-order realisability, Frobenius freeze, and affine-completion no-go"
+    },
+    {
+      "attachment": "dad77083-762b-4cb5-a412-7cf980da9eb9/pasted-text.txt",
+      "sha256": "899c614de3b56c9425c288d5e5571823610b892f6c14e740cfa2cdee5d3a8873",
+      "role": "signed Hankel single-value extraction, rank-saturated Schur-collapse theorem, primitive-form divergence, Lambert-jet rigidity, and strict sub-rank denominator-compression residual"
+    },
+    {
+      "attachment": "74eefafa-69b0-48dd-bb41-3df0dc5e8bf2/pasted-text.txt",
+      "sha256": "e5306396c1a3ea8c8385ae86931bedb064738cd4fa6110fc94fd1f01a063fd96",
+      "role": "exact finite Euler-sieve smooth-rough tail, critical level exponent, additive anomaly repairs, generic level-uniform no-go, and family-specific Diophantine target"
+    },
+    {
+      "attachment": "8e8bc1c9-7f87-4f3c-a119-9ac50cb20239/pasted-text.txt",
+      "sha256": "5b0fbd38afc7f72f1f41cfb2947310b30f8f310933f9c074d211139a7a61711c",
+      "role": "exact X-2 prime-ray producer, support-to-phase countermodels, 331-anchored finite kills, multiple-period telescoping, and the cofinal cyclotomic-anchored discrepancy residual"
+    },
+    {
+      "attachment": "e3347bbb-3e00-4ded-8b27-fb9a144aba3e/pasted-text.txt",
+      "sha256": "cf57d59c5d0edebc094642a3f5bf11820cfadddc643f2668c87c32706e3f8e42",
+      "role": "uniform strict-subrank rank-one quotient obstruction, positive direct-sum closure, primitive-form divergence, coupled-vector escape examples, and the genuinely coupled signed-kernel residual"
+    }
+  ],
+  "target": {
+    "status": "open",
+    "statement": "Prove that the binary totient series sum_{n>=1} phi(n)/2^n is irrational."
+  },
+  "landed_formal_source": [
+    "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+    "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+    "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+    "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+    "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+    "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+    "ErdosProblems/Erdos249/scripts/verify_cyclotomic_anchored_kill.py",
+    "ErdosProblems/Erdos249/scripts/verify_mobius_mersenne_hankel.py",
+    "ErdosProblems/Erdos249/scripts/verify_rank_one_subrank_obstruction.py",
+    "Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+    "Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+    "Erdos257PeriodNoncollapse/TotientActualLcmOrbitSeparation.lean"
+  ],
+  "exact_results": [
+    {
+      "id": "totient_k_kernel_rank_k_to_e_plus_one",
+      "status": "authored_mathematics_exact_rank_with_conditional_lean_support",
+      "source_path": "docs/formal_math/odd_slope_affine_totient_independence.md",
+      "statement": "For every integer base k >= 2 and every e >= 1, the bounded-depth totient k-kernel has rational dimension k^e + 1, with the explicit canonical basis indexed by the zero channel together with residues r satisfying k does not divide r.",
+      "authority_note": "The source note supplies the ordinary all-base argument. Lean checks the arithmetic, indexing, and spanning layers and the exact-rank conclusion only under the explicit LinearIndependent hypothesis; the unconditional all-base independence theorem and Basis declaration are not formalised.",
+      "claim_effect": "Indexes the quantitative finite-level rank result as a source-backed refinement of known non-regularity. It does not establish an unconditional all-base Lean theorem, priority, novelty, irrationality, or progress on Erdos #249."
+    },
+    {
+      "id": "totient_k_kernel_canonical_basis_and_reduction_normal_form",
+      "status": "lean_checked_unconditional_reduction_and_spanning_not_full_basis",
+      "source_path": "formal_math/odd_slope_affine_totient/TotientKernelReduction.lean",
+      "source_declarations": [
+        "Erdos249257.totient_pow_mul_eq",
+        "Erdos249257.totient_pow_mul_affine_gcd_cross_eq"
+      ],
+      "statement": "The zero-residue sections reduce to the canonical F_(1,0) channel, and every composite-base residue with k dividing r admits the exact gcd-corrected reduction; these identities give unconditional canonical spanning and the relation normal form once the remaining independence statement is supplied.",
+      "authority_note": "The named Lean declarations are the checked reduction layer. They do not assert the remaining all-base linear-independence theorem or an assumption-free Basis declaration.",
+      "claim_effect": "Exposes the reusable reduction interface beneath the finite-level rank family while preserving the formal boundary between checked spanning and the paper-level independence argument."
+    },
+    {
+      "id": "totient_affine_independence_known_mechanism",
+      "status": "lean_checked_restricted_affine_independence_corollary",
+      "source_path": "formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
+      "source_declarations": [
+        "Erdos249257.OddSlopeAffineFamily.linearIndependent_family"
+      ],
+      "statement": "The odd-slope affine totient family is linearly independent over Q by a sorry-free Lean formalisation of a corollary of Martin's 2006 domination theorem, using a finite determinant and CRT/Dirichlet separation mechanism.",
+      "authority_note": "This is a restricted corollary formalisation, not a formalisation of Martin's positive-density theorem and not by itself the unconditional all-base totient k-kernel independence theorem.",
+      "claim_effect": "Binds the named formal mechanism to the totient finite-rank family without transferring Martin's stronger conclusion or making a novelty or priority claim."
+    },
+    {
+      "id": "strict_prime_orbit_escape_endpoint",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap",
+        "ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
+        "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+      ],
+      "statement": "A cofinal strict real-part gap below 9/10 on the natural prime tail orbit supplies an adaptive positive truncation budget, the existing point-escape certificate, and hence irrationality of the totient series.",
+      "claim_boundary": "The theorem is conditional on the cofinal strict real-part gap and the stated natural-prime-tail hypotheses. It does not prove that gap, identify the omitted original proof, or establish irrationality outside this conditional route.",
+      "validation": {
+        "proof_authority": "The three named Lean declarations are in the cited source-current commit; the focused build re-elaborated the module and completed the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+        "proof_result": "Exit 0 after 2468 jobs with the final serialized Lake authority check.",
+        "claim_boundary": "The theorem is conditional on the cofinal strict real-part gap and the stated natural-prime-tail hypotheses. It does not prove that gap, identify the omitted original proof, or establish irrationality outside this conditional route."
+      }
+    },
+    {
+      "id": "finite_euler_local_factors",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "source_commit": "738d81646d8fdd868ae72c04fcb7c7e2334554e8",
+      "source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_one",
+        "ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_two",
+        "ErdosProblems.Erdos249.FiniteEulerSieve.sigmaPrimePow_firstDiff",
+        "ErdosProblems.Erdos249.FiniteEulerSieve.sigmaPrimePow_secondDiff"
+      ],
+      "statement": "The squared Mobius Euler factors at s=1 and s=2 and the exact second-difference conversion of the divisor-sum prime-power row to the totient row are formalized over Q and Z.",
+      "claim_boundary": "The two Euler-factor identities are exact rational identities for positive natural p, and the first- and second-difference identities are exact integer identities for the displayed finite sums. This row does not assert Euler-product convergence, an infinite sieve conclusion, or irrationality of the totient series.",
+      "validation": {
+        "proof_authority": "The four named Lean declarations are in the cited source-current commit; the focused build re-elaborated the module and completed the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.FiniteEulerSieve",
+        "proof_result": "Exit 0 after 1888 jobs with the final serialized Lake authority check.",
+        "claim_boundary": "The two Euler-factor identities are exact rational identities for positive natural p, and the first- and second-difference identities are exact integer identities for the displayed finite sums. This row does not assert Euler-product convergence, an infinite sieve conclusion, or irrationality of the totient series."
+      }
+    },
+    {
+      "id": "prime_ray_checkerboard_and_completion",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "d3e2341f9659d2e999f0c799327cefe1b79d9923492cd375f7604365b596ab7e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.checkerboard",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.checkerboard_separable",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.checkerboard_unique",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.fourPoint_layer_identity",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.residueClass_step_has_centred_completion"
+      ],
+      "statement": "The unique 2-by-2 joint annihilator, abstract four-scale divisor-layer identity, and affine residue-class recentering theorem are formalized independently of polynomial APIs.",
+      "claim_boundary": "The Lean declarations formalize the Boolean checkerboard/separability uniqueness lemma, an exact four-factor divisor identity under supplied factorization hypotheses, and an affine congruence recentering lemma for M=2R with R>0. They do not prove the source-specific prime-ray divisibility hypotheses, the full totient irrationality theorem, or an analytic estimate.",
+      "validation": {
+        "proof_authority": "The five named Lean declarations are in the cited source-current commit; the focused build re-elaborated the module and completed the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+        "proof_result": "Exit 0 after 3291 jobs with the final serialized Lake authority check; Lean emitted only a non-fatal unused-variable warning and a tactic suggestion.",
+        "claim_boundary": "The Lean declarations formalize the Boolean checkerboard/separability uniqueness lemma, an exact four-factor divisor identity under supplied factorization hypotheses, and an affine congruence recentering lemma for M=2R with R>0. They do not prove the source-specific prime-ray divisibility hypotheses, the full totient irrationality theorem, or an analytic estimate."
+      }
+    },
+    {
+      "id": "rational_geometric_model_falsifier",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "8d68ad20457400cdc9f9fb89ffbb682ec530662f99738277cb308abb628387d6",
+      "source_current": true,
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.GeometricCoprimality.tsum_pos_coprime_lambert_eq_sq"
+      ],
+      "statement": "For every real 0 <= r < 1, the positive coprime-pair Lambert mass sum_{gcd(a,b)=1} r^(a+b)/(1-r^(a+b)) equals (r/(1-r))^2. The proof kernel-checks absolute summability, pair/layer sum interchange, and the exact geometric evaluation, showing that coprime restriction plus Stern-Brocot splitting and geometric decay alone cannot force irrationality.",
+      "claim_boundary": "The Lean theorem proves the exact positive geometric identity for the coprime-pair model. It does not formalize the full Erdos #249 totient series, any irrationality conclusion, or a claim that every Stern-Brocot decomposition has this geometric form.",
+      "validation": {
+        "proof_authority": "The named Lean declaration is in the cited source-current commit; the focused build re-elaborates the module and completes the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 Erdos257PeriodNoncollapse.GeometricCoprimality",
+        "proof_result": "Exit 0 after 1888 jobs with the final serialized Lake authority check; the named declaration replayed successfully and emitted only the repository's standard axiom-dependency information.",
+        "claim_boundary": "The Lean theorem proves the exact positive geometric identity for the coprime-pair model. It does not formalize the full Erdos #249 totient series, any irrationality conclusion, or a claim that every Stern-Brocot decomposition has this geometric form."
+      }
+    },
+    {
+      "id": "sharp_stern_brocot_cusp_frontier",
+      "status": "unassessed_source_specific_asymptotic_missing_definitions_proof_and_anchor",
+      "statement": "A proposed Stern--Brocot root-frontier asymptotic alleges that a one-run cusp term plus two boundary two-run terms leave a nonnegative O(n^2 8^-n) remainder, with limits 2^n E_n -> 1 and 4^n(E_n-C_n) -> 7/3. The packet currently binds neither definitions of E_n and C_n, nor a proof, checker, or primary source, so this is unassessed rather than a completed proof pending Lean."
+    },
+    {
+      "id": "mobius_mersenne_hankel_ladder",
+      "status": "lean_checked_order_two",
+      "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "source_current": true,
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_strict_logConcave",
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_hankel_two_neg"
+      ],
+      "statement": "The Mobius-Mersenne probabilities Theta_r are strictly log-concave for every r>=1. Lean proves r=1,2,3,4 through an exact five-atom enclosure and proves every r>=5 by a tail-contraction induction; hence every shifted 2x2 Hankel determinant is strictly negative. Higher fixed-order shifted determinants, infinite Hankel rank, and the superexponential common-denominator obstruction remain authored mathematics pending Lean.",
+      "claim_boundary": "The two named Lean declarations prove strict two-step log-concavity for every Mobius-Mersenne rung and negativity of the associated shifted 2x2 Hankel determinant. They do not prove higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality of the target series.",
+      "validation": {
+        "proof_authority": "The two named Lean declarations are in the cited source-current commit; the focused build re-elaborates the module and completes the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 Erdos257PeriodNoncollapse.SignedQMomentObstruction",
+        "proof_result": "Exit 0 after 3287 jobs with the final serialized Lake authority check; the named declarations replayed successfully, with only non-fatal unused-variable linter warnings and standard axiom-dependency information.",
+        "claim_boundary": "The two named Lean declarations prove strict two-step log-concavity for every Mobius-Mersenne rung and negativity of the associated shifted 2x2 Hankel determinant. They do not prove higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality of the target series."
+      }
+    },
+    {
+      "id": "mobius_mersenne_hankel_exact_verifier",
+      "status": "exact_rational_checked",
+      "statement": "A dependency-free exact rational verifier certifies the shifted 2x2 Hankel gaps r=1,2,3,4 from five atoms plus a rigorous geometric tail; it also certifies the r=5 perturbation margin 65005267/246872199168 and the exact tail-contraction identity B_r-4B_(r+1)=1/(2^r(2^r-1)(2^(r+1)-1)). These are the finite base and contraction data for a full Lean induction."
+    },
+    {
+      "id": "mobius_mersenne_hankel_analytic_core",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "source_current": true,
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.summable_mobiusMersenneTerm",
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_eq_twoAtom_add_tail",
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.abs_mobiusMersenneTailAfterTwo_le",
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTwoAtom_hankelGap"
+      ],
+      "statement": "Every rung Theta_r with r>=1 is absolutely summable under the sharp termwise majorant (2^-r)^n. Lean identifies Theta_1=1/2 and Theta_2=S_phi-1/2, splits every rung into 1-3^-r plus its d>=3 tail, proves the exact tail enclosure |R_r| <= (2^-r)^2/(1-2^-r), and proves the dominant two-atom Hankel gap equals 4/3^(r+2).",
+      "claim_boundary": "The four named Lean declarations establish absolute summability, the exact two-atom-plus-tail decomposition and tail enclosure, and the dominant two-atom Hankel gap. They do not by themselves prove all-rung strict log-concavity, higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality of the target series.",
+      "validation": {
+        "proof_authority": "The four named Lean declarations are in the cited source-current commit; the focused build re-elaborates the module and completes the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 Erdos257PeriodNoncollapse.SignedQMomentObstruction",
+        "proof_result": "Exit 0 after 3287 jobs with the final serialized Lake authority check; the named declarations replayed successfully, with only non-fatal unused-variable linter warnings and standard axiom-dependency information.",
+        "claim_boundary": "The four named Lean declarations establish absolute summability, the exact two-atom-plus-tail decomposition and tail enclosure, and the dominant two-atom Hankel gap. They do not by themselves prove all-rung strict log-concavity, higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality of the target series."
+      }
+    },
+    {
+      "id": "mobius_mersenne_eventual_strict_log_concavity",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "source_current": true,
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_strict_logConcave_of_five_le",
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneHankelError_lt_dominantGap"
+      ],
+      "statement": "For every r>=5, Theta_r*Theta_(r+2) < Theta_(r+1)^2. Lean proves the exact tail-bound contraction B_(r+1)<B_r/4, the perturbation contraction E_(r+1)<E_r/4, the dominant-gap contraction M_(r+1)=M_r/3, the exact positive r=5 base margin, and the resulting negative shifted 2x2 Hankel determinants.",
+      "claim_boundary": "The named declarations establish eventual strict log-concavity of the Möbius–Mersenne rung sequence and the associated negative shifted Hankel determinants for r>=5. They do not prove linear independence of the full moment family, irrationality of the target series, or any conclusion beyond the displayed analytic and determinant inequalities.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the source-current commit; the focused SignedQMomentObstruction replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py Erdos257PeriodNoncollapse.SignedQMomentObstruction --jobs 2 --project-root formal_math/erdos257_period_noncollapse --lake lake --no-singleflight",
+        "proof_result": "Exit 0 at 2026-08-27T05:44:32Z with the final serialized Lake authority check.",
+        "claim_boundary": "This is a checked eventual Hankel obstruction. It remains a supporting analytic result and does not close the #249 irrationality frontier."
+      }
+    },
+    {
+      "id": "mobius_mersenne_all_rungs_strict_log_concavity",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "source_current": true,
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_strict_logConcave",
+        "Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_hankel_two_neg"
+      ],
+      "statement": "For every integer r>=1, Theta_r*Theta_(r+2) < Theta_(r+1)^2 and Theta_r*Theta_(r+2)-Theta_(r+1)^2<0. The remaining r=1,2,3,4 range is kernel-checked by splitting off d=1,...,5, bounding the residual tail by (2^-r)^5/(1-2^-r), and discharging the four exact rational inequalities.",
+      "claim_boundary": "The Lean declarations prove strict two-step log-concavity for every Mobius-Mersenne rung and negativity of the associated shifted 2x2 Hankel determinant. They do not prove higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality of the target series.",
+      "validation": {
+        "proof_authority": "The two named Lean declarations are in the cited source-current commit; the focused build re-elaborates the module and completes the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 Erdos257PeriodNoncollapse.SignedQMomentObstruction",
+        "proof_result": "Exit 0 after 3287 jobs with the final serialized Lake authority check; the named declarations replayed successfully, with only non-fatal unused-variable linter warnings and standard axiom-dependency information.",
+        "claim_boundary": "The Lean declarations prove strict two-step log-concavity for every Mobius-Mersenne rung and negativity of the associated shifted 2x2 Hankel determinant. They do not prove higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality of the target series."
+      }
+    },
+    {
+      "id": "finite_dyadic_hankel_valuation",
+      "status": "advisory_exact_finite_theorem_pending_lean",
+      "statement": "Every finite truncated Mobius companion Hankel determinant has an exact 2-adic valuation determined by the largest squarefree support tuple."
+    },
+    {
+      "id": "finite_euler_sieve_tower",
+      "status": "unassessed_source_specific_formulation_missing_exact_sieve_and_external_anchor",
+      "statement": "A proposed finite Euler-sieve approximation is alleged to have positive multiplicative coefficients, dense quadratic radial singularities, transcendental values at algebraic nomes through a fixed-level quasimodular special-value theorem, and local-uniform convergence to the #249 function. No exact sieve definition, proof-bearing local note, verifier, or theorem-level external source anchor is currently bound to this composite formulation, so none of those assertions is established by this packet."
+    },
+    {
+      "id": "totient_natural_boundary",
+      "status": "external_natural_boundary_conclusion_supported_source_specific_mechanism_unverified",
+      "statement": "The unit circle is a natural boundary for the ordinary Euler-totient generating function by the external Banks--Luca--Shparlinski irrationality result together with the Pólya--Carlson theorem. The source-specific claim of an explicit nonzero quadratic radial coefficient at every squarefree root of unity has no local proof or primary-source anchor here and remains unverified."
+    },
+    {
+      "id": "metric_prime_escape",
+      "status": "advisory_complete_proof_pending_lean",
+      "statement": "A dissociated Riesz product gives exponential measure decay for simultaneous lacunary phase locking, so the strict prime-escape producer holds for almost every real number."
+    },
+    {
+      "id": "locked_irrational_adversary",
+      "status": "advisory_explicit_counterexample",
+      "statement": "There is an explicit sparse irrational binary expansion whose prime-indexed phases remain above 9/10 eventually for every fixed shift; every finite binary prefix admits such a completion."
+    },
+    {
+      "id": "prime_ray_cyclotomic_support",
+      "status": "authored_mathematics_external_growth_dependency",
+      "statement": "Under the published cyclic-resultant growth theorem, four-scale curvature isolates exponentially growing cyclotomic layers whose prime support escapes every finite set, with exact-order realisation in residue degree at most deg(f)."
+    },
+    {
+      "id": "bounded_degree_prime_ray_support_escape",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "d3e2341f9659d2e999f0c799327cefe1b79d9923492cd375f7604365b596ab7e",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.BoundedDegreeOrderConsumer",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.primeRay_divisor_pow_gt",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.primeRay_divisor_gt_of_pow_le",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.FinitePrimeSupportEscape",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.UnboundedPrimeDivisorSupply",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer"
+      ],
+      "statement": "Bounded-degree exact-order realisability gives the quantitative bound m*q < p^d for every prime p dividing the layer C(m*q), without a positivity assumption on m; equivalently, B^d <= m*q forces B < p. For a positive ray multiplier this forces the prime divisors on sufficiently remote prime-ray layers to avoid every prescribed finite set. If the layers are eventually nontrivial, their prime divisors are unbounded even after an arbitrary lower bound on the prime index. The finite-support proof gives the explicit cutoff 1 plus the sum of p^d over the forbidden primes.",
+      "claim_boundary": "The Lean declarations prove the abstract bounded-degree order-consumer implication, finite-support escape, and unbounded-prime-divisor supply under explicit eventual nontriviality and order hypotheses. They do not prove the source-specific cyclic-resultant growth theorem, the full Erdos #249 irrationality theorem, or positivity of every target ray.",
+      "validation": {
+        "proof_authority": "The seven named Lean declarations are in the cited source-current commit; the focused build re-elaborates the module and completes the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+        "proof_result": "Exit 0 after 3291 jobs with the final serialized Lake authority check; the named prime-support declarations replayed successfully; linter output was non-fatal.",
+        "claim_boundary": "The Lean declarations prove the abstract bounded-degree order-consumer implication, finite-support escape, and unbounded-prime-divisor supply under explicit eventual nontriviality and order hypotheses. They do not prove the source-specific cyclic-resultant growth theorem, the full Erdos #249 irrationality theorem, or positivity of every target ray."
+      }
+    },
+    {
+      "id": "x_minus_two_unbounded_prime_support",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.mersenneLayer_orderConsumer",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.mersenneLayer_layerSupply",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.mersenneLayer_unboundedPrimeDivisorSupply"
+      ],
+      "statement": "For the exact polynomial X-2, every prime divisor p of 2^q-1 at a prime index q has order exactly q modulo p and hence q divides p-1. The resulting degree-one order consumer and nontrivial layer supply instantiate the abstract theorem, proving unbounded prime divisors on cofinally remote prime indices without any external growth theorem.",
+      "claim_boundary": "The three declarations prove the exact order, nontrivial layer supply, and unbounded-prime-divisor conclusion for the Mersenne specialization at prime indices. They do not prove the general source-specific cyclic-resultant growth theorem, the full Erdos #249 irrationality theorem, or a phase-escape conclusion for arbitrary polynomial rays.",
+      "validation": {
+        "proof_authority": "The three named Lean declarations are in the cited source-current commit. A focused build was attempted, but dependency prebuilding failed before the target module replayed.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+        "proof_result": "Exit 1 before target replay: TotientMahlerDefect prebuilt successfully, then dependency Erdos257PeriodNoncollapse.MersenneLambert failed during module prebuild; no theorem-level diagnostic was reported for CyclotomicAnchoredKill.",
+        "claim_boundary": "The three declarations prove the exact order, nontrivial layer supply, and unbounded-prime-divisor conclusion for the Mersenne specialization at prime indices. They do not prove the general source-specific cyclic-resultant growth theorem, the full Erdos #249 irrationality theorem, or a phase-escape conclusion for arbitrary polynomial rays."
+      }
+    },
+    {
+      "id": "cyclotomic_anchored_multiple_period_closure",
+      "status": "lean_checked_conditional_closure",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "source_commit": "8afaef7f98bb6bc752fc16a6dc8d12e9181294c9",
+      "source_sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.PeriodMultipleEscape.tail_diff_mul_mem_int_of_forall_step",
+        "ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational",
+        "ErdosProblems.Erdos249.PeriodMultipleEscape.irrational_totient_series_of_periodMultipleKillSupply"
+      ],
+      "statement": "An eventual integral h-tail difference telescopes to every multiple h*q. Therefore a cofinal supply of certified kills at prime-anchored starts p-1 and multiple periods h*q implies irrationality of the binary totient series.",
+      "claim_boundary": "The three declarations prove the telescoping and the conditional equivalence or implication from an eventual integral tail plus certified period-multiple kills to irrationality. They do not prove the eventual integral-tail hypothesis, the cofinal certified-kill supply, the source-specific prime-ray growth theorem, or any unconditional Erdos #249 irrationality result.",
+      "validation": {
+        "proof_authority": "The three named Lean declarations are in the cited source-current commit. A focused build was attempted, but dependency prebuilding failed before the target module replayed.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape",
+        "proof_result": "Exit 1 before target replay: TotientMahlerDefect prebuilt successfully, then dependency Erdos257PeriodNoncollapse.TotientTailPeriodKiller failed during module prebuild; no theorem-level diagnostic was reported for PeriodMultipleEscape.",
+        "claim_boundary": "The three declarations prove the telescoping and the conditional equivalence or implication from an eventual integral tail plus certified period-multiple kills to irrationality. They do not prove the eventual integral-tail hypothesis, the cofinal certified-kill supply, the source-specific prime-ray growth theorem, or any unconditional Erdos #249 irrationality result."
+      }
+    },
+    {
+      "id": "cyclotomic_331_denominator_exclusion",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_natural",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_anchor",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_den_dvd_30_300"
+      ],
+      "statement": "The exact certificates certifiedKill(30,300,13) and certifiedKill(30,330,10) are kernel-checked. The first excludes every rational whose denominator divides 2^300*(2^30-1); the second is the finite (h,q,p,N,L)=(6,5,331,330,10) model for the cofinal anchored residual.",
+      "claim_boundary": "The three named declarations formalize two exact finite certified-kill witnesses and the resulting denominator-divisibility exclusion for the binary totient series. They do not prove a cofinal supply of such certificates, the general cyclotomic growth or prime-production theorem, or unconditional irrationality of the full Erdos #249 series.",
+      "validation": {
+        "proof_authority": "The three named Lean declarations are in the cited source-current commit; the focused build re-elaborated the module and completed the serialized Lake authority check through the repository command-future owner.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+        "proof_result": "Exit 0 after 3689 jobs with the final serialized Lake authority check; the named cyclotomic-331 declarations replayed successfully; axiom-dependency output was informational.",
+        "claim_boundary": "The three named declarations formalize two exact finite certified-kill witnesses and the resulting denominator-divisibility exclusion for the binary totient series. They do not prove a cofinal supply of such certificates, the general cyclotomic growth or prime-production theorem, or unconditional irrationality of the full Erdos #249 series."
+      }
+    },
+    {
+      "id": "canonical_full_mersenne_residue_normal_form",
+      "status": "lean_checked_equivalent_claim_ceiling",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCanonicalBasepointResidueGapSupply",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneCanonicalBasepointResidueGapSupply_of_irrational",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational"
+      ],
+      "statement": "Erdos 249 is Lean-equivalent to FullMersenneCanonicalBasepointResidueGapSupply. For every prospective denominator 2^c v with v odd, it is enough and necessary to choose one positive H divisible by phi(v), put M=(2^H-1)/v, and force (-totientBlock(H,c)) mod M strictly between c+H+1 and M-(c+H+1). The free basepoint, prime-factor choice, analytic tail and carry trajectory have all been eliminated from this exact residual.",
+      "claim_boundary": "The named definition and three theorems establish the exact equivalence between the canonical-basepoint residue-gap supply and irrationality, together with its implication into the centered supply. They do not prove that the supply holds, construct a cofinal residue gap, establish analytic tail estimates, or by themselves provide an unconditional Erdos #249 irrationality proof.",
+      "validation": {
+        "proof_authority": "The named Lean definition and theorems are in the cited source-current commit. The focused build was attempted through detached command-future cf_eb50f118f6bd4885885b, but dependency prebuilding failed before CyclotomicAnchoredKill replayed.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+        "proof_result": "Exit 1 before target replay: Erdos257PeriodNoncollapse.DiagonalFlexibleOddWindowAffine failed during module prebuild after Erdos257PeriodNoncollapse.DiagonalFlexibleOddWindowSupply completed; no theorem-level diagnostic was reported for CyclotomicAnchoredKill.",
+        "claim_boundary": "The named definition and three theorems establish the exact equivalence between the canonical-basepoint residue-gap supply and irrationality, together with its implication into the centered supply. They do not prove that the supply holds, construct a cofinal residue gap, establish analytic tail estimates, or by themselves provide an unconditional Erdos #249 irrationality proof."
+      }
+    },
+    {
+      "id": "totient_dyadic_odd_core_basis",
+      "status": "lean_checked_complete_base_two_kernel_basis_and_relation_normal_form",
+      "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.linearIndependent_oddCoreTotientKernelFamily",
+        "Erdos257PeriodNoncollapse.span_range_fullTotientKernel_eq_span_range_oddCore",
+        "Erdos257PeriodNoncollapse.totientDyadicSectionBasis"
+      ],
+      "statement": "For base 2, the two zero-residue totient sections together with one odd-residue section at each positive level form a Lean-checked basis of the rational span of the full dyadic totient kernel. The odd-core channel family is linearly independent, spans every dyadic section through exact zero/even reductions, and therefore gives the complete rational relation normal form for this base-2 kernel span.",
+      "claim_effect": "Registers the source-current dyadic normal form as one supporting #249 result with reviewer-card consumer totient_dyadic_odd_core_basis. It refines structural understanding of known nonregularity but supplies neither a rational-tail finite-dimensional bound nor progress on the canonical residue-gap frontier or irrationality endpoint."
+    },
+    {
+      "id": "mersenne_divisor_centrality_one_way",
+      "status": "exact_arithmetic_theorem_and_actual_counterexample",
+      "statement": "For positive M|N, centrality of z mod M in the open radius-B arc implies centrality of z mod N: write z mod N=jM+(z mod M) with 0<=j<N/M. The converse fails on the actual totient block at (c,v,H)=(0,3,6): Q=82 and B=7, while (-Q) mod 63=44 is central but (-Q) mod 21=2 is endpoint-trapped. Therefore a pure-dyadic v=1 escape theorem cannot be quotient-projected to arbitrary odd denominators; v-specific arithmetic is genuinely necessary. Receipt: state/formal_math/erdos257_period_noncollapse/erdos249_mersenne_divisor_centrality_receipt.json."
+    },
+    {
+      "id": "canonical_residue_delay_four_and_five_no_go",
+      "status": "exact_finite_counterexamples_after_geometry_clearance",
+      "statement": "The durable canonical-residue checker separates the first H where M>2(c+H+1) from actual residue entry. On 3,100 pairs with odd v<=200 and c<=30, (c,v)=(27,1) has post-clearance delay five, falsifying delay<=4. On the structurally targeted pure-dyadic axis v=1, c<=2000, 61 pairs have delay above five and the maximum is twelve at c=349: geometry clears at H=10, the residue remains endpoint-trapped through H=21, and it enters at H=22. Uniform post-clearance constants four and five are therefore false; merely enlarging the tested constant is not a proof route. Receipts: state/formal_math/erdos257_period_noncollapse/erdos249_canonical_mersenne_residue_receipt.json and erdos249_pure_dyadic_residue_delay_nogo_receipt.json."
+    },
+    {
+      "id": "hankel_single_value_schur_extraction",
+      "status": "advisory_complete_proof_pending_lean",
+      "statement": "Bordering a finite signed Hankel block gives an exact rational linear form in Theta_2 and a signed Pade-kernel error identity. Every rank-saturated one-corner construction collapses to ordinary truncation, and the associated primitive prefix forms diverge rather than tend to zero."
+    },
+    {
+      "id": "finite_lambert_jet_rigidity",
+      "status": "advisory_complete_proof_pending_lean",
+      "statement": "Any finite rational first-power Mobius-Lambert fold matching the required divisor sums is uniquely the ordinary totient truncation; finite scalar rationalisation cannot produce a new single-value obstruction."
+    },
+    {
+      "id": "uniform_rank_one_subrank_obstruction",
+      "status": "lean_and_dependency_free_exact_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt_twentyOne_div_threeTwenty"
+      ],
+      "source_commit": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+      "source_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
+      "source_current": true,
+      "statement": "For every e>=1 and cutoff Y>=4, the rank-one monomial quotient t_Y(e+2)^2/t_Y(2e+2) exceeds Theta_2 by more than 1/480. Every nonempty positive finite weighted average of these quotients has the same gap, and any integer form obtained from a rational representation p/q has absolute value greater than q/480. The Lean proof uses the uniform prefix error 1/3584 and a corrected five-atom enclosure for Theta_2; the inherited four-atom geometric-tail value 1/108 was false (the stated geometric majorant equals 1/48). A second Lean module sharpens the same family: the unique minimiser is (e,Y)=(1,5) with exact quotient 35076077250375200/37573118933633199, the uniform gap is more than 21/320, 1/16 is the optimal uniform unit fraction, and 1/15 fails at the minimiser."
+    },
+    {
+      "id": "sharp_rank_one_schur_cone_floor",
+      "status": "lean_and_dependency_free_exact_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff",
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen"
+      ],
+      "source_commit": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+      "source_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
+      "source_current": true,
+      "statement": "Among all admissible pairs e>=1, Y>=4, the rank-one monomial quotient is uniquely minimised at the five-atom first-depth kernel (e,Y)=(1,5). The gap to Theta_2 is more than 21/320 uniformly, so 1/16 is a valid uniform unit fraction while 1/15 is not. This prices the positive rank-one family exactly; it does not decide Erd\u0151s #249."
+    },
+    {
+      "id": "finite_euler_sieve_sharp_tail",
+      "status": "advisory_complete_proof_pending_lean",
+      "statement": "The finite Euler-sieve error has an exact positive smooth-rough factorisation, begins with coefficient 2 at the next omitted prime r_y, and at 1/2 is Theta(2^-r_y)=Q_y^(-log(2)/2+o(1)). Consequently a family-specific distance lower bound with exponent strictly below log(2)/2 would prove irrationality."
+    },
+    {
+      "id": "finite_euler_sieve_additive_anomaly_repair",
+      "status": "authored_mathematics_external_special_value_dependency",
+      "statement": "Two positive integral additive repairs keep the same sharp convergence exponent while making the quasimodular anomaly uniformly nonzero: one raises level only by the next prime with O(r_y) added height, and one has exact anomaly 1/4 without increasing level. A generic fixed-anomaly, growing-level counterfamily shows that level, depth, anomaly, integrality, and finite-stage transcendence alone cannot yield the required lower bound."
+    },
+    {
+      "id": "pointwise_totient_boundary_mode_countermodel",
+      "status": "lean_checked_infinite_countermodel_with_exact_regression",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos249.PeriodMultipleEscape.pointwiseTotientValued_const_two",
+        "ErdosProblems.Erdos249.PeriodMultipleEscape.exists_pointwiseTotientValued_permanent_endpointTrap"
+      ],
+      "statement": "Lean constructs an infinite constant-two word that is positive, even, inside every moving envelope based at c>=2, and pointwise totient-valued because phi(3)=2, while its fixed-quotient Mersenne endpoint error is identically zero at every depth. Therefore pointwise totient-image membership and elementary one-letter bounds cannot force endpoint escape; any successful anti-shadowing theorem must use relations tying the letters to their actual consecutive arguments."
+    },
+    {
+      "id": "actual_totient_word_excludes_constant_two_boundary_mode",
+      "status": "lean_checked_all_shifts_homogeneous_mode_eliminated",
+      "theorems": [
+        "exists_actualTotientLetter_ne_two",
+        "actualTotientWord_ne_const_two"
+      ],
+      "statement": "Lean proves that every shifted actual consecutive-totient word contains a letter different from 2. For any basepoint c, choose a prime p>=max(c+1,5) and place it at H=p-(c+1); then phi(c+H+1)=phi(p)=p-1>=4. Consequently the constant-two permanent boundary mode is impossible for the actual word at every shift. This kills the expanding homogeneous mode itself, not merely a finite prefix, while leaving inhomogeneous fixed-quotient boundary words open."
+    },
+    {
+      "id": "actual_totient_prime_positions_force_linear_endpoint_excursions",
+      "status": "lean_checked_cofinal_quantitative_mechanism_elimination",
+      "theorems": [
+        "prime_forces_pureDyadicEndpointError_excursion",
+        "exists_late_pureDyadicEndpointError_excursion"
+      ],
+      "statement": "For every fixed basepoint c and quotient k, every prime argument p=c+H+1 forces c+H-k <= |E_(H+1)|+2|E_H|, and such prime positions occur beyond every requested height. Hence no bounded, periodic, or sublinear-error fixed-quotient boundary mode can occur for the actual consecutive-totient word. Any surviving permanent endpoint trap must use linear-size excursions inside the full moving envelope; this strictly strengthens the earlier exclusion of the homogeneous constant-two mode without proving endpoint escape."
+    },
+    {
+      "id": "prime_successor_trap_forces_cofinal_preprime_bottom_lock",
+      "status": "lean_checked_cofinal_directional_mechanism_elimination",
+      "theorems": [
+        "prime_successor_upper_trap_forces_bottom_lock",
+        "exists_late_prime_predecessor_bottom_lock_of_upper_trap"
+      ],
+      "statement": "If p=c+H+1 is prime and the endpoint error remains below the upper moving boundary for the successor step, then 4E_H+p+phi(p+1) <= 4+3k. If the orbit remains upper-trapped at every height, such bottom-locked prime predecessors occur beyond every cutoff. Thus every permanent fixed-quotient trap is forced cofinally into a linearly negative pre-prime half-space; mechanisms without this directional bottom lock are eliminated, while endpoint escape itself remains open."
+    },
+    {
+      "id": "single_prime_successor_lock_has_nonempty_exact_precursor_cone",
+      "status": "exact_finite_single_block_mechanism_elimination",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_prime_successor_precursor_cone_receipt.json",
+      "statement": "At the exact c=490794 record word, the full integer preimage of the p=490829 prime-successor bottom-lock interval through all fourteen preceding actual totient letters contains exactly 35 geometry-boundary errors, 53685 through 53719. Every seed independently replays inside every endpoint window and reaches the bottom lock; the actual error 53713 is among them. Therefore a single bottom lock plus its exact intervening composite block does not force a backward lower-boundary crossing. Any surviving route must couple multiple locks or add a cross-gap arithmetic invariant."
+    },
+    {
+      "id": "two_prime_successor_locks_uniquely_determine_trapped_seed",
+      "status": "verified_exact_two_lock_mechanism_elimination",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_two_prime_lock_precursor_cone_receipt.json",
+      "statement": "At the exact c=349, k=167 record word, the complete geometry-boundary interval of 721 integer errors contracts to 362 seeds after the trapped successor of p=359 and to the unique seed E_10=-15 after the trapped successor of p=367. That seed is the actual record orbit and remains strictly endpoint-trapped through H=19, ending at E_19=-109 with minimum margin 238. Therefore two distinct prime-successor locks plus every exact intervening totient letter and endpoint bound can determine the orbit without forcing escape. Any surviving local route needs at least a third lock, or a genuinely global cross-gap invariant."
+    },
+    {
+      "id": "three_prime_successor_locks_leave_nonempty_exact_precursor_cone",
+      "status": "verified_exact_three_lock_mechanism_elimination",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_three_prime_lock_precursor_cone_receipt.json",
+      "statement": "At the first exact three-lock word c=1858, k=1251, the complete geometry-boundary cone contracts 3743 -> 937 -> 234 -> 15 across the trapped successors of the distinct primes 1871, 1873, and 1877. The final complete interval is [-193,-179]; the actual seed E_12=-189 survives and reaches E_20=-741 with endpoint margin 1138. Thus three local prime-successor locks still do not force crossing, and lock count is not a monotone uniqueness mechanism. Any surviving local route needs an unbounded/cofinal lock family with genuinely global cross-gap coherence."
+    },
+    {
+      "id": "actual_totient_word_excludes_eventually_affine_endpoint_modes",
+      "status": "lean_checked_cofinal_exact_mechanism_elimination",
+      "theorems": [
+        "EventuallyAffinePureDyadicEndpointError",
+        "not_eventuallyAffine_pureDyadicEndpointError"
+      ],
+      "source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_totient_affine_mode_receipt.json",
+      "statement": "For every basepoint c and fixed quotient k, Lean proves that the pure-dyadic endpoint error cannot equal A*H+B at all sufficiently large heights. The endpoint recurrence would force the shifted totient letters to be affine. For arbitrarily late primes 2<p<q, the exact totient points (p,p-1), (q,q-1), and (2p,p-1) have affine determinant -p(q-p), which is nonzero. This deletes every eventually affine full-linear-envelope boundary mode, while genuinely non-affine linear-scale traps and Erd\u0151s #249 remain open."
+    },
+    {
+      "id": "post_clear_delay_grows_like_log2_c",
+      "status": "exact_measurement_retiring_the_uniform_delay_cap_programme",
+      "verifier": "formal_math/probes/erdos249_fixed_quotient_delay_law.py",
+      "receipt": "state/formal_math/probes/erdos249_fixed_quotient_delay_receipt.json",
+      "statement": "The pure-dyadic fixed-quotient trap has two parts. While (2^H-1)/2 <= c+H+1 the window is wider than the whole residue range and every H is trapped for free; that trivial prefix has length about log2(c). The informative quantity is the POST-CLEAR run: the longest run of consecutive H that have cleared that threshold, satisfy |E_H| <= c+H+1, and share one quotient k. Measured over c <= 1,400,000, the post-clear records are 15 at c=14177, 17 at c=50490, 18 at c=403191 and 19 at c=490794, with delay/log2(c) settling at 1.00-1.09. The last row is this packet's own recorded witness - same delay, same c - recovered from an independently written statistic, which pins the definition. The law is max{post-clear delay : c <= C} ~ log2 C. Consequently NO uniform delay cap can exist: cap 17 dies at c ~ 2^15.6, cap 19 at c ~ 2^18.9, and cap N at c ~ 2^N. The sequence of refuted caps recorded in this packet is that law playing out, not a sequence of near misses, and every future finite search will refute the next cap at exponentially greater cost for no new information. The redirected target is a growth law: after the window clears, the doubling recurrence E_(H+1) = 2E_H + phi(c+H+1) - k escapes a radius-c window within O(log c) steps, which is a statement about the number of consecutive near-cancellations between the doubling and the totient increment. Finite measurement over one range; it does not prove that no cap exists for all c, and the target irrationality of sum phi(n)/2^n remains open."
+    },
+    {
+      "id": "supply_delay_two_parameter_law_and_diophantine_translation",
+      "status": "exact_finite_measurement_with_lean_checked_pointwise_consumer",
+      "statement": "The Lean-equivalent supply producer was measured only on the pure-dyadic axis v=1. Computing the FullMersenneCenteredResidueGap predicate literally over c<=60000 and odd v in {1,3,5,7,9,11,15,31} gives the two-parameter law max_(c<=C) delay(c,v) = ceil(log2(C)/phi(v)), exact in seven of eight moduli and one higher at v=1, with observed maxima 17,8,4,3,3,2,2,1. The packet's log2(C) law is the phi(v)=1 case. The Euler-multiple constraint phi(v)|H is a help rather than a restriction: between consecutive admissible heights the modulus multiplies by 2^phi(v) while the band radius grows only by phi(v), so the per-step failure probability is about 2^-phi(v) and the whole difficulty concentrates on small phi(v); at phi(v)>=12 the first geometrically possible height already works throughout the range. In height units the requirement stays uniformly small, the tallest height needed across 480000 instances being 60. From R_c = 2R_(c-1) - phi(c) with R_0 = S, the tail satisfies R_c = 2^c S - integer, so ||v R_c|| = ||v 2^c S||, and the Lean block identity 2^H R_c = totientBlock(H,c) + R_(c+H) (verified here exactly, difference 0 at (H,N)=(5,0),(11,37),(17,900)) makes failure at height H the condition ||v 2^c S|| <~ v c 2^-H. Hence H_min(c,v) = phi(v)*ceil(L/phi(v)) + O(phi(v)) with L = log2(v c / ||v 2^c S||), verified against the exact predicate to within one admissible step in every tested case. This is a finite coordinate translation and delay measurement, not evidence that the problem's frontier should be strengthened to an irrationality measure. Any quantitative distance estimate is a sufficient stronger route; a positive lower bound uniform over all odd v at fixed c is impossible for irrational S.",
+      "computation_ref": "formal_math/probes/erdos249_supply_delay.py",
+      "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SupplyDelayLab.md",
+      "receipt_ref": "state/formal_math/probes/erdos249_supply_delay_receipt.json",
+      "cross_validation": "Rerunning the pure-dyadic axis to c<=500000 from an implementation written against the Lean definitions returns maximum delay 19 at c=490794, reproducing the packet's landed witness, with maximum height 39.",
+      "authority_note": "fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational is an equivalence at the level of the full forall-c forall-v statement. The source-current theorem totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap_of_den_dvd now supplies the stronger pointwise consumer: an exact full-Mersenne factorization and centered gap at one (c,v) exclude every rational r whose reduced denominator divides 2^c v. The finite scan remains finite computational evidence unless its individual hypotheses are certified; it does not prove the cofinal supply or irrationality.",
+      "source_path": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_int_scaled_tail_of_rat_den_dvd",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap_of_den_dvd",
+        "ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap"
+      ],
+      "source_commit": "932b9878",
+      "source_current": true,
+      "claim_boundary": "Lean checks the per-instance implication from an exact factorization and centered residue gap to exclusion of every reduced denominator dividing 2^c v. The computation supplies finitely many candidate instances, not a universally quantified or cofinal gap supply, so Erdos #249 remains open."
+    },
+    {
+      "id": "dyadic_family_denominator_exclusion_with_margin",
+      "status": "exact_finite_denominator_exclusion",
+      "statement": "Computing ||v 2^c S|| directly by the recurrence A_(c+1) = 2A_c + phi(c+J+1) mod 2^J at J=220, whose truncation error (c+J+2)2^-J is below 2^-202, gives min_(c<=200000) ||v 2^c S|| with -log2 of the minimum equal to 18.03, 18.17, 18.54, 18.54, 17.39, 19.11, 16.96, 17.78 for v = 1,3,5,7,9,11,15,31. Hence S is not a/(v 2^c) for any integer a, any c<=200000 and any of those odd v, with explicit margin at least 2^-19.11 and a truncation error 180 binary orders below it. This exclusion is direct and does not go through the supply producer. Against log2(C)=17.61 the products C*min lie in [0.354,1.569] for every modulus, so min_(c<=C) ||v 2^c S|| is of order 1/C with no dependence on v: the generic law. The phi(v) dependence of the delay law is an artifact of the admissible step size, not of the arithmetic. Consequently no uniform delay cap can hold - a cap of N steps asserts ||v 2^c S|| >= 2^(-N phi(v)-1) and is refuted at c about 2^(N phi(v)) on every axis, not only at v=1 - and no lower bound stronger than ||v 2^c S|| >> 1/c is available. The usable analytic target is ||v 2^c S|| >= c^-A for a fixed A>1 uniformly in odd v, which gives H <= (A+1)log2 c + log2 v + O(phi(v)) and settles the supply.",
+      "computation_ref": "formal_math/probes/erdos249_supply_delay.py",
+      "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SupplyDelayLab.md"
+    },
+    {
+      "id": "certified_continued_fraction_denominator_exclusion",
+      "status": "exact_finite_denominator_exclusion",
+      "statement": "A certified continued-fraction prefix gives a denominator bound directly: if S is rational its expansion terminates and its reduced denominator is that of the last convergent, so a prefix of length n+1 forces q >= q_(n+1), with convergent denominators growing like e^(1.1866 n). Certified means each quotient is forced by a rigorous rational bracket lo <= 2^B S <= hi rather than read off a float: the interval expansion emits a quotient only when both endpoints agree, so there is no probably-correct tail. The prefix stays genuine even if S is rational, because at the step where the expansion would end the two endpoint floors differ (or the denominator hits zero) and the algorithm halts rather than emitting past it. The exclusion is best approximation of the second kind, |qS-p| >= |q_n S - p_n| for every 1 <= q < q_(n+1), and the probe verifies |q_n S - p_n| > 0 against the bracket instead of assuming it. The module self-checks against e = [2;1,2,1,1,4,1,1,6,...] and the convergents 3, 22/7, 333/106, 355/113 of pi before every run; that check caught a transposed p/q initialisation that would otherwise have produced a plausible-looking bound. Bracketing S = sum_(n>=1) phi(n)/2^n by the exact prefix lo = sum_(n<=B) phi(n) 2^(B-n) with omitted tail under sum_(n>B) n 2^-n = (B+2)2^-B, and taking B = 80000 bits, certifies 23438 partial quotients and gives q >= 2^39990 > 10^12039, with the separation |q_n S - p_n| > 0 verified. The packet held no continued-fraction content at all, and its finite exclusions were tied to specific cyclotomic certificates. At B = 40000 the bound is 10^6018 in half a second. This is complementary to dyadic_family_denominator_exclusion_with_margin rather than stronger: that result excludes the family v*2^c for c up to 200000 with an explicit margin, which reaches denominators of about 2^200000 inside a restricted family, while this excludes every denominator below 10^12039 without restriction. Structurally the certified quotients are generic: Levy's constant is matched to 0.33 percent, the Gauss-Kuzmin worst |z| over the first five values is 1.99, and the largest partial quotient is 29403, so the series approximates like a generic irrational and offers no anomalous convergent to test against the Mersenne machinery.",
+      "computation_ref": "formal_math/probes/certified_continued_fraction.py",
+      "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Shared/CertifiedContinuedFractionLab.md",
+      "receipt_ref": "state/formal_math/probes/erdos249_certified_cf_receipt.json"
+    },
+    {
+      "id": "positive_weighted_rank_one_floor_source_join",
+      "status": "lean_checked_source_current_consumer",
+      "statement": "For every nonempty finite positive weighted family of rank-one Schur quotients in the admissible range, Lean proves that the weighted average still exceeds the target Theta_2 by more than 21/320. The sharp single-quotient floor therefore survives positive finite mixing, so any remaining #249 route must use off-diagonal coupling or signed cancellation rather than a positive rank-one average.",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty"
+      ],
+      "source_commit": "7a4710b2d2a8e550702a3cf6f10ed8b14d9a47ef",
+      "source_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
+      "source_current": true,
+      "claim_boundary": "This is a sharp positive-family obstruction, not an irrationality proof for Erdős #249; the surviving off-diagonal or signed-cancellation producer remains open.",
+      "consequence_reconciliation": {
+        "decision": "Record the source-current positive weighted-floor theorem as a distinct consumer of the rank-one obstruction family.",
+        "public_effect": "typed_no_go_boundary: positive finite rank-one mixing cannot close the target; no unconditional irrationality theorem is added."
+      }
+    },
+    {
+      "id": "actual_lcm_orbit_separation_quantitative_bridge",
+      "status": "lean_checked_source_current_conditional_quantitative_bridge",
+      "source_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientActualLcmOrbitSeparation.lean",
+      "source_declarations": [
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix",
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_sub_rawApprox_eq",
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.abs_actualLcmTailOrbit_sub_rawApprox_lt",
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmRawApprox_eq_half_div_fourPow",
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.halfWordBandAt_of_rawApprox_integerSeparation",
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmOrbitSeparationSupply",
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoActualPenultimateSignedMarginSupply_of_actualLcmOrbitSeparation",
+        "Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
+      ],
+      "source_commit": "4cd4eac29c6eefb6c041cb61b980de271c77ccc3",
+      "source_sha256": "d22834f286d9fbc206cd8fc23331a4e4815c90ad7b503454e7d51f34be0d0c97",
+      "source_current": true,
+      "public_transport_commit": "7be4c462b7752a1c6764127c7c442a7a2cef58bb",
+      "public_consumer": "Erdos249257.ExternalVerification.problem249ActualLcmOrbitSeparation",
+      "statement": "For each cutoff a₀, the explicit PowerTwoActualLcmOrbitSeparationSupply asks for an exponent a and odd canonical rank 2q+1 with a≥max(2,a₀), such that every integer z stays at least 1/32 plus the explicit raw-approximation error radius away from the actual LCM tail orbit R_(2H)-R_H, where H=lcm(1,...,2^a). The source proves the exact scaled-series identity, the raw-block identity, its elementary error bound, the half-word conversion, and the implication from this supply to the existing signed-margin producer and hence irrationality. The supply itself remains an open hypothesis.",
+      "claim_effect": "Admit one distinct quantitative actual-LCM bridge beneath the canonical #249 residue-gap endpoint. The landed public transport makes the conditional statement consumable in the Comparator, while this packet record supplies the missing source-current mathematical assimilation and its reviewer boundaries.",
+      "claim_boundary": "Lean checks the approximation identities and the implication from the explicit cofinal separation supply to irrationality. It does not prove the separation supply, construct a cofinal odd-rank witness, prove unconditional irrationality, or replace the exact actual-LCM nonintegrality frontier.",
+      "consequence_reconciliation": {
+        "schema": "formal_math_consequence_reconciliation_v0",
+        "decision": "Admit as a genuinely distinct conditional quantitative bridge, subordinate to canonical_full_mersenne_residue_normal_form and to the exact actual-LCM nonintegrality frontier; do not create a new #249 endpoint.",
+        "canonical_parent": "canonical_full_mersenne_residue_normal_form",
+        "exact_frontier_relation": "PowerTwoActualLcmOrbitNonintegralitySupply is the exact cofinal actual-LCM frontier equivalent to #249. PowerTwoActualLcmOrbitSeparationSupply is a stronger sufficient anti-concentration route that feeds the signed-margin consumer.",
+        "public_effect": "A source-current packet/card join now explains the public 7be4c462 transport: the Comparator exposes a conditional actual-LCM separation claim, not a constructed supply or an unconditional #249 result.",
+        "hard_step": "Prove or refute the cofinal quantitative anti-concentration supply at the actual power-of-two LCM heights, including its exact odd-rank and error-radius hypotheses.",
+        "supported_negative_evidence": [
+          "Pointwise totient-image membership and moving-envelope bounds are insufficient: the packet result pointwise_totient_boundary_mode_countermodel supplies a permanent constant-two endpoint trap.",
+          "The packet result actual_totient_word_excludes_eventually_affine_endpoint_modes eliminates every eventually affine fixed-quotient trap but leaves genuinely non-affine linear-scale traps open.",
+          "The source theorem actualLcm_integral_forces_topEdgeResidue shows that positivity plus integrality forces the residue into the top-edge band rather than the central band; sign alone cannot supply separation.",
+          "The existing actual-LCM top-edge route is one-sided and weaker: a punctured terminal staircase implies a top-edge residue gap, which implies exact orbit nonintegrality, but neither the punctured staircase nor its cofinal supply is proved.",
+          "The existing delay records falsify fixed post-clear caps and finite lock-count heuristics; they do not produce a universal quantitative separation supply."
+        ],
+        "cross_problem_scan": {
+          "scan_scope": "2026-08-30 bounded pri_154 source-current comparison against existing material-result records and reviewer cards",
+          "erdos_1049_four_jet_collision_and_height_pade_arithmetic": {
+            "disposition": "explicit_reject_as_nontransferable_existing_route",
+            "support": "The exact four-jet collision threshold, 3^41<2^65 certificate, rank-41 one-row sharpness, and rectangular Padé height boundary are real finite Lean-checked mechanisms with a clear hard step.",
+            "contrary": "They concern finite selector cardinalities and rational-base Padé height; equal four-jet signatures are not analytic nonzero data, no cofinal selector or remainder-fibre theorem is supplied, and no actual-LCM orbit coordinate occurs.",
+            "existing_records": [
+              "four_jet_binary_pigeonhole_kernel",
+              "four_jet_power_certificate_compiler",
+              "four_jet_rank_41_threshold_consumer",
+              "four_jet_rank_41_threshold_optimality",
+              "bounded_fibre_four_jet_collision_bridge",
+              "three_halves_pade_height_gap",
+              "rectangular_hermite_pade_threshold_no_go"
+            ],
+            "reason": "Retain in the existing #1049 packet/cards and stop at the routine finite-combinatorics/analytic-nonzero boundary; no #249 subordinate representation is warranted."
+          },
+          "erdos_251_integral_shift_classification_and_small_mismatch_criterion": {
+            "disposition": "consolidate_under_existing_prime_gap_tail_consumer_stack",
+            "support": "The exact rational-tail state classification, denominator resonance, forward persistence, and small-mismatch consumer are mathematically material and source-current.",
+            "contrary": "The actual-prime-gap cofinal producer is still missing; the existing exact primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch equivalence already names the unresolved input, so this scan adds no independent #249 understanding.",
+            "existing_records": [
+              "integral_tail_shift_criterion",
+              "odd_denominator_totient_shift",
+              "full_denominator_candidate_shift_obstruction",
+              "small_adjacent_shift_consumer",
+              "prime_specific_eventual_integrality_exclusion",
+              "free_pair_shift_and_redundant_plus_minus_two_wall"
+            ],
+            "reason": "Consolidate under the existing #251 cards denominator_resonant_free_pair_tail_law and radix_tail_shift_integrality; do not duplicate it as an actual-LCM result or claim a transfer from prime-gap shifts to totient LCM heights."
+          },
+          "erdos_269_conditional_carry_escape": {
+            "disposition": "consolidate_under_existing_bounded_radix_and_weighted_coboundary_boundaries",
+            "support": "The residue/coboundary decomposition, bounded-radix integer-or-cofinal-escape dichotomy, denominator-adaptive local-window consumer, and carry-lift no-go isolate a serious mechanism boundary.",
+            "contrary": "Rationality-to-carry transport and the problem-specific cofinal producer remain open; ordinary block-nullity is not the weighted carry defect, and exact integral normalized tails remain unexcluded.",
+            "existing_records": [
+              "weighted_affine_phase_carry_boundary",
+              "carry_lift_weighted_block_defect",
+              "bounded_carry_lift_impossibility",
+              "bounded_radix_zero_or_cofinal_constant_escape",
+              "canonical_local_window_residue_predicate",
+              "cofinal_local_window_reduced_carry_extinction"
+            ],
+            "reason": "Consolidate under the existing cards bounded_integral_affine_radix_dichotomy, three_channel_coboundary_carry_lift_no_go, and erdos269_all_scale_rational_tail_lattice; it supplies no independent actual-LCM or #249 representation."
+          }
+        },
+        "open_boundary": {
+          "separation_supply": "PowerTwoActualLcmOrbitSeparationSupply is unproved and is stronger than the exact nonintegrality frontier.",
+          "punctured_route": "ActualLcmTerminalPuncturedDyadicStaircase retains the terminal letter while annihilating earlier suffix letters; its exact penultimate-letter cost and extra-bit emptiness are route boundaries, not a cofinal producer.",
+          "top_edge_route": "PowerTwoActualLcmTopEdgeResidueGapSupply is a genuinely non-vacuous one-sided route to exact nonintegrality, but neither it nor the flexible terminal-corridor alternatives are proved cofinally.",
+          "exact_frontier": "Irrationality is equivalent to PowerTwoActualLcmOrbitNonintegralitySupply; no quantitative gap, top-edge gap, punctured staircase, or sign corridor should be stated as equivalent to the target."
+        }
+      }
+    }
+  ],
+  "finite_evidence": [
+    {
+      "id": "strict_phase_certificate_deposit_147_23",
+      "status": "exact_external_computation_not_yet_lean_checked",
+      "statement": "At window (N,L)=(147,23), certifiedKill is reported for every 1<=h<=5022, with h=5023 the first failure of this fixed window."
+    },
+    {
+      "id": "hankel_sign_reversal",
+      "status": "certified_truncation_pending_repository_verifier",
+      "statement": "The order-five Hankel determinant changes sign between shifts 1 and 2, disproving first-atoms-determine-sign at every shift."
+    },
+    {
+      "id": "cyclotomic_anchor_331_exact_receipt",
+      "status": "lean_and_dependency_free_exact_checked",
+      "statement": "Phi_30(2)=331, ord_331(2)=30, the two certified-kill discrepancies and residues, the depth-16 residue 2928, and the exact strict-9/10 lower bound 30666239/33554432 are reproduced by the repository verifier; the certificate propositions and denominator exclusion are also Lean-kernel checked."
+    }
+  ],
+  "negative_results": [
+    "No positive bound depending only on c can hold for ||v*2^c*S|| uniformly over all positive odd v when S is irrational: odd multiples of the irrational number 2^c*S are dense modulo one. The former uniform-in-v c^-A proposal is impossible and is not a frontier producer.",
+    "Stern-Brocot telescoping plus geometric decay does not imply irrationality: the generic rational-x model has the same geometry and rational algebraic values.",
+    "A unit-circle natural boundary with integer coefficients does not imply irrationality at 1/2: (1-2z)S(z) has the same boundary and value zero at 1/2.",
+    "Generic lacunarity or irrationality does not imply the pointwise prime escape required at the named totient constant.",
+    "Finite transcendental Euler-sieve stages may converge to a rational number; the quasimodular depth coefficient vanishes while the level diverges.",
+    "Finite fixed-precision valuation/unit words admit arbitrary centred completions; the prime-ray producer needs finite-degree exact-order realisability plus the moving-characteristic Frobenius freeze.",
+    "Hankel nonvanishing controls the full derivative ladder but does not isolate Theta_2 with sufficiently compressed denominators.",
+    "Canonical rank-saturated one-corner Hankel extraction collapses exactly to truncation, and its primitive integer forms diverge; only a strictly sub-rank or genuinely vector-valued denominator-compressing kernel remains viable.",
+    "Every rank-one monomial strict-subrank quotient t_Y(e+2)^2/t_Y(2e+2), and every positive finite direct sum of them, stays more than 21/320 above Theta_2 for e>=1 and Y>=4, uniquely minimised at (e,Y)=(1,5). The coarser 1/480 certificate remains as a uniqueness-free uniform argument. Any surviving Schur route must therefore use genuine off-diagonal coupling or signed cancellation rather than positive rank-one averaging.",
+    "No Diophantine lower bound depending only on weight, level, depth, integral Fourier coefficients, nonzero anomaly, or finite-stage transcendence can close the finite Euler-sieve limit.",
+    "Unbounded exact-order prime support does not imply phase escape: rational specialisations can lock all compatible phases, and the named 331 layer itself supplies a period-kill certificate while its rigorously bounded depth-16 phase remains above 9/10.",
+    "Uniform canonical-residue escape within four, five, twelve, or seventeen heights after the central interval becomes nonempty is false. The exact pure-dyadic champion c=490794 remains endpoint-trapped for nineteen post-clearance heights. During that trap the nearest Mersenne quotient is fixed at k=327611 and the signed error follows E_(H+1)=2E_H+phi(c+H+1)-k, so the next producer is totient-word anti-shadowing in a moving interval rather than another guessed constant.",
+    "Pointwise totient-image membership, positivity, evenness, and the moving upper envelope do not imply endpoint escape. The Lean-checked constant-two word satisfies all of them and cancels the expanding fixed-quotient boundary mode forever. Consecutive-argument arithmetic is indispensable.",
+    "One prime-successor bottom lock does not force a backward lower-boundary crossing even when propagated through every exact intervening totient letter. The c=490794 record has a complete 35-seed admissible precursor cone, so a successful argument must couple multiple locks or introduce a genuinely cross-gap invariant.",
+    "Two distinct prime-successor locks do not force endpoint escape even when every exact intervening totient letter and moving endpoint bound is imposed. At c=349 the complete 721-seed interval contracts to the unique actual seed E_10=-15 by the second successor, yet that seed remains strictly trapped. Precursor uniqueness is therefore insufficient.",
+    "Three distinct prime-successor locks do not force endpoint escape or precursor uniqueness. At c=1858 the complete cone remains the 15-seed interval [-193,-179] through the third trapped successor, containing the actual seed -189. No proof based on any fixed finite local lock count is opened by the first three cases; the remaining producer must use unbounded/cofinal cross-gap coherence.",
+    "Pure-dyadic centrality modulo 2^H-1 does not descend to centrality modulo (2^H-1)/v. The actual (c,v,H)=(0,3,6) block is central modulo 63 and endpoint-trapped modulo 21. Only the reverse implication is valid, so the full odd-denominator producer cannot discard v-specific arithmetic.",
+    "No uniform cap on the pure-dyadic fixed-quotient delay can exist. The maximum post-clear delay over c <= C grows like log2 C - records 15, 17, 18, 19 at c = 14177, 50490, 403191, 490794 with ratio to log2(c) settling at 1 - so each cap is refuted at c about 2^cap. Further cap searches are guaranteed to refute the next cap and to produce nothing else."
+  ],
+  "experimental_result": {
+    "status": "exact_one_way_result_with_lean_checked_prime_successor_bottom_lock",
+    "theorems": [
+      "totientBlock_height_succ",
+      "pureDyadicEndpointError_succ",
+      "prime_forces_pureDyadicEndpointError_excursion",
+      "exists_late_pureDyadicEndpointError_excursion",
+      "prime_successor_upper_trap_forces_bottom_lock",
+      "exists_late_prime_predecessor_bottom_lock_of_upper_trap"
+    ],
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_endpoint_cocycle.py",
+    "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_endpoint_cocycle_receipt.json",
+    "audited_window": {
+      "max_dyadic_exponent": 1000000,
+      "max_height": 100
+    },
+    "record_witness": {
+      "c": 490794,
+      "geometry_clear_height": 20,
+      "first_central_height": 39,
+      "post_geometry_clear_delay": 19,
+      "fixed_trap_quotient": 327611
+    },
+    "exact_cocycle": "E_(H+1)=2E_H+phi(c+H+1)-k for E_H=totientBlock(H,c)-k(2^H-1)",
+    "analytic_consequence": "Pure-dyadic endpoint trapping is a fixed-quotient affine totient-word shadowing problem. Prime arguments force cofinal adjacent-error budgets of linear size, while a trapped successor sharpens this to 4E_H+p+phi(p+1)<=4+3k. Therefore any permanent upper trap is cofinally bottom-locked immediately before large primes; bounded, periodic, sublinear, and non-bottom-locked linear shadows are eliminated. Exact backward replay now shows that one local bottom lock and its exact preceding composite block do not force a crossing, so the remaining producer must couple multiple locks or add a cross-gap arithmetic invariant.",
+    "claim_ceiling": "finite exact certificates plus kernel-checked cofinal bottom locking; no proof of universal canonical escape or irrationality"
+  },
+  "prime_successor_precursor_cone_result": {
+    "status": "verified_exact_single_block_mechanism_elimination",
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
+    "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_prime_successor_precursor_cone_receipt.json",
+    "witness": {
+      "c": 490794,
+      "fixed_quotient": 327611,
+      "geometry_clear_height": 20,
+      "terminal_preprime_height": 34,
+      "prime_argument": 490829,
+      "exact_geometry_seed_count": 35,
+      "actual_geometry_seed_error": 53713
+    },
+    "analytic_consequence": "The complete exact one-block precursor cone is nonempty, so cofinal bottom locks cannot be consumed one at a time. The next admissible arithmetic producer must compare at least two prime locks or control a quantity transported across prime gaps.",
+    "claim_ceiling": "finite exact mechanism elimination; no infinite trap, universal escape, or irrationality proof"
+  },
+  "two_prime_lock_precursor_cone_result": {
+    "status": "verified_exact_two_lock_mechanism_elimination",
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
+    "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_two_prime_lock_precursor_cone_receipt.json",
+    "witness": {
+      "c": 349,
+      "fixed_quotient": 167,
+      "geometry_clear_height": 10,
+      "prime_arguments": [
+        359,
+        367
+      ],
+      "complete_seed_count": 721,
+      "after_first_successor_seed_count": 362,
+      "after_second_successor_seed_count": 1,
+      "unique_actual_seed_error": -15,
+      "terminal_height": 19,
+      "terminal_error": -109,
+      "minimum_endpoint_margin": 238
+    },
+    "analytic_consequence": "Two exact prime-successor locks can collapse the complete precursor cone to the unique actual orbit without causing escape. The next admissible local producer must use at least a third lock; otherwise it must control a genuinely global quantity across prime gaps.",
+    "claim_ceiling": "finite exact two-lock mechanism elimination; no infinite trap, universal escape, or irrationality proof"
+  },
+  "three_prime_lock_precursor_cone_result": {
+    "status": "verified_exact_three_lock_mechanism_elimination",
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
+    "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_three_prime_lock_precursor_cone_receipt.json",
+    "witness": {
+      "c": 1858,
+      "fixed_quotient": 1251,
+      "geometry_clear_height": 12,
+      "prime_arguments": [
+        1871,
+        1873,
+        1877
+      ],
+      "complete_seed_count": 3743,
+      "after_lock_seed_counts": [
+        937,
+        234,
+        15
+      ],
+      "terminal_seed_interval": [
+        -193,
+        -179
+      ],
+      "actual_seed_error": -189,
+      "terminal_height": 20,
+      "terminal_error": -741,
+      "terminal_margin": 1138
+    },
+    "analytic_consequence": "Three exact local prime-successor locks leave a nonempty complete precursor cone and need not determine the orbit. The next admissible producer must consume an unbounded/cofinal lock family through a genuinely global cross-gap invariant rather than another fixed finite lock count.",
+    "claim_ceiling": "finite exact three-lock mechanism elimination; no infinite trap, universal escape, or irrationality proof"
+  },
+  "pointwise_countermodel_result": {
+    "status": "lean_checked_infinite_mechanism_no_go",
+    "theorems": [
+      "endpointWordBlock_const",
+      "pointwiseTotientValued_const_two",
+      "exists_pointwiseTotientValued_permanent_endpointTrap"
+    ],
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_pointwise_countermodel.py",
+    "receipt": "state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_pointwise_countermodel_receipt.json",
+    "analytic_consequence": "Anti-shadowing must consume correlations between Euler totients at their actual consecutive arguments; independent legal-letter or envelope estimates cannot kill the homogeneous boundary mode.",
+    "claim_ceiling": "strategy elimination only; the word is a relaxation countermodel, not the actual consecutive totient word"
+  },
+  "open_producers": [
+    {
+      "id": "totient_specific_moving_dyadic_escape",
+      "priority": 1,
+      "statement": "Prove FullMersenneCanonicalBasepointResidueGapSupply, the Lean-equivalent arithmetic normal form: for every c and positive odd v, find H>0 divisible by phi(v) such that the canonical residue (-totientBlock(H,c)) mod ((2^H-1)/v) lies in the central interval of radius c+H+1. On the pure-dyadic axis, the Lean-checked signed error E_H=totientBlock(H,c)-k(2^H-1) obeys E_(H+1)=2E_H+phi(c+H+1)-k while the nearest quotient k stays fixed. Exact computation through c<=1000000 finds delay nineteen at c=490794, ruling out caps through seventeen. Pointwise legal-letter methods, the constant-two mode, sublinear errors, and every eventually affine linear-scale error are eliminated. Actual prime positions cofinally force linear excursions; more directionally, if the successor remains upper-trapped then 4E_H+p+phi(p+1)<=4+3k, so any permanent trap is cofinally bottom-locked immediately before large primes. Complete exact cones now eliminate one-, two-, and three-local-lock forced crossing; at c=1858 three locks still leave 15 seeds. The sharp surviving local target must consume an unbounded/cofinal lock family through a genuinely global cross-gap invariant that excludes non-affine trapped precursors."
+    },
+    {
+      "id": "theta_two_denominator_compression",
+      "priority": 2,
+      "statement": "Construct a genuinely coupled off-diagonal or signed-cancellation vector Schur kernel whose reduced rational denominator q_(n,Y) satisfies 0 < q_(n,Y)*|Theta_2-R_(n,Y)| -> 0. Rank-saturated one-corner extraction and all positive rank-one monomial strict-subrank quotients, including their positive finite direct sums, are now excluded at the sharp floor 21/320 (unique minimiser (1,5))."
+    },
+    {
+      "id": "uniform_growing_level_specialisation",
+      "priority": 3,
+      "statement": "For the additively repaired finite Euler-sieve family, prove a family-specific distance lower bound with exponent kappa < log(2)/2 in the genuine level, exploiting cumulative Euler-product Fourier geometry rather than generic modular-form parameters."
+    },
+    {
+      "id": "cusp_frontier_formalisation",
+      "priority": 4,
+      "statement": "Kernel-check the explicit root-frontier remainder bound and its asymptotic corollaries as a sharp consumer of the run-geometry library."
+    },
+    {
+      "id": "general_prime_ray_polynomial_realisability",
+      "priority": 5,
+      "statement": "For polynomials beyond the now-closed X-2 case, formalize the cyclotomic resultant factorization, characteristic-p exact-order theorem, and Frobenius freeze before consuming the external Archimedean growth input."
+    }
+  ],
+  "claim_ceiling": "Erdos #249 remains open. Lean proves that irrationality of S=sum_{n>=1}phi(n)/2^n is equivalent to FullMersenneCanonicalBasepointResidueGapSupply, and that exact equivalent reduction is the canonical frontier. The finite scans, delay laws, continued-fraction prefix, cyclotomic support, exact 331 certificates, Schur obstructions, and affine-mode exclusions are evidence or finite denominator exclusions only. In particular, the observed delay translation does not promote an irrationality-measure estimate to the target: any quantitative distance bound would be a sufficient stronger route. A lower bound ||v*2^c*S|| >= c^-A uniformly over all positive odd v is not merely unproved but impossible for irrational S, because the odd multiples of 2^c*S are dense modulo one. No irrationality proof or uniform quantitative measure is claimed.",
+  "paper_projection": {
+    "integration_monograph": "paper/erdos249-257-main-paper.tex",
+    "problem_note": "paper/erdos-249-binary-totient-series.tex",
+    "policy": "The integration monograph is the unlimited superset. The problem note may deliberately repeat all #249 definitions, theorem chains, negative results, and open obligations so it is independently readable."
+  },
+  "public_projection": {
+    "state": "kernel_checked_private_ready_for_public_projection_and_human_mathematical_review",
+    "minimum_release": "mirror only kernel-checked declarations first; retain external theorem dependencies and all claim ceilings in authored exposition"
+  }
+}

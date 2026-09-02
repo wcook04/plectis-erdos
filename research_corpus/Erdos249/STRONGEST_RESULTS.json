@@ -1,0 +1,180 @@
+{
+  "schema": "plectis_strongest_result_activation_map_v2",
+  "problem_id": "erdos_249",
+  "status": "open",
+  "source_checkpoint": "084b929db29ad54ca081780ba758cda584014568",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "record_denominator_exclusion_79639646646701375323355774875831053",
+      "status": "strongest_premise",
+      "exact_statement": "If S = sum_{n>=1} phi(n)/2^n is rational with S = a/q in lowest terms, then q > 79 639 646 646 701 375 323 355 774 875 831 053 ≈ 7.96×10^34. Sharpness: every q below satisfies the (N,K)=(1,240) window certificate; q* = 79639646646701375323355774875831054 is the exact first failure.",
+      "hypotheses": "Classical Farey mediant method; Lean-checked in CertificateKernel.lean and GapFareyBound.lean, sorry-free.",
+      "named_consumers": [
+        "erdos_249_parent",
+        "farey_extension_desk"
+      ],
+      "supersedes": [
+        "earlier 2.49×10^17 bound in stale public clone"
+      ],
+      "why_it_matters": "Explicit q > 10^34 anchor with sharp window receipt — strongest stranger-legible finite bound in the corpus.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/shared_lean/CertificateKernel.lean",
+        "research_corpus/Erdos249/shared_lean/GapFareyBound.lean"
+      ]
+    },
+    {
+      "result_id": "mobius_mersenne_strict_log_concavity",
+      "status": "strongest_premise",
+      "exact_statement": "For every r ≥ 1, Θ_r Θ_{r+2} < Θ_{r+1}² where Θ_r = sum_{d>=1} μ(d)/(2^d-1)^r. Corollary: every shifted 2×2 Hankel determinant is strictly negative.",
+      "hypotheses": "Lean-checked sorry-free in SignedQMomentObstruction.lean; not in paper or public monolith.",
+      "named_consumers": [
+        "theta_two_denominator_compression",
+        "erdos_249_parent"
+      ],
+      "supersedes": [
+        "informal Hankel negativity remarks without a theorem"
+      ],
+      "why_it_matters": "Entire-ladder inequality with zero #249 vocabulary; unpackaged and worth releasing.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/shared_lean/SignedQMomentObstruction.lean"
+      ]
+    },
+    {
+      "result_id": "rank_one_sharp_floor_twenty_one_three_twenty",
+      "status": "strongest_premise",
+      "exact_statement": "rankOneSubrankQuotient e Y - Θ_2 > 21/320 for all e≥1, Y≥4; unique minimiser (1,5) with exact value 35076077250375200/37573118933633199; 1/16 valid, 1/15 fails.",
+      "hypotheses": "Lean-checked in RankOneSharpFloor.lean; Comparator entry ExternalVerification249RankOneSharpFloor.",
+      "named_consumers": [
+        "theta_two_denominator_compression"
+      ],
+      "supersedes": [
+        "false geometric tail 1/108 majorant"
+      ],
+      "why_it_matters": "Best constant with equality case and sharp unit-fraction boundary — closes positive rank-one monomial lane.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/RankOneSharpFloor.lean",
+        "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/Solution.lean"
+      ]
+    },
+    {
+      "result_id": "lean_equivalent_canonical_frontier",
+      "status": "strongest_premise",
+      "exact_statement": "Irrationality of S = sum φ(n)/2^n is equivalent to FullMersenneCanonicalBasepointResidueGapSupply: for all c and odd v, existence of H divisible by φ(v) with canonical residue in the central interval of radius c+H+1.",
+      "hypotheses": "Lean equivalence in the corpus; research_packet frontier_integrity names this the canonical frontier.",
+      "named_consumers": [
+        "erdos_249_parent",
+        "moving_dyadic_escape_desk"
+      ],
+      "supersedes": [
+        "treating irrationality-measure bounds as the target"
+      ],
+      "why_it_matters": "Every desk must close through this reduction or prove irrationality directly.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/research_packet.json",
+        "research_corpus/Erdos249/problem/CanonicalMersenneResidueComputationalLab.md"
+      ]
+    },
+    {
+      "result_id": "dyadic_kernel_rank_two_to_the_e_plus_one",
+      "status": "strongest_premise",
+      "exact_statement": "finrank_Q(span of totient kernel through level e) = 2^e + 1 for e ≥ 1, with explicit dyadic section basis.",
+      "hypotheses": "Lean-checked base-2 rank in TotientMahlerDefect.lean; all-base rank in paper conditional on Martin 2006.",
+      "named_consumers": [
+        "uniform_growing_level_specialisation"
+      ],
+      "supersedes": [
+        "vague finite-rank heuristics without basis"
+      ],
+      "why_it_matters": "Exact closed-form rank indexes the finite-level architecture; Martin remains external authority for independence.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/shared_lean/TotientMahlerDefect.lean",
+        "research_corpus/Erdos249/paper/erdos-249-binary-totient-series.tex"
+      ]
+    },
+    {
+      "result_id": "uniform_c_to_minus_a_impossible",
+      "status": "exact_no_go",
+      "exact_statement": "No bound ||v·2^c·S|| ≥ c^{-A} uniformly over all positive odd v can hold for irrational S: odd multiples of 2^c S are dense mod 1.",
+      "hypotheses": "Elementary density argument; recorded in research_packet negative_results.",
+      "named_consumers": [
+        "totient_specific_moving_dyadic_escape"
+      ],
+      "supersedes": [
+        "uniform-in-v irrationality-measure proposals"
+      ],
+      "why_it_matters": "Delay observations cannot be promoted to a quantitative irrationality measure.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/research_packet.json",
+        "research_corpus/Erdos249/problem/SupplyDelayLab.md"
+      ]
+    },
+    {
+      "result_id": "geometric_coprime_lambert_rational_at_half",
+      "status": "exact_no_go",
+      "exact_statement": "sum_{gcd(a,b)=1} 1/(2^{a+b}-1) = 1 exactly at r = 1/2; Stern–Brocot telescoping plus geometric decay does not imply irrationality.",
+      "hypotheses": "Lean-checked in GeometricCoprimality.lean.",
+      "named_consumers": [
+        "erdos_249_parent"
+      ],
+      "supersedes": [
+        "coprime restriction as irrationality engine"
+      ],
+      "why_it_matters": "Kills a natural geometric route with an exact value 1.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/shared_lean/GeometricCoprimality.lean"
+      ]
+    },
+    {
+      "result_id": "positive_rank_one_subrank_floor_closed",
+      "status": "exact_no_go",
+      "exact_statement": "All positive rank-one monomial strict-subrank quotients and their positive finite direct sums are excluded below 21/320; unique minimiser (1,5).",
+      "hypotheses": "Lean-checked RankOneSharpFloor and RankOneSubrankObstruction.",
+      "named_consumers": [
+        "theta_two_denominator_compression"
+      ],
+      "supersedes": [
+        "positive one-corner Schur extraction"
+      ],
+      "why_it_matters": "Forces genuinely coupled signed kernels for any remaining Schur route.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/RankOneSharpFloor.lean",
+        "research_corpus/Erdos249/problem/RankOneSubrankObstruction.lean"
+      ]
+    },
+    {
+      "result_id": "pointwise_legal_letter_countermodel",
+      "status": "exact_no_go",
+      "exact_statement": "Independent legal-letter / envelope estimates cannot kill the homogeneous boundary mode; anti-shadowing must consume consecutive totient correlations.",
+      "hypotheses": "Lean-checked infinite mechanism no-go with pinned receipt.",
+      "named_consumers": [
+        "totient_specific_moving_dyadic_escape"
+      ],
+      "supersedes": [
+        "pointwise totient envelope methods"
+      ],
+      "why_it_matters": "Narrows escape constructions to globally correlated mechanisms.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/PointwiseTotientCountermodelLab.md",
+        "research_corpus/Erdos249/receipts/erdos249_pure_dyadic_pointwise_countermodel_receipt.json"
+      ]
+    },
+    {
+      "result_id": "finite_precursor_locks_eliminated",
+      "status": "exact_no_go",
+      "exact_statement": "Exact one-, two-, and three-local-lock forced precursor cones are eliminated; three locks at c=1858 still leave 15 seeds — not a universal trap proof.",
+      "hypotheses": "Pinned script outputs in research_packet precursor cone results.",
+      "named_consumers": [
+        "totient_specific_moving_dyadic_escape"
+      ],
+      "supersedes": [
+        "any finite lock pattern as a complete escape"
+      ],
+      "why_it_matters": "Surviving target needs cofinal unbounded lock family with global cross-gap invariant.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/scripts/check_three_prime_lock_precursor_cone.py",
+        "research_corpus/Erdos249/problem/research_packet.json"
+      ]
+    }
+  ]
+}

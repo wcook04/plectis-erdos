@@ -1,0 +1,360 @@
+{
+  "claim_ceiling": "Finite denominator grid only; success does not prove the universal canonical-basepoint residue-gap supply or irrationality.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "falsification_consequence": "The tested residue-delay constant is impossible even after separating deterministic interval growth; the producer must explain the exact endpoint trap.",
+      "survival_consequence": "A universal short-multiplier theorem would instantiate the Lean canonical-basepoint gap supply and prove irrationality."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "uniform_post_geometry_residue_escape_delay",
+      "statement": "Once the central interval is nonempty, every denominator in the probe grid reaches a central residue within 4 additional Euler multiples."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CanonicalMersenneResidueComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_canonical_mersenne_residue.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean"
+      ]
+    },
+    "probe": {
+      "computation": "For every 2^c v in the grid, build the exact totient block and test (-block) mod ((2^H-1)/v) at successive Euler multiples.",
+      "falsifier": "Any exact (c,v) whose post-geometry-clear residue delay exceeds 4.",
+      "id": "canonical_mersenne_residue_denominator_grid",
+      "question": "After deterministic modulus growth makes the central interval possible, do exact denominators create long residue traps?",
+      "stop_condition": "At a delay violation, retire the proposed uniform multiplier and inspect its endpoint-residue trajectory; if no violation appears, formulate a structural centrality lemma rather than treating a larger grid as proof."
+    },
+    "problem": {
+      "claim_ceiling": "Finite denominator/multiplier scans do not prove the universal canonical-basepoint residue-gap supply.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_{n>=1} phi(n)/2^n."
+    },
+    "result": {
+      "status": "finite_counterexample",
+      "summary": "The exact grid contains 1 denominators whose residue stays trapped for more than 4 Euler multiples after the central interval first becomes nonempty."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "max_dyadic_exponent": 30,
+    "max_euler_multiplier": 12,
+    "max_odd_denominator": 200,
+    "residue_delay_threshold": 4
+  },
+  "scan": {
+    "first_multiplier_histogram": {
+      "1": 2879,
+      "10": 2,
+      "11": 1,
+      "12": 1,
+      "2": 132,
+      "3": 26,
+      "4": 17,
+      "5": 15,
+      "6": 8,
+      "7": 12,
+      "8": 4,
+      "9": 3
+    },
+    "first_threshold_violations": [
+      {
+        "c": 27,
+        "first_central_height": 12,
+        "first_central_multiplier": 12,
+        "first_geometry_clear_multiplier": 7,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 5,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 29,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 30,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 31,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 32,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 33,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 34,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 7,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 35,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 7,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 36,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 19,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 37,
+            "residue": 19
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 19,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 38,
+            "residue": 19
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 37,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 39,
+            "residue": 37
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 67,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 40,
+            "residue": 67
+          }
+        ],
+        "v": 1
+      }
+    ],
+    "first_unresolved_pairs": [],
+    "largest_first_central_multiplier": 12,
+    "largest_first_central_multiplier_case_count": 1,
+    "largest_first_central_multiplier_cases": [
+      {
+        "c": 27,
+        "first_central_height": 12,
+        "first_central_multiplier": 12,
+        "first_geometry_clear_multiplier": 7,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 5,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 29,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 30,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 31,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 32,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 33,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 34,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 7,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 35,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 7,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 36,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 19,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 37,
+            "residue": 19
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 19,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 38,
+            "residue": 19
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 37,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 39,
+            "residue": 37
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 67,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 40,
+            "residue": 67
+          }
+        ],
+        "v": 1
+      }
+    ],
+    "largest_post_geometry_clear_residue_delay": 5,
+    "post_geometry_clear_residue_delay_histogram": {
+      "0": 3009,
+      "1": 72,
+      "2": 11,
+      "3": 4,
+      "4": 3,
+      "5": 1
+    },
+    "residue_delay_threshold": 4,
+    "resolved_pair_count": 3100,
+    "tested_pairs": 3100,
+    "threshold_violation_count": 1,
+    "unresolved_pair_count": 0
+  },
+  "schema": "erdos249-canonical-mersenne-residue-grid/1",
+  "sources": [
+    {
+      "byte_length": 13158,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_canonical_mersenne_residue.py",
+      "sha256": "f7716147fc7f83d774d914663aeb61c7f17dc7a3e6330b069fcc63615b30018a"
+    },
+    {
+      "byte_length": 129144,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #1049: sharp rectangular Hermite–Padé threshold no-go with unique equality point"
+  description: >-
+    On the admissible region ρ ≥ 0 and σ ≥ 1 + ρ, the rectangular two-function threshold of
+    the explicit exponent model, formed from the decay exponent (1 + ρ²)/2 + σ, the height
+    exponent (1 + ρ)²/2 + σ (1 + ρ) and the cyclotomic saving 3σ²/π², is at most 1/2 - 1/π².
+    Equality holds exactly at ρ = 0 and σ = 1, the classical one-function endpoint, so the
+    bound is sharp and its equality locus is a single point. The proof clears denominators
+    into one gap functional and expands it exactly at σ = 1 + ρ + u, where the value is
+    -π²ρ² - π²ρu - 2π²ρ - 2ρ² - 10ρu - 4ρ - 6u² - 8u and every term is nonpositive for ρ ≥ 0
+    and u ≥ 0. The gap is therefore nonpositive across the whole admissible region and
+    vanishes only at that endpoint, so no admissible parameter pair of this model improves
+    on the classical one-function threshold. The subject is Diophantine approximation by
+    simultaneous rational approximants, and the statement is a sharp method boundary for
+    anyone weighing a rectangular Hermite–Padé attack; novelty is unassessed. The theorem
+    applies only to the exponent model encoded by these definitions. It does not construct
+    Hermite–Padé approximants and does not settle Erdős #1049.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1049HermitePadeNoGo/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1049HermitePadeNoGo/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_comparator_replay_pending"
+  research_interest_status: "research_note_grade_sharp_method_boundary"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "focused Lean and axiom checks are pending"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11J82"]
+
+sources:
+  - title: "Rectangular Hermite--Padé threshold comparison"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+    note: >-
+      Exact source-independent interface extracted from the checked Erdős
+      1049 formal development.
+  - title: "Erdős Problem #1049"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1049"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Five compared theorems expose the exact gap identity, sign, equality
+    locus, threshold inequality, and sharp equality classification.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical"
+      file: "ExternalVerification1049HermitePadeNoGo/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049HermitePadeNoGo/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/HermitePadeNoGo.lean"
+      novelty_status: "unassessed"
+      contribution_class: "sharp rectangular Hermite--Padé threshold no-go"
+      boundary: "Applies only to the explicit exponent model encoded by the package definitions."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff"
+      file: "ExternalVerification1049HermitePadeNoGo/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049HermitePadeNoGo/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/HermitePadeNoGo.lean"
+      novelty_status: "unassessed"
+      contribution_class: "unique equality endpoint classification"
+      boundary: "Does not construct Hermite--Padé approximants or settle the target Lambert value."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The Challenge copies the exact source model and conclusions and adds no
+    universal Hermite--Padé impossibility or irrationality claim.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The admissible region, threshold normalization, equality endpoint, and
+    open-problem boundary were reviewed; mechanical replay remains pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1049HermitePadeNoGo"
+  statements:
+    - source: "ErdosProblems.Erdos1049.hpClearedGap_expansion"
+      lean: "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion"
+      module: "ExternalVerification1049HermitePadeNoGo/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.hpClearedGap_nonpos"
+      lean: "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos"
+      module: "ExternalVerification1049HermitePadeNoGo/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.hpClearedGap_eq_zero_iff"
+      lean: "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff"
+      module: "ExternalVerification1049HermitePadeNoGo/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.rectangular_hp_threshold_le_classical"
+      lean: "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical"
+      module: "ExternalVerification1049HermitePadeNoGo/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff"
+      lean: "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff"
+      module: "ExternalVerification1049HermitePadeNoGo/Challenge.lean"
+      status: "exact-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

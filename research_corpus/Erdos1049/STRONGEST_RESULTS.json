@@ -1,0 +1,516 @@
+{
+  "schema": "plectis_strongest_result_activation_map_v2",
+  "problem_id": "erdos_1049",
+  "status": "open",
+  "source_checkpoint": "084b929db29ad54ca081780ba758cda584014568",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "zudilin_rational_homogenisation_contour",
+      "status": "strongest_premise",
+      "exact_statement": "For all coprime integers a > b >= 1 with log b / log a < theta* = C_0/C_1 = 0.40568302138406054..., where C_1 = (a0+a1+a2)beta - (a1^2+a2^2+beta^2)/2 = 1091/2 and C_0 = a1^2/2 + a0 a1 + (beta-a2)(a2-a1) - (3/pi^2)(m^2 - J) = 221.3000881650050251240427 at the Zudilin direction (a0,a1,a2;beta) = (14,12,14;27) with m = 15 and J = 77.94318447500909592258957 the trigamma sum over the thirteen printed omega = 1 intervals, the value h_{a/b}(1) = sum_{m>=1} 1/((a/b)^m - 1) is irrational. In particular F((31/4)^r) is irrational for every r >= 1.",
+      "hypotheses": "Zudilin 2004 Lemma 7 read in Z[p] as printed (p^{-M} D_{15n} Omega^{-1} F_n = U_n h_p(1) - V_n with U_n, V_n in Z[p]) and Lemma 2 through its phi(l) corollary, plus sum_{l<=N} phi(l) ~ 3N^2/pi^2. Everything else is elementary: deg U_n = W_n, deg V_n = W_n - 1, Lambda_n > 0 for real p > 1, and (q;q)^2 <= F_n <= (q;q)^{-2}/(1 - q^{a0}).",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "contour_maximisation_desk"
+      ],
+      "supersedes": [
+        "the bare 81/200 elementary sub-boundary",
+        "the earlier 'external asymptotic dependency' wording",
+        "Duverney 1996 Theoreme 2 region (1/3)(1-3/pi^2) = 0.2320",
+        "Bundschuh-Vaananen's region 1/2 - 1/pi^2 = 0.398678816 as the largest known rational-base region"
+      ],
+      "why_it_matters": "It is the only rational-base region in the repository that strictly exceeds the published Bundschuh-Vaananen frontier, it names the constant c = C_1/C_0 = 2.46497868... that Zudilin 2016 announced but did not compute, and its parameter dependence (14,12,14;27) is the exact free handle a region-maximisation desk must optimise.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/ZudilinRationalHomogenisationDerivation.md",
+        "research_corpus/Erdos1049/probes/erdos1049_zudilin_c0_c1_check.py",
+        "research_corpus/Erdos1049/probes/erdos1049_zudilin_exact_forms.py",
+        "research_corpus/Erdos1049/receipts/erdos1049_contour_adversary/zud_recon.py",
+        "research_corpus/Erdos1049/problem/RationalBaseContour.lean"
+      ]
+    },
+    {
+      "result_id": "lean_contour_two_sided_bracket",
+      "status": "strongest_premise",
+      "exact_statement": "eightyOne_twoHundredths_lt_zudilinContour : (81:R)/200 < zudilinContour, and zudilinContour_lt_half : zudilinContour < 1/2, and half_lt_threeHalves_log_ratio : (1:R)/2 < Real.log 2 / Real.log 3, hence threeHalves_outside_zudilinContourRegion : not ZudilinContourRegion 3 2.",
+      "hypotheses": "None beyond the definitions zudilinC1 = 1091/2, zudilinC0 = 266 - 3/pi^2 * (225 - zudilinJ), zudilinJ the thirteen-interval trigamma sum, plus Real.pi_gt_d2 and the k=0 trigamma lower bounds; the upper bound uses J <= trigammaSeries(1/14) < 198.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "contour_maximisation_desk",
+        "exact_no_go_desk"
+      ],
+      "supersedes": [
+        "threeHalves_outside_zudilinHeightRegion (which only excludes the 81/200 sub-boundary)",
+        "any hope that a better Zudilin direction reaches 3/2"
+      ],
+      "why_it_matters": "Kernel-checked proof that the entire theta* = 1/mu lane is capped strictly below 1/2 < log 2/log 3. Together with mu >= 2 for every irrational, this is the structural reason the rank-two ceiling and the homogenisation ceiling a > b^2 are the SAME barrier, and it tells any region-pushing desk exactly where to stop.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/RationalBaseContour.lean"
+      ]
+    },
+    {
+      "result_id": "pade_threshold_law_over_rational_bases",
+      "status": "strongest_premise",
+      "exact_statement": "For the scalar q-Apery Pade family with the q-generic seeds L_0 = 0, L_1 = -q(q+2)/(q-1), R_0 = 1, R_1 = -(q^2+q-1), L_j/R_j converges to sum_{n>=1} 1/(q^n - 1) at every rational q > 1 (matched to 57-295 digits over ten bases), and with q = a/b in lowest terms the three-point estimator gives log|R_j| ~ (3/2) log(a/b) j^2, log den(R_j) ~ (3/2) log b . j^2, log|rho_j - rho| ~ -3 log(a/b) j^2, and log|B_j| ~ kappa log a . j^2 with kappa = 3/2 + 3/pi^2 = 1.8039635 DEPENDING ONLY ON a. Hence the linear forms tend to zero iff log b/log a < 1 - kappa/3 = 1/2 - 1/pi^2 = 0.3986788, i.e. a > b^2.50828.",
+      "hypotheses": "Finite exact rational computation to index ~150 over ten bases, with a three-point second-difference estimator that annihilates linear and constant terms; 3/pi^2 is a numerical identification confirmed term by term against phi(j) (correlation 0.98922, slope 0.9905), not a derivation.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "rank_budget_law_for_rational_bases",
+        "exact_no_go_desk"
+      ],
+      "supersedes": [
+        "the earlier contaminated first-difference estimate kappa ~ 1.78",
+        "any per-base anecdote about whether the q-Apery forms shrink"
+      ],
+      "why_it_matters": "It is the calibrated instrument: it reproduces Erdos 1948 at q=2,3, Bundschuh-Vaananen at 7/2, failure at 5/2 and 3/2, and calls BOTH razor-thin boundary pairs (14/3 fails at +0.141 while 16/3 closes at -0.020; 31/4 fails at +0.053 while 33/4 closes at -0.023). A kappa outside (1.7889, 1.8106) would mis-call them, so the constant is pinned.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/PadeThresholdLawLab.md",
+        "research_corpus/Erdos1049/probes/erdos1049_pade_threshold_law.py"
+      ]
+    },
+    {
+      "result_id": "rank_budget_law_for_rational_bases",
+      "status": "strongest_premise",
+      "exact_statement": "Under the assumed generic type-I decay, homogenisation, clearing, integrality and nonvanishing model, a rank-r system admits base a/b only if t := log b/log a < (r - 1 - kappa)/r, where kappa is the per-degree cyclotomic clearing rate. At r = 2 with the measured kappa = 2/pi^2 = 0.202642 this is exactly t < 1/2 - 1/pi^2; at kappa = 0 it is t < (r-1)/r. Thresholds: rank 2 gives 0.39868, rank 3 gives 0.59912, rank 4 gives 0.69934, rank 5 gives 0.75947. At t(3/2) = 0.630929753, rank 2 fails even at zero clearing, rank 3 passes iff kappa_3 < 0.10721 (at most 53% of the rank-two rate), and rank 4 passes at the observed rank-two rate with margin 0.06841.",
+      "hypotheses": "Explicitly assumed exponent model: Pade decay (r-1)D, homogenisation cost b^D, clearing cost a^{kappa D}, integrality and nonvanishing. kappa is measured only at rank two; carrying it to r > 2 is a calibration scenario, and kappa = 0 is the rigorous optimistic ceiling with no lower bracket asserted.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "rank_three_multiple_q_jacobi_desk",
+        "rank_four_multipoint_desk"
+      ],
+      "supersedes": [
+        "the vague statement that 3/2 needs 'higher rank'",
+        "any proposal to re-optimise the rank-two rectangular shape"
+      ],
+      "why_it_matters": "It converts 'try higher rank' into two exact numbers to beat, 0.10721 at rank three and 0.47628 at rank four, and it records the structural reason a GENERIC type-I solve fails: generic coefficients are Hankel minors of height e^{D log D}, so kappa_3 ~ log D diverges (measured 1.19-1.54 for D = 3..12, over budget by a factor of eleven at best and rising).",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/RankBudgetLaw.md",
+        "research_corpus/Erdos1049/probes/erdos1049_rank_budget_law.py",
+        "research_corpus/Erdos1049/receipts/erdos1049_rank_budget_law_receipt.json"
+      ]
+    },
+    {
+      "result_id": "homogenisation_ceiling_a_gt_b_squared",
+      "status": "strongest_premise",
+      "exact_statement": "With rho_j = L_j/R_j, B_j = den(rho_j), D_j = (3/2) j^2: log num(R_j) = (3/2) log 3 . j^2, log den(R_j) = (3/2) log 2 . j^2 and log|R_j| = (3/2) log(3/2) . j^2 with zero drift under the second-difference estimator; gcd(num R_j, num L_j) = 1 exactly at j = 40, 60, 80, 100, 120; and the Casoratian forces log gcd(num R_j, num L_j) <= 2 j log 3 = O(j). Since B_j is a multiple of num(R_j)/gcd and decay needs log B_j < 2 D_j (log a - log b), even a perfect content theorem (C_j = 0) requires D_j log a < 2 D_j (log a - log b), i.e. a > b^2, with D_j cancelling.",
+      "hypotheses": "den(R_j) = b^{D_j + O(j)}, |S - rho_j| = q^{-2 D_j + O(j)}, and the closed-form Casoratian (C); all three are established in the corpus.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "outward_scalar_primitive_content_bound",
+        "three_halves_pade_height_gap"
+      ],
+      "supersedes": [
+        "outward_scalar_primitive_content_bound as a route to 3/2",
+        "the height half of three_halves_pade_height_gap",
+        "every 'find a better gcd bound' proposal on the fixed diagonal"
+      ],
+      "why_it_matters": "It is base-only and degree-independent: no diagonal, degree or growth rate moves it. It also DERIVES the recorded threshold law (restoring C_j = (3/pi^2) j^2 log a gives log b/log a < 1/2 - 1/pi^2 exactly) and identifies the 1/pi^2 as sum_{r<=n} phi(r) ~ 3n^2/pi^2. Its maximum remaining prize is the band b^2 < a with log b/log a >= 1/2 - 1/pi^2, smallest member 5/2.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/HomogenisationCeilingProof.md",
+        "research_corpus/Erdos1049/probes/erdos1049_homogenisation_ceiling.py",
+        "research_corpus/Erdos1049/receipts/erdos1049_homogenisation_ceiling_receipt.json"
+      ]
+    },
+    {
+      "result_id": "casoratian_closed_form_and_block_structure",
+      "status": "strongest_premise",
+      "exact_statement": "For the source recurrence y_2 u_{j+1} + y_1 u_j + y_0 u_{j-1} = 0 with a = q^{j-1}, q = 3/2, y_0 = q(a-1)(qa+2), y_2 = (qa-1)(a+2), the Casoratian telescopes: W_j = L_{j+1} R_j - L_j R_{j+1} = -3^{j+1}(3^{j+1} + 2^{j+2}) / (2^{j+1}(3^{j+1} - 2^{j+1})), checked against exact rationals for j <= 46. Dividing by R_j R_{j+1} makes rho_j an explicit telescoping sum, and for p >= 5 the only p-adic poles sit at j == -1 mod d, d = ord_p(3/2), so the loss set is a union of whole intervals [dK, dK+d-1] under the standing hypothesis that R_j is a p-adic unit. The remainder is R_j rho_infinity - L_j = -R_j sum_{i>=j} W_i/(R_i R_{i+1}) approximately W_j/R_{j+1}.",
+      "hypotheses": "For the block structure, R_j is a p-adic unit at every index (false on a d-periodic proper subset of residues for 44 of the 122 primes below 700; exact witness 11 | B_31 although 3 in J_11 puts [30,39] in the loss set).",
+      "named_consumers": [
+        "homogenisation_ceiling_a_gt_b_squared",
+        "fixed_prime_conditional_tail",
+        "erdos_1049_parent"
+      ],
+      "supersedes": [
+        "HarmonicZeroBlockLawLab.md's measured block law",
+        "the criterion 'K in J_p' (the correct criterion is v_p(H_K) >= eps with eps = v_p(3^d - 2^d); live at p = 23 where 23^2 || 3^11 - 2^11)",
+        "hypothesis (H) that c_K is a fixed p-adic unit mod p^eps, which is FALSE at p = 5"
+      ],
+      "why_it_matters": "It is the exact engine: it turns a dynamical system into a product that can be read off, it PROVES the gcd cap that makes the homogenisation ceiling unconditional, and it gives a closed-form remainder showing the rational forms decay superbly so that the entire difficulty is the content cleared in passing to the primitive vector.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/CasoratianBlockLawProof.md",
+        "research_corpus/Erdos1049/probes/erdos1049_casoratian_block_law.py"
+      ]
+    },
+    {
+      "result_id": "zudilin_sharp_hankel_order_all_rank",
+      "status": "strongest_premise",
+      "exact_statement": "For every rank N, Zudilin's normalized Hankel determinant V_N* at x = z = 1 has q-order EXACTLY N(N-1)(2N-1)/6 and leading coefficient exactly (N!)^2 (N+1)!/2^N. Lean proves the algebraic assembly: six_mul_zudilinSharpHankelQOrder N : 6 * sum_{j<N} j^2 = N(N-1)(2N-1), and zudilinSharpHankelOrderAndCoeff_algebraicAssembly N : that identity together with 2^N * prod_{j<N} zudilinTransformedRowCoeff j = (N!)^2 (N+1)!.",
+      "hypotheses": "The published source (Zudilin 2016, Res. Number Theory 2, Art. 15, Section 4) proves only ord_q V_N* >= N(N-1)(2N-1)/6. Exactness is verified by exact integer power-series computation for 1 <= N <= 7; the general-N argument is ordinary mathematics whose formalisation covers the first transformed row in every column but not rows j >= 2, and does not identify the power-series determinant with the assembled closed forms.",
+      "named_consumers": [
+        "factor_extracted_hankel_against_explicit_thresholds",
+        "hankel_cost_to_gain_desk"
+      ],
+      "supersedes": [
+        "Zudilin 2016 Section 4's inequality ord_q V_N* >= N(N-1)(2N-1)/6",
+        "any hope of hidden normalized-Hankel q-order supplying extra cubic decay"
+      ],
+      "why_it_matters": "Equality closes the analytic side of the only cubic-decay construction in the corpus, so the entire remaining question there is arithmetic denominator extraction or a different integral model. It is also the corpus's strongest unconditional theorem and the exact quantity any new integral model must beat.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/AdelicHeightBridge.lean",
+        "research_corpus/Erdos1049/problem/HankelQOrderComputationalLab.md",
+        "research_corpus/Erdos1049/problem/scripts/check_zudilin_hankel_qorder.py",
+        "research_corpus/Erdos1049/receipts/erdos1049_hankel_qorder_receipt.json"
+      ]
+    },
+    {
+      "result_id": "zudilin_all_index_source_identities",
+      "status": "strongest_premise",
+      "exact_statement": "(i) Channel divisibility: for every n >= 1, p^{n+1} P_n(p)^3 divides Btilde_n(p) - 2 Ctilde_n(p) in Z[p], where P_n(p) = prod_{1<=r<=n}(p^r - 1); consequently B_n^{(d)} = 2 C_n^{(d)} on every leading cyclotomic layer and the full inhomogeneous source residue is -3 C_n^{(d)}. (ii) Single-channel block formula: for n = qd + s with 0 <= s < d, C_{qd+s}^{(d)} = K_d^{q-1} ((q!)^3 H_q / 12^{q-1}) C_{d+s}^{(d)} with K_d = 12 d^3 M_d(zeta)^3 and M_d = (p^d - 1)/Phi_d. (iii) First-appearance noncancellation: the normalized first d x d cross block is the wrapped Hankel matrix H_{i,j} = a_{i+j mod d} K^{[i+j>=d]}, its determinant is Res(W(x), K x^d - 1) up to sign, and at a prime above 2 with d = 2^a m (m odd, e = 2^{a-1}) the anti-diagonal is the UNIQUE minimum with normalized valuation exactly 3aed; for odd d the analogous minimum has valuation zero. Hence the full first-appearance associated-graded residue is nonzero for every d.",
+      "hypotheses": "Authored all-index mathematics with exact executable regressions (assignment certificates 1 <= d <= 256, subset-DP minima d <= 14, direct resultants d <= 6); not formalised in Lean.",
+      "named_consumers": [
+        "factor_extracted_hankel_against_explicit_thresholds",
+        "hankel_cost_to_gain_desk"
+      ],
+      "supersedes": [
+        "termwise telescoping (false at n = 2: the remainders -2 and 2(p+1) do not divide individually but -2/(p-1) + 2(p+1)/(p^2-1) = 0)",
+        "cross-channel cancellation as an all-index boundary mechanism",
+        "minimum-order cancellation at first appearance"
+      ],
+      "why_it_matters": "These three theorems together eliminate the entire first-appearance layer as a source of extra charge, which is why the surviving Hankel question is precisely 'higher-valuation-layer cancellation, a global factor invisible in the first block, or a different integral model'.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/ZudilinChannelDivisibilityProof.md",
+        "research_corpus/Erdos1049/problem/ZudilinSingleChannelBlockFormulaProof.md",
+        "research_corpus/Erdos1049/problem/ZudilinFirstBlockResultantProof.md",
+        "research_corpus/Erdos1049/problem/scripts/check_zudilin_first_block_resultant.py"
+      ]
+    },
+    {
+      "result_id": "qapery_moving_tail_plucker_opening",
+      "status": "strongest_premise",
+      "exact_statement": "For the primitive q-Apery rows at 3/2, the all-index adjacent depths after cancellation of the clearing degrees are v_2 = 3n^2 + 3n + 1 and v_3 = n + 1. Fixing a start s and reducing modulo M_s = 2^{3s^2+3s+1} 3^{s+1}, every later adjacent minor vanishes and every denominator coordinate is a unit; Lean then forces every pairwise tail minor to vanish and produces a nontrivial binary selector collision at width 3s^2 + 5s + 3. Exact identity: gcd_{j>s} det(w_s, w_j) / M_s = gcd_{s<=j<=255} B_j for every 0 <= s <= 15.",
+      "hypotheses": "The recorded q-Apery Casoratian, the exact denominator degree d_n = n(3n+1)/2, clearing-factor endpoint units and primitive denominator-channel units, verified exactly through row 255.",
+      "named_consumers": [
+        "congruence_constrained_adelic_hermite_pade",
+        "congruence_lattice_desk"
+      ],
+      "supersedes": [
+        "the natural expanding q-Apery prefix, whose common Plucker divisor is irreversibly capped at 6"
+      ],
+      "why_it_matters": "It is the only mechanism in the corpus that supplies arbitrarily deep local divisibility on a family that is not the prefix, and it is the exact launch pad for imposing congruences while choosing the combination.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/BezoutPluckerJets.lean",
+        "research_corpus/Erdos1049/problem/QAperyTailDenominatorLab.md",
+        "research_corpus/Erdos1049/receipts/erdos1049_primitive_plucker_receipt.json"
+      ]
+    },
+    {
+      "result_id": "lean_rational_target_endgames",
+      "status": "strongest_premise",
+      "exact_statement": "rational_twoSelector_not_both_tendsto_zero: for integers a, q with 0 < q and integral row sequences with A_1n B_2n - A_2n B_1n != 0 for every n, the two sequences B_in (a/q) - A_in cannot both tend to zero. rational_integerLinearForm_gap_of_prime_support: if ell is prime, ell | B, ell does not divide A, and ell does not divide q, then |B (a/q) - A| >= 1/q. twoSelector_unimodular_height_decay_tradeoff: if |uz - vw| = 1, all of |u|,|v|,|w|,|z| <= H, and both recombined forms have absolute value at most eps, then |A_1 B_2 - A_2 B_1| <= 2 H eps (|B_1| + |B_2|).",
+      "hypotheses": "All three are unconditional Lean theorems under their displayed integer, primality and unimodularity hypotheses; none supplies a family, an analytic decay estimate, or a prime-support proof for the actual q-Apery rows.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "congruence_lattice_desk",
+        "rank_four_multipoint_desk"
+      ],
+      "supersedes": [
+        "ad hoc nonvanishing arguments",
+        "generic continued-fraction optimisation, which proves irrationality only by assuming its own conclusion"
+      ],
+      "why_it_matters": "These are the finished endgames. A desk that supplies their hypotheses for an actual family has proved the parent at 3/2; the determinant-height tradeoff is simultaneously a MANDATORY falsifier that kills a construction whose coefficient height is too small for its claimed decay.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/TwoSelectorRemainderEscape.lean",
+        "research_corpus/Erdos1049/problem/QAperyTailDenominator.lean",
+        "research_corpus/Erdos1049/entries/ExternalVerification1049PrimeSupportSelectors/README.md"
+      ]
+    },
+    {
+      "result_id": "homogeneous_endpoint_coprimality",
+      "status": "strongest_premise",
+      "exact_statement": "homEval_mod_left: for naturals a, b, W and P in Z[X], homEval(a,b,W,P) mod a = P.coeff 0 * b^W; homEval_mod_right: homEval(a,b,W,P) mod b = P.coeff W * a^W. Hence for coprime a, b a polynomial with unit constant AND unit top coefficient has homogeneous evaluation coprime to a*b, and cyclotomicHomEval_isCoprime_mul gives gcd(Phi_m(a,b), ab) = 1 for every m >= 1. At (3,2), commonMultiplier_not_two_not_three_of_endpoint_units: an integer dividing both H_W(U) and H_W(V), with U of unit top endpoint and V of unit constant endpoint, is divisible by neither 2 nor 3.",
+      "hypotheses": "Coprime coordinates and the stated unit endpoint coefficients. These hold for the q-Apery denominator b_n (degree n(3n+1)/2, constant coefficient 1, leading coefficient (-1)^n) but FAIL for Van Assche's natural diagonal A_n = P_n(p^n|p^{-1}), which has zero constant term and carries a monomial factor p, giving v_3 = 1.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "congruence_lattice_desk",
+        "hankel_cost_to_gain_desk"
+      ],
+      "supersedes": [
+        "any proposal to manufacture 2-primary or 3-primary content at 3/2 from q-factorial or cyclotomic factors"
+      ],
+      "why_it_matters": "It is the exact statement of why multiplicative q-arithmetic alone cannot help at 3/2: useful content must be additive, cross-row, determinant-specific, or from another architecture. Any new construction must state its normalisation hypothesis explicitly, because the class-wide endpoint claim is FALSE as stated.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/ZudilinConeArithmetic.lean"
+      ]
+    },
+    {
+      "result_id": "fixed_prime_conditional_tail",
+      "status": "strongest_premise",
+      "exact_statement": "Descent lemma (unconditional, two lines): H_n = (1/p) H_{floor(n/p)} + sum_{j<=n, p not dividing j} 1/j, so v_p(H_n) >= 1 and n >= p imply v_p(H_{floor(n/p)}) >= 1, making J_p a tree under n -> floor(n/p) with children in [pn, pn+p-1]. Level three is EMPTY for p = 5, so J_5 = {4, 20, 24} exactly; likewise J_3 = {2,7,22} and J_13 = {12,156,168}. Under the all-level monodromy premise (M) R_{j+P_N} = -R_j mod 5^N with P_N = 2 . 5^{N-1}, and its consequence (C5), one gets v_5(B_j) = 1 - v_5(H_{floor(j/2)}) and hence 5 | B_j for EVERY j >= 50.",
+      "hypotheses": "(M) is certified by computation only at N = 1, 2, 3 (periods 2, 10, 50) with zero violations over 300/292/252 indices; its determinant half is a corollary of the Casoratian, and the content is the -1 on the R-line. Verified exactly to index 300: {j in [2,301] : 5 does not divide B_j} = {8,9,40,41,48,49} exactly.",
+      "named_consumers": [
+        "three_halves_pade_height_gap",
+        "congruence_lattice_desk"
+      ],
+      "supersedes": [
+        "the requirement of an effective form of Boyd's heuristic",
+        "the belief that Wolstenholme refutes every fixed-prime tail (it kills only the tail starting at first appearance, never the tail past the LAST loss block)"
+      ],
+      "why_it_matters": "It removes the hardest-looking input from the window-divisor substep and reduces it to one clean open statement, (M) at every level. Proving (M) is a self-contained, publishable sub-result and is the cheapest genuine progress available on this problem.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/FixedPrimeInfiniteTailProof.md",
+        "research_corpus/Erdos1049/probes/erdos1049_fixed_prime_infinite_tail.py",
+        "research_corpus/Erdos1049/receipts/erdos1049_fixed_prime_infinite_tail_receipt.json"
+      ]
+    },
+    {
+      "result_id": "little_q_legendre_kernel_and_diagonal_nonequivalence",
+      "status": "strongest_premise",
+      "exact_statement": "The Amdeberhan-Zeilberger denominator is b_n(p) = P_n(p^{n+1} | p^{-1}) where P_n(x|q) = sum_k [n,k]_p [n+k,k]_p p^{-kn + k(k-1)/2} (-x)^k with p = 1/q, verified symbolically for 0 <= n <= 6; Van Assche's own construction uses x = p^n, and Borwein 1992 Lemma 2 uses P_{n-1}(c p^{n+1}|q). But sharing the kernel does NOT mean sharing the recurrence: applying the Amdeberhan-Zeilberger operator L = y_2 N^2 + y_1 N + y_0 to the Van Assche diagonal A_n = P_n(p^n|p^{-1}) leaves the exact nonzero residual -p(p-1)^2(p+1)(p^5 + 2p^4 + 2p^3 + 2p^2 + 2) at n = 0, strictly negative for every real p > 1.",
+      "hypotheses": "Exact symbolic computation with a control confirming the operator annihilates the Amdeberhan-Zeilberger sequence itself at n = 0, 1, 2; one nonzero residual suffices.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "rank_three_multiple_q_jacobi_desk"
+      ],
+      "supersedes": [
+        "the working hypothesis that the classical families are one tightly coupled approximant module",
+        "any transfer of a q-Apery measurement to another diagonal by the shared-kernel identity"
+      ],
+      "why_it_matters": "It is the exact quantifier fence on every measurement in the corpus: the Casoratian, the v_2 = 3n^2+3n+1 and v_3 = n+1 valuations, the 19n^2/8 clearing exponent and every row-content calculation are q-Apery-diagonal-specific. A desk moving to a new diagonal or a new family must re-measure everything from scratch.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/scripts/verify_qapery_diagonal_nonequivalence.py",
+        "research_corpus/Erdos1049/annexes/arxiv-math0101187-van-assche-little-q-legendre-lambert/source.tex",
+        "research_corpus/Erdos1049/annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.tex"
+      ]
+    },
+    {
+      "result_id": "amdeberhan_zeilberger_targets_the_same_value",
+      "status": "strongest_premise",
+      "exact_statement": "h_q(1) = sum_{k>=1} 1/(q^k - 1) is exactly F(t) of Erdos #1049 at t = q. Sections 1.1-1.5 of Amdeberhan-Zeilberger are polynomial identities in q that hold VERBATIM at q = 3/2; section 1.6 is analytic and must be re-established at a rational base; section 1.7 and Lemma 1 are where the integer-base hypothesis enters, through q-product denominator clearing. The section 1.5 recurrence coefficients are y_0(n) = q(alpha_n - 1)(q alpha_n + 2), y_2(n) = (q alpha_n - 1)(alpha_n + 2) with alpha_n = q^{n+1}, replayed symbolically to zero.",
+      "hypotheses": "The authors' own arXiv LaTeX source is authority; an earlier local transcription from rendered page images carried two independent errors (a wrong (q alpha_n - 1) and a constant term q^2 - 4q + 4 instead of q^2 - 4q + 1), each detected only by symbolic replay of the recurrence.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "congruence_lattice_desk",
+        "rank_four_multipoint_desk"
+      ],
+      "supersedes": [
+        "treating q-Apery as a parallel or merely adjacent result"
+      ],
+      "why_it_matters": "It identifies the exact line at which the classical proof stops working at a rational base, so a new construction knows precisely which sections it may reuse verbatim and which it must rebuild. Doron Zeilberger supplied this paper himself as the comparison object in his 2026-08-05 reply.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/annexes/arxiv-math9804122-amdeberhan-zeilberger-q-apery/source.tex",
+        "research_corpus/Erdos1049/problem/scripts/verify_qapery_transduction.py"
+      ]
+    },
+    {
+      "result_id": "three_halves_outside_every_known_height_region",
+      "status": "exact_no_go",
+      "exact_statement": "Lean proves 3^81 < 2^200 hence 81/200 < log 2/log 3; 2^64 < 3^41 < 2^65 hence 41/65 < log 2/log 3 < ... ; zudilinContour < 1/2 < log 2/log 3; and therefore not ZudilinHeightRegion 3 2, not BundschuhVaananenHeightRegion 3 2, not ZudilinContourRegion 3 2. Quantitatively, threeHalves_bv_height_gap_gt_threeThirteenths : 3/13 < log 2/log 3 - (1/2 - 1/pi^2).",
+      "hypotheses": "None; exact integer and logarithmic arithmetic.",
+      "named_consumers": [
+        "erdos_1049_parent"
+      ],
+      "supersedes": [
+        "any incremental improvement of a rank-two height region as a route to 3/2"
+      ],
+      "why_it_matters": "The gap to the published frontier is about 0.2323, not a shave. Do not spend effort improving 0.398678 to 0.41 or 0.45; even 1/2 is provably unreachable in this lane, and 3/2 needs to pass 0.630929753.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/ZudilinHeightRegion.lean",
+        "research_corpus/Erdos1049/problem/RationalBaseContour.lean",
+        "research_corpus/Erdos1049/problem/AdelicHeightBridge.lean"
+      ]
+    },
+    {
+      "result_id": "scalar_qapery_pade_quantitatively_dead",
+      "status": "exact_no_go",
+      "exact_statement": "GAP(3/2) = 3 log 2 - (3/2 - 3/pi^2) log 3 = 0.765461 per j^2, which is 38.6% of the height, at EVERY index. Consequently: (1) bounded-rank recombination cannot close it, since a fixed positive proportion of a QUADRATIC quantity is out of reach of any finite-rank operation on the rows; (2) content extraction cannot close it, since the content removed in passing from (L_j,R_j) to the primitive (A_j,B_j) is O(1) with maximum 59 over ten bases and all indices; (3) a single window prime cannot close it, since a window divisor is worth log p = O(s) against a Theta(j^2) deficit.",
+      "hypotheses": "Exact rational computation over ten bases to index ~150 with a three-point estimator; the closed form reproduces the measured GAP VALUE to about 0.002 at every base.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "congruence_lattice_desk"
+      ],
+      "supersedes": [
+        "'the q-Apery approximants do not approximate F(3/2)' (FALSE: the raw ratio error shrinks at every checked n, log magnitude -2.54 to -73.19 for n = 1..7)"
+      ],
+      "why_it_matters": "Any route that closes 3/2 must supply arithmetic cancellation of POSITIVE DENSITY in j^2. That is a far more specific demand than 'close the height gap', and it kills the three cheapest families outright. Note also the licensing rule: a growing CLEARED integer form licenses only 'this integerisation fails to produce small linear forms', never 'the approximants fail to converge'.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/PadeThresholdLawLab.md",
+        "research_corpus/Erdos1049/probes/erdos1049_pade_threshold_law.py"
+      ]
+    },
+    {
+      "result_id": "rectangular_hermite_pade_threshold_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "For hpDecay = (1+rho^2)/2 + sigma, hpHeight = (1+rho)^2/2 + sigma(1+rho), hpCyclotomicSaving = 3 sigma^2/pi^2 and hpThreshold the resulting exponent, Lean proves for every rho >= 0 and sigma >= 1 + rho that hpThreshold rho sigma <= 1/2 - 1/pi^2, with equality iff (rho, sigma) = (0,1); and threeHalves_rectangular_hp_gap_gt_threeThirteenths gives 3/13 < log 2/log 3 - hpThreshold rho sigma uniformly on that cone.",
+      "hypotheses": "The explicit rectangular exponent model only. It says nothing about nonrectangular multi-indices, varying evaluation diagonals, mixed type-I/type-II systems, congruence-constrained selection, or minors chosen for arithmetic rather than symmetry.",
+      "named_consumers": [
+        "nonrectangular_multiple_q_jacobi_systems",
+        "rank_three_multiple_q_jacobi_desk"
+      ],
+      "supersedes": [
+        "optimisation of the rectangular two-function shape"
+      ],
+      "why_it_matters": "It is exactly why the rank-three lane must be NONRECTANGULAR. Do not re-derive it, and do not misread it as closing multiple orthogonal-polynomial systems.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/HermitePadeNoGo.lean",
+        "research_corpus/Erdos1049/entries/ExternalVerification1049HermitePadeNoGo/README.md"
+      ]
+    },
+    {
+      "result_id": "hankel_charge_ceiling",
+      "status": "exact_no_go",
+      "exact_statement": "Scalar row-and-column content is (prod_{i<N} H_i)^2 with H_n = P_n^3/L_n, degree at most N^3 - N; the universally forced primitive residual border factor is prod_{1<=d, 2d<N} Phi_d(p)^{N-2d}, and the combined ceiling is 2N^3 - N. The required charge at 3/2 is more than (39/41)(4N^3 - 3N^2). Lean proves zudilinScalarContent_cannot_meet_required_charge and zudilinScalarPlusBorder_cannot_meet_required_charge: 41 E < 39(4N^3 - 3N^2) whenever E <= N^3 - N (N > 0) or E <= 2N^3 - N (N >= 2). The valuation-assignment bound is proved SHARP: reversing the first 2d indices and pairing the remaining residues antitonically attains order exactly N - 2d.",
+      "hypotheses": "Entrywise valuations only; the ceiling does not exclude genuine cancellation among minimum-order determinant terms, nor a different integral model.",
+      "named_consumers": [
+        "factor_extracted_hankel_against_explicit_thresholds",
+        "hankel_cost_to_gain_desk"
+      ],
+      "supersedes": [
+        "nested cyclotomic entry-valuation arguments",
+        "any proposal to raise the assignment bound"
+      ],
+      "why_it_matters": "Both sides are cubic in N, so this is a FIXED-RATIO comparison wrong by about a factor of two, not a growing-rank shortfall. The rank-budget law does not rescue it and does not condemn it; the quantity to improve is a cost-to-gain ratio with target < 1.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/AdelicHeightBridge.lean",
+        "research_corpus/Erdos1049/problem/ZudilinScalarContentLab.md",
+        "research_corpus/Erdos1049/problem/ZudilinResidualBorderChargeLab.md",
+        "research_corpus/Erdos1049/problem/SoutheastBlockDeterminant.lean"
+      ]
+    },
+    {
+      "result_id": "prefix_plucker_irreversible_cap",
+      "status": "exact_no_go",
+      "exact_statement": "The actual primitive q-Apery rows at 3/2 begin w_0 = (0,-1), w_1 = (42,11), w_2 = (-88014,-22585). Their first determinant is 42, so every expanding prefix containing w_0 and w_1 has common Plucker depth v_2 <= 1 and v_3 <= 1; the gcd of all three pairwise minors of w_0, w_1, w_2 is exactly 6, and since adding rows only adds minors to this gcd, EVERY later natural-prefix determinantal divisor divides 6.",
+      "hypotheses": "Exact integer computation; the receipt is state/formal_math/erdos257_period_noncollapse/erdos1049_primitive_plucker_receipt.json.",
+      "named_consumers": [
+        "congruence_constrained_adelic_hermite_pade",
+        "congruence_lattice_desk"
+      ],
+      "supersedes": [
+        "reading the growing adjacent depths (reaching v_2 = 127 and v_3 = 7 at the seventh adjacent pair) as evidence of family-wide compression"
+      ],
+      "why_it_matters": "It is irreversible: no amount of later structure can undo the first three rows. Any congruence construction must be built on a MOVING TAIL or a non-prefix selection, never on the natural expanding prefix.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/PrimitivePluckerComputationalLab.md",
+        "research_corpus/Erdos1049/receipts/erdos1049_primitive_plucker_receipt.json"
+      ]
+    },
+    {
+      "result_id": "stored_selector_normalized_remainder_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "For a stored selector pair (A,B) divisible by its certified modulus M_s, write (A,B) = M_s(A',B'). If F = a/q were rational then q(B'F - A') would be an integer, and noncollinearity ensures at least one of the two normalized forms is nonzero, so BOTH must tend to zero for a contradiction. Exact 30000-bit rational brackets (24000 terms) show both stored normalized selector remainders EXCEED ONE in absolute value at every start s = 1, 2, 3, 4, with logarithmic lower bounds growing from about 64 at s = 1 to more than 2600 at s = 4.",
+      "hypotheses": "Applies to the stored modular-only LLL/BKZ selector pairs; it is a consumer-level elimination, not a proof that no congruence construction exists.",
+      "named_consumers": [
+        "congruence_constrained_adelic_hermite_pade",
+        "congruence_lattice_desk"
+      ],
+      "supersedes": [
+        "the modular-only lattice objective"
+      ],
+      "why_it_matters": "A surviving congruence construction must include the normalized REAL remainder in the lattice objective itself. Optimising only for divisibility and coefficient size provably lands outside the consumer.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/QAperySelectorNormalizedRemainderLab.md",
+        "research_corpus/Erdos1049/receipts/erdos1049_qapery_selector_normalized_remainder_receipt.json"
+      ]
+    },
+    {
+      "result_id": "unimodular_continued_fraction_not_an_independent_engine",
+      "status": "exact_no_go",
+      "exact_statement": "For normalized input rows with determinant Delta and denominator-coordinate height S = |B_0| + |B_1|, every unimodular recombination of coefficient height H whose two remainders are at most epsilon satisfies |Delta| <= 2 H epsilon S. Exact replay at the four existing starts gives determinant-forced coefficient-height lower bounds with floor base-two logarithms 0, 52, 293, 1873 against observed heights 2, 92, 710, 2260, so most of the 2261-bit start-3 cost is structural. Moreover at a rational target every nonzero integral remainder has size at least 1/q, so proving cofinal decay of the continued-fraction ratio ALREADY proves irrationality.",
+      "hypotheses": "Lean-checked as twoSelector_unimodular_height_decay_tradeoff and rational_twoSelector_not_both_tendsto_zero.",
+      "named_consumers": [
+        "congruence_lattice_desk"
+      ],
+      "supersedes": [
+        "generic continued-fraction optimisation of the exact real-form ratio"
+      ],
+      "why_it_matters": "It is circular. Any survivor must derive the recombinations, the height upper bound and the decay from source-specific structure, without assuming the form ratio has an infinite continued fraction.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/TwoSelectorRemainderEscape.lean",
+        "research_corpus/Erdos1049/problem/QAperyJointLocalRealLatticeLab.md"
+      ]
+    },
+    {
+      "result_id": "full_resultant_height_route_falsified",
+      "status": "exact_no_go",
+      "exact_statement": "On the diagonal m = n, any odd common divisor of the two d_n-cleared homogeneous coefficient values divides Res_p(A_n, C_n), and the authored q-Lucas local product law gives C_n = (-1)^a (d_n/(p^r - 1)) P_b(p^b) K_{a,b} modulo Phi_r for n = ar + b, with K_{a,b} = 3H_a for b > 0 and 3H_a - 1/a for b = 0. Evaluating that exact product law through n = 15 gives the first crossing log|Res(d_n,C_n)|/n^2 = 0.776255453400277 against the forced-clearing exponent 0.765461201033283, BEFORE the separate P-Q factor.",
+      "hypotheses": "Direct polynomial replay is exact through n = 7; the local product law is authored all-index mathematics; only the generic Bezout-certificate content consumer is in Lean.",
+      "named_consumers": [
+        "outward_scalar_primitive_content_bound"
+      ],
+      "supersedes": [
+        "absolute full-resultant height as an upper bound on primitive content",
+        "the shortcut that all content primes have order <= 2n (falsified at (4,32,11,10), (5,40,31,30), (7,28,43,21), (8,64,59,58), reaching order 58 at n = 8)",
+        "the unit-resultant shortcut (Res(P_n(p^n), Qtilde_n) is 1 through n = 5 but 5 at n = 6 and 16 at n = 7)"
+      ],
+      "why_it_matters": "It removes the last scalar escape from the fixed-diagonal lane and is a template for how to falsify a proposed height bound: evaluate the exact product law past the analytic budget rather than extending a rank table.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/FixedDiagonalResultantContentLab.md",
+        "research_corpus/Erdos1049/problem/scripts/check_fixed_diagonal_resultant_content.py"
+      ]
+    },
+    {
+      "result_id": "outward_scalar_diagonal_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "For EVERY scalar evaluation exponent m >= n, Van Assche's little-q-Legendre coefficient P_n(p^m|p^{-1}) has degree n m + n(n-1)/2 and unit leading coefficient; the target tail forces cyclotomic cutoff M = max(n, m-1) = m + O(1); multiplying by d_M preserves the unit endpoint, so at p = 3/2 the P-coefficient has exact denominator 2^{D+E} with no hidden power-of-two cancellation. Composing with Van Assche's positive Markov-error bounds gives the strictly positive main term (n m + n^2/2) log(4/3) + (3/pi^2) m^2 log 3, omitting only o(n^2) + o(m^2) + O(m+n). This covers fixed, linear, superlinear and irregular outward offsets.",
+      "hypotheses": "Pre-primitive: a common odd gcd of the two cleared coefficients can still divide the form. The adjacent second-kind identity Q_n P_{n-1} - P_n Q_{n-1} = -(p^n+1)/(p^n-1) confines the part of that gcd coprime to the clearing value to a divisor of 3^n + 2^n.",
+      "named_consumers": [
+        "outward_scalar_primitive_content_bound"
+      ],
+      "supersedes": [
+        "changing the evaluation diagonal as a repair for rational-base height"
+      ],
+      "why_it_matters": "Together with the homogenisation ceiling this closes the whole scalar Van Assche family at 3/2, which is why the corpus routes effort to congruence-constrained selection and to genuine higher rank.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/FixedDiagonalRationalClearingLab.md",
+        "research_corpus/Erdos1049/problem/FixedDiagonalRationalClearing.lean"
+      ]
+    },
+    {
+      "result_id": "coordinatewise_corridor_impossible_at_three_halves",
+      "status": "exact_no_go",
+      "exact_statement": "Define a coordinatewise corridor (a,b,N,K,Q,D) by a > 0, Q > 0, D > 0, D <= N+K, a^K | Q D, and Q b^{N+K+1} < a^{K+1}. Lean proves coordinatewiseCorridor_implies_pow_lt_linear : b^{N+K+1} < a(N+K), and three_mul_lt_two_pow_succ : 3x < 2^{x+1} for x >= 2, hence threeHalves_no_coordinatewiseCorridor : for all N >= 1 and K >= 1 and all natural Q, D, the tuple (3,2,N,K,Q,D) is NOT a coordinatewise corridor. The exact cleared-tail recurrence is U_{N+1} = r U_N - B c(N+1) s^{N+1}, whose forcing term is at least 2^{N+1} when s >= 2, B >= 1 and c(N+1) >= 1.",
+      "hypotheses": "Excludes the literal six-condition coordinatewise clearing scheme only.",
+      "named_consumers": [
+        "erdos_1049_parent",
+        "unrestricted_siege_desk"
+      ],
+      "supersedes": [
+        "a naive transfer of the Erdos 1948 / Vandehey digit-block argument to base 3/2"
+      ],
+      "why_it_matters": "It names exactly which digit-style transfer is dead and exactly which is not: non-coordinatewise selector mechanisms, other linear-form, Pade, adelic and Mahler constructions are all untouched. A beta-expansion desk must not reproduce the coordinatewise scheme.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/RationalBaseLambert.lean",
+        "research_corpus/Erdos1049/entries/ExternalVerification1049RationalBaseBarrier/README.md"
+      ]
+    },
+    {
+      "result_id": "generic_type_one_solve_diverges",
+      "status": "exact_no_go",
+      "exact_statement": "Building the rank-three type-I system for (1, zeta_q(1), zeta_q(2)) directly, solving p_0 + p_1 f_1 + p_2 f_2 = O(x^{3D+2}) over Q with deg p_i <= D and taking the primitive integer form, gives kappa_3 = 1.388, 1.193, 1.319, 1.338, 1.205, 1.438, 1.541 at D = 3,4,5,6,8,10,12, against a budget of 0.10721: over by a factor of eleven at best AND RISING. The reason is structural: a generic solve makes the coefficients Hankel minors of height e^{D log D}, so kappa_3 ~ log D diverges. The direct finite measurement of the actual Postelmans-Van Assche m = n-1 diagonal at p = 3/2 gives primitive content exactly 1 for every n = 2..10 and a height-rate proxy log(H_n)/(n log 3) of 5.9791, 14.3215, 22.7694, 32.7322, 40.8786, 50.0378, 60.3251, 68.0767, 77.0722.",
+      "hypotheses": "D = 2 is a degenerate index whose primitive coefficients are all +-1 and is not a family. The PVA proxy is NOT an estimate of kappa_3 without a degree normalisation and a cost decomposition into homogenisation and cyclotomic clearing.",
+      "named_consumers": [
+        "nonrectangular_multiple_q_jacobi_systems",
+        "rank_three_multiple_q_jacobi_desk"
+      ],
+      "supersedes": [
+        "entering the rank-three lane by solving a linear system"
+      ],
+      "why_it_matters": "The rank-three lane cannot be entered by solving; it needs a STRUCTURED family with q-factorial denominators, and even q-Apery's own kappa = 2/pi^2 = 0.20264 is TWICE the rank-three budget, so the family must be about twice as arithmetically efficient as q-Apery.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/RankBudgetLaw.md",
+        "research_corpus/Erdos1049/problem/scripts/measure_pva_multiple_q_jacobi.py"
+      ]
+    },
+    {
+      "result_id": "phi1_mellin_measure_and_finite_mahler_no_gos",
+      "status": "exact_no_go",
+      "exact_statement": "(i) The all-rank Phi_1 layer of the primitive residual Hankel determinant is mu-independent and equals L_N = (-3)^N (prod_{i=1}^{N-1} d_i^2) det_{0<=i,j<N}(m_{i+j}) with m_n = (n!)^3 h_n and d_i = (-1)^i lcm(1..i)/(i!)^3, so no tuning of the Pade parameter mu and no cancellation between the mu channel and the two inhomogeneous channels can create an extra Phi_1. The natural positivity proof FAILS: the canonical Mellin density w(t) = f_3(t)(gamma + (1/3) log t), whose moments are exactly (n!)^3 H_n, is negative for 0 < t < exp(-3 gamma) and positive above, and multiplying by t^2 does not change the sign, so it is not a positive Gram measure. (ii) There is NO finite-dimensional Q(z)-vector space containing L(z) = sum_{n>=1} z^n/(1-z^n) and stable under both z -> z^2 and z -> z^3.",
+      "hypotheses": "(i) The remaining Phi_1 question is the open conditional-positivity problem det_{0<=i,j<N}((i+j)!^3 h_{i+j}) != 0; (ii) is Proposition res:nomahler of the manuscript.",
+      "named_consumers": [
+        "hankel_cost_to_gain_desk",
+        "functional_equation_desk"
+      ],
+      "supersedes": [
+        "the obvious product-exponential positivity proof",
+        "the naive finite simultaneous 2/3-Mahler-system route"
+      ],
+      "why_it_matters": "Two cheap-looking routes are already closed with explicit witnesses. A Mahler-style desk must therefore use an INFINITE system (for example the exact Mobius relation sum_{d>=1} mu(d) L(z^d) = z/(1-z)) or a genuinely different transformation, and a Hankel desk must prove positive definiteness some other way.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1049/problem/ZudilinPhi1AssociatedGradedKernel.md",
+        "research_corpus/Erdos1049/problem/ZudilinPhi1MellinMeasureNoGo.md",
+        "research_corpus/Erdos1049/paper/erdos-1049-rational-base-lambert.tex"
+      ]
+    }
+  ]
+}

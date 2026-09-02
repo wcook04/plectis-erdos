@@ -1,0 +1,226 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #1049: prime support forces the sharp 1/q gap in q-Apéry linear forms"
+  description: >-
+    For an integral linear form B (a/q) - A at a rational target with q > 0, a single prime
+    l dividing B and dividing neither A nor q forces the sharp gap |B (a/q) - A| ≥ 1/q, and
+    the same gap follows from l^r | B for any exponent r ≠ 0. For a pair of rows the
+    numerator hypothesis can be dropped: if l divides both B_1 and B_2 and l^2 does not
+    divide the exterior determinant A_1 B_2 - A_2 B_1, then at least one of the two rows
+    already has the full 1/q gap. Along any sequence of integral row pairs whose exterior
+    determinant is nonzero at every index, the two real linear forms cannot both tend to
+    zero at a rational target, so no such pair of selectors can jointly witness vanishing.
+    Recombination does not evade this: a real change of basis whose determinant has absolute
+    value 1 and whose four entries are bounded by H, making both recombined remainders at
+    most epsilon, forces |A_1 B_2 - A_2 B_1| ≤ 2 H epsilon (|B_1| + |B_2|), so joint decay
+    is paid for in determinant size, and integer-unimodular recombination is the special
+    case. When every denominator coordinate vanishes modulo N the pigeonhole only has to see
+    the numerator coordinate, so N < 2^k already forces a nontrivial binary selector
+    collision in both coordinates. For a q-Apéry approach to the Lambert value at 3/2 the
+    consequence is a precise specification of what is still missing: prime or prime-power
+    support in the denominator coordinates that persists cofinally, together with
+    determinant control that survives recombination; the ancestry is the classical
+    Apéry-style linear-form argument, and priority is unassessed. Producing that cofinal
+    support for the actual q-Apéry rows, the analytic decay, and irrationality at 3/2 remain
+    open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1049PrimeSupportSelectors/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1049PrimeSupportSelectors/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_validation_terminal_deferred_capacity_exit_75_future_cf_929375a15f54470ebf1e"
+  research_interest_status: "research_note_grade_exact_arithmetic_consequences"
+  submission_authorization: "not_authorized_public_source_and_paper_promotion_pending"
+  blockers:
+    - >-
+      Focused validation future cf_929375a15f54470ebf1e exhausted five
+      low-disk defer retries and terminated in deferred_capacity with exit 75;
+      this is a capacity receipt, not a Lean diagnostic or theorem failure.
+    - "focused Lean replay and exact axiom checks require a changed disk-capacity state"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "the source declarations and staged paper revision are not yet promoted to the public repository"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11J82"]
+
+sources:
+  - title: "Prime-supported q-Apéry gaps and two-selector consequences"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+    note: >-
+      Source-independent theorem interfaces extracted from the checked Erdős
+      1049 q-Apéry formal development.
+  - title: "Erdős Problem #1049"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1049"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Six compared theorems expose a sharp two-row prime-support gap and
+    rational no-double-decay theorem first, followed by exact one-row prime
+    and prime-power gaps, determinant-height-decay, and finite collision.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: "pending_after_terminal_deferred_capacity_future_cf_929375a15f54470ebf1e"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap"
+      file: "ExternalVerification1049PrimeSupportSelectors/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049PrimeSupportSelectors/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/QAperyTailDenominator.lean"
+      novelty_status: "unassessed"
+      contribution_class: "sharp prime-supported two-selector rational gap"
+      boundary: "A conditional theorem; cofinal prime support and determinant control are not proved."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero"
+      file: "ExternalVerification1049PrimeSupportSelectors/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049PrimeSupportSelectors/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean"
+      novelty_status: "unassessed"
+      contribution_class: "rational-target two-selector decay obstruction"
+      boundary: "Does not produce the analytic decay required for irrationality."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap"
+      file: "ExternalVerification1049PrimeSupportSelectors/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049PrimeSupportSelectors/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/QAperyTailDenominator.lean"
+      novelty_status: "unassessed"
+      contribution_class: "sharp prime-supported one-row rational linear-form gap"
+      boundary: >-
+        Conditional on explicit prime support and coprimality premises; it
+        does not produce cofinal support or prove irrationality.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap"
+      file: "ExternalVerification1049PrimeSupportSelectors/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049PrimeSupportSelectors/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/QAperyTailDenominator.lean"
+      novelty_status: "unassessed"
+      contribution_class: "prime-power-supported one-row rational linear-form gap"
+      boundary: >-
+        Conditional on explicit prime-power support and coprimality premises;
+        it does not produce cofinal support or prove irrationality.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff"
+      file: "ExternalVerification1049PrimeSupportSelectors/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049PrimeSupportSelectors/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/TwoSelectorRemainderEscape.lean"
+      novelty_status: "unassessed"
+      contribution_class: "real unit-determinant height-decay tradeoff"
+      boundary: >-
+        Conditional on two small recombined remainders and a bounded
+        real change of basis whose determinant has absolute value one; it
+        supplies no analytic decay estimate.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision"
+      file: "ExternalVerification1049PrimeSupportSelectors/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1049PrimeSupportSelectors/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1049/QAperyTailDenominator.lean"
+      novelty_status: "unassessed"
+      contribution_class: "zero-denominator-coordinate binary selector collision"
+      boundary: >-
+        A finite pigeonhole consequence under coordinate collapse; it does not
+        establish the collapse for the actual q-Apéry rows.
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The Challenge copies the exact source conclusions and adds no
+    irrationality claim or assertion that the missing q-Apéry hypotheses hold.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Exact hypotheses, rational-gap normalization, determinant boundary, and
+    open-problem ceiling reviewed. The source-current public-paper patch
+    dry-applies, compiles to 27 pages, and has been visually inspected;
+    mechanical Lean replay remains pending after the low-disk command future
+    terminated in deferred_capacity without a Lean diagnostic.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1049PrimeSupportSelectors"
+  paper:
+    repository: "https://github.com/wcook04/plectis-lean-erdos249-257"
+    source: "paper/erdos-1049-rational-base-lambert.tex"
+    public_target_commit: "78d1faeb2bf79fa3ddc3291b63c73f19dfe48b94"
+    public_target_sha256: "012dab93eebf3478bd31ab41faf4d55ff5f8538e1eb982c20183bd116ba44e77"
+    staged_patch: "ErdosProblems/papers/erdos-1049-prime-support-selectors.patch"
+    result_routes:
+      primeSupportedTwoSelector_rationalGap: "res:prime-supported-two-selector-gap"
+      rationalTwoSelector_notBothTendstoZero: "res:rational-two-selector-no-double-decay"
+      primeSupportedOneRow_rationalGap: "res:prime-supported-one-row-gap"
+      primePowerSupportedOneRow_rationalGap: "res:prime-power-supported-one-row-gap"
+      twoSelector_unimodularHeightDecay_tradeoff: "res:unit-determinant-height-decay"
+      zeroDenominatorCoordinates_binaryCollision: "res:zero-denominator-selector-collision"
+    shared_boundary: "bdry:prime-support-remaining-hypotheses"
+    status: "source_current_staged_patch_dry_applies_compiles_27_pages_visual_check_passed_public_promotion_not_authorized"
+  statements:
+    - source: "ErdosProblems.Erdos1049.rational_twoSelector_gap_of_prime_tail_support"
+      lean: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap"
+      module: "ExternalVerification1049PrimeSupportSelectors/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.rational_twoSelector_not_both_tendsto_zero"
+      lean: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero"
+      module: "ExternalVerification1049PrimeSupportSelectors/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.rational_integerLinearForm_gap_of_prime_support"
+      lean: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap"
+      module: "ExternalVerification1049PrimeSupportSelectors/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.rational_integerLinearForm_gap_of_prime_power_support"
+      lean: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap"
+      module: "ExternalVerification1049PrimeSupportSelectors/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.twoSelector_unimodular_height_decay_tradeoff"
+      lean: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff"
+      module: "ExternalVerification1049PrimeSupportSelectors/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1049.zmod_binary_collision_of_zero_denominator_coordinates"
+      lean: "Erdos249257.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision"
+      module: "ExternalVerification1049PrimeSupportSelectors/Challenge.lean"
+      status: "exact-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

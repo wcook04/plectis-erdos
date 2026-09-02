@@ -1,0 +1,254 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Failure returns the proof target to separate local channel residues and identifies the first missing cyclotomic factor.",
+      "survival_consequence": "Survival opens one q-binomial polynomiality theorem that implies leading B=2C simultaneously at every cyclotomic index."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "zudilin_B_minus_2C_has_full_pochhammer_cube",
+      "statement": "For every n>=1, the cleared source difference B_n-2C_n is divisible by p^(n+1)P_n^3, so each Phi_d leading layer has B=2C."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1BlockCollapseLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_scalar_content_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_block_collapse_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_channel_divisibility.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi3_associated_graded.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+        "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md"
+      ]
+    },
+    "probe": {
+      "computation": "Construct the exact cleared Zudilin rows in Z[p], divide B_n-2C_n by P_n^3 and p^(n+1), and test the quotient degree, p-order, value at one, and coprimality with P_n.",
+      "falsifier": "A nonzero exact division remainder kills the global mechanism; a nontrivial gcd of the normalized quotient with P_n kills sharpness.",
+      "id": "exact_global_channel_divisibility_n1_n7",
+      "question": "Does one global P_n^3 divisor explain the complete local B=2C strips, and is the gained cyclotomic order sharp?",
+      "resource_bounds": {
+        "maximum_difference_degree": 168,
+        "maximum_normalized_difference_degree": 76,
+        "maximum_row_index": 7,
+        "minimum_row_index": 1,
+        "row_count": 7
+      },
+      "stop_condition": "Stop at n=7 after the divisor survives a degree-168 source difference; replace further row extension with an all-n summand certificate."
+    },
+    "problem": {
+      "claim_ceiling": "Exact global polynomial-divisibility decisions for source rows n=1,...,7; not an all-n theorem or irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The probe replaces an expanding family of local equalities with one global polynomial divisor and tests its exact cyclotomic content.",
+        "next_analytic_target": "Prove that the rational source sum B_n-2C_n is polynomial by constructing a q-binomial telescoping or Heine-symmetry certificate; then P_n^3 divisibility, and therefore leading B=2C for every d<=n, follows for all n."
+      },
+      "status": "exact_one_way_result",
+      "summary": "For every n=1,...,7, the exact cleared source difference B_n-2C_n is divisible by p^(n+1)P_n^3. The normalized quotient D_n is a polynomial of degree (n+1)(3n-2)/2, has p-order one, satisfies D_n(1)=n^3, and is coprime to P_n. Hence every Phi_d in P_n gains exactly one order over the scalar layer in the tested rows. This opens a single global polynomiality identity as the explanation of the committed local B=2C law."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_cyclotomic_orders_are_exactly_gained_by_one": true,
+    "all_normalized_degrees_match": true,
+    "all_normalized_p_orders_are_one": true,
+    "all_normalized_values_at_one_equal_n_cubed": true,
+    "all_pochhammer_cube_divisibilities_hold": true,
+    "all_scale_divisibilities_hold": true,
+    "authority_boundary": "The exact polynomial divisions decide the displayed rows. They identify a global all-n identity to prove, but do not establish that identity outside the listed indices.",
+    "records": [
+      {
+        "all_cyclotomic_orders_in_P_n_are_exactly_gained_by_one": true,
+        "difference": "B_n-2*C_n",
+        "difference_degree": 6,
+        "divisor": "P_n^3, P_n=product_(1<=j<=n)(p^j-1)",
+        "expected_normalized_degree": 1,
+        "normalized_degree_matches": true,
+        "normalized_difference_coprime_to_P_n": true,
+        "normalized_difference_degree": 1,
+        "normalized_difference_polynomial_D_n": "p",
+        "normalized_p_order": 1,
+        "normalized_p_order_is_one": true,
+        "normalized_value_at_one_equals_n_cubed": true,
+        "normalized_value_at_p_equals_one": 1,
+        "p_to_n_plus_one_also_divides_quotient": true,
+        "pochhammer_cube_degree": 3,
+        "pochhammer_cube_divides": true,
+        "remainder": "0",
+        "row_index": 1
+      },
+      {
+        "all_cyclotomic_orders_in_P_n_are_exactly_gained_by_one": true,
+        "difference": "B_n-2*C_n",
+        "difference_degree": 18,
+        "divisor": "P_n^3, P_n=product_(1<=j<=n)(p^j-1)",
+        "expected_normalized_degree": 6,
+        "normalized_degree_matches": true,
+        "normalized_difference_coprime_to_P_n": true,
+        "normalized_difference_degree": 6,
+        "normalized_difference_polynomial_D_n": "p*(p**5 + 3*p**4 + 3*p**3 + 3*p**2 - p - 1)",
+        "normalized_p_order": 1,
+        "normalized_p_order_is_one": true,
+        "normalized_value_at_one_equals_n_cubed": true,
+        "normalized_value_at_p_equals_one": 8,
+        "p_to_n_plus_one_also_divides_quotient": true,
+        "pochhammer_cube_degree": 9,
+        "pochhammer_cube_divides": true,
+        "remainder": "0",
+        "row_index": 2
+      },
+      {
+        "all_cyclotomic_orders_in_P_n_are_exactly_gained_by_one": true,
+        "difference": "B_n-2*C_n",
+        "difference_degree": 36,
+        "divisor": "P_n^3, P_n=product_(1<=j<=n)(p^j-1)",
+        "expected_normalized_degree": 14,
+        "normalized_degree_matches": true,
+        "normalized_difference_coprime_to_P_n": true,
+        "normalized_difference_degree": 14,
+        "normalized_difference_polynomial_D_n": "p*(p**13 + 3*p**12 + 6*p**11 + 9*p**10 + 11*p**9 + 11*p**8 + 6*p**7 - p**6 - 4*p**5 - 9*p**4 - 6*p**3 - 2*p**2 + p + 1)",
+        "normalized_p_order": 1,
+        "normalized_p_order_is_one": true,
+        "normalized_value_at_one_equals_n_cubed": true,
+        "normalized_value_at_p_equals_one": 27,
+        "p_to_n_plus_one_also_divides_quotient": true,
+        "pochhammer_cube_degree": 18,
+        "pochhammer_cube_divides": true,
+        "remainder": "0",
+        "row_index": 3
+      },
+      {
+        "all_cyclotomic_orders_in_P_n_are_exactly_gained_by_one": true,
+        "difference": "B_n-2*C_n",
+        "difference_degree": 60,
+        "divisor": "P_n^3, P_n=product_(1<=j<=n)(p^j-1)",
+        "expected_normalized_degree": 25,
+        "normalized_degree_matches": true,
+        "normalized_difference_coprime_to_P_n": true,
+        "normalized_difference_degree": 25,
+        "normalized_difference_polynomial_D_n": "p*(p**24 + 3*p**23 + 6*p**22 + 12*p**21 + 17*p**20 + 26*p**19 + 30*p**18 + 35*p**17 + 29*p**16 + 24*p**15 + 5*p**14 - 6*p**13 - 26*p**12 - 35*p**11 - 38*p**10 - 28*p**9 - 20*p**8 - 5*p**7 + 7*p**6 + 10*p**5 + 12*p**4 + 5*p**3 + 2*p**2 - p - 1)",
+        "normalized_p_order": 1,
+        "normalized_p_order_is_one": true,
+        "normalized_value_at_one_equals_n_cubed": true,
+        "normalized_value_at_p_equals_one": 64,
+        "p_to_n_plus_one_also_divides_quotient": true,
+        "pochhammer_cube_degree": 30,
+        "pochhammer_cube_divides": true,
+        "remainder": "0",
+        "row_index": 4
+      },
+      {
+        "all_cyclotomic_orders_in_P_n_are_exactly_gained_by_one": true,
+        "difference": "B_n-2*C_n",
+        "difference_degree": 90,
+        "divisor": "P_n^3, P_n=product_(1<=j<=n)(p^j-1)",
+        "expected_normalized_degree": 39,
+        "normalized_degree_matches": true,
+        "normalized_difference_coprime_to_P_n": true,
+        "normalized_difference_degree": 39,
+        "normalized_difference_polynomial_D_n": "p*(p**38 + 3*p**37 + 6*p**36 + 12*p**35 + 20*p**34 + 32*p**33 + 45*p**32 + 62*p**31 + 77*p**30 + 90*p**29 + 95*p**28 + 93*p**27 + 79*p**26 + 51*p**25 + 15*p**24 - 31*p**23 - 74*p**22 - 118*p**21 - 141*p**20 - 151*p**19 - 137*p**18 - 113*p**17 - 66*p**16 - 21*p**15 + 29*p**14 + 53*p**13 + 73*p**12 + 73*p**11 + 58*p**10 + 37*p**9 + 16*p**8 - p**7 - 13*p**6 - 13*p**5 - 11*p**4 - 5*p**3 - 2*p**2 + p + 1)",
+        "normalized_p_order": 1,
+        "normalized_p_order_is_one": true,
+        "normalized_value_at_one_equals_n_cubed": true,
+        "normalized_value_at_p_equals_one": 125,
+        "p_to_n_plus_one_also_divides_quotient": true,
+        "pochhammer_cube_degree": 45,
+        "pochhammer_cube_divides": true,
+        "remainder": "0",
+        "row_index": 5
+      },
+      {
+        "all_cyclotomic_orders_in_P_n_are_exactly_gained_by_one": true,
+        "difference": "B_n-2*C_n",
+        "difference_degree": 126,
+        "divisor": "P_n^3, P_n=product_(1<=j<=n)(p^j-1)",
+        "expected_normalized_degree": 56,
+        "normalized_degree_matches": true,
+        "normalized_difference_coprime_to_P_n": true,
+        "normalized_difference_degree": 56,
+        "normalized_difference_polynomial_D_n": "p*(p**55 + 3*p**54 + 6*p**53 + 12*p**52 + 20*p**51 + 35*p**50 + 51*p**49 + 77*p**48 + 104*p**47 + 141*p**46 + 173*p**45 + 216*p**44 + 238*p**43 + 267*p**42 + 267*p**41 + 260*p**40 + 210*p**39 + 160*p**38 + 54*p**37 - 43*p**36 - 175*p**35 - 291*p**34 - 416*p**33 - 488*p**32 - 554*p**31 - 549*p**30 - 511*p**29 - 418*p**28 - 294*p**27 - 132*p**26 + 24*p**25 + 165*p**24 + 290*p**23 + 359*p**22 + 396*p**21 + 369*p**20 + 313*p**19 + 219*p**18 + 133*p**17 + 30*p**16 - 37*p**15 - 97*p**14 - 109*p**13 - 114*p**12 - 93*p**11 - 64*p**10 - 33*p**9 - 10*p**8 + 7*p**7 + 16*p**6 + 12*p**5 + 11*p**4 + 5*p**3 + 2*p**2 - p - 1)",
+        "normalized_p_order": 1,
+        "normalized_p_order_is_one": true,
+        "normalized_value_at_one_equals_n_cubed": true,
+        "normalized_value_at_p_equals_one": 216,
+        "p_to_n_plus_one_also_divides_quotient": true,
+        "pochhammer_cube_degree": 63,
+        "pochhammer_cube_divides": true,
+        "remainder": "0",
+        "row_index": 6
+      },
+      {
+        "all_cyclotomic_orders_in_P_n_are_exactly_gained_by_one": true,
+        "difference": "B_n-2*C_n",
+        "difference_degree": 168,
+        "divisor": "P_n^3, P_n=product_(1<=j<=n)(p^j-1)",
+        "expected_normalized_degree": 76,
+        "normalized_degree_matches": true,
+        "normalized_difference_coprime_to_P_n": true,
+        "normalized_difference_degree": 76,
+        "normalized_difference_polynomial_D_n": "p*(p**75 + 3*p**74 + 6*p**73 + 12*p**72 + 20*p**71 + 35*p**70 + 54*p**69 + 83*p**68 + 119*p**67 + 168*p**66 + 224*p**65 + 297*p**64 + 373*p**63 + 459*p**62 + 543*p**61 + 626*p**60 + 690*p**59 + 739*p**58 + 750*p**57 + 718*p**56 + 640*p**55 + 504*p**54 + 307*p**53 + 59*p**52 - 234*p**51 - 572*p**50 - 903*p**49 - 1241*p**48 - 1532*p**47 - 1766*p**46 - 1892*p**45 - 1939*p**44 - 1829*p**43 - 1627*p**42 - 1286*p**41 - 869*p**40 - 358*p**39 + 137*p**38 + 662*p**37 + 1097*p**36 + 1462*p**35 + 1694*p**34 + 1794*p**33 + 1730*p**32 + 1560*p**31 + 1269*p**30 + 909*p**29 + 516*p**28 + 126*p**27 - 221*p**26 - 495*p**25 - 665*p**24 - 759*p**23 - 743*p**22 - 673*p**21 - 526*p**20 - 374*p**19 - 206*p**18 - 70*p**17 + 49*p**16 + 114*p**15 + 156*p**14 + 150*p**13 + 131*p**12 + 99*p**11 + 60*p**10 + 27*p**9 + 4*p**8 - 10*p**7 - 15*p**6 - 12*p**5 - 11*p**4 - 5*p**3 - 2*p**2 + p + 1)",
+        "normalized_p_order": 1,
+        "normalized_p_order_is_one": true,
+        "normalized_value_at_one_equals_n_cubed": true,
+        "normalized_value_at_p_equals_one": 343,
+        "p_to_n_plus_one_also_divides_quotient": true,
+        "pochhammer_cube_degree": 84,
+        "pochhammer_cube_divides": true,
+        "remainder": "0",
+        "row_index": 7
+      }
+    ],
+    "schema": "erdos1049-zudilin-channel-divisibility-result/1"
+  },
+  "schema": "erdos1049-zudilin-channel-divisibility-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 14855,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_channel_divisibility.py",
+      "sha256": "8df607d45d34d1f11c13fa2e7f68789ccfa4bf2138120c8e2174ba17b4c7992e"
+    },
+    {
+      "byte_length": 21002,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi3_associated_graded.py",
+      "sha256": "61bdcecd6861c6b4e148abd22143596b020596499d529e7dd16f5601d526af58"
+    },
+    {
+      "byte_length": 13070,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+      "sha256": "439aae4afc146d513dab5d1851ff91d1c0bce97b126e1f21df34f8eeb688c758"
+    },
+    {
+      "byte_length": 32617,
+      "path": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e"
+    },
+    {
+      "byte_length": 5234,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityLab.md",
+      "sha256": "1f2207af75892338a7cb436aec3cf85e93b83b1d9ac88f52a7fcc31c1b7fda1e"
+    },
+    {
+      "byte_length": 6131,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1BlockCollapseLab.md",
+      "sha256": "b06fa150850e0ec7fbb014ee3896d25630aa715d553c30c2c233c29db1297d5f"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_opened"
+}

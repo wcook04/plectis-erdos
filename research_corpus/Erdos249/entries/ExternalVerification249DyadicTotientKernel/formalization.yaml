@@ -1,0 +1,171 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #249: complete dyadic totient-kernel structure"
+  description: >-
+    The two zero-residue base channels and one odd-residue channel at each
+    positive dyadic level form a linearly independent spanning family for all
+    dyadic sections of Euler's totient. The complete family through level e
+    has the same span as the duplicate-free canonical truncation and exact
+    rank 2^e+1. This unconditional structural theorem does not prove
+    irrationality of the binary totient series.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_source_and_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_explicit_basis_and_rank_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "the reconciled finite-truncation source theorem awaits a terminal private Lean build"
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The open parent problem is an explicit theorem boundary, not an editorial
+    veto. No local artifact is represented as a Palomar verdict or registry
+    entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A25", "11B83"]
+
+sources:
+  - title: "The complete dyadic section structure of Euler's totient"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The proof uses CRT--Dirichlet separated minors and exact reduction of
+      even-residue channels to the explicit odd-core family.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #249"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/249"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status; the dyadic-kernel theorem is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem packages odd-core linear independence, equality of
+    the full and odd-core spans, the exact canonical-span normal form, and
+    exact ranks for all complete finite truncations. Challenge.lean has one
+    intentional specification sorry.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "pending_source_and_focused_lean_checks"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks"
+      file: "ExternalVerification249DyadicTotientKernel/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification249DyadicTotientKernel/comparator.json"
+      canonical_claim_status: "source_reconciled_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source declarations in
+        Erdos257PeriodNoncollapse/TotientMahlerDefect.lean; exact source commit
+        and content digest will be pinned after terminal private Lean validation.
+      novelty_status: "unassessed"
+      contribution_class: "explicit infinite basis and exact finite ranks"
+      statement: >-
+        The odd-core dyadic totient sections are linearly independent and span
+        every dyadic section. Every complete truncation has the same span as
+        its canonical odd-core truncation and exact rank 2^e+1.
+      boundary: >-
+        The result does not prove that rationality of the binary totient
+        series forces finite rank and does not solve Erdős 249.
+      comparator_declaration: "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The compared theorem combines three source-current endpoints into their
+    natural basis-and-rank statement. It adds no rationality consequence.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem family, basis interpretation, exact truncation rank and
+    missing rationality-to-finite-rank bridge were reviewed. Focused Lean,
+    axiom and Comparator replay remain distinct gates.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification249DyadicTotientKernel"
+  statements:
+    - source: >-
+        Erdos257PeriodNoncollapse.linearIndependent_oddCoreTotientKernelFamily,
+        span_range_fullTotientKernel_eq_span_range_oddCore,
+        span_totientKernelThroughLevelFamily_eq_canonical, and
+        finrank_totientKernelThroughLevelFamily_eq.
+      lean: "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks"
+      module: "ExternalVerification249DyadicTotientKernel/Challenge.lean"
+      status: "exact-composite-transport-pending-check"
+      note: >-
+        The Challenge exposes the complete result family in literal
+        Mathlib-only vocabulary.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."
