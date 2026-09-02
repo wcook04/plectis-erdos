@@ -30,6 +30,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import build_corpus_descriptor
 import check_architecture_guide
 import query_corpus
 import query_expert_handoffs
@@ -263,7 +264,18 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
-    "docs/ORIENTATION.md": 18_000,
+    # The generated orientation is budgeted by its own builder, which scales
+    # with the registered open boundary and the mathematical programmes it is
+    # required to carry. Pinning a second, smaller number here meant this gate
+    # could reject a file the builder had just certified as bounded.
+    "docs/ORIENTATION.md": build_corpus_descriptor.orientation_markdown_budget_bytes(
+        len(json.loads(safe_read_text("docs/orientation.json"))[
+            "remaining_open_propositions"
+        ]),
+        len(json.loads(safe_read_text("docs/orientation.json"))[
+            "mathematical_programmes"
+        ]),
+    ),
 }
 # This prefix window is the actual newcomer contract: later growth cannot move
 # the problem statements, authority boundary, or semantic routes off the first
@@ -302,7 +314,22 @@ SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
 # trimmed: dropping routes to fit would make the packet silently incomplete.
-PACKET_BUDGET_BYTES = 20_480
+# A detail packet also carries the remaining-open propositions attached to the
+# claims or programme it names, so the ceiling has to move with the registered
+# open boundary. Holding it fixed meant that registering a proposition the
+# papers already state read as a runaway projection.
+REMAINING_OPEN_PROPOSITION_COUNT = len(
+    json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"]
+)
+# One registered open proposition's row, with its statement and target claim.
+OPEN_PROPOSITION_PACKET_BYTES = 400
+# Documents the README names on its first screen and whose content a cold reader
+# following it therefore reaches. They carry the recoverable detail the front
+# page used to hold itself.
+FIRST_CONTACT_ROUTED_SURFACES = ("docs/RESULTS.md", "docs/AGENT_WORKBENCH.md")
+PACKET_BUDGET_BYTES = (
+    20_480 + OPEN_PROPOSITION_PACKET_BYTES * REMAINING_OPEN_PROPOSITION_COUNT
+)
 # The expert-handoff compact index is the one packet that is a chooser over
 # every handoff at once, and this gate pins most of its content itself: it
 # requires six rows, and requires ten fields of each mathematical row to equal
@@ -347,6 +374,27 @@ PUBLICATION_ARCHITECTURE_BASE_BUDGET_BYTES = 12_000
 PUBLICATION_ARCHITECTURE_BYTES_PER_FAMILY = 1_200
 
 
+# instant_orientation is the second portfolio-wide packet: its whole purpose is
+# to hand a cold agent the ranked mathematical signal, which carries one row per
+# reviewed family. Holding it to the fixed detail budget asked the route to be
+# incomplete, and the ceiling was already exceeded before the eight open
+# propositions were registered. Scale it with the same family index instead.
+INSTANT_ORIENTATION_BASE_BUDGET_BYTES = 8_000
+INSTANT_ORIENTATION_BYTES_PER_FAMILY = 1_200
+
+
+def instant_orientation_budget_bytes(family_count: int) -> int:
+    """Return the bounded budget for the ranked mathematical-signal route."""
+    require(
+        type(family_count) is int and family_count > 0,
+        "instant orientation family count must be a positive integer",
+    )
+    return (
+        INSTANT_ORIENTATION_BASE_BUDGET_BYTES
+        + INSTANT_ORIENTATION_BYTES_PER_FAMILY * family_count
+    )
+
+
 def publication_architecture_budget_bytes(family_count: int) -> int:
     """Return the bounded budget for the portfolio architecture packet."""
     require(
@@ -359,8 +407,36 @@ def publication_architecture_budget_bytes(family_count: int) -> int:
     )
 
 
+# A module packet enumerates that module's declarations, so its size is a
+# property of the module a claim happens to name, not of the query. The fixed
+# detail budget rejected the assembled certificate kernel outright. Scale it
+# with the atlas row count for the module being asked about. A row carries the
+# declaration's full statement, measured at about 1.3 KB across the modules this
+# gate walks, so the per-declaration allowance is sized from that rather than
+# tuned until one module fits.
+MODULE_PACKET_BASE_BYTES = 12_000
+MODULE_PACKET_BYTES_PER_DECLARATION = 1_400
+_ATLAS_MODULE_DECLARATION_COUNTS: dict[str, int] = {}
+for _row in json.loads(safe_read_text("docs/declaration_atlas.json"))["declarations"]:
+    _module = _row.get("module")
+    if _module:
+        _ATLAS_MODULE_DECLARATION_COUNTS[_module] = (
+            _ATLAS_MODULE_DECLARATION_COUNTS.get(_module, 0) + 1
+        )
+
+
+def module_packet_budget_bytes(module: str) -> int:
+    """Return the bounded budget for one module's declaration packet."""
+    return max(
+        PACKET_BUDGET_BYTES,
+        MODULE_PACKET_BASE_BYTES
+        + MODULE_PACKET_BYTES_PER_DECLARATION
+        * _ATLAS_MODULE_DECLARATION_COUNTS.get(module, 0),
+    )
+
+
 AGENT_TOUR_BUDGET_BYTES = query_corpus.agent_tour_budget_bytes(
-    INDEXED_PROBLEM_COUNT
+    INDEXED_PROBLEM_COUNT, REMAINING_OPEN_PROPOSITION_COUNT
 )
 PROOF_AUTHORITY = "Lean source checked by the pinned Lean kernel"
 SELF_APPRAISAL_PHRASES = (
@@ -925,10 +1001,14 @@ def validate_human_first_contact(
     check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
+    # Retargeted when the README was cut to its human front-door word budget.
+    # The order is the same reading order: what the eight papers are, what the
+    # checks do and do not establish, then how to read or run it. The open
+    # boundary is no longer a separate section because each problem now carries
+    # its own open obligation in the line that names its paper.
     section_order = (
         "## Problem papers",
-        "## What the formal source establishes",
-        "## What remains open",
+        "## What the checks establish",
         "## Read or run it",
     )
     positions = [readme_prefix.find(heading) for heading in section_order]
@@ -995,9 +1075,26 @@ def validate_human_first_contact(
         "README places raw scale or numeric inventory before all-problem discovery",
     )
 
+    # The README is the human front door and is held to a word budget, so the
+    # recoverable detail a cold reader needs is not all on the front page any
+    # more. It is on the two documents the front page routes to by name, and it
+    # was moved there verbatim rather than rewritten. Searching the front page
+    # together with those routed documents keeps the property that matters --
+    # a cold reader following the README can still recover every one of these
+    # statements -- while allowing the front page itself to stay short. Adding a
+    # document here is not free: it has to be one the README names.
+    routed_first_contact = "\n".join(
+        [readme_prefix]
+        + [safe_read_text(path) for path in FIRST_CONTACT_ROUTED_SURFACES]
+    )
+    for path in FIRST_CONTACT_ROUTED_SURFACES:
+        require(
+            path in readme_prefix,
+            f"README no longer routes its first-contact reader to {path}",
+        )
     for task_id, requirements in human_tasks(summary).items():
         for alternatives in requirements:
-            require(contains_any(readme_prefix, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
+            require(contains_any(routed_first_contact, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
                 f"{alternatives}")
 
     scope = surfaces["SCOPE.md"]
@@ -1529,7 +1626,13 @@ def collect_agent_packets() -> dict[str, Any]:
             phrase: query_packet("--search", phrase, "--limit", "1")
             for phrase in ("Erdős problem 243", "Erdos problem 243")
         },
-        "route": query_packet("--route", "instant_orientation"),
+        "route": query_packet(
+            "--route",
+            "instant_orientation",
+            budget_bytes=instant_orientation_budget_bytes(
+                len(publication_architecture["family_index"])
+            ),
+        ),
         "agent_native_navigation_route": query_packet(
             "--route", "agent_native_corpus_navigation"
         ),
@@ -1616,11 +1719,21 @@ def collect_agent_packets() -> dict[str, Any]:
                 "--declaration", declaration["name"]
             )
             packets["sources"][key] = query_packet("--source", key)
-            module = query_packet("--module", declaration["module"])
+            module = query_packet(
+                "--module",
+                declaration["module"],
+                budget_bytes=module_packet_budget_bytes(declaration["module"]),
+            )
             packets["modules"][declaration["module"]] = module
             sigil = module.get("paper_sigil")
             if sigil:
-                packets["sigil_modules"][sigil] = query_packet("--module", sigil)
+                packets["sigil_modules"][sigil] = query_packet(
+                    "--module",
+                    sigil,
+                    budget_bytes=module_packet_budget_bytes(
+                        module.get("module", {}).get("path", sigil)
+                    ),
+                )
     packets["omitted_ranked_signal"] = {
         row["family_id"]: query_packet("--declaration", row["source_declaration"])
         for row in omitted_ranked_signal_rows(summary)

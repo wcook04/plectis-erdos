@@ -111,7 +111,8 @@ def test_palomar_signal_join_and_first_read_order() -> None:
         )
     ) <= builder.ORIENTATION_MAX_BYTES
     assert len(markdown.encode("utf-8")) <= builder.orientation_markdown_budget_bytes(
-        len(orientation["remaining_open_propositions"])
+        len(orientation["remaining_open_propositions"]),
+        len(orientation["mathematical_programmes"]),
     )
 
 

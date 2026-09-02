@@ -4939,12 +4939,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:286032e505b5113e2ce9e0669eb9c5c12814a2f07dbb35b54fb6a5ef303e25f1",
+      "source_sha256": "sha256:eb7e51963d650313347933f2ad4055acf069a1310b7f266a05c5de26fee8cb9a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
-      "section_count": 44,
+      "section_count": 46,
       "sections": [
         {
           "level": 1,
@@ -5073,142 +5073,154 @@
           "line": 274
         },
         {
+          "level": 2,
+          "id": "comprehension-before-the-mathematics",
+          "title": "Comprehension before the mathematics",
+          "line": 286
+        },
+        {
+          "level": 2,
+          "id": "consequence-propagation",
+          "title": "Consequence propagation",
+          "line": 306
+        },
+        {
           "level": 1,
           "id": "sec:public",
           "title": "The public Lean repository",
-          "line": 292
+          "line": 314
         },
         {
           "level": 1,
           "id": "sec:assurance",
           "title": "Comparator, Palomar, and publication",
-          "line": 322
+          "line": 344
         },
         {
           "level": 2,
           "id": "comparator-an-exact-statement-firewall",
           "title": "Comparator: an exact-statement firewall",
-          "line": 326
+          "line": 348
         },
         {
           "level": 2,
           "id": "palomar-selecting-what-deserves-review",
           "title": "Palomar: selecting what deserves review",
-          "line": 334
+          "line": 356
         },
         {
           "level": 2,
           "id": "publication-and-propagation",
           "title": "Publication and propagation",
-          "line": 342
+          "line": 364
         },
         {
           "level": 2,
           "id": "applying-taos-proof-abundance-programme",
           "title": "Applying Tao\u2019s proof-abundance programme",
-          "line": 352
+          "line": 374
         },
         {
           "level": 1,
           "id": "sec:example",
           "title": "One complete boundary: finite is not unbounded",
-          "line": 364
+          "line": 386
         },
         {
           "level": 1,
           "id": "sec:routes",
           "title": "Inspection routes",
-          "line": 392
+          "line": 414
         },
         {
           "level": 1,
           "id": "sec:trust",
           "title": "What can be trusted",
-          "line": 416
+          "line": 438
         },
         {
           "level": 1,
           "id": "sec:scaling",
           "title": "Scaling from one clone to a search network",
-          "line": 442
+          "line": 464
         },
         {
           "level": 2,
           "id": "clone-attach-compute-and-mine-bounded-results",
           "title": "Clone, attach compute, and mine bounded results",
-          "line": 450
+          "line": 472
         },
         {
           "level": 2,
           "id": "the-no-go-graph-as-a-new-mathematical-object",
           "title": "The no-go graph as a new mathematical object",
-          "line": 476
+          "line": 498
         },
         {
           "level": 2,
           "id": "an-experimental-agenda",
           "title": "An experimental agenda",
-          "line": 486
+          "line": 508
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to other approaches",
-          "line": 492
+          "line": 514
         },
         {
           "level": 4,
           "id": "theorem-proving-agents.",
           "title": "Theorem-proving agents.",
-          "line": 496
+          "line": 518
         },
         {
           "level": 4,
           "id": "graphs-and-checked-exposition.",
           "title": "Graphs and checked exposition.",
-          "line": 502
+          "line": 524
         },
         {
           "level": 4,
           "id": "auditable-scientific-agents.",
           "title": "Auditable scientific agents.",
-          "line": 512
+          "line": 534
         },
         {
           "level": 4,
           "id": "contribution-and-limits.",
           "title": "Contribution and limits.",
-          "line": 520
+          "line": 542
         },
         {
           "level": 4,
           "id": "scaling-beyond-this-corpus.",
           "title": "Scaling beyond this corpus.",
-          "line": 526
+          "line": 548
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 532
+          "line": 554
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 544
+          "line": 566
         },
         {
           "level": 4,
           "id": "public-first-contact.",
           "title": "Public first contact.",
-          "line": 548
+          "line": 570
         },
         {
           "level": 4,
           "id": "dated-navigation-counts.",
           "title": "Dated navigation counts.",
-          "line": 559
+          "line": 581
         }
       ],
       "citations_rendered": 18,
@@ -5217,8 +5229,8 @@
         "manuscript_title": "Problem-Sized Lean Worlds"
       },
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:154a54eebc16d00077bf9fed65f451306306df4c522afc5cabb595b6f7d190c6",
-      "pdf_byte_count": 140553,
+      "pdf_sha256": "sha256:513932d5317ac55e6c6bca872b4ef71efe8a7b8655fc8d656cdb4ab6447b0ea5",
+      "pdf_byte_count": 143343,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -5236,7 +5248,7 @@
           {
             "id": "sec:trust",
             "title": "What can be trusted",
-            "line": 416
+            "line": 438
           },
           {
             "id": "sec:limits",

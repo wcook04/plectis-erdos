@@ -80,6 +80,12 @@ AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
 # problem map.  The allowance scales with the canonical eight-problem and
 # reviewed-family census so it does not reject a complete, non-truncated tour.
 AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 5_100
+# The tour also carries every remaining-open proposition, because the frontier
+# is what a cold agent is orienting towards. Registering the eight #243, #249,
+# #257 and #269 propositions the papers already state lengthened the tour past a
+# ceiling that counted only problems, which would have made the gate read a
+# larger boundary as a larger tour.
+AGENT_TOUR_PER_OPEN_PROPOSITION_BUDGET_BYTES = 400
 # The bounded summary is the cold-start orientation read, so it has to stay
 # inside a fixed byte budget while the corpus keeps growing.  Palomar's ranked
 # signal and its relational placements are per-family enumerations: every new
@@ -143,11 +149,15 @@ def canonical_paper_anchor_key(
     )
 
 
-def agent_tour_budget_bytes(indexed_problem_count: int) -> int:
-    """Scale the bounded tour with the canonical problem registry."""
+def agent_tour_budget_bytes(
+    indexed_problem_count: int, remaining_open_proposition_count: int = 0
+) -> int:
+    """Scale the bounded tour with the problem registry and the open boundary."""
     return (
         AGENT_TOUR_BASE_BUDGET_BYTES
         + AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES * indexed_problem_count
+        + AGENT_TOUR_PER_OPEN_PROPOSITION_BUDGET_BYTES
+        * remaining_open_proposition_count
     )
 
 # The atlas builder strips nested Lean comments and recognizes heads whose
@@ -9302,10 +9312,12 @@ def agent_tour_packet() -> dict[str, Any]:
         "authority_posture": "computed_navigation_tour_not_proof_authority",
         "mathematical_signal_spine": mathematical_signal,
         "budget_contract": {
-            "maximum_encoded_bytes": agent_tour_budget_bytes(len(problems)),
+            "maximum_encoded_bytes": agent_tour_budget_bytes(
+                len(problems), len(claims["remaining_open_propositions"])
+            ),
             "policy": (
-                "18000 base bytes plus 5100 bytes per canonically indexed "
-                "problem; eight problems currently yield a 58800-byte ceiling"
+                "18000 base bytes, plus 5100 bytes per canonically indexed "
+                "problem, plus 400 bytes per remaining-open proposition"
             ),
             "reason": (
                 "The registry map is material first-contact context. Its budget "

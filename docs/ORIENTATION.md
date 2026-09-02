@@ -85,6 +85,19 @@ The prior-art record, not this table, supplies antecedents.
 - `remaining_open.twenty_one_actual_orbit_invariant` — Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.
 - `remaining_open.twenty_one_final_skip_exclusion` — Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.
 
+## Mathematical programmes
+
+- `erdos257_half_story` — Achievement-set geometry and the rational-target seams. Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved.
+- `erdos249_certificate_story` — #249 certificate and harmonic interface. The certificate formulation is exact and finite instances are checked; the unbounded certificate supply and irrationality of S remain open.
+- `structured_support_families` — Classical and structured support irrationality. These are structured families, coefficient classes, and a conditional bouquet reduction; arbitrary infinite supports in universal Erdős #257 remain open.
+- `erdos249_diagonal_arithmetic` — #249 diagonal arithmetic and fresh-loss interfaces. Each interface sharpens or re-expresses the same supply problem; no unbounded avoidance, slack, or separated-projection supply is proved.
+- `boolean_mobius_constraints` — Boolean Möbius carry and global rationality constraints. These are exact characterisations and necessary consequences of rationality; they do not contradict every hypothetical rational value or settle universal Erdős #257.
+- `transport_curvature_programme` — Transport, curvature, phase separation, and no-go results. The actual-LCM frontier, corridor, consumers, and countermodels are exact, but no cofinal curvature, transport, phase-separation, or anti-reconstruction producer is proved.
+- `lambert_obstruction_interfaces` — Mersenne–Lambert identities and obstruction interfaces. These are exact identities, obstruction theorems, and one conditional rank consequence; they do not form an irrationality criterion for S.
+- `probabilistic_gcd_geometry` — Coprimality probability, gcd moments, and Stern–Brocot geometry. Exact identities, denominator transfer, convergence, and combinatorial stability only; no irrationality or novelty claim.
+- `half_carry_compactness_programme` — Half-carry compactness, windows, seams, and finite propagation. The closure implications, local propagation laws, and bounded stages are exact; no cofinal or coherent unbounded window family is proved, so neither half-membership nor universal Erdős #257 follows.
+- `arithmetic_obstruction_interfaces` — Denominator, CRT, moment, and gauge obstructions. These are exact arithmetic interfaces, finite mechanisms, and obstruction theorems; they do not supply an unbounded certificate family or an irrationality criterion for the totient constant.
+
 ## Where the substance is
 
 The working records end at "The wall"; the mathematics paper ends with

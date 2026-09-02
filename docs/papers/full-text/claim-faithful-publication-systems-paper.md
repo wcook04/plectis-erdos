@@ -10,7 +10,7 @@
 
 This paper presents an executable architecture for AI-assisted mathematics under proof abundance. It separates six things that are commonly collapsed: cognition authority, permission to change shared state, validation capacity, evidence class, public-claim authority, and reviewer attention. Work advances only when the next gate matches the evidence. A failed route may change later search or validation without being relabelled as a theorem.
 
-The architecture organises work around *problem-sized mathematical worlds*, not isolated theorem files. Each world joins formal declarations, experiments, source literature, failed mechanisms, open obligations, and a reviewed public boundary. Formal dependencies, authored mathematical meaning, and public claims remain separate graphs, so a dense connection cannot make a claim stronger. Among the systems compared here, none implements this full route from a question to the strongest public claim its evidence supports.
+The architecture organises work around *problem-sized mathematical worlds*, not isolated theorem files. Each world joins formal declarations, experiments, source literature, failed mechanisms, open obligations, and a reviewed public boundary. Formal dependencies, authored mathematical meaning, and public claims remain separate graphs, so a dense connection cannot make a claim stronger. An agent enters a world through a compiled comprehension packet: it federates the corpora by content digest, states the endpoint and claim ceiling before any route, separates proved results from open producers and closed routes, and declares both what it omitted and when it exceeded its context budget. Among the systems compared here, none implements this full route from a question to the strongest public claim its evidence supports.
 
 The mathematical workflow keeps conjecture, computation, formal proof, interpretation, public wording, and external review distinct. Computation may reject a route or supply finite evidence; it does not prove an unbounded theorem. Lean verifies that a proof establishes the formal statement written in the source; it does not verify whether that statement captures the intended mathematics or whether the paper describes it well. Comparator checks selected propositions and their axiom boundary; Palomar selects result families for review. Neither tool decides novelty, importance, acceptance, or whether an open problem has been solved.
 
@@ -143,7 +143,7 @@ The private system does not treat a chat transcript as the project. Durable stat
 
 Different file classes carry different authority. Raw operator language preserves what was asked. Work records say what has been claimed and by whom. Source files contain implementations and proofs. Receipts record what actually ran. Authored papers explain; generated indexes help readers navigate. A generated projection is therefore a map of the territory, not the territory’s source of truth.
 
-At entry, a deterministic router selects a small context packet for the task. The packet gives candidate objects, authority boundaries, relevant standards, and legal next actions. A reader can then drill from a one-line flag to a short card, a working context, and finally source evidence. This “small map before large source” rule reduces blind search without pretending that a summary is proof.
+At entry, a deterministic router selects a small context packet for the task. The packet gives candidate objects, authority boundaries, relevant standards, and legal next actions. This “small map before large source” rule reduces blind search without pretending that a summary is proof.
 
 <a id="type-a-and-type-b"></a>
 
@@ -283,7 +283,29 @@ Depth is not readiness. The canonical public 1041 library currently has two inte
 
 An agent does not receive this world as one prompt. First the problem cockpit fixes the endpoint, status, claim ceiling, and canonical frontier. It keeps open producers distinct from the target so a promising route cannot silently replace the problem. Next a bounded neighbourhood selects the strongest relevant results, exact source coordinates, imports, consumers, alternative formulations, experiments, counterexamples, no-gos, and literature. It labels every item by evidence class and emits an omission receipt with an expansion route. One 1041 packet exposed only four of 134 Lean modules, four of 335 experiments, and four of 55 no-go notes; designed omission, not exhaustive loading, made the context usable. When an exact path is claimed, a local connection card can put its prerequisites, sibling mechanisms, consumers, falsifiers, and validation target before broader retrieval.
 
-The working memory is federated rather than a copied mega-index. A compact descriptor carries separate identities for proof-bearing source, navigation generation, content digests, and source-input fingerprints. An attached exhaustive atlas is opened only after those identities reconcile and the bounded route cannot answer. Retrieval can move between global frontier structure, concept neighbourhoods, and premise or obligation ancestry. Exact imports, authored arguments, generated navigation, lexical references, and semantic inference remain visibly different edge classes.
+<a id="comprehension-before-the-mathematics"></a>
+
+## Comprehension before the mathematics
+
+<div id="systems-comprehension">
+
+</div>
+
+The neighbourhood is compiled, not remembered. Before attempting mathematics an agent asks a working-memory compiler for a packet conditioned on its query, and that packet, rather than the repository, is what it reasons over.
+
+Federation works by identity. Each corpus keeps its own authority and nothing is copied into a central index. The compiler holds a compact descriptor and a content fingerprint for the private projection and for every attached public checkout, and it opens an attached exhaustive atlas only after those identities reconcile and the bounded route has failed to answer. It never rebuilds the expensive Lean microcosm. Every packet names the corpora it consulted and the digests at which it saw them.
+
+The packet leads with the endpoint. A problem cockpit fixes the target statement, its status, the claim ceiling, and the current claim frontier, labelling each frontier claim with an evidence class and a logical altitude that separates an equivalence from a reduction, a necessary condition, a finite exclusion, and a no-go. Beneath it a mechanism landscape keeps proved or kernel-checked results apart from open producers and from routes a counterexample has closed. Retrieval moves between global frontier structure, concept neighbourhoods, and premise or obligation ancestry, and exact imports, authored arguments, generated navigation, lexical references, and semantic inference remain visibly different edge classes.
+
+Above that material sits an inference workspace: an exact commitment plane for source coordinates and statements, a strategy plane whose unit of branching is a coherent premise group, and an adversary plane for the falsifiers a branch must survive. Its commitments are invalidated whenever a corpus fingerprint moves. It states its own boundary in every packet, that only Lean, an exact counterexample, or an owner verifier receipt may change the status of a claim. The workspace plans inference and concludes nothing.
+
+Two refusals are as important as the retrieval. A query naming no theorem, declaration, or claim is reported as unanchored, and its consumer is told to name one before treating any route as target-specific, so a vague question does not receive a specific frontier. A packet over its requested context budget says so and exits non-zero instead of truncating quietly: it reports the requested and estimated token counts, names the planes it dropped, and gives the command that restores them. An omitted adversary plane appears as an omission with an expansion route, never as an absence of falsifiers.
+
+This is orientation, not understanding. A packet can be well formed over corpora it identified correctly and still select a weak mechanism, omit the governing obstruction, or carry an authored interpretation that is mathematically wrong. The supported claim is narrower: an agent entering a corpus of this depth receives a bounded starting state that names its sources by digest, labels its evidence, and declares its own omissions, and no part of that state carries proof authority. Whether agents working from such a packet produce better mathematics than agents without one is not measured here.
+
+<a id="consequence-propagation"></a>
+
+## Consequence propagation
 
 When a declaration lands, the direction reverses. A consequence mapper begins at the exact changed object and enumerates reverse imports, claim records, validators, experiments, papers, and open obligations that may now be stale. A semantic second pass must choose: update now, verify unchanged, defer with a reason, or mark outside scope. Empty lexical search is not evidence of no consequence, and no projection may bulk-strengthen a family of claims. A formal evidence cell carries the result, its explicit non-claim, evidence class, source and receipt links, and next unresolved obligation through this fan-out. The public `propagate-research-consequences` skill implements the same discipline without depending on the private workbench. For work returned from an older clone, it runs once against the contributor’s recorded starting commit and again after the reviewed change has been reconciled with current main. The original delta and any conflict-resolution delta remain separate evidence and receive separate attribution.
 

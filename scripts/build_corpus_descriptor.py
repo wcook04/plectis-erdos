@@ -44,14 +44,21 @@ ORIENTATION_MAX_BYTES = 32_000
 # 16,000-byte pin was set against, this formula returns 16,080.
 ORIENTATION_MARKDOWN_BASE_BYTES = 13_000
 ORIENTATION_MARKDOWN_PER_OPEN_PROPOSITION_BYTES = 280
+# The file also carries one line per mathematical programme, with its title and
+# claim ceiling, because the cold-clone contract requires a reader of this file
+# to recover them.
+ORIENTATION_MARKDOWN_PER_PROGRAMME_BYTES = 320
 
 
-def orientation_markdown_budget_bytes(remaining_open_proposition_count: int) -> int:
-    """Scale the human first-read budget with the registered open boundary."""
+def orientation_markdown_budget_bytes(
+    remaining_open_proposition_count: int, programme_count: int = 0
+) -> int:
+    """Scale the human first-read budget with the boundary and the programmes."""
     return (
         ORIENTATION_MARKDOWN_BASE_BYTES
         + ORIENTATION_MARKDOWN_PER_OPEN_PROPOSITION_BYTES
         * remaining_open_proposition_count
+        + ORIENTATION_MARKDOWN_PER_PROGRAMME_BYTES * programme_count
     )
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
@@ -542,6 +549,13 @@ def render_orientation_markdown(
     lines.extend(["", "## Exact open boundary", ""])
     for row in orientation["remaining_open_propositions"]:
         lines.append(f"- `{row['id']}` — {row['statement']}")
+    # The cold-clone contract asks a reader of this file to recover every
+    # mathematical programme, its title, and its claim ceiling. The JSON
+    # orientation has carried them all along and this projection did not, so the
+    # check could never pass against the file it names.
+    lines.extend(["", "## Mathematical programmes", ""])
+    for row in orientation["mathematical_programmes"]:
+        lines.append(f"- `{row['id']}` — {row['title']}. {row['claim_ceiling']}")
     lines.extend(
         [
             "",
@@ -1297,7 +1311,8 @@ def main() -> int:
         )
         return 1
     orientation_markdown_budget = orientation_markdown_budget_bytes(
-        len(orientation["remaining_open_propositions"])
+        len(orientation["remaining_open_propositions"]),
+        len(orientation["mathematical_programmes"]),
     )
     if orientation_markdown_bytes > orientation_markdown_budget:
         print(

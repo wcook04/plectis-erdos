@@ -463,7 +463,9 @@ def validate_agent_tour() -> None:
         ),
     }
     assert packet["budget_contract"]["maximum_encoded_bytes"] == (
-        query_corpus.agent_tour_budget_bytes(8)
+        query_corpus.agent_tour_budget_bytes(
+            8, len(load("docs/claims.json")["remaining_open_propositions"])
+        )
     )
     assert {row["erdos_number"] for row in packet["problem_map"]} == {
         68,
@@ -2886,11 +2888,16 @@ def main() -> int:
             "Erdos249257.half_mem_mersenneAchievementSet_iff_"
             "unboundedTerminalFalse"
         )
+        # The source_ref is a line coordinate the atlas refresh owns; pinning it
+        # here made an ordinary paper edit fail the query surface. Resolve it
+        # from the anchor the label names instead.
         assert half_family["claim_paper_routes"] == [
             {
                 "label": "res:halfmembership",
                 "source": "paper/erdos249-257-main-paper.tex",
-                "source_ref": "paper/erdos249-257-main-paper.tex:1117",
+                "source_ref": query_corpus.paper_anchor_packet(
+                    "res:halfmembership"
+                )["paper"]["source_ref"],
                 "command": (
                     "python3 scripts/query_corpus.py --paper-anchor "
                     "res:halfmembership"

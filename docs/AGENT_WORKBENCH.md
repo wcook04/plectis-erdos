@@ -265,3 +265,124 @@ source-only frontier.
   optimal. The honesty is the feature.
 - Nothing here claims progress on the open problem statuses tracked in
   `docs/RELATED_PROBLEMS.md` unless a landed theorem says so.
+
+The README is held to a short word budget as the human front door. The two sections below were moved here verbatim so an agent following the front page still reaches the whole-corpus navigation contract.
+
+## Recovered from the front page: read or run it
+
+A single claim can be followed without installing Lean. `verify_claims.py`,
+shown above, also prints the Lean proof text, and both it and `--verify-all`
+work on a `git clone --depth 1` checkout. Run with no argument it performs an
+environment check, which exits `2` and prints `git fetch --unshallow` when a
+truncated history cannot reach the gates that read pinned commits; it never
+exits `1` in that case, so a shallow clone cannot be misread as a claim that
+failed. `check_release.py` remains the authority for locators.
+
+A mathematician can follow the reading order above and then trace one result
+from the [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers
+are the live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
+
+A coding agent is routed by job description. The clone-local entry router
+maps ordinary language to a bounded lane, a minimum read set, and a skill
+recommendation, so the agent does not select a workflow file by guessing:
+
+```bash
+python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
+python3 scripts/agent_entry.py --skills
+```
+
+The skills work from the clone; `scripts/install_agent_skills.py --list`
+previews installing them elsewhere. The agent reading order is
+[`AGENTS.override.md`](AGENTS.override.md), then the bounded
+[`docs/orientation.json`](docs/orientation.json), selecting one programme or
+claim before expanding the registry; [`AGENTS.md`](AGENTS.md) is the complete
+reference.
+
+Whole-corpus agent navigation runs without a Lean build.
+`python3 scripts/query_corpus.py --tour --format card` and
+`python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
+expose corpus scale, the mathematical map, the canonical eight-problem map,
+the distinct reviewed #249/#257 open-proposition frontier, and authority
+boundaries. `query_semantic.py problem-registry` lists every indexed problem
+and `structural-backlog` lists authored replacement. Committed indexes expose
+every indexed declaration and exact dependencies for both loaded roots;
+coverage keeps direct evidence, family context, and structural discovery
+distinct. These are navigation projections, not proof authority.
+
+The [proof cockpit](docs/PROOF_COCKPIT.md) produces one cold-clone
+status and frontier card (`python3 scripts/proof_cockpit.py`), and
+[the Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves
+and kernel probes under `workbench/sessions/`. The one landed prospective
+session,
+[`carry_pivot_2026_07_27`](workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
+produced [`SuffixCylinderCarryPivot.lean`](Erdos249257/SuffixCylinderCarryPivot.lean).
+Only kernel receipts assert; ledger notes and static nominations stay
+advisory.
+
+For proof-search construction, `hypOf%` lifts an unresolved hypothesis out of
+binder position into a `Prop`, so whether a sketch's remaining obligation
+differs from the target it started from becomes a question for the kernel
+rather than for a rater; this is the failure mode
+[AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
+not prevent. [Deciding whether a sketch reduced its target or renamed
+it](docs/RESIDUAL_PROGRESS.md) documents the evaluator, its eight labelled
+fixtures, and what it refuses to decide.
+[The proof-state compiler](docs/PROOF_STATE_COMPILER.md) asks the pinned Lean
+environment which candidate applications it actually accepts from a goal, and
+[the semantic compiler](docs/SEMANTIC_COMPILER.md) nominates declarations
+structurally without claiming they apply.
+
+Publication topology is reported by
+`python3 scripts/query_corpus.py --publication-architecture` and
+`python3 scripts/query_corpus.py --publication-family <id>`.
+
+The [Formal Conjectures crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md)
+places the corpus against the public benchmark: it binds all eight programmes
+to Google DeepMind's Formal Conjectures statements at a pinned upstream
+commit, with a SHA-256 per source file and the indexing, ambient-type, and
+cast differences a reviewer must inspect. It is statement identity and
+adapter-review metadata, not a Lean equivalence proof or a
+submission-readiness decision; every row is `not_ready_to_submit`.
+[Related problems](docs/RELATED_PROBLEMS.md) places five of the eight
+programmes among the neighbouring numbered problems, each external status as
+listed on its erdosproblems.com page.
+
+`python3 scripts/check_cold_clone_comprehension.py --quick` checks the
+reading surfaces without Lean; `python3 scripts/check_release.py` runs the
+full public-surface and query sweep.
+
+## Recovered from the front page: how the repository fits together
+
+The package has two compact supported roots. [`Erdos249257.lean`](Erdos249257.lean)
+preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](ErdosProblems.lean)
+is the problem-owned expansion surface: work lives under its actual Erdős
+problem number instead of being forced into the historical #249/#257 tree.
+Kernel checking of that second root establishes its exact Lean propositions;
+it does not by itself promote them into the reviewed claim registry or claim
+that an open problem is solved.
+
+The source has five reader-facing layers. The assembled kernel,
+[`CertificateKernel.lean`](Erdos249257/CertificateKernel.lean), contains the
+common series machinery, the full-support Erdős-Borwein theorem, named
+support-family interfaces, and the unconditional #249 denominator exclusion.
+The #249 reduction spine, comprising the period-killer, lcm-diagonal, cone,
+diagonal pincer, fresh-loss, and transport modules, turns the open
+irrationality problem into exact certificate or avoidance obligations; finite
+certificate modules verify explicit parameters and do not supply the
+unbounded family required by the reduction. The #257 carry trunk, comprising
+the tail-orbit, achievement-set, Boolean-Möbius carry, reciprocal-mass, and
+divisor-coverage modules, gives exact criteria and necessary conditions, not
+the universal #257 theorem. The navigation layer finds every declaration and
+import through the atlas; selected semantic meanings carry scoped reviews
+(`python3 scripts/query_semantic.py semantic-reviews`), which are neither
+human, novelty, nor proof authority, and the theory lab records nine
+mechanisms, nine transfer capsules, and three failure receipts, with four
+holdouts that have no results, so no measured transfer is claimed. The
+problem-owned expansion, `ErdosProblems/Erdos<N>/`, contains bounded results
+and explicit open frontiers for one problem at a time; new entries remain
+outside the reviewed claim registry until mathematical review establishes
+their intended meaning and public framing.
+
+[SOURCE MAP](docs/SOURCE_MAP.md) gives module order; [METHODOLOGY](METHODOLOGY.md)
+governs claim changes; [WAVE INDEX](docs/WAVE_INDEX.md) gives chronology, not
+reading order.

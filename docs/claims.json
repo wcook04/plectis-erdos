@@ -1533,13 +1533,14 @@
           "claim_ids": [
             "erdos_269",
             "three_prime_finite_residue_contradiction",
-            "three_prime_cofinal_window_carry_extinction"
+            "three_prime_cofinal_window_carry_extinction",
+            "weighted_phase_carry_finite_observer"
           ],
-          "status_summary": "An open three-prime #269 endpoint, a finite least-positive-residue contradiction, and a conditional cofinal-window extinction consumer.",
+          "status_summary": "An open three-prime #269 endpoint, a finite least-positive-residue contradiction, a conditional cofinal-window extinction consumer, and the weighted-phase carry split with its finite realised-span observer.",
           "prior_art_posture": "The residue classifier and bounded-carry consumer are source-specific formal results; no novelty, priority, significance, or three-prime irrationality claim is made.",
           "primary_narrative_owner": "paper/erdos-269-three-prime-running-lcm.tex",
           "source_route": "python3 scripts/query_corpus.py --claim three_prime_finite_residue_contradiction",
-          "consumer_or_open_obligation": "The actual rationality-to-carry bridge and the denominator-dependent cofinal local-window escape remain open, so neither consumer settles the three-prime problem.",
+          "consumer_or_open_obligation": "The actual rationality-to-carry bridge and the denominator-dependent cofinal local-window escape remain open, so neither consumer settles the three-prime problem; the observer supplies no two-dimensional representation and excludes none.",
           "view_decision": "problem_note_reference_detail"
         },
         {
