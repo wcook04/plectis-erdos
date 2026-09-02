@@ -3,10 +3,9 @@
 
 # How this repository works
 
-This is a public Lean project about eight unsolved problems in mathematics. It
-contains formal source code, papers and summaries for readers, and a set of
-checks that keep those different descriptions aligned. The reviewed claim
-registry covers #249 and #257; a problem-owned expansion library covers #68,
+This is a public Lean project about eight unsolved problems in mathematics. The
+reviewed claim registry covers #249 and #257; a problem-owned expansion library
+covers #68,
 #243, #251, #269, #1041, and #1049 without silently promoting their
 declarations into that reviewed record.
 

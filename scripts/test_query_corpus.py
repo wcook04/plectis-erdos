@@ -354,14 +354,28 @@ def validate_indexed_problem_routes() -> None:
                     anchor["canonical_handle"]
                     for anchor in actual["paper_route"]["matching_anchors"]
                 }
-                assert "paper/erdos-269-three-prime-running-lcm.tex:1" in (
-                    weighted_anchors
+                # The family used to return the whole-document handle at line 1
+                # alongside a detail anchor. Registering the two-dimensional
+                # representation problem as a remaining-open proposition gave
+                # that passage its own typed anchor, and the family now returns
+                # straight to it. Requiring the coarse handle would ask the
+                # route to be less exact than it is, so the property checked
+                # here is that every returned anchor is an exact coordinate in
+                # this paper and one of them carries the carry-observer
+                # declarations.
+                assert weighted_anchors
+                assert all(
+                    handle.startswith("paper/erdos-269-three-prime-running-lcm.tex:")
+                    for handle in weighted_anchors
                 )
                 weighted_detail = next(
                     anchor
                     for anchor in actual["paper_route"]["matching_anchors"]
-                    if anchor["canonical_handle"]
-                    != "paper/erdos-269-three-prime-running-lcm.tex:1"
+                    if {
+                        "carry_eq_residueDigit_add_coboundary",
+                        "finite_realisedSpan_of_factorisation",
+                    }
+                    <= set(anchor["matched_declarations"])
                 )
                 assert weighted_detail["canonical_handle"] == weighted_detail[
                     "source_ref"
@@ -372,7 +386,12 @@ def validate_indexed_problem_routes() -> None:
                 }
         if route_id == "erdos_1041":
             research = route["research_corpus"]
-            assert research["strongest_result_summary"]["result_count"] == 35
+            # The count belongs to the corpus file that holds the results, not
+            # to this test. Pinning 35 here meant every published #1041 result
+            # after the thirty-fifth turned the query surface red.
+            assert research["strongest_result_summary"]["result_count"] == len(
+                load("research_corpus/Erdos1041/STRONGEST_RESULTS.json")["results"]
+            )
             assert research["files"]["frontier"]["path"] == (
                 "research_corpus/Erdos1041/FRONTIER.md"
             )
@@ -1689,7 +1708,10 @@ def validate_external_assurance_routes() -> None:
     assert palomar_route["route_kind"] == "external_assurance"
     assert palomar_assurance["decision"] == expected_decision["decision"]
     assert palomar_assurance["reason"] == expected_decision["reason"]
-    assert palomar_assurance["external_follow_on"] == expected_decision[
+    # The route renamed this projection to operator_only_residuals. The
+    # reconciliation document still owns the list under its original name, and
+    # the property is that the route reproduces it exactly.
+    assert palomar_assurance["operator_only_residuals"] == expected_decision[
         "external_follow_on"
     ]
     assert sum(palomar_assurance["requirement_status_counts"].values()) == len(
@@ -1701,7 +1723,9 @@ def validate_external_assurance_routes() -> None:
     assert palomar_route["authority_owners"][0] == (
         "docs/PALOMAR_POLICY_RECONCILIATION.json"
     )
-    assert "publication_family" in palomar_route["adjacent_handle_classes"]
+    # The handle class was renamed from publication_family to the id the
+    # publication contract actually keys on.
+    assert "publication_artifact_id" in palomar_route["adjacent_handle_classes"]
     palomar_card = run(
         "--route", "palomar_qualification", "--format", "card"
     )

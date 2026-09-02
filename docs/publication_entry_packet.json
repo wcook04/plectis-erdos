@@ -107,15 +107,15 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:154a54eebc16d00077bf9fed65f451306306df4c522afc5cabb595b6f7d190c6",
-    "docs/claims.json": "sha256:284f110f2391c72ed994f4870788ff96eb4c4a2c8244299d26057302c0d86219",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:513932d5317ac55e6c6bca872b4ef71efe8a7b8655fc8d656cdb4ab6447b0ea5",
+    "docs/claims.json": "sha256:df5d726b1fb074672dab96b42bd7cce95ef18a5ca24a48c2474cfca6afe42682",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:a4bd03ceb719c832dd352fd9bfbea5dbda6275b895c8fb3c65893c0cf64317f2",
     "docs/publication_contract.json": "sha256:2c3b30191876359e42cbbaa5a75ab732992d2788c86335cf5d11fd790999d2ca",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:286032e505b5113e2ce9e0669eb9c5c12814a2f07dbb35b54fb6a5ef303e25f1",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:eb7e51963d650313347933f2ad4055acf069a1310b7f266a05c5de26fee8cb9a",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 30,
-      "curated_claim_count": 129,
+      "curated_claim_count": 130,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7

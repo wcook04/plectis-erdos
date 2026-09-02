@@ -133,9 +133,23 @@ def authored_relation_sources() -> tuple[list[tuple[str, dict]], list[tuple[str,
     return zones, relation_lenses
 
 
+# The builder attaches a validated semantic-review receipt to a relation it
+# projects. That receipt is evidence about the relation, never part of it, and
+# an author cannot write one into a zone or lens file. Counting it as relation
+# content made every reviewed relation report as one omission and one invention
+# of itself: eight of each, the same eight edges twice. The receipt is checked
+# by semantic_review.py, which strips it from the subject for the same reason.
+REVIEW_ATTACHMENT_FIELDS = ("semantic_review",)
+
+
 def relation_identity(edge: dict) -> str:
-    """Use complete relation content as an order-independent parity identity."""
-    return json.dumps(edge, sort_keys=True, separators=(",", ":"))
+    """Use complete authored relation content as an order-independent parity identity."""
+    authored = {
+        key: value
+        for key, value in edge.items()
+        if key not in REVIEW_ATTACHMENT_FIELDS
+    }
+    return json.dumps(authored, sort_keys=True, separators=(",", ":"))
 
 
 def relation_parity_errors(

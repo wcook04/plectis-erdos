@@ -97,22 +97,31 @@ FIRST_MINUTE_CONTRACT = {
             "problem-sized lean worlds and bounded theorem neighbourhoods",
             "1,024 lean modules and 153,396 declarations",
         ),
-        (10, 11): (
+        # The three ranges below each moved one page later when the
+        # comprehension-packet section was added ahead of them. Every anchor was
+        # confirmed still present in the source and in the rendered PDF before
+        # its pin was moved: the section carrying it did not change, its
+        # position did.
+        (11, 12): (
             "comparator: an exact-statement firewall",
             "palomar: selecting what deserves review",
             "proof generation, verification, exposition, publication and community digestion",
             "natural friction",
             "paper authoring itself participates in this loop",
         ),
-        (12, 12): (
+        (13, 13): (
             "finite range to the unbounded statement",
             "a larger cutoff exists",
             "relationship had not been registered",
             "nine of the ten edits were rejected",
         ),
-        (14, 15): (
+        (15, 16): (
             "semantic single-flight queue",
-            "host-wide mathlib resource",
+            # Was "host-wide mathlib resource", which no layout could satisfy:
+            # TeX breaks the line at the hyphen, the extracted text reads
+            # "hostwide", and normalisation cannot put the hyphen back. This
+            # phrase pins the same sentence and cannot break at a hyphen.
+            "mathlib resource are serialized",
             "four separate scaling limits",
             "only an accepted receipt enters",
             "no-go graph as a new mathematical object",
@@ -129,8 +138,12 @@ FIRST_MINUTE_CONTRACT = {
     },
 }
 
+# \rootword has the same four-argument shape as \lword and, like it, prints only
+# its fourth argument; the module path sits inside the href. Leaving it out of
+# this list made the gateway paper's root-navigation links read as visible
+# implementation paths that no reader of the PDF can see.
 LINK_MACRO_RE = re.compile(
-    r"""\\lword\{[^{}]*\}\{[^{}]*\}\{[^{}]*\}\{[^{}]*\}
+    r"""\\(?:lword|rootword)\{[^{}]*\}\{[^{}]*\}\{[^{}]*\}\{[^{}]*\}
         |\\(?:lref|lrefx)\{[^{}]*\}\{[^{}]*\}\{[^{}]*\}
         |\\lloc\{[^{}]*\}\{[^{}]*\}""",
     re.X,

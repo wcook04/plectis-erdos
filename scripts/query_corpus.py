@@ -9973,19 +9973,25 @@ def render_card(packet: dict[str, Any]) -> str:
                 row["id"]
                 for row in programme["remaining_open_propositions"]
             )
-            card = (
+            card = _append_route_memory_resumes(
                 f"programme {route['id']} | {programme['title']} "
-                f"| claims={claims} | open={open_ids}"
+                f"| claims={claims} | open={open_ids}",
+                packet.get("route_memory"),
             )
-        next_step = (
-            route["query_steps"][0]
-            if route.get("query_steps")
-            else "none (owner artifact unavailable in this commit)"
-        )
-        return (
-            f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
-            f"| next={next_step}"
-        )
+        else:
+            # This return used to sit outside the else, so it fired for every
+            # reading route. A programme built its card and lost it, the search
+            # surface and the ranked mathematical signal below were unreachable,
+            # and the bound continuation commands never reached a card.
+            next_step = (
+                route["query_steps"][0]
+                if route.get("query_steps")
+                else "none (owner artifact unavailable in this commit)"
+            )
+            card = (
+                f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
+                f"| next={next_step}"
+            )
         if route.get("id") == "agent_native_corpus_navigation":
             rows = [card]
             rows.extend(

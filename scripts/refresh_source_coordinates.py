@@ -31,7 +31,10 @@ PAPERS = (
     ROOT / "paper" / "erdos-257-mersenne-support-subseries.tex",
 )
 LINK_RE = re.compile(
-    r"\\([lm](?:refx?|word))\{([^}]+)\}\{\d+\}\{([^}]+)\}"
+    # \rootword carries the same {module}{line}{declaration}{label} shape as
+    # \lword and had been refreshed by nothing, so the gateway paper's
+    # root-navigation coordinates drifted silently with the Lean tree.
+    r"\\((?:[lm](?:refx?|word)|rootword))\{([^}]+)\}\{\d+\}\{([^}]+)\}"
     r"(?:\{((?:[^{}]|\{[^{}]*\})*)\})?"
 )
 

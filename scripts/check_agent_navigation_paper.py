@@ -19,17 +19,25 @@ PAPER_PDF = ROOT / "paper" / "cold-clone-to-proof-receipt.pdf"
 ROOT_PDF = ROOT / "cold-clone-to-proof-receipt.pdf"
 MAX_SOURCE_BYTES = 55_000
 
+# The spine is pinned by label, not by title prose. Section titles are authored
+# English and were rewritten; the argument they carry did not move, but every
+# pinned title stopped matching at once and this check went red on a rewording.
+# Labels are the stable name for a section, so they say what the check means:
+# the paper still walks problem, layers, tour, authority, incremental
+# compilation, the dogfood receipt, prior work, the public return, limits, what
+# the architecture guarantees, and the reproduction appendix, in that order.
 SECTION_ORDER = (
-    r"\section{The cold-clone problem}",
-    r"\section{A layered mathematical option surface}",
-    r"\section{A bounded tour over an unbounded drilldown}",
-    r"\section{Crossing from navigation to authority}",
-    r"\section{Compilation after comprehension}",
-    r"\section{Dogfood receipt}",
-    r"\section{Relation to prior work}",
-    r"\section{Limits and transfer conditions}",
-    r"\section{Authority-preserving agent entry}",
-    r"\section{Reproduction routes}",
+    r"\label{sec:problem}",
+    r"\label{sec:layers}",
+    r"\label{sec:tour}",
+    r"\label{sec:authority}",
+    r"\label{sec:incremental}",
+    r"\label{sec:dogfood}",
+    r"\label{sec:related}",
+    r"\label{sec:return}",
+    r"\label{sec:limits}",
+    r"\label{sec:conclusion}",
+    r"\label{app:repro}",
 )
 
 ANCHOR_GROUPS = {
@@ -37,13 +45,20 @@ ANCHOR_GROUPS = {
         "1,019 Lean modules and 153,253 declarations",
         "503 of those modules and 8,171 of those declarations are explicitly marked",
         "counted as formal source and never as separate mathematical claims",
-        "Unresolved atlas rows and edge pairs are reported, never treated as independence",
-        r"\SemanticAuthoredTheoremLike/\SemanticAuthoredTheoremLike",
-        r"\SemanticAuthoredInterpreted\ authored interpretations",
-        r"\SemanticDirectEvidence\ direct evidence",
-        r"\SemanticContextual\ bounded family context",
-        r"\SemanticStructuralOnly\ remain exact source-structural families only",
-        "101 claims; 10 programmes; 5 open propositions",
+        # Retargeted onto the sentences the paper carries after its revision.
+        # Every honesty clause the old anchors held is still asserted here: the
+        # index reports what it could not resolve, each coverage tier is named
+        # through its generated macro rather than a typed number, and the claim
+        # labels are declared maintainer-reviewed. The final anchor replaces a
+        # typed "101 claims; 10 programmes; 5 open propositions", which pinned
+        # counts that the registry owns and that move with every wave.
+        "reports unresolved rows and edges instead of silently treating absence as independence",
+        r"\SemanticAuthoredTheoremLike\ authored theorem-like declarations are linked",
+        r"\SemanticAuthoredInterpreted\ (\SemanticAuthoredPercent\%) participate",
+        r"\SemanticDirectEvidence\ are exact",
+        r"\SemanticContextual\ are bounded contextual links",
+        r"\SemanticStructuralOnly\ are grouped only by exact source",
+        "maintainer-reviewed public meaning, not outputs inferred by the proof kernel",
     ),
     "zero_build_tour": (
         "require no Lean build",

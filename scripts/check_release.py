@@ -1228,7 +1228,12 @@ def main() -> int:
         check(m is not None and m.group(1) == expected_pin,
               f"{paper_path} \\commit pin {m.group(1) if m else '<missing>'} != expected {expected_pin}")
         if paper_path == main_paper_row["source"]:
-            check(paper_text.count("blob/main") == 1 and "\\newcommand{\\rootbase}" in paper_text,
+            # At most one, not exactly one. The rule is that no reader-facing
+            # link may float on a branch; the gateway paper was allowed a single
+            # root-navigation base because it once pointed at blob/main. That
+            # base now resolves through \commit, so the paper carries no floating
+            # link at all, which is the stronger state the rule wanted.
+            check(paper_text.count("blob/main") <= 1 and "\\newcommand{\\rootbase}" in paper_text,
                   f"{paper_path} may use blob/main only for the explicit \\rref root-navigation base")
         else:
             check("blob/main" not in paper_text,
@@ -1321,7 +1326,7 @@ def main() -> int:
     for paper_path, paper_text in paper_sources:
         source_ref = formal_ref
         for macro, fname, line_s, name in re.findall(
-                r"\\([lm](?:refx?|word|loc))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
+                r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
             if fname.startswith(("Erdos249257/", "ErdosProblems/")):
                 rel = fname
             elif "\\input{problem-note-preamble}" in paper_text:
@@ -1334,7 +1339,7 @@ def main() -> int:
                 continue
             line = int(line_s)
             check(line <= len(lines), f"{paper_path} \\{macro}: {rel}:{line} beyond end of file")
-            if macro in ("lref", "lrefx", "lword", "mref", "mword") and name and line <= len(lines):
+            if macro in ("lref", "lrefx", "lword", "mref", "mword", "rootword") and name and line <= len(lines):
                 check(name_at_line(lines, name, line),
                       f"{paper_path} \\{macro}: {name} not at {rel}:{line} (±{LINE_WINDOW})")
 

@@ -10629,7 +10629,18 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
+            "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+            "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase",
+            "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase",
             "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
+            "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
+            "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+            "ErdosProblems.Erdos1041.SharpCollinearAlternation",
+            "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
+            "ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector",
+            "ErdosProblems.Erdos1041.TetranomialL2Selector",
+            "ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector",
+            "ErdosProblems.Erdos1041.TetranomialTailProductSelector",
             "ErdosProblems.Erdos1049.AdelicHeightBridge",
             "ErdosProblems.Erdos1049.BezoutPluckerJets",
             "ErdosProblems.Erdos1049.HermitePadeNoGo",
@@ -11713,6 +11724,86 @@
           "from": "prime_support_irrationality",
           "relation": "positions",
           "to": "universal_257"
+        },
+        {
+          "from": "three_prime_finite_residue_contradiction",
+          "relation": "advances_open_target",
+          "to": "erdos_269",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_269_reduced_tail_nonintegrality",
+            "operation": "constrains",
+            "statement": "The exact residue classifier excludes a bounded positive carry state whose canonical least-positive representative exceeds the bound. It constrains the reduced tail without excluding the integral branch, which is what pointwise nonintegrality of every reduced tail would do."
+          }
+        },
+        {
+          "from": "three_prime_cofinal_window_carry_extinction",
+          "relation": "re_expresses_open_branch",
+          "to": "erdos_269",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_269_cofinal_local_window_escape",
+            "operation": "re_expresses",
+            "statement": "The checked consumer takes the denominator-dependent cofinal local-window residue escape as its hypothesis, so this proposition is exactly the input that would discharge it for every multiplier coprime to 30."
+          }
+        },
+        {
+          "from": "weighted_phase_carry_finite_observer",
+          "relation": "advances_open_target",
+          "to": "erdos_269",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_269_two_dimensional_representation",
+            "operation": "constrains",
+            "statement": "The finite-observer formalisation isolates the faithfulness requirement a two-dimensional representation must meet, and shows that a genuine finite-dimensional factorisation forces a finite realised span. It supplies no representation and excludes none."
+          }
+        },
+        {
+          "from": "bounded_rise_fresh_modulus_barrier",
+          "relation": "advances_open_target",
+          "to": "erdos_243",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_243_overlap_height_growth",
+            "operation": "constrains",
+            "statement": "The bounded-rise barrier is a state-level obstruction on the canonical orbit and is one of the inputs the overlap-height growth question would feed. It proves no lower bound on the growth of the overlap height."
+          }
+        },
+        {
+          "from": "first_harmonic_pivot_decomposition",
+          "relation": "re_expresses_open_branch",
+          "to": "erdos_249",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_249_first_harmonic_anti_concentration",
+            "operation": "re_expresses",
+            "statement": "The exact supplier-fibre bijection and its counterexample to global supplier isolation set up the four-term decomposition this proposition asks for, and leave the constant saving on the first additive character unproved."
+          }
+        },
+        {
+          "from": "twenty_one_quotient_greedy_frontier",
+          "relation": "re_expresses_open_branch",
+          "to": "universal_257",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.twenty_one_scaled_remainder_cofinal_return",
+            "operation": "re_expresses",
+            "statement": "Membership of 1/21 is proved equivalent to cofinally bounded scaled actual greedy remainders, so this proposition is that criterion stated as the remaining obligation."
+          }
+        },
+        {
+          "from": "twenty_one_quotient_greedy_frontier",
+          "relation": "advances_open_target",
+          "to": "universal_257",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.twenty_one_actual_orbit_invariant",
+            "operation": "constrains",
+            "statement": "The exact six-step defect recurrence and the slope-aware repair-load equivalence say which quantities a bounded-memory invariant would have to track. No invariant is constructed and none is excluded."
+          }
+        },
+        {
+          "from": "twenty_one_quotient_greedy_frontier",
+          "relation": "advances_open_target",
+          "to": "universal_257",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.twenty_one_final_skip_exclusion",
+            "operation": "narrows",
+            "statement": "On the complementary fatal branch the last-skip approximant is pinned inside an exact one-sided interval around the Erdos-Borwein constant. Turning that interval into a contradiction still needs the final-skip signatures this proposition asks for."
+          }
         }
       ]
     }
@@ -17057,6 +17148,39 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "declarations": []
+    },
+    {
+      "id": "weighted_phase_carry_finite_observer",
+      "label": "Weighted-phase carry split and finite realised span for #269",
+      "status": "unconditional progress",
+      "statement": "The exact weighted-phase carry recurrence splits into a finite residue digit, each of the two coordinates staying inside its declared interval, and an integral quotient coboundary that is not controlled. An explicit factorisation through a finite-dimensional function-faithful observer then forces the realised symbolic span to be finite. Nothing here proves a finite-state quotient or a literal infinite realised span, and no rationality or irrationality conclusion follows.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_two_dimensional_representation"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "carry_eq_residueDigit_add_coboundary",
+          "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+          "line": 109
+        },
+        {
+          "name": "carryResidue_mem_interval",
+          "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+          "line": 150
+        },
+        {
+          "name": "residueDigit_mem_interval",
+          "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+          "line": 157
+        },
+        {
+          "name": "finite_realisedSpan_of_factorisation",
+          "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+          "line": 334
+        }
+      ]
     }
   ],
   "non_claims": [
