@@ -37,7 +37,7 @@ theorem greedyMersenneRemainderRat_half_pos (n : ℕ) :
   intro hzero
   have hrem := greedyMersenneRemainderRat_eq_sub_finiteErdosSum
     (1 / 2 : ℚ) n
-  rw [hzero] at hrem
+  rw [← hzero] at hrem
   have hsum :
       finiteErdosSum (greedyMersennePrefixRat (1 / 2 : ℚ) n) 2 =
         (1 / 2 : ℚ) := by

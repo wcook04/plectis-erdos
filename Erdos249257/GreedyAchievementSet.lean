@@ -2564,6 +2564,18 @@ theorem rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
   · exact mem_mersenneAchievementSet_of_greedySkippedSupport_infinite
       (by exact_mod_cast hq)
 
+/-- **Cofinal lower-branch criterion for rational targets.**  A nonnegative
+rational target belongs to the Mersenne achievement set exactly when its
+greedy orbit skips at arbitrarily late ranks. -/
+theorem rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips
+    (q : ℚ) (hq : 0 ≤ q) :
+    (q : ℝ) ∈ mersenneAchievementSet ↔
+      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+        ¬ mersenneWeight (n + 1) ≤
+          greedyMersenneRemainder (q : ℝ) n := by
+  rw [rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite q hq,
+    greedyMersenneSkippedSupport_infinite_iff_cofinal_skips]
+
 /-- **Greedy skip dichotomy for the half target.**  Exact half-membership is
 equivalent to the canonical greedy orbit omitting infinitely many exponents.
 The forward direction uses Erdős–Borwein irrationality; the reverse direction
