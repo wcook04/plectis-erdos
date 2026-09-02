@@ -54,7 +54,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{0f41cf184ec7490b9713e7a7be681db1dd9e5084}
+\newcommand{\commit}{bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -623,7 +623,7 @@ Each of the following is logically \emph{equivalent} to $1/2 \in \mathcal{A}$, n
 \item the negation of \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526}, and all seven forms of the
   associated classification chain.
 \end{enumerate}
-Forward directions are landed Lean (e.g.\ \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571},
+Forward directions are landed Lean (e.g.\ \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583},
 \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
 \lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}).
 The reverse directions of (d) and (e) are derived here from Lemma~\ref{lem:sqrt-witness} and are
@@ -1457,8 +1457,8 @@ separated (\emph{HalfSecondChannelSeparatedRat}) at every skipped rank, then
 $1/2\in\mathrm{mersenneAchievementSet}$; a rational specialization discharges the
 hypothesis from row $7$ on.
 \par\ev{Lean}\scale{uniform}\coord{second-channel-phase}
-\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3106}
-\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3139}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3118}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3151}
 \end{thm}
 
 \begin{thm}[Straddle-prefix closed-set criterion]
@@ -1800,7 +1800,7 @@ finite rational, contradicting irrationality. The mechanism (rational/finite-rep
 target, irrational full-series baseline $\Rightarrow$ complement support infinite) is
 fully general and would restate for \#249's own baseline constant if one exists.
 \par\ev{Lean}\scale{cofinal}\coord{greedy-orbit}
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
 \lean{irrational\_erdosBorweinMersenneConstant}{GreedyAchievementSet.lean:2469}
 \end{thm}
 
@@ -2633,7 +2633,7 @@ Odd-denominator parity supplies the positivity clause in 257bm:c2 automatically.
 cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is
 infinite, which the displayed theorem identifies with half-membership. See 257bm:k5 for the
 reason this restatement does not itself prove membership.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
 \end{thm}
 
 \subsection{Invariants}
@@ -3732,7 +3732,7 @@ Payoff theorem consuming the row above, with zero further combinatorial search o
 \ev{Lean} (theorem proved; hypothesis open)
 & \scale{cofinal} & given $\forall N\,\exists c\ge N(\ldots)$ & \coord{greedy-orbit} \\
 Master half-branch dichotomy: membership iff the greedy skip set is infinite.
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
 \ev{Lean} (iff proved; both sides cofinal-shaped)
 & \scale{cofinal} & iff $(\mathrm{skippedSupport}).\mathrm{Infinite}$ & \coord{greedy-orbit} \\
 Seven-way classification hub: membership iff the seam word is not eventually right, iff
@@ -4430,7 +4430,7 @@ above.
 \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22},
 \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84},
 line 60; A5
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571},
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583},
 A6 (\lean{}{GreedyAchievementSet.lean:1515}); positivity discharge
 \lean{}{BooleanMobiusCriticalCapacityCofinal.lean:138}.
 \textbf{Yields:} cofinally many positive rational-greedy skips $\Rightarrow$
@@ -4562,7 +4562,7 @@ aggregate form.
 \end{obs}
 
 \begin{obs}[NM-02 / single-target to all-rational-targets, promotable] \ev{Lean}
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2571}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
 (forward \lean{}{GreedyAchievementSet.lean:2482}; reverse
 \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}).
 \textbf{Yields:} $(1/2:\mathbb R)\in\mathrm{mersenneAchievementSet} \Leftrightarrow
@@ -6256,7 +6256,7 @@ unconditional Lean iff, to a purely combinatorial statement about one fixed orbi
 \[
 \mathrm{HALF}\ \Longleftrightarrow\ \left(\mathtt{greedyMersenneSkippedSupport}(1/2)\right).\mathrm{Infinite}
 \]
-(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2571},
+(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2583},
 \ev{Lean}, \scale{uniform}, coordinate \coord{mobius-mersenne}, target-generic in the reverse
 direction --- the forward direction uses only that the target is rational, so the same theorem
 holds verbatim for every rational $t\ge 0$ in place of $1/2$).
