@@ -69,14 +69,8 @@ uniformly in the third coordinate.
 
 For \(\{2,3,5\}\), grouping jumps between consecutive powers of two produces
 the exact radix alphabet \(\{2,6,10,30\}\).  The literal shell tail satisfies
-an affine recurrence.  Clearing is in fact symmetric at every boundary
-$2^m$, $3^m$, and $5^m$: below $s^m$, multiplication by $s$ sends each running
-height into the boundary height.  Rationality places all normalised dyadic
-states on one rational lattice.  The genuine state also has an exact
-finite-depth mixed-radix expansion with its infinite tail displayed as the
-remainder, and the repeated value has a rectangular torus--Fourier expansion
-with exact midpoint correction $17/2$, while the integral branch is upward
-closed and rigid inside
+an affine recurrence.  Rationality places all of its normalised states on one
+rational lattice, while the integral branch is upward closed and rigid inside
 shrinking anchor intervals.  These results identify the hard branch but do
 not exclude it.
 
@@ -100,11 +94,8 @@ is claimed.
 \textbf{Two primes.} Both versions of the series are transcendental for every
 pair of distinct primes, by reduction to a Hecke--Mahler value; no priority is
 claimed.  \textbf{Three primes.} This paper proves the exact LCM cell
-structure, the radix alphabet for $\{2,3,5\}$, symmetric prime-power boundary
-clearing, the all-scale rationality lattice, the exact mixed-radix tail
-telescope, a torus--Fourier representation of the repeated value,
-integral-branch rigidity, and the finite carry contradiction.  A
-scan verifies the required escape only on $106{,}666$
+structure, the radix alphabet for $\{2,3,5\}$, and the finite carry
+contradiction.  A scan verifies the required escape only on $106{,}666$
 finite denominator/start pairs.  \textbf{Open boundary.} The bounded carry
 and cofinal residue-window escape needed for any three-prime instance remain
 unproved.
@@ -927,29 +918,7 @@ from the quadratic shell-count bound and geometric dyadic decay.  The last
 assertion is the bounded-radix alternative applied with $2\le b_a\le30$.
 It does not eliminate the first branch.
 
-The dyadic clearing used below is one member of a symmetric family.
-
-\begin{theorem}[prime-power boundary clearing]\label{res:prime-power-boundary-clearing}
-Let $s\in\{2,3,5\}$, let $m\ge0$, and let $x$ be a positive
-$\{2,3,5\}$-smooth integer with $x<s^m$.  Then
-\[
- s\,\hgt(x)\mid\hgt(s^m).
-\]
-\end{theorem}
-
-\begin{proof}
-Write $x=2^i3^j5^k$.  The strict inequality forces the exponent in the
-$s$-channel to be at most $m-1$; monotonicity of the other two integer
-logarithms already places their exponents below those of $\hgt(s^m)$.
-Divisibility is therefore coordinatewise.  The exact three-channel statement
-is the
-\lword{Erdos269/RationalLatticeReduction.lean}{44}{smoothHeight_mul_prime_dvd_boundaryHeight}{checked
-prime-power boundary clearing theorem}.
-\end{proof}
-
-The $s=2$ case supplies the normaliser for the shell orbit.  The $3$- and
-$5$-power boundaries are additional exact clearing families, but this paper
-does not yet couple them to their own normalised tail recurrences.  Write
+The same finite clearing works simultaneously at all scales.  Write
 $h_a=\hgt(2^a)/2$, which is an integer for $a\ge1$.
 
 \begin{theorem}[all-scale rationality lattice]\label{res:all-scale-lattice}
@@ -990,14 +959,6 @@ For every $a\ge0$,
 \]
 If $X_a$ is integral, then $X_n$ is integral for every $n\ge a$.
 
-For every $m,K\ge0$, the genuine state has the exact finite-depth expansion
-\[
- X_m=
- \sum_{i=0}^{K-1}
-   \frac{d_{m+i}}{\prod_{j=0}^{i}b_{m+j}}
- +h_mT_{m+K}.                                      \tag{14}
-\]
-
 More generally, fix $A$, a positive width function $w$, and a real orbit
 $(y_n)_{n\ge A}$ satisfying $y_{n+1}=b_ny_n-d_n$.  Suppose that for every
 $n\ge A$, both $y_n$ and $X_n$ lie in
@@ -1011,16 +972,7 @@ $w(A+k)/2^k<\varepsilon$ for all $k\ge k_0$.  Then $y_A=X_A$.
 \begin{proof}
 The first identity is the recurrence solved for $X_a$; positivity follows
 because every shell contains the dyadic point $2^a$.  Integer coefficients in
-the forward recurrence give upward closure.  Iterating the pinning identity to
-depth $K$ gives the finite mixed-radix digit sum plus
-$X_{m+K}/\prod_{j<K}b_{m+j}$.  The height telescope
-$\hgt(2^{m+K})=\hgt(2^m)\prod_{j<K}b_{m+j}$ and
-$X_{m+K}=h_{m+K}T_{m+K}$ turn that remainder exactly into $h_mT_{m+K}$,
-proving~\emph{(14)}.  This is the
-\lword{Erdos269/IntegralBranchWidth.lean}{36}{trueNormalizedState_eq_telescope}{checked
-finite-depth tail telescope}; no limiting argument is hidden.
-
-For the final assertion, the
+the forward recurrence give upward closure.  For the final assertion, the
 difference of the two orbits is multiplied by $b_n\ge2$ at each step, whereas
 the common window bounds its absolute value at time $A+k$ by $w(A+k)$.
 Hence
@@ -1032,7 +984,7 @@ The stated decay forces $y_A=X_A$.
 
 This theorem turns indefinite survival of an integral seed inside the exact
 windows into equality with the genuine infinite tail.  It does not prove that
-no seed survives.  The four theorem families in this section are
+no seed survives.  The three theorem families in this section are
 proved above, with the linked Lean declarations providing exact mechanical
 checks of their statements.
 
@@ -1526,72 +1478,6 @@ finite computation nor a universal bounded-length guess addresses the
 unbounded denominator and cofinal-start quantifiers.  The finite checker can
 reject a proposed sufficient condition, but supplies no evidence for either
 shortcut.
-
-\subsection{An exact torus--Fourier representation of the repeated value}
-
-The repeated three-prime value itself, rather than only its radix word, has
-an explicit analytic coordinate.  For $s=2^i3^j5^k$ put
-$L=\log_2s$, $\theta=\log_2 3$, and $\phi=\log_2 5$.  Let
-$f_p(x)=p^{\{x\}}$ be one-periodic, with value $1$ at its jump, and let
-$F_{p,M}$ be its symmetric Fourier partial sum over $|m|\le M$.
-
-\begin{theorem}[rectangular torus--Fourier identity]
-\label{res:torus-fourier-value}
-The absolutely convergent sums
-\[
- A_M=\sum_{i,j,k\ge0}
- \frac{F_{2,M}(L)F_{3,M}(L/\theta)F_{5,M}(L/\phi)}
-      {8^i27^j125^k}
-\]
-satisfy
-\[
- \lim_{M\to\infty}A_M
- =\sum_{i,j,k\ge0}\frac1{\hgt(2^i3^j5^k)}+\frac{17}{2}.
- \tag{9.6}\label{eq:torus-fourier-value}
-\]
-For each finite $M$, expansion into Fourier modes is exact.  If
-$\lambda=m_1+m_2/\theta+m_3/\phi$ and
-$\widehat f_p(m)=(p-1)/(\log p-2\pi i m)$, the $(m_1,m_2,m_3)$ mode is
-\[
- \frac{\widehat f_2(m_1)\widehat f_3(m_2)\widehat f_5(m_3)}
- {(1-e(\lambda)/8)(1-e(\lambda\theta)/27)
-  (1-e(\lambda\phi)/125)},
- \qquad e(x)=e^{2\pi i x}.
-\]
-\end{theorem}
-
-\begin{proof}[Proof spine]
-Floor--fractional-part decomposition gives the pointwise identity
-\[
- \frac1{\hgt(s)}=
- \frac{f_2(L)f_3(L/\theta)f_5(L/\phi)}{s^3}.
-\]
-For fixed $M$ the mode expansion is finite, and the three lattice sums are
-ordinary geometric series.  Each $f_p$ has bounded variation.  The
-Dirichlet--Jordan estimate therefore bounds all $F_{p,M}$ uniformly in $M$
-and gives midpoint convergence at the jump.  The summable majorant
-$C\,8^{-i}27^{-j}125^{-k}$ permits dominated convergence on the exponent
-lattice.
-
-The midpoint differs from the original torus weight only on the three pure
-prime axes and at the origin.  The origin contributes $8$.  At $p^n$ the
-excess is $(p-1)/(2\hgt(p^n))$, while the exact jump telescope
-\[
- \sum_{p\in\{2,3,5\}}(p-1)
-       \sum_{n\ge1}\frac1{\hgt(p^n)}=1
-\]
-makes the three axes contribute $1/2$.  Their total correction is therefore
-$17/2$.
-\end{proof}
-
-This is an exact ordinary Fourier-analysis theorem, not a numerical fit.
-It replaces an opaque scalar value by an explicit symmetric triple-mode
-limit whose frequencies are linear forms in $1,\log_3 2,\log_5 2$.
-The triple Fourier series is not absolutely summable, however, and the
-identity supplies no Diophantine lower bound.  It proves neither irrationality
-nor transcendence and carries no priority claim.  Its authored proof is
-\path{ErdosProblems/Erdos269/TensorDirichletJordanCompletion.md}; the finite
-Fourier computation is regression evidence rather than proof authority.
 
 \subsection{A two-dimensional analytic representation}
 
