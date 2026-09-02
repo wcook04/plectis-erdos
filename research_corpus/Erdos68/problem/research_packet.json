@@ -2470,7 +2470,7 @@
    "claim_boundary": "The named declarations establish the exact coefficient-free global residue identity and its conditional cofinal irrationality consumer. They do not produce the required cofinal lower bound for the global complementary residue, prove the endpoint scale inequality for infinitely many prime blocks, or independently prove Erdős #68 irrationality.",
    "validation": {
     "proof_authority": "The four named declarations are in the source-current commit; the focused EndpointWeightedPrivateSupport plus PrimeZeroBranch replay completed successfully with the final serialized Lake authority check.",
-    "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py ErdosProblems.Erdos68.EndpointWeightedPrivateSupport ErdosProblems.Erdos68.PrimeZeroBranch --jobs 2 --project-root formal_math/erdos257_period_noncollapse --lake public-source-redacted://lake --no-singleflight",
+    "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py ErdosProblems.Erdos68.EndpointWeightedPrivateSupport ErdosProblems.Erdos68.PrimeZeroBranch --jobs 2 --project-root formal_math/erdos257_period_noncollapse --no-singleflight",
     "proof_result": "Exit 0 at 2026-08-26T09:24:11Z with the final serialized Lake authority check.",
     "claim_boundary": "This is a checked global residue reduction and conditional consumer; the cofinal integral lower-bound producer remains open."
    }
@@ -3375,8 +3375,8 @@
     "compiled_after_source": true,
     "paper_reconciliation": {
      "commit": "30ebef0caea92207250d019092397484bb82b8d8",
-     "active_manuscript_compile": "tectonic -Z search-path=public-source-redacted://paper erdos-68-factorial-denominator-irrationality.tex",
-     "corpus_digest_compile": "tectonic -Z search-path=public-source-redacted://paper contributions-digest.tex",
+     "active_manuscript_compile": "tectonic -Z search-path=<papers-checkout>/paper erdos-68-factorial-denominator-irrationality.tex",
+     "corpus_digest_compile": "tectonic -Z search-path=<papers-checkout>/paper contributions-digest.tex",
      "compile_status": "both_exit_0_with_layout_warnings_only",
      "visual_receipts": [
       "tmp/pdfs/consequence-review-20260731/global-spacing-d6fff/note-10.png",
@@ -3549,8 +3549,8 @@
     "proof_result": "Exit 0 after 3343 jobs; target built in 74 seconds.",
     "paper_reconciliation": {
      "commit": "28ce74721df94bb81e81aae84dc9f660740b1457",
-     "active_manuscript_compile": "tectonic -Z search-path=public-source-redacted://paper erdos-68-factorial-denominator-irrationality.tex",
-     "corpus_digest_compile": "tectonic -Z search-path=public-source-redacted://paper contributions-digest.tex",
+     "active_manuscript_compile": "tectonic -Z search-path=<papers-checkout>/paper erdos-68-factorial-denominator-irrationality.tex",
+     "corpus_digest_compile": "tectonic -Z search-path=<papers-checkout>/paper contributions-digest.tex",
      "compile_status": "both_exit_0_with_layout_warnings_only",
      "visual_receipts": [
       "tmp/pdfs/consequence-review-20260731/reflection-normalized-a54c/note-12.png",
@@ -3756,7 +3756,7 @@
    ],
    "lean_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AffineDefectRigidity.lean",
    "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AffineDefectRigidityLab.md",
-   "source_ref": "public-source-redacted://pasted-text.txt"
+   "source_ref": "codex-attachment://64b94f92-e9db-41dc-883b-89033cfaf9f9/pasted-text.txt"
   },
   {
    "id": "threshold_failure_odd_prime_cutoff_finite_pattern",
@@ -3932,19 +3932,19 @@
    "id": "active_band_equidistribution_statement_is_false",
    "status": "eliminated_by_returned_asymptotic_and_finite_checks",
    "statement": "The requested full active-band equidistribution does not hold. The normalized active residues collapse weakly to a point mass at zero, with only sparse harmonic boundary layers. Any route requiring uniform mass across the band is false and must be replaced by a thin-target or exact residual-centre argument.",
-   "source_ref": "public-source-redacted://pasted-text.txt"
+   "source_ref": "codex-attachment://36369ad9-c946-4aa7-9b17-142d5f7ae842/pasted-text.txt"
   },
   {
    "id": "metric_borel_cantelli_does_not_decide_the_rational_seed",
    "status": "generic_theorem_complete_pointwise_application_blocked",
    "statement": "The metric Borel--Cantelli/no-repeat theorem is valid for almost every seed, but the rational seeds relevant to a hypothetical rational value coalesce onto the explicit exceptional orbit. The generic theorem therefore cannot be promoted to the required pointwise statement without a new arithmetic exclusion of that exceptional orbit.",
-   "source_ref": "public-source-redacted://pasted-text.txt"
+   "source_ref": "codex-attachment://809f23d5-5f0f-452c-a570-e9bf47cca48e/pasted-text.txt"
   },
   {
    "id": "exact_E_layer_annihilation_pays_height_above_decay",
    "status": "natural_E_function_route_eliminated_by_coefficient_height_tax",
    "statement": "Finite E-layer truncations are linearly independent, but exact column annihilation forces coefficient height large enough to dominate the available tail decay. The natural Hermite--Pade/E-function construction therefore cannot close irrationality at the recorded scale; only a genuinely different signed filter or a uniform packaged-layer measure could re-enter this lane.",
-   "source_ref": "public-source-redacted://pasted-text.txt"
+   "source_ref": "codex-attachment://599ddb57-b3c3-4622-b83f-3b2659522241/pasted-text.txt"
   },
   {
    "id": "eventually_maximal_canonical_rational_boundary_is_false",

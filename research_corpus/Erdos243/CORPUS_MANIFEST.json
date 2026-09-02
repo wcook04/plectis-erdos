@@ -2,14 +2,14 @@
   "schema": "plectis_public_research_corpus_manifest_v2",
   "problem_id": "erdos_243",
   "status": "open",
-  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "source_checkpoint": "389d07b36683fe7eabfc29975ad6697ccb6629cf",
   "public_prefix": "research_corpus/Erdos243",
   "file_count": 105,
-  "total_bytes": 4153147,
-  "local_path_replacement_count": 1,
+  "total_bytes": 4153133,
+  "local_path_replacement_count": 0,
   "strongest_result_map": {
     "path": "research_corpus/Erdos243/STRONGEST_RESULTS.json",
-    "sha256": "0ab494d9492122a5419f04a3bb5e840255d2efd7fbb787f6e96b3bef1d70bbdc",
+    "sha256": "2a3e77d39dde2d200d74a3de9da48c2105e984dee1c3bb2634cfb45662d8f296",
     "result_count": 8
   },
   "files": [
@@ -358,11 +358,11 @@
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
       "public_path": "research_corpus/Erdos243/problem/research_packet.json",
-      "source_sha256": "47859be5c9de846511f6f247c86a863ded314a6985b278e7be006334ec8aa3fb",
-      "published_sha256": "e601021885202f36b32a1035d72c30cebee26d8f0f7b4144b40b04d6b9c85b59",
-      "relation": "source_faithful_public_sanitized_copy",
-      "local_path_replacements": 1,
-      "bytes": 138796
+      "source_sha256": "d56b154128e68aa42591bad1bc382554edfae6115fae598c22fcf70e95accb86",
+      "published_sha256": "d56b154128e68aa42591bad1bc382554edfae6115fae598c22fcf70e95accb86",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 138782
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-243-reciprocal-tail-rigidity.tex",

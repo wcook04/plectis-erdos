@@ -1,6 +1,6 @@
 # Erdős #269 research corpus (source-current snapshot)
 
-Exported from private authoring commit `42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a` on 2026-09-02 for the Type B solve fleet
+Exported from private authoring commit `389d07b36683fe7eabfc29975ad6697ccb6629cf` on 2026-09-02 for the Type B solve fleet
 `erdos_breakthrough_dodecuple_2026_09_02_r1`. This is a reading corpus: every committed problem-facing Lean module, lab note,
 proof note, checker, probe, pinned receipt, the manuscript source, and the cross-problem synthesis
 documents. It is NOT a Lake project; the kernel-checked, replayable Comparator entries live in the

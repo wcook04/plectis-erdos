@@ -159,10 +159,10 @@ claimed.
 
 ```sh
 cd formal_math/erdos257_period_noncollapse
-public-source-redacted://repo-python scripts/lean_fast_build.py \
+../../repo-python scripts/lean_fast_build.py \
   ErdosProblems.Erdos68.CompanionConstantCarryLaw \
   ErdosProblems.Erdos68.FactorialShiftFamilyOrbit
-cd public-source-redacted://ai_workflow
+cd ../..
 ./repo-python formal_math/probes/erdos68_companion_carry_law.py --max-m 160 --family-max-m 400
 ```
 

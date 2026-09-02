@@ -2,14 +2,14 @@
   "schema": "plectis_public_research_corpus_manifest_v2",
   "problem_id": "erdos_269",
   "status": "open",
-  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "source_checkpoint": "389d07b36683fe7eabfc29975ad6697ccb6629cf",
   "public_prefix": "research_corpus/Erdos269",
   "file_count": 141,
   "total_bytes": 1681297,
   "local_path_replacement_count": 2,
   "strongest_result_map": {
     "path": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
-    "sha256": "9a924efcdbb95cbca7c563416ba8a4e9fdfcd31f30c27bedffd2435662394e1d",
+    "sha256": "78968fba50cf767c017d96963f6654bb961448858afdb657aba87591974200d2",
     "result_count": 1
   },
   "files": [

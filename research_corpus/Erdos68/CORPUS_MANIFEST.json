@@ -2,14 +2,14 @@
   "schema": "plectis_public_research_corpus_manifest_v2",
   "problem_id": "erdos_68",
   "status": "open",
-  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "source_checkpoint": "389d07b36683fe7eabfc29975ad6697ccb6629cf",
   "public_prefix": "research_corpus/Erdos68",
   "file_count": 147,
-  "total_bytes": 3589084,
-  "local_path_replacement_count": 11,
+  "total_bytes": 3589093,
+  "local_path_replacement_count": 0,
   "strongest_result_map": {
     "path": "research_corpus/Erdos68/STRONGEST_RESULTS.json",
-    "sha256": "52c0caf5fb29e92c5b9f6cc2eb07d9ea4ae0286c9d9cbc4eb178c0e953514be1",
+    "sha256": "a35d6fdf7db4ae0f04ed393ff05a6321f6922d6c0da40f47bd9dcf76d7d5d9dc",
     "result_count": 6
   },
   "files": [
@@ -196,11 +196,11 @@
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CompanionConstantCarryLaw.md",
       "public_path": "research_corpus/Erdos68/problem/CompanionConstantCarryLaw.md",
-      "source_sha256": "8f1872a60600e3108712434adebc9086f0de7efc0f80efc3d24d09ad0334ed37",
-      "published_sha256": "7662eeea3877f2d07c6f43553e956888ccaba1116e71e09ca7438a06ff99ce41",
-      "relation": "source_faithful_public_sanitized_copy",
-      "local_path_replacements": 2,
-      "bytes": 9182
+      "source_sha256": "15a5ad10eceb765a3aae972fb6c73475bcece07f57f28225403af42e68e9bf23",
+      "published_sha256": "15a5ad10eceb765a3aae972fb6c73475bcece07f57f28225403af42e68e9bf23",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 9132
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
@@ -556,11 +556,11 @@
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
       "public_path": "research_corpus/Erdos68/problem/research_packet.json",
-      "source_sha256": "c7585a3da6edbee1f2212557ee22f3565899b7f3702343a426e2038d6cdde8f2",
-      "published_sha256": "5c3a5ee1944b6a24f16a495b140abd7cb3be2889b1a7c215ba8f69da18a317c4",
-      "relation": "source_faithful_public_sanitized_copy",
-      "local_path_replacements": 9,
-      "bytes": 359570
+      "source_sha256": "190cfa0fa364e68be75e462abd3d5b59dabc35aeaa1fcf977d6bf7ed7d5f0944",
+      "published_sha256": "190cfa0fa364e68be75e462abd3d5b59dabc35aeaa1fcf977d6bf7ed7d5f0944",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 359629
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/returned_packets_20260723.json",
