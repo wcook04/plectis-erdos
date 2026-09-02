@@ -1,0 +1,30 @@
+==============================================================================
+(A) reduction identities, incl. the composite coefficient C_k(t,u)
+  k= 2 e=3: OK
+  k= 3 e=3: OK
+  k= 4 e=3: OK
+  k= 6 e=2: OK
+  k= 8 e=2: OK
+  k= 9 e=2: OK
+  k=10 e=2: OK
+  k=12 e=2: OK
+  k=15 e=2: OK
+  k=16 e=2: OK
+==============================================================================
+(B) ranks: full family and proposed basis vs k^e + 1
+  OK k= 2 e=3: |full|=  15 rank=   9 | |basis|=   9 rank=   9 | k^e+1=9
+  OK k= 3 e=3: |full|=  40 rank=  28 | |basis|=  28 rank=  28 | k^e+1=28
+  OK k= 4 e=3: |full|=  85 rank=  65 | |basis|=  65 rank=  65 | k^e+1=65
+  OK k= 5 e=2: |full|=  31 rank=  26 | |basis|=  26 rank=  26 | k^e+1=26
+  OK k= 6 e=2: |full|=  43 rank=  37 | |basis|=  37 rank=  37 | k^e+1=37
+  OK k= 8 e=2: |full|=  73 rank=  65 | |basis|=  65 rank=  65 | k^e+1=65
+  OK k= 9 e=2: |full|=  91 rank=  82 | |basis|=  82 rank=  82 | k^e+1=82
+  OK k=10 e=2: |full|= 111 rank= 101 | |basis|= 101 rank= 101 | k^e+1=101
+  OK k=12 e=2: |full|= 157 rank= 145 | |basis|= 145 rank= 145 | k^e+1=145
+  OK k=15 e=2: |full|= 241 rank= 226 | |basis|= 226 rank= 226 | k^e+1=226
+  OK k=16 e=2: |full|= 273 rank= 257 | |basis|= 257 rank= 257 | k^e+1=257
+==============================================================================
+(C) the gcd-vs-divides distinction: basis uses k∤r, NOT gcd(k,r)=1
+  k= 4 e=2: |k∤r basis|=  17  |gcd=1 basis|=  12  k^e+1=17  -> gcd-version is TOO SMALL
+  k= 6 e=2: |k∤r basis|=  37  |gcd=1 basis|=  16  k^e+1=37  -> gcd-version is TOO SMALL
+  k=12 e=2: |k∤r basis|= 145  |gcd=1 basis|=  54  k^e+1=145  -> gcd-version is TOO SMALL

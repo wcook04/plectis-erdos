@@ -1,0 +1,1663 @@
+{
+  "schema": "aiw-formal-math-assimilation/1",
+  "problem_id": "erdos_243",
+  "title": "Reciprocal-tail rigidity near the Sylvester recurrence",
+  "frontier_integrity": {
+    "canonical_frontier": {"kind": "declared_target", "producer_ids": []},
+    "producer_relations": {
+      "equivalent_to_target": [],
+      "target_deciding_but_stronger": ["exclude_aperiodic_negative_state_orbits", "formalise_lcm_weighted_theorem", "critical_boundary", "weighted_sparse_reset_lower_bound", "current_scale_anti_shadowing", "global_primitive_prefix_anti_shadowing", "primitive_modified_convergent_gcd_excess", "global_lcm_repair_lower_bound", "reset_payment_lower_bound"],
+      "auxiliary_not_target_deciding": [],
+      "out_of_scope_for_target": []
+    },
+    "selection_rule": "The original rigidity statement remains the frontier; every producer is a sufficient stronger route until an equivalence theorem is recorded."
+  },
+  "source_returns": [
+    {
+      "attachment": "pasted-text-5.txt",
+      "sha256": "47686ff703666686db81b7c7206af7b9328ea85db04212bf7dfc64d98d83699c",
+      "role": "exact tail dynamics, sharp tail criterion, one-sided theorem, LCM-weighted strengthening, and critical obstruction"
+    },
+    {
+      "attachment": "pasted-text.txt",
+      "sha256": "f1462499a210d2ae03c738bfe2c4f38cc39be87c7354225e4babb94738437cc1",
+      "role": "bounded-negative-part rigidity argument, shifted CRT barrier, exact reduced-tail consumer, and cancellation-factor residual analysis"
+    },
+    {
+      "attachment": "d1007bf3-3073-4000-8eb0-f38633b32488/pasted-text.txt",
+      "sha256": "30f01e92b07bcb049f8d75a983173b81c3153233b2978efd6b42f079c5954f01",
+      "role": "exact square-cancellation normal form, true denominator-deletion factor, product persistence, centered residue cocycle, and finite square-erasure gadgets"
+    },
+    {
+      "attachment": "c8f99bea-338c-4050-bd7c-2380a03026fd/pasted-text.txt",
+      "sha256": "b9cce85d99c4fc0c334e5e5d5ae1c752aaa147c12a5bdf31a61927363dc6fefc",
+      "role": "record-negative defect analysis, exact two-step primitive-numerator recurrence, block transfer matrices, and record-payment identities"
+    },
+    {
+      "attachment": "e7d727b8-8da5-4efd-86b1-a6eb53e8c05c/pasted-text.txt",
+      "sha256": "87e312f6888927d02ee6a63883994942e91eae1c0df60bc679d38cf537942c2d",
+      "role": "post-bounded-branch global obstruction analysis, finite record-amplification and maximal square-reset falsifiers, and advisory sub-log-log CRT extension"
+    },
+    {
+      "attachment": "f6d1f69a-ee95-4f32-8fe8-94111753c05c/pasted-text.txt",
+      "sha256": "9a5bc7d04a90dcb12c80e2672fd405c4fa53fade0c1ed6cb9ff3bb0a1d156927",
+      "role": "repaired-transversal CRT payment theorem, lcm-square composition, whole-clean-multiplier payment ceiling, deletion-recovery coherence, and explicit no-go audit for the proposed unrestricted closure"
+    },
+    {
+      "attachment": "89c40d14-d598-4a5c-8c6c-7fd829e53761/pasted-text.txt",
+      "sha256": "86204e0e20e969b25a6e2869bcf7497a476b051755688b067ff27767888d56b5",
+      "role": "laminar first-recovery forest, last-reset clean-leaf extraction, division-free weighted recovery payment, finite normalized-negative-mass termination, and current-scale anti-shadowing audit"
+    },
+    {
+      "attachment": "20b6f651-060b-40a6-8a75-a490955bef2d/pasted-text.txt",
+      "sha256": "e7695f71aaba55634b1ed1c7722898f29fab0ffdf07516e76b6a3adb431df60d",
+      "role": "LCM strict-ceiling and quantisation proposal, strict-rise old-prime CRT argument, bounded LCM-negative-part route, exact weighted block telescope, and unbounded-digit residual audit"
+    },
+    {
+      "attachment": "9f3d61d1-e860-4b75-a9f5-4baa0905f212/pasted-text.txt",
+      "sha256": "84dfc6e1f7b336d5722e897dc79b235c8b4102aa46c8525a61c604c5a63a762c",
+      "role": "primitive finite-window transfer, exact rational-approximation saturation, complete-prefix divisibility, reset-recovery alignment, and CRT limsup proposal"
+    },
+    {
+      "attachment": "faf728b1-45b2-4134-b860-46cf8da0f037/pasted-text.txt",
+      "sha256": "636645112419b7b0343c1bb17f94d3ec94d2f9e0966c2752288c15c362d376b1",
+      "role": "deterministic feedback closure, exact realizability defect, artificial square-unit adversary, two-stage square-root quotient factorization, recovery-aligned reset proposal, and modified-convergent boundary"
+    },
+    {
+      "attachment": "8d3d419a-f4f9-49f5-80dc-dd770f9121ee/pasted-text.txt",
+      "sha256": "1a87ba0bf01eeb1363a4df0809e09a8b6106eceed469e9e5ffbd70a3b0c01889",
+      "role": "cumulative-LCM lift, global overlap relocation, amortized negative-mass potential, returned-error Lyapunov coordinate, exact adversarial regressions, and global repair lower-bound residual"
+    }
+  ],
+  "primary_sources": [
+    {
+      "citation": "P. Erdos and E. G. Straus, On the irrationality of certain Ahmes series (1964), Theorem 3",
+      "url": "https://users.renyi.hu/~p_erdos/1964-19.pdf",
+      "verification": "Source identity and pagination were checked against the complete five-page scan. Theorem 1 begins on printed p. 129. Theorem 3 on printed p. 132 assumes condition (i) and limsup (N_k/n_(k+1))*(n_(k+1)^2/n_(k+2)-1) <= 0, and concludes that rationality is equivalent to the eventual Sylvester recurrence. The public paper uses the valid contrapositive after reindexing; a positive-part limit formulation is a derived sufficient condition, not the authors' literal theorem statement."
+    },
+    {
+      "citation": "D. Duverney, Irrationality of fast converging series of rational numbers, J. Math. Sci. Univ. Tokyo 8 (2001), 275-316, Corollary 3.2",
+      "url": "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf",
+      "verification": "The newly downloaded PDF is byte-identical to the annex source. Corollary 3.2 is on printed p. 287, not pp. 286-287. It assumes u_n -> infinity, summability of u_(n+1)/u_n^2-1, and signs a_n in {-1,1}; taking every sign equal to +1 gives the conditional Erdos 243 recurrence criterion quoted in the public paper."
+    },
+    {
+      "citation": "P. Erdos and R. L. Graham, Old and New Problems and Results in Combinatorial Number Theory, Monographies de L'Enseignement Mathematique 28 (1980), p. 64",
+      "url": "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf",
+      "verification": "The complete 124-page image-only scan was acquired. Printed p. 64 is PDF page 60 and was visually checked. It asks exactly whether a_(n+1)/a_n^2 -> 1 forces sum 1/a_n to be irrational unless a_(n+1)=a_n^2-a_n+1 eventually; this is a problem statement, not a theorem."
+    },
+    {
+      "citation": "Junnosuke Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences, arXiv:2504.05933; INTEGERS 26 (2026), A28",
+      "url": "https://arxiv.org/html/2504.05933v1",
+      "verification": "The hash-pinned arXiv LaTeX source was line-checked. Lemma 15 gives x_n=c_n/d_n, epsilon_n=e_n/c_n, a_n=(d_n-e_n)/c_n+1, c_(n+1)=c_n-e_n, and d_(n+1)=d_n*a_n. Lemma 13 is the zero-gap absorption statement; Proposition 19(2) is the eventual-nonnegative gap criterion; Corollary 20 transports it to the original sequence. Theorem 16 explicitly identifies Conjecture 6 with Erdos-Graham Question 5, so pseudo-greedy termination is an equivalent formulation, not a solved intermediate. The official INTEGERS index independently confirms volume 26 (2026), article A28; the annex evidence checked here is the arXiv source version."
+    }
+  ],
+  "target": {
+    "status": "open",
+    "statement": "Under a_{n+1}/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+  },
+  "landed_formal_source": [
+    "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+    "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+    "ErdosProblems/Erdos243/DynamicCancellation.lean",
+    "ErdosProblems/Erdos243/WeightedCRTRepair.lean",
+    "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+    "ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+    "ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+    "scripts/search_erdos243_negative_state.py",
+    "scripts/search_erdos243_residue_lifts.py",
+    "scripts/verify_erdos243_cancellation_free_blocks.py",
+    "scripts/verify_erdos243_record_amplification.py",
+    "scripts/check_erdos243_infinite_clean_recovery_family.py",
+    "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+    "ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
+    "../probes/erdos243_koizumi_state_probe.py",
+    "../probes/erdos243_crt_block_and_coprime_witness.py"
+  ],
+  "exact_results": [
+    {
+      "id": "product_cleared_tail_dynamics",
+      "status": "lean_checked",
+      "theorems": [
+        "nextTailState_eq_sub_centered",
+        "sylvesterDefect_mul_nextTailState"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos243.nextTailState_eq_sub_centered",
+        "ErdosProblems.Erdos243.sylvesterDefect_mul_nextTailState"
+      ],
+      "statement": "C_{n+1}=a_n C_n-D_n=C_n-E_n and Delta_n C_{n+1}=a_n^2 E_n-E_{n+1}.",
+      "claim_boundary": "The named declarations establish the exact local recurrence for the cleared tail state and the Sylvester-defect identity under their explicit integer hypotheses. They do not, by themselves, establish eventual return, exclusion of every negative-support orbit, the full #243 counterexample, or any asymptotic conclusion beyond these identities.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the source-current commit; the focused ReciprocalTailRigidity replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py ErdosProblems.Erdos243.ReciprocalTailRigidity --jobs 2 --project-root formal_math/erdos257_period_noncollapse --lake lake --no-singleflight",
+        "proof_result": "Exit 0 at 2026-08-27T09:02:13Z with the final serialized Lake authority check.",
+        "claim_boundary": "This is a checked local recurrence and defect transport. The downstream cofinal-return and full counterexample producers remain separate results."
+      }
+    },
+    {
+      "id": "centered_zero_forces_sylvester_step",
+      "status": "lean_checked",
+      "theorems": [
+        "sylvesterNext_eq_of_centered_zero"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "source_commit": "14bf635fe7165af31b60829accbb0676309921d2",
+      "source_sha256": "457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero"
+      ],
+      "statement": "If two consecutive centered errors vanish and the next product-cleared tail state is nonzero, the exact defect identity forces a_(n+1)=a_n^2-a_n+1.",
+      "validation": {
+        "proof_authority": "The named declaration is in the cited source-current commit; the focused module build re-elaborated ReciprocalTailRigidity.lean and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos243.ReciprocalTailRigidity",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 1675 jobs and the final serialized Lake authority check; sylvesterNext_eq_of_centered_zero replayed successfully.",
+        "claim_boundary": "This is an exact conditional Sylvester-step forcing lemma. It does not establish eventual centered-state vanishing, eventual nonvanishing of the tail state, the required analytic hypotheses, or irrationality of the underlying reciprocal series by itself."
+      }
+    },
+    {
+      "id": "eventual_centered_zero_forces_sylvester_recurrence",
+      "status": "lean_checked",
+      "theorems": [
+        "sylvesterNext_eventually_of_centered_zero"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero"
+      ],
+      "statement": "Along the exact product-cleared D/C orbit, eventual centered-state zero plus eventual nonvanishing of the next tail state forces a_(n+1)=a_n^2-a_n+1 eventually."
+    },
+    {
+      "id": "scale_equivariance",
+      "status": "lean_checked",
+      "theorems": [
+        "nextDenState_scale",
+        "nextTailState_scale",
+        "centeredState_scale"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.nextDenState_scale",
+        "ErdosProblems.Erdos243.nextTailState_scale",
+        "ErdosProblems.Erdos243.centeredState_scale"
+      ],
+      "statement": "The D/C/E integer-state dynamics commute with common scaling, eliminating duplicate obstruction searches."
+    },
+    {
+      "id": "eventual_nonnegative_state_rigidity",
+      "status": "lean_checked",
+      "theorems": [
+        "centeredState_eventually_zero"
+      ],
+      "statement": "A nonnegative natural tail state satisfying C_{n+1}+E_n=C_n has E_n=0 eventually."
+    },
+    {
+      "id": "gap_product_criterion",
+      "status": "advisory_complete_proof_pending_lean",
+      "statement": "Eventual Sylvester recurrence is equivalent to eventual nonnegativity of the exact normalised gap-product state."
+    },
+    {
+      "id": "one_sided_sylvester_closure",
+      "status": "advisory_complete_proof_pending_lean",
+      "statement": "Under rationality, the eventual tail cap, nonnegative gap, lower Sylvester step, and exact Sylvester recurrence are equivalent."
+    },
+    {
+      "id": "lcm_weighted_undershoot",
+      "status": "primary_source_corollary_matched_displayed_term_reindex_checked_pending_formal_transport",
+      "source_anchor": "Erdos--Straus (1964), printed p. 132, Theorem 3",
+      "reindex_check": "With k=n-1, N_k=L_{n-1}, n_{k+1}=a_n, and n_{k+2}=a_{n+1}, the signed source term is L_{n-1}/a_n*(a_n^2/a_{n+1}-1). Convergence of its positive part yields limsup <= 0, matching the non-strict source condition (ii''). Full source quantifiers, the packet-to-Lean state identification, and production of the undershoot from the target assumptions remain open.",
+      "statement": "If (L_{n-1}/a_n)*(a_n^2/a_{n+1}-1)_+ tends to zero, rationality forces eventual Sylvester recurrence."
+    },
+    {
+      "id": "subcritical_one_over_n_threshold",
+      "status": "superseded_by_one_over_n_threshold_verified",
+      "superseded_by": "one_over_n_threshold_verified",
+      "statement": "limsup n*(a_n^2/a_{n+1}-1)_+ < 1 is a sufficient strengthened hypothesis."
+    },
+    {
+      "id": "finite_horizon_factorial_residue_reduction",
+      "status": "lean_checked",
+      "theorems": [
+        "forcedNumerator_modEq",
+        "quotient_modEq_of_modEq_mul",
+        "horizonModulus_eq_ascFactorial",
+        "horizonModulus_zero_eq_factorial",
+        "forcedQuotient_modEq",
+        "forcedSurvives_iff_of_modEq",
+        "forcedSurvives_iff_of_modEq_factorial"
+      ],
+      "statement": "Survival through H constant-negative updates depends only on a_0 modulo (H+1)!, and can be propagated through shrinking factorial moduli without constructing the double-exponential orbit."
+    },
+    {
+      "id": "constant_negative_orbit_excluded",
+      "theorems": [
+        "no_normalizedConstantNegative_orbit",
+        "no_scalePrimitiveConstantNegative_orbit",
+        "no_constantNegative_orbit",
+        "no_eventuallyConstantNegative_orbit"
+      ],
+      "status": "lean_checked",
+      "statement": "No eventually constant negative centered state exists. After removing gcd(C_0,|E|), every a_j would need a prime divisor of fixed |E|, but a prime used by one a_j forces every later a_k to be 1 modulo that prime; finite pigeonhole gives a contradiction. The normalized E=-1, C_0=1 branch also has the shorter contradiction at n=a_0-1."
+    },
+    {
+      "id": "eventually_periodic_negative_magnitude_excluded",
+      "theorems": [
+        "no_phasePrimitivePeriodicNegative_orbit",
+        "no_periodicNegative_orbit",
+        "no_eventuallyPeriodicNegative_orbit"
+      ],
+      "status": "lean_checked",
+      "statement": "No positive eventually periodic negative-state magnitude survives in the exact natural tail regime e_n<a_n. If one prime divisor of the period drift occurs in two multipliers, it locks the entire later D/C/e tail; periodicity propagates that divisor to every phase. Finite-prime pigeonhole excludes the phase-primitive case, and strong induction after dividing out any common prime scale excludes every scale."
+    },
+    {
+      "id": "bounded_rise_reduced_tail_excluded",
+      "theorems": [
+        "no_boundedRise_reducedTail"
+      ],
+      "status": "lean_checked",
+      "statement": "No exact reduced tail u_(n+1)+v_n=a_n*u_n, v_(n+1)=a_n*v_n with gcd(u_n,v_n)=1 can have u_n tend to infinity while u_(n+1)<=u_n+B for a fixed positive B. Reduced exactness forces pairwise-coprime multipliers and permanent whole-modulus avoidance; a shifted CRT block and first-crossing argument give the contradiction."
+    },
+    {
+      "id": "cofinally_bounded_negative_branch_excluded",
+      "theorems": [
+        "dvdChain_eventuallyConstant_of_cofinally_bounded",
+        "tailGcd_eventuallyConstant_of_cofinally_boundedNegative",
+        "no_cofinallyBoundedNegative_of_tailTendsto",
+        "tailState_tendsto_atTop_of_nonzero_normalizedVanishes",
+        "no_cofinallyBoundedNegative_of_normalizedVanishes"
+      ],
+      "status": "lean_checked",
+      "statement": "For the exact natural D/C tail, cofinally occurring positive negative-state magnitudes bounded by B force the divisibility-monotone gcd(C_n,D_n) to stabilise. Division by the stable gcd gives the reduced cocycle; division-free normalised vanishing of a globally nonzero magnitude forces C_n to tend to infinity; the CRT theorem then excludes the branch."
+    },
+    {
+      "id": "bounded_negative_part_rigidity",
+      "status": "lean_checked",
+      "theorems": [
+        "boundedNegativePart_eventually_zero",
+        "eventuallyBoundedNegativePart_eventually_zero",
+        "boundedNegativePart_sylvesterNext_eventually"
+      ],
+      "statement": "Under exact natural D/C dynamics, eventual strict centring |E_n|<C_n, division-free normalised vanishing E_n/C_n->0, and eventual boundedness of (-E_n)_+, the signed centered state satisfies E_n=0 eventually; the composed boundedNegativePart_sylvesterNext_eventually consumer then yields a_(n+1)=a_n^2-a_n+1 eventually. Periodicity is not assumed. The proof derives zero absorption from the exact defect identity, sends the eventually nonnegative branch to natural-tail stabilisation, and sends the cofinally negative branch through gcd stabilisation, scale reduction, and the shifted CRT barrier. These hypotheses remain conditional and do not settle Erdős #243."
+    },
+    {
+      "id": "dynamic_cancellation_payment",
+      "theorems": [
+        "cancellationFactor_sandwich",
+        "cancellationFactor_eq_one_iff",
+        "dynamicReducedTail_step",
+        "tailGcdGrowthFactor_sandwich",
+        "tailGcdGrowthFactor_eq_one_iff"
+      ],
+      "status": "lean_checked",
+      "statement": "At every dynamically reduced exact tail step, with h_n=G_(n+1)/G_n and v_n=D_n/G_n, gcd(a_n,v_n) divides h_n and h_n divides gcd(a_n,v_n)^2. The source also kernel-checks the actual quotient cocycle h_n*u_(n+1)+v_n=a_n*u_n and h_n*v_(n+1)=a_n*v_n, plus h_n=1 iff a_n is coprime to v_n. Thus every gcd-growth step is exactly an old-prime reuse event."
+    },
+    {
+      "id": "strict_gcd_growth_exponential_budget",
+      "status": "lean_checked",
+      "theorems": [
+        "pow_strictGrowthCount_mul_le"
+      ],
+      "statement": "For any positive divisibility chain G, if r strict increases occur in a finite interval then 2^r times the initial value is at most the endpoint value. Applied to G_n=gcd(C_n,D_n), this is the exact finite arithmetic core behind the advisory density-zero cancellation claim."
+    },
+    {
+      "id": "strict_gcd_growth_sublinear_under_subexponential_tail",
+      "status": "lean_checked",
+      "theorems": [
+        "strictGrowthCount_sublinear_of_subexponential"
+      ],
+      "statement": "If every fixed power of a positive divisibility chain G_n is eventually below 2^n, then its strict-growth count is sublinear in the division-free form K*count(n)<n. For the exact D/C tail, the same conclusion holds for G_n=gcd(C_n,D_n) under the corresponding power-vs-2^n subexponential bound on C_n."
+    },
+    {
+      "id": "local_near_unit_tail_growth_from_normalized_vanishing",
+      "status": "lean_checked",
+      "theorems": [
+        "nextTailState_eq_sub_centered",
+        "tailState_localNearUnitGrowth",
+        "tailState_eventually_localNearUnitGrowth_of_normalizedVanishes"
+      ],
+      "statement": "The exact identity C_(n+1)=C_n-E_n and the pointwise normalized bound K*|E_n|<C_n directly imply K*C_(n+1)<(K+1)*C_n. Hence division-free normalized vanishing supplies this near-unit growth inequality eventually for every fixed K, with no density or limiting claim hidden in the step."
+    },
+    {
+      "id": "subexponential_tail_from_near_unit_growth",
+      "status": "lean_checked",
+      "theorems": [
+        "subexponential_of_eventually_nearUnitGrowth"
+      ],
+      "statement": "If every prescribed integer rate eventually bounds one-step growth by q*C_(n+1)<(q+1)*C_n, then every fixed power C_n^K is eventually below 2^n. The proof chooses q with (q+1)^K<2*q^K, iterates the denominator-cleared inequality, and absorbs the finite prefix by geometric domination."
+    },
+    {
+      "id": "sublinear_tail_gcd_growth_from_normalized_vanishing",
+      "status": "lean_checked",
+      "theorems": [
+        "tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes"
+      ],
+      "statement": "Along the exact positive natural D/C orbit, division-free normalized centered-state vanishing implies subexponential tail growth and therefore K times the strict-growth count of gcd(C_n,D_n) is eventually below n for every positive K. This is the complete kernel-checked consumer of the finite 2^r budget."
+    },
+    {
+      "id": "arbitrarily_late_constant_tail_gcd_blocks",
+      "status": "lean_checked",
+      "theorems": [
+        "tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes"
+      ],
+      "statement": "Sublinear strict-growth count forces arbitrarily late finite blocks with no strict-growth transitions. For a positive divisibility chain these blocks are constant, so normalized centered-state vanishing yields arbitrarily late blocks on which gcd(C_n,D_n) is exactly constant. This is a structural block producer, not a contradiction: the finite E=-1 family shows that block length alone cannot close the problem."
+    },
+    {
+      "id": "primitive_raw_next_coprimality_and_square_content",
+      "status": "lean_checked",
+      "theorems": [
+        "rawNext_coprime_currentNumerator",
+        "rawNext_gcd_eq_gcd_sq",
+        "rawNext_gcd_exact_overlap",
+        "gcd_scaled_square_eq"
+      ],
+      "statement": "For a primitive reduced input q+v=a*u with gcd(u,v)=1, gcd(u,q)=1 and gcd(q,a*v)=gcd(q,a^2). More precisely, for d=gcd(a,v), the removed content is d*gcd(q/d,d). Thus the full content is controlled exactly by the square of the current multiplier, rather than only by a divisibility sandwich."
+    },
+    {
+      "id": "primitive_numerator_second_order_recurrence",
+      "status": "lean_checked",
+      "theorems": [
+        "reducedStep_secondOrder"
+      ],
+      "statement": "Two consecutive dynamically reduced steps satisfy a_n^2*u_n+h_n*h_(n+1)*u_(n+2)=h_n*(a_n+a_(n+1))*u_(n+1), while consecutive primitive numerators are coprime. This is the exact non-autonomous recurrence underlying the block-matrix and anti-shadowing routes."
+    },
+    {
+      "id": "square_cancellation_normal_form",
+      "status": "lean_checked_explicit_factor_core_wrapper_open",
+      "theorems": [
+        "cancellationOverlap_normalForm_explicit",
+        "cancellation_denominator_transport_explicit",
+        "deletedFactor_eq_oldDenominator_div_gcd",
+        "lcm_eq_overlap_mul_nextDenominator"
+      ],
+      "statement": "The source kernel-checks the quotient overlap formula and the quotient-free normal-form core: from a=d*alpha, q=d*omega, gcd(alpha,omega)=1, c=gcd(omega,d), d=b*c, and h=gcd(q,a^2), derive h=b*c^2, a=b*c*alpha, gcd(c,alpha)=1, denominator transport, c=v/gcd(v,vNext), and lcm(a,v)=c*vNext. A single convenience wrapper that manufactures every named quotient factor remains open, but the mathematical identities themselves are checked."
+    },
+    {
+      "id": "cancellation_free_dual_remainder",
+      "status": "lean_checked",
+      "theorems": [
+        "cancellationFree_dualRemainder"
+      ],
+      "statement": "On a cancellation-free step, the defect relation and p_(n+1)=p_n-e_n imply the exact signed identity (a_n^2-1+Delta_n)e_n-Delta_n*p_n=e_(n+1)-e_n. This is the changing-modulus residue interface for anti-shadowing."
+    },
+    {
+      "id": "cancellation_free_curvature_square",
+      "status": "lean_checked",
+      "theorems": [
+        "cancellationFree_curvature_square"
+      ],
+      "statement": "The primitive second-order recurrence implies q_n^2+J_n=(a_(n+1)-a_n)p_n*p_(n+1), with q_n=a_n*p_n-p_(n+1) and J_n=p_n*p_(n+2)-p_(n+1)^2. The identity is exact but does not itself contradict the sharp quadratic approximation."
+    },
+    {
+      "id": "excursion_matrix_square_determinant",
+      "status": "lean_checked",
+      "theorems": [
+        "excursionMatrix_det_square"
+      ],
+      "statement": "For K=A-(a_r-1)B, alpha=A+(a_s-1)B, and beta=A(a_r-1)-(a_s-1)K, the centered-state excursion matrix [[alpha,beta],[-B,K]] has determinant alpha*K+beta*B=A^2."
+    },
+    {
+      "id": "primitive_matrix_exact_gcd_payment",
+      "status": "lean_checked",
+      "theorems": [
+        "primitiveMatrix_gcd_eq_det_gcd"
+      ],
+      "statement": "For a primitive integer input vector (x,y) and primitive second matrix row (r,s), gcd(px+qy,rx+sy)=gcd(ps-qr,rx+sy). This is the generic exact determinantal payment theorem consumed by the block-specific quotient result."
+    },
+    {
+      "id": "excursion_block_exact_cancellation_payment",
+      "status": "lean_checked",
+      "theorems": [
+        "blockCancellationPayment_explicit",
+        "excursionCancellationPayment"
+      ],
+      "statement": "For the exact excursion data K=A-(a_r-1)B, alpha=A+(a_s-1)B, beta=A(a_r-1)-(a_s-1)K, sigma=gcd(A,B)>0, primitive reduced endpoint states, and common transfer scale Lambda, the source proves |Lambda|=sigma*gcd((A/sigma)^2,(K*u-B*e)/sigma). It derives gcd(B,K)=sigma, divisibility of every matrix entry by sigma, primitivity of the divided second row, and cancellation of the common sigma^2 from the square determinant inside Lean. At negative endpoints the signed coordinate is K*u+B*m."
+    },
+    {
+      "id": "excursion_payment_multiplicative_accumulation",
+      "status": "lean_checked",
+      "theorems": [
+        "blockScale_product_telescopes",
+        "blockScale_product_subexponential"
+      ],
+      "statement": "For any sequence of exact block scales Lambda_i satisfying Lambda_i*G_(t_i)=G_(t_(i+1)), the product of the first m payments times G_(t_0) is exactly G_(t_m). If G is bounded by a power-vs-2^n subexponential tail state C, then every fixed power of that whole payment product is eventually below 2^(t_m). This is the division-free multiplicative form of sublinear logarithmic cancellation mass. It budgets all sparse payments but does not itself force a contradiction."
+    },
+    {
+      "id": "square_residue_record_payment",
+      "status": "lean_checked",
+      "theorems": [
+        "scaledRecord_forces_payment",
+        "squareResiduePayment_of_scaledRecord"
+      ],
+      "statement": "Whenever scale growth GStop=Lambda*GStart carries a larger scale-weighted record, the primitive magnitude satisfies mStart<Lambda*mStop. Substituting the exact excursion payment Lambda=sigma*gcd(A0^2,z) makes the square-residue gcd payment explicit. This is the order-theoretic record consequence of the determinant calculation, not a global exclusion of sparse large records."
+    },
+    {
+      "id": "sparse_reset_recovery_forest",
+      "status": "lean_checked",
+      "theorems": [
+        "firstRecovery_nested",
+        "lastReset_starts_cleanRecovery",
+        "exists_cleanRecovery_inside",
+        "cleanRecovery_disjoint"
+      ],
+      "statement": "First-recovery intervals are laminar. Every reset recovery contains a reset-aligned clean recovery obtained from its last reset, with arbitrary nesting handled exactly; distinct clean recoveries are ordered and disjoint."
+    },
+    {
+      "id": "division_free_weighted_recovery_payment",
+      "theorems": [
+        "recovery_step_bound",
+        "recovery_payment_with_endpoint_bound",
+        "recovery_payment_bound_divisionFree",
+        "cleanRecovery_payment_eq",
+        "cleanRecovery_payment_bound_divisionFree"
+      ],
+      "status": "lean_checked",
+      "statement": "If K*|e_(r+i)|<u_(r+i) along a positive reduced interval, then K^L times the complete reset-factor product times u_(r+L) is strictly below (K+1)^L*u_r. At a recovery the endpoint height cancels, and on a clean recovery the product reduces exactly to the initial reset h_r."
+    },
+    {
+      "id": "summable_negative_relative_mass_termination",
+      "status": "lean_checked",
+      "theorems": [
+        "eventually_zero_of_summable_negativeRelativeMass"
+      ],
+      "statement": "For the exact integral update C_(n+1)=C_n-E_n with positive C, division-free normalized vanishing plus summability of natAbs(min(E_n,0))/C_n forces E_n=0 eventually. The proof bounds the finite products of 1+delta_n, hence bounds C_n, and then uses integrality."
+    },
+    {
+      "id": "summable_negative_mass_sylvester_consumer",
+      "status": "lean_checked",
+      "theorems": [
+        "sylvesterNext_eventually_of_summable_negativeRelativeMass"
+      ],
+      "statement": "Along the exact product-cleared reciprocal-tail D/C orbit, positive natural tail states, division-free normalized centered-state vanishing, and summability of natAbs(min(E_n,0))/C_n force the original denominator sequence to satisfy a_(n+1)=a_n^2-a_n+1 eventually. This paper-facing theorem directly composes finite-negative-mass termination with the checked centered-zero-to-Sylvester endpoint; no extra eventual nonvanishing hypothesis is required because positivity supplies it."
+    },
+    {
+      "id": "bounded_tail_normalized_vanishing_consumer",
+      "status": "lean_checked",
+      "theorems": [
+        "eventually_zero_of_bounded_tail_normalizedVanishes"
+      ],
+      "statement": "A uniformly bounded natural tail state together with division-free normalized vanishing of an integral centered state forces that state to vanish eventually."
+    },
+    {
+      "id": "strict_rise_crt_barrier",
+      "theorems": [
+        "no_boundedRise_of_strictRiseAvoidance"
+      ],
+      "status": "lean_checked",
+      "statement": "A natural state tending to infinity with upward increments bounded by B cannot, at every strict rise, avoid all earlier members of an infinite pairwise-coprime modulus family. The proof uses B old moduli, a shifted consecutive CRT block, and the first crossing; avoidance away from strict rises is not assumed."
+    },
+    {
+      "id": "bounded_lcm_negative_arithmetic_core",
+      "theorems": [
+        "lcmState_strictRise_primeAvoidance",
+        "no_boundedNegative_lcmState_of_oldPrimeSupply"
+      ],
+      "status": "lean_checked_prime_supply_bridge_open",
+      "statement": "For an exact LCM-state recurrence g_n U_(n+1)=U_n-V_n with V_n>=-B and centered identity V_n=D_n-(a_n-1)U_n, any old prime p>B is avoided by U_n at strict rises. Consequently the recurrence is inconsistent with U_n tending to infinity once an infinite pairwise-coprime family of such old primes is supplied. Derivation of that prime supply from the original analytic sequence hypotheses remains open in Lean."
+    },
+    {
+      "id": "weighted_lcm_block_debt_stabilisation",
+      "status": "lean_checked",
+      "theorems": [
+        "lcmState_weightedBlock_telescope",
+        "lcmState_blockEndpoint_le",
+        "lcmState_insideBlock_le",
+        "eventually_zero_of_bounded_lcmState",
+        "eventually_zero_of_weightedBlockDebt"
+      ],
+      "statement": "The exact multiplicatively weighted LCM recurrence telescopes over every finite block. Nonnegative endpoint debt plus a uniform within-block negative-debt bound makes U globally bounded along any proof-relevant cut partition; normalized integral digit vanishing then forces V_n=0 eventually."
+    },
+    {
+      "id": "primitive_finite_window_transfer",
+      "status": "lean_checked",
+      "theorems": [
+        "primitiveBlock_transfer",
+        "primitiveBlock_approximation_exact"
+      ],
+      "statement": "For the primitive recurrence u_(n+1)+v_n=a_n*u_n and v_(n+1)=a_n*v_n, define A as the finite block product and B by B_0=0, B_(k+1)=a_(r+k)B_k+A_k. Then u_(r+k)=A_k*u_r-B_k*v_r and v_(r+k)=A_k*v_r. Over the rationals this gives the exact saturated approximation identity u_r/v_r-B_k/A_k=u_(r+k)/(A_k*v_r) when both denominators are positive."
+    },
+    {
+      "id": "primitive_complete_prefix_overlap",
+      "status": "lean_checked",
+      "theorems": [
+        "primitivePrefix_gcd_dvd_error",
+        "primitiveDigit_gcd_dvd_error"
+      ],
+      "statement": "For a complete primitive prefix with v_n=Q*A_n and centered error e_n=Q*A_n-(a_n-1)u_n, gcd(A_n,a_n-1) divides e_n. Consequently every earlier digit factor a_j with j<n contributes gcd(a_j,a_n-1) dividing e_n. This is an exact prefix-coherence constraint, not yet an unbounded anti-shadowing theorem."
+    },
+    {
+      "id": "reset_recovery_alignment_quantitative",
+      "status": "advisory_complete_pending_lean",
+      "statement": "The return supplies a quantitative refinement of last-reset clean-leaf extraction and subblock recovery alignment. Its qualitative alignment core is already Lean-checked in SparseResetRecovery; the new quantitative count has not yet been formalized."
+    },
+    {
+      "id": "primitive_crt_limsup_rise_constant",
+      "status": "advisory_derivation_pending_growth_bridges_and_lean",
+      "statement": "The return proposes a strengthened primitive CRT consequence with limsup rise constant at least 1/log 2. The derivation depends on additional global growth bridges and is not used as a checked theorem."
+    },
+    {
+      "id": "feedback_transport_realizability",
+      "status": "lean_checked",
+      "theorems": [
+        "feedback_transport_defect",
+        "feedback_denominator_transport",
+        "feedback_denominator_transport_iff"
+      ],
+      "statement": "The denominator-transport defect equals (u-e) times the failure of the centered quotient to generate the next multiplier. When u-e is nonzero, exact denominator transport holds if and only if aNext=a^2-a+1+Delta. Thus the square-residue congruence alone is strictly weaker than the true feedback orbit."
+    },
+    {
+      "id": "primitive_square_root_feedback",
+      "status": "lean_checked",
+      "theorems": [
+        "primitive_squareRoot_feedback",
+        "primitive_squareRoot_norm"
+      ],
+      "statement": "On a cancellation-free step, factorizations a*e=L*uNext+t and a*t=r*uNext+eNext, together with the square defect equation, force Delta=a*L+r. The same two quotients generate v=(a-1+L)uNext+t and aNext=a(a-1+L)+(r+1). The exact norm identity t^2-e*eNext=(r*e-L*t)uNext is also kernel-checked."
+    },
+    {
+      "id": "artificial_square_unit_not_realizable",
+      "theorems": [
+        "primitive_squareRoot_feedback",
+        "artificial_squareUnit_true_nextMultiplier",
+        "artificial_squareUnit_not_realizable"
+      ],
+      "status": "lean_checked",
+      "statement": "For the artificial pattern a=u+2, e=-1, and centered quotient -(u+3), true feedback forces aNext=u(u+2). For u>=3 this differs from the fake linear continuation u+3, so the infinite square-residue model is formally separated from every realizable feedback orbit."
+    },
+    {
+      "id": "cumulative_lcm_overlap_relocation",
+      "theorems": [
+        "cumulativeOverlapDebt_mul_lcm_eq_productScale",
+        "globalContent_gcd_split",
+        "reducedCancellation_split_global_local"
+      ],
+      "status": "lean_checked",
+      "statement": "Define the cumulative digit LCM Lambda_n, product-cleared scale D_n, and cumulative overlap debt M_n as the product of gcd(Lambda_j,a_j). Then M_n*Lambda_n=D_n at every finite horizon. Common content also factors as gcd(MY,M Lambda)=M*gcd(Y,Lambda), and any reduced payment h with G'=hG splits exactly as h*g=rho*g' when M'=rho*M. Thus LCM overlap is relocated into a permanent global scale rather than erased."
+    },
+    {
+      "id": "global_lcm_pseudo_euclidean_update",
+      "theorems": [
+        "globalLcm_numerator_update",
+        "globalNegativeMass_step_bound",
+        "globalPositiveCentered_strict_payment_descent"
+      ],
+      "status": "lean_checked",
+      "statement": "For F=Lambda-bY, a=b+1, and the raw lifted identity rho*YNext=aY-Lambda, Lean proves rho*YNext=Y-F. Its division-free amortized consumer shows K*rho*YNext<=(K+1)Y whenever K*(-F)<=Y, while positive F gives strict paid-height descent rho*YNext<Y."
+    },
+    {
+      "id": "returned_error_exact_telescope",
+      "status": "lean_checked",
+      "theorems": [
+        "returnedError_step"
+      ],
+      "statement": "For z=x-1/b, xNext=x-1/a, a=b+1, and bNext=a*b+Delta, the exact rational identity zNext=z+Delta/(a*b*bNext) holds whenever the three denominators are nonzero. This is an exact coordinate identity, not a well-founded termination measure."
+    },
+    {
+      "id": "returned_error_eventual_contraction",
+      "status": "advisory_pending_asymptotic_bridge_and_lean",
+      "statement": "The return proposes that |zNext|/|z| tends to zero using normalized centering, subexponential reduced-numerator growth, and doubly exponential next-digit scale. The complete bridge into those hypotheses has not been formalized in the new module."
+    },
+    {
+      "id": "forced_excursion_mod13_cofinal_return_split",
+      "status": "lean_checked_arithmetic_consumer_and_exact_polynomial_certificate",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.negativeUnitRecovery_heightTwelve_fullPayment",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_heightTwelve_collapse"
+      ],
+      "statement": "For the exact infinite clean-return family q0(k)=33+79833600*k, the forced 11->12 excursion has full height-12 payment 13 precisely for k mod 13 in {0,2,5,6,7,8,9,10}. Every lift in those eight classes collapses to primitive height one and hence enters the absorbing zero-centered Sylvester tail. Only k mod 13 in {1,3,4,11,12} survives to height 13."
+    },
+    {
+      "id": "second_excursion_mod17_cofinal_return_split",
+      "status": "lean_checked_arithmetic_consumer_and_exact_composite_modulus_certificate",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.negativeFourHeightThirteen_fullPayment",
+        "ErdosProblems.Erdos243.negativeFourHeightThirteen_collapse"
+      ],
+      "statement": "On the surviving class k=1+13*t, the height-13 centered error is -4 and full payment 17 occurs precisely for t mod 17 in {8,9,13,14}, equivalently k mod 221 in {105,118,170,183}. Every lift in those four classes collapses to primitive height one and enters centered state zero forever; all thirteen complementary t-classes switch to centered error +2 or +4 at height 17, so none continues negative support. On the other four source classes modulo 13, height-13 payment is always 1 or 7 and never the full factor 14."
+    },
+    {
+      "id": "payment_seven_boundary_cascade_cofinal_return",
+      "status": "lean_checked_final_payment_and_exact_composite_modulus_certificate",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.paymentSevenCascade_finalFullPayment",
+        "ErdosProblems.Erdos243.paymentSevenCascade_finalCollapse"
+      ],
+      "statement": "All sixteen height-13 payment-seven source classes modulo 182 have multiplier 7 modulo 42 and follow the universal cascade (13,-1)->(2,-1 tie)->(3,-1)->(1,0 forever), with payments 7,1,4. Thus every payment-seven cylinder reaches a cofinal Sylvester return; the height-two boundary mode is eliminated exactly."
+    },
+    {
+      "id": "payment_one_height_fourteen_sign_split",
+      "status": "lean_checked_transition_identities_and_exact_composite_modulus_certificate",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.paymentOneHeightFourteen_positiveSwitchIdentity"
+      ],
+      "statement": "The 40 remaining payment-one cylinders refine into 600 classes modulo 2730. Exact quotient propagation traps w=q11/14 modulo 15 in {0,3}, so full payment 15 never occurs. All 240 w=3 classes pay five and switch to centered error +1 at height 3. All 360 w=0 classes pay one at heights 14 and 15 and reach height 16 with centered error -1. The height-14 homogeneous boundary mode is therefore split exactly, and only the height-16 subcylinders retain negative support."
+    },
+    {
+      "id": "height_sixteen_mod17_cofinal_return_and_sign_split",
+      "status": "lean_checked_transition_identities_and_exact_complete_cylinder_certificate",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_evenLiftSquare",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_oddLiftSquare",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_fullPayment",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_fullCollapse",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_negativeSurvivorIdentity"
+      ],
+      "statement": "The 360 height-16 cylinders refine into 6120 classes modulo 46410. Exact value-level quotient propagation restricts c mod 17 to {0,10,12}, with height-16 multiplier image {1,3,0}. The 1440 multiplier-zero classes pay 17 and collapse to the absorbing height-one tail; the 2520 multiplier-three classes switch to centered error +8 at height 17; only 2160 multiplier-one classes retain centered error -1."
+    },
+    {
+      "id": "height_seventeen_rigidity_and_height_eighteen_mod19_return",
+      "status": "lean_checked_transition_identities_and_exact_complete_cylinder_certificate",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.paymentOneHeightSeventeen_paymentOne",
+        "ErdosProblems.Erdos243.paymentOneHeightEighteen_fullPayment",
+        "ErdosProblems.Erdos243.paymentOneHeightEighteen_fullCollapse",
+        "ErdosProblems.Erdos243.paymentOneHeightEighteen_negativeSurvivorIdentity"
+      ],
+      "statement": "All 8640 mod-4 lifts of the 2160 height-17 cylinders have d=0 mod 4, so nontrivial payments 18, 9, and 2 are impossible: every lift pays one and reaches height 18 with error -1. The next multiplier image modulo 19 is exactly {0,1}; eleven of nineteen lifts per source class pay the full factor 19 and collapse to height one, while eight retain error -1 at height 19."
+    },
+    {
+      "id": "height_nineteen_payment_five_cofinal_return",
+      "status": "lean_checked_terminal_cascade_and_exact_complete_vectorized_cylinder",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.paymentFiveHeightNineteen_heightFourIdentity",
+        "ErdosProblems.Erdos243.paymentFiveHeightNineteen_finalFullPayment",
+        "ErdosProblems.Erdos243.paymentFiveHeightNineteen_finalCollapse"
+      ],
+      "statement": "The 69120 height-19 source classes refine into 691200 classes modulo 35271600. Their next parameter image modulo 10 is only {0,2,4,6,8}. The 184320 classes in residues {2,8} pay five, land at height four with centered error -1, then pay the full factor five and collapse to the absorbing height-one tail. The other 506880 classes pay one and reach height 20 with error -1."
+    },
+    {
+      "id": "height_twenty_payment_seven_mode_elimination",
+      "status": "lean_checked_cascade_identities_and_exact_affine_complete_cylinder",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightThreeIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightFiveToHeightTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalFullPayment",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalCollapse"
+      ],
+      "statement": "The 506880 height-20 source cylinders refine into 10644480 classes modulo 740703600. Their complete payment image is {1,7}: 8211456 classes pay one, while 2433024 pay seven. Affine two-lift evaluation modulo 21 and 5 plus CRT classifies every quotient digit without evaluating the degree-1024 polynomial on every lift. All payment-seven classes are terminal for negative support: 2256075 return cofinally and 176949 switch positive. Only the payment-one classes reach height 21 with error -1."
+    },
+    {
+      "id": "height_twenty_one_payment_eleven_rigidity",
+      "status": "lean_checked_transition_identities_and_exact_affine_complete_cylinder",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyOne_paymentOne",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeIdentity",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeMultiplierEven",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_fullPaymentFour",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_finalCollapse"
+      ],
+      "statement": "The 8211456 height-20 survivors refine into 180652032 height-21 classes. Their quotient-parameter image modulo 22 is only {0,6}, so the payment image is exactly {1,11}: 120931560 classes pay one and reach height 22, while 59720472 pay eleven and land at height two. A complete three-lift refinement of the latter has singleton image r=6 mod 66; all 179161416 classes pay one at height two, reach height three with an even multiplier, pay the full factor four, and collapse to height one. The entire payment-eleven mode is eliminated by cofinal return."
+    },
+    {
+      "id": "height_twenty_two_mod23_centered_state_split",
+      "status": "lean_checked_transition_identities_and_exact_compressed_affine_residue_count",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyTwo_transitionIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_sourceRootIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_multiplierAtTwelveIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_fullPayment",
+        "ErdosProblems.Erdos243.heightTwentyTwo_fullCollapse",
+        "ErdosProblems.Erdos243.heightTwentyTwo_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_negativeSurvivorIdentity"
+      ],
+      "statement": "The 120931560 height-22 source families logically refine into 2781425880 classes. Exact affine-period counting avoids materializing that expansion. The multiplier image modulo 23 is {0,1,15}: 2024012298 classes pay the full factor 23 and collapse to height one, 84115680 pay one but switch to centered error +5, and only 673297902 pay one and reach height 23 with error -1."
+    },
+    {
+      "id": "height_twenty_three_factor24_singleton_mode",
+      "status": "lean_checked_transition_identities_and_exact_weighted_key_composite_crt_count",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "source_commit": "bb5b1bfedcf15fc320ee353515da0a68a30753a4",
+      "source_sha256": "0b528577cc9d6a928eab269ae69e8c9246f2d1985275454cbfe6eaa344a51290",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyThree_actualMultiplierOneIdentity",
+        "ErdosProblems.Erdos243.heightTwentyThree_negativeSurvivorIdentity"
+      ],
+      "statement": "The 673297902 height-23 negative classes refine into 16159149648 logical lifts. Compression to 6699 joint affine source keys and 570 weighted height-22 keys plus generalized CRT modulo 255024 proves that every lift has divided quotient z=0 and multiplier 1 modulo 24. All generic payments 3,4,8,12,24 are absent; every class pays one and reaches height 24 with error -1.",
+      "claim_boundary": "This is a finite exact classification of the corrected height-23 source refinements. It does not classify the height-24 continuation or prove the unrestricted Erdos #243 theorem or eventual Sylvester recurrence.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py ErdosProblems.Erdos243.CleanRecoveryLengthCounterexample --jobs 2 --project-root formal_math/erdos257_period_noncollapse --lake lake --no-singleflight",
+        "proof_result": "Focused lean_fast_build completed with exit 0 at 2026-08-23T17:48:02Z, re-elaborating the height-23 singleton-mode declarations and completing the Lake authority check.",
+        "claim_boundary": "This is an exact finite successor-mode elimination result for the named height-23 source. It leaves the height-24 continuation and the unrestricted irrationality or eventual-recurrence conclusion open."
+      }
+    },
+    {
+      "id": "height_twenty_four_factor25_cofinal_opening",
+      "status": "lean_bound_full_payment_identities_and_exact_digest_cached_affine_census",
+      "statement": "The 16159149648 height-24 negative classes refine into 403978741200 logical lifts. Exact reconstruction modulo 6375600 gives preceding-quotient image w mod 5={0,1,4}: the possible cofinal root w=2 is absent, but all 58762693440 realized w=4 lifts pay the full factor 25 and return cofinally. Another 23505077376 switch positive and 321710970384 remain negative. The generic error -9 mode is absent. This opens an actual cofinal mechanism and removes 20.364% of the incoming negative cylinder."
+    },
+    {
+      "id": "height_twenty_four_binary_parent_fiber_split",
+      "status": "exact_one_way_uniform_contraction_elimination_and_activation_route",
+      "statement": "The complete parent-local factor-25 histogram has exactly two profiles. There are 10282880304 inert parents with 0 cofinal, 0 positive, and 25 negative children, eliminating uniform one-step contraction. The other 5876269344 active parents have exactly 10 cofinal, 4 positive, and 11 negative children. The retained source digit separates them exactly: t=0 mod 10 is inert and t in {4,6} is active; affine slope alone does not. All 257072007600 inert children have error -1, eliminating the error-specific raw factors 31 and 36 from the inert frontier and leaving only factor 26."
+    },
+    {
+      "id": "height_twenty_five_factor26_uniform_activation",
+      "status": "lean_bound_parity_obstruction_and_exact_one_way_uniform_boundary_contraction",
+      "statement": "The complete t=0, error=-1 inert subfamily refines into 6683872197600 logical factor-26 lifts. Exact aggregation reduces the actual parent support to 18 current-modulus residues, and exact comparison proves that the two new quotient parities have identical multiplier-residue multisets. Every one of the 257072007600 parents has immediate profile 0 cofinal, 4 positive, 22 negative, with multiplier multiset 1^8,13^14,15^4. The 14 multiplier-thirteen children then force height-two multiplier 150, full payment three, and cofinal return. Thus every effective parent profile is 14 cofinal, 4 positive, 8 negative, eliminating the all-negative boundary and contracting genuine continuation uniformly by 4/13. The preceding multiplier is odd, forcing the next multiplier odd and analytically eliminating immediate full factor-26 payment."
+    },
+    {
+      "id": "height_twenty_six_factor27_singleton_mode",
+      "status": "lean_bound_multiplier_identity_and_exact_complete_source_lift_elimination",
+      "statement": "The 2056576060800 multiplier-one height-26 negative parents refine into 55527553641600 factor-27 lifts. Exhausting all 18 parent residues, both possible factor-26 quotient parities, four distinct surviving targets per parity, and all 27 source lifts gives the singleton images C=1 mod 702 and D=1 mod 27 on all 3888 source samples. Hence every logical refinement pays one and reaches height 27 with centered error -1; every generic factor-27 activation mode is absent."
+    },
+    {
+      "id": "height_twenty_seven_factor28_uniform_activation",
+      "status": "lean_bound_residue_identities_and_exact_one_way_uniform_sign_switch",
+      "statement": "All 55527553641600 actual height-27 negative parents have the same factor-28 profile: 0 cofinal, 8 positive, and 20 continuing-negative children. Exhausting 108864 source samples gives q mod 28 in {0,4,12} and next multiplier E mod 28 in {1,21}. The q=4 class alone gives E=21, payment seven, height four, and centered error +1; q=0,12 give multiplier one and continue at height 28 with error -1. Thus factor 28 uniformly opens a positive-switch mechanism and contracts negative support by 5/7."
+    },
+    {
+      "id": "height_twenty_eight_factor29_uniform_boundary_killing",
+      "status": "lean_bound_residue_identities_and_exact_one_way_uniform_cofinal_activation",
+      "statement": "All 1110551072832000 actual height-28 negative parents have the same factor-29 profile: 8 cofinal, 6 positive, and 15 continuing-negative children. Exhausting 2255040 source samples gives the quotient multiset 0^7,15^8,24^8,25^4,27^2 modulo 29. Class 15 forces full payment 29 and cofinal return; classes 25 and 27 switch positive; classes 0 and 24 survive with errors -1 and -6. Thus factor 29 kills the homogeneous boundary mode uniformly with continuation ratio 15/29 and splits the next frontier into raw factors 30 and 35."
+    },
+    {
+      "id": "height_twenty_nine_factor30_35_exact_split",
+      "status": "exact_complete_source_cylinder_rigidity_and_stratified_activation",
+      "statement": "All 544320 actual (29,-1) source families are constant G=1 mod 30 and have profile (0,0,30), eliminating factor 30 as an activation mechanism. The 622080 actual (29,-6) families split exactly 1/5 inert with profile (0,0,35) and 4/5 active with profile (0,25,10). Every affine summary is checked on its full composite-modulus lift cylinder. The factor-35 weighted negative continuation is 3/7, the factor-29-plus-split continuation is 73/203, and the formerly inert factor-25 activation chain now has continuation 1460/18473."
+    },
+    {
+      "id": "height_thirty_thirtyfive_factor31_41_field_activation",
+      "status": "exact_unit_stride_field_permutation_cofinal_return_and_branch_extinction",
+      "statement": "After exact transport of the height-29 multiplier into the declared parent state, every actual (30,-1) parent has factor-31 profile (4 cofinal,0 positive,27 negative), and every actual (35,-6) parent has factor-41 profile (2,39,0). All prior quotient divisors and both next source strides are units in the respective prime fields, so one complete 31-point or 41-point table transfers to every actual parent. Factor 41 kills the entire negative factor-35 branch. The factor-29 continuation is 189/899 and the formerly inert factor-25 chain continuation is 540/11687."
+    },
+    {
+      "id": "height_thirtyone_error10_factor41_cofinal_activation",
+      "status": "exact_unit_stride_field_permutation_and_uniform_cofinal_return",
+      "statement": "Every actual (31,-10) parent has corrected factor-41 profile (8 cofinal,21 positive,12 negative). The universal multiplier image contains zero eight times. Processing this multiplicity-eight factor-31 mode lowers that branch's effective continuation to 875/1271, the factor-29-through-current continuation to 6125/36859, and the formerly inert factor-25 chain continuation to 17500/479167."
+    },
+    {
+      "id": "height_fortyone_error20_factor61_cofinal_activation",
+      "status": "exact_unit_stride_field_permutation_and_uniform_cofinal_return",
+      "statement": "Every actual (41,-20) parent has corrected factor-61 profile (4 cofinal,6 positive,51 negative). The universal multiplier image 0^4,4^9,18^10,28^6,31^14,33^2,43^10,45^6 contains four full-payment residues. Processing the multiplicity-four child gives factor-41 error-minus-ten continuation 692/2501, factor-31 continuation 53055/77531, factor-29-through-current continuation 371385/2248399, and formerly inert factor-25 chain continuation 1061100/29229187."
+    },
+    {
+      "id": "common_divisor_persistence_and_multiplier_overlap",
+      "status": "lean_checked",
+      "theorems": [
+        "commonDivisor_persists",
+        "multiplierOverlap_persists",
+        "dvd_centeredState_of_dvd",
+        "multiplierOverlap_dvd_laterCenteredState"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+      "source_commit": "8d992dd5e55f6a209dcb8e36273f24a1c1496ffe",
+      "source_sha256": "sha256:3f9ea00f795247964473c664dcc95f63fe4525a2ea65c3a5491b347c5858688b",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos243.commonDivisor_persists",
+        "ErdosProblems.Erdos243.multiplierOverlap_persists",
+        "ErdosProblems.Erdos243.dvd_centeredState_of_dvd",
+        "ErdosProblems.Erdos243.multiplierOverlap_dvd_laterCenteredState"
+      ],
+      "statement": "Along the exact natural orbit from index N, a common divisor of C_n and D_n divides every later C_t and D_t and hence every later centred error E_t = D_t - (a_t - 1)C_t. In particular gcd(a_n, D_n) divides E_t for every t > n. On any counterexample, where E_t is eventually nonzero, the overlap of each multiplier with the accumulated denominator is therefore at most |E_t| for every later t, and at most the next negative magnitude.",
+      "claim_boundary": "Unconditional integer persistence; it neither bounds the overlap by itself nor excludes any orbit alone.",
+      "validation": {
+        "proof_authority": "The named declarations are in SlowRiseBarrier.lean; focused lean_fast_build replay with the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos243.SlowRiseBarrier",
+        "proof_result": "pass (focused lean_fast_build rc=0, 2026-09-02)",
+        "claim_boundary": "Unconditional integer persistence; it neither bounds the overlap by itself nor excludes any orbit alone."
+      }
+    },
+    {
+      "id": "bounded_crt_block",
+      "status": "lean_checked",
+      "theorems": [
+        "exists_consecutiveMultiples_between"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+      "source_commit": "8d992dd5e55f6a209dcb8e36273f24a1c1496ffe",
+      "source_sha256": "sha256:3f9ea00f795247964473c664dcc95f63fe4525a2ea65c3a5491b347c5858688b",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos243.exists_consecutiveMultiples_between"
+      ],
+      "statement": "For pairwise coprime moduli m_0..m_{B-1} > 1 with product P there is x with P <= x < 2P and m_r | x + r for every r < B.",
+      "claim_boundary": "Finite CRT statement with an explicit height bound; it replaces the unbounded shift of exists_shifted_consecutiveMultiples.",
+      "validation": {
+        "proof_authority": "The named declarations are in SlowRiseBarrier.lean; focused lean_fast_build replay with the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos243.SlowRiseBarrier",
+        "proof_result": "pass (focused lean_fast_build rc=0, 2026-09-02)",
+        "claim_boundary": "Finite CRT statement with an explicit height bound; it replaces the unbounded shift of exists_shifted_consecutiveMultiples."
+      }
+    },
+    {
+      "id": "slow_rise_landing_barrier",
+      "status": "lean_checked",
+      "theorems": [
+        "slowRise_landing",
+        "tailState_antitone_of_nonnegative",
+        "no_slowNegative_of_coprimeBlock"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+      "source_commit": "8d992dd5e55f6a209dcb8e36273f24a1c1496ffe",
+      "source_sha256": "sha256:3f9ea00f795247964473c664dcc95f63fe4525a2ea65c3a5491b347c5858688b",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos243.slowRise_landing",
+        "ErdosProblems.Erdos243.tailState_antitone_of_nonnegative",
+        "ErdosProblems.Erdos243.no_slowNegative_of_coprimeBlock"
+      ],
+      "statement": "Let T >= N, let m_0..m_{B-1} > 1 be pairwise coprime divisors of D_T with product P, let C_T < P, let C tend to infinity, and let C_{n+1} <= C_n + B at every n >= T with C_n < 2P. Then some C_{s+1} < 2P + B is divisible by a block modulus m_r, which then divides every later C_t, D_t and E_t (slowRise_landing). If moreover negative errors are cofinal and every negative error at t >= T with C_t < 2P + B is smaller than every m_r, there is a contradiction (no_slowNegative_of_coprimeBlock). No gcd stabilisation, periodicity or bounded negative part is assumed.",
+      "claim_boundary": "The rise bound is only required below 2P and the negative bound only below 2P + B; the choice of moduli on the canonical orbit and the log-log threshold are the ordinary-proof transfer in SlowNegativePartRigidity.md, not formalised.",
+      "validation": {
+        "proof_authority": "The named declarations are in SlowRiseBarrier.lean; focused lean_fast_build replay with the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos243.SlowRiseBarrier",
+        "proof_result": "pass (focused lean_fast_build rc=0, 2026-09-02)",
+        "claim_boundary": "The rise bound is only required below 2P and the negative bound only below 2P + B; the choice of moduli on the canonical orbit and the log-log threshold are the ordinary-proof transfer in SlowNegativePartRigidity.md, not formalised."
+      }
+    },
+    {
+      "id": "slow_rise_reduced_tail_excluded",
+      "status": "lean_checked",
+      "theorems": [
+        "no_slowRise_reducedTail"
+      ],
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+      "source_commit": "8d992dd5e55f6a209dcb8e36273f24a1c1496ffe",
+      "source_sha256": "sha256:3f9ea00f795247964473c664dcc95f63fe4525a2ea65c3a5491b347c5858688b",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos243.no_slowRise_reducedTail"
+      ],
+      "statement": "No reduced exact tail (a,u,v) from index N with a_n > 1 and u_n tending to infinity can, for some B, satisfy u_{N+B} < prod_{i<B} a_{N+i} = P together with u_{n+1} <= u_n + B at every n >= N+B with u_n < 2P. This generalises no_boundedRise_reducedTail from a uniform rise bound to a rise bound required only below twice the product of B consecutive multipliers.",
+      "claim_boundary": "Reduced-tail theorem; it does not by itself supply the hypotheses on the canonical orbit.",
+      "validation": {
+        "proof_authority": "The named declarations are in SlowRiseBarrier.lean; focused lean_fast_build replay with the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos243.SlowRiseBarrier",
+        "proof_result": "pass (focused lean_fast_build rc=0, 2026-09-02)",
+        "claim_boundary": "Reduced-tail theorem; it does not by itself supply the hypotheses on the canonical orbit."
+      }
+    },
+    {
+      "id": "slow_negative_part_rigidity",
+      "status": "ordinary_proof_over_lean_core",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
+      "source_commit": "8d992dd5e55f6a209dcb8e36273f24a1c1496ffe",
+      "lean_core": [
+        "ErdosProblems.Erdos243.no_slowNegative_of_coprimeBlock",
+        "ErdosProblems.Erdos243.multiplierOverlap_dvd_laterCenteredState",
+        "ErdosProblems.Erdos243.centeredState_eventually_zero",
+        "ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero"
+      ],
+      "statement": "Under the exact natural dynamics, positivity and division-free normalised vanishing, if for some delta in (0,1) every negative centred error eventually satisfies -E_n <= (1 - delta) log2 log2 C_n, then E_n = 0 eventually and a_{n+1} = a_n^2 - a_n + 1 eventually. The bounded-negative-part theorem is the constant-bound special case. Proof (Theorem 4 of the note): persistence bounds every multiplier overlap gcd(a_n, D_n) by the next negative magnitude, so at most log2 log2 C_n + 1; a burn count on the primes below that bound shows that all but O(T) indices in [T, 2^T] carry a new part above any fixed threshold; B such new parts are pairwise coprime divisors of D_{n_B+1} with product P satisfying log2 log2 (2P + B) <= 2T + B + O(1); the Lean landing theorem then contradicts the slow bound.",
+      "claim_boundary": "Conditional on normalised vanishing (supplied on the canonical orbit by Koizumi Cor. 10) and on the slow-negative hypothesis; the burn count and the transfer are ordinary proofs; Erdos #243 remains open.",
+      "supersedes": [
+        "bounded_negative_part_rigidity"
+      ],
+      "supersession_note": "bounded_negative_part_rigidity remains the Lean-checked special case; the general statement is ordinary-proof over the Lean core."
+    },
+    {
+      "id": "counterexample_loglog_negative_excursions",
+      "status": "ordinary_proof_over_lean_core",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
+      "statement": "For the canonical state of any counterexample to Erdos #243, limsup_n (-E_n)_+ / log2 log2 C_n >= 1, and gcd(a_n, D_n) <= -E_t at the first negative index t > n. This is a quantitative strengthening of the frontier-profile clause limsup (-E_n) = infinity.",
+      "claim_boundary": "Necessary conditions on a counterexample; the constant 1 is the CRT-block constant of the method, not a proved sharp threshold for the problem."
+    },
+    {
+      "id": "erdos_straus_quantity_bounded_form",
+      "status": "ordinary_proof",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
+      "statement": "Let Q_n = (a_1...a_{n-1}/a_n)(a_n^2/a_{n+1} - 1). If a_{n+1}/a_n^2 -> 1, sum 1/a_n is rational and limsup Q_n < infinity, then the sequence is eventually Sylvester; Erdos-Straus (product form, Koizumi Cor. 20(1)) require limsup Q_n <= 0. In Koizumi's coordinates Q_n = -(B_{n-1}/c_1) e_n + o(1), so the hypothesis is exactly a bounded negative part. The Erdos-Straus LCM quantity is Q_n / M_n with M_n | c_n exact.",
+      "claim_boundary": "Original-coordinates form of the Lean-checked bounded-negative theorem composed with Koizumi's bridge; the LCM-prefactor strengthening limsup Q_n/M_n < infinity is not claimed."
+    },
+    {
+      "id": "one_over_n_threshold_verified",
+      "status": "ordinary_proof",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
+      "supersedes": [
+        "subcritical_one_over_n_threshold"
+      ],
+      "statement": "If a_{n+1}/a_n^2 -> 1, sum 1/a_n is rational and limsup n (a_n^2/a_{n+1} - 1)_+ < 1, then the sequence is eventually Sylvester. The constant 1 is exactly the boundary of the Erdos-Straus method: the constant-negative template e_n = -1, c_n = c + n has n(-e_n)/c_n -> 1 and is excluded only by the prime-lock theorem. The hypothesis forces (-e_n)_+ <= C n^{-delta} -> 0, hence e_n >= 0 eventually (Koizumi Prop. 19(2)).",
+      "claim_boundary": "Weaker than slow_negative_part_rigidity (its hypothesis implies a vanishing negative part); recorded as the explicit-constant sufficient condition in the language of the original problem; sharp for the method, not for the problem."
+    }
+  ],
+  "experimental_result": {
+    "status": "finite_exact_search_only",
+    "normal_form": "constant E=-m modulo common scaling",
+    "best_prefix_in_seed_range_a0_le_5000": {
+      "completed_steps": 17,
+      "sample_seeds": [1501, 1723, 2029, 2581, 2971, 3571, 3583, 4621]
+    },
+    "cancellation_free_block_counterexample": {
+      "status": "exact_integer_verifier_passed",
+      "verifier": "scripts/verify_erdos243_cancellation_free_blocks.py",
+      "checked_samples": [
+        {"height": 5, "tail_start": 100, "vanish_scale": 50},
+        {"height": 8, "tail_start": 50, "vanish_scale": 10}
+      ],
+      "invariants": "E_n=-1, gcd(C_n,D_n)=1, gcd(a_n,D_n)=1, h_n=1, K*|E_n|<C_n, and relative Sylvester defect below 2/(C_n+1) on the whole finite block",
+      "claim_ceiling": "finite exact obstruction to a block-length-only proof; not an infinite orbit"
+    },
+    "record_amplification_and_square_erasure": {
+      "status": "exact_integer_verifier_passed",
+      "verifier": "scripts/verify_erdos243_record_amplification.py",
+      "checked_sample": {"m": 1, "amplification": 2, "power": 2, "erase_scale": 101},
+      "record_amplification_trace": "(u,v,e,a,h)=(46,4369,-1,96,1) -> (47,419424,-4,8925,51) -> a zero-centered landing",
+      "square_erasure_trace": "a clean h=1 introduction can be followed by maximal square cancellation h=A^2, complete deletion of the introduced A-factor, and a zero-centered landing",
+      "claim_ceiling": "finite exact falsifiers for local record-descent, local small-error, and static cancellation-budget arguments; not an infinite counterexample"
+    },
+    "clean_prefix_tiny_reset": {
+      "status": "exact_one_way_mechanism_elimination",
+      "verifier": "scripts/check_erdos243_clean_prefix_tiny_reset.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_clean_prefix_tiny_reset_receipt.json",
+      "witness": {
+        "seed": {"tail_start": 16, "guaranteed_height": 5, "scale": 1},
+        "negative_cancellation_free_prefix_length": 8,
+        "prefix_errors": [-1, -1, -1, -1, -1, -1, -1, -4],
+        "reset_error": -7,
+        "reset_payment": 2,
+        "refuted_lower_bound": "h >= 2^L, since 2 < 2^8"
+      },
+      "analytic_consequence": "The length of the immediately preceding clean negative prefix cannot alone supply an exponential lower bound for the next reset payment. Any viable repair lower bound must consume global prefix/residue coherence or a product across complete aligned recoveries.",
+      "claim_ceiling": "finite exact counterexample to a local single-reset payment inequality; not an infinite orbit and not a solution of Erdos #243"
+    },
+    "cumulative_tiny_resets": {
+      "status": "exact_one_way_mechanism_elimination",
+      "verifier": "scripts/check_erdos243_cumulative_tiny_resets.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_cumulative_tiny_resets_receipt.json",
+      "witness": {
+        "seed": {"tail_start": 26, "guaranteed_height": 4, "scale": 1},
+        "preceding_clean_negative_run_lengths": [7, 1],
+        "reset_payments": [2, 2],
+        "payment_product": 4,
+        "total_clean_length": 8,
+        "refuted_lower_bounds": ["product(h_j) >= sum(L_j)", "product(h_j) >= 2^(sum(L_j))"]
+      },
+      "analytic_consequence": "Taking a product over successive raw resets does not repair clean-length charging: the exact product 4 is below both the total clean length 8 and 2^8. Any viable global payment lower bound must consume complete-recovery alignment, prefix CRT coherence, or source-specific arithmetic rather than only raw reset payments and their preceding run lengths.",
+      "claim_ceiling": "finite exact counterexample to cumulative raw-reset length charging; not an infinite orbit, not a statement about complete aligned recoveries, and not a solution of Erdos #243"
+    },
+    "clean_recovery_length": {
+      "status": "lean_checked_exact_one_way_mechanism_elimination",
+      "verifier": "scripts/check_erdos243_clean_recovery_length.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_clean_recovery_length_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.cleanRecoveryWitness_isCleanRecovery",
+        "ErdosProblems.Erdos243.cleanRecoveryWitness_payment_lt_length_and_exponential",
+        "ErdosProblems.Erdos243.cleanRecoveryWitness_normalizedNegativeMass_return"
+      ],
+      "witness": {
+        "initial_primitive_pair": [11, 362],
+        "recovery_heights": [11, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "centered_errors": [-1, -1, -1, -1, -1, -1, -1, -1, -1],
+        "payments": [4, 1, 1, 1, 1, 1, 1, 1, 1],
+        "payment_product": 4,
+        "recovery_length": 9,
+        "refuted_lower_bounds": ["h_r >= L", "h_r >= 2^L"]
+      },
+      "analytic_consequence": "Complete first-return alignment by itself does not force even a linear payment charge: an actual primitive clean recovery has payment 4<9<2^9. Any viable global lower bound must consume unbounded prefix arithmetic, cross-recovery coherence, or source-specific residues rather than recovery length alone.",
+      "claim_ceiling": "finite exact counterexample to length-only complete-clean-recovery payment bounds; not an infinite orbit, not a prefix-CRT counterexample, and not a solution of Erdos #243"
+    },
+    "clean_recovery_normalized_mass_return": {
+      "status": "lean_checked_exact_one_way_mechanism_elimination",
+      "verifier": "scripts/check_erdos243_clean_recovery_length.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_clean_recovery_length_receipt.json",
+      "lean_theorem": "ErdosProblems.Erdos243.cleanRecoveryWitness_normalizedNegativeMass_return",
+      "witness": {
+        "initial_primitive_pair": [11, 362],
+        "transition_count": 9,
+        "initial_normalized_negative_mass": "1/11",
+        "terminal_normalized_negative_mass": "1/11",
+        "endpoint_heights": [11, 11],
+        "endpoint_negative_magnitudes": [1, 1]
+      },
+      "analytic_consequence": "Sampling only at aligned complete clean recoveries does not repair normalized-mass descent: a true nontrivial primitive recovery returns exactly from m/u=1/11 to m/u=1/11. Any strict global Lyapunov law must retain changing residue, payment, prime-support, or complete-prefix data rather than normalized negative mass alone.",
+      "claim_ceiling": "finite exact normalized-state return eliminating strict complete-recovery descent in m/u; not an infinite orbit, not a general prefix-coherence counterexample, and not a solution of Erdos #243"
+    },
+    "infinite_clean_recovery_normalized_return_family": {
+      "status": "lean_checked_periodicity_core_and_exact_congruence_family",
+      "verifier": "scripts/check_erdos243_infinite_clean_recovery_family.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_infinite_clean_recovery_family_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.negativeUnitTransitionNumerator_periodic",
+        "ErdosProblems.Erdos243.negativeUnitTransitionQuotient_periodic",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminalQuotient_even",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminalQuotient_oddMultiple_41472",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminal_nextPayment_one",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminal_nextHeight_twelve"
+      ],
+      "family": {
+        "parameter_domain": "k>=0",
+        "initial_primitive_state": "(11, 11*(33+79833600*k)-1)",
+        "initial_quotient": "33+79833600*k",
+        "recovery_heights": [11, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "centered_errors": [-1, -1, -1, -1, -1, -1, -1, -1, -1],
+        "payments": [4, 1, 1, 1, 1, 1, 1, 1, 1],
+        "normalized_endpoint_masses": ["1/11", "1/11"]
+      },
+      "self_renewal_no_go": {
+        "sixth_quotient_form": "q6=990*t with t=-36+1152*c(k), c(k) in Z[k]",
+        "terminal_quotient_residue": "q9=41472 mod 82944, equivalently q9=41472*(2*z+1)",
+        "required_reentry_class": "q=33+79833600*k is odd",
+        "forced_next_payment": "gcd(12,(q9+1)^2)=1",
+        "forced_next_height": 12,
+        "conclusion": "no member can directly concatenate another copy of the same nine-step recovery or switch immediately into any height-11 clean cylinder"
+      },
+      "analytic_consequence": "The exact complete-recovery return persists over an unbounded arithmetic progression of primitive initial states. It is neither isolated nor repaired by large initial quotient or denominator scale. Its terminal quotient is always 41472 modulo 82944 while re-entry requires an odd quotient, so this cylinder cannot self-concatenate. More strongly, divisibility by 12 forces next payment one and height 12, eliminating every immediate switch into another height-11 clean recovery. Any infinite continuation must first control an expanding boundary excursion, and every exact search must carry the full reduced pair rather than floor-divide a nonintegral quotient transition.",
+      "claim_ceiling": "exact infinite family of finite complete recoveries eliminating isolation and scale-only repairs; not one infinite orbit, not a counterexample to the original sequence problem, and not a solution of Erdos #243"
+    },
+    "forced_excursion_mod13_split": {
+      "status": "exact_one_way_cofinal_return_for_infinite_subfamilies",
+      "verifier": "scripts/check_erdos243_forced_excursion_split.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_forced_excursion_split_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.negativeUnitRecovery_heightTwelve_fullPayment",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_heightTwelve_collapse"
+      ],
+      "certificate": {
+        "source_parameter": "k>=0 in q0(k)=33+79833600*k",
+        "exact_height_twelve_quotient_polynomial_degree": 1024,
+        "finite_field": "F_13",
+        "q10_plus_one_reduced_coefficients_low_to_high": [0, 0, 1, 4, 2, 3, 9, 12, 8, 7, 7, 7, 7],
+        "collapse_classes_mod_13": [0, 2, 5, 6, 7, 8, 9, 10],
+        "survivor_classes_mod_13": [1, 3, 4, 11, 12],
+        "collapse_transition": "height 12, payment 13, next primitive height 1, then centered error 0 forever"
+      },
+      "analytic_consequence": "The expanding-boundary mechanism is eliminated for eight of the thirteen source-parameter classes, each an infinite arithmetic subfamily of the exact clean-return family. Any infinite negative-support construction inside this family is now confined to five residue classes. Further computation must restrict to those survivors and seek the next exact residue split rather than extend arbitrary trajectories.",
+      "claim_ceiling": "exact cofinal return for eight congruence subfamilies within the known clean-return family; the five surviving classes and unrestricted Erdos #243 remain open"
+    },
+    "second_excursion_mod17_split": {
+      "status": "exact_one_way_cofinal_return_for_four_further_subfamilies",
+      "verifier": "scripts/check_erdos243_second_excursion_split.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_second_excursion_split_receipt.json",
+      "infrastructure": {
+        "library": "system/lib/formal_math_residue_cylinder.py",
+        "method": "recover (N/d) mod M coefficientwise from N mod (d*M), avoiding the degree-2048 integer quotient polynomial"
+      },
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.negativeFourHeightThirteen_fullPayment",
+        "ErdosProblems.Erdos243.negativeFourHeightThirteen_collapse"
+      ],
+      "negative_four_branch": {
+        "parameterization": "k=1+13*t",
+        "height_thirteen_centered_error": -4,
+        "full_payment": 17,
+        "collapse_t_classes_mod_17": [8, 9, 13, 14],
+        "collapse_k_classes_mod_221": [105, 118, 170, 183],
+        "collapse_transition": "height 13 with error -4, payment 17, next primitive height 1, then centered error 0 forever",
+        "positive_error_two_t_classes_mod_17": [0, 2, 3, 5, 7, 11, 15],
+        "positive_error_four_t_classes_mod_17": [1, 4, 6, 10, 12, 16],
+        "continuing_negative_t_classes_mod_17": []
+      },
+      "negative_unit_branch": {
+        "source_classes_mod_13": [3, 4, 11, 12],
+        "height_thirteen_centered_error": -1,
+        "payment_set": [1, 7],
+        "full_payment_fourteen_class_count": 0,
+        "conclusion": "the immediate full-payment route is exactly eliminated on all four classes"
+      },
+      "cumulative_class_closure": {
+        "modulus": 221,
+        "closed_class_count": 140,
+        "remaining_class_count": 81,
+        "closed_fraction": "140/221",
+        "positive_centered_class_count": 13,
+        "continuing_negative_support_candidate_class_count": 68,
+        "three_way_partition": "140 zero-centered + 13 positive-centered + 68 negative candidates = 221"
+      },
+      "analytic_consequence": "Four further infinite arithmetic subfamilies are forced into the absorbing zero-centered tail, and every complementary error-minus-four class switches positive at height 17. Therefore the entire k=1 mod 13 branch is unavailable for continuing negative support. The immediate full-payment mechanism is also closed on all four negative-unit height-13 branches; future family-specific work must separate their payment-seven height-two boundary cylinders from payment-one height-fourteen cylinders.",
+      "claim_ceiling": "exact cofinal return for four additional classes modulo 221, exact sign switch for thirteen complements, and exact elimination of immediate full payment on the four negative-unit height-13 branches; 68 continuing-negative source classes modulo 221 and unrestricted Erdos #243 remain open"
+    },
+    "payment_seven_boundary_cascade": {
+      "status": "exact_one_way_boundary_mode_elimination_and_cofinal_return",
+      "verifier": "scripts/check_erdos243_payment_seven_cascade.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_payment_seven_cascade_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.paymentSevenCascade_finalFullPayment",
+        "ErdosProblems.Erdos243.paymentSevenCascade_finalCollapse"
+      ],
+      "source_cylinders": {
+        "payment_seven_class_count_mod_182": 16,
+        "height_thirteen_multiplier_class": "7 mod 42",
+        "classes_mod_182": [16, 30, 37, 51, 55, 69, 76, 90, 107, 121, 128, 142, 146, 160, 167, 181]
+      },
+      "universal_cascade": {
+        "states": ["(13,-1)", "(2,-1 tie)", "(3,-1)", "(1,0 forever)"],
+        "payments": [7, 1, 4],
+        "symbolic_parameter": "a13=42*z+7; m=546*z^2+168*z+13 is odd",
+        "conclusion": "every payment-seven cylinder reaches primitive height one and the absorbing zero-centered tail"
+      },
+      "cumulative_class_partition": {
+        "modulus": 3094,
+        "zero_centered_class_count": 2232,
+        "positive_centered_class_count": 182,
+        "continuing_negative_candidate_class_count": 680,
+        "partition": "2232 zero + 182 positive + 680 negative candidates = 3094"
+      },
+      "analytic_consequence": "The height-two centered boundary is not an expanding mode: the stronger multiplier class modulo 42 forces every payment-seven lift through payment one at height two and full payment four at height three. All continuing-negative family analysis is now confined to the payment-one height-fourteen cylinders over k mod 13 in {3,4,11,12}.",
+      "claim_ceiling": "exact cofinal return for all sixteen payment-seven source cylinders and exact elimination of the height-two boundary mode; payment-one height-fourteen cylinders and unrestricted Erdos #243 remain open"
+    },
+    "payment_one_height_fourteen_split": {
+      "status": "exact_one_way_sign_switch_and_survivor_split",
+      "verifier": "scripts/check_erdos243_payment_one_height14.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_payment_one_height14_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.paymentOneHeightFourteen_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_evenLiftSquare",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_oddLiftSquare"
+      ],
+      "source_cylinders": {
+        "payment_one_class_count_mod_182": 40,
+        "refinement_modulus": 2730,
+        "refined_class_count": 600,
+        "actual_w_image_mod_15": [0, 3],
+        "full_payment_fifteen_class_count": 0
+      },
+      "exact_split": {
+        "positive_switch_class_count": 240,
+        "positive_switch_transition": "w=3 mod 15, payment 5 at height 14, then centered error +1 at height 3",
+        "height_sixteen_survivor_class_count": 360,
+        "survivor_transition": "w=0 mod 15, payments 1 at heights 14 and 15, then centered error -1 at height 16"
+      },
+      "cumulative_class_partition": {
+        "modulus": 46410,
+        "zero_centered_class_count": 33480,
+        "positive_centered_class_count": 6810,
+        "continuing_negative_candidate_class_count": 6120,
+        "partition": "33480 zero + 6810 positive + 6120 negative candidates = 46410"
+      },
+      "analytic_consequence": "The actual source family does not realize the generic full-payment classes at height 14. Nevertheless, two fifths of its refined payment-one cylinders are forced to switch positive, so height 14 is not a homogeneous expanding boundary mode. All remaining family-specific negative support is confined to the exact height-16 error-minus-one cylinders; their multiplier modulo 17 is the next discriminating object.",
+      "claim_ceiling": "exact positive sign switch for 240 of 600 refined payment-one cylinders and exact isolation of 360 height-16 survivors; the height-16 branch and unrestricted Erdos #243 remain open"
+    },
+    "height_sixteen_mod17_split": {
+      "status": "exact_one_way_cofinal_return_and_sign_split",
+      "verifier": "scripts/check_erdos243_height16_mod17.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height16_mod17_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_fullPayment",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_fullCollapse",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.paymentOneHeightSixteen_negativeSurvivorIdentity"
+      ],
+      "source_cylinders": {
+        "base_height_sixteen_class_count_mod_2730": 360,
+        "refinement_modulus": 46410,
+        "refined_class_count": 6120,
+        "actual_c_image_mod_17": [0, 10, 12],
+        "height_sixteen_multiplier_image_mod_17": [0, 1, 3]
+      },
+      "exact_split": {
+        "cofinal_return_class_count": 1440,
+        "cofinal_return_transition": "c=12 mod 17, multiplier 0 mod 17, full payment 17, then primitive height one",
+        "positive_switch_class_count": 2520,
+        "positive_switch_transition": "c=10 mod 17, multiplier 3 mod 17, payment one, then height-17 centered error +8",
+        "continuing_negative_class_count": 2160,
+        "survivor_transition": "c=0 mod 17, multiplier 1 mod 17, payment one, then height-17 centered error -1"
+      },
+      "cumulative_class_partition": {
+        "modulus": 46410,
+        "zero_centered_class_count": 34920,
+        "positive_centered_class_count": 9330,
+        "continuing_negative_candidate_class_count": 2160,
+        "partition": "34920 zero + 9330 positive + 2160 negative candidates = 46410"
+      },
+      "infrastructure": {
+        "library": "system/lib/formal_math_residue_cylinder.py",
+        "primitive": "exact_quotient_value_mod",
+        "consequence": "complete finite cylinders can use pre-reduced pointwise evaluation and exact modular division instead of repeated giant affine polynomial expansion"
+      },
+      "analytic_consequence": "The height-16 boundary mode is eliminated on 3960 of its 6120 lifts by exact cofinal return or positive sign switch. Only multiplier-one height-17 error-minus-one cylinders remain; all further family-specific work must discard the terminal and positive branches.",
+      "claim_ceiling": "exact cofinal return or positive sign switch for 3960 of 6120 height-16 lifts and exact isolation of 2160 height-17 negative-unit survivors; that branch and unrestricted Erdos #243 remain open"
+    },
+    "height_seventeen_rigidity_height_eighteen_mod19": {
+      "status": "exact_one_way_payment_elimination_and_cofinal_return_split",
+      "verifier": "scripts/check_erdos243_height17_mod4.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height17_mod4_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.paymentOneHeightSeventeen_paymentOne",
+        "ErdosProblems.Erdos243.paymentOneHeightEighteen_fullPayment",
+        "ErdosProblems.Erdos243.paymentOneHeightEighteen_fullCollapse",
+        "ErdosProblems.Erdos243.paymentOneHeightEighteen_negativeSurvivorIdentity"
+      ],
+      "height_seventeen_rigidity": {
+        "input_class_count_mod_46410": 2160,
+        "refinement_modulus": 185640,
+        "refined_class_count": 8640,
+        "actual_d_image_mod_4": [0],
+        "payment": 1,
+        "next_state": "height 18 with centered error -1"
+      },
+      "height_eighteen_split": {
+        "parameter_refinement_prime": 19,
+        "multiplier_image_mod_19": [0, 1],
+        "full_payment_k_classes_mod_19": [1, 3, 4, 7, 8, 10, 11, 13, 14, 17, 18],
+        "continuing_negative_k_classes_mod_19": [0, 2, 5, 6, 9, 12, 15, 16],
+        "new_cofinal_return_class_count": 95040,
+        "continuing_negative_class_count": 69120
+      },
+      "cumulative_class_partition": {
+        "modulus": 3527160,
+        "zero_centered_class_count": 2748960,
+        "positive_centered_class_count": 709080,
+        "continuing_negative_candidate_class_count": 69120,
+        "partition": "2748960 zero + 709080 positive + 69120 negative candidates = 3527160"
+      },
+      "analytic_consequence": "The actual height-17 family avoids every nontrivial payment, but this rigidity exposes a clean prime-height split one step later: eleven of nineteen lifts make a cofinal return at height 18. Only the eight multiplier-one height-19 residue classes remain eligible for negative support.",
+      "claim_ceiling": "exact elimination of nontrivial height-17 payments and exact cofinal return on eleven of nineteen height-18 lifts; 69120 refined height-19 negative-unit classes and unrestricted Erdos #243 remain open"
+    },
+    "height_nineteen_payment_five_cascade": {
+      "status": "exact_one_way_cofinal_return_and_complete_vectorized_cylinder",
+      "verifier": "scripts/check_erdos243_height19_payment_five_cascade.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height19_payment_five_cascade_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.paymentFiveHeightNineteen_heightFourIdentity",
+        "ErdosProblems.Erdos243.paymentFiveHeightNineteen_finalFullPayment",
+        "ErdosProblems.Erdos243.paymentFiveHeightNineteen_finalCollapse"
+      ],
+      "complete_cylinder": {
+        "input_class_count_mod_3527160": 69120,
+        "refinement_modulus": 35271600,
+        "refined_class_count": 691200,
+        "actual_parameter_image_mod_10": [0, 2, 4, 6, 8],
+        "parameter_class_counts": {"0": 322560, "2": 92160, "4": 92160, "6": 92160, "8": 92160},
+        "payment_five_class_count": 184320,
+        "payment_one_class_count": 506880,
+        "payment_twenty_and_four_class_count": 0
+      },
+      "terminal_cascade": {
+        "source_parameter_classes_mod_10": [2, 8],
+        "states": ["height 19 error -1", "height 4 error -1", "height 1 centered zero"],
+        "payments": [5, 5],
+        "conclusion": "every height-19 payment-five cylinder reaches the absorbing Sylvester tail"
+      },
+      "cumulative_class_partition": {
+        "modulus": 35271600,
+        "zero_centered_class_count": 27673920,
+        "positive_centered_class_count": 7090800,
+        "continuing_negative_candidate_class_count": 506880,
+        "partition": "27673920 zero + 7090800 positive + 506880 negative candidates = 35271600"
+      },
+      "analytic_consequence": "Partial payment five at height 19 is not a low-height expansion mechanism: its exact quotient residue forces full payment five one step later. Only the payment-one parameter classes {0,4,6} reach height 20 with negative-unit error.",
+      "claim_ceiling": "exact cofinal return for all 184320 height-19 payment-five classes; 506880 refined height-20 negative-unit classes and unrestricted Erdos #243 remain open"
+    },
+    "height_twenty_payment_seven_cascade": {
+      "status": "exact_one_way_boundary_mode_elimination_and_affine_complete_cylinder",
+      "verifier": "scripts/check_erdos243_height20_payment_seven_cascade.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height20_payment_seven_cascade_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightThreeIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightFiveToHeightTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalFullPayment",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalCollapse"
+      ],
+      "complete_affine_cylinder": {
+        "input_class_count_mod_35271600": 506880,
+        "refinement_modulus": 740703600,
+        "refined_class_count": 10644480,
+        "payment_one_class_count": 8211456,
+        "payment_seven_class_count": 2433024,
+        "payment_three_and_twenty_one_class_count": 0,
+        "parameter_image_mod_21": [0, 12, 18],
+        "payment_seven_quotient_digit_counts_mod_5": {"0": 176960, "1": 176953, "2": 1725225, "3": 176949, "4": 176937},
+        "method": "exact lift-zero/lift-one affine evaluation modulo 21 and 5, followed by CRT",
+        "shared_primitive": "system.lib.formal_math_residue_cylinder.affine_lift_coordinates_mod"
+      },
+      "payment_seven_outcomes": {
+        "cofinal_return_class_count": 2256075,
+        "positive_switch_class_count": 176949,
+        "continuing_negative_class_count": 0,
+        "cofinal_cascades": ["20->3->4->1", "20->3->4->5->2->1"],
+        "positive_switch": "20->3->4->5 with centered error +1"
+      },
+      "cumulative_class_partition": {
+        "modulus": 740703600,
+        "zero_centered_class_count": 583408395,
+        "positive_centered_class_count": 149083749,
+        "continuing_negative_candidate_class_count": 8211456,
+        "partition": "583408395 zero + 149083749 positive + 8211456 negative candidates = 740703600"
+      },
+      "analytic_consequence": "Payment seven at height 20 cannot support the expanding negative boundary: complete quotient-digit classification forces every such class either to a cofinal return or a positive sign switch. Only payment-one height-21 cylinders remain eligible for negative support.",
+      "claim_ceiling": "exact elimination of all 2433024 height-20 payment-seven classes; 8211456 refined height-21 negative-unit classes and unrestricted Erdos #243 remain open"
+    },
+    "height_twenty_one_payment_split": {
+      "status": "exact_one_way_mechanism_elimination_and_distinct_branch_opening",
+      "verifier": "scripts/check_erdos243_height21_payment_split.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height21_payment_split_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.heightTwentyOne_paymentOne",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeIdentity",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeMultiplierEven",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_fullPaymentFour",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_finalCollapse"
+      ],
+      "complete_affine_height_twenty_one_cylinder": {
+        "input_class_count_mod_740703600": 8211456,
+        "refinement_modulus": 16295479200,
+        "refined_class_count": 180652032,
+        "parameter_image_mod_22": [0, 6],
+        "payment_one_class_count": 120931560,
+        "payment_eleven_class_count": 59720472,
+        "payment_two_and_twenty_two_class_count": 0,
+        "shared_primitive": "system.lib.formal_math_residue_cylinder.affine_lift_coordinates_mod"
+      },
+      "payment_eleven_three_lift_refinement": {
+        "refinement_modulus": 48886437600,
+        "refined_class_count": 179161416,
+        "parameter_image_mod_66": [6],
+        "quotient_w_image_mod_3": [2],
+        "height_two_multiplier_image_mod_3": [1],
+        "full_payment_three_class_count": 0,
+        "payment_one_to_height_three_class_count": 179161416,
+        "height_three_full_payment_four_class_count": 179161416
+      },
+      "surviving_branch_split": {
+        "height_three_negative_unit_class_count": 0,
+        "height_twenty_two_negative_unit_class_count": 362794680
+      },
+      "cumulative_class_partition": {
+        "modulus": 48886437600,
+        "zero_centered_class_count": 38684115486,
+        "positive_centered_class_count": 9839527434,
+        "continuing_negative_candidate_class_count": 362794680,
+        "partition": "38684115486 zero + 9839527434 positive + 362794680 negative candidates = 48886437600"
+      },
+      "analytic_consequence": "The height-21 payment-eleven mode returns cofinally despite avoiding full payment at height two: exact source rigidity forces an even multiplier at height three and full payment four. Only the payment-one height-22 branch remains eligible for negative support.",
+      "claim_ceiling": "exact cofinal return for all 179161416 refined height-21 payment-eleven classes and exact isolation of 362794680 height-22 negative-unit classes; that branch and unrestricted Erdos #243 remain open"
+    },
+    "height_twenty_two_mod23_split": {
+      "status": "exact_one_way_cofinal_return_positive_switch_and_compressed_affine_residue_count",
+      "verifier": "scripts/check_erdos243_height22_mod23_split.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height22_mod23_split_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.heightTwentyTwo_transitionIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_sourceRootIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_multiplierAtTwelveIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_fullPayment",
+        "ErdosProblems.Erdos243.heightTwentyTwo_fullCollapse",
+        "ErdosProblems.Erdos243.heightTwentyTwo_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.heightTwentyTwo_negativeSurvivorIdentity"
+      ],
+      "complete_compressed_cylinder": {
+        "input_class_count_mod_16295479200": 120931560,
+        "logical_refinement_modulus": 374796021600,
+        "logical_refined_class_count": 2781425880,
+        "height_twenty_two_payment_image": [1, 23],
+        "height_twenty_two_multiplier_image_mod_23": [0, 1, 15],
+        "full_payment_twenty_three_class_count": 2024012298,
+        "payment_one_positive_switch_class_count": 84115680,
+        "payment_one_to_height_twenty_three_negative_class_count": 673297902,
+        "full_payment_source_roots_mod_23": [11, 19]
+      },
+      "root_count_compression": {
+        "actual_source_categories": 6,
+        "coordinates_per_category_by_multiplier_residue": {"0": 10, "1": 9, "15": 4},
+        "nonzero_slope_lifts_per_family_by_multiplier_residue": {"0": 10, "1": 9, "15": 4},
+        "zero_slope_lifts_per_family_by_multiplier_residue": [0, 23],
+        "source_family_counts_by_residue_lifts": {
+          "0": {"0": 21045114, "10": 21028920, "23": 78857526},
+          "1": {"0": 78857526, "9": 21028920, "23": 21045114},
+          "15": {"0": 99902640, "4": 21028920}
+        },
+        "materialized_twenty_three_fold_expansion": false,
+        "shared_primitive": "system.lib.formal_math_residue_cylinder.affine_full_lift_acceptance_table",
+        "centered_transition_primitive": "system.lib.formal_math_residue_cylinder.negative_unit_successor_signature"
+      },
+      "cumulative_class_partition": {
+        "modulus": 1124388064800,
+        "zero_centered_class_count": 895806693072,
+        "positive_centered_class_count": 226561478022,
+        "continuing_negative_candidate_class_count": 2019893706,
+        "partition": "895806693072 zero + 226561478022 positive + 2019893706 negative candidates = 1124388064800"
+      },
+      "analytic_consequence": "The height-22 boundary splits three ways: multiplier residue zero creates more than two billion full-payment cofinal returns, residue fifteen switches centered error to +5, and only residue one preserves the expanding negative boundary mode.",
+      "claim_ceiling": "exact cofinal return for 2024012298 height-22 classes and positive switch for 84115680 classes before common refinement, leaving exactly 2019893706 common-modulus height-23 negative-unit classes; that branch and unrestricted Erdos #243 remain open"
+    },
+    "height_twenty_three_composite_split": {
+      "status": "exact_one_way_five_mode_elimination_and_singleton_source_image",
+      "verifier": "scripts/check_erdos243_height23_composite_split.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height23_composite_split_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.heightTwentyThree_actualMultiplierOneIdentity",
+        "ErdosProblems.Erdos243.heightTwentyThree_negativeSurvivorIdentity"
+      ],
+      "compressed_source_census": {
+        "source_family_count": 506880,
+        "joint_affine_key_count": 6699,
+        "height_twenty_two_weighted_key_count": 570,
+        "height_twenty_three_input_count": 673297902,
+        "logical_refined_class_count": 16159149648,
+        "composite_crt_modulus": 255024,
+        "divided_quotient_image_mod_24": [0],
+        "height_twenty_three_multiplier_image_mod_24": [1],
+        "successor_mode": "payment 1, height 24, centered error -1"
+      },
+      "cumulative_class_partition": {
+        "modulus": 26985313555200,
+        "zero_centered_class_count": 21499360633728,
+        "positive_centered_class_count": 5437475472528,
+        "continuing_negative_candidate_class_count": 48477448944,
+        "partition": "21499360633728 zero + 5437475472528 positive + 48477448944 negative candidates = 26985313555200"
+      },
+      "analytic_consequence": "The actual height-23 source kills all five nontrivial generic factor-24 modes. No class collapses, switches positive, or lands at height 2,3,6,8; the expanding boundary is rigidly confined to the multiplier-one height-24 mode.",
+      "claim_ceiling": "exact exclusion of payments 3,4,8,12,24 on all 16159149648 height-23 refinements and exact isolation of 48477448944 common-modulus height-24 negative-unit classes; that branch and unrestricted Erdos #243 remain open"
+    },
+    "height_twenty_four_mod25_split": {
+      "status": "exact_one_way_cofinal_opening_positive_switch_and_digest_cached_affine_census",
+      "verifier": "scripts/check_erdos243_height24_mod25_split.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height24_mod25_split_receipt.json",
+      "lean_theorems": [
+        "ErdosProblems.Erdos243.heightTwentyFour_fullPaymentRootIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_multiplierAtOneModFiveIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_multiplierAtThreeModFiveIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_precedingQuotientTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_precedingQuotientFourIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_fullPayment",
+        "ErdosProblems.Erdos243.heightTwentyFour_fullCollapse"
+      ],
+      "compressed_source_census": {
+        "source_family_count": 506880,
+        "joint_affine_key_count": 166140,
+        "height_twenty_two_weighted_key_count": 32490,
+        "height_twenty_four_input_count": 16159149648,
+        "logical_refined_class_count": 403978741200,
+        "source_modulus": 6375600,
+        "actual_preceding_quotient_image_mod_5": [0, 1, 4],
+        "realized_cofinal_preceding_quotient_class_mod_5": 4,
+        "eliminated_cofinal_preceding_quotient_class_mod_5": 2,
+        "actual_height_twenty_four_quotient_image_mod_25": [0, 3, 5, 8, 10, 13, 15, 18, 20, 23],
+        "cofinal_return_class_count": 58762693440,
+        "positive_switch_class_count": 23505077376,
+        "continuing_negative_class_count": 321710970384,
+        "eliminated_generic_mode": "payment 1, height 25, centered error -9",
+        "cache": "source-digest-bound compressed weighted keys; cache is acceleration, not authority"
+      },
+      "cumulative_class_partition": {
+        "modulus": 674632838880000,
+        "zero_centered_class_count": 537660303923520,
+        "positive_centered_class_count": 136007402045328,
+        "continuing_negative_candidate_class_count": 965132911152,
+        "partition": "537660303923520 zero + 136007402045328 positive + 965132911152 negative candidates = 674632838880000"
+      },
+      "analytic_consequence": "Actual source classes hit the factor-25 full-payment roots and return cofinally. Collapse plus positive switching removes 20.364% of the incoming negative cylinder. The next structural target is a source-affine uniform subunit continuation bound across later factors; iterating such a bound would kill the expanding homogeneous boundary mode.",
+      "claim_ceiling": "exact cofinal return for 58762693440 factor-25 refinements and positive switch for 23505077376, leaving 965132911152 common-modulus height-25 negative candidates in three error modes; unrestricted Erdos #243 remains open"
+    },
+    "height_twenty_four_parent_contraction": {
+      "status": "exact_one_way_uniform_contraction_elimination_and_binary_activation_split",
+      "verifier": "scripts/check_erdos243_height24_parent_contraction.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_height24_parent_contraction_receipt.json",
+      "parent_profile_counts": {
+        "cofinal=0,positive=0,negative=25": 10282880304,
+        "cofinal=10,positive=4,negative=11": 5876269344
+      },
+      "exact_activation_predicate": {
+        "inert_source_digits_mod_10": [0],
+        "active_source_digits_mod_10": [4, 6],
+        "affine_slope_alone_sufficient": false
+      },
+      "inert_child_transition_target": {
+        "centered_error_image": [-1],
+        "negative_child_count": 257072007600,
+        "next_raw_height_factor": 26,
+        "eliminated_raw_height_factors": [31, 36]
+      },
+      "reconciled_child_totals": {
+        "cofinal_return": 58762693440,
+        "positive_switch": 23505077376,
+        "continuing_negative": 321710970384
+      },
+      "analytic_consequence": "Uniform one-step contraction is impossible because more than ten billion actual parents retain all 25 negative children. The split is nevertheless rigid and source-visible: t=0 mod 10 is exactly inert, while t in {4,6} is exactly active with continuation ratio 11/25. Every inert child has error -1, so its next raw factor is only 26; factors 31 and 36 belong exclusively to already-active branches. The next probe should extend t=0 only by source coordinates modulo 32 and 13.",
+      "claim_ceiling": "exact binary parent-fiber split and elimination of uniform factor-25 contraction; no activation recurrence theorem and no unrestricted solution of Erdos #243"
+    },
+    "two_clean_recoveries": {
+      "status": "exact_one_way_mechanism_elimination",
+      "verifier": "scripts/check_erdos243_two_clean_recoveries.py",
+      "receipt": "state/formal_math/erdos257_period_noncollapse/erdos243_two_clean_recoveries_receipt.json",
+      "witness": {
+        "initial_primitive_pair": [19, 14684],
+        "recovery_heights": [[19, 11, 13, 19], [19, 13, 17, 19]],
+        "centered_errors": [-3, -2, -6, -7, -4, -2],
+        "payments": [2, 1, 1, 2, 1, 1],
+        "recovery_lengths": [3, 3],
+        "recovery_payments": [2, 2],
+        "cumulative_payment": 4,
+        "total_recovery_length": 6,
+        "refuted_lower_bounds": ["product(h_j) >= sum(L_j)", "product(h_j) >= 2^(sum(L_j))"]
+      },
+      "analytic_consequence": "Passing from one aligned clean recovery to two does not restore even a linear length charge: the exact cumulative payment is 4<6<2^6. Any viable cross-recovery lower bound must consume unbounded complete-prefix arithmetic or changing residue/prime/overlap data, not only recovery lengths and reset payments.",
+      "claim_ceiling": "finite exact counterexample to length-only cumulative payment bounds across two clean recoveries; not an infinite orbit, not a general prefix-coherence counterexample, and not a solution of Erdos #243"
+    },
+    "negative_feedback_descent": {
+      "status": "lean_checked_exact_one_way_mechanism_elimination",
+      "verifier": "scripts/check_erdos243_negative_feedback_descent.py",
+      "receipt": "ErdosProblems/Erdos243/negative_feedback_descent_receipt.json",
+      "lean_theorem": "ErdosProblems.Erdos243.negativeFeedback_normalizedDescent_counterexample",
+      "witness": {
+        "initial_primitive_pair": [6, 11],
+        "successor_primitive_pair": [7, 33],
+        "initial_multiplier_and_negative_magnitude": [3, 1],
+        "successor_multiplier_and_negative_magnitude": [6, 2],
+        "normalized_reversal": "2/7 > 1/6"
+      },
+      "all_nonnegative_homogeneous_weights_witness": {
+        "initial_primitive_pair": [9, 62],
+        "successor_primitive_pair": [5, 248],
+        "initial_multiplier_negative_magnitude_and_payment": [8, 1, 2],
+        "successor_multiplier_and_negative_magnitude": [51, 2],
+        "simultaneous_reversal": "u_next=5<9=u and m_next=2>1=m, so m_next/u_next^alpha>m/u^alpha for every real alpha>=0"
+      },
+      "analytic_consequence": "True denominator transport and next-multiplier generation do not force one-step descent for any homogeneous negative-mass weight m/u^alpha with real alpha>=0. A successful obstruction must use multi-step cancellation payments, residue compatibility, nonhomogeneous source data, or global prefix coherence.",
+      "claim_ceiling": "all nonnegative one-step homogeneous scale weights eliminated by an exact witness; no infinite orbit and no solution of Erdos #243"
+    },
+    "interpretation": "Long finite prefixes and a large compatible residue tree occur, but the global divisibility argument proves that every fixed natural constant-negative orbit, at every magnitude and initial-state scale, must eventually stop. The finite residue tree is therefore a profinite compatibility object, not a natural counterexample. Exact cancellation-free blocks, record amplification, maximal square erasure, an eight-step clean negative prefix followed by payment two, two successive raw resets with payment product 4 after total clean length 8, a complete clean recovery of length 9 with payment 4, an exact complete-recovery return of normalized negative mass 1/11, and an actual one-step transition that increases every homogeneous weight m/u^alpha for alpha>=0 all occur on finite exact trajectories. The remaining argument must therefore exploit unbounded global prefix/residue coherence or relations between several recoveries rather than any bounded local pattern, raw-reset-length rule, clean-recovery-length rule, or homogeneous negative-mass descent sampled either stepwise or at complete recoveries."
+  },
+  "negative_results": [
+    "Arbitrary finite deviations can be followed by an exact Sylvester tail, so no finite-prefix rule settles the problem.",
+    "The reverse one-sided inequality makes the tail state nondecreasing and removes the stabilization argument.",
+    "The critical constant-negative template sits at the 1/n boundary of the rate theorem, but is nevertheless excluded at every scale by the prime-nonrecurrence argument.",
+    "Every positive eventually periodic negative magnitude is also excluded once the exact tail has e_n<a_n. A surviving critical obstruction must therefore be genuinely aperiodic (or evade the eventual natural-bound bridge).",
+    "The entire bounded negative-part regime, periodic or aperiodic, is now Lean-closed under exact natural D/C dynamics, eventual strict centring, and division-free normalised vanishing. Any surviving obstruction must have cofinally unbounded negative excursions or fail one of those bridges.",
+    "Pairwise coprimality and permanent modular avoidance alone do not exclude an unbounded aperiodic walk. Exact dynamic reduction adds the missing constraint: gcd growth can occur only by old-prime reuse, while normalized centered-state vanishing now kernel-checks subexponential tail growth and hence a sublinear strict reuse count. What remains is not a density slogan but a structural theorem forcing too many reuse events, or a contradiction on a sufficiently long cancellation-free block.",
+    "Arbitrarily long cancellation-free blocks are not by themselves contradictory. For every finite height H and sufficiently late tail start c, an exact integer family has C_n=c+n, E_n=-1, gcd(C_n,D_n)=1, gcd(a_n,D_n)=1, and h_n=1 throughout the block, while 0<(a_n^2-a_(n+1))/a_n^2<2/(C_n+1). The exact verifier is scripts/verify_erdos243_cancellation_free_blocks.py. Any successful sparse-reuse argument must therefore use global prefix coherence or a quantitative block-length-versus-CRT-barrier statement.",
+    "Successive negative records need not descend: an exact finite family amplifies -m to -t^2*m after an h=1 step while both normalized errors can be made small, then lands at zero. Therefore no one-step record monotonicity or local normalized-error threshold can close the problem.",
+    "A cleanly introduced multiplier factor can be erased completely by maximal square cancellation at the next step and then land at zero; arbitrary finite horizons of such deletion are compatible with the local equations. Therefore a static CRT prime budget or an unweighted count of cancellation events cannot be the missing invariant.",
+    "The advisory sub-log-log CRT extension in the latest return is not yet kernel checked and is not used as a theorem. Even if proved, it treats an eventual h=1 branch; the unrestricted obstruction permits sparse but unbounded square-cancellation resets.",
+    "The earlier recovery-alignment gap is closed: every reset recovery contains a last-reset clean leaf, and distinct clean leaves are disjoint. This still does not yield a CRT contradiction because newly introduced whole multipliers can lie far above the entire recovery scale.",
+    "The exact block payments telescope, so their full multiplicative product has subexponential mass in physical time. This closes the vague logarithmic-budget accumulation step but still permits arbitrarily sparse payments of unbounded size; a lower bound connecting each repaired CRT obstruction to enough payment mass remains necessary.",
+    "The finite-window transfer makes the rational approximation route exact rather than contradictory: u_r/v_r-B/A=u_s/(A*v_r). Fixed-width resultant, Pell-type, and rational-approximation estimates therefore saturate on exact finite fixtures, including the E=-1 cancellation-free families. Any closure must use coherence across unbounded complete prefixes or a quantitative reset-payment lower bound.",
+    "The changing-modulus square-residue congruence admits an infinite artificial E=-1 orbit, so it cannot be the global invariant by itself. The Lean-checked transport-defect equivalence and two-stage quotient feedback identify exactly what that fake orbit omits: denominator transport and next-multiplier generation.",
+    "The cumulative-LCM lift turns reduced square erasure into exact global overlap relocation, but this does not make the resulting real-valued potentials well-founded. A divergent sequence of individually vanishing negative-mass charges can still finance arbitrarily sparse repairs while cumulative overlap remains subexponential.",
+    "Clean negative-prefix length cannot be charged directly to the next reset by a universal exponential bound: an exact primitive orbit has eight consecutive negative h=1 steps, with errors [-1,-1,-1,-1,-1,-1,-1,-4], followed by error -7 and payment h=2<2^8.",
+    "Aggregating successive raw resets does not restore a length charge: an exact primitive orbit has clean negative run lengths 7 and 1 before payments 2 and 2, so the payment product 4 is below both the total clean length 8 and 2^8. This leaves lower bounds using globally aligned complete recoveries or prefix arithmetic coherence open.",
+    "Complete clean-recovery alignment alone does not restore a length charge: the exact primitive orbit from (u,v)=(11,362) has a first return of length 9, no interior reset, and complete payment 4<9<2^9. Nor does passing to a pair of consecutive clean recoveries restore a cumulative length charge: the orbit from (19,14684) has two length-3 recoveries with payment product 4<6<2^6. A viable lower bound must use unbounded prefix arithmetic or changing residue/prime/overlap data, not the lengths and payments of any fixed local recovery fixture.",
+    "The exact primitive negative-to-negative feedback seed (u,v)=(9,62) sends primitive scale 9 to 5 while negative mass doubles from 1 to 2. Therefore m/u^alpha strictly increases for every real alpha>=0 on the same valid transition. The entire one-step nonnegative homogeneous Lyapunov family is unavailable even after imposing true denominator transport, strict centering, primitivity, and increasing multipliers.",
+    "The nine-step complete normalized return at height 11 is not an isolated small-scale fixture: for every k>=0, the primitive state (11,11*(33+79833600*k)-1) follows the same clean recovery and returns from normalized mass 1/11 to 1/11. Large initial quotient or denominator scale therefore cannot rescue strict recovery-level normalized-mass descent.",
+    "The normalized-return family cannot directly concatenate itself: exact coefficient propagation gives q6/990=-36 mod 1152, and the last three exact transition equations force q9=41472 mod 82944. Because q9 is divisible by 12, its next payment at height 11 is exactly one and the next height is 12. Thus every immediate same-height clean-cylinder switch is also impossible; an infinite construction must first survive an expanding boundary excursion.",
+    "The forced expanding excursion is unavailable on eight of the thirteen source-parameter classes. Exact degree-1024 quotient propagation and complete factorization of q10(k)+1 over F_13 show that k mod 13 in {0,2,5,6,7,8,9,10} pays the full factor 13 at height 12, collapses to primitive height one, and enters centered state zero forever. Any infinite negative-support construction inside this family must lie in the five classes {1,3,4,11,12}.",
+    "The next full-payment mechanism splits exactly. On k mod 13 in {3,4,11,12}, the height-13 error remains -1 but the payment is always 1 or 7, never the full factor 14. On k=1+13*t, the error is -4 and four classes t mod 17 in {8,9,13,14} pay 17, collapse to height one, and enter centered state zero forever; all thirteen complementary classes switch to centered error +2 or +4 at height 17. Thus the whole k=1 mod 13 branch is unavailable for continuing negative support. The exact partition modulo 221 is 140 zero-centered, 13 positive-centered, and 68 continuing-negative candidates.",
+    "The payment-seven height-two boundary cannot continue negative support. All sixteen classes modulo 182 have height-13 multiplier 7 modulo 42 and are forced through (13,-1)->(2,-1 tie)->(3,-1)->(1,0 forever), with payments 7,1,4. On the common modulus 3094 the family is now partitioned into 2232 zero-centered classes, 182 positive-centered classes, and only 680 continuing-negative candidates, all in the payment-one height-fourteen branch.",
+    "The payment-one height-fourteen branch is not homogeneous. Exact quotient propagation on its 600 classes modulo 2730 gives only w=q11/14 mod 15 in {0,3}, so full payment 15 is impossible. The 240 w=3 classes pay five and switch to centered error +1 at height 3; only the 360 w=0 classes survive, paying one at heights 14 and 15 and reaching height 16 with centered error -1. On the common modulus 46410 the family is partitioned into 33480 zero-centered, 6810 positive-centered, and 6120 continuing-negative candidates.",
+    "The height-16 survivors split exactly modulo 17. Their actual intermediate image is c mod 17 in {0,10,12}, giving multiplier residues {1,3,0}. The 1440 multiplier-zero classes pay 17 and collapse to height one, the 2520 multiplier-three classes switch to centered error +8, and only 2160 multiplier-one classes retain centered error -1 at height 17. The cumulative modulus-46410 partition is 34920 zero-centered, 9330 positive-centered, and 2160 continuing-negative candidates.",
+    "Every mod-4 lift of the height-17 survivors has d=0, so the generic payments 18, 9, and 2 never occur; all 8640 classes pay one and reach height 18 with error -1. At height 18 the exact multiplier image modulo 19 is only {0,1}: eleven of nineteen lifts per source class pay 19 and collapse to height one, while eight retain error -1 at height 19. The cumulative modulus-3527160 partition is 2748960 zero-centered, 709080 positive-centered, and 69120 continuing-negative candidates.",
+    "The height-19 payment image is exactly {1,5}; payments 20 and 4 never occur. The 184320 payment-five classes land at height four with error -1, where the next multiplier is automatically divisible by five, so every such class collapses to height one. Only 506880 payment-one classes reach height 20 with error -1. The cumulative modulus-35271600 partition is 27673920 zero-centered, 7090800 positive-centered, and 506880 continuing-negative candidates.",
+    "The height-20 payment image is exactly {1,7}; payments 21 and 3 never occur. Every one of the 2433024 payment-seven classes is terminal for negative support: 2256075 follow a forced cofinal cascade and 176949 switch to centered error +1. Only 8211456 payment-one classes reach height 21 with error -1. The cumulative modulus-740703600 partition is 583408395 zero-centered, 149083749 positive-centered, and 8211456 continuing-negative candidates.",
+    "The height-21 quotient-parameter image is exactly {0,6} modulo 22, so payments two and twenty-two never occur. The 120931560 payment-one classes reach height 22 with error -1. All 59720472 payment-eleven classes land at height two; after a complete three-lift refinement every one of the 179161416 lifts has multiplier 1 mod 6, so it reaches height three with an even multiplier and pays the full factor four. Every payment-eleven class returns cofinally, leaving only the height-22 payment-one branch.",
+    "The height-22 multiplier image modulo 23 is exactly {0,1,15}. Complete affine-period counting proves that 2024012298 of 2781425880 logical lifts pay the full factor 23 and collapse to height one; 84115680 pay one but switch to centered error +5; only 673297902 reach height 23 with error -1. The residue-counting certificate avoids materializing the 23-fold cylinder and remains exact for zero and nonzero lift slopes.",
+    "At height 23 the generic factor-24 algebra permits payments 1,3,4,8,12,24, but the complete actual source image is the singleton divided quotient z=0 and multiplier 1 modulo 24 on all 16159149648 logical refinements. Thus full collapse, positive switching, and every smaller-height branch are absent; all classes reach height 24 with error -1.",
+    "At height 24 the preceding quotient map c=12144w^2+21w eliminates the generic centered-error-minus-nine factor-25 mode. The actual preceding-quotient image modulo five is only {0,1,4}, eliminating the possible cofinal root w=2. The 58762693440 realized w=4 refinements nevertheless pay the full factor 25 and return cofinally; 23505077376 switch positive, while 321710970384 continue negative in errors -1,-6,-11. Thus factor 25 is a genuine partial boundary-killing mechanism but not a complete exclusion.",
+    "The aggregate factor-25 loss cannot be promoted to a uniform one-step contraction: exactly 10282880304 actual height-24 parents have 25 continuing-negative children and no cofinal or positive child. The complementary 5876269344 parents are rigidly active with profile 10 cofinal, 4 positive, 11 negative. Source digit t mod 10 separates the profiles exactly as 0 inert versus {4,6} active; affine slope alone does not. Any geometric-loss proof must establish activation of the successive inert subfamilies, not per-parent contraction at every factor.",
+    "The t=0 inert factor-25 image contains only centered error -1 on all 257072007600 negative children. Errors -6 and -11 occur exclusively in the already-active t in {4,6} branches. Consequently raw next-height factors 31 and 36 are absent from the inert frontier; its exact next source extension needs only factor 26.",
+    "Factor 26 has no immediate cofinal mode on the actual inert frontier: the preceding multiplier B=552c^2+22c+1 is odd, so the quotient relation 25C=24B^2-25B+26 forces C odd and prevents 26 from dividing C^2. Exact counting strengthens this no-go: all actual parents have the same immediate 0 cofinal, 4 positive, 22 negative profile. The fourteen multiplier-thirteen children per parent then force height-two multiplier 150 and full payment three, so the effective profile is 14 cofinal, 4 positive, 8 negative. The all-negative fiber mode is eliminated with uniform 4/13 continuation, but the (height,error)=(26,-1) multiplier-one state still carries the expanding negative boundary.",
+    "Factor 27 does not activate the surviving multiplier-one boundary. The complete actual source image is C=1 mod 702 and next multiplier D=1 mod 27 on all 3888 exhaustive source samples. Restoring exact weights, all 55527553641600 logical refinements pay one and reach height 27 with centered error -1. This eliminates every generic factor-27 payment, cofinal-return, and sign-switch mode and forces the next distinct probe to factor 28.",
+    "Factor 28 does activate every actual factor-27 parent but has no immediate cofinal child. The complete q-image modulo 28 is {0,4,12}: q=4 forces multiplier 21, payment seven, height four, and centered error +1, while q=0,12 preserve multiplier one and error -1 at height 28. Every parent has profile 0 cofinal, 8 positive, 20 negative, so the all-negative factor-28 mode is decisively eliminated and the exact negative continuation ratio is 5/7.",
+    "Factor 29 uniformly kills the homogeneous multiplier-one boundary. Every actual factor-28 parent has profile 8 cofinal, 6 positive, 15 negative. The exact quotient multiset modulo 29 is 0^7,15^8,24^8,25^4,27^2: class 15 pays the full factor 29, classes 25 and 27 switch positive, and the two surviving classes split into centered errors -1 and -6. The next computation must branch to raw factors 30 and 35 rather than continue a single homogeneous cylinder.",
+    "Factor 30 is uniformly inert on the actual (29,-1) source: all 544320 complete families have G=1 mod 30 and all thirty children remain negative. Factor 35 has no cofinal child and no uniform parentwise contraction, but it splits exactly one fifth inert and four fifths active; active families have profile 0 cofinal, 25 positive, 10 negative. This eliminates any generic factor-30 activation argument and any claim that factor 35 activates every source family, while establishing the exact weighted factor-35 continuation 3/7.",
+    "A prime-field image must classify the multiplier of the declared parent state, not the preceding height-29 multiplier. Omitting the exact factor-30/35 transport produced spurious zero-free profiles and a false successor frontier. The corrected computation restores that transport before applying unit-field permutation.",
+    "The corrected factor-31 profile is (4 cofinal,0 positive,27 negative), while the corrected factor-41 profile on (35,-6) is (2,39,0). Thus the factor-35 negative branch is completely extinct after factor 41, and the surviving factor-31 modes have raw factors 32,35,36,38,40,41.",
+    "Corrected descendant field propagation forces cofinal return again: (31,-10) has factor-41 profile (8,21,12), and its (41,-20) child has factor-61 profile (4,6,51). The remaining exact frontier is composite raw factors 32,35,36,38,40,57,64,66,75,76.",
+    "The coprimality route is capped at O(log C_n): for pairwise coprime old moduli with reciprocal sum at most 1/2, every window of length above 2^{k+1} (k the number of moduli below the window) contains an integer coprime to all of them, so a walk with rises O(2^k) = O(log u) for doubly exponential moduli avoids every old modulus forever (SlowNegativePartRigidity.md, Prop. 7; greedy witness in formal_math/probes/erdos243_crt_block_and_coprime_witness.py needs a maximal rise of 12 up to height 2e6 against Sylvester's numbers). The CRT block forces rises of order log2 log2 u only. Hence no argument using only pairwise coprimality and whole-modulus avoidance can exclude negative parts of order log C_n; the regime (1 - delta) log2 log2 C_n <= -E_n = o(C_n) needs the congruence E_n = D_n mod C_n beyond coprimality.",
+    "The Erdos-Straus LCM prefactor supplies no new sign information: M_n = q a_1...a_{n-1}/lcm divides c_n exactly, the LCM quantity is the product quantity divided by M_n, and both have the sign of e_n. Common-divisor persistence fails in LCM coordinates at cancellation steps (division by gcd(L_n, a_n)), so the bounded form limsup Q_n/M_n < infinity is not obtained."
+  ],
+  "open_producers": [
+    {
+      "id": "exclude_aperiodic_negative_state_orbits",
+      "priority": 1,
+      "statement": "Attack the sole remaining signed-state obstruction, now quantified: any counterexample has negative excursions with -E_n > (1 - delta) log2 log2 C_n infinitely often for every delta > 0 (slow_negative_part_rigidity, counterexample_loglog_negative_excursions), with divergent normalised negative mass and with every multiplier overlap gcd(a_n, D_n) bounded by the next negative magnitude. Coprimality-only arguments are capped at O(log C_n) rises, so the producer must use the congruence E_n = D_n (mod C_n) or a second landing mechanism. Attack the sole remaining signed-state obstruction: cofinally unbounded negative excursions in the exact dynamic cocycle. Corrected unit-field propagation kills the factor-35 branch, forces eight cofinal returns on (31,-10) at factor 41, and forces four more on its (41,-20) child at factor 61. The exact formerly inert factor-25 continuation is now 1061100/29229187. The next analytic producer is a source-conditioned negative-mass or cumulative-LCM transfer theorem consuming these contractions. Compute composite raw factors 32,35,36,38,40,57,64,66,75,76 with exact nonunit transport."
+    },
+    {
+      "id": "formalise_lcm_weighted_theorem",
+      "priority": 2,
+      "statement": "Kernel-check the analytic bridge into the now-checked LCM arithmetic core: strict ceiling, qW_n+V_n->0, log(g_n)/log(a_n)->0, and extraction of infinitely many distinct old primes from the original sequence hypotheses."
+    },
+    {
+      "id": "critical_boundary",
+      "priority": 3,
+      "statement": "Resolve the boundary n*(a_n^2/a_{n+1}-1)_+ approximately 1."
+    },
+    {
+      "id": "weighted_sparse_reset_lower_bound",
+      "priority": 2,
+      "statement": "Produce a quantitative lower bound connecting each repaired long-block CRT obstruction to prime-multiplicity or square-residue payment mass. The upper budget is now exact and multiplicatively accumulated; the missing direction is to prove that infinitely many repairs would force a payment product whose fixed power eventually exceeds 2^n."
+    },
+    {
+      "id": "current_scale_anti_shadowing",
+      "priority": 1,
+      "statement": "Exploit arithmetic at the recovery scale, rather than whole multipliers that already exceed every numerator on the clean leaf: prove a supply of useful current-scale factors or a global nonrecurrence theorem for the exact centered affine-multiplicative cocycle in the divergent normalized-negative-mass branch."
+    },
+    {
+      "id": "global_primitive_prefix_anti_shadowing",
+      "priority": 1,
+      "statement": "Upgrade the checked complete-prefix constraints gcd(A_n,a_n-1)|e_n and gcd(a_j,a_n-1)|e_n into an unbounded-prefix theorem. The needed conclusion must rule out indefinitely small nonzero centered errors while remaining compatible with every fixed finite E=-1 fixture."
+    },
+    {
+      "id": "primitive_modified_convergent_gcd_excess",
+      "priority": 1,
+      "statement": "Formalize the modified-convergent cross-error identity and then prove, on at least one globally coherent primitive block, that gcd(P,Q)>|e_endpoint|. The finite E=-1 fixtures realize equality for arbitrarily long local blocks, so the producer must consume unbounded prefix or recovery coherence rather than block length alone."
+    },
+    {
+      "id": "global_lcm_repair_lower_bound",
+      "priority": 1,
+      "statement": "Prove that every infinite arithmetically realizable normalized-vanishing nonterminal orbit forces cumulative overlap debt M_n to violate the checked subexponential budget: for some fixed K, 2^n<=M_n^K at arbitrarily large n. Equivalently, rule out a divergent but termwise vanishing global negative-mass budget financing only sparse overlap repairs."
+    },
+    {
+      "id": "reset_payment_lower_bound",
+      "priority": 1,
+      "statement": "Prove that repeatedly repairing the complete-prefix CRT obstructions across globally coherent reset recoveries consumes a quantitatively non-subexponential product of exact square-cancellation payments, contradicting the already checked subexponential payment budget. Exact witnesses rule out deriving this from one clean-prefix length, aggregate raw-reset lengths, one complete clean recovery, or the lengths and reset payments of a pair of consecutive clean recoveries. The producer must use unbounded complete-prefix arithmetic or changing residue/prime/overlap data across recoveries."
+    }
+  ],
+  "claim_ceiling": "Erdos #243 remains open. The strongest longitudinal theorem is now slow-negative-part rigidity: under the exact dynamics and normalised vanishing, a negative part bounded by (1 - delta) log2 log2 C_n forces the Sylvester recurrence; its Lean core (bounded CRT block, common-divisor persistence, the landing theorem and the block-form contradiction) is kernel-checked in SlowRiseBarrier.lean and the transfer to the canonical orbit is an ordinary proof. Any counterexample therefore has limsup (-E_n)_+ / log2 log2 C_n >= 1 and multiplier overlaps bounded by the next negative magnitude. The coprimality route is provably capped at rises O(log C_n). The 1/n threshold is verified with constant exactly 1. Erdos #243 remains open. After restoring the missing height-29-to-parent transport, the exact t=0 source cascade proves factor-41 extinction of the entire (35,-6) negative branch, eight cofinal returns on every (31,-10) parent, and four cofinal returns on every descendant (41,-20) parent at factor 61. Combining all certified blocks yields exact continuation 1061100/29229187 for the formerly inert factor-25 branch. This is a source-conditioned finite-cylinder contraction, not a global transfer theorem. Composite negative modes with raw factors 32,35,36,38,40,57,64,66,75,76 remain, and the decisive analytic producer is still a global negative-mass, cumulative-LCM, or repair-payment theorem. No unrestricted #243 solution is claimed.",
+  "public_projection": {
+    "state": "kernel_checked_source_published_incrementally",
+    "repository": "public-source-redacted://plectis-lean-erdos-problems-public",
+    "published_commits": ["452583b", "4ceefcc", "2230b97"],
+    "release_rule": "promote only exact kernel-checked source slices; keep unrestricted-solution and novelty claims withheld pending human mathematical review"
+  }
+}

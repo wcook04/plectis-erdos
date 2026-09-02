@@ -1,0 +1,937 @@
+# Verdict
+
+I have **not** obtained a complete proof that
+
+[
+S_{3,2}:=\sum_{m\ge1}\frac1{(3/2)^m-1}
+]
+
+is irrational. I did obtain three substantive results:
+
+1. A rational homogenisation of Zudilin’s permutation-enhanced hypergeometric approximants that **strictly improves the R3 rational-base region** and proves an infinite new family of non-integral rational bases.
+2. An exact optimisation theorem showing that the standard rectangular two-function Hermite–Padé construction cannot improve the R3 threshold at all.
+3. An exact (2)-adic/(3)-adic calculation at (3/2) showing why the promising large (3)-adic factor in the hypergeometric coefficient does **not** survive in the rationality-forced integer linear form.
+
+Thus the tested simultaneous and adelic constructions do not yet prove the (3/2) case, but the result is considerably sharper than another unsuccessful parameter search: it gives a new irrationality theorem, an infinite family beyond R3, and a quantitative specification of the local gain that a successful (3/2) construction must supply. This addresses the packet’s required fallback rather than treating the absence of a known proof as an impossibility argument. 
+
+The distinction matters because R3 only ruled out the literal coordinatewise corridor; it did not rule out simultaneous cancellation or a genuine product-formula construction. 
+
+---
+
+# 1. A stronger rational-base theorem
+
+Write
+
+[
+h_p(1):=\sum_{m\ge1}\frac1{p^m-1},
+\qquad p=\frac ab>1,\qquad (a,b)=1.
+]
+
+I use the hypergeometric construction underlying Zudilin’s best published irrationality-measure estimate for (h_p(1)) when (p) is an integer. The source provides the partial fractions, cyclotomic divisor, permutation gain, positivity, and asymptotic constants; the rational-base homogeneous evaluation below is the additional step. ([[Polish Mathematical Institute](https://www.impan.pl/shop/en/publication/transaction/download/product/82435)][1])
+
+## 1.1 Explicit approximants
+
+Put (q=p^{-1}), and for (n\ge1) take
+
+[
+a_0=14n+1,\qquad
+a_1=12n+1,\qquad
+a_2=14n+1,\qquad
+B=27n+2.
+]
+
+For ((x;q)*r=\prod*{j=0}^{r-1}(1-xq^j)), define
+
+[
+R_n(T)=
+\frac{(qT;q)*{a_1-1}}{(q;q)*{a_1-1}},
+\frac{(q;q)*{B-a_2-1}}
+{(q^{a_2}T;q)*{B-a_2-1}},
+T^{a_0}.
+]
+
+For (p>1), every factor of (R_n(q^t)) is positive. Hence
+
+[
+F_n(p):=\sum_{t\ge0}R_n(q^t)>0.
+]
+
+The partial-fraction expansion is
+
+[
+R_n(T)=T^{a_0}\sum_{k=a_2}^{B-1}
+\frac{A_{n,k}}{1-q^kT},
+]
+
+where
+
+[
+A_{n,k}
+=(-1)^{a_1+a_2+k+1}p^{E_{n,k}}
+{k-1\brack a_1-1}_p
+{B-a_2-1\brack B-k-1}_p
+]
+
+and
+
+[
+E_{n,k}
+=======
+
+\frac{a_1(a_1-1)}2
+-\frac{(B-a_2)(B-a_2-1)}2
++\frac{(B-k)(B-k-1)}2.
+]
+
+Consequently,
+
+[
+F_n(p)=A_n(p)h_p(1)-B_{1,n}(p)-B_{2,n}(p),
+]
+
+with
+
+[
+A_n(p)=\sum_{k=a_2}^{B-1}A_{n,k}p^{a_0k},
+]
+
+[
+B_{1,n}(p)=
+\sum_{k=a_2}^{B-1}A_{n,k}p^{a_0k}
+\sum_{\ell=1}^{k-a_1}\frac1{p^\ell-1},
+]
+
+and
+
+[
+B_{2,n}(p)=
+\sum_{k=a_2}^{B-1}\sum_{j=1}^{a_0-1}
+\frac{A_{n,k}p^{a_0k-j(k-a_1)}}{p^j-1}.
+]
+
+The exponent in the last display is (a_0k-j(k-a_1)); this is the version for which the exact identity with the positive sum (F_n) holds.
+
+## 1.2 Cyclotomic denominator and polynomial degrees
+
+Set
+
+[
+M_n=266n^2+34n+1
+]
+
+and
+
+[
+D_{15n}(p)=\prod_{\ell=1}^{15n}\Phi_\ell(p).
+]
+
+Define
+
+[
+\nu_\ell=\max\left{
+\begin{aligned}
+&0,\
+&\left\lfloor\frac{14n}{\ell}\right\rfloor+
+\left\lfloor\frac{13n}{\ell}\right\rfloor-
+\left\lfloor\frac{12n}{\ell}\right\rfloor-
+\left\lfloor\frac{15n}{\ell}\right\rfloor,\
+&2\left\lfloor\frac{14n}{\ell}\right\rfloor-
+\left\lfloor\frac{13n}{\ell}\right\rfloor-
+\left\lfloor\frac{15n}{\ell}\right\rfloor
+\end{aligned}
+\right}
+]
+
+and
+
+[
+\Omega_n(p)=\prod_{\ell=2}^{15n}\Phi_\ell(p)^{\nu_\ell}.
+]
+
+For this parameter direction the source proves that the (\nu_\ell) are (0) or (1), and that
+
+[
+\Lambda_n(p):=
+p^{-M_n}\frac{D_{15n}(p)}{\Omega_n(p)}F_n(p)
+=U_n(p)h_p(1)-V_n(p)
+]
+
+has
+
+[
+U_n,V_n\in\mathbb Z[p].
+]
+
+The degree calculation is finite and especially clean. The degree of the (k)-th summand of (A_n) is
+
+[
+d_{n,k}
+=a_0k+E_{n,k}
++(a_1-1)(k-a_1)
++(B-k-1)(k-a_2),
+]
+
+and direct subtraction gives
+
+[
+\boxed{d_{n,k+1}-d_{n,k}=40n+1-k.}
+]
+
+Since (k\le B-2=27n), these differences are positive. Hence the last summand controls the degree:
+
+[
+\boxed{
+K_n:=\deg A_n
+=\frac{1091n^2+81n+2}{2}.}
+]
+
+Now put
+
+[
+W_n=
+K_n-M_n+
+\sum_{\ell=1}^{15n}\varphi(\ell)
+-\sum_{\ell=2}^{15n}\nu_\ell\varphi(\ell).
+]
+
+Then
+
+[
+\deg U_n=W_n,\qquad \deg V_n=W_n-1,
+]
+
+and their leading coefficients have absolute value (1).
+
+## 1.3 Rational homogenisation
+
+For reduced (a>b\ge1), define
+
+[
+\widehat U_n(a,b)=b^{W_n}U_n(a/b),\qquad
+\widehat V_n(a,b)=b^{W_n}V_n(a/b).
+]
+
+Because the polynomial degrees are at most (W_n),
+
+[
+\widehat U_n(a,b),\widehat V_n(a,b)\in\mathbb Z.
+]
+
+Moreover,
+
+[
+\widehat\Lambda_n(a,b)
+:=\widehat U_n(a,b)S_{a,b}-\widehat V_n(a,b)
+=b^{W_n}\Lambda_n(a/b)>0.
+]
+
+Positivity gives exact nonvanishing; no determinant estimate is required here.
+
+The published asymptotic constants for this direction are
+
+[
+C_1=\frac{1091}{2}=545.5,
+\qquad
+C_0=221.30008816\ldots,
+]
+
+with
+
+[
+\frac{W_n}{n^2}\longrightarrow C_1-C_0
+]
+
+and
+
+[
+\frac1{n^2}\log \Lambda_n(a/b)
+\longrightarrow
+-C_0\log(a/b).
+]
+
+It follows that
+
+[
+\boxed{
+\frac1{n^2}\log\widehat\Lambda_n(a,b)
+\longrightarrow
+C_1\log b-C_0\log a.}
+]
+
+Assume now that (S_{a,b}=P/Q) in lowest terms. Then
+
+[
+Q\widehat\Lambda_n(a,b)
+=P\widehat U_n(a,b)-Q\widehat V_n(a,b)
+]
+
+is a positive integer. It cannot tend to zero. Therefore:
+
+[
+\boxed{
+\frac{\log b}{\log a}<\frac{C_0}{C_1}
+\quad\Longrightarrow\quad
+S_{a,b}\notin\mathbb Q.}
+]
+
+Numerically,
+
+[
+\frac{C_0}{C_1}
+=0.40568302138\ldots,
+]
+
+whereas the R3/Bundschuh–Väänänen boundary is
+
+[
+\frac12-\frac1{\pi^2}
+=0.39867881635\ldots.
+]
+
+Thus this is a strict enlargement of the rational-base region.
+
+## 1.4 An exact rational lower bound for the new constant
+
+The source’s permutation calculation expresses
+
+[
+C_0=266-\frac3{\pi^2}(225-J),
+]
+
+where (J) is a sum of trigamma differences over thirteen rational intervals. For each (0<u<v),
+
+[
+\psi_1(u)-\psi_1(v)
+===================
+
+\sum_{k\ge0}
+\frac{(v-u)(2k+u+v)}
+{(k+u)^2(k+v)^2}.
+]
+
+Every summand is positive. Retaining only (0\le k<10) in the thirteen source intervals gives, by exact rational arithmetic,
+
+[
+J>\frac{389699}{5000}=77.9398.
+]
+
+Using (\pi>157/50),
+
+[
+C_0>
+266-\frac{3}{(157/50)^2}
+\left(225-\frac{389699}{5000}\right)
+
+>
+
+\frac{88371}{400}.
+]
+
+But
+
+[
+\frac{88371}{400}
+=\frac{81}{200},\frac{1091}{2}
+=\frac{81}{200}C_1.
+]
+
+Hence the convenient exact bound
+
+[
+\boxed{\frac{C_0}{C_1}>\frac{81}{200}.}
+]
+
+---
+
+# 2. A genuinely new infinite family beyond R3
+
+Consider
+
+[
+a=31^r,\qquad b=4^r,\qquad r\ge1.
+]
+
+The logarithmic ratio is independent of (r):
+
+[
+\frac{\log b}{\log a}
+=\frac{\log4}{\log31}.
+]
+
+We have the exact integer inequalities
+
+[
+2^{84}<31^{17},\qquad 2^{64}<31^{13}.
+]
+
+Therefore
+
+[
+4^{200}=2^{400}
+=2^{4\cdot84+64}
+<31^{4\cdot17+13}
+=31^{81},
+]
+
+and so
+
+[
+\frac{\log4}{\log31}<\frac{81}{200}<\frac{C_0}{C_1}.
+]
+
+It follows that
+
+[
+\boxed{
+\sum_{m\ge1}
+\frac1{\bigl((31/4)^r\bigr)^m-1}
+\text{ is irrational for every }r\ge1.}
+]
+
+This family is not covered by R3. Indeed,
+
+[
+4^5=1024>961=31^2,
+]
+
+so
+
+[
+\frac{\log4}{\log31}>\frac25.
+]
+
+Also (\pi^2<10), for example from (\pi<22/7), and therefore
+
+[
+\frac12-\frac1{\pi^2}<\frac25.
+]
+
+Thus
+
+[
+\frac{\log4}{\log31}>
+\frac25>
+\frac12-\frac1{\pi^2}.
+]
+
+The theorem above therefore crosses the previous one-place boundary on an explicit infinite set, as required by the fallback clause of the attack brief. 
+
+The hypergeometric engine itself is published for integral (p); the homogeneous rational-base theorem and the (31/4) family are derivations from it. I have not established a priority claim for this rational specialisation, in accordance with the packet’s prior-art rules. 
+
+---
+
+# 3. Exact (2)-adic and (3)-adic budget at (p=3/2)
+
+The preceding construction has a surprisingly large (3)-adic factor in one coefficient. It is nevertheless the wrong kind of factor.
+
+Put
+
+[
+\widehat U_n:=2^{W_n}U_n(3/2),
+\qquad
+\widehat V_n:=2^{W_n}V_n(3/2).
+]
+
+## 3.1 Order of (U_n) at (p=0)
+
+For the general hypergeometric parameters, the minimum (p)-degree in the raw (A)-sum occurs uniquely at (k=a_2). After the normalisation by (p^{-M_n}), its order is
+
+[
+(a_2-a_1)(a_0+a_2-B).
+]
+
+For the selected direction,
+
+[
+a_2-a_1=2n,\qquad
+a_0+a_2-B=n,
+]
+
+and hence
+
+[
+\boxed{\operatorname{ord}_{p=0}U_n=2n^2.}
+]
+
+More precisely,
+
+[
+U_n(p)=p^{2n^2}\widetilde U_n(p),
+\qquad
+\widetilde U_n(0)=\pm1.
+]
+
+Homogeneous evaluation at (p=3/2) therefore gives
+
+[
+\boxed{v_3(\widehat U_n)=2n^2.}
+]
+
+## 3.2 Constant coefficient of (V_n)
+
+Expanding the normalised (B_1+B_2) expression at (p=0), the (B_1) part has positive order, while the transformed (B_2) sum has one surviving constant term. Including the constant term of (D_{15n}/\Omega_n) gives
+
+[
+\boxed{V_n(0)=1.}
+]
+
+Consequently,
+
+[
+\boxed{v_3(\widehat V_n)=0.}
+]
+
+At the other local place, the leading terms give
+
+[
+\boxed{v_2(\widehat U_n)=0,\qquad
+v_2(\widehat V_n)=1.}
+]
+
+The first three exact finite regressions are
+
+[
+W_1=333,\qquad W_2=1315,\qquad W_3=2944,
+]
+
+and
+
+[
+\begin{array}{c|ccc}
+n&1&2&3\ \hline
+v_3(\widehat U_n)&2&8&18\
+v_3(\widehat V_n)&0&0&0\
+v_2(\widehat U_n)&0&0&0\
+v_2(\widehat V_n)&1&1&1
+\end{array}
+]
+
+These are checks of the general formulae, not evidence for a new asymptotic assertion.
+
+## 3.3 Why the large (3)-adic factor disappears
+
+Suppose
+
+[
+S_{3,2}=\frac PQ,\qquad (P,Q)=1,
+]
+
+and form the integer
+
+[
+X_n=P\widehat U_n-Q\widehat V_n
+=Q\widehat\Lambda_n>0.
+]
+
+For sufficiently large (n),
+
+[
+v_3(P\widehat U_n)
+=v_3(P)+2n^2
+
+> v_3(Q)
+> =v_3(Q\widehat V_n).
+> ]
+
+The two summands have unequal (3)-adic valuations. Therefore the ultrametric equality gives
+
+[
+\boxed{v_3(X_n)=v_3(Q)}
+]
+
+for every sufficiently large (n).
+
+Thus the quadratic factor (3^{2n^2}) in (\widehat U_n) is **one-sided**. It does not divide the rationality-forced integer linear form. At (2), the coefficient pair has no common positive valuation at all:
+
+[
+\min{v_2(\widehat U_n),v_2(\widehat V_n)}=0.
+]
+
+This is exactly the denominator-transfer phenomenon represented abstractly in the supplied adelic-height file: local content in one displayed coefficient is not a gain unless it survives in the common integer obstruction. The supplied Lean modules contain finite product-formula and determinant interfaces, not an irrationality theorem for this value. 
+
+## 3.4 The complete exponent deficit at (3/2)
+
+The homogeneous archimedean exponent is
+
+[
+E_{3/2}
+=C_1\log2-C_0\log3
+=134.98879065\ldots>0.
+]
+
+Hence these homogeneous forms do not tend to zero at (3/2).
+
+Even counterfactually treating the entire factor (3^{2n^2}) in (\widehat U_n) as a common divisor would only change the exponent to
+
+[
+E_{3/2}-2\log3
+=132.791566\ldots>0.
+]
+
+A successful descendant of this construction therefore needs, in natural-log units, a common local gain
+
+[
+\boxed{G>134.98879065\ldots}
+]
+
+per (n^2). Equivalently, it needs at least one of
+
+[
+v_3(X_n)>
+\left(\frac{E_{3/2}}{\log3}+o(1)\right)n^2
+==========================================
+
+(122.87\ldots+o(1))n^2,
+]
+
+or
+
+[
+v_2(X_n)>
+\left(\frac{E_{3/2}}{\log2}+o(1)\right)n^2
+==========================================
+
+(194.75\ldots+o(1))n^2,
+]
+
+or a mixed (2)-/(3)-adic gain of the corresponding weighted size.
+
+The actual (3)-adic valuation is eventually the fixed number (v_3(Q)).
+
+---
+
+# 4. The rectangular simultaneous Hermite–Padé family is optimally no better than R3
+
+Postelmans and Van Assche construct simultaneous approximants to the first two (q)-zeta values, proving linear independence when (q^{-1}) is an integer. Their construction is a natural candidate for a rational-base simultaneous attack, but the exact homogeneous budget shows that its additional vanishing is precisely cancelled by its additional polynomial width. ([[arXiv](https://arxiv.org/abs/math/0604312)][2])
+
+Let the two approximation degrees have ratio
+
+[
+\frac mn\longrightarrow\rho,\qquad 0\le\rho\le1,
+]
+
+and let the evaluation point satisfy
+
+[
+\frac Ln\longrightarrow\sigma,\qquad
+\sigma\ge1+\rho.
+]
+
+The exact quadratic exponents are:
+
+[
+c(\rho,\sigma)
+=\frac{1+\rho^2}{2}+\sigma
+]
+
+for the raw archimedean decay,
+
+[
+h(\rho,\sigma)
+=\frac{(1+\rho)^2}{2}+\sigma(1+\rho)
+]
+
+for homogeneous polynomial width, and
+
+[
+\delta(\sigma)=\frac{3\sigma^2}{\pi^2}
+]
+
+for the cyclotomic saving.
+
+The resulting rational-base boundary is
+
+[
+\Theta(\rho,\sigma)
+===================
+
+\frac{c(\rho,\sigma)-\delta(\sigma)}
+{h(\rho,\sigma)+c(\rho,\sigma)}.
+]
+
+I obtain the exact optimisation
+
+[
+\boxed{
+\Theta(\rho,\sigma)
+\le
+\frac12-\frac1{\pi^2},}
+]
+
+with equality only at
+
+[
+\rho=0,\qquad \sigma=1,
+]
+
+which is the ordinary one-function Padé endpoint.
+
+Indeed, write
+
+[
+\sigma=1+\rho+u,\qquad u\ge0.
+]
+
+After multiplying by the positive denominator, the desired inequality is equivalent to
+
+[
+(\pi^2+2)c-6\sigma^2-(\pi^2-2)h\le0.
+]
+
+Direct expansion gives
+
+[
+\begin{aligned}
+&(\pi^2+2)c-6\sigma^2-(\pi^2-2)h\
+={}&-\pi^2\rho^2-\pi^2\rho u-2\pi^2\rho
+-2\rho^2-10\rho u-4\rho-6u^2-8u,
+\end{aligned}
+]
+
+which is non-positive and vanishes only when (\rho=u=0).
+
+Therefore this entire rectangular two-function family cannot even strictly improve R3, let alone reach
+
+[
+\frac{\log2}{\log3}
+=0.63092975\ldots.
+]
+
+This is a family-level optimality theorem, not merely a failed choice of (m,n,L).
+
+A related general obstruction is worth recording. Any single polynomial-form construction with coefficient exponent (C_1-C_0), error exponent (C_0), and no common specialised local divisor has rational-base boundary (C_0/C_1). Since its integer-base irrationality exponent is (C_1/C_0\ge2), that boundary is at most (1/2). But
+
+[
+\frac{\log2}{\log3}>\frac12
+\quad\Longleftrightarrow\quad
+4>3.
+]
+
+Thus **no one-form homogeneous construction without a genuine common local gain can reach (3/2)**.
+
+---
+
+# 5. Why merely comparing the real and (2)-adic Lambert sums is insufficient
+
+The series
+
+[
+\sum_{m\ge1}\tau(m)(2/3)^m
+]
+
+converges both in (\mathbb R) and in (\mathbb Q_2). Those two limits need not be the same rational number. Consequently, assuming that the real limit is (P/Q) does not identify the (2)-adic limit with (P/Q).
+
+A valid adelic proof must therefore construct a **single rational or integral object**
+
+[
+X_n=P A_n-QB_n
+]
+
+whose archimedean absolute value and local valuations are simultaneously controlled. Separate convergence statements in different completions do not enter the product formula for the same number.
+
+For a nonzero integer (X),
+
+[
+\log |X|
+\ge v_2(X)\log2+v_3(X)\log3.
+]
+
+The remaining task is precisely to build nonzero (X_n) for which the reverse strict inequality follows from the approximation estimates.
+
+---
+
+# 6. Instructions for Type A
+
+The finite part can be landed independently of the analytic asymptotics.
+
+```lean
+def zudilinNu (n ell : ℕ) : ℕ := ...
+
+def zudilinM (n : ℕ) : ℕ :=
+  266 * n^2 + 34 * n + 1
+
+def zudilinK (n : ℕ) : ℕ :=
+  (1091 * n^2 + 81 * n + 2) / 2
+
+def zudilinWidth (n : ℕ) : ℕ :=
+  zudilinK n - zudilinM n
+    + ∑ ell ∈ Finset.Icc 1 (15*n), Nat.totient ell
+    - ∑ ell ∈ Finset.Icc 2 (15*n),
+        zudilinNu n ell * Nat.totient ell
+```
+
+The first exact algebraic lemma should be
+
+```lean
+theorem zudilin_raw_degree_succ
+    (hk₁ : 14*n + 1 ≤ k)
+    (hk₂ : k < 27*n + 1) :
+    rawDegree n (k + 1) - rawDegree n k
+      = 40*n + 1 - k
+```
+
+followed by
+
+```lean
+theorem zudilin_A_degree :
+    rawADegree n = (1091*n^2 + 81*n + 2) / 2
+```
+
+and the finite local lemmas
+
+```lean
+theorem zudilin_U_order :
+    polynomialOrder (zudilinU n) = 2*n^2
+
+theorem zudilin_U_reduced_constant :
+    ((zudilinU n) /ₘ X^(2*n^2)).coeff 0 = 1 ∨
+    ((zudilinU n) /ₘ X^(2*n^2)).coeff 0 = -1
+
+theorem zudilin_V_constant :
+    (zudilinV n).coeff 0 = 1
+
+theorem zudilin_U_degree :
+    (zudilinU n).natDegree = zudilinWidth n
+
+theorem zudilin_V_degree :
+    (zudilinV n).natDegree + 1 = zudilinWidth n
+```
+
+The specialised valuation statements are
+
+```lean
+theorem zudilin_three_two_v3_U :
+    padicValInt 3 (zudilinUHat n) = 2*n^2
+
+theorem zudilin_three_two_v3_V :
+    padicValInt 3 (zudilinVHat n) = 0
+
+theorem zudilin_three_two_v2_U :
+    padicValInt 2 (zudilinUHat n) = 0
+
+theorem zudilin_three_two_v2_V :
+    padicValInt 2 (zudilinVHat n) = 1
+```
+
+The rationality obstruction should be isolated as a reusable lemma:
+
+```lean
+theorem valuation_linear_form_stabilises
+    (hPQ : IsCoprime P Q)
+    (hU : padicValInt 3 U = 2*n^2)
+    (hV : padicValInt 3 V = 0)
+    (hn : padicValInt 3 Q < 2*n^2) :
+    padicValInt 3 (P*U - Q*V) = padicValInt 3 Q
+```
+
+Regression fixtures:
+
+```lean
+example : zudilinWidth 1 = 333 := by native_decide
+example : zudilinWidth 2 = 1315 := by native_decide
+example : zudilinWidth 3 = 2944 := by native_decide
+```
+
+The simultaneous-family optimisation can be landed as a real-algebra lemma after clearing positive denominators:
+
+```lean
+theorem rectangular_hp_threshold_le_classical
+    (hρ₀ : 0 ≤ ρ) (hρ₁ : ρ ≤ 1)
+    (hσ : 1 + ρ ≤ σ) :
+    hpThreshold ρ σ ≤ 1 / 2 - 1 / Real.pi^2
+```
+
+The proof should introduce `u = σ - 1 - ρ`, rewrite the difference as
+
+```text
+-π²ρ² - π²ρu - 2π²ρ
+- 2ρ² - 10ρu - 4ρ - 6u² - 8u
+```
+
+and finish from non-negativity.
+
+The analytic theorem to expose, but not mark Lean-proved until the source asymptotics are formalised, is
+
+```lean
+theorem irrational_erdos1049_of_log_ratio_lt_zudilin
+    (hcop : Nat.Coprime a b)
+    (hab : b < a)
+    (h :
+      Real.log b / Real.log a < zudilinC0 / zudilinC1) :
+    Irrational (erdos1049RationalValue a b)
+```
+
+with the exact endpoint
+
+```lean
+theorem irrational_erdos1049_thirtyone_four :
+    Irrational (erdos1049RationalValue 31 4)
+```
+
+The finite checks, analytic source import, and public claim must remain separate authority states, as required by the repository methodology. 
+
+---
+
+# Claim ceiling
+
+**Established in this response**
+
+[
+\frac{\log b}{\log a}<0.40568302138\ldots
+\quad\Longrightarrow\quad
+\sum_{m\ge1}\frac1{(a/b)^m-1}\notin\mathbb Q,
+]
+
+by rational homogenisation of the published hypergeometric forms.
+
+In particular,
+
+[
+\sum_{m\ge1}
+\frac1{\bigl((31/4)^r\bigr)^m-1}
+]
+
+is irrational for every (r\ge1), an infinite family lying strictly outside the R3 region.
+
+Also established:
+
+* the rectangular two-function Hermite–Padé threshold is optimally no better than the one-function threshold;
+* the Zudilin coefficient pair at (3/2) has exact local valuations
+  [
+  (v_3(\widehat U_n),v_3(\widehat V_n))=(2n^2,0),
+  \qquad
+  (v_2(\widehat U_n),v_2(\widehat V_n))=(0,1);
+  ]
+* under a hypothetical (S_{3,2}=P/Q),
+  [
+  v_3(P\widehat U_n-Q\widehat V_n)=v_3(Q)
+  ]
+  eventually;
+* a successful continuation of this construction needs more than
+  [
+  134.98879065,n^2
+  ]
+  of common logarithmic local gain.
+
+**Not established**
+
+[
+\boxed{S_{3,2}\notin\mathbb Q.}
+]
+
+The exact remaining mathematical obligation is to construct a nonzero family of rationality-forced integers (X_n) satisfying
+
+[
+\limsup_{n\to\infty}
+\frac{
+\log|X_n|
+-v_2(X_n)\log2
+-v_3(X_n)\log3
+}{n^2}<0.
+]
+
+The present hypergeometric forms have a large but one-sided (3)-adic factor, so their left-hand side retains the positive archimedean deficit. The literature checked here treats the strongest q-logarithm and simultaneous q-zeta results in the integral-(p) setting; I did not find a published construction supplying the common local divisor required at (p=3/2). ([[Springer](https://link.springer.com/article/10.1007/s40993-016-0042-x?utm_source=chatgpt.com)][3])
+
+[1]: https://www.impan.pl/shop/en/publication/transaction/download/product/82435 "https://www.impan.pl/shop/en/publication/transaction/download/product/82435"
+[2]: https://arxiv.org/abs/math/0604312 "https://arxiv.org/abs/math/0604312"
+[3]: https://link.springer.com/article/10.1007/s40993-016-0042-x?utm_source=chatgpt.com "On the irrationality of generalized q-logarithm - Springer Nature"

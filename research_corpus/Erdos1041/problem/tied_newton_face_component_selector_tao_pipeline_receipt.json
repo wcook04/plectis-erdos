@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "returned_component_degree_formula_and_critical_hub_rescue",
+  "output_stage": "component_passport_with_exact_rescue_and_strict_metric_quantifier_guard",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComponentSelector.md",
+  "human_understanding_delta": "A negative component is a finite branched cover of the left half-plane; its end count is one plus interior ramification and its end labels form a noncrossing block. On the calibration quintic the minimum-real critical point was never the obstruction: angular bracketing chose the isolated end from another component. The original critical point strictly joins its true component ends. The limiting metric producer must be strict or have equality rigidity, because beta=0 need not occur at finite radius.",
+  "verification_state": "exact symbolic checker PASS; focused serialized Lean build and final authority replay PASS",
+  "publication_or_review_state": "private authoring checkpoint; proper-map/Riemann-map/Blaschke/Riemann-Hurwitz/crosscut and horizontal-fibre comparison remain ordinary mathematics",
+  "canonicalization_state": "component membership replaces angular adjacency; HF-strict replaces a non-strict limiting surrogate",
+  "unresolved_downstream_bottleneck": "Prove a strict negative horizontal-fibre defect for some paired-trace critical edge, or a direct finite connector, uniformly over all low tied faces; then prove finite near-Fekete transfer and close the away-from-Fekete regime.",
+  "next_stage_owner": "mathematical_closure_engine",
+  "tool_disclosure": "The returned radical certificate was independently replayed; the stronger quantifier guard was added analytically before landing."
+}

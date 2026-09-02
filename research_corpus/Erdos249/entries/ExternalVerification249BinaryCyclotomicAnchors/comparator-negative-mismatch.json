@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249BinaryCyclotomicAnchors.Challenge",
+  "solution_module": "ExternalVerification249BinaryCyclotomicAnchors.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

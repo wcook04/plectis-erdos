@@ -1,0 +1,20 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "input_stage": "computation_guided_proof_generation",
+  "output_stage": "verified_analytic_proof_and_formal_kernel",
+  "artifact": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TetranomialElementarySymmetricSelector.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TetranomialElementarySymmetricSelector.lean",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tetranomial_elementary_symmetric_selector.py"
+  ],
+  "human_understanding_delta": "Higher elementary-symmetric tail energies give both a product-free hierarchy e_k >= binom(m-1,k) and, when P<=1, the sharp bonus e_k >= binom(m-1,k)+P binom(m-1,k-1). The bonus follows by absorbing each large entry into the unique possible small entry, with exact nonnegative drop (1-y)(z-1)e_(k-1). The product-free k=2 threshold E_2<6 already closes the primitive quintic survivor and an exact separated rational family missed by every preceding coefficient, reciprocal, total-energy, and 5/9 close-pair certificate.",
+  "verification_state": {
+    "analytic": "complete, including the all-m all-k compression proof and exact strict-extension family",
+    "lean": "exact target ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector passed the refreshed canonical shared-cache build on 2026-08-24, including the product-free five-tail and complex specializations; the only emitted warning is the pre-existing push_neg deprecation in imported TetranomialL2Selector",
+    "computation": "deterministic exact-Fraction witness checker passes; the original primitive survivor has product-free pair-energy margin about 0.31072; a separate constrained primitive replay shows that no layer k=1..4 is exhaustive"
+  },
+  "publication_or_review_state": "private expert handoff; not externally reviewed; no literature-priority or unrestricted-solution claim",
+  "canonicalization_state": "product-free and sharp product-bonus elementary-symmetric hierarchies canonically extend the existing k=1 selectors; exact primitive strict-extension witness retained",
+  "unresolved_downstream_bottleneck": "derive coefficient-visible bounds for the primitive pair energy where applicable, but a complete primitive proof must also consume complex tail phases or another path mechanism because an explicit three-safe-tail replay evades every symmetric-energy layer; unrestricted Erdős #1041 remains open",
+  "next_stage_owner": "formal-math Refinery for expert exposition; Codex closure loop continues with coefficient bounds for the exact primitive-quintic pair-energy expansion"
+}

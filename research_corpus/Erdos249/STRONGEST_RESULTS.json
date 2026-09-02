@@ -1,0 +1,182 @@
+{
+  "schema": "plectis_strongest_result_activation_map_v2",
+  "problem_id": "erdos_249",
+  "status": "open",
+  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "erdos249_residue_gap_supply_equivalence",
+      "status": "strongest_premise",
+      "exact_statement": "Irrationality of S = sum_{n>=1} phi(n)/2^n is EQUIVALENT in Lean to FullMersenneCanonicalBasepointResidueGapSupply: for every c and every positive odd v there exists H > 0 divisible by phi(v) whose canonical totient-block residue modulo (2^H - 1)/v lies in the central interval of radius c + H + 1. No construction supplies that H.",
+      "hypotheses": "Lean-checked equivalence carried by the ExternalVerification249CanonicalMersenneFrontier entry and #249's research packet.",
+      "named_consumers": [
+        "shrinking_target_dictionary",
+        "erdos_249_parent"
+      ],
+      "supersedes": [
+        "sufficient-condition readings of the residue-gap supply"
+      ],
+      "why_it_matters": "The third proved equivalence of the same shape, with a target of linear width against an exponentially growing modulus.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/research_packet.json",
+        "research_corpus/Erdos249/problem/CyclotomicAnchoredKill.lean"
+      ]
+    },
+    {
+      "result_id": "totient_k_kernel_rank_k_to_e_plus_one",
+      "status": "strongest_premise",
+      "exact_statement": "For every integer base k >= 2 and every e >= 1, the bounded-depth totient k-kernel has rational dimension k^e + 1, with the explicit canonical basis indexed by the zero channel together with the residues r satisfying k does not divide r.",
+      "hypotheses": "The source note supplies the ordinary all-base argument. Lean checks the arithmetic, indexing and spanning layers and the exact-rank conclusion ONLY under an explicit LinearIndependent hypothesis; the unconditional all-base independence theorem and the Basis declaration are NOT formalised.",
+      "named_consumers": [
+        "exact_k_kernel_rank_parent",
+        "k_regularity_theory"
+      ],
+      "supersedes": [
+        "k = 2 corollaries of non-regularity",
+        "qualitative statements that the totient kernel is infinite-dimensional"
+      ],
+      "why_it_matters": "Coons 2010 proves phi is not k-regular for any k >= 2, which is a qualitative negative. An EXACT finite-level rank with an explicit basis is a quantitative invariant of the same object, and it is what a specialist in k-regular sequences would want. The unconditional all-base independence proof is the whole gap.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/docs/formal_math/odd_slope_affine_totient_independence.md",
+        "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/TotientKernelReduction.lean"
+      ]
+    },
+    {
+      "result_id": "totient_kernel_reduction_normal_form_lean_checked",
+      "status": "strongest_premise",
+      "exact_statement": "The zero-residue sections reduce to the canonical F_(1,0) channel, and every composite-base residue with k dividing r admits the exact gcd-corrected reduction; these identities give unconditional canonical spanning and the relation normal form once the remaining independence statement is supplied. Lean declarations: Erdos249257.totient_pow_mul_eq and Erdos249257.totient_pow_mul_affine_gcd_cross_eq.",
+      "hypotheses": "Lean-checked unconditional reduction and spanning. They do NOT assert the all-base independence theorem or an assumption-free Basis declaration.",
+      "named_consumers": [
+        "exact_k_kernel_rank_parent"
+      ],
+      "supersedes": [
+        "ad hoc per-base reduction arguments"
+      ],
+      "why_it_matters": "It isolates the gap exactly: spanning is done, independence is not.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/TotientKernelReduction.lean"
+      ]
+    },
+    {
+      "result_id": "mobius_mersenne_all_rungs_strict_log_concavity",
+      "status": "strongest_premise",
+      "exact_statement": "For every integer r >= 1, Theta_r Theta_(r+2) < Theta_(r+1)^2 and Theta_r Theta_(r+2) - Theta_(r+1)^2 < 0. Lean proves r = 1,2,3,4 through an exact five-atom enclosure (splitting off d = 1,...,5, bounding the residual tail by (2^-r)^5/(1 - 2^-r) and discharging four exact rational inequalities) and proves every r >= 5 by a tail-contraction induction. Declarations: SignedQMomentObstruction.mobiusMersenneTheta_strict_logConcave and mobiusMersenneTheta_hankel_two_neg.",
+      "hypotheses": "Lean-checked, sorry-free, focused build exit 0 after 3287 jobs. It does NOT prove higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality of the target series.",
+      "named_consumers": [
+        "mobius_mersenne_hankel_rank_parent",
+        "moment_problem_theory"
+      ],
+      "supersedes": [
+        "eventual (large-r) log-concavity",
+        "numerical log-concavity evidence"
+      ],
+      "why_it_matters": "Strict log-concavity at every rung kills any representation of Theta as the moment sequence of a nonnegative measure. That is a classical moment-problem statement about an explicit arithmetic sequence and is checkable by anyone in that field.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/shared_lean/SignedQMomentObstruction.lean",
+        "research_corpus/Erdos249/problem/scripts/verify_mobius_mersenne_hankel.py"
+      ]
+    },
+    {
+      "result_id": "rank_one_sharp_floor_twenty_one_three_twentieths",
+      "status": "strongest_premise",
+      "exact_statement": "Every admissible rank-one quotient exceeds the Mobius-Mersenne rung by more than 21/320, the minimum is attained at a unique admissible pair, and 1/16 is the largest unit fraction bounding the gap from below.",
+      "hypotheses": "Lean-checked, carried by the ExternalVerification249RankOneSharpFloor entry.",
+      "named_consumers": [
+        "mobius_mersenne_hankel_rank_parent"
+      ],
+      "supersedes": [
+        "non-sharp rank-one gap estimates"
+      ],
+      "why_it_matters": "It is the exact geometry of the rank-one stratum the higher-rank question sits above.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/RankOneSharpFloor.lean",
+        "research_corpus/Erdos249/problem/RankOneSubrankObstruction.lean"
+      ]
+    },
+    {
+      "result_id": "coons_non_regularity_is_prior_art_and_stronger",
+      "status": "exact_no_go",
+      "exact_statement": "Non-k-regularity of phi for every k >= 2 is Coons 2010 (J. Theor. Nombres Bordeaux 22, Theorem 3.2). It is STRICTLY STRONGER than any k = 2 corollary, and no Lean declaration in this package claims non-regularity. Do not present non-regularity as a result of this corpus; the exact rank k^e + 1 with its explicit basis is the addition.",
+      "hypotheses": "Prior-art audit 2026-09-02.",
+      "named_consumers": [
+        "exact_k_kernel_rank_parent"
+      ],
+      "supersedes": [
+        "restatements of non-regularity as new"
+      ],
+      "why_it_matters": "The novelty boundary is exact and narrow; crossing it invalidates the whole return.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/docs/formal_math/palomar/prior_art_adjudication_2026_09_02.md",
+        "research_corpus/Erdos249/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "martin_totient_independence_is_prior_art",
+      "status": "exact_no_go",
+      "exact_statement": "Martin 2006 Theorem 1 owns the totient independence theorem; the paper cites it. Do not claim it. Likewise Luca-Tachiya periodic-weight irrationality may not be presented as a new result: only the independent formal proof is ours.",
+      "hypotheses": "Recorded in the #249 packet's negative results and in the prior-art adjudication.",
+      "named_consumers": [
+        "exact_k_kernel_rank_parent"
+      ],
+      "supersedes": [
+        "unattributed independence claims"
+      ],
+      "why_it_matters": "Same novelty boundary; state exactly what is added over Martin.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "two_by_two_hankel_negativity_does_not_give_higher_rank",
+      "status": "exact_no_go",
+      "exact_statement": "The Lean declarations prove strict two-step log-concavity and negativity of the shifted 2x2 Hankel determinant ONLY. They do not prove higher fixed-order determinants, infinite Hankel rank, a common-denominator obstruction, or irrationality. A proof that treats order-2 negativity as implying order-N nonvanishing is invalid.",
+      "hypotheses": "The claim boundary is stated verbatim in the module's own record.",
+      "named_consumers": [
+        "mobius_mersenne_hankel_rank_parent"
+      ],
+      "supersedes": [
+        "order-2 to order-N extrapolations"
+      ],
+      "why_it_matters": "It is the exact statement of what desk 11 must prove and cannot assume.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/shared_lean/SignedQMomentObstruction.lean",
+        "research_corpus/Erdos249/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "positive_rank_one_subrank_closed_and_geometric_sum_is_one",
+      "status": "exact_no_go",
+      "exact_statement": "Positive rank-one monomial strict-subrank quotients are CLOSED at 21/320 with unique minimiser (1,5); do not reuse them. Stern-Brocot telescoping plus geometric decay alone cannot work because the coprime Lambert sum equals 1 at r = 1/2. Uniform bounds ||v 2^c S|| >= c^-A over all odd v are impossible for irrational S.",
+      "hypotheses": "Recorded exact no-gos in the #249 packet.",
+      "named_consumers": [
+        "mobius_mersenne_hankel_rank_parent"
+      ],
+      "supersedes": [
+        "rank-one subrank and geometric telescoping proposals"
+      ],
+      "why_it_matters": "Three of the most natural first attacks are already dead; spend the budget elsewhere.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/RankOneSubrankObstruction.lean",
+        "research_corpus/Erdos249/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "target_substitution_to_the_irrationality_parent_is_forbidden",
+      "status": "exact_no_go",
+      "exact_statement": "Irrationality of S = sum_{n>=1} phi(n)/2^n is NOT the target of these two desks and is owned by a separate unsent packet batch. A return that proves, restates, or attacks the irrationality parent instead of the assigned theorem is a target substitution and is invalid, even if the mathematics is correct.",
+      "hypotheses": "Fleet-level allocation: erdos_solve_dodecuple_2026_09_02 owns the #249 irrationality parent across four desks.",
+      "named_consumers": [
+        "exact_k_kernel_rank_parent",
+        "mobius_mersenne_hankel_rank_parent"
+      ],
+      "supersedes": [
+        "reach-desk drift into the parent problem"
+      ],
+      "why_it_matters": "These two desks exist to convert latent theorems into stated ones; drifting into the famous problem wastes both.",
+      "public_authority_paths": [
+        "research_corpus/Erdos249/problem/research_packet.json"
+      ]
+    }
+  ]
+}

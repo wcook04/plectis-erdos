@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041ReciprocalHalfPlane.Challenge",
+  "solution_module": "ExternalVerification1041ReciprocalHalfPlane.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041ReciprocalHalfPlane.newtonReciprocalVector_supportingHalfPlane"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

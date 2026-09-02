@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041LevelSeparation.Challenge",
+  "solution_module": "ExternalVerification1041LevelSeparation.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041LevelSeparation.exists_small_translation_separating_arguments_and_norms"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,284 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #1041: checked kernels for three completely solved polynomial families"
+  description: >-
+    The accompanying ordinary mathematics completely solves three structured families of
+    Erdős #1041: collinear root configurations in every degree, the primitive sparse
+    quintics, and translated cubic quotient fibres in every degree 3q with q at least two.
+    This configuration verifies in Lean the three load-bearing kernels of those solutions,
+    and only those three. For every degree n at least two, a monic polynomial of degree n
+    vanishing at -1 and 1, with n-1 increasing interior nodes in the closed interval and
+    values alternating in sign along them, has one node at which the absolute value is at
+    most 2^-(n-1) times cos(pi/2n)^-n. Five real disk coordinates satisfying the first three
+    rotated Newton moments for r strictly between 0 and 2 contain two distinct indices whose
+    tail energy is strictly below one, and three roots in the open unit disc admit one
+    complete radial spoke along which their monic cubic stays inside the closed unit
+    lemniscate. Each family solution is reduced to a single finite inequality, so the
+    delicate step in the geometry of polynomial sublevel sets is the part submitted for
+    checking. The alternation argument sits in the classical Chebyshev context, a bounded
+    search found no earlier form of the quintic selector, and priority is unresolved. Affine
+    transport, the final selection, and the surrounding analytic assembly are ordinary
+    proofs rather than Lean-checked conclusions, and the unrestricted problem is untouched.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "awaiting-review"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1041SolvedFamilies/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1041SolvedFamilies/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_Lean_and_exact_axiom_audit_passed_supported_Comparator_NanoDa_terminal_replay_pending"
+  research_interest_status: "three_strong_checked_kernels_with_ordinary_solved_family_assemblies"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "the application-ready paper patch has not been promoted to the authoritative public paper"
+    - "public immutable source identity is pending"
+  note: >-
+    A focused build first exposed a missing Polynomial namespace opening in
+    the challenge and solution. After repair, the Challenge, Solution,
+    deliberate negative, and AxiomAudit replayed successfully, and every
+    selected theorem reported exactly propext, Quot.sound, and
+    Classical.choice. The supported Linux Comparator runner now includes this
+    positive/deliberate-negative pair. No terminal Comparator, NanoDa,
+    Palomar, publication, or submission result is claimed.
+
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 98
+    band: "summit"
+    components:
+      theorem_closure: 25
+      parent_problem_proximity: 25
+      mechanism_depth: 20
+      hypothesis_sharpness: 15
+      consequence_reach: 13
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness,
+      or submission authorization.
+    rationale: >-
+      The lead family is a sharp all-degree theorem with a best constant and
+      equality configurations. The package also contains a complete
+      primitive-quintic mechanism and an infinite translated cubic-fibre
+      family, all immediately beneath the open parent problem.
+  presentation_order:
+    - "sharp_collinear_all_degree_best_constant"
+    - "primitive_sparse_quintic_complete_family"
+    - "translated_cubic_quotient_fibres_all_degrees_3q"
+
+sources:
+  - title: "Sharp collinear root-diameter theorem"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Primitive sparse quintic tail theorem"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Translated cubic quotient fibres"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  source_current_authority:
+    modules:
+      - module: "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean"
+        last_committing_revision: "ec2b7acee417c490bac40f28f4f35196d96ccb07"
+        sha256: "7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc"
+      - module: "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean"
+        last_committing_revision: "07f15840dd0adde3fecece71368aa721c6d96166"
+        sha256: "62346892d5a137e02a193774dff0d79b9583e59581f1341d1b78ecfef21a9ee7"
+      - module: "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean"
+        last_committing_revision: "b504458ca06e34ca5814b8fc0bd05b5742467c6c"
+        sha256: "8d48e206629d9d6283b7f1c66aa01651d9ff45314c0ed541f566c329131fa6dd"
+  scope: >-
+    Three exact Lean endpoints support three ordinary solved polynomial
+    families. They do not state the ordinary assembly or unrestricted #1041.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "focused_replay_passed_all_three_endpoints_exactly_within_configured_budget"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound"
+      file: "ExternalVerification1041SolvedFamilies/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification1041SolvedFamilies/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean"
+      novelty_status: "classical_Chebyshev_alternation_context_exact_fixed_diameter_assembly_priority_unresolved_no_priority_claim"
+      contribution_class: "sharp-collinear Chebyshev checked endpoint"
+      statement: >-
+        An endpoint-normalized monic polynomial with alternating interior
+        peak signs has one peak below the sharp Chebyshev comparison bound.
+      boundary: >-
+        Affine normalization, gap-maximizer selection, scaling back, equality
+        node locations, and the end-to-end path theorem are ordinary
+        mathematics.
+      paper_alignment:
+        paper_id: "erdos-1041-lemniscate-newton-flow"
+        source_path: "paper/erdos-1041-lemniscate-newton-flow.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/fe5d678bec0111c52059d04e77dfc20130c6176c/paper/erdos-1041-lemniscate-newton-flow.tex"
+        authoritative_base_commit: "fe5d678bec0111c52059d04e77dfc20130c6176c"
+        authoritative_base_file_sha256: "d1135882e5f39869396018a0a770a2d23f4211de80d4048cdc0a7381448cd1a4"
+        staged_revision_path: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-critical-value-separation.patch"
+        checked_kernel_label: "prop:sharp-collinear-chebyshev-comparator"
+        ordinary_result_label: "thm:sharp-collinear-diameter"
+        target_corollary_label: "cor:collinear-erdos-1041"
+        boundary_label: "rem:sharp-collinear-formal-boundary"
+        shared_boundary_label: "bdry:solved-polynomial-families"
+        relation: "exact_checked_kernel_supporting_stronger_ordinary_sharp_theorem"
+        status: "staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion"
+        note: >-
+          The pinned URL is the clean public-paper base and does not yet
+          contain these labels. The local patch adds them.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies"
+      file: "ExternalVerification1041SolvedFamilies/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification1041SolvedFamilies/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean"
+      novelty_status: "bounded_prior_art_search_no_exact_harmonic_2_over_31_separator_found_specialist_priority_review_pending_no_priority_claim"
+      contribution_class: "primitive-sparse-quintic checked selector"
+      statement: >-
+        Five disk-coordinate pairs satisfying the first three rotated Newton
+        moments contain two distinct indices with strict tail energy below one.
+      boundary: >-
+        Distinct indices are not automatically distinct complex root values.
+        Rotation, derivation of root moments, the root-tail identity, Abel
+        summation, and zero-occurrence path assembly are ordinary mathematics.
+      paper_alignment:
+        paper_id: "erdos-1041-lemniscate-newton-flow"
+        source_path: "paper/erdos-1041-lemniscate-newton-flow.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/fe5d678bec0111c52059d04e77dfc20130c6176c/paper/erdos-1041-lemniscate-newton-flow.tex"
+        authoritative_base_commit: "fe5d678bec0111c52059d04e77dfc20130c6176c"
+        authoritative_base_file_sha256: "d1135882e5f39869396018a0a770a2d23f4211de80d4048cdc0a7381448cd1a4"
+        staged_revision_path: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-critical-value-separation.patch"
+        checked_kernel_label: "prop:primitive-quintic-two-tail-energy-selector"
+        ordinary_result_label: "thm:primitive-quintic-two-tail"
+        boundary_label: "rem:primitive-quintic-formal-boundary"
+        shared_boundary_label: "bdry:solved-polynomial-families"
+        relation: "exact_checked_finite_selector_supporting_ordinary_sparse_quintic_theorem"
+        status: "staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion"
+        note: >-
+          The pinned URL is the clean public-paper base and does not yet
+          contain these labels. The local patch adds them.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke"
+      file: "ExternalVerification1041SolvedFamilies/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification1041SolvedFamilies/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_Lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean"
+      novelty_status: "repository_authored_elementary_charge_and_envelope_assembly_no_priority_claim"
+      contribution_class: "translated-cubic-quotient-fibre checked kernel"
+      statement: >-
+        Among three open-unit-disc roots, one full radial spoke stays in the
+        closed unit sublevel of their monic cubic product.
+      boundary: >-
+        Finite q-fibre construction, root-of-unity averaging, zero-root
+        fallback, pullback, and path assembly are ordinary mathematics.
+      paper_alignment:
+        paper_id: "erdos-1041-lemniscate-newton-flow"
+        source_path: "paper/erdos-1041-lemniscate-newton-flow.tex"
+        source_url: "https://github.com/wcook04/plectis-lean-erdos249-257/blob/fe5d678bec0111c52059d04e77dfc20130c6176c/paper/erdos-1041-lemniscate-newton-flow.tex"
+        authoritative_base_commit: "fe5d678bec0111c52059d04e77dfc20130c6176c"
+        authoritative_base_file_sha256: "d1135882e5f39869396018a0a770a2d23f4211de80d4048cdc0a7381448cd1a4"
+        staged_revision_path: "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-1041-critical-value-separation.patch"
+        checked_kernel_label: "lem:cubic-safe-root-spoke"
+        ordinary_result_label: "thm:translated-cubic-quotient-fibres"
+        boundary_label: "rem:cubic-quotient-formal-boundary"
+        shared_boundary_label: "bdry:solved-polynomial-families"
+        relation: "exact_checked_cubic_selector_supporting_ordinary_infinite_fibre_family"
+        status: "staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion"
+        note: >-
+          The pinned URL is the clean public-paper base and does not yet
+          contain these labels. The local patch adds them.
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The challenge copies the three source endpoint types and reproduces the
+    sharp-collinear definitions. It adds no ordinary assembly or unrestricted
+    path theorem.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Exact source statements, Mathlib-only challenge boundary, Comparator
+    metadata, and open-problem boundaries were statically reviewed. The
+    repaired Challenge, Solution, deliberate negative, and AxiomAudit passed
+    focused Lean replay; all selected endpoints reported exactly the
+    configured three-axiom budget. Terminal Comparator/NanoDa replay and
+    independent mathematical/priority review remain pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041SolvedFamilies"
+  statements:
+    - source: "ErdosProblems.Erdos1041.SharpCollinearChebyshev.exists_peak_le_comparisonBound"
+      lean: "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound"
+      module: "ExternalVerification1041SolvedFamilies/Challenge.lean"
+      paper_checked_kernel_label: "prop:sharp-collinear-chebyshev-comparator"
+      paper_ordinary_result_label: "thm:sharp-collinear-diameter"
+      paper_boundary_label: "rem:sharp-collinear-formal-boundary"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-staged"
+    - source: "ErdosProblems.Erdos1041.primitiveInterior_exists_two_tailEnergy_lt_one"
+      lean: "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies"
+      module: "ExternalVerification1041SolvedFamilies/Challenge.lean"
+      paper_checked_kernel_label: "prop:primitive-quintic-two-tail-energy-selector"
+      paper_ordinary_result_label: "thm:primitive-quintic-two-tail"
+      paper_boundary_label: "rem:primitive-quintic-formal-boundary"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-staged"
+    - source: "ErdosProblems.Erdos1041.cubic_has_safe_root_spoke"
+      lean: "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke"
+      module: "ExternalVerification1041SolvedFamilies/Challenge.lean"
+      paper_checked_kernel_label: "lem:cubic-safe-root-spoke"
+      paper_ordinary_result_label: "thm:translated-cubic-quotient-fibres"
+      paper_boundary_label: "rem:cubic-quotient-formal-boundary"
+      status: "exact-transport-focused-Lean-and-axiom-audit-passed-paper-route-staged"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

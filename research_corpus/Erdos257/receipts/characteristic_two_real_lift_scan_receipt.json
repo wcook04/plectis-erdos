@@ -1,0 +1,291 @@
+{
+  "best_periodic_fit": {
+    "certified_fraction_bit_count": 1020,
+    "late_selected_count": 249,
+    "lower_scaled": 5357445166836693483134007172616901154352896258720510620052166987629099318172103506322937096734736838640567276638953466970019991862285978877674218917174078991965664181442414474959724320567058474292296180768222319570323062302074213275247133930702407987009066476942415155125789911312744339252976687829389681125243029251880283412928649218040999366193603541937772169775877706942002005384419,
+    "matched_fraction_bits": 108,
+    "mismatch_rank": 109,
+    "period": 64,
+    "precision": 1280,
+    "preperiod": 32,
+    "selected_count": 527,
+    "source_period": 7,
+    "source_preperiod": 3,
+    "source_word_lsb_first": "0011111000",
+    "survives_certified_prefix": false,
+    "upper_exclusive_scaled": 5357445166836693483134007172616901154352896258720510620052166987629099318172103506322937096734736838640567276638953466970019991862285978877674218917174078991965664181442414474959724320567058474292296180768222319570323062302074213275247133930702407987009066476942415155125789911312744339252976687829389681125474613430354915803775791188058375181900143511269053297854792874957828264664819
+  },
+  "bounded_real_output_survivors_sample": [],
+  "census": {
+    "bounded_real_output_survivor_count": 0,
+    "characteristic_two_identity_violation_count": 0,
+    "late_support_words": 7418,
+    "period_rows": [
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 0,
+        "source_period": 1,
+        "source_preperiod": 0,
+        "words_scanned": 2
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 0,
+        "source_period": 2,
+        "source_preperiod": 0,
+        "words_scanned": 4
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 4,
+        "source_period": 3,
+        "source_preperiod": 0,
+        "words_scanned": 8
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 8,
+        "source_period": 4,
+        "source_preperiod": 0,
+        "words_scanned": 16
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 28,
+        "source_period": 5,
+        "source_preperiod": 0,
+        "words_scanned": 32
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 48,
+        "source_period": 6,
+        "source_preperiod": 0,
+        "words_scanned": 64
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 124,
+        "source_period": 7,
+        "source_preperiod": 0,
+        "words_scanned": 128
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 240,
+        "source_period": 8,
+        "source_preperiod": 0,
+        "words_scanned": 256
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 2,
+        "source_period": 1,
+        "source_preperiod": 1,
+        "words_scanned": 4
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 4,
+        "source_period": 2,
+        "source_preperiod": 1,
+        "words_scanned": 8
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 12,
+        "source_period": 3,
+        "source_preperiod": 1,
+        "words_scanned": 16
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 24,
+        "source_period": 4,
+        "source_preperiod": 1,
+        "words_scanned": 32
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 60,
+        "source_period": 5,
+        "source_preperiod": 1,
+        "words_scanned": 64
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 112,
+        "source_period": 6,
+        "source_preperiod": 1,
+        "words_scanned": 128
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 252,
+        "source_period": 7,
+        "source_preperiod": 1,
+        "words_scanned": 256
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 496,
+        "source_period": 8,
+        "source_preperiod": 1,
+        "words_scanned": 512
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 6,
+        "source_period": 1,
+        "source_preperiod": 2,
+        "words_scanned": 8
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 12,
+        "source_period": 2,
+        "source_preperiod": 2,
+        "words_scanned": 16
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 28,
+        "source_period": 3,
+        "source_preperiod": 2,
+        "words_scanned": 32
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 56,
+        "source_period": 4,
+        "source_preperiod": 2,
+        "words_scanned": 64
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 124,
+        "source_period": 5,
+        "source_preperiod": 2,
+        "words_scanned": 128
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 240,
+        "source_period": 6,
+        "source_preperiod": 2,
+        "words_scanned": 256
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 508,
+        "source_period": 7,
+        "source_preperiod": 2,
+        "words_scanned": 512
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 1008,
+        "source_period": 8,
+        "source_preperiod": 2,
+        "words_scanned": 1024
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 14,
+        "source_period": 1,
+        "source_preperiod": 3,
+        "words_scanned": 16
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 28,
+        "source_period": 2,
+        "source_preperiod": 3,
+        "words_scanned": 32
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 60,
+        "source_period": 3,
+        "source_preperiod": 3,
+        "words_scanned": 64
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 120,
+        "source_period": 4,
+        "source_preperiod": 3,
+        "words_scanned": 128
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 252,
+        "source_period": 5,
+        "source_preperiod": 3,
+        "words_scanned": 256
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 496,
+        "source_period": 6,
+        "source_preperiod": 3,
+        "words_scanned": 512
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 1020,
+        "source_period": 7,
+        "source_preperiod": 3,
+        "words_scanned": 1024
+      },
+      {
+        "bounded_real_output_survivors": 0,
+        "late_support_words": 2032,
+        "source_period": 8,
+        "source_preperiod": 3,
+        "words_scanned": 2048
+      }
+    ],
+    "source_words_scanned": 7650
+  },
+  "claim_boundary": "The scan is exhaustive only for the declared source periods, real binary preperiods/periods, and certified finite output prefix. A survivor is not an infinite construction; a mismatch excludes only those bounded parameters.",
+  "mechanism_decision": {
+    "next_action": "do not extend this bounded-period lift class without a new all-depth producer",
+    "status": "bounded_period_characteristic_two_real_lifts_eliminated"
+  },
+  "named_witnesses": {
+    "squarefree_delta_one": {
+      "certified_fraction_bit_count": 1020,
+      "late_selected_count": 310,
+      "lower_scaled": 31929155501669320760895251984390937399366620248392289604375087397016835140724047071505681025509289103950012463514739394539107443010783015418015327855378654872761083190585142723617798147167991680139161817995267158105242403246560523694934323447926153925408199071616957909805686065833920474964524453321723845472478691622409708610102029101809695144080175860412759835025589175144139726270255,
+      "matched_fraction_bits": 101,
+      "mismatch_rank": 102,
+      "period": 60,
+      "precision": 1280,
+      "preperiod": 31,
+      "selected_count": 624,
+      "source_period": 1,
+      "source_preperiod": 1,
+      "source_word_lsb_first": "10",
+      "squarefree_support_mismatch_count": 0,
+      "survives_certified_prefix": false,
+      "upper_exclusive_scaled": 31929155501669320760895251984390937399366620248392289604375087397016835140724047071505681025509289103950012463514739394539107443010783015418015327855378654872761083190585142723617798147167991680139161817995267158105242403246560523694934323447926153925408199071616957909805686065833920474964524453321723845472710275800884341000949171071827070959786715829744040963104504343159965985550752
+    }
+  },
+  "parameters": {
+    "depth": 1024,
+    "max_real_period": 64,
+    "max_real_preperiod": 32,
+    "max_source_period": 8,
+    "max_source_preperiod": 3,
+    "precision": 1280
+  },
+  "payload_sha256": "89ea50e018aa205e203500e9273564b7e09b2e53191f6a1330a04bb37a84fcef",
+  "programme_target": "Seek a direct rational infinite Boolean Mersenne support by lifting the complete characteristic-two periodic-output family to the real binary carry.",
+  "rigidity_theorem": "For fixed characteristic-two output g, Dirichlet inversion fixes b=g*mu in F_2; reduction {0,1}->F_2 is injective, so this is the unique Boolean real lift.",
+  "schema": "erdos257_characteristic_two_real_lift_scan_v1",
+  "source": {
+    "script": "formal_math/erdos257_period_noncollapse/scripts/characteristic_two_real_lift_scan.py",
+    "script_sha256": "84d9f7097ffffa9d5bee5cf9376761dd60f6f87f6d1b9567ac206d8162b3af93"
+  }
+}

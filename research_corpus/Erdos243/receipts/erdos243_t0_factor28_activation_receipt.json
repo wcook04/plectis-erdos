@@ -1,0 +1,143 @@
+{
+  "complete_factor28_census": {
+    "exhaustive_source_sample_count": 108864,
+    "factor25_multiplier_counts_mod_19656": {
+      "1": 15552,
+      "5617": 31104,
+      "8425": 62208
+    },
+    "factor26_multiplier_counts_mod_756": {
+      "1": 15552,
+      "109": 31104,
+      "325": 62208
+    },
+    "factor27_multiplier_counts_mod_28": {
+      "1": 1110551072832000,
+      "21": 444220429132800
+    },
+    "factor27_negative_parent_count": 55527553641600,
+    "factor28_logical_refinement_count": 1554771501964800,
+    "factor28_parent_profile_counts": {
+      "cofinal=0,positive=8,negative=20": 55527553641600
+    },
+    "factor28_successor_mode_counts": {
+      "payment=1,height=28,error=-1": 1110551072832000,
+      "payment=7,height=4,error=1": 444220429132800
+    },
+    "quotient_image_mod_28": [
+      0,
+      4,
+      12
+    ],
+    "uniform_negative_continuation_ratio": "5/7"
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.heightTwentySeven_multiplierQuotientIdentity",
+        "ErdosProblems.Erdos243.heightTwentySeven_quotientZeroMode",
+        "ErdosProblems.Erdos243.heightTwentySeven_quotientFourMode",
+        "ErdosProblems.Erdos243.heightTwentySeven_quotientTwelveMode"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "An all-negative parent would force a later activation search and eliminate factor 28 as a uniform mechanism.",
+      "survival_consequence": "A common subunit continuation profile supplies an exact activation block for the negative-mass route."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "factor28_activates_every_factor27_multiplier_one_fiber",
+      "statement": "Every actual multiplier-one height-27 parent loses at least one of its 28 children from negative support."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor27_singleton_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor28_activation.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor27_singleton.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor27_singleton_receipt.json"
+      ]
+    },
+    "probe": {
+      "computation": "Exhaust all 108864 source samples from the 18 parent residues, two factor-26 parities, four surviving targets, 27 factor-27 lifts, and 28 factor-28 lifts using exact integer quotient propagation.",
+      "falsifier": "Any actual factor-27 parent with 28 continuing-negative children, or any parent profile other than (0,8,20).",
+      "id": "exact_factor28_parent_local_activation_census",
+      "question": "Does factor 28 break the factor-27 singleton boundary, and is any activation uniform across actual parents?",
+      "resource_bounds": {
+        "children_per_parent": 28,
+        "exhaustive_source_sample_count": 108864,
+        "logical_parent_count": 55527553641600,
+        "logical_refinement_count": 1554771501964800
+      },
+      "stop_condition": "Stop after the complete parent-local factor-28 profile and multiplier images are exact; do not extend individual orbits."
+    },
+    "problem": {
+      "claim_ceiling": "Exact factor-28 classification after the rigid factor-27 step: every actual parent has 8 positive and 20 continuing-negative children, with no immediate cofinal child. This opens a uniform sign-switch mechanism but does not solve unrestricted #243.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The complete exact parent histogram contains one profile and zero all-negative fibers.",
+        "next_analytic_target": "Use the uniform 5/7 continuation in the amortized boundary-loss route and probe factor 29 only on the multiplier-one (28,-1) survivors."
+      },
+      "status": "exact_one_way_result",
+      "summary": "Every one of the 55527553641600 actual parents has profile (0,8,20); the exact q-image is {0,4,12} mod 28, and q=4 alone forces multiplier 21, payment seven, height four, and centered error +1."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "mechanism_decision": {
+    "continuing_negative_children_per_parent": 20,
+    "factor28_uniform_activation": "opened",
+    "next_raw_factor": 29,
+    "positive_children_per_parent": 8,
+    "positive_state": {
+      "error": 1,
+      "height": 4
+    },
+    "surviving_negative_state": {
+      "error": -1,
+      "height": 28
+    },
+    "uniform_negative_continuation_ratio": "5/7"
+  },
+  "schema": "erdos243-t0-factor28-activation-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 14259,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor28_activation.py",
+      "sha256": "b0dce5176480d2f098f71adde94092aa0961b209805ab963d2c15e3247d28ff7"
+    },
+    {
+      "byte_length": 13701,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor27_singleton.py",
+      "sha256": "d53a19d97581bd61d9e11b4c4aa97d5685b3f54932f2ed8b870de43809a993bd"
+    },
+    {
+      "byte_length": 6989,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor27_singleton_receipt.json",
+      "sha256": "c64713bbc47df44db073c3139584a31d5dc0f33b5fe0d847019ca62a3f1685c8"
+    },
+    {
+      "byte_length": 34409,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "0b528577cc9d6a928eab269ae69e8c9246f2d1985275454cbfe6eaa344a51290"
+    },
+    {
+      "byte_length": 49380,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "ce1d37e134ae590a8cfb737fce7313f54c6055db68f479caa94bdee418006d55"
+    },
+    {
+      "byte_length": 108907,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "4197a94a4b7f3adf8c4242a6ad2ca9e418b935e476bb45813757ebeff92af070"
+    }
+  ],
+  "status": "verified_uniform_factor28_positive_activation"
+}

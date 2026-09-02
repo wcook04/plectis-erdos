@@ -1,0 +1,74 @@
+version: "v0.4"
+project:
+  name: "Erdős #257: scaled greedy non-escape and canonical 1/21 frontier"
+  description: "Exact trapping, escape, bounded-return, and rational lower-separatrix characterizations of the Mersenne achievement set."
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B83"]
+sources:
+  - title: "Scaled greedy-trap dynamics for Erdős Problem 257"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; the scaled-greedy theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact rational criterion and the unresolved lower-separatrix crossing boundary were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "deferred_low_disk_before_compilation"
+  note: "Exact equivalent reductions; no positive 1/21 producer or external submission is claimed."
+status:
+  scope: "Six source-backed exact dynamical endpoints; Erdős #257 and 1/21 membership remain open."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: "pending_guarded_build_low_disk_427282432_free_minimum_17179869184"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem"
+      file: "ExternalVerification257ScaledGreedyTrap/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check_low_disk"
+      novelty_status: "unassessed"
+      boundary: "This classifies nonmembership dynamics; it does not establish nonmembership of 1/2 or 1/21."
+    - declaration: "Erdos249257.ExternalVerification257ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded"
+      file: "ExternalVerification257ScaledGreedyTrap/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check_low_disk"
+      novelty_status: "unassessed"
+      boundary: "The equivalence does not construct a bounded cofinal subsequence for 1/2 or 1/21."
+    - declaration: "Erdos249257.ExternalVerification257ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally"
+      file: "ExternalVerification257ScaledGreedyTrap/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check_low_disk"
+      novelty_status: "unassessed"
+      boundary: "The equivalence does not prove cofinal lower-separatrix crossings or membership of 1/21."
+alignment:
+  namespace: "Erdos249257.ExternalVerification257ScaledGreedyTrap"
+  statements:
+    - source: "Erdos257PeriodNoncollapse.GreedyTrapDynamics"
+      lean: "six same-named source transports"
+      module: "ExternalVerification257ScaledGreedyTrap/Challenge.lean"
+      status: "exact-transport-pending-guarded-build-low-disk"

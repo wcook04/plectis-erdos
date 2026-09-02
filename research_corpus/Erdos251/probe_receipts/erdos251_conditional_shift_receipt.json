@@ -1,0 +1,323 @@
+{
+ "probe_id": "erdos251_conditional_shift_distribution",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_251",
+   "target_statement": "Prove irrationality of the dyadic series built from consecutive prime gaps.",
+   "claim_ceiling": "The target irrationality is not proved. Lean proves the explicit elementary bound p_n <= 1250(n+1)^4 and therefore unconditionally checks convergence of the normalized prime and actual prime-gap dyadic series together with their exact infinite identity. Under non-irrationality it extracts a rational witness and proves that the rational candidate state and every fixed shift are exactly the corresponding scaled real tsum tails. Lean also checks the tail-shift integrality machinery, proves unboundedness and non-eventual-periodicity of the actual prime gaps, and verifies the implication from a cofinal adjacent small-mismatch supply to exclusion of eventual integral h-shifts. The explicit rational polynomial-tail countermodel g_n=2(n^2+4n+2), T_n=2(n+4)^2 now proves that positivity, parity, polynomial growth, unboundedness, and nonperiodicity cannot supply that producer: its adjacent differences are never \u00b12. For every rational candidate S, Lean decomposes the complete denominator into dyadic and odd parts, proves eventual integrality of one positive fixed shift, and therefore proves that this shift cannot be eventually small. Both the data-dependent affine cylinder and its fixed-lattice block-residue replacement are Lean-checked circular. The remaining producer must use genuinely finer consecutive-prime arithmetic or external control of actual prime-tail fractional parts, rather than recurrence-generated block pullbacks or coarse gap growth alone. The remaining producer's event has now been measured in the actual primes: it occurs for every offset h <= 16 over 6.8 million primes, at density bounded away from zero after the 1/log p rescaling, verified against the literal producer statement with margins eight orders above numerical resolution. The producer is therefore true in the actual primes rather than an artifact the polynomial countermodel generalises to, and the residual is a proof of cofinality whose missing input is Hardy-Littlewood k-tuple correlation at a fixed offset. Cofinality is not proved and the target irrationality remains open. Conditioning on the +-2 digit further separates the remaining producer event into a digit factor and a tail factor, both bounded away from zero and drifting alike, so the two can be attacked separately rather than jointly; the conditional structure is offset-independent from h = 5 onwards, leaving only small offsets to be treated specially. A certified continued-fraction prefix of 23369 partial quotients now gives the packet's first finite denominator exclusion, q > 10^12041, covering the prime series and the gap series alike since they differ by the integer 2. The expansion is generic: the one large partial quotient, 973919, has approximation exponent 2.0007, and the maximum irrationality-exponent witness above convergent denominators 2^10000 is 2.0010, matching Erdos 68 and 249 to four decimals."
+  },
+  "hypothesis": {
+   "id": "digit_and_tail_conditions_separate",
+   "statement": "Conditioned on the +-2 digit, the tail shift lands in the producer's window at a rate bounded away from zero, so the digit count and the tail window can be proved separately rather than jointly."
+  },
+  "probe": {
+   "id": "erdos251_conditional_shift_distribution",
+   "question": "Conditioned on the +-2 digit, how is the tail shift distributed, and what fraction sits inside the window rather than beyond it?",
+   "computation": "Restrict to Delta = +2 and separately Delta = -2 over the actual primes, histogram D = T_(N+h) - T_N, and report the conditional in-window fraction and its drift across bands of N, per offset.",
+   "falsifier": "A conditional fraction that decays toward zero, which would mean the digit count is not the binding constraint and a joint statement is required.",
+   "stop_condition": "A decaying conditional fraction retires the separate-factor reading.",
+   "resource_bounds": {
+    "bands": 6,
+    "offsets": 6,
+    "prime_limit": 120000000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "A proof can aim Hardy-Littlewood at the digit and non-concentration at the tail, independently.",
+   "falsification_consequence": "The two conditions are entangled and must be proved together.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineShiftEscape.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AdjacentMismatchDensityLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos251_conditional_shift_distribution.py",
+    "formal_math/probes/erdos251_adjacent_mismatch_density.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "Over 6,841,648 primes with Delta = +2, the digit rate is 0.06893, 0.05017, 0.05187, 0.05228, 0.05242, 0.05244 at offsets 1, 2, 3, 5, 8, 13 and the conditional in-window fraction is 0.05942, 0.04586, 0.04253, 0.04015, 0.04026, 0.03982. The tail factor stays between 0.0398 and 0.0602 and drifts across six bands of N only by a factor 0.77 to 0.84 - the same mild decline as the digit factor - so the two factors separate. The conditional structure is offset-independent from h = 5 onwards, with the short/overshoot split converging to 0.46/0.50, while h = 1 is distinct (overshooting 72% of the time). The tail shift decorrelates from the digit at offsets of about five.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "The conditional in-window fraction is bounded away from zero at every offset and drifts no faster than the digit factor.",
+    "next_analytic_target": "A Hardy-Littlewood lower bound for the +-2 digit at a fixed offset, plus a non-concentration statement for the tail shift; small offsets need separate treatment, offsets from 5 onwards do not.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_251",
+  "motivated_by": [
+   "actual_scaled_tail_smallness",
+   "cofinal_adjacent_small_mismatch",
+   "small_adjacent_shift_consumer"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "adjacent_mismatch_event_factorises_and_decorrelates"
+  ],
+  "rationale": "Splits the remaining producer into two factors that can be attacked separately, and measures the offset beyond which the conditional structure stops depending on h."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AdjacentMismatchDensityLab.md",
+   "byte_length": 7104,
+   "sha256": "39a834b5466f39fd0463e6448d1ac56f3b51db979efa0a2b38f74d21b06f3925"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json",
+   "byte_length": 21858,
+   "sha256": "d88a73fbbfc9c075347e6f0deac1c561db1823d575b5443a59ffc6e295cb7efc",
+   "scoped_sha256": "2c3d86421811124b169a0cf8d6a04685593e31b445bc45bc7264881085b0fd58",
+   "scope_ids": [
+    "actual_scaled_tail_smallness",
+    "adjacent_mismatch_event_factorises_and_decorrelates",
+    "cofinal_adjacent_small_mismatch",
+    "small_adjacent_shift_consumer"
+   ]
+  },
+  {
+   "path": "formal_math/probes/erdos251_conditional_shift_distribution.py",
+   "byte_length": 6042,
+   "sha256": "001df5f0687a65ece12d9ac147ded00154aa7a1d61547d64a8238167fcb403dd"
+  },
+  {
+   "path": "formal_math/probes/erdos251_adjacent_mismatch_density.py",
+   "byte_length": 7413,
+   "sha256": "fc1aa91900eb5c167b59b12f633ad53d9c5476dc0fc4c1df7a8dadeec0e42de1"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos251_conditional_shift_distribution",
+  "prime_limit": 120000000,
+  "prime_count": 6841648,
+  "per_offset": [
+   {
+    "h": 1,
+    "plus_two": {
+     "digit_events": 471582,
+     "digit_rate": 0.068929,
+     "conditional_in_window": 0.05942,
+     "conditional_outside_toward_zero": 0.21841,
+     "conditional_outside_beyond_one": 0.72217,
+     "band_conditional_in_window": [
+      0.06909,
+      0.06178,
+      0.05874,
+      0.05593,
+      0.05613,
+      0.05485
+     ],
+     "band_drift": 0.7939
+    },
+    "minus_two": {
+     "digit_events": 472098,
+     "digit_rate": 0.069004,
+     "conditional_in_window": 0.06017,
+     "conditional_outside_toward_zero": 0.72773,
+     "conditional_outside_beyond_one": 0.2121,
+     "band_conditional_in_window": [
+      0.07104,
+      0.06109,
+      0.05935,
+      0.05722,
+      0.05732,
+      0.05498
+     ],
+     "band_drift": 0.7739
+    }
+   },
+   {
+    "h": 2,
+    "plus_two": {
+     "digit_events": 343275,
+     "digit_rate": 0.050175,
+     "conditional_in_window": 0.04586,
+     "conditional_outside_toward_zero": 0.38111,
+     "conditional_outside_beyond_one": 0.57303,
+     "band_conditional_in_window": [
+      0.05233,
+      0.04871,
+      0.04349,
+      0.04508,
+      0.04247,
+      0.04307
+     ],
+     "band_drift": 0.823
+    },
+    "minus_two": {
+     "digit_events": 343706,
+     "digit_rate": 0.050238,
+     "conditional_in_window": 0.04724,
+     "conditional_outside_toward_zero": 0.54933,
+     "conditional_outside_beyond_one": 0.40343,
+     "band_conditional_in_window": [
+      0.0542,
+      0.0487,
+      0.04678,
+      0.04555,
+      0.04383,
+      0.04437
+     ],
+     "band_drift": 0.8186
+    }
+   },
+   {
+    "h": 3,
+    "plus_two": {
+     "digit_events": 354886,
+     "digit_rate": 0.051872,
+     "conditional_in_window": 0.04253,
+     "conditional_outside_toward_zero": 0.42247,
+     "conditional_outside_beyond_one": 0.53501,
+     "band_conditional_in_window": [
+      0.04928,
+      0.04315,
+      0.04249,
+      0.04117,
+      0.03929,
+      0.0398
+     ],
+     "band_drift": 0.8076
+    },
+    "minus_two": {
+     "digit_events": 355863,
+     "digit_rate": 0.052015,
+     "conditional_in_window": 0.04254,
+     "conditional_outside_toward_zero": 0.50294,
+     "conditional_outside_beyond_one": 0.45452,
+     "band_conditional_in_window": [
+      0.04812,
+      0.0432,
+      0.04193,
+      0.04062,
+      0.04094,
+      0.04046
+     ],
+     "band_drift": 0.8408
+    }
+   },
+   {
+    "h": 5,
+    "plus_two": {
+     "digit_events": 357673,
+     "digit_rate": 0.052279,
+     "conditional_in_window": 0.04015,
+     "conditional_outside_toward_zero": 0.45567,
+     "conditional_outside_beyond_one": 0.50418,
+     "band_conditional_in_window": [
+      0.04672,
+      0.0408,
+      0.03999,
+      0.03877,
+      0.03759,
+      0.03701
+     ],
+     "band_drift": 0.7922
+    },
+    "minus_two": {
+     "digit_events": 357760,
+     "digit_rate": 0.052292,
+     "conditional_in_window": 0.04065,
+     "conditional_outside_toward_zero": 0.46962,
+     "conditional_outside_beyond_one": 0.48973,
+     "band_conditional_in_window": [
+      0.04699,
+      0.04122,
+      0.04007,
+      0.03857,
+      0.03923,
+      0.0378
+     ],
+     "band_drift": 0.8044
+    }
+   },
+   {
+    "h": 8,
+    "plus_two": {
+     "digit_events": 358619,
+     "digit_rate": 0.052418,
+     "conditional_in_window": 0.04026,
+     "conditional_outside_toward_zero": 0.46346,
+     "conditional_outside_beyond_one": 0.49628,
+     "band_conditional_in_window": [
+      0.04733,
+      0.04141,
+      0.03918,
+      0.03813,
+      0.03704,
+      0.03848
+     ],
+     "band_drift": 0.813
+    },
+    "minus_two": {
+     "digit_events": 358826,
+     "digit_rate": 0.052448,
+     "conditional_in_window": 0.04049,
+     "conditional_outside_toward_zero": 0.46273,
+     "conditional_outside_beyond_one": 0.49677,
+     "band_conditional_in_window": [
+      0.04767,
+      0.04042,
+      0.03903,
+      0.03973,
+      0.03816,
+      0.03796
+     ],
+     "band_drift": 0.7963
+    }
+   },
+   {
+    "h": 13,
+    "plus_two": {
+     "digit_events": 358741,
+     "digit_rate": 0.052436,
+     "conditional_in_window": 0.03982,
+     "conditional_outside_toward_zero": 0.46336,
+     "conditional_outside_beyond_one": 0.49682,
+     "band_conditional_in_window": [
+      0.04636,
+      0.04034,
+      0.03892,
+      0.0391,
+      0.03683,
+      0.03738
+     ],
+     "band_drift": 0.8063
+    },
+    "minus_two": {
+     "digit_events": 358331,
+     "digit_rate": 0.052376,
+     "conditional_in_window": 0.04036,
+     "conditional_outside_toward_zero": 0.46318,
+     "conditional_outside_beyond_one": 0.49647,
+     "band_conditional_in_window": [
+      0.04653,
+      0.04,
+      0.04054,
+      0.04035,
+      0.03737,
+      0.03734
+     ],
+     "band_drift": 0.8025
+    }
+   }
+  ],
+  "min_conditional_in_window": 0.03982,
+  "max_conditional_in_window": 0.06017,
+  "min_band_drift": 0.7739,
+  "max_band_drift": 0.8408,
+  "decomposition": "event density = P(digit = +-2) * P(D in window | digit); both factors are reported per offset so a proof can be aimed at each separately",
+  "conditional_bounded_below": true,
+  "conditional_stable_across_bands": true,
+  "reading": "the tail factor is bounded away from zero and stable across bands, so the producer's event factorises: a proof needs a Hardy-Littlewood count for the +-2 digit and a non-concentration statement for the tail, aimed separately rather than jointly"
+ }
+}

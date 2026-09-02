@@ -1,0 +1,95 @@
+{
+  "schema": "formal_math_computational_evidence_manifest_v1",
+  "manifest_id": "totient_k_kernel_finite_rank_computational_evidence_v1",
+  "version": 1,
+  "status": "frozen_private_review_ready",
+  "evidence_family": "totient_k_kernel_exact_finite_level_rank",
+  "source_result_ids": [
+    "totient_k_kernel_rank_k_to_e_plus_one",
+    "totient_k_kernel_canonical_basis_and_reduction_normal_form",
+    "totient_affine_independence_known_mechanism"
+  ],
+  "evidence_class": "bounded_exact_integer_arithmetic_and_rank_over_F_p",
+  "claim_ceiling": "These probes report finite observations only. A rank over F_p is a lower bound for rational rank; the receipts do not establish a formal proof, independent review, novelty, significance, irrationality, or progress on Erdos #249.",
+  "recorded_environment": {
+    "runner": "./repo-python",
+    "python_version": "3.14.7",
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "sympy_version": "1.14.0",
+    "recorded_at": "2026-08-26"
+  },
+  "artifacts": [
+    {
+      "result_id": "totient_k_kernel_rank_k_to_e_plus_one",
+      "script": "formal_math/odd_slope_affine_totient/verify_allbase_kernel.py",
+      "receipt": "formal_math/odd_slope_affine_totient/verify_allbase_kernel_receipt.txt",
+      "script_sha256": "f58b048a9f4c707822c5149cb90a96456b8dfed1e5dca334d5b9a26f49ad3bec",
+      "receipt_sha256": "9191eafd05011496121be558323abca6a6f535b485d822df3aad7f216d9afcb7",
+      "modulus_prime": 1000003,
+      "reduction_cases": [[2, 3], [3, 3], [4, 3], [6, 2], [8, 2], [9, 2], [10, 2], [12, 2], [15, 2], [16, 2]],
+      "reduction_n_range": {"start": 1, "stop_exclusive": 120},
+      "rank_cases": [[2, 3], [3, 3], [4, 3], [5, 2], [6, 2], [8, 2], [9, 2], [10, 2], [12, 2], [15, 2], [16, 2]],
+      "rank_sample_rule": "n in range(1, 3 * max(number_of_sections, target_rank) + 60)",
+      "resource_bounds": {
+        "max_base": 16,
+        "max_level": 3,
+        "max_full_sections": 273,
+        "max_rank_samples": 878,
+        "max_reduction_n": 119,
+        "bounded_search": true
+      },
+      "replay_command": "./repo-python formal_math/odd_slope_affine_totient/verify_allbase_kernel.py",
+      "falsifying_fixture": {
+        "name": "composite_gcd_substitution_is_too_small",
+        "cases": [[4, 2], [6, 2], [12, 2]],
+        "expected": "The gcd(k,r)=1 substitute basis has fewer than k^e+1 rows in every listed composite case; the implemented basis condition is k does not divide r."
+      }
+    },
+    {
+      "result_id": "totient_affine_independence_known_mechanism",
+      "script": "formal_math/odd_slope_affine_totient/verify_oddprime.py",
+      "receipt": "formal_math/odd_slope_affine_totient/verify_oddprime_receipt.txt",
+      "script_sha256": "09e571a97bc9aee0e32a60bc7d9b196ab4685b9b1aff49c75ed6c015810733db",
+      "receipt_sha256": "1afc700ff0edc0f4f5ef9c3d1ecf9473674b152fb507e5e14d22db583a6f09df",
+      "modulus_prime": 1000003,
+      "reduction_cases": [[3, 3], [5, 2], [7, 2], [11, 2]],
+      "reduction_n_range": {"start": 1, "stop_exclusive": 200},
+      "rank_cases": [[3, 1], [3, 2], [3, 3], [5, 1], [5, 2], [7, 1], [7, 2], [11, 1], [11, 2], [13, 1]],
+      "rank_sample_rule": "n in range(1, 4 * max(number_of_sections, target_rank) + 60)",
+      "resource_bounds": {
+        "max_prime": 13,
+        "max_level": 3,
+        "max_full_sections": 133,
+        "max_rank_samples": 591,
+        "max_reduction_n": 199,
+        "bounded_search": true
+      },
+      "replay_command": "./repo-python formal_math/odd_slope_affine_totient/verify_oddprime.py",
+      "falsifying_fixture": {
+        "name": "non_prime_input_is_out_of_scope",
+        "location": "verify_oddprime.py::isprime import and odd-prime case list",
+        "expected": "This probe has no composite-base coverage; composite claims must be tested by verify_allbase_kernel.py instead."
+      }
+    }
+  ],
+  "archival": {
+    "receipts_committed_with_scripts": true,
+    "manifest_is_replay_descriptor_not_result_authority": true,
+    "generated_output_policy": "Do not overwrite receipt files or promote a new generation without recomputing hashes and revising this manifest version."
+  },
+  "consumers": [
+    {
+      "path": "formal_math/odd_slope_affine_totient/README.md",
+      "role": "replay and claim-boundary index"
+    },
+    {
+      "path": "docs/formal_math/review_units/totient_kernel_finite_rank.review_unit.v2.json",
+      "role": "existing source-result family handoff; consume as supporting computational evidence, not a frozen proof snapshot"
+    },
+    {
+      "path": "docs/formal_math/reviewer_cards/totient_kernel_finite_rank.card.json",
+      "role": "existing reviewer-facing consumer; source owner must re-audit before any currentness promotion"
+    }
+  ],
+  "reentry_condition": "Create v2 after either script, receipt, environment contract, source-result identity, or consumer boundary changes; a passing replay alone does not widen the claim ceiling."
+}

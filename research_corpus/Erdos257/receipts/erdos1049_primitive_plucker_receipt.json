@@ -1,0 +1,1046 @@
+{
+  "claim_ceiling": "Finite q-Apery row arithmetic only; no irrationality result and no conclusion for an independent Hermite-Pade deformation.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "adjacent_det_zero_forces_all_det_zero",
+        "zmod_tail_pair_det_zero_of_adjacent_det_zero",
+        "zmod_binary_tail_collision_of_adjacent_det_zero",
+        "zmod_binary_tail_collision_of_two_three_depth"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean",
+      "falsification_consequence": "Large adjacent determinant valuations cannot be booked as a family-wide jet entropy saving; a new deformation must supply common Plucker depth, not isolated local minors.",
+      "survival_consequence": "Persistent common depth reduces the exact congruence-image cardinality in the Bezout-Plucker collision consumer and can lower the selector rank before analytic nonvanishing is tested."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "adjacent_minor_depth_propagates_to_family_image",
+      "statement": "The large 2-adic and 3-adic depths of adjacent primitive q-Apery determinants persist in the common determinantal divisor of a collision-sized row family."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/PrimitivePluckerComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_primitive_plucker_compression.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_remainder_at_three_halves.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_transduction.py",
+        "system/lib/formal_math_determinantal.py"
+      ]
+    },
+    "probe": {
+      "computation": "Construct exact primitive q-Apery rows at q=3/2 and compute all pairwise minors plus their gcd for every prefix and contiguous window.",
+      "falsifier": "The full-family determinantal divisor has smaller v2 or v3 than a displayed adjacent minor.",
+      "id": "primitive_plucker_determinantal_divisor_scan",
+      "question": "Do adjacent exterior valuations really compress the whole two-coordinate congruence image, or disappear when all row directions are admitted?",
+      "stop_condition": "If the common depth collapses, retire adjacent-minor extrapolation for this family; if it persists, formulate the exact Smith/Plucker compression theorem and test remainder escape."
+    },
+    "problem": {
+      "claim_ceiling": "The q-Apery specialization is a finite calibration family and does not decide the target or a new deformation.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the rational-base Lambert value at q=3/2."
+    },
+    "result": {
+      "status": "mixed",
+      "summary": "The first two primitive rows cap every future prefix at v2,v3<=1 and the first three force every future determinantal divisor to divide 6. In contrast, every tested moving tail window preserves the first adjacent depths v2=3s^2+3s+1 and v3=s+1, opening a structurally distinct non-prefix compression mechanism whose all-index q-Apery hypotheses remain unproved."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "n_range": [
+      0,
+      7
+    ],
+    "row_count": 8
+  },
+  "row_materialization": {
+    "cache_reason": "exact_row_generator_digests_match",
+    "mode": "validated_prior_receipt_cache",
+    "validated_source_digests": {
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_remainder_at_three_halves.py": "6bcc84f02d763c3974acbb7c5f75e5e2641e4fd3482c9ec2dd1545c1af9e6d61",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_transduction.py": "8e3aa94a2e54d3c5c5c76d1926dcdf192e830824ea174a86b59b4f8a806fffdb"
+    }
+  },
+  "scan": {
+    "adjacent_minors": [
+      {
+        "determinant": 42,
+        "m": 1,
+        "n": 0,
+        "v2": 1,
+        "v3": 1
+      },
+      {
+        "determinant": 19584,
+        "m": 2,
+        "n": 1,
+        "v2": 7,
+        "v3": 2
+      },
+      {
+        "determinant": 15217459200,
+        "m": 3,
+        "n": 2,
+        "v2": 19,
+        "v3": 3
+      },
+      {
+        "determinant": -2270651627738234880,
+        "m": 4,
+        "n": 3,
+        "v2": 37,
+        "v3": 4
+      },
+      {
+        "determinant": 262366450447509272258622259200,
+        "m": 5,
+        "n": 4,
+        "v2": 61,
+        "v3": 5
+      },
+      {
+        "determinant": -1105638558755426437150718822937360932536320,
+        "m": 6,
+        "n": 5,
+        "v2": 91,
+        "v3": 6
+      },
+      {
+        "determinant": 3024660293701351801172271636771563338472108962352411443200,
+        "m": 7,
+        "n": 6,
+        "v2": 127,
+        "v3": 7
+      }
+    ],
+    "comparison": {
+      "adjacent_depth_propagates_to_whole_family": false,
+      "adjacent_depth_propagation_falsified": true,
+      "max_adjacent_v2": 127,
+      "max_adjacent_v3": 7,
+      "whole_family_v2": 1,
+      "whole_family_v3": 1
+    },
+    "contiguous_window_determinantal_divisors": [
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 42,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 2,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 19584,
+        "determinantal_divisor_v2": 7,
+        "determinantal_divisor_v3": 2,
+        "end_n_exclusive": 3,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 1,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 15217459200,
+        "determinantal_divisor_v2": 19,
+        "determinantal_divisor_v3": 3,
+        "end_n_exclusive": 4,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 2,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 2270651627738234880,
+        "determinantal_divisor_v2": 37,
+        "determinantal_divisor_v3": 4,
+        "end_n_exclusive": 5,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 3,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 262366450447509272258622259200,
+        "determinantal_divisor_v2": 61,
+        "determinantal_divisor_v3": 5,
+        "end_n_exclusive": 6,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 4,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1105638558755426437150718822937360932536320,
+        "determinantal_divisor_v2": 91,
+        "determinantal_divisor_v3": 6,
+        "end_n_exclusive": 7,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 5,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 3024660293701351801172271636771563338472108962352411443200,
+        "determinantal_divisor_v2": 127,
+        "determinantal_divisor_v3": 7,
+        "end_n_exclusive": 8,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 6,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 3,
+        "minor_count": 3,
+        "row_count": 3,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1152,
+        "determinantal_divisor_v2": 7,
+        "determinantal_divisor_v3": 2,
+        "end_n_exclusive": 4,
+        "minor_count": 3,
+        "row_count": 3,
+        "start_n": 1,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 70778880,
+        "determinantal_divisor_v2": 19,
+        "determinantal_divisor_v3": 3,
+        "end_n_exclusive": 5,
+        "minor_count": 3,
+        "row_count": 3,
+        "start_n": 2,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 20094262192373760,
+        "determinantal_divisor_v2": 37,
+        "determinantal_divisor_v3": 4,
+        "end_n_exclusive": 6,
+        "minor_count": 3,
+        "row_count": 3,
+        "start_n": 3,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 8995935211640983105044480,
+        "determinantal_divisor_v2": 61,
+        "determinantal_divisor_v3": 5,
+        "end_n_exclusive": 7,
+        "minor_count": 3,
+        "row_count": 3,
+        "start_n": 4,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1290126672993496426080185324314306805760,
+        "determinantal_divisor_v2": 91,
+        "determinantal_divisor_v3": 6,
+        "end_n_exclusive": 8,
+        "minor_count": 3,
+        "row_count": 3,
+        "start_n": 5,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 4,
+        "minor_count": 6,
+        "row_count": 4,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1152,
+        "determinantal_divisor_v2": 7,
+        "determinantal_divisor_v3": 2,
+        "end_n_exclusive": 5,
+        "minor_count": 6,
+        "row_count": 4,
+        "start_n": 1,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 70778880,
+        "determinantal_divisor_v2": 19,
+        "determinantal_divisor_v3": 3,
+        "end_n_exclusive": 6,
+        "minor_count": 6,
+        "row_count": 4,
+        "start_n": 2,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1057592746967040,
+        "determinantal_divisor_v2": 37,
+        "determinantal_divisor_v3": 4,
+        "end_n_exclusive": 7,
+        "minor_count": 6,
+        "row_count": 4,
+        "start_n": 3,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 8995935211640983105044480,
+        "determinantal_divisor_v2": 61,
+        "determinantal_divisor_v3": 5,
+        "end_n_exclusive": 8,
+        "minor_count": 6,
+        "row_count": 4,
+        "start_n": 4,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 5,
+        "minor_count": 10,
+        "row_count": 5,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1152,
+        "determinantal_divisor_v2": 7,
+        "determinantal_divisor_v3": 2,
+        "end_n_exclusive": 6,
+        "minor_count": 10,
+        "row_count": 5,
+        "start_n": 1,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 70778880,
+        "determinantal_divisor_v2": 19,
+        "determinantal_divisor_v3": 3,
+        "end_n_exclusive": 7,
+        "minor_count": 10,
+        "row_count": 5,
+        "start_n": 2,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1057592746967040,
+        "determinantal_divisor_v2": 37,
+        "determinantal_divisor_v3": 4,
+        "end_n_exclusive": 8,
+        "minor_count": 10,
+        "row_count": 5,
+        "start_n": 3,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 6,
+        "minor_count": 15,
+        "row_count": 6,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1152,
+        "determinantal_divisor_v2": 7,
+        "determinantal_divisor_v3": 2,
+        "end_n_exclusive": 7,
+        "minor_count": 15,
+        "row_count": 6,
+        "start_n": 1,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 70778880,
+        "determinantal_divisor_v2": 19,
+        "determinantal_divisor_v3": 3,
+        "end_n_exclusive": 8,
+        "minor_count": 15,
+        "row_count": 6,
+        "start_n": 2,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 7,
+        "minor_count": 21,
+        "row_count": 7,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 1152,
+        "determinantal_divisor_v2": 7,
+        "determinantal_divisor_v3": 2,
+        "end_n_exclusive": 8,
+        "minor_count": 21,
+        "row_count": 7,
+        "start_n": 1,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 8,
+        "minor_count": 28,
+        "row_count": 8,
+        "start_n": 0,
+        "zero_minor_count": 0
+      }
+    ],
+    "irreversible_extension_cap": {
+      "every_future_prefix_divisor_must_divide": 6,
+      "every_future_prefix_v2_at_most": 1,
+      "every_future_prefix_v3_at_most": 1,
+      "exact_divisor_certificate": 6,
+      "exact_divisor_certificate_prefix_end_exclusive": 3,
+      "growing_common_2_3_depth_impossible_for_initial_prefix_family": true,
+      "local_depth_certificate_divisor": 42,
+      "local_depth_certificate_prefix_end_exclusive": 2,
+      "reason": "Adding rows only adds minors to the gcd. The first two rows give D=42, already capping both local depths at one; the first three give D=6, so every later prefix divisor must divide 6."
+    },
+    "moving_tail_formula_checks": [
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "maximum_tested_width": 8,
+        "start_n": 0,
+        "v2_matches_3ss_plus_3s_plus_1": true,
+        "v3_matches_s_plus_1": true
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "maximum_tested_width": 7,
+        "start_n": 1,
+        "v2_matches_3ss_plus_3s_plus_1": true,
+        "v3_matches_s_plus_1": true
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "maximum_tested_width": 6,
+        "start_n": 2,
+        "v2_matches_3ss_plus_3s_plus_1": true,
+        "v3_matches_s_plus_1": true
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "maximum_tested_width": 5,
+        "start_n": 3,
+        "v2_matches_3ss_plus_3s_plus_1": true,
+        "v3_matches_s_plus_1": true
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "maximum_tested_width": 4,
+        "start_n": 4,
+        "v2_matches_3ss_plus_3s_plus_1": true,
+        "v3_matches_s_plus_1": true
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "maximum_tested_width": 3,
+        "start_n": 5,
+        "v2_matches_3ss_plus_3s_plus_1": true,
+        "v3_matches_s_plus_1": true
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "maximum_tested_width": 2,
+        "start_n": 6,
+        "v2_matches_3ss_plus_3s_plus_1": true,
+        "v3_matches_s_plus_1": true
+      }
+    ],
+    "moving_tail_opening": {
+      "claim_boundary": "Finite exact tail-window arithmetic only. An all-index adjacent divisibility theorem and unit second coordinates would propagate this collapse to every later pair; those q-Apery hypotheses are not proved here.",
+      "distinct_from_natural_prefix_cap": true,
+      "every_tested_tail_matches_local_depth_formulas": true,
+      "every_tested_window_preserves_its_first_adjacent_local_depths": true
+    },
+    "moving_tail_profiles": [
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "first_adjacent_local_depths": {
+          "2": 1,
+          "3": 1
+        },
+        "first_adjacent_minor": 42,
+        "maximum_tested_width": 8,
+        "start_n": 0,
+        "windows": [
+          {
+            "determinantal_divisor": 42,
+            "end_n_exclusive": 2,
+            "local_depths": {
+              "2": 1,
+              "3": 1
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 2
+          },
+          {
+            "determinantal_divisor": 6,
+            "end_n_exclusive": 3,
+            "local_depths": {
+              "2": 1,
+              "3": 1
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 3
+          },
+          {
+            "determinantal_divisor": 6,
+            "end_n_exclusive": 4,
+            "local_depths": {
+              "2": 1,
+              "3": 1
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 4
+          },
+          {
+            "determinantal_divisor": 6,
+            "end_n_exclusive": 5,
+            "local_depths": {
+              "2": 1,
+              "3": 1
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 5
+          },
+          {
+            "determinantal_divisor": 6,
+            "end_n_exclusive": 6,
+            "local_depths": {
+              "2": 1,
+              "3": 1
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 6
+          },
+          {
+            "determinantal_divisor": 6,
+            "end_n_exclusive": 7,
+            "local_depths": {
+              "2": 1,
+              "3": 1
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 7
+          },
+          {
+            "determinantal_divisor": 6,
+            "end_n_exclusive": 8,
+            "local_depths": {
+              "2": 1,
+              "3": 1
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 8
+          }
+        ]
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "first_adjacent_local_depths": {
+          "2": 7,
+          "3": 2
+        },
+        "first_adjacent_minor": 19584,
+        "maximum_tested_width": 7,
+        "start_n": 1,
+        "windows": [
+          {
+            "determinantal_divisor": 19584,
+            "end_n_exclusive": 3,
+            "local_depths": {
+              "2": 7,
+              "3": 2
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 2
+          },
+          {
+            "determinantal_divisor": 1152,
+            "end_n_exclusive": 4,
+            "local_depths": {
+              "2": 7,
+              "3": 2
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 3
+          },
+          {
+            "determinantal_divisor": 1152,
+            "end_n_exclusive": 5,
+            "local_depths": {
+              "2": 7,
+              "3": 2
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 4
+          },
+          {
+            "determinantal_divisor": 1152,
+            "end_n_exclusive": 6,
+            "local_depths": {
+              "2": 7,
+              "3": 2
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 5
+          },
+          {
+            "determinantal_divisor": 1152,
+            "end_n_exclusive": 7,
+            "local_depths": {
+              "2": 7,
+              "3": 2
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 6
+          },
+          {
+            "determinantal_divisor": 1152,
+            "end_n_exclusive": 8,
+            "local_depths": {
+              "2": 7,
+              "3": 2
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 7
+          }
+        ]
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "first_adjacent_local_depths": {
+          "2": 19,
+          "3": 3
+        },
+        "first_adjacent_minor": 15217459200,
+        "maximum_tested_width": 6,
+        "start_n": 2,
+        "windows": [
+          {
+            "determinantal_divisor": 15217459200,
+            "end_n_exclusive": 4,
+            "local_depths": {
+              "2": 19,
+              "3": 3
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 2
+          },
+          {
+            "determinantal_divisor": 70778880,
+            "end_n_exclusive": 5,
+            "local_depths": {
+              "2": 19,
+              "3": 3
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 3
+          },
+          {
+            "determinantal_divisor": 70778880,
+            "end_n_exclusive": 6,
+            "local_depths": {
+              "2": 19,
+              "3": 3
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 4
+          },
+          {
+            "determinantal_divisor": 70778880,
+            "end_n_exclusive": 7,
+            "local_depths": {
+              "2": 19,
+              "3": 3
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 5
+          },
+          {
+            "determinantal_divisor": 70778880,
+            "end_n_exclusive": 8,
+            "local_depths": {
+              "2": 19,
+              "3": 3
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 6
+          }
+        ]
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "first_adjacent_local_depths": {
+          "2": 37,
+          "3": 4
+        },
+        "first_adjacent_minor": 2270651627738234880,
+        "maximum_tested_width": 5,
+        "start_n": 3,
+        "windows": [
+          {
+            "determinantal_divisor": 2270651627738234880,
+            "end_n_exclusive": 5,
+            "local_depths": {
+              "2": 37,
+              "3": 4
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 2
+          },
+          {
+            "determinantal_divisor": 20094262192373760,
+            "end_n_exclusive": 6,
+            "local_depths": {
+              "2": 37,
+              "3": 4
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 3
+          },
+          {
+            "determinantal_divisor": 1057592746967040,
+            "end_n_exclusive": 7,
+            "local_depths": {
+              "2": 37,
+              "3": 4
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 4
+          },
+          {
+            "determinantal_divisor": 1057592746967040,
+            "end_n_exclusive": 8,
+            "local_depths": {
+              "2": 37,
+              "3": 4
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 5
+          }
+        ]
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "first_adjacent_local_depths": {
+          "2": 61,
+          "3": 5
+        },
+        "first_adjacent_minor": 262366450447509272258622259200,
+        "maximum_tested_width": 4,
+        "start_n": 4,
+        "windows": [
+          {
+            "determinantal_divisor": 262366450447509272258622259200,
+            "end_n_exclusive": 6,
+            "local_depths": {
+              "2": 61,
+              "3": 5
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 2
+          },
+          {
+            "determinantal_divisor": 8995935211640983105044480,
+            "end_n_exclusive": 7,
+            "local_depths": {
+              "2": 61,
+              "3": 5
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 3
+          },
+          {
+            "determinantal_divisor": 8995935211640983105044480,
+            "end_n_exclusive": 8,
+            "local_depths": {
+              "2": 61,
+              "3": 5
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 4
+          }
+        ]
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "first_adjacent_local_depths": {
+          "2": 91,
+          "3": 6
+        },
+        "first_adjacent_minor": 1105638558755426437150718822937360932536320,
+        "maximum_tested_width": 3,
+        "start_n": 5,
+        "windows": [
+          {
+            "determinantal_divisor": 1105638558755426437150718822937360932536320,
+            "end_n_exclusive": 7,
+            "local_depths": {
+              "2": 91,
+              "3": 6
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 2
+          },
+          {
+            "determinantal_divisor": 1290126672993496426080185324314306805760,
+            "end_n_exclusive": 8,
+            "local_depths": {
+              "2": 91,
+              "3": 6
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 3
+          }
+        ]
+      },
+      {
+        "all_tested_windows_match_first_adjacent_local_depths": true,
+        "first_adjacent_local_depths": {
+          "2": 127,
+          "3": 7
+        },
+        "first_adjacent_minor": 3024660293701351801172271636771563338472108962352411443200,
+        "maximum_tested_width": 2,
+        "start_n": 6,
+        "windows": [
+          {
+            "determinantal_divisor": 3024660293701351801172271636771563338472108962352411443200,
+            "end_n_exclusive": 8,
+            "local_depths": {
+              "2": 127,
+              "3": 7
+            },
+            "matches_first_adjacent_local_depths": true,
+            "row_count": 2
+          }
+        ]
+      }
+    ],
+    "prefix_determinantal_divisors": [
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 42,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 2,
+        "minor_count": 1,
+        "row_count": 2,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 3,
+        "minor_count": 3,
+        "row_count": 3,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 4,
+        "minor_count": 6,
+        "row_count": 4,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 5,
+        "minor_count": 10,
+        "row_count": 5,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 6,
+        "minor_count": 15,
+        "row_count": 6,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 7,
+        "minor_count": 21,
+        "row_count": 7,
+        "start_n": 0,
+        "zero_minor_count": 0
+      },
+      {
+        "all_rows_collinear": false,
+        "determinantal_divisor": 6,
+        "determinantal_divisor_v2": 1,
+        "determinantal_divisor_v3": 1,
+        "end_n_exclusive": 8,
+        "minor_count": 28,
+        "row_count": 8,
+        "start_n": 0,
+        "zero_minor_count": 0
+      }
+    ],
+    "rows": [
+      {
+        "A": 0,
+        "B": -1,
+        "B_is_unit_mod_6": true,
+        "n": 0,
+        "primitive_gcd": 1
+      },
+      {
+        "A": 42,
+        "B": 11,
+        "B_is_unit_mod_6": true,
+        "n": 1,
+        "primitive_gcd": 1
+      },
+      {
+        "A": -88014,
+        "B": -22585,
+        "B_is_unit_mod_6": true,
+        "n": 2,
+        "primitive_gcd": 1
+      },
+      {
+        "A": 18266132634,
+        "B": 4687042835,
+        "B_is_unit_mod_6": true,
+        "n": 3,
+        "primitive_gcd": 1
+      },
+      {
+        "A": 63435830251661574,
+        "B": 16277471392014365,
+        "B_is_unit_mod_6": true,
+        "n": 4,
+        "primitive_gcd": 1
+      },
+      {
+        "A": -87168618612060663141956514,
+        "B": -22367244034010277182099215,
+        "B_is_unit_mod_6": true,
+        "n": 5,
+        "primitive_gcd": 1
+      },
+      {
+        "A": -98471301053562648893507188830146634,
+        "B": -25267483368226584170581330072127035,
+        "B_is_unit_mod_6": true,
+        "n": 6,
+        "primitive_gcd": 1
+      },
+      {
+        "A": 827006401455283694604998707505985450368469583374,
+        "B": 212207722154720902838770725274199830903443938585,
+        "B_is_unit_mod_6": true,
+        "n": 7,
+        "primitive_gcd": 1
+      }
+    ],
+    "whole_family": {
+      "all_rows_collinear": false,
+      "determinantal_divisor": 6,
+      "determinantal_divisor_v2": 1,
+      "determinantal_divisor_v3": 1,
+      "end_n_exclusive": 8,
+      "minor_count": 28,
+      "row_count": 8,
+      "start_n": 0,
+      "zero_minor_count": 0
+    }
+  },
+  "schema": "erdos1049-primitive-plucker-compression/1",
+  "sources": [
+    {
+      "byte_length": 15710,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_primitive_plucker_compression.py",
+      "sha256": "a52c8ea1ca7ff289c8d6c37abaa336e87110e0f05456f73c4631cb491446f43a"
+    },
+    {
+      "byte_length": 6990,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_remainder_at_three_halves.py",
+      "sha256": "6bcc84f02d763c3974acbb7c5f75e5e2641e4fd3482c9ec2dd1545c1af9e6d61"
+    },
+    {
+      "byte_length": 15345,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/verify_qapery_transduction.py",
+      "sha256": "8e3aa94a2e54d3c5c5c76d1926dcdf192e830824ea174a86b59b4f8a806fffdb"
+    },
+    {
+      "byte_length": 13859,
+      "path": "system/lib/formal_math_determinantal.py",
+      "sha256": "535be6f01ce1c89c5fe4ef4dbdbff80fb8183e586824a87819640e681e8895a0"
+    },
+    {
+      "byte_length": 13024,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean",
+      "sha256": "4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3"
+    }
+  ]
+}

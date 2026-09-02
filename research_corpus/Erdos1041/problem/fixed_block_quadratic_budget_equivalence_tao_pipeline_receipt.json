@@ -1,0 +1,30 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "result_id": "fixed_block_quadratic_budget_equivalence",
+  "problem_id": "erdos_1041",
+  "input_stage": "type_b_return_stream_08_parent_proof_claim",
+  "output_stage": "exact_conditional_consumer_and_proof_boundary_repair",
+  "artifact": [
+    "ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_fixed_block_quadratic_budget.py"
+  ],
+    "human_understanding_delta": "Optimizing the return's lifetime weights shows that its product A(lambda)E(lambda) has infimum exactly the square of the average lengths of the whole lifts. The Cauchy--Schwarz selector is correct, but the advertised fixed-block alternative is precisely the still-missing safe-block average-length producer, not a consequence of the charged-lifetime and moment corpus. The strengthened fixed-point compensation lemma now gives the exact whole-fibre allocation rule: a derangement loop needs no localization, while a loop with fixed sheets must make those fixed lifts pay the same baseline cost; a sharp three-sheet countermodel shows why nontrivial monodromy alone is insufficient.",
+    "verification_state": "PASS ordinary exact proof; PASS exact rational finite replay of Cauchy--Schwarz, equality, epsilon regularization, whole-branch selection, fixed-point compensation, derangement selection, and the sharp fixed-sheet countermodel",
+  "publication_or_review_state": "private authoring checkpoint; no external specialist review",
+  "canonicalization_state": "Conditional fixed-block consumer retained; unsupported full-parent-proof promotion rejected.",
+    "unresolved_downstream_bottleneck": "Construct an integrated loop whose budgeted monodromy is fixed-point-free, or prove that its fixed lifts pay average length at least two; alternatively prove a fixed safe moved-sheet block average-length inequality, componentwise combined charge, COVER, or FP--GM.",
+  "next_stage_owner": "Mathematical Closure Engine: integrated monodromy allocation or a structurally distinct target-deciding producer.",
+  "paper_assimilation": {
+    "paper": "private Erdős 1041 research corpus",
+    "section": "integrated inverse-fibre and monodromy consumers",
+    "canonical_mechanism_family": "fixed-block quadratic factorization",
+    "relation": "exact equivalence and proof-boundary correction",
+        "understanding_delta": "Separates a valid post-integration whole-lift selector from the unproved construction of a safe block carrying the required average budget, then identifies fixed-point-free monodromy or exact fixed-sheet baseline compensation as the two ways a global budget can retain moved endpoints.",
+    "evidence_boundary": "ordinary exact measure-theoretic proof plus exact rational finite replay; no Lean landing",
+        "hard_step": "construct a fixed-point-free budgeted monodromy loop, prove a two-unit lower baseline on every fixed lift, or localize the average-length budget to the moved block",
+    "meaningful_failed_route": "derive the fixed-block quadratic premise merely by citing scalar charged lifetime, complete moments, and monodromy representation",
+    "open_remainder": "integrated monodromy action, combined charge, COVER, FP--GM, and unrestricted Erdős 1041"
+  },
+  "tool_disclosure": "A short exact Fraction checker replays finite forms of the variational identity; no numerical search was used.",
+    "claim_boundary": "Proved: the quadratic variational equivalence, its conditional moved-sheet consumer, the fixed-point compensation criterion, and the sharp failure of whole-block averaging without compensation. Not proved: a universal derangement loop, fixed-sheet lower bounds, the universal fixed-block quadratic-budget alternative, or Erdős 1041."
+}

@@ -1,0 +1,234 @@
+{
+  "kind": "annex_notes",
+  "schema_version": "annex_notes_v1",
+  "slug": "arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum",
+  "notes": [
+    {
+      "id": "n001",
+      "targets": [
+        "introduction-introduction-unnumbered"
+      ],
+      "note": "Navigation: begin with Theorem 1 and Question 5 in the introduction, then use the pseudo-greedy-expansion section for Corollary 10, Lemmas 12--15, Theorem 16, Proposition 19, and Corollary 20.",
+      "tags": [
+        "navigation",
+        "erdos243",
+        "source-checked"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Provides the shortest source-first route through every Koizumi result cited by the public Erdos 243 paper.",
+      "routing": {
+        "problem_spaces": [
+          "erdos243_reciprocal_tail_rigidity"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n002",
+      "targets": [
+        "pseudo-greedy-expansion"
+      ],
+      "note": "Evidence boundary: Theorem 16 proves an equivalence between Conjecture 6 and an affirmative answer to Erdős-Graham Question 5. It does not prove either open statement. Any pseudo-greedy termination claim with the same hypotheses remains a reformulation of Erdos 243, not progress past it.",
+      "tags": [
+        "evidence-boundary",
+        "boundary",
+        "scope",
+        "open-problem",
+        "theorem-16"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Prevents the paper's most important citation from being misread as a solution or partial solution.",
+      "routing": {
+        "problem_spaces": [
+          "erdos243_reciprocal_tail_rigidity"
+        ],
+        "capabilities": [
+          "claim_assurance"
+        ]
+      }
+    },
+    {
+      "id": "n003",
+      "targets": [
+        "pseudo-greedy-expansion"
+      ],
+      "note": "Exact state dictionary: Lemma 15 writes x_n=c_n/d_n and epsilon_n=e_n/c_n, with e_n congruent to d_n modulo c_n in the centered interval, a_n=(d_n-e_n)/c_n+1, c_(n+1)=c_n-e_n, and d_(n+1)=d_n a_n. These are the primary-source formulas behind the public paper's (C,D,E) state system.",
+      "tags": [
+        "lemma-15",
+        "state-dictionary",
+        "source-checked"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Pins every integer-state formula attributed to Koizumi rather than relying on a paraphrase.",
+      "routing": {
+        "problem_spaces": [
+          "erdos243_reciprocal_tail_rigidity"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n004",
+      "targets": [
+        "pseudo-greedy-expansion"
+      ],
+      "note": "Exact prior-art implications: Lemma 13 proves epsilon_n=0 implies epsilon_(n+1)=0. Proposition 19(2) proves eventual epsilon_n>=0 implies eventual epsilon_n=0. Corollary 20 transports the latter back to the original reciprocal-series sequence.",
+      "tags": [
+        "lemma-13",
+        "proposition-19",
+        "corollary-20",
+        "source-checked"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Checks the absorption and descent priority statements made in the public paper.",
+      "routing": {
+        "problem_spaces": [
+          "erdos243_reciprocal_tail_rigidity"
+        ],
+        "capabilities": [
+          "claim_assurance"
+        ]
+      }
+    },
+    {
+      "id": "n005",
+      "targets": [
+        "introduction-introduction-unnumbered"
+      ],
+      "note": "Stronger surrounding theorem: Theorem 1 reconstructs each sufficiently large a_n by nearest-integer rounding from the reciprocal-sum tail whenever |a_n^2/a_(n+1)-beta|<=1/3; if that ratio tends to beta, the rounding error tends to zero. Corollaries 2 and 3 give uniqueness characterizations of the Sylvester and Millin sequences.",
+      "tags": [
+        "theorem-1",
+        "stronger-result",
+        "reciprocal-tail"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 96,
+      "relevance_justification": "Captures useful mathematics beyond the narrow theorem currently cited by the public paper.",
+      "routing": {
+        "problem_spaces": [
+          "erdos243_reciprocal_tail_rigidity"
+        ],
+        "capabilities": [
+          "research_enrichment"
+        ]
+      }
+    },
+    {
+      "id": "n006",
+      "targets": [
+        ""
+      ],
+      "note": "Evidence quality: the arXiv LaTeX archive and extracted Markdown are hash-pinned as 35e2ec1d4801b8a2ded0ed945280ced664fd46f7966e547ac0dd8aa82d28a940 and 13b509b1da5735e6cb5299d47fe87289641349ba467c63789bd7eab86b724d2d. Theorem 1, Question 5, Corollary 10, Lemmas 13 and 15, Theorem 16, Proposition 19, and Corollary 20 were line-checked in that source. The official INTEGERS index lists the published version as volume 26 (2026), A28; exact published-copy comparison remains separate from this preprint check.",
+      "tags": [
+        "evidence-quality",
+        "hash-pinned",
+        "source-checked",
+        "version-boundary"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Separates exact preprint verification from the independently verified journal identity.",
+      "routing": {
+        "problem_spaces": [
+          "erdos243_reciprocal_tail_rigidity"
+        ],
+        "capabilities": [
+          "citation_assurance"
+        ]
+      }
+    },
+    {
+      "id": "n007",
+      "targets": [
+        "introduction-introduction-unnumbered",
+        "pseudo-greedy-expansion"
+      ],
+      "note": "Published-version crosswalk: INTEGERS 26 (2026), A28 renumbers arXiv v1 Question 5 -> Question 1 (PDF p. 3), Conjecture 6 -> Conjecture 1 (p. 4), Corollary 10 -> Corollary 3 (p. 9), Lemma 12 -> Lemma 2 (p. 10), Lemma 13 -> Lemma 3 (p. 10), Lemma 15 -> Lemma 4 (pp. 11-12), Theorem 16 -> Theorem 3 (pp. 12-13), Proposition 19 -> Proposition 1 (p. 14), and Corollary 20 -> Corollary 4 (pp. 14-15).",
+      "tags": [
+        "erdos243",
+        "published-version",
+        "version-crosswalk",
+        "exact-locator"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Prevents arXiv theorem numbers from being cited against the renumbered journal publication."
+    },
+    {
+      "id": "n008",
+      "targets": [
+        "pseudo-greedy-expansion"
+      ],
+      "note": "Published exact state dictionary: Lemma 4 on PDF pp. 11-12 gives x_n=c_n/d_n, epsilon_n=e_n/c_n, the centered congruence for e_n, a_n=(d_n-e_n)/c_n+1, c_(n+1)=c_n-e_n, d_(n+1)=d_n a_n, and c_n=O(1.5^n).",
+      "tags": [
+        "erdos243",
+        "published-version",
+        "lemma-4",
+        "state-dictionary",
+        "exact-locator"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Pins the manuscript's canonical integer-state formulas to the published result."
+    },
+    {
+      "id": "n009",
+      "targets": [
+        "pseudo-greedy-expansion"
+      ],
+      "note": "Published prior-art boundary: Corollary 3 (PDF p. 9) supplies the eventual pseudo-greedy representation and epsilon_n -> 0; Theorem 3 (pp. 12-13) only proves equivalence of Conjecture 1 and Erdős-Graham Question 1; Proposition 1 (p. 14) and Corollary 4 (pp. 14-15) prove the eventual nonnegative-gap and historical Erdős-Straus/Badea special cases. None settles the unrestricted negative-gap obstruction in Problem 243.",
+      "tags": [
+        "erdos243",
+        "published-version",
+        "boundary",
+        "scope",
+        "exact-locator"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Separates the inputs that genuinely become unconditional from the one obstruction the paper still leaves open."
+    },
+    {
+      "id": "n010",
+      "targets": [
+        "introduction-introduction-unnumbered",
+        "pseudo-greedy-expansion"
+      ],
+      "note": "Published-copy acquisition/full-read receipt (2026-07-28): downloaded the official 17-page INTEGERS A28 PDF from https://math.colgate.edu/~integers/aa28/aa28.pdf; SHA-256 9ad8561399e36bb4f17368064dc4765a90f164d85b65330c466e79fc716624df. Read all 17 pages and compared every manuscript-used result with arXiv v1. Journal identity: INTEGERS 26 (2026), A28; DOI 10.5281/zenodo.18714404.",
+      "tags": [
+        "erdos243",
+        "published-version",
+        "source-checked",
+        "provenance",
+        "full-read"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Binds the official published artifact, its identity, and the whole-paper comparison to the annex."
+    },
+    {
+      "id": "n011",
+      "targets": [
+        "*"
+      ],
+      "note": "Published-version stronger-result locator: Theorem 1 and Corollary 1 are both on PDF p. 2 of INTEGERS 26 (2026), A28. Theorem 1 gives nearest-integer reconstruction for sufficiently large a_n under |a_n^2/a_(n+1)-beta|<=1/3, with vanishing reconstruction error when the ratio tends to beta. Corollary 1 says that reciprocal sum 1 together with 2/3<=a_n^2/a_(n+1)<=4/3 characterizes Sylvester's sequence. These are stronger rigidity results under a fixed sum and uniform ratio window, not a solution of unrestricted Erdős Problem 243. The earlier annex note n005 uses arXiv numbering; use this note for the published locator.",
+      "tags": [
+        "published-crosswalk",
+        "stronger-adjacent-result",
+        "exact-locator",
+        "erdos-243"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Pins the journal numbering and the exact stronger-hypotheses boundary for manuscript integration."
+    }
+  ]
+}

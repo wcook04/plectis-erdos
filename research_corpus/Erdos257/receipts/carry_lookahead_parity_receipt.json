@@ -1,0 +1,260 @@
+{
+  "Lcap": 200,
+  "depth": 6000,
+  "rows": [
+    {
+      "Lstar_max": null,
+      "Lstar_median": null,
+      "Lstar_min": null,
+      "Lstar_up_max": 6,
+      "Lstar_up_median": 6,
+      "Lstar_up_min": 6,
+      "cohort": "even_q",
+      "depth": 6000,
+      "eps_all_zero_tail": true,
+      "max_C": 13,
+      "n_resolved": 0,
+      "n_unresolved": 800,
+      "n_unresolved_up": 0,
+      "q": 2,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "1/2"
+    },
+    {
+      "Lstar_max": null,
+      "Lstar_median": null,
+      "Lstar_min": null,
+      "Lstar_up_max": 7,
+      "Lstar_up_median": 7,
+      "Lstar_up_min": 6,
+      "cohort": "even_q",
+      "depth": 6000,
+      "eps_all_zero_tail": true,
+      "max_C": 15,
+      "n_resolved": 0,
+      "n_unresolved": 800,
+      "n_unresolved_up": 0,
+      "q": 4,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "1/4"
+    },
+    {
+      "Lstar_max": null,
+      "Lstar_median": null,
+      "Lstar_min": null,
+      "Lstar_up_max": 6,
+      "Lstar_up_median": 6,
+      "Lstar_up_min": 6,
+      "cohort": "even_q",
+      "depth": 6000,
+      "eps_all_zero_tail": true,
+      "max_C": 14,
+      "n_resolved": 0,
+      "n_unresolved": 800,
+      "n_unresolved_up": 0,
+      "q": 8,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "3/8"
+    },
+    {
+      "Lstar_max": null,
+      "Lstar_median": null,
+      "Lstar_min": null,
+      "Lstar_up_max": 7,
+      "Lstar_up_median": 7,
+      "Lstar_up_min": 6,
+      "cohort": "even_q",
+      "depth": 6000,
+      "eps_all_zero_tail": true,
+      "max_C": 15,
+      "n_resolved": 0,
+      "n_unresolved": 800,
+      "n_unresolved_up": 0,
+      "q": 512,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "1/512"
+    },
+    {
+      "Lstar_max": null,
+      "Lstar_median": null,
+      "Lstar_min": null,
+      "Lstar_up_max": 7,
+      "Lstar_up_median": 7,
+      "Lstar_up_min": 6,
+      "cohort": "even_q",
+      "depth": 6000,
+      "eps_all_zero_tail": true,
+      "max_C": 16,
+      "n_resolved": 0,
+      "n_unresolved": 800,
+      "n_unresolved_up": 0,
+      "q": 1024,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "5/1024"
+    },
+    {
+      "Lstar_max": null,
+      "Lstar_median": null,
+      "Lstar_min": null,
+      "Lstar_up_max": 7,
+      "Lstar_up_median": 7,
+      "Lstar_up_min": 7,
+      "cohort": "even_q",
+      "depth": 6000,
+      "eps_all_zero_tail": true,
+      "max_C": 19,
+      "n_resolved": 0,
+      "n_unresolved": 800,
+      "n_unresolved_up": 0,
+      "q": 2048,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "1013/2048"
+    },
+    {
+      "Lstar_max": null,
+      "Lstar_median": null,
+      "Lstar_min": null,
+      "Lstar_up_max": 6,
+      "Lstar_up_median": 6,
+      "Lstar_up_min": 6,
+      "cohort": "even_q",
+      "depth": 6000,
+      "eps_all_zero_tail": true,
+      "max_C": 12,
+      "n_resolved": 0,
+      "n_unresolved": 800,
+      "n_unresolved_up": 0,
+      "q": 4096,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "7/4096"
+    },
+    {
+      "Lstar_max": 8,
+      "Lstar_median": 4,
+      "Lstar_min": 1,
+      "Lstar_up_max": 9,
+      "Lstar_up_median": 7,
+      "Lstar_up_min": 6,
+      "cohort": "odd_q",
+      "depth": 6000,
+      "eps_all_zero_tail": false,
+      "max_C": 14,
+      "n_resolved": 800,
+      "n_unresolved": 0,
+      "n_unresolved_up": 0,
+      "q": 21,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "1/21"
+    },
+    {
+      "Lstar_max": 7,
+      "Lstar_median": 3,
+      "Lstar_min": 1,
+      "Lstar_up_max": 10,
+      "Lstar_up_median": 8,
+      "Lstar_up_min": 7,
+      "cohort": "odd_q",
+      "depth": 6000,
+      "eps_all_zero_tail": false,
+      "max_C": 16,
+      "n_resolved": 800,
+      "n_unresolved": 0,
+      "n_unresolved_up": 0,
+      "q": 9,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "4/9"
+    },
+    {
+      "Lstar_max": 12,
+      "Lstar_median": 4,
+      "Lstar_min": 1,
+      "Lstar_up_max": 10,
+      "Lstar_up_median": 7,
+      "Lstar_up_min": 6,
+      "cohort": "odd_q",
+      "depth": 6000,
+      "eps_all_zero_tail": false,
+      "max_C": 12,
+      "n_resolved": 800,
+      "n_unresolved": 0,
+      "n_unresolved_up": 0,
+      "q": 465,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "1/465"
+    },
+    {
+      "Lstar_max": 6,
+      "Lstar_median": 3,
+      "Lstar_min": 1,
+      "Lstar_up_max": 9,
+      "Lstar_up_median": 8,
+      "Lstar_up_min": 7,
+      "cohort": "odd_q",
+      "depth": 6000,
+      "eps_all_zero_tail": false,
+      "max_C": 13,
+      "n_resolved": 800,
+      "n_unresolved": 0,
+      "n_unresolved_up": 0,
+      "q": 5,
+      "range": [
+        2000,
+        2800
+      ],
+      "status": "alive",
+      "target": "1/5"
+    },
+    {
+      "cohort": "odd_q",
+      "q": 3,
+      "status": "PRECISION",
+      "target": "1/3"
+    },
+    {
+      "cohort": "odd_q",
+      "q": 7,
+      "status": "PRECISION",
+      "target": "1/7"
+    }
+  ]
+}

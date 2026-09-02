@@ -1,0 +1,26 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "research_actor_mode": "mixed",
+  "input_stage": "type_b_return_generation",
+  "output_stage": "verification_assimilation_and_parent_proof_attempt",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/LowCriticalTwoRootReduction20260826.md",
+  "source_identity": {
+    "path": "public-source-redacted://pasted-text.txt",
+    "sha256": "ee660b306c23b54c51806a31256e382a7a0de53f37133fe97db80bcfb73e0b68",
+    "batch_id": "erdos1041_20260826_return_stream_02",
+    "return_id": "return_004"
+  },
+  "human_understanding_delta": "The return is dominated more heavily than its own presentation suggests: strictification, the every-critical distance-two budget, the arbitrary-modulus radial-product theorem, the variance core, and Newton attachment warnings were already source-current. Its nearest-spoke estimate composes with critical balance and the existing metric theorem to give a complete two-spoke path whenever |p(c)|<=1/(n*2^(n-2)), hence an explicit all-degree low-discriminant solution class. The proposed cyclic completion still lacks boundary-strip injectivity or weighted multiplicity.",
+  "verification_state": "ordinary proofs compared against the source-current research packet; deterministic radial, Fourier, scalar-envelope, and two-spoke-budget regression passes; focused Lean scalar validation deferred by active project build lease, ticket rct_822a4017e58e7f143643; no unrestricted theorem claimed",
+  "publication_or_review_state": "private Type B assimilation; not externally reviewed",
+  "canonicalization_state": "one return-specific assimilation note and checker; dominated claims point to their stronger canonical homes",
+  "unresolved_downstream_bottleneck": "Raise the very small deep-low-critical/discriminant threshold toward the near-Fekete shell, or prove COVER/combined charge/cyclic allocation while allowing multiple boundary strips to share one saddle.",
+  "next_stage_owner": "Erdos1041 full-solution packet fleet and local closure engine",
+  "proof_effect": "explicit_all_degree_low_discriminant_subcase_closed_dominated_rediscovery_rejected_parent_open",
+  "focused_validation": "pass: check_erdos1041_low_critical_two_root_reduction.py; Lean validation pending capacity ticket rct_822a4017e58e7f143643 (exit 75 is not theorem evidence)",
+  "integration_validation": "pass: research packet and intake JSON parse; formal_math_frontier_integrity status ok with zero issues; scoped commit pending",
+  "hard_step": "joint boundary-spoke allocation or another complete safe-straightening theorem",
+  "meaningful_failed_route": "infer n distinct critical points above level one from n unsafe sector paths without proving injectivity when boundary superlevel strips merge",
+  "open_remainder": "unrestricted Erdos 1041; COVER; componentwise combined charge; complete exceptional-or-regular connector"
+}

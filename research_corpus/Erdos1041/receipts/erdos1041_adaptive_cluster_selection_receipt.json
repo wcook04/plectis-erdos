@@ -1,0 +1,41 @@
+{
+  "schema": "erdos1041_adaptive_cluster_selection_receipt_v1",
+  "generated_at": "2026-08-27",
+  "status": "PASS",
+  "evidence_class": "numerical_candidate_only",
+  "command": "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_adaptive_cluster_selection.py",
+  "configuration_count": 254,
+  "results": {
+    "worst_coarse": {
+      "mean": 1.904478083464,
+      "degree": 3,
+      "family": "near_regular",
+      "repetition": 8
+    },
+    "worst_fine": {
+      "mean": 1.907684102564,
+      "degree": 3,
+      "family": "near_regular",
+      "repetition": 8
+    },
+    "pinned_hard_degree_6_coarse": 1.734283539354,
+    "pinned_hard_degree_9_coarse": 1.506836492236
+  },
+  "exact_theorem": {
+    "id": "singleton_cluster_limit_equivalence",
+    "source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdaptiveClusterSelectionLab.md",
+    "statement": "For an isolated simple critical point c, the mean length of the two complete lifts of a shrinking singleton critical-value lollipop converges to the total canonical inverse-ray arm length L(c).",
+    "proof_class": "ordinary_exact_complex_analysis"
+  },
+  "source_hashes": {
+    "lab_sha256": "59c13929fbbca19f438e75ddbd8d72e10ab96f3207ab3ebd010b40232b04ea8d",
+    "checker_sha256": "90fc06c4f93793e82a751d6437b6a4f712ff4605ce276c55a786332960cec339"
+  },
+  "parent_claim_status": "open_not_promoted",
+  "limitations": [
+    "polynomial root finding uses IEEE-754 floating point",
+    "branch continuation uses numerical Hungarian matching",
+    "arclength is polygonal numerical quadrature",
+    "the sweep does not prove a universal selector or a strict parent bound"
+  ]
+}

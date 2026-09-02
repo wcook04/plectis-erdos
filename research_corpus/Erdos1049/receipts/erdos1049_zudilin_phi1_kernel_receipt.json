@@ -1,0 +1,264 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "The approximation parameter cannot be tuned to create or remove minimum-layer Phi_1 cancellation at any rank.",
+      "survival_consequence": "Any extra Phi_1 order must be an intrinsic zero of the explicit factorial-harmonic Hankel determinant, uniformly in mu."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "phi1_minimum_layer_depends_on_pade_parameter",
+      "statement": "Extra Phi_1 order might arise through cancellation between the mu coefficient channel and the two inhomogeneous source channels."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_minimum_term_cancellation_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi1_kernel_identity.py",
+        "system/lib/formal_math_tropical_determinant.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_minimum_term_cancellation.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+        "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md"
+      ]
+    },
+    "probe": {
+      "computation": "Check the Legendre endpoint, harmonic-weighted Legendre, and binomial-convolution identities; independently compute the weighted determinant layer by subset DP and compare it with the closed bordered factorial-harmonic Hankel determinant.",
+      "falsifier": "The source A-channel has one additional p-1 factor, while the B and C limits combine to a fixed nonzero primitive sequence; hence mu cannot appear in the minimum determinant layer at any rank.",
+      "id": "source_limit_to_factorial_harmonic_hankel_kernel",
+      "question": "Which exact all-rank coefficient controls the minimum Phi_1 layer, and can the Pad\u00e9 parameter mu participate in its cancellation?",
+      "resource_bounds": {
+        "maximum_bordered_formula_regression_rank": 6,
+        "maximum_source_identity_regression_index": 12
+      },
+      "stop_condition": "Stop after the all-rank kernel identity and existing-rank regressions; do not count additional positive finite Hankel minors as nonvanishing."
+    },
+    "problem": {
+      "claim_ceiling": "All-rank independence of the minimum Phi_1 layer from mu and its exact reduction to a factorial-harmonic Hankel determinant; not a nonvanishing theorem or irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The conclusion comes from an all-rank source limit and exact bordered determinant factorization, not from extrapolating the finite rank table.",
+        "next_analytic_target": "Prove the southeast shifted factorial-harmonic Hankel matrix positive definite, or find an exact rank where its determinant changes sign; finite positive-minor extension alone is not progress."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The minimum Phi_1 layer is mu-independent at every rank and equals an explicit nonzero scalar times det(((i+j)!)^3 H_{i+j}); this eliminates mu-tuned cancellation and isolates conditional positivity as the sole remaining Phi_1 minimum-layer mechanism."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_bordered_formula_regressions_hold": true,
+    "all_minimum_layers_are_mu_independent": true,
+    "all_source_sum_regressions_hold": true,
+    "analytic_identity": "L_N=(-3)^N*(prod_{1<=i<N}((-1)^i*lcm(1..i)/(i!)^3)^2)*det_{0<=i,j<N}(((i+j)!)^3*H_{i+j})",
+    "authority_boundary": "The all-rank identity is established by the source-limit and bordered-determinant algebra in the bound analysis note. Finite checks validate the translation but do not prove nonvanishing.",
+    "rank_checks": [
+      {
+        "coefficient_is_mu_independent": true,
+        "coefficient_is_nonzero": true,
+        "expected_minimum_order": 0,
+        "expected_minimum_permutation_count": 1,
+        "factorial_harmonic_hankel_formula": "-9",
+        "formula_matches": true,
+        "full_hankel_determinant_sign": -1,
+        "minimum_order": 0,
+        "minimum_permutation_count": 1,
+        "rank": 2,
+        "signed_minimum_coefficient": "-9",
+        "subset_state_count": 4
+      },
+      {
+        "coefficient_is_mu_independent": true,
+        "coefficient_is_nonzero": true,
+        "expected_minimum_order": 1,
+        "expected_minimum_permutation_count": 4,
+        "factorial_harmonic_hankel_formula": "35478",
+        "formula_matches": true,
+        "full_hankel_determinant_sign": -1,
+        "minimum_order": 1,
+        "minimum_permutation_count": 4,
+        "rank": 3,
+        "signed_minimum_coefficient": "35478",
+        "subset_state_count": 8
+      },
+      {
+        "coefficient_is_mu_independent": true,
+        "coefficient_is_nonzero": true,
+        "expected_minimum_order": 2,
+        "expected_minimum_permutation_count": 18,
+        "factorial_harmonic_hankel_formula": "-25523883999",
+        "formula_matches": true,
+        "full_hankel_determinant_sign": -1,
+        "minimum_order": 2,
+        "minimum_permutation_count": 18,
+        "rank": 4,
+        "signed_minimum_coefficient": "-25523883999",
+        "subset_state_count": 16
+      },
+      {
+        "coefficient_is_mu_independent": true,
+        "coefficient_is_nonzero": true,
+        "expected_minimum_order": 3,
+        "expected_minimum_permutation_count": 96,
+        "factorial_harmonic_hankel_formula": "1777404096805776300",
+        "formula_matches": true,
+        "full_hankel_determinant_sign": -1,
+        "minimum_order": 3,
+        "minimum_permutation_count": 96,
+        "rank": 5,
+        "signed_minimum_coefficient": "1777404096805776300",
+        "subset_state_count": 32
+      },
+      {
+        "coefficient_is_mu_independent": true,
+        "coefficient_is_nonzero": true,
+        "expected_minimum_order": 4,
+        "expected_minimum_permutation_count": 600,
+        "factorial_harmonic_hankel_formula": "-79795247999510945843570749824",
+        "formula_matches": true,
+        "full_hankel_determinant_sign": -1,
+        "minimum_order": 4,
+        "minimum_permutation_count": 600,
+        "rank": 6,
+        "signed_minimum_coefficient": "-79795247999510945843570749824",
+        "subset_state_count": 64
+      }
+    ],
+    "schema": "erdos1049-zudilin-phi1-associated-graded-kernel/1",
+    "source_sum_checks": [
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 1,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "3"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 2,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "-9"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 3,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "33"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 4,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "-75"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 5,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "411"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 6,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "-441"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 7,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "3267"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 8,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "-6849"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 9,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "21387"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 10,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "-22143"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 11,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "251133"
+      },
+      {
+        "convolution_identity": true,
+        "harmonic_legendre_identity": true,
+        "index": 12,
+        "legendre_endpoint_identity": true,
+        "primitive_moment_limit": "-258063"
+      }
+    ]
+  },
+  "schema": "erdos1049-zudilin-phi1-associated-graded-kernel-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 12230,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi1_kernel_identity.py",
+      "sha256": "2e1a03f173f24ada3c1a4615b44eb2369f723e6883c6376f72a90fe58600637d"
+    },
+    {
+      "byte_length": 5511,
+      "path": "system/lib/formal_math_tropical_determinant.py",
+      "sha256": "00acb2774f58a8df75ac44d8bad72dc35b72715d1170b2a39887551204bb555c"
+    },
+    {
+      "byte_length": 16427,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_minimum_term_cancellation.py",
+      "sha256": "e18f2779cdd27e900b9cd0b619f070c051ce64cb0bd6d024e41e6afd874b2bcb"
+    },
+    {
+      "byte_length": 13070,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+      "sha256": "439aae4afc146d513dab5d1851ff91d1c0bce97b126e1f21df34f8eeb688c758"
+    },
+    {
+      "byte_length": 32617,
+      "path": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e"
+    },
+    {
+      "byte_length": 5657,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md",
+      "sha256": "331153728c2eb05e70c41c9259f5b71dd7e7e9666ec8f5e38cc6c25258d51649"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_eliminated"
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "plectis_strongest_result_activation_map_v2",
+  "problem_id": "erdos_269",
+  "status": "open",
+  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "erdos269_window_escape_is_the_problem",
+      "status": "strongest_premise",
+      "exact_statement": "ActualCofinalLocalWindowEscape is proved EQUIVALENT to Erdos #269 (the converse implication is Lean-checked in ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff): for every B >= 1 coprime to 30 and every a_0 there are lo >= a_0 and len >= 1 with lpr_W(-B F) > B*90(lo + len + 1)^2, where W is the digit word and F the accumulated forcing of the actual ordered digits. Its sharpen-the-width-bound sub-route is falsified for the whole quadratic short-bound family.",
+      "hypotheses": "Lean-checked equivalence recorded in #269's research packet as a retired attack route precisely because it is the target, not a weaker sufficient condition.",
+      "named_consumers": [
+        "shrinking_target_dictionary",
+        "erdos_269_parent"
+      ],
+      "supersedes": [
+        "the earlier reading of window escape as a sufficient condition"
+      ],
+      "why_it_matters": "The second proved equivalence of the same shape, in a different problem, with an explicitly quadratic threshold.",
+      "public_authority_paths": [
+        "research_corpus/Erdos269/problem/CofinalWindowEscapeEquivalence.lean",
+        "research_corpus/Erdos269/problem/research_packet.json"
+      ]
+    }
+  ]
+}

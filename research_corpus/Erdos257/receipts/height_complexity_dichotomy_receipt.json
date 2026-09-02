@@ -1,0 +1,319 @@
+{
+  "actual_targets": {
+    "1/2": [
+      {
+        "N": 100,
+        "delta": 0.47,
+        "height_budget_2N": 200,
+        "height_route_viable": false,
+        "log2_denominator": 1722,
+        "over_N2": 0.1722,
+        "over_delta_N2": 0.36638297872340425,
+        "support_size": 47
+      },
+      {
+        "N": 200,
+        "delta": 0.44,
+        "height_budget_2N": 400,
+        "height_route_viable": false,
+        "log2_denominator": 6052,
+        "over_N2": 0.1513,
+        "over_delta_N2": 0.34386363636363637,
+        "support_size": 88
+      },
+      {
+        "N": 400,
+        "delta": 0.46,
+        "height_budget_2N": 800,
+        "height_route_viable": false,
+        "log2_denominator": 27433,
+        "over_N2": 0.17145625,
+        "over_delta_N2": 0.37273097826086954,
+        "support_size": 184
+      },
+      {
+        "N": 700,
+        "delta": 0.48142857142857143,
+        "height_budget_2N": 1400,
+        "height_route_viable": false,
+        "log2_denominator": 89981,
+        "over_N2": 0.18363469387755102,
+        "over_delta_N2": 0.38143704959728697,
+        "support_size": 337
+      }
+    ],
+    "1/21": [
+      {
+        "N": 100,
+        "delta": 0.43,
+        "height_budget_2N": 200,
+        "height_route_viable": false,
+        "log2_denominator": 1611,
+        "over_N2": 0.1611,
+        "over_delta_N2": 0.37465116279069766,
+        "support_size": 43
+      },
+      {
+        "N": 200,
+        "delta": 0.47,
+        "height_budget_2N": 400,
+        "height_route_viable": false,
+        "log2_denominator": 7239,
+        "over_N2": 0.180975,
+        "over_delta_N2": 0.3850531914893617,
+        "support_size": 94
+      },
+      {
+        "N": 400,
+        "delta": 0.5125,
+        "height_budget_2N": 800,
+        "height_route_viable": false,
+        "log2_denominator": 30606,
+        "over_N2": 0.1912875,
+        "over_delta_N2": 0.3732439024390244,
+        "support_size": 205
+      },
+      {
+        "N": 700,
+        "delta": 0.5128571428571429,
+        "height_budget_2N": 1400,
+        "height_route_viable": false,
+        "log2_denominator": 91409,
+        "over_N2": 0.18654897959183672,
+        "over_delta_N2": 0.3637445284520493,
+        "support_size": 359
+      }
+    ],
+    "1/465": [
+      {
+        "N": 100,
+        "delta": 0.42,
+        "height_budget_2N": 200,
+        "height_route_viable": false,
+        "log2_denominator": 1524,
+        "over_N2": 0.1524,
+        "over_delta_N2": 0.3628571428571429,
+        "support_size": 42
+      },
+      {
+        "N": 200,
+        "delta": 0.43,
+        "height_budget_2N": 400,
+        "height_route_viable": false,
+        "log2_denominator": 6235,
+        "over_N2": 0.155875,
+        "over_delta_N2": 0.3625,
+        "support_size": 86
+      },
+      {
+        "N": 400,
+        "delta": 0.465,
+        "height_budget_2N": 800,
+        "height_route_viable": false,
+        "log2_denominator": 26926,
+        "over_N2": 0.1682875,
+        "over_delta_N2": 0.36190860215053766,
+        "support_size": 186
+      },
+      {
+        "N": 700,
+        "delta": 0.4442857142857143,
+        "height_budget_2N": 1400,
+        "height_route_viable": false,
+        "log2_denominator": 73672,
+        "over_N2": 0.15035102040816326,
+        "over_delta_N2": 0.3384106568672485,
+        "support_size": 311
+      }
+    ],
+    "1/5": [
+      {
+        "N": 100,
+        "delta": 0.44,
+        "height_budget_2N": 200,
+        "height_route_viable": false,
+        "log2_denominator": 1629,
+        "over_N2": 0.1629,
+        "over_delta_N2": 0.37022727272727274,
+        "support_size": 44
+      },
+      {
+        "N": 200,
+        "delta": 0.445,
+        "height_budget_2N": 400,
+        "height_route_viable": false,
+        "log2_denominator": 6358,
+        "over_N2": 0.15895,
+        "over_delta_N2": 0.35719101123595504,
+        "support_size": 89
+      },
+      {
+        "N": 400,
+        "delta": 0.4925,
+        "height_budget_2N": 800,
+        "height_route_viable": false,
+        "log2_denominator": 28946,
+        "over_N2": 0.1809125,
+        "over_delta_N2": 0.36733502538071067,
+        "support_size": 197
+      },
+      {
+        "N": 700,
+        "delta": 0.49714285714285716,
+        "height_budget_2N": 1400,
+        "height_route_viable": false,
+        "log2_denominator": 87252,
+        "over_N2": 0.17806530612244897,
+        "over_delta_N2": 0.3581773399014778,
+        "support_size": 348
+      }
+    ],
+    "4/9": [
+      {
+        "N": 100,
+        "delta": 0.46,
+        "height_budget_2N": 200,
+        "height_route_viable": false,
+        "log2_denominator": 1664,
+        "over_N2": 0.1664,
+        "over_delta_N2": 0.3617391304347826,
+        "support_size": 46
+      },
+      {
+        "N": 200,
+        "delta": 0.475,
+        "height_budget_2N": 400,
+        "height_route_viable": false,
+        "log2_denominator": 6870,
+        "over_N2": 0.17175,
+        "over_delta_N2": 0.36157894736842106,
+        "support_size": 95
+      },
+      {
+        "N": 400,
+        "delta": 0.475,
+        "height_budget_2N": 800,
+        "height_route_viable": false,
+        "log2_denominator": 26385,
+        "over_N2": 0.16490625,
+        "over_delta_N2": 0.34717105263157894,
+        "support_size": 190
+      },
+      {
+        "N": 700,
+        "delta": 0.49,
+        "height_budget_2N": 1400,
+        "height_route_viable": false,
+        "log2_denominator": 85765,
+        "over_N2": 0.17503061224489797,
+        "over_delta_N2": 0.3572053311120367,
+        "support_size": 343
+      }
+    ],
+    "5/12": [
+      {
+        "N": 100,
+        "delta": 0.47,
+        "height_budget_2N": 200,
+        "height_route_viable": false,
+        "log2_denominator": 1497,
+        "over_N2": 0.1497,
+        "over_delta_N2": 0.31851063829787235,
+        "support_size": 47
+      },
+      {
+        "N": 200,
+        "delta": 0.49,
+        "height_budget_2N": 400,
+        "height_route_viable": false,
+        "log2_denominator": 7320,
+        "over_N2": 0.183,
+        "over_delta_N2": 0.373469387755102,
+        "support_size": 98
+      },
+      {
+        "N": 400,
+        "delta": 0.5125,
+        "height_budget_2N": 800,
+        "height_route_viable": false,
+        "log2_denominator": 29527,
+        "over_N2": 0.18454375,
+        "over_delta_N2": 0.3600853658536585,
+        "support_size": 205
+      },
+      {
+        "N": 700,
+        "delta": 0.5185714285714286,
+        "height_budget_2N": 1400,
+        "height_route_viable": false,
+        "log2_denominator": 88473,
+        "over_N2": 0.18055714285714286,
+        "over_delta_N2": 0.3481818181818182,
+        "support_size": 363
+      }
+    ]
+  },
+  "depth": 700,
+  "probe": "height_complexity_dichotomy",
+  "problem_id": "erdos_257",
+  "schema": "aiw-formal-math-receipt/1",
+  "synthetic_density_law": {
+    "1/1": {
+      "N": 400,
+      "delta": 1.0,
+      "delta_needed_to_meet_2N_budget": 0.016509141937347805,
+      "log2_denominator": 48458,
+      "over_N2": 0.3028625,
+      "over_delta_N2": 0.3028625
+    },
+    "1/16": {
+      "N": 400,
+      "delta": 0.0625,
+      "delta_needed_to_meet_2N_budget": 0.015878056525881232,
+      "log2_denominator": 3149,
+      "over_N2": 0.01968125,
+      "over_delta_N2": 0.3149
+    },
+    "1/2": {
+      "N": 400,
+      "delta": 0.5,
+      "delta_needed_to_meet_2N_budget": 0.01646158278118441,
+      "log2_denominator": 24299,
+      "over_N2": 0.15186875,
+      "over_delta_N2": 0.3037375
+    },
+    "1/32": {
+      "N": 400,
+      "delta": 0.03125,
+      "delta_needed_to_meet_2N_budget": 0.017325017325017324,
+      "log2_denominator": 1443,
+      "over_N2": 0.00901875,
+      "over_delta_N2": 0.2886
+    },
+    "1/4": {
+      "N": 400,
+      "delta": 0.25,
+      "delta_needed_to_meet_2N_budget": 0.016582372937567365,
+      "log2_denominator": 12061,
+      "over_N2": 0.07538125,
+      "over_delta_N2": 0.301525
+    },
+    "1/64": {
+      "N": 400,
+      "delta": 0.015625,
+      "delta_needed_to_meet_2N_budget": 0.016578249336870028,
+      "log2_denominator": 754,
+      "over_N2": 0.0047125,
+      "over_delta_N2": 0.3016
+    },
+    "1/8": {
+      "N": 400,
+      "delta": 0.125,
+      "delta_needed_to_meet_2N_budget": 0.016358580075249467,
+      "log2_denominator": 6113,
+      "over_N2": 0.03820625,
+      "over_delta_N2": 0.30565
+    }
+  },
+  "verdict": "The denominator exponent of the greedy remainder is linear in the support density: log2 lcm{2^d-1 : d in A_N} = c * delta_N * N^2 with c measured below. A height/separation argument needs log2(den) <= 2N to beat the fatal window (2/3)4^-N, hence needs delta_N = O(1/N) -- density exactly zero. The Mahler-Nishioka / Adamczewski-Bugeaud route instead has a FIXED density threshold (measured delta ~ 2^-5 in RunLengthMarginLaw... s.14). So the height route's viable regime is strictly inside the complexity route's, and the height lane is dominated everywhere rather than merely dead for the current candidates. Route closure and an explanation, not progress on Erdos 257."
+}

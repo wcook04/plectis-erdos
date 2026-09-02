@@ -1,0 +1,2697 @@
+{
+  "consequence_reconciliation": {
+    "height_two_boundary_mode": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "all sixteen cylinders now have a universal cofinal return"
+    },
+    "payment_one_height_fourteen_branch": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "defer_with_reason",
+      "reason": "structurally disjoint branch not consumed by this cascade",
+      "reentry_condition": "exact multiplier/error split at height fourteen"
+    },
+    "public_projection": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "defer_with_reason",
+      "reason": "private exact result is not automatic publication authority",
+      "reentry_condition": "explicit public release wave with owner review"
+    }
+  },
+  "cumulative_source_class_partition": {
+    "common_modulus": 3094,
+    "continuing_negative_candidate_class_count": 680,
+    "exact_partition": "2232 zero + 182 positive + 680 negative candidates = 3094",
+    "positive_centered_class_count": 182,
+    "zero_centered_class_count": 2232
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.paymentSevenCascade_finalFullPayment",
+        "ErdosProblems.Erdos243.paymentSevenCascade_finalCollapse"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "Every payment-seven cylinder is forced into centered zero. On the common modulus 3094, the family now partitions into 2232 zero, 182 positive, and only 680 continuing-negative candidate classes.",
+      "survival_consequence": "Without a forced final payment four, the height-two tie would remain a distinct candidate mechanism for continuing negative support."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "payment_seven_height_two_boundary_supports_expansion",
+      "statement": "A height-13 payment-seven cylinder can pass through the height-two centered tie and continue an expanding negative excursion."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_second_excursion_split.py",
+        "system/lib/formal_math_residue_cylinder.py"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_payment_seven_cascade.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_second_excursion_split.py",
+        "system/lib/formal_math_residue_cylinder.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Recover the height-13 multiplier modulo 42 by composite-modulus exact division, prove it is 7 on all sixteen cylinders, derive the symbolic 13->2->3->1 cascade, and replay all 48 modulus lifts.",
+      "falsifier": "A universal congruence and exact algebraic cascade that lands every payment-seven lift at primitive height one and centered zero.",
+      "id": "multiplier_mod_42_boundary_cascade",
+      "question": "Does the stronger multiplier residue on every payment-seven source cylinder force a full payment after the height-two tie?",
+      "resource_bounds": {
+        "modulus_lifts_per_cylinder": 3,
+        "post_recovery_steps_per_replay": 6,
+        "representative_replays": 48,
+        "source_cylinders": 16,
+        "source_polynomial_degree": 1024
+      },
+      "stop_condition": "Stop when the 16 source cylinders and their three lifts modulo 42 all have an exact absorbing-tail certificate; do not continue the separate payment-one branches."
+    },
+    "problem": {
+      "claim_ceiling": "Exact cofinal return for all sixteen payment-seven source cylinders; the payment-one height-fourteen cylinders and unrestricted #243 remain open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "one_way_theorem",
+        "decision_basis": "Exact quotient residues quantify over every source lift, while the symbolic cascade proves the terminal payments independently of representative orbit length.",
+        "next_analytic_target": "Discard height-two payment-seven cylinders. Restrict further family analysis to the payment-one height-fourteen cylinders over source classes k mod 13 in {3,4,11,12}."
+      },
+      "status": "exact_one_way_result",
+      "summary": "All sixteen payment-seven classes modulo 182 have height-13 multiplier 7 modulo 42 and follow the forced cascade (13,-1)->(2,-1 tie)->(3,-1)->(1,0 forever), with payments 7,1,4. The height-two boundary mode is eliminated exactly."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "regression_replays": [
+    {
+      "lift_mod_3": 0,
+      "parameter": 16,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 1
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 198,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 1
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 380,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 1
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 55,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 4
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 237,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 4
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 419,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 4
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 107,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 8
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 289,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 8
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 471,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 8
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 146,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 11
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 328,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 11
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 510,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 3,
+      "t_residue_mod_14": 11
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 30,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 2
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 212,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 2
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 394,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 2
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 69,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 5
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 251,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 5
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 433,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 5
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 121,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 9
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 303,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 9
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 485,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 9
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 160,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 12
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 342,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 12
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 524,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 4,
+      "t_residue_mod_14": 12
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 37,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 2
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 219,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 2
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 401,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 2
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 76,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 5
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 258,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 5
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 440,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 5
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 128,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 9
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 310,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 9
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 492,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 9
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 167,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 12
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 349,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 12
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 531,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 11,
+      "t_residue_mod_14": 12
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 51,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 3
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 233,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 3
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 415,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 3
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 90,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 6
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 272,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 6
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 454,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 6
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 142,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 10
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 324,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 10
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 506,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 10
+    },
+    {
+      "lift_mod_3": 0,
+      "parameter": 181,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 13
+    },
+    {
+      "lift_mod_3": 1,
+      "parameter": 363,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 13
+    },
+    {
+      "lift_mod_3": 2,
+      "parameter": 545,
+      "rows": [
+        {
+          "centered_error": -1,
+          "height": 11,
+          "next_height": 12,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 12,
+          "next_height": 13,
+          "payment": 1,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7,
+          "strict_centered": true
+        },
+        {
+          "centered_error": -1,
+          "height": 2,
+          "next_height": 3,
+          "payment": 1,
+          "strict_centered": false
+        },
+        {
+          "centered_error": -1,
+          "height": 3,
+          "next_height": 1,
+          "payment": 4,
+          "strict_centered": true
+        },
+        {
+          "centered_error": 0,
+          "height": 1,
+          "next_height": 1,
+          "payment": 1,
+          "strict_centered": true
+        }
+      ],
+      "source_residue_mod_13": 12,
+      "t_residue_mod_14": 13
+    }
+  ],
+  "residue_certificate": {
+    "payment_seven_class_count_mod_182": 16,
+    "payment_seven_k_classes_mod_182": [
+      16,
+      30,
+      37,
+      51,
+      55,
+      69,
+      76,
+      90,
+      107,
+      121,
+      128,
+      142,
+      146,
+      160,
+      167,
+      181
+    ],
+    "source_rows": [
+      {
+        "lifted_t_classes_mod_42": [
+          1,
+          4,
+          8,
+          11,
+          15,
+          18,
+          22,
+          25,
+          29,
+          32,
+          36,
+          39
+        ],
+        "multiplier_residue_on_lifted_classes": 7,
+        "parameterization": "k=3+13*t",
+        "payment_seven_t_classes_mod_14": [
+          1,
+          4,
+          8,
+          11
+        ],
+        "source_class_mod_13": 3
+      },
+      {
+        "lifted_t_classes_mod_42": [
+          2,
+          5,
+          9,
+          12,
+          16,
+          19,
+          23,
+          26,
+          30,
+          33,
+          37,
+          40
+        ],
+        "multiplier_residue_on_lifted_classes": 7,
+        "parameterization": "k=4+13*t",
+        "payment_seven_t_classes_mod_14": [
+          2,
+          5,
+          9,
+          12
+        ],
+        "source_class_mod_13": 4
+      },
+      {
+        "lifted_t_classes_mod_42": [
+          2,
+          5,
+          9,
+          12,
+          16,
+          19,
+          23,
+          26,
+          30,
+          33,
+          37,
+          40
+        ],
+        "multiplier_residue_on_lifted_classes": 7,
+        "parameterization": "k=11+13*t",
+        "payment_seven_t_classes_mod_14": [
+          2,
+          5,
+          9,
+          12
+        ],
+        "source_class_mod_13": 11
+      },
+      {
+        "lifted_t_classes_mod_42": [
+          3,
+          6,
+          10,
+          13,
+          17,
+          20,
+          24,
+          27,
+          31,
+          34,
+          38,
+          41
+        ],
+        "multiplier_residue_on_lifted_classes": 7,
+        "parameterization": "k=12+13*t",
+        "payment_seven_t_classes_mod_14": [
+          3,
+          6,
+          10,
+          13
+        ],
+        "source_class_mod_13": 12
+      }
+    ],
+    "universal_terminal_multiplier_class": "a13=q13+1=7 mod 42"
+  },
+  "schema": "erdos243-payment-seven-cascade-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 17551,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_payment_seven_cascade.py",
+      "sha256": "826249cd9143a25bc591e2fc61355dfb09dacc13846c3881307aa58a6d3f7618"
+    },
+    {
+      "byte_length": 21295,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_second_excursion_split.py",
+      "sha256": "5b881ff39bd68a6cd38f500d04777d7feb84d46fb356c0ec353bfa6b521656ce"
+    },
+    {
+      "byte_length": 4234,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "e8963da6370a53c17e901fd2c2f6bd13e2f53a3880742d1c9a13c86ce8eb7fc4"
+    },
+    {
+      "byte_length": 12963,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "8c6da014c74151677a2a38e0663d5766413d57b4b24002342248d4d1d782c8f3"
+    },
+    {
+      "byte_length": 13607,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "c20f72f665c049a61312a80e7c49c5528f74ef94215092c10e28a1f440b3e118"
+    },
+    {
+      "byte_length": 65019,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "ea62ad852868198d99b8b10b487215ebec671731b94640a65ce8730781d12fe2"
+    }
+  ],
+  "status": "verified_exact_boundary_mode_elimination",
+  "symbolic_cascade_certificate": {
+    "absorbing_conclusion": "primitive height one is an integral tail, so centered error is zero and remains zero",
+    "height_thirteen_transition": "h13=7; v2=7*w*(13*w-2)=6*m-1 with m=546*z^2+168*z+13",
+    "height_three_transition": "v3=(3*m+1)*(6*m-1)=3*(6*m^2+m)-1; m is odd, so a3=6*m^2+m+1 is even, h3=4, and u4=1",
+    "height_two_tie_transition": "q2=3*m, e2=-1, a2=3*m+1=1 mod 3, so h2=1 and u3=3",
+    "input": "a13=42*z+7=7*w with w=6*z+1",
+    "lean_declarations": [
+      "ErdosProblems.Erdos243.paymentSevenCascade_finalFullPayment",
+      "ErdosProblems.Erdos243.paymentSevenCascade_finalCollapse"
+    ],
+    "regression_samples": [
+      {
+        "height_three_multiplier_mod_2": 0,
+        "height_two_multiplier_mod_3": 1,
+        "m": 12823,
+        "w": -29,
+        "z": -5
+      },
+      {
+        "height_three_multiplier_mod_2": 0,
+        "height_two_multiplier_mod_3": 1,
+        "m": 391,
+        "w": -5,
+        "z": -1
+      },
+      {
+        "height_three_multiplier_mod_2": 0,
+        "height_two_multiplier_mod_3": 1,
+        "m": 13,
+        "w": 1,
+        "z": 0
+      },
+      {
+        "height_three_multiplier_mod_2": 0,
+        "height_two_multiplier_mod_3": 1,
+        "m": 727,
+        "w": 7,
+        "z": 1
+      },
+      {
+        "height_three_multiplier_mod_2": 0,
+        "height_two_multiplier_mod_3": 1,
+        "m": 36301,
+        "w": 49,
+        "z": 8
+      }
+    ]
+  }
+}

@@ -1,0 +1,222 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #257: exact multiplicative-order noncollapse at every integer base"
+  description: >-
+    For every finite nonempty set F of positive exponents and every integer base b at least
+    two, the reduced denominator Q of the rational number given by the sum of 1/(b^n - 1)
+    over n in F is coprime to b, and the multiplicative order of b modulo Q is exactly the
+    lcm of F. The conclusion is an equality and it is uniform: it holds for all such F and
+    all such b simultaneously, with no coprimality, parity, spacing or size hypothesis on F
+    beyond nonemptiness and exclusion of the zero exponent. Reduction to lowest terms
+    therefore destroys none of the period carried by the unreduced product denominator.
+    Whenever the lcm of F is at least two, the reduced denominator strictly exceeds it, so
+    along any increasing exhaustion of an infinite support the reduced denominators of the
+    partial sums grow without bound. The mechanism is a cyclotomic construction of
+    prime-power divisors of Q realising the exact order, which pins the order at the lcm for
+    every base at once, an equality where the easy direction gives only divisibility. The
+    readers are number theorists working on irrationality of Mersenne-type reciprocal sums;
+    priority for the theorem has not been assessed. The theorem is finite-support, and it
+    supplies no infinite-support irrationality argument for Erdős Problem 257.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257FinitePeriodNoncollapse/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257FinitePeriodNoncollapse/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_uniform_finite_denominator_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This is the exact unconditional finite-support headline theorem, not an
+    interface requiring externally supplied coprimality. The operator has
+    directed submission of the portfolio's strongest coherent results once
+    public identity and mechanical evidence are fixed. No local artifact is
+    represented as a Palomar verdict or registry entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A05", "11A25"]
+
+sources:
+  - title: "Finite-period noncollapse for reduced Mersenne-denominator sums"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The proof constructs exact-order prime-power witnesses through the
+      cyclotomic route and shows that reduction of the finite rational sum
+      preserves the complete lcm period.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status. The finite-period theorem is not attributed to the
+      catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Two compared theorems expose constructed reduced-denominator coprimality
+    with exact multiplicative-order noncollapse, and the separate strict
+    denominator-growth consequence. Challenge.lean has two intentional
+    Comparator specification sorries; Solution.lean and the imported source
+    are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    The only deliberate placeholders are the two trusted theorem bodies in
+    Challenge.lean. They are excluded from the proof-corpus count; the
+    source-aligned two-theorem interface passes focused local Lean elaboration.
+  axiom_audit_status: "focused_lean_passed_exact_permitted_axioms"
+  actual_axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den"
+      file: "ExternalVerification257FinitePeriodNoncollapse/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257FinitePeriodNoncollapse/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        The source coprimality and exact-order theorems assembled from
+        Erdos257PeriodNoncollapse/CertificateKernel.lean at local source commit
+        6cb1b2dc85251698148807acc2a49e0df2022442 and source SHA-256
+        e3183c58a873a48f4b79563ca24ebbcd95d69211b572d1261528275bc436cc0c.
+      novelty_status: "unassessed"
+      contribution_class: "uniform finite denominator noncollapse"
+      statement: >-
+        The actual reduced denominator is coprime to the base and retains exact
+        multiplicative order lcm(F).
+      boundary: >-
+        The theorem is finite-support and does not supply an infinite-support
+        irrationality argument or solve Erdős 257.
+      comparator_declaration: "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum"
+      file: "ExternalVerification257FinitePeriodNoncollapse/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257FinitePeriodNoncollapse/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport_focused_checked"
+      local_proof_provenance: >-
+        Direct transport of
+        Erdos257PeriodNoncollapse.lcm_lt_den_finiteErdosSum from
+        Erdos257PeriodNoncollapse/CertificateKernel.lean.
+      novelty_status: "unassessed"
+      contribution_class: "strict finite denominator growth"
+      statement: >-
+        If lcm(F) is at least two, it is strictly smaller than the actual
+        reduced denominator of the literal finite rational sum.
+      boundary: >-
+        The theorem is finite-support and does not supply an infinite-support
+        irrationality argument or solve Erdős 257.
+      comparator_declaration: "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The first compared theorem existentially packages the source-constructed
+    coprimality witness with the source exact-order conclusion because a
+    Mathlib-only Challenge cannot name the source witness term. The second
+    theorem retains the source strict-growth endpoint separately. No unproved
+    infinite-support claim is added.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem family, literal Challenge/Solution statement shape,
+    finite-support scope and open-problem boundary were reviewed. The
+    source-aligned Challenge, Solution, deliberate-negative fixture, and axiom
+    audit all pass focused validation after splitting the former composite
+    statement into its two source-aligned endpoints. Both compared theorems
+    use exactly the permitted axiom budget. Terminal Comparator/NanoDa replay,
+    independent human peer review, Palomar decision, and registry acceptance
+    remain unclaimed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257FinitePeriodNoncollapse"
+  statements:
+    - source: >-
+        Source theorems for reduced-denominator coprimality and exact order
+        lcm(F).
+      lean: "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den"
+      module: "ExternalVerification257FinitePeriodNoncollapse/Challenge.lean"
+      status: "exact-existential-transport"
+      note: >-
+        The Challenge existentially exposes the source-produced coprimality
+        witness together with the exact-order conclusion in Mathlib-only
+        vocabulary.
+    - source: "Source theorem for strict reduced-denominator growth."
+      lean: "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum"
+      module: "ExternalVerification257FinitePeriodNoncollapse/Challenge.lean"
+      status: "exact-direct-transport"
+      note: >-
+        The Challenge preserves the source hypotheses and strict inequality.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

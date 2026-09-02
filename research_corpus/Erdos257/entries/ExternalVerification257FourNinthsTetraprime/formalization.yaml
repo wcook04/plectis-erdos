@@ -1,0 +1,207 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: the conditional four-ninths tetraprime counterexample frontier"
+  description: >-
+    Three Lean-backed endpoints exposing the exact modulus-420 base kernel,
+    the repaired-prime defect ceiling, and the reduction from two explicit
+    all-depth arithmetic boundaries to an infinite rational Mersenne
+    subseries of value 4/9.
+  authors:
+    - "Will Cook"
+  responsible_maintainers:
+    - "Will Cook"
+  license: "Apache-2.0"
+
+palomar_qualification:
+  status: "focused_validation_in_progress_mechanical_replay_pending"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257FourNinthsTetraprime/comparator.json"
+  repository_scope: "per_family_configuration"
+  challenge_dependency_boundary: "Mathlib_only"
+  blockers:
+    - "the large-prime repair boundary above seven remains unproved"
+    - "the uniform five-unit composite margin remains unproved"
+    - "the source-current paper revision is staged rather than authoritative"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This package is deliberately admitted because it is a substantial
+    conditional counterexample programme with a checked finite kernel and a
+    sharp two-obligation all-depth boundary. It does not claim an
+    unconditional refutation of Erdős #257.
+
+sources:
+  - title: "The four-ninths modulus-420 tetraprime repair programme"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Lean source in
+      ErdosProblems/Erdos257/FourNinthsCofinalRepairConsumer.lean and
+      ErdosProblems/Erdos257/FourNinthsPrimorialRepair.lean; source-current
+      exposition is staged in the Erdős #257 paper patch.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25", "11B83"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 95
+    band: "frontier"
+    components:
+      mathematical_advancement: 42
+      parent_problem_proximity: 20
+      theorem_strength: 14
+      mechanism_depth: 10
+      consequence_reach: 9
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness, or
+      submission authorization. A substantial partial proof or attack-changing
+      conditional theorem may outrank a formally exact equivalence.
+  presentation_order:
+    - "conditional_infinite_counterexample_from_two_all_depth_boundaries"
+    - "exact_modulus_420_base_kernel"
+    - "repaired_large_prime_defect_ceiling"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and open-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted source audit, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay verdict recorded.
+
+status:
+  scope: >-
+    Challenge has one trusted specification sorry per selected theorem. The
+    proof-bearing source and Solution are intended to remain sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  axiom_audit_status: "focused_validation_in_progress"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_completeCounterexample"
+      file: "ExternalVerification257FourNinthsTetraprime/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257FourNinthsTetraprime/comparator.json"
+      canonical_claim_status: "source_checked_composite_wrapper_validation_in_progress"
+      source_declarations:
+        - "ErdosProblems.Erdos257.fourNinths_tetraprimeRepair_of_largePrimeBoundary_of_compositeMarginFive"
+        - "ErdosProblems.Erdos257.fourNinths_multiple420RepairSupply_of_tetraprimeRepair"
+        - "ErdosProblems.Erdos257.exists_infinite_four_ninths_counterexample_of_repairCofinal"
+        - "ErdosProblems.Erdos257.not_universal_of_fourNinths_tetraprimeRepair"
+      source_files:
+        - "ErdosProblems/Erdos257/FourNinthsPrimorialRepair.lean"
+        - "ErdosProblems/Erdos257/FourNinthsCofinalRepairConsumer.lean"
+      contribution_class: "conditional counterexample reduction with exact rational value"
+      paper_result_label: "res:four-ninths-tetraprime"
+      paper_mechanism_label: "sec:four-ninths-tetraprime"
+      paper_boundary_label: "bdry:four-ninths-tetraprime"
+      boundary: >-
+        The moving large-prime repair and five-unit composite-margin statements
+        are explicit hypotheses. The conclusion is unconditional once those
+        two all-depth arithmetic obligations are supplied.
+    - declaration: "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_baseKernel"
+      file: "ExternalVerification257FourNinthsTetraprime/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257FourNinthsTetraprime/comparator.json"
+      canonical_claim_status: "source_checked_composite_wrapper_validation_in_progress"
+      source_declarations:
+        - "ErdosProblems.Erdos257.fourNinthsTetraprimeUnionLoad_420"
+        - "ErdosProblems.Erdos257.fourNinthsGreedyDefect_419"
+        - "ErdosProblems.Erdos257.fourNinthsTetraprimeRepair_smallPrime"
+      source_file: "ErdosProblems/Erdos257/FourNinthsPrimorialRepair.lean"
+      contribution_class: "exact finite kernel of the modulus-420 programme"
+      paper_result_label: "res:four-ninths-tetraprime"
+      boundary: >-
+        This proves the base row and all prime cofactors at most seven, not the
+        moving large-prime or composite obligations.
+    - declaration: "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprimePrimeRepair_defect_le_thirty_five"
+      file: "ExternalVerification257FourNinthsTetraprime/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257FourNinthsTetraprime/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_validation_in_progress"
+      source_declaration: "ErdosProblems.Erdos257.fourNinthsTetraprimePrimeRepair_defect_le_thirty_five"
+      source_file: "ErdosProblems/Erdos257/FourNinthsPrimorialRepair.lean"
+      contribution_class: "large-prime repair consequence and proper-divisor-column compression"
+      paper_result_label: "res:four-ninths-tetraprime"
+      boundary: >-
+        Repair of the prime row is assumed; the theorem proves that any such
+        repaired row has defect at most thirty-five.
+
+fidelity:
+  divergences: >-
+    The package combines exact source theorems into three reader-facing
+    endpoints but does not strengthen the open hypotheses. Finite computation
+    through fifty million is contextual evidence only and is not included in
+    any theorem statement.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source statements, strongest-first reading order, exact source routes,
+    and conditional boundary were reviewed. Focused elaboration and exact
+    axiom audit are still being completed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257FourNinthsTetraprime"
+  statements:
+    - source: "two all-depth arithmetic boundaries imply a full modulus-420 repair, an infinite support of exact value 4/9, and failure of the universal assertion"
+      lean: "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_completeCounterexample"
+      module: "ExternalVerification257FourNinthsTetraprime/Challenge.lean"
+      status: "exact-source-composition-validation-in-progress"
+    - source: "the row-420 load is twelve, the preceding defect is seven, and prime cofactors at most seven repair"
+      lean: "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_baseKernel"
+      module: "ExternalVerification257FourNinthsTetraprime/Challenge.lean"
+      status: "exact-source-composition-validation-in-progress"
+    - source: "a repaired prime-cofactor row above seven has defect at most thirty-five"
+      lean: "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprimePrimeRepair_defect_le_thirty_five"
+      module: "ExternalVerification257FourNinthsTetraprime/Challenge.lean"
+      status: "exact-source-transport-validation-in-progress"

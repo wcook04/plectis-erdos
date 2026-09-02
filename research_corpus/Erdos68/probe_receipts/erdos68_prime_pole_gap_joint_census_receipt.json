@@ -1,0 +1,1209 @@
+{
+  "census": {
+    "all_falsifiers_pass": true,
+    "cancelled_principal_poles": [
+      139
+    ],
+    "certified_lower_cylinder_escape_count": 45,
+    "claim_boundary": "Exact finite rational and modular computation plus rigorous tail bounds. It falsifies residue-only selectivity on the checked horizon; it proves neither eventual saturation nor cofinal prime escape nor irrationality.",
+    "falsifiers": {
+      "all surviving poles from p=7 are saturated through horizon": true,
+      "every reported transport congruence checks": true,
+      "p=139 principal pole cancellation reproduced": true,
+      "p=7 is already residue-lattice saturated": true
+    },
+    "first_full_residue_lattice_saturation_prime": 7,
+    "pivot_decision": "Principal-residue nonvanishing is nonselective at the lower-cylinder scale from p=7 throughout the exact horizon: the rigorous first-tail subinterval already contains the prescribed class. Any viable prime route must control the quotient (t-r)/p or another Archimedean localizer, not merely C_p modulo p. Do not extend this residue-only scan as an endpoint attack.",
+    "prime_count": 45,
+    "range": {
+      "maximum_prime": 211,
+      "minimum_prime": 5
+    },
+    "rows": [
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 5,
+        "h_decimal_digits": 2,
+        "known_tail_subinterval_length_at_least_one_spacing": false,
+        "least_positive_t_residue": 5,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          3
+        ],
+        "offset_location": "certified_below_lower_cylinder",
+        "offset_positive": false,
+        "p": 5,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 0,
+          "decimal_digits": 1,
+          "positive": false
+        },
+        "prescribed_t_residue_mod_p": 0,
+        "principal_residue_mod_p": 1,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 19,
+        "h_decimal_digits": 6,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 1,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          5
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 7,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 13,
+          "decimal_digits": 4,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 1,
+        "principal_residue_mod_p": 5,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 78,
+        "h_decimal_digits": 24,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 6,
+        "literal_pole_exponent": 2,
+        "maximal_hits": [
+          9
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 11,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 71,
+          "decimal_digits": 22,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 6,
+        "principal_residue_mod_p": 8,
+        "reduced_gap_pole_exponent": 2,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 120,
+        "h_decimal_digits": 36,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 13,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          11
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 13,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 113,
+          "decimal_digits": 34,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 0,
+        "principal_residue_mod_p": 1,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 265,
+        "h_decimal_digits": 80,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 14,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          5,
+          11,
+          15
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 17,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 257,
+          "decimal_digits": 78,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 14,
+        "principal_residue_mod_p": 14,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 362,
+        "h_decimal_digits": 109,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 9,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          17
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 19,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 353,
+          "decimal_digits": 106,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 9,
+        "principal_residue_mod_p": 18,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 603,
+        "h_decimal_digits": 182,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 8,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          4,
+          8,
+          11,
+          21
+        ],
+        "offset_location": "certified_below_lower_cylinder",
+        "offset_positive": false,
+        "p": 23,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 594,
+          "decimal_digits": 179,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 8,
+        "principal_residue_mod_p": 17,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 1110,
+        "h_decimal_digits": 334,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 20,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          10,
+          27
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 29,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 1100,
+          "decimal_digits": 331,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 20,
+        "principal_residue_mod_p": 24,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 1304,
+        "h_decimal_digits": 393,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 22,
+        "literal_pole_exponent": 2,
+        "maximal_hits": [
+          15
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 31,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 1294,
+          "decimal_digits": 390,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 22,
+        "principal_residue_mod_p": 16,
+        "reduced_gap_pole_exponent": 2,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 2051,
+        "h_decimal_digits": 618,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 24,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          35
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 37,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 2041,
+          "decimal_digits": 615,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 24,
+        "principal_residue_mod_p": 6,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 2645,
+        "h_decimal_digits": 796,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 37,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          39
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 41,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 2634,
+          "decimal_digits": 793,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 37,
+        "principal_residue_mod_p": 30,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 2974,
+        "h_decimal_digits": 895,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 15,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          41
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 43,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 2963,
+          "decimal_digits": 892,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 15,
+        "principal_residue_mod_p": 25,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 3690,
+        "h_decimal_digits": 1111,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 46,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          45
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 47,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 3679,
+          "decimal_digits": 1108,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 46,
+        "principal_residue_mod_p": 28,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 4941,
+        "h_decimal_digits": 1488,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 35,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          15,
+          37,
+          51
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 53,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 4930,
+          "decimal_digits": 1484,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 35,
+        "principal_residue_mod_p": 49,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 6391,
+        "h_decimal_digits": 1924,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 16,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          18,
+          29,
+          57
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 59,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 6380,
+          "decimal_digits": 1921,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 16,
+        "principal_residue_mod_p": 31,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 6918,
+        "h_decimal_digits": 2083,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 31,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          42,
+          44,
+          52,
+          59
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 61,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 6906,
+          "decimal_digits": 2079,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 31,
+        "principal_residue_mod_p": 29,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 8659,
+        "h_decimal_digits": 2607,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 30,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          48,
+          65
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 67,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 8647,
+          "decimal_digits": 2603,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 30,
+        "principal_residue_mod_p": 7,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 9933,
+        "h_decimal_digits": 2990,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 69,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          35,
+          69
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 71,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 9921,
+          "decimal_digits": 2987,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 69,
+        "principal_residue_mod_p": 23,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 10604,
+        "h_decimal_digits": 3192,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 44,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          17,
+          55,
+          71
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 73,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 10592,
+          "decimal_digits": 3189,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 44,
+        "principal_residue_mod_p": 61,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 12788,
+        "h_decimal_digits": 3850,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 59,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          77
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 79,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 12776,
+          "decimal_digits": 3846,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 59,
+        "principal_residue_mod_p": 34,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 14367,
+        "h_decimal_digits": 4325,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 46,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          41,
+          46,
+          81
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 83,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 14355,
+          "decimal_digits": 4321,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 46,
+        "principal_residue_mod_p": 28,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 16934,
+        "h_decimal_digits": 5098,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 11,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          21,
+          67,
+          87
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 89,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 16921,
+          "decimal_digits": 5094,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 11,
+        "principal_residue_mod_p": 24,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 20698,
+        "h_decimal_digits": 6231,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 86,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          43,
+          53,
+          95
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 97,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 20685,
+          "decimal_digits": 6227,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 86,
+        "principal_residue_mod_p": 69,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 22734,
+        "h_decimal_digits": 6844,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 98,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          99
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 101,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 22720,
+          "decimal_digits": 6840,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 98,
+        "principal_residue_mod_p": 64,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 23790,
+        "h_decimal_digits": 7162,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 36,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          96,
+          101
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 103,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 23776,
+          "decimal_digits": 7157,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 36,
+        "principal_residue_mod_p": 39,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 25996,
+        "h_decimal_digits": 7826,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 11,
+        "literal_pole_exponent": 2,
+        "maximal_hits": [
+          105
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 107,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 25982,
+          "decimal_digits": 7822,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 11,
+        "principal_residue_mod_p": 12,
+        "reduced_gap_pole_exponent": 2,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 27132,
+        "h_decimal_digits": 8168,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 37,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          22,
+          107
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 109,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 27119,
+          "decimal_digits": 8164,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 37,
+        "principal_residue_mod_p": 65,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 29499,
+        "h_decimal_digits": 8880,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 101,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          111
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 113,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 29486,
+          "decimal_digits": 8876,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 101,
+        "principal_residue_mod_p": 6,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 38662,
+        "h_decimal_digits": 11639,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 111,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          125
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 127,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 38648,
+          "decimal_digits": 11634,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 111,
+        "principal_residue_mod_p": 78,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 41534,
+        "h_decimal_digits": 12503,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 42,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          129
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 131,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 41520,
+          "decimal_digits": 12499,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 42,
+        "principal_residue_mod_p": 121,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 46041,
+        "h_decimal_digits": 13860,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 12,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          120,
+          135
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 137,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 46027,
+          "decimal_digits": 13856,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 12,
+        "principal_residue_mod_p": 84,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          69,
+          122,
+          137
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 139,
+        "pole_survives": false,
+        "principal_residue_mod_p": 0,
+        "reduced_gap_pole_exponent": 0,
+        "transport_status": "principal_pole_cancelled"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 55830,
+        "h_decimal_digits": 16807,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 142,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          25,
+          98,
+          123,
+          147
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 149,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 55816,
+          "decimal_digits": 16802,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 142,
+        "principal_residue_mod_p": 88,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 57554,
+        "h_decimal_digits": 17326,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 87,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          75,
+          149
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 151,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 57540,
+          "decimal_digits": 17321,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 87,
+        "principal_residue_mod_p": 45,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 62920,
+        "h_decimal_digits": 18941,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 83,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          155
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 157,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 62905,
+          "decimal_digits": 18936,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 83,
+        "principal_residue_mod_p": 45,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 68556,
+        "h_decimal_digits": 20638,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 115,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          161
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 163,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 68541,
+          "decimal_digits": 20633,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 115,
+        "principal_residue_mod_p": 131,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 72448,
+        "h_decimal_digits": 21809,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 69,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          83,
+          165
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 167,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 72433,
+          "decimal_digits": 21805,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 69,
+        "principal_residue_mod_p": 70,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 78526,
+        "h_decimal_digits": 23639,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 132,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          171
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 173,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 78512,
+          "decimal_digits": 23635,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 132,
+        "principal_residue_mod_p": 28,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 84872,
+        "h_decimal_digits": 25549,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 141,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          177
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 179,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 84857,
+          "decimal_digits": 25545,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 141,
+        "principal_residue_mod_p": 99,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 87036,
+        "h_decimal_digits": 26201,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 6,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          179
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 181,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 87021,
+          "decimal_digits": 26196,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 6,
+        "principal_residue_mod_p": 130,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 98354,
+        "h_decimal_digits": 29608,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 165,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          189
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 191,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 98339,
+          "decimal_digits": 29603,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 165,
+        "principal_residue_mod_p": 110,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 100700,
+        "h_decimal_digits": 30314,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 170,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          90,
+          191
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 193,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 100685,
+          "decimal_digits": 30309,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 170,
+        "principal_residue_mod_p": 16,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 105506,
+        "h_decimal_digits": 31761,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 117,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          195
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 197,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 105491,
+          "decimal_digits": 31756,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 117,
+        "principal_residue_mod_p": 85,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 107944,
+        "h_decimal_digits": 32495,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 39,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          81,
+          89,
+          109,
+          117,
+          197
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 199,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 107928,
+          "decimal_digits": 32490,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 39,
+        "principal_residue_mod_p": 76,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      },
+      {
+        "actual_t_matches_prescribed_residue": true,
+        "h_bit_length": 123278,
+        "h_decimal_digits": 37111,
+        "known_tail_subinterval_length_at_least_one_spacing": true,
+        "least_positive_t_residue": 23,
+        "literal_pole_exponent": 1,
+        "maximal_hits": [
+          105,
+          209
+        ],
+        "offset_location": "certified_above_lower_cylinder_using_Rp_lt_2_over_p",
+        "offset_positive": true,
+        "p": 211,
+        "pole_survives": true,
+        "prescribed_class_candidates_in_known_subinterval_scale": {
+          "bit_length": 123262,
+          "decimal_digits": 37106,
+          "positive": true
+        },
+        "prescribed_t_residue_mod_p": 23,
+        "principal_residue_mod_p": 24,
+        "reduced_gap_pole_exponent": 1,
+        "transport_status": "verified"
+      }
+    ],
+    "saturated_surviving_pole_count": 43,
+    "surviving_principal_pole_count": 44,
+    "unresolved_tail_envelope_primes": []
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+      "falsification_consequence": "Residue nonvanishing must be coupled to a bound on the lift quotient (t-r)/p or a different Archimedean localization mechanism.",
+      "survival_consequence": "A genuinely sub-spacing interval would leave open a residue-exclusion theorem."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "prime_pole_residue_alone_selects_against_lower_cylinder",
+      "statement": "For surviving endpoint prime poles, the prescribed class of t modulo p is sparse enough in the dangerous Archimedean interval to force lower-cylinder misses."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterionLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+        "formal_math/probes/erdos68_prime_pole_scan.py"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/probes/erdos68_prime_pole_gap_joint_census.py",
+        "formal_math/probes/erdos68_prime_pole_scan.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterionLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Iterate the exact predecessor-gap Fraction recurrence; at each prime factor the reduced denominator, reproduce C_p, verify the transported t congruence, and count its class in the subinterval supplied by the first omitted tail term.",
+      "falsifier": "At one surviving pole, the rigorous subinterval length is at least p, so every residue class occurs before any unknown tail contribution.",
+      "id": "joint_prime_pole_gap_lattice_saturation",
+      "question": "Does the rigorous lower tail width R_p h remain below one residue spacing p, and does the transported actual t satisfy its predicted class?",
+      "stop_condition": "Stop after reproducing the first saturation witness and a bounded joint census; pivot if all later surviving poles remain saturated."
+    },
+    "problem": {
+      "claim_ceiling": "Finite exact elimination of principal-residue nonvanishing as a standalone lower-cylinder exclusion mechanism; no cofinal theorem.",
+      "id": "erdos_68",
+      "target_statement": "Prove irrationality of sum_(n>=2) 1/(n!-1)."
+    },
+    "result": {
+      "status": "finite_counterexample",
+      "summary": "Principal-residue nonvanishing is nonselective at the lower-cylinder scale from p=7 throughout the exact horizon: the rigorous first-tail subinterval already contains the prescribed class. Any viable prime route must control the quotient (t-r)/p or another Archimedean localizer, not merely C_p modulo p. Do not extend this residue-only scan as an endpoint attack."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "schema": "erdos68-prime-pole-gap-joint-census/1",
+  "source_records": [
+    {
+      "byte_length": 14646,
+      "path": "formal_math/probes/erdos68_prime_pole_gap_joint_census.py",
+      "sha256": "8ec05cc75ee80f2e297b55cc0725c4af8a066d6f3becaa3a09c0b3493ee1ec33"
+    },
+    {
+      "byte_length": 4216,
+      "path": "formal_math/probes/erdos68_prime_pole_scan.py",
+      "sha256": "9899326f3b8d50f88dff449913de2b999961da14acb483fe9c0b6913c80048e2"
+    },
+    {
+      "byte_length": 7481,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+      "sha256": "037ddbd6aa53ce6d81ab3d8f0bf76b316482b57ce0a2843d9d6f0029c8264d28"
+    },
+    {
+      "byte_length": 3116,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterionLab.md",
+      "sha256": "3f3e6e4ce9ca96b193e168463235f5527d9b5038a048650bbe98f645c038591c"
+    },
+    {
+      "byte_length": 288482,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+    }
+  ],
+  "status": "verified_residue_only_lower_cylinder_route_nonselective"
+}

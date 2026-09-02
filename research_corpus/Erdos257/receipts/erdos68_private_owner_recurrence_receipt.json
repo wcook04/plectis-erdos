@@ -1,0 +1,197 @@
+{
+  "active_owner_expiry_predictions": [
+    {
+      "first_prime_checkpoint_containing_repeat": 1277,
+      "first_repeat_index": 2519,
+      "owner_prime": 5039
+    },
+    {
+      "first_prime_checkpoint_containing_repeat": 3923,
+      "first_repeat_index": 7841,
+      "owner_prime": 7853
+    }
+  ],
+  "all_observed_transitions_explained": true,
+  "authority_boundary": "Exact modular arithmetic explains the displayed finite transitions; it does not prove a cofinal supply of renewable owners.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos68.factorialBlockPrime_dvd_privateQuotient_of_unique_upper_prime",
+        "ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_complementary_disagreement_collisionCap"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+      "falsification_consequence": "Search for valuation changes or projection coalescence as the true transition trigger.",
+      "survival_consequence": "Replace vague owner genealogy with a cofinal supply target for at least two prime owners whose next factorial-one hits lie beyond the active block."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "private_owner_expiry_by_first_repeated_factorial_hit",
+      "statement": "A selected prime private owner leaves the deterministic pair when its first later factorial-one hit enters the displayed block."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrivateProjectionComputationalLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos68_private_projection_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_private_owner_recurrences.py"
+      ]
+    },
+    "probe": {
+      "computation": "For each selected prime quotient q, iterate n! modulo q for n<q, find the first hit after its owner index, and compare the first prime block containing that hit with the next recorded pair run.",
+      "falsifier": "An observed transition whose exited prime has no matching first repeat checkpoint.",
+      "id": "exact_selected_owner_factorial_recurrence_scan",
+      "question": "Do the first repeated factorial-one hits exactly predict every observed owner transition?",
+      "resource_bounds": {
+        "maximum_owner_prime": 7853,
+        "owner_count": 5
+      },
+      "stop_condition": "If any transition mismatches, retire the recurrence explanation; otherwise stop giant-LCM horizon extension as a transition probe."
+    },
+    "problem": {
+      "claim_ceiling": "Exact transition timing does not prove that renewable private owners or projection disagreements exist cofinally.",
+      "id": "erdos_68",
+      "target_statement": "Prove that S=sum_{n>=2} 1/(n!-1) is irrational."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "Every displayed pair transition agrees exactly with the exited owner prime's first repeated factorial-one checkpoint.",
+        "next_analytic_target": "Prove a cofinal two-owner renewal theorem with both first-repeat indices beyond the block endpoint, then feed those owners to the checked collision-cap projection consumer."
+      },
+      "status": "exact_one_way_result",
+      "summary": "All 3 observed owner transitions occur at exactly the first prime checkpoint whose block contains the exited owner's second factorial-one hit."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "observed_transition_explanations": [
+    {
+      "entered_owner_primes": [
+        2999
+      ],
+      "exited_owner_prime": 1753,
+      "first_repeat_index": 221,
+      "observed_transition_prime": 113,
+      "predicted_transition_prime": 113,
+      "prediction_matches_observation": true,
+      "previous_run_through": 109
+    },
+    {
+      "entered_owner_primes": [
+        5039
+      ],
+      "exited_owner_prime": 719,
+      "first_repeat_index": 359,
+      "observed_transition_prime": 181,
+      "predicted_transition_prime": 181,
+      "prediction_matches_observation": true,
+      "previous_run_through": 179
+    },
+    {
+      "entered_owner_primes": [
+        7853
+      ],
+      "exited_owner_prime": 2999,
+      "first_repeat_index": 932,
+      "observed_transition_prime": 467,
+      "predicted_transition_prime": 467,
+      "prediction_matches_observation": true,
+      "previous_run_through": 463
+    }
+  ],
+  "owner_recurrences": [
+    {
+      "factorial_one_hits_below_prime": [
+        6,
+        359,
+        717
+      ],
+      "first_block_parameter_containing_repeat": 180,
+      "first_prime_checkpoint_containing_repeat": 181,
+      "first_repeat_index": 359,
+      "owner_index": 6,
+      "owner_prime": 719,
+      "transition_mechanism": "the repeated hit puts the owner prime into the pairwise collision core"
+    },
+    {
+      "factorial_one_hits_below_prime": [
+        8,
+        221,
+        510,
+        672,
+        1531,
+        1751
+      ],
+      "first_block_parameter_containing_repeat": 111,
+      "first_prime_checkpoint_containing_repeat": 113,
+      "first_repeat_index": 221,
+      "owner_index": 8,
+      "owner_prime": 1753,
+      "transition_mechanism": "the repeated hit puts the owner prime into the pairwise collision core"
+    },
+    {
+      "factorial_one_hits_below_prime": [
+        9,
+        932,
+        2989,
+        2997
+      ],
+      "first_block_parameter_containing_repeat": 467,
+      "first_prime_checkpoint_containing_repeat": 467,
+      "first_repeat_index": 932,
+      "owner_index": 9,
+      "owner_prime": 2999,
+      "transition_mechanism": "the repeated hit puts the owner prime into the pairwise collision core"
+    },
+    {
+      "factorial_one_hits_below_prime": [
+        7,
+        2519,
+        5031,
+        5037
+      ],
+      "first_block_parameter_containing_repeat": 1260,
+      "first_prime_checkpoint_containing_repeat": 1277,
+      "first_repeat_index": 2519,
+      "owner_index": 7,
+      "owner_prime": 5039,
+      "transition_mechanism": "the repeated hit puts the owner prime into the pairwise collision core"
+    },
+    {
+      "factorial_one_hits_below_prime": [
+        11,
+        7841,
+        7851
+      ],
+      "first_block_parameter_containing_repeat": 3921,
+      "first_prime_checkpoint_containing_repeat": 3923,
+      "first_repeat_index": 7841,
+      "owner_index": 11,
+      "owner_prime": 7853,
+      "transition_mechanism": "the repeated hit puts the owner prime into the pairwise collision core"
+    }
+  ],
+  "problem_id": "erdos_68",
+  "result_summary": "All 3 observed owner transitions occur at exactly the first prime checkpoint whose block contains the exited owner's second factorial-one hit.",
+  "schema": "erdos68_private_owner_recurrence_receipt_v1",
+  "source_projection_range": {
+    "maximum_prime": 607,
+    "minimum_prime": 11,
+    "prime_count": 107
+  },
+  "sources": [
+    {
+      "byte_length": 11075,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_private_owner_recurrences.py",
+      "sha256": "8d1df95695e12c9cf8332098f41c7cccda2edfd7f5e1080463e3c0b4e2b5a078"
+    },
+    {
+      "byte_length": 398157,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos68_private_projection_receipt.json",
+      "sha256": "36c223bc4692aaaa4add1356059ad98652bbfdfb24b873c087ec2f5616da2260"
+    }
+  ]
+}

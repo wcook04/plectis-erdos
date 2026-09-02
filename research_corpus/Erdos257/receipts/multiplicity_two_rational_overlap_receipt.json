@@ -1,0 +1,118 @@
+{
+  "assertions": {
+    "all_outer_corridors_nonempty": true,
+    "erdos_borwein_at_most_34_over_21": true,
+    "erdos_borwein_strictly_above_three_halves": true,
+    "overlap_measure_lower_bound_is_11_over_42": true,
+    "overlap_measure_lower_bound_positive": true,
+    "three_halves_inside_certified_overlap_interval": true
+  },
+  "claim_boundary": [
+    "This constructs a rational subseries with coefficients in {0,1,2}, not a Boolean {0,1} counterexample.",
+    "Positive overlap is the all-scale proof; finite cylinder counts are diagnostic only.",
+    "Separating the multiplicity-two representation into one rational Boolean subseries remains open and would decide Erdos 257 negatively."
+  ],
+  "consequence_decisions": [
+    {
+      "decision": "update_candidate_input_not_claim",
+      "reason": "The no-go now receives an actual infinite multiplicity-two rational construction as input; its local defect obstruction still prevents Booleanisation.",
+      "surface": "MultiplicityRenormalisationAttack.md"
+    },
+    {
+      "decision": "verified_no_change",
+      "reason": "No individual Boolean support is proved rational.",
+      "surface": "rational_boolean_membership_and_universal_257"
+    },
+    {
+      "decision": "outside_scope",
+      "reason": "Unrelated sum, overlap, and indicator matches do not consume this theorem.",
+      "surface": "generic_lexical_consequence_candidates"
+    }
+  ],
+  "exact_rational_inputs": {
+    "certified_rational_sum_interval": "(26/21, 2)",
+    "erdos_borwein_upper": "34/21",
+    "overlap_measure_lower_bound": "11/42",
+    "partial_sum_exceeds_three_halves": true,
+    "partial_sum_n_1_to_4": "54/35",
+    "target": "3/2"
+  },
+  "outer_cylinder_diagnostic": {
+    "role": "maps bounded prefix geometry; theorem proof uses measure, symmetry, containment, and inclusion-exclusion",
+    "rows": [
+      {
+        "claim_boundary": "necessary outer-cylinder corridor only; not an existence proof at this depth",
+        "common_denominator_bits": 25,
+        "depth": 8,
+        "ordered_outer_corridor_pair_count": 338,
+        "outer_corridor_pair_fraction": "169/32768",
+        "prefix_count": 256,
+        "tail_bound": "two-copy tail <= 4/(2^9-1)",
+        "total_ordered_prefix_pair_count": 65536
+      },
+      {
+        "claim_boundary": "necessary outer-cylinder corridor only; not an existence proof at this depth",
+        "common_denominator_bits": 34,
+        "depth": 10,
+        "ordered_outer_corridor_pair_count": 1298,
+        "outer_corridor_pair_fraction": "649/524288",
+        "prefix_count": 1024,
+        "tail_bound": "two-copy tail <= 4/(2^11-1)",
+        "total_ordered_prefix_pair_count": 1048576
+      },
+      {
+        "claim_boundary": "necessary outer-cylinder corridor only; not an existence proof at this depth",
+        "common_denominator_bits": 49,
+        "depth": 12,
+        "ordered_outer_corridor_pair_count": 5098,
+        "outer_corridor_pair_fraction": "2549/8388608",
+        "prefix_count": 4096,
+        "tail_bound": "two-copy tail <= 4/(2^13-1)",
+        "total_ordered_prefix_pair_count": 16777216
+      },
+      {
+        "claim_boundary": "necessary outer-cylinder corridor only; not an existence proof at this depth",
+        "common_denominator_bits": 68,
+        "depth": 14,
+        "ordered_outer_corridor_pair_count": 20334,
+        "outer_corridor_pair_fraction": "10167/134217728",
+        "prefix_count": 16384,
+        "tail_bound": "two-copy tail <= 4/(2^15-1)",
+        "total_ordered_prefix_pair_count": 268435456
+      },
+      {
+        "claim_boundary": "necessary outer-cylinder corridor only; not an existence proof at this depth",
+        "common_denominator_bits": 83,
+        "depth": 16,
+        "ordered_outer_corridor_pair_count": 80870,
+        "outer_corridor_pair_fraction": "40435/2147483648",
+        "prefix_count": 65536,
+        "tail_bound": "two-copy tail <= 4/(2^17-1)",
+        "total_ordered_prefix_pair_count": 4294967296
+      },
+      {
+        "claim_boundary": "necessary outer-cylinder corridor only; not an existence proof at this depth",
+        "common_denominator_bits": 106,
+        "depth": 18,
+        "ordered_outer_corridor_pair_count": 322946,
+        "outer_corridor_pair_fraction": "161473/34359738368",
+        "prefix_count": 262144,
+        "tail_bound": "two-copy tail <= 4/(2^19-1)",
+        "total_ordered_prefix_pair_count": 68719476736
+      }
+    ]
+  },
+  "payload_sha256_without_hash_field": "e37b69d108d882387bba84e47a80ff4e5cf39042189b440513d1686c56f2ef9c",
+  "proved_all_scale_result": {
+    "achievement_set_measure": "volume(Acal)=1",
+    "certified_interval": "convolution(s)>0 for every real s in (26/21,2)",
+    "concrete_lower_bound": "convolution(3/2) >= 7/2-2E >= 11/42 > 0",
+    "concrete_target": "s=3/2",
+    "construction": "continuum many pairs of Boolean Mersenne supports have combined coefficients in {0,1,2} and total value 3/2; a pair can be chosen with both supports of natural density 1/2 and divergent reciprocal sum",
+    "convolution_overlap": "(1_Acal*1_Acal)(s)=volume(Acal intersect (Acal+s-E))",
+    "density_consequence": "for a density-half pair, the Cesaro mean of c_n=b_n+b'_n is 1",
+    "general_lower_bound": "convolution(s) >= 2-E-abs(s-E)",
+    "symmetry": "Acal=E-Acal"
+  },
+  "schema": "erdos257_multiplicity_two_rational_overlap_audit_v0"
+}

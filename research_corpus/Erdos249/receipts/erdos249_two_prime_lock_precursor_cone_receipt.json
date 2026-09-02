@@ -1,0 +1,133 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "eliminated",
+      "mechanism": "two_prime_successor_locks_force_endpoint_crossing",
+      "reason": "the complete intersection has a strictly trapped survivor"
+    },
+    {
+      "decision": "eliminated",
+      "mechanism": "precursor_uniqueness_implies_endpoint_escape",
+      "reason": "the unique precursor is the actual trapped orbit"
+    },
+    {
+      "decision": "opened_as_required_stronger_input",
+      "mechanism": "third_lock_or_global_cross_gap_invariant",
+      "reason": "one and two local locks are now both insufficient"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "universal_escape_or_irrationality",
+      "reason": "certificate is finite and local"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "falsification_consequence": "A trapped survivor eliminates two-lock forced crossing.  Even a unique precursor is insufficient, so the next route needs a third lock or a genuinely global cross-gap invariant.",
+      "survival_consequence": "An empty intersection would open a two-lock route from cofinal bottom locks to endpoint escape."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "two_prime_successor_locks_force_endpoint_escape",
+      "statement": "Two distinct trapped prime successors, together with every exact intervening totient letter and endpoint bound, force a crossing."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_endpoint_cocycle_receipt.json"
+      ]
+    },
+    "probe": {
+      "computation": "Enumerate all 721 integer errors at H=10, replay the exact fixed-k cocycle through each moving endpoint window, and intersect at the successors of the distinct primes 359 and 367.",
+      "falsifier": "A seed that remains endpoint-trapped through both prime successors; uniqueness is recorded separately and does not count as escape.",
+      "id": "complete_two_lock_integer_precursor_intersection",
+      "question": "Does the complete geometry-boundary seed interval become empty by the successor of the second prime lock?",
+      "stop_condition": "Stop at the successor of the second distinct prime lock after the complete finite seed interval has been intersected; do not extend the trajectory merely to accumulate horizon."
+    },
+    "problem": {
+      "claim_ceiling": "Exact finite mechanism elimination on the c=349 record word; no infinite endpoint trap, universal escape, or irrationality proof.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_(n>=1) phi(n)/2^n."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "The complete seed set contracts 721 -> 362 -> 1 at the two prime successors.  The unique seed is the actual E_10=-15, and it remains strictly endpoint-trapped through H=19 with E_19=-109 and minimum margin 238.  Thus two locks can determine the orbit without forcing escape."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "schema": "erdos249-two-prime-lock-precursor-cone/1",
+  "source_records": [
+    {
+      "byte_length": 11034,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
+      "sha256": "dc2e78a6d8aacb90a9934f3c3841f2eea8c94e3fd528454d6b240a30be144b90"
+    },
+    {
+      "byte_length": 82239,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_endpoint_cocycle_receipt.json",
+      "sha256": "ed3c1bb5c8e66c0ba39990219a0195a14fb8ddfdde39eae0758e89a5a4dc866b"
+    },
+    {
+      "byte_length": 8589,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+      "sha256": "914304bd8fa77fa8f30d7fc83e274299bb565096318c54aaf1d9233c025c45a9"
+    },
+    {
+      "byte_length": 22005,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c"
+    }
+  ],
+  "status": "verified_exact_two_lock_mechanism_elimination",
+  "two_lock_certificate": {
+    "actual_geometry_seed_error": -15,
+    "after_first_lock_successor": {
+      "height": 11,
+      "surviving_seed_count": 362,
+      "surviving_seed_range": [
+        -145,
+        216
+      ]
+    },
+    "after_second_lock_successor": {
+      "exact_survivors": [
+        {
+          "geometry_seed_error": -15,
+          "minimum_endpoint_margin": 238,
+          "terminal_error": -109
+        }
+      ],
+      "height": 19,
+      "surviving_seed_count": 1
+    },
+    "basepoint_c": 349,
+    "complete_geometry_seed_count": 721,
+    "complete_geometry_seed_interval": [
+      -360,
+      360
+    ],
+    "fixed_quotient_k": 167,
+    "geometry_clear_height": 10,
+    "prime_successor_locks": [
+      {
+        "prime_argument": 359,
+        "prime_height": 10,
+        "successor_height": 11
+      },
+      {
+        "prime_argument": 367,
+        "prime_height": 18,
+        "successor_height": 19
+      }
+    ],
+    "two_lock_forced_crossing": false,
+    "unique_survivor_is_actual_seed": true,
+    "unique_survivor_remains_endpoint_trapped": true
+  }
+}

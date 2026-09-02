@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PolynomialShiftCountermodel.Challenge",
+  "solution_module": "ExternalVerification251PolynomialShiftCountermodel.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

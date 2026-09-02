@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification269ThreePrimeStructure.Challenge",
+  "solution_module": "ExternalVerification269ThreePrimeStructure.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight",
+    "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell",
+    "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card",
+    "Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight",
+    "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic",
+    "Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen",
+    "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

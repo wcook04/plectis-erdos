@@ -1,0 +1,3997 @@
+{
+  "analytic_lineage": {
+    "consequence_field": "canonical_parent_candidate.all_depth_consequence_if_proved",
+    "lean_consumers": [
+      "one_div_twenty_one_mem_mersenneAchievementSet_of_defectSubexponential",
+      "finiteErdosSum_ne_one_div_twenty_one"
+    ],
+    "machine_evidence_field": "record_rows",
+    "motivating_question": "Can the positive dyadic inheritance mechanism be widened to root records using arbitrary divisor ancestry?"
+  },
+  "ancestor_inheritance_candidate": {
+    "all_depth_consequence_if_proved": "Divisor inclusion gives f(n+1)>=A(n), so Q_n<=f(n+1)+8 at every strict record.  For the last strict record n<=N, Q_N<=Q_n<=tau(n+1)+8<=2*sqrt(N+1)+8.  The Lean-checked subexponential-defect theorem then yields denominator-21 membership and infinite support.",
+    "constant_eight_violation_count": 0,
+    "constant_eight_violations": [],
+    "constant_seven_violation_count": 1,
+    "falsifier": "a strict record with required_additive_constant greater than eight",
+    "finite_status": "verified_on_every_bound_two_million_rank_record",
+    "id": "AI8",
+    "maximum_required_additive_constant": 8,
+    "minimum_unshifted_inherited_margin": -8,
+    "sharp_finite_witness_record_ranks": [
+      13859
+    ],
+    "statement": "For every strict record n, A(n)+8 >= Q_n+t_(n+1), where A(n)=max f(r+1) over earlier strict records r with r+1 dividing n+1, and A(n)=0 if the set is empty.",
+    "tested_record_count": 39
+  },
+  "authority": {
+    "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneRecordAncestorInheritance.md",
+    "companion_analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneRecordDivisorSupplyNoGo.md",
+    "floating_point_used": false,
+    "method": "exact divisibility mining over strict-record rows from the digest-validated historical exact replay receipt",
+    "motivating_analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneComputationalStructureLab.md",
+    "python_version": "3.13.7",
+    "script_ref": "formal_math/erdos257_period_noncollapse/scripts/twenty_one_record_ancestor_inheritance.py",
+    "script_sha256": "3121017396607f85f2e762321cb92804782b4280d1ebd0aa5dbb0e6c25c8efac",
+    "source_itinerary_sha256": "f4acc653489d3d5af1c69b8d065e692ef9f83c566a569bc73704667b6d051413",
+    "source_receipt_binding_commit": "3900ab8eef1edbb8243cac19ddae45b00e0ca3ac",
+    "source_receipt_payload_sha256": "c3b2d899da07d668fcd712e342b83648d63c3b8cae15235ba007dc55ae6ea7b7",
+    "source_receipt_ref": "state/formal_math/erdos257_period_noncollapse/twenty_one_computational_structure_receipt_2000002.json",
+    "source_script_ref": "formal_math/erdos257_period_noncollapse/scripts/twenty_one_computational_structure_lab.py",
+    "source_script_sha256": "aec79602a04ccdcc5bd347be2be95aaf793888b8e20958ee55d4f6f09bb96d9e"
+  },
+  "canonical_parent_candidate": {
+    "all_depth_consequence_if_proved": "P8 directly gives Q_n<=f(n+1)+8 at every strict record by divisor inclusion, hence Q_N<=2*sqrt(N+1)+8 and the Lean-checked denominator-21 membership conclusion.",
+    "constant_eight_violation_count": 0,
+    "constant_eight_violations": [],
+    "falsifier": "a strict record whose canonical largest-successor parent misses its repair bill by more than eight",
+    "finite_status": "verified_on_every_bound_two_million_rank_record",
+    "id": "P8",
+    "maximum_parent_quotient": 39,
+    "maximum_required_additive_constant": 8,
+    "parent_definition": "p(n)+1 is the numerically largest earlier strict-record successor dividing n+1; its inherited load is zero when no such successor exists",
+    "records_with_parent_count": 37,
+    "records_without_parent_ranks": [
+      6,
+      19
+    ],
+    "statement": "For every strict record n, f(p(n)+1)+8 >= Q_n+t_(n+1), with the absent-parent load defined as zero.",
+    "tested_record_count": 39
+  },
+  "canonical_payload_sha256": "1ae2b72e0198a747cfc0f7352c1f2b6303e2c81006e8fef22ede69f1a5ba1de0",
+  "class_summary": {
+    "dyadic_child_minimum_inherited_margin": 3,
+    "dyadic_root_minimum_inherited_margin": -8,
+    "negative_margin_record_ranks": [
+      6,
+      19,
+      139,
+      419,
+      779,
+      1439,
+      13859,
+      15839,
+      32759,
+      43679,
+      95759,
+      180179,
+      205919,
+      480479,
+      1053359
+    ]
+  },
+  "dyadic_child_count": 18,
+  "dyadic_root_count": 21,
+  "genealogical_polynomial_candidate": {
+    "all_depth_consequence_if_proved": "Each proper divisor-parent edge at least doubles the successor, so an n-record has genealogy depth at most log_2(n+1).  GP4 then gives Q_n=O((n+1)^2) at records, hence at every rank.  This polynomial bound feeds the Lean-checked subexponential-defect theorem and yields denominator-21 membership with infinite support.",
+    "falsifiers": [
+      "a strict record above the finite seed with no earlier strict-record successor dividing its successor",
+      "a canonical parent edge with Q_child > 4*Q_parent"
+    ],
+    "finite_status": "verified_on_every_bound_two_million_rank_edge",
+    "gp4_violation_count": 0,
+    "gp4_violations": [],
+    "gp7_over_2_violation_count": 0,
+    "gp7_over_2_violations": [],
+    "id": "GP4",
+    "maximum_checked_genealogy_depth": 8,
+    "maximum_depth_record_ranks": [
+      655199
+    ],
+    "parent_existence_after_seed_violation_count": 0,
+    "proof_advantage": "GP4 discards all selected-divisor load estimates and is strictly weaker than P8/RR as a target producer.",
+    "sharp_finite_ratio": {
+      "denominator": 2,
+      "numerator": 7,
+      "record_rank": 779
+    },
+    "statement": "Every strict record n>19 has canonical divisor parent p(n), and Q_n <= 4*Q_p(n).",
+    "stronger_finite_statement": "Every tested parent edge satisfies 2*Q_n <= 7*Q_p(n).",
+    "tested_parent_edge_count": 37
+  },
+  "largest_parent_load_dominance_candidate": {
+    "divisibility_chain_explanation": {
+      "branching_record_count": 32,
+      "first_witness_eligible_successors": [
+        7,
+        20
+      ],
+      "first_witness_record_rank": 139,
+      "reason": "the eligible successors include incomparable divisors, so load dominance is not automatic divisor inclusion",
+      "status": "falsified_on_actual_denominator_21_orbit"
+    },
+    "finite_status": "verified_on_every_bound_two_million_rank_record",
+    "id": "LPD",
+    "statement": "Among earlier strict-record successors dividing a current record successor, the numerically largest has maximum selected-divisor load.",
+    "tested_record_count": 39,
+    "violation_count": 0,
+    "violations": []
+  },
+  "nonclaims": [
+    "AI8 remains an all-depth conjecture, not a proof.",
+    "P8 and LPD remain all-depth conjectures, not proofs.",
+    "GP4 remains an all-depth conjecture, not a proof.",
+    "The finite sharpness of eight need not persist at later records.",
+    "This receipt does not by itself decide Erdos Problem 257."
+  ],
+  "nonnegative_inherited_margin_count": 24,
+  "parameters": {
+    "ancestor_definition": "earlier strict record r whose successor r+1 divides the current record successor n+1",
+    "source_ranks": 2000002,
+    "tested_additive_constant": 8
+  },
+  "record_count": 39,
+  "record_rows": [
+    {
+      "actual_repair_margin": 0,
+      "actual_successor_selected_divisor_load": 1,
+      "best_ancestor": null,
+      "best_inherited_selected_divisor_load": 0,
+      "canonical_largest_successor_parent": null,
+      "canonical_parent_genealogy_depth": 0,
+      "canonical_parent_gp4_margin": null,
+      "canonical_parent_gp7_over_2_margin": null,
+      "canonical_parent_inherited_repair_margin": -1,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 1,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 0,
+      "eligible_ancestors": [],
+      "eligible_ancestors_form_divisibility_chain": true,
+      "inherited_repair_margin": -1,
+      "record_class": "dyadic_root",
+      "record_defect": 1,
+      "record_rank": 6,
+      "repair_bill": 1,
+      "required_additive_constant": 1,
+      "successor": 7,
+      "successor_target_bit": 0
+    },
+    {
+      "actual_repair_margin": 1,
+      "actual_successor_selected_divisor_load": 3,
+      "best_ancestor": null,
+      "best_inherited_selected_divisor_load": 0,
+      "canonical_largest_successor_parent": null,
+      "canonical_parent_genealogy_depth": 0,
+      "canonical_parent_gp4_margin": null,
+      "canonical_parent_gp7_over_2_margin": null,
+      "canonical_parent_inherited_repair_margin": -2,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 2,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 0,
+      "eligible_ancestors": [],
+      "eligible_ancestors_form_divisibility_chain": true,
+      "inherited_repair_margin": -2,
+      "record_class": "dyadic_root",
+      "record_defect": 2,
+      "record_rank": 19,
+      "repair_bill": 2,
+      "required_additive_constant": 2,
+      "successor": 20,
+      "successor_target_bit": 0
+    },
+    {
+      "actual_repair_margin": 2,
+      "actual_successor_selected_divisor_load": 5,
+      "best_ancestor": {
+        "record_defect": 2,
+        "record_rank": 19,
+        "selected_divisor_load": 3,
+        "successor": 20,
+        "successor_quotient": 4
+      },
+      "best_inherited_selected_divisor_load": 3,
+      "canonical_largest_successor_parent": {
+        "record_defect": 2,
+        "record_rank": 19,
+        "selected_divisor_load": 3,
+        "successor": 20,
+        "successor_quotient": 4
+      },
+      "canonical_parent_genealogy_depth": 1,
+      "canonical_parent_gp4_margin": 5,
+      "canonical_parent_gp7_over_2_margin": 8,
+      "canonical_parent_inherited_repair_margin": 0,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 1,
+      "eligible_ancestors": [
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 4
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": true,
+      "inherited_repair_margin": 0,
+      "record_class": "dyadic_root",
+      "record_defect": 3,
+      "record_rank": 79,
+      "repair_bill": 3,
+      "required_additive_constant": 0,
+      "successor": 80,
+      "successor_target_bit": 0
+    },
+    {
+      "actual_repair_margin": 2,
+      "actual_successor_selected_divisor_load": 6,
+      "best_ancestor": {
+        "record_defect": 2,
+        "record_rank": 19,
+        "selected_divisor_load": 3,
+        "successor": 20,
+        "successor_quotient": 7
+      },
+      "best_inherited_selected_divisor_load": 3,
+      "canonical_largest_successor_parent": {
+        "record_defect": 2,
+        "record_rank": 19,
+        "selected_divisor_load": 3,
+        "successor": 20,
+        "successor_quotient": 7
+      },
+      "canonical_parent_genealogy_depth": 1,
+      "canonical_parent_gp4_margin": 4,
+      "canonical_parent_gp7_over_2_margin": 6,
+      "canonical_parent_inherited_repair_margin": -1,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 1,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 2,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 20
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 7
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -1,
+      "record_class": "dyadic_root",
+      "record_defect": 4,
+      "record_rank": 139,
+      "repair_bill": 4,
+      "required_additive_constant": 1,
+      "successor": 140,
+      "successor_target_bit": 0
+    },
+    {
+      "actual_repair_margin": 3,
+      "actual_successor_selected_divisor_load": 8,
+      "best_ancestor": {
+        "record_defect": 3,
+        "record_rank": 79,
+        "selected_divisor_load": 5,
+        "successor": 80,
+        "successor_quotient": 4
+      },
+      "best_inherited_selected_divisor_load": 5,
+      "canonical_largest_successor_parent": {
+        "record_defect": 3,
+        "record_rank": 79,
+        "selected_divisor_load": 5,
+        "successor": 80,
+        "successor_quotient": 4
+      },
+      "canonical_parent_genealogy_depth": 2,
+      "canonical_parent_gp4_margin": 7,
+      "canonical_parent_gp7_over_2_margin": 11,
+      "canonical_parent_inherited_repair_margin": 0,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 2,
+      "eligible_ancestors": [
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 16
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 4
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": true,
+      "inherited_repair_margin": 0,
+      "record_class": "dyadic_root",
+      "record_defect": 5,
+      "record_rank": 319,
+      "repair_bill": 5,
+      "required_additive_constant": 0,
+      "successor": 320,
+      "successor_target_bit": 0
+    },
+    {
+      "actual_repair_margin": 5,
+      "actual_successor_selected_divisor_load": 12,
+      "best_ancestor": {
+        "record_defect": 4,
+        "record_rank": 139,
+        "selected_divisor_load": 6,
+        "successor": 140,
+        "successor_quotient": 3
+      },
+      "best_inherited_selected_divisor_load": 6,
+      "canonical_largest_successor_parent": {
+        "record_defect": 4,
+        "record_rank": 139,
+        "selected_divisor_load": 6,
+        "successor": 140,
+        "successor_quotient": 3
+      },
+      "canonical_parent_genealogy_depth": 2,
+      "canonical_parent_gp4_margin": 10,
+      "canonical_parent_gp7_over_2_margin": 16,
+      "canonical_parent_inherited_repair_margin": -1,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 1,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 3,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 60
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 21
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 3
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -1,
+      "record_class": "dyadic_root",
+      "record_defect": 6,
+      "record_rank": 419,
+      "repair_bill": 7,
+      "required_additive_constant": 1,
+      "successor": 420,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 4,
+      "actual_successor_selected_divisor_load": 12,
+      "best_ancestor": {
+        "record_defect": 2,
+        "record_rank": 19,
+        "selected_divisor_load": 3,
+        "successor": 20,
+        "successor_quotient": 39
+      },
+      "best_inherited_selected_divisor_load": 3,
+      "canonical_largest_successor_parent": {
+        "record_defect": 2,
+        "record_rank": 19,
+        "selected_divisor_load": 3,
+        "successor": 20,
+        "successor_quotient": 39
+      },
+      "canonical_parent_genealogy_depth": 1,
+      "canonical_parent_gp4_margin": 1,
+      "canonical_parent_gp7_over_2_margin": 0,
+      "canonical_parent_inherited_repair_margin": -5,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 5,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 1,
+      "eligible_ancestors": [
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 39
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": true,
+      "inherited_repair_margin": -5,
+      "record_class": "dyadic_root",
+      "record_defect": 7,
+      "record_rank": 779,
+      "repair_bill": 8,
+      "required_additive_constant": 5,
+      "successor": 780,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 7,
+      "actual_successor_selected_divisor_load": 16,
+      "best_ancestor": {
+        "record_defect": 6,
+        "record_rank": 419,
+        "selected_divisor_load": 12,
+        "successor": 420,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 12,
+      "canonical_largest_successor_parent": {
+        "record_defect": 6,
+        "record_rank": 419,
+        "selected_divisor_load": 12,
+        "successor": 420,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 3,
+      "canonical_parent_gp4_margin": 16,
+      "canonical_parent_gp7_over_2_margin": 26,
+      "canonical_parent_inherited_repair_margin": 3,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 419,
+      "eligible_ancestor_count": 4,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 120
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 42
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 6
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 3,
+      "record_class": "dyadic_child",
+      "record_defect": 8,
+      "record_rank": 839,
+      "repair_bill": 9,
+      "required_additive_constant": 0,
+      "successor": 840,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 7,
+      "actual_successor_selected_divisor_load": 17,
+      "best_ancestor": {
+        "record_defect": 3,
+        "record_rank": 79,
+        "selected_divisor_load": 5,
+        "successor": 80,
+        "successor_quotient": 18
+      },
+      "best_inherited_selected_divisor_load": 5,
+      "canonical_largest_successor_parent": {
+        "record_defect": 3,
+        "record_rank": 79,
+        "selected_divisor_load": 5,
+        "successor": 80,
+        "successor_quotient": 18
+      },
+      "canonical_parent_genealogy_depth": 2,
+      "canonical_parent_gp4_margin": 3,
+      "canonical_parent_gp7_over_2_margin": 3,
+      "canonical_parent_inherited_repair_margin": -5,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 5,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 2,
+      "eligible_ancestors": [
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 72
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 18
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": true,
+      "inherited_repair_margin": -5,
+      "record_class": "dyadic_root",
+      "record_defect": 9,
+      "record_rank": 1439,
+      "repair_bill": 10,
+      "required_additive_constant": 5,
+      "successor": 1440,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 8,
+      "actual_successor_selected_divisor_load": 19,
+      "best_ancestor": {
+        "record_defect": 8,
+        "record_rank": 839,
+        "selected_divisor_load": 16,
+        "successor": 840,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 16,
+      "canonical_largest_successor_parent": {
+        "record_defect": 8,
+        "record_rank": 839,
+        "selected_divisor_load": 16,
+        "successor": 840,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 4,
+      "canonical_parent_gp4_margin": 22,
+      "canonical_parent_gp7_over_2_margin": 36,
+      "canonical_parent_inherited_repair_margin": 5,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 839,
+      "eligible_ancestor_count": 6,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 240
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 84
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 21
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 12
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 5,
+      "record_class": "dyadic_child",
+      "record_defect": 10,
+      "record_rank": 1679,
+      "repair_bill": 11,
+      "required_additive_constant": 0,
+      "successor": 1680,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 10,
+      "actual_successor_selected_divisor_load": 22,
+      "best_ancestor": {
+        "record_defect": 8,
+        "record_rank": 839,
+        "selected_divisor_load": 16,
+        "successor": 840,
+        "successor_quotient": 3
+      },
+      "best_inherited_selected_divisor_load": 16,
+      "canonical_largest_successor_parent": {
+        "record_defect": 8,
+        "record_rank": 839,
+        "selected_divisor_load": 16,
+        "successor": 840,
+        "successor_quotient": 3
+      },
+      "canonical_parent_genealogy_depth": 4,
+      "canonical_parent_gp4_margin": 21,
+      "canonical_parent_gp7_over_2_margin": 34,
+      "canonical_parent_inherited_repair_margin": 4,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 5,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 360
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 126
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 18
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 6
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 3
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 4,
+      "record_class": "dyadic_root",
+      "record_defect": 11,
+      "record_rank": 2519,
+      "repair_bill": 12,
+      "required_additive_constant": 0,
+      "successor": 2520,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 11,
+      "actual_successor_selected_divisor_load": 25,
+      "best_ancestor": {
+        "record_defect": 10,
+        "record_rank": 1679,
+        "selected_divisor_load": 19,
+        "successor": 1680,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 19,
+      "canonical_largest_successor_parent": {
+        "record_defect": 10,
+        "record_rank": 1679,
+        "selected_divisor_load": 19,
+        "successor": 1680,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 5,
+      "canonical_parent_gp4_margin": 27,
+      "canonical_parent_gp7_over_2_margin": 44,
+      "canonical_parent_inherited_repair_margin": 5,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 1679,
+      "eligible_ancestor_count": 7,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 480
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 168
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 42
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 24
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 8
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 5,
+      "record_class": "dyadic_child",
+      "record_defect": 13,
+      "record_rank": 3359,
+      "repair_bill": 14,
+      "required_additive_constant": 0,
+      "successor": 3360,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 12,
+      "actual_successor_selected_divisor_load": 27,
+      "best_ancestor": {
+        "record_defect": 11,
+        "record_rank": 2519,
+        "selected_divisor_load": 22,
+        "successor": 2520,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 22,
+      "canonical_largest_successor_parent": {
+        "record_defect": 11,
+        "record_rank": 2519,
+        "selected_divisor_load": 22,
+        "successor": 2520,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 5,
+      "canonical_parent_gp4_margin": 30,
+      "canonical_parent_gp7_over_2_margin": 49,
+      "canonical_parent_inherited_repair_margin": 7,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 2519,
+      "eligible_ancestor_count": 8,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 720
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 252
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 63
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 36
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 12
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 6
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 3
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 7,
+      "record_class": "dyadic_child",
+      "record_defect": 14,
+      "record_rank": 5039,
+      "repair_bill": 15,
+      "required_additive_constant": 0,
+      "successor": 5040,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 12,
+      "actual_successor_selected_divisor_load": 29,
+      "best_ancestor": {
+        "record_defect": 13,
+        "record_rank": 3359,
+        "selected_divisor_load": 25,
+        "successor": 3360,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 25,
+      "canonical_largest_successor_parent": {
+        "record_defect": 13,
+        "record_rank": 3359,
+        "selected_divisor_load": 25,
+        "successor": 3360,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 36,
+      "canonical_parent_gp7_over_2_margin": 59,
+      "canonical_parent_inherited_repair_margin": 8,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 3359,
+      "eligible_ancestor_count": 9,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 960
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 336
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 84
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 48
+        },
+        {
+          "record_defect": 5,
+          "record_rank": 319,
+          "selected_divisor_load": 8,
+          "successor": 320,
+          "successor_quotient": 21
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 16
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 8
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 8,
+      "record_class": "dyadic_child",
+      "record_defect": 16,
+      "record_rank": 6719,
+      "repair_bill": 17,
+      "required_additive_constant": 0,
+      "successor": 6720,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 16,
+      "actual_successor_selected_divisor_load": 35,
+      "best_ancestor": {
+        "record_defect": 14,
+        "record_rank": 5039,
+        "selected_divisor_load": 27,
+        "successor": 5040,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 27,
+      "canonical_largest_successor_parent": {
+        "record_defect": 14,
+        "record_rank": 5039,
+        "selected_divisor_load": 27,
+        "successor": 5040,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 38,
+      "canonical_parent_gp7_over_2_margin": 62,
+      "canonical_parent_inherited_repair_margin": 8,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 5039,
+      "eligible_ancestor_count": 11,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 1440
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 504
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 126
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 72
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 24
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 12
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 7
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 6
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 3
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 8,
+      "record_class": "dyadic_child",
+      "record_defect": 18,
+      "record_rank": 10079,
+      "repair_bill": 19,
+      "required_additive_constant": 0,
+      "successor": 10080,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 16,
+      "actual_successor_selected_divisor_load": 36,
+      "best_ancestor": {
+        "record_defect": 6,
+        "record_rank": 419,
+        "selected_divisor_load": 12,
+        "successor": 420,
+        "successor_quotient": 33
+      },
+      "best_inherited_selected_divisor_load": 12,
+      "canonical_largest_successor_parent": {
+        "record_defect": 6,
+        "record_rank": 419,
+        "selected_divisor_load": 12,
+        "successor": 420,
+        "successor_quotient": 33
+      },
+      "canonical_parent_genealogy_depth": 3,
+      "canonical_parent_gp4_margin": 5,
+      "canonical_parent_gp7_over_2_margin": 4,
+      "canonical_parent_inherited_repair_margin": -8,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 8,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 4,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 1980
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 693
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 99
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 33
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -8,
+      "record_class": "dyadic_root",
+      "record_defect": 19,
+      "record_rank": 13859,
+      "repair_bill": 20,
+      "required_additive_constant": 8,
+      "successor": 13860,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 17,
+      "actual_successor_selected_divisor_load": 39,
+      "best_ancestor": {
+        "record_defect": 9,
+        "record_rank": 1439,
+        "selected_divisor_load": 17,
+        "successor": 1440,
+        "successor_quotient": 11
+      },
+      "best_inherited_selected_divisor_load": 17,
+      "canonical_largest_successor_parent": {
+        "record_defect": 9,
+        "record_rank": 1439,
+        "selected_divisor_load": 17,
+        "successor": 1440,
+        "successor_quotient": 11
+      },
+      "canonical_parent_genealogy_depth": 3,
+      "canonical_parent_gp4_margin": 15,
+      "canonical_parent_gp7_over_2_margin": 21,
+      "canonical_parent_inherited_repair_margin": -5,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 5,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 3,
+      "eligible_ancestors": [
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 792
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 198
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 11
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": true,
+      "inherited_repair_margin": -5,
+      "record_class": "dyadic_root",
+      "record_defect": 21,
+      "record_rank": 15839,
+      "repair_bill": 22,
+      "required_additive_constant": 5,
+      "successor": 15840,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 19,
+      "actual_successor_selected_divisor_load": 42,
+      "best_ancestor": {
+        "record_defect": 18,
+        "record_rank": 10079,
+        "selected_divisor_load": 35,
+        "successor": 10080,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 35,
+      "canonical_largest_successor_parent": {
+        "record_defect": 18,
+        "record_rank": 10079,
+        "selected_divisor_load": 35,
+        "successor": 10080,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 50,
+      "canonical_parent_gp7_over_2_margin": 82,
+      "canonical_parent_inherited_repair_margin": 12,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 10079,
+      "eligible_ancestor_count": 14,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 2880
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 1008
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 252
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 144
+        },
+        {
+          "record_defect": 5,
+          "record_rank": 319,
+          "selected_divisor_load": 8,
+          "successor": 320,
+          "successor_quotient": 63
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 48
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 24
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 14
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 12
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 8
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 6
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 16,
+          "record_rank": 6719,
+          "selected_divisor_load": 29,
+          "successor": 6720,
+          "successor_quotient": 3
+        },
+        {
+          "record_defect": 18,
+          "record_rank": 10079,
+          "selected_divisor_load": 35,
+          "successor": 10080,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 12,
+      "record_class": "dyadic_child",
+      "record_defect": 22,
+      "record_rank": 20159,
+      "repair_bill": 23,
+      "required_additive_constant": 0,
+      "successor": 20160,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 22,
+      "actual_successor_selected_divisor_load": 47,
+      "best_ancestor": {
+        "record_defect": 19,
+        "record_rank": 13859,
+        "selected_divisor_load": 36,
+        "successor": 13860,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 36,
+      "canonical_largest_successor_parent": {
+        "record_defect": 19,
+        "record_rank": 13859,
+        "selected_divisor_load": 36,
+        "successor": 13860,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 4,
+      "canonical_parent_gp4_margin": 52,
+      "canonical_parent_gp7_over_2_margin": 85,
+      "canonical_parent_inherited_repair_margin": 11,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 13859,
+      "eligible_ancestor_count": 7,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 3960
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 1386
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 198
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 66
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 33
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 11
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 11,
+      "record_class": "dyadic_child",
+      "record_defect": 24,
+      "record_rank": 27719,
+      "repair_bill": 25,
+      "required_additive_constant": 0,
+      "successor": 27720,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 21,
+      "actual_successor_selected_divisor_load": 47,
+      "best_ancestor": {
+        "record_defect": 21,
+        "record_rank": 15839,
+        "selected_divisor_load": 39,
+        "successor": 15840,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 39,
+      "canonical_largest_successor_parent": {
+        "record_defect": 21,
+        "record_rank": 15839,
+        "selected_divisor_load": 39,
+        "successor": 15840,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 4,
+      "canonical_parent_gp4_margin": 59,
+      "canonical_parent_gp7_over_2_margin": 97,
+      "canonical_parent_inherited_repair_margin": 13,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 15839,
+      "eligible_ancestor_count": 5,
+      "eligible_ancestors": [
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 1584
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 396
+        },
+        {
+          "record_defect": 5,
+          "record_rank": 319,
+          "selected_divisor_load": 8,
+          "successor": 320,
+          "successor_quotient": 99
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 22
+        },
+        {
+          "record_defect": 21,
+          "record_rank": 15839,
+          "selected_divisor_load": 39,
+          "successor": 15840,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 13,
+      "record_class": "dyadic_child",
+      "record_defect": 25,
+      "record_rank": 31679,
+      "repair_bill": 26,
+      "required_additive_constant": 0,
+      "successor": 31680,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 24,
+      "actual_successor_selected_divisor_load": 51,
+      "best_ancestor": {
+        "record_defect": 11,
+        "record_rank": 2519,
+        "selected_divisor_load": 22,
+        "successor": 2520,
+        "successor_quotient": 13
+      },
+      "best_inherited_selected_divisor_load": 22,
+      "canonical_largest_successor_parent": {
+        "record_defect": 11,
+        "record_rank": 2519,
+        "selected_divisor_load": 22,
+        "successor": 2520,
+        "successor_quotient": 13
+      },
+      "canonical_parent_genealogy_depth": 5,
+      "canonical_parent_gp4_margin": 18,
+      "canonical_parent_gp7_over_2_margin": 25,
+      "canonical_parent_inherited_repair_margin": -5,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 5,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 7,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 4680
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 1638
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 234
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 78
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 42
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 39
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 13
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -5,
+      "record_class": "dyadic_root",
+      "record_defect": 26,
+      "record_rank": 32759,
+      "repair_bill": 27,
+      "required_additive_constant": 5,
+      "successor": 32760,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 24,
+      "actual_successor_selected_divisor_load": 52,
+      "best_ancestor": {
+        "record_defect": 13,
+        "record_rank": 3359,
+        "selected_divisor_load": 25,
+        "successor": 3360,
+        "successor_quotient": 13
+      },
+      "best_inherited_selected_divisor_load": 25,
+      "canonical_largest_successor_parent": {
+        "record_defect": 13,
+        "record_rank": 3359,
+        "selected_divisor_load": 25,
+        "successor": 3360,
+        "successor_quotient": 13
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 25,
+      "canonical_parent_gp7_over_2_margin": 37,
+      "canonical_parent_inherited_repair_margin": -3,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 3,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 9,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 6240
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 2184
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 546
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 312
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 104
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 56
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 52
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 26
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 13
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -3,
+      "record_class": "dyadic_root",
+      "record_defect": 27,
+      "record_rank": 43679,
+      "repair_bill": 28,
+      "required_additive_constant": 3,
+      "successor": 43680,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 27,
+      "actual_successor_selected_divisor_load": 57,
+      "best_ancestor": {
+        "record_defect": 24,
+        "record_rank": 27719,
+        "selected_divisor_load": 47,
+        "successor": 27720,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 47,
+      "canonical_largest_successor_parent": {
+        "record_defect": 24,
+        "record_rank": 27719,
+        "selected_divisor_load": 47,
+        "successor": 27720,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 5,
+      "canonical_parent_gp4_margin": 67,
+      "canonical_parent_gp7_over_2_margin": 110,
+      "canonical_parent_inherited_repair_margin": 17,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 27719,
+      "eligible_ancestor_count": 11,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 7920
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 2772
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 693
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 396
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 132
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 66
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 33
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 22
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 11
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 17,
+      "record_class": "dyadic_child",
+      "record_defect": 29,
+      "record_rank": 55439,
+      "repair_bill": 30,
+      "required_additive_constant": 0,
+      "successor": 55440,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 30,
+      "actual_successor_selected_divisor_load": 62,
+      "best_ancestor": {
+        "record_defect": 26,
+        "record_rank": 32759,
+        "selected_divisor_load": 51,
+        "successor": 32760,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 51,
+      "canonical_largest_successor_parent": {
+        "record_defect": 26,
+        "record_rank": 32759,
+        "selected_divisor_load": 51,
+        "successor": 32760,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 73,
+      "canonical_parent_gp7_over_2_margin": 120,
+      "canonical_parent_inherited_repair_margin": 19,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 32759,
+      "eligible_ancestor_count": 11,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 9360
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 3276
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 819
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 468
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 156
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 84
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 78
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 39
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 26
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 13
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 19,
+      "record_class": "dyadic_child",
+      "record_defect": 31,
+      "record_rank": 65519,
+      "repair_bill": 32,
+      "required_additive_constant": 0,
+      "successor": 65520,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 30,
+      "actual_successor_selected_divisor_load": 64,
+      "best_ancestor": {
+        "record_defect": 14,
+        "record_rank": 5039,
+        "selected_divisor_load": 27,
+        "successor": 5040,
+        "successor_quotient": 19
+      },
+      "best_inherited_selected_divisor_load": 27,
+      "canonical_largest_successor_parent": {
+        "record_defect": 14,
+        "record_rank": 5039,
+        "selected_divisor_load": 27,
+        "successor": 5040,
+        "successor_quotient": 19
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 23,
+      "canonical_parent_gp7_over_2_margin": 32,
+      "canonical_parent_inherited_repair_margin": -7,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 7,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 9,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 13680
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 4788
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 1197
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 684
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 228
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 114
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 57
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 38
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 19
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -7,
+      "record_class": "dyadic_root",
+      "record_defect": 33,
+      "record_rank": 95759,
+      "repair_bill": 34,
+      "required_additive_constant": 7,
+      "successor": 95760,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 35,
+      "actual_successor_selected_divisor_load": 72,
+      "best_ancestor": {
+        "record_defect": 29,
+        "record_rank": 55439,
+        "selected_divisor_load": 57,
+        "successor": 55440,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 57,
+      "canonical_largest_successor_parent": {
+        "record_defect": 29,
+        "record_rank": 55439,
+        "selected_divisor_load": 57,
+        "successor": 55440,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 80,
+      "canonical_parent_gp7_over_2_margin": 131,
+      "canonical_parent_inherited_repair_margin": 20,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 55439,
+      "eligible_ancestor_count": 16,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 15840
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 5544
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 1386
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 792
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 264
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 132
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 77
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 66
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 44
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 33
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 22
+        },
+        {
+          "record_defect": 18,
+          "record_rank": 10079,
+          "selected_divisor_load": 35,
+          "successor": 10080,
+          "successor_quotient": 11
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 8
+        },
+        {
+          "record_defect": 21,
+          "record_rank": 15839,
+          "selected_divisor_load": 39,
+          "successor": 15840,
+          "successor_quotient": 7
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 29,
+          "record_rank": 55439,
+          "selected_divisor_load": 57,
+          "successor": 55440,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 20,
+      "record_class": "dyadic_child",
+      "record_defect": 36,
+      "record_rank": 110879,
+      "repair_bill": 37,
+      "required_additive_constant": 0,
+      "successor": 110880,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 36,
+      "actual_successor_selected_divisor_load": 75,
+      "best_ancestor": {
+        "record_defect": 31,
+        "record_rank": 65519,
+        "selected_divisor_load": 62,
+        "successor": 65520,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 62,
+      "canonical_largest_successor_parent": {
+        "record_defect": 31,
+        "record_rank": 65519,
+        "selected_divisor_load": 62,
+        "successor": 65520,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 86,
+      "canonical_parent_gp7_over_2_margin": 141,
+      "canonical_parent_inherited_repair_margin": 23,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 65519,
+      "eligible_ancestor_count": 16,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 18720
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 6552
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 1638
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 936
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 312
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 168
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 156
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 91
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 78
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 52
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 39
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 26
+        },
+        {
+          "record_defect": 18,
+          "record_rank": 10079,
+          "selected_divisor_load": 35,
+          "successor": 10080,
+          "successor_quotient": 13
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 27,
+          "record_rank": 43679,
+          "selected_divisor_load": 52,
+          "successor": 43680,
+          "successor_quotient": 3
+        },
+        {
+          "record_defect": 31,
+          "record_rank": 65519,
+          "selected_divisor_load": 62,
+          "successor": 65520,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 23,
+      "record_class": "dyadic_child",
+      "record_defect": 38,
+      "record_rank": 131039,
+      "repair_bill": 39,
+      "required_additive_constant": 0,
+      "successor": 131040,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 38,
+      "actual_successor_selected_divisor_load": 79,
+      "best_ancestor": {
+        "record_defect": 19,
+        "record_rank": 13859,
+        "selected_divisor_load": 36,
+        "successor": 13860,
+        "successor_quotient": 13
+      },
+      "best_inherited_selected_divisor_load": 36,
+      "canonical_largest_successor_parent": {
+        "record_defect": 19,
+        "record_rank": 13859,
+        "selected_divisor_load": 36,
+        "successor": 13860,
+        "successor_quotient": 13
+      },
+      "canonical_parent_genealogy_depth": 4,
+      "canonical_parent_gp4_margin": 36,
+      "canonical_parent_gp7_over_2_margin": 53,
+      "canonical_parent_inherited_repair_margin": -5,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 5,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 6,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 25740
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 9009
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 1287
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 429
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 231
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 13
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -5,
+      "record_class": "dyadic_root",
+      "record_defect": 40,
+      "record_rank": 180179,
+      "repair_bill": 41,
+      "required_additive_constant": 5,
+      "successor": 180180,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 39,
+      "actual_successor_selected_divisor_load": 81,
+      "best_ancestor": {
+        "record_defect": 21,
+        "record_rank": 15839,
+        "selected_divisor_load": 39,
+        "successor": 15840,
+        "successor_quotient": 13
+      },
+      "best_inherited_selected_divisor_load": 39,
+      "canonical_largest_successor_parent": {
+        "record_defect": 21,
+        "record_rank": 15839,
+        "selected_divisor_load": 39,
+        "successor": 15840,
+        "successor_quotient": 13
+      },
+      "canonical_parent_genealogy_depth": 4,
+      "canonical_parent_gp4_margin": 43,
+      "canonical_parent_gp7_over_2_margin": 65,
+      "canonical_parent_inherited_repair_margin": -3,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 3,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 5,
+      "eligible_ancestors": [
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 10296
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 2574
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 264
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 143
+        },
+        {
+          "record_defect": 21,
+          "record_rank": 15839,
+          "selected_divisor_load": 39,
+          "successor": 15840,
+          "successor_quotient": 13
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -3,
+      "record_class": "dyadic_root",
+      "record_defect": 41,
+      "record_rank": 205919,
+      "repair_bill": 42,
+      "required_additive_constant": 3,
+      "successor": 205920,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 42,
+      "actual_successor_selected_divisor_load": 86,
+      "best_ancestor": {
+        "record_defect": 36,
+        "record_rank": 110879,
+        "selected_divisor_load": 72,
+        "successor": 110880,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 72,
+      "canonical_largest_successor_parent": {
+        "record_defect": 36,
+        "record_rank": 110879,
+        "selected_divisor_load": 72,
+        "successor": 110880,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 101,
+      "canonical_parent_gp7_over_2_margin": 166,
+      "canonical_parent_inherited_repair_margin": 28,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 110879,
+      "eligible_ancestor_count": 21,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 31680
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 11088
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 2772
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 1584
+        },
+        {
+          "record_defect": 5,
+          "record_rank": 319,
+          "selected_divisor_load": 8,
+          "successor": 320,
+          "successor_quotient": 693
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 528
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 264
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 154
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 132
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 88
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 66
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 44
+        },
+        {
+          "record_defect": 16,
+          "record_rank": 6719,
+          "selected_divisor_load": 29,
+          "successor": 6720,
+          "successor_quotient": 33
+        },
+        {
+          "record_defect": 18,
+          "record_rank": 10079,
+          "selected_divisor_load": 35,
+          "successor": 10080,
+          "successor_quotient": 22
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 16
+        },
+        {
+          "record_defect": 21,
+          "record_rank": 15839,
+          "selected_divisor_load": 39,
+          "successor": 15840,
+          "successor_quotient": 14
+        },
+        {
+          "record_defect": 22,
+          "record_rank": 20159,
+          "selected_divisor_load": 42,
+          "successor": 20160,
+          "successor_quotient": 11
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 8
+        },
+        {
+          "record_defect": 25,
+          "record_rank": 31679,
+          "selected_divisor_load": 47,
+          "successor": 31680,
+          "successor_quotient": 7
+        },
+        {
+          "record_defect": 29,
+          "record_rank": 55439,
+          "selected_divisor_load": 57,
+          "successor": 55440,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 36,
+          "record_rank": 110879,
+          "selected_divisor_load": 72,
+          "successor": 110880,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 28,
+      "record_class": "dyadic_child",
+      "record_defect": 43,
+      "record_rank": 221759,
+      "repair_bill": 44,
+      "required_additive_constant": 0,
+      "successor": 221760,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 44,
+      "actual_successor_selected_divisor_load": 91,
+      "best_ancestor": {
+        "record_defect": 31,
+        "record_rank": 65519,
+        "selected_divisor_load": 62,
+        "successor": 65520,
+        "successor_quotient": 5
+      },
+      "best_inherited_selected_divisor_load": 62,
+      "canonical_largest_successor_parent": {
+        "record_defect": 31,
+        "record_rank": 65519,
+        "selected_divisor_load": 62,
+        "successor": 65520,
+        "successor_quotient": 5
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 78,
+      "canonical_parent_gp7_over_2_margin": 125,
+      "canonical_parent_inherited_repair_margin": 15,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 12,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 46800
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 16380
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 4095
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 2340
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 780
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 420
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 390
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 195
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 130
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 65
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 10
+        },
+        {
+          "record_defect": 31,
+          "record_rank": 65519,
+          "selected_divisor_load": 62,
+          "successor": 65520,
+          "successor_quotient": 5
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 15,
+      "record_class": "dyadic_root",
+      "record_defect": 46,
+      "record_rank": 327599,
+      "repair_bill": 47,
+      "required_additive_constant": 0,
+      "successor": 327600,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 46,
+      "actual_successor_selected_divisor_load": 94,
+      "best_ancestor": {
+        "record_defect": 36,
+        "record_rank": 110879,
+        "selected_divisor_load": 72,
+        "successor": 110880,
+        "successor_quotient": 3
+      },
+      "best_inherited_selected_divisor_load": 72,
+      "canonical_largest_successor_parent": {
+        "record_defect": 36,
+        "record_rank": 110879,
+        "selected_divisor_load": 72,
+        "successor": 110880,
+        "successor_quotient": 3
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 97,
+      "canonical_parent_gp7_over_2_margin": 158,
+      "canonical_parent_inherited_repair_margin": 24,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 17,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 47520
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 16632
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 4158
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 2376
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 792
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 396
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 231
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 198
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 132
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 99
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 66
+        },
+        {
+          "record_defect": 18,
+          "record_rank": 10079,
+          "selected_divisor_load": 35,
+          "successor": 10080,
+          "successor_quotient": 33
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 24
+        },
+        {
+          "record_defect": 21,
+          "record_rank": 15839,
+          "selected_divisor_load": 39,
+          "successor": 15840,
+          "successor_quotient": 21
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 12
+        },
+        {
+          "record_defect": 29,
+          "record_rank": 55439,
+          "selected_divisor_load": 57,
+          "successor": 55440,
+          "successor_quotient": 6
+        },
+        {
+          "record_defect": 36,
+          "record_rank": 110879,
+          "selected_divisor_load": 72,
+          "successor": 110880,
+          "successor_quotient": 3
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 24,
+      "record_class": "dyadic_root",
+      "record_defect": 47,
+      "record_rank": 332639,
+      "repair_bill": 48,
+      "required_additive_constant": 0,
+      "successor": 332640,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 50,
+      "actual_successor_selected_divisor_load": 102,
+      "best_ancestor": {
+        "record_defect": 40,
+        "record_rank": 180179,
+        "selected_divisor_load": 79,
+        "successor": 180180,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 79,
+      "canonical_largest_successor_parent": {
+        "record_defect": 40,
+        "record_rank": 180179,
+        "selected_divisor_load": 79,
+        "successor": 180180,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 5,
+      "canonical_parent_gp4_margin": 109,
+      "canonical_parent_gp7_over_2_margin": 178,
+      "canonical_parent_inherited_repair_margin": 27,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 180179,
+      "eligible_ancestor_count": 11,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 51480
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 18018
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 2574
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 858
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 462
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 429
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 143
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 26
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 13
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 11
+        },
+        {
+          "record_defect": 40,
+          "record_rank": 180179,
+          "selected_divisor_load": 79,
+          "successor": 180180,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 27,
+      "record_class": "dyadic_child",
+      "record_defect": 51,
+      "record_rank": 360359,
+      "repair_bill": 52,
+      "required_additive_constant": 0,
+      "successor": 360360,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 48,
+      "actual_successor_selected_divisor_load": 101,
+      "best_ancestor": {
+        "record_defect": 27,
+        "record_rank": 43679,
+        "selected_divisor_load": 52,
+        "successor": 43680,
+        "successor_quotient": 11
+      },
+      "best_inherited_selected_divisor_load": 52,
+      "canonical_largest_successor_parent": {
+        "record_defect": 27,
+        "record_rank": 43679,
+        "selected_divisor_load": 52,
+        "successor": 43680,
+        "successor_quotient": 11
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 56,
+      "canonical_parent_gp7_over_2_margin": 85,
+      "canonical_parent_inherited_repair_margin": -1,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 1,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 10,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 68640
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 24024
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 6006
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 3432
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 1144
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 616
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 572
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 286
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 143
+        },
+        {
+          "record_defect": 27,
+          "record_rank": 43679,
+          "selected_divisor_load": 52,
+          "successor": 43680,
+          "successor_quotient": 11
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -1,
+      "record_class": "dyadic_root",
+      "record_defect": 52,
+      "record_rank": 480479,
+      "repair_bill": 53,
+      "required_additive_constant": 1,
+      "successor": 480480,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 53,
+      "actual_successor_selected_divisor_load": 110,
+      "best_ancestor": {
+        "record_defect": 46,
+        "record_rank": 327599,
+        "selected_divisor_load": 91,
+        "successor": 327600,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 91,
+      "canonical_largest_successor_parent": {
+        "record_defect": 46,
+        "record_rank": 327599,
+        "selected_divisor_load": 91,
+        "successor": 327600,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 8,
+      "canonical_parent_gp4_margin": 128,
+      "canonical_parent_gp7_over_2_margin": 210,
+      "canonical_parent_inherited_repair_margin": 34,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 327599,
+      "eligible_ancestor_count": 18,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 93600
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 32760
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 8190
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 4680
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 1560
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 840
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 780
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 455
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 390
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 260
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 195
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 130
+        },
+        {
+          "record_defect": 18,
+          "record_rank": 10079,
+          "selected_divisor_load": 35,
+          "successor": 10080,
+          "successor_quotient": 65
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 20
+        },
+        {
+          "record_defect": 27,
+          "record_rank": 43679,
+          "selected_divisor_load": 52,
+          "successor": 43680,
+          "successor_quotient": 15
+        },
+        {
+          "record_defect": 31,
+          "record_rank": 65519,
+          "selected_divisor_load": 62,
+          "successor": 65520,
+          "successor_quotient": 10
+        },
+        {
+          "record_defect": 38,
+          "record_rank": 131039,
+          "selected_divisor_load": 75,
+          "successor": 131040,
+          "successor_quotient": 5
+        },
+        {
+          "record_defect": 46,
+          "record_rank": 327599,
+          "selected_divisor_load": 91,
+          "successor": 327600,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 34,
+      "record_class": "dyadic_child",
+      "record_defect": 56,
+      "record_rank": 655199,
+      "repair_bill": 57,
+      "required_additive_constant": 0,
+      "successor": 655200,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 60,
+      "actual_successor_selected_divisor_load": 123,
+      "best_ancestor": {
+        "record_defect": 51,
+        "record_rank": 360359,
+        "selected_divisor_load": 102,
+        "successor": 360360,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 102,
+      "canonical_largest_successor_parent": {
+        "record_defect": 51,
+        "record_rank": 360359,
+        "selected_divisor_load": 102,
+        "successor": 360360,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 142,
+      "canonical_parent_gp7_over_2_margin": 233,
+      "canonical_parent_inherited_repair_margin": 39,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 360359,
+      "eligible_ancestor_count": 17,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 102960
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 36036
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 9009
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 5148
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 1716
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 924
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 858
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 429
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 286
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 143
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 52
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 26
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 22
+        },
+        {
+          "record_defect": 29,
+          "record_rank": 55439,
+          "selected_divisor_load": 57,
+          "successor": 55440,
+          "successor_quotient": 13
+        },
+        {
+          "record_defect": 31,
+          "record_rank": 65519,
+          "selected_divisor_load": 62,
+          "successor": 65520,
+          "successor_quotient": 11
+        },
+        {
+          "record_defect": 40,
+          "record_rank": 180179,
+          "selected_divisor_load": 79,
+          "successor": 180180,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 51,
+          "record_rank": 360359,
+          "selected_divisor_load": 102,
+          "successor": 360360,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 39,
+      "record_class": "dyadic_child",
+      "record_defect": 62,
+      "record_rank": 720719,
+      "repair_bill": 63,
+      "required_additive_constant": 0,
+      "successor": 720720,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 63,
+      "actual_successor_selected_divisor_load": 128,
+      "best_ancestor": {
+        "record_defect": 33,
+        "record_rank": 95759,
+        "selected_divisor_load": 64,
+        "successor": 95760,
+        "successor_quotient": 11
+      },
+      "best_inherited_selected_divisor_load": 64,
+      "canonical_largest_successor_parent": {
+        "record_defect": 33,
+        "record_rank": 95759,
+        "selected_divisor_load": 64,
+        "successor": 95760,
+        "successor_quotient": 11
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 68,
+      "canonical_parent_gp7_over_2_margin": 103,
+      "canonical_parent_inherited_repair_margin": -1,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 1,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 13,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 150480
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 52668
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 13167
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 7524
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 2508
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 1254
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 627
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 418
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 209
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 76
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 38
+        },
+        {
+          "record_defect": 29,
+          "record_rank": 55439,
+          "selected_divisor_load": 57,
+          "successor": 55440,
+          "successor_quotient": 19
+        },
+        {
+          "record_defect": 33,
+          "record_rank": 95759,
+          "selected_divisor_load": 64,
+          "successor": 95760,
+          "successor_quotient": 11
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": -1,
+      "record_class": "dyadic_root",
+      "record_defect": 64,
+      "record_rank": 1053359,
+      "repair_bill": 65,
+      "required_additive_constant": 1,
+      "successor": 1053360,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 64,
+      "actual_successor_selected_divisor_load": 131,
+      "best_ancestor": {
+        "record_defect": 51,
+        "record_rank": 360359,
+        "selected_divisor_load": 102,
+        "successor": 360360,
+        "successor_quotient": 3
+      },
+      "best_inherited_selected_divisor_load": 102,
+      "canonical_largest_successor_parent": {
+        "record_defect": 51,
+        "record_rank": 360359,
+        "selected_divisor_load": 102,
+        "successor": 360360,
+        "successor_quotient": 3
+      },
+      "canonical_parent_genealogy_depth": 6,
+      "canonical_parent_gp4_margin": 138,
+      "canonical_parent_gp7_over_2_margin": 225,
+      "canonical_parent_inherited_repair_margin": 35,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": null,
+      "eligible_ancestor_count": 12,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 154440
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 54054
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 7722
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 2574
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 1386
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 1287
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 429
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 78
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 39
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 33
+        },
+        {
+          "record_defect": 40,
+          "record_rank": 180179,
+          "selected_divisor_load": 79,
+          "successor": 180180,
+          "successor_quotient": 6
+        },
+        {
+          "record_defect": 51,
+          "record_rank": 360359,
+          "selected_divisor_load": 102,
+          "successor": 360360,
+          "successor_quotient": 3
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 35,
+      "record_class": "dyadic_root",
+      "record_defect": 66,
+      "record_rank": 1081079,
+      "repair_bill": 67,
+      "required_additive_constant": 0,
+      "successor": 1081080,
+      "successor_target_bit": 1
+    },
+    {
+      "actual_repair_margin": 73,
+      "actual_successor_selected_divisor_load": 149,
+      "best_ancestor": {
+        "record_defect": 62,
+        "record_rank": 720719,
+        "selected_divisor_load": 123,
+        "successor": 720720,
+        "successor_quotient": 2
+      },
+      "best_inherited_selected_divisor_load": 123,
+      "canonical_largest_successor_parent": {
+        "record_defect": 62,
+        "record_rank": 720719,
+        "selected_divisor_load": 123,
+        "successor": 720720,
+        "successor_quotient": 2
+      },
+      "canonical_parent_genealogy_depth": 7,
+      "canonical_parent_gp4_margin": 173,
+      "canonical_parent_gp7_over_2_margin": 284,
+      "canonical_parent_inherited_repair_margin": 47,
+      "canonical_parent_is_best_load_ancestor": true,
+      "canonical_parent_required_additive_constant": 0,
+      "dyadic_parent_record_rank": 720719,
+      "eligible_ancestor_count": 27,
+      "eligible_ancestors": [
+        {
+          "record_defect": 1,
+          "record_rank": 6,
+          "selected_divisor_load": 1,
+          "successor": 7,
+          "successor_quotient": 205920
+        },
+        {
+          "record_defect": 2,
+          "record_rank": 19,
+          "selected_divisor_load": 3,
+          "successor": 20,
+          "successor_quotient": 72072
+        },
+        {
+          "record_defect": 3,
+          "record_rank": 79,
+          "selected_divisor_load": 5,
+          "successor": 80,
+          "successor_quotient": 18018
+        },
+        {
+          "record_defect": 4,
+          "record_rank": 139,
+          "selected_divisor_load": 6,
+          "successor": 140,
+          "successor_quotient": 10296
+        },
+        {
+          "record_defect": 6,
+          "record_rank": 419,
+          "selected_divisor_load": 12,
+          "successor": 420,
+          "successor_quotient": 3432
+        },
+        {
+          "record_defect": 7,
+          "record_rank": 779,
+          "selected_divisor_load": 12,
+          "successor": 780,
+          "successor_quotient": 1848
+        },
+        {
+          "record_defect": 8,
+          "record_rank": 839,
+          "selected_divisor_load": 16,
+          "successor": 840,
+          "successor_quotient": 1716
+        },
+        {
+          "record_defect": 9,
+          "record_rank": 1439,
+          "selected_divisor_load": 17,
+          "successor": 1440,
+          "successor_quotient": 1001
+        },
+        {
+          "record_defect": 10,
+          "record_rank": 1679,
+          "selected_divisor_load": 19,
+          "successor": 1680,
+          "successor_quotient": 858
+        },
+        {
+          "record_defect": 11,
+          "record_rank": 2519,
+          "selected_divisor_load": 22,
+          "successor": 2520,
+          "successor_quotient": 572
+        },
+        {
+          "record_defect": 13,
+          "record_rank": 3359,
+          "selected_divisor_load": 25,
+          "successor": 3360,
+          "successor_quotient": 429
+        },
+        {
+          "record_defect": 14,
+          "record_rank": 5039,
+          "selected_divisor_load": 27,
+          "successor": 5040,
+          "successor_quotient": 286
+        },
+        {
+          "record_defect": 18,
+          "record_rank": 10079,
+          "selected_divisor_load": 35,
+          "successor": 10080,
+          "successor_quotient": 143
+        },
+        {
+          "record_defect": 19,
+          "record_rank": 13859,
+          "selected_divisor_load": 36,
+          "successor": 13860,
+          "successor_quotient": 104
+        },
+        {
+          "record_defect": 21,
+          "record_rank": 15839,
+          "selected_divisor_load": 39,
+          "successor": 15840,
+          "successor_quotient": 91
+        },
+        {
+          "record_defect": 24,
+          "record_rank": 27719,
+          "selected_divisor_load": 47,
+          "successor": 27720,
+          "successor_quotient": 52
+        },
+        {
+          "record_defect": 26,
+          "record_rank": 32759,
+          "selected_divisor_load": 51,
+          "successor": 32760,
+          "successor_quotient": 44
+        },
+        {
+          "record_defect": 27,
+          "record_rank": 43679,
+          "selected_divisor_load": 52,
+          "successor": 43680,
+          "successor_quotient": 33
+        },
+        {
+          "record_defect": 29,
+          "record_rank": 55439,
+          "selected_divisor_load": 57,
+          "successor": 55440,
+          "successor_quotient": 26
+        },
+        {
+          "record_defect": 31,
+          "record_rank": 65519,
+          "selected_divisor_load": 62,
+          "successor": 65520,
+          "successor_quotient": 22
+        },
+        {
+          "record_defect": 36,
+          "record_rank": 110879,
+          "selected_divisor_load": 72,
+          "successor": 110880,
+          "successor_quotient": 13
+        },
+        {
+          "record_defect": 38,
+          "record_rank": 131039,
+          "selected_divisor_load": 75,
+          "successor": 131040,
+          "successor_quotient": 11
+        },
+        {
+          "record_defect": 40,
+          "record_rank": 180179,
+          "selected_divisor_load": 79,
+          "successor": 180180,
+          "successor_quotient": 8
+        },
+        {
+          "record_defect": 41,
+          "record_rank": 205919,
+          "selected_divisor_load": 81,
+          "successor": 205920,
+          "successor_quotient": 7
+        },
+        {
+          "record_defect": 51,
+          "record_rank": 360359,
+          "selected_divisor_load": 102,
+          "successor": 360360,
+          "successor_quotient": 4
+        },
+        {
+          "record_defect": 52,
+          "record_rank": 480479,
+          "selected_divisor_load": 101,
+          "successor": 480480,
+          "successor_quotient": 3
+        },
+        {
+          "record_defect": 62,
+          "record_rank": 720719,
+          "selected_divisor_load": 123,
+          "successor": 720720,
+          "successor_quotient": 2
+        }
+      ],
+      "eligible_ancestors_form_divisibility_chain": false,
+      "inherited_repair_margin": 47,
+      "record_class": "dyadic_child",
+      "record_defect": 75,
+      "record_rank": 1441439,
+      "repair_bill": 76,
+      "required_additive_constant": 0,
+      "successor": 1441440,
+      "successor_target_bit": 1
+    }
+  ],
+  "schema": "twenty_one_record_ancestor_inheritance_v1"
+}

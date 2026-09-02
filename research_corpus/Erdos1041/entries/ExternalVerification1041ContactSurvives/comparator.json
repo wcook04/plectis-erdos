@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041ContactSurvives.Challenge",
+  "solution_module": "ExternalVerification1041ContactSurvives.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041ContactSurvives.contact_survives"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,441 @@
+{
+  "complete_factor30_35_census": {
+    "affine_certificate": "Every listed affine family was checked against every lift in its complete composite-modulus cylinder.",
+    "aggregate_boundary_transfer": {
+      "factor29_then_split_negative_continuation": "73/203",
+      "factor30_negative_continuation": "1",
+      "factor35_active_negative_continuation": "2/7",
+      "factor35_active_source_fraction": "4/5",
+      "factor35_inert_source_fraction": "1/5",
+      "factor35_weighted_negative_continuation": "3/7",
+      "formerly_inert_factor25_chain_continuation": "1460/18473"
+    },
+    "branches": {
+      "-1": {
+        "actual_factor27_divided_quotient_coordinate_counts": {
+          "0": 10886400,
+          "6": 5443200
+        },
+        "affine_lift_family_counts": {
+          "offset=1,slope=0": 544320
+        },
+        "exhaustive_source_family_count": 544320,
+        "exhaustive_source_refinement_count": 16329600,
+        "factor27_divided_quotient_affine_counts": {
+          "offset=0,slope=0": 362880,
+          "offset=6,slope=0": 181440
+        },
+        "generic_quotient_coordinate_mode_table": {
+          "payment=1,height=30,error=-1": {
+            "next_multiplier_residues": [
+              1
+            ],
+            "quotient_coordinates": [
+              0,
+              3,
+              6,
+              15,
+              18,
+              21
+            ]
+          },
+          "payment=15,height=2,error=-1": {
+            "next_multiplier_residues": [
+              15
+            ],
+            "quotient_coordinates": [
+              2,
+              4,
+              7,
+              14,
+              17,
+              19,
+              22,
+              29
+            ]
+          },
+          "payment=3,height=10,error=3": {
+            "next_multiplier_residues": [
+              21
+            ],
+            "quotient_coordinates": [
+              1,
+              5,
+              8,
+              10,
+              11,
+              13,
+              16,
+              20,
+              23,
+              25,
+              26,
+              28
+            ]
+          },
+          "payment=5,height=6,error=1": {
+            "next_multiplier_residues": [
+              25
+            ],
+            "quotient_coordinates": [
+              9,
+              12,
+              24,
+              27
+            ]
+          }
+        },
+        "incoming_multiplicity_per_factor28_parent": 7,
+        "incoming_state": {
+          "error": -1,
+          "height": 29
+        },
+        "raw_factor": 30,
+        "source_parent_profile_counts": {
+          "cofinal=0,positive=0,negative=30": 544320
+        },
+        "weighted_logical_parent_profile_counts": {
+          "cofinal=0,positive=0,negative=30": 7773857509824000
+        },
+        "weighted_successor_mode_counts": {
+          "payment=1,height=30,error=-1": 233215725294720000
+        }
+      },
+      "-6": {
+        "actual_factor27_divided_quotient_coordinate_counts": {
+          "0": 829440,
+          "10": 829440,
+          "14": 1658880,
+          "15": 829440,
+          "19": 1658880,
+          "20": 829440,
+          "24": 1658880,
+          "25": 2280960,
+          "29": 1658880,
+          "30": 829440,
+          "34": 1658880,
+          "4": 4561920,
+          "5": 829440,
+          "9": 1658880
+        },
+        "affine_lift_family_counts": {
+          "offset=1,slope=15": 17788,
+          "offset=1,slope=20": 17773,
+          "offset=1,slope=30": 17779,
+          "offset=1,slope=5": 17788,
+          "offset=11,slope=15": 17784,
+          "offset=11,slope=20": 17788,
+          "offset=11,slope=30": 17778,
+          "offset=11,slope=5": 17756,
+          "offset=16,slope=15": 17772,
+          "offset=16,slope=20": 17755,
+          "offset=16,slope=30": 17789,
+          "offset=16,slope=5": 17785,
+          "offset=21,slope=15": 17771,
+          "offset=21,slope=20": 17792,
+          "offset=21,slope=30": 17763,
+          "offset=21,slope=5": 17788,
+          "offset=26,slope=15": 17787,
+          "offset=26,slope=20": 17761,
+          "offset=26,slope=30": 17766,
+          "offset=26,slope=5": 17759,
+          "offset=31,slope=15": 17755,
+          "offset=31,slope=20": 17781,
+          "offset=31,slope=30": 17787,
+          "offset=31,slope=5": 17767,
+          "offset=6,slope=0": 124416,
+          "offset=6,slope=15": 17759,
+          "offset=6,slope=20": 17766,
+          "offset=6,slope=30": 17754,
+          "offset=6,slope=5": 17773
+        },
+        "exhaustive_source_family_count": 622080,
+        "exhaustive_source_refinement_count": 21772800,
+        "factor27_divided_quotient_affine_counts": {
+          "offset=0,slope=10": 5919,
+          "offset=0,slope=15": 5922,
+          "offset=0,slope=20": 5917,
+          "offset=0,slope=25": 5931,
+          "offset=10,slope=10": 5931,
+          "offset=10,slope=15": 5926,
+          "offset=10,slope=20": 5920,
+          "offset=10,slope=25": 5927,
+          "offset=14,slope=10": 11842,
+          "offset=14,slope=15": 11844,
+          "offset=14,slope=20": 11842,
+          "offset=14,slope=25": 11856,
+          "offset=15,slope=10": 5929,
+          "offset=15,slope=15": 5923,
+          "offset=15,slope=20": 5931,
+          "offset=15,slope=25": 5923,
+          "offset=19,slope=10": 11847,
+          "offset=19,slope=15": 11852,
+          "offset=19,slope=20": 11859,
+          "offset=19,slope=25": 11858,
+          "offset=20,slope=10": 5927,
+          "offset=20,slope=15": 5930,
+          "offset=20,slope=20": 5921,
+          "offset=20,slope=25": 5921,
+          "offset=24,slope=10": 11857,
+          "offset=24,slope=15": 11852,
+          "offset=24,slope=20": 11836,
+          "offset=24,slope=25": 11857,
+          "offset=25,slope=0": 41472,
+          "offset=25,slope=10": 5922,
+          "offset=25,slope=15": 5918,
+          "offset=25,slope=20": 5925,
+          "offset=25,slope=25": 5916,
+          "offset=29,slope=10": 11863,
+          "offset=29,slope=15": 11840,
+          "offset=29,slope=20": 11857,
+          "offset=29,slope=25": 11848,
+          "offset=30,slope=10": 5918,
+          "offset=30,slope=15": 5926,
+          "offset=30,slope=20": 5929,
+          "offset=30,slope=25": 5924,
+          "offset=34,slope=10": 11854,
+          "offset=34,slope=15": 11857,
+          "offset=34,slope=20": 11846,
+          "offset=34,slope=25": 11834,
+          "offset=4,slope=0": 82944,
+          "offset=4,slope=10": 11844,
+          "offset=4,slope=15": 11836,
+          "offset=4,slope=20": 11848,
+          "offset=4,slope=25": 11843,
+          "offset=5,slope=10": 5926,
+          "offset=5,slope=15": 5927,
+          "offset=5,slope=20": 5929,
+          "offset=5,slope=25": 5930,
+          "offset=9,slope=10": 11837,
+          "offset=9,slope=15": 11863,
+          "offset=9,slope=20": 11856,
+          "offset=9,slope=25": 11848
+        },
+        "generic_quotient_coordinate_mode_table": {
+          "payment=1,height=35,error=-6": {
+            "next_multiplier_residues": [
+              6,
+              1
+            ],
+            "quotient_coordinates": [
+              4,
+              5,
+              12,
+              19,
+              25,
+              32
+            ]
+          },
+          "payment=1,height=35,error=4": {
+            "next_multiplier_residues": [
+              26,
+              16
+            ],
+            "quotient_coordinates": [
+              0,
+              2,
+              7,
+              9,
+              14,
+              30
+            ]
+          },
+          "payment=1,height=35,error=9": {
+            "next_multiplier_residues": [
+              11,
+              31
+            ],
+            "quotient_coordinates": [
+              10,
+              17,
+              20,
+              24,
+              27,
+              34
+            ]
+          },
+          "payment=35,height=1,error=0": {
+            "next_multiplier_residues": [
+              0
+            ],
+            "quotient_coordinates": [
+              1,
+              8
+            ]
+          },
+          "payment=5,height=7,error=-1": {
+            "next_multiplier_residues": [
+              25,
+              10
+            ],
+            "quotient_coordinates": [
+              3,
+              6,
+              13,
+              31
+            ]
+          },
+          "payment=5,height=7,error=-2": {
+            "next_multiplier_residues": [
+              30,
+              5
+            ],
+            "quotient_coordinates": [
+              16,
+              21,
+              23,
+              28
+            ]
+          },
+          "payment=5,height=7,error=3": {
+            "next_multiplier_residues": [
+              20,
+              15
+            ],
+            "quotient_coordinates": [
+              11,
+              18,
+              26,
+              33
+            ]
+          },
+          "payment=7,height=5,error=2": {
+            "next_multiplier_residues": [
+              21
+            ],
+            "quotient_coordinates": [
+              15,
+              22,
+              29
+            ]
+          }
+        },
+        "incoming_multiplicity_per_factor28_parent": 8,
+        "incoming_state": {
+          "error": -6,
+          "height": 29
+        },
+        "raw_factor": 35,
+        "source_parent_profile_counts": {
+          "cofinal=0,positive=0,negative=35": 124416,
+          "cofinal=0,positive=25,negative=10": 497664
+        },
+        "weighted_logical_parent_profile_counts": {
+          "cofinal=0,positive=0,negative=35": 1776881716531200,
+          "cofinal=0,positive=25,negative=10": 7107526866124800
+        },
+        "weighted_successor_mode_counts": {
+          "payment=1,height=35,error=-6": 133266128739840000,
+          "payment=1,height=35,error=4": 71075268661248000,
+          "payment=1,height=35,error=9": 71075268661248000,
+          "payment=7,height=5,error=2": 35537634330624000
+        }
+      }
+    },
+    "factor29_negative_parent_count": 1110551072832000
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "factor-30/factor-35 split consequence table"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "falsification_consequence": "An all-negative profile isolates a source-rigid boundary requiring a later structurally distinct activation factor.",
+      "survival_consequence": "The active factor-35 fibers kill five sevenths of their negative boundary, lowering the factor-29-plus-split continuation to 73/203."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "factor30_or_35_kills_each_factor29_negative_mode",
+      "statement": "At least one split successor factor removes negative support from each actual factor-29 negative source family."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor29_activation_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor30_35_split.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor29_activation.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor29_activation_receipt.json",
+        "system/lib/formal_math_residue_cylinder.py",
+        "system/server/tests/test_formal_math_residue_cylinder.py"
+      ]
+    },
+    "probe": {
+      "computation": "Enumerate every actual negative factor-29 source and every one of its 30 or 35 next lifts; verify every affine summary pointwise.",
+      "falsifier": "Any full source family that disagrees with its affine certificate or introduces an unreported parent profile.",
+      "id": "exact_factor30_35_complete_source_cylinder",
+      "question": "Are the apparent factor-30 rigid and factor-35 active/inert profiles genuine on every source family?",
+      "resource_bounds": {
+        "factor30_source_refinements": 16329600,
+        "factor35_source_refinements": 21772800,
+        "total_source_refinements": 38102400
+      },
+      "stop_condition": "Stop when both complete split cylinders are classified; do not extend a single orbit horizon."
+    },
+    "problem": {
+      "claim_ceiling": "Factor 30 is uniformly inert. At factor 35 exactly one fifth of actual source families are inert and four fifths have profile (0,25,10), giving weighted continuation 3/7. This exact split does not solve unrestricted #243.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "All actual source refinements were evaluated, with logical weights restored only after source-local profiles were exact.",
+        "next_analytic_target": "Probe raw factor 31 on the rigid (30,-1) branch and raw factor 41 on the surviving (35,-6) branch; preserve the factor-35 slope-zero versus nonzero source stratification."
+      },
+      "status": "exact_one_way_result",
+      "summary": "All factor-30 families are constant multiplier one and all-negative. Factor 35 splits exactly 1/5 inert and 4/5 active with profile (0,25,10); every affine summary is pointwise certified."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "mechanism_decision": {
+    "factor29_then_split_negative_continuation": "73/203",
+    "factor30_height29_error_minus1": "uniformly_inert",
+    "factor35_height29_error_minus6": "one_fifth_inert_four_fifths_active",
+    "factor35_weighted_negative_continuation": "3/7",
+    "next_step": "Probe raw factor 31 on the rigid (30,-1) branch and raw factor 41 on the surviving (35,-6) branch; preserve the factor-35 slope-zero versus nonzero source stratification."
+  },
+  "schema": "erdos243-t0-factor30-35-split-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 22812,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor30_35_split.py",
+      "sha256": "fbcbbc23088686875b712b59869be1d2ade9a376623dc9b38932c0c08f360b32"
+    },
+    {
+      "byte_length": 16376,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor29_activation.py",
+      "sha256": "fa12495cbee003d9c93fabf714b0cded0ea7d91dd8da19ca010ae7503a8570b5"
+    },
+    {
+      "byte_length": 8535,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor29_activation_receipt.json",
+      "sha256": "6d15743c27673ae719f371db6b29122817ae72931ae68516bbb60dce5b5699eb"
+    },
+    {
+      "byte_length": 52293,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "c17e7f41093ddeee1a4577e342bf4325a0de853f2fae1c8a5f0f167b40cb242f"
+    },
+    {
+      "byte_length": 105151,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "3d580ced24c2f6b29ff1997a7f6735042e4afc7c5a82c0894fb64bb3770ddc40"
+    },
+    {
+      "byte_length": 14376,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "94d0c444a1a2e82525dd68be7045b1415dace498bf5638fcb3816c1bc3a5b868"
+    },
+    {
+      "byte_length": 10578,
+      "path": "system/server/tests/test_formal_math_residue_cylinder.py",
+      "sha256": "129216d2be0ed56183f274e7713214e4de95f8d66bfea1091619b9ab893de8d2"
+    }
+  ],
+  "status": "verified_factor30_35_split"
+}

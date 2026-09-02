@@ -1,0 +1,23 @@
+# verify_oddprime.py run receipt
+# host: darwin, python3 via ./repo-python
+# date: 2026-08-11
+# exit_code: 0
+
+========================================================================
+(1) reduction identities
+  l=3 e=3: OK
+  l=5 e=2: OK
+  l=7 e=2: OK
+  l=11 e=2: OK
+========================================================================
+(2)/(3) ranks   [target = l^e + 1]
+  OK l= 3 e=1: |full|=   4 rank=   4 | |canon|=   4 rank=   4 | target=4
+  OK l= 3 e=2: |full|=  13 rank=  10 | |canon|=  10 rank=  10 | target=10
+  OK l= 3 e=3: |full|=  40 rank=  28 | |canon|=  28 rank=  28 | target=28
+  OK l= 5 e=1: |full|=   6 rank=   6 | |canon|=   6 rank=   6 | target=6
+  OK l= 5 e=2: |full|=  31 rank=  26 | |canon|=  26 rank=  26 | target=26
+  OK l= 7 e=1: |full|=   8 rank=   8 | |canon|=   8 rank=   8 | target=8
+  OK l= 7 e=2: |full|=  57 rank=  50 | |canon|=  50 rank=  50 | target=50
+  OK l=11 e=1: |full|=  12 rank=  12 | |canon|=  12 rank=  12 | target=12
+  OK l=11 e=2: |full|= 133 rank= 122 | |canon|= 122 rank= 122 | target=122
+  OK l=13 e=1: |full|=  14 rank=  14 | |canon|=  14 rank=  14 | target=14

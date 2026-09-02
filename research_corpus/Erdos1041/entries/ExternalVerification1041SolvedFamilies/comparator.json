@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1041SolvedFamilies.Challenge",
+  "solution_module": "ExternalVerification1041SolvedFamilies.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound",
+    "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies",
+    "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

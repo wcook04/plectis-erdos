@@ -1,0 +1,116 @@
+{
+  "exhaustive_boolean_prefix_audit": {
+    "boolean_prefixes": 65536,
+    "collisions": 0,
+    "distinct_transform_prefixes": 65536,
+    "reconstruction_failures": [],
+    "status": "exact_bijection",
+    "width": 16
+  },
+  "mechanism_decision": "kernel_and_information_erasure_lane_eliminated",
+  "nonclaims": [
+    "This exact invertibility does not prove or refute Erdos 257.",
+    "Finite block-complexity measurements do not establish an asymptotic density-only law.",
+    "The obstruction is not loss of A inside tau_A; it is finding an analytic argument that uses the recovered Booleanity together with rational carry constraints."
+  ],
+  "reason": "The divisor transform is a triangular bijection, not an information-erasing map. Similar low-order subword-complexity counts measure saturation of that projection; they do not imply that support structure or complexity was destroyed.",
+  "schema": "erdos257.dirichlet_transform_invertibility.v1",
+  "script": "formal_math/erdos257_period_noncollapse/scripts/dirichlet_transform_invertibility.py",
+  "statement": {
+    "forward": "tau_A(n) = sum_{d|n} 1_A(d)",
+    "inverse": "1_A(n) = sum_{d|n} mu(d) tau_A(n/d)",
+    "kernel": "zero",
+    "prefix_locality": "tau_A[1:M] determines 1_A[1:M] exactly"
+  },
+  "status": "ok",
+  "structured_support_audit": [
+    {
+      "exact_reconstruction": true,
+      "first_mismatch": null,
+      "input_block_complexity_1_to_5": [
+        2,
+        3,
+        3,
+        3,
+        3
+      ],
+      "limit": 4096,
+      "name": "periodic_mod_3",
+      "selected": 1366,
+      "tau_block_complexity_1_to_5": [
+        15,
+        87,
+        335,
+        902,
+        1800
+      ],
+      "tau_prefix_sha256": "c5ccd9b8d23c943cf7946624a56c460603575fbc45ee2dd9458c357590f93405"
+    },
+    {
+      "exact_reconstruction": true,
+      "first_mismatch": null,
+      "input_block_complexity_1_to_5": [
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "limit": 4096,
+      "name": "squares",
+      "selected": 64,
+      "tau_block_complexity_1_to_5": [
+        11,
+        38,
+        94,
+        195,
+        386
+      ],
+      "tau_prefix_sha256": "7b1f0e116abb589949f70bd57958cfdf33230959cf9306d52e32d87f49bb71f5"
+    },
+    {
+      "exact_reconstruction": true,
+      "first_mismatch": null,
+      "input_block_complexity_1_to_5": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "limit": 4096,
+      "name": "sturmian_sqrt2_minus_1",
+      "selected": 1697,
+      "tau_block_complexity_1_to_5": [
+        26,
+        183,
+        908,
+        2549,
+        3706
+      ],
+      "tau_prefix_sha256": "447b2d66074b4e28aa4e259284bfaf2b7a1bd2c43f8202bbbcc784a2037f9f35"
+    },
+    {
+      "exact_reconstruction": true,
+      "first_mismatch": null,
+      "input_block_complexity_1_to_5": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "limit": 4096,
+      "name": "random_matched_density",
+      "selected": 1681,
+      "tau_block_complexity_1_to_5": [
+        20,
+        139,
+        719,
+        2138,
+        3522
+      ],
+      "tau_prefix_sha256": "09ce1fe84204343b97adaa0b144c7d86aa5906821b214a2ea7e6c956d19a8e5f"
+    }
+  ]
+}

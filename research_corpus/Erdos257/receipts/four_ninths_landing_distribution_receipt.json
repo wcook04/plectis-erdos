@@ -1,0 +1,53 @@
+{
+  "decile_counts": [
+    2924,
+    3030,
+    3087,
+    3084,
+    3003,
+    3008,
+    3040,
+    3001,
+    3049,
+    3021
+  ],
+  "decile_percentages": [
+    9.667074420603695,
+    10.017522398915595,
+    10.205970840083314,
+    10.196052501074487,
+    9.92825734783615,
+    9.944787912850861,
+    10.050583528945019,
+    9.921645121830265,
+    10.080338545971502,
+    9.987767381889112
+  ],
+  "horizon": 60000,
+  "landings_at_or_above_one": 0,
+  "log10_residual_risk_beyond_depth": {
+    "100": -27.80196957073414,
+    "1000": -297.72896566831724,
+    "10000000": -3010292.6556098163,
+    "12": -2.2321487062561682,
+    "200000": -60200.39707280491,
+    "60000": -18056.720558592824
+  },
+  "max_decile_deviation_pp": 0.3329255793963046,
+  "min_normalized_at_rank": 5270,
+  "min_normalized_landing": 0.00011709058495686025,
+  "min_slack": 0,
+  "min_slack_rank": 2,
+  "probe": "four_ninths_landing_distribution",
+  "problem_id": "erdos_257",
+  "record_lows": [
+    {
+      "rank": 2,
+      "slack": 0
+    }
+  ],
+  "schema": "aiw-formal-math-receipt/1",
+  "takes": 30247,
+  "uniform_order_statistic_1_over_N": 3.30611300294244e-05,
+  "verdict": "The normalized selected-landing x_d = rho_d/2^d is equidistributed to within sampling error, so the socket's per-rank failure probability is d*2^-d and the residual risk beyond depth D is ~2 D 2^-D -- super-exponentially small, unlike the generic Erdos-257 fatal window whose total risk is O(1) spread across ranks. This quantifies what the existing finite audits are worth rather than leaving them as bare non-violation. Equidistribution is MEASURED not proved; the figure is a heuristic confidence statement about a deterministic orbit, not a theorem, and it neither proves the socket nor decides Erdos 257."
+}

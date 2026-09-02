@@ -1,0 +1,75 @@
+version: "v0.4"
+project:
+  name: "Erdős #1041: strict lemniscate containment of trinomial root spokes"
+  description: >-
+    For every root w of z^m + a z^r + c with 1 ≤ r ≤ m, ‖w‖ < 1 and ‖c‖ < 1, the polynomial
+    has modulus strictly below one at every point of the spoke, the segment u w for u in
+    [0,1] running from the origin to the root. No condition on the middle coefficient a is
+    required. The mechanism is an exact factorisation that eliminates a at the root: the
+    value at u w equals (1 - u^r) c - (u^r - u^m) w^m for every real u. Each quotient root
+    of modulus below one therefore supplies a complete radial displacement whose image stays
+    strictly inside the unit lemniscate, which settles the local geometric step for the
+    whole translated cyclic-trinomial family. Two such displacements of modulus below one
+    have total length strictly below two, the threshold appearing in Erdős #1041. The
+    subject is the geometry of polynomial lemniscates, of interest to geometric function
+    theory; novelty is unassessed. Fibre selection and assembly of the selected
+    displacements into a lifted path remain outside Lean.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+sources:
+  - title: "Cyclic-trinomial fibre spokes for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact fibre hypotheses and the unformalized path-assembly boundary were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "First-wave candidate; no external verdict or submission is claimed."
+status:
+  scope: "Three exact source-backed declarations; ordinary fibre selection and path assembly remain outside Lean."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one"
+      file: "ExternalVerification1041CyclicTrinomialFiber/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check"
+      novelty_status: "unassessed"
+      boundary: "Does not formalize fibre selection, lifted-path assembly, or unrestricted Erdős #1041."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041CyclicTrinomialFiber"
+  statements:
+    - source: "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase"
+      lean: "three same-named source transports"
+      module: "ExternalVerification1041CyclicTrinomialFiber/Challenge.lean"
+      status: "exact-transport-pending-guarded-build"

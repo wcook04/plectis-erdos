@@ -1,0 +1,594 @@
+{
+ "probe_id": "erdos249_supply_delay",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_249",
+   "target_statement": "Prove that the binary totient series sum_{n>=1} phi(n)/2^n is irrational.",
+   "claim_ceiling": "Erdos #249 remains open. For X-2, unbounded clean cyclotomic prime support and the multiple-period consumers are Lean-checked, as are the two exact 331 certificates and their finite denominator exclusions. Lean proves the target equivalent to FullMersenneCanonicalBasepointResidueGapSupply. For every candidate denominator 2^c v, with v odd, one must find an Euler-multiple H for which (-totientBlock(H,c)) mod ((2^H-1)/v) lies in the central interval of radius c+H+1. On the pure-dyadic axis the endpoint trap has a kernel-checked affine coordinate E_(H+1)=2E_H+phi(c+H+1)-k. The exact scan through c<=1000000 finds a fixed-quotient delay-nineteen word at c=490794, eliminating uniform caps through seventeen. Pointwise legal-letter methods admit a permanent constant-two trap, but the actual word excludes that mode. Every shifted actual word has cofinally late prime positions satisfying c+H-k <= |E_(H+1)|+2|E_H|, so bounded, periodic, and sublinear-error fixed-quotient modes are impossible. Lean now also excludes every eventually affine linear-scale error: the recurrence would make the totient word affine, while the arbitrarily late points at primes p<q and at 2p have nonzero affine determinant -p(q-p). The two-step prime-successor theorem is directional: if the successor remains upper-trapped then 4E_H+p+phi(p+1)<=4+3k, and any permanent trap therefore has cofinally bottom-locked pre-prime errors. Exact complete precursor cones eliminate one-, two-, and three-local-lock forced crossing. At c=1858 the third-lock cone still contains 15 seeds, so lock count is not even a monotone uniqueness mechanism. The remaining local producer must use an unbounded/cofinal lock family with a genuinely global cross-gap invariant, or construct a compatible genuinely non-affine linear-scale trap. The rank-one Schur lane remains closed at its 21/320 floor, while other surviving seams require genuinely coupled/signed denominator compression or a repaired-sieve lower bound beating log(2)/2. No irrationality proof is claimed. The pure-dyadic delay-cap programme is now retired on measurement rather than on another refuted constant: the maximum post-clear fixed-quotient delay over c <= C grows like log2 C, reproducing this packet's own delay-nineteen witness at c=490794 from an independent statistic, so every uniform cap is refuted at c about 2^cap. The producer should target the growth law - escape within O(log c) steps of clearing - not a constant. The target irrationality remains open. The supply producer has now been measured off the pure-dyadic axis for the first time: max_(c<=C) delay(c,v) = ceil(log2(C)/phi(v)), of which the packet's log2(C) law is the phi(v)=1 case, and the tallest height needed across 480000 instances is 60. Since R_c = 2^c S - integer, the delay is a translation of ||v 2^c S||, and H_min(c,v) tracks phi(v)*ceil(log2(v c/||v 2^c S||)/phi(v)) to within one admissible step. So the producer is an irrationality-measure statement for S on the denominator family v*2^c. The measured min_(c<=C)||v 2^c S|| is of order 1/C with no v-dependence, which refutes every uniform cap on every axis rather than only at v=1, and bounds what can be hoped for: the usable target is ||v 2^c S|| >= c^-A for a fixed A>1 uniformly in odd v."
+  },
+  "hypothesis": {
+   "id": "supply_difficulty_is_dyadic_axis_specific",
+   "statement": "The measured cost of the Lean-equivalent residue-gap supply is a feature of the pure-dyadic axis v=1, and the odd part v of the denominator carries its own obstruction that the packet's single-axis measurement could not see."
+  },
+  "probe": {
+   "id": "erdos249_supply_delay",
+   "question": "What does the residue-gap supply cost off the pure-dyadic axis, and what quantity is the delay actually measuring?",
+   "computation": "Evaluate Lean's FullMersenneCenteredResidueGap predicate literally over c and odd v, recording the clearing height H0 (least multiple of phi(v) with M > 2B) and the delay (H_min - H0)/phi(v). Verify the block identity 2^H R_c = totientBlock(H,c) + R_(c+H) exactly, then measure ||v 2^c S|| by the recurrence A_(c+1) = 2A_c + phi(c+J+1) mod 2^J at J=220, and compare H_min against phi(v)*ceil(log2(v c/||v 2^c S||)/phi(v)).",
+   "falsifier": "A (c,v) with no admissible height below the cap, which would make the series rational and settle the problem negatively; a max-delay law not scaling as log2(C)/phi(v); or H_min departing from the predicted height by more than one admissible step.",
+   "stop_condition": "A confirmed two-parameter law plus a verified translation retires the delay-cap programme on every axis and hands the residual to Diophantine approximation.",
+   "resource_bounds": {
+    "distance_max_c": 200000,
+    "instances": 480008,
+    "max_c": 60000,
+    "tail_bits": 220
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The odd part would carry a separate obstruction and the producer would need a v-specific mechanism beyond the dyadic-axis analysis.",
+   "falsification_consequence": "The difficulty concentrates on small phi(v), and the producer is an irrationality-measure statement for S on the denominator family v*2^c.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SupplyDelayLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos249_supply_delay.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "max_(c<=60000) delay(c,v) equals ceil(log2(C)/phi(v)) in seven of eight moduli and is one higher at v=1, with observed maxima [17, 8, 4, 3, 3, 2, 2, 1] for v = [1, 3, 5, 7, 9, 11, 15, 31]. The tallest height needed across the whole scan is 60. The Lean block identity holds exactly at the three tested (H,N). Since R_c = 2^c S - integer, the delay is a translation of ||v 2^c S||, and H_min tracks phi(v)*ceil(log2(v c/||v 2^c S||)/phi(v)) to within one admissible step in every case. Measuring the distance directly to c <= 200000 gives C*min in [0.353, 1.569] for every modulus against log2(C)=17.61, so min_(c<=C)||v 2^c S|| is of order 1/C with no v-dependence. Every uniform cap is therefore refuted on every axis, not only at v=1, and no lower bound stronger than 1/c is available.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "Seven of eight moduli match ceil(log2(C)/phi(v)) exactly; the translation holds to within one admissible step everywhere; C*min lies in [0.354,1.569] across all eight moduli; and the pure-dyadic rerun reproduces the packet's landed witness, delay 19 at c=490794.",
+    "next_analytic_target": "||v 2^c S|| >= c^-A for a fixed A>1, uniformly in odd v. That yields H <= (A+1)log2 c + log2 v + O(phi(v)) and settles the supply. It is an irrationality-measure statement about an explicit dyadic series, not a Mersenne residue or carry-trajectory statement.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_249",
+  "motivated_by": [
+   "totient_specific_moving_dyadic_escape"
+  ],
+  "eliminates": [
+   "post_clear_delay_grows_like_log2_c"
+  ],
+  "opens": [],
+  "supports": [
+   "dyadic_family_denominator_exclusion_with_margin",
+   "supply_delay_two_parameter_law_and_diophantine_translation"
+  ],
+  "rationale": "Extends the delay measurement from the single pure-dyadic axis to the whole odd-part quantifier and identifies the quantity being measured, converting the modular producer into a Diophantine one."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SupplyDelayLab.md",
+   "byte_length": 7516,
+   "sha256": "a66d6a95ebf986444e6a5eedd936440bec52582461851bb604bf55efff0420d4"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+   "byte_length": 48959,
+   "sha256": "e6a44af9a244543f7eaa5e1c45e9db7de05a061ab81838bc1f3bbcf5168aa156",
+   "scoped_sha256": "17bf0c40794bb5aa64d85320fdb22a787a97353772d7da903226f4bfdc76aaa0",
+   "scope_ids": [
+    "dyadic_family_denominator_exclusion_with_margin",
+    "post_clear_delay_grows_like_log2_c",
+    "supply_delay_two_parameter_law_and_diophantine_translation",
+    "totient_specific_moving_dyadic_escape"
+   ]
+  },
+  {
+   "path": "formal_math/probes/erdos249_supply_delay.py",
+   "byte_length": 10011,
+   "sha256": "b621bf15e5b65cfaf2357608e3071dffe75c17842dd8a695378b515b86969f2e"
+  }
+ ],
+ "result": {
+  "status": "supply_present_throughout_range",
+  "block_identity_check": [
+   {
+    "H": 5,
+    "N": 0,
+    "abs_difference_bits": 0,
+    "truncation_bits": 220,
+    "identity_holds_to_truncation": true
+   },
+   {
+    "H": 11,
+    "N": 37,
+    "abs_difference_bits": 0,
+    "truncation_bits": 220,
+    "identity_holds_to_truncation": true
+   },
+   {
+    "H": 17,
+    "N": 900,
+    "abs_difference_bits": 0,
+    "truncation_bits": 220,
+    "identity_holds_to_truncation": true
+   }
+  ],
+  "delay_law": [
+   {
+    "v": 1,
+    "phi_v": 1,
+    "max_c": 60000,
+    "max_delay_steps": 17,
+    "argmax_c": 50490,
+    "log2_C_over_phi": 15.872674880270605,
+    "max_height": 34
+   },
+   {
+    "v": 3,
+    "phi_v": 2,
+    "max_c": 60000,
+    "max_delay_steps": 8,
+    "argmax_c": 4058,
+    "log2_C_over_phi": 7.936337440135302,
+    "max_height": 34
+   },
+   {
+    "v": 5,
+    "phi_v": 4,
+    "max_c": 60000,
+    "max_delay_steps": 4,
+    "argmax_c": 12787,
+    "log2_C_over_phi": 3.968168720067651,
+    "max_height": 36
+   },
+   {
+    "v": 7,
+    "phi_v": 6,
+    "max_c": 60000,
+    "max_delay_steps": 3,
+    "argmax_c": 7783,
+    "log2_C_over_phi": 2.645445813378434,
+    "max_height": 42
+   },
+   {
+    "v": 9,
+    "phi_v": 6,
+    "max_c": 60000,
+    "max_delay_steps": 3,
+    "argmax_c": 4058,
+    "log2_C_over_phi": 2.645445813378434,
+    "max_height": 36
+   },
+   {
+    "v": 11,
+    "phi_v": 10,
+    "max_c": 60000,
+    "max_delay_steps": 2,
+    "argmax_c": 7727,
+    "log2_C_over_phi": 1.5872674880270605,
+    "max_height": 40
+   },
+   {
+    "v": 15,
+    "phi_v": 8,
+    "max_c": 60000,
+    "max_delay_steps": 2,
+    "argmax_c": 1176,
+    "log2_C_over_phi": 1.9840843600338256,
+    "max_height": 40
+   },
+   {
+    "v": 31,
+    "phi_v": 30,
+    "max_c": 60000,
+    "max_delay_steps": 1,
+    "argmax_c": 4653,
+    "log2_C_over_phi": 0.5290891626756868,
+    "max_height": 60
+   }
+  ],
+  "distance_law": [
+   {
+    "v": 1,
+    "phi_v": 1,
+    "neg_log2_min_distance": 18.028811579508556,
+    "argmin_c": 50490,
+    "C_times_min_distance": 0.747854177669374
+   },
+   {
+    "v": 3,
+    "phi_v": 2,
+    "neg_log2_min_distance": 18.17266521367972,
+    "argmin_c": 198205,
+    "C_times_min_distance": 0.6768815323051983
+   },
+   {
+    "v": 5,
+    "phi_v": 4,
+    "neg_log2_min_distance": 18.544464033361237,
+    "argmin_c": 90351,
+    "C_times_min_distance": 0.5231064417107179
+   },
+   {
+    "v": 7,
+    "phi_v": 6,
+    "neg_log2_min_distance": 18.543813953253903,
+    "argmin_c": 11779,
+    "C_times_min_distance": 0.5233422072118166
+   },
+   {
+    "v": 9,
+    "phi_v": 6,
+    "neg_log2_min_distance": 17.38743924429724,
+    "argmin_c": 171321,
+    "C_times_min_distance": 1.1665120659987853
+   },
+   {
+    "v": 11,
+    "phi_v": 10,
+    "neg_log2_min_distance": 19.110022344884726,
+    "argmin_c": 7727,
+    "C_times_min_distance": 0.3534598200734459
+   },
+   {
+    "v": 15,
+    "phi_v": 8,
+    "neg_log2_min_distance": 16.959501532640076,
+    "argmin_c": 90351,
+    "C_times_min_distance": 1.5693193251321536
+   },
+   {
+    "v": 31,
+    "phi_v": 30,
+    "neg_log2_min_distance": 17.782645555065073,
+    "argmin_c": 103237,
+    "C_times_min_distance": 0.8869931814909261
+   }
+  ],
+  "translation": {
+   "rows": [
+    {
+     "v": 1,
+     "c": 5,
+     "H_min": 5,
+     "L": 4.406204759248254,
+     "predicted": 5,
+     "steps_off": 0.0
+    },
+    {
+     "v": 1,
+     "c": 50,
+     "H_min": 8,
+     "L": 8.078686111908866,
+     "predicted": 9,
+     "steps_off": -1.0
+    },
+    {
+     "v": 1,
+     "c": 500,
+     "H_min": 13,
+     "L": 12.688479188913277,
+     "predicted": 13,
+     "steps_off": 0.0
+    },
+    {
+     "v": 1,
+     "c": 5000,
+     "H_min": 14,
+     "L": 13.451861438893502,
+     "predicted": 14,
+     "steps_off": 0.0
+    },
+    {
+     "v": 1,
+     "c": 50000,
+     "H_min": 17,
+     "L": 16.92543242790319,
+     "predicted": 17,
+     "steps_off": 0.0
+    },
+    {
+     "v": 3,
+     "c": 5,
+     "H_min": 8,
+     "L": 5.680100999158583,
+     "predicted": 6,
+     "steps_off": 1.0
+    },
+    {
+     "v": 3,
+     "c": 50,
+     "H_min": 10,
+     "L": 8.396408953654714,
+     "predicted": 10,
+     "steps_off": 0.0
+    },
+    {
+     "v": 3,
+     "c": 500,
+     "H_min": 14,
+     "L": 12.688479188913277,
+     "predicted": 14,
+     "steps_off": 0.0
+    },
+    {
+     "v": 3,
+     "c": 5000,
+     "H_min": 16,
+     "L": 15.434671076459637,
+     "predicted": 16,
+     "steps_off": 0.0
+    },
+    {
+     "v": 3,
+     "c": 50000,
+     "H_min": 20,
+     "L": 19.480099699257295,
+     "predicted": 20,
+     "steps_off": 0.0
+    },
+    {
+     "v": 5,
+     "c": 5,
+     "H_min": 12,
+     "L": 7.125247070712248,
+     "predicted": 8,
+     "steps_off": 1.0
+    },
+    {
+     "v": 5,
+     "c": 50,
+     "H_min": 16,
+     "L": 11.697492706798101,
+     "predicted": 12,
+     "steps_off": 1.0
+    },
+    {
+     "v": 5,
+     "c": 500,
+     "H_min": 16,
+     "L": 12.688479188913277,
+     "predicted": 16,
+     "steps_off": 0.0
+    },
+    {
+     "v": 5,
+     "c": 5000,
+     "H_min": 20,
+     "L": 16.722820998822357,
+     "predicted": 20,
+     "steps_off": 0.0
+    },
+    {
+     "v": 5,
+     "c": 50000,
+     "H_min": 28,
+     "L": 24.805718335453776,
+     "predicted": 28,
+     "steps_off": 0.0
+    },
+    {
+     "v": 7,
+     "c": 5,
+     "H_min": 12,
+     "L": 6.6467459368039385,
+     "predicted": 12,
+     "steps_off": 0.0
+    },
+    {
+     "v": 7,
+     "c": 50,
+     "H_min": 12,
+     "L": 10.214300081501818,
+     "predicted": 12,
+     "steps_off": 0.0
+    },
+    {
+     "v": 7,
+     "c": 500,
+     "H_min": 18,
+     "L": 12.863078646670203,
+     "predicted": 18,
+     "steps_off": 0.0
+    },
+    {
+     "v": 7,
+     "c": 5000,
+     "H_min": 24,
+     "L": 18.111414075892014,
+     "predicted": 24,
+     "steps_off": 0.0
+    },
+    {
+     "v": 7,
+     "c": 50000,
+     "H_min": 24,
+     "L": 20.827687966586296,
+     "predicted": 24,
+     "steps_off": 0.0
+    },
+    {
+     "v": 9,
+     "c": 5,
+     "H_min": 12,
+     "L": 8.523014399496049,
+     "predicted": 12,
+     "steps_off": 0.0
+    },
+    {
+     "v": 9,
+     "c": 50,
+     "H_min": 12,
+     "L": 10.389427323643503,
+     "predicted": 12,
+     "steps_off": 0.0
+    },
+    {
+     "v": 9,
+     "c": 500,
+     "H_min": 18,
+     "L": 13.787295648250591,
+     "predicted": 18,
+     "steps_off": 0.0
+    },
+    {
+     "v": 9,
+     "c": 5000,
+     "H_min": 24,
+     "L": 21.419242824235624,
+     "predicted": 24,
+     "steps_off": 0.0
+    },
+    {
+     "v": 9,
+     "c": 50000,
+     "H_min": 24,
+     "L": 20.15792590362892,
+     "predicted": 24,
+     "steps_off": 0.0
+    },
+    {
+     "v": 11,
+     "c": 5,
+     "H_min": 10,
+     "L": 7.081657783005824,
+     "predicted": 10,
+     "steps_off": 0.0
+    },
+    {
+     "v": 11,
+     "c": 50,
+     "H_min": 20,
+     "L": 13.964834237309503,
+     "predicted": 20,
+     "steps_off": 0.0
+    },
+    {
+     "v": 11,
+     "c": 500,
+     "H_min": 20,
+     "L": 15.009034549470982,
+     "predicted": 20,
+     "steps_off": 0.0
+    },
+    {
+     "v": 11,
+     "c": 5000,
+     "H_min": 20,
+     "L": 19.197246896134857,
+     "predicted": 20,
+     "steps_off": 0.0
+    },
+    {
+     "v": 11,
+     "c": 50000,
+     "H_min": 30,
+     "L": 20.3248966966581,
+     "predicted": 30,
+     "steps_off": 0.0
+    },
+    {
+     "v": 15,
+     "c": 5,
+     "H_min": 16,
+     "L": 7.340404828583161,
+     "predicted": 8,
+     "steps_off": 1.0
+    },
+    {
+     "v": 15,
+     "c": 50,
+     "H_min": 16,
+     "L": 11.697492706798101,
+     "predicted": 16,
+     "steps_off": 0.0
+    },
+    {
+     "v": 15,
+     "c": 500,
+     "H_min": 16,
+     "L": 15.749052440115918,
+     "predicted": 16,
+     "steps_off": 0.0
+    },
+    {
+     "v": 15,
+     "c": 5000,
+     "H_min": 24,
+     "L": 17.900223659794108,
+     "predicted": 24,
+     "steps_off": 0.0
+    },
+    {
+     "v": 15,
+     "c": 50000,
+     "H_min": 32,
+     "L": 24.805718335453776,
+     "predicted": 32,
+     "steps_off": 0.0
+    },
+    {
+     "v": 31,
+     "c": 5,
+     "H_min": 30,
+     "L": 8.964647187133636,
+     "predicted": 30,
+     "steps_off": 0.0
+    },
+    {
+     "v": 31,
+     "c": 50,
+     "H_min": 30,
+     "L": 12.504776032815386,
+     "predicted": 30,
+     "steps_off": 0.0
+    },
+    {
+     "v": 31,
+     "c": 500,
+     "H_min": 30,
+     "L": 15.442355911705306,
+     "predicted": 30,
+     "steps_off": 0.0
+    },
+    {
+     "v": 31,
+     "c": 5000,
+     "H_min": 30,
+     "L": 19.82440991131196,
+     "predicted": 30,
+     "steps_off": 0.0
+    },
+    {
+     "v": 31,
+     "c": 50000,
+     "H_min": 30,
+     "L": 21.706723316327896,
+     "predicted": 30,
+     "steps_off": 0.0
+    }
+   ],
+   "max_abs_steps_off": 1.0,
+   "within_one_admissible_step": true
+  },
+  "parameters": {
+   "max_c": 60000,
+   "distance_max_c": 200000,
+   "cap": 400,
+   "tail_bits": 220,
+   "moduli": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    15,
+    31
+   ]
+  }
+ }
+}

@@ -1,0 +1,5601 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "Exactify the first aggregate score at least one and abandon all unweighted average-selection proofs.",
+      "survival_consequence": "Seek a coarea, area, or Reeb-tree bound for the total inverse-ray edge length. The average inequality would immediately select a short hub."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "all_critical_inverse_ray_average_below_two",
+      "statement": "The sum of the two-branch inverse-ray edge lengths over admissible simple critical points is less than twice their number."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/InverseRayAggregateComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonBranchHubCounterexampleComputationalLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1041_newton_branch_hub_counterexample_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_inverse_ray_aggregate.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/search_counterexample.py"
+      ]
+    },
+    "probe": {
+      "computation": "Numerically continue both inverse-ray branches at every admissible simple critical point, gate endpoint and level residuals, and record the complete edge-length aggregate for deterministic stress families.",
+      "falsifier": "One validated numerical candidate with normalized aggregate at least one; it must then be exactified before mathematical use.",
+      "id": "complete_critical_hub_aggregate_stress",
+      "question": "Does the all-critical average survive random configurations, the sharp regular-polygon boundary, and the exact long-hub quintic?",
+      "resource_bounds": {
+        "maximum_degree": 9,
+        "minimum_degree": 3,
+        "random_trials_per_degree": 6,
+        "regular_trials_per_degree_scale": 4
+      },
+      "stop_condition": "Stop after the configured distinct families; do not replace an analytic sum inequality by a longer random search."
+    },
+    "problem": {
+      "claim_ceiling": "Deterministic numerical continuation selects an aggregate theorem candidate. It proves neither the aggregate inequality nor Erd\u0151s #1041.",
+      "id": "erdos_1041",
+      "target_statement": "Find two roots joined by a curve of length less than two inside the strict unit lemniscate."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "inconclusive",
+        "decision_basis": "The computation compares a new complete-tree aggregate, not the previously explored pointwise minimum hub score.",
+        "next_analytic_target": "Express the sum of inverse-ray edge lengths as a level-set or Reeb-tree integral and prove a strict 2m upper bound with data-dependent slack."
+      },
+      "status": "finite_support",
+      "summary": "All 149 configured polynomials satisfy the aggregate candidate. The maximum normalized average is 0.9924262106; boundary-near regular cubics approach the sharp value one from below."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "flow_max_step": 0.01,
+    "random_trials_per_degree": 6,
+    "regular_trials_per_degree_scale": 4,
+    "seed": 10410825
+  },
+  "result": {
+    "aggregate_hypothesis": "sum_c L_c < 2 * number_of_admissible_simple_critical_hubs",
+    "all_configured_aggregate_checks_survive": true,
+    "balanced_quintic_row": {
+      "admissible_simple_critical_hub_count": 3,
+      "aggregate_candidate_survives": true,
+      "degree": 5,
+      "hub_rows": [
+        {
+          "branches": [
+            {
+              "endpoint_error": 8.036648271763184e-13,
+              "length": 0.26138997690159765,
+              "maximum_level_residual": 2.402417219001388e-12,
+              "root_index": 3
+            },
+            {
+              "endpoint_error": 3.5580225253520305e-13,
+              "length": 0.27108678042094725,
+              "maximum_level_residual": 1.0031235112697785e-12,
+              "root_index": 1
+            }
+          ],
+          "critical_index": 0,
+          "critical_point": [
+            -0.2405183032899696,
+            0.8783478029095287
+          ],
+          "critical_value_modulus": 0.3541665794591875,
+          "total_length": 0.5324767573225448
+        },
+        {
+          "branches": [
+            {
+              "endpoint_error": 8.036648271763184e-13,
+              "length": 0.26138997690159765,
+              "maximum_level_residual": 2.402417219001388e-12,
+              "root_index": 4
+            },
+            {
+              "endpoint_error": 3.5580225253520305e-13,
+              "length": 0.27108678042094725,
+              "maximum_level_residual": 1.0031235112697785e-12,
+              "root_index": 2
+            }
+          ],
+          "critical_index": 1,
+          "critical_point": [
+            -0.2405183032899696,
+            -0.8783478029095287
+          ],
+          "critical_value_modulus": 0.3541665794591875,
+          "total_length": 0.5324767573225448
+        },
+        {
+          "branches": [
+            {
+              "endpoint_error": 1.394405701552753e-12,
+              "length": 1.075599524315842,
+              "maximum_level_residual": 4.11479795553504e-11,
+              "root_index": 2
+            },
+            {
+              "endpoint_error": 1.39452559796388e-12,
+              "length": 1.0755995243158423,
+              "maximum_level_residual": 4.1147645891385867e-11,
+              "root_index": 1
+            }
+          ],
+          "critical_index": 3,
+          "critical_point": [
+            0.0,
+            0.0
+          ],
+          "critical_value_modulus": 0.9939068747167451,
+          "total_length": 2.1511990486316845
+        }
+      ],
+      "maximum_edge_length": 2.1511990486316845,
+      "maximum_endpoint_error": 1.39452559796388e-12,
+      "maximum_level_residual": 4.11479795553504e-11,
+      "minimum_edge_length": 0.5324767573225448,
+      "normalized_average_length": 0.5360254272127957,
+      "roots": [
+        [
+          0.9978924611973392,
+          0.0
+        ],
+        [
+          0.0,
+          0.999
+        ],
+        [
+          -0.0,
+          -0.999
+        ],
+        [
+          -0.500054384017758,
+          0.8648390677025527
+        ],
+        [
+          -0.500054384017758,
+          -0.8648390677025527
+        ]
+      ],
+      "total_inverse_ray_edge_length": 3.2161525632767742
+    },
+    "configured_valid_polynomial_count": 149,
+    "global_maximum_normalized_average_row": {
+      "admissible_simple_critical_hub_count": 2,
+      "aggregate_candidate_survives": true,
+      "degree": 3,
+      "hub_rows": [
+        {
+          "branches": [
+            {
+              "endpoint_error": 1.0305832678942737e-11,
+              "length": 0.9862686211067587,
+              "maximum_level_residual": 3.0727640852031284e-11,
+              "root_index": 1
+            },
+            {
+              "endpoint_error": 9.09560474391802e-12,
+              "length": 0.9929692653358673,
+              "maximum_level_residual": 2.7113814069531473e-11,
+              "root_index": 0
+            }
+          ],
+          "critical_index": 0,
+          "critical_point": [
+            0.006638349332198966,
+            0.017792516864137603
+          ],
+          "critical_value_modulus": 0.9908702003298094,
+          "total_length": 1.9792378864426259
+        },
+        {
+          "branches": [
+            {
+              "endpoint_error": 1.0626491212737628e-11,
+              "length": 0.9794105363395295,
+              "maximum_level_residual": 3.169525637175342e-11,
+              "root_index": 2
+            },
+            {
+              "endpoint_error": 1.061459182342114e-11,
+              "length": 1.0110564196195857,
+              "maximum_level_residual": 3.164182596927958e-11,
+              "root_index": 0
+            }
+          ],
+          "critical_index": 1,
+          "critical_point": [
+            -0.005814191973782214,
+            -0.016404170437916248
+          ],
+          "critical_value_modulus": 0.9908908472983875,
+          "total_length": 1.990466955959115
+        }
+      ],
+      "maximum_edge_length": 1.990466955959115,
+      "maximum_endpoint_error": 1.0626491212737628e-11,
+      "maximum_level_residual": 3.169525637175342e-11,
+      "minimum_edge_length": 1.9792378864426259,
+      "normalized_average_length": 0.9924262106004352,
+      "roots": [
+        [
+          0.9970875627099877,
+          -0.0053616345738568315
+        ],
+        [
+          -0.4923140446883426,
+          0.8673112512727418
+        ],
+        [
+          -0.5035372819840199,
+          -0.8598670970595529
+        ]
+      ],
+      "total_inverse_ray_edge_length": 3.969704842401741
+    },
+    "random_family_summaries": [
+      {
+        "degree": 3,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 2,
+          "aggregate_candidate_survives": true,
+          "degree": 3,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 3.1481767415822524e-12,
+                  "length": 0.770281594305025,
+                  "maximum_level_residual": 8.754768610219014e-12,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 5.9783865643565224e-12,
+                  "length": 0.8845879715290715,
+                  "maximum_level_residual": 1.54383674069352e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.011023603651250657,
+                0.34565466675516565
+              ],
+              "critical_value_modulus": 0.8583618323984863,
+              "total_length": 1.6548695658340966
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.0486152384144944e-12,
+                  "length": 0.7616865270772621,
+                  "maximum_level_residual": 1.7797104212403982e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 5.479479662187144e-12,
+                  "length": 1.0319002406563749,
+                  "maximum_level_residual": 1.537928483253956e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.15106971802456565,
+                -0.18792495729659242
+              ],
+              "critical_value_modulus": 0.9030074896620209,
+              "total_length": 1.793586767733637
+            }
+          ],
+          "maximum_edge_length": 1.793586767733637,
+          "maximum_endpoint_error": 6.0486152384144944e-12,
+          "maximum_level_residual": 1.7797104212403982e-11,
+          "minimum_edge_length": 1.6548695658340966,
+          "normalized_average_length": 0.8621140833919334,
+          "roots": [
+            [
+              -0.04886339095497033,
+              -0.9422399304150622
+            ],
+            [
+              0.6731647476067021,
+              0.6941697646970977
+            ],
+            [
+              -0.8674413391654562,
+              0.4846647299058243
+            ]
+          ],
+          "total_inverse_ray_edge_length": 3.4484563335677336
+        },
+        "valid_sample_count": 6
+      },
+      {
+        "degree": 4,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 3,
+          "aggregate_candidate_survives": true,
+          "degree": 4,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.8920779738298825e-12,
+                  "length": 0.4347102867600795,
+                  "maximum_level_residual": 4.679485956081165e-12,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 6.96583549805654e-12,
+                  "length": 0.4401799079077345,
+                  "maximum_level_residual": 1.698040172413919e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.3462263920351427,
+                0.6756119211792377
+              ],
+              "critical_value_modulus": 0.46708292878777097,
+              "total_length": 0.874890194667814
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.502993118843741e-12,
+                  "length": 0.6287072246053025,
+                  "maximum_level_residual": 1.717093043216189e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 4.48887415343361e-11,
+                  "length": 1.225994009153145,
+                  "maximum_level_residual": 1.141927206720242e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.30170940766912124,
+                -0.02634185976855772
+              ],
+              "critical_value_modulus": 0.8685311712506557,
+              "total_length": 1.8547012337584474
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 9.875838955365639e-12,
+                  "length": 0.5987871838056826,
+                  "maximum_level_residual": 4.12989119521763e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 2.856778411421578e-10,
+                  "length": 1.4912328228307077,
+                  "maximum_level_residual": 6.963805940960514e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.08532417494463457,
+                -0.37158553663885296
+              ],
+              "critical_value_modulus": 0.9255958787902149,
+              "total_length": 2.09002000663639
+            }
+          ],
+          "maximum_edge_length": 2.09002000663639,
+          "maximum_endpoint_error": 2.856778411421578e-10,
+          "maximum_level_residual": 6.963805940960514e-10,
+          "minimum_edge_length": 0.874890194667814,
+          "normalized_average_length": 0.8032685725104419,
+          "roots": [
+            [
+              0.7661736654275916,
+              0.578278062144529
+            ],
+            [
+              0.0209842832269501,
+              0.9660710552102969
+            ],
+            [
+              -0.8930343317188192,
+              -0.23594954006423716
+            ],
+            [
+              0.2789979288118192,
+              -0.938153544261486
+            ]
+          ],
+          "total_inverse_ray_edge_length": 4.819611435062652
+        },
+        "valid_sample_count": 6
+      },
+      {
+        "degree": 5,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 4,
+          "aggregate_candidate_survives": true,
+          "degree": 5,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.5119690062865578e-12,
+                  "length": 0.5261647075648791,
+                  "maximum_level_residual": 8.329013176113375e-12,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 3.229719527363024e-12,
+                  "length": 0.5630073927806497,
+                  "maximum_level_residual": 1.020233476810981e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.5661143875328781,
+                -0.06630658837718145
+              ],
+              "critical_value_modulus": 0.6110893531915287,
+              "total_length": 1.0891721003455288
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 3.2108465303728125e-12,
+                  "length": 0.4453557775861745,
+                  "maximum_level_residual": 1.4372358566244474e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 6.131553833371087e-12,
+                  "length": 0.6471880251393596,
+                  "maximum_level_residual": 2.187391860309666e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.5693759469046942,
+                -0.20653659623169576
+              ],
+              "critical_value_modulus": 0.7314464290281812,
+              "total_length": 1.092543802725534
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.329464328230564e-12,
+                  "length": 0.4596336323779731,
+                  "maximum_level_residual": 2.0060834219855498e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 4.045696726529399e-12,
+                  "length": 0.8383834673347329,
+                  "maximum_level_residual": 1.6618369106756397e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.2248601861531223,
+                0.5271527387945333
+              ],
+              "critical_value_modulus": 0.7751379855901888,
+              "total_length": 1.298017099712706
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.8268588851397077e-12,
+                  "length": 0.6416890287542965,
+                  "maximum_level_residual": 9.879439548472983e-12,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 4.112370333151013e-12,
+                  "length": 0.7994104089462247,
+                  "maximum_level_residual": 1.383037783161965e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.014950696062501677,
+                -0.3505554288689194
+              ],
+              "critical_value_modulus": 0.6966364775275418,
+              "total_length": 1.441099437700521
+            }
+          ],
+          "maximum_edge_length": 1.441099437700521,
+          "maximum_endpoint_error": 6.131553833371087e-12,
+          "maximum_level_residual": 2.187391860309666e-11,
+          "minimum_edge_length": 1.0891721003455288,
+          "normalized_average_length": 0.6151040550605362,
+          "roots": [
+            [
+              0.9118179389829393,
+              0.31494617836465294
+            ],
+            [
+              0.0930636858525916,
+              0.9662668111499944
+            ],
+            [
+              -0.9653363315534796,
+              -0.007693959747548088
+            ],
+            [
+              -0.4547837383384199,
+              -0.794166599285875
+            ],
+            [
+              0.6735483584548729,
+              -0.5996597738353032
+            ]
+          ],
+          "total_inverse_ray_edge_length": 4.92083244048429
+        },
+        "valid_sample_count": 6
+      },
+      {
+        "degree": 6,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 5,
+          "aggregate_candidate_survives": true,
+          "degree": 6,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1091706172636545e-12,
+                  "length": 0.2728951103559775,
+                  "maximum_level_residual": 4.552387069050366e-12,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 3.069406285725775e-12,
+                  "length": 0.3115795974070368,
+                  "maximum_level_residual": 1.0493686030187566e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.5972536872937807,
+                0.5558529615158719
+              ],
+              "critical_value_modulus": 0.4591740935868705,
+              "total_length": 0.5844747077630144
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1090369393227328e-12,
+                  "length": 0.2940102400093946,
+                  "maximum_level_residual": 3.090768772165782e-12,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 2.625655029366259e-12,
+                  "length": 0.3320463935213822,
+                  "maximum_level_residual": 6.256081786873868e-12,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.6662967777655542,
+                -0.4064721830483641
+              ],
+              "critical_value_modulus": 0.33918365445939563,
+              "total_length": 0.6260566335307768
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.6881490168108e-12,
+                  "length": 0.3320892358752969,
+                  "maximum_level_residual": 7.2440954461258645e-12,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 3.635613225441718e-12,
+                  "length": 0.5611368580553756,
+                  "maximum_level_residual": 8.84756822388737e-12,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.6975543727956849,
+                0.24655891209407566
+              ],
+              "critical_value_modulus": 0.540278838279285,
+              "total_length": 0.8932260939306724
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.235321629269516e-12,
+                  "length": 0.38588456594261467,
+                  "maximum_level_residual": 3.485973732822638e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 3.070366793137838e-10,
+                  "length": 1.3805374923323033,
+                  "maximum_level_residual": 7.318732116327987e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.31125042707237677,
+                -0.4947531598533093
+              ],
+              "critical_value_modulus": 0.9140207068476373,
+              "total_length": 1.766422058274918
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.414907161560723e-13,
+                  "length": 0.7733713438909101,
+                  "maximum_level_residual": 5.7752455385142275e-12,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.866466861725903e-12,
+                  "length": 1.1285879850706206,
+                  "maximum_level_residual": 3.0007648548008456e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.11967693031195925,
+                0.1305404320580217
+              ],
+              "critical_value_modulus": 0.7418983182527176,
+              "total_length": 1.9019593289615306
+            }
+          ],
+          "maximum_edge_length": 1.9019593289615306,
+          "maximum_endpoint_error": 3.070366793137838e-10,
+          "maximum_level_residual": 7.318732116327987e-10,
+          "minimum_edge_length": 0.5844747077630144,
+          "normalized_average_length": 0.5772138822460912,
+          "roots": [
+            [
+              0.5864307771005972,
+              -0.6860866654134881
+            ],
+            [
+              0.9265521634482273,
+              -0.2129738421016037
+            ],
+            [
+              0.8121647153983076,
+              0.5565301594536128
+            ],
+            [
+              -0.5400905156490466,
+              0.8201293783594203
+            ],
+            [
+              -0.8244623835967883,
+              0.35199509914855526
+            ],
+            [
+              -0.5577906296415515,
+              -0.7915217741269411
+            ]
+          ],
+          "total_inverse_ray_edge_length": 5.772138822460912
+        },
+        "valid_sample_count": 6
+      },
+      {
+        "degree": 7,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 6,
+          "aggregate_candidate_survives": true,
+          "degree": 7,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 3.805144674187945e-13,
+                  "length": 0.13775877902941042,
+                  "maximum_level_residual": 4.62910425970053e-13,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 7.489573184876256e-13,
+                  "length": 0.1580772808910288,
+                  "maximum_level_residual": 7.089233822657778e-13,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.3284998599239173,
+                -0.7939634720523354
+              ],
+              "critical_value_modulus": 0.07599313451931773,
+              "total_length": 0.2958360599204392
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.160228123878067e-13,
+                  "length": 0.20915500498920625,
+                  "maximum_level_residual": 2.2179153358893174e-12,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.4422478388535934e-12,
+                  "length": 0.3726832788151545,
+                  "maximum_level_residual": 2.311903191921426e-12,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.6970716330928888,
+                -0.4884241354163837
+              ],
+              "critical_value_modulus": 0.22784753681611716,
+              "total_length": 0.5818382838043608
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 3.0645021913275187e-12,
+                  "length": 0.3904044869914191,
+                  "maximum_level_residual": 1.4132258219031738e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 4.676617903501693e-12,
+                  "length": 0.4008899877478234,
+                  "maximum_level_residual": 2.177070872256981e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.4332529158308531,
+                0.48336969783864486
+              ],
+              "critical_value_modulus": 0.5664243121654358,
+              "total_length": 0.7912944747392425
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.9319324108717254e-12,
+                  "length": 0.34024396188548345,
+                  "maximum_level_residual": 2.896726552855956e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 2.1512071746796585e-10,
+                  "length": 1.2182072094827427,
+                  "maximum_level_residual": 2.0363421299135433e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.4162047188729193,
+                0.364325744970194
+              ],
+              "critical_value_modulus": 0.6876913285743498,
+              "total_length": 1.558451171368226
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.488886991978698e-12,
+                  "length": 0.3615395271602347,
+                  "maximum_level_residual": 3.449364733313746e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.6954753365370056e-10,
+                  "length": 1.2319824710625398,
+                  "maximum_level_residual": 2.7796524983686247e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.4938055457289965,
+                -0.2372109154124203
+              ],
+              "critical_value_modulus": 0.6309390674829384,
+              "total_length": 1.5935219982227744
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.6480209137620127e-10,
+                  "length": 1.2547104711367565,
+                  "maximum_level_residual": 2.5138572360558533e-10,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 7.61657858982652e-12,
+                  "length": 0.6388226500409436,
+                  "maximum_level_residual": 3.62019162495174e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                0.2725839749382268,
+                0.21199735380915227
+              ],
+              "critical_value_modulus": 0.596475075480844,
+              "total_length": 1.8935331211777
+            }
+          ],
+          "maximum_edge_length": 1.8935331211777,
+          "maximum_endpoint_error": 2.1512071746796585e-10,
+          "maximum_level_residual": 2.7796524983686247e-10,
+          "minimum_edge_length": 0.2958360599204392,
+          "normalized_average_length": 0.5595395924360619,
+          "roots": [
+            [
+              0.8140431383090623,
+              -0.4046527104163584
+            ],
+            [
+              0.8183472385699541,
+              0.45627219988506973
+            ],
+            [
+              0.30573105515697085,
+              0.8403827070623467
+            ],
+            [
+              -0.6326937868069573,
+              0.6266486993667183
+            ],
+            [
+              -0.8945202725132676,
+              -0.42155704065633576
+            ],
+            [
+              -0.483473751011524,
+              -0.7706394017648078
+            ],
+            [
+              -0.20992302632783064,
+              -0.8630111341169716
+            ]
+          ],
+          "total_inverse_ray_edge_length": 6.714475109232743
+        },
+        "valid_sample_count": 6
+      },
+      {
+        "degree": 8,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 7,
+          "aggregate_candidate_survives": true,
+          "degree": 8,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.84115586384107e-13,
+                  "length": 0.1287218111359149,
+                  "maximum_level_residual": 1.4755900916069057e-12,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.2622676760299387e-12,
+                  "length": 0.13191413768957982,
+                  "maximum_level_residual": 3.699715806269811e-12,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.9005994041144247,
+                -0.08014450957486968
+              ],
+              "critical_value_modulus": 0.18040602617084078,
+              "total_length": 0.26063594882549473
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.3502436072540686e-12,
+                  "length": 0.23055053614491525,
+                  "maximum_level_residual": 4.027468193603212e-12,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 2.538889494244068e-12,
+                  "length": 0.2526629460235341,
+                  "maximum_level_residual": 6.3746867878423255e-12,
+                  "root_index": 7
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.6459805493595846,
+                0.5216319959353312
+              ],
+              "critical_value_modulus": 0.26422767178681017,
+              "total_length": 0.4832134821684494
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.6530222845409502e-12,
+                  "length": 0.2606232220000541,
+                  "maximum_level_residual": 8.913823823122267e-12,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 2.5706456386624623e-12,
+                  "length": 0.3633032247851242,
+                  "maximum_level_residual": 1.0234918155999192e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.00801519580283186,
+                -0.7720872370150292
+              ],
+              "critical_value_modulus": 0.5018615142896267,
+              "total_length": 0.6239264467851784
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.1150662420734457e-12,
+                  "length": 0.343046423098281,
+                  "maximum_level_residual": 7.906797204353349e-12,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 4.060960931364385e-12,
+                  "length": 0.5649194165813339,
+                  "maximum_level_residual": 1.597900375192964e-11,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.6482798678212508,
+                0.04736530382407359
+              ],
+              "critical_value_modulus": 0.4184988748219055,
+              "total_length": 0.9079658396796149
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.1404928982644947e-12,
+                  "length": 0.2602739241140259,
+                  "maximum_level_residual": 1.514103184697564e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 3.128856567824232e-12,
+                  "length": 0.6589475825599708,
+                  "maximum_level_residual": 1.148385280400534e-11,
+                  "root_index": 7
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.02590693835299416,
+                0.7235892718779584
+              ],
+              "critical_value_modulus": 0.665099909769962,
+              "total_length": 0.9192215066739966
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.7282960874549043e-12,
+                  "length": 0.5224293905178929,
+                  "maximum_level_residual": 1.082723178022783e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.4495900790867443e-11,
+                  "length": 1.1214174447033247,
+                  "maximum_level_residual": 9.657341228885614e-11,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                0.248096820488604,
+                -0.3456416969242475
+              ],
+              "critical_value_modulus": 0.5374968048619372,
+              "total_length": 1.6438468352212177
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.709251565664479e-11,
+                  "length": 0.6744557654166558,
+                  "maximum_level_residual": 2.303270950586625e-10,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 7.212736510001699e-11,
+                  "length": 1.4459245645385357,
+                  "maximum_level_residual": 2.2534426383756528e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                -0.30180653019605286,
+                -0.11792586447755762
+              ],
+              "critical_value_modulus": 0.6276977636996554,
+              "total_length": 2.1203803299551915
+            }
+          ],
+          "maximum_edge_length": 2.1203803299551915,
+          "maximum_endpoint_error": 7.212736510001699e-11,
+          "maximum_level_residual": 2.303270950586625e-10,
+          "minimum_edge_length": 0.26063594882549473,
+          "normalized_average_length": 0.49708502780779595,
+          "roots": [
+            [
+              -0.17842153534619526,
+              0.9337954036149587
+            ],
+            [
+              -0.9199964467606007,
+              -0.2096252986429275
+            ],
+            [
+              -0.9348885181787154,
+              0.0430662078556608
+            ],
+            [
+              -0.1953332912009214,
+              -0.9492904241170714
+            ],
+            [
+              0.3241042074298226,
+              -0.8397840579485518
+            ],
+            [
+              0.8737039475033197,
+              -0.20353250976073667
+            ],
+            [
+              0.8658423184795638,
+              0.4686257655218857
+            ],
+            [
+              0.5147369400201701,
+              0.730216071928965
+            ]
+          ],
+          "total_inverse_ray_edge_length": 6.959190389309144
+        },
+        "valid_sample_count": 6
+      }
+    ],
+    "regular_boundary_family_summaries": [
+      {
+        "degree": 3,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 2,
+          "aggregate_candidate_survives": true,
+          "degree": 3,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.588451794946485e-12,
+                  "length": 0.8923921385697907,
+                  "maximum_level_residual": 2.1362093129912154e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 6.240699324511563e-12,
+                  "length": 0.9273778204325471,
+                  "maximum_level_residual": 1.7441603575543635e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.08631216750595883,
+                0.12153300505474936
+              ],
+              "critical_value_modulus": 0.9101882140120916,
+              "total_length": 1.819769959002338
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0260506564571142e-11,
+                  "length": 0.857907802365983,
+                  "maximum_level_residual": 2.950813375396454e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.1927804566463163e-11,
+                  "length": 1.066569659278148,
+                  "maximum_level_residual": 3.324686198626236e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.06947346360295853,
+                -0.09038735450359525
+              ],
+              "critical_value_modulus": 0.9182420885179168,
+              "total_length": 1.924477461644131
+            }
+          ],
+          "maximum_edge_length": 1.924477461644131,
+          "maximum_endpoint_error": 1.1927804566463163e-11,
+          "maximum_level_residual": 3.324686198626236e-11,
+          "minimum_edge_length": 1.819769959002338,
+          "normalized_average_length": 0.9360618551616172,
+          "roots": [
+            [
+              0.9732603769488578,
+              0.08225016951652817
+            ],
+            [
+              -0.5018558901087337,
+              0.8255080970029132
+            ],
+            [
+              -0.44614643098562373,
+              -0.8610397906927102
+            ]
+          ],
+          "total_inverse_ray_edge_length": 3.744247420646469
+        },
+        "perturbation_scale": 0.1,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 3,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 2,
+          "aggregate_candidate_survives": true,
+          "degree": 3,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1847786145236685e-11,
+                  "length": 0.9229743563478244,
+                  "maximum_level_residual": 3.5160103743352125e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 7.952741666285508e-12,
+                  "length": 0.981578241765035,
+                  "maximum_level_residual": 2.3342874695142048e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.11143144253003687,
+                -0.025866156909728013
+              ],
+              "critical_value_modulus": 0.9807550309949937,
+              "total_length": 1.9045525981128595
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.023893399397739e-12,
+                  "length": 0.9064236458886152,
+                  "maximum_level_residual": 2.398172933437106e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 7.885900393890719e-12,
+                  "length": 1.0383722517896201,
+                  "maximum_level_residual": 2.3146308072542612e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.08118354327734896,
+                0.042104846147630895
+              ],
+              "critical_value_modulus": 0.9831328291449222,
+              "total_length": 1.9447958976782354
+            }
+          ],
+          "maximum_edge_length": 1.9447958976782354,
+          "maximum_endpoint_error": 1.1847786145236685e-11,
+          "maximum_level_residual": 3.5160103743352125e-11,
+          "minimum_edge_length": 1.9045525981128595,
+          "normalized_average_length": 0.9623371239477737,
+          "roots": [
+            [
+              0.9869909586646924,
+              0.027511659525472906
+            ],
+            [
+              -0.5217531522047693,
+              0.8519830025337595
+            ],
+            [
+              -0.5106096553389551,
+              -0.855136628202378
+            ]
+          ],
+          "total_inverse_ray_edge_length": 3.849348495791095
+        },
+        "perturbation_scale": 0.03,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 3,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 2,
+          "aggregate_candidate_survives": true,
+          "degree": 3,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0305832678942737e-11,
+                  "length": 0.9862686211067587,
+                  "maximum_level_residual": 3.0727640852031284e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 9.09560474391802e-12,
+                  "length": 0.9929692653358673,
+                  "maximum_level_residual": 2.7113814069531473e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.006638349332198966,
+                0.017792516864137603
+              ],
+              "critical_value_modulus": 0.9908702003298094,
+              "total_length": 1.9792378864426259
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0626491212737628e-11,
+                  "length": 0.9794105363395295,
+                  "maximum_level_residual": 3.169525637175342e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.061459182342114e-11,
+                  "length": 1.0110564196195857,
+                  "maximum_level_residual": 3.164182596927958e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.005814191973782214,
+                -0.016404170437916248
+              ],
+              "critical_value_modulus": 0.9908908472983875,
+              "total_length": 1.990466955959115
+            }
+          ],
+          "maximum_edge_length": 1.990466955959115,
+          "maximum_endpoint_error": 1.0626491212737628e-11,
+          "maximum_level_residual": 3.169525637175342e-11,
+          "minimum_edge_length": 1.9792378864426259,
+          "normalized_average_length": 0.9924262106004352,
+          "roots": [
+            [
+              0.9970875627099877,
+              -0.0053616345738568315
+            ],
+            [
+              -0.4923140446883426,
+              0.8673112512727418
+            ],
+            [
+              -0.5035372819840199,
+              -0.8598670970595529
+            ]
+          ],
+          "total_inverse_ray_edge_length": 3.969704842401741
+        },
+        "perturbation_scale": 0.01,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 3,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 2,
+          "aggregate_candidate_survives": true,
+          "degree": 3,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.1770829020210335e-12,
+                  "length": 0.9737566972488807,
+                  "maximum_level_residual": 1.849616882657645e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 9.54094236723947e-12,
+                  "length": 0.9969446207536201,
+                  "maximum_level_residual": 2.8529797767195358e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.02716527136582865,
+                0.02361328346766705
+              ],
+              "critical_value_modulus": 0.9968413118728915,
+              "total_length": 1.9707013180025008
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1035365585298047e-11,
+                  "length": 0.9664620888121362,
+                  "maximum_level_residual": 3.3071075642065335e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.0870027046080382e-11,
+                  "length": 1.0165283383833859,
+                  "maximum_level_residual": 3.250391264252647e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.026659472532712645,
+                -0.023464360174064988
+              ],
+              "critical_value_modulus": 0.9969420529860056,
+              "total_length": 1.982990427195522
+            }
+          ],
+          "maximum_edge_length": 1.982990427195522,
+          "maximum_endpoint_error": 1.1035365585298047e-11,
+          "maximum_level_residual": 3.3071075642065335e-11,
+          "minimum_edge_length": 1.9707013180025008,
+          "normalized_average_length": 0.9884229362995057,
+          "roots": [
+            [
+              0.9993866035392416,
+              0.001842740064196315
+            ],
+            [
+              -0.4986487380201598,
+              0.8641692918621278
+            ],
+            [
+              -0.4999791672694077,
+              -0.865788646985921
+            ]
+          ],
+          "total_inverse_ray_edge_length": 3.953691745198023
+        },
+        "perturbation_scale": 0.003,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 4,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 3,
+          "aggregate_candidate_survives": true,
+          "degree": 4,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.4382304171853146e-12,
+                  "length": 0.6900465662789403,
+                  "maximum_level_residual": 1.6284853021405616e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 6.1748186863715614e-12,
+                  "length": 0.8127150327846694,
+                  "maximum_level_residual": 2.1410263037543324e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.2918177738264115,
+                -0.2916474737238006
+              ],
+              "critical_value_modulus": 0.8826685506160474,
+              "total_length": 1.5027615990636098
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.263439204695119e-12,
+                  "length": 0.6774475352880421,
+                  "maximum_level_residual": 1.9985261255206103e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 9.377222160108257e-12,
+                  "length": 0.8738363245314332,
+                  "maximum_level_residual": 3.2943521362634153e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.3209028179077392,
+                -0.21064529871039428
+              ],
+              "critical_value_modulus": 0.9024376747206856,
+              "total_length": 1.5512838598194754
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.375117646574316e-12,
+                  "length": 0.650909110753797,
+                  "maximum_level_residual": 3.5580340646700644e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 1.3886548028084565e-11,
+                  "length": 1.336130586976938,
+                  "maximum_level_residual": 4.721625385820636e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.06175438154076038,
+                0.33330183809540986
+              ],
+              "critical_value_modulus": 0.9868984415087704,
+              "total_length": 1.987039697730735
+            }
+          ],
+          "maximum_edge_length": 1.987039697730735,
+          "maximum_endpoint_error": 1.3886548028084565e-11,
+          "maximum_level_residual": 4.721625385820636e-11,
+          "minimum_edge_length": 1.5027615990636098,
+          "normalized_average_length": 0.8401808594356367,
+          "roots": [
+            [
+              0.9664978016066423,
+              -0.1860158942668272
+            ],
+            [
+              0.10215970897404754,
+              0.9829168110741542
+            ],
+            [
+              -0.9701007270380381,
+              -0.03335108218071096
+            ],
+            [
+              -0.054997666930075274,
+              -0.9888710804116627
+            ]
+          ],
+          "total_inverse_ray_edge_length": 5.04108515661382
+        },
+        "perturbation_scale": 0.1,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 4,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 3,
+          "aggregate_candidate_survives": true,
+          "degree": 4,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.943774722994497e-12,
+                  "length": 0.8112962234412793,
+                  "maximum_level_residual": 3.016991491917465e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 7.855302225660585e-12,
+                  "length": 0.814588651850017,
+                  "maximum_level_residual": 2.990306425882278e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.21400197394410975,
+                0.20272829608348836
+              ],
+              "critical_value_modulus": 0.9407607384133752,
+              "total_length": 1.6258848752912964
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.411216312679775e-12,
+                  "length": 0.8182788370958686,
+                  "maximum_level_residual": 2.1081397943703247e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 1.6833759040676116e-11,
+                  "length": 1.1352967170699446,
+                  "maximum_level_residual": 6.39514243389363e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.0038943209885768924,
+                -0.16958243140761198
+              ],
+              "critical_value_modulus": 0.9563654752261141,
+              "total_length": 1.953575554165813
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 9.689082418946103e-12,
+                  "length": 0.7961121259673173,
+                  "maximum_level_residual": 3.8093978513552456e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 2.6830999321296577e-11,
+                  "length": 1.248760445368759,
+                  "maximum_level_residual": 1.0178229659223956e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.19593052563184393,
+                -0.01832967910517079
+              ],
+              "critical_value_modulus": 0.9583870785009848,
+              "total_length": 2.0448725713360765
+            }
+          ],
+          "maximum_edge_length": 2.0448725713360765,
+          "maximum_endpoint_error": 2.6830999321296577e-11,
+          "maximum_level_residual": 1.0178229659223956e-10,
+          "minimum_edge_length": 1.6258848752912964,
+          "normalized_average_length": 0.937388833465531,
+          "roots": [
+            [
+              0.9915666919536801,
+              0.006684476110916568
+            ],
+            [
+              -0.05770477374079906,
+              0.9829703822231978
+            ],
+            [
+              -0.9898584058634293,
+              0.016289351942969363
+            ],
+            [
+              0.02670879524942494,
+              -0.9861892961828097
+            ]
+          ],
+          "total_inverse_ray_edge_length": 5.624333000793186
+        },
+        "perturbation_scale": 0.03,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 4,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 3,
+          "aggregate_candidate_survives": true,
+          "degree": 4,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.254276541974465e-12,
+                  "length": 0.9291868088063742,
+                  "maximum_level_residual": 2.0771129543740492e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 4.8822952320042645e-12,
+                  "length": 0.9508713324625443,
+                  "maximum_level_residual": 1.9322046373016748e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.07597019199624248,
+                -0.06680362412462465
+              ],
+              "critical_value_modulus": 0.9872352915204534,
+              "total_length": 1.8800581412689183
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.829158611225221e-12,
+                  "length": 0.9015323800485119,
+                  "maximum_level_residual": 2.7056401182250056e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 8.283433469384009e-12,
+                  "length": 0.9799429923159948,
+                  "maximum_level_residual": 3.2782246333463924e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.10081616597448925,
+                -0.054413848933872105
+              ],
+              "critical_value_modulus": 0.9874970493751615,
+              "total_length": 1.8814753723645068
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.517172414864458e-12,
+                  "length": 0.8803817961231964,
+                  "maximum_level_residual": 3.3883269453177875e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 7.985086044635283e-12,
+                  "length": 1.0611589286109302,
+                  "maximum_level_residual": 3.156676479152993e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.02122464180203093,
+                0.11912509674599285
+              ],
+              "critical_value_modulus": 0.9880398266718411,
+              "total_length": 1.9415407247341268
+            }
+          ],
+          "maximum_edge_length": 1.9415407247341268,
+          "maximum_endpoint_error": 8.517172414864458e-12,
+          "maximum_level_residual": 3.3883269453177875e-11,
+          "minimum_edge_length": 1.8800581412689183,
+          "normalized_average_length": 0.9505123730612587,
+          "roots": [
+            [
+              0.997327731149314,
+              -0.0036990697753001146
+            ],
+            [
+              -0.0005843262840710679,
+              0.998796386813512
+            ],
+            [
+              -0.9938167887884135,
+              -0.00029536683511183296
+            ],
+            [
+              0.0019018268247915325,
+              -0.9975917852864384
+            ]
+          ],
+          "total_inverse_ray_edge_length": 5.703074238367552
+        },
+        "perturbation_scale": 0.01,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 4,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 3,
+          "aggregate_candidate_survives": true,
+          "degree": 4,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.373316148114966e-12,
+                  "length": 0.9345988762429321,
+                  "maximum_level_residual": 3.346310666934866e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 9.08977074383304e-12,
+                  "length": 0.9688320890147175,
+                  "maximum_level_residual": 3.629246726694185e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.04909166736139445,
+                -0.07075273855528236
+              ],
+              "critical_value_modulus": 0.9985095134006916,
+              "total_length": 1.9034309652576495
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4302643425892822e-11,
+                  "length": 0.9545367002574363,
+                  "maximum_level_residual": 5.715206707942492e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 1.521159524327787e-11,
+                  "length": 0.9996936522090256,
+                  "maximum_level_residual": 6.073492386973311e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.02027744729441149,
+                0.048468533413145866
+              ],
+              "critical_value_modulus": 0.9985604222312019,
+              "total_length": 1.954230352466462
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1145548359043686e-11,
+                  "length": 0.932385396647355,
+                  "maximum_level_residual": 4.455767134859842e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.5998644243288086e-11,
+                  "length": 1.0261079377146936,
+                  "maximum_level_residual": 6.392902959039368e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.06769028465896347,
+                0.022222838423958516
+              ],
+              "critical_value_modulus": 0.9986264426025085,
+              "total_length": 1.9584933343620485
+            }
+          ],
+          "maximum_edge_length": 1.9584933343620485,
+          "maximum_endpoint_error": 1.5998644243288086e-11,
+          "maximum_level_residual": 6.392902959039368e-11,
+          "minimum_edge_length": 1.9034309652576495,
+          "normalized_average_length": 0.9693591086810267,
+          "roots": [
+            [
+              0.9997677165798255,
+              -0.0015269691750575362
+            ],
+            [
+              -0.0015765880407117784,
+              0.999701513267411
+            ],
+            [
+              -0.9992903249870211,
+              0.0015509964491169355
+            ],
+            [
+              0.0033376364436972787,
+              -0.9998073628323744
+            ]
+          ],
+          "total_inverse_ray_edge_length": 5.81615465208616
+        },
+        "perturbation_scale": 0.003,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 5,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 4,
+          "aggregate_candidate_survives": true,
+          "degree": 5,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.287130668648401e-12,
+                  "length": 0.48016413565682525,
+                  "maximum_level_residual": 8.202157682589265e-12,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 2.8737725736995243e-12,
+                  "length": 0.5091703058602661,
+                  "maximum_level_residual": 9.902516469469972e-12,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.2515660170526466,
+                0.6098360656864424
+              ],
+              "critical_value_modulus": 0.6421509227024641,
+              "total_length": 0.9893344415170914
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.30306644572765e-12,
+                  "length": 0.5166135879565378,
+                  "maximum_level_residual": 1.943611065173925e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 5.492284686690583e-12,
+                  "length": 0.8577134431097946,
+                  "maximum_level_residual": 2.0948666766168648e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.4702999760005256,
+                -0.07915149727016259
+              ],
+              "critical_value_modulus": 0.8140336938734064,
+              "total_length": 1.3743270310663322
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.5511416580421473e-12,
+                  "length": 0.6212591074672051,
+                  "maximum_level_residual": 1.2015179318995595e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.2950296846968005e-10,
+                  "length": 1.3275158114052832,
+                  "maximum_level_residual": 4.6440063052687603e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.38020540217656135,
+                0.004230706399856042
+              ],
+              "critical_value_modulus": 0.8851414170004596,
+              "total_length": 1.9487749188724883
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 9.003176582637446e-12,
+                  "length": 0.5631960478882548,
+                  "maximum_level_residual": 4.510194916104718e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.8626852845981085e-10,
+                  "length": 1.6033692335130403,
+                  "maximum_level_residual": 1.0265655937486602e-09,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.3401784535646065,
+                -0.32498238558759224
+              ],
+              "critical_value_modulus": 0.9096404575254877,
+              "total_length": 2.166565281401295
+            }
+          ],
+          "maximum_edge_length": 2.166565281401295,
+          "maximum_endpoint_error": 2.8626852845981085e-10,
+          "maximum_level_residual": 1.0265655937486602e-09,
+          "minimum_edge_length": 0.9893344415170914,
+          "normalized_average_length": 0.8098752091071508,
+          "roots": [
+            [
+              0.9974130906568612,
+              0.04491785039214449
+            ],
+            [
+              0.07159912266851329,
+              0.9534349550630903
+            ],
+            [
+              -0.7467921442824208,
+              0.6196716266120568
+            ],
+            [
+              -0.789059751905592,
+              -0.4823192540170405
+            ],
+            [
+              0.46498701122263314,
+              -0.8732890665145719
+            ]
+          ],
+          "total_inverse_ray_edge_length": 6.479001672857207
+        },
+        "perturbation_scale": 0.1,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 5,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 4,
+          "aggregate_candidate_survives": true,
+          "degree": 5,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4752698621537057e-11,
+                  "length": 0.8153122718204115,
+                  "maximum_level_residual": 7.149182223951416e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 1.3150590592560946e-11,
+                  "length": 0.8411025055738329,
+                  "maximum_level_residual": 6.405151557633158e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.2524611063295394,
+                -0.012568443936733415
+              ],
+              "critical_value_modulus": 0.9704376609840943,
+              "total_length": 1.6564147773942444
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 9.77664026021184e-12,
+                  "length": 0.8273290702720254,
+                  "maximum_level_residual": 4.7653510263581724e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 1.591314473573246e-11,
+                  "length": 0.9193652610255716,
+                  "maximum_level_residual": 7.750661088241685e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.0365761380711047,
+                0.19816299549451635
+              ],
+              "critical_value_modulus": 0.9719163446847496,
+              "total_length": 1.746694331297597
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.91841514769248e-12,
+                  "length": 0.7761594897703038,
+                  "maximum_level_residual": 3.891204374639026e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.729590010221514e-11,
+                  "length": 1.0013620329318933,
+                  "maximum_level_residual": 8.430443147020172e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.2186885739767174,
+                0.06518991775148292
+              ],
+              "critical_value_modulus": 0.9745807832143789,
+              "total_length": 1.7775215227021972
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1327424379871108e-11,
+                  "length": 0.7436538418065148,
+                  "maximum_level_residual": 5.618210698732054e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 1.9815207301812306e-11,
+                  "length": 1.1034274273571048,
+                  "maximum_level_residual": 9.602467037725887e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.05078591444437186,
+                -0.2543908357962524
+              ],
+              "critical_value_modulus": 0.976163742190907,
+              "total_length": 1.8470812691636196
+            }
+          ],
+          "maximum_edge_length": 1.8470812691636196,
+          "maximum_endpoint_error": 1.9815207301812306e-11,
+          "maximum_level_residual": 9.602467037725887e-11,
+          "minimum_edge_length": 1.6564147773942444,
+          "normalized_average_length": 0.8784639875697073,
+          "roots": [
+            [
+              0.9909020327814062,
+              0.023376558813575705
+            ],
+            [
+              0.28210845173533855,
+              0.9491201867657074
+            ],
+            [
+              -0.8236621408613338,
+              0.5636454813802464
+            ],
+            [
+              -0.7967779924759093,
+              -0.5950923108122168
+            ],
+            [
+              0.32297620384605513,
+              -0.945557874256046
+            ]
+          ],
+          "total_inverse_ray_edge_length": 7.027711900557659
+        },
+        "perturbation_scale": 0.03,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 5,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 4,
+          "aggregate_candidate_survives": true,
+          "degree": 5,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.659887011645153e-11,
+                  "length": 0.8479319153447931,
+                  "maximum_level_residual": 8.174520711094584e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 5.282405952748292e-12,
+                  "length": 0.9163281129824047,
+                  "maximum_level_residual": 2.602361966723963e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.12864559558766572,
+                -0.12305878653087096
+              ],
+              "critical_value_modulus": 0.983396440573381,
+              "total_length": 1.7642600283271976
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.7181065252428526e-11,
+                  "length": 0.8588508409174496,
+                  "maximum_level_residual": 8.488598618067243e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 9.300382266717434e-12,
+                  "length": 0.9436988028345401,
+                  "maximum_level_residual": 4.581802336659588e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.10317168453639623,
+                0.12307513083530827
+              ],
+              "critical_value_modulus": 0.9834723001084077,
+              "total_length": 1.8025496437519897
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4786232411642025e-11,
+                  "length": 0.8225678093505417,
+                  "maximum_level_residual": 7.333808540806164e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 2.0026792011537923e-11,
+                  "length": 1.0657512806350087,
+                  "maximum_level_residual": 9.856089218258221e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.16300652528873918,
+                -0.07625926907631614
+              ],
+              "critical_value_modulus": 0.9841124528664661,
+              "total_length": 1.8883190899855504
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.716965987272494e-11,
+                  "length": 0.8964268787973323,
+                  "maximum_level_residual": 8.44994467103994e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.1996139352874971e-11,
+                  "length": 1.0783358622009773,
+                  "maximum_level_residual": 5.909867967877865e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.06586004903410093,
+                0.08557920702901822
+              ],
+              "critical_value_modulus": 0.9837357415883781,
+              "total_length": 1.9747627409983095
+            }
+          ],
+          "maximum_edge_length": 1.9747627409983095,
+          "maximum_endpoint_error": 2.0026792011537923e-11,
+          "maximum_level_residual": 9.856089218258221e-11,
+          "minimum_edge_length": 1.7642600283271976,
+          "normalized_average_length": 0.9287364378828808,
+          "roots": [
+            [
+              0.9981143144731238,
+              0.0038505388148746254
+            ],
+            [
+              0.3099825709210985,
+              0.9500148447165405
+            ],
+            [
+              -0.8068597545394731,
+              0.5836204495122822
+            ],
+            [
+              -0.8094681371815505,
+              -0.5837406071086929
+            ],
+            [
+              0.3119193885783289,
+              -0.9420748731135803
+            ]
+          ],
+          "total_inverse_ray_edge_length": 7.429891503063047
+        },
+        "perturbation_scale": 0.01,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 5,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 4,
+          "aggregate_candidate_survives": true,
+          "degree": 5,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.692787899411105e-12,
+                  "length": 0.8486031818631333,
+                  "maximum_level_residual": 3.333358788885187e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.8055664675187142e-11,
+                  "length": 0.9340460405211927,
+                  "maximum_level_residual": 8.96883418418389e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.16044116361492788,
+                0.07255676765604194
+              ],
+              "critical_value_modulus": 0.9947866342506144,
+              "total_length": 1.782649222384326
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.694932278210334e-11,
+                  "length": 0.8788168272707875,
+                  "maximum_level_residual": 8.434117906776961e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.3836962623506929e-11,
+                  "length": 0.9160364457230692,
+                  "maximum_level_residual": 6.873197327596725e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.06546687148739301,
+                0.1446488651630357
+              ],
+              "critical_value_modulus": 0.9946112174825822,
+              "total_length": 1.7948532729938567
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.5447830662244162e-11,
+                  "length": 0.848460575466825,
+                  "maximum_level_residual": 7.697324108664192e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 1.8534130819162395e-11,
+                  "length": 0.9873409721708428,
+                  "maximum_level_residual": 9.222749185100672e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.1541625374837366,
+                -0.0521544235992587
+              ],
+              "critical_value_modulus": 0.995126277485634,
+              "total_length": 1.8358015476376677
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.5313621194154844e-11,
+                  "length": 0.8273833323216654,
+                  "maximum_level_residual": 7.647462716479544e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.0471755749842027e-11,
+                  "length": 1.1576849404718075,
+                  "maximum_level_residual": 1.0168943827776982e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.05806222956422313,
+                -0.16147264800631694
+              ],
+              "critical_value_modulus": 0.9955847933118573,
+              "total_length": 1.9850682727934728
+            }
+          ],
+          "maximum_edge_length": 1.9850682727934728,
+          "maximum_endpoint_error": 2.0471755749842027e-11,
+          "maximum_level_residual": 1.0168943827776982e-10,
+          "minimum_edge_length": 1.782649222384326,
+          "normalized_average_length": 0.9247965394761654,
+          "roots": [
+            [
+              0.9989115578417,
+              0.00510489633607453
+            ],
+            [
+              0.3062744366766537,
+              0.9506626803712345
+            ],
+            [
+              -0.8099693866630113,
+              0.5856664590403957
+            ],
+            [
+              -0.8077085372638789,
+              -0.5878008922580281
+            ],
+            [
+              0.3110844096685634,
+              -0.9491599419727988
+            ]
+          ],
+          "total_inverse_ray_edge_length": 7.398372315809323
+        },
+        "perturbation_scale": 0.003,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 6,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 5,
+          "aggregate_candidate_survives": true,
+          "degree": 6,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.5563530172228033e-12,
+                  "length": 0.4333721498431389,
+                  "maximum_level_residual": 1.2118378919578223e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 3.0787533381529657e-12,
+                  "length": 0.46514582710007474,
+                  "maximum_level_residual": 1.401358450085812e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.6198322261412781,
+                0.31671558795157
+              ],
+              "critical_value_modulus": 0.7116259674916094,
+              "total_length": 0.8985179769432137
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 3.130856369941418e-12,
+                  "length": 0.4537348006287702,
+                  "maximum_level_residual": 1.6324821887539445e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 3.741621086353214e-12,
+                  "length": 0.5067347288061846,
+                  "maximum_level_residual": 1.826632654592004e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.5436468528174523,
+                0.3544429177250607
+              ],
+              "critical_value_modulus": 0.7802798517737408,
+              "total_length": 0.9604695294349548
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0425102541999852e-11,
+                  "length": 0.5631214513407773,
+                  "maximum_level_residual": 5.527402520076757e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 1.1449555426049664e-11,
+                  "length": 0.9551304805429148,
+                  "maximum_level_residual": 6.250378943274044e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.2935462421220476,
+                -0.3108065128543906
+              ],
+              "critical_value_modulus": 0.8431331303338054,
+              "total_length": 1.5182519318836922
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.471567103507294e-12,
+                  "length": 0.5393454178483365,
+                  "maximum_level_residual": 4.1870294545180966e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 6.152394189622955e-12,
+                  "length": 1.3698792515265306,
+                  "maximum_level_residual": 3.181787210244356e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.18113943003338975,
+                -0.38740953369242237
+              ],
+              "critical_value_modulus": 0.872329737733388,
+              "total_length": 1.9092246693748671
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.3731187115019656e-12,
+                  "length": 0.8967256549545581,
+                  "maximum_level_residual": 2.5704729642126737e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.3934143307342774e-11,
+                  "length": 1.123851959241065,
+                  "maximum_level_residual": 6.937640097694951e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.0952986819400495,
+                0.05922440264246989
+              ],
+              "critical_value_modulus": 0.8493153488609511,
+              "total_length": 2.020577614195623
+            }
+          ],
+          "maximum_edge_length": 2.020577614195623,
+          "maximum_endpoint_error": 1.3934143307342774e-11,
+          "maximum_level_residual": 6.937640097694951e-11,
+          "minimum_edge_length": 0.8985179769432137,
+          "normalized_average_length": 0.7307041721832351,
+          "roots": [
+            [
+              0.9583487312667034,
+              0.10230473168651619
+            ],
+            [
+              0.5641237179372077,
+              0.7984542787546581
+            ],
+            [
+              -0.6247627134148417,
+              0.7405406660701183
+            ],
+            [
+              -0.9907975831358655,
+              0.06450310922663059
+            ],
+            [
+              -0.4985904784798165,
+              -0.830724003999674
+            ],
+            [
+              0.47972612165969286,
+              -0.8364785476115042
+            ]
+          ],
+          "total_inverse_ray_edge_length": 7.307041721832351
+        },
+        "perturbation_scale": 0.1,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 6,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 5,
+          "aggregate_candidate_survives": true,
+          "degree": 6,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.2710194531794276e-11,
+                  "length": 0.6343385074611656,
+                  "maximum_level_residual": 7.31838894368795e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 8.829450113810365e-12,
+                  "length": 0.7768017118605671,
+                  "maximum_level_residual": 4.985523171637454e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.05606942921975261,
+                -0.41126136653843404
+              ],
+              "critical_value_modulus": 0.9426269010731464,
+              "total_length": 1.4111402193217328
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.2569123889591743e-11,
+                  "length": 0.6741429150522519,
+                  "maximum_level_residual": 7.163169109967621e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.142607853767664e-11,
+                  "length": 0.7470370395319655,
+                  "maximum_level_residual": 6.495747668189071e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.01563670962932777,
+                0.3831209660159446
+              ],
+              "critical_value_modulus": 0.9427407725915637,
+              "total_length": 1.4211799545842174
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.5227328054375604e-12,
+                  "length": 0.7252009021425447,
+                  "maximum_level_residual": 3.147171528789765e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.2245605294895445e-11,
+                  "length": 0.8086262206963987,
+                  "maximum_level_residual": 6.863253816841451e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.29541906692748304,
+                -0.1349645255892183
+              ],
+              "critical_value_modulus": 0.9413149774526893,
+              "total_length": 1.5338271228389435
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.533410965341523e-11,
+                  "length": 0.8219959838363228,
+                  "maximum_level_residual": 8.717452028033016e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 1.468689509845962e-11,
+                  "length": 0.8674019187701674,
+                  "maximum_level_residual": 8.369275909821036e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.20195107378703436,
+                0.12510867832739894
+              ],
+              "critical_value_modulus": 0.9439249861013951,
+              "total_length": 1.68939790260649
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.369031801196944e-12,
+                  "length": 0.6057254664975525,
+                  "maximum_level_residual": 4.971481515290031e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 2.3993580462757558e-11,
+                  "length": 1.4118812355066301,
+                  "maximum_level_residual": 1.367269518894409e-10,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.38059243977184715,
+                0.015386792488640739
+              ],
+              "critical_value_modulus": 0.9601370500227264,
+              "total_length": 2.0176067020041826
+            }
+          ],
+          "maximum_edge_length": 2.0176067020041826,
+          "maximum_endpoint_error": 2.3993580462757558e-11,
+          "maximum_level_residual": 1.367269518894409e-10,
+          "minimum_edge_length": 1.4111402193217328,
+          "normalized_average_length": 0.8073151901355565,
+          "roots": [
+            [
+              0.9929138895064152,
+              -0.01953354202506813
+            ],
+            [
+              0.5026105676339752,
+              0.8559033965663777
+            ],
+            [
+              -0.4622068905083608,
+              0.8681599845705914
+            ],
+            [
+              -0.9862164274315915,
+              0.008958601984948255
+            ],
+            [
+              -0.47928837242066763,
+              -0.8706872149420234
+            ],
+            [
+              0.4862731077325376,
+              -0.8699325725096274
+            ]
+          ],
+          "total_inverse_ray_edge_length": 8.073151901355565
+        },
+        "perturbation_scale": 0.03,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 6,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 5,
+          "aggregate_candidate_survives": true,
+          "degree": 6,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.8062796363120058e-11,
+                  "length": 0.7411475092003558,
+                  "maximum_level_residual": 1.0710614778461114e-10,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 6.248122370169738e-12,
+                  "length": 0.7786122959694419,
+                  "maximum_level_residual": 3.696793111082005e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.2707050971897362,
+                0.1753949506932948
+              ],
+              "critical_value_modulus": 0.98510161032901,
+              "total_length": 1.5197598051697976
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.3664866649350226e-11,
+                  "length": 0.7437317852529953,
+                  "maximum_level_residual": 8.107945790015283e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 1.3481566155751029e-11,
+                  "length": 0.7937569094768383,
+                  "maximum_level_residual": 7.941888164422819e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.023988180127758857,
+                -0.3111481454980425
+              ],
+              "critical_value_modulus": 0.9843722407646668,
+              "total_length": 1.5374886947298336
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.24177910004457e-12,
+                  "length": 0.7741534198167839,
+                  "maximum_level_residual": 4.3041456579300194e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.860805679758903e-11,
+                  "length": 0.9821147623880445,
+                  "maximum_level_residual": 1.0961887232217169e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.23018199939022435,
+                -0.03581678750321257
+              ],
+              "critical_value_modulus": 0.9862816642093267,
+              "total_length": 1.7562681822048285
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4941402918317402e-11,
+                  "length": 0.7303709803122843,
+                  "maximum_level_residual": 8.905218813286439e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 2.0507644426093376e-11,
+                  "length": 1.196845165392106,
+                  "maximum_level_residual": 1.2080902986158437e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.18649276986045804,
+                0.2048708472836768
+              ],
+              "critical_value_modulus": 0.9873766073519695,
+              "total_length": 1.9272161457043904
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1412536721353011e-11,
+                  "length": 0.9026148822107763,
+                  "maximum_level_residual": 6.752433244041289e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 1.6586617326879825e-11,
+                  "length": 1.053868555435941,
+                  "maximum_level_residual": 9.771078526588597e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.12492881902454897,
+                -0.03304451052923047
+              ],
+              "critical_value_modulus": 0.9859478001699733,
+              "total_length": 1.9564834376467175
+            }
+          ],
+          "maximum_edge_length": 1.9564834376467175,
+          "maximum_endpoint_error": 2.0507644426093376e-11,
+          "maximum_level_residual": 1.2080902986158437e-10,
+          "minimum_edge_length": 1.5197598051697976,
+          "normalized_average_length": 0.8697216265455567,
+          "roots": [
+            [
+              0.9983554635432417,
+              0.0035582368752432466
+            ],
+            [
+              0.504482742243136,
+              0.8606611843071412
+            ],
+            [
+              -0.5087687680177571,
+              0.8594451534562579
+            ],
+            [
+              -0.9979193457572665,
+              0.010200776167029574
+            ],
+            [
+              -0.4918617064027919,
+              -0.867876639851393
+            ],
+            [
+              0.4921748218818034,
+              -0.8656810856184958
+            ]
+          ],
+          "total_inverse_ray_edge_length": 8.697216265455568
+        },
+        "perturbation_scale": 0.01,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 6,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 5,
+          "aggregate_candidate_survives": true,
+          "degree": 6,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.7697583255618605e-11,
+                  "length": 0.7857303713910754,
+                  "maximum_level_residual": 1.0523701630066899e-10,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 4.473083647364806e-12,
+                  "length": 0.826410365582055,
+                  "maximum_level_residual": 2.656869716486728e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.22389378944843286,
+                -0.14838007327781716
+              ],
+              "critical_value_modulus": 0.9921512777225622,
+              "total_length": 1.6121407369731304
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.7301862540869925e-11,
+                  "length": 0.773804007129078,
+                  "maximum_level_residual": 1.0328875209731758e-10,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 6.3771711000922955e-12,
+                  "length": 0.8890065178391618,
+                  "maximum_level_residual": 3.7878029344571075e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.19086324216467648,
+                0.16668023108071267
+              ],
+              "critical_value_modulus": 0.9928279045421378,
+              "total_length": 1.66281052496824
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.464612948878811e-11,
+                  "length": 0.7501930758439529,
+                  "maximum_level_residual": 8.773301125373741e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.26120748988415e-11,
+                  "length": 1.0061067395872607,
+                  "maximum_level_residual": 1.3446052123231065e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.0911803283399457,
+                -0.239731518878235
+              ],
+              "critical_value_modulus": 0.9940059344457025,
+              "total_length": 1.7562998154312135
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.5236231062675184e-11,
+                  "length": 0.770546460732253,
+                  "maximum_level_residual": 9.106134401173328e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.028327167862668e-11,
+                  "length": 1.1411762994177628,
+                  "maximum_level_residual": 6.107862537250776e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.08573181102631011,
+                0.21711194417870938
+              ],
+              "critical_value_modulus": 0.9940492492091644,
+              "total_length": 1.9117227601500157
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4206966600955392e-11,
+                  "length": 0.7640090172138849,
+                  "maximum_level_residual": 8.499700578506907e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 8.56983355642698e-12,
+                  "length": 1.2383488686407789,
+                  "maximum_level_residual": 5.0901587600646705e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.23515069850480821,
+                0.004281998766032732
+              ],
+              "critical_value_modulus": 0.9945237530690543,
+              "total_length": 2.002357885854664
+            }
+          ],
+          "maximum_edge_length": 2.002357885854664,
+          "maximum_endpoint_error": 2.26120748988415e-11,
+          "maximum_level_residual": 1.3446052123231065e-10,
+          "minimum_edge_length": 1.6121407369731304,
+          "normalized_average_length": 0.8945331723377263,
+          "roots": [
+            [
+              0.998505094113372,
+              -0.00027665851310277576
+            ],
+            [
+              0.5007717014522929,
+              0.8648698089774849
+            ],
+            [
+              -0.49924389231064686,
+              0.8650075391005683
+            ],
+            [
+              -0.999130505247092,
+              -0.0005178744728021691
+            ],
+            [
+              -0.49909851270268013,
+              -0.8663294946188544
+            ],
+            [
+              0.5014291471852081,
+              -0.8627982222300109
+            ]
+          ],
+          "total_inverse_ray_edge_length": 8.945331723377263
+        },
+        "perturbation_scale": 0.003,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 7,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 6,
+          "aggregate_candidate_survives": true,
+          "degree": 7,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.2080048102350565e-12,
+                  "length": 0.45899142070335824,
+                  "maximum_level_residual": 2.325139444105757e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 5.29062887611827e-12,
+                  "length": 0.5507890281339755,
+                  "maximum_level_residual": 2.851306278697388e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.41430196183769874,
+                -0.4621995601289146
+              ],
+              "critical_value_modulus": 0.7418839122094554,
+              "total_length": 1.0097804488373336
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.174704989989547e-12,
+                  "length": 0.550095829712115,
+                  "maximum_level_residual": 3.8779207179290934e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 6.253667698409875e-12,
+                  "length": 0.6471029800811706,
+                  "maximum_level_residual": 4.230667264624228e-11,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.4010721459452495,
+                -0.21806304310888006
+              ],
+              "critical_value_modulus": 0.7657721182627644,
+              "total_length": 1.1971988097932855
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.574572308667367e-12,
+                  "length": 0.588888977009225,
+                  "maximum_level_residual": 3.6757088254505383e-11,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 5.049175293032954e-12,
+                  "length": 0.6791548553346207,
+                  "maximum_level_residual": 2.7993621375994884e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.10434849444893779,
+                -0.4483623153096145
+              ],
+              "critical_value_modulus": 0.7575828037548982,
+              "total_length": 1.2680438323438459
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.053768257527442e-12,
+                  "length": 0.47293615127859806,
+                  "maximum_level_residual": 4.3869820038420315e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 4.29642131894498e-11,
+                  "length": 1.261563535576333,
+                  "maximum_level_residual": 2.2323162783592185e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.4630347924454974,
+                0.19981136714290665
+              ],
+              "critical_value_modulus": 0.8310867296178791,
+              "total_length": 1.7344996868549312
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4774585544414854e-11,
+                  "length": 0.5543110696225079,
+                  "maximum_level_residual": 8.929986145738409e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 4.683990360184686e-11,
+                  "length": 1.2399561498905958,
+                  "maximum_level_residual": 2.578693864171622e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                0.21756793658859863,
+                0.35670602433823395
+              ],
+              "critical_value_modulus": 0.8082412190864162,
+              "total_length": 1.7942672195131038
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.980016109983322e-12,
+                  "length": 0.5325940371188967,
+                  "maximum_level_residual": 3.0035142389748784e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 5.55669127804724e-11,
+                  "length": 1.4139848827452732,
+                  "maximum_level_residual": 3.059145719974745e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.026261559039182626,
+                0.48047761935980743
+              ],
+              "critical_value_modulus": 0.813418855273448,
+              "total_length": 1.9465789198641699
+            }
+          ],
+          "maximum_edge_length": 1.9465789198641699,
+          "maximum_endpoint_error": 5.55669127804724e-11,
+          "maximum_level_residual": 3.059145719974745e-10,
+          "minimum_edge_length": 1.0097804488373336,
+          "normalized_average_length": 0.7458640764338892,
+          "roots": [
+            [
+              0.9100840750941764,
+              -0.0513008837359463
+            ],
+            [
+              0.5791294343227422,
+              0.7743616704575232
+            ],
+            [
+              -0.1892267170322198,
+              0.9634647131271812
+            ],
+            [
+              -0.8806891224649434,
+              0.4211375976098949
+            ],
+            [
+              -0.8621614363659672,
+              -0.480808539586221
+            ],
+            [
+              -0.2641917569394996,
+              -0.9493124516318169
+            ],
+            [
+              0.557621135414279,
+              -0.7844436652314861
+            ]
+          ],
+          "total_inverse_ray_edge_length": 8.95036891720667
+        },
+        "perturbation_scale": 0.1,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 7,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 6,
+          "aggregate_candidate_survives": true,
+          "degree": 7,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.531087365432278e-12,
+                  "length": 0.4996871673050065,
+                  "maximum_level_residual": 2.8755398715246104e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 4.833166576247616e-12,
+                  "length": 0.5456274493110981,
+                  "maximum_level_residual": 3.002392785438893e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.5276770520186338,
+                0.280625497213321
+              ],
+              "critical_value_modulus": 0.8856013910516309,
+              "total_length": 1.0453146166161047
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.848786118222718e-12,
+                  "length": 0.5836997705810697,
+                  "maximum_level_residual": 3.933462749457805e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 2.928337270450493e-11,
+                  "length": 0.8660726964685632,
+                  "maximum_level_residual": 1.9468227278723995e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.025177266130047483,
+                -0.44019252988345575
+              ],
+              "critical_value_modulus": 0.9421191379532037,
+              "total_length": 1.449772467049633
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.3127264048462883e-11,
+                  "length": 0.5879003293512445,
+                  "maximum_level_residual": 8.72727516115661e-11,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 3.5343546432523853e-12,
+                  "length": 0.8718831763476639,
+                  "maximum_level_residual": 4.140624359171924e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.32494880950610217,
+                -0.280068643434949
+              ],
+              "critical_value_modulus": 0.9305394278522144,
+              "total_length": 1.4597835056989084
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1408000067181478e-11,
+                  "length": 0.5945876823466505,
+                  "maximum_level_residual": 7.783304454107641e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.9230729592687787e-11,
+                  "length": 1.2194651737225874,
+                  "maximum_level_residual": 1.177487882186946e-10,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                -0.12914747315058317,
+                0.3830677778247065
+              ],
+              "critical_value_modulus": 0.9480853161665499,
+              "total_length": 1.814052856069238
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.3102737904249192e-11,
+                  "length": 0.58571245794111,
+                  "maximum_level_residual": 8.918922280581735e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 1.7325196442869048e-11,
+                  "length": 1.3687027082569552,
+                  "maximum_level_residual": 1.0608129807394848e-10,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.3244883263704647,
+                0.2973941234829304
+              ],
+              "critical_value_modulus": 0.9513321952652528,
+              "total_length": 1.954415166198065
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 9.377547431367854e-12,
+                  "length": 0.5522389876719522,
+                  "maximum_level_residual": 6.433135047058604e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 9.059050087662871e-12,
+                  "length": 1.422140534283013,
+                  "maximum_level_residual": 5.546834353722453e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.36259926485004634,
+                -0.2400046145474117
+              ],
+              "critical_value_modulus": 0.9588121349175454,
+              "total_length": 1.9743795219549651
+            }
+          ],
+          "maximum_edge_length": 1.9743795219549651,
+          "maximum_endpoint_error": 2.928337270450493e-11,
+          "maximum_level_residual": 1.9468227278723995e-10,
+          "minimum_edge_length": 1.0453146166161047,
+          "normalized_average_length": 0.8081431777989095,
+          "roots": [
+            [
+              0.9857774729886959,
+              0.045320812072404425
+            ],
+            [
+              0.6450030358452209,
+              0.7497618173795298
+            ],
+            [
+              -0.24886346753589766,
+              0.9638143464180512
+            ],
+            [
+              -0.8877501960654018,
+              0.44208977371009867
+            ],
+            [
+              -0.8720913497972305,
+              -0.45142993524925246
+            ],
+            [
+              -0.18463581451566402,
+              -0.9786127896633872
+            ],
+            [
+              0.634389726244582,
+              -0.7699854789031125
+            ]
+          ],
+          "total_inverse_ray_edge_length": 9.697718133586914
+        },
+        "perturbation_scale": 0.03,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 7,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 6,
+          "aggregate_candidate_survives": true,
+          "degree": 7,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.2367089470353863e-11,
+                  "length": 0.6783768402088399,
+                  "maximum_level_residual": 8.356351494686137e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 1.132479066115556e-11,
+                  "length": 0.7194654496649131,
+                  "maximum_level_residual": 7.67244907389433e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.395206382948286,
+                0.013341650669281042
+              ],
+              "critical_value_modulus": 0.9730739521690842,
+              "total_length": 1.397842289873753
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0522763624363305e-11,
+                  "length": 0.6775008994403035,
+                  "maximum_level_residual": 7.150747241965797e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 1.2691502558340247e-11,
+                  "length": 0.7372520630676855,
+                  "maximum_level_residual": 8.598505648562461e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.22403248688417554,
+                -0.3180610211439045
+              ],
+              "critical_value_modulus": 0.9737633377634786,
+              "total_length": 1.4147529625079889
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.7311708245980854e-11,
+                  "length": 0.6015424766090471,
+                  "maximum_level_residual": 1.2039526927173084e-10,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 1.0996882664016669e-11,
+                  "length": 0.8328382777719745,
+                  "maximum_level_residual": 7.472922219539653e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.1721085163590325,
+                -0.3844750932994479
+              ],
+              "critical_value_modulus": 0.9814168430367595,
+              "total_length": 1.4343807543810216
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.364427013866001e-11,
+                  "length": 0.5935222163687557,
+                  "maximum_level_residual": 9.513993689829414e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.680871688715748e-11,
+                  "length": 0.8436054272751753,
+                  "maximum_level_residual": 1.1357667680964723e-10,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.18684112037715267,
+                0.38582193415394195
+              ],
+              "critical_value_modulus": 0.9821689773785458,
+              "total_length": 1.4371276436439309
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.244206853051584e-11,
+                  "length": 0.6456412300963161,
+                  "maximum_level_residual": 8.644921998643544e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 3.9237621074873495e-11,
+                  "length": 1.3382597505883493,
+                  "maximum_level_residual": 2.65834030305148e-10,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                0.3488596302294432,
+                0.028420996257253618
+              ],
+              "critical_value_modulus": 0.9873427897524046,
+              "total_length": 1.9839009806846655
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1970110828163018e-11,
+                  "length": 0.6261708915956306,
+                  "maximum_level_residual": 8.381147071265593e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 3.007743983284931e-11,
+                  "length": 1.369451525164964,
+                  "maximum_level_residual": 2.0377315824443178e-10,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.262129866163816,
+                0.2695355016328386
+              ],
+              "critical_value_modulus": 0.9881979426259059,
+              "total_length": 1.9956224167605945
+            }
+          ],
+          "maximum_edge_length": 1.9956224167605945,
+          "maximum_endpoint_error": 3.9237621074873495e-11,
+          "maximum_level_residual": 2.65834030305148e-10,
+          "minimum_edge_length": 1.397842289873753,
+          "normalized_average_length": 0.8053022539876628,
+          "roots": [
+            [
+              0.9940448418604187,
+              0.007098468783192439
+            ],
+            [
+              0.626516685736244,
+              0.7785183957569576
+            ],
+            [
+              -0.2330751309984381,
+              0.9722188139313113
+            ],
+            [
+              -0.8983980205914353,
+              0.4286648704872909
+            ],
+            [
+              -0.8991342582615659,
+              -0.4325961193069618
+            ],
+            [
+              -0.22677100998518404,
+              -0.971930672070607
+            ],
+            [
+              0.6100045852064172,
+              -0.788292461266227
+            ]
+          ],
+          "total_inverse_ray_edge_length": 9.663627047851953
+        },
+        "perturbation_scale": 0.01,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 7,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 6,
+          "aggregate_candidate_survives": true,
+          "degree": 7,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.5806383183550054e-11,
+                  "length": 0.7319435837418385,
+                  "maximum_level_residual": 1.0982226285038441e-10,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 1.879002201214959e-11,
+                  "length": 0.7974441974248174,
+                  "maximum_level_residual": 1.3011779080729862e-10,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.16828733158255893,
+                -0.25829525396413044
+              ],
+              "critical_value_modulus": 0.9908314944498647,
+              "total_length": 1.529387781166656
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.196933356186092e-12,
+                  "length": 0.7625236114515541,
+                  "maximum_level_residual": 3.603901864259518e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.79536401758076e-11,
+                  "length": 0.7707002332470462,
+                  "maximum_level_residual": 1.2434941560360736e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.27441586203206964,
+                0.12601488291714033
+              ],
+              "critical_value_modulus": 0.9904595245307252,
+              "total_length": 1.5332238446986004
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.3566362153280789e-11,
+                  "length": 0.7206244655500158,
+                  "maximum_level_residual": 9.441463783739749e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 2.080485272917244e-11,
+                  "length": 0.9479100967288235,
+                  "maximum_level_residual": 1.4409787877250816e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.020707368039542113,
+                0.28385509514980595
+              ],
+              "critical_value_modulus": 0.9913058179604289,
+              "total_length": 1.6685345622788392
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.536003557778191e-11,
+                  "length": 0.7044614836808201,
+                  "maximum_level_residual": 1.0701434826825181e-10,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 8.533535447904786e-12,
+                  "length": 0.9823524747839073,
+                  "maximum_level_residual": 5.917815536053071e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.2152492847453725,
+                -0.20862503699440657
+              ],
+              "critical_value_modulus": 0.9914552346905541,
+              "total_length": 1.6868139584647275
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.5045076428626783e-11,
+                  "length": 0.7194489593043083,
+                  "maximum_level_residual": 1.0480149107525241e-10,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 2.1608840761287278e-11,
+                  "length": 0.9678850990418915,
+                  "maximum_level_residual": 1.496378900563132e-10,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.2694115092828306,
+                0.09028157176833279
+              ],
+              "critical_value_modulus": 0.9914217029891809,
+              "total_length": 1.6873340583461998
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.3066658167555638e-11,
+                  "length": 0.9609010202622136,
+                  "maximum_level_residual": 1.5973305753987522e-10,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.322142302717055e-11,
+                  "length": 1.0845934711521528,
+                  "maximum_level_residual": 1.6083490555475233e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                -0.029646370079747512,
+                -0.03775744759861484
+              ],
+              "critical_value_modulus": 0.9911382774752344,
+              "total_length": 2.0454944914143662
+            }
+          ],
+          "maximum_edge_length": 2.0454944914143662,
+          "maximum_endpoint_error": 2.322142302717055e-11,
+          "maximum_level_residual": 1.6083490555475233e-10,
+          "minimum_edge_length": 1.529387781166656,
+          "normalized_average_length": 0.8458990580307825,
+          "roots": [
+            [
+              0.9994547574079788,
+              0.00031545131176191453
+            ],
+            [
+              0.6244061717514829,
+              0.7782799797057515
+            ],
+            [
+              -0.22130481856676162,
+              0.9729418997666549
+            ],
+            [
+              -0.9001202832273305,
+              0.4325038914930544
+            ],
+            [
+              -0.8989094850149507,
+              -0.43533693534653517
+            ],
+            [
+              -0.22569613658728976,
+              -0.9735563521723448
+            ],
+            [
+              0.6240511233284282,
+              -0.7804284882671944
+            ]
+          ],
+          "total_inverse_ray_edge_length": 10.15078869636939
+        },
+        "perturbation_scale": 0.003,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 8,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 7,
+          "aggregate_candidate_survives": true,
+          "degree": 8,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.345908094683596e-12,
+                  "length": 0.340872107837173,
+                  "maximum_level_residual": 1.3881250008041093e-11,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 3.020824017483278e-12,
+                  "length": 0.39618787582248277,
+                  "maximum_level_residual": 1.5565814277087144e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.6521781741277598,
+                -0.31067970477137885
+              ],
+              "critical_value_modulus": 0.644156435069519,
+              "total_length": 0.7370599836596557
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.2149955355958146e-12,
+                  "length": 0.451714212621956,
+                  "maximum_level_residual": 4.621944011331986e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 5.833789894109996e-12,
+                  "length": 0.5483383157764593,
+                  "maximum_level_residual": 3.5395811328381566e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                0.23571890624370698,
+                0.540296765901141
+              ],
+              "critical_value_modulus": 0.7421447681151694,
+              "total_length": 1.0000525283984154
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.109009592344213e-11,
+                  "length": 0.49254578343264827,
+                  "maximum_level_residual": 7.182454498161768e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 9.90325793500049e-12,
+                  "length": 0.7678762670097748,
+                  "maximum_level_residual": 6.371285284083965e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.3062022105501527,
+                0.4261046343020124
+              ],
+              "critical_value_modulus": 0.7670250721980354,
+              "total_length": 1.260422050442423
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.659582255700679e-12,
+                  "length": 0.4446020494410406,
+                  "maximum_level_residual": 5.836036749943483e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 6.037185225078403e-11,
+                  "length": 0.8496398474767914,
+                  "maximum_level_residual": 3.909696448054925e-10,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.5417977686448165,
+                0.13242527169698404
+              ],
+              "critical_value_modulus": 0.7909011533404678,
+              "total_length": 1.294241896917832
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.6447016062078e-12,
+                  "length": 0.44569270407234585,
+                  "maximum_level_residual": 4.378889302938054e-11,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 3.005814921551584e-12,
+                  "length": 1.0087370326916216,
+                  "maximum_level_residual": 9.514238746169484e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.08102730329498312,
+                -0.5149947064786264
+              ],
+              "critical_value_modulus": 0.7756216120988514,
+              "total_length": 1.4544297367639674
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.375576530901432e-12,
+                  "length": 0.8984130733776569,
+                  "maximum_level_residual": 3.74139649833208e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 6.066416354137273e-12,
+                  "length": 0.7711348007420706,
+                  "maximum_level_residual": 3.6109389986556217e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                0.2020530728104849,
+                0.2491753539637953
+              ],
+              "critical_value_modulus": 0.7520567698968997,
+              "total_length": 1.6695478741197274
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.074205369769418e-12,
+                  "length": 0.4387654756052237,
+                  "maximum_level_residual": 4.842066199096294e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 2.1117765695153785e-11,
+                  "length": 1.3130192215543608,
+                  "maximum_level_residual": 1.145321461010878e-10,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.31384540097792846,
+                -0.41689281522770544
+              ],
+              "critical_value_modulus": 0.8035431704540098,
+              "total_length": 1.7517846971595845
+            }
+          ],
+          "maximum_edge_length": 1.7517846971595845,
+          "maximum_endpoint_error": 6.037185225078403e-11,
+          "maximum_level_residual": 3.909696448054925e-10,
+          "minimum_edge_length": 0.7370599836596557,
+          "normalized_average_length": 0.654824197675829,
+          "roots": [
+            [
+              0.9231792010894282,
+              -0.05137053576368056
+            ],
+            [
+              0.6297424995912873,
+              0.7389101015822233
+            ],
+            [
+              -0.012785220163936486,
+              0.9791239553337087
+            ],
+            [
+              -0.707109810931417,
+              0.7001032962077169
+            ],
+            [
+              -0.9726481815508011,
+              0.033764568966116695
+            ],
+            [
+              -0.6501738024654162,
+              -0.6975901352057877
+            ],
+            [
+              0.04311298530778674,
+              -0.9565683498580687
+            ],
+            [
+              0.7571189877562559,
+              -0.6258759876779773
+            ]
+          ],
+          "total_inverse_ray_edge_length": 9.167538767461606
+        },
+        "perturbation_scale": 0.1,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 8,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 7,
+          "aggregate_candidate_survives": true,
+          "degree": 8,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.596729049681456e-12,
+                  "length": 0.47267662659179105,
+                  "maximum_level_residual": 3.258831255358656e-11,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 4.9158122051420684e-12,
+                  "length": 0.5225116164142231,
+                  "maximum_level_residual": 3.408800882845764e-11,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                -0.22549096562886467,
+                -0.5742652594405174
+              ],
+              "critical_value_modulus": 0.8727530205771309,
+              "total_length": 0.9951882430060142
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.3884608140156918e-11,
+                  "length": 0.5450463737546529,
+                  "maximum_level_residual": 1.0440816034422365e-10,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 4.965062979110371e-12,
+                  "length": 0.6167207746204818,
+                  "maximum_level_residual": 3.7105799691491766e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.21669219219717498,
+                0.45830468738599506
+              ],
+              "critical_value_modulus": 0.9278236611562501,
+              "total_length": 1.1617671483751346
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.298117446993655e-12,
+                  "length": 0.4644741939498068,
+                  "maximum_level_residual": 5.5477476966192465e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 1.2482268392194108e-11,
+                  "length": 0.7269106557260652,
+                  "maximum_level_residual": 1.0320322911114425e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.5496989116647133,
+                -0.11810370529518976
+              ],
+              "critical_value_modulus": 0.9131730657357405,
+              "total_length": 1.191384849675872
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4540156330775352e-11,
+                  "length": 0.47319089668684977,
+                  "maximum_level_residual": 1.1319492083332854e-10,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 2.7789396723167044e-11,
+                  "length": 0.9400309776277563,
+                  "maximum_level_residual": 1.966147416287899e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.31772139392299226,
+                -0.42485532852668245
+              ],
+              "critical_value_modulus": 0.9344974169433737,
+              "total_length": 1.413221874314606
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.886220063688514e-12,
+                  "length": 0.5154045516715071,
+                  "maximum_level_residual": 6.816157460452214e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 2.589635663695632e-11,
+                  "length": 1.3332550309933604,
+                  "maximum_level_residual": 1.7602664756310994e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                -0.3108729204126266,
+                0.35966673600717325
+              ],
+              "critical_value_modulus": 0.9354625317152003,
+              "total_length": 1.8486595826648675
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.082338660504094e-12,
+                  "length": 0.49655351247045143,
+                  "maximum_level_residual": 6.288461958116424e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 2.9146058267794854e-11,
+                  "length": 1.4196354236542978,
+                  "maximum_level_residual": 1.981154062134173e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.48518116487170726,
+                -0.020771915581649116
+              ],
+              "critical_value_modulus": 0.9463385626060629,
+              "total_length": 1.9161889361247493
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1459890520389745e-11,
+                  "length": 0.7329274266689342,
+                  "maximum_level_residual": 8.563090286829271e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 2.477068632748665e-11,
+                  "length": 1.2356657666619066,
+                  "maximum_level_residual": 1.683749644796696e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                0.0071115379393936595,
+                0.26817838405257266
+              ],
+              "critical_value_modulus": 0.9298186708686316,
+              "total_length": 1.968593193330841
+            }
+          ],
+          "maximum_edge_length": 1.968593193330841,
+          "maximum_endpoint_error": 2.9146058267794854e-11,
+          "maximum_level_residual": 1.981154062134173e-10,
+          "minimum_edge_length": 0.9951882430060142,
+          "normalized_average_length": 0.7496431305351489,
+          "roots": [
+            [
+              0.981732376863908,
+              -0.021098162623906985
+            ],
+            [
+              0.686389316221363,
+              0.704026788717559
+            ],
+            [
+              0.015933686010411997,
+              0.9913988201855857
+            ],
+            [
+              -0.6907233368104274,
+              0.7078261581113495
+            ],
+            [
+              -0.9972732734058372,
+              -0.016590341095985138
+            ],
+            [
+              -0.6947539798005643,
+              -0.7056880144157164
+            ],
+            [
+              -0.04923526669120093,
+              -0.9934173135024883
+            ],
+            [
+              0.6800944675838484,
+              -0.7257109655458794
+            ]
+          ],
+          "total_inverse_ray_edge_length": 10.495003827492084
+        },
+        "perturbation_scale": 0.03,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 8,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 7,
+          "aggregate_candidate_survives": true,
+          "degree": 8,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 9.513740239301209e-12,
+                  "length": 0.5646790377230566,
+                  "maximum_level_residual": 7.417050629036397e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 6.661928021855294e-12,
+                  "length": 0.6003208200364555,
+                  "maximum_level_residual": 5.138947134332981e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.21377207178505064,
+                0.4718297396304093
+              ],
+              "critical_value_modulus": 0.9732409390727638,
+              "total_length": 1.1649998577595122
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.952401860890452e-12,
+                  "length": 0.5642276900145324,
+                  "maximum_level_residual": 5.560320822376659e-11,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 1.826595778984707e-11,
+                  "length": 0.786936935833732,
+                  "maximum_level_residual": 1.4385648314912097e-10,
+                  "root_index": 7
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.10151528790217841,
+                -0.4471078393694988
+              ],
+              "critical_value_modulus": 0.9922570988809993,
+              "total_length": 1.3511646258482646
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.8040817658362374e-11,
+                  "length": 0.5503622588038377,
+                  "maximum_level_residual": 1.4423280494940324e-10,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 5.538903106196008e-12,
+                  "length": 0.8114828476613863,
+                  "maximum_level_residual": 4.251465524905659e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                -0.2666591643455027,
+                0.38431761453778845
+              ],
+              "critical_value_modulus": 0.9869510838880104,
+              "total_length": 1.361845106465224
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.660828572835681e-12,
+                  "length": 0.6163562243947157,
+                  "maximum_level_residual": 4.49807847891726e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 2.2674534769486146e-11,
+                  "length": 0.9405948693804785,
+                  "maximum_level_residual": 1.7673026717778412e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                0.38742719993704877,
+                0.031054014029990626
+              ],
+              "critical_value_modulus": 0.9865155595941701,
+              "total_length": 1.5569510937751943
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.7682212232455014e-12,
+                  "length": 0.596675370244023,
+                  "maximum_level_residual": 3.8062570089281526e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 1.6727543559845332e-11,
+                  "length": 1.1936414240743036,
+                  "maximum_level_residual": 1.2839907685728402e-10,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.4037396780476769,
+                0.021027477595192228
+              ],
+              "critical_value_modulus": 0.9938547989585256,
+              "total_length": 1.7903167943183265
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.9173676461031243e-11,
+                  "length": 0.675985875178865,
+                  "maximum_level_residual": 1.510051813176007e-10,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 2.4097896617389954e-11,
+                  "length": 1.118099275236617,
+                  "maximum_level_residual": 1.878241812063902e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                0.32306787689387056,
+                -0.16889448634877002
+              ],
+              "critical_value_modulus": 0.9878150896897957,
+              "total_length": 1.794085150415482
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0877435099024169e-11,
+                  "length": 0.559033114622875,
+                  "maximum_level_residual": 8.792972860751689e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 9.119887570576702e-12,
+                  "length": 1.4254322281463967,
+                  "maximum_level_residual": 7.000279613470538e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.3453778017642513,
+                -0.2808543389254934
+              ],
+              "critical_value_modulus": 0.9974757424344266,
+              "total_length": 1.9844653427692718
+            }
+          ],
+          "maximum_edge_length": 1.9844653427692718,
+          "maximum_endpoint_error": 2.4097896617389954e-11,
+          "maximum_level_residual": 1.878241812063902e-10,
+          "minimum_edge_length": 1.1649998577595122,
+          "normalized_average_length": 0.7859877122393767,
+          "roots": [
+            [
+              0.998229153120395,
+              -0.002165399105237151
+            ],
+            [
+              0.6964965389803428,
+              0.715840435676814
+            ],
+            [
+              0.010481298724179966,
+              0.9962563709353874
+            ],
+            [
+              -0.7021170605306423,
+              0.7111346835706196
+            ],
+            [
+              -0.9985208654893405,
+              -0.001486685136844326
+            ],
+            [
+              -0.7114788085997201,
+              -0.7025386489199951
+            ],
+            [
+              0.010829639074726262,
+              -0.998120736769584
+            ],
+            [
+              0.7075152959894494,
+              -0.7059232417944536
+            ]
+          ],
+          "total_inverse_ray_edge_length": 11.003827971351274
+        },
+        "perturbation_scale": 0.01,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 8,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 7,
+          "aggregate_candidate_survives": true,
+          "degree": 8,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.72125483038413e-11,
+                  "length": 0.6702210863179546,
+                  "maximum_level_residual": 1.367701709855771e-10,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 4.408639757016883e-12,
+                  "length": 0.7258998398349036,
+                  "maximum_level_residual": 3.484678024810288e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.3415286532101837,
+                0.16893303570017273
+              ],
+              "critical_value_modulus": 0.992490482335872,
+              "total_length": 1.3961209261528582
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.6506580530669608e-11,
+                  "length": 0.6711837839533991,
+                  "maximum_level_residual": 1.3142817972125793e-10,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 5.741986106711304e-12,
+                  "length": 0.78929037850202,
+                  "maximum_level_residual": 4.550856800788964e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.30613804031316466,
+                -0.18048427986394674
+              ],
+              "critical_value_modulus": 0.9936621655381006,
+              "total_length": 1.460474162455419
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.6245255107692414e-11,
+                  "length": 0.6681538828943424,
+                  "maximum_level_residual": 1.2940792709397e-10,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 6.235407408205684e-12,
+                  "length": 0.805106899556004,
+                  "maximum_level_residual": 4.941854676514828e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                -0.30063061494927457,
+                0.18598508277595613
+              ],
+              "critical_value_modulus": 0.9937355028852511,
+              "total_length": 1.4732607824503465
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.608885865076442e-11,
+                  "length": 0.657758085255261,
+                  "maximum_level_residual": 1.2823925047991182e-10,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 8.91966582884789e-12,
+                  "length": 0.820571985907512,
+                  "maximum_level_residual": 7.050221303849045e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.303104893412057,
+                -0.19821839378434786
+              ],
+              "critical_value_modulus": 0.9934297035930085,
+              "total_length": 1.4783300711627732
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.901662982099222e-12,
+                  "length": 0.6400786023969054,
+                  "maximum_level_residual": 6.312478767143561e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 2.4970220128782143e-11,
+                  "length": 1.0533620254007896,
+                  "maximum_level_residual": 1.98411988300859e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.026473113900894716,
+                0.3604968304608334
+              ],
+              "critical_value_modulus": 0.9943996644482365,
+              "total_length": 1.693440627797695
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1560288572375317e-11,
+                  "length": 0.6469525104616161,
+                  "maximum_level_residual": 9.232424623464439e-11,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 1.0727897015011288e-11,
+                  "length": 1.2080477325577164,
+                  "maximum_level_residual": 8.479475522348052e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                0.011307161715437733,
+                -0.35264288335038435
+              ],
+              "critical_value_modulus": 0.9946182986921152,
+              "total_length": 1.8550002430193324
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.2622988482110256e-11,
+                  "length": 0.9259196011920373,
+                  "maximum_level_residual": 1.7929528361646335e-10,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 7.113386178870273e-12,
+                  "length": 1.078238450501212,
+                  "maximum_level_residual": 5.6225478816096505e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                -0.07348699268222575,
+                0.015742868310962655
+              ],
+              "critical_value_modulus": 0.9937890695529773,
+              "total_length": 2.004158051693249
+            }
+          ],
+          "maximum_edge_length": 2.004158051693249,
+          "maximum_endpoint_error": 2.4970220128782143e-11,
+          "maximum_level_residual": 1.98411988300859e-10,
+          "minimum_edge_length": 1.3961209261528582,
+          "normalized_average_length": 0.8114846331951195,
+          "roots": [
+            [
+              0.9985270577307579,
+              0.001299337857939819
+            ],
+            [
+              0.7087689843241656,
+              0.7050468779257769
+            ],
+            [
+              0.0012740451254415678,
+              0.9991935852199617
+            ],
+            [
+              -0.7077119867804703,
+              0.7051280354174736
+            ],
+            [
+              -0.9988849776157641,
+              -6.211795043644202e-05
+            ],
+            [
+              -0.707941158914058,
+              -0.705055871776218
+            ],
+            [
+              0.0008298004417721551,
+              -0.9994043322556045
+            ],
+            [
+              0.7076047205954792,
+              -0.7063600741540418
+            ]
+          ],
+          "total_inverse_ray_edge_length": 11.360784864731674
+        },
+        "perturbation_scale": 0.003,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 9,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 8,
+          "aggregate_candidate_survives": true,
+          "degree": 9,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.136853757145694e-12,
+                  "length": 0.2952592126676129,
+                  "maximum_level_residual": 1.2213570067324905e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 2.997202925417613e-12,
+                  "length": 0.30611520114498725,
+                  "maximum_level_residual": 1.618749697107218e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.7471209459932427,
+                0.28782453981135436
+              ],
+              "critical_value_modulus": 0.5721462663959165,
+              "total_length": 0.6013744138126002
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 2.106739254689449e-12,
+                  "length": 0.2959627917683467,
+                  "maximum_level_residual": 1.5922541669867984e-11,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 2.6410065141362738e-12,
+                  "length": 0.32972487499186653,
+                  "maximum_level_residual": 1.8883399714723245e-11,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.18763409427821945,
+                -0.7464855667991116
+              ],
+              "critical_value_modulus": 0.7409462505637534,
+              "total_length": 0.6256876667602133
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 3.522930712736648e-12,
+                  "length": 0.276064649025538,
+                  "maximum_level_residual": 3.3006348059414564e-11,
+                  "root_index": 8
+                },
+                {
+                  "endpoint_error": 3.792319078345111e-12,
+                  "length": 0.6196878883632104,
+                  "maximum_level_residual": 2.567507360998342e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.6774538365839133,
+                -0.30797021490466986
+              ],
+              "critical_value_modulus": 0.8638972944508954,
+              "total_length": 0.8957525373887485
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.3372621397942355e-12,
+                  "length": 0.37406668106998636,
+                  "maximum_level_residual": 4.9719198151264987e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 7.077084059501521e-12,
+                  "length": 0.5330560338071848,
+                  "maximum_level_residual": 6.385498976443675e-11,
+                  "root_index": 4
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                -0.6718095198014465,
+                -0.03851670014396204
+              ],
+              "critical_value_modulus": 0.7989297134199611,
+              "total_length": 0.9071227148771712
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.82191334391713e-12,
+                  "length": 0.5068255900969799,
+                  "maximum_level_residual": 4.928220108133876e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.282057985370325e-12,
+                  "length": 0.6661072012692787,
+                  "maximum_level_residual": 6.160540124998881e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                -0.4454736088151158,
+                0.2690614369364514
+              ],
+              "critical_value_modulus": 0.7834256108094443,
+              "total_length": 1.1729327913662586
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.582910536822885e-12,
+                  "length": 0.42645987672753766,
+                  "maximum_level_residual": 4.7085879751623126e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 5.216709631212769e-12,
+                  "length": 0.7640384693852084,
+                  "maximum_level_residual": 4.348924991196903e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.19848612947692626,
+                0.5343350993892876
+              ],
+              "critical_value_modulus": 0.7504865718233132,
+              "total_length": 1.190498346112746
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.163388106019796e-12,
+                  "length": 0.5293766274745922,
+                  "maximum_level_residual": 5.497310353568213e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 9.738341167031822e-12,
+                  "length": 1.025093507755906,
+                  "maximum_level_residual": 5.996708188512562e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.08657311903887131,
+                0.4810121234942941
+              ],
+              "critical_value_modulus": 0.7651634689809602,
+              "total_length": 1.5544701352304982
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.703367461368093e-12,
+                  "length": 0.6253703553977698,
+                  "maximum_level_residual": 3.3501476547680283e-11,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 3.673451323612102e-11,
+                  "length": 1.2348805711902981,
+                  "maximum_level_residual": 2.4716361227267905e-10,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 7,
+              "critical_point": [
+                -0.23756206025235913,
+                -0.3083692481648183
+              ],
+              "critical_value_modulus": 0.8284874056988487,
+              "total_length": 1.8602509265880678
+            }
+          ],
+          "maximum_edge_length": 1.8602509265880678,
+          "maximum_endpoint_error": 3.673451323612102e-11,
+          "maximum_level_residual": 2.4716361227267905e-10,
+          "minimum_edge_length": 0.6013744138126002,
+          "normalized_average_length": 0.550505595758519,
+          "roots": [
+            [
+              0.9638179058959072,
+              0.08838751890760568
+            ],
+            [
+              0.8064248344594429,
+              0.566889148584132
+            ],
+            [
+              0.20873577543462504,
+              0.9542670791242872
+            ],
+            [
+              -0.4527262978185717,
+              0.8371686136847486
+            ],
+            [
+              -0.9279413917086039,
+              0.3449659478935033
+            ],
+            [
+              -0.9639066876830968,
+              -0.26301849904904817
+            ],
+            [
+              -0.4843029063457221,
+              -0.8475975968422819
+            ],
+            [
+              0.017389903677994464,
+              -0.9494147178745179
+            ],
+            [
+              0.8257684376896043,
+              -0.539394591107248
+            ]
+          ],
+          "total_inverse_ray_edge_length": 8.808089532136304
+        },
+        "perturbation_scale": 0.1,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 9,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 8,
+          "aggregate_candidate_survives": true,
+          "degree": 9,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.4051394848316444e-12,
+                  "length": 0.4344421287651948,
+                  "maximum_level_residual": 4.4382330333768605e-11,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 5.37964857847326e-12,
+                  "length": 0.49039504416968294,
+                  "maximum_level_residual": 4.505429861861419e-11,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                -0.5004688872438448,
+                0.4018929376185274
+              ],
+              "critical_value_modulus": 0.8868763172437859,
+              "total_length": 0.9248371729348777
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.711025732902195e-12,
+                  "length": 0.467388604178471,
+                  "maximum_level_residual": 3.567484385311096e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 5.220538725643036e-12,
+                  "length": 0.4821951190597243,
+                  "maximum_level_residual": 4.107857860171708e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                0.3268644868623704,
+                0.5292114112437727
+              ],
+              "critical_value_modulus": 0.8542958858272257,
+              "total_length": 0.9495837232381953
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 4.930650890561574e-12,
+                  "length": 0.44731603254194946,
+                  "maximum_level_residual": 3.857062895818447e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 6.782289919187006e-12,
+                  "length": 0.5525584734389027,
+                  "maximum_level_residual": 5.933042879989201e-11,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.5851501483231925,
+                0.1871974711115718
+              ],
+              "critical_value_modulus": 0.8735241807558187,
+              "total_length": 0.9998745059808523
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4463369915236426e-11,
+                  "length": 0.3720546900871409,
+                  "maximum_level_residual": 1.3226491722766384e-10,
+                  "root_index": 8
+                },
+                {
+                  "endpoint_error": 5.7598497131925034e-12,
+                  "length": 0.7213311731780717,
+                  "maximum_level_residual": 4.8695190354124266e-11,
+                  "root_index": 0
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.5659864945836048,
+                -0.3122922865595482
+              ],
+              "critical_value_modulus": 0.953038110501773,
+              "total_length": 1.0933858632652127
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 7.393114356040126e-12,
+                  "length": 0.5775912750511379,
+                  "maximum_level_residual": 6.275685181988077e-11,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 3.3031412467136578e-12,
+                  "length": 0.736273878473551,
+                  "maximum_level_residual": 4.597117128742559e-11,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 7,
+              "critical_point": [
+                -0.1562284217562988,
+                0.439419566820697
+              ],
+              "critical_value_modulus": 0.893273257640876,
+              "total_length": 1.3138651535246888
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0360468430340541e-11,
+                  "length": 0.45075928202403226,
+                  "maximum_level_residual": 8.897075963487999e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 5.866981522661341e-11,
+                  "length": 1.0329324201774313,
+                  "maximum_level_residual": 4.734299167496716e-10,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                -0.5250012127151235,
+                -0.1165082305259131
+              ],
+              "critical_value_modulus": 0.9407013101326309,
+              "total_length": 1.4836917022014635
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.35885395055477e-11,
+                  "length": 0.4890878489141274,
+                  "maximum_level_residual": 1.1972692976756448e-10,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 2.5886834878826253e-11,
+                  "length": 1.5376005344973231,
+                  "maximum_level_residual": 1.9481300256512376e-10,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                -0.25184564999831094,
+                -0.44137335232765623
+              ],
+              "critical_value_modulus": 0.9588504311583329,
+              "total_length": 2.0266883834114506
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 3.787775548624461e-12,
+                  "length": 0.40670295597556655,
+                  "maximum_level_residual": 3.512165221357441e-11,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 4.07940353557222e-11,
+                  "length": 1.7896601061216884,
+                  "maximum_level_residual": 3.069976072630931e-10,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.012865761325493327,
+                -0.6154006988881421
+              ],
+              "critical_value_modulus": 0.976454840329659,
+              "total_length": 2.1963630620972547
+            }
+          ],
+          "maximum_edge_length": 2.1963630620972547,
+          "maximum_endpoint_error": 5.866981522661341e-11,
+          "maximum_level_residual": 4.734299167496716e-10,
+          "minimum_edge_length": 0.9248371729348777,
+          "normalized_average_length": 0.6867680979158747,
+          "roots": [
+            [
+              0.987598019353401,
+              0.029320596633211335
+            ],
+            [
+              0.7620876010669226,
+              0.6438448379393797
+            ],
+            [
+              0.1993075616583595,
+              0.9534226107622391
+            ],
+            [
+              -0.5107524244466731,
+              0.853836218495657
+            ],
+            [
+              -0.9193855327414472,
+              0.38301974309987635
+            ],
+            [
+              -0.9250900705564539,
+              -0.31862832026266297
+            ],
+            [
+              -0.4888057906653424,
+              -0.8672129663178377
+            ],
+            [
+              0.14192348852730138,
+              -0.9892646248461346
+            ],
+            [
+              0.7886572441252909,
+              -0.607172924698754
+            ]
+          ],
+          "total_inverse_ray_edge_length": 10.988289566653995
+        },
+        "perturbation_scale": 0.03,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 9,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 8,
+          "aggregate_candidate_survives": true,
+          "degree": 9,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.365818654625894e-12,
+                  "length": 0.4810979947046973,
+                  "maximum_level_residual": 5.4281230153816236e-11,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 6.256300277171788e-12,
+                  "length": 0.5492847376463597,
+                  "maximum_level_residual": 5.322635534580311e-11,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.4671317183812883,
+                -0.36115087784872835
+              ],
+              "critical_value_modulus": 0.942306696269746,
+              "total_length": 1.030382732351057
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.490966699975268e-12,
+                  "length": 0.4722957370023537,
+                  "maximum_level_residual": 4.7753547330977525e-11,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 6.65675734427838e-12,
+                  "length": 0.6232617557170782,
+                  "maximum_level_residual": 6.308326056588867e-11,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.03687199614363091,
+                -0.5714244371763046
+              ],
+              "critical_value_modulus": 0.9539975874172167,
+              "total_length": 1.0955574927194318
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1280185041037403e-11,
+                  "length": 0.48336127723440736,
+                  "maximum_level_residual": 1.0016024302035415e-10,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 2.0522291371943502e-11,
+                  "length": 0.816385577871374,
+                  "maximum_level_residual": 1.7477182136360264e-10,
+                  "root_index": 5
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                -0.5174078473936166,
+                0.10072926320756827
+              ],
+              "critical_value_modulus": 0.9723260966347578,
+              "total_length": 1.2997468551057814
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.0569527534135177e-11,
+                  "length": 0.46961265806773034,
+                  "maximum_level_residual": 9.654772891818293e-11,
+                  "root_index": 1
+                },
+                {
+                  "endpoint_error": 1.9573558275745364e-11,
+                  "length": 0.8350666947119838,
+                  "maximum_level_residual": 1.7306132709539323e-10,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.35186701118743274,
+                0.4140324286368476
+              ],
+              "critical_value_modulus": 0.9941882922492352,
+              "total_length": 1.304679352779714
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.8659130835834866e-11,
+                  "length": 0.5030449024423415,
+                  "maximum_level_residual": 1.6600127531628304e-10,
+                  "root_index": 8
+                },
+                {
+                  "endpoint_error": 2.7006010268712126e-11,
+                  "length": 1.0479053004141128,
+                  "maximum_level_residual": 2.2263340882316485e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.3473859956212579,
+                -0.36909527875818143
+              ],
+              "critical_value_modulus": 0.9799029213338318,
+              "total_length": 1.5509502028564541
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 6.506462315116647e-12,
+                  "length": 0.46272230054767804,
+                  "maximum_level_residual": 5.956219032366423e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 3.4967318664410215e-11,
+                  "length": 1.3374033180873588,
+                  "maximum_level_residual": 2.8728712543035525e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.5415088474570556,
+                -0.07414735121720151
+              ],
+              "critical_value_modulus": 0.9949922241812104,
+              "total_length": 1.800125618635037
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.2223422944211944e-11,
+                  "length": 0.544888093579288,
+                  "maximum_level_residual": 1.0895548107143925e-10,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 4.382595538594322e-11,
+                  "length": 1.3246945775948893,
+                  "maximum_level_residual": 3.6006689078145467e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 7,
+              "critical_point": [
+                -0.23000509937142014,
+                0.38984497788507105
+              ],
+              "critical_value_modulus": 0.98148337287947,
+              "total_length": 1.8695826711741774
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 8.14454780582221e-12,
+                  "length": 0.5802738886649993,
+                  "maximum_level_residual": 7.201635372098005e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 4.202471295087767e-11,
+                  "length": 1.4261529904370998,
+                  "maximum_level_residual": 3.4526743908058354e-10,
+                  "root_index": 6
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                -0.013634953981437875,
+                0.4399749273275974
+              ],
+              "critical_value_modulus": 0.9832922174857504,
+              "total_length": 2.006426879102099
+            }
+          ],
+          "maximum_edge_length": 2.006426879102099,
+          "maximum_endpoint_error": 4.382595538594322e-11,
+          "maximum_level_residual": 3.6006689078145467e-10,
+          "minimum_edge_length": 1.030382732351057,
+          "normalized_average_length": 0.7473407377952345,
+          "roots": [
+            [
+              0.9975788647666962,
+              -0.008077251605107078
+            ],
+            [
+              0.7504328057930875,
+              0.6574451100934661
+            ],
+            [
+              0.16373194754450174,
+              0.9848089210254811
+            ],
+            [
+              -0.5023874994850546,
+              0.8606051951304812
+            ],
+            [
+              -0.9411536717627629,
+              0.32381834215701993
+            ],
+            [
+              -0.9290117141394378,
+              -0.3652197694247222
+            ],
+            [
+              -0.49600156431702724,
+              -0.8625455641427547
+            ],
+            [
+              0.16397902176100143,
+              -0.9857373786221504
+            ],
+            [
+              0.765505828707641,
+              -0.6402384960479608
+            ]
+          ],
+          "total_inverse_ray_edge_length": 11.957451804723751
+        },
+        "perturbation_scale": 0.01,
+        "valid_sample_count": 4
+      },
+      {
+        "degree": 9,
+        "maximum_normalized_average_row": {
+          "admissible_simple_critical_hub_count": 8,
+          "aggregate_candidate_survives": true,
+          "degree": 9,
+          "hub_rows": [
+            {
+              "branches": [
+                {
+                  "endpoint_error": 5.580653542969525e-12,
+                  "length": 0.532793309029471,
+                  "maximum_level_residual": 5.002977750321248e-11,
+                  "root_index": 0
+                },
+                {
+                  "endpoint_error": 1.444417676571526e-11,
+                  "length": 0.6717283972113999,
+                  "maximum_level_residual": 1.2678489524175456e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 0,
+              "critical_point": [
+                0.49033668305984535,
+                0.1189656539365167
+              ],
+              "critical_value_modulus": 0.9902934132180112,
+              "total_length": 1.2045217062408708
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.026926926753216e-11,
+                  "length": 0.609791858814255,
+                  "maximum_level_residual": 9.138164202988499e-11,
+                  "root_index": 2
+                },
+                {
+                  "endpoint_error": 1.6769074099486695e-11,
+                  "length": 0.651312649221194,
+                  "maximum_level_residual": 1.4719436715281658e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 1,
+              "critical_point": [
+                0.20716876752030544,
+                0.4049692755945048
+              ],
+              "critical_value_modulus": 0.9879456560778852,
+              "total_length": 1.261104508035449
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.5260293713362637e-11,
+                  "length": 0.5701521530169827,
+                  "maximum_level_residual": 1.36710640704638e-10,
+                  "root_index": 4
+                },
+                {
+                  "endpoint_error": 1.771808054825076e-11,
+                  "length": 0.7274130640485519,
+                  "maximum_level_residual": 1.5736853275831483e-10,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 3,
+              "critical_point": [
+                -0.38680221294568684,
+                0.24637925190159593
+              ],
+              "critical_value_modulus": 0.9923211009788505,
+              "total_length": 1.2975652170655345
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4631016487358784e-11,
+                  "length": 0.6296906687419116,
+                  "maximum_level_residual": 1.2995118430650789e-10,
+                  "root_index": 3
+                },
+                {
+                  "endpoint_error": 1.2149007555609214e-11,
+                  "length": 0.7028175708819805,
+                  "maximum_level_residual": 1.0811311520954395e-10,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 2,
+              "critical_point": [
+                -0.09989709054210694,
+                0.41052643091473573
+              ],
+              "critical_value_modulus": 0.989825309199578,
+              "total_length": 1.332508239623892
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.1051838007649908e-11,
+                  "length": 0.5330168383661095,
+                  "maximum_level_residual": 1.0019605200088915e-10,
+                  "root_index": 8
+                },
+                {
+                  "endpoint_error": 2.9672389645904016e-11,
+                  "length": 1.1502541928599637,
+                  "maximum_level_residual": 2.6045086526719763e-10,
+                  "root_index": 1
+                }
+              ],
+              "critical_index": 4,
+              "critical_point": [
+                0.3685934416783243,
+                -0.28693138043641525
+              ],
+              "critical_value_modulus": 0.9990577750907123,
+              "total_length": 1.6832710312260732
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.2942816995449161e-11,
+                  "length": 0.5870446658724918,
+                  "maximum_level_residual": 1.1639677930769554e-10,
+                  "root_index": 5
+                },
+                {
+                  "endpoint_error": 2.5646074704139582e-11,
+                  "length": 1.1344490759244286,
+                  "maximum_level_residual": 2.2778463510019017e-10,
+                  "root_index": 3
+                }
+              ],
+              "critical_index": 6,
+              "critical_point": [
+                -0.3948264147721801,
+                -0.12511898595574006
+              ],
+              "critical_value_modulus": 0.9960695637208168,
+              "total_length": 1.7214937417969205
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.4578844847937496e-11,
+                  "length": 0.6039971516770876,
+                  "maximum_level_residual": 1.3102975207175843e-10,
+                  "root_index": 6
+                },
+                {
+                  "endpoint_error": 2.3431843391311755e-11,
+                  "length": 1.4073856293924403,
+                  "maximum_level_residual": 2.0851187908440806e-10,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 7,
+              "critical_point": [
+                -0.23598729357414988,
+                -0.3249499412183268
+              ],
+              "critical_value_modulus": 0.9970043971631255,
+              "total_length": 2.011382781069528
+            },
+            {
+              "branches": [
+                {
+                  "endpoint_error": 1.119094953955818e-11,
+                  "length": 0.5647052839749347,
+                  "maximum_level_residual": 1.0112164406392084e-10,
+                  "root_index": 7
+                },
+                {
+                  "endpoint_error": 3.00472324292831e-11,
+                  "length": 1.4648393840400975,
+                  "maximum_level_residual": 2.6737635847271463e-10,
+                  "root_index": 2
+                }
+              ],
+              "critical_index": 5,
+              "critical_point": [
+                0.05001058757027509,
+                -0.43418427921919917
+              ],
+              "critical_value_modulus": 0.9987803446087122,
+              "total_length": 2.029544668015032
+            }
+          ],
+          "maximum_edge_length": 2.029544668015032,
+          "maximum_endpoint_error": 3.00472324292831e-11,
+          "maximum_level_residual": 2.6737635847271463e-10,
+          "minimum_edge_length": 1.2045217062408708,
+          "normalized_average_length": 0.7838369933170812,
+          "roots": [
+            [
+              0.9997317438559747,
+              0.009095183402167539
+            ],
+            [
+              0.76321812062882,
+              0.641988620751347
+            ],
+            [
+              0.17293614706344754,
+              0.9847325013340578
+            ],
+            [
+              -0.5006692282468611,
+              0.8650458398254487
+            ],
+            [
+              -0.9380723723275567,
+              0.34539933468306744
+            ],
+            [
+              -0.9382201226828053,
+              -0.343621047735392
+            ],
+            [
+              -0.49988319726854036,
+              -0.8659695498766123
+            ],
+            [
+              0.17316758778704625,
+              -0.9847609816658305
+            ],
+            [
+              0.7662123476844294,
+              -0.6410468720108741
+            ]
+          ],
+          "total_inverse_ray_edge_length": 12.5413918930733
+        },
+        "perturbation_scale": 0.003,
+        "valid_sample_count": 4
+      }
+    ]
+  },
+  "schema": "erdos1041-inverse-ray-aggregate/1",
+  "source_records": [
+    {
+      "byte_length": 12014,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_inverse_ray_aggregate.py",
+      "sha256": "60c793645140d2cb08a772a3640e03b343daac1b09686b1196b147b2124a9542"
+    },
+    {
+      "byte_length": 34285,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/search_counterexample.py",
+      "sha256": "b3dd12fea0d23e850f5281f86a2fbd648040a46ee40d07c5c8b3e8d0a491a72e"
+    },
+    {
+      "byte_length": 3624,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/InverseRayAggregateComputationalLab.md",
+      "sha256": "b63a3a90b2166797c26dc2a5a9f363f64991b2ba42c4944592a2a605ddfbfb33"
+    },
+    {
+      "byte_length": 31369,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "sha256": "f8766feafc98379dbff2c9e07da84d5a0df994ea84e6d751eb21cb077edeb332"
+    },
+    {
+      "byte_length": 5298,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonBranchHubCounterexampleComputationalLab.md",
+      "sha256": "c1af1b9a7a834da3d031e63a91327404c31008959ac19867cf70b30f7aa80c44"
+    },
+    {
+      "byte_length": 17375,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos1041_newton_branch_hub_counterexample_receipt.json",
+      "sha256": "decef7c6bc656b5280db8b28a65f0194f0f564c746ce6be730badbd7f4791e79"
+    }
+  ],
+  "status": "finite_numerical_aggregate_mechanism_support"
+}

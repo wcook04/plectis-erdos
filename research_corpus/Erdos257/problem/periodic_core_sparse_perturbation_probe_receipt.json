@@ -1,0 +1,648 @@
+{
+ "probe": "erdos257_periodic_core_sparse_perturbation",
+ "fast": false,
+ "P1": {
+  "n_max": 300000,
+  "cases": [
+   {
+    "m": 1,
+    "R": [
+     0
+    ],
+    "checked": 298910,
+    "max_j": 6,
+    "violations": 0
+   },
+   {
+    "m": 2,
+    "R": [
+     0
+    ],
+    "checked": 298620,
+    "max_j": 6,
+    "violations": 0
+   },
+   {
+    "m": 2,
+    "R": [
+     1
+    ],
+    "checked": 298620,
+    "max_j": 6,
+    "violations": 0
+   },
+   {
+    "m": 3,
+    "R": [
+     1
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 3,
+    "R": [
+     2
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 3,
+    "R": [
+     0,
+     1
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 3,
+    "R": [
+     1,
+     2
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 4,
+    "R": [
+     1
+    ],
+    "checked": 204221,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 4,
+    "R": [
+     2
+    ],
+    "checked": 204221,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 4,
+    "R": [
+     3
+    ],
+    "checked": 204221,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 4,
+    "R": [
+     1,
+     3
+    ],
+    "checked": 204221,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 4,
+    "R": [
+     0,
+     2
+    ],
+    "checked": 204221,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 5,
+    "R": [
+     1
+    ],
+    "checked": 109038,
+    "max_j": 3,
+    "violations": 0
+   },
+   {
+    "m": 5,
+    "R": [
+     2,
+     3
+    ],
+    "checked": 109038,
+    "max_j": 3,
+    "violations": 0
+   },
+   {
+    "m": 5,
+    "R": [
+     0,
+     4
+    ],
+    "checked": 109038,
+    "max_j": 3,
+    "violations": 0
+   },
+   {
+    "m": 6,
+    "R": [
+     1
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 6,
+    "R": [
+     5
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 6,
+    "R": [
+     1,
+     5
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 6,
+    "R": [
+     2,
+     4
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 6,
+    "R": [
+     0,
+     3
+    ],
+    "checked": 198582,
+    "max_j": 4,
+    "violations": 0
+   },
+   {
+    "m": 7,
+    "R": [
+     3
+    ],
+    "checked": 65026,
+    "max_j": 3,
+    "violations": 0
+   },
+   {
+    "m": 8,
+    "R": [
+     1,
+     7
+    ],
+    "checked": 93125,
+    "max_j": 3,
+    "violations": 0
+   },
+   {
+    "m": 9,
+    "R": [
+     4
+    ],
+    "checked": 70730,
+    "max_j": 3,
+    "violations": 0
+   },
+   {
+    "m": 10,
+    "R": [
+     1,
+     9
+    ],
+    "checked": 109038,
+    "max_j": 3,
+    "violations": 0
+   },
+   {
+    "m": 12,
+    "R": [
+     5,
+     7
+    ],
+    "checked": 98928,
+    "max_j": 3,
+    "violations": 0
+   }
+  ],
+  "violations": 0,
+  "controls": [
+   {
+    "m": 3,
+    "R": [
+     1
+    ],
+    "prime": 2,
+    "odd_tau_count": 306,
+    "first_counterexample": [
+     2,
+     1
+    ]
+   },
+   {
+    "m": 3,
+    "R": [
+     1
+    ],
+    "prime": 5,
+    "odd_tau_count": 309,
+    "first_counterexample": [
+     5,
+     1
+    ]
+   },
+   {
+    "m": 4,
+    "R": [
+     1
+    ],
+    "prime": 3,
+    "odd_tau_count": 360,
+    "first_counterexample": [
+     3,
+     1
+    ]
+   },
+   {
+    "m": 5,
+    "R": [
+     1
+    ],
+    "prime": 2,
+    "odd_tau_count": 23178,
+    "first_counterexample": [
+     2,
+     1
+    ]
+   },
+   {
+    "m": 6,
+    "R": [
+     1
+    ],
+    "prime": 5,
+    "odd_tau_count": 528,
+    "first_counterexample": [
+     5,
+     1
+    ]
+   }
+  ],
+  "kfree_base2": [
+   {
+    "k": 2,
+    "checked": 19733,
+    "violations": 0
+   },
+   {
+    "k": 3,
+    "checked": 19733,
+    "violations": 0
+   }
+  ],
+  "base_t_socket": [
+   {
+    "base": 3,
+    "m": 1,
+    "R": [
+     0
+    ],
+    "checked": 75408,
+    "violations": 0
+   },
+   {
+    "base": 3,
+    "m": 2,
+    "R": [
+     0
+    ],
+    "checked": 43323,
+    "violations": 0
+   },
+   {
+    "base": 3,
+    "m": 3,
+    "R": [
+     1
+    ],
+    "checked": 8773,
+    "violations": 0
+   },
+   {
+    "base": 3,
+    "m": 4,
+    "R": [
+     1,
+     3
+    ],
+    "checked": 13330,
+    "violations": 0
+   },
+   {
+    "base": 4,
+    "m": 1,
+    "R": [
+     0
+    ],
+    "checked": 28578,
+    "violations": 0
+   },
+   {
+    "base": 4,
+    "m": 2,
+    "R": [
+     0
+    ],
+    "checked": 10485,
+    "violations": 0
+   },
+   {
+    "base": 4,
+    "m": 3,
+    "R": [
+     1
+    ],
+    "checked": 936,
+    "violations": 0
+   },
+   {
+    "base": 4,
+    "m": 4,
+    "R": [
+     1,
+     3
+    ],
+    "checked": 2127,
+    "violations": 0
+   },
+   {
+    "base": 5,
+    "m": 1,
+    "R": [
+     0
+    ],
+    "checked": 12273,
+    "violations": 0
+   },
+   {
+    "base": 5,
+    "m": 2,
+    "R": [
+     0
+    ],
+    "checked": 2991,
+    "violations": 0
+   },
+   {
+    "base": 5,
+    "m": 3,
+    "R": [
+     1
+    ],
+    "checked": 119,
+    "violations": 0
+   },
+   {
+    "base": 5,
+    "m": 4,
+    "R": [
+     1,
+     3
+    ],
+    "checked": 397,
+    "violations": 0
+   }
+  ],
+  "squarefree_base3_socket_impossible": true
+ },
+ "P2": {
+  "checked": 5455,
+  "worst_ratio_sum_over_bound": 0.4688815517275741,
+  "worst_case": [
+   1,
+   0,
+   300000,
+   3829833,
+   8168018.097298013
+  ],
+  "holds": true
+ },
+ "P3": {
+  "checked": 648000,
+  "worst_ratio": 0.9983361064891847,
+  "holds": true,
+  "full_period_formula_exact": true
+ },
+ "P4": {
+  "k": 4,
+  "Lambda": 329293951336350,
+  "N0": 289740952125478,
+  "samples": 80,
+  "depth": 56,
+  "all_heads_integral": true,
+  "all_tails_positive": true,
+  "mean_R_upper": 6.7612464354784105,
+  "max_R_upper": 26.41254515958493,
+  "min_R_lower": 1.951142559586935,
+  "log_X": 37.80849601124763,
+  "proved_envelope_on_class_mean": 2528.1051642756847,
+  "mean_under_envelope": true,
+  "min_Z_upper": 0.1219464100605047,
+  "max_DeltaS": 2.2323972485981933e-103,
+  "seconds": 1.717106819152832,
+  "first_rows": [
+   {
+    "N": 289740952125478,
+    "head_terms": [
+     0,
+     24,
+     0,
+     64
+    ],
+    "head_integral": true,
+    "R_lo": 12.378094838548309,
+    "R_hi": 12.378094839493206,
+    "Z_hi": 0.7736309274683254,
+    "DeltaS": 2.2323972485981933e-103
+   },
+   {
+    "N": 619034903461828,
+    "head_terms": [
+     0,
+     32,
+     0,
+     384
+    ],
+    "head_integral": true,
+    "R_lo": 1.951142559586935,
+    "R_hi": 1.9511425609680753,
+    "Z_hi": 0.1219464100605047,
+    "DeltaS": 2.1686514723156182e-119
+   },
+   {
+    "N": 948328854798178,
+    "head_terms": [
+     0,
+     256,
+     0,
+     32
+    ],
+    "head_integral": true,
+    "R_lo": 7.033002986890637,
+    "R_hi": 7.0330029886001,
+    "Z_hi": 0.43956268678750626,
+    "DeltaS": 2.091199634018632e-119
+   }
+  ]
+ },
+ "P5": {
+  "2N u {7^k}": {
+   "value_head": "0.428971701781457049715822414206",
+   "max_partial_quotient_first60": 76,
+   "partial_quotients_head": [
+    0,
+    2,
+    3,
+    50,
+    1,
+    2,
+    3,
+    76,
+    3,
+    2,
+    1,
+    2,
+    10,
+    1,
+    5,
+    1,
+    3,
+    4,
+    9,
+    3
+   ]
+  },
+  "2N u odd squares": {
+   "value_head": "1.42305466299817544400799837367",
+   "max_partial_quotient_first60": 172,
+   "partial_quotients_head": [
+    1,
+    2,
+    2,
+    1,
+    2,
+    1,
+    65,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    16,
+    1,
+    2,
+    1,
+    1,
+    1
+   ]
+  },
+  "3N u {2^j}": {
+   "value_head": "0.564903012197240717381508638281",
+   "max_partial_quotient_first60": 650,
+   "partial_quotients_head": [
+    0,
+    1,
+    1,
+    3,
+    2,
+    1,
+    5,
+    3,
+    6,
+    1,
+    1,
+    1,
+    1,
+    2,
+    4,
+    5,
+    1,
+    8,
+    3,
+    1
+   ]
+  },
+  "odd \\ odd squares": {
+   "value_head": "0.183640489417116319775303149517",
+   "max_partial_quotient_first60": 842,
+   "partial_quotients_head": [
+    0,
+    5,
+    2,
+    4,
+    12,
+    2,
+    2,
+    9,
+    5,
+    1,
+    4,
+    1,
+    6,
+    5,
+    1,
+    2,
+    1,
+    4,
+    3,
+    3
+   ]
+  },
+  "2N \\ {2^j} u {p^2 : p odd prime}": {
+   "value_head": "0.0191178351159971234317918859467",
+   "max_partial_quotient_first60": 130,
+   "partial_quotients_head": [
+    0,
+    52,
+    3,
+    3,
+    1,
+    10,
+    1,
+    2,
+    1,
+    2,
+    2,
+    42,
+    1,
+    1,
+    1,
+    1,
+    5,
+    1,
+    1,
+    7
+   ]
+  }
+ },
+ "all_lemma_probes_pass": true
+}

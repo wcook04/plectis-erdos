@@ -1,0 +1,41 @@
+{
+  "M": 200000,
+  "P1_identity": true,
+  "P2_naturals_not_syndetic": true,
+  "P3_fourN_survives": true,
+  "P4_primes_calibration": true,
+  "check_to": 60000,
+  "cohorts": {
+    "empty": {
+      "identity_holds": true,
+      "maxgap_Odd_A": 487,
+      "maxgap_Odd_E": 0,
+      "socket": "survives_in_range"
+    },
+    "four_N": {
+      "identity_holds": true,
+      "maxgap_Odd_A": 968,
+      "maxgap_Odd_E": 972,
+      "socket": "survives_in_range"
+    },
+    "pow2_ge1": {
+      "identity_holds": true,
+      "maxgap_Odd_A": 4,
+      "maxgap_Odd_E": 4,
+      "socket": "DEAD"
+    },
+    "pow2_xor_primes": {
+      "identity_holds": true,
+      "maxgap_Odd_A": 15,
+      "maxgap_Odd_E": 15,
+      "socket": "DEAD"
+    },
+    "primes": {
+      "identity_holds": true,
+      "maxgap_Odd_A": 14,
+      "maxgap_Odd_E": 20,
+      "socket": "DEAD"
+    }
+  },
+  "falsifier_survived": true
+}

@@ -1,0 +1,143 @@
+{
+ "probe_id": "erdos269_torus_coding",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_269",
+   "target_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+   "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open."
+  },
+  "hypothesis": {
+   "id": "dyadic_radix_word_two_torus_coding",
+   "statement": "The dyadic radix word b_a is the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, hence a coding of a rotation on the 2-torus by (log_3 2, log_5 2) under a product partition."
+  },
+  "probe": {
+   "id": "erdos269_torus_coding",
+   "question": "Does the literal source radix agree with the Beatty prediction, and is the factor complexity quadratic (rank-2 rotation) rather than linear (Sturmian)?",
+   "computation": "Exact Beatty indicators from integer bit lengths, checked letter by letter against the literal source engine on a = 1..2600; factor complexity of the 300,000-letter radix word for n = 1..22; radix letter frequencies against the independent-rotation prediction.",
+   "falsifier": "Any a where the radix disagrees with the Beatty prediction, or a factor complexity that is linear in n.",
+   "stop_condition": "One mismatch retires the identification outright; near-linear complexity retires the rank-2 reading and returns the source word to the opaque treatment the retired functional attempts assumed.",
+   "resource_bounds": {
+    "engine_verified_prefix": 2600,
+    "max_factor_length": 22,
+    "word_length": 300000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The source system is a cocycle over an ergodic 2-torus rotation whose angles are ratios of logarithms of 2, 3 and 5, making rotation-Diophantine tools available for the first time.",
+   "falsification_consequence": "The radix word carries no rotation structure and the packet's existing opaque-source mechanism families remain the only route.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos269_engine.py",
+    "formal_math/probes/erdos269_torus_coding.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "0 mismatches on a = 1..2600 against the literal source engine. Radix frequencies match the independent-rotation prediction to five decimals over 300,000 letters. Factor complexity is exactly (n+1)^2 for n = 1..22, the rank-2 rotation signature.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "Exact letter-by-letter agreement with the source engine plus an exactly quadratic factor complexity.",
+    "next_analytic_target": "Effective simultaneous approximation bounds for (log_3 2, log_5 2), or an all-scale invariant of the cocycle over the 2-torus rotation.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_269",
+  "motivated_by": [
+   "actual_dyadic_block_radix_alphabet",
+   "exclude_exact_integral_dyadic_tails",
+   "prime_power_jump_expansion"
+  ],
+  "eliminates": [],
+  "opens": [
+   "dyadic_radix_word_two_torus_coding"
+  ],
+  "supports": [
+   "dyadic_radix_word_two_torus_coding"
+  ],
+  "rationale": "Identifies the source word every retired functional attempt treated as opaque, opening a mechanism family the packet did not previously carry."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+   "byte_length": 14385,
+   "sha256": "271d03d7211814b204b94f74d9251e1e687d7c591c34605110348903c025572e"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+   "byte_length": 57166,
+   "sha256": "d6fd961aebd3e3ff0faac37ce7bfd4637c6d7b3acf236dc3439201efbff187b0"
+  },
+  {
+   "path": "formal_math/probes/erdos269_engine.py",
+   "byte_length": 5343,
+   "sha256": "a4de6896e1b580af3ed8545c51344ef9912e45530328a6f10b12d55af757a2cd"
+  },
+  {
+   "path": "formal_math/probes/erdos269_torus_coding.py",
+   "byte_length": 6203,
+   "sha256": "1662ecad9e0546fb808c15d4e53173df74533b4806e60d1321950324ee78923e"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos269_torus_coding",
+  "max_a": 300000,
+  "engine_verified_prefix": 2600,
+  "beatty_identity_mismatches": [],
+  "beatty_identity_mismatch_count": 0,
+  "radix_letter_frequency": {
+   "a": 0.21009,
+   "b": 0.35924,
+   "c": 0.15898,
+   "d": 0.27169
+  },
+  "independent_rotation_prediction": {
+   "a": 0.21012,
+   "b": 0.3592,
+   "c": 0.15895,
+   "d": 0.27173
+  },
+  "factor_complexity": {
+   "1": 4,
+   "2": 9,
+   "3": 16,
+   "4": 25,
+   "5": 36,
+   "6": 49,
+   "7": 64,
+   "8": 81,
+   "9": 100,
+   "10": 121,
+   "11": 144,
+   "12": 169,
+   "13": 196,
+   "14": 225,
+   "15": 256,
+   "16": 289,
+   "17": 324,
+   "18": 361,
+   "19": 400,
+   "20": 441,
+   "21": 484,
+   "22": 529
+  },
+  "max_deviation_from_linear": 420,
+  "quadratic_fit_upper_half": {
+   "n^2": 1.0,
+   "n": 2.0,
+   "const": 1.0
+  },
+  "reading": "quadratic complexity => rank-2 torus rotation coding"
+ }
+}

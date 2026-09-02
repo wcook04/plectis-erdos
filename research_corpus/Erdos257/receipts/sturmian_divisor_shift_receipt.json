@@ -1,0 +1,833 @@
+{
+  "aggregate_gate": {
+    "input_convergent_shift_sparse_below_0_02": true,
+    "tail_rows": 12,
+    "tau_shift_dense_above_0_5": true
+  },
+  "cohorts": [
+    {
+      "alpha_decimal": "0.61803398874989484820458683436563811772030917980576286213544862270526046281890245",
+      "convergent_denominators": [
+        2,
+        3,
+        5,
+        8,
+        13,
+        21,
+        34,
+        55,
+        89,
+        144,
+        233,
+        377,
+        610,
+        987,
+        1597,
+        2584,
+        4181,
+        6765
+      ],
+      "decimal_precision": 80,
+      "matched_density_random_shift_rows": [
+        {
+          "input_mismatch_count": 94305,
+          "input_mismatch_fraction": 0.471529715297153,
+          "positions": 199998,
+          "q": 2,
+          "tau_mean_absolute_shift_defect": 7.112766127661277,
+          "tau_mismatch_count": 183018,
+          "tau_mismatch_fraction": 0.91509915099151
+        },
+        {
+          "input_mismatch_count": 93794,
+          "input_mismatch_fraction": 0.4689770346555198,
+          "positions": 199997,
+          "q": 3,
+          "tau_mean_absolute_shift_defect": 7.806457096856453,
+          "tau_mismatch_count": 186612,
+          "tau_mismatch_fraction": 0.9330739961099417
+        },
+        {
+          "input_mismatch_count": 94553,
+          "input_mismatch_fraction": 0.4727768194204855,
+          "positions": 199995,
+          "q": 5,
+          "tau_mean_absolute_shift_defect": 8.086727168179204,
+          "tau_mismatch_count": 186900,
+          "tau_mismatch_fraction": 0.9345233630840771
+        },
+        {
+          "input_mismatch_count": 94401,
+          "input_mismatch_fraction": 0.47202388095523823,
+          "positions": 199992,
+          "q": 8,
+          "tau_mean_absolute_shift_defect": 6.281791271650866,
+          "tau_mismatch_count": 181441,
+          "tau_mismatch_fraction": 0.907241289651586
+        },
+        {
+          "input_mismatch_count": 94425,
+          "input_mismatch_fraction": 0.4721556901198578,
+          "positions": 199987,
+          "q": 13,
+          "tau_mean_absolute_shift_defect": 8.233635186287108,
+          "tau_mismatch_count": 187399,
+          "tau_mismatch_fraction": 0.9370559086340612
+        },
+        {
+          "input_mismatch_count": 94479,
+          "input_mismatch_fraction": 0.4724446066837018,
+          "positions": 199979,
+          "q": 21,
+          "tau_mean_absolute_shift_defect": 7.65511378694763,
+          "tau_mismatch_count": 186163,
+          "tau_mismatch_fraction": 0.9309127458383131
+        },
+        {
+          "input_mismatch_count": 94531,
+          "input_mismatch_fraction": 0.47273536501205204,
+          "positions": 199966,
+          "q": 34,
+          "tau_mean_absolute_shift_defect": 7.060450276547013,
+          "tau_mismatch_count": 182921,
+          "tau_mismatch_fraction": 0.9147605092865787
+        },
+        {
+          "input_mismatch_count": 94282,
+          "input_mismatch_fraction": 0.4715396734101878,
+          "positions": 199945,
+          "q": 55,
+          "tau_mean_absolute_shift_defect": 7.949966240716197,
+          "tau_mismatch_count": 186636,
+          "tau_mismatch_fraction": 0.93343669509115
+        },
+        {
+          "input_mismatch_count": 94062,
+          "input_mismatch_fraction": 0.47051938112460046,
+          "positions": 199911,
+          "q": 89,
+          "tau_mean_absolute_shift_defect": 8.329121459049277,
+          "tau_mismatch_count": 187679,
+          "tau_mismatch_fraction": 0.9388127716833992
+        },
+        {
+          "input_mismatch_count": 94514,
+          "input_mismatch_fraction": 0.47291049555680087,
+          "positions": 199856,
+          "q": 144,
+          "tau_mean_absolute_shift_defect": 5.00558902409735,
+          "tau_mismatch_count": 176920,
+          "tau_mismatch_fraction": 0.8852373709070531
+        },
+        {
+          "input_mismatch_count": 94184,
+          "input_mismatch_fraction": 0.4714692616898687,
+          "positions": 199767,
+          "q": 233,
+          "tau_mean_absolute_shift_defect": 8.333914009821441,
+          "tau_mismatch_count": 187464,
+          "tau_mismatch_fraction": 0.9384132514379252
+        },
+        {
+          "input_mismatch_count": 94365,
+          "input_mismatch_fraction": 0.47271606979155706,
+          "positions": 199623,
+          "q": 377,
+          "tau_mean_absolute_shift_defect": 8.204265039599646,
+          "tau_mismatch_count": 187041,
+          "tau_mismatch_fraction": 0.9369711906944591
+        },
+        {
+          "input_mismatch_count": 93895,
+          "input_mismatch_fraction": 0.47091127940217664,
+          "positions": 199390,
+          "q": 610,
+          "tau_mean_absolute_shift_defect": 6.754521289934299,
+          "tau_mismatch_count": 181556,
+          "tau_mismatch_fraction": 0.910557199458348
+        },
+        {
+          "input_mismatch_count": 94634,
+          "input_mismatch_fraction": 0.4755166747900891,
+          "positions": 199013,
+          "q": 987,
+          "tau_mean_absolute_shift_defect": 7.6507916568264385,
+          "tau_mismatch_count": 185396,
+          "tau_mismatch_fraction": 0.9315773341440007
+        },
+        {
+          "input_mismatch_count": 93729,
+          "input_mismatch_fraction": 0.4724172517552658,
+          "positions": 198403,
+          "q": 1597,
+          "tau_mean_absolute_shift_defect": 8.345453445764429,
+          "tau_mismatch_count": 186289,
+          "tau_mismatch_fraction": 0.9389424555072252
+        },
+        {
+          "input_mismatch_count": 93261,
+          "input_mismatch_fraction": 0.47240851805324796,
+          "positions": 197416,
+          "q": 2584,
+          "tau_mean_absolute_shift_defect": 6.142227580337966,
+          "tau_mismatch_count": 178413,
+          "tau_mismatch_fraction": 0.9037413380880982
+        },
+        {
+          "input_mismatch_count": 92878,
+          "input_mismatch_fraction": 0.47430535341310087,
+          "positions": 195819,
+          "q": 4181,
+          "tau_mean_absolute_shift_defect": 8.329334742798196,
+          "tau_mismatch_count": 183706,
+          "tau_mismatch_fraction": 0.9381418554889975
+        },
+        {
+          "input_mismatch_count": 91168,
+          "input_mismatch_fraction": 0.4717985872124615,
+          "positions": 193235,
+          "q": 6765,
+          "tau_mean_absolute_shift_defect": 7.4116386782932695,
+          "tau_mismatch_count": 179637,
+          "tau_mismatch_fraction": 0.9296297254638135
+        }
+      ],
+      "minimum_distance_of_n_alpha_to_integer": "0.00000227684629464853683242990780638768847908832985492054757452184958596318",
+      "name": "golden_conjugate",
+      "sturmian_shift_rows": [
+        {
+          "input_mismatch_count": 94426,
+          "input_mismatch_fraction": 0.47213472134721346,
+          "positions": 199998,
+          "q": 2,
+          "tau_mean_absolute_shift_defect": 7.296392963929639,
+          "tau_mismatch_count": 184805,
+          "tau_mismatch_fraction": 0.9240342403424034
+        },
+        {
+          "input_mismatch_count": 58358,
+          "input_mismatch_fraction": 0.29179437691565374,
+          "positions": 199997,
+          "q": 3,
+          "tau_mean_absolute_shift_defect": 7.589528842932644,
+          "tau_mismatch_count": 186117,
+          "tau_mismatch_fraction": 0.9305989589843847
+        },
+        {
+          "input_mismatch_count": 36066,
+          "input_mismatch_fraction": 0.18033450836270906,
+          "positions": 199995,
+          "q": 5,
+          "tau_mean_absolute_shift_defect": 8.245181129528238,
+          "tau_mismatch_count": 188121,
+          "tau_mismatch_fraction": 0.9406285157128929
+        },
+        {
+          "input_mismatch_count": 22290,
+          "input_mismatch_fraction": 0.11145445817832714,
+          "positions": 199992,
+          "q": 8,
+          "tau_mean_absolute_shift_defect": 6.583163326533061,
+          "tau_mismatch_count": 183242,
+          "tau_mismatch_fraction": 0.9162466498659947
+        },
+        {
+          "input_mismatch_count": 13774,
+          "input_mismatch_fraction": 0.06887447684099467,
+          "positions": 199987,
+          "q": 13,
+          "tau_mean_absolute_shift_defect": 8.384419987299175,
+          "tau_mismatch_count": 188175,
+          "tau_mismatch_fraction": 0.9409361608504553
+        },
+        {
+          "input_mismatch_count": 8514,
+          "input_mismatch_fraction": 0.04257447031938354,
+          "positions": 199979,
+          "q": 21,
+          "tau_mean_absolute_shift_defect": 7.3759444741697875,
+          "tau_mismatch_count": 185399,
+          "tau_mismatch_fraction": 0.9270923446961931
+        },
+        {
+          "input_mismatch_count": 5260,
+          "input_mismatch_fraction": 0.026304471760199233,
+          "positions": 199966,
+          "q": 34,
+          "tau_mean_absolute_shift_defect": 7.1705639958792995,
+          "tau_mismatch_count": 183257,
+          "tau_mismatch_fraction": 0.916440794935139
+        },
+        {
+          "input_mismatch_count": 3252,
+          "input_mismatch_fraction": 0.01626447273000075,
+          "positions": 199945,
+          "q": 55,
+          "tau_mean_absolute_shift_defect": 8.071699717422291,
+          "tau_mismatch_count": 187437,
+          "tau_mismatch_fraction": 0.9374427967691115
+        },
+        {
+          "input_mismatch_count": 2008,
+          "input_mismatch_fraction": 0.01004446978905613,
+          "positions": 199911,
+          "q": 89,
+          "tau_mean_absolute_shift_defect": 8.41127301649234,
+          "tau_mismatch_count": 188107,
+          "tau_mismatch_fraction": 0.9409537244073612
+        },
+        {
+          "input_mismatch_count": 1242,
+          "input_mismatch_fraction": 0.00621447442158354,
+          "positions": 199856,
+          "q": 144,
+          "tau_mean_absolute_shift_defect": 4.749569690176927,
+          "tau_mismatch_count": 174484,
+          "tau_mismatch_fraction": 0.8730485949883916
+        },
+        {
+          "input_mismatch_count": 766,
+          "input_mismatch_fraction": 0.0038344671542346834,
+          "positions": 199767,
+          "q": 233,
+          "tau_mean_absolute_shift_defect": 8.41571430716785,
+          "tau_mismatch_count": 188139,
+          "tau_mismatch_fraction": 0.9417921878989022
+        },
+        {
+          "input_mismatch_count": 474,
+          "input_mismatch_fraction": 0.002374475887047084,
+          "positions": 199623,
+          "q": 377,
+          "tau_mean_absolute_shift_defect": 8.336869999949906,
+          "tau_mismatch_count": 187652,
+          "tau_mismatch_fraction": 0.940031960245062
+        },
+        {
+          "input_mismatch_count": 292,
+          "input_mismatch_fraction": 0.0014644666232007623,
+          "positions": 199390,
+          "q": 610,
+          "tau_mean_absolute_shift_defect": 6.9713877325843825,
+          "tau_mismatch_count": 182266,
+          "tau_mismatch_fraction": 0.9141180600832539
+        },
+        {
+          "input_mismatch_count": 180,
+          "input_mismatch_fraction": 0.0009044635275082532,
+          "positions": 199013,
+          "q": 987,
+          "tau_mean_absolute_shift_defect": 7.375653851758428,
+          "tau_mismatch_count": 184608,
+          "tau_mismatch_fraction": 0.9276177938124646
+        },
+        {
+          "input_mismatch_count": 110,
+          "input_mismatch_fraction": 0.0005544271003966673,
+          "positions": 198403,
+          "q": 1597,
+          "tau_mean_absolute_shift_defect": 8.421929103894598,
+          "tau_mismatch_count": 186763,
+          "tau_mismatch_fraction": 0.9413315322852981
+        },
+        {
+          "input_mismatch_count": 68,
+          "input_mismatch_fraction": 0.00034445029784819874,
+          "positions": 197416,
+          "q": 2584,
+          "tau_mean_absolute_shift_defect": 6.401163026299793,
+          "tau_mismatch_count": 179540,
+          "tau_mismatch_fraction": 0.9094500952303765
+        },
+        {
+          "input_mismatch_count": 42,
+          "input_mismatch_fraction": 0.00021448378349394083,
+          "positions": 195819,
+          "q": 4181,
+          "tau_mean_absolute_shift_defect": 8.402213268375387,
+          "tau_mismatch_count": 184216,
+          "tau_mismatch_fraction": 0.9407463014314239
+        },
+        {
+          "input_mismatch_count": 24,
+          "input_mismatch_fraction": 0.00012420110228478277,
+          "positions": 193235,
+          "q": 6765,
+          "tau_mean_absolute_shift_defect": 7.205402747949388,
+          "tau_mismatch_count": 178796,
+          "tau_mismatch_fraction": 0.9252775118379175
+        }
+      ],
+      "support_density": 0.618035
+    },
+    {
+      "alpha_decimal": "0.4142135623730950488016887242096980785696718753769480731766797379907324784621070",
+      "convergent_denominators": [
+        2,
+        5,
+        12,
+        29,
+        70,
+        169,
+        408,
+        985,
+        2378,
+        5741
+      ],
+      "decimal_precision": 80,
+      "matched_density_random_shift_rows": [
+        {
+          "input_mismatch_count": 97278,
+          "input_mismatch_fraction": 0.4863948639486395,
+          "positions": 199998,
+          "q": 2,
+          "tau_mean_absolute_shift_defect": 4.736892368923689,
+          "tau_mismatch_count": 179237,
+          "tau_mismatch_fraction": 0.8961939619396194
+        },
+        {
+          "input_mismatch_count": 97132,
+          "input_mismatch_fraction": 0.48567214180354507,
+          "positions": 199995,
+          "q": 5,
+          "tau_mean_absolute_shift_defect": 5.247281182029551,
+          "tau_mismatch_count": 182127,
+          "tau_mismatch_fraction": 0.9106577664441611
+        },
+        {
+          "input_mismatch_count": 97315,
+          "input_mismatch_fraction": 0.4866041962517751,
+          "positions": 199988,
+          "q": 12,
+          "tau_mean_absolute_shift_defect": 3.462607756465388,
+          "tau_mismatch_count": 169912,
+          "tau_mismatch_fraction": 0.8496109766585995
+        },
+        {
+          "input_mismatch_count": 96823,
+          "input_mismatch_fraction": 0.484185206854994,
+          "positions": 199971,
+          "q": 29,
+          "tau_mean_absolute_shift_defect": 5.341359497127083,
+          "tau_mismatch_count": 182699,
+          "tau_mismatch_fraction": 0.9136274759840177
+        },
+        {
+          "input_mismatch_count": 96825,
+          "input_mismatch_fraction": 0.48429450307607663,
+          "positions": 199930,
+          "q": 70,
+          "tau_mean_absolute_shift_defect": 4.491462011704097,
+          "tau_mismatch_count": 178452,
+          "tau_mismatch_fraction": 0.8925724003401191
+        },
+        {
+          "input_mismatch_count": 96983,
+          "input_mismatch_fraction": 0.4853250997092543,
+          "positions": 199831,
+          "q": 169,
+          "tau_mean_absolute_shift_defect": 5.323298186967988,
+          "tau_mismatch_count": 182419,
+          "tau_mismatch_fraction": 0.9128663720844113
+        },
+        {
+          "input_mismatch_count": 96560,
+          "input_mismatch_fraction": 0.4837869253276684,
+          "positions": 199592,
+          "q": 408,
+          "tau_mean_absolute_shift_defect": 3.205223656258768,
+          "tau_mismatch_count": 167706,
+          "tau_mismatch_fraction": 0.8402440979598381
+        },
+        {
+          "input_mismatch_count": 96671,
+          "input_mismatch_fraction": 0.48574730547948647,
+          "positions": 199015,
+          "q": 985,
+          "tau_mean_absolute_shift_defect": 5.25139311107203,
+          "tau_mismatch_count": 181487,
+          "tau_mismatch_fraction": 0.9119262367158254
+        },
+        {
+          "input_mismatch_count": 95796,
+          "input_mismatch_fraction": 0.48474360142089445,
+          "positions": 197622,
+          "q": 2378,
+          "tau_mean_absolute_shift_defect": 4.712739472325955,
+          "tau_mismatch_count": 176953,
+          "tau_mismatch_fraction": 0.895411442045926
+        },
+        {
+          "input_mismatch_count": 94416,
+          "input_mismatch_fraction": 0.4860315352184455,
+          "positions": 194259,
+          "q": 5741,
+          "tau_mean_absolute_shift_defect": 5.372204119242866,
+          "tau_mismatch_count": 177564,
+          "tau_mismatch_fraction": 0.9140580359211157
+        }
+      ],
+      "minimum_distance_of_n_alpha_to_integer": "0.000001812861892549343438996367773050257495389297971281965901642601612072418",
+      "name": "sqrt2_minus_1",
+      "sturmian_shift_rows": [
+        {
+          "input_mismatch_count": 68628,
+          "input_mismatch_fraction": 0.34314343143431436,
+          "positions": 199998,
+          "q": 2,
+          "tau_mean_absolute_shift_defect": 4.862353623536236,
+          "tau_mismatch_count": 176079,
+          "tau_mismatch_fraction": 0.8804038040380404
+        },
+        {
+          "input_mismatch_count": 28426,
+          "input_mismatch_fraction": 0.14213355333883346,
+          "positions": 199995,
+          "q": 5,
+          "tau_mean_absolute_shift_defect": 6.085532138303457,
+          "tau_mismatch_count": 187110,
+          "tau_mismatch_fraction": 0.9355733893347333
+        },
+        {
+          "input_mismatch_count": 11774,
+          "input_mismatch_fraction": 0.058873532411944714,
+          "positions": 199988,
+          "q": 12,
+          "tau_mean_absolute_shift_defect": 3.8090435426125566,
+          "tau_mismatch_count": 169639,
+          "tau_mismatch_fraction": 0.8482458947536852
+        },
+        {
+          "input_mismatch_count": 4876,
+          "input_mismatch_fraction": 0.024383535612663838,
+          "positions": 199971,
+          "q": 29,
+          "tau_mean_absolute_shift_defect": 6.163953773297128,
+          "tau_mismatch_count": 187271,
+          "tau_mismatch_fraction": 0.9364907911647189
+        },
+        {
+          "input_mismatch_count": 2018,
+          "input_mismatch_fraction": 0.01009353273645776,
+          "positions": 199930,
+          "q": 70,
+          "tau_mean_absolute_shift_defect": 4.301555544440554,
+          "tau_mismatch_count": 169417,
+          "tau_mismatch_fraction": 0.847381583554244
+        },
+        {
+          "input_mismatch_count": 836,
+          "input_mismatch_fraction": 0.00418353508714864,
+          "positions": 199831,
+          "q": 169,
+          "tau_mean_absolute_shift_defect": 6.13130094930216,
+          "tau_mismatch_count": 187147,
+          "tau_mismatch_fraction": 0.9365263647782376
+        },
+        {
+          "input_mismatch_count": 346,
+          "input_mismatch_fraction": 0.0017335364142851417,
+          "positions": 199592,
+          "q": 408,
+          "tau_mean_absolute_shift_defect": 3.6582428153433004,
+          "tau_mismatch_count": 168266,
+          "tau_mismatch_fraction": 0.8430498216361377
+        },
+        {
+          "input_mismatch_count": 142,
+          "input_mismatch_fraction": 0.0007135140567293923,
+          "positions": 199015,
+          "q": 985,
+          "tau_mean_absolute_shift_defect": 6.0773911514207475,
+          "tau_mismatch_count": 186504,
+          "tau_mismatch_fraction": 0.9371353918046379
+        },
+        {
+          "input_mismatch_count": 58,
+          "input_mismatch_fraction": 0.0002934895912398417,
+          "positions": 197622,
+          "q": 2378,
+          "tau_mean_absolute_shift_defect": 4.7607553814858665,
+          "tau_mismatch_count": 171199,
+          "tau_mismatch_fraction": 0.8662952505287873
+        },
+        {
+          "input_mismatch_count": 24,
+          "input_mismatch_fraction": 0.00012354639939462264,
+          "positions": 194259,
+          "q": 5741,
+          "tau_mean_absolute_shift_defect": 6.182333894439897,
+          "tau_mismatch_count": 182024,
+          "tau_mismatch_fraction": 0.9370170751419497
+        }
+      ],
+      "support_density": 0.414215
+    },
+    {
+      "alpha_decimal": "0.7320508075688772935274463415058723669428052538103806280558069794519330169088000",
+      "convergent_denominators": [
+        3,
+        4,
+        11,
+        15,
+        41,
+        56,
+        153,
+        209,
+        571,
+        780,
+        2131,
+        2911
+      ],
+      "decimal_precision": 80,
+      "matched_density_random_shift_rows": [
+        {
+          "input_mismatch_count": 78478,
+          "input_mismatch_fraction": 0.39239588593828906,
+          "positions": 199997,
+          "q": 3,
+          "tau_mean_absolute_shift_defect": 9.579323689855348,
+          "tau_mismatch_count": 190390,
+          "tau_mismatch_fraction": 0.9519642794641919
+        },
+        {
+          "input_mismatch_count": 78327,
+          "input_mismatch_fraction": 0.39164283285665713,
+          "positions": 199996,
+          "q": 4,
+          "tau_mean_absolute_shift_defect": 7.677368547370947,
+          "tau_mismatch_count": 185242,
+          "tau_mismatch_fraction": 0.9262285245704914
+        },
+        {
+          "input_mismatch_count": 78277,
+          "input_mismatch_fraction": 0.3914065273590047,
+          "positions": 199989,
+          "q": 11,
+          "tau_mean_absolute_shift_defect": 10.063808509468021,
+          "tau_mismatch_count": 191069,
+          "tau_mismatch_fraction": 0.9553975468650776
+        },
+        {
+          "input_mismatch_count": 78219,
+          "input_mismatch_fraction": 0.3911243343250744,
+          "positions": 199985,
+          "q": 15,
+          "tau_mean_absolute_shift_defect": 9.222226667000024,
+          "tau_mismatch_count": 190344,
+          "tau_mismatch_fraction": 0.9517913843538265
+        },
+        {
+          "input_mismatch_count": 78119,
+          "input_mismatch_fraction": 0.3906750883931206,
+          "positions": 199959,
+          "q": 41,
+          "tau_mean_absolute_shift_defect": 10.168939632624689,
+          "tau_mismatch_count": 191330,
+          "tau_mismatch_fraction": 0.9568461534614596
+        },
+        {
+          "input_mismatch_count": 78647,
+          "input_mismatch_fraction": 0.3933451366382587,
+          "positions": 199944,
+          "q": 56,
+          "tau_mean_absolute_shift_defect": 7.0765364302004565,
+          "tau_mismatch_count": 183689,
+          "tau_mismatch_fraction": 0.9187022366262554
+        },
+        {
+          "input_mismatch_count": 78372,
+          "input_mismatch_fraction": 0.3921600024018374,
+          "positions": 199847,
+          "q": 153,
+          "tau_mean_absolute_shift_defect": 9.391889795693706,
+          "tau_mismatch_count": 190087,
+          "tau_mismatch_fraction": 0.9511626394191557
+        },
+        {
+          "input_mismatch_count": 78275,
+          "input_mismatch_fraction": 0.3917844147133755,
+          "positions": 199791,
+          "q": 209,
+          "tau_mean_absolute_shift_defect": 9.998263185028355,
+          "tau_mismatch_count": 190821,
+          "tau_mismatch_fraction": 0.955103082721444
+        },
+        {
+          "input_mismatch_count": 78252,
+          "input_mismatch_fraction": 0.3923802456011914,
+          "positions": 199429,
+          "q": 571,
+          "tau_mean_absolute_shift_defect": 10.192394285685632,
+          "tau_mismatch_count": 190678,
+          "tau_mismatch_fraction": 0.9561197218057554
+        },
+        {
+          "input_mismatch_count": 78227,
+          "input_mismatch_fraction": 0.39266639895592814,
+          "positions": 199220,
+          "q": 780,
+          "tau_mean_absolute_shift_defect": 5.601982732657364,
+          "tau_mismatch_count": 177960,
+          "tau_mismatch_fraction": 0.8932838068467022
+        },
+        {
+          "input_mismatch_count": 77297,
+          "input_mismatch_fraction": 0.3906473474874791,
+          "positions": 197869,
+          "q": 2131,
+          "tau_mean_absolute_shift_defect": 10.201072426706558,
+          "tau_mismatch_count": 189153,
+          "tau_mismatch_fraction": 0.9559506542207218
+        },
+        {
+          "input_mismatch_count": 77497,
+          "input_mismatch_fraction": 0.3932081445438355,
+          "positions": 197089,
+          "q": 2911,
+          "tau_mean_absolute_shift_defect": 10.178234198762995,
+          "tau_mismatch_count": 188482,
+          "tau_mismatch_fraction": 0.9563293740391396
+        }
+      ],
+      "minimum_distance_of_n_alpha_to_integer": "0.00000190776345260092938869741692368248021442844488510751109725130361342802",
+      "name": "sqrt3_minus_1",
+      "sturmian_shift_rows": [
+        {
+          "input_mismatch_count": 78460,
+          "input_mismatch_fraction": 0.3923058845882688,
+          "positions": 199997,
+          "q": 3,
+          "tau_mean_absolute_shift_defect": 9.630454456816853,
+          "tau_mismatch_count": 190351,
+          "tau_mismatch_fraction": 0.9517692765391481
+        },
+        {
+          "input_mismatch_count": 28718,
+          "input_mismatch_fraction": 0.14359287185743716,
+          "positions": 199996,
+          "q": 4,
+          "tau_mean_absolute_shift_defect": 7.595931918638373,
+          "tau_mismatch_count": 183555,
+          "tau_mismatch_fraction": 0.9177933558671173
+        },
+        {
+          "input_mismatch_count": 21022,
+          "input_mismatch_fraction": 0.10511578136797524,
+          "positions": 199989,
+          "q": 11,
+          "tau_mean_absolute_shift_defect": 10.155438549120202,
+          "tau_mismatch_count": 191070,
+          "tau_mismatch_fraction": 0.9554025471400927
+        },
+        {
+          "input_mismatch_count": 7694,
+          "input_mismatch_fraction": 0.03847288546640998,
+          "positions": 199985,
+          "q": 15,
+          "tau_mean_absolute_shift_defect": 9.17655824186814,
+          "tau_mismatch_count": 190790,
+          "tau_mismatch_fraction": 0.9540215516163713
+        },
+        {
+          "input_mismatch_count": 5632,
+          "input_mismatch_fraction": 0.028165773983666653,
+          "positions": 199959,
+          "q": 41,
+          "tau_mean_absolute_shift_defect": 10.205682164843793,
+          "tau_mismatch_count": 191127,
+          "tau_mismatch_fraction": 0.9558309453437954
+        },
+        {
+          "input_mismatch_count": 2060,
+          "input_mismatch_fraction": 0.010302884807746169,
+          "positions": 199944,
+          "q": 56,
+          "tau_mean_absolute_shift_defect": 7.110165846437003,
+          "tau_mismatch_count": 182107,
+          "tau_mismatch_fraction": 0.9107900212059377
+        },
+        {
+          "input_mismatch_count": 1508,
+          "input_mismatch_fraction": 0.0075457725159747205,
+          "positions": 199847,
+          "q": 153,
+          "tau_mean_absolute_shift_defect": 9.427492031404023,
+          "tau_mismatch_count": 190037,
+          "tau_mismatch_fraction": 0.9509124480227374
+        },
+        {
+          "input_mismatch_count": 550,
+          "input_mismatch_fraction": 0.00275287675621024,
+          "positions": 199791,
+          "q": 209,
+          "tau_mean_absolute_shift_defect": 10.080854492945127,
+          "tau_mismatch_count": 190819,
+          "tau_mismatch_fraction": 0.9550930722605122
+        },
+        {
+          "input_mismatch_count": 404,
+          "input_mismatch_fraction": 0.002025783612212868,
+          "positions": 199429,
+          "q": 571,
+          "tau_mean_absolute_shift_defect": 10.210781781987574,
+          "tau_mismatch_count": 190636,
+          "tau_mismatch_fraction": 0.9559091205391392
+        },
+        {
+          "input_mismatch_count": 146,
+          "input_mismatch_fraction": 0.0007328581467724124,
+          "positions": 199220,
+          "q": 780,
+          "tau_mean_absolute_shift_defect": 5.251204698323462,
+          "tau_mismatch_count": 173375,
+          "tau_mismatch_fraction": 0.8702690492922397
+        },
+        {
+          "input_mismatch_count": 108,
+          "input_mismatch_fraction": 0.0005458156659203816,
+          "positions": 197869,
+          "q": 2131,
+          "tau_mean_absolute_shift_defect": 10.221540514178573,
+          "tau_mismatch_count": 189058,
+          "tau_mismatch_fraction": 0.9554705385886622
+        },
+        {
+          "input_mismatch_count": 38,
+          "input_mismatch_fraction": 0.0001928062956329374,
+          "positions": 197089,
+          "q": 2911,
+          "tau_mean_absolute_shift_defect": 10.212934258127039,
+          "tau_mismatch_count": 188351,
+          "tau_mismatch_fraction": 0.9556646997041945
+        }
+      ],
+      "support_density": 0.73205
+    }
+  ],
+  "identity": {
+    "divisor_transform": "tau_A=1*1_A",
+    "lambert_series": "L_A(z)=sum_n tau_A(n) z^n=sum_{r>=1} H_A(z^r)",
+    "support_series": "H_A(z)=sum_n 1_A(n) z^n"
+  },
+  "mechanism_decision": {
+    "reason": "Convergent shifts make the Sturmian support defect tend to zero density, but the exact Lambert coefficient tau_A has a dense shift defect (0.84-0.95 on the audited tail rows). The divisor transform destroys the additive near-periodicity used by the direct Hecke-Mahler argument.",
+    "status": "direct_hecke_mahler_shift_transfer_eliminated",
+    "surviving_scope": "A proof could still work with the exact infinite tower sum_r H_A(2^-r), a multivariable algebraic-independence theorem controlling that tower, or a different nonlocal functional; this probe rules out only direct transfer of the sparse-shift mechanism to tau_A."
+  },
+  "nonclaims": [
+    "This computation does not prove the Sturmian Lambert value irrational or rational.",
+    "Dense finite shift defects do not prove that every Hecke-Mahler-style argument is impossible.",
+    "The cited transcendence theorem controls H_A at each algebraic point, not the infinite Lambert tower sum."
+  ],
+  "note": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SturmianHeckeLambertTransfer.md",
+  "parameters": {
+    "decimal_precision": 80,
+    "limit": 200000,
+    "q_cap": 7000
+  },
+  "schema": "erdos257.sturmian_divisor_shift_probe.v1",
+  "script": "formal_math/erdos257_period_noncollapse/scripts/sturmian_divisor_shift_probe.py",
+  "script_sha256": "6538bad00c47d42a08b1907ffa5b1d1f5471408637750235297b6f151254a803",
+  "status": "ok"
+}

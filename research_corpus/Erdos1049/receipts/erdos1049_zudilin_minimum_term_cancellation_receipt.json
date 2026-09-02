@@ -1,0 +1,936 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "The rank-six Phi_1/Phi_2 border orders are exact; any surviving Hankel route needs a different cyclotomic index, a genuine all-rank identity, or a different integral model.",
+      "survival_consequence": "Coefficientwise cancellation opens the only remaining source-native way for this Hankel model to gain charge without changing its rows."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "rank_six_minimum_cyclotomic_terms_cancel",
+      "statement": "At the first rank beyond the exact specialization sandwich, the signed minimum-order determinant terms cancel coefficientwise in mu and create cyclotomic content deeper than the forced border factor."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinMinimumTermCancellationLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_residual_border_charge_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_minimum_term_cancellation.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_residual_border_charge.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/SoutheastBlockDeterminant.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Extract exact Taylor-leading residual-entry coefficients at p=1 and p=-1 after mu=0 and mu=1, enumerate the rank-six determinant permutations, retain the minimum-order terms, and sum them with signs. One nonzero specialization proves the associated-graded polynomial is not identically zero.",
+      "falsifier": "A nonzero associated-graded determinant polynomial for both Phi_1 and Phi_2 proves exact forced order and eliminates extra rank-six content from minimum-term cancellation.",
+      "id": "coefficientwise_associated_graded_residual_determinant",
+      "question": "Do the exact minimum-Phi_1 or minimum-Phi_2 permutation terms of the rank-six primitive residual determinant cancel as polynomials in mu?",
+      "resource_bounds": {
+        "maximum_exact_rank": 6,
+        "maximum_permutation_count": 720,
+        "rational_root_cyclotomic_index_count": 2,
+        "specialization_regression_count": 2
+      },
+      "stop_condition": "Stop after the coefficientwise rank-six decision; do not substitute a higher-rank scan for an all-rank algebraic pattern."
+    },
+    "problem": {
+      "claim_ceiling": "Exact coefficientwise decision for minimum-term Phi_1/Phi_2 cancellation at residual Hankel rank six; not an all-rank content theorem or an irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The computation evaluates the structurally new associated-graded determinant coefficientwise, rather than extending an entry-valuation table or a finite analytic horizon.",
+        "next_analytic_target": "Derive an all-rank associated-graded determinant formula or test a structurally different cyclotomic family; do not extend the rank-six audit without such a pattern."
+      },
+      "status": "exact_one_way_result",
+      "summary": "At rank six the coefficientwise associated-graded determinants for Phi_1 and Phi_2 are both nonzero, so their orders equal the forced border orders and minimum-term cancellation supplies no extra copy of either factor at the first previously undecided rank."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_lower_rank_regressions_have_no_extra_order": true,
+    "authority_boundary": "A nonzero specialized leading sum rules out one extra universal Phi_d factor at that rank. Specialized cancellation alone does not prove coefficientwise determinant content or irrationality.",
+    "coefficientwise_maximum_rank_records": [],
+    "cyclotomic_indices": [
+      1,
+      2
+    ],
+    "maximum_rank": 6,
+    "maximum_rank_has_candidate_cancellation": false,
+    "maximum_rank_has_genuine_coefficientwise_cancellation": false,
+    "maximum_rank_has_no_extra_phi1_phi2_order_at_both_specializations": true,
+    "maximum_rank_universal_extra_phi1_phi2_factor_eliminated": true,
+    "maximum_rank_unresolved_cyclotomic_indices": [],
+    "records": [
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 1,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 1,
+        "minimum_term_count": 4,
+        "mu_specialization": 0,
+        "no_extra_order_at_specialization": true,
+        "rank": 3,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            0,
+            1
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "signed_leading_sum": "35478",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 1,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 1,
+        "minimum_term_count": 4,
+        "mu_specialization": 1,
+        "no_extra_order_at_specialization": true,
+        "rank": 3,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            0,
+            1
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "signed_leading_sum": "35478",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 2,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 2,
+        "minimum_term_count": 18,
+        "mu_specialization": 0,
+        "no_extra_order_at_specialization": true,
+        "rank": 4,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            0,
+            3,
+            2
+          ],
+          [
+            1,
+            2,
+            0,
+            3
+          ],
+          [
+            1,
+            2,
+            3,
+            0
+          ],
+          [
+            1,
+            3,
+            0,
+            2
+          ],
+          [
+            1,
+            3,
+            2,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            0,
+            3,
+            1
+          ]
+        ],
+        "signed_leading_sum": "-25523883999",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 2,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 2,
+        "minimum_term_count": 18,
+        "mu_specialization": 1,
+        "no_extra_order_at_specialization": true,
+        "rank": 4,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            0,
+            3,
+            2
+          ],
+          [
+            1,
+            2,
+            0,
+            3
+          ],
+          [
+            1,
+            2,
+            3,
+            0
+          ],
+          [
+            1,
+            3,
+            0,
+            2
+          ],
+          [
+            1,
+            3,
+            2,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            3
+          ],
+          [
+            2,
+            0,
+            3,
+            1
+          ]
+        ],
+        "signed_leading_sum": "-25523883999",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 3,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 3,
+        "minimum_term_count": 96,
+        "mu_specialization": 0,
+        "no_extra_order_at_specialization": true,
+        "rank": 5,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2,
+            3,
+            4
+          ],
+          [
+            1,
+            0,
+            2,
+            4,
+            3
+          ],
+          [
+            1,
+            0,
+            3,
+            2,
+            4
+          ],
+          [
+            1,
+            0,
+            3,
+            4,
+            2
+          ],
+          [
+            1,
+            0,
+            4,
+            2,
+            3
+          ],
+          [
+            1,
+            0,
+            4,
+            3,
+            2
+          ],
+          [
+            1,
+            2,
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            0,
+            4,
+            3
+          ]
+        ],
+        "signed_leading_sum": "1777404096805776300",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 3,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 3,
+        "minimum_term_count": 96,
+        "mu_specialization": 1,
+        "no_extra_order_at_specialization": true,
+        "rank": 5,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2,
+            3,
+            4
+          ],
+          [
+            1,
+            0,
+            2,
+            4,
+            3
+          ],
+          [
+            1,
+            0,
+            3,
+            2,
+            4
+          ],
+          [
+            1,
+            0,
+            3,
+            4,
+            2
+          ],
+          [
+            1,
+            0,
+            4,
+            2,
+            3
+          ],
+          [
+            1,
+            0,
+            4,
+            3,
+            2
+          ],
+          [
+            1,
+            2,
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            0,
+            4,
+            3
+          ]
+        ],
+        "signed_leading_sum": "1777404096805776300",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 2,
+        "cyclotomic_root": -1,
+        "forced_border_order": 1,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 1,
+        "minimum_term_count": 12,
+        "mu_specialization": 0,
+        "no_extra_order_at_specialization": true,
+        "rank": 5,
+        "sample_minimum_permutations": [
+          [
+            2,
+            4,
+            1,
+            0,
+            3
+          ],
+          [
+            2,
+            4,
+            3,
+            0,
+            1
+          ],
+          [
+            3,
+            2,
+            0,
+            4,
+            1
+          ],
+          [
+            3,
+            2,
+            1,
+            0,
+            4
+          ],
+          [
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          [
+            3,
+            2,
+            4,
+            0,
+            1
+          ],
+          [
+            3,
+            4,
+            0,
+            2,
+            1
+          ],
+          [
+            3,
+            4,
+            1,
+            0,
+            2
+          ]
+        ],
+        "signed_leading_sum": "-2554416",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 2,
+        "cyclotomic_root": -1,
+        "forced_border_order": 1,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 1,
+        "minimum_term_count": 12,
+        "mu_specialization": 1,
+        "no_extra_order_at_specialization": true,
+        "rank": 5,
+        "sample_minimum_permutations": [
+          [
+            2,
+            4,
+            1,
+            0,
+            3
+          ],
+          [
+            2,
+            4,
+            3,
+            0,
+            1
+          ],
+          [
+            3,
+            2,
+            0,
+            4,
+            1
+          ],
+          [
+            3,
+            2,
+            1,
+            0,
+            4
+          ],
+          [
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          [
+            3,
+            2,
+            4,
+            0,
+            1
+          ],
+          [
+            3,
+            4,
+            0,
+            2,
+            1
+          ],
+          [
+            3,
+            4,
+            1,
+            0,
+            2
+          ]
+        ],
+        "signed_leading_sum": "-2554416",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 4,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 4,
+        "minimum_term_count": 600,
+        "mu_specialization": 0,
+        "no_extra_order_at_specialization": true,
+        "rank": 6,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            1,
+            0,
+            2,
+            3,
+            5,
+            4
+          ],
+          [
+            1,
+            0,
+            2,
+            4,
+            3,
+            5
+          ],
+          [
+            1,
+            0,
+            2,
+            4,
+            5,
+            3
+          ],
+          [
+            1,
+            0,
+            2,
+            5,
+            3,
+            4
+          ],
+          [
+            1,
+            0,
+            2,
+            5,
+            4,
+            3
+          ],
+          [
+            1,
+            0,
+            3,
+            2,
+            4,
+            5
+          ],
+          [
+            1,
+            0,
+            3,
+            2,
+            5,
+            4
+          ]
+        ],
+        "signed_leading_sum": "-79795247999510945843570749824",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 1,
+        "cyclotomic_root": 1,
+        "forced_border_order": 4,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 4,
+        "minimum_term_count": 600,
+        "mu_specialization": 1,
+        "no_extra_order_at_specialization": true,
+        "rank": 6,
+        "sample_minimum_permutations": [
+          [
+            1,
+            0,
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            1,
+            0,
+            2,
+            3,
+            5,
+            4
+          ],
+          [
+            1,
+            0,
+            2,
+            4,
+            3,
+            5
+          ],
+          [
+            1,
+            0,
+            2,
+            4,
+            5,
+            3
+          ],
+          [
+            1,
+            0,
+            2,
+            5,
+            3,
+            4
+          ],
+          [
+            1,
+            0,
+            2,
+            5,
+            4,
+            3
+          ],
+          [
+            1,
+            0,
+            3,
+            2,
+            4,
+            5
+          ],
+          [
+            1,
+            0,
+            3,
+            2,
+            5,
+            4
+          ]
+        ],
+        "signed_leading_sum": "-79795247999510945843570749824",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 2,
+        "cyclotomic_root": -1,
+        "forced_border_order": 2,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 2,
+        "minimum_term_count": 16,
+        "mu_specialization": 0,
+        "no_extra_order_at_specialization": true,
+        "rank": 6,
+        "sample_minimum_permutations": [
+          [
+            3,
+            2,
+            1,
+            0,
+            5,
+            4
+          ],
+          [
+            3,
+            2,
+            1,
+            4,
+            5,
+            0
+          ],
+          [
+            3,
+            2,
+            5,
+            0,
+            1,
+            4
+          ],
+          [
+            3,
+            2,
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            3,
+            4,
+            1,
+            0,
+            5,
+            2
+          ],
+          [
+            3,
+            4,
+            1,
+            2,
+            5,
+            0
+          ],
+          [
+            3,
+            4,
+            5,
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5,
+            2,
+            1,
+            0
+          ]
+        ],
+        "signed_leading_sum": "-20139015744",
+        "signed_leading_sum_nonzero": true
+      },
+      {
+        "associated_graded_determinant_nonzero": true,
+        "candidate_minimum_term_cancellation": false,
+        "cyclotomic_index": 2,
+        "cyclotomic_root": -1,
+        "forced_border_order": 2,
+        "forced_order_is_exact": true,
+        "minimum_permutation_order": 2,
+        "minimum_term_count": 16,
+        "mu_specialization": 1,
+        "no_extra_order_at_specialization": true,
+        "rank": 6,
+        "sample_minimum_permutations": [
+          [
+            3,
+            2,
+            1,
+            0,
+            5,
+            4
+          ],
+          [
+            3,
+            2,
+            1,
+            4,
+            5,
+            0
+          ],
+          [
+            3,
+            2,
+            5,
+            0,
+            1,
+            4
+          ],
+          [
+            3,
+            2,
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            3,
+            4,
+            1,
+            0,
+            5,
+            2
+          ],
+          [
+            3,
+            4,
+            1,
+            2,
+            5,
+            0
+          ],
+          [
+            3,
+            4,
+            5,
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5,
+            2,
+            1,
+            0
+          ]
+        ],
+        "signed_leading_sum": "-20139015744",
+        "signed_leading_sum_nonzero": true
+      }
+    ],
+    "schema": "erdos1049-zudilin-minimum-term-cancellation-probe/1",
+    "specializations": [
+      0,
+      1
+    ]
+  },
+  "schema": "erdos1049-zudilin-minimum-term-cancellation/1",
+  "source_records": [
+    {
+      "byte_length": 16427,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_minimum_term_cancellation.py",
+      "sha256": "e18f2779cdd27e900b9cd0b619f070c051ce64cb0bd6d024e41e6afd874b2bcb"
+    },
+    {
+      "byte_length": 18955,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_residual_border_charge.py",
+      "sha256": "1ebe02fc3ac2ca6019fe6884ee47dc9c31a65aa2c0ca6eb3c23a080a0d23c3f9"
+    },
+    {
+      "byte_length": 13070,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+      "sha256": "439aae4afc146d513dab5d1851ff91d1c0bce97b126e1f21df34f8eeb688c758"
+    },
+    {
+      "byte_length": 5871,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinMinimumTermCancellationLab.md",
+      "sha256": "bef6ffa9e916559d88e443522d96d96281bbdc1ec6b49da741338ff71aaf3e00"
+    },
+    {
+      "byte_length": 6193,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/SoutheastBlockDeterminant.lean",
+      "sha256": "08d072d20fa7795514bfc1e424f6bc370071b1e5bbe69ce05b5f8aa40154aec4"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_eliminated"
+}

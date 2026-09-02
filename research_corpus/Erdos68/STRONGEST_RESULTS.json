@@ -1,0 +1,114 @@
+{
+  "schema": "plectis_strongest_result_activation_map_v2",
+  "problem_id": "erdos_68",
+  "status": "open",
+  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "erdos_shift_family_uniform_companion_orbit_boundary",
+      "status": "strongest_premise",
+      "exact_statement": "For every integer t >= -1 let S_t = sum_{n>=2} 1/(n! + t) and C_t = sum_{n>=2} 1/(n!(n! + t)). Lean proves the termwise identity 1/(n! + t) = 1/n! - t/(n!(n! + t)), summability of both series, the decomposition S_t = (-t C_t) + (e - 2), and hence: S_t is rational iff ceil(t m! C_t) = 2 (mod m) for all sufficiently large m, and irrational iff that ceiling escapes residue 2 cofinally. The member t = -1 is kernel-identified with the Erdos #68 series, where the condition is floor(m! C) = -2 (mod m); the member t = 0 is kernel-identified with e - 2, whose orbit ceil(0) = 0 never lies in residue class 2 for m >= 3, so the boundary REPROVES that e is irrational. This places Erdos's whole conjectured family (Erdos 1988, p. 102) under one explicit companion-orbit boundary extending Cantor's factorial-base criterion. It decides no member with t != 0.",
+      "hypotheses": "Lean-checked family equivalence, fifteen named declarations, lean_fast_build exit 0 on 2026-09-02. Finite evidence: residue-2 hits for t = 1,2,3,5 through m = 400 are consistent with a 1/m hit rate.",
+      "named_consumers": [
+        "erdos_68_parent",
+        "erdos_shift_family_parent"
+      ],
+      "supersedes": [
+        "the single-member companion-orbit boundary for t = -1 alone",
+        "Cantor's factorial-base criterion in its unparameterised form"
+      ],
+      "why_it_matters": "One criterion covers Erdos's entire conjectured family and specialises to a proof that e is irrational. That is a clean, legible theorem an outside number theorist can check in an afternoon, and it is currently uncommitted to any public entry beyond the t = -1 member.",
+      "public_authority_paths": [
+        "research_corpus/Erdos68/problem/FactorialShiftFamilyOrbit.lean",
+        "research_corpus/Erdos68/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "shrinking_target_normal_form_quadratic_radius",
+      "status": "strongest_premise",
+      "exact_statement": "S not in Q if and only if for every B there is m > B with factorialGapScaledTail m <= m r_(m-1), that is, cofinal escape from the lower endpoint cylinder. Since 0 < factorialGapScaledTail m < 2/m, the trapping radius is O(m^-2). The escape criterion is exactly the harmless-carry criterion (factorialGap_lower_endpoint_escape_iff_nonunit_or_maximal_digit), it is strictly more permissive than the carry target, and it admits a tail-free two-sided consumer over the finite predecessor gap.",
+      "hypotheses": "Lean-checked normal form. It produces no cofinal escape events; #68 remains open.",
+      "named_consumers": [
+        "erdos_68_parent",
+        "shrinking_target_dictionary"
+      ],
+      "supersedes": [
+        "the cofinal non-unit carry normal form",
+        "the cofinal strict-successor divisibility miss normal form"
+      ],
+      "why_it_matters": "It is the corpus's own statement that Erdos #68 is an explicit deterministic shrinking-target problem with a quadratically small target. Four sibling problems have the same shape and nobody has written the dictionary.",
+      "public_authority_paths": [
+        "research_corpus/Erdos68/problem/ShrinkingTargetNormalForm.lean"
+      ]
+    },
+    {
+      "result_id": "companion_constant_unconditional_carry_law",
+      "status": "strongest_premise",
+      "exact_statement": "With C = sum_{n>=2} 1/(n!(n! - 1)), F_m = m! C_m, delta_m = m! sum_{n>m} 1/(n!(n! - 1)) and sigma_m = [fract(m!C) < delta_m], Lean proves F_m = m! C - delta_m with 0 < delta_m < 1/((m+1)! - 1) for m >= 2, the wrap identity floor(F_m) = floor(m!C) - sigma_m, and for every m >= 3 the exact carry law b_m = (m - 1 - d_m(C)) + sigma_m - m sigma_(m-1). Consequences: a unit carry forces d_m(C) in {m-2, m-1}; a zero carry forces d_m(C) in {m-1, 0}; if floor(m!C) avoids both residues -2 and -1 mod m then b_m != 1. The exact probe finds no wrap through m = 160, smallest fract(m!C)/delta_m ratio 18.7.",
+      "hypotheses": "Lean-checked exact identity, thirteen named declarations. It produces no cofinal miss and no irrationality claim.",
+      "named_consumers": [
+        "erdos_68_parent"
+      ],
+      "supersedes": [
+        "second_layer_finite_digit_and_floor_stability_boundary",
+        "companion_constant_full_floor_one_residue_normal_form"
+      ],
+      "why_it_matters": "It makes the whole #68 carry sequence an exact function of one real constant plus a sub-factorial exceptional indicator.",
+      "public_authority_paths": [
+        "research_corpus/Erdos68/problem/CompanionConstantCarryLaw.lean",
+        "research_corpus/Erdos68/problem/CompanionConstantCarryLaw.md"
+      ]
+    },
+    {
+      "result_id": "family_boundary_decides_no_member_but_t_zero",
+      "status": "exact_no_go",
+      "exact_statement": "The shift-family companion-orbit boundary decides no member with t != 0. Residue-2 hits for t = 1, 2, 3, 5 through m = 400 are [3,30,110], [3,13,61,227,377], [6,31,45,56], [11,14,20,28,29,309], consistent with a 1/m hit rate, so finite hit tables are not evidence in either direction.",
+      "hypotheses": "Recorded finite evidence in the family module's own statement.",
+      "named_consumers": [
+        "erdos_shift_family_parent"
+      ],
+      "supersedes": [
+        "optimistic readings of the finite hit tables"
+      ],
+      "why_it_matters": "A finite scan of the residue orbit cannot decide any member; only a cofinal miss theorem can.",
+      "public_authority_paths": [
+        "research_corpus/Erdos68/problem/FactorialShiftFamilyOrbit.lean",
+        "research_corpus/Erdos68/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "finite_carry_scan_is_only_a_denominator_exclusion",
+      "status": "exact_no_go",
+      "exact_statement": "The exact GMP computation of every strict-successor carry for 3 <= m <= 300000 gives only q >= 300000 for a rational S = a/q. The only unit carries are m = 52, 591, 1030, 1407, 1438, 2164, 4258, 10991, 21236. Correctly indexed arithmetic shows prime failures at m = 5 and m = 23, so the universal all-primes shortcut is FALSE.",
+      "hypotheses": "Exact integer computation at 5025679 bits with 96 guard bits, no floating point.",
+      "named_consumers": [
+        "erdos_68_parent"
+      ],
+      "supersedes": [
+        "the all-primes shortcut proposal"
+      ],
+      "why_it_matters": "A finite horizon never discharges a cofinal quantifier, and the obvious prime shortcut is already refuted at m = 5 and m = 23.",
+      "public_authority_paths": [
+        "research_corpus/Erdos68/problem/research_packet.json",
+        "research_corpus/Erdos68/receipts/erdos68_nonterminal_record_threshold_bridge_receipt.json"
+      ]
+    },
+    {
+      "result_id": "docstring_overclaims_recorded",
+      "status": "exact_no_go",
+      "exact_statement": "Three docstrings in this corpus overclaim and must not be cited as theorems: IntegralBranchWidth.lean (the width bound it claims is absent from the file), PurePowerIrrationality.lean (conditional criteria only), and PeriodMultipleEscape.lean's header ('not known necessary' after the equivalence landed). Verify a declaration against the module body, never against its docstring.",
+      "hypotheses": "Recorded in the 2026-09-01 longitudinal hygiene section.",
+      "named_consumers": [
+        "shrinking_target_dictionary"
+      ],
+      "supersedes": [
+        "docstring-level citation of these three modules"
+      ],
+      "why_it_matters": "A dictionary built on a docstring rather than a declaration would be worthless.",
+      "public_authority_paths": [
+        "research_corpus/Erdos68/docs/formal_math/palomar/longitudinal_truth_2026_09_01.md"
+      ]
+    }
+  ]
+}

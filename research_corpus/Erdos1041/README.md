@@ -1,28 +1,30 @@
-# Erdős 1041 research corpus
+# Erdős #1041 research corpus (source-current snapshot)
 
-This directory is the complete public-safe committed research corpus for
-Erdős Problem 1041 at source checkpoint `867638684907b4ebd4ab2ef7b5de22dafda71e36`. The unrestricted
-problem remains open; these files contain proved conditional reductions,
-Lean-checked statements, exact computations, counterexamples, no-go results,
-assimilation records, and live proof-frontier notes. No navigation label or
-experimental receipt upgrades a statement beyond its own hypotheses.
+Exported from private authoring commit `42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a` on 2026-09-02 for the Type B solve fleet
+`erdos_breakthrough_dodecuple_2026_09_02_r1`. This is a reading corpus: every committed problem-facing Lean module, lab note,
+proof note, checker, probe, pinned receipt, the manuscript source, and the cross-problem synthesis
+documents. It is NOT a Lake project; the kernel-checked, replayable Comparator entries live in the
+release repository https://github.com/wcook04/plectis-erdos-lean (see `entries/` here for the
+entry statements).
 
-Start with [`FRONTIER.md`](FRONTIER.md). It is the dated current state: what
-was refuted and must not be rebuilt, which carriers survive, the new proved
-tools, and the exact open gaps. Read it before
-[`STRONGEST_RESULTS.json`](STRONGEST_RESULTS.json), which is generated from
-the activation lists and can lag the frontier notes by a dated delta.
+## Layout
 
-`STRONGEST_RESULTS.json` states the strongest activated premises and
-falsifiers, what weaker work they dominate, their exact hypotheses, their
-consumers, and their public file locations. Then use
-[`CORPUS_MANIFEST.json`](CORPUS_MANIFEST.json) for every published file and
-its digest. Route choice is deliberately unrestricted: the map is a premise
-floor, not a prescribed proof strategy.
+- `problem/`: `ErdosProblems/Erdos1041/` (research_packet.json is the non-claims ledger: target, exact results, negative results, open producers, claim ceiling)
+- `shared_lean/`: Lean modules filed under a sibling namespace that carry this problem's mathematics
+- `entries/`: statement-isolated Comparator entry packages (Challenge / Solution / AxiomAudit / formalization.yaml)
+- `probes/`, `probe_receipts/`, `receipts/`: executable probes and their pinned outputs
+- `paper/`: manuscript source
+- `docs/`: longitudinal truth, prior-art adjudication, situation map
+- `STRONGEST_RESULTS.json`: the activation map (strongest premises and exact no-gos with public paths)
+- `CORPUS_MANIFEST.json`: per-file source and published digests
 
-Publication relation: committed source files are copied exactly unless they
-contain private authoring coordinates. Paths for files published here become
-public `research_corpus/Erdos1041/...` paths. Unpublished source evidence uses
-an explicit `source-provenance://` locator and is not an executable public
-interface. Both source and public digests and the replacement count are
-recorded in the corpus manifest. Cache bytecode and binary files are excluded.
+## Target
+
+Erdos Problem #1041 (Erdos, Herzog and Piranian 1958). If a monic polynomial f(z) = prod_i (z - z_i) has all of its roots in the open unit disk, prove that two of its roots can be joined by a curve of length less than 2 contained in the open lemniscate {z : |f(z)| < 1}. The constant 2 is sharp: z^n - r^n forces length tending to 2. The problem is open; no hypothesis on degree, root multiplicity, root configuration, or critical-value separation may be added to the statement being proved.
+
+## Claim boundary
+
+This snapshot is of an OPEN problem. Nothing here is a solution claim; the packet's `claim_ceiling`
+field governs what is established. Receipts are finite computations and never cofinal evidence.
+
+File count: 1316.

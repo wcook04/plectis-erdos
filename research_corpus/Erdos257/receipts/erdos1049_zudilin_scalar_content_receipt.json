@@ -1,0 +1,446 @@
+{
+  "claim_ceiling": "The all-rank source algebra proves a genuine scalar factor, but its degree is at most N^3-N and therefore cannot alone meet the required Hankel charge extraction. Erdos #1049 remains open.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarContent_ceiling_lt_required",
+        "zudilinScalarContent_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Scalar content alone is decisively insufficient; any successful Hankel route must extract additional residual determinant factors.",
+      "survival_consequence": "Sufficient cubic degree would close the missing arithmetic side of the normalized Hankel route."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "zudilin_source_scalar_content_supplies_required_charge",
+      "statement": "The common scalar content already present in Zudilin's cleared rows removes enough of the raw cubic Hankel charge at p=3/2."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinScalarContentLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+        "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md"
+      ]
+    },
+    "probe": {
+      "computation": "Reconstruct A~, B~, C~ from the primary-source formulas over Z[p], take coefficient gcds and Hankel determinant contents exactly, and evaluate the closed totient-sum factor degree.",
+      "falsifier": "An all-rank upper bound below the explicit required extraction eliminates scalar row/column content as a sufficient mechanism.",
+      "id": "exact_source_row_content_and_charge_ceiling",
+      "question": "What is the exact common content of the specialized source rows, what determinant factor does it force at every rank, and can its degree meet the explicit 39/41 extraction requirement?",
+      "resource_bounds": {
+        "degree_table_max_rank": 24,
+        "maximum_exact_hankel_rank": 3,
+        "maximum_reconstructed_row_index": 4
+      },
+      "stop_condition": "Once the universal factor and its strict charge ceiling are proved, retain the factor but move to residual border-rank or jet divisibility."
+    },
+    "problem": {
+      "claim_ceiling": "The checker regression-tests exact source contents and the finite degree table. The authored algebra proves the all-rank factor and Lean proves its ceiling is insufficient; no irrationality follows.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the rational-base Lambert value at p=3/2."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "At x=z=1 every cleared source row contains p^(n+1)P_n^3/L_n. Hence (prod_{i<N} P_i^3/L_i)^2 divides the rank-N Hankel determinant. Its degree is at most N^3-N, strictly below (39/41)(4N^3-3N^2); scalar content alone is eliminated, while residual border-rank extraction remains open."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "degree_table_max": 24,
+    "max_rank": 3
+  },
+  "scan": {
+    "all_degree_ceilings_below_required_charge": true,
+    "all_rank_factor": "(prod_{i=0}^{N-1} (P_i^3/L_i))^2 divides V_N(mu;p,1,1)",
+    "all_reconstructed_quotients_are_primitive": true,
+    "all_reconstructed_row_gcds_match": true,
+    "degree_table": [
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 0,
+        "guaranteed_scalar_factor_degree": 0,
+        "rank": 1,
+        "raw_charge": 1,
+        "required_charge_numerator_39_over_41": 39,
+        "simple_cubic_ceiling": 0
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 246,
+        "guaranteed_scalar_factor_degree": 4,
+        "rank": 2,
+        "raw_charge": 20,
+        "required_charge_numerator_39_over_41": 780,
+        "simple_cubic_ceiling": 6
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 984,
+        "guaranteed_scalar_factor_degree": 18,
+        "rank": 3,
+        "raw_charge": 81,
+        "required_charge_numerator_39_over_41": 3159,
+        "simple_cubic_ceiling": 24
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 2460,
+        "guaranteed_scalar_factor_degree": 46,
+        "rank": 4,
+        "raw_charge": 208,
+        "required_charge_numerator_39_over_41": 8112,
+        "simple_cubic_ceiling": 60
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 4920,
+        "guaranteed_scalar_factor_degree": 94,
+        "rank": 5,
+        "raw_charge": 425,
+        "required_charge_numerator_39_over_41": 16575,
+        "simple_cubic_ceiling": 120
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 8610,
+        "guaranteed_scalar_factor_degree": 164,
+        "rank": 6,
+        "raw_charge": 756,
+        "required_charge_numerator_39_over_41": 29484,
+        "simple_cubic_ceiling": 210
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 13776,
+        "guaranteed_scalar_factor_degree": 266,
+        "rank": 7,
+        "raw_charge": 1225,
+        "required_charge_numerator_39_over_41": 47775,
+        "simple_cubic_ceiling": 336
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 20664,
+        "guaranteed_scalar_factor_degree": 398,
+        "rank": 8,
+        "raw_charge": 1856,
+        "required_charge_numerator_39_over_41": 72384,
+        "simple_cubic_ceiling": 504
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 29520,
+        "guaranteed_scalar_factor_degree": 570,
+        "rank": 9,
+        "raw_charge": 2673,
+        "required_charge_numerator_39_over_41": 104247,
+        "simple_cubic_ceiling": 720
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 40590,
+        "guaranteed_scalar_factor_degree": 784,
+        "rank": 10,
+        "raw_charge": 3700,
+        "required_charge_numerator_39_over_41": 144300,
+        "simple_cubic_ceiling": 990
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 54120,
+        "guaranteed_scalar_factor_degree": 1050,
+        "rank": 11,
+        "raw_charge": 4961,
+        "required_charge_numerator_39_over_41": 193479,
+        "simple_cubic_ceiling": 1320
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 70356,
+        "guaranteed_scalar_factor_degree": 1362,
+        "rank": 12,
+        "raw_charge": 6480,
+        "required_charge_numerator_39_over_41": 252720,
+        "simple_cubic_ceiling": 1716
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 89544,
+        "guaranteed_scalar_factor_degree": 1738,
+        "rank": 13,
+        "raw_charge": 8281,
+        "required_charge_numerator_39_over_41": 322959,
+        "simple_cubic_ceiling": 2184
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 111930,
+        "guaranteed_scalar_factor_degree": 2168,
+        "rank": 14,
+        "raw_charge": 10388,
+        "required_charge_numerator_39_over_41": 405132,
+        "simple_cubic_ceiling": 2730
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 137760,
+        "guaranteed_scalar_factor_degree": 2670,
+        "rank": 15,
+        "raw_charge": 12825,
+        "required_charge_numerator_39_over_41": 500175,
+        "simple_cubic_ceiling": 3360
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 167280,
+        "guaranteed_scalar_factor_degree": 3246,
+        "rank": 16,
+        "raw_charge": 15616,
+        "required_charge_numerator_39_over_41": 609024,
+        "simple_cubic_ceiling": 4080
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 200736,
+        "guaranteed_scalar_factor_degree": 3902,
+        "rank": 17,
+        "raw_charge": 18785,
+        "required_charge_numerator_39_over_41": 732615,
+        "simple_cubic_ceiling": 4896
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 238374,
+        "guaranteed_scalar_factor_degree": 4628,
+        "rank": 18,
+        "raw_charge": 22356,
+        "required_charge_numerator_39_over_41": 871884,
+        "simple_cubic_ceiling": 5814
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 280440,
+        "guaranteed_scalar_factor_degree": 5450,
+        "rank": 19,
+        "raw_charge": 26353,
+        "required_charge_numerator_39_over_41": 1027767,
+        "simple_cubic_ceiling": 6840
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 327180,
+        "guaranteed_scalar_factor_degree": 6350,
+        "rank": 20,
+        "raw_charge": 30800,
+        "required_charge_numerator_39_over_41": 1201200,
+        "simple_cubic_ceiling": 7980
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 378840,
+        "guaranteed_scalar_factor_degree": 7354,
+        "rank": 21,
+        "raw_charge": 35721,
+        "required_charge_numerator_39_over_41": 1393119,
+        "simple_cubic_ceiling": 9240
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 435666,
+        "guaranteed_scalar_factor_degree": 8460,
+        "rank": 22,
+        "raw_charge": 41140,
+        "required_charge_numerator_39_over_41": 1604460,
+        "simple_cubic_ceiling": 10626
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 497904,
+        "guaranteed_scalar_factor_degree": 9678,
+        "rank": 23,
+        "raw_charge": 47081,
+        "required_charge_numerator_39_over_41": 1836159,
+        "simple_cubic_ceiling": 12144
+      },
+      {
+        "ceiling_is_below_required_charge": true,
+        "ceiling_scaled_by_41": 565800,
+        "guaranteed_scalar_factor_degree": 10990,
+        "rank": 24,
+        "raw_charge": 53568,
+        "required_charge_numerator_39_over_41": 2089152,
+        "simple_cubic_ceiling": 13800
+      }
+    ],
+    "determinant_checks": [
+      {
+        "content_degree": 1,
+        "content_signature": {
+          "cyclotomic_orders": {},
+          "p_order": 1,
+          "unaccounted_quotient": "1"
+        },
+        "mu_degree": 1,
+        "p_degree": 1,
+        "rank": 1
+      },
+      {
+        "content_degree": 9,
+        "content_signature": {
+          "cyclotomic_orders": {
+            "1": 4
+          },
+          "p_order": 5,
+          "unaccounted_quotient": "1"
+        },
+        "mu_degree": 2,
+        "p_degree": 20,
+        "rank": 2
+      },
+      {
+        "content_degree": 33,
+        "content_signature": {
+          "cyclotomic_orders": {
+            "1": 15,
+            "2": 4
+          },
+          "p_order": 14,
+          "unaccounted_quotient": "1"
+        },
+        "mu_degree": 3,
+        "p_degree": 81,
+        "rank": 3
+      }
+    ],
+    "factor_degree": "2 sum_{i<N} (3i(i+1)/2 - sum_{d<=i} phi(d))",
+    "factor_degree_ceiling": "N^3-N",
+    "required_extraction": ">(39/41)(4N^3-3N^2)",
+    "row_checks": [
+      {
+        "coefficient_degrees": [
+          1,
+          -1,
+          -1
+        ],
+        "content_signature": {
+          "cyclotomic_orders": {},
+          "p_order": 1,
+          "unaccounted_quotient": "1"
+        },
+        "exact_gcd_equals_predicted_content": true,
+        "gcd_degree": 1,
+        "index": 0,
+        "predicted_content_degree": 1,
+        "primitive_quotient_gcd_is_one": true
+      },
+      {
+        "coefficient_degrees": [
+          7,
+          6,
+          5
+        ],
+        "content_signature": {
+          "cyclotomic_orders": {
+            "1": 2
+          },
+          "p_order": 2,
+          "unaccounted_quotient": "1"
+        },
+        "exact_gcd_equals_predicted_content": true,
+        "gcd_degree": 4,
+        "index": 1,
+        "predicted_content_degree": 4,
+        "primitive_quotient_gcd_is_one": true
+      },
+      {
+        "coefficient_degrees": [
+          19,
+          18,
+          16
+        ],
+        "content_signature": {
+          "cyclotomic_orders": {
+            "1": 5,
+            "2": 2
+          },
+          "p_order": 3,
+          "unaccounted_quotient": "1"
+        },
+        "exact_gcd_equals_predicted_content": true,
+        "gcd_degree": 10,
+        "index": 2,
+        "predicted_content_degree": 10,
+        "primitive_quotient_gcd_is_one": true
+      },
+      {
+        "coefficient_degrees": [
+          37,
+          36,
+          33
+        ],
+        "content_signature": {
+          "cyclotomic_orders": {
+            "1": 8,
+            "2": 2,
+            "3": 2
+          },
+          "p_order": 4,
+          "unaccounted_quotient": "1"
+        },
+        "exact_gcd_equals_predicted_content": true,
+        "gcd_degree": 18,
+        "index": 3,
+        "predicted_content_degree": 18,
+        "primitive_quotient_gcd_is_one": true
+      },
+      {
+        "coefficient_degrees": [
+          61,
+          60,
+          56
+        ],
+        "content_signature": {
+          "cyclotomic_orders": {
+            "1": 11,
+            "2": 5,
+            "3": 2,
+            "4": 2
+          },
+          "p_order": 5,
+          "unaccounted_quotient": "1"
+        },
+        "exact_gcd_equals_predicted_content": true,
+        "gcd_degree": 29,
+        "index": 4,
+        "predicted_content_degree": 29,
+        "primitive_quotient_gcd_is_one": true
+      }
+    ]
+  },
+  "schema": "erdos1049-zudilin-scalar-content/1",
+  "sources": [
+    {
+      "byte_length": 13070,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+      "sha256": "439aae4afc146d513dab5d1851ff91d1c0bce97b126e1f21df34f8eeb688c758"
+    },
+    {
+      "byte_length": 32617,
+      "path": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    },
+    {
+      "byte_length": 4941,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinScalarContentLab.md",
+      "sha256": "6a354580a4206a7acc4b08b48b3c97b4b6b2383cd5911b3f78e81a22ee76a117"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041OrliczNoUniformLinear.Challenge",
+  "solution_module": "ExternalVerification1041OrliczNoUniformLinear.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041OrliczNoUniformLinear.no_positive_uniform_linear_lower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

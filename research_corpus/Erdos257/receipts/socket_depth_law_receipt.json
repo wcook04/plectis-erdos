@@ -1,0 +1,128 @@
+{
+  "cohorts": {
+    "ap3": {
+      "argmax_N": 62994,
+      "binding": "magnitude",
+      "bounds_respected": true,
+      "control_bound_respected": true,
+      "control_maxrun": 33,
+      "control_parity_bound": 8026,
+      "first_m_with_tau_ge_2^k": {
+        "1": 6,
+        "2": 18,
+        "3": 72,
+        "4": 360,
+        "5": 2520,
+        "6": 22680,
+        "7": 249480,
+        "8": null,
+        "9": null
+      },
+      "magnitude_bound": 9,
+      "max_tau": 192,
+      "min_A": 3,
+      "observed_maxrun": 8,
+      "parity_bound": 3458
+    },
+    "naturals": {
+      "argmax_N": 8851,
+      "binding": "magnitude",
+      "bounds_respected": true,
+      "control_bound_respected": true,
+      "control_maxrun": 6,
+      "control_parity_bound": 11839,
+      "first_m_with_tau_ge_2^k": {
+        "1": 2,
+        "2": 6,
+        "3": 24,
+        "4": 120,
+        "5": 840,
+        "6": 7560,
+        "7": 83160,
+        "8": null,
+        "9": null
+      },
+      "magnitude_bound": 7,
+      "max_tau": 240,
+      "min_A": 1,
+      "observed_maxrun": 5,
+      "parity_bound": 1998
+    },
+    "pow3": {
+      "argmax_N": 6558,
+      "binding": "both",
+      "bounds_respected": true,
+      "control_bound_respected": true,
+      "control_maxrun": 31,
+      "control_parity_bound": 50,
+      "first_m_with_tau_ge_2^k": {
+        "1": 9,
+        "2": 81,
+        "3": 6561,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": null,
+        "9": null
+      },
+      "magnitude_bound": 5,
+      "max_tau": 12,
+      "min_A": 3,
+      "observed_maxrun": 5,
+      "parity_bound": 5
+    },
+    "powers2": {
+      "argmax_N": 14,
+      "binding": "parity",
+      "bounds_respected": true,
+      "control_bound_respected": true,
+      "control_maxrun": 17,
+      "control_parity_bound": 30,
+      "first_m_with_tau_ge_2^k": {
+        "1": 4,
+        "2": 16,
+        "3": 256,
+        "4": 65536,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": null,
+        "9": null
+      },
+      "magnitude_bound": 5,
+      "max_tau": 19,
+      "min_A": 2,
+      "observed_maxrun": 3,
+      "parity_bound": 3
+    },
+    "primes": {
+      "argmax_N": 208,
+      "binding": "magnitude",
+      "bounds_respected": true,
+      "control_bound_respected": true,
+      "control_maxrun": 2,
+      "control_parity_bound": 20,
+      "first_m_with_tau_ge_2^k": {
+        "1": 6,
+        "2": 210,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": null,
+        "9": null
+      },
+      "magnitude_bound": 3,
+      "max_tau": 7,
+      "min_A": 2,
+      "observed_maxrun": 2,
+      "parity_bound": 19
+    }
+  },
+  "falsifier_survived": true,
+  "max_n": 1000000,
+  "nmax": 500000,
+  "seed": 20260823
+}

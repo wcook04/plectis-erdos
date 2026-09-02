@@ -1,0 +1,221 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #269: exact three-prime running-LCM identity and infinite kernel rank"
+  description: >-
+    For pairwise distinct primes p, q, r and every nonzero x, the least common multiple of
+    all smooth numbers p^i q^j r^k at most x equals the product of the three maximal pure
+    prime powers below x. The reciprocal-height kernel K(i,j,k) built from that identity is
+    constant on every logarithmic cell, and the first m positive jump values across the
+    three prime channels number exactly 3m. Every finite exponent box sums to the
+    height-fibre normal form, the sum over genuine running-LCM heights of the fibre
+    cardinality divided by the height, and a multiplicative shell of width factor r inside a
+    sorted exponent budget j satisfies 9 times its cardinality at most (j+3)^2. For every
+    order n there are injective index families giving a nonsingular n by n minor of K
+    uniformly in the remaining exponent layer, so K has infinite rank and no finite
+    separable representation K(i,j,k) = sum over l < d of f_l(i) G_l(j,k) exists for any d.
+    The smallest 2,3,5 rectangle has determinant exactly -1/15. Three distinct primes keep
+    the three logarithm floors independent, which is what makes the running-LCM identity
+    exact and the minors nonsingular in every order, and it removes every method that would
+    evaluate the three-prime sum by finitely many separated factors. The running-LCM
+    factorisation identity for every finite prime set, and the two-prime case in which the
+    series factorises and is transcendental by Hecke and Mahler, are due to Steve Fan
+    (erdosproblems.com/269 comment, 26 June 2026), who also records that the factorisation
+    does not extend to three or more primes; the identity theorem here formalises his
+    identity at three primes, and the rank statements are the addition. Priority for the
+    rank statements has not been established, none of the seven theorems yields
+    irrationality or transcendence, and Erdős #269 remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269ThreePrimeStructure/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269ThreePrimeStructure/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_exact_structure_and_nonseparability"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection are pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11B83", "11A05"]
+
+sources:
+  - title: "Exact three-prime running-LCM structure"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+    note: >-
+      Exact maximal-prime-power LCM identity, logarithmic-cell and jump
+      geometry, height-fibre normal form, quadratic shell multiplicity,
+      arbitrary-order nonsingular minors, finite-separation no-go, and an
+      explicit rank-two rational kernel certificate.
+  - title: "Erdős Problem #269"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/269"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors: ["The mathlib contributors"]
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Seven compared theorems expose the exact running-LCM identity, logarithmic
+    cell constancy, exact jump count, height-fibre normal form, quadratic shell
+    multiplicity, exact rank-two minor, and the composite
+    arbitrary-order-minor/no-finite-separation theorem. Challenge.lean contains
+    seven deliberate specification sorries;
+    the proof-bearing Solution imports the checked source.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 7
+  axiom_audit_status: "focused_lean_and_axiom_audit_passed_2026_08_31"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight"
+      file: "ExternalVerification269ThreePrimeStructure/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269ThreePrimeStructure/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact height-fibre normal form"
+      boundary: "Finite structural identity; no irrationality conclusion."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic"
+      file: "ExternalVerification269ThreePrimeStructure/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269ThreePrimeStructure/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+      novelty_status: "unassessed"
+      contribution_class: "quadratic smooth-shell multiplicity"
+      boundary: "Requires the stated multiplicative-width and sorted-height hypotheses."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation"
+      file: "ExternalVerification269ThreePrimeStructure/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269ThreePrimeStructure/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: >-
+        ErdosProblems/Erdos269/KernelCarryRank.lean, declarations
+        exists_uniform_nonsingular_threePrimeKernel_minor_of_prime and
+        not_finite_separable_threePrimeKernel.
+      novelty_status: "unassessed"
+      contribution_class: "arbitrary-order kernel rank phase transition"
+      boundary: >-
+        Excludes exact finite separable representations of the stated form;
+        does not prove irrationality or exclude nonlinear or infinite
+        representations.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight"
+      file: "ExternalVerification269ThreePrimeStructure/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269ThreePrimeStructure/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: >-
+        ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean at commit
+        f3d7e872909961ce3017fedd8d41852433f79ee4 and SHA-256
+        769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036.
+      novelty_status: "unassessed"
+      contribution_class: "exact finite running-LCM identity"
+      boundary: "No irrationality or transcendence conclusion."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen"
+      file: "ExternalVerification269ThreePrimeStructure/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269ThreePrimeStructure/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: >-
+        Same source identity as the running-LCM theorem.
+      novelty_status: "unassessed"
+      contribution_class: "exact rank-two nonseparability certificate"
+      boundary: "A finite structural obstruction, not the open producer."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: "Positive and deliberate-negative replay pending a supported runner"
+
+fidelity:
+  divergences: >-
+    The Challenge copies the literal finite definitions and seven exact source
+    conclusions; it adds no analytic or irrationality consequence.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Exact identity, cell and jump geometry, fibre and shell bounds, prime
+    hypotheses, arbitrary-order determinant statement, finite-separation
+    boundary, fixed minor value, and open-problem boundary reviewed; focused
+    Focused Lean and axiom-audit checks pass; Comparator replay remains pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification269ThreePrimeStructure"
+  statements:
+    - source: "ErdosProblems.Erdos269.threePrimeKernelQ_eq_of_sameLogCell"
+      lean: "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell"
+      module: "ExternalVerification269ThreePrimeStructure/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.threePrimePositiveJumpSet_card"
+      lean: "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card"
+      module: "ExternalVerification269ThreePrimeStructure/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight"
+      lean: "Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight"
+      module: "ExternalVerification269ThreePrimeStructure/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic"
+      lean: "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic"
+      module: "ExternalVerification269ThreePrimeStructure/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime + ErdosProblems.Erdos269.not_finite_separable_threePrimeKernel"
+      lean: "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation"
+      module: "ExternalVerification269ThreePrimeStructure/Challenge.lean"
+      status: "exact-composite-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight"
+      lean: "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight"
+      module: "ExternalVerification269ThreePrimeStructure/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen"
+      lean: "Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen"
+      module: "ExternalVerification269ThreePrimeStructure/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

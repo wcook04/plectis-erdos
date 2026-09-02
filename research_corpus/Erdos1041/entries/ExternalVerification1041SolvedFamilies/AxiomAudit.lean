@@ -1,0 +1,5 @@
+import ExternalVerification1041SolvedFamilies.Solution
+
+#print axioms Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound
+#print axioms Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies
+#print axioms Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke

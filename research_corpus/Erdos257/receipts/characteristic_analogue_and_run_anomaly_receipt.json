@@ -1,0 +1,184 @@
+{
+  "characteristic_odd_search": [
+    {
+      "deepest": {
+        "depth": 600,
+        "pattern": [
+          0
+        ],
+        "period": 1,
+        "support": 0
+      },
+      "full_horizon_survivor_count": 1,
+      "full_horizon_survivors": [
+        {
+          "pattern": [
+            1,
+            1,
+            2,
+            2,
+            2,
+            1
+          ],
+          "period": 6,
+          "support": 4
+        }
+      ],
+      "horizon": 600,
+      "max_period": 6,
+      "p": 3
+    },
+    {
+      "deepest": {
+        "depth": 600,
+        "pattern": [
+          0
+        ],
+        "period": 1,
+        "support": 0
+      },
+      "full_horizon_survivor_count": 1,
+      "full_horizon_survivors": [
+        {
+          "pattern": [
+            4,
+            1,
+            2,
+            2,
+            2,
+            1
+          ],
+          "period": 6,
+          "support": 4
+        }
+      ],
+      "horizon": 600,
+      "max_period": 6,
+      "p": 5
+    },
+    {
+      "deepest": {
+        "depth": 600,
+        "pattern": [
+          0
+        ],
+        "period": 1,
+        "support": 0
+      },
+      "full_horizon_survivor_count": 1,
+      "full_horizon_survivors": [
+        {
+          "pattern": [
+            4,
+            1,
+            2,
+            2,
+            2,
+            1
+          ],
+          "period": 6,
+          "support": 4
+        }
+      ],
+      "horizon": 600,
+      "max_period": 6,
+      "p": 7
+    }
+  ],
+  "characteristic_two_witness": {
+    "horizon": 200000,
+    "identity": "sum_{a squarefree} 1/(t^a-1) = t^-1 in F_2((1/t))",
+    "odd_count_beyond_one": 0,
+    "ranks_with_odd_divisor_count": [],
+    "support_size": 121581,
+    "value_in_F2_of_t": "1/t"
+  },
+  "parameters": {
+    "char_horizon": 600,
+    "char_max_period": 6,
+    "char_primes": "3,5,7",
+    "char_two_horizon": 200000,
+    "run_denominators": "97,211,509,1021,2053",
+    "run_limit_per_q": 400,
+    "run_pad": 96,
+    "run_ranks": 3000,
+    "write": "state/formal_math/erdos257_period_noncollapse/characteristic_analogue_and_run_anomaly_receipt.json"
+  },
+  "payload_sha256": "7df3905077231d8a53bc030cec01645496e8e21b19378445e237cf1550f7d05b",
+  "run_anomaly": {
+    "log2_ranks": 11.550746785383243,
+    "max_take_run_histogram": {
+      "1": 2,
+      "10": 274,
+      "11": 298,
+      "12": 162,
+      "13": 82,
+      "14": 57,
+      "15": 27,
+      "16": 16,
+      "17": 6,
+      "18": 4,
+      "19": 3,
+      "23": 2,
+      "2990": 6,
+      "2991": 4,
+      "2992": 4,
+      "2993": 7,
+      "2994": 11,
+      "2995": 15,
+      "2996": 23,
+      "2997": 68,
+      "2998": 129,
+      "2999": 212,
+      "7": 3,
+      "8": 60,
+      "9": 219
+    },
+    "most_anomalous": {
+      "density": 0.9996666666666667,
+      "excess": 2987.449253214617,
+      "max_take_run": 2999,
+      "start": 2,
+      "target": "59/97"
+    },
+    "ranks": 3000,
+    "rows": [
+      {
+        "max_max_take_run": 2999,
+        "mean_max_take_run": 1167.116129032258,
+        "q": 97,
+        "scanned": 155
+      },
+      {
+        "max_max_take_run": 2999,
+        "mean_max_take_run": 1191.740412979351,
+        "q": 211,
+        "scanned": 339
+      },
+      {
+        "max_max_take_run": 2999,
+        "mean_max_take_run": 1138.555,
+        "q": 509,
+        "scanned": 400
+      },
+      {
+        "max_max_take_run": 2998,
+        "mean_max_take_run": 720.0025,
+        "q": 1021,
+        "scanned": 400
+      },
+      {
+        "max_max_take_run": 2997,
+        "mean_max_take_run": 302.07,
+        "q": 2053,
+        "scanned": 400
+      }
+    ],
+    "scanned_targets": 1694
+  },
+  "schema": "erdos257_characteristic_analogue_and_run_anomaly_v1",
+  "source": {
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SupportWordStructureLab.md",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/characteristic_analogue_and_run_anomaly_lab.py"
+  }
+}

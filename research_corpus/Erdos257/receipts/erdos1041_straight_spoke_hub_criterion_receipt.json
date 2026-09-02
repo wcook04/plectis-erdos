@@ -1,0 +1,484 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "If an admissible hub carried two sublevel-contained spokes on the quartic, the degree-three inequality would remain a live generalisation target. If some hub of the degree-six or degree-nine witness carried two open-contained spokes, straight spokes would remain live and only the selection rule would be at issue.",
+      "survival_consequence": "Straight two-spoke paths through a single critical point are eliminated as a higher-degree mechanism, so curvature is forced and the packet's negative result 4 stands. The surviving hub route is the descending inverse-ray branch pair, which delivers 1.763942 and 1.545995 on the same witnesses."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "straight_spoke_hub_criterion_separation",
+      "statement": "The degree-three theorem proves spoke containment in the hub sublevel set {|f| <= |f(c)|}, which is strictly stronger than the {|f| < 1} containment the short-path statement needs. The two criteria genuinely separate at degree four, and the weaker one also fails by degree six, so straight spokes through a single critical point are not a viable higher-degree mechanism."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/StraightSpokeHubCriterionLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_straight_spoke_hub_criterion.py",
+        "system/lib/formal_math_lemniscate.py"
+      ]
+    },
+    "probe": {
+      "computation": "Segment maxima are located from the real roots of the derivative of |f|^2 restricted to the segment, not sampled. The exact Gaussian-rational quartic with roots (9999+4i)/10000, (-125+9998i)/10000, (-9999-14i)/10000 and (-23-9999i)/10000 is checked in float64 and re-derived at 60 decimal digits. A deterministic near-extremal stress family perturbs z^n - r^n for degrees three through eight, and the packet's pinned cubic, balanced-quintic and Cassini witnesses are re-read through the same engine. Two further witnesses at degree six and degree nine, stored as exact IEEE-754 hexadecimal literals so they round-trip bit for bit, are checked for open-criterion failure at every admissible hub, together with the descending inverse-ray branch pair that still works there.",
+      "falsifier": "The separation fails if some admissible hub of the quartic carries two hub-sublevel-contained spokes, or if no hub of the quartic carries two open-contained spokes of total length below two. The open-criterion elimination fails if some admissible hub of the degree-six or degree-nine witness does carry two open-contained spokes, or if those witnesses stop admitting a descending branch pair below two, which would make them counterexamples to the target rather than to one mechanism.",
+      "id": "erdos1041_straight_spoke_hub_criterion",
+      "question": "Do the two containment criteria separate, and does either one survive in higher degree? Concretely: is there a monic quartic with all roots in the open unit disk whose every admissible critical point carries at most one hub-sublevel-contained spoke while still carrying two open-contained spokes of total length below two, and is there a higher-degree configuration whose every admissible critical point carries at most one open-contained spoke?",
+      "resource_bounds": {
+        "high_precision_decimal_digits": 60,
+        "stress_family_maximum_degree": 8,
+        "witness_denominator": 10000
+      },
+      "stop_condition": "Stop once the separation is exhibited on one witness and the open criterion is eliminated on at least one witness above degree five. Sweeping further random configurations for more of the same failures is a longer horizon, not new evidence."
+    },
+    "problem": {
+      "claim_ceiling": "This probe separates two containment criteria for the two-spoke critical-hub mechanism and then eliminates both. The hub-sublevel form fails from degree four and the open-lemniscate form from degree six. It eliminates straight two-spoke paths through a single critical point; it says nothing against curved descending branches, non-critical hubs, or multi-segment paths, and it does not settle Erdos #1041.",
+      "id": "erdos_1041",
+      "target_statement": "If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "One exact-data witness decides the sublevel form; the stress family is finite evidence for the surviving open form.",
+        "next_analytic_target": "Bound the arc length of the two descending inverse-ray branches at a selected critical point. The Lean-checked critical-pair metric scale bounds the straight distance by 2|f(c)|^(1/n) < 2, so the missing quantity is exactly the excess of branch length over straight distance. On the degree-six and degree-nine witnesses that excess is what keeps the pair at 1.763942 and 1.545995 rather than at the straight distance."
+      },
+      "status": "mixed",
+      "summary": "The exact quartic refutes the hub-sublevel two-spoke mechanism at every admissible critical point while still carrying an open-contained pair of length 1.787689338 < 2, so the two criteria separate. The degree-six and degree-nine witnesses then refute the open criterion as well: every admissible hub there carries at most one open-contained spoke, while the descending inverse-ray branch pairs give 1.763942, 1.545995. Straight spokes through a single critical point are eliminated; curvature is forced."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "high_precision_reverification": {
+    "admissible_hub_count": 2,
+    "critical_point_count": 3,
+    "decimal_digits": 60,
+    "hubs": [
+      {
+        "admissible": false,
+        "critical_point": [
+          "0.1513561608620595223618109",
+          "-0.01215282217217518757474629"
+        ],
+        "critical_value_modulus": "1.001223329673233002525058",
+        "derivative_residual": "1.1001e-61"
+      },
+      {
+        "admissible": true,
+        "critical_point": [
+          "-0.07584934132582127770078819",
+          "-0.1280473280849603873042892"
+        ],
+        "critical_value_modulus": "0.998709853817445675530749",
+        "derivative_residual": "1.5588e-61",
+        "open_best_pair_length": 1.8076386885428684,
+        "open_contained_root_indices": [
+          1,
+          2,
+          3
+        ],
+        "spoke_maximum_over_hub_value": [
+          "1.00389309436105654",
+          "1.00003869029752313",
+          "1.00001722975060814",
+          "1.0"
+        ],
+        "sublevel_contained_root_indices": [
+          3
+        ]
+      },
+      {
+        "admissible": true,
+        "critical_point": [
+          "-0.08660681953623824466102267",
+          "0.1393751502571355748790355"
+        ],
+        "critical_value_modulus": "0.9986145113649341186618546",
+        "derivative_residual": "8.0182e-62",
+        "open_best_pair_length": 1.7876893379488439,
+        "open_contained_root_indices": [
+          1,
+          2,
+          3
+        ],
+        "spoke_maximum_over_hub_value": [
+          "1.00516753854376564",
+          "1.0",
+          "1.00001956133707008",
+          "1.00011264005551403"
+        ],
+        "sublevel_contained_root_indices": [
+          1
+        ]
+      }
+    ],
+    "minimum_critical_point_separation": 0.2550566147450713,
+    "open_best_pair_length": 1.7876893379488439,
+    "open_mechanism_survives": true,
+    "sublevel_mechanism_refuted": true
+  },
+  "near_extremal_stress_family": [
+    {
+      "configurations_with_an_admissible_hub": 1920,
+      "configurations_with_no_sublevel_two_spoke_hub": 0,
+      "degree": 3,
+      "maximum_open_criterion_pair_length": 1.9974589462231678,
+      "maximum_open_pair_below_two_in_this_family": true
+    },
+    {
+      "configurations_with_an_admissible_hub": 1920,
+      "configurations_with_no_sublevel_two_spoke_hub": 9,
+      "degree": 4,
+      "maximum_open_criterion_pair_length": 1.9856823273862911,
+      "maximum_open_pair_below_two_in_this_family": true
+    },
+    {
+      "configurations_with_an_admissible_hub": 1920,
+      "configurations_with_no_sublevel_two_spoke_hub": 16,
+      "degree": 5,
+      "maximum_open_criterion_pair_length": 1.918722853102556,
+      "maximum_open_pair_below_two_in_this_family": true
+    },
+    {
+      "configurations_with_an_admissible_hub": 1920,
+      "configurations_with_no_sublevel_two_spoke_hub": 7,
+      "degree": 6,
+      "maximum_open_criterion_pair_length": 1.838868940900681,
+      "maximum_open_pair_below_two_in_this_family": true
+    },
+    {
+      "configurations_with_an_admissible_hub": 1920,
+      "configurations_with_no_sublevel_two_spoke_hub": 3,
+      "degree": 7,
+      "maximum_open_criterion_pair_length": 1.7466967402438032,
+      "maximum_open_pair_below_two_in_this_family": true
+    },
+    {
+      "configurations_with_an_admissible_hub": 1920,
+      "configurations_with_no_sublevel_two_spoke_hub": 4,
+      "degree": 8,
+      "maximum_open_criterion_pair_length": 1.6615882457270532,
+      "maximum_open_pair_below_two_in_this_family": true
+    }
+  ],
+  "open_criterion_refutation_witnesses": [
+    {
+      "admissible_hub_count": 2,
+      "degree": 6,
+      "hubs": [
+        {
+          "admissible": true,
+          "critical_value_modulus": 0.9999509859967581,
+          "descending_branch_pair_length": 1.7639419022337948,
+          "descending_branch_root_pair": [
+            1,
+            0
+          ],
+          "open_contained_root_indices": [
+            1
+          ],
+          "straight_pair_length": null
+        },
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.0000656195647395
+        },
+        {
+          "admissible": true,
+          "critical_value_modulus": 0.9999592752509787,
+          "descending_branch_pair_length": 1.7867667355716632,
+          "descending_branch_root_pair": [
+            5,
+            0
+          ],
+          "open_contained_root_indices": [
+            5
+          ],
+          "straight_pair_length": null
+        },
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.000014098068878
+        },
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.0000022071142491
+        }
+      ],
+      "maximum_root_modulus": 0.9999998500000001,
+      "minimum_descending_branch_pair_length": 1.7639419022337948,
+      "no_hub_gives_two_open_contained_spokes": true,
+      "root_hex_literals": [
+        [
+          "0x1.fffffaead1dfdp-1",
+          "-0x1.c7f97b12bedcep-15"
+        ],
+        [
+          "0x1.004ed623acd87p-1",
+          "0x1.bb3a1b3208ad6p-1"
+        ],
+        [
+          "-0x1.ffded10fb5c87p-2",
+          "0x1.bb713c92edfe4p-1"
+        ],
+        [
+          "-0x1.fffff9e87dd68p-1",
+          "-0x1.0766ef919e3d1p-12"
+        ],
+        [
+          "-0x1.00485f6af598cp-1",
+          "-0x1.bb3dd8051992dp-1"
+        ],
+        [
+          "0x1.00198d2225a68p-1",
+          "-0x1.bb58e733c06dcp-1"
+        ]
+      ],
+      "roots_strictly_inside_unit_disk": true
+    },
+    {
+      "admissible_hub_count": 3,
+      "degree": 9,
+      "hubs": [
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.0000053188961695
+        },
+        {
+          "admissible": true,
+          "critical_value_modulus": 0.9999422211390834,
+          "descending_branch_pair_length": 1.5459951467553994,
+          "descending_branch_root_pair": [
+            5,
+            6
+          ],
+          "open_contained_root_indices": [
+            5
+          ],
+          "straight_pair_length": null
+        },
+        {
+          "admissible": true,
+          "critical_value_modulus": 0.9999414834994422,
+          "descending_branch_pair_length": 1.5588973238040162,
+          "descending_branch_root_pair": [
+            7,
+            6
+          ],
+          "open_contained_root_indices": [
+            7
+          ],
+          "straight_pair_length": null
+        },
+        {
+          "admissible": true,
+          "critical_value_modulus": 0.9999793918631219,
+          "descending_branch_pair_length": 1.6252695689512904,
+          "descending_branch_root_pair": [
+            8,
+            7
+          ],
+          "open_contained_root_indices": [
+            8
+          ],
+          "straight_pair_length": null
+        },
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.00004033918122
+        },
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.0000065539182574
+        },
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.000019867532285
+        },
+        {
+          "admissible": false,
+          "critical_value_modulus": 1.0000119479772223
+        }
+      ],
+      "maximum_root_modulus": 0.9999998500000001,
+      "minimum_descending_branch_pair_length": 1.5459951467553994,
+      "no_hub_gives_two_open_contained_spokes": true,
+      "root_hex_literals": [
+        [
+          "0x1.fffffadb279edp-1",
+          "-0x1.54cbe5f38764ep-14"
+        ],
+        [
+          "0x1.882fdda9ba317p-1",
+          "0x1.4922d6b3868dfp-1"
+        ],
+        [
+          "0x1.63e8c845cba7bp-3",
+          "0x1.f83590b0811ebp-1"
+        ],
+        [
+          "-0x1.fffb9be200080p-2",
+          "0x1.bb68ed350eca4p-1"
+        ],
+        [
+          "-0x1.e121a80180737p-1",
+          "0x1.5e2df749c719cp-2"
+        ],
+        [
+          "-0x1.e11b7beb2b6bep-1",
+          "-0x1.5e4fe150117d8p-2"
+        ],
+        [
+          "-0x1.0005816d133a1p-1",
+          "-0x1.bb647aee76a86p-1"
+        ],
+        [
+          "0x1.637127244f7d2p-3",
+          "-0x1.f83ad6df31cf7p-1"
+        ],
+        [
+          "0x1.8833eebb49d0cp-1",
+          "-0x1.491f0e2e50785p-1"
+        ]
+      ],
+      "roots_strictly_inside_unit_disk": true
+    }
+  ],
+  "pinned_corpus_witnesses": [
+    {
+      "agrees_with_packet": true,
+      "hub_sublevel_pair_length": 1.9799999999999998,
+      "statement": "two sublevel-contained radial spokes through 0, total 99/50",
+      "witness": "z^3 - (99/100)^3"
+    },
+    {
+      "another_hub_supplies_a_short_pair": true,
+      "best_open_criterion_pair_over_all_hubs": 0.5289710476163669,
+      "nearest_root_spoke_escapes": true,
+      "nearest_root_spoke_maximum": 1.0868839476378644,
+      "statement": "the nearest root's spoke at the metric hub 0 leaves |f|<1",
+      "witness": "balanced quintic (packet unique_nearest_straight_spoke_counterexample)"
+    },
+    {
+      "agrees_with_root_distance": true,
+      "open_criterion_pair_length": 1.8,
+      "statement": "root distance 2 - 2/m leaves no polynomial-independent slack",
+      "witness": "Cassini a=9/10"
+    }
+  ],
+  "sources": [
+    {
+      "byte_length": 31124,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_straight_spoke_hub_criterion.py",
+      "sha256": "f031e725d8e2a66bcecd325481826916c6ab788ef4cd4fa0d7b16a1f3a0ee434"
+    },
+    {
+      "byte_length": 12673,
+      "path": "system/lib/formal_math_lemniscate.py",
+      "sha256": "6aed3e568846c7cf59c9240b08864d3dcc7c3e2fad8c3020e0cba0d47c2eeb6a"
+    }
+  ],
+  "witness": {
+    "denominator": 10000,
+    "hub_sublevel_mechanism_refuted": true,
+    "hubs": [
+      {
+        "admissible": false,
+        "critical_point": [
+          0.1513561608620596,
+          -0.01215282217217499
+        ],
+        "critical_value_modulus": 1.001223329673233
+      },
+      {
+        "admissible": true,
+        "critical_point": [
+          -0.07584934132582116,
+          -0.12804732808496094
+        ],
+        "critical_value_modulus": 0.9987098538174457,
+        "hub_sublevel": {
+          "contained_root_indices": [
+            3
+          ],
+          "pair_length": null,
+          "spoke_maximum_modulus": [
+            1.002597925517674,
+            0.9987484941988292,
+            0.9987270613391569,
+            0.9987098538174457
+          ]
+        },
+        "open_lemniscate": {
+          "contained_root_indices": [
+            1,
+            2,
+            3
+          ],
+          "pair_length": 1.807638688542868,
+          "spoke_maximum_modulus": [
+            1.002597925517674,
+            0.9987484941988292,
+            0.9987270613391569,
+            0.9987098538174457
+          ]
+        }
+      },
+      {
+        "admissible": true,
+        "critical_point": [
+          -0.08660681953623862,
+          0.13937515025713598
+        ],
+        "critical_value_modulus": 0.9986145113649341,
+        "hub_sublevel": {
+          "contained_root_indices": [
+            1
+          ],
+          "pair_length": null,
+          "spoke_maximum_modulus": [
+            1.0037748903427761,
+            0.9986145113649341,
+            0.998634045599994,
+            0.9987269953589314
+          ]
+        },
+        "open_lemniscate": {
+          "contained_root_indices": [
+            1,
+            2,
+            3
+          ],
+          "pair_length": 1.787689337948843,
+          "spoke_maximum_modulus": [
+            1.0037748903427761,
+            0.9986145113649341,
+            0.998634045599994,
+            0.9987269953589314
+          ]
+        }
+      }
+    ],
+    "open_criterion_best_pair_length": 1.787689337948843,
+    "root_integer_pairs": [
+      [
+        9999,
+        4
+      ],
+      [
+        -125,
+        9998
+      ],
+      [
+        -9999,
+        -14
+      ],
+      [
+        -23,
+        -9999
+      ]
+    ],
+    "roots_strictly_inside_unit_disk": true
+  }
+}

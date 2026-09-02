@@ -1,0 +1,1106 @@
+{
+  "schema": "plectis_public_research_corpus_manifest_v2",
+  "problem_id": "erdos_249",
+  "status": "open",
+  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "public_prefix": "research_corpus/Erdos249",
+  "file_count": 121,
+  "total_bytes": 2284619,
+  "local_path_replacement_count": 0,
+  "strongest_result_map": {
+    "path": "research_corpus/Erdos249/STRONGEST_RESULTS.json",
+    "sha256": "50937aefb4af273622f98287d6abb65723c913e441f7479bd5a53d0421fc44dd",
+    "result_count": 10
+  },
+  "files": [
+    {
+      "source_path": "source-provenance://docs/formal_math/odd_slope_affine_totient_independence.md",
+      "public_path": "research_corpus/Erdos249/docs/formal_math/odd_slope_affine_totient_independence.md",
+      "source_sha256": "2d3c87ebf336befeda91cb2ec4ffbc1e0c657492ff7daced88d604342b663a7b",
+      "published_sha256": "2d3c87ebf336befeda91cb2ec4ffbc1e0c657492ff7daced88d604342b663a7b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14806
+    },
+    {
+      "source_path": "source-provenance://docs/formal_math/palomar/contributor_frontier_v1.json",
+      "public_path": "research_corpus/Erdos249/docs/formal_math/palomar/contributor_frontier_v1.json",
+      "source_sha256": "38f6e799fa61497d798b466d1e02dfa4cac94e6dd7f041d45931ff039ec3e712",
+      "published_sha256": "38f6e799fa61497d798b466d1e02dfa4cac94e6dd7f041d45931ff039ec3e712",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14244
+    },
+    {
+      "source_path": "source-provenance://docs/formal_math/palomar/longitudinal_truth_2026_09_01.md",
+      "public_path": "research_corpus/Erdos249/docs/formal_math/palomar/longitudinal_truth_2026_09_01.md",
+      "source_sha256": "fbad6fc2f2f5b9544f299d86099961857939ca815ce443503abdbadeef22314a",
+      "published_sha256": "fbad6fc2f2f5b9544f299d86099961857939ca815ce443503abdbadeef22314a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 16511
+    },
+    {
+      "source_path": "source-provenance://docs/formal_math/palomar/prior_art_adjudication_2026_09_02.md",
+      "public_path": "research_corpus/Erdos249/docs/formal_math/palomar/prior_art_adjudication_2026_09_02.md",
+      "source_sha256": "88de881080b72c373d715e14549c2c97e4545c007384e0f65b4d91f68bdd528c",
+      "published_sha256": "88de881080b72c373d715e14549c2c97e4545c007384e0f65b4d91f68bdd528c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 101779
+    },
+    {
+      "source_path": "source-provenance://docs/formal_math/palomar/situation_map_2026_09_01.md",
+      "public_path": "research_corpus/Erdos249/docs/formal_math/palomar/situation_map_2026_09_01.md",
+      "source_sha256": "8de689a68d36b824d96924edfc77ac78349101ca7989c9bec4567e9dd3781983",
+      "published_sha256": "8de689a68d36b824d96924edfc77ac78349101ca7989c9bec4567e9dd3781983",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 13785
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/CertificateKernel.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/CertificateKernel.lean",
+      "source_sha256": "b9bcdcfc4e499a9c2dbac841921f282fc3752b6aba620b331762b6e7c0e79d04",
+      "published_sha256": "b9bcdcfc4e499a9c2dbac841921f282fc3752b6aba620b331762b6e7c0e79d04",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 895812
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GapFareyBound.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/GapFareyBound.lean",
+      "source_sha256": "076397176d7ca70d0ab4771872bd415ef5487d90f55e389f4250d7f3f43abc25",
+      "published_sha256": "076397176d7ca70d0ab4771872bd415ef5487d90f55e389f4250d7f3f43abc25",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 12538
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/SignedQMomentObstruction.lean",
+      "source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "published_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 30825
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/AGENTS.md",
+      "public_path": "research_corpus/Erdos249/problem/AGENTS.md",
+      "source_sha256": "dbb38d85e7327718a066c5f416a5c39c21251a86c76f26fc5ac939c78f3f45d9",
+      "published_sha256": "dbb38d85e7327718a066c5f416a5c39c21251a86c76f26fc5ac939c78f3f45d9",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1661
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CanonicalMersenneResidueComputationalLab.md",
+      "public_path": "research_corpus/Erdos249/problem/CanonicalMersenneResidueComputationalLab.md",
+      "source_sha256": "9f901a361100a310e55846b047ab2ba303e36dddfc4d7ae5119e908fb1fef4e9",
+      "published_sha256": "9f901a361100a310e55846b047ab2ba303e36dddfc4d7ae5119e908fb1fef4e9",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4060
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "public_path": "research_corpus/Erdos249/problem/CyclotomicAnchoredKill.lean",
+      "source_sha256": "f592fa99c25c55c74cdea7ebaea7dec85774606837c6cbf46393cbab334be11c",
+      "published_sha256": "f592fa99c25c55c74cdea7ebaea7dec85774606837c6cbf46393cbab334be11c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 141737
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "public_path": "research_corpus/Erdos249/problem/FiniteEulerSieve.lean",
+      "source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
+      "published_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2327
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FixedQuotientDelayLawLab.md",
+      "public_path": "research_corpus/Erdos249/problem/FixedQuotientDelayLawLab.md",
+      "source_sha256": "62b42faf239da5e09ce34da1250ad230fe4c6a28c5763d1bb5d105bd77449014",
+      "published_sha256": "62b42faf239da5e09ce34da1250ad230fe4c6a28c5763d1bb5d105bd77449014",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3873
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+      "public_path": "research_corpus/Erdos249/problem/FullDepthRayAmplifier.lean",
+      "source_sha256": "424e03e04f5c919649f84d3938ce73d55b0bad514ccc53977eb38eb7a984bee3",
+      "published_sha256": "424e03e04f5c919649f84d3938ce73d55b0bad514ccc53977eb38eb7a984bee3",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 21844
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean",
+      "public_path": "research_corpus/Erdos249/problem/ParityPerturbedRationalControl.lean",
+      "source_sha256": "312eba555f835500e5f09b1cc62adf15488a42af003f037077be4a2d1d4aea5e",
+      "published_sha256": "312eba555f835500e5f09b1cc62adf15488a42af003f037077be4a2d1d4aea5e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 20658
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/ParityPerturbedRationalControl.md",
+      "public_path": "research_corpus/Erdos249/problem/ParityPerturbedRationalControl.md",
+      "source_sha256": "12b12b163c9996eca1c971c4c06267d24028271d8ded9053c53f0dd190137cfc",
+      "published_sha256": "12b12b163c9996eca1c971c4c06267d24028271d8ded9053c53f0dd190137cfc",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 19693
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "public_path": "research_corpus/Erdos249/problem/PeriodMultipleEscape.lean",
+      "source_sha256": "ad46f970435fa931bb076d9e214ec11e2b5a0240ea19ca25fd51276d10a8780d",
+      "published_sha256": "ad46f970435fa931bb076d9e214ec11e2b5a0240ea19ca25fd51276d10a8780d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 22093
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PointwiseTotientCountermodelLab.md",
+      "public_path": "research_corpus/Erdos249/problem/PointwiseTotientCountermodelLab.md",
+      "source_sha256": "03ef24c17cf6301f5b59d7fabb8bb2e633bbf6ea1ae5171071edb681e6b9d002",
+      "published_sha256": "03ef24c17cf6301f5b59d7fabb8bb2e633bbf6ea1ae5171071edb681e6b9d002",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3136
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "public_path": "research_corpus/Erdos249/problem/PrimeRayCyclotomicCurvature.lean",
+      "source_sha256": "1476cea85a57094a8b9b916f9cbd53ceca9d4337f45852af1690afd690a13c48",
+      "published_sha256": "1476cea85a57094a8b9b916f9cbd53ceca9d4337f45852af1690afd690a13c48",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 10709
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+      "public_path": "research_corpus/Erdos249/problem/PureDyadicEndpointCocycleComputationalLab.md",
+      "source_sha256": "b7cd498cd01be7379856cf4f3f9f0c393d3e3746ed96d64e8a5a0dbec3aa1112",
+      "published_sha256": "b7cd498cd01be7379856cf4f3f9f0c393d3e3746ed96d64e8a5a0dbec3aa1112",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 11006
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+      "public_path": "research_corpus/Erdos249/problem/RankOneSharpFloor.lean",
+      "source_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
+      "published_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 27198
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "public_path": "research_corpus/Erdos249/problem/RankOneSubrankObstruction.lean",
+      "source_sha256": "44f7b7977060826cc5558cfcee40b9bebfa478564d134aef8e2fb9607bf3748d",
+      "published_sha256": "44f7b7977060826cc5558cfcee40b9bebfa478564d134aef8e2fb9607bf3748d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14292
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SupplyDelayLab.md",
+      "public_path": "research_corpus/Erdos249/problem/SupplyDelayLab.md",
+      "source_sha256": "a66d6a95ebf986444e6a5eedd936440bec52582461851bb604bf55efff0420d4",
+      "published_sha256": "a66d6a95ebf986444e6a5eedd936440bec52582461851bb604bf55efff0420d4",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7516
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeComputationalLab.md",
+      "public_path": "research_corpus/Erdos249/problem/TotientAffineModeComputationalLab.md",
+      "source_sha256": "19a214ede24677bf0f6c90f95e2d9decb00ae5613fde3e86a56a7b144fe5363f",
+      "published_sha256": "19a214ede24677bf0f6c90f95e2d9decb00ae5613fde3e86a56a7b144fe5363f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1193
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean",
+      "public_path": "research_corpus/Erdos249/problem/TotientAffineModeEscape.lean",
+      "source_sha256": "9483a646e6bcb4a505149b00fc41b20b49f820ad5bada081184427132727f017",
+      "published_sha256": "9483a646e6bcb4a505149b00fc41b20b49f820ad5bada081184427132727f017",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3011
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "public_path": "research_corpus/Erdos249/problem/TotientStrictPrimeEscape.lean",
+      "source_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
+      "published_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2640
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/parity_perturbed_rational_control_probe_receipt.json",
+      "public_path": "research_corpus/Erdos249/problem/parity_perturbed_rational_control_probe_receipt.json",
+      "source_sha256": "93d86dc2c66de23fe01ef026ba3582bd61e4f945e2c7e0427d3afa3ecd2557cb",
+      "published_sha256": "93d86dc2c66de23fe01ef026ba3582bd61e4f945e2c7e0427d3afa3ecd2557cb",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7009
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "public_path": "research_corpus/Erdos249/problem/research_packet.json",
+      "source_sha256": "5bc864108766496238718d04af768c497519401551963d8765a98622130fa9ed",
+      "published_sha256": "5bc864108766496238718d04af768c497519401551963d8765a98622130fa9ed",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 103752
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_canonical_mersenne_residue.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_canonical_mersenne_residue.py",
+      "source_sha256": "f7716147fc7f83d774d914663aeb61c7f17dc7a3e6330b069fcc63615b30018a",
+      "published_sha256": "f7716147fc7f83d774d914663aeb61c7f17dc7a3e6330b069fcc63615b30018a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 13158
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_mersenne_divisor_centrality.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_mersenne_divisor_centrality.py",
+      "source_sha256": "92f40819c7a80516a9793c02af6dd7fc1f8176c398eff7f2e9493b12d36b70e9",
+      "published_sha256": "92f40819c7a80516a9793c02af6dd7fc1f8176c398eff7f2e9493b12d36b70e9",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 9939
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_prime_successor_precursor_cone.py",
+      "source_sha256": "a6796aad0e06353c6caa37aa21af4d82e3dcb9722a60959b057541149f5e87ce",
+      "published_sha256": "a6796aad0e06353c6caa37aa21af4d82e3dcb9722a60959b057541149f5e87ce",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 10823
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_endpoint_cocycle.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_pure_dyadic_endpoint_cocycle.py",
+      "source_sha256": "26ce5d82cc799934292fb2500c004bf3b6b1c7f2c04e6b4c3378620ccd1c48cf",
+      "published_sha256": "26ce5d82cc799934292fb2500c004bf3b6b1c7f2c04e6b4c3378620ccd1c48cf",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14806
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_pointwise_countermodel.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_pure_dyadic_pointwise_countermodel.py",
+      "source_sha256": "4419d8dad24441baeba18aea8b2197382e1dfba28fdc22a1396372e6811fa2ca",
+      "published_sha256": "4419d8dad24441baeba18aea8b2197382e1dfba28fdc22a1396372e6811fa2ca",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7759
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_three_prime_lock_precursor_cone.py",
+      "source_sha256": "8a90480faf21e5fc3fea9c643b3d44d6e31ad04722cfd58829ade935983ac3de",
+      "published_sha256": "8a90480faf21e5fc3fea9c643b3d44d6e31ad04722cfd58829ade935983ac3de",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 15409
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_totient_affine_mode.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_totient_affine_mode.py",
+      "source_sha256": "952c9d8f153703e2c7611918f4a408ec2028880ea74db2dcbb600de04bad2dc1",
+      "published_sha256": "952c9d8f153703e2c7611918f4a408ec2028880ea74db2dcbb600de04bad2dc1",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 6207
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_two_prime_lock_precursor_cone.py",
+      "source_sha256": "dc2e78a6d8aacb90a9934f3c3841f2eea8c94e3fd528454d6b240a30be144b90",
+      "published_sha256": "dc2e78a6d8aacb90a9934f3c3841f2eea8c94e3fd528454d6b240a30be144b90",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 11034
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/verify_cyclotomic_anchored_kill.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/verify_cyclotomic_anchored_kill.py",
+      "source_sha256": "8237bbc2239b043dc507fa8281d2deb3d657c7fcc7a44dde67439b5147a82f72",
+      "published_sha256": "8237bbc2239b043dc507fa8281d2deb3d657c7fcc7a44dde67439b5147a82f72",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3774
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/verify_mobius_mersenne_hankel.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/verify_mobius_mersenne_hankel.py",
+      "source_sha256": "200f1d4ffb49ffac7044cec4e88633c655410bebd072324e95a2fc73a1281c23",
+      "published_sha256": "200f1d4ffb49ffac7044cec4e88633c655410bebd072324e95a2fc73a1281c23",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4887
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/verify_rank_one_subrank_obstruction.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/verify_rank_one_subrank_obstruction.py",
+      "source_sha256": "5813fd18dd27769df44806060cde5427342c4431990c94de2ebac97e92b30502",
+      "published_sha256": "5813fd18dd27769df44806060cde5427342c4431990c94de2ebac97e92b30502",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 8120
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-249-binary-totient-series.tex",
+      "public_path": "research_corpus/Erdos249/paper/erdos-249-binary-totient-series.tex",
+      "source_sha256": "3f43cb4f6070df2f5f485768223187ae70c24ee30894581e0ac3b66cd2def382",
+      "published_sha256": "3f43cb4f6070df2f5f485768223187ae70c24ee30894581e0ac3b66cd2def382",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 110049
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/AxiomAudit.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/AxiomAudit.lean",
+      "source_sha256": "450b05f1f507b66d0fc787e3b32c1ec0e403847d7c9f2ef96e9dd0a7474fd35c",
+      "published_sha256": "450b05f1f507b66d0fc787e3b32c1ec0e403847d7c9f2ef96e9dd0a7474fd35c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 301
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/Challenge.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/Challenge.lean",
+      "source_sha256": "0a790cda1aa3d3355dbfd804f78d45047ed02726303d148997d8646396f1d665",
+      "published_sha256": "0a790cda1aa3d3355dbfd804f78d45047ed02726303d148997d8646396f1d665",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2582
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/NegativeSolution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/NegativeSolution.lean",
+      "source_sha256": "da103c93b5a2fb59500723a6b7fcef4456ce21f50d111108678970d37b735e76",
+      "published_sha256": "da103c93b5a2fb59500723a6b7fcef4456ce21f50d111108678970d37b735e76",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1609
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/README.md",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/README.md",
+      "source_sha256": "a347fc2f8a975e95d8d2c36999638a5a0c153332c9aefdaea8bd2815382e75d5",
+      "published_sha256": "a347fc2f8a975e95d8d2c36999638a5a0c153332c9aefdaea8bd2815382e75d5",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1682
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/Solution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/Solution.lean",
+      "source_sha256": "e9c246a85be860351515f48eef2049e8c7cec0be32db41b271ccaa9e085a01fa",
+      "published_sha256": "e9c246a85be860351515f48eef2049e8c7cec0be32db41b271ccaa9e085a01fa",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3175
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/comparator-negative-mismatch.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/comparator-negative-mismatch.json",
+      "source_sha256": "68e022bc3ccf881e35a4f4c3f0fae062230014448507afe2df183bd022ebb165",
+      "published_sha256": "68e022bc3ccf881e35a4f4c3f0fae062230014448507afe2df183bd022ebb165",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 411
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/comparator.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/comparator.json",
+      "source_sha256": "d5064bbad6492f8ae0fd654115c3c123251f20b708146692075d8faf4faf6870",
+      "published_sha256": "d5064bbad6492f8ae0fd654115c3c123251f20b708146692075d8faf4faf6870",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 514
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249ActualLcmOrbit/formalization.yaml",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/formalization.yaml",
+      "source_sha256": "59b17153f06594c77ffb702751848ff153feac8ed10060fa3ec796b8498c2e5b",
+      "published_sha256": "59b17153f06594c77ffb702751848ff153feac8ed10060fa3ec796b8498c2e5b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3781
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/AxiomAudit.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/AxiomAudit.lean",
+      "source_sha256": "9dbbf34ff7721e45165c52ac5d551a869d289bc242d07c890de346744f395692",
+      "published_sha256": "9dbbf34ff7721e45165c52ac5d551a869d289bc242d07c890de346744f395692",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 567
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/Challenge.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/Challenge.lean",
+      "source_sha256": "a72223cbdf3132e65ac4c156b3549261308c5949c52f1d23579fcc1cd017b39b",
+      "published_sha256": "a72223cbdf3132e65ac4c156b3549261308c5949c52f1d23579fcc1cd017b39b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2260
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/NegativeSolution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/NegativeSolution.lean",
+      "source_sha256": "9ee1e4a80bf946648e34dba0ca8eda804d4fd34b52e73a6a892635301c9c7597",
+      "published_sha256": "9ee1e4a80bf946648e34dba0ca8eda804d4fd34b52e73a6a892635301c9c7597",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 626
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/README.md",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/README.md",
+      "source_sha256": "c91d290e3f330c2918ffd58f3d6a9f6a9eb37cd367bc49c3c42a5a1b532d205c",
+      "published_sha256": "c91d290e3f330c2918ffd58f3d6a9f6a9eb37cd367bc49c3c42a5a1b532d205c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1753
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/Solution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/Solution.lean",
+      "source_sha256": "23e3365e08da0a83c836b053999b415af86035e646e9886cedca3b64b95a1a5d",
+      "published_sha256": "23e3365e08da0a83c836b053999b415af86035e646e9886cedca3b64b95a1a5d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3770
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/comparator-negative-mismatch.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/comparator-negative-mismatch.json",
+      "source_sha256": "099f6f15e31ee79d816799403a18387b3ac4608ff3185d2ae445e9f05ae936fc",
+      "published_sha256": "099f6f15e31ee79d816799403a18387b3ac4608ff3185d2ae445e9f05ae936fc",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 410
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/comparator.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/comparator.json",
+      "source_sha256": "a1a14e8eafe476ab1d8e890f84ca712fdbd4edd6ac11a05f71658b32d7c5029c",
+      "published_sha256": "a1a14e8eafe476ab1d8e890f84ca712fdbd4edd6ac11a05f71658b32d7c5029c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 775
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249BinaryCyclotomicAnchors/formalization.yaml",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/formalization.yaml",
+      "source_sha256": "b0028e1f022e40edb48618a4fb7786cb88fec5765da97823787d62cbbf4eef37",
+      "published_sha256": "b0028e1f022e40edb48618a4fb7786cb88fec5765da97823787d62cbbf4eef37",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 6333
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/AxiomAudit.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/AxiomAudit.lean",
+      "source_sha256": "8c4aa0e3016ee69ff8124f1bdfdebc0c5b56ed6776be7b9e505689b9cbd832f5",
+      "published_sha256": "8c4aa0e3016ee69ff8124f1bdfdebc0c5b56ed6776be7b9e505689b9cbd832f5",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 441
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/Challenge.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/Challenge.lean",
+      "source_sha256": "c09fcd9ee1bfb4d82318fedecc61cf4e4cf4c0872e4aed9c6e808f6445750114",
+      "published_sha256": "c09fcd9ee1bfb4d82318fedecc61cf4e4cf4c0872e4aed9c6e808f6445750114",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1774
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/NegativeSolution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/NegativeSolution.lean",
+      "source_sha256": "d752f371cdbae6893d2071b71c1689d8b87d4580eab0715c52ddaf1a3c876e5d",
+      "published_sha256": "d752f371cdbae6893d2071b71c1689d8b87d4580eab0715c52ddaf1a3c876e5d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 967
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/README.md",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/README.md",
+      "source_sha256": "0616e91df66c0684ef37f4845b5638b6a41aee58f5d35ece18a0334efa916cd5",
+      "published_sha256": "0616e91df66c0684ef37f4845b5638b6a41aee58f5d35ece18a0334efa916cd5",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1517
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/Solution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/Solution.lean",
+      "source_sha256": "1e839f5d10bb84c3bbff1411d348acb803bfe15e856e6455dc9cfbd52f88f200",
+      "published_sha256": "1e839f5d10bb84c3bbff1411d348acb803bfe15e856e6455dc9cfbd52f88f200",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3100
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/comparator-negative-mismatch.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/comparator-negative-mismatch.json",
+      "source_sha256": "cc7407884c70ff34297c647903dcdb5ec629a8cd6ecc4d110ced6ccc0b04d9c8",
+      "published_sha256": "cc7407884c70ff34297c647903dcdb5ec629a8cd6ecc4d110ced6ccc0b04d9c8",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 395
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/comparator.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/comparator.json",
+      "source_sha256": "de6317678d78cc994601be0cc56fb2ef00d197f2ac231348a99bc3d7e9f830fa",
+      "published_sha256": "de6317678d78cc994601be0cc56fb2ef00d197f2ac231348a99bc3d7e9f830fa",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 602
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CanonicalMersenneFrontier/formalization.yaml",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/formalization.yaml",
+      "source_sha256": "cad6fe9a6c830aa0be6169a9e1beb6dc37a20477c0c81e83ccdddbdf1af5a437",
+      "published_sha256": "cad6fe9a6c830aa0be6169a9e1beb6dc37a20477c0c81e83ccdddbdf1af5a437",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2942
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/AxiomAudit.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/AxiomAudit.lean",
+      "source_sha256": "30a7887abd92e926ab6c3367c9254825f8f61e472aa6528b044ed9c015dff209",
+      "published_sha256": "30a7887abd92e926ab6c3367c9254825f8f61e472aa6528b044ed9c015dff209",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 574
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/Challenge.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/Challenge.lean",
+      "source_sha256": "0a4c8a0ef766468cd7ff95d3ea25fde8e4df5a741dc9817f66bbcc9edf0d006b",
+      "published_sha256": "0a4c8a0ef766468cd7ff95d3ea25fde8e4df5a741dc9817f66bbcc9edf0d006b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5543
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/NegativeSolution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/NegativeSolution.lean",
+      "source_sha256": "b2d93cabc52eb9f89e0c6b9457e0f7f294c392aac2e0dec035d894e50785a310",
+      "published_sha256": "b2d93cabc52eb9f89e0c6b9457e0f7f294c392aac2e0dec035d894e50785a310",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 323
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/README.md",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/README.md",
+      "source_sha256": "635e74d673ac6b5619971331197535d28c00cd990553dbbd914f98d9233f3189",
+      "published_sha256": "635e74d673ac6b5619971331197535d28c00cd990553dbbd914f98d9233f3189",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4064
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/Solution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/Solution.lean",
+      "source_sha256": "e9434f53f21fb14ea9cb9f568fc3829b515dce5e9191c31695b5f7b80ed3d681",
+      "published_sha256": "e9434f53f21fb14ea9cb9f568fc3829b515dce5e9191c31695b5f7b80ed3d681",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4116
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/comparator-negative-mismatch.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/comparator-negative-mismatch.json",
+      "source_sha256": "0cb0248f88732e1aae1b07ee4d848c18f08a2b7db811c4537d0cee58a0ada986",
+      "published_sha256": "0cb0248f88732e1aae1b07ee4d848c18f08a2b7db811c4537d0cee58a0ada986",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 966
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/comparator.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/comparator.json",
+      "source_sha256": "a631fdac6fe8fcd018727fee7d318aee580cd2736f78876a2ff17e5ec367d033",
+      "published_sha256": "a631fdac6fe8fcd018727fee7d318aee580cd2736f78876a2ff17e5ec367d033",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 958
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/formalization.yaml",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/formalization.yaml",
+      "source_sha256": "0df2683c3f53266789c5be72e3b55e3efa9ad02d588bbeedf16ee65127c5c1ae",
+      "published_sha256": "0df2683c3f53266789c5be72e3b55e3efa9ad02d588bbeedf16ee65127c5c1ae",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 11787
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/AxiomAudit.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/AxiomAudit.lean",
+      "source_sha256": "588f6e888f72d32405c2246c9c8c8f60123aa3397383de5d253693238ea9b932",
+      "published_sha256": "588f6e888f72d32405c2246c9c8c8f60123aa3397383de5d253693238ea9b932",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 175
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/Challenge.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/Challenge.lean",
+      "source_sha256": "5c49346e2d3f9eaa56a0838e98807fe1f41a5687ab943255e0acffa2fbbf2d0a",
+      "published_sha256": "5c49346e2d3f9eaa56a0838e98807fe1f41a5687ab943255e0acffa2fbbf2d0a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2891
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/NegativeSolution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/NegativeSolution.lean",
+      "source_sha256": "6cbf651751378d15731675ae6e9c0682e6428bde64ec8180712c6ee0eac6252a",
+      "published_sha256": "6cbf651751378d15731675ae6e9c0682e6428bde64ec8180712c6ee0eac6252a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1267
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/README.md",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/README.md",
+      "source_sha256": "ba8118f449a2761fe8f72af01251511b3f8054348d9ea11615465428f37a3096",
+      "published_sha256": "ba8118f449a2761fe8f72af01251511b3f8054348d9ea11615465428f37a3096",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2683
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/Solution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/Solution.lean",
+      "source_sha256": "6173d90f8289dec1b4d18e4ae16c1ce502340bf9f455782d3b17926be7d43590",
+      "published_sha256": "6173d90f8289dec1b4d18e4ae16c1ce502340bf9f455782d3b17926be7d43590",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3357
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/comparator-negative-mismatch.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/comparator-negative-mismatch.json",
+      "source_sha256": "fbf5534414a9124151662ee5c4d63428e901d23832e084a7eec989a4a2f5859a",
+      "published_sha256": "fbf5534414a9124151662ee5c4d63428e901d23832e084a7eec989a4a2f5859a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 408
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/comparator.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/comparator.json",
+      "source_sha256": "51b8640be7918c0052bb0278336c302ca6eb8e39c80485e371dc3778fc96c21f",
+      "published_sha256": "51b8640be7918c0052bb0278336c302ca6eb8e39c80485e371dc3778fc96c21f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 400
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249DyadicTotientKernel/formalization.yaml",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/formalization.yaml",
+      "source_sha256": "6a8d1954a237919e36866ce0c8e6abfcd695814ffa764b5863a22be2060652d5",
+      "published_sha256": "6a8d1954a237919e36866ce0c8e6abfcd695814ffa764b5863a22be2060652d5",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7520
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/AxiomAudit.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/AxiomAudit.lean",
+      "source_sha256": "3b712f6bab669b987d3ff777fb056cf52a8ed835b321fdbfbf1cecc1a9d9c972",
+      "published_sha256": "3b712f6bab669b987d3ff777fb056cf52a8ed835b321fdbfbf1cecc1a9d9c972",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 652
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/Challenge.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/Challenge.lean",
+      "source_sha256": "effd34b3e7191d7e77e04c49a9874529896d2ccc6526ec622188efcaabb6af3f",
+      "published_sha256": "effd34b3e7191d7e77e04c49a9874529896d2ccc6526ec622188efcaabb6af3f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2124
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/NegativeSolution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/NegativeSolution.lean",
+      "source_sha256": "68b405c4722f85719cecf6f19f6f61b5c7c4444012a72ba47c54b0fee2390c94",
+      "published_sha256": "68b405c4722f85719cecf6f19f6f61b5c7c4444012a72ba47c54b0fee2390c94",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 762
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/README.md",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/README.md",
+      "source_sha256": "ddc83e97cab550c30ce7d161f4ed888ab055adaa3d560375499e8ce28a4ed18b",
+      "published_sha256": "ddc83e97cab550c30ce7d161f4ed888ab055adaa3d560375499e8ce28a4ed18b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1367
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/Solution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/Solution.lean",
+      "source_sha256": "59767372833e5f37bb4643738af9dc046be09feabfd5f24702dfc15ab887a2f3",
+      "published_sha256": "59767372833e5f37bb4643738af9dc046be09feabfd5f24702dfc15ab887a2f3",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4113
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/comparator-negative-mismatch.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/comparator-negative-mismatch.json",
+      "source_sha256": "67c3e8dc278eb3e93b7cfa77bcbb26d31e430d30a031c35d643573b40d0fc505",
+      "published_sha256": "67c3e8dc278eb3e93b7cfa77bcbb26d31e430d30a031c35d643573b40d0fc505",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 354
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/comparator.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/comparator.json",
+      "source_sha256": "5e4914f2f1e91a3368d500686d3ae3dd83b9d73a59a8eeb29bb43c48e491cd08",
+      "published_sha256": "5e4914f2f1e91a3368d500686d3ae3dd83b9d73a59a8eeb29bb43c48e491cd08",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 785
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249FullDepthRayAmplifier/formalization.yaml",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/formalization.yaml",
+      "source_sha256": "e8d0b691d9c6d57edcd34dde6bf133038bdb565bfb7812506e67034d17f0df37",
+      "published_sha256": "e8d0b691d9c6d57edcd34dde6bf133038bdb565bfb7812506e67034d17f0df37",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2898
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/AxiomAudit.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/AxiomAudit.lean",
+      "source_sha256": "bbaa4457dc35868d7aa5bcc78a0809ecaae154d79f0bbaa04966881bb1bd8ac6",
+      "published_sha256": "bbaa4457dc35868d7aa5bcc78a0809ecaae154d79f0bbaa04966881bb1bd8ac6",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 799
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/Challenge.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/Challenge.lean",
+      "source_sha256": "87fe8d197a51fa4d97e46e8a11ccb6990439c9eda684c5b07be8d37af225be84",
+      "published_sha256": "87fe8d197a51fa4d97e46e8a11ccb6990439c9eda684c5b07be8d37af225be84",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3647
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/NegativeSolution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/NegativeSolution.lean",
+      "source_sha256": "8524f805320114b46810b97e62cb9230f4457847c4c394eb51000d6e78428f5b",
+      "published_sha256": "8524f805320114b46810b97e62cb9230f4457847c4c394eb51000d6e78428f5b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1305
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/README.md",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/README.md",
+      "source_sha256": "3e4ab88b9376b57180472fa3d851a230e7640b78c5f1669fe6181d4b8c4b9e55",
+      "published_sha256": "3e4ab88b9376b57180472fa3d851a230e7640b78c5f1669fe6181d4b8c4b9e55",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2622
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/Solution.lean",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/Solution.lean",
+      "source_sha256": "8dc0a1563cd45ae1db5885030c6e1e4304f052c517f42c5c72b8fe80622e2ff4",
+      "published_sha256": "8dc0a1563cd45ae1db5885030c6e1e4304f052c517f42c5c72b8fe80622e2ff4",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 6109
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/comparator-negative-mismatch.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/comparator-negative-mismatch.json",
+      "source_sha256": "371ebb94f35d4764f904a1fbc8697f9b59fb91dedc6cdac7261516b4ebadac39",
+      "published_sha256": "371ebb94f35d4764f904a1fbc8697f9b59fb91dedc6cdac7261516b4ebadac39",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 995
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/comparator.json",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/comparator.json",
+      "source_sha256": "9094cd3378a69985c5d9b81e5d8f6e221443f40016a2867d73cf03fb16e0fafe",
+      "published_sha256": "9094cd3378a69985c5d9b81e5d8f6e221443f40016a2867d73cf03fb16e0fafe",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 987
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ExternalVerification249RankOneSharpFloor/formalization.yaml",
+      "public_path": "research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/formalization.yaml",
+      "source_sha256": "9d6111c4e218f936440b0beb17e335eadc5f431a6a998f6a51a5519d1e22da7c",
+      "published_sha256": "9d6111c4e218f936440b0beb17e335eadc5f431a6a998f6a51a5519d1e22da7c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 8636
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
+      "source_sha256": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008",
+      "published_sha256": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14327
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/README.md",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/README.md",
+      "source_sha256": "bdacf45fc2df9864d05170a3206397876c0dddf0b6f5377d9d86cd6e44f9d36d",
+      "published_sha256": "bdacf45fc2df9864d05170a3206397876c0dddf0b6f5377d9d86cd6e44f9d36d",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4314
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/TotientKernelReduction.lean",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/TotientKernelReduction.lean",
+      "source_sha256": "8ea7a637bb9441b30e5b03defc7af81f9e432b7ffec6876bb2f5c44897c3503e",
+      "published_sha256": "8ea7a637bb9441b30e5b03defc7af81f9e432b7ffec6876bb2f5c44897c3503e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 6768
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/computational_evidence_manifest.v1.json",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/computational_evidence_manifest.v1.json",
+      "source_sha256": "834622d1ea247e0498dc0a57cc8073235db61f51a72dfe778472ff943af59b85",
+      "published_sha256": "834622d1ea247e0498dc0a57cc8073235db61f51a72dfe778472ff943af59b85",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4946
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/computational_evidence_manifest.v2.json",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/computational_evidence_manifest.v2.json",
+      "source_sha256": "38dec19a8ae1b705a14950a62678e2fa195fae5473209abeefade16d6dd0dfe1",
+      "published_sha256": "38dec19a8ae1b705a14950a62678e2fa195fae5473209abeefade16d6dd0dfe1",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5049
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/verify_allbase_kernel.py",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/verify_allbase_kernel.py",
+      "source_sha256": "f58b048a9f4c707822c5149cb90a96456b8dfed1e5dca334d5b9a26f49ad3bec",
+      "published_sha256": "f58b048a9f4c707822c5149cb90a96456b8dfed1e5dca334d5b9a26f49ad3bec",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4603
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/verify_allbase_kernel_receipt.txt",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/verify_allbase_kernel_receipt.txt",
+      "source_sha256": "9191eafd05011496121be558323abca6a6f535b485d822df3aad7f216d9afcb7",
+      "published_sha256": "9191eafd05011496121be558323abca6a6f535b485d822df3aad7f216d9afcb7",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1653
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/verify_oddprime.py",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/verify_oddprime.py",
+      "source_sha256": "09e571a97bc9aee0e32a60bc7d9b196ab4685b9b1aff49c75ed6c015810733db",
+      "published_sha256": "09e571a97bc9aee0e32a60bc7d9b196ab4685b9b1aff49c75ed6c015810733db",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3709
+    },
+    {
+      "source_path": "source-provenance://formal_math/odd_slope_affine_totient/verify_oddprime_receipt.txt",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/verify_oddprime_receipt.txt",
+      "source_sha256": "1afc700ff0edc0f4f5ef9c3d1ecf9473674b152fb507e5e14d22db583a6f09df",
+      "published_sha256": "1afc700ff0edc0f4f5ef9c3d1ecf9473674b152fb507e5e14d22db583a6f09df",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1111
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/erdos249_fixed_quotient_delay_law.py",
+      "public_path": "research_corpus/Erdos249/probes/erdos249_fixed_quotient_delay_law.py",
+      "source_sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247",
+      "published_sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 6366
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/erdos249_parity_perturbed_rational_control.py",
+      "public_path": "research_corpus/Erdos249/probes/erdos249_parity_perturbed_rational_control.py",
+      "source_sha256": "1891717cff75f6ce605a19400488af4e6ccb3b9fc2533569c930e08d44b7dac5",
+      "published_sha256": "1891717cff75f6ce605a19400488af4e6ccb3b9fc2533569c930e08d44b7dac5",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 14602
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/erdos249_publish_receipts.py",
+      "public_path": "research_corpus/Erdos249/probes/erdos249_publish_receipts.py",
+      "source_sha256": "5068d9ab58855fb3f769199e2a79541dbe1ca04019c5835f90c08fdc1d1b249b",
+      "published_sha256": "5068d9ab58855fb3f769199e2a79541dbe1ca04019c5835f90c08fdc1d1b249b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 10966
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/erdos249_supply_delay.py",
+      "public_path": "research_corpus/Erdos249/probes/erdos249_supply_delay.py",
+      "source_sha256": "b621bf15e5b65cfaf2357608e3071dffe75c17842dd8a695378b515b86969f2e",
+      "published_sha256": "b621bf15e5b65cfaf2357608e3071dffe75c17842dd8a695378b515b86969f2e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 10011
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_canonical_mersenne_residue_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_canonical_mersenne_residue_receipt.json",
+      "source_sha256": "7433cac1d1a5649d3563412bf21ff03247d1e54492645b38d943f551ced2a005",
+      "published_sha256": "7433cac1d1a5649d3563412bf21ff03247d1e54492645b38d943f551ced2a005",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 11789
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_mersenne_divisor_centrality_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_mersenne_divisor_centrality_receipt.json",
+      "source_sha256": "d4f5a718d0e6f247065e2aa713782b709515bcd6ec28c7a82b45e9847f3d4697",
+      "published_sha256": "d4f5a718d0e6f247065e2aa713782b709515bcd6ec28c7a82b45e9847f3d4697",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5557
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_prime_successor_precursor_cone_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_prime_successor_precursor_cone_receipt.json",
+      "source_sha256": "2adf4d668d40ef0247771c0e61732b26d5380404bc30df9b41759b2533e280c7",
+      "published_sha256": "2adf4d668d40ef0247771c0e61732b26d5380404bc30df9b41759b2533e280c7",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 13062
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_endpoint_cocycle_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_pure_dyadic_endpoint_cocycle_receipt.json",
+      "source_sha256": "ed3c1bb5c8e66c0ba39990219a0195a14fb8ddfdde39eae0758e89a5a4dc866b",
+      "published_sha256": "ed3c1bb5c8e66c0ba39990219a0195a14fb8ddfdde39eae0758e89a5a4dc866b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 82239
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_pointwise_countermodel_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_pure_dyadic_pointwise_countermodel_receipt.json",
+      "source_sha256": "8d3ec881dbe721b637cc607ec2151088a2546b14ce5655801bf3fd1b9b20e1c9",
+      "published_sha256": "8d3ec881dbe721b637cc607ec2151088a2546b14ce5655801bf3fd1b9b20e1c9",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7051
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_residue_delay_nogo_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_pure_dyadic_residue_delay_nogo_receipt.json",
+      "source_sha256": "e76e8b91b6b41ce4005966c0a74d97a1b8608de101a80bcf813f882b7d45839e",
+      "published_sha256": "e76e8b91b6b41ce4005966c0a74d97a1b8608de101a80bcf813f882b7d45839e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 141873
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_three_prime_lock_precursor_cone_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_three_prime_lock_precursor_cone_receipt.json",
+      "source_sha256": "9305611d24107af8828cb3203ac839a9af54dbfec61fc173d3381dc21a14283a",
+      "published_sha256": "9305611d24107af8828cb3203ac839a9af54dbfec61fc173d3381dc21a14283a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 10239
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_totient_affine_mode_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_totient_affine_mode_receipt.json",
+      "source_sha256": "e840530fc78d9b17ceb5f54d58de9c3f0b0f85ed4fb11918e2d812a9b560723f",
+      "published_sha256": "e840530fc78d9b17ceb5f54d58de9c3f0b0f85ed4fb11918e2d812a9b560723f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4692
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_two_prime_lock_precursor_cone_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_two_prime_lock_precursor_cone_receipt.json",
+      "source_sha256": "3e2dabd24ff140fa22a8d017a2e625ff8a4053ae27130d47d1880e5927bf847f",
+      "published_sha256": "3e2dabd24ff140fa22a8d017a2e625ff8a4053ae27130d47d1880e5927bf847f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5952
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/probes/erdos249_certified_cf_receipt.json",
+      "public_path": "research_corpus/Erdos249/probe_receipts/erdos249_certified_cf_receipt.json",
+      "source_sha256": "3e338ee3bab2e5835a5e38c11c663e7122593f85272f23adc0ee84784c8e1860",
+      "published_sha256": "3e338ee3bab2e5835a5e38c11c663e7122593f85272f23adc0ee84784c8e1860",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 11499
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/probes/erdos249_fixed_quotient_delay_receipt.json",
+      "public_path": "research_corpus/Erdos249/probe_receipts/erdos249_fixed_quotient_delay_receipt.json",
+      "source_sha256": "f18cadb0882faf838ab62efa230bca277fd598e98f69e06c9cbaf8e82540c828",
+      "published_sha256": "f18cadb0882faf838ab62efa230bca277fd598e98f69e06c9cbaf8e82540c828",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 11052
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/probes/erdos249_supply_delay_receipt.json",
+      "public_path": "research_corpus/Erdos249/probe_receipts/erdos249_supply_delay_receipt.json",
+      "source_sha256": "304fa079c75d372ab3860d9b483e1ba79e56537854f3755587d0d14b49282649",
+      "published_sha256": "304fa079c75d372ab3860d9b483e1ba79e56537854f3755587d0d14b49282649",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 18042
+    }
+  ]
+}

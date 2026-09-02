@@ -1,0 +1,149 @@
+{
+  "schema": "plectis_strongest_result_activation_map_v2",
+  "problem_id": "erdos_243",
+  "status": "open",
+  "source_checkpoint": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "bounded_negative_part_rigidity_and_sylvester_consumer",
+      "status": "strongest_premise",
+      "exact_statement": "Under exact natural D/C dynamics, eventual strict centring |E_n| < C_n, division-free normalised vanishing E_n/C_n -> 0, and eventual boundedness of (-E_n)_+, the signed centred state satisfies E_n = 0 eventually; the composed boundedNegativePart_sylvesterNext_eventually consumer then yields a_(n+1) = a_n^2 - a_n + 1 eventually. Periodicity is not assumed. The proof derives zero absorption from the exact defect identity, sends the eventually nonnegative branch to natural-tail stabilisation, and sends the cofinally negative branch through gcd stabilisation, scale reduction and the shifted CRT barrier.",
+      "hypotheses": "Lean-checked under the three stated hypotheses. Eventual boundedness of the negative part is exactly the hypothesis that remains open.",
+      "named_consumers": [
+        "erdos_243_parent"
+      ],
+      "supersedes": [
+        "constant_negative_orbit_excluded",
+        "eventually_periodic_negative_magnitude_excluded",
+        "bounded_rise_reduced_tail_excluded",
+        "cofinally_bounded_negative_branch_excluded"
+      ],
+      "why_it_matters": "Reduces Erdos #243 to a single signed-state statement: exclude cofinally unbounded negative excursions.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/ReciprocalTailRigidity.lean",
+        "research_corpus/Erdos243/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "slow_negative_part_rigidity_quantified_profile",
+      "status": "strongest_premise",
+      "exact_statement": "Any counterexample to Erdos #243 has negative excursions with -E_n > (1 - delta) log2 log2 C_n infinitely often for every delta > 0, has divergent normalised negative mass, and has every multiplier overlap gcd(a_n, D_n) bounded by the next negative magnitude.",
+      "hypotheses": "Derived from the exact dynamics; the profile is a necessary condition on any counterexample, not a construction.",
+      "named_consumers": [
+        "exclude_aperiodic_negative_state_orbits",
+        "erdos_243_parent"
+      ],
+      "supersedes": [
+        "qualitative 'unbounded negative excursions' statements without a rate"
+      ],
+      "why_it_matters": "It tells you exactly how slowly a counterexample's negative excursions may grow, and it is the reason coprimality-only arguments are capped: they deliver only O(log C_n) rises, while the profile lives at log log C_n.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/SlowNegativePartRigidity.md",
+        "research_corpus/Erdos243/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "exact_quotient_cocycle_and_gcd_payment",
+      "status": "strongest_premise",
+      "exact_statement": "At every dynamically reduced exact tail step, with h_n = G_(n+1)/G_n and v_n = D_n/G_n: gcd(a_n, v_n) divides h_n and h_n divides gcd(a_n, v_n)^2. Lean also checks h_n u_(n+1) + v_n = a_n u_n, h_n v_(n+1) = a_n v_n, and h_n = 1 if and only if a_n is coprime to v_n. Hence every gcd-growth step is exactly an old-prime reuse event.",
+      "hypotheses": "Lean-checked exact identities on the reduced tail.",
+      "named_consumers": [
+        "current_scale_anti_shadowing",
+        "erdos_243_parent"
+      ],
+      "supersedes": [
+        "heuristic gcd-growth accounting"
+      ],
+      "why_it_matters": "Turns the analytic question into an exact arithmetic bookkeeping problem about old-prime reuse.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/DynamicCancellation.lean"
+      ]
+    },
+    {
+      "result_id": "strict_rise_crt_barrier_and_bounded_lcm_core",
+      "status": "strongest_premise",
+      "exact_statement": "A natural state tending to infinity with upward increments bounded by B cannot, at every strict rise, avoid all earlier members of an infinite pairwise-coprime modulus family; the proof uses B old moduli, a shifted consecutive CRT block and the first crossing. Consequently, for an exact LCM-state recurrence g_n U_(n+1) = U_n - V_n with V_n >= -B and centered identity V_n = D_n - (a_n - 1) U_n, the recurrence is inconsistent with U_n tending to infinity once an infinite pairwise-coprime family of old primes p > B is supplied.",
+      "hypotheses": "Lean-checked. Avoidance away from strict rises is not assumed. Derivation of the prime supply from the original analytic hypotheses remains open.",
+      "named_consumers": [
+        "formalise_lcm_weighted_theorem",
+        "erdos_243_parent"
+      ],
+      "supersedes": [
+        "earlier bounded-rise arguments without the shifted CRT block"
+      ],
+      "why_it_matters": "The barrier is finished. What is missing is one supply theorem, and that is a self-contained target.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/SlowRiseBarrier.lean",
+        "research_corpus/Erdos243/problem/LcmCriticalBoundary.lean"
+      ]
+    },
+    {
+      "result_id": "coprimality_only_arguments_capped_at_log",
+      "status": "exact_no_go",
+      "exact_statement": "Coprimality-only arguments deliver at most O(log C_n) rises, while the quantified counterexample profile lives at (1 - delta) log2 log2 C_n. Therefore no argument that uses only coprimality of successive terms can exclude the surviving negative branch; the producer must use the congruence E_n = D_n (mod C_n) or a second landing mechanism.",
+      "hypotheses": "Recorded in the priority-1 open producer as an exact cap.",
+      "named_consumers": [
+        "exclude_aperiodic_negative_state_orbits"
+      ],
+      "supersedes": [
+        "coprimality-based exclusion proposals"
+      ],
+      "why_it_matters": "Rules out the most natural first attack before it is spent.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/research_packet.json",
+        "research_corpus/Erdos243/problem/SlowNegativePartRigidity.md"
+      ]
+    },
+    {
+      "result_id": "summable_negative_mass_is_already_closed",
+      "status": "exact_no_go",
+      "exact_statement": "For the exact integral update C_(n+1) = C_n - E_n with positive C, division-free normalized vanishing plus summability of natAbs(min(E_n,0))/C_n already forces E_n = 0 eventually. Hence proving summable negative mass is not progress: it is a closed case. The surviving branch has DIVERGENT normalised negative mass by construction.",
+      "hypotheses": "Lean-checked; the proof bounds the finite products of 1 + delta_n, hence bounds C_n, then uses integrality.",
+      "named_consumers": [
+        "erdos_243_parent"
+      ],
+      "supersedes": [
+        "summable-negative-mass proposals presented as new"
+      ],
+      "why_it_matters": "Any attack that concludes with summable negative mass has rediscovered a closed case and must continue.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/ReciprocalTailRigidity.lean",
+        "research_corpus/Erdos243/problem/research_packet.json"
+      ]
+    },
+    {
+      "result_id": "clean_recovery_length_bounded_by_counterexample",
+      "status": "exact_no_go",
+      "exact_statement": "An exact counterexample bounds what a clean-recovery-length argument can deliver; the recovery-length route cannot by itself force the payment threshold. The upper repair budget is exact and multiplicatively accumulated; the missing direction is a LOWER bound proving infinitely many repairs force a payment product whose fixed power eventually exceeds 2^n.",
+      "hypotheses": "Exact counterexample in Lean plus the measured cascade receipts.",
+      "named_consumers": [
+        "weighted_sparse_reset_lower_bound"
+      ],
+      "supersedes": [
+        "recovery-length sufficiency proposals"
+      ],
+      "why_it_matters": "Names the exact direction of the missing inequality so the desk does not prove the easy side again.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean",
+        "research_corpus/Erdos243/problem/CleanRecoveryLengthComputationalLab.md"
+      ]
+    },
+    {
+      "result_id": "erdos_straus_theorem_three_is_prior_art",
+      "status": "exact_no_go",
+      "exact_statement": "Erdos and Straus, On the irrationality of certain Ahmes series (1964), Theorem 3 on printed p. 132, already gives the conditional equivalence between rationality and the eventual Sylvester recurrence under condition (i) and limsup (N_k/n_(k+1))(n_(k+1)^2/n_(k+2) - 1) <= 0. Duverney 2001 Corollary 3.2 on printed p. 287 gives a further conditional criterion. Neither may be claimed as new, and a positive-part limit formulation is a derived sufficient condition, not the authors' literal statement.",
+      "hypotheses": "Source identity and pagination verified against the complete scans.",
+      "named_consumers": [
+        "erdos_243_parent"
+      ],
+      "supersedes": [
+        "unattributed restatements of the conditional criterion"
+      ],
+      "why_it_matters": "The conditional criterion is printed. Only the removal of the extra hypothesis is new.",
+      "public_authority_paths": [
+        "research_corpus/Erdos243/problem/research_packet.json"
+      ]
+    }
+  ]
+}

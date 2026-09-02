@@ -1,0 +1,52 @@
+{
+  "M": 1000000,
+  "P1_holds": true,
+  "P2_holds": true,
+  "P3_holds": true,
+  "cap": 40,
+  "cohorts": {
+    "ap3": {
+      "P1_gap": 2,
+      "bernoulli_zero_only": 31,
+      "control_B_zero_pinned": 10,
+      "s46_control_full_shuffle": 33,
+      "s46_observed": 8,
+      "zero_fraction": 0.666667
+    },
+    "naturals": {
+      "P1_gap": 6,
+      "bernoulli_zero_only": 0,
+      "control_B_zero_pinned": 7,
+      "s46_control_full_shuffle": 6,
+      "s46_observed": 5,
+      "zero_fraction": 0.0
+    },
+    "pow3": {
+      "P1_gap": 1,
+      "bernoulli_zero_only": 32,
+      "control_B_zero_pinned": 6,
+      "s46_control_full_shuffle": 31,
+      "s46_observed": 5,
+      "zero_fraction": 0.666667
+    },
+    "powers2": {
+      "P1_gap": 1,
+      "bernoulli_zero_only": 16,
+      "control_B_zero_pinned": 5,
+      "s46_control_full_shuffle": 17,
+      "s46_observed": 3,
+      "zero_fraction": 0.5
+    },
+    "primes": {
+      "P1_gap": 2,
+      "bernoulli_zero_only": 0,
+      "control_B_zero_pinned": 3,
+      "s46_control_full_shuffle": 2,
+      "s46_observed": 2,
+      "zero_fraction": 1e-06
+    }
+  },
+  "falsifier_survived": true,
+  "nmax": 500000,
+  "seed": 20260823
+}

@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+  "solution_module": "ExternalVerification257RationalTailRigidity.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+    "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add",
+    "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+    "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

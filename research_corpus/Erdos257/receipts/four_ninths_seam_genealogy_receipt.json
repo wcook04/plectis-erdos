@@ -1,0 +1,90 @@
+{
+  "canonical_digest": "dcbdafa619b78d569096756a9ba4a3c99626d67e9fdbecd98ff7f13062fe5ac8",
+  "claim_ceiling": "exact finite genealogy of the existing 4/9 cylinder; no all-depth seam exclusion, rational representation, or Erdos 257 conclusion",
+  "extremes": {
+    "common_bits_stripped_total": 9999974,
+    "maximum_correction": {"rank": 58, "value": 2},
+    "maximum_log_envelope_excess": {
+      "rank": 293604,
+      "suffix_width": 43,
+      "value": 5
+    },
+    "maximum_no_strip_run": 13,
+    "maximum_post_strip_width": 23,
+    "maximum_suffix_width": 46,
+    "minimum_correction": {"rank": 8648640, "value": -219},
+    "zero_common_strip_step_count": 1020520
+  },
+  "key_correction_genealogies": [
+    {
+      "boundary_above_bottom": 24873,
+      "boundary_below_top": 24061,
+      "carry": 48934,
+      "corrections": [-42, -4, -10, -21, -7, -14, -14, -9, -26, -9, -21, -26, -11],
+      "even_loads": [36, 3, 11, 9, 6, 17, 10, 6, 5, 7, 22, 1, 11],
+      "no_strip_run": 13,
+      "odd_loads": [3, 1, 1, 6, 1, 0, 2, 2, 12, 1, 0, 14, 0],
+      "rank": 293604,
+      "starting_width": 17,
+      "suffix_width": 43
+    },
+    {
+      "boundary_above_bottom": 164567,
+      "boundary_below_top": 216760,
+      "carry": 381327,
+      "corrections": [-2, -22, 2, -34, -15, -15, -28, -9, -6, -25, -10, -19, -28],
+      "even_loads": [2, 13, 1, 26, 2, 14, 26, 10, 1, 9, 5, 20, 12],
+      "no_strip_run": 13,
+      "odd_loads": [0, 5, 0, 4, 7, 2, 1, 0, 4, 8, 3, 1, 8],
+      "rank": 2287962,
+      "starting_width": 20,
+      "suffix_width": 46
+    }
+  ],
+  "log_envelope_excess_records": [
+    {"excess": -7, "rank": 8, "suffix_width": 1, "twice_rank_bit_length": 8},
+    {"excess": -5, "rank": 10, "suffix_width": 3, "twice_rank_bit_length": 8},
+    {"excess": -4, "rank": 62, "suffix_width": 8, "twice_rank_bit_length": 12},
+    {"excess": -2, "rank": 224, "suffix_width": 14, "twice_rank_bit_length": 16},
+    {"excess": -1, "rank": 1934, "suffix_width": 21, "twice_rank_bit_length": 22},
+    {"excess": 1, "rank": 109670, "suffix_width": 35, "twice_rank_bit_length": 34},
+    {"excess": 3, "rank": 293602, "suffix_width": 41, "twice_rank_bit_length": 38},
+    {"excess": 5, "rank": 293604, "suffix_width": 43, "twice_rank_bit_length": 38}
+  ],
+  "mechanism_decision": {
+    "candidate": "prove suffix_width <= 2*bit_length(rank)+5",
+    "observed_log_envelope_constant": 5,
+    "observed_maximum_no_strip_run": 13,
+    "one_way_effect": "this logarithmic envelope is eventually below rank/2, so it excludes the midpoint seam and inducts the 4/9 cylinder forever",
+    "status": "finite_proof_target_opened",
+    "stop_condition": "seek an analytic correction-word proof of the logarithmic envelope; do not extend the horizon without a proposed smaller constant or a falsifier"
+  },
+  "no_strip_run_records": [
+    {"rank": 10, "run_length": 1, "suffix_width": 3},
+    {"rank": 62, "run_length": 2, "suffix_width": 8},
+    {"rank": 224, "run_length": 3, "suffix_width": 14},
+    {"rank": 1290, "run_length": 4, "suffix_width": 17},
+    {"rank": 1934, "run_length": 5, "suffix_width": 21},
+    {"rank": 5058, "run_length": 6, "suffix_width": 23},
+    {"rank": 90402, "run_length": 7, "suffix_width": 29},
+    {"rank": 90404, "run_length": 8, "suffix_width": 31},
+    {"rank": 90406, "run_length": 9, "suffix_width": 33},
+    {"rank": 293598, "run_length": 10, "suffix_width": 37},
+    {"rank": 293600, "run_length": 11, "suffix_width": 39},
+    {"rank": 293602, "run_length": 12, "suffix_width": 41},
+    {"rank": 293604, "run_length": 13, "suffix_width": 43}
+  ],
+  "parameters": {"crosscheck": 300, "horizon": 10000000},
+  "schema": "erdos257_four_ninths_seam_genealogy_v0",
+  "source": {
+    "existing_cylinder_audit": "formal_math/erdos257_period_noncollapse/scripts/totient_four_ninths_even_cylinder_audit.py",
+    "existing_cylinder_audit_sha256": "45745f784faa95a293cc462b42268a2801854c3fa1b225e4db5d4a961d5839bc"
+  },
+  "terminal": {"prefix_length": 9999979, "rank": 10000000, "suffix_width": 21},
+  "validation": {
+    "exact_integer_recurrence": true,
+    "full_prefix_crosscheck": true,
+    "midpoint_seam_seen": false,
+    "trace_sha256": "b35f27dfeb627805adb6c2e545ccb4a56e892a4b2aaf4f57781a3c09b31b0819"
+  }
+}

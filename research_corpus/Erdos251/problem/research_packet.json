@@ -1,0 +1,565 @@
+{
+  "schema": "aiw-formal-math-assimilation/1",
+  "problem_id": "erdos_251",
+  "title": "Prime-gap dyadic series",
+  "frontier_integrity": {
+    "canonical_frontier": {"kind": "declared_target", "producer_ids": []},
+    "producer_relations": {
+      "equivalent_to_target": ["cofinal_free_pair_nonintegrality"],
+      "target_deciding_but_stronger": ["cofinal_adjacent_small_mismatch", "actual_scaled_tail_smallness", "prime_theorem_to_local_smallness"],
+      "auxiliary_not_target_deciding": [],
+      "out_of_scope_for_target": []
+    },
+    "selection_rule": "The irrationality statement remains the frontier; tail-smallness producers are sufficient stronger inputs."
+  },
+  "source_returns": [
+    {
+      "attachment": "pasted-text-4.txt",
+      "sha256": "0e526e8fae041e64d851958ce131989db65c11566dad8c7e64280e9b0c1d0e8f",
+      "role": "summation-by-parts identity, rational tail orbit, carry countermodels, and conditional anti-concentration"
+    }
+  ],
+  "target": {
+    "status": "open",
+    "statement": "Prove irrationality of the dyadic series built from consecutive prime gaps."
+  },
+  "landed_formal_source": [
+    "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+    "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+    "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+    "ErdosProblems/Erdos251/FreePairReduction.lean",
+    "ErdosProblems/Erdos251/KernelDenominatorFloor.lean",
+    "formal_math/probes/erdos251_kernel_denominator_certificate.py"
+  ],
+  "exact_results": [
+    {
+      "id": "free_pair_shift_and_redundant_plus_minus_two_wall",
+      "status": "proved_reduction_with_four_falsifiers_passing",
+      "statement": "Three proved reductions that strictly weaken the recorded obligation. (1) FREE PAIRS: writing T_N = 2^(N+1)S - I_N with I_N integral, T_M - T_N is an integer for EVERY pair with M == N mod t, t = ord_d(2), not only for a fixed offset h; the recorded producer's fixed-offset form is the special case M = N+h, so the free-pair obligation is strictly weaker and the tail condition becomes a hitting problem on an unconstrained parameter rather than a correlation between windows at bounded distance. (2) THE +-2 WALL IS REDUNDANT: the packet's own reduction actual_prime_adjacent_mismatch_event_density lands on 'Delta = +2 with D in (1/2,1)', but D is an integer whenever t | h and no integer lies in (1/2,1), so the first component alone is already a contradiction. The wall was an artifact of small_adjacent_shift_consumer using the window (-1,1), which CONTAINS the integer 0 and therefore needs a second condition to exclude D = 0. Any integer-free window needs one condition. The sharpened producer is: for every t and every cutoff, cofinally many M == N mod t whose certified tail difference is non-integral. (3) STATE COMPRESSION: sum_(N<=X) T_N <= p_(X+1) + 2T_X, so by Markov a density 1-1/C subset of (X,2X] has T_N <= C log p_(2X); under rationality every T_N lies in (1/d)Z, so on that subset T takes at most dC log p_(2X) + 1 values and some single value is attained >>_(d,C) X/log X times. Rationality forces the prime-gap tail to be a finite-state object at every scale, so pairs with T_M = T_N exactly are abundant for free and the difficulty is entirely in producing a NON-integral difference. Verified: t <= 20, every residue class, 1,270,607 primes, leanest class 90,150 witnesses, latest witness index 1,270,520 of 1,270,540. Evidence: FreePairStateCompressionLab.md, formal_math/probes/erdos251_free_pair_and_state_compression.py."
+    },
+    {
+      "id": "first_finite_denominator_exclusion",
+      "status": "certified_complete_at_every_convergent_denominator",
+      "statement": "The packet recorded no finite denominator exclusion. One is cheap because T_N is a TAIL: T_(n0) = U/2^P + T_(n0+P)/2^P exactly with U = sum_(k<=P) g_(n0+k) 2^(P-k), so if d*T_(n0) is an integer then dist(dU mod 2^P) <= d*Theta for any rigorous upper bound Theta on T_(n0+P). Theta is taken from the Lean-checked elementary estimate p_n <= 1250(n+1)^4, so no gap conjecture enters. By the best-approximation theorem the minimum of dist(dU mod 2^P) over d <= D is attained at a convergent denominator of U/2^P, which makes the certificate COMPLETE rather than a spot check. At 4096 tail bits and index 1266144 of 1270606: every odd d <= about 10^602 (2003 bits) is refuted, hence any rational S = a/b has b > 10^602. A first draft reported a bound exceeding 2^P, which is impossible; the probe now fails closed on that and verifies at every convergent denominator below the bound rather than at a few convenient small d.",
+      "tao_pipeline_receipt": "ErdosProblems/Erdos251/certified_continued_fraction_denominator_exclusion_tao_pipeline_receipt.json"
+    },
+    {
+      "id": "gap_series_identity",
+      "status": "lean_checked_infinite_unconditional",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.summable_primeDyadicTerm",
+        "ErdosProblems.Erdos251.summable_primeGapDyadicTerm",
+        "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
+        "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap"
+      ],
+      "statement": "For every finite horizon, summation by parts rewrites the zero-based prime partial sum as 2 plus the actual prime-gap dyadic partial sum minus the exact endpoint. At the infinite level, both the normalized prime series and the actual gap series are now kernel-checked summable, and Lean proves unconditionally the exact identity sum p_n/2^(n+1) = 2 + sum g_n/2^(n+1).",
+      "claim_boundary": "The four named declarations prove unconditional summability of the normalized prime and consecutive-gap series, their exact infinite identity, and the irrationality equivalence under the supplied summability hypothesis. They do not prove irrationality of either series, a prime-gap distribution theorem, or any stronger denominator-growth conclusion.",
+      "validation": {
+        "proof_authority": "The four named Lean declarations are in the cited source-current commit; the focused build re-elaborated the module and completed the serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Exit 0 after 2471 jobs with the final serialized Lake authority check; the replay emitted only standard axiom-dependency information.",
+        "claim_boundary": "The four named declarations prove unconditional summability of the normalized prime and consecutive-gap series, their exact infinite identity, and the irrationality equivalence under the supplied summability hypothesis. They do not prove irrationality of either series, a prime-gap distribution theorem, or any stronger denominator-growth conclusion."
+      }
+    },
+    {
+      "id": "zero_based_factor_two_normalization",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.primeDisplayedDyadicTerm_eq_two_mul",
+        "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
+        "ErdosProblems.Erdos251.irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap"
+      ],
+      "statement": "At both the termwise and infinite-sum levels, the zero-based displayed prime sum with denominator 2^i is exactly twice the normalized sum with denominator 2^(i+1). Under summability it equals 4 plus twice the normalized gap series, and its irrationality is equivalent to irrationality of the gap series.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the termwise normalization, sum identity, and irrationality-equivalence declarations replayed successfully.",
+        "claim_boundary": "This is an exact normalization and equivalence bridge. It does not prove irrationality of either series, establish the prime-gap mismatch input, or strengthen the underlying arithmetic conclusion."
+      }
+    },
+    {
+      "id": "polynomial_prime_growth_summability_adapter",
+      "status": "lean_checked_conditional",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.summable_primeDyadicTerm_of_polynomial_growth",
+        "ErdosProblems.Erdos251.summable_primeGapDyadicTerm_of_summable_primeDyadicTerm"
+      ],
+      "statement": "Any natural polynomial upper bound p_n <= C(n+1)^k on the zero-based nth prime kernel-checks summability of the normalized prime series p_n/2^(n+1). Combined with the existing summation-by-parts theorem, the same bound supplies summability of the actual consecutive-prime-gap series and its exact infinite identity. No prime-growth theorem is assumed or imported by this adapter."
+    },
+    {
+      "id": "elementary_prime_bound_and_unconditional_convergence",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.prime0_le_polynomial",
+        "ErdosProblems.Erdos251.summable_primeDyadicTerm",
+        "ErdosProblems.Erdos251.summable_primeGapDyadicTerm"
+      ],
+      "statement": "Lean proves the explicit elementary estimate p_n <= 1250(n+1)^4. The proof bounds the central binomial coefficient by (2m)^pi(2m), compares it with 4^m at m=(n+5)^4, and converts the resulting prime-counting inequality to an nth-prime bound. Feeding this theorem into the polynomial adapter proves unconditional convergence of both dyadic series without importing the prime number theorem or any sorry-bearing analytic development.",
+      "claim_boundary": "The three named declarations prove the displayed elementary prime bound and the resulting summability statements in the cited Lean development. They do not prove the prime number theorem, sharpen the bound to the analytic optimum, establish the needed cofinal mismatch supply, or by themselves prove irrationality of the prime-gap series.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the elementary prime bound and both summability declarations replayed successfully.",
+        "claim_boundary": "This is an unconditional elementary convergence bridge only. It leaves the prime-gap cofinality mechanism and the irrationality conclusion open."
+      }
+    },
+    {
+      "id": "integral_tail_shift_criterion",
+      "status": "lean_checked_algebraic_core",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.tailShift_eq_scaled_sub_block",
+        "ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail",
+        "ErdosProblems.Erdos251.exists_rationalPrimeGapTailState_representation_of_not_irrational"
+      ],
+      "statement": "For every integer-digit dyadic tail recurrence, the exact h-step block identity holds and one h-step tail shift is integral if and only if (2^h-1) times the initial tail state is integral. The actual real prime-gap sum is now connected to this finite algebra by a checked rational-candidate tail representation.",
+      "claim_boundary": "The three named declarations prove the exact finite recurrence, block identity, integrality equivalence, and rational-candidate bridge under their explicit hypotheses. They do not prove that any rational candidate exists for the genuine sum, establish a cofinal non-integrality or mismatch supply for actual prime gaps, or by themselves prove irrationality.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the tail-shift identity and integrality criterion replayed successfully.",
+        "claim_boundary": "This is an exact conditional tail-state criterion. It leaves the actual prime-gap cofinality input and the irrationality conclusion open."
+      }
+    },
+    {
+      "id": "odd_denominator_totient_shift",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den"
+      ],
+      "statement": "Given a dyadic tail recurrence and an index N whose rational tail state has odd reduced denominator d, the shift by Euler's totient phi(d) steps is integral; Euler's congruence supplies the explicit finite multiplier certificate.",
+      "claim_boundary": "The theorem is conditional on the recurrence and odd-denominator hypothesis. It does not show that a genuine prime-gap tail has such a rational state, establish a cofinal nonintegrality or mismatch supply for actual prime gaps, or prove irrationality of the prime-gap series.",
+      "validation": {
+        "proof_authority": "The named declaration is in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the odd-denominator totient-shift declaration replayed successfully.",
+        "claim_boundary": "This is an exact conditional rational-orbit certificate from Euler's theorem. It leaves the actual prime-gap cofinality input and the irrationality conclusion open."
+      }
+    },
+    {
+      "id": "actual_gap_rational_candidate_recurrence",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.rationalPrimeGapTailState",
+        "ErdosProblems.Erdos251.rationalPrimeGapTailState_recurrence"
+      ],
+      "statement": "For every proposed rational value S, subtracting the first N+1 actual prime-gap terms and rescaling by 2^(N+1) gives an exact rational tail state satisfying T_(N+1)=2T_N-g_(N+1). This is algebraic and does not assume that S is the genuine infinite sum.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the rational tail-state definition and recurrence declarations replayed successfully.",
+        "claim_boundary": "This is an exact algebraic recurrence for any proposed rational value. It does not assume the candidate equals the genuine infinite sum, prove irrationality, or supply the later mismatch/non-smallness contradiction."
+      }
+    },
+    {
+      "id": "actual_real_to_rational_tail_representation",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.cast_rationalPrimeGapTailState_eq_scaled_tsum_nat_add",
+        "ErdosProblems.Erdos251.exists_rationalPrimeGapTailState_representation_of_not_irrational",
+        "ErdosProblems.Erdos251.cast_rationalPrimeGapTailShift_eq_scaled_tsum_sub"
+      ],
+      "statement": "If the genuine real prime-gap sum equals a rational S, then at every N the cast of the rational candidate state is exactly 2^(N+1) times the real tsum beginning at index N+1. Lean also rewrites every rational candidate tail shift as the difference of two such scaled real tails and extracts the rational witness directly from non-irrationality.",
+      "claim_boundary": "The three named declarations provide the exact rational-candidate representation and scaled-tail identities under the explicit summability and non-irrationality hypotheses. They do not prove the required cofinal non-integrality or mismatch supply, and they do not by themselves establish irrationality of the prime-gap series.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the rational-candidate and scaled-tail declarations replayed successfully.",
+        "claim_boundary": "This is a conditional exact bridge from a rational candidate to real tail states. It does not claim a proof of the remaining prime-gap cofinality input or of irrationality."
+      }
+    },
+    {
+      "id": "odd_denominator_candidate_anti_concentration",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.rationalPrimeGapTailShift_integral_of_odd_den",
+        "ErdosProblems.Erdos251.rationalPrimeGapTailShift_not_eventually_small_of_odd_den"
+      ],
+      "statement": "If a proposed rational value S has odd reduced denominator, its single Euler-period shift is integral at every actual prime-gap tail index. Since actual consecutive prime gaps are not eventually periodic, that fixed shift cannot eventually remain strictly between -1 and 1.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the odd-denominator Euler-period integrality and non-smallness declarations replayed successfully.",
+        "claim_boundary": "This is a conditional odd-denominator obstruction. It does not cover candidates with an even denominator, prove irrationality of the genuine series by itself, or establish the full denominator decomposition already recorded separately."
+      }
+    },
+    {
+      "id": "full_denominator_candidate_shift_obstruction",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.rationalPrimeGapTailShift_eventuallyIntegral_of_den_eq",
+        "ErdosProblems.Erdos251.rationalPrimeGapTailShift_eventuallyIntegral"
+      ],
+      "statement": "For every rational candidate S, Lean splits its denominator into its exact power-of-two and odd parts, shifts past the dyadic part, and proves that the Euler-period shift attached to the odd part is eventually integral. Consequently every rational candidate has a positive fixed actual-gap tail shift which cannot eventually remain strictly between -1 and 1.",
+      "validation": {
+        "proof_authority": "The two named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the denominator decomposition and eventual-integrality declarations replayed successfully.",
+        "claim_boundary": "This is an exact conditional obstruction for rational candidates. It does not claim that the genuine prime-gap sum is rational, supply the separate eventual-smallness hypothesis needed for contradiction, or prove irrationality by itself."
+      }
+    },
+    {
+      "id": "free_carry_telescoping",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.carryPartialSum_eq"
+      ],
+      "statement": "Arbitrary integer carries emit coefficients 2K_n-K_{n+1} whose dyadic partial sums telescope exactly."
+    },
+    {
+      "id": "tail_shift_integrality_propagation",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.tailShift_succ",
+        "ErdosProblems.Erdos251.tailShift_integral_succ",
+        "ErdosProblems.Erdos251.tailShift_integral_add"
+      ],
+      "statement": "For every integer-digit dyadic tail recurrence, a fixed h-step tail shift obeys the exact difference recurrence and, once integral, remains integral at every later index.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the exact shift recurrence and integrality propagation declarations replayed successfully.",
+        "claim_boundary": "This is an exact conditional recurrence and propagation result for a fixed shift. It does not assert that any shift is initially integral, provide the eventual-smallness or prime-gap mismatch input needed for nonintegrality, or prove irrationality by itself."
+      }
+    },
+    {
+      "id": "actual_prime_gaps_unbounded",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.exists_primeGap0_gt"
+      ],
+      "statement": "The actual consecutive-prime-gap sequence is unbounded. The proof constructs factorial prime-free intervals, locates their bounding consecutive nth primes by the prime-counting/nth Galois connection, and obtains a gap larger than any prescribed M.",
+      "validation": {
+        "proof_authority": "The named declaration is in the cited source-current commit; the focused module build re-elaborated the source and completed the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PrimeGapDyadicTail",
+        "proof_result": "Focused lean_fast_build passed with exit 0 after 2471 jobs and the final serialized Lake authority check; the factorial prime-free interval and unbounded-gap declaration replayed successfully.",
+        "claim_boundary": "This proves unboundedness of the actual consecutive-prime-gap sequence. It does not by itself prove the cofinal mismatch or eventual-smallness negation required to rule out every rational candidate, and it does not establish irrationality alone."
+      }
+    },
+    {
+      "id": "small_adjacent_shift_consumer",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne"
+      ],
+      "statement": "For any integer-digit dyadic tail recurrence, if two adjacent h-shifts both lie strictly between -1 and 1 and the corresponding digits differ, the two shifts cannot both be integral. Therefore a cofinal supply of such finite small-mismatch certificates rules out eventual integrality of that fixed shift."
+    },
+    {
+      "id": "prime_specific_eventual_integrality_exclusion",
+      "status": "lean_checked_conditional_on_exact_local_supply",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+        "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_eventually_small"
+      ],
+      "statement": "For the actual consecutive prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap difference rules out eventual integrality of the h-shift. A stronger global corollary says that eventual strict smallness for any positive h already suffices, since integrality would force eventual periodicity and actual prime gaps are Lean-checked to be unbounded."
+    },
+    {
+      "id": "periodic_fractional_orbit_countermodel",
+      "status": "advisory_constructive_no_go",
+      "statement": "A periodic fractional tail orbit is compatible with irregular, prime-like, and prescribed finite even-gap patterns because the integer carry is free."
+    },
+    {
+      "id": "positive_even_polynomial_gap_rational_tail_countermodel",
+      "status": "lean_checked_exact_infinite_mechanism_elimination",
+      "theorems": [
+        "polynomialTailOrbit_recurrence",
+        "polynomialGapWord_pos",
+        "polynomialGapWord_even",
+        "polynomialGapWord_succ_sub",
+        "polynomialGapWord_strictMono",
+        "polynomialTailOrbit_integral",
+        "polynomialTailOrbit_shift_integral",
+        "polynomialGapWord_no_adjacent_two_digit",
+        "lcmDiagonalSchedule_pos",
+        "lcmDiagonalSchedule_dvd_of_le",
+        "irrational_initial_iff_all_lcmDiagonal_nonintegral"
+      ],
+      "source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "source_commit": "9eb76529a54cd7f0b873ee33ae1f54749ff819ab",
+      "source_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "source_current": true,
+      "source_current_addition": "polynomialTailOrbit_shift_integral proves RatIntegral (tailShift polynomialTailOrbit h N) for every shift h and basepoint N, strengthening the countermodel from the one-step integral orbit to all fixed shift lengths. The companion OrderLatticeDiagonal source now proves that the recursively defined lcmDiagonalSchedule is positive, eventually dominates every fixed shift, and gives the exact alternate criterion irrational_initial iff every lcm-scheduled tail shift is nonintegral.",
+      "source_current_addition_commit": "c5258262e6091a51c692037bc5f115c3ad826ab9",
+      "source_current_addition_sha256": "7516cfce5385789ed161408b450232c1951647a148bfcfb18a176775a918a118",
+      "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PolynomialGapTailCountermodel.md",
+      "statement": "The explicit word g_n=2(n^2+4n+2) is positive, even, polynomially growing, strictly increasing, unbounded, and nonperiodic. The integral orbit T_n=2(n+4)^2 satisfies T_(n+1)=2T_n-g_(n+1), while g_(n+1)-g_n=4n+10 is never \u00b12. Hence the h=1 adjacent-small-mismatch producer fails at every index in a rational positive-even polynomial tail. Coarse prime-gap properties cannot force the producer; genuinely consecutive-prime arithmetic or another external fractional-tail theorem is necessary. All eight named declarations pass the focused Lean/Lake authority check.",
+      "consequence_reconciliation": {
+        "schema": "formal_math_consequence_reconciliation_v0",
+        "decision": "refresh this countermodel as source-current and retain its no-go boundary; do not promote it to the actual-prime-gap target",
+        "semantic_reason": "The shift-integrality theorem strengthens the countermodel from the one-step orbit to every fixed h-step shift, showing that the polynomial positive-even hypotheses cannot supply any fixed-shift integrality obstruction. The lcm diagonal is an exact alternate schedule for the general irrationality criterion, but its cofinal nonintegrality premise remains explicit and unproved; neither source result changes the actual-prime target or proves the required producer.",
+        "public_effect": "typed_non_effect: no irrationality theorem for the consecutive-prime-gap series is proved."
+      }
+    },
+    {
+      "id": "generic_schedule_nonintegrality_criterion",
+      "status": "lean_checked_conditional_schedule_consumer",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.irrational_initial_iff_nonintegral_on_schedule"
+      ],
+      "source_commit": "c5258262e6091a51c692037bc5f115c3ad826ab9",
+      "source_sha256": "7516cfce5385789ed161408b450232c1951647a148bfcfb18a176775a918a118",
+      "source_current": true,
+      "statement": "For any positive schedule that eventually dominates every index and is eventually divisible by every positive shift length, Lean proves that irrationality of the initial dyadic tail is equivalent to nonintegrality of the diagonal shifts at the schedule's own points. This replaces the all-basepoint/all-shift criterion by one predetermined sequence; the cofinal nonintegrality premise for the actual prime-gap target remains open.",
+      "claim_boundary": "The schedule theorem is an exact conditional criterion, not an irrationality proof for the consecutive-prime-gap series; it does not supply the required schedule misses.",
+      "consequence_reconciliation": {
+        "decision": "Register the generic schedule consumer as a source-current alternate criterion while retaining the explicit open producer boundary.",
+        "public_effect": "typed_conditional_consumer: no unconditional Erdős #251 irrationality theorem is added."
+      }
+    },
+    {
+      "id": "data_dependent_affine_cylinder_circularity",
+      "status": "lean_checked_exact_no_go",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+      "source_commit": "f581de8ea3c44da94b3470fcb669d486031e124c",
+      "source_sha256": "3d1d011245503897ebbd04d90aa5d4ce30cd89bf99cdc07227bee6cfd02034ce",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.ratAffinePowTwo_iff_evenIntegral",
+        "ErdosProblems.Erdos251.ratAffinePowTwo_depth_independent",
+        "ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral"
+      ],
+      "statement": "For every integer-digit dyadic tail recurrence, membership of the observed depth-r block in the affine lattice 2^r z + T_(N+r) is exactly even integrality of T_N and is independent of r. Cofinal affine-cylinder escape is therefore equivalent to the non-eventual-integrality conclusion it was meant to produce.",
+      "claim_boundary": "The named declarations establish the exact affine-cylinder equivalence and its cofinal escape reformulation for the abstract integer-digit recurrence. They do not prove non-eventual integrality for the actual prime-gap series, supply the missing consecutive-prime arithmetic, or prove Erdős #251 irrationality.",
+      "validation": {
+        "proof_authority": "The three named declarations are in the source-current commit; the focused AffineCylinderCollapse replay completed successfully with the final serialized Lake authority check.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py ErdosProblems.Erdos251.AffineCylinderCollapse --jobs 1 --project-root formal_math/erdos257_period_noncollapse --lake lake --no-singleflight",
+        "proof_result": "Exit 0 at 2026-08-26T20:48:45Z with the final serialized Lake authority check.",
+        "claim_boundary": "This closes the abstract data-dependent affine-cylinder route as circular; the actual-prime producer remains an open downstream obligation."
+      }
+    },
+    {
+      "id": "fixed_lattice_block_residue_second_circularity",
+      "status": "lean_checked_with_exact_coordinate_regression",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.blockResidue_eq_terminal_of_integral",
+        "ErdosProblems.Erdos251.exists_blockResidue_escape_of_not_integral",
+        "ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+      ],
+      "statement": "For every dyadically dominated rational terminal bound, cofinal escape of observed blocks from the fixed lattice 2^r Z is equivalent to non-eventual integrality of the tail state. The reverse implication uses only rational denominator separation and the recurrence identity; it extracts no information from the prime-gap word. Exact balanced-orbit replay verifies the proof coordinates and is bound to the Lean declarations by the durable block-residue no-go receipt."
+    },
+    {
+      "id": "actual_prime_adjacent_mismatch_event_density",
+      "status": "finite_measurement_deciding_the_producer_is_true_in_the_actual_primes",
+      "statement": "The landed +-2 wall and sign-alignment theorems reduce the cofinal-adjacent-small-mismatch producer to a single event: Delta = +2 with D in (1/2,1), or Delta = -2 with D in (-1,-1/2), where D = T_(N+h) - T_N and Delta = g_(N+h+1) - g_(N+1). Measured over 6,841,648 primes (limit 1.2e8) and offsets h = 1..16, that event occurs for every offset, at density between 0.00418 and 0.008248, with +2 and -2 near-balanced, and continues to the top of the range (h=1: 56,427 events, last at prime 119,995,753). Band densities decline only at about the 1/log p cost of demanding Delta = +-2 - rescaled by log p they run 0.1767 -> 0.1315 with a decelerating drift - so the event count up to X still grows like X/(log X)^2. 3,200 hits across h = 1..8 were re-checked against the producer as literally written, both shifts strictly inside (-1,1) and g_(N+h+1) != g_(N+1), with zero violations; the median distance of a hit from its window boundary is 0.127 against a worst case of 6.1e-7, eight orders of magnitude above float64 resolution. This decides between the two live readings of the residual: the producer is TRUE in the actual primes, the polynomial gap countermodel does not generalise to them, and #251 needs a proof of cofinality rather than a different consumer. The missing input is a lower bound on the count of n <= X with g_(n+h+1) - g_(n+1) = +-2 and the weighted tail difference in the correct half-window - Hardy-Littlewood k-tuple correlation at a fixed offset plus dyadic-tail equidistribution - and specifically not any theorem about gap size, growth or periodicity. Finite measurement only; cofinality is not proved and the target irrationality remains open."
+    },
+    {
+      "id": "adjacent_mismatch_event_factorises_and_decorrelates",
+      "status": "exact_finite_measurement_separating_the_two_factors",
+      "verifier": "formal_math/probes/erdos251_conditional_shift_distribution.py",
+      "receipt": "state/formal_math/probes/erdos251_conditional_shift_receipt.json",
+      "statement": "The landed shift_gt_half_of_digit_eq_two already forces D > 1/2 from a +2 digit given the successor constraint, so the two halves of the producer's event are not independent and the free part is D < 1. Conditioning on the digit and histogramming D separates the density into P(Delta = +-2) times P(D in window | Delta = +-2). Over 6,841,648 primes with Delta = +2 the digit rate is 0.06893, 0.05017, 0.05187, 0.05228, 0.05242, 0.05244 at offsets h = 1, 2, 3, 5, 8, 13 and the conditional in-window fraction is 0.05942, 0.04586, 0.04253, 0.04015, 0.04026, 0.03982. The tail factor is bounded away from zero - between 0.0398 and 0.0602 across every offset - and across six bands of N it drifts only by a factor 0.77 to 0.84, the same mild decline as the digit factor. So a proof does NOT need a joint statement about the digit and the tail: it can aim a Hardy-Littlewood count at the digit and a non-concentration statement at the tail, separately. The conditional structure is also offset-independent from h = 5 onwards, with the short/overshoot split converging to 0.46/0.50, while h = 1 is visibly different (the shift is pushed high, overshooting 72% of the time) and h = 2, 3 interpolate. The tail shift therefore decorrelates from the digit at offsets of about five, and a proof only has to treat small h specially. Finite measurement; cofinality is not proved and the target irrationality remains open."
+    },
+    {
+      "id": "certified_continued_fraction_denominator_exclusion",
+      "status": "exact_finite_denominator_exclusion",
+      "statement": "The packet recorded no finite denominator exclusion and contained no continued-fraction content. If S is rational its expansion terminates and its reduced denominator is that of the last convergent, so a certified prefix of length n+1 forces q >= q_(n+1). Certified means each quotient is forced by an exact rational bracket: the interval expansion emits a quotient only when both endpoints agree, and the prefix stays genuine even if S is rational because at the step the expansion would end the endpoint floors differ and the algorithm halts. Bracketing the normalized zero-based prime series S = sum_(i>=0) p_i/2^(i+1) by the exact prefix through index B+128 at internal scale 2^(B+128), with the omitted tail bounded by this packet's own Lean-checked elementary estimate p_i <= 1250(i+1)^4 rather than a heuristic prime bound, and shifting down so the bracket is one unit wide, gives at B = 80000 bits: 23369 certified partial quotients and q >= 2^39998 > 10^12041, with the separation |q_n S - p_n| > 0 verified against the bracket. By gap_series_identity the actual prime-gap series is S - 2, an integer shift, so it has the same denominator and the same bound. The bracket was checked against an independent summation, and the module self-checks against e = [2;1,2,1,1,4,1,1,6,...] and the convergents 3, 22/7, 333/106, 355/113 of pi before every run.",
+      "computation_ref": "formal_math/probes/certified_continued_fraction.py",
+      "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Shared/CertifiedContinuedFractionLab.md",
+      "receipt_ref": "state/formal_math/probes/erdos251_certified_cf_receipt.json",
+      "structural_reading": "The certified quotients also measure how well S is approximable. The raw maximum partial quotient is 973919, twenty-seven times the corresponding figure for Erdos 68 and 249, and it looks like an anomaly. It is not: it sits at index 16442 where the convergent denominator is about 10^8520, so its approximation exponent is 2.0007, and P(max >= 973919) over 23369 Gauss-Kuzmin terms is 0.024. In the coordinate that matters -- the irrationality exponent 2 + log(a_(i+1))/log(q_i) -- all three series are indistinguishable, with maxima 2.0455, 2.0506, 2.0482 above q >= 2^100, then 2.0068, 2.0074, 2.0077 above 2^1000, then 2.0010, 2.0012, 2.0010 above 2^10000, for Erdos 68, 249 and 251 respectively. The excess decays like log(terms)/log(q), exactly the Gauss-Kuzmin prediction. So no Liouville-flavoured or good-rational-approximation attack is available, and the raw maximum quotient is the wrong statistic to read an anomaly from."
+    },
+    {
+      "id": "adjacent_small_mismatch_signed_two_window_normal_form",
+      "status": "lean_checked_exact_signed_two_window_equivalence",
+      "claim_effect": "formalizes the exact sign-and-magnitude normal form behind the adjacent-small-mismatch consumer while preserving the open cofinality boundary",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineShiftEscape.lean",
+      "source_commit": "f31e190bdf4e6fdd47b4fdd0edd09c79a61be436",
+      "source_sha256": "255986bf5c72d19fee3054ce6804a17f46643a363b3cb664a0e590201351b370",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.adjacent_small_mismatch_iff_signed_two_window",
+        "ErdosProblems.Erdos251.digit_eq_two_or_neg_two_of_small_pair",
+        "ErdosProblems.Erdos251.shift_gt_half_of_digit_eq_two",
+        "ErdosProblems.Erdos251.shift_lt_neg_half_of_digit_eq_neg_two"
+      ],
+      "statement": "For any integer-digit dyadic tail recurrence whose digit difference is even, both adjacent h-shifts lie strictly in (-1,1) and the corresponding digits differ if and only if the digit difference is +2 with the first shift in (1/2,1), or -2 with the first shift in (-1,-1/2). The theorem is an exact local normal form; it does not assert that either event occurs cofinally for the actual prime gaps.",
+      "validation": {
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.AffineShiftEscape",
+        "proof_result": "Focused build and serialized Lake authority check passed after repairing the integer-to-rational cast in the reverse direction.",
+        "trust_boundary": "No sorry, admit, project axiom, native_decide, cofinality theorem, or irrationality theorem is claimed by this row."
+      },
+      "next_consumer_effect": "The adjacent-small-mismatch producer can now be stated and tested as the single signed \u00b12 half-window event; the remaining mathematical input is cofinal occurrence for the actual consecutive-prime sequence.",
+      "surviving_obligation": "Prove cofinal occurrence of the signed \u00b12 half-window event, or provide another genuinely external fractional-tail obstruction; Erdős #251 remains open."
+    },
+    {
+      "id": "factorial_diagonal_criterion",
+      "status": "lean_checked_factorial_schedule_consumer",
+      "claim_effect": "binds the single predetermined factorial diagonal as an exact equivalent consumer for the #251 irrationality criterion",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+      "source_commit": "c5258262e6091a51c692037bc5f115c3ad826ab9",
+      "source_sha256": "7516cfce5385789ed161408b450232c1951647a148bfcfb18a176775a918a118",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.irrational_initial_iff_all_factorialDiagonal_nonintegral",
+        "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_integral_factorialDiagonal"
+      ],
+      "statement": "For every dyadic-tail recurrence in the #251 formal setting, irrationality of the initial value is equivalent to nonintegrality at every single factorial diagonal point (j!, j!). Equivalently, non-irrationality is witnessed by one integral factorial-diagonal point. The factorial schedule cofinally contains every positive shift and grows past every basepoint, so this replaces the original double quantifier by one exact predetermined sequence without changing the theorem's logical strength.",
+      "claim_boundary": "This is an exact schedule reformulation of the irrationality criterion. It does not prove that the actual prime-gap series is irrational, nor does it establish nonintegrality at any particular factorial point without a separate source-specific argument.",
+      "validation": {
+        "proof_authority": "Lean source declarations at the cited commit; focused build to be run before scoped landing.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.OrderLatticeDiagonal",
+        "proof_result": "source declaration inspected; focused build to be run before scoped landing",
+        "consequence_reconciliation": "Adds the factorial schedule alongside the already-bound generic and LCM schedules; no new irrationality claim is inferred."
+      },
+      "surviving_obligation": "Supply a source-specific proof that every factorial diagonal point is nonintegral, or an equivalent cofinal escape for the actual prime-gap sequence; Erdős #251 remains open."
+    },
+    {
+      "id": "polynomial_gap_countermodel_series_value_tsum",
+      "status": "lean_checked_exact_series_value",
+      "claim_effect": "replaces the Python receipt for the countermodel series value 32 by a kernel-checked tsum identity",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+      "source_commit": "uncommitted_worktree_2026_09_01",
+      "source_sha256": "46664c52b25dac36a31298640291b3a5c7c93d9369c77e2c1e444bb62eed779a",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.polynomialGap_partialSum_eq",
+        "ErdosProblems.Erdos251.tendsto_polynomialTailOrbit_div_two_pow",
+        "ErdosProblems.Erdos251.hasSum_polynomialGapDyadicTerm",
+        "ErdosProblems.Erdos251.tsum_polynomialGapDyadicTerm_eq",
+        "ErdosProblems.Erdos251.tsum_polynomialGapWord_div_two_pow",
+        "ErdosProblems.Erdos251.not_irrational_tsum_polynomialGapDyadicTerm"
+      ],
+      "statement": "For the polynomial countermodel g_n = 2(n^2+4n+2), T_n = 2(n+4)^2, Lean proves the exact finite telescope sum_(j<=N) g_j/2^j = 32 - T_N/2^N in Q, the limit 2(N+4)^2/2^N -> 0, and hence HasSum (fun n => g_(n+1)/2^(n+1)) 32 and tsum_(n>=0) g_(n+1)/2^(n+1) = 32 in R, so the positive, even, strictly increasing, unbounded, nonperiodic gap series has the rational value 32. This was previously only the symbolic Python receipt in scripts/erdos251_polynomial_gap_countermodel.py; the 25/32 ratio bound is no longer load-bearing for the value.",
+      "claim_boundary": "The countermodel is not the actual prime-gap word. The declarations establish the series value and rationality of the countermodel series only; they say nothing about the consecutive-prime-gap series and do not bear on Erdős #251 irrationality.",
+      "validation": {
+        "proof_authority": "Lean source declarations in the named module, built sorry-free through the governed wrapper; #print axioms shows only propext, Classical.choice, Quot.sound.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PolynomialGapSeriesValue",
+        "proof_result": "Exit 0 at 2026-09-01T23:23:48Z via lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.PolynomialGapSeriesValue with the final serialized Lake authority check; olean 00:23:45 newer than source 00:23:31; #print axioms tsum_polynomialGapDyadicTerm_eq and not_irrational_tsum_polynomialGapDyadicTerm: [propext, Classical.choice, Quot.sound].",
+        "consequence_reconciliation": "Upgrades the evidence class of the countermodel series value from executable symbolic receipt to Lean; no change to the target or the claim ceiling."
+      },
+      "surviving_obligation": "None for the countermodel value. Erdős #251 remains open."
+    },
+    {
+      "id": "free_pair_lattice_and_irrationality_equivalence",
+      "status": "lean_checked_exact_equivalence",
+      "claim_effect": "binds the free-pair property (F) and the sharpened producer (P) of free_pair_shift_and_redundant_plus_minus_two_wall to Lean as an exact equivalent of the #251 target",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/FreePairReduction.lean",
+      "source_commit": "uncommitted_worktree_2026_09_01",
+      "source_sha256": "22aed014c78b5b547f091c86aaf1e469d3001d1bb1356a1bf877b24a47967519",
+      "source_current": true,
+      "source_declarations": [
+        "ErdosProblems.Erdos251.tail_den_eq_of_odd_of_le",
+        "ErdosProblems.Erdos251.orderOf_two_zmod_den_pos",
+        "ErdosProblems.Erdos251.free_pair_integral_iff_modEq",
+        "ErdosProblems.Erdos251.exists_free_pair_lattice",
+        "ErdosProblems.Erdos251.exists_free_pair_lattice_rationalPrimeGapTailState",
+        "ErdosProblems.Erdos251.CofinalFreePairNonintegral",
+        "ErdosProblems.Erdos251.irrational_initial_iff_cofinalFreePairNonintegral",
+        "ErdosProblems.Erdos251.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts",
+        "ErdosProblems.Erdos251.primeGapRealTail_recurrence",
+        "ErdosProblems.Erdos251.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral"
+      ],
+      "statement": "(F) with converse: for any integer-digit dyadic tail recurrence, at and beyond an odd-denominator state with reduced denominator d, T_M - T_N is an integer iff N == M mod orderOf(2 : ZMod d); the offset M - N is free. Every rational-valued orbit therefore has a cutoff N0 and a positive modulus t with T_M - T_N in Z iff M == N mod t beyond N0 (exists_free_pair_lattice), in particular the rational candidate tail of every proposed rational value S of the prime-gap series. (P) is formalised as CofinalFreePairNonintegral T: for every t > 0 and every cutoff there are N, M beyond the cutoff with N == M mod t and T_M - T_N not an integer. Lean proves Irrational (T 0) <-> (P) for every real integer-digit dyadic tail orbit, that (P) is equivalent to the fixed-offset criterion CofinalNonintegralTailShifts, and, with the real tail primeGapRealTail N = 2^(N+1) sum_k g_(k+N+1)/2^(k+N+2) satisfying the recurrence with the actual prime gaps as digits and primeGapRealTail 0 = 2S - 1, that Irrational S <-> CofinalFreePairNonintegral primeGapRealTail for the actual consecutive-prime-gap series S.",
+      "reading_proved": "The lab wording 'fractional part bounded away from 0' in (P) is taken as nonintegrality of the pair difference. That is the weakest hypothesis in the direction (P) => irrational and, in the direction irrational => (P), no uniform lower bound on the fractional part can be extracted, so the nonintegral form is the exact equivalence the existing lemmas support.",
+      "claim_boundary": "Exact equivalence only. Nothing produces the congruent nonintegral pairs for the actual primes; Erdős #251 remains open. The modulus in the rational direction is orderOf(2 : ZMod d), which need not equal the totient used in earlier rows.",
+      "validation": {
+        "proof_authority": "Lean source declarations in the named module, built sorry-free through the governed wrapper; #print axioms shows only propext, Classical.choice, Quot.sound.",
+        "proof_command": "./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.FreePairReduction",
+        "proof_result": "Exit 0 at 2026-09-01T23:42:36Z via lean_fast_build.py --jobs 2 ErdosProblems.Erdos251.FreePairReduction with the final serialized Lake authority check after seven rc=75 capacity refusals; olean 00:40:43 newer than source 00:35:17; #print axioms exists_free_pair_lattice, irrational_initial_iff_cofinalFreePairNonintegral, irrational_primeGap_tsum_iff_cofinalFreePairNonintegral: [propext, Classical.choice, Quot.sound].",
+        "consequence_reconciliation": "Adds (P) as an exact equivalent of the target alongside the fixed-offset, schedule, and factorial-diagonal criteria; no new irrationality claim is inferred."
+      },
+      "surviving_obligation": "Produce, for every positive modulus t and every cutoff, a congruent pair of indices beyond the cutoff with nonintegral real tail difference for the actual prime gaps."
+    },
+    {
+      "id": "kernel_denominator_floor",
+      "status": "lean_checked",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/KernelDenominatorFloor.lean",
+      "source_declarations": [
+        "ErdosProblems.Erdos251.kernel_denominator_floor",
+        "ErdosProblems.Erdos251.kernel_denominator_floor_primeGap",
+        "ErdosProblems.Erdos251.cert_10000",
+        "ErdosProblems.Erdos251.den_bound_of_certCheck"
+      ],
+      "verifier": "formal_math/probes/erdos251_kernel_denominator_certificate.py",
+      "claim_boundary": "A finite denominator exclusion only. It does not decide irrationality of the prime series or of the prime-gap series, and it is numerically weaker than the continued-fraction receipt q > 10^12041; its distinction is that the floor is decided inside the Lean kernel.",
+      "statement": "Every rational a/b equal to the zero-based prime series S = sum_{i>=0} p_i/2^(i+1) (p_0 = 2), and every rational equal to the prime-gap series S - 2 of Erdos #251, has denominator b >= 2^589 > 10^177. The floor is decided inside the Lean kernel: cert_10000 re-runs the 10^4 trial-division sieve with decide +kernel (no native_decide) and certCheck packages the four Farey inequalities around the bracket [prefix, prefix + 5000(c+1)^4/2^(c+1)]; the certificate c = 1229, X = 10000 comes from formal_math/probes/erdos251_kernel_denominator_certificate.py. Evidence class: kernel-checked Lean theorem (KernelDenominatorFloor.lean, commit 460934798b), strictly weaker than and distinct from the continued-fraction receipt q > 10^12041."
+    }
+  ],
+  "negative_results": [
+    "State compression does NOT close the route by word repetition, and the margin is recorded so the lane is not re-walked. Splitting the >>X/log X indices sharing one tail value v by their next L gaps costs at most 2^i v choices at step i, because T_(N+i) >= 2 forces g_(N+i) <= 2^i v; the product 2^(L(L+1)/2) v^L reaches X/log X only at L about 1.7 sqrt(log X). A repeated gap word of that length is well below the birthday threshold L about log X / log log X, so it is expected rather than contradictory.",
+    "Rationality controls only a fractional orbit and does not imply eventual periodicity of prime gaps.",
+    "Unbounded carries invalidate the automaticity shortcut.",
+    "Finite insertion of any fixed even gap word cannot establish a contradiction.",
+    "Global convergence of every fixed tail shift to zero is not required by the new consumer: cofinally many adjacent small-mismatch certificates suffice.",
+    "The data-dependent affine-cylinder escape is exactly the original integrality predicate at its basepoint, so changing depth or auditing more blocks cannot make it an independent producer.",
+    "Replacing the affine cylinder by the fixed lattice 2^r Z does not repair the mechanism under any dyadically dominated terminal bound: denominator separation forces the alleged escape from basepoint nonintegrality alone.",
+    "Positivity, evenness, polynomial growth, unboundedness, and nonperiodicity of a gap word do not force the h=1 adjacent-small-mismatch producer. The exact rational polynomial orbit g_n=2(n^2+4n+2), T_n=2(n+4)^2 has all those properties but every adjacent gap difference is 4n+10, never \u00b12.",
+    "No gap-magnitude, growth or periodicity theorem can supply the remaining producer, and the measurement now shows why looking for one was the wrong shape: the producer's event already occurs densely in the actual primes, so what is missing is a fixed-offset prime-gap correlation lower bound, not a bound on how large or how regular the gaps are."
+  ],
+  "open_producers": [
+    {
+      "id": "cofinal_adjacent_small_mismatch",
+      "priority": 1,
+      "statement": "For each fixed h >= 1 and every N0, produce N >= N0 such that both actual tail shifts T_(N+h)-T_N and T_(N+h+1)-T_(N+1) lie strictly between -1 and 1 while g_(N+h+1) != g_(N+1). The checked finite consumer then excludes eventual integrality of the h-shift."
+    },
+    {
+      "id": "actual_scaled_tail_smallness",
+      "priority": 2,
+      "statement": "Prove the required strict smallness for fixed differences of the actual scaled real tails. Convergence, the rational witness extraction, the exact real-to-rational tail equality, recurrence, and complete rational-denominator reductions are discharged; this is now the only analytic producer."
+    },
+    {
+      "id": "prime_theorem_to_local_smallness",
+      "priority": 3,
+      "statement": "Identify a theorem on consecutive primes strong enough to supply cofinally many adjacent small tail-shift pairs or another genuinely external fractional-tail obstruction. Isolated occurrence of a finite gap word is insufficient because both full infinite tails enter the inequalities, while adaptive and fixed-lattice block pullbacks are now Lean-checked circular."
+    },
+    {
+      "id": "cofinal_free_pair_nonintegrality",
+      "priority": 4,
+      "statement": "(P): for every positive modulus t and every cutoff, produce indices N, M beyond the cutoff with N == M mod t whose real scaled tails of the actual prime-gap series differ by a non-integer (CofinalFreePairNonintegral primeGapRealTail). Lean proves this is exactly equivalent to irrationality of the prime-gap series (irrational_primeGap_tsum_iff_cofinalFreePairNonintegral, row free_pair_lattice_and_irrationality_equivalence), so it is a restatement of the target, not a stronger sufficient input: the offset M - N is free and only one non-integral difference per (t, cutoff) is required."
+    }
+  ],
+  "claim_ceiling": "The target irrationality is not proved. Lean proves the explicit elementary bound p_n <= 1250(n+1)^4 and therefore unconditionally checks convergence of the normalized prime and actual prime-gap dyadic series together with their exact infinite identity. Under non-irrationality it extracts a rational witness and proves that the rational candidate state and every fixed shift are exactly the corresponding scaled real tsum tails. Lean also checks the tail-shift integrality machinery, proves unboundedness and non-eventual-periodicity of the actual prime gaps, and verifies the implication from a cofinal adjacent small-mismatch supply to exclusion of eventual integral h-shifts. The explicit rational polynomial-tail countermodel g_n=2(n^2+4n+2), T_n=2(n+4)^2 now proves that positivity, parity, polynomial growth, unboundedness, and nonperiodicity cannot supply that producer: its adjacent differences are never \u00b12. For every rational candidate S, Lean decomposes the complete denominator into dyadic and odd parts, proves eventual integrality of one positive fixed shift, and therefore proves that this shift cannot be eventually small. Both the data-dependent affine cylinder and its fixed-lattice block-residue replacement are Lean-checked circular. The remaining producer must use genuinely finer consecutive-prime arithmetic or external control of actual prime-tail fractional parts, rather than recurrence-generated block pullbacks or coarse gap growth alone. The remaining producer's event has now been measured in the actual primes: it occurs for every offset h <= 16 over 6.8 million primes, at density bounded away from zero after the 1/log p rescaling, verified against the literal producer statement with margins eight orders above numerical resolution. The producer is therefore true in the actual primes rather than an artifact the polynomial countermodel generalises to, and the residual is a proof of cofinality whose missing input is Hardy-Littlewood k-tuple correlation at a fixed offset. Cofinality is not proved and the target irrationality remains open. Conditioning on the +-2 digit further separates the remaining producer event into a digit factor and a tail factor, both bounded away from zero and drifting alike, so the two can be attacked separately rather than jointly; the conditional structure is offset-independent from h = 5 onwards, leaving only small offsets to be treated specially. A certified continued-fraction prefix of 23369 partial quotients now gives the packet's first finite denominator exclusion, q > 10^12041, covering the prime series and the gap series alike since they differ by the integer 2. The expansion is generic: the one large partial quotient, 973919, has approximation exponent 2.0007, and the maximum irrationality-exponent witness above convergent denominators 2^10000 is 2.0010, matching Erdos 68 and 249 to four decimals.",
+  "public_projection": {
+    "state": "withheld_pending_human_mathematical_review",
+    "minimum_release": "publish the exact carry and affine/fixed-lattice no-go results while preserving the external prime-tail producer as open"
+  }
+}

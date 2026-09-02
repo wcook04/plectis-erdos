@@ -1,0 +1,4 @@
+import ExternalVerification68StrictSuccessorCarry.Solution
+
+#print axioms Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization
+#print axioms Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization

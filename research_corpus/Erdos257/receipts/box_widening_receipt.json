@@ -1,0 +1,145 @@
+{
+  "artefact": {
+    "D12_M160": [
+      3,
+      3,
+      3
+    ],
+    "D12_M400": [
+      0,
+      0,
+      0
+    ],
+    "grid": [
+      {
+        "Dq": 18,
+        "S": "{2,4,16}",
+        "degY": 16,
+        "nullity": [
+          3,
+          3,
+          3
+        ],
+        "trivial": true
+      },
+      {
+        "Dq": 18,
+        "S": "{2,4,16,256}",
+        "degY": 256,
+        "nullity": [
+          0,
+          0,
+          0
+        ],
+        "trivial": false
+      },
+      {
+        "Dq": 11,
+        "S": "{2,4,16}",
+        "degY": 16,
+        "nullity": [
+          0,
+          0,
+          0
+        ],
+        "trivial": false
+      },
+      {
+        "Dq": 11,
+        "S": "{2,4,16,256}",
+        "degY": 256,
+        "nullity": [
+          0,
+          0,
+          0
+        ],
+        "trivial": false
+      }
+    ],
+    "mechanism": "truncated support degree 16 <= Dq = D+6 = 18, so p_0=1,q=Y is an exact trivial solution",
+    "set": "{2^(2^k)}",
+    "split_predicted_exactly": true
+  },
+  "calibration": {
+    "N_D5": [
+      14,
+      9,
+      8
+    ],
+    "matches_T31b": true
+  },
+  "negative_control_D12": {
+    "over_parameterised": false,
+    "random_0.10": [
+      0,
+      0,
+      0
+    ],
+    "random_0.33": [
+      0,
+      0,
+      0
+    ],
+    "random_0.50": [
+      0,
+      0,
+      0
+    ]
+  },
+  "power_check_D12": {
+    "12N": [
+      2,
+      1,
+      14
+    ],
+    "6N": [
+      15,
+      8,
+      7
+    ],
+    "8N": [
+      10,
+      5,
+      5
+    ],
+    "holds": true,
+    "same_at_D5": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6
+      ]
+    ]
+  },
+  "system": {
+    "D12_unknowns": 58,
+    "D5_unknowns": 30,
+    "both_overdetermined": true,
+    "equations": "M+1 = 161",
+    "unknowns": "(d+1)(D+1) + (D+7)",
+    "vacuity_threshold_d2_M160": "D >= 38 (162 unknowns > 161 equations)"
+  },
+  "targets_D12": {
+    "A_star": [
+      0,
+      0,
+      0
+    ],
+    "primes": [
+      0,
+      0,
+      0
+    ],
+    "verdict": "BOX-ONLY SURVIVES, no flip"
+  }
+}

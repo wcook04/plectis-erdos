@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+project:
+  name: "Erdős #249: unconditional clean prime anchors in the binary cyclotomic layers"
+  description: >-
+    For every ray multiplier h > 0 and every threshold N0 there exist primes q and p with p
+    dividing the binary cyclotomic layer |Phi_{hq}(2)|, p coprime to hq, hq dividing p - 1,
+    and p - 1 at least N0. The same arithmetic gives unbounded prime-divisor support on
+    every positive ray: for all bounds B and N0 there are primes q at least N0 and p greater
+    than B with p dividing |Phi_{hq}(2)|. Both statements are unconditional, and the
+    mechanism is the exact multiplicative order of 2, since a prime divisor of 2^q - 1 for
+    prime q has 2 of order exactly q and therefore satisfies q dividing p - 1, which is what
+    makes the anchor clean and its index remote. Prime support alone cannot force the
+    annihilation that irrationality needs: if the binary totient series, the sum of
+    phi(n)/2^n, were rational, then some positive period h would have eventually integral
+    tail differences while that same ray still carried unbounded prime divisors. The subject
+    is irrationality of the binary totient series, the layers and the order argument are
+    classical, and the theorem family assembled here is first presented in this development
+    with its novelty unassessed. The exact ceiling is an equivalence: the binary totient
+    series is irrational if and only if, for every period h > 0 and every threshold, there
+    is a clean anchor at some prime index whose dyadic window discrepancy over some length L
+    sits strictly inside its residue range modulo 2^L, at distance more than p + h q + L + 1
+    from both ends. The clean anchors are proved and the certified discrepancy is the
+    missing producer, so the equivalence yields no irrationality result and a carry or phase
+    escape is still required.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11B83", "11A05", "11J72"]
+sources:
+  - title: "Clean binary cyclotomic anchors for Erdős Problem 249"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #249"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/249"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this cyclotomic theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Exact statements and their open boundary were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_axiom_audit_passed_terminal_comparator_pending"
+  note: "Unconditional arithmetic producer and exact strategy limitation; the four source transports replay with the exact Palomar axiom budget. No Comparator verdict, Palomar outcome, public promotion, or submission is claimed."
+status:
+  scope: "Four source-backed declarations; one exact equivalence, but no irrationality result."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: "passed_2026_08_31_exactly_propext_Quot_sound_Classical_choice"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor"
+      file: "ExternalVerification249BinaryCyclotomicAnchors/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused Lean and axiom audit passed"
+      novelty_status: "unassessed"
+      boundary: "Unconditional clean-anchor production; it supplies no carry or phase escape."
+    - declaration: "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply"
+      file: "ExternalVerification249BinaryCyclotomicAnchors/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused Lean and axiom audit passed"
+      novelty_status: "unassessed"
+      boundary: "Unconditional unbounded prime support; support alone does not contradict a rational period law."
+    - declaration: "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational"
+      file: "ExternalVerification249BinaryCyclotomicAnchors/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused Lean and axiom audit passed"
+      novelty_status: "unassessed"
+      boundary: "Exact equivalence; the cofinal certified discrepancy field remains unproved."
+    - declaration: "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational"
+      file: "ExternalVerification249BinaryCyclotomicAnchors/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused Lean and axiom audit passed"
+      novelty_status: "unassessed"
+      boundary: "A necessary-state implication under hypothetical non-irrationality, not a rational example or solution."
+alignment:
+  namespace: "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors"
+  statements:
+    - source: "ErdosProblems.Erdos249.CyclotomicAnchoredKill"
+      lean: "four exact source transports"
+      module: "ExternalVerification249BinaryCyclotomicAnchors/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"

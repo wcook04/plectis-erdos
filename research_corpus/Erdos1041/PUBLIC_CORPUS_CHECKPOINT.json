@@ -1,15 +1,12 @@
 {
-  "schema": "plectis_public_problem_corpus_checkpoint_v1",
+  "schema": "plectis_public_problem_corpus_checkpoint_v2",
   "problem_id": "erdos_1041",
   "source_repository": "private_authoring_repository_not_included",
-  "source_commit": "867638684907b4ebd4ab2ef7b5de22dafda71e36",
-  "source_subtree": "source-provenance://Erdos1041",
-  "source_subtree_tree": "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d",
-  "exported_source_file_count": 839,
-  "publication_scope": "committed problem-facing Lean, mathematical notes, receipts, and executable checkers",
+  "source_commit": "42de2bf94b8f6aeccfb1c5c0dc60626b1afc951a",
+  "exported_source_file_count": 1316,
   "status": "source_current_problem_snapshot",
   "corpus_manifest_path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-  "corpus_manifest_sha256": "aba4634c2321bcd222a770addf279bb9f6dc4217b07120fc17851b2843901d73",
+  "corpus_manifest_sha256": "1d364d351e384234ee405272e28997fd9b76573f0e0d89d5e68e21c5228924d1",
   "strongest_result_map_path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
-  "strongest_result_map_sha256": "57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
+  "strongest_result_map_sha256": "75ee300e9c886911d6ae7729528d109ba7770db54ef9e501fe41a4d18128e4e1"
 }

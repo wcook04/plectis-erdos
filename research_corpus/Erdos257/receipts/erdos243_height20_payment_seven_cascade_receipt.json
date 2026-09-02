@@ -1,0 +1,240 @@
+{
+  "complete_affine_height_twenty_cylinder": {
+    "affine_compression": {
+      "degree_1024_evaluations_per_source_class": 5,
+      "exactness": "bounded numpy.int64 modular arithmetic only",
+      "full_classes_classified": 10644480,
+      "method": "lift zero and one modulo 21 and 5 determine the affine higher coordinate; CRT expands all 21 lifts without new polynomial evaluations",
+      "shared_primitive": "system.lib.formal_math_residue_cylinder.affine_lift_coordinates_mod"
+    },
+    "affine_lifts_per_source_class": 21,
+    "affine_slope_counts_mod_21": {
+      "0": 101376,
+      "12": 101376,
+      "18": 101376,
+      "3": 101376,
+      "9": 101376
+    },
+    "affine_slope_counts_mod_5": {
+      "0": 230400,
+      "2": 138240,
+      "3": 138240
+    },
+    "complete_refined_class_count": 10644480,
+    "height_twenty_parameter_counts_mod_21": {
+      "0": 3345408,
+      "12": 4866048,
+      "18": 2433024
+    },
+    "height_twenty_payment_image": [
+      1,
+      7
+    ],
+    "input_class_count_mod_35271600": 506880,
+    "payment_one_class_count": 8211456,
+    "payment_one_traversal_sha256": "aa36c63e93f5f656e9c2deb15f394558e06c0fdd3f1db599e97acc4cace3664c",
+    "payment_seven_class_count": 2433024,
+    "payment_seven_next_digit_counts_mod_5": {
+      "0": 176960,
+      "1": 176953,
+      "2": 1725225,
+      "3": 176949,
+      "4": 176937
+    },
+    "payment_seven_traversal_sha256": "7d9e4301e88d3bcad64b6ef53ae1c43ad93d85fefeefd780b6fba0a3b06c3743",
+    "refinement_modulus": 740703600
+  },
+  "consequence_reconciliation": {
+    "height_twenty_one_payment_one_branch": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "it is now the sole surviving branch of this family"
+    },
+    "height_twenty_payment_seven_mode": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "every exact cylinder has cofinal return or positive switch"
+    },
+    "public_projection": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "defer_with_reason",
+      "reason": "private exact result is not automatic publication authority",
+      "reentry_condition": "explicit public release wave with owner review"
+    }
+  },
+  "cumulative_source_class_partition": {
+    "common_modulus": 740703600,
+    "continuing_negative_candidate_class_count": 8211456,
+    "exact_partition": "583408395 zero + 149083749 positive + 8211456 negative = 740703600",
+    "positive_centered_class_count": 149083749,
+    "zero_centered_class_count": 583408395
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightThreeIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_positiveSwitchIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightFiveToHeightTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalFullPayment",
+        "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalCollapse"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "All 2433024 payment-seven classes are terminal for negative support: 2256075 return cofinally and 176949 switch positive. Only 8211456 payment-one classes reach height 21 with error -1.",
+      "survival_consequence": "Any surviving factor-five digit would open a distinct recurrent low-height mechanism requiring further source refinement."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "height_twenty_payment_seven_supports_low_height_expansion",
+      "statement": "A payment-seven height-20 cylinder can survive its induced low-height cascade and retain negative support."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height19_payment_five_cascade.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height19_payment_five_cascade_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height20_payment_seven_cascade.py",
+        "system/lib/formal_math_residue_cylinder.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height19_payment_five_cascade.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height17_mod4_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height19_payment_five_cascade_receipt.json",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Use lift-zero/lift-one exact evaluations modulo 21 and 5 to determine the affine higher coordinate for all 10644480 refined classes; combine by CRT, classify the payment-seven next digit, and verify every low-height cascade symbolically on complete residue periods.",
+      "falsifier": "A complete exact partition showing no payment-seven class retains negative support after the forced low-height cascade.",
+      "id": "affine_mod21_mod5_cylinder_and_low_height_cascade",
+      "question": "What payments occur at height 20, and does the next factor-five digit force collapse or a sign switch on every payment-seven class?",
+      "resource_bounds": {
+        "affine_lifts_per_class": 21,
+        "cascade_residue_checks": 150,
+        "classified_residue_cylinders": 10644480,
+        "degree_1024_evaluations_per_class": 5,
+        "input_base_classes": 506880,
+        "source_polynomial_degree": 1024
+      },
+      "stop_condition": "Stop when every payment-seven next digit has a cofinal-return or positive-switch certificate; do not audit the payment-one height-21 branch."
+    },
+    "problem": {
+      "claim_ceiling": "Exact elimination of all 2433024 height-20 payment-seven classes by cofinal return or positive switch; 8211456 height-21 negative-unit classes and unrestricted #243 remain open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "one_way_theorem",
+        "decision_basis": "Affine two-lift certificates plus CRT cover all 10644480 source classes, while complete modular cascade checks remove any horizon inference.",
+        "next_analytic_target": "Discard every payment-seven class. Restrict the next exact probe to the 8211456 payment-one height-21 cylinders."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The complete height-20 payment image is {1,7}. Every payment-seven class either pays five at height four, switches positive at height five, or follows the forced 20->3->4->5->2->1 cofinal cascade."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "payment_seven_outcome_counts": {
+    "continuing_negative": 0,
+    "immediate_height_four_cofinal_return": 353913,
+    "late_height_two_cofinal_return": 1902162,
+    "positive_switch": 176949,
+    "total_cofinal_return": 2256075
+  },
+  "schema": "erdos243-height20-payment-seven-cascade-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 22407,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height20_payment_seven_cascade.py",
+      "sha256": "4b50694f299131b520fea7825ea329594e3f35237cd8143c9a04b84ee31ed70a"
+    },
+    {
+      "byte_length": 6195,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "39a51a968941cdbe70898c44cca6f5f89a2d3812d1c54dfb821a0071dd6355c6"
+    },
+    {
+      "byte_length": 17607,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height19_payment_five_cascade.py",
+      "sha256": "5c0d3bc6b8b3b1610c80552d3fb367e43a65934b8f713e6548743d740f2bda4b"
+    },
+    {
+      "byte_length": 129901,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_height17_mod4_receipt.json",
+      "sha256": "042fb98cc661f6f27777622f659fda34d613a6e4b8b22a73a855d738cdb73ba0"
+    },
+    {
+      "byte_length": 10148,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_height19_payment_five_cascade_receipt.json",
+      "sha256": "8844e5fd3310f2de14fac9ac44e5fc398a5afffbbcf95d07f55d3b4f7c607da6"
+    },
+    {
+      "byte_length": 21449,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "258567be07b8b56786f8f4681606153ed3d68485ebe3796f60be1c6cac954644"
+    },
+    {
+      "byte_length": 25167,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "86851602cb87167e6f1d57157fc4cff1ef41e23dadaa521ca7ecac4d7a08862d"
+    },
+    {
+      "byte_length": 82992,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "f7a00356b4208b7f876599bb3aa82180638ea529305de93ea05fa9f8cc2a2ad7"
+    }
+  ],
+  "status": "verified_exact_payment_seven_mode_elimination",
+  "symbolic_payment_seven_cascade": {
+    "complete_residue_check_lifts_per_digit": 30,
+    "input": "height-20 payment seven with p=21*a+18",
+    "late_collapse_cascade": {
+      "digits": [
+        2,
+        4
+      ],
+      "payments": [
+        7,
+        1,
+        1,
+        3,
+        3
+      ],
+      "states": [
+        "(20,-1)",
+        "(3,-1)",
+        "(4,-1)",
+        "(5,-1)",
+        "(2,-1 tie)",
+        "(1,0 forever)"
+      ]
+    },
+    "lean_declarations": [
+      "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightThreeIdentity",
+      "ErdosProblems.Erdos243.heightTwentyPaymentSeven_positiveSwitchIdentity",
+      "ErdosProblems.Erdos243.heightTwentyPaymentSeven_heightFiveToHeightTwoIdentity",
+      "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalFullPayment",
+      "ErdosProblems.Erdos243.heightTwentyPaymentSeven_finalCollapse"
+    ],
+    "next_digit_outcomes_mod_5": {
+      "0": "height_four_full_payment_five",
+      "1": "height_four_full_payment_five",
+      "2": "height_five_to_height_two_to_height_one",
+      "3": "height_five_positive_switch",
+      "4": "height_five_to_height_two_to_height_one"
+    },
+    "universal_prefix": {
+      "payments": [
+        7,
+        1
+      ],
+      "states": [
+        "(20,-1)",
+        "(3,-1)",
+        "(4,-1)"
+      ]
+    }
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "checked_majorant_count": 40,
+  "checked_recurrence_count": 40,
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "half_threePrimeHeight_mul_dyadicShellMassQ235",
+        "dyadicNormalizedTailStateQ235_succ",
+        "half_threePrimeHeight_mul_dyadicShellMassR235",
+        "dyadicNormalizedTailStateR235_succ",
+        "summable_dyadicShellMassR235",
+        "dyadicShellTsumTailR235_eq_shell_add",
+        "dyadicNormalizedShellTsumTailR235_succ",
+        "dyadicShellTsumTail_integer_or_cofinal_far"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean",
+      "falsification_consequence": "Reject the half-height normalization and repair the shell endpoint or digit.",
+      "survival_consequence": "The existing bounded-radix dichotomy applies directly to the genuine infinite literal source tail."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "ordered_source_digit_drives_normalized_tail",
+      "statement": "For X_a=H(2^a)T_a/2, the literal dyadic shell decomposition gives X_(a+1)=b_a X_a-d_a with the existing ordered source digit d_a."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicWindowComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_ordered_tail_recurrence.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_block_mass_identity.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Enumerate literal smooth points, sum reciprocal running heights as Fractions, form all backward finite tails, and replay every recurrence.",
+      "falsifier": "Any scale where half the next endpoint height fails to clear the shell to d_a, or where the normalized states fail the affine update.",
+      "id": "direct_finite_source_tail_replay",
+      "question": "Do independently enumerated smooth-point tails obey the claimed normalization and affine recurrence exactly?",
+      "resource_bounds": {
+        "max_a": 40,
+        "min_a": 1
+      },
+      "stop_condition": "Stop finite extension after exact convention and majorant replay; use the all-scale Lean dichotomy and rotate to integral-tail exclusion."
+    },
+    "problem": {
+      "claim_ceiling": "Lean proves summability of the literal shell masses, constructs the genuine infinite tsum tail, and applies the bounded-radix dichotomy. The exact-integral-state branch remains open, so irrationality is not proved.",
+      "id": "erdos_269",
+      "target_statement": "Bind the all-scale ordered {2,3,5} source digit into the actual normalized tail recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The previously abstract bounded-radix orbit is now driven by the literal ordered smooth-source digit rather than a free input.",
+        "next_analytic_target": "Exclude exact integral normalized states of the genuine source tail; the other branch already supplies cofinal 1/31 escape."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The exact source mass, ordered digit, normalized finite tail, and both summability majorants agree at every tested scale; Lean proves the genuine infinite tail either reaches an integral state or returns cofinally far from all integers."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "first_rows": [
+    {
+      "a": 1,
+      "affine_recurrence_verified": true,
+      "block_base": 6,
+      "cleared_shell_equals_digit": true,
+      "next_normalized_tail_state": {
+        "denominator": 29614883364510105600000000000000000,
+        "numerator": 25347855895862328737547151513412971
+      },
+      "normalized_tail_state": {
+        "denominator": 177689300187060633600000000000000000,
+        "numerator": 143807389353902751137547151513412971
+      },
+      "ordered_digit": 4,
+      "polynomial_geometric_shell_majorant_verified": true,
+      "quadratic_digit_majorant_verified": true,
+      "shell_mass": {
+        "denominator": 3,
+        "numerator": 2
+      }
+    },
+    {
+      "a": 2,
+      "affine_recurrence_verified": true,
+      "block_base": 10,
+      "cleared_shell_equals_digit": true,
+      "next_normalized_tail_state": {
+        "denominator": 2961488336451010560000000000000000,
+        "numerator": 4617437540705254817547151513412971
+      },
+      "normalized_tail_state": {
+        "denominator": 29614883364510105600000000000000000,
+        "numerator": 25347855895862328737547151513412971
+      },
+      "ordered_digit": 7,
+      "polynomial_geometric_shell_majorant_verified": true,
+      "quadratic_digit_majorant_verified": true,
+      "shell_mass": {
+        "denominator": 60,
+        "numerator": 7
+      }
+    },
+    {
+      "a": 3,
+      "affine_recurrence_verified": true,
+      "block_base": 6,
+      "cleared_shell_equals_digit": true,
+      "next_normalized_tail_state": {
+        "denominator": 493581389408501760000000000000000,
+        "numerator": 1162367814845742497547151513412971
+      },
+      "normalized_tail_state": {
+        "denominator": 2961488336451010560000000000000000,
+        "numerator": 4617437540705254817547151513412971
+      },
+      "ordered_digit": 7,
+      "polynomial_geometric_shell_majorant_verified": true,
+      "quadratic_digit_majorant_verified": true,
+      "shell_mass": {
+        "denominator": 360,
+        "numerator": 7
+      }
+    },
+    {
+      "a": 4,
+      "affine_recurrence_verified": true,
+      "block_base": 30,
+      "cleared_shell_equals_digit": true,
+      "next_normalized_tail_state": {
+        "denominator": 16452712980283392000000000000000,
+        "numerator": 92941471127322017547151513412971
+      },
+      "normalized_tail_state": {
+        "denominator": 493581389408501760000000000000000,
+        "numerator": 1162367814845742497547151513412971
+      },
+      "ordered_digit": 65,
+      "polynomial_geometric_shell_majorant_verified": true,
+      "quadratic_digit_majorant_verified": true,
+      "shell_mass": {
+        "denominator": 2160,
+        "numerator": 13
+      }
+    }
+  ],
+  "last_rows": [
+    {
+      "a": 38,
+      "affine_recurrence_verified": true,
+      "block_base": 6,
+      "cleared_shell_equals_digit": true,
+      "next_normalized_tail_state": {
+        "denominator": 15,
+        "numerator": 991
+      },
+      "normalized_tail_state": {
+        "denominator": 90,
+        "numerator": 4681
+      },
+      "ordered_digit": 246,
+      "polynomial_geometric_shell_majorant_verified": true,
+      "quadratic_digit_majorant_verified": true,
+      "shell_mass": {
+        "denominator": 1974325557634007040000000000000000,
+        "numerator": 41
+      }
+    },
+    {
+      "a": 39,
+      "affine_recurrence_verified": true,
+      "block_base": 30,
+      "cleared_shell_equals_digit": true,
+      "next_normalized_tail_state": {
+        "denominator": 1,
+        "numerator": 125
+      },
+      "normalized_tail_state": {
+        "denominator": 15,
+        "numerator": 991
+      },
+      "ordered_digit": 1857,
+      "polynomial_geometric_shell_majorant_verified": true,
+      "quadratic_digit_majorant_verified": true,
+      "shell_mass": {
+        "denominator": 118459533458040422400000000000000000,
+        "numerator": 619
+      }
+    },
+    {
+      "a": 40,
+      "affine_recurrence_verified": true,
+      "block_base": 2,
+      "cleared_shell_equals_digit": true,
+      "next_normalized_tail_state": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "normalized_tail_state": {
+        "denominator": 1,
+        "numerator": 125
+      },
+      "ordered_digit": 250,
+      "polynomial_geometric_shell_majorant_verified": true,
+      "quadratic_digit_majorant_verified": true,
+      "shell_mass": {
+        "denominator": 2843028802992970137600000000000000,
+        "numerator": 1
+      }
+    }
+  ],
+  "lean_declarations": [
+    "half_threePrimeHeight_mul_dyadicShellMassQ235",
+    "dyadicNormalizedTailStateQ235_succ",
+    "half_threePrimeHeight_mul_dyadicShellMassR235",
+    "dyadicNormalizedTailStateR235_succ",
+    "summable_dyadicShellMassR235",
+    "dyadicShellTsumTailR235_eq_shell_add",
+    "dyadicNormalizedShellTsumTailR235_succ",
+    "dyadicShellTsumTail_integer_or_cofinal_far"
+  ],
+  "max_observed_digit_over_scale_square": {
+    "denominator": 5,
+    "numerator": 13
+  },
+  "max_observed_digit_over_scale_square_scale": 4,
+  "parameters": {
+    "max_a": 40,
+    "min_a": 1
+  },
+  "schema": "erdos269-ordered-tail-recurrence/1",
+  "source_records": [
+    {
+      "byte_length": 10288,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_ordered_tail_recurrence.py",
+      "sha256": "5db3c957b5969918fa4d0120bbc1c48996e387f0076249b74f1890d94736293c"
+    },
+    {
+      "byte_length": 11560,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_block_mass_identity.py",
+      "sha256": "ccd89ebfc4172a5d8a740e1090e0ebd382508ad2d9f97182131e79fceaef4a1d"
+    },
+    {
+      "byte_length": 5272,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean",
+      "sha256": "b591d5f23c6d6bb8c486f2a3390a41ee03ff90e2d9da2cd2165e79d9755bf06a"
+    },
+    {
+      "byte_length": 8918,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean",
+      "sha256": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad"
+    },
+    {
+      "byte_length": 20279,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicWindowComputationalLab.md",
+      "sha256": "dc2c794acd824ff121b1685e8078c1895c0ed048eaee303abd01e4f6dcfd5c4b"
+    },
+    {
+      "byte_length": 36465,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "sha256": "eec79c9aa6ef93ce37a3d897fa05cae4724cce7cc463e21c37918d4b8329f6d2"
+    }
+  ],
+  "status": "verified_exact_source_to_carry_mechanism_opening"
+}

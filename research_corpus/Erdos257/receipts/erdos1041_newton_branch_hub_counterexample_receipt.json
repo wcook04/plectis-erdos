@@ -1,0 +1,336 @@
+{
+  "claim_ceiling": "This proves that replacing the two metric-selected straight spokes by the canonical descending inverse-ray branches at that same critical point can exceed length two. It does not exclude another critical hub, another curved path, or the full Erd\u0151s #1041 statement.",
+  "consequence_reconciliation": {
+    "authority": "exact_algebraic_topological_checker",
+    "candidate_count": 10,
+    "claim_ceiling": "The same-critical-point Newton repair is eliminated; another critical hub and the original Erd\u0151s problem remain open.",
+    "decision_count": 10,
+    "decisions": [
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/certificate_search_receipts/ramanujan_2_1_proof_review_v1.json",
+        "reason": "Only the generic proof_location schema key matched; there is no shared mathematical object or claim."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/pilots/ramanujan_challenge/certificate_search_receipts/ramanujan_3_1_toric_tame_symbol_table_candidate_v1.json",
+        "reason": "Only the generic root_rows validator key matched; the Ramanujan certificate has no Newton-hub consequence."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/type_b_handoffs/erdos249_digit_reduction_six_wave13_2026_07_24/01_digital_weyl_transport_manifest.json",
+        "reason": "Only generic negative_results/open_producers container keys matched; Erd\u0151s 249 has no lemniscate or Newton-flow edge."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/type_b_handoffs/erdos249_digit_reduction_six_wave13_2026_07_24/02_cototient_renormalization_manifest.json",
+        "reason": "Only generic negative_results/open_producers container keys matched; Erd\u0151s 249 has no lemniscate or Newton-flow edge."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/type_b_handoffs/erdos249_digit_reduction_six_wave13_2026_07_24/03_probabilistic_totient_digits_manifest.json",
+        "reason": "Only generic negative_results/open_producers container keys matched; Erd\u0151s 249 has no lemniscate or Newton-flow edge."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/type_b_handoffs/erdos249_digit_reduction_six_wave13_2026_07_24/04_signed_hermite_pade_manifest.json",
+        "reason": "Only generic negative_results/open_producers container keys matched; Erd\u0151s 249 has no lemniscate or Newton-flow edge."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/type_b_handoffs/erdos249_digit_reduction_six_wave13_2026_07_24/05_prime_support_positivity_manifest.json",
+        "reason": "Only generic negative_results/open_producers container keys matched; Erd\u0151s 249 has no lemniscate or Newton-flow edge."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "state/formal_math_research_operations/type_b_handoffs/erdos249_digit_reduction_six_wave13_2026_07_24/06_subword_complexity_manifest.json",
+        "reason": "Only generic negative_results/open_producers container keys matched; Erd\u0151s 249 has no lemniscate or Newton-flow edge."
+      },
+      {
+        "decision": "verified_no_change",
+        "file": "state/formal_math_research_operations/type_b_handoffs/paper_expert_questions_2026_08_01/09_erdos1041_manifest.json",
+        "reason": "The manifest already delegates the live proof map to the exact research_packet.json source reference; it contains no duplicated claim text to stale."
+      },
+      {
+        "decision": "outside_scope",
+        "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+        "reason": "Only generic research-packet container keys matched; the q-order problem has no inverse-ray or lemniscate implication."
+      }
+    ],
+    "delta_class": "counterexample_or_no_go",
+    "surviving_residual": "Prove a selection theorem over critical points that controls the minimum total length of two descending inverse-ray branches, or replace local hubs by global Reeb/component geometry.",
+    "updated_authority_surfaces": [
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonBranchHubCounterexampleComputationalLab.md",
+      "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json"
+    ]
+  },
+  "descending_ray_regular_value_certificate": {
+    "distinguished_critical_level": "s=1",
+    "meaning": "The two local branches issuing from zero continue along the oriented value ray to polynomial roots without another critical level.",
+    "other_real_critical_level_count_in_open_zero_one": 0,
+    "resultant_factorization": "980188864829534682605802224588165892518744500843860189980001*(s - 1)*(45583125377202697959911086632473280080628125*s**3 - 82098364189652482604685879605521679297772237*s**2 + 41056055466192186387181403817413264650954200*s - 6329440826756843095300368212760410969760000)/14651465390901739154747856475611452304016000000000000000000000000000000000000000000000000000000000000"
+  },
+  "exact_configuration": {
+    "a": "900099/902000",
+    "all_roots_in_open_unit_disk": true,
+    "critical_point": "0",
+    "critical_value": "-896504000994504099/902000000000000000",
+    "critical_value_modulus_lt_one": true,
+    "p": "999/1000",
+    "polynomial_coefficients_descending": [
+      "1",
+      "1801197/812702000",
+      "998001/1000000",
+      "-403785217592001/406351000000000",
+      "0",
+      "-896504000994504099/902000000000000000"
+    ],
+    "roots": [
+      "900099/902000",
+      "999*I/1000",
+      "-999*I/1000",
+      "-450549/901000 + 38961*I/45050",
+      "-450549/901000 - 38961*I/45050"
+    ]
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "The metric theorem and Newton containment cannot be coupled at an arbitrary supplied critical point; any hub proof needs a new critical-point selection theorem or global Reeb geometry.",
+      "survival_consequence": "If the lower bound did not cross two, seek an upper bound comparing inverse-ray length with the critical-pair metric distances."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "metric_selected_critical_point_newton_hub",
+      "statement": "At the critical point supplied by the critical-pair metric theorem, the two descending inverse-ray branches reach roots with combined length less than two."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonBranchHubCounterexampleComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_newton_branch_hub.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/search_counterexample.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Use an exact resultant to exclude intervening critical levels, exact rectangle root counts plus boundary isolation to identify the branches, a rational Rouch\u00e9 disk at level f(0)/2, and exact triangle-inequality lower bounds to every root.",
+      "falsifier": "A boundary crossing for a level s*f(0), an additional critical level on 0<s<1, failure of the waypoint Rouch\u00e9 inequality, or a combined exact length lower bound at most two.",
+      "id": "exact_half_level_waypoint_branch_lower_bound",
+      "question": "Can a certified intermediate point on each canonical descending branch force the total arc length above two?",
+      "stop_condition": "Once the two hub branches are exactly identified and their combined lower bound is strictly above two, retire this same-critical-point Newton repair and test selection among other critical hubs."
+    },
+    "problem": {
+      "claim_ceiling": "The exact quintic eliminates only the two canonical descending branches at the metric-selected critical point; other hubs and the original problem remain open.",
+      "id": "erdos_1041",
+      "target_statement": "Find two roots joined by a curve of length less than two inside the strict unit lemniscate."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The exact combined branch-length lower bound 520999/250000 is strictly greater than two.",
+        "next_analytic_target": "Select a different critical point by controlling the sum of its two descending inverse-ray lengths across the critical-point tree."
+      },
+      "status": "exact_one_way_result",
+      "summary": "For the exact balanced quintic, the two descending inverse-ray branches from the metric critical point zero each pass through a certified half-level waypoint disk. Triangle inequalities force each branch length above 520999/500000, hence their combined length above 520999/250000>2. This eliminates the metric-selected Newton-branch hub mechanism, not Erd\u0151s #1041 or hubs based at a different critical point."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "half_level_branch_identification": {
+    "boundary_avoids_all_levels_in_closed_half_to_one": true,
+    "boundary_real_value_intersections": [
+      {
+        "edge": "left",
+        "fixed_coordinate": "-4/5",
+        "imaginary_part_real_root_count_on_edge": 1,
+        "real_value_intersections": [
+          {
+            "avoids_closed_half_to_one_segment": true,
+            "level_ratio_interval": [
+              "117966778690472557247/47514712052708717247",
+              "117966778690472557247/47514712052708717247"
+            ],
+            "multiplicity": 1,
+            "parameter_interval": [
+              "0",
+              "0"
+            ]
+          }
+        ]
+      },
+      {
+        "edge": "right",
+        "fixed_coordinate": "1/5",
+        "imaginary_part_real_root_count_on_edge": 1,
+        "real_value_intersections": [
+          {
+            "avoids_closed_half_to_one_segment": true,
+            "level_ratio_interval": [
+              "833301356478592273199/807750104896048193199",
+              "833301356478592273199/807750104896048193199"
+            ],
+            "multiplicity": 1,
+            "parameter_interval": [
+              "0",
+              "0"
+            ]
+          }
+        ]
+      },
+      {
+        "edge": "bottom",
+        "fixed_coordinate": "-4/5",
+        "imaginary_part_real_root_count_on_edge": 1,
+        "real_value_intersections": [
+          {
+            "avoids_closed_half_to_one_segment": true,
+            "level_ratio_interval": [
+              "57192956697464722906673401058428100954492109737895148879831854357811208774497/149011124704623785164804980708161705479488565044497353547531916009526004614497",
+              "5412349380215453708499318103344461866596330607201000404458222359203653020995467/14101391412695213234672460626485561216872186900021374134424200939469803384735467"
+            ],
+            "multiplicity": 1,
+            "parameter_interval": [
+              "-185373806327/1202278081914",
+              "-144286827874/935800446131"
+            ]
+          }
+        ]
+      },
+      {
+        "edge": "top",
+        "fixed_coordinate": "4/5",
+        "imaginary_part_real_root_count_on_edge": 1,
+        "real_value_intersections": [
+          {
+            "avoids_closed_half_to_one_segment": true,
+            "level_ratio_interval": [
+              "57192956697464722906673401058428100954492109737895148879831854357811208774497/149011124704623785164804980708161705479488565044497353547531916009526004614497",
+              "5412349380215453708499318103344461866596330607201000404458222359203653020995467/14101391412695213234672460626485561216872186900021374134424200939469803384735467"
+            ],
+            "multiplicity": 1,
+            "parameter_interval": [
+              "-185373806327/1202278081914",
+              "-144286827874/935800446131"
+            ]
+          }
+        ]
+      }
+    ],
+    "meaning": "The rectangle contains only the double root zero at s=1 and exactly the conjugate waypoint pair at s=1/2; no root crosses its boundary during the homotopy.",
+    "parameter_interval": [
+      "1/2",
+      "1"
+    ],
+    "rectangle": {
+      "imaginary": [
+        "-4/5",
+        "4/5"
+      ],
+      "real": [
+        "-4/5",
+        "1/5"
+      ]
+    },
+    "root_count_at_half_level": 2,
+    "root_count_at_hub_level": 2
+  },
+  "lemniscate_containment": {
+    "holds_for_both_branches": true,
+    "identity": "f(z(s))=s*f(0), 0<=s<=1",
+    "strict_bound": "|f(z(s))|<=|f(0)|<1"
+  },
+  "length_lower_bound": {
+    "combined_two_branch_length_gt_two": true,
+    "combined_two_branch_strict_lower_bound": "520999/250000",
+    "one_branch_strict_lower_bound": "520999/500000",
+    "root_distance_squared_certificates": [
+      {
+        "root_index": 0,
+        "squared_distance": "7160245491587835249/4068020000000000000",
+        "strictly_greater_than": "29929/250000"
+      },
+      {
+        "root_index": 1,
+        "squared_distance": "2395977578649/20000000000000",
+        "strictly_greater_than": "29929/250000"
+      },
+      {
+        "root_index": 2,
+        "squared_distance": "56932890074649/20000000000000",
+        "strictly_greater_than": "29929/250000"
+      },
+      {
+        "root_index": 3,
+        "squared_distance": "2937799590766749/18020000000000000",
+        "strictly_greater_than": "29929/250000"
+      },
+      {
+        "root_index": 4,
+        "squared_distance": "45476591337646749/18020000000000000",
+        "strictly_greater_than": "29929/250000"
+      }
+    ],
+    "waypoint_disk_radius": "1/1000000",
+    "waypoint_modulus_strict_lower_bound": "87/125",
+    "waypoint_to_every_root_strict_lower_bound": "173/500"
+  },
+  "problem_id": "erdos_1041",
+  "receipt_payload_sha256": "d9a5442a21fe4ced2ccb21d74b3b46ffdb890e146459cd99b686ec3f619222bc",
+  "result_status": "exact_metric_selected_newton_hub_mechanism_elimination",
+  "result_summary": "For the exact balanced quintic, the two descending inverse-ray branches from the metric critical point zero each pass through a certified half-level waypoint disk. Triangle inequalities force each branch length above 520999/500000, hence their combined length above 520999/250000>2. This eliminates the metric-selected Newton-branch hub mechanism, not Erd\u0151s #1041 or hubs based at a different critical point.",
+  "schema": "erdos1041-newton-branch-hub-counterexample/1",
+  "sources": [
+    {
+      "byte_length": 22536,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_newton_branch_hub.py",
+      "sha256": "da3774bcbc4d11ce8aea31180e51e1dcc6877b7bc943133bf9804864b84d5287"
+    },
+    {
+      "byte_length": 19969,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/search_counterexample.py",
+      "sha256": "823e81a3a5bc09009f5f21676e465430bf9352ec7ca8ebbcd45fceaf31ddbd95"
+    },
+    {
+      "byte_length": 18531,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+      "sha256": "884c3f3232f3e98a73a2daa34a1695a632bcf1216343794b571ce5ffd9e5d485"
+    },
+    {
+      "byte_length": 5298,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonBranchHubCounterexampleComputationalLab.md",
+      "sha256": "c1af1b9a7a834da3d031e63a91327404c31008959ac19867cf70b30f7aa80c44"
+    },
+    {
+      "byte_length": 24955,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "sha256": "29240ddc88d0f41738e4ca3bae6a95615b9871169e63b51ae7b6b987eefaf5a8"
+    }
+  ],
+  "waypoint_root_certificates": [
+    {
+      "center": {
+        "imaginary": "3411969/5000000",
+        "real": "-1398549/10000000"
+      },
+      "constant_and_higher_terms_boundary_upper_bound": "2826788405825258318731151871946903/40635100000000000000000000000000000000000",
+      "linear_term_boundary_lower_bound": "9961320739312858024260425474397/9235250000000000000000000000000000000",
+      "radius": "1/1000000",
+      "root_count_in_open_disk": 1,
+      "strict_rouche_inequality": true
+    },
+    {
+      "center": {
+        "imaginary": "-3411969/5000000",
+        "real": "-1398549/10000000"
+      },
+      "constant_and_higher_terms_boundary_upper_bound": "2826788405825258318731151871946903/40635100000000000000000000000000000000000",
+      "linear_term_boundary_lower_bound": "9961320739312858024260425474397/9235250000000000000000000000000000000",
+      "radius": "1/1000000",
+      "root_count_in_open_disk": 1,
+      "strict_rouche_inequality": true
+    }
+  ]
+}

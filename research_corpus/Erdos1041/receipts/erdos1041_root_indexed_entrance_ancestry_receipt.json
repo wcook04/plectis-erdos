@@ -1,0 +1,17 @@
+{
+  "actual_polynomial_regression": {
+    "actual_polynomial_rows": 24,
+    "max_relative_error": 3.478189252005706e-16,
+    "root_path_checks": 132
+  },
+  "claim_boundary": "exact ancestry and weighted/block identities; no metric allocation inequality is claimed",
+  "exact_tree_replay": {
+    "max_leaves": 9,
+    "mixed_or_cherry_cut_rows": 12869,
+    "nonconstant_weight_rows": 2055,
+    "ordered_binary_trees": 2055,
+    "subtree_block_rows": 46563
+  },
+  "schema": "erdos1041_root_indexed_entrance_ancestry_check_v1",
+  "status": "pass"
+}

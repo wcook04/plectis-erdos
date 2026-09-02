@@ -1,0 +1,121 @@
+version: "v0.4"
+project:
+  name: "Erdős #1041: coefficient and energy criteria forcing two safe tetranomial spokes"
+  description: >-
+    For a root w of z^m + a z^r + b z^s + c with 1 ≤ s ≤ r ≤ m, ‖w‖ < 1 and ‖c‖ < 1, either
+    the root budget ‖c‖ + ‖b‖ ‖w‖^s < 1 or the coefficient-only budget ‖b‖ + ‖c‖ ≤ 1 forces
+    the polynomial to have modulus strictly below one at every point of the spoke, the
+    segment u w for u in [0,1] from the origin to the root, with the middle coefficient a
+    unrestricted. The mechanism is an exact Abel factorisation at the root, which writes the
+    value at u w as (1 - u^s) c - (u^s - u^r)(a w^r + w^m) - (u^r - u^m) w^m. An exact
+    signed mixed-moment identity, ∑ᵢ |c + b vᵢ|² = |S| |c|² + |b|² ∑ᵢ |vᵢ|² + 2 Re(conj(c) b
+    ∑ᵢ vᵢ), promotes those pointwise budgets to a global L2 energy. When |S| ≥ 2 and that
+    energy is strictly below |S| - 1, two distinct indices satisfy ‖c + b vᵢ‖ < 1. For a
+    finite indexed family of roots in the open unit disk with signed moment ∑ᵢ wᵢ^s, the
+    coefficient budget |S| (‖b‖² + ‖c‖²) + 2 Re(conj(c) b moment) < |S| - 1 selects two
+    distinct indices whose complete spokes stay strictly inside the unit lemniscate, which
+    closes the chain from an algebraic budget to a geometric selection for the centred
+    tetranomial family. The subject is the geometry of polynomial lemniscates, of interest
+    to geometric function theory; novelty is unassessed. Injective root indexing, cyclic
+    lifting of the selected spokes and final path assembly remain outside Lean, and distinct
+    indices are distinct root values only under injectivity.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+sources:
+  - title: "Coefficient-controlled cyclic tetranomial spokes for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "Source of the Abel factorisation and the root-dependent and coefficient-only spoke bounds; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Signed-moment tetranomial selector for Erdős Problem 1041"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "Source of the signed mixed-moment energy identity and the two-safe-spoke selection; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex", "Claude"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "This configuration merges two earlier configurations that shared the same tetranomial, the same spoke, and the same hypothesis shape. Exact source transport and the open-boundary wording were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "merged_configuration_pending_focused_replay"
+  note: "Merged from ExternalVerification1041SignedMomentTetranomial and ExternalVerification1041CyclicTetranomialCoefficient. No external verdict or submission is claimed."
+status:
+  scope: "Six exact source-backed declarations in one chain: Abel factorisation along a root spoke, strict spoke control from a root-dependent or a coefficient-only budget, the exact signed mixed-moment energy identity, and two safe spokes forced by energy below card S minus one. Injective root indexing, arbitrary-coefficient moment production, complete root enumeration, cyclic lifting, path assembly, and unrestricted Erdős #1041 remain outside Lean."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization"
+      file: "ExternalVerification1041TetranomialSpokes/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport"
+      novelty_status: "unassessed"
+      boundary: "Exact identity along the spoke; it does not by itself bound the spoke."
+    - declaration: "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget"
+      file: "ExternalVerification1041TetranomialSpokes/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport"
+      novelty_status: "unassessed"
+      boundary: "Requires the root-dependent budget; it does not select which root to use."
+    - declaration: "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget"
+      file: "ExternalVerification1041TetranomialSpokes/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport"
+      novelty_status: "unassessed"
+      boundary: "Coefficient-only budget on b and c; the middle coefficient a is unrestricted."
+    - declaration: "Erdos249257.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul"
+      file: "ExternalVerification1041TetranomialSpokes/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport"
+      novelty_status: "unassessed"
+      boundary: "Exact finite-family energy identity; it does not supply a root family or moment bound."
+    - declaration: "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget"
+      file: "ExternalVerification1041TetranomialSpokes/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport"
+      novelty_status: "unassessed"
+      boundary: "Selects distinct indices under the exact energy budget; it does not identify distinct values without injectivity."
+    - declaration: "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+      file: "ExternalVerification1041TetranomialSpokes/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source-proved exact transport"
+      novelty_status: "unassessed"
+      boundary: "Assumes an indexed finite root family and exact moment budget; distinct indices need not be distinct root values without injectivity."
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041TetranomialSpokes"
+  statements:
+    - source: "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase"
+      lean: "tetranomialRoot_spoke_factorization; tetranomialRoot_spoke_norm_lt_one_of_rootBudget; tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget"
+      module: "ExternalVerification1041TetranomialSpokes/Challenge.lean"
+      status: "exact-transport-pending-merged-replay"
+    - source: "ErdosProblems.Erdos1041.TetranomialL2Selector"
+      lean: "sum_normSq_const_add_mul; exists_two_tails_norm_lt_one_of_exact_L2_budget; exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+      module: "ExternalVerification1041TetranomialSpokes/Challenge.lean"
+      status: "exact-transport-pending-merged-replay"

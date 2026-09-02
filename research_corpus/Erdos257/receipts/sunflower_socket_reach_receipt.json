@@ -1,0 +1,206 @@
+{
+  "Kmax": 22,
+  "M": 60000,
+  "Nmax": 6000,
+  "caveat": "absence is a SEARCH-LIMIT result, not a proof: cond1 holds with prob ~2^-K per N and K must exceed log2(q*tau), so expected hits fall below 1 as q grows",
+  "families": [
+    {
+      "family": "density_1/2_aperiodic",
+      "max_q_with_witness": 1000,
+      "reciprocal_sum": "divergent",
+      "witnesses": {
+        "1": {
+          "C": 18,
+          "K": 1,
+          "L": 5,
+          "N": 3
+        },
+        "10": {
+          "C": 175,
+          "K": 5,
+          "L": 11,
+          "N": 15
+        },
+        "100": {
+          "C": 19689,
+          "K": 8,
+          "L": 21,
+          "N": 652
+        },
+        "1000": {
+          "C": 13964,
+          "K": 12,
+          "L": 24,
+          "N": 1513
+        }
+      }
+    },
+    {
+      "family": "all_naturals",
+      "max_q_with_witness": 100,
+      "reciprocal_sum": "divergent",
+      "witnesses": {
+        "1": {
+          "C": 51,
+          "K": 2,
+          "L": 6,
+          "N": 3
+        },
+        "10": {
+          "C": 122,
+          "K": 6,
+          "L": 11,
+          "N": 34
+        },
+        "100": {
+          "C": 1164,
+          "K": 9,
+          "L": 17,
+          "N": 93
+        },
+        "1000": null
+      }
+    },
+    {
+      "family": "evens",
+      "max_q_with_witness": 1000,
+      "reciprocal_sum": "divergent",
+      "witnesses": {
+        "1": {
+          "C": 20,
+          "K": 1,
+          "L": 5,
+          "N": 2
+        },
+        "10": {
+          "C": 58,
+          "K": 4,
+          "L": 10,
+          "N": 16
+        },
+        "100": {
+          "C": 38216,
+          "K": 7,
+          "L": 22,
+          "N": 3653
+        },
+        "1000": {
+          "C": 3268,
+          "K": 11,
+          "L": 22,
+          "N": 481
+        }
+      }
+    },
+    {
+      "family": "primes",
+      "max_q_with_witness": 1000,
+      "reciprocal_sum": "divergent",
+      "witnesses": {
+        "1": {
+          "C": 16,
+          "K": 1,
+          "L": 5,
+          "N": 5
+        },
+        "10": {
+          "C": 33,
+          "K": 4,
+          "L": 9,
+          "N": 2
+        },
+        "100": {
+          "C": 483,
+          "K": 8,
+          "L": 16,
+          "N": 114
+        },
+        "1000": {
+          "C": 623,
+          "K": 12,
+          "L": 20,
+          "N": 386
+        }
+      }
+    },
+    {
+      "family": "squares",
+      "max_q_with_witness": 100,
+      "reciprocal_sum": "summable",
+      "witnesses": {
+        "1": {
+          "C": 1,
+          "K": 1,
+          "L": 3,
+          "N": 1
+        },
+        "10": {
+          "C": 1609,
+          "K": 1,
+          "L": 14,
+          "N": 4
+        },
+        "100": {
+          "C": 10085,
+          "K": 3,
+          "L": 20,
+          "N": 349
+        },
+        "1000": null
+      }
+    },
+    {
+      "family": "powers_of_2",
+      "max_q_with_witness": 10,
+      "reciprocal_sum": "summable",
+      "witnesses": {
+        "1": {
+          "C": 18,
+          "K": 1,
+          "L": 5,
+          "N": 2
+        },
+        "10": {
+          "C": 25,
+          "K": 3,
+          "L": 9,
+          "N": 13
+        },
+        "100": null,
+        "1000": null
+      }
+    },
+    {
+      "family": "2^k+1",
+      "max_q_with_witness": 100,
+      "reciprocal_sum": "summable",
+      "witnesses": {
+        "1": {
+          "C": 0,
+          "K": 1,
+          "L": 3,
+          "N": 1
+        },
+        "10": {
+          "C": 35,
+          "K": 1,
+          "L": 9,
+          "N": 1
+        },
+        "100": {
+          "C": 4490,
+          "K": 2,
+          "L": 19,
+          "N": 628
+        },
+        "1000": null
+      }
+    }
+  ],
+  "q_values": [
+    1,
+    10,
+    100,
+    1000
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "already_landed": {
+    "note_already_said": "window artifacts; both collapse to 0 as more coefficient equations are imposed; Thue-Morse stays at 5 for every M in 160..390 because its relation is genuine",
+    "payload_instruction_correct_at_source": false,
+    "reason": "nothing to correct -- the note is right; only the MECHANISM is new",
+    "where": "CertificateSocketCollapse.md realised-support check (s8-s11 range)"
+  },
+  "blast_radius": {
+    "T31b_cites": [
+      "1/21",
+      "4/9",
+      "3/(2^7-1)"
+    ],
+    "all_clean": true,
+    "landed_claims_wrong": 0,
+    "their_minima": [
+      5,
+      2,
+      6
+    ]
+  },
+  "formula": "nullity_from_underfed_top_shift = #{e in 0..D : k^d * min(support) + e > M}",
+  "full_M_sweep_predicted": {
+    "1/1009": [
+      [
+        5,
+        5
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "1/21": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "3/(2^13-1)": [
+      [
+        6,
+        6
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "M": [
+      160,
+      240,
+      320,
+      390
+    ],
+    "cells_correct": 12,
+    "cells_total": 12
+  },
+  "k4_rows_M160": {
+    "1/1009": {
+      "got": 5,
+      "min": 10,
+      "pred": 5
+    },
+    "1/21": {
+      "got": 0,
+      "min": 5,
+      "pred": 0
+    },
+    "3/(2^13-1)": {
+      "got": 6,
+      "min": 12,
+      "pred": 6
+    },
+    "3/(2^7-1)": {
+      "got": 0,
+      "min": 6,
+      "pred": 0
+    },
+    "4/9": {
+      "got": 0,
+      "min": 2,
+      "pred": 0
+    }
+  },
+  "mechanism": "block i is fed only from coefficient positions m/k^i <= M/k^i; column e of the top block is live iff some support element j has k^d*j + e <= M",
+  "row_by_row_holds": true,
+  "wrong_prediction_caught_pre_run": "payload said nullity = 6 - (#elements <= 10); the index arithmetic gives a min(support) threshold instead"
+}

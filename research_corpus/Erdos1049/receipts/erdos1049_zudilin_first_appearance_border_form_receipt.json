@@ -1,0 +1,350 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Failure would eliminate the bordered-null-vector route and force a different organization of the minimum layer.",
+      "survival_consequence": "The first-appearance problem becomes uniform nonvanishing of one explicit boundary quadratic form, opening recurrence, norm, and resultant probes on its cofactor vector."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "first_appearance_layer_is_boundary_quadratic_form",
+      "statement": "The exponentially described minimum determinant layer is the quadratic form of the positive-border block on the one-dimensional null vector of the rectangular cross block."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinFirstAppearanceBorderFormLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi3_associated_graded_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi4_associated_graded_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi5_associated_graded_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_first_appearance_border_form.py",
+        "system/lib/formal_math_bordered_determinant.py",
+        "system/lib/formal_math_cyclotomic_local.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py"
+      ]
+    },
+    "probe": {
+      "computation": "Extract zero-weight rectangular cross blocks and the weight-one positive block from the local residue matrix; compute all maximal minors by exact subset DP and contract the resulting null vectors.",
+      "falsifier": "Any mismatch with the full subset-DP residue, failed null relation, or asymmetric source block falsifies the proposed reduction.",
+      "id": "bordered_cofactor_null_vector_reduction",
+      "question": "Do the exact d=1,...,5 residues equal (-1)^d v^T Z v, with v the common cofactor/null vector forced by Hankel symmetry?",
+      "resource_bounds": {
+        "cyclotomic_index_count": 5,
+        "maximum_border_entry_count": 36,
+        "maximum_cross_block_size": 5,
+        "maximum_cyclotomic_index": 5,
+        "maximum_minor_count": 12,
+        "minimum_cyclotomic_index": 1
+      },
+      "stop_condition": "Stop after the exact structural reduction and d=1,...,5 validation; do not count more cyclotomic indices without a quadratic-form invariant."
+    },
+    "problem": {
+      "claim_ceiling": "Exact all-matrix bordered coefficient identity and exact d=1,...,5 Zudilin instantiations; not uniform noncancellation or irrationality.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "This replaces an exponentially described determinant layer by a one-dimensional boundary mode and an explicit quadratic form, a new analytic mechanism rather than a longer finite horizon.",
+        "next_analytic_target": "Prove the cross-block column recurrence forcing all interior cofactors to vanish and the two fixed corner ratios. Then uniform noncancellation reduces to the nonzero triangular minor and top-left border residue, because 73 is nonzero in characteristic zero."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The first-appearance layer is exactly (-1)^d v^T Z v: v is the common cofactor/null vector of the symmetric rectangular cross blocks. For d=1,...,5, v is supported only at its endpoints, so a two-by-two corner quadratic form reproduces every committed residue. Its three contributions have fixed ratios -11/2 and 50/3, giving the exact identity 6*(-1)^d*Res_d=73*T_00 throughout d=1,...,5."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_bordered_residues_match_subset_dp": true,
+    "all_cofactor_vectors_are_endpoint_supported": true,
+    "all_cofactor_vectors_are_equal_null_vectors": true,
+    "all_cross_blocks_and_borders_symmetric": true,
+    "all_endpoint_contributions_obey_fixed_73_identity": true,
+    "all_layers_reduce_to_one_quadratic_form": true,
+    "authority_boundary": "The block identity is exact for every compatible matrix. The source records instantiate it only for d=1,...,5 and do not prove uniform nonvanishing of the resulting quadratic form.",
+    "records": [
+      {
+        "border_corner_entries": {
+          "bottom_left": "297",
+          "bottom_right": "-5400",
+          "top_left": "-36",
+          "top_right": "297"
+        },
+        "border_entry_count": 4,
+        "bordered_residue": "35478",
+        "bordered_residue_matches_subset_dp": true,
+        "cofactor_vector_has_no_zero_entries": true,
+        "cofactor_vector_supported_only_at_endpoints": true,
+        "cofactor_vectors_equal": true,
+        "cyclotomic_index": 1,
+        "cyclotomic_polynomial": "p - 1",
+        "endpoint_contributions": {
+          "bottom_right": "-48600",
+          "cross": "16038",
+          "top_left": "-2916"
+        },
+        "endpoint_quadratic_residue": "35478",
+        "endpoint_quadratic_residue_matches_full_layer": true,
+        "left_cofactor_vector": [
+          "-9",
+          "-3"
+        ],
+        "left_null_vector_check": true,
+        "minimum_assignment_count": 4,
+        "minor_determinant_count": 4,
+        "quadratic_form_reduction": true,
+        "rank": 3,
+        "right_cofactor_vector": [
+          "-9",
+          "-3"
+        ],
+        "right_null_vector_check": true,
+        "six_signed_residue_equals_seventy_three_top_left": true,
+        "subset_dp_residue": "35478",
+        "symmetric_border": true,
+        "symmetric_cross_blocks": true,
+        "three_bottom_right_minus_fifty_top_left_is_zero": true,
+        "top_left_contribution_nonzero": true,
+        "twice_cross_plus_eleven_top_left_is_zero": true
+      },
+      {
+        "border_corner_entries": {
+          "bottom_left": "594",
+          "bottom_right": "-10800",
+          "top_left": "-72",
+          "top_right": "594"
+        },
+        "border_entry_count": 9,
+        "bordered_residue": "-2554416",
+        "bordered_residue_matches_subset_dp": true,
+        "cofactor_vector_has_no_zero_entries": false,
+        "cofactor_vector_supported_only_at_endpoints": true,
+        "cofactor_vectors_equal": true,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "endpoint_contributions": {
+          "bottom_right": "-3499200",
+          "cross": "1154736",
+          "top_left": "-209952"
+        },
+        "endpoint_quadratic_residue": "-2554416",
+        "endpoint_quadratic_residue_matches_full_layer": true,
+        "left_cofactor_vector": [
+          "54",
+          "0",
+          "18"
+        ],
+        "left_null_vector_check": true,
+        "minimum_assignment_count": 12,
+        "minor_determinant_count": 6,
+        "quadratic_form_reduction": true,
+        "rank": 5,
+        "right_cofactor_vector": [
+          "54",
+          "0",
+          "18"
+        ],
+        "right_null_vector_check": true,
+        "six_signed_residue_equals_seventy_three_top_left": true,
+        "subset_dp_residue": "-2554416",
+        "symmetric_border": true,
+        "symmetric_cross_blocks": true,
+        "three_bottom_right_minus_fifty_top_left_is_zero": true,
+        "top_left_contribution_nonzero": true,
+        "twice_cross_plus_eleven_top_left_is_zero": true
+      },
+      {
+        "border_corner_entries": {
+          "bottom_left": "-297*(p - 1)",
+          "bottom_right": "5400*(2*p + 1)",
+          "top_left": "-36*(p + 2)",
+          "top_right": "-297*(p - 1)"
+        },
+        "border_entry_count": 16,
+        "bordered_residue": "25863462*(p - 1)",
+        "bordered_residue_matches_subset_dp": true,
+        "cofactor_vector_has_no_zero_entries": false,
+        "cofactor_vector_supported_only_at_endpoints": true,
+        "cofactor_vectors_equal": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "endpoint_contributions": {
+          "bottom_right": "-35429400*(p - 1)",
+          "cross": "11691702*(p - 1)",
+          "top_left": "-2125764*(p - 1)"
+        },
+        "endpoint_quadratic_residue": "25863462*(p - 1)",
+        "endpoint_quadratic_residue_matches_full_layer": true,
+        "left_cofactor_vector": [
+          "-243*(p + 1)",
+          "0",
+          "0",
+          "-81*p"
+        ],
+        "left_null_vector_check": true,
+        "minimum_assignment_count": 32,
+        "minor_determinant_count": 8,
+        "quadratic_form_reduction": true,
+        "rank": 7,
+        "right_cofactor_vector": [
+          "-243*(p + 1)",
+          "0",
+          "0",
+          "-81*p"
+        ],
+        "right_null_vector_check": true,
+        "six_signed_residue_equals_seventy_three_top_left": true,
+        "subset_dp_residue": "25863462*(p - 1)",
+        "symmetric_border": true,
+        "symmetric_cross_blocks": true,
+        "three_bottom_right_minus_fifty_top_left_is_zero": true,
+        "top_left_contribution_nonzero": true,
+        "twice_cross_plus_eleven_top_left_is_zero": true
+      },
+      {
+        "border_corner_entries": {
+          "bottom_left": "594*p",
+          "bottom_right": "-10800*p",
+          "top_left": "-72*p",
+          "top_right": "594*p"
+        },
+        "border_entry_count": 25,
+        "bordered_residue": "-1655261568",
+        "bordered_residue_matches_subset_dp": true,
+        "cofactor_vector_has_no_zero_entries": false,
+        "cofactor_vector_supported_only_at_endpoints": true,
+        "cofactor_vectors_equal": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "endpoint_contributions": {
+          "bottom_right": "-2267481600",
+          "cross": "748268928",
+          "top_left": "-136048896"
+        },
+        "endpoint_quadratic_residue": "-1655261568",
+        "endpoint_quadratic_residue_matches_full_layer": true,
+        "left_cofactor_vector": [
+          "-972*(p - 1)",
+          "0",
+          "0",
+          "0",
+          "-324*(p - 1)"
+        ],
+        "left_null_vector_check": true,
+        "minimum_assignment_count": 80,
+        "minor_determinant_count": 10,
+        "quadratic_form_reduction": true,
+        "rank": 9,
+        "right_cofactor_vector": [
+          "-972*(p - 1)",
+          "0",
+          "0",
+          "0",
+          "-324*(p - 1)"
+        ],
+        "right_null_vector_check": true,
+        "six_signed_residue_equals_seventy_three_top_left": true,
+        "subset_dp_residue": "-1655261568",
+        "symmetric_border": true,
+        "symmetric_cross_blocks": true,
+        "three_bottom_right_minus_fifty_top_left_is_zero": true,
+        "top_left_contribution_nonzero": true,
+        "twice_cross_plus_eleven_top_left_is_zero": true
+      },
+      {
+        "border_corner_entries": {
+          "bottom_left": "-297*p**2*(p - 1)",
+          "bottom_right": "5400*(4*p**3 + p**2 + 2*p + 3)",
+          "top_left": "-36*(p - 1)*(p + 1)**2",
+          "top_right": "-297*p**2*(p - 1)"
+        },
+        "border_entry_count": 36,
+        "bordered_residue": "5819278950*(p - 1)*(3*p**2 + 5*p + 3)",
+        "bordered_residue_matches_subset_dp": true,
+        "cofactor_vector_has_no_zero_entries": false,
+        "cofactor_vector_supported_only_at_endpoints": true,
+        "cofactor_vectors_equal": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "endpoint_contributions": {
+          "bottom_right": "-7971615000*(p - 1)*(3*p**2 + 5*p + 3)",
+          "cross": "2630632950*(p - 1)*(3*p**2 + 5*p + 3)",
+          "top_left": "-478296900*(p - 1)*(3*p**2 + 5*p + 3)"
+        },
+        "endpoint_quadratic_residue": "5819278950*(p - 1)*(3*p**2 + 5*p + 3)",
+        "endpoint_quadratic_residue_matches_full_layer": true,
+        "left_cofactor_vector": [
+          "-3645*p**2*(p + 1)",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1215*(p + 1)**3"
+        ],
+        "left_null_vector_check": true,
+        "minimum_assignment_count": 192,
+        "minor_determinant_count": 12,
+        "quadratic_form_reduction": true,
+        "rank": 11,
+        "right_cofactor_vector": [
+          "-3645*p**2*(p + 1)",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1215*(p + 1)**3"
+        ],
+        "right_null_vector_check": true,
+        "six_signed_residue_equals_seventy_three_top_left": true,
+        "subset_dp_residue": "5819278950*(p - 1)*(3*p**2 + 5*p + 3)",
+        "symmetric_border": true,
+        "symmetric_cross_blocks": true,
+        "three_bottom_right_minus_fifty_top_left_is_zero": true,
+        "top_left_contribution_nonzero": true,
+        "twice_cross_plus_eleven_top_left_is_zero": true
+      }
+    ],
+    "schema": "erdos1049-zudilin-first-appearance-border-form/1"
+  },
+  "schema": "erdos1049-zudilin-first-appearance-border-form-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 19672,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_first_appearance_border_form.py",
+      "sha256": "7a5e191a09e76f55d975b7b84b68a88e5d80f1ea5cfbd26cf22ebbedd9458556"
+    },
+    {
+      "byte_length": 4296,
+      "path": "system/lib/formal_math_bordered_determinant.py",
+      "sha256": "5546551a1d75d36a10e129df0c4fa9cae260aa8a1a83d8a7825c2b0ef3e4bffa"
+    },
+    {
+      "byte_length": 4675,
+      "path": "system/lib/formal_math_cyclotomic_local.py",
+      "sha256": "6eb3f6778225c4956fcf0a0ff18b21d5f1f7a36fabf883c7fd67605952f27bb3"
+    },
+    {
+      "byte_length": 12391,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py",
+      "sha256": "3774921041e15f06b6df553155b92fe7d222e691bcd725884fc044c8ee210d01"
+    },
+    {
+      "byte_length": 5288,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinFirstAppearanceBorderFormLab.md",
+      "sha256": "7062aadc699e0c120e0c8b0f36a1d68a1f5ec8df19c3a8be7a21b7e8db67a4f8"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_opened"
+}

@@ -1,0 +1,145 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #269: actual infinite dyadic shell orbit"
+  description: >-
+    The literal real masses of the half-open dyadic shells in the 2,3,5-smooth
+    running-height series are summable. Their genuine infinite tail obeys the
+    exact ordered affine recurrence at every scale, and its normalized state
+    either reaches an integer or is cofinally at distance at least 1/31 from
+    every integer. The integral branch is not excluded, so Erdős Problem 269
+    remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_pending_terminal_comparator_replay_and_public_identity"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269ActualShellOrbit/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269ActualShellOrbit/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_modules_and_axiom_audit_passed_terminal_comparator_replay_pending"
+  research_interest_status: "plausible_specialist_source_specific_orbit_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection are pending"
+
+classification:
+  arxiv: ["math.NT", "math.DS"]
+  msc2020: ["11B83", "37A45"]
+
+sources:
+  - title: "Actual dyadic shell summability and affine escape for Erdős #269"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+    note: >-
+      The source proves the quadratic-times-geometric shell majorant,
+      summability, the genuine tsum-tail split, the exact source recurrence,
+      and the integer-or-cofinally-far dichotomy.
+  - title: "Erdős Problem #269"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/269"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors: ["The mathlib contributors"]
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem exposes summability of the actual shell mass, the
+    all-scale recurrence for its literal infinite tail, and the exact
+    integral-state/cofinally-1/31-far alternative. Challenge.lean contains one
+    deliberate specification sorry; the proof-bearing source is sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  axiom_audit_status: "focused_lean_passed_exact_permitted_axioms"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape"
+      file: "ExternalVerification269ActualShellOrbit/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269ActualShellOrbit/comparator.json"
+      canonical_claim_status: "source_proved_exact_composite_focused_checked"
+      local_proof_provenance: >-
+        ErdosProblems/Erdos269/DyadicShellSummability.lean, declarations
+        summable_dyadicShellMassR235,
+        dyadicNormalizedShellTsumTailR235_succ, and
+        dyadicShellTsumTail_integer_or_cofinal_far.
+      novelty_status: "unassessed"
+      contribution_class: "source-specific convergent affine orbit and exact escape dichotomy"
+      statement: >-
+        The actual shell masses are summable, their genuine infinite tail
+        follows the exact ordered affine recurrence, and the normalized orbit
+        either contains an integer or returns cofinally often to distance at
+        least 1/31 from every integer.
+      boundary: >-
+        The exact-integral branch is not eliminated; no irrationality,
+        transcendence, eventual separation, or density result is claimed.
+      comparator_declaration: "Erdos249257.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: "Positive and deliberate-negative replay pending a supported runner"
+
+fidelity:
+  divergences: >-
+    The Challenge repeats the source definitions needed to state the literal
+    shell orbit and combines three checked endpoints. It preserves the exact
+    1/31 constant and the unresolved integral-state alternative.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source definitions, load-bearing summability, exact recurrence,
+    dichotomy constant, and open integral branch were reviewed. Focused
+    Challenge, Solution, deliberate-negative, and AxiomAudit modules passed,
+    with the compared theorem using exactly the permitted axiom budget.
+    Terminal Comparator/NanoDa replay and independent human review remain
+    pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification269ActualShellOrbit"
+  statements:
+    - source: >-
+        ErdosProblems.Erdos269.summable_dyadicShellMassR235,
+        ErdosProblems.Erdos269.dyadicNormalizedShellTsumTailR235_succ, and
+        ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far.
+      lean: "Erdos249257.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape"
+      module: "ExternalVerification269ActualShellOrbit/Challenge.lean"
+      status: "exact-composite-transport-focused-checked"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

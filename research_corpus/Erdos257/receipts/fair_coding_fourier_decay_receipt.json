@@ -1,0 +1,840 @@
+{
+  "claim_boundary": [
+    "The decay theorem is analytic and all-scale; interval rows are validation and resonance mapping, not its proof.",
+    "Polynomial Fourier decay does not decide membership of any prescribed rational and does not settle Erdos 257.",
+    "LCM alignment raises Fourier mass relative to same-bit controls but still decays; no nondecaying resonance was observed or claimed.",
+    "The m-indexed exact-zero formulas are all contained in the half-integer lattice forced by the first coin and are not independent Mersenne resonance evidence."
+  ],
+  "consequence_decisions": [
+    {
+      "decision": "verified_no_change",
+      "reason": "The pushforward identification is an input to this theorem; the new Fourier note links the dependency in the forward direction.",
+      "surface": "FairCodingPushforward.md"
+    },
+    {
+      "decision": "verified_no_change",
+      "reason": "Polynomial Fourier decay and exact transform zeros do not decide membership of any prescribed rational.",
+      "surface": "rational_membership_and_universal_erdos257_claims"
+    },
+    {
+      "decision": "defer_with_reason",
+      "reason": "The theorem is durably bound here but is not yet Lean-formalized and creates no rational-membership consequence suitable for public theorem claims.",
+      "surface": "historical_fourier_research_and_public_claim_surfaces"
+    },
+    {
+      "decision": "outside_scope",
+      "reason": "These consequence-map hits are symbol collisions rather than semantic dependencies of the fair-coding theorem.",
+      "surface": "generic_lexical_candidates_prod__prod_n__mathbf1_"
+    },
+    {
+      "decision": "defer_with_reason",
+      "reason": "The current packet has no matching fair-coding Fourier row and is concurrently owned; the theorem note and machine receipt are the present authority surfaces.",
+      "surface": "formal_math_research_packet"
+    }
+  ],
+  "interval_validation": {
+    "all_rows_satisfy_uniform_bound": true,
+    "control_rows": [
+      {
+        "cosine_cutoff": 55,
+        "frequency_bits": 7,
+        "frequency_sha256": "5ef6fdf32513aa7cd11f72beccf132b9224d33f271471fff402742887a171edf",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "7.90952095255e-29",
+        "neg_log2_magnitude_interval": [
+          5.970417200954008,
+          5.970417200954008
+        ],
+        "observed_power_exponent_interval": [
+          0.8910485657813494,
+          0.8910485657813494
+        ],
+        "parameter": 4,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 0.0274628570770343
+      },
+      {
+        "cosine_cutoff": 62,
+        "frequency_bits": 14,
+        "frequency_sha256": "ed2d6987812e597d6d12cbc302d2cdf3cb0e36d6349d89cd864314323f409da1",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "9.94908585055e-29",
+        "neg_log2_magnitude_interval": [
+          16.539040738331522,
+          16.539040738331522
+        ],
+        "observed_power_exponent_interval": [
+          1.1927829477987038,
+          1.1927829477987038
+        ],
+        "parameter": 6,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 9.468514354647887e-05
+      },
+      {
+        "cosine_cutoff": 73,
+        "frequency_bits": 25,
+        "frequency_sha256": "89154877ce419b312c8175f19697988d72303b773f20e5818253249aff340921",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "4.33563689918e-29",
+        "neg_log2_magnitude_interval": [
+          27.793570614311164,
+          27.793570614311164
+        ],
+        "observed_power_exponent_interval": [
+          1.145334735149327,
+          1.145334735149327
+        ],
+        "parameter": 8,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 4.2853441030141524e-07
+      },
+      {
+        "cosine_cutoff": 82,
+        "frequency_bits": 34,
+        "frequency_sha256": "5533b4ce1ecdbac3f0708a678830e172cd517dcfdf8370a929fe7177aacfede2",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "3.66131264816e-29",
+        "neg_log2_magnitude_interval": [
+          39.94405424467282,
+          39.94405424467282
+        ],
+        "observed_power_exponent_interval": [
+          1.2051369765793272,
+          1.2051369765793272
+        ],
+        "parameter": 10,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 7.331277158013049e-10
+      },
+      {
+        "cosine_cutoff": 97,
+        "frequency_bits": 49,
+        "frequency_sha256": "76eb4e2c65ea6fba5aad7b89b0f1145aa6d9935776d2a7d4a4ee3f0fdf925496",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "1.10851010057e-28",
+        "neg_log2_magnitude_interval": [
+          47.535955892911936,
+          47.535955892911936
+        ],
+        "observed_power_exponent_interval": [
+          0.9712331238780588,
+          0.9712331238780588
+        ],
+        "parameter": 12,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.4625923677004776e-10
+      },
+      {
+        "cosine_cutoff": 116,
+        "frequency_bits": 68,
+        "frequency_sha256": "64d13d897d66fe7aebaadf80452900c9baa285c3e52276470f7e81d2102ff41e",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "5.27910133201e-29",
+        "neg_log2_magnitude_interval": [
+          65.099635814475,
+          65.099635814475
+        ],
+        "observed_power_exponent_interval": [
+          0.965744009080223,
+          0.965744009080223
+        ],
+        "parameter": 14,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 5.379668422849103e-14
+      },
+      {
+        "cosine_cutoff": 131,
+        "frequency_bits": 83,
+        "frequency_sha256": "44a52da3caebede5b0978da0ca36457dd4fd6b2ff5b09e19da6c7ed92373f5c2",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "6.47048005552e-29",
+        "neg_log2_magnitude_interval": [
+          77.52051850295479,
+          77.52051850295479
+        ],
+        "observed_power_exponent_interval": [
+          0.9390100296716137,
+          0.9390100296716137
+        ],
+        "parameter": 16,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 3.247705513056185e-16
+      },
+      {
+        "cosine_cutoff": 154,
+        "frequency_bits": 106,
+        "frequency_sha256": "b8f88d4000ad122830ad01555452a9ecfe7019331e7a65713f4a4336250cb462",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "1.14633745148e-28",
+        "neg_log2_magnitude_interval": [
+          96.97149101862063,
+          96.97149101862063
+        ],
+        "observed_power_exponent_interval": [
+          0.9151005688892458,
+          0.9151005688892458
+        ],
+        "parameter": 18,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.0128452607445268e-19
+      },
+      {
+        "cosine_cutoff": 180,
+        "frequency_bits": 132,
+        "frequency_sha256": "4e90336fbe17e8eaad08e442dd5c9e050007998cd1748129c32520380a0b44a9",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "5.44027887016e-29",
+        "neg_log2_magnitude_interval": [
+          138.3010718516593,
+          138.3010718516593
+        ],
+        "observed_power_exponent_interval": [
+          1.052275444294272,
+          1.052275444294272
+        ],
+        "parameter": 20,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.315459971250223e-29
+      },
+      {
+        "cosine_cutoff": 201,
+        "frequency_bits": 153,
+        "frequency_sha256": "0ef34abb424baebf4b8955efc3ed962b586ad1b390d50073677ce844a3d5f5c9",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "1.09192158863e-28",
+        "neg_log2_magnitude_interval": [
+          149.89944389876172,
+          149.89944389876172
+        ],
+        "observed_power_exponent_interval": [
+          0.9801638725500014,
+          0.9801638725500014
+        ],
+        "parameter": 22,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 6.098992532093824e-31
+      },
+      {
+        "cosine_cutoff": 232,
+        "frequency_bits": 184,
+        "frequency_sha256": "d631387da5a23483a0aa70b208aa318a2d8698d63e1e894827ccda51e14ab55a",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "5.28708087675e-29",
+        "neg_log2_magnitude_interval": [
+          171.5290700004942,
+          171.5290700004942
+        ],
+        "observed_power_exponent_interval": [
+          0.9352226268324528,
+          0.9352226268324528
+        ],
+        "parameter": 24,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 2.1490138875693503e-34
+      },
+      {
+        "cosine_cutoff": 263,
+        "frequency_bits": 215,
+        "frequency_sha256": "d47c9a6a8577d46a72f6615c4d65b56e1c214a799386c94e5245d207be2591e2",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "8.99620324451e-29",
+        "neg_log2_magnitude_interval": [
+          225.24083293633313,
+          225.24083293633313
+        ],
+        "observed_power_exponent_interval": [
+          1.048639925544796,
+          1.048639925544796
+        ],
+        "parameter": 26,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 2.053546923881306e-47
+      },
+      {
+        "cosine_cutoff": 293,
+        "frequency_bits": 245,
+        "frequency_sha256": "a256b0276d636d712d5b12c4c7a34c051242a347c4fc715a2f741647fa7d5403",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "6.25733790938e-29",
+        "neg_log2_magnitude_interval": [
+          258.663663130327,
+          258.663663130327
+        ],
+        "observed_power_exponent_interval": [
+          1.0577931626063128,
+          1.0577931626063128
+        ],
+        "parameter": 28,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.7189050370794467e-54
+      },
+      {
+        "cosine_cutoff": 330,
+        "frequency_bits": 282,
+        "frequency_sha256": "5b369390dbbe0b73076fd348eddcbdb71e4f27a66a0cf8285e43bc2a05d6f4a4",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "7.71724125263e-29",
+        "neg_log2_magnitude_interval": [
+          278.0497875999444,
+          278.0497875999444
+        ],
+        "observed_power_exponent_interval": [
+          0.9871028652884409,
+          0.9871028652884409
+        ],
+        "parameter": 30,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.340691771357823e-56
+      },
+      {
+        "cosine_cutoff": 377,
+        "frequency_bits": 329,
+        "frequency_sha256": "4da2443d0c7620ad36d2641f2f34c4e474b762bb680ab7b3f6b1f6c6a77d63ca",
+        "kind": "same_bit_random_integer",
+        "neg_log2_interval_width_decimal": "1.00763391647e-28",
+        "neg_log2_magnitude_interval": [
+          294.00837982347053,
+          294.00837982347053
+        ],
+        "observed_power_exponent_interval": [
+          0.8939818941281567,
+          0.8939818941281567
+        ],
+        "parameter": 32,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.1448731706513316e-56
+      }
+    ],
+    "half_mersenne_exact_zeros": [
+      {
+        "frequency": "(2^1-1)/2",
+        "m": 1,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 1
+      },
+      {
+        "frequency": "(2^2-1)/2",
+        "m": 2,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 2
+      },
+      {
+        "frequency": "(2^3-1)/2",
+        "m": 3,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 3
+      },
+      {
+        "frequency": "(2^4-1)/2",
+        "m": 4,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 4
+      },
+      {
+        "frequency": "(2^5-1)/2",
+        "m": 5,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 5
+      },
+      {
+        "frequency": "(2^6-1)/2",
+        "m": 6,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 6
+      },
+      {
+        "frequency": "(2^7-1)/2",
+        "m": 7,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 7
+      },
+      {
+        "frequency": "(2^8-1)/2",
+        "m": 8,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 8
+      },
+      {
+        "frequency": "(2^9-1)/2",
+        "m": 9,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 9
+      },
+      {
+        "frequency": "(2^10-1)/2",
+        "m": 10,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 10
+      },
+      {
+        "frequency": "(2^11-1)/2",
+        "m": 11,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 11
+      },
+      {
+        "frequency": "(2^12-1)/2",
+        "m": 12,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 12
+      },
+      {
+        "frequency": "(2^13-1)/2",
+        "m": 13,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 13
+      },
+      {
+        "frequency": "(2^14-1)/2",
+        "m": 14,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 14
+      },
+      {
+        "frequency": "(2^15-1)/2",
+        "m": 15,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 15
+      },
+      {
+        "frequency": "(2^16-1)/2",
+        "m": 16,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 16
+      },
+      {
+        "frequency": "(2^17-1)/2",
+        "m": 17,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 17
+      },
+      {
+        "frequency": "(2^18-1)/2",
+        "m": 18,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 18
+      },
+      {
+        "frequency": "(2^19-1)/2",
+        "m": 19,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 19
+      },
+      {
+        "frequency": "(2^20-1)/2",
+        "m": 20,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 20
+      },
+      {
+        "frequency": "(2^21-1)/2",
+        "m": 21,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 21
+      },
+      {
+        "frequency": "(2^22-1)/2",
+        "m": 22,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 22
+      },
+      {
+        "frequency": "(2^23-1)/2",
+        "m": 23,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 23
+      },
+      {
+        "frequency": "(2^24-1)/2",
+        "m": 24,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 24
+      },
+      {
+        "frequency": "(2^25-1)/2",
+        "m": 25,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 25
+      },
+      {
+        "frequency": "(2^26-1)/2",
+        "m": 26,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 26
+      },
+      {
+        "frequency": "(2^27-1)/2",
+        "m": 27,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 27
+      },
+      {
+        "frequency": "(2^28-1)/2",
+        "m": 28,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 28
+      },
+      {
+        "frequency": "(2^29-1)/2",
+        "m": 29,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 29
+      },
+      {
+        "frequency": "(2^30-1)/2",
+        "m": 30,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 30
+      },
+      {
+        "frequency": "(2^31-1)/2",
+        "m": 31,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 31
+      },
+      {
+        "frequency": "(2^32-1)/2",
+        "m": 32,
+        "reason": "cos(pi*((2^m-1)/2)/(2^m-1))=cos(pi/2)=0",
+        "redundancy": "frequency is an odd half-integer and is already zero at factor n=1",
+        "zero_factor": 32
+      }
+    ],
+    "lcm_improvement_bits": [
+      0.9245350147263904,
+      7.908217590289107,
+      9.557828148491112,
+      16.260053446178393,
+      14.481127789251154,
+      12.346251227949473,
+      13.678103471649699,
+      4.326385666108422,
+      14.820619346149115,
+      5.511538418336272,
+      22.01297399534141,
+      44.106310383003034,
+      29.53696404715589,
+      35.76781250737727,
+      14.68265918544995
+    ],
+    "max_neg_log2_interval_width_decimal": "1.16344164956e-28",
+    "resonance_rows": [
+      {
+        "cosine_cutoff": 55,
+        "frequency_bits": 7,
+        "frequency_sha256": "1253e9373e781b7500266caa55150e08e210bc8cd8cc70d89985e3600155e860",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "8.06235840438e-29",
+        "neg_log2_magnitude_interval": [
+          5.045882186227618,
+          5.045882186227618
+        ],
+        "observed_power_exponent_interval": [
+          0.7515188673025426,
+          0.7515188673025426
+        ],
+        "parameter": 4,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 0.05229303016612495
+      },
+      {
+        "cosine_cutoff": 62,
+        "frequency_bits": 14,
+        "frequency_sha256": "225b9492fc4bd672bdb82e2e8ecce07b2c39ce04636b68a192ea6c37520410c6",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "4.25606310056e-29",
+        "neg_log2_magnitude_interval": [
+          8.630823148042415,
+          8.630823148042415
+        ],
+        "observed_power_exponent_interval": [
+          0.6512155619748383,
+          0.6512155619748383
+        ],
+        "parameter": 6,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 0.019743767527753663
+      },
+      {
+        "cosine_cutoff": 73,
+        "frequency_bits": 25,
+        "frequency_sha256": "bd08af434fb16c662c478c07dde3c7609dc76e0376fa96ad69ae0b76b8378c8e",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "4.72991611133e-29",
+        "neg_log2_magnitude_interval": [
+          18.235742465820053,
+          18.235742465820053
+        ],
+        "observed_power_exponent_interval": [
+          0.7495305533433305,
+          0.7495305533433305
+        ],
+        "parameter": 8,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 0.00032770174625972503
+      },
+      {
+        "cosine_cutoff": 82,
+        "frequency_bits": 34,
+        "frequency_sha256": "6ba9a871bc25a1b12a4297054b40b8adfffe9e0c5297a5939ae02a6c08e8f092",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "1.16344164956e-28",
+        "neg_log2_magnitude_interval": [
+          23.684000798494427,
+          23.684000798494427
+        ],
+        "observed_power_exponent_interval": [
+          0.6970227082296945,
+          0.6970227082296945
+        ],
+        "parameter": 10,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 6.976347231971137e-05
+      },
+      {
+        "cosine_cutoff": 97,
+        "frequency_bits": 49,
+        "frequency_sha256": "447c02ff26287b694c43d3a1ec251781b3a9f318a19452448af3684892499979",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "7.6730340756e-29",
+        "neg_log2_magnitude_interval": [
+          33.05482810366078,
+          33.05482810366078
+        ],
+        "observed_power_exponent_interval": [
+          0.6790430849368044,
+          0.6790430849368044
+        ],
+        "parameter": 12,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 3.145925138365922e-06
+      },
+      {
+        "cosine_cutoff": 116,
+        "frequency_bits": 68,
+        "frequency_sha256": "d1880aff474da7c9a7509f3985cda8aef1e8c61ed6ef7cb7c877a9163b4e3ae8",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "3.46288488445e-29",
+        "neg_log2_magnitude_interval": [
+          52.75338458652552,
+          52.75338458652552
+        ],
+        "observed_power_exponent_interval": [
+          0.7861362650021556,
+          0.7861362650021556
+        ],
+        "parameter": 14,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 2.611121846032615e-10
+      },
+      {
+        "cosine_cutoff": 131,
+        "frequency_bits": 83,
+        "frequency_sha256": "9b6f61eb316b2b4ee4dd80e45f5be3ec66accf696066073478d7346955dc4e84",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "4.85689065345e-29",
+        "neg_log2_magnitude_interval": [
+          63.84241503130509,
+          63.84241503130509
+        ],
+        "observed_power_exponent_interval": [
+          0.7752696183300312,
+          0.7752696183300312
+        ],
+        "parameter": 16,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 4.05819621823165e-12
+      },
+      {
+        "cosine_cutoff": 154,
+        "frequency_bits": 106,
+        "frequency_sha256": "e5a54e200114a3dc1d0ce117d563a0b85dbae2854d4c95cd0b95c93dfb4f58aa",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "3.85248948967e-29",
+        "neg_log2_magnitude_interval": [
+          92.6451053525122,
+          92.6451053525122
+        ],
+        "observed_power_exponent_interval": [
+          0.8808114550498282,
+          0.8808114550498282
+        ],
+        "parameter": 18,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.6942849593265581e-18
+      },
+      {
+        "cosine_cutoff": 180,
+        "frequency_bits": 132,
+        "frequency_sha256": "8d334bfce77a3d7252d27977d4415762ad4687bda49794ad0f41498725ddfee3",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "9.88160725106e-29",
+        "neg_log2_magnitude_interval": [
+          123.48045250551017,
+          123.48045250551017
+        ],
+        "observed_power_exponent_interval": [
+          0.9364439538280448,
+          0.9364439538280448
+        ],
+        "parameter": 20,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 4.204648406241339e-25
+      },
+      {
+        "cosine_cutoff": 201,
+        "frequency_bits": 153,
+        "frequency_sha256": "2ab0090ac2adfcd1c3fd60ce507259d18b773d8b6495bff937e53bf173171296",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "5.83263849604e-29",
+        "neg_log2_magnitude_interval": [
+          144.38790548042545,
+          144.38790548042545
+        ],
+        "observed_power_exponent_interval": [
+          0.9469256607206614,
+          0.9469256607206614
+        ],
+        "parameter": 22,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 2.5061597782442128e-29
+      },
+      {
+        "cosine_cutoff": 232,
+        "frequency_bits": 184,
+        "frequency_sha256": "02044982fd7aeec5842d86f192f4302289bd8a8b0331d0af09ce72cb60e3f88e",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "5.16914971497e-29",
+        "neg_log2_magnitude_interval": [
+          149.51609600515278,
+          149.51609600515278
+        ],
+        "observed_power_exponent_interval": [
+          0.8152743031389965,
+          0.8152743031389965
+        ],
+        "parameter": 24,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 9.060911347153365e-28
+      },
+      {
+        "cosine_cutoff": 263,
+        "frequency_bits": 215,
+        "frequency_sha256": "fe3c7dbf5dace1f3c09e177dec5abbee917068363978e3d926889734826c8aa7",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "9.79442961518e-29",
+        "neg_log2_magnitude_interval": [
+          181.1345225533301,
+          181.1345225533301
+        ],
+        "observed_power_exponent_interval": [
+          0.8430561934712528,
+          0.8430561934712528
+        ],
+        "parameter": 26,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 3.944394726847953e-34
+      },
+      {
+        "cosine_cutoff": 293,
+        "frequency_bits": 245,
+        "frequency_sha256": "4c552e434f92f9b827a5b4f3ec2c1ac06c0f30b2c9f7d6a778d6dc535847e422",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "6.29376106884e-29",
+        "neg_log2_magnitude_interval": [
+          229.1266990831711,
+          229.1266990831711
+        ],
+        "observed_power_exponent_interval": [
+          0.936987063162243,
+          0.936987063162243
+        ],
+        "parameter": 28,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 1.3402448605176671e-45
+      },
+      {
+        "cosine_cutoff": 330,
+        "frequency_bits": 282,
+        "frequency_sha256": "806895533bda404227330b73f03d8b627b43ee1afd305fa2351ce5a066d80708",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "1.05217095016e-28",
+        "neg_log2_magnitude_interval": [
+          242.28197509256714,
+          242.28197509256714
+        ],
+        "observed_power_exponent_interval": [
+          0.8594415270761527,
+          0.8594415270761527
+        ],
+        "parameter": 30,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 8.259442983465747e-46
+      },
+      {
+        "cosine_cutoff": 377,
+        "frequency_bits": 329,
+        "frequency_sha256": "ed83f13b59dc67c666c61e42bcb68b1d4a3b597ebec691f08ccdf55e348163eb",
+        "kind": "mersenne_lcm",
+        "neg_log2_interval_width_decimal": "1.05220305913e-28",
+        "neg_log2_magnitude_interval": [
+          279.3257206380206,
+          279.3257206380206
+        ],
+        "observed_power_exponent_interval": [
+          0.8492561794822078,
+          0.8492561794822078
+        ],
+        "parameter": 32,
+        "theorem_bound_verified": true,
+        "upper_over_theorem_bound": 3.0325711996958408e-52
+      }
+    ]
+  },
+  "parameters": {
+    "control_seed": 257,
+    "guard_bits": 48,
+    "interval_decimal_digits": 100,
+    "max_m": 32
+  },
+  "proved_all_scale_result": {
+    "exact_zero_family": "hat(1_Acal)(j/2)=0 for every odd integer j; the m-indexed formula gives redundant subfamilies of this one lattice",
+    "fourier_normalization": "hat(f)(xi)=integral f(x) exp(-2*pi*i*xi*x) dx",
+    "product": "hat(1_Acal)(xi)=exp(-pi*i*xi*E)*product_n cos(pi*xi/(2^n-1))",
+    "proof_location": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FairCodingFourierDecay.md",
+    "uniform_bound": "abs(hat(1_Acal)(xi)) <= (2/pi+2*pi/3)*abs(xi)^(-1/3) for abs(xi)>=1"
+  },
+  "schema": "erdos257_fair_coding_fourier_decay_audit_v0"
+}

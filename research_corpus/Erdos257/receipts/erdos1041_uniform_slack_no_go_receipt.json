@@ -1,0 +1,459 @@
+{
+  "exact_rows": [
+    {
+      "deficit_from_two": "1",
+      "m": 2,
+      "radius": "1/2",
+      "root_distance": "1"
+    },
+    {
+      "deficit_from_two": "2/3",
+      "m": 3,
+      "radius": "2/3",
+      "root_distance": "4/3"
+    },
+    {
+      "deficit_from_two": "1/2",
+      "m": 4,
+      "radius": "3/4",
+      "root_distance": "3/2"
+    },
+    {
+      "deficit_from_two": "2/5",
+      "m": 5,
+      "radius": "4/5",
+      "root_distance": "8/5"
+    },
+    {
+      "deficit_from_two": "1/3",
+      "m": 6,
+      "radius": "5/6",
+      "root_distance": "5/3"
+    },
+    {
+      "deficit_from_two": "2/7",
+      "m": 7,
+      "radius": "6/7",
+      "root_distance": "12/7"
+    },
+    {
+      "deficit_from_two": "1/4",
+      "m": 8,
+      "radius": "7/8",
+      "root_distance": "7/4"
+    },
+    {
+      "deficit_from_two": "2/9",
+      "m": 9,
+      "radius": "8/9",
+      "root_distance": "16/9"
+    },
+    {
+      "deficit_from_two": "1/5",
+      "m": 10,
+      "radius": "9/10",
+      "root_distance": "9/5"
+    },
+    {
+      "deficit_from_two": "2/11",
+      "m": 11,
+      "radius": "10/11",
+      "root_distance": "20/11"
+    },
+    {
+      "deficit_from_two": "1/6",
+      "m": 12,
+      "radius": "11/12",
+      "root_distance": "11/6"
+    },
+    {
+      "deficit_from_two": "2/13",
+      "m": 13,
+      "radius": "12/13",
+      "root_distance": "24/13"
+    },
+    {
+      "deficit_from_two": "1/7",
+      "m": 14,
+      "radius": "13/14",
+      "root_distance": "13/7"
+    },
+    {
+      "deficit_from_two": "2/15",
+      "m": 15,
+      "radius": "14/15",
+      "root_distance": "28/15"
+    },
+    {
+      "deficit_from_two": "1/8",
+      "m": 16,
+      "radius": "15/16",
+      "root_distance": "15/8"
+    },
+    {
+      "deficit_from_two": "2/17",
+      "m": 17,
+      "radius": "16/17",
+      "root_distance": "32/17"
+    },
+    {
+      "deficit_from_two": "1/9",
+      "m": 18,
+      "radius": "17/18",
+      "root_distance": "17/9"
+    },
+    {
+      "deficit_from_two": "2/19",
+      "m": 19,
+      "radius": "18/19",
+      "root_distance": "36/19"
+    },
+    {
+      "deficit_from_two": "1/10",
+      "m": 20,
+      "radius": "19/20",
+      "root_distance": "19/10"
+    },
+    {
+      "deficit_from_two": "2/21",
+      "m": 21,
+      "radius": "20/21",
+      "root_distance": "40/21"
+    },
+    {
+      "deficit_from_two": "1/11",
+      "m": 22,
+      "radius": "21/22",
+      "root_distance": "21/11"
+    },
+    {
+      "deficit_from_two": "2/23",
+      "m": 23,
+      "radius": "22/23",
+      "root_distance": "44/23"
+    },
+    {
+      "deficit_from_two": "1/12",
+      "m": 24,
+      "radius": "23/24",
+      "root_distance": "23/12"
+    },
+    {
+      "deficit_from_two": "2/25",
+      "m": 25,
+      "radius": "24/25",
+      "root_distance": "48/25"
+    },
+    {
+      "deficit_from_two": "1/13",
+      "m": 26,
+      "radius": "25/26",
+      "root_distance": "25/13"
+    },
+    {
+      "deficit_from_two": "2/27",
+      "m": 27,
+      "radius": "26/27",
+      "root_distance": "52/27"
+    },
+    {
+      "deficit_from_two": "1/14",
+      "m": 28,
+      "radius": "27/28",
+      "root_distance": "27/14"
+    },
+    {
+      "deficit_from_two": "2/29",
+      "m": 29,
+      "radius": "28/29",
+      "root_distance": "56/29"
+    },
+    {
+      "deficit_from_two": "1/15",
+      "m": 30,
+      "radius": "29/30",
+      "root_distance": "29/15"
+    },
+    {
+      "deficit_from_two": "2/31",
+      "m": 31,
+      "radius": "30/31",
+      "root_distance": "60/31"
+    },
+    {
+      "deficit_from_two": "1/16",
+      "m": 32,
+      "radius": "31/32",
+      "root_distance": "31/16"
+    },
+    {
+      "deficit_from_two": "2/33",
+      "m": 33,
+      "radius": "32/33",
+      "root_distance": "64/33"
+    },
+    {
+      "deficit_from_two": "1/17",
+      "m": 34,
+      "radius": "33/34",
+      "root_distance": "33/17"
+    },
+    {
+      "deficit_from_two": "2/35",
+      "m": 35,
+      "radius": "34/35",
+      "root_distance": "68/35"
+    },
+    {
+      "deficit_from_two": "1/18",
+      "m": 36,
+      "radius": "35/36",
+      "root_distance": "35/18"
+    },
+    {
+      "deficit_from_two": "2/37",
+      "m": 37,
+      "radius": "36/37",
+      "root_distance": "72/37"
+    },
+    {
+      "deficit_from_two": "1/19",
+      "m": 38,
+      "radius": "37/38",
+      "root_distance": "37/19"
+    },
+    {
+      "deficit_from_two": "2/39",
+      "m": 39,
+      "radius": "38/39",
+      "root_distance": "76/39"
+    },
+    {
+      "deficit_from_two": "1/20",
+      "m": 40,
+      "radius": "39/40",
+      "root_distance": "39/20"
+    },
+    {
+      "deficit_from_two": "2/41",
+      "m": 41,
+      "radius": "40/41",
+      "root_distance": "80/41"
+    },
+    {
+      "deficit_from_two": "1/21",
+      "m": 42,
+      "radius": "41/42",
+      "root_distance": "41/21"
+    },
+    {
+      "deficit_from_two": "2/43",
+      "m": 43,
+      "radius": "42/43",
+      "root_distance": "84/43"
+    },
+    {
+      "deficit_from_two": "1/22",
+      "m": 44,
+      "radius": "43/44",
+      "root_distance": "43/22"
+    },
+    {
+      "deficit_from_two": "2/45",
+      "m": 45,
+      "radius": "44/45",
+      "root_distance": "88/45"
+    },
+    {
+      "deficit_from_two": "1/23",
+      "m": 46,
+      "radius": "45/46",
+      "root_distance": "45/23"
+    },
+    {
+      "deficit_from_two": "2/47",
+      "m": 47,
+      "radius": "46/47",
+      "root_distance": "92/47"
+    },
+    {
+      "deficit_from_two": "1/24",
+      "m": 48,
+      "radius": "47/48",
+      "root_distance": "47/24"
+    },
+    {
+      "deficit_from_two": "2/49",
+      "m": 49,
+      "radius": "48/49",
+      "root_distance": "96/49"
+    },
+    {
+      "deficit_from_two": "1/25",
+      "m": 50,
+      "radius": "49/50",
+      "root_distance": "49/25"
+    },
+    {
+      "deficit_from_two": "2/51",
+      "m": 51,
+      "radius": "50/51",
+      "root_distance": "100/51"
+    },
+    {
+      "deficit_from_two": "1/26",
+      "m": 52,
+      "radius": "51/52",
+      "root_distance": "51/26"
+    },
+    {
+      "deficit_from_two": "2/53",
+      "m": 53,
+      "radius": "52/53",
+      "root_distance": "104/53"
+    },
+    {
+      "deficit_from_two": "1/27",
+      "m": 54,
+      "radius": "53/54",
+      "root_distance": "53/27"
+    },
+    {
+      "deficit_from_two": "2/55",
+      "m": 55,
+      "radius": "54/55",
+      "root_distance": "108/55"
+    },
+    {
+      "deficit_from_two": "1/28",
+      "m": 56,
+      "radius": "55/56",
+      "root_distance": "55/28"
+    },
+    {
+      "deficit_from_two": "2/57",
+      "m": 57,
+      "radius": "56/57",
+      "root_distance": "112/57"
+    },
+    {
+      "deficit_from_two": "1/29",
+      "m": 58,
+      "radius": "57/58",
+      "root_distance": "57/29"
+    },
+    {
+      "deficit_from_two": "2/59",
+      "m": 59,
+      "radius": "58/59",
+      "root_distance": "116/59"
+    },
+    {
+      "deficit_from_two": "1/30",
+      "m": 60,
+      "radius": "59/60",
+      "root_distance": "59/30"
+    },
+    {
+      "deficit_from_two": "2/61",
+      "m": 61,
+      "radius": "60/61",
+      "root_distance": "120/61"
+    },
+    {
+      "deficit_from_two": "1/31",
+      "m": 62,
+      "radius": "61/62",
+      "root_distance": "61/31"
+    },
+    {
+      "deficit_from_two": "2/63",
+      "m": 63,
+      "radius": "62/63",
+      "root_distance": "124/63"
+    },
+    {
+      "deficit_from_two": "1/32",
+      "m": 64,
+      "radius": "63/64",
+      "root_distance": "63/32"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "not_exists_uniform_cassini_rootDistance_slack"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "Generic perturbation and root transfer must preserve a polynomial-dependent strict slack rather than spend a global one.",
+      "survival_consequence": "A uniform-margin perturbation transfer would remain viable."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "uniform_global_short_path_slack",
+      "statement": "There is a delta>0 such that every admissible polynomial has a root pair joinable with length at most 2-delta."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UniformSlackNoGoComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CassiniTreeBudget.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_uniform_slack_no_go.py"
+      ]
+    },
+    "probe": {
+      "computation": "Replay a_m=(m-1)/m exactly and verify that the root distance is 2-2/m for every sampled m; Lean proves the quantified no-go.",
+      "falsifier": "For every positive proposed margin delta, an admissible radius a with 2a>2-delta.",
+      "id": "cassini_boundary_family_exact_deficit",
+      "question": "Can the quadratic family z^2-a^2 force every connecting path to have length arbitrarily close to two?",
+      "resource_bounds": {
+        "exact_family_prefix": 64
+      },
+      "stop_condition": "Stop after the symbolic identity 2-2a_m=2/m is exact and the quantified Lean theorem rejects every delta>0."
+    },
+    "problem": {
+      "claim_ceiling": "Eliminates only a polynomial-independent positive length margin; Erdos #1041 and data-dependent strict slack remain open.",
+      "id": "erdos_1041",
+      "target_statement": "Join two roots by a curve of length strictly below two inside the strict unit lemniscate."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The quantified Lean theorem consumes arbitrary positive delta; the finite rows are regression witnesses, not the quantifier authority.",
+        "next_analytic_target": "Prove data-dependent component/slack continuity under generic perturbation, or select a short critical hub without uniform slack."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The exact Cassini radii a_m=(m-1)/m have root distance 2-2/m; Lean proves that no positive polynomial-independent slack exists."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "family": "f_m(z)=z^2-((m-1)/m)^2",
+  "quantified_lean_consumer": "ErdosProblems.Erdos1041.CassiniTreeBudget.not_exists_uniform_cassini_rootDistance_slack",
+  "schema": "erdos1041-uniform-slack-no-go/1",
+  "sources": [
+    {
+      "byte_length": 5850,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_uniform_slack_no_go.py",
+      "sha256": "fb65be8d6c6716b7b431afa6e34c8ce1f5e0e243411265f5c97b41e212664609"
+    },
+    {
+      "byte_length": 9928,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CassiniTreeBudget.lean",
+      "sha256": "58b9e3c200fa99b76271f160ef2d6e8e55698310ea7cd6cb9965f1d4a52269c7"
+    },
+    {
+      "byte_length": 1748,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UniformSlackNoGoComputationalLab.md",
+      "sha256": "5d21d8eb6ae9012560a92049e13672e25e45d727f92dd425d8d48e294475059e"
+    },
+    {
+      "byte_length": 29542,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "sha256": "23f0d36b7bbd5f5a386932e5bfa0b082511f7a8cb0a6700a74581e23d68b7146"
+    }
+  ],
+  "status": "exact_mechanism_elimination"
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "batch03_return005_integrating_factor_transport_claim",
+  "output_stage": "exact_component_lifetime_transport_identity_at_alpha_1_over_pi_with_singleton_slack_obstruction",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ComponentLifetimeTransportIdentity.md",
+  "human_understanding_delta": "The componentwise access-perimeter pair (L_W, p_W) is not only coupled at each fixed level (occupied PP1-PP2): over a component lifetime it satisfies an exact transport law d/dt(t^(1/pi) L_W) = (1/(2 pi)) t^(1/pi - 1) (2 L_W + p_W), and the excess charge t^(1/pi)(L_W - d_W) is exactly additive across mergers, so the whole lemniscate forest telescopes to 2(L(1) - n) <= 0. Because the law is an identity, no reweighting can avoid the obstruction: all negative integrated defect can live in degree-one singleton loops while every degree >= 2 component stays above 2d, which is precisely the virtual-cut residual. The weight alpha = 1/pi is forced by the coarea constant, not chosen.",
+  "verification_state": "ordinary proof (arg-f pushforward on level sets plus one product rule); exact closed-form arithmetic on f(z) = z^2 - r^2, r = 0.8: coarea L(t) = (1/2pi) int_0^t p(s)/s ds verified to relative 9e-21 below the merge and <= 2.1e-5 through the pinch, derivative p/(2 pi t) = L'(t) to 2e-5; full battery in scripts/check_erdos1041_global_tree_admissible_product.py",
+  "publication_or_review_state": "private authoring checkpoint; not independently reviewed and not a solution of unrestricted Erdos #1041",
+  "canonicalization_state": "one identity with its exact obstruction statement; fixed-level specialization coincides with the occupied moved-block criterion (PP2)",
+  "unresolved_downstream_bottleneck": "Turning a surviving degree-one loop at the virtual level-one cut into a distinct-root route of length < 2 remains the exact unproved implication; the universal pointwise form is refuted by universal_radial_contour_sharp_criterion_no_go_2026_08_28 (z^2 - (5/6)^2) and negative entry 65.",
+  "next_stage_owner": "agents working the moved-block allocation producer fixed_safe_monodromy_block_average_lift_length or the radial-contour dichotomy may spend the lifetime law as bookkeeping, not as a producer"
+}

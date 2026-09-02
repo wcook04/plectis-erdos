@@ -1,0 +1,123 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean",
+    "lean_sha256": "059e8818deda74c3d24f9f276f82f1370785cc0c4926339eec2d42a4f5f5d038",
+    "source_commit": "a226cd795566874d4d3a25b348b9bc0a0eeba98b",
+    "source_state": "scoped_source_commit_landed",
+    "declarations": [
+      "Erdos257PeriodNoncollapse.irrational_erdosSupportSeries_of_summable_reciprocal",
+      "Erdos257PeriodNoncollapse.shiftedRadixAtom_sub_zero_le_two_mul_binary_sub_zero",
+      "Erdos257PeriodNoncollapse.exists_shiftedRadixSupportAtom_closeReturn_of_summable_reciprocal"
+    ],
+    "delta_class": "statement_strengthened_from_base_two_to_every_integer_base",
+    "claim_ceiling": "Every integer base b >= 2 under infinite reciprocal-summable support. Divergent reciprocal mass and universal Erdős #257 remain open. No priority or identification with Erdős's omitted proof is claimed."
+  },
+  "consequence_map": {
+    "tool": "tools/meta/factory/mathematical_consequence_map.py",
+    "output": "/tmp/erdos257-consequence-map.json",
+    "candidate_count": 23,
+    "status": "source_current_candidates_semantically_reconciled",
+    "query_declarations": [
+      "irrational_erdosSupportSeries_of_summable_reciprocal",
+      "shiftedRadixAtom_sub_zero_le_two_mul_binary_sub_zero",
+      "exists_shiftedRadixSupportAtom_closeReturn_of_summable_reciprocal"
+    ]
+  },
+  "decisions": [
+    {
+      "candidate_id": "all_base_lean_authority_and_root_import",
+      "files": [
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean",
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse.lean"
+      ],
+      "decision": "update_now",
+      "mathematical_reason": "The maximal theorem and its two hard subordinate mechanisms must be source-current and reachable from the project root.",
+      "validation_or_reentry": "guarded focused Lean build of the source and root"
+    },
+    {
+      "candidate_id": "exact_comparator_package",
+      "files": [
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/Challenge.lean",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/Solution.lean",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/NegativeSolution.lean",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/AxiomAudit.lean",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/comparator.json",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/comparator-negative-mismatch.json",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/formalization.yaml",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257ReciprocalSupport/README.md"
+      ],
+      "decision": "update_now",
+      "mathematical_reason": "Comparator should expose the one maximal all-base proposition. The transfer and close-return declarations belong in the explanation, not as separate novelty counts.",
+      "validation_or_reentry": "Challenge/Solution/negative/AxiomAudit focused build, exact theorem parity, exact axiom trio, NanoDa enabled, and deliberate negative mismatch"
+    },
+    {
+      "candidate_id": "paper_and_public_patch",
+      "files": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-257-mersenne-support-subseries.tex",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/papers/erdos-257-mersenne-support-subseries.patch"
+      ],
+      "decision": "update_now",
+      "mathematical_reason": "The paper must front-load the all-base theorem, explain the binary close return, uniform transfer, and exact radix recurrence, and mark divergent reciprocal mass as the surviving frontier.",
+      "validation_or_reentry": "Tectonic compile, rendered-page inspection, and byte-exact dry application against the pinned public base"
+    },
+    {
+      "candidate_id": "palomar_signal_100_entry",
+      "files": [
+        "docs/formal_math/review_routes/palomar_portfolio_selection_v1.json",
+        "docs/formal_math/review_routes/palomar_portfolio_selection_v1.md"
+      ],
+      "decision": "update_now",
+      "mathematical_reason": "The portfolio should lead #257 with the strongest settled support-regime theorem and route to the exact source, Comparator proposition, and paper labels.",
+      "validation_or_reentry": "JSON parse, #257 priority sequence, exact declaration parity, and explicit paper anchors"
+    },
+    {
+      "candidate_id": "source_packet_reviewer_and_handoff",
+      "files": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+        "docs/formal_math/reviewer_cards/reciprocal_summable_supports_base_two.card.json",
+        "docs/formal_math/review_routes/erdos257_reciprocal_summable_support_source_result_handoff.v1.json",
+        "tools/meta/dissemination/tests/test_erdos257_reciprocal_summable_support_authority.py"
+      ],
+      "decision": "update_now",
+      "mathematical_reason": "Stable base-two-named IDs remain routing keys, while every visible scope, hash, declaration list, proof spine, and consumer boundary must reflect the stronger all-base generation.",
+      "validation_or_reentry": "JSON parse, one-page reviewer-card render, and focused authority parity test"
+    },
+    {
+      "candidate_id": "powerful_support_package",
+      "files": [
+        "formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/PowerfulSupportIrrationality.lean",
+        "formal_math/erdos257_period_noncollapse/ExternalVerification257PowerfulSupportKernel"
+      ],
+      "decision": "supersede_and_remove_from_public_lanes",
+      "mathematical_reason": "Every powerful support has summable reciprocal mass, so the all-base reciprocal-summable theorem strictly subsumes the candidate theorem. It has no independent final proposition or mechanism worth a second Comparator/Palomar package.",
+      "validation_or_reentry": "retain the powerful-support implication as an explained paper consequence; re-enter only if an independent mechanism crosses the divergent-mass boundary"
+    },
+    {
+      "candidate_id": "same_module_dependencies_and_helpers",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The all-base source intentionally imports and reuses the existing binary close-return authority; no older source declaration is weakened or renamed.",
+      "validation_or_reentry": "focused and root Lean builds"
+    },
+    {
+      "candidate_id": "propagation_skill",
+      "file": "codex/doctrine/skills/reasoning/propagate_mathematical_consequences.md",
+      "decision": "update_now",
+      "mathematical_reason": "The failed separate-family admission exposed a general theorem-domination rule: stronger source-current theorems should consolidate weaker packages before paper, Comparator, or Palomar proliferation.",
+      "validation_or_reentry": "skill catalog projection check"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_closed": "The reciprocal-summable support regime for every integer base b >= 2.",
+    "newly_narrowed": "The base-two-specific analytic producer is sufficient for all radices after a uniform pointwise displacement comparison.",
+    "dominated_candidate": "The infinite powerful-support theorem is a consequence, not an independent frontier package.",
+    "hard_mechanism": "Uniformly bound radix-b atom displacement by twice binary displacement, then combine transferred close returns with the exact radix-tail recurrence.",
+    "surviving_boundary": "Supports with divergent reciprocal mass, including the universal #257 frontier.",
+    "claim_boundary": "All-base reciprocal-summable coverage is not a universal #257 solution and carries no historical priority claim."
+  },
+  "propagation": {
+    "checkpoint_class": "checkpoint_rotate",
+    "up_propagation_result": "theorem-domination audit added to codex/doctrine/skills/reasoning/propagate_mathematical_consequences.md",
+    "next_frontier": "classify and attack divergent reciprocal-mass supports without rebuilding subsumed reciprocal-summable subclasses"
+  }
+}

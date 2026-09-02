@@ -1,0 +1,1936 @@
+{
+  "audited_record_successor_count": 39,
+  "authority": {
+    "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneComputationalStructureLab.md",
+    "floating_point_used": false,
+    "independent_dyadic_overlap": {
+      "maximum_defect": [
+        40,
+        180179
+      ],
+      "packed_itinerary_sha256": "d69ba5800ef8d6bd020af6e9b688d62c015d2c43bd0429347bf74106d6e7f921",
+      "ranks": 200000,
+      "selected_count": 99926,
+      "status": "matched",
+      "validator_ref": "formal_math/erdos257_period_noncollapse/scripts/check_twenty_one_greedy.py"
+    },
+    "lean_consumers": [
+      "one_div_twenty_one_mem_mersenneAchievementSet_of_defectSubexponential",
+      "finiteErdosSum_ne_one_div_twenty_one"
+    ],
+    "method": "exact integer canonical quotient-greedy replay while every lower state is certified closed",
+    "python_version": "3.13.7",
+    "script_ref": "formal_math/erdos257_period_noncollapse/scripts/twenty_one_computational_structure_lab.py",
+    "script_sha256": "aec79602a04ccdcc5bd347be2be95aaf793888b8e20958ee55d4f6f09bb96d9e"
+  },
+  "claim_status": "finite exact structure evidence; no all-depth producer proved",
+  "closed_state_verified": true,
+  "dyadic_ranges": [
+    {
+      "lower": 1,
+      "maximum_defect": [
+        0,
+        1
+      ],
+      "minimum_density_debt": [
+        0,
+        1
+      ],
+      "minimum_endpoint_compensated": [
+        4,
+        1
+      ],
+      "minimum_reservoir": [
+        3,
+        1
+      ],
+      "selected_count": 0,
+      "upper": 1
+    },
+    {
+      "lower": 2,
+      "maximum_defect": [
+        0,
+        2
+      ],
+      "minimum_density_debt": [
+        0,
+        2
+      ],
+      "minimum_endpoint_compensated": [
+        4,
+        2
+      ],
+      "minimum_reservoir": [
+        3,
+        2
+      ],
+      "selected_count": 0,
+      "upper": 3
+    },
+    {
+      "lower": 4,
+      "maximum_defect": [
+        1,
+        6
+      ],
+      "minimum_density_debt": [
+        0,
+        4
+      ],
+      "minimum_endpoint_compensated": [
+        2,
+        7
+      ],
+      "minimum_reservoir": [
+        2,
+        7
+      ],
+      "selected_count": 2,
+      "upper": 7
+    },
+    {
+      "lower": 8,
+      "maximum_defect": [
+        1,
+        8
+      ],
+      "minimum_density_debt": [
+        -2,
+        9
+      ],
+      "minimum_endpoint_compensated": [
+        0,
+        9
+      ],
+      "minimum_reservoir": [
+        0,
+        9
+      ],
+      "selected_count": 5,
+      "upper": 15
+    },
+    {
+      "lower": 16,
+      "maximum_defect": [
+        2,
+        19
+      ],
+      "minimum_density_debt": [
+        -1,
+        16
+      ],
+      "minimum_endpoint_compensated": [
+        1,
+        19
+      ],
+      "minimum_reservoir": [
+        2,
+        16
+      ],
+      "selected_count": 6,
+      "upper": 31
+    },
+    {
+      "lower": 32,
+      "maximum_defect": [
+        2,
+        38
+      ],
+      "minimum_density_debt": [
+        2,
+        61
+      ],
+      "minimum_endpoint_compensated": [
+        2,
+        62
+      ],
+      "minimum_reservoir": [
+        3,
+        62
+      ],
+      "selected_count": 18,
+      "upper": 63
+    },
+    {
+      "lower": 64,
+      "maximum_defect": [
+        3,
+        79
+      ],
+      "minimum_density_debt": [
+        3,
+        64
+      ],
+      "minimum_endpoint_compensated": [
+        4,
+        79
+      ],
+      "minimum_reservoir": [
+        5,
+        64
+      ],
+      "selected_count": 22,
+      "upper": 127
+    },
+    {
+      "lower": 128,
+      "maximum_defect": [
+        4,
+        139
+      ],
+      "minimum_density_debt": [
+        13,
+        213
+      ],
+      "minimum_endpoint_compensated": [
+        10,
+        233
+      ],
+      "minimum_reservoir": [
+        13,
+        215
+      ],
+      "selected_count": 67,
+      "upper": 255
+    },
+    {
+      "lower": 256,
+      "maximum_defect": [
+        6,
+        419
+      ],
+      "minimum_density_debt": [
+        15,
+        260
+      ],
+      "minimum_endpoint_compensated": [
+        13,
+        279
+      ],
+      "minimum_reservoir": [
+        16,
+        259
+      ],
+      "selected_count": 147,
+      "upper": 511
+    },
+    {
+      "lower": 512,
+      "maximum_defect": [
+        8,
+        839
+      ],
+      "minimum_density_debt": [
+        22,
+        512
+      ],
+      "minimum_endpoint_compensated": [
+        18,
+        539
+      ],
+      "minimum_reservoir": [
+        22,
+        538
+      ],
+      "selected_count": 241,
+      "upper": 1023
+    },
+    {
+      "lower": 1024,
+      "maximum_defect": [
+        10,
+        1679
+      ],
+      "minimum_density_debt": [
+        93,
+        1216
+      ],
+      "minimum_endpoint_compensated": [
+        86,
+        1175
+      ],
+      "minimum_reservoir": [
+        91,
+        1175
+      ],
+      "selected_count": 519,
+      "upper": 2047
+    },
+    {
+      "lower": 2048,
+      "maximum_defect": [
+        13,
+        3359
+      ],
+      "minimum_density_debt": [
+        161,
+        2079
+      ],
+      "minimum_endpoint_compensated": [
+        147,
+        2099
+      ],
+      "minimum_reservoir": [
+        156,
+        2099
+      ],
+      "selected_count": 1038,
+      "upper": 4095
+    },
+    {
+      "lower": 4096,
+      "maximum_defect": [
+        16,
+        6719
+      ],
+      "minimum_density_debt": [
+        322,
+        4102
+      ],
+      "minimum_endpoint_compensated": [
+        312,
+        4139
+      ],
+      "minimum_reservoir": [
+        319,
+        4103
+      ],
+      "selected_count": 2050,
+      "upper": 8191
+    },
+    {
+      "lower": 8192,
+      "maximum_defect": [
+        21,
+        15839
+      ],
+      "minimum_density_debt": [
+        680,
+        8192
+      ],
+      "minimum_endpoint_compensated": [
+        669,
+        8279
+      ],
+      "minimum_reservoir": [
+        678,
+        8199
+      ],
+      "selected_count": 4044,
+      "upper": 16383
+    },
+    {
+      "lower": 16384,
+      "maximum_defect": [
+        26,
+        32759
+      ],
+      "minimum_density_debt": [
+        1416,
+        16395
+      ],
+      "minimum_endpoint_compensated": [
+        1402,
+        16399
+      ],
+      "minimum_reservoir": [
+        1411,
+        16399
+      ],
+      "selected_count": 8170,
+      "upper": 32767
+    },
+    {
+      "lower": 32768,
+      "maximum_defect": [
+        31,
+        65519
+      ],
+      "minimum_density_debt": [
+        2750,
+        32769
+      ],
+      "minimum_endpoint_compensated": [
+        2733,
+        32843
+      ],
+      "minimum_reservoir": [
+        2744,
+        32843
+      ],
+      "selected_count": 16267,
+      "upper": 65535
+    },
+    {
+      "lower": 65536,
+      "maximum_defect": [
+        38,
+        131039
+      ],
+      "minimum_density_debt": [
+        5576,
+        65540
+      ],
+      "minimum_endpoint_compensated": [
+        5557,
+        65549
+      ],
+      "minimum_reservoir": [
+        5569,
+        65549
+      ],
+      "selected_count": 32808,
+      "upper": 131071
+    },
+    {
+      "lower": 131072,
+      "maximum_defect": [
+        43,
+        221759
+      ],
+      "minimum_density_debt": [
+        10878,
+        131224
+      ],
+      "minimum_endpoint_compensated": [
+        10848,
+        131207
+      ],
+      "minimum_reservoir": [
+        10866,
+        131207
+      ],
+      "selected_count": 65601,
+      "upper": 262143
+    },
+    {
+      "lower": 262144,
+      "maximum_defect": [
+        52,
+        480479
+      ],
+      "minimum_density_debt": [
+        21778,
+        262144
+      ],
+      "minimum_endpoint_compensated": [
+        21748,
+        262199
+      ],
+      "minimum_reservoir": [
+        21768,
+        262149
+      ],
+      "selected_count": 130988,
+      "upper": 524287
+    },
+    {
+      "lower": 524288,
+      "maximum_defect": [
+        62,
+        720719
+      ],
+      "minimum_density_debt": [
+        43774,
+        524289
+      ],
+      "minimum_endpoint_compensated": [
+        43723,
+        524399
+      ],
+      "minimum_reservoir": [
+        43752,
+        524399
+      ],
+      "selected_count": 261994,
+      "upper": 1048575
+    },
+    {
+      "lower": 1048576,
+      "maximum_defect": [
+        75,
+        1441439
+      ],
+      "minimum_density_debt": [
+        87529,
+        1048576
+      ],
+      "minimum_endpoint_compensated": [
+        87475,
+        1048799
+      ],
+      "minimum_reservoir": [
+        87511,
+        1048799
+      ],
+      "selected_count": 476290,
+      "upper": 2000002
+    }
+  ],
+  "global_extrema": {
+    "maximum_Q_minus_two_floor_sqrt_rank_plus_one": -2,
+    "maximum_defect_Q": [
+      75,
+      1441439
+    ],
+    "maximum_reservoir_drawdown": [
+      77,
+      1441422,
+      1441439
+    ],
+    "minimum_density_debt_P": [
+      -2,
+      9
+    ],
+    "minimum_endpoint_compensated_F": [
+      0,
+      9
+    ],
+    "minimum_reservoir_R": [
+      0,
+      9
+    ]
+  },
+  "itinerary_sha256": "f4acc653489d3d5af1c69b8d065e692ef9f83c566a569bc73704667b6d051413",
+  "mathematical_consequence": {
+    "finite_result": "No strict-record repair violation occurs in the requested canonical quotient-greedy replay.",
+    "not_claimed": [
+      "the strict-record reset bound at all depths",
+      "the strict-record repair inequality at all depths",
+      "an all-depth closed quotient trajectory",
+      "1/21 achievement-set membership",
+      "an infinite rational Mersenne support",
+      "a decision of Erdos 257"
+    ],
+    "open_producer": "Prefer the observed strict-record reset Q_(n+1)<=4; fallback to supportCoeff(n+1) >= Q_n + targetBit(n+1) at every strict record of the actual 1/21 greedy word.",
+    "proved_implication": "The reset producer gives cofinal bounded returns or a global bound. The fallback gives Q_N <= 2*sqrt(N+1). Either reaches an existing checked 1/21 membership endpoint."
+  },
+  "parameters": {
+    "ranks": 2000002,
+    "window_scales": []
+  },
+  "receipt_payload_sha256": "c3b2d899da07d668fcd712e342b83648d63c3b8cae15235ba007dc55ae6ea7b7",
+  "record_repair_candidate": {
+    "all_depth_consequence_if_proved": "Q_N is bounded by the divisor function at a record successor, hence Q_N <= 2*sqrt(N+1), which feeds the Lean-checked subexponential-defect membership theorem",
+    "claim_status": "finite falsification evidence only",
+    "inequality": "supportCoeff(n+1) >= Q_n + targetBit(n+1) at every strict Q-record rank n",
+    "minimum_margin": [
+      0,
+      6
+    ],
+    "violation_count": 0,
+    "violations": []
+  },
+  "record_reset_candidate": {
+    "all_depth_consequence_if_proved": "If strict record ranks are infinite, their successors give cofinal returns to Q<=4; if they are finite, Q is globally bounded. Either case feeds the Lean-checked cofinally-bounded-defect membership theorem.",
+    "claim_status": "finite falsification evidence only",
+    "inequality": "Q_(n+1) <= 4 at every strict Q-record rank n",
+    "maximum_successor_defect": [
+      4,
+      480479
+    ],
+    "violation_count": 0,
+    "violations": []
+  },
+  "schema": "twenty_one_computational_structure_lab_v0",
+  "selected_count": 1000277,
+  "sliding_reservoir_windows": [],
+  "strict_record_count": 39,
+  "strict_record_rows": [
+    {
+      "defect": 1,
+      "half_rank": 3,
+      "half_rank_defect": 0,
+      "rank": 6,
+      "record_repair_margin": 0,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 7,
+      "successor_defect": 1,
+      "successor_defect_change": 0,
+      "successor_divisor_count": 2,
+      "successor_factorization": [
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 1,
+      "successor_target_bit": 0
+    },
+    {
+      "defect": 2,
+      "half_rank": 9,
+      "half_rank_defect": 1,
+      "rank": 19,
+      "record_repair_margin": 1,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 20,
+      "successor_defect": 1,
+      "successor_defect_change": -1,
+      "successor_divisor_count": 6,
+      "successor_factorization": [
+        [
+          2,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 3,
+      "successor_target_bit": 0
+    },
+    {
+      "defect": 3,
+      "half_rank": 39,
+      "half_rank_defect": 2,
+      "rank": 79,
+      "record_repair_margin": 2,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 80,
+      "successor_defect": 1,
+      "successor_defect_change": -2,
+      "successor_divisor_count": 10,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 5,
+      "successor_target_bit": 0
+    },
+    {
+      "defect": 4,
+      "half_rank": 69,
+      "half_rank_defect": 2,
+      "rank": 139,
+      "record_repair_margin": 2,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 140,
+      "successor_defect": 2,
+      "successor_defect_change": -2,
+      "successor_divisor_count": 12,
+      "successor_factorization": [
+        [
+          2,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 6,
+      "successor_target_bit": 0
+    },
+    {
+      "defect": 5,
+      "half_rank": 159,
+      "half_rank_defect": 4,
+      "rank": 319,
+      "record_repair_margin": 3,
+      "selected": 0,
+      "selected_divisor_load": 1,
+      "successor": 320,
+      "successor_defect": 2,
+      "successor_defect_change": -3,
+      "successor_divisor_count": 14,
+      "successor_factorization": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 8,
+      "successor_target_bit": 0
+    },
+    {
+      "defect": 6,
+      "half_rank": 209,
+      "half_rank_defect": 3,
+      "rank": 419,
+      "record_repair_margin": 5,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 420,
+      "successor_defect": 1,
+      "successor_defect_change": -5,
+      "successor_divisor_count": 24,
+      "successor_factorization": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 12,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 7,
+      "half_rank": 389,
+      "half_rank_defect": 4,
+      "rank": 779,
+      "record_repair_margin": 4,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 780,
+      "successor_defect": 3,
+      "successor_defect_change": -4,
+      "successor_divisor_count": 24,
+      "successor_factorization": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 12,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 8,
+      "half_rank": 419,
+      "half_rank_defect": 6,
+      "rank": 839,
+      "record_repair_margin": 7,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 840,
+      "successor_defect": 1,
+      "successor_defect_change": -7,
+      "successor_divisor_count": 32,
+      "successor_factorization": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 16,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 9,
+      "half_rank": 719,
+      "half_rank_defect": 6,
+      "rank": 1439,
+      "record_repair_margin": 7,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 1440,
+      "successor_defect": 2,
+      "successor_defect_change": -7,
+      "successor_divisor_count": 36,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 17,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 10,
+      "half_rank": 839,
+      "half_rank_defect": 8,
+      "rank": 1679,
+      "record_repair_margin": 8,
+      "selected": 0,
+      "selected_divisor_load": 1,
+      "successor": 1680,
+      "successor_defect": 2,
+      "successor_defect_change": -8,
+      "successor_divisor_count": 40,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 19,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 11,
+      "half_rank": 1259,
+      "half_rank_defect": 8,
+      "rank": 2519,
+      "record_repair_margin": 10,
+      "selected": 1,
+      "selected_divisor_load": 2,
+      "successor": 2520,
+      "successor_defect": 1,
+      "successor_defect_change": -10,
+      "successor_divisor_count": 48,
+      "successor_factorization": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 22,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 13,
+      "half_rank": 1679,
+      "half_rank_defect": 10,
+      "rank": 3359,
+      "record_repair_margin": 11,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 3360,
+      "successor_defect": 2,
+      "successor_defect_change": -11,
+      "successor_divisor_count": 48,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 25,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 14,
+      "half_rank": 2519,
+      "half_rank_defect": 11,
+      "rank": 5039,
+      "record_repair_margin": 12,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 5040,
+      "successor_defect": 2,
+      "successor_defect_change": -12,
+      "successor_divisor_count": 60,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 27,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 16,
+      "half_rank": 3359,
+      "half_rank_defect": 13,
+      "rank": 6719,
+      "record_repair_margin": 12,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 6720,
+      "successor_defect": 4,
+      "successor_defect_change": -12,
+      "successor_divisor_count": 56,
+      "successor_factorization": [
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 29,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 18,
+      "half_rank": 5039,
+      "half_rank_defect": 14,
+      "rank": 10079,
+      "record_repair_margin": 16,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 10080,
+      "successor_defect": 2,
+      "successor_defect_change": -16,
+      "successor_divisor_count": 72,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 35,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 19,
+      "half_rank": 6929,
+      "half_rank_defect": 13,
+      "rank": 13859,
+      "record_repair_margin": 16,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 13860,
+      "successor_defect": 3,
+      "successor_defect_change": -16,
+      "successor_divisor_count": 72,
+      "successor_factorization": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 36,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 21,
+      "half_rank": 7919,
+      "half_rank_defect": 15,
+      "rank": 15839,
+      "record_repair_margin": 17,
+      "selected": 1,
+      "selected_divisor_load": 2,
+      "successor": 15840,
+      "successor_defect": 4,
+      "successor_defect_change": -17,
+      "successor_divisor_count": 72,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 39,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 22,
+      "half_rank": 10079,
+      "half_rank_defect": 18,
+      "rank": 20159,
+      "record_repair_margin": 19,
+      "selected": 0,
+      "selected_divisor_load": 1,
+      "successor": 20160,
+      "successor_defect": 3,
+      "successor_defect_change": -19,
+      "successor_divisor_count": 84,
+      "successor_factorization": [
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 42,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 24,
+      "half_rank": 13859,
+      "half_rank_defect": 19,
+      "rank": 27719,
+      "record_repair_margin": 22,
+      "selected": 0,
+      "selected_divisor_load": 1,
+      "successor": 27720,
+      "successor_defect": 2,
+      "successor_defect_change": -22,
+      "successor_divisor_count": 96,
+      "successor_factorization": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 47,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 25,
+      "half_rank": 15839,
+      "half_rank_defect": 21,
+      "rank": 31679,
+      "record_repair_margin": 21,
+      "selected": 0,
+      "selected_divisor_load": 2,
+      "successor": 31680,
+      "successor_defect": 4,
+      "successor_defect_change": -21,
+      "successor_divisor_count": 84,
+      "successor_factorization": [
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 47,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 26,
+      "half_rank": 16379,
+      "half_rank_defect": 20,
+      "rank": 32759,
+      "record_repair_margin": 24,
+      "selected": 1,
+      "selected_divisor_load": 5,
+      "successor": 32760,
+      "successor_defect": 2,
+      "successor_defect_change": -24,
+      "successor_divisor_count": 96,
+      "successor_factorization": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 51,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 27,
+      "half_rank": 21839,
+      "half_rank_defect": 22,
+      "rank": 43679,
+      "record_repair_margin": 24,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 43680,
+      "successor_defect": 3,
+      "successor_defect_change": -24,
+      "successor_divisor_count": 96,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 52,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 29,
+      "half_rank": 27719,
+      "half_rank_defect": 24,
+      "rank": 55439,
+      "record_repair_margin": 27,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 55440,
+      "successor_defect": 2,
+      "successor_defect_change": -27,
+      "successor_divisor_count": 120,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 57,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 31,
+      "half_rank": 32759,
+      "half_rank_defect": 26,
+      "rank": 65519,
+      "record_repair_margin": 30,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 65520,
+      "successor_defect": 1,
+      "successor_defect_change": -30,
+      "successor_divisor_count": 120,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 62,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 33,
+      "half_rank": 47879,
+      "half_rank_defect": 27,
+      "rank": 95759,
+      "record_repair_margin": 30,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 95760,
+      "successor_defect": 3,
+      "successor_defect_change": -30,
+      "successor_divisor_count": 120,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          19,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 64,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 36,
+      "half_rank": 55439,
+      "half_rank_defect": 29,
+      "rank": 110879,
+      "record_repair_margin": 35,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 110880,
+      "successor_defect": 1,
+      "successor_defect_change": -35,
+      "successor_divisor_count": 144,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 72,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 38,
+      "half_rank": 65519,
+      "half_rank_defect": 31,
+      "rank": 131039,
+      "record_repair_margin": 36,
+      "selected": 0,
+      "selected_divisor_load": 1,
+      "successor": 131040,
+      "successor_defect": 2,
+      "successor_defect_change": -36,
+      "successor_divisor_count": 144,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 75,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 40,
+      "half_rank": 90089,
+      "half_rank_defect": 27,
+      "rank": 180179,
+      "record_repair_margin": 38,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 180180,
+      "successor_defect": 2,
+      "successor_defect_change": -38,
+      "successor_divisor_count": 144,
+      "successor_factorization": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 79,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 41,
+      "half_rank": 102959,
+      "half_rank_defect": 32,
+      "rank": 205919,
+      "record_repair_margin": 39,
+      "selected": 0,
+      "selected_divisor_load": 2,
+      "successor": 205920,
+      "successor_defect": 2,
+      "successor_defect_change": -39,
+      "successor_divisor_count": 144,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 81,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 43,
+      "half_rank": 110879,
+      "half_rank_defect": 36,
+      "rank": 221759,
+      "record_repair_margin": 42,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 221760,
+      "successor_defect": 1,
+      "successor_defect_change": -42,
+      "successor_divisor_count": 168,
+      "successor_factorization": [
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 86,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 46,
+      "half_rank": 163799,
+      "half_rank_defect": 38,
+      "rank": 327599,
+      "record_repair_margin": 44,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 327600,
+      "successor_defect": 2,
+      "successor_defect_change": -44,
+      "successor_divisor_count": 180,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 91,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 47,
+      "half_rank": 166319,
+      "half_rank_defect": 38,
+      "rank": 332639,
+      "record_repair_margin": 46,
+      "selected": 1,
+      "selected_divisor_load": 2,
+      "successor": 332640,
+      "successor_defect": 1,
+      "successor_defect_change": -46,
+      "successor_divisor_count": 192,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 94,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 51,
+      "half_rank": 180179,
+      "half_rank_defect": 40,
+      "rank": 360359,
+      "record_repair_margin": 50,
+      "selected": 0,
+      "selected_divisor_load": 2,
+      "successor": 360360,
+      "successor_defect": 1,
+      "successor_defect_change": -50,
+      "successor_divisor_count": 192,
+      "successor_factorization": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 102,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 52,
+      "half_rank": 240239,
+      "half_rank_defect": 42,
+      "rank": 480479,
+      "record_repair_margin": 48,
+      "selected": 0,
+      "selected_divisor_load": 1,
+      "successor": 480480,
+      "successor_defect": 4,
+      "successor_defect_change": -48,
+      "successor_divisor_count": 192,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 101,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 56,
+      "half_rank": 327599,
+      "half_rank_defect": 46,
+      "rank": 655199,
+      "record_repair_margin": 53,
+      "selected": 0,
+      "selected_divisor_load": 1,
+      "successor": 655200,
+      "successor_defect": 3,
+      "successor_defect_change": -53,
+      "successor_divisor_count": 216,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 110,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 62,
+      "half_rank": 360359,
+      "half_rank_defect": 51,
+      "rank": 720719,
+      "record_repair_margin": 60,
+      "selected": 0,
+      "selected_divisor_load": 5,
+      "successor": 720720,
+      "successor_defect": 2,
+      "successor_defect_change": -60,
+      "successor_divisor_count": 240,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 123,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 64,
+      "half_rank": 526679,
+      "half_rank_defect": 52,
+      "rank": 1053359,
+      "record_repair_margin": 63,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 1053360,
+      "successor_defect": 1,
+      "successor_defect_change": -63,
+      "successor_divisor_count": 240,
+      "successor_factorization": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          19,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 128,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 66,
+      "half_rank": 540539,
+      "half_rank_defect": 50,
+      "rank": 1081079,
+      "record_repair_margin": 64,
+      "selected": 1,
+      "selected_divisor_load": 1,
+      "successor": 1081080,
+      "successor_defect": 2,
+      "successor_defect_change": -64,
+      "successor_divisor_count": 256,
+      "successor_factorization": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 1,
+      "successor_selected_divisor_load": 131,
+      "successor_target_bit": 1
+    },
+    {
+      "defect": 75,
+      "half_rank": 720719,
+      "half_rank_defect": 62,
+      "rank": 1441439,
+      "record_repair_margin": 73,
+      "selected": 0,
+      "selected_divisor_load": 0,
+      "successor": 1441440,
+      "successor_defect": 2,
+      "successor_defect_change": -73,
+      "successor_divisor_count": 288,
+      "successor_factorization": [
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          13,
+          1
+        ]
+      ],
+      "successor_selected": 0,
+      "successor_selected_divisor_load": 149,
+      "successor_target_bit": 1
+    }
+  ]
+}

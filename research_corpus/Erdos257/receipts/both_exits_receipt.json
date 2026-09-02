@@ -1,0 +1,103 @@
+{
+  "box": {
+    "D": 5,
+    "bits": 4000,
+    "d": 2,
+    "k": [
+      2,
+      3,
+      4
+    ]
+  },
+  "calibration": {
+    "2^(2^k)": [
+      0,
+      0,
+      0
+    ],
+    "3N": [
+      6,
+      3,
+      3
+    ],
+    "N": [
+      14,
+      9,
+      8
+    ],
+    "matches_T31b": true
+  },
+  "dN_nullity": {
+    "1": [
+      14,
+      9,
+      8
+    ],
+    "10": [
+      0,
+      0,
+      0
+    ],
+    "2": [
+      10,
+      6,
+      4
+    ],
+    "3": [
+      6,
+      3,
+      3
+    ],
+    "4": [
+      4,
+      2,
+      2
+    ],
+    "5": [
+      2,
+      1,
+      1
+    ],
+    "6": [
+      0,
+      0,
+      0
+    ],
+    "7": [
+      0,
+      0,
+      0
+    ],
+    "8": [
+      0,
+      0,
+      0
+    ],
+    "9": [
+      0,
+      0,
+      0
+    ]
+  },
+  "degree_split_holds_d_1_to_10": true,
+  "explanation": "Y_{dN} = x^d/(1-x^d) is rational; the order-0 relation Q(x)Y(x)=P(x) has deg Q = d, so the D=5 box admits it iff d <= 5.",
+  "proven_false_negative": {
+    "adapted": true,
+    "nullity": [
+      0,
+      0,
+      0
+    ],
+    "reason": "rational generating function",
+    "set": "6N"
+  },
+  "thue_morse_on_disk": {
+    "nullity": [
+      5,
+      0,
+      0
+    ],
+    "source": "T31b",
+    "verdict": "ADAPTED"
+  }
+}

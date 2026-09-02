@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification251ActualPrimeGapTail.Challenge",
+  "solution_module": "ExternalVerification251ActualPrimeGapTail.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational",
+    "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence",
+    "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral",
+    "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

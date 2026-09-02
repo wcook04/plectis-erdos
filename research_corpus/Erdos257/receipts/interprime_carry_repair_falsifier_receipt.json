@@ -1,0 +1,1352 @@
+{
+  "aggregate": {
+    "longest_consecutive_no_repair_run": {
+      "end_prime": 6029,
+      "ending_carry": 4,
+      "length": 2,
+      "start_prime": 6007,
+      "target": "333/1669"
+    },
+    "repaired_interval_count": 357570,
+    "repaired_interval_fraction": 0.865937887477,
+    "tested_prime_intervals": 412928
+  },
+  "candidate_laws": {
+    "intra_gap_lipschitz": "max_(p<=m<=q) C_m-max(C_p,C_q) <= K(q-p)",
+    "next_peak_le_previous_plus_one": "C_q <= C_p + 1",
+    "next_peak_log4_envelope": "C_q <= max(C_p, ceil(log2 q)+4)",
+    "pre_next_le_previous_peak": "C_(q-1) <= C_p for consecutive primes p<q",
+    "prime_skeleton_lipschitz": "C_q-C_p <= K(q-p)"
+  },
+  "claim_boundary": "The witnesses disprove one-gap monotone repair and the tested log-plus-four envelope. They do not disprove multi-gap, average-drift, or full-ancestry bounds.",
+  "falsifiers": {
+    "first_interior_slope_failures": {
+      "1": {
+        "carry_at_next_prime": 2,
+        "carry_at_previous_prime": 2,
+        "carry_before_next_prime": 1,
+        "endpoint_peak": 2,
+        "interior_divisor_load": [
+          3,
+          2,
+          3,
+          1,
+          9,
+          1,
+          22
+        ],
+        "interior_peak": 11,
+        "next_prime": 6121,
+        "previous_prime": 6113,
+        "prime_gap": 8,
+        "target": "333/1669"
+      },
+      "2": {
+        "carry_at_next_prime": 3,
+        "carry_at_previous_prime": 6,
+        "carry_before_next_prime": 1,
+        "endpoint_peak": 6,
+        "interior_divisor_load": [
+          6,
+          5,
+          3,
+          3,
+          39
+        ],
+        "interior_peak": 20,
+        "next_prime": 21169,
+        "previous_prime": 21163,
+        "prime_gap": 6,
+        "target": "267/1678"
+      },
+      "3": {
+        "carry_at_next_prime": 2,
+        "carry_at_previous_prime": 2,
+        "carry_before_next_prime": 1,
+        "endpoint_peak": 2,
+        "interior_divisor_load": [
+          1,
+          2,
+          2,
+          1,
+          44
+        ],
+        "interior_peak": 22,
+        "next_prime": 26209,
+        "previous_prime": 26203,
+        "prime_gap": 6,
+        "target": "121/657"
+      },
+      "4": null,
+      "5": null,
+      "6": null,
+      "7": null,
+      "8": null
+    },
+    "first_next_peak_le_previous_plus_one_failure": {
+      "carry_at_next_prime": 4,
+      "carry_at_previous_prime": 2,
+      "carry_before_next_prime": 2,
+      "interior_divisor_load": [
+        3,
+        1,
+        4
+      ],
+      "next_prime": 131,
+      "previous_prime": 127,
+      "prime_gap": 4,
+      "target": "333/1669"
+    },
+    "first_next_peak_log4_envelope_failure": {
+      "candidate_bound": 19,
+      "carry_at_next_prime": 20,
+      "carry_at_previous_prime": 7,
+      "carry_before_next_prime": 10,
+      "interior_divisor_load": [
+        8,
+        7,
+        8,
+        1,
+        5,
+        3,
+        5,
+        3,
+        1,
+        2,
+        9,
+        2,
+        5,
+        9,
+        1
+      ],
+      "next_prime": 20789,
+      "previous_prime": 20773,
+      "prime_gap": 16,
+      "target": "333/1669"
+    },
+    "first_pre_next_le_previous_peak_failure": {
+      "carry_at_next_prime": 5,
+      "carry_at_previous_prime": 2,
+      "carry_before_next_prime": 3,
+      "interior_divisor_load": [
+        2,
+        2,
+        1,
+        2,
+        7,
+        2,
+        5,
+        3,
+        3
+      ],
+      "next_prime": 419,
+      "previous_prime": 409,
+      "prime_gap": 10,
+      "target": "333/1669"
+    },
+    "first_prime_slope_failures": {
+      "1": {
+        "carry_at_next_prime": 6,
+        "carry_at_previous_prime": 3,
+        "carry_before_next_prime": 3,
+        "interior_divisor_load": [
+          4
+        ],
+        "next_prime": 1699,
+        "previous_prime": 1697,
+        "prime_gap": 2,
+        "target": "333/1669"
+      },
+      "2": {
+        "carry_at_next_prime": 7,
+        "carry_at_previous_prime": 2,
+        "carry_before_next_prime": 3,
+        "interior_divisor_load": [
+          2
+        ],
+        "next_prime": 4549,
+        "previous_prime": 4547,
+        "prime_gap": 2,
+        "target": "333/1669"
+      },
+      "3": {
+        "carry_at_next_prime": 11,
+        "carry_at_previous_prime": 4,
+        "carry_before_next_prime": 5,
+        "interior_divisor_load": [
+          4
+        ],
+        "next_prime": 13999,
+        "previous_prime": 13997,
+        "prime_gap": 2,
+        "target": "333/1669"
+      },
+      "4": {
+        "carry_at_next_prime": 15,
+        "carry_at_previous_prime": 6,
+        "carry_before_next_prime": 8,
+        "interior_divisor_load": [
+          5
+        ],
+        "next_prime": 17599,
+        "previous_prime": 17597,
+        "prime_gap": 2,
+        "target": "238/1979"
+      },
+      "5": {
+        "carry_at_next_prime": 15,
+        "carry_at_previous_prime": 4,
+        "carry_before_next_prime": 8,
+        "interior_divisor_load": [
+          1
+        ],
+        "next_prime": 21559,
+        "previous_prime": 21557,
+        "prime_gap": 2,
+        "target": "223/1957"
+      },
+      "6": null,
+      "7": null,
+      "8": null
+    },
+    "worst_interior_excess_slope": {
+      "carry_at_next_prime": 2,
+      "carry_at_previous_prime": 2,
+      "carry_before_next_prime": 1,
+      "endpoint_peak": 2,
+      "interior_divisor_load": [
+        1,
+        2,
+        2,
+        1,
+        44
+      ],
+      "interior_peak": 22,
+      "next_prime": 26209,
+      "previous_prime": 26203,
+      "prime_gap": 6,
+      "slope": 3.333333333333,
+      "target": "121/657"
+    },
+    "worst_observed_log_envelope_excess": {
+      "carry": 32,
+      "ceil_log2_rank": 15,
+      "excess": 17,
+      "rank": 27719,
+      "target": "740/1529"
+    },
+    "worst_pre_next_to_previous_peak_ratio": {
+      "carry_at_next_prime": 22,
+      "carry_at_previous_prime": 1,
+      "carry_before_next_prime": 11,
+      "interior_divisor_load": [
+        0,
+        2,
+        8,
+        4,
+        2,
+        3,
+        2,
+        1,
+        8
+      ],
+      "next_prime": 22679,
+      "previous_prime": 22669,
+      "prime_gap": 10,
+      "ratio": 11.0,
+      "target": "90/1343"
+    },
+    "worst_prime_peak_jump": {
+      "carry_at_next_prime": 27,
+      "carry_at_previous_prime": 4,
+      "carry_before_next_prime": 13,
+      "interior_divisor_load": [
+        5,
+        2,
+        11,
+        3,
+        5,
+        2,
+        7,
+        3,
+        5
+      ],
+      "jump": 23,
+      "next_prime": 28559,
+      "previous_prime": 28549,
+      "prime_gap": 10,
+      "target": "363/599"
+    },
+    "worst_prime_peak_slope": {
+      "carry_at_next_prime": 15,
+      "carry_at_previous_prime": 4,
+      "carry_before_next_prime": 8,
+      "interior_divisor_load": [
+        1
+      ],
+      "next_prime": 21559,
+      "previous_prime": 21557,
+      "prime_gap": 2,
+      "slope": 5.5,
+      "target": "223/1957"
+    }
+  },
+  "mechanism_decision": {
+    "observed_linear_envelope_candidate": {
+      "constant": 6,
+      "producer_if_proved": "Telescoping prime gaps would give C_n=O(n), hence a tempered carry and exclusion of the expanding homogeneous mode.",
+      "statement": "For consecutive primes p<q, both C_q-C_p and the interior excess above max(C_p,C_q) are at most constant*(q-p).",
+      "status": "finite_evidence_theorem_target_not_proved"
+    },
+    "status": "single_prime_gap_repair_falsified",
+    "surviving_scope": "prime-skeleton Lipschitz, aggregate-drift, or complete-ancestry repair only"
+  },
+  "parameters": {
+    "depth": 30000,
+    "prime_interval_count_per_target": 3226,
+    "start_rank": 64,
+    "target_count": 128,
+    "target_limit": 128
+  },
+  "payload_sha256": "f069cf28a3f7cc2b2028cdfbed14113e15fb3f634f80380c660fe9171fc0c68f",
+  "programme_target": "Solve Erd\u0151s 257; this tests a disposable prime-gap producer.",
+  "schema": "erdos257_interprime_carry_repair_falsifier_v1",
+  "source": {
+    "engine": "formal_math/erdos257_period_noncollapse/scripts/cantor_staircase_run_length_lab.py",
+    "engine_sha256": "aee6d370c3639dc213a7eebb90777273ab0c253adb278d8ee35f63d2b349d4a5",
+    "input_receipt": "state/formal_math/erdos257_period_noncollapse/rational_target_headroom_funnel_receipt.json",
+    "input_receipt_sha256": "c42989ef8633bc3e0b572baf775efaf8e791a0b5c2e35cc6e335622e3e6d2da1",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/interprime_carry_repair_falsifier.py",
+    "script_sha256": "ff8aa3473b849de9c9fc3603e38a6ac777de03dd88ed21ce6bc5f509752f583f"
+  },
+  "target_summaries": [
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2802,
+      "support_density": 0.4939,
+      "support_word_sha256": "0a50aeb5c4e9d81c0dd5a1c09954eb1cf88071b636c2174e78a8bc599f4be3a9",
+      "target": "333/1669"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2748,
+      "support_density": 0.4941,
+      "support_word_sha256": "c2312a23715df2bc8d51f188977170b2f1e4f8190c35f68af90860f3e3ae8dec",
+      "target": "267/1678"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2789,
+      "support_density": 0.5009,
+      "support_word_sha256": "7f73cf57955f0f23625c71abe9c24fe3849c8e83a98a4748110a650ebdf46fb0",
+      "target": "167/829"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2768,
+      "support_density": 0.503133333333,
+      "support_word_sha256": "dcef4e6b8641c74cac9426eb965e44a430df24757f3fc10391402d94dc3c6cb6",
+      "target": "121/657"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2761,
+      "support_density": 0.502566666667,
+      "support_word_sha256": "db7197867004ffc5bc5580794c53a143e50b5e4bb74f3dd0221933551f71c28a",
+      "target": "254/1685"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2739,
+      "support_density": 0.499966666667,
+      "support_word_sha256": "0c625c43bd2e85f43ce071c9a9c7102e08d867699f40b84b785487fdbf7e4c15",
+      "target": "238/1979"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2709,
+      "support_density": 0.5019,
+      "support_word_sha256": "7fe134b589992c2b2f881b83847a677bc5543b7e3b255fe77a2d7b29497c460f",
+      "target": "40/1067"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2735,
+      "support_density": 0.5001,
+      "support_word_sha256": "ee540f9ce1f189ebf09d2e674bb580990927e078421d121b484937842eec2247",
+      "target": "280/1611"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2855,
+      "support_density": 0.5001,
+      "support_word_sha256": "4c91912a6b031d1cdfe4f426dbd89a9aefa14ab571d2fcd89bc2e22d78188f3b",
+      "target": "891/1844"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2782,
+      "support_density": 0.5011,
+      "support_word_sha256": "13764f9c79a67fdd295ef60a48c3a7e7f81e42f99354b1339b46d78bd63788e9",
+      "target": "330/1703"
+    },
+    {
+      "max_carry": 29,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2831,
+      "support_density": 0.501966666667,
+      "support_word_sha256": "0a138b0299d36d589589a9c237f058940cbfcb50cec035613e112ca21c060702",
+      "target": "970/1853"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2903,
+      "support_density": 0.498166666667,
+      "support_word_sha256": "6815e66b1a98614b3058968a251d19ac93d16f5eafc885bde78b0f0469a28494",
+      "target": "677/1133"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2752,
+      "support_density": 0.493733333333,
+      "support_word_sha256": "098a586acf1ce6f2a8aa0561d93facc2f1c2ed617dabddbf041471902673b80f",
+      "target": "171/1589"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2781,
+      "support_density": 0.5005,
+      "support_word_sha256": "179d740d4077735eb782c9f5b69a5f93a40f5f79de178f3273e69f8ada4910ce",
+      "target": "428/1957"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2725,
+      "support_density": 0.502433333333,
+      "support_word_sha256": "10f2921cecca417640249afa99188a5d3778f7916a0b08278fa4798b517f7cfb",
+      "target": "9/953"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2793,
+      "support_density": 0.493066666667,
+      "support_word_sha256": "998ce15b5246e6131ef30397fb32740e38936ccf58e74402ea408566a2f5d99f",
+      "target": "149/594"
+    },
+    {
+      "max_carry": 21,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2749,
+      "support_density": 0.498733333333,
+      "support_word_sha256": "9df4d3929016b421e8d30d84fa68abd0018340815055d728b3500ee79674cc55",
+      "target": "101/1219"
+    },
+    {
+      "max_carry": 20,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2869,
+      "support_density": 0.4946,
+      "support_word_sha256": "e1b486fb22de94241dd83165f7da2e288a4eaa5962b229d648fe042e9938a089",
+      "target": "304/859"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2738,
+      "support_density": 0.498333333333,
+      "support_word_sha256": "76134a7fd2119a3e8dfb4c9a9f837418cd5e52f0efed5c11040858e5416bbf26",
+      "target": "157/1490"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2817,
+      "support_density": 0.497466666667,
+      "support_word_sha256": "ae9b559fd66ead5d64deeea4db7dce177a5ae101055fe928c70703c0484544d2",
+      "target": "378/1073"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2756,
+      "support_density": 0.4999,
+      "support_word_sha256": "0f331342c6a3d362e19e5d471c0d57e7f94ccfcdb4ef37c58fc4adb910bbc3d4",
+      "target": "22/269"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2829,
+      "support_density": 0.5006,
+      "support_word_sha256": "9968d8ead1a4fad58e177a0bcfed4ff300a383a0f2247f4c3485b22462f4b0fc",
+      "target": "812/1471"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2675,
+      "support_density": 0.501366666667,
+      "support_word_sha256": "0d99706917a2baa24158b257c0fa3922e593affd1b03daf2666d91b9b6be8700",
+      "target": "11/1967"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2873,
+      "support_density": 0.5039,
+      "support_word_sha256": "a46965c76bf42b3f31d076866f896b3c7596ef8c9ff0be1b503047e7fc520f33",
+      "target": "911/1996"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2860,
+      "support_density": 0.501,
+      "support_word_sha256": "fc692762bee25b9c7aca1e5f2aecb991b7bd70b522decd11ff22fb4529f711fb",
+      "target": "489/950"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2757,
+      "support_density": 0.502433333333,
+      "support_word_sha256": "3cf15a029e9d97e588df6a0f903c21038f575812861ad9576360a481ce4c8a36",
+      "target": "12/413"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2856,
+      "support_density": 0.496366666667,
+      "support_word_sha256": "d7564af2d11dc11643827b4d42808eab08d40860146e84d917b92b230c6502e2",
+      "target": "995/1784"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2753,
+      "support_density": 0.4976,
+      "support_word_sha256": "50402835d673328f7a9c59e446b5e8f72223fdc7660a8f7c8e96d64d56130e4c",
+      "target": "79/1693"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2810,
+      "support_density": 0.500233333333,
+      "support_word_sha256": "7b4dcd61149db03fb71f6a5b0ddb444f22fbfe0d05bc8ed908864471b5ec95dd",
+      "target": "473/1388"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2870,
+      "support_density": 0.504766666667,
+      "support_word_sha256": "66c76d99dcb85375ee94cf0523cba2244a740b1495d76c09bc21cc0851dc7584",
+      "target": "705/1273"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2828,
+      "support_density": 0.5,
+      "support_word_sha256": "0a25bd30925ae0ecec9578b693e6276cdc5c74d6b9dde6b3c845b48cb884a80e",
+      "target": "828/1979"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2844,
+      "support_density": 0.5045,
+      "support_word_sha256": "efe60d4891c0fd1c502ae2aed27861ab9f8b7bd3a480d1657941e49b248496eb",
+      "target": "833/1979"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2772,
+      "support_density": 0.498166666667,
+      "support_word_sha256": "783af595944a3ed7085c904598f80546ac79e39baf70a1fb45b31098de6da561",
+      "target": "152/1517"
+    },
+    {
+      "max_carry": 30,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2849,
+      "support_density": 0.498233333333,
+      "support_word_sha256": "9047e690c1a6413759f09478a6dc049a8a15f6f07ccc6609e7431124d8eea2e5",
+      "target": "812/1573"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2742,
+      "support_density": 0.4983,
+      "support_word_sha256": "a918ec4cc3cd81ae645934224e29d9847e10276319fd45023b24ec99a4791e99",
+      "target": "83/382"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2807,
+      "support_density": 0.496633333333,
+      "support_word_sha256": "a7e15237e5cbf265efe22dd3eca38def49e6f5f05e3ecf989fb9f4d15ec6b81b",
+      "target": "431/1773"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2686,
+      "support_density": 0.5044,
+      "support_word_sha256": "5a26410c7f6d3dab03ec51dd4bb4fb7a54941fb625b17c314c3cb6b2056edcee",
+      "target": "33/1558"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2784,
+      "support_density": 0.4974,
+      "support_word_sha256": "5c550483a6ea739824a4a1c2366dbe2ed589cade505a8f099a2678fc2baeb2d1",
+      "target": "247/1199"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2859,
+      "support_density": 0.5031,
+      "support_word_sha256": "8ab926711f4c702662491cfcd01a504d13b5b6e935c48863660ecd8e71f97db6",
+      "target": "689/1226"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2859,
+      "support_density": 0.5013,
+      "support_word_sha256": "9e29d5f8d713242435eaf713dbddd16c1fbc6ced96b359643e56d1ceab35ce42",
+      "target": "869/1513"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2778,
+      "support_density": 0.500866666667,
+      "support_word_sha256": "a26da776df966850f8b9edbd7b26c89a587177baaace86603aee14394a0a50fa",
+      "target": "224/1067"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2866,
+      "support_density": 0.500733333333,
+      "support_word_sha256": "bcf9b4cc47dcb67aae3e8696a8f8fe27cd32a5ae65e12e5c56ae10c15a7b70db",
+      "target": "669/1171"
+    },
+    {
+      "max_carry": 20,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2907,
+      "support_density": 0.5003,
+      "support_word_sha256": "a313dada680a730a3e652016f41940cb9251d3e49cdf9c15f31a3ef9760359fd",
+      "target": "626/1193"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2806,
+      "support_density": 0.496266666667,
+      "support_word_sha256": "2f180735b70ddc3f64b99abf9502377e72c3093dbbb0746c1fd48dd0a964d8c5",
+      "target": "684/1967"
+    },
+    {
+      "max_carry": 21,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2712,
+      "support_density": 0.502766666667,
+      "support_word_sha256": "0d353a0b51c85187e9398e244c4fc8eeaaea4ea6c050b8d67ac2a79d225c86bd",
+      "target": "19/586"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2780,
+      "support_density": 0.503266666667,
+      "support_word_sha256": "d49f23371ca3e664870a72cf00e2c69111c750b9ae3314b8ff8af9accb13e7e8",
+      "target": "104/683"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2800,
+      "support_density": 0.503133333333,
+      "support_word_sha256": "7b7436c09f66966af588fa19fca9b7816fcfee8ad6c9ff03cff216926f1f3ec5",
+      "target": "429/1756"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2866,
+      "support_density": 0.5026,
+      "support_word_sha256": "8a63c71d1a8cb648b684d83719702517f201bb494e886cad2639ea25b99127a3",
+      "target": "1136/1931"
+    },
+    {
+      "max_carry": 32,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2794,
+      "support_density": 0.502,
+      "support_word_sha256": "6ac0f198784ae51f9525bc4c7be2a6c053de389e861ea9d75f9608c0a09832ee",
+      "target": "740/1529"
+    },
+    {
+      "max_carry": 20,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2782,
+      "support_density": 0.502733333333,
+      "support_word_sha256": "f1415ea77870dd680fff3a9813e0df6945b3d6406c73493e5d7d0a7f4eb3002e",
+      "target": "177/1928"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2820,
+      "support_density": 0.501466666667,
+      "support_word_sha256": "5c125ad6a8095705f9c0426952a7165eb80a7e84bb2a18588dca8fc9e8b9e7b3",
+      "target": "368/841"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2779,
+      "support_density": 0.4965,
+      "support_word_sha256": "6de7a0353779c6ce8a50a497664b6662fc17f4b22b09186a621a23b14d30b6b2",
+      "target": "61/1942"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2783,
+      "support_density": 0.5005,
+      "support_word_sha256": "bf540351018b788a0276745c95949a715b431c60e7531b1a885699340644811c",
+      "target": "151/1038"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2860,
+      "support_density": 0.501,
+      "support_word_sha256": "5a02d9bf4c3a842ee55a4048eaf94bcefb99d218eab34e30f7223f28e7751efb",
+      "target": "921/1688"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2852,
+      "support_density": 0.499566666667,
+      "support_word_sha256": "4a16814522e18715c1842bb7ccf05184a0b7a2d11d3debde56fa3abee54b3060",
+      "target": "728/1637"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2880,
+      "support_density": 0.4984,
+      "support_word_sha256": "7c6b2ac9e42e0f4dd5e771d70ba81ab999f3b31275a95e7d4b36a7b54d55efd2",
+      "target": "772/1291"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2801,
+      "support_density": 0.4993,
+      "support_word_sha256": "370e5f4e17d4023e69e7081c5391d216ba4be6648c2c83e221b830fa71e6bb0b",
+      "target": "303/1970"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2777,
+      "support_density": 0.497,
+      "support_word_sha256": "d7663e836507fa1b984f927fee0ff06ed6d40588a4da1fdd1c499a5274c738d9",
+      "target": "112/453"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2858,
+      "support_density": 0.505,
+      "support_word_sha256": "b924a0202865fc5af9b67d99ab37d7752fa2f4e123eb252187a2934d5b1f15de",
+      "target": "292/1093"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2788,
+      "support_density": 0.501933333333,
+      "support_word_sha256": "9def5b50ed193927e912e645934a992b4f4c68d4499a8fe7d0d421886ae1a86d",
+      "target": "331/1619"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2898,
+      "support_density": 0.5011,
+      "support_word_sha256": "d74f37641806318404d45b479f31697e8eacdf27f57fff847493c1e6e15947f7",
+      "target": "1025/1861"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2777,
+      "support_density": 0.498233333333,
+      "support_word_sha256": "4f0219fbd2322d21b26441ea9dc703f52dc90b34d73510f8e775e817ac582218",
+      "target": "259/1166"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2758,
+      "support_density": 0.497166666667,
+      "support_word_sha256": "423028f60d0f52cef915e729b1ce3bd4fdcf2ef587124fe977683273a20dbe16",
+      "target": "223/1819"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2822,
+      "support_density": 0.498966666667,
+      "support_word_sha256": "fdc5a153963435cd96c201b25c5d6564c8322156e336522b1c35b06ddbc9ef0e",
+      "target": "581/1192"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2829,
+      "support_density": 0.500233333333,
+      "support_word_sha256": "7c5f7ae2b661cc36367f8c8d1beee953919820022d104cb74fe55078059309a3",
+      "target": "95/662"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2746,
+      "support_density": 0.5006,
+      "support_word_sha256": "2304d2f1f3e1bf5aedf33e3530149dea9dd2fea899c6ee78fecde8681357dd86",
+      "target": "119/496"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2745,
+      "support_density": 0.497566666667,
+      "support_word_sha256": "b340c9b40d282be18d1d79ca372805a18a34f7ce87a4af4d9d2d4c1d32f66a5c",
+      "target": "284/1355"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2720,
+      "support_density": 0.4984,
+      "support_word_sha256": "551f1d8e4f141faa01973d311f1d90dd60fdf6857a520e8b8e4e0008ad58c0ac",
+      "target": "121/1898"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2788,
+      "support_density": 0.5017,
+      "support_word_sha256": "b0dc33eacde97f8d230f3ab3dd06f86c84da706d8324b77a960047103460eb4d",
+      "target": "233/1887"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2867,
+      "support_density": 0.501166666667,
+      "support_word_sha256": "15aba088ddfafc550909c74d315aac5334d0dcc40a00756e8d89cf6596713d2a",
+      "target": "627/1469"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2735,
+      "support_density": 0.503633333333,
+      "support_word_sha256": "1192e874711d5221b758e7609e1a2e5391c3ecb16d437d24195ca2ae5d9ba46f",
+      "target": "223/1957"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2735,
+      "support_density": 0.504333333333,
+      "support_word_sha256": "e68663205618f6197b3904d6afc5e5ea00765730b38191cfaa371aa1996f60dc",
+      "target": "37/587"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2856,
+      "support_density": 0.502566666667,
+      "support_word_sha256": "eab2d639ab24ed10687de47cee2eea68381350cc31faac4cdddee2dbebe1cb2b",
+      "target": "485/1166"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2780,
+      "support_density": 0.497333333333,
+      "support_word_sha256": "54584975328243d1229b00157c7c858cbdf12900417e6535d2ce9b03715a3627",
+      "target": "155/1013"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2750,
+      "support_density": 0.4987,
+      "support_word_sha256": "0b27d490fa08288a9550c2c03dcf7d83c9422838bfa0a060fd2b69d744c5dbf7",
+      "target": "15/1351"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2754,
+      "support_density": 0.498866666667,
+      "support_word_sha256": "992a79f702cf6e8130410f7c076b71ea06df65d970c1fe1a48ef8a01c9203318",
+      "target": "149/1871"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2727,
+      "support_density": 0.5027,
+      "support_word_sha256": "729d05f0a097cc162009a75ce6aaeccfd34af63dc86c19883f90759c8f74cb18",
+      "target": "15/188"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2742,
+      "support_density": 0.497733333333,
+      "support_word_sha256": "bb817c3b15aa23717e4830eb7968ca75725dd3e3229e1cb47dec9730a432a2be",
+      "target": "70/1137"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2841,
+      "support_density": 0.501133333333,
+      "support_word_sha256": "4b3fd191cb2bbfca8d7caaa79cf35375aefcbd4c08a0355f279bd7c08eb3ae41",
+      "target": "526/1289"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2758,
+      "support_density": 0.500066666667,
+      "support_word_sha256": "907ec794f281d619cb4d6a8fa3303a735c1aab549ca536e437d94454886d146b",
+      "target": "127/1835"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2838,
+      "support_density": 0.502366666667,
+      "support_word_sha256": "de0a23731d261cba37cd79be4f5870ee05975d2b60832f244be269cc5473a694",
+      "target": "654/1487"
+    },
+    {
+      "max_carry": 21,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2900,
+      "support_density": 0.503833333333,
+      "support_word_sha256": "869d87ed0a21876b4963090d39aca10053de52adbd25ac99328cb536c82e3a09",
+      "target": "743/1417"
+    },
+    {
+      "max_carry": 29,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2745,
+      "support_density": 0.497566666667,
+      "support_word_sha256": "81cc8da6c379e75f5ee95b15cba8471879649d8126bf49761efa2abdac9b2db8",
+      "target": "158/1751"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2853,
+      "support_density": 0.500566666667,
+      "support_word_sha256": "96bd52a8b3c19f4a0ed725c2610ff9a4493165c65c59d524829e820836e6dca9",
+      "target": "363/599"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2703,
+      "support_density": 0.4945,
+      "support_word_sha256": "17ca61bd8822ad70f85df9843b6adc77b99372996be815897b2ad97df6b41736",
+      "target": "61/821"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2862,
+      "support_density": 0.5011,
+      "support_word_sha256": "942d62c3485219a133a5ddc55a1308c7e6ef435e7df3cfa0f3e4c76f723dd3af",
+      "target": "1022/1709"
+    },
+    {
+      "max_carry": 29,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2730,
+      "support_density": 0.499933333333,
+      "support_word_sha256": "2a299a605d74cb2255fe0f5c92e365ba674920841ff2efb025cc3eb2fedf8ac3",
+      "target": "133/1037"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2759,
+      "support_density": 0.4938,
+      "support_word_sha256": "4904f29c3586cef1af6e1288118d8b5e1daaec0cf3f25ce06e286dc779df8291",
+      "target": "56/571"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2845,
+      "support_density": 0.502466666667,
+      "support_word_sha256": "d3a70f7691c967fd4b7ddaf28ec3b439a1979470449bb4c669b33543eb31e864",
+      "target": "241/449"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2792,
+      "support_density": 0.501733333333,
+      "support_word_sha256": "b449c19d1af75f3194698a2c4be4068f0429bd13537c05b4d678ee86ded3c18a",
+      "target": "189/991"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2786,
+      "support_density": 0.497466666667,
+      "support_word_sha256": "8abe7476069141ab915243a203feaa4c33a58612ef7bca8c4dcf18af4d794fca",
+      "target": "625/1484"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2897,
+      "support_density": 0.504433333333,
+      "support_word_sha256": "e941750f4bc68d325424f0909be8f0f231d93383ff5bd95691bcfeee9f128079",
+      "target": "694/1171"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2728,
+      "support_density": 0.5022,
+      "support_word_sha256": "5ef94a0496656df15c10fcb1904dcfd441de385bb47b42f6a9261a0d758328d1",
+      "target": "68/1393"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2832,
+      "support_density": 0.502666666667,
+      "support_word_sha256": "359d2c67cb25db972baa4748b38ee13c5abc80fb34399eddc48c533d2d524731",
+      "target": "477/1172"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2748,
+      "support_density": 0.499166666667,
+      "support_word_sha256": "af63cd6c12d3a200982c01f91249838d5e0657fb4eb9b582b1c01ae73bc81d4d",
+      "target": "79/997"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2749,
+      "support_density": 0.498166666667,
+      "support_word_sha256": "20083f572a170510db709531e209c8e28a0dfc94dfeb638e0c4a4cd3a083a650",
+      "target": "13/685"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2900,
+      "support_density": 0.504566666667,
+      "support_word_sha256": "9386f561bb713a05f5175278316c0f37e2109bc0ccef973697db71735136847e",
+      "target": "1044/1763"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2729,
+      "support_density": 0.505266666667,
+      "support_word_sha256": "d05c809b83e467af676d1585e74259c8fdcfcaa9510080e81c00675210cedf31",
+      "target": "62/1611"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2752,
+      "support_density": 0.5021,
+      "support_word_sha256": "d501d51cb823b87bf26cdf857205c5ee24073385b3ae341ba4c8ce7c995ca245",
+      "target": "231/1772"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2793,
+      "support_density": 0.498866666667,
+      "support_word_sha256": "86d34a77260431aeba074cb16d2fa7f7a06968cc56beccf170567079573b378a",
+      "target": "91/747"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2763,
+      "support_density": 0.498,
+      "support_word_sha256": "57a759c106bcc1ef326b730c1ab9a5f4367287f9fcc9ed3e9839c71ab5d806df",
+      "target": "126/745"
+    },
+    {
+      "max_carry": 21,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2939,
+      "support_density": 0.501833333333,
+      "support_word_sha256": "cb47cb4471b2a9089e9f8e6cba1a2441f0a78cfcaa7cf2b3e2d5424c1c8ebdf2",
+      "target": "141/296"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2837,
+      "support_density": 0.4993,
+      "support_word_sha256": "cb75fd4c222273fda7a340ae4687c8310167aef6471dfe12f37ede8d8b4ad033",
+      "target": "249/650"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2898,
+      "support_density": 0.499566666667,
+      "support_word_sha256": "9b078aa0ee98b33c8ffb4100f88f4103f872c110262f8b1d4344c252f31196d3",
+      "target": "1033/1931"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2723,
+      "support_density": 0.5032,
+      "support_word_sha256": "dd55b0eb3030aaf6bc634d5db057f2980b69eaea15df1075832727351172bf94",
+      "target": "63/1175"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2774,
+      "support_density": 0.4998,
+      "support_word_sha256": "d1ba9acff6e597eb736a71c93743a594658787d87831a9c35ccef30d2d8b5650",
+      "target": "49/1493"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2702,
+      "support_density": 0.4972,
+      "support_word_sha256": "3ec2c470864e886bb7318e24006698735a1393aea58d94a54f6777922fdd5899",
+      "target": "17/1518"
+    },
+    {
+      "max_carry": 23,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2755,
+      "support_density": 0.497966666667,
+      "support_word_sha256": "88b98581c16c0e35de2cd082566a3e1d13bed862a4ba944175febf32790fe6c1",
+      "target": "23/278"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2728,
+      "support_density": 0.5015,
+      "support_word_sha256": "5345571ae914b482e6f2f06b200e3bba49756e11b0ec318d9fc477fc49c87dcf",
+      "target": "203/1301"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2874,
+      "support_density": 0.4977,
+      "support_word_sha256": "adac5c4485df08831635c1c7d7a1bda6322f445568a95750de707c7af2cd6bab",
+      "target": "655/1186"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2907,
+      "support_density": 0.501066666667,
+      "support_word_sha256": "271b25f007ad43153d31d83bad10ec206683b4aac7f341a87799dfd2434ecbfd",
+      "target": "847/1472"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2840,
+      "support_density": 0.499966666667,
+      "support_word_sha256": "13d5f69012e4b8b5edbbab33cd269e4b3a2254de54e195b2a3b17bef9421489e",
+      "target": "511/976"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2868,
+      "support_density": 0.502333333333,
+      "support_word_sha256": "9302f4499bc214214cb23dfce5773fd54472151dc13018988c730aa8955ec7e2",
+      "target": "602/1067"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2734,
+      "support_density": 0.497066666667,
+      "support_word_sha256": "05fdd7243b187301396c5f1f128ad7771f00057ecaa9268e304b2943304dd498",
+      "target": "120/1021"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2742,
+      "support_density": 0.504666666667,
+      "support_word_sha256": "00d237f6454e8d7d74c3417411aafa4d987c9e4c1d4f5857c460eee7ec7dda55",
+      "target": "7/992"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2777,
+      "support_density": 0.504966666667,
+      "support_word_sha256": "201678fcae4415fb9ab1341538623ccd7339f94c08549a9c70886a8c31d24a51",
+      "target": "197/1104"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2825,
+      "support_density": 0.494533333333,
+      "support_word_sha256": "e278bcf867115c2063f933431cf50d681ed0a5b1457b1f527bbcb31d5a98978c",
+      "target": "817/1651"
+    },
+    {
+      "max_carry": 26,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2762,
+      "support_density": 0.503233333333,
+      "support_word_sha256": "8e2f1c5c429dd1ef8eba8cd3321065c92508d6649b7e7761c9fdd2ecb63ec1cc",
+      "target": "197/1766"
+    },
+    {
+      "max_carry": 28,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2751,
+      "support_density": 0.497633333333,
+      "support_word_sha256": "fadc75e8c40106717f64da097abdcad90e25ab7f076a22960aa8e35c1a128bfc",
+      "target": "127/836"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2802,
+      "support_density": 0.503166666667,
+      "support_word_sha256": "c9b4207cf0158c2ce0f20553652ff821448320bacb727a74c58aaee8396da6ab",
+      "target": "158/663"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2769,
+      "support_density": 0.495033333333,
+      "support_word_sha256": "64137ca256931da13e7b02639a6ef07cd25f44762a25034956bdba87b16b3233",
+      "target": "115/738"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2736,
+      "support_density": 0.4985,
+      "support_word_sha256": "545b42caee3d8793ee227e6eca0a7ecb8eadeb6260c0fdedf6cec8ee22cff0fd",
+      "target": "13/1168"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2756,
+      "support_density": 0.498266666667,
+      "support_word_sha256": "7c4128294d841d3c6437f98a18b5bc47b69c5b05f38ebe659293ea5c2ac85df9",
+      "target": "33/131"
+    },
+    {
+      "max_carry": 27,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2690,
+      "support_density": 0.503833333333,
+      "support_word_sha256": "84323b1695af80f5ad00cab3c20cc32c544b2bb06152bbd14e653adc3497de91",
+      "target": "11/1433"
+    },
+    {
+      "max_carry": 25,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2699,
+      "support_density": 0.496966666667,
+      "support_word_sha256": "2ef3171e7cd6e8c1f6683087cc5bab3eb7b7d7066c75de529eb34585e8742eed",
+      "target": "90/1343"
+    },
+    {
+      "max_carry": 22,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2721,
+      "support_density": 0.497833333333,
+      "support_word_sha256": "322664580c819c693974452ed64f48b9e755211593cfda18ff9e35e8eed8474c",
+      "target": "67/1796"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2886,
+      "support_density": 0.502966666667,
+      "support_word_sha256": "dc8ea4005e4421d6ba2e2b11661dc1e02ac623362b6faeb384650efedc0e57dc",
+      "target": "950/1639"
+    },
+    {
+      "max_carry": 24,
+      "prime_interval_count": 3226,
+      "repaired_interval_count": 2739,
+      "support_density": 0.501266666667,
+      "support_word_sha256": "21399a64e23ba24cc10d24ffec4dfae1ab91b4a4bd8f8fe72d13e7e57623b211",
+      "target": "65/1392"
+    }
+  ],
+  "validation": {
+    "all_greedy_replays_certified_alive": true,
+    "integer_carry_recurrence_violation_count": 0
+  }
+}

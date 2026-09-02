@@ -1,0 +1,23 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "problem": "Erdos_1041",
+  "checkpoint": "all_degree_radial_deficit_close_pair_and_quintic_5_over_9",
+  "date": "2026-08-24",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClosePairCyclicQuotientCase.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClosePairCyclicQuotientCase.lean",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RefinedQuinticClosePair.lean"
+  ],
+  "human_understanding_delta": "The quartic close-pair branch is actually degree-free. Hilbert-space convexity upgrades the crude remaining-factor bound 2^(m-2) to the sharp radial-deficit envelope Phi_m(y)=y(1+sqrt(1-y))^(m-2), y=t(1-t)d^2. On the close-pair range Phi_m is monotone, so a single algebraic endpoint inequality certifies the whole chord in every quotient degree. For quintics this upgrades d^2<1/2 to the exact rational certificate d^2<=5/9 via the cubic majorant Phi_5(y)<=8y-6y^2+(3/2)y^3<=31085/31104. Computation identifies the limiting algebraic threshold 4Y=0.5585151265..., Y^4+Y^3+Y^2+7Y-1=0; the proof deliberately retains the clean rational 5/9. The power-map chord-lift metric preserves the strict length-two budget for every cyclic exponent.",
+  "verification_state": {
+    "analytic": "complete",
+    "lean": "PASS: exact canonical shared-cache builds of ErdosProblems.Erdos1041.ClosePairCyclicQuotientCase and ErdosProblems.Erdos1041.RefinedQuinticClosePair via lean_fast_build.py --jobs 2 on 2026-08-24",
+    "computation": "An 80-digit one-variable solve isolated the quintic envelope break at d^2=0.558515126552852... and elimination recovered Y^4+Y^3+Y^2+7Y-1=0 for Y=d^2/4. The computation selected 5/9; the final certificate is the exact symbolic bound 31085/31104<1 and does not depend on floating point."
+  },
+  "publication_or_review_state": "private analytic and Lean-verified checkpoint ready for scoped commit and novelty review; unrestricted Erdos 1041 remains open",
+  "canonicalization_state": "all-degree radial-deficit close-pair criterion with a Lean-verified near-sharp rational quintic specialization; not externally reviewed or canonicalized",
+  "unresolved_downstream_bottleneck": "The quantitatively separated quotient-root regime, already nonempty in degree five, requires a non-fixed hub, curved path, or global component argument.",
+  "next_stage_owner": "Formal-math Refinery: assimilate the verified radial-deficit criterion and 5/9 quintic specialization, preserve the no-novelty boundary, then return the closure loop to the separated quintic and tetranomial selector regimes"
+}

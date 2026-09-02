@@ -1,0 +1,413 @@
+{
+ "probe_id": "erdos1049_window_divisor_supply",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_1049",
+   "target_statement": "Determine irrationality of the rational-base Lambert values, with 3/2 as the first resistant explicit base.",
+   "claim_ceiling": "The published Bundschuh-Vaananen theorem plus the kernel-checked specialization establishes irrationality at 7/2, while 3/2 remains outside the recorded published regions and open. Exact q-Apery work excludes natural-prefix compression and opens moving-tail modular compression. The stored modular-only selector pairs fail the normalized analytic consumer at starts 1 through 4, while an analytic-aware unimodular recombination repairs that consumer exactly at starts 0 through 3 and preserves rank two. The huge recombination heights are substantially structural: Lean proves |Delta| <= 2 H epsilon (|B_0|+|B_1|), and the exact start-3 data force at least 1874 coefficient bits for the certified common ceiling. Lean also proves that at a rational target a/q one of two non-collinear integral forms has size at least 1/q, so generic continued-fraction cofinal decay is not an independent lemma but already entails irrationality. New tail-denominator arithmetic finds long source-supported odd divisor runs and a matching extra Plucker index, but exact block-aligned losses for 5, 7, 13, 19, 23, 29, and 97 refute fixed-prime infinite-tail promotion. Lean proves that a finite-window common denominator divisor reduces binary pigeonholing to one coordinate and that a prime occurring once in the determinant forces a rational 1/q gap. The surviving q-Apery producer was recorded as a cofinal moving-prime law rather than an infinite fixed tail; that reading is now CORRECTED - Wolstenholme refutes only a tail starting at the first-appearance index j=d, and past the LAST loss block a fixed prime does persist: J_5={4,20,24} is finite by descent, so 5 divides B_j for every j>=50 and the step-1 window divisor is cofinal unconditionally, with no input from Boyd; finite subunit forms do not establish irrationality. For every outward Van Assche evaluation m_n>=n, the exact coefficient degree, target-tail cutoff, and forced homogeneous rational clearing give positive main term (n*m+n^2/2)log(4/3)+(3/pi^2)m^2 log 3. This closes evaluation choice and denominator cancellation as scalar repairs, but not primitive common content. The adjacent second-kind determinant proves that the part of the common gcd coprime to the cyclotomic clearing value divides 3^n+2^n, confining every possible quadratic repair to clearing-supported prime powers. Exact counterexamples show that those primes need not have order <=2n, and the stronger valuation bound v_ell(G)<=v_ell(D_M)+v_ell(3^n+2^n) already fails at (n,m,ell)=(4,16,7). On the fixed diagonal m=n, all odd row content divides the specialization-independent resultant Res_p(A_n,C_n). Its cyclotomic local factors now have an authored all-index q-Lucas product law: for n=ar+b the previously missing norm is the smaller diagonal P_b(p^b), multiplied by an explicit harmonic scalar. The exact cross and harmonic factors consume about 0.55015 of the 0.76546 quadratic budget, but the smaller-diagonal product drives the clearing resultant above budget already at n=15, before the P-Q factor. Thus full-resultant height is closed as a scalar content bound; only a specialization-selective gcd theorem strictly below that resultant remains on this diagonal. Inward evaluations require a new exact target identity, and higher-rank multiple-q-Jacobi systems remain outside this result. For Zudilin's cubic Hankel route, normalized q-order, scalar content, and entry-valuation border charge are all sharply insufficient; rank five has precisely the forced non-p content Phi_1^3 Phi_2. The all-d wrapped-Hankel resultant proof now shows that the full first-appearance associated-graded cyclotomic residue is nonzero for every d, eliminating cancellation among minimum-order first-appearance terms and killing the expanding homogeneous boundary mode. This supplies no extra cumulative cubic charge. A surviving Hankel route must create higher-valuation-layer cancellation of cubic density, a genuinely global norm or resultant gain beyond the first block, or a different integral model. No irrationality theorem for 3/2 or universal rational-base theorem is established. The step-1 window-divisor predicate has now been evaluated for the first time: every start in the cofinality half of the tested range carries a divisor across the exact window of width 3s^2+5s+3, and every newly appearing prime divides 3^s-2^s at its first start, seven out of seven. Step 1 is therefore not the weak link, and the residual is a comparison of ord_p(3/2) against the quadratic window rather than a further change of target. Step 1 of the three-halves producer is therefore closed by a fixed prime rather than a moving one, and hypothesis (H) of the Casoratian block-law derivation is false at p=5 (three residues mod 25) and is replaced by the true and sufficient 5-adic continuity (C5), which follows from the certified monodromy R_(j+P_N) = -R_j mod 5^N. Height and decay are untouched and no irrationality theorem at 3/2 is established. HOMOGENISATION CEILING (2026-08-24): the content lane is now capped by a base-only inequality. The two homogenised numerators are coprime (gcd = 1 exactly at every tested index) and the Casoratian bounds any shared content by 3^j(3^j+2^(j+1)), i.e. O(j), so no gcd theorem can move the quadratic constant. Since B_j is a multiple of num(R_j) = a^(D_j+O(j)) and decay needs log B_j < 2 D_j log(a/b), decay requires a > b^2 with the degree exponent cancelling. At 3/2 the irreducible floor (3/2)log3 j^2 = 1.64792 j^2 already exceeds the 1.21640 j^2 budget before any clearing is counted. Restoring the clearing derives the recorded threshold log b/log a < 1/2 - 1/pi^2 exactly and identifies 1/pi^2 as the cyclotomic sum. Therefore the primitive-content and Pad\u00e9-height producers cannot reach 3/2 at any level of success; their maximum prize is the band b^2 < a with log b/log a >= 1/2 - 1/pi^2, smallest member 5/2. 3/2 requires congruence-constrained or higher-rank construction instead. RANK BUDGET LAW (2026-08-24): a rank-r type-I system closes a/b only if log b/log a < (r-1-kappa)/r with kappa the per-degree clearing rate, measured at rank two as 2/pi^2. At r=2 this reproduces the recorded threshold 1/2 - 1/pi^2 to twelve digits and identifies its halves as homogenisation and the phi-sum. Rank needed: 2 for integer q and 7/2, 3 for 5/2 and 10/3, FOUR for 3/2, 6 for 4/3, 9 for 5/4. So 3/2 is the first explicit base beyond rank two even with perfect content, and beyond rank three at the observed clearing rate - it misses rank three by 0.03181 in t and clears rank four by 0.06841. Closing 3/2 therefore requires either rank three with kappa_3 < 0.10721 (53% of the rank-two rate) or rank four at the observed rate, the latter being Zudilin's cubic Hankel construction, which is already the right rank. This is a necessary-condition budget, not a construction, and it does not address non-vanishing of the constructed form, which is the real high-rank obstruction."
+  },
+  "hypothesis": {
+   "id": "step_one_window_divisor_exists_and_is_source_supported",
+   "statement": "For cofinally many starts s a moving divisor exists across the exact window of width 3s^2 + 5s + 3, and each newly appearing prime divides the source denominator 3^s - 2^s at its first start."
+  },
+  "probe": {
+   "id": "erdos1049_window_divisor_supply",
+   "question": "Does the step-1 predicate hold start by start, and is the divisor source-supported in the first-appearance sense?",
+   "computation": "Build the primitive q-Apery rows from the exact Fraction recurrence to index 677, take the gcd of the denominator coordinates across each exact window [s, s + 3s^2 + 5s + 3], factor it, and test each newly appearing prime against 3^s - 2^s. The row generator is anchored against the prior lab's 211 | B_j for 5 <= j <= 255.",
+   "falsifier": "A start whose window gcd is 1. If such starts are cofinal, step 1 as stated is false and the target must change again.",
+   "stop_condition": "Cofinal empty windows retire step 1; the probe deliberately does not extend the row cutoff hunting for new tail primes, which the prior lab states would not change the mathematical status.",
+   "resource_bounds": {
+    "max_start": 14,
+    "rows_built": 677
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "Step 1 is not the weak link: the residual on this route is a proof of what the computation shows rather than another change of target.",
+   "falsification_consequence": "The window formulation joins the fixed-tail formulation as refuted, and the route needs a third target.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominator.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/WindowDivisorSupplyLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominatorLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos1049_window_divisor_supply.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "677 rows; starts 0..14. Only s = 0, 1, 2, 4 have window gcd 1 - the earliest starts - and every start in the upper half of the range carries a divisor, which is where cofinality lives. The divisor set grows with s: 19 at s=3, 211 at s=5, 71*211 at s=7, +1009 at s=9, +331 at s=11, +29927 at s=13, +463 at s=14. The source-support law is exact on first appearance, seven out of seven: 19|19, 211|211, 71|2059, 1009|19171, 331|175099, 29927|1586131, 463|4766585.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "Every start in the cofinality half carries a divisor, and every newly appearing prime divides 3^s - 2^s at its first start.",
+    "next_analytic_target": "Show that for every large s the prime p_s dividing 3^s - 2^s selected at first appearance has no loss block meeting [s, s + 3s^2 + 5s + 3] - a comparison of ord_p(3/2) against a quadratic window.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_1049",
+  "motivated_by": [
+   "three_halves_pade_height_gap"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "window_divisor_supply_and_first_appearance_law"
+  ],
+  "rationale": "Evaluates the step-1 predicate the prior lab named but never tested, and makes the source-support claim exact by testing first appearance rather than inherited membership."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/WindowDivisorSupplyLab.md",
+   "byte_length": 6955,
+   "sha256": "7c11ffde27e74e01410da5ad65171ff2b6e800e91b4a84199cf07b74a337b0bc"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominatorLab.md",
+   "byte_length": 5018,
+   "sha256": "9a28606cfbb0e7db89513b6af8b739584b1a1a82dff95dc67446ed6fbe8bf85a"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+   "byte_length": 136259,
+   "sha256": "7690d369fae9af2c0743560291e3c975edfce1ebe7137ac0582bfc0048a97567",
+   "scoped_sha256": "ca0db1dc7202657bd3fad3a5affd79850efa5d8eb066c6bd7343c07bb77ce016",
+   "scope_ids": [
+    "three_halves_pade_height_gap",
+    "window_divisor_supply_and_first_appearance_law"
+   ]
+  },
+  {
+   "path": "formal_math/probes/erdos1049_window_divisor_supply.py",
+   "byte_length": 7077,
+   "sha256": "9c6953c004357c51211992351ca034090188c0a4062229e78819191afbb2e73c"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos1049_window_divisor_supply",
+  "rows_built": 677,
+  "lab_anchor_211_divides_B_5_to_255": true,
+  "max_start": 14,
+  "first_appearance_law": [
+   {
+    "start": 3,
+    "new_prime": 19,
+    "source_3s_minus_2s": 19,
+    "divides_source": true
+   },
+   {
+    "start": 5,
+    "new_prime": 211,
+    "source_3s_minus_2s": 211,
+    "divides_source": true
+   },
+   {
+    "start": 7,
+    "new_prime": 71,
+    "source_3s_minus_2s": 2059,
+    "divides_source": true
+   },
+   {
+    "start": 9,
+    "new_prime": 1009,
+    "source_3s_minus_2s": 19171,
+    "divides_source": true
+   },
+   {
+    "start": 11,
+    "new_prime": 331,
+    "source_3s_minus_2s": 175099,
+    "divides_source": true
+   },
+   {
+    "start": 13,
+    "new_prime": 29927,
+    "source_3s_minus_2s": 1586131,
+    "divides_source": true
+   },
+   {
+    "start": 14,
+    "new_prime": 463,
+    "source_3s_minus_2s": 4766585,
+    "divides_source": true
+   }
+  ],
+  "every_new_prime_divides_3s_minus_2s_at_first_start": true,
+  "starts_with_no_window_divisor": [
+   0,
+   1,
+   2,
+   4
+  ],
+  "late_starts_with_no_window_divisor": [],
+  "cofinality_probe_upper_half_from": 8,
+  "starts_with_divisor": [
+   3,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14
+  ],
+  "per_start": [
+   {
+    "start": 0,
+    "window_width": 3,
+    "window_high_index": 3,
+    "window_gcd_bits": 1,
+    "window_gcd_has_divisor": false,
+    "window_gcd_small_factors": {},
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {},
+    "all_small_factors_source_supported": null
+   },
+   {
+    "start": 1,
+    "window_width": 11,
+    "window_high_index": 12,
+    "window_gcd_bits": 1,
+    "window_gcd_has_divisor": false,
+    "window_gcd_small_factors": {},
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {},
+    "all_small_factors_source_supported": null
+   },
+   {
+    "start": 2,
+    "window_width": 25,
+    "window_high_index": 27,
+    "window_gcd_bits": 1,
+    "window_gcd_has_divisor": false,
+    "window_gcd_small_factors": {},
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {},
+    "all_small_factors_source_supported": null
+   },
+   {
+    "start": 3,
+    "window_width": 45,
+    "window_high_index": 48,
+    "window_gcd_bits": 5,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "19": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "19": true
+    },
+    "all_small_factors_source_supported": true
+   },
+   {
+    "start": 4,
+    "window_width": 71,
+    "window_high_index": 75,
+    "window_gcd_bits": 1,
+    "window_gcd_has_divisor": false,
+    "window_gcd_small_factors": {},
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {},
+    "all_small_factors_source_supported": null
+   },
+   {
+    "start": 5,
+    "window_width": 103,
+    "window_high_index": 108,
+    "window_gcd_bits": 8,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "211": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "211": true
+    },
+    "all_small_factors_source_supported": true
+   },
+   {
+    "start": 6,
+    "window_width": 141,
+    "window_high_index": 147,
+    "window_gcd_bits": 8,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "211": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "211": false
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 7,
+    "window_width": 185,
+    "window_high_index": 192,
+    "window_gcd_bits": 14,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "71": 1,
+     "211": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "71": true,
+     "211": false
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 8,
+    "window_width": 235,
+    "window_high_index": 243,
+    "window_gcd_bits": 14,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "71": 1,
+     "211": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "71": false,
+     "211": false
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 9,
+    "window_width": 291,
+    "window_high_index": 300,
+    "window_gcd_bits": 24,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "71": 1,
+     "211": 1,
+     "1009": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "71": false,
+     "211": false,
+     "1009": true
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 10,
+    "window_width": 353,
+    "window_high_index": 363,
+    "window_gcd_bits": 24,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "71": 1,
+     "211": 1,
+     "1009": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "71": false,
+     "211": true,
+     "1009": false
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 11,
+    "window_width": 421,
+    "window_high_index": 432,
+    "window_gcd_bits": 33,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "71": 1,
+     "211": 1,
+     "331": 1,
+     "1009": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "71": false,
+     "211": false,
+     "331": true,
+     "1009": false
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 12,
+    "window_width": 495,
+    "window_high_index": 507,
+    "window_gcd_bits": 27,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "211": 1,
+     "331": 1,
+     "1009": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "211": false,
+     "331": false,
+     "1009": false
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 13,
+    "window_width": 575,
+    "window_high_index": 588,
+    "window_gcd_bits": 41,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "211": 1,
+     "331": 1,
+     "1009": 1,
+     "29927": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "211": false,
+     "331": false,
+     "1009": false,
+     "29927": true
+    },
+    "all_small_factors_source_supported": false
+   },
+   {
+    "start": 14,
+    "window_width": 661,
+    "window_high_index": 675,
+    "window_gcd_bits": 50,
+    "window_gcd_has_divisor": true,
+    "window_gcd_small_factors": {
+     "211": 1,
+     "331": 1,
+     "463": 1,
+     "1009": 1,
+     "29927": 1
+    },
+    "window_gcd_large_cofactor_bits": 0,
+    "source_3s_minus_2s_supported": {
+     "211": false,
+     "331": false,
+     "463": true,
+     "1009": false,
+     "29927": false
+    },
+    "all_small_factors_source_supported": false
+   }
+  ],
+  "reading": "every start in the upper half of the range carries a window divisor, so the step-1 predicate is empirically sound where cofinality lives and the residual is a proof rather than another change of target; every newly appearing prime divides 3^s - 2^s at its first start"
+ }
+}

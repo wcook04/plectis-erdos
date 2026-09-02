@@ -1,0 +1,844 @@
+{
+  "erdos_borwein_E": 1.6066951524152917,
+  "parameters": {
+    "cap": 20,
+    "denominators": "21,63,255,511,2047,9,45,105,465,1023,3,5,7,15,33,4095,8191,10007,997,2049",
+    "write": "state/formal_math/erdos257_period_noncollapse/required_excess_death_budget_receipt.json"
+  },
+  "payload_sha256": "e0ca804e4e2eab45fb35d7874f122bcaf585071eb356fe67c237e8b515991f07",
+  "rows": [
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            2,
+            3
+          ],
+          "x": "10/21"
+        },
+        {
+          "F": [
+            1,
+            2,
+            3
+          ],
+          "x": "31/21"
+        }
+      ],
+      "lattice_points_in_(0,E)": 33,
+      "measure_predicted_deaths": 12.740598200721127,
+      "measure_predicted_survivors": 21,
+      "order_of_two": 6,
+      "prime_factors": [
+        3,
+        7
+      ],
+      "q": 21,
+      "required_excess_as_fraction_of_survivors": 0.9047619047619048,
+      "required_excess_deaths": 19,
+      "status": "exact",
+      "subsets_enumerated": 15
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "count": 8,
+      "erdos257_required_survivors": 8,
+      "examples": [
+        {
+          "F": [
+            6
+          ],
+          "x": "1/63"
+        },
+        {
+          "F": [
+            1,
+            6
+          ],
+          "x": "64/63"
+        },
+        {
+          "F": [
+            2,
+            6
+          ],
+          "x": "22/63"
+        },
+        {
+          "F": [
+            3,
+            6
+          ],
+          "x": "10/63"
+        },
+        {
+          "F": [
+            1,
+            2,
+            6
+          ],
+          "x": "85/63"
+        },
+        {
+          "F": [
+            1,
+            3,
+            6
+          ],
+          "x": "73/63"
+        }
+      ],
+      "lattice_points_in_(0,E)": 101,
+      "measure_predicted_deaths": 38.22179460216338,
+      "measure_predicted_survivors": 63,
+      "order_of_two": 6,
+      "prime_factors": [
+        3,
+        7
+      ],
+      "q": 63,
+      "required_excess_as_fraction_of_survivors": 0.873015873015873,
+      "required_excess_deaths": 55,
+      "status": "exact",
+      "subsets_enumerated": 15
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "count": 6,
+      "erdos257_required_survivors": 6,
+      "examples": [
+        {
+          "F": [
+            8
+          ],
+          "x": "1/255"
+        },
+        {
+          "F": [
+            1,
+            8
+          ],
+          "x": "256/255"
+        },
+        {
+          "F": [
+            2,
+            8
+          ],
+          "x": "86/255"
+        },
+        {
+          "F": [
+            1,
+            2,
+            8
+          ],
+          "x": "341/255"
+        },
+        {
+          "F": [
+            2,
+            4,
+            8
+          ],
+          "x": "103/255"
+        },
+        {
+          "F": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "x": "358/255"
+        }
+      ],
+      "lattice_points_in_(0,E)": 409,
+      "measure_predicted_deaths": 154.7072638658994,
+      "measure_predicted_survivors": 255,
+      "order_of_two": 8,
+      "prime_factors": [
+        3,
+        5,
+        17
+      ],
+      "q": 255,
+      "required_excess_as_fraction_of_survivors": 0.9764705882352941,
+      "required_excess_deaths": 249,
+      "status": "exact",
+      "subsets_enumerated": 63
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6,
+        9
+      ],
+      "count": 4,
+      "erdos257_required_survivors": 4,
+      "examples": [
+        {
+          "F": [
+            9
+          ],
+          "x": "1/511"
+        },
+        {
+          "F": [
+            1,
+            9
+          ],
+          "x": "512/511"
+        },
+        {
+          "F": [
+            3,
+            9
+          ],
+          "x": "74/511"
+        },
+        {
+          "F": [
+            1,
+            3,
+            9
+          ],
+          "x": "585/511"
+        }
+      ],
+      "lattice_points_in_(0,E)": 821,
+      "measure_predicted_deaths": 310.02122288421407,
+      "measure_predicted_survivors": 511,
+      "order_of_two": 9,
+      "prime_factors": [
+        7,
+        73
+      ],
+      "q": 511,
+      "required_excess_as_fraction_of_survivors": 0.9921722113502935,
+      "required_excess_deaths": 507,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6,
+        11
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            11
+          ],
+          "x": "1/2047"
+        },
+        {
+          "F": [
+            1,
+            11
+          ],
+          "x": "2048/2047"
+        }
+      ],
+      "lattice_points_in_(0,E)": 3288,
+      "measure_predicted_deaths": 1241.9049769941023,
+      "measure_predicted_survivors": 2047,
+      "order_of_two": 11,
+      "prime_factors": [
+        23,
+        89
+      ],
+      "q": 2047,
+      "required_excess_as_fraction_of_survivors": 0.9990229604298974,
+      "required_excess_deaths": 2045,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "count": 0,
+      "erdos257_required_survivors": 0,
+      "examples": [],
+      "lattice_points_in_(0,E)": 14,
+      "measure_predicted_deaths": 5.460256371737626,
+      "measure_predicted_survivors": 9,
+      "order_of_two": 6,
+      "prime_factors": [
+        3
+      ],
+      "q": 9,
+      "required_excess_as_fraction_of_survivors": 1.0,
+      "required_excess_deaths": 9,
+      "status": "exact",
+      "subsets_enumerated": 15
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "count": 0,
+      "erdos257_required_survivors": 0,
+      "examples": [],
+      "lattice_points_in_(0,E)": 72,
+      "measure_predicted_deaths": 27.301281858688128,
+      "measure_predicted_survivors": 45,
+      "order_of_two": 12,
+      "prime_factors": [
+        3,
+        5
+      ],
+      "q": 45,
+      "required_excess_as_fraction_of_survivors": 1.0,
+      "required_excess_deaths": 45,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            3,
+            4
+          ],
+          "x": "22/105"
+        },
+        {
+          "F": [
+            1,
+            3,
+            4
+          ],
+          "x": "127/105"
+        }
+      ],
+      "lattice_points_in_(0,E)": 168,
+      "measure_predicted_deaths": 63.70299100360563,
+      "measure_predicted_survivors": 105,
+      "order_of_two": 12,
+      "prime_factors": [
+        3,
+        5,
+        7
+      ],
+      "q": 105,
+      "required_excess_as_fraction_of_survivors": 0.9809523809523809,
+      "required_excess_deaths": 103,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            4,
+            5
+          ],
+          "x": "46/465"
+        },
+        {
+          "F": [
+            1,
+            4,
+            5
+          ],
+          "x": "511/465"
+        }
+      ],
+      "lattice_points_in_(0,E)": 747,
+      "measure_predicted_deaths": 282.11324587311066,
+      "measure_predicted_survivors": 465,
+      "order_of_two": 20,
+      "prime_factors": [
+        3,
+        5,
+        31
+      ],
+      "q": 465,
+      "required_excess_as_fraction_of_survivors": 0.9956989247311828,
+      "required_excess_deaths": 463,
+      "status": "exact",
+      "subsets_enumerated": 63
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        10
+      ],
+      "count": 4,
+      "erdos257_required_survivors": 4,
+      "examples": [
+        {
+          "F": [
+            10
+          ],
+          "x": "1/1023"
+        },
+        {
+          "F": [
+            1,
+            10
+          ],
+          "x": "1024/1023"
+        },
+        {
+          "F": [
+            5,
+            10
+          ],
+          "x": "34/1023"
+        },
+        {
+          "F": [
+            1,
+            5,
+            10
+          ],
+          "x": "1057/1023"
+        }
+      ],
+      "lattice_points_in_(0,E)": 1643,
+      "measure_predicted_deaths": 620.6491409208435,
+      "measure_predicted_survivors": 1023,
+      "order_of_two": 10,
+      "prime_factors": [
+        3,
+        11,
+        31
+      ],
+      "q": 1023,
+      "required_excess_as_fraction_of_survivors": 0.9960899315738025,
+      "required_excess_deaths": 1019,
+      "status": "exact",
+      "subsets_enumerated": 63
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            2
+          ],
+          "x": "1/3"
+        },
+        {
+          "F": [
+            1,
+            2
+          ],
+          "x": "4/3"
+        }
+      ],
+      "lattice_points_in_(0,E)": 4,
+      "measure_predicted_deaths": 1.8200854572458753,
+      "measure_predicted_survivors": 3,
+      "order_of_two": 2,
+      "prime_factors": [
+        3
+      ],
+      "q": 3,
+      "required_excess_as_fraction_of_survivors": 0.3333333333333333,
+      "required_excess_deaths": 1,
+      "status": "exact",
+      "subsets_enumerated": 15
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            2,
+            4
+          ],
+          "x": "2/5"
+        },
+        {
+          "F": [
+            1,
+            2,
+            4
+          ],
+          "x": "7/5"
+        }
+      ],
+      "lattice_points_in_(0,E)": 8,
+      "measure_predicted_deaths": 3.033475762076459,
+      "measure_predicted_survivors": 5,
+      "order_of_two": 4,
+      "prime_factors": [
+        5
+      ],
+      "q": 5,
+      "required_excess_as_fraction_of_survivors": 0.6,
+      "required_excess_deaths": 3,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            3
+          ],
+          "x": "1/7"
+        },
+        {
+          "F": [
+            1,
+            3
+          ],
+          "x": "8/7"
+        }
+      ],
+      "lattice_points_in_(0,E)": 11,
+      "measure_predicted_deaths": 4.246866066907042,
+      "measure_predicted_survivors": 7,
+      "order_of_two": 3,
+      "prime_factors": [
+        7
+      ],
+      "q": 7,
+      "required_excess_as_fraction_of_survivors": 0.7142857142857143,
+      "required_excess_deaths": 5,
+      "status": "exact",
+      "subsets_enumerated": 15
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            4
+          ],
+          "x": "1/15"
+        },
+        {
+          "F": [
+            1,
+            4
+          ],
+          "x": "16/15"
+        }
+      ],
+      "lattice_points_in_(0,E)": 24,
+      "measure_predicted_deaths": 9.100427286229376,
+      "measure_predicted_survivors": 15,
+      "order_of_two": 4,
+      "prime_factors": [
+        3,
+        5
+      ],
+      "q": 15,
+      "required_excess_as_fraction_of_survivors": 0.8666666666666667,
+      "required_excess_deaths": 13,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        10
+      ],
+      "count": 0,
+      "erdos257_required_survivors": 0,
+      "examples": [],
+      "lattice_points_in_(0,E)": 53,
+      "measure_predicted_deaths": 20.02094002970463,
+      "measure_predicted_survivors": 33,
+      "order_of_two": 10,
+      "prime_factors": [
+        3,
+        11
+      ],
+      "q": 33,
+      "required_excess_as_fraction_of_survivors": 1.0,
+      "required_excess_deaths": 33,
+      "status": "exact",
+      "subsets_enumerated": 63
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        12
+      ],
+      "count": 16,
+      "erdos257_required_survivors": 16,
+      "examples": [
+        {
+          "F": [
+            12
+          ],
+          "x": "1/4095"
+        },
+        {
+          "F": [
+            1,
+            12
+          ],
+          "x": "4096/4095"
+        },
+        {
+          "F": [
+            2,
+            12
+          ],
+          "x": "1366/4095"
+        },
+        {
+          "F": [
+            3,
+            12
+          ],
+          "x": "586/4095"
+        },
+        {
+          "F": [
+            4,
+            12
+          ],
+          "x": "274/4095"
+        },
+        {
+          "F": [
+            1,
+            2,
+            12
+          ],
+          "x": "5461/4095"
+        }
+      ],
+      "lattice_points_in_(0,E)": 6579,
+      "measure_predicted_deaths": 2484.41664914062,
+      "measure_predicted_survivors": 4095,
+      "order_of_two": 12,
+      "prime_factors": [
+        3,
+        5,
+        7,
+        13
+      ],
+      "q": 4095,
+      "required_excess_as_fraction_of_survivors": 0.9960927960927961,
+      "required_excess_deaths": 4079,
+      "status": "exact",
+      "subsets_enumerated": 63
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6,
+        13
+      ],
+      "count": 2,
+      "erdos257_required_survivors": 2,
+      "examples": [
+        {
+          "F": [
+            13
+          ],
+          "x": "1/8191"
+        },
+        {
+          "F": [
+            1,
+            13
+          ],
+          "x": "8192/8191"
+        }
+      ],
+      "lattice_points_in_(0,E)": 13160,
+      "measure_predicted_deaths": 4969.439993433655,
+      "measure_predicted_survivors": 8191,
+      "order_of_two": 13,
+      "prime_factors": [
+        8191
+      ],
+      "q": 8191,
+      "required_excess_as_fraction_of_survivors": 0.9997558295690392,
+      "required_excess_deaths": 8189,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6,
+        5003
+      ],
+      "count": 0,
+      "erdos257_required_survivors": 0,
+      "examples": [],
+      "lattice_points_in_(0,E)": 16078,
+      "measure_predicted_deaths": 6071.198390219824,
+      "measure_predicted_survivors": 10007,
+      "order_of_two": 5003,
+      "prime_factors": [
+        10007
+      ],
+      "q": 10007,
+      "required_excess_as_fraction_of_survivors": 1.0,
+      "required_excess_deaths": 10007,
+      "status": "exact",
+      "subsets_enumerated": 31
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        83,
+        166,
+        332
+      ],
+      "count": 0,
+      "erdos257_required_survivors": 0,
+      "examples": [],
+      "lattice_points_in_(0,E)": 1601,
+      "measure_predicted_deaths": 604.8750669580459,
+      "measure_predicted_survivors": 997,
+      "order_of_two": 332,
+      "prime_factors": [
+        997
+      ],
+      "q": 997,
+      "required_excess_as_fraction_of_survivors": 1.0,
+      "required_excess_deaths": 997,
+      "status": "exact",
+      "subsets_enumerated": 255
+    },
+    {
+      "candidate_exponents": [
+        1,
+        2,
+        3,
+        6,
+        11,
+        22
+      ],
+      "count": 0,
+      "erdos257_required_survivors": 0,
+      "examples": [],
+      "lattice_points_in_(0,E)": 3292,
+      "measure_predicted_deaths": 1243.1183672989328,
+      "measure_predicted_survivors": 2049,
+      "order_of_two": 22,
+      "prime_factors": [
+        3,
+        683
+      ],
+      "q": 2049,
+      "required_excess_as_fraction_of_survivors": 1.0,
+      "required_excess_deaths": 2049,
+      "status": "exact",
+      "subsets_enumerated": 63
+    }
+  ],
+  "schema": "erdos257_required_excess_death_budget_v1",
+  "source": {
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SupportWordStructureLab.md",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/required_excess_death_budget.py"
+  }
+}

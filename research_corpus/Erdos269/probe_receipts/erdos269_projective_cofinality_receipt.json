@@ -1,0 +1,1444 @@
+{
+ "probe_id": "erdos269_projective_cofinality",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_269",
+   "target_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+   "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open."
+  },
+  "hypothesis": {
+   "id": "projective_violating_pairs_are_scarce",
+   "statement": "Violating projective-shadow pairs are scarce or run out, so the cofinal projective producer cannot be constructed."
+  },
+  "probe": {
+   "id": "erdos269_projective_cofinality",
+   "question": "For every B coprime to 30, do individually admissible window pairs violating d_a*H_b = d_b*H_a (mod B) exist, how often, and do they keep appearing late?",
+   "computation": "Enumerate every admissible endpoint - base clears the cap, residue does not escape it, residue coprime to B - for all denominators coprime to 30 in [7,500] across starts a <= 3000, then measure the violating fraction, the latest admissible start, and the coherence rate split by same-start versus different-start and by near versus far separation.",
+   "falsifier": "A denominator with no violating pair, or admissible endpoints that stop appearing beyond some start.",
+   "stop_condition": "Either would close the route rather than leave it unproved.",
+   "resource_bounds": {
+    "max_denominator": 500,
+    "max_start": 3000,
+    "max_window_length": 40,
+    "pair_cap": 60
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The construction is abundant and the producer reduces to two equidistribution statements rather than a search.",
+   "falsification_consequence": "The projective route is closed and only the integral-tail branch remains.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/HalfHeightDenominatorTransport.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos269_engine.py",
+    "formal_math/probes/erdos269_projective_cofinality.py",
+    "formal_math/probes/erdos269_fast_engine.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "All 133 denominators admit violating pairs, at fractions from 0.828 (B=7) to 0.988 (B=499); the packet's B=11 witness is reproduced exactly. Admissible endpoints persist to the top of every range and violating pairs exist with both starts above 2963 for every B. Same-start pairs are always coherent (P = 1.0000 exactly), so the construction must pair different starts. For different starts the residual coherence is short-range only: neighbours give 1.23x/2.06x/6.42x uniform at B=7/101/499 while pairs separated by half the list give 1.18x/1.10x/0.92x - equidistributed.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "Violating pairs exist for every tested denominator and stay available at the top of the range, with far-pair coherence measured at the uniform rate.",
+    "next_analytic_target": "Cofinality of admissible endpoints together with equidistribution of the projective defect modulo B across far-separated pairs.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_269",
+  "motivated_by": [
+   "cofinal_projective_window_pair_incoherence",
+   "local_window_certificates_B_1_7_16",
+   "projective_two_window_residue_coherence"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "projective_defect_equidistributes_across_far_pairs"
+  ],
+  "rationale": "Turns the second open producer from a search into two named equidistribution statements, and records the same-start constraint that any construction must respect."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+   "byte_length": 14385,
+   "sha256": "271d03d7211814b204b94f74d9251e1e687d7c591c34605110348903c025572e"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+   "byte_length": 57166,
+   "sha256": "d6fd961aebd3e3ff0faac37ce7bfd4637c6d7b3acf236dc3439201efbff187b0"
+  },
+  {
+   "path": "formal_math/probes/erdos269_engine.py",
+   "byte_length": 5343,
+   "sha256": "a4de6896e1b580af3ed8545c51344ef9912e45530328a6f10b12d55af757a2cd"
+  },
+  {
+   "path": "formal_math/probes/erdos269_projective_cofinality.py",
+   "byte_length": 7361,
+   "sha256": "216322c6362e861dc65178180599eb30352bf2d91c9719916c04dfc2f7546338"
+  },
+  {
+   "path": "formal_math/probes/erdos269_fast_engine.py",
+   "byte_length": 5564,
+   "sha256": "cc16036f2a83f9cb91ef25c779983d16d372c80d38a30b4d6b386c98adb44c93"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos269_projective_cofinality",
+  "parameters": {
+   "max_denominator": 500,
+   "max_start": 3000,
+   "max_length": 40,
+   "pair_cap": 60
+  },
+  "denominators_tested": 133,
+  "denominators_with_no_violating_pair": [],
+  "min_violation_fraction": 0.82776,
+  "min_latest_violating_pair_min_start": 2963,
+  "per_denominator": [
+   {
+    "denominator": 7,
+    "admissible_endpoints": 1170,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 68370,
+    "violating_pairs": 56594,
+    "violation_fraction": 0.82776,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.85714
+   },
+   {
+    "denominator": 11,
+    "admissible_endpoints": 1215,
+    "latest_admissible_start": 2997,
+    "pairs_tested": 71070,
+    "violating_pairs": 63357,
+    "violation_fraction": 0.89147,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.90909
+   },
+   {
+    "denominator": 13,
+    "admissible_endpoints": 1366,
+    "latest_admissible_start": 2992,
+    "pairs_tested": 80130,
+    "violating_pairs": 72751,
+    "violation_fraction": 0.90791,
+    "latest_violating_pair_min_start": 2989,
+    "expected_fraction_if_uniform": 0.92308
+   },
+   {
+    "denominator": 17,
+    "admissible_endpoints": 1331,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 78030,
+    "violating_pairs": 72403,
+    "violation_fraction": 0.92789,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.94118
+   },
+   {
+    "denominator": 19,
+    "admissible_endpoints": 1407,
+    "latest_admissible_start": 2997,
+    "pairs_tested": 82590,
+    "violating_pairs": 76910,
+    "violation_fraction": 0.93123,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.94737
+   },
+   {
+    "denominator": 23,
+    "admissible_endpoints": 1351,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 79230,
+    "violating_pairs": 74815,
+    "violation_fraction": 0.94428,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.95652
+   },
+   {
+    "denominator": 29,
+    "admissible_endpoints": 1339,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 78510,
+    "violating_pairs": 74971,
+    "violation_fraction": 0.95492,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.96552
+   },
+   {
+    "denominator": 31,
+    "admissible_endpoints": 1382,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 81090,
+    "violating_pairs": 77511,
+    "violation_fraction": 0.95586,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.96774
+   },
+   {
+    "denominator": 37,
+    "admissible_endpoints": 1449,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 85110,
+    "violating_pairs": 81740,
+    "violation_fraction": 0.9604,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.97297
+   },
+   {
+    "denominator": 41,
+    "admissible_endpoints": 1403,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 82350,
+    "violating_pairs": 79694,
+    "violation_fraction": 0.96775,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.97561
+   },
+   {
+    "denominator": 43,
+    "admissible_endpoints": 1452,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 85290,
+    "violating_pairs": 82388,
+    "violation_fraction": 0.96597,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.97674
+   },
+   {
+    "denominator": 47,
+    "admissible_endpoints": 1499,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 88110,
+    "violating_pairs": 85455,
+    "violation_fraction": 0.96987,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.97872
+   },
+   {
+    "denominator": 49,
+    "admissible_endpoints": 1370,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 80370,
+    "violating_pairs": 77513,
+    "violation_fraction": 0.96445,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.97959
+   },
+   {
+    "denominator": 53,
+    "admissible_endpoints": 1498,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 88050,
+    "violating_pairs": 85468,
+    "violation_fraction": 0.97068,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.98113
+   },
+   {
+    "denominator": 59,
+    "admissible_endpoints": 1516,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 89130,
+    "violating_pairs": 86629,
+    "violation_fraction": 0.97194,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.98305
+   },
+   {
+    "denominator": 61,
+    "admissible_endpoints": 1599,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 94110,
+    "violating_pairs": 91561,
+    "violation_fraction": 0.97291,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.98361
+   },
+   {
+    "denominator": 67,
+    "admissible_endpoints": 1506,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 88530,
+    "violating_pairs": 86241,
+    "violation_fraction": 0.97414,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.98507
+   },
+   {
+    "denominator": 71,
+    "admissible_endpoints": 1403,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 82350,
+    "violating_pairs": 80494,
+    "violation_fraction": 0.97746,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.98592
+   },
+   {
+    "denominator": 73,
+    "admissible_endpoints": 1561,
+    "latest_admissible_start": 2996,
+    "pairs_tested": 91830,
+    "violating_pairs": 89544,
+    "violation_fraction": 0.97511,
+    "latest_violating_pair_min_start": 2994,
+    "expected_fraction_if_uniform": 0.9863
+   },
+   {
+    "denominator": 77,
+    "admissible_endpoints": 1245,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 72870,
+    "violating_pairs": 70831,
+    "violation_fraction": 0.97202,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.98701
+   },
+   {
+    "denominator": 79,
+    "admissible_endpoints": 1542,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 90690,
+    "violating_pairs": 88562,
+    "violation_fraction": 0.97654,
+    "latest_violating_pair_min_start": 2994,
+    "expected_fraction_if_uniform": 0.98734
+   },
+   {
+    "denominator": 83,
+    "admissible_endpoints": 1530,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 89970,
+    "violating_pairs": 87954,
+    "violation_fraction": 0.97759,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.98795
+   },
+   {
+    "denominator": 89,
+    "admissible_endpoints": 1467,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 86190,
+    "violating_pairs": 84367,
+    "violation_fraction": 0.97885,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.98876
+   },
+   {
+    "denominator": 91,
+    "admissible_endpoints": 1199,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 70110,
+    "violating_pairs": 68640,
+    "violation_fraction": 0.97903,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.98901
+   },
+   {
+    "denominator": 97,
+    "admissible_endpoints": 1555,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 91470,
+    "violating_pairs": 89461,
+    "violation_fraction": 0.97804,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.98969
+   },
+   {
+    "denominator": 101,
+    "admissible_endpoints": 1544,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 90810,
+    "violating_pairs": 88968,
+    "violation_fraction": 0.97972,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.9901
+   },
+   {
+    "denominator": 103,
+    "admissible_endpoints": 1614,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 95010,
+    "violating_pairs": 93052,
+    "violation_fraction": 0.97939,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.99029
+   },
+   {
+    "denominator": 107,
+    "admissible_endpoints": 1647,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 96990,
+    "violating_pairs": 95084,
+    "violation_fraction": 0.98035,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99065
+   },
+   {
+    "denominator": 109,
+    "admissible_endpoints": 1567,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 92190,
+    "violating_pairs": 90386,
+    "violation_fraction": 0.98043,
+    "latest_violating_pair_min_start": 2996,
+    "expected_fraction_if_uniform": 0.99083
+   },
+   {
+    "denominator": 113,
+    "admissible_endpoints": 1520,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 89370,
+    "violating_pairs": 87787,
+    "violation_fraction": 0.98229,
+    "latest_violating_pair_min_start": 2989,
+    "expected_fraction_if_uniform": 0.99115
+   },
+   {
+    "denominator": 119,
+    "admissible_endpoints": 1227,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 71790,
+    "violating_pairs": 70408,
+    "violation_fraction": 0.98075,
+    "latest_violating_pair_min_start": 2989,
+    "expected_fraction_if_uniform": 0.9916
+   },
+   {
+    "denominator": 121,
+    "admissible_endpoints": 1362,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79890,
+    "violating_pairs": 78171,
+    "violation_fraction": 0.97848,
+    "latest_violating_pair_min_start": 2986,
+    "expected_fraction_if_uniform": 0.99174
+   },
+   {
+    "denominator": 127,
+    "admissible_endpoints": 1446,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84930,
+    "violating_pairs": 83658,
+    "violation_fraction": 0.98502,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99213
+   },
+   {
+    "denominator": 131,
+    "admissible_endpoints": 1484,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 87210,
+    "violating_pairs": 85632,
+    "violation_fraction": 0.98191,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99237
+   },
+   {
+    "denominator": 133,
+    "admissible_endpoints": 1090,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 63570,
+    "violating_pairs": 62511,
+    "violation_fraction": 0.98334,
+    "latest_violating_pair_min_start": 2963,
+    "expected_fraction_if_uniform": 0.99248
+   },
+   {
+    "denominator": 137,
+    "admissible_endpoints": 1499,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 88110,
+    "violating_pairs": 86675,
+    "violation_fraction": 0.98371,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.9927
+   },
+   {
+    "denominator": 139,
+    "admissible_endpoints": 1489,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 87510,
+    "violating_pairs": 86037,
+    "violation_fraction": 0.98317,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99281
+   },
+   {
+    "denominator": 143,
+    "admissible_endpoints": 1238,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 72450,
+    "violating_pairs": 70999,
+    "violation_fraction": 0.97997,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99301
+   },
+   {
+    "denominator": 149,
+    "admissible_endpoints": 1455,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 85470,
+    "violating_pairs": 83949,
+    "violation_fraction": 0.9822,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99329
+   },
+   {
+    "denominator": 151,
+    "admissible_endpoints": 1433,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84150,
+    "violating_pairs": 82512,
+    "violation_fraction": 0.98053,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99338
+   },
+   {
+    "denominator": 157,
+    "admissible_endpoints": 1445,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84870,
+    "violating_pairs": 83441,
+    "violation_fraction": 0.98316,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99363
+   },
+   {
+    "denominator": 161,
+    "admissible_endpoints": 1202,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 70290,
+    "violating_pairs": 69034,
+    "violation_fraction": 0.98213,
+    "latest_violating_pair_min_start": 2990,
+    "expected_fraction_if_uniform": 0.99379
+   },
+   {
+    "denominator": 163,
+    "admissible_endpoints": 1402,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82290,
+    "violating_pairs": 80816,
+    "violation_fraction": 0.98209,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99387
+   },
+   {
+    "denominator": 167,
+    "admissible_endpoints": 1483,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 87150,
+    "violating_pairs": 85637,
+    "violation_fraction": 0.98264,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99401
+   },
+   {
+    "denominator": 169,
+    "admissible_endpoints": 1295,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 75870,
+    "violating_pairs": 74579,
+    "violation_fraction": 0.98298,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.99408
+   },
+   {
+    "denominator": 173,
+    "admissible_endpoints": 1381,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 81030,
+    "violating_pairs": 79705,
+    "violation_fraction": 0.98365,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99422
+   },
+   {
+    "denominator": 179,
+    "admissible_endpoints": 1443,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84750,
+    "violating_pairs": 83198,
+    "violation_fraction": 0.98169,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99441
+   },
+   {
+    "denominator": 181,
+    "admissible_endpoints": 1366,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80130,
+    "violating_pairs": 78957,
+    "violation_fraction": 0.98536,
+    "latest_violating_pair_min_start": 2983,
+    "expected_fraction_if_uniform": 0.99448
+   },
+   {
+    "denominator": 187,
+    "admissible_endpoints": 1174,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 68610,
+    "violating_pairs": 67515,
+    "violation_fraction": 0.98404,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99465
+   },
+   {
+    "denominator": 191,
+    "admissible_endpoints": 1342,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 78690,
+    "violating_pairs": 77574,
+    "violation_fraction": 0.98582,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.99476
+   },
+   {
+    "denominator": 193,
+    "admissible_endpoints": 1432,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84090,
+    "violating_pairs": 82716,
+    "violation_fraction": 0.98366,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99482
+   },
+   {
+    "denominator": 197,
+    "admissible_endpoints": 1280,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 74970,
+    "violating_pairs": 73955,
+    "violation_fraction": 0.98646,
+    "latest_violating_pair_min_start": 2988,
+    "expected_fraction_if_uniform": 0.99492
+   },
+   {
+    "denominator": 199,
+    "admissible_endpoints": 1441,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84630,
+    "violating_pairs": 82986,
+    "violation_fraction": 0.98057,
+    "latest_violating_pair_min_start": 2990,
+    "expected_fraction_if_uniform": 0.99497
+   },
+   {
+    "denominator": 203,
+    "admissible_endpoints": 1154,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 67410,
+    "violating_pairs": 66227,
+    "violation_fraction": 0.98245,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99507
+   },
+   {
+    "denominator": 209,
+    "admissible_endpoints": 1209,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 70710,
+    "violating_pairs": 69582,
+    "violation_fraction": 0.98405,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99522
+   },
+   {
+    "denominator": 211,
+    "admissible_endpoints": 1404,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82410,
+    "violating_pairs": 81134,
+    "violation_fraction": 0.98452,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99526
+   },
+   {
+    "denominator": 217,
+    "admissible_endpoints": 1193,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 69750,
+    "violating_pairs": 68581,
+    "violation_fraction": 0.98324,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99539
+   },
+   {
+    "denominator": 221,
+    "admissible_endpoints": 1225,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 71670,
+    "violating_pairs": 70483,
+    "violation_fraction": 0.98344,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99548
+   },
+   {
+    "denominator": 223,
+    "admissible_endpoints": 1354,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79410,
+    "violating_pairs": 78292,
+    "violation_fraction": 0.98592,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99552
+   },
+   {
+    "denominator": 227,
+    "admissible_endpoints": 1423,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 83550,
+    "violating_pairs": 82102,
+    "violation_fraction": 0.98267,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99559
+   },
+   {
+    "denominator": 229,
+    "admissible_endpoints": 1371,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80430,
+    "violating_pairs": 79145,
+    "violation_fraction": 0.98402,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99563
+   },
+   {
+    "denominator": 233,
+    "admissible_endpoints": 1340,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 78570,
+    "violating_pairs": 77423,
+    "violation_fraction": 0.9854,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99571
+   },
+   {
+    "denominator": 239,
+    "admissible_endpoints": 1367,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80190,
+    "violating_pairs": 78982,
+    "violation_fraction": 0.98494,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99582
+   },
+   {
+    "denominator": 241,
+    "admissible_endpoints": 1367,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80190,
+    "violating_pairs": 78920,
+    "violation_fraction": 0.98416,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99585
+   },
+   {
+    "denominator": 247,
+    "admissible_endpoints": 1227,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 71790,
+    "violating_pairs": 70645,
+    "violation_fraction": 0.98405,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99595
+   },
+   {
+    "denominator": 251,
+    "admissible_endpoints": 1396,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 81930,
+    "violating_pairs": 80747,
+    "violation_fraction": 0.98556,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99602
+   },
+   {
+    "denominator": 253,
+    "admissible_endpoints": 1226,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 71730,
+    "violating_pairs": 70719,
+    "violation_fraction": 0.98591,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99605
+   },
+   {
+    "denominator": 257,
+    "admissible_endpoints": 1371,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80430,
+    "violating_pairs": 79390,
+    "violation_fraction": 0.98707,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99611
+   },
+   {
+    "denominator": 259,
+    "admissible_endpoints": 1129,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 65910,
+    "violating_pairs": 65002,
+    "violation_fraction": 0.98622,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99614
+   },
+   {
+    "denominator": 263,
+    "admissible_endpoints": 1351,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79230,
+    "violating_pairs": 77950,
+    "violation_fraction": 0.98384,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.9962
+   },
+   {
+    "denominator": 269,
+    "admissible_endpoints": 1403,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82350,
+    "violating_pairs": 81211,
+    "violation_fraction": 0.98617,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99628
+   },
+   {
+    "denominator": 271,
+    "admissible_endpoints": 1431,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84030,
+    "violating_pairs": 82813,
+    "violation_fraction": 0.98552,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99631
+   },
+   {
+    "denominator": 277,
+    "admissible_endpoints": 1427,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 83790,
+    "violating_pairs": 82489,
+    "violation_fraction": 0.98447,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99639
+   },
+   {
+    "denominator": 281,
+    "admissible_endpoints": 1399,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82110,
+    "violating_pairs": 81059,
+    "violation_fraction": 0.9872,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99644
+   },
+   {
+    "denominator": 283,
+    "admissible_endpoints": 1361,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79830,
+    "violating_pairs": 78681,
+    "violation_fraction": 0.98561,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.99647
+   },
+   {
+    "denominator": 287,
+    "admissible_endpoints": 1183,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 69150,
+    "violating_pairs": 68091,
+    "violation_fraction": 0.98469,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99652
+   },
+   {
+    "denominator": 289,
+    "admissible_endpoints": 1294,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 75810,
+    "violating_pairs": 74680,
+    "violation_fraction": 0.98509,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99654
+   },
+   {
+    "denominator": 293,
+    "admissible_endpoints": 1421,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 83430,
+    "violating_pairs": 82278,
+    "violation_fraction": 0.98619,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99659
+   },
+   {
+    "denominator": 299,
+    "admissible_endpoints": 1248,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 73050,
+    "violating_pairs": 71910,
+    "violation_fraction": 0.98439,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99666
+   },
+   {
+    "denominator": 301,
+    "admissible_endpoints": 1257,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 73590,
+    "violating_pairs": 72378,
+    "violation_fraction": 0.98353,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.99668
+   },
+   {
+    "denominator": 307,
+    "admissible_endpoints": 1399,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82110,
+    "violating_pairs": 80841,
+    "violation_fraction": 0.98455,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99674
+   },
+   {
+    "denominator": 311,
+    "admissible_endpoints": 1399,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82110,
+    "violating_pairs": 81008,
+    "violation_fraction": 0.98658,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99678
+   },
+   {
+    "denominator": 313,
+    "admissible_endpoints": 1407,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82590,
+    "violating_pairs": 81457,
+    "violation_fraction": 0.98628,
+    "latest_violating_pair_min_start": 2992,
+    "expected_fraction_if_uniform": 0.99681
+   },
+   {
+    "denominator": 317,
+    "admissible_endpoints": 1364,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80010,
+    "violating_pairs": 79032,
+    "violation_fraction": 0.98778,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99685
+   },
+   {
+    "denominator": 319,
+    "admissible_endpoints": 1211,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 70830,
+    "violating_pairs": 69740,
+    "violation_fraction": 0.98461,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99687
+   },
+   {
+    "denominator": 323,
+    "admissible_endpoints": 1250,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 73170,
+    "violating_pairs": 72257,
+    "violation_fraction": 0.98752,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.9969
+   },
+   {
+    "denominator": 329,
+    "admissible_endpoints": 1204,
+    "latest_admissible_start": 2991,
+    "pairs_tested": 70410,
+    "violating_pairs": 69412,
+    "violation_fraction": 0.98583,
+    "latest_violating_pair_min_start": 2989,
+    "expected_fraction_if_uniform": 0.99696
+   },
+   {
+    "denominator": 331,
+    "admissible_endpoints": 1442,
+    "latest_admissible_start": 2995,
+    "pairs_tested": 84690,
+    "violating_pairs": 83513,
+    "violation_fraction": 0.9861,
+    "latest_violating_pair_min_start": 2988,
+    "expected_fraction_if_uniform": 0.99698
+   },
+   {
+    "denominator": 337,
+    "admissible_endpoints": 1421,
+    "latest_admissible_start": 2999,
+    "pairs_tested": 83430,
+    "violating_pairs": 82340,
+    "violation_fraction": 0.98694,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99703
+   },
+   {
+    "denominator": 341,
+    "admissible_endpoints": 1215,
+    "latest_admissible_start": 2988,
+    "pairs_tested": 71070,
+    "violating_pairs": 70132,
+    "violation_fraction": 0.9868,
+    "latest_violating_pair_min_start": 2977,
+    "expected_fraction_if_uniform": 0.99707
+   },
+   {
+    "denominator": 343,
+    "admissible_endpoints": 1183,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 69150,
+    "violating_pairs": 68202,
+    "violation_fraction": 0.98629,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99708
+   },
+   {
+    "denominator": 347,
+    "admissible_endpoints": 1386,
+    "latest_admissible_start": 2995,
+    "pairs_tested": 81330,
+    "violating_pairs": 80253,
+    "violation_fraction": 0.98676,
+    "latest_violating_pair_min_start": 2991,
+    "expected_fraction_if_uniform": 0.99712
+   },
+   {
+    "denominator": 349,
+    "admissible_endpoints": 1431,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 84030,
+    "violating_pairs": 82841,
+    "violation_fraction": 0.98585,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.99713
+   },
+   {
+    "denominator": 353,
+    "admissible_endpoints": 1395,
+    "latest_admissible_start": 2995,
+    "pairs_tested": 81870,
+    "violating_pairs": 80881,
+    "violation_fraction": 0.98792,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99717
+   },
+   {
+    "denominator": 359,
+    "admissible_endpoints": 1442,
+    "latest_admissible_start": 2990,
+    "pairs_tested": 84690,
+    "violating_pairs": 83372,
+    "violation_fraction": 0.98444,
+    "latest_violating_pair_min_start": 2986,
+    "expected_fraction_if_uniform": 0.99721
+   },
+   {
+    "denominator": 361,
+    "admissible_endpoints": 1336,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 78330,
+    "violating_pairs": 77046,
+    "violation_fraction": 0.98361,
+    "latest_violating_pair_min_start": 2991,
+    "expected_fraction_if_uniform": 0.99723
+   },
+   {
+    "denominator": 367,
+    "admissible_endpoints": 1368,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 80250,
+    "violating_pairs": 79122,
+    "violation_fraction": 0.98594,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99728
+   },
+   {
+    "denominator": 371,
+    "admissible_endpoints": 1141,
+    "latest_admissible_start": 2997,
+    "pairs_tested": 66630,
+    "violating_pairs": 65724,
+    "violation_fraction": 0.9864,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.9973
+   },
+   {
+    "denominator": 373,
+    "admissible_endpoints": 1433,
+    "latest_admissible_start": 2998,
+    "pairs_tested": 84150,
+    "violating_pairs": 82943,
+    "violation_fraction": 0.98566,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99732
+   },
+   {
+    "denominator": 377,
+    "admissible_endpoints": 1217,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 71190,
+    "violating_pairs": 70241,
+    "violation_fraction": 0.98667,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99735
+   },
+   {
+    "denominator": 379,
+    "admissible_endpoints": 1335,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 78270,
+    "violating_pairs": 77317,
+    "violation_fraction": 0.98782,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99736
+   },
+   {
+    "denominator": 383,
+    "admissible_endpoints": 1377,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80790,
+    "violating_pairs": 79683,
+    "violation_fraction": 0.9863,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99739
+   },
+   {
+    "denominator": 389,
+    "admissible_endpoints": 1443,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84750,
+    "violating_pairs": 83630,
+    "violation_fraction": 0.98678,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99743
+   },
+   {
+    "denominator": 391,
+    "admissible_endpoints": 1352,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79290,
+    "violating_pairs": 78237,
+    "violation_fraction": 0.98672,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99744
+   },
+   {
+    "denominator": 397,
+    "admissible_endpoints": 1363,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79950,
+    "violating_pairs": 78854,
+    "violation_fraction": 0.98629,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99748
+   },
+   {
+    "denominator": 401,
+    "admissible_endpoints": 1280,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 74970,
+    "violating_pairs": 74191,
+    "violation_fraction": 0.98961,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99751
+   },
+   {
+    "denominator": 403,
+    "admissible_endpoints": 1304,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 76410,
+    "violating_pairs": 75341,
+    "violation_fraction": 0.98601,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99752
+   },
+   {
+    "denominator": 407,
+    "admissible_endpoints": 1195,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 69870,
+    "violating_pairs": 69064,
+    "violation_fraction": 0.98846,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99754
+   },
+   {
+    "denominator": 409,
+    "admissible_endpoints": 1373,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 80550,
+    "violating_pairs": 79536,
+    "violation_fraction": 0.98741,
+    "latest_violating_pair_min_start": 2991,
+    "expected_fraction_if_uniform": 0.99756
+   },
+   {
+    "denominator": 413,
+    "admissible_endpoints": 1214,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 71010,
+    "violating_pairs": 69938,
+    "violation_fraction": 0.9849,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99758
+   },
+   {
+    "denominator": 419,
+    "admissible_endpoints": 1430,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 83970,
+    "violating_pairs": 82897,
+    "violation_fraction": 0.98722,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99761
+   },
+   {
+    "denominator": 421,
+    "admissible_endpoints": 1459,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 85710,
+    "violating_pairs": 84432,
+    "violation_fraction": 0.98509,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99762
+   },
+   {
+    "denominator": 427,
+    "admissible_endpoints": 1129,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 65910,
+    "violating_pairs": 65058,
+    "violation_fraction": 0.98707,
+    "latest_violating_pair_min_start": 2991,
+    "expected_fraction_if_uniform": 0.99766
+   },
+   {
+    "denominator": 431,
+    "admissible_endpoints": 1330,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 77970,
+    "violating_pairs": 76983,
+    "violation_fraction": 0.98734,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99768
+   },
+   {
+    "denominator": 433,
+    "admissible_endpoints": 1400,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82170,
+    "violating_pairs": 81202,
+    "violation_fraction": 0.98822,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.99769
+   },
+   {
+    "denominator": 437,
+    "admissible_endpoints": 1266,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 74130,
+    "violating_pairs": 73264,
+    "violation_fraction": 0.98832,
+    "latest_violating_pair_min_start": 2997,
+    "expected_fraction_if_uniform": 0.99771
+   },
+   {
+    "denominator": 439,
+    "admissible_endpoints": 1386,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 81330,
+    "violating_pairs": 80354,
+    "violation_fraction": 0.988,
+    "latest_violating_pair_min_start": 2993,
+    "expected_fraction_if_uniform": 0.99772
+   },
+   {
+    "denominator": 443,
+    "admissible_endpoints": 1436,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 84330,
+    "violating_pairs": 83298,
+    "violation_fraction": 0.98776,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99774
+   },
+   {
+    "denominator": 449,
+    "admissible_endpoints": 1381,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 81030,
+    "violating_pairs": 80052,
+    "violation_fraction": 0.98793,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99777
+   },
+   {
+    "denominator": 451,
+    "admissible_endpoints": 1236,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 72330,
+    "violating_pairs": 71425,
+    "violation_fraction": 0.98749,
+    "latest_violating_pair_min_start": 2991,
+    "expected_fraction_if_uniform": 0.99778
+   },
+   {
+    "denominator": 457,
+    "admissible_endpoints": 1399,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 82110,
+    "violating_pairs": 81127,
+    "violation_fraction": 0.98803,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99781
+   },
+   {
+    "denominator": 461,
+    "admissible_endpoints": 1346,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 78930,
+    "violating_pairs": 77935,
+    "violation_fraction": 0.98739,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99783
+   },
+   {
+    "denominator": 463,
+    "admissible_endpoints": 1363,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79950,
+    "violating_pairs": 79000,
+    "violation_fraction": 0.98812,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99784
+   },
+   {
+    "denominator": 467,
+    "admissible_endpoints": 1497,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 87990,
+    "violating_pairs": 86738,
+    "violation_fraction": 0.98577,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99786
+   },
+   {
+    "denominator": 469,
+    "admissible_endpoints": 1219,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 71310,
+    "violating_pairs": 70381,
+    "violation_fraction": 0.98697,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99787
+   },
+   {
+    "denominator": 473,
+    "admissible_endpoints": 1246,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 72930,
+    "violating_pairs": 72120,
+    "violation_fraction": 0.98889,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99789
+   },
+   {
+    "denominator": 479,
+    "admissible_endpoints": 1419,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 83310,
+    "violating_pairs": 82262,
+    "violation_fraction": 0.98742,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99791
+   },
+   {
+    "denominator": 481,
+    "admissible_endpoints": 1239,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 72510,
+    "violating_pairs": 71691,
+    "violation_fraction": 0.98871,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99792
+   },
+   {
+    "denominator": 487,
+    "admissible_endpoints": 1361,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79830,
+    "violating_pairs": 78941,
+    "violation_fraction": 0.98886,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99795
+   },
+   {
+    "denominator": 491,
+    "admissible_endpoints": 1350,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79170,
+    "violating_pairs": 78201,
+    "violation_fraction": 0.98776,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99796
+   },
+   {
+    "denominator": 493,
+    "admissible_endpoints": 1297,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 75990,
+    "violating_pairs": 75127,
+    "violation_fraction": 0.98864,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.99797
+   },
+   {
+    "denominator": 497,
+    "admissible_endpoints": 1238,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 72450,
+    "violating_pairs": 71444,
+    "violation_fraction": 0.98611,
+    "latest_violating_pair_min_start": 2995,
+    "expected_fraction_if_uniform": 0.99799
+   },
+   {
+    "denominator": 499,
+    "admissible_endpoints": 1362,
+    "latest_admissible_start": 3000,
+    "pairs_tested": 79890,
+    "violating_pairs": 78935,
+    "violation_fraction": 0.98805,
+    "latest_violating_pair_min_start": 2998,
+    "expected_fraction_if_uniform": 0.998
+   }
+  ],
+  "reading": "every tested denominator admits violating pairs, and they keep appearing at the top of the start range, so the construction is available late"
+ }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "all_degree_tied_newton_face_connector_residual",
+  "output_stage": "zero_critical_value_trace_and_two_end_topological_merge",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceCriticalTrace.md",
+  "human_understanding_delta": "The low-degree cutoff m<n/2 is not merely an error-control threshold. It creates a zero block in the monic derivative, annihilates every active critical-point power sum, and forces the total critical-value trace to vanish. A nonpositive critical saddle therefore merges two negative ends by level zero in every tied low-mode model. The remaining obstruction is metric rather than topological.",
+  "verification_state": "ordinary Newton-identity and harmonic-topology proof; derivative-equation rewrite, weighted trace cancellation, nonpositive-real-value selection, and finite composition Lean checked; exact Gaussian-rational recurrence through degree 40 and numerical root replay through degree 15",
+  "publication_or_review_state": "private authoring checkpoint; not independently reviewed and not a solution of unrestricted Erdős #1041",
+  "canonicalization_state": "all-degree tied-face topological connector theorem; strict scattering-length residual preserved",
+  "unresolved_downstream_bottleneck": "Prove or refute that some trace-selected negative merge has L(R)<2R at a finite radius, then transfer the strict margin through the existing integer Newton-weight gaps.",
+  "next_stage_owner": "mathematical_closure_engine",
+  "tool_disclosure": "An exact Newton-sum calculation revealed the trace identity. A deterministic straight-arm probe on 80 sparse models in degrees 5 through 9 had zero sampled failures; those rows are evidence only and are not used in the proof."
+}

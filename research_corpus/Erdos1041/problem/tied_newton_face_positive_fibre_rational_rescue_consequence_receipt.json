@@ -1,0 +1,65 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFacePositiveFibreRationalRescue.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.TiedNewtonFacePositiveFibreRationalRescue.armU_nonpos",
+      "ErdosProblems.Erdos1041.TiedNewtonFacePositiveFibreRationalRescue.tailU_nonpos",
+      "ErdosProblems.Erdos1041.TiedNewtonFacePositiveFibreRationalRescue.connector_length_lt_two_mul_radius",
+      "ErdosProblems.Erdos1041.TiedNewtonFacePositiveFibreRationalRescue.open_chart_control_linear_forms"
+    ],
+    "delta_class": "strict_rational_tied_face_rescue_and_quantitative_open_chart_after_fibre_no_go",
+    "claim_ceiling": "One quintic face and an explicit four-real-dimensional coefficient box around it are solved by a fixed noncritical rational connector; all-degree coverage, global resolved transfer, compact-away forcing, and unrestricted Erdős #1041 remain open."
+  },
+  "decisions": [
+    {
+      "candidate_id": "canonical_erdos1041_research_packet",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The rescue adds a strict solved tied-face chart with explicit coefficient radius and changes the interpretation of the LF no-go from bad face to bad canonical curve.",
+      "authority_surface_checked": "canonical private research packet",
+      "validation_or_reentry": "JSON parse, exact checker, focused Lean build"
+    },
+    {
+      "candidate_id": "eight_dissemination_snapshots",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/*/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "The eight displayed files are owner-built dissemination snapshots, not source authority, and no publication refresh was requested.",
+      "authority_surface_checked": "all eight displayed snapshot candidates",
+      "validation_or_reentry": "refresh through the dissemination owner after an explicit review/publication wave"
+    },
+    {
+      "candidate_id": "two_prior_art_routes",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/{constant_perturbation_roots_unit_disk_v0,erdos1041_lemniscate_short_path_v0}.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "A private local model chart changes neither constant-perturbation source status nor the pinned unrestricted-manuscript refutations.",
+      "authority_surface_checked": "both displayed source-current routes",
+      "validation_or_reentry": "re-enter on actual finite transfer or parent-proof change"
+    },
+    {
+      "candidate_id": "latimer_pva_mobius_admissibility",
+      "file": "state/formal_math_research_operations/pilots/erdos257_issue217/latimer_pva_mobius_admissibility.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The only bridge is the common Erdős namespace.",
+      "authority_surface_checked": "candidate-map bridge",
+      "validation_or_reentry": "none"
+    }
+  ],
+  "candidate_review": {
+    "displayed_candidate_count": 12,
+    "decision_denominator": 12,
+    "grouped_decisions": {
+      "update_now": 1,
+      "verified_no_change": 2,
+      "defer_with_reason": 8,
+      "outside_scope": 1
+    },
+    "authority_boundary": "Lean and exact Bernstein replay validate the finite kernel; consequence candidates are navigation evidence."
+  },
+  "semantic_second_pass": {
+    "newly_closed": "The exact face that refutes LF and the closed coefficient box of l_infinity radius 1/6 around it have a strict fixed rational finite connector.",
+    "newly_narrowed": "Canonical fibre selection is unnecessary; finite atlas charts may use unrelated noncritical hubs and can carry exact transfer margins.",
+    "surviving_boundary": "All-degree finite connector selector or strict chart cover, then transfer and compact-away composition.",
+    "claim_boundary": "The unrestricted theorem remains open."
+  }
+}

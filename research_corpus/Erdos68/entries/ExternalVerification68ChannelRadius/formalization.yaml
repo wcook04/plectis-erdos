@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+project:
+  name: "Erdős #68: explicit cubic radius floor for simultaneous factorial channel cancellation"
+  description: >-
+    A channel is an index d at least 2 carrying the modulus d! - 1, obtained by reweighting
+    each factorial term of the series so that the powers of d! divide out; the channel test
+    at d compares that reweighted integer with the factorial moment modulo d! - 1. The main
+    theorem is explicit: for every t at least 2^32 and all natural numbers M and R with M
+    positive, M divisible by the least common multiple of d! - 1 over 2 ≤ d ≤ 2t^2, and M <
+    (R+1)! - 1, the support radius satisfies 3t^3 < 2(R+1). Imposing those hypotheses at
+    every large t gives two sequence forms: no radius function can eventually satisfy
+    2(R(t)+1) ≤ 3t^3, and R(t)+1 is not o(t^3), the second under hypotheses required only
+    from t = 4096 onwards. The entire subcubic range is therefore closed on the square
+    subsequence D = 2t^2, since every finite channel system meeting the hypotheses carries
+    support radius above (3/2)t^3, which prices the method for anyone pursuing irrationality
+    of series with factorial denominators. The nontrivial input is a finite lower estimate
+    for the channel least common multiple, in which consecutive numbers d! - 1 are combined
+    while their pairwise gcd losses are counted explicitly, and a Stirling bound converts
+    that estimate into the cubic radius. This theorem family is the first presentation
+    recorded in the development and its novelty is unassessed. The divisibility and
+    factorial bounds remain hypotheses, so the irrationality question in Erdős Problem 68 is
+    untouched, and the remaining problem is to derive those hypotheses from the
+    factorial-gap series and to prove that the required channels vanish.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A05"]
+sources:
+  - title: "Finite-channel radius obstructions for Erdős Problem 68"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #68"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/68"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The quantitative hypotheses and the absence of a channel-construction or irrationality conclusion were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "Candidate quantitative theorem family; no Palomar verdict, novelty ruling, or submission is claimed."
+status:
+  scope: "Three exact source-backed declarations; one trusted sorry per Challenge theorem."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower"
+      file: "ExternalVerification68ChannelRadius/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Conditional channel-radius obstruction; no construction of the channel hypotheses and no irrationality proof."
+    - declaration: "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper"
+      file: "ExternalVerification68ChannelRadius/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Rules out an eventual competing cubic upper bound only under the stated all-large-t hypotheses."
+    - declaration: "Erdos249257.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius"
+      file: "ExternalVerification68ChannelRadius/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; focused check deferred by low-disk firewall"
+      novelty_status: "unassessed"
+      boundary: "Coarser asymptotic consequence under explicit channel hypotheses."
+alignment:
+  namespace: "Erdos249257.ExternalVerification68ChannelRadius"
+  statements:
+    - source: "ErdosProblems.Erdos68.ChannelIntegralCongruence"
+      lean: "three same-named exact transports"
+      module: "ExternalVerification68ChannelRadius/Challenge.lean"
+      status: "exact-transport-pending-guarded-build-deferred-low-disk-exit-75"

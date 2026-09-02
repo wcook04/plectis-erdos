@@ -1,0 +1,1 @@
+{"challenge_module":"ExternalVerification257ScaledGreedyTrap.Challenge","solution_module":"ExternalVerification257ScaledGreedyTrap.NegativeSolution","theorem_names":["Erdos249257.ExternalVerification257ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded"],"permitted_axioms":["propext","Quot.sound","Classical.choice"],"enable_nanoda":true}

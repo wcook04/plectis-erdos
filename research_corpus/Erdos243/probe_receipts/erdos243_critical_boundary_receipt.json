@@ -1,0 +1,180 @@
+{
+ "probe_id": "erdos243_critical_boundary_survival",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_243",
+   "target_statement": "Under a_{n+1}/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence.",
+   "claim_ceiling": "Erdos #243 remains open. Lean now directly checks that finite normalized negative centered mass, together with the exact positive product-cleared tail orbit and division-free normalized vanishing, forces the Sylvester recurrence eventually. Thus the finite-mass branch reaches the paper's actual denominator-sequence endpoint, not merely eventual centered-state zero. The unrestricted divergent vanishing-mass branch remains. The cumulative digit LCM and overlap-debt identities make square erasure exact global relocation rather than disappearance, while the returned-error contraction and global asymptotic composition remain advisory. Exact primitive trajectories eliminate single-reset, cumulative raw-reset, single complete-clean-recovery, and two-consecutive-clean-recovery length charging: the two-recovery witness has payment product 4<6<2^6. A true primitive negative feedback step can simultaneously double negative mass and reduce primitive scale from 9 to 5, eliminating every one-step homogeneous weight m/u^alpha for real alpha>=0. The complete normalized return 1/11 to 1/11 persists for every member of the unbounded primitive family (11,11*(33+79833600*k)-1), so neither isolation nor large initial scale rescues complete-recovery descent in normalized mass alone. The family cannot directly self-renew: its terminal quotient forces ascent from height 11 to 12. Exact source-parameter residue cascades now partition the family on the common modulus 46410 into 33480 forced centered-zero returns, 6810 forced positive-centered sign switches, and 6120 continuing-negative candidates. The first height-12 split and the error-minus-four height-13 split close or switch every class outside k mod 13 in {3,4,11,12}. Within those four classes, payment seven is not a boundary mode: multiplier 7 modulo 42 forces the universal cascade (13,-1)->(2,-1 tie)->(3,-1)->(1,0 forever), with payments 7,1,4. The payment-one height-14 image is only w mod 15 in {0,3}: 240 of 600 refined classes pay five and switch positive at height 3, while 360 pay one twice and reach height 16 with error -1. Only those height-16 cylinders remain eligible for continuing negative support. The decisive missing producer is an exact exclusion or structural return theorem for the height-16 multiplier modulo 17, or a global repair lower bound using unbounded complete-prefix arithmetic or changing residue/prime/overlap data across recoveries to force non-subexponential cancellation mass. No unrestricted #243 solution is claimed."
+  },
+  "hypothesis": {
+   "id": "critical_boundary_constant_is_one",
+   "statement": "The boundary the producer names, n*(a_n^2/a_(n+1) - 1)_+ approximately 1, is a real transition: below it the hypothesis a_(n+1)/a_n^2 -> 1 alone kills a non-Sylvester step almost immediately, above it deviations survive."
+  },
+  "probe": {
+   "id": "erdos243_critical_boundary_survival",
+   "question": "Where is the transition in C for the constraint |a_(n+1)/a_n^2 - 1| <= C/n, measured by how many further steps a path survives after its first non-Sylvester step?",
+   "computation": "Exact tail dynamics u' = rho + k*u, v' = v*a with rho = (-v) mod u; tree search over admissible k under the two-sided constraint, scoring survival after the first deviation rather than depth reached; run at two starting states and across search widths k <= 8, 50, 200, 1000.",
+   "falsifier": "No transition, or a transition whose location moves with the search width or the starting state, which would mean the constant is an artifact.",
+   "stop_condition": "A width-dependent or start-dependent location retires the measurement.",
+   "resource_bounds": {
+    "max_depth": 10,
+    "max_k": 200
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The producer's constant is confirmed quantitatively and the regime where the remaining #243 producers are actually needed is located.",
+   "falsification_consequence": "The one-line boundary conjecture is not a sharp transition and the producer needs restating.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CenteredEuclideanFeedback.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CriticalBoundarySurvivalLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos243_critical_boundary_survival.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "From the Sylvester prefix 2,3,7 at horizon 11 with k <= 1000 and exhaustive (non-capped) searches, survival after the first deviation is 1 step for every C from 0.90 through 1.04 and jumps to 10 - the whole horizon - at C = 1.05. From the prefix 2,3,7,43 at horizon 10 the transition sits between 1.00 and 1.04. Widening k from 8 to 1000 moves the sub-threshold answer only from 0 to 1. The boundary constant is therefore 1 to within 5%, exactly as the producer conjectured.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "A survival jump from 1 to the full horizon across a 0.01 change in C, with exhaustive searches on both sides and agreement at a second starting state.",
+    "next_analytic_target": "Prove that below the constant the two-sided hypothesis alone forces the Sylvester step, and confine the signed-state, payment and anti-shadowing producers to the regime above it.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_243",
+  "motivated_by": [
+   "critical_boundary"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "critical_boundary_constant_measured_at_one"
+  ],
+  "rationale": "Confirms the shortest open producer in the corpus quantitatively and locates the regime in which the other #243 producers are the ones doing the work."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CriticalBoundarySurvivalLab.md",
+   "byte_length": 4387,
+   "sha256": "7a4afd3023e8c3048c168e13956a8735f7441626c0af3a2388e2fe35e331b2e8"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+   "byte_length": 69025,
+   "sha256": "a1fc9e5bfe690eaa56360285ac4b1364ca7df0bfaf32d401349d8566df47a354"
+  },
+  {
+   "path": "formal_math/probes/erdos243_critical_boundary_survival.py",
+   "byte_length": 6639,
+   "sha256": "fbdabe10787e01c298024d1c0b04347a8cf4b6551471225ea06d6e516f135a83"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos243_critical_boundary_survival",
+  "start_state": {
+   "u": 1,
+   "v": 42,
+   "last_term": 7,
+   "meaning": "tail after the Sylvester prefix 2, 3, 7"
+  },
+  "max_depth_cap": 10,
+  "max_k": 200,
+  "per_boundary": [
+   {
+    "boundary_C": 0.9,
+    "max_steps_survived_after_first_deviation": 1,
+    "first_deviation_depth": 1,
+    "best_path_terms": [
+     "44",
+     "1065"
+    ],
+    "nodes_visited": 1912,
+    "node_cap_hit": false
+   },
+   {
+    "boundary_C": 1.0,
+    "max_steps_survived_after_first_deviation": 1,
+    "first_deviation_depth": 1,
+    "best_path_terms": [
+     "44",
+     "968"
+    ],
+    "nodes_visited": 2014,
+    "node_cap_hit": false
+   },
+   {
+    "boundary_C": 1.02,
+    "max_steps_survived_after_first_deviation": 1,
+    "first_deviation_depth": 1,
+    "best_path_terms": [
+     "44",
+     "949"
+    ],
+    "nodes_visited": 2033,
+    "node_cap_hit": false
+   },
+   {
+    "boundary_C": 1.04,
+    "max_steps_survived_after_first_deviation": 1,
+    "first_deviation_depth": 1,
+    "best_path_terms": [
+     "44",
+     "930"
+    ],
+    "nodes_visited": 2053,
+    "node_cap_hit": false
+   },
+   {
+    "boundary_C": 1.05,
+    "max_steps_survived_after_first_deviation": 9,
+    "first_deviation_depth": 1,
+    "best_path_terms": [
+     "44",
+     "925",
+     "854701",
+     "730512944701",
+     "~10^23",
+     "~10^47",
+     "~10^94",
+     "~10^189",
+     "~10^379",
+     "~10^759"
+    ],
+    "nodes_visited": 3659,
+    "node_cap_hit": false
+   },
+   {
+    "boundary_C": 1.1,
+    "max_steps_survived_after_first_deviation": 9,
+    "first_deviation_depth": 1,
+    "best_path_terms": [
+     "44",
+     "925",
+     "854701",
+     "730512944701",
+     "~10^23",
+     "~10^47",
+     "~10^94",
+     "~10^189",
+     "~10^379",
+     "~10^759"
+    ],
+    "nodes_visited": 3661,
+    "node_cap_hit": false
+   }
+  ],
+  "max_steps_survived_after_first_deviation": 9,
+  "node_cap_hit_at": [],
+  "reading": "a deviation survives up to 9 further steps; the boundary constraint alone does not force Sylvester quickly"
+ }
+}
