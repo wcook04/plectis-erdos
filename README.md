@@ -7,7 +7,8 @@
 
 Plectis applies AI search, computation, ordinary mathematics, and Lean to
 eight long-standing open Erdős problems: 68, 243, 249, 251, 257, 269, 1041,
-and 1049. **All eight problems remain open.** The problems were selected on
+and 1049. **All eight problems remain open.** This repository does not solve any of
+them. The problems were selected on
 the expectation that a solo, self-funded undergraduate project would not
 solve them. The object of the project is to measure how much exact,
 machine-checked, reusable progress can be accumulated on problems of this
