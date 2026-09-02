@@ -395,6 +395,15 @@ def ensure_elaborated_environment() -> None:
         )
 
 
+# The environment export walks every constant in both loaded roots and is the
+# one step whose cost tracks the size of the corpus rather than the size of a
+# change. On 2026-09-02 it ran past the 1800-second shared worker budget on the
+# development host and the index could not be rebuilt at all, which left every
+# proof plan reporting itself unavailable. This is the export's own budget; the
+# shared worker budget still governs the shorter calls around it.
+EXPORT_TIMEOUT_SECONDS = 5_400
+
+
 def module_id(path: str) -> str:
     return ".".join(Path(path).with_suffix("").parts)
 
@@ -412,6 +421,7 @@ def export_environment() -> tuple[
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
+        timeout=EXPORT_TIMEOUT_SECONDS,
     )
     if completed.returncode:
         sys.stderr.write(completed.stdout)
