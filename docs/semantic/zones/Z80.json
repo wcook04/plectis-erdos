@@ -51,7 +51,7 @@
         {
           "declaration": "totient_series_ne_rat_of_certifiedKill",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 181
+          "line": 460
         }
       ]
     },
@@ -76,32 +76,32 @@
         {
           "declaration": "certifiedKill_81_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 195
+          "line": 474
         },
         {
           "declaration": "certifiedKill_97_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 198
+          "line": 477
         },
         {
           "declaration": "certifiedKill_101_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 201
+          "line": 480
         },
         {
           "declaration": "certifiedKill_121_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 204
+          "line": 483
         },
         {
           "declaration": "certifiedKill_125_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 207
+          "line": 486
         },
         {
           "declaration": "certifiedKill_128_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 214
+          "line": 493
         }
       ]
     },
@@ -128,37 +128,37 @@
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_67_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 225
+          "line": 504
         },
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_81_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 230
+          "line": 509
         },
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_97_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 235
+          "line": 514
         },
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_101_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 240
+          "line": 519
         },
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_121_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 245
+          "line": 524
         },
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_125_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 250
+          "line": 529
         },
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_128_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 260
+          "line": 539
         }
       ]
     }
@@ -167,7 +167,7 @@
     {
       "declaration": "totient_series_ne_rat_of_certifiedKill",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 181,
+      "line": 460,
       "role": "statement",
       "statement_node": "a_certified_kill_excludes_every_rational_in_its_fixed_denominator_divisor_class",
       "routing_basis": "Direct generic consumer evidence for Z80::a_certified_kill_excludes_every_rational_in_its_fixed_denominator_divisor_class."
@@ -175,7 +175,7 @@
     {
       "declaration": "certifiedKill_81_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 195,
+      "line": 474,
       "role": "finite_instance",
       "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
       "routing_basis": "Direct period-81 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
@@ -183,7 +183,7 @@
     {
       "declaration": "certifiedKill_97_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 198,
+      "line": 477,
       "role": "finite_instance",
       "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
       "routing_basis": "Direct period-97 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
@@ -191,7 +191,7 @@
     {
       "declaration": "certifiedKill_101_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 201,
+      "line": 480,
       "role": "finite_instance",
       "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
       "routing_basis": "Direct period-101 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
@@ -199,7 +199,7 @@
     {
       "declaration": "certifiedKill_121_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 204,
+      "line": 483,
       "role": "finite_instance",
       "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
       "routing_basis": "Direct period-121 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
@@ -207,7 +207,7 @@
     {
       "declaration": "certifiedKill_125_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 207,
+      "line": 486,
       "role": "finite_instance",
       "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
       "routing_basis": "Direct period-125 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
@@ -215,7 +215,7 @@
     {
       "declaration": "certifiedKill_128_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 214,
+      "line": 493,
       "role": "finite_instance",
       "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
       "routing_basis": "Direct period-128 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
@@ -223,7 +223,7 @@
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_67_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 225,
+      "line": 504,
       "role": "statement",
       "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
       "routing_basis": "Direct period-67 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
@@ -231,7 +231,7 @@
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_81_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 230,
+      "line": 509,
       "role": "statement",
       "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
       "routing_basis": "Direct period-81 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
@@ -239,7 +239,7 @@
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_97_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 235,
+      "line": 514,
       "role": "statement",
       "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
       "routing_basis": "Direct period-97 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
@@ -247,7 +247,7 @@
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_101_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 240,
+      "line": 519,
       "role": "statement",
       "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
       "routing_basis": "Direct period-101 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
@@ -255,7 +255,7 @@
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_121_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 245,
+      "line": 524,
       "role": "statement",
       "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
       "routing_basis": "Direct period-121 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
@@ -263,7 +263,7 @@
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_125_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 250,
+      "line": 529,
       "role": "statement",
       "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
       "routing_basis": "Direct period-125 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
@@ -271,7 +271,7 @@
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_128_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 260,
+      "line": 539,
       "role": "statement",
       "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
       "routing_basis": "Direct period-128 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."

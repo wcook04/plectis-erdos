@@ -131,7 +131,7 @@
         {
           "declaration": "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
           "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
-          "line": 52
+          "line": 53
         }
       ]
     },
@@ -560,7 +560,7 @@
     {
       "declaration": "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
       "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
-      "line": 52,
+      "line": 53,
       "role": "statement",
       "statement_node": "actual_lcm_orbit_nonintegrality_exact_frontier"
     },

@@ -55,7 +55,7 @@
         {
           "declaration": "tsum_lambert_pair_regroup_if",
           "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
-          "line": 112
+          "line": 124
         }
       ]
     },
@@ -80,7 +80,7 @@
         {
           "declaration": "totientTail_eq_tsum_shiftedMobiusPulse",
           "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
-          "line": 535
+          "line": 547
         }
       ]
     },
@@ -105,7 +105,7 @@
         {
           "declaration": "totientTail_eq_tsum_positiveForeignResidueKernel",
           "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
-          "line": 52
+          "line": 61
         }
       ]
     },
@@ -155,7 +155,7 @@
         {
           "declaration": "renormalizedResidueAgreement_of_twice_le",
           "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
-          "line": 329
+          "line": 338
         }
       ]
     },
@@ -192,7 +192,7 @@
     {
       "declaration": "tsum_lambert_pair_regroup_if",
       "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
-      "line": 112,
+      "line": 124,
       "role": "statement",
       "statement_node": "absolute_lambert_pair_regrouping_respects_arbitrary_product_filters",
       "routing_origin": "paper_selected_direct_evidence",
@@ -201,7 +201,7 @@
     {
       "declaration": "totientTail_eq_tsum_shiftedMobiusPulse",
       "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
-      "line": 535,
+      "line": 547,
       "role": "statement",
       "statement_node": "literal_totient_tail_is_the_exact_shifted_mobius_pulse_sum",
       "routing_origin": "paper_selected_direct_evidence",
@@ -210,7 +210,7 @@
     {
       "declaration": "totientTail_eq_tsum_positiveForeignResidueKernel",
       "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
-      "line": 52,
+      "line": 61,
       "role": "statement",
       "statement_node": "literal_totient_tail_is_the_exact_positive_index_foreign_residue_kernel_sum",
       "routing_origin": "paper_selected_direct_evidence",
@@ -228,7 +228,7 @@
     {
       "declaration": "renormalizedResidueAgreement_of_twice_le",
       "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
-      "line": 329,
+      "line": 338,
       "role": "statement",
       "statement_node": "renormalized_residue_projection_equals_the_lambert_center_past_twice_the_height",
       "routing_origin": "paper_selected_direct_evidence",

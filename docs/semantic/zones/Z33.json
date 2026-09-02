@@ -87,22 +87,22 @@
         {
           "declaration": "homEvalThreeTwo_mod_three",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 201
+          "line": 203
         },
         {
           "declaration": "homEvalThreeTwo_mod_two",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 215
+          "line": 320
         },
         {
           "declaration": "three_not_dvd_homEvalThreeTwo_of_const_unit",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 233
+          "line": 338
         },
         {
           "declaration": "two_not_dvd_homEvalThreeTwo_of_top_unit",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 251
+          "line": 356
         }
       ]
     },
@@ -126,7 +126,7 @@
         {
           "declaration": "commonMultiplier_not_two_not_three_of_endpoint_units",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 293
+          "line": 398
         }
       ]
     },
@@ -152,27 +152,27 @@
         {
           "declaration": "bottomJet3_eq_zero_iff_dvd",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 189
+          "line": 191
         },
         {
           "declaration": "topJet2_eq_zero_iff_dvd",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 195
+          "line": 197
         },
         {
           "declaration": "fourJetSignature_card",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 129
+          "line": 131
         },
         {
           "declaration": "exists_distinct_binary_selectors_same_fourJet",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 140
+          "line": 142
         },
         {
           "declaration": "exists_distinct_binary_selectors_same_fourJet_of_rank",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 159
+          "line": 161
         }
       ]
     },
@@ -197,7 +197,7 @@
         {
           "declaration": "three_two_scalar_margin_neg",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 323
+          "line": 428
         }
       ]
     },
@@ -222,22 +222,22 @@
         {
           "declaration": "sevenHalves_log_ratio_lt",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 41
+          "line": 48
         },
         {
           "declaration": "one_div_pi_sq_lt_one_nine",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 57
+          "line": 64
         },
         {
           "declaration": "sevenHalves_bundschuhVaananen_margin",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 66
+          "line": 73
         },
         {
           "declaration": "sevenHalves_archimedean_height_condition",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 76
+          "line": 83
         }
       ]
     }
@@ -281,105 +281,105 @@
     {
       "declaration": "homEvalThreeTwo_mod_three",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 201,
+      "line": 203,
       "role": "statement",
       "statement_node": "homogeneous_evaluation_sees_opposite_endpoints_mod_two_and_three"
     },
     {
       "declaration": "homEvalThreeTwo_mod_two",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 215,
+      "line": 320,
       "role": "statement",
       "statement_node": "homogeneous_evaluation_sees_opposite_endpoints_mod_two_and_three"
     },
     {
       "declaration": "three_not_dvd_homEvalThreeTwo_of_const_unit",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 233,
+      "line": 338,
       "role": "statement",
       "statement_node": "homogeneous_evaluation_sees_opposite_endpoints_mod_two_and_three"
     },
     {
       "declaration": "two_not_dvd_homEvalThreeTwo_of_top_unit",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 251,
+      "line": 356,
       "role": "statement",
       "statement_node": "homogeneous_evaluation_sees_opposite_endpoints_mod_two_and_three"
     },
     {
       "declaration": "commonMultiplier_not_two_not_three_of_endpoint_units",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 293,
+      "line": 398,
       "role": "statement",
       "statement_node": "common_specialized_multiplier_avoids_two_and_three"
     },
     {
       "declaration": "bottomJet3_eq_zero_iff_dvd",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 189,
+      "line": 191,
       "role": "statement",
       "statement_node": "binary_four_jet_collision_at_rank_threshold"
     },
     {
       "declaration": "topJet2_eq_zero_iff_dvd",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 195,
+      "line": 197,
       "role": "statement",
       "statement_node": "binary_four_jet_collision_at_rank_threshold"
     },
     {
       "declaration": "fourJetSignature_card",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 129,
+      "line": 131,
       "role": "statement",
       "statement_node": "binary_four_jet_collision_at_rank_threshold"
     },
     {
       "declaration": "exists_distinct_binary_selectors_same_fourJet",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 140,
+      "line": 142,
       "role": "statement",
       "statement_node": "binary_four_jet_collision_at_rank_threshold"
     },
     {
       "declaration": "exists_distinct_binary_selectors_same_fourJet_of_rank",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 159,
+      "line": 161,
       "role": "statement",
       "statement_node": "binary_four_jet_collision_at_rank_threshold"
     },
     {
       "declaration": "three_two_scalar_margin_neg",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 323,
+      "line": 428,
       "role": "statement",
       "statement_node": "three_halves_scalar_product_formula_margin_is_negative"
     },
     {
       "declaration": "sevenHalves_log_ratio_lt",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 41,
+      "line": 48,
       "role": "statement",
       "statement_node": "seven_halves_satisfies_external_height_criterion_arithmetic"
     },
     {
       "declaration": "one_div_pi_sq_lt_one_nine",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 57,
+      "line": 64,
       "role": "statement",
       "statement_node": "seven_halves_satisfies_external_height_criterion_arithmetic"
     },
     {
       "declaration": "sevenHalves_bundschuhVaananen_margin",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 66,
+      "line": 73,
       "role": "statement",
       "statement_node": "seven_halves_satisfies_external_height_criterion_arithmetic"
     },
     {
       "declaration": "sevenHalves_archimedean_height_condition",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 76,
+      "line": 83,
       "role": "statement",
       "statement_node": "seven_halves_satisfies_external_height_criterion_arithmetic"
     }

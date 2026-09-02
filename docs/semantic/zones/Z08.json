@@ -99,7 +99,7 @@
         {
           "declaration": "exists_certifiedKill_of_firstHarmonicAnchorDefect",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 843
+          "line": 865
         }
       ],
       "concepts": [
@@ -169,7 +169,7 @@
         {
           "declaration": "windowFirstExp_eq_of_discrepancy_emod_eq",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 129
+          "line": 128
         },
         {
           "declaration": "windowFirstCos_eq_of_discrepancy_emod_eq",
@@ -203,7 +203,7 @@
         {
           "declaration": "windowFirstExp_eq_pivotResidualAt_mul_phase",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 223
+          "line": 258
         }
       ],
       "concepts": [
@@ -227,12 +227,12 @@
         {
           "declaration": "totient_pivotArgument_eq_mul",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 230
+          "line": 265
         },
         {
           "declaration": "mem_pivotFiber_one_overlap_iff",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 251
+          "line": 423
         }
       ],
       "concepts": [
@@ -255,7 +255,7 @@
         {
           "declaration": "windowFirstExp_sum_eq_pivot_decomposition",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 342
+          "line": 514
         }
       ],
       "concepts": [
@@ -279,7 +279,7 @@
         {
           "declaration": "first_harmonic_gap_of_pivotBudgetAt",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 377
+          "line": 549
         }
       ],
       "concepts": [
@@ -308,7 +308,7 @@
         {
           "declaration": "irrational_totient_series_of_pivotResidualDecorrelation",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 405
+          "line": 577
         }
       ],
       "concepts": [
@@ -697,12 +697,12 @@
         {
           "declaration": "windowFirstCos_le_add_of_tailOrbitGap",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 221
+          "line": 220
         },
         {
           "declaration": "windowFirstCos_le_nine_tenths_of_tailOrbitGap",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 234
+          "line": 233
         }
       ],
       "concepts": [
@@ -726,7 +726,7 @@
         {
           "declaration": "exists_natural_window_depth_with_error",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 258
+          "line": 257
         }
       ],
       "concepts": [
@@ -750,7 +750,7 @@
         {
           "declaration": "cofinally_adjacent_chord_ge_one_of_unit_squaring",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 336
+          "line": 335
         }
       ],
       "concepts": [
@@ -773,12 +773,12 @@
         {
           "declaration": "cofinally_scaledTotientSeriesFirstExp_adjacent_chord_ge_one_of_not_dyadic",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 472
+          "line": 471
         },
         {
           "declaration": "windowSeparatedPairsAt_of_not_dyadic_scaled_totient_series",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1722
+          "line": 1744
         }
       ],
       "concepts": [
@@ -805,7 +805,7 @@
         {
           "declaration": "windowSeparatedPairs_of_irrational_totient_series",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1734
+          "line": 1755
         }
       ],
       "concepts": [
@@ -832,7 +832,7 @@
         {
           "declaration": "dtwWindowSeparatedPairs_iff_irrational_totient_series",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1744
+          "line": 1765
         }
       ],
       "concepts": [
@@ -858,7 +858,7 @@
         {
           "declaration": "irrational_totient_series_of_windowSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1600
+          "line": 1622
         }
       ],
       "concepts": [
@@ -886,22 +886,22 @@
         {
           "declaration": "sum_norm_sq_eq_centered_add_mean",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 589
+          "line": 617
         },
         {
           "declaration": "sum_pairwise_norm_sq_eq_two_card_mul_centered",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 643
+          "line": 670
         },
         {
           "declaration": "card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 693
+          "line": 720
         },
         {
           "declaration": "card_div_five_le_sum_anchor_norm_sq_of_pairwise",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 722
+          "line": 747
         }
       ],
       "concepts": [
@@ -924,17 +924,17 @@
         {
           "declaration": "firstHarmonicAnchorDefect_eq",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 551
+          "line": 550
         },
         {
           "declaration": "firstHarmonicAnchorDefect_eq_sum_norm_sq",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 563
+          "line": 562
         },
         {
           "declaration": "firstHarmonicAnchorDefect_ge_iff_first_harmonic_gap",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 576
+          "line": 575
         }
       ],
       "concepts": [
@@ -958,12 +958,12 @@
         {
           "declaration": "pivotReconstructionError_eq_conj_phase_mul_window_sub_one",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 753
+          "line": 778
         },
         {
           "declaration": "pivotFiberReconstructionErrorSum_eq_twoMode",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 785
+          "line": 810
         }
       ],
       "concepts": [
@@ -987,12 +987,12 @@
         {
           "declaration": "pivotFiberReconstructionVariance_eq_pairwise",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 810
+          "line": 834
         },
         {
           "declaration": "pivotFiberReconstructionVariance_ge_one_fifth_of_pairwise",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 826
+          "line": 848
         }
       ],
       "concepts": [
@@ -1016,17 +1016,17 @@
         {
           "declaration": "pivotFiberReconstructionDefect_eq_twoModeAnchor",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 863
+          "line": 885
         },
         {
           "declaration": "pivotFiberReconstructionDefect_eq_sum_residual_norm_sq",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 879
+          "line": 901
         },
         {
           "declaration": "pivotFiberReconstructionDefect_eq_variance_add_bias",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 910
+          "line": 932
         }
       ],
       "concepts": [
@@ -1051,22 +1051,22 @@
         {
           "declaration": "pivotFiberReconstructionVariance_eq_twoMode",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 936
+          "line": 958
         },
         {
           "declaration": "pivotFiberReconstructionVariance_eq_twoMode_div_card",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 954
+          "line": 976
         },
         {
           "declaration": "pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_twoMode",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 968
+          "line": 990
         },
         {
           "declaration": "pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_modeBounds",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1034
+          "line": 1056
         }
       ],
       "concepts": [
@@ -1090,37 +1090,37 @@
         {
           "declaration": "exists_certifiedKill_of_pivotFiberReconstructionDefect",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1052
+          "line": 1074
         },
         {
           "declaration": "exists_certifiedKill_of_pivotFiberReconstructionVariance",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1070
+          "line": 1092
         },
         {
           "declaration": "exists_certifiedKill_of_pivotFiberPairwiseEnergy",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1086
+          "line": 1107
         },
         {
           "declaration": "exists_certifiedKill_of_pivotFiberSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1105
+          "line": 1125
         },
         {
           "declaration": "pivotFiberReconstructionDefect_ge_one_fifth_of_windowPairwise",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1129
+          "line": 1149
         },
         {
           "declaration": "exists_certifiedKill_of_pivotFiberWindowPairwiseEnergy",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1144
+          "line": 1165
         },
         {
           "declaration": "exists_certifiedKill_of_pivotFiberWindowSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1161
+          "line": 1181
         }
       ],
       "concepts": [
@@ -1146,52 +1146,52 @@
         {
           "declaration": "naturalPivotPointEscape_of_naturalPrimeTailOrbitGap",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1246
+          "line": 1266
         },
         {
           "declaration": "windowSeparatedPairs_of_pivotWindowSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1377
+          "line": 1395
         },
         {
           "declaration": "pivotWindowPairwiseEnergy_of_windowSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1391
+          "line": 1410
         },
         {
           "declaration": "pivotAntiReconstruction_of_windowPairwiseEnergy",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1404
+          "line": 1423
         },
         {
           "declaration": "pivotPairwiseReconstructionEnergy_of_separatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1415
+          "line": 1434
         },
         {
           "declaration": "pivotReconstructionVariance_of_pairwiseEnergy",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1428
+          "line": 1448
         },
         {
           "declaration": "naturalPivotWindowGap_of_naturalPivotTwoModeCancellation",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1439
+          "line": 1460
         },
         {
           "declaration": "pivotAntiReconstruction_of_naturalPivotWindowGap",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1453
+          "line": 1474
         },
         {
           "declaration": "pivotReconstructionVariance_of_naturalPivotTwoModeCancellation",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1470
+          "line": 1491
         },
         {
           "declaration": "pivotAntiReconstruction_of_reconstructionVariance",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1489
+          "line": 1510
         }
       ],
       "concepts": [
@@ -1214,42 +1214,42 @@
         {
           "declaration": "irrational_totient_series_of_pivotAntiReconstruction",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1502
+          "line": 1523
         },
         {
           "declaration": "irrational_totient_series_of_naturalPivotWindowGap",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1520
+          "line": 1541
         },
         {
           "declaration": "irrational_totient_series_of_pivotReconstructionVariance",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1560
+          "line": 1582
         },
         {
           "declaration": "irrational_totient_series_of_pivotPairwiseReconstructionEnergy",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1567
+          "line": 1589
         },
         {
           "declaration": "irrational_totient_series_of_pivotSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1574
+          "line": 1596
         },
         {
           "declaration": "irrational_totient_series_of_pivotWindowPairwiseEnergy",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1581
+          "line": 1603
         },
         {
           "declaration": "irrational_totient_series_of_pivotWindowSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1590
+          "line": 1612
         },
         {
           "declaration": "irrational_totient_series_of_naturalPivotTwoModeCancellation",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1753
+          "line": 1774
         }
       ],
       "concepts": [
@@ -1283,12 +1283,12 @@
         {
           "declaration": "irrational_totient_series_of_naturalPivotPointEscape",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1528
+          "line": 1550
         },
         {
           "declaration": "irrational_totient_series_of_naturalPrimeTailOrbitGap",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1552
+          "line": 1574
         }
       ],
       "concepts": [
@@ -1317,12 +1317,12 @@
         {
           "declaration": "naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 27
+          "line": 485
         },
         {
           "declaration": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-          "line": 66
+          "line": 524
         },
         {
           "declaration": "naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift",
@@ -1928,14 +1928,14 @@
     {
       "declaration": "pivotSupplier",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 188,
+      "line": 223,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotSupplierBases",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 198,
+      "line": 233,
       "role": "concept",
       "statement_node": null
     },
@@ -1949,7 +1949,7 @@
     {
       "declaration": "pivotGoodCofactor",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 201,
+      "line": 236,
       "role": "concept",
       "statement_node": null
     },
@@ -1963,140 +1963,140 @@
     {
       "declaration": "pivotGoodBases",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 208,
+      "line": 243,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotBadBases",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 211,
+      "line": 246,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotNonSupplierBases",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 214,
+      "line": 249,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotPhaseAt",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 217,
+      "line": 252,
       "role": "representation",
       "statement_node": "pivot_factorisation_is_exact_division"
     },
     {
       "declaration": "pivotResidualAt",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 220,
+      "line": 255,
       "role": "representation",
       "statement_node": "pivot_factorisation_is_exact_division"
     },
     {
       "declaration": "windowFirstExp_eq_pivotResidualAt_mul_phase",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 223,
+      "line": 258,
       "role": "statement",
       "statement_node": "pivot_factorisation_is_exact_division"
     },
     {
       "declaration": "totient_pivotArgument_eq_mul",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 230,
+      "line": 265,
       "role": "statement",
       "statement_node": "clean_prime_pivot_supplier_fibre"
     },
     {
       "declaration": "pivotFiber",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 245,
+      "line": 280,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "mem_pivotFiber_one_overlap_iff",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 251,
+      "line": 423,
       "role": "statement",
       "statement_node": "clean_prime_pivot_supplier_fibre"
     },
     {
       "declaration": "pivotFiberMean",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 307,
+      "line": 479,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotCenteredCorrelation",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 311,
+      "line": 483,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotFiberMeanContribution",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 317,
+      "line": 489,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotBadContribution",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 323,
+      "line": 495,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotNonSupplierContribution",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 327,
+      "line": 499,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivot_good_split",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 330,
+      "line": 502,
       "role": "engine",
       "statement_node": "pivot_four_term_decomposition"
     },
     {
       "declaration": "windowFirstExp_sum_eq_pivot_decomposition",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 342,
+      "line": 514,
       "role": "statement",
       "statement_node": "pivot_four_term_decomposition"
     },
     {
       "declaration": "PivotBudgetAt",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 371,
+      "line": 543,
       "role": "concept",
       "statement_node": "pivot_budget_forces_first_harmonic_gap"
     },
     {
       "declaration": "first_harmonic_gap_of_pivotBudgetAt",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 377,
+      "line": 549,
       "role": "statement",
       "statement_node": "pivot_budget_forces_first_harmonic_gap"
     },
     {
       "declaration": "DTWPivotResidualDecorrelation",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 397,
+      "line": 569,
       "role": "concept",
       "statement_node": "first_harmonic_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_pivotResidualDecorrelation",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
-      "line": 405,
+      "line": 577,
       "role": "statement",
       "statement_node": "first_harmonic_socket_implies_249"
     },
@@ -2152,28 +2152,28 @@
     {
       "declaration": "naturalPrimeTailOrbitStrictGap_iff_initial_phase",
       "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "line": 208,
+      "line": 278,
       "role": "statement",
       "statement_node": "tail_orbit_initial_phase_normal_form"
     },
     {
       "declaration": "tailOrbitFirstExp_eq_one_of_le",
       "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "line": 224,
+      "line": 294,
       "role": "engine",
       "statement_node": "dyadic_root_blocks_strict_prime_gap"
     },
     {
       "declaration": "not_naturalPrimeTailOrbitStrictGap_of_phase_one",
       "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "line": 238,
+      "line": 308,
       "role": "statement",
       "statement_node": "dyadic_root_blocks_strict_prime_gap"
     },
     {
       "declaration": "not_naturalPrimeTailOrbitStrictGap_of_dyadic_root",
       "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "line": 252,
+      "line": 322,
       "role": "statement",
       "statement_node": "dyadic_root_blocks_strict_prime_gap"
     },
@@ -2187,7 +2187,7 @@
     {
       "declaration": "windowFirstExp_eq_of_discrepancy_emod_eq",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 129,
+      "line": 128,
       "role": "statement",
       "statement_node": "equal_residues_give_equal_phase"
     },
@@ -2222,609 +2222,609 @@
     {
       "declaration": "windowFirstCos_le_add_of_tailOrbitGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 221,
+      "line": 220,
       "role": "statement",
       "statement_node": "orbit_gap_transfers_to_window"
     },
     {
       "declaration": "windowFirstCos_le_nine_tenths_of_tailOrbitGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 234,
+      "line": 233,
       "role": "statement",
       "statement_node": "orbit_gap_transfers_to_window"
     },
     {
       "declaration": "tendsto_linear_mul_half_pow",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 244,
+      "line": 243,
       "role": "substrate",
       "statement_node": "exponential_depth_pays_budgets"
     },
     {
       "declaration": "exists_natural_window_depth_with_error",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 258,
+      "line": 257,
       "role": "statement",
       "statement_node": "exponential_depth_pays_budgets"
     },
     {
       "declaration": "IsDyadicReal",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 329,
+      "line": 328,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "cofinally_adjacent_chord_ge_one_of_unit_squaring",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 336,
+      "line": 335,
       "role": "statement",
       "statement_node": "squaring_orbit_expansivity"
     },
     {
       "declaration": "scaledTotientSeriesFirstExp_succ",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 433,
+      "line": 432,
       "role": "substrate",
       "statement_node": "tail_orbit_equals_scaled_series_orbit"
     },
     {
       "declaration": "norm_scaledTotientSeriesFirstExp",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 460,
+      "line": 459,
       "role": "substrate",
       "statement_node": "tail_orbit_equals_scaled_series_orbit"
     },
     {
       "declaration": "cofinally_scaledTotientSeriesFirstExp_adjacent_chord_ge_one_of_not_dyadic",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 472,
+      "line": 471,
       "role": "statement",
       "statement_node": "nondyadic_scaled_series_gives_fixed_shift_socket"
     },
     {
       "declaration": "cofinally_scaledTotientSeriesFirstExp_adjacent_chord_ge_one",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 505,
+      "line": 504,
       "role": "engine",
       "statement_node": "irrationality_implies_window_separated_pairs"
     },
     {
       "declaration": "firstHarmonicAnchorDefect",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 546,
+      "line": 545,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "firstHarmonicAnchorDefect_eq",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 551,
+      "line": 550,
       "role": "statement",
       "statement_node": "anchor_defect_equals_first_harmonic_threshold"
     },
     {
       "declaration": "firstHarmonicAnchorDefect_eq_sum_norm_sq",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 563,
+      "line": 562,
       "role": "statement",
       "statement_node": "anchor_defect_equals_first_harmonic_threshold"
     },
     {
       "declaration": "firstHarmonicAnchorDefect_ge_iff_first_harmonic_gap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 576,
+      "line": 575,
       "role": "statement",
       "statement_node": "anchor_defect_equals_first_harmonic_threshold"
     },
     {
       "declaration": "sum_norm_sq_eq_centered_add_mean",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 589,
+      "line": 617,
       "role": "statement",
       "statement_node": "finite_variance_and_pairwise_energy_identities"
     },
     {
       "declaration": "sum_pairwise_norm_sq_eq_two_card_mul_centered",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 643,
+      "line": 670,
       "role": "statement",
       "statement_node": "finite_variance_and_pairwise_energy_identities"
     },
     {
       "declaration": "card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 693,
+      "line": 720,
       "role": "statement",
       "statement_node": "finite_variance_and_pairwise_energy_identities"
     },
     {
       "declaration": "card_div_five_le_sum_anchor_norm_sq_of_pairwise",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 722,
+      "line": 747,
       "role": "statement",
       "statement_node": "finite_variance_and_pairwise_energy_identities"
     },
     {
       "declaration": "pivotReconstructionError",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 746,
+      "line": 771,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotReconstructionError_eq_conj_phase_mul_window_sub_one",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 753,
+      "line": 778,
       "role": "statement",
       "statement_node": "reconstruction_error_is_rotated_anchor_error"
     },
     {
       "declaration": "pivotFiberWindowMode",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 765,
+      "line": 790,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotFiberResidualMode",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 772,
+      "line": 797,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotFiberConjugatePhaseMode",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 778,
+      "line": 803,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotFiberReconstructionErrorSum_eq_twoMode",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 785,
+      "line": 810,
       "role": "statement",
       "statement_node": "reconstruction_error_is_rotated_anchor_error"
     },
     {
       "declaration": "pivotFiberReconstructionErrorMean",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 795,
+      "line": 820,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotFiberReconstructionVariance",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 802,
+      "line": 826,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotFiberReconstructionVariance_eq_pairwise",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 810,
+      "line": 834,
       "role": "statement",
       "statement_node": "fibre_variance_equals_pairwise_energy"
     },
     {
       "declaration": "pivotFiberReconstructionVariance_ge_one_fifth_of_pairwise",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 826,
+      "line": 848,
       "role": "statement",
       "statement_node": "fibre_variance_equals_pairwise_energy"
     },
     {
       "declaration": "exists_certifiedKill_of_firstHarmonicAnchorDefect",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 843,
+      "line": 865,
       "role": "statement",
       "statement_node": "first_harmonic_saving_forces_certificate"
     },
     {
       "declaration": "pivotFiberReconstructionDefect",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 857,
+      "line": 879,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "pivotFiberReconstructionDefect_eq_twoModeAnchor",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 863,
+      "line": 885,
       "role": "statement",
       "statement_node": "fibre_defect_is_variance_plus_bias"
     },
     {
       "declaration": "norm_pivotResidualAt",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 872,
+      "line": 894,
       "role": "substrate",
       "statement_node": "fibre_defect_is_variance_plus_bias"
     },
     {
       "declaration": "pivotFiberReconstructionDefect_eq_sum_residual_norm_sq",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 879,
+      "line": 901,
       "role": "statement",
       "statement_node": "fibre_defect_is_variance_plus_bias"
     },
     {
       "declaration": "pivotFiberReconstructionDefect_eq_variance_add_bias",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 910,
+      "line": 932,
       "role": "statement",
       "statement_node": "fibre_defect_is_variance_plus_bias"
     },
     {
       "declaration": "card_mul_norm_inv_natCast_mul_sq_eq_div",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 924,
+      "line": 946,
       "role": "substrate",
       "statement_node": "finite_variance_and_pairwise_energy_identities"
     },
     {
       "declaration": "pivotFiberReconstructionVariance_eq_twoMode",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 936,
+      "line": 958,
       "role": "statement",
       "statement_node": "two_mode_variance_bound"
     },
     {
       "declaration": "pivotFiberReconstructionVariance_eq_twoMode_div_card",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 954,
+      "line": 976,
       "role": "statement",
       "statement_node": "two_mode_variance_bound"
     },
     {
       "declaration": "pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_twoMode",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 968,
+      "line": 990,
       "role": "statement",
       "statement_node": "two_mode_variance_bound"
     },
     {
       "declaration": "pivotFiberNormalizedAntiLock_le_two_fifths",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 995,
+      "line": 1017,
       "role": "substrate",
       "statement_node": "two_mode_variance_bound"
     },
     {
       "declaration": "pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_modeBounds",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1034,
+      "line": 1056,
       "role": "statement",
       "statement_node": "two_mode_variance_bound"
     },
     {
       "declaration": "exists_certifiedKill_of_pivotFiberReconstructionDefect",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1052,
+      "line": 1074,
       "role": "statement",
       "statement_node": "finite_fibre_intake_forces_certificate"
     },
     {
       "declaration": "exists_certifiedKill_of_pivotFiberReconstructionVariance",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1070,
+      "line": 1092,
       "role": "statement",
       "statement_node": "finite_fibre_intake_forces_certificate"
     },
     {
       "declaration": "exists_certifiedKill_of_pivotFiberPairwiseEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1086,
+      "line": 1107,
       "role": "statement",
       "statement_node": "finite_fibre_intake_forces_certificate"
     },
     {
       "declaration": "exists_certifiedKill_of_pivotFiberSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1105,
+      "line": 1125,
       "role": "statement",
       "statement_node": "finite_fibre_intake_forces_certificate"
     },
     {
       "declaration": "pivotFiberReconstructionDefect_ge_one_fifth_of_windowPairwise",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1129,
+      "line": 1149,
       "role": "statement",
       "statement_node": "finite_fibre_intake_forces_certificate"
     },
     {
       "declaration": "exists_certifiedKill_of_pivotFiberWindowPairwiseEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1144,
+      "line": 1165,
       "role": "statement",
       "statement_node": "finite_fibre_intake_forces_certificate"
     },
     {
       "declaration": "exists_certifiedKill_of_pivotFiberWindowSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1161,
+      "line": 1181,
       "role": "statement",
       "statement_node": "finite_fibre_intake_forces_certificate"
     },
     {
       "declaration": "DTWPivotAntiReconstruction",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1181,
+      "line": 1202,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWPivotReconstructionVariance",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1195,
+      "line": 1216,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWNaturalPivotWindowGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1209,
+      "line": 1230,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWNaturalPivotPointEscape",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1223,
+      "line": 1244,
       "role": "concept",
       "statement_node": "point_escape_socket_implies_249"
     },
     {
       "declaration": "DTWNaturalPrimeTailOrbitGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1236,
+      "line": 1256,
       "role": "concept",
       "statement_node": "point_escape_socket_implies_249"
     },
     {
       "declaration": "naturalPivotPointEscape_of_naturalPrimeTailOrbitGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1246,
+      "line": 1266,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "DTWNaturalPivotTwoModeCancellation",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1269,
+      "line": 1289,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWPivotPairwiseReconstructionEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1286,
+      "line": 1305,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWPivotSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1304,
+      "line": 1322,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWPivotWindowPairwiseEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1323,
+      "line": 1341,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWPivotWindowSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1339,
+      "line": 1357,
       "role": "concept",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWWindowSeparatedPairsAt",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1356,
+      "line": 1374,
       "role": "concept",
       "statement_node": "nondyadic_scaled_series_gives_fixed_shift_socket"
     },
     {
       "declaration": "DTWWindowSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1371,
+      "line": 1389,
       "role": "concept",
       "statement_node": "window_separated_pairs_implies_249"
     },
     {
       "declaration": "windowSeparatedPairs_of_pivotWindowSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1377,
+      "line": 1395,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "pivotWindowPairwiseEnergy_of_windowSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1391,
+      "line": 1410,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "pivotAntiReconstruction_of_windowPairwiseEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1404,
+      "line": 1423,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "pivotPairwiseReconstructionEnergy_of_separatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1415,
+      "line": 1434,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "pivotReconstructionVariance_of_pairwiseEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1428,
+      "line": 1448,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "naturalPivotWindowGap_of_naturalPivotTwoModeCancellation",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1439,
+      "line": 1460,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "pivotAntiReconstruction_of_naturalPivotWindowGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1453,
+      "line": 1474,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "pivotReconstructionVariance_of_naturalPivotTwoModeCancellation",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1470,
+      "line": 1491,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "pivotAntiReconstruction_of_reconstructionVariance",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1489,
+      "line": 1510,
       "role": "statement",
       "statement_node": "socket_hierarchy_among_open_producers"
     },
     {
       "declaration": "irrational_totient_series_of_pivotAntiReconstruction",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1502,
+      "line": 1523,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_naturalPivotWindowGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1520,
+      "line": 1541,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_naturalPivotPointEscape",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1528,
+      "line": 1550,
       "role": "statement",
       "statement_node": "point_escape_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_naturalPrimeTailOrbitGap",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1552,
+      "line": 1574,
       "role": "statement",
       "statement_node": "point_escape_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_pivotReconstructionVariance",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1560,
+      "line": 1582,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_pivotPairwiseReconstructionEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1567,
+      "line": 1589,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_pivotSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1574,
+      "line": 1596,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_pivotWindowPairwiseEnergy",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1581,
+      "line": 1603,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_pivotWindowSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1590,
+      "line": 1612,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_windowSeparatedPairs",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1600,
+      "line": 1622,
       "role": "statement",
       "statement_node": "window_separated_pairs_implies_249"
     },
     {
       "declaration": "windowSeparatedPairsAt_of_cofinally_scaled_adjacent_chord",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1632,
+      "line": 1654,
       "role": "engine",
       "statement_node": "irrationality_implies_window_separated_pairs"
     },
     {
       "declaration": "windowSeparatedPairsAt_of_not_dyadic_scaled_totient_series",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1722,
+      "line": 1744,
       "role": "statement",
       "statement_node": "nondyadic_scaled_series_gives_fixed_shift_socket"
     },
     {
       "declaration": "windowSeparatedPairs_of_irrational_totient_series",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1734,
+      "line": 1755,
       "role": "statement",
       "statement_node": "irrationality_implies_window_separated_pairs"
     },
     {
       "declaration": "dtwWindowSeparatedPairs_iff_irrational_totient_series",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1744,
+      "line": 1765,
       "role": "statement",
       "statement_node": "window_separated_pairs_equivalent_to_249"
     },
     {
       "declaration": "irrational_totient_series_of_naturalPivotTwoModeCancellation",
       "module": "Erdos249257/PivotAntiReconstruction.lean",
-      "line": 1753,
+      "line": 1774,
       "role": "statement",
       "statement_node": "pivot_fibre_socket_implies_249"
     },
     {
       "declaration": "DTWNaturalPrimeTailOrbitStrictGap",
       "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "line": 18,
+      "line": 157,
       "role": "concept",
       "statement_node": "strict_prime_escape_socket_implies_249"
     },
     {
       "declaration": "naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
       "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "line": 27,
+      "line": 485,
       "role": "statement",
       "statement_node": "strict_prime_escape_socket_implies_249"
     },
     {
       "declaration": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
       "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "line": 66,
+      "line": 524,
       "role": "statement",
       "statement_node": "strict_prime_escape_socket_implies_249"
     }

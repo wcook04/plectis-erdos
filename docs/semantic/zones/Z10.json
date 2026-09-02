@@ -104,27 +104,27 @@
         {
           "declaration": "positiveSupportBitAF_mul_zeta",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 76
+          "line": 77
         },
         {
           "declaration": "moebius_mul_supportCoeffAF",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 94
+          "line": 95
         },
         {
           "declaration": "mobius_supportCoeff_eq_one_iff",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 111
+          "line": 112
         },
         {
           "declaration": "mobius_supportCoeff_boolean",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 117
+          "line": 118
         },
         {
           "declaration": "mobius_supportCoeff_recovers_support",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 127
+          "line": 128
         }
       ],
       "concepts": [
@@ -148,12 +148,12 @@
         {
           "declaration": "eq_supportCoeffAF_booleanMobiusSupport_of_boolean",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 180
+          "line": 181
         },
         {
           "declaration": "moebius_mul_eq_positiveSupportBitAF_of_boolean",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 148
+          "line": 149
         }
       ],
       "concepts": [
@@ -177,17 +177,17 @@
         {
           "declaration": "card_divisors_le_two_mul_sqrt",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 208
+          "line": 209
         },
         {
           "declaration": "supportCoeff_le_two_mul_sqrt",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 270
+          "line": 271
         },
         {
           "declaration": "binaryCoeffTail_supportCoeff_le_two_sqrt_add_four",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 289
+          "line": 290
         }
       ],
       "concepts": [
@@ -210,22 +210,22 @@
         {
           "declaration": "erdosSupportSeries_rational_iff_exists_temperedCarry",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 383
+          "line": 384
         },
         {
           "declaration": "support_fraction_iff_exists_temperedCarry",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 466
+          "line": 467
         },
         {
           "declaration": "exists_temperedCarry_of_support_fraction",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 394
+          "line": 395
         },
         {
           "declaration": "support_fraction_of_temperedCarry",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 452
+          "line": 453
         }
       ],
       "concepts": [
@@ -251,17 +251,17 @@
         {
           "declaration": "support_half_iff_affineBinaryOrbit_tempered",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 526
+          "line": 527
         },
         {
           "declaration": "halfSupportSeries_residual_scaled_eq_affineCarry_sub_tail",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 548
+          "line": 549
         },
         {
           "declaration": "halfFinitePrefix_residual_eq_pow_mul_integerCarry_sub_finiteTail",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 644
+          "line": 645
         }
       ],
       "concepts": [
@@ -288,22 +288,22 @@
         {
           "declaration": "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 948
+          "line": 949
         },
         {
           "declaration": "exists_booleanMobiusCarry_of_support_fraction",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 835
+          "line": 836
         },
         {
           "declaration": "support_fraction_of_booleanMobiusCarry",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 858
+          "line": 859
         },
         {
           "declaration": "BooleanMobiusCarryCertificate.reconstructsSupport",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 894
+          "line": 895
         }
       ],
       "concepts": [
@@ -330,17 +330,17 @@
         {
           "declaration": "erdosSupportSeries_support23_eq_ten_div_twenty_one",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 1054
+          "line": 1055
         },
         {
           "declaration": "carryOrbit23_isTempered",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 1103
+          "line": 1104
         },
         {
           "declaration": "mobius_carryOrbit23_recovers_support",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 1140
+          "line": 1141
         }
       ],
       "concepts": [
@@ -960,7 +960,7 @@
         {
           "declaration": "doublingResidue_carry",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 92
+          "line": 94
         }
       ],
       "concepts": [
@@ -983,12 +983,12 @@
         {
           "declaration": "sum_eq_modulus_mul_wrapCount_of_closed_cycle",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 156
+          "line": 158
         },
         {
           "declaration": "sum_doublingResidue_eq_mul_wrapCount",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 171
+          "line": 173
         }
       ],
       "concepts": [
@@ -1011,17 +1011,17 @@
         {
           "declaration": "one_wrap_cycle_classification",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 353
+          "line": 355
         },
         {
           "declaration": "one_doublingWrap_classification",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 415
+          "line": 417
         },
         {
           "declaration": "one_oddOrder_doublingWrap_classification",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 478
+          "line": 481
         }
       ],
       "concepts": [
@@ -1044,17 +1044,17 @@
         {
           "declaration": "pow_oddDoublingOrder_mod_eq_one",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 439
+          "line": 441
         },
         {
           "declaration": "oddDoublingOrder_isPeriod",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 463
+          "line": 465
         },
         {
           "declaration": "oddOrder_doublingWrapCount_pos",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 470
+          "line": 472
         }
       ],
       "concepts": [
@@ -1077,22 +1077,22 @@
         {
           "declaration": "oddSupportTail_eq_residue_div_add_excess",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 506
+          "line": 509
         },
         {
           "declaration": "sum_supportTail_block_eq_wrapCount_add_excess",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 529
+          "line": 532
         },
         {
           "declaration": "supportCoeff_add_oddTailExcess_succ_eq_wrap_add_two_excess",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1651
+          "line": 1653
         },
         {
           "declaration": "shiftedOddSupportTail_eq_residue_div_add_excess",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1848
+          "line": 1850
         }
       ],
       "concepts": [
@@ -1117,22 +1117,22 @@
         {
           "declaration": "exists_shifted_odd_tail_nat_states_of_support_fraction",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 668
+          "line": 671
         },
         {
           "declaration": "exists_shifted_odd_tail_states_of_support_fraction",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 596
+          "line": 599
         },
         {
           "declaration": "numerator_pos_of_support_fraction",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 576
+          "line": 579
         },
         {
           "declaration": "support_fraction_wrapCount_le_tail_block",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 767
+          "line": 770
         }
       ],
       "concepts": [
@@ -1158,17 +1158,17 @@
         {
           "declaration": "tendsto_supportCoeff_mean_reciprocalMass",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 945
+          "line": 948
         },
         {
           "declaration": "tendsto_binaryCoeffTail_supportCoeff_mean_reciprocalMass",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1036
+          "line": 1039
         },
         {
           "declaration": "tendsto_shifted_binaryCoeffTail_supportCoeff_mean_reciprocalMass",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1417
+          "line": 1419
         }
       ],
       "concepts": [
@@ -1192,22 +1192,22 @@
         {
           "declaration": "reciprocalMass_eq_wrapRatio_add_oddTailExcessMean",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1353
+          "line": 1355
         },
         {
           "declaration": "doublingWrapRatio_le_reciprocalMass",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1374
+          "line": 1376
         },
         {
           "declaration": "doublingWrapRatio_reciprocalMassDivergesOrAtLeast",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1387
+          "line": 1389
         },
         {
           "declaration": "one_div_period_reciprocalMassDivergesOrAtLeast",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1400
+          "line": 1402
         }
       ],
       "concepts": [
@@ -1234,22 +1234,22 @@
         {
           "declaration": "support_fraction_oddOrder_wrapRatio_le_reciprocalMass",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1454
+          "line": 1456
         },
         {
           "declaration": "one_div_oddOrder_le_reciprocalMass_of_support_fraction",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1478
+          "line": 1480
         },
         {
           "declaration": "support_fraction_oddOrder_wrapRatio_reciprocalMassDivergesOrAtLeast",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1501
+          "line": 1503
         },
         {
           "declaration": "support_fraction_one_div_oddOrder_reciprocalMassDivergesOrAtLeast",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1517
+          "line": 1519
         }
       ],
       "concepts": [
@@ -1275,22 +1275,22 @@
         {
           "declaration": "booleanCollisionSurplus_le_oddTailExcess",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1703
+          "line": 1705
         },
         {
           "declaration": "booleanCollisionSurplus_le_shiftedOddTailExcess",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1918
+          "line": 1920
         },
         {
           "declaration": "card_le_supportCoeff_of_forced_divisors",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1616
+          "line": 1618
         },
         {
           "declaration": "booleanCollisionSurplus_le_of_supportCoeff_carry",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1637
+          "line": 1639
         }
       ],
       "concepts": [
@@ -1316,17 +1316,17 @@
         {
           "declaration": "booleanCollision_wrap_bound_of_common_multiple",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2037
+          "line": 2044
         },
         {
           "declaration": "shiftedBooleanCollision_wrap_bound_of_common_multiple",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 1963
+          "line": 1968
         },
         {
           "declaration": "wrapRatio_add_collisionSurplus_div_le_reciprocalMass",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2013
+          "line": 2019
         }
       ],
       "concepts": [
@@ -1353,12 +1353,12 @@
         {
           "declaration": "dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2200
+          "line": 2210
         },
         {
           "declaration": "one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2116
+          "line": 2124
         }
       ],
       "concepts": [
@@ -1384,17 +1384,17 @@
         {
           "declaration": "exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2377
+          "line": 2383
         },
         {
           "declaration": "shifted_state_unbounded_of_infinite_support",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2320
+          "line": 2327
         },
         {
           "declaration": "exists_shifted_odd_tail_nat_state_with_common_multiple_bound_of_support_fraction",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2294
+          "line": 2302
         }
       ],
       "concepts": [
@@ -1420,22 +1420,22 @@
         {
           "declaration": "orderWrapValidation446_passes",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2454
+          "line": 2460
         },
         {
           "declaration": "orderWrapValidatedStartCount_eq_446",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2450
+          "line": 2456
         },
         {
           "declaration": "orderWrap_minima_table_passes",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2460
+          "line": 2466
         },
         {
           "declaration": "carryOrbit23_common_multiple_bound_validation66",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-          "line": 2401
+          "line": 2407
         }
       ],
       "concepts": [
@@ -1491,22 +1491,22 @@
         {
           "declaration": "greedyHalfRemainder_le_nextDyadic_iff_excess_nonpos",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 806
+          "line": 961
         },
         {
           "declaration": "greedyHalfRemainder_le_twoChannelCap_iff_excess",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 757
+          "line": 912
         },
         {
           "declaration": "greedyHalf_mem_nextMersenneDyadicSliver_iff_excess",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 889
+          "line": 1044
         },
         {
           "declaration": "greedyHalf_badSkipCapViolation_iff_primitiveLattice",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2033
+          "line": 2188
         }
       ],
       "concepts": [
@@ -1629,12 +1629,12 @@
         {
           "declaration": "rawSafe_but_not_gcdScaled_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3294
+          "line": 3450
         },
         {
           "declaration": "factorEleven_predecessorOvershoot_not_inductive_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3316
+          "line": 3472
         }
       ],
       "concepts": [
@@ -1657,22 +1657,22 @@
         {
           "declaration": "greedyHalf_unsafeSkip_forces_doubleBlock",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1226
+          "line": 1381
         },
         {
           "declaration": "greedyHalf_capViolationSkip_forces_threeDepthBlock",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1252
+          "line": 1407
         },
         {
           "declaration": "mersennePrefix_doubleDepth_lt_halfDyadicCap",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 936
+          "line": 1091
         },
         {
           "declaration": "mersennePrefix_threeDepth_add_two_lt_halfTwoChannelCap",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1070
+          "line": 1225
         }
       ],
       "concepts": [
@@ -1695,12 +1695,12 @@
         {
           "declaration": "halfTwoChannelCap_lt_mersennePrefix_threeDepth_add_three",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1169
+          "line": 1324
         },
         {
           "declaration": "exists_relaxed_capViolation_exact_block",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1186
+          "line": 1341
         }
       ],
       "concepts": [
@@ -1723,12 +1723,12 @@
         {
           "declaration": "greedyHalf_take_iff_BlockTakeAt",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2804
+          "line": 2959
         },
         {
           "declaration": "greedyHalfRemainder_le_nextDyadic_of_BlockSafe",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2759
+          "line": 2914
         }
       ],
       "concepts": [
@@ -1752,7 +1752,7 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_actualBlockSafe",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2789
+          "line": 2944
         }
       ],
       "concepts": [
@@ -1778,7 +1778,7 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_skipped_excessBound",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 923
+          "line": 1078
         }
       ],
       "concepts": [
@@ -1804,27 +1804,27 @@
         {
           "declaration": "halfGreedyThreeDepthTakeRunExcessBound_iff_skippedExcessBound",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2021
+          "line": 2176
         },
         {
           "declaration": "halfGreedySkippedExcessBound_of_threeDepthTakeRun",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1288
+          "line": 1443
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_threeDepthTakeRunExcessBound",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1306
+          "line": 1461
         },
         {
           "declaration": "halfGreedySkippedExcessBound_of_longTakeRun",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1326
+          "line": 1481
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_longTakeRunExcessBound",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1348
+          "line": 1503
         }
       ],
       "concepts": [
@@ -1851,27 +1851,27 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_skippedActualRawMarginSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3226
+          "line": 3381
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_skippedRawBlockMarginSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3216
+          "line": 3371
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipActualRawMarginSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3237
+          "line": 3393
         },
         {
           "declaration": "halfGreedy_rawBlockWitness_of_actualRawMarginWitness",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3094
+          "line": 3249
         },
         {
           "declaration": "halfGreedy_BlockSafe_of_rawBlockWitness",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3205
+          "line": 3360
         }
       ],
       "concepts": [
@@ -1899,22 +1899,22 @@
         {
           "declaration": "blockDyadicSafeAt_iff_rawPredecessorOvershoot",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3249
+          "line": 3405
         },
         {
           "declaration": "gcd_dvd_predecessorOvershoot",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3340
+          "line": 3496
         },
         {
           "declaration": "gcdScaled_predecessorOvershoot_iff_primitiveQuotient",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3351
+          "line": 4409
         },
         {
           "declaration": "blockDyadicSafeAt_of_gcdScaled_predecessorOvershoot",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3364
+          "line": 4422
         }
       ],
       "concepts": [
@@ -1937,22 +1937,22 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3421
+          "line": 4479
         },
         {
           "declaration": "unsafeSkipGcdOvershootSupply_iff_primitive",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3463
+          "line": 4521
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3504
+          "line": 4562
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3537
+          "line": 4595
         }
       ],
       "concepts": [
@@ -1980,22 +1980,22 @@
         {
           "declaration": "finiteFragment_dyadicPrefixCompression",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1481
+          "line": 1636
         },
         {
           "declaration": "finiteFragment_residual_value",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1436
+          "line": 1591
         },
         {
           "declaration": "oddDoublingOrder_finiteErdosSum_den_eq_lcm",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1375
+          "line": 1530
         },
         {
           "declaration": "erdosSupportSeries_diff_finset",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1403
+          "line": 1558
         }
       ],
       "concepts": [
@@ -2020,12 +2020,12 @@
         {
           "declaration": "two_three_dyadicPrefix_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1524
+          "line": 1679
         },
         {
           "declaration": "five_term_dyadicPrefix_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1541
+          "line": 1696
         }
       ],
       "concepts": [
@@ -2049,12 +2049,12 @@
         {
           "declaration": "two_three_residual_reciprocalMassDivergesOrAtLeast",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1560
+          "line": 1715
         },
         {
           "declaration": "five_term_residual_reciprocalMassDivergesOrAtLeast",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1585
+          "line": 1740
         }
       ],
       "concepts": [
@@ -2081,22 +2081,22 @@
         {
           "declaration": "halfGreedyPrefixCommonDenominator_eq_reduced_mul_factor",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1755
+          "line": 1910
         },
         {
           "declaration": "halfGreedyRawExcessBound_iff_reduced",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1910
+          "line": 2065
         },
         {
           "declaration": "halfGreedyRawSupportExcessBound_iff",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1952
+          "line": 2107
         },
         {
           "declaration": "mem_halfGreedyPrefixSupport_iff",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1992
+          "line": 2147
         }
       ],
       "concepts": [
@@ -2119,17 +2119,17 @@
         {
           "declaration": "greedyHalfRemainder_eq_integerCarry_sub_coeffTail_div_pow",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2089
+          "line": 2244
         },
         {
           "declaration": "halfGreedyPrefixSupportTailGap_eq_excess_div_denominator",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2126
+          "line": 2281
         },
         {
           "declaration": "greedyHalf_badSkipCapViolation_iff_supportCoeffTailGap",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2164
+          "line": 2319
         }
       ],
       "concepts": [
@@ -2153,27 +2153,27 @@
         {
           "declaration": "reducedTakeStep_eq",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2258
+          "line": 2413
         },
         {
           "declaration": "reducedTakeStep_coprime",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2224
+          "line": 2379
         },
         {
           "declaration": "reducedTakeStep_residual_gcd",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2345
+          "line": 2500
         },
         {
           "declaration": "halfGreedy_takenRank_reducedTakeStep",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2506
+          "line": 2661
         },
         {
           "declaration": "halfGreedy_take_raw_reduces_to_next",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2868
+          "line": 3023
         }
       ],
       "concepts": [
@@ -2348,497 +2348,497 @@
     {
       "declaration": "positiveSupportBit",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 46,
+      "line": 47,
       "role": "concept",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "positiveSupportBitAF",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 51,
+      "line": 52,
       "role": "concept",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "supportCoeffAF",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 56,
+      "line": 57,
       "role": "concept",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "positiveSupportBit_zero",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 59,
+      "line": 60,
       "role": "substrate",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "positiveSupportBit_eq_one_iff",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 63,
+      "line": 64,
       "role": "substrate",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "positiveSupportBitAF_apply",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 68,
+      "line": 69,
       "role": "substrate",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "supportCoeffAF_apply",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 71,
+      "line": 72,
       "role": "substrate",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "positiveSupportBitAF_mul_zeta",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 76,
+      "line": 77,
       "role": "statement",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "moebius_mul_supportCoeffAF",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 94,
+      "line": 95,
       "role": "statement",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "mobius_supportCoeff_eq_one_iff",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 111,
+      "line": 112,
       "role": "statement",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "mobius_supportCoeff_boolean",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 117,
+      "line": 118,
       "role": "statement",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "mobius_supportCoeff_recovers_support",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 127,
+      "line": 128,
       "role": "statement",
       "statement_node": "mobius_inversion_of_support_coefficient"
     },
     {
       "declaration": "booleanMobiusSupport",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 139,
+      "line": 140,
       "role": "concept",
       "statement_node": "boolean_mobius_transform_characterises_support_coefficients"
     },
     {
       "declaration": "zero_not_mem_booleanMobiusSupport",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 142,
+      "line": 143,
       "role": "substrate",
       "statement_node": "boolean_mobius_transform_characterises_support_coefficients"
     },
     {
       "declaration": "moebius_mul_eq_positiveSupportBitAF_of_boolean",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 148,
+      "line": 149,
       "role": "substrate",
       "statement_node": "boolean_mobius_transform_characterises_support_coefficients"
     },
     {
       "declaration": "eq_supportCoeffAF_booleanMobiusSupport_of_boolean",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 180,
+      "line": 181,
       "role": "statement",
       "statement_node": "boolean_mobius_transform_characterises_support_coefficients"
     },
     {
       "declaration": "card_divisors_le_two_mul_sqrt",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 208,
+      "line": 209,
       "role": "statement",
       "statement_node": "divisor_pair_square_root_envelope"
     },
     {
       "declaration": "supportCoeff_le_two_mul_sqrt",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 270,
+      "line": 271,
       "role": "statement",
       "statement_node": "divisor_pair_square_root_envelope"
     },
     {
       "declaration": "sqrt_shift_le_sqrt_add_index",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 277,
+      "line": 278,
       "role": "substrate",
       "statement_node": "divisor_pair_square_root_envelope"
     },
     {
       "declaration": "binaryCoeffTail_supportCoeff_le_two_sqrt_add_four",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 289,
+      "line": 290,
       "role": "statement",
       "statement_node": "divisor_pair_square_root_envelope"
     },
     {
       "declaration": "binaryCoeffTail_supportCoeff_pos_of_exists_pos_mem",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 348,
+      "line": 349,
       "role": "substrate",
       "statement_node": "rationality_iff_tempered_support_carry_orbit"
     },
     {
       "declaration": "erdosSupportSeries_two_eq_binaryCoeffSeries",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 376,
+      "line": 377,
       "role": "substrate",
       "statement_node": "rationality_iff_tempered_support_carry_orbit"
     },
     {
       "declaration": "erdosSupportSeries_rational_iff_exists_temperedCarry",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 383,
+      "line": 384,
       "role": "statement",
       "statement_node": "rationality_iff_tempered_support_carry_orbit"
     },
     {
       "declaration": "exists_temperedCarry_of_support_fraction",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 394,
+      "line": 395,
       "role": "statement",
       "statement_node": "rationality_iff_tempered_support_carry_orbit"
     },
     {
       "declaration": "support_fraction_of_temperedCarry",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 452,
+      "line": 453,
       "role": "statement",
       "statement_node": "rationality_iff_tempered_support_carry_orbit"
     },
     {
       "declaration": "support_fraction_iff_exists_temperedCarry",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 466,
+      "line": 467,
       "role": "statement",
       "statement_node": "rationality_iff_tempered_support_carry_orbit"
     },
     {
       "declaration": "correctionCarry_add_one_recurrence_iff",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 489,
+      "line": 490,
       "role": "substrate",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "correctionCarry_two_mul_add_one_recurrence_iff",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 498,
+      "line": 499,
       "role": "substrate",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "halfCarry_eq_affineBinaryOrbit",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 509,
+      "line": 510,
       "role": "substrate",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "support_half_iff_affineBinaryOrbit_tempered",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 526,
+      "line": 527,
       "role": "statement",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "halfSupportSeries_residual_scaled_eq_affineCarry_sub_tail",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 548,
+      "line": 549,
       "role": "statement",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "supportCoeff_inter_Iic_eq_of_le",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 581,
+      "line": 582,
       "role": "substrate",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "affineHalfCarry_inter_Iic_eq",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 599,
+      "line": 600,
       "role": "substrate",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "halfDenominatorCarry_eq_two_mul_integerCarry",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 623,
+      "line": 624,
       "role": "substrate",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "halfFinitePrefix_residual_eq_pow_mul_integerCarry_sub_finiteTail",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 644,
+      "line": 645,
       "role": "statement",
       "statement_node": "half_value_iff_canonical_affine_carry_tempered"
     },
     {
       "declaration": "temperedCarry_difference",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 662,
+      "line": 663,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "denominator_dvd_temperedCarry_difference",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 672,
+      "line": 673,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "temperedCarry_quotient_eq_supportCoeff",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 680,
+      "line": 681,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "temperedCarry_pos_of_exists_pos_mem",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 690,
+      "line": 691,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "temperedCarry_le_denominator_mul_two_sqrt_add_four",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 705,
+      "line": 706,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "tendsto_div_pow_zero_of_nonnegative_sqrt_bound",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 719,
+      "line": 720,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "carryQuotient",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 766,
+      "line": 767,
       "role": "concept",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "carryQuotientAF",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 770,
+      "line": 771,
       "role": "concept",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "BooleanMobiusCarryCertificate",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 775,
+      "line": 776,
       "role": "concept",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "carryQuotient_zero",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 785,
+      "line": 786,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "carryQuotientAF_eq_supportCoeffAF",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 790,
+      "line": 791,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "moebius_mul_carryQuotientAF",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 804,
+      "line": 805,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "mobius_carryQuotient_boolean",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 813,
+      "line": 814,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "mobius_carryQuotient_recovers_support",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 823,
+      "line": 824,
       "role": "substrate",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "exists_booleanMobiusCarry_of_support_fraction",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 835,
+      "line": 836,
       "role": "statement",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "support_fraction_of_booleanMobiusCarry",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 858,
+      "line": 859,
       "role": "statement",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "BooleanMobiusCarryCertificate.reconstructsSupport",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 894,
+      "line": 895,
       "role": "statement",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 948,
+      "line": 949,
       "role": "statement",
       "statement_node": "boolean_mobius_carry_certificate_equivalence"
     },
     {
       "declaration": "support23",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 997,
+      "line": 998,
       "role": "representation",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "supportCoeff23Residue",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1002,
+      "line": 1003,
       "role": "representation",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1012,
+      "line": 1013,
       "role": "representation",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "mod_six_cases",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1021,
+      "line": 1022,
       "role": "substrate",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "supportCoeff23Residue_eq_divisibility",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1028,
+      "line": 1029,
       "role": "representation",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "supportCoeff_support23_eq_residue",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1037,
+      "line": 1038,
       "role": "representation",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "erdosSupportSeries_support23_eq_ten_div_twenty_one",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1054,
+      "line": 1055,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_initial_cycle",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1064,
+      "line": 1065,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_periodic",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1071,
+      "line": 1072,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_bounds",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1076,
+      "line": 1077,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_recurrence",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1082,
+      "line": 1083,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_isTempered",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1103,
+      "line": 1104,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "ten_coprime_twenty_one",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1124,
+      "line": 1125,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "twenty_one_dvd_carryOrbit23_difference",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1127,
+      "line": 1128,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_quotient_eq_supportCoeff",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1133,
+      "line": 1134,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "mobius_carryOrbit23_recovers_support",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1140,
+      "line": 1141,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_eq_twenty_one_mul_tail",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1149,
+      "line": 1150,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
     {
       "declaration": "carryOrbit23_positive_and_sqrt_bounded",
       "module": "Erdos249257/BooleanMobiusCarry.lean",
-      "line": 1157,
+      "line": 1158,
       "role": "finite_instance",
       "statement_node": "support23_period_six_carry_fixture"
     },
@@ -3244,882 +3244,882 @@
     {
       "declaration": "greedyHalfRemainder_le_twoChannelCap_iff_excess",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 757,
+      "line": 912,
       "role": "statement",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "greedyHalfRemainder_le_nextDyadic_iff_excess_nonpos",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 806,
+      "line": 961,
       "role": "statement",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "nextDyadic_lt_greedyHalfRemainder_iff_excess_pos",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 849,
+      "line": 1004,
       "role": "statement",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "greedyHalfRemainder_lt_mersenneWeight_iff_excess",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 858,
+      "line": 1013,
       "role": "statement",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "greedyHalf_mem_nextMersenneDyadicSliver_iff_excess",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 889,
+      "line": 1044,
       "role": "statement",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "twoChannelCap_lt_greedyHalfRemainder_iff_excess",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 902,
+      "line": 1057,
       "role": "statement",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "HalfGreedySkippedExcessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 913,
+      "line": 1068,
       "role": "concept",
       "statement_node": "half_membership_from_skipped_excess_bound"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_skipped_excessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 923,
+      "line": 1078,
       "role": "statement",
       "statement_node": "half_membership_from_skipped_excess_bound"
     },
     {
       "declaration": "mersennePrefix_doubleDepth_lt_halfDyadicCap",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 936,
+      "line": 1091,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "greedyMersenne_forcedBlock_selected",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 951,
+      "line": 1106,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "forcedBlock_tailExcess_eq",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 998,
+      "line": 1153,
       "role": "substrate",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "mersenneWeightRemainder_le_four_thirds",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1007,
+      "line": 1162,
       "role": "substrate",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "mersenneWeightRemainderTail_le_four_twentyone",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1024,
+      "line": 1179,
       "role": "substrate",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "remainderTail_lt_tripleDyadic",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1051,
+      "line": 1206,
       "role": "substrate",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "mersennePrefix_threeDepth_add_two_lt_halfTwoChannelCap",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1070,
+      "line": 1225,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "capViolation_forces_threeDepthBlock",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1091,
+      "line": 1246,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "tripleDepthTail_lt_thirdChannel",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1105,
+      "line": 1260,
       "role": "substrate",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "halfTwoChannelCap_lt_mersennePrefix_threeDepth_add_three",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1169,
+      "line": 1324,
       "role": "statement",
       "statement_node": "forced_take_block_depth_is_sharp"
     },
     {
       "declaration": "exists_relaxed_capViolation_exact_block",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1186,
+      "line": 1341,
       "role": "statement",
       "statement_node": "forced_take_block_depth_is_sharp"
     },
     {
       "declaration": "greedyHalf_unsafeSkip_forces_doubleBlock",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1226,
+      "line": 1381,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "greedyHalf_capViolationSkip_forces_threeDepthBlock",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1252,
+      "line": 1407,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_long_forced_take_block"
     },
     {
       "declaration": "HalfGreedyThreeDepthTakeRunExcessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1274,
+      "line": 1429,
       "role": "concept",
       "statement_node": "half_membership_from_take_run_excess_bounds"
     },
     {
       "declaration": "halfGreedySkippedExcessBound_of_threeDepthTakeRun",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1288,
+      "line": 1443,
       "role": "statement",
       "statement_node": "half_membership_from_take_run_excess_bounds"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_threeDepthTakeRunExcessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1306,
+      "line": 1461,
       "role": "statement",
       "statement_node": "half_membership_from_take_run_excess_bounds"
     },
     {
       "declaration": "HalfGreedyLongTakeRunExcessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1315,
+      "line": 1470,
       "role": "concept",
       "statement_node": "half_membership_from_take_run_excess_bounds"
     },
     {
       "declaration": "halfGreedySkippedExcessBound_of_longTakeRun",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1326,
+      "line": 1481,
       "role": "statement",
       "statement_node": "half_membership_from_take_run_excess_bounds"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_longTakeRunExcessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1348,
+      "line": 1503,
       "role": "statement",
       "statement_node": "half_membership_from_take_run_excess_bounds"
     },
     {
       "declaration": "finiteErdosSum_den_odd",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1358,
+      "line": 1513,
       "role": "statement",
       "statement_node": "finite_fragment_residual_transport"
     },
     {
       "declaration": "halfGreedyPrefixDenominator_odd",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1366,
+      "line": 1521,
       "role": "substrate",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "oddDoublingOrder_finiteErdosSum_den_eq_lcm",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1375,
+      "line": 1530,
       "role": "statement",
       "statement_node": "finite_fragment_residual_transport"
     },
     {
       "declaration": "erdosSupportSeries_finset_eq_cast_finiteErdosSum",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1384,
+      "line": 1539,
       "role": "statement",
       "statement_node": "finite_fragment_residual_transport"
     },
     {
       "declaration": "erdosSupportSeries_diff_finset",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1403,
+      "line": 1558,
       "role": "statement",
       "statement_node": "finite_fragment_residual_transport"
     },
     {
       "declaration": "finiteFragment_residual_value",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1436,
+      "line": 1591,
       "role": "statement",
       "statement_node": "finite_fragment_residual_transport"
     },
     {
       "declaration": "DyadicPrefixCompressionCertificate",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1460,
+      "line": 1615,
       "role": "concept",
       "statement_node": "finite_fragment_residual_transport"
     },
     {
       "declaration": "finiteFragment_dyadicPrefixCompression",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1481,
+      "line": 1636,
       "role": "statement",
       "statement_node": "finite_fragment_residual_transport"
     },
     {
       "declaration": "two_three_dyadicPrefix_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1524,
+      "line": 1679,
       "role": "finite_instance",
       "statement_node": "dyadic_prefix_fixtures"
     },
     {
       "declaration": "five_term_dyadicPrefix_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1541,
+      "line": 1696,
       "role": "finite_instance",
       "statement_node": "dyadic_prefix_fixtures"
     },
     {
       "declaration": "two_three_residual_reciprocalMassDivergesOrAtLeast",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1560,
+      "line": 1715,
       "role": "statement",
       "statement_node": "half_value_forces_residual_reciprocal_mass_bound"
     },
     {
       "declaration": "five_term_residual_reciprocalMassDivergesOrAtLeast",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1585,
+      "line": 1740,
       "role": "statement",
       "statement_node": "half_value_forces_residual_reciprocal_mass_bound"
     },
     {
       "declaration": "halfGreedyExcess_add_denominator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1614,
+      "line": 1769,
       "role": "substrate",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "halfGreedyResidualDisplayedNumerator_odd",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1622,
+      "line": 1777,
       "role": "substrate",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "halfGreedyResidualDisplayedNumerator_coprime_denominator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1633,
+      "line": 1788,
       "role": "substrate",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "halfGreedyNextDyadicExcessNumerator_coprime_denominator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1657,
+      "line": 1812,
       "role": "substrate",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "halfGreedyNextDyadicExcessNumerator_odd",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1686,
+      "line": 1841,
       "role": "substrate",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "halfGreedyPrefixSupport",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1705,
+      "line": 1860,
       "role": "concept",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixCommonNumerator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1708,
+      "line": 1863,
       "role": "concept",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixCommonDenominator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1711,
+      "line": 1866,
       "role": "concept",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawResidualNumerator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1714,
+      "line": 1869,
       "role": "concept",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawNextDyadicExcessNumerator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1718,
+      "line": 1873,
       "role": "concept",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixReductionFactor",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1722,
+      "line": 1877,
       "role": "concept",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixCommonDenominator_pos",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1725,
+      "line": 1880,
       "role": "substrate",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixDenominator_eq_common_reduction",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1735,
+      "line": 1890,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixDenominator_dvd_common",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1749,
+      "line": 1904,
       "role": "substrate",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixCommonDenominator_eq_reduced_mul_factor",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1755,
+      "line": 1910,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixReductionFactor_pos",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1763,
+      "line": 1918,
       "role": "substrate",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixReductionFactor_eq_gcd",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1773,
+      "line": 1928,
       "role": "substrate",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "greedyHalfRemainderRat_eq_rawCommon_divInt",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1796,
+      "line": 1951,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawResidualNumerator_eq_reduced_mul_factor",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1822,
+      "line": 1977,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawNextDyadicExcessNumerator_eq_reduced_mul_factor",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1875,
+      "line": 2030,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawResidualNumerator_eq_gcd_mul_displayed",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1891,
+      "line": 2046,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawNextDyadicExcessNumerator_eq_gcd_mul_reduced",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1902,
+      "line": 2057,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawExcessBound_iff_reduced",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1910,
+      "line": 2065,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "HalfGreedyRawSupportExcessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1944,
+      "line": 2099,
       "role": "concept",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyRawSupportExcessBound_iff",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1952,
+      "line": 2107,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "greedyHalfRemainderRat_le_twoChannelCap_iff_rawExcess",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1962,
+      "line": 2117,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "greedyHalfRemainderRat_lt_mersenneWeight_iff_rawExcess",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1978,
+      "line": 2133,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "mem_halfGreedyPrefixSupport_iff",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 1992,
+      "line": 2147,
       "role": "statement",
       "statement_node": "raw_versus_reduced_greedy_prefix_coordinates"
     },
     {
       "declaration": "halfGreedyThreeDepthTakeRunExcessBound_iff_skippedExcessBound",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2021,
+      "line": 2176,
       "role": "statement",
       "statement_node": "half_membership_from_take_run_excess_bounds"
     },
     {
       "declaration": "greedyHalf_badSkipCapViolation_iff_primitiveLattice",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2033,
+      "line": 2188,
       "role": "statement",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "halfGreedyPrefixCoeffTail",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2052,
+      "line": 2207,
       "role": "concept",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixIntegerCarry",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2056,
+      "line": 2211,
       "role": "concept",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixSupportTailGap",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2065,
+      "line": 2220,
       "role": "concept",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixSupport_subset_Iic_succ",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2069,
+      "line": 2224,
       "role": "substrate",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "one_not_mem_halfGreedyPrefixSupport",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2078,
+      "line": 2233,
       "role": "substrate",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "greedyHalfRemainder_eq_integerCarry_sub_coeffTail_div_pow",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2089,
+      "line": 2244,
       "role": "statement",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "halfGreedyPrefixSupportTailGap_eq_excess_div_denominator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2126,
+      "line": 2281,
       "role": "statement",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "greedyHalf_badSkipCapViolation_iff_supportCoeffTailGap",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2164,
+      "line": 2319,
       "role": "statement",
       "statement_node": "greedy_remainder_in_support_coefficient_coordinates"
     },
     {
       "declaration": "reducedTakeStepNumerator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2212,
+      "line": 2367,
       "role": "concept",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "reducedTakeStepCancellation",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2215,
+      "line": 2370,
       "role": "concept",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "reducedTakeStepDenominator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2218,
+      "line": 2373,
       "role": "concept",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "reducedTakeStep_coprime",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2224,
+      "line": 2379,
       "role": "statement",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "reducedTakeStep_eq",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2258,
+      "line": 2413,
       "role": "statement",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "reducedTakeStep_residualNumerator",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2308,
+      "line": 2463,
       "role": "statement",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "reducedTakeStep_residual_gcd",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2345,
+      "line": 2500,
       "role": "statement",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "greedyMersenneRemainderRat_nonneg_of_nonneg",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2400,
+      "line": 2555,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyPrefixRat_nonneg",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2413,
+      "line": 2568,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyPrefixRat_le_half",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2422,
+      "line": 2577,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyPrefixRat_succ_of_take",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2434,
+      "line": 2589,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyPrefixRat_succ_of_skip",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2446,
+      "line": 2601,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyPrefixDenominator_succ_of_skip",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2456,
+      "line": 2611,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyResidualDisplayedNumerator_succ_of_skip",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2465,
+      "line": 2620,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyNextDyadicExcessNumerator_succ_of_skip",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2477,
+      "line": 2632,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedy_takenRank_reducedTakeStep",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2506,
+      "line": 2661,
       "role": "statement",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedy_takenRank_residualCancellation",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2633,
+      "line": 2788,
       "role": "statement",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedyResidualDisplayedNumerator_nonneg",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2741,
+      "line": 2896,
       "role": "substrate",
       "statement_node": "greedy_decisions_are_sign_conditions_on_excess_numerator"
     },
     {
       "declaration": "greedyHalfRemainder_le_nextDyadic_of_BlockSafe",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2759,
+      "line": 2914,
       "role": "statement",
       "statement_node": "greedy_take_predicate_equals_block_take_predicate"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_actualBlockSafe",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2789,
+      "line": 2944,
       "role": "statement",
       "statement_node": "half_membership_from_actual_block_safety"
     },
     {
       "declaration": "greedyHalf_take_iff_BlockTakeAt",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2804,
+      "line": 2959,
       "role": "statement",
       "statement_node": "greedy_take_predicate_equals_block_take_predicate"
     },
     {
       "declaration": "halfGreedy_take_raw_reduces_to_next",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 2868,
+      "line": 3023,
       "role": "statement",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "halfGreedy_coordinates_add_of_all_skips",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3009,
+      "line": 3164,
       "role": "substrate",
       "statement_node": "exact_reduced_take_step_cancellation"
     },
     {
       "declaration": "HalfGreedySkippedActualRawMarginWitness",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3041,
+      "line": 3196,
       "role": "concept",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "HalfGreedySkippedRawBlockWitness",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3066,
+      "line": 3221,
       "role": "concept",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "halfGreedy_rawBlockWitness_of_actualRawMarginWitness",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3094,
+      "line": 3249,
       "role": "statement",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "HalfGreedySkippedRawBlockMarginSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3180,
+      "line": 3335,
       "role": "concept",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "HalfGreedySkippedActualRawMarginSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3186,
+      "line": 3341,
       "role": "concept",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "HalfGreedyUnsafeSkipActualRawMarginSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3194,
+      "line": 3349,
       "role": "concept",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "halfGreedy_BlockSafe_of_rawBlockWitness",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3205,
+      "line": 3360,
       "role": "statement",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_skippedRawBlockMarginSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3216,
+      "line": 3371,
       "role": "statement",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_skippedActualRawMarginSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3226,
+      "line": 3381,
       "role": "statement",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipActualRawMarginSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3237,
+      "line": 3393,
       "role": "statement",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "blockDyadicSafeAt_iff_rawPredecessorOvershoot",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3249,
+      "line": 3405,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "rawPredecessorOvershoot_of_gcdScaled",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3279,
+      "line": 3435,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "rawSafe_but_not_gcdScaled_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3294,
+      "line": 3450,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot"
     },
     {
       "declaration": "firstTake_rank9_after_rank5_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3304,
+      "line": 3460,
       "role": "finite_instance",
       "statement_node": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot"
     },
     {
       "declaration": "factorEleven_predecessorOvershoot_not_inductive_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3316,
+      "line": 3472,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot"
     },
     {
       "declaration": "gcd_dvd_predecessorOvershoot",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3340,
+      "line": 3496,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "gcdScaled_predecessorOvershoot_iff_primitiveQuotient",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3351,
+      "line": 4409,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "blockDyadicSafeAt_of_gcdScaled_predecessorOvershoot",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3364,
+      "line": 4422,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "HalfGreedyUnsafeSkipGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3406,
+      "line": 4464,
       "role": "concept",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3421,
+      "line": 4479,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "HalfGreedyUnsafeSkipPrimitiveOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3448,
+      "line": 4506,
       "role": "concept",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "unsafeSkipGcdOvershootSupply_iff_primitive",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3463,
+      "line": 4521,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3504,
+      "line": 4562,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "HalfGreedyUnsafeSkipElevenGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3512,
+      "line": 4570,
       "role": "concept",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "unsafeSkipGcdOvershootSupply_of_eleven",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3525,
+      "line": 4583,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3537,
+      "line": 4595,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
@@ -4378,868 +4378,868 @@
     {
       "declaration": "doublingResidue",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 35,
+      "line": 37,
       "role": "concept",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingWrapDigit",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 39,
+      "line": 41,
       "role": "concept",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingWrapCount",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 43,
+      "line": 45,
       "role": "concept",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "IsDoublingPeriod",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 48,
+      "line": 50,
       "role": "concept",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingResidue_lt",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 51,
+      "line": 53,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingWrapDigit_le_one",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 55,
+      "line": 57,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingWrapDigit_eq_zero_or_one",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 62,
+      "line": 64,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingResidue_pos",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 70,
+      "line": 72,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingResidue_succ",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 84,
+      "line": 86,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingResidue_carry",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 92,
+      "line": 94,
       "role": "statement",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingResidue_add_period",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 101,
+      "line": 103,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingResidue_add",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 110,
+      "line": 112,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "sum_range_shift_one",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 118,
+      "line": 120,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "sum_range_add_eq_sum_range_of_periodic",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 128,
+      "line": 130,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "sum_eq_modulus_mul_wrapCount_of_closed_cycle",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 156,
+      "line": 158,
       "role": "statement",
       "statement_node": "binary_repetend_wrap_sum_identity"
     },
     {
       "declaration": "sum_doublingResidue_eq_mul_wrapCount",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 171,
+      "line": 173,
       "role": "statement",
       "statement_node": "binary_repetend_wrap_sum_identity"
     },
     {
       "declaration": "doublingWrapCount_pos",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 181,
+      "line": 183,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingWrapCount_mul_pow_eq",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 200,
+      "line": 202,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "exists_unique_wrap_of_sum_eq_one",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 225,
+      "line": 227,
       "role": "substrate",
       "statement_node": "one_wrap_cycle_classification_node"
     },
     {
       "declaration": "accumulatedWrap",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 266,
+      "line": 268,
       "role": "concept",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "recurrence_unroll",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 271,
+      "line": 273,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "accumulatedWrap_eq_zero_of_zero",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 292,
+      "line": 294,
       "role": "substrate",
       "statement_node": "one_wrap_cycle_classification_node"
     },
     {
       "declaration": "accumulatedWrap_eq_pow_of_unique",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 302,
+      "line": 304,
       "role": "substrate",
       "statement_node": "one_wrap_cycle_classification_node"
     },
     {
       "declaration": "two_pow_sub_one_mod_two",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 341,
+      "line": 343,
       "role": "substrate",
       "statement_node": "one_wrap_cycle_classification_node"
     },
     {
       "declaration": "one_wrap_cycle_classification",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 353,
+      "line": 355,
       "role": "statement",
       "statement_node": "one_wrap_cycle_classification_node"
     },
     {
       "declaration": "one_doublingWrap_classification",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 415,
+      "line": 417,
       "role": "statement",
       "statement_node": "one_wrap_cycle_classification_node"
     },
     {
       "declaration": "oddDoublingOrder",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 436,
+      "line": 438,
       "role": "concept",
       "statement_node": "multiplicative_order_of_two_mod_odd"
     },
     {
       "declaration": "pow_oddDoublingOrder_mod_eq_one",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 439,
+      "line": 441,
       "role": "statement",
       "statement_node": "multiplicative_order_of_two_mod_odd"
     },
     {
       "declaration": "oddDoublingOrder_pos",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 458,
+      "line": 460,
       "role": "statement",
       "statement_node": "multiplicative_order_of_two_mod_odd"
     },
     {
       "declaration": "oddDoublingOrder_isPeriod",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 463,
+      "line": 465,
       "role": "statement",
       "statement_node": "multiplicative_order_of_two_mod_odd"
     },
     {
       "declaration": "oddOrder_doublingWrapCount_pos",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 470,
+      "line": 472,
       "role": "statement",
       "statement_node": "multiplicative_order_of_two_mod_odd"
     },
     {
       "declaration": "one_oddOrder_doublingWrap_classification",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 478,
+      "line": 481,
       "role": "statement",
       "statement_node": "one_wrap_cycle_classification_node"
     },
     {
       "declaration": "IsOddSupportTailState",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 494,
+      "line": 497,
       "role": "concept",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "oddTailExcess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 501,
+      "line": 504,
       "role": "concept",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "oddSupportTail_eq_residue_div_add_excess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 506,
+      "line": 509,
       "role": "statement",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "sum_supportTail_block_eq_wrapCount_add_excess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 529,
+      "line": 532,
       "role": "statement",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "wrapCount_le_sum_supportTail_block",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 561,
+      "line": 564,
       "role": "statement",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "numerator_pos_of_support_fraction",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 576,
+      "line": 579,
       "role": "statement",
       "statement_node": "rational_value_constructs_odd_tail_state"
     },
     {
       "declaration": "exists_shifted_odd_tail_states_of_support_fraction",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 596,
+      "line": 599,
       "role": "statement",
       "statement_node": "rational_value_constructs_odd_tail_state"
     },
     {
       "declaration": "exists_shifted_odd_tail_nat_states_of_support_fraction",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 668,
+      "line": 671,
       "role": "statement",
       "statement_node": "rational_value_constructs_odd_tail_state"
     },
     {
       "declaration": "wrapCount_le_sum_tail_of_modEq",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 722,
+      "line": 725,
       "role": "statement",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "support_fraction_wrapCount_le_tail_block",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 767,
+      "line": 770,
       "role": "statement",
       "statement_node": "rational_value_constructs_odd_tail_state"
     },
     {
       "declaration": "reciprocalSupportTerm",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 786,
+      "line": 789,
       "role": "concept",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "reciprocalMass",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 790,
+      "line": 793,
       "role": "concept",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "ReciprocalMassDivergesOrAtLeast",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 796,
+      "line": 799,
       "role": "concept",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "divisorFrequency",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 800,
+      "line": 803,
       "role": "concept",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "sum_supportCoeff_range_eq_sum_div",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 806,
+      "line": 809,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_nat_div_frequency",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 844,
+      "line": 847,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_divisorFrequency",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 892,
+      "line": 895,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "norm_divisorFrequency_le_reciprocalSupportTerm",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 903,
+      "line": 906,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tsum_divisorFrequency_eq_supportCoeff_mean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 927,
+      "line": 930,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_supportCoeff_mean_reciprocalMass",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 945,
+      "line": 948,
       "role": "statement",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "le_reciprocalMass_of_eventually_le_supportCoeff_mean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 963,
+      "line": 966,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "cesaroMean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 971,
+      "line": 974,
       "role": "concept",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "sum_supportCoeff_cast_eq_sum_binaryCoeffTail_add_boundary",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 975,
+      "line": 978,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_sqrt_nat_div_nat_zero",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 989,
+      "line": 992,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_binaryCoeffTail_supportCoeff_div_nat_zero",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1008,
+      "line": 1011,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_binaryCoeffTail_supportCoeff_mean_reciprocalMass",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1036,
+      "line": 1039,
       "role": "statement",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "le_reciprocalMass_of_eventually_le_binaryCoeffTail_mean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1065,
+      "line": 1068,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "sum_range_mul_eq_sum_blocks",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1075,
+      "line": 1078,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "div_le_of_tendsto_cesaroMean_of_block_lower_bound",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1085,
+      "line": 1088,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "wrapRatio_le_reciprocalMass_of_binaryCoeffTail_blocks",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1120,
+      "line": 1123,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "blockRemainder",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1133,
+      "line": 1136,
       "role": "concept",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "sum_range_eq_mul_blockSum_add_blockRemainder",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1136,
+      "line": 1139,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "blockRemainder_nonneg",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1160,
+      "line": 1163,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "blockRemainder_le_period",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1165,
+      "line": 1168,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_cesaroMean_of_constant_blocks",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1177,
+      "line": 1180,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_cesaroMean_excess_of_binaryCoeffTail_decomposition",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1216,
+      "line": 1219,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "residueMean_le_reciprocalMass_of_binaryCoeffTail_decomposition",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1236,
+      "line": 1239,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "reciprocalMass_eq_residueMean_add_excessMean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1255,
+      "line": 1258,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "doublingResidue_mul_period",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1278,
+      "line": 1281,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "doublingWrapCount_mul_period",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1291,
+      "line": 1294,
       "role": "substrate",
       "statement_node": "doubling_residue_wrap_coordinates"
     },
     {
       "declaration": "tendsto_cesaroMean_normalizedDoublingResidue",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1300,
+      "line": 1303,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_oddTailExcess_mean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1334,
+      "line": 1336,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "reciprocalMass_eq_wrapRatio_add_oddTailExcessMean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1353,
+      "line": 1355,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "doublingWrapRatio_le_reciprocalMass",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1374,
+      "line": 1376,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "doublingWrapRatio_reciprocalMassDivergesOrAtLeast",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1387,
+      "line": 1389,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "one_div_period_reciprocalMassDivergesOrAtLeast",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1400,
+      "line": 1402,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "tendsto_shifted_binaryCoeffTail_supportCoeff_mean_reciprocalMass",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1417,
+      "line": 1419,
       "role": "statement",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "support_fraction_oddOrder_wrapRatio_le_reciprocalMass",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1454,
+      "line": 1456,
       "role": "statement",
       "statement_node": "rational_value_forces_order_wrap_ratio_bound"
     },
     {
       "declaration": "one_div_oddOrder_le_reciprocalMass_of_support_fraction",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1478,
+      "line": 1480,
       "role": "statement",
       "statement_node": "rational_value_forces_order_wrap_ratio_bound"
     },
     {
       "declaration": "support_fraction_oddOrder_wrapRatio_reciprocalMassDivergesOrAtLeast",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1501,
+      "line": 1503,
       "role": "statement",
       "statement_node": "rational_value_forces_order_wrap_ratio_bound"
     },
     {
       "declaration": "support_fraction_one_div_oddOrder_reciprocalMassDivergesOrAtLeast",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1517,
+      "line": 1519,
       "role": "statement",
       "statement_node": "rational_value_forces_order_wrap_ratio_bound"
     },
     {
       "declaration": "tendsto_shifted_tail_excess_mean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1533,
+      "line": 1535,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "exists_shifted_oddTailExcess_mean_of_support_fraction",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1577,
+      "line": 1579,
       "role": "statement",
       "statement_node": "rational_value_constructs_odd_tail_state"
     },
     {
       "declaration": "booleanCollisionSurplus",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1607,
+      "line": 1609,
       "role": "concept",
       "statement_node": "boolean_collision_surplus"
     },
     {
       "declaration": "booleanCollisionSurplus_eq_ceil_sub_one_half",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1609,
+      "line": 1611,
       "role": "substrate",
       "statement_node": "boolean_collision_surplus"
     },
     {
       "declaration": "card_le_supportCoeff_of_forced_divisors",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1616,
+      "line": 1618,
       "role": "statement",
       "statement_node": "boolean_collision_surplus"
     },
     {
       "declaration": "booleanCollisionSurplus_le_of_carry",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1628,
+      "line": 1630,
       "role": "substrate",
       "statement_node": "boolean_collision_surplus"
     },
     {
       "declaration": "booleanCollisionSurplus_le_of_supportCoeff_carry",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1637,
+      "line": 1639,
       "role": "statement",
       "statement_node": "boolean_collision_surplus"
     },
     {
       "declaration": "supportCoeff_add_oddTailExcess_succ_eq_wrap_add_two_excess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1651,
+      "line": 1653,
       "role": "statement",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "booleanCollisionSurplus_le_oddTailExcess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1703,
+      "line": 1705,
       "role": "statement",
       "statement_node": "boolean_collision_surplus"
     },
     {
       "declaration": "periodic_spike_div_le_of_tendsto_cesaroMean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1722,
+      "line": 1724,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "tendsto_cesaroMean_shift",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1780,
+      "line": 1782,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "periodic_spike_div_le_of_tendsto_cesaroMean_offset",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1823,
+      "line": 1825,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "IsShiftedOddSupportTailState",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1841,
+      "line": 1843,
       "role": "concept",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "shiftedOddSupportTail_eq_residue_div_add_excess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1848,
+      "line": 1850,
       "role": "statement",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "shiftedSupportCoeff_add_oddTailExcess_succ_eq_wrap_add_two_excess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1868,
+      "line": 1870,
       "role": "statement",
       "statement_node": "odd_tail_state_residue_excess_decomposition"
     },
     {
       "declaration": "booleanCollisionSurplus_le_shiftedOddTailExcess",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1918,
+      "line": 1920,
       "role": "statement",
       "statement_node": "boolean_collision_surplus"
     },
     {
       "declaration": "tendsto_shiftedOddTailExcess_mean",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1936,
+      "line": 1940,
       "role": "statement",
       "statement_node": "wrap_ratio_lower_bounds_reciprocal_mass"
     },
     {
       "declaration": "shiftedBooleanCollision_wrap_bound_of_common_multiple",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 1963,
+      "line": 1968,
       "role": "statement",
       "statement_node": "common_multiple_collision_strengthens_wrap_bound"
     },
     {
       "declaration": "wrapRatio_add_collisionSurplus_div_le_reciprocalMass",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2013,
+      "line": 2019,
       "role": "statement",
       "statement_node": "common_multiple_collision_strengthens_wrap_bound"
     },
     {
       "declaration": "booleanCollision_wrap_bound_of_common_multiple",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2037,
+      "line": 2044,
       "role": "statement",
       "statement_node": "common_multiple_collision_strengthens_wrap_bound"
     },
     {
       "declaration": "one_lt_of_tendsto_cesaroMean_of_positive_two_spikes",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2074,
+      "line": 2082,
       "role": "substrate",
       "statement_node": "cesaro_tail_mean_equals_reciprocal_mass"
     },
     {
       "declaration": "one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2116,
+      "line": 2124,
       "role": "statement",
       "statement_node": "dyadic_denominator_forces_reciprocal_mass_above_one"
     },
     {
       "declaration": "dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2200,
+      "line": 2210,
       "role": "statement",
       "statement_node": "dyadic_denominator_forces_reciprocal_mass_above_one"
     },
     {
       "declaration": "one_add_mul_card_le_two_mul_shifted_state",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2228,
+      "line": 2237,
       "role": "substrate",
       "statement_node": "carry_state_unbounded_at_common_multiples"
     },
     {
       "declaration": "one_add_mul_card_le_two_mul_state",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2249,
+      "line": 2258,
       "role": "substrate",
       "statement_node": "carry_state_unbounded_at_common_multiples"
     },
     {
       "declaration": "one_add_mul_card_ceil_half_le_shifted_state",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2264,
+      "line": 2273,
       "role": "substrate",
       "statement_node": "carry_state_unbounded_at_common_multiples"
     },
     {
       "declaration": "one_add_mul_card_half_le_shifted_state",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2276,
+      "line": 2285,
       "role": "substrate",
       "statement_node": "carry_state_unbounded_at_common_multiples"
     },
     {
       "declaration": "exists_shifted_odd_tail_nat_state_with_common_multiple_bound_of_support_fraction",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2294,
+      "line": 2302,
       "role": "statement",
       "statement_node": "carry_state_unbounded_at_common_multiples"
     },
     {
       "declaration": "shifted_state_unbounded_of_infinite_support",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2320,
+      "line": 2327,
       "role": "statement",
       "statement_node": "carry_state_unbounded_at_common_multiples"
     },
     {
       "declaration": "exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2377,
+      "line": 2383,
       "role": "statement",
       "statement_node": "carry_state_unbounded_at_common_multiples"
     },
     {
       "declaration": "carryOrbit23_common_multiple_bound_validation66",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2401,
+      "line": 2407,
       "role": "finite_instance",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "coprimeResidueStarts",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2413,
+      "line": 2419,
       "role": "representation",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "isPowerOfTwoOrbitStart",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2417,
+      "line": 2423,
       "role": "representation",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "orderWrapValidationRow",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2423,
+      "line": 2429,
       "role": "representation",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "orderWrapValidationRows",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2431,
+      "line": 2437,
       "role": "representation",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "orderWrapValidatedStartCount",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2435,
+      "line": 2441,
       "role": "representation",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "orderWrapValidation446",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2439,
+      "line": 2445,
       "role": "representation",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "wrapMinimumCertificate",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2443,
+      "line": 2449,
       "role": "representation",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "orderWrapValidatedStartCount_eq_446",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2450,
+      "line": 2456,
       "role": "finite_instance",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "orderWrapValidation446_passes",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2454,
+      "line": 2460,
       "role": "finite_instance",
       "statement_node": "order_wrap_finite_validation_table"
     },
     {
       "declaration": "orderWrap_minima_table_passes",
       "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "line": 2460,
+      "line": 2466,
       "role": "finite_instance",
       "statement_node": "order_wrap_finite_validation_table"
     },

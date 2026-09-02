@@ -265,7 +265,7 @@
       "problem": "249",
       "evidence": [
         {"declaration": "tsum_gcd_layer_pos_coprime_pow", "module": "Erdos249257/GeometricCoprimality.lean", "line": 328},
-        {"declaration": "tsum_gcd_layer_pos_coprime_half_eq_one", "module": "Erdos249257/GeometricCoprimality.lean", "line": 407}
+        {"declaration": "tsum_gcd_layer_pos_coprime_half_eq_one", "module": "Erdos249257/GeometricCoprimality.lean", "line": 480}
       ],
       "concepts": ["gcd_layer_decomposition", "fair_coin_waiting_time"],
       "open_antecedents": [],
@@ -567,7 +567,7 @@
       "logical_class": "classical_formalised",
       "problem": "shared_substrate",
       "evidence": [
-        {"declaration": "det_mul_rectangular", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 28}
+        {"declaration": "det_mul_rectangular", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 29}
       ],
       "concepts": ["hankel_moment_determinant"],
       "open_antecedents": [],
@@ -584,8 +584,8 @@
       "logical_class": "conditional_implication",
       "problem": "249",
       "evidence": [
-        {"declaration": "scaled_dyadic_sum_odd", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 77},
-        {"declaration": "scaled_dyadic_sum_ne_zero", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 95}
+        {"declaration": "scaled_dyadic_sum_odd", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 78},
+        {"declaration": "scaled_dyadic_sum_ne_zero", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 96}
       ],
       "concepts": ["dyadic_parity_clearing"],
       "open_antecedents": ["existence of an index m whose dyadic exponent e(m) is strictly largest in the family and whose integer numerator u(m) is odd — for the intended signed Mobius / q = 1/2 Hankel moment family this is proved nowhere in the corpus; the hypothesis is supplied, never discharged", "no Lean declaration anywhere in the repository instantiates s, u, e on #249 moment data, so the implication is never fired"],
@@ -602,10 +602,10 @@
       "logical_class": "infrastructure",
       "problem": "249",
       "evidence": [
-        {"declaration": "finiteSignedMomentMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 46},
-        {"declaration": "truncatedMoment", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 107},
-        {"declaration": "hankelMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 112},
-        {"declaration": "hankelDet", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 116}
+        {"declaration": "finiteSignedMomentMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 47},
+        {"declaration": "truncatedMoment", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 108},
+        {"declaration": "hankelMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 113},
+        {"declaration": "hankelDet", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 117}
       ],
       "concepts": ["hankel_moment_determinant"],
       "open_antecedents": [],
@@ -727,7 +727,7 @@
     {"declaration": "summable_totient_lambert_shift", "module": "Erdos249257/GeometricCoprimality.lean", "line": 261, "role": "substrate", "statement_node": "totient_lambert_tail_evaluation"},
     {"declaration": "tsum_totient_lambert_tail", "module": "Erdos249257/GeometricCoprimality.lean", "line": 301, "role": "statement", "statement_node": "totient_lambert_tail_evaluation"},
     {"declaration": "tsum_gcd_layer_pos_coprime_pow", "module": "Erdos249257/GeometricCoprimality.lean", "line": 328, "role": "statement", "statement_node": "gcd_layer_normalisation"},
-    {"declaration": "tsum_gcd_layer_pos_coprime_half_eq_one", "module": "Erdos249257/GeometricCoprimality.lean", "line": 407, "role": "statement", "statement_node": "gcd_layer_normalisation"},
+    {"declaration": "tsum_gcd_layer_pos_coprime_half_eq_one", "module": "Erdos249257/GeometricCoprimality.lean", "line": 480, "role": "statement", "statement_node": "gcd_layer_normalisation"},
 
     {"declaration": "tsum_pnat_pred_mul_geometric", "module": "Erdos249257/GcdMomentCalculus.lean", "line": 80, "role": "substrate", "statement_node": "signed_linear_growth_lambert_engine"},
     {"declaration": "tsum_lambert_linear_weight_sq_pure", "module": "Erdos249257/GcdMomentCalculus.lean", "line": 105, "role": "statement", "statement_node": "signed_linear_growth_lambert_engine"},
@@ -834,15 +834,15 @@
     {"declaration": "twoTierPrimorial_dvd_of_integral_jet", "module": "Erdos249257/PrimitiveDeterminantLift.lean", "line": 148, "role": "statement", "statement_node": "primitive_euler_index_no_lift_barrier"},
     {"declaration": "no_fixed_integral_primitive_euler_index", "module": "Erdos249257/PrimitiveDeterminantLift.lean", "line": 169, "role": "statement", "statement_node": "primitive_euler_index_no_lift_barrier"},
 
-    {"declaration": "det_mul_rectangular", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 28, "role": "statement", "statement_node": "rectangular_leibniz_determinant_expansion"},
-    {"declaration": "finiteSignedMomentMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 46, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
-    {"declaration": "even_finset_sum", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 53, "role": "substrate", "statement_node": "unique_dyadic_terminal_parity"},
-    {"declaration": "not_even_finset_sum_of_unique_not_even", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 62, "role": "substrate", "statement_node": "unique_dyadic_terminal_parity"},
-    {"declaration": "scaled_dyadic_sum_odd", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 77, "role": "statement", "statement_node": "unique_dyadic_terminal_parity"},
-    {"declaration": "scaled_dyadic_sum_ne_zero", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 95, "role": "statement", "statement_node": "unique_dyadic_terminal_parity"},
-    {"declaration": "truncatedMoment", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 107, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
-    {"declaration": "hankelMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 112, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
-    {"declaration": "hankelDet", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 116, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
+    {"declaration": "det_mul_rectangular", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 29, "role": "statement", "statement_node": "rectangular_leibniz_determinant_expansion"},
+    {"declaration": "finiteSignedMomentMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 47, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
+    {"declaration": "even_finset_sum", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 54, "role": "substrate", "statement_node": "unique_dyadic_terminal_parity"},
+    {"declaration": "not_even_finset_sum_of_unique_not_even", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 63, "role": "substrate", "statement_node": "unique_dyadic_terminal_parity"},
+    {"declaration": "scaled_dyadic_sum_odd", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 78, "role": "statement", "statement_node": "unique_dyadic_terminal_parity"},
+    {"declaration": "scaled_dyadic_sum_ne_zero", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 96, "role": "statement", "statement_node": "unique_dyadic_terminal_parity"},
+    {"declaration": "truncatedMoment", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 108, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
+    {"declaration": "hankelMatrix", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 113, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
+    {"declaration": "hankelDet", "module": "Erdos249257/SignedQMomentObstruction.lean", "line": 117, "role": "concept", "statement_node": "signed_hankel_scaffolding"},
 
     {"declaration": "phasePowerMatrix", "module": "Erdos249257/ResidualGaugeObstruction.lean", "line": 24, "role": "concept", "statement_node": "residual_gauge_determinant_factorisation"},
     {"declaration": "residualMonomialMatrix", "module": "Erdos249257/ResidualGaugeObstruction.lean", "line": 30, "role": "concept", "statement_node": "residual_gauge_determinant_factorisation"},

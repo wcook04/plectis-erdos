@@ -36,12 +36,12 @@
         {
           "declaration": "dyadicPartialSumQ_succ",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 118
+          "line": 124
         },
         {
           "declaration": "dyadicDifferencePartialSumQ_succ",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 123
+          "line": 129
         }
       ]
     }
@@ -50,14 +50,14 @@
     {
       "declaration": "dyadicPartialSumQ_succ",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 118,
+      "line": 124,
       "role": "statement",
       "statement_node": "dyadic_partial_sums_gain_exactly_the_new_last_term"
     },
     {
       "declaration": "dyadicDifferencePartialSumQ_succ",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 123,
+      "line": 129,
       "role": "statement",
       "statement_node": "dyadic_partial_sums_gain_exactly_the_new_last_term"
     }

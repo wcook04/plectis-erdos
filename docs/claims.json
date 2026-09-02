@@ -8219,10 +8219,92 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+          "path": "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase",
+          "path": "ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase",
+          "path": "ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
           "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
+          "path": "ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+          "path": "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.SharpCollinearAlternation",
+          "path": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
+          "path": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.SharpCollinearAlternation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector",
+          "path": "ErdosProblems/Erdos1041/TetranomialElementarySymmetricSelector.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TetranomialTailProductSelector"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TetranomialL2Selector",
+          "path": "ErdosProblems/Erdos1041/TetranomialL2Selector.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector",
+          "path": "ErdosProblems/Erdos1041/TetranomialProductSensitiveSelector.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TetranomialL2Selector"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.TetranomialTailProductSelector",
+          "path": "ErdosProblems/Erdos1041/TetranomialTailProductSelector.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1049.AdelicHeightBridge",
@@ -13171,7 +13253,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "Erdős #68",
-        "line": 117
+        "line": 94
       }
     },
     {
@@ -13183,7 +13265,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4428
+        "line": 4434
       }
     },
     {
@@ -13195,7 +13277,7 @@
         "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 120
+        "line": 103
       }
     },
     {
@@ -13207,7 +13289,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4439
+        "line": 4445
       }
     },
     {
@@ -13219,7 +13301,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4463
+        "line": 4469
       }
     },
     {
@@ -13231,7 +13313,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1483
+        "line": 1482
       }
     },
     {
@@ -13243,7 +13325,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4454
+        "line": 4460
       }
     },
     {
@@ -13255,7 +13337,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 175
+        "line": 104
       }
     },
     {
@@ -13267,7 +13349,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 127
+        "line": 161
       }
     },
     {
@@ -13279,7 +13361,7 @@
         "source": "paper/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 127
+        "line": 121
       }
     },
     {
@@ -13291,7 +13373,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 161
+        "line": 96
       }
     }
   ],

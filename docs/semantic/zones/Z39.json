@@ -56,9 +56,9 @@
       "evidence": [
         {"declaration":"dyadicResidualNumerator_coprime_oddDenominator","module":"Erdos249257/DyadicPrefixCompression.lean","line":98},
         {"declaration":"greedyHalfRemainderRat_eq_displayed_divInt","module":"Erdos249257/DyadicPrefixCompression.lean","line":732},
-        {"declaration":"finiteErdosSum_den_odd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1358},
-        {"declaration":"halfGreedyPrefixDenominator_odd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1366},
-        {"declaration":"erdosSupportSeries_finset_eq_cast_finiteErdosSum","module":"Erdos249257/DyadicPrefixCompression.lean","line":1384}
+        {"declaration":"finiteErdosSum_den_odd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1513},
+        {"declaration":"halfGreedyPrefixDenominator_odd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1521},
+        {"declaration":"erdosSupportSeries_finset_eq_cast_finiteErdosSum","module":"Erdos249257/DyadicPrefixCompression.lean","line":1539}
       ]
     },
     {
@@ -119,9 +119,9 @@
       "confidence": "high",
       "evidence": [
         {"declaration":"divInt_le_nextTwoChannelCap_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":668},
-        {"declaration":"nextDyadic_lt_greedyHalfRemainder_iff_excess_pos","module":"Erdos249257/DyadicPrefixCompression.lean","line":849},
-        {"declaration":"greedyHalfRemainder_lt_mersenneWeight_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":858},
-        {"declaration":"twoChannelCap_lt_greedyHalfRemainder_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":902}
+        {"declaration":"nextDyadic_lt_greedyHalfRemainder_iff_excess_pos","module":"Erdos249257/DyadicPrefixCompression.lean","line":1004},
+        {"declaration":"greedyHalfRemainder_lt_mersenneWeight_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":1013},
+        {"declaration":"twoChannelCap_lt_greedyHalfRemainder_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":1057}
       ]
     },
     {
@@ -160,7 +160,7 @@
         {"declaration":"reduced_nextBlock_all_skips_safe_iff_gcdFree","module":"Erdos249257/DyadicPrefixCompression.lean","line":451},
         {"declaration":"reduced_nextBlock_gcdFree_margin_expanded","module":"Erdos249257/DyadicPrefixCompression.lean","line":463},
         {"declaration":"rawTakenResidual_adjacent_margin_of_predecessor_safe","module":"Erdos249257/DyadicPrefixCompression.lean","line":496},
-        {"declaration":"rawPredecessorOvershoot_of_gcdScaled","module":"Erdos249257/DyadicPrefixCompression.lean","line":3279}
+        {"declaration":"rawPredecessorOvershoot_of_gcdScaled","module":"Erdos249257/DyadicPrefixCompression.lean","line":3435}
       ]
     },
     {
@@ -179,13 +179,13 @@
       "scope_caveat": "A forced take block is not itself a contradiction: the residual and the true tail lose the same prefix. No cofinal safe-skip or achievement witness follows.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"greedyMersenne_forcedBlock_selected","module":"Erdos249257/DyadicPrefixCompression.lean","line":951},
-        {"declaration":"forcedBlock_tailExcess_eq","module":"Erdos249257/DyadicPrefixCompression.lean","line":998},
-        {"declaration":"mersenneWeightRemainder_le_four_thirds","module":"Erdos249257/DyadicPrefixCompression.lean","line":1007},
-        {"declaration":"mersenneWeightRemainderTail_le_four_twentyone","module":"Erdos249257/DyadicPrefixCompression.lean","line":1024},
-        {"declaration":"remainderTail_lt_tripleDyadic","module":"Erdos249257/DyadicPrefixCompression.lean","line":1051},
-        {"declaration":"capViolation_forces_threeDepthBlock","module":"Erdos249257/DyadicPrefixCompression.lean","line":1091},
-        {"declaration":"tripleDepthTail_lt_thirdChannel","module":"Erdos249257/DyadicPrefixCompression.lean","line":1105}
+        {"declaration":"greedyMersenne_forcedBlock_selected","module":"Erdos249257/DyadicPrefixCompression.lean","line":1106},
+        {"declaration":"forcedBlock_tailExcess_eq","module":"Erdos249257/DyadicPrefixCompression.lean","line":1153},
+        {"declaration":"mersenneWeightRemainder_le_four_thirds","module":"Erdos249257/DyadicPrefixCompression.lean","line":1162},
+        {"declaration":"mersenneWeightRemainderTail_le_four_twentyone","module":"Erdos249257/DyadicPrefixCompression.lean","line":1179},
+        {"declaration":"remainderTail_lt_tripleDyadic","module":"Erdos249257/DyadicPrefixCompression.lean","line":1206},
+        {"declaration":"capViolation_forces_threeDepthBlock","module":"Erdos249257/DyadicPrefixCompression.lean","line":1246},
+        {"declaration":"tripleDepthTail_lt_thirdChannel","module":"Erdos249257/DyadicPrefixCompression.lean","line":1260}
       ]
     },
     {
@@ -202,11 +202,11 @@
       "scope_caveat": "Cancellation invariance makes the finite tests honest; it supplies no inequality forcing all actual skipped ranks to be safe.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"halfGreedyPrefixReductionFactor_eq_gcd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1773},
-        {"declaration":"halfGreedyRawResidualNumerator_eq_gcd_mul_displayed","module":"Erdos249257/DyadicPrefixCompression.lean","line":1891},
-        {"declaration":"halfGreedyRawNextDyadicExcessNumerator_eq_gcd_mul_reduced","module":"Erdos249257/DyadicPrefixCompression.lean","line":1902},
-        {"declaration":"reducedTakeStep_residualNumerator","module":"Erdos249257/DyadicPrefixCompression.lean","line":2308},
-        {"declaration":"halfGreedy_takenRank_residualCancellation","module":"Erdos249257/DyadicPrefixCompression.lean","line":2633}
+        {"declaration":"halfGreedyPrefixReductionFactor_eq_gcd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1928},
+        {"declaration":"halfGreedyRawResidualNumerator_eq_gcd_mul_displayed","module":"Erdos249257/DyadicPrefixCompression.lean","line":2046},
+        {"declaration":"halfGreedyRawNextDyadicExcessNumerator_eq_gcd_mul_reduced","module":"Erdos249257/DyadicPrefixCompression.lean","line":2057},
+        {"declaration":"reducedTakeStep_residualNumerator","module":"Erdos249257/DyadicPrefixCompression.lean","line":2463},
+        {"declaration":"halfGreedy_takenRank_residualCancellation","module":"Erdos249257/DyadicPrefixCompression.lean","line":2788}
       ]
     },
     {
@@ -223,11 +223,11 @@
       "scope_caveat": "The recurrences expose the finite state update but do not establish an asymptotic orbit invariant or infinitely many safe skips.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"halfGreedyPrefixRat_succ_of_take","module":"Erdos249257/DyadicPrefixCompression.lean","line":2434},
-        {"declaration":"halfGreedyPrefixRat_succ_of_skip","module":"Erdos249257/DyadicPrefixCompression.lean","line":2446},
-        {"declaration":"halfGreedyNextDyadicExcessNumerator_succ_of_skip","module":"Erdos249257/DyadicPrefixCompression.lean","line":2477},
-        {"declaration":"halfGreedyResidualDisplayedNumerator_nonneg","module":"Erdos249257/DyadicPrefixCompression.lean","line":2741},
-        {"declaration":"halfGreedy_coordinates_add_of_all_skips","module":"Erdos249257/DyadicPrefixCompression.lean","line":3009}
+        {"declaration":"halfGreedyPrefixRat_succ_of_take","module":"Erdos249257/DyadicPrefixCompression.lean","line":2589},
+        {"declaration":"halfGreedyPrefixRat_succ_of_skip","module":"Erdos249257/DyadicPrefixCompression.lean","line":2601},
+        {"declaration":"halfGreedyNextDyadicExcessNumerator_succ_of_skip","module":"Erdos249257/DyadicPrefixCompression.lean","line":2632},
+        {"declaration":"halfGreedyResidualDisplayedNumerator_nonneg","module":"Erdos249257/DyadicPrefixCompression.lean","line":2896},
+        {"declaration":"halfGreedy_coordinates_add_of_all_skips","module":"Erdos249257/DyadicPrefixCompression.lean","line":3164}
       ]
     },
     {
@@ -245,7 +245,7 @@
       "confidence": "high",
       "evidence": [
         {"declaration":"mersenneLcm_through_seven_eq","module":"Erdos249257/DyadicPrefixCompression.lean","line":638},
-        {"declaration":"firstTake_rank9_after_rank5_fixture","module":"Erdos249257/DyadicPrefixCompression.lean","line":3304}
+        {"declaration":"firstTake_rank9_after_rank5_fixture","module":"Erdos249257/DyadicPrefixCompression.lean","line":3460}
       ]
     },
     {
@@ -262,8 +262,8 @@
       "scope_caveat": "This is a necessary consequence of an unsafe skip, not a contradiction: no theorem here supplies a lower bound forcing either adjacent gcd to reach p. It does not solve #257.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"unsafeSandwich_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":3354},
-        {"declaration":"greedyHalf_unsafeSkip_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":3429}
+        {"declaration":"unsafeSandwich_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":4298},
+        {"declaration":"greedyHalf_unsafeSkip_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":4373}
       ]
     }
   ],
@@ -271,14 +271,14 @@
     {
       "declaration": "unsafeSandwich_consecutive_gcd_lt",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3354,
+      "line": 4298,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits"
     },
     {
       "declaration": "greedyHalf_unsafeSkip_consecutive_gcd_lt",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3429,
+      "line": 4373,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits"
     }

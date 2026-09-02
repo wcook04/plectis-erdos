@@ -3241,63 +3241,63 @@
   {
    "declaration": "greedyMersenneRemainder",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1015,
+   "line": 1028,
    "role": "concept",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "greedyMersenneRemainderRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1024,
+   "line": 1037,
    "role": "concept",
    "statement_node": "greedy_rational_exactness"
   },
   {
    "declaration": "greedyMersenneRemainder_zero",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1032,
+   "line": 1045,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "greedyMersenneRemainderRat_zero",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1035,
+   "line": 1048,
    "role": "substrate",
    "statement_node": "greedy_rational_exactness"
   },
   {
    "declaration": "greedyMersenneRemainder_succ",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1038,
+   "line": 1051,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "greedyMersenneRemainderRat_succ",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1044,
+   "line": 1057,
    "role": "substrate",
    "statement_node": "greedy_rational_exactness"
   },
   {
    "declaration": "mersenneSliverCoordinateRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1063,
+   "line": 1076,
    "role": "concept",
    "statement_node": "mersenne_sliver_coordinate_dynamics"
   },
   {
    "declaration": "sharpMersenneSliverCoordinateRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1069,
+   "line": 1082,
    "role": "concept",
    "statement_node": "mersenne_sliver_coordinate_dynamics"
   },
   {
    "declaration": "sharpMersenneSliverCoordinateRat_eq_two_mul",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1072,
+   "line": 1085,
    "role": "substrate",
    "statement_node": "mersenne_sliver_coordinate_dynamics"
   },
@@ -3318,133 +3318,133 @@
   {
    "declaration": "greedyMersenneRemainder_nonneg",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1119,
+   "line": 1132,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "cast_greedyMersenneRemainderRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1130,
+   "line": 1143,
    "role": "representation",
    "statement_node": "greedy_rational_exactness"
   },
   {
    "declaration": "halfDyadicCap",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1162,
+   "line": 1175,
    "role": "concept",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfTwoChannelCap",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1167,
+   "line": 1180,
    "role": "concept",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "greedyMersenneRemainder_le_cap_of_skipBarrier",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1174,
+   "line": 1187,
    "role": "engine",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfDyadicCap_le_halfTwoChannelCap",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1197,
+   "line": 1210,
    "role": "substrate",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfTwoChannelCap_le_mersenneTail",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1204,
+   "line": 1217,
    "role": "substrate",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfTwoChannelCap_lt_mersenneTail",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1213,
+   "line": 1226,
    "role": "substrate",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfDyadicCap_selected_strict",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1221,
+   "line": 1234,
    "role": "substrate",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfTwoChannelCap_selected_strict",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1232,
+   "line": 1245,
    "role": "substrate",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfDyadicCap_selected",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1242,
+   "line": 1255,
    "role": "substrate",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "halfTwoChannelCap_selected",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1248,
+   "line": 1261,
    "role": "substrate",
    "statement_node": "channel_cap_skip_transport"
   },
   {
    "declaration": "greedyMersenneSupport",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1254,
+   "line": 1267,
    "role": "concept",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "greedyMersenneSkippedSupport",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1259,
+   "line": 1272,
    "role": "concept",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "zero_not_mem_greedyMersenneSupport",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1262,
+   "line": 1275,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "zero_not_mem_greedyMersenneSkippedSupport",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1266,
+   "line": 1279,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "succ_mem_greedyMersenneSupport_iff",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1270,
+   "line": 1283,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "succ_mem_greedyMersenneSkippedSupport_iff",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1275,
+   "line": 1288,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "greedyMersenne_prefix_add_remainder",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1281,
+   "line": 1294,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
@@ -3458,7 +3458,7 @@
   {
    "declaration": "succ_mem_greedySupport_supportValue_iff",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1327,
+   "line": 1340,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
@@ -3472,28 +3472,28 @@
   {
    "declaration": "positiveMersenneSupportValue_nonneg",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1356,
+   "line": 1369,
    "role": "substrate",
    "statement_node": "mersenne_support_coding_normalisation"
   },
   {
    "declaration": "greedy_survives_of_mem_mersenneAchievementSet",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1362,
+   "line": 1375,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "tendsto_greedyMersenneRemainder_zero",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1372,
+   "line": 1385,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
   {
    "declaration": "mem_mersenneAchievementSet_of_greedy_survival",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1381,
+   "line": 1394,
    "role": "substrate",
    "statement_node": "greedy_survival_characterisation"
   },
@@ -3521,35 +3521,35 @@
   {
    "declaration": "GreedyMersenneFatalAt",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1457,
+   "line": 1470,
    "role": "concept",
    "statement_node": "fatal_level_forces_cofinite_takes"
   },
   {
    "declaration": "greedyMersenneFatalAt_iff_not_survives",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1460,
+   "line": 1473,
    "role": "substrate",
    "statement_node": "fatal_level_forces_cofinite_takes"
   },
   {
    "declaration": "greedyMersenneFatalAt_succ",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1467,
+   "line": 1480,
    "role": "substrate",
    "statement_node": "fatal_level_forces_cofinite_takes"
   },
   {
    "declaration": "greedyMersenneFatalAt_add",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1483,
+   "line": 1496,
    "role": "substrate",
    "statement_node": "fatal_level_forces_cofinite_takes"
   },
   {
    "declaration": "mem_greedyMersenneSupport_of_fatalAt_add_succ",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1492,
+   "line": 1505,
    "role": "substrate",
    "statement_node": "fatal_level_forces_cofinite_takes"
   },
@@ -3591,28 +3591,28 @@
   {
    "declaration": "mersenneBitFlip",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1572,
+   "line": 1608,
    "role": "engine",
    "statement_node": "mersenne_achievement_set_cantor_geometry"
   },
   {
    "declaration": "mersenneBitFlip_ne",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1575,
+   "line": 1611,
    "role": "engine",
    "statement_node": "mersenne_achievement_set_cantor_geometry"
   },
   {
    "declaration": "preperfect_univ_mersenneDigits",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1583,
+   "line": 1619,
    "role": "substrate",
    "statement_node": "mersenne_achievement_set_cantor_geometry"
   },
   {
    "declaration": "preperfect_range_positiveMersenneDigitValue",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1605,
+   "line": 1641,
    "role": "substrate",
    "statement_node": "mersenne_achievement_set_cantor_geometry"
   },
@@ -3626,7 +3626,7 @@
   {
    "declaration": "isEmbedding_positiveMersenneDigitValue",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1627,
+   "line": 1663,
    "role": "substrate",
    "statement_node": "mersenne_achievement_set_cantor_geometry"
   },
@@ -3647,28 +3647,28 @@
   {
    "declaration": "mersenneTail_eq_prefix_add_tail",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1677,
+   "line": 1713,
    "role": "substrate",
    "statement_node": "certified_greedy_death_soundness"
   },
   {
    "declaration": "mersenneTailUpperRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1687,
+   "line": 1723,
    "role": "concept",
    "statement_node": "certified_greedy_death_soundness"
   },
   {
    "declaration": "mersenneTail_lt_cast_tailUpperRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1692,
+   "line": 1728,
    "role": "substrate",
    "statement_node": "certified_greedy_death_soundness"
   },
   {
    "declaration": "GreedyMersenneDeath",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1707,
+   "line": 1743,
    "role": "concept",
    "statement_node": "certified_greedy_death_soundness"
   },
@@ -3682,7 +3682,7 @@
   {
    "declaration": "CertifiedGreedyMersenneDeath",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1720,
+   "line": 1756,
    "role": "concept",
    "statement_node": "certified_greedy_death_soundness"
   },
@@ -3710,28 +3710,28 @@
   {
    "declaration": "greedyMersennePrefixRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1757,
+   "line": 1793,
    "role": "concept",
    "statement_node": "greedy_rational_exactness"
   },
   {
    "declaration": "zero_not_mem_greedyMersennePrefixRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1762,
+   "line": 1798,
    "role": "substrate",
    "statement_node": "greedy_rational_exactness"
   },
   {
    "declaration": "greedyMersenneRat_prefix_add_remainder",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1768,
+   "line": 1804,
    "role": "substrate",
    "statement_node": "greedy_rational_exactness"
   },
   {
    "declaration": "finiteErdosSum_greedyMersennePrefixRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1786,
+   "line": 1822,
    "role": "representation",
    "statement_node": "greedy_rational_exactness"
   },
@@ -3766,70 +3766,70 @@
   {
    "declaration": "mersenneCorrectionTail",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1871,
+   "line": 1907,
    "role": "concept",
    "statement_node": "correction_tail_one_bit_window"
   },
   {
    "declaration": "mersenneCorrectionTail_eq",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1876,
+   "line": 1912,
    "role": "substrate",
    "statement_node": "correction_tail_one_bit_window"
   },
   {
    "declaration": "mersenneCorrectionTail_nonneg",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1883,
+   "line": 1919,
    "role": "substrate",
    "statement_node": "correction_tail_one_bit_window"
   },
   {
    "declaration": "mersenneCorrectionTail_pos",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1889,
+   "line": 1925,
    "role": "substrate",
    "statement_node": "correction_tail_one_bit_window"
   },
   {
    "declaration": "mersenneCorrectionTail_le",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1897,
+   "line": 1933,
    "role": "substrate",
    "statement_node": "correction_tail_one_bit_window"
   },
   {
    "declaration": "mersenneCorrectionTail_add_self_succ_lt_remainderTail",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1908,
+   "line": 1944,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "mersenneCorrectionTail_ceilingHalf_add_one_lt_remainderTail",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 1972,
+   "line": 2008,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "tendsto_mersenneCorrectionTail_zero",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2034,
+   "line": 2070,
    "role": "substrate",
    "statement_node": "correction_tail_one_bit_window"
   },
   {
    "declaration": "mersenneForcedReturnThreshold",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2045,
+   "line": 2081,
    "role": "concept",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "mersenneForcedReturnThreshold_zero",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2049,
+   "line": 2085,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
@@ -3850,21 +3850,21 @@
   {
    "declaration": "mersenneForcedReturnThreshold_succ",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2072,
+   "line": 2108,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "mersenneForcedReturnThreshold_strictMono",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2082,
+   "line": 2118,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "tendsto_mersenneForcedReturnThreshold",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2093,
+   "line": 2129,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
@@ -3878,35 +3878,35 @@
   {
    "declaration": "tail_sub_forcedBlock_eq_tail",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2123,
+   "line": 2159,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "dyadic_lt_forcedBlock_of_tail_lt",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2132,
+   "line": 2168,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "halfTwoChannelCap_lt_forcedReturnThreshold_add_one",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2145,
+   "line": 2181,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "forcedBlock_return_of_le_twoChannelCap_add_one",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2154,
+   "line": 2190,
    "role": "statement",
    "statement_node": "forced_return_threshold_calculus"
   },
   {
    "declaration": "halfTwoChannelCap_lt_forcedReturnThreshold_ceilingHalf",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2163,
+   "line": 2199,
    "role": "substrate",
    "statement_node": "forced_return_threshold_calculus"
   },
@@ -3941,35 +3941,35 @@
   {
    "declaration": "halfGreedyMersennePrefix",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2228,
+   "line": 2264,
    "role": "concept",
    "statement_node": "half_greedy_self_trapping_interval_criterion"
   },
   {
    "declaration": "halfGreedyDyadicPrefix",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2233,
+   "line": 2269,
    "role": "concept",
    "statement_node": "half_greedy_self_trapping_interval_criterion"
   },
   {
    "declaration": "halfGreedyCorrectionPrefix",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2240,
+   "line": 2276,
    "role": "concept",
    "statement_node": "half_greedy_self_trapping_interval_criterion"
   },
   {
    "declaration": "halfGreedyComplementPrefix",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2246,
+   "line": 2282,
    "role": "concept",
    "statement_node": "half_greedy_self_trapping_interval_criterion"
   },
   {
    "declaration": "halfGreedyCorrectionPrefix_sub_complementPrefix",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2251,
+   "line": 2287,
    "role": "substrate",
    "statement_node": "half_greedy_self_trapping_interval_criterion"
   },
@@ -3983,35 +3983,35 @@
   {
    "declaration": "greedyMersenneComplementRemainder",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2293,
+   "line": 2329,
    "role": "concept",
    "statement_node": "signed_balance_step_survival_criterion"
   },
   {
    "declaration": "greedyMersenneSignedBalance",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2297,
+   "line": 2333,
    "role": "concept",
    "statement_node": "signed_balance_step_survival_criterion"
   },
   {
    "declaration": "mersenneGap",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2301,
+   "line": 2337,
    "role": "concept",
    "statement_node": "signed_balance_step_survival_criterion"
   },
   {
    "declaration": "greedyMersenneSignedBalance_eq",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2304,
+   "line": 2340,
    "role": "substrate",
    "statement_node": "signed_balance_step_survival_criterion"
   },
   {
    "declaration": "mersenneGap_pos",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2310,
+   "line": 2346,
    "role": "substrate",
    "statement_node": "signed_balance_step_survival_criterion"
   },
@@ -4025,7 +4025,7 @@
   {
    "declaration": "greedyMersenneSignedBalance_succ",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2330,
+   "line": 2366,
    "role": "substrate",
    "statement_node": "signed_balance_step_survival_criterion"
   },
@@ -4046,7 +4046,7 @@
   {
    "declaration": "erdosBorweinMersenneConstant",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2427,
+   "line": 2463,
    "role": "concept",
    "statement_node": "erdos_borwein_constant_irrational"
   },
@@ -4067,7 +4067,7 @@
   {
    "declaration": "positiveMersenneSupportValue_eq_cast_finiteErdosSum",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2458,
+   "line": 2494,
    "role": "representation",
    "statement_node": "mersenne_support_coding_normalisation"
   },
@@ -4088,35 +4088,35 @@
   {
    "declaration": "mersennePrefixMass",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2523,
+   "line": 2580,
    "role": "concept",
    "statement_node": "mersenne_support_coding_normalisation"
   },
   {
    "declaration": "mersenneSupportPrefix",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2527,
+   "line": 2584,
    "role": "concept",
    "statement_node": "mersenne_support_coding_normalisation"
   },
   {
    "declaration": "mersenneSupportPrefix_succ",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2530,
+   "line": 2587,
    "role": "substrate",
    "statement_node": "mersenne_support_coding_normalisation"
   },
   {
    "declaration": "mersenneShadowOfPrefix",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2538,
+   "line": 2595,
    "role": "concept",
    "statement_node": "half_greedy_shadow_reformulation"
   },
   {
    "declaration": "halfGreedyMersenneShadow",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2542,
+   "line": 2599,
    "role": "concept",
    "statement_node": "half_greedy_shadow_reformulation"
   },
@@ -4151,35 +4151,35 @@
   {
    "declaration": "greedyMersenneSecondChannelPhase",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2633,
+   "line": 2690,
    "role": "concept",
    "statement_node": "second_channel_phase_separation"
   },
   {
    "declaration": "greedyMersenneSecondChannelPhase_le_one_six_iff_twoChannelCap",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2642,
+   "line": 2698,
    "role": "substrate",
    "statement_node": "second_channel_phase_separation"
   },
   {
    "declaration": "greedyMersenneSecondChannelPhaseRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2680,
+   "line": 2735,
    "role": "concept",
    "statement_node": "second_channel_phase_separation"
   },
   {
    "declaration": "cast_greedyMersenneSecondChannelPhaseRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2685,
+   "line": 2891,
    "role": "substrate",
    "statement_node": "second_channel_phase_separation"
   },
   {
    "declaration": "HalfSecondChannelSeparatedRat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2695,
+   "line": 2901,
    "role": "concept",
    "statement_node": "second_channel_phase_separation"
   },
@@ -4193,7 +4193,7 @@
   {
    "declaration": "secondChannelSeparation_of_rat",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2706,
+   "line": 2944,
    "role": "representation",
    "statement_node": "second_channel_phase_separation"
   },
@@ -4207,21 +4207,21 @@
   {
    "declaration": "four_pow_mul_signedBalance_eq_secondChannelPhase_sub",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2733,
+   "line": 2971,
    "role": "substrate",
    "statement_node": "second_channel_phase_separation"
   },
   {
    "declaration": "four_pow_mul_mersenneWeightRemainderTail_le",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2748,
+   "line": 2986,
    "role": "substrate",
    "statement_node": "second_channel_phase_separation"
   },
   {
    "declaration": "four_pow_mul_next_mersenneGap_le",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2768,
+   "line": 3006,
    "role": "substrate",
    "statement_node": "second_channel_phase_separation"
   },
@@ -4249,35 +4249,35 @@
   {
    "declaration": "positiveDyadicSupportValue",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2913,
+   "line": 3151,
    "role": "concept",
    "statement_node": "half_value_correction_complement_equivalence"
   },
   {
    "declaration": "summable_positiveDyadicSupportIndicator",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2916,
+   "line": 3154,
    "role": "substrate",
    "statement_node": "half_value_correction_complement_equivalence"
   },
   {
    "declaration": "halfCorrectionValue",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2929,
+   "line": 3167,
    "role": "concept",
    "statement_node": "half_value_correction_complement_equivalence"
   },
   {
    "declaration": "halfComplementValue",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2935,
+   "line": 3173,
    "role": "concept",
    "statement_node": "half_value_correction_complement_equivalence"
   },
   {
    "declaration": "halfComplementValue_eq_tsum_complement",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 2940,
+   "line": 3178,
    "role": "substrate",
    "statement_node": "half_value_correction_complement_equivalence"
   },
@@ -4291,7 +4291,7 @@
   {
    "declaration": "HalfPrefixForcingChain",
    "module": "Erdos249257/GreedyAchievementSet.lean",
-   "line": 3006,
+   "line": 3244,
    "role": "concept",
    "statement_node": "half_prefix_forcing_chain_criterion"
   },
@@ -4648,7 +4648,7 @@
   {
    "declaration": "signedMobiusBaseline",
    "module": "Erdos249257/HalfCarryReachability.lean",
-   "line": 629,
+   "line": 657,
    "role": "concept",
    "statement_node": "signed_mobius_baseline_divisor_identity"
   },
@@ -4662,21 +4662,21 @@
   {
    "declaration": "mobiusCenteredHalfCarry",
    "module": "Erdos249257/HalfCarryReachability.lean",
-   "line": 661,
+   "line": 689,
    "role": "concept",
    "statement_node": "mobius_centered_carry_coboundary"
   },
   {
    "declaration": "mobiusCenteredHalfCarry_zero",
    "module": "Erdos249257/HalfCarryReachability.lean",
-   "line": 664,
+   "line": 692,
    "role": "substrate",
    "statement_node": "mobius_centered_carry_coboundary"
   },
   {
    "declaration": "mobiusCenteredHalfCarry_succ",
    "module": "Erdos249257/HalfCarryReachability.lean",
-   "line": 670,
+   "line": 698,
    "role": "substrate",
    "statement_node": "mobius_centered_carry_coboundary"
   },
@@ -4725,7 +4725,7 @@
   {
    "declaration": "greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound",
    "module": "Erdos249257/HalfCarryReachability.lean",
-   "line": 805,
+   "line": 834,
    "role": "statement",
    "statement_node": "tempered_mobius_carry_yields_half"
   },
@@ -4739,7 +4739,7 @@
   {
    "declaration": "erdosSupportSeries_greedyMersenneSupport_le",
    "module": "Erdos249257/HalfCarryReachability.lean",
-   "line": 859,
+   "line": 888,
    "role": "substrate",
    "statement_node": "greedy_mobius_carry_nonneg"
   },
@@ -4788,7 +4788,7 @@
   {
    "declaration": "HalfCarryCofinalAdmissibility",
    "module": "Erdos249257/HalfCarryReachability.lean",
-   "line": 978,
+   "line": 1007,
    "role": "concept",
    "statement_node": "cofinal_admissibility_yields_257_counterexample"
   },
@@ -5558,14 +5558,14 @@
   {
    "declaration": "selectedMersenneTail",
    "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-   "line": 17,
+   "line": 20,
    "role": "concept",
    "statement_node": "hereditary_strict_superincreasing_subseries"
   },
   {
    "declaration": "summable_selectedMersenneTail",
    "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-   "line": 21,
+   "line": 24,
    "role": "substrate",
    "statement_node": "hereditary_strict_superincreasing_subseries"
   },
@@ -5579,14 +5579,14 @@
   {
    "declaration": "SupportedMersenneDigits",
    "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-   "line": 42,
+   "line": 45,
    "role": "concept",
    "statement_node": "supported_mersenne_digit_injectivity"
   },
   {
    "declaration": "supportedMersenneDigitValue",
    "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-   "line": 46,
+   "line": 49,
    "role": "concept",
    "statement_node": "supported_mersenne_digit_injectivity"
   },

@@ -209,77 +209,77 @@
         {
           "declaration": "irrational_totientSeries_of_diagonalFreshLossProjectionSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 191
+          "line": 202
         },
         {
           "declaration": "irrational_totientSeries_of_diagonalAdjacentSuffixGapSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2684
+          "line": 2882
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2692
+          "line": 2890
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateExactSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2699
+          "line": 2898
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateMarginSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2707
+          "line": 2907
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateStrongBandSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2715
+          "line": 2916
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixJumpCentralSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2723
+          "line": 2924
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2731
+          "line": 2932
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2739
+          "line": 2941
         },
         {
           "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2746
+          "line": 2948
         },
         {
           "declaration": "irrational_totientSeries_of_powerTwoOddGuardHalfWordBandSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3945
+          "line": 4242
         },
         {
           "declaration": "irrational_totientSeries_of_actualPenultimateEnvelopeMarginSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4700
+          "line": 5020
         },
         {
           "declaration": "irrational_totientSeries_of_actualPenultimateSignedMarginSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4873
+          "line": 5193
         },
         {
           "declaration": "irrational_totientSeries_of_powerTwoOddGuardThreeRankBandSupply",
           "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-          "line": 136
+          "line": 137
         },
         {
           "declaration": "irrational_totientSeries_of_threeScaleAffineEscapeSupply",
           "module": "Erdos249257/DiagonalFlexibleOddWindowAffine.lean",
-          "line": 365
+          "line": 366
         }
       ],
       "concepts": [
@@ -328,27 +328,27 @@
         {
           "declaration": "foreignDiagonalDefect_misses_fullTarget_seven_via_projection",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2769
+          "line": 2971
         },
         {
           "declaration": "foreignDiagonalDefect_misses_fullTarget_seven_via_suffix",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2786
+          "line": 2988
         },
         {
           "declaration": "diagonalFreshLossProjectionCell_seven",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2757
+          "line": 2959
         },
         {
           "declaration": "diagonalFreshLossResidueCell_seven",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2763
+          "line": 2965
         },
         {
           "declaration": "diagonalSuffixCell_seven",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2778
+          "line": 2980
         }
       ],
       "concepts": [
@@ -474,32 +474,32 @@
         {
           "declaration": "scaleDiagonalTailDifference_sub_lambertProjectedDiagonal",
           "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-          "line": 116
+          "line": 138
         },
         {
           "declaration": "abs_mobiusSquareTail_le",
           "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-          "line": 145
+          "line": 167
         },
         {
           "declaration": "abs_scaleDiagonalTailDifference_sub_lambertProjectedDiagonal_le",
           "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-          "line": 219
+          "line": 408
         },
         {
           "declaration": "mobius_square_series_eq_partial_add_tail",
           "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-          "line": 72
+          "line": 94
         },
         {
           "declaration": "mersenne_shift_lower_bound",
           "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-          "line": 129
+          "line": 151
         },
         {
           "declaration": "totientSeries_eq_pnat_half_pow",
           "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-          "line": 50
+          "line": 72
         }
       ],
       "concepts": [
@@ -528,7 +528,7 @@
         {
           "declaration": "scaleFullTarget_miss_of_lambert_projected_separation",
           "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-          "line": 237
+          "line": 426
         }
       ],
       "concepts": [
@@ -552,67 +552,67 @@
         {
           "declaration": "foreignResidueKernel_of_lt",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 59
+          "line": 60
         },
         {
           "declaration": "residueIncrement_of_dvd",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 87
+          "line": 88
         },
         {
           "declaration": "residueIncrement_of_twice_lt",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 107
+          "line": 108
         },
         {
           "declaration": "stableResidueFactor_nonneg",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 123
+          "line": 124
         },
         {
           "declaration": "stableResidueFactor_le_geometric",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 130
+          "line": 131
         },
         {
           "declaration": "abs_residueIncrement_le_geometric",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 161
+          "line": 162
         },
         {
           "declaration": "abs_foreignTailWindow_le_geometric_sum",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 194
+          "line": 195
         },
         {
           "declaration": "geometric_window_le_closed_complement",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 221
+          "line": 222
         },
         {
           "declaration": "abs_foreignTailWindow_le_foreignComplementBound",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 275
+          "line": 276
         },
         {
           "declaration": "finiteResidueDiagonal_eq_projectedForeign_add_divisor",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 307
+          "line": 308
         },
         {
           "declaration": "projectedDivisorChannels_eq_truncated_mobius",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 319
+          "line": 320
         },
         {
           "declaration": "residueOffset_eq_sub_of_lt",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 31
+          "line": 32
         },
         {
           "declaration": "positiveResidueIncrement_coe",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 80
+          "line": 81
         }
       ],
       "concepts": [
@@ -636,12 +636,12 @@
         {
           "declaration": "scaleFullTarget_miss_of_projected_separation",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 348
+          "line": 414
         },
         {
           "declaration": "scaleFullTarget_miss_of_abs_sub_le_of_forall_int",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 369
+          "line": 435
         }
       ],
       "concepts": [
@@ -703,7 +703,7 @@
         {
           "declaration": "scaleFullTarget_miss_of_renormalized_residue_separation",
           "module": "Erdos249257/ActualForeignResidueProjection.lean",
-          "line": 402
+          "line": 468
         }
       ],
       "concepts": [
@@ -729,17 +729,17 @@
         {
           "declaration": "diagonalFreshLossResidueCert_iff_projectionCert",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 61
+          "line": 72
         },
         {
           "declaration": "foreignDiagonalDefect_misses_fullTarget_of_projectionCert",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 138
+          "line": 149
         },
         {
           "declaration": "foreignDiagonalDefect_misses_fullTarget_of_residueCert",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 173
+          "line": 184
         }
       ],
       "concepts": [
@@ -763,32 +763,32 @@
         {
           "declaration": "windowNumerator_prefix_suffix",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 214
+          "line": 225
         },
         {
           "declaration": "diagonalSuffixResidue_eq_increment_sum",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 357
+          "line": 368
         },
         {
           "declaration": "diagonalWindowResidue_mod_suffix",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 375
+          "line": 386
         },
         {
           "declaration": "diagonalFreshLossResidueCert_of_suffix_central",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 398
+          "line": 409
         },
         {
           "declaration": "diagonalSuffixResidue_succ_cut",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 466
+          "line": 531
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_eq_terminal_corrected",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 524
+          "line": 589
         }
       ],
       "concepts": [
@@ -811,77 +811,77 @@
         {
           "declaration": "oldMobiusIncrement_eq_sum_forwardDifference_channel",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 560
+          "line": 625
         },
         {
           "declaration": "oldMobiusIncrement_eq_scale_gcdWordCoeff",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 588
+          "line": 653
         },
         {
           "declaration": "totient_eq_boundedMobiusChannelSum",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 672
+          "line": 737
         },
         {
           "declaration": "diagonalHeightIncrement_eq_sum_channelDifferences",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 697
+          "line": 762
         },
         {
           "declaration": "boundedOldChannelSum_eq_oldMobiusIncrement",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 726
+          "line": 791
         },
         {
           "declaration": "diagonalHeightIncrement_eq_oldMobius_add_finiteForeign",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 764
+          "line": 829
         },
         {
           "declaration": "finiteForeignChannelIncrement_eq_phaseSum",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 816
+          "line": 881
         },
         {
           "declaration": "forwardDifference_mobiusTotientChannel_of_not_dvd",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 798
+          "line": 863
         },
         {
           "declaration": "finiteForeignChannelIncrement_eq_enlarged_phaseSum",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1341
+          "line": 1406
         },
         {
           "declaration": "oldMobiusRawBlock_eq_scale_gcdWordRawBlock",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1056
+          "line": 1121
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_eq_oldMobius_add_finiteForeign",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1073
+          "line": 1138
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_sub_oldMobius_eq_finiteForeign",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1088
+          "line": 1153
         },
         {
           "declaration": "finiteForeignChannelRawBlock_eq_sum_rawPulses",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1369
+          "line": 1434
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_eq_scaledGcdWord_add_sum_foreignRawPulses",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1472
+          "line": 1537
         },
         {
           "declaration": "squarefree_dvd_squarefreeKernel",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 576
+          "line": 641
         },
         {
           "declaration": "oldMobiusIncrement_eq_div_gcd_mul_totient",
@@ -910,162 +910,162 @@
         {
           "declaration": "foreign_endpoint_support_disjoint",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 787
+          "line": 852
         },
         {
           "declaration": "foreignChannelPhaseTerm_ne_zero_support",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 829
+          "line": 894
         },
         {
           "declaration": "squarefree_of_foreignChannelPhaseTerm_ne_zero",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 844
+          "line": 909
         },
         {
           "declaration": "foreignChannelPhaseTerm_eq_neg_of_low",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 855
+          "line": 920
         },
         {
           "declaration": "foreignChannelPhaseTerm_eq_of_top",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 865
+          "line": 930
         },
         {
           "declaration": "foreignChannelPhaseTerm_low_double_echo",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 876
+          "line": 941
         },
         {
           "declaration": "foreignChannelPhaseTerm_weighted_low_double_echo",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 896
+          "line": 961
         },
         {
           "declaration": "dvd_offset_sub_of_two_low_supports",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 910
+          "line": 975
         },
         {
           "declaration": "channel_le_offset_sub_of_two_low_supports",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 919
+          "line": 984
         },
         {
           "declaration": "dvd_offset_sub_of_two_top_supports",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 928
+          "line": 993
         },
         {
           "declaration": "channel_le_offset_sub_of_two_top_supports",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 937
+          "line": 1002
         },
         {
           "declaration": "lt_of_not_dvd_periodLcm",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 946
+          "line": 1011
         },
         {
           "declaration": "prime_of_squarefree_not_dvd_periodLcm_lt_two_mul",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 954
+          "line": 1019
         },
         {
           "declaration": "repeated_low_support_primePow_of_short_periodLcm_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 970
+          "line": 1035
         },
         {
           "declaration": "prime_of_squarefree_repeated_low_support_in_short_periodLcm_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 988
+          "line": 1053
         },
         {
           "declaration": "repeated_top_support_primePow_of_short_periodLcm_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1005
+          "line": 1070
         },
         {
           "declaration": "prime_of_squarefree_repeated_top_support_in_short_periodLcm_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1022
+          "line": 1087
         },
         {
           "declaration": "not_three_low_supports_of_short_foreign_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1146
+          "line": 1211
         },
         {
           "declaration": "not_three_top_supports_of_short_foreign_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1159
+          "line": 1224
         },
         {
           "declaration": "not_two_low_supports_of_squarefree_tail_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1173
+          "line": 1238
         },
         {
           "declaration": "not_two_top_supports_of_squarefree_tail_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1184
+          "line": 1249
         },
         {
           "declaration": "eq_or_eq_add_of_modEq_of_pos_le_two_mul",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1196
+          "line": 1261
         },
         {
           "declaration": "prime_lower_support_iff_eq_base_or_add",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1223
+          "line": 1288
         },
         {
           "declaration": "prime_top_base_eq",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1247
+          "line": 1312
         },
         {
           "declaration": "prime_top_support_iff_eq_base_or_add",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1265
+          "line": 1330
         },
         {
           "declaration": "prime_lower_support_quotient",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1276
+          "line": 1341
         },
         {
           "declaration": "prime_top_support_quotient",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1294
+          "line": 1359
         },
         {
           "declaration": "finiteForeignChannelRawPulse_eq_zero_of_dvd",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1313
+          "line": 1378
         },
         {
           "declaration": "squarefree_of_finiteForeignChannelRawPulse_ne_zero",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1320
+          "line": 1385
         },
         {
           "declaration": "lt_of_finiteForeignChannelRawPulse_periodLcm_ne_zero",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1331
+          "line": 1396
         },
         {
           "declaration": "prime_of_squarefree_repeated_low_support_powerTwo_oddGuarded",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3774
+          "line": 3992
         },
         {
           "declaration": "prime_of_squarefree_repeated_top_support_powerTwo_oddGuarded",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3790
+          "line": 4008
         }
       ],
       "concepts": [
@@ -1089,27 +1089,27 @@
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_succ_depth",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1489
+          "line": 1554
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_add_two",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1524
+          "line": 1589
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_eq_rawBlock",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1537
+          "line": 1602
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_succ_depth",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1548
+          "line": 1613
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_target_depth",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1590
+          "line": 1655
         }
       ],
       "concepts": [
@@ -1132,22 +1132,22 @@
         {
           "declaration": "diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap_sharp",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1605
+          "line": 1670
         },
         {
           "declaration": "diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1678
+          "line": 1814
         },
         {
           "declaration": "diagonalFreshLossResidueCert_or_of_adjacent_dyadic_gap",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1691
+          "line": 1827
         },
         {
           "declaration": "diagonalFreshLossResidueCert_or_of_powerTwo_oddGuard_halfWordBand",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3872
+          "line": 4137
         },
         {
           "declaration": "diagonalAdjacentSuffixGapWitness_of_powerTwoOddHalfWordBandAt",
@@ -1176,22 +1176,22 @@
         {
           "declaration": "canonicalAdjacentSuffixDepth_width",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1718
+          "line": 1875
         },
         {
           "declaration": "canonicalAdjacentSuffixDepth_ten_le",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3821
+          "line": 4039
         },
         {
           "declaration": "canonicalAdjacentSuffixDepth_succ_width",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3827
+          "line": 4045
         },
         {
           "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_width",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3858
+          "line": 4108
         },
         {
           "declaration": "adjacentDyadicWidth_succ",
@@ -1206,27 +1206,27 @@
         {
           "declaration": "abs_diagonalHeightIncrement_le",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 243
+          "line": 254
         },
         {
           "declaration": "abs_diagonalWindowIncrement_le",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 255
+          "line": 266
         },
         {
           "declaration": "abs_diagonalTargetDepthCorrection_le",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 268
+          "line": 279
         },
         {
           "declaration": "diagonalTargetDepthCorrectionEnvelope_lt_canonical_edge",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1760
+          "line": 1958
         },
         {
           "declaration": "abs_diagonalTargetDepthCorrection_lt_canonical_edge",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1786
+          "line": 1984
         }
       ],
       "concepts": [
@@ -1250,57 +1250,57 @@
         {
           "declaration": "periodLcm_dvd_of_forall_pos_le",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3592
+          "line": 3794
         },
         {
           "declaration": "one_le_factorization_centralBinom_of_prime_pow_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3608
+          "line": 3810
         },
         {
           "declaration": "prime_dvd_centralBinom_of_prime_pow_window",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3626
+          "line": 3828
         },
         {
           "declaration": "periodLcm_two_mul_dvd_periodLcm_mul_centralBinom",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3640
+          "line": 3842
         },
         {
           "declaration": "periodLcm_two_mul_le_periodLcm_mul_centralBinom",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3681
+          "line": 3883
         },
         {
           "declaration": "periodLcm_two_mul_le_periodLcm_mul_four_pow",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3690
+          "line": 3892
         },
         {
           "declaration": "periodLcm_sixteen_lt_two_pow_twenty",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3702
+          "line": 3904
         },
         {
           "declaration": "periodLcm_pow_two_lt_two_pow_guardTwelve",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3709
+          "line": 3911
         },
         {
           "declaration": "canonicalAdjacentSuffixDepth_powerTwo_succ_lt_two_mul",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3740
+          "line": 3942
         },
         {
           "declaration": "canonicalAdjacentSuffixDepth_powerTwo_lt_two_mul",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3755
+          "line": 3973
         },
         {
           "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_powerTwo_lt_two_mul",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3764
+          "line": 3982
         }
       ],
       "concepts": [
@@ -1324,42 +1324,42 @@
         {
           "declaration": "periodLcm_strict_jump_iff_succ_not_dvd",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2100
+          "line": 2298
         },
         {
           "declaration": "succ_eq_prime_pow_of_periodLcm_strict_jump",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2121
+          "line": 2319
         },
         {
           "declaration": "periodLcm_succ_eq_prime_mul_of_strict_jump",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2134
+          "line": 2332
         },
         {
           "declaration": "periodLcm_factorization_two_lt_of_lt_pow_two",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2197
+          "line": 2395
         },
         {
           "declaration": "periodLcm_pow_two_strict_jump",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2218
+          "line": 2416
         },
         {
           "declaration": "periodLcm_pow_two_eq_two_mul",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2236
+          "line": 2434
         },
         {
           "declaration": "exists_periodLcm_strict_jump_ge",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2437
+          "line": 2635
         },
         {
           "declaration": "canonicalAdjacentSuffixDepth_powerTwo_jump",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2881
+          "line": 3083
         }
       ],
       "concepts": [
@@ -1382,62 +1382,62 @@
         {
           "declaration": "diagonalHeightIncrement_two_mul_even",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 297
+          "line": 308
         },
         {
           "declaration": "diagonalHeightIncrement_two_mul_odd",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 312
+          "line": 323
         },
         {
           "declaration": "diagonalWindowIncrement_evenSeam_even",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 327
+          "line": 338
         },
         {
           "declaration": "diagonalWindowIncrement_evenSeam_odd",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 337
+          "line": 348
         },
         {
           "declaration": "diagonalWindowIncrement_powerTwoJump_even",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2264
+          "line": 2462
         },
         {
           "declaration": "diagonalWindowIncrement_powerTwoJump_odd",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2274
+          "line": 2472
         },
         {
           "declaration": "diagonalWindowIncrement_powerTwoJump_even_offset",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2306
+          "line": 2504
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_step",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2319
+          "line": 2517
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_step",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2339
+          "line": 2537
         },
         {
           "declaration": "diagonalTargetDepthCorrection_powerTwo_of_even_predepth",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2894
+          "line": 3096
         },
         {
           "declaration": "diagonalTargetDepthCorrection_powerTwo_of_odd_predepth",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2911
+          "line": 3113
         },
         {
           "declaration": "diagonalWindowIncrement_eq_heightIncrement",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 236
+          "line": 247
         }
       ],
       "concepts": [
@@ -1461,122 +1461,122 @@
         {
           "declaration": "powerTwoOddCorrectionWord_succ",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2933
+          "line": 3135
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_closed",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2963
+          "line": 3165
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_closed",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2980
+          "line": 3182
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_lowBits",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2991
+          "line": 3193
         },
         {
           "declaration": "diagonalWindowIncrement_even_of_two_le_periodLcm",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3015
+          "line": 3217
         },
         {
           "declaration": "diagonalWindowIncrement_even_of_two_le_offset",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3030
+          "line": 3232
         },
         {
           "declaration": "powerTwoOddDepthCorrection_even",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3047
+          "line": 3249
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_zero_one_even",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3067
+          "line": 3269
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_eq_correctionWord",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3082
+          "line": 3284
         },
         {
           "declaration": "powerTwoOddHalfCorrectionWord_succ",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3108
+          "line": 3310
         },
         {
           "declaration": "powerTwoOddCorrectionWord_eq_two_mul_halfWord",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3115
+          "line": 3317
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_eq_two_mul_halfWord",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3133
+          "line": 3335
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_iff_halfWordBand",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3150
+          "line": 3352
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_topBit_iff",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3991
+          "line": 4288
         },
         {
           "declaration": "int_emod_two_mul_ge_iff_odd_ediv",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3953
+          "line": 4250
         },
         {
           "declaration": "powerTwoOddHalfCorrectionWord_normalized_step",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4007
+          "line": 4304
         },
         {
           "declaration": "powerTwoOddHalfCorrectionWord_normalized_eq_sum",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4019
+          "line": 4316
         },
         {
           "declaration": "powerTwoOddHalfCorrectionWord_eq_raw_sub_seed",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4033
+          "line": 4330
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_half_emod",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3335
+          "line": 3537
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_even",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3356
+          "line": 3558
         },
         {
           "declaration": "actualCenteredLift_modEq",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4332
+          "line": 4652
         },
         {
           "declaration": "abs_actualCenteredLift_le_half",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4567
+          "line": 4887
         },
         {
           "declaration": "actualOddHalfCenteredLift_modEq_halfCorrectionWord",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4339
+          "line": 4659
         },
         {
           "declaration": "actualOddHalf_affine_modEq_halfCorrectionWord_succ",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4350
+          "line": 4670
         },
         {
           "declaration": "halfWordBandAt_iff_state_abs",
@@ -1611,32 +1611,32 @@
         {
           "declaration": "canonicalAdjacentSuffixResidue_central_iff_penultimate_exact",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1874
+          "line": 2072
         },
         {
           "declaration": "canonicalAdjacentSuffixResidue_central_of_penultimate_strongBand",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1965
+          "line": 2163
         },
         {
           "declaration": "canonicalAdjacentSuffixResidue_central_of_penultimate_margin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1992
+          "line": 2190
         },
         {
           "declaration": "canonicalAdjacentSuffixCentral_iff_slack_nonneg",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2469
+          "line": 2667
         },
         {
           "declaration": "canonicalAdjacentSuffixCentralSlack_eq_of_periodLcm_eq",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2460
+          "line": 2658
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_of_correction_bounds",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2415
+          "line": 2613
         }
       ],
       "concepts": [
@@ -1660,52 +1660,52 @@
         {
           "declaration": "canonicalAdjacentSuffixCentralSupply_iff_penultimateExact",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2577
+          "line": 2775
         },
         {
           "declaration": "canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2559
+          "line": 2757
         },
         {
           "declaration": "canonicalAdjacentSuffixCentralSupply_of_penultimateMargin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2598
+          "line": 2796
         },
         {
           "declaration": "canonicalAdjacentSuffixPenultimateMarginSupply_of_strongBand",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2611
+          "line": 2809
         },
         {
           "declaration": "canonicalAdjacentSuffixCentralSupply_of_penultimateStrongBand",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2637
+          "line": 2835
         },
         {
           "declaration": "canonicalAdjacentSuffixCentralSupply_of_jump",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2650
+          "line": 2848
         },
         {
           "declaration": "canonicalAdjacentSuffixPostJumpSlackSupply_of_powerTwo",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2501
+          "line": 2699
         },
         {
           "declaration": "canonicalAdjacentSuffixJumpSlackSupply_of_postJump",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2525
+          "line": 2723
         },
         {
           "declaration": "diagonalAdjacentSuffixGapSupply_of_canonical",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2659
+          "line": 2857
         },
         {
           "declaration": "diagonalFreshLossProjectionSupply_of_adjacentSuffixGapSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2672
+          "line": 2870
         }
       ],
       "concepts": [
@@ -1740,12 +1740,12 @@
         {
           "declaration": "powerTwoOddGuardHalfWordBand_iff_actualPenultimateSignedMargin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4782
+          "line": 5102
         },
         {
           "declaration": "powerTwoOddGuardHalfWordBand_of_actualPenultimateMargin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4617
+          "line": 4937
         },
         {
           "declaration": "threeRankBandAt_iff_threeScaleAffineEscapeAt",
@@ -1760,7 +1760,7 @@
         {
           "declaration": "not_three_consecutive_edge_iff_threeRankBand",
           "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-          "line": 186
+          "line": 187
         },
         {
           "declaration": "state_succ_eq_affine_of_abs_lt_half",
@@ -1800,17 +1800,17 @@
         {
           "declaration": "powerTwoActualPenultimateSignedMarginSupply_iff_halfWordBandSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4852
+          "line": 5172
         },
         {
           "declaration": "powerTwoOddGuardHalfWordBandSupply_of_actualPenultimateEnvelopeMargin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4680
+          "line": 5000
         },
         {
           "declaration": "diagonalAdjacentSuffixGapSupply_of_powerTwoOddGuardHalfWordBand",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3913
+          "line": 4210
         },
         {
           "declaration": "diagonalAdjacentSuffixGapSupply_of_powerTwoOddGuardThreeRankBand",
@@ -1852,37 +1852,37 @@
         {
           "declaration": "abs_powerTwoOddDepthCorrection_le",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3528
+          "line": 3730
         },
         {
           "declaration": "abs_actualOddHalfCorrection_le",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4365
+          "line": 4685
         },
         {
           "declaration": "abs_actualOddHalfCorrection_le_canonicalEnvelope",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4387
+          "line": 4707
         },
         {
           "declaration": "canonicalActualOddHalfCorrectionEnvelope_lt_edge",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4405
+          "line": 4725
         },
         {
           "declaration": "abs_actualOddHalfCorrection_lt_canonicalHalfEdge",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4489
+          "line": 4809
         },
         {
           "declaration": "abs_actualOddHalfCorrection_next_two_lt_two_canonicalEdge",
           "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-          "line": 145
+          "line": 146
         },
         {
           "declaration": "fourPow_pred_eq_eight_mul_edge",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4582
+          "line": 4902
         },
         {
           "declaration": "fourPow_eq_thirtyTwo_mul_edge",
@@ -1927,62 +1927,62 @@
         {
           "declaration": "baseTwoTargetResidue_central_iff_unwrapped",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1799
+          "line": 1997
         },
         {
           "declaration": "baseTwoTargetResidue_central_of_strongBand",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1901
+          "line": 2099
         },
         {
           "declaration": "baseTwoTargetResidue_central_of_envelope",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 1936
+          "line": 2134
         },
         {
           "declaration": "baseFourResidue_central_of_correction_bounds",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2377
+          "line": 2575
         },
         {
           "declaration": "baseTwoTargetResidue_central_iff_topBit",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2797
+          "line": 2999
         },
         {
           "declaration": "baseTwoTargetResidue_noncentral_iff_carryEdgeAlignment",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2844
+          "line": 3046
         },
         {
           "declaration": "emod_central_of_abs_between",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3201
+          "line": 3403
         },
         {
           "declaration": "baseFour_actual_central_iff_affineExclusion",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4503
+          "line": 4823
         },
         {
           "declaration": "baseFour_actual_central_of_sharpSignFreeMargin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4544
+          "line": 4864
         },
         {
           "declaration": "baseFour_actual_central_iff_signedMargin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4770
+          "line": 5090
         },
         {
           "declaration": "actualAffineExclusion_iff_signedMargin",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4718
+          "line": 5038
         },
         {
           "declaration": "baseFour_positiveWrap_ediv_succ",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4045
+          "line": 4342
         }
       ],
       "concepts": [
@@ -2006,37 +2006,37 @@
         {
           "declaration": "nearMultiple_iff_emod_edge",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3457
+          "line": 3659
         },
         {
           "declaration": "nearMultiple_correction_of_twoRank",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3496
+          "line": 3698
         },
         {
           "declaration": "powerTwoOddDepthCorrection_nearMultiple_of_twoRank",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3510
+          "line": 3712
         },
         {
           "declaration": "nearMultiple_witness_unique",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4123
+          "line": 4420
         },
         {
           "declaration": "twoFutureEdgeRanks_iff_oldStateCrossing",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4141
+          "line": 4438
         },
         {
           "declaration": "threeFutureEdgeRanks_iff_oldStateCrossing",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4217
+          "line": 4514
         },
         {
           "declaration": "baseFour_edge_iff_centered_tube",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4066
+          "line": 4363
         }
       ],
       "concepts": [
@@ -2059,7 +2059,7 @@
         {
           "declaration": "baseFour_zeroCorrection_centered_tube_forever",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4116
+          "line": 4413
         },
         {
           "declaration": "zeroAffineOrbit_geometric_bound",
@@ -2074,7 +2074,7 @@
         {
           "declaration": "threeEdgeWindow_feasible_at_zero_of_subedge",
           "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-          "line": 202
+          "line": 203
         }
       ],
       "concepts": [
@@ -2098,12 +2098,12 @@
         {
           "declaration": "threeEdgeWindow_forced_of_halfEdgeCore",
           "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-          "line": 225
+          "line": 226
         },
         {
           "declaration": "threeEdgeWindow_forced_of_threeEighthCore",
           "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-          "line": 258
+          "line": 259
         }
       ],
       "concepts": [
@@ -2380,37 +2380,37 @@
         {
           "declaration": "abs_add_between_of_signedSplitSafe",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3226
+          "line": 3428
         },
         {
           "declaration": "signedSplitSafe_emod_central",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3282
+          "line": 3484
         },
         {
           "declaration": "add_ediv_two_of_even",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3293
+          "line": 3495
         },
         {
           "declaration": "diagonalAdjacentSuffixRawBlock_half_central_of_signedSplit",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3310
+          "line": 3512
         },
         {
           "declaration": "powerTwoOddHalfWordBand_of_signedSplit",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3384
+          "line": 3586
         },
         {
           "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_of_signedSplit",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3409
+          "line": 3611
         },
         {
           "declaration": "finiteForeignChannelRawBlock_powerTwo_oddDepth_even_of_old",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3369
+          "line": 3571
         }
       ],
       "concepts": [
@@ -2435,12 +2435,12 @@
         {
           "declaration": "canonical_a2_to_a7_signedSplitSafe_fixture",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 3430
+          "line": 3632
         },
         {
           "declaration": "powerTwo_a7_q91_q93_oldCell_integer_fixture",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 4295
+          "line": 4592
         },
         {
           "declaration": "periodLcm_eq_lcmHeight_five",
@@ -2528,1806 +2528,1806 @@
     {
       "declaration": "diagonalFreshLossResidueCert_iff_projectionCert",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 61,
+      "line": 72,
       "role": "statement",
       "statement_node": "two_vertex_certificate_forces_full_target_miss"
     },
     {
       "declaration": "foreignDiagonalDefect_misses_fullTarget_of_projectionCert",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 138,
+      "line": 149,
       "role": "statement",
       "statement_node": "two_vertex_certificate_forces_full_target_miss"
     },
     {
       "declaration": "foreignDiagonalDefect_misses_fullTarget_of_residueCert",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 173,
+      "line": 184,
       "role": "statement",
       "statement_node": "two_vertex_certificate_forces_full_target_miss"
     },
     {
       "declaration": "DiagonalFreshLossProjectionSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 186,
+      "line": 197,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "irrational_totientSeries_of_diagonalFreshLossProjectionSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 191,
+      "line": 202,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "windowNumerator_prefix_suffix",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 214,
+      "line": 225,
       "role": "statement",
       "statement_node": "sliding_suffix_transference"
     },
     {
       "declaration": "diagonalWindowIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 227,
+      "line": 238,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "diagonalHeightIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 233,
+      "line": 244,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "diagonalWindowIncrement_eq_heightIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 236,
+      "line": 247,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "abs_diagonalHeightIncrement_le",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 243,
+      "line": 254,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "abs_diagonalWindowIncrement_le",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 255,
+      "line": 266,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "diagonalTargetDepthCorrection",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 262,
+      "line": 273,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "abs_diagonalTargetDepthCorrection_le",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 268,
+      "line": 279,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "diagonalHeightIncrement_two_mul_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 297,
+      "line": 308,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalHeightIncrement_two_mul_odd",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 312,
+      "line": 323,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalWindowIncrement_evenSeam_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 327,
+      "line": 338,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalWindowIncrement_evenSeam_odd",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 337,
+      "line": 348,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalSuffixResidue",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 350,
+      "line": 361,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "diagonalSuffixResidue_eq_increment_sum",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 357,
+      "line": 368,
       "role": "statement",
       "statement_node": "sliding_suffix_transference"
     },
     {
       "declaration": "diagonalWindowResidue_mod_suffix",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 375,
+      "line": 386,
       "role": "statement",
       "statement_node": "sliding_suffix_transference"
     },
     {
       "declaration": "diagonalFreshLossResidueCert_of_suffix_central",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 398,
+      "line": 409,
       "role": "statement",
       "statement_node": "sliding_suffix_transference"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 460,
+      "line": 525,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "diagonalSuffixResidue_succ_cut",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 466,
+      "line": 531,
       "role": "statement",
       "statement_node": "sliding_suffix_transference"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_eq_terminal_corrected",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 524,
+      "line": 589,
       "role": "statement",
       "statement_node": "sliding_suffix_transference"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 543,
+      "line": 608,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "oldMobiusIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 552,
+      "line": 617,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "oldMobiusIncrement_eq_sum_forwardDifference_channel",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 560,
+      "line": 625,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "squarefree_dvd_squarefreeKernel",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 576,
+      "line": 641,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "oldMobiusIncrement_eq_scale_gcdWordCoeff",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 588,
+      "line": 653,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "boundedMobiusChannelSum",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 667,
+      "line": 732,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "totient_eq_boundedMobiusChannelSum",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 672,
+      "line": 737,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "finiteForeignChannelIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 690,
+      "line": 755,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "diagonalHeightIncrement_eq_sum_channelDifferences",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 697,
+      "line": 762,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "boundedOldChannelSum_eq_oldMobiusIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 726,
+      "line": 791,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "diagonalHeightIncrement_eq_oldMobius_add_finiteForeign",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 764,
+      "line": 829,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "foreignChannelPhaseTerm",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 779,
+      "line": 844,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "foreign_endpoint_support_disjoint",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 787,
+      "line": 852,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "forwardDifference_mobiusTotientChannel_of_not_dvd",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 798,
+      "line": 863,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "finiteForeignChannelIncrement_eq_phaseSum",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 816,
+      "line": 881,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "foreignChannelPhaseTerm_ne_zero_support",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 829,
+      "line": 894,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "squarefree_of_foreignChannelPhaseTerm_ne_zero",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 844,
+      "line": 909,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "foreignChannelPhaseTerm_eq_neg_of_low",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 855,
+      "line": 920,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "foreignChannelPhaseTerm_eq_of_top",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 865,
+      "line": 930,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "foreignChannelPhaseTerm_low_double_echo",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 876,
+      "line": 941,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "foreignChannelPhaseTerm_weighted_low_double_echo",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 896,
+      "line": 961,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "dvd_offset_sub_of_two_low_supports",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 910,
+      "line": 975,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "channel_le_offset_sub_of_two_low_supports",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 919,
+      "line": 984,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "dvd_offset_sub_of_two_top_supports",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 928,
+      "line": 993,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "channel_le_offset_sub_of_two_top_supports",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 937,
+      "line": 1002,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "lt_of_not_dvd_periodLcm",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 946,
+      "line": 1011,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_of_squarefree_not_dvd_periodLcm_lt_two_mul",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 954,
+      "line": 1019,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "repeated_low_support_primePow_of_short_periodLcm_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 970,
+      "line": 1035,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_of_squarefree_repeated_low_support_in_short_periodLcm_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 988,
+      "line": 1053,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "repeated_top_support_primePow_of_short_periodLcm_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1005,
+      "line": 1070,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_of_squarefree_repeated_top_support_in_short_periodLcm_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1022,
+      "line": 1087,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "oldMobiusRawBlock",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1042,
+      "line": 1107,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "gcdWordRawBlock",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1048,
+      "line": 1113,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "oldMobiusRawBlock_eq_scale_gcdWordRawBlock",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1056,
+      "line": 1121,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "finiteForeignChannelRawBlock",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1067,
+      "line": 1132,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_eq_oldMobius_add_finiteForeign",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1073,
+      "line": 1138,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_sub_oldMobius_eq_finiteForeign",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1088,
+      "line": 1153,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "finiteForeignChannelRawPulse",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1099,
+      "line": 1164,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "terminalBinaryWeight",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1109,
+      "line": 1174,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "terminalWeightedCoeff",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1113,
+      "line": 1178,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "foreignLowerOffset",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1117,
+      "line": 1182,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "foreignLowerQuotient",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1120,
+      "line": 1185,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "foreignDoubleWrap",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1124,
+      "line": 1189,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "foreignTopOffset",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1128,
+      "line": 1193,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "primeBandFourPulseRaw",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1134,
+      "line": 1199,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "not_three_low_supports_of_short_foreign_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1146,
+      "line": 1211,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "not_three_top_supports_of_short_foreign_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1159,
+      "line": 1224,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "not_two_low_supports_of_squarefree_tail_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1173,
+      "line": 1238,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "not_two_top_supports_of_squarefree_tail_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1184,
+      "line": 1249,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "eq_or_eq_add_of_modEq_of_pos_le_two_mul",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1196,
+      "line": 1261,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_lower_support_iff_eq_base_or_add",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1223,
+      "line": 1288,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_top_base_eq",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1247,
+      "line": 1312,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_top_support_iff_eq_base_or_add",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1265,
+      "line": 1330,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_lower_support_quotient",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1276,
+      "line": 1341,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_top_support_quotient",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1294,
+      "line": 1359,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "finiteForeignChannelRawPulse_eq_zero_of_dvd",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1313,
+      "line": 1378,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "squarefree_of_finiteForeignChannelRawPulse_ne_zero",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1320,
+      "line": 1385,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "lt_of_finiteForeignChannelRawPulse_periodLcm_ne_zero",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1331,
+      "line": 1396,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "finiteForeignChannelIncrement_eq_enlarged_phaseSum",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1341,
+      "line": 1406,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "finiteForeignChannelRawBlock_eq_sum_rawPulses",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1369,
+      "line": 1434,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_eq_scaledGcdWord_add_sum_foreignRawPulses",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1472,
+      "line": 1537,
       "role": "statement",
       "statement_node": "old_foreign_channel_split_of_totient_increment"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_succ_depth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1489,
+      "line": 1554,
       "role": "statement",
       "statement_node": "adjacent_suffix_raw_block_cocycle"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_add_two",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1524,
+      "line": 1589,
       "role": "statement",
       "statement_node": "adjacent_suffix_raw_block_cocycle"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_eq_rawBlock",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1537,
+      "line": 1602,
       "role": "statement",
       "statement_node": "adjacent_suffix_raw_block_cocycle"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_succ_depth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1548,
+      "line": 1613,
       "role": "statement",
       "statement_node": "adjacent_suffix_raw_block_cocycle"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_target_depth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1590,
+      "line": 1655,
       "role": "statement",
       "statement_node": "adjacent_suffix_raw_block_cocycle"
     },
     {
       "declaration": "diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap_sharp",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1605,
+      "line": 1670,
       "role": "statement",
       "statement_node": "adjacent_gap_forces_certificate"
     },
     {
       "declaration": "diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1678,
+      "line": 1814,
       "role": "statement",
       "statement_node": "adjacent_gap_forces_certificate"
     },
     {
       "declaration": "diagonalFreshLossResidueCert_or_of_adjacent_dyadic_gap",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1691,
+      "line": 1827,
       "role": "statement",
       "statement_node": "adjacent_gap_forces_certificate"
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1713,
+      "line": 1870,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth_width",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1718,
+      "line": 1875,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "diagonalTargetDepthCorrectionEnvelope_lt_canonical_edge",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1760,
+      "line": 1958,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "abs_diagonalTargetDepthCorrection_lt_canonical_edge",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1786,
+      "line": 1984,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "baseTwoTargetResidue_central_iff_unwrapped",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1799,
+      "line": 1997,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "canonicalAdjacentSuffixResidue_central_iff_penultimate_exact",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1874,
+      "line": 2072,
       "role": "statement",
       "statement_node": "canonical_centrality_pointwise_reductions"
     },
     {
       "declaration": "baseTwoTargetResidue_central_of_strongBand",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1901,
+      "line": 2099,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "baseTwoTargetResidue_central_of_envelope",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1936,
+      "line": 2134,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "canonicalAdjacentSuffixResidue_central_of_penultimate_strongBand",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1965,
+      "line": 2163,
       "role": "statement",
       "statement_node": "canonical_centrality_pointwise_reductions"
     },
     {
       "declaration": "canonicalAdjacentSuffixResidue_central_of_penultimate_margin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 1992,
+      "line": 2190,
       "role": "statement",
       "statement_node": "canonical_centrality_pointwise_reductions"
     },
     {
       "declaration": "DiagonalAdjacentSuffixGapSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2023,
+      "line": 2221,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "CanonicalAdjacentSuffixCentralSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2033,
+      "line": 2231,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "CanonicalAdjacentSuffixPenultimateExactSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2045,
+      "line": 2243,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "CanonicalAdjacentSuffixPenultimateMarginSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2060,
+      "line": 2258,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "CanonicalAdjacentSuffixPenultimateStrongBandSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2075,
+      "line": 2273,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "CanonicalAdjacentSuffixJumpCentralSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2088,
+      "line": 2286,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "periodLcm_strict_jump_iff_succ_not_dvd",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2100,
+      "line": 2298,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "succ_eq_prime_pow_of_periodLcm_strict_jump",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2121,
+      "line": 2319,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "periodLcm_succ_eq_prime_mul_of_strict_jump",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2134,
+      "line": 2332,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "periodLcm_factorization_two_lt_of_lt_pow_two",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2197,
+      "line": 2395,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "periodLcm_pow_two_strict_jump",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2218,
+      "line": 2416,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "periodLcm_pow_two_eq_two_mul",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2236,
+      "line": 2434,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "diagonalWindowIncrement_powerTwoJump_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2264,
+      "line": 2462,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalWindowIncrement_powerTwoJump_odd",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2274,
+      "line": 2472,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "powerTwoInheritedIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2287,
+      "line": 2485,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "powerTwoFreshOddIncrement",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2295,
+      "line": 2493,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "powerTwoOddDepthCorrection",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2299,
+      "line": 2497,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "diagonalWindowIncrement_powerTwoJump_even_offset",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2306,
+      "line": 2504,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_step",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2319,
+      "line": 2517,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_step",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2339,
+      "line": 2537,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "baseFourResidue_central_of_correction_bounds",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2377,
+      "line": 2575,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_of_correction_bounds",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2415,
+      "line": 2613,
       "role": "statement",
       "statement_node": "canonical_centrality_pointwise_reductions"
     },
     {
       "declaration": "exists_periodLcm_strict_jump_ge",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2437,
+      "line": 2635,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "canonicalAdjacentSuffixCentralSlack",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2453,
+      "line": 2651,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "canonicalAdjacentSuffixCentralSlack_eq_of_periodLcm_eq",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2460,
+      "line": 2658,
       "role": "statement",
       "statement_node": "canonical_centrality_pointwise_reductions"
     },
     {
       "declaration": "canonicalAdjacentSuffixCentral_iff_slack_nonneg",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2469,
+      "line": 2667,
       "role": "statement",
       "statement_node": "canonical_centrality_pointwise_reductions"
     },
     {
       "declaration": "CanonicalAdjacentSuffixJumpSlackSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2481,
+      "line": 2679,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "CanonicalAdjacentSuffixPostJumpSlackSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2488,
+      "line": 2686,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2495,
+      "line": 2693,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "canonicalAdjacentSuffixPostJumpSlackSupply_of_powerTwo",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2501,
+      "line": 2699,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "canonicalAdjacentSuffixJumpSlackSupply_of_postJump",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2525,
+      "line": 2723,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2559,
+      "line": 2757,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "canonicalAdjacentSuffixCentralSupply_iff_penultimateExact",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2577,
+      "line": 2775,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "canonicalAdjacentSuffixCentralSupply_of_penultimateMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2598,
+      "line": 2796,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "canonicalAdjacentSuffixPenultimateMarginSupply_of_strongBand",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2611,
+      "line": 2809,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "canonicalAdjacentSuffixCentralSupply_of_penultimateStrongBand",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2637,
+      "line": 2835,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "canonicalAdjacentSuffixCentralSupply_of_jump",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2650,
+      "line": 2848,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "diagonalAdjacentSuffixGapSupply_of_canonical",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2659,
+      "line": 2857,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "diagonalFreshLossProjectionSupply_of_adjacentSuffixGapSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2672,
+      "line": 2870,
       "role": "statement",
       "statement_node": "centrality_supply_ladder_equivalences"
     },
     {
       "declaration": "irrational_totientSeries_of_diagonalAdjacentSuffixGapSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2684,
+      "line": 2882,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2692,
+      "line": 2890,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateExactSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2699,
+      "line": 2898,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateMarginSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2707,
+      "line": 2907,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateStrongBandSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2715,
+      "line": 2916,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixJumpCentralSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2723,
+      "line": 2924,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2731,
+      "line": 2932,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2739,
+      "line": 2941,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2746,
+      "line": 2948,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "diagonalFreshLossProjectionCell_seven",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2757,
+      "line": 2959,
       "role": "statement",
       "statement_node": "t_seven_finite_full_target_miss"
     },
     {
       "declaration": "diagonalFreshLossResidueCell_seven",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2763,
+      "line": 2965,
       "role": "statement",
       "statement_node": "t_seven_finite_full_target_miss"
     },
     {
       "declaration": "foreignDiagonalDefect_misses_fullTarget_seven_via_projection",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2769,
+      "line": 2971,
       "role": "statement",
       "statement_node": "t_seven_finite_full_target_miss"
     },
     {
       "declaration": "diagonalSuffixCell_seven",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2778,
+      "line": 2980,
       "role": "statement",
       "statement_node": "t_seven_finite_full_target_miss"
     },
     {
       "declaration": "foreignDiagonalDefect_misses_fullTarget_seven_via_suffix",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2786,
+      "line": 2988,
       "role": "statement",
       "statement_node": "t_seven_finite_full_target_miss"
     },
     {
       "declaration": "baseTwoTargetResidue_central_iff_topBit",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2797,
+      "line": 2999,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "baseTwoTargetResidue_noncentral_iff_carryEdgeAlignment",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2844,
+      "line": 3046,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth_powerTwo_jump",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2881,
+      "line": 3083,
       "role": "statement",
       "statement_node": "periodLcm_strict_jump_classification"
     },
     {
       "declaration": "diagonalTargetDepthCorrection_powerTwo_of_even_predepth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2894,
+      "line": 3096,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "diagonalTargetDepthCorrection_powerTwo_of_odd_predepth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2911,
+      "line": 3113,
       "role": "statement",
       "statement_node": "power_two_even_seam_inheritance"
     },
     {
       "declaration": "powerTwoOddCorrectionWord",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2928,
+      "line": 3130,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "powerTwoOddCorrectionWord_succ",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2933,
+      "line": 3135,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_closed",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2963,
+      "line": 3165,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_closed",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2980,
+      "line": 3182,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_lowBits",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 2991,
+      "line": 3193,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalWindowIncrement_even_of_two_le_periodLcm",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3015,
+      "line": 3217,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalWindowIncrement_even_of_two_le_offset",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3030,
+      "line": 3232,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "powerTwoOddDepthCorrection_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3047,
+      "line": 3249,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_zero_one_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3067,
+      "line": 3269,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_eq_correctionWord",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3082,
+      "line": 3284,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "powerTwoOddHalfCorrectionWord",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3101,
+      "line": 3303,
       "role": "engine",
       "statement_node": null
     },
     {
       "declaration": "powerTwoOddHalfCorrectionWord_succ",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3108,
+      "line": 3310,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "powerTwoOddCorrectionWord_eq_two_mul_halfWord",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3115,
+      "line": 3317,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_eq_two_mul_halfWord",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3133,
+      "line": 3335,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_iff_halfWordBand",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3150,
+      "line": 3352,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "SignedSplitSafe",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3190,
+      "line": 3392,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "emod_central_of_abs_between",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3201,
+      "line": 3403,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "abs_add_between_of_signedSplitSafe",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3226,
+      "line": 3428,
       "role": "statement",
       "statement_node": "signed_split_recombination"
     },
     {
       "declaration": "signedSplitSafe_emod_central",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3282,
+      "line": 3484,
       "role": "statement",
       "statement_node": "signed_split_recombination"
     },
     {
       "declaration": "add_ediv_two_of_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3293,
+      "line": 3495,
       "role": "statement",
       "statement_node": "signed_split_recombination"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_half_central_of_signedSplit",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3310,
+      "line": 3512,
       "role": "statement",
       "statement_node": "signed_split_recombination"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_half_emod",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3335,
+      "line": 3537,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixRawBlock_powerTwo_oddDepth_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3356,
+      "line": 3558,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "finiteForeignChannelRawBlock_powerTwo_oddDepth_even_of_old",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3369,
+      "line": 3571,
       "role": "statement",
       "statement_node": "signed_split_recombination"
     },
     {
       "declaration": "powerTwoOddHalfWordBand_of_signedSplit",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3384,
+      "line": 3586,
       "role": "statement",
       "statement_node": "signed_split_recombination"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_of_signedSplit",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3409,
+      "line": 3611,
       "role": "statement",
       "statement_node": "signed_split_recombination"
     },
     {
       "declaration": "canonical_a2_to_a7_signedSplitSafe_fixture",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3430,
+      "line": 3632,
       "role": "statement",
       "statement_node": "finite_fixtures_and_boundary_evaluations"
     },
     {
       "declaration": "NearMultiple",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3452,
+      "line": 3654,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "nearMultiple_iff_emod_edge",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3457,
+      "line": 3659,
       "role": "statement",
       "statement_node": "edge_cylinder_rank_pullback"
     },
     {
       "declaration": "nearMultiple_correction_of_twoRank",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3496,
+      "line": 3698,
       "role": "statement",
       "statement_node": "edge_cylinder_rank_pullback"
     },
     {
       "declaration": "powerTwoOddDepthCorrection_nearMultiple_of_twoRank",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3510,
+      "line": 3712,
       "role": "statement",
       "statement_node": "edge_cylinder_rank_pullback"
     },
     {
       "declaration": "abs_powerTwoOddDepthCorrection_le",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3528,
+      "line": 3730,
       "role": "statement",
       "statement_node": "actual_correction_envelope_is_sub_edge"
     },
     {
       "declaration": "oddGuardedCanonicalAdjacentSuffixDepth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3548,
+      "line": 3750,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_of_even",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3552,
+      "line": 3754,
       "role": "substrate",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_of_odd",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3558,
+      "line": 3760,
       "role": "substrate",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_cases",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3566,
+      "line": 3768,
       "role": "substrate",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth_le_oddGuarded",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3576,
+      "line": 3778,
       "role": "substrate",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_le_succ",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3582,
+      "line": 3784,
       "role": "substrate",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "periodLcm_dvd_of_forall_pos_le",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3592,
+      "line": 3794,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "one_le_factorization_centralBinom_of_prime_pow_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3608,
+      "line": 3810,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "prime_dvd_centralBinom_of_prime_pow_window",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3626,
+      "line": 3828,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "periodLcm_two_mul_dvd_periodLcm_mul_centralBinom",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3640,
+      "line": 3842,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "periodLcm_two_mul_le_periodLcm_mul_centralBinom",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3681,
+      "line": 3883,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "periodLcm_two_mul_le_periodLcm_mul_four_pow",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3690,
+      "line": 3892,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "periodLcm_sixteen_lt_two_pow_twenty",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3702,
+      "line": 3904,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "periodLcm_pow_two_lt_two_pow_guardTwelve",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3709,
+      "line": 3911,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth_powerTwo_succ_lt_two_mul",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3740,
+      "line": 3942,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth_powerTwo_lt_two_mul",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3755,
+      "line": 3973,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_powerTwo_lt_two_mul",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3764,
+      "line": 3982,
       "role": "statement",
       "statement_node": "periodLcm_doubling_bound_via_central_binomial"
     },
     {
       "declaration": "prime_of_squarefree_repeated_low_support_powerTwo_oddGuarded",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3774,
+      "line": 3992,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "prime_of_squarefree_repeated_top_support_powerTwo_oddGuarded",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3790,
+      "line": 4008,
       "role": "statement",
       "statement_node": "foreign_pulse_sparsity_and_prime_confinement"
     },
     {
       "declaration": "odd_oddGuardedCanonicalAdjacentSuffixDepth",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3805,
+      "line": 4023,
       "role": "substrate",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "exists_oddGuardedCanonicalAdjacentSuffixDepth_index",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3816,
+      "line": 4034,
       "role": "substrate",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth_ten_le",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3821,
+      "line": 4039,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "canonicalAdjacentSuffixDepth_succ_width",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3827,
+      "line": 4045,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_width",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3858,
+      "line": 4108,
       "role": "statement",
       "statement_node": "canonical_depth_width_is_automatic"
     },
     {
       "declaration": "diagonalFreshLossResidueCert_or_of_powerTwo_oddGuard_halfWordBand",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3872,
+      "line": 4137,
       "role": "statement",
       "statement_node": "adjacent_gap_forces_certificate"
     },
     {
       "declaration": "PowerTwoOddGuardHalfWordBandSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3904,
+      "line": 4201,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "diagonalAdjacentSuffixGapSupply_of_powerTwoOddGuardHalfWordBand",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3913,
+      "line": 4210,
       "role": "statement",
       "statement_node": "power_two_supply_ladder_equivalences"
     },
     {
       "declaration": "irrational_totientSeries_of_powerTwoOddGuardHalfWordBandSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3945,
+      "line": 4242,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "int_emod_two_mul_ge_iff_odd_ediv",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3953,
+      "line": 4250,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_topBit_iff",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 3991,
+      "line": 4288,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "powerTwoOddHalfCorrectionWord_normalized_step",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4007,
+      "line": 4304,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "powerTwoOddHalfCorrectionWord_normalized_eq_sum",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4019,
+      "line": 4316,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "powerTwoOddHalfCorrectionWord_eq_raw_sub_seed",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4033,
+      "line": 4330,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "baseFour_positiveWrap_ediv_succ",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4045,
+      "line": 4342,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "baseFour_edge_iff_centered_tube",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4066,
+      "line": 4363,
       "role": "statement",
       "statement_node": "edge_cylinder_rank_pullback"
     },
     {
       "declaration": "baseFour_zeroCorrection_centered_tube_forever",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4116,
+      "line": 4413,
       "role": "statement",
       "statement_node": "envelope_only_no_go"
     },
     {
       "declaration": "nearMultiple_witness_unique",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4123,
+      "line": 4420,
       "role": "statement",
       "statement_node": "edge_cylinder_rank_pullback"
     },
     {
       "declaration": "twoFutureEdgeRanks_iff_oldStateCrossing",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4141,
+      "line": 4438,
       "role": "statement",
       "statement_node": "edge_cylinder_rank_pullback"
     },
     {
       "declaration": "threeFutureEdgeRanks_iff_oldStateCrossing",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4217,
+      "line": 4514,
       "role": "statement",
       "statement_node": "edge_cylinder_rank_pullback"
     },
     {
       "declaration": "powerTwo_a7_q91_q93_oldCell_integer_fixture",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4295,
+      "line": 4592,
       "role": "statement",
       "statement_node": "finite_fixtures_and_boundary_evaluations"
     },
     {
       "declaration": "actualCenteredLift",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4317,
+      "line": 4614,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "actualOddHalfCenteredLift",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4322,
+      "line": 4619,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "actualOddHalfCorrection",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4328,
+      "line": 4625,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "actualCenteredLift_modEq",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4332,
+      "line": 4652,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "actualOddHalfCenteredLift_modEq_halfCorrectionWord",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4339,
+      "line": 4659,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "actualOddHalf_affine_modEq_halfCorrectionWord_succ",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4350,
+      "line": 4670,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "abs_actualOddHalfCorrection_le",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4365,
+      "line": 4685,
       "role": "statement",
       "statement_node": "actual_correction_envelope_is_sub_edge"
     },
     {
       "declaration": "abs_actualOddHalfCorrection_le_canonicalEnvelope",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4387,
+      "line": 4707,
       "role": "statement",
       "statement_node": "actual_correction_envelope_is_sub_edge"
     },
     {
       "declaration": "canonicalActualOddHalfCorrectionEnvelope_lt_edge",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4405,
+      "line": 4725,
       "role": "statement",
       "statement_node": "actual_correction_envelope_is_sub_edge"
     },
     {
       "declaration": "abs_actualOddHalfCorrection_lt_canonicalHalfEdge",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4489,
+      "line": 4809,
       "role": "statement",
       "statement_node": "actual_correction_envelope_is_sub_edge"
     },
     {
       "declaration": "baseFour_actual_central_iff_affineExclusion",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4503,
+      "line": 4823,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "baseFour_actual_central_of_sharpSignFreeMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4544,
+      "line": 4864,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "abs_actualCenteredLift_le_half",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4567,
+      "line": 4887,
       "role": "statement",
       "statement_node": "odd_depth_half_word_normal_form"
     },
     {
       "declaration": "fourPow_pred_eq_eight_mul_edge",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4582,
+      "line": 4902,
       "role": "statement",
       "statement_node": "actual_correction_envelope_is_sub_edge"
     },
     {
       "declaration": "powerTwoOddGuardHalfWordBand_of_actualPenultimateMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4617,
+      "line": 4937,
       "role": "statement",
       "statement_node": "power_two_halfword_pointwise_equivalences"
     },
     {
       "declaration": "PowerTwoActualPenultimateEnvelopeMarginSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4671,
+      "line": 4991,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "powerTwoOddGuardHalfWordBandSupply_of_actualPenultimateEnvelopeMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4680,
+      "line": 5000,
       "role": "statement",
       "statement_node": "power_two_supply_ladder_equivalences"
     },
     {
       "declaration": "irrational_totientSeries_of_actualPenultimateEnvelopeMarginSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4700,
+      "line": 5020,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "ActualPenultimateSignedMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4712,
+      "line": 5032,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "actualAffineExclusion_iff_signedMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4718,
+      "line": 5038,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "baseFour_actual_central_iff_signedMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4770,
+      "line": 5090,
       "role": "statement",
       "statement_node": "dyadic_centrality_calculus"
     },
     {
       "declaration": "powerTwoOddGuardHalfWordBand_iff_actualPenultimateSignedMargin",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4782,
+      "line": 5102,
       "role": "statement",
       "statement_node": "power_two_halfword_pointwise_equivalences"
     },
     {
       "declaration": "PowerTwoActualPenultimateSignedMarginSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4842,
+      "line": 5162,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "powerTwoActualPenultimateSignedMarginSupply_iff_halfWordBandSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4852,
+      "line": 5172,
       "role": "statement",
       "statement_node": "power_two_supply_ladder_equivalences"
     },
     {
       "declaration": "irrational_totientSeries_of_actualPenultimateSignedMarginSupply",
       "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-      "line": 4873,
+      "line": 5193,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
@@ -4579,224 +4579,224 @@
     {
       "declaration": "residueOffset",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 28,
+      "line": 29,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "residueOffset_eq_sub_of_lt",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 31,
+      "line": 32,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "foreignResidueKernel",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 36,
+      "line": 37,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "positiveForeignResidueKernel",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 46,
+      "line": 47,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "positiveResidueIncrement",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 50,
+      "line": 51,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "stableResidueFactor",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 54,
+      "line": 55,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "foreignResidueKernel_of_lt",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 59,
+      "line": 60,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "residueIncrement",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 75,
+      "line": 76,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "positiveResidueIncrement_coe",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 80,
+      "line": 81,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "residueIncrement_of_dvd",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 87,
+      "line": 88,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "residueIncrement_of_twice_lt",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 107,
+      "line": 108,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "stableResidueFactor_nonneg",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 123,
+      "line": 124,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "stableResidueFactor_le_geometric",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 130,
+      "line": 131,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "abs_residueIncrement_le_geometric",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 161,
+      "line": 162,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "foreignTailWindow",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 188,
+      "line": 189,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "abs_foreignTailWindow_le_geometric_sum",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 194,
+      "line": 195,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "geometric_window_le_closed_complement",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 221,
+      "line": 222,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "foreignComplementBound",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 268,
+      "line": 269,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "abs_foreignTailWindow_le_foreignComplementBound",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 275,
+      "line": 276,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "projectedForeignDefect",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 292,
+      "line": 293,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "projectedDivisorChannels",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 297,
+      "line": 298,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "finiteResidueDiagonal",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 302,
+      "line": 303,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "finiteResidueDiagonal_eq_projectedForeign_add_divisor",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 307,
+      "line": 308,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "projectedDivisorChannels_eq_truncated_mobius",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 319,
+      "line": 320,
       "role": "statement",
       "statement_node": "foreign_residue_kernel_geometric_budget"
     },
     {
       "declaration": "ControlledForeignProjection",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 336,
+      "line": 402,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ProjectedFullTargetSeparation",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 341,
+      "line": 407,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "scaleFullTarget_miss_of_projected_separation",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 348,
+      "line": 414,
       "role": "statement",
       "statement_node": "controlled_projection_miss_is_conditional"
     },
     {
       "declaration": "scaleFullTarget_miss_of_abs_sub_le_of_forall_int",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 369,
+      "line": 435,
       "role": "statement",
       "statement_node": "controlled_projection_miss_is_conditional"
     },
     {
       "declaration": "firstLambertTailCorrectionRat",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 382,
+      "line": 448,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "renormalizedResidueProjection",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 388,
+      "line": 454,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "RenormalizedResidueAgreement",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 396,
+      "line": 462,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "scaleFullTarget_miss_of_renormalized_residue_separation",
       "module": "Erdos249257/ActualForeignResidueProjection.lean",
-      "line": 402,
+      "line": 468,
       "role": "statement",
       "statement_node": "renormalized_residue_agreement_is_conditional"
     },
@@ -4845,70 +4845,70 @@
     {
       "declaration": "lambertProjectedDiagonal",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 33,
+      "line": 55,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "mobiusSquareTail",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 37,
+      "line": 59,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "lambertSquareComplementBound",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 44,
+      "line": 66,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "totientSeries_eq_pnat_half_pow",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 50,
+      "line": 72,
       "role": "statement",
       "statement_node": "squared_mersenne_enclosure_of_actual_diagonal"
     },
     {
       "declaration": "mobius_square_series_eq_partial_add_tail",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 72,
+      "line": 94,
       "role": "statement",
       "statement_node": "squared_mersenne_enclosure_of_actual_diagonal"
     },
     {
       "declaration": "scaleDiagonalTailDifference_sub_lambertProjectedDiagonal",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 116,
+      "line": 138,
       "role": "statement",
       "statement_node": "squared_mersenne_enclosure_of_actual_diagonal"
     },
     {
       "declaration": "mersenne_shift_lower_bound",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 129,
+      "line": 151,
       "role": "statement",
       "statement_node": "squared_mersenne_enclosure_of_actual_diagonal"
     },
     {
       "declaration": "abs_mobiusSquareTail_le",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 145,
+      "line": 167,
       "role": "statement",
       "statement_node": "squared_mersenne_enclosure_of_actual_diagonal"
     },
     {
       "declaration": "abs_scaleDiagonalTailDifference_sub_lambertProjectedDiagonal_le",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 219,
+      "line": 408,
       "role": "statement",
       "statement_node": "squared_mersenne_enclosure_of_actual_diagonal"
     },
     {
       "declaration": "scaleFullTarget_miss_of_lambert_projected_separation",
       "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "line": 237,
+      "line": 426,
       "role": "statement",
       "statement_node": "enclosure_to_full_target_miss_consumer"
     },
@@ -5517,7 +5517,7 @@
     {
       "declaration": "irrational_totientSeries_of_threeScaleAffineEscapeSupply",
       "module": "Erdos249257/DiagonalFlexibleOddWindowAffine.lean",
-      "line": 365,
+      "line": 366,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
@@ -5566,49 +5566,49 @@
     {
       "declaration": "irrational_totientSeries_of_powerTwoOddGuardThreeRankBandSupply",
       "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "line": 136,
+      "line": 137,
       "role": "statement",
       "statement_node": "supply_conditional_irrationality"
     },
     {
       "declaration": "abs_actualOddHalfCorrection_next_two_lt_two_canonicalEdge",
       "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "line": 145,
+      "line": 146,
       "role": "statement",
       "statement_node": "actual_correction_envelope_is_sub_edge"
     },
     {
       "declaration": "PowerTwoOddHalfWordEdgeAt",
       "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "line": 180,
+      "line": 181,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "not_three_consecutive_edge_iff_threeRankBand",
       "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "line": 186,
+      "line": 187,
       "role": "statement",
       "statement_node": "power_two_halfword_pointwise_equivalences"
     },
     {
       "declaration": "threeEdgeWindow_feasible_at_zero_of_subedge",
       "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "line": 202,
+      "line": 203,
       "role": "statement",
       "statement_node": "envelope_only_no_go"
     },
     {
       "declaration": "threeEdgeWindow_forced_of_halfEdgeCore",
       "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "line": 225,
+      "line": 226,
       "role": "statement",
       "statement_node": "three_rank_window_core_no_go"
     },
     {
       "declaration": "threeEdgeWindow_forced_of_threeEighthCore",
       "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "line": 258,
+      "line": 259,
       "role": "statement",
       "statement_node": "three_rank_window_core_no_go"
     }

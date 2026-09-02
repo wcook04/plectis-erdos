@@ -283,12 +283,12 @@ the next edition and the refutation credited.
 
 The layer a mathematician should judge is small: 129 curated claim records in 30 contribution families, reaching Lean source through 400 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-The rest is engineering inventory. About 93% of the 153,566 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 93% of the 153,656 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,033 |
-| Formal results and supporting lemmas | 151,303 |
+| Lean modules (the two library roots) | 1,044 |
+| Formal results and supporting lemmas | 151,386 |
 | Curated claim records | 129 |
 | Contribution families | 30 |
 

@@ -53,7 +53,7 @@
         {
           "declaration": "finitePrimeSupportEscape_of_orderConsumer",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 116
+          "line": 165
         }
       ]
     },
@@ -82,7 +82,7 @@
         {
           "declaration": "unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 144
+          "line": 215
         }
       ]
     },
@@ -112,7 +112,7 @@
         {
           "declaration": "unboundedPrimeDivisorSupply_of_orderConsumer",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 172
+          "line": 242
         }
       ]
     }
@@ -121,7 +121,7 @@
     {
       "declaration": "finitePrimeSupportEscape_of_orderConsumer",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 116,
+      "line": 165,
       "role": "statement",
       "statement_node": "bounded_degree_order_witnesses_force_eventual_escape_from_every_finite_prime_set",
       "routing_origin": "paper_selected_direct_evidence",
@@ -130,7 +130,7 @@
     {
       "declaration": "unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 144,
+      "line": 215,
       "role": "statement",
       "statement_node": "nontrivial_layers_plus_finite_support_escape_force_remote_large_prime_divisors",
       "routing_origin": "source_exact_direct_evidence",
@@ -139,7 +139,7 @@
     {
       "declaration": "unboundedPrimeDivisorSupply_of_orderConsumer",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 172,
+      "line": 242,
       "role": "statement",
       "statement_node": "order_realisability_and_nontrivial_layer_supply_form_the_complete_abstract_prime_ray_producer",
       "routing_origin": "paper_selected_direct_evidence",

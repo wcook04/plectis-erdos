@@ -103,7 +103,7 @@
         {
           "declaration": "eventually_const_mul_pow_lt_const_mul_pow",
           "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-          "line": 1978
+          "line": 2066
         }
       ]
     }
@@ -140,7 +140,7 @@
     {
       "declaration": "eventually_const_mul_pow_lt_const_mul_pow",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "line": 1978,
+      "line": 2066,
       "role": "engine",
       "statement_node": "a_larger_positive_exponential_base_eventually_beats_fixed_prefactors"
     }

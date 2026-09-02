@@ -118,32 +118,32 @@
         {
           "declaration": "summable_erdos_term",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5414
+          "line": 5449
         },
         {
           "declaration": "summable_erdos_term_shift",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5450
+          "line": 5485
         },
         {
           "declaration": "erdos_term_pos",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5456
+          "line": 5491
         },
         {
           "declaration": "erdos_tail_pos",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5469
+          "line": 5504
         },
         {
           "declaration": "erdos_tail_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5479
+          "line": 5514
         },
         {
           "declaration": "finiteErdosSum_image_range_cast",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5540
+          "line": 5575
         }
       ]
     },
@@ -166,12 +166,12 @@
         {
           "declaration": "lcm_image_factorial_succ",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5671
+          "line": 5999
         },
         {
           "declaration": "lcm_image_two_pow",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5688
+          "line": 6016
         }
       ]
     },
@@ -195,22 +195,22 @@
         {
           "declaration": "summable_divisor_count_term",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5833
+          "line": 6161
         },
         {
           "declaration": "summable_divisor_count_shift_tail",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6009
+          "line": 6337
         },
         {
           "declaration": "bpow_mul_divisor_count_series_eq_int_add_tail",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6029
+          "line": 6357
         },
         {
           "declaration": "divisor_count_far_tail_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6106
+          "line": 6434
         }
       ]
     },
@@ -233,12 +233,12 @@
         {
           "declaration": "summable_const_add_mul_geometric",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6059
+          "line": 6387
         },
         {
           "declaration": "tsum_const_add_mul_geometric_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6075
+          "line": 6403
         }
       ]
     },
@@ -261,7 +261,7 @@
         {
           "declaration": "weighted_middle_bound_of_pointwise",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6408
+          "line": 6736
         }
       ]
     },
@@ -285,22 +285,22 @@
         {
           "declaration": "coprime_middle_of_first_block_support",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6955
+          "line": 7283
         },
         {
           "declaration": "card_filter_dvd_progression_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 6977
+          "line": 7305
         },
         {
           "declaration": "card_divisors_le_two_mul_card_small_divisors",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7024
+          "line": 7352
         },
         {
           "declaration": "sum_card_divisors_progression_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7079
+          "line": 7407
         }
       ]
     },
@@ -324,12 +324,12 @@
         {
           "declaration": "sum_pow_weight_middle_window_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7136
+          "line": 7464
         },
         {
           "declaration": "sum_weighted_middle_window_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7164
+          "line": 7492
         }
       ]
     },
@@ -353,22 +353,22 @@
         {
           "declaration": "exists_le_div_of_sum_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7213
+          "line": 7541
         },
         {
           "declaration": "param_linear_le_two_pow",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7283
+          "line": 7611
         },
         {
           "declaration": "harmonic_div_sum_core",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7301
+          "line": 7629
         },
         {
           "declaration": "harmonic_div_sum_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 7357
+          "line": 7685
         }
       ]
     },
@@ -392,22 +392,22 @@
         {
           "declaration": "summable_coeff_term",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8030
+          "line": 8358
         },
         {
           "declaration": "summable_coeff_shift_tail",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8057
+          "line": 8385
         },
         {
           "declaration": "bpow_mul_coeff_series_eq_int_add_tail",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8077
+          "line": 8405
         },
         {
           "declaration": "coeff_far_tail_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8109
+          "line": 8437
         }
       ]
     },
@@ -431,17 +431,17 @@
         {
           "declaration": "supportCoeff_le_self",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8540
+          "line": 8868
         },
         {
           "declaration": "supportCoeff_cast_eq_sum_indicator",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8553
+          "line": 8881
         },
         {
           "declaration": "summable_erdosSupport_indicator",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8574
+          "line": 8902
         }
       ]
     },
@@ -465,17 +465,17 @@
         {
           "declaration": "indicator_support_split_at_cut",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9068
+          "line": 9396
         },
         {
           "declaration": "prefix_sum_eq_rat_cast",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9118
+          "line": 9446
         },
         {
           "declaration": "supportCoeff_eq_card_filter",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9215
+          "line": 9543
         }
       ]
     },
@@ -500,37 +500,37 @@
         {
           "declaration": "sum_div_add_one_cast_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9285
+          "line": 9613
         },
         {
           "declaration": "exists_linear_lt_pow",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9418
+          "line": 9746
         },
         {
           "declaration": "supportCoeff_pos_of_mem_dvd",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9440
+          "line": 9768
         },
         {
           "declaration": "sum_pow_weight_window_hits_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9450
+          "line": 9778
         },
         {
           "declaration": "coprime_prod_prod_of_pairwise_disjoint",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9470
+          "line": 9798
         },
         {
           "declaration": "coprime_prod_of_pairwise_notMem",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9484
+          "line": 9812
         },
         {
           "declaration": "exists_disjoint_support_blocks",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 9498
+          "line": 9826
         }
       ]
     },
@@ -554,32 +554,32 @@
         {
           "declaration": "periodic_pred_add_mul",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10471
+          "line": 10799
         },
         {
           "declaration": "periodic_pred_iff_of_modEq",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10485
+          "line": 10813
         },
         {
           "declaration": "card_filter_range_mul_of_periodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10500
+          "line": 10828
         },
         {
           "declaration": "card_filter_divisors_prime_pow_mul_eq_sum",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10536
+          "line": 10864
         },
         {
           "declaration": "bpow_dvd_card_filter_divisors_of_periodic_block",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10654
+          "line": 10982
         },
         {
           "declaration": "certificate_param_arithmetic_periodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10932
+          "line": 11260
         }
       ]
     },
@@ -604,37 +604,37 @@
         {
           "declaration": "weightedCoeff_le_mul_card_divisors",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11426
+          "line": 11754
         },
         {
           "declaration": "weightedCoeff_le_mul_self",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11438
+          "line": 11766
         },
         {
           "declaration": "weight_le_weightedCoeff",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11446
+          "line": 11774
         },
         {
           "declaration": "eventually_periodic_add_mul",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11465
+          "line": 11793
         },
         {
           "declaration": "eventually_periodic_fold",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11479
+          "line": 11807
         },
         {
           "declaration": "eventually_periodic_weight_bound",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11502
+          "line": 11830
         },
         {
           "declaration": "weightedCoeff_eq_sum_card_filter",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11517
+          "line": 11845
         }
       ]
     },
@@ -657,17 +657,17 @@
         {
           "declaration": "card_filter_range_mul_succ_of_periodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11590
+          "line": 11918
         },
         {
           "declaration": "card_filter_divisors_modEq_of_periodic_extra_orbit",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11615
+          "line": 11943
         },
         {
           "declaration": "weightedCoeff_modEq_of_periodic_extra_orbit",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11685
+          "line": 12013
         }
       ]
     },
@@ -693,27 +693,27 @@
         {
           "declaration": "summable_coeff_term_linear",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11722
+          "line": 12050
         },
         {
           "declaration": "summable_coeff_shift_tail_linear",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11736
+          "line": 12064
         },
         {
           "declaration": "bpow_mul_coeff_series_eq_int_add_tail_linear",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11751
+          "line": 12079
         },
         {
           "declaration": "coeff_far_tail_le_linear",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11783
+          "line": 12111
         },
         {
           "declaration": "near_int_witness_of_weighted_coeff_block_certificate_linear",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 11829
+          "line": 12157
         }
       ]
     },
@@ -736,7 +736,7 @@
         {
           "declaration": "summable_weightedErdos_term",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12012
+          "line": 12340
         }
       ]
     },
@@ -760,22 +760,22 @@
         {
           "declaration": "intWeightedCoeff_eq_weightedCoeff_sub",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12661
+          "line": 12989
         },
         {
           "declaration": "natAbs_sum_le_sum_natAbs",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12672
+          "line": 13000
         },
         {
           "declaration": "natAbs_intWeightedCoeff_le_mul_card_divisors",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12684
+          "line": 13012
         },
         {
           "declaration": "natAbs_intWeightedCoeff_le_mul_self",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12697
+          "line": 13025
         }
       ]
     },
@@ -801,32 +801,32 @@
         {
           "declaration": "int_modEq_of_nat_modEq",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12731
+          "line": 13059
         },
         {
           "declaration": "intWeightedCoeff_modEq_of_periodic_extra_orbit",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12745
+          "line": 13073
         },
         {
           "declaration": "intWeightedCoeff_eq_weight_of_zero_below",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12788
+          "line": 13116
         },
         {
           "declaration": "exists_pos_intWeightedCoeff_not_dvd",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12804
+          "line": 13132
         },
         {
           "declaration": "exists_pos_intWeightedCoeff_ne_zero",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12837
+          "line": 13165
         },
         {
           "declaration": "exists_intWeightedCoeff_extra_orbit_witness_not_dvd",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12852
+          "line": 13180
         }
       ]
     },
@@ -850,37 +850,37 @@
         {
           "declaration": "abs_intCast_eq_natAbs_cast",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12888
+          "line": 13216
         },
         {
           "declaration": "summable_int_coeff_term",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12894
+          "line": 13222
         },
         {
           "declaration": "summable_int_coeff_shift_tail",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12906
+          "line": 13234
         },
         {
           "declaration": "bpow_mul_int_coeff_series_eq_int_add_tail",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12919
+          "line": 13247
         },
         {
           "declaration": "int_coeff_far_tail_abs_le",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12950
+          "line": 13278
         },
         {
           "declaration": "int_cast_div_real",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13001
+          "line": 13329
         },
         {
           "declaration": "summable_intWeightedErdos_term",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13280
+          "line": 13608
         }
       ]
     },
@@ -907,17 +907,17 @@
         {
           "declaration": "inv_den_le_abs_bpow_mul_sub_intCast",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13412
+          "line": 13740
         },
         {
           "declaration": "near_int_of_int_coeff_full_block_certificate",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13463
+          "line": 13791
         },
         {
           "declaration": "bpow_mul_eq_intCast_of_abs_sub_lt_inv_bpow",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13963
+          "line": 14291
         }
       ]
     },
@@ -940,12 +940,12 @@
         {
           "declaration": "intWeightedCoeff_neg",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 14299
+          "line": 14627
         },
         {
           "declaration": "intWeightedErdosSeries_neg",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 14305
+          "line": 14633
         }
       ]
     },
@@ -968,22 +968,22 @@
         {
           "declaration": "totient_carry_sum_eq_range",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 14825
+          "line": 15153
         },
         {
           "declaration": "totient_carry_sum_succ_window",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 14843
+          "line": 15171
         },
         {
           "declaration": "totient_carry_sum_bottom_split",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 14863
+          "line": 15191
         },
         {
           "declaration": "totient_carry_sum_succ_shift",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 14886
+          "line": 15214
         }
       ]
     },
@@ -1007,22 +1007,22 @@
         {
           "declaration": "tsum_totient_div_pow_two_ne_int_div_of_den_le_4838",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 15336
+          "line": 15664
         },
         {
           "declaration": "tsum_totient_div_pow_two_ne_int_div_of_den_le_248672326362367909",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 17996
+          "line": 18324
         },
         {
           "declaration": "tsum_totient_div_pow_two_ne_ratCast_of_den_le_4194304",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18029
+          "line": 18357
         },
         {
           "declaration": "tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18043
+          "line": 18371
         }
       ]
     },
@@ -1046,7 +1046,7 @@
         {
           "declaration": "gap_band_sandwich",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 15398
+          "line": 15726
         }
       ]
     },
@@ -1069,7 +1069,7 @@
         {
           "declaration": "stern_brocot_zero_run_mass_eq_quarter",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18411
+          "line": 18739
         }
       ]
     }

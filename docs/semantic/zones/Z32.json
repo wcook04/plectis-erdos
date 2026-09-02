@@ -316,7 +316,7 @@
         {
           "declaration": "integralCarry_window_potential",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-          "line": 497
+          "line": 532
         }
       ]
     },
@@ -339,7 +339,7 @@
         {
           "declaration": "smooth3Val_dvd_threePrimeHeight_of_le",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-          "line": 513
+          "line": 548
         }
       ]
     },
@@ -365,17 +365,17 @@
         {
           "declaration": "integralCarry_cancel_commonFactor",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-          "line": 546
+          "line": 581
         },
         {
           "declaration": "reducedCarry_pos_le_of_commonFactor",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-          "line": 566
+          "line": 601
         },
         {
           "declaration": "reducedIntegralCarry_window",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-          "line": 577
+          "line": 612
         }
       ]
     },
@@ -398,17 +398,17 @@
         {
           "declaration": "leastPositiveResidue_pos_le",
           "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-          "line": 24
+          "line": 31
         },
         {
           "declaration": "leastPositiveResidue_modEq",
           "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-          "line": 45
+          "line": 52
         },
         {
           "declaration": "no_bounded_positive_int_state_of_leastPositiveResidue",
           "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-          "line": 104
+          "line": 110
         }
       ]
     },
@@ -435,7 +435,7 @@
         {
           "declaration": "no_positive_reducedCarry_of_cofinalLocalWindowEscape",
           "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-          "line": 610
+          "line": 645
         }
       ]
     },
@@ -747,77 +747,77 @@
     {
       "declaration": "integralCarry_window_potential",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 497,
+      "line": 532,
       "role": "statement",
       "statement_node": "integral_carry_has_exact_window_identity"
     },
     {
       "declaration": "smooth3Val_dvd_threePrimeHeight_of_le",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 513,
+      "line": 548,
       "role": "statement",
       "statement_node": "fixed_smooth_factor_is_absorbed_by_running_height"
     },
     {
       "declaration": "integralCarry_cancel_commonFactor",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 546,
+      "line": 581,
       "role": "statement",
       "statement_node": "common_smooth_carry_factor_cancels_conditionally"
     },
     {
       "declaration": "reducedCarry_pos_le_of_commonFactor",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 566,
+      "line": 601,
       "role": "statement",
       "statement_node": "common_smooth_carry_factor_cancels_conditionally"
     },
     {
       "declaration": "reducedIntegralCarry_window",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 577,
+      "line": 612,
       "role": "statement",
       "statement_node": "common_smooth_carry_factor_cancels_conditionally"
     },
     {
       "declaration": "leastPositiveResidue",
       "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-      "line": 19,
+      "line": 26,
       "role": "concept",
       "statement_node": "least_positive_residue_excludes_bounded_positive_state"
     },
     {
       "declaration": "leastPositiveResidue_pos_le",
       "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-      "line": 24,
+      "line": 31,
       "role": "substrate",
       "statement_node": "least_positive_residue_excludes_bounded_positive_state"
     },
     {
       "declaration": "leastPositiveResidue_modEq",
       "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-      "line": 45,
+      "line": 52,
       "role": "substrate",
       "statement_node": "least_positive_residue_excludes_bounded_positive_state"
     },
     {
       "declaration": "no_bounded_positive_int_state_of_leastPositiveResidue",
       "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-      "line": 104,
+      "line": 110,
       "role": "statement",
       "statement_node": "least_positive_residue_excludes_bounded_positive_state"
     },
     {
       "declaration": "CofinalLocalWindowEscape",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 594,
+      "line": 629,
       "role": "concept",
       "statement_node": "cofinal_escape_rules_out_matching_positive_reduced_carry"
     },
     {
       "declaration": "no_positive_reducedCarry_of_cofinalLocalWindowEscape",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 610,
+      "line": 645,
       "role": "statement",
       "statement_node": "cofinal_escape_rules_out_matching_positive_reduced_carry"
     }

@@ -127,17 +127,17 @@
     {
      "declaration": "e_G088_G089",
      "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-     "line": 130
+     "line": 132
     },
     {
      "declaration": "e_G089_G090",
      "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-     "line": 149
+     "line": 151
     },
     {
      "declaration": "e_G090_G100",
      "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-     "line": 294
+     "line": 295
     }
    ],
    "concepts": [
@@ -1928,357 +1928,357 @@
   {
    "declaration": "b3_tail_diff_notMem_int_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 53,
+   "line": 54,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_exists_certifiedKill_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 85,
+   "line": 86,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G088",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 92,
+   "line": 93,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G089",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 97,
+   "line": 98,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G090",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 102,
+   "line": 103,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G091",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 107,
+   "line": 108,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G097_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 114,
+   "line": 115,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G100_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 120,
+   "line": 121,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G103_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 128,
+   "line": 129,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_summable_lin",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 144,
+   "line": 145,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_summable_caff",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 148,
+   "line": 149,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_exists_depth_lt",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 155,
+   "line": 156,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_exists_dist_int_pos",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 165,
+   "line": 166,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_carryOrbit_eq",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 197,
+   "line": 198,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_orbit_escape",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 214,
+   "line": 215,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_exists_survivorKill_of_tail_diff_notMem_int",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 253,
+   "line": 254,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_exists_survivorKill_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 271,
+   "line": 272,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G094_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 277,
+   "line": 278,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G088_G097",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 285,
+   "line": 286,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G088_G100",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 286,
+   "line": 287,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G088_G103",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 287,
+   "line": 288,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G089_G097",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 289,
+   "line": 290,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G089_G100",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 290,
+   "line": 291,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G089_G103",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 291,
+   "line": 292,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G090_G097",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 293,
+   "line": 294,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G090_G100",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 294,
+   "line": 295,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G090_G103",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 295,
+   "line": 296,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G091_G097",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 297,
+   "line": 298,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G091_G100",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 298,
+   "line": 299,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G091_G103",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 299,
+   "line": 300,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_block_eq",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 312,
+   "line": 313,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_gap_cert_of_dist",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 344,
+   "line": 345,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G091_of_irrational",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 404,
+   "line": 405,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G088_G094",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 444,
+   "line": 445,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G089_G094",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 445,
+   "line": 446,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G090_G094",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 446,
+   "line": 447,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G091_G094",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 447,
+   "line": 448,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G097",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 451,
+   "line": 452,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G100",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 456,
+   "line": 457,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G103",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 461,
+   "line": 462,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_irrational_of_G094",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 466,
+   "line": 467,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G097_G091",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 473,
+   "line": 474,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G100_G091",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 474,
+   "line": 475,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G103_G091",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 475,
+   "line": 476,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G094_G091",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 476,
+   "line": 477,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G091_iff_G097",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 484,
+   "line": 485,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G091_iff_G100",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 485,
+   "line": 486,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G091_iff_G103",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 486,
+   "line": 487,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G091_iff_G094",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 487,
+   "line": 488,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G091_iff_erdos249",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 489,
+   "line": 490,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "b3_G094_iff_erdos249",
    "module": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
-   "line": 493,
+   "line": 494,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
@@ -2593,21 +2593,21 @@
   {
    "declaration": "e_G094_G102",
    "module": "ErdosProblems/DemandLedger/edges/ClusterB.lean",
-   "line": 51,
+   "line": 52,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "e_G102_G081",
    "module": "ErdosProblems/DemandLedger/edges/ClusterB.lean",
-   "line": 64,
+   "line": 65,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "e_G094_G081",
    "module": "ErdosProblems/DemandLedger/edges/ClusterB.lean",
-   "line": 75,
+   "line": 76,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
@@ -2635,35 +2635,35 @@
   {
    "declaration": "clusterD_windowDiscrepancy_eq",
    "module": "ErdosProblems/DemandLedger/edges/ClusterD.lean",
-   "line": 53,
+   "line": 60,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "clusterD_emod_neg",
    "module": "ErdosProblems/DemandLedger/edges/ClusterD.lean",
-   "line": 62,
+   "line": 69,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "clusterD_band_split",
    "module": "ErdosProblems/DemandLedger/edges/ClusterD.lean",
-   "line": 77,
+   "line": 84,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "clusterD_cone_pair",
    "module": "ErdosProblems/DemandLedger/edges/ClusterD.lean",
-   "line": 115,
+   "line": 122,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "e_G099_G095",
    "module": "ErdosProblems/DemandLedger/edges/ClusterD.lean",
-   "line": 145,
+   "line": 152,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
@@ -2929,469 +2929,469 @@
   {
    "declaration": "totient_carry_sum_widen",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 56,
+   "line": 58,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "totient_carry_sum_widen_residue",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 87,
+   "line": 89,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "gap_band_of_low_carry_arith",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 109,
+   "line": 111,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G088_G089",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 130,
+   "line": 132,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G089_G090",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 149,
+   "line": 151,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G090_G091",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 172,
+   "line": 174,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G088_G090",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 181,
+   "line": 183,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G089_G091",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 184,
+   "line": 186,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G088_G091",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 188,
+   "line": 190,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "full_block_of_low_carry_arith",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 201,
+   "line": 203,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G092_G090_clusterF",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 215,
+   "line": 217,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G090_G092_clusterF",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 227,
+   "line": 229,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "e_G090_iff_G092_clusterF",
    "module": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
-   "line": 236,
+   "line": 238,
    "role": "statement",
    "statement_node": "demand_lattice_249_certificate_chain"
   },
   {
    "declaration": "periodLcm_plateau_of_coprime_factors",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 76,
+   "line": 77,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "exists_diagonalKill_of_periodLcm_eq",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 89,
+   "line": 90,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl0",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 101,
+   "line": 102,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl6",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 104,
+   "line": 105,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl10",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 109,
+   "line": 110,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl12",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 114,
+   "line": 115,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl14",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 119,
+   "line": 120,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl15",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 124,
+   "line": 125,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl18",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 129,
+   "line": 130,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl20",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 134,
+   "line": 135,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl21",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 139,
+   "line": 140,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl22",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 144,
+   "line": 145,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl24",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 149,
+   "line": 150,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl26",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 154,
+   "line": 155,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl28",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 159,
+   "line": 160,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl30",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 164,
+   "line": 165,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl33",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 169,
+   "line": 170,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl34",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 174,
+   "line": 175,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl35",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 179,
+   "line": 180,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl36",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 184,
+   "line": 185,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl38",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 189,
+   "line": 190,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl39",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 194,
+   "line": 195,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl40",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 199,
+   "line": 200,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl42",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 204,
+   "line": 205,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl44",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 209,
+   "line": 210,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl45",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 214,
+   "line": 215,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl46",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 219,
+   "line": 220,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl48",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 224,
+   "line": 225,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl50",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 229,
+   "line": 230,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl51",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 234,
+   "line": 235,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl52",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 239,
+   "line": 240,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl54",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 244,
+   "line": 245,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl55",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 249,
+   "line": 250,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl56",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 254,
+   "line": 255,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl57",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 259,
+   "line": 260,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl58",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 264,
+   "line": 265,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl60",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 269,
+   "line": 270,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl62",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 274,
+   "line": 275,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl63",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 279,
+   "line": 280,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl65",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 284,
+   "line": 285,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "pl66",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 289,
+   "line": 290,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "exists_diagonalKill_le_66",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 301,
+   "line": 302,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "exists_diagonalKill_at_65",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 375,
+   "line": 376,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "exists_diagonalKill_at_66",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 379,
+   "line": 380,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "periodLcm_plateau_64_66",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 385,
+   "line": 386,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "periodLcm_66_lt_periodLcm_67",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 392,
+   "line": 393,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "periodLcm_67_eq",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 395,
+   "line": 397,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "periodLcm_67_eq_67_mul_periodLcm_66",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 398,
+   "line": 400,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "G097_of_diagonal_supply_above_66",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 407,
+   "line": 409,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "G097_bounded",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 419,
+   "line": 421,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "two_mul_periodLcm_three",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 426,
+   "line": 428,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "cone_cell_3_2_2_is_diagonal_t4",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 432,
+   "line": 434,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "cone_cell_eq_diagonal_deposit",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 440,
+   "line": 442,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },
   {
    "declaration": "G097_supply_reach",
    "module": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
-   "line": 452,
+   "line": 454,
    "role": "statement",
    "statement_node": "demand_lattice_249_problem_class"
   },

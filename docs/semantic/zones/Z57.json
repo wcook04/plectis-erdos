@@ -74,7 +74,7 @@
         {
           "declaration": "localPrefixQuotient",
           "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
-          "line": 29
+          "line": 78
         }
       ]
     },
@@ -98,7 +98,7 @@
         {
           "declaration": "localBinarySuffix",
           "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
-          "line": 53
+          "line": 102
         }
       ]
     },
@@ -122,7 +122,7 @@
         {
           "declaration": "localRepairInteger",
           "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
-          "line": 74
+          "line": 123
         }
       ]
     }
@@ -138,21 +138,21 @@
     {
       "declaration": "localPrefixQuotient",
       "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
-      "line": 29,
+      "line": 78,
       "role": "representation",
       "statement_node": "local_prefix_quotient_aggregates_integral_contributions_of_a_finite_support"
     },
     {
       "declaration": "localBinarySuffix",
       "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
-      "line": 53,
+      "line": 102,
       "role": "representation",
       "statement_node": "local_binary_suffix_is_the_natural_truncated_dyadic_carry"
     },
     {
       "declaration": "localRepairInteger",
       "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
-      "line": 74,
+      "line": 123,
       "role": "representation",
       "statement_node": "local_repair_integer_is_the_signed_next_coefficient_from_suffix_and_endpoint_count"
     }

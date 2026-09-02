@@ -62,7 +62,7 @@
         {
           "declaration": "UniversalMersenneSubseriesIrrationality",
           "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-          "line": 25
+          "line": 26
         }
       ]
     },
@@ -89,7 +89,7 @@
         {
           "declaration": "exists_rational_half_counterexample_of_terminalScaledVanishing",
           "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-          "line": 30
+          "line": 31
         }
       ]
     },
@@ -117,7 +117,7 @@
         {
           "declaration": "not_universal_of_terminalScaledVanishing",
           "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-          "line": 37
+          "line": 39
         }
       ]
     },
@@ -141,7 +141,7 @@
         {
           "declaration": "finiteErdosSum_ne_one_div_twenty_one",
           "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-          "line": 59
+          "line": 61
         }
       ]
     },
@@ -233,28 +233,28 @@
     {
       "declaration": "UniversalMersenneSubseriesIrrationality",
       "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-      "line": 25,
+      "line": 26,
       "role": "concept",
       "statement_node": "universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion"
     },
     {
       "declaration": "exists_rational_half_counterexample_of_terminalScaledVanishing",
       "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-      "line": 30,
+      "line": 31,
       "role": "statement",
       "statement_node": "terminal_scaled_vanishing_supplies_an_infinite_exact_half_support"
     },
     {
       "declaration": "not_universal_of_terminalScaledVanishing",
       "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-      "line": 37,
+      "line": 39,
       "role": "statement",
       "statement_node": "terminal_scaled_vanishing_refutes_universal_mersenne_subseries_irrationality"
     },
     {
       "declaration": "finiteErdosSum_ne_one_div_twenty_one",
       "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
-      "line": 59,
+      "line": 61,
       "role": "statement",
       "statement_node": "one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two"
     },

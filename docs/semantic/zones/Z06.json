@@ -660,7 +660,7 @@
       "problem": "249",
       "evidence": [
         {"declaration": "certifiedKill_all_upto_sixteen", "module": "Erdos249257/CarrySurvivorExtinction.lean", "line": 574},
-        {"declaration": "certifiedKill_periodLcm_diagonal_upto_six", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 237},
+        {"declaration": "certifiedKill_periodLcm_diagonal_upto_six", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 257},
         {"declaration": "certifiedKill_lcm_cone_cells", "module": "Erdos249257/LcmConeFlatness.lean", "line": 611},
         {"declaration": "coneNonflatCert_cells", "module": "Erdos249257/LcmConeNonflat.lean", "line": 506}
       ],
@@ -874,11 +874,11 @@
     {"declaration": "coprime_ray_cofactor", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 183, "role": "substrate", "statement_node": "lcm_ray_totient_factorisation"},
     {"declaration": "totient_ray_split", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 197, "role": "statement", "statement_node": "lcm_ray_totient_factorisation"},
     {"declaration": "totient_periodLcm_ray_split", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 208, "role": "statement", "statement_node": "lcm_ray_totient_factorisation"},
-    {"declaration": "diagonalKillDepth", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 223, "role": "concept", "statement_node": "finite_kill_deposits"},
-    {"declaration": "certifiedKill_periodLcm_diagonal_upto_six", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 237, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
-    {"declaration": "certifiedKill_periodLcm_diagonal_at_seven", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 242, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
-    {"declaration": "certifiedKill_periodLcm_diagonal_at_eight", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 246, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
-    {"declaration": "tail_diff_not_int_periodLcm_diagonal", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 251, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
+    {"declaration": "diagonalKillDepth", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 243, "role": "concept", "statement_node": "finite_kill_deposits"},
+    {"declaration": "certifiedKill_periodLcm_diagonal_upto_six", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 257, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
+    {"declaration": "certifiedKill_periodLcm_diagonal_at_seven", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 262, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
+    {"declaration": "certifiedKill_periodLcm_diagonal_at_eight", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 266, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
+    {"declaration": "tail_diff_not_int_periodLcm_diagonal", "module": "Erdos249257/LcmDiagonalReduction.lean", "line": 271, "role": "finite_instance", "statement_node": "finite_kill_deposits"},
 
     {"declaration": "periodLcm_dvd_periodLcm", "module": "Erdos249257/LcmConeFlatness.lean", "line": 67, "role": "substrate", "statement_node": "lcm_ray_divisibility_skeleton"},
     {"declaration": "rational_totient_series_forces_lcm_cone_flatness", "module": "Erdos249257/LcmConeFlatness.lean", "line": 90, "role": "statement", "statement_node": "lcm_cone_flatness_law"},
