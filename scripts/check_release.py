@@ -57,7 +57,7 @@ from publication_contract import (
     mutation_fixture_failures as publication_mutation_fixture_failures,
     validate_publication_contract,
 )
-from query_corpus import paper_anchor_inventory
+from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory
 from systems_paper_evidence import (
     mutation_fixture_failures as systems_paper_mutation_fixture_failures,
     validate_systems_paper_evidence,
@@ -1263,13 +1263,29 @@ def main() -> int:
         check(observed_claim_ids == expected_claim_ids,
               f"paper anchor {anchor['canonical_handle']}: attached claim set drifted")
         observed_open_ids = {row["id"] for row in anchor["attached_open_propositions"]}
+        # Key both sides through the one function the repository owns for this.
+        # Raw field equality cannot succeed here: a sectioning anchor carries
+        # environment None and resolves its environment from its anchor kind,
+        # and a registry title is authored in reader form ("Erdős #68") while
+        # the scanned title is the TeX source form ("Erd\H{o}s \#68"). Comparing
+        # the raw fields made six anchors permanently red while the inventory
+        # they are checked against had already attached the right propositions.
+        anchor_key = canonical_paper_anchor_key(
+            anchor["paper"]["source"],
+            anchor["environment"],
+            anchor["title"],
+            anchor["anchor_kind"],
+        )
         expected_open_ids = {
             row["id"]
             for row in data["remaining_open_propositions"]
             if row.get("paper_anchor")
-            and row["paper_anchor"]["source"] == anchor["paper"]["source"]
-            and row["paper_anchor"]["environment"] == anchor["environment"]
-            and row["paper_anchor"]["title"] == anchor["title"]
+            and canonical_paper_anchor_key(
+                row["paper_anchor"]["source"],
+                row["paper_anchor"]["environment"],
+                row["paper_anchor"]["title"],
+            )
+            == anchor_key
         }
         check(observed_open_ids == expected_open_ids,
               f"paper anchor {anchor['canonical_handle']}: open proposition set drifted")

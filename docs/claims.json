@@ -13375,6 +13375,102 @@
         "title": "Erdős #243",
         "line": 96
       }
+    },
+    {
+      "id": "remaining_open.erdos_269_reduced_tail_nonintegrality",
+      "status": "open",
+      "open_target_claim": "erdos_269",
+      "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
+      "paper_anchor": {
+        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "environment": "problem",
+        "title": "exact nonintegrality of every reduced tail",
+        "line": 1409
+      }
+    },
+    {
+      "id": "remaining_open.erdos_269_cofinal_local_window_escape",
+      "status": "open",
+      "open_target_claim": "erdos_269",
+      "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K^235(B, ℓ+h).",
+      "paper_anchor": {
+        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "environment": "problem",
+        "title": "actual cofinal local-window escape",
+        "line": 1443
+      }
+    },
+    {
+      "id": "remaining_open.erdos_269_two_dimensional_representation",
+      "status": "open",
+      "open_target_claim": "erdos_269",
+      "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
+      "paper_anchor": {
+        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "environment": "problem",
+        "title": "function-faithful two-dimensional representation",
+        "line": 1502
+      }
+    },
+    {
+      "id": "remaining_open.erdos_243_overlap_height_growth",
+      "status": "open",
+      "open_target_claim": "erdos_243",
+      "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
+      "paper_anchor": {
+        "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "environment": "problem",
+        "title": "global overlap-height growth",
+        "line": 1381
+      }
+    },
+    {
+      "id": "remaining_open.erdos_249_first_harmonic_anti_concentration",
+      "status": "open",
+      "open_target_claim": "erdos_249",
+      "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
+      "paper_anchor": {
+        "source": "paper/erdos-249-binary-totient-series.tex",
+        "environment": "problem",
+        "title": "first-harmonic anti-concentration on supplier fibres",
+        "line": 1523
+      }
+    },
+    {
+      "id": "remaining_open.twenty_one_scaled_remainder_cofinal_return",
+      "status": "open",
+      "open_target_claim": "universal_257",
+      "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
+      "paper_anchor": {
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "environment": "problem",
+        "title": "weakest native recurrence criterion",
+        "line": 1543
+      }
+    },
+    {
+      "id": "remaining_open.twenty_one_actual_orbit_invariant",
+      "status": "open",
+      "open_target_claim": "universal_257",
+      "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
+      "paper_anchor": {
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "environment": "problem",
+        "title": "actual-orbit invariant",
+        "line": 1565
+      }
+    },
+    {
+      "id": "remaining_open.twenty_one_final_skip_exclusion",
+      "status": "open",
+      "open_target_claim": "universal_257",
+      "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
+      "paper_anchor": {
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "environment": "problem",
+        "title": "final-skip Diophantine exclusion",
+        "line": 1587
+      }
     }
   ],
   "claims": [

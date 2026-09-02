@@ -33,7 +33,26 @@ DESCRIPTOR_MAX_BYTES = 64_000
 ORIENTATION_MAX_BYTES = 32_000
 # Keep the human first-read projection aligned with the release scoreboard.
 # Detailed route inventories remain in the machine orientation and query API.
-ORIENTATION_MARKDOWN_MAX_BYTES = 16_000
+#
+# The budget is a base plus one line's allowance for each remaining-open
+# proposition, the way agent_tour_budget_bytes scales the bounded tour with the
+# problem registry. A single pinned number cannot tell prose growth from
+# boundary growth: the cold-clone contract requires every open proposition's
+# statement to appear here, so registering the eight #243/#249/#257/#269
+# propositions the papers already state is obliged to lengthen this file, while
+# a paragraph of new commentary is not. At the eleven propositions the old
+# 16,000-byte pin was set against, this formula returns 16,080.
+ORIENTATION_MARKDOWN_BASE_BYTES = 13_000
+ORIENTATION_MARKDOWN_PER_OPEN_PROPOSITION_BYTES = 280
+
+
+def orientation_markdown_budget_bytes(remaining_open_proposition_count: int) -> int:
+    """Scale the human first-read budget with the registered open boundary."""
+    return (
+        ORIENTATION_MARKDOWN_BASE_BYTES
+        + ORIENTATION_MARKDOWN_PER_OPEN_PROPOSITION_BYTES
+        * remaining_open_proposition_count
+    )
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
@@ -354,7 +373,23 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         },
         "scale": atlas["summary"],
         "status_taxonomy": claims["status_taxonomy"],
-        "remaining_open_propositions": claims["remaining_open_propositions"],
+        # Same first-read discipline as the claim handles above. The boundary
+        # statement is what a cold reader needs; the paper anchor that routes it
+        # to a TeX environment is a coordinate. Carrying the anchors here cost
+        # about two hundred bytes a proposition of a thirty-two kilobyte budget,
+        # and the eight #243/#249/#257/#269 propositions the papers already state
+        # pushed the packet past it. The status field goes the same way: every
+        # row in this list is open by construction, and the taxonomy that
+        # explains the word is carried beside it. Anchors and statuses stay in
+        # the digest-bound claims document, reachable from these ids.
+        "remaining_open_propositions": [
+            {
+                key: value
+                for key, value in row.items()
+                if key not in ("paper_anchor", "status")
+            }
+            for row in claims["remaining_open_propositions"]
+        ],
         "non_claims": claims["non_claims"],
         "principal_claims": principal_claims,
         "mathematical_programmes": mathematical_programmes,
@@ -1261,10 +1296,13 @@ def main() -> int:
             f"{orientation_bytes:,} > {ORIENTATION_MAX_BYTES:,} bytes"
         )
         return 1
-    if orientation_markdown_bytes > ORIENTATION_MARKDOWN_MAX_BYTES:
+    orientation_markdown_budget = orientation_markdown_budget_bytes(
+        len(orientation["remaining_open_propositions"])
+    )
+    if orientation_markdown_bytes > orientation_markdown_budget:
         print(
             "orientation Markdown exceeds the bounded first-read budget: "
-            f"{orientation_markdown_bytes:,} > {ORIENTATION_MARKDOWN_MAX_BYTES:,} bytes"
+            f"{orientation_markdown_bytes:,} > {orientation_markdown_budget:,} bytes"
         )
         return 1
     if args.check:
@@ -1296,7 +1334,7 @@ def main() -> int:
         if args.orientation_only:
             print(
                 "orientation Markdown current: "
-                f"bytes={orientation_markdown_bytes:,}/{ORIENTATION_MARKDOWN_MAX_BYTES:,}"
+                f"bytes={orientation_markdown_bytes:,}/{orientation_markdown_budget:,}"
             )
         else:
             descriptor = json.loads(actual)

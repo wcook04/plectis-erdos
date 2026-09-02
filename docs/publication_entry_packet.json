@@ -108,7 +108,7 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:154a54eebc16d00077bf9fed65f451306306df4c522afc5cabb595b6f7d190c6",
-    "docs/claims.json": "sha256:8cad075247aa3b433bc8a09d4767631b057ca0d499b2618ce569d6f18e5e473f",
+    "docs/claims.json": "sha256:284f110f2391c72ed994f4870788ff96eb4c4a2c8244299d26057302c0d86219",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:a4bd03ceb719c832dd352fd9bfbea5dbda6275b895c8fb3c65893c0cf64317f2",
     "docs/publication_contract.json": "sha256:2c3b30191876359e42cbbaa5a75ab732992d2788c86335cf5d11fd790999d2ca",
@@ -133,7 +133,7 @@
     "current_owner_snapshot": {
       "contribution_family_count": 30,
       "curated_claim_count": 129,
-      "remaining_open_proposition_count": 11,
+      "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
     },
@@ -395,6 +395,102 @@
         "title": "Erdős #243"
       },
       "statement": "Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_269_reduced_tail_nonintegrality",
+      "open_target_claim": "erdos_269",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1409,
+        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "title": "exact nonintegrality of every reduced tail"
+      },
+      "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_269_cofinal_local_window_escape",
+      "open_target_claim": "erdos_269",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1443,
+        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "title": "actual cofinal local-window escape"
+      },
+      "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K^235(B, ℓ+h).",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_269_two_dimensional_representation",
+      "open_target_claim": "erdos_269",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1502,
+        "source": "paper/erdos-269-three-prime-running-lcm.tex",
+        "title": "function-faithful two-dimensional representation"
+      },
+      "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_243_overlap_height_growth",
+      "open_target_claim": "erdos_243",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1381,
+        "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "title": "global overlap-height growth"
+      },
+      "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_249_first_harmonic_anti_concentration",
+      "open_target_claim": "erdos_249",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1523,
+        "source": "paper/erdos-249-binary-totient-series.tex",
+        "title": "first-harmonic anti-concentration on supplier fibres"
+      },
+      "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.twenty_one_scaled_remainder_cofinal_return",
+      "open_target_claim": "universal_257",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1543,
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "title": "weakest native recurrence criterion"
+      },
+      "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.twenty_one_actual_orbit_invariant",
+      "open_target_claim": "universal_257",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1565,
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "title": "actual-orbit invariant"
+      },
+      "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.twenty_one_final_skip_exclusion",
+      "open_target_claim": "universal_257",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1587,
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "title": "final-skip Diophantine exclusion"
+      },
+      "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
       "status": "open"
     }
   ],
