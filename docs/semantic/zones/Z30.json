@@ -290,7 +290,7 @@
         {
           "declaration": "eventually_zero_of_bounded_tail_normalizedVanishes",
           "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-          "line": 21
+          "line": 354
         }
       ]
     },
@@ -313,12 +313,12 @@
         {
           "declaration": "negativeRelativeMass",
           "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-          "line": 39
+          "line": 372
         },
         {
           "declaration": "tail_growth_le_one_add_negativeRelativeMass",
           "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-          "line": 45
+          "line": 378
         }
       ]
     },
@@ -345,7 +345,7 @@
         {
           "declaration": "eventually_zero_of_summable_relativeGrowth",
           "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-          "line": 90
+          "line": 423
         }
       ]
     },
@@ -373,7 +373,7 @@
         {
           "declaration": "eventually_zero_of_summable_negativeRelativeMass",
           "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-          "line": 155
+          "line": 488
         }
       ]
     },
@@ -401,7 +401,7 @@
         {
           "declaration": "sylvesterNext_eventually_of_summable_negativeRelativeMass",
           "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-          "line": 175
+          "line": 510
         }
       ]
     }
@@ -557,42 +557,42 @@
     {
       "declaration": "eventually_zero_of_bounded_tail_normalizedVanishes",
       "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "line": 21,
+      "line": 354,
       "role": "statement",
       "statement_node": "bounded_tail_plus_normalised_vanishing_forces_integral_zero"
     },
     {
       "declaration": "negativeRelativeMass",
       "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "line": 39,
+      "line": 372,
       "role": "concept",
       "statement_node": "negative_relative_mass_bounds_each_tail_step"
     },
     {
       "declaration": "tail_growth_le_one_add_negativeRelativeMass",
       "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "line": 45,
+      "line": 378,
       "role": "statement",
       "statement_node": "negative_relative_mass_bounds_each_tail_step"
     },
     {
       "declaration": "eventually_zero_of_summable_relativeGrowth",
       "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "line": 90,
+      "line": 423,
       "role": "statement",
       "statement_node": "summable_relative_growth_bounds_tail_and_forces_zero"
     },
     {
       "declaration": "eventually_zero_of_summable_negativeRelativeMass",
       "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "line": 155,
+      "line": 488,
       "role": "statement",
       "statement_node": "finite_normalised_negative_mass_forces_eventual_zero"
     },
     {
       "declaration": "sylvesterNext_eventually_of_summable_negativeRelativeMass",
       "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "line": 175,
+      "line": 510,
       "role": "statement",
       "statement_node": "finite_negative_mass_exact_orbit_forces_sylvester_recurrence"
     }

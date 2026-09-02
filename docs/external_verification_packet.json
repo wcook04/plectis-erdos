@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:a4bd03ceb719c832dd352fd9bfbea5dbda6275b895c8fb3c65893c0cf64317f2",
+    "projection_digest": "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1918,10 +1918,10 @@
             "module": "ErdosProblems.Erdos243.SparseResetRecovery",
             "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
             "present": true,
-            "line_count": 208,
-            "declaration_count": 6,
-            "theorem_count": 5,
-            "content_digest": "sha256:74685dc6ad5abceedd76ea3928b25845a3bdf6070aaa96344d5ac5996a96187a"
+            "line_count": 543,
+            "declaration_count": 20,
+            "theorem_count": 15,
+            "content_digest": "sha256:9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e"
           },
           {
             "module": "ErdosProblems.Erdos243.DynamicCancellation",

@@ -1,7 +1,7 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+  "source_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
   "module_count": 1044,
   "synopsis_count": 849,
   "query_contract": {
@@ -3730,7 +3730,7 @@
     {
       "id": "ErdosProblems.Erdos243.SparseResetRecovery",
       "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "synopsis": "Erdős #243: the finite negative-mass endpoint This module isolates the shortest checked consumer for the current frontier. If the normalized negative part of the centered defect is summable, then the natural tail state is eventually bounded. Division-free normalized defect vanishing then makes the integral defect eventually zero, so the original denominators eventually follow the Sylvester recurrence. The unrestricted problem is not claimed: a surviving counterexample must have divergent normalized negative mass."
+      "synopsis": "Erdős #243: sparse reset recovery This module isolates the order-theoretic recovery forest behind dynamically reduced reciprocal-tail orbits. It also gives a division-free finite-product bound for the full reset payment on a recovery interval. The declarations do not exclude the unrestricted divergent-negative-mass branch and therefore do not prove Erdős #243."
     },
     {
       "id": "ErdosProblems.Erdos243.WeightedCRTRepair",
