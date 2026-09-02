@@ -57,6 +57,8 @@ At this checkpoint the semantic graph yields three diagnostic views across every
 The graph contains 1,115 authored statement nodes above 5,235 exact source-structural families. The views overlap and are not a partition of either tier.
 
 The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 229 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
+
+Of 23 substantial Lean propositions extracted from hypotheses of conditional theorems, 17 are provably equivalent to an endpoint: 14 to #249 and 3 to the `1/2` membership test for #257. Equivalence here is kernel-checked against the extracted proposition, not a claim that either endpoint is settled.
 <!-- END semantic_public_census -->
 
 The `17/23` count is a narrower kernel-checked audit. It starts from 259
