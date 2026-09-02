@@ -2,7 +2,7 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_68",
   "status": "open",
-  "source_checkpoint": "389d07b36683fe7eabfc29975ad6697ccb6629cf",
+  "source_checkpoint": "ef1a3ec69dff2a10c9532307616df421618d17ef",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -92,6 +92,23 @@
       "public_authority_paths": [
         "research_corpus/Erdos68/problem/research_packet.json",
         "research_corpus/Erdos68/receipts/erdos68_nonterminal_record_threshold_bridge_receipt.json"
+      ]
+    },
+    {
+      "result_id": "metric_shrinking_target_theorems_do_not_apply_to_a_named_orbit",
+      "status": "exact_no_go",
+      "exact_statement": "Every orbit in this dictionary is a single explicit DETERMINISTIC orbit, not a generic point of a measure space. Borel-Cantelli, metric shrinking-target theorems, and almost-sure results give no information about a named orbit. The corpus records this directly: the O(m^-2) target for #68 is 'exactly the regime where Borel-Cantelli has room', which is a statement about the target SIZE, not a proof for the actual orbit.",
+      "hypotheses": "Recorded in TargetLatticeLab.md alongside the desk retargeting it justified.",
+      "named_consumers": [
+        "shrinking_target_dictionary"
+      ],
+      "supersedes": [
+        "metric shrinking-target proposals presented as proofs for these orbits"
+      ],
+      "why_it_matters": "This is the exact reason the dictionary is not free: writing five problems in one language is only worth something if the general theorem you then prove is a DETERMINISTIC escape theorem.",
+      "public_authority_paths": [
+        "research_corpus/Erdos68/problem/TargetLatticeLab.md",
+        "research_corpus/Erdos68/problem/ShrinkingTargetNormalForm.lean"
       ]
     },
     {

@@ -2,7 +2,24 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_257",
   "status": "open",
-  "source_checkpoint": "389d07b36683fe7eabfc29975ad6697ccb6629cf",
+  "source_checkpoint": "ef1a3ec69dff2a10c9532307616df421618d17ef",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
-  "results": []
+  "results": [
+    {
+      "result_id": "erdos257_target_statistics_are_not_generic",
+      "status": "exact_no_go",
+      "exact_statement": "Even the measured statistics of these orbits are not generic. For #257 the margin minima decay like c/N, the generic shrinking-target law, yet the 21-chain minimum reaches 8.07e-7 at N about 1.3e5, five to ten times CLOSER to the boundary than the 1/N null; the probe itself flags that a larger run is needed to decide trend versus fluctuation. So a generic-orbit heuristic is not even a reliable guide here, let alone a proof.",
+      "hypotheses": "Finite computational structure probe, 2026-08-22; the probe records its own open question about the 5M run.",
+      "named_consumers": [
+        "shrinking_target_dictionary"
+      ],
+      "supersedes": [
+        "generic-orbit heuristics applied to the #257 margin statistics"
+      ],
+      "why_it_matters": "It is the sharpest available hint that the five orbits share a mechanism: one of them measurably deviates from the generic law in the direction that would make escape easier.",
+      "public_authority_paths": [
+        "research_corpus/Erdos257/problem/ComputationalStructureProbe_2026_08_22.md"
+      ]
+    }
+  ]
 }
