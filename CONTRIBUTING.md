@@ -16,12 +16,12 @@ agent-skill portability, unsafe defaults, or unnecessary steps are therefore
 substantive architecture contributions rather than housekeeping beneath the
 project's notice.
 
-A cold reader is part of the validation surface. `scripts/check_release.py`
-runs `scripts/test_cold_clone_comprehension.py` as a combined
-baseline-plus-adversarial release-gate check: it reconstructs what a fresh
-clone can answer from the public files alone, and it plants mutations that a
-comprehending reader would catch. A failure therefore blocks the release gate,
-in the same way a broken claim link or a stale projection does.
+A cold reader is part of the validation surface. The cold-clone comprehension
+program runs as a combined baseline-plus-adversarial release-gate check: it
+reconstructs what a fresh clone can answer from the public files alone, and it
+plants mutations that a comprehending reader would catch. A failure therefore
+blocks the release gate, in the same way a broken claim link or a stale
+projection does.
 
 There are two first-class tracks:
 
