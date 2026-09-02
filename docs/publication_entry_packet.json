@@ -108,7 +108,7 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:513932d5317ac55e6c6bca872b4ef71efe8a7b8655fc8d656cdb4ab6447b0ea5",
-    "docs/claims.json": "sha256:a1c06a0d6abfe38d64d020d21cdbaaaa23250403e2d72684d8d1e42319f8b8ee",
+    "docs/claims.json": "sha256:b6228fce9cde5f38930c9d346f13a40e681402a09497146f1ab324694152c504",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
     "docs/problems.json": "sha256:a4bd03ceb719c832dd352fd9bfbea5dbda6275b895c8fb3c65893c0cf64317f2",
     "docs/publication_contract.json": "sha256:bbb6606e1d96832530350f1c313cb4d663930fb57ae7f4faea962a05ca9c50fa",

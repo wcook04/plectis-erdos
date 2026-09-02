@@ -30,6 +30,12 @@ ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 AUXILIARY_ROOT_PREFIXES = (
     "ErdosProblems.Bit.",
     "ErdosProblems.Decl.",
+    # The #1041 selector and tail-case modules are published and type-check
+    # against the pinned toolchain, and no supported root imports them, so the
+    # module graph could not reach them at all. They are exactly what this
+    # forest is for: independent exploratory components, navigable without
+    # being forced into the monolithic import environment.
+    "ErdosProblems.Erdos1041.",
     "ErdosProblems.FreePosition.",
     "ErdosProblems.Half.",
     "ErdosProblems.Hlow.",

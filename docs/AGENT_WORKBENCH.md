@@ -386,3 +386,65 @@ their intended meaning and public framing.
 [SOURCE MAP](docs/SOURCE_MAP.md) gives module order; [METHODOLOGY](METHODOLOGY.md)
 governs claim changes; [WAVE INDEX](docs/WAVE_INDEX.md) gives chronology, not
 reading order.
+
+## Recovered from the front page: build and verify
+
+Everything above this heading runs with Python alone. Building the Lean source
+needs the toolchain, and `lake` arrives with it: install `elan`, Lean's
+toolchain manager, from the
+[Lean setup guide](https://leanprover-community.github.io/get_started.html).
+`elan` then reads [`lean-toolchain`](lean-toolchain) and selects
+`leanprover/lean4:v4.29.1`; [`lake-manifest.json`](lake-manifest.json) pins the
+matching Mathlib.
+
+```sh
+lake exe cache get   # fetches the pinned Mathlib build: several GB, once
+lake build
+```
+
+A focused build runs through
+`python3 scripts/lean_fast_build.py --jobs 2 [target]`. With restored `.lake`
+outputs, `--lake-staleness` makes it trust Lake content traces, not checkout
+times. Without a target it checks both roots; `--plan` reports waves without
+building. Partial caches stay on that trace-aware path even when a root output
+is absent. One verbose no-build verdict identifies the stale frontier, which is
+expanded through local import dependents; same-wave targets then share Lake
+graph scans in batches capped by `--jobs`.
+A cold clone can navigate before this step; formal editing needs the
+pinned toolchain. Later builds reuse outputs and rebuild only the selected or
+stale dependency cone; `--changed-from <git-ref>` selects changed modules.
+The dependency-index validator stores an exact `.lake` receipt: unchanged
+inputs make `--check` constant-time; `--check --full-check` forces an audit.
+
+The public release surfaces are checked separately:
+
+```sh
+python3 scripts/check_cold_clone_comprehension.py --quick
+python3 scripts/check_release.py
+python3 scripts/test_methodology_contract.py
+```
+
+The pinned public Lean proof corpus contains no `sorry`, `admit`, project-defined
+`axiom`, or `native_decide`; finite computations use kernel-checked `decide`.
+One deliberate exception is outside the default build:
+[`ExternalVerification/Challenge.lean`](ExternalVerification/Challenge.lean)
+states the trusted propositions Comparator checks the solution against; they
+carry `sorry` by construction.
+
+## Use as a Lean package
+
+The reviewed #249/#257 root is imported with:
+
+```lean
+import Erdos249257
+```
+
+The problem-owned expansion surface is imported with:
+
+```lean
+import ErdosProblems
+```
+
+[`examples/Examples.lean`](examples/Examples.lean) is the minimal downstream
+consumer; its conditional shell-pressure example leaves the analytic
+hypothesis explicit and does not prove universal #257.
