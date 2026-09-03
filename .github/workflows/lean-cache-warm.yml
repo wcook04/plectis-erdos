@@ -44,6 +44,11 @@ jobs:
       GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
       GIT_OPTIONAL_LOCKS: "0"
       GIT_NO_REPLACE_OBJECTS: "1"
+      # Cleared, not omitted: a namespaced ref view or a shifted replace-ref
+      # base would change what the pinned-history gates resolve, and the
+      # environment contract requires both to be empty.
+      GIT_NAMESPACE: ""
+      GIT_REPLACE_REF_BASE: ""
       GIT_PAGER: cat
       GIT_TERMINAL_PROMPT: "0"
       GIT_ASKPASS: /bin/false
@@ -73,6 +78,7 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
+          cache: false
 
       - name: Test cache-warm command environment
         run: |

@@ -8,17 +8,17 @@
 Plectis applies AI search, computation, ordinary mathematics, and Lean to eight
 long-standing open Erdős problems: 68, 243, 249, 251, 257, 269, 1041, and 1049.
 **All eight problems remain open.** This repository does not solve any of them.
-The problems were chosen on the expectation that a solo, self-funded
-undergraduate project would not solve them. The object is to measure how much
-exact, machine-checked, reusable progress can be accumulated on problems of this
-difficulty, and to publish it so another researcher can continue.
+They were chosen on the expectation that a solo, self-funded undergraduate
+project would not. The object is to measure how much exact, machine-checked,
+reusable progress can be accumulated on problems of this difficulty, and to
+publish it so another researcher can continue.
 
 What is published is each problem's current frontier: exact reductions, checked
-theorems, countermodels, no-go results, finite certificates, routes that failed
-and why, and the obligation that still blocks the endpoint. The pinned Lean
-kernel checks the exact formal statement of each accepted result. It does not
-establish that a statement expresses the intended mathematics, that a result is
-new, or that it matters; those are authored judgements.
+theorems, countermodels, no-go results, finite certificates, failed routes, and
+the obligation that still blocks the endpoint. The pinned Lean kernel checks the
+exact formal statement of each accepted result. It does not establish that a
+statement expresses the intended mathematics, that a result is new, or that it
+matters; those are authored judgements.
 
 Large-language-model agents drafted prose, Lean proofs, and software. Will Cook
 set the objectives, reviewed the public claims and cited sources, and is
@@ -90,9 +90,9 @@ Nineteen selected propositions are declared a second time, without proofs, and
 Comparator checks the proof-bearing modules against those declarations and a
 fixed axiom budget; an adversarial fixture alters one statement and must be
 rejected. [`formalization.yaml`](formalization.yaml) records the contribution
-class, exact statement, source declaration, boundary, `sorry` count, and axioms
-per result, and the [verification packet](docs/EXTERNAL_VERIFICATION.md) covers
-all eight problem programmes. Comparator checks propositions only: no paper
+class, statement, source declaration, boundary, `sorry` count, and axioms per
+result, and the [verification packet](docs/EXTERNAL_VERIFICATION.md) covers all
+eight problem programmes. Comparator checks propositions only: no paper
 deduction, cited theorem, external computation, meaning, novelty, or
 significance.
 
@@ -102,10 +102,10 @@ project's, and a **conditional reduction** depends on a named open condition.
 
 | Status | Result |
 |---|---|
-| **formalised here** | For every integer `b ≥ 2` the full-support series `∑ 1/(bⁿ − 1)` is irrational, and the base-2 Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and of measure one. |
-| **proved here** | `S = ∑ φ(n)/2ⁿ` is irrational exactly when every positive binary tail difference is non-integral; the certificates at arbitrarily large stages are not proved. |
-| **verified finite instance** | A diagonal certificate is checked at every `t ≤ 82`. This does not prove successful cases beyond a fixed cutoff. |
-| **conditional reduction** | Two middle coordinates of the #257 last-skip schema would be excluded by an inequality that is not proved. |
+| **formalised here** | For every integer `b ≥ 2` the full-support series `∑ 1/(bⁿ − 1)` is irrational, and the Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and of measure one. |
+| **proved here** | `S = ∑ φ(n)/2ⁿ` is irrational exactly when every positive binary tail difference is non-integral; certificates at arbitrarily large stages are not proved. |
+| **verified finite instance** | A diagonal certificate is checked at every `t ≤ 82`, which proves nothing beyond a fixed cutoff. |
+| **conditional reduction** | Two middle coordinates of the #257 last-skip schema wait on an inequality that is not proved. |
 
 [`docs/claims.json`](docs/claims.json) owns every claim record and its status,
 [`docs/PALOMAR_RESULT_SHOWCASE.json`](docs/PALOMAR_RESULT_SHOWCASE.json) owns the
@@ -125,6 +125,10 @@ The reading order is [RESULTS](docs/RESULTS.md), [SCOPE](SCOPE.md), the
 [METHODOLOGY](METHODOLOGY.md) governs claim changes. Building the Lean source
 needs the pinned toolchain and is described in the
 [architecture guide](ARCHITECTURE.md); everything above needs Python alone.
+
+[`examples/Examples.lean`](examples/Examples.lean) is the minimal downstream
+consumer; its conditional shell-pressure example leaves the analytic hypothesis
+explicit and does not prove universal #257.
 
 An agent arriving cold reads [`AGENTS.override.md`](AGENTS.override.md), then the
 bounded [`docs/orientation.json`](docs/orientation.json), and selects one

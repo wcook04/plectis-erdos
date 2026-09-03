@@ -277,7 +277,16 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # public, before the results inventory.
     "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
-    "SCOPE.md": 4_000,
+    # SCOPE.md must list every remaining-open identifier and its bounded query,
+    # so two lines of it are spoken for by each registered proposition: measured
+    # at 139 bytes a proposition against 2,528 bytes of prose. The flat 4,000
+    # was set at eleven propositions and could not survive the repository
+    # registering the eight its own papers already state.
+    "SCOPE.md": 2_800
+    + 160
+    * len(
+        json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"]
+    ),
     # The generated orientation is budgeted by its own builder, which scales
     # with the registered open boundary and the mathematical programmes it is
     # required to carry. Pinning a second, smaller number here meant this gate
