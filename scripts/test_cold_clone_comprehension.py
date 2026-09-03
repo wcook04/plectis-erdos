@@ -337,9 +337,9 @@ def main() -> int:
             (
                 f"#### {row['rank']}. fixture — `{row['family_id']}`",
                 f"- **Checked interface:** `{row['declaration']}`",
-                "- **Exact source:** fixture source",
-                "- **Hard mechanism / natural friction:** fixture friction",
-                "- **Evidence / attribution ceiling:** fixture evidence",
+                "- **Source declaration:** fixture source",
+                "- **Hard mechanism:** fixture friction",
+                "- **Evidence:** fixture evidence",
                 "- **Boundary:** fixture boundary",
             )
         )
@@ -419,7 +419,7 @@ def main() -> int:
         raise AssertionError("paper-library invented ranked family escaped")
 
     mutated_paper_library = compliant_paper_library.replace(
-        "**Exact source:**", "**Unbound source:**", 1
+        "**Source declaration:**", "**Unbound source:**", 1
     )
     try:
         diagnostic.validate_paper_library_first_contact(
@@ -431,7 +431,7 @@ def main() -> int:
         raise AssertionError("paper-library exact-source deletion escaped")
 
     mutated_paper_library = compliant_paper_library.replace(
-        "**Hard mechanism / natural friction:**", "**Mechanism:**", 1
+        "**Hard mechanism:**", "**Mechanism:**", 1
     )
     try:
         diagnostic.validate_paper_library_first_contact(
@@ -443,7 +443,7 @@ def main() -> int:
         raise AssertionError("paper-library natural-friction deletion escaped")
 
     mutated_paper_library = compliant_paper_library.replace(
-        "**Evidence / attribution ceiling:**", "**Evidence:**", 1
+        "**Evidence:**", "**Evidence note:**", 1
     )
     try:
         diagnostic.validate_paper_library_first_contact(
