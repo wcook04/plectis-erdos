@@ -144,12 +144,12 @@
         {
           "declaration": "totient_two_pow_succ_mul_of_odd",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 110
+          "line": 120
         },
         {
           "declaration": "totient_two_pow_mul_two",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 130
+          "line": 140
         }
       ],
       "concepts": [
@@ -172,22 +172,22 @@
         {
           "declaration": "totientKernel_zero_residue",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 150
+          "line": 160
         },
         {
           "declaration": "totientKernel_even_residue_reduce",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 159
+          "line": 169
         },
         {
           "declaration": "totientKernelSeq_zero_mem_span_oddCore",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1171
+          "line": 1303
         },
         {
           "declaration": "totientKernelSeq_mem_span_oddCore",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1206
+          "line": 1338
         }
       ],
       "concepts": [
@@ -211,22 +211,22 @@
         {
           "declaration": "linearIndependent_of_separatedMinorCertificate",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 81
+          "line": 91
         },
         {
           "declaration": "finrank_canonicalTotientKernel_eq_of_linearIndependent",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 92
+          "line": 102
         },
         {
           "declaration": "finrank_canonicalTotientKernel_eq_of_certificate",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 101
+          "line": 111
         },
         {
           "declaration": "card_totientCanonicalIndex",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 51
+          "line": 61
         }
       ],
       "concepts": [
@@ -250,7 +250,7 @@
         {
           "declaration": "paritySeparatedMatrix_det_ne_zero",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 788
+          "line": 823
         }
       ],
       "concepts": [
@@ -274,12 +274,12 @@
         {
           "declaration": "exists_totientAffinePrimeRow",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 478
+          "line": 513
         },
         {
           "declaration": "exists_totientAffineParityRow",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 694
+          "line": 729
         }
       ],
       "concepts": [
@@ -303,22 +303,22 @@
         {
           "declaration": "exists_separatedMinorCertificate_totientAffineOddFamily",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 847
+          "line": 882
         },
         {
           "declaration": "linearIndependent_totientAffineOddFamily",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 892
+          "line": 927
         },
         {
           "declaration": "linearIndependent_canonicalTotientKernelFamily",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 900
+          "line": 935
         },
         {
           "declaration": "finrank_canonicalTotientKernel_eq",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 954
+          "line": 989
         }
       ],
       "concepts": [
@@ -353,17 +353,17 @@
         {
           "declaration": "totientKernelSectionIndex_spec",
           "module": "Erdos249257/TotientKernelIndex.lean",
-          "line": 118
+          "line": 124
         },
         {
           "declaration": "existsUnique_totientKernelResidueAtLevel",
           "module": "Erdos249257/TotientKernelIndex.lean",
-          "line": 207
+          "line": 213
         },
         {
           "declaration": "card_totientKernelIndex",
           "module": "Erdos249257/TotientKernelIndex.lean",
-          "line": 266
+          "line": 277
         }
       ],
       "concepts": [
@@ -551,7 +551,7 @@
         {
           "declaration": "not_finiteDimensional_span_fullTotientKernel",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1014
+          "line": 1145
         }
       ],
       "concepts": [
@@ -574,17 +574,17 @@
         {
           "declaration": "linearIndependent_oddCoreTotientKernelFamily",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1133
+          "line": 1265
         },
         {
           "declaration": "span_range_fullTotientKernel_eq_span_range_oddCore",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1248
+          "line": 1380
         },
         {
           "declaration": "totientDyadicSectionBasis",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1260
+          "line": 1392
         }
       ],
       "concepts": [
@@ -608,7 +608,7 @@
         {
           "declaration": "false_of_compressedAdjointCertificate",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1051
+          "line": 1183
         }
       ],
       "concepts": [
@@ -713,12 +713,12 @@
         {
           "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank",
           "module": "Erdos249257/TotientCarryKernelRigidity.lean",
-          "line": 259
+          "line": 275
         },
         {
           "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
           "module": "Erdos249257/TotientCarryKernelRigidity.lean",
-          "line": 284
+          "line": 300
         }
       ],
       "concepts": [
@@ -1065,7 +1065,7 @@
         {
           "declaration": "totient_mul_prime_cocycle",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 34
+          "line": 38
         }
       ],
       "concepts": [
@@ -1088,37 +1088,37 @@
         {
           "declaration": "totient_dilation_clean_of_square_residue",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 48
+          "line": 147
         },
         {
           "declaration": "totient_dilation_clean_of_square_witness",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 70
+          "line": 169
         },
         {
           "declaration": "totient_dilation_clean_of_square_modEq",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 98
+          "line": 197
         },
         {
           "declaration": "exists_squareCRT_base_of_distinct_primes",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 148
+          "line": 247
         },
         {
           "declaration": "exists_large_squareCRT_base",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 164
+          "line": 263
         },
         {
           "declaration": "exists_squareCRT_clean_totient_family",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 198
+          "line": 297
         },
         {
           "declaration": "exists_squareCRT_clean_horizon",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 228
+          "line": 327
         }
       ],
       "concepts": [
@@ -1142,22 +1142,22 @@
         {
           "declaration": "squareCRT_clean_block_can_vanish",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 285
+          "line": 459
         },
         {
           "declaration": "squareCRT_vanishing_countermodel_is_clean",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 294
+          "line": 468
         },
         {
           "declaration": "squareCRT_clean_block_can_be_nonzero",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 303
+          "line": 477
         },
         {
           "declaration": "squareCRT_nonzero_countermodel_is_clean",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 311
+          "line": 485
         }
       ],
       "concepts": [
@@ -1180,7 +1180,7 @@
         {
           "declaration": "alternating_powerset_sum_eq_zero_of_insert_invariant",
           "module": "Erdos249257/SquareCRTCube.lean",
-          "line": 264
+          "line": 363
         }
       ],
       "concepts": [],
@@ -1646,12 +1646,12 @@
         {
           "declaration": "checkerboard_separable",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 19
+          "line": 26
         },
         {
           "declaration": "checkerboard_unique",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 25
+          "line": 32
         }
       ],
       "concepts": [],
@@ -1672,7 +1672,7 @@
         {
           "declaration": "fourPoint_layer_identity",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 38
+          "line": 45
         }
       ],
       "concepts": [
@@ -1695,7 +1695,7 @@
         {
           "declaration": "residueClass_step_has_centred_completion",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 55
+          "line": 62
         }
       ],
       "concepts": [
@@ -1718,17 +1718,17 @@
         {
           "declaration": "PrimeRayLayerSupply",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 88
+          "line": 95
         },
         {
           "declaration": "BoundedDegreeOrderConsumer",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 95
+          "line": 102
         },
         {
           "declaration": "FinitePrimeSupportEscape",
           "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-          "line": 102
+          "line": 151
         }
       ],
       "concepts": [
@@ -1810,350 +1810,350 @@
     {
       "declaration": "card_totientCanonicalIndex",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 51,
+      "line": 61,
       "role": "substrate",
       "statement_node": "separated_minor_rank_criterion"
     },
     {
       "declaration": "evaluationLinearMap",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 65,
+      "line": 75,
       "role": "substrate",
       "statement_node": "separated_minor_rank_criterion"
     },
     {
       "declaration": "SeparatedMinorCertificate",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 73,
+      "line": 83,
       "role": "concept",
       "statement_node": "separated_minor_rank_criterion"
     },
     {
       "declaration": "linearIndependent_of_separatedMinorCertificate",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 81,
+      "line": 91,
       "role": "statement",
       "statement_node": "separated_minor_rank_criterion"
     },
     {
       "declaration": "finrank_canonicalTotientKernel_eq_of_linearIndependent",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 92,
+      "line": 102,
       "role": "statement",
       "statement_node": "separated_minor_rank_criterion"
     },
     {
       "declaration": "finrank_canonicalTotientKernel_eq_of_certificate",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 101,
+      "line": 111,
       "role": "statement",
       "statement_node": "separated_minor_rank_criterion"
     },
     {
       "declaration": "totient_two_pow_succ_mul_of_odd",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 110,
+      "line": 120,
       "role": "statement",
       "statement_node": "totient_two_adic_scaling"
     },
     {
       "declaration": "totient_two_pow_mul_two",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 130,
+      "line": 140,
       "role": "statement",
       "statement_node": "totient_two_adic_scaling"
     },
     {
       "declaration": "totientKernel_zero_residue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 150,
+      "line": 160,
       "role": "statement",
       "statement_node": "dyadic_channel_odd_core_reduction"
     },
     {
       "declaration": "totientKernel_even_residue_reduce",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 159,
+      "line": 169,
       "role": "statement",
       "statement_node": "dyadic_channel_odd_core_reduction"
     },
     {
       "declaration": "TotientAffineIndex",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 191,
+      "line": 226,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineSlope",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 195,
+      "line": 230,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineResidue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 200,
+      "line": 235,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineValue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 205,
+      "line": 240,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 209,
+      "line": 244,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineOddFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 213,
+      "line": 248,
       "role": "concept",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "totientAffineSlope_pos",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 216,
+      "line": 251,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineResidue_lt_slope",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 222,
+      "line": 257,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineSlope_coprime_residue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 232,
+      "line": 267,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffine_parameters_injective",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 242,
+      "line": 277,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffine_cross_ne",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 276,
+      "line": 311,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineBaseResidue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 298,
+      "line": 333,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineBaseResidue_odd",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 302,
+      "line": 337,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 309,
+      "line": 344,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineBaseResidue_lt_modulus",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 313,
+      "line": 348,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore_pos",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 319,
+      "line": 354,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore_even",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 331,
+      "line": 366,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore_lt_depthBound",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 344,
+      "line": 379,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_totientAffineCore_depth",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 380,
+      "line": 415,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_large_distinct_primes_modEq_one",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 399,
+      "line": 434,
       "role": "engine",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_affine_root_mod_prime",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 422,
+      "line": 457,
       "role": "engine",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "affine_target_coprime_of_cross",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 440,
+      "line": 475,
       "role": "engine",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "TotientAffinePrimeRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 462,
+      "line": 497,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_totientAffinePrimeRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 478,
+      "line": 513,
       "role": "statement",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "TotientAffineParityRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 682,
+      "line": 717,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_totientAffineParityRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 694,
+      "line": 729,
       "role": "statement",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "paritySeparatedMatrix_det_ne_zero",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 788,
+      "line": 823,
       "role": "statement",
       "statement_node": "parity_separated_determinant_criterion"
     },
     {
       "declaration": "exists_separatedMinorCertificate_totientAffineOddFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 847,
+      "line": 882,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "linearIndependent_totientAffineOddFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 892,
+      "line": 927,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "linearIndependent_canonicalTotientKernelFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 900,
+      "line": 935,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "finrank_canonicalTotientKernel_eq",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 954,
+      "line": 989,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "TotientDyadicKernelIndex",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 964,
+      "line": 1095,
       "role": "concept",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "fullTotientKernelFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 967,
+      "line": 1098,
       "role": "concept",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "canonicalTotientKernelToFull",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 972,
+      "line": 1103,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "fullTotientKernelFamily_canonicalTotientKernelToFull",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 979,
+      "line": 1110,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "range_canonicalTotientKernelFamily_subset_full",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 991,
+      "line": 1122,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "nat_le_two_pow_self",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 998,
+      "line": 1129,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "not_finiteDimensional_span_fullTotientKernel",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1014,
+      "line": 1145,
       "role": "statement",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "CompressedAdjointCertificate",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1039,
+      "line": 1171,
       "role": "concept",
       "statement_node": "compressed_adjoint_contradiction_consumer"
     },
     {
       "declaration": "false_of_compressedAdjointCertificate",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1051,
+      "line": 1183,
       "role": "statement",
       "statement_node": "compressed_adjoint_contradiction_consumer"
     },
@@ -2167,98 +2167,98 @@
     {
       "declaration": "TotientOddCoreIndex",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1083,
+      "line": 1215,
       "role": "concept",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "oddCoreTotientKernelFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1086,
+      "line": 1218,
       "role": "concept",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "oddCoreLevel",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1092,
+      "line": 1224,
       "role": "substrate",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "canonicalToOddCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1097,
+      "line": 1229,
       "role": "substrate",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "oddCoreToCanonical",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1103,
+      "line": 1235,
       "role": "substrate",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "oddCoreTotientKernelFamily_canonicalToOddCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1108,
+      "line": 1240,
       "role": "substrate",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "canonicalToOddCore_oddCoreToCanonical",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1117,
+      "line": 1249,
       "role": "substrate",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "linearIndependent_oddCoreTotientKernelFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1133,
+      "line": 1265,
       "role": "statement",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "range_oddCoreTotientKernelFamily_subset_full",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1157,
+      "line": 1289,
       "role": "substrate",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "totientKernelSeq_zero_mem_span_oddCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1171,
+      "line": 1303,
       "role": "statement",
       "statement_node": "dyadic_channel_odd_core_reduction"
     },
     {
       "declaration": "totientKernelSeq_odd_mem_span_oddCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1187,
+      "line": 1319,
       "role": "substrate",
       "statement_node": "dyadic_channel_odd_core_reduction"
     },
     {
       "declaration": "totientKernelSeq_mem_span_oddCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1206,
+      "line": 1338,
       "role": "statement",
       "statement_node": "dyadic_channel_odd_core_reduction"
     },
     {
       "declaration": "span_range_fullTotientKernel_eq_span_range_oddCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1248,
+      "line": 1380,
       "role": "statement",
       "statement_node": "dyadic_section_basis_classification"
     },
     {
       "declaration": "totientDyadicSectionBasis",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1260,
+      "line": 1392,
       "role": "representation",
       "statement_node": "dyadic_section_basis_classification"
     },
@@ -2412,14 +2412,14 @@
     {
       "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank",
       "module": "Erdos249257/TotientCarryKernelRigidity.lean",
-      "line": 259,
+      "line": 275,
       "role": "statement",
       "statement_node": "rationality_forces_unbounded_carry_rank"
     },
     {
       "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
       "module": "Erdos249257/TotientCarryKernelRigidity.lean",
-      "line": 284,
+      "line": 300,
       "role": "statement",
       "statement_node": "rationality_forces_unbounded_carry_rank"
     },
@@ -2797,119 +2797,119 @@
     {
       "declaration": "totient_mul_prime_cocycle",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 34,
+      "line": 38,
       "role": "statement",
       "statement_node": "prime_dilation_cocycle"
     },
     {
       "declaration": "totient_dilation_clean_of_square_residue",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 48,
+      "line": 147,
       "role": "statement",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "totient_dilation_clean_of_square_witness",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 70,
+      "line": 169,
       "role": "statement",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "exists_square_witness_of_modEq",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 87,
+      "line": 186,
       "role": "substrate",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "totient_dilation_clean_of_square_modEq",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 98,
+      "line": 197,
       "role": "statement",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "pairwise_coprime_prime_squares",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 118,
+      "line": 217,
       "role": "substrate",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "exists_squareCRT_base",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 131,
+      "line": 230,
       "role": "substrate",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "exists_squareCRT_base_of_distinct_primes",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 148,
+      "line": 247,
       "role": "statement",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "exists_large_squareCRT_base",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 164,
+      "line": 263,
       "role": "statement",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "exists_squareCRT_clean_totient_family",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 198,
+      "line": 297,
       "role": "statement",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "exists_squareCRT_clean_horizon",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 228,
+      "line": 327,
       "role": "statement",
       "statement_node": "square_crt_correction_suppression"
     },
     {
       "declaration": "alternating_powerset_sum_eq_zero_of_insert_invariant",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 264,
+      "line": 363,
       "role": "statement",
       "statement_node": "alternating_cube_insertion_cancellation"
     },
     {
       "declaration": "actualOneCubeCoeff",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 280,
+      "line": 379,
       "role": "concept",
       "statement_node": "clean_square_cube_does_not_separate"
     },
     {
       "declaration": "squareCRT_clean_block_can_vanish",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 285,
+      "line": 459,
       "role": "finite_instance",
       "statement_node": "clean_square_cube_does_not_separate"
     },
     {
       "declaration": "squareCRT_vanishing_countermodel_is_clean",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 294,
+      "line": 468,
       "role": "finite_instance",
       "statement_node": "clean_square_cube_does_not_separate"
     },
     {
       "declaration": "squareCRT_clean_block_can_be_nonzero",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 303,
+      "line": 477,
       "role": "finite_instance",
       "statement_node": "clean_square_cube_does_not_separate"
     },
     {
       "declaration": "squareCRT_nonzero_countermodel_is_clean",
       "module": "Erdos249257/SquareCRTCube.lean",
-      "line": 311,
+      "line": 485,
       "role": "finite_instance",
       "statement_node": "clean_square_cube_does_not_separate"
     },
@@ -3336,56 +3336,56 @@
     {
       "declaration": "checkerboard",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 15,
+      "line": 22,
       "role": "concept",
       "statement_node": "checkerboard_unique_joint_annihilator"
     },
     {
       "declaration": "checkerboard_separable",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 19,
+      "line": 26,
       "role": "statement",
       "statement_node": "checkerboard_unique_joint_annihilator"
     },
     {
       "declaration": "checkerboard_unique",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 25,
+      "line": 32,
       "role": "statement",
       "statement_node": "checkerboard_unique_joint_annihilator"
     },
     {
       "declaration": "fourPoint_layer_identity",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 38,
+      "line": 45,
       "role": "statement",
       "statement_node": "four_point_divisor_layer_identity"
     },
     {
       "declaration": "residueClass_step_has_centred_completion",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 55,
+      "line": 62,
       "role": "statement",
       "statement_node": "affine_step_centred_completion"
     },
     {
       "declaration": "PrimeRayLayerSupply",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 88,
+      "line": 95,
       "role": "concept",
       "statement_node": "prime_ray_cyclotomic_open_sockets"
     },
     {
       "declaration": "BoundedDegreeOrderConsumer",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 95,
+      "line": 102,
       "role": "concept",
       "statement_node": "prime_ray_cyclotomic_open_sockets"
     },
     {
       "declaration": "FinitePrimeSupportEscape",
       "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "line": 102,
+      "line": 151,
       "role": "concept",
       "statement_node": "prime_ray_cyclotomic_open_sockets"
     },
@@ -3532,49 +3532,49 @@
     {
       "declaration": "totientKernelSectionIndex_spec",
       "module": "Erdos249257/TotientKernelIndex.lean",
-      "line": 118,
+      "line": 124,
       "role": "statement",
       "statement_node": "all_base_totient_kernel_arithmetic_index"
     },
     {
       "declaration": "totientKernelResidueAtLevel_injective",
       "module": "Erdos249257/TotientKernelIndex.lean",
-      "line": 184,
+      "line": 190,
       "role": "statement",
       "statement_node": "all_base_totient_kernel_arithmetic_index"
     },
     {
       "declaration": "existsUnique_totientKernelResidueAtLevel",
       "module": "Erdos249257/TotientKernelIndex.lean",
-      "line": 207,
+      "line": 213,
       "role": "statement",
       "statement_node": "all_base_totient_kernel_arithmetic_index"
     },
     {
       "declaration": "card_totientKernelSectionLevel",
       "module": "Erdos249257/TotientKernelIndex.lean",
-      "line": 235,
+      "line": 241,
       "role": "statement",
       "statement_node": "all_base_totient_kernel_arithmetic_index"
     },
     {
       "declaration": "card_totientKernelSectionIndex",
       "module": "Erdos249257/TotientKernelIndex.lean",
-      "line": 243,
+      "line": 249,
       "role": "statement",
       "statement_node": "all_base_totient_kernel_arithmetic_index"
     },
     {
       "declaration": "card_totientKernelIndex_eq_two_add_sum",
       "module": "Erdos249257/TotientKernelIndex.lean",
-      "line": 255,
+      "line": 264,
       "role": "statement",
       "statement_node": "all_base_totient_kernel_arithmetic_index"
     },
     {
       "declaration": "card_totientKernelIndex",
       "module": "Erdos249257/TotientKernelIndex.lean",
-      "line": 266,
+      "line": 277,
       "role": "statement",
       "statement_node": "all_base_totient_kernel_arithmetic_index"
     }

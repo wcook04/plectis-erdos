@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:728de59b30bf83e78d576aba3684073b60604c912987b423fb59a70f009f3033",
-  "module_count": 1033,
-  "synopsis_count": 838,
+  "source_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+  "module_count": 1044,
+  "synopsis_count": 849,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3588,9 +3588,64 @@
       "synopsis": "Erdős #1041: the constant `2` from the critical-point balance alone `CassiniTreeBudget` falsifies the coarea/tree-length metric estimate: the Cassini family makes the proposed tree budget numerically smaller than the distance between two roots. That kills the route, not the conjecture — the Cassini segment itself has length `2a < 2`. This module recovers the sharp metric scale `2` by a completely different mechanism, with no coarea, no tree, and no perimeter tail. It uses only the **logarithmic balance at a critical point** together with the geometric mean of the root distances. It also checks the decisive algebraic core of the stronger global disk theorem: for roots in the closed unit disk, the two nearest roots to **every** critical point have total distance at most `2`, with no boundary-annulus exception (`two_add_le_two_of_disk_inverse_balance`). The theorem Let `c` be a point at which the logarithmic derivative vanishes, ``` ∑_k (c - z_k)⁻¹ = 0, ``` and let `r` be the geometric mean of the distances, `r^n = ∏_k ‖c - z_k‖`. Then two distinct roots satisfy ``` ‖c - z_i‖ + ‖c - z_j‖ ≤ 2r. ``` (`exists_two_roots_dist_sum_le_two_mul_geomMean`.) Combined with any bound placing some critical value inside the unit lemniscate — for roots in the open unit disc the discriminant/Hadamard bound `|Disc| < n^n` supplies one — this produces a critical point `c` and two roots whose **broken line through `c` has total length `< 2`**, which is exactly the Erdős–Herzog–Piranian scale. Why this is not yet the Erdős path The two straight spokes can leave the lemniscate. The degree-five exam"
     },
     {
+      "id": "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+      "path": "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
+      "synopsis": "Erdős #1041: a safe cubic spoke and its cyclic-fibre consumer Every monic cubic whose three listed roots lie in the open unit disk has at least one root whose complete spoke from the origin stays in the closed unit sublevel set. The proof selects a root by a three-charge sum and then applies AM--GM to the other two root distances. The resulting envelope is exactly `(1-t)(1+t+t^2)=1-t^3`. The analytic companion pulls the selected spoke back through `w=(z-h)^q`. For `q>=2`, one safe quotient root has a regular `q`-point fibre, which supplies two distinct roots and the strict length budget. This file kernel-checks the new cubic selector and spoke estimate; finite fibre existence and the regular-orbit mean-square identity are proved in ordinary mathematics in the companion note and are not asserted as axioms here."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase",
+      "path": "ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean",
+      "synopsis": "Erdős #1041: a coefficient-controlled cyclic tetranomial class For a quotient root of `g(w) = w^m + a*w^r + b*w^s + c`, `m >= r >= s >= 1`, Abel summation turns the root spoke into three vectors with nonnegative scalar coefficients whose sum is `1-u^m`: `g(u*w) = (1-u^s)c - (u^s-u^r)(a*w^r+w^m) - (u^r-u^m)w^m`. The root equation identifies the middle tail as `-(c+b*w^s)`. Consequently `‖b‖+‖c‖ <= 1`, `‖w‖<1`, and `‖c‖<1` put all three vectors strictly inside the unit ball, regardless of the size of the middle coefficient `a`. The whole root spoke is therefore in the strict unit lemniscate. The analytic companion supplies the root-product and cyclic-fibre steps. This module checks the arbitrary-exponent factorization and its strict norm budget."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase",
+      "path": "ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean",
+      "synopsis": "Erdős #1041: the arbitrary cyclic-trinomial spoke kernel For `f(z) = (z-h)^(q*m) + a*(z-h)^(q*r) + c`, put `w=(z-h)^q`. If `w` is a root of `w^m+a*w^r+c` and `‖w‖^m ≤ ‖c‖`, then the entire radial spoke from `h` to every member of the `q`-point fibre over `w` stays below `‖c‖`. Vieta supplies such a quotient root, while the open-unit-disk hypothesis makes `‖c‖<1` and the fibre radius strictly smaller than one. More strongly, if merely `‖w‖<1` and `‖c‖<1`, then the same spoke is strictly inside the unit lemniscate. Thus every root spoke is safe for a centred trinomial, and every fibre spoke is safe after a nontrivial cyclic lift. The accompanying analytic note performs those finite root-selection and fibre steps. This file kernel-checks the load-bearing arbitrary-exponent identity and norm estimate."
+    },
+    {
       "id": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
       "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
       "synopsis": "Erdős #1041: Newton-flow ray separation For `u = -log |f|`, the normalized gradient field away from the critical points is the complex Newton field `-f / f'`. Consequently the image of a trajectory under `f` satisfies the scalar equation `w' = -w`: its argument is constant and its modulus decays exponentially. This is the exact algebraic input missing from the failed local-hole decomposition in the March 2026 candidate proof. It does not by itself prove the full path theorem: the remaining producer is a planar Morse/Reeb decomposition cut along the resulting ray-separated separatrices."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
+      "path": "ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean",
+      "synopsis": "Erdős #1041: primitive-quintic boundary tails For the paraorthogonal boundary of `z^5 + a*z^4 + b*z + c`, the two missing middle coefficients fix the first three real angular moments. The cubic separator below has total mass `5 - 2*r`, whereas one safe atom can contribute at most `4 - 2*r`. The exact unit gap forces two distinct safe atoms. The companion note derives these real moment hypotheses from Newton's identities for the five unit-circle roots. This module formalizes the load-bearing finite extremal argument and its strict tail-energy consumer."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+      "path": "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean",
+      "synopsis": "Erdős #1041: primitive-quintic closed-disk tails The boundary cubic separator has a harmonic extension to the open unit disk. Its sum over the five roots is still exactly `5 - 2 * r`, because only the first three Newton sums occur. A root whose full tail energy is at least one contributes at most `2 / 31`, whereas an arbitrary disk point contributes at most `4 - 2 * r`. Four unsafe roots therefore miss the exact separator mass by at least `23 / 31`. This file formalizes the finite real-algebraic core, including the zero-`a` closed-disk equality case. The companion note derives its hypotheses from the roots of the primitive sparse quintic `z^5 + a*z^4 + b*z + c` after rotating `a` to a nonnegative real number."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.SharpCollinearAlternation",
+      "path": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+      "synopsis": "Sharp constrained alternation for the collinear Erdős #1041 case This module isolates the rigidity argument behind the sharp adjacent-gap estimate. If two monic real polynomials of the same degree agree at the two endpoints, the second polynomial cannot be uniformly smaller than the first at a full alternating sequence of interior peaks: otherwise their difference has one zero between each consecutive pair of peaks as well as the two endpoint zeros, although its degree has dropped by one. The intended comparison polynomial is the endpoint-normalised scaled Chebyshev polynomial. Keeping the alternation engine independent of that instantiation makes the root-counting step reusable and auditable."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
+      "path": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+      "synopsis": "The sharp Chebyshev comparator for collinear Erdos #1041 For degree `n`, put `r = cos (pi / (2n))`. The polynomial `T_n(r X) / (2^(n-1) r^n)` is monic, vanishes at `-1` and `1`, and has absolute value at most `1 / (2^(n-1) r^n)` on `[-1,1]`. Combining these facts with the constrained alternation theorem gives the sharp upper bound for one of the alternating interior peaks of any monic comparison polynomial with the same endpoint zeros."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector",
+      "path": "ErdosProblems/Erdos1041/TetranomialElementarySymmetricSelector.lean",
+      "synopsis": "Erdős #1041: the second elementary-symmetric tail selector The tail-resultant selector uses only the first elementary symmetric energy `sum x_i`, where `x_i` is a squared tail norm. This module checks the next sharp layer for five tails. If their product is at most one and their pair-energy is below `6 + 4 * product`, then two tails are strictly below one. The proof is a compression argument. When `0 <= y <= 1 <= z`, replacing `(y,z)` by `(y*z,1)` cannot increase the second elementary symmetric sum; the drop is `(1-y)(z-1)` times the sum of the other variables. Repeating leaves `(product,1,1,1,1)`, whose pair-energy is `6 + 4 * product`."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TetranomialL2Selector",
+      "path": "ErdosProblems/Erdos1041/TetranomialL2Selector.lean",
+      "synopsis": "Erdős #1041: an L2 selector for cyclic tetranomials For tails `c + b * v i`, a vanishing first moment removes the mixed term from the total squared norm. If that total is below `card S - 1`, at least two distinct tails have norm below one. Applied with `v i = w_i^s`, Newton's identities provide the vanishing moment whenever `s` is absent from the additive semigroup generated by `m-r` and `m-s` for `g(w) = w^m + a*w^r + b*w^s + c`. This module kernel-checks the finite-family mean-square identity, the two-point selector, and a convenient coefficient-only budget. The companion note gives the Newton-semigroup specialization and cyclic-fibre consequence."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector",
+      "path": "ErdosProblems/Erdos1041/TetranomialProductSensitiveSelector.lean",
+      "synopsis": "Erdős #1041: product-sensitive tetranomial L2 selector The crude estimate `sum x_i <= card S` discards the root product. For numbers in `[0,1]`, the sharp elementary inequality `sum x_i <= card S - 1 + product x_i` retains it. Applied to `x_i = normSq (w_i^s)`, Vieta turns the product into `normSq(c)^s`. This module checks the finite inequality and its exact signed L2 selector consumer; the companion note performs the Vieta specialization."
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.TetranomialTailProductSelector",
+      "path": "ErdosProblems/Erdos1041/TetranomialTailProductSelector.lean",
+      "synopsis": "Erdős #1041: a tail-resultant bonus for the tetranomial selector The threshold `card S - 1` in the two-safe-tail L2 argument can be raised when the product of all tail energies is retained. When that product is at most one, a family with at most one entry below one has energy at least `card S - 1 + product`. This sharp form is supplemented below by a more general, weaker common-bound variant valid without the product-at-most-one hypothesis. For tetranomial tails `c + b * w_i^s`, their product is the resultant of the polynomial and `b*X^s+c`. This module kernel-checks the finite product-bonus lemma and its signed-energy consumer. The companion note performs the resultant specialization and records deterministic coverage evidence."
     },
     {
       "id": "ErdosProblems.Erdos1049.AdelicHeightBridge",
@@ -3675,7 +3730,7 @@
     {
       "id": "ErdosProblems.Erdos243.SparseResetRecovery",
       "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "synopsis": "Erdős #243: the finite negative-mass endpoint This module isolates the shortest checked consumer for the current frontier. If the normalized negative part of the centered defect is summable, then the natural tail state is eventually bounded. Division-free normalized defect vanishing then makes the integral defect eventually zero, so the original denominators eventually follow the Sylvester recurrence. The unrestricted problem is not claimed: a surviving counterexample must have divergent normalized negative mass."
+      "synopsis": "Erdős #243: sparse reset recovery This module isolates the order-theoretic recovery forest behind dynamically reduced reciprocal-tail orbits. It also gives a division-free finite-product bound for the full reset payment on a recovery interval. The declarations do not exclude the unrestricted divergent-negative-mass branch and therefore do not prove Erdős #243."
     },
     {
       "id": "ErdosProblems.Erdos243.WeightedCRTRepair",

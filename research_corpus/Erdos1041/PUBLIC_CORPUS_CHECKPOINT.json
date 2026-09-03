@@ -9,7 +9,7 @@
   "publication_scope": "committed problem-facing Lean, mathematical notes, receipts, and executable checkers",
   "status": "source_current_problem_snapshot",
   "corpus_manifest_path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-  "corpus_manifest_sha256": "aba4634c2321bcd222a770addf279bb9f6dc4217b07120fc17851b2843901d73",
+  "corpus_manifest_sha256": "4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
   "strongest_result_map_path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
   "strongest_result_map_sha256": "57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
 }

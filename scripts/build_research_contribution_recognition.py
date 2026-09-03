@@ -1519,9 +1519,12 @@ def _aggregate_detail_text(
 
 def human_projection(projection: dict[str, Any]) -> bytes:
     rows = projection["chronological"]
+    # REUSE-IgnoreStart — these strings are emitted into the generated
+    # projection's own header; they do not license this script.
     lines = [
         "<!-- SPDX-FileCopyrightText: 2026 Will Cook -->",
         "<!-- SPDX-License-Identifier: Apache-2.0 -->",
+    # REUSE-IgnoreEnd
         "",
         "# Accepted contribution recognition and impact",
         "",

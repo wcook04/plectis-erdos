@@ -236,6 +236,8 @@ Only after those theorem-level facts comes the corpus census. The current semant
 The nonrecurring view contains 183 unconditional object theorems, 55 scoped barriers, and 46 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
 
 The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 229 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
+
+Of 23 substantial Lean propositions extracted from hypotheses of conditional theorems, 17 are provably equivalent to an endpoint: 14 to #249 and 3 to the `1/2` membership test for #257. Equivalence here is kernel-checked against the extracted proposition, not a claim that either endpoint is settled.
 <!-- END semantic_public_census -->
 
 The large #249 denominator exclusion is a direct, kernel-checked instantiation
@@ -1563,3 +1565,130 @@ the displayed formal statements; they do not certify novelty, priority,
 significance, or the still-open Erdős endpoints.
 
 </details>
+
+## Recovered from the front page
+The README is the human front door and is held to a short word budget. The sections below were moved here verbatim so that a cold reader who follows the front page still reaches every statement it used to carry.
+
+### Problem statements
+
+[`docs/papers/corpus.json`](docs/papers/corpus.json) is the machine-readable
+index of the papers.
+
+| Problem | Mathematical statement |
+|---|---|
+| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? |
+| **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? |
+| **#249** | Is `∑ φ(n)/2ⁿ` irrational? |
+| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? |
+| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? |
+| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? |
+| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? |
+| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? |
+
+The table is the complete problem inventory: no query is required to learn
+which problems exist or what they ask, and reading it does not require
+ai_workflow, a sibling repository, a cache, or network access. It is navigation, not proof
+authority or a novelty claim. Drilldown is optional and uses only tracked
+public files; it needs no private checkout, sibling repository, cache, or
+network access.
+
+### External verification
+
+Nineteen selected Lean propositions are declared a second time, without proofs,
+in [`ExternalVerification/Statements.lean`](ExternalVerification/Statements.lean).
+Comparator checks the proof-bearing module against those separate declarations
+and against a fixed axiom budget of `propext`, `Quot.sound`, and
+`Classical.choice`; an adversarial fixture alters one statement and must be
+rejected. [`formalization.yaml`](formalization.yaml) records, per selected
+result, the contribution class, exact statement, source declaration, boundary,
+`sorry` count, and axioms. Manifest and [verification packet](docs/EXTERNAL_VERIFICATION.md)
+cover all eight problem programmes; [replay](docs/EXTERNAL_VERIFICATION_REPLAY.md)
+gives the reviewer-run Linux route. The same check runs in continuous
+integration against the reviewed source commit. Comparator checks propositions
+only: no paper deduction, cited theorem, external computation, intended
+meaning, novelty, or significance.
+
+[RESULTS](docs/RESULTS.md) gives each strongest checked result and its limit;
+[prior art](docs/PRIOR_ART.md) records classical, subsuming, and earlier public
+work. The finite #249 result is the
+classical Farey/mediant bound (numerical delta `0`): Farey's method supplies
+the number directly, exactly the Farey bound, not an improvement. Full-kernel
+infinite rank is Coons's prior result, the all-base rank paper theorem uses
+Martin externally, and #269's two-prime result is not first.
+
+This self-contained public Plectis checkout is not an entrypoint into any private
+development system. `v0.9.0` is the latest tagged release and citation anchor;
+[`docs/claims.json`](docs/claims.json) pins the exact formal-source checkpoint
+this release ships. Lean source checked by the pinned Lean kernel is
+proof authority; do not infer results from private or unreleased work.
+
+### What the formal source establishes
+
+Labels are descriptions, not scores. **Formalised here** means a statement
+rendered and kernel-checked in Lean, which for a known theorem is a checked
+rendering and not a priority claim; **proved here** means the argument is this
+project's. **Verified finite instance** means
+Lean checked only the listed inputs; **conditional reduction** means the
+conclusion depends on a named open condition.
+
+| Status | Result |
+|---|---|
+| **formalised here** | For every integer `b ≥ 2`, the full-support series `∑ 1/(bⁿ - 1)` is irrational; Erdős (1948) is a checked rendering rather than a new result. Several named infinite-support families are also formalised; this does not cover every infinite support. |
+| **formalised here** | The base-2 Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level. |
+| **proved here** | For the #257 test value `1/2`, achievement-set membership is equivalent to infinitely many greedy skips and would produce an infinite support of rational sum, refuting universal #257. Under the last-skip schema's hypotheses (a rank floor, a carry condition, and a strict middle-cell inequality), the upper branch and the middle coordinate `-3` are impossible. |
+| **conditional reduction** | Within that same last-skip contradiction schema, the two still-unexcluded middle coordinates, `-2` and `-1`, would also be ruled out if one current contribution were larger than the sum of all later possible contributions. That inequality is not proved. |
+| **formalised here** | The dyadic sections of Euler's totient have an explicit rational basis; for `e ≥ 1` the level-`e` span has dimension exactly `2ᵉ + 1`. The Lean proof is an independent constructive route to an independence consequence of Martin's stronger theorem; this is a theorem about the coefficient sequence, not the irrationality of `S`. |
+| **unconditional progress** | For every integer `k ≥ 2`, the sections through level `e ≥ 1` have rank `kᵉ + 1`, with an explicit basis and complete scalar relation normal form. The paper combines Martin's external affine-independence theorem with Lean-checked zero-channel and composite-base reduction identities, exact fixed-level residue coordinates, unconditional spanning, and a `kᵉ + 1` rank theorem parameterised by explicit linear independence. Martin's theorem and the all-base linear-independence premise are not formalised. |
+| **formalised here** | Applying the classical Farey/mediant bound directly to the committed `K=240` interval excludes rational denominators through `79 639 646 646 701 375 323 355 774 875 831 053` (about `7.96 × 10³⁴`). This is exactly the Farey bound, not an improvement on it; Lean also checks that the next denominator fails this finite window. |
+| **proved here** | `S` is irrational exactly when every positive binary tail difference is non-integral, equivalently when every fixed pair has a finite certificate. Finishing the argument would require certificates at arbitrarily large stages; that step is not proved. |
+| **verified finite instance** | Lean proves a diagonal certificate at every `t ≤ 82`. Historical free-position audit: 125 verified log rows represent 123 distinct off-diagonal `(h,N,L)` certificates in 122 Lean files. This finite evidence does not prove successful cases beyond every fixed cutoff. |
+
+#### Other exact mathematics in the corpus
+
+| Package | Exact checked content | Boundary |
+|---|---|---|
+| Fair-coin coprimality | `S = 1/2 + P(gcd(X,Y)=1)` for independent `P(X=n)=2⁻ⁿ`. | Irrationality remains open. |
+| Squared-Lambert gcd moments | Two exact divisor-sum identities for squared Lambert denominators. | No transfer to the open Möbius row. |
+| Stern–Brocot cylinder law | Exact stop/child splitting; depth error at most `(2/3)^d`. | Probability law, not irrationality. |
+| Fibonacci/continuant run stability | Height at least `F_{r+3}` with exact defect expansion. | No analytic denominator-clearing theorem. |
+| Tempered binary tail rigidity | Exact rationality/carry-orbit classification for `c(n) ≤ n`. | Needs problem-specific orbit control. |
+| Exact Möbius-shadow denominator | Exact reduced denominator and an explicit divisor lower bound. | No unbounded avoidance supply. |
+| Scalar-localisation height obstruction | If `H ∣ x.den` and `(c·x).den ∣ H`, then `x.den/H ∣ |c|`. | Local obstruction only. |
+
+Typed routes expose sources: `probabilistic_gcd_geometry` for the first four
+rows, `boolean_mobius_constraints` for tail rigidity, and
+`arithmetic_obstruction_interfaces` for the last two. Orientation also lists
+eventually-periodic nonnegative weighted irrationality, a signed
+irrational-or-base-terminating dichotomy, five binary-carry
+criteria/consequences, and two scoped #249 no-go countermodels.
+Five further obstructions are stated with their limits in
+[RESULTS](docs/RESULTS.md#other-standalone-exact-obstructions).
+
+An exact final-skip band formula does not show that the actual orbit avoids
+an unsafe band.
+
+[Orientation](docs/ORIENTATION.md) routes claims; the retained
+[mathematics paper](erdos249-257-main-paper.pdf) preserves the joint
+#249/#257 exposition.
+
+## What remains open
+
+- Prove that `S = ∑ φ(n)/2ⁿ` is irrational without placing a bound on a possible
+  rational denominator.
+- Produce the unbounded certificate supply required by the exact #249
+  reduction.
+- Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite
+  `A ⊆ ℕ`, rather than only the named support families formalised here.
+
+The two working records each close with a section titled "The wall": every
+attempted argument class is stopped by a stated bound, recorded with what it
+does not rule out.
+
+[`SCOPE.md`](SCOPE.md) is the short boundary statement. The exact expert
+handoffs state what input is requested, current guess, alternatives,
+discriminating evidence, checked consumer, and endpoint-or-counterexample
+boundary. See
+[RESULTS](docs/RESULTS.md#exact-questions-for-a-human-expert) and
+`python3 scripts/query_expert_handoffs.py`. A refuted route is withdrawn in
+the next edition and the refutation credited.
+

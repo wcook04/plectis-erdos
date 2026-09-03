@@ -509,9 +509,12 @@ def filtered_section(title: str, groups: dict[str, list[str]], links: dict[str, 
 def human_projection(projection: dict[str, Any]) -> bytes:
     rows = projection["chronological"]
     links = {row["return_id"]: receipt_link(row) for row in rows}
+    # REUSE-IgnoreStart — these strings are emitted into the generated
+    # projection's own header; they do not license this script.
     lines = [
         "<!-- SPDX-FileCopyrightText: 2026 Will Cook -->",
         "<!-- SPDX-License-Identifier: Apache-2.0 -->",
+    # REUSE-IgnoreEnd
         "",
         "# Accepted research contributions",
         "",

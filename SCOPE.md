@@ -18,12 +18,20 @@ Machine-resolvable open propositions:
 - `remaining_open.erdos_1041_lemniscate_connection`: python3 scripts/query_corpus.py --open remaining_open.erdos_1041_lemniscate_connection
 - `remaining_open.erdos_1049_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_1049_irrationality
 - `remaining_open.erdos_243_eventual_recurrence`: python3 scripts/query_corpus.py --open remaining_open.erdos_243_eventual_recurrence
+- `remaining_open.erdos_243_overlap_height_growth`: python3 scripts/query_corpus.py --open remaining_open.erdos_243_overlap_height_growth
+- `remaining_open.erdos_249_first_harmonic_anti_concentration`: python3 scripts/query_corpus.py --open remaining_open.erdos_249_first_harmonic_anti_concentration
 - `remaining_open.erdos_249_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_249_irrationality
 - `remaining_open.erdos_251_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_251_irrationality
+- `remaining_open.erdos_269_cofinal_local_window_escape`: python3 scripts/query_corpus.py --open remaining_open.erdos_269_cofinal_local_window_escape
+- `remaining_open.erdos_269_reduced_tail_nonintegrality`: python3 scripts/query_corpus.py --open remaining_open.erdos_269_reduced_tail_nonintegrality
 - `remaining_open.erdos_269_three_prime_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_269_three_prime_irrationality
+- `remaining_open.erdos_269_two_dimensional_representation`: python3 scripts/query_corpus.py --open remaining_open.erdos_269_two_dimensional_representation
 - `remaining_open.erdos_68_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_68_irrationality
 - `remaining_open.half_value_membership`: python3 scripts/query_corpus.py --open remaining_open.half_value_membership
+- `remaining_open.twenty_one_actual_orbit_invariant`: python3 scripts/query_corpus.py --open remaining_open.twenty_one_actual_orbit_invariant
+- `remaining_open.twenty_one_final_skip_exclusion`: python3 scripts/query_corpus.py --open remaining_open.twenty_one_final_skip_exclusion
 - `remaining_open.twenty_one_permanent_affine_supercapacity`: python3 scripts/query_corpus.py --open remaining_open.twenty_one_permanent_affine_supercapacity
+- `remaining_open.twenty_one_scaled_remainder_cofinal_return`: python3 scripts/query_corpus.py --open remaining_open.twenty_one_scaled_remainder_cofinal_return
 - `remaining_open.unbounded_certificate_supply`: python3 scripts/query_corpus.py --open remaining_open.unbounded_certificate_supply
 - `remaining_open.universal_257_all_infinite_supports`: python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports
 

@@ -28,10 +28,10 @@
       "scope_caveat":"These coordinates make no distributional, convergence, rationality, or irrationality claim.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"prime0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":34},
-        {"declaration":"primeGap0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":38},
-        {"declaration":"prime0_mono_step","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":146},
-        {"declaration":"primeGap0_cast","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":150}
+        {"declaration":"prime0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":40},
+        {"declaration":"primeGap0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":44},
+        {"declaration":"prime0_mono_step","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":152},
+        {"declaration":"primeGap0_cast","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":156}
       ]
     },
     {
@@ -48,10 +48,10 @@
       "scope_caveat":"The definitions supply neither convergence nor an infinite-series identity; the already-authored theorem nodes in Z17 and Z31 retain those claims.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"dyadicPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":95},
-        {"declaration":"prime0DisplayedPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":100},
-        {"declaration":"dyadicDifferencePartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":115},
-        {"declaration":"primeGapPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":155}
+        {"declaration":"dyadicPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":101},
+        {"declaration":"prime0DisplayedPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":106},
+        {"declaration":"dyadicDifferencePartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":121},
+        {"declaration":"primeGapPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":161}
       ]
     },
     {
@@ -68,10 +68,10 @@
       "scope_caveat":"These term definitions and the factor-two identity prove no summability or irrationality conclusion.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"primeDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":172},
-        {"declaration":"primeDisplayedDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":177},
-        {"declaration":"primeGapDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":181},
-        {"declaration":"primeDisplayedDyadicTerm_eq_two_mul","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":185}
+        {"declaration":"primeDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":183},
+        {"declaration":"primeDisplayedDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":188},
+        {"declaration":"primeGapDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":192},
+        {"declaration":"primeDisplayedDyadicTerm_eq_two_mul","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":196}
       ]
     },
     {
@@ -88,10 +88,10 @@
       "scope_caveat":"This is an abstract rational recurrence, not the actual infinite prime-gap tail.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"DyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":278},
-        {"declaration":"tailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":282},
-        {"declaration":"RatIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":298},
-        {"declaration":"dyadicTailBlock","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":304}
+        {"declaration":"DyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":482},
+        {"declaration":"tailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":544},
+        {"declaration":"RatIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":575},
+        {"declaration":"dyadicTailBlock","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":647}
       ]
     },
     {
@@ -108,7 +108,7 @@
       "scope_caveat":"This generic arithmetic equivalence does not produce an integral tail shift.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"ratIntegral_sub_int_iff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":334}
+        {"declaration":"ratIntegral_sub_int_iff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":677}
       ]
     },
     {
@@ -125,10 +125,10 @@
       "scope_caveat":"These definitions do not establish the actual prime-gap real recurrence or cofinal escape; the paper's external prime-number-theorem argument is not formalized here.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"RealDyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":492},
-        {"declaration":"realTailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":496},
-        {"declaration":"RealIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":500},
-        {"declaration":"CofinalNonintegralTailShifts","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":528}
+        {"declaration":"RealDyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1372},
+        {"declaration":"realTailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1376},
+        {"declaration":"RealIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1380},
+        {"declaration":"CofinalNonintegralTailShifts","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1408}
       ]
     },
     {
@@ -145,8 +145,8 @@
       "scope_caveat":"This constructs an abstract orbit; it proves neither irrationality nor identification with the actual prime-gap tail.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"rationalDyadicOrbit","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":504},
-        {"declaration":"rationalDyadicOrbit_recurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":508}
+        {"declaration":"rationalDyadicOrbit","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1384},
+        {"declaration":"rationalDyadicOrbit_recurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1388}
       ]
     },
     {
@@ -163,39 +163,39 @@
       "scope_caveat":"These definitions alone prove neither the finite telescoping theorem, an infinite limit, nor an aperiodic rational-sum example; Z17 retains the finite identity.",
       "confidence":"high",
       "evidence":[
-        {"declaration":"carryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":738},
-        {"declaration":"carryPartialSum","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":742},
-        {"declaration":"natCarryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":760}
+        {"declaration":"carryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1129},
+        {"declaration":"carryPartialSum","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1133},
+        {"declaration":"natCarryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1177}
       ]
     }
   ],
   "declaration_roles": [
-    {"declaration":"prime0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":34,"role":"representation","statement_node":"zero_based_prime_gap_coordinates"},
-    {"declaration":"primeGap0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":38,"role":"representation","statement_node":"zero_based_prime_gap_coordinates"},
-    {"declaration":"prime0_mono_step","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":146,"role":"statement","statement_node":"zero_based_prime_gap_coordinates"},
-    {"declaration":"primeGap0_cast","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":150,"role":"statement","statement_node":"zero_based_prime_gap_coordinates"},
-    {"declaration":"dyadicPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":95,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
-    {"declaration":"prime0DisplayedPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":100,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
-    {"declaration":"dyadicDifferencePartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":115,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
-    {"declaration":"primeGapPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":155,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
-    {"declaration":"primeDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":172,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
-    {"declaration":"primeDisplayedDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":177,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
-    {"declaration":"primeGapDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":181,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
-    {"declaration":"primeDisplayedDyadicTerm_eq_two_mul","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":185,"role":"statement","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
-    {"declaration":"DyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":278,"role":"concept","statement_node":"rational_dyadic_tail_coordinate_system"},
-    {"declaration":"tailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":282,"role":"representation","statement_node":"rational_dyadic_tail_coordinate_system"},
-    {"declaration":"RatIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":298,"role":"concept","statement_node":"rational_dyadic_tail_coordinate_system"},
-    {"declaration":"dyadicTailBlock","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":304,"role":"representation","statement_node":"rational_dyadic_tail_coordinate_system"},
-    {"declaration":"ratIntegral_sub_int_iff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":334,"role":"statement","statement_node":"integrality_is_invariant_under_integer_translation"},
-    {"declaration":"RealDyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":492,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
-    {"declaration":"realTailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":496,"role":"representation","statement_node":"real_tail_escape_coordinate_system"},
-    {"declaration":"RealIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":500,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
-    {"declaration":"CofinalNonintegralTailShifts","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":528,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
-    {"declaration":"rationalDyadicOrbit","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":504,"role":"representation","statement_node":"rational_initial_data_generate_an_exact_rational_orbit"},
-    {"declaration":"rationalDyadicOrbit_recurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":508,"role":"statement","statement_node":"rational_initial_data_generate_an_exact_rational_orbit"},
-    {"declaration":"carryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":738,"role":"representation","statement_node":"free_carry_coordinate_system"},
-    {"declaration":"carryPartialSum","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":742,"role":"representation","statement_node":"free_carry_coordinate_system"},
-    {"declaration":"natCarryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":760,"role":"representation","statement_node":"free_carry_coordinate_system"}
+    {"declaration":"prime0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":40,"role":"representation","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"primeGap0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":44,"role":"representation","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"prime0_mono_step","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":152,"role":"statement","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"primeGap0_cast","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":156,"role":"statement","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"dyadicPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":101,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"prime0DisplayedPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":106,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"dyadicDifferencePartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":121,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"primeGapPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":161,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"primeDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":183,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"primeDisplayedDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":188,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"primeGapDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":192,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"primeDisplayedDyadicTerm_eq_two_mul","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":196,"role":"statement","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"DyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":482,"role":"concept","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"tailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":544,"role":"representation","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"RatIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":575,"role":"concept","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"dyadicTailBlock","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":647,"role":"representation","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"ratIntegral_sub_int_iff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":677,"role":"statement","statement_node":"integrality_is_invariant_under_integer_translation"},
+    {"declaration":"RealDyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1372,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"realTailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1376,"role":"representation","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"RealIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1380,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"CofinalNonintegralTailShifts","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1408,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"rationalDyadicOrbit","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1384,"role":"representation","statement_node":"rational_initial_data_generate_an_exact_rational_orbit"},
+    {"declaration":"rationalDyadicOrbit_recurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1388,"role":"statement","statement_node":"rational_initial_data_generate_an_exact_rational_orbit"},
+    {"declaration":"carryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1129,"role":"representation","statement_node":"free_carry_coordinate_system"},
+    {"declaration":"carryPartialSum","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1133,"role":"representation","statement_node":"free_carry_coordinate_system"},
+    {"declaration":"natCarryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":1177,"role":"representation","statement_node":"free_carry_coordinate_system"}
   ],
   "intra_zone_relations": [
     {"from":"finite_dyadic_partial_sum_coordinates","to":"zero_based_prime_gap_coordinates","relation":"specialises","basis":"The four finite sums instantiate the zero-based prime and gap coordinates; this relation carries no convergence claim."},

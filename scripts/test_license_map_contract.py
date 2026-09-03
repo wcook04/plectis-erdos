@@ -9,6 +9,7 @@ import copy
 import os
 import stat
 import tempfile
+import re
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -19,22 +20,26 @@ ROOT = Path(__file__).resolve().parent.parent
 APACHE = "Apache-2.0"
 MANUSCRIPT_LICENSE = "CC-BY-4.0"
 SPDX_LICENSE_HEADER = "SPDX-License-" "Identifier: "
-MANUSCRIPT_BINARIES = {
-    ".github/banner.png",
-    "claim-faithful-publication-systems-paper.pdf",
-    "cold-clone-to-proof-receipt.pdf",
-    "erdos-68-factorial-denominator-irrationality.pdf",
-    "erdos-243-reciprocal-tail-rigidity.pdf",
-    "erdos-251-prime-gap-dyadic-series.pdf",
-    "erdos-269-three-prime-running-lcm.pdf",
-    "erdos-1041-lemniscate-newton-flow.pdf",
-    "erdos-1049-rational-base-lambert.pdf",
-    "erdos-249-binary-totient-series.pdf",
-    "erdos-257-mersenne-support-subseries.pdf",
-    "erdos249-257-main-paper.pdf",
-    "erdos249-totient-reasoning-surface.pdf",
-    "erdos257-mersenne-reasoning-surface.pdf",
-}
+def rendered_artifacts(root: Path) -> set[str]:
+    """The rendered-artifact set as it exists on disk, not as a hand-kept list.
+
+    The override in REUSE.toml has to match the artifacts that are actually
+    published. A hardcoded mirror of that set drifts every time a paper is
+    added: on 2026-09-01 it was missing `open-source-mathematics-strategy.pdf`
+    and `.github/system-map.png`, both correctly declared CC-BY-4.0 in
+    REUSE.toml, and the contract failed against the licence data rather than
+    against a licence defect. Deriving the set here makes the assertion mean
+    what its message says.
+    """
+    found = {path.name for path in root.glob("*.pdf") if path.is_file()}
+    found |= {
+        f".github/{path.name}"
+        for path in (root / ".github").glob("*.png")
+        if path.is_file()
+    }
+    return found
+
+
 MANUSCRIPT_SOURCES = {
     "paper/claim-faithful-publication-systems-paper.tex",
     "paper/cold-clone-to-proof-receipt.tex",
@@ -202,7 +207,7 @@ def license_map_errors(
         errors.append("REUSE.toml must contain one CC-BY-4.0 override")
     else:
         observed = annotation_paths(manuscript_overrides[0])
-        if observed != MANUSCRIPT_BINARIES:
+        if observed != rendered_artifacts(ROOT):
             errors.append(
                 "REUSE.toml manuscript binary override must match the exact "
                 "rendered-artifact set"
@@ -218,12 +223,22 @@ def license_map_errors(
         if f"LICENSES/{license_id}.txt" not in license_files:
             errors.append(f"licence text is missing for {license_id}")
 
-    readme_boundary = (
-        "Code, scripts, and documentation use Apache-2.0; manuscripts use "
-        "CC-BY-4.0;"
+    # Both halves of the boundary have to survive a rewrite, but the wording
+    # does not: matching one exact clause made the contract fail on 2026-09-01
+    # when the README was moved to paper register while still stating the same
+    # boundary correctly. Require the two scoped facts in one paragraph.
+    licence_paragraphs = [
+        block
+        for block in re.split(r"\n\s*\n", readme)
+        if APACHE in block and MANUSCRIPT_LICENSE in block
+    ]
+    stated = any(
+        re.search(r"[Cc]ode[^.]*\b" + re.escape(APACHE), block)
+        and re.search(r"manuscript[^.]*\b" + re.escape(MANUSCRIPT_LICENSE), block)
+        for block in licence_paragraphs
     )
-    if readme_boundary not in readme:
-        errors.append("README lost the exact software/manuscript licence boundary")
+    if not stated:
+        errors.append("README lost the software/manuscript licence boundary")
     return errors
 
 
@@ -261,7 +276,7 @@ def main() -> int:
 
     incomplete_override = copy.deepcopy(config)
     incomplete_override["annotations"][1]["path"] = sorted(
-        MANUSCRIPT_BINARIES - {"erdos249-257-main-paper.pdf"}
+        rendered_artifacts(ROOT) - {"erdos249-257-main-paper.pdf"}
     )
     require_reports(
         license_map_errors(
@@ -301,16 +316,35 @@ def main() -> int:
         "missing manuscript license text was accepted",
     )
 
-    weakened_readme = readme.replace(
-        "Code, scripts, and documentation use Apache-2.0; manuscripts use "
-        "CC-BY-4.0;",
-        "Code and manuscripts follow the repository default;",
-        1,
+    # Derive the weakened text from the README that is actually committed. The
+    # previous fixture substituted one hardcoded sentence; once the README was
+    # rewritten that substitution matched nothing, so the fixture handed the
+    # unmodified README to a check it was supposed to make fail, and the
+    # negative test silently stopped testing anything.
+    weakened_readme = re.sub(
+        r"\b(" + re.escape(APACHE) + r"|" + re.escape(MANUSCRIPT_LICENSE) + r")\b",
+        "the repository default",
+        readme,
+    )
+    require(
+        weakened_readme != readme,
+        "README weakening fixture matched nothing, so it proves nothing",
     )
     require_reports(
         license_map_errors(reuse, weakened_readme, sources, license_files),
         "licence boundary",
         "weakened README license boundary was accepted",
+    )
+
+    # A README that names both licences but attaches them to the wrong scopes
+    # states no boundary at all, and must not pass.
+    swapped_readme = readme.replace(APACHE, "\x00").replace(
+        MANUSCRIPT_LICENSE, APACHE
+    ).replace("\x00", MANUSCRIPT_LICENSE)
+    require_reports(
+        license_map_errors(reuse, swapped_readme, sources, license_files),
+        "licence boundary",
+        "README with swapped licence scopes was accepted",
     )
 
     with tempfile.TemporaryDirectory(prefix="license-map-boundary-") as raw:

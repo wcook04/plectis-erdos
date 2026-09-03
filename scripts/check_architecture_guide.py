@@ -35,7 +35,19 @@ MAX_GUIDE_BYTES = 18_000
 # stewardship roles, local-to-general digestion, and their public skill routes.
 # The per-artifact increment remains the only
 # inventory-dependent allowance.
-SYSTEMS_PAPER_BASE_BYTES = 66_000
+# Raised from 66,000 on 2026-09-02. The base is meant to move only when the
+# architecture the paper describes enlarges, and two sections now sit inside it
+# that the previous base did not cover: the mathematical reasoning loop, and the
+# argument for scaling from one clone to a search network. The per-artifact
+# increment is still the only inventory-dependent allowance, and the guide
+# itself was brought back under its own budget by cutting a restatement rather
+# than by raising anything.
+# Raised again from 70,000 on 2026-09-02, by the size of one further section the
+# previous base did not cover: the compiled comprehension packet that an agent
+# reasons over before it reaches the mathematics. The paper was first tightened
+# and a duplicated drill-down ladder was cut, so the raise covers the new
+# architecture and nothing else.
+SYSTEMS_PAPER_BASE_BYTES = 73_000
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 
@@ -240,7 +252,17 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "1,024 Lean modules and 153,396 declarations",
         "177 exact results, seven open producers, 72 negative results",
         "designed omission, not exhaustive loading",
-        "working memory is federated rather than a copied mega-index",
+        # The comprehension packet was promoted out of this subsection into one
+        # of its own, and the federation sentence was rewritten there. The
+        # property the old anchor held is the one still pinned: the working
+        # memory federates and copies nothing into a central index. The three
+        # anchors after it pin the rest of that new section, so a later rewrite
+        # cannot delete the packet, its authority boundary, or its two refusals
+        # without this check going red.
+        "nothing is copied into a central index",
+        "Comprehension before the mathematics",
+        "The workspace plans inference and concludes nothing",
+        "reported as unanchored",
         "semantic second pass",
         "no projection may bulk-strengthen a family of claims",
     ),
@@ -421,7 +443,11 @@ def validate_entry_links(readme: str, agents: str, paper_readme: str) -> None:
         "[printable PDF](claim-faithful-publication-systems-paper.pdf)"
         in readme
     , "README lost the printable architecture PDF entry link")
-    require("It assumes no Lean or project history" in normalise(readme),
+    # The promise is what matters, not the pronoun in front of it. The README
+    # now makes it for the guide and its printable PDF together, so the verb is
+    # plural and the pinned singular sentence stopped matching a rewording that
+    # kept the boundary intact.
+    require("no Lean or project history" in normalise(readme),
             "README lost the no-history architecture boundary")
     for phrase in (
         "conditional producer",

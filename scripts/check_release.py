@@ -57,7 +57,7 @@ from publication_contract import (
     mutation_fixture_failures as publication_mutation_fixture_failures,
     validate_publication_contract,
 )
-from query_corpus import paper_anchor_inventory
+from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory
 from systems_paper_evidence import (
     mutation_fixture_failures as systems_paper_mutation_fixture_failures,
     validate_systems_paper_evidence,
@@ -1228,7 +1228,12 @@ def main() -> int:
         check(m is not None and m.group(1) == expected_pin,
               f"{paper_path} \\commit pin {m.group(1) if m else '<missing>'} != expected {expected_pin}")
         if paper_path == main_paper_row["source"]:
-            check(paper_text.count("blob/main") == 1 and "\\newcommand{\\rootbase}" in paper_text,
+            # At most one, not exactly one. The rule is that no reader-facing
+            # link may float on a branch; the gateway paper was allowed a single
+            # root-navigation base because it once pointed at blob/main. That
+            # base now resolves through \commit, so the paper carries no floating
+            # link at all, which is the stronger state the rule wanted.
+            check(paper_text.count("blob/main") <= 1 and "\\newcommand{\\rootbase}" in paper_text,
                   f"{paper_path} may use blob/main only for the explicit \\rref root-navigation base")
         else:
             check("blob/main" not in paper_text,
@@ -1263,13 +1268,29 @@ def main() -> int:
         check(observed_claim_ids == expected_claim_ids,
               f"paper anchor {anchor['canonical_handle']}: attached claim set drifted")
         observed_open_ids = {row["id"] for row in anchor["attached_open_propositions"]}
+        # Key both sides through the one function the repository owns for this.
+        # Raw field equality cannot succeed here: a sectioning anchor carries
+        # environment None and resolves its environment from its anchor kind,
+        # and a registry title is authored in reader form ("Erdős #68") while
+        # the scanned title is the TeX source form ("Erd\H{o}s \#68"). Comparing
+        # the raw fields made six anchors permanently red while the inventory
+        # they are checked against had already attached the right propositions.
+        anchor_key = canonical_paper_anchor_key(
+            anchor["paper"]["source"],
+            anchor["environment"],
+            anchor["title"],
+            anchor["anchor_kind"],
+        )
         expected_open_ids = {
             row["id"]
             for row in data["remaining_open_propositions"]
             if row.get("paper_anchor")
-            and row["paper_anchor"]["source"] == anchor["paper"]["source"]
-            and row["paper_anchor"]["environment"] == anchor["environment"]
-            and row["paper_anchor"]["title"] == anchor["title"]
+            and canonical_paper_anchor_key(
+                row["paper_anchor"]["source"],
+                row["paper_anchor"]["environment"],
+                row["paper_anchor"]["title"],
+            )
+            == anchor_key
         }
         check(observed_open_ids == expected_open_ids,
               f"paper anchor {anchor['canonical_handle']}: open proposition set drifted")
@@ -1305,7 +1326,7 @@ def main() -> int:
     for paper_path, paper_text in paper_sources:
         source_ref = formal_ref
         for macro, fname, line_s, name in re.findall(
-                r"\\([lm](?:refx?|word|loc))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
+                r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
             if fname.startswith(("Erdos249257/", "ErdosProblems/")):
                 rel = fname
             elif "\\input{problem-note-preamble}" in paper_text:
@@ -1318,7 +1339,7 @@ def main() -> int:
                 continue
             line = int(line_s)
             check(line <= len(lines), f"{paper_path} \\{macro}: {rel}:{line} beyond end of file")
-            if macro in ("lref", "lrefx", "lword", "mref", "mword") and name and line <= len(lines):
+            if macro in ("lref", "lrefx", "lword", "mref", "mword", "rootword") and name and line <= len(lines):
                 check(name_at_line(lines, name, line),
                       f"{paper_path} \\{macro}: {name} not at {rel}:{line} (±{LINE_WINDOW})")
 

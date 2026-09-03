@@ -318,7 +318,7 @@
         {
           "declaration": "ResidueEscapesWindow",
           "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-          "line": 65
+          "line": 71
         }
       ]
     }
@@ -537,7 +537,7 @@
     {
       "declaration": "ResidueEscapesWindow",
       "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
-      "line": 65,
+      "line": 71,
       "role": "concept",
       "statement_node": "residue_escape_window_is_the_strict_canonical_range_predicate",
       "replaces_zone": "Z17",

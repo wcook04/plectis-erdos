@@ -156,7 +156,7 @@
         {
           "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCore",
           "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-          "line": 197
+          "line": 149
         }
       ]
     },
@@ -262,7 +262,7 @@
     {
       "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCore",
       "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-      "line": 197,
+      "line": 149,
       "role": "statement",
       "statement_node": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row"
     },

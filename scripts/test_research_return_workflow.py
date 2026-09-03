@@ -21,9 +21,16 @@ ISSUE_FORM = ROOT / ".github" / "ISSUE_TEMPLATE" / "research_return.yml"
 CHECKOUT_SHA = "3d3c42e5aac5ba805825da76410c181273ba90b1"
 SETUP_PYTHON_SHA = "5fda3b95a4ea91299a34e894583c3862153e4b97"
 
-REPRODUCIBILITY_ENV = (
-    'GIT_NAMESPACE: ""',
-    'GIT_REPLACE_REF_BASE: ""',
+# What the workflow must pin. The path-valued GIT_* selectors are deliberately
+# absent: an empty string is a value, not an absence, and git rejects it for a
+# path ("fatal: The empty string is not a valid path"), so pinning GIT_DIR: ""
+# and its neighbours made actions/checkout fail before any repository content
+# existed. GIT_CONFIG_GLOBAL is a writable neutral file rather than /dev/null,
+# because checkout writes safe.directory into the global config and git 2.55
+# needs a lock, which /dev/null cannot take. FORBIDDEN_ENV below keeps both
+# forms from coming back.
+FORBIDDEN_ENV = (
+    'GIT_CONFIG_GLOBAL: "/dev/null"',
     'GIT_DIR: ""',
     'GIT_WORK_TREE: ""',
     'GIT_INDEX_FILE: ""',
@@ -31,28 +38,21 @@ REPRODUCIBILITY_ENV = (
     'GIT_OBJECT_DIRECTORY: ""',
     'GIT_ALTERNATE_OBJECT_DIRECTORIES: ""',
     'GIT_CEILING_DIRECTORIES: ""',
-    'GIT_DISCOVERY_ACROSS_FILESYSTEM: ""',
-    'GIT_TRACE: ""',
+    'GIT_NAMESPACE: ""',
+    'GIT_REPLACE_REF_BASE: ""',
+)
+
+
+REPRODUCIBILITY_ENV = (
     'GIT_TRACE2: ""',
-    'GIT_TRACE_PACKET: ""',
-    'GIT_TRACE_PERFORMANCE: ""',
-    'GIT_TRACE_SETUP: ""',
-    'GIT_TRACE_CURL: ""',
     'GIT_TRACE2_EVENT: ""',
     'GIT_TRACE2_PERF: ""',
-    'GIT_SSH: ""',
-    'GIT_SSH_COMMAND: ""',
-    'GIT_SSH_VARIANT: ""',
-    'GIT_EXTERNAL_DIFF: ""',
-    'GIT_DIFF_OPTS: ""',
-    'GIT_EDITOR: ""',
-    'GIT_SEQUENCE_EDITOR: ""',
-    'GIT_MERGE_AUTOEDIT: ""',
-    'GIT_CONFIG_GLOBAL: "/dev/null"',
+    'GIT_CONFIG_NOSYSTEM: "1"',
     'GIT_OPTIONAL_LOCKS: "0"',
     'GIT_NO_REPLACE_OBJECTS: "1"',
     'GIT_TERMINAL_PROMPT: "0"',
     'GIT_ASKPASS: "/bin/false"',
+    'GIT_PAGER: "cat"',
     'PYTHONPATH: ""',
     'PYTHONHOME: ""',
     'PYTHONSTARTUP: ""',
@@ -154,6 +154,11 @@ def workflow_errors(text: str) -> list[str]:
     for command in REQUIRED_COMMANDS:
         if text.count(command) != 1:
             errors.append(f"workflow must run exactly once: {command}")
+    for forbidden in FORBIDDEN_ENV:
+        if forbidden in text:
+            errors.append(f"workflow reintroduced a setting that breaks checkout: {forbidden}")
+    if "GIT_CONFIG_GLOBAL:" in text and 'GIT_CONFIG_GLOBAL: "/dev' in text:
+        errors.append("GIT_CONFIG_GLOBAL must name a writable file, not a device")
     for setting in REPRODUCIBILITY_ENV:
         if text.count(setting) != 1:
             errors.append(f"workflow must pin runner state exactly once: {setting}")

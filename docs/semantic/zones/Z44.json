@@ -59,7 +59,7 @@
         {
           "declaration": "mersenneTailLB3",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 52
+          "line": 56
         }
       ]
     },
@@ -83,7 +83,7 @@
         {
           "declaration": "three_div_lt_mersenneTailLB3",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 66
+          "line": 70
         }
       ]
     },
@@ -108,7 +108,7 @@
         {
           "declaration": "skipSafe_of_two_mul_le_three_mul",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 103
+          "line": 107
         }
       ]
     },
@@ -133,7 +133,7 @@
         {
           "declaration": "unitNumerator_skipSafe",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 131
+          "line": 135
         }
       ]
     },
@@ -158,7 +158,7 @@
         {
           "declaration": "three_mul_lt_two_mul_of_fatal",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 142
+          "line": 146
         }
       ]
     },
@@ -182,7 +182,7 @@
         {
           "declaration": "two_le_of_fatal",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 157
+          "line": 161
         }
       ]
     },
@@ -205,7 +205,7 @@
         {
           "declaration": "three_le_of_fatal_of_odd",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 169
+          "line": 173
         }
       ]
     },
@@ -229,12 +229,12 @@
         {
           "declaration": "sharp_of_dyadic",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 193
+          "line": 197
         },
         {
           "declaration": "sharp_strictly_stronger",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 196
+          "line": 200
         }
       ]
     },
@@ -258,7 +258,7 @@
         {
           "declaration": "mersenneTailLB3_lt_mersenneTail",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 212
+          "line": 216
         }
       ]
     },
@@ -283,7 +283,7 @@
         {
           "declaration": "skipSafe_actualTail_of_two_mul_le_three_mul",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 231
+          "line": 235
         }
       ]
     },
@@ -308,7 +308,7 @@
         {
           "declaration": "unitNumerator_skipSafe_actualTail",
           "module": "Erdos249257/HalfGreedyFatalGap.lean",
-          "line": 242
+          "line": 246
         }
       ]
     }
@@ -317,84 +317,84 @@
     {
       "declaration": "mersenneTailLB3",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 52,
+      "line": 56,
       "role": "representation",
       "statement_node": "three_channel_mersenne_tail_bound_representation"
     },
     {
       "declaration": "three_div_lt_mersenneTailLB3",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 66,
+      "line": 70,
       "role": "statement",
       "statement_node": "three_channel_bound_exceeds_two_thirds_threshold"
     },
     {
       "declaration": "skipSafe_of_two_mul_le_three_mul",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 103,
+      "line": 107,
       "role": "statement",
       "statement_node": "two_thirds_margin_certifies_three_channel_skip_safety"
     },
     {
       "declaration": "unitNumerator_skipSafe",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 131,
+      "line": 135,
       "role": "statement",
       "statement_node": "unit_numerator_is_three_channel_safe"
     },
     {
       "declaration": "three_mul_lt_two_mul_of_fatal",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 142,
+      "line": 146,
       "role": "statement",
       "statement_node": "fatality_above_the_bound_forces_strict_two_thirds_region"
     },
     {
       "declaration": "two_le_of_fatal",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 157,
+      "line": 161,
       "role": "statement",
       "statement_node": "fatality_forces_numerator_at_least_two"
     },
     {
       "declaration": "three_le_of_fatal_of_odd",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 169,
+      "line": 173,
       "role": "statement",
       "statement_node": "odd_fatal_numerator_is_at_least_three"
     },
     {
       "declaration": "sharp_of_dyadic",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 193,
+      "line": 197,
       "role": "statement",
       "statement_node": "sharp_safety_strictly_contains_dyadic_safety"
     },
     {
       "declaration": "sharp_strictly_stronger",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 196,
+      "line": 200,
       "role": "statement",
       "statement_node": "sharp_safety_strictly_contains_dyadic_safety"
     },
     {
       "declaration": "mersenneTailLB3_lt_mersenneTail",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 212,
+      "line": 216,
       "role": "statement",
       "statement_node": "actual_mersenne_tail_strictly_dominates_three_channel_bound"
     },
     {
       "declaration": "skipSafe_actualTail_of_two_mul_le_three_mul",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 231,
+      "line": 235,
       "role": "statement",
       "statement_node": "two_thirds_margin_certifies_actual_tail_skip_safety"
     },
     {
       "declaration": "unitNumerator_skipSafe_actualTail",
       "module": "Erdos249257/HalfGreedyFatalGap.lean",
-      "line": 242,
+      "line": 246,
       "role": "statement",
       "statement_node": "unit_numerator_is_actual_tail_safe"
     }

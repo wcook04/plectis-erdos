@@ -49,15 +49,29 @@ def accepted_source() -> tuple[str, dict, bytes, str]:
         env=contributions.git_environment(),
         timeout=contributions.GIT_LOOKUP_TIMEOUT_SECONDS,
     ).stdout.strip()
-    changed_path = subprocess.run(
-        ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"],
+    # Against the first parent, not the commit alone. `git diff-tree HEAD`
+    # prints nothing for a merge commit unless asked for a combined diff, and
+    # actions/checkout hands a pull request exactly that, so this fixture read
+    # element zero of an empty list and the job died with IndexError before
+    # reaching anything it was meant to verify. It only ever passed locally,
+    # where HEAD is an ordinary commit. Verified on merge
+    # 9ac642995d1dd998bd6b631e3c2e6be2c9bee4bd in this repository: the old
+    # form lists no paths, this one lists 424.
+    changed_paths = subprocess.run(
+        ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", starting, "HEAD"],
         cwd=ROOT,
         check=True,
         capture_output=True,
         text=True,
         env=contributions.git_environment(),
         timeout=contributions.GIT_LOOKUP_TIMEOUT_SECONDS,
-    ).stdout.splitlines()[0]
+    ).stdout.splitlines()
+    require(
+        changed_paths,
+        f"no path changed between {starting} and HEAD, so the accepted-receipt "
+        "fixture has nothing to attest",
+    )
+    changed_path = changed_paths[0]
     receipt["record_kind"] = "accepted_receipt"
     receipt["return_id"] = "rr-recognition-projection-test"
     receipt["repository"]["starting_commit"] = starting

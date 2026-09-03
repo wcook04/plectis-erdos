@@ -88,3 +88,12 @@ globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants"]
 [[lean_lib]]
 name = "ResidualBench"
 srcDir = "residualbench"
+
+# Three solved polynomial families beneath the open Erdos #1041 problem: the
+# sharp collinear Chebyshev comparison kernel, the primitive quintic two-tail
+# energy selector, and the translated cubic quotient-fibre spoke.  The checked
+# kernels support, but are strictly weaker than, the ordinary analytic
+# theorems the paper assembles from them.  Not a default target.
+[[lean_lib]]
+name = "ExternalVerification1041SolvedFamilies"
+globs = ["ExternalVerification1041SolvedFamilies.*"]

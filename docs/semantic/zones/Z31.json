@@ -61,17 +61,17 @@
         {
           "declaration": "ErdosProblems.Erdos251.primeGapDyadicTerm_eq",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 191
+          "line": 202
         },
         {
           "declaration": "ErdosProblems.Erdos251.summable_primeGapDyadicTerm_of_summable_primeDyadicTerm",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 202
+          "line": 385
         },
         {
           "declaration": "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 214
+          "line": 404
         }
       ]
     },
@@ -97,17 +97,17 @@
         {
           "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 239
+          "line": 435
         },
         {
           "declaration": "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 248
+          "line": 444
         },
         {
           "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 263
+          "line": 459
         }
       ]
     },
@@ -130,17 +130,17 @@
         {
           "declaration": "ErdosProblems.Erdos251.exists_twoPow_mul_odd_den",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 426
+          "line": 1306
         },
         {
           "declaration": "ErdosProblems.Erdos251.exists_odd_den_state",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 461
+          "line": 1341
         },
         {
           "declaration": "ErdosProblems.Erdos251.exists_eventually_integral_tailShift",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 477
+          "line": 1357
         }
       ]
     },
@@ -167,12 +167,12 @@
         {
           "declaration": "ErdosProblems.Erdos251.realTail_eq_ratCast_rationalDyadicOrbit",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 515
+          "line": 1395
         },
         {
           "declaration": "ErdosProblems.Erdos251.irrational_initial_of_cofinalNonintegralTailShifts",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 537
+          "line": 1416
         }
       ]
     },
@@ -198,17 +198,17 @@
         {
           "declaration": "ErdosProblems.Erdos251.tailShift_eventually_zero_of_eventually_integral_of_eventually_small",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 571
+          "line": 926
         },
         {
           "declaration": "ErdosProblems.Erdos251.digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 589
+          "line": 943
         },
         {
           "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 610
+          "line": 964
         }
       ]
     },
@@ -232,12 +232,12 @@
         {
           "declaration": "ErdosProblems.Erdos251.ratIntegral_eq_zero_of_neg_one_lt_of_lt_one",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 558
+          "line": 913
         },
         {
           "declaration": "ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 626
+          "line": 979
         }
       ]
     },
@@ -263,12 +263,12 @@
         {
           "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 653
+          "line": 1006
         },
         {
           "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 723
+          "line": 1112
         }
       ]
     },
@@ -291,12 +291,12 @@
         {
           "declaration": "ErdosProblems.Erdos251.exists_primeGap0_gt",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 51
+          "line": 57
         },
         {
           "declaration": "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 670
+          "line": 1023
         }
       ]
     },
@@ -322,7 +322,7 @@
         {
           "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_eventually_small",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 707
+          "line": 1059
         }
       ]
     },
@@ -346,7 +346,7 @@
         {
           "declaration": "ErdosProblems.Erdos251.not_ratIntegral_of_approximation_gap",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-          "line": 772
+          "line": 1438
         }
       ]
     }
@@ -411,154 +411,154 @@
     {
       "declaration": "ErdosProblems.Erdos251.primeGapDyadicTerm_eq",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 191,
+      "line": 202,
       "role": "statement",
       "statement_node": "prime_gap_series_is_exact_summable_coboundary"
     },
     {
       "declaration": "ErdosProblems.Erdos251.summable_primeGapDyadicTerm_of_summable_primeDyadicTerm",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 202,
+      "line": 385,
       "role": "statement",
       "statement_node": "prime_gap_series_is_exact_summable_coboundary"
     },
     {
       "declaration": "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 214,
+      "line": 404,
       "role": "statement",
       "statement_node": "prime_gap_series_is_exact_summable_coboundary"
     },
     {
       "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 239,
+      "line": 435,
       "role": "statement",
       "statement_node": "prime_and_gap_irrationality_are_exactly_equivalent"
     },
     {
       "declaration": "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 248,
+      "line": 444,
       "role": "statement",
       "statement_node": "prime_and_gap_irrationality_are_exactly_equivalent"
     },
     {
       "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 263,
+      "line": 459,
       "role": "statement",
       "statement_node": "prime_and_gap_irrationality_are_exactly_equivalent"
     },
     {
       "declaration": "ErdosProblems.Erdos251.exists_twoPow_mul_odd_den",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 426,
+      "line": 1306,
       "role": "statement",
       "statement_node": "every_rational_dyadic_tail_has_an_eventually_integral_shift"
     },
     {
       "declaration": "ErdosProblems.Erdos251.exists_odd_den_state",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 461,
+      "line": 1341,
       "role": "statement",
       "statement_node": "every_rational_dyadic_tail_has_an_eventually_integral_shift"
     },
     {
       "declaration": "ErdosProblems.Erdos251.exists_eventually_integral_tailShift",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 477,
+      "line": 1357,
       "role": "statement",
       "statement_node": "every_rational_dyadic_tail_has_an_eventually_integral_shift"
     },
     {
       "declaration": "ErdosProblems.Erdos251.realTail_eq_ratCast_rationalDyadicOrbit",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 515,
+      "line": 1395,
       "role": "statement",
       "statement_node": "cofinal_nonintegral_shifts_force_irrational_initial_state"
     },
     {
       "declaration": "ErdosProblems.Erdos251.irrational_initial_of_cofinalNonintegralTailShifts",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 537,
+      "line": 1416,
       "role": "statement",
       "statement_node": "cofinal_nonintegral_shifts_force_irrational_initial_state"
     },
     {
       "declaration": "ErdosProblems.Erdos251.tailShift_eventually_zero_of_eventually_integral_of_eventually_small",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 571,
+      "line": 926,
       "role": "statement",
       "statement_node": "eventually_small_integral_shift_forces_digit_periodicity"
     },
     {
       "declaration": "ErdosProblems.Erdos251.digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 589,
+      "line": 943,
       "role": "statement",
       "statement_node": "eventually_small_integral_shift_forces_digit_periodicity"
     },
     {
       "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 610,
+      "line": 964,
       "role": "statement",
       "statement_node": "eventually_small_integral_shift_forces_digit_periodicity"
     },
     {
       "declaration": "ErdosProblems.Erdos251.ratIntegral_eq_zero_of_neg_one_lt_of_lt_one",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 558,
+      "line": 913,
       "role": "statement",
       "statement_node": "adjacent_small_mismatch_is_a_local_nonintegrality_certificate"
     },
     {
       "declaration": "ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 626,
+      "line": 979,
       "role": "statement",
       "statement_node": "adjacent_small_mismatch_is_a_local_nonintegrality_certificate"
     },
     {
       "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 653,
+      "line": 1006,
       "role": "statement",
       "statement_node": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality"
     },
     {
       "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 723,
+      "line": 1112,
       "role": "statement",
       "statement_node": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality"
     },
     {
       "declaration": "ErdosProblems.Erdos251.exists_primeGap0_gt",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 51,
+      "line": 57,
       "role": "statement",
       "statement_node": "actual_prime_gaps_are_unbounded_and_not_eventually_periodic"
     },
     {
       "declaration": "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 670,
+      "line": 1023,
       "role": "statement",
       "statement_node": "actual_prime_gaps_are_unbounded_and_not_eventually_periodic"
     },
     {
       "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_eventually_small",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 707,
+      "line": 1059,
       "role": "statement",
       "statement_node": "actual_prime_gap_eventual_smallness_would_exclude_integral_shifts"
     },
     {
       "declaration": "ErdosProblems.Erdos251.not_ratIntegral_of_approximation_gap",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "line": 772,
+      "line": 1438,
       "role": "statement",
       "statement_node": "finite_approximation_gap_certifies_nonintegrality"
     }

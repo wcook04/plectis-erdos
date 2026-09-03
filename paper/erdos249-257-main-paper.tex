@@ -35,8 +35,8 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public formal-source checkpoint used by this paper.
-\newcommand{\commit}{ca0e13f8acf5ccf48506e4bdb870953d3a0856fa}
-\newcommand{\commitshort}{ca0e13f8acf5}
+\newcommand{\commit}{bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753}
+\newcommand{\commitshort}{bb37f2c5bfcf}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
@@ -455,7 +455,7 @@ Membership would produce an infinite support of rational sum and refute the
 universal statement of Erd\H{o}s~\#257.  Thus the counterexample condition is
 exact: terminal zeros beyond every bound, equivalently no last greedy skip.
 The formal statements are the
-\lword{GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip equivalence},
+\lword{GreedyAchievementSet.lean}{2583}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip equivalence},
 \lword{HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{unbounded-terminal equivalence},
 \lword{HalfCylinderHalfMembershipClassification.lean}{235}{half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip}{no-last-skip equivalence},
 and the
@@ -830,7 +830,7 @@ and \(r_n(x)\leq T_n\) for every \(n\geq0\).  In that case
 and
 \lword{GreedyAchievementSet.lean}{1458}{mem_mersenneAchievementSet_iff_greedy_survival}{greedy membership theorem}.
 Uniqueness is the
-\lword{GreedyAchievementSet.lean}{1540}{positiveMersenneSupportValue_injective_normalized}{support-coding theorem}.
+\lword{GreedyAchievementSet.lean}{1563}{positiveMersenneSupportValue_injective_normalized}{support-coding theorem}.
 Kova\v{c}--Tao provide the strict-tail Cantor-set
 context~\cite[Remark~4.1, p.~13]{kovactao}.  Their Theorem~2.3
 \cite[p.~5; proof pp.~13--14]{kovactao} constructs rational merged sums from
@@ -1131,7 +1131,7 @@ The following are equivalent:
 \]
 \end{theorem}
 \noindent The omitted-set equivalence is the
-\lword{GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip theorem};
+\lword{GreedyAchievementSet.lean}{2583}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip theorem};
 the terminal forms are the
 \lword{HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{unbounded-terminal theorem}
 and
@@ -1148,19 +1148,19 @@ remainder after ranks through $c-1$.  For $c\ge4$, the inequalities
 
 are enough for the skipped-core constructor to produce an exact local
 Mersenne half row at endpoint $2c-2$,
-\lword{BooleanMobiusSkipRowCofinal.lean}{31}{exactLocalMersenneHalfRow_of_positiveHalfGreedySkip}{the local row constructor}.
+\lword{BooleanMobiusSkipRowCofinal.lean}{55}{exactLocalMersenneHalfRow_of_positiveHalfGreedySkip}{the local row constructor}.
 Its nontrivial finite step is an upper-half Boolean fill of the deficit,
 \lword{BooleanMobiusSkippedCoreExactRow.lean}{228}{exists_upperHalfBooleanWord_of_skippedCore}{the Boolean-word constructor}.
 The precise supply premise is
 \lword{BooleanMobiusSkipRowCofinal.lean}{22}{CofinalPositiveHalfGreedySkips}{the cofinal positive-skip hypothesis};
 it yields rows at cofinal endpoints via
-\lword{BooleanMobiusSkipRowCofinal.lean}{60}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{the cofinal-row transport}.
+\lword{BooleanMobiusSkipRowCofinal.lean}{84}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{the cofinal-row transport}.
 The separate row-value estimate converges to $1/2$, and the closed-set
 consumer
 \lword{BooleanMobiusCofinalExactRows.lean}{71}{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{the closed-set endpoint consumer}
 accepts mutually incompatible finite witnesses because only their endpoint
 lengths must tend to infinity.  The resulting
-\lword{BooleanMobiusSkipRowCofinal.lean}{73}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{conditional half-membership theorem}
+\lword{BooleanMobiusSkipRowCofinal.lean}{97}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{conditional half-membership theorem}
 is not an unconditional result: \texttt{CofinalPositiveHalfGreedySkips} is
 unproved, and a finite exact row or finite family of rows does not establish
 the cofinal hypothesis.
@@ -4169,7 +4169,7 @@ The residual--tail separation condition is decidable over $\Q$ and holds for
 $1\le n\le6$.
 \end{proposition}
 \noindent This is the
-\lword{GreedyAchievementSet.lean}{2917}{halfSecondChannelSeparatedRat_of_pos_le_six}{verified rank-(6) residual--tail separation}.
+\lword{GreedyAchievementSet.lean}{2973}{halfSecondChannelSeparatedRat_of_pos_le_six}{verified rank-(6) residual--tail separation}.
 
 \begin{corollary}[eventual residual--tail separation criterion]
 \label{res:secondcriterion}
@@ -4177,7 +4177,7 @@ If the residual--tail separation condition holds for every \(n\ge7\), then
 \(1/2\) belongs to the Mersenne achievement set \(\mathcal A\).
 \end{corollary}
 \noindent This implication is the
-\lword{GreedyAchievementSet.lean}{3095}{half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven}{eventual residual--tail separation criterion}.
+\lword{GreedyAchievementSet.lean}{3151}{half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven}{eventual residual--tail separation criterion}.
 The finite proposition supplies \(1\le n\le6\), but no case with \(n\ge7\);
 no converse is proved.  Membership itself has the exact characterisation
 \[
@@ -4186,7 +4186,7 @@ no converse is proved.  Membership itself has the exact characterisation
   \text{the canonical greedy orbit omits infinitely many exponents}.
 \]
 This is formalised at
-\lword{GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{half-membership--infinite-skip equivalence}.
+\lword{GreedyAchievementSet.lean}{2583}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{half-membership--infinite-skip equivalence}.
 The forward implication uses the
 \hyperref[res:full]{full-support irrationality theorem}; for the reverse,
 if a residual ever exceeds the remaining tail, every later exponent is
@@ -5089,9 +5089,9 @@ has a unique support, which the greedy recursion recovers bit by bit.
 \lword{GreedyAchievementSet.lean}{448}{mersenneGap_asymptotic_bound}{explicit gap bound}),
 \lword{GreedyAchievementSet.lean}{1458}{mem_mersenneAchievementSet_iff_greedy_survival}{greedy survival criterion},
 and
-\lword{GreedyAchievementSet.lean}{1540}{positiveMersenneSupportValue_injective_normalized}{normalised support-value injectivity},
+\lword{GreedyAchievementSet.lean}{1563}{positiveMersenneSupportValue_injective_normalized}{normalised support-value injectivity},
 transferred to the kernel series at
-\lword{GreedyAchievementSet.lean}{1549}{erdosSupportSeries_two_injective_normalized}{normalised support-series injectivity}.
+\lword{GreedyAchievementSet.lean}{1572}{erdosSupportSeries_two_injective_normalized}{normalised support-series injectivity}.
 The nonnegativity guard in the membership criterion is necessary: without it a
 negative target would survive every level while lying outside $\mathcal A$.
 
@@ -5103,10 +5103,10 @@ and nowhere dense.  Its Lebesgue measure is exactly one.
 \end{proposition}
 \noindent Formalised:
 \lword{GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}{measure-one theorem},
-\lword{GreedyAchievementSet.lean}{1633}{perfect_mersenneAchievementSet}{perfectness},
-\lword{GreedyAchievementSet.lean}{1649}{isTotallyDisconnected_mersenneAchievementSet}{total disconnectedness},
+\lword{GreedyAchievementSet.lean}{1656}{perfect_mersenneAchievementSet}{perfectness},
+\lword{GreedyAchievementSet.lean}{1672}{isTotallyDisconnected_mersenneAchievementSet}{total disconnectedness},
 and
-\lword{GreedyAchievementSet.lean}{1658}{isNowhereDense_mersenneAchievementSet}{nowhere density}.
+\lword{GreedyAchievementSet.lean}{1681}{isNowhereDense_mersenneAchievementSet}{nowhere density}.
 Kakeya supplies the classical perfectness and all-index strict-tail
 nowhere-density statements~\cite[p.~251]{kakeya1914}, while
 Kova\v{c}--Tao verify the required strict-tail inequality in this Lambert
@@ -5131,10 +5131,10 @@ known to lie in $\mathcal A$ has computable support bits.
 \end{proposition}
 \noindent Formalised:
 \lword{GreedyAchievementSet.lean}{1143}{cast_greedyMersenneRemainderRat}{rational--real greedy agreement},
-\lword{GreedyAchievementSet.lean}{1705}{mersenneTail_lt_cast_tailUpperRat}{rational tail-enclosure bound},
-\lword{GreedyAchievementSet.lean}{1739}{certifiedGreedyMersenneDeath_not_mem}{finite-certificate soundness},
-\lword{GreedyAchievementSet.lean}{1761}{three_fourths_not_mem_mersenneAchievementSet}{three-quarters nonmembership},
-and \lword{GreedyAchievementSet.lean}{1845}{rational_member_support_bit_iff}{rational-member support-bit equivalence}.
+\lword{GreedyAchievementSet.lean}{1728}{mersenneTail_lt_cast_tailUpperRat}{rational tail-enclosure bound},
+\lword{GreedyAchievementSet.lean}{1762}{certifiedGreedyMersenneDeath_not_mem}{finite-certificate soundness},
+\lword{GreedyAchievementSet.lean}{1784}{three_fourths_not_mem_mersenneAchievementSet}{three-quarters nonmembership},
+and \lword{GreedyAchievementSet.lean}{1868}{rational_member_support_bit_iff}{rational-member support-bit equivalence}.
 The certificates are one-sided: survival through any finite depth proves
 nothing about membership, and no decidability of membership in $\mathcal A$ is
 asserted.  Neither the global geometry nor the finite nonmembership certificates
@@ -5292,7 +5292,7 @@ order-wrap mass alternative and exact excess mean & \lrefx{RationalSupportCarryS
 unbounded carry states & \lrefx{RationalSupportCarrySkeleton.lean}{2383}{exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction}\ (\texttt{RationalSupportCarrySkeleton})\\
 sublogarithmic zero windows & \lrefx{SublogDivisorCoverage.lean}{392}{supportCoeffZeroWindow_length_le_eps_logb_add}\ (\texttt{SublogDivisorCoverage})\\
 greedy membership criterion & \lrefx{GreedyAchievementSet.lean}{1458}{mem_mersenneAchievementSet_iff_greedy_survival}\ (\texttt{GreedyAchievementSet})\\
-Mersenne achievement set: measure one and nowhere dense & \lrefx{GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}, \lrefx{GreedyAchievementSet.lean}{1658}{isNowhereDense_mersenneAchievementSet}\ (\texttt{GreedyAchievementSet})\\
+Mersenne achievement set: measure one and nowhere dense & \lrefx{GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}, \lrefx{GreedyAchievementSet.lean}{1681}{isNowhereDense_mersenneAchievementSet}\ (\texttt{GreedyAchievementSet})\\
 Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization.lean}{299}{campbellQuarterExponent_periodFreeze_noSync}, \lrefx{CampbellShiftSynchronization.lean}{488}{shiftWindowZero_iff_half_mem_mersenneAchievementSet}\ (\texttt{CampbellShiftSynchronization})\\
 \bottomrule
 \end{tabular}

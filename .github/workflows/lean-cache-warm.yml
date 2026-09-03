@@ -36,42 +36,25 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 180
     # Keep direct Lake/Git commands on the same environment-neutral contract
-    # as the single-flight release workers. Empty selectors override any
-    # inherited checkout/object mapping without hiding the active checkout.
+    # as the single-flight release workers. Checkout and object mapping are
+    # left unset rather than set empty: Actions cannot unset a variable, and
+    # git reads an empty GIT_DIR or GIT_WORK_TREE as a literal empty path.
     env:
       GIT_CONFIG_NOSYSTEM: "1"
-      GIT_CONFIG_GLOBAL: /dev/null
+      GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
       GIT_OPTIONAL_LOCKS: "0"
       GIT_NO_REPLACE_OBJECTS: "1"
+      # Cleared, not omitted: a namespaced ref view or a shifted replace-ref
+      # base would change what the pinned-history gates resolve, and the
+      # environment contract requires both to be empty.
+      GIT_NAMESPACE: ""
+      GIT_REPLACE_REF_BASE: ""
       GIT_PAGER: cat
       GIT_TERMINAL_PROMPT: "0"
       GIT_ASKPASS: /bin/false
-      GIT_TRACE: ""
       GIT_TRACE2: ""
-      GIT_TRACE_PACKET: ""
-      GIT_TRACE_PERFORMANCE: ""
-      GIT_TRACE_SETUP: ""
-      GIT_TRACE_CURL: ""
       GIT_TRACE2_EVENT: ""
       GIT_TRACE2_PERF: ""
-      GIT_SSH: ""
-      GIT_SSH_COMMAND: ""
-      GIT_SSH_VARIANT: ""
-      GIT_EXTERNAL_DIFF: ""
-      GIT_DIFF_OPTS: ""
-      GIT_EDITOR: ""
-      GIT_SEQUENCE_EDITOR: ""
-      GIT_MERGE_AUTOEDIT: ""
-      GIT_DIR: ""
-      GIT_WORK_TREE: ""
-      GIT_INDEX_FILE: ""
-      GIT_NAMESPACE: ""
-      GIT_REPLACE_REF_BASE: ""
-      GIT_OBJECT_DIRECTORY: ""
-      GIT_ALTERNATE_OBJECT_DIRECTORIES: ""
-      GIT_COMMON_DIR: ""
-      GIT_CEILING_DIRECTORIES: ""
-      GIT_DISCOVERY_ACROSS_FILESYSTEM: ""
       PYTHONHOME: ""
       PYTHONPATH: ""
       PYTHONSTARTUP: ""
@@ -95,7 +78,6 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
-          cache: false
 
       - name: Test cache-warm command environment
         run: |

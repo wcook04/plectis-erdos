@@ -116,11 +116,11 @@ $E \approx 1.6067$, a relative density of about $62\%$. The positive-index digit
 $\mathcal{A}$ is injective: each achievable real has \emph{exactly one} support.
 \coord{achievement-set} \scale{uniform} \ev{Lean}\\
 \textbf{Sites:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656},
-\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1633},
-\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1649},
-\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1658},
+\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1656},
+\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1672},
+\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1681},
 \lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996},
-\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1559}.
+\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1582}.
 \end{thm}
 
 \begin{thm}[Support-restricted refinement]
@@ -236,7 +236,7 @@ specific real orbit. There is no family to range over.
 \coord{meta} \scale{uniform} \ev{Lean}\ev{Math}\\
 \textbf{Sites:} \lean{weightedBoolSum\_separated}{HalfCylinderIntegerGreedy.lean:447},
 \lean{three\_mul\_tailWeight\_add\_exactLateGap\_eq\_three\_mul\_headWeight}{HalfCylinderLargestSkipGap.lean:230},
-\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1559}.
+\lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1582}.
 \end{obs}
 
 All six barriers below are consequences of Observation~\ref{obs:no-ensemble} in different
@@ -382,7 +382,7 @@ Each of the following is logically \emph{equivalent} to $1/2 \in \mathcal{A}$, n
 \item the negation of \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526}, and all seven forms of the
   associated classification chain.
 \end{enumerate}
-Forward directions are landed Lean (e.g.\ \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527},
+Forward directions are landed Lean (e.g.\ \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583},
 \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
 \lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}).
 The reverse directions of (d) and (e) are derived here from Lemma~\ref{lem:sqrt-witness} and are
@@ -483,10 +483,10 @@ two alternatives are exactly complementary
 (\lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}),
 with \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526} a finite witness type. In the other
 direction, certified death implies non-membership
-(\lean{certifiedGreedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1739}, over
-\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1733}; $3/4$ is certified dead at
+(\lean{certifiedGreedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1762}, over
+\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1756}; $3/4$ is certified dead at
 level $1$, lookahead $0$, by
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1755}), whereas the
+\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1778}), whereas the
 absence of such a certificate at any depth $D$ is compatible with a certificate at depth $D+1$ and
 therefore proves nothing. Membership asserts survival at \emph{every} rank
 (Theorem~\ref{thm:greedy-survival}), an infinite conjunction with no finite sub-conjunction

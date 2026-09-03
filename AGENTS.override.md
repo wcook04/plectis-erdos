@@ -4,13 +4,12 @@
 # Compact cold-clone agent entry
 
 This is the first-contact contract for repository-aware agents.
-[AGENTS.md](AGENTS.md) remains the deep change, authority, and validation
-contract; open its relevant section after selecting a task lane here.
+[AGENTS.md](AGENTS.md) is the deep change, authority, and validation contract;
+open its relevant section after selecting a lane here.
 
-This is a self-contained public Lean repository and scholarly artefact. Use
-only tracked files in this checkout. Do not depend on `ai_workflow`, sibling
-repositories, private caches, auto-memory, unpublished state, or inferred
-results.
+This is a self-contained public Lean repository and scholarly artefact. Use only
+tracked files in this checkout. Do not depend on `ai_workflow`, sibling
+repositories, private caches, auto-memory, or unpublished state.
 
 Route the actual task before opening broad files:
 
@@ -18,10 +17,9 @@ Route the actual task before opening broad files:
 python3 scripts/agent_entry.py --entry "<task in ordinary language>"
 ```
 
-This clone-local command recommends a task lane, the smallest read set, and the
-relevant skills. Use `python3 scripts/agent_entry.py --skills` for the complete
-purpose-bearing catalog. Its routing metadata is navigation, not mathematical
-authority.
+It recommends a task lane, the smallest read set, and the relevant skills;
+`python3 scripts/agent_entry.py --skills` is the complete catalog. Its routing
+metadata is navigation, not mathematical authority.
 
 ## Route the task before reading broadly
 
@@ -39,9 +37,9 @@ For a repository overview or full-coverage request, use:
 python3 scripts/query_corpus.py --overview --format card
 ```
 
-It covers every programme, status class, exact open proposition, paper family,
-and the companion boundary. Do not answer from one flagship or theorem count;
-follow its `answer_contract` and preserve every exact open boundary.
+It covers every programme, status class, exact open proposition, and paper
+family. Do not answer from one flagship or theorem count; follow its
+`answer_contract` and preserve every exact open boundary.
 
 Follow the returned claim, remaining-open, declaration, module, and paper
 handles. For a corpus-wide progress review, the bounded route must include:
@@ -54,8 +52,8 @@ python3 scripts/query_corpus.py --route browse_claim_status
 ```
 
 If free text returns no semantic cells, use those stable routes; do not replace
-machine evidence with manuscript-only inference. Erdős #249 and universal
-#257 remain open.
+machine evidence with manuscript-only inference. All eight indexed problems
+remain open.
 
 ### Lean proof work or source mutation
 
@@ -66,10 +64,10 @@ python3 scripts/query_corpus.py --goal-support "<Lean or mathematical goal>"
 python3 scripts/query_corpus.py --proof-plan "<Lean or mathematical goal>" --depth 4
 ```
 
-Use the emitted declarations/modules and verify applicability with Lean. Before
-editing, read [AGENTS.md](AGENTS.md) sections `Authority and change order` and
-`Validation`, plus [METHODOLOGY.md](METHODOLOGY.md) when a public claim could
-change. Lean source checked by the pinned kernel is proof authority.
+Use the emitted declarations and verify applicability with Lean. Before editing,
+read [AGENTS.md](AGENTS.md) sections `Authority and change order` and
+`Validation`, and [METHODOLOGY.md](METHODOLOGY.md) when a public claim could
+change.
 
 ### Repository architecture, agent entry, cold-clone organization, or docs routing
 
@@ -83,9 +81,9 @@ python3 scripts/check_cold_clone_comprehension.py --quick
 ```
 
 Then read `docs/orientation.json::agent_entry`, [ARCHITECTURE.md](ARCHITECTURE.md),
-or [docs/ORIENTATION.md](docs/ORIENTATION.md), depending on the returned owner.
+or [docs/ORIENTATION.md](docs/ORIENTATION.md), whichever the owner names.
 Generated orientation, source maps, indices, aliases, and publication packets
-must be changed through their builder, never by hand.
+change through their builder, never by hand.
 
 ### Publication, systems-paper, or artifact-boundary work
 
@@ -105,34 +103,18 @@ python3 scripts/query_corpus.py --route comparator_assurance
 python3 scripts/query_corpus.py --route palomar_qualification
 ```
 
-`comparator_assurance` reports the configured comparison packet, modules,
-axioms, and receipt; it does not establish novelty, significance, priority, or
-peer review. `palomar_qualification` reports repository-local policy readiness
+`comparator_assurance` reports the comparison packet, modules, axioms, and
+receipt; it does not establish novelty, significance, priority, or peer
+review. `palomar_qualification` reports repository-local policy readiness
 and its remaining operator-only decisions; it does not confer acceptance,
 registration, publication, or external endorsement.
 
-The same guide must answer ordinary requests such as “which papers should I
-read?” through `--ask`. It separates the mathematical gateway, specialist
-companion, repository-systems guide, and reciprocal Plectis route; it also
-refuses to send a cold reader into a registered artifact absent from the
-checkout. After choosing a paper, follow its typed claim, open, declaration,
-source, or publication handles rather than treating prose as authority.
-`docs/papers/README.md` is the human question-first index, while
-`docs/papers/corpus.json` is the machine inventory of every carried manuscript
-and section anchor.
-
-```sh
-python3 scripts/query_corpus.py --route comparator_assurance
-python3 scripts/query_corpus.py --route palomar_qualification
-```
-
-`comparator_assurance` does not establish novelty, significance, priority, or
-peer review. `palomar_qualification` does not confer acceptance, registration,
-publication, or external endorsement.
-
-For paper choice use `--ask`, `docs/papers/README.md`, and the machine inventory
-`docs/papers/corpus.json`. Follow typed claim and source handles; prose is not
-proof authority.
+`--ask` answers ordinary requests such as “which papers should I read?”, keeps
+the gateway, companion, systems guide and Plectis route apart, and refuses to
+send a cold reader into a registered artifact absent from the checkout. After
+choosing a paper, follow its typed claim, open, declaration, source, or
+publication handles; prose is not authority. `docs/papers/README.md` is the
+human index and `docs/papers/corpus.json` the machine inventory.
 
 For publication mutation, open `docs/publication_entry_packet.json`, then the
 publication contract or emitted handle. These own organisation, not Lean proof.
@@ -140,12 +122,11 @@ publication contract or emitted handle. These own organisation, not Lean proof.
 ### Explain, install, mine, validate, propagate, or add a problem
 
 Do not guess from filenames. Run `python3 scripts/agent_entry.py --skills`, or
-route the task with `--entry`, before opening one `skills/<id>/SKILL.md`.
-The mining skill may coordinate subagents, but the integrating agent verifies
-every return. After a stable mathematical or architecture delta, propagation
-gives each plausible downstream consumer a disposition before packaging.
-Submission may prepare and commit locally; it pushes or opens a pull request
-only after explicit authorisation.
+route with `--entry`, before opening one `skills/<id>/SKILL.md`. The mining
+skill may coordinate subagents; the integrating agent verifies every return.
+After a stable delta, propagation gives each plausible downstream consumer a
+disposition before packaging. Submission may commit locally; it pushes or opens
+a pull request only after explicit authorisation.
 
 ### Return research from a clone
 
@@ -156,20 +137,19 @@ cat skills/erdos-research-return/SKILL.md
 ```
 
 Keep the human account in the pull request or plain-language issue. Bind public
-provenance and exact credit in the returned package; accepted receipts travel
-to older clones in Git history. Never require a private repository.
+provenance and exact credit in the returned package. Never require a private
+repository.
 
-An older clone remains a valid source of work. Preserve its recorded starting
-commit and original delta, reconcile the reviewed change with current main,
-then rerun current validation and consequence propagation. A material conflict
-resolution is a separately credited integration change.
+An older clone is still a valid source. Preserve its recorded starting commit
+and original delta, reconcile with current main, then rerun validation and
+propagation. A material conflict resolution is a separately credited change.
 
 ### General Plectis machinery
 
 The companion [`plectis`](https://github.com/wcook04/plectis) repository owns
-the runnable system/corpus machinery. This repository owns the public
-mathematical corpus. Do not infer one repository's authority from the other,
-and do not require the companion checkout for any command listed above.
+the runnable machinery; this one owns the public mathematical corpus. Neither
+repository's authority follows from the other, and no command above needs the
+companion checkout.
 
 ## Authority order
 
@@ -216,8 +196,8 @@ For a committed-snapshot release check in a dirty shared checkout:
 python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
 ```
 
-Run the relevant projection builders in `--check` mode and the focused public
-tests named by [AGENTS.md](AGENTS.md). Run `lake build` after Lean changes.
+Run the relevant projection builders in `--check` mode and the focused tests
+named by [AGENTS.md](AGENTS.md). Run `lake build` after Lean changes.
 
-Do not absorb the complete deep contract, exhaustive declaration atlas, module
-graph, or both papers merely to discover the first action.
+Do not absorb the complete deep contract, declaration atlas, module graph, or
+the papers merely to find the first action.

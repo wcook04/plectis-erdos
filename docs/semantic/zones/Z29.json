@@ -255,12 +255,12 @@
         {
           "declaration": "exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity",
           "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-          "line": 286
+          "line": 238
         },
         {
           "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity",
           "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-          "line": 380
+          "line": 332
         },
         {
           "declaration": "skippedCoreSharpCapacity_below_or_strictly_laterExactRow",
@@ -587,14 +587,14 @@
     {
       "declaration": "exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity",
       "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-      "line": 286,
+      "line": 238,
       "role": "statement",
       "statement_node": "sharp_capacity_builds_strict_upper_exact_row"
     },
     {
       "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity",
       "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-      "line": 380,
+      "line": 332,
       "role": "statement",
       "statement_node": "sharp_capacity_builds_strict_upper_exact_row"
     },

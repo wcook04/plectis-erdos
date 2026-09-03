@@ -45,12 +45,12 @@
         {
           "declaration": "certifiedKill_67_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 192
+          "line": 471
         },
         {
           "declaration": "certifiedKill_127_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 211
+          "line": 490
         }
       ]
     },
@@ -75,7 +75,7 @@
         {
           "declaration": "certifiedKill_67_300_fullDepth",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 219
+          "line": 498
         }
       ]
     },
@@ -100,7 +100,7 @@
         {
           "declaration": "totient_series_ne_rat_of_den_dvd_127_300",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 255
+          "line": 534
         }
       ]
     }
@@ -109,28 +109,28 @@
     {
       "declaration": "certifiedKill_67_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 192,
+      "line": 471,
       "role": "finite_instance",
       "statement_node": "periods_sixty_seven_and_one_hundred_twenty_seven_have_fixed_depth_eleven_kills"
     },
     {
       "declaration": "certifiedKill_127_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 211,
+      "line": 490,
       "role": "finite_instance",
       "statement_node": "periods_sixty_seven_and_one_hundred_twenty_seven_have_fixed_depth_eleven_kills"
     },
     {
       "declaration": "certifiedKill_67_300_fullDepth",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 219,
+      "line": 498,
       "role": "finite_instance",
       "statement_node": "period_sixty_seven_has_one_locked_full_depth_certificate"
     },
     {
       "declaration": "totient_series_ne_rat_of_den_dvd_127_300",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 255,
+      "line": 534,
       "role": "statement",
       "statement_node": "the_period_one_hundred_twenty_seven_kill_excludes_its_fixed_denominator_class"
     }

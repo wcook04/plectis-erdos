@@ -224,8 +224,8 @@ obstruction on $4\,\mathrm{rem}(D)-\mathrm{belowPulse}(D)-4$.
 
 \begin{obs}[F4 / two-sided cell exclusion] \ev{Lean}
 \lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374},
-\lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:3362},
-\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:3413}.
+\lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:4398},
+\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}.
 \textbf{Yields:} excluding exactly three integer values of the middle coordinate
 ($4\,\mathrm{rem}-\mathrm{belowPulse}-4 \notin \{-3,-2,-1\}$) plus one right-pulse-leak bound
 propagates, by induction from a decide-checked row-5 base, the two-sided invariant $\forall s
@@ -471,9 +471,9 @@ above.
 
 \begin{obs}[Cofinal positive skips \emph{is} the obligation] \ev{Lean}
 \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22},
-\lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:60},
+\lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84},
 line 60; A5
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527},
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583},
 A6 (\lean{}{GreedyAchievementSet.lean:1515}); positivity discharge
 \lean{}{BooleanMobiusCriticalCapacityCofinal.lean:138}.
 \textbf{Yields:} cofinally many positive rational-greedy skips $\Rightarrow$
@@ -605,7 +605,7 @@ aggregate form.
 \end{obs}
 
 \begin{obs}[NM-02 / single-target to all-rational-targets, promotable] \ev{Lean}
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
 (forward \lean{}{GreedyAchievementSet.lean:2482}; reverse
 \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}).
 \textbf{Yields:} $(1/2:\mathbb R)\in\mathrm{mersenneAchievementSet} \Leftrightarrow

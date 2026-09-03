@@ -42,38 +42,20 @@ permissions:
 # explicit at their point of use; they must not change the safety baseline.
 env:
   GIT_CONFIG_NOSYSTEM: "1"
-  GIT_CONFIG_GLOBAL: /dev/null
+  GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
   GIT_OPTIONAL_LOCKS: "0"
   GIT_NO_REPLACE_OBJECTS: "1"
+  # Cleared, not omitted: a namespaced ref view or a shifted replace-ref
+  # base would change what the pinned-history gates resolve, and the
+  # environment contract requires both to be empty.
+  GIT_NAMESPACE: ""
+  GIT_REPLACE_REF_BASE: ""
   GIT_PAGER: cat
   GIT_TERMINAL_PROMPT: "0"
   GIT_ASKPASS: /bin/false
-  GIT_TRACE: ""
   GIT_TRACE2: ""
-  GIT_TRACE_PACKET: ""
-  GIT_TRACE_PERFORMANCE: ""
-  GIT_TRACE_SETUP: ""
-  GIT_TRACE_CURL: ""
   GIT_TRACE2_EVENT: ""
   GIT_TRACE2_PERF: ""
-  GIT_SSH: ""
-  GIT_SSH_COMMAND: ""
-  GIT_SSH_VARIANT: ""
-  GIT_EXTERNAL_DIFF: ""
-  GIT_DIFF_OPTS: ""
-  GIT_EDITOR: ""
-  GIT_SEQUENCE_EDITOR: ""
-  GIT_MERGE_AUTOEDIT: ""
-  GIT_DIR: ""
-  GIT_WORK_TREE: ""
-  GIT_INDEX_FILE: ""
-  GIT_NAMESPACE: ""
-  GIT_REPLACE_REF_BASE: ""
-  GIT_OBJECT_DIRECTORY: ""
-  GIT_ALTERNATE_OBJECT_DIRECTORIES: ""
-  GIT_COMMON_DIR: ""
-  GIT_CEILING_DIRECTORIES: ""
-  GIT_DISCOVERY_ACROSS_FILESYSTEM: ""
   PYTHONHOME: ""
   PYTHONPATH: ""
   PYTHONSTARTUP: ""
@@ -139,7 +121,6 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
-          cache: false
       - name: Detect supported-root Lean changes
         id: lean-inputs
         env:
@@ -322,7 +303,8 @@ jobs:
             elif git diff --quiet "$base" "$head" -- \
               Erdos249257.lean 'Erdos249257/**' \
               ErdosProblems.lean 'ErdosProblems/**' \
-              ExternalVerification ExternalVerification1049 'verification/**' \
+              ExternalVerification ExternalVerification1049 \
+              ExternalVerification1041SolvedFamilies 'verification/**' \
               lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
               docs/claims.json docs/problem_index_source.json docs/problems.json \
               docs/EXTERNAL_VERIFICATION.md docs/COMPARATOR_1049_NUMERICAL_HEIGHT.md \
@@ -345,7 +327,6 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
-          cache: false
       - name: Initialize failure-safe verification receipt
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -515,7 +496,8 @@ jobs:
           set -euo pipefail
           : > axiom-audit.log
           for src in ExternalVerification/AxiomAudit.lean \
-                     ExternalVerification1049/AxiomAudit.lean; do
+                     ExternalVerification1049/AxiomAudit.lean \
+                     ExternalVerification1041SolvedFamilies/AxiomAudit.lean; do
             printf '=== %s ===\n' "$src" >> axiom-audit.log
             lake env lean "$src" 2>&1 | tee -a axiom-audit.log
           done
@@ -639,7 +621,6 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
-          cache: false
       - name: Install metadata validators
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement requirements-release.txt

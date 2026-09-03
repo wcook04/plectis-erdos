@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:22c4d93bdcef1817d502db225a17225ced5db2e9c4eb5eebe5210e21e2997fe0",
+    "projection_digest": "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1816,7 +1816,7 @@
         ],
         "note": {
           "artifact_id": "erdos_68_note",
-          "title": "Factorial Carries and Finite Channel Obstructions",
+          "title": "Factorial-Channel Obstructions and Exact Orbit Boundaries",
           "source_path": "paper/erdos-68-factorial-denominator-irrationality.tex",
           "rendered_path": "erdos-68-factorial-denominator-irrationality.pdf",
           "authority_posture": "authored_mathematical_exposition_of_unregistered_expansion_modules_and_an_external_finite_certificate_not_Lean_proof_authority"
@@ -1862,7 +1862,7 @@
         "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement.",
         "paper": {
           "paper_id": "erdos-68-factorial-denominator-irrationality",
-          "title": "Factorial Carries and Finite Channel Obstructions",
+          "title": "Factorial-Channel Obstructions and Exact Orbit Boundaries",
           "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
           "pdf": "erdos-68-factorial-denominator-irrationality.pdf",
           "full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
@@ -1918,10 +1918,10 @@
             "module": "ErdosProblems.Erdos243.SparseResetRecovery",
             "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
             "present": true,
-            "line_count": 208,
-            "declaration_count": 6,
-            "theorem_count": 5,
-            "content_digest": "sha256:74685dc6ad5abceedd76ea3928b25845a3bdf6070aaa96344d5ac5996a96187a"
+            "line_count": 543,
+            "declaration_count": 20,
+            "theorem_count": 15,
+            "content_digest": "sha256:9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e"
           },
           {
             "module": "ErdosProblems.Erdos243.DynamicCancellation",
@@ -2508,7 +2508,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1041_note",
-          "title": "Admissible Hubs and Newton-Flow Ray Separation",
+          "title": "Critical-Value Separation and Admissible Hubs",
           "source_path": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "rendered_path": "erdos-1041-lemniscate-newton-flow.pdf",
           "authority_posture": "authored_mathematical_exposition_and_proof_audit_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2553,7 +2553,7 @@
         "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
-          "title": "Admissible Hubs and Newton-Flow Ray Separation",
+          "title": "Critical-Value Separation and Admissible Hubs",
           "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "pdf": "erdos-1041-lemniscate-newton-flow.pdf",
           "full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
@@ -2592,11 +2592,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:aba4634c2321bcd222a770addf279bb9f6dc4217b07120fc17851b2843901d73"
+              "content_digest": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:de87e82f929c1875966e580159eaf3574822c88ace8e38b4d15597a25055e702"
+              "content_digest": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f"
             }
           },
           "strongest_result_summary": {
@@ -2678,7 +2678,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1049_note",
-          "title": "Sharp Height and Four-Jet Obstructions at Base 3/2",
+          "title": "Sharp Height and Four-Jet Obstructions at Base $3/2$",
           "source_path": "paper/erdos-1049-rational-base-lambert.tex",
           "rendered_path": "erdos-1049-rational-base-lambert.pdf",
           "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -2755,7 +2755,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:738fbb61e9bef821881605d9b5357767cac3bb1ef87341c39ff5dda53d7035ff",
+    "lakefile.toml": "sha256:b08ade613cd2983ae7fa79a9cca8759926d401d71ba77d476b51367d45006dbb",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

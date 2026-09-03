@@ -71,7 +71,7 @@
         {
           "declaration": "exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
           "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
-          "line": 31
+          "line": 55
         }
       ]
     },
@@ -97,7 +97,7 @@
         {
           "declaration": "cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
           "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
-          "line": 60
+          "line": 84
         }
       ]
     },
@@ -124,7 +124,7 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
           "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
-          "line": 73
+          "line": 97
         }
       ]
     }
@@ -140,21 +140,21 @@
     {
       "declaration": "exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
       "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
-      "line": 31,
+      "line": 55,
       "role": "statement",
       "statement_node": "one_positive_half_greedy_skip_produces_an_exact_row"
     },
     {
       "declaration": "cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
       "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
-      "line": 60,
+      "line": 84,
       "role": "statement",
       "statement_node": "cofinal_positive_half_greedy_skips_produce_cofinal_exact_rows"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
       "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
-      "line": 73,
+      "line": 97,
       "role": "statement",
       "statement_node": "cofinal_positive_half_greedy_skips_force_half_membership"
     }

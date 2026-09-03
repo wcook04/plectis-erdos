@@ -26,20 +26,59 @@ source declaration and exact boundary in the external-verification
 packet. It is a reader-priority signal, not a proof, novelty, or
 problem-closure claim; every ranked family remains reachable below.
 
-| Rank | Family / status | Interface → source declaration | Exact boundary |
-|---:|---|---|---|
-| 1 | `known_irrational_supports` / `selected` | `Erdos249257.ExternalVerification.irrational_erdosSum_full_support` → `Erdos249257.irrational_erdosSum_full_support` | This is the classical full-support theorem, not universal Erdos #257. |
-| 2 | `pairwise_coprime_support` / `represented` | `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime` → `Erdos249257.irrational_erdosSupportSeries_pairwise_coprime` | This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit. |
-| 3 | `orthogonal_petal_sunflower_reduction` / `represented` | `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` → `Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` | This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem. |
-| 4 | `periodic_nonnegative_weight_irrationality` / `represented` | `Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic` → `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic` | This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed. |
-| 5 | `actual_lcm_orbit_separation` / `represented` | `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` → `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` | The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open. |
-| 6 | `first_harmonic_pivot_decomposition` / `represented` | `Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation` → `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation` | The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed. |
-| 7 | `strict_prime_tail_orbit_gap` / `represented` | `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` → `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` | The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families. |
-| 8 | `factorial_carry_characterisation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` → `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` | The equivalence does not supply a cofinal carry producer. |
-| 9 | `prime_gap_reformulation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap` → `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap` | The equivalence does not prove irrationality of either series. |
-| 10 | `totient_carry_anti_compression` / `represented` | `Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` → `Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` | This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open. |
-| 11 | `half_membership_seam_classification` / `represented` | `Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` → `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` | This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made. |
-| 12 | `negative_mass_recovery` / `represented` | `Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass` → `ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass` | This is a conditional recovery criterion: the source theorem assumes every displayed dynamics, positivity, strict centered-step, normalized-vanishing, and summability hypothesis, and does not prove them for the original Erdős #243 orbit. Any surviving canonical orbit must have divergent normalized negative mass. It supplies no prime-specific producer, unconditional #243 endpoint, or reciprocal-tail irrationality, and makes no novelty, priority, significance, or external-review claim. It is distinct from centered_state_dynamics, which uses a uniform lower-bound hypothesis rather than summability of normalized negative mass. |
+| Rank | Family / status |
+|---:|---|
+| 1 | `known_irrational_supports` / `selected` |
+| 2 | `pairwise_coprime_support` / `represented` |
+| 3 | `orthogonal_petal_sunflower_reduction` / `represented` |
+| 4 | `periodic_nonnegative_weight_irrationality` / `represented` |
+| 5 | `actual_lcm_orbit_separation` / `represented` |
+| 6 | `first_harmonic_pivot_decomposition` / `represented` |
+| 7 | `strict_prime_tail_orbit_gap` / `represented` |
+| 8 | `factorial_carry_characterisation` / `subordinate` |
+| 9 | `prime_gap_reformulation` / `subordinate` |
+| 10 | `totient_carry_anti_compression` / `represented` |
+| 11 | `half_membership_seam_classification` / `represented` |
+| 12 | `negative_mass_recovery` / `represented` |
+
+Interface, source declaration, and exact boundary, by rank:
+
+1. `known_irrational_supports`
+   `Erdos249257.ExternalVerification.irrational_erdosSum_full_support` → `Erdos249257.irrational_erdosSum_full_support`
+   This is the classical full-support theorem, not universal Erdos #257.
+2. `pairwise_coprime_support`
+   `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime` → `Erdos249257.irrational_erdosSupportSeries_pairwise_coprime`
+   This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.
+3. `orthogonal_petal_sunflower_reduction`
+   `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` → `Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet`
+   This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem.
+4. `periodic_nonnegative_weight_irrationality`
+   `Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic` → `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic`
+   This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed.
+5. `actual_lcm_orbit_separation`
+   `Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply` → `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
+   The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open.
+6. `first_harmonic_pivot_decomposition`
+   `Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation` → `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation`
+   The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed.
+7. `strict_prime_tail_orbit_gap`
+   `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` → `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`
+   The phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. Exact phase/integrality equivalence, finite dyadic-root exclusion for 1 ≤ h ≤ 16 and k ≤ 14, and non-dyadicity-to-cofinal-nonpositive-phase implications are classification or finite evidence only; they do not supply density or prime alignment, and the source does not prove actual root entry. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families.
+8. `factorial_carry_characterisation`
+   `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` → `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries`
+   The equivalence does not supply a cofinal carry producer.
+9. `prime_gap_reformulation`
+   `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap` → `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap`
+   The equivalence does not prove irrationality of either series.
+10. `totient_carry_anti_compression`
+   `Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` → `Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`
+   This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open.
+11. `half_membership_seam_classification`
+   `Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` → `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`
+   This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made.
+12. `negative_mass_recovery`
+   `Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass` → `ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass`
+   This is a conditional recovery criterion: the source theorem assumes every displayed dynamics, positivity, strict centered-step, normalized-vanishing, and summability hypothesis, and does not prove them for the original Erdős #243 orbit. Any surviving canonical orbit must have divergent normalized negative mass. It supplies no prime-specific producer, unconditional #243 endpoint, or reciprocal-tail irrationality, and makes no novelty, priority, significance, or external-review claim. It is distinct from centered_state_dynamics, which uses a uniform lower-bound hypothesis rather than summability of normalized negative mass.
 
 ### Reader tiers and relational boundaries
 
@@ -76,6 +115,27 @@ The prior-art record, not this table, supplies antecedents.
 - `remaining_open.erdos_1041_lemniscate_connection` — Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.
 - `remaining_open.erdos_1049_irrationality` — Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.
 - `remaining_open.erdos_243_eventual_recurrence` — Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.
+- `remaining_open.erdos_269_reduced_tail_nonintegrality` — Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.
+- `remaining_open.erdos_269_cofinal_local_window_escape` — Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K^235(B, ℓ+h).
+- `remaining_open.erdos_269_two_dimensional_representation` — Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.
+- `remaining_open.erdos_243_overlap_height_growth` — Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.
+- `remaining_open.erdos_249_first_harmonic_anti_concentration` — Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.
+- `remaining_open.twenty_one_scaled_remainder_cofinal_return` — Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.
+- `remaining_open.twenty_one_actual_orbit_invariant` — Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.
+- `remaining_open.twenty_one_final_skip_exclusion` — Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.
+
+## Mathematical programmes
+
+- `erdos257_half_story` — Achievement-set geometry and the rational-target seams. Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved.
+- `erdos249_certificate_story` — #249 certificate and harmonic interface. The certificate formulation is exact and finite instances are checked; the unbounded certificate supply and irrationality of S remain open.
+- `structured_support_families` — Classical and structured support irrationality. These are structured families, coefficient classes, and a conditional bouquet reduction; arbitrary infinite supports in universal Erdős #257 remain open.
+- `erdos249_diagonal_arithmetic` — #249 diagonal arithmetic and fresh-loss interfaces. Each interface sharpens or re-expresses the same supply problem; no unbounded avoidance, slack, or separated-projection supply is proved.
+- `boolean_mobius_constraints` — Boolean Möbius carry and global rationality constraints. These are exact characterisations and necessary consequences of rationality; they do not contradict every hypothetical rational value or settle universal Erdős #257.
+- `transport_curvature_programme` — Transport, curvature, phase separation, and no-go results. The actual-LCM frontier, corridor, consumers, and countermodels are exact, but no cofinal curvature, transport, phase-separation, or anti-reconstruction producer is proved.
+- `lambert_obstruction_interfaces` — Mersenne–Lambert identities and obstruction interfaces. These are exact identities, obstruction theorems, and one conditional rank consequence; they do not form an irrationality criterion for S.
+- `probabilistic_gcd_geometry` — Coprimality probability, gcd moments, and Stern–Brocot geometry. Exact identities, denominator transfer, convergence, and combinatorial stability only; no irrationality or novelty claim.
+- `half_carry_compactness_programme` — Half-carry compactness, windows, seams, and finite propagation. The closure implications, local propagation laws, and bounded stages are exact; no cofinal or coherent unbounded window family is proved, so neither half-membership nor universal Erdős #257 follows.
+- `arithmetic_obstruction_interfaces` — Denominator, CRT, moment, and gauge obstructions. These are exact arithmetic interfaces, finite mechanisms, and obstruction theorems; they do not supply an unbounded certificate family or an irrationality criterion for the totient constant.
 
 ## Where the substance is
 
@@ -87,8 +147,8 @@ opens with a ten-minute verdict.
 
 Navigation inventory, not results. Generated certificate shards are
 counted as formal source, never as separate mathematical claims. The
-two roots currently expose 1,033 modules and
-153,566 declarations across #68, #243, #249,
+two roots currently expose 1,044 modules and
+153,671 declarations across #68, #243, #249,
 #251, #257, #269, #1041, and #1049; exact counts and atlas handles
 remain in `docs/orientation.json`.
 

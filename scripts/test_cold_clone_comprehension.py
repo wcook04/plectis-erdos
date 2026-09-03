@@ -337,9 +337,9 @@ def main() -> int:
             (
                 f"#### {row['rank']}. fixture — `{row['family_id']}`",
                 f"- **Checked interface:** `{row['declaration']}`",
-                "- **Exact source:** fixture source",
-                "- **Hard mechanism / natural friction:** fixture friction",
-                "- **Evidence / attribution ceiling:** fixture evidence",
+                "- **Source declaration:** fixture source",
+                "- **Hard mechanism:** fixture friction",
+                "- **Evidence:** fixture evidence",
                 "- **Boundary:** fixture boundary",
             )
         )
@@ -419,7 +419,7 @@ def main() -> int:
         raise AssertionError("paper-library invented ranked family escaped")
 
     mutated_paper_library = compliant_paper_library.replace(
-        "**Exact source:**", "**Unbound source:**", 1
+        "**Source declaration:**", "**Unbound source:**", 1
     )
     try:
         diagnostic.validate_paper_library_first_contact(
@@ -431,7 +431,7 @@ def main() -> int:
         raise AssertionError("paper-library exact-source deletion escaped")
 
     mutated_paper_library = compliant_paper_library.replace(
-        "**Hard mechanism / natural friction:**", "**Mechanism:**", 1
+        "**Hard mechanism:**", "**Mechanism:**", 1
     )
     try:
         diagnostic.validate_paper_library_first_contact(
@@ -443,7 +443,7 @@ def main() -> int:
         raise AssertionError("paper-library natural-friction deletion escaped")
 
     mutated_paper_library = compliant_paper_library.replace(
-        "**Evidence / attribution ceiling:**", "**Evidence:**", 1
+        "**Evidence:**", "**Evidence note:**", 1
     )
     try:
         diagnostic.validate_paper_library_first_contact(
@@ -498,8 +498,12 @@ def main() -> int:
             checks += 1
 
     mutated = copy.deepcopy(human_surfaces)
+    # Rename a heading the section contract actually pins. "What remains open"
+    # is no longer one of them: the open boundary now sits in the line that
+    # names each problem's paper, so renaming that heading mutated nothing and
+    # the fixture stopped testing the contract it is named for.
     mutated["README.md"] = mutated["README.md"].replace(
-        "## What remains open", "## Deferred questions"
+        "## What the checks establish", "## Deferred questions"
     )
     assert_human_rejected(summary, mutated, "first-contact section contract")
     checks += 1

@@ -373,7 +373,24 @@ def semantic_public_census_region(census: dict, *, truth_audit: bool) -> str:
         f"{census['open_antecedent_endpoint_equivalent_count']} are marked "
         "endpoint-equivalent. None of these populations is a novelty census."
     )
-    return "\n\n".join((prefix, table, tier_detail, detail))
+    # The demand lattice is the strongest thing this census has to say and it
+    # was computed, stored, and then never rendered: the public snapshot named
+    # the open-antecedent clusters but not how many of the extracted hypotheses
+    # are provably equivalent to an endpoint, which is the sentence a reviewer
+    # is looking for. The cold-clone contract asks for it by name.
+    demand = census.get("demand_lattice_counts", {})
+    demand_lattice = (
+        f"Of {demand.get('substantial', 0)} substantial Lean propositions "
+        "extracted from hypotheses of conditional theorems, "
+        f"{census.get('demand_equivalent_total', 0)} are provably equivalent to "
+        "an endpoint: "
+        f"{census.get('demand_equivalent_by_problem', {}).get('249', 0)} to #249 "
+        f"and {census.get('demand_equivalent_by_problem', {}).get('257', 0)} to "
+        "the `1/2` membership test for #257. Equivalence here is kernel-checked "
+        "against the extracted proposition, not a claim that either endpoint is "
+        "settled."
+    )
+    return "\n\n".join((prefix, table, tier_detail, detail, demand_lattice))
 
 
 def semantic_coverage_macro_region(payload: dict) -> str:
@@ -1188,6 +1205,19 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
         "demand_lattice_counts": frontier.get("demand_lattice", {}).get(
             "counts", {}
         ),
+        "demand_equivalent_total": sum(
+            len(row.get("members", []))
+            for row in frontier.get("demand_lattice", {}).get("classes", [])
+            if row.get("equivalent_to_problem")
+        ),
+        "demand_equivalent_by_problem": {
+            problem: sum(
+                len(row.get("members", []))
+                for row in frontier.get("demand_lattice", {}).get("classes", [])
+                if row.get("equivalent_to_problem") and row.get("problem") == problem
+            )
+            for problem in ("249", "257")
+        },
     }
 
     payload = {

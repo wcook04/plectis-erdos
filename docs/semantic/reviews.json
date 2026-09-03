@@ -22,12 +22,12 @@
     {
       "subject_kind": "statement_node",
       "subject_id": "Z01::erdos_borwein_full_support_irrationality",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:e0ae4eb9c3a737023247a88d95cee40ce2cca6be8fe1dbfb95ecc0019f9105b6",
-      "review_scope": "Canonical statement checked against all four cited declaration signatures and the eb_full_support and eb_constant claim boundaries.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:7be15fbcd9601f5535acb9543ce366ebb986a69b54dade596e22b1f65ed31014",
+      "review_scope": "Canonical statement checked against all four cited declaration signatures and the eb_full_support and eb_constant claim boundaries. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint; not Lean proof authority, independent human mathematical review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -35,18 +35,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e0ae4eb9c3a737023247a88d95cee40ce2cca6be8fe1dbfb95ecc0019f9105b6",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:1970f05923eb71ee991c650cc7dff32f74cbafe8b945ea7dceafcacb8aee1db2",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:135f0d50b11809db0c26628813d532826e96c4b573833bcac3d1354e835c2153",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:12462f301dbeeada0633cd938d8b2c9b5b3dae9c1a4f67c09bd4770a03fbfdaf",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:135f0d50b11809db0c26628813d532826e96c4b573833bcac3d1354e835c2153",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:eb3238b87912fff653a00f8d16e404f48bb9d1649af608d96d4f5e999ee199b4",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z01::lcm_gap_support_instances",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:9ce5233816b9c37bdd50ed5ef925055bc08e445f083e910ae03dc23179ec4158",
-      "review_scope": "Factorial and power-of-two support wording checked against the general-base and base-two theorem signatures and the support_families boundary.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:5650473c81eb11dd22dfe4649e38bdf6b560330be48d12a656d624cee8a923bb",
+      "review_scope": "Factorial and power-of-two support wording checked against the general-base and base-two theorem signatures and the support_families boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "These are named support families only, not universal Erdős #257; the receipt is not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -54,18 +88,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9ce5233816b9c37bdd50ed5ef925055bc08e445f083e910ae03dc23179ec4158",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e42e3a6dd4197b429a5b8650868c5db95c74fa4fdad476047881dc6fa6cfc208",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:7dc9b0a510bacb7d679218f15352263d4046fc38518cfb177c0b684dc4171eec",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:5c79ada212975606ae284634b5376de2b727394109e10a62ea33798245220f17",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7dc9b0a510bacb7d679218f15352263d4046fc38518cfb177c0b684dc4171eec",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:57cc52a5edc48ff3253b6c932063d97c484889d03cea9f23e87cbd2182e5f7c7",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z01::pairwise_coprime_support_irrationality",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:04e13748ab841b6ac8071d888fc17bbea6f06298c9e8a39add7782956a8fd1f3",
-      "review_scope": "Hypotheses and conclusion checked against the pairwise-coprime support theorem and its certificate-supply theorem.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:044f28744e47a59c1e975e9374a3fe9f756aa88022e74002b4ad2e43a402a0cc",
+      "review_scope": "Hypotheses and conclusion checked against the pairwise-coprime support theorem and its certificate-supply theorem. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Named support-class consistency only, not universal Erdős #257, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -73,18 +141,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:04e13748ab841b6ac8071d888fc17bbea6f06298c9e8a39add7782956a8fd1f3",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:57d188b1da46d0268e0140adb632bf3908302fd05a7fe3b13c1557758ba0f43e",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:b97640f20792551f7da82df2ea3af926a176c601f8c95e65139abd5165ac4be1",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9044cfc6b37dee51ea7cf9d96cd543948108e2523608ef7333120b170fa863b3",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b97640f20792551f7da82df2ea3af926a176c601f8c95e65139abd5165ac4be1",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:33c529c869da892fc8bdfbfbdd7f31c19f58634a88b8bd38542f4b31eca47313",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z01::periodic_weight_irrationality",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:df4f6a5b522155120ef94cc5710a0f6cbc0b98c5ed86be7f183e59054031c9e2",
-      "review_scope": "Natural, rational, eventually-periodic, and residue-weight wording checked against the six cited signatures and nonnegative coefficient hypotheses.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:f4c0420d03636bede6c05a970b4a8825c9b561a66052c2fb4ee2d04cddf69ae5",
+      "review_scope": "Natural, rational, eventually-periodic, and residue-weight wording checked against the six cited signatures and nonnegative coefficient hypotheses. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Source-to-wording semantic consistency only; not a mixed-sign theorem, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -92,18 +194,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:df4f6a5b522155120ef94cc5710a0f6cbc0b98c5ed86be7f183e59054031c9e2",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ed26d37108810dddbbed3af493257cfd68a8acde99008c048d0fd508228cdb7e",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:7faca3cd3d5ed9a72b53b9d14e862ec424587fa973ec5ecd14d089523657e469",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:fba8e17f9a565c4db8ad6e890a6eaab9e7704834e364e750a6a5af524ed2d58b",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7faca3cd3d5ed9a72b53b9d14e862ec424587fa973ec5ecd14d089523657e469",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b9eaf54d179afecda14fe41e1596d8d7d5299b78b735a8e57ce389214a5f8d05",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z01::signed_weight_dichotomy",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:39d172d4f227d345051c3606b961119bfd223dc671f29700e70dcea0494b6a2e",
-      "review_scope": "Irrational-or-base-terminating dichotomy and its conditional corollary checked against the four cited integer-weight signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:af32e47e11c291c35d04d8217c369258a032ff03f25a7ff695be20829e258f50",
+      "review_scope": "Irrational-or-base-terminating dichotomy and its conditional corollary checked against the four cited integer-weight signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "The terminating alternative remains part of the theorem; this receipt is not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -111,18 +247,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:39d172d4f227d345051c3606b961119bfd223dc671f29700e70dcea0494b6a2e",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:50841b56cc143d6f616576b390abda7bfff2a81038af4e3593c8ca78c78f1a4f",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:d8a5eae19a11fef30a659097c93409999f942477d68a1a8e23d8cea27f237091",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:988e27166b924fdecc250386c7f03fa80bc2384495f3fcde115b51ac7eee64ce",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d8a5eae19a11fef30a659097c93409999f942477d68a1a8e23d8cea27f237091",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d0bcb4a1c0f8594979e281b0c8b22971a3a6552e737db74a5f27aa22182e9ee4",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z01::totient_denominator_exclusion_ladder",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:6e089ee88276bd6539f174a4b202f991c3d21b4c4f81c724689168a8ca8bb8c9",
-      "review_scope": "All four denominator rungs and the three transported formulations checked against their exact signatures and denominator constants.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:0a6e3ee3832c4350326f78d0ffa8ec09d91db9e669c89a635a4e0741032b82ff",
+      "review_scope": "All four denominator rungs and the three transported formulations checked against their exact signatures and denominator constants. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A bounded denominator exclusion and its transports, not irrationality of the Erdős #249 constant, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -130,18 +300,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6e089ee88276bd6539f174a4b202f991c3d21b4c4f81c724689168a8ca8bb8c9",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:469f9706d27ad402ca0cd490f985f296b6a6cc9f7f97e726f41bb73509bac1bb",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:082742e7ccf1ab439b166f34de222d834cda141f6b9ef090620e5f20d2493117",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6002f67aa54611b3deaf2c0576383e7b8e8833aa4b4f420f3026cb5d3fc9f3bc",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:082742e7ccf1ab439b166f34de222d834cda141f6b9ef090620e5f20d2493117",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:6b8c9e197bfc941d4866cadb149ad9a8ce4052dd2ee53b8645b05c814f989af5",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z06::certificate_supply_is_equivalent_to_249",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:d519451c9c704212b843a7ec5da7fe95382d36f7c40875d2eee12d0e25c9cbd8",
-      "review_scope": "Four iff theorems plus the integral-tail implication checked against exact signatures; the both-sides-open caveat was checked explicitly.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:cccaff8762e38c172cc94c2a01c45f066a07b355444895418ab671825688a19b",
+      "review_scope": "Four iff theorems plus the integral-tail implication checked against exact signatures; the both-sides-open caveat was checked explicitly. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "This receipt confirms an equivalence to the open problem and does not establish either side, Lean proof authority, human review, or novelty.",
       "evidence_rebindings": [
         {
@@ -149,18 +353,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d519451c9c704212b843a7ec5da7fe95382d36f7c40875d2eee12d0e25c9cbd8",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2f2aca2009d9325c8a77f693e9170b1036e6714b99c4771f0dae06c50ea84421",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:b38b80f528e21bf02d35d00c0e35d452001772b9e7c8efbdd40c459d08e0d0b4",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:773c610a9c5fb58b9aa06ec4f556f737905a75afeeb8c9d11299c0065ef6455c",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b38b80f528e21bf02d35d00c0e35d452001772b9e7c8efbdd40c459d08e0d0b4",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:54177ba15d5c92f44701ea56da349fe1e028df399866e9afb8f7d785d14d7c6f",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z09::finite_level_dyadic_totient_independence",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:d01ebd671781b2a170f8d131d2e3cf3a15f6ca9379dfdd6ad3fd4b0e85bf9e67",
-      "review_scope": "Finite-level linear independence, separated-minor certificate, and exact 2^e+1 rank wording checked against four signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:7fb021f6e3fe894364fab1ddadc7f02f047ef6a24ccf017276de268fb9c44c7f",
+      "review_scope": "Finite-level linear independence, separated-minor certificate, and exact 2^e+1 rank wording checked against four signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Finite-level dyadic-section structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -168,18 +406,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d01ebd671781b2a170f8d131d2e3cf3a15f6ca9379dfdd6ad3fd4b0e85bf9e67",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c5f1e3a328f3601e0018a9d9ec7ed2fa19e56a9d918da0c5c803bc7876b4cff5",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:ed11601e7642c3c7426c9475102907c9477850d0570485c12d6f3723bd197dd9",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:47a342d3226bd240acd38b0bef8b48e8c2772afc3926d846814890593db5f61d",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ed11601e7642c3c7426c9475102907c9477850d0570485c12d6f3723bd197dd9",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2a5ca5ddf1c663ac901610e136d343705c48182a4a12f61d2920778a0a7c2d42",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z09::full_dyadic_kernel_infinite_dimensional",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:7aac51080fd8deaa58a720cd63fd4307e08fa26bbfa77c13d9b1ce3007d90523",
-      "review_scope": "Infinite-dimensional span wording checked against the exact not_finiteDimensional theorem signature.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:90ca80f8ffc93d648c2f0179f2c96013fc25e2724fdeccba3773cd59c6201d25",
+      "review_scope": "Infinite-dimensional span wording checked against the exact not_finiteDimensional theorem signature. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Coefficient-sequence structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -187,18 +459,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7aac51080fd8deaa58a720cd63fd4307e08fa26bbfa77c13d9b1ce3007d90523",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:abfddc399688040934cad5b4287c7b628dfb02f05eb2b458379ce71a5f4b8d6a",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:555283f355ccc8fed7a108ae140bddbdbde2051d793f403303d6a3fd88bd770f",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:47d355d179cc49c92783a7a9fbdb88beb44b922cb06d15a6e9df8593edf898c2",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:555283f355ccc8fed7a108ae140bddbdbde2051d793f403303d6a3fd88bd770f",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:42b7c344daa3469f6bcd84e3a2b27702f89f086cf9972332d98064095f389475",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z09::all_base_totient_kernel_arithmetic_index",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:f3ae6ffe7d15645e97568713989d4212dfe28e3eaea241b6d6de67dc9fad027a",
-      "review_scope": "Canonical arithmetic-and-index wording checked against the five cited declaration signatures and the nine-declaration all_base_totient_kernel_index_reduction headline boundary.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:69be18ee55478b9ca68660418345e7bc7d4c2071749ecd0bc8c0acb80261dcdf",
+      "review_scope": "Canonical arithmetic-and-index wording checked against the five cited declaration signatures and the nine-declaration all_base_totient_kernel_index_reduction headline boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Arithmetic reduction, unique quotient/nonzero-digit coordinates, and finite-index cardinality only; not all-base affine-section independence, basis, rank, Martin's theorem, irrationality, Lean proof authority, independent human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -206,18 +512,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f3ae6ffe7d15645e97568713989d4212dfe28e3eaea241b6d6de67dc9fad027a",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:321a9dc96b3a1ca6b81b35cfbfb0700ddec17f6b950837176c619316fdd3fbfb",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:dad1ce4df94d0ed4a6599c29358fd84088cd5f693b5bb12c8d61cd1e18e26721",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:bf05a5c8dc8849770eba5a9a70b5a1dcecde87b524e37d4e286dae2fc3fc7f46",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:dad1ce4df94d0ed4a6599c29358fd84088cd5f693b5bb12c8d61cd1e18e26721",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:cdde8307e9f4f7c4561b650af57e9fb4273bbc97d29d20978466ca7b63870627",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z12::mersenne_support_coding_normalisation",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:97ede5782694eaf11e6b538a3d5d8c3f25b7316f7991e73f0904121451170e4e",
-      "review_scope": "Support-series identity, digit-map range, continuity role, and injectivity wording checked against the five cited declarations.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:3b1d2fb35b3d404ade278f32881c56fd2b271ac060c0589938645d8a9b45046b",
+      "review_scope": "Support-series identity, digit-map range, continuity role, and injectivity wording checked against the five cited declarations. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Representation and coding consistency only; not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -225,18 +565,51 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:97ede5782694eaf11e6b538a3d5d8c3f25b7316f7991e73f0904121451170e4e",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review: evidence coordinates moved, so this is not a rebind; every cited declaration's statement was verified byte-identical to the previously reviewed revision"
+        },
+        {
+          "previous_evidence_digest": "sha256:903ab68c2eb70697871efed381c99b6a767525917d786fee85bc8d934fa3ac85",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:a5bff2ee884fc70379959dcabfb37903e91718e86e7f306337fd0895885301f2",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:5be888dbc6e283a862c1c9e48af24c9423495a680b0459140879461063abb039",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:a5bff2ee884fc70379959dcabfb37903e91718e86e7f306337fd0895885301f2",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:36e09072ce545c693c802efe01779718bc1ccc8ca0def4210518a57d182dc267",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z12::greedy_survival_characterisation",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:b05302672a2a3ab564107b9d33551872fa2233d30d8688b77ff335c518d660eb",
-      "review_scope": "Membership iff survival, support recovery, and residual-suffix identity checked against the three exact signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:1772887bf774a0e645a914915154ef93168663a13e159f94f5b02913e31aac0b",
+      "review_scope": "Membership iff survival, support recovery, and residual-suffix identity checked against the three exact signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Greedy representation consistency only; not resolution of half-value membership, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -244,18 +617,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b05302672a2a3ab564107b9d33551872fa2233d30d8688b77ff335c518d660eb",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:46a6e2a749478d4498bcd3e31eec54747a54ff2167a0a5f81cf83bf1957cf8df",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:b6fea13311f051ad834a3b1212bbf7c2f3b5f2882280b281da88019b9acb19e1",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9a71727f5e102cc5f0966b03b6c5c47a43242b1a792250da7fd5f00a1feb3bb4",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b6fea13311f051ad834a3b1212bbf7c2f3b5f2882280b281da88019b9acb19e1",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2ac972961f66623cb464b77d6c1824b267cfa1b84a3ce05c8959f1cba950671b",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z12::mersenne_achievement_set_cantor_geometry",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:21ecc3e003cec0fce9a5f0389dc97c0b1518003f0e04b7cb047f6963d67faca9",
-      "review_scope": "Compactness, perfection, total disconnectedness, and nowhere-density wording checked against four exact theorem signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:81ff649f8d5554f5fe8e4e48a78ad7ad6965cbf311c6cf48c0a4dcaea6583e10",
+      "review_scope": "Compactness, perfection, total disconnectedness, and nowhere-density wording checked against four exact theorem signatures. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Topological properties only; measure one is separately evidenced. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -263,18 +670,51 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:21ecc3e003cec0fce9a5f0389dc97c0b1518003f0e04b7cb047f6963d67faca9",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review: evidence coordinates moved, so this is not a rebind; every cited declaration's statement was verified byte-identical to the previously reviewed revision"
+        },
+        {
+          "previous_evidence_digest": "sha256:6a7736f49f236352f98119321b30f39a2b37deac9545d5d17af6fc476d1eedde",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:dd1f4d2292af60685106794d264b85aaf28470dd361196407ab2ac6de10d03e2",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:071ff21ae3bc72215cb7a96eda55a245b85a91f85c28874fc4ea1b1a11183135",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:dd1f4d2292af60685106794d264b85aaf28470dd361196407ab2ac6de10d03e2",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:19af86362b0c9e1194a469de4bc167ca98285647608970af5908ea64571a2b1d",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z12::mersenne_achievement_set_measure_one",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:1ed29868282b55ff458d75291da0289438ac450752196b75bf788fd2de7572c1",
-      "review_scope": "Cylinder-stage volumes, nested intersection, and final measure-one wording checked against four exact signatures after removing the unsupported topology clause.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:c219e1d433b652e8443a6d6fcdc011107191800c66588db2c7731046a6865b61",
+      "review_scope": "Cylinder-stage volumes, nested intersection, and final measure-one wording checked against four exact signatures after removing the unsupported topology clause. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Measure calculation only; nowhere density is separately evidenced. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -282,18 +722,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:1ed29868282b55ff458d75291da0289438ac450752196b75bf788fd2de7572c1",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:737e7d364bfc587063ffc967c14c9316c8801d3129932cd64cef6f0f085fcd73",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:21b35a8677660de14e8c4e5ccaf75e38272ce45a9fa31abc63d21463cda17406",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ab1a4618817af5908636e7b75bbd3a253b9fac42c2e2a7fa4d65caf4756e226d",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:21b35a8677660de14e8c4e5ccaf75e38272ce45a9fa31abc63d21463cda17406",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:566ff397ef4fa50bf66c6d3beb9e8a514e023d6802aa75aca8a217f1719e9a9d",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z12::half_membership_iff_infinite_greedy_skips",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:f15a575022e686479c5a03f840658713afd5f49e18a43efdf6a9dca8c7caabf6",
-      "review_scope": "Half-membership iff infinite skipped support checked against both exact signatures and the open-proposition boundary.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:e37284f0c059a89a9f82e2949fa082100c8be2bce6db9dff13ee4fe539de8cda",
+      "review_scope": "Half-membership iff infinite skipped support checked against both exact signatures and the open-proposition boundary. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed again on 2026-09-02 after the public GreedyAchievementSet took the cofinal-skip criterion from the private source: the insertion moved this subject's evidence coordinates, and every declaration it cites was located at both revisions and its full statement compared byte for byte, all identical. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Both sides remain open; the receipt does not decide membership, universal Erdős #257, Lean proof authority, human review, or novelty.",
       "evidence_rebindings": [
         {
@@ -301,18 +775,50 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f15a575022e686479c5a03f840658713afd5f49e18a43efdf6a9dca8c7caabf6",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review: evidence coordinates moved, so this is not a rebind; every cited declaration's statement was verified byte-identical to the previously reviewed revision"
+        },
+        {
+          "previous_evidence_digest": "sha256:dd36d67d41a1fee22d5568f98b91b35dc0803d3b3e920899c16d94375396a3f0",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:ca111fe94c42c970b02951eefa1df9d0e2c4dac7fd2f2f1ceccd213c330ae52b",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7d581a7c5436708ccb0e69635a9ec18f2d690b177ca86407fa192ffb194915cd",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ca111fe94c42c970b02951eefa1df9d0e2c4dac7fd2f2f1ceccd213c330ae52b",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review: evidence coordinates moved when rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips was added above them; every cited declaration's statement verified byte-identical across the change"
+        },
+        {
+          "previous_evidence_digest": "sha256:f8b46bd82b4ea1a8e60aeb1c8be875c8a5df1c07d768f3ae315091f7dfe699d0",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z14::final_middle_cell_neg_three_impossible",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:78dd0aa9da2bc992f4519e0d541941685feb04afa414e20d2861c8a16c93a2ae",
-      "review_scope": "The D>=13, middle-cell -3, eventually-right contradiction and explicit untouched branches checked against the two cited declarations.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:fc24a575ae913a771c24cfd132858e152e090629e386625ae15de1ddfcc9ccd7",
+      "review_scope": "The D>=13, middle-cell -3, eventually-right contradiction and explicit untouched branches checked against the two cited declarations. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "One branch-local exclusion only; cells -2 and -1 and the pure-right branch remain. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -320,18 +826,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:78dd0aa9da2bc992f4519e0d541941685feb04afa414e20d2861c8a16c93a2ae",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9934196b4f491d5727262e623d104f8d4b496388531d8cda9487a822c68f047e",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:e876b2990ed4525148379f0f5b1559bc025600c2c74975774038cf1cf0704642",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b67deea36b395642039a16d01be442bf35cf6cf3aae8cca7558e7ab3dd0d57c4",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e876b2990ed4525148379f0f5b1559bc025600c2c74975774038cf1cf0704642",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:dbc04a5fe99c95439f76768c77313e6e39a9025ca4d1ffb47d7a99e606dbf548",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z14::upper_last_producer_impossible",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:d2f60be5c59d52fc2e919e2565a8ba3704fece4e9f0c265af3ad284b55ba9a5b",
-      "review_scope": "The D>=13 upper-transition eventually-right contradiction and explicit untouched branches checked against the exact theorem signature.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:093003235e976aa1b036848085df2d723159af68b1342535b93c4fc01a88ec82",
+      "review_scope": "The D>=13 upper-transition eventually-right contradiction and explicit untouched branches checked against the exact theorem signature. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Upper branch at a last false terminal only; middle and pure-right branches remain. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -339,18 +879,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d2f60be5c59d52fc2e919e2565a8ba3704fece4e9f0c265af3ad284b55ba9a5b",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d756e5564f1ece2e4898858ee4323e3871e1f3480c90e7ca21415c202dabcb35",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:892142075f2dab990f600158b687f5de334345d1c1816d6512436f8f18b73f11",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:80ff970a34c9943d8f8b8e03d87ea59e56b86d3a08ef3070b82f36b9b4a032fb",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:892142075f2dab990f600158b687f5de334345d1c1816d6512436f8f18b73f11",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c28792ebaa860fb06c869c7310af462fea79faf3305ef75bc6a73f2408a962e7",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z02::aggregate_imported_scales_fire",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:e34b98cf34be9dd560e55da8bbafa1e4139951e5d6f0af0541dc99b695dbf1c1",
-      "review_scope": "The historical aggregates and the current contiguous t<=82 theorem were checked against all four cited signatures and the repaired certified_kill_instances claim boundary.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:776cfd3507a96f32447c321a53d2213d92cb156ebe9cbc2db3565dc46dfb782e",
+      "review_scope": "The historical aggregates and the current contiguous t<=82 theorem were checked against all four cited signatures and the repaired certified_kill_instances claim boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A finite aggregate only: no certificate at t=83 and no unbounded supply. Not Lean proof authority, independent human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -358,18 +932,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e34b98cf34be9dd560e55da8bbafa1e4139951e5d6f0af0541dc99b695dbf1c1",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2b2a46b3eade3932c90b694f71f4f627e83e02e0e0e8c91a5ba3dc4d861c8b95",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:75bfd6208044e1f770170994c73108beb95c8fae2c698638cb2a5e099439360e",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:8c83aa4ad68d51a8de5836b73c8397f4b9c91c1c4239c20b8727ba7bea375b8a",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:75bfd6208044e1f770170994c73108beb95c8fae2c698638cb2a5e099439360e",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:8eabaa27c7af7222649832caa6fff91a10eab8ee000af08e56dd9edf26b93e4b",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z05::exact_full_target_pincer",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:c422fba486f970d465e460bca2c4b3f9b6920aed209dee521fc3f7e3388a78c7",
-      "review_scope": "The reduced-shadow decomposition, full-target equivalence, generic-scale transport, and restatement boundary were checked against all seven cited signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:a3eca9352a850f2fb29a66c2a2df7f0d8089dffd7b9923ab50edf76a7da41972",
+      "review_scope": "The reduced-shadow decomposition, full-target equivalence, generic-scale transport, and restatement boundary were checked against all seven cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "An exact reformulation of diagonal integrality, not a proof of target avoidance, cofinal non-integrality, or Erdős #249. Not proof, human-review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -377,18 +985,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c422fba486f970d465e460bca2c4b3f9b6920aed209dee521fc3f7e3388a78c7",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:35c5d4352689cc7ef254cba78b928126bb42292a254a5dc7c588f68907d49b12",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:4aa59bf925afb3cfd0848ae11512e82d66de1414b57ff4b7162ab4fa9a51ee12",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2b69e7bf97942cb96919e468af8b952fbae696b74cb205e5588c8658c6bdc640",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:4aa59bf925afb3cfd0848ae11512e82d66de1414b57ff4b7162ab4fa9a51ee12",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:835de93e2da3394f9de1a9b058d0469db2e2aa05ab3b63ee377d0e35a20bd325",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z09::scalar_localisation_height_barrier",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:9f3b089ad6b854c98270b2a641bc48321a38eeb8846d91d81626579e76047e3e",
-      "review_scope": "Complementary-denominator divisibility, exact numerator transfer, and the rational-linear descender classification were checked against all four cited signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:d5675312b31e215cd89975cb1b54e17c03a182af9ad4f2eebf4cadd2642b93b0",
+      "review_scope": "Complementary-denominator divisibility, exact numerator transfer, and the rational-linear descender classification were checked against all four cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Scalar clearing and rational-linear channels only; no irrationality conclusion or exclusion of nonlinear or multivariable methods. Not proof, human-review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -396,18 +1038,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9f3b089ad6b854c98270b2a641bc48321a38eeb8846d91d81626579e76047e3e",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:bd02005810f80cbf554a0bee37ab539145d2f222405a5f3e7b1902ea7dd3642b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:248c42b7d3ac1a282b1d58ac429c1450bd39770d01e987ae7a073dde782da47c",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c7ca707c9447b4a4a0d9b53da476553e66ce854f20b0e28a35b52fb1a34ad756",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:248c42b7d3ac1a282b1d58ac429c1450bd39770d01e987ae7a073dde782da47c",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ce44f8e6c91483f42ac1aacb39e19d7c9faaa84d3e2d877fda599153861f1506",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z11::sublogarithmic_zero_window_bound",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:f7575008632350b4d76d53cd03ef6d3391e352bca572faf33307c6c8f94ddfc0",
-      "review_scope": "The fixed-k bound, both epsilon-logarithmic forms, every rationality and positivity hypothesis, and the deliberately recorded docstring mismatch were checked against the three cited signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:71e27a9d2f6c039d4e56fe8e6e61ac16948be562fae1a40f939c8019c157c146",
+      "review_scope": "The fixed-k bound, both epsilon-logarithmic forms, every rationality and positivity hypothesis, and the deliberately recorded docstring mismatch were checked against the three cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A necessary zero-window bound under an assumed rational support-series value, not an unconditional irrationality theorem or universal Erdős #257. Not proof, human-review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -415,18 +1091,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f7575008632350b4d76d53cd03ef6d3391e352bca572faf33307c6c8f94ddfc0",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:764ba154f98dedc8d13c70664099185f785084f1c4c90bb42d98c5bc94b3be06",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:89ff4d79dafbce98f309d9f5e124d453c5107ba04897bb49c16b3aa01aff6a90",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:a57432c40310cb561dad28689e3384aa3d9eb7ac53e0a0e34ab31c040aa88dc8",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:89ff4d79dafbce98f309d9f5e124d453c5107ba04897bb49c16b3aa01aff6a90",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:737332b0104be57324a0eb216e465b3fb153e2acf396dd937958924b239d07f4",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z12::mersenne_achievement_set_measure_one|complements|Z12::mersenne_achievement_set_cantor_geometry",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:a40fbaeb102c026527e9b8d4bdb4bbfcab3b0a4f187d3478c78d66a1e1b7bf40",
-      "review_scope": "Relation label and basis checked after separating measure evidence from topology evidence.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:3147079ad0fa401e9c5e52a482e96b6479615719d32ef26b7cf712f64af6537e",
+      "review_scope": "Relation label and basis checked after separating measure evidence from topology evidence. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "The nodes jointly support the fat Cantor description; neither node alone implies the other. Not proof or novelty authority.",
       "evidence_rebindings": [
         {
@@ -434,18 +1144,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:a40fbaeb102c026527e9b8d4bdb4bbfcab3b0a4f187d3478c78d66a1e1b7bf40",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:04ea7ab90bf3ee44782d7e1ca75a99f6e7f89a1afadca881389bf81054fffdee",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:a63b13e258fde612a4bc96d846813fc210682a0e1dc806421354bcfccf79a047",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:96ffcc8eeb257809887b3b5823b4353d90f2d73b2024c0a39beebbe7a593a7b1",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:a63b13e258fde612a4bc96d846813fc210682a0e1dc806421354bcfccf79a047",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:1ee912c01bd004746b2dbe06ca2847273097f4ad692497afa75b5e591dccb907",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z12::mersenne_achievement_set_cantor_geometry|transport_of|Z12::mersenne_support_coding_normalisation",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:4c2a1d4f2cf9121c4a3f1365e00bc14aa9af770ce614976f7e85e2a1f5dfee9e",
-      "review_scope": "Closed transport relation checked against the continuous injective digit-coding endpoint; the previous open-dependency label was rejected.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:9350dc31bb937b23b2a3eb6c5daa6acc106ab5a7e033abc9aa6994cbc16542dd",
+      "review_scope": "Closed transport relation checked against the continuous injective digit-coding endpoint; the previous open-dependency label was rejected. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed semantic transport only, not Lean proof dependency, an open obligation, proof authority, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -453,18 +1197,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:4c2a1d4f2cf9121c4a3f1365e00bc14aa9af770ce614976f7e85e2a1f5dfee9e",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:78e892d924cbb182d66647bea4ec3e4f73a4c23bd78c9ac00d91b084d8ada2f3",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:2e355f21b5df929bb8c5f07ff7dfd5296e2311198acb132d0d81af3d6e8987bb",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:5dcca03be8a1e165d8ac8f3d65eac47a0e22606f398ad1dd9178d49b5493726e",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2e355f21b5df929bb8c5f07ff7dfd5296e2311198acb132d0d81af3d6e8987bb",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:19af7a527463ab514ba16253ad944b8f411c429b883920d8909a1d3a17ceef0b",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z12::erdos_borwein_constant_irrational|specialises|Z01::erdos_borwein_full_support_irrationality",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:b6a60f242b2d5f7b63b212d5a2e9952a0b7f2a8d17099df24e1e7fd3dd0d8b0d",
-      "review_scope": "Base-two specialisation checked against the exact full-support and Erdős-Borwein signatures named in the relation basis.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:ef6eaf2b0728b4ce077f5939d6f23c4ad6e45c52a0bfecc1661244409730fcf1",
+      "review_scope": "Base-two specialisation checked against the exact full-support and Erdős-Borwein signatures named in the relation basis. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A semantic specialisation receipt only; not proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -472,18 +1250,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b6a60f242b2d5f7b63b212d5a2e9952a0b7f2a8d17099df24e1e7fd3dd0d8b0d",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:bd303bc3581060a003847a8b1a6f0041a5df2bc5822de6b963a0e0f5fdffde44",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:e892a2199fc2b13088708071ab9b5594953dd69147b9b8ef8a5acf1bf2474913",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:85ba468c3b53b64fa8cb3b64704fba3be4f3793bdb76fcf6afeb30d6f5d20d2e",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e892a2199fc2b13088708071ab9b5594953dd69147b9b8ef8a5acf1bf2474913",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:1c1fce67403a7c12114d7c0eb922da4ed8bfe8d2bcbf8f4fa094760a5365b01b",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z12::half_membership_iff_infinite_greedy_skips|equivalent_to|Z12::fatal_half_gap_dichotomy",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:dcca8577acd5d2d03dcdfa5cf5fbf77f7bb5b53709b62ca1b0f79875a83f9b51",
-      "review_scope": "Equivalence label and basis checked against the shared half-membership endpoint and finite-skip/fatal-gap classification.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:4dd0dabb2de64520baa905493ce052d9146fdf740ae9151571a0feb702b23851",
+      "review_scope": "Equivalence label and basis checked against the shared half-membership endpoint and finite-skip/fatal-gap classification. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Both endpoint presentations remain open; this receipt does not decide either, prove universal Erdős #257, or supply novelty authority.",
       "evidence_rebindings": [
         {
@@ -491,18 +1303,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:dcca8577acd5d2d03dcdfa5cf5fbf77f7bb5b53709b62ca1b0f79875a83f9b51",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:23be4c1314ca101ec0ddf7f6ce52572923c6228cfb03c152ae6d3eb8cfee398c",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:8e5263cfc3f98c479eb03dbe3c0cbbba3f12835ff04bc3801fa3c9066a691a99",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2069f172501357af13a45b56c6e679b52a520ec98d87b5a4d7a6c8184af28e04",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:8e5263cfc3f98c479eb03dbe3c0cbbba3f12835ff04bc3801fa3c9066a691a99",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b0b607c01fc3ce73f2ec28af814d669f5756cb2662a40a82af16b6bf0be1783b",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:4dcb08374c6c0ceae0043163307938d04db3bc541e6863dd36d9f0234f1a8c72",
-      "review_scope": "The finite-set quantifiers, rank-at-least-two hypothesis, exact target 1/21, denominator-order mechanism, and non-membership ceiling were checked against the theorem signature and proof.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:4192f2cfc45413461b535064609fb29b50e4ae64b1ca34c1825912dff0873e15",
+      "review_scope": "The finite-set quantifiers, rank-at-least-two hypothesis, exact target 1/21, denominator-order mechanism, and non-membership ceiling were checked against the theorem signature and proof. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Finite nontermination at one target only; not achievement-set membership, an infinite support, a counterexample, universal Erdős #257, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -510,18 +1356,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:4dcb08374c6c0ceae0043163307938d04db3bc541e6863dd36d9f0234f1a8c72",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:868700a6102de3d287e0fb1180341a4636ccfd6a7243883d76e18d75c1edd4c6",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:ac3881a308783e8d4094d1e36169608e3c20e29ae9b0dc60147ccbcae24eef4a",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:a9c21edddacaebd64f51d14b05fd4ad6d5635c9e46da0eac1be3f59687634987",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ac3881a308783e8d4094d1e36169608e3c20e29ae9b0dc60147ccbcae24eef4a",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d800d2c19ca4ef28a37786388d13d6bcd45ea0cd1e086d1951ecb2ff11fe08d5",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z65::primitive_23_solution_is_a_positive_coprime_rank_decomposition",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:ab9580db0e7240539462b3ee42f7731643c149fa86bbea1f0ec0e17e35e4d773",
-      "review_scope": "Positivity, coprimality, and the exact 2p+3q=n equation were checked against the definition.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:68b7c74a322c9db146c7e39a836f98746c7910382f13d81e6cd4d26e540ddad8",
+      "review_scope": "Positivity, coprimality, and the exact 2p+3q=n equation were checked against the definition. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A Diophantine representation definition only; not a reciprocal-Mersenne expansion identity, Booleanisation theorem, proof authority beyond the cited declaration, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -529,18 +1409,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ab9580db0e7240539462b3ee42f7731643c149fa86bbea1f0ec0e17e35e4d773",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c4f706d05c87b2fb944a030fee101ec03d11986b2b901468af3b33c8ded6123e",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:e602b9c9d5040c2e30622ea6854b44054a1097574a25e8d8b4e3806405fed18e",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:09a19f035c52bb6d971340c784f454be4435639cfa4c7f3debcc4cc707e92cc0",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e602b9c9d5040c2e30622ea6854b44054a1097574a25e8d8b4e3806405fed18e",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9112fee8e460718f741b4b338f28ee7c7333556104ba49dddce7a01241326a5e",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z65::primitive_23_cone_covers_every_rank_from_eleven",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:967ebe7ea2e79acf5b82ebb345eafe7a953d7d2f09a750cc8361b81b456ece6f",
-      "review_scope": "The uniform n>=11 quantifier and existence of a positive coprime 2p+3q representation were checked against the exact theorem signature and its parity split.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:d84deedd3b9482a6045ef310115470f661a80f4611a0d0c014371212d1b76558",
+      "review_scope": "The uniform n>=11 quantifier and existence of a positive coprime 2p+3q representation were checked against the exact theorem signature and its parity split. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Eventual primitive-rank coverage only; not coefficient uniqueness, Booleanisation, achievement-set membership, universal Erdős #257, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -548,18 +1462,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:967ebe7ea2e79acf5b82ebb345eafe7a953d7d2f09a750cc8361b81b456ece6f",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:05306cac9343dc11df34a725c78dbf82aae454929c7d749eecc2ef43ad10ffd8",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:846ed57f0cb97c55f952cf0264cce11859160072f5abb3c425962d1e2f1543b8",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:be9a64eab3be1e8dc0b10a7c8fdab031d373d064fbb82cab9d253928b81cbde3",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:846ed57f0cb97c55f952cf0264cce11859160072f5abb3c425962d1e2f1543b8",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ed8a2d07dace867cb1930196e5de2ba7638cd23e27da7afa8aa26dc7f74d6e18",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "statement_node",
       "subject_id": "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:de341ed829625dc036902aaddf43ce3d7de7725cc20d3f27b9c3ede78ef54aeb",
-      "review_scope": "Rank-ten nonexistence, two explicit rank-eleven witnesses, and two distinct witnesses at every rank 10k for k>=2 were checked against all three cited theorem signatures.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:e476acd176cad1714ad3f8da4c2e8768e0cec2dcef91ebb812976bf200db921e",
+      "review_scope": "Rank-ten nonexistence, two explicit rank-eleven witnesses, and two distinct witnesses at every rank 10k for k>=2 were checked against all three cited theorem signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Exact collision data only; not a carry resolution, a zero-one support, achievement-set membership, universal Erdős #257, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -567,18 +1515,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:de341ed829625dc036902aaddf43ce3d7de7725cc20d3f27b9c3ede78ef54aeb",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b95e5a6b1a8f8f512d1650f7d8d23f8cd76ce8e3979512301bb81534554d4446",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:8af14fdf07b96c9b478a9b162e85cf89990c1e01a8e24914eb2152ff983b9b5d",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f685b4339c4ba803b3c6adc45ad5516537941100f41d7c25df58b0763ccf3a3b",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:8af14fdf07b96c9b478a9b162e85cf89990c1e01a8e24914eb2152ff983b9b5d",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:dd210abbbe5a6b5d63149416ec785a93cdc95f13dd0d1150137f02d4a9f29a35",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two|complements|Z65::universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:060fab7c97018b1264155672d8792c8f83f804359d4b0e4c94f2f59d68551f30",
-      "review_scope": "The complementary relation was checked as a finite-support boundary for one candidate rational target, not as an implication toward or away from the universal assertion.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:a44af36f1cb7d07221eb4ee9e451eb3f7162d7204e5a99ec2b75971455cc0aea",
+      "review_scope": "The complementary relation was checked as a finite-support boundary for one candidate rational target, not as an implication toward or away from the universal assertion. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed navigation relation only; neither endpoint decides achievement-set membership or universal Erdős #257.",
       "evidence_rebindings": [
         {
@@ -586,18 +1568,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:060fab7c97018b1264155672d8792c8f83f804359d4b0e4c94f2f59d68551f30",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:4b97e08f81c275d23e21235cbadf74426c04f3c4b56c1e8fddeeba87db06920a",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:0052e03c5e0321007a936955cca89b411874b4aa396b1363ff2bd1271d22dc2d",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:0f02fb686f1c6684b8f46e033213db276cb87b668485c87fe952bc232f184181",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:0052e03c5e0321007a936955cca89b411874b4aa396b1363ff2bd1271d22dc2d",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c42df69d1f33eee0cf34bd99d7f5ae91e8953b22c00ca11f27a2f566bfa680f1",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z65::primitive_23_cone_covers_every_rank_from_eleven|generated_by|Z65::primitive_23_solution_is_a_positive_coprime_rank_decomposition",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:984d20dd753799c83824d620d46e0d282b45f1324581c1c859cd9ae8f80b7edb",
-      "review_scope": "The theorem-to-definition relation was checked against the constructed witnesses and exact IsPrimitive23Solution predicate.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:74391dedc57c7436f01742c115595828e8d7447bcbc38c358d45c84a8a60b021",
+      "review_scope": "The theorem-to-definition relation was checked against the constructed witnesses and exact IsPrimitive23Solution predicate. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed semantic relation only; not a formal dependency receipt, Booleanisation, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -605,18 +1621,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:984d20dd753799c83824d620d46e0d282b45f1324581c1c859cd9ae8f80b7edb",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:77001a5aba2dba25db8e5aac0a823ab6f9265ccf2ff2d99d988896f53251a42e",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:b4141e2cad865f292d7ca609b2b35edda6a75f48515e6305daac3de93be9810c",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:36d99f36400c4cd1eafcfcca597d368945cfcee02cbe2ae134f1eee3ecc1ada8",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b4141e2cad865f292d7ca609b2b35edda6a75f48515e6305daac3de93be9810c",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:599f19f4e001bd9236360decbe683e2851846dbcbef636c8fa9a9fb5ead16ece",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity|generated_by|Z65::primitive_23_solution_is_a_positive_coprime_rank_decomposition",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:2e5b0d74aaecf1ffd50db28f1d091aa43dfddec594862ef0cb9ac47456fdd98e",
-      "review_scope": "The defect and multiplicity node was checked as an exact family of instances of the primitive-rank definition.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:32193ea0e35320ba28a4278084a7ef39ebd3f2d6e9ed952f05e89c917551c6ec",
+      "review_scope": "The defect and multiplicity node was checked as an exact family of instances of the primitive-rank definition. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed semantic relation only; not a zero-one coefficient theorem, formal proof dependency receipt, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -624,18 +1674,52 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2e5b0d74aaecf1ffd50db28f1d091aa43dfddec594862ef0cb9ac47456fdd98e",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:4b6088deb27f970581d7adc50da346e979233a1635de25a2d516d2ebdc965594",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:e91a4fbecc925fb2bc2054ebfada0fbe3be0c4fba791414aca951b10863cd630",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7e66aa40c6326576429ce174570d3356afb04a38f2ce0820cf1bfb7f17574e24",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e91a4fbecc925fb2bc2054ebfada0fbe3be0c4fba791414aca951b10863cd630",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7f5417639af2e3f248d372cb4cb394870e76cd9af4c72f7e6f8e9a454894478b",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
     {
       "subject_kind": "relation",
       "subject_id": "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity|complements|Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
-      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
-      "reviewed_at": "2026-08-12",
-      "evidence_digest": "sha256:81bec22bf21d459dc9f444dce0427fe53a084f3980ef0782963aacb30b8283f5",
-      "review_scope": "The relation was checked as a route-level complement: finite nontermination states the target boundary while recurrent primitive multiplicity identifies the unresolved collision mechanism.",
+      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "reviewed_at": "2026-09-02",
+      "evidence_digest": "sha256:7a7a5b49a8a817d7f9f385f587fb07641afb19d314108e3acc9820c5c0c1a32f",
+      "review_scope": "The relation was checked as a route-level complement: finite nontermination states the target boundary while recurrent primitive multiplicity identifies the unresolved collision mechanism. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "The two nodes remain diagnostics; together they do not prove an expansion identity, Booleanisation, achievement-set membership, or universal Erdős #257.",
       "evidence_rebindings": [
         {
@@ -643,6 +1727,40 @@
           "previous_evidence_fingerprint": "sha256:53d6b5d148189b64361d0072cd2ae37fac1b32825d1e0ae8116dc46e998666db",
           "evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:81bec22bf21d459dc9f444dce0427fe53a084f3980ef0782963aacb30b8283f5",
+          "previous_evidence_fingerprint": "sha256:6f172ce68a8093d11640c89b641661805109fb8549c8ab7b7e454c08ccec3418",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:0e5e1cf5915478557b9afb61cdc2a5c5b4923903c7e3e37be8505ce4bbd46eec",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
+        },
+        {
+          "previous_evidence_digest": "sha256:bfc716e064388a18f9431cb88e4fab8d85bfab22b090ba4e476716e64a0b710b",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9ad386793cec9006b253b286bfc7464ebd2629bcf3a80bbffc9dabdca9c8fcd2",
+          "previous_evidence_fingerprint": "sha256:5c079f045e94c1c682997fc2e393281869a9168046b9616f152f3f816095073b",
+          "evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:bfc716e064388a18f9431cb88e4fab8d85bfab22b090ba4e476716e64a0b710b",
+          "previous_evidence_fingerprint": "sha256:8efa681e545be5cad4d9fa9e96b813690bf81437a00b881252a42493d70f0927",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2b90b8087b01fe0e855df797b345a56d9c08ff70680bb473fa8ff39b28bbef8a",
+          "evidence_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     }

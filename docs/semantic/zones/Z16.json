@@ -1195,17 +1195,17 @@
         {
           "declaration": "CylinderStage.halfTerminalOnlyStripWitness",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 58
+          "line": 63
         },
         {
           "declaration": "halfTerminalOnlyStripWitness_of_protectedEvenSeamRealizedAt",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 69
+          "line": 74
         },
         {
           "declaration": "CylinderStage.halfTerminalOnlyStripWitness_after_feedback",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 92
+          "line": 140
         }
       ],
       "concepts": [
@@ -1230,12 +1230,12 @@
         {
           "declaration": "fullCylinderStage51_halfTerminalOnlyStripWitness",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 111
+          "line": 231
         },
         {
           "declaration": "fullCylinderStage52_halfTerminalOnlyStripWitness",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 118
+          "line": 238
         }
       ],
       "concepts": [
@@ -1259,17 +1259,17 @@
         {
           "declaration": "cofinalTerminalOnlyStrip_of_cofinalCylinderStages",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 125
+          "line": 264
         },
         {
           "declaration": "exists_infinite_support_half_of_cofinalCylinderStages",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 138
+          "line": 277
         },
         {
           "declaration": "exists_infinite_positive_support_half_of_cofinalCylinderStages",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 148
+          "line": 287
         }
       ],
       "concepts": [
@@ -3378,70 +3378,70 @@
     {
       "declaration": "halfTerminalOnlyStripWitness_of_halfTerminalReachable",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 27,
+      "line": 32,
       "role": "substrate",
       "statement_node": "terminal_only_projection"
     },
     {
       "declaration": "SelectedHalfWindow.halfTerminalOnlyStripWitness",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 48,
+      "line": 53,
       "role": "substrate",
       "statement_node": "terminal_only_projection"
     },
     {
       "declaration": "CylinderStage.halfTerminalOnlyStripWitness",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 58,
+      "line": 63,
       "role": "statement",
       "statement_node": "terminal_only_projection"
     },
     {
       "declaration": "halfTerminalOnlyStripWitness_of_protectedEvenSeamRealizedAt",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 69,
+      "line": 74,
       "role": "statement",
       "statement_node": "terminal_only_projection"
     },
     {
       "declaration": "CylinderStage.halfTerminalOnlyStripWitness_after_feedback",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 92,
+      "line": 140,
       "role": "statement",
       "statement_node": "terminal_only_projection"
     },
     {
       "declaration": "fullCylinderStage51_halfTerminalOnlyStripWitness",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 111,
+      "line": 231,
       "role": "finite_instance",
       "statement_node": "certified_terminal_witnesses_51_52"
     },
     {
       "declaration": "fullCylinderStage52_halfTerminalOnlyStripWitness",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 118,
+      "line": 238,
       "role": "finite_instance",
       "statement_node": "certified_terminal_witnesses_51_52"
     },
     {
       "declaration": "cofinalTerminalOnlyStrip_of_cofinalCylinderStages",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 125,
+      "line": 264,
       "role": "statement",
       "statement_node": "cofinal_stages_conditional_export"
     },
     {
       "declaration": "exists_infinite_support_half_of_cofinalCylinderStages",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 138,
+      "line": 277,
       "role": "statement",
       "statement_node": "cofinal_stages_conditional_export"
     },
     {
       "declaration": "exists_infinite_positive_support_half_of_cofinalCylinderStages",
       "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-      "line": 148,
+      "line": 287,
       "role": "statement",
       "statement_node": "cofinal_stages_conditional_export"
     },

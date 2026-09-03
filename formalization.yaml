@@ -36,10 +36,10 @@ status:
     subsidiary theorems, formalises selected known results, verifies finite
     instances, and records conditional reductions and method barriers.
   proof_corpus_sorry_count: 0
-  sorry_count: 2
+  sorry_count: 5
   sorry_in_definitions: 0
-  trusted_challenge_sorry_count: 2
-  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1049/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
+  trusted_challenge_sorry_count: 5
+  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
   axioms:
     - "propext"
     - "Quot.sound"
@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:22c4d93bdcef1817d502db225a17225ced5db2e9c4eb5eebe5210e21e2997fe0"
+  problem_index_digest: "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1674,8 +1674,8 @@ external_verification:
         content_digests:
           frontier: "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
           strongest_results: "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
-          manifest: "sha256:aba4634c2321bcd222a770addf279bb9f6dc4217b07120fc17851b2843901d73"
-          checkpoint: "sha256:de87e82f929c1875966e580159eaf3574822c88ace8e38b4d15597a25055e702"
+          manifest: "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46"
+          checkpoint: "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f"
         activated_result_count: 45
         source_checkpoint: "867638684907b4ebd4ab2ef7b5de22dafda71e36"
         source_subtree_tree: "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d"
@@ -1686,6 +1686,6 @@ external_verification:
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "Irrationality at base three halves, or for any rational base."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
-  trusted_challenge_holes: 2
+  trusted_challenge_holes: 5
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

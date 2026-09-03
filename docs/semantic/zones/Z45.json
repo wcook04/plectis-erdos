@@ -54,7 +54,7 @@
         {
           "declaration": "totientBlock_two_mul",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 94
+          "line": 373
         }
       ]
     },
@@ -77,7 +77,7 @@
         {
           "declaration": "tail_diff_mul_mem_int_of_forall_step",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 102
+          "line": 381
         }
       ]
     },
@@ -101,22 +101,22 @@
         {
           "declaration": "PeriodMultipleKillSupply",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 124
+          "line": 403
         },
         {
           "declaration": "irrational_totient_series_of_periodMultipleKillSupply",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 132
+          "line": 411
         },
         {
           "declaration": "periodMultipleKillSupply_of_irrational",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 143
+          "line": 422
         },
         {
           "declaration": "periodMultipleKillSupply_iff_irrational",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 153
+          "line": 432
         }
       ]
     },
@@ -142,17 +142,17 @@
         {
           "declaration": "ApFullDepthEscape",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 162
+          "line": 441
         },
         {
           "declaration": "periodMultipleKillSupply_of_apFullDepthEscape",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 165
+          "line": 444
         },
         {
           "declaration": "irrational_totient_series_of_apFullDepthEscape",
           "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-          "line": 171
+          "line": 450
         }
       ]
     }
@@ -175,63 +175,63 @@
     {
       "declaration": "totientBlock_two_mul",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 94,
+      "line": 373,
       "role": "statement",
       "statement_node": "full_depth_discrepancies_and_totient_blocks_have_exact_nesting_identities"
     },
     {
       "declaration": "tail_diff_mul_mem_int_of_forall_step",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 102,
+      "line": 381,
       "role": "statement",
       "statement_node": "eventual_integrality_at_one_period_telescopes_to_every_multiple"
     },
     {
       "declaration": "PeriodMultipleKillSupply",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 124,
+      "line": 403,
       "role": "concept",
       "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
     },
     {
       "declaration": "irrational_totient_series_of_periodMultipleKillSupply",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 132,
+      "line": 411,
       "role": "statement",
       "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
     },
     {
       "declaration": "periodMultipleKillSupply_of_irrational",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 143,
+      "line": 422,
       "role": "statement",
       "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
     },
     {
       "declaration": "periodMultipleKillSupply_iff_irrational",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 153,
+      "line": 432,
       "role": "statement",
       "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
     },
     {
       "declaration": "ApFullDepthEscape",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 162,
+      "line": 441,
       "role": "concept",
       "statement_node": "full_depth_escape_is_a_stronger_open_sufficient_producer"
     },
     {
       "declaration": "periodMultipleKillSupply_of_apFullDepthEscape",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 165,
+      "line": 444,
       "role": "statement",
       "statement_node": "full_depth_escape_is_a_stronger_open_sufficient_producer"
     },
     {
       "declaration": "irrational_totient_series_of_apFullDepthEscape",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "line": 171,
+      "line": 450,
       "role": "statement",
       "statement_node": "full_depth_escape_is_a_stronger_open_sufficient_producer"
     }

@@ -86,8 +86,13 @@ def require_pinned_python(workflow: str) -> None:
             setup_body.count(PINNED_PYTHON_VERSION) == 1,
             f"{job} must install Python 3.12.9 exactly once",
         )
+        # setup-python's `cache` input names a package manager (pip, pipenv,
+        # poetry); it is not a boolean, and `cache: false` makes the action fail
+        # with "Caching for 'false' is not supported". The property is that the
+        # step enables no dependency cache at all, and setup-python caches
+        # nothing unless a provider is named, so the check is that none is.
         require(
-            setup_body.count("cache: false") == 1,
+            "cache:" not in setup_body,
             f"{job} must not use an implicit setup-python cache",
         )
 

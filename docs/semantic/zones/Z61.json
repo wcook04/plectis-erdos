@@ -39,7 +39,7 @@
         {
           "declaration": "localMersenneWeightsFrom_gapDominates",
           "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
-          "line": 280
+          "line": 684
         }
       ]
     },
@@ -62,7 +62,7 @@
         {
           "declaration": "remainder_lt_gap_iff_eq_integerGreedyBits",
           "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
-          "line": 373
+          "line": 918
         }
       ]
     },
@@ -87,7 +87,7 @@
         {
           "declaration": "localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
           "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
-          "line": 452
+          "line": 997
         }
       ]
     }
@@ -96,21 +96,21 @@
     {
       "declaration": "localMersenneWeightsFrom_gapDominates",
       "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
-      "line": 280,
+      "line": 684,
       "role": "statement",
       "statement_node": "local_mersenne_quotient_words_are_gap_dominated"
     },
     {
       "declaration": "remainder_lt_gap_iff_eq_integerGreedyBits",
       "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
-      "line": 373,
+      "line": 918,
       "role": "statement",
       "statement_node": "below_gap_defect_exactly_characterises_the_greedy_word"
     },
     {
       "declaration": "localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
       "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
-      "line": 452,
+      "line": 997,
       "role": "statement",
       "statement_node": "exact_half_target_lower_words_are_forced_to_be_greedy"
     }

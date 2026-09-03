@@ -50,17 +50,17 @@
         {
           "declaration": "zudilinBottomExpTwice_at_a2",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 50
+          "line": 52
         },
         {
           "declaration": "zudilinBottomExpTwice_succ_sub",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 58
+          "line": 60
         },
         {
           "declaration": "zudilinBottomExpTwice_strict_step",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 68
+          "line": 70
         }
       ]
     },
@@ -84,12 +84,12 @@
         {
           "declaration": "zudilinRawDegreeTwice_succ_sub",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 77
+          "line": 79
         },
         {
           "declaration": "zudilinRawDegreeTwice_strict_step",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 86
+          "line": 88
         }
       ]
     },
@@ -113,12 +113,12 @@
         {
           "declaration": "not_two_dvd_both_homEval_of_left_top_unit",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 269
+          "line": 374
         },
         {
           "declaration": "not_three_dvd_both_homEval_of_right_const_unit",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 279
+          "line": 384
         }
       ]
     },
@@ -142,7 +142,7 @@
         {
           "declaration": "twice_le_of_irrationalityExponent_bounds",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 311
+          "line": 416
         }
       ]
     },
@@ -166,7 +166,7 @@
         {
           "declaration": "homEvalThreeTwo",
           "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-          "line": 96
+          "line": 98
         }
       ]
     }
@@ -175,63 +175,63 @@
     {
       "declaration": "homEvalThreeTwo",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 96,
+      "line": 98,
       "role": "representation",
       "statement_node": "homogeneous_three_two_evaluation_representation"
     },
     {
       "declaration": "zudilinBottomExpTwice_at_a2",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 50,
+      "line": 52,
       "role": "statement",
       "statement_node": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone"
     },
     {
       "declaration": "zudilinBottomExpTwice_succ_sub",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 58,
+      "line": 60,
       "role": "engine",
       "statement_node": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone"
     },
     {
       "declaration": "zudilinBottomExpTwice_strict_step",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 68,
+      "line": 70,
       "role": "statement",
       "statement_node": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone"
     },
     {
       "declaration": "zudilinRawDegreeTwice_succ_sub",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 77,
+      "line": 79,
       "role": "engine",
       "statement_node": "raw_summand_degrees_increase_through_the_allowed_index_range"
     },
     {
       "declaration": "zudilinRawDegreeTwice_strict_step",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 86,
+      "line": 88,
       "role": "statement",
       "statement_node": "raw_summand_degrees_increase_through_the_allowed_index_range"
     },
     {
       "declaration": "not_two_dvd_both_homEval_of_left_top_unit",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 269,
+      "line": 374,
       "role": "statement",
       "statement_node": "one_endpoint_unit_blocks_a_common_local_prime_across_both_channels"
     },
     {
       "declaration": "not_three_dvd_both_homEval_of_right_const_unit",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 279,
+      "line": 384,
       "role": "statement",
       "statement_node": "one_endpoint_unit_blocks_a_common_local_prime_across_both_channels"
     },
     {
       "declaration": "twice_le_of_irrationalityExponent_bounds",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
-      "line": 311,
+      "line": 416,
       "role": "engine",
       "statement_node": "irrationality_exponent_bounds_force_twice_the_lower_rate_below_the_upper_rate"
     }

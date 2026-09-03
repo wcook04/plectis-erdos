@@ -17,12 +17,12 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{143,160}
+\newcommand{\SemanticAuthoredTheoremLike}{143,410}
 \newcommand{\SemanticAuthoredInterpreted}{139,772}
 \newcommand{\SemanticDirectEvidence}{3,284}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{3,388}
-\newcommand{\SemanticAuthoredPercent}{97.6}
+\newcommand{\SemanticStructuralOnly}{3,638}
+\newcommand{\SemanticAuthoredPercent}{97.5}
 % END generated_semantic_coverage_macros
 \newcommand{\repolink}[2]{\href{\repobase/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
@@ -51,7 +51,11 @@ worlds}, not isolated theorem files. Each world joins formal declarations,
 experiments, source literature, failed mechanisms, open obligations, and a
 reviewed public boundary. Formal dependencies, authored mathematical meaning,
 and public claims remain separate graphs, so a dense connection cannot make a
-claim stronger. Among the systems compared here, none implements this full
+claim stronger. An agent enters a world through a compiled comprehension
+packet: it federates the corpora by content digest, states the endpoint and
+claim ceiling before any route, separates proved results from open producers
+and closed routes, and declares both what it omitted and when it exceeded its
+context budget. Among the systems compared here, none implements this full
 route from a question to the strongest public claim its evidence supports.
 
 The mathematical workflow keeps conjecture, computation, formal proof,
@@ -342,10 +346,8 @@ source of truth.
 
 At entry, a deterministic router selects a small context packet for the task.
 The packet gives candidate objects, authority boundaries, relevant standards,
-and legal next actions. A reader can then drill from a one-line flag to a short
-card, a working context, and finally source evidence. This ``small map before
-large source'' rule reduces blind search without pretending that a summary is
-proof.
+and legal next actions. This ``small map before large source'' rule reduces
+blind search without pretending that a summary is proof.
 
 \subsection{Type A and Type B}
 
@@ -732,14 +734,59 @@ usable. When an exact path is claimed, a local connection card can put its
 prerequisites, sibling mechanisms, consumers, falsifiers, and validation target
 before broader retrieval.
 
-The working memory is federated rather than a copied mega-index. A compact
-descriptor carries separate identities for proof-bearing source, navigation
-generation, content digests, and source-input fingerprints. An attached
-exhaustive atlas is opened only after those identities reconcile and the
-bounded route cannot answer. Retrieval can move between global frontier
-structure, concept neighbourhoods, and premise or obligation ancestry. Exact
-imports, authored arguments, generated navigation, lexical references, and
-semantic inference remain visibly different edge classes.
+\subsection{Comprehension before the mathematics}
+\papersectiontarget{systems-comprehension}
+
+The neighbourhood is compiled, not remembered. Before attempting mathematics an
+agent asks a working-memory compiler for a packet conditioned on its query, and
+that packet, rather than the repository, is what it reasons over.
+
+Federation works by identity. Each corpus keeps its own authority and nothing
+is copied into a central index. The compiler holds a compact descriptor and a
+content fingerprint for the private projection and for every attached public
+checkout, and it opens an attached exhaustive atlas only after those identities
+reconcile and the bounded route has failed to answer. It never rebuilds the
+expensive Lean microcosm. Every packet names the corpora it consulted and the
+digests at which it saw them.
+
+The packet leads with the endpoint. A problem cockpit fixes the target
+statement, its status, the claim ceiling, and the current claim frontier,
+labelling each frontier claim with an evidence class and a logical altitude
+that separates an equivalence from a reduction, a necessary condition, a finite
+exclusion, and a no-go. Beneath it a mechanism landscape keeps proved or
+kernel-checked results apart from open producers and from routes a
+counterexample has closed. Retrieval moves between global frontier structure,
+concept neighbourhoods, and premise or obligation ancestry, and exact imports,
+authored arguments, generated navigation, lexical references, and semantic
+inference remain visibly different edge classes.
+
+Above that material sits an inference workspace: an exact commitment plane for
+source coordinates and statements, a strategy plane whose unit of branching is
+a coherent premise group, and an adversary plane for the falsifiers a branch
+must survive. Its commitments are invalidated whenever a corpus fingerprint
+moves. It states its own boundary in every packet, that only Lean, an exact
+counterexample, or an owner verifier receipt may change the status of a claim.
+The workspace plans inference and concludes nothing.
+
+Two refusals are as important as the retrieval. A query naming no theorem,
+declaration, or claim is reported as unanchored, and its consumer is told to
+name one before treating any route as target-specific, so a vague question does
+not receive a specific frontier. A packet over its requested context budget
+says so and exits non-zero instead of truncating quietly: it reports the
+requested and estimated token counts, names the planes it dropped, and gives
+the command that restores them. An omitted adversary plane appears as an
+omission with an expansion route, never as an absence of falsifiers.
+
+This is orientation, not understanding. A packet can be well formed over
+corpora it identified correctly and still select a weak mechanism, omit the
+governing obstruction, or carry an authored interpretation that is
+mathematically wrong. The supported claim is narrower: an agent entering a
+corpus of this depth receives a bounded starting state that names its sources
+by digest, labels its evidence, and declares its own omissions, and no part of
+that state carries proof authority. Whether agents working from such a packet
+produce better mathematics than agents without one is not measured here.
+
+\subsection{Consequence propagation}
 
 When a declaration lands, the direction reverses. A consequence mapper begins
 at the exact changed object and enumerates reverse imports, claim records,

@@ -135,9 +135,23 @@ def main() -> int:
     frontier = packet["research_frontier"]
     assert frontier["problem_id"] == "erdos_1041"
     assert frontier["query"] == "python3 scripts/query_corpus.py --route erdos_1041"
-    assert frontier["strongest_result_summary"]["result_count"] == 35
+    # The count belongs to the corpus file that holds the results, not to this
+    # test; pinning it here made every published #1041 result after the
+    # thirty-fifth turn the compact entry red.
+    assert frontier["strongest_result_summary"]["result_count"] == len(
+        json.loads(
+            (ROOT / "research_corpus/Erdos1041/STRONGEST_RESULTS.json").read_text(
+                encoding="utf-8"
+            )
+        )["results"]
+    )
     assert frontier["strongest_result_summary"]["status"] == "open"
-    assert frontier["checkpoint_summary"]["exported_source_file_count"] == 685
+    # Same again: the checkpoint states its own export size.
+    assert frontier["checkpoint_summary"]["exported_source_file_count"] == json.loads(
+        (ROOT / "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json").read_text(
+            encoding="utf-8"
+        )
+    )["exported_source_file_count"]
     assert set(frontier["files"]) == {
         "frontier",
         "strongest_results",

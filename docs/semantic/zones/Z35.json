@@ -261,15 +261,15 @@
       "scope_caveat": "This completely supplies anchor provenance and unbounded prime support, but not the cofinal terminal carry kill attached to those anchors. It is the concrete X-2 specialization of the conditional prime-ray interfaces in Z73; neither route proves a tail discrepancy, cofinal certificate supply, or irrationality of the binary totient series.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"binaryCyclotomicLayer_dvd_mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1375},
-        {"declaration":"binaryCyclotomicLayer_prime_order_decomposition","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1390},
-        {"declaration":"two_ne_zero_of_prime_dvd_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1419},
-        {"declaration":"prime_dvd_binaryCyclotomicLayer_clean_order","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1460},
-        {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1566},
-        {"declaration":"binaryCyclotomicLayer_layerSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1609},
-        {"declaration":"binaryCyclotomicLayer_eventualOrderConsumer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1635},
-        {"declaration":"binaryCyclotomicLayer_unboundedPrimeDivisorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1652},
-        {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1713}
+        {"declaration":"binaryCyclotomicLayer_dvd_mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1416},
+        {"declaration":"binaryCyclotomicLayer_prime_order_decomposition","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1431},
+        {"declaration":"two_ne_zero_of_prime_dvd_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1460},
+        {"declaration":"prime_dvd_binaryCyclotomicLayer_clean_order","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1501},
+        {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1607},
+        {"declaration":"binaryCyclotomicLayer_layerSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1650},
+        {"declaration":"binaryCyclotomicLayer_eventualOrderConsumer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1676},
+        {"declaration":"binaryCyclotomicLayer_unboundedPrimeDivisorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1693},
+        {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1773}
       ]
     },
     {
@@ -286,7 +286,7 @@
       "scope_caveat": "The lemma propagates a supplied eventual integrality law; it neither proves such a law nor proves its negation.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"tail_diff_int_of_period_mul","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1598}
+        {"declaration":"tail_diff_int_of_period_mul","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1735}
       ]
     },
     {
@@ -305,16 +305,16 @@
       "scope_caveat": "No cofinal kill supply is proved independently. Equivalence to Irrational S must not be read as a solution of #249.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1717},
-        {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1742},
-        {"declaration":"cyclotomicPrimeSingleLockedCarryKillSupply_iff_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1767},
-        {"declaration":"primeBasepointFilteredCarryKillSupply_of_cyclotomicFiltered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1790},
-        {"declaration":"irrational_totient_series_of_primeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1809},
-        {"declaration":"irrational_totient_series_of_cyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1881},
-        {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1952},
-        {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1976},
-        {"declaration":"binaryCyclotomicPrimeFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1989},
-        {"declaration":"primeBasepointFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1999}
+        {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1854},
+        {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1879},
+        {"declaration":"cyclotomicPrimeSingleLockedCarryKillSupply_iff_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1904},
+        {"declaration":"primeBasepointFilteredCarryKillSupply_of_cyclotomicFiltered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1927},
+        {"declaration":"irrational_totient_series_of_primeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1946},
+        {"declaration":"irrational_totient_series_of_cyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2018},
+        {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2089},
+        {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2113},
+        {"declaration":"binaryCyclotomicPrimeFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2126},
+        {"declaration":"primeBasepointFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2136}
       ]
     },
     {
@@ -333,9 +333,9 @@
       "scope_caveat": "The reverse theorem starts from irrationality. The equivalence therefore identifies the residual but contributes no unconditional cofinal escape.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"fullMersenneSingleLockedCarryKillSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2031},
-        {"declaration":"irrational_totient_series_of_fullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2098},
-        {"declaration":"fullMersenneSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2155}
+        {"declaration":"fullMersenneSingleLockedCarryKillSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2168},
+        {"declaration":"irrational_totient_series_of_fullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2235},
+        {"declaration":"fullMersenneSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2292}
       ]
     },
     {
@@ -352,11 +352,11 @@
       "scope_caveat": "The recurrence describes the residue orbit. It does not prove central escape at any cofinal family of heights.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"fullMersenneBlockResidue_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2185},
-        {"declaration":"fullMersenneBlockCenteredLift_emod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2229},
-        {"declaration":"fullMersenneBlockCenteredLift_succ_modEq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2241},
-        {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_abs_add_abs_lt","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2286},
-        {"declaration":"fullMersenneCenteredResidueGap_iff_abs_centeredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2319}
+        {"declaration":"fullMersenneBlockResidue_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2322},
+        {"declaration":"fullMersenneBlockCenteredLift_emod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2366},
+        {"declaration":"fullMersenneBlockCenteredLift_succ_modEq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2378},
+        {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_abs_add_abs_lt","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2423},
+        {"declaration":"fullMersenneCenteredResidueGap_iff_abs_centeredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2456}
       ]
     },
     {
@@ -373,12 +373,12 @@
       "scope_caveat": "Each theorem is finite and requires explicit large-modulus room. It does not supply cofinally many compatible H,N,M or solve #249.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_two_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2359},
-        {"declaration":"fullMersenneBlockCenteredLift_add_eq_carryOrbit_of_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2419},
-        {"declaration":"exists_fullMersenneCenteredResidueGap_of_carryOrbit_escape","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2449},
-        {"declaration":"exists_fullMersenneCenteredResidueGap_of_survivorKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2477},
-        {"declaration":"survivorKill_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2548},
-        {"declaration":"exists_fullMersenneCenteredResidueGap_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2578}
+        {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_two_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2496},
+        {"declaration":"fullMersenneBlockCenteredLift_add_eq_carryOrbit_of_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2556},
+        {"declaration":"exists_fullMersenneCenteredResidueGap_of_carryOrbit_escape","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2586},
+        {"declaration":"exists_fullMersenneCenteredResidueGap_of_survivorKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2614},
+        {"declaration":"survivorKill_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2685},
+        {"declaration":"exists_fullMersenneCenteredResidueGap_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2715}
       ]
     },
     {
@@ -395,8 +395,8 @@
       "scope_caveat": "This identifies two finite predicates. It does not prove that either gap occurs.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"fullMersenneInitialResidueGap_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2604},
-        {"declaration":"mersenne_factor_modulus_pos","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2686}
+        {"declaration":"fullMersenneInitialResidueGap_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2741},
+        {"declaration":"mersenne_factor_modulus_pos","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2823}
       ]
     },
     {
@@ -415,15 +415,15 @@
       "scope_caveat": "No theorem here proves the centered residue gap without assuming irrationality or an equivalent supply. This is a reformulation of #249, not its resolution.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"exists_fullMersenneInitialResidueGap_at_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2759},
-        {"declaration":"fullMersenneInitialResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2845},
-        {"declaration":"irrational_totient_series_of_fullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2860},
-        {"declaration":"fullMersenneInitialResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2919},
-        {"declaration":"fullMersenneCenteredResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2933},
-        {"declaration":"fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2943},
-        {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2954},
-        {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2976},
-        {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2989}
+        {"declaration":"exists_fullMersenneInitialResidueGap_at_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2948},
+        {"declaration":"fullMersenneInitialResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3034},
+        {"declaration":"irrational_totient_series_of_fullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3049},
+        {"declaration":"fullMersenneInitialResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3108},
+        {"declaration":"fullMersenneCenteredResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3122},
+        {"declaration":"fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3132},
+        {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3143},
+        {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3165},
+        {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3178}
       ]
     },
     {
@@ -442,10 +442,10 @@
       "scope_caveat": "The at-most-one state reduction is unconditional locally; its eventual escape at cofinally many anchors is exactly the unresolved content.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"irrational_totient_series_of_cyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2996},
-        {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3005},
-        {"declaration":"binaryCyclotomicPrimeFourCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3017},
-        {"declaration":"binaryCyclotomicPrimeSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3028}
+        {"declaration":"irrational_totient_series_of_cyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3185},
+        {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3194},
+        {"declaration":"binaryCyclotomicPrimeFourCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3206},
+        {"declaration":"binaryCyclotomicPrimeSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3217}
       ]
     },
     {
@@ -464,13 +464,13 @@
       "scope_caveat": "Unconditional prime production is already discharged, but no cofinal guard or anchored-kill supply is established. Therefore #249 remains open.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"cyclotomicGuardCylinderSupply_iff_anchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3070},
-        {"declaration":"irrational_totient_series_of_cyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3093},
-        {"declaration":"cyclotomicAnchoredKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3110},
-        {"declaration":"cyclotomicAnchoredKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3127},
-        {"declaration":"binaryCyclotomicAnchoredKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3138},
-        {"declaration":"irrational_totient_series_of_cyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3147},
-        {"declaration":"binaryCyclotomicGuardCylinderSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3156}
+        {"declaration":"cyclotomicGuardCylinderSupply_iff_anchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3259},
+        {"declaration":"irrational_totient_series_of_cyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3282},
+        {"declaration":"cyclotomicAnchoredKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3299},
+        {"declaration":"cyclotomicAnchoredKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3316},
+        {"declaration":"binaryCyclotomicAnchoredKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3327},
+        {"declaration":"irrational_totient_series_of_cyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3336},
+        {"declaration":"binaryCyclotomicGuardCylinderSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3345}
       ]
     },
     {
@@ -487,10 +487,10 @@
       "scope_caveat": "The result excludes one explicit denominator-divisor family only. It is not evidence for the cofinal supply and does not prove irrationality.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"certifiedKill_cyclotomic_30_331_natural","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3167},
-        {"declaration":"certifiedKill_cyclotomic_30_331_anchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3174},
-        {"declaration":"windowDiscrepancy_30_300_16_mod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3181},
-        {"declaration":"totient_series_ne_rat_of_den_dvd_30_300","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3188}
+        {"declaration":"certifiedKill_cyclotomic_30_331_natural","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3356},
+        {"declaration":"certifiedKill_cyclotomic_30_331_anchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3363},
+        {"declaration":"windowDiscrepancy_30_300_16_mod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3370},
+        {"declaration":"totient_series_ne_rat_of_den_dvd_30_300","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3377}
       ]
     }
   ],
@@ -545,80 +545,80 @@
     {"declaration":"no_mersenne_factor_candidate_of_scaled_tail_gap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1287,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
     {"declaration":"scaled_totientTail_notMem_int_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1312,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
     {"declaration":"exists_int_scaled_tail_of_rat_den_eq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1335,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
-    {"declaration":"binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1370,"role":"representation","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
-    {"declaration":"binaryCyclotomicLayer_dvd_mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1375,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
-    {"declaration":"binaryCyclotomicLayer_prime_order_decomposition","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1390,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
-    {"declaration":"two_ne_zero_of_prime_dvd_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1419,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
-    {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1464,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
-    {"declaration":"tail_diff_int_of_period_mul","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1598,"role":"statement","statement_node":"eventual_period_integrality_propagates_to_multiples"},
-    {"declaration":"CleanCyclotomicAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1624,"role":"concept","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
-    {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1636,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
-    {"declaration":"CyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1644,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"CyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1658,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"CyclotomicPrimeSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1673,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"PrimeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1690,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"PrimeBasepointSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1703,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1717,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1742,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicPrimeSingleLockedCarryKillSupply_iff_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1767,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"primeBasepointFilteredCarryKillSupply_of_cyclotomicFiltered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1790,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"irrational_totient_series_of_primeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1809,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"irrational_totient_series_of_cyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1881,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1952,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1976,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"binaryCyclotomicPrimeFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1989,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"primeBasepointFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1999,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
-    {"declaration":"FullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2017,"role":"concept","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
-    {"declaration":"fullMersenneSingleLockedCarryKillSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2031,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
-    {"declaration":"irrational_totient_series_of_fullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2098,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
-    {"declaration":"fullMersenneSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2155,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
-    {"declaration":"fullMersenneBlockResidue","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2164,"role":"representation","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"FullMersenneCenteredResidueGap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2170,"role":"concept","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"fullMersenneBlockResidue_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2185,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"fullMersenneBlockCenteredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2223,"role":"representation","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"fullMersenneBlockCenteredLift_emod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2229,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"fullMersenneBlockCenteredLift_succ_modEq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2241,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_abs_add_abs_lt","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2286,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"fullMersenneCenteredResidueGap_iff_abs_centeredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2319,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
-    {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_two_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2359,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
-    {"declaration":"fullMersenneBlockCenteredLift_add_eq_carryOrbit_of_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2419,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
-    {"declaration":"exists_fullMersenneCenteredResidueGap_of_carryOrbit_escape","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2449,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
-    {"declaration":"exists_fullMersenneCenteredResidueGap_of_survivorKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2477,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
-    {"declaration":"survivorKill_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2548,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
-    {"declaration":"exists_fullMersenneCenteredResidueGap_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2578,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
-    {"declaration":"FullMersenneInitialResidueGap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2590,"role":"concept","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
-    {"declaration":"fullMersenneInitialResidueGap_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2604,"role":"statement","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
-    {"declaration":"mersenne_factor_modulus_pos","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2686,"role":"statement","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
-    {"declaration":"FullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2701,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"FullMersenneCenteredResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2713,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"FullMersenneCanonicalBasepointResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2726,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"fullMersenneInitialResidueGapSupply_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2734,"role":"substrate","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"exists_fullMersenneInitialResidueGap_at_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2759,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"fullMersenneInitialResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2845,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"irrational_totient_series_of_fullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2860,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"fullMersenneInitialResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2919,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"fullMersenneCenteredResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2933,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2943,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2954,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2976,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2989,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
-    {"declaration":"irrational_totient_series_of_cyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2996,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3005,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
-    {"declaration":"binaryCyclotomicPrimeFourCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3017,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
-    {"declaration":"binaryCyclotomicPrimeSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3028,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
-    {"declaration":"CyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3042,"role":"concept","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"CyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3057,"role":"concept","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicGuardCylinderSupply_iff_anchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3070,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"irrational_totient_series_of_cyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3093,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicAnchoredKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3110,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"cyclotomicAnchoredKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3127,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"binaryCyclotomicAnchoredKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3138,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"irrational_totient_series_of_cyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3147,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"binaryCyclotomicGuardCylinderSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3156,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
-    {"declaration":"certifiedKill_cyclotomic_30_331_natural","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3167,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
-    {"declaration":"certifiedKill_cyclotomic_30_331_anchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3174,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
-    {"declaration":"windowDiscrepancy_30_300_16_mod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3181,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
-    {"declaration":"totient_series_ne_rat_of_den_dvd_30_300","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3188,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"}
+    {"declaration":"binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1411,"role":"representation","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"binaryCyclotomicLayer_dvd_mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1416,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"binaryCyclotomicLayer_prime_order_decomposition","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1431,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"two_ne_zero_of_prime_dvd_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1460,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1607,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"tail_diff_int_of_period_mul","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1735,"role":"statement","statement_node":"eventual_period_integrality_propagates_to_multiples"},
+    {"declaration":"CleanCyclotomicAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1761,"role":"concept","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1773,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"CyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1781,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1795,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicPrimeSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1810,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"PrimeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1827,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"PrimeBasepointSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1840,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1854,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1879,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeSingleLockedCarryKillSupply_iff_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1904,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointFilteredCarryKillSupply_of_cyclotomicFiltered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1927,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_primeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1946,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2018,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2089,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2113,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicPrimeFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2126,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2136,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"FullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2154,"role":"concept","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"fullMersenneSingleLockedCarryKillSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2168,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_fullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2235,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"fullMersenneSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2292,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"fullMersenneBlockResidue","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2301,"role":"representation","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"FullMersenneCenteredResidueGap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2307,"role":"concept","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockResidue_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2322,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2360,"role":"representation","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_emod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2366,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_succ_modEq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2378,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_abs_add_abs_lt","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2423,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneCenteredResidueGap_iff_abs_centeredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2456,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_two_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2496,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"fullMersenneBlockCenteredLift_add_eq_carryOrbit_of_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2556,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"exists_fullMersenneCenteredResidueGap_of_carryOrbit_escape","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2586,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"exists_fullMersenneCenteredResidueGap_of_survivorKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2614,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"survivorKill_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2685,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"exists_fullMersenneCenteredResidueGap_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2715,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"FullMersenneInitialResidueGap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2727,"role":"concept","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
+    {"declaration":"fullMersenneInitialResidueGap_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2741,"role":"statement","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
+    {"declaration":"mersenne_factor_modulus_pos","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2823,"role":"statement","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
+    {"declaration":"FullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2838,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"FullMersenneCenteredResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2850,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"FullMersenneCanonicalBasepointResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2863,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneInitialResidueGapSupply_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2871,"role":"substrate","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"exists_fullMersenneInitialResidueGap_at_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2948,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneInitialResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3034,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_fullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3049,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneInitialResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3108,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCenteredResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3122,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3132,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3143,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3165,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3178,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3185,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3194,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicPrimeFourCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3206,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicPrimeSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3217,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3231,"role":"concept","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3246,"role":"concept","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicGuardCylinderSupply_iff_anchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3259,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3282,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicAnchoredKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3299,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicAnchoredKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3316,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicAnchoredKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3327,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3336,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicGuardCylinderSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3345,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"certifiedKill_cyclotomic_30_331_natural","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3356,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
+    {"declaration":"certifiedKill_cyclotomic_30_331_anchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3363,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
+    {"declaration":"windowDiscrepancy_30_300_16_mod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3370,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
+    {"declaration":"totient_series_ne_rat_of_den_dvd_30_300","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3377,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"}
   ],
   "intra_zone_relations": [
     {

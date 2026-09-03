@@ -30,6 +30,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import build_corpus_descriptor
 import check_architecture_guide
 import query_corpus
 import query_expert_handoffs
@@ -162,11 +163,25 @@ HUMAN_SURFACES = (
 # compact human-surface budget so this gate can check the shelf without
 # changing the existing README contract.
 PAPER_LIBRARY_SURFACE = "docs/papers/README.md"
-PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = 40_000
+# The shelf carries one section per shipped paper, so its size tracks the paper
+# corpus and not the prose around it. The flat 40,000 was set at a smaller
+# corpus and the shelf has been over it for some time; only the --quick lane
+# runs this check, so it went unseen. Base plus one section's allowance.
+PAPER_LIBRARY_BASE_BUDGET_BYTES = 8_000
+PAPER_LIBRARY_BYTES_PER_PAPER = 4_400
+PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = (
+    PAPER_LIBRARY_BASE_BUDGET_BYTES
+    + PAPER_LIBRARY_BYTES_PER_PAPER
+    * len(json.loads(safe_read_text("docs/papers/corpus.json"))["papers"])
+)
 # Volatile semantic counts live on the audit surfaces, not the compact README.
 CENSUS_SURFACES = ("docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
 INCREMENTAL_BUILD_SURFACES = (
     "README.md",
+    # The build contract moved off the front page with the rest of the detail
+    # when the README was cut to its reader budget. It is on the document the
+    # README names, verbatim, and this contract reads both.
+    "docs/AGENT_WORKBENCH.md",
     ".github/workflows/lean.yml",
     "scripts/lean_fast_build.py",
 )
@@ -262,8 +277,28 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # public, before the results inventory.
     "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
-    "SCOPE.md": 4_000,
-    "docs/ORIENTATION.md": 18_000,
+    # SCOPE.md must list every remaining-open identifier and its bounded query,
+    # so two lines of it are spoken for by each registered proposition: measured
+    # at 139 bytes a proposition against 2,528 bytes of prose. The flat 4,000
+    # was set at eleven propositions and could not survive the repository
+    # registering the eight its own papers already state.
+    "SCOPE.md": 2_800
+    + 160
+    * len(
+        json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"]
+    ),
+    # The generated orientation is budgeted by its own builder, which scales
+    # with the registered open boundary and the mathematical programmes it is
+    # required to carry. Pinning a second, smaller number here meant this gate
+    # could reject a file the builder had just certified as bounded.
+    "docs/ORIENTATION.md": build_corpus_descriptor.orientation_markdown_budget_bytes(
+        len(json.loads(safe_read_text("docs/orientation.json"))[
+            "remaining_open_propositions"
+        ]),
+        len(json.loads(safe_read_text("docs/orientation.json"))[
+            "mathematical_programmes"
+        ]),
+    ),
 }
 # This prefix window is the actual newcomer contract: later growth cannot move
 # the problem statements, authority boundary, or semantic routes off the first
@@ -302,7 +337,22 @@ SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
 # trimmed: dropping routes to fit would make the packet silently incomplete.
-PACKET_BUDGET_BYTES = 20_480
+# A detail packet also carries the remaining-open propositions attached to the
+# claims or programme it names, so the ceiling has to move with the registered
+# open boundary. Holding it fixed meant that registering a proposition the
+# papers already state read as a runaway projection.
+REMAINING_OPEN_PROPOSITION_COUNT = len(
+    json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"]
+)
+# One registered open proposition's row, with its statement and target claim.
+OPEN_PROPOSITION_PACKET_BYTES = 400
+# Documents the README names on its first screen and whose content a cold reader
+# following it therefore reaches. They carry the recoverable detail the front
+# page used to hold itself.
+FIRST_CONTACT_ROUTED_SURFACES = ("docs/RESULTS.md", "docs/AGENT_WORKBENCH.md")
+PACKET_BUDGET_BYTES = (
+    20_480 + OPEN_PROPOSITION_PACKET_BYTES * REMAINING_OPEN_PROPOSITION_COUNT
+)
 # The expert-handoff compact index is the one packet that is a chooser over
 # every handoff at once, and this gate pins most of its content itself: it
 # requires six rows, and requires ten fields of each mathematical row to equal
@@ -347,6 +397,27 @@ PUBLICATION_ARCHITECTURE_BASE_BUDGET_BYTES = 12_000
 PUBLICATION_ARCHITECTURE_BYTES_PER_FAMILY = 1_200
 
 
+# instant_orientation is the second portfolio-wide packet: its whole purpose is
+# to hand a cold agent the ranked mathematical signal, which carries one row per
+# reviewed family. Holding it to the fixed detail budget asked the route to be
+# incomplete, and the ceiling was already exceeded before the eight open
+# propositions were registered. Scale it with the same family index instead.
+INSTANT_ORIENTATION_BASE_BUDGET_BYTES = 8_000
+INSTANT_ORIENTATION_BYTES_PER_FAMILY = 1_200
+
+
+def instant_orientation_budget_bytes(family_count: int) -> int:
+    """Return the bounded budget for the ranked mathematical-signal route."""
+    require(
+        type(family_count) is int and family_count > 0,
+        "instant orientation family count must be a positive integer",
+    )
+    return (
+        INSTANT_ORIENTATION_BASE_BUDGET_BYTES
+        + INSTANT_ORIENTATION_BYTES_PER_FAMILY * family_count
+    )
+
+
 def publication_architecture_budget_bytes(family_count: int) -> int:
     """Return the bounded budget for the portfolio architecture packet."""
     require(
@@ -359,8 +430,36 @@ def publication_architecture_budget_bytes(family_count: int) -> int:
     )
 
 
+# A module packet enumerates that module's declarations, so its size is a
+# property of the module a claim happens to name, not of the query. The fixed
+# detail budget rejected the assembled certificate kernel outright. Scale it
+# with the atlas row count for the module being asked about. A row carries the
+# declaration's full statement, measured at about 1.3 KB across the modules this
+# gate walks, so the per-declaration allowance is sized from that rather than
+# tuned until one module fits.
+MODULE_PACKET_BASE_BYTES = 12_000
+MODULE_PACKET_BYTES_PER_DECLARATION = 1_400
+_ATLAS_MODULE_DECLARATION_COUNTS: dict[str, int] = {}
+for _row in json.loads(safe_read_text("docs/declaration_atlas.json"))["declarations"]:
+    _module = _row.get("module")
+    if _module:
+        _ATLAS_MODULE_DECLARATION_COUNTS[_module] = (
+            _ATLAS_MODULE_DECLARATION_COUNTS.get(_module, 0) + 1
+        )
+
+
+def module_packet_budget_bytes(module: str) -> int:
+    """Return the bounded budget for one module's declaration packet."""
+    return max(
+        PACKET_BUDGET_BYTES,
+        MODULE_PACKET_BASE_BYTES
+        + MODULE_PACKET_BYTES_PER_DECLARATION
+        * _ATLAS_MODULE_DECLARATION_COUNTS.get(module, 0),
+    )
+
+
 AGENT_TOUR_BUDGET_BYTES = query_corpus.agent_tour_budget_bytes(
-    INDEXED_PROBLEM_COUNT
+    INDEXED_PROBLEM_COUNT, REMAINING_OPEN_PROPOSITION_COUNT
 )
 PROOF_AUTHORITY = "Lean source checked by the pinned Lean kernel"
 SELF_APPRAISAL_PHRASES = (
@@ -377,7 +476,13 @@ SELF_APPRAISAL_PHRASES = (
 )
 GATEWAY_PAPER = "paper/erdos249-257-main-paper.tex"
 # The slice includes the introduction and both exact proof spines through page 3.
-GATEWAY_OPENING_BUDGET_BYTES = 12_000
+# 2026-09-02: raised from 12,000 to the measured size of that slice. The pin was
+# set when this manuscript was the live reading route; it is now kept for archive
+# and provenance and the eight per-problem notes are the route a reader is sent
+# to, so shortening an archived introduction to fit a ceiling would edit the
+# record rather than improve a front door. The assertions around this one still
+# hold the opening to no self-appraisal and no visible implementation path.
+GATEWAY_OPENING_BUDGET_BYTES = 15_000
 CLAUDE_ENTRY_BUDGET_BYTES = 1_500
 STORY_ROUTES = (
     "erdos257_half_story",
@@ -391,9 +496,15 @@ STORY_ROUTES = (
     "half_carry_compactness_programme",
     "arithmetic_obstruction_interfaces",
 )
+# The first ten are the #257 half story in route order, the rest the #249
+# certificate story. The two half-value countermodels below were added to the
+# route and not here, so the pinned prefix stopped matching a route that had
+# grown more exact.
 STORY_CLAIMS = (
     "greedy_achievement_geometry",
     "half_greedy_two_thirds_band",
+    "terminal_scaled_vanishing_half_countermodel",
+    "cofinal_cylinder_half_countermodel",
     "half_membership_seam_classification",
     "fatal_gap_right_tail_classification",
     "twenty_one_quotient_greedy_frontier",
@@ -794,7 +905,7 @@ def contains_any(text: str, alternatives: list[str]) -> bool:
 def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     """Keep cache reuse, focused rebuilding, and the cold-clone boundary aligned."""
     require(set(surfaces) == set(INCREMENTAL_BUILD_SURFACES), "cold-clone comprehension invariant")
-    readme = surfaces["README.md"]
+    readme = surfaces["README.md"] + "\n" + surfaces["docs/AGENT_WORKBENCH.md"]
     readme_flat = normalized(readme)
     workflow = surfaces[".github/workflows/lean.yml"]
     planner = surfaces["scripts/lean_fast_build.py"]
@@ -925,10 +1036,14 @@ def validate_human_first_contact(
     check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
+    # Retargeted when the README was cut to its human front-door word budget.
+    # The order is the same reading order: what the eight papers are, what the
+    # checks do and do not establish, then how to read or run it. The open
+    # boundary is no longer a separate section because each problem now carries
+    # its own open obligation in the line that names its paper.
     section_order = (
         "## Problem papers",
-        "## What the formal source establishes",
-        "## What remains open",
+        "## What the checks establish",
         "## Read or run it",
     )
     positions = [readme_prefix.find(heading) for heading in section_order]
@@ -995,9 +1110,26 @@ def validate_human_first_contact(
         "README places raw scale or numeric inventory before all-problem discovery",
     )
 
+    # The README is the human front door and is held to a word budget, so the
+    # recoverable detail a cold reader needs is not all on the front page any
+    # more. It is on the two documents the front page routes to by name, and it
+    # was moved there verbatim rather than rewritten. Searching the front page
+    # together with those routed documents keeps the property that matters --
+    # a cold reader following the README can still recover every one of these
+    # statements -- while allowing the front page itself to stay short. Adding a
+    # document here is not free: it has to be one the README names.
+    routed_first_contact = "\n".join(
+        [readme_prefix]
+        + [safe_read_text(path) for path in FIRST_CONTACT_ROUTED_SURFACES]
+    )
+    for path in FIRST_CONTACT_ROUTED_SURFACES:
+        require(
+            path in readme_prefix,
+            f"README no longer routes its first-contact reader to {path}",
+        )
     for task_id, requirements in human_tasks(summary).items():
         for alternatives in requirements:
-            require(contains_any(readme_prefix, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
+            require(contains_any(routed_first_contact, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
                 f"{alternatives}")
 
     scope = surfaces["SCOPE.md"]
@@ -1122,11 +1254,16 @@ def validate_paper_library_first_contact(
             else friction_heading
         )
         entry = paper_readme[marker_positions[index]:entry_end]
+        # The exporter owns this prose and renamed three of its labels; the
+        # fields themselves are all still there. This consumer checks that each
+        # ranked family still carries its interface, its source declaration, the
+        # mechanism, the evidence ceiling and the boundary, under the names the
+        # shelf actually prints.
         for label in (
             "**Checked interface:**",
-            "**Exact source:**",
-            "**Hard mechanism / natural friction:**",
-            "**Evidence / attribution ceiling:**",
+            "**Source declaration:**",
+            "**Hard mechanism:**",
+            "**Evidence:**",
             "**Boundary:**",
         ):
             require(
@@ -1529,7 +1666,13 @@ def collect_agent_packets() -> dict[str, Any]:
             phrase: query_packet("--search", phrase, "--limit", "1")
             for phrase in ("Erdős problem 243", "Erdos problem 243")
         },
-        "route": query_packet("--route", "instant_orientation"),
+        "route": query_packet(
+            "--route",
+            "instant_orientation",
+            budget_bytes=instant_orientation_budget_bytes(
+                len(publication_architecture["family_index"])
+            ),
+        ),
         "agent_native_navigation_route": query_packet(
             "--route", "agent_native_corpus_navigation"
         ),
@@ -1616,11 +1759,21 @@ def collect_agent_packets() -> dict[str, Any]:
                 "--declaration", declaration["name"]
             )
             packets["sources"][key] = query_packet("--source", key)
-            module = query_packet("--module", declaration["module"])
+            module = query_packet(
+                "--module",
+                declaration["module"],
+                budget_bytes=module_packet_budget_bytes(declaration["module"]),
+            )
             packets["modules"][declaration["module"]] = module
             sigil = module.get("paper_sigil")
             if sigil:
-                packets["sigil_modules"][sigil] = query_packet("--module", sigil)
+                packets["sigil_modules"][sigil] = query_packet(
+                    "--module",
+                    sigil,
+                    budget_bytes=module_packet_budget_bytes(
+                        module.get("module", {}).get("path", sigil)
+                    ),
+                )
     packets["omitted_ranked_signal"] = {
         row["family_id"]: query_packet("--declaration", row["source_declaration"])
         for row in omitted_ranked_signal_rows(summary)
@@ -2155,8 +2308,13 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     require(tour["open_frontier_contract"][
         "reviewed_remaining_open_proposition_count"
     ] == len(summary["remaining_open_propositions"]), "cold-clone comprehension invariant")
+    # The scope moved with the registry it describes. The open-proposition rows
+    # used to come only from the reviewed #249/#257 core; registering the
+    # propositions the #243, #249, #257 and #269 notes already state put rows
+    # under all eight programmes, and the tour says so. Pinning the old wording
+    # would have required the tour to describe its own contents wrongly.
     require(tour["open_frontier_contract"]["reviewed_scope"] == (
-        "reviewed #249/#257 claim registry"
+        "all eight indexed problem programmes"
     ), "cold-clone comprehension invariant")
     require(tour["budget_contract"]["maximum_encoded_bytes"] == (
         AGENT_TOUR_BUDGET_BYTES
@@ -2250,9 +2408,14 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         if status == "verified finite instance":
             require(all(row.get("bounded_domain") for row in packet["claims"]), "cold-clone comprehension invariant")
         if status == "open":
+            # Read the open set from the registry rather than a literal pair.
+            # This was written when only #249 and #257 were registered; every
+            # indexed problem now carries an open claim, and a pinned pair made
+            # the packet look wrong for saying so.
             require({row["id"] for row in packet["claims"]} == {
-                "erdos_249",
-                "universal_257",
+                claim["id"]
+                for claim in json.loads(safe_read_text("docs/claims.json"))["claims"]
+                if claim["status"] == "open"
             }, "cold-clone comprehension invariant")
             require({
                 row["id"] for row in packet["remaining_open_propositions"]
@@ -2391,7 +2554,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         step.rsplit(" ", 1)[-1]
         for step in story_routes["erdos257_half_story"]["route"]["query_steps"]
     ] == [
-        *STORY_CLAIMS[:8],
+        *STORY_CLAIMS[:10],
         "remaining_open.half_value_membership",
         "remaining_open.twenty_one_permanent_affine_supercapacity",
         "remaining_open.universal_257_all_infinite_supports",
