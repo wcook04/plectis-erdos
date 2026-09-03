@@ -37,7 +37,13 @@ TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
 LAKE = TOOLCHAIN_BIN / "lake"
 IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)\s*(?:--.*)?$")
 GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
-LAKE_COMMAND_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+# A single `lake` invocation here can be a cold full-corpus build, whose cost
+# tracks the size of the library rather than the size of a change. The shared
+# validation-worker budget is thirty minutes, and on 2026-09-03 a cold CI build
+# was killed at that mark with every module it had reached reporting 0: not a
+# failure, a clock. The bounded builder gets its own budget; every other
+# validation worker keeps the shared one.
+LAKE_COMMAND_TIMEOUT_SECONDS = 3 * 60 * 60
 
 
 def lake_command(*arguments: str) -> list[str]:
