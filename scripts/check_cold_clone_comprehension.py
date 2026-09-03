@@ -477,9 +477,15 @@ STORY_ROUTES = (
     "half_carry_compactness_programme",
     "arithmetic_obstruction_interfaces",
 )
+# The first ten are the #257 half story in route order, the rest the #249
+# certificate story. The two half-value countermodels below were added to the
+# route and not here, so the pinned prefix stopped matching a route that had
+# grown more exact.
 STORY_CLAIMS = (
     "greedy_achievement_geometry",
     "half_greedy_two_thirds_band",
+    "terminal_scaled_vanishing_half_countermodel",
+    "cofinal_cylinder_half_countermodel",
     "half_membership_seam_classification",
     "fatal_gap_right_tail_classification",
     "twenty_one_quotient_greedy_frontier",
@@ -2278,8 +2284,13 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     require(tour["open_frontier_contract"][
         "reviewed_remaining_open_proposition_count"
     ] == len(summary["remaining_open_propositions"]), "cold-clone comprehension invariant")
+    # The scope moved with the registry it describes. The open-proposition rows
+    # used to come only from the reviewed #249/#257 core; registering the
+    # propositions the #243, #249, #257 and #269 notes already state put rows
+    # under all eight programmes, and the tour says so. Pinning the old wording
+    # would have required the tour to describe its own contents wrongly.
     require(tour["open_frontier_contract"]["reviewed_scope"] == (
-        "reviewed #249/#257 claim registry"
+        "all eight indexed problem programmes"
     ), "cold-clone comprehension invariant")
     require(tour["budget_contract"]["maximum_encoded_bytes"] == (
         AGENT_TOUR_BUDGET_BYTES
@@ -2373,9 +2384,14 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         if status == "verified finite instance":
             require(all(row.get("bounded_domain") for row in packet["claims"]), "cold-clone comprehension invariant")
         if status == "open":
+            # Read the open set from the registry rather than a literal pair.
+            # This was written when only #249 and #257 were registered; every
+            # indexed problem now carries an open claim, and a pinned pair made
+            # the packet look wrong for saying so.
             require({row["id"] for row in packet["claims"]} == {
-                "erdos_249",
-                "universal_257",
+                claim["id"]
+                for claim in json.loads(safe_read_text("docs/claims.json"))["claims"]
+                if claim["status"] == "open"
             }, "cold-clone comprehension invariant")
             require({
                 row["id"] for row in packet["remaining_open_propositions"]
@@ -2514,7 +2530,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         step.rsplit(" ", 1)[-1]
         for step in story_routes["erdos257_half_story"]["route"]["query_steps"]
     ] == [
-        *STORY_CLAIMS[:8],
+        *STORY_CLAIMS[:10],
         "remaining_open.half_value_membership",
         "remaining_open.twenty_one_permanent_affine_supercapacity",
         "remaining_open.universal_257_all_infinite_supports",

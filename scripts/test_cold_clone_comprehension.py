@@ -498,8 +498,12 @@ def main() -> int:
             checks += 1
 
     mutated = copy.deepcopy(human_surfaces)
+    # Rename a heading the section contract actually pins. "What remains open"
+    # is no longer one of them: the open boundary now sits in the line that
+    # names each problem's paper, so renaming that heading mutated nothing and
+    # the fixture stopped testing the contract it is named for.
     mutated["README.md"] = mutated["README.md"].replace(
-        "## What remains open", "## Deferred questions"
+        "## What the checks establish", "## Deferred questions"
     )
     assert_human_rejected(summary, mutated, "first-contact section contract")
     checks += 1
