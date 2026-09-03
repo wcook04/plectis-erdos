@@ -502,14 +502,28 @@ def render_orientation_markdown(
         "packet. It is a reader-priority signal, not a proof, novelty, or",
         "problem-closure claim; every ranked family remains reachable below.",
         "",
-        "| Rank | Family / status | Interface → source declaration | Exact boundary |",
-        "|---:|---|---|---|",
+        "| Rank | Family / status |",
+        "|---:|---|",
     ]
+    # The table used to carry the interface, the source declaration and the
+    # boundary sentence as well, which made it 700px wider than the rendered
+    # column: every reader met the ranking behind a horizontal scrollbar, and a
+    # fully qualified declaration is a 118-character unbreakable token that no
+    # column width can absorb. The ranking stays a table and the detail reads
+    # below it, keyed by rank, which is what the render check recommends and
+    # costs no exactness.
     for row in orientation["mathematical_signal_first"]:
         lines.append(
-            f"| {row['rank']} | `{row['family_id']}` / `{row['selection_status']}` | "
-            f"`{row['interface']}` → `{row['source_declaration']}` | "
-            f"{row['boundary']} |"
+            f"| {row['rank']} | `{row['family_id']}` / `{row['selection_status']}` |"
+        )
+    lines.extend(["", "Interface, source declaration, and exact boundary, by rank:", ""])
+    for row in orientation["mathematical_signal_first"]:
+        lines.extend(
+            [
+                f"{row['rank']}. `{row['family_id']}`",
+                f"   `{row['interface']}` → `{row['source_declaration']}`",
+                f"   {row['boundary']}",
+            ]
         )
     presentation = orientation["mathematical_signal_presentation"]
     lines.extend(
