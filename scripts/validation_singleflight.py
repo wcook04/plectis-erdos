@@ -1030,10 +1030,34 @@ def terminate_process_group(process: subprocess.Popen[Any]) -> None:
             pass
 
 
-def wait_for_worker(process: subprocess.Popen[Any]) -> tuple[int, bool]:
+# One validation class does work whose cost tracks the size of the library
+# rather than the size of a change: a cold full-corpus Lean build. It was
+# borrowing the shared thirty-minute worker bound and continuous integration
+# killed it at that mark with every module it had reached reporting 0 -- not a
+# failure, a clock. It gets its own bound; every other class keeps the shared
+# one, because for them a thirty-minute worker really is a hang.
+WORKER_TIMEOUT_SECONDS_BY_KIND = {"lean": 3 * 60 * 60}
+
+
+def worker_timeout_seconds(receipt: dict[str, Any] | None) -> float:
+    """Return the bound this validation class is entitled to.
+
+    The receipt names the validator by the command it runs, so the class is
+    recovered from the roster rather than restated in the receipt.
+    """
+    command = list((receipt or {}).get("command") or [])
+    for kind, validator in ROSTER_VALIDATORS.items():
+        if validator in command and kind in WORKER_TIMEOUT_SECONDS_BY_KIND:
+            return WORKER_TIMEOUT_SECONDS_BY_KIND[kind]
+    return DEFAULT_WORKER_TIMEOUT_SECONDS
+
+
+def wait_for_worker(
+    process: subprocess.Popen[Any], receipt: dict[str, Any] | None = None
+) -> tuple[int, bool]:
     """Wait within the public worker bound and terminate a timed-out child."""
     try:
-        return process.wait(timeout=DEFAULT_WORKER_TIMEOUT_SECONDS), False
+        return process.wait(timeout=worker_timeout_seconds(receipt)), False
     except subprocess.TimeoutExpired:
         terminate_process_group(process)
         return WORKER_TIMEOUT_EXIT_CODE, True
@@ -1211,10 +1235,11 @@ def worker(state_root: Path, key: str, token: str) -> int:
                     }
                 )
                 write_receipt(state, key, receipt)
-                last_attempt_code, timed_out = wait_for_worker(child)
+                last_attempt_code, timed_out = wait_for_worker(child, receipt)
                 if timed_out:
                     stderr.write(
-                        f"validation worker timed out after {DEFAULT_WORKER_TIMEOUT_SECONDS} seconds\n".encode()
+                        "validation worker timed out after "
+                        f"{worker_timeout_seconds(receipt):.0f} seconds\n".encode()
                     )
                     break
                 if not is_external_termination_exit(last_attempt_code):

@@ -8,6 +8,7 @@ from __future__ import annotations
 import copy
 import importlib.util
 import os
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -16,6 +17,13 @@ from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parent.parent
+# The checker imports its sibling `validation_singleflight` by bare name, which
+# resolves only when scripts/ is on sys.path. Running this file directly puts it
+# there; `python3 -m unittest scripts.test_formal_conjectures_crosswalk`, which
+# is how continuous integration runs it, does not, so the module load below
+# raised ModuleNotFoundError before a single test ran.
+if str(ROOT / "scripts") not in sys.path:
+    sys.path.insert(0, str(ROOT / "scripts"))
 SCRIPT = ROOT / "scripts" / "check_formal_conjectures_crosswalk.py"
 SPEC = importlib.util.spec_from_file_location("formal_conjectures_crosswalk", SCRIPT)
 assert SPEC is not None and SPEC.loader is not None
