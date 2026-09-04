@@ -201,8 +201,8 @@ For a committed-snapshot release check in a dirty shared checkout:
 python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
 ```
 
-Run the relevant projection builders in `--check` mode and the focused tests
-named by [AGENTS.md](AGENTS.md). Run `lake build` after Lean changes.
+Use focused checks from [AGENTS.md](AGENTS.md); after Lean changes run
+`python3 scripts/lean_fast_build.py --jobs 2`.
 
 Do not absorb the complete deep contract, declaration atlas, module graph, or
 the papers merely to find the first action.

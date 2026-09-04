@@ -936,26 +936,30 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     ):
         require(normalized(token) in readme_flat, f"README lost incremental-build contract: {token}")
 
-    # A newcomer meets `lake` before they ever meet Lean. Until 2026-08-16 the
-    # README opened its build section on `lake exe cache get` and the string
-    # "elan" appeared nowhere in this repository's documentation, so the first
-    # build command a reader was handed was `command not found` unless they
-    # already had the toolchain. Nothing caught it because every check that
-    # runs here has the toolchain installed by the time it runs.
+    # A newcomer meets the build wrapper before they ever meet Lean. Until
+    # 2026-08-16 the README opened on a raw `lake exe cache get` and the string
+    # "elan" appeared nowhere in this repository's documentation. The wrapper
+    # now owns cache acquisition as well as build deduplication, but it still
+    # needs the toolchain installed before the first invocation.
     #
     # This is deliberately a positional contract rather than a keyword one: a
     # prerequisite named eighteen lines below the command it is a prerequisite
     # for is not a prerequisite, and the previous README did carry a toolchain
     # sentence — just underneath the command that needed it.
-    toolchain_guide = readme.find(
+    first_contact = surfaces["README.md"]
+    toolchain_guide = first_contact.find(
         "https://leanprover-community.github.io/get_started.html"
     )
-    first_lake_command = readme.find("lake exe cache get")
+    first_build_command = first_contact.find("python3 scripts/lean_fast_build.py --jobs 2")
     require(toolchain_guide >= 0, "README no longer tells a reader where the Lean toolchain comes from")
-    require(first_lake_command >= 0, "README lost its Mathlib cache command")
-    require(toolchain_guide < first_lake_command, "README names the Lean setup guide only after the first lake command; "
+    require(first_build_command >= 0, "README lost its coordinated Lean build command")
+    require(toolchain_guide < first_build_command, "README names the Lean setup guide only after the first build command; "
         "a reader without elan hits `command not found` before they reach it")
     require("elan" in readme, "README no longer names Lean's toolchain manager")
+    require(
+        "fetches the pinned cache when needed" in readme_flat,
+        "README no longer states that the build wrapper owns cache acquisition",
+    )
 
     # Every token below describes something the workflow *does*. "# v5" sat in
     # this list too, and it describes only which version of the cache action

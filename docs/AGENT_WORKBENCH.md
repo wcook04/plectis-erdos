@@ -398,11 +398,10 @@ toolchain manager, from the
 matching Mathlib.
 
 ```sh
-lake exe cache get   # fetches the pinned Mathlib build: several GB, once
-lake build
+python3 scripts/lean_fast_build.py --jobs 2
 ```
 
-A focused build runs through
+The wrapper fetches the pinned cache when needed. A focused build uses
 `python3 scripts/lean_fast_build.py --jobs 2 [target]`. With restored `.lake`
 outputs, `--lake-staleness` makes it trust Lake content traces, not checkout
 times. Without a target it checks both roots; `--plan` reports waves without

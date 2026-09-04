@@ -20,8 +20,8 @@ to defer. This file carries Claude-specific deltas only.
   `python3 scripts/query_corpus.py --route <programme_route_id>`.
 - Treat auto-memory, plans, subagents, and model output as working aids, never
   as proof, claim, source-identity, or publication authority.
-- Keep verification loops scoped to the selected change class. Use the public
-  checks in `AGENTS.md`, and run `lake build` after Lean changes.
+- Keep verification scoped; after Lean changes run
+  `python3 scripts/lean_fast_build.py --jobs 2`.
 - This self-contained public repository is a projection from a larger ongoing
   formal-mathematics workflow. It is not an entrypoint into any private
   development system; do not infer private paths, claims, or machinery.

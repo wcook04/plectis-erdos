@@ -510,7 +510,8 @@ in the gate output. Common drilldowns are
 `python3 scripts/build_semantic_corpus.py --check --full-check`,
 `python3 scripts/check_semantic_corpus.py`,
 `python3 scripts/build_module_graph.py --check`,
-`python3 scripts/refresh_source_coordinates.py --check`, and
+`python3 scripts/refresh_source_coordinates.py --check`,
+`python3 scripts/build_publication_entry_packet.py --check`, and
 `python3 scripts/test_query_corpus.py`.
 
 When the shared worktree contains unrelated in-progress edits, validate the
