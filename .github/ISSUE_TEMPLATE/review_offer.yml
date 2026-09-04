@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: You are willing to look at one thing
+description: An offer to review — bounded, and without needing to have found an error first.
+labels: ["review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The other forms all assume you have already found something wrong. This
+        one does not.
+
+        Nobody outside this project has reviewed any of it. That is stated
+        plainly in the release notes and it is the honest limit on everything
+        here. If you are willing to read one statement, one proof, or one
+        paragraph and say what you think, that is worth more than any further
+        formalisation.
+
+        Please scope it small. A bounded "this one line is fine" or "this one
+        line overclaims" is useful and finishable. A request to review the
+        corpus is neither.
+  - type: dropdown
+    id: lens
+    attributes:
+      label: What you are offering to look at
+      options:
+        - Whether a Lean statement says what its English says
+        - Whether a result is already in the literature
+        - Whether a paper's wording exceeds what was proved
+        - Whether the stated open boundary is the right one
+        - Whether the Comparator setup checks what it claims to
+        - Whether the build reproduces from a clean clone
+        - Something else
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Which one
+      description: A claim id from docs/claims.json, a declaration name, a paper section, or a problem number. If you want a suggestion instead, say so.
+      placeholder: erdos_68_denominator_equivalence — or "suggest one, I have about an hour"
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: Anything about your background you want on the record
+      description: >
+        Entirely optional, and not a filter — a first-year reading one statement
+        carefully is welcome. It only helps calibrate what a useful answer from
+        you would look like.
+  - type: markdown
+    attributes:
+      value: |
+        **What happens to your answer.** It gets recorded as it stands,
+        including disagreement, including "I looked and I am not sure." A
+        negative review is a result. Nothing here will be quoted as endorsement,
+        and if you would rather not be named, say so and you will not be.
