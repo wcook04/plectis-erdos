@@ -90,6 +90,7 @@ HOSTILE_ENVIRONMENT = {
     "LC_ALL": "C",
     "LANG": "C",
 }
+IMMUTABLE_BULK_SUFFIXES = {".lean", ".pdf"}
 
 
 def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
@@ -182,6 +183,30 @@ def materialise(destination: Path, shape: str) -> None:
     )
 
 
+def clone_materialised_checkout(source: Path, destination: Path, shape: str) -> None:
+    """Clone a metadata-free checkout without copying immutable bulk twice."""
+
+    def copy_file(source_file: str, destination_file: str) -> str:
+        source_path = Path(source_file)
+        if source_path.suffix in IMMUTABLE_BULK_SUFFIXES:
+            os.link(source_file, destination_file)
+            return destination_file
+        return shutil.copy2(source_file, destination_file)
+
+    shutil.copytree(
+        source,
+        destination,
+        copy_function=copy_file,
+        ignore=shutil.ignore_patterns(".checkout-shape"),
+    )
+    marker = destination / ".checkout-shape"
+    marker.mkdir()
+    (marker / shape).write_text(
+        "inert test marker; projection builders must ignore checkout shape\n",
+        encoding="utf-8",
+    )
+
+
 def regenerate(checkout: Path) -> dict[str, bytes]:
     for builder in BUILDERS:
         script = checkout / "scripts" / builder
@@ -209,7 +234,7 @@ def main() -> int:
         as_main = workspace / "as-main"
         as_topic = workspace / "as-topic"
         materialise(as_main, shape="main")
-        materialise(as_topic, shape="topic")
+        clone_materialised_checkout(as_main, as_topic, shape="topic")
 
         with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
             # The two checkout shapes are deliberately independent.  Running
