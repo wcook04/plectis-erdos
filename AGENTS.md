@@ -488,41 +488,30 @@ authored exposition, then generated projections.
 
 ## Validation
 
-Run the focused public-surface gate after documentation or registry changes:
+Choose one validation level. Do not run the full release gate and then rerun its
+component checks as a serial checklist.
 
-```sh
-python3 scripts/check_release.py
-python3 scripts/check_problem_note_sources.py --coverage
-python3 scripts/build_problem_index.py --check
-python3 scripts/build_semantic_corpus.py --check
-python3 scripts/check_semantic_corpus.py
-python3 scripts/semantic_review.py --check
-python3 scripts/build_theory_lab.py --check
-python3 scripts/check_theory_lab.py
-python3 scripts/test_declaration_head_contract.py
-python3 scripts/test_dependency_lock_contract.py
-python3 scripts/test_citation_identity_contract.py
-python3 scripts/test_license_map_contract.py
-python3 scripts/test_methodology_contract.py
-python3 scripts/build_module_graph.py --check
-python3 scripts/build_module_synopsis_index.py --check
-python3 scripts/build_lean_dependency_index.py --check
-python3 scripts/refresh_source_coordinates.py --check
-python3 scripts/build_corpus_descriptor.py --check
-python3 scripts/build_publication_entry_packet.py --check
-python3 scripts/check_publication_contract.py
-python3 scripts/test_publication_artifact_contract.py
-python3 scripts/run_publication_mutations.py --verify-operators
-python3 scripts/test_query_corpus.py --programme-routes-only
-python3 scripts/test_query_corpus_resilience.py
-python3 scripts/benchmark_semantic_reasoning.py --split held_out
-python3 scripts/audit_semantic_corpus.py
-python3 scripts/dogfood_semantic_proof.py
-python3 scripts/test_status_question_search.py
-python3 scripts/test_claim_packet_boundaries.py
-python3 scripts/test_publication_evidence_time_axis.py
-python3 scripts/test_query_corpus.py
-```
+- During an edit, run only the owning builder or focused test named by the
+  routed skill. For example, agent-entry work uses
+  `python3 scripts/test_agent_entry.py`; semantic projection work uses its
+  `build_*.py --check` command plus the matching contract test.
+- Before publishing a non-Lean public-surface change, run
+  `python3 scripts/check_release.py` once. It already runs the registered
+  projection freshness checks, source-coordinate checks, public-boundary
+  checks, query suite, cold-clone adversarial suite, and mutation fixtures.
+- After a Lean change, run the focused build wrapper below as the separate
+  proof-authority check. The Python release gate identifies the formal source
+  but deliberately does not elaborate Lean.
+
+Individual component commands remain useful for diagnosing a failing release
+gate, not as additional work after a pass. Start with the failed command named
+in the gate output. Common drilldowns are
+`python3 scripts/check_problem_note_sources.py --coverage`,
+`python3 scripts/build_semantic_corpus.py --check --full-check`,
+`python3 scripts/check_semantic_corpus.py`,
+`python3 scripts/build_module_graph.py --check`,
+`python3 scripts/refresh_source_coordinates.py --check`, and
+`python3 scripts/test_query_corpus.py`.
 
 When the shared worktree contains unrelated in-progress edits, validate the
 committed snapshot without cleaning or stashing anyone's files:
