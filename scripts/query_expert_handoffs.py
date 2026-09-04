@@ -359,7 +359,7 @@ def _family_hierarchy(
     }
 
 
-def _live_source_declaration(
+def _uncached_live_source_declaration(
     module: str, name: str, atlas: Mapping[str, Any]
 ) -> dict[str, Any]:
     """Join an atlas signature to the declaration's current source coordinate.
@@ -410,6 +410,43 @@ def _live_source_declaration(
         "coordinate_authority": "direct Lean source declaration",
         "signature_authority": "docs/declaration_atlas.json",
     }
+
+
+@lru_cache(maxsize=1)
+def _canonical_declaration_index() -> dict[tuple[str, str], dict[str, Any]]:
+    """Index the exhaustive atlas once for repeated expert-support joins."""
+    index: dict[tuple[str, str], dict[str, Any]] = {}
+    for row in load_json(ATLAS).get("declarations", []):
+        if not isinstance(row, dict):
+            continue
+        key = (str(row.get("module")), str(row.get("name")))
+        if key in index:
+            raise ValueError(
+                f"declaration atlas must expose one {key[0]}:{key[1]}; found multiple"
+            )
+        index[key] = row
+    return index
+
+
+@lru_cache(maxsize=256)
+def _canonical_live_source_declaration(module: str, name: str) -> dict[str, Any]:
+    """Resolve one declaration once against the immutable canonical atlas."""
+    row = _canonical_declaration_index().get((module, name))
+    if row is None:
+        raise ValueError(f"declaration atlas must expose one {module}:{name}; found 0")
+    return _uncached_live_source_declaration(module, name, {"declarations": [row]})
+
+
+def _live_source_declaration(
+    module: str, name: str, atlas: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Use the canonical cache without hiding synthetic atlas fixtures."""
+    canonical_atlas = load_json(ATLAS)
+    if atlas is canonical_atlas:
+        # Packet assembly may mutate its own copy downstream.  Preserve the
+        # cached row as immutable shared lookup state.
+        return dict(_canonical_live_source_declaration(module, name))
+    return _uncached_live_source_declaration(module, name, atlas)
 
 
 def _live_research_declaration(module: str, name: str) -> dict[str, Any]:

@@ -61,6 +61,20 @@ def assert_rejected(packets: dict, label: str) -> None:
     raise AssertionError(f"semantic mutation escaped: {label}")
 
 
+def copy_packet_sections(packets: dict, *section_names: str) -> dict:
+    """Copy only the top-level packet sections an adversarial case mutates.
+
+    The collected cold-clone packet is intentionally exhaustive.  Deep-copying
+    that entire graph for each of dozens of one-field rejection checks made
+    fixture setup dominate the suite, even though validators never mutate the
+    untouched sections.
+    """
+    copied = packets.copy()
+    for section_name in section_names:
+        copied[section_name] = copy.deepcopy(packets[section_name])
+    return copied
+
+
 def assert_proof_plan_rejected(proof_plans: dict, label: str) -> None:
     try:
         diagnostic.validate_proof_plan_packets(proof_plans)
@@ -629,29 +643,29 @@ def main() -> int:
         else:
             raise AssertionError(f"{label} deletion escaped")
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "summary")
     mutated["summary"]["proof_authority"] = "unverified"
     assert_rejected(mutated, "proof authority")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "summary")
     mutated["summary"]["remaining_open_propositions"] = []
     assert_rejected(mutated, "open boundary")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "summary")
     mutated["summary"]["publication_family_count"] = 0
     assert_rejected(mutated, "contribution-family scale")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "route")
     mutated["route"]["route"]["query_steps"].remove(
         "python3 scripts/query_corpus.py --publication-architecture"
     )
     assert_rejected(mutated, "contribution-family first-read route")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "agent_native_navigation_route")
     mutated["agent_native_navigation_route"]["route"]["action_steps"] = [
         step
         for step in mutated["agent_native_navigation_route"]["route"]["action_steps"]
@@ -660,21 +674,21 @@ def main() -> int:
     assert_rejected(mutated, "agent-native navigation workbench handoff")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "agent_native_navigation_route")
     mutated["agent_native_navigation_route"]["route"]["cold_clone_contract"][
         "navigation_requires_lean_build"
     ] = True
     assert_rejected(mutated, "agent-native zero-build navigation contract")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "agent_native_navigation_route")
     mutated["agent_native_navigation_route"]["route"]["query_steps"].remove(
         "python3 scripts/query_corpus.py --search <ordinary-language-query>"
     )
     assert_rejected(mutated, "agent-native ordinary-language first drilldown")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "agent_native_navigation_route")
     mutated["agent_native_navigation_route"]["route"]["query_steps"] = [
         step
         for step in mutated["agent_native_navigation_route"]["route"][
@@ -685,7 +699,7 @@ def main() -> int:
     assert_rejected(mutated, "agent-native publication handoff")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "agent_tour")
     mutated["agent_tour"]["intent_lenses"] = [
         row
         for row in mutated["agent_tour"]["intent_lenses"]
@@ -694,12 +708,12 @@ def main() -> int:
     assert_rejected(mutated, "agent tour checked-change intent")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "agent_tour")
     del mutated["agent_tour"]["cold_reader_contracts"]["ai_lab_researcher"]
     assert_rejected(mutated, "agent tour AI-lab reader contract")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "agent_native_navigation_route")
     mutated["agent_native_navigation_route"]["route"]["action_steps"] = [
         step
         for step in mutated["agent_native_navigation_route"]["route"]["action_steps"]
@@ -708,110 +722,110 @@ def main() -> int:
     assert_rejected(mutated, "agent-native focused incremental build handoff")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "discovery_searches")
     mutated["discovery_searches"]["what other exact mathematics is there"][
         "results"
     ].insert(0, {"kind": "declaration", "name": "shadow_result"})
     assert_rejected(mutated, "contribution-family search priority")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "discovery_searches")
     mutated["discovery_searches"][
         "what else is formally checked besides Erdos 249 and 257"
     ]["results"] = []
     assert_rejected(mutated, "ordinary corpus-breadth route discovery")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "publication_families")
     removed_family = next(iter(mutated["publication_families"]))
     mutated["publication_families"].pop(removed_family)
     assert_rejected(mutated, "contribution-family coverage")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_routes")
     mutated["story_routes"]["erdos257_half_story"]["route"]["query_steps"].pop()
     assert_rejected(mutated, "#257 story route")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_routes")
     mutated["story_routes"]["erdos249_diagonal_arithmetic"]["programme"][
         "claim_ceiling"
     ] = "This solves Erdős #249."
     assert_rejected(mutated, "programme claim ceiling")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_routes")
     mutated["story_routes"]["boolean_mobius_constraints"]["programme"][
         "core_claims"
     ].pop()
     assert_rejected(mutated, "programme claim-route completeness")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_routes")
     mutated["story_routes"]["transport_curvature_programme"][
         "release_provenance"
     ]["boundary"] = "Private work may supply proof authority."
     assert_rejected(mutated, "public-projection provenance boundary")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "discovery_searches")
     mutated["discovery_searches"]["what remains open for 257"]["results"] = []
     assert_rejected(mutated, "natural-language route discovery")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "discovery_searches")
     mutated["discovery_searches"]["what is reduced"]["results"].insert(
         0, {"kind": "declaration", "name": "shadow_reduction"}
     )
     assert_rejected(mutated, "claim-status route priority")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "discovery_searches")
     mutated["discovery_searches"]["which claims are cited only"]["results"] = []
     assert_rejected(mutated, "cited-only status route")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "discovery_searches")
     mutated["discovery_searches"]["list open claims"]["results"].insert(
         0, {"kind": "reading_route", "id": "shadow_open_route"}
     )
     assert_rejected(mutated, "open-claim status route priority")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "discovery_multi_searches")
     mutated["discovery_multi_searches"]["what is ruled out"]["results"] = []
     assert_rejected(mutated, "no-go programme route coverage")
     checks += 1
 
     checks += check_proof_plan_mutations(packets["proof_plans"])
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "claim_statuses")
     mutated["claim_statuses"]["conditional reduction"]["claims"][0][
         "remaining_open_proposition_ids"
     ] = []
     assert_rejected(mutated, "conditional status packet open boundary")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "claim_statuses")
     mutated["claim_statuses"]["verified finite instance"]["claims"][0].pop(
         "bounded_domain", None
     )
     assert_rejected(mutated, "finite status packet bounded domain")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "claim_statuses")
     mutated["claim_statuses"]["open"]["remaining_open_propositions"] = []
     assert_rejected(mutated, "open status packet proposition distinction")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_claims")
     mutated["story_claims"]["half_greedy_two_thirds_band"]["claim"]["statement"] = (
         "The actual greedy orbit for 1/2 avoids the band."
     )
     assert_rejected(mutated, "#257 band orbit boundary")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_claims")
     last_producer = mutated["story_claims"]["last_producer_tail_escape_reduction"]
     last_producer["argument_neighbourhood"]["incoming"] = [
         row
@@ -821,7 +835,7 @@ def main() -> int:
     assert_rejected(mutated, "#257 eliminated-case edge")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_claims")
     first_harmonic = mutated["story_claims"]["first_harmonic_certificate_interface"]
     first_harmonic["argument_neighbourhood"]["outgoing"] = [
         row
@@ -831,7 +845,7 @@ def main() -> int:
     assert_rejected(mutated, "#249 completeness-consumer edge")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "story_claims")
     harmonic_pivot = mutated["story_claims"]["first_harmonic_pivot_decomposition"]
     harmonic_pivot["argument_neighbourhood"]["outgoing"] = [
         row
@@ -841,17 +855,17 @@ def main() -> int:
     assert_rejected(mutated, "#249 harmonic-pivot consumer edge")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_questions")
     mutated["expert_questions"]["results"][0]["status"] = "PROVED"
     assert_rejected(mutated, "expert-question OPEN boundary")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_questions")
     mutated["expert_questions"]["results"][0]["exact_ask"] = ""
     assert_rejected(mutated, "expert-question exact ask")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_questions")
     first_question_id = mutated["expert_questions"]["results"][0]["id"]
     mutated["expert_question_details"][first_question_id]["results"][0][
         "consumer_declarations"
@@ -859,12 +873,12 @@ def main() -> int:
     assert_rejected(mutated, "expert-question checked consumer")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_questions")
     mutated["expert_questions"]["packet_kind"] = "full_question"
     assert_rejected(mutated, "expert-question compact index")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_question_details")
     first_question_id = next(iter(mutated["expert_question_details"]))
     mutated["expert_question_details"][first_question_id]["packet_kind"] = (
         "compact_index"
@@ -872,20 +886,20 @@ def main() -> int:
     assert_rejected(mutated, "expert-question full drill-down")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_questions_by_problem")
     mutated["expert_questions_by_problem"]["249"]["results"].pop()
     mutated["expert_questions_by_problem"]["249"]["count"] = 2
     assert_rejected(mutated, "expert-question 5/3/2 problem split")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_questions")
     mutated["expert_questions"]["results"][0]["classification"] = (
         "sufficient_for_counterexample"
     )
     assert_rejected(mutated, "expert-question classification partition")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_questions")
     mutated["expert_questions"]["limits"] = [
         limit
         for limit in mutated["expert_questions"]["limits"]
@@ -894,7 +908,7 @@ def main() -> int:
     assert_rejected(mutated, "universal #257 expert-handoff boundary")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoffs")
     mutated["expert_handoffs"]["domain_counts"] = {
         "mathematics": 6,
         "systems": 0,
@@ -902,19 +916,19 @@ def main() -> int:
     assert_rejected(mutated, "cross-domain expert-handoff 5/1 split")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     mutated["expert_handoff_details"][diagnostic.SYSTEMS_EXPERT_QUESTION_ID][
         "results"
     ][0]["boundary"] = ""
     assert_rejected(mutated, "systems expert-handoff boundary")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoffs")
     mutated["expert_handoffs"]["packet_kind"] = "full_question"
     assert_rejected(mutated, "cross-domain compact index")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     first_handoff_id = next(iter(mutated["expert_handoff_details"]))
     mutated["expert_handoff_details"][first_handoff_id]["packet_kind"] = (
         "compact_index"
@@ -922,7 +936,7 @@ def main() -> int:
     assert_rejected(mutated, "cross-domain full drill-down")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     first_handoff_id = next(iter(mutated["expert_handoff_details"]))
     mutated["expert_handoff_details"][first_handoff_id]["results"][0][
         "plausible_alternatives"
@@ -930,24 +944,24 @@ def main() -> int:
     assert_rejected(mutated, "full handoff alternative consequence")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_protocol_check")
     mutated["expert_handoff_protocol_check"] = "unchecked"
     assert_rejected(mutated, "expert-handoff protocol self-check")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoffs")
     mutated["expert_handoffs"]["results"][0]["current_hypothesis"] = ""
     assert_rejected(mutated, "expert-handoff current hypothesis")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoffs")
     mutated["expert_handoffs"]["results"][0]["hypothesis_confidence"] = (
         "certain"
     )
     assert_rejected(mutated, "expert-handoff hypothesis confidence")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoffs")
     alternatives = mutated["expert_handoffs"]["results"][0][
         "plausible_alternatives"
     ]
@@ -955,17 +969,17 @@ def main() -> int:
     assert_rejected(mutated, "expert-handoff distinct alternatives")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoffs")
     mutated["expert_handoffs"]["results"][0]["current_evidence"].pop()
     assert_rejected(mutated, "expert-handoff current evidence")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoffs")
     mutated["expert_handoffs"]["results"][0]["discriminating_evidence"].pop()
     assert_rejected(mutated, "expert-handoff discriminating evidence")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     second_channel = mutated["expert_handoff_details"][
         "XQ257-second-channel-separation"
     ]["results"][0]
@@ -973,7 +987,7 @@ def main() -> int:
     assert_rejected(mutated, "#257 dual-consumer handoff")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     pivot = mutated["expert_handoff_details"][
         "XQ249-pivot-decorrelation"
     ]["results"][0]
@@ -981,7 +995,7 @@ def main() -> int:
     assert_rejected(mutated, "#249 pivot overlap condition")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     pivot = mutated["expert_handoff_details"][
         "XQ249-pivot-decorrelation"
     ]["results"][0]
@@ -995,7 +1009,7 @@ def main() -> int:
     assert_rejected(mutated, "#249 pivot exact complement")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     adjacent = mutated["expert_handoff_details"][
         "XQ249-adjacent-phase-separation"
     ]["results"][0]
@@ -1009,7 +1023,7 @@ def main() -> int:
     assert_rejected(mutated, "#249 adjacent eventual negation")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     adjacent = mutated["expert_handoff_details"][
         "XQ249-adjacent-phase-separation"
     ]["results"][0]
@@ -1020,7 +1034,7 @@ def main() -> int:
     assert_rejected(mutated, "#249 adjacent explicit room inequality")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     second_channel = mutated["expert_handoff_details"][
         "XQ257-second-channel-separation"
     ]["results"][0]
@@ -1030,7 +1044,7 @@ def main() -> int:
     assert_rejected(mutated, "#257 unproved height law")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     second_channel = mutated["expert_handoff_details"][
         "XQ257-second-channel-separation"
     ]["results"][0]
@@ -1042,7 +1056,7 @@ def main() -> int:
     assert_rejected(mutated, "#257 measured range contraction")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     second_channel = mutated["expert_handoff_details"][
         "XQ257-second-channel-separation"
     ]["results"][0]
@@ -1052,7 +1066,7 @@ def main() -> int:
     assert_rejected(mutated, "#257 short-word discriminator")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     middle = mutated["expert_handoff_details"][
         "XQ257-middle-producer-tail-escape"
     ]["results"][0]
@@ -1063,7 +1077,7 @@ def main() -> int:
     assert_rejected(mutated, "#257 middle exact disjunction")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     middle = mutated["expert_handoff_details"][
         "XQ257-middle-producer-tail-escape"
     ]["results"][0]
@@ -1071,7 +1085,7 @@ def main() -> int:
     assert_rejected(mutated, "#257 middle alternative partition")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     systems = mutated["expert_handoff_details"][
         diagnostic.SYSTEMS_EXPERT_QUESTION_ID
     ]["results"][0]
@@ -1079,7 +1093,7 @@ def main() -> int:
     assert_rejected(mutated, "respondent packet evaluator-answer leak")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     systems = mutated["expert_handoff_details"][
         diagnostic.SYSTEMS_EXPERT_QUESTION_ID
     ]["results"][0]
@@ -1087,7 +1101,7 @@ def main() -> int:
     assert_rejected(mutated, "respondent packet manual rubric")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_details")
     systems = mutated["expert_handoff_details"][
         diagnostic.SYSTEMS_EXPERT_QUESTION_ID
     ]["results"][0]
@@ -1095,7 +1109,7 @@ def main() -> int:
     assert_rejected(mutated, "respondent packet scalar answer key")
     checks += 1
 
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "expert_handoff_review_template")
     mutated["expert_handoff_review_template"]["criteria"].pop(
         next(iter(mutated["expert_handoff_review_template"]["criteria"]))
     )
@@ -1106,7 +1120,7 @@ def main() -> int:
         claim_id for claim_id, packet in packets["claims"].items()
         if packet["claim"]["status"] == "conditional reduction"
     )
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "claims")
     mutated["claims"][conditional]["claim"]["remaining_open_proposition_ids"] = []
     assert_rejected(mutated, "conditional-open link")
     checks += 1
@@ -1115,13 +1129,13 @@ def main() -> int:
         claim_id for claim_id, packet in packets["claims"].items()
         if packet["claim"]["status"] == "verified finite instance"
     )
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "claims")
     mutated["claims"][finite]["claim"].pop("bounded_domain", None)
     assert_rejected(mutated, "finite bound")
     checks += 1
 
     source_key = next(iter(packets["sources"]))
-    mutated = copy.deepcopy(packets)
+    mutated = copy_packet_sections(packets, "sources")
     mutated["sources"][source_key]["source"]["source_ref"] = "wrong.lean:1"
     assert_rejected(mutated, "source coordinate")
     checks += 1
