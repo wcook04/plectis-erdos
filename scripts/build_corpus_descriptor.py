@@ -498,7 +498,7 @@ def build_access_contract(repository: str) -> dict[str, Any]:
                 ],
                 "pinned_materialization_commands": [
                     f"git clone --filter=blob:none --no-checkout {clone_url} <checkout>",
-                    "git -C <checkout> fetch --depth=1 origin <remote_ref>",
+                    "git -C <checkout> fetch --filter=blob:none --depth=1 origin <published_commit>",
                     "git -C <checkout> checkout --detach <published_commit>",
                     "test \"$(git -C <checkout> rev-parse HEAD)\" = \"<published_commit>\"",
                     "python3 <checkout>/scripts/query_corpus.py --format card",

@@ -9,6 +9,49 @@ This skill turns a cold clone into a bounded research run. It may produce a
 proof, but a correction, counterexample, no-go, exact computation, literature
 connection, or reproducible failed route is also a valid result.
 
+## Browser-only or enclosed Type B research
+
+When the assignment is to solve a named problem, the deliverable is a complete
+proof of that original statement. A suggested route is a starting point, not a
+restriction. Use established mathematics to advance the proof; do not spend the
+run reproving an available result or converting the assignment into a corpus audit.
+If no proof is obtained, state that honestly and preserve the strongest exact delta.
+
+No installation, terminal, or private repository is needed to read the corpus:
+
+1. Open the [mathematical graph](../../docs/semantic/BROWSER.md), choose the
+   problem, and follow its **full research frontier** link. This contains the
+   exact established results, failed routes, open obligations, and source links.
+2. Open the relevant named results and their proof sources. Read the hypotheses
+   and evidence class: an ordinary proof, a Lean theorem, and a finite computation
+   support different claims. Follow incoming and outgoing graph links when another
+   result can help; the initial packet selection is not the boundary of the corpus.
+3. Match the proposed lemma against the existing statements and known failures.
+   Reuse a matching theorem, adapt a theorem with different hypotheses explicitly,
+   or attack the genuinely missing implication. A title or empty search is not
+   evidence that a result is absent. Use the full frontier when the compact graph
+   does not surface a match.
+4. Return to the original target and construct the missing proof. If the opening
+   route fails, use its exact obstruction to select a different route. Do not
+   silently weaken the theorem to fit an available helper result.
+
+For an enclosed packet, start with `00_ASK_TYPE_B.md` and its local dossiers.
+The packet's manifest identifies the pinned public commit and browser links.
+Use those links for missing sources or cross-problem connections; the shell
+commands below are optional when your environment supports them. With no network,
+work from the included full source texts and identify any exact missing dependency
+without inventing its contents. Do not claim to have inspected an inaccessible file.
+
+Keep citations at the packet's immutable commit. If an older packet's optional
+checkout command fetches a moving branch, fetch the recorded commit explicitly
+with `git fetch --filter=blob:none --depth=1 origin <published_commit>` before
+checking out that commit. A later branch update must not change your proof context. If deliberately using newer
+public work, record its commit and changed hypotheses separately. When returning
+work, name the exact target, reused result ids and sources, new argument, proof
+status, and any remaining gap; then follow the existing
+[research-return skill](../erdos-research-return/SKILL.md). This works for a single
+problem, several problems, or another attempt on the same problem.
+
 ## 1. Recover the current frontier
 
 Do not begin from memory or the first interesting file.

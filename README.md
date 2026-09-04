@@ -24,25 +24,25 @@ Large-language-model agents drafted prose, Lean proofs, and software. Will Cook
 set the objectives, reviewed the public claims and cited sources, and is
 responsible for the release.
 
+Begin with
+[A reader's way in](HUMAN_ENTRY.md). The
+[architecture and repository guide](ARCHITECTURE.md) and its
+[printable PDF](claim-faithful-publication-systems-paper.pdf) assume no Lean background.
+
 A single claim can be followed without installing Lean:
 
 ```bash
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-It prints the statement, re-resolves its declaration, names any Comparator
-interface and paper, and states where the claim stops. `--verify-all` checks
-every claim record in under a second.
+It resolves the statement, declaration, Comparator interface, paper, and scope.
+`--verify-all` checks every claim record.
 
-For a command-free first read, begin with
-[A reader's way in](HUMAN_ENTRY.md). The
-[architecture and repository guide](ARCHITECTURE.md) and its
-[printable PDF](claim-faithful-publication-systems-paper.pdf) assume no Lean or
-project history.
-
-For proof search, [browse the linked mathematical graph](docs/semantic/BROWSER.md).
-It connects the results, their proof sources, and related work across all eight
-problems, with full research frontiers available directly in GitHub.
+[Browse the mathematical graph](docs/semantic/BROWSER.md) for full statements,
+proof sources, failed routes, and cross-problem connections on GitHub.
+The [research skill](skills/mine-open-problem/SKILL.md) guides browser-only and
+enclosed Type B sessions toward proving the original problem using established
+results. The [skill catalog](skills/README.md) covers installation and contribution.
 
 ## What is here
 
@@ -118,9 +118,8 @@ subsuming, and earlier public work.
 
 `v0.9.0` is the latest tagged release and citation anchor, and
 [`docs/claims.json`](docs/claims.json) pins the formal-source checkpoint it
-ships. This is a self-contained public checkout and is not an entrypoint into
-any private development system: Lean source checked by the pinned kernel is the
-proof authority here, and do not infer results from private or unreleased work.
+ships. Only public source and the pinned kernel establish proof authority; do not infer
+unpublished results.
 
 ## Read or run it
 
@@ -140,8 +139,7 @@ programme before expanding the registry.
 [The Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves and
 kernel probes; only kernel receipts assert.
 
-The repository began with #249 and #257 and keeps that name so old citations
-resolve. The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) and the
+The repository name preserves its original #249/#257 citations. The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) and the
 two claim-bounded reasoning surfaces
 ([#249](erdos249-totient-reasoning-surface.pdf),
 [#257](erdos257-mersenne-reasoning-surface.pdf)) are kept

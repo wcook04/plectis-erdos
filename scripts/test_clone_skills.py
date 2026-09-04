@@ -73,9 +73,11 @@ def main() -> int:
         "add-open-problem",
         "submit-pull-request",
     ):
-        assert name in readme, name
+        assert "skills/README.md" in readme
+        assert name in skill_index, name
     assert "agent_entry.py --skills" in entry
-    assert "install_agent_skills.py" in readme
+    assert "install-clone-skills/SKILL.md" in skill_index
+    assert "install_agent_skills.py" in (ROOT / "skills/install-clone-skills/SKILL.md").read_text()
 
     with tempfile.TemporaryDirectory(prefix="plectis-skill-test-") as temp:
         target = Path(temp) / "skills"

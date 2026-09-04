@@ -127,7 +127,8 @@ def test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route() -> No
     assert "scripts/query_corpus.py" in route["required_surfaces"]
     assert "research_corpus" in route["required_surfaces"]
     commands = route["pinned_materialization_commands"]
-    assert any("<remote_ref>" in command for command in commands)
+    assert any("fetch --filter=blob:none --depth=1 origin <published_commit>" in command for command in commands)
+    assert not any("<remote_ref>" in command for command in commands)
     assert any("<published_commit>" in command for command in commands)
     assert commands[-1].endswith("scripts/query_corpus.py --format card")
 
