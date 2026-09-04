@@ -9,6 +9,11 @@ problem. A corrected proof step, a counterexample, a failed route with a reason
 another person can check, a clearer boundary, or a repaired public check can
 all save future work.
 
+If you want to help but do not yet have a target, begin with the pinned
+[eight-frontier issue](https://github.com/wcook04/plectis-lean-erdos249-257/issues/105).
+It links each problem paper and lists useful contributions beyond complete
+proofs.
+
 Participation is governed by the [code of conduct](CODE_OF_CONDUCT.md). Direct
 criticism of a proof, claim, experiment, or repository decision is welcome;
 harassment and attacks on contributors are not.
