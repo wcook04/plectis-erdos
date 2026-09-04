@@ -24,6 +24,7 @@ import os
 import re
 import subprocess
 import sys
+import threading
 import tarfile
 import zipfile
 from collections import defaultdict
@@ -402,31 +403,62 @@ def object_contents(root: Path, object_ids: Iterable[str]) -> Iterator[tuple[str
     ordered = sorted(set(object_ids))
     if not ordered:
         return
-    # Send the complete request in one subprocess call.  Flushing once per
-    # object makes a large repository spend minutes in pipe round trips and
-    # risks leaving an incomplete release report; the batch output is bounded
-    # by the repository's reachable blob store and is parsed without logging
-    # any content.
-    raw = _git(root, "cat-file", "--batch", input_bytes=("\n".join(ordered) + "\n").encode("ascii"))
-    offset = 0
-    for object_id in ordered:
-        header_end = raw.find(b"\n", offset)
-        if header_end < 0:
-            break
-        pieces = raw[offset:header_end].split()
-        offset = header_end + 1
-        if len(pieces) < 3 or pieces[1] not in {b"blob", b"commit", b"tag"}:
-            continue
-        object_type = pieces[1].decode("ascii", "replace")
+    # Stream one ``cat-file --batch`` process. Requesting every object in a
+    # single call avoids per-object pipe round trips, but the reply must not be
+    # collected into memory: the reachable blob store of this repository
+    # decompresses to over 200 GiB because generated navigation projections
+    # of 70-100 MB were rewritten hundreds of times, and on 2026-09-04 the
+    # audit was SIGKILLed while trying to hold that reply in one bytes
+    # object. Feed requests from a helper thread, and consume the reply
+    # object by object so peak memory is bounded by the largest single blob.
+    process = subprocess.Popen(
+        ["git", "cat-file", "--batch"],
+        cwd=root,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        env=git_environment(),
+    )
+    assert process.stdin is not None and process.stdout is not None
+    request = ("\n".join(ordered) + "\n").encode("ascii")
+
+    def feed() -> None:
         try:
-            size = int(pieces[2])
-        except ValueError:
-            continue
-        payload = raw[offset : offset + size]
-        offset += size
-        if offset < len(raw) and raw[offset : offset + 1] == b"\n":
-            offset += 1
-        yield object_id, object_type, payload
+            process.stdin.write(request)
+        except BrokenPipeError:
+            pass
+        finally:
+            try:
+                process.stdin.close()
+            except BrokenPipeError:
+                pass
+
+    feeder = threading.Thread(target=feed, name="cat-file-batch-feeder", daemon=True)
+    feeder.start()
+    try:
+        for object_id in ordered:
+            header = process.stdout.readline()
+            if not header:
+                break
+            pieces = header.split()
+            if len(pieces) < 3 or pieces[1] not in {b"blob", b"commit", b"tag"}:
+                # ``<id> missing`` and non-content types carry no payload.
+                continue
+            object_type = pieces[1].decode("ascii", "replace")
+            try:
+                size = int(pieces[2])
+            except ValueError:
+                continue
+            payload = process.stdout.read(size)
+            process.stdout.read(1)  # trailing newline after each object
+            yield object_id, object_type, payload
+    finally:
+        try:
+            process.stdout.close()
+        except OSError:
+            pass
+        process.wait()
+        feeder.join()
 
 
 def blob_contents(root: Path, object_ids: Iterable[str]) -> Iterator[tuple[str, bytes]]:
