@@ -134,27 +134,9 @@ def check_route_memory_cold_clone() -> int:
         pass
     else:
         raise AssertionError("descriptor route-memory selector mutation was accepted")
-    checked = 0
-    for problem_number in FROZEN_PROBLEMS:
-        result = run(
-            [
-                sys.executable,
-                str(ROUTE_MEMORY_SCRIPT),
-                "--problem",
-                str(problem_number),
-            ]
-        )
-        if result.returncode != 0:
-            raise AssertionError(
-                f"route-memory selector #{problem_number} failed: {result.stderr}"
-            )
-        packet = json.loads(result.stdout)
-        if packet["problem"]["erdos_number"] != problem_number:
-            raise AssertionError(f"route-memory crossed selector #{problem_number}")
-        if route_memory.validate_packet(packet)["resume_state"] != packet["resume_state"]:
-            raise AssertionError(f"route-memory resume identity drifted for #{problem_number}")
-        checked += 1
-
+    # ``--all`` is the production batch entry for the complete frozen roster.
+    # Spawning one fresh interpreter for every problem repeated the same source
+    # loads eight times and tested process startup more than selector coverage.
     batch = run(
         [
             sys.executable,
@@ -176,12 +158,23 @@ def check_route_memory_cold_clone() -> int:
         "route-memory --all mixed source commits",
     )
     for packet in batch_packets:
+        problem_number = packet["problem"]["erdos_number"]
         require(
             route_memory.validate_packet(packet)["resume_state"]
             == packet["resume_state"],
-            "route-memory --all resume identity drifted",
+            f"route-memory --all resume identity drifted for #{problem_number}",
         )
-    checked += 1
+
+    # Keep one scalar-selector process smoke so --problem parsing cannot drift
+    # behind the faster batch coverage.
+    scalar = run(
+        [sys.executable, str(ROUTE_MEMORY_SCRIPT), "--problem", "249"]
+    )
+    if scalar.returncode != 0:
+        raise AssertionError(f"route-memory selector #249 failed: {scalar.stderr}")
+    scalar_packet = json.loads(scalar.stdout)
+    if scalar_packet["problem"]["erdos_number"] != 249:
+        raise AssertionError("route-memory crossed selector #249")
 
     cross_problem = run(
         [
@@ -197,7 +190,7 @@ def check_route_memory_cold_clone() -> int:
         raise AssertionError("cross-problem route was not rejected by the CLI")
     if "cross_problem_route" not in cross_problem.stderr:
         raise AssertionError("cross-problem rejection lost its machine-readable code")
-    return checked + 1
+    return len(batch_packets) + 2
 
 
 def check_checker_child_environment() -> None:

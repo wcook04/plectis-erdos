@@ -185,19 +185,27 @@ def code_lines(lines: list[str]) -> list[bool]:
     for raw in lines:
         start_depth = depth
         index = 0
+        # Generated certificate lines can be hundreds of kilobytes long.  A
+        # character-at-a-time Python loop made this comment filter dominate
+        # the exhaustive atlas build.  ``str.find`` performs the same token
+        # walk in C and jumps directly between the only three delimiters that
+        # can change the state.
         while index < len(raw) - 1:
-            pair = raw[index : index + 2]
-            if pair == "/-":
-                depth += 1
-                index += 2
-                continue
-            if pair == "-/" and depth:
-                depth -= 1
-                index += 2
-                continue
-            if pair == "--" and depth == 0:
+            opener = raw.find("/-", index)
+            closer = raw.find("-/", index) if depth else -1
+            line_comment = raw.find("--", index) if depth == 0 else -1
+            candidates = [position for position in (opener, closer) if position >= 0]
+            next_block = min(candidates) if candidates else -1
+            if line_comment >= 0 and (next_block < 0 or line_comment < next_block):
                 break
-            index += 1
+            if next_block < 0:
+                break
+            if next_block == opener:
+                depth += 1
+                index = opener + 2
+                continue
+            depth -= 1
+            index = closer + 2
         marks.append(start_depth == 0)
     return marks
 

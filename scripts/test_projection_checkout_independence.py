@@ -38,6 +38,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from unittest.mock import patch
 
@@ -211,8 +212,15 @@ def main() -> int:
         materialise(as_topic, shape="topic")
 
         with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
-            rendered_main = regenerate(as_main)
-            rendered_topic = regenerate(as_topic)
+            # The two checkout shapes are deliberately independent.  Running
+            # their ordered builder chains concurrently preserves every
+            # dependency within a checkout while avoiding a second full wall-
+            # clock pass over the 150 MB generated-certificate source corpus.
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                main_future = executor.submit(regenerate, as_main)
+                topic_future = executor.submit(regenerate, as_topic)
+                rendered_main = main_future.result()
+                rendered_topic = topic_future.result()
 
         divergent = sorted(
             relative

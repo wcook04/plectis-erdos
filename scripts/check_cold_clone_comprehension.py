@@ -36,6 +36,7 @@ import build_semantic_corpus
 import check_architecture_guide
 import query_corpus
 import query_expert_handoffs
+import query_semantic
 import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -702,64 +703,78 @@ def query_packet(*args: str, budget_bytes: int = PACKET_BUDGET_BYTES) -> dict[st
 
 
 def validate_query_cli_process_smoke() -> None:
-    """Prove the installed script still works as a standalone cold process."""
-    completed = run_child(
-        [
-            sys.executable,
-            str(QUERY),
-            "--route",
-            "agent_native_corpus_navigation",
-        ],
-        cwd=ROOT.parent,
+    """Prove each installed query script works as a standalone cold process."""
+    smoke_commands = (
+        (
+            [sys.executable, str(QUERY), "--route", "agent_native_corpus_navigation"],
+            lambda packet: packet.get("kind") == "reading_route"
+            and packet.get("route", {}).get("id") == "agent_native_corpus_navigation",
+        ),
+        (
+            [sys.executable, str(SEMANTIC_QUERY), "problem-registry", "--limit", "1"],
+            lambda packet: packet.get("returned_problem_count") == 8
+            and isinstance(packet.get("problems"), list),
+        ),
+        (
+            [sys.executable, str(EXPERT_HANDOFF_QUERY)],
+            lambda packet: isinstance(packet.get("results"), list),
+        ),
     )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    packet = json.loads(completed.stdout)
-    require(packet["kind"] == "reading_route", "cold-clone comprehension invariant")
-    require(packet["route"]["id"] == "agent_native_corpus_navigation", "cold-clone comprehension invariant")
+    for command, accepts in smoke_commands:
+        completed = run_child(command, cwd=ROOT.parent)
+        if completed.returncode != 0:
+            raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
+        require(accepts(json.loads(completed.stdout)), "cold-clone comprehension invariant")
+
+
+def _in_process_query_main(module: Any, args: tuple[str, ...]) -> tuple[int, str, str]:
+    """Exercise a CLI parser while retaining immutable projection caches."""
+    stdout = io.StringIO()
+    stderr = io.StringIO()
+    previous_argv = sys.argv
+    try:
+        sys.argv = [str(module.__file__), *args]
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            return_code = module.main()
+    finally:
+        sys.argv = previous_argv
+    return return_code, stdout.getvalue(), stderr.getvalue()
 
 
 def semantic_query_packet(
     *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
 ) -> dict[str, Any]:
-    """Run the public semantic CLI exactly as a cold coding agent would."""
-    completed = run_child(
-        [sys.executable, str(SEMANTIC_QUERY), *args],
-        cwd=ROOT,
-    )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    raw = completed.stdout.encode("utf-8")
+    """Exercise the semantic CLI without reparsing its atlas for every assertion."""
+    return_code, stdout, stderr = _in_process_query_main(query_semantic, args)
+    if return_code != 0:
+        raise AssertionError(stdout.strip() or stderr.strip())
+    raw = stdout.encode("utf-8")
     require(len(raw) <= budget_bytes, f"semantic query {' '.join(args)} emitted {len(raw)} bytes "
         f"(budget {budget_bytes})")
-    return json.loads(completed.stdout)
+    return json.loads(stdout)
 
 
 def expert_handoff_packet(
     *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
 ) -> dict[str, Any]:
-    """Run the cross-domain expert-handoff query from a cold clone."""
-    completed = run_child(
-        [sys.executable, str(EXPERT_HANDOFF_QUERY), *args],
-        cwd=ROOT,
-    )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    raw = completed.stdout.encode("utf-8")
+    """Exercise expert-handoff parsing while retaining immutable input caches."""
+    return_code, stdout, stderr = _in_process_query_main(query_expert_handoffs, args)
+    if return_code != 0:
+        raise AssertionError(stdout.strip() or stderr.strip())
+    raw = stdout.encode("utf-8")
     require(len(raw) <= budget_bytes, f"expert-handoff query {' '.join(args) or '<default>'} emitted "
         f"{len(raw)} bytes (budget {budget_bytes})")
-    return json.loads(completed.stdout)
+    return json.loads(stdout)
 
 
 def check_expert_handoff_protocol() -> str:
     """Run the cross-domain protocol's own structural self-check."""
-    completed = run_child(
-        [sys.executable, str(EXPERT_HANDOFF_QUERY), "--check"],
-        cwd=ROOT,
+    return_code, stdout, stderr = _in_process_query_main(
+        query_expert_handoffs, ("--check",)
     )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    return completed.stdout.strip()
+    if return_code != 0:
+        raise AssertionError(stdout.strip() or stderr.strip())
+    return stdout.strip()
 
 
 def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
