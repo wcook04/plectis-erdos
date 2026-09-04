@@ -159,9 +159,11 @@ def _run_independent_check(argv: list[str]) -> subprocess.CompletedProcess[str]:
 
 def start_independent_checks(
     commands: dict[str, list[str]],
+    *,
+    max_workers: int = RELEASE_CHECK_WORKERS,
 ) -> tuple[ThreadPoolExecutor, dict[str, Any]]:
     """Start bounded read-only checks whose results are consumed at a later barrier."""
-    executor = ThreadPoolExecutor(max_workers=min(RELEASE_CHECK_WORKERS, len(commands)))
+    executor = ThreadPoolExecutor(max_workers=min(max_workers, len(commands)))
     return executor, {
         check_id: executor.submit(_run_independent_check, argv)
         for check_id, argv in commands.items()
@@ -1146,6 +1148,13 @@ def main(argv: list[str] | None = None) -> int:
         for err in ERRORS:
             print(f"  FAIL {err}")
         return 1
+    # The publication-stage contract is the last prerequisite for the larger
+    # query and cold-clone suites. Start those two CPU-heavy readers here with
+    # a two-worker cap, then consume them at the existing final barrier while
+    # the main thread advances the remaining release checks.
+    late_executor, late_futures = start_independent_checks(
+        late_check_commands(), max_workers=2
+    )
     taxonomy = set(data["status_taxonomy"])
     release = data["release"]
     version, tag = release["version"], release["tag"]
@@ -2044,10 +2053,6 @@ def main(argv: list[str] | None = None) -> int:
             ],
         }
     )
-    # These suites share no writable state with the checks below. Launch them
-    # now and consume their results at the existing final barrier so their
-    # wall time overlaps projection and contract verification.
-    late_executor, late_futures = start_independent_checks(late_check_commands())
     architecture_check = mid_checks["architecture"]
     check(
         architecture_check.returncode == 0,
