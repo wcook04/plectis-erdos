@@ -116,7 +116,9 @@ class FrontierSkillTests(unittest.TestCase):
         with mock.patch.object(bootstrap, "git", return_value="") as calls:
             with mock.patch.object(bootstrap, "verify", return_value={"commit": source["commit"]}):
                 bootstrap.prepare(target, source, True)
-        calls.assert_any_call(target, "fetch", "--depth", "1", "--no-tags", "origin", source["commit"], timeout=300)
+        # prepare() resolves the parent (macOS maps /var to /private/var), so compare against the resolved root.
+        root = target.parent.resolve() / target.name
+        calls.assert_any_call(root, "fetch", "--depth", "1", "--no-tags", "origin", source["commit"], timeout=300)
         self.assertEqual(len(calls.call_args_list), 4)
 
     def test_clean_fixture_verifies(self):

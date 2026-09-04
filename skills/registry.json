@@ -104,7 +104,11 @@
         "open problem",
         "research route",
         "proof search",
-        "experiment"
+        "experiment",
+        "research shift",
+        "research continuation",
+        "bounded continuation",
+        "checkable return"
       ],
       "skills": [
         "mine-open-problem",
