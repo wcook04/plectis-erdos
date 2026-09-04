@@ -27,7 +27,7 @@ For every finite horizon, summation by parts rewrites the zero-based prime parti
 
 Evidence/status: lean_checked_infinite_unconditional
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 claim_boundary: The four named declarations prove unconditional summability of the normalized prime and consecutive-gap series, their exact infinite identity, and the irrationality equivalence under the supplied summability hypothesis. They do not prove irrationality of either series, a prime-gap distribution theorem, or any stronger denominator-growth conclusion.
 
@@ -37,7 +37,7 @@ At both the termwise and infinite-sum levels, the zero-based displayed prime sum
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### polynomial_prime_growth_summability_adapter
 
@@ -45,7 +45,7 @@ Any natural polynomial upper bound p_n <= C(n+1)^k on the zero-based nth prime k
 
 Evidence/status: lean_checked_conditional
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### elementary_prime_bound_and_unconditional_convergence
 
@@ -53,7 +53,7 @@ Lean proves the explicit elementary estimate p_n <= 1250(n+1)^4. The proof bound
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 claim_boundary: The three named declarations prove the displayed elementary prime bound and the resulting summability statements in the cited Lean development. They do not prove the prime number theorem, sharpen the bound to the analytic optimum, establish the needed cofinal mismatch supply, or by themselves prove irrationality of the prime-gap series.
 
@@ -63,7 +63,7 @@ For every integer-digit dyadic tail recurrence, the exact h-step block identity 
 
 Evidence/status: lean_checked_algebraic_core
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 claim_boundary: The three named declarations prove the exact finite recurrence, block identity, integrality equivalence, and rational-candidate bridge under their explicit hypotheses. They do not prove that any rational candidate exists for the genuine sum, establish a cofinal non-integrality or mismatch supply for actual prime gaps, or by themselves prove irrationality.
 
@@ -73,7 +73,7 @@ Given a dyadic tail recurrence and an index N whose rational tail state has odd 
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 claim_boundary: The theorem is conditional on the recurrence and odd-denominator hypothesis. It does not show that a genuine prime-gap tail has such a rational state, establish a cofinal nonintegrality or mismatch supply for actual prime gaps, or prove irrationality of the prime-gap series.
 
@@ -83,7 +83,7 @@ For every proposed rational value S, subtracting the first N+1 actual prime-gap 
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### actual_real_to_rational_tail_representation
 
@@ -91,7 +91,7 @@ If the genuine real prime-gap sum equals a rational S, then at every N the cast 
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 claim_boundary: The three named declarations provide the exact rational-candidate representation and scaled-tail identities under the explicit summability and non-irrationality hypotheses. They do not prove the required cofinal non-integrality or mismatch supply, and they do not by themselves establish irrationality of the prime-gap series.
 
@@ -101,7 +101,7 @@ If a proposed rational value S has odd reduced denominator, its single Euler-per
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 claim_boundary: This is a conditional odd-denominator obstruction. It does not cover candidates with an even denominator, prove irrationality of the genuine series by itself, or establish the full denominator decomposition already recorded separately.
 
@@ -111,7 +111,7 @@ For every rational candidate S, Lean splits its denominator into its exact power
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### free_carry_telescoping
 
@@ -119,7 +119,7 @@ Arbitrary integer carries emit coefficients 2K_n-K_{n+1} whose dyadic partial su
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### tail_shift_integrality_propagation
 
@@ -127,7 +127,7 @@ For every integer-digit dyadic tail recurrence, a fixed h-step tail shift obeys 
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### actual_prime_gaps_unbounded
 
@@ -135,7 +135,7 @@ The actual consecutive-prime-gap sequence is unbounded. The proof constructs fac
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### small_adjacent_shift_consumer
 
@@ -143,7 +143,7 @@ For any integer-digit dyadic tail recurrence, if two adjacent h-shifts both lie 
 
 Evidence/status: lean_checked
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### prime_specific_eventual_integrality_exclusion
 
@@ -151,7 +151,7 @@ For the actual consecutive prime gaps, a cofinal supply of adjacent small-shift 
 
 Evidence/status: lean_checked_conditional_on_exact_local_supply
 
-- [PrimeGapDyadicTail.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
+- [PrimeGapDyadicTail.lean](problem/PrimeGapDyadicTail.lean)
 
 ### periodic_fractional_orbit_countermodel
 
@@ -173,7 +173,7 @@ For any positive schedule that eventually dominates every index and is eventuall
 
 Evidence/status: lean_checked_conditional_schedule_consumer
 
-- [OrderLatticeDiagonal.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean)
+- [OrderLatticeDiagonal.lean](problem/OrderLatticeDiagonal.lean)
 
 claim_boundary: The schedule theorem is an exact conditional criterion, not an irrationality proof for the consecutive-prime-gap series; it does not supply the required schedule misses.
 
@@ -183,7 +183,7 @@ For every integer-digit dyadic tail recurrence, membership of the observed depth
 
 Evidence/status: lean_checked_exact_no_go
 
-- [AffineCylinderCollapse.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean)
+- [AffineCylinderCollapse.lean](problem/AffineCylinderCollapse.lean)
 
 claim_boundary: The named declarations establish the exact affine-cylinder equivalence and its cofinal escape reformulation for the abstract integer-digit recurrence. They do not prove non-eventual integrality for the actual prime-gap series, supply the missing consecutive-prime arithmetic, or prove Erdős #251 irrationality.
 
@@ -193,7 +193,7 @@ For every dyadically dominated rational terminal bound, cofinal escape of observ
 
 Evidence/status: lean_checked_with_exact_coordinate_regression
 
-- [AffineCylinderCollapse.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean)
+- [AffineCylinderCollapse.lean](problem/AffineCylinderCollapse.lean)
 
 ### actual_prime_adjacent_mismatch_event_density
 
@@ -208,7 +208,7 @@ The landed shift_gt_half_of_digit_eq_two already forces D > 1/2 from a +2 digit 
 
 Evidence/status: exact_finite_measurement_separating_the_two_factors
 
-- [erdos251_conditional_shift_distribution.py](formal_math/probes/erdos251_conditional_shift_distribution.py)
+- [erdos251_conditional_shift_distribution.py](probes/erdos251_conditional_shift_distribution.py)
 
 ### certified_continued_fraction_denominator_exclusion
 
@@ -223,7 +223,7 @@ For any integer-digit dyadic tail recurrence whose digit difference is even, bot
 
 Evidence/status: lean_checked_exact_signed_two_window_equivalence
 
-- [AffineShiftEscape.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineShiftEscape.lean)
+- [AffineShiftEscape.lean](problem/AffineShiftEscape.lean)
 
 surviving_obligation: Prove cofinal occurrence of the signed ±2 half-window event, or provide another genuinely external fractional-tail obstruction; Erdős #251 remains open.
 
@@ -233,7 +233,7 @@ For every dyadic-tail recurrence in the #251 formal setting, irrationality of th
 
 Evidence/status: lean_checked_factorial_schedule_consumer
 
-- [OrderLatticeDiagonal.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean)
+- [OrderLatticeDiagonal.lean](problem/OrderLatticeDiagonal.lean)
 
 claim_boundary: This is an exact schedule reformulation of the irrationality criterion. It does not prove that the actual prime-gap series is irrational, nor does it establish nonintegrality at any particular factorial point without a separate source-specific argument.
 
@@ -245,7 +245,7 @@ For the polynomial countermodel g_n = 2(n^2+4n+2), T_n = 2(n+4)^2, Lean proves t
 
 Evidence/status: lean_checked_exact_series_value
 
-- [PolynomialGapSeriesValue.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean)
+- [PolynomialGapSeriesValue.lean](problem/PolynomialGapSeriesValue.lean)
 
 claim_boundary: The countermodel is not the actual prime-gap word. The declarations establish the series value and rationality of the countermodel series only; they say nothing about the consecutive-prime-gap series and do not bear on Erdős #251 irrationality.
 
@@ -257,7 +257,7 @@ surviving_obligation: None for the countermodel value. Erdős #251 remains open.
 
 Evidence/status: lean_checked_exact_equivalence
 
-- [FreePairReduction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/FreePairReduction.lean)
+- [FreePairReduction.lean](problem/FreePairReduction.lean)
 
 claim_boundary: Exact equivalence only. Nothing produces the congruent nonintegral pairs for the actual primes; Erdős #251 remains open. The modulus in the rational direction is orderOf(2 : ZMod d), which need not equal the totient used in earlier rows.
 
@@ -269,8 +269,8 @@ Every rational a/b equal to the zero-based prime series S = sum_{i>=0} p_i/2^(i+
 
 Evidence/status: lean_checked
 
-- [KernelDenominatorFloor.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/KernelDenominatorFloor.lean)
-- [erdos251_kernel_denominator_certificate.py](formal_math/probes/erdos251_kernel_denominator_certificate.py)
+- [KernelDenominatorFloor.lean](problem/KernelDenominatorFloor.lean)
+- [erdos251_kernel_denominator_certificate.py](probes/erdos251_kernel_denominator_certificate.py)
 
 claim_boundary: A finite denominator exclusion only. It does not decide irrationality of the prime series or of the prime-gap series, and it is numerically weaker than the continued-fraction receipt q > 10^12041; its distinction is that the floor is decided inside the Lean kernel.
 

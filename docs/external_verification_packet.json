@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:29e72bf98a44b1dc190bd111c2438181e72ed74842239243c1c242f81eb5a641",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:e8a3db44fc166f7b7c2364c877bbbf0a5055c3d71eda5b4f38e9be75db042405",
+    "projection_digest": "sha256:0a77f39d829b6e029880bf24a9c0a577e04da0e4962b52dc318fc556732f3e96",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1892,7 +1892,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos68/FRONTIER.md",
-              "content_digest": "sha256:f22f419f9e4241cff391c065e5cf8ff8506be40fa619f4bb3622a3213021f479"
+              "content_digest": "sha256:687e1c7dfa48976ccb0c1c2852b19f718cc3cc7609830aa1ee69f76cdc7f291c"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos68/STRONGEST_RESULTS.json",
@@ -1900,11 +1900,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos68/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:6d6df551560109b4defc4dd573724066e481121ddcfb0ea4ef9e8f9cc239b9a1"
+              "content_digest": "sha256:df3dd9d2db62096952723554cd4cc900760426cb3c1768532f2ca43db636d223"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos68/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:81f99155a2b92b15a40b58e5505d7c45626389f1b18de1ab775d426de0114eb5"
+              "content_digest": "sha256:2b2f2c7705b060ee857c7d7ccc7499669746916fb4ec3c4d9bba0368a82fe7e2"
             }
           },
           "strongest_result_summary": {
@@ -1914,7 +1914,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 149,
+            "exported_source_file_count": 169,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2082,7 +2082,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos243/FRONTIER.md",
-              "content_digest": "sha256:4884b60a1aa9f378dd5462d58fa3fc0926b2d0045adbf9c377026f90cbed131a"
+              "content_digest": "sha256:3e701d581632b7b08657a4fb6f75a19a7c2f1ae3a7f235b8543ddae321ffdadd"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos243/STRONGEST_RESULTS.json",
@@ -2090,11 +2090,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos243/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:9749579cd95491b81525d05a0aa2166d6d54dc438993a7ee0119be7a564a3dc7"
+              "content_digest": "sha256:6029802fa7b90f86ae713016af8e6e9a9866887c847266beb0c88e4744afda4c"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos243/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:9e8bf864f1af12a5bdc4b8c1fee6c2f927ad06d2a8c25395325302b9580a5527"
+              "content_digest": "sha256:d190a20f1258ded4ea909c9736d449e57bd0c34312d7f7b2a80a3e9ba2026b7c"
             }
           },
           "strongest_result_summary": {
@@ -2104,7 +2104,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 109,
+            "exported_source_file_count": 114,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2238,7 +2238,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos249/FRONTIER.md",
-              "content_digest": "sha256:20e763464dcb16785df9c4b75584794c0e0babc1ed971f472c3dae97b8ef231c"
+              "content_digest": "sha256:f9844f8c1478d17c9fe8751001bcedcc58fc055e359bff79493a43a1fbbd61e3"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos249/STRONGEST_RESULTS.json",
@@ -2246,11 +2246,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos249/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:4fd27eb433b65427705ed0d1c619c35a94324266852632da8d6bd566b34ec4d8"
+              "content_digest": "sha256:37d599160f9e1254ee58c3c89e06519fa6ff7b0c78014c1304417d05c6026898"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos249/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:a5f50a5685f0336bb3f39a6e75a7ecd3267fc505b527e0a13761d8b2833002f3"
+              "content_digest": "sha256:161340457169e636afa96e72b5d29c848c668cf6079ae1f2b913121862a1907f"
             }
           },
           "strongest_result_summary": {
@@ -2260,7 +2260,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 129,
+            "exported_source_file_count": 144,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2358,7 +2358,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos251/FRONTIER.md",
-              "content_digest": "sha256:246ced4aca1476947e9534c8fa5fce652e678bf569594530126916b855d02ad1"
+              "content_digest": "sha256:d9098910968c42f942eb6c8bbb7de2caf6d231605cd6cc1cbccb9566a2a91fb4"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos251/STRONGEST_RESULTS.json",
@@ -2366,11 +2366,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos251/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:91fd3cc70b655142aec4d1d096dafa72f632146f78a1faab71d14ba5577bb912"
+              "content_digest": "sha256:ee1b29c78b84d877cecade08f897cc0ad3b2aecc1393d258fbdd1e40cca964f6"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos251/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:755e7c5dfd4503081e2ac845c0a1c076b06ce5c46fc912f61a5079c66636e916"
+              "content_digest": "sha256:530190771f0041ecb97f005108d53f624dd2376095129b1da4d9f56c3d4acaf4"
             }
           },
           "strongest_result_summary": {
@@ -2380,7 +2380,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 73,
+            "exported_source_file_count": 83,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2472,7 +2472,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos257/FRONTIER.md",
-              "content_digest": "sha256:7f94c1963ac5279865fbbe8aa7fe5b17dda120b909f3d36ec0bd475abce15c25"
+              "content_digest": "sha256:76c818731746eabcf55f3a545f9d8af9b8d62c099f0345bb3c7b79d51e0ebcc0"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos257/STRONGEST_RESULTS.json",
@@ -2480,11 +2480,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos257/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:d65725f443f208241408c89dd83d5191dcb859fbfd7ab92292f54ff3b5fe9ade"
+              "content_digest": "sha256:b4c0dc81eb0cd8a2ce401fce85499e1f3c1f505f1ef912bfe56b5d66df750798"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos257/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:94611e7388a38fcd8f0860ef7f30dd6d58ca4ab49f35e31128bb4aeb398746c7"
+              "content_digest": "sha256:12777caa738e6e9f32c66e550c0f10019cf8cbf47dd66389b4faca403912f07f"
             }
           },
           "strongest_result_summary": {
@@ -2494,7 +2494,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 587,
+            "exported_source_file_count": 601,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2657,7 +2657,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos269/FRONTIER.md",
-              "content_digest": "sha256:bf3095052b816942ea1886f61263516d903bcfa628beb914f3f3f132c0011b91"
+              "content_digest": "sha256:c142699d3c863a29f7e8052be5b382315738c71d74c468f7fefcfa1a897f64c0"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
@@ -2665,11 +2665,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos269/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:21843d9095daeee032be34fdb37c17448be9fdb3008e9294b5eacb36b8eea8de"
+              "content_digest": "sha256:67321257f07aef036440ee1ad16a58d70a8fd3ed8aa71fa10b38edef876d4511"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos269/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:b859f35762b94db556fad3918be7dd3a8f962f6f2f18bac9d58d5e21dea43991"
+              "content_digest": "sha256:aad529b3d3b02214376769e2773701730ea0e46d7aa97dfcbc638a5aeba33f0a"
             }
           },
           "strongest_result_summary": {
@@ -2679,7 +2679,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 147,
+            "exported_source_file_count": 167,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2782,7 +2782,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
-              "content_digest": "sha256:dcc271df022f31adac7d57f696fce856457d9dc72709742b6dc45561be4c2f63"
+              "content_digest": "sha256:a16a1cfc59ffb9555a5852b161a6295799c0ad58fe5d3cab18dec193e2737e71"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
@@ -2790,11 +2790,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:3bdd044d177ef6736a09c8a5c12e7f9dd7c8bebcd296419233333d347065e7c5"
+              "content_digest": "sha256:565f4e04dec3c59904fb3149df46bd43232150342655bb74985bb23cdc8f4a04"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:834af969256183b309cd644eee13eda8ffac068786570d572e314b5ed438204b"
+              "content_digest": "sha256:f9a262a964bda55762813348beec33c1076c5aeb12ada694d8dec21bd91e3840"
             }
           },
           "strongest_result_summary": {
@@ -2804,7 +2804,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 2168,
+            "exported_source_file_count": 2365,
             "status": "source_current_problem_snapshot"
           }
         }
@@ -2948,7 +2948,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1049/FRONTIER.md",
-              "content_digest": "sha256:70871290e28e0dc3124f3404d2bcc717fc549dcb9d89f31a65cfce982f91a29f"
+              "content_digest": "sha256:1b7989cae1e974988104429f823840b9709e5e69f443b924b3d2f967b344ad30"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1049/STRONGEST_RESULTS.json",
@@ -2956,11 +2956,11 @@
             },
             "manifest": {
               "path": "research_corpus/Erdos1049/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:ed4bb02be86e372a1267023b76242e38c33e18f151ee1fa2554787cc52e63ba6"
+              "content_digest": "sha256:ea89cb1d92e05cf5d12e9a6b1b130670a6edeee139827cbb8a68b196425d1f79"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1049/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:6415118845617e4aa076f56a6a83f797a79a61aa124c012fa4c6f08dcb6fc38f"
+              "content_digest": "sha256:d832761f0aac6a7ef1eaeb66da150320ea42e454e59e234d97ea7c949c009a14"
             }
           },
           "strongest_result_summary": {
@@ -2970,7 +2970,7 @@
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 188,
+            "exported_source_file_count": 200,
             "status": "source_current_problem_snapshot"
           }
         }

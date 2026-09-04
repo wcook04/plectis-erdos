@@ -13,7 +13,7 @@ Let C=sum_{n>=2}1/(n!(n!-1)) be the fixed companion constant, F_m=m!C_m the fini
 
 Evidence/status: lean_checked_exact_identity_no_cofinal_claim
 
-- [CompanionConstantCarryLaw.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CompanionConstantCarryLaw.lean)
+- [CompanionConstantCarryLaw.lean](problem/CompanionConstantCarryLaw.lean)
 
 claim_boundary: Exact pointwise identity and unconditional certificate interface. No cofinal miss, non-concentration theorem, or irrationality is claimed.
 
@@ -23,7 +23,7 @@ For every integer t>=-1 let S_t=sum_{n>=2}1/(n!+t) and C_t=sum_{n>=2}1/(n!(n!+t)
 
 Evidence/status: lean_checked_family_equivalence_no_member_decided_except_t_zero
 
-- [FactorialShiftFamilyOrbit.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean)
+- [FactorialShiftFamilyOrbit.lean](problem/FactorialShiftFamilyOrbit.lean)
 
 claim_boundary: Exact family equivalence for t>=-1 extending the Cantor 1869 / Galambos 1976 factorial-base criterion (prior-art disposition D1). Members t<=-2 are not formalised. No irrationality is claimed for any t!=0; prior art for the family boundary itself was not re-checked online this session.
 
@@ -33,7 +33,7 @@ The first genuinely nonterminal repeated square record, q=971 from 361!-1 to 609
 
 Evidence/status: exact_finite_mechanism_opening_with_lean_checked_consumers
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### canonical_factorial_digit_kernel
 
@@ -41,7 +41,7 @@ For every real x, Lean checks the exact floor formula d_m=floor(m*theta_(m-1)), 
 
 Evidence/status: lean_checked
 
-- [CanonicalFactorialDigits.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean)
+- [CanonicalFactorialDigits.lean](problem/CanonicalFactorialDigits.lean)
 
 ### finite_defect_automaton_algebra
 
@@ -49,7 +49,7 @@ For any exact rational centre recurrence F_m=m*F_(m-1)+1+epsilon_m-C_m, Lean che
 
 Evidence/status: lean_checked
 
-- [FiniteDefectAutomaton.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FiniteDefectAutomaton.lean)
+- [FiniteDefectAutomaton.lean](problem/FiniteDefectAutomaton.lean)
 
 ### strict_successor_prime_power_criterion
 
@@ -57,7 +57,7 @@ Lean checks the exact two-stage arithmetic criterion for N=kp*Nprev+1-b: p^k div
 
 Evidence/status: lean_checked_complete_irrationality_criterion_miss_family_pending
 
-- [StrictSuccessorArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean)
+- [StrictSuccessorArithmetic.lean](problem/StrictSuccessorArithmetic.lean)
 
 ### prime_block_integer_translation_collapse
 
@@ -93,7 +93,7 @@ Specializing Kovač--Tao Lemma 5.1 (arXiv v4, pp. 14--15) to a_n=n!-1 and the in
 
 Evidence/status: source_verified_derived_not_source_stated_with_lean_checked_overlap_arithmetic
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### hancl_tijdeman_carry_factorial_bridge
 
@@ -101,7 +101,7 @@ Lean checks the exact identity Z_M/M!=Z_2/2!+sum_(3<=m<=M)(1-b_m)/m!, obtained b
 
 Evidence/status: source_verified_and_lean_checked_derived_not_source_stated
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### erdos_straus_carry_coboundary_coordinate
 
@@ -109,7 +109,7 @@ Koutsoukou-Argyraki--Li--Paulson Theorem 3.1 (arXiv v2, pp. 4--5), formalizing E
 
 Evidence/status: source_verified_and_lean_checked_hypothesis
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### erdos_straus_coboundary_finite_state_collapse
 
@@ -117,7 +117,7 @@ The sharp carry range makes the source coboundary much more rigid than a generic
 
 Evidence/status: lean_checked_state_bound_and_finite_residue_collapse
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### strict_successor_carry_exact_characterization
 
@@ -125,7 +125,7 @@ Lean proves that the normalized strict successors Z_n/n! converge to the literal
 
 Evidence/status: lean_checked_exact_equivalence_open_producer_pending
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### strict_successor_carry_search_through_300000
 
@@ -140,7 +140,7 @@ An integer-valued defect state q_m is computable from the divisor-factorial coef
 
 Evidence/status: advisory_complete_derivation
 
-- [FiniteDefectAutomaton.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FiniteDefectAutomaton.lean)
+- [FiniteDefectAutomaton.lean](problem/FiniteDefectAutomaton.lean)
 
 ### prime_window_archimedean_modular_factorization
 
@@ -176,7 +176,7 @@ For every positive d, Lean proves (d!)^(floor(i/d)) divides i!, defines the inte
 
 Evidence/status: lean_checked
 
-- [FactorialChannelCertificate.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialChannelCertificate.lean)
+- [FactorialChannelCertificate.lean](problem/FactorialChannelCertificate.lean)
 
 ### lambda34_finite_subunit_certificate
 
@@ -184,7 +184,7 @@ For the finite-support vector lambda=2e_3-e_4, Lean checks V_2=0, factorial mome
 
 Evidence/status: lean_checked_finite_only
 
-- [FactorialChannelCertificate.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialChannelCertificate.lean)
+- [FactorialChannelCertificate.lean](problem/FactorialChannelCertificate.lean)
 
 ### primitive_cofactor_determinant_divisor_bottleneck
 
@@ -199,7 +199,7 @@ For natural endpoint numerator Z congruent to a weighted numerator T modulo R, e
 
 Evidence/status: lean_checked
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 ### equal_leave_one_out_projections_collapse_to_global_residue
 
@@ -207,7 +207,7 @@ Lean proves that complementary projection commutes with passage from a positive 
 
 Evidence/status: lean_checked
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 ### unconditional_complementary_pair_floor_reduction
 
@@ -215,7 +215,7 @@ Lean defines a generic projection-pair floor: if two least-residue projections a
 
 Evidence/status: lean_checked_complete_reduction_open_cofinal_pair_floor_producer
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 claim_boundary: The source proves an exact branch-free pair-floor reduction and the resulting conditional irrationality theorem. It does not provide the cofinal pair-owner scale inequality or an unconditional irrationality proof for Erdős #68.
 
@@ -225,7 +225,7 @@ For two private quotients r_i,r_j dividing R_p, Lean proves the exact cancellati
 
 Evidence/status: lean_checked_complete_reduction_open_cofinal_collision_cap_and_projection_producer
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Cofinally control the aggregate product of the remaining support powers q^v_q(Ctilde_p), with q^2>p-1 and v_q(Ctilde_p)+v_q((p-1)!)<q, strongly enough for the normalized collision cap at a selected private quotient, and independently force the required complementary projection disagreement or global complementary-residue lower bound.
 
@@ -235,7 +235,7 @@ Lean proves that if a prime q hits any displayed factorial-gap denominator at an
 
 Evidence/status: lean_checked_exact_source_consumer_open_aggregate_repeated_hit_load
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 claim_boundary: Lean proves that an upper-half prime avoids the predecessor-factorial base and that its full repeated-hit prime-power load survives normalization exactly. This is a local transfer for each fixed prime power. It does not aggregate the moving collision-prime support, prove the normalized collision-product cap, force a complementary projection or residue, establish irrationality, or resolve Erdős 68.
 
@@ -247,7 +247,7 @@ For a prime q already known to hit an upper-half factorial gap, Lean identifies 
 
 Evidence/status: lean_checked_exact_incidence_consumer_open_uniform_aggregate_bound
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Prove uniform incidence estimates strong enough across all relevant large primes and exponents to bound the total normalized collision product, and independently force the complementary projection or residue cofinally.
 
@@ -257,7 +257,7 @@ For every prime q already known to hit an upper-half factorial gap, Lean compute
 
 Evidence/status: lean_checked_exact_local_valuation_aggregation_open_global_prime_product
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Prove uniform repeated-hit layer bounds strong enough across the moving prime support to force the normalized collision cap, and independently force the complementary projection or residue cofinally.
 
@@ -267,7 +267,7 @@ Every positive normalized collision power q^e now yields an explicit pair of dis
 
 Evidence/status: lean_checked_two_commit_local_spacing_interface_open_global_pair_count
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Prove a uniform global bound on the number and aggregate prime-power weight of repeated-hit pairs strong enough for the normalized collision cap, and independently force the complementary projection or residue cofinally.
 
@@ -277,7 +277,7 @@ For every prime q above the factorial-block endpoint 2p-1, if q divides the norm
 
 Evidence/status: lean_checked_exact_local_valuation_ceiling_open_global_prime_product
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Bound the number and aggregate size of endpoint-prime collision factors strongly enough for the normalized collision cap, and independently force the complementary projection or residue cofinally.
 
@@ -287,7 +287,7 @@ Lean now makes the factorial-gap metric bound universal. Any q^e shared by displ
 
 Evidence/status: lean_checked_universal_pairwise_spacing_interface_open_packing_aggregation
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Combine the exact per-layer hit-count inequality with the repeated-layer valuation identity and sum the resulting weighted bounds over moving endpoint primes strongly enough for the normalized collision cap; independently force the complementary projection or residue cofinally.
 
@@ -297,7 +297,7 @@ For p>=2, e>0, and every base q above the block endpoint 2p-1, Lean proves the e
 
 Evidence/status: lean_checked_exact_layer_cardinality_bound_open_weighted_prime_sum
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Prove the weighted global aggregation over all endpoint primes strongly enough for the normalized collision cap, and independently force the complementary projection or residue cofinally.
 
@@ -349,7 +349,7 @@ Lean checks factorialBlock_unique_owner_projection_lcm_ceiling: any one-owner cl
 
 Evidence/status: lean_checked_ceiling_source_verified_asymptotic_exclusion_not_fully_lean_checked
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 ### luca_shparlinski_general_modulus_factorial_hit_bounds
 
@@ -394,7 +394,7 @@ For a primitive signed rational sum, the returned valuation argument defines the
 
 Evidence/status: advisory_complete_derivation_with_lean_checked_collision_survival_and_endpoint_transport
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 ### literal_factorial_block_private_residue_closing_criterion
 
@@ -402,7 +402,7 @@ Lean instantiates the generic collision-core machinery with the literal Erdős #
 
 Evidence/status: lean_checked
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 ### global_complementary_tail_residue_reduction
 
@@ -410,7 +410,7 @@ Lean proves the exact global identity rho_p=((R_p-(T_p mod R_p)) mod R_p) whenev
 
 Evidence/status: lean_checked_complete_reduction_open_integral_producer
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 claim_boundary: The named declarations establish the exact coefficient-free global residue identity and its conditional cofinal irrationality consumer. They do not produce the required cofinal lower bound for the global complementary residue, prove the endpoint scale inequality for infinitely many prime blocks, or independently prove Erdős #68 irrationality.
 
@@ -420,7 +420,7 @@ Lean proves C_p R_p=L_p, gcd(T_p,R_p)=1, and the exact rational identity T_p/R_p
 
 Evidence/status: lean_checked_complete_reduction_open_fractional_part_producer
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 ### collision_carry_dyadic_block_bridge
 
@@ -428,7 +428,7 @@ Lean proves that if factorialGapStepCarry(m)=1 for every p<=m<=2p, then the norm
 
 Evidence/status: lean_checked_exact_bridge_open_shared_producer
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### erdos68_private_projection_scan_through_607
 
@@ -457,7 +457,7 @@ Lean checks the complete fixed/cofinal-anchor rationality reduction. For every d
 
 Evidence/status: lean_checked_complete_reduction_open_fractional_part_producer
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 ### rational_grid_zero_plateau_core
 
@@ -465,7 +465,7 @@ Lean checks the algebraic grid threshold: when qH=k+r and q(S-H)=u, the next q^(
 
 Evidence/status: lean_checked
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### factorial_plateau_zero_digit_and_exit_carry
 
@@ -473,7 +473,7 @@ Consecutive plateau floors scaling by the next radix force the canonical factori
 
 Evidence/status: lean_checked
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### first_crossing_gap_denominator_bounds
 
@@ -481,7 +481,7 @@ Lean defines the exact rational factorial-gap prefix, proves its one-step recurr
 
 Evidence/status: lean_checked
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### zero_branch_search_through_100000
 
@@ -496,7 +496,7 @@ Lean checks that every channel coefficient is congruent to its factorial coeffic
 
 Evidence/status: lean_checked
 
-- [ChannelIntegralCongruence.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean)
+- [ChannelIntegralCongruence.lean](problem/ChannelIntegralCongruence.lean)
 
 ### factorial_gap_lcm_segment_bound
 
@@ -504,7 +504,7 @@ For k<D, Lean checks the exact finite inequality product_{n=D-k+1}^D(n!-1)<=L_D*
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [ChannelIntegralCongruence.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean)
+- [ChannelIntegralCongruence.lean](problem/ChannelIntegralCongruence.lean)
 
 ### one_kernel_radius_preasymptotic_bridge
 
@@ -512,7 +512,7 @@ Lean checks the exact finite bridge behind the absolute-tail one-kernel obstruct
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [ChannelIntegralCongruence.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean)
+- [ChannelIntegralCongruence.lean](problem/ChannelIntegralCongruence.lean)
 
 ### one_kernel_radius_three_halves_square_subsequence
 
@@ -520,7 +520,7 @@ A strengthened finite proof retains the lower bound D+1-k >= (15/8)t^2 on D=2t^2
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [ChannelIntegralCongruence.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean)
+- [ChannelIntegralCongruence.lean](problem/ChannelIntegralCongruence.lean)
 
 ### one_kernel_sharp_radius_log_constraint_boundary
 
@@ -528,7 +528,7 @@ Lean proves the exact collision identity 3*choose(2t+1,3)+t=4t^3 and then shows 
 
 Evidence/status: lean_checked_mechanism_elimination
 
-- [ChannelIntegralCongruence.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean)
+- [ChannelIntegralCongruence.lean](problem/ChannelIntegralCongruence.lean)
 
 ### channel_affine_integral_normal_form
 
@@ -536,7 +536,7 @@ For every finite integer support and every d>=2, Lean produces an integer k with
 
 Evidence/status: lean_checked
 
-- [ChannelIntegralCongruence.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean)
+- [ChannelIntegralCongruence.lean](problem/ChannelIntegralCongruence.lean)
 
 ### canonical_channel_kernel_D2_D12
 
@@ -558,7 +558,7 @@ For every prime p, Lean checks the coefficient-index pair (p,-1) on (p-1,p): its
 
 Evidence/status: lean_checked
 
-- [PrimeUnitTranslator.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean)
+- [PrimeUnitTranslator.lean](problem/PrimeUnitTranslator.lean)
 
 ### conditional_rank_two_nearest_integer_rounding
 
@@ -566,7 +566,7 @@ Given any finite-support integer vector that annihilates every channel 2 through
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeUnitTranslator.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean)
+- [PrimeUnitTranslator.lean](problem/PrimeUnitTranslator.lean)
 
 ### cramer_nonzero_moment_channel_kernel_producer
 
@@ -574,7 +574,7 @@ For any finite support of size n+1, Lean defines the square augmented matrix wit
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeUnitTranslator.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean)
+- [PrimeUnitTranslator.lean](problem/PrimeUnitTranslator.lean)
 
 ### uniform_factorial_grid_rank_two_reduction
 
@@ -582,7 +582,7 @@ For every cutoff D>=2 and support threshold B, Lean now constructs a remote labe
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeUnitTranslator.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean)
+- [PrimeUnitTranslator.lean](problem/PrimeUnitTranslator.lean)
 
 ### cramer_tail_determinant_and_eventual_nonvanishing
 
@@ -590,7 +590,7 @@ Lean now proves the exact adjugate identity that evaluating a Cramer vector agai
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeUnitTranslator.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean)
+- [PrimeUnitTranslator.lean](problem/PrimeUnitTranslator.lean)
 
 ### full_residual_mod_integers_classification
 
@@ -598,7 +598,7 @@ For every finite-support integer coefficient vector and every cutoff D>=1, Lean 
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeUnitTranslator.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean)
+- [PrimeUnitTranslator.lean](problem/PrimeUnitTranslator.lean)
 
 ### D3_rank_two_denominator_exclusion
 
@@ -613,7 +613,7 @@ For every m>=3, Lean proves that the unit-carry condition is equivalent to the p
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [FactorialZeroPlateau.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
+- [FactorialZeroPlateau.lean](problem/FactorialZeroPlateau.lean)
 
 ### prime_unit_carry_endpoint_cylinder_dichotomy
 
@@ -621,7 +621,7 @@ For every m>=2, Lean proves the exact relation strictFacTop(factorialGapPrefix(m
 
 Evidence/status: lean_checked_conditional_closer_producer_open
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### prime_indices_do_not_automatically_meet_predecessor_threshold
 
@@ -637,7 +637,7 @@ For any finite set S of distinct primes that each divide the actual reduced deno
 
 Evidence/status: lean_checked_conditional_closer_producer_open
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### componentwise_accumulator_birth_survival_recurrence
 
@@ -645,7 +645,7 @@ Lean now makes the componentwise accumulator dynamic. For every already-born sou
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### repeated_birth_multiplicity_amplification_survives
 
@@ -653,7 +653,7 @@ Lean now sharpens the repeated-birth/outflow overlap at full q-adic multiplicity
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### repeated_factorial_gap_valuation_record_bridge
 
@@ -661,7 +661,7 @@ Lean proves that the reduced predecessor denominator v_n divides lcm_{2<=k<n}(k!
 
 Evidence/status: source_verified_crosswalk_and_lean_checked_derived_not_source_stated_with_exact_finite_certificate
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### wilson_half_factorial_joint_scan_through_50000
 
@@ -683,7 +683,7 @@ Lean linearizes every arbitrary nonterminal square lift. If a prime q divides bo
 
 Evidence/status: lean_checked_exact_equivalence_open_distribution_producer_pending
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### transition_normalizer_numerator_projection
 
@@ -691,7 +691,7 @@ Let G_m=v_m*(m!-1)/v_(m+1) be the exact natural-number factor cancelled when the
 
 Evidence/status: lean_checked_derived_not_source_stated
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 ### componentwise_accumulated_private_power_finite_diagnostic
 
@@ -706,7 +706,7 @@ For p>=2 and every prime q above the displayed endpoint 2p-1 that hits an upper 
 
 Evidence/status: lean_checked_exact_local_truncation_open_weighted_global_aggregation
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Prove the weighted global aggregation over endpoint primes strongly enough for the normalized collision cap, and independently force the complementary projection or residue cofinally.
 
@@ -716,7 +716,7 @@ For every prime q strictly above the displayed endpoint 2p-1 and every exponent 
 
 Evidence/status: lean_checked_anchor_free_endpoint_incidence_interface_open_uniform_source_bound
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Supply the uniform endpoint-prime incidence bound and weighted global product estimate required for the normalized collision cap, and independently force the complementary projection or residue cofinally.
 
@@ -726,7 +726,7 @@ Lean generalizes the anchor-free normalized-collision interface from primes abov
 
 Evidence/status: lean_checked_base_omitted_prime_incidence_interface_open_uniform_source_bound
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 surviving_obligation: Supply the uniform base-omitted-prime incidence bound and weighted global product estimate required for the normalized collision cap, and independently force the complementary projection or residue cofinally.
 
@@ -736,7 +736,7 @@ Lean globalizes the factorial-gap spacing mechanism to every prime. If q is prim
 
 Evidence/status: lean_checked_universal_local_spacing_open_weighted_global_aggregation
 
-- [EndpointWeightedPrivateSupport.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean)
+- [EndpointWeightedPrivateSupport.lean](problem/EndpointWeightedPrivateSupport.lean)
 
 claim_boundary: Lean proves the primewise spacing, hit-count packing, and valuation-plus-base block-diameter ceilings for each fixed prime. These local inequalities do not bound the number of collision primes or sum their weighted valuations. They therefore do not prove the normalized collision-product cap, force the complementary residue, establish irrationality, or resolve Erdős 68.
 
@@ -748,7 +748,7 @@ Lean now carries Wilson reflection through the predecessor-factorial normalizati
 
 Evidence/status: lean_checked_reflection_to_normalized_core_open_weighted_global_aggregation
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 surviving_obligation: Prove a cofinal weighted global aggregation over all collision primes strong enough for the normalized collision cap, and independently force the complementary projection or residue.
 
@@ -758,7 +758,7 @@ The tail-free predecessor-gap certificate had no computational coverage. Since u
 
 Evidence/status: exact_finite_evaluation_separating_generic_from_delicate
 
-- [erdos68_predecessor_gap_threshold.py](formal_math/probes/erdos68_predecessor_gap_threshold.py)
+- [erdos68_predecessor_gap_threshold.py](probes/erdos68_predecessor_gap_threshold.py)
 
 ### factorial_digit_level_sets_and_uniformity
 
@@ -808,7 +808,7 @@ Lean proves the exact finite decomposition factorialGapPrefix(m)=factorialExpPre
 
 Evidence/status: lean_checked_finite_identity_plus_exact_finite_no_crossing_census
 
-- [SecondLayerDigit.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/SecondLayerDigit.lean)
+- [SecondLayerDigit.lean](problem/SecondLayerDigit.lean)
 
 ### prime_pole_principal_residue_criterion
 
@@ -816,7 +816,7 @@ For prime q and a finite factorial-gap prefix through M, let e be the positive m
 
 Evidence/status: lean_checked_prime_pole_principal_residue_criterion
 
-- [PrimePoleCriterion.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePoleCriterion.lean)
+- [PrimePoleCriterion.lean](problem/PrimePoleCriterion.lean)
 
 ### quadratic_neighbour_affine_defect_rigidity
 
@@ -824,7 +824,7 @@ For a_n=n!-1, any integer sequence b_n with endpoint error e_n=a_n-b_n satisfies
 
 Evidence/status: lean_checked_two_sided_and_one_sided_affine_defect_rigidity
 
-- [AffineDefectRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AffineDefectRigidity.lean)
+- [AffineDefectRigidity.lean](problem/AffineDefectRigidity.lean)
 
 ### threshold_failure_odd_prime_cutoff_finite_pattern
 
@@ -839,7 +839,7 @@ The strict successor splits exactly as N_m = E_m + floor(F_m) + 1 with E_m = sum
 
 Evidence/status: lean_checked_exact_floor_congruence_normal_form
 
-- [CarryCongruenceNormalForm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean)
+- [CarryCongruenceNormalForm.lean](problem/CarryCongruenceNormalForm.lean)
 
 ### adjacent_unit_carry_window_prime_power_collision_law
 
@@ -847,7 +847,7 @@ Lean gives a pure finite integer criterion for consecutive unit carries at m and
 
 Evidence/status: lean_checked_exact_two_step_factorization_and_prime_power_collision_iff
 
-- [AdjacentUnitCarryWindow.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean)
+- [AdjacentUnitCarryWindow.lean](problem/AdjacentUnitCarryWindow.lean)
 
 ### adjacent_unit_carry_two_step_factorization_no_go
 
@@ -855,7 +855,7 @@ Lean now checks the missing two-step denominator identity v_(m+2) G_(m+1) G_m = 
 
 Evidence/status: lean_checked_exact_telescoping_circularity
 
-- [AdjacentUnitCarryWindow.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean)
+- [AdjacentUnitCarryWindow.lean](problem/AdjacentUnitCarryWindow.lean)
 
 ### companion_constant_telescope_and_lower_window_certificate
 
@@ -863,7 +863,7 @@ Lean checks two completions of the carry congruence normal form in CompanionCons
 
 Evidence/status: lean_checked_telescope_and_lower_window_certificate
 
-- [CompanionConstantBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CompanionConstantBridge.lean)
+- [CompanionConstantBridge.lean](problem/CompanionConstantBridge.lean)
 
 ### companion_constant_full_floor_one_residue_normal_form
 
@@ -871,7 +871,7 @@ Let C=sum_{n>=2}1/(n!(n!-1))=S-e+2. Under a hypothetical rational value S=a/b, e
 
 Evidence/status: lean_checked_arithmetic_and_digit_bridge_with_analytic_equivalence
 
-- [ConstantOnlyMissCertificates.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean)
+- [ConstantOnlyMissCertificates.lean](problem/ConstantOnlyMissCertificates.lean)
 
 ### cofinal_prime_lower_endpoint_escape_irrationality_criterion
 
@@ -879,7 +879,7 @@ If cofinally many primes p satisfy factorialGapScaledTail p <= p * canonicalRema
 
 Evidence/status: lean_checked_conditional_irrationality_consumer
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 claim_boundary: The cofinal prime lower-endpoint escape premise remains an open producer; this theorem is not an unconditional irrationality proof and does not settle Erdos #68.
 
@@ -889,7 +889,7 @@ If cofinally many integers m satisfy 1 + 1/(m! - 1) + 2/m <= m * factorialGapPre
 
 Evidence/status: lean_checked_conditional_finite_prefix_consumer
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 claim_boundary: The cofinal finite-prefix threshold producer remains open; this theorem is conditional and does not prove an unconditional irrationality result or settle Erdos #68.
 
@@ -899,7 +899,7 @@ Under a cofinal supply of factorial gaps with a prime divisor larger than the ne
 
 Evidence/status: lean_checked_conditional_two_step_modulus_anchor_consumer
 
-- [PrimeZeroBranch.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean)
+- [PrimeZeroBranch.lean](problem/PrimeZeroBranch.lean)
 
 claim_boundary: The cofinal prime-divisor source hypothesis remains open; the theorem is a conditional denominator/numerator anchor and does not prove the Archimedean residue inequality, irrationality, or solve Erdős #68.
 
@@ -1005,7 +1005,7 @@ The old layered-digit lab treated rationality as an eventually maximal canonical
 
 Evidence/status: eliminated_by_lean_checked_zero_tail_theorem
 
-- [SecondLayerDigit.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/SecondLayerDigit.lean)
+- [SecondLayerDigit.lean](problem/SecondLayerDigit.lean)
 
 ### odd_index_parity_cutoff_is_chance_consistent_and_expensive_to_extend
 

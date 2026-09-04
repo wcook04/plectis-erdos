@@ -13,7 +13,7 @@ For three pairwise-distinct primes and x>0, the literal Finset.lcm of the actual
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: The named declarations prove the finite three-prime running-LCM identity and cubic upper bound under their explicit positivity and distinctness hypotheses. They do not prove the irrationality conclusion for Erdős #269, an unbounded residue escape, or a universal result beyond the stated three-prime height estimate.
 
@@ -23,7 +23,7 @@ For three pairwise-distinct primes and positive cutoffs, equality of the three n
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: This is a checked finite logarithmic-cell constancy result under the explicit prime and cutoff hypotheses. It does not order the infinite jump sequence, prove an irrationality conclusion, or supply an unbounded residue-escape theorem.
 
@@ -33,7 +33,7 @@ The {2,3,5} lattice kernel fails rank-one separation; the smallest 2x2 determina
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 ### prime_power_jump_expansion
 
@@ -41,7 +41,7 @@ Every finite rectangular smooth-lattice sum groups exactly by its genuine runnin
 
 Evidence/status: lean_checked_finite_core
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: This is a checked finite grouping identity for rectangular smooth-lattice sums. It does not justify passage to an infinite ordered expansion, establish pure-power ordering, or prove irrationality.
 
@@ -51,7 +51,7 @@ For pairwise-distinct primes and positive cutoffs, advancing exactly one natural
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: This is a checked one-coordinate finite transition law under the explicit positivity and distinctness hypotheses. It does not identify the globally ordered jump sequence or prove an irrationality conclusion.
 
@@ -61,7 +61,7 @@ Positive power channels of distinct primes are disjoint; consequently, the union
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: This is an exact finite cardinality result for three distinct prime-power channels. It does not establish their order relative to one another in the infinite logarithmic sequence or prove irrationality.
 
@@ -71,7 +71,7 @@ The common origin 1 lies in no positive prime-power channel, so adjoining it to 
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: This is an exact finite count after adjoining the origin to three positive prime-power channels. It does not prove a global jump enumeration, an infinite ordering statement, or irrationality.
 
@@ -81,7 +81,7 @@ For the actual filtered smooth exponent shell, fixing two coordinates is injecti
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: This is a checked finite shell multiplicity bound with its explicit interval and sorted-height hypotheses. It does not provide a sharp asymptotic, an infinite jump expansion, or an irrationality proof.
 
@@ -91,7 +91,7 @@ Every interval (2^a,2^(a+1)) contains at most one pure power from each non-dyadi
 
 Evidence/status: lean_checked
 
-- [ThreePrimeRunningLcm.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
+- [ThreePrimeRunningLcm.lean](problem/ThreePrimeRunningLcm.lean)
 
 claim_boundary: The named declarations prove the exact successive-height ratio and the resulting four-symbol radix alphabet for the {2,3,5} dyadic block. They do not identify the integer block digit, prove the tail recurrence or escape dichotomy, or settle Erdős #269.
 
@@ -136,7 +136,7 @@ A positive tail state bounded by K cannot represent modulo C a canonical positiv
 
 Evidence/status: lean_checked
 
-- [ResidueEscape.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean)
+- [ResidueEscape.lean](problem/ResidueEscape.lean)
 
 ### canonical_window_residue_equality
 
@@ -144,7 +144,7 @@ Any positive integral carry bounded by its positive modulus is exactly the least
 
 Evidence/status: lean_checked
 
-- [RestrictedFloorSum.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RestrictedFloorSum.lean)
+- [RestrictedFloorSum.lean](problem/RestrictedFloorSum.lean)
 
 ### fixed_window_residue_shortcut_counterexamples
 
@@ -159,7 +159,7 @@ For positive bases, the strict three-prime smooth count is exactly a restricted 
 
 Evidence/status: lean_checked
 
-- [RestrictedFloorSum.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RestrictedFloorSum.lean)
+- [RestrictedFloorSum.lean](problem/RestrictedFloorSum.lean)
 
 ### restricted_floor_sum_discrete_derivative
 
@@ -167,7 +167,7 @@ For bases p,q,r greater than one, V_p(a+1) - V_p(a) is exactly the cardinality W
 
 Evidence/status: lean_checked
 
-- [RestrictedFloorSum.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RestrictedFloorSum.lean)
+- [RestrictedFloorSum.lean](problem/RestrictedFloorSum.lean)
 
 ### pure_power_block_shadow_separation
 
@@ -182,7 +182,7 @@ Every fixed {p,q,r}-smooth factor kernel-checkably divides the running three-pri
 
 Evidence/status: lean_checked_absorption_and_cancellation_core
 
-- [RestrictedFloorSum.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RestrictedFloorSum.lean)
+- [RestrictedFloorSum.lean](problem/RestrictedFloorSum.lean)
 
 ### projective_two_window_residue_coherence
 
@@ -206,7 +206,7 @@ The local forcing for any shell word of the form m_n = V_(n+1) - V_n kernel-chec
 
 Evidence/status: lean_checked_algebraic_core
 
-- [RestrictedFloorSum.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RestrictedFloorSum.lean)
+- [RestrictedFloorSum.lean](problem/RestrictedFloorSum.lean)
 
 ### local_window_certificates_B_1_7_16
 
@@ -221,7 +221,7 @@ Beatty-weight exponents reindex exactly under every dn+s section; any supplied a
 
 Evidence/status: lean_checked
 
-- [WeightedPhaseCarry.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/WeightedPhaseCarry.lean)
+- [WeightedPhaseCarry.lean](problem/WeightedPhaseCarry.lean)
 
 ### unit_carry_tail_splice_countermodel
 
@@ -229,7 +229,7 @@ For every multiplicative jump word with bases at least two, the coefficient base
 
 Evidence/status: lean_checked_finite_core
 
-- [WeightedPhaseCarry.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/WeightedPhaseCarry.lean)
+- [WeightedPhaseCarry.lean](problem/WeightedPhaseCarry.lean)
 
 ### function_faithful_observer_criterion
 
@@ -237,7 +237,7 @@ Kernel inclusion for an observer implies equality of full symbolic realizations,
 
 Evidence/status: lean_checked_abstract_core
 
-- [WeightedPhaseCarry.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/WeightedPhaseCarry.lean)
+- [WeightedPhaseCarry.lean](problem/WeightedPhaseCarry.lean)
 
 ### full_kernel_finite_observer_no_go
 
@@ -252,7 +252,7 @@ The exact carry-lift recurrence telescopes over every finite block to an endpoin
 
 Evidence/status: lean_checked
 
-- [CarryLiftExtinction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/CarryLiftExtinction.lean)
+- [CarryLiftExtinction.lean](problem/CarryLiftExtinction.lean)
 
 ### block_null_two_anchor_carry_extinction
 
@@ -260,7 +260,7 @@ For a surjective three-channel word, ordinary block-nullity plus genuine 2-to-3 
 
 Evidence/status: lean_checked
 
-- [CarryLiftExtinction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/CarryLiftExtinction.lean)
+- [CarryLiftExtinction.lean](problem/CarryLiftExtinction.lean)
 
 ### bounded_carry_lift_impossibility
 
@@ -268,7 +268,7 @@ No nontrivial carry lift can simultaneously have block-null perturbation, the tw
 
 Evidence/status: lean_checked
 
-- [CarryLiftExtinction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/CarryLiftExtinction.lean)
+- [CarryLiftExtinction.lean](problem/CarryLiftExtinction.lean)
 
 ### unit_accurate_first_block_obstruction
 
@@ -276,7 +276,7 @@ Any integer lift within one of four real states in (0,1) is binary; the two earl
 
 Evidence/status: lean_checked
 
-- [CarryLiftExtinction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/CarryLiftExtinction.lean)
+- [CarryLiftExtinction.lean](problem/CarryLiftExtinction.lean)
 
 ### bounded_radix_zero_or_cofinal_constant_escape
 
@@ -284,7 +284,7 @@ For every real affine orbit x_(a+1)=P_a*x_a-c_a with integral digits and 2<=P_a<
 
 Evidence/status: lean_checked
 
-- [BoundedRadixTailEscape.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean)
+- [BoundedRadixTailEscape.lean](problem/BoundedRadixTailEscape.lean)
 
 ### exact_cancellation_rationality_transport
 
@@ -292,7 +292,7 @@ If tau=X*S-A with nonzero integral X and a nonzero integral scale B makes B*tau 
 
 Evidence/status: lean_checked_abstract_core
 
-- [BoundedRadixTailEscape.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean)
+- [BoundedRadixTailEscape.lean](problem/BoundedRadixTailEscape.lean)
 
 ### canonical_local_window_residue_predicate
 
@@ -300,7 +300,7 @@ CofinalLocalWindowEscape requires the least positive residue of -B times the for
 
 Evidence/status: lean_checked_definition_and_denominator_interface
 
-- [RestrictedFloorSum.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RestrictedFloorSum.lean)
+- [RestrictedFloorSum.lean](problem/RestrictedFloorSum.lean)
 
 ### cofinal_local_window_reduced_carry_extinction
 
@@ -308,7 +308,7 @@ For every positive B coprime to 30, CofinalLocalWindowEscape contradicts any eve
 
 Evidence/status: lean_checked
 
-- [RestrictedFloorSum.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RestrictedFloorSum.lean)
+- [RestrictedFloorSum.lean](problem/RestrictedFloorSum.lean)
 
 ### residue_delay_five_uniform_bound_counterexample
 
@@ -376,7 +376,7 @@ The dyadic radix word is identified exactly. A power of 3 lies in the shell [2^a
 
 Evidence/status: ordinary_mathematical_identification_not_lean_checked
 
-- [erdos269_torus_coding.py](formal_math/probes/erdos269_torus_coding.py)
+- [erdos269_torus_coding.py](probes/erdos269_torus_coding.py)
 
 ### product_sturmian_stammering_no_go
 
@@ -384,7 +384,7 @@ The Adamczewski-Bugeaud criterion (Schmidt Subspace Theorem on stammering expans
 
 Evidence/status: transcendence_route_retired_on_measured_evidence_and_dirichlet_cap
 
-- [erdos269_stammering.py](formal_math/probes/erdos269_stammering.py)
+- [erdos269_stammering.py](probes/erdos269_stammering.py)
 
 ### normalized_tail_diophantine_genericity
 
@@ -392,7 +392,7 @@ The normalized tail X_1 = sum over {2,3,5}-smooth s >= 2 of 1/H(s) was expanded 
 
 Evidence/status: airtight_certified_finite_measurement_with_exact_denominator_exclusion
 
-- [erdos269_continued_fraction.py](formal_math/probes/erdos269_continued_fraction.py)
+- [erdos269_continued_fraction.py](probes/erdos269_continued_fraction.py)
 
 ### lattice_first_hit_denominator_exclusion
 
@@ -400,7 +400,7 @@ Excluding every denominator q <= Q at window depth L is exactly the statement mi
 
 Evidence/status: exact_denominator_exclusion_and_measured_route_ceiling
 
-- [erdos269_denominator_exclusion.py](formal_math/probes/erdos269_denominator_exclusion.py)
+- [erdos269_denominator_exclusion.py](probes/erdos269_denominator_exclusion.py)
 
 ### escape_is_generic_with_no_accumulation
 
@@ -408,7 +408,7 @@ An exact finite census checks 640,000 certificates: every odd denominator q <= 1
 
 Evidence/status: exact_finite_small_denominator_census_superseded_as_a_global_delay_claim
 
-- [erdos269_escape_depth_law.py](formal_math/probes/erdos269_escape_depth_law.py)
+- [erdos269_escape_depth_law.py](probes/erdos269_escape_depth_law.py)
 
 ### projective_defect_equidistributes_across_far_pairs
 
@@ -416,7 +416,7 @@ Every admissible window endpoint - base clears the cap, residue does not escape 
 
 Evidence/status: exact_enumeration_reducing_the_projective_producer_to_equidistribution
 
-- [erdos269_projective_cofinality.py](formal_math/probes/erdos269_projective_cofinality.py)
+- [erdos269_projective_cofinality.py](probes/erdos269_projective_cofinality.py)
 
 ### torus_fourier_representation_of_the_value
 
@@ -424,7 +424,7 @@ The VALUE, not only the digit word, has an explicit torus-analytic form. With L 
 
 Evidence/status: ordinary_tensor_dirichlet_jordan_completion_pending_independent_review
 
-- [erdos269_torus_fourier_representation.py](formal_math/probes/erdos269_torus_fourier_representation.py)
+- [erdos269_torus_fourier_representation.py](probes/erdos269_torus_fourier_representation.py)
 
 ### running_height_prime_power_telescope
 
@@ -432,7 +432,7 @@ sum over p in {2,3,5} of (p-1) sum_(n>=1) 1/H(p^n) = 1 exactly. Proof: the runni
 
 Evidence/status: exact_elementary_identity
 
-- [erdos269_torus_fourier_representation.py](formal_math/probes/erdos269_torus_fourier_representation.py)
+- [erdos269_torus_fourier_representation.py](probes/erdos269_torus_fourier_representation.py)
 
 ### prime_power_boundary_clearing
 
@@ -440,7 +440,7 @@ For p in {2,3,5}, m >= 1 and every {2,3,5}-smooth x < p^m, p*H(x) divides H(p^m)
 
 Evidence/status: lean_checked
 
-- [RationalLatticeReduction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RationalLatticeReduction.lean)
+- [RationalLatticeReduction.lean](problem/RationalLatticeReduction.lean)
 
 ### all_scale_rational_lattice
 
@@ -448,7 +448,7 @@ If S = p/q then every normalized dyadic tail state X_a = (H(2^a)/2) T_a is (1/q)
 
 Evidence/status: lean_checked
 
-- [RationalLatticeReduction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RationalLatticeReduction.lean)
+- [RationalLatticeReduction.lean](problem/RationalLatticeReduction.lean)
 
 ### rational_tail_state_collision_target
 
@@ -456,7 +456,7 @@ If S is rational then two DISTINCT scales carry normalized tail states differing
 
 Evidence/status: lean_checked
 
-- [RationalLatticeReduction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RationalLatticeReduction.lean)
+- [RationalLatticeReduction.lean](problem/RationalLatticeReduction.lean)
 
 ### prime_power_jump_identity_with_counts
 
@@ -464,7 +464,7 @@ S = sum_{p in {2,3,5}} sum_{m>=1} (p-1) N(p^m)/H(p^m) with N(x) = #{s smooth : 1
 
 Evidence/status: exact_checker
 
-- [erdos269_width_and_bridge.py](formal_math/probes/erdos269_width_and_bridge.py)
+- [erdos269_width_and_bridge.py](probes/erdos269_width_and_bridge.py)
 
 ### prime_power_boundary_ladder_recurrence
 
@@ -493,8 +493,8 @@ All-scale explicit width for the genuine half-height normalized tail state: true
 
 Evidence/status: lean_checked
 
-- [NormalizedStateWidth.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/NormalizedStateWidth.lean)
-- [erdos269_width_and_bridge.py](formal_math/probes/erdos269_width_and_bridge.py)
+- [NormalizedStateWidth.lean](problem/NormalizedStateWidth.lean)
+- [erdos269_width_and_bridge.py](probes/erdos269_width_and_bridge.py)
 
 claim_boundary: An explicit polynomial enclosure of the true state; no rationality hypothesis; no irrationality conclusion.
 
@@ -504,7 +504,7 @@ Paper Problem prob:bridge269 (actual rationality-to-carry identification) is clo
 
 Evidence/status: lean_checked
 
-- [RationalityCarryBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/RationalityCarryBridge.lean)
+- [RationalityCarryBridge.lean](problem/RationalityCarryBridge.lean)
 
 claim_boundary: The bridge is unconditional; the irrationality conclusion is conditional on the named Prop ActualCofinalLocalWindowEscape, which is not proved. The short bound is the Lean width B·90(n+1)^2, not the paper's K^{235}(B,a) = floor(B(ν_a^2+10ν_a+27)/9); the sharper bound would follow from a sharper Lean digit majorant and is not needed for the reduction. Erdős #269 remains open.
 
@@ -514,8 +514,8 @@ ActualCofinalLocalWindowEscape is equivalent to irrationality of the {2,3,5} run
 
 Evidence/status: lean_checked
 
-- [CofinalWindowEscapeEquivalence.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean)
-- [erdos269_window_escape_equivalence.py](formal_math/probes/erdos269_window_escape_equivalence.py)
+- [CofinalWindowEscapeEquivalence.lean](problem/CofinalWindowEscapeEquivalence.lean)
+- [erdos269_window_escape_equivalence.py](probes/erdos269_window_escape_equivalence.py)
 
 claim_boundary: It proves an equivalence of two propositions and proves neither of them; Erdos #269 remains open. The content is a no-go for the producer as a reduction: ActualCofinalLocalWindowEscape is not a weaker, more tractable statement, and proving it is literally proving Erdos #269. Any further effort on the producer must be justified as an attack on the target itself.
 
@@ -525,7 +525,7 @@ The paper's checker digit (9.1), m_a = A_2(a+1) + sum_{(p,e) in I_a} (p-1) σ_a(
 
 Evidence/status: exact_checker_with_definitional_transcription
 
-- [erdos269_width_and_bridge.py](formal_math/probes/erdos269_width_and_bridge.py)
+- [erdos269_width_and_bridge.py](probes/erdos269_width_and_bridge.py)
 
 claim_boundary: The all-a identity paper-(9.1) = Lean digit is a transcription plus a finite exact check to a = 200; the Lean-checked object is the threshold-count digit and its cleared-mass identity.
 

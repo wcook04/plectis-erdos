@@ -13,7 +13,7 @@ For a in A, the divisor-incidence identity f_A(a*n)-f_A(n)=1-1_{a divides n} for
 
 Evidence/status: source_current_exact_algebraic_classification_and_countermodel
 
-- [TaoTeravainenIncidenceBoundary.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TaoTeravainenIncidenceBoundary.md)
+- [TaoTeravainenIncidenceBoundary.md](problem/TaoTeravainenIncidenceBoundary.md)
 
 claim_boundary: The arbitrary-a if-and-only-if classification and the A=2P covariance/countermodel are source-verified elementary arguments in the named markdown note, not Lean-checked declarations. The adjacent Lean module proves only the narrower prime/coprimality pullback identities. This result blocks a naive transfer from reciprocal divergence alone; it neither proves irrationality for any new support, decides the Mersenne subseries on 2P, nor supplies a counterexample to Erdős 257.
 
@@ -35,7 +35,7 @@ A mature fatal selected-ancestry borrow has midpoint residual R with R<2*sqrt(2d
 
 Evidence/status: lean_checked_actual_last_upper_ancestor_thin_packet_and_actual_scale_linear_escape_endpoint
 
-- [FatalBorrowMiddleScaleContradiction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FatalBorrowMiddleScaleContradiction.lean)
+- [FatalBorrowMiddleScaleContradiction.lean](problem/FatalBorrowMiddleScaleContradiction.lean)
 
 claim_boundary: The checked declarations reduce a mature fatal borrow to an actual last-upper-ancestor packet and prove that the explicit all-depth linear-escape producers would imply 1/2-membership. They do not prove either producer, exclude every fatal row, establish 1/2-membership unconditionally, or resolve Erdős #257.
 
@@ -47,7 +47,7 @@ If an actual half-greedy skip at rank d has nonpositive complement budget, the f
 
 Evidence/status: lean_checked_exact_fatal_branch_coordinate_transfer_and_zero_branch_cell_collapse
 
-- [FatalBorrowCofiniteCarryTransfer.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FatalBorrowCofiniteCarryTransfer.lean)
+- [FatalBorrowCofiniteCarryTransfer.lean](problem/FatalBorrowCofiniteCarryTransfer.lean)
 
 claim_boundary: The checked transfer classifies a mature fatal midpoint row and narrows its zero-residual case to the surviving minus-one or minus-two cofinite carry cells. It does not exclude those cells, exclude the positive-residual branch, prove complement-budget positivity, establish 1/2-membership, or resolve Erdős #257.
 
@@ -59,7 +59,7 @@ Instead of choosing small-denominator rational targets and filtering survivors, 
 
 Evidence/status: exact_target_space_probe_with_survival_conditioning_route_warning
 
-- [nested_height_alive_cylinder_probe.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/scripts/nested_height_alive_cylinder_probe.py)
+- [nested_height_alive_cylinder_probe.py](problem/scripts/nested_height_alive_cylinder_probe.py)
 
 surviving_obligation: Prove a genuinely pre-survival period-six nested-height/causal-service theorem, or prove the one-half skipped full-shell charge J_N>2^N(Q_N-1). Erdős #257 remains open.
 
@@ -69,7 +69,7 @@ Let S(d)=max_{m<=d} tau_A(m) for the canonical denominator-21 greedy support and
 
 Evidence/status: lean_checked_p1_reduction_with_corrected_alive_prefix_circularity_boundary
 
-- [TwentyOneSelectedDivisorHeightReduction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneSelectedDivisorHeightReduction.lean)
+- [TwentyOneSelectedDivisorHeightReduction.lean](problem/TwentyOneSelectedDivisorHeightReduction.lean)
 
 claim_boundary: The checked declarations reduce the denominator-21 height route to the unconditional all-depth bound H(2d)≤S(d)+1 and show why an alive-prefix defect sandwich cannot prove it. They do not establish that all-depth bound, exclude the fatal branch, prove 1/21-membership, or resolve Erdős #257.
 
@@ -127,7 +127,7 @@ For every set of selected future offsets, the selected Mersenne tail is strictly
 
 Evidence/status: lean_checked
 
-- [MersenneSubseriesRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
+- [MersenneSubseriesRigidity.lean](problem/MersenneSubseriesRigidity.lean)
 
 ### supported_digit_unique_coding
 
@@ -135,7 +135,7 @@ The Mersenne digit-value map remains injective after restriction to any chosen s
 
 Evidence/status: lean_checked
 
-- [MersenneSubseriesRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
+- [MersenneSubseriesRigidity.lean](problem/MersenneSubseriesRigidity.lean)
 
 ### hereditary_mersenne_subachievement_topology
 
@@ -143,7 +143,7 @@ For every selected support the supported digit space is closed and its Mersenne 
 
 Evidence/status: lean_checked
 
-- [MersenneSubseriesRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
+- [MersenneSubseriesRigidity.lean](problem/MersenneSubseriesRigidity.lean)
 
 ### hereditary_mersenne_subachievement_measure
 
@@ -151,7 +151,7 @@ The Lebesgue measure is exactly 2^-c when the support omits c coordinates and is
 
 Evidence/status: lean_checked
 
-- [MersenneSubseriesRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
+- [MersenneSubseriesRigidity.lean](problem/MersenneSubseriesRigidity.lean)
 
 ### mersenne_bernoulli_phase_diagram
 
@@ -213,7 +213,7 @@ For every finite Boolean support F using only ranks n>=2, the finite base-two Me
 
 Evidence/status: lean_checked
 
-- [HalfCounterexampleFrontier.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean)
+- [HalfCounterexampleFrontier.lean](problem/HalfCounterexampleFrontier.lean)
 
 ### one_over_twenty_one_terminal_fringe_absorption
 
@@ -400,7 +400,7 @@ Lean treats the exact target-zero quotient rows sum_d floor(2^N/(2^d-1))=2^(N-1)
 
 Evidence/status: landed_lean_checked_support_cardinality_reduction_with_late_upper_pullback_and_exact_finite_mechanism_audit
 
-- [HalfCounterexampleFrontier.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean)
+- [HalfCounterexampleFrontier.lean](problem/HalfCounterexampleFrontier.lean)
 
 claim_boundary: The cited Lean sources prove the target-zero compactness implication, the midpoint support-cardinality reduction, and the conditional late-upper pullback/amplification theorems. They do not prove cofinal target-zero rows, the all-depth SeamRemainderCardGapFromEight or LateUpperPreviousMiddleStaircaseEscape producers, LargestSkipLateStepSocket, or the remaining non-midpoint comparison. The finite audits discriminate mechanisms only and do not prove one-half membership or resolve Erdős 257.
 
@@ -480,7 +480,7 @@ For the rational half-greedy orbit, write e_n=1/(2^n-1)-2^-n. The selected-ances
 
 Evidence/status: lean_checked_budget_conjugacy_and_source_current_frozen_margin_reconciliation_with_bounded_charge_audit
 
-- [SelectedAncestryBudget.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SelectedAncestryBudget.lean)
+- [SelectedAncestryBudget.lean](problem/SelectedAncestryBudget.lean)
 
 claim_boundary: The cited Lean modules prove the selected-ancestry coordinate identities, first-negative-crossing localization, conditional membership consumers, and equivalence of full-shell coverage with the existing skipped-full-shell nonnegativity producer. They do not prove that producer at every actual skip, prove the all-scale first-window charge inequality, establish one-half membership, produce a rational counterexample, or resolve Erdős #257. The rank-100000 and bounded charge audits are finite evidence only, and the failed atom-tail shortcut cannot be used as a proof premise.
 
@@ -492,7 +492,7 @@ For the pinned half-greedy orbit, let B_N be the selected-ancestry budget, E_N=m
 
 Evidence/status: lean_checked_exact_weak_endpoint_equivalence
 
-- [SelectedAncestryTailSurvival.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SelectedAncestryTailSurvival.lean)
+- [SelectedAncestryTailSurvival.lean](problem/SelectedAncestryTailSurvival.lean)
 
 claim_boundary: The named declarations identify 1/2-membership exactly with all-depth complement-budget survival and prove survival from an explicit cofinal first-negative-crossing hypothesis. They do not prove that hypothesis, prove complement-budget positivity for the actual orbit, establish 1/2-membership, produce a rational counterexample, or resolve Erdős #257.
 
@@ -504,7 +504,7 @@ Let U_30(n) count actual selected divisors lying in the union of the n/2, n/3, a
 
 Evidence/status: lean_checked_exact_conditional_reduction_with_deeper_canonical_falsification
 
-- [TwentyOnePrimorialRepair.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOnePrimorialRepair.lean)
+- [TwentyOnePrimorialRepair.lean](problem/TwentyOnePrimorialRepair.lean)
 
 claim_boundary: The named declarations and finite falsifiers are source-current, but this packet row proves neither 1/21 membership nor a universal inequality: it retires the stated primorial-repair producers while retaining exact finite coordinate reductions.
 
@@ -516,7 +516,7 @@ At a prime p the only divisor of p that can lie in A is p itself, since 1 is nev
 
 Evidence/status: lean_checked_closed_form_for_the_sharpest_local_carry_constraint
 
-- [PrimeSlackTwoValued.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/PrimeSlackTwoValued.lean)
+- [PrimeSlackTwoValued.lean](problem/PrimeSlackTwoValued.lean)
 
 claim_boundary: The named Lean declarations prove only the abstract local linear-arithmetic consequences of t+cp=e+2cm under t,e<=1, plus the parity consequence without those bounds. Applying them at a prime uses the separately stated identification t=tau_A(p)=1_A(p); the module itself contains no divisor theory. The closed form supplies no survival discriminator, global carry control, rational member, universal irrationality theorem, or progress toward resolving Erdős #257.
 
@@ -528,7 +528,7 @@ A socket run of length K at N forces 2^k | tau_A(N+k) for k=1..K, so each head t
 
 Evidence/status: lean_checked_rationality_cap_on_socket_runs_plus_computed_parity_obstruction_slack_on_every_candidate
 
-- [SocketRunRationalCap.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SocketRunRationalCap.lean)
+- [SocketRunRationalCap.lean](problem/SocketRunRationalCap.lean)
 
 claim_boundary: Lean proves the conditional rationality cap for a socket run when the represented rational has the stated odd denominator, plus the parity/transducer identity. It does not force a socket run beyond that cap on any candidate support. The depth-bounded candidate censuses measure slack and eliminate one proposed parity route only; they do not prove an all-depth producer, irrationality, or Erdős 257.
 
@@ -540,7 +540,7 @@ Split the coin 2^(j+1)+1 in the history identity (5). Its power part is divisibl
 
 Evidence/status: source_current_lean_checked_cancellation_exact_even_quotient_compactness_saturated_boundary_midpoint_reachability_and_conditional_full_counterexample_reductions
 
-- [FourNinthsCoinCancellation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FourNinthsCoinCancellation.lean)
+- [FourNinthsCoinCancellation.lean](problem/FourNinthsCoinCancellation.lean)
 
 claim_boundary: The cited Lean modules prove the exact quotient/carry identities, compactness consumers, obstruction equivalences, and conditional membership or counterexample endpoints stated here. They do not prove the selected-landing producer, exclude every full-rank skipped remainder or midpoint equality, or establish cofinal one-step repairs. The finite audits calibrate candidate producers only; they do not supply an all-depth quantifier, prove 4/9 membership, or resolve Erdős 257.
 

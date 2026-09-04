@@ -3,10 +3,10 @@
   "problem_id": "erdos_1049",
   "source_repository": "private_authoring_repository_not_included",
   "source_commit": "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1",
-  "exported_source_file_count": 188,
+  "exported_source_file_count": 200,
   "status": "source_current_problem_snapshot",
   "corpus_manifest_path": "research_corpus/Erdos1049/CORPUS_MANIFEST.json",
-  "corpus_manifest_sha256": "ed4bb02be86e372a1267023b76242e38c33e18f151ee1fa2554787cc52e63ba6",
+  "corpus_manifest_sha256": "ea89cb1d92e05cf5d12e9a6b1b130670a6edeee139827cbb8a68b196425d1f79",
   "strongest_result_map_path": "research_corpus/Erdos1049/STRONGEST_RESULTS.json",
   "strongest_result_map_sha256": "53a87f4e63450ed5182ed4ea02e3535cda56c4fe53e73d0d1f33268c593fc1cc"
 }

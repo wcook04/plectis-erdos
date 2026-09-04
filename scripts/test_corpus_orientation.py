@@ -116,7 +116,24 @@ def test_palomar_signal_join_and_first_read_order() -> None:
     )
 
 
+def test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route() -> None:
+    descriptor = builder.build()
+    access = descriptor["access"]
+    route = access["profiles"]["mathematical_reasoning"]
+
+    assert access["schema"] == "plectis-public-corpus-access/1"
+    assert access["clone_url"].endswith(".git")
+    assert route["checkout_shape"] == "blobless_exact_commit_full_worktree"
+    assert "scripts/query_corpus.py" in route["required_surfaces"]
+    assert "research_corpus" in route["required_surfaces"]
+    commands = route["pinned_materialization_commands"]
+    assert any("<remote_ref>" in command for command in commands)
+    assert any("<published_commit>" in command for command in commands)
+    assert commands[-1].endswith("scripts/query_corpus.py --format card")
+
+
 if __name__ == "__main__":
     test_authored_readme_may_omit_generated_regions()
     test_palomar_signal_join_and_first_read_order()
+    test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route()
     print("corpus orientation signal contracts passed")

@@ -4,8 +4,8 @@
   "status": "open",
   "source_checkpoint": "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1",
   "public_prefix": "research_corpus/Erdos1049",
-  "file_count": 188,
-  "total_bytes": 2921400,
+  "file_count": 200,
+  "total_bytes": 3386466,
   "local_path_replacement_count": 7,
   "strongest_result_map": {
     "path": "research_corpus/Erdos1049/STRONGEST_RESULTS.json",
@@ -1710,11 +1710,119 @@
       "relation": "exact_copy",
       "local_path_replacements": 0,
       "bytes": 19526
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "public_path": "research_corpus/Erdos1049/problem/AdelicHeightBridge.lean",
+      "source_sha256": "1027da513594b867a54d67c34fb1eb3e6f7c743553b29f84b3f30dc86a04a4f0",
+      "published_sha256": "1027da513594b867a54d67c34fb1eb3e6f7c743553b29f84b3f30dc86a04a4f0",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 83846
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean",
+      "public_path": "research_corpus/Erdos1049/problem/BezoutPluckerJets.lean",
+      "source_sha256": "4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3",
+      "published_sha256": "4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 13024
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+      "public_path": "research_corpus/Erdos1049/problem/HermitePadeNoGo.lean",
+      "source_sha256": "812f2ca2ea8b18f8ce8e0a68ae14897aa851fba2e050a07881d839168182f2cc",
+      "published_sha256": "812f2ca2ea8b18f8ce8e0a68ae14897aa851fba2e050a07881d839168182f2cc",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5725
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominator.lean",
+      "public_path": "research_corpus/Erdos1049/problem/QAperyTailDenominator.lean",
+      "source_sha256": "43d0fc98e92785172b12e3fc59b423fdf9c4ff88bb7172e6b00930f7f76d2cc6",
+      "published_sha256": "43d0fc98e92785172b12e3fc59b423fdf9c4ff88bb7172e6b00930f7f76d2cc6",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7005
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+      "public_path": "research_corpus/Erdos1049/problem/RationalBaseLambert.lean",
+      "source_sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+      "published_sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 9657
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "public_path": "research_corpus/Erdos1049/problem/RationalPadeArithmetic.lean",
+      "source_sha256": "c7b54971556577d73bbc563dcf14eaf62aef8d31e1450c4e7337028e46013690",
+      "published_sha256": "c7b54971556577d73bbc563dcf14eaf62aef8d31e1450c4e7337028e46013690",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 9005
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "public_path": "research_corpus/Erdos1049/problem/ZudilinConeArithmetic.lean",
+      "source_sha256": "c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b",
+      "published_sha256": "c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 18668
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "public_path": "research_corpus/Erdos1049/problem/ZudilinHeightRegion.lean",
+      "source_sha256": "bdb9ffaeab12363ed91a6385a6df8ef8e931003ad7862096ed28fc09aa3669fa",
+      "published_sha256": "bdb9ffaeab12363ed91a6385a6df8ef8e931003ad7862096ed28fc09aa3669fa",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 5852
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/research_packet.json",
+      "public_path": "research_corpus/Erdos1049/problem/research_packet.json",
+      "source_sha256": "7c66c08ca18fe45d78191afa9bacd564fb1523879b0db347ef6b44c0e3d1e2f4",
+      "published_sha256": "7c66c08ca18fe45d78191afa9bacd564fb1523879b0db347ef6b44c0e3d1e2f4",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 277807
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/erdos1049_fixed_prime_infinite_tail.py",
+      "public_path": "research_corpus/Erdos1049/probes/erdos1049_fixed_prime_infinite_tail.py",
+      "source_sha256": "dfeaf62cfae85e7be85ff34c853f39811ae55950c20161c4b7bc2a8a68a8e445",
+      "published_sha256": "dfeaf62cfae85e7be85ff34c853f39811ae55950c20161c4b7bc2a8a68a8e445",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 15271
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/erdos1049_rank_budget_law.py",
+      "public_path": "research_corpus/Erdos1049/probes/erdos1049_rank_budget_law.py",
+      "source_sha256": "c540e5fbb4696b3ef1ecb646b6f396d860df608991561422fed0ecebcb16a59f",
+      "published_sha256": "c540e5fbb4696b3ef1ecb646b6f396d860df608991561422fed0ecebcb16a59f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 12129
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/erdos1049_window_divisor_supply.py",
+      "public_path": "research_corpus/Erdos1049/probes/erdos1049_window_divisor_supply.py",
+      "source_sha256": "9c6953c004357c51211992351ca034090188c0a4062229e78819191afbb2e73c",
+      "published_sha256": "9c6953c004357c51211992351ca034090188c0a4062229e78819191afbb2e73c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7077
     }
   ],
   "browser_frontier": {
     "path": "research_corpus/Erdos1049/FRONTIER.md",
-    "sha256": "70871290e28e0dc3124f3404d2bcc717fc549dcb9d89f31a65cfce982f91a29f",
+    "sha256": "1b7989cae1e974988104429f823840b9709e5e69f443b924b3d2f967b344ad30",
     "source": "exported research_packet.json"
   }
 }

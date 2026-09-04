@@ -4,8 +4,8 @@
   "status": "open",
   "source_checkpoint": "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1",
   "public_prefix": "research_corpus/Erdos257",
-  "file_count": 587,
-  "total_bytes": 17351012,
+  "file_count": 601,
+  "total_bytes": 17885618,
   "local_path_replacement_count": 50,
   "strongest_result_map": {
     "path": "research_corpus/Erdos257/STRONGEST_RESULTS.json",
@@ -5306,11 +5306,137 @@
       "relation": "source_faithful_public_sanitized_copy",
       "local_path_replacements": 1,
       "bytes": 1181
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FatalBorrowCofiniteCarryTransfer.lean",
+      "public_path": "research_corpus/Erdos257/problem/FatalBorrowCofiniteCarryTransfer.lean",
+      "source_sha256": "a03823a20f22595aa53477fbd4eeef328632872eab79f960f9049b6145c76f88",
+      "published_sha256": "a03823a20f22595aa53477fbd4eeef328632872eab79f960f9049b6145c76f88",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 21801
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FatalBorrowMiddleScaleContradiction.lean",
+      "public_path": "research_corpus/Erdos257/problem/FatalBorrowMiddleScaleContradiction.lean",
+      "source_sha256": "dfd3fc7840d665066d4f4ede84b2e7c94146666e39b850115755c2a1e7790e4c",
+      "published_sha256": "dfd3fc7840d665066d4f4ede84b2e7c94146666e39b850115755c2a1e7790e4c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 17072
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FourNinthsCoinCancellation.lean",
+      "public_path": "research_corpus/Erdos257/problem/FourNinthsCoinCancellation.lean",
+      "source_sha256": "fb05416c8e9a0717177db94c955244fc9eed986eb412937d7ce47c8023959259",
+      "published_sha256": "fb05416c8e9a0717177db94c955244fc9eed986eb412937d7ce47c8023959259",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 16293
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+      "public_path": "research_corpus/Erdos257/problem/HalfCounterexampleFrontier.lean",
+      "source_sha256": "9782a02ce3437ff29fab7cc271e65840cea8c9e41344d41090864550d6330b6f",
+      "published_sha256": "9782a02ce3437ff29fab7cc271e65840cea8c9e41344d41090864550d6330b6f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 49254
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "public_path": "research_corpus/Erdos257/problem/MersenneSubseriesRigidity.lean",
+      "source_sha256": "11b77a30e74ab9f9d1910f981fe50697dacc6ba784ebacc25a920ab61a50085a",
+      "published_sha256": "11b77a30e74ab9f9d1910f981fe50697dacc6ba784ebacc25a920ab61a50085a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 18104
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/PrimeSlackTwoValued.lean",
+      "public_path": "research_corpus/Erdos257/problem/PrimeSlackTwoValued.lean",
+      "source_sha256": "44e2efae79422f7838e564d43f787d0dadb008e29afe386c86fd3d5e4b972171",
+      "published_sha256": "44e2efae79422f7838e564d43f787d0dadb008e29afe386c86fd3d5e4b972171",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3782
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SelectedAncestryBudget.lean",
+      "public_path": "research_corpus/Erdos257/problem/SelectedAncestryBudget.lean",
+      "source_sha256": "ada245449436f9cce5e73a5e142424be1d9df3f0b04245a555702afe86b0c6f0",
+      "published_sha256": "ada245449436f9cce5e73a5e142424be1d9df3f0b04245a555702afe86b0c6f0",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 11533
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SelectedAncestryTailSurvival.lean",
+      "public_path": "research_corpus/Erdos257/problem/SelectedAncestryTailSurvival.lean",
+      "source_sha256": "47c415a23c3d154f2c8c0c69b915b0f834ebe7a96a75ce0efc82e6146a33a558",
+      "published_sha256": "47c415a23c3d154f2c8c0c69b915b0f834ebe7a96a75ce0efc82e6146a33a558",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 8726
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SocketRunRationalCap.lean",
+      "public_path": "research_corpus/Erdos257/problem/SocketRunRationalCap.lean",
+      "source_sha256": "12e8353fe6dfde93c8000b31e7952c5cccd9f9c421d7c9e9af2dec363deb9082",
+      "published_sha256": "12e8353fe6dfde93c8000b31e7952c5cccd9f9c421d7c9e9af2dec363deb9082",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4615
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TaoTeravainenIncidenceBoundary.md",
+      "public_path": "research_corpus/Erdos257/problem/TaoTeravainenIncidenceBoundary.md",
+      "source_sha256": "9ed2c6679baf2f4a18c2ef2bac5a6b34c48af414158880760c3039333a63c6df",
+      "published_sha256": "9ed2c6679baf2f4a18c2ef2bac5a6b34c48af414158880760c3039333a63c6df",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7198
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOnePrimorialRepair.lean",
+      "public_path": "research_corpus/Erdos257/problem/TwentyOnePrimorialRepair.lean",
+      "source_sha256": "f11ecc8eef4baa9ca39418802618c2b466862bb00bea559c9e6476516b034a75",
+      "published_sha256": "f11ecc8eef4baa9ca39418802618c2b466862bb00bea559c9e6476516b034a75",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 40868
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneSelectedDivisorHeightReduction.lean",
+      "public_path": "research_corpus/Erdos257/problem/TwentyOneSelectedDivisorHeightReduction.lean",
+      "source_sha256": "c7ac86963c034744f76d115ffcb4ebcd656ea1b36b2b66cf9075c52596a08d97",
+      "published_sha256": "c7ac86963c034744f76d115ffcb4ebcd656ea1b36b2b66cf9075c52596a08d97",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4532
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json",
+      "public_path": "research_corpus/Erdos257/problem/research_packet.json",
+      "source_sha256": "7614834f38f9a98cd13354c9acc9bb6850a760580a752d3b0853abcfc0bf53a7",
+      "published_sha256": "7614834f38f9a98cd13354c9acc9bb6850a760580a752d3b0853abcfc0bf53a7",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 318108
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/scripts/nested_height_alive_cylinder_probe.py",
+      "public_path": "research_corpus/Erdos257/problem/scripts/nested_height_alive_cylinder_probe.py",
+      "source_sha256": "bc82d0097ccda223117f1f2e3be46092943a4d1ad53062c67eb7f6de16b193df",
+      "published_sha256": "bc82d0097ccda223117f1f2e3be46092943a4d1ad53062c67eb7f6de16b193df",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 12720
     }
   ],
   "browser_frontier": {
     "path": "research_corpus/Erdos257/FRONTIER.md",
-    "sha256": "7f94c1963ac5279865fbbe8aa7fe5b17dda120b909f3d36ec0bd475abce15c25",
+    "sha256": "76c818731746eabcf55f3a545f9d8af9b8d62c099f0345bb3c7b79d51e0ebcc0",
     "source": "exported research_packet.json"
   }
 }

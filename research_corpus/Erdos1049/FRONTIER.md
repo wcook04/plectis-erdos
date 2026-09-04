@@ -27,7 +27,7 @@ A literal coordinatewise transfer of the integer-base congruence corridor forces
 
 Evidence/status: lean_checked
 
-- [RationalBaseLambert.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
+- [RationalBaseLambert.lean](problem/RationalBaseLambert.lean)
 
 claim_boundary: The result refutes only the literal coordinatewise corridor transfer at base 3/2. It does not rule out non-coordinatewise selector mechanisms, prove irrationality, or establish a cofinal q-Apery construction.
 
@@ -37,7 +37,7 @@ For every natural x at least 2, 3*x < 2^(x+1). This is the exact exponential-ver
 
 Evidence/status: lean_checked_arithmetic_producer_and_corridor_consumer
 
-- [RationalBaseLambert.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
+- [RationalBaseLambert.lean](problem/RationalBaseLambert.lean)
 
 claim_boundary: The theorem is an elementary arithmetic inequality and does not establish the q-Apery analytic estimate, a non-scalar recombination, or irrationality at base 3/2. Its downstream no-go rules out only the literal coordinatewise corridor route.
 
@@ -47,7 +47,7 @@ The exact denominator-cleared rational-base tail satisfies U_(N+1)=r U_N-B c_(N+
 
 Evidence/status: lean_checked
 
-- [RationalBaseLambert.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
+- [RationalBaseLambert.lean](problem/RationalBaseLambert.lean)
 
 claim_boundary: The recurrence is unconditional under the theorem's nonzero-r hypothesis; the 2^(N+1) lower bound additionally assumes natural s>=2, B>=1, and coeff(N+1)>=1. This is an exact denominator-clearing and forcing-growth result only: it does not prove irrationality at 3/2, supply rational-base asymptotics, or show that the forcing term cannot be canceled by a separate analytic argument.
 
@@ -57,7 +57,7 @@ At q=7/2, Lean checks both the literal Bundschuh--Vaananen Archimedean height co
 
 Evidence/status: external_theorem_with_lean_checked_parameter_specialization
 
-- [RationalBaseLambert.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
+- [RationalBaseLambert.lean](problem/RationalBaseLambert.lean)
 
 claim_boundary: The five named Lean declarations prove the 7/2 numerical admission condition in source-facing and transformed forms. The external analytic irrationality theorem, its inherited hypotheses, and the implication from this admission condition remain source-backed rather than kernel-internal; this row does not extend the theorem to 3/2 or unrestricted rational bases.
 
@@ -67,7 +67,7 @@ The exact integer comparison 2^18 < 7^7, logarithmic consequence log(2)/log(7) <
 
 Evidence/status: lean_checked_arithmetic_certificate
 
-- [RationalBaseLambert.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
+- [RationalBaseLambert.lean](problem/RationalBaseLambert.lean)
 
 claim_boundary: The six named declarations prove the elementary power comparison, logarithmic estimate, pi-margin inequality, height-region membership, and source-facing numerical admission condition at 7/2. They do not formalize or reprove the external Bundschuh--Vaananen irrationality theorem or inherited hypotheses, nor establish irrationality for 3/2 or unrestricted rational bases.
 
@@ -84,7 +84,7 @@ After doubling exponents, every P-summand denominator exponent is bounded by 3n^
 
 Evidence/status: lean_checked
 
-- [RationalPadeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean)
+- [RationalPadeArithmetic.lean](problem/RationalPadeArithmetic.lean)
 
 claim_boundary: The Lean declarations prove the stated denominator-exponent inequalities for the packet's integer-indexed Pade expressions. They do not prove convergence, irrationality, optimality of the bound, or the full rational-base Pade construction.
 
@@ -94,7 +94,7 @@ When both Padé errors are positive, either alternating sign pattern on the firs
 
 Evidence/status: lean_checked_sign_consumer
 
-- [RationalPadeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean)
+- [RationalPadeArithmetic.lean](problem/RationalPadeArithmetic.lean)
 
 claim_boundary: The sign consumers apply only to the displayed integer coefficient signs and positive-error assumptions. They do not establish those assumptions for the full q-Apery/Zudilin family, quantify determinant height or local divisibility, control the analytic remainder, or prove irrationality at base 3/2.
 
@@ -151,7 +151,7 @@ The elementary integer comparison 31²<4⁵ yields the strict logarithmic lower 
 
 Evidence/status: lean_checked_elementary_height_boundary
 
-- [ZudilinHeightRegion.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean)
+- [ZudilinHeightRegion.lean](problem/ZudilinHeightRegion.lean)
 
 claim_boundary: Only this finite logarithmic inequality is formalized; it is not a published Zudilin rational-base theorem, does not prove membership in the analytic height region by itself, and says nothing about irrationality of the associated Lambert value.
 
@@ -161,7 +161,7 @@ The old Bundschuh--Vaananen margin satisfies 1/2 - 1/pi^2 < 2/5. The exact stric
 
 Evidence/status: lean_checked_height_margin_consumer
 
-- [ZudilinHeightRegion.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean)
+- [ZudilinHeightRegion.lean](problem/ZudilinHeightRegion.lean)
 
 claim_boundary: This theorem only compares the elementary pi margin with 2/5. It does not establish the external Bundschuh--Vaananen irrationality theorem, membership for a rational base, a Padé height estimate, or irrationality at base 3/2.
 
@@ -171,7 +171,7 @@ The rational base 31/4 lies outside the older Bundschuh–Väänänen height reg
 
 Evidence/status: lean_checked_method_boundary_consumer
 
-- [ZudilinHeightRegion.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean)
+- [ZudilinHeightRegion.lean](problem/ZudilinHeightRegion.lean)
 
 claim_boundary: The exclusion only says that the older analytic criterion cannot be applied at 31/4. It does not prove rationality or irrationality of the associated Lambert value, and it does not invalidate the separately recorded newer 81/200 parameter contour or its external asymptotic dependencies.
 
@@ -181,7 +181,7 @@ For every r>=1, the logarithmic height ratio of (31/4)^r is exactly reduced to t
 
 Evidence/status: ordinary_theorem_citing_zudilin_2004_lemmas_with_lean_checked_contour_membership_of_all_powers
 
-- [ZudilinHeightRegion.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean)
+- [ZudilinHeightRegion.lean](problem/ZudilinHeightRegion.lean)
 
 claim_boundary: The named Lean declarations prove the parameter facts (power comparison, ratio cutoff, region membership, power invariance). They do not formalize the analytic steps of the region theorem; the irrationality of F((31/4)^r) is an ordinary theorem citing Zudilin 2004 Lemma 7 (with Lemmas 3, 4's (16), 5 and identity (9)-(11); Lemmas 1-2 not needed) (see zudilin_rational_base_region_theorem), not a kernel-checked statement.
 
@@ -191,7 +191,7 @@ Exact arithmetic proves 3^81<2^200 and hence 81/200<log(2)/log(3). Therefore the
 
 Evidence/status: lean_checked_source_boundary
 
-- [ZudilinHeightRegion.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinHeightRegion.lean)
+- [ZudilinHeightRegion.lean](problem/ZudilinHeightRegion.lean)
 
 claim_boundary: The cited Lean declarations prove the exact power comparison, logarithmic ratio inequalities, and membership or exclusion predicates encoded in this source. They do not prove the external analytic irrationality theorem, the published attribution beyond the packet's recorded statement, or irrationality of the base-3/2 Lambert value.
 
@@ -201,7 +201,7 @@ Lean proves 3^41<2^65, the exact integer certificate underlying the #1049 logari
 
 Evidence/status: lean_checked_upper_power_certificate
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: Only the integer power comparison is formalized; it does not prove the logarithmic consequence independently, an analytic height theorem, or irrationality of the base-3/2 Lambert value.
 
@@ -211,7 +211,7 @@ Lean proves 2^64<3^41, recording that the exponent 65 in the companion upper cer
 
 Evidence/status: lean_checked_sharpness_boundary
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: Only the integer power comparison is formalized; it does not prove a logarithmic lower bound, an analytic height theorem, or irrationality of the base-3/2 Lambert value.
 
@@ -221,7 +221,7 @@ Lean proves log(3)/log(2)<65/41 from the exact integer certificate 3^41<2^65. Th
 
 Evidence/status: lean_checked_sharp_ratio_upper_bound
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: Only the logarithmic arithmetic inequality; no analytic height theorem, approximating forms, or irrationality conclusion.
 
@@ -231,7 +231,7 @@ From the sharp upper certificate log(3)/log(2)<65/41, Lean derives the reciproca
 
 Evidence/status: lean_checked_reciprocal_ratio_bridge
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: This is only a reciprocal logarithmic inequality. It does not prove the analytic height theorem, an irrationality result, or any statement about the existence or decay of approximating forms.
 
@@ -241,7 +241,7 @@ Lean proves the explicit quantitative separation (3/13) < log(2)/log(3) - (1/2 -
 
 Evidence/status: lean_checked_quantitative_published_frontier_gap
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: This is only an exact arithmetic gap statement relative to the named published frontier. It does not reprove the external Bundschuh–Väänänen analytic theorem, establish a rational-base irrationality conclusion, or rule out nonrectangular, higher-rank, or different integral constructions.
 
@@ -251,7 +251,7 @@ Lean proves the exact charge ceiling ((log 3/log 2)-1)/3 < 8/41. This is the rat
 
 Evidence/status: lean_checked_quantitative_hankel_consumer
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: This is only an exact arithmetic threshold comparison. It does not prove a Hankel determinant construction, any divisibility or cancellation at the required charge, an analytic irrationality theorem, or irrationality of the base-3/2 Lambert value.
 
@@ -261,7 +261,7 @@ For every rho>=0 and sigma>=1+rho, the standard rectangular simultaneous two-fun
 
 Evidence/status: lean_checked_and_strengthened
 
-- [HermitePadeNoGo.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/HermitePadeNoGo.lean)
+- [HermitePadeNoGo.lean](problem/HermitePadeNoGo.lean)
 
 claim_boundary: The five named declarations prove the exact inequalities and equality characterization for the explicit rectangular Hermite-Pade exponent model defined in the cited Lean source, with no upper bound on rho. They do not construct approximating polynomials or remainders, prove that every rational-base method has this model, supply an analytic irrationality theorem, or decide the arithmetic nature of the Lambert value at 3/2.
 
@@ -271,7 +271,7 @@ For every rectangular Hermite-Pade parameter pair rho,sigma with 0<=rho and 1+rh
 
 Evidence/status: lean_checked_quantitative_rectangular_consumer
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: This is a conditional quantitative no-go for the named rectangular threshold. It does not prove the external analytic theorem, construct an irrationality form, address nonrectangular or higher-rank systems, or establish irrationality of the base-3/2 Lambert value.
 
@@ -281,7 +281,7 @@ The returned all-n formulas assert (v3(U_n),v3(V_n))=(2n^2,0), (v2(U_n),v2(V_n))
 
 Evidence/status: advisory_all_n_valuation_claim_with_lean_checked_abstract_exterior_core_and_exact_low_index_reproduction
 
-- [RationalPadeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean)
+- [RationalPadeArithmetic.lean](problem/RationalPadeArithmetic.lean)
 
 claim_boundary: The cited Lean declarations prove the algebraic determinant/error identity, content and common-divisor transfer, and sign-based nonvanishing under their explicit hypotheses. They do not prove the asserted all-n 2-adic or 3-adic valuation formulas, the Zudilin valuation inputs, the exact low-index Fraction computations, or irrationality of the #1049 Lambert value.
 
@@ -291,7 +291,7 @@ For Delta=U_n V_m-U_m V_n and L_j=U_j S-V_j, Lean proves Delta=U_m L_n-U_n L_m. 
 
 Evidence/status: lean_checked
 
-- [RationalPadeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean)
+- [RationalPadeArithmetic.lean](problem/RationalPadeArithmetic.lean)
 
 claim_boundary: The five named declarations prove the exact determinant/error identity, common-divisor transfer, and sign-based nonvanishing under their displayed integer and positive-error hypotheses. They do not establish the all-index Pade error signs, the returned 2-adic or 3-adic valuation formulas, any determinant height gain, the analytic irrationality estimate, or irrationality of the #1049 Lambert value.
 
@@ -301,7 +301,7 @@ Rowwise multiplication of a Pade coefficient pair scales its analytic error by e
 
 Evidence/status: lean_checked
 
-- [RationalPadeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean)
+- [RationalPadeArithmetic.lean](problem/RationalPadeArithmetic.lean)
 
 claim_boundary: The named declarations establish the exact row-content and exterior-determinant factorisations together with the stated base-point 2-adic/3-adic obstruction. They do not provide the missing uniform determinant lower bound, an irrationality proof for Erdős #1049, or a conclusion for arbitrary Pade families beyond the explicit hypotheses.
 
@@ -318,7 +318,7 @@ Lean proves the doubled normalizing exponent, the exact bottom exponent 2(a2-a1)
 
 Evidence/status: lean_checked_with_exact_finite_enumeration
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The Lean declarations prove the endpoint exponent identities and strict first-difference formulas under the explicit source-cone hypotheses, with the finite verifier covering 750 tuples. They do not prove the full irrationality argument, the analytic approximation estimates, or that the cone hypotheses hold for every homogenized Pade family.
 
@@ -335,7 +335,7 @@ For any n integral coefficient pairs, the exact target of the two bottom 3-adic 
 
 Evidence/status: lean_checked_abstract_kernel_existence
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The three named declarations prove the exact finite four-jet signature cardinality and the resulting binary-selector collision under the stated rank inequality, yielding a nonzero {-1,0,1} endpoint-jet annihilator. They do not prove the threshold is optimal, show the annihilator avoids the coefficient-pair or analytic-remainder nullspace, construct a full Padé/Zudilin method, or establish irrationality at 3/2.
 
@@ -345,7 +345,7 @@ For a finite family of pairs over a finite commutative ring, if an anchor pair h
 
 Evidence/status: lean_checked_binary_collision_kernel_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on finite commutative-ring and finite-index instances, IsCoprime anchor coordinates, vanishing anchor minors, and the explicit cardinality inequality. It does not show that an actual q-Apery or Padé family supplies these hypotheses, identify a nonzero selector difference outside the polynomial-pair or analytic-remainder nullspace, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -355,7 +355,7 @@ For a finite family of pairs over a commutative ring, if an anchor pair has copr
 
 Evidence/status: lean_checked_anchor_minor_propagation_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on IsCoprime anchor coordinates and the explicit vanishing of every anchor minor. It does not show that an actual q-Apery or Padé family supplies such an anchor, produce the modular cardinality inequality for a selector collision, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -365,7 +365,7 @@ Let N be nonzero, let a finite row family w map into (ZMod N)², and suppose the
 
 Evidence/status: lean_checked_anchor_determinant_collision_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on a nonzero modulus, finite decidable row indices, a unit anchor coordinate, vanishing anchor minors, and the explicit cardinality inequality. It does not prove that an actual q-Apery or Padé row family supplies such an anchor or vanishing minors, control the real analytic remainder of the resulting selector difference, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -375,7 +375,7 @@ If an integer common multiplier divides both homogeneous evaluations at (3,2), w
 
 Evidence/status: lean_checked_abstract_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: This theorem rules out only a shared scalar factor supported at 2 or 3 under its explicit endpoint hypotheses. It does not establish those hypotheses for every #1049 Padé/Zudilin pair, control non-scalar recombinations, supply the analytic remainder estimate, or prove irrationality at base 3/2.
 
@@ -385,7 +385,7 @@ For coprime natural coordinates a and b, a polynomial with unit constant and top
 
 Evidence/status: lean_checked_general_endpoint_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The result is conditional on coprime coordinates and both unit endpoint coefficients. It does not prove those endpoint hypotheses for every #1049 Padé/Zudilin row, control non-scalar recombinations or analytic remainders, or establish irrationality at base 3/2.
 
@@ -395,7 +395,7 @@ For coprime natural coordinates a and b, a unit constant coefficient makes the h
 
 Evidence/status: lean_checked_numerator_endpoint_coprimality_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The result is conditional on a.Coprime b and P.coeff 0 being 1 or -1. It does not establish the endpoint hypothesis for a Padé/Zudilin construction, control the denominator endpoint or non-scalar recombinations, provide an analytic remainder estimate, or prove irrationality at base 3/2.
 
@@ -405,7 +405,7 @@ For coprime natural coordinates a and b, a unit top coefficient makes the homoge
 
 Evidence/status: lean_checked_denominator_endpoint_coprimality_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The result is conditional on a.Coprime b and P.coeff W being 1 or -1. It does not establish the endpoint hypothesis for a Padé/Zudilin construction, control the numerator endpoint or non-scalar recombinations, provide an analytic remainder estimate, or prove irrationality at base 3/2.
 
@@ -415,7 +415,7 @@ For every width W and integer polynomial P whose constant coefficient is 1 or -1
 
 Evidence/status: lean_checked_three_adic_endpoint_obstruction_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The result is conditional on the declared constant coefficient being 1 or -1. It does not establish that endpoint condition for a Padé/Zudilin coefficient polynomial, control divisibility by 2 or higher 3-adic valuations, prove a determinant-specific gain, supply an analytic remainder estimate, or prove irrationality at base 3/2.
 
@@ -425,7 +425,7 @@ For every width W and integer polynomial P whose coefficient at W is 1 or -1, th
 
 Evidence/status: lean_checked_two_adic_endpoint_obstruction_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The result is conditional on the declared top coefficient being 1 or -1. It does not establish that endpoint condition for a Padé/Zudilin coefficient polynomial, control divisibility by 3 or higher 2-adic valuations, prove a determinant-specific gain, supply an analytic remainder estimate, or prove irrationality at base 3/2.
 
@@ -435,7 +435,7 @@ For any width W and integer polynomials U and V, if U has top coefficient 1 or -
 
 Evidence/status: lean_checked_two_adic_pair_obstruction_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The result is conditional on the left polynomial's declared top coefficient being 1 or -1. It does not establish that endpoint condition for an actual Padé or q-Apery pair, exclude common divisibility by 3, control higher 2-adic valuations or determinant-specific gain, supply an analytic remainder estimate, or prove irrationality at base 3/2.
 
@@ -445,7 +445,7 @@ For any width W and integer polynomials U and V, if V has constant coefficient 1
 
 Evidence/status: lean_checked_three_adic_pair_obstruction_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The result is conditional on the right polynomial's declared constant coefficient being 1 or -1. It does not establish that endpoint condition for an actual Padé or q-Apery pair, exclude common divisibility by 2, control higher 3-adic valuations or determinant-specific gain, supply an analytic remainder estimate, or prove irrationality at base 3/2.
 
@@ -455,7 +455,7 @@ For natural a, b, and W and every integer polynomial P, homogeneous evaluation a
 
 Evidence/status: lean_checked_modular_endpoint_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: This is an exact modular identity for the abstract homogeneous evaluation. It does not construct the #1049 Padé/Zudilin coefficient polynomials, establish endpoint-unit hypotheses for them, control non-scalar recombinations or analytic remainders, or prove irrationality at base 3/2.
 
@@ -465,7 +465,7 @@ For natural a, b, and W and every integer polynomial P, homogeneous evaluation a
 
 Evidence/status: lean_checked_modular_endpoint_consumer
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: This is an exact modular identity for the abstract homogeneous evaluation. It does not construct the #1049 Padé/Zudilin coefficient polynomials, establish endpoint-unit hypotheses for them, control non-scalar recombinations or analytic remainders, or prove irrationality at base 3/2.
 
@@ -475,7 +475,7 @@ Lean proves that a lower irrationality-exponent bound 2<=mu and a source upper b
 
 Evidence/status: source_backed_parameter_input_with_lean_checked_implication
 
-- [ZudilinConeArithmetic.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean)
+- [ZudilinConeArithmetic.lean](problem/ZudilinConeArithmetic.lean)
 
 claim_boundary: The two named declarations prove only the scalar implication from the displayed exponent assumptions and the resulting negative margin. They do not formalize the primary-paper cone input, unit-endpoint hypotheses for actual homogenized forms, or irrationality of the 3/2 Lambert value.
 
@@ -485,7 +485,7 @@ For real C₀,C₁ with 0<C₀ and 2C₀≤C₁, Lean proves the quantitative sc
 
 Evidence/status: lean_checked_scalar_consumer
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: This is only the conditional scalar inequality. It does not prove that an arbitrary #1049 homogenized pair lies in this cone, establish the source-side irrationality-exponent bound or endpoint hypotheses, analyze non-scalar recombinations, or prove irrationality at base 3/2.
 
@@ -565,7 +565,7 @@ For finite types ι and α, any map from Boolean selectors on ι into α has two
 
 Evidence/status: lean_checked_binary_pigeonhole_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on finite selector and codomain types and the explicit cardinality inequality. It does not construct the relevant q-Apery or Padé selector map, prove that a modular tail has the required image bound, identify a selector difference outside the polynomial-pair or analytic-remainder nullspace, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -575,7 +575,7 @@ For a coprime anchor pair (a,b) in a commutative ring, any pair (x,y) whose exte
 
 Evidence/status: lean_checked_scalar_witness_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on the coprimality witness and the single determinant equation. It does not prove that a particular q-Apery or Padé anchor is coprime, establish source recurrence or modular unit hypotheses, propagate one determinant condition across a sequence, produce a selector collision or identify a selector difference outside the polynomial-pair or analytic-remainder nullspace, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -585,7 +585,7 @@ In a commutative ring, if a is a unit then a and b are coprime for every b. The 
 
 Evidence/status: lean_checked_unit_coprimality_anchor_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on a commutative ring and IsUnit a. It does not prove that a particular q-Apery or Padé coordinate is a unit, establish the source recurrence or modular denominator-channel hypotheses, imply any determinant vanishing or selector collision, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -595,7 +595,7 @@ For a sequence of pairs in a commutative ring whose second coordinates are units
 
 Evidence/status: lean_checked_adjacent_to_tail_propagation_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on a commutative ring, unit second coordinates at every index, and all-index adjacent-minor vanishing. It does not prove that an actual q-Apery or Padé tail supplies those hypotheses at every start, establish the modular unit facts from the source recurrence, produce a selector collision or identify a selector difference outside the polynomial-pair or analytic-remainder nullspace, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -605,7 +605,7 @@ For a nonzero modulus N, a sequence of modular row pairs whose second coordinate
 
 Evidence/status: lean_checked_tail_pair_propagation_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on the nonzero modulus, unit second coordinates, and all-index adjacent-minor vanishing. It does not prove that an actual q-Apery or Padé tail supplies those hypotheses at every start, produce a selector collision or identify a selector difference outside the polynomial-pair or analytic-remainder nullspace, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -615,7 +615,7 @@ For a nonzero modulus N, a sequence of modular row pairs whose second coordinate
 
 Evidence/status: lean_checked_adjacent_tail_collision_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on the nonzero modulus, unit second coordinates, all-index adjacent-minor vanishing, and the explicit N<2^k inequality. It does not prove that an actual q-Apery or Padé tail supplies those hypotheses at every start, identify a selector difference outside the polynomial-pair or analytic-remainder nullspace, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -625,7 +625,7 @@ For a nonzero modulus 2^S 3^R with R>0, a sequence of modular row pairs whose se
 
 Evidence/status: lean_checked_two_three_depth_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: The result is conditional on the nonzero modulus, unit second coordinates, all-index adjacent-minor vanishing, positive R, and the explicit width inequality. It does not prove that an actual q-Apery or Padé tail supplies those hypotheses at every start, identify a selector difference outside the polynomial-pair or analytic-remainder nullspace, control the real analytic remainder, establish an all-start quantitative construction, or prove irrationality at base 3/2.
 
@@ -635,7 +635,7 @@ In any commutative ring, if the second coordinate b of a pair (a,b) is a unit, t
 
 Evidence/status: lean_checked_unit_right_coprime_consumer
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: This is only a commutative-ring coprimality interface. It does not prove that an actual q-Apéry or Padé tail has unit second coordinates, establish adjacent-minor vanishing, propagate a tail, produce a selector collision, control the analytic remainder, or prove irrationality at base 3/2.
 
@@ -645,7 +645,7 @@ Deleting the early q-Apery anchors changes the mechanism rather than merely the 
 
 Evidence/status: exact_finite_family_wide_opening_with_lean_checked_propagation_interface
 
-- [BezoutPluckerJets.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/BezoutPluckerJets.lean)
+- [BezoutPluckerJets.lean](problem/BezoutPluckerJets.lean)
 
 claim_boundary: This is a finite source-family and modular-algebra opening, not the irrationality proof. It is conditional on the recorded q-Apéry Casoratian, clearing-unit, primitive-denominator, and all-index depth facts; it leaves all-start quantitative control, analytic remainder separation for every start, and irrationality at base 3/2 unresolved.
 
@@ -690,7 +690,7 @@ For primitive q-Apery rows through index 255, the finite-tail denominator-coordi
 
 Evidence/status: exact_finite_source_arithmetic_with_lean_checked_rational_gap_consumer
 
-- [QAperyTailDenominator.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominator.lean)
+- [QAperyTailDenominator.lean](problem/QAperyTailDenominator.lean)
 
 claim_boundary: The prime-power theorem is conditional on the explicit prime-power support, numerator nondivisibility, and denominator nondivisibility premises; it does not supply a cofinal moving-window theorem or close irrationality.
 
@@ -743,7 +743,7 @@ The step-1 predicate named by QAperyTailDenominatorLab - supply, for cofinally m
 
 Evidence/status: exact_finite_evaluation_of_the_named_step_one_predicate
 
-- [erdos1049_window_divisor_supply.py](formal_math/probes/erdos1049_window_divisor_supply.py)
+- [erdos1049_window_divisor_supply.py](probes/erdos1049_window_divisor_supply.py)
 
 ### fixed_prime_infinite_tail_closes_step_one
 
@@ -751,7 +751,7 @@ Under the all-level monodromy premise (M), Step 1 of three_halves_pade_height_ga
 
 Evidence/status: conditional_chain_monodromy_premise_certified_only_to_level_three
 
-- [erdos1049_fixed_prime_infinite_tail.py](formal_math/probes/erdos1049_fixed_prime_infinite_tail.py)
+- [erdos1049_fixed_prime_infinite_tail.py](probes/erdos1049_fixed_prime_infinite_tail.py)
 
 ### rank_budget_law_for_rational_bases
 
@@ -759,7 +759,7 @@ Under the explicitly assumed generic type-I decay, homogenisation, clearing, int
 
 Evidence/status: derived_budget_law_validated_against_the_recorded_rank_two_threshold
 
-- [erdos1049_rank_budget_law.py](formal_math/probes/erdos1049_rank_budget_law.py)
+- [erdos1049_rank_budget_law.py](probes/erdos1049_rank_budget_law.py)
 
 ### four_jet_power_certificate_compiler
 
@@ -767,7 +767,7 @@ For any certified power inequality 3^p<2^q, positive repetition depth T, and ran
 
 Evidence/status: lean_checked_general_power_certificate_consumer
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: This is only a finite pigeonhole consumer. It does not instantiate the analytic remainder map, prove a bounded remainder-fibre estimate, supply a cofinal selector family, or establish irrationality for the open three-halves problem.
 
@@ -777,7 +777,7 @@ For positive repetition depth T and selector-side depth S, whenever 130*T+2*S≤
 
 Evidence/status: lean_checked_rank_41_selector_threshold
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: Only the finite selector-pigeonhole specialization is formalized; it does not supply analytic remainder separation, a cofinal selector family, or irrationality of the open three-halves Lambert value.
 
@@ -787,7 +787,7 @@ For every selector-side depth S, 2^(129+2S) is strictly smaller than the four-je
 
 Evidence/status: lean_checked_exact_counting_boundary
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: The declaration proves only the finite cardinality threshold and its one-row optimality. It does not supply the bounded-fibre estimate needed to separate the analytic remainder, nor any cofinal construction or conclusion for the open 3/2 case.
 
@@ -797,7 +797,7 @@ For finite selector domain α, jet-signature codomain β, and analytic-remainder
 
 Evidence/status: lean_checked_abstract_finite_consumer
 
-- [AdelicHeightBridge.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean)
+- [AdelicHeightBridge.lean](problem/AdelicHeightBridge.lean)
 
 claim_boundary: The declaration is only an abstract finite counting implication. It does not instantiate f as the four-jet map, prove any uniform remainder-fibre bound k, supply a cofinal selector family, or establish an irrationality conclusion for the open 3/2 problem.
 

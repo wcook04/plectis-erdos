@@ -13,9 +13,9 @@ For every n>=2, the free-point inequality FP_(n-1) implies Conjecture (S)_n: if 
 
 Evidence/status: ordinary_exact_all_degree_fp_to_separatrix_aggregate_bridge_with_green_deterministic_checker;_lean_scalar_kernel_elaboration_capacity_deferred
 
-- [FreePointTorusPshReduction.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointTorusPshReduction.md)
-- [FreePointTorusPshReduction.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointTorusPshReduction.lean)
-- [check_erdos1041_free_point_torus_psh_reduction.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_free_point_torus_psh_reduction.py)
+- [FreePointTorusPshReduction.md](problem/FreePointTorusPshReduction.md)
+- [FreePointTorusPshReduction.lean](problem/FreePointTorusPshReduction.lean)
+- [check_erdos1041_free_point_torus_psh_reduction.py](problem/scripts/check_erdos1041_free_point_torus_psh_reduction.py)
 
 claim_boundary: The bridge is an ordinary exact analytic theorem. The Lean companion checks only its scalar exponent-conversion fan-in and remains pending focused elaboration; it does not formalize psh removability or the torus polynomial identity. The equality converse is not claimed. FP_m remains open for m>=5, Conjecture (S) does not imply the parent, and unrestricted Erdos 1041 remains open. No novelty or literature-priority claim is made.
 
@@ -27,9 +27,9 @@ Evidence/status: ordinary_exact_complete_fp4_theorem_with_deterministic_checker;
 
 Superseded by **weighted_quadratic_free_point_all_degrees**. Use that stronger result.
 
-- [FreePointZeroInsertionFP4Matching.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointZeroInsertionFP4Matching.md)
-- [FreePointFP4Complete.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointFP4Complete.lean)
-- [check_erdos1041_free_point_zero_insertion_fp4.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
+- [FreePointZeroInsertionFP4Matching.md](problem/FreePointZeroInsertionFP4Matching.md)
+- [FreePointFP4Complete.lean](problem/FreePointFP4Complete.lean)
+- [check_erdos1041_free_point_zero_insertion_fp4.py](problem/scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
 
 ### fp_all_degrees_central_radius_2026_08_30
 
@@ -39,8 +39,8 @@ Evidence/status: ordinary_exact_all_degree_rowwise_adaptive_free_point_theorem_w
 
 Superseded by **weighted_quadratic_free_point_all_degrees**. Use that stronger result.
 
-- [FreePointZeroInsertionFP4Matching.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointZeroInsertionFP4Matching.md)
-- [check_erdos1041_free_point_zero_insertion_fp4.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
+- [FreePointZeroInsertionFP4Matching.md](problem/FreePointZeroInsertionFP4Matching.md)
+- [check_erdos1041_free_point_zero_insertion_fp4.py](problem/scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
 
 ### fp4_matching_stratum_2026_08_30
 
@@ -48,8 +48,8 @@ Let x_i=1-|c_i|^2, d_ij=|1-conj(c_i)c_j|, and T_i=(x_i product_(k ne i)d_ik)^(1/
 
 Evidence/status: ordinary_exact_fp4_subcase_with_symbolic_and_rational_checker
 
-- [FreePointZeroInsertionFP4Matching.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointZeroInsertionFP4Matching.md)
-- [check_erdos1041_free_point_zero_insertion_fp4.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
+- [FreePointZeroInsertionFP4Matching.md](problem/FreePointZeroInsertionFP4Matching.md)
+- [check_erdos1041_free_point_zero_insertion_fp4.py](problem/scripts/check_erdos1041_free_point_zero_insertion_fp4.py)
 
 ### first_critical_pair_energy_cone_no_go_2026_08_27
 
@@ -57,8 +57,8 @@ The returned first-critical pair-energy cone inequality is false already for the
 
 Evidence/status: exact_gaussian_rational_cubic_counterexample_with_rouche_root_certificate
 
-- [FirstCriticalPairEnergyNoGo20260827.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstCriticalPairEnergyNoGo20260827.md)
-- [check_erdos1041_first_critical_pair_energy_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_first_critical_pair_energy_no_go.py)
+- [FirstCriticalPairEnergyNoGo20260827.md](problem/FirstCriticalPairEnergyNoGo20260827.md)
+- [check_erdos1041_first_critical_pair_energy_no_go.py](problem/scripts/check_erdos1041_first_critical_pair_energy_no_go.py)
 
 ### orlicz_antichain_gram_pareto_selector_2026_08_26
 
@@ -66,8 +66,8 @@ For a k-root component, let U be the exact union of roots contaminated by an anc
 
 Evidence/status: ordinary_exact_overlap_sensitive_two_tier_strengthening_with_55053_row_rational_replay;_lean_elaboration_pending_low_disk_firewall
 
-- [OrliczAntichainGramParetoSelector20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OrliczAntichainGramParetoSelector20260826.md)
-- [check_erdos1041_orlicz_antichain_gram_pareto_selector.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_orlicz_antichain_gram_pareto_selector.py)
+- [OrliczAntichainGramParetoSelector20260826.md](problem/OrliczAntichainGramParetoSelector20260826.md)
+- [check_erdos1041_orlicz_antichain_gram_pareto_selector.py](problem/scripts/check_erdos1041_orlicz_antichain_gram_pareto_selector.py)
 
 ### cassini_nine_tenths_quantitative_tree_budget_slack
 
@@ -75,7 +75,7 @@ At the rational witness a=9/10, the Cassini elementary majorant misses the two-r
 
 Evidence/status: lean_checked_quantitative_refutation_consumer
 
-- [CassiniTreeBudget.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CassiniTreeBudget.lean)
+- [CassiniTreeBudget.lean](problem/CassiniTreeBudget.lean)
 
 claim_boundary: This is a single-witness quantitative refutation of the uniform tree-budget assertion. It does not prove the unrestricted Erdos 1041 claim, establish the replacement hub inequality, or transfer the slack to arbitrary root configurations without the separate geometric hypotheses.
 
@@ -85,7 +85,7 @@ For every real a>4/5, the Cassini elementary coarea majorant 4(sqrt(a^2+a)-a) is
 
 Evidence/status: lean_checked_family_refutation_consumer
 
-- [CassiniTreeBudget.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CassiniTreeBudget.lean)
+- [CassiniTreeBudget.lean](problem/CassiniTreeBudget.lean)
 
 claim_boundary: This is a family-wide refutation of the displayed Cassini tree-budget bound. It does not prove the unrestricted Erdos 1041 theorem, supply the replacement hub inequality, or transfer the slack to arbitrary root configurations without the separate geometric hypotheses.
 
@@ -95,7 +95,7 @@ For five nonnegative distances with square-sum below 5, at least one of the ten 
 
 Evidence/status: lean_checked_centroid_selector
 
-- [CentroidHubBudget.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidHubBudget.lean)
+- [CentroidHubBudget.lean](problem/CentroidHubBudget.lean)
 
 claim_boundary: The lemma is only a scalar five-distance selector. It does not supply the geometric hypotheses that produce the five distances, prove the unrestricted Erdos 1041 hub inequality, or close the remaining attachment/critical-level allocation problem.
 
@@ -105,8 +105,8 @@ For F_(n,r)(z)=z^n-r^(n-1)z, one Gram-exceptional central root carries fraction 
 
 Evidence/status: ordinary_exact_actual_polynomial_no_go_and_strengthened_survivor_local_selector_with_exact_checker;_lean_elaboration_pending_low_disk_firewall
 
-- [SparseDefectSurvivorSelector20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SparseDefectSurvivorSelector20260826.md)
-- [check_erdos1041_sparse_defect_survivor_selector.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sparse_defect_survivor_selector.py)
+- [SparseDefectSurvivorSelector20260826.md](problem/SparseDefectSurvivorSelector20260826.md)
+- [check_erdos1041_sparse_defect_survivor_selector.py](problem/scripts/check_erdos1041_sparse_defect_survivor_selector.py)
 
 ### six_return_joint_full_energy_charged_lifetime_and_sharp_gram
 
@@ -114,8 +114,8 @@ Six Type-B returns are reconciled against the current 1041 corpus. If no normali
 
 Evidence/status: ordinary_exact_joint_assimilation_with_two_strict_strengthenings_lean_checked_scalar_fanin_and_exact_replay
 
-- [SixReturnJointAssimilation20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SixReturnJointAssimilation20260826.md)
-- [check_erdos1041_six_return_joint_assimilation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_six_return_joint_assimilation.py)
+- [SixReturnJointAssimilation20260826.md](problem/SixReturnJointAssimilation20260826.md)
+- [check_erdos1041_six_return_joint_assimilation.py](problem/scripts/check_erdos1041_six_return_joint_assimilation.py)
 
 ### optimized_first_two_critical_level_bergman
 
@@ -123,8 +123,8 @@ Let the distinct-root monic degree-n polynomial have roots in the open unit disk
 
 Evidence/status: ordinary_exact_all_degree_sufficient_theorem_with_lean_checked_scalar_kernel_and_symbolic_replay
 
-- [FirstTwoCriticalOptimizedBergman.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstTwoCriticalOptimizedBergman.md)
-- [check_erdos1041_first_two_critical_optimized_bergman.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_first_two_critical_optimized_bergman.py)
+- [FirstTwoCriticalOptimizedBergman.md](problem/FirstTwoCriticalOptimizedBergman.md)
+- [check_erdos1041_first_two_critical_optimized_bergman.py](problem/scripts/check_erdos1041_first_two_critical_optimized_bergman.py)
 
 ### finite_near_fekete_transverse_cones
 
@@ -132,7 +132,7 @@ For every fixed constant-free transverse cone h(0)=0 with a quantitative nonzero
 
 Evidence/status: ordinary_analytic_finite_transverse_shell_with_formal_transfer
 
-- [NearFeketeTransverseClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.md)
+- [NearFeketeTransverseClosure.md](problem/NearFeketeTransverseClosure.md)
 
 ### eventually_pos_of_scaled_deficit_tendsto_pos
 
@@ -140,7 +140,7 @@ A positive limit of the scaled transverse deficit implies that the deficit is ev
 
 Evidence/status: lean_checked_eventual_sign_transfer
 
-- [NearFeketeTransverseClosure.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.lean)
+- [NearFeketeTransverseClosure.lean](problem/NearFeketeTransverseClosure.lean)
 
 claim_boundary: The theorem is an eventual sign-transfer implication under its explicit limit premise. It does not prove the complex asymptotic premise, branch convergence, tangent control, or unrestricted Erdos #1041.
 
@@ -150,7 +150,7 @@ A positive transverse deficit yields eventual path length strictly less than twi
 
 Evidence/status: lean_checked_eventual_length_transfer
 
-- [NearFeketeTransverseClosure.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.lean)
+- [NearFeketeTransverseClosure.lean](problem/NearFeketeTransverseClosure.lean)
 
 claim_boundary: The theorem is a checked eventual length-transfer implication under its explicit positive-deficit premise. It does not prove the premise, branch convergence, tangent control, or unrestricted Erdos #1041.
 
@@ -160,7 +160,7 @@ An eventually subunit enclosing radius combined with the preceding transfer give
 
 Evidence/status: lean_checked_eventual_open_disk_transfer
 
-- [NearFeketeTransverseClosure.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeTransverseClosure.lean)
+- [NearFeketeTransverseClosure.lean](problem/NearFeketeTransverseClosure.lean)
 
 claim_boundary: The theorem is only an eventual transfer from a subunit enclosing-radius premise to a strict length bound. It does not prove the premise, settle tangent directions or the bulk regime, or establish unrestricted Erdos #1041.
 
@@ -170,7 +170,7 @@ Away from a critical point, the complex Newton vector -f/f' cancels under the de
 
 Evidence/status: lean_checked
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 
 claim_boundary: The named declaration proves the local derivative identity and value ODE under its explicit differentiability and noncritical-point hypotheses. It does not prove global existence or uniqueness of a Newton trajectory, root-to-root branch selection, convex-hull invariance, an arclength bound, or unrestricted Erdős #1041.
 
@@ -180,7 +180,7 @@ Let K be the convex hull of the roots. At a supporting line, rotate the outward 
 
 Evidence/status: ordinary_analytic_proof_with_lean_checked_supporting_half_plane_and_boundary_rigidity
 
-- [NewtonConvexHullInvariance.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonConvexHullInvariance.md)
+- [NewtonConvexHullInvariance.md](problem/NewtonConvexHullInvariance.md)
 
 ### newton_flow_exponential_first_integral
 
@@ -188,7 +188,7 @@ Along a Newton-flow trajectory, exp(t)f(z(t)) has derivative zero. This is the d
 
 Evidence/status: lean_checked
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 
 claim_boundary: The named declaration proves the local first-integral derivative identity under its explicit differentiability and flow hypotheses. It does not prove global existence or uniqueness of a Newton trajectory, root-to-root branch selection, convex-hull invariance, an arclength bound, or unrestricted Erdős #1041.
 
@@ -198,7 +198,7 @@ Let f be monic of degree at least two, let Gamma join distinct roots, and let it
 
 Evidence/status: ordinary_transport_and_stretch_proofs_with_exact_binomial_boundary_and_bounded_probe
 
-- [NewtonFlowTransport.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowTransport.md)
+- [NewtonFlowTransport.md](problem/NewtonFlowTransport.md)
 - [erdos1041_newton_flow_transport.py](probes/erdos1041_newton_flow_transport.py)
 
 ### critical_value_ray_separation
@@ -207,7 +207,7 @@ The endpoints of any finite Newton-flow connection lie on the same oriented ray 
 
 Evidence/status: lean_checked_consumer
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 
 claim_boundary: The named declarations prove the same-positive-ray consequence for a finite Newton-flow connection under their explicit hypotheses, including the resulting no-connection statement for distinct positive rays. They do not prove existence or uniqueness of trajectories, cover all critical-value configurations, establish global branch selection, or imply the unrestricted Erdős #1041 length bound.
 
@@ -217,7 +217,7 @@ For distinct complex values a and b, every common translation beta for which a+b
 
 Evidence/status: lean_checked
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 
 claim_boundary: The named declaration proves the explicit one-real-parameter form of the common-translation locus for one distinct pair under its stated hypotheses. It does not by itself prove finite-family avoidance, perturbation stability, a global Newton-flow construction, or the unrestricted Erdős #1041 conclusion.
 
@@ -227,7 +227,7 @@ Every finite injective family of complex values admits an arbitrarily small comm
 
 Evidence/status: lean_checked
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 
 ### constant_perturbation_root_continuity
 
@@ -235,7 +235,7 @@ For a positive-degree monic split complex polynomial whose roots have norm at mo
 
 Evidence/status: lean_checked
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 
 ### critical_value_level_separation
 
@@ -243,7 +243,7 @@ Every finite injective complex family admits an arbitrarily small common transla
 
 Evidence/status: lean_checked
 
-- [LevelSeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/LevelSeparation.lean)
+- [LevelSeparation.lean](problem/LevelSeparation.lean)
 
 claim_boundary: The result is a finite-family translation-avoidance theorem. It does not establish that a polynomial perturbation preserves the required root geometry, prove a critical-point path-length bound, or close the unrestricted Erdos #1041 statement.
 
@@ -253,7 +253,7 @@ For the exact degree-five model F(z)=(z-r)(z-ir)(z+ir)(z-rω)(z-rω̄), with r=9
 
 Evidence/status: lean_checked_exact_counterexample
 
-- [CriticalTwoRootProximity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean)
+- [CriticalTwoRootProximity.lean](problem/CriticalTwoRootProximity.lean)
 
 claim_boundary: This is an exact mechanism counterexample to blanket fixed-spoke or star-shapedness completion from a logarithmic critical point. The two spokes toward ±ir remain safe, so it does not refute Erdos #1041, the existence of another root pair, or curved descending paths; it only forces the remaining argument to make a genuine branch or path selection.
 
@@ -263,7 +263,7 @@ For m∈ℕ and positive normalized distances a≤b with b≤m·a and a·b^m≤1
 
 Evidence/status: lean_checked_bernoulli_sharp_two_consumer
 
-- [CriticalTwoRootProximity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean)
+- [CriticalTwoRootProximity.lean](problem/CriticalTwoRootProximity.lean)
 
 claim_boundary: This is an elementary normalized-distance implication, not the global polynomial theorem by itself. It does not supply the critical-point hypotheses, identify actual roots, prove lemniscate containment of spokes or curved connectors, resolve branch selection, or close unrestricted Erdos #1041.
 
@@ -273,7 +273,7 @@ At a logarithmic critical point, if r is the positive geometric mean of the root
 
 Evidence/status: lean_checked_conditional
 
-- [CriticalTwoRootProximity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean)
+- [CriticalTwoRootProximity.lean](problem/CriticalTwoRootProximity.lean)
 
 ### global_disk_inverse_balance_budget_consumer
 
@@ -281,7 +281,7 @@ For real parameters N,t,δ,e with N≥2, t<1, 0<δ≤e≤1+t, δ≤1, e≤(N−1
 
 Evidence/status: lean_checked_global_disk_inverse_balance_consumer
 
-- [CriticalTwoRootProximity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean)
+- [CriticalTwoRootProximity.lean](problem/CriticalTwoRootProximity.lean)
 
 claim_boundary: This is the algebraic core of the global metric budget, not a proof of the unrestricted Erdos #1041 path theorem. It does not supply the polynomial-to-hypothesis instantiation, put the selected spokes or any replacement connector inside the lemniscate, or resolve branch selection and curved-path geometry; the packet's open containment boundary remains unchanged.
 
@@ -298,7 +298,7 @@ The legacy quartic score 2.0068 was a branch-tracking error, not a counterexampl
 
 Evidence/status: exact_root_recovery_with_residual_gated_numerical_regression
 
-- [check_legacy_minimum_critical_descent_regression.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_legacy_minimum_critical_descent_regression.py)
+- [check_legacy_minimum_critical_descent_regression.py](problem/scripts/check_legacy_minimum_critical_descent_regression.py)
 
 ### cubic_minimal_critical_value_short_hub
 
@@ -334,8 +334,8 @@ For every n >= 2 and every nonzero a with |a|<1, two adjacent roots of z^n-a hav
 
 Evidence/status: ordinary_complete_all_degree_binomial_subfamily_proof_with_bounded_exact_replay
 
-- [CrossingChordUpperBound.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CrossingChordUpperBound.md)
-- [check_erdos1041_crossing_chord.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_crossing_chord.py)
+- [CrossingChordUpperBound.md](problem/CrossingChordUpperBound.md)
+- [check_erdos1041_crossing_chord.py](problem/scripts/check_erdos1041_crossing_chord.py)
 
 ### quartic_core_factor_budget_radius_class
 
@@ -343,8 +343,8 @@ Let four selected roots lie in a disk D(h,R) with 0<R<1. If R^4 times the produc
 
 Evidence/status: ordinary_all_degree_radius_class_transport_with_external_quartic_input_and_lean_checked_factor_budget
 
-- [QuarticCoreRadiusCase.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuarticCoreRadiusCase.md)
-- [check_erdos1041_quartic_core_radius_case.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quartic_core_radius_case.py)
+- [QuarticCoreRadiusCase.md](problem/QuarticCoreRadiusCase.md)
+- [check_erdos1041_quartic_core_radius_case.py](problem/scripts/check_erdos1041_quartic_core_radius_case.py)
 
 ### two_safe_origin_spokes_counterexample
 
@@ -359,7 +359,7 @@ Minimal critical-value selection does not rescue straight critical spokes. Five 
 
 Evidence/status: exact_gaussian_rational_interval_mechanism_elimination
 
-- [check_minimum_critical_straight_hub.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_minimum_critical_straight_hub.py)
+- [check_minimum_critical_straight_hub.py](problem/scripts/check_minimum_critical_straight_hub.py)
 
 ### adaptive_mec_chord_or_radial_counterexample
 
@@ -410,7 +410,7 @@ For a compact protected set free of critical points, finitely many root discs wi
 
 Evidence/status: ordinary_algebraic_proof_with_lean_checked_protected_set_component
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 - [erdos-1041-lemniscate-newton-flow.tex](paper/erdos-1041-lemniscate-newton-flow.tex)
 
 ### protected_set_noncriticality_under_small_linear_perturbation
@@ -419,7 +419,7 @@ If lower is a uniform lower bound for the derivative norm on a protected set C a
 
 Evidence/status: lean_checked_comparator_targeted
 
-- [NewtonFlowRaySeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
+- [NewtonFlowRaySeparation.lean](problem/NewtonFlowRaySeparation.lean)
 
 ### straight_spoke_hub_criterion_separation
 
@@ -427,7 +427,7 @@ Two containment tests for a two-spoke critical hub had been used interchangeably
 
 Evidence/status: high_precision_witness_mechanism_elimination_not_lean_checked
 
-- [check_erdos1041_straight_spoke_hub_criterion.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_straight_spoke_hub_criterion.py)
+- [check_erdos1041_straight_spoke_hub_criterion.py](problem/scripts/check_erdos1041_straight_spoke_hub_criterion.py)
 
 ### admissible_branch_length_reformulation
 
@@ -435,7 +435,7 @@ The surviving obligation must retain the polynomial-value threshold: min over ad
 
 Evidence/status: corrected_obligation_plus_ordinary_equality_proofs_and_witness_elimination_not_lean_checked
 
-- [check_erdos1041_invariant_branch_length.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_invariant_branch_length.py)
+- [check_erdos1041_invariant_branch_length.py](problem/scripts/check_erdos1041_invariant_branch_length.py)
 
 ### admissible_critical_forest_tangent_support_reduction
 
@@ -443,8 +443,8 @@ Let A be the admissible critical points, counted with multiplicity, and m=|A|. T
 
 Evidence/status: ordinary_exact_calculus_and_uniformization_reduction_plus_finite_aggregate_falsifier
 
-- [CriticalTreeLengthCharge.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTreeLengthCharge.md)
-- [check_erdos1041_invariant_branch_length.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_invariant_branch_length.py)
+- [CriticalTreeLengthCharge.md](problem/CriticalTreeLengthCharge.md)
+- [check_erdos1041_invariant_branch_length.py](problem/scripts/check_erdos1041_invariant_branch_length.py)
 
 ### complete_cyclic_hub_orbit_correlation_cancellation
 
@@ -459,7 +459,7 @@ Evidence on the STRONG completion named in MinimumCriticalNewtonHubLab.md, L_1 +
 
 Evidence/status: finite_evidence_plus_complete_one_parameter_sweep_not_lean_checked
 
-- [check_erdos1041_minimal_hub_metric_scale.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_minimal_hub_metric_scale.py)
+- [check_erdos1041_minimal_hub_metric_scale.py](problem/scripts/check_erdos1041_minimal_hub_metric_scale.py)
 
 ### turning_floor_at_simple_saddle
 
@@ -495,7 +495,7 @@ The admissible-forest aggregate sum_{c in A} L(c) <= 2 R m of CriticalTreeLength
 
 Evidence/status: finite_falsifier_survival_in_the_identified_hard_regime_with_independent_integrator_check
 
-- [check_erdos1041_aggregate_near_fekete.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_aggregate_near_fekete.py)
+- [check_erdos1041_aggregate_near_fekete.py](problem/scripts/check_erdos1041_aggregate_near_fekete.py)
 
 ### centre_plus_polygon_merge_topology_closed_form
 
@@ -510,7 +510,7 @@ HardRegimeIsNearFekete.md names a stability estimate for the Fekete maximiser as
 
 Evidence/status: ordinary_complete_proof_not_lean_checked_novelty_not_claimed
 
-- [check_erdos1041_near_fekete_cusp_law.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py)
+- [check_erdos1041_near_fekete_cusp_law.py](problem/scripts/check_erdos1041_near_fekete_cusp_law.py)
 
 ### near_fekete_cusp_law_and_strict_local_maximality
 
@@ -518,7 +518,7 @@ For f = z^n - m + eps*h (deg h <= n-1, m = R^n), the critical points solve n z^{
 
 Evidence/status: ordinary_scaling_proof_plus_high_precision_constants_not_lean_checked
 
-- [check_erdos1041_near_fekete_cusp_law.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_cusp_law.py)
+- [check_erdos1041_near_fekete_cusp_law.py](problem/scripts/check_erdos1041_near_fekete_cusp_law.py)
 
 ### chord_deficit_polynomial_representation
 
@@ -547,7 +547,7 @@ Erdos #1041 follows from a ONE-ROOT statement carrying no separate length obliga
 
 Evidence/status: proved_reduction_plus_proved_equality_case_plus_measured_hypothesis
 
-- [check_erdos1041_visibility_overlap.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py)
+- [check_erdos1041_visibility_overlap.py](problem/scripts/check_erdos1041_visibility_overlap.py)
 
 ### capacity_geodesic_conjecture_and_its_equality_family
 
@@ -555,7 +555,7 @@ Erdos #1041 follows from a SCALE-FREE length bound at the first-merge level, wit
 
 Evidence/status: proved_reduction_plus_proved_equality_case_plus_measured_hypothesis
 
-- [check_erdos1041_visibility_overlap.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py)
+- [check_erdos1041_visibility_overlap.py](problem/scripts/check_erdos1041_visibility_overlap.py)
 
 ### capacity_geodesic_margin_is_first_order_in_the_critical_radius
 
@@ -563,7 +563,7 @@ The near-Fekete cusp is a COORDINATE, not an obstruction, for the capacity-geode
 
 Evidence/status: proved_reduction_plus_proved_equality_case_plus_measured_hypothesis
 
-- [check_erdos1041_visibility_overlap.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py)
+- [check_erdos1041_visibility_overlap.py](problem/scripts/check_erdos1041_visibility_overlap.py)
 
 ### radial_resultant_sweep_identity
 
@@ -592,7 +592,7 @@ AffineNormalisedModuli.md section 7 names 'a sharp replacement for the Koebe con
 
 Evidence/status: proved_sharp_lemma_plus_proved_theorem_plus_measured_reach
 
-- [check_erdos1041_bergman_segment_bound.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_segment_bound.py)
+- [check_erdos1041_bergman_segment_bound.py](problem/scripts/check_erdos1041_bergman_segment_bound.py)
 
 ### bergman_geodesic_moebius_invariance
 
@@ -600,8 +600,8 @@ BergmanSegmentLengthBound.md section 3 names the missing object for a k-root com
 
 Evidence/status: ordinary_complete_proof_plus_exact_closed_forms_not_lean_checked_novelty_not_claimed
 
-- [BergmanGeodesicInvariance.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BergmanGeodesicInvariance.md)
-- [check_erdos1041_bergman_geodesic.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_bergman_geodesic.py)
+- [BergmanGeodesicInvariance.md](problem/BergmanGeodesicInvariance.md)
+- [check_erdos1041_bergman_geodesic.py](problem/scripts/check_erdos1041_bergman_geodesic.py)
 
 ### form_a_cut_adjacent_good_pair_selector
 
@@ -609,8 +609,8 @@ TruncatedSpokeReduction.md proves Form A-cut -- three segments, NO length obliga
 
 Evidence/status: leading_order_proof_plus_refuted_rival_selector_plus_exact_measurement_not_lean_checked
 
-- [FormACutAdjacentSelector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FormACutAdjacentSelector.md)
-- [check_erdos1041_form_a_cut_selector.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_form_a_cut_selector.py)
+- [FormACutAdjacentSelector.md](problem/FormACutAdjacentSelector.md)
+- [check_erdos1041_form_a_cut_selector.py](problem/scripts/check_erdos1041_form_a_cut_selector.py)
 
 ### exact_component_capacity_green_defect
 
@@ -618,8 +618,8 @@ LemniscateCapacityBudget.md (D) and every consumer of Polya spend the INEQUALITY
 
 Evidence/status: ordinary_complete_proof_plus_calibrated_measurement_not_lean_checked_novelty_not_claimed
 
-- [ComponentCapacityFormula.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ComponentCapacityFormula.md)
-- [check_erdos1041_component_capacity.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_component_capacity.py)
+- [ComponentCapacityFormula.md](problem/ComponentCapacityFormula.md)
+- [check_erdos1041_component_capacity.py](problem/scripts/check_erdos1041_component_capacity.py)
 
 ### sharp_collinear_root_diameter_extremal
 
@@ -627,7 +627,7 @@ For n >= 2, put r_n = cos(pi/(2n)) and C_n = 1/(2^(n-1) r_n^n). Every monic degr
 
 Evidence/status: ordinary_complete_sharp_all_degree_subcase_proof_plus_lean_checked_alternation_and_chebyshev_adapter_novelty_not_claimed
 
-- [check_erdos1041_collinear_chebyshev.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_collinear_chebyshev.py)
+- [check_erdos1041_collinear_chebyshev.py](problem/scripts/check_erdos1041_collinear_chebyshev.py)
 
 ### unconditional_constant_factor_pair_geodesic
 
@@ -635,8 +635,8 @@ Let f be monic of degree n >= 2, let mu be the least critical-value modulus, and
 
 Evidence/status: ordinary_complete_unconditional_proof_plus_finite_regression_not_lean_checked_not_independently_reviewed
 
-- [UnconditionalConstantFactorBound.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md)
-- [check_erdos1041_constant_factor_bound.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py)
+- [UnconditionalConstantFactorBound.md](problem/UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](problem/scripts/check_erdos1041_constant_factor_bound.py)
 
 ### low_critical_high_arity_first_merge_closure
 
@@ -644,8 +644,8 @@ Let f be monic with all roots in the open unit disk, let mu be its least critica
 
 Evidence/status: ordinary_complete_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed
 
-- [UnconditionalConstantFactorBound.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md)
-- [check_erdos1041_constant_factor_bound.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py)
+- [UnconditionalConstantFactorBound.md](problem/UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](problem/scripts/check_erdos1041_constant_factor_bound.py)
 
 ### low_critical_component_capacity_defect_closure
 
@@ -653,8 +653,8 @@ Let f be monic with all roots in the open unit disk, let mu<=1/2 be its least cr
 
 Evidence/status: ordinary_complete_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed
 
-- [UnconditionalConstantFactorBound.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md)
-- [check_erdos1041_constant_factor_bound.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py)
+- [UnconditionalConstantFactorBound.md](problem/UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](problem/scripts/check_erdos1041_constant_factor_bound.py)
 
 ### low_critical_arity_capacity_lattice_closure
 
@@ -662,8 +662,8 @@ Let f be monic with all roots in the open unit disk, let k0 be the arity of a mi
 
 Evidence/status: ordinary_complete_target_regime_proof_with_exact_rational_table_certificate_not_lean_checked_not_independently_reviewed
 
-- [UnconditionalConstantFactorBound.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md)
-- [check_erdos1041_constant_factor_bound.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py)
+- [UnconditionalConstantFactorBound.md](problem/UnconditionalConstantFactorBound.md)
+- [check_erdos1041_constant_factor_bound.py](problem/scripts/check_erdos1041_constant_factor_bound.py)
 
 ### capacity_saturation_radial_merge_bridge
 
@@ -671,8 +671,8 @@ Let U be a proper regular k-root component of {|f|<t} for a monic degree-n polyn
 
 Evidence/status: ordinary_exact_multi_exterior_merge_ceiling_with_exact_integer_band_composition_and_floating_symmetric_envelope_probe_not_lean_checked
 
-- [CapacitySaturationBridge.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CapacitySaturationBridge.md)
-- [check_erdos1041_capacity_saturation_bridge.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_capacity_saturation_bridge.py)
+- [CapacitySaturationBridge.md](problem/CapacitySaturationBridge.md)
+- [check_erdos1041_capacity_saturation_bridge.py](problem/scripts/check_erdos1041_capacity_saturation_bridge.py)
 
 ### concyclic_alternation_theorem
 
@@ -681,7 +681,7 @@ Erdos #1041 is settled unconditionally for every monic f whose zeros lie on a CI
 Evidence/status: ordinary_complete_sharp_proof_plus_exact_rational_witness_plus_calibrated_conjecture_not_lean_checked
 
 - [ConcyclicAlternation.md](problem/ConcyclicAlternation.md)
-- [check_erdos1041_concyclic_alternation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_alternation.py)
+- [check_erdos1041_concyclic_alternation.py](problem/scripts/check_erdos1041_concyclic_alternation.py)
 
 ### minimal_hub_window_join_inside_mu
 
@@ -690,7 +690,7 @@ If the minimising critical point c* of a squarefree monic f is simple and T* in 
 Evidence/status: ordinary_proof_on_quoted_directory_theorem_c_plus_two_elementary_lemmas_not_lean_checked
 
 - [MinimalHubWindowJoin.md](problem/MinimalHubWindowJoin.md)
-- [check_erdos1041_minimal_hub_window.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_minimal_hub_window.py)
+- [check_erdos1041_minimal_hub_window.py](problem/scripts/check_erdos1041_minimal_hub_window.py)
 
 ### primitive_quintic_closed_disk_two_tail_theorem
 
@@ -698,8 +698,8 @@ Let p(z)=z^5+a z^4+bz+c be monic and suppose all five roots lie in the closed un
 
 Evidence/status: analytic_complete_lean_checked_exact_computation_closed_disk_subproblem_novelty_not_claimed
 
-- [PrimitiveQuinticInteriorTail.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.md)
-- [check_erdos1041_primitive_quintic_interior_tail.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_primitive_quintic_interior_tail.py)
+- [PrimitiveQuinticInteriorTail.md](problem/PrimitiveQuinticInteriorTail.md)
+- [check_erdos1041_primitive_quintic_interior_tail.py](problem/scripts/check_erdos1041_primitive_quintic_interior_tail.py)
 
 ### concyclic_potential_domination_kernel_and_certificate_criterion
 
@@ -707,7 +707,7 @@ For concyclic zeros: (i) Lean-checked factor bound log|1-w| <= |w|^2/2 - Re w (|
 
 Evidence/status: lean_checked_kernel_plus_exact_reduction_criterion_plus_proven_infeasibility_of_first_moment_certificates
 
-- [check_erdos1041_concyclic_form_a_cut_certificate.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py)
+- [check_erdos1041_concyclic_form_a_cut_certificate.py](problem/scripts/check_erdos1041_concyclic_form_a_cut_certificate.py)
 
 ### concyclic_concentric_alternation_counterexample
 
@@ -715,8 +715,8 @@ The concentric-alternation law Conjecture U is FALSE already for five distinct u
 
 Evidence/status: analytic_complete_exact_fraction_checked_lean_checked_rational_core
 
-- [ConcyclicAlternationCounterexample.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicAlternationCounterexample.md)
-- [check_erdos1041_concyclic_alternation_counterexample.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_alternation_counterexample.py)
+- [ConcyclicAlternationCounterexample.md](problem/ConcyclicAlternationCounterexample.md)
+- [check_erdos1041_concyclic_alternation_counterexample.py](problem/scripts/check_erdos1041_concyclic_alternation_counterexample.py)
 
 ### concyclic_smallest_gap_common_radius_selector_counterexample
 
@@ -724,8 +724,8 @@ The deterministic Form-A rule 'choose the unique smallest angular gap, then opti
 
 Evidence/status: analytic_complete_exact_fraction_checked_lean_checked_all_radius_obstruction
 
-- [ConcyclicSmallestGapSelectorCounterexample.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConcyclicSmallestGapSelectorCounterexample.md)
-- [check_erdos1041_concyclic_smallest_gap_selector_counterexample.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py)
+- [ConcyclicSmallestGapSelectorCounterexample.md](problem/ConcyclicSmallestGapSelectorCounterexample.md)
+- [check_erdos1041_concyclic_smallest_gap_selector_counterexample.py](problem/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py)
 
 ### sextic_canonical_mixed_slice_connector
 
@@ -733,8 +733,8 @@ For every u>=0, the canonical degree-six homogeneous mixed model H_u(z)=Re(-i*u*
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_square_bernstein_certificate
 
-- [SexticCanonicalMixedSlice.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCanonicalMixedSlice.md)
-- [check_erdos1041_sextic_canonical_mixed_slice.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_canonical_mixed_slice.py)
+- [SexticCanonicalMixedSlice.md](problem/SexticCanonicalMixedSlice.md)
+- [check_erdos1041_sextic_canonical_mixed_slice.py](problem/scripts/check_erdos1041_sextic_canonical_mixed_slice.py)
 
 ### sextic_square_contact_null_branch
 
@@ -742,8 +742,8 @@ The unique coefficient direction invisible to the four first-order square contac
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_convex_endpoint_certificate
 
-- [SexticNullBranch.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticNullBranch.md)
-- [check_erdos1041_sextic_null_branch.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch.py)
+- [SexticNullBranch.md](problem/SexticNullBranch.md)
+- [check_erdos1041_sextic_null_branch.py](problem/scripts/check_erdos1041_sextic_null_branch.py)
 
 ### sextic_null_branch_strict_companion
 
@@ -751,8 +751,8 @@ For every parameter 0<=beta<=beta* on the sextic null branch, the opposite adjac
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_mirror_bernstein_certificate
 
-- [SexticNullBranchCompanion.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticNullBranchCompanion.md)
-- [check_erdos1041_sextic_null_branch_companion.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_companion.py)
+- [SexticNullBranchCompanion.md](problem/SexticNullBranchCompanion.md)
+- [check_erdos1041_sextic_null_branch_companion.py](problem/scripts/check_erdos1041_sextic_null_branch_companion.py)
 
 ### sextic_null_branch_uniform_stability_tube
 
@@ -760,8 +760,8 @@ Fix 0<epsilon<=beta<=beta* on the positive sextic null branch. At the mirror com
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_quantitative_actual_radius_margin
 
-- [SexticNullBranchUniformMargin.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticNullBranchUniformMargin.md)
-- [check_erdos1041_sextic_null_branch_uniform_margin.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_uniform_margin.py)
+- [SexticNullBranchUniformMargin.md](problem/SexticNullBranchUniformMargin.md)
+- [check_erdos1041_sextic_null_branch_uniform_margin.py](problem/scripts/check_erdos1041_sextic_null_branch_uniform_margin.py)
 
 ### sextic_null_branch_transverse_selector
 
@@ -769,8 +769,8 @@ At the canonical sextic square-contact model, write a gauge-fixed tangent pertur
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_sharp_tetrahedral_selector
 
-- [SexticNullBranchTransverseSelector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticNullBranchTransverseSelector.md)
-- [check_erdos1041_sextic_null_branch_transverse_selector.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_transverse_selector.py)
+- [SexticNullBranchTransverseSelector.md](problem/SexticNullBranchTransverseSelector.md)
+- [check_erdos1041_sextic_null_branch_transverse_selector.py](problem/scripts/check_erdos1041_sextic_null_branch_transverse_selector.py)
 
 ### sextic_null_branch_second_order_atlas
 
@@ -778,8 +778,8 @@ In the O(beta^2) tube around the canonical sextic null branch, let p,q,r be the 
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_uniform_four_connector_cover
 
-- [SexticNullBranchSecondOrderAtlas.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticNullBranchSecondOrderAtlas.md)
-- [check_erdos1041_sextic_null_branch_second_order_atlas.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_second_order_atlas.py)
+- [SexticNullBranchSecondOrderAtlas.md](problem/SexticNullBranchSecondOrderAtlas.md)
+- [check_erdos1041_sextic_null_branch_second_order_atlas.py](problem/scripts/check_erdos1041_sextic_null_branch_second_order_atlas.py)
 
 ### sextic_null_branch_finite_transfer
 
@@ -787,8 +787,8 @@ Let s=sqrt(3), q0=(7+4s)/27, a0=(3/2)q0(s-1), k*=(21+11s)/54, h=(3-s)/2 and r0=q
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_explicit_finite_beta_core
 
-- [SexticNullBranchFiniteTransfer.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticNullBranchFiniteTransfer.md)
-- [check_erdos1041_sextic_null_branch_finite_transfer.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_finite_transfer.py)
+- [SexticNullBranchFiniteTransfer.md](problem/SexticNullBranchFiniteTransfer.md)
+- [check_erdos1041_sextic_null_branch_finite_transfer.py](problem/scripts/check_erdos1041_sextic_null_branch_finite_transfer.py)
 
 ### sextic_null_branch_global_box_atlas
 
@@ -796,8 +796,8 @@ Let betaStar=(106+25sqrt(3))/1221 and use the exact homogeneous sextic family an
 
 Evidence/status: analytic_complete_exact_symbolic_replay_lean_checked_full_canonical_parameter_interval
 
-- [SexticNullBranchGlobalBoxAtlas.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticNullBranchGlobalBoxAtlas.md)
-- [check_erdos1041_sextic_null_branch_global_box_atlas.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_global_box_atlas.py)
+- [SexticNullBranchGlobalBoxAtlas.md](problem/SexticNullBranchGlobalBoxAtlas.md)
+- [check_erdos1041_sextic_null_branch_global_box_atlas.py](problem/scripts/check_erdos1041_sextic_null_branch_global_box_atlas.py)
 
 ### sextic_cubic_face_positive_radius_connector_no_go
 
@@ -805,8 +805,8 @@ For the pure cubic sextic model H(z)=Re(z^3-z^6), no positive equal-radius trunc
 
 Evidence/status: ordinary_complete_exact_symbolic_replay_with_lean_checked_algebraic_core
 
-- [SexticCubicFaceConnectorNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicFaceConnectorNoGo.md)
-- [check_erdos1041_sextic_cubic_face_connector_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_cubic_face_connector_no_go.py)
+- [SexticCubicFaceConnectorNoGo.md](problem/SexticCubicFaceConnectorNoGo.md)
+- [check_erdos1041_sextic_cubic_face_connector_no_go.py](problem/scripts/check_erdos1041_sextic_cubic_face_connector_no_go.py)
 
 ### sextic_cubic_radial_deficit_staple_cone
 
@@ -814,8 +814,8 @@ For G(z)=-Delta+Re(E1 z+E2 z^2+E3 z^3+E4 z^4+E5 z^5-z^6), assume 0<Delta<=1, |E3
 
 Evidence/status: ordinary_complete_explicit_model_theorem_with_exact_replay_and_lean_checked_scalar_core
 
-- [SexticCubicRadialDeficitCone.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticCubicRadialDeficitCone.md)
-- [check_erdos1041_sextic_cubic_radial_deficit_cone.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_cubic_radial_deficit_cone.py)
+- [SexticCubicRadialDeficitCone.md](problem/SexticCubicRadialDeficitCone.md)
+- [check_erdos1041_sextic_cubic_radial_deficit_cone.py](problem/scripts/check_erdos1041_sextic_cubic_radial_deficit_cone.py)
 
 ### sextic_first_mode_three_quarter_overlap
 
@@ -823,8 +823,8 @@ In the normalized paired sextic tangent model, let A=|E1|, B=|E2| with 0<=B<=1, 
 
 Evidence/status: analytic_complete_exact_rational_replay_lean_checked
 
-- [SexticFirstModeThreeQuarterOverlap.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticFirstModeThreeQuarterOverlap.md)
-- [check_erdos1041_sextic_first_mode_three_quarter_overlap.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_first_mode_three_quarter_overlap.py)
+- [SexticFirstModeThreeQuarterOverlap.md](problem/SexticFirstModeThreeQuarterOverlap.md)
+- [check_erdos1041_sextic_first_mode_three_quarter_overlap.py](problem/scripts/check_erdos1041_sextic_first_mode_three_quarter_overlap.py)
 
 ### two_root_path_length_lower_semicontinuity
 
@@ -853,7 +853,7 @@ For the paired homogeneous sextic tangent model H=Re(Az+Bz^2+iCz^3-conj(B)z^4-co
 
 Evidence/status: analytic_complete_exact_rational_replay
 
-- [check_erdos1041_sextic_chord_covering_criterion.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_chord_covering_criterion.py)
+- [check_erdos1041_sextic_chord_covering_criterion.py](problem/scripts/check_erdos1041_sextic_chord_covering_criterion.py)
 
 ### self_inversive_comparison_dual_and_selector_no_go
 
@@ -861,8 +861,8 @@ For a monic self-inversive comparison polynomial evaluated on the alternating un
 
 Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
 
-- [SelfInversiveComparisonDual.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SelfInversiveComparisonDual.md)
-- [check_erdos1041_self_inversive_comparison_dual.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_self_inversive_comparison_dual.py)
+- [SelfInversiveComparisonDual.md](problem/SelfInversiveComparisonDual.md)
+- [check_erdos1041_self_inversive_comparison_dual.py](problem/scripts/check_erdos1041_self_inversive_comparison_dual.py)
 
 ### critical_blaschke_pair_bound
 
@@ -870,8 +870,8 @@ For a degree-k finite Blaschke product critical at zero, order its zero radii r1
 
 Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
 
-- [CriticalBlaschkePairBound.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalBlaschkePairBound.md)
-- [check_erdos1041_critical_blaschke_pair_bound.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_critical_blaschke_pair_bound.py)
+- [CriticalBlaschkePairBound.md](problem/CriticalBlaschkePairBound.md)
+- [check_erdos1041_critical_blaschke_pair_bound.py](problem/scripts/check_erdos1041_critical_blaschke_pair_bound.py)
 
 ### connected_cluster_bergman_certificate
 
@@ -879,8 +879,8 @@ Let C be a regular polynomial lemniscate component containing k zeros counted wi
 
 Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
 
-- [ConnectedClusterBergman.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConnectedClusterBergman.md)
-- [check_erdos1041_connected_cluster_bergman.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_connected_cluster_bergman.py)
+- [ConnectedClusterBergman.md](problem/ConnectedClusterBergman.md)
+- [check_erdos1041_connected_cluster_bergman.py](problem/scripts/check_erdos1041_connected_cluster_bergman.py)
 
 ### connected_cluster_fixed_level_area_forcing
 
@@ -888,8 +888,8 @@ Fix a regular level 0<t<1 and list all multi-root components C_i of K_t. Put alp
 
 Evidence/status: ordinary_analytic_proof_with_lean_checked_finite_kernel_and_deterministic_scalar_falsifier
 
-- [ConnectedClusterAreaForcing.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConnectedClusterAreaForcing.md)
-- [check_erdos1041_connected_cluster_area_forcing.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_connected_cluster_area_forcing.py)
+- [ConnectedClusterAreaForcing.md](problem/ConnectedClusterAreaForcing.md)
+- [check_erdos1041_connected_cluster_area_forcing.py](problem/scripts/check_erdos1041_connected_cluster_area_forcing.py)
 
 ### tied_newton_face_complete_spoke_no_go_and_connector_rescue
 
@@ -897,9 +897,9 @@ For the quintic tied-face model H(z)=Re(z+10z^2-z^5), every fifth-root ray conta
 
 Evidence/status: exact_ordinary_root_of_unity_reduction_with_lean_checked_no_go_and_connector
 
-- [TiedNewtonFaceTwoSpokeNoGo.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.lean)
-- [TiedNewtonFaceTwoSpokeNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.md)
-- [check_erdos1041_tied_newton_face_two_spoke_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_two_spoke_no_go.py)
+- [TiedNewtonFaceTwoSpokeNoGo.lean](problem/TiedNewtonFaceTwoSpokeNoGo.lean)
+- [TiedNewtonFaceTwoSpokeNoGo.md](problem/TiedNewtonFaceTwoSpokeNoGo.md)
+- [check_erdos1041_tied_newton_face_two_spoke_no_go.py](problem/scripts/check_erdos1041_tied_newton_face_two_spoke_no_go.py)
 
 claim_boundary: This is an exact obstruction-and-rescue theorem for the single quintic model H(z)=Re(z+10z^2-z^5): it rules out a complete safe fifth-root spoke and certifies one radius-two adjacent connector. It does not prove the compact tied-face connector theorem in arbitrary degree, transfer the model connector to a neighbourhood of a general polynomial, or solve the unrestricted Erdős 1041 problem.
 
@@ -909,8 +909,8 @@ Let Q(z)=sum_(m in M) A_m z^m-z^n with every active degree 1<=m<n/2, and list th
 
 Evidence/status: all_degree_ordinary_analytic_topological_theorem_with_lean_checked_trace_kernel
 
-- [TiedNewtonFaceCriticalTrace.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceCriticalTrace.md)
-- [check_erdos1041_tied_newton_face_critical_trace.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_critical_trace.py)
+- [TiedNewtonFaceCriticalTrace.md](problem/TiedNewtonFaceCriticalTrace.md)
+- [check_erdos1041_tied_newton_face_critical_trace.py](problem/scripts/check_erdos1041_tied_newton_face_critical_trace.py)
 
 ### tied_newton_face_negative_paired_critical_trace
 
@@ -918,8 +918,8 @@ Let Q(z)=sum_(m in M) A_m z^m-z^n with 1<=m<n/2, and let c_i be its n-1 critical
 
 Evidence/status: all_degree_ordinary_analytic_newton_face_theorem_with_lean_checked_finite_kernel
 
-- [TiedNewtonFacePairedTrace.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFacePairedTrace.md)
-- [check_erdos1041_tied_newton_face_paired_trace.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_paired_trace.py)
+- [TiedNewtonFacePairedTrace.md](problem/TiedNewtonFacePairedTrace.md)
+- [check_erdos1041_tied_newton_face_paired_trace.py](problem/scripts/check_erdos1041_tied_newton_face_paired_trace.py)
 
 ### adjacent_root_direction_ellipse_metric_cover
 
@@ -927,8 +927,8 @@ Let n>=3, R>0, and let omega_j,omega_(j+1) be adjacent n-th roots of unity brack
 
 Evidence/status: all_degree_ordinary_euclidean_theorem_with_lean_checked_algebraic_kernel
 
-- [TiedNewtonFaceAdjacentEllipse.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceAdjacentEllipse.md)
-- [check_erdos1041_tied_newton_face_adjacent_hub.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_adjacent_hub.py)
+- [TiedNewtonFaceAdjacentEllipse.md](problem/TiedNewtonFaceAdjacentEllipse.md)
+- [check_erdos1041_tied_newton_face_adjacent_hub.py](problem/scripts/check_erdos1041_tied_newton_face_adjacent_hub.py)
 
 ### barycentric_disc_envelope_and_descent_disc
 
@@ -936,8 +936,8 @@ Every polynomial lemniscate K_T is exactly the union, over positive product-one 
 
 Evidence/status: analytic_complete_deterministic_replay_lean_kernel_checked
 
-- [BarycentricEnvelope.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.md)
-- [check_erdos1041_barycentric_envelope.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_barycentric_envelope.py)
+- [BarycentricEnvelope.md](problem/BarycentricEnvelope.md)
+- [check_erdos1041_barycentric_envelope.py](problem/scripts/check_erdos1041_barycentric_envelope.py)
 
 ### barycentric_nearest_two_sum_scale_consumer
 
@@ -945,7 +945,7 @@ If the first nearest radius r₁ is at most the second radius r₂ and the secon
 
 Evidence/status: lean_checked_nearest_two_radius_budget_consumer
 
-- [BarycentricEnvelope.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.lean)
+- [BarycentricEnvelope.lean](problem/BarycentricEnvelope.lean)
 
 claim_boundary: Only the ordered-real inequality is formalized; it does not prove nearest-root selection, geometric-mean control, disc containment, the critical ellipse theorem, or unrestricted Erdős #1041.
 
@@ -955,7 +955,7 @@ Given the sharp radius budget r₁+r₂≤2ρ and an upper scale bound ρ≤scal
 
 Evidence/status: lean_checked_two_spoke_scale_transport
 
-- [BarycentricEnvelope.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.lean)
+- [BarycentricEnvelope.lean](problem/BarycentricEnvelope.lean)
 
 claim_boundary: Only the ordered-real scale transport is formalized; it does not prove either radius premise, disc containment, nearest-root selection, the global two-root theorem, or unrestricted Erdős #1041.
 
@@ -965,8 +965,8 @@ For a fixed root pair and closed ellipse, the moving-hub two-segment level funct
 
 Evidence/status: corrected_analytic_complete_deterministic_probe_lean_algebra_kernel_checked
 
-- [CriticalEllipseMinimaxStationarity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalEllipseMinimaxStationarity.md)
-- [check_erdos1041_critical_ellipse_minimax_stationarity.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_critical_ellipse_minimax_stationarity.py)
+- [CriticalEllipseMinimaxStationarity.md](problem/CriticalEllipseMinimaxStationarity.md)
+- [check_erdos1041_critical_ellipse_minimax_stationarity.py](problem/scripts/check_erdos1041_critical_ellipse_minimax_stationarity.py)
 
 ### tied_newton_face_minimum_real_critical_selector_no_go
 
@@ -974,8 +974,8 @@ For Q(z)=-(379/256)z+3z^2-z^5, the critical point c0=1/4 uniquely minimizes the 
 
 Evidence/status: exact_quintic_selector_refutation_with_lean_checked_rational_kernel
 
-- [TiedNewtonFaceMinimumRealSelectorNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceMinimumRealSelectorNoGo.md)
-- [check_erdos1041_tied_newton_face_minimum_real_selector_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_minimum_real_selector_no_go.py)
+- [TiedNewtonFaceMinimumRealSelectorNoGo.md](problem/TiedNewtonFaceMinimumRealSelectorNoGo.md)
+- [check_erdos1041_tied_newton_face_minimum_real_selector_no_go.py](problem/scripts/check_erdos1041_tied_newton_face_minimum_real_selector_no_go.py)
 
 ### tied_newton_face_rational_hub_connector_rescue
 
@@ -983,8 +983,8 @@ The quintic Q(z)=-(379/256)z+3z^2-z^5 that refutes minimum-real plus angular bra
 
 Evidence/status: exact_rational_connector_with_lean_checked_bernstein_certificate
 
-- [TiedNewtonFaceRationalHubRescue.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceRationalHubRescue.md)
-- [check_erdos1041_tied_newton_face_rational_hub_rescue.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_rational_hub_rescue.py)
+- [TiedNewtonFaceRationalHubRescue.md](problem/TiedNewtonFaceRationalHubRescue.md)
+- [check_erdos1041_tied_newton_face_rational_hub_rescue.py](problem/scripts/check_erdos1041_tied_newton_face_rational_hub_rescue.py)
 
 ### critical_ellipse_stationary_upper_bound_no_go_and_second_order_filter
 
@@ -992,8 +992,8 @@ Finite-contact KKT reduction is necessary but pointwise KKT upper-bound eliminat
 
 Evidence/status: exact_quartic_no_go_with_lean_checked_algebraic_kernel
 
-- [CriticalEllipseStationaryNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalEllipseStationaryNoGo.md)
-- [check_erdos1041_critical_ellipse_stationary_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_critical_ellipse_stationary_no_go.py)
+- [CriticalEllipseStationaryNoGo.md](problem/CriticalEllipseStationaryNoGo.md)
+- [check_erdos1041_critical_ellipse_stationary_no_go.py](problem/scripts/check_erdos1041_critical_ellipse_stationary_no_go.py)
 
 ### barycentric_augmented_target_disc
 
@@ -1001,7 +1001,7 @@ At every nonroot z and target T>=|f(z)|, the disc centered at B=z-conj(P)/S with
 
 Evidence/status: ordinary_analytic_proof_with_lean_checked_scalar_kernel
 
-- [BarycentricTargetDisc.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricTargetDisc.md)
+- [BarycentricTargetDisc.md](problem/BarycentricTargetDisc.md)
 
 ### barycentric_ray_reach_quadratic_identity
 
@@ -1009,7 +1009,7 @@ For σ²≥0, the ray-reach expression reach=α+√(α²+σ²) satisfies the exa
 
 Evidence/status: lean_checked_ray_reach_quadratic_consumer
 
-- [BarycentricTargetDisc.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricTargetDisc.lean)
+- [BarycentricTargetDisc.lean](problem/BarycentricTargetDisc.lean)
 
 claim_boundary: The declaration proves only the quadratic identity; it does not prove reach positivity at strict slack, target-disc containment, boundary-stall behavior, action control, global arclength, or unrestricted Erdős #1041.
 
@@ -1019,8 +1019,8 @@ For Q(z)=-(65/27)z+(100/27)z^2-z^5, the critical heights are 8/27,-32/81,4/81,4/
 
 Evidence/status: exact_symmetric_quintic_and_quantitative_open_chart_with_lean_checked_bernstein_metric_and_box_kernel
 
-- [TiedNewtonFaceNonAdjacentNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.md)
-- [check_erdos1041_tied_newton_face_non_adjacent_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_non_adjacent_no_go.py)
+- [TiedNewtonFaceNonAdjacentNoGo.md](problem/TiedNewtonFaceNonAdjacentNoGo.md)
+- [check_erdos1041_tied_newton_face_non_adjacent_no_go.py](problem/scripts/check_erdos1041_tied_newton_face_non_adjacent_no_go.py)
 
 ### fixed_nearest_pair_cegm_minimal_quartic_no_go
 
@@ -1028,8 +1028,8 @@ A monic quartic with all roots in the open unit disc has a unique least-critical
 
 Evidence/status: exact_minimal_degree_refutation_with_lean_checked_algebra_and_topological_consumer
 
-- [CEGMQuarticFixedPairNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CEGMQuarticFixedPairNoGo.md)
-- [check_erdos1041_cegm_quartic_fixed_pair_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cegm_quartic_fixed_pair_no_go.py)
+- [CEGMQuarticFixedPairNoGo.md](problem/CEGMQuarticFixedPairNoGo.md)
+- [check_erdos1041_cegm_quartic_fixed_pair_no_go.py](problem/scripts/check_erdos1041_cegm_quartic_fixed_pair_no_go.py)
 
 ### tied_newton_face_component_degree_selector_and_critical_hub_rescue
 
@@ -1037,8 +1037,8 @@ For every component U of {Re Q<0}, the restriction Q|U is a proper surjective ma
 
 Evidence/status: ordinary_analytic_component_theorem_with_exact_quintic_checker_and_lean_checked_finite_kernel
 
-- [TiedNewtonFaceComponentSelector.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComponentSelector.md)
-- [check_erdos1041_tied_newton_face_component_selector.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_component_selector.py)
+- [TiedNewtonFaceComponentSelector.md](problem/TiedNewtonFaceComponentSelector.md)
+- [check_erdos1041_tied_newton_face_component_selector.py](problem/scripts/check_erdos1041_tied_newton_face_component_selector.py)
 
 ### tied_newton_face_horizontal_fibre_hubwise_no_go
 
@@ -1046,8 +1046,8 @@ For Q(z)=15z+5z^2-z^5, c=-1 is a simple negative critical point with Q(c)=-9. Th
 
 Evidence/status: ordinary_analytic_exact_no_go_with_lean_checked_algebra_and_sign_kernel
 
-- [TiedNewtonFaceHorizontalFibreHubwiseNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceHorizontalFibreHubwiseNoGo.md)
-- [check_erdos1041_tied_newton_face_horizontal_fibre_hubwise_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_horizontal_fibre_hubwise_no_go.py)
+- [TiedNewtonFaceHorizontalFibreHubwiseNoGo.md](problem/TiedNewtonFaceHorizontalFibreHubwiseNoGo.md)
+- [check_erdos1041_tied_newton_face_horizontal_fibre_hubwise_no_go.py](problem/scripts/check_erdos1041_tied_newton_face_horizontal_fibre_hubwise_no_go.py)
 
 ### tied_newton_face_all_fibre_product_and_velocity_moments
 
@@ -1055,8 +1055,8 @@ For any monic P of degree n and every simple fibre P(z_j(s))=s^n, the product of
 
 Evidence/status: ordinary_exact_resultant_and_lagrange_theorem_with_lean_checked_half_plane_consumer
 
-- [TiedNewtonFaceFibreProduct.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceFibreProduct.md)
-- [check_erdos1041_tied_newton_face_fibre_product.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_fibre_product.py)
+- [TiedNewtonFaceFibreProduct.md](problem/TiedNewtonFaceFibreProduct.md)
+- [check_erdos1041_tied_newton_face_fibre_product.py](problem/scripts/check_erdos1041_tied_newton_face_fibre_product.py)
 
 ### positive_leftmost_fibre_quintic_rational_finite_connector_rescue
 
@@ -1064,8 +1064,8 @@ The quintic Q(z)=15z+5z^2-z^5 that has strictly positive defect at its unique le
 
 Evidence/status: exact_rational_noncritical_connector_and_four_parameter_open_chart_with_lean_checked_kernel
 
-- [TiedNewtonFacePositiveFibreRationalRescue.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFacePositiveFibreRationalRescue.md)
-- [check_erdos1041_tied_newton_face_positive_fibre_rational_rescue.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_positive_fibre_rational_rescue.py)
+- [TiedNewtonFacePositiveFibreRationalRescue.md](problem/TiedNewtonFacePositiveFibreRationalRescue.md)
+- [check_erdos1041_tied_newton_face_positive_fibre_rational_rescue.py](problem/scripts/check_erdos1041_tied_newton_face_positive_fibre_rational_rescue.py)
 
 ### tied_newton_face_block_l1_same_fixture_rational_connector_rescue
 
@@ -1073,8 +1073,8 @@ For the degree-six polynomial Q(z)=-z^6-3z^2-5997001/10^9 whose unique six-ended
 
 Evidence/status: exact_rational_noncritical_connector_with_lean_checked_controls_and_metric_budget
 
-- [TiedNewtonFaceBlockL1RationalRescue.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1RationalRescue.md)
-- [check_erdos1041_tied_newton_face_block_l1_rational_rescue.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_rational_rescue.py)
+- [TiedNewtonFaceBlockL1RationalRescue.md](problem/TiedNewtonFaceBlockL1RationalRescue.md)
+- [check_erdos1041_tied_newton_face_block_l1_rational_rescue.py](problem/scripts/check_erdos1041_tied_newton_face_block_l1_rational_rescue.py)
 
 ### tied_newton_face_block_l1_rational_connector_chart
 
@@ -1082,8 +1082,8 @@ The same hub, end pair, and cutoff remain valid for P_{a,b}(z)=-z^6+a z^2+b thro
 
 Evidence/status: exact_two_parameter_strict_chart_with_lean_checked_sensitivity_kernel
 
-- [TiedNewtonFaceBlockL1RationalChart.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1RationalChart.md)
-- [check_erdos1041_tied_newton_face_block_l1_rational_chart.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_rational_chart.py)
+- [TiedNewtonFaceBlockL1RationalChart.md](problem/TiedNewtonFaceBlockL1RationalChart.md)
+- [check_erdos1041_tied_newton_face_block_l1_rational_chart.py](problem/scripts/check_erdos1041_tied_newton_face_block_l1_rational_chart.py)
 
 ### tied_newton_face_block_l1_complete_polyhedral_template_cell
 
@@ -1091,8 +1091,8 @@ For the fixed block-L1 rational connector template in P_{a,b}(z)=-z^6+a z^2+b, s
 
 Evidence/status: exact_complete_fixed_template_cell_with_lean_checked_tail_and_topology_kernel
 
-- [TiedNewtonFaceBlockL1PolyhedralCell.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1PolyhedralCell.md)
-- [check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py)
+- [TiedNewtonFaceBlockL1PolyhedralCell.md](problem/TiedNewtonFaceBlockL1PolyhedralCell.md)
+- [check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py](problem/scripts/check_erdos1041_tied_newton_face_block_l1_polyhedral_cell.py)
 
 ### tied_newton_face_all_degree_even_symmetric_diameter_cone
 
@@ -1100,8 +1100,8 @@ For every P(z)=-z^(2m)+sum a_k z^(2k)+b with all real a_k<=0 and b<0, P(x)<0 on 
 
 Evidence/status: ordinary_all_degree_connector_theorem_with_lean_checked_sign_and_metric_kernel
 
-- [TiedNewtonFaceEvenSymmetricDiameter.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceEvenSymmetricDiameter.md)
-- [check_erdos1041_tied_newton_face_even_symmetric_diameter.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_even_symmetric_diameter.py)
+- [TiedNewtonFaceEvenSymmetricDiameter.md](problem/TiedNewtonFaceEvenSymmetricDiameter.md)
+- [check_erdos1041_tied_newton_face_even_symmetric_diameter.py](problem/scripts/check_erdos1041_tied_newton_face_even_symmetric_diameter.py)
 
 ### tied_newton_face_all_degree_asymmetric_diameter_tube
 
@@ -1109,8 +1109,8 @@ For P(z)=-z^(2m)+sum a_k z^(2k)+b+sum c_j z^j with a_k<=0, b<0, j<2m, and R>=1, 
 
 Evidence/status: ordinary_all_degree_two_scale_connector_theorem_with_exact_checker_and_lean_checked_domination_kernel
 
-- [TiedNewtonFaceAsymmetricDiameterTube.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceAsymmetricDiameterTube.md)
-- [check_erdos1041_tied_newton_face_asymmetric_diameter_tube.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_asymmetric_diameter_tube.py)
+- [TiedNewtonFaceAsymmetricDiameterTube.md](problem/TiedNewtonFaceAsymmetricDiameterTube.md)
+- [check_erdos1041_tied_newton_face_asymmetric_diameter_tube.py](problem/scripts/check_erdos1041_tied_newton_face_asymmetric_diameter_tube.py)
 
 ### tied_newton_face_all_degree_complex_rotated_diameter_tube
 
@@ -1118,8 +1118,8 @@ Let N=2m>0, let |u|=1 with u^N=1, and let Q(z)=-z^N+b+sum_{j<N} c_j z^j with arb
 
 Evidence/status: ordinary_all_degree_complex_connector_theorem_with_exact_gaussian_rational_checker_and_lean_checked_domination_kernel
 
-- [TiedNewtonFaceComplexDiameterTube.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTube.md)
-- [check_erdos1041_tied_newton_face_complex_diameter_tube.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_complex_diameter_tube.py)
+- [TiedNewtonFaceComplexDiameterTube.md](problem/TiedNewtonFaceComplexDiameterTube.md)
+- [check_erdos1041_tied_newton_face_complex_diameter_tube.py](problem/scripts/check_erdos1041_tied_newton_face_complex_diameter_tube.py)
 
 ### tied_newton_face_complex_diameter_actual_polynomial_transfer
 
@@ -1127,8 +1127,8 @@ Let an even-degree near-Fekete sequence converge in reciprocal-Newton normalizat
 
 Evidence/status: ordinary_sequential_near_fekete_transfer_theorem_with_exact_checker_and_lean_checked_absorption_kernel
 
-- [TiedNewtonFaceComplexDiameterTransfer.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTransfer.md)
-- [check_erdos1041_tied_newton_face_complex_diameter_transfer.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_complex_diameter_transfer.py)
+- [TiedNewtonFaceComplexDiameterTransfer.md](problem/TiedNewtonFaceComplexDiameterTransfer.md)
+- [check_erdos1041_tied_newton_face_complex_diameter_transfer.py](problem/scripts/check_erdos1041_tied_newton_face_complex_diameter_transfer.py)
 
 ### actual_component_merge_tree_area_lower_bound
 
@@ -1136,8 +1136,8 @@ On every regular k-root component branch C(R), A(R)/R^(2/k) is nondecreasing. Pr
 
 Evidence/status: ordinary_exact_actual_component_theorem_with_exact_finite_checker
 
-- [TypeBReturnAssimilation20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md)
-- [check_erdos1041_type_b_return_assimilation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_type_b_return_assimilation.py)
+- [TypeBReturnAssimilation20260826.md](problem/TypeBReturnAssimilation20260826.md)
+- [check_erdos1041_type_b_return_assimilation.py](problem/scripts/check_erdos1041_type_b_return_assimilation.py)
 
 ### arbitrary_modulus_root_ray_product_contraction
 
@@ -1145,8 +1145,8 @@ For f(z)=product_j(z-a_j), |a_j|<=1, p_m=sum_j a_j^m, and 0<=t<1, set E(t)=sum_(
 
 Evidence/status: ordinary_exact_all_degree_theorem_with_quantitative_strict_defect_and_exact_symbolic_rational_kernels
 
-- [TypeBReturnAssimilation20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md)
-- [check_erdos1041_type_b_return_assimilation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_type_b_return_assimilation.py)
+- [TypeBReturnAssimilation20260826.md](problem/TypeBReturnAssimilation20260826.md)
+- [check_erdos1041_type_b_return_assimilation.py](problem/scripts/check_erdos1041_type_b_return_assimilation.py)
 
 claim_boundary: This is a quantitative moving-index theorem. It does not provide a continuous or fixed index, two compatible outer tails, a contained joining chord, a common component, a COVER carrier, common-ancestry compensation, or unrestricted Erdős 1041.
 
@@ -1156,8 +1156,8 @@ For simple generic critical points c, write v_c=f(c), L(c) for the canonical des
 
 Evidence/status: ordinary_exact_conditional_reduction_with_exact_rational_inference_no_go
 
-- [TypeBReturnAssimilation20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md)
-- [check_erdos1041_type_b_return_assimilation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_type_b_return_assimilation.py)
+- [TypeBReturnAssimilation20260826.md](problem/TypeBReturnAssimilation20260826.md)
+- [check_erdos1041_type_b_return_assimilation.py](problem/scripts/check_erdos1041_type_b_return_assimilation.py)
 
 claim_boundary: Exact: resultant normalization, admissible-subproduct sufficiency, compensation implication, and scalar failure of the all-index-to-admissible-index deduction. Unproved: the global critical-arc product inequality, the admissible subproduct inequality, and the inadmissible compensation premise. The scalar countermodel is not asserted to be polynomial-realizable.
 
@@ -1167,8 +1167,8 @@ On any wall-free root-configuration cell with simple roots and critical points, 
 
 Evidence/status: ordinary_exact_cellwise_psh_reduction_with_guarded_quintic_falsifier_search
 
-- [AdmissibleCriticalArcProductPshReduction.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductPshReduction.md)
-- [check_erdos1041_admissible_product_psh.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_product_psh.py)
+- [AdmissibleCriticalArcProductPshReduction.md](problem/AdmissibleCriticalArcProductPshReduction.md)
+- [check_erdos1041_admissible_product_psh.py](problem/scripts/check_erdos1041_admissible_product_psh.py)
 
 claim_boundary: Exact: cellwise logarithmic plurisubharmonicity and the per-cell terminal-stratum reduction. Numerical only: four quintic sub-mean rows and the bounded unit-circle terminal search. The psh germ is not asserted to extend through a saddle or admissibility wall; a dilation preserves fixed-label q factors but can change the admissible set. The admissible product inequality, every terminal-stratum certificate, degree five, and unrestricted Erdős 1041 remain open.
 
@@ -1178,8 +1178,8 @@ On a simple saddle-connection wall let the lower saddle have outgoing arm length
 
 Evidence/status: ordinary_exact_terminal_stratum_reduction_with_exact_fraction_replay
 
-- [SaddleWallPairCompression.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SaddleWallPairCompression.md)
-- [check_erdos1041_saddle_wall_pair_compression.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_saddle_wall_pair_compression.py)
+- [SaddleWallPairCompression.md](problem/SaddleWallPairCompression.md)
+- [check_erdos1041_saddle_wall_pair_compression.py](problem/scripts/check_erdos1041_saddle_wall_pair_compression.py)
 
 claim_boundary: Exact: the simple-wall arm-choice algebra, its explicit nonnegative slack, the geometric-mean two-sided form, the normalized sufficient total-length threshold, and the shape-retaining equivalent T^2-X^2-(A+B)|A-B|<=8(beta gamma)^(1/n). Imported: the standard inverse-ray decomposition when an upper lift meets one simple lower saddle. The sufficient total-length threshold is now exactly refuted as a universal polynomial-wall claim by symmetric_two_level_wall_admissible_product_and_scalar_no_go. Unproved: the shape-retaining condition for general walls, longer saddle spines, remaining admissible factors, either nearby one-sided cell, and every other terminal stratum. AP, degree five, and unrestricted Erdos 1041 remain open.
 
@@ -1189,8 +1189,8 @@ For every m>=2 and 0<b<a<1, f(z)=(z^m-a^m)(z^m+b^m) has a central critical point
 
 Evidence/status: ordinary_exact_subordinate_all_even_degree_ap_family_and_scalar_no_go_with_lean_source_pending_focused_validation
 
-- [SymmetricTwoLevelWallFamily.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SymmetricTwoLevelWallFamily.md)
-- [check_erdos1041_symmetric_two_level_wall.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_symmetric_two_level_wall.py)
+- [SymmetricTwoLevelWallFamily.md](problem/SymmetricTwoLevelWallFamily.md)
+- [check_erdos1041_symmetric_two_level_wall.py](problem/scripts/check_erdos1041_symmetric_two_level_wall.py)
 
 claim_boundary: Exact ordinary mathematics: critical points and levels, inverse-ray arm geometry, the all-even-degree AP formula and power-mean bound, equality case, quartic scalar-threshold counterexample, and shape-slack diagnosis. The Lean source states the quartic polynomial slack and rational no-go kernel, but focused validation was terminated by the canonical build firewall before any theorem diagnostic and is pending. The parent path conclusion for this centred-trinomial family was already proved by cyclic_trinomial_fiber_case_all_degrees; the new positive claim is AP on this structured wall. It does not prove AP on general walls, degree five, or unrestricted Erdos 1041.
 
@@ -1200,8 +1200,8 @@ Let c be a non-root critical point of a degree-n polynomial p and let a_1,a_2 be
 
 Evidence/status: ordinary_exact_all_degree_subcase_with_deterministic_scalar_regression_and_lean_scalar_validation_pending_capacity
 
-- [LowCriticalTwoRootReduction20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/LowCriticalTwoRootReduction20260826.md)
-- [check_erdos1041_low_critical_two_root_reduction.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_low_critical_two_root_reduction.py)
+- [LowCriticalTwoRootReduction20260826.md](problem/LowCriticalTwoRootReduction20260826.md)
+- [check_erdos1041_low_critical_two_root_reduction.py](problem/scripts/check_erdos1041_low_critical_two_root_reduction.py)
 
 ### root_hull_metric_projection_contraction
 
@@ -1209,7 +1209,7 @@ Metric projection pi_K onto the convex hull K of the roots satisfies |pi_K(z)-a_
 
 Evidence/status: ordinary_exact_all_degree_geometric_reduction
 
-- [TypeBReturnAssimilation20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md)
+- [TypeBReturnAssimilation20260826.md](problem/TypeBReturnAssimilation20260826.md)
 
 ### proper_component_capacity_gap
 
@@ -1217,8 +1217,8 @@ Let U be a regular component of {|f|<t} containing k<n roots of a monic degree-n
 
 Evidence/status: ordinary_exact_component_theorem_with_lean_checked_scalar_kernel_and_exact_threshold_audit
 
-- [ProperComponentCapacityGap.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ProperComponentCapacityGap.md)
-- [check_erdos1041_proper_component_capacity_gap.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_proper_component_capacity_gap.py)
+- [ProperComponentCapacityGap.md](problem/ProperComponentCapacityGap.md)
+- [check_erdos1041_proper_component_capacity_gap.py](problem/scripts/check_erdos1041_proper_component_capacity_gap.py)
 
 ### charged_lifetime_allocation_no_go_consumer
 
@@ -1226,7 +1226,7 @@ A strict uncharged slack always admits strictly positive node and leaf charges t
 
 Evidence/status: lean_checked_charged_lifetime_allocation_no_go_consumer
 
-- [ChargedLifetimeAllocationNoGo.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ChargedLifetimeAllocationNoGo.lean)
+- [ChargedLifetimeAllocationNoGo.lean](problem/ChargedLifetimeAllocationNoGo.lean)
 
 claim_boundary: This is an exact real-algebra allocation obstruction. It does not assert that actual polynomial energies are freely prescribable, identify the analytic attachment functional, prove a lower energy bound, establish a weighted-tree selector, supply an unrestricted polynomial construction, or close unrestricted Erdős #1041.
 
@@ -1236,7 +1236,7 @@ For the exact quartic witness, the Young-energy fraction is 144/769, strictly be
 
 Evidence/status: lean_checked_quartic_young_energy_fraction_consumer
 
-- [AttachmentCoupledEnergySelector20260826.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.lean)
+- [AttachmentCoupledEnergySelector20260826.lean](problem/AttachmentCoupledEnergySelector20260826.lean)
 
 claim_boundary: This is an exact rational inequality for one quartic witness. It does not prove the weighted-tree selector inequality, establish the full energy interpretation beyond the source analysis, bound the restored common-ancestry factor, prove a safe path or arm, or close unrestricted Erdos #1041.
 
@@ -1246,7 +1246,7 @@ For the exact quartic witness, the terminal inner ratio is 144/25, and it is str
 
 Evidence/status: lean_checked_quartic_terminal_inner_ratio_consumer
 
-- [AttachmentCoupledEnergySelector20260826.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.lean)
+- [AttachmentCoupledEnergySelector20260826.lean](problem/AttachmentCoupledEnergySelector20260826.lean)
 
 claim_boundary: The result is only an exact rational inequality for the quartic witness. It does not prove the weighted-tree selector inequality, establish the full quartic energy interpretation beyond the separately documented source, bound the restored common-ancestry factor, prove a safe path or arm, or close unrestricted Erdős #1041.
 
@@ -1256,7 +1256,7 @@ For the exact quartic Young-energy fraction 144/769, the deficit from the half-e
 
 Evidence/status: lean_checked_quartic_young_energy_deficit_consumer
 
-- [AttachmentCoupledEnergySelector20260826.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.lean)
+- [AttachmentCoupledEnergySelector20260826.lean](problem/AttachmentCoupledEnergySelector20260826.lean)
 
 claim_boundary: The result is only an exact rational arithmetic identity for the quartic witness. It does not prove the weighted-tree selector inequality, establish the quartic energy interpretation beyond the separately documented source, bound the restored common-ancestry factor, prove a safe path or arm, or close unrestricted Erdős #1041.
 
@@ -1266,7 +1266,7 @@ For real β, w, A, and B, the common-ancestry discount factorizes exactly: β*w*
 
 Evidence/status: lean_checked_common_ancestry_factorization_consumer
 
-- [AttachmentCoupledEnergySelector20260826.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.lean)
+- [AttachmentCoupledEnergySelector20260826.lean](problem/AttachmentCoupledEnergySelector20260826.lean)
 
 claim_boundary: The result is only an algebraic real-exponential factorization. It does not prove the weighted-tree selector inequality, bound the restored common factor below, establish a polynomial root or merge-tree budget, prove a safe path or arm, or close unrestricted Erdős #1041.
 
@@ -1276,8 +1276,8 @@ For a rooted weighted leaf tree, C=sum_u x_u E_u(W-E_u), pair distance d(i,j) co
 
 Evidence/status: ordinary_exact_weighted_tree_theorem_with_actual_polynomial_no_go_exact_checker_and_lean_scalar_kernel_pending_capacity
 
-- [AttachmentCoupledEnergySelector20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.md)
-- [check_erdos1041_attachment_coupled_energy_selector.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_attachment_coupled_energy_selector.py)
+- [AttachmentCoupledEnergySelector20260826.md](problem/AttachmentCoupledEnergySelector20260826.md)
+- [check_erdos1041_attachment_coupled_energy_selector.py](problem/scripts/check_erdos1041_attachment_coupled_energy_selector.py)
 
 ### critical_spoke_synchronized_reciprocal_sweep
 
@@ -1285,8 +1285,8 @@ At a non-root critical point c put u_i=1/(a_i-c), S_m=sum_i u_i^m, and z_i(r)=c+
 
 Evidence/status: ordinary_exact_analytic_theorem_with_gaussian_integer_scope_witness_and_independent_checker
 
-- [CriticalSpokeMomentSweep20260826.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalSpokeMomentSweep20260826.md)
-- [check_erdos1041_critical_spoke_moment_sweep.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_critical_spoke_moment_sweep.py)
+- [CriticalSpokeMomentSweep20260826.md](problem/CriticalSpokeMomentSweep20260826.md)
+- [check_erdos1041_critical_spoke_moment_sweep.py](problem/scripts/check_erdos1041_critical_spoke_moment_sweep.py)
 
 ### orlicz_upper_bound_from_lifetime_consumer
 
@@ -1294,7 +1294,7 @@ Given positive size, the exact identity lifetime=size*phi, and a lifetime upper 
 
 Evidence/status: lean_checked_lifetime_to_orlicz_upper_bound
 
-- [AttachmentAgeLifetimeOrlicz.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.lean)
+- [AttachmentAgeLifetimeOrlicz.lean](problem/AttachmentAgeLifetimeOrlicz.lean)
 
 claim_boundary: Only the real-algebra division step is formalized; it does not identify the analytic integral transform, prove the exact identity or convexity for a concrete attachment model, establish arbitrary-polynomial realizability, or close unrestricted Erdős #1041.
 
@@ -1304,7 +1304,7 @@ Given positive total size, the analytic lower bound lifetime ≥ totalSize * Phi
 
 Evidence/status: lean_checked_analytic_consumer_bridge
 
-- [AttachmentAgeLifetimeOrlicz.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.lean)
+- [AttachmentAgeLifetimeOrlicz.lean](problem/AttachmentAgeLifetimeOrlicz.lean)
 
 claim_boundary: The declaration checks only the ordered real-algebra consumer after the analytic transform and monotonicity comparison are supplied; it does not consume the child-size relation. It does not formalize the integral identity, prove the analytic hypotheses for arbitrary polynomial components, or close the unrestricted Erdős #1041 path theorem.
 
@@ -1314,7 +1314,7 @@ Given 1<count and the tail inequality (count-1)*secondAge≤total, Lean proves s
 
 Evidence/status: lean_checked_second_age_threshold_consumer
 
-- [AttachmentAgeLifetimeOrlicz.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.lean)
+- [AttachmentAgeLifetimeOrlicz.lean](problem/AttachmentAgeLifetimeOrlicz.lean)
 
 claim_boundary: Only the elementary ordered-age division step is formalized; it does not prove the root-summed age/product identity, analytic attachment hypotheses, arbitrary-polynomial realization, or unrestricted Erdős #1041.
 
@@ -1324,7 +1324,7 @@ For an Orlicz transform sublinear at zero, Lean proves that no positive universa
 
 Evidence/status: lean_checked_negative_orlicz_boundary
 
-- [AttachmentAgeLifetimeOrlicz.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.lean)
+- [AttachmentAgeLifetimeOrlicz.lean](problem/AttachmentAgeLifetimeOrlicz.lean)
 
 claim_boundary: Only the ordered-real contradiction is formalized; it does not identify the analytic transform, prove sublinearity for a particular integral, or close unrestricted Erdős #1041.
 
@@ -1334,7 +1334,7 @@ For positive n and nonnegative m,p, the fibre reciprocal inequality m/n < (1-p)/
 
 Evidence/status: lean_checked_analytic_consumer_bridge
 
-- [ExteriorBlaschkeFibreCapacityGap.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExteriorBlaschkeFibreCapacityGap.lean)
+- [ExteriorBlaschkeFibreCapacityGap.lean](problem/ExteriorBlaschkeFibreCapacityGap.lean)
 
 claim_boundary: The declarations check only the rational real-algebra kernel and its positivity/upper bound. They do not formalize the finite-Blaschke harmonic-measure fibre identity, identify matching interior and exterior circle parameters, prove the analytic reciprocal-derivative estimate, or close unrestricted Erdős #1041.
 
@@ -1344,7 +1344,7 @@ On a fixed finite sheet block with normalized sheet-time measure, the infimum ov
 
 Evidence/status: ordinary_exact_variational_equivalence_with_sharp_quantitative_fixed_slack_compensation_and_lean_kernel_pending_low_disk_validation
 
-- [FixedBlockQuadraticBudgetEquivalence.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md)
+- [FixedBlockQuadraticBudgetEquivalence.md](problem/FixedBlockQuadraticBudgetEquivalence.md)
 
 claim_boundary: The variational identity, conditional moved-sheet consumer, sharp quantitative fixed-slack compensation inequality, and sharp three-sheet equality model are proved by ordinary exact mathematics and replayed in exact rational finite models. FixedBlockCompensation.lean authors the finite allocation kernel, but its focused validation is deferred by the live low-disk guard and no Lean authority is claimed yet. No source-current theorem proves that a strict grouped-cluster, Bergman, circumradius, or Fekete margin dominates S_F/|M|, or constructs the fixed safe moved-sheet block with the required compensated average-length budget. That margin comparison is now the first unsupported downstream implication; unrestricted Erdős 1041 remains open.
 
@@ -1354,7 +1354,7 @@ For a ray-separated degree-k component, a thin lollipop contour around the fully
 
 Evidence/status: ordinary_exact_negative_result_for_resolved_critical_star_monodromy
 
-- [SeparateCriticalContourNoGo.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparateCriticalContourNoGo.md)
+- [SeparateCriticalContourNoGo.md](problem/SeparateCriticalContourNoGo.md)
 
 claim_boundary: The planar covering and length-liminf theorem is proved by ordinary exact mathematics. It rules out only contours that separately resolve and circle every radial critical slit. It does not rule out grouping near-coincident critical values before contouring them, fixed safe moved blocks, fixed-sheet compensation, combined charge, COVER, FP--GM, or unrestricted Erdős 1041.
 
@@ -1364,7 +1364,7 @@ For f_0(z)=z^n-r^n, 0<r<1, the value-plane lollipop that stems to and circles th
 
 Evidence/status: ordinary_exact_all_degree_local_positive_result
 
-- [GroupedCriticalClusterMonodromy.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GroupedCriticalClusterMonodromy.md)
+- [GroupedCriticalClusterMonodromy.md](problem/GroupedCriticalClusterMonodromy.md)
 
 claim_boundary: The formula and coefficient-neighbourhood theorem are proved by ordinary exact mathematics. The neighbourhood is qualitative and shrinks as r tends to one; no source-current theorem converts the topology-sensitive discriminant lower bound into enough quantitative cluster control. The theorem also does not directly cover configurations whose full critical-value cluster crosses the unit value circle. Partial admissible clusters, complementary Bergman allocation, combined charge, COVER, FP--GM, and unrestricted Erdős 1041 remain open.
 
@@ -1374,7 +1374,7 @@ A value-plane Jordan contour enclosing exactly a connected edge subtree E of a r
 
 Evidence/status: ordinary_exact_conditional_subtree_cycle_with_pinned_candidate_evidence
 
-- [PartialCriticalClusterMonodromyLab.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialCriticalClusterMonodromyLab.md)
+- [PartialCriticalClusterMonodromyLab.md](problem/PartialCriticalClusterMonodromyLab.md)
 
 claim_boundary: The subtree-cycle theorem and conditional consumer are ordinary exact mathematics. The two witness length rows are floating-point candidate evidence with coarse/fine and geometric separation guards, not interval-certified instance proofs. No universal partial-cluster average bound or unrestricted Erdős 1041 proof is claimed.
 
@@ -1384,7 +1384,7 @@ For a proper degree-d polynomial preimage component W over a Jordan domain Q, th
 
 Evidence/status: ordinary_exact_analytic_identity_with_exact_rational_regression
 
-- [PartialClusterPreimagePerimeterIdentity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialClusterPreimagePerimeterIdentity.md)
+- [PartialClusterPreimagePerimeterIdentity.md](problem/PartialClusterPreimagePerimeterIdentity.md)
 
 claim_boundary: The preimage-perimeter identity and its connected-subtree consumer are ordinary exact complex analysis. The exact rational checker verifies permutation bookkeeping and the regular-polygon specialization. No source-current theorem proves existence of an admissible isolating pair (Q,alpha) satisfying the strict inequality for every polynomial, nor the complementary Bergman/COVER dichotomy; unrestricted Erdős 1041 remains open.
 
@@ -1394,7 +1394,7 @@ For an admissible simple critical point c, shrinking singleton critical-value ci
 
 Evidence/status: ordinary_exact_singleton_limit_with_candidate_selection_evidence
 
-- [AdaptiveClusterSelectionLab.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdaptiveClusterSelectionLab.md)
+- [AdaptiveClusterSelectionLab.md](problem/AdaptiveClusterSelectionLab.md)
 
 claim_boundary: The singleton limit is ordinary exact local complex analysis. The 254-configuration adaptive selector sweep is deterministic floating-point candidate evidence only. It does not prove min_c L(c)<=2, interval-certify the sweep, establish the componentwise combined-charge inequality, or solve unrestricted Erdős 1041.
 
@@ -1404,7 +1404,7 @@ For each nontrivial level-one component C, let A_C be its critical edges, s_c=|f
 
 Evidence/status: ordinary_exact_componentwise_am_gm_reduction_with_deterministic_floating_falsifier_survival
 
-- [AdmissibleCriticalArcProductLab.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md)
+- [AdmissibleCriticalArcProductLab.md](problem/AdmissibleCriticalArcProductLab.md)
 
 claim_boundary: The componentwise-to-global AM-GM implication and CAQ iff CWSC equivalence are ordinary exact algebra. CAQ/CWSC itself is UNPROVED. The deterministic floating checker found zero violations across 273 maximal admissible components in the 270-configuration base corpus and zero violations across 801 components in the independent fixed-seed 800-configuration stress corpus; the largest component means were 0.995680941647 and 0.999478637196. The simpler rule pairing every q(c)>1 with the next higher critical scale is numerically false on 89 base and 62 stress overspends. These computations are candidate/falsifier evidence only and do not interval-certify CAQ, prove CWSC, or solve unrestricted Erdos 1041.
 
@@ -1414,7 +1414,7 @@ For an admissible merge node v, let beta_v be its critical modulus, b_v the modu
 
 Evidence/status: ordinary_exact_recursive_reduction_with_deterministic_floating_falsifier_survival
 
-- [AdmissibleCriticalArcProductLab.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md)
+- [AdmissibleCriticalArcProductLab.md](problem/AdmissibleCriticalArcProductLab.md)
 
 claim_boundary: The CSTA endpoint identifications, CSTR recurrence, convexity factorization, and implication PGLS=>the needed graft inequality are ordinary exact algebra. CSTA and PGLS are UNPROVED, so this row does not prove CAQ/CWSC or unrestricted Erdos 1041. The naive unscaled assertion average_(u in T_v)q(u)<=1 is numerically false on the pinned near-tie quartic singleton. CSTA has zero violations across 1,252 base rooted subtrees and 4,288 independent fixed-seed stress rooted subtrees. PGLS likewise has zero violations; the largest measured positive-liability/child-slack ratios are 0.857114446951 and 0.960626426260. A fixed half-slack allocation is false: the convexity/overspend halves fail on 32/0 base nodes and 96/4 stress nodes. These computations are deterministic floating candidate/falsifier evidence only, not interval certification or proof authority.
 
@@ -1424,7 +1424,7 @@ For P(z)=z^2-r^2 with r=5/6, the componentwise radial-contour expression propose
 
 Evidence/status: ordinary_exact_quadratic_counterexample_to_universal_sharp_component_criterion
 
-- [TypeBReturnAssimilation20260828.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260828.md)
+- [TypeBReturnAssimilation20260828.md](problem/TypeBReturnAssimilation20260828.md)
 
 claim_boundary: This exactly refutes only the universal sharp radial-contour criterion RC4 returned in artifact 002. It does not refute componentwise radial contours as one branch of a target-deciding dichotomy, a compensation theorem when the contour budget fails, grouped or partial-cluster monodromy, or unrestricted Erdos 1041.
 
@@ -1434,9 +1434,9 @@ For monic f of degree n >= 2 with listed zeros in the closed unit disc and c_1..
 
 Evidence/status: ordinary_exact_matching_theorem_without_containment
 
-- [TypeBReturnAssimilation20260828.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260828.md)
-- [GlobalTreeAdmissibleProduct.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GlobalTreeAdmissibleProduct.md)
-- [check_erdos1041_global_tree_admissible_product.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_global_tree_admissible_product.py)
+- [TypeBReturnAssimilation20260828.md](problem/TypeBReturnAssimilation20260828.md)
+- [GlobalTreeAdmissibleProduct.md](problem/GlobalTreeAdmissibleProduct.md)
+- [check_erdos1041_global_tree_admissible_product.py](problem/scripts/check_erdos1041_global_tree_admissible_product.py)
 
 claim_boundary: Carries no sublevel containment: matched pairs need not have any contained arm (negative entries 12, 15, 16, 22, 25; CentroidHubCounterexample), so the theorem does not feed free_pair_geometric_mean_two_arm_selector (whose open premise is arm containment in {|f| <= Gcrit}), is not an admissible product in the (AP) sense of AdmissibleCriticalArcProductLab.md (entrance arcs, not Euclidean distances; hybrid falsifier 0.839217266469 vs 1.075474341153 untouched), and its single-point corollaries are dominated by the occupied per-point two-nearest budget d1+d2 <= 2|f(c)|^(1/n). The non-dominated content is the simultaneous matching quantifier over (T, lambda). Does not change the parent claim ceiling.
 
@@ -1446,9 +1446,9 @@ For a degree-d component W of the lemniscate forest with lifetime (beta, delta),
 
 Evidence/status: ordinary_exact_transport_identity_with_singleton_slack_obstruction
 
-- [TypeBReturnAssimilation20260828.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260828.md)
-- [ComponentLifetimeTransportIdentity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ComponentLifetimeTransportIdentity.md)
-- [check_erdos1041_global_tree_admissible_product.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_global_tree_admissible_product.py)
+- [TypeBReturnAssimilation20260828.md](problem/TypeBReturnAssimilation20260828.md)
+- [ComponentLifetimeTransportIdentity.md](problem/ComponentLifetimeTransportIdentity.md)
+- [check_erdos1041_global_tree_admissible_product.py](problem/scripts/check_erdos1041_global_tree_admissible_product.py)
 
 claim_boundary: Not a parent producer: under the failure hypothesis every degree >= 2 component can satisfy 2 L_W + p_W > 2 d while degree-one singleton loops absorb the entire global negative defect, which is exactly the virtual-cut/grafting residual of AdmissibleCriticalArcProductLab.md; the universal pointwise form is refuted by universal_radial_contour_sharp_criterion_no_go_2026_08_28 (z^2 - (5/6)^2) and negative entry 65. Fixed-level specialization is the occupied (PP2) of PartialClusterPreimagePerimeterIdentity.md. Parent claim ceiling unchanged.
 
@@ -1458,7 +1458,7 @@ Exterior root-product covering lemma (landed from return B of batch erdos1041_20
 
 Evidence/status: ordinary_exact_auxiliary_theorem_with_lean_scalar_kernel_and_exact_sharpness
 
-- [ExteriorRootProductCovering.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExteriorRootProductCovering.md)
+- [ExteriorRootProductCovering.md](problem/ExteriorRootProductCovering.md)
 - [check_erdos1041_exterior_root_product_covering.py](problem/scripts/check_erdos1041_exterior_root_product_covering.py)
 
 ### aggregate_n3_psh_uniformity_closure_2026_08_30
@@ -1467,8 +1467,8 @@ For the exact cubic near-radial deficit D(phi) of AggregateN3InnerModelClosedFor
 
 Evidence/status: ordinary_exact_subharmonic_tangent_cone_theorem_with_scalar_lean_source_pending_focused_validation
 
-- [AggregateN3PshUniformityClosure.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AggregateN3PshUniformityClosure.md)
-- [check_erdos1041_aggregate_n3_psh_uniformity.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_aggregate_n3_psh_uniformity.py)
+- [AggregateN3PshUniformityClosure.md](problem/AggregateN3PshUniformityClosure.md)
+- [check_erdos1041_aggregate_n3_psh_uniformity.py](problem/scripts/check_erdos1041_aggregate_n3_psh_uniformity.py)
 
 claim_boundary: Closes all-phase positivity only for the first-order near-radial AGG3 coefficient. The Banach-valued plurisubharmonicity, distributional tangent limit, uniform inverse-branch asymptotic, and calculus maximum principle are ordinary analytic mathematics. The scalar Lean source is present, but focused Lake validation is pending because the live firewall terminated the private-project build during an exclusive canonical-root release window before any theorem diagnostic. AGG3 away from the near-radial shell and unrestricted Erdos 1041 remain open; AGG is false for every recorded degree n>=4 witness.
 
@@ -1478,7 +1478,7 @@ For every non-pure low-mode quintic H(z)=z^5+b_2 z^2+b_1 z and nonzero trace-max
 
 Evidence/status: ordinary_exact_compact_universal_reduction_with_lean_algebra_kernel_and_exact_real_axis_classification
 
-- [QuinticTraceMaxUniversalChamber.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticTraceMaxUniversalChamber.md)
+- [QuinticTraceMaxUniversalChamber.md](problem/QuinticTraceMaxUniversalChamber.md)
 - [check_erdos1041_quintic_trace_max_universal_chamber.py](problem/scripts/check_erdos1041_quintic_trace_max_universal_chamber.py)
 
 claim_boundary: This is an exact compactification and a complete exact classification only of the real-mu chamber, not a proof of the universal excess inequality. Separate analytic certificates prove the one-face point mu=0, the isolated tangent point mu=50+30sqrt(3), and the entire allowed canonical mu=-10 phase arc. The chamber-wall reduction leaves EX-W, and the weighted wall-sheet maximum principle further reduces its regular sheets to one-real-dimensional double-tight branches plus gap-zero and triple-hub puncture limits. The real-scale transfer, degree five, and unrestricted Erdos 1041 remain open.
@@ -1489,7 +1489,7 @@ At the isolated tangent point (mu,phi)=(50+30sqrt(3),-pi/2) of the quintic trace
 
 Evidence/status: ordinary_exact_curved_inverse_ray_excess_theorem_with_resultant_sturm_interval_certificate_and_lean_algebra_kernel
 
-- [QuinticTangentCurvedExcessCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticTangentCurvedExcessCertificate.md)
+- [QuinticTangentCurvedExcessCertificate.md](problem/QuinticTangentCurvedExcessCertificate.md)
 - [check_erdos1041_quintic_tangent_curved_excess.py](problem/scripts/check_erdos1041_quintic_tangent_curved_excess.py)
 
 claim_boundary: This row proves the isolated tangent gauge orbit only. The full canonical mu=-10 phase arc is closed by a separate exact uniform certificate, but the remaining one-dimensional EX-W boundary and puncture obligations, real-scale transfer, degree five, and unrestricted Erdos 1041 remain open.
@@ -1502,7 +1502,7 @@ At the central point (mu,phi)=(-10,0) of the repeated-critical boundary of the q
 
 Evidence/status: ordinary_exact_repeated_critical_curved_pair_excess_theorem_with_sturm_bernstein_rational_interval_certificate_and_lean_algebra_kernel
 
-- [QuinticMinusTenCentralExcessCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMinusTenCentralExcessCertificate.md)
+- [QuinticMinusTenCentralExcessCertificate.md](problem/QuinticMinusTenCentralExcessCertificate.md)
 - [check_erdos1041_quintic_minus_ten_central_excess.py](problem/scripts/check_erdos1041_quintic_minus_ten_central_excess.py)
 
 claim_boundary: This row remains the sharper pointwise theorem at (mu,phi)=(-10,0); the full phase-arc theorem supplies uniform closure for the canonical pair. It does not identify every direction-dependent wall-sheet tract-pair limit or prove the remaining one-dimensional EX-W obligations, real-scale transfer, degree five, or unrestricted Erdos 1041.
@@ -1515,7 +1515,7 @@ Let phi_0=arctan(1/(2sqrt(2))), the two endpoints of the allowed phase arc on th
 
 Evidence/status: ordinary_exact_repeated_critical_endpoint_curved_pair_excess_theorem_with_resultant_sturm_rational_interval_certificate_and_lean_algebra_kernel
 
-- [QuinticMinusTenEndpointExcessCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMinusTenEndpointExcessCertificate.md)
+- [QuinticMinusTenEndpointExcessCertificate.md](problem/QuinticMinusTenEndpointExcessCertificate.md)
 - [check_erdos1041_quintic_minus_ten_endpoint_excess.py](problem/scripts/check_erdos1041_quintic_minus_ten_endpoint_excess.py)
 
 claim_boundary: This row remains the sharper pointwise theorem at the two endpoint phases phi=+-arctan(1/(2sqrt(2))); the full phase-arc theorem supplies uniform closure for the canonical pair. It does not identify every direction-dependent wall-sheet tract-pair limit or prove the remaining one-dimensional EX-W obligations, real-scale transfer, degree five, or unrestricted Erdos 1041.
@@ -1528,7 +1528,7 @@ Let phi_0=arctan(1/(2sqrt(2))). For every allowed phase |phi|<=phi_0 on the mu=-
 
 Evidence/status: ordinary_exact_uniform_full_repeated_critical_phase_arc_excess_theorem_with_dyadic_interval_atlas_and_lean_algebra_status_firewall
 
-- [QuinticMinusTenFullArcExcessCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMinusTenFullArcExcessCertificate.md)
+- [QuinticMinusTenFullArcExcessCertificate.md](problem/QuinticMinusTenFullArcExcessCertificate.md)
 - [check_erdos1041_quintic_minus_ten_full_arc_excess.py](problem/scripts/check_erdos1041_quintic_minus_ten_full_arc_excess.py)
 
 claim_boundary: This is an exact all-phase theorem only for the canonical pair on the universal mu=-10 repeated-critical stratum. The finite exact Python atlas is theorem authority; Lean supplies an algebraic replay/status firewall rather than an end-to-end proof. The separate wall-limit side-arm theorem, rather than an implicit identification with the canonical pair, closes the direction-dependent nonzero-active triple-hub limits. EX-W, model-to-real transfer, the degree-five real theorem, and unrestricted Erdos 1041 remain open.
@@ -1541,8 +1541,8 @@ At the two nonzero-gap wall phases on the mu=-10 triple-hub fibre, the three app
 
 Evidence/status: ordinary_exact_all_nonzero_active_mu_minus_ten_wall_limit_resolution_theorem_with_degree_110_sturm_certificate
 
-- [QuinticMinusTenWallLimitSideArmCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMinusTenWallLimitSideArmCertificate.md)
-- [check_erdos1041_quintic_minus_ten_wall_limit_side_arm.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_minus_ten_wall_limit_side_arm.py)
+- [QuinticMinusTenWallLimitSideArmCertificate.md](problem/QuinticMinusTenWallLimitSideArmCertificate.md)
+- [check_erdos1041_quintic_minus_ten_wall_limit_side_arm.py](problem/scripts/check_erdos1041_quintic_minus_ten_wall_limit_side_arm.py)
 
 claim_boundary: The theorem covers all three wall-limit tract-pair resolutions only at the mu=-10 puncture. The separate exact endpoint and angular theorems close both mu* fibres. This row does not certify the ordinary double-tight carrier, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
 
@@ -1554,8 +1554,8 @@ On the normalized critical-root cover mu(u)=-(5/2)(u+2)(u^2+2u+2), let lambda(u)
 
 Evidence/status: ordinary_exact_weighted_subharmonic_wall_sheet_reduction_with_exact_degree_ten_boundary_algebra_checker
 
-- [QuinticWallSheetSubharmonicReduction.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticWallSheetSubharmonicReduction.md)
-- [check_erdos1041_quintic_wall_sheet_subharmonic_reduction.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_wall_sheet_subharmonic_reduction.py)
+- [QuinticWallSheetSubharmonicReduction.md](problem/QuinticWallSheetSubharmonicReduction.md)
+- [check_erdos1041_quintic_wall_sheet_subharmonic_reduction.py](problem/scripts/check_erdos1041_quintic_wall_sheet_subharmonic_reduction.py)
 
 claim_boundary: The weighted function U, not mathcal E itself, is proved subharmonic. The degree-ten critical-root polynomial is a valid implicit cover, while the later unordered critical-value theorem supplies the smaller atlas target. Separate exact theorems close all direction-dependent triple-hub and gap-zero limits; this row remains a genuine reduction, not a proof of EX-W or EX-U.
 
@@ -1567,8 +1567,8 @@ Let Q_mu(Y)=Y^3+A Y^2+B Y+C be the exact cubic whose roots are the three quintic
 
 Evidence/status: ordinary_exact_compact_unordered_double_tight_critical_value_carrier_with_complete_event_resultants_and_hub_to_infinity_arm_chart
 
-- [QuinticDoubleTightCriticalValueCarrier.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCriticalValueCarrier.md)
-- [check_erdos1041_quintic_double_tight_critical_value_carrier.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_double_tight_critical_value_carrier.py)
+- [QuinticDoubleTightCriticalValueCarrier.md](problem/QuinticDoubleTightCriticalValueCarrier.md)
+- [check_erdos1041_quintic_double_tight_critical_value_carrier.py](problem/scripts/check_erdos1041_quintic_double_tight_critical_value_carrier.py)
 
 claim_boundary: This is a proved exact carrier and compactification, not the completed sign atlas. The transverse-square rationalization may be used only on cells where its denominator is proved positive; otherwise the original nonnegative square-root defect must be bounded. It does not prove EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
 
@@ -1580,8 +1580,8 @@ For mu*=(-70+10i sqrt(5))/27, F=x^2(x+(5+i sqrt(5))/3)^2(x+(5-2i sqrt(5))/3), an
 
 Evidence/status: ordinary_exact_short_sector_subharmonic_maximum_principle_reducing_each_mustar_halfcircle_to_two_endpoint_rays
 
-- [QuinticMuStarAngularFiberReduction.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMuStarAngularFiberReduction.md)
-- [check_erdos1041_quintic_mustar_angular_fiber.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_mustar_angular_fiber.py)
+- [QuinticMuStarAngularFiberReduction.md](problem/QuinticMuStarAngularFiberReduction.md)
+- [check_erdos1041_quintic_mustar_angular_fiber.py](problem/scripts/check_erdos1041_quintic_mustar_angular_fiber.py)
 
 claim_boundary: The subharmonic angular maximum principle is an ordinary exact theorem, and its required endpoint hypotheses are now supplied by QuinticMuStarEndpointExcessCertificate.md. It does not prove the compact ordinary carrier, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
 
@@ -1593,8 +1593,8 @@ At mu*=(-70+10i sqrt(5))/27 the normalized endpoint level polynomial factors as 
 
 Evidence/status: ordinary_exact_gap_zero_endpoint_curved_pair_excess_theorem_with_resultant_sturm_krawczyk_rational_interval_certificate
 
-- [QuinticMuStarEndpointExcessCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticMuStarEndpointExcessCertificate.md)
-- [check_erdos1041_quintic_mustar_endpoint_excess.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_mustar_endpoint_excess.py)
+- [QuinticMuStarEndpointExcessCertificate.md](problem/QuinticMuStarEndpointExcessCertificate.md)
+- [check_erdos1041_quintic_mustar_endpoint_excess.py](problem/scripts/check_erdos1041_quintic_mustar_endpoint_excess.py)
 
 claim_boundary: This theorem proves the two endpoint curved-pair inequalities on one mu* fibre; the separate angular maximum principle and conjugation are required for full-fibre closure. It does not prove the ordinary double-tight atlas, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
 
@@ -1606,8 +1606,8 @@ On the exact degree-ten unordered double-tight carrier, every interior singular 
 
 Evidence/status: ordinary_exact_event_excision_theorem_with_symbolic_newton_charts_continuity_and_dyadic_ball_point_certificates
 
-- [QuinticDoubleTightCompactAtlas.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCompactAtlas.md)
-- [check_erdos1041_quintic_double_tight_compact_atlas.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_double_tight_compact_atlas.py)
+- [QuinticDoubleTightCompactAtlas.md](problem/QuinticDoubleTightCompactAtlas.md)
+- [check_erdos1041_quintic_double_tight_compact_atlas.py](problem/scripts/check_erdos1041_quintic_double_tight_compact_atlas.py)
 
 claim_boundary: No numerical neighborhood radius, global monotonicity in kappa, or endpoint-domination theorem is claimed. Restricting the subharmonic wall function to the real carrier does not justify endpoint domination and tracked branches have interior bumps. This theorem does not prove the remaining regular subatlas, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdos 1041.
 
@@ -1619,8 +1619,8 @@ On the connected positive regular interval 4949/500000 <= t <= 12116785580404918
 
 Evidence/status: ordinary_exact_common_five_sheet_krawczyk_continuation_and_negative_excess_certificate
 
-- [QuinticDoubleTightPositiveDecadeContinuation.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightPositiveDecadeContinuation.md)
-- [check_erdos1041_quintic_double_tight_positive_decade_continuation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_double_tight_positive_decade_continuation.py)
+- [QuinticDoubleTightPositiveDecadeContinuation.md](problem/QuinticDoubleTightPositiveDecadeContinuation.md)
+- [check_erdos1041_quintic_double_tight_positive_decade_continuation.py](problem/scripts/check_erdos1041_quintic_double_tight_positive_decade_continuation.py)
 
 claim_boundary: No sign, continuation, or sheet count is asserted beyond the exact displayed interval. This does not close the remaining regular quintic carrier, EX-W, degree five, or unrestricted Erdos 1041. The generic consequence-map matches on A_SEED and MU_SEED in eight sibling checkers are lexical variable-name collisions; those independent validators require no change.
 
@@ -1634,8 +1634,8 @@ Evidence/status: ordinary_exact_all_degree_parent_theorem_in_the_separated_simpl
 
 Superseded by **disk_family_critical_value_separation_2026_09_02**. Use that stronger result.
 
-- [FirstMergeCriticalValueSeparationCertificate.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparationCertificate.md)
-- [check_erdos1041_first_merge_critical_value_separation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_first_merge_critical_value_separation.py)
+- [FirstMergeCriticalValueSeparationCertificate.md](problem/FirstMergeCriticalValueSeparationCertificate.md)
+- [check_erdos1041_first_merge_critical_value_separation.py](problem/scripts/check_erdos1041_first_merge_critical_value_separation.py)
 
 claim_boundary: The three convenient thresholds are sufficient, not claimed sharp; the exact condition is (1+S)^(2/n)log(S/(S-1))<1. The theorem requires a simple nonzero critical hub and gives no estimate below that curve or when the selected saddle is multiple. The consequence-map matches on the generic symbol D_2 outside this source are lexical collisions and do not change those consumers. The unrestricted problem remains open precisely because the clustered complement is not covered. SUPERSEDED 2026-09-02 by disk_family_critical_value_separation_2026_09_02, which improves every constant and frees the centre; this row is retained as history.
 
@@ -1647,9 +1647,9 @@ Let f be monic of degree n>=3, c a simple non-root critical point, v=f(c), and n
 
 Evidence/status: ordinary_exact_all_degree_parent_theorem_in_the_disk_separated_simple_hub_regime_with_lean_checked_threshold_kernel_and_recorded_adversarial_falsifier
 
-- [DiskFamilyCriticalValueSeparation.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.md)
-- [DiskFamilyCriticalValueSeparation.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean)
-- [check_erdos1041_disk_family_critical_value_separation.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_disk_family_critical_value_separation.py)
+- [DiskFamilyCriticalValueSeparation.md](problem/DiskFamilyCriticalValueSeparation.md)
+- [DiskFamilyCriticalValueSeparation.lean](problem/DiskFamilyCriticalValueSeparation.lean)
+- [check_erdos1041_disk_family_critical_value_separation.py](problem/scripts/check_erdos1041_disk_family_critical_value_separation.py)
 
 claim_boundary: The thresholds are sufficient, not claimed sharp; equality in the Bergman step needs a specific derivative and equality in Polya needs a disk, neither attained by a polynomial component. The theorem needs a simple hub; it is silent at multiple saddles. Dubinin (J. Math. Sci. 193 (2013)) Theorem 1, the relative Polya inequality flagged by the 2026-09-02 prior-art pass, enters neither this proof nor the 2026-08-30 one; it is the branch monotonicity used by actual_component_merge_tree_area_lower_bound and should be cited there. Its full text was not obtained. No literature-priority claim. Unrestricted Erdos 1041 remains open.
 
@@ -1883,7 +1883,7 @@ Prove FP--GM: for a monic polynomial with roots in the closed unit disc, jointly
 
 Evidence/status: see the source; no formal status inferred
 
-- [check_erdos1041_cegm_quartic_fixed_pair_no_go.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cegm_quartic_fixed_pair_no_go.py)
+- [check_erdos1041_cegm_quartic_fixed_pair_no_go.py](problem/scripts/check_erdos1041_cegm_quartic_fixed_pair_no_go.py)
 
 ### fixed_safe_monodromy_block_average_lift_length
 
@@ -1907,7 +1907,7 @@ Prove the componentwise combined-charge lemma. For each nontrivial connected com
 
 Evidence/status: see the source; no formal status inferred
 
-- [check_erdos1041_invariant_branch_length.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_invariant_branch_length.py)
+- [check_erdos1041_invariant_branch_length.py](problem/scripts/check_erdos1041_invariant_branch_length.py)
 
 ### one_root_covering_of_the_first_merge_component
 
@@ -1915,7 +1915,7 @@ Prove (COVER): for monic g with roots in the closed unit disk there is a level l
 
 Evidence/status: see the source; no formal status inferred
 
-- [check_erdos1041_visibility_overlap.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py)
+- [check_erdos1041_visibility_overlap.py](problem/scripts/check_erdos1041_visibility_overlap.py)
 
 ### concyclic_form_a_cut_objective_below_one
 
@@ -1931,4 +1931,4 @@ Prove the covering criterion min_{j even} S_j + min_{j odd} S_j <= 0 on the band
 
 Evidence/status: see the source; no formal status inferred
 
-- [check_erdos1041_sextic_chord_covering_criterion.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_chord_covering_criterion.py)
+- [check_erdos1041_sextic_chord_covering_criterion.py](problem/scripts/check_erdos1041_sextic_chord_covering_criterion.py)
