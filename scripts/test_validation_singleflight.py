@@ -524,7 +524,8 @@ class ValidationSingleflightTests(unittest.TestCase):
         dependency_builder = (
             ROOT / "scripts/build_lean_dependency_index.py"
         ).read_text(encoding="utf-8")
-        self.assertIn('str(LEAN_FAST_BUILD),\n            "--singleflight-worker"', dependency_builder)
+        self.assertIn("singleflight.HOST_LOCK_HELD_ENV", dependency_builder)
+        self.assertIn('command.append("--singleflight-worker")', dependency_builder)
         self.assertNotIn("paper-render", singleflight.ROSTER_VALIDATORS)
 
 

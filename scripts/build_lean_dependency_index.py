@@ -482,14 +482,15 @@ def refresh_environment_validation_metadata(
 
 
 def ensure_elaborated_environment() -> None:
+    command = [sys.executable, str(LEAN_FAST_BUILD)]
+    # Direct invocations must enter the host-wide Lean singleflight.  When the
+    # dependency-index validator already owns that host lock, bypassing the
+    # nested acquisition is safe and avoids deadlock.
+    if os.environ.get(singleflight.HOST_LOCK_HELD_ENV) == "1":
+        command.append("--singleflight-worker")
+    command.extend(["--lake-staleness", *LEAN_ROOT_TARGETS])
     completed = run(
-        [
-            sys.executable,
-            str(LEAN_FAST_BUILD),
-            "--singleflight-worker",
-            "--lake-staleness",
-            *LEAN_ROOT_TARGETS,
-        ],
+        command,
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,

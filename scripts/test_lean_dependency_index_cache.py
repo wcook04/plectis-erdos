@@ -402,11 +402,10 @@ def check_environment_build_is_bounded() -> None:
         == [
             builder.sys.executable,
             str(builder.LEAN_FAST_BUILD),
-            "--singleflight-worker",
             "--lake-staleness",
             *builder.LEAN_ROOT_TARGETS,
         ],
-        "dependency-bootstrap command drifted",
+        "direct dependency bootstrap bypassed the shared Lean owner",
     )
     require(run.call_args.kwargs["cwd"] == builder.ROOT, "bootstrap cwd drifted")
     sanitized = run.call_args.kwargs["env"]
@@ -433,6 +432,26 @@ def check_environment_build_is_bounded() -> None:
         builder.ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",
         "dependency-index environment contract drifted",
+    )
+
+    with patch.dict(
+        os.environ,
+        {builder.singleflight.HOST_LOCK_HELD_ENV: "1"},
+        clear=False,
+    ):
+        with patch.object(builder.subprocess, "run") as run:
+            run.return_value.returncode = 0
+            builder.ensure_elaborated_environment()
+    require(
+        run.call_args.args[0]
+        == [
+            builder.sys.executable,
+            str(builder.LEAN_FAST_BUILD),
+            "--singleflight-worker",
+            "--lake-staleness",
+            *builder.LEAN_ROOT_TARGETS,
+        ],
+        "dependency bootstrap tried to reacquire its already-held Lean lock",
     )
 
     for observed, expected in ((-15, 143), (143, 143)):
