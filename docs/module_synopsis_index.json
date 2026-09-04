@@ -1,7 +1,7 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
+  "source_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
   "module_count": 1058,
   "synopsis_count": 863,
   "query_contract": {
@@ -195,7 +195,7 @@
     {
       "id": "Erdos249257.DiagonalPincerCertificates",
       "path": "Erdos249257/DiagonalPincerCertificates.lean",
-      "synopsis": "Finite diagonal-pincer certificates This generated module materializes the kernel-safe prefix of finite `certifiedKill (periodLcm t) (periodLcm t) L_min` rows in the imported pincer table: 12 distinct scales through `t = 17`. Prime factors are proved prime in Lean, the factorizations are multiplied back exactly, and Euler totients are reconstructed from pairwise-coprime prime-power blocks. No `native evaluation`, custom axiom, or unbounded-supply inference is used. Results input SHA-256: `1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd`. Factorization input SHA-256: `4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d`."
+      "synopsis": "Finite diagonal-pincer certificates This generated module materializes the kernel-safe prefix of finite `certifiedKill (periodLcm t) (periodLcm t) L_min` rows in the imported pincer table: 12 distinct scales through `t = 17`. Prime factors are proved prime in Lean, the factorizations are multiplied back exactly, and Euler totients are reconstructed from pairwise-coprime prime-power blocks. No `native_decide`, custom axiom, or unbounded-supply inference is used. Results input SHA-256: `1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd`. Factorization input SHA-256: `4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d`."
     },
     {
       "id": "Erdos249257.DiagonalPincerCertificatesT19",
@@ -350,7 +350,7 @@
     {
       "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
       "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Support.lean",
-      "synopsis": "Shared support for the Lucas closure through t=64 This generated support module contains the two proof-kernel-preserving helper lemmas shared by the dependency-safe ClosureT64 certificate shards."
+      "synopsis": "Shared support for the Lucas closure through t=64 This generated support module contains the pre-t47 boundary imports shared by the ClosureT64 shards. Compact Lucas helpers live at the acyclic base."
     },
     {
       "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64",

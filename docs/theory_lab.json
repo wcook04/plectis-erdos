@@ -18,8 +18,8 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:b12944c1ef7d0d02e37b1be2e0335b23269e78c8ddc12010a1ce6d73df0e39c2",
-  "semantic_corpus_digest": "sha256:deaca9c9c30934bec8906a18c420516a6bf3d48761ef21846dcc96448dc3cf44",
+  "declaration_atlas_digest": "sha256:6f17e3faccd0f542ed928193a715248e47e80278822a13151cd7b224abe02ebf",
+  "semantic_corpus_digest": "sha256:f2a5afdc1273758ee874cae74aaa16aeaf0015a1d987aa8b879a6cd1c7175cf2",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -31,7 +31,7 @@
   "builder_digest": "sha256:2a6053910f1ac95809c754fec4e6f7f8b5e12e0b55839a8ec84ed4d52264c3e8",
   "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
  },
- "evidence_fingerprint": "sha256:07cb2c1bafa85c48a435082c795076ededdf85da6637ac55685e413871c83483",
+ "evidence_fingerprint": "sha256:f97455629f3db6589865f0e3e9224cce728c95ba30bde33de46fcd711513b9d4",
  "vocabularies": {
   "intervention_operators": [
    "change_base",

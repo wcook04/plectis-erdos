@@ -32,8 +32,8 @@
    {
     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificates",
-    "bytes": 123733,
-    "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132",
+    "bytes": 124159,
+    "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f",
     "certificate_declarations": 12,
     "least_depth_declarations": 0
    },
@@ -391,8 +391,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t1",
-     "line": 2782,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2792,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -416,8 +416,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t2",
-     "line": 2787,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2797,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -441,8 +441,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t3",
-     "line": 2792,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2802,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -466,8 +466,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t4",
-     "line": 2797,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2807,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -491,8 +491,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t5",
-     "line": 2802,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2812,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -516,8 +516,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t7",
-     "line": 2807,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2817,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -541,8 +541,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t8",
-     "line": 2812,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2822,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -566,8 +566,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t9",
-     "line": 2817,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2827,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -591,8 +591,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t11",
-     "line": 2822,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2832,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -616,8 +616,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t13",
-     "line": 2827,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2837,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -641,8 +641,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t16",
-     "line": 2832,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2842,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
@@ -666,8 +666,8 @@
      "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t17",
-     "line": 2837,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "line": 2847,
+     "source_sha256": "sha256:da1be3f873f1e58616dc54f5187fc6b0ede5e3ecfc06322dba9f71075621980f"
     },
     "least_depth": null
    }
