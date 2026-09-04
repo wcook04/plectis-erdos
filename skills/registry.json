@@ -140,6 +140,7 @@
         "overview",
         "what is this",
         "how does this repo work",
+        "new here",
         "newcomer",
         "onboard"
       ],
@@ -162,10 +163,14 @@
         "theorem status",
         "problem status",
         "what is proved",
+        "is this proved",
+        "has been proved",
         "what remains open",
         "mathematical progress",
         "claim status",
-        "paper synthesis"
+        "paper synthesis",
+        "strongest theorem",
+        "current frontier"
       ],
       "skills": [
         "explain-public-system"
@@ -177,7 +182,7 @@
       "commands": [
         "python3 scripts/query_corpus.py --ask \"<question>\""
       ],
-      "boundary": "All eight headline problems remain open; query results route to evidence but do not create proof or claim authority."
+      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority."
     },
     {
       "id": "bounded_research",
@@ -185,6 +190,8 @@
       "task_cues": [
         "mine",
         "attack",
+        "want to attack",
+        "want to solve",
         "prove",
         "find a proof",
         "counterexample",
@@ -212,6 +219,9 @@
       "task_cues": [
         "sustained research",
         "keep working",
+        "keep researching",
+        "continue researching",
+        "research until",
         "continuous research",
         "coupled goals",
         "research campaign",
@@ -240,6 +250,11 @@
         "duplicate builds",
         "deduplicate builds",
         "compile",
+        "compiles",
+        "still compiles",
+        "check lean",
+        "lean theorem",
+        "run the tests",
         "validate lean",
         "lake build",
         "build failure",
@@ -268,7 +283,11 @@
         "new result",
         "no-go",
         "architecture delta",
-        "update consumers"
+        "update consumers",
+        "update every affected",
+        "affected paper",
+        "update papers and claims",
+        "found a counterexample"
       ],
       "skills": [
         "propagate-research-consequences"
@@ -288,6 +307,10 @@
         "write paper",
         "edit paper",
         "mathematical writing",
+        "write an explanation",
+        "theorem explanation",
+        "explain the theorem",
+        "for a mathematician",
         "reader-facing",
         "rewrite readme",
         "exposition",
@@ -310,7 +333,10 @@
       "task_cues": [
         "add problem",
         "new problem",
+        "another erdős problem",
         "register problem",
+        "register its paper",
+        "expand problem roster",
         "incubate problem",
         "ninth problem",
         "expand corpus"
@@ -335,6 +361,10 @@
         "assimilate",
         "assimilated",
         "older clone",
+        "old checkout",
+        "package the work",
+        "from a fork",
+        "review and credit",
         "credit contribution",
         "credited",
         "made mathematical progress",
@@ -346,7 +376,8 @@
       ],
       "skills": [
         "erdos-research-return",
-        "propagate-research-consequences"
+        "propagate-research-consequences",
+        "submit-pull-request"
       ],
       "read": [
         "skills/erdos-research-return/SKILL.md",
@@ -364,6 +395,12 @@
       "task_cues": [
         "submit pull request",
         "open pull request",
+        "pull request",
+        "submit changes",
+        "changes upstream",
+        "finished commits",
+        "prepare commits",
+        "patch from a fork",
         "prepare pr",
         "commit contribution",
         "push branch",
@@ -382,8 +419,15 @@
     {
       "id": "install_skills",
       "title": "Install clone-local skills into an agent harness",
+      "priority": 60,
       "task_cues": [
         "install skills",
+        "install a skill",
+        "install clone local skills",
+        "install the clone local skills",
+        "install only",
+        "install workflow",
+        "make this skill available",
         "codex skills",
         "claude skills",
         "skill installer",
@@ -410,11 +454,13 @@
         "agent entry",
         "cold clone",
         "public clone",
-        "clone",
         "self explaining",
         "skill organization",
         "organize skills",
         "organise skills",
+        "organize consolidate",
+        "organise consolidate",
+        "refresh clone local skills",
         "skills need organizing",
         "skills need organising",
         "consolidate skills",
@@ -422,6 +468,9 @@
         "audit skills",
         "skill audit",
         "audit every clone-local skill",
+        "update skills",
+        "refresh skills",
+        "improve skills",
         "skill drift",
         "instruction drift",
         "dogfood",
@@ -435,11 +484,15 @@
         "slow clone",
         "speed up",
         "command speed",
-        "build commands",
-        "duplicate builds",
-        "deduplicate builds",
         "navigation",
         "skill discovery",
+        "skill routing",
+        "skill discoverability",
+        "discoverable skills",
+        "workflows discoverable",
+        "which skill",
+        "skills available",
+        "skills are available",
         "repository organization",
         "contributor experience",
         "reproducibility"

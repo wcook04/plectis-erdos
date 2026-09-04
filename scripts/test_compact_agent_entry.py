@@ -89,8 +89,9 @@ def main() -> int:
     assert "docs/orientation.json::agent_entry" not in text
 
     readme = README.read_text(encoding="utf-8")
-    assert 'scripts/agent_entry.py --entry "<task in ordinary language>"' in readme
-    assert "as\nits first action" in readme
+    assert "An agent arriving cold starts at [`AGENTS.override.md`](AGENTS.override.md)." in readme
+    assert "[The Agent Workbench](docs/AGENT_WORKBENCH.md)" in readme
+    assert "keeps machine routing and kernel\nprobes out of the human reading path" in readme
 
     # Projection-only checks can pass while an advertised route returns
     # "unknown route id". Exercise the public commands themselves.

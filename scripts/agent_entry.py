@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from difflib import get_close_matches
 from typing import Any
 
 from agent_skill_catalog import SkillCatalogError, load_catalog, rank_lanes
@@ -14,6 +15,33 @@ from agent_skill_catalog import SkillCatalogError, load_catalog, rank_lanes
 
 def skill_map(catalog: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {row["id"]: row for row in catalog["skills"]}
+
+
+def lanes_for_skill(catalog: dict[str, Any], skill_id: str) -> list[dict[str, Any]]:
+    return [lane for lane in catalog["lanes"] if skill_id in lane["skills"]]
+
+
+def skill_card(catalog: dict[str, Any], skill_id: str) -> dict[str, Any]:
+    skills = skill_map(catalog)
+    if skill_id not in skills:
+        suggestions = get_close_matches(skill_id, sorted(skills), n=3, cutoff=0.45)
+        hint = f"; did you mean: {', '.join(suggestions)}" if suggestions else ""
+        raise SkillCatalogError(
+            f"unknown skill {skill_id!r}{hint}; list the catalog with --skills"
+        )
+    lane_cards = lanes_for_skill(catalog, skill_id)
+    return {
+        **skills[skill_id],
+        "lanes": [lane["id"] for lane in lane_cards],
+        "route_lanes": [
+            {
+                "id": lane["id"],
+                "title": lane["title"],
+                "task_cues": lane["task_cues"],
+            }
+            for lane in lane_cards
+        ],
+    }
 
 
 def entry_packet(catalog: dict[str, Any], task: str) -> dict[str, Any]:
@@ -91,21 +119,27 @@ def render_skills(catalog: dict[str, Any]) -> str:
         lines.append(f"{family['title']}")
         lines.append(f"  {family['description']}")
         for skill in by_family[family["id"]]:
+            routes = ", ".join(
+                lane["title"] for lane in lanes_for_skill(catalog, skill["id"])
+            )
             lines.append(f"  {skill['id']} [{skill['stage']}]")
             lines.append(f"    Use when: {skill['description']}")
+            lines.append(f"    Routes: {routes}")
             lines.append(f"    Open: {skill['path']}")
         lines.append("")
-    lines.extend(("", 'Route a task: python3 scripts/agent_entry.py --entry "<task>"'))
+    lines.extend(
+        (
+            "",
+            'Route a task: python3 scripts/agent_entry.py --entry "<task>"',
+            "Inspect one: python3 scripts/agent_entry.py --skill <skill-id>",
+        )
+    )
     return "\n".join(lines)
 
 
 def render_skill(catalog: dict[str, Any], skill_id: str) -> str:
-    skills = skill_map(catalog)
-    if skill_id not in skills:
-        choices = ", ".join(sorted(skills))
-        raise SkillCatalogError(f"unknown skill {skill_id!r}; choose one of: {choices}")
-    skill = skills[skill_id]
-    lanes = [lane for lane in catalog["lanes"] if skill_id in lane["skills"]]
+    skill = skill_card(catalog, skill_id)
+    lanes = lanes_for_skill(catalog, skill_id)
     lines = [
         skill["id"],
         f"Family: {skill['family']}",
@@ -115,7 +149,9 @@ def render_skill(catalog: dict[str, Any], skill_id: str) -> str:
         "",
         "Used by lanes:",
     ]
-    lines.extend(f"  - {lane['id']}: {lane['title']}" for lane in lanes)
+    for lane in lanes:
+        lines.append(f"  - {lane['id']}: {lane['title']}")
+        lines.append(f"    Recognized requests: {', '.join(lane['task_cues'])}")
     if skill["composes_with"]:
         lines.extend(("", "Common next workflows:"))
         lines.extend(f"  - {related}" for related in skill["composes_with"])
@@ -144,19 +180,12 @@ def main() -> int:
                 "schema": catalog["schema"],
                 "families": catalog["families"],
                 "skills": catalog["skills"],
+                "lanes": catalog["lanes"],
                 "maintenance": catalog["maintenance"],
             }
             output = json.dumps(value, indent=2) if args.json else render_skills(catalog)
         else:
-            skills = skill_map(catalog)
-            if args.skill not in skills:
-                raise SkillCatalogError(f"unknown skill {args.skill!r}")
-            value = {
-                **skills[args.skill],
-                "lanes": [
-                    lane["id"] for lane in catalog["lanes"] if args.skill in lane["skills"]
-                ],
-            }
+            value = skill_card(catalog, args.skill)
             output = json.dumps(value, indent=2) if args.json else render_skill(catalog, args.skill)
     except (OSError, json.JSONDecodeError, SkillCatalogError) as exc:
         parser().error(str(exc))

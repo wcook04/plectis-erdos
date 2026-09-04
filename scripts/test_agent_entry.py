@@ -18,6 +18,14 @@ from agent_skill_catalog import ROOT, load_catalog
 
 ROUTE_CASES = {
     "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
+    "I am new here and want to understand the eight open problems": (
+        "understand_repository",
+        "explain-public-system",
+    ),
+    "I am new here and want to attack one open problem": (
+        "bounded_research",
+        "mine-open-problem",
+    ),
     "report theorem status and what remains open": ("mathematical_status", "explain-public-system"),
     "attack one open problem with proof search": ("bounded_research", "mine-open-problem"),
     "find a proof in Lean": ("bounded_research", "mine-open-problem"),
@@ -45,6 +53,7 @@ ROUTE_CASES = {
     ),
     "prepare a PR and submit pull request": ("submit_change", "submit-pull-request"),
     "install skills into Codex": ("install_skills", "install-clone-skills"),
+    "install the clone-local skills": ("install_skills", "install-clone-skills"),
     "improve cold clone agent entry and skill discovery": (
         "repository_architecture",
         "maintain-public-infrastructure",
@@ -76,6 +85,70 @@ ROUTE_CASES = {
     "dogfood instruction drift without private infrastructure": (
         "repository_architecture",
         "maintain-public-infrastructure",
+    ),
+    "I cloned the repository and want to prove Erdős problem 249": (
+        "bounded_research",
+        "mine-open-problem",
+    ),
+    "I cloned the repo and want to submit my changes upstream": (
+        "submit_change",
+        "submit-pull-request",
+    ),
+    "I have a patch from a fork that needs review and credit": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "please check whether this Lean theorem still compiles": (
+        "lean_validation",
+        "lean-concurrent-validation",
+    ),
+    "run the tests for my changed .lean file": (
+        "lean_validation",
+        "lean-concurrent-validation",
+    ),
+    "help me understand which skill I should use": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "what skills are available for mathematical research?": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "update the skill routing and make the workflows discoverable": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "write an explanation of the strongest theorem for a mathematician": (
+        "public_writing",
+        "public-mathematical-writing",
+    ),
+    "add another Erdős problem and register its paper": (
+        "add_problem",
+        "add-open-problem",
+    ),
+    "keep researching this frontier until there is a stable result": (
+        "sustained_research",
+        "run-coupled-research-goals",
+    ),
+    "I found a counterexample; update every affected paper and claim": (
+        "propagate_delta",
+        "propagate-research-consequences",
+    ),
+    "package the work from my old checkout for maintainers": (
+        "return_research",
+        "erdos-research-return",
+    ),
+    "install only the research-return workflow into Codex": (
+        "install_skills",
+        "install-clone-skills",
+    ),
+    "prepare these finished commits as a pull request but do not push": (
+        "submit_change",
+        "submit-pull-request",
+    ),
+    "debug why two agents launched the same Lean build": (
+        "lean_validation",
+        "lean-concurrent-validation",
     ),
 }
 
@@ -143,6 +216,25 @@ def main() -> int:
     assert {row["id"] for row in json.loads(listed.stdout)["families"]} == {
         row["id"] for row in catalog["families"]
     }
+    assert {row["id"] for row in json.loads(listed.stdout)["lanes"]} == {
+        row["id"] for row in catalog["lanes"]
+    }
+
+    human_listed = run_cli(ROOT, "--skills")
+    assert human_listed.returncode == 0, human_listed.stderr
+    assert "Routes:" in human_listed.stdout
+    assert "Inspect one:" in human_listed.stdout
+
+    skill = run_cli(ROOT, "--skill", "mine-open-problem", "--json")
+    assert skill.returncode == 0, skill.stderr
+    skill_value = json.loads(skill.stdout)
+    assert skill_value["lanes"]
+    assert all(row["task_cues"] for row in skill_value["route_lanes"])
+
+    misspelled = run_cli(ROOT, "--skill", "mine-open-problm")
+    assert misspelled.returncode != 0
+    assert "mine-open-problem" in misspelled.stderr
+    assert "--skills" in misspelled.stderr
 
     catalog_check = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "agent_skill_catalog.py"), "--check"],
@@ -208,6 +300,14 @@ def main() -> int:
         invalid = run_cli(clone, "--skills", "--json")
         assert invalid.returncode != 0
         assert "unknown family" in invalid.stderr
+
+        shutil.copy2(ROOT / "skills" / "registry.json", clone_registry)
+        invalid_registry = json.loads(clone_registry.read_text(encoding="utf-8"))
+        invalid_registry["lanes"][0]["task_cues"] = ["explain", "EXPLAIN"]
+        clone_registry.write_text(json.dumps(invalid_registry), encoding="utf-8")
+        invalid = run_cli(clone, "--skills", "--json")
+        assert invalid.returncode != 0
+        assert "duplicate normalized task cues" in invalid.stderr
 
     print(
         "agent entry: pass "

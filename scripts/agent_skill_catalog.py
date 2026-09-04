@@ -133,11 +133,38 @@ def load_catalog() -> dict[str, Any]:
         if not isinstance(lane_id, str) or lane_id in lane_ids:
             raise SkillCatalogError(f"invalid or duplicate lane id: {lane_id!r}")
         lane_ids.add(lane_id)
-        unknown = set(lane.get("skills", [])) - registered_ids
+        if not isinstance(lane.get("title"), str) or not lane["title"].strip():
+            raise SkillCatalogError(f"lane {lane_id} needs a title")
+        lane_skills = lane.get("skills")
+        if (
+            not isinstance(lane_skills, list)
+            or not lane_skills
+            or not all(isinstance(value, str) for value in lane_skills)
+        ):
+            raise SkillCatalogError(f"lane {lane_id} skills must be a non-empty string list")
+        unknown = set(lane_skills) - registered_ids
         if unknown:
             raise SkillCatalogError(f"lane {lane_id} references unknown skills: {sorted(unknown)}")
-        if not lane.get("task_cues"):
-            raise SkillCatalogError(f"lane {lane_id} has no task cues")
+        task_cues = lane.get("task_cues")
+        if (
+            not isinstance(task_cues, list)
+            or not task_cues
+            or not all(isinstance(value, str) and value.strip() for value in task_cues)
+        ):
+            raise SkillCatalogError(f"lane {lane_id} task_cues must be a non-empty string list")
+        normalized_cues = [normalize(value) for value in task_cues]
+        if "" in normalized_cues or len(normalized_cues) != len(set(normalized_cues)):
+            raise SkillCatalogError(f"lane {lane_id} has empty or duplicate normalized task cues")
+        for field in ("read", "commands"):
+            values = lane.get(field)
+            if not isinstance(values, list) or not all(
+                isinstance(value, str) and value.strip() for value in values
+            ):
+                raise SkillCatalogError(f"lane {lane_id} {field} must be a string list")
+        if not lane["read"]:
+            raise SkillCatalogError(f"lane {lane_id} needs at least one read target")
+        if not isinstance(lane.get("boundary"), str) or not lane["boundary"].strip():
+            raise SkillCatalogError(f"lane {lane_id} needs a boundary")
         priority = lane.get("priority", 0)
         if not isinstance(priority, int):
             raise SkillCatalogError(f"lane {lane_id} priority must be an integer")
@@ -217,6 +244,12 @@ def render_skill_index(catalog: dict[str, Any]) -> str:
         lines.extend((f"## {family['title']}", "", family["description"], ""))
         for skill in by_family[family["id"]]:
             lines.append(f"- [{skill['id']}]({skill['id']}/SKILL.md) — {skill['description']}")
+            route_titles = [
+                lane["title"]
+                for lane in catalog["lanes"]
+                if skill["id"] in lane["skills"]
+            ]
+            lines.append(f"  Routed by: {', '.join(route_titles)}")
         lines.append("")
 
     maintenance = catalog.get("maintenance", {})
